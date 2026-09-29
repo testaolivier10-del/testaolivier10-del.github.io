@@ -34,6 +34,11 @@
     { "cause": "The examiner finds upper motor neuron weakness of the face and body on the same side, with no cranial nerve problem on the other side.", "effect": "The damage is placed above the facial nucleus in the pons, most likely in the right cerebral hemisphere or internal capsule." },
     { "cause": "The onset was sudden and the patient was last known to be well two hours ago.", "effect": "A stroke is suspected, and a brain scan is done at once to tell an ischemic stroke from a hemorrhagic one before treatment." }
   ],
+  "ideas": [
+    "The <b>Glasgow Coma Scale</b> (GCS) scores consciousness by adding the best response in three categories: eye opening (1 to 4), verbal response (1 to 5) and motor response (1 to 6). The total runs from 3 (no response) to 15 (fully awake and oriented); 8 or less is severe and is the usual working definition of coma.",
+    "On the GCS, eye opening scores 4 spontaneously, 3 to sound, 2 to pressure and 1 for none; verbal response scores 5 oriented, 4 confused, 3 inappropriate words, 2 sounds without words and 1 none. Motor response scores 6 for obeying commands, 5 for moving a hand toward the pressure, 4 for bending the arm away, 3 for stiff abnormal bending, 2 for straightening the arm and 1 for none.",
+    "A <b>spinal cord injury</b> cuts some or all of the tracts at one level and destroys the gray matter of the segments there. Below that level the cord's own circuits survive but lose their link to the brain. Injury in the cervical cord affects all four limbs (tetraplegia); injury lower down affects the legs (paraplegia)."
+  ],
   "misconception": {
     "wrong": "Weakness on one side of the body means damage on that same side of the brain.",
     "right": "Above the pyramidal decussation, motor pathways serve the opposite side, so a weak left arm and leg with a brisk left knee jerk points to the right hemisphere, internal capsule or brainstem. Only below the decussation, in the spinal cord, does damage weaken the same side. The face helps: in the brainstem, the damaged cranial nerve is on the same side as the lesion while the body weakness is on the opposite side."

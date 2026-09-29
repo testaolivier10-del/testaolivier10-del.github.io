@@ -35,6 +35,10 @@
     { "cause": "CSF pressure in the subarachnoid space is a little higher than the pressure of the blood in the venous channels of the dura.", "effect": "CSF flows through the arachnoid granulations into the venous blood, balancing what the choroid plexus makes." },
     { "cause": "If a tumor pinches the cerebral aqueduct shut, CSF made above the block cannot leave.", "effect": "The lateral and third ventricles swell, pressure inside the skull rises, and the fourth ventricle stays normal: obstructive hydrocephalus." }
   ],
+  "ideas": [
+    "The <b>blood-brain barrier</b> is a set of features of the brain's capillaries that controls what passes from blood into brain tissue. Its core is the capillary endothelial cells, sealed together by tight junctions, so everything entering the brain must pass through the cells themselves. Small lipid-soluble molecules dissolve straight through their membranes; most others are kept out unless a carrier moves them.",
+    "An <b>epidural hematoma</b> (hemat- = blood, -oma = mass) is a collection of clotted blood between the skull and the dura, the tough outer membrane around the brain. It usually follows a blow to the side of the head that cracks the thin temporal bone and tears the middle meningeal artery; arterial blood makes it grow fast, and it can compress the brain within hours."
+  ],
   "misconception": {
     "wrong": "The blood–brain barrier is a wall of astrocytes wrapped around the brain's capillaries.",
     "right": "The barrier itself is the endothelial cells of the brain's capillaries, sealed edge to edge by continuous tight junctions, with no pores and few transport vesicles. Astrocyte end-feet cover the outside of the capillary and send signals that keep the endothelial cells in this sealed state, but molecules could slip between the end-feet. Everything that enters brain tissue has to pass through the endothelial cells themselves."

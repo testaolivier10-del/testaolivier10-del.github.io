@@ -35,6 +35,9 @@
     { "cause": "K+ from the endolymph flows into the hair cell.", "effect": "The hair cell depolarizes, Ca2+ enters, and the cell releases more glutamate onto its sensory neuron." },
     { "cause": "The sensory neurons of the cochlear nerve fire faster.", "effect": "Signals pass through the cochlear nuclei, superior olivary nuclei, inferior colliculus and medial geniculate nucleus to the primary auditory cortex, where you perceive the sound." }
   ],
+  "ideas": [
+    "Each inner ear has three <b>semicircular canals</b> set at right angles to one another, so any turn of your head moves the fluid in at least one of them. At the base of each canal, hair cells project their stereocilia into a tall gel cap, the <b>cupula</b> (little cup); when your head starts or stops turning, the endolymph lags behind by inertia, pushes the cupula and bends the stereocilia."
+  ],
   "misconception": {
     "wrong": "Each ear sends its signals only to the opposite side of the brain, so damage to one auditory cortex makes the opposite ear deaf.",
     "right": "Auditory fibers cross at several levels, starting in the brainstem, so each ear reaches the auditory cortex on both sides. Damage to one auditory cortex does not deafen either ear. Deafness in one ear points to that ear, its cochlear nerve or its cochlear nuclei."

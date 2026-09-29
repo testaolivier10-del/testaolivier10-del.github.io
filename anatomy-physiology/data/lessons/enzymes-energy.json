@@ -46,6 +46,14 @@
       "effect": "The products are released, and the unchanged enzyme binds a new substrate molecule."
     }
   ],
+  "ideas": [
+    "Energy is the capacity to do work. <b>Potential energy</b> is stored energy; <b>kinetic energy</b> is the energy of motion. <b>Chemical energy</b> is potential energy held in the arrangement of atoms and their bonds. An <b>exergonic</b> reaction (ex- = out, erg- = work) releases energy because its products hold less than its reactants; an <b>endergonic</b> reaction (end- = within) has products that hold more, so energy must be supplied.",
+    "<b>Metabolism</b> (metabol- = change) is the sum of all the chemical reactions in your body. <b>Catabolism</b> (cata- = down) breaks large molecules into smaller ones and usually releases energy. <b>Anabolism</b> (ana- = up) builds large molecules from smaller ones and usually needs energy.",
+    "<b>ATP hydrolysis</b> uses a water molecule to split the end phosphate off ATP, leaving ADP, a free phosphate and released energy. The energy does not sit in the broken bond, because breaking any bond takes energy. It is the drop from ATP to the more stable ADP and phosphate in water.",
+    "A <b>cofactor</b> (co- = together) is a non-protein helper that an enzyme needs, often a metal ion such as magnesium. A <b>coenzyme</b> is an organic cofactor, often made from a vitamin, that carries atoms or electrons from one reaction to the next.",
+    "Enzyme activity rises with temperature to a peak near 37 °C, then falls as heat unfolds the enzyme. More substrate raises the rate until every active site is busy nearly always; then extra substrate adds nothing. A <b>competitive inhibitor</b> resembles the substrate and binds the active site, so a large excess of substrate can crowd it out; a <b>noncompetitive inhibitor</b> binds elsewhere and bends the enzyme out of shape.",
+    "<b>Oxidation</b> is the loss of electrons, and <b>reduction</b> is the gain of electrons. They always happen together, because electrons that leave one molecule must go to another. Energy travels with the electrons: the molecule that is oxidized usually loses energy, and the one that is reduced gains it."
+  ],
   "misconception": {
     "wrong": "ATP stores its energy in a special high-energy bond, and breaking that bond releases the energy.",
     "right": "Breaking any chemical bond takes energy; it never releases it. ATP hydrolysis releases energy because its products, ADP and phosphate surrounded by water, are a more stable, lower-energy arrangement than ATP and water. The energy released is the difference between the two sides of the reaction, not something stored inside one bond."

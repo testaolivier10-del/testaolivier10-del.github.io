@@ -35,6 +35,13 @@
     { "cause": "Constricted arterioles and low pressure lower capillary hydrostatic pressure, and renin, angiotensin II, aldosterone and ADH rise.", "effect": "Interstitial fluid moves into his plasma, and his kidneys keep salt and water." },
     { "cause": "If bleeding continues, these responses are overwhelmed and oxygen delivery falls below what his tissues need.", "effect": "His cells shift to anaerobic metabolism, lactate rises and pressure falls: progressive shock." }
   ],
+  "ideas": [
+    "<b>Hypertension</b> (hyper- = above, tens- = stretched, pressure), also called high blood pressure, is arterial pressure that stays above normal on repeated measurements. It usually causes no symptoms.",
+    "<b>Atherosclerosis</b> (athero- = gruel, paste; scler- = hard; -osis = condition) is the buildup of fatty, fibrous deposits called plaques in the tunica intima of large and medium arteries. It is the main cause of heart attacks.",
+    "<b>Heart failure</b> is a condition in which the heart cannot pump enough blood to meet the body's needs, or can do so only with abnormally high filling pressures. It does not mean the heart has stopped.",
+    "<b>Circulatory shock</b> is a failure of the circulation to deliver enough oxygen to meet the needs of the tissues; low blood pressure is common but is not the definition. In <b>hypovolemic shock</b> (hypo- = below, vol- = volume, -emia = blood condition) the blood volume is too low, as in hemorrhage or severe vomiting.",
+    "<b>Distributive shock</b>, also called vascular shock, is shock caused by widespread vasodilation. Total peripheral resistance falls sharply and blood pools in the dilated vessels, so there is too little effective volume for the enlarged space."
+  ],
   "misconception": {
     "wrong": "A bleeding patient with a normal blood pressure is not in shock.",
     "right": "Shock is too little oxygen delivery to the tissues, not low blood pressure. The baroreceptor reflex holds MAP near normal after losing up to about 30 percent of blood volume, by raising heart rate and constricting arterioles. A fast heart rate, a narrow pulse pressure and cool, pale skin are the early signs. A falling blood pressure is a late sign that compensation is failing."

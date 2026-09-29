@@ -35,6 +35,14 @@
     { "cause": "The hyperpolarized photoreceptor releases less glutamate onto bipolar cells.", "effect": "The bipolar cells change their output, and retinal ganglion cells change their rate of action potentials." },
     { "cause": "Ganglion cell axons leave the eye as the optic nerve, and nasal fibers cross at the optic chiasm.", "effect": "Each optic tract carries the opposite visual field to the lateral geniculate nucleus of the thalamus, which relays it to the primary visual cortex." }
   ],
+  "ideas": [
+    "The <b>conjunctiva</b> (con- = together, junct- = joined) is a thin, clear mucous membrane that lines the inside of your eyelids and folds back to cover the white of your eye. It stops at the edge of the cornea, so it never covers the part you see through.",
+    "The lens is a clear, flexible disc held to the ciliary body by a ring of fine threads, the <b>zonule fibers</b> (zonula = little belt). For near vision the ring-shaped ciliary muscle contracts and shrinks toward the lens, the zonule fibers go slack, and the elastic lens rounds up and bends light more: this is <b>accommodation</b>.",
+    "In front of the lens is the <b>aqueous humor</b> (aqua = water), a clear fluid the ciliary processes secrete and that drains away through a meshwork at the edge of the cornea. It feeds the lens and cornea, which have no blood supply.",
+    "<b>Refraction</b> (re- = back, fract- = break) is the bending of light as it passes at a slant from one clear material into another. <b>Myopia</b> (nearsightedness) occurs when the eyeball is too long, so light from distant objects focuses in front of the retina and a concave lens is needed to move the focus back.",
+    "In the <b>pupillary light reflex</b>, light on one retina sends signals along the optic nerve to the midbrain, which sends signals through the oculomotor nerves on both sides. The circular muscle of each iris contracts and both pupils narrow.",
+    "Beyond the primary visual cortex, signals split into two streams. The <b>dorsal stream</b> runs up into the parietal lobe and works out where things are and how they move, guiding your hand and eyes toward them. The ventral stream runs down into the temporal lobe and works out what things are."
+  ],
   "misconception": {
     "wrong": "Light switches photoreceptors on: it depolarizes rods and cones and makes them fire.",
     "right": "It is the other way round. In the dark, cGMP holds cation channels open, so rods and cones are depolarized and release glutamate all the time. Light starts a cascade that destroys cGMP, closes those channels and hyperpolarizes the cell, which cuts its glutamate release. Rods and cones never fire action potentials; the first cells in the pathway to do so are the retinal ganglion cells."

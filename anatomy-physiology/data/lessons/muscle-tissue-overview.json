@@ -58,6 +58,13 @@
       "effect": "Desmosomes in the discs keep the fibers from pulling apart, and the region squeezes as one unit."
     }
   ],
+  "ideas": [
+    "<b>Muscle tissue</b> is made of cells called muscle fibers, or myocytes (my-, myo- = muscle, -cyte = cell), packed with filaments of actin and myosin. Using energy from ATP, myosin grabs actin filaments and pulls them, so the cell shortens with force. Muscle can only pull, never push.",
+    "All muscle tissue has four properties: responsiveness to signals, the ability to contract, <b>extensibility</b> (ex- = out, tend- = stretch), which is being stretched beyond resting length without damage, and elasticity, which is recoiling to resting length afterward.",
+    "<b>Skeletal muscle tissue</b> forms the muscles attached to your bones by tendons. Its fibers are long and cylindrical, striated, and hold many nuclei pressed against the plasma membrane. It is voluntary: it contracts only when the nervous system signals it, and you can start those signals by choice.",
+    "<b>Smooth muscle tissue</b> lines the walls of hollow organs, such as the stomach, bladder and blood vessels. Its fibers are spindle-shaped, with one central nucleus, and it is involuntary. It is nonstriated: its actin and myosin crisscross at angles instead of lining up in repeating units, so no stripes show.",
+    "Each small artery is wrapped in a ring of smooth muscle. <b>Vasoconstriction</b> (vaso- = vessel, constrict- = squeeze) is narrowing of a vessel when that muscle contracts. <b>Vasodilation</b> is widening of the vessel when the muscle relaxes and the pressure inside pushes the wall outward."
+  ],
   "misconception": {
     "wrong": "Striated muscle is voluntary muscle; the two words mean the same thing.",
     "right": "Striation describes structure: whether actin and myosin are stacked in lined-up repeating units that show as stripes. Voluntary describes control: whether you can make the muscle contract by choice. Skeletal muscle happens to be both, but cardiac muscle is striated and involuntary. Stripes tell you how the filaments are arranged, not who is in charge."

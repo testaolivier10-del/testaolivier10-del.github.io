@@ -59,6 +59,12 @@
       "effect": "MAP returns toward normal within seconds. In Mr. Alvarez, the drug blocks the alpha-1 receptors, so TPR cannot rise and his pressure stays low."
     }
   ],
+  "ideas": [
+    "The <b>baroreceptor reflex</b> (baroreflex) is the negative feedback loop that uses signals from baroreceptors, the pressure sensors in arterial walls, to correct fast changes in blood pressure. It changes heart rate and constricts or relaxes arterioles and veins.",
+    "<b>Orthostatic hypotension</b> (hypo- = below, tens- = stretched, pressure) is a sustained fall in blood pressure on standing: a drop of at least 20 mm Hg systolic or at least 10 mm Hg diastolic within 3 minutes of standing up.",
+    "<b>Autoregulation</b> (auto- = self) is the ability of a tissue to adjust its own blood flow by changing the radius of its own arterioles, with no help from nerves or hormones. Metabolites from working tissue relax nearby arteriole smooth muscle, so flow rises.",
+    "The <b>atrial reflex</b>, also called the Bainbridge reflex, is a rise in heart rate within seconds when the right atrium fills and stretches, as after a fast IV infusion: stretch-sensitive sensory receptors signal the cardiovascular center, which raises sympathetic and lowers vagal output. In people it is a real but modest effect, often masked by the baroreceptor reflex."
+  ],
   "misconception": {
     "wrong": "The baroreceptor reflex sets your long-term blood pressure.",
     "right": "The baroreceptor reflex corrects changes that last seconds to minutes. If pressure stays at a new level for a day or two, the baroreceptors reset and treat the new level as normal, so they stop opposing it. The long-term level of your blood pressure is set mainly by blood volume, which the kidneys and hormones control, as the next topic shows."

@@ -58,6 +58,9 @@
       "effect": "Chromaffin cells release epinephrine into the blood, which carries the signal to every tissue and prolongs it for minutes."
     }
   ],
+  "ideas": [
+    "The parasympathetic division is also called the <b>craniosacral</b> division (crani/o = skull, sacr/o = sacrum), because its preganglionic neurons sit at the two ends of the central nervous system. Brainstem nuclei send fibers out in cranial nerves III, VII, IX and X, and neurons in sacral cord segments S2 to S4 send fibers to the pelvic organs."
+  ],
   "misconception": {
     "wrong": "The sympathetic division is the part of the ANS that comes from the spinal cord, and the parasympathetic division is the part that comes from the brain.",
     "right": "Both divisions start in the CNS and use two neurons. The sympathetic division leaves only from the thoracic and upper lumbar cord (T1–L2). The parasympathetic division leaves from the brainstem, in cranial nerves III, VII, IX and X, and also from the sacral cord (S2–S4), which supplies the bladder, rectum and reproductive organs."

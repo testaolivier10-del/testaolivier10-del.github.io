@@ -36,6 +36,13 @@
     { "cause": "The proteins holding the sister chromatids together are cut, and the kinetochore microtubules shorten.", "effect": "The chromatids move to opposite ends of the cell (anaphase)." },
     { "cause": "A full set of chromosomes arrives at each end.", "effect": "A nuclear envelope re-forms around each set (telophase), and an actin–myosin ring pinches the cell in two (cytokinesis)." }
   ],
+  "ideas": [
+    "A <b>stem cell</b> is an unspecialized cell that can renew itself, dividing to make more stem cells, and can give rise to specialized cells. Often one division does both: one daughter stays a stem cell and the other specializes, which keeps the pool steady while it supplies new cells.",
+    "<b>Potency</b> (potent- = powerful) is how many cell types a stem cell's descendants can become. A <b>totipotent</b> cell (toti- = whole) can form every body cell plus the supporting tissues of pregnancy, and only the fertilized egg and its first few divisions are totipotent. A <b>pluripotent</b> cell (pluri- = many) can form every body cell type but not those supporting tissues. Multipotent, oligopotent and unipotent cells are progressively more limited.",
+    "<b>Differentiation</b> (differ- = to carry apart) is the process by which a cell becomes specialized in structure and function. It works through gene expression: transcription factors switch on one set of genes and keep others off. The cell keeps its whole genome and loses no DNA.",
+    "<b>Apoptosis</b> (apo- = away, -ptosis = falling), or programmed cell death, is an orderly self-destruction carried out by the cell's own enzymes. The cell shrinks and breaks into membrane-wrapped pieces that neighboring cells engulf, so nothing spills into the surrounding tissue.",
+    "Cancer is uncontrolled cell division, forming a <b>tumor</b>, or neoplasm (neo- = new, -plasm = formed thing); a benign tumor stays put and a malignant one invades. It is driven by mutations in <b>oncogenes</b> (onco- = tumor), overactive division-promoting genes, and in <b>tumor suppressor genes</b>, whose products brake division. One such product, p53, halts the cycle when DNA is damaged and triggers apoptosis if repair fails."
+  ],
   "misconception": {
     "wrong": "Cells specialize by losing the genes they do not need.",
     "right": "A specialized cell keeps the whole genome. Differentiation changes which genes are switched on: each cell type holds its own mix of transcription factors, and those decide which genes it expresses. The proof is that adult skin cells can be turned back into pluripotent stem cells by switching on a few transcription factors. That would be impossible if the genes for other cell types had been thrown away."

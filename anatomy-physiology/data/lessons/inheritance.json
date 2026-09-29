@@ -32,6 +32,11 @@
     { "cause": "The two alleles in a child interact: one may mask the other, both may show, or the heterozygote may be in between.", "effect": "The genotype is expressed as a phenotype (dominant, recessive, codominant or incompletely dominant), which the environment can also change." },
     { "cause": "Alleles on the X chromosome have no partner in a male.", "effect": "X-linked recessive traits show in males with one copy, so they affect many more males than females." }
   ],
+  "ideas": [
+    "An allele is one version of a gene. A <b>dominant allele</b> shows its effect with one copy, in both the homozygote and the heterozygote. A <b>recessive allele</b> shows only in someone homozygous for it, so a heterozygous carrier is healthy.",
+    "When a gene lies on an autosome, the pattern is <b>autosomal dominant</b> or <b>autosomal recessive</b>. In an autosomal recessive disease, affected children are usually born to two unaffected carriers, and each child has a 1 in 4 chance of being affected.",
+    "<b>Chromosomal disorders</b> come from a change in a whole chromosome or a large piece of one, rather than in a single gene. A <b>trisomy</b> (tri- = three, -somy = body) is three copies of one chromosome instead of two; trisomy 21 causes <b>Down syndrome</b>, seen in about 1 in 700 births."
+  ],
   "misconception": {
     "wrong": "A dominant allele is stronger, so it becomes more common over the generations, and a 1 in 4 risk means exactly one affected child in every four.",
     "right": "Dominance describes how two alleles behave in one person for one phenotype, not how common an allele is: polydactyly is dominant but rare, and the O allele is recessive but the most common ABO allele. And a Punnett square gives a chance for each child. Gametes are formed fresh for every pregnancy, so two carriers who already have an affected child still face a 1 in 4 chance with the next."

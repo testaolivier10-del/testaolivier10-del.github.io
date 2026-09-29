@@ -35,6 +35,12 @@
     { "cause": "The ventricle relaxes and its pressure falls below aortic pressure.", "effect": "Blood slips back, fills the aortic cusps and closes the valve: S2, the dicrotic notch, and the start of isovolumetric relaxation." },
     { "cause": "Ventricular pressure keeps falling until it drops below atrial pressure.", "effect": "The mitral valve opens and the ventricle fills, mostly passively, until the atria contract to top it off." }
   ],
+  "ideas": [
+    "The <b>heart sounds</b> are vibrations set off when a set of valves closes and abruptly stops moving blood. The first, S1 (\"lub\"), is closure of the mitral and tricuspid valves at the start of ventricular systole. The second, S2 (\"dub\"), is closure of the aortic and pulmonary valves at the start of ventricular relaxation.",
+    "A <b>murmur</b> is the whooshing sound of turbulent flow, where blood swirls and eddies instead of flowing in smooth layers. Most adult murmurs come from a narrowed valve or a valve that leaks.",
+    "<b>Ejection fraction</b> is the share of the end-diastolic volume that a ventricle ejects in one beat: stroke volume divided by end-diastolic volume, times 100. A normal left ventricular ejection fraction is about 50 to 70%.",
+    "A <b>pressure-volume loop</b> plots left ventricular pressure against left ventricular volume, instead of against time. Each beat traces one closed loop, counterclockwise: each side is a phase, the two vertical sides are the isovolumetric phases (volume unchanged), and the width is the stroke volume."
+  ],
   "misconception": {
     "wrong": "The heart sounds are made by the valve cusps slapping together, or by the heart muscle contracting.",
     "right": "Muscle contraction is almost silent through a stethoscope, and the thin cusps are too soft to clap. Each sound comes from moving blood being stopped abruptly as a set of valves closes, which sets the blood, cusps and chamber walls vibrating together. That is why S1 is timed exactly to atrioventricular valve closure and S2 to semilunar valve closure."

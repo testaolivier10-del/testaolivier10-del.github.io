@@ -62,6 +62,9 @@
       "effect": "The broad T wave appears, and the trace returns to baseline until the next P wave."
     }
   ],
+  "ideas": [
+    "<b>Tachycardia</b> (tachy- = fast, cardi- = heart, -ia = condition) is a resting heart rate above 100 beats per minute. In sinus tachycardia every beat still starts in the SA node, which is simply firing faster, as it normally does during exercise, fear or blood loss."
+  ],
   "misconception": {
     "wrong": "An ECG shows how well the heart is pumping.",
     "right": "An ECG records only the heart's electrical activity. Contraction usually follows each electrical event, but the ECG cannot show it. A patient can have organized P waves, QRS complexes and T waves on the monitor and still have no pulse, because the muscle is not pumping effectively. To check pumping, you feel for a pulse."

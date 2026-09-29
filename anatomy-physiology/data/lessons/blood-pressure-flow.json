@@ -31,6 +31,13 @@
     { "cause": "The pressure difference across the bed is set by arterial and venous pressure, which have not changed.", "effect": "By F = ΔP / R, blood flow through the muscle rises; half the resistance means twice the flow." },
     { "cause": "Less pressure is used up across the wider arterioles.", "effect": "More of the arterial pressure reaches the capillaries of that muscle, and because the muscle's bed is in parallel with every other organ, total peripheral resistance falls only slightly." }
   ],
+  "ideas": [
+    "<b>Systolic pressure</b> is the peak arterial pressure, reached while the left ventricle ejects blood; in a healthy young adult at rest it is usually under 120 mm Hg. <b>Diastolic pressure</b> is the lowest point, reached just before the next ejection, usually under 80 mm Hg.",
+    "<b>Pulse pressure</b> is the difference between the two numbers, systolic minus diastolic. It is the size of the pressure swing you feel as a pulse.",
+    "<b>Mean arterial pressure</b> (MAP) is the average pressure in your arteries over the whole cardiac cycle, and it is the pressure that matters for flow. A usual estimate is the diastolic pressure plus one-third of the pulse pressure.",
+    "<b>Cross-sectional area</b> is the area of the opening that blood flows through. Velocity equals flow divided by total cross-sectional area, so blood slows where the total area is larger: in the capillaries, whose combined area is roughly a thousand times that of the aorta.",
+    "A <b>sphygmomanometer</b> (sphygmo- = pulse, mano- = thin, -meter = measure) is an inflatable cuff joined to a pressure gauge. With a stethoscope over the brachial artery, the first tapping sound, a <b>Korotkoff sound</b>, marks the systolic pressure."
+  ],
   "misconception": {
     "wrong": "Blood moves slowest in the capillaries because each capillary is so narrow that it holds the blood back.",
     "right": "Velocity depends on total cross-sectional area, not on the width of one vessel. The same total flow passes through all the capillaries together as through the aorta, but billions of capillaries side by side have about a thousand times the aorta's cross-sectional area. Velocity = flow ÷ area, so blood slows about a thousandfold, then speeds up again as veins merge."

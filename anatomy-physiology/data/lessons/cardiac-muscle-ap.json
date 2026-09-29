@@ -66,6 +66,9 @@
       "effect": "No new action potential can start until the cell is already relaxing, so contractions cannot sum into tetanus."
     }
   ],
+  "ideas": [
+    "<b>Calcium-induced calcium release</b> (CICR) is the process by which calcium entering a cardiac cell through L-type calcium channels during the plateau binds calcium release channels on the sarcoplasmic reticulum and opens them. The sarcoplasmic reticulum then releases a much larger amount of calcium."
+  ],
   "misconception": {
     "wrong": "Heart muscle contracts using calcium that comes in from outside the cell, while skeletal muscle uses calcium from the sarcoplasmic reticulum.",
     "right": "Both use mostly calcium from the sarcoplasmic reticulum. In a human ventricle only about a quarter of the calcium that activates contraction comes in through L-type channels. Its main job is to act as a trigger: it opens the SR's release channels, which supply the rest. That is calcium-induced calcium release. The outside calcium is still essential, because without the trigger the SR does not release."

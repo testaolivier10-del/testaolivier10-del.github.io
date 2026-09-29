@@ -35,6 +35,16 @@
     { "cause": "The left ventricle pumps that oxygen-rich blood into the ascending aorta.", "effect": "The coronary arteries and the arteries to the head and arms, the aorta's first branches, receive the best-oxygenated blood." },
     { "cause": "The lungs resist flow and the low-resistance placenta keeps aortic pressure low, so pulmonary trunk pressure is slightly above aortic pressure; low oxygen and prostaglandins keep the ductus arteriosus open.", "effect": "Most of the right ventricle's output passes through the ductus arteriosus into the descending aorta and returns to the placenta through the umbilical arteries." }
   ],
+  "ideas": [
+    "The <b>fetal period</b> runs from about week 10 of pregnancy to birth at about week 40. Every organ system is already present at its start, so it is mostly growth and maturation: the fetus gains about a thousandfold in weight.",
+    "<b>Teratogens</b> (terat- = monster, -gen = producing) are things outside the embryo or fetus that can cause a birth defect, such as a drug, a chemical, an infection, radiation or a condition of the mother.",
+    "Every embryo has a pair of <b>mesonephric ducts</b> (meso- = middle, nephr- = kidney) and a pair of paramesonephric ducts (para- = beside), which can become the uterine tubes, uterus and upper vagina. A testis's anti-Müllerian hormone makes the paramesonephric ducts break down, and its testosterone keeps the mesonephric ducts, which become the epididymis, ductus deferens, seminal vesicles and ejaculatory ducts.",
+    "<b>Patent foramen ovale</b> (patent = open) means the flap of the foramen ovale is pressed shut after birth but never seals, which happens in about a quarter of adults. A <b>septal defect</b> is a hole in the wall between the two atria or between the two ventricles.",
+    "The <b>cardiogenic area</b> (cardi- = heart, -genic = producing) is a horseshoe-shaped region of mesoderm at the head end of the embryonic disc that is committed, around day 18, to forming the heart. Its cells gather into two strands that hollow out into endocardial tubes.",
+    "The <b>truncus arteriosus</b> is the embryonic heart's outflow vessel. A spiral wall splits it into the aorta and the pulmonary trunk, which is why the two great arteries twist around each other as they leave the heart.",
+    "<b>Hemangioblasts</b> (hem- = blood, angio- = vessel, -blast = bud, germ) are mesoderm cells thought to give rise to both blood cells and vessel lining. They gather in clusters called blood islands, first in the wall of the yolk sac around day 17.",
+    "The <b>laryngotracheal bud</b> is an outpouching that grows from the front wall of the foregut in week 4, just below the pharynx. A wall of tissue grows in to separate it from the foregut, so the trachea ends up in front of the esophagus."
+  ],
   "misconception": {
     "wrong": "A fetus gets its oxygen by breathing amniotic fluid into its lungs.",
     "right": "All of the fetus's oxygen comes across the placenta. The fetal lungs receive only a small share of the blood and exchange no gas. The fetus does make breathing movements that move amniotic fluid in and out, but their job is mechanical: the stretch they and the lungs' own fluid provide is needed for the lungs to grow."

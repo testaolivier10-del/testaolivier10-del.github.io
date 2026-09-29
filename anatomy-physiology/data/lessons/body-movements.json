@@ -34,6 +34,13 @@
     { "cause": "The lower end of the radius moves around the ulna.", "effect": "The radius crosses over the ulna, which stays in place." },
     { "cause": "The hand is joined to the radius at the radiocarpal joint, so it moves with the radius.", "effect": "The palm turns to face backward: the forearm is pronated, with no movement at the wrist." }
   ],
+  "ideas": [
+    "<b>Flexion</b> (flex- = bend) decreases the angle between two bones, or bends the trunk or neck forward. Extension increases the angle again, and <b>hyperextension</b> (hyper- = beyond) is extension past anatomical position. All three are measured from anatomical position and happen in the sagittal plane.",
+    "<b>Abduction</b> (ab- = away from, duct- = lead) moves a limb away from the midline of the body, and <b>adduction</b> (ad- = toward) moves it back toward the midline. Both happen in the frontal plane. Bending the trunk or neck sideways is <b>lateral flexion</b>.",
+    "<b>Circumduction</b> (circum- = around) moves the far end of a limb in a circle while the near end stays at the joint, so the limb sweeps out a cone. It is flexion, abduction, extension and adduction done one after another. Rotation turns a bone around its own long axis: <b>medial rotation</b> turns the front of the limb toward the midline, and <b>lateral rotation</b> turns it away.",
+    "<b>Special movements</b> belong to single regions. <b>Supination</b> turns the forearm so the palm faces forward or up, and pronation turns it back or down. <b>Protraction</b> (pro- = forward, tract- = pull) moves a bone such as the jaw forward, and retraction pulls it back. <b>Elevation</b> moves a bone upward, as your shoulder blades rise in a shrug, and depression moves it down.",
+    "<b>Lateral excursion</b> slides the jaw to one side. In <b>superior rotation</b> the shoulder blade turns so its socket tips upward as you raise your arm. <b>Opposition</b> brings the tip of the thumb across the palm to touch the tip of a finger, mainly at the saddle joint at the base of the thumb."
+  ],
   "misconception": {
     "wrong": "Flexion means moving a body part forward.",
     "right": "Flexion means decreasing the angle between two bones in the sagittal plane, measured from anatomical position. At most joints that carries the part forward, but at the knee flexion carries the leg backward, toward the back of the thigh. Judge flexion by the angle, not by the direction of travel."

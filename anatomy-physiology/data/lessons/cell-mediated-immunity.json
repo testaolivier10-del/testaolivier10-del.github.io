@@ -35,6 +35,12 @@
     { "cause": "Effector cytotoxic T cells leave the node and find infected cells showing the viral peptide in MHC class I.", "effect": "They release perforin and granzymes and engage Fas, switching on the target's caspases." },
     { "cause": "Caspases take the infected cell apart from inside.", "effect": "The cell dies by apoptosis before it can release new virus, and macrophages engulf the fragments." }
   ],
+  "ideas": [
+    "A <b>helper T cell</b> is a T cell that carries <b>CD4</b>, a surface protein (CD = cluster of differentiation) that clamps onto MHC class II. Once activated it kills nothing itself. It directs B cells, cytotoxic T cells and macrophages by releasing cytokines and by touching them through surface proteins.",
+    "Helper T cells come in subsets. <b>Th1 cells</b> release interferon gamma, which arms macrophages and cytotoxic T cells against microbes living inside cells. <b>Th2 cells</b> release IL-4, IL-5 and IL-13, which call up eosinophils, raise mucus and drive the response to parasitic worms.",
+    "<b>Transplant rejection</b> is the immune destruction of a transplanted organ or tissue, driven mostly by recipient T cells that react to the donor's foreign HLA proteins (human leukocyte antigens, the human MHC proteins). Rejection within minutes, <b>hyperacute rejection</b>, is the exception: antibodies the recipient already has bind the graft's vessel lining and trigger clotting.",
+    "In <b>graft-versus-host disease</b> the attack runs the other way: mature T cells in a donor's bone marrow graft attack the recipient's skin, liver and gut."
+  ],
   "misconception": {
     "wrong": "T cells recognize a virus or bacterium directly, the way antibodies do.",
     "right": "A T cell receptor cannot bind a free microbe or a whole protein. It binds only a short peptide held in an MHC protein on another cell's surface. That is why T cells need antigen-presenting cells to be activated, why cytotoxic T cells find infected cells rather than free virus, and why a cell that stops making MHC class I becomes invisible to them."

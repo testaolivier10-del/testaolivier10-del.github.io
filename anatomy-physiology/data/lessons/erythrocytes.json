@@ -34,6 +34,14 @@
     { "cause": "Over weeks, the extra reticulocytes mature into erythrocytes.", "effect": "The red cell count and hemoglobin rise, so each liter of blood carries more oxygen." },
     { "cause": "More oxygen now reaches the kidneys.", "effect": "The stimulus is removed, EPO release falls, and red cell production slows to its resting rate: negative feedback." }
   ],
+  "ideas": [
+    "<b>Bilirubin</b> (bili- = bile, rub- = red) is a yellow-orange pigment made from the heme ring of an old red blood cell. An enzyme opens the ring, without its iron, to make green biliverdin, which is quickly converted to bilirubin. It dissolves poorly in water, so it travels in the plasma bound to albumin until the liver removes it.",
+    "<b>Transferrin</b> is a plasma protein that carries iron through the blood, to the marrow for new hemoglobin or to storage. <b>Ferritin</b> is a hollow protein shell that stores iron inside cells; a low plasma ferritin means the stores are empty.",
+    "<b>Jaundice</b> (French jaune = yellow) is a yellowing of the skin, the whites of the eyes and the mucous membranes that appears when bilirubin builds up in the blood. It becomes visible above about 2.5 to 3 mg/dL, first in the whites of the eyes.",
+    "<b>Anemia</b> (an- = without, -emia = blood condition) is a fall in the blood's ability to carry oxygen because it holds too little hemoglobin: below about 13 g/dL in men and 12 g/dL in women who are not pregnant. It comes from blood loss, too little production (iron deficiency, the most common cause) or early destruction of red cells.",
+    "<b>Sickle cell disease</b> is an inherited disease caused by a single change in the beta globin gene, which replaces one amino acid in the beta chain and produces hemoglobin S. When they give up their oxygen, HbS molecules line up into stiff fibers that bend the red cell into a rigid crescent, which jams small vessels and is destroyed after only 10 to 20 days.",
+    "<b>Polycythemia</b> (poly- = many, cyt- = cell, -emia = blood condition) is an abnormally high red cell count and hematocrit. The extra red cells make the blood thicker, which raises resistance to flow, so blood moves more slowly through small vessels and clots form more easily."
+  ],
   "misconception": {
     "wrong": "Anemia means iron deficiency.",
     "right": "Anemia means the blood holds too little hemoglobin to carry a normal load of oxygen, from any cause. Iron deficiency is the most common cause, but bleeding, a lack of vitamin B12 or folate, marrow failure, too little erythropoietin from failing kidneys, and early destruction of red cells, as in sickle cell disease, all cause anemia too. Giving iron to someone whose anemia has another cause does not help and can load the body with iron it cannot excrete."

@@ -34,6 +34,9 @@
     { "cause": "More capillaries surround each fiber.", "effect": "Oxygen's diffusion distance to the mitochondria shortens, and more oxygen reaches each fiber per minute." },
     { "cause": "More oxygen reaches fibers that now have more mitochondria.", "effect": "More ATP comes from aerobic respiration at any pace, less from glycolysis, so the runner makes less lactate and can keep going longer." }
   ],
+  "ideas": [
+    "<b>Muscular dystrophy</b> (dys- = bad, troph- = nourishment) is a group of inherited diseases in which muscle fibers progressively degenerate and are replaced by fat and connective tissue. In Duchenne muscular dystrophy, fibers lack the protein dystrophin, which anchors the fiber's cytoskeleton to the sarcolemma, so each contraction tears the sarcolemma."
+  ],
   "misconception": {
     "wrong": "Muscles grow by making new fibers, and training can turn slow-twitch fibers into fast-twitch ones (or the reverse) at will.",
     "right": "Adult skeletal muscle grows almost entirely by hypertrophy: existing fibers add myofibrils, and muscle stem cells fuse with them to add nuclei. The ratio of slow to fast fibers is largely inherited; training mostly changes what each fiber is like, such as its size, mitochondria and capillaries, and shifts fibers within the fast types."

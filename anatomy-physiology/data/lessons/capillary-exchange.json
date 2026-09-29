@@ -35,6 +35,11 @@
     { "cause": "The filtered fluid collects in the interstitial spaces.", "effect": "It drains into a separate set of thin-walled vessels that return it to the veins near the heart." },
     { "cause": "Plasma albumin falls, for example in liver disease.", "effect": "The oncotic pull shrinks, filtration outpaces drainage, and fluid collects between the cells: edema." }
   ],
+  "ideas": [
+    "The <b>Starling forces</b> are the four pressures that decide whether fluid moves out of or into a capillary: two hydrostatic pressures, which push fluid, and two colloid osmotic pressures, which pull fluid. Each exists on both sides of the capillary wall.",
+    "<b>Interstitial fluid hydrostatic pressure</b> (IFHP) is the pressure of the fluid between your cells; when positive, it pushes fluid into the capillary. <b>Interstitial fluid colloid osmotic pressure</b> (IFCOP) is the oncotic pressure of the small amount of protein in that fluid, and it pulls fluid out.",
+    "<b>Net filtration pressure</b> (NFP) is the sum of the four forces, the pressures favoring filtration minus the pressures favoring reabsorption: NFP = (CHP + IFCOP) − (BCOP + IFHP). A positive NFP means filtration, and a negative NFP means reabsorption."
+  ],
   "misconception": {
     "wrong": "Capillaries filter fluid at their arteriole end and reabsorb almost all of it at their venule end.",
     "right": "That is the classic textbook picture, and exams still expect it. Direct measurements show that in most tissues at steady state, fluid filters out along almost the whole capillary. When pressure falls low enough to start reabsorption, proteins build up in the thin layer of fluid beneath the glycocalyx and stop it within minutes. The filtered fluid returns to the blood through a separate drainage route instead. Reabsorption does happen for a while after a sudden fall in capillary pressure, such as after bleeding, and all the time in a few special beds such as those in the kidneys and intestine."

@@ -50,6 +50,10 @@
       "effect": "The next patch reaches threshold and fires its own action potential, while the patch behind is refractory: the action potential propagates forward at full size."
     }
   ],
+  "ideas": [
+    "An <b>excitable cell</b> is a cell whose membrane can produce an action potential (Latin excitare = to rouse). The main excitable cells are neurons and muscle fibers. They are excitable because their membranes hold voltage-gated sodium and potassium channels; a skin cell has a resting potential but too few of these channels.",
+    "A <b>graded potential</b> is a small, short-lived change in membrane potential whose size depends on the strength of the stimulus. It can depolarize or hyperpolarize, can add to other graded potentials, and fades within a millimeter or two as charge leaks back out through leak channels."
+  ],
   "misconception": {
     "wrong": "A stronger stimulus produces a bigger action potential.",
     "right": "Action potentials are all-or-none. Once threshold is reached, the full action potential happens, always to about the same peak. A stronger stimulus makes a bigger graded potential, and that produces action potentials more often (more per second), each one the same size. Size varies only in graded potentials."

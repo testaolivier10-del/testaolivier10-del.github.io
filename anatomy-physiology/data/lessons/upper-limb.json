@@ -34,6 +34,11 @@
     { "cause": "Blood vessels enter the scaphoid mainly at its far end.", "effect": "A break across its middle can cut the near piece off from its blood supply." },
     { "cause": "Without blood, the bone cells of the near piece die.", "effect": "The break may fail to heal, so a suspected scaphoid fracture is splinted even when the first X-ray looks normal." }
   ],
+  "ideas": [
+    "The <b>pectoral girdle</b> (pector- = chest), also called the shoulder girdle, is the pair of bones on each side that attaches the arm to the trunk: the clavicle in front and the scapula behind. It is not a full ring, and that loose build lets your shoulder move freely.",
+    "The <b>clavicle</b> (clavicula = little key), or collarbone, is an S-shaped rod at the base of your neck. It is the only bony link between the arm and the trunk, and it holds the shoulder out to the side.",
+    "The forearm has two long bones. In anatomical position the <b>radius</b> lies on the thumb side and the <b>ulna</b> (ulna = elbow) lies on the little-finger side. The ulna is the main bone of the elbow, and the hooked point you lean on at the top of it is the olecranon."
+  ],
   "misconception": {
     "wrong": "Hitting your \"funny bone\" hurts because you bruised a bone.",
     "right": "The funny bone is not a bone. A nerve runs in a groove on the back of the medial epicondyle of the humerus, at the inner back of your elbow, with only skin over it. A knock squeezes the nerve against the bone, and the tingling runs along the nerve's path to your little finger."

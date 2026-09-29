@@ -35,6 +35,9 @@
     { "cause": "The signal passes the cell bodies in the S1 dorsal root ganglion and continues along the dorsal root.", "effect": "It enters the dorsal horn of the S1 segment of the cord, where it is passed on toward the brain." },
     { "cause": "A herniated disc presses on the S1 root before it joins the plexus.", "effect": "Signals from that dermatome are blocked or distorted, so the outer foot feels numb and pain is felt along the whole path the S1 axons serve, the pattern called sciatica." }
   ],
+  "ideas": [
+    "A nerve is a bundle of axons wrapped in connective tissue. <b>Endoneurium</b> (endo- = within, neur- = nerve) wraps each axon, <b>perineurium</b> (peri- = around) wraps each bundle of axons called a fascicle, and <b>epineurium</b> (epi- = upon) is the tough outer layer around the whole nerve."
+  ],
   "misconception": {
     "wrong": "Each dorsal root supplies its dermatome alone, so cutting one dorsal root leaves a sharply bordered numb band.",
     "right": "Neighboring dermatomes overlap: each patch of skin is supplied mainly by one spinal nerve and partly by the nerves above and below. Cutting one dorsal root only reduces sensation in its dermatome. A band of complete numbness appears only when two or three neighboring roots are damaged. The sharp borders on dermatome maps are a drawing convention."

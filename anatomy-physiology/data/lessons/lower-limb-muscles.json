@@ -35,6 +35,11 @@
     { "cause": "The pressure rises high enough to stop blood flow through the capillaries.", "effect": "The muscles and nerves in the compartment are starved of oxygen, causing severe pain that worsens when those muscles are stretched." },
     { "cause": "A surgeon slits the fascia along the compartment.", "effect": "The pressure falls and blood flow returns before the muscle dies." }
   ],
+  "ideas": [
+    "The <b>adductor longus</b> is the most anterior of the medial thigh muscles. It runs from the front of the pubis to the femur and adducts the thigh. A \"groin pull\" is usually a strain of it, from a sudden sideways push-off.",
+    "The <b>gastrocnemius</b> (gastr- = belly, kneme = leg) is the two-headed bulge of the calf. It crosses the knee and the ankle, plantar flexes the foot and helps flex the knee. It shares one tendon with the soleus, the <b>calcaneal tendon</b> (Achilles tendon), which inserts on the heel bone and is the strongest tendon in the body.",
+    "The <b>deltoid site</b>, the thickest part of the deltoid about two to three finger widths below the acromion, is the usual intramuscular injection site for adult vaccines; the muscle is small, so it takes only about 1 mL. The <b>vastus lateralis site</b>, the middle third of that muscle on the outer thigh, is preferred for infants, whose gluteal and deltoid muscles are still small."
+  ],
   "misconception": {
     "wrong": "If the pulse in the foot is present, compartment syndrome is ruled out.",
     "right": "The pressure inside the main artery is far higher than the pressure that stops capillary flow in a compartment, so blood can still pulse through the artery while the muscles around it starve. A lost pulse is a late sign. Pain out of proportion to the injury and pain on passive stretch come first."

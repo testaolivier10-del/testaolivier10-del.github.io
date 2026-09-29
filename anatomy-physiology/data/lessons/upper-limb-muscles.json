@@ -35,6 +35,10 @@
     { "cause": "The triceps brachii pulls on the olecranon.", "effect": "The elbow straightens, carrying the hand toward the target." },
     { "cause": "Forearm flexors send long tendons through the carpal tunnel into the fingers.", "effect": "The fingers curl and grip." }
   ],
+  "ideas": [
+    "The <b>extensor digitorum</b> is a forearm muscle whose four tendons fan across the back of the hand into fingers 2 to 5. It extends the fingers and the wrist, and you can see its tendons stand out when you spread your fingers.",
+    "The thenar eminence (thenar = palm) is the fleshy mound at the base of the thumb. The <b>hypothenar eminence</b> (hypo- = below) is the smaller mound on the little-finger side of the palm, and its muscles move the little finger."
+  ],
   "misconception": {
     "wrong": "The rotator cuff is one muscle that rotates the arm.",
     "right": "The rotator cuff is four muscles (supraspinatus, infraspinatus, teres minor and subscapularis) whose tendons blend with the shoulder joint capsule. Their main job is holding the head of the humerus in the shallow glenoid cavity while the bigger muscles move the arm. They do rotate the arm too, but in opposite directions: the infraspinatus and teres minor laterally, the subscapularis medially."

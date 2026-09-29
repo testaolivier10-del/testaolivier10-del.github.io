@@ -35,6 +35,11 @@
     { "cause": "Bicarbonate neutralizes the acid chyme.", "effect": "Duodenal pH rises toward neutral, where pancreatic enzymes work, and enteropeptidase on the brush border converts trypsinogen to trypsin, which activates the other protein-digesting enzymes." },
     { "cause": "Bile salts coat the fat and keep churned droplets small (emulsification).", "effect": "The fat's surface area multiplies, so pancreatic lipase can digest it far faster." }
   ],
+  "ideas": [
+    "<b>Hepatocytes</b> (hepat- = liver, -cyte = cell) are the liver's main working cells, arranged in plates that radiate from a central vein. Blood from the portal triads at the lobule's corners flows inward along the sinusoids to the central vein, and hepatocytes take up nutrients, drugs and wastes from it. They secrete bile into tiny bile canaliculi, which carry it outward to the bile ducts in the portal triads.",
+    "<b>Gallstones</b> are hard lumps that form in the gallbladder, mostly from cholesterol. They form when bile carries more cholesterol than its bile salts and phospholipids can hold, or when bile sits for a long time. Many cause no symptoms; trouble starts when a stone blocks a duct.",
+    "<b>Pancreatitis</b> (-itis = inflammation) is inflammation of the pancreas. In acute pancreatitis, trypsin is activated inside the gland instead of in the duodenum, and it activates the other enzymes, which begin to digest the pancreas itself. Common causes are a gallstone blocking the pancreatic duct and heavy alcohol use."
+  ],
   "misconception": {
     "wrong": "Bile digests fat.",
     "right": "Bile has no digestive enzymes. Its bile salts emulsify fat: they coat it and keep it in tiny droplets, which multiplies the surface that pancreatic lipase can reach. Lipase does the chemical digestion. Without bile, fat digestion is slow and much fat is lost in the feces; without lipase, fat is emulsified but barely digested at all."

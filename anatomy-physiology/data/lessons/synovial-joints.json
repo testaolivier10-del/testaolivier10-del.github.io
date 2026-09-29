@@ -34,6 +34,12 @@
     { "cause": "With the ligament torn, nothing inside the knee holds the tibia back from sliding forward on the femur.", "effect": "When she pivots, the tibia shifts forward and twists, and the knee gives way." },
     { "cause": "Each episode of giving way grinds and shears the femur against the tibia.", "effect": "The menisci and articular cartilage are damaged, which raises the risk of osteoarthritis in that knee later in life." }
   ],
+  "ideas": [
+    "A <b>bursa</b> (plural bursae; bursa = purse) is a flattened sac of synovial membrane holding a thin film of synovial fluid. It sits where skin, a tendon or a muscle slides over a bone, so the layers glide instead of rubbing.",
+    "The shape of a synovial joint's two surfaces decides how the bones move. In a <b>hinge joint</b>, such as the elbow, a spool-shaped surface fits into a curved trough, so the bone swings in one plane like a door. In a <b>ball-and-socket joint</b>, such as the shoulder or hip, a round head fits a cup-shaped socket, so the bone moves in every plane and also turns.",
+    "Some joints have their own names. The <b>humeroulnar joint</b> is the elbow hinge, where the humerus meets the ulna. The <b>iliofemoral ligament</b> is the strong Y-shaped band in front of the hip joint that runs from the ilium to the femur. The <b>proximal radioulnar joint</b> is where the head of the radius turns against the ulna near the elbow.",
+    "A <b>sprain</b> is a stretch or tear of a ligament; ligaments have a poor blood supply, so they heal slowly. A <b>dislocation</b> forces a joint's bone surfaces completely out of contact. A <b>subluxation</b> (sub- = partly, luxat- = put out of place) is a partial dislocation: the surfaces still touch but are out of line."
+  ],
   "misconception": {
     "wrong": "Articular cartilage has a blood supply, so a damaged joint surface heals the way a broken bone does.",
     "right": "Articular cartilage has no blood vessels. Its chondrocytes get oxygen and nutrients from synovial fluid, which is pushed out of the cartilage when a joint is loaded and drawn back in when the load comes off. With no blood supply to bring in repair cells, damaged cartilage heals poorly, which is why cartilage injuries tend to lead to osteoarthritis."

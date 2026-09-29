@@ -35,6 +35,10 @@
     { "cause": "The head splits that ATP into ADP and phosphate.", "effect": "The released energy recocks the head, ready to bind farther along, and the cycle repeats while calcium and ATP last." },
     { "cause": "Many heads cycle over and over, each pulling thin filaments toward the M line.", "effect": "The thin filaments slide past the thick ones, the Z discs move closer, and the sarcomere shortens with no filament changing length." }
   ],
+  "ideas": [
+    "The <b>sliding filament model</b> says that during contraction the thin filaments slide past the thick filaments toward the center of the sarcomere. Neither kind of filament changes length; they simply overlap more.",
+    "<b>Rigor mortis</b> (rigor = stiffness, mortis = of death) is the stiffening of muscles after death. With no new ATP, myosin heads cannot let go of actin, so the cross-bridges stay locked. It usually appears 2 to 6 hours after death and passes over the next one to three days as the proteins break down."
+  ],
   "misconception": {
     "wrong": "When a muscle contracts, its thick and thin filaments get shorter.",
     "right": "Neither filament changes length. The thin filaments slide past the thick ones toward the center of the sarcomere, so the filaments overlap more. That is why the A band, which is the length of the thick filaments, keeps the same width during contraction, while the I bands and the H zone, the gaps between filaments of the other kind, narrow."

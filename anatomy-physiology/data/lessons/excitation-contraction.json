@@ -35,6 +35,11 @@
     { "cause": "Calcium binds troponin.", "effect": "Troponin changes shape and tropomyosin rolls off the myosin-binding sites on actin." },
     { "cause": "The binding sites are uncovered.", "effect": "Myosin heads bind actin and pull, and the sarcomeres shorten until calcium pumps return the calcium to the SR." }
   ],
+  "ideas": [
+    "The <b>muscle fiber action potential</b> starts when the end plate potential brings the sarcolemma to threshold. Voltage-gated sodium channels open and the inside swings positive; then they close and voltage-gated potassium channels open, returning the membrane to rest. It spreads over the sarcolemma and down the T tubules.",
+    "<b>Excitation-contraction coupling</b> is the sequence that links an action potential on the sarcolemma (the excitation) to the pulling of the myofilaments (the contraction). The link is calcium: the action potential makes the SR release calcium, and calcium turns on contraction.",
+    "<b>Muscle relaxation</b> is the return of a fiber to rest, and it is active. Pumps in the SR membrane use ATP to move calcium back into the SR, tropomyosin covers actin again, and the fiber returns to its resting length."
+  ],
   "misconception": {
     "wrong": "The calcium that triggers skeletal muscle contraction flows in from outside the cell.",
     "right": "In skeletal muscle, the calcium comes from the sarcoplasmic reticulum inside the fiber. The action potential in the T tubule changes the shape of the DHP receptor, which is physically linked to the ryanodine receptor and pulls it open. Voltage alone is the trigger, so a skeletal muscle fiber stimulated directly (not through its nerve) keeps contracting for a while in a bath with no calcium. Heart muscle is the one that depends on calcium entering from outside."

@@ -34,6 +34,11 @@
     { "cause": "Swelling and the broken ends stretch and tear the periosteum.", "effect": "Its dense sensory nerve endings fire, and the break is intensely painful." },
     { "cause": "Blood lost into the thigh lowers the volume circulating in the vessels.", "effect": "Heart rate rises, which is why Dev's pulse is fast before any blood is seen outside his body." }
   ],
+  "ideas": [
+    "<b>Hematopoiesis</b> (hemato- = blood, -poiesis = making), or blood cell formation, is how your body makes red blood cells, white blood cells and platelets. In an adult it happens in red bone marrow, where stem cells divide and their daughter cells differentiate step by step.",
+    "<b>Bone marrow</b> is the soft tissue inside bones. <b>Red bone marrow</b> is packed with stem cells and developing blood cells, and it makes blood cells. <b>Yellow bone marrow</b> is mostly fat and makes none. At birth nearly all marrow is red; through childhood fat fills the limb bones, and yellow marrow can turn red again after heavy blood loss.",
+    "<b>Bone markings</b> are the named bumps, ridges and pits on a bone's surface, and each name describes a shape. A <b>condyle</b> (Greek, knuckle) is a smooth rounded knob that forms part of a joint. Rough projections such as a tuberosity form where tendons and ligaments pull, and holes and channels carry vessels and nerves."
+  ],
   "misconception": {
     "wrong": "Bones are dry, dead, solid sticks, like the skeletons in a lab.",
     "right": "A lab skeleton has been cleaned of everything alive. In your body, each bone is an organ: its shaft is a hollow tube, its cavity holds marrow that makes blood cells or stores fat, a membrane full of nerves and vessels wraps it, and a nutrient artery feeds it. That is why a broken bone bleeds heavily and hurts, and why bone can grow and repair itself."

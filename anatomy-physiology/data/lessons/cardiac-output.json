@@ -34,6 +34,12 @@
     { "cause": "The stronger contraction ejects more of the blood in the ventricle.", "effect": "Stroke volume rises: this is the Frank–Starling mechanism." },
     { "cause": "Stroke volume has risen while heart rate is unchanged.", "effect": "Cardiac output, HR × SV, rises, and the extra blood reaches the other ventricle, which fills more and matches it within a few beats." }
   ],
+  "ideas": [
+    "<b>Contractility</b>, also called inotropy (ino- = fiber, trop- = turning or influencing), is the strength of contraction at any given preload. It depends on how much calcium reaches the cross-bridges, not on stretch, and sympathetic stimulation raises it.",
+    "<b>Afterload</b> (after- = coming after the filling) is the pressure the ventricle must overcome to eject blood. For the left ventricle it is set mainly by aortic pressure, and for the right ventricle by pressure in the pulmonary trunk.",
+    "The <b>cardioaccelerator center</b> is a part of the cardiovascular center, a network of neurons in the medulla oblongata. It sends signals down the spinal cord to sympathetic neurons whose cardiac accelerator nerves reach the SA node, the AV node and the ventricular muscle.",
+    "<b>Cardiac reserve</b> is the difference between your highest possible cardiac output and your cardiac output at rest. It measures how much extra blood your heart can deliver when you need it."
+  ],
   "misconception": {
     "wrong": "A faster heart rate always increases cardiac output.",
     "right": "Cardiac output is heart rate times stroke volume, and faster rates shorten diastole most. At very high rates the ventricles do not have time to fill, so stroke volume falls further than heart rate rises. A heart beating 220 times a minute can pump less than one beating 180 times a minute."

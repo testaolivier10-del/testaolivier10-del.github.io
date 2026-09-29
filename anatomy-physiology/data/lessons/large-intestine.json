@@ -35,6 +35,12 @@
     { "cause": "You choose to relax the external anal sphincter and add a Valsalva's maneuver.", "effect": "Pressure in the abdomen rises and feces pass out. If instead you tighten the external sphincter, the rectum relaxes and the urge fades." },
     { "cause": "Feces held in the rectum stay in contact with the lining.", "effect": "More water is absorbed, so delaying repeatedly makes stools harder." }
   ],
+  "ideas": [
+    "The <b>teniae coli</b> (taenia = ribbon, coli = of the colon) are three ribbons of longitudinal muscle in the colon wall. They are shorter than the wall and keep steady tone, so they gather it into pouches called <b>haustra</b>. In a haustral contraction, a filled haustrum stretches and its wall squeezes the contents into the next pouch.",
+    "Your <b>gut microbiota</b> (micro- = small, bio- = life), also called gut bacteria, is a community of trillions of bacteria, mostly in the large intestine. They ferment fiber that you cannot digest and make vitamin K and several other vitamins, and they crowd out invaders by using up space and nutrients. Antibiotics that thin them can let a resistant species overgrow.",
+    "<b>Diarrhea</b> (dia- = through, -rrhea = flow) is passing three or more loose or watery stools a day. It follows when more fluid reaches the colon than it can absorb, at most about 4 to 5 L a day, or when contents move through too fast. Stool water carries sodium, potassium and bicarbonate, so these are lost too.",
+    "<b>Constipation</b> (con- = together, stipare = to pack) is passing hard stools, usually fewer than three a week or with straining. When contents move slowly, the colon absorbs more water. Fiber, which you cannot digest, holds water in the stool and adds bulk that stretches the colon wall and sets off stronger contractions."
+  ],
   "misconception": {
     "wrong": "The colon absorbs most of the water that passes through the gut.",
     "right": "About 9 L a day enter the gut from food, drink and secretions. The small intestine absorbs about 7 to 8 L of it. Only about 1.5 L reaches the colon, which absorbs about 90% of that. The colon's share is small, but it is the last chance, so any change in it shows up in the stool."

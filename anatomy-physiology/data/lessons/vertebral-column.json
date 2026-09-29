@@ -34,6 +34,11 @@
     { "cause": "The posterior longitudinal ligament covers only the midline of the back of the disc.", "effect": "The bulge usually goes backward and to one side, into the vertebral canal just inside the intervertebral foramen." },
     { "cause": "The bulge presses on a nerve running down the canal toward its exit gap. In the lower back, this is usually the nerve that leaves one level lower.", "effect": "The squeezed nerve causes pain, tingling or weakness along the area it serves, often down one leg." }
   ],
+  "ideas": [
+    "The vertebral column has regions named for where they lie: seven <b>cervical vertebrae</b> (cervic- = neck), C1 to C7, then 12 thoracic and 5 lumbar vertebrae, the sacrum and the coccyx. Only cervical vertebrae have a hole in each transverse process, the transverse foramen. Thoracic vertebrae have costal facets (cost- = rib) where the ribs meet them, and lumbar vertebrae, which carry the most weight, have the largest bodies.",
+    "The <b>atlas</b> (C1), named for the Greek giant who held up the heavens, is a ring of bone that holds up the skull; when you nod \"yes\", the skull rocks on it. The <b>axis</b> (C2) has a tooth-shaped peg, the dens (dens = tooth), that rises into the front of the atlas's ring. When you shake your head \"no\", the atlas and skull turn around the dens.",
+    "Your spine bows in four curves. The thoracic and sacrococcygeal curves bow backward; they are the <b>primary curves</b>, kept from the C-shaped spine of the fetus. The <b>cervical curve</b> and the <b>lumbar curve</b> bow forward; they are secondary curves that form after birth, the cervical as a baby lifts its head and the lumbar as a child stands and walks."
+  ],
   "misconception": {
     "wrong": "A \"slipped disc\" is a disc that has slid out of place from between the vertebrae.",
     "right": "Discs do not slip. Each disc is firmly attached to the vertebral bodies above and below it. In a herniated disc, the tough outer ring (the anulus fibrosus) tears, and some of the soft core (the nucleus pulposus) bulges out through the tear. The rest of the disc stays where it is."

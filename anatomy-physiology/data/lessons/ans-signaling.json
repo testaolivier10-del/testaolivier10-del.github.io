@@ -58,6 +58,11 @@
       "effect": "Further release is turned down and the signal ends within about a second, unless circulating epinephrine keeps the receptor proteins active."
     }
   ],
+  "ideas": [
+    "<b>Muscarinic receptor proteins</b> bind acetylcholine on the targets of parasympathetic postganglionic neurons and on eccrine sweat glands. Each is a G protein-coupled receptor protein, so signaling is slower and lasts longer than at a nicotinic receptor protein, and it can excite or inhibit depending on the subtype.",
+    "An <b>alpha-1 receptor</b> protein is an adrenergic receptor protein that binds norepinephrine and epinephrine and raises calcium inside smooth muscle cells, so the muscle contracts and skin vessels narrow. A beta-2 receptor protein raises cyclic AMP and relaxes smooth muscle, widening the airways and skeletal muscle vessels; epinephrine binds it far better than norepinephrine does.",
+    "<b>Atropine</b> is a muscarinic antagonist: it blocks acetylcholine at muscarinic but not nicotinic receptor proteins, giving a faster heart rate, wide pupils, dry mouth and a slowed gut. A <b>beta blocker</b> such as propranolol blocks beta receptor proteins, so the heart beats more slowly and less forcefully and blood pressure falls."
+  ],
   "misconception": {
     "wrong": "The sympathetic division always stimulates organs and the parasympathetic division always inhibits them.",
     "right": "Each division excites some organs and inhibits others, because the response is set by the receptor protein on the target, not by the division. Parasympathetic acetylcholine on muscarinic receptor proteins speeds up the gut and narrows the airways. Sympathetic epinephrine on beta-2 receptor proteins relaxes airway smooth muscle, and norepinephrine on alpha-1 receptor proteins contracts vessel smooth muscle."

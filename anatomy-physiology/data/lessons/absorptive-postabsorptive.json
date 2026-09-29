@@ -32,6 +32,12 @@
     { "cause": "The brain takes up ketone bodies in proportion to their blood level.", "effect": "Ketone bodies supply more and more of its energy, and its glucose need falls from about 120 g to about 40 g a day." },
     { "cause": "Less glucose is needed.", "effect": "Less muscle protein has to be broken down to make it, so protein is spared and survival stretches to weeks." }
   ],
+  "ideas": [
+    "The <b>absorptive state</b> (also called the fed state) is the period, about four hours after a meal, when nutrients are being absorbed from the gut. Insulin is high and glucagon low, the gut supplies your blood glucose, and your liver takes up glucose and builds glycogen and fat.",
+    "The <b>postabsorptive state</b>, also called the <b>fasting state</b>, is the period when the gut no longer delivers nutrients: late morning, late afternoon and overnight. Insulin is low and glucagon high, your liver supplies blood glucose by glycogenolysis and then gluconeogenesis, and fat cells release fatty acids.",
+    "<b>Anabolic hormones</b> (ana- = up, bol- = throw) promote building and storage, and insulin is the main one. Catabolic hormones (cata- = down) promote the breakdown of stores and release fuel into the blood: glucagon, epinephrine and cortisol.",
+    "<b>Starvation</b> is severe, prolonged lack of food energy, in which the body lives on its own tissues. It follows the fasting sequence until fat stores run low; then protein breakdown rises sharply and muscle wastes, including the heart. Death usually comes from heart failure, abnormal heart rhythms or infection."
+  ],
   "misconception": {
     "wrong": "As soon as you skip meals, your body starts burning mostly muscle for energy.",
     "right": "Between meals and over a day or two without food, fat supplies most of your energy: most tissues switch to fatty acids and keep glucose for the brain. Some muscle protein is broken down in the first days to make glucose, but as ketone bodies rise, the brain needs less glucose and protein breakdown falls to a fraction of its early rate. Muscle becomes the main fuel only in late starvation, when fat stores are nearly gone."

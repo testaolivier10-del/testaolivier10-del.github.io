@@ -58,6 +58,12 @@
       "effect": "At a therapeutic dose, contractions grow stronger; at a toxic dose, the calcium overload triggers irregular heart rhythms."
     }
   ],
+  "ideas": [
+    "<b>Active transport</b> (active = acting, doing work) is movement of a substance across a membrane that requires the cell to supply energy, usually from ATP. Most of it moves a substance against its gradient, from low concentration to high, which never happens on its own.",
+    "In <b>primary active transport</b>, the carrier itself splits ATP and uses the released energy to move a substance against its gradient. A carrier that does this is called a pump, and because it splits ATP it is also an enzyme (an ATPase).",
+    "In <b>secondary active transport</b>, or cotransport, the carrier splits no ATP. It lets sodium flow in down the gradient the sodium–potassium pump built and uses that energy to move a second substance against its gradient. A <b>symporter</b> (sym- = together, port = carry) moves both the same way, as with sodium and glucose; an <b>antiporter</b> (anti- = against) moves them opposite ways, as with sodium in and calcium out.",
+    "In <b>endocytosis</b> (endo- = within, cyto- = cell) a cell folds a patch of plasma membrane around outside material and pinches it off as a vesicle inside. In <b>receptor-mediated endocytosis</b>, membrane proteins bind one specific substance first, so that substance is taken in. In <b>exocytosis</b> (exo- = outside) a vesicle fuses with the plasma membrane and releases its contents outside. Both spend ATP."
+  ],
   "misconception": {
     "wrong": "Secondary active transport does not depend on ATP, because the symporter or antiporter never splits ATP.",
     "right": "The carrier itself splits no ATP, but the sodium gradient it spends was built by the sodium–potassium pump, which splits ATP with every cycle. Block the pump, or let a cell run out of ATP, and sodium leaks in until the gradient shrinks. Symporters and antiporters then slow down with it. Secondary active transport is powered by ATP one step removed."

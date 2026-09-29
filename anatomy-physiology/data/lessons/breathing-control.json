@@ -58,6 +58,12 @@
       "effect": "More carbon dioxide is breathed out, so arterial PCO2 and pH return toward normal and the chemoreceptors' drive fades: negative feedback."
     }
   ],
+  "ideas": [
+    "Lung stretch receptors are sensory receptors in the smooth muscle of your airways that fire as the lungs inflate. Their signals travel up the vagus nerves and inhibit inspiration: the <b>Hering–Breuer reflex</b> (inflation reflex). It is weak at rest and becomes active when tidal volume reaches about three times normal.",
+    "<b>Irritant receptors</b> are sensory receptors among the cells lining your airways. Dust, smoke, cold air or chemical fumes stimulate them, and signals in the vagus nerves cause coughing, airway narrowing and rapid, shallow breathing.",
+    "<b>Hyperventilation</b> (hyper- = over, above) is breathing more than your carbon dioxide production requires, so arterial PCO2 falls below 35 mm Hg. <b>Hypoventilation</b> (hypo- = under) is breathing less than it requires, so arterial PCO2 rises above 45 mm Hg. What counts is alveolar ventilation, not breathing rate: rapid, shallow breathing can be hypoventilation.",
+    "<b>Hyperpnea</b> (hyper- = over, -pnea = breathing) is increased breathing that matches increased metabolism, as in exercise, so blood gases stay normal. <b>Acclimatization</b> (ad- = to, clima- = climate) is the set of changes over days and weeks in low oxygen: your kidneys excrete bicarbonate, so blood pH returns toward normal and ventilation rises further, and they release more erythropoietin, so red blood cell count rises."
+  ],
   "misconception": {
     "wrong": "You breathe mainly in response to low oxygen.",
     "right": "Minute to minute, breathing is set mainly by carbon dioxide, through the hydrogen ions it forms. A rise in arterial PCO2 of a few mm Hg sharply increases ventilation, while arterial PO2 can fall from about 95 to 60 mm Hg with little effect, because the carotid bodies fire only weakly until PO2 drops below about 60; meanwhile hemoglobin stays nearly saturated on the flat part of the dissociation curve, so little oxygen is lost. Only the peripheral chemoreceptors sense low oxygen. That is why hyperventilating before a dive is dangerous: it removes the carbon dioxide signal, and oxygen can fall to the point of blacking out before the urge to breathe returns."

@@ -43,6 +43,15 @@
       "effect": "A broken bone usually heals in weeks, while torn cartilage may need surgery."
     }
   ],
+  "ideas": [
+    "<b>Connective tissue</b> has relatively few cells scattered through a large amount of extracellular matrix (extra- = outside), the nonliving material the cells make and release around themselves. The matrix has two parts, a watery gel called ground substance and protein fibers, and it gives each connective tissue its properties.",
+    "<b>Collagen fibers</b> (kolla = glue, -gen = producing) are thick, white ropes of your most abundant protein: flexible but barely stretchy, and very strong when pulled. Elastic fibers stretch and snap back, and reticular fibers form delicate nets.",
+    "<b>Fibroblasts</b> (fibro- = fiber, -blast = builder) are the most common cells in connective tissue proper, and they make the fibers and ground substance. <b>Macrophages</b> (macro- = large, phag- = eat) are large cells that engulf bacteria, dead cells and debris by phagocytosis.",
+    "<b>Loose connective tissue</b> has few, loosely woven fibers and plenty of ground substance. It has three types: areolar tissue, the packing under most epithelia; adipose tissue, packed with <b>adipocytes</b> (adip- = fat) that each store a droplet of triglyceride; and reticular tissue, a net of reticular fibers that supports soft organs.",
+    "<b>Dense connective tissue</b> is packed with thick collagen fibers and has little ground substance. In <b>dense regular</b> tissue the bundles run in parallel, so it is strong along one line; it forms <b>tendons</b> (muscle to bone), <b>ligaments</b> (bone to bone) and <b>aponeuroses</b>, broad flat sheets of tendon. In <b>dense irregular</b> tissue they run in many directions, like felt, resisting pull from any side, as in your dermis.",
+    "<b>Cartilage</b> is a firm, avascular matrix made by <b>chondrocytes</b> (chondr- = cartilage). <b>Hyaline cartilage</b> (hyalos = glass), the most common, caps bone ends at joints with a smooth surface. <b>Fibrocartilage</b> mixes cartilage with thick collagen bundles, so it cushions and also resists pulling, as in intervertebral discs and knee menisci. <b>Elastic cartilage</b> holds many elastic fibers, so it bends and snaps back, as in your ear flap.",
+    "<b>Mesenchyme</b> (mes- = middle, -enchyme = poured-in tissue) is loose embryonic connective tissue: star-shaped stem cells in a watery ground substance with few fibers. As mesenchymal cells divide and differentiate, they become fibroblasts, fat cells, chondrocytes and the cells that build bone."
+  ],
   "misconception": {
     "wrong": "Blood can't be a connective tissue, because it is a liquid with no fibers.",
     "right": "Connective tissue is defined by cells scattered in a large amount of extracellular matrix. Blood fits. Plasma is its liquid matrix, and its fiber-forming protein is there all along in dissolved form; it turns into threads when a blood clot forms."

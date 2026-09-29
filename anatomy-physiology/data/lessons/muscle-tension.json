@@ -34,6 +34,11 @@
     { "cause": "Calcium in the cytosol stays high between action potentials.", "effect": "Cross-bridges keep cycling, twitches sum toward tetanus, and each fiber's tension rises several-fold." },
     { "cause": "Tension summed across all active fibers rises until it matches the weight of the bag.", "effect": "Until then the muscle contracts isometrically; once tension exceeds the load, the muscle shortens and the bag rises (a concentric contraction)." }
   ],
+  "ideas": [
+    "<b>Recruitment</b> (recruit = to enlist) is increasing a muscle's force by activating more motor units, small ones first and larger ones as force rises. One action potential gives each fiber an all-or-none twitch, so your nervous system grades force by recruitment and by firing rate, not by a stronger signal to each fiber.",
+    "<b>Muscle tone</b> (ton- = tension) is the slight tension and resistance to stretch that a relaxed skeletal muscle keeps at rest. In a fully relaxed muscle much of it is passive stiffness; some motor units keep firing in postural muscles and in muscles being stretched.",
+    "The <b>length-tension relationship</b> links a muscle's force to its length before it contracts. At its <b>optimal length</b>, near the sarcomere's resting length, filament overlap lets the most cross-bridges form and tension is greatest. Stretched, the filaments overlap less; much shorter, the thin filaments crowd each other and the thick filaments butt against the Z discs. Either way tension falls."
+  ],
   "misconception": {
     "wrong": "To lift something heavier, each muscle fiber contracts harder, and a contracting muscle always shortens.",
     "right": "A fiber's twitch is all-or-none. Your nervous system raises force by recruiting more motor units and firing them faster, so twitches sum toward tetanus. And contraction means cross-bridges are pulling, not that the muscle shortens: a muscle can contract while holding still (isometric) or while being lengthened (eccentric), as when you lower yourself into a chair."

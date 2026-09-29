@@ -32,6 +32,14 @@
     { "cause": "The small amount of thrombin activates the platelets in the plug and factors V, VIII and XI.", "effect": "The activated platelet surface hosts IXa–VIIIa and Xa–Va, which make a burst of thrombin (amplification, then propagation)." },
     { "cause": "The burst of thrombin cuts fibrinogen into fibrin and activates factor XIII.", "effect": "Cross-linked fibrin threads bind the plug into a firm clot that seals the tear." }
   ],
+  "ideas": [
+    "<b>Hemostasis</b> (hemo- = blood, -stasis = standing still) is the stopping of bleeding from a damaged vessel. It is not the same as clotting: it has three overlapping steps, vascular spasm, the platelet plug and coagulation, and clotting is only the third.",
+    "<b>Fibrinolysis</b> (fibrin + -lysis = breaking down) is the breakdown of fibrin once the wall is repaired. Plasminogen and tissue plasminogen activator both bind fibrin in the clot, and there tPA converts plasminogen into the enzyme plasmin, which cuts the fibrin into fragments so the clot dissolves over days.",
+    "Two drugs slow coagulation. <b>Heparin</b> binds antithrombin and makes it inactivate thrombin and factor Xa about a thousand times faster, working within minutes. <b>Warfarin</b> blocks the liver enzyme that recycles vitamin K, so clotting factors II, VII, IX and X are made in a non-working form, and it takes 3 to 5 days to act.",
+    "<b>Hemophilia</b> (-philia = tendency) is an inherited lack of a clotting factor, factor VIII in hemophilia A and factor IX in hemophilia B. The genes lie on the X chromosome, so males with one faulty copy have the disease. Without those factors the burst of thrombin on platelets cannot form.",
+    "A <b>thrombus</b> (Greek = clot) is a clot that forms inside an unbroken vessel and stays attached to its wall; in an artery it can block flow to the tissue beyond. A piece that breaks off and travels in the blood is an embolus, and the blockage where it lodges is an embolism.",
+    "<b>Thrombocytopenia</b> (-penia = shortage) is a platelet count below about 150,000 per microliter. Too few platelets cause bleeding from small vessels in the skin and mucous membranes, such as pinpoint red spots and bleeding gums, while a clotting factor problem causes deep bleeding into joints and muscles."
+  ],
   "misconception": {
     "wrong": "In the body, the intrinsic and extrinsic pathways are two separate routes, and either one alone can make a clot.",
     "right": "The two pathways describe what happens in test tubes, and they are still how the PT and aPTT are read. In the body, clotting starts when tissue factor is exposed, makes a little thrombin, and then depends on factors VIII and IX to make the burst of thrombin on activated platelets. That is why people with hemophilia bleed even though tissue factor and factor VII work normally, and why people who lack factor XII do not bleed abnormally."

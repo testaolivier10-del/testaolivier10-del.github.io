@@ -35,6 +35,11 @@
     { "cause": "Blood passes through capillaries whose wall is a single layer of endothelium.", "effect": "Gases, nutrients and wastes cross the thin wall; continuous, fenestrated and sinusoidal capillaries let through progressively larger substances." },
     { "cause": "Blood enters thin-walled, compliant veins at low pressure.", "effect": "Veins hold most of the blood volume, and the skeletal muscle pump, the respiratory pump and venoconstriction push it back to the heart through one-way valves." }
   ],
+  "ideas": [
+    "A <b>venule</b> (-ule = small) is the smallest kind of vein. Venules drain the capillaries and merge into veins, which carry blood back to the heart at low pressure. Many limb veins have <b>venous valves</b>, paired flaps that let blood flow toward the heart and close when it starts to flow backward.",
+    "At rest, well over half of your blood is in your veins and venules, which can hold large, changing volumes. This blood is the <b>venous reservoir</b>: when sympathetic nerves make the veins constrict slightly, their capacity shrinks and blood is pushed toward the heart.",
+    "<b>Varicose veins</b> (varix = dilated vein) are swollen, lengthened, twisted veins. They develop when venous valves fail, so blood leaks back and pools below, raising the pressure that stretches the wall."
+  ],
   "misconception": {
     "wrong": "Veins carry blood back to the heart at high pressure, just like arteries in reverse, and their valves are pumps.",
     "right": "By the time blood reaches the veins, most of its pressure has been spent in the arterioles and capillaries: venules are at about 15 mm Hg and the right atrium near 0. Venous valves are passive one-way flaps that only stop backflow. What actually moves blood up your legs is the squeeze of your skeletal muscles and the pressure changes of breathing, with the valves making sure the movement goes only one way."

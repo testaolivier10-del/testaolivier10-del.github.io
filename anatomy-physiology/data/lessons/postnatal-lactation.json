@@ -35,6 +35,11 @@
     { "cause": "Left atrial pressure exceeds right, and aortic pressure exceeds pulmonary pressure.", "effect": "The foramen ovale is pressed shut, and flow through the ductus arteriosus reverses." },
     { "cause": "Blood oxygen rises and prostaglandin E2 falls.", "effect": "The ductus arteriosus constricts within days and later becomes the ligamentum arteriosum, leaving the two circuits in series." }
   ],
+  "ideas": [
+    "<b>Respiratory distress syndrome</b> is trouble breathing in a preterm newborn caused by a shortage of surfactant, which normally keeps the lungs open. Signs include fast breathing, grunting and a bluish color.",
+    "The <b>Apgar score</b> rates five signs of how a newborn is doing (color, heart rate, response to stimulation, muscle tone and breathing) at 1 and 5 minutes after birth. Each scores 2 if fully normal, 0 if absent (for color, blue or pale all over) and 1 if partial: body pink but hands and feet blue, heart rate below 100, only a grimace, some limb bending, or slow, irregular breathing.",
+    "<b>Lactation</b> (lact- = milk) is the making and release of milk by the mammary glands: prolactin makes milk and oxytocin moves it out. In the <b>milk ejection reflex</b>, suckling sends signals to the hypothalamus, oxytocin is released and myoepithelial cells squeeze milk toward the nipple. The first milk, <b>colostrum</b>, flows in small amounts for two to four days."
+  ],
   "misconception": {
     "wrong": "Prolactin makes milk flow out of the breast when the baby suckles.",
     "right": "Two hormones do two jobs. Prolactin, released when suckling lowers dopamine, makes the alveolar cells produce milk for the next feed. Oxytocin, released through the milk ejection reflex, contracts the myoepithelial cells and squeezes out the milk already made, within a minute. A mother can have full breasts yet no flow if stress blocks oxytocin, and a drug that acts like dopamine stops production without touching ejection."

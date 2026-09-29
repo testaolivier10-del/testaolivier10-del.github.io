@@ -32,6 +32,12 @@
     { "cause": "Plasma creatinine keeps rising until GFR × plasma creatinine again equals production.", "effect": "At the new steady state, half the GFR gives double the plasma creatinine, which is how labs estimate GFR." },
     { "cause": "As GFR falls further, the kidneys also fail to excrete potassium, acid and water and to make EPO and calcitriol.", "effect": "Hyperkalemia, acidosis, fluid overload, anemia, bone disease and uremia follow, until dialysis or a transplant takes over." }
   ],
+  "ideas": [
+    "A <b>urinalysis</b> (urine + analysis) is the standard set of urine tests: looking at color and clarity, a dipstick whose reagent pads change color for specific gravity, pH, protein, glucose, ketones, blood and more, and a microscope check of a spun-down sample. The <b>specific gravity</b> of urine is its density compared with pure water (1.000), usually about 1.005 to 1.030; higher means more concentrated.",
+    "<b>Pressure natriuresis</b> (natri- = sodium, -uresis = passing in urine) is the extra sodium a kidney excretes when the arterial pressure reaching it rises. The proximal tubule reabsorbs less sodium, so more sodium and the water it holds leave in the urine; the water is called pressure diuresis. Blood volume falls, and so does pressure.",
+    "<b>Endothelin</b> (endo- = within, thel- = lining) is a peptide made by endothelial cells and one of the strongest vasoconstrictors known. In the kidney it constricts both arterioles, lowering renal blood flow and GFR, and it rises in many kinds of kidney injury. In the collecting duct it has the opposite, sodium-losing effect.",
+    "<b>Kidney stones</b> (renal calculi; calculus = pebble) form when a solute in urine becomes so concentrated that it crystallizes. About three quarters are calcium stones, mostly calcium oxalate. A stone that moves into a ureter blocks it, and the ureter's smooth muscle contracts hard against it, causing severe, wave-like flank pain."
+  ],
   "misconception": {
     "wrong": "A creatinine that is only a little above normal means the kidneys are only a little damaged.",
     "right": "Plasma creatinine and GFR are inversely related: halving GFR doubles creatinine. Going from 1.0 to 1.5 mg/dL means GFR has fallen by about a third, and going from 1.0 to 2.0 means half the filtering capacity is gone. Early kidney disease often hides behind a creatinine that still looks nearly normal, which is why labs report an estimated GFR and why doctors check urine for albumin."

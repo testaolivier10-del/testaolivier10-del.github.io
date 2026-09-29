@@ -35,6 +35,12 @@
     { "cause": "The hairpin vasa recta gain solute on the way down and give it back on the way up.", "effect": "Blood flow carries off reabsorbed water without washing the gradient away." },
     { "cause": "When ADH is high, principal cells insert aquaporins into their apical membranes.", "effect": "Water leaves the collecting duct into the salty medulla, and the urine becomes as concentrated as the medulla, up to about 1,200 mOsm/L." }
   ],
+  "ideas": [
+    "<b>The medullary osmotic gradient</b> is the steady rise in osmolarity of the interstitial fluid from about 300 mOsm/L at the cortex to about 1,200 mOsm/L at the tip of the papilla. NaCl pumped out of the ascending limbs makes up most of it in the outer medulla, and urea makes up about half of it in the inner medulla.",
+    "<b>Urea recycling</b> adds to the gradient. The distal tubule and cortical collecting duct are nearly impermeable to urea, so as ADH lets water out, urea left inside becomes concentrated. The inner medullary collecting duct has urea carriers, which ADH increases, so urea diffuses out into the inner medulla and supplies about half its osmolarity.",
+    "A <b>diuretic</b> (dia- = through, ur- = urine) is anything that increases urine output. Most block sodium reabsorption at one segment, which lowers blood volume. A <b>loop diuretic</b>, such as furosemide, blocks NKCC2 in the thick ascending limb, which reabsorbs about a quarter of filtered sodium, so the medullary gradient fades and urine cannot be concentrated.",
+    "Loop and thiazide diuretics both cause potassium loss. They send more sodium and fluid on to the principal cells of the collecting duct, which take in more sodium and secrete more potassium, and the faster flow carries that potassium away."
+  ],
   "misconception": {
     "wrong": "The kidneys concentrate urine by pumping water out of it.",
     "right": "No part of the kidney pumps water. Water only ever moves by osmosis. What the kidney pumps is salt: the thick ascending limb builds a salty medulla, and ADH then opens the collecting duct so water can flow out into it passively. That is why urine can never be more concentrated than the deepest medulla, and why a loop diuretic, which stops the salt pumping, leaves the kidney unable to concentrate urine at all."

@@ -35,6 +35,10 @@
     { "cause": "The lower motor neuron's action potential travels out through the ventral root and a spinal nerve.", "effect": "It releases acetylcholine at the neuromuscular junction, and the muscle fibers of its motor unit on the right side of the body contract." },
     { "cause": "While the movement runs, the cerebellum compares the command with proprioceptor signals, and the basal nuclei keep competing movements braked.", "effect": "Corrections through the thalamus to the motor cortex make the movement accurate and smooth." }
   ],
+  "ideas": [
+    "<b>Flaccidity</b> (flaccid = floppy) is a fall in muscle tone that follows lower motor neuron damage: the steady low-level firing that keeps a muscle firm no longer reaches it, so the limb is limp.",
+    "When the outer edge of the sole is stroked (the plantar reflex), a healthy adult's toes curl down. In the <b>Babinski sign</b> the big toe extends upward instead; in an adult it means damage somewhere along the corticospinal tract, but in an infant under about 1 to 2 years it is normal, because the corticospinal axons are not yet fully myelinated."
+  ],
   "misconception": {
     "wrong": "Any damage to the motor system makes muscles weak and floppy.",
     "right": "Only lower motor neuron damage makes a limb floppy for good, because the final common path to the muscle is gone. Upper motor neuron damage leaves the lower motor neurons and their spinal circuits intact but frees them from the brain's control, so after an early floppy phase the limb becomes stiff (spastic), with brisk tendon jerks and a Babinski sign. The signs point to which neuron is damaged."

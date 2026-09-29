@@ -32,6 +32,15 @@
     { "cause": "Neutrophils bind the C3b-coated bacteria and engulf them.", "effect": "Lysosomal enzymes and the oxidative burst kill the bacteria; the dead neutrophils, microbes and fluid collect as pus." },
     { "cause": "Cytokines such as interleukin-1 reach the hypothalamus through the blood.", "effect": "Prostaglandin E2 raises the set point, and shivering and skin vasoconstriction raise body temperature into a fever." }
   ],
+  "ideas": [
+    "<b>Innate immunity</b> (innatus = inborn) is the defense you are born with. It acts within minutes to hours and reacts the same way each time to patterns shared by whole groups of microbes. <b>Adaptive immunity</b> takes about a week to build on a first exposure, targets one specific antigen, and remembers it, so a second exposure meets a faster, stronger response.",
+    "<b>Surface barriers</b>, also called the first line of defense, keep most microbes from entering your tissues. They include your skin's dry, keratin-filled dead cells, the mucus and cilia of mucous membranes, acidic secretions such as stomach acid, and harmless resident microbes that crowd out harmful ones.",
+    "<b>Lysozyme</b> (lys- = breaking apart, -zyme = enzyme) is an enzyme in tears, saliva and mucus that breaks the cell wall of many bacteria, so they swell with water and burst. <b>Defensins</b> are small, positively charged proteins that insert into microbial membranes and punch holes in them.",
+    "<b>Natural killer cells</b> (NK cells) are large lymphocytes with granules that kill virus-infected and cancer cells without having met them before. An NK cell kills a cell that shows stress proteins or lacks the normal self-identity protein, releasing granule proteins that form pores and trigger apoptosis.",
+    "The <b>membrane attack complex</b> is a ring-shaped pore that complement proteins C5b, C6, C7, C8 and several copies of C9 build in a microbe's membrane. Water and ions rush in through it and the microbe bursts.",
+    "<b>Interferons</b> are cytokines that a virus-infected cell releases. They diffuse to neighboring cells and switch on genes for antiviral proteins, which block viral protein synthesis and break down viral RNA if a virus gets in.",
+    "<b>Pyrogens</b> (pyr- = fire, -gen = producing) are chemicals that raise the hypothalamic set point, such as interleukin-1 released by your macrophages. Your temperature is then below the new set point, so you shiver and your skin vessels constrict until it catches up."
+  ],
   "misconception": {
     "wrong": "A fever means the body has lost control of its temperature.",
     "right": "In a fever the control system works normally; pyrogens have raised its set point. The chills and shivering at the start are the hypothalamus correctly heating you toward the new target, and the sweating at the end is it correctly cooling you when the set point drops. That is why drugs that block prostaglandin synthesis lower a fever but do nothing for overheating from exercise in the heat, where the set point is normal."

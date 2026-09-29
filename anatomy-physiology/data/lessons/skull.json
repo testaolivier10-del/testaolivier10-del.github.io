@@ -35,6 +35,13 @@
     { "cause": "The bone edges keep growing toward each other through infancy.", "effect": "The fontanelles shrink and close, the posterior one by about 2 to 3 months and the anterior one by about 1 to 2 years." },
     { "cause": "The jagged bone edges end up interlocked, bound by a thin layer of dense connective tissue.", "effect": "The sutures hold the cranial bones almost motionless, so the adult brain case is a rigid box." }
   ],
+  "ideas": [
+    "The <b>axial skeleton</b> (axis = the central line of the body) is the upright core: the skull, the hyoid bone, the ear bones, the backbone and the rib cage, 80 bones in all. The appendicular skeleton (append- = to hang on) is the limb bones plus the bones that attach them to the trunk, 126 bones.",
+    "A <b>foramen</b> (Latin, opening; plural foramina) is a hole in a bone where nerves or vessels pass through. The <b>foramen magnum</b> (the great hole) is the large opening in the base of the occipital bone, where the lower end of the brain passes through and becomes the spinal cord.",
+    "The <b>pterion</b> (pter- = wing) is the small area on the side of the skull, at the temple, where the frontal, parietal, temporal and sphenoid bones meet. It is one of the thinnest parts of the skull, and a large artery runs along the inside of the bone there, so a hard blow can crack the bone and tear the artery.",
+    "The <b>paranasal sinuses</b> (para- = beside, nas- = nose) are air-filled spaces inside skull bones, each named for its bone. The <b>frontal sinus</b> sits in the frontal bone above your eyebrows. A mucous membrane lines each sinus and drains it into the nose.",
+    "The <b>hyoid bone</b> (hyo- = U-shaped) is a small U-shaped bone in the upper neck that touches no other bone. Ligaments hang it from the skull, and muscles of the tongue and neck attach to it."
+  ],
   "misconception": {
     "wrong": "A baby's soft spot is an open hole in the skull with nothing protecting the brain.",
     "right": "A fontanelle is not a hole. It is an area where the skull bones have not yet grown to meet, covered by a tough sheet of fibrous membrane, with the scalp over it. You can touch it gently and feel a pulse through it. It is less protected than bone, but it is closed, and it usually disappears by the second year as the bones meet."

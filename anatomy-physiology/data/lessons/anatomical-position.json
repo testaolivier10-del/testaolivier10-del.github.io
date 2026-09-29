@@ -24,6 +24,11 @@
     { "cause": "A location is reported with those fixed terms, such as \"lateral left forearm, proximal to the wrist\".", "effect": "Every reader finds the same spot on the patient." },
     { "cause": "Everyone finds the same spot.", "effect": "Wrong-side and wrong-site mistakes become less likely." }
   ],
+  "ideas": [
+    "<b>Supine</b> (Latin supinus = lying on the back) means lying face up, and <b>prone</b> (Latin pronus = leaning forward) means lying face down. Both describe how your body is lying and never change what a directional term means: a supine patient's nose is still anterior to the ears.",
+    "<b>Superficial</b> (Latin superficies = surface) means toward the body surface, and <b>deep</b> means farther inside, away from the surface. Your skin is superficial to your muscles, and your bones are deep to your muscles.",
+    "<b>Ipsilateral</b> (ipse = same, latus = side) means on the same side of the body, and <b>contralateral</b> (contra- = opposite) means on the opposite side. Your right arm and right leg are ipsilateral; your right arm and left leg are contralateral."
+  ],
   "misconception": {
     "wrong": "When a patient lies down, the directional terms change: the front of a supine patient becomes superior.",
     "right": "Directional terms always describe the body as if it were standing in the anatomical position. A supine patient's chest is still anterior, and their feet are still inferior to their knees, whichever way they face. Supine and prone only describe how the body is lying."

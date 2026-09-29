@@ -62,6 +62,10 @@
       "effect": "The protein is released outside the cell, and the vesicle's membrane becomes part of the plasma membrane."
     }
   ],
+  "ideas": [
+    "<b>Cilia</b> (singular cilium, Latin for eyelash) are short, mobile projections of the cell surface, up to hundreds per cell. Each has a core of microtubules that bend it, and cilia beat in coordinated waves that move fluid across the cell surface, such as mucus with trapped dust along your airways.",
+    "<b>Microvilli</b> (micro- = small) are tiny finger-like folds of the plasma membrane, about 1 micrometer long, with a core of actin microfilaments. They do not beat. They increase surface area: thousands on an intestinal cell multiply the area available for absorbing nutrients."
+  ],
   "misconception": {
     "wrong": "Mitochondria make energy.",
     "right": "Energy cannot be created. Mitochondria convert energy that is already stored in the chemical bonds of fuel molecules from food into a form the cell can spend: ATP. They do this by oxidizing those fuels, which uses oxygen. A cell with no fuel or no oxygen gets almost nothing from its mitochondria, however many it has."

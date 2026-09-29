@@ -32,6 +32,12 @@
     { "cause": "Aldosterone makes principal cells build more sodium channels, potassium channels and sodium–potassium pumps.", "effect": "Principal cells secrete more potassium into the urine." },
     { "cause": "Over the next hours the kidneys excrete the extra potassium.", "effect": "Output matches intake, plasma potassium returns to normal, and aldosterone release falls: negative feedback." }
   ],
+  "ideas": [
+    "<b>Sodium balance</b> means your sodium intake equals your sodium output, with the kidneys doing nearly all the adjusting. The sodium-potassium pump holds sodium outside cells and water follows it, so the amount of sodium in your body sets your extracellular fluid volume.",
+    "<b>Hyponatremia</b> (hypo- = under, natr- = sodium, -emia = blood condition) is a plasma sodium below 135 mmol/L; <b>hypernatremia</b> (hyper- = over) is one above 145 mmol/L. Both are usually a problem of water relative to sodium: too much water in the first, too little in the second.",
+    "<b>Potassium balance</b> has two parts. About 98% of your potassium is inside cells, so a small shift into or out of them changes plasma potassium a lot, and your kidneys match the total by secreting potassium into the urine, mostly under aldosterone.",
+    "<b>Calcium and phosphate balance</b> is the matching of intake, absorption by the intestine, exchange with bone and excretion by the kidneys. About 99% of your calcium and 85% of your phosphate sit in bone, and parathyroid hormone and calcitriol are the main controllers."
+  ],
   "misconception": {
     "wrong": "A low plasma sodium means the body has too little sodium, so the fix is to give salt.",
     "right": "Plasma sodium is a concentration, and it mostly reflects water. Hyponatremia almost always means too much water for the sodium present. Many patients with it, such as those with heart failure, have more total sodium than normal, along with even more extra water. Giving salt to them adds volume and worsens edema; the fix depends on the cause, often limiting water."

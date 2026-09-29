@@ -35,6 +35,14 @@
     { "cause": "The cerebellum sends corrections through the thalamus to the motor areas of the cortex.", "effect": "The cortex adjusts its command while the movement is under way, and the hand stops on target." },
     { "cause": "If the cerebellum is damaged, the error is never corrected.", "effect": "The hand overshoots and the walk staggers, even though strength is normal: ataxia, on the same side as the damage." }
   ],
+  "ideas": [
+    "The <b>hypothalamus</b> (hypo- = below) lies below and in front of the thalamus. Its neurons sense conditions in the blood and act as the control center for body temperature, water balance and thirst, hunger and daily rhythms. It drives the autonomic nervous system and controls the pituitary gland just below it.",
+    "The <b>internal capsule</b> is a compact band of axons deep in each hemisphere. Axons running between the cortex and the brainstem and spinal cord funnel through it. Each hemisphere commands the muscles of the opposite side, so a small injury to the right internal capsule can weaken the whole left side.",
+    "The <b>basal nuclei</b> are masses of gray matter deep in each cerebral hemisphere, clusters of neuron cell bodies inside the CNS. They work in a loop with the cortex and help select which movement starts while suppressing the ones you do not want.",
+    "The <b>limbic system</b> (limbus = border) is a ring of structures at the inner border of the cerebrum that links emotion, memory and the body's responses to them. The <b>hippocampus</b> (Greek, seahorse) curls along the floor of each temporal lobe and is needed to form new memories of facts and events.",
+    "The <b>reticular formation</b> (reticulum = little net) is a loose net of neurons running through the core of the brainstem. Its <b>reticular activating system</b> sends a steady stream of signals up to the whole cortex, which keeps it awake and alert.",
+    "The brain grows from the front of the <b>neural tube</b>, closed by the end of the fourth week, as three primary vesicles: forebrain, <b>mesencephalon</b> (mes- = middle), or midbrain, and hindbrain. By the fifth week the forebrain splits into the telencephalon (cerebrum) and diencephalon, and the hindbrain into the <b>metencephalon</b> (met- = after), which becomes the pons and cerebellum, and the myelencephalon (medulla oblongata)."
+  ],
   "misconception": {
     "wrong": "The cerebellum is where movements are started, so damage to it paralyzes you.",
     "right": "Movements start in the motor areas of the frontal lobe, with the basal nuclei helping select which one goes ahead. The cerebellum compares the command with what the body actually does and corrects it. Damage to the cerebellum leaves strength intact but makes movement clumsy and poorly timed (ataxia) on the same side of the body, while damage to the motor areas or internal capsule causes weakness on the opposite side."

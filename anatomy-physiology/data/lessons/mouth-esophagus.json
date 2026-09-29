@@ -35,6 +35,12 @@
     { "cause": "The bolus stretches the esophagus as a peristaltic wave begins behind it.", "effect": "The wave carries it down the esophagus in about 5 to 10 seconds." },
     { "cause": "At the start of the swallow, vagal fibers activate enteric inhibitory neurons in the lower esophageal sphincter, which release nitric oxide.", "effect": "The sphincter relaxes, the bolus enters the stomach, and the sphincter closes again behind it." }
   ],
+  "ideas": [
+    "<b>Enamel</b> caps the crown of a tooth. Once a tooth has come in, enamel has no living cells, so nothing can rebuild it: minerals from saliva, helped by fluoride, can harden an early weak spot, but once decay makes a hole the enamel never grows back.",
+    "Saliva holds <b>salivary amylase</b> (amyl- = starch, -ase = enzyme), which starts splitting starch into shorter sugar chains and maltose and keeps working after you swallow. It also holds mucus, lysozyme and IgA against bacteria, and bicarbonate that buffers acid. Parasympathetic signals bring a large volume of watery saliva, so atropine, which blocks muscarinic receptor proteins, dries the mouth.",
+    "The <b>parotid glands</b> (par- = beside, ot- = ear) are the largest salivary glands, one in front of each ear; their ducts cross the cheek to open opposite the upper molars.",
+    "<b>Heartburn</b> is a burning pain behind the sternum when stomach contents flow back past the lower esophageal sphincter and the acid irritates the squamous lining of the esophagus. Reflux often enough to cause symptoms or damage is <b>GERD</b> (gastroesophageal reflux disease)."
+  ],
   "misconception": {
     "wrong": "Swallowed food falls down the esophagus by gravity.",
     "right": "Food is carried by peristalsis: a wave of contraction behind the bolus with relaxation ahead of it. You can swallow while hanging upside down, and astronauts swallow normally in orbit. Gravity only speeds liquids along when you are upright."

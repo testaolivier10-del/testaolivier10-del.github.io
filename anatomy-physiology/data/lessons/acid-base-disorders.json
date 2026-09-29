@@ -32,6 +32,11 @@
     { "cause": "Deep, fast Kussmaul breathing blows off carbon dioxide.", "effect": "PaCO2 falls in the same direction as bicarbonate, so the ratio moves back toward 20: respiratory compensation." },
     { "cause": "Compensation cannot replace the bicarbonate the ketone bodies used up.", "effect": "pH stays below 7.35, partially compensated, until insulin stops the ketone body production and the kidneys rebuild bicarbonate." }
   ],
+  "ideas": [
+    "<b>Respiratory acidosis</b> is a fall in pH caused by a rise in PaCO2 above 45 mm Hg, from hypoventilation. Anything that reduces alveolar ventilation, such as an opioid overdose or severe COPD, lets carbon dioxide build up.",
+    "<b>Respiratory alkalosis</b> is a rise in pH caused by a fall in PaCO2 below 35 mm Hg, from hyperventilation, as in anxiety or a stay at high altitude.",
+    "<b>Metabolic alkalosis</b> is a rise in pH caused by a rise in bicarbonate above 26 mmol/L, because acid is lost or base is added. Vomiting is a common cause: each H+ your stomach secretes leaves one bicarbonate behind in your blood."
+  ],
   "misconception": {
     "wrong": "Compensation fixes an acid–base disorder, so a normal pH means the problem is over.",
     "right": "Compensation only moves the other number in the same direction as the primary one, so the ratio moves back toward 20. The primary number stays abnormal until its cause is treated, and compensation rarely brings pH all the way to normal. A pH within 7.35 to 7.45 with an abnormal PaCO2 and bicarbonate still means a disorder is present."

@@ -62,6 +62,12 @@
       "effect": "The chief cells release less PTH: negative feedback."
     }
   ],
+  "ideas": [
+    "The thyroid gland's follicles are hollow spheres filled with sticky colloid. Its main protein is <b>thyroglobulin</b> (-globulin = a kind of rounded protein), a large protein made by the follicular cells, on which the thyroid hormones are built and stored.",
+    "The <b>thyroid hormones</b> are two amine hormones built from the amino acid tyrosine and the element <b>iodine</b>, which your body cannot make and gets from food. <b>Thyroxine</b> (T4) carries four iodine atoms and is about 90% of what the gland releases; tissues snip one iodine off it to make the more active T3.",
+    "<b>Hypothyroidism</b> (hypo- = under) is too little thyroid hormone. Cells use oxygen and fuel more slowly, so the person feels cold, tires easily, thinks slowly and has a slow heart rate. Worldwide the most common cause is too little iodine in the diet.",
+    "<b>Calcitonin</b> is a peptide hormone released by the thyroid gland's parafollicular cells when blood calcium rises. It binds receptor proteins on osteoclasts and stops them breaking down bone, so blood calcium falls. In adults its effect is small: PTH and calcitriol are the main regulators."
+  ],
   "misconception": {
     "wrong": "Calcitonin and PTH are equal partners: calcitonin lowers blood calcium just as strongly as PTH raises it.",
     "right": "PTH and calcitriol are the main regulators of blood calcium. Calcitonin does lower calcium by inhibiting osteoclasts, but in adults its effect is small: people with no thyroid gland, and so no calcitonin, keep normal calcium, and so do people with tumors making huge amounts of it. When calcium rises, the main correction is that PTH release falls. Exams still expect calcitonin as the hormone that lowers blood calcium."

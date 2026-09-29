@@ -34,6 +34,10 @@
     { "cause": "Dermal blood flow rises and sweat spreads over the skin.", "effect": "The skin surface warms and stays wet, so more heat is lost by radiation, convection and, above all, evaporation." },
     { "cause": "Heat loss now matches heat production.", "effect": "Body temperature falls back toward the set point, the stimulus shrinks, and the responses ease off: negative feedback." }
   ],
+  "ideas": [
+    "Ultraviolet B light striking keratinocytes converts a cholesterol-like molecule into previtamin D3. Body warmth then rearranges it into <b>vitamin D3</b>, also called <b>cholecalciferol</b> (chole- = bile, calci- = calcium, -fer = carrying), which enters the dermal capillaries. This is the skin's synthesis of <b>vitamin D</b>.",
+    "The vitamin D from skin or food is inactive. The liver and then the kidneys each add a hydroxyl group to make the active hormone, which helps your intestine absorb calcium. Without enough of it, children's new bone stays soft and the legs bow, a condition called <b>rickets</b>."
+  ],
   "misconception": {
     "wrong": "The more you sweat, the more you cool down.",
     "right": "Sweat cools you only when it evaporates: each liter that turns to vapor on your skin removes about 580 kcal, while sweat that drips off removes almost none. In humid air, sweat evaporates slowly, so a person can be dripping with sweat and still overheating. Fanning and misting help because moving air and a thin film of water speed evaporation."

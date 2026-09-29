@@ -43,6 +43,13 @@
       "effect": "Sodium and chloride act as electrolytes: the charged particles a blood test measures and your nervous system, muscles and heart depend on."
     }
   ],
+  "ideas": [
+    "The number of protons in an atom is its <b>atomic number</b>, and it defines the element: every carbon atom has 6 protons. The <b>mass number</b> is protons plus neutrons. <b>Isotopes</b> (iso- = equal, topos = place) are atoms of one element with different numbers of neutrons, so they bond alike but differ in mass.",
+    "A <b>covalent bond</b> (co- = together, valentia = strength) forms when two atoms share a pair of electrons. Covalent bonds are the strongest bonds in your body's molecules, and water alone does not pull them apart. If the sharing is unequal, the bond is polar, with a slightly negative end and a slightly positive end.",
+    "A <b>hydrogen bond</b> is a weak attraction between a slightly positive hydrogen atom, already bonded to oxygen or nitrogen, and a slightly negative oxygen or nitrogen nearby. No electrons are shared or transferred. Weak one by one, hydrogen bonds are strong in large numbers and hold large molecules folded in shape.",
+    "A <b>chemical reaction</b> breaks and forms chemical bonds, turning reactants into products without creating or destroying any atoms. A synthesis reaction joins smaller reactants into a larger product, and a decomposition reaction splits one reactant into smaller products.",
+    "An <b>organic compound</b> contains carbon atoms covalently bonded to hydrogen atoms; an <b>inorganic compound</b> lacks carbon-hydrogen bonds. Water, oxygen gas and sodium chloride are inorganic, and carbon dioxide is too, because it has no carbon-hydrogen bond. The word says nothing about farming or being alive."
+  ],
   "misconception": {
     "wrong": "An ion forms when an atom gains or loses protons.",
     "right": "Ions form when an atom gains or loses electrons. The number of protons defines the element, so if protons changed, sodium would stop being sodium. Na+ still has 11 protons, like every sodium atom; it has one fewer electron than a neutral sodium atom, which leaves one proton's worth of charge unbalanced."

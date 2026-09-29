@@ -35,6 +35,10 @@
     { "cause": "Cross-bridges pull thin filaments anchored to dense bodies.", "effect": "The dense bodies are drawn together, and the fiber shortens and puckers; gap junctions spread the signal, so the whole sheet contracts." },
     { "cause": "During a long contraction, calcium falls partway, and myosin phosphatase removes phosphate from some heads while they are still attached to actin.", "effect": "Those latch-bridges detach very slowly, so tension is held for a long time on little ATP; only when calcium falls fully do they let go and the fiber relaxes." }
   ],
+  "ideas": [
+    "The <b>stress-relaxation response</b> is the way smooth muscle, after being stretched, slowly lets its tension fall back while it stays at the new length. It lets hollow organs such as the bladder fill without a steep rise in tension.",
+    "<b>Autorhythmicity</b> (auto- = self, rhythm- = regular beat) is the ability to set a rhythm with no outside signal. A small share of cardiac fibers drift to threshold on their own and fire again and again, and their action potentials spread through gap junctions to the other fibers, so the heart beats even when its nerves are cut."
+  ],
   "misconception": {
     "wrong": "All muscle contracts the same way: calcium binds troponin, and tropomyosin moves off actin.",
     "right": "That is true of skeletal and cardiac muscle. Smooth muscle has no troponin. Its calcium, much of it from outside the cell, binds calmodulin, which activates myosin light-chain kinase; the kinase phosphorylates the myosin heads, and only then can they bind actin. The switch is on the thick filament, not the thin one."

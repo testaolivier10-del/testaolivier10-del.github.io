@@ -34,6 +34,13 @@
     { "cause": "A huge surface area and a very short diffusion distance are both factors that raise diffusion rate.", "effect": "Oxygen and carbon dioxide cross between alveolar air and capillary blood in a fraction of a second." },
     { "cause": "The capillaries in the alveolar walls carry the whole output of the right ventricle past this surface.", "effect": "Blood returning to the left atrium through the pulmonary veins is oxygenated." }
   ],
+  "ideas": [
+    "Your <b>trachea</b> is held open by C-shaped rings of hyaline cartilage. The open back of each ring is closed only by the trachealis muscle and connective tissue, a soft wall that gives way when the esophagus behind it bulges with a swallowed mouthful.",
+    "The <b>carina</b> (Latin for keel) is the keel-shaped ridge of the last tracheal cartilage, where the trachea divides into the two primary bronchi. The right primary bronchus is wider, shorter and more nearly vertical than the left, so an inhaled object usually falls into it.",
+    "The <b>parietal pleura</b> (pariet- = wall) is the layer of pleural membrane that lines the inside of your chest wall, the top of the diaphragm and the side of the mediastinum. The visceral pleura covers the lung itself, and the pleural cavity between the two holds only a thin film of fluid. The parietal layer is very sensitive to pain.",
+    "The <b>bronchial arteries</b> are small branches of the systemic circuit, from the thoracic aorta or an intercostal artery. They carry oxygenated blood to the airways, connective tissue and visceral pleura, about 1 to 2 percent of cardiac output, while the pulmonary arteries carry blood to the alveoli.",
+    "<b>Surfactant</b> (short for surface-active agent) is a lipid-protein film that type II alveolar cells secrete onto the water lining each alveolus. It lowers surface tension, the pull between water molecules that tries to shrink the alveolus."
+  ],
   "misconception": {
     "wrong": "The pleural cavity is an air-filled space around each lung.",
     "right": "In a healthy person the pleural cavity is not an open space and contains no air. It is a gap of about 10 to 20 micrometers between the visceral and parietal pleura, filled with a thin film of pleural fluid. That film lets the layers slide but holds the lung surface against the chest wall, so the lung follows the chest wall as it moves."

@@ -43,6 +43,12 @@
       "effect": "It would need 1,280 mm Hg, so changing the radius, not the pressure, is the powerful way to control flow."
     }
   ],
+  "ideas": [
+    "<b>Bulk flow</b> is the movement of a whole fluid, with everything dissolved or carried in it, down a pressure gradient. <b>Hydrostatic pressure</b> (hydro- = water, stat- = standing) is the pressure a fluid exerts, for example on the walls of its container, and it rises with depth because each layer carries the weight of the fluid above it.",
+    "<b>Blood pressure</b> is the pressure blood exerts against the walls of your blood vessels; unless stated otherwise, it means the pressure in a large artery. Your vessels form a closed, stretchy system holding about 5 liters of blood, so heavy bleeding stretches the walls less and blood pressure falls.",
+    "<b>Flow equals the pressure gradient divided by resistance</b>: <b>F = ΔP/R</b>. Resistance is anything that opposes flow, from friction against the tube wall and between fluid layers. It rises in direct proportion to tube length and to <b>viscosity</b> (viscos- = sticky), a fluid's thickness; blood is three to four times as viscous as water, mostly because of its cells.",
+    "Resistance depends on the <b>fourth power of the radius</b>, the radius multiplied by itself four times, and it falls as the radius grows. Halving a tube's radius therefore makes resistance 16 times larger, and doubling it makes resistance 1/16 as large, so small changes in radius change flow enormously."
+  ],
   "misconception": {
     "wrong": "Fluid flows because the pressure is high: the higher the pressure, the more it flows.",
     "right": "Fluid flows only when there is a pressure difference between two points, and flow depends on that difference, not on how high the pressures are. A closed garden hose can be under high pressure with no flow at all. A tube with 100 mm Hg at one end and 90 at the other carries the same flow as the same tube with 20 at one end and 10 at the other, because both have a 10 mm Hg gradient."

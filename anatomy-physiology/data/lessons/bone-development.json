@@ -34,6 +34,12 @@
     { "cause": "Calcified matrix blocks diffusion of nutrients to the chondrocytes.", "effect": "Many of the chondrocytes die, leaving columns of calcified cartilage with empty spaces." },
     { "cause": "Blood vessels and osteogenic cells from the diaphysis invade the spaces.", "effect": "Osteoblasts lay bone on the calcified columns, so the diaphysis grows longer while the plate keeps the same thickness." }
   ],
+  "ideas": [
+    "<b>Ossification</b> (oss- = bone, -fication = making), also called osteogenesis, is the formation of bone tissue by osteoblasts. Osteoblasts always lay bone on something already there, and the first spot where bone appears is an ossification center.",
+    "In <b>intramembranous ossification</b> (intra- = within), osteoblasts form bone directly inside a sheet of embryonic connective tissue. It makes the flat bones of the skull roof, most bones of the face and the collarbones.",
+    "In <b>endochondral ossification</b> (endo- = within, chondr- = cartilage), bone replaces a hyaline cartilage model. Cartilage does not turn into bone: it is broken down, and osteoblasts arriving with blood vessels lay bone in its place, first in a primary ossification center in the shaft. Most of your bones form this way.",
+    "<b>Appositional growth</b> (ad- = to, posit- = placed) is growth by adding new layers onto an existing surface. Bone gets wider this way: osteoblasts add bone to the outer surface of the shaft while osteoclasts remove it from the inner surface, so the wall stays in proportion."
+  ],
   "misconception": {
     "wrong": "During development, cartilage hardens and turns into bone.",
     "right": "Cartilage does not harden into bone. In endochondral ossification, the cartilage model's matrix calcifies, and osteoblasts that arrive with invading blood vessels lay new bone on the leftover scaffold, which osteoclasts later clear away. Bone replaces cartilage. Calcified cartilage is still cartilage. Many of the enlarged chondrocytes die; studies that follow labeled cells in mice show that others survive and become bone cells."

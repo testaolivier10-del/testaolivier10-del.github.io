@@ -35,6 +35,10 @@
     { "cause": "The narrower afferent arteriole loses more pressure before blood reaches the glomerulus.", "effect": "Glomerular hydrostatic pressure falls back, so net filtration pressure and GFR return almost to normal." },
     { "cause": "GFR stays near 125 mL/min across a mean arterial pressure of about 80 to 180 mm Hg.", "effect": "The tubules receive a nearly steady flow of filtrate, so a change in blood pressure does not flood or starve them; how much salt and water leaves is then set mainly by the tubules." }
   ],
+  "ideas": [
+    "The <b>filtration membrane</b> is the three-layer barrier between the blood in a glomerular capillary and the capsular space: endothelium whose pores (fenestrations) pass all dissolved substances but stop blood cells; the fused glomerular basement membrane, which holds back large proteins; and the podocyte layer. <b>Filtration slits</b> are the narrow gaps, about 25 to 40 nm wide, between neighboring podocyte pedicels, each bridged by a thin protein sheet.",
+    "<b>Proteinuria</b> (-uria = in the urine) is protein in the urine above the normal trace of less than about 150 mg a day. Most often the protein is albumin leaking through a damaged basement membrane or damaged podocytes, as in diabetes mellitus, long-term hypertension or inflammation of the glomeruli. Heavy losses lower plasma albumin and so blood colloid osmotic pressure, and edema follows."
+  ],
   "misconception": {
     "wrong": "Higher blood pressure always means more filtration, so GFR simply follows your blood pressure.",
     "right": "Between a mean arterial pressure of about 80 and 180 mm Hg, autoregulation holds GFR almost constant: the myogenic mechanism and tubuloglomerular feedback narrow the afferent arteriole when pressure rises and widen it when pressure falls. GFR follows pressure only outside that range, or when sympathetic nerves and hormones deliberately change it."

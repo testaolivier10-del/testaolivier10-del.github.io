@@ -35,6 +35,11 @@
     { "cause": "With the atrioventricular valve sealed, ventricular pressure keeps rising until it is higher than the pressure in the artery.", "effect": "Blood presses the semilunar valve's cusps flat against the artery wall and flows out into the artery." },
     { "cause": "When the ventricle relaxes and blood starts to slip back toward it, blood fills the semilunar cusps' pockets.", "effect": "The three pockets bulge together and seal, so blood does not flow back into the ventricle." }
   ],
+  "ideas": [
+    "Septa divide the heart's chambers. The <b>interatrial septum</b> is the thin wall between the right and left atria. The <b>interventricular septum</b> is the thick, mostly muscular wall between the two ventricles.",
+    "The <b>fossa ovalis</b> (fossa = shallow pit, ovalis = oval) is a shallow oval dip on the right atrium's side of the interatrial septum, where the floor is thinner. It is the remnant of a fetal opening between the atria that normally seals after birth.",
+    "The <b>cardiac skeleton</b> is a flat sheet of dense connective tissue, not bone, between the atria and ventricles. It is four collagen rings, one around each valve, joined to each other and to the top of the interventricular septum."
+  ],
   "misconception": {
     "wrong": "The left ventricle has a thicker wall because it pumps more blood than the right ventricle.",
     "right": "On average, both ventricles pump the same volume of blood each beat. The left wall is thicker because the vessels of the whole body resist flow far more than the vessels of the lungs, so the left ventricle has to generate about five times the pressure (about 120 versus 25 mm Hg). Heart muscle thickens when it works against a heavier load."

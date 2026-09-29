@@ -34,6 +34,11 @@
     { "cause": "Liver cells take up glucose and other nutrients, and enzymes in them break down drugs and toxins.", "effect": "The blood leaving the sinusoids carries less of each swallowed substance than the blood that arrived." },
     { "cause": "The sinusoids drain into the hepatic veins, which empty into the inferior vena cava.", "effect": "Only this processed blood reaches the right atrium and the rest of the body, which is why a swallowed drug loses part of its dose on its first pass through the liver." }
   ],
+  "ideas": [
+    "The <b>internal jugular vein</b> (jugul- = throat) runs down each side of the neck beside the common carotid artery and drains the brain, face and neck. Behind each sternoclavicular joint it joins the subclavian vein from the arm to form a brachiocephalic vein, and the right and left <b>brachiocephalic veins</b> join to form the superior vena cava.",
+    "In the arm, the <b>cephalic vein</b> runs up the thumb side of the forearm and drains into the axillary vein near the shoulder. In the leg, the great saphenous vein, the longest vein in the body, runs up the inner side, and the <b>small saphenous vein</b> runs up the back of the calf to join the popliteal vein behind the knee.",
+    "<b>Dural venous sinuses</b> are channels between the two layers of the dura mater that drain the veins of the brain. A dural sinus is lined by endothelium but has no smooth muscle and no valves, and the stiff dura holds it open."
+  ],
   "misconception": {
     "wrong": "Blood from the stomach and intestines drains straight into the inferior vena cava, like blood from the kidneys.",
     "right": "No vein from the stomach, intestines, spleen or pancreas joins the inferior vena cava. Their blood collects into the hepatic portal vein and passes through the liver's sinusoids first, then reaches the inferior vena cava through the hepatic veins. The kidneys, gonads and legs do drain straight into the inferior vena cava system."

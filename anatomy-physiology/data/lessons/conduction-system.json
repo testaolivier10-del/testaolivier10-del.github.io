@@ -36,6 +36,9 @@
     { "cause": "The bundle branches feed the Purkinje fibers, which conduct at 2 to 4 m/s beneath the endocardium.", "effect": "Nearly all of both ventricles depolarize within about 0.1 second, from the apex toward the base." },
     { "cause": "The SA node's signal reaches every slower pacemaker cell before its own drift hits threshold.", "effect": "Each slower cell is reset, so the SA node sets the rate for the whole heart." }
   ],
+  "ideas": [
+    "A pacemaker site anywhere other than the SA node is an <b>ectopic pacemaker</b> (ec- = out of, top- = place), also called an ectopic focus. It can outpace the SA node when its cells become more excitable, as in ischemia or heavy sympathetic stimulation, or take over when the normal signal is blocked."
+  ],
   "misconception": {
     "wrong": "Your brain sends a signal to your heart to make each beat.",
     "right": "Each beat starts inside the heart, in the SA node, whose cells drift to threshold on their own. Autonomic nerves only speed up or slow down that built-in rhythm by changing the slope of the pacemaker potential. A transplanted heart, with every nerve cut, keeps beating at about 100 per minute."

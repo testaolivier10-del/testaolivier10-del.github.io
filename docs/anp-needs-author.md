@@ -1855,6 +1855,32 @@ wording, listed so a licensed A&P instructor can check them. Each is taught as s
   this chapter. Titin, calsequestrin and the DHP and ryanodine receptors are defined on the pages
   but are not map concepts, so they get no glossary hover.
 
+## Lesson gap pass (decision 68): items for review
+
+Found while adding Key ideas to 145 lessons (2026-09-29). The lesson ideas are written; these points
+are about the notes pages or question explanations, which the pass did not edit.
+
+- **bp-long-term-notes-routes** (open): the `bp-long-term` notes section "The kidneys set blood
+  volume" says only one route of water loss is adjusted to match: urine. That contradicts the
+  `fluid-compartments-water` notes and this page's own mention of thirst, which adjusts intake. The
+  lesson idea says "of the routes of loss". The notes sentence should be corrected.
+- **contractility-calcium-wording** (open): the `cardiac-output` notes and lesson idea say
+  contractility depends on how much calcium "reaches the cross-bridges". Calcium binds troponin on
+  the thin filaments, which lets cross-bridges form; it does not act on the cross-bridges. Consider
+  tightening both.
+- **pelvic-inlet-shape** (open): the explanation of `anp-lower-limb-16` calls the male pelvic inlet
+  "heart-shaped", a term the notes never use. Align the explanation or the notes.
+- **gap-check-limits** (open): `scripts/check-anp-lesson-gaps.mjs` counts a concept as taught
+  once any of its words appears in the chain or ideas. Reviewers found many ideas that contained the
+  word but not what the check question tests, and a few tested concepts the checker never flags
+  (pterion, internal capsule, GERD). They fixed every case they found by reading each question, but
+  the checker alone cannot prove a lesson teaches the reasoning its questions need.
+- **ideas-count-and-voice** (open): a few lessons now have 6 to 8 key ideas (hypothalamus-pituitary
+  8; connective-tissue 7; biomolecules, enzymes-energy, chemical-signaling, brain-regions, vision,
+  hemostasis and immune-disorders 6). Each covers a check question, but some could be merged. Some
+  ideas in the nervous system and endocrine chapters read as impersonal definitions rather than
+  second person.
+
 ## Decided at the Phase 0 reviews
 
 These are recorded in the spec's decisions log (section 19) and kept here so the history stays in

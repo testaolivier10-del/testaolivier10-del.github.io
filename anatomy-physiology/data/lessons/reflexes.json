@@ -34,6 +34,11 @@
     { "cause": "In the ventral horn, the sensory axons release glutamate directly onto lower motor neurons of the quadriceps.", "effect": "Those motor neurons fire, while branches of the same sensory axons excite inhibitory interneurons that silence the hamstring motor neurons." },
     { "cause": "Acetylcholine is released at the quadriceps' neuromuscular junctions while the hamstrings stay relaxed.", "effect": "The quadriceps contracts unopposed, and the knee straightens about 20 milliseconds after the tap." }
   ],
+  "ideas": [
+    "A <b>reflex arc</b> is the chain of five structures a signal passes through from stimulus to response: a sensory receptor, a sensory neuron, an integration center in the spinal cord or brainstem, a motor neuron and an effector, which is the muscle or gland that responds.",
+    "The <b>tendon reflex</b> starts in the <b>Golgi tendon organ</b>, a capsule of collagen strands with sensory endings that sits where muscle fibers join their tendon. Rising muscle tension fires its sensory neuron, which excites inhibitory interneurons in the cord; these inhibit the same muscle's motor neurons, so its force drops. A tendon tap does not test it: every deep tendon reflex is a stretch reflex.",
+    "The <b>withdrawal reflex</b> (flexor reflex) starts when nociceptors in the skin fire. Interneurons excite the flexor motor neurons of that limb and inhibit its extensors, so the limb bends away. In the <b>crossed-extensor reflex</b>, other interneurons cross the cord's midline and do the opposite in the other limb, which straightens."
+  ],
   "misconception": {
     "wrong": "You pull your hand off a hot pan because you feel the pain.",
     "right": "The withdrawal starts before you feel anything. Nociceptor signals reach interneurons in the spinal cord, which drive the flexor motor neurons directly, so the hand is already moving. The same signals also climb the spinothalamic tract to the thalamus and cortex, and only when they arrive do you perceive pain. The pain is a parallel result, not the cause of the movement."

@@ -35,6 +35,12 @@
     { "cause": "Collecting vessels deliver lymph to a lymph node through its afferent vessels.", "effect": "Lymph slows in the sinuses, where macrophages engulf bacteria and debris and lymphocytes meet antigens." },
     { "cause": "Lymph leaves through the efferent vessel and joins a lymphatic trunk, then the thoracic duct or right lymphatic duct.", "effect": "It empties into the blood where an internal jugular vein meets a subclavian vein, returning the filtered fluid and protein." }
   ],
+  "ideas": [
+    "<b>Afferent lymphatic vessels</b> (af- = toward, fer- = carry) bring lymph into a <b>lymph node</b>, and <b>efferent lymphatic vessels</b> (ef- = away) carry it out. A node has several afferent vessels but only one or two efferent ones, so lymph lingers inside.",
+    "Your <b>spleen</b> is your largest lymphoid organ, about the size of your fist, in the upper left abdomen. It has no afferent lymphatic vessels because it filters blood, not lymph. Its <b>white pulp</b> is pale islands of lymphocytes around small arteries. Its <b>red pulp</b> is the dark red, blood-filled tissue where macrophages remove old red cells, platelets and microbes.",
+    "The <b>tonsils</b> are lymphoid tissue at the entrance to your throat: the pharyngeal tonsil behind your nose, the palatine tonsils on each side at the back of your mouth, and the lingual tonsil at the back of your tongue. Their deep pits trap bacteria and food particles next to lymphocytes.",
+    "<b>Lymphedema</b> is swelling from protein-rich fluid that stays in a tissue when its lymphatic vessels are missing, blocked or removed. If surgery takes out the lymph nodes of your armpit, the arm can swell months or years later."
+  ],
   "misconception": {
     "wrong": "The spleen is just a large lymph node that filters lymph.",
     "right": "The spleen has no afferent lymphatic vessels, so no lymph reaches it. It filters blood: its white pulp lets lymphocytes meet antigens carried in the blood, and its red pulp removes old red cells, platelets and bacteria from the blood. That is why losing the spleen raises the risk of bloodstream infections while the lymph nodes go on filtering lymph as before."

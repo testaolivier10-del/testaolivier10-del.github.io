@@ -34,6 +34,11 @@
     { "cause": "Each shortening fiber pulls on the endomysium around it.", "effect": "The pull passes to the perimysium around its fascicle and the epimysium around the whole muscle." },
     { "cause": "The three wrappings merge into the tendon, whose collagen runs into the bone.", "effect": "The tendon pulls on the bone, and the bone moves at its joint." }
   ],
+  "ideas": [
+    "The <b>sarcolemma</b> (sarco- = flesh, -lemma = husk, sheath) is the plasma membrane of a muscle fiber. Like any plasma membrane it holds a resting membrane potential, and it is excitable, so it can fire action potentials. The fiber's cytoplasm is called sarcoplasm.",
+    "The <b>sarcoplasmic reticulum</b> (SR; reticulum = little net) is the smooth endoplasmic reticulum of a muscle fiber, a lacy network of tubes and sacs around every myofibril that stores calcium. Pumps in its membrane keep calcium inside it thousands of times more concentrated than in the sarcoplasm.",
+    "A <b>T tubule</b> (transverse tubule; trans- = across) is a narrow infolding of the sarcolemma that runs into the fiber and rings each myofibril. Because it is sarcolemma, it can carry action potentials deep into the fiber. Each T tubule lies between two sacs of the SR, and the three together form a triad."
+  ],
   "misconception": {
     "wrong": "A myofibril and a muscle fiber are the same thing.",
     "right": "A muscle fiber is a whole cell, with a sarcolemma, many nuclei and mitochondria. A myofibril is a rod of protein filaments inside that cell, one of hundreds or thousands packed in its sarcoplasm. Myofibrils have no membrane and no nuclei of their own. Fibers are cells; myofibrils are inside cells; filaments are inside myofibrils."

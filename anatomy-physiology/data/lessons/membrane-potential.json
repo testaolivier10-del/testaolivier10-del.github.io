@@ -50,6 +50,10 @@
       "effect": "The voltage settles at about −70 mV, the resting membrane potential, and the pump keeps replacing the leaked ions so it stays there."
     }
   ],
+  "ideas": [
+    "Three words describe a change in membrane potential compared with rest. <b>Depolarization</b> (de- = away from) is becoming less negative, from −70 mV to −60 mV or even to +20 mV. <b>Repolarization</b> (re- = again) is returning toward the resting value. <b>Hyperpolarization</b> (hyper- = beyond) is becoming more negative, such as −70 mV to −80 mV.",
+    "<b>Hyperkalemia</b> (hyper- = above, kal- = potassium, -emia = blood condition) is blood potassium above about 5.0 mmol/L. More potassium outside shrinks the potassium gradient, so potassium's equilibrium potential becomes less negative and the resting potential depolarizes. <b>Hypokalemia</b> (hypo- = below), below about 3.5 mmol/L, does the reverse."
+  ],
   "misconception": {
     "wrong": "The sodium–potassium pump creates the resting potential by pushing out more positive charge than it brings in.",
     "right": "The pump does move 3 positive charges out for every 2 in, but that direct effect is only a few millivolts. Most of the −70 mV comes from potassium diffusing out through leak channels and leaving negative charge behind. The pump's main job is slower: it keeps the potassium and sodium gradients from running down. Block the pump and the voltage changes only a little at first, then fades over minutes to hours as the gradients disappear."

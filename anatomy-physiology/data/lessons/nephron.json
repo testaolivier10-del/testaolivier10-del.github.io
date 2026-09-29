@@ -35,6 +35,9 @@
     { "cause": "The remaining fluid runs down and up the nephron loop and passes the macula densa, which senses its sodium chloride.", "effect": "The macula densa signals the juxtaglomerular cells and the afferent arteriole of its own nephron." },
     { "cause": "The fluid continues through the distal convoluted tubule into a collecting duct shared with other nephrons.", "effect": "The collecting duct carries it through the medulla to the renal papilla, where it drips into a minor calyx as urine." }
   ],
+  "ideas": [
+    "<b>Cortical nephrons</b>, about 85 percent of the total, have their renal corpuscles in the outer cortex and short loops that dip only into the outer medulla. <b>Juxtamedullary nephrons</b> (juxta- = next to), about 15 percent, have corpuscles deep in the cortex next to the medulla and long loops reaching deep into it. Their long loops let the kidney make urine more concentrated than blood."
+  ],
   "misconception": {
     "wrong": "Blood leaving the glomerulus flows into a venule, as it does after any other capillary bed.",
     "right": "Blood leaves the glomerulus through the efferent arteriole, an arteriole, and then flows through a second capillary bed, the peritubular capillaries (and in juxtamedullary nephrons, the vasa recta), before reaching a venule. Having an arteriole on both sides is what lets the kidney keep glomerular pressure high and adjust it from either side."

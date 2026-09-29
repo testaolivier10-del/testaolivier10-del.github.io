@@ -35,6 +35,12 @@
     { "cause": "The food now stretches the next length of wall.", "effect": "The same short reflex fires there, so the contraction travels along the tube as a peristaltic wave." },
     { "cause": "Parasympathetic fibers in the vagus nerve excite the enteric neurons, and sympathetic fibers inhibit them.", "effect": "Peristalsis becomes stronger and more frequent after a meal and weaker during stress, while the ENS still runs the pattern itself." }
   ],
+  "ideas": [
+    "<b>Ingestion</b> (in- = into, gest- = carry) is taking food into your mouth. <b>Mechanical digestion</b> breaks food into smaller pieces and mixes it with secretions without changing its molecules; chewing, the churning of the stomach and the mixing in the small intestine are all mechanical digestion.",
+    "Your gut wall has four layers, from the lumen outward. The <b>mucosa</b> is epithelium, the lamina propria and a thin muscularis mucosae. The <b>submucosa</b> (sub- = below) is dense connective tissue carrying the larger blood vessels, lymphatic vessels and the submucosal plexus. The <b>muscularis externa</b> is inner circular and outer longitudinal smooth muscle. The <b>serosa</b> is the visceral peritoneum.",
+    "<b>Gastrin</b> (gastr- = stomach), a hormone from the lower stomach lining, raises stomach acid. From the first part of the small intestine, <b>secretin</b>, released when acid arrives, makes the pancreas release bicarbonate-rich fluid that neutralizes the acid, and <b>CCK</b> (cholecystokinin), released when fat and protein fragments arrive, makes the pancreas release its digestive enzymes. Both slow stomach emptying.",
+    "<b>Retroperitoneal</b> (retro- = behind) organs lie against the back wall of the abdomen, behind the peritoneum, covered by it on their front surface only. They are held fixed, unlike organs such as the stomach that hang on a mesentery and can shift."
+  ],
   "misconception": {
     "wrong": "The brain drives the movements of the gut, so cutting the gut's nerve supply stops digestion.",
     "right": "The enteric nervous system in the gut wall runs peristalsis, segmentation and secretion by itself through short reflexes. A length of intestine removed from the body still pushes its contents along. The vagus and sympathetic nerves only turn this activity up or down. What stops the gut after surgery is not loss of the brain's commands but inhibition of the enteric neurons and muscle by handling, inflammation, sympathetic activity and opioids."

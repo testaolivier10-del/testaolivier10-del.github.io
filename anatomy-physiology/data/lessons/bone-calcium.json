@@ -31,6 +31,11 @@
     { "cause": "Activated vitamin D acts on the intestinal lining.", "effect": "Over a day or more, the intestine absorbs more calcium from food." },
     { "cause": "Calcium enters the blood from bone, kidneys and intestine.", "effect": "Blood calcium rises to its set point, more calcium binds the gland cells, and hormone release falls: negative feedback." }
   ],
+  "ideas": [
+    "<b>Hypocalcemia</b> (hypo- = under, calc- = calcium, -emia = blood condition) is a blood calcium below the normal range. Fewer calcium ions sit on the outside of nerve and muscle cell membranes, so their sodium channels open more easily and the cells fire with little stimulus. The result is tingling and muscle spasms.",
+    "The <b>blood calcium feedback loop</b> is a negative feedback loop. When blood calcium falls, cells of small glands in the neck release more of a calcium-raising hormone, which makes bone release calcium, the kidneys lose less, and the intestine absorb more. When calcium rises, hormone release falls.",
+    "<b>Dietary calcium</b> is the calcium in your food, such as milk, yogurt, cheese, tofu set with calcium and canned fish eaten with its bones. Adults need about 1,000 mg a day. If intake falls short for years, the blood level stays normal while bone pays the difference."
+  ],
   "misconception": {
     "wrong": "A low blood calcium makes muscles weak, because muscles need calcium to contract.",
     "right": "Low calcium makes nerves and muscles overexcitable, not weak. Calcium ions outside the cell act as a brake on voltage-gated sodium channels; with fewer of them, the channels open with little stimulus and nerves fire on their own, causing tingling, cramps and tetany. It is a high calcium that dampens excitability and causes weakness."

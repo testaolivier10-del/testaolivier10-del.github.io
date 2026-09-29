@@ -34,6 +34,12 @@
     { "cause": "Acetyl CoA piles up in liver mitochondria.", "effect": "The liver turns it into ketone bodies (acetoacetate and beta-hydroxybutyrate) and releases them far faster than other tissues burn them." },
     { "cause": "Ketone bodies are acids and give up their H+ in the blood.", "effect": "Bicarbonate is used up and blood pH falls: ketoacidosis, with deep rapid breathing and acetone on the breath." }
   ],
+  "ideas": [
+    "<b>Lipogenesis</b> (lip- = fat, -genesis = making) is the building of fatty acids and triglycerides. It runs mainly in the liver and adipose tissue when fuel is plentiful and insulin is high: acetyl CoA is built into 16-carbon fatty acids two carbons at a time, and three fatty acids are joined to glycerol.",
+    "<b>Lipoproteins</b> are particles that carry triglycerides and cholesterol, which do not dissolve in water, in the blood: a core of these lipids inside a shell of phospholipids, free cholesterol and apolipoproteins. <b>LDL</b> (low-density lipoprotein) delivers cholesterol to cells, which take it in through LDL receptor proteins; a cell short of cholesterol makes more of them. High blood LDL drives plaque growth in artery walls.",
+    "<b>Transamination</b> (trans- = across) moves the amino group from an amino acid onto a carbon skeleton from the citric acid cycle, alpha-ketoglutarate, which becomes the amino acid glutamate. The original amino acid is left as a keto acid. The enzymes, transaminases, need a coenzyme made from vitamin B6.",
+    "The <b>urea cycle</b> is a loop of five reactions in liver cells that turns toxic ammonia into urea. Urea carries two nitrogens, one from ammonia and one from aspartate. It is small, water-soluble and far less toxic, so it travels in the blood to your kidneys and leaves in urine."
+  ],
   "misconception": {
     "wrong": "When you run out of glucose, your body turns stored fat into glucose.",
     "right": "Only the small glycerol part of a triglyceride can become glucose. Fatty acids, which carry nearly all the energy in fat, are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward. So the glucose made when glycogen runs out comes from glycerol, lactate and, above all, amino acids from muscle protein. Fat's contribution is indirect: fatty acids fuel most other tissues, and the liver makes ketone bodies that the brain can use, which spares glucose and protein."

@@ -35,6 +35,11 @@
     { "cause": "Signals from the infection reach the marrow.", "effect": "The marrow releases stored and young neutrophils, including band cells, and the blood shows leukocytosis." },
     { "cause": "Monocytes arrive over the next days and become macrophages.", "effect": "Long-lived macrophages clear dead neutrophils, bacteria and debris." }
   ],
+  "ideas": [
+    "A <b>leukocyte</b> (leuk- = white, -cyte = cell) is a white blood cell. Unlike red blood cells, leukocytes keep their nucleus and organelles, so they can make proteins and respond to signals. The five types are sorted by whether a stained smear shows granules in their cytoplasm.",
+    "An <b>antigen</b> (from antibody generator: -gen = producing) is any molecule that the immune system recognizes as a specific target, often a protein or sugar chain on the surface of a microbe or cell. An <b>antibody</b> is a Y-shaped plasma protein released by cells descended from one kind of lymphocyte; the tips of its arms fit one antigen's shape the way a key fits one lock.",
+    "A <b>platelet</b> (little plate), also called a <b>thrombocyte</b> (thromb- = clot, -cyte = cell), is not a whole cell. It is a fragment of a megakaryocyte, the giant marrow cell. A normal count is about 150,000 to 450,000 per microliter."
+  ],
   "misconception": {
     "wrong": "A high white cell count means a strong immune defense.",
     "right": "A high count can mean the marrow is responding well to an infection, but in leukemia it means a single cancerous precursor is flooding the blood with cells that never mature and cannot fight infection. Those cells also crowd out normal marrow, so the patient has too few working neutrophils, red cells and platelets. What matters is which cells are high and whether they are mature, which is what the differential count shows."

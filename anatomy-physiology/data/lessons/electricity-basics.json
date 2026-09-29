@@ -47,6 +47,11 @@
       "effect": "The charge separation shrinks and the voltage becomes less negative, although sodium concentrations barely change."
     }
   ],
+  "ideas": [
+    "<b>Voltage</b>, or potential difference, is the difference in electrical potential energy between two points for each unit of charge, measured in volts or millivolts (mV). It exists only where charge is separated, and nothing has to move for it to exist.",
+    "<b>Electrical current</b> is the flow of charge; in your body ions carry it. Its direction is the direction positive charge moves, so negative ions flowing into a cell make an outward current. Current equals voltage divided by resistance, <b>I = V / R</b>, just as flow equals ΔP / R.",
+    "An ion is a charged particle, so it feels two pushes at once: its concentration gradient, and the electrical gradient (the voltage). The <b>electrochemical gradient</b> (electro- = electric, chem- = chemical) is the combination of the two, the total push on the ion. The two can point the same way and add, as for sodium entering a cell, or oppose each other and partly cancel, as for potassium."
+  ],
   "misconception": {
     "wrong": "A cell with a voltage across its membrane has more negative ions than positive ions inside it overall.",
     "right": "The fluid inside and outside a cell is almost perfectly neutral. Only a tiny layer of ions, far less than one in a thousand, lies separated against the two faces of the membrane. That thin layer is enough to create the voltage, because the membrane is so thin. The voltage comes from where a few charges sit, not from a large overall excess of one charge."

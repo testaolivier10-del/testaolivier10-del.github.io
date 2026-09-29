@@ -62,6 +62,10 @@
       "effect": "The new cell has 46 chromosomes again: diploid, with one set from each parent."
     }
   ],
+  "ideas": [
+    "A <b>gamete</b> (gamet- = spouse, partner) is a sex cell: a sperm or an egg. Gametes are made in the gonads by meiosis, and each carries half the chromosomes of a body cell.",
+    "<b>SRY</b> (sex-determining region Y) is a gene on the Y chromosome. In an XY embryo it switches on in the early gonad and makes the gonad become a testis, which then releases testosterone."
+  ],
   "misconception": {
     "wrong": "Meiosis is just mitosis done twice.",
     "right": "Meiosis II does work like mitosis, but meiosis I is different in kind. In meiosis I the homologous chromosomes pair up, cross over, line up as pairs and separate, while the sister chromatids stay together. Mitosis never pairs homologs. That is why mitosis keeps the chromosome number at 46, while meiosis I halves it to 23, and why meiosis makes cells that differ from the parent and from each other."

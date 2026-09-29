@@ -36,6 +36,11 @@
     { "cause": "EPSPs and IPSPs from many synapses spread to the trigger zone and add together (spatial and temporal summation).", "effect": "If the sum reaches threshold, the postsynaptic neuron fires an action potential." },
     { "cause": "Diffusion, enzymes and reuptake transporters clear the neurotransmitter from the cleft.", "effect": "The receptor proteins empty, the channels close, and the synapse is ready for the next signal." }
   ],
+  "ideas": [
+    "At an <b>electrical synapse</b>, two neurons are joined by gap junctions, protein tunnels that let ions flow straight from one cell's cytosol into the other's. Current passes directly, almost instantly and usually both ways, so neurons joined this way tend to fire together in step.",
+    "The <b>major neurotransmitters</b> include glutamate, GABA, dopamine and <b>serotonin</b>. <b>Glutamate</b> and GABA are called excitatory and inhibitory because nearly all their receptor proteins in the adult brain work that way. Dopamine and serotonin are biogenic amines, made from single amino acids, and mostly act through slower metabotropic receptor proteins.",
+    "<b>Divergence</b> (di- = apart, vergere = to turn) is a circuit pattern in which one neuron's axon branches to synapse on many postsynaptic neurons, spreading its signal. Convergence is the reverse, many signals arriving on one neuron, where they are summed."
+  ],
   "misconception": {
     "wrong": "Each neurotransmitter is either excitatory or inhibitory in itself.",
     "right": "The receptor protein, not the neurotransmitter, decides the effect. Acetylcholine excites skeletal muscle through ionotropic receptor proteins that let sodium in, and slows the heart through metabotropic receptor proteins that open potassium channels. Glutamate and GABA are called excitatory and inhibitory only because nearly all of their receptor proteins in the adult brain work that way."

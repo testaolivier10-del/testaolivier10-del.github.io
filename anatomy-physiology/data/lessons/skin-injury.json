@@ -34,6 +34,11 @@
     { "cause": "Fluid leaves the vessels by evaporation and leakage faster than it is replaced.", "effect": "Blood volume falls, so less blood returns to the heart." },
     { "cause": "Less blood returns to the heart and less is pumped into the arteries.", "effect": "Blood pressure falls, the heart rate rises to compensate, and blood flow to the kidneys and urine output fall." }
   ],
+  "ideas": [
+    "A wound deeper than the epidermis is rebuilt by <b>granulation tissue</b> (granul- = little grain): new capillaries and collagen-laying fibroblasts form moist, pink, grainy tissue, and epithelial cells crawl across it. A wound whose edges are held together heals by <b>primary union</b>. An open wound heals by <b>secondary union</b>: it fills with granulation tissue and contracts, slowly, leaving a wider scar.",
+    "<b>Skin cancer</b> is named for the cell that goes wrong. <b>Basal cell carcinoma</b> (carcin- = cancer, -oma = tumor) starts in basal cells, squamous cell carcinoma in the keratinocytes above them, and <b>melanoma</b> in melanocytes; ultraviolet damage to DNA drives all three. Melanoma is the most dangerous, because melanocytes can break loose early and travel through the dermis into vessels.",
+    "Common skin disorders trace to one layer or structure. <b>Acne</b> is inflammation of hair follicles plugged with sebum and shed keratinocytes. A <b>pressure injury</b> (bedsore) is damage over a bony area where sustained pressure squeezes the capillaries shut, so the cells die from lack of oxygen."
+  ],
   "misconception": {
     "wrong": "A burn that does not hurt must be a mild burn.",
     "right": "A full-thickness burn destroys the whole dermis, including its nerve endings, so its center is painless, dry and leathery. It is the most serious kind of burn and cannot regrow epidermis on its own. The burns that hurt most are partial-thickness burns, whose nerve endings are irritated but still alive."

@@ -35,6 +35,11 @@
     { "cause": "The femoral condyles rest on the condyles of the tibia.", "effect": "The tibia carries almost all of the load down the leg to the talus." },
     { "cause": "The talus passes the load to the calcaneus behind and along the arches in front.", "effect": "Body weight is spread between the heel and the ball of the foot." }
   ],
+  "ideas": [
+    "The <b>pelvic brim</b> is the curved rim of bone running around the inside of the pelvis. It divides the pelvis into the wide <b>greater pelvis</b> above it, which is really the lowest part of the abdominal cavity, and the narrower lesser pelvis below it.",
+    "The <b>pelvic inlet</b> is the upper opening of the lesser pelvis, outlined by the pelvic brim. The average female pelvis is lighter, wider and shallower, with a round inlet and a wide <b>subpubic angle</b>, the angle below the pubic symphysis where the bars of the two pubic bones meet. The average male pelvis is heavier and deeper, with a narrower inlet and a narrower subpubic angle.",
+    "The <b>patella</b> (patella = small dish), or kneecap, is a triangular sesamoid bone at the front of the knee. It forms inside the tendon of the large muscle group on the front of the thigh and glides in a groove on the femur, which gives that muscle more leverage when it straightens the knee."
+  ],
   "misconception": {
     "wrong": "A \"broken hip\" is a break in the hip bone of the pelvis.",
     "right": "In older adults, a \"broken hip\" almost always means a break at the top of the femur: through the femoral neck or between the greater and lesser trochanters. The hip bone itself can break too, but that injury is usually called a pelvic fracture. The femoral neck breaks so often because it is narrow, it carries body weight at an angle, and in osteoporosis its spongy bone thins."

@@ -50,6 +50,14 @@
       "effect": "The energy released rebuilds ATP from ADP and phosphate, and splitting ATP again powers muscle shortening, ion pumping and protein building."
     }
   ],
+  "ideas": [
+    "A <b>lipid</b> (lip- = fat) is a molecule made mostly of carbon and hydrogen, with few oxygen atoms, so it is nonpolar and hydrophobic. Fats and oils are lipids. Lipids are grouped by this behavior in water, not as polymers of one repeating monomer.",
+    "A <b>triglyceride</b> (tri- = three) is one glycerol molecule joined by dehydration synthesis to three <b>fatty acids</b>, long chains of carbon and hydrogen with a carboxyl group at one end. Triglycerides are your largest energy store, holding about 9 kcal per gram against about 4 for carbohydrate.",
+    "In a <b>saturated</b> fatty acid every carbon is joined to its neighbors by single bonds and holds as many hydrogens as it can, so the chain runs straight. An <b>unsaturated</b> fatty acid has at least one carbon-carbon double bond, which bends the chain. Bent chains cannot pack tightly, so fats rich in them, such as olive oil, are liquid at room temperature.",
+    "A <b>phospholipid</b> is glycerol with two fatty acid tails and a polar, phosphate-containing head. With a hydrophilic head and hydrophobic tails it is amphipathic (amphi- = both), so in water phospholipids form a two-layer sheet, heads outward, tails tucked inside. A <b>steroid</b> is a lipid built on four fused carbon rings; cholesterol is the best known.",
+    "A protein's amino acid sequence, held by peptide bonds, sets how the chain folds, and the folded shape sets what the protein can do. <b>Denaturation</b> (de- = remove) is the loss of that shape when heat, a change in hydrogen ion concentration or some chemicals break the weak hydrogen and ionic bonds. The peptide bonds stay intact, so the sequence is unchanged.",
+    "A <b>nucleic acid</b> (nucle- = kernel) is a polymer of <b>nucleotides</b>. Each nucleotide has a phosphate group, a five-carbon sugar and a nitrogenous base. The order of the bases along the strand carries hereditary information."
+  ],
   "misconception": {
     "wrong": "When a protein is denatured, it is broken down into its amino acids.",
     "right": "Denaturation changes a protein's shape, not its sequence. Heat or a change in hydrogen ion concentration breaks the weak hydrogen bonds and ionic bonds that hold the fold. The covalent peptide bonds between amino acids survive, so the chain is still whole, just unfolded and no longer able to do its job. Splitting a protein into amino acids takes hydrolysis of its peptide bonds, which is what digestion does."

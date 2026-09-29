@@ -35,6 +35,10 @@
     { "cause": "Action potentials travel along the axons through the cribriform plate.", "effect": "The axons synapse in the olfactory bulb, where all neurons with the same receptor protein converge on a few small clusters of synapses." },
     { "cause": "The olfactory tract carries the sorted signals to the olfactory cortex and the limbic system, with no first stop in the thalamus.", "effect": "Your brain combines the smell with the taste signals arriving through cranial nerves VII, IX and X, and you perceive one flavor." }
   ],
+  "ideas": [
+    "<b>Gustation</b> (gust- = taste) is the sense of taste. Its <b>gustatory receptor cells</b> are specialized epithelial cells, not neurons, set in taste buds; dissolved chemicals reach their microvilli through the taste pore, and the cells release neurotransmitter onto a sensory neuron.",
+    "<b>Umami</b> (Japanese for \"savory, delicious\") is one of the five taste qualities, along with salty, sour, sweet and bitter. It is the savory taste of glutamate, an amino acid, which binds a receptor protein coupled to a G protein and sets off a second messenger inside the cell."
+  ],
   "misconception": {
     "wrong": "Different parts of the tongue sense different tastes: sweet at the tip, salty and sour on the sides, bitter at the back (the \"tongue map\").",
     "right": "Every part of the tongue that has taste buds senses all five qualities, and one taste bud usually holds cells for several of them. The map came from a misread 1901 study that found only small differences in sensitivity. Put salt on the tip of your tongue and you taste salt at once."

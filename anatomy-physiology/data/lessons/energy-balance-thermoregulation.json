@@ -34,6 +34,12 @@
     { "cause": "More warm blood reaches the skin and sweat spreads over it.", "effect": "Heat is lost by radiation, convection and, above all, evaporation of sweat." },
     { "cause": "Heat loss rises to match heat production.", "effect": "Core temperature levels off at a slightly raised value: negative feedback. If humid air stops sweat evaporating, heat loss falls short and core temperature keeps climbing toward heat stroke." }
   ],
+  "ideas": [
+    "Your <b>metabolic rate</b> is the rate at which your body uses energy, in kcal per hour or per day, and nearly all of that energy ends as heat. The <b>BMR</b> (basal metabolic rate), measured awake and lying at rest, 12 hours after eating, in a comfortably warm room, is usually 60 to 70% of daily use. Thyroid hormones raise it by adding sodium–potassium pumps and mitochondria to cells.",
+    "<b>Energy balance</b> is the relation between the energy you take in as food and the energy you spend, your total metabolic rate. Intake equal to spending keeps body weight level. Spending changes as weight changes, so energy balance is not a fixed sum.",
+    "<b>Appetite regulation</b> is the control of hunger and eating, mainly by the hypothalamus, which receives signals from the gut, pancreas and adipose tissue. <b>Ghrelin</b> is a hormone released by the empty stomach before meals; it acts on the hypothalamus to make you hungry. Leptin, released by fat cells in proportion to the fat they hold, lowers hunger; after weight loss it falls and hunger rises.",
+    "<b>Nonshivering thermogenesis</b> (thermo- = heat, -genesis = making) is heat made without muscle contraction, mainly in brown adipose tissue. Sympathetic nerves release norepinephrine onto brown fat cells, which break down their fat and run their mitochondria with a channel protein that lets H+ leak back across the inner membrane."
+  ],
   "misconception": {
     "wrong": "Sweating cools you.",
     "right": "Sweat cools you only when it evaporates. Turning each liter of sweat into vapor takes about 580 kcal from your skin; sweat that drips off removes almost no heat. In humid air, evaporation slows, so you can sweat heavily, lose a lot of water, and still overheat. That is why a hot, humid day is far more dangerous for exercise than a hot, dry one."

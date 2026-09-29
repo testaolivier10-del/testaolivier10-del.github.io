@@ -35,6 +35,11 @@
     { "cause": "The expanded clones differentiate.", "effect": "Most become short-lived fighting cells that act against the infection; a few become long-lived memory cells." },
     { "cause": "The same bacteria enter the body again years later.", "effect": "The more numerous, quicker memory cells respond within a day or two, and the infection is cleared before illness develops." }
   ],
+  "ideas": [
+    "An <b>epitope</b> (also called an antigenic determinant) is the small part of an antigen that a lymphocyte actually binds: a patch of about 5 to 20 amino acids or a few sugars. Even a single large protein carries many epitopes, so many different lymphocytes bind it at once, each at a different epitope.",
+    "<b>B cells</b> (B lymphocytes) mature in your red bone marrow. Each carries a membrane-bound antibody as its antigen receptor protein, so it can bind intact antigen directly, and its activated descendants release antibodies.",
+    "<b>Central tolerance</b> is self-tolerance built where lymphocytes mature. In the thymus, <b>negative selection</b> kills any thymocyte whose receptor protein binds a self peptide on your own MHC too strongly. <b>Peripheral tolerance</b> handles self-reactive cells that slip through: a T cell that binds a self peptide without a second, confirming signal from a dendritic cell becomes unresponsive."
+  ],
   "misconception": {
     "wrong": "When a new microbe arrives, lymphocytes shape their antigen receptors to fit it.",
     "right": "Each lymphocyte builds its antigen receptor at random, by joining gene pieces, while it matures and before it ever meets an antigen. Millions of different receptors exist in advance. The antigen does not instruct anything: it selects the rare cells whose receptors already fit, and those cells multiply. That is clonal selection, and it is why the first response to a new antigen takes days."

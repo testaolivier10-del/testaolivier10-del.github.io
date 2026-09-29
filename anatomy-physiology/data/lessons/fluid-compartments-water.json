@@ -35,6 +35,12 @@
     { "cause": "ADH makes principal cells of the collecting ducts insert aquaporins, and you drink.", "effect": "Your kidneys return more water to the blood, your urine becomes small in volume and concentrated, and water enters from your gut." },
     { "cause": "Water is added to the plasma from both routes.", "effect": "Plasma osmolality falls back toward its set point, the osmoreceptors fire less, and ADH and thirst switch off: negative feedback." }
   ],
+  "ideas": [
+    "<b>Total body water</b> is all the water in your body, inside cells and out: about 60% of body mass in a young adult man. Two thirds of it is intracellular fluid and one third is extracellular fluid.",
+    "<b>Metabolic water</b> is water your cells make in the last step of cellular respiration, when oxygen picks up hydrogen ions and becomes water. It adds about 0.25 L a day to the water you drink and eat.",
+    "<b>Hypovolemia</b> (hypo- = under, vol- = volume, -emia = blood condition) is a fall in extracellular fluid volume from losing salt and water together, as in bleeding or diarrhea. Plasma osmolality stays normal, so no water leaves your cells, but blood pressure tends to fall.",
+    "<b>Water intoxication</b> is the symptomatic result of overhydration, a gain of water greater than the gain of solute. Plasma osmolality falls and water enters your cells, so they swell."
+  ],
   "misconception": {
     "wrong": "Dehydration and hypovolemia are the same thing: both just mean you have lost fluid.",
     "right": "They differ in what is lost. Hypovolemia is a loss of salt and water together, as in bleeding or diarrhea: plasma osmolality stays normal, only the extracellular fluid shrinks, and the main danger is low blood pressure. Dehydration in the strict sense is a loss of more water than solute, as in not drinking or sweating: plasma osmolality rises, water leaves cells, and brain cells shrink. The first needs salt and water replaced; the second needs water."

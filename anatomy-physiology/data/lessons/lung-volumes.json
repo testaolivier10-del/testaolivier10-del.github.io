@@ -58,6 +58,11 @@
       "effect": "Oxygen in the alveolar air falls and carbon dioxide builds up, so the blood leaving the lungs carries less oxygen and more carbon dioxide."
     }
   ],
+  "ideas": [
+    "<b>Spirometry</b> (-metry = the process of measuring) is measuring the volumes of air you breathe in and out, and how fast you move them, with a spirometer (spir- = breathe, -meter = measuring device). It records only the air that crosses your mouth, so it cannot see the residual volume left in your lungs.",
+    "In forced spirometry you breathe in fully, then blow out as hard and fast as you can. <b>FVC</b> (forced vital capacity) is the total volume blown out, and <b>FEV1</b> the volume blown out in the first second. In <b>obstructive disease</b>, such as asthma, narrowed airways slow the breath out, so FEV1/FVC falls below about 0.70. In <b>restrictive disease</b> the lungs hold less, but the ratio stays normal or high.",
+    "<b>Inspiratory capacity</b> is tidal volume plus inspiratory reserve volume: the most air you can breathe in, starting from the end of a quiet breath out. It is about 3,500 mL in a typical adult."
+  ],
   "misconception": {
     "wrong": "Minute ventilation tells you how much fresh air reaches the alveoli, so breathing faster always means better ventilation.",
     "right": "Minute ventilation counts all the air moved, including the roughly 150 mL of each breath that only fills the conducting airways and leaves again. What reaches the alveoli is alveolar ventilation, (tidal volume − dead space) × rate. Fast, shallow breathing can keep minute ventilation normal while alveolar ventilation collapses: 24 breaths of 250 mL deliver only 2.4 L/min of fresh air, against 4.2 L/min from 12 breaths of 500 mL."

@@ -62,6 +62,10 @@
       "effect": "Cells can release that stored push later to do work, such as moving other substances or sending electrical signals."
     }
   ],
+  "ideas": [
+    "Almost every cell has three main parts: the plasma membrane, the <b>cytoplasm</b> and the nucleus. The cytoplasm (cyto- = cell, -plasm = formed material) is everything inside the plasma membrane except the nucleus: a watery fluid packed with dissolved ions, nutrients and proteins, plus many small internal structures.",
+    "The fluid inside your cells is <b>intracellular fluid</b> (intra- = within), high in potassium. The fluid outside them is <b>extracellular fluid</b> (extra- = outside), high in sodium. Most of it is <b>interstitial fluid</b> (inter- = between, -stitial = standing), the thin layer bathing your cells; the rest is mostly <b>plasma</b>, the liquid part of your blood, which carries red blood cells, white blood cells and platelets."
+  ],
   "misconception": {
     "wrong": "The plasma membrane is a rigid wall, like a shell, with everything fixed in place.",
     "right": "The plasma membrane is fluid. Its phospholipids drift sideways within their own sheet constantly, and many of its proteins drift too. It behaves more like a thin film of oil than a solid wall. That fluidity is why a small tear can reseal, and why the membrane can bend as a red blood cell squeezes through a capillary narrower than itself. The rigid cell wall you may remember from biology belongs to plants and bacteria, not to human cells."

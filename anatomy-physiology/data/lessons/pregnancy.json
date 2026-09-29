@@ -35,6 +35,11 @@
     { "cause": "Cardiac output rises while total peripheral resistance falls.", "effect": "Mean arterial pressure stays about the same, dipping slightly in mid-pregnancy." },
     { "cause": "Plasma volume rises more than red cell mass.", "effect": "The hematocrit and hemoglobin concentration fall, giving the normal dilutional anemia of pregnancy." }
   ],
+  "ideas": [
+    "<b>Preeclampsia</b> (pre- = before, eklampsis = a sudden flash) is new high blood pressure after week 20 of pregnancy, 140/90 mm Hg or more on two readings, together with protein in the urine or signs that other organs are affected. It affects about 3 to 5 pregnancies in 100.",
+    "An <b>ectopic pregnancy</b> (ec- = out of, topos = place) implants outside the cavity of the uterus, in more than 95% of cases in a uterine tube, where it can rupture as it grows.",
+    "<b>Gestational diabetes</b> is diabetes that first appears in pregnancy, usually in the second half, when the mother's beta cells cannot overcome placental insulin resistance. Glucose crosses the placenta but insulin does not, so the fetus secretes extra insulin; after the cord is cut, that insulin can push the newborn's glucose dangerously low."
+  ],
   "misconception": {
     "wrong": "Blood pressure normally rises during pregnancy, because the heart is pumping so much more blood.",
     "right": "Cardiac output does rise by 30 to 50%, but total peripheral resistance falls by about a quarter to a third at the same time, so blood pressure normally stays the same or dips a little in mid-pregnancy. A new rise in blood pressure after week 20 is not normal; it is the hallmark of preeclampsia and needs to be checked."

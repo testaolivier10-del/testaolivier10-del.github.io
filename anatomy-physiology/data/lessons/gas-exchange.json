@@ -34,6 +34,10 @@
     { "cause": "The narrowed arterioles have a higher resistance.", "effect": "Less blood flows to the poorly ventilated alveoli, and more is sent to well-ventilated ones." },
     { "cause": "Most blood now passes alveoli whose PO2 is near 100 mm Hg.", "effect": "Oxygen diffuses in down a normal gradient, so the PO2 of arterial blood stays close to normal despite the blocked airway." }
   ],
+  "ideas": [
+    "<b>Henry's law</b> says that the amount of a gas dissolved in a liquid is proportional to the gas's partial pressure above the liquid and to its solubility: dissolved gas = partial pressure × solubility. Carbon dioxide is about 20 times more soluble in plasma than oxygen.",
+    "<b>External respiration</b> (also called pulmonary gas exchange) is the exchange of gases between the air in the alveoli and the blood in the pulmonary capillaries. Oxygen diffuses into the blood and carbon dioxide diffuses out, each down its partial pressure gradient, until blood and alveolar air match."
+  ],
   "misconception": {
     "wrong": "The carbon dioxide gradient in the lungs is only about 6 mm Hg, so the lungs can remove only a little carbon dioxide.",
     "right": "How fast a gas diffuses depends on its solubility as well as its gradient. Carbon dioxide is about 20 times more soluble than oxygen, so a 6 mm Hg gradient moves it about as readily as a much larger gradient moves oxygen. That small gradient clears the roughly 200 mL of carbon dioxide you make each minute."

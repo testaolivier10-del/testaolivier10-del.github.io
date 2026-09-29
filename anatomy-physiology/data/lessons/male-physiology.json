@@ -62,6 +62,10 @@
       "effect": "LH and FSH fall, the Leydig cells stop making testosterone, the tubules lose their high local level, and sperm production drops."
     }
   ],
+  "ideas": [
+    "The <b>acrosome</b> (acro- = tip, -some = body) is a cap-like sac of digestive enzymes over the front of the sperm head, made from the Golgi apparatus. Its enzymes let the sperm digest a path through the layers around the egg.",
+    "<b>Secondary sex characteristics</b> are features that differ between the sexes but are not part of the reproductive tract. At puberty, testosterone produces the male ones, such as a deeper voice as the larynx grows and the vocal cords lengthen."
+  ],
   "misconception": {
     "wrong": "Taking extra testosterone boosts a man's sperm production and fertility.",
     "right": "Spermatogenesis needs testosterone at a concentration inside the tubules many times higher than in the blood, and only the man's own Leydig cells, driven by LH, can supply it there. Injected testosterone raises blood levels but brakes the hypothalamus and pituitary through negative feedback, so LH and FSH fall, the Leydig cells go quiet, the tubules lose their local testosterone, and sperm production falls, often to nearly zero."

@@ -58,6 +58,12 @@
       "effect": "The cells burst (osmotic hemolysis) and spill their contents, including potassium, into the plasma."
     }
   ],
+  "ideas": [
+    "<b>Passive transport</b> (passive = not acting) is any movement of a substance across a membrane down its gradient, powered by the gradient itself, with no ATP spent by the cell. Simple diffusion through the bilayer, facilitated diffusion through channels and carriers, osmosis and filtration are all passive.",
+    "A carrier protein moves one molecule, or a few, per cycle, and a cell has a set number of them. <b>Carrier saturation</b> is the point where all the carriers are occupied and the transport rate stops rising; the top rate is the <b>transport maximum</b>. Simple diffusion has no such ceiling.",
+    "<b>Tonicity</b> (ton- = tension, stretching) describes how a solution outside a cell changes the cell's volume, and it depends only on solutes that cannot cross the membrane. An <b>isotonic</b> solution (iso- = equal) leaves volume unchanged, a <b>hypotonic</b> one (hypo- = under) has fewer such solutes and swells the cell, and a <b>hypertonic</b> one (hyper- = over) has more and shrinks it.",
+    "<b>Filtration</b> (filtrum = felt, used to strain liquids) is the movement of water and small solutes through a thin barrier, pushed by a hydrostatic pressure gradient. Particles too large for the openings stay behind, as blood cells do at a capillary wall."
+  ],
   "misconception": {
     "wrong": "A solution with the same osmolarity as a cell is always isotonic to it.",
     "right": "Tonicity depends only on the solutes that cannot cross the membrane. Put red blood cells in 300 mOsm/L glycerol, which has the same osmolarity as the cells. Glycerol crosses red cell membranes, so it diffuses in; water follows it by osmosis, and the cells swell and burst. The glycerol solution is isosmotic but hypotonic. To predict what a solution does to a cell, count only the solutes that stay on their side."

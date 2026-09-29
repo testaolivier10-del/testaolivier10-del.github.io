@@ -35,6 +35,9 @@
     { "cause": "An enzyme carried in by the sperm sets off waves of calcium release inside the oocyte.", "effect": "Cortical granules release their contents, which alter the zona pellucida so no other sperm can bind: the block to polyspermy." },
     { "cause": "The same calcium waves release the oocyte from its pause at metaphase II.", "effect": "Meiosis II finishes with a second polar body, two haploid pronuclei form and copy their DNA, and their chromosomes combine into the diploid zygote." }
   ],
+  "ideas": [
+    "<b>Capacitation</b> (capacit- = able, -ation = process) is the set of changes, over a few hours in the female tract, that make a sperm able to fertilize an oocyte. Cholesterol leaves the sperm membrane, calcium enters, the tail beats in a hyperactivated way and the acrosome becomes ready to release its enzymes."
+  ],
   "misconception": {
     "wrong": "The first sperm to reach the oocyte is the one that fertilizes it.",
     "right": "The first sperm to arrive, some within minutes of intercourse, have not yet capacitated, and an uncapacitated sperm cannot fertilize. Fertilization needs a sperm that has spent hours in the female tract and is ready at the moment it meets the oocyte. The fertilizing sperm is more likely one that was held in the tube's reservoir and released later. Speed matters far less than timing."

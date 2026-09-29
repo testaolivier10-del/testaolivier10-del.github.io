@@ -69,6 +69,11 @@
       "effect": "The vesicles fuse with the plasma membrane and release the protein by exocytosis."
     }
   ],
+  "ideas": [
+    "<b>Translation</b> (trans- = across, lat- = to carry) builds a chain of amino acids from the codons of an mRNA. It happens on ribosomes in the cytoplasm. A codon is a group of three mRNA bases, and each one names one amino acid or a stop.",
+    "A <b>mutation</b> (mut- = change) is a lasting change in DNA's base sequence, from an unrepaired copying error or from damage by ultraviolet light, radiation or chemicals. Codons are read in triplets, so a <b>missense</b> change of one base swaps one amino acid, while adding or deleting one or two bases shifts the reading frame and garbles every later codon. Deleting exactly three neighboring bases removes one amino acid.",
+    "The <b>secretory pathway</b> is the route a protein takes through the endomembrane system when it will be secreted, placed in the plasma membrane or sent to lysosomes. A signal sequence at the front of the chain docks the ribosome on the rough ER; the protein then goes by vesicle to the Golgi apparatus, then by secretory vesicle to the plasma membrane, and exocytosis releases it."
+  ],
   "misconception": {
     "wrong": "Each cell type has its own genes: liver cells have liver genes and skin cells have skin genes.",
     "right": "Almost every cell in your body carries the same genome. Cells differ in gene expression: each cell type carries its own mix of transcription factors, which switch on a different subset of genes. A skin cell still carries the genes for pancreas enzymes; it just never transcribes them."

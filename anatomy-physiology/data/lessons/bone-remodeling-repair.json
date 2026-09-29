@@ -34,6 +34,10 @@
     { "cause": "Osteogenic cells from the periosteum and endosteum become osteoblasts in the callus.", "effect": "The cartilage calcifies and is replaced by spongy bone, forming a bony callus that joins the ends." },
     { "cause": "Loads on the healing bone steer osteoclasts and osteoblasts (Wolff's law).", "effect": "Extra bone is removed and compact bone is restored, so the bone is remodeled close to its original shape." }
   ],
+  "ideas": [
+    "A <b>greenstick fracture</b> is an incomplete break: the bone cracks on one side and bends on the other, like a fresh green twig. It happens mainly in children, whose bones hold more collagen relative to mineral and bend before they break.",
+    "<b>Osteoporosis</b> (osteo- = bone, por- = pore, -osis = condition) is a disease in which bone mass is low and the inner structure of bone is weakened, so bones break from forces that would not harm healthy bone. Resorption has outpaced formation for years, so there is too little bone, but what remains is normally mineralized. Spongy bone shows it most: its thinned trabeculae disconnect."
+  ],
   "misconception": {
     "wrong": "Once an adult's bones stop growing, they stay the same until old age.",
     "right": "Adult bone is replaced all the time. Osteoclasts and osteoblasts remodel about a tenth of your skeleton each year, swapping old, cracked bone for new and moving calcium in and out. Load steers the process: bones used heavily gain bone, and unloaded bones lose it within weeks. When resorption outpaces formation for years, the result is osteoporosis."

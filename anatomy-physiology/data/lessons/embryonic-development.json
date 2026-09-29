@@ -35,6 +35,12 @@
     { "cause": "The syncytiotrophoblast secretes human chorionic gonadotropin, which binds LH receptor proteins on the corpus luteum.", "effect": "The corpus luteum survives and keeps secreting progesterone, so the endometrium is not shed and no period comes." },
     { "cause": "With the embryo secure, the epiblast's cells move through the primitive streak in week 3.", "effect": "Gastrulation forms ectoderm, mesoderm and endoderm, from which every organ is built during the rest of the embryonic period." }
   ],
+  "ideas": [
+    "The <b>amnion</b> (amnion = membrane around a fetus) is a thin sac, formed from epiblast cells, that encloses the amniotic cavity and its fluid. The fluid cushions the embryo, keeps its temperature even and lets it move so its muscles and joints develop.",
+    "The <b>notochord</b> (noto- = back, chord = cord) is a rod of mesoderm cells along the midline that forms in week 3: the first body axis. Its signals pattern the tissues around it, and its only remnant in adults is the nucleus pulposus of each intervertebral disc.",
+    "A limb bud lengthens from its tip because the <b>apical ectodermal ridge</b> (apical = at the tip), a thickened band of ectoderm there, releases growth factors that keep the mesoderm beneath it dividing.",
+    "Where a joint will form, a band of densely packed cells in the cartilage model, the <b>joint interzone</b>, stays uncommitted. For a synovial joint, the cells in its middle die and a space opens, the future joint cavity; the outer interzone forms the capsule, ligaments and articular cartilage."
+  ],
   "misconception": {
     "wrong": "A pregnancy test detects a hormone made by the mother's body.",
     "right": "Pregnancy tests detect human chorionic gonadotropin, which is made by the embryo's own syncytiotrophoblast as it implants. The mother's corpus luteum responds to it by staying alive and making progesterone. That is why the test turns positive only after implantation, about a week or more after fertilization, and not at fertilization itself."

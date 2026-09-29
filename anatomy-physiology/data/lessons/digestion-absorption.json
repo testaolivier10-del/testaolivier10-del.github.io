@@ -35,6 +35,11 @@
     { "cause": "Sodium and glucose have moved from the lumen to the blood side of the epithelium.", "effect": "Water follows by osmosis, through and between the cells." },
     { "cause": "Every absorbed sugar, amino acid and salt pulls water with it.", "effect": "About 98% of the 9 L of water entering the gut each day is absorbed, and only about 150 mL leaves in the feces." }
   ],
+  "ideas": [
+    "<b>Carboxypeptidase</b> (carboxy- = the carboxyl end, -peptid- = peptide, -ase = enzyme) is a pancreatic enzyme, activated by trypsin, that removes one amino acid at a time from the end of a peptide chain that carries a free carboxyl group.",
+    "<b>Nucleases</b> (nucle- = nucleus, -ase = enzyme) are pancreatic enzymes that digest nucleic acids: ribonuclease digests RNA and deoxyribonuclease digests DNA, cutting the chains into nucleotides. Brush border enzymes then split each nucleotide into a pentose sugar, a nitrogenous base and a phosphate ion.",
+    "<b>Lactose intolerance</b> is the set of symptoms that follows when a person with low lactase eats more lactose than their remaining lactase can digest. Undigested lactose holds water by osmosis and reaches the colon, where bacteria ferment it to gas, so you get bloating, cramps and osmotic diarrhea."
+  ],
   "misconception": {
     "wrong": "All digested nutrients go straight from the intestine to the liver in the hepatic portal vein.",
     "right": "Sugars, amino acids, short-chain fatty acids and most vitamins that dissolve in water do: they enter the villus capillaries, which drain into the hepatic portal vein. But long-chain fats are rebuilt into triglycerides and packaged into chylomicrons, which are too large for blood capillaries. They enter the lacteals, travel in lymph through the thoracic duct, and join the blood where the left internal jugular and subclavian veins meet, reaching the rest of the body before the liver. Vitamins that dissolve in fat travel with them."

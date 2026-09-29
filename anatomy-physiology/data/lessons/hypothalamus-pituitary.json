@@ -62,6 +62,16 @@
       "effect": "The osmoreceptors fire less, and ADH release and thirst shut off: negative feedback."
     }
   ],
+  "ideas": [
+    "The anterior pituitary has no nerve link to the brain. The <b>hypophyseal portal system</b> joins it to the hypothalamus instead: blood passes through one capillary network in the hypothalamus, then through short portal veins down the infundibulum, then through a second capillary network in the anterior pituitary.",
+    "The hypothalamic hormones carried through those portal veins are named for what they do. A <b>releasing hormone</b> makes anterior pituitary cells release a hormone, as thyrotropin-releasing hormone (<b>TRH</b>) does for TSH. An <b>inhibiting hormone</b> holds release back, as somatostatin does for growth hormone and dopamine does for prolactin.",
+    "A <b>tropic hormone</b> (trop- = turning toward) has another endocrine gland as its target and makes that gland grow and release its own hormones. Thyroid-stimulating hormone (<b>TSH</b>) is one: it acts on the thyroid gland. The other anterior pituitary hormones are ACTH, FSH and LH, which are also tropic, plus prolactin and growth hormone, which act on ordinary tissues.",
+    "<b>Growth hormone</b> (<b>GH</b>) is a protein hormone that drives growth of bone, muscle and other tissues, mostly through IGF-1 from the liver, and makes fat cells break down stored fat. Too much GH in childhood, while the epiphyseal plates are open, causes <b>gigantism</b> (gigant- = giant); after they close, it causes acromegaly, thickening of the hands, feet and jaw.",
+    "The <b>thirst center</b> is a group of neurons in the hypothalamus that produce the conscious urge to drink. Osmoreceptors that sense rising plasma osmolarity excite it.",
+    "<b>Oxytocin</b> (oxy- = quick, toc- = childbirth) is a peptide made by hypothalamic neurons and released from the posterior pituitary. It strengthens uterine contractions in labor through positive feedback, and it makes cells around the milk-filled sacs of the breast contract during nursing.",
+    "<b>Diabetes insipidus</b> (insipidus = tasteless) is a lack of ADH or a failure of the kidneys to respond to it. The kidneys cannot keep water, so the person passes very large volumes of dilute urine and is constantly thirsty. Too much ADH (SIADH) does the opposite: urine is concentrated, and the plasma turns dilute with low sodium.",
+    "In <b>long-loop feedback</b>, the final hormone of an axis, released by the target gland, travels back in the blood and inhibits both the hypothalamus and the anterior pituitary. It is the main brake on each axis."
+  ],
   "misconception": {
     "wrong": "The pituitary gland is the master gland that runs the endocrine system on its own, and its posterior lobe makes ADH and oxytocin.",
     "right": "The hypothalamus controls the pituitary gland. It drives the anterior lobe with releasing and inhibiting hormones sent through the hypophyseal portal system, and its own neurons make ADH and oxytocin. The posterior lobe only stores those two hormones in axon terminals and releases them when the hypothalamic neurons fire. Feedback from the target glands then acts on both the hypothalamus and the pituitary."

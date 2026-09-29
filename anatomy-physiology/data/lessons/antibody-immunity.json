@@ -35,6 +35,10 @@
     { "cause": "IgG binds the microbe's antigens with its variable regions, leaving its Fc regions facing out.", "effect": "Phagocytes bind the Fc regions and engulf the coated microbe, and complement is activated on its surface." },
     { "cause": "The same antigen appears again months or years later.", "effect": "Memory B cells respond within days, making far more IgG than the first time: the secondary response." }
   ],
+  "ideas": [
+    "<b>Active immunity</b> is immunity your own immune system makes in response to an antigen, from an infection or a vaccine. It takes a week or more to develop, leaves memory cells, and lasts years to a lifetime.",
+    "<b>Passive immunity</b> is protection by antibodies that someone else made and transferred to you, such as IgG crossing from mother to fetus or antivenom given after a snakebite. It works at once, leaves no memory cells, and fades over days to months as the borrowed antibodies are broken down."
+  ],
   "misconception": {
     "wrong": "Antibodies kill microbes by themselves.",
     "right": "An antibody only binds. It blocks toxins and viruses from attaching to your cells (neutralization) and clumps microbes together (agglutination), but the killing is done by others that its Fc region calls in: complement, phagocytes that engulf antibody-coated microbes, and natural killer cells. That is why the class, which sets the Fc region, matters as much as what the antibody binds."

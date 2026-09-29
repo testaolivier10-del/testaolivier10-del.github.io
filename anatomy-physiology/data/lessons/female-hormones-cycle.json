@@ -59,6 +59,12 @@
       "effect": "The endometrium becomes secretory, and negative feedback keeps FSH and LH low until the corpus luteum dies 12 to 14 days later and the cycle restarts."
     }
   ],
+  "ideas": [
+    "The ovarian cycle has two phases around ovulation. In the <b>follicular phase</b>, follicles grow and one becomes dominant. After ovulation comes the <b>luteal phase</b>, when the corpus luteum is active; it is steadier than the follicular phase, usually 12 to 14 days.",
+    "Ovulation is triggered by <b>the LH surge</b>, a sharp rise in LH. It starts when estradiol from the dominant follicle stays high for about two days, so its effect on the hypothalamus and pituitary switches from negative to positive feedback.",
+    "<b>Menopause</b> (pausis = stopping) is the permanent end of periods, diagnosed after 12 months with none, at an average age of about 51. The ovaries make much less estrogen, which explains hot flashes and faster bone loss.",
+    "<b>Hormonal contraception</b> uses synthetic hormones. The combined pill holds a synthetic estrogen and a progestin, a synthetic hormone that acts like progesterone; taken daily, they keep negative feedback on the hypothalamus and pituitary switched on, so there is no LH surge and no ovulation."
+  ],
   "misconception": {
     "wrong": "Ovulation happens on day 14 of every cycle.",
     "right": "Day 14 is ovulation in the 28-day model cycle only. Cycle length varies, and most of the variation falls before ovulation, in the follicular phase. The luteal phase is steadier, usually 12 to 14 days, so ovulation comes about two weeks before the next period starts: around day 18 in a 32-day cycle, and around day 10 in a 24-day one."

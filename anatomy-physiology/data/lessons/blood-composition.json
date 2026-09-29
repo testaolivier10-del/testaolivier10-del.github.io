@@ -34,6 +34,10 @@
     { "cause": "This osmotic pull opposes the blood pressure pushing fluid out through the capillary walls.", "effect": "Most of the water in plasma stays in the blood, and plasma volume holds steady." },
     { "cause": "If a failing liver makes too little albumin, the osmotic pull weakens.", "effect": "More water leaves the blood for the tissues, which swell, and plasma volume falls." }
   ],
+  "ideas": [
+    "The <b>hematocrit</b> (hemat- = blood, -crit = to separate) is the percentage of a blood sample's volume made up of red blood cells. Spin a tube of blood and divide the height of the packed red column by the total height, then multiply by 100%; typical values are about 37-47% in women and 42-52% in men.",
+    "<b>Lymphoid stem cells</b> (from Latin lympha = clear water) are the branch of marrow stem cells that gives rise to one family of white blood cells. Myeloid stem cells give rise to red blood cells, platelet-making cells and most other white blood cells. Signaling molecules called <b>colony-stimulating factors</b> bind receptor proteins on marrow cells and make them divide and mature into white blood cells."
+  ],
   "misconception": {
     "wrong": "A high hematocrit means the body is making too many red blood cells.",
     "right": "The hematocrit is a ratio: red cell volume divided by total blood volume. It rises when red cells increase, but it also rises when plasma is lost, as in dehydration, with no change in red cell production. Giving fluid brings it back down within hours. Before you read a hematocrit, ask which part of the ratio moved."

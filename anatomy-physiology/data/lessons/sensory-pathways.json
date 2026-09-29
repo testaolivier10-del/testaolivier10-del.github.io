@@ -35,6 +35,12 @@
     { "cause": "A third-order neuron in the left thalamus fires.", "effect": "Its axon reaches the foot area of the left primary somatosensory cortex, near the top of the postcentral gyrus." },
     { "cause": "The left cortex receives the signal on a line that always reports the right foot.", "effect": "You perceive a sharp pain in your right foot, even though every neuron above the cord's crossing point lies on the left." }
   ],
+  "ideas": [
+    "<b>Proprioception</b> (proprio- = one's own) is your sense of where your body parts are. Its sensory receptors sit in muscles, tendons and joint capsules and report muscle length, tension and joint angle. <b>Interoceptors</b> (intero- = inside) respond to stimuli inside your body, from internal organs and blood vessels.",
+    "<b>Nociception</b> (noci- = harm) is the neural process of detecting and signaling tissue damage. <b>Pain</b> is the unpleasant experience your brain produces from those signals, so the two usually travel together but not always.",
+    "<b>Referred pain</b> is pain from an internal organ felt in an area of skin or muscle, as when a heart attack aches in the left arm. Sensory axons from the organ and from that skin patch converge on the same second-order neurons in the spinal cord, and your brain assigns the signal to the skin.",
+    "The face has no dorsal roots, so touch, pain and temperature from the face travel in the trigeminal nerve. The <b>trigeminal sensory pathway</b> follows the same three-neuron plan as the spinal pathways, starting in the trigeminal ganglion beside the pons."
+  ],
   "misconception": {
     "wrong": "All sensory signals from one side of the body cross to the other side at the same place, so damage to one side of the spinal cord removes all feeling on one side.",
     "right": "The two main pathways cross at different levels. Pain and temperature axons (spinothalamic tract) cross in the spinal cord, within a segment or two of where they enter. Fine touch, vibration and position axons (dorsal column–medial lemniscus) climb on the same side and cross in the medulla. So damage to the left half of the cord removes fine touch and position on the left but pain and temperature on the right."

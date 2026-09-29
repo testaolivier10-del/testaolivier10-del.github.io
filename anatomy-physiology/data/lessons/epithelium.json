@@ -46,6 +46,13 @@
       "effect": "The surface becomes a tough, dry layer of dead cells that flakes off and is replaced from below."
     }
   ],
+  "ideas": [
+    "<b>Simple squamous epithelium</b> is a single layer of flat cells (squama = scale), which gives the shortest possible path for diffusion. It forms the thin wall of the lung's air sacs, the <b>endothelium</b> (endo- = within) lining your heart and every blood vessel, and the <b>mesothelium</b> (meso- = middle), the surface layer of each serous membrane.",
+    "<b>Simple cuboidal epithelium</b> is a single layer of cube-shaped cells with room for many mitochondria and much rough ER and Golgi. It secretes and absorbs, and lines small ducts and the fluid-processing tubes of the kidney.",
+    "<b>Simple columnar epithelium</b> is a single layer of tall cells that lines your digestive tract from the stomach to the end of the intestines. Its cells absorb, and scattered among them are <b>goblet cells</b> (goblet = cup) that fill with mucus, a slippery gel, and release it by exocytosis.",
+    "<b>Transitional epithelium</b> is stratified and stretches. In an empty urinary bladder its surface cells are large and dome-shaped; as the bladder fills, they flatten and the sheet thins from five or six cells to two or three, sliding past each other instead of tearing.",
+    "<b>Stratified cuboidal</b> and <b>stratified columnar epithelium</b> are rare. The first usually has two layers of cube-shaped cells and lines larger sweat ducts; the second has tall cells on shorter ones and lines parts of the male urethra and some very large ducts. Both often appear where one epithelium changes into another."
+  ],
   "misconception": {
     "wrong": "Pseudostratified epithelium has several layers of cells, because you can see several rows of nuclei.",
     "right": "Every cell in pseudostratified epithelium touches the basement membrane, so it is a single layer. The cells are different heights, and only the tall ones reach the surface, so their nuclei sit at different levels. That is why it only looks stratified (pseudo- = false). In a truly stratified epithelium, the upper cells rest on other cells and never touch the basement membrane."

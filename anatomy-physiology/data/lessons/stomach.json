@@ -35,6 +35,13 @@
     { "cause": "Acid keeps accumulating and the pH in the antrum falls below about 3.", "effect": "D cells release somatostatin, which shuts off gastrin release." },
     { "cause": "With less gastrin, the parietal cells receive a weaker stimulus.", "effect": "Acid secretion falls: negative feedback keeps the stomach from over-acidifying." }
   ],
+  "ideas": [
+    "<b>Intrinsic factor</b> is a glycoprotein secreted by parietal cells. In the small intestine it binds vitamin B12, and only the B12-intrinsic factor combination can be taken up, by the cells lining the last part of the small intestine. Without it you absorb almost none of the B12 in your food.",
+    "A <b>zymogen</b> (zym- = ferment, -gen = producing), also called a proenzyme, is an inactive enzyme precursor. Chief cells release pepsinogen, a zymogen. In acid, pepsinogen cuts a piece off itself and becomes active pepsin, which activates more, so the enzyme is switched on only in the stomach lumen.",
+    "Gastric secretion runs in three phases. The <b>cephalic phase</b> (cephal- = head) starts before food arrives, driven by the vagus nerves. The <b>gastric phase</b> starts when food reaches the stomach and gives half or more of the acid. The <b>intestinal phase</b> begins as chyme enters the small intestine, and mostly reduces secretion and slows emptying.",
+    "<b>Chyme</b> (Greek chymos = juice) is the soupy, acidic paste that the stomach's mixing waves make from a meal over a few hours. <b>Gastric emptying</b> is the passage of chyme from the stomach into the small intestine; when acid, fat or a very concentrated solution reaches the small intestine, CCK, secretin and the <b>enterogastric reflex</b> weaken the stomach's waves and tighten the pylorus, so emptying slows.",
+    "A <b>peptic ulcer</b> is an open sore where acid and pepsin have eroded through the mucosa of the stomach or the first part of the small intestine. <b>Helicobacter pylori</b>, a spiral bacterium living in the mucus layer, and NSAID drugs break down the mucosal barrier and cause most of them."
+  ],
   "misconception": {
     "wrong": "The stomach is where most food is digested and absorbed, and its acid does the digesting.",
     "right": "Acid denatures proteins, kills microbes and activates pepsin, but splits few bonds itself. Pepsin does only a minority of protein digestion, and the stomach absorbs almost no nutrients. The small intestine does most digestion and nearly all absorption. People whose stomach has been removed digest food well on small meals; what they cannot do without is intrinsic factor, so they need vitamin B12 injections."

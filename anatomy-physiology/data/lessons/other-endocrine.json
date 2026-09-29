@@ -34,6 +34,14 @@
     { "cause": "More red blood cells enter the blood over days to weeks.", "effect": "Each liter of blood carries more oxygen, so oxygen delivery to the tissues rises." },
     { "cause": "Oxygen delivery to the kidney rises back toward normal.", "effect": "EPO release falls back: negative feedback." }
   ],
+  "ideas": [
+    "The thymus, large in childhood, releases a family of peptides called <b>thymosins</b> from its epithelial cells. They help immature white blood cells mature there, though much of their effect seems to be local, inside the thymus.",
+    "<b>Testosterone</b> (testo- = testis, -sterone = a steroid) is the main androgen. The testes release it when LH arrives from the anterior pituitary, and it drives the male changes of puberty, maintains sperm production and builds muscle and bone.",
+    "<b>Atrial natriuretic peptide</b> (ANP; natri- = sodium, -uretic = relating to urine) is released by stretched muscle cells in the heart's upper chambers. It makes the kidneys excrete more sodium and water, which lowers blood volume and pressure.",
+    "<b>Leptin</b> (lept- = thin) is released by fat cells roughly in proportion to how much fat they hold. It binds receptor proteins on hypothalamic neurons that control eating: when leptin is high they reduce food intake, and when it falls they drive hunger. In most obesity leptin is high, but the brain responds weakly to it (leptin resistance).",
+    "<b>Anabolic steroids</b> (ana- = up, -bolic = throwing) are testosterone and synthetic chemicals that act like it. At high doses they bind androgen receptor proteins in skeletal muscle and increase protein synthesis, and negative feedback cuts LH and FSH, so the testes shrink and make less testosterone and fewer sperm.",
+    "A <b>circadian rhythm</b> (circa = about, dies = day) is any body process that rises and falls on a cycle of about 24 hours. The <b>suprachiasmatic nucleus</b>, a pair of tiny neuron clusters in the hypothalamus just above the optic chiasm, is the master clock that keeps these rhythms in step, reset each day by light."
+  ],
   "misconception": {
     "wrong": "Melatonin is a sleeping pill the brain makes; taking more of it at any time will make you sleep.",
     "right": "Melatonin is mainly a timing signal. The pineal gland releases it in darkness, under control of the suprachiasmatic nucleus, and it tells the body's clocks that it is night. Its direct sleep-promoting effect is modest. Taken at the right time, a small dose shifts the body clock, which helps jet lag and shift work; taken at the wrong time, it can shift the clock the wrong way."

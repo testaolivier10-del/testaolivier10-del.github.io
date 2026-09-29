@@ -34,6 +34,10 @@
     { "cause": "Antibodies bound to the cells switch on plasma proteins that punch holes in their membranes.", "effect": "The donor cells burst (hemolysis) and release hemoglobin into the plasma." },
     { "cause": "Free hemoglobin and chemical signals from the attack flood the blood.", "effect": "Fever, chills, back pain, dark urine and falling blood pressure follow, and the kidneys can fail: a transfusion reaction." }
   ],
+  "ideas": [
+    "The <b>Rh factor</b> is the D antigen, a protein in the red cell membrane, named for the rhesus monkeys in which a related antigen was first studied. An <b>Rh positive</b> person's red cells carry it and need only one working gene copy; an <b>Rh negative</b> person's red cells lack it. Unlike ABO, an Rh negative person makes anti-D antibodies only after exposure to Rh positive red cells.",
+    "<b>Hemolytic disease of the newborn</b> (HDN) is the destruction of a fetus's red cells by its mother's antibodies; its most severe form is caused by the Rh factor. An Rh negative mother carrying an Rh positive fetus begins making anti-D when fetal red cells enter her blood, mostly at birth. In a later pregnancy her anti-D crosses to the fetus and attacks its Rh positive red cells."
+  ],
   "misconception": {
     "wrong": "An Rh-negative person has anti-D antibodies from birth, just as a type A person has anti-B.",
     "right": "Anti-A and anti-B appear in infancy without any exposure to other blood. Anti-D does not: an Rh-negative person makes it only after meeting Rh-positive red cells, through a transfusion or a pregnancy. That is why a first Rh-mismatched transfusion usually causes no immediate reaction, why a first Rh-positive baby is usually unharmed, and why the injection of anti-D after delivery, which stops the mother making her own, works."

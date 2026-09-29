@@ -34,6 +34,10 @@
     { "cause": "The bones shift farther than usual against each other.", "effect": "The joint surfaces shear and stretch pain-sensitive tissue, so standing on one leg or climbing stairs hurts at the front of the pelvis." },
     { "cause": "After delivery, the hormone levels fall and the collagen tightens again.", "effect": "The tissue stretches less, the gap narrows back toward 4 to 5 mm, and the joint returns to being only slightly movable." }
   ],
+  "ideas": [
+    "A joint, or <b>articulation</b> (articul- = joint, -ation = the act of), is any place where a bone meets another bone, a cartilage or a tooth. The root arthr/o also means joint.",
+    "Joints are also sorted by how much they move. A <b>synarthrosis</b> (syn- = together) is immobile or nearly so, such as the sutures of the skull. An <b>amphiarthrosis</b> (amphi- = on both sides) is slightly movable, such as the pubic symphysis. A diarthrosis (dia- = through, apart) is freely movable, and almost all synovial joints are diarthroses."
+  ],
   "misconception": {
     "wrong": "A joint is a place where bones move.",
     "right": "A joint is any place where a bone meets another bone, a cartilage or a tooth. Many joints barely move or do not move at all: the sutures of an adult skull and the joint between a tooth and its socket are joints, and they are classified as synarthroses (immobile joints). How much a joint moves depends on the tissue between the bones."

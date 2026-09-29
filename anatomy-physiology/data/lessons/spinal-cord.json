@@ -34,6 +34,10 @@
     { "cause": "In the dorsal horn it excites interneurons and neurons whose axons turn up the cord.", "effect": "The signal climbs the white columns in an ascending tract toward the brain, and local interneurons pass it to the ventral horn." },
     { "cause": "Motor neurons in the ventral horn are excited.", "effect": "Their axons leave through the ventral root and the joined nerve and reach the leg muscles, which contract and lift the foot." }
   ],
+  "ideas": [
+    "In an adult the spinal cord ends short of the bottom of the vertebral column, at about the level of the first or second lumbar vertebra. It tapers to a cone there, the <b>conus medullaris</b> (conus = cone, medulla = marrow). Below it the canal holds only the <b>cauda equina</b> (cauda = tail, equus = horse), the lumbar and sacral nerve roots hanging in fluid.",
+    "In cross section, gray matter forms dorsal horns (sensory), ventral horns (motor neurons to skeletal muscle) and, from T1 to L2 only, small <b>lateral horns</b> holding sympathetic motor neurons. The white matter around it thins toward the lower end, because ascending axons join at every level and descending axons leave at every level."
+  ],
   "misconception": {
     "wrong": "The spinal cord runs the full length of the vertebral column, so a needle in the lower back risks piercing it.",
     "right": "In an adult the cord ends at the conus medullaris, at about the first or second lumbar vertebra, because the vertebral column grew longer than the cord. Below that, the dural sac holds only the cauda equina, roots floating in CSF, down to about the second sacral vertebra. A lumbar puncture between L3 and L4 enters this fluid, and the roots slide away from the needle."

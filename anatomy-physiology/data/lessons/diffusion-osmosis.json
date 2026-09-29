@@ -50,6 +50,11 @@
       "effect": "Water moves back out of her brain cells by osmosis, and they shrink toward their normal size."
     }
   ],
+  "ideas": [
+    "<b>Diffusion</b> (dif- = apart, fus- = pour) is the spreading of particles from where they are more concentrated to where they are less concentrated, driven by their own random motion and needing no energy input. Particles cross in both directions; <b>net diffusion</b> is the difference, and it stops at equilibrium even though the particles keep moving.",
+    "Net diffusion is faster with a steeper gradient, a higher temperature, smaller particles and a shorter distance. It is also faster with a larger <b>surface area</b>, the area of the surface the particles cross: double it and twice as many particles can cross each second. Diffusion time grows with the square of the distance: three times as far takes nine times as long.",
+    "<b>Osmotic pressure</b> is the pressure you would have to apply to a solution to stop water moving into it, from pure water, across a semipermeable membrane. It measures how strongly a solution draws water in. Each 1 mOsm/L of solute the membrane holds back gives about 19 mm Hg, so a small difference in particle count makes a large pressure."
+  ],
   "misconception": {
     "wrong": "When diffusion reaches equilibrium, the particles stop moving.",
     "right": "The particles never stop moving: their random motion comes from heat, and it continues at equilibrium. What stops is net diffusion. Once the particles are evenly spread, just as many cross one way each second as cross the other way, so there is no overall change. The same is true of water at the end of osmosis: water keeps crossing the membrane in both directions, in equal amounts."

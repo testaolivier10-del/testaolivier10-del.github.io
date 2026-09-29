@@ -34,6 +34,13 @@
     { "cause": "The keratinocyte is pushed into the stratum granulosum.", "effect": "Keratohyalin bundles its keratin, lamellar granules release lipid sheets between the cells, and the nucleus and organelles break down, so the cell dies." },
     { "cause": "The dead, keratin-filled cell reaches the stratum corneum (passing the stratum lucidum in thick skin).", "effect": "It lies flat among the lipid sheets, part of a tough, water-resistant layer, until the desmosomes holding it are broken down and it is shed." }
   ],
+  "ideas": [
+    "Your skin is the <b>integument</b> (in- = on, teg- = to cover), the covering of your body. Its surface layer is the epidermis, and beneath it lies the dermis.",
+    "<b>Melanocytes</b> (melan- = black, -cyte = cell) are pigment cells in the deepest layer of the epidermis. Each makes the pigment <b>melanin</b> and passes packets of it, called melanosomes, to nearby keratinocytes. There the melanin absorbs ultraviolet light and shades the cell's DNA.",
+    "<b>Tactile cells</b> (tact- = touch), also called Merkel cells, sit in the deepest layer of the epidermis. Each presses against the flattened end of a sensory nerve fiber and passes a signal to it when the skin is pressed. They are most numerous in your fingertips and lips.",
+    "The <b>dermis</b> has two layers. The <b>papillary layer</b> (papill- = nipple) is thin, loose connective tissue that rises into finger-like bumps, the <b>dermal papillae</b>, which push up into the epidermis and carry capillary loops. The <b>reticular layer</b> (reticul- = little net) is the thick, deep part, dense connective tissue with collagen bundles running in many directions.",
+    "<b>Skin color</b> comes mostly from melanin. Carotene, a yellow-orange plant pigment, and the red of blood seen through the skin add to it. Blood flow changes the color: <b>erythema</b> is redness from extra blood in the dermis, <b>pallor</b> is paleness from less, and <b>cyanosis</b> (cyan- = dark blue) is a bluish color when the blood in the skin has given up much of its oxygen."
+  ],
   "misconception": {
     "wrong": "People with darker skin have more melanocytes.",
     "right": "People of every skin tone have about the same number of melanocytes at a given body site. Skin color comes from what the melanocytes make and hand over: in darker skin the melanosomes are larger, more heavily pigmented, more numerous in the keratinocytes and slower to be broken down. Sun exposure raises melanin output (a tan) without adding melanocytes."

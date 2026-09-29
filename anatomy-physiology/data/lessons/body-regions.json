@@ -31,6 +31,12 @@
     { "cause": "A problem inflames the parietal layer of the peritoneum on the abdominal wall.", "effect": "Pain becomes sharp and fixed at that spot, so the patient can point to one quadrant." },
     { "cause": "The team records that quadrant in shared terms.", "effect": "Everyone examines, images and operates on the same place." }
   ],
+  "ideas": [
+    "<b>Regional terms</b> name areas of the body surface, mostly from Latin or Greek roots. Anatomy uses everyday words strictly: the <b>brachial</b> region (Latin brachium = arm) is the arm from shoulder to elbow, the <b>antebrachial</b> region is the forearm from elbow to wrist, the <b>femoral</b> region is the thigh, and the <b>crural</b> region (Latin crus = leg) is the leg from knee to ankle.",
+    "The lower back is the <b>lumbar</b> region (Latin lumbus = loin), and the navel is the umbilical region (Latin umbilicus = navel). The <b>antecubital</b> region (ante- = in front of, Latin cubitus = elbow) is the front of the elbow, the crease where it bends.",
+    "Two imaginary lines crossing at your navel, one vertical along the midsagittal plane and one horizontal along a transverse plane, make four <b>abdominal quadrants</b> (Latin quadrans = a fourth part): right upper, left upper, right lower and left lower. They are named for the patient's own right and left, and give a quick way to say where a pain or wound lies.",
+    "Two vertical and two horizontal lines make a finer grid of nine <b>abdominopelvic regions</b>. The top row is right hypochondriac, epigastric and left hypochondriac; the middle row is right lumbar, umbilical and left lumbar; the bottom row is right iliac, hypogastric and left iliac."
+  ],
   "misconception": {
     "wrong": "In anatomy, the arm is the whole upper limb and the leg is the whole lower limb.",
     "right": "Anatomically, the arm is only the part from the shoulder to the elbow (the brachial region), and the forearm is from the elbow to the wrist (the antebrachial region). The leg is only the part from the knee to the ankle (the crural region); the thigh, from hip to knee, is the femoral region. A report of a fractured leg means a break below the knee."

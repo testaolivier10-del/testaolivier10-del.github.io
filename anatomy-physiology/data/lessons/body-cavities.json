@@ -31,6 +31,12 @@
     { "cause": "The film of fluid sits between two smooth, wet surfaces.", "effect": "The layers slide over each other with very little friction as the heart beats and the lungs expand." },
     { "cause": "Infection or injury makes the layers swollen and rough.", "effect": "Sliding turns into rubbing, so each movement causes sharp pain and a grating sound a clinician can hear." }
   ],
+  "ideas": [
+    "The <b>thoracic cavity</b> (Greek thorax = chest) is the part of the ventral cavity above the diaphragm, enclosed by your ribs. Side by side it holds two pleural cavities, one around each lung, and between them the <b>mediastinum</b> (Latin mediastinus = standing in the middle).",
+    "The mediastinum is a region, not a sealed space. It runs from your breastbone to your backbone and holds the heart, the large blood vessels attached to it and other central structures. Because it separates the two pleural cavities, trouble around one lung usually leaves the other working.",
+    "Three serous cavities lie in the ventral cavity, each a thin, fluid-filled gap between two serous layers, never the organ itself. The <b>pleural cavity</b> (Greek pleura = side, rib) surrounds each lung, and the <b>pericardial cavity</b> (peri- = around, cardi/o = heart) surrounds the heart within the mediastinum.",
+    "The <b>peritoneal cavity</b> is the thin space in the abdominopelvic cavity between the serous layer lining the abdominal wall and the layer covering the organs. The serous membrane there is the <b>peritoneum</b> (Greek peritonaion = stretched around), the largest serous membrane in your body."
+  ],
   "misconception": {
     "wrong": "The lungs sit inside the pleural cavity, and the heart sits inside the pericardial cavity.",
     "right": "A serous cavity is only the thin, fluid-filled space between the two layers of a serous membrane. The organ is wrapped by the visceral layer and lies outside that space, the way your fist pushed into a soft balloon is wrapped by the balloon but never enters the air inside it. The lung is in the thoracic cavity, but not in the pleural cavity."

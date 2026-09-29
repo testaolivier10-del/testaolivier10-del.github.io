@@ -34,6 +34,10 @@
     { "cause": "If a crumb slips past the seal, it touches sensory receptors in the lining of the larynx below the folds.", "effect": "Sensory fibers of the vagus nerve signal the brainstem, which triggers the cough reflex." },
     { "cause": "The cough reflex draws a deep breath in, closes the vocal folds, and contracts the abdominal wall muscles hard.", "effect": "Pressure builds in the chest; when the vocal folds open suddenly, a blast of air carries the crumb up and out." }
   ],
+  "ideas": [
+    "The <b>conducting zone</b> (con- = together, duc- = lead) is every passage that carries air but where no oxygen crosses into the blood: the nose, pharynx, larynx, trachea and the branching air tubes down to the smallest ones without alveoli. It filters, warms and humidifies air; only the respiratory zone, deep in the lungs, exchanges gases.",
+    "The <b>nasal cavity</b> (nas- = nose) is the air space inside your nose, split into right and left halves by the nasal septum. The conchae on its side walls make air swirl so particles stick to mucus, blood in the lining warms the air, and water evaporating from the mucus humidifies it."
+  ],
   "misconception": {
     "wrong": "The respiratory tract is one continuous gas-exchange surface, so oxygen starts entering the blood as soon as air enters the nose.",
     "right": "Oxygen and carbon dioxide cross between air and blood only in the respiratory zone, deep in the lungs, where alveoli have walls one thin cell thick. The nose, pharynx, larynx, trachea and the branching air tubes are the conducting zone: their walls are thick, glandular and ciliated, and they only filter, warm, humidify and deliver air."

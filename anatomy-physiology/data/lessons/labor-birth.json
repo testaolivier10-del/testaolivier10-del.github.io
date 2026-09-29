@@ -35,6 +35,10 @@
     { "cause": "Oxytocin binds its receptor proteins on myometrial cells and releases prostaglandins from the uterine lining.", "effect": "Contractions become stronger, which pushes the head down harder and stretches the cervix further, so the loop repeats, each time harder." },
     { "cause": "The cervix reaches full dilation and the baby is pushed out.", "effect": "The stretch stops, which ends the loop; the uterus keeps contracting, shears off the placenta and clamps the vessels of the placental bed." }
   ],
+  "ideas": [
+    "<b>Parturition</b> (parturire = to be in labor, -tion = process) is giving birth: the process by which the uterus pushes the fetus, then the placenta, out through the cervix and vagina. In <b>false labor</b> the uterus tightens irregularly without opening the cervix, while true labor is contractions that do.",
+    "The <b>postpartum period</b> (post- = after, partum = birth) is the roughly six weeks after birth while the reproductive organs return to their nonpregnant state. <b>Uterine involution</b> (in- = inward, volvere = to roll) is the shrinking of the uterus from about 1 kg just after birth to under 100 g by six weeks."
+  ],
   "misconception": {
     "wrong": "Oxytocin is what starts labor, and without it labor cannot happen or will stall.",
     "right": "Labor starts from changes in the uterus and placenta: gap junctions, oxytocin receptor proteins, prostaglandins, a ripening cervix and a uterus that stops responding to progesterone. Blood oxytocin barely rises before labor. Oxytocin's positive feedback loop makes contractions stronger once labor is under way, but mice lacking oxytocin give birth normally and women with very little oxytocin have had normal labors. Hospitals give oxytocin when contractions are weak, to strengthen them."

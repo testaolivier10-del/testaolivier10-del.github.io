@@ -31,6 +31,11 @@
     { "cause": "The density at each point is shown as a shade from black (air) to white (bone).", "effect": "You see a transverse section, viewed as if from the patient's feet." },
     { "cause": "The scanner builds a whole stack of transverse sections.", "effect": "The computer can rebuild the stack into sagittal or frontal sections without another scan." }
   ],
+  "ideas": [
+    "A <b>plane</b> is an imaginary flat surface passed through the body, and a <b>section</b> is the cut surface you see when the body or an organ is divided along it. The <b>sagittal plane</b> (Latin sagitta = arrow) is vertical and divides your body into right and left parts; a midsagittal plane gives equal halves, and a parasagittal plane (para- = beside) gives unequal parts.",
+    "The <b>frontal plane</b>, also called the coronal plane (Latin corona = crown), is vertical and divides your body into anterior and posterior parts, like a headband running from ear to ear over the top of the head.",
+    "An <b>oblique plane</b> (Latin obliquus = slanted) runs at an angle between the three main planes. The shape you see in any section depends on the direction of the cut: a tube cut across is a ring, cut lengthwise is two parallel walls, and cut at a slant is an oval."
+  ],
   "misconception": {
     "wrong": "A plain X-ray shows a slice through the body.",
     "right": "A radiograph is a projection, like a shadow. Every structure along each beam's path overlaps into one flat image, so the front and back of the chest lie on top of each other. CT, MRI and ultrasound make true sections; a plain X-ray does not."

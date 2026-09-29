@@ -35,6 +35,10 @@
     { "cause": "Each old strand is now paired with a new strand.", "effect": "Two identical double helices exist, each with one old and one new strand (semiconservative replication)." },
     { "cause": "The two copies of each chromosome stay joined at the centromere.", "effect": "Each chromosome now consists of two identical sister chromatids, ready to be shared between two new cells." }
   ],
+  "ideas": [
+    "A <b>gene</b> (gen- = to produce) is a segment of DNA whose base sequence codes for a working product; for most genes that product is a protein. Your <b>genome</b> (gene + -ome = the whole set) is all the DNA in one set of your chromosomes, and almost every cell in your body carries the same genome.",
+    "The phosphate groups along DNA's backbone carry a negative charge, and <b>histones</b> are positively charged proteins, so opposite charges pull the DNA tightly around them. About 147 base pairs wrap a core of eight histones to form a <b>nucleosome</b> (nucleo- = nucleus, -some = body), and strings of nucleosomes coil and fold into chromatin."
+  ],
   "misconception": {
     "wrong": "Chromosomes are always X-shaped, and each X is two chromosomes.",
     "right": "Most of the time your DNA is loose chromatin, and each chromosome is a single long DNA molecule. The X shape appears only after the DNA has been copied and packed tightly, when a cell is about to divide. Even then the X is one chromosome made of two sister chromatids, so a cell holding 46 X shapes has 46 chromosomes and 92 chromatids."

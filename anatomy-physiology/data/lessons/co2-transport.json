@@ -62,6 +62,9 @@
       "effect": "Every step reverses: bicarbonate re-enters the red blood cell, becomes carbon dioxide again, and diffuses into the alveoli to be breathed out."
     }
   ],
+  "ideas": [
+    "Blood carries carbon dioxide in three forms: about 7 to 10% dissolved, about 70% as bicarbonate in the plasma, and about 20 to 23% as <b>carbaminohemoglobin</b> (carb- = carbon, amino = amino group, hemo- = blood, globin = the protein). In it, carbon dioxide binds the amino groups at the ends of the globin chains, not the heme iron that oxygen binds, and deoxyhemoglobin forms it more readily than oxyhemoglobin."
+  ],
   "misconception": {
     "wrong": "Carbon dioxide travels mainly on hemoglobin, bound to the same site as oxygen.",
     "right": "Only about a fifth of the carbon dioxide in blood rides on hemoglobin, as carbaminohemoglobin, and it binds to the amino groups at the ends of the globin chains, not to the iron where oxygen binds. About 70% travels as bicarbonate ions in the plasma, made inside red blood cells by carbonic anhydrase. Carbon monoxide is the gas that competes with oxygen for the iron."

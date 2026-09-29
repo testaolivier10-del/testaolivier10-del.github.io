@@ -35,6 +35,11 @@
     { "cause": "Lactate and other chemicals from the starved muscle build up.", "effect": "They stimulate pain-sensing nerve endings, and the patient feels crushing chest pain." },
     { "cause": "Severe ischemia lasts more than about 20 to 30 minutes.", "effect": "The fibers die (a myocardial infarction), release troponin into the blood, and are later replaced by scar tissue that does not contract." }
   ],
+  "ideas": [
+    "<b>Oxygenated blood</b> has just passed through the lungs; its hemoglobin is about 97 to 98% loaded with oxygen and it is bright red. <b>Deoxygenated blood</b> (de- = removed) has just passed through the tissues; at rest its hemoglobin is still about 75% loaded, so it is not empty of oxygen.",
+    "The <b>pulmonary circuit</b> (pulmon- = lung) carries blood from the right ventricle through the lungs and back to the left atrium. The <b>systemic circuit</b> carries blood from the left ventricle to every other tissue and back to the right atrium.",
+    "<b>Systole</b> (systol- = contraction) is the contraction phase of a heart chamber, and diastole (diastol- = expansion) is its relaxation phase, when it refills. When a textbook says systole alone, it usually means ventricular systole."
+  ],
   "misconception": {
     "wrong": "Deoxygenated blood has no oxygen left in it, which is why it is blue.",
     "right": "At rest, blood returning to the heart is still about 75 percent loaded with oxygen; the tissues take only about a quarter of what arrives. No blood is blue. Deoxygenated blood is dark red, and veins only look blue through the skin because of how skin handles light. Diagrams use blue as a code."

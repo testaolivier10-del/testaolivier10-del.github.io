@@ -58,6 +58,10 @@
       "effect": "Arterial pressure rises back toward normal, the stretch-sensitive sensory receptors fire at their usual rate again, and autonomic tone returns to its resting balance."
     }
   ],
+  "ideas": [
+    "An organ that receives nerve fibers from both autonomic divisions has <b>dual innervation</b> (dual = two; in- = into, nerv- = nerve). The two divisions usually act in opposite directions on the same effector, and both fire all the time, so your nervous system can turn an organ up or down smoothly.",
+    "Sympathetic fibers called <b>vasomotor nerves</b> (vas- = vessel, motor = mover) supply the smooth muscle in most vessel walls. Their steady firing keeps the vessels partly constricted; more firing narrows them further, and less firing lets them widen."
+  ],
   "misconception": {
     "wrong": "The autonomic nervous system works on its own, independently of the brain.",
     "right": "Autonomic means self-governing, but the ANS is run by the CNS. Its preganglionic neurons sit in the brainstem and spinal cord; brainstem centers integrate autonomic reflexes; and the hypothalamus, fed by the limbic system and cortex, sets the overall balance. That is why fear speeds your heart and embarrassment makes you blush."

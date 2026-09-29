@@ -35,6 +35,12 @@
     { "cause": "H+ can return to the matrix only through ATP synthase.", "effect": "Its flow turns the enzyme's rotor, and each turn joins ADP and phosphate into ATP: chemiosmosis." },
     { "cause": "Most ATP in the cell is made this way.", "effect": "One glucose yields about 30–32 ATP, about 26–28 of them from oxidative phosphorylation." }
   ],
+  "ideas": [
+    "The <b>energy-consuming phase</b> (steps 1 to 5) of glycolysis spends 2 ATP as glucose is phosphorylated and split into two three-carbon sugar phosphates. In step 1, <b>hexokinase</b> (hex- = six, kinase = an enzyme that adds a phosphate from ATP) moves a phosphate from ATP onto carbon 6 of glucose, making <b>glucose-6-phosphate</b>, which traps glucose in the cell.",
+    "Liver and kidney cells have <b>glucose-6-phosphatase</b>, which removes the phosphate from glucose-6-phosphate and releases free glucose into the blood, whether it came from glycogen or from gluconeogenesis. Skeletal muscle has none, so its glucose-6-phosphate stays trapped and goes into glycolysis in that muscle.",
+    "<b>Acetyl CoA</b> (acetyl coenzyme A) is an acetyl group held on its carrier. It forms in the mitochondrial matrix when each pyruvate loses one carbon as CO2, which also makes NADH, and it enters the citric acid cycle. This step cannot be reversed, so carbons in acetyl CoA cannot become glucose again.",
+    "The citric acid cycle is also called the Krebs cycle and the <b>TCA cycle</b> (tricarboxylic acid cycle; tri- = three, since citrate has three carboxyl groups). When succinate gives two electrons and two hydrogen ions to FAD, it makes <b>FADH2</b>, which hands its electrons to complex II. Complex II pumps no H+, so those electrons pass only two pumps and yield about 1.5 ATP, against 2.5 for NADH."
+  ],
   "misconception": {
     "wrong": "The citric acid cycle makes most of your ATP.",
     "right": "The citric acid cycle makes only 2 ATP per glucose directly. Its real output is loaded electron carriers: 6 NADH and 2 FADH2 per glucose, plus CO2. The ATP from those carriers is made later, by the electron transport chain and ATP synthase. That is also why the cycle stops without oxygen even though it never uses oxygen itself: without the chain, NAD+ and FAD are not regenerated."

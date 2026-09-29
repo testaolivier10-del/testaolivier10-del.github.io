@@ -35,6 +35,9 @@
     { "cause": "The compressed heart cannot fill fully between beats.", "effect": "Each beat pumps out less blood." },
     { "cause": "Each beat pumps out less blood, and blood returning to the heart cannot get in.", "effect": "Blood pressure falls and the neck veins bulge: cardiac tamponade." }
   ],
+  "ideas": [
+    "The heart wall has three layers. The <b>epicardium</b> (epi- = upon) is the outermost, the visceral pericardium under another name, with fat that carries the heart's surface vessels and nerves. The <b>myocardium</b> (my/o = muscle) is the thick middle layer of cardiac muscle that does the pumping. The <b>endocardium</b> (endo- = within) is the smooth innermost lining."
+  ],
   "misconception": {
     "wrong": "The epicardium and the pericardium are two separate coverings, one on top of the other.",
     "right": "The epicardium is the visceral layer of the serous pericardium. It is one sheet of tissue with two names, because it is both the outer layer of the heart wall and the inner layer of the pericardium. Outside it lies the pericardial cavity, then the parietal layer and the fibrous pericardium."

@@ -34,6 +34,10 @@
     { "cause": "Wernicke's area sends the word forward along a curved band of white matter.", "effect": "Broca's area in the frontal lobe receives it and builds a speech plan." },
     { "cause": "Broca's area passes the plan to the face area of the primary motor cortex next to it.", "effect": "The primary motor cortex drives the muscles of the lips, tongue and throat, and you say the word." }
   ],
+  "ideas": [
+    "<b>Short-term memory</b> holds information for seconds to a minute unless you rehearse it. <b>Working memory</b> is short-term memory in use, such as holding a phone number while you dial it. <b>Long-term memories</b> last days to a lifetime. They are declarative (facts and events you can state) or procedural. <b>Procedural memory</b>, for skills and habits, uses the basal nuclei and cerebellum rather than the hippocampus.",
+    "An <b>EEG</b> (electroencephalogram; electro- = electric, encephal- = brain, -gram = record) records the brain's electrical activity through scalp electrodes: fast, small waves when you are awake, slow, large waves in deep sleep (N3). Sleep cycles about every 90 minutes through N1, N2, N3 and <b>REM sleep</b>, when the EEG looks awake, the eyes dart and most skeletal muscles are held limp."
+  ],
   "misconception": {
     "wrong": "Memories are stored in the hippocampus.",
     "right": "The hippocampus is needed to form new declarative memories and to consolidate them, but long-term memories end up stored in the cerebral cortex. Henry Molaison, who lost much of both hippocampi, could not form new memories of events, yet he kept his general knowledge from before his surgery and could still learn new skills, which depend on the basal nuclei and cerebellum."

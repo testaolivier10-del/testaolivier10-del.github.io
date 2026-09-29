@@ -47,6 +47,13 @@
       "effect": "The sensory receptors signal less, the commands weaken, and the effectors ease off: negative feedback switches itself off."
     }
   ],
+  "ideas": [
+    "<b>Homeostasis</b> (homeo- = alike, -stasis = standing still) is the maintenance of fairly stable conditions inside your body while conditions outside change. It does not mean nothing changes: each <b>regulated variable</b>, a condition your body actively holds within a normal range, swings up and down around its set point and is pulled back whenever it drifts.",
+    "A <b>sensory receptor</b>, also called a <b>sensor</b>, is a cell or group of cells that detects a change in a regulated variable, such as cold-sensitive nerve endings in your skin. It is a whole cell or structure, not a single receptor protein that binds a chemical messenger.",
+    "In <b>positive feedback</b>, the response pushes the regulated variable further in the same direction as the stimulus, so a bigger change causes a stronger response. The loop does not switch itself off; an outside event has to end it. Childbirth contractions and blood clotting are examples.",
+    "<b>Mass balance</b> says the amount of a substance in your body stays constant only if the amount coming in equals the amount going out. Inputs are what you absorb or breathe in plus what metabolism makes; outputs are what leaves in urine, feces, sweat and breath plus what metabolism uses up.",
+    "A <b>homeostatic imbalance</b> is a state in which a regulated variable stays outside its normal range because regulation has failed. The failure can be a sensor, the control center, a pathway or an effector, or a disturbance too large for the effectors to oppose."
+  ],
   "misconception": {
     "wrong": "Negative feedback lowers a variable, and positive feedback raises it.",
     "right": "\"Negative\" and \"positive\" describe the direction of the response compared with the stimulus, not whether the variable goes up or down. In negative feedback the response opposes the change: a fall in blood pH triggers a response that raises it, and that is still negative feedback. In positive feedback the response strengthens the change, pushing the variable further the way it was already going, whether that is up or down."

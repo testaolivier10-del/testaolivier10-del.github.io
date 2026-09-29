@@ -46,6 +46,14 @@
       "effect": "The cell responds, for example an airway smooth muscle cell relaxes; when the first messenger leaves and cAMP is broken down, the response ends."
     }
   ],
+  "ideas": [
+    "A <b>chemical messenger</b> is a molecule that one cell releases to change the activity of another cell. A <b>ligand</b> (Latin ligare = to bind) is any molecule that binds specifically to a site on a protein, so every chemical messenger is a ligand for the receptor protein it binds.",
+    "<b>Paracrine</b> signaling (para- = beside) sends a messenger by diffusion to neighboring cells, as when nitric oxide from a vessel lining relaxes the smooth muscle around it. <b>Autocrine</b> signaling (auto- = self) sends it to receptor proteins on the same cell that released it.",
+    "<b>Eicosanoids</b> (eicosa- = twenty) are local lipid messengers made from a 20-carbon fatty acid that enzymes cut out of membrane phospholipids. Cells make them on demand, and they act on nearby cells and break down within seconds to minutes. Prostaglandins and leukotrienes are eicosanoids.",
+    "A <b>neurotransmitter</b> is a chemical messenger that a neuron releases at a synapse. It crosses the narrow synaptic cleft by diffusion, binds receptor proteins on the postsynaptic cell, and is cleared within milliseconds, so the signal ends quickly.",
+    "<b>Intracellular receptor proteins</b> sit in the cytosol or nucleus and bind lipid-soluble messengers, such as steroids, that diffuse through the plasma membrane. The messenger-receptor pair then acts as a transcription factor, changing which genes are switched on, so responses start slowly and last for hours to days.",
+    "Target cells change how many receptor proteins they carry. <b>Down-regulation</b> is removing receptor proteins after a messenger stays high for a long time, so the response weakens. <b>Up-regulation</b> is adding receptor proteins after it stays low, so the cell becomes more sensitive."
+  ],
   "misconception": {
     "wrong": "A hormone affects every cell it reaches, because blood carries it everywhere.",
     "right": "Blood carries a hormone to nearly every cell, but only target cells respond: cells with receptor proteins that fit it. A cell without those receptor proteins ignores the hormone, however much is present. And the response depends on the receptor protein, not the messenger: the same messenger can make one cell contract and another relax."

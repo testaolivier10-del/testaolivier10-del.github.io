@@ -62,6 +62,12 @@
       "effect": "The same particles sit in less water, so sodium concentration and osmolality both rise."
     }
   ],
+  "ideas": [
+    "Hydrogen bonds pull your water molecules toward each other, a property called cohesion. Molecules at the surface have water neighbors only below and beside them, so they are pulled inward and the surface acts like a stretched skin. This inward pull is <b>surface tension</b>.",
+    "A <b>solution</b> is a mixture in which one substance is spread evenly, particle by particle, through another. The <b>solute</b> (solutus = loosened) is the substance that dissolves, and the <b>solvent</b> (solvere = to loosen) is what it dissolves in. In your body the solvent is almost always water.",
+    "A mixture holds substances combined without bonds. A solution's particles are single ions and small molecules that never settle. A <b>colloid</b> (kolla = glue, -oid = like) holds larger particles, such as the very large molecules in your blood's liquid part, that jostling water molecules keep from settling. In a <b>suspension</b> (suspendere = to hang) particles settle once stirring stops, as blood cells sink in a standing tube.",
+    "<b>Hydrophilic</b> (hydro- = water, -philic = loving) substances are ions and polar molecules, and they dissolve in water. <b>Hydrophobic</b> (-phobic = fearing) substances are nonpolar, such as oils, and they clump together. Nothing repels them: water molecules hold on to each other by hydrogen bonds and squeeze nonpolar molecules into clusters."
+  ],
   "misconception": {
     "wrong": "A high blood sodium means the body holds too much sodium.",
     "right": "Concentration is amount divided by volume. A person who loses water but not sodium, for example by drinking nothing for days, ends up with a high sodium concentration while holding a normal amount of sodium. A lab value tells you the ratio; the history tells you whether the solute rose or the water fell."

@@ -34,6 +34,10 @@
     { "cause": "Matrix builds up around the osteoblast until the cell is enclosed.", "effect": "It now sits in a lacuna and has become an osteocyte." },
     { "cause": "The osteocyte is walled in by mineral that nutrients cannot cross.", "effect": "It depends on its arms in the canaliculi, which link it to neighbors and to the vessels in the central canal." }
   ],
+  "ideas": [
+    "<b>Compact bone</b>, also called cortical bone, is the dense, ivory-white bone that forms the wall of a bone's shaft and a thin shell over every bone. It is built of parallel cylinders called osteons and is strongest along the bone's length.",
+    "<b>Spongy bone</b>, also called cancellous bone, is a lattice of thin bony struts called <b>trabeculae</b> (Latin, little beams) with marrow-filled spaces between them. It fills the ends of long bones and the inside of other bones, under a shell of compact bone, and its struts line up along the directions of the loads the bone carries."
+  ],
   "misconception": {
     "wrong": "Bone's strength comes from its minerals, so harder bone is always stronger bone.",
     "right": "Mineral makes bone hard and resistant to squeezing, but on its own it is brittle, like chalk. Collagen makes bone resist pulling and bend slightly before breaking. Bone with too little good collagen, as in brittle bone disease, snaps easily even when its mineral content is normal. Strength comes from the two together."

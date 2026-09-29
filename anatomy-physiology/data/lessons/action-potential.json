@@ -36,6 +36,12 @@
     { "cause": "Repolarization lets the sodium channels reset to the closed, ready state over a few milliseconds.", "effect": "The absolute refractory period ends, then the relative one, and the membrane can fire normally again." },
     { "cause": "Current from the firing patch spreads along the inside of the axon; myelin keeps it from leaking out.", "effect": "The next patch or node reaches threshold and fires, so the action potential moves forward: continuously in bare axons, node to node (saltatory) in myelinated ones." }
   ],
+  "ideas": [
+    "<b>Continuous conduction</b> is how an action potential travels along an unmyelinated axon. Voltage-gated channels line the whole membrane, so every patch fires in turn, next to the last, like a flame along a fuse. It is slow and costly, because ions cross the membrane along the whole length.",
+    "<b>Saltatory conduction</b> (Latin saltare = to leap) is how an action potential travels along a myelinated axon. Voltage-gated channels are packed at the nodes of Ranvier, so the action potential is regenerated only at the nodes and seems to leap from node to node. It is faster and uses less energy.",
+    "<b>Conduction velocity</b> is the speed at which an action potential travels along an axon, from about 0.5 m/s in the thinnest unmyelinated fibers to about 120 m/s in the widest myelinated ones. Myelin and a wider axon both raise it.",
+    "In a demyelinating disease, myelin is damaged or lost, and axons conduct slowly or not at all. <b>Multiple sclerosis</b> (scler- = hard, -osis = condition) is the commonest one: the immune system attacks the myelin of the brain and spinal cord, leaving hardened scars and symptoms such as numbness, weakness and blurred vision."
+  ],
   "misconception": {
     "wrong": "The refractory period happens because the sodium–potassium pump has to restore the ion concentrations after each action potential.",
     "right": "One action potential moves only a tiny fraction of the ions, and the pump works slowly in the background. The refractory period comes from the sodium channels: after they open they inactivate, and they cannot reset until the membrane repolarizes. While none are ready, no stimulus works (absolute); while only some are ready and potassium channels are still open, only a stronger stimulus works (relative)."

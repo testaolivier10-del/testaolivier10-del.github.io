@@ -62,6 +62,13 @@
       "effect": "The response ends within minutes."
     }
   ],
+  "ideas": [
+    "<b>Peptide hormones</b> are short chains of amino acids joined by peptide bonds, from a few to a few dozen. <b>Protein hormones</b> are longer chains, about 50 to 200 amino acids, folded into a shape. The two behave alike: both are water-soluble.",
+    "Lipid-soluble hormones travel mostly bound to carrier proteins, which act as a reservoir, and only <b>free hormone</b>, the part dissolved in the plasma, can leave the capillaries and bind target cells' receptor proteins. The <b>half-life</b> of a hormone is the time it takes for half of it to be removed from the blood; for most peptide and protein hormones it is a few minutes.",
+    "A lipid-soluble hormone binds its receptor protein inside the cell, and the hormone-receptor complex attaches to a <b>hormone response element</b>, a short, specific DNA sequence near the genes that the hormone controls. This changes which proteins the cell makes.",
+    "A <b>humoral stimulus</b> (humor = body fluid) is a change in the blood level of an ion or nutrient that acts directly on a gland. When the level of glucose in the blood rises after a meal, for example, it makes cells in the pancreas release a glucose-lowering hormone.",
+    "A hormone has a <b>permissive</b> effect when it must be present for another hormone to act fully. The thyroid gland's hormones make cells build more beta adrenergic receptor proteins, so with them present, epinephrine has its full effect, and without them it has much less."
+  ],
   "misconception": {
     "wrong": "Hormones enter their target cells to act.",
     "right": "Only lipid-soluble hormones (steroids and the thyroid gland's amines) enter cells to act; steroids diffuse through the bilayer, and the thyroid gland's amines cross on transporter proteins. Water-soluble hormones, which include all peptide and protein hormones and epinephrine, do not need to enter: they bind a receptor protein in the plasma membrane, and second messengers carry the signal inside. That difference is why water-soluble hormones act in seconds to minutes and lipid-soluble ones in hours."

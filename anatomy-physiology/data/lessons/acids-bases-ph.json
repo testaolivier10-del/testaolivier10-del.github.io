@@ -50,6 +50,11 @@
       "effect": "The hydrogen ion concentration falls back, and blood pH returns to its normal range of 7.35 to 7.45."
     }
   ],
+  "ideas": [
+    "A <b>salt</b> is an ionic compound that separates in water into cations and anions other than H+ and OH−. When an acid and a base meet, the H+ and OH− join into water and the leftover ions make a salt: hydrogen chloride and sodium hydroxide leave sodium chloride. This reaction is called neutralization.",
+    "Blood pH below 7.35 is <b>acidemia</b> and above 7.45 is alkalemia; these words describe the measured state of the blood. <b>Acidosis</b> (-osis = condition, process) is a process that adds acid or removes base and pushes pH down, and alkalosis is a process that pushes it up.",
+    "A <b>buffer</b> is a pair of substances that resists changes in pH: a weak acid and the weak base it becomes after releasing its hydrogen ion. Added H+ is taken up by the weak base, and lost H+ is replaced by the weak acid. A buffer swaps a strong acid or base for a weak one, so pH still moves, but far less."
+  ],
   "misconception": {
     "wrong": "A fall in blood pH from 7.4 to 7.1 is a small change, because 0.3 is a small number.",
     "right": "The pH scale is logarithmic: each whole unit is a tenfold change in hydrogen ion concentration, and every 0.3 units is a doubling. A fall from 7.4 to 7.1 takes the hydrogen ion concentration from about 40 to about 80 nmol/L, twice as many hydrogen ions in every liter. That is why blood pH is reported to two decimal places and why a value of 7.10 is serious."

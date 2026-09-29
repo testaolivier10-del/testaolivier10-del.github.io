@@ -34,6 +34,11 @@
     { "cause": "Collagen is always being replaced, and the replacement is now faulty.", "effect": "Small vessel walls, gums, skin and healing wounds lose strength." },
     { "cause": "Weak small vessels break under ordinary pressure, and wounds cannot build strong scar tissue.", "effect": "The person bruises easily, bleeds from the gums and heals poorly: scurvy." }
   ],
+  "ideas": [
+    "An <b>essential nutrient</b> is one your body cannot make, or cannot make fast enough, so it must come from food; every vitamin and mineral qualifies. Of the 20 amino acids in your proteins, 9 are <b>essential amino acids</b> that your cells cannot build. If one is missing, ribosomes stall at that spot, the protein is not finished, and the unused amino acids are broken down for fuel.",
+    "A <b>calorie</b> (calor- = heat) is the heat needed to raise the temperature of 1 gram of water by 1 °C. Food energy is given in <b>kilocalories</b> (kilo- = thousand): 1 kilocalorie (kcal) = 1,000 calories. Carbohydrate and protein supply about 4 kcal per gram, and fat about 9.",
+    "<b>Zinc</b> is a trace mineral that works as a cofactor for more than 300 enzymes and is needed for gene regulation, immune cells, wound healing and taste. Too little causes slow growth, poor wound healing, loss of taste and frequent infections."
+  ],
   "misconception": {
     "wrong": "Vitamins give you energy.",
     "right": "Vitamins supply no energy at all: a vitamin tablet has 0 kcal. Only carbohydrate, protein and fat (and alcohol) supply energy. Many B vitamins are parts of coenzymes, such as NAD+ and FAD, that the enzymes of fuel breakdown need, so a lack of them does leave a person tired. But once your cells have enough, extra B vitamins do not release any more energy; the extra leaves in the urine."

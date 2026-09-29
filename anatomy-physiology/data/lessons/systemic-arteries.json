@@ -34,6 +34,13 @@
     { "cause": "The wave reaches an artery that runs close to the skin over bone, such as the radial artery at the wrist.", "effect": "The artery wall pushes outward against a fingertip pressing it onto the bone, and you feel a pulse." },
     { "cause": "Each beat that ejects enough blood sends one wave.", "effect": "Counting the pulse for a set time gives the heart rate, and a pulse that is missing or weak points to low pressure or a blocked or squeezed artery upstream." }
   ],
+  "ideas": [
+    "The <b>descending aorta</b> runs down in front of the spine from the end of the aortic arch. It is the thoracic aorta in the chest and, below the diaphragm, the <b>abdominal aorta</b>, which ends near your navel by splitting into two branches, each a <b>common iliac artery</b>.",
+    "The <b>brachiocephalic trunk</b> (brachi- = arm, cephal- = head) is a short vessel off the aortic arch that splits into the right subclavian artery and the right common <b>carotid artery</b>. There is no left trunk: the left common carotid artery arises straight from the arch.",
+    "The <b>cerebral arterial circle</b> (circle of Willis) is a ring of arteries around the base of the brain. It is an anastomosis, a connection between arteries that gives blood a second route if one internal carotid artery narrows.",
+    "The <b>celiac trunk</b> (celi- = belly) is a vessel about 1 cm long that comes off the abdominal aorta and splits at once into three branches, to the stomach, the spleen and the liver.",
+    "Each time your left ventricle ejects blood, the aorta's wall bulges and a wave of pressure runs down every artery: the pulse. <b>Pulse points</b> are places where an artery runs close to the surface over something firm and you can feel it, such as the <b>carotid pulse</b> at your neck."
+  ],
   "misconception": {
     "wrong": "Each side of the aortic arch branches the same way: a trunk on the left matches the brachiocephalic trunk on the right.",
     "right": "Only the right side has a brachiocephalic trunk. It splits into the right subclavian and right common carotid arteries. On the left, the common carotid and subclavian arteries leave the arch directly, so the arch has three branches, not four."

@@ -27,6 +27,9 @@
     { "cause": "Motor neurons in both facial nerve nuclei fire.", "effect": "Their axons carry action potentials out along the left and right facial nerves to the orbicularis oculi muscles." },
     { "cause": "Both orbicularis oculi muscles contract.", "effect": "Both eyes blink. Touch in on one nerve (V), movement out on another (VII): a missing blink on one side tells you which nerve failed." }
   ],
+  "ideas": [
+    "The <b>vagus nerve</b> (cranial nerve X; vagus = wandering) is the only cranial nerve that leaves the head and neck, reaching your chest and abdomen. Its motor axons move your throat and voice box, slow your heart and step up your gut's muscles and glands, while most of its axons, about 80%, carry signals the other way, from your heart, lungs and gut to your brainstem."
+  ],
   "misconception": {
     "wrong": "The facial nerve carries the feeling from the face, so a person with a paralyzed half face will also have a numb half face.",
     "right": "Feeling from the face travels in the trigeminal nerve (V). The facial nerve (VII) moves the muscles of facial expression and carries taste from the front of the tongue, but it carries almost no skin sensation. In Bell's palsy, a facial nerve problem, half the face cannot move, yet touch on that side feels normal."

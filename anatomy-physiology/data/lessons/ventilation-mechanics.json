@@ -35,6 +35,12 @@
     { "cause": "Alveolar pressure is now lower than atmospheric pressure.", "effect": "Air flows in through the airways down the pressure gradient." },
     { "cause": "As air enters, alveolar pressure rises back to atmospheric pressure.", "effect": "The gradient disappears and airflow stops: the end of inspiration." }
   ],
+  "ideas": [
+    "<b>Pneumothorax</b> (pneumo- = air, thorax = chest) is air in the pleural cavity. It breaks the pleural film, so intrapleural pressure rises toward atmospheric pressure, transpulmonary pressure falls toward zero, and nothing holds the lung open against its own recoil. Only the lung on that side collapses, because each lung has its own pleural cavity.",
+    "<b>Lung compliance</b> (compli- = to fill up, yield) is how much lung volume changes for each unit of change in transpulmonary pressure (compliance = ΔV ÷ ΔP). High compliance means the lungs inflate easily. Low compliance means stiff lungs that make your breathing muscles work harder, as with scar tissue or with too little surfactant, when surface tension pulls the alveoli shut.",
+    "<b>Airway resistance</b> is the opposition to airflow through the airways. It depends on the fourth power of the airway radius, so halving the radius raises resistance 16 times.",
+    "<b>Asthma</b> (Greek for panting) is a chronic inflammatory disease in which the bronchi and bronchioles narrow too easily and too much, by muscle contraction, swelling and mucus. Breathing out is hardest: expanding lungs pull the airways open as you breathe in, but as the lungs shrink that pull weakens and narrowed bronchioles narrow further."
+  ],
   "misconception": {
     "wrong": "Your lungs expand because air rushes into them, or because the lungs themselves pull the air in.",
     "right": "Lungs have no muscle of their own. The breathing muscles enlarge the thorax first; the pleural fluid film makes the lungs follow; the larger alveolar volume lowers alveolar pressure (Boyle's law); and only then does air flow in, down the pressure gradient. Expansion causes the airflow, not the other way round. That is why a lung collapses when air gets into its pleural cavity, even though its airways are wide open."
