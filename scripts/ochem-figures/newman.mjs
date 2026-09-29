@@ -235,7 +235,7 @@ FIGURES.push({
     s += tag(170, 24, 'A');
     s += newman(170, 110, 44, ETHANE_FRONT, ETHANE_STAG);
     s += rule(20, 212, 320, 212);
-    s += tag(170, 244, 'B');
+    s += tag(170, 232, 'B');
     s += newman(170, 330, 44, ETHANE_FRONT, ETHANE_ECL, { skew: 8 });
     s += text(170, 430, 'front H meet at the dot; back H start at the rim', { cls: 'fg-tag' });
     return s;
