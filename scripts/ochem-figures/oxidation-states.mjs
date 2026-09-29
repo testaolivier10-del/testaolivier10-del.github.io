@@ -57,7 +57,6 @@ function centre(c, groups) {
     const e = armEnd(c, g.deg, g.len || 48);
     s += bond(c, e, { rFrom: 16, rTo: g.l ? rOf(g.l) : 0, order: g.order || 1 });
     if (g.l) s += A(e, g.l, g.kind ? { kind: g.kind } : {});
-    if (g.l === 'O') s += lonePair(e.x, e.y, g.lp1 ?? 225, { dist: 21 }) + lonePair(e.x, e.y, g.lp2 ?? 315, { dist: 21 });
     ends[g.key || g.l || `v${g.deg}`] = e;
   }
   s += A(c, 'C', { kind: 'warn' });
@@ -239,22 +238,22 @@ FIGURES.push({
   viewBox: '0 0 760 384',
   build() {
     let s = '';
-    s += tag(124, 40, 'bonds to O, N, X');
-    s += tag(250, 40, 'one-carbon case');
-    s += tag(346, 40, 'oxidation state');
-    s += tag(404, 40, 'everything that shares the rung', { anchor: 'start' });
+    s += tag(112, 40, 'bonds to O, N, X');
+    s += tag(234, 40, 'one-carbon case');
+    s += tag(352, 40, 'oxidation state');
+    s += tag(420, 40, 'everything that shares the rung', { anchor: 'start' });
     s += rule(70, 52, 740, 52);
     RUNGS.forEach((r, i) => {
       const y = 84 + i * 56;
       if (r.hi) s += panel(80, y - 24, 660, 48, { kind: 'hi' });
-      s += label(124, y + 4, r.n);
-      s += label(250, y + 4, r.ex);
-      s += label(346, y + 4, r.ox);
+      s += label(112, y + 4, r.n);
+      s += label(234, y + 4, r.ex);
+      s += label(352, y + 4, r.ox);
       r.fam.forEach((f, j) => {
         const fy = r.fam.length === 1 ? y + 4 : y - 5 + j * 18;
-        s += text(404, fy, f, { cls: 'fg-lbl', size: 13, anchor: 'start' });
+        s += text(420, fy, f, { cls: 'fg-lbl', size: 13, anchor: 'start' });
       });
-      if (r.n === '3') s += tag(346, y + 20, 'RCO₂H: +3', { cls: 'fg-tag-mut' });
+      if (r.n === '3') s += tag(352, y + 20, 'RCO₂H: +3', { cls: 'fg-tag-mut' });
       if (i < RUNGS.length - 1) s += rule(70, y + 28, 740, y + 28);
     });
     s += arrow(P(40, 310), P(40, 70));
