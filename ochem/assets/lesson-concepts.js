@@ -245,9 +245,13 @@
       8:['phenol-acidity'],
       9:['phenol-acidity'] } },
 
-    'birch-reduction': { n:8, steps:{
-      2:['partial-reduction'], 3:['partial-reduction'], 4:['partial-reduction'],
-      6:['partial-reduction'], 7:['partial-reduction'] } },
+    'birch-reduction': { n:11, steps:{
+      3:['partial-reduction'],
+      4:['partial-reduction'],
+      5:['partial-reduction'],
+      7:['partial-reduction'],
+      9:['partial-reduction'],
+      10:['partial-reduction'] } },
 
     'diazonium-chemistry': { n:8, steps:{
       2:['diazonium-hub'], 3:['diazonium-hub'], 4:['diazonium-hub'],
