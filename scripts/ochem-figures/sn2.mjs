@@ -459,7 +459,7 @@ FIGURES.push({
   id: 'sn2-allylic',
   section: 'sn2',
   anchor: 'Allylic',
-  alt: 'The SN2 transition state for an allylic bromide, in brackets with a double dagger. Three carbons in a row, drawn skeletally: C3 double-bonded to C2 on the left, and C2 single-bonded to C1, the carbon under attack, on the right. Each carbon has a p orbital standing straight up and down. At C1 the nucleophile sits above and the bromine below, each joined by a dashed partial bond along the axis of C1’s p orbital and each marked delta minus. Labels: the C=C p orbitals; the p orbital at C1 holding the two half bonds; side-by-side overlap spreads the charge.',
+  alt: 'The SN2 transition state for an allylic bromide, in brackets with a double dagger. Three carbons in a row, drawn skeletally: C3 double-bonded to C2 on the left, and C2 single-bonded to C1, the carbon under attack, on the right. Each carbon has a p orbital standing straight up and down. At C1 the nucleophile sits above and the bromine below, each joined by a dashed partial bond along the axis of C1’s p orbital and each marked delta minus. Labels: the C=C p orbitals; the p orbital at C1 holding the two partial bonds; side-by-side overlap spreads the charge.',
   viewBox: '0 0 640 300',
   build() {
     let s = '';
@@ -477,7 +477,7 @@ FIGURES.push({
     s += text(c1.x + 26, y + 78, 'C1', { cls: 'fg-tag-mut' });
     s += brackets(96, 386, 14, 288);
     s += text(412, 70, 'C1’s p orbital holds', { cls: 'fg-tag', anchor: 'start' });
-    s += text(412, 86, 'both half bonds', { cls: 'fg-tag', anchor: 'start' });
+    s += text(412, 86, 'both partial bonds', { cls: 'fg-tag', anchor: 'start' });
     s += text(412, 150, 'it lies parallel to the', { cls: 'fg-tag', anchor: 'start' });
     s += text(412, 166, 'p orbitals of the C=C,', { cls: 'fg-tag', anchor: 'start' });
     s += text(412, 182, 'so they overlap side by side', { cls: 'fg-tag', anchor: 'start' });
