@@ -142,9 +142,13 @@
       10:['sugar-ring'],
       11:['sugar-ring'] } },
 
-    'amino-acids': { n:8, steps:{
-      2:['zwitterion'], 3:['zwitterion'], 4:['zwitterion'],
-      6:['zwitterion'], 7:['zwitterion'] } },
+    'amino-acids': { n:13, steps:{
+      2:['zwitterion'],
+      4:['zwitterion'],
+      5:['zwitterion'],
+      7:['zwitterion'],
+      11:['cip-priority'],
+      12:['zwitterion'] } },
 
     'peptides-proteins': { n:12, steps:{
       3:['peptide-bond'],

@@ -653,8 +653,8 @@ function ladder() {
   const pairs = [['A', 'T'], ['G', 'C'], ['C', 'G'], ['T', 'A']];
   const pur = (b) => b === 'A' || b === 'G';
   // rails
-  s += rule(xl, 84, xl, 386);
-  s += rule(xr, 84, xr, 386);
+  s += bond(P(xl, 84), P(xl, 386), { rFrom: 0, rTo: 0 });
+  s += bond(P(xr, 84), P(xr, 386), { rFrom: 0, rTo: 0 });
   for (const x of [xl, xr]) {
     for (const y of ys) {
       const pts = [0, 1, 2, 3, 4].map((i) => {
@@ -671,8 +671,8 @@ function ladder() {
     const [l, r] = pairs[i];
     const wl = pur(l) ? wPu : wPy, wr = inner - wl;
     const x0 = xl + 15;
-    s += bar(x0, y - 11, wl - 3, 22, { kind: pur(l) ? 'hi' : 'good' });
-    s += bar(x0 + wl + 3, y - 11, wr - 3, 22, { kind: pur(r) ? 'hi' : 'good' });
+    s += bar(x0, y - 11, wl - 3, 22, { kind: pur(l) ? 'hi' : 'good', opacity: 0.3 });
+    s += bar(x0 + wl + 3, y - 11, wr - 3, 22, { kind: pur(r) ? 'hi' : 'good', opacity: 0.3 });
     s += lbl(x0 + wl / 2, y + 5, l);
     s += lbl(x0 + wl + wr / 2, y + 5, r);
   });
@@ -683,9 +683,9 @@ function ladder() {
   s += tg(316, 84, '3′'); s += tg(316, 392, '5′');
   s += tg(170, 40, 'BACKBONES OUTSIDE, BASES INSIDE');
   s += tg(xl, 66, 'backbone'); s += tg(xr, 66, 'backbone');
-  s += bar(56, 420, 22, 14, { kind: 'hi' });
+  s += bar(56, 420, 22, 14, { kind: 'hi', opacity: 0.3 });
   s += tg(86, 432, 'purine (A or G)', 'fg-tag', 'start');
-  s += bar(56, 444, 22, 14, { kind: 'good' });
+  s += bar(56, 444, 22, 14, { kind: 'good', opacity: 0.3 });
   s += tg(86, 456, 'pyrimidine (C or T)', 'fg-tag', 'start');
   s += tg(170, 486, 'Every rung is one of each,');
   s += tg(170, 502, 'so every rung is the same width.');

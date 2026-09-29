@@ -209,11 +209,11 @@ FIGURES.push({
   build() {
     let s = '';
     s += text(170, 18, 'two wedges: both above the ring', { cls: 'fg-tag' });
-    s += ringPair(100, [1, 'C1', { x: -12, y: 16, a: 'end' }], [2, 'C2', { x: -12, y: -6, a: 'end' }], 'up', 'up');
+    s += ringPair(100, [1, 'C1', { x: -8, y: 14, a: 'end' }], [2, 'C2', { x: -8, y: -4, a: 'end' }], 'up', 'up');
     s += itext(170, 180, 'cis', '-1,2-dimethylcyclohexane', 'fg-tag-good');
     s += rule(10, 196, 330, 196);
     s += text(170, 218, 'one wedge, one hash: one above, one below', { cls: 'fg-tag' });
-    s += ringPair(292, [1, 'C1', { x: -12, y: 16, a: 'end' }], [2, 'C2', { x: -12, y: -6, a: 'end' }], 'up', 'down');
+    s += ringPair(292, [1, 'C1', { x: -8, y: 14, a: 'end' }], [2, 'C2', { x: -8, y: -4, a: 'end' }], 'up', 'down');
     s += itext(170, 374, 'trans', '-1,2-dimethylcyclohexane', 'fg-tag-warn');
     return s;
   },
@@ -227,17 +227,17 @@ FIGURES.push({
   section: 'cis-trans-ez',
   lessons: ['cis-trans-ez'],
   anchor: 'the wedges and hashes say which face each group is on.</p>',
-  viewBox: '0 0 340 392',
+  viewBox: '0 0 340 436',
   alt: 'Two more flat hexagon drawings, stacked. Top: 1,3-dimethylcyclohexane with both methyl groups on bold wedges, on carbons C1 and C3 with one carbon between them; this is the cis isomer. Bottom: 1,4-dimethylcyclohexane with the methyl on C1 on a wedge and the methyl on C4, across the ring, on a hashed bond; this is the trans isomer.',
   build() {
     let s = '';
     s += text(170, 18, 'two wedges, one carbon apart', { cls: 'fg-tag' });
-    s += ringPair(104, [0, 'C1', { x: -14, y: 4, a: 'end' }], [2, 'C3', { x: -12, y: -6, a: 'end' }], 'up', 'up');
-    s += itext(170, 190, 'cis', '-1,3-dimethylcyclohexane', 'fg-tag-good');
-    s += rule(10, 206, 330, 206);
-    s += text(170, 228, 'a wedge and a hash, across the ring', { cls: 'fg-tag' });
-    s += ringPair(300, [0, 'C1', { x: -14, y: 4, a: 'end' }], [3, 'C4', { x: -14, y: 2, a: 'end' }], 'up', 'down');
-    s += itext(170, 386, 'trans', '-1,4-dimethylcyclohexane', 'fg-tag-warn');
+    s += ringPair(96, [1, 'C1', { x: -10, y: 14, a: 'end' }], [3, 'C3', { x: 0, y: -12 }], 'up', 'up');
+    s += itext(170, 226, 'cis', '-1,3-dimethylcyclohexane', 'fg-tag-good');
+    s += rule(10, 240, 330, 240);
+    s += text(170, 262, 'a wedge and a hash, across the ring', { cls: 'fg-tag' });
+    s += ringPair(336, [1, 'C1', { x: -10, y: 14, a: 'end' }], [4, 'C4', { x: 10, y: -2, a: 'start' }], 'up', 'down');
+    s += itext(170, 428, 'trans', '-1,4-dimethylcyclohexane', 'fg-tag-warn');
     return s;
   },
   caption: 'The spacing changes, and the reading does not: same kind of bond is cis, a wedge and a hash is trans.',
