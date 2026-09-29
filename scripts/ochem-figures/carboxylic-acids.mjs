@@ -383,7 +383,7 @@ const donationCells = [
     t += text(m.c.x - 26, m.c.y - 14, 'δ+', { cls: 'fg-tag', size: 11, anchor: 'end' });
     return t;
   }],
-  ['ACETONE', ['only CH₃ groups: no lone pair to give', 'larger δ+: the better electrophile'], (Q, w) => {
+  ['ACETONE', ['CH₃ groups donate only a little', 'larger δ+: the better electrophile'], (Q, w) => {
     const c = Q(w / 2, 104);
     const o = armEnd(c, 90, 54), m1 = armEnd(c, 210, 54), m2 = armEnd(c, 330, 54);
     let t = bond(c, o, { rFrom: 16, rTo: 15, order: 2 }) + bond(c, m1, { rFrom: 16, rTo: 19 }) + bond(c, m2, { rFrom: 16, rTo: 19 });
