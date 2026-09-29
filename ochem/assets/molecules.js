@@ -66,7 +66,7 @@
       h3: { x:224, y:64, r:12, label:'H' }
     },
     bonds: [{a:'n',b:'h1'},{a:'n',b:'h2'},{a:'n',b:'h3'}],
-    caption: 'Four electron groups, three of them bonds — trigonal pyramidal.'
+    caption: 'Ammonia, NH₃.'
   };
 
   M['methane'] = {
@@ -102,7 +102,7 @@
       h2: { x:222, y:132,r:12, label:'H' }
     },
     bonds: [{a:'c',b:'o',order:2},{a:'c',b:'h1'},{a:'c',b:'h2'}],
-    caption: 'The simplest carbonyl: no alkyl groups to shield the carbon at all.'
+    caption: 'Formaldehyde, H₂C=O.'
   };
 
   M['hydrogen-cyanide'] = {
@@ -128,7 +128,7 @@
       h:  { x:160, y:148,r:12, label:'H', role:'priority-4', note:'Lowest priority — the one that must point away from you before you read the rotation.' }
     },
     bonds: [{a:'c',b:'br'},{a:'c',b:'cl'},{a:'c',b:'f',style:'wedge'},{a:'c',b:'h',style:'dash'}],
-    caption: 'Four different groups on one carbon. Priorities by atomic number: Br > Cl > F > H.'
+    caption: 'CHBrClF: one carbon bonded to H, F, Cl and Br.'
   };
 
   M['butan-2-ol'] = {
@@ -157,7 +157,7 @@
       c3: { x:228, y:124,r:15, label:'C', role:'duplicate', note:'The other identical methyl.' }
     },
     bonds: [{a:'c2',b:'o'},{a:'o',b:'ho'},{a:'c2',b:'h'},{a:'c2',b:'c1'},{a:'c2',b:'c3'}],
-    caption: 'Looks like butan-2-ol at a glance. Two identical methyls make it achiral.'
+    caption: 'Propan-2-ol, (CH₃)₂CHOH.'
   };
 
   M['fischer-glyceraldehyde'] = {
@@ -237,7 +237,7 @@
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
             {a:'r5',b:'me6'},{a:'r4',b:'me5'},{a:'r1',b:'hax1',style:'faint'},{a:'r2',b:'hax3',style:'faint'}],
-    caption: 'One methyl axial, one equatorial, both on the upper face — the cis isomer. A ring flip swaps which one is axial.'
+    caption: 'One methyl axial, one equatorial, both on the upper face — the cis isomer.'
   };
 
   /* ---- Acids, bases and conjugates ------------------------------------ */
@@ -254,7 +254,7 @@
       h3: { x:92,  y:24, r:11, label:'H', role:'alpha-h' }
     },
     bonds: [{a:'c',b:'o1',order:2},{a:'c',b:'o2'},{a:'c',b:'ca'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},{a:'ca',b:'h3'}],
-    caption: 'The conjugate base of acetic acid. Two equivalent oxygens share one negative charge.'
+    caption: 'The acetate ion, CH₃CO₂⁻.'
   };
 
   /* The delocalized species the Resonance Explorer offers.
@@ -441,7 +441,7 @@
       h4: { x:160, y:150,r:12, label:'H', role:'acidic-h', note:'Losing any one of these four gives back ammonia — ammonium is the conjugate ACID of NH₃.' }
     },
     bonds: [{a:'n',b:'h1'},{a:'n',b:'h2'},{a:'n',b:'h3'},{a:'n',b:'h4'}],
-    caption: 'Ammonia after it accepted a proton. Four bonds, no lone pair, +1 charge.'
+    caption: 'The ammonium ion, NH₄⁺.'
   };
 
   /* ---- Ethers, acetals, amines ---------------------------------------- */
@@ -647,7 +647,24 @@
     },
     bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'},
             {a:'r5',b:'br'},{a:'r6',b:'hax6'},{a:'r4',b:'hax4'},{a:'r1',b:'hax1',style:'faint'},{a:'r4',b:'heq4',style:'faint'}],
-    caption: 'Bromine sits axial. Only an axial hydrogen on a neighboring carbon, pointing the opposite way, is 180° from it.'
+    caption: 'Bromocyclohexane drawn as a chair.'
+  };
+
+  // Bare chair for Cyclohexanes (before axial/equatorial): the chairs above
+  // with no substituents and the tips r5/r2 pulled 14 further apart.
+  M['chair-cyclohexane'] = {
+    name: 'Cyclohexane (chair)', formula: 'C₆H₁₂', viewBox: '0 0 320 180',
+    partialH: 'chair: ring carbons only; the hydrogens are not the subject',
+    atoms: {
+      r1: { x:60,  y:104,r:13, label:'C' },
+      r2: { x:112, y:144,r:13, label:'C', role:'chair-low-end' },
+      r3: { x:176, y:118,r:13, label:'C' },
+      r4: { x:228, y:80, r:13, label:'C' },
+      r5: { x:176, y:40, r:13, label:'C', role:'chair-high-end' },
+      r6: { x:112, y:66, r:13, label:'C' }
+    },
+    bonds: [{a:'r1',b:'r2'},{a:'r2',b:'r3'},{a:'r3',b:'r4'},{a:'r4',b:'r5'},{a:'r5',b:'r6'},{a:'r6',b:'r1'}],
+    caption: 'Cyclohexane drawn as a chair.'
   };
 
   /* ---- Carbonyls ------------------------------------------------------ */
@@ -682,7 +699,7 @@
       h3: { x:146, y:154,r:10, label:'H', role:'alpha-h' }
     },
     bonds: [{a:'c',b:'o',order:2},{a:'c',b:'h'},{a:'c',b:'ca'},{a:'ca',b:'h1'},{a:'ca',b:'h2'},{a:'ca',b:'h3'}],
-    caption: 'An aldehyde: one substituent plus a hydrogen on the carbonyl carbon.'
+    caption: 'Acetaldehyde, CH₃CHO.'
   };
 
   M['methyl-acetate'] = {
@@ -1120,7 +1137,7 @@
   };
 
   M['meso-tartaric-acid'] = {
-    name: 'meso-tartaric acid', formula: 'HO₂C–CH(OH)–CH(OH)–CO₂H', viewBox: '0 0 320 210',
+    name: 'Tartaric acid (one stereoisomer)', formula: 'HO₂C–CH(OH)–CH(OH)–CO₂H', viewBox: '0 0 320 210',
     atoms: {
       a1: { x:44,  y:52, r:15, label:'CO₂H' },
       c1: { x:122, y:78, r:17, label:'C', role:'stereocenter', note:'Stereocenter one: four different groups — OH, H, CO₂H and the rest of the chain.' },
@@ -1137,7 +1154,7 @@
     // descriptors on two constitutionally identical halves, which is meso.
     bonds: [{a:'a1',b:'c1'},{a:'c1',b:'o1',style:'wedge'},{a:'c1',b:'h1',style:'dash'},{a:'c1',b:'c2'},
             {a:'c2',b:'o2',style:'dash'},{a:'c2',b:'h2',style:'wedge'},{a:'c2',b:'a2'}],
-    caption: 'Two stereocenters with opposite descriptors on identical halves — (S) above, (R) below. The molecule is superimposable on its own reflection, so it is achiral and optically inactive.'
+    caption: 'One stereoisomer of tartaric acid, HO₂C–CH(OH)–CH(OH)–CO₂H.'
   };
 
   /* ---- Renderer -------------------------------------------------------- */

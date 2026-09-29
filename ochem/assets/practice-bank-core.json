@@ -295,7 +295,7 @@
     "It is impossible",
     "It carries a −1 charge",
     "It carries a +1 charge",
-    "It is an ordinary neutral amine"
+    "It is neutral, since each bond is shared"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -819,7 +819,7 @@
    "type": "tf"
   },
   {
-   "q": "A carbonyl carbon (C=O, plus two other single bonds) is hybridized as:",
+   "q": "A carbon with one C=O double bond and two single bonds is hybridized as:",
    "options": [
     "sp2",
     "sp",
@@ -867,12 +867,12 @@
    "type": "mcq"
   },
   {
-   "q": "A terminal alkyne's C–H bond (attached to an sp carbon) is more acidic than a C–H bond on an sp3 carbon mainly because:",
+   "q": "A C–H bond on a triple-bonded carbon, as in H–C≡C–H, is more acidic than a C–H bond on an sp3 carbon. Why?",
    "options": [
     "sp orbitals hold the pair closer to carbon",
     "sp carbons are less electronegative than sp3",
     "A triple bond weakens every C–H nearby",
-    "Alkynes simply have more hydrogens"
+    "An sp C–H bond is longer and weaker"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -913,7 +913,7 @@
    "type": "tf"
   },
   {
-   "q": "An imine is a C=N group (the nitrogen analogue of a C=O). Its nitrogen has one double bond, one single bond and one lone pair. What is its hybridization?",
+   "q": "In CH₂=NH, the nitrogen has one double bond to carbon, one single bond to H and one lone pair. What is its hybridization?",
    "options": [
     "sp",
     "sp3",
@@ -983,7 +983,7 @@
    "type": "mcq"
   },
   {
-   "q": "In a carbonyl group (C=O), the oxygen has 1 sigma bond to carbon, a pi bond, and 2 lone pairs. What is oxygen's hybridization?",
+   "q": "In formaldehyde, H₂C=O, the oxygen has one sigma bond to carbon, one pi bond and two lone pairs. What is its hybridization?",
    "options": [
     "sp2",
     "sp",
@@ -1007,10 +1007,10 @@
    "type": "mcq"
   },
   {
-   "q": "In acetic acid, CH₃COOH, what are the hybridizations of the carbonyl carbon and of the OH oxygen?",
+   "q": "In acetic acid, CH₃COOH, what are the hybridizations of the CH₃ carbon and of the C=O carbon?",
    "options": [
     "Both sp³",
-    "sp² and sp³",
+    "sp³ and sp²",
     "Both sp²",
     "sp and sp²"
    ],
@@ -1029,12 +1029,12 @@
    "type": "tf"
   },
   {
-   "q": "An amide nitrogen (R–CO–NH₂) has three bonds and one lone pair, yet it is flat rather than pyramidal. What does that tell you?",
+   "q": "In R–C(=O)–NH₂, the nitrogen sits next to a C=O. It has three bonds and one lone pair, yet it is flat rather than pyramidal. What does that tell you?",
    "options": [
     "The group count was done wrong",
-    "It is sp², because the lone pair sits in a p orbital",
+    "It is sp², with the lone pair in a p orbital",
     "Nitrogen is never hybridized",
-    "It is sp³ and the measurement is wrong"
+    "It is sp³, and the flat measurement is wrong"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -1132,7 +1132,7 @@
     "Pi bond",
     "Sigma bond",
     "Ionic bond",
-    "Hydrogen bond"
+    "Metallic bond"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -1202,7 +1202,7 @@
     "Ionic bond",
     "Metallic bond",
     "Covalent bond",
-    "Hydrogen bond"
+    "Nonpolar covalent bond"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -1575,7 +1575,7 @@
    "options": [
     "The methyl hydrogens",
     "The two oxygens",
-    "The carbonyl carbon",
+    "The C=O carbon",
     "The acidic hydrogen"
    ],
    "correct": 1,
@@ -1877,7 +1877,7 @@
    "type": "mcq"
   },
   {
-   "q": "A nitrogen atom with 3 bonds and 1 lone pair (a typical neutral amine nitrogen) has a formal charge of:",
+   "q": "A nitrogen atom with 3 bonds and 1 lone pair (as in ammonia, NH₃) has a formal charge of:",
    "options": [
     "-1",
     "0",
@@ -1981,7 +1981,7 @@
    "type": "mcq"
   },
   {
-   "q": "A carbonyl oxygen has two lone pairs and a double bond to carbon. What is its formal charge?",
+   "q": "An oxygen has two lone pairs and a double bond to carbon. What is its formal charge?",
    "options": [
     "+1",
     "0",
@@ -2053,8 +2053,8 @@
   {
    "q": "In acetate, CH₃COO⁻, drawn with one C=O and one C–O single bond, where does the −1 sit?",
    "options": [
-    "On the carbonyl oxygen",
-    "On the carbonyl carbon",
+    "On the double-bonded oxygen",
+    "On the C=O carbon",
     "On the singly bonded oxygen",
     "On the methyl carbon"
    ],
@@ -2087,7 +2087,7 @@
   {
    "q": "A structure is drawn with a nitrogen carrying four bonds and no charge written beside it. What is wrong?",
    "options": [
-    "Nothing — neutral amines have four bonds",
+    "Nothing — nitrogen is neutral with four bonds",
     "Nitrogen cannot have four bonds at all",
     "The nitrogen should carry a +1",
     "The nitrogen should carry a −1"
@@ -2253,7 +2253,7 @@
   {
    "q": "Which of these drawn structures is impossible?",
    "options": [
-    "A hydrogen bonded to two carbons at once",
+    "An H joined to two carbons",
     "An oxygen with 1 bond and a −1 charge",
     "A nitrogen with 4 bonds and a +1",
     "A carbon with 3 bonds and a +1"
@@ -2382,7 +2382,7 @@
    "q": "If a period-2 central atom like carbon or nitrogen ends up surrounded by 10 electrons in a drawn structure, this most likely indicates:",
    "options": [
     "A valid expanded-octet structure",
-    "A correct resonance structure",
+    "That the atom is using d orbitals",
     "That the atom has a formal charge of -2",
     "An error — period 2 cannot expand"
    ],
@@ -2403,7 +2403,7 @@
    "type": "mcq"
   },
   {
-   "q": "Drawing the skeletal structure (atom connectivity) before placing electrons matters because it:",
+   "q": "When building a Lewis structure, you join the atoms into a skeleton before placing any electrons. This step:",
    "options": [
     "Has no real effect on the final structure",
     "Fixes which atoms are bonded to which",
@@ -2627,7 +2627,7 @@
    "type": "mcq"
   },
   {
-   "q": "In acetic acid, CH₃COOH, what is the geometry at the carbonyl carbon?",
+   "q": "In acetic acid, CH₃COOH, what is the geometry at the C=O carbon?",
    "options": [
     "Tetrahedral",
     "Trigonal planar",
@@ -2757,7 +2757,7 @@
   {
    "q": "Which atoms of propenal, CH₂=CH–CHO, lie in one plane?",
    "options": [
-    "Only the two alkene carbons",
+    "Only the two C=C carbons",
     "Every heavy atom, and the hydrogens on them",
     "Only the C=O carbon and oxygen",
     "None — it is a tetrahedral chain"
@@ -2957,11 +2957,11 @@
    "type": "mcq"
   },
   {
-   "q": "Butane, acetone and propan-1-ol all weigh about the same. Rank their boiling points, lowest first.",
+   "q": "Butane, acetone (CH₃COCH₃) and CH₃CH₂CH₂OH all weigh about the same. Rank their boiling points, lowest first.",
    "options": [
-    "butane < acetone < propan-1-ol",
-    "propan-1-ol < acetone < butane",
-    "acetone < butane < propan-1-ol",
+    "butane < acetone < CH₃CH₂CH₂OH",
+    "CH₃CH₂CH₂OH < acetone < butane",
+    "acetone < butane < CH₃CH₂CH₂OH",
     "All three are within a few degrees"
    ],
    "correct": 0,
@@ -3051,7 +3051,7 @@
    "type": "mcq"
   },
   {
-   "q": "A Grignard reagent (R–MgBr, met in Organometallics) has a C–Mg bond. Why does the carbon carry the partial negative charge?",
+   "q": "A Grignard reagent, R–MgBr, has a C–Mg bond. Why does the carbon carry the partial negative charge?",
    "options": [
     "Magnesium is more electronegative than carbon",
     "Carbon always carries negative charge in every bond",
@@ -3711,7 +3711,7 @@
    "type": "mcq"
   },
   {
-   "q": "How many hydrogens are drawn on the page in skeletal butan-1-ol?",
+   "q": "How many hydrogens are drawn on the page in the skeletal structure of CH₃CH₂CH₂CH₂OH?",
    "options": [
     "One",
     "None",
@@ -3740,7 +3740,7 @@
     "Which atom is bonded to which atom",
     "Its size and shape at a glance",
     "How many hydrogens each carbon holds",
-    "The oxidation state of each carbon"
+    "The lone pairs on each oxygen"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -3823,7 +3823,7 @@
    "options": [
     "Relative bond strength",
     "Direction in three dimensions",
-    "Where resonance delocalization runs",
+    "Which atoms carry their lone pairs",
     "Formal charges"
    ],
    "correct": 1,
@@ -3855,12 +3855,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why does this notation matter for mechanisms?",
+   "q": "Why must you still \"see\" the carbons, hydrogens and lone pairs that a skeletal structure leaves out?",
    "options": [
     "It matters only for naming",
-    "Mechanisms use Lewis only",
-    "Arrows move between undrawn atoms",
-    "Mechanisms do not use drawn structures"
+    "Only Lewis structures are used for real work",
+    "They still form bonds and react",
+    "Undrawn atoms are not really there"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -4077,12 +4077,12 @@
    "type": "tf"
   },
   {
-   "q": "Pyrrole is a flat five-membered ring with an N–H whose nitrogen uses its three sp² orbitals for two C–N bonds and the N–H. Pyridine is a flat six-membered ring in which nitrogen uses its three sp² orbitals for two C–N bonds and its lone pair. Why can pyrrole's nitrogen lone pair delocalize into the ring while pyridine's cannot?",
+   "q": "Pyrrole is a flat five-membered ring with an N–H whose nitrogen uses its three sp² orbitals for two C–N bonds and the N–H. Pyridine is benzene with one CH swapped for N; its nitrogen uses its three sp² orbitals for two C–N bonds and its lone pair. Why can pyrrole's nitrogen lone pair delocalize into the ring while pyridine's cannot?",
    "options": [
     "Pyrrole's lone pair is in a p orbital",
     "Pyridine nitrogen has no lone pair",
     "Pyrrole nitrogen is not part of the ring",
-    "Pyridine's ring is not aromatic"
+    "Pyridine's ring has no pi bonds"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -4408,7 +4408,7 @@
    "q": "In the mechanism for acid-catalyzed protonation of an alkene, the curved arrow showing the alkene attacking H+ starts from the pi bond and points to:",
    "options": [
     "The other alkene carbon",
-    "A lone pair on the acid's conjugate base",
+    "The middle of the pi bond",
     "The hydrogen of H+",
     "The solvent molecule"
    ],
@@ -4453,7 +4453,7 @@
    "type": "mcq"
   },
   {
-   "q": "Preview of a later chapter: in an E2 elimination a base removes a hydrogen, a C=C forms, and a leaving group departs, all in one step. Three curved arrows are drawn: one for the base removing a proton, one for the C–H bond forming the new pi bond, and one for:",
+   "q": "In one step, a base removes a hydrogen from one carbon, a leaving group departs from the next carbon, and a C=C forms between them. Three curved arrows are drawn: one for the base removing the proton, one for the C–H pair becoming the new pi bond, and one for:",
    "options": [
     "A second proton being removed",
     "A lone pair returning to the base",
@@ -4491,7 +4491,7 @@
    "options": [
     "Arrowheads must point at an atom or bond",
     "Blank space is reserved for labeling formal charges",
-    "It actually can, when drawing resonance structures",
+    "It can, if a charge will form there",
     "Curved arrows never have heads, only tails"
    ],
    "correct": 0,
@@ -4555,12 +4555,12 @@
    "type": "mcq"
   },
   {
-   "q": "Preview of a later chapter: an alcohol adds to an aldehyde under acid catalysis (the product is called a hemiacetal). Using only the four arrow patterns, the very first curved arrow in the overall sequence typically shows:",
+   "q": "A proposed step has one curved arrow: from a lone pair on hydroxide to the carbon bonded to Cl in CH₃CH₂–Cl. No other arrow is drawn. What is wrong?",
    "options": [
-    "A lone pair on the carbonyl oxygen attacking a proton on the acid catalyst",
-    "The alcohol oxygen attacking the carbonyl carbon directly",
-    "The carbonyl carbon attacking the alcohol's oxygen",
-    "A C–H bond breaking on the aldehyde"
+    "The carbon would end up with five bonds",
+    "The tail should start on the carbon instead",
+    "Hydroxide has no lone pair to give",
+    "Nothing, since one arrow is enough"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -4909,11 +4909,11 @@
    "type": "mcq"
   },
   {
-   "q": "A hydride ion (H-) delivered from a reagent like NaBH4 or LiAlH4 acts as a nucleophile in reducing a carbonyl. What is it attacking?",
+   "q": "A reagent that delivers hydride ion, H⁻, reacts with formaldehyde, H₂C=O. Which atom does the hydride attack?",
    "options": [
-    "The oxygen of the carbonyl",
+    "The oxygen of the C=O",
     "Another hydride ion",
-    "The electrophilic carbon of the carbonyl",
+    "The carbon of the C=O",
     "The solvent"
    ],
    "correct": 2,
@@ -4921,7 +4921,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is water generally considered a weaker nucleophile than hydroxide, yet water is still used as a nucleophile in many SN1 and addition reactions?",
+   "q": "Why is water generally a weaker nucleophile than hydroxide, yet still used as a nucleophile toward carbocations and other very reactive electrophiles?",
    "options": [
     "Water has no lone pairs available",
     "Water is actually a stronger nucleophile than hydroxide in all cases",
@@ -4993,12 +4993,12 @@
    "type": "tf"
   },
   {
-   "q": "Why is the carbon of an epoxide ring a good electrophile even though the molecule overall is neutral?",
+   "q": "Ethylene oxide is a three-membered ring of two CH₂ carbons and one oxygen. Why are its ring carbons good electrophiles even though the molecule is neutral?",
    "options": [
     "Ring strain plus a partial positive charge",
-    "Epoxide carbons are always negatively charged",
-    "Oxygen in the ring is the electrophilic atom, not carbon",
-    "Epoxides have no dipole at all"
+    "Its ring carbons carry a full negative charge",
+    "The ring oxygen is the electrophilic atom, not carbon",
+    "The molecule has no dipole at all"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -5133,11 +5133,11 @@
    "type": "mcq"
   },
   {
-   "q": "In an SN1 mechanism, which species formed as an intermediate is the actual electrophile attacked by the incoming nucleophile?",
+   "q": "A C–Br bond breaks on its own, and bromide leaves with the bonding pair. Which species is then the electrophile that a nucleophile attacks?",
    "options": [
-    "The original alkyl halide before ionization",
-    "The leaving group itself after it departs",
-    "The carbocation intermediate formed after the leaving group departs",
+    "The alkyl halide, while the C–Br bond is still intact",
+    "The bromide ion after it departs",
+    "The carbocation left behind",
     "The solvent molecule"
    ],
    "correct": 2,
@@ -5157,12 +5157,12 @@
    "type": "mcq"
   },
   {
-   "q": "An aromatic ring undergoing electrophilic aromatic substitution reacts with an electrophile such as Br+ generated from Br2 and a Lewis acid catalyst.",
+   "q": "In a C=O group, oxygen is the electrophilic atom because the double bond is polarized toward it.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "tf"
   },
@@ -5191,12 +5191,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why does conjugation of a carbonyl with an adjacent C=C double bond (as in an enone, an alpha,beta-unsaturated ketone) create a second electrophilic site at the beta carbon?",
+   "q": "In but-3-en-2-one, CH₂=CH–CO–CH₃, the C=C is joined directly to the C=O carbon. Why does the beta carbon (the far CH₂) become a second electrophilic site?",
    "options": [
     "Conjugation has no effect on electrophilicity anywhere in the molecule",
     "The beta carbon becomes negatively charged instead",
     "Resonance places partial positive charge on the beta carbon",
-    "Only the carbonyl carbon is ever electrophilic in an enone"
+    "Only the carbonyl carbon is ever electrophilic here"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -5239,7 +5239,7 @@
    "type": "mcq"
   },
   {
-   "q": "What makes sulfonate esters (like tosylates, R-OTs) useful electrophiles in substitution reactions, much like alkyl halides?",
+   "q": "What makes a tosylate such as ethyl tosylate, CH₃CH₂–OTs, a useful electrophile, much like an alkyl halide?",
    "options": [
     "Sulfonates make carbon into a nucleophile",
     "Electron-poor carbon, superb leaving group",
@@ -5427,12 +5427,12 @@
    "type": "tf"
   },
   {
-   "q": "In the reaction of an epoxide with a nucleophile under basic conditions, what effectively serves as the leaving group when the ring opens?",
+   "q": "Ethylene oxide is a three-membered ring of two CH₂ carbons and one oxygen. Hydroxide attacks one ring carbon and a C–O bond breaks. What is the leaving group?",
    "options": [
     "A halide ion",
-    "The ring oxygen, which becomes an alkoxide as the strained C–O bond breaks",
-    "A proton",
-    "Nothing leaves in epoxide-opening reactions"
+    "The ring oxygen, which leaves as an alkoxide",
+    "A proton pulled off the carbon",
+    "Nothing, because the product stays in one piece"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -5915,14 +5915,14 @@
    "type": "mcq"
   },
   {
-   "q": "Hydrogen abstraction by chlorine is exothermic while the same abstraction by bromine is endothermic. Which reagent distinguishes a tertiary hydrogen from a primary one more sharply?",
+   "q": "Relative to the reactants (0), TS1 is at +12, the intermediate at −8, and TS2 at +9 kcal/mol. Which step is rate-determining?",
    "options": [
-    "Bromine, whose late transition state already contains the radical",
-    "Chlorine, whose greater reactivity lets it choose the weakest bond",
-    "Both distinguish them equally, since the radical stabilities are the same",
-    "Neither shows measurable selectivity between the two"
+    "Step 1, because TS1 is the highest point",
+    "Step 2, the 17 kcal/mol climb from the well",
+    "Neither; the intermediate sets the rate on its own",
+    "Both equally, since the two peaks are close"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -6052,7 +6052,7 @@
    "q": "What is the name for a sigma bond donating its electron pair into an adjacent empty p orbital?",
    "options": [
     "Resonance",
-    "Tautomerization",
+    "Polarization",
     "Hyperconjugation",
     "Induction"
    ],
@@ -6149,7 +6149,7 @@
    "options": [
     "A benzene ring is electron-poor and has no density to donate",
     "The empty orbital is an sp² hybrid lying in the ring plane, at 90° to the π cloud",
-    "The ring's π electrons are already committed to aromaticity and cannot be shared",
+    "The ring's π electrons are held too tightly by all six carbons to be shared",
     "The ring carbon rehybridizes to sp³, which destroys the conjugation"
    ],
    "correct": 1,
@@ -6515,12 +6515,12 @@
    "type": "tf"
   },
   {
-   "q": "In an enol (the tautomer of a ketone with a C=C–OH arrangement), which carbon is electron-rich and acts as the nucleophilic site?",
+   "q": "In CH₂=CH–OH, which carbon is electron-rich and acts as the nucleophilic site?",
    "options": [
     "The carbon bonded directly to oxygen",
-    "The carbon at the far end of the double bond, away from oxygen (the alpha carbon)",
+    "The CH₂ carbon at the far end of the C=C",
     "Neither carbon has extra electron density",
-    "The oxygen atom itself is the only reactive site"
+    "The oxygen atom is the only reactive site"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -6665,12 +6665,12 @@
    "type": "mcq"
   },
   {
-   "q": "Why can an enamine's beta carbon (the carbon two atoms from nitrogen, across the double bond) be considered especially electron-rich and strongly nucleophilic?",
+   "q": "In CH₂=CH–NH₂, why is the CH₂ carbon (two atoms from nitrogen, across the C=C) especially electron-rich?",
    "options": [
     "Nitrogen withdraws electron density from that carbon",
-    "Beta carbons are never affected by resonance",
-    "The nitrogen lone pair donates into the pi system",
-    "Enamines have no nitrogen lone pair available to donate"
+    "That carbon is too far away for resonance to reach",
+    "The nitrogen lone pair donates into the π system",
+    "The nitrogen has no lone pair available to donate"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -6691,7 +6691,7 @@
    "options": [
     "The one moving the C=C electrons toward oxygen; nucleophiles can attack there",
     "The one moving an oxygen lone pair onto carbon; the beta carbon turns rich",
-    "The one moving a hydrogen onto the oxygen; the molecule becomes an enol",
+    "The one moving the C=O electrons onto carbon; oxygen turns positive",
     "No contributor does, since the beta carbon is three bonds from the oxygen"
    ],
    "correct": 0,
@@ -6699,7 +6699,7 @@
    "type": "mcq"
   },
   {
-   "q": "A bromonium ion intermediate (formed when Br2 adds to an alkene) carries its formal positive charge on bromine, so it is bromine itself, not either ring carbon, that an incoming nucleophile attacks.",
+   "q": "In CH₃O–CH=CH₂, the oxygen's inductive pull makes the CH₂ end of the C=C electron-poor overall.",
    "options": [
     "True",
     "False"
@@ -8148,9 +8148,9 @@
    "q": "What does the prefix in cis-1,2-dimethylcyclohexane tell you?",
    "options": [
     "Whether the methyls are adjacent",
-    "Whether the methyls are on the same face of the ring",
-    "Whether the ring is a chair",
-    "Whether the methyls are axial"
+    "Whether the methyls are on the same face",
+    "Whether the ring has a double bond",
+    "Whether both methyls are on the same carbon"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -8333,7 +8333,7 @@
   {
    "q": "Sodium acetate is added to a solution of phenol. Acetic acid has pKa 4.76 and phenol has pKa 10. What happens?",
    "options": [
-    "Acetate is protonated and phenoxide forms quantitatively",
+    "Phenol acts as the base and acetate as the acid",
     "Almost nothing — the equilibrium lies far toward phenol",
     "Phenol is deprotonated essentially completely",
     "The mixture settles at roughly fifty-fifty"
@@ -8437,7 +8437,7 @@
    "type": "mcq"
   },
   {
-   "q": "A carbocation is captured by water during acid-catalyzed hydration, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
+   "q": "A carbocation is captured by water, giving R–OH₂⁺. What has to happen next to give a neutral alcohol?",
    "options": [
     "A hydride shifts from carbon onto the oxygen",
     "The new C–O bond breaks and then reforms",
@@ -8565,7 +8565,7 @@
    "type": "tf"
   },
   {
-   "q": "Which of the following is a classic example of a Lewis acid used as a catalyst in Friedel-Crafts reactions?",
+   "q": "Which of the following is a Lewis acid, often used as a catalyst?",
    "options": [
     "AlCl3",
     "NaOH",
@@ -8699,7 +8699,7 @@
    "options": [
     "It accepts a pair from the carbonyl oxygen, generating a carbanion",
     "It accepts a lone pair from chlorine, generating an acylium ion",
-    "It removes a proton from the alpha carbon, generating an enolate",
+    "It removes a proton from the carbon next to C=O, generating an enolate",
     "It donates a chloride to the carbonyl carbon, generating a diol"
    ],
    "correct": 1,
@@ -8768,7 +8768,7 @@
     "It donates chloride to the carbonyl carbon and opens a faster pathway",
     "It reduces the carbonyl to an alcohol, which is easier to attack",
     "It coordinates the carbonyl oxygen and makes the carbon more electrophilic",
-    "It deprotonates the alpha carbon and generates a more reactive enolate"
+    "It pulls a proton off the carbon next to C=O and makes a more reactive anion"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -8787,14 +8787,14 @@
    "type": "mcq"
   },
   {
-   "q": "Consider a Lewis acid catalyst promoting ring-opening of an epoxide. What is its mechanistic role?",
+   "q": "Thiolate, RS⁻, attacks carbon faster than alkoxide, RO⁻, even though thiolate is by far the weaker base. What explains this?",
    "options": [
-    "It deprotonates the epoxide",
-    "It acts as a nucleophile attacking the epoxide carbon directly",
-    "It reduces the epoxide to an alcohol directly",
-    "It polarizes the epoxide oxygen, activating the ring"
+    "Sulfur is more electronegative than oxygen, so RS⁻ grips carbon harder",
+    "RS⁻ is large and polarizable, a soft donor that suits carbon",
+    "Basicity and attack rate always rise and fall together",
+    "RO⁻ is soft, so it avoids carbon and seeks protons instead"
    ],
-   "correct": 3,
+   "correct": 1,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -8850,7 +8850,7 @@
     "Use a strong base to deprotonate the carbonyl oxygen",
     "Use a nucleophilic catalyst to attack the carbonyl first",
     "Use a Lewis acid such as ZnCl₂ to coordinate the oxygen",
-    "Use a stronger protic acid and run the reaction colder"
+    "Use a stronger acid such as HCl, and run it colder"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -8919,12 +8919,12 @@
    "type": "mcq"
   },
   {
-   "q": "Which base will deprotonate a ketone alpha hydrogen (pKa 20) essentially completely?",
+   "q": "Which base will deprotonate a terminal alkyne C–H (pKa 25) essentially completely?",
    "options": [
     "Sodium hydroxide, pKaH 15.7",
     "Sodium ethoxide, pKaH 16",
     "Sodium acetate, pKaH 4.76",
-    "LDA, pKaH about 36"
+    "Sodium amide, pKaH 38"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -9357,10 +9357,10 @@
   {
    "q": "A ketone can act as both an acid and a base. What are its conjugate acid and conjugate base?",
    "options": [
-    "Enol and alkoxide",
+    "Protonated carbonyl and alkoxide",
     "Protonated carbonyl and enolate",
     "Enolate and protonated carbonyl",
-    "Alkoxide and enol"
+    "Alkoxide and protonated carbonyl"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -9384,7 +9384,7 @@
     "Acetic acid is itself a base, not an acid",
     "Acetate’s charge is delocalized over two oxygens",
     "Acetate carries a positive charge in solution",
-    "Ethoxide is aromatic and therefore stabilized"
+    "Ethoxide spreads its charge over its two carbons"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -9576,7 +9576,7 @@
     "Resonance, which outweighs the atom effect here",
     "Atom, because oxygen always beats carbon",
     "Induction from the two methyl groups on the diketone",
-    "Orbital, because the alpha carbon is sp hybridized"
+    "Orbital, because the acidic carbon is sp hybridized"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -9670,7 +9670,7 @@
     "The molecule contains a carbonyl group",
     "The acidic C-H bond is sp hybridized",
     "Induction from a nearby nitrogen atom stabilizes the anion",
-    "Deprotonation gives an aromatic cyclopentadienyl anion"
+    "Its anion spreads the charge over all five ring carbons"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -10031,7 +10031,7 @@
    "options": [
     "Dipole-dipole repulsion between carbons",
     "Steric clash between large substituents",
-    "Ring strain",
+    "Weaker overlap in the C–C sigma bond",
     "Torsional strain from aligned bonds"
    ],
    "correct": 3,
@@ -10097,7 +10097,7 @@
   {
    "q": "Ethane's rotational energy barrier (about 3 kcal/mol) arises purely from torsional strain with no steric component, whereas butane's anti-to-gauche energy gap includes an additional contribution from:",
    "options": [
-    "Ring strain",
+    "Weaker overlap in the central C–C bond",
     "Dipole moment changes",
     "Hydrogen bonding",
     "Steric strain"
@@ -10157,7 +10157,7 @@
    "options": [
     "Steric strain, on top of the torsional cost both pairs share",
     "Torsional strain, which large groups feel and small ones do not",
-    "Ring strain contributed by the four-carbon chain looping round",
+    "Weaker overlap in the C–C sigma bond as it turns",
     "An attraction between the methyls that raises the energy instead"
    ],
    "correct": 0,
@@ -10323,7 +10323,7 @@
    "options": [
     "The heat of combustion, against 157.4 kcal/mol per CH₂",
     "The boiling point, against a straight chain of the same mass",
-    "The C–H stretching frequency in the infrared spectrum, band by band",
+    "The dipole moment, against the open-chain alkane",
     "The density of the liquid at room temperature and pressure"
    ],
    "correct": 0,
@@ -10529,14 +10529,14 @@
    "type": "mcq"
   },
   {
-   "q": "In one complete chair-to-chair ring flip pathway (going through the boat family), how many half-chair transition states are crossed?",
+   "q": "Cyclobutane releases 655.9 kcal/mol when burned completely. A strain-free CH₂ group releases 157.4 kcal/mol. About how much ring strain does cyclobutane carry?",
    "options": [
-    "2",
-    "0",
-    "1",
-    "4"
+    "About 164 kcal/mol",
+    "About 6.6 kcal/mol",
+    "About 26 kcal/mol",
+    "About 630 kcal/mol"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -10556,7 +10556,7 @@
     "Because cyclohexane has more carbons overall, which always lowers strain",
     "Because the chair achieves ideal angles and fully staggered bonds",
     "Because cyclohexane carbons are sp2 hybridized",
-    "Because cyclohexane is aromatic"
+    "Because its six carbons lie flat in a regular hexagon"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -10684,7 +10684,7 @@
    "q": "A substituent with an A-value of 4.9 kcal/mol is better than 99.9% equatorial. What do chemists use that for?",
    "options": [
     "As a conformational anchor, to study one known chair",
-    "As a way to stop the ring flipping, so no other chair exists",
+    "As a way to make the other chair impossible to form",
     "As a way to raise the flip barrier and slow the interconversion",
     "As a substitute for measuring A-values, which it makes needless"
    ],
@@ -10986,7 +10986,7 @@
     "Yes, cis becomes trans",
     "No, only axial/equatorial labels change, not cis/trans",
     "Only for disubstituted rings",
-    "Ring flips create new stereocenters"
+    "Yes, since a ring C–C bond breaks and re-forms, which can swap cis and trans"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -11555,9 +11555,9 @@
    "type": "mcq"
   },
   {
-   "q": "Between the two stereoisomers of 1-methyl-4-tert-butylcyclohexane, which one is, at its most stable conformation, lower in overall energy: cis, or trans?",
+   "q": "1-Methyl-4-tert-butylcyclohexane exists as a cis and a trans isomer. Which one, in its most stable chair, is lower in energy?",
    "options": [
-    "Trans, since cis always forces one axial",
+    "Trans, since both groups can be equatorial",
     "Cis, because it forces tert-butyl axial",
     "They are equal in energy because both rings have the same formula",
     "Neither isomer can adopt a chair conformation"
@@ -11823,7 +11823,7 @@
     "A single enantiomer",
     "A racemic mixture",
     "Retention of configuration",
-    "Inversion of configuration"
+    "A meso compound"
    ],
    "correct": 1,
    "difficulty": "easy",
@@ -11855,45 +11855,45 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent is used for allylic bromination?",
+   "q": "Butane has six primary and four secondary hydrogens. In bromination, a secondary hydrogen reacts about 80 times faster than a primary one. About what share of the monobromide is 2-bromobutane?",
    "options": [
-    "Br2 in bright light",
-    "HBr in peroxide",
-    "NBS",
-    "PBr3"
+    "About 40%",
+    "About 60%",
+    "About 93%",
+    "About 98%"
    ],
-   "correct": 2,
+   "correct": 3,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Why does NBS give substitution rather than addition?",
+   "q": "Chlorinating methane with plenty of Cl₂ and light gives CH₂Cl₂, CHCl₃ and CCl₄ as well as CH₃Cl. Why?",
    "options": [
-    "It cannot reach a double bond",
-    "Addition needs more Br2",
-    "It brominates more strongly",
-    "It works only when cold"
+    "CH₃Cl still has C–H bonds the chain can attack",
+    "Cl₂ adds directly across the C–Cl bond",
+    "Light breaks the C–Cl bond so it can re-form",
+    "Termination steps keep joining chlorine atoms onto carbon"
    ],
-   "correct": 1,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why is an allylic hydrogen unusually easy to abstract?",
+   "q": "Why is the tertiary C–H in 2-methylpropane easier for a halogen radical to remove than a primary C–H?",
    "options": [
-    "The radical is resonance-stabilized",
-    "It is sterically exposed",
-    "The double bond polarizes the C–H bond",
-    "It is more acidic than most"
+    "It leaves a more stable radical, so the bond is weaker",
+    "It is less crowded, so the radical reaches it more easily",
+    "Its hydrogen is more acidic than a primary hydrogen",
+    "The tertiary carbon carries a partial positive charge"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Allylic bromination often gives two products. Why?",
+   "q": "A bromine radical removes an allylic hydrogen (one on a carbon next to a C=C), and the chain then often gives two different bromides. Why?",
    "options": [
-    "NBS has two active species",
+    "Each of the two allylic hydrogens gives its own radical",
     "The alkene isomerizes before reacting",
     "The reaction is reversible",
     "The radical is a resonance hybrid"
@@ -11981,7 +11981,7 @@
     "Br₂ with UV light, giving about 99% of the tertiary bromide",
     "Cl₂ with UV light, then swap the chlorine for bromine",
     "Br₂ in a dark flask, giving the tertiary bromide by polar substitution",
-    "NBS with UV light, which is the only way to reach a tertiary position"
+    "Br₂ with UV light, giving mainly the primary bromide, since there are nine primary hydrogens"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -12000,14 +12000,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why does radical chemistry reappear in mass spectrometry?",
+   "q": "Bond energies (kcal/mol): CH₃–H 105, CH₃–Cl 84, H–Cl 103, Cl–Cl 58. A student proposes the propagation Cl· + CH₄ → CH₃Cl + H·, then H· + Cl₂ → HCl + Cl·. Why is it rejected?",
    "options": [
-    "It does not reappear there",
-    "The sample is irradiated",
-    "The molecular ion is a radical cation",
-    "Bromine is used in the ionization source"
+    "Its first step is about 20 kcal/mol uphill",
+    "Each step uses up more radicals than it makes",
+    "Its two steps do not add up to the overall reaction",
+    "A hydrogen atom cannot react with Cl₂ at all"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -12122,28 +12122,28 @@
    "q": "What physical phenomenon is used experimentally to detect that a sample is chiral (and not racemic)?",
    "options": [
     "Melting point depression",
-    "Rotation of plane-polarized light",
+    "Rotation of polarized light",
     "Boiling point elevation",
-    "Infrared absorption frequency"
+    "A change in the color of the solution"
    ],
    "correct": 1,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which amino acid, unlike the other 19 common amino acids, is achiral?",
+   "q": "Amino acids have the formula H₂N–CHR–COOH, where R is a side chain. Which one is achiral?",
    "options": [
-    "Alanine",
-    "Serine",
-    "Glycine",
-    "Valine"
+    "Alanine (R = CH₃)",
+    "Serine (R = CH₂OH)",
+    "Glycine (R = H)",
+    "Valine (R = CH(CH₃)₂)"
    ],
    "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "A chiral stereocenter and a chiral molecule are exactly the same thing.",
+   "q": "A stereocenter and a chiral molecule are the same idea under two names.",
    "options": [
     "True",
     "False"
@@ -12167,7 +12167,7 @@
   {
    "q": "The thalidomide case is often used to illustrate chirality in pharmacology because:",
    "options": [
-    "One enantiomer was therapeutic, the other teratogenic",
+    "One enantiomer was a sedative; the other caused birth defects",
     "Both enantiomers were equally safe",
     "Thalidomide has no stereocenters",
     "The racemic mixture was more potent than either pure enantiomer"
@@ -12261,7 +12261,7 @@
     "Yes, rotation always generates the enantiomer",
     "No, rotation only changes orientation",
     "Only if it has an even number of stereocenters",
-    "Only for Fischer projections"
+    "Only if the drawing uses wedges"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -12278,12 +12278,12 @@
    "type": "tf"
   },
   {
-   "q": "Why is meso-tartaric acid achiral despite having two stereocenters, each bonded to four different groups?",
+   "q": "One stereoisomer of tartaric acid, HOOC–CH(OH)–CH(OH)–COOH, is achiral, although C2 and C3 each carry four different groups. Why?",
    "options": [
     "It has no stereocenters at all",
     "It is not a real compound",
     "Its internal mirror plane makes it superimposable",
-    "Its two stereocenters have identical R configurations"
+    "Its two stereocenters are too close together to count"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -12335,12 +12335,12 @@
    "type": "tf"
   },
   {
-   "q": "Why are the natural amino acids other than glycine chiral?",
+   "q": "Amino acids have the formula H₂N–CHR–COOH, where R is a side chain. Why is every one except glycine (R = H) chiral?",
    "options": [
-    "They all contain a nitrogen atom",
+    "Each one contains a basic nitrogen atom",
     "They join up into peptide bonds",
     "They dissolve readily in water",
-    "Their alpha carbon has four different groups"
+    "One carbon has four different groups"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -12372,7 +12372,7 @@
    "q": "Bromochlorofluoromethane (CHFClBr) and its mirror image:",
    "options": [
     "Are identical and can be superimposed",
-    "Are diastereomers",
+    "Are two different conformations of one molecule",
     "Are enantiomers that cannot be superimposed",
     "Are constitutional isomers of each other"
    ],
@@ -12471,7 +12471,7 @@
     "C2 in 2-butanol",
     "The carbon in CH2Cl2",
     "The carbon in CHFClBr",
-    "The alpha carbon in alanine"
+    "C3 in 3-methylhexane"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -12551,7 +12551,7 @@
    "options": [
     "The carboxyl carbon",
     "The methyl carbon",
-    "The alpha carbon",
+    "The carbon bonded to NH₂",
     "There is no stereocenter"
    ],
    "correct": 2,
@@ -12867,7 +12867,7 @@
     "meso-",
     "cis-",
     "rac- or (±)-",
-    "endo-"
+    "iso-"
    ],
    "correct": 2,
    "difficulty": "easy",
@@ -13024,9 +13024,9 @@
    "type": "mcq"
   },
   {
-   "q": "Why does an ordinary GC column fail to separate a racemate when a chiral GC column succeeds?",
+   "q": "Why does an ordinary chromatography column fail to separate a racemate when a chiral column succeeds?",
    "options": [
-    "An achiral phase cannot distinguish the two; a chiral one can",
+    "Only a chiral packing tells mirror images apart",
     "Ordinary columns are simply too short for the job",
     "The enantiomers differ in molecular weight",
     "A chiral column heats each enantiomer differently"
@@ -14627,9 +14627,9 @@
    "q": "trans-But-2-ene lies about 1 kcal/mol below cis-but-2-ene in energy. What accounts for the gap?",
    "options": [
     "The trans isomer has a stronger pi bond",
-    "The cis isomer is aromatic",
-    "The two methyls crowd each other on one side in the cis isomer",
-    "The cis isomer has one more degree of unsaturation than the trans"
+    "The cis isomer has fewer hydrogen atoms",
+    "In the cis isomer the methyls crowd each other",
+    "The trans isomer can rotate about its C=C bond"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -15030,7 +15030,7 @@
     "A routine ¹H NMR spectrum recorded in an ordinary achiral solvent",
     "A reaction run with a chiral catalyst or an enzyme",
     "A measurement of their C–H bond dissociation energies",
-    "An integration of the signal the two of them produce"
+    "A measurement of the sample's optical rotation"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -15380,7 +15380,7 @@
    "options": [
     "It is secretly a tertiary halide",
     "Bromide is a poor leaving group in this molecule",
-    "The molecule is aromatic",
+    "It must first form an unstable primary carbocation",
     "The adjacent bulk blocks backside attack"
    ],
    "correct": 3,
@@ -15953,7 +15953,7 @@
     "E2",
     "SN2",
     "SN1",
-    "EAS"
+    "Radical halogenation"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -17300,7 +17300,7 @@
     "No bicyclic compound can contain a double bond anywhere",
     "Bridgehead alkenes become isolable once the double bond sits trans in a ring of eight or more atoms",
     "Bridgehead carbons cannot bond to hydrogen at all",
-    "Bridgehead alkenes are fine as long as the ring is aromatic"
+    "Bridgehead alkenes are fine in any ring size, as long as the double bond is cis within the smaller ring"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -17530,12 +17530,12 @@
    "type": "tf"
   },
   {
-   "q": "Catalytic hydrogenation — listed in this section's summary table and taught in full later in this chapter — delivers the two hydrogen atoms of H₂ to an alkene with what stereochemistry?",
+   "q": "Cyclohexene is treated with Br₂ in CH₂Cl₂. What is the product?",
    "options": [
-    "syn (same face)",
-    "anti (opposite faces)",
-    "random, no preference",
-    "it depends only on temperature"
+    "trans-1,2-dibromocyclohexane",
+    "cis-1,2-dibromocyclohexane",
+    "1,1-dibromocyclohexane",
+    "a mixture of cis and trans isomers"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -17570,9 +17570,9 @@
    "q": "The acid-catalyzed addition of water across an alkene's double bond is called:",
    "options": [
     "halogenation",
-    "hydroboration",
+    "hydrohalogenation",
     "acid-catalyzed hydration",
-    "ozonolysis"
+    "halohydrin formation"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -17583,7 +17583,7 @@
    "options": [
     "HBr with added peroxides",
     "Br2 alone",
-    "NaBH4",
+    "Br2 in water",
     "HBr without peroxides"
    ],
    "correct": 3,
@@ -17608,7 +17608,7 @@
    "options": [
     "Dilute H2SO4 in water",
     "Hg(OAc)2 in water, then NaBH4",
-    "BH3 in THF, then H2O2 and NaOH",
+    "Dilute H2SO4 in methanol",
     "Br2 in water, then NaOH"
    ],
    "correct": 1,
@@ -18573,7 +18573,7 @@
    "options": [
     "They are sterically protected from attack",
     "They carry no charge",
-    "They are aromatic",
+    "They are sp³ hybridized",
     "Their charge is delocalized by conjugation"
    ],
    "correct": 3,
@@ -18680,7 +18680,7 @@
    "q": "Why is cyclopentadiene unusually reactive as a diene?",
    "options": [
     "It has three double bonds",
-    "It is aromatic",
+    "Its π bonds are unusually weak",
     "Its ring locks it s-cis",
     "It is electron-poor"
    ],
@@ -19245,36 +19245,36 @@
    "type": "mcq"
   },
   {
-   "q": "A bulky base at −78 °C pulls a proton from a ketone that has two different carbons next to its C=O. Which product?",
+   "q": "From one intermediate, route 1 has a 50 kJ/mol barrier and gives P, which sits 10 kJ/mol below the intermediate. Route 2 has a 65 kJ/mol barrier and gives Q, 30 kJ/mol below it. Which product dominates at −78 °C, and which after warming until the mixture equilibrates?",
    "options": [
-    "The one from the more accessible proton, frozen in by the cold",
-    "The more substituted one, the more stable of the two",
-    "Both in roughly equal amounts, since the base is blunt",
-    "Neither one, because the cold shuts the reaction down"
+    "P cold, Q warm",
+    "Q cold, P warm",
+    "P under both conditions",
+    "Q under both conditions"
    ],
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "The same ketone is treated with a small base under warm, equilibrating conditions. Which product now dominates?",
+   "q": "Product A forms faster than B but is less stable. When the mixture is warmed, why does A go back to the intermediate more easily than B?",
    "options": [
-    "An even mixture of the two",
-    "Neither, because warmth destroys both",
-    "The more substituted, more stable one",
-    "The one from the more accessible proton"
+    "Its well is shallower, so its climb back is smaller",
+    "It is the more stable of the two products",
+    "Its forward barrier was the higher of the two routes",
+    "Heat breaks down whichever product formed first"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "An –SO₃H group can be put on a benzene ring to block a position and taken off later. What makes that possible?",
+   "q": "In a reaction, the faster-forming product is also the more stable one. Which product do you get cold, and which warm?",
    "options": [
-    "The sulfonation step is reversible",
-    "The reaction runs through a radical chain",
-    "The bond from sulfur to the ring is very weak",
-    "The group never fully attaches to the ring"
+    "The same product both times",
+    "The faster one cold, the other one warm",
+    "A 50:50 mixture both times",
+    "No product cold, the stable one warm"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -19377,14 +19377,14 @@
    "type": "mcq"
   },
   {
-   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
+   "q": "A reaction run cold gives mostly A. When pure A is warmed with a trace of catalyst, it turns into a 20:80 mixture of A and B. What does this show?",
    "options": [
-    "It means the more stable of the available options",
-    "It means the step in question is reversible",
-    "It means faster, and says nothing about crowding",
-    "It means the less hindered of the available options"
+    "A forms faster; B is more stable",
+    "A is more stable; B forms faster",
+    "A is both faster and more stable",
+    "Neither product can revert"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -19451,10 +19451,10 @@
   {
    "q": "Which is NOT a case of kinetic versus thermodynamic control?",
    "options": [
-    "1,2 versus 1,4 addition",
-    "Kinetic versus thermodynamic enolates",
+    "HBr adding 1,2 or 1,4 to a diene",
+    "Br₂ adding 1,2 or 1,4 to a diene",
     "SN2 inversion of configuration",
-    "Endo versus exo Diels-Alder adducts"
+    "Two products whose ratio flips on warming"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -19574,7 +19574,7 @@
    "q": "Why is cyclopentadiene exceptionally reactive?",
    "options": [
     "It is strained",
-    "It is aromatic",
+    "Its π bonds are unusually weak",
     "Its ring locks it s-cis",
     "It is strongly electron-poor"
    ],
@@ -19845,6 +19845,18 @@
    "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
+  },
+  {
+   "q": "The more crowded endo Diels-Alder adduct forms faster than the less crowded exo one. What does that show about the word 'kinetic'?",
+   "options": [
+    "It means the more stable of the available options",
+    "It means the step in question is reversible",
+    "It means faster, and says nothing about crowding",
+    "It means the less hindered of the available options"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
   }
  ],
  "uv-vis": [
@@ -20094,7 +20106,7 @@
     "It does not absorb at all",
     "It absorbs below the accessible range",
     "It absorbs too weakly",
-    "It absorbs only in the infrared region"
+    "It absorbs only visible light"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -20113,26 +20125,26 @@
    "type": "mcq"
   },
   {
-   "q": "Which technique best reports the extent of conjugation?",
+   "q": "Which feature of a UV-Vis band best reports how far the conjugation extends?",
    "options": [
-    "Mass spectrometry",
-    "Carbon NMR",
-    "IR",
-    "UV-Vis"
+    "Its height, ε",
+    "Its width",
+    "Its position, λₘₐₓ",
+    "The cell length used"
    ],
-   "correct": 3,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Which technique names functional groups?",
+   "q": "A solution of a conjugated diene gives A = 0.80. It is diluted to half its concentration and measured in the same cell. What is the new absorbance?",
    "options": [
-    "Polarimetry",
-    "UV-Vis",
-    "IR",
-    "Mass spectrometry"
+    "0.20",
+    "0.40",
+    "0.80",
+    "1.60"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -20386,12 +20398,12 @@
    "type": "mcq"
   },
   {
-   "q": "In a Williamson ether synthesis starting from an alcohol, the first step is usually to:",
+   "q": "Butan-1-ol is treated with MsCl and triethylamine, then with NaI in acetone. What is the product?",
    "options": [
-    "Deprotonate it with NaH",
-    "Protonate the alcohol with HCl",
-    "Oxidize the alcohol to a ketone",
-    "Tosylate the alcohol with TsCl"
+    "1-Iodobutane",
+    "Butan-1-ol, unchanged",
+    "But-1-ene",
+    "Dibutyl ether"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -20460,7 +20472,7 @@
   {
    "q": "Adding a Grignard reagent (R-MgBr) to an alcohol results in:",
    "options": [
-    "Nucleophilic addition to give a new, larger alcohol",
+    "A new C–C bond, giving a larger alcohol",
     "Simple acid-base protonation that destroys the Grignard reagent",
     "An SN2 substitution that gives an ether",
     "No reaction, since Grignards do not react with alcohols"
@@ -20742,8 +20754,8 @@
    "options": [
     "Is a strong acid that activates electrophiles",
     "Reacts readily with Grignard reagents to improve yields",
-    "Cannot dissolve organometallic compounds",
-    "Coordinates metal centers while staying unreactive"
+    "Cannot dissolve Grignard reagents",
+    "Coordinates magnesium while staying unreactive"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -20808,7 +20820,7 @@
    "type": "mcq"
   },
   {
-   "q": "Simple ethers have no O-H bond, so they cannot be oxidized at carbon by PCC- or Jones-type reagents the way alcohols are.",
+   "q": "Diethyl ether, CH₃CH₂–O–CH₂CH₃, and butan-1-ol are isomers: they share the formula C₄H₁₀O.",
    "options": [
     "True",
     "False"
@@ -20907,6 +20919,18 @@
    ],
    "correct": 1,
    "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "In a Williamson ether synthesis starting from an alcohol, the first step is usually to:",
+   "options": [
+    "Deprotonate it with NaH",
+    "Protonate the alcohol with HCl",
+    "Oxidize the alcohol to a ketone",
+    "Tosylate the alcohol with TsCl"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
    "type": "mcq"
   }
  ],
@@ -21016,12 +21040,12 @@
    "type": "tf"
   },
   {
-   "q": "Reducing an unsymmetrical epoxide with excess LiAlH4 places the new hydrogen mainly on:",
+   "q": "An unsymmetrical epoxide is opened under basic conditions by a hydride donor, a reagent that delivers H⁻ as a strong nucleophile. Where does the new hydrogen end up?",
    "options": [
-    "The more hindered carbon regardless of sterics",
-    "Both carbons equally",
-    "Neither carbon; LiAlH4 does not reduce epoxides",
-    "The less hindered carbon, leaving the new OH on the more substituted carbon"
+    "On the more hindered carbon",
+    "On both carbons equally",
+    "Nowhere; a hydride donor cannot open an epoxide",
+    "On the less hindered carbon"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -21125,7 +21149,7 @@
    "q": "An epoxide reacting with an amine nucleophile under neutral or basic-type conditions opens to give:",
    "options": [
     "A beta-amino alcohol, with the amine attacking the more hindered carbon",
-    "An imine with loss of the oxygen entirely",
+    "An alkene, with the oxygen lost as water",
     "A beta-amino alcohol, with the amine attacking the less hindered carbon",
     "No reaction; amines do not open epoxides"
    ],
@@ -21219,8 +21243,8 @@
   {
    "q": "An epoxide treated with a thiolate nucleophile (RS-) under basic conditions opens to give:",
    "options": [
-    "A beta-hydroxy thioether, with sulfur attacking the more substituted carbon",
-    "A beta-hydroxy thioether, with sulfur attacking the less hindered carbon",
+    "A thioether with OH on the next carbon, sulfur on the more substituted carbon",
+    "A thioether with OH on the next carbon, sulfur on the less hindered carbon",
     "A disulfide with loss of the oxygen",
     "No reaction; thiolates do not open epoxides"
    ],
@@ -21345,12 +21369,12 @@
    "type": "tf"
   },
   {
-   "q": "Tollens' test (silver mirror test) is used to distinguish aldehydes from ketones because:",
+   "q": "Chloral, Cl₃CCHO, adds water so completely that the product is a stable solid, while acetaldehyde, CH₃CHO, is only about half converted. Why?",
    "options": [
-    "Ketones reduce Ag+ to metallic silver but aldehydes do not",
-    "Aldehydes are oxidized by Ag(NH3)2+, ketones are not",
-    "Both aldehydes and ketones give a positive result",
-    "The test detects the presence of an alpha hydrogen"
+    "CCl₃ is smaller than CH₃",
+    "CCl₃ pulls electrons from the carbonyl carbon",
+    "Its chlorines hydrogen-bond strongly to water",
+    "CCl₃ pushes electrons onto the carbonyl carbon"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -21403,12 +21427,12 @@
    "type": "mcq"
   },
   {
-   "q": "You have butan-1-ol and you want butanal, not butanoic acid. Which condition stops the oxidation one rung short?",
+   "q": "2-Methylbut-2-ene is treated with O₃ and then with (CH₃)₂S. Which products form?",
    "options": [
-    "Anhydrous conditions, so no hydrate can form",
-    "Aqueous conditions, so the hydrate forms freely",
-    "Strongly basic conditions, which block the second step",
-    "A large excess of the oxidant and a long reaction time"
+    "Acetone and acetaldehyde",
+    "Acetone and acetic acid",
+    "Two molecules of acetone",
+    "Butan-2-one and formaldehyde"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -21454,7 +21478,7 @@
     "Formaldehyde is small and highly electrophilic",
     "Formaldehyde cannot form a carbonyl at all in water",
     "Water is too weak a nucleophile to react with any aldehyde",
-    "The geminal diol is aromatic and therefore highly stable"
+    "The geminal diol is stabilized by resonance"
    ],
    "correct": 0,
    "difficulty": "hard",
@@ -21555,14 +21579,14 @@
    "type": "mcq"
   },
   {
-   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
+   "q": "Which of these compounds is a ketone?",
    "options": [
-    "Sodium borohydride, which reduces both",
-    "Bromine in dichloromethane",
-    "Tollens’ reagent, Ag(NH3)2+",
-    "Dilute aqueous acid"
+    "CH₃CH₂CHO",
+    "CH₃COCH₂CH₃",
+    "CH₃COOCH₃",
+    "HCHO"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -21687,7 +21711,7 @@
   {
    "q": "When cyanide ion (CN-) adds to an aldehyde, the product formed (before any workup) is called a:",
    "options": [
-    "Hemiacetal",
+    "Hydrate",
     "Cyanohydrin",
     "Imine",
     "Enamine"
@@ -21850,11 +21874,11 @@
    "type": "mcq"
   },
   {
-   "q": "Nucleophilic ADDITION to an aldehyde/ketone and nucleophilic ACYL SUBSTITUTION at a carboxylic acid derivative (like an ester) both proceed through a tetrahedral intermediate, but they differ because:",
+   "q": "Nucleophilic addition to an aldehyde or ketone and substitution at an acid derivative such as an ester both pass through a tetrahedral intermediate. How do they differ?",
    "options": [
-    "Only acyl substitution expels a leaving group",
+    "Only the substitution expels a leaving group",
     "Addition has no tetrahedral intermediate at all",
-    "Acyl substitution never involves a nucleophile",
+    "Substitution never involves a nucleophile",
     "Aldehydes and ketones always have a leaving group attached"
    ],
    "correct": 0,
@@ -21908,7 +21932,7 @@
    "type": "mcq"
   },
   {
-   "q": "You need the alcohol shown. Which carbonyl and organometallic pair would you use?",
+   "q": "You need 2-phenylbutan-2-ol, CH₃CH₂C(OH)(CH₃)Ph. Which carbonyl compound and Grignard reagent would you use?",
    "molecule": "q-2-phenylbutan-2-ol",
    "options": [
     "Benzaldehyde with propylmagnesium bromide",
@@ -21957,7 +21981,7 @@
   {
    "q": "If two different carbonyl compounds are placed in a flask along with a limited amount of a moderately strong nucleophile, which one would you expect to react fastest: an unhindered aliphatic aldehyde, or a sterically hindered diaryl ketone?",
    "options": [
-    "The diaryl ketone, because aromatic stabilization speeds up addition",
+    "The diaryl ketone, because its rings pull electrons away",
     "They would react at identical rates",
     "The aldehyde, less hindered and more electrophilic",
     "Neither would react under any circumstances"
@@ -22078,9 +22102,9 @@
    "q": "When a carbonyl compound reacts with a diol such as ethylene glycol under acid catalysis, the two hydroxyl groups can both attack the same carbonyl carbon, typically forming a:",
    "options": [
     "Five-membered cyclic acetal (1,3-dioxolane)",
-    "Six-membered ring lactone",
+    "Six-membered cyclic acetal (1,3-dioxane)",
     "Open-chain diacetal with no ring",
-    "A polymer with no defined ring size"
+    "A three-membered ring, like an epoxide"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -22261,12 +22285,12 @@
    "type": "mcq"
   },
   {
-   "q": "In sugar chemistry, when a cyclic hemiacetal (like glucose's ring form) further reacts with a second alcohol under acid catalysis to 'lock in' a specific anomer, the product formed is called a:",
+   "q": "A sugar’s cyclic hemiacetal, such as the ring form of glucose, reacts with a second alcohol under acid catalysis, which locks its anomeric carbon in one configuration. What is the product called?",
    "options": [
-    "Another hemiacetal, chemically identical to the starting material",
+    "Another hemiacetal, like the starting material",
     "An ester of the sugar",
-    "A reducing sugar with enhanced reactivity",
-    "Glycoside (a full acetal of the sugar)"
+    "The open-chain aldehyde form",
+    "A glycoside (a full acetal of the sugar)"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -23039,6 +23063,16 @@
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
+  },
+  {
+   "q": "Simple ethers have no O-H bond, so they cannot be oxidized at carbon by PCC- or Jones-type reagents the way alcohols are.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "tf"
   }
  ],
  "carbonyl-reduction": [
@@ -23565,7 +23599,7 @@
    "options": [
     "Na in liquid NH3",
     "H2, Pd/C",
-    "LiAlH4",
+    "Br₂ in cold CH₂Cl₂",
     "H2 with Lindlar"
    ],
    "correct": 0,
@@ -23573,14 +23607,14 @@
    "type": "mcq"
   },
   {
-   "q": "Why is hydrogenation the complement of hydride reduction?",
+   "q": "(R)-3-Methylcyclohex-1-ene is hydrogenated over Pd/C. The product is:",
    "options": [
-    "Both reduce esters",
-    "They are identical",
-    "Both of them reduce ketones well",
-    "One reduces C=C and the other C=O"
+    "An achiral compound",
+    "The (R) enantiomer only",
+    "The (S) enantiomer only",
+    "A 50:50 mixture of R and S"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -23645,38 +23679,38 @@
    "type": "mcq"
   },
   {
-   "q": "An imine treated with H2/Pd gives what?",
+   "q": "CH₂=CH–CH₂–C≡C–CH₃ is stirred with excess H₂ over Pd/C until no more gas is taken up. How many equivalents of H₂ are consumed?",
    "options": [
-    "An alcohol",
-    "An amine",
-    "A nitrile",
-    "No reaction"
+    "1",
+    "2",
+    "3",
+    "4"
    ],
-   "correct": 1,
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Which reagent reduces an alkene but not a ketone?",
+   "q": "Which conditions reduce an alkene but leave a ketone in the same molecule untouched?",
    "options": [
-    "H2/Pd/C at 1 atm",
-    "LiAlH4",
-    "DIBAL-H",
-    "NaBH4 in methanol"
+    "H₂ over Pd/C at 1 atm",
+    "H₂ over PtO₂ at high pressure",
+    "H₂ with Lindlar catalyst",
+    "Na in liquid NH₃"
    ],
    "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
   {
-   "q": "Which reagent reduces a ketone but not an alkene?",
+   "q": "Cyclohexene is stirred under H₂ over Pd/C. What is the product?",
    "options": [
-    "Lindlar",
-    "Na/NH3",
-    "H2/Pd/C",
-    "NaBH4"
+    "Cyclohexane",
+    "Benzene",
+    "Cyclohexanol",
+    "Hexane"
    ],
-   "correct": 3,
+   "correct": 0,
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -23733,7 +23767,7 @@
    "options": [
     "It gives either alkene geometry",
     "It is unusually unreactive toward everything",
-    "It is aromatic",
+    "It cannot be hydrogenated at all",
     "It is cheap"
    ],
    "correct": 0,
@@ -24262,7 +24296,7 @@
    "options": [
     "Hydrogen-bonded cyclic dimers",
     "Separate monomers with no intermolecular attraction",
-    "Covalently bonded polymers",
+    "Covalently joined chains",
     "Ionic aggregates"
    ],
    "correct": 0,
@@ -24316,10 +24350,10 @@
   {
    "q": "Heating a beta-keto carboxylic acid (RCOCH2COOH, the ketone on the carbon beta to the carboxyl) typically causes:",
    "options": [
-    "Esterification with itself",
+    "Loss of water to give an alkene",
     "No reaction under any conditions",
     "Reduction to a primary alcohol",
-    "Decarboxylation, releasing CO2"
+    "Loss of CO₂, giving a ketone"
    ],
    "correct": 3,
    "difficulty": "hard",
@@ -24688,26 +24722,26 @@
    "type": "mcq"
   },
   {
-   "q": "A polyester such as PET (used in plastic bottles) is built from repeating units connected by:",
+   "q": "Which conditions turn ethyl acetate completely into acetic acid and ethanol?",
    "options": [
-    "Amide linkages between a diacid and a diamine",
-    "Ester linkages formed between a diacid and a diol",
-    "Ether linkages only",
-    "Carbon-carbon double bonds"
+    "Dilute aqueous acid, heated",
+    "NaOH in water, then acid workup",
+    "Excess ethanol and a drop of acid",
+    "NaBH₄ in methanol"
    ],
    "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Nylon is a classic example of which type of polymer?",
+   "q": "Which order runs from most to least reactive toward a nucleophile?",
    "options": [
-    "A polyester",
-    "A polyether",
-    "A polyamide",
-    "A simple hydrocarbon polymer"
+    "Acid chloride > ester > anhydride > amide",
+    "Acid chloride > anhydride > ester > amide",
+    "Amide > ester > anhydride > acid chloride",
+    "Ester > acid chloride > amide > anhydride"
    ],
-   "correct": 2,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -24782,7 +24816,7 @@
    "type": "mcq"
   },
   {
-   "q": "What is the common name for the base-promoted hydrolysis reaction used to convert fats/esters into carboxylate soaps?",
+   "q": "What is the name for the hydrolysis of an ester by hydroxide, which turns long-chain esters into soap?",
    "options": [
     "Saponification",
     "Esterification",
@@ -24868,9 +24902,9 @@
    "q": "The overall mechanism by which nucleophiles replace the leaving group on a carboxylic acid derivative's carbonyl carbon is called:",
    "options": [
     "Simple SN1 substitution",
-    "Electrophilic aromatic substitution",
+    "Electrophilic addition to the C=O",
     "Radical substitution",
-    "Nucleophilic acyl substitution (addition-elimination)"
+    "Nucleophilic acyl substitution"
    ],
    "correct": 3,
    "difficulty": "easy",
@@ -25274,7 +25308,7 @@
    "options": [
     "Benzaldehyde has no carbonyl group",
     "Aromatic rings are always more acidic than alkyl groups",
-    "The alpha carbon is an aromatic carbon with no H",
+    "The alpha carbon is a ring carbon with no H",
     "Benzaldehyde's carbonyl oxygen is not electronegative"
    ],
    "correct": 2,
@@ -25321,7 +25355,7 @@
    "q": "Diethyl malonate's alpha CH2 (flanked by two ester carbonyls) has a pKa of about 13, which is noticeably higher (less acidic) than a 1,3-diketone's central CH2 (pKa about 9-11) despite both having two flanking carbonyls. Why?",
    "options": [
     "Malonate esters have three acidic protons instead of two",
-    "Esters are aromatic and therefore less acidic",
+    "Ester groups are bulkier and block the base",
     "The ester oxygen donates into the carbonyl, weakening stabilization",
     "Malonate's carbonyls are further away from the CH2 than a diketone's carbonyls"
    ],
@@ -25374,7 +25408,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why is a nitro group (-NO2) an especially strong activator of an adjacent alpha C-H's acidity, making a C-H nearly as acidic as one flanked by two ketone carbonyls?",
+   "q": "Why does a nitro group (–NO₂) make the C–H next to it so acidic, nearly as acidic as a C–H flanked by two ketone carbonyls?",
    "options": [
     "Nitro groups have no effect on adjacent C-H acidity",
     "Nitro groups only work through induction, never through resonance",
@@ -25579,7 +25613,7 @@
     "Beta-hydroxy aldehyde or ketone",
     "Alpha-hydroxy aldehyde or ketone",
     "Gamma-hydroxy ester",
-    "Beta-keto ester"
+    "Alpha,beta-unsaturated aldehyde or ketone"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -25718,7 +25752,7 @@
    "options": [
     "Only strongly acidic, anhydrous, low-temperature conditions",
     "Dilute base and heat, cleaving the C-C bond to two carbonyls",
-    "Conditions identical to those used for a Claisen condensation, with no overlap to aldol chemistry",
+    "Concentrated acid with a drying agent to remove water",
     "Only when the aldol product has already been reduced to a diol"
    ],
    "correct": 1,
@@ -25770,14 +25804,14 @@
    "type": "mcq"
   },
   {
-   "q": "A student proposes that the aldol reaction and the Claisen condensation are mechanistically identical in every step, including the final fate of the tetrahedral intermediate. Is this correct?",
+   "q": "In an aldol addition, the enolate adds to an aldehyde and gives a tetrahedral alkoxide. In acyl substitution, a similar alkoxide collapses and expels a group. Why does the aldol alkoxide pick up a proton instead?",
    "options": [
-    "No, because the Claisen intermediate expels an alkoxide",
-    "Yes, both reactions always end by eliminating water in an identical final step",
-    "Yes, both reactions never involve enolate nucleophiles",
-    "No, because the aldol reaction does not involve a carbonyl electrophile at all"
+    "An alkoxide cannot form a C=O bond again",
+    "The new C–C bond can never break once formed",
+    "It has no good leaving group",
+    "Aldehydes react only through their enol form"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27337,15 +27371,14 @@
    "type": "mcq"
   },
   {
-   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
-   "molecule": "q-tert-butylbenzene",
+   "q": "Excess benzene is heated with 2-methylpropan-2-ol, (CH₃)₃COH, and H₂SO₄. What is the main product?",
    "options": [
-    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
-    "No reaction — the tert-butyl group deactivates the ring toward acylation",
-    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
-    "A mixture of ortho and meta products in roughly equal amounts"
+    "tert-Butylbenzene, PhC(CH₃)₃",
+    "No reaction, since only alkyl halides can alkylate a ring",
+    "tert-Butyl phenyl ether, PhOC(CH₃)₃",
+    "Isobutylbenzene, PhCH₂CH(CH₃)₂, after a shift"
    ],
-   "correct": 2,
+   "correct": 0,
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -27980,6 +28013,19 @@
    "correct": 0,
    "difficulty": "hard",
    "type": "tf"
+  },
+  {
+   "q": "Benzene was treated with (CH₃)₃CCl and AlCl₃ to give the compound shown, which is then treated with CH₃COCl and AlCl₃. What is the major product of that second step?",
+   "molecule": "q-tert-butylbenzene",
+   "options": [
+    "1-tert-butyl-3-acetylbenzene (acetyl meta to the tert-butyl group)",
+    "No reaction — the tert-butyl group deactivates the ring toward acylation",
+    "1-tert-butyl-4-acetylbenzene (acetyl para to the tert-butyl group)",
+    "A mixture of ortho and meta products in roughly equal amounts"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
   }
  ],
  "ir": [
@@ -29981,7 +30027,7 @@
   {
    "q": "A target has six more carbons and contains a benzene ring. What does that suggest?",
    "options": [
-    "A polymerization",
+    "A Diels–Alder reaction",
     "An ozonolysis",
     "Six separate C-C bonds must form",
     "The ring arrived intact"
@@ -30599,7 +30645,7 @@
    "options": [
     "Aqueous acid is exactly what removes it",
     "Acetals need base",
-    "It would polymerize the substrate",
+    "Acid locks it on permanently",
     "Acid oxidizes it"
    ],
    "correct": 0,
@@ -31214,9 +31260,9 @@
    "q": "What is a carbohydrate, in functional-group terms?",
    "options": [
     "A polyhydroxy carbonyl",
-    "A polyester of glycerol",
-    "A polymer of amino acids",
-    "A chain of phosphodiesters"
+    "A long-chain carboxylic acid",
+    "A polyamine",
+    "A cyclic ether with no carbonyl"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -31662,7 +31708,7 @@
     "They are covalent networks",
     "They are internal salts",
     "They hydrogen bond unusually strongly",
-    "They are polymeric"
+    "They are very large molecules"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -33639,7 +33685,7 @@
    "options": [
     "The alkyne adds to the metal",
     "The alkyne is reduced",
-    "The alkyne polymerizes",
+    "The alkyne is hydrated",
     "The alkyne C-H is deprotonated"
    ],
    "correct": 3,
@@ -33675,7 +33721,7 @@
    "options": [
     "It was enolized by the reagent",
     "It was reduced by the reagent",
-    "It polymerized in the ether",
+    "It was oxidized by the reagent",
     "It was too hindered to deprotonate"
    ],
    "correct": 0,
@@ -33893,7 +33939,7 @@
    "options": [
     "The carbanion sits in an sp orbital",
     "The triple bond withdraws inductively",
-    "The alkyne is aromatic",
+    "The anion is held by resonance",
     "It has fewer hydrogens"
    ],
    "correct": 0,
@@ -34906,7 +34952,7 @@
    "q": "Why can bromobenzene not be used to make an ylide?",
    "options": [
     "PPh3 attacks the ring instead",
-    "The ylide would be aromatic",
+    "Bromide is too poor a leaving group",
     "An aryl halide will not do SN2",
     "Aryl halides are too stable to handle"
    ],
@@ -35198,7 +35244,7 @@
     "An imine",
     "An enamine",
     "An amide",
-    "An amine oxide"
+    "A carbinolamine"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -35220,7 +35266,7 @@
    "q": "What does a tertiary amine plus a ketone give?",
    "options": [
     "An enamine",
-    "An ammonium ylide",
+    "An iminium salt",
     "No stable product",
     "An imine"
    ],
@@ -35304,7 +35350,7 @@
    "q": "Why does strong acid stop the reaction?",
    "options": [
     "The imine hydrolyzes instantly",
-    "The carbonyl polymerizes",
+    "The ketone is reduced",
     "The solvent freezes",
     "The amine is protonated"
    ],
@@ -35519,10 +35565,10 @@
   {
    "q": "Which reaction makes a secondary amine cleanly?",
    "options": [
-    "Hofmann elimination",
+    "A tertiary amine plus a ketone",
     "Reductive amination",
     "SN2 on ammonia",
-    "Nitration then reduction"
+    "A primary amine plus a ketone, no reductant"
    ],
    "correct": 1,
    "difficulty": "hard",
@@ -35872,7 +35918,7 @@
     "Its ring strain",
     "Its boiling point",
     "For a 1,5-dicarbonyl",
-    "Whether it is aromatic"
+    "Whether it is chiral"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -36615,7 +36661,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which retrosynthetic clue suggests a Baeyer-Villiger?",
+   "q": "Working backwards from a target ester, which clue suggests making it by a Baeyer-Villiger?",
    "options": [
     "A hindered alkyl on O",
     "An ester with a methyl on oxygen",
@@ -38636,7 +38682,7 @@
   {
    "q": "What does branching do to packing?",
    "options": [
-    "Only matters above Tg",
+    "Only matters in condensation polymers",
     "Prevents it",
     "Improves it",
     "Has no effect"
@@ -39035,7 +39081,7 @@
    "q": "What is atactic polypropylene like?",
    "options": [
     "Transparent and rigid",
-    "A thermoset",
+    "Hard and brittle like glass",
     "A sticky goo",
     "Rope-strong"
    ],
@@ -39514,12 +39560,12 @@
    "type": "mcq"
   },
   {
-   "q": "Is Kevlar a thermoset?",
+   "q": "Is Kevlar a cross-linked network?",
    "options": [
     "No, its chains are separate",
-    "Yes",
-    "Only when heated",
-    "It is neither"
+    "Yes, its amides tie the chains together covalently",
+    "Only once it has been heated",
+    "Yes, because its rings are rigid"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -40269,7 +40315,7 @@
     "A gem-diol",
     "An epoxide",
     "An enol ether",
-    "A hemiacetal"
+    "A cyanohydrin"
    ],
    "correct": 0,
    "difficulty": "easy",
@@ -40280,7 +40326,7 @@
    "options": [
     "Cyanohydrin",
     "Bisulfite adduct",
-    "Acetal",
+    "Epoxide",
     "Hydrate"
    ],
    "correct": 3,
@@ -40400,7 +40446,7 @@
    "options": [
     "Bond length and pH",
     "Sterics and electronics",
-    "Resonance and aromaticity",
+    "Ring strain and hydrogen bonding",
     "Solvent and temperature"
    ],
    "correct": 1,
@@ -40904,10 +40950,10 @@
   {
    "q": "Why is sucrose not a reducing sugar?",
    "options": [
-    "Its rings are aromatic",
+    "It has no OH groups",
     "Neither ring can open",
     "It contains no rings",
-    "It is a monosaccharide"
+    "It is a single sugar unit"
    ],
    "correct": 1,
    "difficulty": "medium",
@@ -40974,14 +41020,26 @@
    "type": "mcq"
   },
   {
-   "q": "The Baeyer-Villiger converts a ketone to:",
+   "q": "(E)-Hex-4-enal must become (E)-hex-4-enoic acid with its C=C untouched. Which reagent does it?",
    "options": [
-    "An aldehyde",
-    "An alcohol",
-    "A carboxylate",
-    "An ester"
+    "Hot, concentrated aqueous KMnO₄",
+    "NaClO₂ in a mild acid buffer",
+    "Ozone, then dimethyl sulfide",
+    "NaBH₄ in methanol"
    ],
-   "correct": 3,
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "A chemist needs a quick bench test that gives a visible result with an aldehyde and no result with a ketone. Which reagent does that?",
+   "options": [
+    "Sodium borohydride, which reduces both",
+    "Bromine in dichloromethane",
+    "Tollens’ reagent, Ag(NH3)2+",
+    "Dilute aqueous acid"
+   ],
+   "correct": 2,
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -41494,26 +41552,26 @@
    "type": "mcq"
   },
   {
-   "q": "The Sandmeyer route to an aryl nitrile starts from:",
+   "q": "How is the carbon of a C≡N group hybridized?",
    "options": [
-    "A diazonium salt",
-    "A Grignard reagent",
-    "An acid chloride",
-    "An aryl halide"
+    "sp³",
+    "sp²",
+    "sp",
+    "Unhybridized"
    ],
-   "correct": 0,
+   "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
   },
   {
-   "q": "Why can't EAS put a CN group on a benzene ring?",
+   "q": "Acetonitrile, CH₃CN (41 g/mol), boils at 82 °C, while propyne (40 g/mol) boils at −23 °C. Why the big difference?",
    "options": [
-    "There is no electrophilic cyanide reagent",
-    "Benzene is too unreactive",
-    "The CN group is too large",
-    "Cyanide is a poor nucleophile"
+    "Its molecules hydrogen-bond to each other",
+    "Its C≡N bond gives it a large dipole",
+    "It is one mass unit heavier",
+    "Its carbon is sp hybridized"
    ],
-   "correct": 0,
+   "correct": 1,
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41662,11 +41720,11 @@
    "type": "mcq"
   },
   {
-   "q": "Why is that nitrile stretch diagnostic?",
+   "q": "Why is the C≡N stretch near 2250 cm⁻¹ easy to pick out in an IR spectrum?",
    "options": [
     "No group absorbs above 3000",
     "It is the strongest peak",
-    "It appears as a doublet",
+    "It is broader than any other band",
     "The window is nearly empty"
    ],
    "correct": 3,
@@ -42247,7 +42305,7 @@
    "options": [
     "Alkene substitution",
     "Markovnikov's rule",
-    "Huckel's rule",
+    "CIP priority rules",
     "The Hammond postulate"
    ],
    "correct": 0,
