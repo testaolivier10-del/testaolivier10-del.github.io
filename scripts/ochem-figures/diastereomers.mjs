@@ -365,9 +365,9 @@ function ringPair(cx, cy, o) {
   put(1, 30, o.k1, o.sub);
   put(2, 330, o.k2, o.sub);
   /* each label beside its own carbon: C1 above its vertex, C2 below */
-  const e1 = at(pts[1], 30, 38 + rOf(o.sub) - 15), e2 = at(pts[2], 330, 38 + rOf(o.sub) - 15);
-  s += text(e1.x + rOf(o.sub) + 6, e1.y + 4, `C1: ${o.l1}`, { cls: 'fg-tag-good', size: 11, anchor: 'start' });
-  s += text(e2.x + rOf(o.sub) + 6, e2.y + 4, `C2: ${o.l2}`, { cls: 'fg-tag-good', size: 11, anchor: 'start' });
+  /* "C1 (R)" inside the ring, just left of each substituted vertex */
+  s += text(pts[1].x - 8, pts[1].y + 12, `C1 (${o.l1})`, { cls: 'fg-tag-good', size: 11, anchor: 'end' });
+  s += text(pts[2].x - 8, pts[2].y - 3, `C2 (${o.l2})`, { cls: 'fg-tag-good', size: 11, anchor: 'end' });
   claim(ids[1], o.l1); claim(ids[2], o.l2);
   return s;
 }
@@ -594,7 +594,7 @@ FIGURES.push({
   viewBox: '0 0 720 264',
   alt: 'alpha- and beta-D-glucopyranose drawn as flat six-membered rings seen from above, ring oxygen at the top right and C1 at the right. C2 to C5 are the same in both: C2 R with OH on a hash, C3 S with OH on a wedge, C4 S with OH on a hash, C5 R with CH2OH on a wedge. At C1 the OH is on a hash in alpha (S) and on a wedge in beta (R).',
   build: () => anomerFig(false),
-  caption: 'Four of the five ring stereocenters match. Only C1 differs: the right-hand ring carbon, bonded to two oxygens.',
+  caption: 'Four of the five ring stereocenters match. Only C1, the carbon bonded to two oxygens, differs.',
 });
 
 /* ================================================================ 9 ===
