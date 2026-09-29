@@ -1145,7 +1145,7 @@ FIGURES.push({
     s += rxn(P(160, y + 10), P(290, y + 10), 'CH₃Cl, AlCl₃');
     s += warn(310, y + 14, 'no reaction', 'start');
     s += tg(460, y + 4, 'NO₂ pulls electron density', 'start');
-    s += tg(460, y + 20, 'out of the ring: deactivated', 'start');
+    s += tg(460, y + 20, 'out of the ring: strongly deactivated', 'start');
     s += rule(24, 178, 736, 178);
     y = 280;
     {
@@ -1183,7 +1183,7 @@ FIGURES.push({
     s += tg(600, y + 2, 'the ring deactivates it', 'start');
     return s;
   },
-  caption: 'Top: a deactivated ring. Bottom: the NH₂ lone pair binds AlCl₃ before any electrophile can form, and the positive nitrogen then deactivates the ring.',
+  caption: 'Top: a strongly deactivated ring. Bottom: the NH₂ lone pair binds AlCl₃ before any electrophile can form, and the positive nitrogen then deactivates the ring.',
 });
 
 /* ============================================ making propylbenzene === */

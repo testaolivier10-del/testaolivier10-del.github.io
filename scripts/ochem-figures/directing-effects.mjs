@@ -134,7 +134,6 @@ function hybrid(c, R, hit, top, o = {}) {
   for (const k of [(hit + 1) % 6, (hit + 3) % 6, (hit + 5) % 6]) g += dplus(signAt(v, k, 18));
   if (o.nums) {
     for (let i = 0; i < 6; i++) {
-      if (i === hit) continue;
       const p = at(c, vAng(i), arc ? R * 0.42 : R * 0.58);
       g += text(p.x, p.y + 4, String(i + 1), { cls: 'fg-tag-mut', size: 11 });
     }
@@ -341,7 +340,7 @@ FIGURES.push({
   build() {
     const s = [];
     const R = 30;
-    s.push(tag(10, 18, 'ORTHO OR PARA: + LANDS ON C1', { cls: 'fg-tag-warn', anchor: 'start' }));
+    s.push(tag(10, 18, 'ORTHO ATTACK (PARA IS THE SAME): + ON C1', { cls: 'fg-tag-warn', anchor: 'start' }));
     s.push(panel(14, 30, 164, 196, { kind: 'warn' }));
     s.push(contributor(P(92, 146), R, 1, 0, 'no2'));
     s.push(text(188, 130, 'C1 carries +', { cls: 'fg-tag-warn', size: 11, anchor: 'start' }));
@@ -420,7 +419,7 @@ FIGURES.push({
     s.push(rule(380, 40, 380, 336));
     return s.join('');
   },
-  caption: 'Dots mark the ring carbons each group directs toward, and the lines under each ring say which ones win.',
+  caption: 'Dots mark the ring carbons each group directs toward, and the labels under each ring say which carbons win.',
 });
 
 FIGURES.push({
@@ -536,10 +535,10 @@ FIGURES.push({
     s.push(right(30, 170, y2));
     s.push(text(100, y2 - 12, '3. HNO₃, H₂SO₄', { cls: 'fg-tag', size: 11 }));
     s.push(right(350, 528, y2));
-    s.push(text(439, y2 - 12, '4. H₃O⁺, heat', { cls: 'fg-tag', size: 11 }));
+    s.push(text(439, y2 - 12, '4. H₃O⁺, heat; then base', { cls: 'fg-tag', size: 11 }));
     s.push(text(250, 548, 'NO₂ ortho to N, meta to SO₃H', { cls: 'fg-tag', size: 11 }));
     s.push(text(600, 486, '2-nitroaniline', { cls: 'fg-tag-good', size: 11 }));
-    s.push(text(600, 502, 'both helpers removed', { cls: 'fg-tag-good', size: 11 }));
+    s.push(text(600, 502, 'both temporary groups removed', { cls: 'fg-tag-good', size: 11 }));
     return s.join('');
   },
   caption: 'Ac₂O is acetic anhydride. The numbers on the arrows match the steps in the example.',

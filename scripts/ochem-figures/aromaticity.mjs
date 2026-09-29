@@ -104,12 +104,12 @@ FIGURES.push({
     const cols = [
       { cx: 130, e: 28.6, name: 'cyclohexene', d: [0] },
       { cx: 292, e: 55.4, name: 'cyclohexa-1,3-diene', d: [0, 2], sub: '(two separate C=C: 57.2)' },
-      { cx: 454, e: 85.8, name: '“cyclohexatriene”', d: [0, 2, 4], dash: true, val: '3 × 28.6 = 85.8, imaginary' },
+      { cx: 454, e: 85.8, name: '“cyclohexatriene”', d: [0, 2, 4], dash: true, val: '3 × 28.6 = 85.8', sub: '(fixed C=C, imaginary)' },
       { cx: 596, e: 49.8, name: 'benzene', d: [0, 2, 4] },
     ];
     for (const c of cols) {
       const y = base - c.e * k;
-      s += `<line class="${c.dash ? 'fg-dash' : 'fg-bond'}" x1="${c.cx - 48}" y1="${r2(y)}" x2="${c.cx + 48}" y2="${r2(y)}"></line>`;
+      if (!c.dash) s += `<line class="fg-bond" x1="${c.cx - 48}" y1="${r2(y)}" x2="${c.cx + 48}" y2="${r2(y)}"></line>`;
       s += ring(c.cx, y - 34, 6, 19, c.d, { inset: 5 }).s;
       s += tg(c.cx, y - 62, c.name);
       s += sm(c.cx, y + 17, c.val || String(c.e));
@@ -117,7 +117,7 @@ FIGURES.push({
     }
     /* The gap: prediction minus benzene. */
     const yT = base - 85.8 * k, yB = base - 49.8 * k;
-    s += `<line class="fg-dash" x1="${454 + 52}" y1="${r2(yT)}" x2="676" y2="${r2(yT)}"></line>`;
+    s += `<line class="fg-dash" x1="${454 - 48}" y1="${r2(yT)}" x2="676" y2="${r2(yT)}"></line>`;
     const mid = (yT + yB) / 2;
     s += arrow(P(664, mid), P(664, yT + 1), { size: 6 }) + arrow(P(664, mid), P(664, yB - 1), { size: 6 });
     s += text(676, mid - 8, '36 kcal/mol', { cls: 'fg-lbl', size: 13, anchor: 'start' });
@@ -223,31 +223,30 @@ FIGURES.push({
   id: 'frost-circles',
   section: 'aromaticity',
   anchor: '',
-  alt: 'Three Frost circles, each with an energy-level diagram beside it. Benzene: a hexagon in a circle, one vertex at the bottom; its six levels are one at the bottom, then two pairs, then one at the top, and its six electrons fill the bottom level and the lower pair. Cyclobutadiene: a square; its levels are one at the bottom, a pair on the center line, and one at the top; its four electrons fill the bottom level and put one unpaired electron in each orbital of the middle pair. Cyclopentadienyl anion: a pentagon; one bottom level and two pairs; its six electrons fill the bottom level and the lower pair.',
+  alt: 'Two Frost circles, each with an energy-level diagram and an upward energy arrow beside it. Benzene: a hexagon in a circle, one vertex at the bottom; its six levels are one at the bottom, then two pairs, then one at the top, and its six electrons fill the bottom level and the lower pair. Cyclobutadiene: a square; its levels are one at the bottom, a pair on the center line, and one at the top; its four electrons fill the bottom level and put one unpaired electron in each orbital of the middle pair.',
   viewBox: '0 0 760 336',
   build() {
     let s = '';
     const CY = 150, R = 46;
     const panels = [
-      { cx: 127, n: 6, title: 'BENZENE', pi: '6 π electrons', e: 6, detail: 'every bonding orbital full', verdict: 'AROMATIC', kind: 'fg-tag-good' },
-      { cx: 380, n: 4, title: 'CYCLOBUTADIENE', pi: '4 π electrons', e: 4, detail: 'two unpaired electrons', verdict: 'ANTIAROMATIC', kind: 'fg-tag-warn' },
-      { cx: 633, n: 5, title: 'CYCLOPENTADIENYL ANION', pi: '6 π electrons', e: 6, detail: 'every bonding orbital full', verdict: 'AROMATIC', kind: 'fg-tag-good' },
+      { cx: 190, n: 6, title: 'BENZENE', pi: '6 π electrons', e: 6, detail: 'every bonding orbital full', verdict: 'AROMATIC', kind: 'fg-tag-good' },
+      { cx: 570, n: 4, title: 'CYCLOBUTADIENE', pi: '4 π electrons', e: 4, detail: 'two unpaired electrons in nonbonding orbitals', verdict: 'ANTIAROMATIC', kind: 'fg-tag-warn' },
     ];
     for (const p of panels) {
       s += tag(p.cx, 36, p.title);
       s += `<line class="fg-dash" x1="${p.cx - 110}" y1="${CY}" x2="${p.cx + 112}" y2="${CY}"></line>`;
-      s += frost(p.cx - 52, CY, p.n, R, p.e, p.cx + 20);
-      s += text(p.cx + 52, 72, 'energy', { cls: 'fg-sm', size: 10.5 });
+      s += frost(p.cx - 60, CY, p.n, R, p.e, p.cx + 20);
+      s += arrow(P(p.cx + 4, 214), P(p.cx + 4, 86), { size: 6 });
+      s += text(p.cx + 4, 76, 'energy', { cls: 'fg-sm', size: 10.5 });
       s += text(p.cx, 238, p.pi, { cls: 'fg-lbl', size: 13 });
       s += sm(p.cx, 258, p.detail);
       s += tg(p.cx, 282, p.verdict, p.kind);
     }
-    s += rule(253, 52, 253, 292);
-    s += rule(507, 52, 507, 292);
+    s += rule(380, 52, 380, 292);
     s += sm(380, 320, 'Below the dashed line an orbital is bonding; on it, nonbonding; above it, antibonding.');
     return s;
   },
-  caption: 'In each panel, match every corner of the polygon to the level at the same height on its right, then compare the top filled levels.',
+  caption: 'In each panel, match every corner of the polygon to the level at the same height on its right, then compare the highest filled levels.',
 });
 
 FIGURES.push({
@@ -255,7 +254,7 @@ FIGURES.push({
   lessons: ['aromaticity'],
   anchor: '',
   alt: 'Two Frost circles, stacked. Top, benzene: a hexagon in a circle with a vertex at the bottom; its six electrons fill the lowest level and the pair above it. Bottom, cyclobutadiene: a square in a circle; its four electrons fill the lowest level and put one unpaired electron in each orbital of the pair on the center line.',
-  viewBox: '0 0 340 452',
+  viewBox: '0 0 340 460',
   build() {
     let s = '';
     const rows = [
@@ -271,7 +270,8 @@ FIGURES.push({
       s += tg(170, r.y0 + 198, r.verdict, r.kind);
     }
     s += rule(20, 206, 320, 206);
-    s += tg(170, 440, 'dashed line: bonding below, antibonding above');
+    s += tg(170, 432, 'dashed line: bonding below,');
+    s += tg(170, 448, 'nonbonding on it, antibonding above');
     return s;
   },
   caption: 'The ring sits vertex-down in each circle; each vertex height is one orbital.',
@@ -329,7 +329,7 @@ FIGURES.push({
     s += rule(380, 52, 380, 396);
     return s;
   },
-  caption: 'Top: each ring as it is usually drawn. Middle: the same ring seen edge-on, with the ring plane as a line. Find the two dots on each nitrogen.',
+  caption: 'Top: each ring as it is usually drawn. Middle: the same ring seen edge-on, with the ring plane as a line. In the edge-on row, find the two dots on each nitrogen.',
 });
 
 FIGURES.push({
@@ -352,8 +352,8 @@ FIGURES.push({
       const N = rg.v[0];
       if (c.nh) s += bond(N, P(N.x + 30, N.y + 12), { rFrom: 13, rTo: 10 }) + atom(N.x + 30, N.y + 12, 'H', { r: 10, size: 11 });
       else s += lonePair(N.x, N.y, 90, { dist: 20 });
-      s += tg(236, c.y0 + 66, 'seen edge-on,');
-      s += tg(236, c.y0 + 82, 'below');
+      s += tg(240, c.y0 + 66, 'below: the same');
+      s += tg(240, c.y0 + 82, 'ring seen edge-on');
       s += edgeRow(170, c.y0 + 194, c.n, c.n === 5 ? 44 : 40, 'N', c.pair).s;
       s += lbl(170, c.y0 + 254, c.l1);
       s += tg(170, c.y0 + 274, c.l2, 'fg-tag-good');
@@ -378,7 +378,7 @@ FIGURES.push({
     s += tag(190, 34, 'FURAN');
     const f = ring(190, 104, 5, 38, [1, 3], { rot: 270, atoms: { 0: 'O' } });
     s += f.s;
-    s += lonePair(f.v[0].x, f.v[0].y, 90, { dist: 22 });
+    s += lonePair(f.v[0].x, f.v[0].y, 50, { dist: 22 }) + lonePair(f.v[0].x, f.v[0].y, 130, { dist: 22 });
     s += sm(190, 208, 'the same ring, seen edge-on');
     s += edgeRow(190, 278, 5, 44, 'O', 'up side').s;
     s += lbl(190, 350, 'one pair in the p orbital, one in the plane');
@@ -398,7 +398,7 @@ FIGURES.push({
     s += text(N3.x + 8, N3.y - 20, 'N3', { cls: 'fg-tag', size: 11, anchor: 'start' });
     s += text(N1.x - 22, N1.y + 4, 'N1', { cls: 'fg-tag', size: 11, anchor: 'end' });
     s += tg(N3.x - 34, N3.y + 2, 'pair in the plane: 0', 'fg-tag', 'end');
-    s += tg(N1.x + 20, N1.y + 38, 'pair in the p orbital: 2', 'fg-tag', 'start');
+    s += tg(N1.x + 22, N1.y + 4, 'pair in the p orbital: 2', 'fg-tag', 'start');
     s += lbl(570, 262, 'N1 is like pyrrole’s N; N3 is like pyridine’s');
     s += sm(570, 284, 'C=C (2) + C=N (2) + the N1 lone pair (2) = 6 π');
     s += tg(570, 306, 'aromatic; N3 is the basic nitrogen', 'fg-tag-good');
@@ -448,7 +448,7 @@ FIGURES.push({
     s += sm(501, 110, '− H⁺');
     return s;
   },
-  caption: 'One carbon skeleton, three answers. Follow the top carbon: two hydrogens in the middle, then an empty p orbital on the left or a lone pair on the right.',
+  caption: 'One carbon skeleton, three answers. Follow the top carbon: two hydrogens in the middle, then a positive charge (an empty p orbital) on the left or a lone pair on the right.',
 });
 
 FIGURES.push({
@@ -535,7 +535,7 @@ const TUB = (() => {
   ];
 })();
 function tubDraw(cx, cy, scale, o = {}) {
-  const phi = rad(o.phi ?? 80), tilt = rad(o.tilt ?? 25);
+  const phi = rad(o.phi ?? 88), tilt = rad(o.tilt ?? 22);
   const proj = ([x, y, z]) => {
     const x1 = x * Math.cos(phi) - y * Math.sin(phi);
     const y1 = x * Math.sin(phi) + y * Math.cos(phi);
@@ -561,8 +561,8 @@ function tubDraw(cx, cy, scale, o = {}) {
     const len = Math.hypot(dx, dy) || 1;
     const ang = (Math.atan2(dy, dx) * 180) / Math.PI;
     const lob = (sign, cls) => {
-      const c = P(base.x + (dx / len) * (o.lobe ?? 17) * sign * 1.08, base.y + (dy / len) * (o.lobe ?? 17) * sign * 1.08);
-      return `<ellipse class="${cls}" cx="${r2(c.x)}" cy="${r2(c.y)}" rx="${o.lobe ?? 17}" ry="7" fill-opacity="0.18" transform="rotate(${r2(ang)} ${r2(c.x)} ${r2(c.y)})"></ellipse>`;
+      const c = P(base.x + (dx / len) * (o.lobe ?? 11) * sign * 1.08, base.y + (dy / len) * (o.lobe ?? 11) * sign * 1.08);
+      return `<ellipse class="${cls}" cx="${r2(c.x)}" cy="${r2(c.y)}" rx="${o.lobe ?? 11}" ry="6" fill-opacity="0.18" transform="rotate(${r2(ang)} ${r2(c.x)} ${r2(c.y)})"></ellipse>`;
     };
     lobes.push({ depth: base.depth, s: lob(1, 'fg-orb') + lob(-1, 'fg-orb-alt') });
   });
@@ -609,9 +609,11 @@ FIGURES.push({
     s += rule(380, 44, 380, 296);
     s += tg(570, 32, 'REAL COT: A TUB');
     s += tubDraw(570, 112, 58);
-    s += lbl(570, 236, 'neighboring C=C bonds tilt apart');
-    s += sm(570, 256, 'across each single bond the p orbitals barely overlap');
-    s += tg(570, 280, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
+    s += tg(570, 82, 'back', 'fg-tag-mut');
+    s += tg(570, 212, 'front');
+    s += lbl(570, 244, 'neighboring C=C bonds tilt apart');
+    s += sm(570, 264, 'across each single bond the p orbitals barely overlap');
+    s += tg(570, 288, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
     return s;
   },
   caption: 'Left: the flat ring that cyclooctatetraene avoids. Right: the tub it adopts, with a p orbital drawn on each carbon. Compare the directions of the p orbitals on either side of each single bond.',
@@ -632,6 +634,8 @@ FIGURES.push({
     s += rule(20, 218, 320, 218);
     s += tg(170, 244, 'REAL COT: A TUB');
     s += tubDraw(170, 322, 54);
+    s += tg(170, 290, 'back', 'fg-tag-mut');
+    s += tg(170, 420, 'front');
     s += lbl(170, 448, 'p orbitals tilt apart at single bonds');
     s += tg(170, 470, 'NONAROMATIC: FOUR SEPARATE C=C', 'fg-tag-mut');
     return s;
@@ -684,7 +688,7 @@ FIGURES.push({
     s += bond(a.bot, P(570, a.bot.y - 13), { rFrom: 0, rTo: 8 }) + atom(570, a.bot.y - 13, 'H', { kind: 'warn', r: 8, size: 10 });
     s += tg(570, 206, 'these two inside H collide', 'fg-tag-warn');
     s += lbl(570, 232, '10 π electrons, but not flat');
-    s += tg(570, 256, 'NOT AROMATIC', 'fg-tag-warn');
+    s += tg(570, 256, 'NONAROMATIC', 'fg-tag-warn');
     return s;
   },
   caption: 'Left: naphthalene, with its shared edge highlighted. Right: [10]annulene drawn in the same outline, where the middle bond is replaced by two hydrogens pointing inward.',
