@@ -627,7 +627,8 @@
     var out = [];
     var overall = M().overall();
     var weak = M().weakest(4);
-    var dueList = M().due(50);
+    var reachDue = frontierIndex();
+    var dueList = M().due(50).filter(function(p){ return reachable(p.id, reachDue); });
     var missed = M().mistakes({ limit: 50 });
 
     if(!overall || overall.touched < 4){

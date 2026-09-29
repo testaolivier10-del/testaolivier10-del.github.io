@@ -83,7 +83,7 @@
   function snapshotHtml(){
     var overall = M.overall();
     var counts = M.counts();
-    var dueCount = M.due().length;
+    var dueCount = E.reviewQueue().dueTotal;   // only concepts with a question in a reached topic
     var streak = M.streakDays();
     var cells = [];
 
