@@ -107,7 +107,7 @@ function lessonPage(id) {
     // Truncated last: the kind goes first so the lesson and notes titles differ.
     `A&P lesson: ${t.title}`,
   ]);
-  const desc = clampDesc(`${text(L.summary)}`);
+  const desc = clampDesc(`${text(L.summary)}`, `${t.title}: a free anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
   const url = `${SITE}${BASE}lessons/${id}.html`;
   const jsonld = {
     '@context': 'https://schema.org',
@@ -296,7 +296,8 @@ function notesPage(id) {
   const { html: withIds, sections } = sectionIds(C.notes[id]);
   let html = renderFigures(C, withIds, depth, id);
   html = glossify(C, html, { depth, topic: id, seen, index: INDEX });
-  const firstP = (C.notes[id].match(/<p>([\s\S]*?)<\/p>/) || [])[1] || t.title;
+  // The opening two paragraphs: the first is often a one-line hook.
+  const firstP = [...C.notes[id].matchAll(/<p>([\s\S]*?)<\/p>/g)].slice(0, 2).map(m => m[1]).join(' ') || t.title;
   const minutes = Math.max(1, Math.round(text(C.notes[id]).split(' ').length / 200));
   const title = clampTitle([
     `${t.title}: Notes | ${COURSE_NAME}`,
@@ -304,7 +305,7 @@ function notesPage(id) {
     `${t.title} | A&P notes`,
     `A&P notes: ${t.title}`,
   ]);
-  const desc = clampDesc(firstP);
+  const desc = clampDesc(firstP, `${t.title} explained in plain language: free anatomy and physiology study notes with labeled figures.`);
   const url = `${SITE}${BASE}notes/${id}.html`;
   const pv = prevTopic(id), nx = nextTopic(id);
   const jsonld = {
@@ -370,7 +371,7 @@ function chapterPage(chId) {
   const toolGroups = kinds.map(([k, label]) => `<section class="anp-chap-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="anp-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
   const title = clampTitle([`${ch.title} | ${COURSE_NAME}`, `${ch.title} | A&P`]);
-  const desc = clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`);
+  const desc = clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: free anatomy and physiology lessons, notes, practice questions and study tools.`);
   const url = `${SITE}${BASE}chapters/${chId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#chapter`, name: ch.title, url, description: desc, isPartOf: { '@id': COURSE_ID } },
@@ -669,7 +670,7 @@ function homeSample(depth) {
 function homePage() {
   const depth = '';
   const nb = builtTopics.length;
-  const title = 'Anatomy & Physiology course (Beta) | LevlPrep';
+  const title = 'Free Anatomy & Physiology Course (Beta) | LevlPrep';
   const desc = 'Free anatomy and physiology course: lessons that build in strict order, mechanism-first physiology, a virtual lab practical and TEAS A&P practice.';
   const url = `${SITE}${BASE}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [

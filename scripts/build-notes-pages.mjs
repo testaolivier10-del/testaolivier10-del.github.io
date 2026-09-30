@@ -109,18 +109,26 @@ function decodeEntities(text) {
   return out.replace(/&amp;/g, '&');
 }
 
-/* The meta description is the section's own opening sentence, trimmed to a
-   sensible length at a word boundary. Deriving it means it cannot contradict
-   the prose, and it means nobody has to write 62 of them. */
+/* The meta description is the section's own opening sentences, as many whole
+   ones as fit in 160 characters. Deriving it means it cannot contradict the
+   prose, and it means nobody has to write 121 of them. It never ends
+   mid-sentence: 118 of them used to, cut at a word boundary with "…", which
+   reads as broken in a result list. When not even one sentence fits, or what
+   fits is too short to say anything, the fallback names the topic instead. */
 function describe(prose, fallback) {
   const firstPara = prose.match(/<p[^>]*>([\s\S]*?)<\/p>/);
   if (!firstPara) return fallback;
   let text = firstPara[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   text = decodeEntities(text).replace(/\s+/g, ' ').trim();
   if (!text) return fallback;
-  if (text.length <= 160) return text;
-  const cut = text.slice(0, 157);
-  return cut.slice(0, cut.lastIndexOf(' ')) + '…';
+  if (text.length <= 160) return text.length >= 70 ? text : fallback;
+  let out = '';
+  for (const sentence of text.split(/(?<=[.!?])\s+(?=[A-Z0-9(])/)) {
+    const next = out ? `${out} ${sentence}` : sentence;
+    if (next.length > 160) break;
+    out = next;
+  }
+  return out.length >= 70 ? out : fallback;
 }
 
 /* Titles are picked from a list of candidates rather than built from one
@@ -156,7 +164,7 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
     `${topic.title} — Organic Chemistry Notes`,
     `${topic.title} — Study Notes`,
   ]);
-  const desc = describe(prose, `${topic.title}, from the ${mod.title} chapter of the organic chemistry textbook.`);
+  const desc = describe(prose, `${topic.title} explained step by step: free organic chemistry notes from the ${mod.title} chapter.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
   /* A notes-only topic's href is this very page, so it gets the shared label
      instead of a link back to itself. hasLesson is the test for "is there a

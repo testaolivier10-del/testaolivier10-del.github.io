@@ -14,4 +14,9 @@ Allow: /
 # generated from; nothing on the site fetches it, so there is nothing to index.
 Disallow: /nremt/assets/questions.json
 
+# The A&P notes sources are bare prose fragments that scripts/build-anp.mjs
+# wraps into the real pages under /anatomy-physiology/notes/. Nothing links to
+# or fetches them; indexed, they would compete with those pages as duplicates.
+Disallow: /anatomy-physiology/data/notes/
+
 Sitemap: https://levlprep.com/sitemap.xml

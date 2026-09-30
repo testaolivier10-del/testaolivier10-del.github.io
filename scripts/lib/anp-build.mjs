@@ -70,12 +70,32 @@ export function clampTitle(cands) {
   for (const c of cands) if (c.length <= 60) return c;
   return cands[cands.length - 1].slice(0, 57).replace(/\s+\S*$/, '') + '…';
 }
-export function clampDesc(s) {
+/* A description is whole sentences or it is the fallback. Cutting mid-sentence
+   and adding "…" was what 190 A&P pages shipped: a snippet that stops before
+   it says what the page is for reads as broken in a result list.
+   Tried in order, within the first three sentences: a run of whole sentences
+   that fits, then the clause before a semicolon, which usually stands on its
+   own. A later sentence is skipped when it opens with a word pointing back
+   ("It", "This", "So"), because out of context it would point at nothing. */
+const REFERS_BACK = /^(That|This|These|Those|It|Its|They|Their|Them|So|But|And|Or|Then|Here|There|Both|Each|Such|Now|Also|Yet|Instead|Because|Which|We)\b/;
+export function clampDesc(s, fallback) {
   s = text(s);
   if (s.length <= 158) return s;
-  const cut = s.slice(0, 157);
-  const dot = cut.lastIndexOf('. ');
-  return dot > 90 ? cut.slice(0, dot + 1) : cut.replace(/\s+\S*$/, '') + '…';
+  const sentences = s.split(/(?<=[.!?])\s+(?=[A-Z0-9(])/);
+  for (let i = 0; i < Math.min(3, sentences.length); i++) {
+    if (i && REFERS_BACK.test(sentences[i])) continue;
+    let out = '';
+    for (const sentence of sentences.slice(i)) {
+      const next = out ? `${out} ${sentence}` : sentence;
+      if (next.length > 158) break;
+      out = next;
+    }
+    if (out.length >= 70) return out;
+    const clause = sentences[i].split('; ')[0];
+    if (clause.length >= 70 && clause.length <= 157 && clause !== sentences[i]) return `${clause.replace(/[,:]$/, '')}.`;
+  }
+  if (fallback) return clampDesc(fallback);
+  return s.slice(0, 157).replace(/\s+\S*$/, '') + '…';
 }
 
 /* depth: '' for pages in anatomy-physiology/, '../' for pages one folder down. */
