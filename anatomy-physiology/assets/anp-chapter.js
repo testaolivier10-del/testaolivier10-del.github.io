@@ -24,9 +24,13 @@
     var byId = {};
     window.AnpCurriculum.chapters.forEach(function(c){ byId[c.id] = c; });
     sel.addEventListener('change', function(){
-      document.querySelectorAll('.anp-chapters li[data-chapter]').forEach(function(li){
+      document.querySelectorAll('.anp-learn-ch[data-chapter]').forEach(function(li){
         var c = byId[li.getAttribute('data-chapter')];
         li.hidden = !!(sel.value && c && c.course !== sel.value && c.part !== 'foundations');
+      });
+      document.querySelectorAll('.anp-learn .tb-toc-mod').forEach(function(m){
+        var a = m.querySelector('[data-toc-ch]'), c = a && byId[a.getAttribute('data-toc-ch')];
+        m.hidden = !!(sel.value && c && c.course !== sel.value && c.part !== 'foundations');
       });
     });
   }

@@ -232,20 +232,22 @@ const tocProg = (total, label, chId = '') =>
 const tocBtn = label => `<button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; ${label}</button>`;
 const chip = id => `<span class="anp-tb-chip" data-chip-topic="${id}">Not practiced</span>`;
 
-/* The whole course, the current chapter open to its topics (chapter pages). */
-function courseRail(curId) {
+/* The whole course, the current chapter open to its topics (chapter pages).
+   From learn.html (depth '') no chapter is open and links start at the root. */
+function courseRail(curId, depth = '../') {
+  const chDir = depth ? '' : 'chapters/';
   const groups = map.parts.map(p => `<p class="anp-toc-group">${esc(p.title)}</p>` + map.chapters.filter(c => c.part === p.id).map(ch => {
     const ts = topicsOf(ch.id), n = chapterNumber(ch.id), cur = ch.id === curId;
     const inner = `<span class="tb-toc-num">${n}</span><span class="tb-toc-modtitle">${esc(ch.title)}</span><span class="tb-toc-count" data-toc-ch="${ch.id}">0/${ts.filter(t => C.built.has(t.id)).length}</span>`;
     const headEl = !chapterBuilt(ch) ? `<span class="tb-toc-modhead anp-unbuilt">${inner}</span>`
-      : `<a class="tb-toc-modhead" href="${cur ? '#main' : `${ch.id}.html`}"${cur ? ' aria-current="page"' : ''}>${inner}</a>`;
-    const topics = cur ? `<div class="tb-toc-topics">${ts.filter(t => C.built.has(t.id)).map(t => `<a class="tb-toc-topic" href="../lessons/${t.id}.html" data-toc-t="${t.id}"><span class="tb-toc-tick"></span>${esc(t.title)}</a>`).join('')}</div>` : '';
+      : `<a class="tb-toc-modhead" href="${cur ? '#main' : `${chDir}${ch.id}.html`}"${cur ? ' aria-current="page"' : ''}>${inner}</a>`;
+    const topics = cur ? `<div class="tb-toc-topics">${ts.filter(t => C.built.has(t.id)).map(t => `<a class="tb-toc-topic" href="${depth}lessons/${t.id}.html" data-toc-t="${t.id}"><span class="tb-toc-tick"></span>${esc(t.title)}</a>`).join('')}</div>` : '';
     return `<div class="tb-toc-mod${cur ? ' open' : ''}">${headEl}${topics}</div>`;
   }).join('')).join('');
   return `<aside class="tb-rail anp-nav-ref" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
     ${tocProg(builtTopics.length, 'lessons done')}
-    <form class="anp-toc-search" action="../search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P"></form>
+    <form class="anp-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P"></form>
     <nav class="tb-contents" aria-label="Course contents">${groups}</nav>
   </aside>`;
 }
@@ -572,16 +574,20 @@ ${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'] })}
 
 /* -------------------------------------------------------- learn, home */
 
-function chapterList(depth, withProgress) {
-  const parts = map.parts.map(p => {
-    const chs = map.chapters.filter(c => c.part === p.id);
-    return `<section class="anp-partgroup" aria-labelledby="p-${p.id}"><h2 id="p-${p.id}">${esc(p.title)}</h2><ol class="anp-chapters" start="${chapterNumber(chs[0].id)}">${chs.map(ch => {
-      const ts = topicsOf(ch.id), b = ts.filter(t => C.built.has(t.id)).length;
-      const label = `<b>${esc(ch.title)}</b><span class="anp-small">${ts.length} topics · A&amp;P ${ch.course}${b ? '' : ' · coming in a later part'}</span>`;
-      return `<li data-chapter="${ch.id}">${b ? `<a href="${depth}chapters/${ch.id}.html">${label}</a>` : `<div class="anp-unbuilt-ch">${label}</div>`}${withProgress && b ? `<span class="anp-mastery" data-mastery-chapter="${ch.id}"></span>` : ''}</li>`;
-    }).join('')}</ol></section>`;
-  });
-  return parts.join('');
+/* learn.html, the Learn tab: the ochem textbook frame like a chapter page,
+   with the contents rail beside every chapter in order, each one a card with
+   its topics as compact rows (lesson link, mastery chip, notes link). */
+function learnChapter(ch) {
+  const ts = topicsOf(ch.id), n = chapterNumber(ch.id), built = chapterBuilt(ch);
+  const nBuilt = ts.filter(t => C.built.has(t.id)).length;
+  const title = built ? `<a class="anp-learn-title" href="chapters/${ch.id}.html">${esc(ch.title)}</a>` : `<span class="anp-learn-title anp-unbuilt">${esc(ch.title)}</span>`;
+  const rows = ts.map(t => `<li class="anp-learn-row"><span class="anp-toc-n">${topicNumber(t.id)}</span>${C.built.has(t.id)
+    ? `<a href="lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<a class="anp-learn-notes" href="notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a>`
+    : `<span class="anp-unbuilt">${esc(t.title)}</span>`}</li>`).join('');
+  return `<section class="anp-learn-ch" data-chapter="${ch.id}" aria-labelledby="ch-${ch.id}">
+      <header class="anp-learn-head"><span class="anp-chap-n">${n}</span><div><h3 id="ch-${ch.id}">${title}</h3><p>${ts.length} topics &middot; A&amp;P ${ch.course}${built ? ` &middot; <span data-toc-ch="${ch.id}">0/${nBuilt}</span> lessons done` : ' &middot; coming in a later part'}</p></div>${built ? `<a class="anp-tb-btn ghost" href="chapters/${ch.id}.html" aria-label="Open chapter: ${esc(ch.title)}">Open chapter</a>` : ''}</header>
+      <ol class="anp-learn-list">${rows}</ol>
+    </section>`;
 }
 
 function learnPage() {
@@ -593,18 +599,30 @@ function learnPage() {
     { '@type': 'CollectionPage', '@id': `${url}#learn`, name: 'All chapters', url, description: desc, isPartOf: { '@id': COURSE_ID } },
     crumbs(orgCrumbs([{ name: 'All chapters', url }])),
   ] };
+  const parts = map.parts.map(p => `<h2 class="anp-chap-h" id="p-${p.id}">${esc(p.title)}</h2>
+    ${map.chapters.filter(c => c.part === p.id).map(learnChapter).join('\n    ')}`).join('\n    ');
   const body = `
 <body>
 <div id="site-header"></div>
 <div class="course-nav"></div>
-<main id="main" class="xshell anp-learn">
-  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'All chapters' }], depth)}
-  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME} <span class="anp-beta">Beta</span></div><h1>All chapters</h1><p class="lede">Foundations first, then every body system. Start anywhere: nothing is locked.</p>
-    <label class="anp-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label></header>
-  ${chapterList(depth, true)}
-</main>
+<div class="tb-shell anp-tb anp-learn">
+  ${tocBtn('Contents')}
+  ${courseRail(null, depth)}
+  <main class="tb-main" id="main">
+    ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'All chapters' }], depth)}
+    <header class="tb-chapter-head anp-chap-head">
+      <div>
+        <p class="tb-chapter-eyebrow">${COURSE_NAME} <span class="anp-beta">Beta</span></p>
+        <h1 class="tb-chapter-title">All chapters</h1>
+        <p class="tb-chapter-meta">${map.chapters.length} chapters &middot; ${map.topics.length} topics &middot; Foundations first, then every body system. Start anywhere: nothing is locked.</p>
+      </div>
+      <label class="anp-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label>
+    </header>
+    ${parts}
+  </main>
+</div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-chapter.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-chapter.js', 'anp-toc.js'] })}
 </body>
 </html>
 `;
