@@ -51,6 +51,7 @@
     var c = document.querySelector('.tb-contents'), cur = c && c.querySelector('.open, .current');
     if(cur && c.scrollHeight > c.clientHeight) c.scrollTop = Math.max(0, cur.offsetTop - c.offsetTop - 120);
     paint();
+    window.AnpToc = { paint: paint };
     document.addEventListener('anp:progress', paint);
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();

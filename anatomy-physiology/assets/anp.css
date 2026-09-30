@@ -340,29 +340,24 @@ a.anp-chap-title:hover{color:var(--cink);}
 .anp-chap-toolset h3{font:900 14px var(--font-ui);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;}
 .anp-chap-toolset h3 small{font:800 11px var(--font-mono);color:var(--muted);}
 .anp-chap-toolset ul{margin:0;padding-left:18px;font:600 13.5px/1.5 var(--font-ui);}
-/* Learn page (All chapters): every chapter as a card of compact topic rows. */
-.anp-learn .tb-main{max-width:none;}
-.anp-learn .anp-filter{color:var(--muted);margin:0;}
-.anp-learn-ch{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--lift-sm);padding:16px 18px 8px;margin:0 0 14px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
-.anp-learn-head{display:flex;gap:14px;align-items:center;padding-bottom:10px;border-bottom:1px solid var(--line-soft,var(--line));}
-.anp-learn-head>div{flex:1;min-width:0;}
-.anp-learn-head h3{margin:0;font:900 17px/1.3 var(--font-ui);}
-.anp-learn-title{color:var(--ink);text-decoration:none;}
-a.anp-learn-title:hover{color:var(--cink);}
-.anp-learn-head p{margin:2px 0 0;font:700 12.5px var(--font-ui);color:var(--muted);}
-.anp-learn-list{list-style:none;margin:0;padding:4px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px;}
-.anp-learn-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid var(--line-soft,var(--line));font:700 14px/1.35 var(--font-ui);}
-.anp-learn-row>a:first-of-type{color:var(--ink);text-decoration:none;}
-.anp-learn-row>a:first-of-type:hover{color:var(--cink);}
-.anp-learn-row .anp-tb-chip{font-size:11px;padding:3px 8px;}
-.anp-learn-notes{font:800 12px var(--font-ui);color:var(--muted);}
-.anp-learn-notes:hover{color:var(--cink);}
-@media (max-width:1100px){.anp-learn-list{grid-template-columns:minmax(0,1fr);}}
-@media (max-width:700px){
-  .anp-learn-head .anp-tb-btn{display:none;}
-  .anp-learn-row{grid-template-columns:auto minmax(0,1fr) auto;}
-  .anp-learn-row .anp-tb-chip{display:none;}
-}
+/* Learn page: the course as one textbook (anp-book.js). */
+.anp-book .tb-main{max-width:760px;}
+.anp-book .anp-filter{margin:0;color:var(--muted);}
+.anp-book .tb-chapter-title:focus{outline:none;}
+.anp-book .tb-toc-mod[hidden]{display:none;}
+.anp-book-sec{padding:30px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.anp-book-sec:last-of-type{border-bottom:0;}
+.anp-book-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px;}
+.anp-book-head h2{display:flex;gap:10px;align-items:baseline;font:900 clamp(19px,2.4vw,23px)/1.25 var(--font-ui);letter-spacing:-.01em;margin:0;}
+.anp-book-head h2 .anp-toc-n{position:relative;top:-2px;}
+.anp-book-acts{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.anp-book .anp-prose{max-width:none;font-size:15.5px;}
+.anp-book .anp-prose h3{font-size:18px;margin:26px 0 10px;scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.anp-book-wait{font:700 13px var(--font-ui);color:var(--muted);}
+.anp-book-err{color:var(--bad-text,#b3261e);}
+.tb-static-toc h1{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);margin:0 0 8px;}
+.tb-static-chapter h2{font-size:18px;margin:22px 0 6px;}
+@media (max-width:700px){.anp-book-acts .anp-tb-chip{display:none;}}
 /* Notes page. */
 .anp-notes .tb-main{max-width:720px;}
 .anp-notes-head{margin-bottom:24px;}
