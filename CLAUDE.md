@@ -18,6 +18,31 @@ review; add to it instead of guessing.
 `docs/ochem-needs-author.md`. Figures for a rewritten topic live in `scripts/ochem-figures/<topic>.mjs`
 and can also appear in its lesson (see the header of `scripts/build-ochem-figures.mjs`).
 
-## Token usage
+## Usage rules (save tokens, keep quality)
 
-When exploring or editing code, prefer Serena's symbol tools over reading whole files. Never read question bank or lesson JSON files in full; search them instead.
+Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.
+
+Context
+- Context size is the main cost; keep it small.
+- For big multi-step jobs, keep one plan/status file per project under `docs/` (like the `anp-*` files), so a fresh
+  session can continue without the history. Commit and push it: the cloud container is temporary.
+- Put what later work needs to know in that file and read it instead of reopening finished work.
+- When a task is finished or context looks large, suggest /compact or /clear.
+
+Reading
+- Don't reread a file unless it changed or the context was compacted.
+- Read only what you need: search first, then use offset/limit. Never read question bank or lesson JSON files in
+  full; search them.
+- Use Serena's symbol tools for code lookups when it's connected; otherwise grep plus targeted reads.
+
+Agents
+- Use helpers only for big or parallel work. Strongest model for writing, reasoning and accuracy checks; cheaper
+  models for mechanical checks.
+- Keep briefs short and point to files by path instead of pasting content. Send small fixes back to the same agent.
+- One review pass with a clear checklist; add another only if serious problems turn up. A&P and ochem science
+  content always gets an accuracy check.
+
+Working style
+- Batch related changes into one pass.
+- For large or risky changes, propose a short plan and wait for OK.
+- Keep replies short; no recaps.
