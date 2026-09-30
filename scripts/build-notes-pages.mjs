@@ -44,6 +44,10 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
+// Hand-written meta descriptions, for sections whose opening paragraph has no
+// whole sentence short enough to be one. { id: text }.
+const DESC_PATH = join(ROOT, 'scripts', 'ochem-notes-descriptions.json');
+const DESCRIPTIONS = existsSync(DESC_PATH) ? JSON.parse(readFileSync(DESC_PATH, 'utf8')) : {};
 const check = process.argv.includes('--check');
 const ORIGIN = 'https://levlprep.com';
 
@@ -164,7 +168,7 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
     `${topic.title} — Organic Chemistry Notes`,
     `${topic.title} — Study Notes`,
   ]);
-  const desc = describe(prose, `${topic.title} explained step by step: free organic chemistry notes from the ${mod.title} chapter.`);
+  const desc = DESCRIPTIONS[topic.id] || describe(prose, `${topic.title} explained step by step: free organic chemistry notes from the ${mod.title} chapter.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
   /* A notes-only topic's href is this very page, so it gets the shared label
      instead of a link back to itself. hasLesson is the test for "is there a

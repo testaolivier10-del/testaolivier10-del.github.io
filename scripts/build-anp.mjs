@@ -24,6 +24,11 @@ const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const OUT = join(ROOT, 'anatomy-physiology');
 const CHECK = process.argv.includes('--check');
 const C = loadCourse(ROOT);
+// Hand-written meta descriptions, for pages whose opening text has no whole
+// sentence short enough to be one (clampDesc would fall back to a template).
+// Shaped { lessons: {id: text}, notes: {id: text}, chapters: {id: text} }.
+const DESC_PATH = join(ROOT, 'anatomy-physiology', 'data', 'descriptions.json');
+const DESCRIPTIONS = existsSync(DESC_PATH) ? JSON.parse(readFileSync(DESC_PATH, 'utf8')) : {};
 const { map } = C;
 // Only published chapters' definitions go out (glossary page, hovers, glossary.json):
 // a chapter still being written or audited keeps its glossary on the branch (decision 63).
@@ -107,7 +112,7 @@ function lessonPage(id) {
     // Truncated last: the kind goes first so the lesson and notes titles differ.
     `A&P lesson: ${t.title}`,
   ]);
-  const desc = clampDesc(`${text(L.summary)}`, `${t.title}: a free anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
+  const desc = DESCRIPTIONS.lessons?.[id] || clampDesc(`${text(L.summary)}`, `${t.title}: a free anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
   const url = `${SITE}${BASE}lessons/${id}.html`;
   const jsonld = {
     '@context': 'https://schema.org',
@@ -305,7 +310,7 @@ function notesPage(id) {
     `${t.title} | A&P notes`,
     `A&P notes: ${t.title}`,
   ]);
-  const desc = clampDesc(firstP, `${t.title} explained in plain language: free anatomy and physiology study notes with labeled figures.`);
+  const desc = DESCRIPTIONS.notes?.[id] || clampDesc(firstP, `${t.title} explained in plain language: free anatomy and physiology study notes with labeled figures.`);
   const url = `${SITE}${BASE}notes/${id}.html`;
   const pv = prevTopic(id), nx = nextTopic(id);
   const jsonld = {
@@ -371,7 +376,7 @@ function chapterPage(chId) {
   const toolGroups = kinds.map(([k, label]) => `<section class="anp-chap-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="anp-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
   const title = clampTitle([`${ch.title} | ${COURSE_NAME}`, `${ch.title} | A&P`]);
-  const desc = clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: free anatomy and physiology lessons, notes, practice questions and study tools.`);
+  const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: free anatomy and physiology lessons, notes, practice questions and study tools.`);
   const url = `${SITE}${BASE}chapters/${chId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#chapter`, name: ch.title, url, description: desc, isPartOf: { '@id': COURSE_ID } },
