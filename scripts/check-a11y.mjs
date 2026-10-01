@@ -62,6 +62,8 @@ const PAGES = [
   // shared with practice.html's session runner.
   ['/ochem/exams.html', 'the ochem exams app'],
   ['/nremt/flashcards.html', 'the NREMT flashcard deck'],
+  // Rendered from JSON, with a filter, a chapter picker and a letter bar.
+  ['/ochem/glossary.html', 'a glossary with filters'],
   // The tools are a template of their own — shared chrome from tool-shell.js,
   // a quiz from tool-quiz.js — and none was on this list. The roadmap stands
   // in for all eight: it renders the shell, the quiz and a page of controls.

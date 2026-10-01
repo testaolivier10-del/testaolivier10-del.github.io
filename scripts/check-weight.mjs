@@ -272,6 +272,9 @@ const BUDGETS = [
      NREMT deck can share them. Its page carries only the deck-view panels
      ochem gets from ochem.css; the scheduler it shares is in ochem/assets. */
   ['nremt/flashcards.html', 3],
+  // The glossary page is a shell plus every term's name (the definitions are
+  // the JSON file below). Measured 8.3 KB at 502 terms.
+  ['ochem/glossary.html', 10],
   /* 5 -> 7 for the redesigned A&P home (ochem's layout): the level card, the
      chapter path as a real list of 27 links with their snake placement, and
      one real bank question with its explanations, all in the markup so they
@@ -471,6 +474,11 @@ const DATA_BUDGETS = [
      chapter's worth of tables pushes it over, factoring those per-table
      strings out of each card is the saving, not a bigger number. */
   ['ochem/assets/flashcards.json', 28],
+  /* The ochem glossary (scripts/build-ochem-glossary.mjs): ~500 terms and
+     definitions, fetched after load by the notes popups (glossary-tip.js) and
+     by glossary.html, which ships names only so the page itself stays small.
+     Measured 45.4 KB at 502 terms. */
+  ['ochem/assets/glossary.json', 48],
   /* The A&P question bank used to be two files for the whole course (core
      and explanations). They grew with every chapter (105/160 KB at the pilot,
      174/247 KB with 72 topics) and were heading past 400 KB, so the bank is

@@ -362,7 +362,11 @@
     mod.topics.forEach(function(t){
       loadNotes(t.id).then(function(html){
         var slot = mainEl.querySelector('[data-notes="' + t.id + '"]');
-        if(slot){ slot.innerHTML = html; makeFiguresReachable(slot); }
+        if(slot){
+          slot.innerHTML = html; makeFiguresReachable(slot);
+          // Glossary popups on the first use of each term (glossary-tip.js).
+          if(window.OchemGlossary) window.OchemGlossary.mark(slot, t.id);
+        }
         observeEnds();
         applyPendingHit();
       });
