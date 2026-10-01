@@ -15,3 +15,6 @@ node_modules
 .cache/
 .serena/*
 !.serena/memories/
+
+# Python wheels a browser-test setup can drop in the repo root
+*.whl
