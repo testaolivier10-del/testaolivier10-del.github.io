@@ -19,10 +19,11 @@ Privacy, terms, LICENSE, the "free, permanently" claims and the Premium dialog
 (tax, refunds, terms link, NREMT non-affiliation) were updated. Still open, for
 the owner or a lawyer:
 
-- Hawaii COPD Coalition clips (rhonchi, normal) embedded in
-  `nremt/sound-trainer.html`: licence unknown; replace or remove.
 - Wikimedia lung-sound credits name no author; check each file's author and
-  licence version on Commons and add them.
+  licence version on Commons and add them (Commons was blocked from the cloud
+  session on 2026-10-01, so this needs a browser). The Hawaii COPD Coalition
+  rhonchi and normal clips were removed that day; replacements need a licence
+  that allows commercial use.
 - A&P originality audit (`scripts/audit-anp-originality.mjs`) was run on the
   29 pilot topics only; run it on the whole course.
 - No governing-law clause, no owner legal name and no postal address yet;

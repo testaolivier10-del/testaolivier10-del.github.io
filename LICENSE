@@ -92,10 +92,6 @@ Some material here is not ours to license:
   - three.js (nremt/assets/vendor/three/), (c) three.js authors, MIT.
   - Lung-sound recordings from Wikimedia Commons, under their own licences
     (CC BY-SA), streamed from Commons and credited on the sound trainer page.
-  - Two lung-sound clips (rhonchi, normal breath sounds) embedded in
-    nremt/sound-trainer.html from the Hawaii COPD Coalition's lung sounds
-    page. Their licence has not been confirmed; they are not covered by
-    anything in this file.
   - IBM Plex Mono and Nunito, served from assets/fonts/, under the SIL Open
     Font License 1.1.
 
