@@ -58,7 +58,9 @@ assets/                Shared across every course
                          VAPID key is configured — see Nothing brought anyone
                          back
   site-search.js       Matching, ranking and snippet highlighting, shared by
-                         both courses' search pages — see Searching a course
+                         every search page — see Searching a course
+  site-search-all.js   What the site-wide /search.html searches: one lazy
+                         loader per course, pure chunk builders (tested)
   report-question.js   "This looks wrong" — the one-tap report under every
                          explanation in both courses. See Reporting a bad
                          question
@@ -630,6 +632,8 @@ Its five sources are all *derived*, never listed: `curriculum.js` for the lesson
 
 Search is now a tab in the ochem header (the tab row scrolls horizontally, so a seventh item costs nothing on a phone) and a link under the tools grid — outside it, because check #10 compares those tiles byte-for-byte against the registry and search is a way of getting somewhere rather than a tool.
 
+**`/search.html`** searches all three courses from one box. It used to redirect to the NREMT page. Course chips (All, NREMT, Organic Chem, A&P) filter the results, and `?course=nremt|ochem|anp` picks a chip on arrival while still allowing All. `?q=` fills the box. Each course's material is fetched only when a query needs that course, so the empty page downloads nothing, and `?course=ochem` never fetches the NREMT bank. Results are ranked per course, so a 2,000-question bank cannot crowd the other courses out of a shared top 40. Under All they are grouped by course, best course first, five hits each, with a "Show all" link that switches the chip. `assets/site-search-all.js` holds the sources. They differ from the per-course pages in two places. NREMT's notes are read from `study-notes.json`, because `study-notes.html` is now a shell. The NREMT reference pages are walked heading by heading, because their content is cards of `<div>`s, not paragraphs. The glossary terms are read from `glossary.html`'s inline data. The ochem glossary is one line: set `GLOSSARY.ochem` to its JSON path once it ships. `termsFromJson()` already reads both the `{id: {t, d}}` map shape and the `[{term, def}]` list shape. The three per-course search pages still work, and each links to "Search all courses" with the query carried across.
+
 ## Reporting a bad question (`assets/report-question.js`)
 
 `sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,106 NREMT questions and 3,635 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
@@ -774,7 +778,7 @@ A second job runs `node --test scripts/test/*.test.mjs` — 202 tests over the p
 - `scripts/test/mastery-engine.test.mjs` — unseen vs. scored-zero, the learning rate settling as evidence accumulates, the same-day guard that stops one good session reaching a six-month interval, the interval cap, the decay floor, due-ness, leech benching and its release on a lesson read, the daily review cap, mistake de-duplication, tier records.
 - `scripts/test/flashcard-scheduler.test.mjs` — the flashcard ladder (1, 3, × ease), lapses, the ease and interval bounds, local-midnight due dates, studying ahead changing nothing but an Again, the daily new-card allowance, the sync merge keeping the newer grade of each card, and the daily XP cap. Ten deliberate mutations of the scheduler and merge, and every one fails it.
 - `scripts/test/reminders.test.mjs` — the asking rules and the composed sentence. Both fail silently in the expensive direction: a rule one condition too loose burns the one permission prompt a browser will ever give, and a sentence quoting a stale number teaches people to ignore the next one.
-- `scripts/test/site-search.test.mjs` — AND vs OR, the ranking order, the escape-then-mark ordering, the one-fragment-per-URL rule, and that ranking does not mutate the index it is handed.
+- `scripts/test/site-search.test.mjs` — AND vs OR, the ranking order, the escape-then-mark ordering, the one-fragment-per-URL rule, and that ranking does not mutate the index it is handed. For the site-wide search: `?course=` parsing, HTML-to-text, prose splitting, both glossary shapes, root-relative links from every course's builder, and grouping by course.
 - `scripts/test/account-delete.test.mjs` — what a "delete my account" erases and, more to the point, what it leaves: the analytics opt-out, anything not on the allow-list, and the Supabase session the delete itself needs.
 - `scripts/test/report-question.test.mjs` — the once-per-browser receipt surviving a re-render, the bounded store, and the reason list matching what the database will actually accept.
 - `scripts/test/errors.test.mjs` — the cap, the dedupe, the opt-out and the queue that holds reports until `account.js` exists. All four fail silently in both directions: a broken cap floods the database, a broken queue reports nothing and looks like a site with no bugs.
