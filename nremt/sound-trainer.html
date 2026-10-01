@@ -243,7 +243,7 @@
   </section>
 
   <footer>
-    <p>Audio credits: the wheeze, crackles and stridor recordings come from Wikimedia Commons contributors under CC BY-SA 3.0, with individual credits shown next to each clip above. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
+    <p>Audio credits: the wheeze, crackles and stridor recordings are by James Heilman, MD (the stridor clip processed by Natural Philo), from Wikimedia Commons under CC BY-SA 3.0, with individual credits shown next to each clip above. This trainer is a supplementary study aid; it is not a substitute for hands-on stethoscope practice with an instructor.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
     </footer>
 </div>
@@ -278,6 +278,7 @@ const SOUNDS = [
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Wheeze2O.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Wheeze2O.ogg",
+    creditBy: "James Heilman, MD",
     description: "High-pitched, continuous, musical whistling — usually loudest on expiration. Caused by air forced through narrowed small airways.",
     clinical: "Classic in asthma and COPD exacerbations. A patient who stops wheezing during a severe attack isn't necessarily improving — it can mean they're moving too little air to generate the sound at all, a genuinely worse sign (\"silent chest\")."
   },
@@ -288,6 +289,7 @@ const SOUNDS = [
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Crackles_pneumoniaO.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Crackles_pneumoniaO.ogg",
+    creditBy: "James Heilman, MD",
     description: "Discrete, discontinuous clicking or popping — think of gently rubbing hair between your fingers next to your ear. Heard mainly on inspiration.",
     clinical: "Caused by fluid in the alveoli, or small airways popping open. Classic in pulmonary edema (fine, wet-sounding) and pneumonia (coarser, more localized)."
   },
@@ -298,6 +300,7 @@ const SOUNDS = [
     available: true,
     audioUrl: "https://commons.wikimedia.org/wiki/Special:FilePath/Stridor_NP_OGG_2.ogg",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Stridor_NP_OGG_2.ogg",
+    creditBy: "James Heilman, MD; processed by Natural Philo",
     description: "Harsh, high-pitched crowing sound, loudest on inspiration — and often audible without a stethoscope at all.",
     clinical: "An upper-airway sound, not a lung sound — it means a partial obstruction somewhere in the upper airway, at or near the larynx (croup, epiglottitis, a foreign body, or airway swelling). It's a red flag that gets escalated fast."
   },
@@ -408,7 +411,7 @@ function renderListenSection(){
         ${s.linkOut ? `<a class="link-out-btn" href="${s.linkOut}" target="_blank" rel="noopener">${s.linkLabel} &#8599;</a>` : ''}
       </div>
       ${s.available ? `<div class="audio-error" id="err-${s.id}"></div>` : ''}
-      ${s.creditUrl ? `<div class="credit-line">Recording via <a href="${s.creditUrl}" target="_blank" rel="noopener">Wikimedia Commons</a>, CC BY-SA 3.0</div>` : ''}
+      ${s.creditUrl ? `<div class="credit-line">Recording${s.creditBy ? ' by ' + s.creditBy : ''}, via <a href="${s.creditUrl}" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a></div>` : ''}
       ${window.LevlSoundBank.isSynthetic(s) ? `<div class="credit-line">Generated in your browser, not a recording of a patient.</div>` : ''}
     </div>
   `).join('')).join('');
