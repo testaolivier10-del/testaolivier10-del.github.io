@@ -57,10 +57,11 @@
    "options": [
     "Neutrons",
     "Protons",
-    "Mass number"
+    "Mass number",
+    "Atomic mass"
    ],
    "correct": 1,
-   "why": "Isotopes share the same number of protons (same element) but differ in neutron count, which changes the mass number.",
+   "why": "Isotopes share the same number of protons (that is what makes them the same element) but differ in neutron count, which changes the mass number and the atomic mass.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -354,13 +355,13 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon drawn with three bonds and one lone pair carries a negative charge.",
+   "q": "A carbon drawn with three bonds and one lone pair is neutral, because the lone pair makes up for the missing fourth bond.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Neutral carbon comes with four valence electrons and takes four bonds. Three bonds plus a lone pair means it owns 3 (one from each shared pair) + 2 = 5 electrons against the 4 it started with, so it is −1.",
+   "correct": 1,
+   "why": "False. A lone pair does not stand in for a bond when you count charge. Carbon starts with 4 valence electrons; with three bonds and a lone pair it owns 3 (one from each shared pair) + 2 = 5, one more than it started with, so it carries a −1 charge (a carbanion).",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -423,10 +424,11 @@
    "options": [
     "s orbital",
     "p orbital",
-    "d orbital"
+    "d orbital",
+    "f orbital"
    ],
    "correct": 0,
-   "why": "The s orbital is the only orbital type with a simple spherical shape centered on the nucleus.",
+   "why": "The s orbital is the only orbital type with a simple spherical shape centered on the nucleus. A p orbital is a two-lobed dumbbell with a node at the nucleus, and d and f orbitals have more complicated multi-lobed shapes.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -596,13 +598,13 @@
    "type": "mcq"
   },
   {
-   "q": "p orbitals have two lobes with a node (zero probability) at the nucleus.",
+   "q": "A p orbital has two lobes, and an electron in it is most likely to be found at the nucleus, where the two lobes meet.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Unlike the spherical s orbital, a p orbital has a dumbbell shape with two lobes separated by a node right at the nucleus.",
+   "correct": 1,
+   "why": "False. The point where the two lobes meet is a node: the probability of finding a p electron exactly there is zero. The electron density is concentrated in the two lobes on either side of the nucleus.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -815,13 +817,13 @@
    "type": "mcq"
   },
   {
-   "q": "An sp3 hybridized carbon has no unhybridized p orbitals left, meaning it cannot form any pi bonds.",
+   "q": "An sp3 carbon can still form one pi bond, using the p orbital left over after hybridization.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "sp3 hybridization uses all of the atom's s and p orbitals (one s and all three p's), leaving none available for pi bonding.",
+   "correct": 1,
+   "why": "False. sp3 hybridization mixes the s orbital with all three p orbitals, so no unhybridized p orbital is left over. A pi bond needs side-by-side overlap of unhybridized p orbitals, which is why only sp2 and sp atoms form pi bonds.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -878,13 +880,13 @@
    "type": "mcq"
   },
   {
-   "q": "An atom's hybridization can be determined by counting its number of sigma bonds plus lone pairs (its steric number).",
+   "q": "To find an atom's hybridization, count its bonds, with a double bond counting as two.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Steric number 2 gives sp, 3 gives sp2, and 4 gives sp3 — this simple count is the standard shortcut for assigning hybridization.",
+   "correct": 1,
+   "why": "False. Count electron groups, not bonds: each sigma bond and each lone pair is one group, and a double or triple bond counts as a single group. The carbon of H2C=O has three groups (two C–H and the C=O), so it is sp2; counting the double bond as two would wrongly give four groups and sp3.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -1477,13 +1479,13 @@
    "type": "mcq"
   },
   {
-   "q": "A triple bond between two carbons consists of 2 pi bonds and 1 sigma bond.",
+   "q": "A carbon–carbon triple bond is made of three sigma bonds.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "A carbon-carbon triple bond is made of one sigma bond plus two perpendicular pi bonds, totaling three bonds overall.",
+   "correct": 1,
+   "why": "False. Only one sigma bond can form along the line between two nuclei. A triple bond is one sigma bond plus two pi bonds, made from two pairs of unhybridized p orbitals at right angles to each other.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -2063,13 +2065,13 @@
    "type": "mcq"
   },
   {
-   "q": "Formal charge is a bookkeeping tool used mainly to compare competing Lewis structures, rather than a measure of the literal true charge on an atom.",
+   "q": "Formal charge gives the actual charge on an atom, so an oxygen with a formal charge of −1 carries a full negative charge.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Formal charge assumes perfectly even sharing of bonding electrons, which isn't physically exact, but it's extremely useful for judging which of several Lewis structures is more reasonable.",
+   "correct": 1,
+   "why": "False. Formal charge is bookkeeping: it assumes every bond is shared perfectly evenly, which is never quite true. The real charge is spread out by electronegativity differences and resonance, so a formal −1 oxygen carries a large partial negative charge, not exactly −1. Formal charge is mainly a tool for comparing Lewis structures.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -2406,13 +2408,13 @@
    "type": "mcq"
   },
   {
-   "q": "When drawing a Lewis structure for a polyatomic ion with a negative charge, you should add that many extra electrons to the total electron count.",
+   "q": "When counting electrons for a polyatomic anion, you subtract one electron for each unit of negative charge.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "A negative charge means the species has gained that many extra electrons beyond the neutral sum of its atoms' valence electrons, so they must be added to the total before distributing them.",
+   "correct": 1,
+   "why": "False. A negative charge means the species has gained extra electrons, so you add one electron per unit of negative charge (and subtract one per unit of positive charge). Sulfate, SO4 2−, has 6 + 4(6) + 2 = 32 valence electrons.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -2621,13 +2623,13 @@
    "type": "mcq"
   },
   {
-   "q": "A correct Lewis structure must account for every single valence electron counted at the start — none can be left out or added extra.",
+   "q": "If the atoms come up short of octets, you may add extra electrons beyond the starting count, as long as every atom ends with an octet.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The entire process is essentially careful electron bookkeeping: the total electrons placed in bonds and lone pairs must exactly match the total counted up front.",
+   "correct": 1,
+   "why": "False. The total electron count is fixed by the formula and charge, and the finished structure must use exactly that many. If atoms are short of octets, turn a lone pair on a neighboring atom into a multiple bond instead; that shares electrons without adding any.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -2788,13 +2790,13 @@
    "type": "mcq"
   },
   {
-   "q": "Lone pairs occupy more space around a central atom than bonding pairs, causing greater repulsion on neighboring electron groups.",
+   "q": "Lone pairs take up less space around a central atom than bonding pairs do, because they belong to only one atom.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because lone pairs aren't held between two nuclei, they spread out more and exert stronger repulsive forces, compressing bond angles involving bonding pairs nearby.",
+   "correct": 1,
+   "why": "False. Because a lone pair is held by only one nucleus, it spreads out more and takes up more space than a bonding pair, which is pulled between two nuclei. That extra repulsion squeezes the bond angles, which is why water's H–O–H angle (104.5°) is smaller than the tetrahedral 109.5°.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -4375,13 +4377,13 @@
    "type": "mcq"
   },
   {
-   "q": "A nitro group (R–NO2) is often drawn with one N=O double bond and one N–O single bond bearing a negative charge, but both N–O bonds are experimentally found to have equal, intermediate length.",
+   "q": "In a nitro group, one N–O bond is a true double bond and the other a true single bond, and the group switches rapidly between the two forms.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Two equivalent resonance structures (swapping which oxygen carries the double bond and which carries the negative charge) mean the real structure is a hybrid with both N–O bonds equivalent and of intermediate bond order.",
+   "correct": 1,
+   "why": "False. Resonance structures are not real forms the molecule flips between; the real structure is a single hybrid of both. Experimentally the two N–O bonds are identical, with a length between a single and a double bond, and the negative charge is shared equally by the two oxygens.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -4742,13 +4744,13 @@
    "type": "mcq"
   },
   {
-   "q": "When two curved arrows are drawn for a single mechanistic step, they must be drawn simultaneously to represent a concerted process, not as two separate sequential steps.",
+   "q": "When two curved arrows are drawn in one mechanism step, they show two events that happen one after the other.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Multiple arrows within one mechanism arrow-pushing 'step' (one structure to the next) represent bond-breaking and bond-forming events happening at the same time, i.e., concertedly.",
+   "correct": 1,
+   "why": "False. All the arrows drawn in a single step happen at the same time; together they describe one concerted change from one structure to the next. If two events happen one after the other, they are drawn as two separate steps, with an intermediate drawn in between.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -4844,13 +4846,13 @@
    "type": "mcq"
   },
   {
-   "q": "Every curved arrow tail must originate exactly where the electrons physically are before the step, and every arrowhead must point to exactly where they end up after the step.",
+   "q": "A curved arrow shows an atom moving: the tail is on the atom and the head shows where that atom ends up.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Curved arrows are a precise bookkeeping tool: tails mark the electrons' starting location and heads mark their ending location, corresponding exactly to the bonding changes between the starting and product structures.",
+   "correct": 1,
+   "why": "False. Curved arrows track electrons, never atoms. The tail starts at a lone pair or bond (where the electrons are) and the head points to where those electrons end up, forming a new bond or a new lone pair. When a proton is transferred, the arrow goes from the base's lone pair to the H, not from the H.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -5081,13 +5083,13 @@
    "type": "mcq"
   },
   {
-   "q": "A bulky nucleophile like tert-butoxide (tBuO-) is generally a weaker nucleophile (in the SN2 sense) than a less hindered one like methoxide (CH3O-), even though both are strong bases.",
+   "q": "tert-Butoxide is a better SN2 nucleophile than methoxide, because it is the stronger base.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Steric bulk around the nucleophilic atom hinders its ability to approach and bond with an electrophilic carbon in an SN2-type attack, reducing nucleophilicity even when basicity (proton affinity) remains high.",
+   "correct": 1,
+   "why": "False. Basicity and nucleophilicity usually track each other, but steric bulk breaks the link. tert-Butoxide's three methyl groups keep its oxygen from reaching the back of a carbon, so it is a poor SN2 nucleophile even though it is a strong base; small methoxide is the better nucleophile.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -5253,13 +5255,13 @@
    "type": "mcq"
   },
   {
-   "q": "In general, across a single row of the periodic table (e.g., comparing C, N, O, F anions of similar charge), nucleophilicity tends to decrease as electronegativity increases left to right.",
+   "q": "Across a row of the periodic table, nucleophilicity rises with electronegativity, so F− is a better nucleophile than HO−.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Moving right across a period, atoms hold electron density more tightly due to increasing electronegativity, so their lone pairs are less available to donate, generally reducing both basicity and nucleophilicity.",
+   "correct": 1,
+   "why": "False. Across a row, a more electronegative atom holds its lone pairs more tightly, so they are less available to donate. Nucleophilicity (like basicity) falls from left to right: H2N− > HO− > F−.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -5711,13 +5713,13 @@
    "type": "mcq"
   },
   {
-   "q": "A tertiary carbocation forms more readily than a primary carbocation.",
+   "q": "A primary carbocation forms more readily than a tertiary one, because there are fewer groups crowding the positive carbon.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Alkyl groups donate electron density to an adjacent positive charge, so a tertiary cation sits lower in energy than a primary one and the ionization that produces it is easier. Every carbocation remains a strong electrophile once formed; this comparison is about how readily they appear, not how hungry they are.",
+   "correct": 1,
+   "why": "False. Alkyl groups donate electron density to an adjacent positive charge and stabilize it, so a tertiary carbocation is lower in energy and forms far more readily than a primary one. Crowding is not what decides this; stabilization of the positive charge is.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -5841,13 +5843,13 @@
    "type": "mcq"
   },
   {
-   "q": "Amide ion (NH2-) is generally considered one of the worst common leaving groups in organic chemistry.",
+   "q": "Amide ion (NH2−) is a good leaving group, because nitrogen is an electronegative atom.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "NH2- is the conjugate base of ammonia, an extremely weak acid, making amide ion an extremely strong base that holds on tightly to its electrons and essentially never leaves under normal conditions.",
+   "correct": 1,
+   "why": "False. A good leaving group is a weak base. NH2− is the conjugate base of ammonia (pKa about 38), so it is an extremely strong base and one of the worst leaving groups; it essentially never leaves under normal conditions.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -6017,13 +6019,13 @@
    "type": "mcq"
   },
   {
-   "q": "Cyanide ion (CN-) is generally a poor leaving group.",
+   "q": "Cyanide ion (CN−) is a good leaving group, because it is a good nucleophile.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "HCN is only a moderately weak acid (pKa around 9), making cyanide a fairly strong base relative to halides or sulfonates, so it does not readily depart as a leaving group under typical substitution conditions.",
+   "correct": 1,
+   "why": "False. Being a good nucleophile does not make a group a good leaving group; leaving ability tracks weak basicity. HCN has a pKa of about 9, so cyanide is a fairly strong base compared with halides or sulfonates and does not readily depart. Cyanide is useful as a nucleophile, not as a leaving group.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -7133,13 +7135,13 @@
    "type": "mcq"
   },
   {
-   "q": "Inductive electron withdrawal through sigma bonds (as from a nearby halogen) typically has its strongest effect on the immediately adjacent atom and weakens rapidly as you move further away through the chain.",
+   "q": "A halogen's inductive electron withdrawal is felt almost equally at every carbon along a chain.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Inductive effects act through sigma bonds and fall off quickly with distance, so a halogen's electron-withdrawing influence is strongest on the carbon it's directly attached to and becomes much weaker two or three carbons away.",
+   "correct": 1,
+   "why": "False. Inductive effects are passed along sigma bonds and fall off quickly with distance. The withdrawal is strongest at the carbon bonded directly to the halogen and is much weaker two or three carbons away.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -7170,13 +7172,13 @@
    "type": "mcq"
   },
   {
-   "q": "A sulfur atom in a thiol (R-SH) is generally considered more electron-rich and nucleophilic than the oxygen in a comparable alcohol (R-OH), even though oxygen is more electronegative.",
+   "q": "The oxygen of an alcohol is more nucleophilic than the sulfur of a comparable thiol, because oxygen is more electronegative and so holds more electron density.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Although oxygen holds its own electrons more tightly (higher electronegativity, stronger base), sulfur's larger, more polarizable, more loosely held electron cloud makes it more willing to donate electron density in bond-forming reactions, so it behaves as more nucleophilic/electron-rich in a reactivity sense.",
+   "correct": 1,
+   "why": "False. Being more electronegative means oxygen holds its lone pairs more tightly, which makes them less available to donate. Sulfur is larger and more polarizable, and its loosely held electrons make a thiol (and especially a thiolate) more nucleophilic than the comparable alcohol.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -9188,13 +9190,13 @@
    "type": "mcq"
   },
   {
-   "q": "Hydrogens on carbon are generally far less acidic than hydrogens on oxygen or nitrogen.",
+   "q": "A hydrogen on carbon is generally more acidic than a hydrogen on oxygen, because carbon holds its electrons less tightly.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "True, and the gap is enormous rather than marginal. An alkane C–H sits near pKa 50, an amine N–H near 38 and an alcohol O–H near 16, so a typical C–H is about thirty orders of magnitude less acidic than a typical O–H. The reason is where the charge ends up: carbon is the least electronegative of the three and is the least willing to hold the pair left behind. That is why the practical rule for finding an acidic proton is to look on oxygen and nitrogen first. The exceptions are the ones worth learning individually — a C–H next to a carbonyl at about 20, a terminal alkyne C–H at 25, a 1,3-dicarbonyl at 9 — and every one of them is explained by something stabilizing the carbanion.",
+   "correct": 1,
+   "why": "False, and the gap is enormous. An alkane C–H sits near pKa 50 and an alcohol O–H near 16. Carbon's low electronegativity is exactly why: when the proton leaves, carbon is the atom least able to hold the electron pair left behind, so the carbanion is very unstable. Look for acidic protons on oxygen and nitrogen first.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -9279,13 +9281,13 @@
    "type": "mcq"
   },
   {
-   "q": "Every Bronsted base is also a Lewis base.",
+   "q": "Some Brønsted bases are not Lewis bases, because accepting a proton is a different process from donating an electron pair.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Accepting a proton requires donating an electron pair to form the new bond, so every Bronsted base (proton acceptor) is necessarily also a Lewis base.",
+   "correct": 1,
+   "why": "False. To accept a proton, a base must use one of its electron pairs to form the new bond to H, so accepting a proton is donating an electron pair. Every Brønsted base is therefore also a Lewis base.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -9878,13 +9880,13 @@
    "type": "mcq"
   },
   {
-   "q": "A pKa value can be used to predict which of two acids will protonate a common base more completely at equilibrium.",
+   "q": "Of two acids, the one with the larger pKa will protonate a common base more completely at equilibrium.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Comparing the pKa values of two acids against a common base's conjugate acid lets you predict which acid-base pair favors products versus reactants at equilibrium.",
+   "correct": 1,
+   "why": "False. A larger pKa means a weaker acid. The acid with the smaller pKa is the stronger acid and protonates the base more completely; equilibrium favors the side with the weaker acid (higher pKa).",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -10123,13 +10125,13 @@
    "type": "mcq"
   },
   {
-   "q": "The conjugate base of a strong acid is generally a poor base in aqueous solution.",
+   "q": "The conjugate base of a strong acid is itself a strong base.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because a strong acid dissociates almost completely, its conjugate base has very little affinity for protons and is correspondingly a weak base, such as Cl- from HCl.",
+   "correct": 1,
+   "why": "False. The stronger the acid, the weaker its conjugate base. A strong acid dissociates almost completely because its conjugate base has almost no tendency to take the proton back, so Cl− (from HCl) and HSO4− (from H2SO4) are very weak bases in water.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -10446,13 +10448,13 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclopentadiene has pKa 16, comparable to an alcohol, although its acidic hydrogen is on carbon and no heteroatom is involved. Resonance onto carbon alone can therefore be strongly stabilizing.",
+   "q": "Cyclopentadiene is much less acidic than an alcohol, because its acidic hydrogen is on carbon and resonance onto carbon alone cannot stabilize an anion much.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "True. Delocalizing a charge onto an electronegative atom is worth more per atom, but \"onto carbon does not count\" is wrong. Phenol (10) beats an alcohol (16) by spreading its anion's charge onto ring carbons, and cyclopentadiene (16) beats a normal alkane (50) by thirty-four units, with the charge spread over five carbons and no heteroatom at all.",
+   "correct": 1,
+   "why": "False. Cyclopentadiene has pKa 16, about the same as an alcohol, even though the hydrogen is on carbon. Its anion spreads the negative charge over all five ring carbons by resonance, which lowers its pKa by about thirty-four units compared with an ordinary alkane (pKa 50). Charge on an electronegative atom is worth more per atom, but resonance onto carbon still counts.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -10865,13 +10867,13 @@
    "type": "mcq"
   },
   {
-   "q": "In ethane, eclipsed conformations are always higher in energy than staggered conformations.",
+   "q": "The eclipsed conformation of ethane is lower in energy than the staggered one, because the C–H bonds line up and overlap best.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Staggering lets each C-H bond on one carbon donate into the antibonding orbital of a C-H bond on the other, and eclipsing switches that hyperconjugative stabilization off. That torsional cost applies to every eclipsed arrangement of ethane, so no eclipsed form is lower in energy than any staggered one.",
+   "correct": 1,
+   "why": "False. Eclipsed ethane is higher in energy, by about 3 kcal/mol (12 kJ/mol). This is torsional strain: in the staggered form each C–H bond is lined up to donate into an antibonding orbital on the other carbon, and eclipsing switches that stabilization off. Every eclipsed form of ethane is higher in energy than every staggered form.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -10939,13 +10941,13 @@
    "type": "mcq"
   },
   {
-   "q": "The gauche conformation of butane is higher in energy than the anti conformation mainly because of steric (van der Waals) strain between the two methyl groups.",
+   "q": "Gauche butane is higher in energy than anti butane mainly because of torsional strain from eclipsed bonds.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Even though gauche butane is staggered and free of torsional strain, the two methyl groups are close enough at 60 degrees apart to experience unfavorable steric crowding.",
+   "correct": 1,
+   "why": "False. Gauche butane is a staggered conformation, so it has no eclipsing torsional strain. Its extra energy compared with anti comes from steric strain: the two methyl groups are only 60 degrees apart and crowd each other.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -11599,13 +11601,13 @@
    "type": "mcq"
   },
   {
-   "q": "Axial bonds alternate pointing up and down as you move around the cyclohexane ring from carbon to carbon.",
+   "q": "In a chair cyclohexane, all six axial bonds point in the same direction, straight up.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because the ring carbons alternate slightly above and below the average plane, their axial bonds alternate direction, up on one carbon, down on the next, all the way around.",
+   "correct": 1,
+   "why": "False. The ring carbons alternate slightly above and below the average plane of the ring, so the axial bonds alternate too: up on one carbon, down on the next, all the way around the ring.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -11710,13 +11712,13 @@
    "type": "mcq"
   },
   {
-   "q": "Substituents with larger A-values show a stronger preference for the equatorial position.",
+   "q": "A substituent with a larger A-value has a weaker preference for the equatorial position.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The A-value is defined as the free energy preference for equatorial over axial, so by definition a larger A-value means a stronger equatorial preference.",
+   "correct": 1,
+   "why": "False. The A-value is the energy by which the equatorial chair is lower than the axial chair for that group. A larger A-value therefore means a stronger preference for equatorial; tert-butyl, with one of the largest A-values, almost never sits axial.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -11988,13 +11990,13 @@
    "type": "mcq"
   },
   {
-   "q": "Ring flips occur rapidly at room temperature, interconverting the two chair forms many times per second.",
+   "q": "Ring flips are slow at room temperature, so the two chair forms of methylcyclohexane can be isolated as separate compounds.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "With a barrier of only about 10–11 kcal/mol, a cyclohexane ring flips roughly 100,000 times a second at room temperature — about a million times slower than an ethane bond rotation, and still far too fast for the two chairs to be seen separately until the sample is cooled to around −90 °C.",
+   "correct": 1,
+   "why": "False. The ring-flip barrier is only about 10–11 kcal/mol, so cyclohexane flips roughly 100,000 times a second at room temperature. The two chairs cannot be separated; they can only be seen as separate species by cooling the sample to around −90 °C.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -12088,13 +12090,13 @@
    "type": "mcq"
   },
   {
-   "q": "Ring flipping never changes whether two substituents on a ring are cis or trans to each other.",
+   "q": "A ring flip turns a cis-1,2-disubstituted cyclohexane into the trans isomer, because the substituents switch between axial and equatorial.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Cis/trans relationships are configurational, fixed by which face of the ring each substituent is attached to; a ring flip only changes axial/equatorial positions, never the underlying configuration.",
+   "correct": 1,
+   "why": "False. Cis and trans describe which face of the ring each group is on, and that is a configuration: changing it means breaking bonds. A ring flip only swaps axial and equatorial; a group pointing up stays up. A cis isomer stays cis through any number of flips.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -12151,13 +12153,13 @@
    "type": "mcq"
   },
   {
-   "q": "For 1,1-dimethylcyclohexane, a ring flip leaves the molecule's overall energy unchanged because the two methyl groups on that single carbon simply trade axial and equatorial roles with each other.",
+   "q": "The two chair forms of 1,1-dimethylcyclohexane differ in energy, because the ring flip moves a methyl group from equatorial to axial.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Since both substituents are identical methyl groups on the same carbon, one is always axial and the other equatorial; flipping swaps which one is which but keeps the total strain, and thus the energy, the same.",
+   "correct": 1,
+   "why": "False. In each chair one methyl is axial and the other equatorial. The flip moves one methyl from equatorial to axial while moving the other from axial to equatorial, so both chairs have the same strain and the same energy.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -13332,13 +13334,13 @@
    "type": "mcq"
   },
   {
-   "q": "A chiral molecule can never have a center of symmetry (a point through which every atom has an identical, inverted counterpart).",
+   "q": "A molecule with a center of symmetry can still be chiral if it contains stereocenters.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "A center of symmetry is an improper symmetry element; any molecule possessing one is automatically superimposable on its mirror image and therefore achiral, so a truly chiral molecule cannot have one.",
+   "correct": 1,
+   "why": "False. A center of symmetry (inversion center) makes a molecule superimposable on its mirror image, so any molecule that has one is achiral, however many stereocenters it contains. Stereocenters alone do not make a molecule chiral; the absence of such symmetry elements does.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -13749,13 +13751,13 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon bonded to H, Cl, Br, and a vinyl group (-CH=CH2) qualifies as a stereocenter.",
+   "q": "A carbon bonded to H, Cl, Br and a vinyl group (–CH=CH2) is not a stereocenter, because the vinyl group's double bond makes that carbon sp2.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "All four substituents, hydrogen, chlorine, bromine, and the vinyl group, are distinct from one another, so this carbon meets the requirement of four different groups and is a stereocenter.",
+   "correct": 1,
+   "why": "False. The double bond belongs to the vinyl group, not to the carbon in question. That carbon has four single bonds and is sp3, and its four groups (H, Cl, Br, vinyl) are all different, so it is a stereocenter.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -13799,13 +13801,13 @@
    "type": "mcq"
   },
   {
-   "q": "A carbon whose four groups include two constitutional isomers of each other, such as n-propyl and isopropyl, still counts as a stereocenter.",
+   "q": "A carbon bearing both an n-propyl and an isopropyl group is not a stereocenter, because those two groups have the same formula.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Constitutional isomers are not identical groups; as long as no two of the four substituents are exactly the same, the carbon satisfies the four-different-groups requirement and is a valid stereocenter.",
+   "correct": 1,
+   "why": "False. n-Propyl and isopropyl are constitutional isomers, not identical groups: they are connected differently. A carbon is a stereocenter when its four groups are all different, so n-propyl and isopropyl count as two different groups.",
    "difficulty": "hard",
    "type": "tf"
   }
@@ -14177,13 +14179,13 @@
    "type": "mcq"
   },
   {
-   "q": "A sample reported to have 60 percent enantiomeric excess (ee) of the (R) enantiomer corresponds to a composition of approximately 80 percent (R) and 20 percent (S).",
+   "q": "A sample with 60 percent enantiomeric excess of the (R) enantiomer contains 60 percent (R) and 40 percent (S).",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Enantiomeric excess is calculated as the percent major enantiomer minus the percent minor enantiomer; since the two percentages must sum to 100, an ee of 60 percent corresponds to 80 percent major and 20 percent minor (80 minus 20 equals 60).",
+   "correct": 1,
+   "why": "False. Enantiomeric excess is the percent of the major enantiomer minus the percent of the minor one. Since the two add to 100, 60 percent ee means 80 percent (R) and 20 percent (S): 80 − 20 = 60.",
    "difficulty": "hard",
    "type": "tf"
   }
@@ -14340,13 +14342,13 @@
    "type": "mcq"
   },
   {
-   "q": "A pair of diastereomers can consist of one chiral molecule and one achiral molecule.",
+   "q": "Both members of a pair of diastereomers must be chiral, since they are stereoisomers that are not mirror images.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "meso-Tartaric acid, (2R,3S), and (2R,3R)-tartaric acid are stereoisomers that are not mirror images of each other, so they are diastereomers — and the meso one is achiral while the other is optically active. Being a mirror-image pair is what enantiomers require, and that does force both members to be chiral; diastereomers are defined by what they are not, so nothing constrains them to match in chirality, melting point or any other property.",
+   "correct": 1,
+   "why": "False. Only enantiomers must both be chiral, because they are a mirror-image pair. Diastereomers are defined by what they are not, so nothing forces them to match. meso-Tartaric acid (2R,3S) is achiral, (2R,3R)-tartaric acid is chiral, and the two are diastereomers.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -14807,13 +14809,13 @@
    "type": "mcq"
   },
   {
-   "q": "A meso compound can be separated from its corresponding chiral enantiomeric pair using ordinary techniques such as recrystallization or chromatography on a normal (non-chiral) column.",
+   "q": "A meso compound cannot be separated from its chiral stereoisomers by ordinary recrystallization or chromatography, because all of them share the same constitution.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Since the meso form and the chiral (R,R)/(S,S) pair are diastereomers of each other with different physical properties, they can be separated by standard, non-chiral separation techniques, unlike a true pair of enantiomers.",
+   "correct": 1,
+   "why": "False. The meso form is a diastereomer of the chiral (R,R)/(S,S) pair, and diastereomers have different physical properties. So it can be separated from them by ordinary, non-chiral methods. Only enantiomers need a chiral method to be separated.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -15286,13 +15288,13 @@
    "type": "mcq"
   },
   {
-   "q": "A wedge-and-dash drawing can be read for R/S without redrawing it, as long as you identify which group points away.",
+   "q": "If the lowest-priority group points toward you on a wedge, a clockwise path from priority 1 to 2 to 3 still means R.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "If the lowest-priority group already points away from the viewer in the drawing, you can read the R/S assignment directly from the remaining three groups' clockwise/counterclockwise order without any further manipulation.",
+   "correct": 1,
+   "why": "False. The rule of reading clockwise as R assumes the lowest-priority group points away from you. When it points toward you on a wedge, you are viewing from the wrong side, so the answer is reversed: clockwise means S and counterclockwise means R.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -15502,7 +15504,7 @@
    "correct": 1,
    "why": "At a single stereocenter the conversion is exact and unambiguous — that is the entire content of the convention, and the first figure in this section performs it. Along a chain it is still a faithful structure, but the one it produces has every C–C bond eclipsed and the backbone curving away from the viewer, which is not how anyone draws a sugar. Getting to the familiar zig-zag means rotating about each bond afterward, and that is where configurations get lost.",
    "difficulty": "hard",
-   "type": "tf"
+   "type": "mcq"
   },
   {
    "q": "Two Fischer projections of molecules with two stereocenters differ by a single swap at only one of the two centers (the other center's groups remain in the same positions). The two structures represent:",
@@ -15568,13 +15570,13 @@
    "type": "mcq"
   },
   {
-   "q": "A meso compound drawn as a Fischer projection shows a mirror relationship between its top and bottom halves.",
+   "q": "In the Fischer projection of a meso compound, the internal mirror plane runs vertically down the carbon chain.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because a meso compound has an internal mirror plane relating parts of the molecule, its Fischer projection often visibly shows the top half mirroring the bottom half (or similar symmetric patterns), which is part of why Fischer projections are convenient for spotting meso compounds.",
+   "correct": 1,
+   "why": "False. The mirror plane of a meso compound in a Fischer projection is horizontal: it cuts across the chain between the top half and the bottom half, so the top half reflects onto the bottom half. In meso-tartaric acid, for example, both OH groups sit on the same side, one above and one below that horizontal plane.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -16706,13 +16708,13 @@
    "type": "mcq"
   },
   {
-   "q": "Increasing the strength of the nucleophile speeds up SN2 reactions but has essentially no effect on SN1 reaction rates.",
+   "q": "A stronger nucleophile speeds up an SN1 reaction just as much as it speeds up an SN2 reaction.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "SN2 rate depends directly on nucleophile concentration and strength, while SN1 rate depends only on substrate ionization, which doesn't involve the nucleophile at all.",
+   "correct": 1,
+   "why": "False. In SN2 the nucleophile is part of the single rate-determining step, so a stronger nucleophile speeds the reaction up. In SN1 the slow step is the substrate ionizing on its own, and the nucleophile only joins afterward, so its strength has essentially no effect on the rate.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -17006,24 +17008,24 @@
    "type": "mcq"
   },
   {
-   "q": "Methyl and primary substrates essentially never react via SN1.",
+   "q": "A simple primary alkyl halide such as 1-bromobutane reacts readily by SN1 when heated in a polar protic solvent.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Methyl and primary carbocations are far too unstable to form at any appreciable rate, so ionization never gets going.",
+   "correct": 1,
+   "why": "False. SN1 needs the substrate to ionize to a carbocation, and a primary carbocation is far too unstable to form at a useful rate. Simple primary substrates react by SN2 (or E2) instead, even in polar protic solvents.",
    "difficulty": "easy",
    "type": "tf"
   },
   {
-   "q": "SN1 reaction rate is independent of the nucleophile's concentration.",
+   "q": "Doubling the concentration of the nucleophile doubles the rate of an SN1 reaction.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because the nucleophile only participates in the fast second step, changing its concentration does not change the overall observed rate.",
+   "correct": 1,
+   "why": "False. The SN1 rate depends only on the substrate: rate = k[substrate]. The nucleophile joins in the fast second step, after the slow ionization, so changing its concentration does not change the rate.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -17493,13 +17495,13 @@
    "type": "mcq"
   },
   {
-   "q": "Unlike E2, E1 has no strict geometric requirement, such as anti-periplanar alignment, between the leaving group and the hydrogen being removed.",
+   "q": "Like E2, E1 requires the leaving group and the beta hydrogen to be anti-periplanar.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Since the leaving group and the beta-hydrogen depart in two separate steps through a freely rotating carbocation, there's no need for them to have been aligned in any particular way beforehand.",
+   "correct": 1,
+   "why": "False. In E1 the leaving group departs first, giving a planar carbocation that rotates freely, and only then is the beta hydrogen removed. Since the two leave in separate steps, they never need to be lined up. The anti-periplanar requirement is special to the concerted E2.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -17776,13 +17778,13 @@
    "type": "mcq"
   },
   {
-   "q": "E2 reactions can occur on primary, secondary, and tertiary substrates.",
+   "q": "E2 cannot occur on primary substrates, because a primary carbocation is too unstable to form.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Unlike SN2 (blocked at tertiary carbons) or SN1/E1 (essentially unavailable at primary carbons), E2 doesn't require carbocation formation or backside attack at the leaving-group carbon, so it tolerates all substitution levels.",
+   "correct": 1,
+   "why": "False. E2 never forms a carbocation: the base removes a proton as the leaving group departs, in one concerted step. So carbocation stability does not limit it, and E2 works on primary, secondary and tertiary substrates. The carbocation argument applies to E1 and SN1.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -17955,13 +17957,13 @@
    "type": "mcq"
   },
   {
-   "q": "The strict anti-periplanar requirement of E2 means that the stereochemistry of a specific diastereomer of starting material can determine which alkene stereoisomer (E or Z) actually forms.",
+   "q": "Because E2 is a single step, which diastereomer of the starting material you use has no effect on whether the E or Z alkene forms.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because only certain conformations place a given hydrogen anti-periplanar to the leaving group, the starting material's three-dimensional arrangement directly dictates which hydrogen is removed and therefore the resulting double bond geometry.",
+   "correct": 1,
+   "why": "False. E2 requires the hydrogen and the leaving group to be anti-periplanar. For a given diastereomer, only certain hydrogens can reach that arrangement, and the conformation that lines them up fixes where the remaining groups end up. So the starting diastereomer decides whether the E or the Z alkene forms.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -18176,13 +18178,13 @@
    "type": "mcq"
   },
   {
-   "q": "1-Bromobutane is treated with potassium tert-butoxide. Elimination beats substitution here, even though the reacting carbon is primary and wide open.",
+   "q": "1-Bromobutane treated with potassium tert-butoxide gives mainly the substitution product, because the reacting carbon is primary and unhindered.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "tert-Butoxide is a strong base carrying three methyl groups around the reacting oxygen. It is too fat to sit on the backside of C1 and push bromide out, but the beta hydrogens stick out on the outside of the chain where it can still reach one, so the E2 path is the cheap one and but-1-ene is the major product. Swap in ethoxide, which is just as basic but small, and the same substrate gives mostly butyl ethyl ether instead. Sterics on the BASE decide this one, not sterics on the carbon.",
+   "correct": 1,
+   "why": "False. Here the bulk is on the base. tert-Butoxide is too crowded to reach the back of C1 for SN2, but it can still pull off a beta hydrogen on the outside of the chain, so E2 wins and but-1-ene is the major product. With a small base such as ethoxide, the same substrate does give mostly the substitution product.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -18254,13 +18256,13 @@
    "type": "mcq"
   },
   {
-   "q": "A secondary substrate reacting with a strong nucleophile that is a weak base, like NaN3, in a polar aprotic solvent gives predominantly substitution (SN2) rather than elimination.",
+   "q": "A secondary alkyl halide treated with NaN3 in DMSO gives mainly the elimination product, because secondary substrates always favor elimination.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because azide is a much better nucleophile than base, and the solvent keeps it highly reactive, the reaction favors attacking the carbon over removing a proton.",
+   "correct": 1,
+   "why": "False. Azide is a strong nucleophile but a weak base, and a polar aprotic solvent like DMSO keeps it highly reactive. With a secondary substrate that combination gives mainly SN2 substitution. Secondary substrates give mainly elimination with strong, basic reagents such as alkoxides.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -18622,13 +18624,13 @@
    "type": "mcq"
   },
   {
-   "q": "A compound with a degree of unsaturation of 2 could contain one triple bond instead of two double bonds or a ring plus a double bond.",
+   "q": "A compound with a degree of unsaturation of 2 must contain two C=C double bonds.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "A triple bond itself counts as two degrees of unsaturation (two pi bonds), so DoU=2 is consistent with one triple bond, two double bonds, two rings, or one ring plus one double bond.",
+   "correct": 1,
+   "why": "False. Each ring and each pi bond counts as one degree of unsaturation. A triple bond has two pi bonds, so DoU = 2 fits one triple bond, two double bonds, one ring plus one double bond, or two rings.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -19005,13 +19007,13 @@
    "type": "mcq"
   },
   {
-   "q": "Addition of Br2 to an alkene gives anti (opposite-face) stereochemistry because the bridged bromonium ion is attacked by bromide from the face opposite the bromonium ring.",
+   "q": "Br2 adds to an alkene with syn stereochemistry, because both bromine atoms come from the same Br2 molecule.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Since the first bromine already blocks one face as part of the bromonium ion, the incoming bromide ion must attack from the backside, giving net anti addition of the two bromines.",
+   "correct": 1,
+   "why": "False. The first bromine forms a bridged bromonium ion that blocks one face of the alkene. Bromide must then attack from the opposite face, so the two bromines end up anti. Coming from one Br2 molecule does not put them on the same side.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -19402,13 +19404,13 @@
    "type": "mcq"
   },
   {
-   "q": "In the anti-Markovnikov radical addition of HBr, a bromine radical (not a hydrogen atom) is the species that adds first, attaching to the terminal carbon.",
+   "q": "In the peroxide-initiated addition of HBr to an alkene, a hydrogen atom adds to the terminal carbon first.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The radical chain begins when a bromine radical adds to the less hindered terminal carbon, generating the more stable internal (secondary or tertiary) carbon radical, which then abstracts H from HBr — this order is why Br ends up terminal.",
+   "correct": 1,
+   "why": "False. In the radical chain, a bromine radical adds first, to the less substituted terminal carbon, which gives the more stable internal carbon radical. That radical then takes an H atom from HBr. That order is why the Br ends up on the terminal carbon (anti-Markovnikov).",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -19542,13 +19544,13 @@
    "type": "mcq"
   },
   {
-   "q": "Anti-Markovnikov regiochemistry from a radical mechanism is a special case associated with HBr addition; it does not apply to ordinary acid-catalyzed hydration or to halogenation (Br2/Cl2 addition) reactions under typical conditions.",
+   "q": "Adding peroxides reverses the regiochemistry of acid-catalyzed hydration, just as it does for HBr.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Hydration and halogenation (Br2/Cl2 addition) proceed through cationic or bridged-ion intermediates that follow normal Markovnikov-type (most stable intermediate) selectivity; the radical chain pathway that flips the regiochemistry is essentially unique to peroxide-mediated HBr addition.",
+   "correct": 1,
+   "why": "False. The peroxide effect is essentially unique to HBr, the only hydrogen halide for which both radical chain steps are energetically favorable. Acid-catalyzed hydration goes through a carbocation and gives the Markovnikov alcohol whether or not peroxides are present. Anti-Markovnikov alcohols come from hydroboration–oxidation instead.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -19809,13 +19811,13 @@
    "type": "mcq"
   },
   {
-   "q": "Treating an alkyne with excess H2 and a Pt (or Pd/Ni) catalyst results in complete reduction to the corresponding alkane.",
+   "q": "Treating an alkyne with H2 and a Pt or Pd catalyst stops at the cis-alkene.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "With an unrestricted (non-poisoned) metal catalyst and excess H2, both pi bonds of the triple bond are hydrogenated in sequence, first to the alkene and then fully to the alkane.",
+   "correct": 1,
+   "why": "False. An ordinary metal catalyst hydrogenates both pi bonds, so the alkyne is reduced all the way to the alkane. Stopping at the cis-alkene needs a poisoned catalyst such as Lindlar's catalyst, which reduces the alkyne but not the alkene.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -19909,13 +19911,13 @@
    "type": "mcq"
   },
   {
-   "q": "Terminal alkynes, but not internal alkynes, give an aldehyde product from hydroboration-oxidation, because boron selectively adds to the less hindered, terminal carbon of the triple bond.",
+   "q": "Hydroboration–oxidation of a terminal alkyne gives a methyl ketone.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Only a terminal alkyne has a CH-bearing end carbon available for boron's steric preference to place OH there after oxidation, generating a terminal enol that tautomerizes to an aldehyde; internal alkynes lack a terminal position and instead give ketones.",
+   "correct": 1,
+   "why": "False. Boron goes to the less hindered terminal carbon, so oxidation puts the OH there and gives a terminal enol, which tautomerizes to an aldehyde. The methyl ketone comes from acid-catalyzed (Hg2+) hydration, which follows Markovnikov's rule and puts the oxygen on the internal carbon.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -22058,7 +22060,7 @@
    "correct": 0,
    "why": "Tosylation happens at sulfur: the alcohol oxygen attacks the S of TsCl and chloride leaves, so the C-O bond is never broken. Nothing at carbon moves, and the stereocenter is handed on intact. Any inversion you see later belongs to the substitution step that displaces the tosylate, not to the tosylation.",
    "difficulty": "easy",
-   "type": "mcq"
+   "type": "tf"
   },
   {
    "q": "Acid-catalyzed dehydration of 2-butanol gives mainly:",
@@ -22178,13 +22180,13 @@
    "type": "mcq"
   },
   {
-   "q": "Apart from methanol, simple alcohols are slightly weaker acids than water.",
+   "q": "Ethanol is a slightly stronger acid than water, because its ethyl group pulls electron density away from the oxygen.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Alkyl groups donate electron density to the alkoxide oxygen and crowd it out of good solvation, so ethanol (pKa 16) and tert-butanol (pKa 18) are both weaker acids than water (15.7). Methanol is the exception that makes the wording matter: at pKa 15.5 it is slightly more acidic than water, because it carries the least alkyl bulk of all.",
+   "correct": 1,
+   "why": "False. Ethanol (pKa about 16) is slightly weaker than water (15.7). Alkyl groups do not withdraw electrons from the alkoxide oxygen; they donate a little and crowd it out of good solvation, which makes the alkoxide less stable. tert-Butanol (pKa about 18) is weaker still.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -22236,7 +22238,7 @@
    "correct": 1,
    "why": "Hydroxide is the conjugate base of water, pKa 15.7, which makes it a strong base and one of the worst leaving groups in the course. Cyanide cannot displace it however hot the flask gets. The OH has to be activated first - as a tosylate, or by protonation - and then cyanide will do the SN2.",
    "difficulty": "easy",
-   "type": "mcq"
+   "type": "tf"
   },
   {
    "q": "Which of these is the strongest acid?",
@@ -22278,13 +22280,13 @@
    "type": "mcq"
   },
   {
-   "q": "Treating a chiral secondary alcohol with PBr3 gives the alkyl bromide with inverted stereochemistry at that carbon.",
+   "q": "Treating a chiral secondary alcohol with PBr3 gives the alkyl bromide with its configuration unchanged.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because PBr3 operates through a concerted SN2-type displacement without a free carbocation, bromide must attack from the side opposite the leaving group, inverting the configuration.",
+   "correct": 1,
+   "why": "False. PBr3 first turns the OH into a good leaving group, and bromide then displaces it in an SN2 step from the back side. No carbocation forms, so the result is clean inversion of configuration at that carbon.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -22367,13 +22369,13 @@
    "type": "mcq"
   },
   {
-   "q": "Ethers can act as hydrogen bond acceptors (through their oxygen lone pairs) but not as hydrogen bond donors.",
+   "q": "Ether molecules hydrogen-bond to one another, which is why diethyl ether boils higher than butan-1-ol.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "An ether oxygen has lone pairs that can accept a hydrogen bond from an O-H or N-H elsewhere, but since ethers have no O-H or N-H of their own, they cannot donate a hydrogen bond.",
+   "correct": 1,
+   "why": "False. An ether has no O–H, so it can accept a hydrogen bond but cannot donate one, and ether molecules cannot hydrogen-bond to each other. That is why diethyl ether boils at 35 °C while its isomer butan-1-ol, which can, boils at 118 °C.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -22469,13 +22471,13 @@
    "type": "mcq"
   },
   {
-   "q": "18-Crown-6 binds K+ more selectively than it binds Na+ because its cavity size is a better match for the potassium ion.",
+   "q": "18-Crown-6 binds Na+ more strongly than K+, because the smaller ion fits deeper into the ring.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Crown ethers show size selectivity, and the numbers to compare are diameters: 18-crown-6 has a cavity about 2.7 Angstroms across and K+ is 2.66 Angstroms, so the ion fills the hole and contacts all six oxygen lone pairs at once. Na+ is only 1.9 Angstroms across, so it sits in a cavity too large for it, touches fewer oxygens at a time and binds far more weakly.",
+   "correct": 1,
+   "why": "False. Crown ethers select by size match. The cavity of 18-crown-6 is about 2.7 Å across and K+ is about 2.66 Å, so K+ fills it and touches all six oxygens at once. The smaller Na+ sits loosely in a hole too big for it, touches fewer oxygens, and binds much more weakly.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -22760,13 +22762,13 @@
    "type": "mcq"
   },
   {
-   "q": "Epoxidation of an alkene with a peroxyacid proceeds with syn (same-face) addition of the oxygen atom.",
+   "q": "Epoxidation of cis-2-butene with a peroxyacid gives the trans epoxide.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The peroxyacid transfers its oxygen to both alkene carbons simultaneously from one face in a single concerted step (often pictured as a 'butterfly' transition state), so the new C-O bonds form on the same side of the original double bond.",
+   "correct": 1,
+   "why": "False. The peroxyacid delivers its oxygen to both alkene carbons at once, from one face, in a single concerted step. Nothing rotates, so the alkene's geometry is kept: cis-2-butene gives the cis epoxide, and trans-2-butene gives the trans epoxide.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -23167,13 +23169,13 @@
    "type": "mcq"
   },
   {
-   "q": "The carbonyl carbon of an aldehyde or ketone bears a partial positive charge (δ+).",
+   "q": "The carbonyl carbon of an aldehyde or ketone carries a partial negative charge, because the double bond puts extra electrons around it.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Oxygen is more electronegative than carbon, so it pulls electron density from the C=O bond toward itself, leaving the carbonyl carbon electron-poor and susceptible to nucleophilic attack.",
+   "correct": 1,
+   "why": "False. Oxygen is more electronegative than carbon and pulls the C=O electrons toward itself. The oxygen carries the partial negative charge and the carbonyl carbon a partial positive charge, which is why nucleophiles attack that carbon.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -23676,13 +23678,13 @@
    "type": "mcq"
   },
   {
-   "q": "During nucleophilic addition, the two pi electrons of the C=O bond end up localized as a lone pair on the oxygen atom.",
+   "q": "During nucleophilic addition to a C=O group, the pi electrons move onto the carbonyl carbon, which becomes a carbanion.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "As the nucleophile forms a new sigma bond to carbon, the C=O pi bond breaks and its electron pair moves entirely onto the oxygen, generating a negatively charged alkoxide intermediate.",
+   "correct": 1,
+   "why": "False. As the nucleophile bonds to the carbon, the C=O pi electrons move onto the more electronegative oxygen, giving an alkoxide (O−). The carbon becomes a neutral sp3 carbon with four bonds, not a carbanion.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -23739,13 +23741,13 @@
    "type": "mcq"
   },
   {
-   "q": "Sodium borohydride (NaBH4) delivering a hydride ion to a ketone's carbonyl carbon is an example of nucleophilic addition in which hydride acts as the nucleophile.",
+   "q": "Sodium borohydride (NaBH4) reduces a ketone by delivering a proton (H+) to the carbonyl carbon.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Hydride (H-) attacks the electrophilic carbonyl carbon just like other nucleophiles, forming a tetrahedral alkoxide intermediate that is then protonated (often during an aqueous workup) to give the alcohol product.",
+   "correct": 1,
+   "why": "False. NaBH4 delivers a hydride ion (H−), a hydrogen with a pair of electrons, which acts as a nucleophile and attacks the electrophilic carbonyl carbon. The proton that ends up on oxygen comes later, from the solvent or the workup.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -24222,13 +24224,13 @@
    "type": "mcq"
   },
   {
-   "q": "Compared to esters, acetals are generally much less susceptible to attack by basic nucleophiles like hydroxide or Grignard reagents.",
+   "q": "Acetals are readily cleaved by aqueous hydroxide, which is the usual way to remove them.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "An ester still has a C=O, so hydroxide or a Grignard reagent can attack its carbon, and the OR group can then leave. An acetal has no C=O at all: its carbon is sp³ and carries two ether-like oxygens, so bases and nucleophiles leave it alone. That is why acetals work as protecting groups.",
+   "correct": 1,
+   "why": "False. An acetal carbon is sp3 and carries two ether-like oxygens, with no C=O for a nucleophile to attack, so acetals are stable to bases such as hydroxide. They are cleaved by aqueous acid, which protonates an oxygen so it can leave. That base stability is why acetals work as protecting groups.",
    "difficulty": "medium",
    "type": "tf"
   }
@@ -26335,13 +26337,13 @@
    "type": "mcq"
   },
   {
-   "q": "Para-nitrobenzoic acid is more acidic than benzoic acid.",
+   "q": "para-Nitrobenzoic acid is a weaker acid than benzoic acid, because the nitro group crowds the carboxyl group.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The nitro group is a strong electron-withdrawing group that stabilizes the negative charge on the carboxylate through both induction and resonance, increasing acidity relative to unsubstituted benzoic acid.",
+   "correct": 1,
+   "why": "False. The nitro group is para, far from the carboxyl, so crowding is not a factor. It is strongly electron-withdrawing and stabilizes the carboxylate anion, so para-nitrobenzoic acid (pKa about 3.4) is a stronger acid than benzoic acid (pKa about 4.2).",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -26548,13 +26550,13 @@
    "type": "mcq"
   },
   {
-   "q": "A dicarboxylic acid generally has two distinct pKa values rather than one value applying to both -COOH groups equally.",
+   "q": "A dicarboxylic acid loses both of its protons at the same pKa, because its two –COOH groups are identical.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Removing the first proton changes the electronic environment (the molecule becomes anionic), so the second -COOH ionizes with a different, typically higher, pKa than the first.",
+   "correct": 1,
+   "why": "False. After the first proton leaves, the molecule is an anion, and pulling a second proton away from a negatively charged species is harder. So a dicarboxylic acid has two different pKa values, and the second is higher than the first.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -26715,13 +26717,13 @@
    "type": "mcq"
   },
   {
-   "q": "Fischer esterification is a reversible equilibrium reaction.",
+   "q": "Fischer esterification goes essentially to completion, so using excess alcohol or removing water does not improve the yield.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because Fischer esterification is acid-catalyzed and both the forward (esterification) and reverse (acid-catalyzed hydrolysis) reactions are accessible, the reaction reaches equilibrium and excess alcohol or removal of water is often used to push the equilibrium toward the ester.",
+   "correct": 1,
+   "why": "False. Fischer esterification is an equilibrium: the acid catalyst also speeds up the reverse reaction, ester hydrolysis. Using a large excess of alcohol or removing water as it forms pushes the equilibrium toward the ester (Le Chatelier's principle).",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -26941,13 +26943,13 @@
    "type": "mcq"
   },
   {
-   "q": "Resonance delocalization in an amide puts partial positive charge on NITROGEN and extra electron density on the carbonyl oxygen, and it leaves the carbonyl carbon less electron-poor than a ketone's.",
+   "q": "Resonance in an amide pulls electron density away from the carbonyl carbon, leaving it more electron-poor than a ketone's.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The second contributor is O(-)-C=N(+): the nitrogen lone pair has moved toward oxygen, so nitrogen carries partial positive charge and oxygen partial negative. Carbon gains, not loses, electron density relative to a ketone - which is exactly why an amide is the least electrophilic derivative, and why its C=O stretch drops to about 1650 cm-1.",
+   "correct": 1,
+   "why": "False. In the amide's second resonance contributor, O−–C=N+, the nitrogen's lone pair has been shared into the C=O. That gives the carbonyl carbon extra electron density, so it is less electron-poor than a ketone's, and the amide carbonyl is a weaker electrophile.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -27282,13 +27284,13 @@
    "type": "mcq"
   },
   {
-   "q": "The overall outcome of a nucleophilic acyl substitution reaction is that the carbonyl group is retained in the product, while the original leaving group is replaced by the incoming nucleophile.",
+   "q": "In nucleophilic acyl substitution, the nucleophile simply adds to the C=O, and the tetrahedral addition product is the final product.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Unlike nucleophilic addition (which destroys the carbonyl pi bond permanently), acyl substitution regenerates the carbonyl in the final product; only the group attached via the leaving position has been swapped out.",
+   "correct": 1,
+   "why": "False. The tetrahedral intermediate is not the end. It collapses: the C=O reforms and the leaving group is expelled. Overall the carbonyl is kept and the leaving group is swapped for the nucleophile, which is what makes it substitution rather than addition.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -27319,13 +27321,13 @@
    "type": "mcq"
   },
   {
-   "q": "Anhydrides are generally more reactive toward nucleophilic acyl substitution than esters.",
+   "q": "Esters are more reactive toward nucleophilic acyl substitution than anhydrides.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "A carboxylate leaving group (departing from an anhydride) is a better leaving group than an alkoxide (departing from an ester), and the second carbonyl group in an anhydride also inductively withdraws electron density, both of which make anhydrides more reactive than esters.",
+   "correct": 1,
+   "why": "False. Anhydrides are more reactive. Their leaving group is a carboxylate, a much weaker base and better leaving group than the alkoxide an ester must lose, and the second carbonyl also pulls electron density away from the reacting carbon.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -27534,13 +27536,13 @@
    "type": "mcq"
   },
   {
-   "q": "A carboxylic acid's own O-H proton is far more acidic (pKa about 4-5) than its alpha C-H (pKa about 25-30), so under mild base, deprotonation occurs at the O-H, not the alpha carbon.",
+   "q": "With a mild base, a carboxylic acid loses its alpha C–H proton before its O–H proton, because the alpha carbon is next to the carbonyl.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Carboxylic acids have two acidic sites, but the O-H is dramatically more acidic because its conjugate base (carboxylate) is stabilized by two equivalent resonance structures with the negative charge shared between both oxygens; a much stronger base is needed to reach the alpha carbon, and the carboxylate must usually be protected or already formed first.",
+   "correct": 1,
+   "why": "False. The O–H is far more acidic (pKa about 4–5) than the alpha C–H (pKa about 25–30), because the carboxylate shares its negative charge equally between two oxygens. A mild base removes the O–H proton first, and a much stronger base is needed to reach the alpha carbon.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -27788,13 +27790,13 @@
    "type": "mcq"
   },
   {
-   "q": "An aldol addition reaction is reversible under the basic or acidic conditions typically used to carry it out.",
+   "q": "Aldol addition is irreversible under basic conditions, so the beta-hydroxy carbonyl product never reverts to starting materials.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Both the enolate (or enol) formation step and the C-C bond-forming addition step are equilibria; the aldol product can revert to starting materials (a retro-aldol), which is part of why the overall process is often driven toward completion by subsequent dehydration.",
+   "correct": 1,
+   "why": "False. Both the enolate formation and the C–C bond-forming addition are equilibria, so the aldol product can fall apart again (a retro-aldol). That is part of why the reaction is often driven forward by dehydrating the product to the conjugated enone.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -28293,7 +28295,7 @@
     "There is no preferred direction; both directions always occur to an identical extent"
    ],
    "correct": 2,
-   "why": "In a mixed Claisen-type reaction between an ester and a ketone, it is advantageous to use conditions where the more easily and more completely formed ketone enolate serves as nucleophile and attacks the ester (which offers an alkoxide leaving group for a clean addition-elimination), giving a good route to a beta-ketoester while avoiding excessive self-condensation of the ketone.",
+   "why": "In a mixed Claisen-type reaction between an ester and a ketone, it pays to let the ketone supply the enolate: its alpha hydrogens (pKa about 20) are more acidic than the ester's (about 25), so its enolate forms more easily and more completely, and the ester supplies an alkoxide leaving group for a clean addition–elimination. The product is a 1,3-diketone (a beta-diketone), not a beta-ketoester, because the carbon that attacks belongs to the ketone and the ester only loses its OR group. The C–H between its two carbonyls is then deprotonated by the base, which drives the reaction forward.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -28852,13 +28854,13 @@
    "type": "mcq"
   },
   {
-   "q": "Because nitrogen is less electronegative than oxygen, amines are generally more basic than comparably substituted alcohols or ethers.",
+   "q": "Amines are less basic than comparable alcohols or ethers, because nitrogen holds its lone pair more tightly than oxygen does.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Lower electronegativity on nitrogen means its lone pair is held less tightly than an oxygen lone pair, making it more willing to accept a proton.",
+   "correct": 1,
+   "why": "False. Nitrogen is less electronegative than oxygen, so it holds its lone pair less tightly and gives it up to a proton more readily. That makes amines more basic than comparable alcohols or ethers.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -29249,15 +29251,15 @@
    "type": "mcq"
   },
   {
-   "q": "A primary amine is treated with one equivalent of an acid chloride in the presence of excess pyridine as a base. What roles does pyridine play, and why is it chosen over a strong base like NaOH?",
+   "q": "A primary amine is treated with one equivalent of an acid chloride in an organic solvent, with excess pyridine as the base. What does pyridine do, and why is it chosen over NaOH dissolved in the same mixture?",
    "options": [
-    "pyridine mops up the HCl and cannot end up in the product",
-    "pyridine acts purely as a reducing agent in this reaction",
-    "pyridine itself becomes incorporated into the amide product",
-    "pyridine serves only as an inert solvent with no chemical role"
+    "Pyridine activates the amine; NaOH would deprotonate it fully",
+    "Pyridine absorbs the HCl; hydroxide would compete for the acid chloride",
+    "Pyridine becomes part of the amide; NaOH would reduce the acid chloride",
+    "Pyridine is only a solvent; NaOH is too weak a base to absorb HCl"
    ],
-   "correct": 0,
-   "why": "Pyridine's job is to take the HCl each acylation releases, so the amine is not consumed as a base — and it can do that job without getting in the way, because it carries no N–H and so cannot be acylated into the product. It is not that pyridine fails to attack the acid chloride: it does, giving an N-acylpyridinium ion, and that ion is a better acylating agent than the acid chloride was, so the acyl group simply passes on to the amine. That relay is why pyridine and DMAP catalyze acylations rather than obstructing them. NaOH is the wrong choice for a different reason: hydroxide would attack the acid chloride and hydrolyze it to the carboxylate before the amine got its turn.",
+   "correct": 1,
+   "why": "Pyridine's job is to take up the HCl each acylation releases, so the amine is not used up as a base; it carries no N–H, so it cannot end up acylated in the product. (It does attack the acid chloride, but the N-acylpyridinium ion it forms is an even better acylating agent and simply passes the acyl group on to the amine.) Hydroxide in the same solution is a problem because it is itself a good nucleophile: it attacks the acid chloride and hydrolyzes it to the carboxylate, competing with the amine. NaOH can still be used under two-phase Schotten–Baumann conditions, where the acid chloride stays mostly in the organic layer, but as a base dissolved alongside the reagents it wastes the acid chloride.",
    "difficulty": "hard",
    "type": "mcq"
   }
@@ -29303,7 +29305,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclooctatetraene dianion is planar, cyclic and fully conjugated with 10 pi electrons. 1,3,5-Cyclooctatriene is cyclic and planar but has two sp³ CH₂ carbons and 6 pi electrons. Classify each in turn.",
+   "q": "Cyclooctatetraene dianion is planar, cyclic and fully conjugated with 10 pi electrons. 1,3,5-Cyclooctatriene is cyclic with 6 pi electrons, but two of its ring carbons are sp³ CH₂ groups. Classify each in turn.",
    "options": [
     "Dianion antiaromatic; triene aromatic",
     "Dianion aromatic; triene non-aromatic",
@@ -29311,7 +29313,7 @@
     "Both aromatic; the counts settle it"
    ],
    "correct": 1,
-   "why": "Work the requirements in order rather than counting first. The dianion is cyclic, planar and fully conjugated, so the count is allowed to decide: 10 fits 4n+2 with n = 2, so it is aromatic. The triene fails the conjugation requirement before the count is ever reached — two sp³ carbons break the loop of p orbitals — so it is non-aromatic, and its 6 pi electrons are beside the point. The trap is answering antiaromatic for the triene: antiaromatic means passing all three structural tests and then landing on 4n, which a ring with an sp³ carbon in it never does.",
+   "why": "Work the requirements in order rather than counting first. The dianion is cyclic, planar and fully conjugated, so the count is allowed to decide: 10 fits 4n+2 with n = 2, so it is aromatic. The triene fails the conjugation requirement before the count is ever reached: two sp³ carbons break the loop of p orbitals (and the ring is not planar either, though the broken loop alone settles it), so it is non-aromatic, and its 6 pi electrons are beside the point. The trap is answering antiaromatic for the triene: antiaromatic means passing all three structural tests and then landing on 4n, which a ring with an sp³ carbon in it never does.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -29401,13 +29403,13 @@
    "type": "mcq"
   },
   {
-   "q": "Pyridine's nitrogen lone pair occupies an sp2 orbital in the plane of the ring, so it does not participate in the aromatic pi system.",
+   "q": "Pyridine's nitrogen lone pair is part of the aromatic sextet, which is why pyridine is not basic.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Because the lone pair is in-plane rather than in a p orbital perpendicular to the ring, it is not part of the 6 pi electron aromatic system, which is why pyridine's nitrogen remains basic.",
+   "correct": 1,
+   "why": "False. Pyridine's nitrogen is sp2 and its lone pair sits in an sp2 orbital in the plane of the ring, at right angles to the p orbitals of the pi system. The six aromatic pi electrons come from the three C=C/C=N bonds, so the lone pair is free to take a proton, and pyridine is a base.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -29438,13 +29440,13 @@
    "type": "mcq"
   },
   {
-   "q": "Pyrrole resists being protonated on its nitrogen, because that nitrogen's lone pair supplies two of the six pi electrons that make the ring aromatic.",
+   "q": "Pyrrole's nitrogen lone pair lies in the plane of the ring, outside the pi system, just like pyridine's.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Pyrrole's nitrogen has no ring double bond of its own, so its lone pair sits in the p orbital and supplies two of the six pi electrons. Putting a proton on that nitrogen would pull those electrons out of the pi system and destroy the aromatic sextet, which costs far more than the new N-H bond returns.",
+   "correct": 1,
+   "why": "False. Pyrrole's nitrogen has no ring double bond of its own, so its lone pair sits in a p orbital and supplies two of the six pi electrons. That is why pyrrole resists protonation on nitrogen: using the lone pair to bond to H+ would destroy the aromatic sextet.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -29462,13 +29464,13 @@
    "type": "mcq"
   },
   {
-   "q": "The cycloheptatrienyl cation (tropylium) is aromatic even though it is a seven-membered ring, because it has 6 delocalized pi electrons over a planar, fully conjugated cationic ring.",
+   "q": "The cycloheptatrienyl (tropylium) cation is not aromatic, because a seven-membered ring has an odd number of atoms.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Tropylium's positive charge sits in an empty p orbital identical in symmetry to the other six carbons' p orbitals, giving a fully conjugated 6 pi electron aromatic system despite being a seven-membered ring.",
+   "correct": 1,
+   "why": "False. Hückel's rule counts pi electrons, not ring atoms. Tropylium is planar, cyclic and fully conjugated (the positive carbon has an empty p orbital), and it has 6 pi electrons, which fits 4n + 2 with n = 1, so it is aromatic.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -29812,13 +29814,13 @@
    "type": "mcq"
   },
   {
-   "q": "A major practical advantage of Friedel-Crafts acylation over alkylation is that the product ketone, once formed, deactivates the ring, preventing a second acylation (polysubstitution) from occurring easily.",
+   "q": "Friedel–Crafts acylation, like alkylation, tends to give polysubstitution, because the product ring is more reactive than benzene.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The carbonyl group is electron-withdrawing and deactivates the ring toward further EAS, so acylation self-limits to mono-substitution, unlike alkylation where the alkyl product activates the ring toward further alkylation.",
+   "correct": 1,
+   "why": "False. That is a problem for alkylation, where the new alkyl group activates the ring. In acylation, the new acyl group is an electron-withdrawing carbonyl that deactivates the ring, so the reaction stops cleanly after one substitution.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -29923,13 +29925,13 @@
    "type": "mcq"
   },
   {
-   "q": "Using excess AlCl3 in Friedel-Crafts acylation is necessary in part because the Lewis acid forms a complex with the ketone product, requiring a full stoichiometric equivalent or more rather than a catalytic trace.",
+   "q": "Friedel–Crafts acylation needs only a catalytic amount of AlCl3, because the Lewis acid is regenerated at the end of each cycle.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "The carbonyl oxygen of the product ketone strongly complexes with AlCl3, sequestering it; an aqueous workup is then needed to break the complex and free the product (destroying the AlCl3 in the process), which is why acylation needs more than catalytic AlCl3 while some other EAS reactions need only a trace.",
+   "correct": 1,
+   "why": "False. The ketone product's carbonyl oxygen binds AlCl3 tightly and holds onto it, so the Lewis acid is not freed to start another cycle. A full equivalent or more is needed, and an aqueous workup breaks the complex to release the ketone.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -30206,13 +30208,13 @@
    "type": "mcq"
   },
   {
-   "q": "The trifluoromethyl group, -CF3, attached to benzene is a deactivator and a meta director, similar in directing behavior to -NO2 even though it contains no pi bonds of its own.",
+   "q": "A –CF3 group is an ortho/para director, because its fluorine atoms have lone pairs they can donate into the ring.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Even without resonance capability, the three highly electronegative fluorines withdraw electron density strongly through induction alone, destabilizing positive charge most at ortho/para and making meta the relatively favored position, while also slowing the reaction overall.",
+   "correct": 1,
+   "why": "False. The fluorines are not bonded to the ring, so their lone pairs cannot be donated into it by resonance. Three fluorines strongly withdraw electrons by induction, which deactivates the ring and destabilizes positive charge at the ortho and para positions, so –CF3 is a deactivating meta director, like –NO2.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -30377,13 +30379,13 @@
    "type": "tf"
   },
   {
-   "q": "An amide group, -NHC(=O)CH3 (as in acetanilide), is a weaker activator and ortho/para director than a free -NH2 group, even though both have a nitrogen lone pair adjacent to the ring.",
+   "q": "An acetamido group, –NHC(=O)CH3, activates a benzene ring more strongly than a free –NH2 group, because the carbonyl adds extra resonance.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "In an amide, the nitrogen lone pair is partially pulled away into conjugation with the carbonyl group, leaving less electron density available to donate into the aromatic ring than a free amine has, so acetanilide activates the ring less strongly than aniline while still directing ortho/para.",
+   "correct": 1,
+   "why": "False. In acetamido, the nitrogen's lone pair is partly shared with the carbonyl group, which leaves less of it to donate into the ring. So –NHCOCH3 is a weaker activator than –NH2, though it is still an ortho/para director.",
    "difficulty": "hard",
    "type": "tf"
   },
@@ -30983,13 +30985,13 @@
    "type": "mcq"
   },
   {
-   "q": "Two protons on the same carbon can be diastereotopic and show different chemical shifts if replacing each one individually (in turn) with a test group would give a pair of diastereomers.",
+   "q": "Two protons on the same CH2 carbon always have the same chemical shift.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "When a molecule contains another stereocenter or similar feature, the two protons on a CH2 are no longer related by a simple symmetry operation, so they occupy genuinely different environments and can show different shifts and even couple to each other.",
+   "correct": 1,
+   "why": "False. If replacing each proton in turn with a test group would give a pair of diastereomers, the two protons are diastereotopic. They are in genuinely different environments, so they can have different chemical shifts and can even split each other. This is common next to a stereocenter.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -31365,13 +31367,13 @@
    "type": "mcq"
   },
   {
-   "q": "Quaternary carbons typically show weaker peak intensities in a standard proton-decoupled ¹³C NMR spectrum compared to protonated carbons of similar abundance.",
+   "q": "In a standard proton-decoupled ¹³C NMR spectrum, peak heights are proportional to the number of carbons, so a quaternary carbon gives as tall a peak as a CH3.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Quaternary carbons lack the nuclear Overhauser enhancement from directly attached protons and often relax more slowly, both of which tend to make their signals weaker relative to protonated carbons, even at equal molar amounts.",
+   "correct": 1,
+   "why": "False. Standard ¹³C spectra are not reliably integrated. Quaternary carbons have no attached protons, so they miss the signal boost (nuclear Overhauser enhancement) that protonated carbons get, and they relax more slowly. Their peaks are usually noticeably weaker.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -31756,13 +31758,13 @@
    "type": "mcq"
   },
   {
-   "q": "More highly branched alkanes generally show a weaker molecular ion peak than their straight-chain isomers, because branching provides additional, more easily accessible fragmentation pathways that generate more stable carbocations.",
+   "q": "Branched alkanes show stronger molecular ion peaks than their straight-chain isomers, because branching makes the molecule more compact.",
    "options": [
     "True",
     "False"
    ],
-   "correct": 0,
-   "why": "Branch points allow formation of more stable secondary or tertiary carbocations upon fragmentation, making it energetically easier for the branched molecular ion to fall apart rather than survive intact, weakening the M+ peak relative to a straight-chain isomer.",
+   "correct": 1,
+   "why": "False. Branch points let the molecular ion break apart into more stable secondary or tertiary carbocations, so branched alkanes fragment more easily. Their molecular ion peak is weaker than a straight-chain isomer's, and sometimes very small.",
    "difficulty": "medium",
    "type": "tf"
   },
@@ -33665,7 +33667,7 @@
    "type": "mcq"
   },
   {
-   "q": "What does the question 'does this product survive the next step' catch?",
+   "q": "When checking a planned route, what does asking 'does this product survive the next step?' catch?",
    "options": [
     "Problems with the yield",
     "A step that undoes the last",
@@ -33673,7 +33675,7 @@
     "Cost problems"
    ],
    "correct": 1,
-   "why": "Making an aldehyde and then running a reaction in aqueous base will not leave you with an aldehyde.",
+   "why": "It catches a later step whose reagents destroy or change a group made earlier, undoing that work. For example, a ketone made in step 2 will not survive a Grignard or NaBH4 step later in the route unless it is protected first. Yield, solvent choice and cost are separate questions.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -33873,15 +33875,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does counting carbons at the END of a route check?",
+   "q": "After planning a multistep route, you count the carbons in the final product and compare them with the target's. What does this end-of-route check catch?",
    "options": [
     "The yield",
-    "The right formula",
-    "The stereochemistry",
+    "A carbon gained or lost",
+    "The stereochemistry at each center",
     "The cost"
    ],
    "correct": 1,
-   "why": "It is the cheapest final check available.",
+   "why": "Counting carbons at the end confirms that the route actually builds the target's skeleton. A step that quietly adds or removes a carbon, such as a cyanide displacement that adds one or a Hofmann rearrangement that removes one, shows up at once as a mismatch. It is the cheapest final check available, though it says nothing about yield, stereochemistry or cost.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -36879,15 +36881,15 @@
    "type": "mcq"
   },
   {
-   "q": "What does Na in liquid NH3 give from an internal alkyne?",
+   "q": "A few drops of water get into a flask of n-butyllithium in dry ether. What happens to the reagent?",
    "options": [
-    "The alkane",
-    "An acetylide",
-    "The trans alkene",
-    "The cis alkene"
+    "It becomes butan-1-ol",
+    "It couples to octane",
+    "It is protonated to butane",
+    "It is unaffected by water"
    ],
    "correct": 2,
-   "why": "A dissolving-metal reduction through a vinyl radical anion, which settles trans.",
+   "why": "The carbon of an organolithium behaves like a carbanion whose conjugate acid (an alkane) has a pKa near 50, so water (pKa 15.7) protonates it at once, giving butane and LiOH. That is why organolithiums are made and used in dry ether or THF under nitrogen or argon, and why any O–H or N–H in the substrate must be dealt with first. No oxygen is added to carbon, so no alcohol forms.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -37045,7 +37047,7 @@
     "An alkyne plus copper"
    ],
    "correct": 0,
-   "why": "R2CuLi, with one lithium iodide left over.",
+   "why": "A Gilman reagent (a lithium diorganocuprate, R2CuLi) is made by adding two equivalents of an organolithium to one equivalent of a copper(I) salt such as CuI. Lithium iodide is left over as a byproduct.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -37084,7 +37086,7 @@
     "A diol"
    ],
    "correct": 1,
-   "why": "1,2 addition to the carbonyl, protonated on workup.",
+   "why": "A Grignard reagent is a hard, reactive nucleophile, so it attacks the carbonyl carbon of an enone directly (1,2-addition). Protonation on workup gives an allylic alcohol, with the C=C left in place.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -37123,7 +37125,7 @@
     "Copper is a transition metal"
    ],
    "correct": 2,
-   "why": "A less polar C-metal bond means less carbanion character.",
+   "why": "Copper is much closer to carbon in electronegativity than magnesium is, so the C–Cu bond is less polar. Less carbanion character on carbon makes the cuprate a softer, less reactive nucleophile than a Grignard.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -37149,7 +37151,7 @@
     "It varies with the halide"
    ],
    "correct": 0,
-   "why": "The reagent runs at half efficiency, which nobody minds.",
+   "why": "Only one of the two R groups on R2CuLi is transferred; the other stays on copper and is discarded. The reagent runs at half efficiency, which is acceptable when the R group is cheap.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -37201,7 +37203,7 @@
     "A carboxylic acid"
    ],
    "correct": 0,
-   "why": "The reagent is too mild to attack the ketone it just made.",
+   "why": "A cuprate reacts with an acyl chloride by acyl substitution to give a ketone. It is too mild to add to the ketone it has just made, so the reaction stops there, unlike a Grignard, which goes on to the tertiary alcohol.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -37266,7 +37268,7 @@
     "The carbonyl carbon"
    ],
    "correct": 3,
-   "why": "Which is exactly why the hard Grignard picks it.",
+   "why": "The carbonyl carbon carries the greater positive charge, because it is bonded directly to the electronegative oxygen; the beta carbon is positive only through resonance. That is exactly why the hard Grignard attacks the carbonyl carbon (1,2-addition), while the softer cuprate goes to the beta carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -37305,7 +37307,7 @@
     "NaBH4"
    ],
    "correct": 0,
-   "why": "Only the cuprate delivers the methyl to the beta carbon.",
+   "why": "Only the cuprate, (CH3)2CuLi, delivers a methyl to the beta carbon (1,4-addition), giving 3-methylcyclohexanone after workup. CH3MgBr and CH3Li add mostly 1,2 to the carbonyl, and NaBH4 only reduces.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -37357,7 +37359,7 @@
     "Only in THF"
    ],
    "correct": 0,
-   "why": "Choosing the reagent is how you choose the product here.",
+   "why": "No. Whether addition is 1,2 or 1,4 is decided by the reagent, not by temperature: cuprates add 1,4 and Grignards and organolithiums add 1,2. Choosing the reagent is how you choose the product here.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -37396,7 +37398,7 @@
     "A saturated ketone"
    ],
    "correct": 3,
-   "why": "The enolate tautomerizes once it is protonated.",
+   "why": "1,4-Addition gives an enolate. On workup it is protonated to the enol, which tautomerizes to the ketone, so the product is a saturated ketone with the new group on the beta carbon.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -37409,7 +37411,7 @@
     "Copper consumes one"
    ],
    "correct": 1,
-   "why": "The second R group stays on the copper.",
+   "why": "Only one R group transfers from R2CuLi to the substrate. The second R group stays on the copper and is lost in the workup, so half of the R groups are wasted.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -38709,15 +38711,15 @@
    "type": "mcq"
   },
   {
-   "q": "Why must the donor be doubly stabilized?",
+   "q": "Why are doubly stabilized enolates, such as those from malonic or acetoacetic esters, the most reliable Michael donors?",
    "options": [
-    "To be soft enough",
-    "To be more reactive",
-    "To resist hydrolysis",
-    "To dissolve in the solvent"
+    "They are soft",
+    "They are more reactive",
+    "They resist hydrolysis",
+    "They dissolve better"
    ],
    "correct": 0,
-   "why": "Spreading the charge over two carbonyls leaves it less concentrated on any one atom, so the enolate is softer and more stable. A soft, stabilized nucleophile adds reversibly at the carbonyl carbon but effectively irreversibly at the beta carbon, so it ends up 1,4. Doubly stabilized enolates are less reactive, not more, and neither hydrolysis nor solubility is the issue.",
+   "why": "Spreading the charge over two carbonyls leaves it less concentrated on any one atom, so the enolate is softer and more stable. A soft, stabilized nucleophile adds reversibly at the carbonyl carbon but effectively irreversibly at the beta carbon, so the 1,4 product accumulates. They are not the only donors that work (enamines and cuprates also add 1,4), but they are the most dependable. Doubly stabilized enolates are less reactive, not more, and neither hydrolysis nor solubility is the issue.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41360,7 +41362,7 @@
     "Ar-N2+"
    ],
    "correct": 3,
-   "why": "And it leaves as N2 gas, which is what makes it so useful.",
+   "why": "An aryl diazonium ion is Ar–N2+ (Ar–N≡N+). It is so useful because it can leave as N2 gas, letting many different groups take its place on the ring.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -41373,7 +41375,7 @@
     "A phenol with NaNO2"
    ],
    "correct": 0,
-   "why": "Cold, because the salt decomposes above about 5 degrees.",
+   "why": "An aryl amine reacts with nitrous acid (HNO2, made from NaNO2 and HCl) to give the diazonium salt. This is done cold, around 0–5 °C, because the salt decomposes when warmed.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41399,7 +41401,7 @@
     "The C-N bond is weak"
    ],
    "correct": 1,
-   "why": "A gas that escapes the solution and cannot come back.",
+   "why": "The leaving group departs as N2, a very stable molecule and a gas that escapes from the solution. Once gone it cannot come back, so its loss is strongly favored and irreversible.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -41412,7 +41414,7 @@
     "Acylate, reduce, diazotize"
    ],
    "correct": 0,
-   "why": "The first two are reactions the course already covered.",
+   "why": "Nitrate benzene (HNO3/H2SO4) to nitrobenzene, reduce the nitro group to aniline, then diazotize with NaNO2 and HCl in the cold. The first two steps are reactions covered earlier in the course.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -41425,7 +41427,7 @@
     "Fe or Sn with HCl"
    ],
    "correct": 3,
-   "why": "Or H2 with a catalyst, which does the same job.",
+   "why": "A metal such as iron or tin in HCl reduces an aryl nitro group to the amine (aniline). H2 with a metal catalyst does the same job; NaBH4, PCC and mCPBA do not.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41438,7 +41440,7 @@
     "Gives the phenol"
    ],
    "correct": 2,
-   "why": "A Sandmeyer reaction.",
+   "why": "CuCl replaces the N2+ group with chlorine to give the aryl chloride, Ar–Cl, with loss of N2. This copper-mediated substitution is a Sandmeyer reaction.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -41451,7 +41453,7 @@
     "Gives the phenol"
    ],
    "correct": 1,
-   "why": "A group electrophilic substitution cannot install at all.",
+   "why": "CuCN replaces the N2+ group with a nitrile, giving Ar–CN (a Sandmeyer reaction). This matters because electrophilic aromatic substitution has no way to put a CN group on a ring at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41464,7 +41466,7 @@
     "Nothing"
    ],
    "correct": 0,
-   "why": "No copper salt is needed for the iodide.",
+   "why": "Potassium iodide replaces the N2+ group with iodine, giving the aryl iodide. Unlike the chloride and bromide, no copper salt is needed: iodide is reactive enough to replace the N2+ group on its own.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41542,7 +41544,7 @@
     "Deactivates, meta"
    ],
    "correct": 2,
-   "why": "Which is why it is worth installing purely to direct.",
+   "why": "An NH2 group donates its lone pair into the ring by resonance, so it strongly activates the ring and directs ortho/para. Because it can later be converted to a diazonium salt and replaced, it is worth installing just to direct a substitution.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41698,7 +41700,7 @@
     "Any diazonium reaction"
    ],
    "correct": 2,
-   "why": "CuCl, CuBr and CuCN are the three standard cases.",
+   "why": "The Sandmeyer reaction is specifically the copper(I)-mediated replacement of N2+ by Cl, Br or CN, using CuCl, CuBr or CuCN. Other diazonium reactions, such as with KI, water or azo coupling, are not Sandmeyer reactions.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -41724,7 +41726,7 @@
     "Yes, with a Grignard"
    ],
    "correct": 0,
-   "why": "An unactivated aryl halide does neither SN1 nor SN2.",
+   "why": "No. An unactivated aryl halide does not undergo SN1 or SN2, so water or hydroxide cannot simply displace the halide; only rings activated by strong electron-withdrawing groups react. The practical route to a phenol goes through a diazonium salt, which is hydrolyzed by warming in water.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42144,7 +42146,7 @@
     "Nucleation, growth, capping"
    ],
    "correct": 0,
-   "why": "The same three as radical halogenation.",
+   "why": "Radical polymerization runs through the same three stages as radical halogenation: initiation makes the first radicals, propagation adds monomer after monomer to the growing radical chain, and termination ends it when two radicals combine.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42157,7 +42159,7 @@
     "A peroxide or azo initiator"
    ],
    "correct": 3,
-   "why": "It breaks homolytically to give two radicals.",
+   "why": "A peroxide or azo initiator has a weak bond that breaks homolytically on heating, giving two radicals. Each radical adds to a monomer's C=C and starts a chain.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42222,7 +42224,7 @@
     "Substituents on adjacent carbons"
    ],
    "correct": 2,
-   "why": "It follows from taking the more stable radical every time.",
+   "why": "In head-to-tail linking, each monomer adds so that its substituent ends up on every other carbon of the chain. It follows from the growing radical always forming at the substituted carbon, the more stable radical, each time a monomer adds.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42235,7 +42237,7 @@
     "Hund's"
    ],
    "correct": 1,
-   "why": "Both come from asking which intermediate is more stable.",
+   "why": "Head-to-tail regiochemistry resembles Markovnikov's rule. In both, the reaction goes through the more stable intermediate: the more substituted carbocation in Markovnikov addition, the more stabilized radical in polymerization.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42248,7 +42250,7 @@
     "Polypropylene"
    ],
    "correct": 0,
-   "why": "Foam cups and packaging.",
+   "why": "Styrene (vinylbenzene) polymerizes to polystyrene, a chain with a phenyl group on every other carbon. It is used for foam cups, packaging and rigid plastic items.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42261,7 +42263,7 @@
     "PVC"
    ],
    "correct": 3,
-   "why": "Pipe, flooring and insulation.",
+   "why": "Vinyl chloride (chloroethene) polymerizes to poly(vinyl chloride), PVC, with a chlorine on every other carbon. It is used for pipe, flooring and wire insulation.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42287,7 +42289,7 @@
     "PTFE"
    ],
    "correct": 1,
-   "why": "Plexiglas, and it is transparent because it is amorphous.",
+   "why": "Methyl methacrylate polymerizes to poly(methyl methacrylate), PMMA, sold as Plexiglas. It is transparent because it is amorphous: its chains do not pack into light-scattering crystalline regions.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42313,7 +42315,7 @@
     "All on one side"
    ],
    "correct": 3,
-   "why": "Packs well, so the material is crystalline and strong.",
+   "why": "In an isotactic polymer every substituent is on the same side of the zig-zag backbone. That regular structure packs well, so the material is crystalline and strong, as in isotactic polypropylene.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42326,7 +42328,7 @@
     "All on one side"
    ],
    "correct": 2,
-   "why": "Regular, so it packs well too.",
+   "why": "In a syndiotactic polymer the substituents alternate regularly from one side of the backbone to the other. Because the pattern is regular, the chains can also pack well into crystalline regions.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42339,7 +42341,7 @@
     "Alternating"
    ],
    "correct": 1,
-   "why": "Cannot pack, so the material is amorphous and soft.",
+   "why": "In an atactic polymer the substituents are placed randomly on either side of the backbone. The irregular chains cannot pack together, so the material is amorphous and softer.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42391,7 +42393,7 @@
     "Two chains combine"
    ],
    "correct": 1,
-   "why": "The chain then continues from that point, leaving a branch.",
+   "why": "The growing radical end can curl back and pull a hydrogen atom from a carbon further down its own chain (back-biting). The radical is now in the middle of the chain, and growth continues from there, leaving a short branch.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42404,7 +42406,7 @@
     "Neither"
    ],
    "correct": 0,
-   "why": "High-pressure radical polymerization does this constantly.",
+   "why": "Low-density polyethylene (LDPE) is the branched form, made by high-pressure radical polymerization, where back-biting happens constantly. HDPE is made with a metal catalyst that gives nearly linear chains.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42430,7 +42432,7 @@
     "Plastic bags"
    ],
    "correct": 3,
-   "why": "Branched, badly packed and flexible.",
+   "why": "LDPE's branched chains pack badly, so it is soft and flexible. That makes it suited to plastic bags and films, while rigid uses such as bottles, pipe and rope need the stiffer HDPE or other polymers.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42443,7 +42445,7 @@
     "Plastic bags"
    ],
    "correct": 2,
-   "why": "Linear, well packed and rigid.",
+   "why": "HDPE's linear chains pack well, making it denser, more crystalline and more rigid than LDPE. That stiffness suits milk bottles and pipe; bags and cling film use the softer LDPE.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42456,7 +42458,7 @@
     "Only approximately"
    ],
    "correct": 1,
-   "why": "Same monomer, same repeat unit, different architecture.",
+   "why": "Yes. Both come from ethylene and have the same repeat unit, –CH2CH2–, so their formulas are the same. They differ only in architecture: LDPE is branched and HDPE is linear.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -42469,7 +42471,7 @@
     "Join two monomers"
    ],
    "correct": 0,
-   "why": "Then write a bond leaving each side of the bracket.",
+   "why": "Open the monomer's C=C so its two carbons become single-bonded, put that unit in brackets, and draw a bond leaving each side of the bracket to show it joins the next unit. The substituents stay where they were on the monomer.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -42495,7 +42497,7 @@
     "Only radical"
    ],
    "correct": 1,
-   "why": "The growing cation has to be stabilized.",
+   "why": "Electron-donating groups stabilize a positive charge on the carbon next to them, so the growing chain end can be a carbocation. Alkenes with such groups, like isobutylene or vinyl ethers, suit cationic polymerization.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -42508,7 +42510,7 @@
     "None"
    ],
    "correct": 0,
-   "why": "The mirror image of the cationic case.",
+   "why": "Electron-withdrawing groups such as nitrile or ester stabilize a negative charge on the neighboring carbon, so the growing chain end can be a carbanion. That makes anionic polymerization the natural choice, the mirror image of the cationic case.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -43320,7 +43322,7 @@
     "An alkene"
    ],
    "correct": 3,
-   "why": "Put the double bond back into the repeat unit.",
+   "why": "A backbone made only of carbons comes from addition polymerization of an alkene: each C=C opens and links to the next monomer. Putting the double bond back into the repeat unit recovers the monomer, which is why no diacid, diamine or diol is involved.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -43346,7 +43348,7 @@
     "A diacid and a diol"
    ],
    "correct": 2,
-   "why": "Cut every amide C-N bond.",
+   "why": "Amide links in a backbone come from condensation of a diacid (or diacid chloride) with a diamine. Cutting every amide C–N bond and adding back the lost water gives the two monomers.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43385,7 +43387,7 @@
     "Para aromatic rings"
    ],
    "correct": 3,
-   "why": "Rigid, straight chains that align along their whole length.",
+   "why": "High strength comes from rigid, straight chains that can line up and pack tightly along their whole length, which para-linked aromatic rings provide (as in Kevlar). Flexible spacers, branching and bulky side groups all disrupt that packing.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43398,7 +43400,7 @@
     "Ester linkages"
    ],
    "correct": 2,
-   "why": "Amides are the least reactive acyl derivative.",
+   "why": "Amides are the least reactive acyl derivative, because the nitrogen lone pair donates into the carbonyl and makes it a poor electrophile. Amide linkages therefore resist hydrolysis far better than ester, carbonate or anhydride links.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -43411,7 +43413,7 @@
     "Cross-links"
    ],
    "correct": 1,
-   "why": "Both lower Tg and prevent packing.",
+   "why": "Long flexible spacers and branching both keep chains from packing tightly and lower the glass transition temperature (Tg), so the material stays soft and bendable. Hydrogen bonding, aromatic rings and cross-links all stiffen a polymer.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43424,7 +43426,7 @@
     "Linear chains"
    ],
    "correct": 0,
-   "why": "Crystalline regions scatter light at every boundary.",
+   "why": "Crystalline regions scatter light at every boundary between ordered and disordered material, so crystalline polymers look cloudy. An amorphous polymer has no such boundaries, which is why PMMA and polycarbonate are clear.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43437,7 +43439,7 @@
     "A third site"
    ],
    "correct": 3,
-   "why": "Three reactive sites gives a network.",
+   "why": "A monomer with three reactive sites lets chains connect to each other, building one cross-linked network. Such a thermoset cannot melt, because flowing would require breaking covalent bonds, not just separating chains.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43450,7 +43452,7 @@
     "A C-C backbone"
    ],
    "correct": 2,
-   "why": "They hydrolyze, and enzymes can reach them.",
+   "why": "Ester bonds in the backbone can be hydrolyzed by water, and enzymes can reach and cut them, so the chain breaks into small pieces. A C–C backbone has no such handle, which is why polyethylene persists for so long.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -43489,7 +43491,7 @@
     "Back to monomers"
    ],
    "correct": 3,
-   "why": "It needs a backbone bond that can be cleaved selectively.",
+   "why": "Chemical recycling breaks the polymer back down into its monomers, which can be purified and polymerized again into new material. It needs a backbone bond that can be cleaved selectively, such as an ester.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43502,7 +43504,7 @@
     "Polyethylene"
    ],
    "correct": 2,
-   "why": "Its ester bonds are a handle hydrolysis can select.",
+   "why": "PET is a polyester, and its ester bonds give hydrolysis (or alcoholysis) a selective place to cut, returning terephthalic acid and ethylene glycol. Polypropylene, polystyrene and polyethylene have all-carbon backbones with no such handle.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43528,7 +43530,7 @@
     "It is too brittle"
    ],
    "correct": 0,
-   "why": "The hardest case at end of life.",
+   "why": "A thermoset is a single cross-linked network, so it cannot be melted and remolded (mechanical recycling), and its many cross-links make it very hard to break cleanly back to monomers (chemical recycling). That makes it the hardest case at end of life.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -43541,7 +43543,7 @@
     "Lactic acid"
    ],
    "correct": 3,
-   "why": "An ordinary metabolite, which is what makes it compostable.",
+   "why": "PLA is the polyester of lactic acid, so hydrolyzing its ester bonds gives lactic acid back. Lactic acid is an ordinary metabolite that microbes can use, which is what makes PLA compostable.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43567,7 +43569,7 @@
     "The color"
    ],
    "correct": 1,
-   "why": "One functional group is the whole difference.",
+   "why": "Chemical recycling needs a backbone bond that can be cut selectively, such as an ester or amide. Polymers with all-carbon backbones lack that bond, and crystallinity, molecular weight and color do not change that.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43593,7 +43595,7 @@
     "An ester"
    ],
    "correct": 3,
-   "why": "An amide is one too, though a more resistant one.",
+   "why": "An ester bond in the backbone is a handle for hydrolysis: water (with acid, base or an enzyme) can cleave it. An amide is one too, though a more resistant one, while C–C and C–H bonds give hydrolysis nothing to attack.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -43606,7 +43608,7 @@
     "During processing"
    ],
    "correct": 2,
-   "why": "The backbone functional group is fixed by the monomer.",
+   "why": "The backbone functional group, and with it whether the polymer can be hydrolyzed, recycled to monomer or composted, is fixed by the monomer chosen. By the time the plastic is collected or processed, its end-of-life options are already set.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -43619,7 +43621,7 @@
     "Polystyrene"
    ],
    "correct": 1,
-   "why": "A polyester that hydrolyzes to a metabolite.",
+   "why": "PLA is a polyester, so its ester bonds can be cleaved back to lactic acid for chemical recycling, and lactic acid is a natural metabolite, so PLA can also be composted. Epoxy is a thermoset, and polyethylene and polystyrene have all-carbon backbones.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43658,7 +43660,7 @@
     "Strength"
    ],
    "correct": 2,
-   "why": "The other three all improve with crystallinity.",
+   "why": "Crystalline regions scatter light, so a highly crystalline polymer is cloudy rather than transparent. Density, melting point and strength all increase with crystallinity, so transparency is the property that argues against it.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -43684,7 +43686,7 @@
     "An alkene"
    ],
    "correct": 0,
-   "why": "A third reactive site lets chains tie to each other.",
+   "why": "A trifunctional monomer has a third reactive site, which lets growing chains link to each other and build a cross-linked network: a thermoset. Difunctional monomers give only linear chains, and monofunctional ones stop chain growth.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44130,7 +44132,7 @@
     "Trading a C-O for a C-H"
    ],
    "correct": 2,
-   "why": "The same hydrogen bookkeeping that ranked the alcohols.",
+   "why": "Oxidation at a carbon means trading a C–H bond for a bond to oxygen (or another more electronegative atom). That is the same hydrogen bookkeeping used to rank alcohols: a carbon with more C–O and fewer C–H bonds is more oxidized.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44182,7 +44184,7 @@
     "An aldehyde only"
    ],
    "correct": 2,
-   "why": "Water in the flask keeps regenerating the hydrate.",
+   "why": "Jones reagent is aqueous, so the aldehyde first formed from a primary alcohol adds water to give a hydrate, and the hydrate's C–H is oxidized again. The water keeps regenerating the hydrate, so the oxidation runs on to the carboxylic acid.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44195,7 +44197,7 @@
     "Chromium(VI)"
    ],
    "correct": 1,
-   "why": "Held in solution by ammonia under basic conditions.",
+   "why": "Tollens' reagent contains silver(I), held in solution by ammonia under basic conditions. The silver ion is the oxidizing agent: it is reduced to silver metal while the aldehyde is oxidized.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44208,7 +44210,7 @@
     "Ag2O in acid"
    ],
    "correct": 0,
-   "why": "The diammine complex keeps silver soluble in base.",
+   "why": "The active species is the diammine silver complex, Ag(NH3)2+. Binding to ammonia keeps silver soluble in basic solution, where Ag+ alone would precipitate as silver oxide.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44234,7 +44236,7 @@
     "A red precipitate"
    ],
    "correct": 2,
-   "why": "Metallic silver plating out on clean glass.",
+   "why": "When an aldehyde reduces Ag(NH3)2+, metallic silver forms and plates out on clean glass as a shiny silver mirror. That mirror is the positive result.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44260,7 +44262,7 @@
     "It oxidizes alcohols and alkenes too"
    ],
    "correct": 0,
-   "why": "A reagent that picks out one group and skips its neighbors.",
+   "why": "Tollens' reagent is mild and selective: it oxidizes aldehydes but leaves alcohols, alkenes and ketones alone. A reagent that picks out one group and skips its neighbors is what makes a good test for that group.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44286,7 +44288,7 @@
     "Citrate"
    ],
    "correct": 2,
-   "why": "Benedict's is the one built on citrate.",
+   "why": "Fehling's solution keeps Cu(II) dissolved in base as a complex with tartrate. Benedict's solution uses citrate instead, and both give a red Cu2O precipitate with an aldehyde.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44338,7 +44340,7 @@
     "Fehling's"
    ],
    "correct": 2,
-   "why": "Citrate holds the copper better than tartrate does.",
+   "why": "Benedict's reagent is the more robust of the copper tests, because citrate holds the copper more firmly than tartrate does and the solution keeps well. That is why it was long used clinically to test urine for glucose.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44351,7 +44353,7 @@
     "Primary alcohols"
    ],
    "correct": 1,
-   "why": "Aliphatic aldehydes are the case it handles well.",
+   "why": "Fehling's solution works well for aliphatic aldehydes but an aromatic aldehyde such as benzaldehyde typically gives a negative result. Tollens' reagent, which aromatic aldehydes do reduce, is the better test for them.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44364,7 +44366,7 @@
     "Glucose contains a ketone"
    ],
    "correct": 0,
-   "why": "Opening exposes the aldehyde the ring drawing hides.",
+   "why": "Glucose's ring is a hemiacetal, which opens reversibly in solution to the open-chain aldehyde. The test reagent oxidizes that aldehyde, and more ring opens to replace it, so the ring drawing hides a group that is really there.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44377,7 +44379,7 @@
     "A trace"
    ],
    "correct": 3,
-   "why": "Delivered continuously, and consumed as fast as it appears.",
+   "why": "At equilibrium only a trace (well under 1 percent) of glucose is in the open-chain aldehyde form. Because the ring keeps opening, that trace is delivered continuously and consumed as fast as it appears, so the test still goes to completion.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -44390,7 +44392,7 @@
     "What happens to the sugar"
    ],
    "correct": 2,
-   "why": "The sugar is in fact the thing being oxidized.",
+   "why": "A reducing sugar is named for what it does to the metal: it reduces Ag+ or Cu2+. In the process the sugar itself is oxidized, at its aldehyde (or the aldehyde its ring opens to).",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44416,7 +44418,7 @@
     "Has no glycosidic bond"
    ],
    "correct": 0,
-   "why": "One ring can still open and deliver an aldehyde.",
+   "why": "In lactose and maltose, one sugar unit's anomeric carbon is tied up in the glycosidic bond, but the other's is free as a hemiacetal. That ring can still open and deliver an aldehyde, so both disaccharides are reducing sugars.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44429,7 +44431,7 @@
     "A radical chain"
    ],
    "correct": 3,
-   "why": "No added reagent is needed at all.",
+   "why": "Aldehydes oxidize slowly in air by a radical chain: the aldehyde C–H hydrogen is abstracted, O2 adds to the acyl radical, and the chain ends at the carboxylic acid. No added reagent is needed, which is why old aldehyde samples often contain acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -44468,7 +44470,7 @@
     "Removing oxygen"
    ],
    "correct": 0,
-   "why": "There is no hydrogen on that carbon to take.",
+   "why": "A ketone's carbonyl carbon has no hydrogen to trade for a bond to oxygen. Oxidizing it further requires breaking a C–C bond, which takes much harsher conditions; that is why ketones give negative Tollens' and Fehling's tests.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -45795,7 +45797,7 @@
    "type": "mcq"
   },
   {
-   "q": "Why add the ketone to the base, not the reverse?",
+   "q": "To make the kinetic enolate of 2-methylcyclohexanone with LDA at −78 °C, why is the ketone added slowly to the LDA solution, not the LDA to the ketone?",
    "options": [
     "To keep the base cold",
     "To improve solubility",
@@ -45886,7 +45888,7 @@
    "type": "mcq"
   },
   {
-   "q": "Where is the branch point in this control problem?",
+   "q": "2-Methylcyclohexanone is methylated with CH3I, either after LDA at −78 °C or with NaOEt in warm ethanol, and the two conditions put the new methyl on different alpha carbons. At which step is that choice made?",
    "options": [
     "The choice of halide",
     "The deprotonation",
@@ -46145,7 +46147,7 @@
     "Hydrazinolysis with H2NNH2"
    ],
    "correct": 3,
-   "why": "Hot aqueous acid or base does the same job less gently.",
+   "why": "Heating the N-alkylphthalimide with hydrazine (H2NNH2) releases the primary amine and leaves a stable cyclic phthalhydrazide. Hot aqueous acid or base can also cleave the imide, but less gently.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46184,7 +46186,7 @@
     "Alkyl azides cannot be reduced"
    ],
    "correct": 0,
-   "why": "Nothing left after the displacement can attack more halide.",
+   "why": "After azide displaces the halide, the product is an alkyl azide, R–N3, which is not nucleophilic. Nothing left in the flask can attack another molecule of halide, so the reaction stops after one alkylation.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46210,7 +46212,7 @@
     "Secondary"
    ],
    "correct": 2,
-   "why": "Only one alkyl group ever reaches that nitrogen.",
+   "why": "Azide attaches one alkyl group to nitrogen, and reduction of the alkyl azide (with LiAlH4 or H2 and a catalyst) gives R–NH2. Only one alkyl group ever reaches that nitrogen, so the product is a primary amine.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46236,7 +46238,7 @@
     "Butan-2-amine"
    ],
    "correct": 0,
-   "why": "Three carbons in, four out, because cyanide supplies one.",
+   "why": "Cyanide displaces bromide to give butanenitrile, adding one carbon, and LiAlH4 reduces the C≡N to CH2NH2. Three carbons in, four out: the product is butylamine (butan-1-amine).",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46275,7 +46277,7 @@
     "It destroys the amine partner"
    ],
    "correct": 1,
-   "why": "The ketone is consumed before it has a chance to condense.",
+   "why": "NaBH4 reduces ketones and aldehydes quickly, so it reduces the carbonyl to an alcohol before the carbonyl has time to condense with the amine. Reductive amination needs a milder reagent such as NaBH3CN that reduces the iminium ion but not the carbonyl.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -46301,7 +46303,7 @@
     "1°, 2° or 3°"
    ],
    "correct": 3,
-   "why": "One carbonyl and one amine in decides the product.",
+   "why": "Reductive amination joins one carbonyl and one amine. Ammonia gives a primary amine, a primary amine gives a secondary one, and a secondary amine gives a tertiary one, so the partners chosen decide the product.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46314,7 +46316,7 @@
     "Acyl chlorides react only once"
    ],
    "correct": 2,
-   "why": "Its lone pair is tied up in the carbonyl.",
+   "why": "Once the amine is acylated, its nitrogen lone pair is tied up in resonance with the carbonyl, so the amide nitrogen is no longer nucleophilic. It cannot attack a second acid chloride, so the reaction stops after one acylation.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46327,7 +46329,7 @@
     "Expels it as CO2"
    ],
    "correct": 1,
-   "why": "No carbon is lost, so the skeleton is unchanged.",
+   "why": "LiAlH4 reduces an amide's C=O all the way to CH2, giving an amine. No carbon is lost, so the skeleton is unchanged, unlike the Hofmann rearrangement, which removes the carbonyl carbon.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46340,7 +46342,7 @@
     "Cyanide, then LiAlH4"
    ],
    "correct": 0,
-   "why": "Every SN2 route on a nitrogen surrogate stops at primary.",
+   "why": "Acylating a primary amine and then reducing the amide with LiAlH4 gives a secondary amine cleanly, with no over-alkylation. The Gabriel, azide and cyanide routes all put just one carbon group on nitrogen and stop at primary amines.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46366,7 +46368,7 @@
     "One fewer carbon"
    ],
    "correct": 3,
-   "why": "The old carbonyl carbon leaves as CO2.",
+   "why": "In the Hofmann rearrangement, an amide is converted to an amine with one fewer carbon. The alkyl group migrates from the carbonyl carbon to nitrogen, and the old carbonyl carbon is lost as CO2 when the isocyanate is hydrolyzed.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46379,7 +46381,7 @@
     "Butylamine"
    ],
    "correct": 2,
-   "why": "Four carbons in, three out.",
+   "why": "Butanamide has four carbons. The Hofmann rearrangement (Br2 and NaOH) removes the carbonyl carbon as CO2, so the product is propylamine, with three.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46392,7 +46394,7 @@
     "Bromine, onto the alkyl group"
    ],
    "correct": 1,
-   "why": "That migration is what builds the isocyanate.",
+   "why": "In the Hofmann rearrangement, the alkyl group moves from the carbonyl carbon to the nitrogen as bromide leaves. That migration turns the N-bromoamide anion into an isocyanate, R–N=C=O.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46405,7 +46407,7 @@
     "An isocyanate"
    ],
    "correct": 3,
-   "why": "Its hydrolysis is where the carbon is lost in both.",
+   "why": "Both the Hofmann and Curtius rearrangements form an isocyanate, R–N=C=O. Hydrolysis of the isocyanate releases CO2, which is where the carbonyl carbon is lost in both reactions.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46418,7 +46420,7 @@
     "Heating an alkyl azide"
    ],
    "correct": 2,
-   "why": "It reaches the same isocyanate without bromine.",
+   "why": "The Curtius rearrangement starts by heating an acyl azide, which loses N2 as the alkyl group migrates to nitrogen. It reaches the same isocyanate as the Hofmann rearrangement, without using bromine and base.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46457,7 +46459,7 @@
     "Only one alkyl group attaches"
    ],
    "correct": 3,
-   "why": "The nitrogen leaves the imide with a single substituent.",
+   "why": "Phthalimide's nitrogen has only one N–H, so only one alkyl group can be attached to it. After hydrazinolysis, the nitrogen leaves with that single substituent, so the Gabriel synthesis gives only primary amines.",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -46472,7 +46474,7 @@
     "Amines are too weakly basic"
    ],
    "correct": 0,
-   "why": "Very strong bases make very poor leaving groups.",
+   "why": "In E2 the leaving group departs with the bonding pair, so it must be able to hold a negative charge. An amine would have to leave as R2N− (an amide ion), the conjugate base of an amine with pKa near 38: a very strong base and so a very poor leaving group.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46485,7 +46487,7 @@
     "Exhaustive methylation"
    ],
    "correct": 3,
-   "why": "Nitrogen ends up quaternary and positively charged.",
+   "why": "Excess CH3I methylates the nitrogen until it is quaternary and positively charged, R–NMe3+. Now the C–N bond can break with the nitrogen leaving as a neutral trialkylamine, which is a good leaving group.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46498,7 +46500,7 @@
     "An amide anion"
    ],
    "correct": 2,
-   "why": "It carries no negative charge away, unlike R2N−.",
+   "why": "The leaving group is a neutral trialkylamine (usually trimethylamine), split off from the quaternary ammonium ion. It carries no negative charge away, unlike R2N−, which is why it can leave at all.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46524,7 +46526,7 @@
     "Excess CH3I"
    ],
    "correct": 0,
-   "why": "Silver oxide and water together supply the hydroxide base.",
+   "why": "Silver oxide in water swaps the iodide counterion for hydroxide, giving the quaternary ammonium hydroxide, and heating it drives the E2 elimination. LiAlH4 is a reducing agent, Br2/NaOH is the Hofmann rearrangement of amides, and excess CH3I is the earlier methylation step.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46537,7 +46539,7 @@
     "It precipitates iodide as AgI"
    ],
    "correct": 3,
-   "why": "That removes the competing nucleophile from solution.",
+   "why": "Ag+ combines with the iodide counterion and precipitates it as insoluble AgI. That removes iodide, which could otherwise act as a competing nucleophile, and leaves hydroxide as the counterion to serve as the base.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46550,7 +46552,7 @@
     "E1"
    ],
    "correct": 2,
-   "why": "One step and anti-periplanar, on an unusual substrate.",
+   "why": "Hydroxide removes a beta hydrogen as the neutral amine leaves, in one concerted, anti-periplanar step, so the mechanism is E2. The substrate is unusual (a quaternary ammonium ion), but the mechanism is ordinary E2.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46563,7 +46565,7 @@
     "The thermodynamically stable one"
    ],
    "correct": 1,
-   "why": "That is the opposite of the Zaitsev preference.",
+   "why": "Hofmann elimination gives mainly the least substituted alkene, the opposite of the Zaitsev preference. This 'Hofmann rule' comes from the bulky, positively charged leaving group, which makes the most accessible and most acidic beta hydrogens react fastest.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46576,7 +46578,7 @@
     "Hydroxide is a weak base"
    ],
    "correct": 0,
-   "why": "Bulk on the substrate shields the crowded beta carbon.",
+   "why": "The trimethylammonium leaving group is very large, so a hydrogen on a crowded beta carbon is hard for the base to reach in the anti-periplanar arrangement. The base takes a hydrogen from the least hindered beta carbon instead, giving the less substituted alkene.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46602,7 +46604,7 @@
     "tert-Butoxide"
    ],
    "correct": 3,
-   "why": "Its bulk reaches only the least hindered beta hydrogen.",
+   "why": "tert-Butoxide is a bulky base. Its size lets it reach only the least hindered beta hydrogens, so in an ordinary E2 it gives the less substituted (Hofmann) alkene, just as the bulky leaving group does in a Hofmann elimination.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46615,7 +46617,7 @@
     "E1"
    ],
    "correct": 2,
-   "why": "The C–H bond breaks well ahead of the C–N bond.",
+   "why": "In this E2 the C–H bond breaks well ahead of the C–N bond, so carbanion-like negative charge builds up on the beta carbon in the transition state. That is E1cb-like character, though the reaction is still a single step.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46628,7 +46630,7 @@
     "Hydroxide is very strong"
    ],
    "correct": 1,
-   "why": "That is what shifts the transition state toward E1cb.",
+   "why": "The positively charged nitrogen pulls electron density away from the nearby carbons by induction, which makes the beta hydrogens more acidic than in an ordinary alkyl halide. That extra acidity is what shifts the transition state toward E1cb character.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46641,7 +46643,7 @@
     "The one with fewest alkyl groups"
    ],
    "correct": 3,
-   "why": "Alkyl groups destabilize a carbanion.",
+   "why": "Alkyl groups donate electron density, so they destabilize a negative charge on the carbon they are attached to. The beta carbon with the fewest alkyl groups carries the partial negative charge best, so its hydrogen is removed fastest.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46667,7 +46669,7 @@
     "sec-Butyldimethylammonium salt"
    ],
    "correct": 1,
-   "why": "The nitrogen stays on C2 and picks up three methyls.",
+   "why": "2-Aminobutane is a primary amine on C2. Exhaustive methylation adds two methyls to replace the N–H hydrogens and a third to quaternize the nitrogen, which stays on C2, giving the sec-butyltrimethylammonium salt.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -46680,7 +46682,7 @@
     "C3 and C4"
    ],
    "correct": 0,
-   "why": "The leaving group sits on C2.",
+   "why": "The trimethylammonium group sits on C2, which is the alpha carbon. The carbons on either side of it, C1 and C3, are the beta carbons that could lose a hydrogen.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46706,7 +46708,7 @@
     "But-1-ene"
    ],
    "correct": 3,
-   "why": "Monosubstituted, and the less stable of the two choices.",
+   "why": "Removing a hydrogen from C1 (the least hindered beta carbon, with three hydrogens and no alkyl groups) gives monosubstituted but-1-ene, the less stable alkene. That is the Hofmann product; Zaitsev's rule would have predicted but-2-ene.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46732,7 +46734,7 @@
     "An amide anion"
    ],
    "correct": 0,
-   "why": "The neutral amine is the leaving group departing.",
+   "why": "The leaving group departs as a neutral amine. Starting from a primary amine that was methylated three times, that amine is trimethylamine, formed along with the alkene and water.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46758,7 +46760,7 @@
     "Secondary"
    ],
    "correct": 3,
-   "why": "One methyl per N–H, plus one to quaternize.",
+   "why": "Exhaustive methylation adds one methyl per N–H, plus one more to make the nitrogen quaternary. Two equivalents means one N–H plus the quaternizing methyl, so the amine was secondary.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46771,7 +46773,7 @@
     "Two equivalents"
    ],
    "correct": 2,
-   "why": "It has no N–H, so only the quaternizing methyl is needed.",
+   "why": "A tertiary amine has no N–H to replace. It needs only the single methyl that makes the nitrogen quaternary and positively charged.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -46784,7 +46786,7 @@
     "Hydroxide cannot reach the ring"
    ],
    "correct": 1,
-   "why": "The first elimination only opens the ring.",
+   "why": "In a cyclic amine, the nitrogen is bonded to two ring carbons. The first elimination breaks only one of those C–N bonds, which opens the ring but leaves the nitrogen attached by the other, so a second round of methylation and elimination is needed to remove it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -46797,12 +46799,12 @@
     "In a ring"
    ],
    "correct": 3,
-   "why": "One C–N bond survives the first elimination.",
+   "why": "Each round of Hofmann elimination breaks one C–N bond to carbon. If the nitrogen is released only after two rounds, it had two C–N bonds to the carbon skeleton, which is what a nitrogen in a ring has.",
    "difficulty": "medium",
    "type": "mcq"
   },
   {
-   "q": "Why is the classical method obsolete?",
+   "q": "Repeated rounds of exhaustive methylation and Hofmann elimination were once used to work out the carbon skeletons of nitrogen-containing natural products. Why is that classical method now obsolete?",
    "options": [
     "Zaitsev overrides Hofmann",
     "Alkenes cannot be identified",
@@ -46810,7 +46812,7 @@
     "The reagents are unavailable"
    ],
    "correct": 2,
-   "why": "It answers the same question in minutes rather than weeks.",
+   "why": "Each round needed grams of material and days or weeks of work, and the alkenes it released still had to be identified. NMR spectroscopy now gives the carbon skeleton and the position of the nitrogen directly, from a milligram of sample, in minutes and without destroying it. The chemistry is not wrong; it has simply been replaced by a faster, gentler tool.",
    "difficulty": "medium",
    "type": "mcq"
   },
