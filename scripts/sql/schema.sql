@@ -571,6 +571,11 @@ create table if not exists public.premium_passes (
 
 create index if not exists premium_passes_user_idx on public.premium_passes (user_id, course);
 
+-- When the Worker's cron sent the one "your pass ends soon" email for this
+-- pass (worker/src/premium.js runPassEnding). Set only on the latest pass for
+-- a user and course, so it is sent once. Safe to rerun on an existing table.
+alter table public.premium_passes add column if not exists ending_reminded_at timestamptz;
+
 alter table public.premium_passes enable row level security;
 
 -- The signed-in user's live access: one row per course, the latest expiry of

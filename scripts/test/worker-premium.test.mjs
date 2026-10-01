@@ -11,6 +11,7 @@ import { createBrowser } from './harness.mjs';
 import worker from '../../worker/src/index.js';
 import {
   PASSES, safeReturnTo, successUrl, verifyWebhook, premiumWebhook, refundRefusal, REFUND_WINDOW_DAYS,
+  COURSE_NAMES, passesEnding, runPassEnding, reconcilePolar,
 } from '../../worker/src/premium.js';
 
 const SECRET = 'polar_whs_test_secret';
@@ -245,4 +246,193 @@ test('self-serve refund rules: own paid order, within 7 days, once per account',
   assert.match(refundRefusal({ ...row, created_at: new Date(now - 8 * day).toISOString() }, 0, now), /7 days/);
   assert.equal(refundRefusal({ ...row, created_at: new Date(now - 7 * day + 60000).toISOString() }, 0, now), null);
   assert.match(refundRefusal(row, 1, now), /already had its one refund/);
+});
+
+/* ---- The cron: pass-ending email, Polar reconciliation, lost disputes ---- */
+
+/* A slightly bigger PostgREST than fakeDb(): the filters the cron uses, plus
+   Supabase's admin user lookup, Resend and Polar's list endpoints. */
+function fakeWorld({ rows = [], emails = {}, orders = [], disputes = [], polarStatus = 200 } = {}) {
+  const sent = [];
+  const polarCalls = [];
+  const match = (r, key, cond) => {
+    const v = r[key];
+    if (cond === 'is.null') return v == null;
+    const [op, ...rest] = cond.split('.');
+    const arg = rest.join('.');
+    if (op === 'eq') return String(v) === arg;
+    if (op === 'gt') return v != null && Date.parse(v) > Date.parse(arg);
+    if (op === 'lte') return v != null && Date.parse(v) <= Date.parse(arg);
+    if (op === 'in') return arg.slice(1, -1).split(',').map((x) => x.replace(/^"|"$/g, '')).includes(String(v));
+    throw new Error('filter ' + cond);
+  };
+  const filtered = (u) => rows.filter((r) => [...u.searchParams].every(([k, c]) =>
+    ['select', 'order', 'limit'].includes(k) || match(r, k, c)));
+  let nextId = 1000;
+  globalThis.fetch = async (url, init = {}) => {
+    const u = new URL(url);
+    const method = init.method || 'GET';
+    if (u.hostname === 'api.resend.com') {
+      sent.push(JSON.parse(init.body));
+      return new Response('{"id":"e"}', { status: 200 });
+    }
+    if (u.pathname.startsWith('/auth/v1/admin/users/')) {
+      const id = decodeURIComponent(u.pathname.split('/').pop());
+      return new Response(JSON.stringify({ id, email: emails[id] || null }), { status: 200 });
+    }
+    if (u.hostname === 'api.polar.sh') {
+      polarCalls.push(u.pathname + u.search);
+      if (polarStatus !== 200) return new Response('{}', { status: polarStatus });
+      let items = u.pathname === '/v1/orders/' ? orders : disputes;
+      const st = u.searchParams.getAll('status');
+      if (u.pathname === '/v1/disputes/' && st.length) items = items.filter((d) => st.includes(d.status));
+      return new Response(JSON.stringify({ items, pagination: { total_count: items.length, max_page: 1 } }), { status: 200 });
+    }
+    if (!u.pathname.endsWith('/rest/v1/premium_passes')) return new Response('{}', { status: 404 });
+    if (method === 'GET') {
+      let out = filtered(u);
+      if (u.searchParams.get('order') === 'expires_at.desc') out = out.sort((a, b) => b.expires_at.localeCompare(a.expires_at));
+      const limit = Number(u.searchParams.get('limit') || 0);
+      return new Response(JSON.stringify(limit ? out.slice(0, limit) : out), { status: 200 });
+    }
+    if (method === 'POST') {
+      const row = JSON.parse(init.body);
+      if (rows.some((r) => r.order_id === row.order_id)) return new Response('{"code":"23505"}', { status: 409 });
+      rows.push({ id: nextId++, ...row });
+      return new Response(null, { status: 201 });
+    }
+    if (method === 'PATCH') {
+      const hit = filtered(u);
+      for (const r of hit) Object.assign(r, JSON.parse(init.body));
+      return new Response(JSON.stringify(hit), { status: 200 });
+    }
+    return new Response('{}', { status: 405 });
+  };
+  return { rows, sent, polarCalls };
+}
+
+const CRON_ENV = { ...ENV, RESEND_API_KEY: 're_test', POLAR_ACCESS_TOKEN: 'polar_oat_x' };
+const DAY = 86400000;
+const iso = (t) => new Date(t).toISOString();
+
+test('COURSE_NAMES match the site', () => {
+  const b = createBrowser();
+  b.load('assets/premium.js');
+  for (const [course, c] of Object.entries(b.window.LevlPremium.COURSES)) assert.equal(COURSE_NAMES[course], c.name, course);
+});
+
+test('pass ending: ends in 2 days -> one email, sent once', async () => {
+  const now = Date.UTC(2026, 9, 1, 12);
+  const USER2 = '22222222-2222-2222-2222-222222222222';
+  const w = fakeWorld({
+    rows: [
+      { id: 1, user_id: USER, course: 'ochem', pass: 'ochem-semester', expires_at: iso(now + 2 * DAY), order_id: 'o1' },
+      { id: 2, user_id: USER2, course: 'anp', pass: 'grant', expires_at: iso(now + 10 * DAY) },
+    ],
+    emails: { [USER]: 'student@example.com', [USER2]: 'other@example.com' },
+  });
+  const r1 = await runPassEnding(CRON_ENV, now);
+  assert.equal(r1.sent, 1);
+  assert.equal(w.sent.length, 1);
+  assert.deepEqual(w.sent[0].to, ['student@example.com']);
+  assert.match(w.sent[0].subject, /Organic Chemistry pass ends on October 3, 2026/);
+  assert.match(w.sent[0].html, /https:\/\/levlprep\.com\/account\.html/);
+  assert.match(w.sent[0].html, /progress is kept/);
+  assert.equal(w.rows[0].ending_reminded_at, iso(now));
+  assert.equal(w.rows[1].ending_reminded_at, undefined);
+  const r2 = await runPassEnding(CRON_ENV, now + 3600000);
+  assert.equal(w.sent.length, 1, 'not sent twice');
+  assert.equal(r2.due, 0);
+});
+
+test('pass ending: a later pass queued, or a refunded pass, means no email', async () => {
+  const now = Date.UTC(2026, 9, 1, 12);
+  const w = fakeWorld({
+    rows: [
+      // Ending soon, but a later pass for the same course follows it.
+      { id: 1, user_id: USER, course: 'ochem', expires_at: iso(now + 2 * DAY), order_id: 'o1' },
+      { id: 2, user_id: USER, course: 'ochem', expires_at: iso(now + 152 * DAY), order_id: 'o2' },
+      // Refunded and ending soon: gone already, nothing to remind about.
+      { id: 3, user_id: USER, course: 'nremt', expires_at: iso(now + 1 * DAY), order_id: 'o3', refunded_at: iso(now - DAY) },
+    ],
+    emails: { [USER]: 'student@example.com' },
+  });
+  const r = await runPassEnding(CRON_ENV, now);
+  assert.equal(w.sent.length, 0);
+  assert.equal(r.due, 0);
+  assert.ok(w.rows.every((x) => !x.ending_reminded_at));
+  // A refunded later pass does not count as "later": the earlier one is ending.
+  w.rows[1].refunded_at = iso(now);
+  await runPassEnding(CRON_ENV, now);
+  assert.equal(w.sent.length, 1);
+  assert.equal(w.rows[0].ending_reminded_at, iso(now));
+  // Pure selection agrees.
+  assert.deepEqual(passesEnding([{ user_id: USER, course: 'anp', expires_at: iso(now + 4 * DAY) }], now), []);
+});
+
+test('reconcile: a paid order with no pass is added once; a full refund is applied', async () => {
+  const now = Date.UTC(2026, 9, 1, 12);
+  const order = { id: 'ord_missed', status: 'paid', paid: true, net_amount: 4900, total_amount: 4900, refunded_amount: 0,
+    product_id: 'prod_oy', metadata: { user_id: USER, pass: 'ochem-year' }, customer: { external_id: USER } };
+  const refunded = { id: 'ord_ref', status: 'refunded', paid: true, net_amount: 2900, total_amount: 2900, refunded_amount: 2900,
+    product_id: 'prod_oy', metadata: { user_id: USER, pass: 'nremt-90' } };
+  const w = fakeWorld({
+    rows: [{ id: 1, user_id: USER, course: 'nremt', pass: 'nremt-90', order_id: 'ord_ref', expires_at: iso(now + 80 * DAY) }],
+    orders: [order, refunded],
+  });
+  const r1 = await reconcilePolar(CRON_ENV, now);
+  assert.equal(r1.added, 1);
+  assert.equal(r1.refunded, 1);
+  const added = w.rows.filter((x) => x.order_id === 'ord_missed');
+  assert.equal(added.length, 1);
+  assert.equal(added[0].pass, 'ochem-year');
+  assert.equal(added[0].amount_cents, 4900);
+  assert.equal(added[0].expires_at, iso(now + 365 * DAY));
+  assert.equal(w.rows[0].refunded_at, iso(now));
+  // The call Polar sees: recent orders, our products only.
+  const q = new URL('https://x' + w.polarCalls[0]).searchParams;
+  assert.equal(q.get('created_after'), iso(now - 48 * 3600000));
+  assert.deepEqual(q.getAll('product_id'), ['prod_oy']);
+  // Next hour: nothing new.
+  const r2 = await reconcilePolar(CRON_ENV, now + 3600000);
+  assert.equal(r2.added, 0);
+  assert.equal(r2.refunded, 0);
+  assert.equal(w.rows.filter((x) => x.order_id === 'ord_missed').length, 1);
+});
+
+test('reconcile: a lost dispute revokes the pass; open ones do not', async () => {
+  const now = Date.UTC(2026, 9, 1, 12);
+  const w = fakeWorld({
+    rows: [
+      { id: 1, user_id: USER, course: 'ochem', order_id: 'ord_lost', expires_at: iso(now + 100 * DAY) },
+      { id: 2, user_id: USER, course: 'anp', order_id: 'ord_open', expires_at: iso(now + 100 * DAY) },
+    ],
+    disputes: [{ id: 'd1', status: 'lost', order_id: 'ord_lost' }, { id: 'd2', status: 'under_review', order_id: 'ord_open' }],
+  });
+  const r = await reconcilePolar(CRON_ENV, now);
+  assert.equal(r.disputesRevoked, 1);
+  assert.equal(w.rows[0].refunded_at, iso(now));
+  assert.equal(w.rows[1].refunded_at, undefined);
+  assert.ok(w.polarCalls.some((c) => c.startsWith('/v1/disputes/?status=lost')));
+});
+
+test('reconcile: a token without the scope (401/403) is skipped quietly', async () => {
+  const w = fakeWorld({ polarStatus: 403 });
+  const r = await reconcilePolar(CRON_ENV, Date.UTC(2026, 9, 1));
+  assert.equal(r.orders, 'no access');
+  assert.equal(r.disputesRevoked, 'no access');
+  assert.equal(w.rows.length, 0);
+});
+
+test('scheduled(): reconciliation only on the hourly tick', async () => {
+  const w = fakeWorld();
+  const run = async (minute) => {
+    w.polarCalls.length = 0;
+    let p;
+    await worker.scheduled({ scheduledTime: Date.UTC(2026, 9, 1, 12, minute) }, CRON_ENV, { waitUntil: (x) => { p = x; } });
+    await p;
+    return w.polarCalls.length;
+  };
+  assert.ok(await run(0) > 0);
+  assert.equal(await run(30), 0);
 });

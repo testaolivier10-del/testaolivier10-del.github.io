@@ -242,7 +242,7 @@ async function sendPush(subscription, env) {
    time by whoever pastes this in — kept minimal and in one place so the two
    cannot drift far. */
 
-const TEMPLATE = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}}</title></head><body style="margin:0;padding:0;background:#F3F6F4;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{BODY}}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F4;padding:32px 16px;"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#FFFFFF;border-radius:16px;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"><tr><td style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;padding-bottom:14px;">LevlPrep</td></tr><tr><td style="font-size:21px;font-weight:800;color:#17241F;line-height:1.3;padding-bottom:8px;">{{TITLE}}</td></tr><tr><td style="font-size:15px;font-weight:400;color:#526C66;line-height:1.55;padding-bottom:24px;">{{BODY}}</td></tr><tr><td style="padding-bottom:26px;"><a href="{{URL}}" style="display:inline-block;background:#127264;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;">Pick up where you left off</a></td></tr><tr><td style="font-size:12px;font-weight:400;color:#8A9A95;line-height:1.6;border-top:1px solid #E4ECE8;padding-top:18px;">You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.<br><br><a href="{{UNSUB}}" style="color:#526C66;">Stop sending these</a> &mdash; one click, no sign-in.</td></tr></table></td></tr></table></body></html>`;
+const TEMPLATE = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}}</title></head><body style="margin:0;padding:0;background:#F3F6F4;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{BODY}}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F4;padding:32px 16px;"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#FFFFFF;border-radius:16px;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"><tr><td style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;padding-bottom:14px;">LevlPrep</td></tr><tr><td style="font-size:21px;font-weight:800;color:#17241F;line-height:1.3;padding-bottom:8px;">{{TITLE}}</td></tr><tr><td style="font-size:15px;font-weight:400;color:#526C66;line-height:1.55;padding-bottom:24px;">{{BODY}}</td></tr><tr><td style="padding-bottom:26px;"><a href="{{URL}}" style="display:inline-block;background:#127264;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;">{{CTA}}</a></td></tr><tr><td style="font-size:12px;font-weight:400;color:#8A9A95;line-height:1.6;border-top:1px solid #E4ECE8;padding-top:18px;">{{FOOTER}}</td></tr></table></td></tr></table></body></html>`;
 
 function esc(s) {
   return String(s == null ? '' : s)
@@ -250,15 +250,29 @@ function esc(s) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+/* `footer` is HTML and is inserted as is, so it is only ever one of the
+   fixed strings in this file; everything else is escaped. */
+function fill({ title, body, url, cta, footer }) {
+  return TEMPLATE
+    .replace(/\{\{TITLE\}\}/g, esc(title))
+    .replace(/\{\{BODY\}\}/g, esc(body))
+    .replace(/\{\{URL\}\}/g, esc(url))
+    .replace(/\{\{CTA\}\}/g, esc(cta))
+    .replace(/\{\{FOOTER\}\}/g, footer);
+}
+
 function render(row, env) {
   const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
   const unsub = `${site}/api/unsubscribe?t=${encodeURIComponent(row.unsub_token)}`;
   const url = row.url && row.url.startsWith('http') ? row.url : site + (row.url || '/');
-  return TEMPLATE
-    .replace(/\{\{TITLE\}\}/g, esc(row.title))
-    .replace(/\{\{BODY\}\}/g, esc(row.body))
-    .replace(/\{\{URL\}\}/g, esc(url))
-    .replace(/\{\{UNSUB\}\}/g, esc(unsub));
+  return fill({
+    title: row.title,
+    body: row.body,
+    url,
+    cta: 'Pick up where you left off',
+    footer: 'You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.' +
+      `<br><br><a href="${esc(unsub)}" style="color:#526C66;">Stop sending these</a> &mdash; one click, no sign-in.`,
+  });
 }
 
 async function send(row, env) {
@@ -293,6 +307,35 @@ async function send(row, env) {
     gone: res.status === 422 || res.status === 400,
     status: res.status,
   };
+}
+
+/* The one email about a purchase: a pass is about to end. Called by
+   runPassEnding() in src/premium.js, which decides who and records that it
+   went. It is transactional, sent once per pass, and not covered by the
+   study-reminder opt-out (that is a separate list somebody joined), so there
+   is no unsubscribe link; the footer says why in one line. */
+async function sendPassEndingEmail(env, { to, courseName, endsOn }) {
+  const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
+  const title = `Your ${courseName} pass ends on ${endsOn}`;
+  const body = `Your LevlPrep pass for ${courseName} ends on ${endsOn}. ` +
+    'Your progress is kept either way, and if you extend from your account page you pick up exactly where you left off.';
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: env.REMINDER_FROM || 'LevlPrep <reminders@levlprep.com>',
+      to: [to],
+      subject: title,
+      html: fill({
+        title,
+        body,
+        url: `${site}/account.html`,
+        cta: 'Extend your pass',
+        footer: 'You’re getting this one-time notice because a pass you bought is ending. It’s about your purchase, not marketing, and we send it once per pass.',
+      }),
+    }),
+  });
+  return { ok: res.ok, gone: res.status === 422 || res.status === 400, status: res.status };
 }
 
 /* One click out of the email, from the footer link. GET, because that is what
@@ -540,7 +583,11 @@ async function runReminders(env) {
      premium_passes; a refunded one gets refunded_at.
 
    Payment is confirmed by the webhook alone, never by the redirect back to the
-   site. ?premium=success in a URL is something anybody can type. */
+   site. ?premium=success in a URL is something anybody can type.
+
+   The cron (bottom of this file) sends the one "your pass ends soon" email
+   and, hourly, reconciles against Polar's own order and dispute records. */
+
 
 
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it).
@@ -852,13 +899,16 @@ async function recordPaid(env, order, now) {
   return { status: 200, body: { ok: true } };
 }
 
-async function recordRefund(env, order, now) {
-  // Only a full refund takes the pass away. A partial one is a goodwill
-  // gesture, and revoking access for it would turn that into a penalty.
-  const full = order.status === 'refunded'
+// Only a full refund takes the pass away. A partial one is a goodwill
+// gesture, and revoking access for it would turn that into a penalty.
+function isFullRefund(order) {
+  return order.status === 'refunded'
     || (Number.isInteger(order.refunded_amount) && Number.isInteger(order.total_amount)
         && order.total_amount > 0 && order.refunded_amount >= order.total_amount);
-  if (!order.id || !full) return { status: 200, body: { ok: true, ignored: 'partial' } };
+}
+
+async function recordRefund(env, order, now) {
+  if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
   const res = await sb(env,
     `premium_passes?order_id=eq.${encodeURIComponent(order.id)}&refunded_at=is.null`, {
       method: 'PATCH',
@@ -867,6 +917,23 @@ async function recordRefund(env, order, now) {
     });
   if (!res.ok) throw new Error(`refund pass ${res.status}`);
   return { status: 200, body: { ok: true } };
+}
+
+/* Revoke the passes of these orders, the same way a refund does: refunded_at
+   set, so my_premium() stops counting them. Returns how many changed. */
+async function revokeOrders(env, orderIds, now) {
+  let changed = 0;
+  for (let i = 0; i < orderIds.length; i += 100) {
+    const list = orderIds.slice(i, i + 100).map((id) => `"${String(id).replace(/"/g, '')}"`).join(',');
+    const res = await sb(env, `premium_passes?order_id=in.(${encodeURIComponent(list)})&refunded_at=is.null&select=order_id`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
+    });
+    if (!res.ok) throw new Error(`revoke passes ${res.status}`);
+    changed += (await res.json()).length;
+  }
+  return changed;
 }
 
 /* Returns { status, body }. A 5xx makes Polar retry, which is what we want
@@ -889,6 +956,208 @@ async function premiumWebhook(request, env, now = Date.now()) {
     return { status: 500, body: { error: 'Try again' } };
   }
   return { status: 202, body: { ok: true, ignored: event?.type || 'unknown' } };
+}
+
+/* ---------------------------------------------------------------------------
+   The cron half (index.js scheduled()).
+
+   runPassEnding    every tick: one email when a pass is about to end.
+   reconcilePolar   hourly: whatever the webhook missed, from Polar's own
+                    records. Both are idempotent, so a tick that dies halfway
+                    is simply finished by the next one.
+   --------------------------------------------------------------------------- */
+
+/* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
+   checks it). */
+const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
+
+const ENDING_NOTICE_DAYS = 3;
+
+/* "October 3, 2026". UTC, because that is the day the row says. */
+function endsOnText(iso) {
+  return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+}
+
+/* Which rows get the notice, from every pass the candidate users hold. Per
+   user and course, only the latest unrefunded pass (paid or 'grant') counts:
+   a pass with a later one queued behind it is not really ending. That latest
+   pass gets the notice if it ends within ENDING_NOTICE_DAYS and has not had
+   it yet. */
+function passesEnding(rows, now) {
+  const latest = new Map();
+  for (const r of rows) {
+    if (r.refunded_at) continue;
+    const key = `${r.user_id}|${r.course}`;
+    const cur = latest.get(key);
+    if (!cur || Date.parse(r.expires_at) > Date.parse(cur.expires_at)) latest.set(key, r);
+  }
+  return [...latest.values()].filter((r) => {
+    const end = Date.parse(r.expires_at);
+    return !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
+  });
+}
+
+async function userEmail(env, userId) {
+  const res = await fetch(`${env.SUPABASE_URL}/auth/v1/admin/users/${encodeURIComponent(userId)}`, {
+    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` },
+  });
+  if (!res.ok) throw new Error(`admin user ${res.status}`);
+  const user = await res.json();
+  return user?.email || null;
+}
+
+async function runPassEnding(env, now = Date.now()) {
+  // Same rule as the study reminders: no provider, no noise.
+  if (!env.RESEND_API_KEY || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    return { skipped: 'no email provider configured' };
+  }
+  const from = new Date(now).toISOString();
+  const to = new Date(now + ENDING_NOTICE_DAYS * DAY_MS).toISOString();
+
+  // Who might be due: a cheap first pass over the window.
+  const candRes = await sb(env,
+    `premium_passes?select=user_id&refunded_at=is.null&ending_reminded_at=is.null` +
+    `&expires_at=gt.${from}&expires_at=lte.${to}&order=expires_at.asc&limit=200`);
+  if (!candRes.ok) return { error: `read failed: ${candRes.status}` };
+  const users = [...new Set((await candRes.json()).map((r) => r.user_id))];
+  if (!users.length) return { due: 0 };
+
+  // Everything those users still hold, so a queued later pass is seen.
+  const rowsRes = await sb(env,
+    `premium_passes?select=id,user_id,course,expires_at,refunded_at,ending_reminded_at` +
+    `&refunded_at=is.null&expires_at=gt.${from}&user_id=in.(${users.map(encodeURIComponent).join(',')})`);
+  if (!rowsRes.ok) return { error: `read failed: ${rowsRes.status}` };
+  const due = passesEnding(await rowsRes.json(), now).slice(0, EMAIL_BATCH);
+
+  let sent = 0, noEmail = 0, dropped = 0, failed = 0;
+  for (const row of due) {
+    let result;
+    try {
+      const email = await userEmail(env, row.user_id);
+      if (!email) {
+        noEmail++;
+      } else {
+        result = await sendPassEndingEmail(env, {
+          to: email, courseName: COURSE_NAMES[row.course] || row.course, endsOn: endsOnText(row.expires_at),
+        });
+        if (!result.ok && !result.gone) { failed++; continue; } // next tick retries
+        if (result.ok) sent++; else dropped++;
+      }
+    } catch (err) {
+      console.log('pass ending: failed', row.id, String(err));
+      failed++;
+      continue;
+    }
+    // Recorded on the row, so it goes once. A rejected or missing address is
+    // recorded too: retrying it every fifteen minutes cannot help.
+    await sb(env, `premium_passes?id=eq.${encodeURIComponent(row.id)}&ending_reminded_at=is.null`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({ ending_reminded_at: new Date(now).toISOString() }),
+    });
+  }
+  return { due: due.length, sent, noEmail, dropped, failed };
+}
+
+/* Reconciliation. The webhook is the normal path; this is the safety net for
+   a delivery Polar gave up on, a secret pasted wrong, or a Worker that was
+   down. Polar facts (from @polar-sh/sdk 1.0.1, API versions 2026-04 to
+   2027-01):
+
+   - GET /v1/orders/ takes created_after, product_id (repeatable), page,
+     limit and sorting, answers { items, pagination: { total_count,
+     max_page } }, and needs the token scope orders:read. Order.status is
+     draft | pending | paid | refunded | partially_refunded | void, and
+     nothing on an order says "disputed".
+   - Polar sends no webhook for disputes (no dispute.* event type, and
+     order.updated carries no dispute state). Disputes are only readable at
+     GET /v1/disputes/ (scope disputes:read), with status prevented |
+     early_warning | needs_response | under_review | lost | won. A
+     "prevented" dispute is one Polar refunded, so order.refunded already
+     covers it.
+
+   A token without a scope gets 401/403: logged once per run and skipped, so
+   the rest still works. */
+const RECONCILE_HOURS = 48;
+const RECONCILE_MAX_PAGES = 10;
+/* A dispute takes the pass only once it is lost: the money is gone for good.
+   While it is open the student keeps access, so a dispute the merchant wins
+   does not leave them locked out with a "refunded" pass on their account. */
+const DISPUTE_REVOKES = ['lost'];
+
+async function polarList(env, path, params) {
+  const items = [];
+  for (let page = 1; page <= RECONCILE_MAX_PAGES; page++) {
+    const q = new URLSearchParams();
+    for (const [k, v] of Object.entries({ ...params, page, limit: 100 })) {
+      for (const one of [].concat(v)) q.append(k, String(one));
+    }
+    const res = await fetch(`${polarApi(env)}${path}?${q}`, {
+      headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}` },
+    });
+    if (res.status === 401 || res.status === 403) {
+      console.log('premium reconcile: no access to', path, res.status, '(token scope?)');
+      return null;
+    }
+    if (!res.ok) throw new Error(`polar ${path} ${res.status}`);
+    const data = await res.json();
+    items.push(...(data?.items || []));
+    if (page >= (data?.pagination?.max_page || 1)) break;
+  }
+  return items;
+}
+
+async function reconcilePolar(env, now = Date.now()) {
+  if (!env.POLAR_ACCESS_TOKEN || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    return { skipped: 'not configured' };
+  }
+  const out = { orders: 0, added: 0, refunded: 0, disputesRevoked: 0 };
+
+  const params = { created_after: new Date(now - RECONCILE_HOURS * 3600000).toISOString(), sorting: '-created_at' };
+  const products = Object.values(productMap(env)).filter(Boolean);
+  if (products.length) params.product_id = products;
+  const orders = await polarList(env, '/v1/orders/', params);
+  if (orders === null) {
+    out.orders = 'no access';
+  } else {
+    out.orders = orders.length;
+    const known = new Map();
+    for (let i = 0; i < orders.length; i += 100) {
+      const ids = orders.slice(i, i + 100).map((o) => `"${String(o.id).replace(/"/g, '')}"`).join(',');
+      const res = await sb(env, `premium_passes?select=order_id,refunded_at&order_id=in.(${encodeURIComponent(ids)})`);
+      if (!res.ok) throw new Error(`read passes ${res.status}`);
+      for (const r of await res.json()) known.set(r.order_id, r);
+    }
+    for (const order of orders) {
+      if (!order?.id) continue;
+      const row = known.get(order.id);
+      if (!row) {
+        // Same as the webhook. A paid order later refunded in full never
+        // needs a pass; a partial refund keeps it, as it does there.
+        if ((order.status === 'paid' || order.status === 'partially_refunded') && !isFullRefund(order)) {
+          const r = await recordPaid(env, order, now);
+          if (r.body.ok && !r.body.duplicate && !r.body.ignored) {
+            out.added++;
+            console.log('premium reconcile: added missing pass', order.id);
+          }
+        }
+      } else if (!row.refunded_at && isFullRefund(order)) {
+        await recordRefund(env, order, now);
+        out.refunded++;
+        console.log('premium reconcile: marked refunded', order.id);
+      }
+    }
+  }
+
+  const disputes = await polarList(env, '/v1/disputes/', { status: DISPUTE_REVOKES, sorting: '-created_at' });
+  if (disputes === null) {
+    out.disputesRevoked = 'no access';
+  } else {
+    const ids = disputes.filter((d) => d?.order_id && DISPUTE_REVOKES.includes(d.status)).map((d) => d.order_id);
+    out.disputesRevoked = await revokeOrders(env, ids, now);
+    if (out.disputesRevoked) console.log('premium reconcile: revoked for lost disputes', out.disputesRevoked);
+  }
+  return out;
 }
 
 /* ===========================================================================
@@ -1041,10 +1310,17 @@ export default {
   async scheduled(event, env, ctx) {
     // Both channels on the same tick, and independently: an email provider
     // that is down must not stop the push reminders, and vice versa.
-    ctx.waitUntil(Promise.allSettled([
+    // Premium rides the same tick: the pass-ending email every time, and the
+    // Polar reconciliation once an hour (the tick in the first quarter).
+    const tasks = [
       runReminders(env).then((r) => console.log('push reminders', JSON.stringify(r))),
       runEmailReminders(env).then((r) => console.log('email reminders', JSON.stringify(r))),
-    ]).then((results) => {
+      runPassEnding(env).then((r) => console.log('pass ending', JSON.stringify(r))),
+    ];
+    if (new Date(event?.scheduledTime || Date.now()).getUTCMinutes() < 15) {
+      tasks.push(reconcilePolar(env).then((r) => console.log('premium reconcile', JSON.stringify(r))));
+    }
+    ctx.waitUntil(Promise.allSettled(tasks).then((results) => {
       results.forEach((r) => { if (r.status === 'rejected') console.log('reminder run failed', String(r.reason)); });
     }));
   },

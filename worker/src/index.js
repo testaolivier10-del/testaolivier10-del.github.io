@@ -16,7 +16,7 @@
 
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
-import { premiumCheckout, premiumWebhook, premiumRefund } from './premium.js';
+import { premiumCheckout, premiumWebhook, premiumRefund, runPassEnding, reconcilePolar } from './premium.js';
 
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
@@ -145,10 +145,17 @@ export default {
   async scheduled(event, env, ctx) {
     // Both channels on the same tick, and independently: an email provider
     // that is down must not stop the push reminders, and vice versa.
-    ctx.waitUntil(Promise.allSettled([
+    // Premium rides the same tick: the pass-ending email every time, and the
+    // Polar reconciliation once an hour (the tick in the first quarter).
+    const tasks = [
       runReminders(env).then((r) => console.log('push reminders', JSON.stringify(r))),
       runEmailReminders(env).then((r) => console.log('email reminders', JSON.stringify(r))),
-    ]).then((results) => {
+      runPassEnding(env).then((r) => console.log('pass ending', JSON.stringify(r))),
+    ];
+    if (new Date(event?.scheduledTime || Date.now()).getUTCMinutes() < 15) {
+      tasks.push(reconcilePolar(env).then((r) => console.log('premium reconcile', JSON.stringify(r))));
+    }
+    ctx.waitUntil(Promise.allSettled(tasks).then((results) => {
       results.forEach((r) => { if (r.status === 'rejected') console.log('reminder run failed', String(r.reason)); });
     }));
   },

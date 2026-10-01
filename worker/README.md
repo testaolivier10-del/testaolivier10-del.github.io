@@ -273,24 +273,48 @@ waiting" and then silence is the most a study app has earned.
   a pass id; the Worker checks the session with Supabase and returns a Polar
   checkout URL. Only `https://levlprep.com` is accepted as the return address.
 - `POST /premium/webhook`: Polar reports a payment. The Standard Webhooks
-  signature is checked (and anything older than five minutes refused), then
+  signature is checked (and anything older than three days refused), then
   `order.paid` adds a row to `premium_passes` and `order.refunded` (full
   refunds only) sets its `refunded_at`. A pass bought while another is
   running starts when that one ends. A redelivered order adds nothing.
 
+The cron does two more things (same trigger as reminders, see
+`scheduled()` in `src/index.js`):
+
+- **Pass ending soon.** Every tick, the latest unrefunded pass per student and
+  course (paid or grant) that ends within 3 days, with no later pass queued,
+  gets one email through Resend (same `RESEND_API_KEY` and `REMINDER_FROM`)
+  with a link to `account.html`. `premium_passes.ending_reminded_at` records
+  it so it goes once. The address comes from Supabase's admin user API with
+  the service key. It is transactional, so there is no unsubscribe link.
+- **Reconciliation, hourly** (the tick at minute 0–14). Reads Polar's orders
+  from the last 48 hours (`GET /v1/orders/`, our product ids only): a paid
+  order with no row gets its pass exactly as `order.paid` would, and a fully
+  refunded order whose row is not marked gets `refunded_at`. Then reads
+  `GET /v1/disputes/?status=lost` and revokes those orders' passes. Polar has
+  **no dispute webhook** (no `dispute.*` event, and orders carry no dispute
+  status), so this is the only way a chargeback reaches us; open disputes keep
+  access until lost. A token missing a scope gets 401/403, which is logged and
+  skipped.
+
 Nothing changes until all of this is set; until then checkout answers 503.
 
-1. **Run `scripts/sql/schema.sql`** (the PREMIUM PASSES section).
+1. **Run `scripts/sql/schema.sql`** (the PREMIUM PASSES section; rerunning it
+   adds `ending_reminded_at` to an existing table).
 2. **Polar → Products → New product**, one per pass: one-time purchase, fixed
    price. Ids must cover every pass in `PASSES`: `nremt-90`,
    `ochem-semester`, `ochem-year`, `anp-semester`, `anp-year`. Copy each
    product's id.
 3. *(Optional)* **Polar → Discounts**: the founding-member discount. Copy its id.
-4. **Polar → Settings → Developers → New token** with `checkouts:write`.
+4. **Polar → Settings → Developers → New token** with `checkouts:write`,
+   `refunds:write` (self-serve refunds), `orders:read` and `disputes:read`
+   (the hourly reconciliation). An existing token can't gain scopes: make a
+   new one and replace `POLAR_ACCESS_TOKEN`.
 5. **Polar → Settings → Webhooks → Add endpoint**:
    - URL `https://levlprep-ask.testaolivier10.workers.dev/premium/webhook`
    - format **Raw**
-   - events **order.paid** and **order.refunded**
+   - events **order.paid** and **order.refunded** (there is no dispute event
+     to tick; disputes come in through the reconciliation)
    Copy the secret it shows.
 6. **Worker → Settings → Variables and Secrets.** Secrets:
    `POLAR_ACCESS_TOKEN`, `POLAR_WEBHOOK_SECRET` (both copied exactly as
