@@ -37,7 +37,7 @@
 (function (window, document) {
   'use strict';
 
-  var LAUNCHED = false;
+  var LAUNCHED = true;
 
   // The Cloudflare Worker that creates checkouts and receives Polar's
   // webhooks (worker/src/premium.js).
@@ -470,16 +470,35 @@
     });
   }
 
-  /* Coming back from Polar: ?premium=success. Payment is confirmed by the
-     webhook, which can land a few seconds after the redirect, so ask again
-     a few times before saying anything is wrong. */
+  /* Coming back from Polar. Our success_url carries ?premium=success&course=,
+     but Polar can send the buyer back with only ?customer_session_token=,
+     so that counts too, with the course read from the page's folder.
+     Payment is confirmed by the webhook, which can land a few seconds after
+     the redirect, so ask again a few times before saying anything is wrong. */
+  function returnCourse(search, pathname) {
+    var q = {};
+    String(search || '').replace(/^\?/, '').split('&').forEach(function (pair) {
+      if (!pair) return;
+      var i = pair.indexOf('=');
+      var k = i === -1 ? pair : pair.slice(0, i);
+      try { q[decodeURIComponent(k)] = i === -1 ? '' : decodeURIComponent(pair.slice(i + 1)); } catch (e) { /* skip */ }
+    });
+    if (q.premium !== 'success' && !Object.prototype.hasOwnProperty.call(q, 'customer_session_token')) return null;
+    var course = q.course;
+    if (course && Object.prototype.hasOwnProperty.call(COURSES, course)) return course;
+    var path = String(pathname || '');
+    if (path.indexOf('/nremt/') !== -1) return 'nremt';
+    if (path.indexOf('/ochem/') !== -1) return 'ochem';
+    if (path.indexOf('/anatomy-physiology/') !== -1) return 'anp';
+    return '';
+  }
+
   function handleReturn() {
-    var params;
-    try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
-    if (params.get('premium') !== 'success') return;
-    var course = params.get('course');
+    var course = returnCourse(window.location.search, window.location.pathname);
+    if (course === null) return;
     try {
-      params.delete('premium'); params.delete('course'); params.delete('checkout_id');
+      var params = new URLSearchParams(window.location.search);
+      ['premium', 'course', 'checkout_id', 'customer_session_token'].forEach(function (k) { params.delete(k); });
       var q = params.toString();
       window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
     } catch (e) { /* old browser: the query just stays */ }
@@ -568,6 +587,7 @@
     _joined: joined,
     _markJoined: markJoined,
     _validEmail: validEmail,
+    _returnCourse: returnCourse,
     _setLaunched: function (v) { LAUNCHED = !!v; },
   };
 
