@@ -196,21 +196,21 @@
     ],
     "q": "A student traced blood from the heart to the top of the left foot. One step is wrong. Which one?",
     "options": [
-      "Left ventricle into the ascending aorta",
+      "Right ventricle into the ascending aorta",
       "Aortic arch into the thoracic aorta",
       "Abdominal aorta into the left common iliac artery",
-      "Left common iliac artery into the left internal iliac artery",
+      "Left common iliac artery into the left external iliac artery",
       "Left femoral artery into the left popliteal artery",
       "Left anterior tibial artery into the left dorsalis pedis artery"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "Blood bound for the leg goes from the common iliac into the external iliac artery, which passes under the inguinal ligament to become the femoral artery. The internal iliac artery dives into the pelvis and supplies the pelvic organs and buttocks.",
+      "correct": "The aorta leaves the left ventricle. The right ventricle pumps into the pulmonary trunk, toward the lungs.",
       "options": [
-        "This step is right. The left ventricle ejects into the ascending aorta through the aortic valve.",
+        "This is the error. The ascending aorta leaves the left ventricle through the aortic valve; the right ventricle feeds the pulmonary trunk.",
         "This step is right. The arch continues as the descending aorta, whose chest part is the thoracic aorta.",
         "This step is right. The abdominal aorta ends at about L4 by splitting into the right and left common iliac arteries.",
-        "This is the error. The route to the leg uses the external iliac artery, not the internal iliac artery.",
+        "This step is right. The external iliac artery carries blood toward the leg and becomes the femoral artery under the inguinal ligament.",
         "This step is right. The femoral artery is renamed popliteal behind the knee.",
         "This step is right. The anterior tibial artery becomes the dorsalis pedis artery at the ankle."
       ]

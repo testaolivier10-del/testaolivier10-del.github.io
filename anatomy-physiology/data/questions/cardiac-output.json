@@ -479,19 +479,19 @@
     ],
     "q": "A student described how the parasympathetic system slows the heart. One step is wrong. Which one?",
     "options": [
-      "The cardioinhibitory center in the medulla oblongata increases its output",
+      "The cardioaccelerator center in the medulla oblongata increases its output",
       "Signals travel down the vagus nerves to the heart",
-      "Vagal fibers release norepinephrine at the SA node",
+      "Vagal fibers release acetylcholine at the SA node",
       "Extra potassium channels open and the funny current falls",
       "The pacemaker potential takes longer to reach threshold"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "Parasympathetic fibers are cholinergic. The vagus nerves release acetylcholine, which binds muscarinic receptor proteins on SA node cells. Norepinephrine is the sympathetic transmitter and speeds the heart.",
+      "correct": "The parasympathetic supply to the heart is driven by the cardioinhibitory center. The cardioaccelerator center drives the sympathetic nerves, which speed the heart.",
       "options": [
-        "This step is right. The cardioinhibitory center drives the parasympathetic supply to the heart.",
+        "This is the error. The cardioinhibitory center, not the cardioaccelerator center, increases its output to slow the heart.",
         "This step is right. The vagus nerves carry the parasympathetic fibers to the heart.",
-        "This is the error. The vagus releases acetylcholine, not norepinephrine.",
+        "This step is right. Parasympathetic fibers release acetylcholine, which binds muscarinic receptor proteins on SA node cells.",
         "This step is right. Acetylcholine opens potassium channels and reduces the funny current.",
         "This step is right. Starting lower and climbing slower delays threshold, so heart rate falls."
       ]
@@ -507,19 +507,19 @@
     ],
     "q": "Complete the equation: cardiac output = heart rate × ____.",
     "options": [
-      "Stroke volume",
+      "Mean arterial pressure",
       "End-diastolic volume",
       "Ejection fraction",
-      "Mean arterial pressure"
+      "Stroke volume"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Cardiac output = heart rate × stroke volume: beats per minute times milliliters per beat gives milliliters per minute.",
       "options": [
-        "Correct. HR × SV.",
+        "Mean arterial pressure is a pressure, not a volume per beat.",
         "End-diastolic volume is how much the ventricle holds, not how much it ejects. Not all of it leaves each beat.",
         "Ejection fraction is a proportion with no volume unit, so heart rate times ejection fraction cannot give a volume per minute.",
-        "Mean arterial pressure is a pressure, not a volume per beat."
+        "Correct. HR × SV."
       ]
     }
   },

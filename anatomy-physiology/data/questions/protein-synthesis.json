@@ -444,7 +444,10 @@
         "answer": "none",
         "why": "The drug acts on ribosomes in the cytoplasm. The DNA in the nucleus, and so the genes, are untouched."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Ribosomes build every new polypeptide, and a secreted enzyme is made on ribosomes on the rough ER before it travels to the Golgi apparatus. Blocking ribosomes stops new chains and so stops new enzyme reaching the Golgi. The genes in the nucleus are untouched."
+    }
   },
   {
     "id": "anp-protein-synthesis-18",

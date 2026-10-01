@@ -288,19 +288,19 @@
     ],
     "q": "A student listed the steps in making thyroid hormone. One step is wrong. Which one?",
     "options": [
-      "Iodide is pumped into follicular cells from the blood",
+      "Iodide is pumped into parafollicular cells from the blood",
       "Iodine is attached to tyrosines in thyroglobulin in the colloid",
-      "T4 and T3 are stored in vesicles inside the parafollicular cells",
+      "T4 and T3 are stored in the colloid, still attached to thyroglobulin",
       "Colloid is taken back into follicular cells by endocytosis",
       "Lysosomes release T4 and T3 from thyroglobulin"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "T4 and T3 are stored outside the cells, attached to thyroglobulin in the colloid. Parafollicular (C) cells make calcitonin, not T4 or T3.",
+      "correct": "Iodide is pumped into the follicular cells, which make thyroid hormone. Parafollicular (C) cells make calcitonin and do not use iodide to make T4 or T3.",
       "options": [
-        "This step is right. A sodium–iodide cotransporter traps iodide.",
+        "This is the error. Follicular cells, not parafollicular cells, trap iodide; parafollicular cells make calcitonin.",
         "This step is right. Iodination happens on thyroglobulin at the edge of the colloid.",
-        "This is the error. The hormones are stored on thyroglobulin in the colloid, and parafollicular cells make calcitonin.",
+        "This step is right. The hormones are stored outside the cells, attached to thyroglobulin in the colloid.",
         "This step is right. TSH triggers endocytosis of colloid.",
         "This step is right. Lysosomal enzymes digest thyroglobulin and free the hormones."
       ]

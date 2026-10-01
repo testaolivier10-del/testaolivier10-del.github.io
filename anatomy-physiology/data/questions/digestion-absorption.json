@@ -381,18 +381,18 @@
     ],
     "q": "Complete the route of vitamin B12: acid and pepsin free B12 from food and it binds haptocorrin → ____ → B12 binds intrinsic factor → the complex is absorbed in the terminal ileum.",
     "options": [
-      "Pancreatic proteases digest haptocorrin in the duodenum",
-      "Bile salts carry B12 into micelles in the jejunum",
       "Lactase splits B12 away from haptocorrin at the brush border",
+      "Bile salts carry B12 into micelles in the jejunum",
+      "Pancreatic proteases digest haptocorrin in the duodenum",
       "Chylomicrons carry B12 into the lacteals of the villi"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Haptocorrin holds B12 through the stomach. In the duodenum, pancreatic proteases such as trypsin digest haptocorrin, freeing B12 to bind intrinsic factor. That is why pancreatic failure can reduce B12 absorption.",
       "options": [
-        "Correct. Pancreatic proteases hand B12 over to intrinsic factor.",
-        "B12 is water-soluble and is not carried in micelles.",
         "Lactase splits lactose; it does not act on proteins.",
+        "B12 is water-soluble and is not carried in micelles.",
+        "Correct. Pancreatic proteases hand B12 over to intrinsic factor.",
         "B12 is absorbed by endocytosis in the ileum and leaves the cell into the blood, not in chylomicrons."
       ]
     }

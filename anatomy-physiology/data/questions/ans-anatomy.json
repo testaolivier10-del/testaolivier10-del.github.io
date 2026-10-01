@@ -334,19 +334,19 @@
     ],
     "q": "Complete the pathway: lateral horn → white ramus → through the chain → splanchnic nerve → ____ → epinephrine released into the blood.",
     "options": [
-      "Chromaffin cells of the adrenal medulla",
+      "Cells of the outer layer of the adrenal gland",
       "Postganglionic neurons in the celiac ganglion",
       "A gray ramus communicans",
-      "Cells of the outer layer of the adrenal gland"
+      "Chromaffin cells of the adrenal medulla"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Preganglionic fibers synapse directly on chromaffin cells in the adrenal medulla, which release epinephrine and some norepinephrine into the blood.",
       "options": [
-        "Correct. Chromaffin cells stand in for postganglionic neurons.",
+        "The outer layer of the adrenal gland is controlled by hormones, not by sympathetic fibers. Epinephrine comes from the medulla.",
         "Fibers to the adrenal medulla pass through the celiac ganglion without synapsing. If they synapsed there, the second neuron would release its transmitter onto an organ, not into the blood.",
         "Gray rami carry postganglionic fibers back to spinal nerves, toward the skin and limbs. They are not on the route to the adrenal gland.",
-        "The outer layer of the adrenal gland is controlled by hormones, not by sympathetic fibers. Epinephrine comes from the medulla."
+        "Correct. Chromaffin cells stand in for postganglionic neurons."
       ]
     }
   },

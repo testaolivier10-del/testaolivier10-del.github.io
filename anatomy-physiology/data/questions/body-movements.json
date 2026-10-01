@@ -440,18 +440,18 @@
   "diff": 2,
   "q": "Fill the gap. Dorsiflexion : plantar flexion :: inversion : ____",
   "options": [
-   "Eversion",
-   "Pronation",
    "Abduction",
+   "Pronation",
+   "Eversion",
    "Depression"
   ],
-  "correct": 0,
+  "correct": 2,
   "why": {
    "correct": "Dorsiflexion and plantar flexion are an opposite pair at the ankle. Inversion's opposite is eversion: turning the sole outward instead of inward.",
    "options": [
-    "Correct. Eversion is the opposite of inversion.",
-    "Pronation is the forearm movement that turns the palm backward, the opposite of supination.",
     "Abduction is the opposite of adduction.",
+    "Pronation is the forearm movement that turns the palm backward, the opposite of supination.",
+    "Correct. Eversion is the opposite of inversion.",
     "Depression is the opposite of elevation."
    ]
   },

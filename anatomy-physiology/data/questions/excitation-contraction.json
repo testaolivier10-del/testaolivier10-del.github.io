@@ -287,19 +287,19 @@
     ],
     "q": "Fill the gap: in the sarcoplasm, calcium binds ____, which then shifts tropomyosin away from the myosin-binding sites on actin.",
     "options": [
-      "Troponin",
+      "The Z disc",
       "Myosin",
       "Titin",
-      "The Z disc"
+      "Troponin"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Troponin is the calcium-binding complex on the thin filament. Calcium binding changes its shape, and it releases tropomyosin from its blocking position.",
       "options": [
-        "Correct. Troponin is the calcium sensor of the thin filament.",
+        "The Z disc anchors thin filaments; it does not bind the calcium that starts contraction.",
         "Myosin binds actin and ATP; the switch that calcium flips is on the thin filament.",
         "Titin is an elastic protein running from the Z disc to the M line; it is not the calcium switch.",
-        "The Z disc anchors thin filaments; it does not bind the calcium that starts contraction."
+        "Correct. Troponin is the calcium sensor of the thin filament."
       ]
     }
   },

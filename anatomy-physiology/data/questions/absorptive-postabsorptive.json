@@ -293,19 +293,19 @@
     ],
     "q": "A student described what happens in the hours after a meal. One step is wrong. Which one?",
     "options": [
-      "Glucose and amino acids reach the liver through the hepatic portal vein",
+      "Glucose and amino acids enter the lacteals and reach the liver in lymph",
       "Beta cells release insulin as glucose rises",
-      "Alpha cells raise glucagon release to match",
+      "Alpha cells lower glucagon release",
       "Muscle moves GLUT4 into its membrane and stores glycogen",
       "Adipose tissue stores triglyceride and switches off lipolysis"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "After a carbohydrate meal, glucagon release falls. Rising glucose and insulin damp the alpha cells. High insulin with low glucagon is what defines the absorptive state.",
+      "correct": "Absorbed glucose and amino acids enter the blood capillaries of the villi and travel in the hepatic portal vein to the liver. The lacteals carry absorbed fat in lymph, which bypasses the liver.",
       "options": [
-        "This step is right. The portal vein carries absorbed glucose and amino acids to the liver first.",
+        "This is the error. Glucose and amino acids enter the blood capillaries and reach the liver through the hepatic portal vein; the lacteals carry fat.",
         "This step is right. Rising glucose drives insulin release.",
-        "This is the error. Glucagon falls after a carbohydrate meal.",
+        "This step is right. Rising glucose and insulin damp the alpha cells, so glucagon falls after a carbohydrate meal.",
         "This step is right. Insulin moves GLUT4 to the membrane, and muscle stores glycogen.",
         "This step is right. Insulin drives fat storage and blocks lipolysis."
       ]
@@ -322,17 +322,17 @@
     "q": "Fill the gap: after a fatty meal, fat cells take up fatty acids from chylomicrons because insulin raises ____ in adipose capillaries.",
     "options": [
       "Glucose-6-phosphatase",
-      "Lipoprotein lipase",
       "Glycogen phosphorylase",
+      "Lipoprotein lipase",
       "Hexokinase"
     ],
-    "correct": 1,
+    "correct": 2,
     "why": {
       "correct": "Insulin raises lipoprotein lipase in adipose tissue, which hydrolyzes the triglycerides in chylomicrons and VLDL so that the fatty acids can enter fat cells.",
       "options": [
         "Glucose-6-phosphatase frees glucose from the liver; it has nothing to do with fat uptake.",
-        "Correct. Lipoprotein lipase unloads triglycerides from lipoproteins.",
         "Glycogen phosphorylase breaks down glycogen, and it is switched off after a meal.",
+        "Correct. Lipoprotein lipase unloads triglycerides from lipoproteins.",
         "Hexokinase traps glucose inside cells; it does not act on chylomicrons."
       ]
     }

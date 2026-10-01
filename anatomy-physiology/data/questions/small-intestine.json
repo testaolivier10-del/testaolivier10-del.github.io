@@ -444,20 +444,20 @@
     ],
     "q": "This pathway follows starch through the small intestine. Which step is wrong?",
     "options": [
-      "Enzymes from the pancreas split starch in the lumen into maltose and short chains",
+      "Bile from the liver splits starch in the lumen into maltose and short chains",
       "Segmentation presses the maltose against the brush border",
       "Maltase in the microvillus membrane splits maltose into two glucose",
-      "Glucose enters the lacteal in the core of the villus",
+      "Glucose enters the blood capillaries in the core of the villus",
       "The blood carries glucose from the intestine to the liver"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "Glucose, like amino acids, enters the blood capillaries of the villus and travels in the hepatic portal vein to the liver. The lacteal carries absorbed fat.",
+      "correct": "Bile contains no digestive enzymes and does not act on starch; its job is with fat. Starch in the small intestine is split in the lumen by enzymes from the pancreas.",
       "options": [
-        "This step is right. Pancreatic enzymes leave maltose and short sugar chains.",
+        "This is the error. Bile has no enzymes; enzymes from the pancreas split starch into maltose and short chains.",
         "This step is right. Mixing keeps fresh contents in contact with the brush border.",
         "This step is right. Maltase is a brush border enzyme.",
-        "This is the error. Glucose enters the blood capillaries, not the lacteal.",
+        "This step is right. Glucose enters the blood capillaries of the villus; the lacteal carries absorbed fat.",
         "This step is right. The hepatic portal vein carries absorbed sugars to the liver first."
       ]
     }

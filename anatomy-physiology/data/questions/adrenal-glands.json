@@ -86,18 +86,18 @@
     ],
     "q": "A student wrote out the renin–angiotensin–aldosterone system. One step is wrong. Which one?",
     "options": [
-      "The kidneys release renin when their blood pressure falls",
-      "The adrenal medulla releases angiotensinogen into the blood",
+      "The kidneys release renin when their blood pressure rises",
+      "The liver releases angiotensinogen into the blood",
       "Renin converts angiotensinogen into angiotensin I",
       "ACE converts angiotensin I into angiotensin II",
       "Angiotensin II stimulates aldosterone release from the adrenal cortex"
     ],
-    "correct": 1,
+    "correct": 0,
     "why": {
-      "correct": "Angiotensinogen is a protein in the plasma, made and released by the liver, all the time. The adrenal medulla releases epinephrine and norepinephrine.",
+      "correct": "Renin release rises when blood pressure in the kidney falls. The whole system works to raise blood pressure, so low pressure switches it on, not high pressure.",
       "options": [
-        "This step is right. Low pressure in the kidney's small arteries is a main trigger for renin.",
-        "This is the error. The liver, not the adrenal medulla, makes angiotensinogen.",
+        "This is the error. A fall in the kidney's blood pressure, not a rise, triggers renin release.",
+        "This step is right. Angiotensinogen is a protein in the plasma, made and released by the liver all the time.",
         "This step is right. Renin is an enzyme that cuts angiotensinogen into angiotensin I.",
         "This step is right. ACE, most plentiful in the lungs, makes the active hormone.",
         "This step is right. Angiotensin II acts on the zona glomerulosa of the cortex."

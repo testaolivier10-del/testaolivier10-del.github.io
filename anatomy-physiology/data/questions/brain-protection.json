@@ -180,18 +180,18 @@
     ],
     "q": "Fill the gap in the path of CSF: lateral ventricle → interventricular foramen → third ventricle → ____ → fourth ventricle.",
     "options": [
-      "Cerebral aqueduct",
-      "Central canal",
       "Median aperture",
+      "Central canal",
+      "Cerebral aqueduct",
       "Arachnoid granulation"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "The cerebral aqueduct, running through the midbrain, carries CSF from the third ventricle to the fourth.",
       "options": [
-        "Correct. The aqueduct links the third and fourth ventricles.",
-        "The central canal continues below the fourth ventricle into the spinal cord.",
         "The median aperture is an exit from the fourth ventricle, after it, not before it.",
+        "The central canal continues below the fourth ventricle into the spinal cord.",
+        "Correct. The aqueduct links the third and fourth ventricles.",
         "Arachnoid granulations are where CSF leaves the subarachnoid space, at the end of the path."
       ]
     }

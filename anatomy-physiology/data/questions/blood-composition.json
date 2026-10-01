@@ -319,19 +319,19 @@
     "core": ["structure-function"],
     "q": "Complete the branching: hematopoietic stem cell → myeloid stem cell or ____ → the family of white blood cells at the heart of the immune system.",
     "options": [
-      "Lymphoid stem cell",
+      "Mesenchymal cell",
       "Megakaryocyte",
       "Red blood cell",
-      "Mesenchymal cell"
+      "Lymphoid stem cell"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "The hematopoietic stem cell's daughters commit to one of two branches: the myeloid branch or the lymphoid branch. Lymphoid stem cells give rise to the immune system's central family of white blood cells.",
       "options": [
-        "Correct. The lymphoid stem cell is the other branch.",
+        "Mesenchymal cells are embryonic connective tissue cells, not a branch of blood cell production.",
         "A megakaryocyte is a late cell on the myeloid branch that sheds platelets.",
         "Red blood cells come from the myeloid branch, not a separate branch of their own.",
-        "Mesenchymal cells are embryonic connective tissue cells, not a branch of blood cell production."
+        "Correct. The lymphoid stem cell is the other branch."
       ]
     }
   },

@@ -282,18 +282,18 @@
     ],
     "q": "Complete the sequence: a naive lymphocyte's receptor binds its antigen → ____ → most cells fight the infection and a few become memory cells → most fighting cells die once the antigen is gone.",
     "options": [
-      "The lymphocyte divides repeatedly into a clone (clonal expansion)",
-      "The lymphocyte is deleted in the thymus",
       "The lymphocyte becomes anergic and stops responding",
+      "The lymphocyte is deleted in the thymus",
+      "The lymphocyte divides repeatedly into a clone (clonal expansion)",
       "The lymphocyte changes its antigen receptor to a new specificity"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "After selection, the lymphocyte divides every 6 to 8 hours for several days, producing a clone of identical cells. That clone supplies both the fighting cells and the memory cells.",
       "options": [
-        "Correct. Clonal expansion follows selection.",
-        "Deletion happens to self-reactive thymocytes during maturation, not to mature lymphocytes that meet a foreign antigen.",
         "Anergy follows binding without the second, confirming signal, as with self antigen on resting dendritic cells. It would stop the response, not continue it.",
+        "Deletion happens to self-reactive thymocytes during maturation, not to mature lymphocytes that meet a foreign antigen.",
+        "Correct. Clonal expansion follows selection.",
         "Each cell keeps its antigen receptor specificity; its clone carries the same antigen receptor."
       ]
     }

@@ -326,19 +326,19 @@
     ],
     "q": "A student traced maternal blood through the placenta. One step is wrong. Which one?",
     "options": [
-      "Uterine arteries branch into the spiral arteries of the endometrium",
+      "Umbilical arteries branch into the spiral arteries of the endometrium",
       "The widened spiral arteries empty into the intervillous space",
-      "Maternal blood enters the fetal capillaries of the villi",
+      "Maternal blood bathes the outside of the villi",
       "Oxygen diffuses across the placental barrier into fetal blood",
       "Maternal blood drains out through the uterine veins"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "Maternal blood bathes the outside of the villi. It never enters the fetal capillaries: the placental barrier separates the two bloods, and substances cross it instead.",
+      "correct": "The spiral arteries are branches of the mother's uterine arteries. The umbilical arteries carry the fetus's blood to the placenta, where they branch into the capillaries of the villi.",
       "options": [
-        "This step is right. The spiral arteries are branches of the uterine arteries.",
+        "This is the error. The spiral arteries come from the mother's uterine arteries; the umbilical arteries carry fetal blood.",
         "This step is right. The spiral arteries open into the intervillous space.",
-        "This is the error. The two bloods do not mix; maternal blood stays outside the villi.",
+        "This step is right. Maternal blood bathes the outside of the villi and never enters the fetal capillaries.",
         "This step is right. Oxygen crosses the barrier by diffusion.",
         "This step is right. Blood leaves the intervillous space through the uterine veins."
       ]

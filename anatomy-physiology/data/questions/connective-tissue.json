@@ -454,19 +454,19 @@
     ],
     "q": "Fill in the missing step. You press on articular cartilage → ______ → the cartilage flattens slightly → when the load lifts, water flows back and it springs back.",
     "options": [
-      "Water is squeezed out of the ground substance",
+      "Blood drains out of its capillaries",
       "Elastic fibers in the matrix recoil",
       "Chondrocytes contract",
-      "Blood drains out of its capillaries"
+      "Water is squeezed out of the ground substance"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Cartilage's ground substance is packed with large molecules that hold water. A load squeezes some water out, and the water flows back when the load is removed. That makes cartilage a shock absorber.",
       "options": [
-        "Correct. Load pushes water out of the ground substance.",
+        "Cartilage has no capillaries.",
         "Articular cartilage is hyaline cartilage, with few elastic fibers, and recoil would restore shape, not flatten it.",
         "Chondrocytes cannot contract; they maintain the matrix.",
-        "Cartilage has no capillaries."
+        "Correct. Load pushes water out of the ground substance."
       ]
     }
   },
@@ -495,6 +495,9 @@
         "answer": "down",
         "why": "Collagen gives bone its flexibility; with weak collagen, the mineral matrix is more brittle and breaks more easily."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Collagen fibers give connective tissue its strength in tension. Tendons, ligaments and the dermis all rely on collagen bundles to resist pulling, and bone relies on collagen to bend slightly instead of snapping. Weaker collagen therefore weakens all three."
+    }
   }
 ]
