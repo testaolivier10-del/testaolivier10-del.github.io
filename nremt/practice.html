@@ -2311,7 +2311,12 @@ function renderQuestion(){
   flagBtn.classList.toggle('active', isFlagged);
 
   const optsEl = document.getElementById('qOptions');
+  // Which option had the keyboard before this re-render, so it keeps it.
+  const focusedOpt = optsEl.contains(document.activeElement) && document.activeElement.hasAttribute('data-opt')
+    ? +document.activeElement.getAttribute('data-opt') : null;
   optsEl.innerHTML = '';
+  optsEl.removeAttribute('role');
+  optsEl.removeAttribute('aria-label');
 
   if(q.type === 'multi'){
     const hint = document.createElement('div');
@@ -2319,17 +2324,28 @@ function renderQuestion(){
     hint.textContent = `Select the ${q.correct.length} answer options which are correct.`;
     optsEl.appendChild(hint);
     const selected = Array.isArray(answers[current]) ? answers[current] : [];
+    optsEl.setAttribute('role', 'group');
+    optsEl.setAttribute('aria-label', 'Answer options');
     q.options.forEach((opt, i) => {
       const div = document.createElement('div');
       div.className = 'option multi' + (selected.includes(i) ? ' selected' : '');
-      div.innerHTML = `<span class="letter">${selected.includes(i) ? '&check;' : LETTERS[i]}</span><span>${opt}</span>`;
-      div.addEventListener('click', () => {
+      // A checkbox to assistive tech and the keyboard, not just a clickable box.
+      div.setAttribute('role', 'checkbox');
+      div.setAttribute('aria-checked', selected.includes(i) ? 'true' : 'false');
+      div.setAttribute('data-opt', i);
+      div.tabIndex = 0;
+      div.innerHTML = `<span class="letter" aria-hidden="true">${selected.includes(i) ? '&check;' : LETTERS[i]}</span><span>${opt}</span>`;
+      const toggle = () => {
         const cur = Array.isArray(answers[current]) ? answers[current].slice() : [];
         const pos = cur.indexOf(i);
         if(pos === -1) cur.push(i); else cur.splice(pos, 1);
         answers[current] = cur;
         renderQuestion();
         renderJumpRow();
+      };
+      div.addEventListener('click', toggle);
+      div.addEventListener('keydown', e => {
+        if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); toggle(); }
       });
       optsEl.appendChild(div);
     });
@@ -2349,8 +2365,8 @@ function renderQuestion(){
       div.className = 'order-item';
       div.innerHTML = `<span class="pos">${pos+1}</span><span class="order-text">${q.options[optIdx]}</span>
         <span class="order-btns">
-          <button type="button" data-dir="up" ${pos===0?'disabled':''}>&#9650;</button>
-          <button type="button" data-dir="down" ${pos===order.length-1?'disabled':''}>&#9660;</button>
+          <button type="button" data-dir="up" aria-label="Move up" ${pos===0?'disabled':''}>&#9650;</button>
+          <button type="button" data-dir="down" aria-label="Move down" ${pos===order.length-1?'disabled':''}>&#9660;</button>
         </span>`;
       div.querySelector('[data-dir="up"]').addEventListener('click', () => {
         [order[pos-1], order[pos]] = [order[pos], order[pos-1]];
@@ -2366,17 +2382,44 @@ function renderQuestion(){
     });
     optsEl.appendChild(list);
   } else {
+    /* A radio group: picking an option only records it (Next moves on), so
+       the arrow keys can select as they move, the way radio buttons do. Tab
+       enters the group on the chosen option, or the first. */
+    optsEl.setAttribute('role', 'radiogroup');
+    optsEl.setAttribute('aria-label', 'Answer options');
+    const n = q.options.length;
+    const pick = i => {
+      answers[current] = i;
+      renderQuestion();
+      renderJumpRow();
+    };
+    const tabStop = answers[current] === null || answers[current] === undefined ? 0 : answers[current];
     q.options.forEach((opt, i) => {
       const div = document.createElement('div');
       div.className = 'option' + (answers[current]===i ? ' selected' : '');
-      div.innerHTML = `<span class="letter">${LETTERS[i]}</span><span>${opt}</span>`;
-      div.addEventListener('click', () => {
-        answers[current] = i;
-        renderQuestion();
-        renderJumpRow();
+      div.setAttribute('role', 'radio');
+      div.setAttribute('aria-checked', answers[current] === i ? 'true' : 'false');
+      div.setAttribute('data-opt', i);
+      div.tabIndex = i === tabStop ? 0 : -1;
+      div.innerHTML = `<span class="letter" aria-hidden="true">${LETTERS[i]}</span><span>${opt}</span>`;
+      div.addEventListener('click', () => pick(i));
+      div.addEventListener('keydown', e => {
+        const j = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? (i + 1) % n
+          : e.key === 'ArrowUp' || e.key === 'ArrowLeft' ? (i - 1 + n) % n
+          : e.key === 'Home' ? 0 : e.key === 'End' ? n - 1
+          : (e.key === ' ' || e.key === 'Enter') ? i : -1;
+        if(j < 0) return;
+        e.preventDefault();
+        pick(j);
+        const el = optsEl.querySelector(`[data-opt="${j}"]`);
+        if(el) el.focus();
       });
       optsEl.appendChild(div);
     });
+  }
+  if(focusedOpt !== null){
+    const el = optsEl.querySelector(`[data-opt="${focusedOpt}"]`);
+    if(el) el.focus();
   }
 
   // In exam-realistic mode the two controls the real exam does not have are

@@ -187,7 +187,14 @@ export default {
     if (request.method !== 'POST') {
       return json({ error: 'POST only' }, 405, origin);
     }
-    if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+    // An allowed Origin is REQUIRED, not merely "not a wrong one". A browser
+    // always sends Origin on a POST fetch, same-origin or cross-origin, so the
+    // only callers this turns away are scripts (curl, a bot) — which used to
+    // walk straight through by leaving the header off, and then only the
+    // per-IP throttle below stood between them and the day's free allowance.
+    // A script can forge the header, but it now has to mean to, and the rate
+    // limit still applies to it.
+    if (!ALLOWED_ORIGINS.includes(origin)) {
       return json({ error: 'Origin not allowed' }, 403, origin);
     }
 

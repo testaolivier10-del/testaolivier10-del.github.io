@@ -1759,6 +1759,9 @@
     // The pull's write path, exposed so the merge rules a namespace registers
     // can be tested without a Supabase round trip.
     applyNamespace: applyNamespace,
+    // The same rules, for progress-backup.js: restoring a file is one more
+    // copy of the progress to reconcile, and it should reconcile the same way.
+    mergerFor: function(k){ return mergers[k] || null; },
     user: function(){ return currentUser; },
     onAuthChange: function(fn){ authListeners.push(fn); fn(currentUser); },
     openAuthModal: openAuthModal,

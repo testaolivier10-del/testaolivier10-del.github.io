@@ -90,7 +90,7 @@
           </div>
           <p class="note" id="bkNote" role="status" aria-live="polite" aria-atomic="true"></p>
         </div>
-        <p><strong>Restoring replaces</strong> what is on this browser rather than merging into it — two study histories mixed together are not a study history. You will be asked to confirm first.</p>
+        <p><strong>Restoring merges</strong> the file into what is on this browser: XP, answered questions, review schedules and lesson progress from both are kept, so an old backup cannot undo newer studying. You will be asked to confirm first.</p>
 
         <h2>One anonymous counter</h2>
         <p>Each page load increments a counter so we can see which pages get used. It records <strong>the page path and the date, and nothing else</strong> — no IP address, no cookie, no user id, no session id, no device fingerprint, no referrer. There is no way to tell two visits apart, or to tell whether a visit was yours.</p>
@@ -243,23 +243,46 @@ document.addEventListener('DOMContentLoaded', function(){
       var reader = new FileReader();
       reader.onerror = function(){ say('That file could not be read.', false); };
       reader.onload = function(){
-        var parsed = window.LevlBackup.parse(String(reader.result));
-        if(!parsed.ok){ say(parsed.error, false); file.value = ''; return; }
+        var text = String(reader.result);
+        var plan = window.LevlBackup.plan(text);
+        if(!plan.ok){ say(plan.error, false); file.value = ''; return; }
 
-        // Confirmed against what the file actually contains, checked before
+        // Confirmed against what the file actually contains, worked out before
         // anything is written — so the question is about this backup rather
-        // than about backups in general.
-        var when = parsed.exportedAt ? new Date(parsed.exportedAt).toLocaleDateString() : 'an unknown date';
+        // than about backups in general. A restore merges: XP, answered
+        // questions and schedules from both copies are kept, so an old backup
+        // cannot undo newer studying.
+        var when = plan.exportedAt ? new Date(plan.exportedAt).toLocaleDateString() : 'an unknown date';
+        if(!plan.added && !plan.merged && !plan.conflicts.length){
+          say('This browser already has everything in that backup. Nothing was changed.', true);
+          file.value = ''; return;
+        }
         var ok = window.confirm(
-          'Restore ' + parsed.kept + ' items saved on ' + when + '?\n\n' +
-          'This replaces the progress currently on this browser. It cannot be undone.'
+          'Restore the backup saved on ' + when + '?\n\n' +
+          'It is merged with the progress on this browser: ' + plan.added + ' new items, ' + plan.merged +
+          ' combined with what is here. Nothing newer on this browser is lost.'
         );
         if(!ok){ say('Nothing was changed.', true); file.value = ''; return; }
 
-        var res = window.LevlBackup.restore(String(reader.result));
+        // Settings that cannot be combined (theme, an in-progress exam) go to
+        // whichever copy was studied on more recently, unless the person says
+        // otherwise.
+        var prefer = plan.prefer;
+        if(plan.conflicts.length){
+          var useBackup = window.confirm(
+            plan.conflicts.length + ' item' + (plan.conflicts.length === 1 ? '' : 's') +
+            ' differ between the backup and this browser and cannot be combined (' +
+            plan.conflicts.slice(0, 4).join(', ') + (plan.conflicts.length > 4 ? ', ...' : '') + ').\n\n' +
+            'OK uses the backup\'s. Cancel keeps this browser\'s' +
+            (plan.newer === 'local' ? ' (the more recently studied copy).' : '. The backup is the more recently studied copy.')
+          );
+          prefer = useBackup ? 'backup' : 'local';
+        }
+
+        var res = window.LevlBackup.restore(text, prefer);
         file.value = '';
         if(!res.ok){ say(res.error, false); return; }
-        say('Restored ' + res.kept + ' items. Reloading\u2026', true);
+        say('Restored the backup (' + res.written + ' items updated). Reloading\u2026', true);
         // Reloaded rather than left as is: account.js, hub-progress.js and
         // every page script read their state once at load, so the page you
         // are looking at is still showing the progress that was just

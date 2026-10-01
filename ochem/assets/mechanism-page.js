@@ -60,6 +60,8 @@
     fb.className = 'feedback show ' + (ok ? 'good' : 'bad');
     fb.innerHTML = html;
     if(window.LevlSound) window.LevlSound.answer(ok);
+    // Announced, like the lesson checks' verdicts (lesson-engine.js).
+    if(window.LevlAnnounce) window.LevlAnnounce.say(fb.textContent);
   }
 
   function updateProgress(){

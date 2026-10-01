@@ -57,7 +57,20 @@ export function singular(t) {
   if (/[^su]s$/i.test(t)) return t.slice(0, -1);
   return null;
 }
+/* Pure functions of their input, and called a few million times by one build
+   (every page, every figure label, every concept), so they are memoized. The
+   caches hold compiled regexes and term lists, never results that depend on
+   a page. */
+const useTermsCache = new WeakMap();
 export function scanUseTerms(concept) {
+  const key = [concept.term, ...(concept.aliases || [])].join('\u0000');
+  const hit = useTermsCache.get(concept);
+  if (hit && hit.key === key) return hit.out;
+  const out = scanUseTermsUncached(concept);
+  useTermsCache.set(concept, { key, out });
+  return out;
+}
+function scanUseTermsUncached(concept) {
   const base = scanTerms(concept);
   const have = new Set(base.map(t => t.toLowerCase()));
   const out = [...base];
@@ -97,13 +110,32 @@ function isCaseSensitive(t) {
   return /[A-Z]/.test(t.slice(1)) || /^[A-Z]{2,}/.test(t) || /[0-9]/.test(t) || /^[A-Z][\s-]/.test(t);
 }
 
+/* Cached per term. Every caller uses String#match / String#replace, which
+   reset lastIndex on a global regex, or resets it itself (glossify), so one
+   shared instance per term is safe. */
+const regexCache = new Map();
 export function termRegex(t) {
+  let re = regexCache.get(t);
+  if (!re) { re = termRegexUncached(t); regexCache.set(t, re); }
+  re.lastIndex = 0;
+  return re;
+}
+function termRegexUncached(t) {
   const esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   // Unicode sub/superscript digits belong to the word: CO₂ is not CO.
   return new RegExp(`(?<![\\w-])${esc}(?![\\w\u2070-\u209F\u00B2\u00B3\u00B9-])`, isCaseSensitive(t) ? 'g' : 'gi');
 }
 
+const indexCache = new WeakMap();
 export function indexMap(map) {
+  const sig = `${map.topics.length}:${map.concepts.length}`;
+  const hit = indexCache.get(map);
+  if (hit && hit.sig === sig) return hit.out;
+  const out = indexMapUncached(map);
+  indexCache.set(map, { sig, out });
+  return out;
+}
+function indexMapUncached(map) {
   const topicIndex = new Map(map.topics.map((t, i) => [t.id, i]));
   const concepts = new Map(map.concepts.map(c => [c.id, c]));
   return { topicIndex, concepts };
@@ -237,18 +269,39 @@ export function scanPage(map, html, topicId) {
   if (here === undefined) return [`declares unknown topic "${topicId}"`];
   const text = maskAllowed(map, stripForScan(html), here, topicIndex);
   const problems = [];
-  const everyday = everydaySet(map);
-  for (const c of map.concepts) {
-    const there = topicIndex.get(c.taughtIn);
+  // A term can only match where its letters occur, so a plain substring test
+  // on the lowercased text rules most terms out before any regex runs. Only
+  // for ASCII terms, where lowercasing agrees with the regex's own folding.
+  const lower = text.toLowerCase();
+  for (const { c, there, terms } of scanList(map)) {
     if (there <= here) continue;
-    for (const t of scanUseTerms(c)) {
-      if (everyday.has(t.toLowerCase())) continue;
+    for (const { t, low } of terms) {
+      if (low !== null && !lower.includes(low)) continue;
       const m = text.match(termRegex(t));
       if (m) { problems.push(`uses "${m[0]}" (${c.id}), which is not taught until ${c.taughtIn}; teach it first or put this use inside a preview box`); break; }
     }
   }
   return problems;
 }
+
+/* Per concept, in map order: where it is taught and the terms a page is
+   checked for (everyday words already dropped), worked out once per map. */
+const scanListCache = new WeakMap();
+function scanList(map) {
+  const sig = `${map.topics.length}:${map.concepts.length}:${((map.everydayWords && map.everydayWords.words) || []).length}`;
+  const hit = scanListCache.get(map);
+  if (hit && hit.sig === sig) return hit.out;
+  const { topicIndex } = indexMap(map);
+  const everyday = everydaySet(map);
+  const out = map.concepts.map(c => ({
+    c, there: topicIndex.get(c.taughtIn),
+    terms: scanUseTerms(c).filter(t => !everyday.has(t.toLowerCase()))
+      .map(t => ({ t, low: ASCII.test(t) ? t.toLowerCase() : null })),
+  }));
+  scanListCache.set(map, { sig, out });
+  return out;
+}
+export const ASCII = /^[\x20-\x7e]*$/;
 
 /* A term already taught can contain a later one: "amino acid" (biomolecules)
    holds "acid" (acids and bases). The longer, allowed term is what the page
@@ -275,9 +328,12 @@ function nestingTerms(map) {
   return out;
 }
 function maskAllowed(map, text, here, topicIndex) {
+  let lower = text.toLowerCase();
   for (const { t, topic } of nestingTerms(map)) {
     if (topicIndex.get(topic) > here) continue;
-    text = text.replace(termRegex(t), ' ');
+    if (ASCII.test(t) && !lower.includes(t.toLowerCase())) continue;
+    const next = text.replace(termRegex(t), ' ');
+    if (next !== text) { text = next; lower = text.toLowerCase(); }
   }
   return text;
 }

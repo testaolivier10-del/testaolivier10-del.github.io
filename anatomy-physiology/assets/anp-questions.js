@@ -29,6 +29,21 @@
   function report(q){ return window.LevlReport ? window.LevlReport.button('anp', q.id) : ''; }
   var DIR = [{ v: 'up', label: 'Increases' }, { v: 'down', label: 'Decreases' }, { v: 'none', label: 'No change' }];
 
+  /* Options are one Tab stop; arrows, Home and End move, Enter/Space answers. */
+  function arrowGroup(g){
+    var L = [].slice.call(g.querySelectorAll('.anp-opt')), n = L.length;
+    function to(j){ L.forEach(function(b, k){ b.tabIndex = k === j ? 0 : -1; }); }
+    to(0);
+    g.addEventListener('focusin', function(e){ var i = L.indexOf(e.target); if(i > -1) to(i); });
+    g.addEventListener('keydown', function(e){
+      var i = L.indexOf(document.activeElement), k = e.key;
+      var j = i < 0 ? -1 : /Down|Right/.test(k) ? (i + 1) % n : /Up|Left/.test(k) ? (i + n - 1) % n : k === 'Home' ? 0 : k === 'End' ? n - 1 : -1;
+      if(j > -1){ e.preventDefault(); L[j].focus(); }
+    });
+  }
+  // The colour's meaning in words, for a screen reader.
+  function markOpt(x, text){ x.insertAdjacentHTML('beforeend', '<span class="sr-only"> (' + text + ')</span>'); }
+
   function render(q, host, opts){
     opts = opts || {};
     var reveal = opts.reveal !== false && !opts.exam;
@@ -67,8 +82,9 @@
     function choice(){
       var items = shuffle((q.options || []).map(function(o, i){ return { o: o, i: i }; }));
       body.innerHTML = '<div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" data-i="' + it.i + '">' + html(it.o) + '</button>';
+        return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
+      arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
         b.addEventListener('click', function(){
           if(done) return;
@@ -76,10 +92,12 @@
           var ok = pick === q.correct;
           body.querySelectorAll('.anp-opt').forEach(function(x){
             var i = +x.getAttribute('data-i');
-            x.disabled = true;
-            if(opts.exam){ if(i === pick) x.setAttribute('aria-pressed', 'true'); return; }
-            if(i === q.correct) x.classList.add('is-right');
-            else if(i === pick) x.classList.add('is-wrong');
+            // aria-disabled: disabling would drop the keyboard focus.
+            x.setAttribute('aria-disabled', 'true');
+            if(i === pick) x.setAttribute('aria-pressed', 'true');
+            if(opts.exam) return;
+            if(i === q.correct){ x.classList.add('is-right'); markOpt(x, i === pick ? 'your answer, correct' : 'correct answer'); }
+            else if(i === pick){ x.classList.add('is-wrong'); markOpt(x, 'your answer, incorrect'); }
             if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
           });
           finish(ok, ok ? 1 : 0, '', pick);
@@ -94,6 +112,7 @@
       body.innerHTML = '<p class="anp-small">Select all that apply.</p><div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
         return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
+      arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
         b.addEventListener('click', function(){ if(!done) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
       });
@@ -102,14 +121,17 @@
         var key = [].concat(q.correct), right = 0, total = q.options.length, chosen = [];
         body.querySelectorAll('.anp-opt').forEach(function(x){
           var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-pressed') === 'true', should = key.indexOf(i) > -1;
-          x.disabled = true;
+          x.setAttribute('aria-disabled', 'true');
           if(picked) chosen.push(i);
           if(picked === should) right++;
           if(opts.exam) return;
-          if(should) x.classList.add('is-right'); else if(picked) x.classList.add('is-wrong');
+          if(should){ x.classList.add('is-right'); markOpt(x, picked ? 'selected, correct' : 'should have been selected'); }
+          else if(picked){ x.classList.add('is-wrong'); markOpt(x, 'selected, incorrect'); }
           if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
         });
         finish(right === total, right / total, '', chosen);
+        var first = body.querySelector('.anp-opt');
+        if(first && (!document.activeElement || document.activeElement === document.body)) first.focus();
       });
     }
 
