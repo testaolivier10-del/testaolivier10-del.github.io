@@ -25,6 +25,21 @@ function sign(body, { id = 'msg_1', ts = Math.floor(Date.now() / 1000), secret =
   return { 'webhook-id': id, 'webhook-timestamp': String(ts), 'webhook-signature': `v1,${sig}` };
 }
 
+test('signature: Standard Webhooks key (secrets made from Sept 2026) passes', async () => {
+  const secret = 'whsec_' + Buffer.from('a-new-polar-endpoint-key-32bytes').toString('base64');
+  const body = '{"type":"order.paid"}';
+  const id = 'msg_2';
+  const now = Math.floor(Date.now() / 1000);
+  // What a Standard Webhooks library signs with: the decoded bytes after whsec_.
+  const key = Buffer.from(secret.slice(6), 'base64');
+  const sig = createHmac('sha256', key).update(`${id}.${now}.${body}`).digest('base64');
+  const headers = { 'webhook-id': id, 'webhook-timestamp': String(now), 'webhook-signature': `v1,${sig}` };
+  assert.equal(await verifyWebhook(body, headers, secret, now), true);
+  assert.equal(await verifyWebhook(body + ' ', headers, secret, now), false);
+  // The legacy key still works for the same secret.
+  assert.equal(await verifyWebhook(body, sign(body, { id, ts: now, secret }), secret, now), true);
+});
+
 test('PASSES matches every pass the site offers', () => {
   const b = createBrowser();
   b.load('assets/premium.js');
