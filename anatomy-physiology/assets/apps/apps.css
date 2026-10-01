@@ -466,3 +466,4 @@ button.anp-fc-face:hover{border-color:var(--accent);}
   .anp-fc-card.is-turning .anp-fc-face{animation:none;}
 }
 /* === end flashcards, dashboard, search, hub === */
+.anp-pr-allow{margin:10px 0 0;}.anp-pr-allow .premium-badge{margin-left:6px;}

@@ -54,9 +54,7 @@
   }
 
   function store(){ return Core ? Core.load() : { q: {}, lessons: {} }; }
-  // Premium locked: only the free (Foundations) chapters are offered; the bank
-  // is already trimmed to them by AnpCore.loadBank.
-  function builtTopics(){ return CUR.topics.filter(function(t){ return t.built && t.qn && !(Core && Core.locked && Core.locked(t.chapter)); }); }
+  function builtTopics(){ return CUR.topics.filter(function(t){ return t.built && t.qn; }); }
   function pill(){ return Core && Core.badge ? Core.badge() : ''; }
   function builtChapters(){
     var has = {}; builtTopics().forEach(function(t){ has[t.chapter] = 1; });
@@ -242,6 +240,7 @@
         '</div></fieldset>' +
         '<div class="anp-pr-go"><p class="anp-pr-sum" aria-live="polite"><span class="anp-pr-sum-main"></span><small>Feedback after every answer. Misses go to your review queue.</small></p>' +
           '<button type="submit" class="btn-press anp-pr-start">Start practice</button></div>' +
+        allowanceHtml() +
       '</form>' +
       railHtml() +
     '</div>';
@@ -282,6 +281,21 @@
     });
     paintPick();
     refresh();
+  }
+
+  /* The free tier (spec decision 72): Foundations questions are unlimited;
+     any other chapter's draw on the daily allowance practice and review
+     share, one per question shown. '' for members and before launch. */
+  function allowanceHtml(){
+    var a = Core && Core.quota ? Core.quota() : null;
+    if(!a || a.limit === Infinity) return '';
+    return '<p class="anp-small anp-pr-allow">Free: Foundations questions are unlimited. Questions from other chapters: <b>' + a.left + ' of ' + a.limit + '</b> left today, shared with review.' + pill() + '</p>';
+  }
+  /* Today's allowance is used up: what is left to do, instead of the question. */
+  function limitHtml(){
+    return Core.gate('daily-limit', 'practice-limit', '', 'Foundations questions stay free and unlimited, and the allowance resets at midnight.') +
+      '<div class="anp-pr-actions">' + (session.results.length ? '<button type="button" class="btn-press" data-act="results">See your results</button>' : '') +
+      '<a class="btn-outline" href="' + BASE + 'practice.html?chapter=' + (CUR.chapters[0] ? CUR.chapters[0].id : '') + '">Practice Foundations</a></div>';
   }
 
   /* ------------------------------------------------------------ session */
@@ -329,6 +343,12 @@
     var stage = app.querySelector('.anp-pr-stage'), after = app.querySelector('.anp-pr-after');
     stage.innerHTML = ''; after.hidden = true; after.innerHTML = '';
     progress();
+    if(!Core.serve(q)){
+      stage.innerHTML = limitHtml();
+      var r = stage.querySelector('[data-act="results"]');
+      if(r) r.addEventListener('click', finish);
+      return;
+    }
     Q.render(q, stage, { n: session.i + 1, onAnswer: function(res){ answered(q, res); } });
     var stem = stage.querySelector('.anp-q-stem');
     if(stem){ stem.setAttribute('tabindex', '-1'); try{ stem.focus({ preventScroll: true }); }catch(e){ stem.focus(); } }

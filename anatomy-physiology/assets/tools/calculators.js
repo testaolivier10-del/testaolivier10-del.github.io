@@ -427,7 +427,7 @@
   /* ------------------------------------------------------ load */
 
   app.classList.add('calc-loading');
-  fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){ return window.AnpCore ? window.AnpCore.freeItems(d) : d; }).then(function(d){
+  fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
     DATA = d;
     app.classList.remove('calc-loading');
     mount();

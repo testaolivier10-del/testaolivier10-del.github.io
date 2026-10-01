@@ -46,7 +46,6 @@
   app.innerHTML = '<p class="fl-loading anp-hint">Loading feedback loops…</p>';
   fetch(app.getAttribute('data-src') || (base() + 'data/tools/feedback-loops.json'))
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(d){ return window.AnpCore ? window.AnpCore.freeItems(d) : d; })
     .then(init)
     .catch(function(){ app.innerHTML = '<p class="anp-hint">The loops could not be loaded. Check your connection and reload the page.</p>'; });
 
