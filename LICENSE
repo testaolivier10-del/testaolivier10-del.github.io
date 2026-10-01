@@ -90,8 +90,9 @@ Some material here is not ours to license:
     (c) 2008 Life Science Integrated Database Center, under CC BY-SA 2.1
     Japan. The model and any adaptation of it stay under that licence.
   - three.js (nremt/assets/vendor/three/), (c) three.js authors, MIT.
-  - Lung-sound recordings from Wikimedia Commons, under their own licences
-    (CC BY-SA), streamed from Commons and credited on the sound trainer page.
+  - Lung-sound recordings (wheeze, crackles, stridor) by James Heilman, MD;
+    the stridor clip processed by Natural Philo. CC BY-SA 3.0 Unported,
+    streamed from Wikimedia Commons and credited on the sound trainer page.
   - IBM Plex Mono and Nunito, served from assets/fonts/, under the SIL Open
     Font License 1.1.
 
