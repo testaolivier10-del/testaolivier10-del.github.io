@@ -8,10 +8,11 @@
    square, z-index 900 (assets/tutor.js). Sharing that corner hid the
    periodic table completely: same corner, larger box, far higher
    z-index. 20 + 58 + 12 = 90 leaves a 12px gap between the two. The
-   phone rule below already clears the mascot's own phone position. */
+   phone rule below already clears the mascot's own phone position.
+   right:23px centres it over the 58px mascot (20 + 29 - 26). */
 
 .pt-fab{
-  position:fixed;right:20px;bottom:90px;z-index:60;
+  position:fixed;right:23px;bottom:90px;z-index:60;
   width:52px;height:52px;border-radius:50%;
   background:var(--navy);color:var(--on-accent);border:none;
   font-size:24px;line-height:1;cursor:pointer;box-shadow:var(--shadow-pop);
@@ -113,5 +114,12 @@
 @media(max-width:720px){
   .pt-body{flex-direction:column;overflow:auto;}
   .pt-detail{flex:none;border-left:none;border-top:var(--bw) solid var(--line);padding-left:0;padding-top:12px;}
-  .pt-fab{width:46px;height:46px;font-size:20px;right:17px;bottom:calc(148px + env(safe-area-inset-bottom));}
+  .pt-fab{width:42px;height:42px;font-size:19px;right:12px;bottom:calc(136px + env(safe-area-inset-bottom));
+    transition:transform .16s ease, opacity .2s ease;}
+}
+/* Phones: the tutor mascot sits at bottom 84px, 42px square (assets/tutor.js),
+   so this stacks 10px above it in the same column, and tucks away with it
+   while the page scrolls down (tutor.js sets html.lp-tucked). */
+@media(max-width:640px){
+  html.lp-tucked .pt-fab{opacity:0;transform:translateY(16px);pointer-events:none;}
 }

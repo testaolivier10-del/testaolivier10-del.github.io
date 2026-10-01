@@ -365,6 +365,14 @@ strong,b{font-weight:900;}
 .hero .lede:last-child,.hero > :last-child{margin-bottom:0;}
 .hero .eyebrow{color:var(--cink);}
 .hero-ctas{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+/* A course home's main button reads "Continue: <topic>" for a returning
+   student. An inline script right after the button hides it while that label
+   is worked out (only when there is saved progress), so a returning student
+   never sees "Start here" flash first; the home script shows it again, and
+   if that script never runs the delayed animation does, after 2.5s. */
+.cta-pending{visibility:hidden;animation:levl-cta-reveal 0s 2.5s forwards;}
+@keyframes levl-cta-reveal{to{visibility:visible;}}
+.hero-ctas .btn-press{max-width:100%;overflow-wrap:anywhere;text-align:center;}
 
 /* The compact opener — same tinted panel as .hero, at title scale. */
 .page-head{
@@ -667,6 +675,7 @@ strong,b{font-weight:900;}
   width:2px;height:17px;border-radius:2px;background:var(--line);
 }
 .site-header__course:hover{color:var(--ink);}
+.site-header__course-short{display:none;}
 
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
 
@@ -694,6 +703,14 @@ strong,b{font-weight:900;}
   cursor:pointer;font-size:14px;line-height:1;flex-shrink:0;
 }
 .theme-toggle:hover{color:var(--accent);}
+/* Moon in light mode, sun in dark: both ship in the button (site-chrome.js and
+   the site-level pages' own headers) and the theme picks one, so the icon is
+   right on first paint. The header search link shares the same circle. */
+.theme-toggle svg{width:17px;height:17px;display:block;}
+.theme-toggle .ti-sun{display:none;}
+:root[data-theme="dark"] .theme-toggle .ti-sun{display:block;}
+:root[data-theme="dark"] .theme-toggle .ti-moon{display:none;}
+.search-toggle{text-decoration:none;}
 
 /* The mute switch for the correct-answer chime. Same 34px circle as the theme
    toggle, but carrying an SVG rather than a glyph, so the icon needs sizing and
@@ -772,6 +789,9 @@ strong,b{font-weight:900;}
   .bottom-nav__item.active{color:var(--cink);} .bottom-nav__item.active .i{background:var(--ctint);}
   .bottom-nav__item span.t{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   body{padding-bottom:calc(74px + env(safe-area-inset-bottom));}
+  /* With the tutor mascot parked above the tab bar (assets/tutor.js), the
+     page's last lines need to scroll clear of it too: 74 bar + 42 button + gaps. */
+  body.lp-has-fab{padding-bottom:calc(138px + env(safe-area-inset-bottom));}
   .bottom-sheet{
     position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--white);
     border-radius:var(--radius-lg) var(--radius-lg) 0 0;box-shadow:var(--shadow-pop);
@@ -854,7 +874,27 @@ footer .privacy-link a:hover{color:var(--ink);}
   .course-nav__link{scroll-snap-align:start;}
   .hub-back{display:none;} /* the wordmark goes to the hub too, and 360px of
                               width is better spent on the course name */
-  .site-header__course{display:none;} /* the active bottom tab says where you are */
+  /* The course name stays, in its short form: the bottom tabs say which
+     section you are in, but not which course, and the three share most tab
+     names. */
+  .site-header__course-full{display:none;}
+  .site-header__course-short{display:inline;}
+  .site-header__course{font-size:14.5px;color:var(--cink);padding-left:11px;flex-shrink:0;}
+}
+/* A phone's header row holds the mark, the course, search, level, account,
+   mute and theme. At 360-390px that only fits with the wordmark text dropped
+   (the mark still links to the hub), tighter gaps, and the streak chip left
+   to the course homes, which show it in their hero. */
+@media (max-width:480px){
+  .site-header__inner{padding-left:14px;padding-right:14px;gap:8px;}
+  .site-header__brand .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+  .site-header__brand-row{gap:8px;}
+  .nav-right{gap:6px;}
+  .theme-toggle,.level-badge{width:32px;height:32px;}
+  .account-btn{height:32px;padding:0 11px;max-width:96px;}
+}
+@media (max-width:400px){
+  .nav-streak{display:none;}
 }
 
 /* ==========================================================================
@@ -1363,7 +1403,7 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   .levl-prompt{
     left:16px;right:16px;width:auto;max-width:none;transform:translate(0,20px);
     /* Clear of both fixed things at this width: the tab bar, and the tutor
-       mascot above it (tutor.js puts a 46px button at bottom:80px), which
+       mascot above it (tutor.js puts a 42px button at bottom:84px), which
        otherwise sits on top of the "Not now" button. */
     bottom:calc(136px + env(safe-area-inset-bottom));
   }

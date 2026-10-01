@@ -709,7 +709,7 @@ function homePage() {
       <div class="eyebrow">${COURSE_NAME} <span class="anp-beta">Beta</span></div>
       <h1>Anatomy &amp; physiology that builds in order.</h1>
       <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" href="lessons/${first.id}.html">Start here</a>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
+      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
     </div>
     <div class="anp-level-card" id="anpLevel">
       <div class="anp-level-top">

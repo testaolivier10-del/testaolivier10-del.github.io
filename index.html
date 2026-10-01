@@ -27,11 +27,15 @@
 <script src="assets/account.js" defer></script>
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
+<script src="assets/hub-home.js" defer></script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
   /* Hub-only components. The shared system in assets/theme.css — the same file
      the NREMT app loads — carries the palette, typography, cards and buttons. */
   .hero .lede{max-width:62ch;}
+  /* Two lines rather than four at desktop width, so the three subjects are on
+     screen without scrolling. */
+  .hero h1{max-width:32ch;}
   .fact-row{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 0;font:800 13px var(--font-ui);color:var(--muted);}
   .fact-row span{display:inline-flex;align-items:center;gap:7px;}
   .fact-row .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
@@ -45,8 +49,14 @@
      the right half of a desktop page empty while the hero, the cards and the
      section rules each stopped at a different width. */
   .subject-grid{display:grid;gap:20px;grid-template-columns:1fr;}
-  @media (min-width:860px){
+  @media (min-width:700px){
     .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  /* All three in one row on a desktop. In two columns the third subject,
+     A&P, sat alone in a second row below the fold. */
+  @media (min-width:1000px){
+    .subject-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+    .featured-card{padding:24px 22px;}
   }
   .featured-card{
     display:flex;flex-direction:column;gap:16px;text-decoration:none;color:inherit;
@@ -98,6 +108,18 @@
   .hub-fill{height:100%;background:var(--on-accent);border-radius:var(--radius-pill);}
   .hub-split{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);}
   .hub-split span{font:900 11.5px var(--font-ui);padding:5px 11px;border-radius:var(--radius-pill);background:rgba(244,210,140,0.16);color:#F4D28C;}
+  /* One "Continue" per course you have started, each to the exact place that
+     course's home would send you (the course homes leave a pointer in
+     localStorage['levl_resume']; without one it is the course home). */
+  .hub-continue{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:16px;}
+  .hub-continue a{
+    display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--on-accent);
+    background:rgba(255,255,255,0.10);border-radius:var(--radius);padding:11px 14px;
+    transition:background-color .12s ease;
+  }
+  .hub-continue a:hover{background:rgba(255,255,255,0.18);}
+  .hub-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.75;}
+  .hub-continue b{font:900 14.5px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
   /* The three trust cards under the subjects: who makes this, how the
      questions are written, how to report one. */
   .about-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
@@ -171,7 +193,7 @@
     <a class="site-header__brand" href="index.html">
       <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
     </a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
   </div>
 </div>
 
@@ -180,10 +202,11 @@
   <div class="hero">
     <div class="eyebrow">LevlPrep</div>
     <h1>Free question banks and interactive courses for hard subjects.</h1>
-    <p class="lede">An NREMT-EMT exam bank with explanations on every question, and an Organic Chemistry course where you perform the mechanisms yourself. The core question bank and course material are free, permanently. No ads, no account needed.</p>
+    <p class="lede">An NREMT-EMT exam bank with explanations on every question, an Organic Chemistry course where you perform the mechanisms yourself, and an Anatomy &amp; Physiology course taught in the order it builds. The core question bank and course material are free, permanently. No ads, no account needed.</p>
     <div class="fact-row">
       <span><span class="dot"></span>2,106 exam questions</span>
       <span><span class="dot"></span>121 chemistry topics and 8 tools</span>
+      <span><span class="dot"></span>27 anatomy &amp; physiology chapters</span>
       <span><span class="dot"></span>Works offline, no account required</span>
     </div>
   </div>
@@ -207,7 +230,7 @@
           <div class="featured-tags">
             <span>Timed exams</span>
             <span>Domain drills</span>
-            <span>Flashcards</span>
+            <span>Spaced flashcards</span>
             <span>3D body map</span>
             <span>Sound trainer</span>
           </div>
@@ -237,7 +260,7 @@
           </div>
           <div>
             <p class="featured-name">Anatomy &amp; Physiology</p>
-            <p class="featured-desc">Foundations and the full cardiovascular system, taught in an order where nothing is used before it is taught, with a virtual lab practical and physiology reasoning drills.</p>
+            <p class="featured-desc">27 chapters, from body organization to development, taught in an order where nothing is used before it is taught, with a virtual lab practical and physiology reasoning drills.</p>
           </div>
           <div class="featured-tags">
             <span>Lab practical</span>
@@ -319,8 +342,10 @@ document.addEventListener('DOMContentLoaded', function(){
           return '<span>' + (LABELS[k] || k) + ' &middot; ' + info.subjects[k] + ' XP</span>';
         }).join('') + '</div>' : '') +
       '</div>';
+    if(window.LevlHubContinue) window.LevlHubContinue(box.firstChild, info);
     box.hidden = false;
   })();
+
 
   var THEME_KEY = 'nremt_theme';
   var toggle = document.getElementById('themeToggle');
