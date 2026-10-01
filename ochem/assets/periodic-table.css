@@ -43,28 +43,39 @@
 .pt-close:hover{border-color:var(--accent);color:var(--accent);}
 
 .pt-body{display:flex;gap:16px;padding:0 20px 12px;overflow:hidden;flex:1;min-height:0;}
-.pt-scroll{overflow:auto;flex:1;min-width:0;padding-bottom:8px;}
+/* The whole table always fits its box: 18 columns share the width (no
+   min-width, so no sideways scroll) and the type scales with the box through
+   container units. One column is about 5.5cqw wide. */
+.pt-scroll{overflow:auto;flex:1;min-width:0;padding-bottom:8px;container-type:inline-size;}
 .pt-grid{
-  display:grid;grid-template-columns:repeat(18,minmax(40px,1fr));grid-auto-rows:minmax(40px,auto);
-  gap:3px;min-width:760px;padding-top:6px;
+  display:grid;grid-template-columns:repeat(18,minmax(0,1fr));
+  gap:clamp(1px,.4cqw,3px);padding-top:6px;
+  /* Short screens: cap the width so the height (about 0.6 x width) also fits
+     the modal under its header and legend. */
+  max-width:max(300px,calc((92vh - 190px) / .6));margin-inline:auto;
 }
 .pt-cell{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-radius:8px;border:1.5px solid transparent;cursor:pointer;padding:2px 0;
-  font-family:var(--font-mono);color:var(--ink);
+  border-radius:clamp(3px,1cqw,8px);border:1.5px solid transparent;cursor:pointer;padding:2px 0;
+  font-family:var(--font-mono);color:var(--ink);min-width:0;overflow:hidden;width:100%;
+  aspect-ratio:1/1.05;
 }
 .pt-cell:hover{border-color:var(--ink);}
 .pt-cell.chosen{border-color:var(--ink);box-shadow:0 0 0 2px var(--accent) inset;}
-.pt-z{font-size:8px;font-weight:700;opacity:.7;}
-.pt-sym{font-size:13px;font-weight:700;line-height:1.1;}
-.pt-en{font-size:8px;font-weight:600;opacity:.75;}
+.pt-z{font-size:clamp(5px,1.1cqw,8px);font-weight:700;opacity:.7;line-height:1.1;}
+.pt-sym{font-size:clamp(8px,2.1cqw,14px);font-weight:700;line-height:1.1;}
+.pt-en{font-size:clamp(5px,1.1cqw,8px);font-weight:600;opacity:.75;line-height:1.1;}
+/* Too narrow for three lines (phones): keep the symbol, the detail panel
+   below still gives the number and electronegativity on tap. */
+@container (max-width:520px){ .pt-z,.pt-en{display:none;} }
 .pt-refcell{
-  display:flex;align-items:center;justify-content:center;font:700 10px var(--font-mono);
+  display:flex;align-items:center;justify-content:center;font:700 clamp(5px,1.2cqw,10px) var(--font-mono);
+  min-width:0;overflow:hidden;
   color:var(--muted);border:1.5px dashed var(--line);border-radius:8px;
 }
 
 .pt-detail{
-  flex:0 0 240px;border-left:var(--bw) solid var(--line);padding-left:16px;overflow:auto;
+  flex:0 0 220px;border-left:var(--bw) solid var(--line);padding-left:16px;overflow:auto;
 }
 .pt-detail-empty{font-size:13.5px;font-weight:700;color:var(--muted);padding-top:8px;}
 .pt-detail-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
