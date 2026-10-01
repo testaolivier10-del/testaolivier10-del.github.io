@@ -19,7 +19,7 @@ function fail(msg) {
 
 function walk(dir, exts, out = []) {
   for (const name of readdirSync(dir)) {
-    if (name === '.git' || name === 'node_modules' || name === 'scripts') continue;
+    if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     const st = statSync(full);
     // The A&P notes sources are HTML fragments that build-anp.mjs wraps into
