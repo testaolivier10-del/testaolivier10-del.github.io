@@ -252,12 +252,7 @@ a.gl{cursor:pointer;}
 .anp-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
 .js .anp-q-key{display:none;}
 
-/* Lists of chapters and topics. */
-.anp-partgroup h2{font-size:20px;margin:26px 0 10px;}
-.anp-chapters{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
-.anp-chapters li{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:11px 15px;}
-.anp-chapters a{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink);flex:1;min-width:0;}
-.anp-unbuilt-ch{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;color:var(--ink-3,#666);}
+/* Mastery text, study cards and filters. */
 .anp-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
 .anp-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
 .anp-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
@@ -345,6 +340,24 @@ a.anp-chap-title:hover{color:var(--cink);}
 .anp-chap-toolset h3{font:900 14px var(--font-ui);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;}
 .anp-chap-toolset h3 small{font:800 11px var(--font-mono);color:var(--muted);}
 .anp-chap-toolset ul{margin:0;padding-left:18px;font:600 13.5px/1.5 var(--font-ui);}
+/* Learn page: the course as one textbook (anp-book.js). */
+.anp-book .tb-main{max-width:760px;}
+.anp-book .anp-filter{margin:0;color:var(--muted);}
+.anp-book .tb-chapter-title:focus{outline:none;}
+.anp-book .tb-toc-mod[hidden]{display:none;}
+.anp-book-sec{padding:30px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.anp-book-sec:last-of-type{border-bottom:0;}
+.anp-book-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px;}
+.anp-book-head h2{display:flex;gap:10px;align-items:baseline;font:900 clamp(19px,2.4vw,23px)/1.25 var(--font-ui);letter-spacing:-.01em;margin:0;}
+.anp-book-head h2 .anp-toc-n{position:relative;top:-2px;}
+.anp-book-acts{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.anp-book .anp-prose{max-width:none;font-size:15.5px;}
+.anp-book .anp-prose h3{font-size:18px;margin:26px 0 10px;scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.anp-book-wait{font:700 13px var(--font-ui);color:var(--muted);}
+.anp-book-err{color:var(--bad-text,#b3261e);}
+.tb-static-toc h1{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);margin:0 0 8px;}
+.tb-static-chapter h2{font-size:18px;margin:22px 0 6px;}
+@media (max-width:700px){.anp-book-acts .anp-tb-chip{display:none;}}
 /* Notes page. */
 .anp-notes .tb-main{max-width:720px;}
 .anp-notes-head{margin-bottom:24px;}

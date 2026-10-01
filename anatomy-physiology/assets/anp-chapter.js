@@ -1,5 +1,5 @@
-/* Mastery badges on the home, learn, chapter and core concept pages, and the
-   A&P I / II filter on learn.html. Every number comes from AnpCore. */
+/* Mastery badges on the chapter and core concept pages. Every number comes
+   from AnpCore. */
 (function(){
   function paint(){
     var C = window.AnpCore;
@@ -18,18 +18,6 @@
       el.textContent = m.value ? C.pct(m.value) + ' of the built course mastered' : '';
     });
   }
-  function filter(){
-    var sel = document.getElementById('course-filter');
-    if(!sel || !window.AnpCurriculum) return;
-    var byId = {};
-    window.AnpCurriculum.chapters.forEach(function(c){ byId[c.id] = c; });
-    sel.addEventListener('change', function(){
-      document.querySelectorAll('.anp-chapters li[data-chapter]').forEach(function(li){
-        var c = byId[li.getAttribute('data-chapter')];
-        li.hidden = !!(sel.value && c && c.course !== sel.value && c.part !== 'foundations');
-      });
-    });
-  }
-  function start(){ paint(); filter(); document.addEventListener('anp:progress', paint); }
+  function start(){ paint(); document.addEventListener('anp:progress', paint); }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
