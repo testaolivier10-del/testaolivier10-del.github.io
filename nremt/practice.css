@@ -1,0 +1,504 @@
+/* The question runner shared by practice.html, review.html and exams.html.
+   Built on the shared system in ../assets/theme.css. */
+/* Shown only when assets/questions-core.json can't be loaded — see the QUESTIONS
+   loader at the end of this file. */
+.bank-error{
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;
+  margin:0 0 18px;padding:14px 16px;
+  border:var(--bw) solid var(--bad);border-radius:var(--radius);
+  background:var(--tint-bad);color:var(--ink);
+  font:700 14px var(--font-ui);line-height:1.5;
+}
+.bank-error strong{font-weight:900;}
+.bank-error span{flex:1 1 320px;min-width:0;font-weight:600;}
+.bank-error button{
+  font:800 13px var(--font-ui);padding:7px 14px;cursor:pointer;
+  border:var(--bw) solid var(--navy);border-radius:var(--radius);
+  background:var(--navy);color:var(--on-accent);
+}
+html.bank-unavailable [disabled]{opacity:.45;pointer-events:none;}
+
+/* Practice-page components, built on the shared system in assets/theme.css.
+   The reset, page shell, typography and button/card primitives live there;
+   this file only styles what is specific to the exam runner. */
+
+h1{margin:6px 0 16px;max-width:22ch;}
+.lede{max-width:52ch;}
+.backlink{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:18px;display:inline-block;}
+.backlink a{color:var(--muted);}
+
+.domain-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.domain-list span{
+  font:800 13px var(--font-ui);padding:8px 15px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius-pill);color:var(--ink);
+}
+
+/* Exam facts — four stat tiles rather than a ruled strip. */
+.exam-facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;
+  margin-bottom:28px;
+}
+.exam-facts .row{
+  display:flex;flex-direction:column;gap:4px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--lift-sm);
+}
+.exam-facts .row span:first-child{font:900 10.5px var(--font-ui);text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+.exam-facts .row span:last-child{font-family:var(--font-mono);color:var(--ink);font-size:16.5px;font-weight:700;line-height:1.35;}
+
+/* Start / review / domain actions all inherit the pressed button primitives
+   from theme.css; these only set width and layout. */
+/* Three practice modes, side by side. They used to be a vertical stack of
+   full-width buttons with a mode's settings floating above it, so the page
+   read as one long form instead of a choice between three things. */
+.mode-grid{display:grid;gap:18px;grid-template-columns:1fr;margin:26px 0 0;}
+@media (min-width:880px){.mode-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+.mode-card{
+  display:flex;flex-direction:column;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  padding:22px 22px 20px;box-shadow:var(--lift-lg);
+}
+.mode-card .k{
+  font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.mode-card h2{font:900 19px var(--font-ui);margin:8px 0 6px;letter-spacing:-0.01em;}
+.mode-card p{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 16px;text-wrap:pretty;}
+.mode-card .spacer{flex:1;}
+.mode-card .meta{
+  font:700 12px var(--font-mono);color:var(--muted);margin:0 0 16px;
+  padding-top:12px;border-top:1px solid var(--line-soft);
+}
+.mode-card .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.mode-card .controls select{flex:1;min-width:130px;}
+.mode-card--primary{border-color:var(--navy);}
+.mode-card--primary .start-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:var(--btn-shadow);}
+.start-btn{width:100%;font-size:15px;padding:14px;margin:0;}
+
+/* Review queues appear only once they have something in them. Rendering
+   three greyed-out "0" buttons on a first visit made the page look broken. */
+.review-row{display:grid;gap:12px;grid-template-columns:1fr;margin-top:26px;}
+@media (min-width:700px){.review-row{grid-template-columns:repeat(3,minmax(0,1fr));}}
+.review-btn{width:100%;margin:0;display:flex;justify-content:center;align-items:center;gap:9px;font-size:14px;padding:13px;}
+.review-btn:disabled{opacity:0.4;cursor:not-allowed;color:var(--muted);border-color:var(--line);transform:none;box-shadow:var(--lift);}
+.review-btn .count{
+  background:var(--accent);color:var(--on-accent-fill);font:700 12px var(--font-mono);
+  padding:3px 9px;border-radius:var(--radius-pill);
+}
+.difficulty-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.difficulty-row label{font-size:13px;font-weight:800;color:var(--muted);flex-shrink:0;}
+select{
+  padding:11px 12px;border:var(--bw) solid var(--line);border-radius:var(--radius-sm);
+  font-family:var(--font-ui);font-weight:700;font-size:13.5px;
+  background:var(--white);color:var(--ink);cursor:pointer;
+}
+select:focus{outline:none;border-color:var(--accent);}
+.difficulty-row select{flex:1;}
+.best-score{margin-top:14px;font-size:13px;font-weight:700;color:var(--muted);text-align:center;}
+
+.domain-quiz-box{
+  margin-top:28px;padding:20px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);
+}
+.domain-quiz-title{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:12px;}
+.domain-quiz-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.domain-quiz-row select{flex:1;min-width:140px;}
+.domain-btn{width:100%;}
+.adaptive-box{border-color:var(--navy);}
+.adaptive-box .domain-quiz-title{display:flex;align-items:center;gap:8px;}
+.adaptive-tag{
+  font:900 10px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
+  background:var(--navy);color:var(--on-accent);padding:4px 9px;border-radius:var(--radius-pill);
+}
+.adaptive-copy{font-size:12.5px;font-weight:600;color:var(--muted);line-height:1.5;margin:0 0 14px;}
+.adaptive-box .domain-quiz-row{margin-bottom:0;}
+.adaptive-box select{flex:0 0 140px;}
+.adaptive-box .domain-btn{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:var(--btn-shadow);}
+.adaptive-box .domain-btn:active{box-shadow:0 0 0 var(--navy-press);}
+
+.progress-toggle{
+  display:block;margin:16px auto 0;background:none;border:none;
+  font:700 12.5px var(--font-mono);color:var(--muted);cursor:pointer;text-decoration:underline;
+}
+.progress-panel{
+  margin-top:20px;padding:22px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);
+}
+.progress-stats{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--muted);margin-bottom:14px;}
+.progress-stats b{color:var(--ink);font-family:var(--font-mono);}
+.progress-chart{width:100%;height:auto;display:block;margin-bottom:14px;}
+.progress-list{font-size:12.5px;font-weight:700;color:var(--muted);}
+.progress-list .p-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line-soft);}
+.subtopic-panel{margin-top:18px;padding-top:16px;border-top:var(--bw) solid var(--line);}
+.subtopic-title{font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:12px;}
+.subtopic-empty{font-size:12.5px;font-weight:600;color:var(--muted);}
+.subtopic-row{margin-bottom:12px;}
+.subtopic-row:last-child{margin-bottom:0;}
+.subtopic-label{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:5px;}
+.subtopic-label .subtopic-name{color:var(--ink);font-weight:800;}
+.subtopic-label .subtopic-name .subtopic-domain{color:var(--muted);font-weight:600;}
+.subtopic-label .subtopic-pct{font-family:var(--font-mono);flex-shrink:0;}
+.subtopic-bar-wrap{background:var(--track);border-radius:var(--radius-pill);height:8px;overflow:hidden;}
+.subtopic-bar{height:100%;border-radius:var(--radius-pill);}
+
+/* ---- Sticky exam bars ---- */
+#timerBar{
+  position:sticky;top:var(--site-header-h);background:var(--paper);
+  padding:14px 22px 12px;margin:-36px -22px 20px;
+  border-bottom:var(--bw) solid var(--line);display:none;z-index:10;
+}
+.timer-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-weight:700;font-size:13px;}
+.timer-row .time-remaining{font-size:20px;font-weight:700;color:var(--ink);}
+.timer-row .time-remaining.warn{color:var(--bad-text);}
+.pace-line{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--font-mono);}
+.pace-line.ahead{color:var(--good-text);}
+.pace-line.behind{color:var(--bad-text);}
+.practice-banner{
+  position:sticky;top:var(--site-header-h);background:var(--paper);
+  padding:14px 22px 12px;margin:-36px -22px 20px;
+  border-bottom:var(--bw) solid var(--line);display:none;z-index:10;
+  font:800 13px var(--font-mono);color:var(--accent);
+}
+
+#quizScreen{display:none;grid-template-columns:minmax(0,1fr) 300px;gap:0 36px;align-items:start;}
+.quiz-main{min-width:0;max-width:760px;}
+.quiz-side{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;}
+.quiz-side #timerBar,.quiz-side .practice-banner{position:static;margin:0;padding:16px 18px;background:var(--white);border-radius:16px;box-shadow:var(--lift);border:0;}
+.quiz-side .progress-row{margin-bottom:6px;}
+.quiz-side .progress-track{margin-bottom:0;}
+.quiz-side .jump-row{max-height:220px;margin:0;}
+.quiz-side .nav-row{margin-top:6px;}
+#resultsScreen{display:none;grid-template-columns:340px minmax(0,1fr);gap:0 36px;align-items:start;}
+#resultsScreen .results-top-row{grid-column:1 / -1;}
+.results-side{position:sticky;top:calc(var(--site-header-h,112px) + 18px);min-width:0;}
+.results-main{min-width:0;}
+.intro-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start;}
+.intro-row > :only-child,.intro-row > :empty:first-child + *{grid-column:1 / -1;}
+@media (max-width:900px){
+  #quizScreen,#resultsScreen{grid-template-columns:1fr;}
+  .quiz-side,.results-side{position:static;}
+  .quiz-side{order:-1;}
+  .intro-row{grid-template-columns:1fr;}
+}
+.exit-row{margin:4px 0 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.exit-link{
+  background:none;border:none;padding:0;cursor:pointer;
+  font:700 12.5px var(--font-mono);color:var(--muted);
+}
+.exit-link:hover{color:var(--bad-text);}
+.submit-top-btn{
+  padding:10px 18px;border-radius:12px;font:900 13px var(--font-ui);cursor:pointer;
+  border:none;color:var(--on-accent);flex-shrink:0;box-shadow:var(--btn-shadow);
+}
+.submit-top-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--navy-press);}
+
+.resume-exam-card{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:16px 18px;margin-bottom:16px;border:var(--bw) solid var(--accent);
+  border-radius:16px;background:var(--tint-accent);box-shadow:var(--lift);
+}
+.resume-exam-text{font-size:13.5px;font-weight:800;color:var(--ink);}
+.resume-exam-actions{display:flex;gap:10px;flex-shrink:0;}
+.resume-exam-actions .primary{
+  padding:10px 18px;border-radius:12px;font:900 13.5px var(--font-ui);cursor:pointer;
+  border:none;background:var(--navy);color:var(--on-accent);box-shadow:var(--btn-shadow);
+}
+.resume-exam-actions .primary:active{transform:translateY(3px);box-shadow:0 0 0 var(--navy-press);}
+
+.results-top-row{margin-bottom:14px;}
+.results-top-row .retry-btn{width:auto;padding:11px 20px;margin-top:0;font-size:13.5px;}
+
+/* ---- Question progress: the fat pill track from the mockup ---- */
+.progress-row{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+  font:700 12.5px var(--font-mono);color:var(--muted);
+}
+.progress-track{height:14px;background:var(--track);border-radius:var(--radius-pill);margin-bottom:26px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--accent);border-radius:var(--radius-pill);transition:width 0.25s ease;}
+
+.q-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px;}
+.q-domain{font:900 11.5px var(--font-ui);color:var(--coral);background:var(--tint-coral);padding:6px 13px;border-radius:var(--radius-pill);display:inline-block;}
+.diff-badge{
+  display:inline-block;font:900 11px var(--font-ui);
+  padding:6px 12px;border-radius:var(--radius-pill);margin-left:6px;text-transform:none;letter-spacing:0;
+}
+.diff-badge.easy{background:var(--tint-good);color:var(--good-text);}
+.diff-badge.medium{background:var(--tint-accent);color:var(--accent);}
+.diff-badge.hard{background:var(--tint-amber);color:var(--amber);}
+.diff-badge.expert{background:var(--navy);color:var(--on-accent);}
+.tei-hint{
+  font:800 12.5px var(--font-ui);color:var(--accent);background:var(--tint-accent);
+  border-radius:10px;padding:8px 13px;margin-bottom:12px;display:inline-block;
+}
+
+/* Flag button — a chunky square, red when active. */
+.flag-btn{
+  flex-shrink:0;padding:8px 14px;background:var(--white);border:var(--bw) solid var(--line);
+  border-radius:12px;font:800 12px var(--font-ui);color:var(--muted);cursor:pointer;
+  white-space:nowrap;box-shadow:var(--lift-sm);
+}
+.flag-btn:hover{border-color:var(--accent);color:var(--accent);}
+.flag-btn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
+.flag-btn.active{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);font-weight:900;box-shadow:none;}
+
+.q-prompt{font-size:19px;font-weight:800;margin-bottom:24px;line-height:1.5;}
+
+/* ---- Answer options: the signature chunky rows ---- */
+.options{display:grid;gap:12px;margin-bottom:28px;}
+.option{
+  display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--surface2);
+  border:0;border-radius:16px;cursor:pointer;
+  font-size:15.5px;font-weight:800;box-shadow:none;
+  transition:transform .15s cubic-bezier(.2,.8,.3,1.3), box-shadow .2s ease, background-color .2s ease;
+}
+.option:hover{transform:translateX(3px);background:var(--hover-tint);}
+.option.selected{background:var(--white);box-shadow:inset 0 0 0 2px var(--navy);}
+.option .letter{
+  font:900 12px var(--font-ui);color:var(--muted);flex-shrink:0;
+  width:30px;height:30px;border-radius:50%;border:0;background:var(--white);box-shadow:var(--lift-sm);
+  display:flex;align-items:center;justify-content:center;
+  transition:background-color .12s ease, border-color .12s ease, color .12s ease;
+}
+.option.selected .letter{color:var(--on-accent);background:var(--navy);border-color:var(--navy);}
+.option.multi .letter{border-radius:8px;}
+
+/* Sequencing items reuse the same slab treatment. */
+.order-list{display:grid;gap:12px;}
+.order-item{
+  display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--white);
+  border:var(--bw) solid var(--line);border-radius:16px;font-size:15.5px;font-weight:800;box-shadow:var(--lift);
+}
+.order-item .pos{
+  font:700 12.5px var(--font-mono);color:var(--on-accent);flex-shrink:0;
+  width:26px;height:26px;border-radius:50%;background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+}
+.order-item .order-text{flex:1;}
+.order-item .order-btns{display:flex;flex-direction:column;gap:4px;flex-shrink:0;}
+.order-item .order-btns button{
+  width:28px;height:22px;border:var(--bw) solid var(--line);background:var(--paper);
+  border-radius:7px;cursor:pointer;font-size:11px;line-height:1;color:var(--muted);
+}
+.order-item .order-btns button:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+.order-item .order-btns button:disabled{opacity:0.3;cursor:not-allowed;}
+
+.nav-row{display:flex;gap:12px;}
+.nav-row button{
+  flex:1;padding:14px;border-radius:14px;font:900 14.5px var(--font-ui);cursor:pointer;
+  border:var(--bw) solid var(--line);background:var(--white);color:var(--ink);box-shadow:var(--lift);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.nav-row button:active:not(:disabled){transform:translateY(4px);box-shadow:0 0 0 var(--line);}
+.nav-row button.primary{background:var(--navy);color:var(--on-accent);border-color:var(--navy);box-shadow:var(--btn-shadow);}
+.nav-row button.primary:active:not(:disabled){box-shadow:0 0 0 var(--navy-press);}
+.nav-row button:disabled{opacity:0.4;cursor:not-allowed;}
+
+.jump-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px;max-height:88px;overflow-y:auto;}
+.jump-btn{
+  position:relative;width:28px;height:28px;font:700 10px var(--font-mono);
+  border:var(--bw) solid var(--line);background:var(--white);border-radius:8px;cursor:pointer;
+  color:var(--muted);display:flex;align-items:center;justify-content:center;
+}
+.jump-btn.current{border-color:var(--navy);color:var(--ink);font-weight:700;}
+.jump-btn.answered{background:var(--tint-accent);border-color:var(--accent);color:var(--accent);}
+.jump-btn.flagged::after{
+  content:'';position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;
+  background:var(--bad);border:2px solid var(--paper);
+}
+
+/* ---- Flashcards ---- */
+.fc-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--lift-lg);
+  min-height:220px;padding:28px 26px;margin-bottom:24px;cursor:pointer;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.fc-front{font-size:18px;font-weight:800;line-height:1.5;}
+.fc-back .answer{font-size:17px;font-weight:900;color:var(--good-text);margin-bottom:12px;}
+.fc-back .explain{font-size:14.5px;font-weight:600;color:var(--muted);line-height:1.6;}
+.results-top-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+/* Printing the results screen: the score card and the review list, one
+   item per block, nothing that only works on screen. theme.css already
+   hides the chrome, every button and .print-btn. */
+@media print{
+  #resultsScreen{display:block !important;}
+  #resultsScreen .filter-row,#resultsScreen .r-flag-btn,#resultsScreen .retry-btn{display:none !important;}
+  #resultsScreen .review-item{break-inside:avoid;page-break-inside:avoid;box-shadow:none !important;border-bottom:1px solid #ccc;}
+  #resultsScreen .score-card{box-shadow:none !important;border:1px solid #ccc;}
+  #resultsScreen::before{content:"LevlPrep practice result — " attr(data-printed);display:block;font:700 12px monospace;margin-bottom:12px;}
+}
+.fc-hint{text-align:center;font:700 11.5px var(--font-mono);color:var(--muted);margin-top:16px;}
+
+/* ---- Results ---- */
+#resultsScreen{display:none;}
+.score-card{background:var(--navy);color:var(--on-accent);border-radius:22px;padding:32px 28px;margin-bottom:32px;}
+.score-card .big{font-size:46px;font-weight:900;font-family:var(--font-ui);letter-spacing:-0.03em;}
+.score-card .sub{color:#C7DED8;font-size:14px;font-weight:700;margin-top:4px;}
+.domain-breakdown{display:grid;gap:9px;margin-top:20px;padding-top:18px;border-top:2px solid rgba(255,255,255,0.15);}
+.domain-breakdown .row{display:flex;justify-content:space-between;font-size:13.5px;font-weight:800;color:#DCEFEA;}
+.domain-breakdown .topic-row{padding-left:16px;font-size:11.5px;font-weight:700;color:#9FB5AE;}
+
+.readiness-card{background:var(--navy);color:var(--on-accent);border-radius:22px;padding:24px 26px;margin:22px 0;}
+.readiness-card .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:6px;}
+.readiness-card .r-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.readiness-card .r-num{font-size:40px;font-weight:900;font-family:var(--font-ui);letter-spacing:-0.03em;}
+.readiness-card .r-label{font:900 14px var(--font-ui);padding:4px 12px;border-radius:var(--radius-pill);}
+.readiness-card .r-label.tier-good{background:rgba(47,158,91,0.25);color:#8FE3AE;}
+.readiness-card .r-label.tier-mid{background:rgba(232,119,106,0.22);color:#F7B8AC;}
+.readiness-card .r-label.tier-low{background:rgba(209,89,74,0.28);color:#F2A08F;}
+.readiness-card .r-sub{color:#DCEFEA;font-size:13px;font-weight:600;margin-top:10px;line-height:1.5;}
+/* Something to DO about "your weakest domain is X", which the card named and
+   then left you to act on alone. On the navy ground, so it is lit rather
+   than tinted. */
+.readiness-card .r-tool{
+  display:block;margin-top:12px;padding:11px 13px;border-radius:12px;
+  background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.18);
+  text-decoration:none;color:#DCEFEA;font-size:12.5px;font-weight:600;
+  line-height:1.5;text-wrap:pretty;
+}
+.readiness-card .r-tool:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.32);}
+.readiness-card .r-tool b{color:var(--on-accent);font-weight:900;}
+
+.readiness-card .r-note{color:#9FB5AE;font-size:11.5px;font-weight:600;margin-top:12px;padding-top:12px;border-top:2px solid rgba(255,255,255,0.15);}
+.readiness-update{margin-top:18px;padding-top:16px;border-top:2px solid rgba(255,255,255,0.15);}
+.readiness-update .r-sub{color:#DCEFEA;font-size:12.5px;font-weight:600;margin-top:6px;line-height:1.5;}
+.readiness-update .r-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.readiness-update .r-num{font-size:24px;font-weight:900;font-family:var(--font-ui);}
+.readiness-update .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.05em;}
+.readiness-update .r-label{font:900 12.5px var(--font-ui);padding:3px 10px;border-radius:var(--radius-pill);}
+.readiness-update .r-label.tier-good{background:rgba(47,158,91,0.25);color:#8FE3AE;}
+.readiness-update .r-label.tier-mid{background:rgba(232,119,106,0.22);color:#F7B8AC;}
+.readiness-update .r-label.tier-low{background:rgba(209,89,74,0.28);color:#F2A08F;}
+.readiness-empty{
+  margin:16px 0;padding:16px;background:var(--white);border:var(--bw) dashed var(--line);
+  border-radius:16px;font-size:13px;font-weight:700;color:var(--muted);text-align:center;
+}
+
+.weak-domains-panel{
+  border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift);
+  padding:18px 20px;margin:16px 0;background:var(--white);
+}
+.weak-domains-title{font:900 11.5px var(--font-ui);text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-bottom:10px;}
+.weak-domain-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 0;font-size:13.5px;font-weight:800;}
+.weak-domain-row .name{color:var(--ink);}
+.weak-domain-row .pct{color:var(--muted);font:700 12px var(--font-mono);margin-right:8px;}
+.weak-domain-row button{
+  padding:7px 14px;border-radius:var(--radius-pill);border:var(--bw) solid var(--accent);
+  background:var(--tint-accent);color:var(--accent);font:900 12px var(--font-ui);cursor:pointer;white-space:nowrap;
+}
+.weak-domain-row button:hover{background:var(--accent);color:var(--on-accent-fill);}
+
+.review-item{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:16px;
+  padding:20px;margin-bottom:14px;box-shadow:var(--lift-sm);
+}
+.review-item .r-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+.review-item .r-domain{font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);}
+.review-item .r-flag-btn{
+  flex-shrink:0;padding:5px 12px;background:var(--white);border:var(--bw) solid var(--line);
+  border-radius:var(--radius-pill);font:800 11px var(--font-ui);color:var(--muted);cursor:pointer;white-space:nowrap;
+}
+.review-item .r-flag-btn:hover{border-color:var(--accent);color:var(--accent);}
+.review-item .r-flag-btn.active{background:var(--tint-bad);border-color:var(--bad-text);color:var(--bad-text);font-weight:900;}
+.review-item .r-q{font-size:16px;font-weight:800;margin-bottom:12px;}
+.review-item .r-answer{font-size:14px;font-weight:800;padding:10px 12px;border-radius:10px;margin-bottom:6px;}
+.r-answer.correct{background:var(--tint-good);color:var(--good-text);}
+.r-answer.incorrect{background:var(--tint-bad);color:var(--bad-text);}
+.r-explain{font-size:14px;font-weight:600;color:var(--muted);margin-top:10px;padding-top:10px;border-top:1px solid var(--line-soft);}
+/* Right-aligned and quiet: it belongs to the explanation above it, not to
+   the next question, and should be findable without competing with either. */
+.r-report{margin-top:6px;text-align:right;}
+
+.retry-btn{
+  width:100%;padding:15px;background:var(--navy);color:var(--on-accent);border:none;
+  border-radius:var(--radius);font:900 15px var(--font-ui);cursor:pointer;margin-top:10px;
+  box-shadow:var(--btn-shadow);transition:transform .08s ease, box-shadow .08s ease;
+}
+.retry-btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--navy-press);}
+
+.filter-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.filter-row button{
+  padding:9px 16px;border:var(--bw) solid var(--line);background:var(--white);
+  border-radius:var(--radius-pill);font:800 12.5px var(--font-ui);cursor:pointer;color:var(--muted);
+}
+.filter-row button.active{background:var(--navy);color:var(--on-accent);border-color:var(--navy);}
+.cleared-note{
+  background:var(--tint-good);color:var(--good-text);border:var(--bw) solid var(--good);
+  padding:14px 16px;border-radius:14px;font-size:14px;font-weight:800;margin-bottom:20px;
+}
+
+/* ---- Daily streak card ---- */
+.streak-card{
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
+  box-shadow:var(--lift);padding:18px 20px;margin-bottom:22px;
+}
+.streak-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.streak-flame-block{display:flex;align-items:center;gap:9px;}
+.streak-flame{display:inline-flex;color:var(--amber);}
+.streak-num{font-size:26px;font-weight:900;color:var(--amber);}
+.streak-word{font-size:13px;font-weight:700;color:var(--muted);}
+.streak-gear{display:inline-flex;background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;border-radius:10px;}
+.streak-gear:hover{color:var(--ink);background:var(--hover-tint);}
+.streak-goal-row{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:800;color:var(--muted);margin-bottom:7px;flex-wrap:wrap;gap:4px;}
+/* Said quietly on purpose: an eased goal is a hand, not an announcement that
+   you are behind. Dotted underline because it carries an explanation. */
+.streak-eased{font-weight:700;opacity:.75;border-bottom:1px dotted currentColor;cursor:help;}
+.streak-done{color:var(--good-text);font-weight:900;}
+.streak-warn{color:var(--accent);font-weight:900;}
+.streak-track{background:var(--track);border-radius:var(--radius-pill);height:10px;overflow:hidden;}
+.streak-fill{background:var(--accent);height:100%;border-radius:var(--radius-pill);transition:width .3s ease;}
+.streak-fill.met{background:var(--good);}
+.streak-best{font:700 11.5px var(--font-mono);color:var(--muted);margin-top:9px;}
+.streak-settings{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-soft);}
+.streak-settings-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--muted);flex-wrap:wrap;}
+.streak-settings-row select{padding:7px 10px;font-size:12.5px;}
+.streak-note{font-size:11.5px;font-weight:600;color:var(--muted);line-height:1.5;margin:0;}
+
+/* A ten-line legal wall was the last thing on the page and the tallest
+   block on it. Same words, folded until someone wants them. */
+.fine-print{margin-top:8px;}
+.fine-print summary{
+  font:800 13px var(--font-ui);color:var(--muted);cursor:pointer;
+  list-style:none;display:inline-flex;align-items:center;gap:7px;
+}
+.fine-print summary::-webkit-details-marker{display:none;}
+.fine-print summary::before{content:'\25B8';font-size:11px;transition:transform .12s ease;}
+.fine-print[open] summary::before{transform:rotate(90deg);}
+.fine-print summary:hover{color:var(--accent);}
+.fine-print p{margin-top:12px;}
+
+.realistic-toggle{
+  display:flex;align-items:flex-start;gap:8px;margin:0 0 12px;
+  font-size:12px;line-height:1.4;color:var(--muted);text-align:left;cursor:pointer;
+}
+.realistic-toggle input{margin-top:1px;flex-shrink:0;accent-color:var(--accent);}
+.realistic-toggle strong{color:var(--ink);}
+
+/* A mode that lives on another page (flashcards) reads as a card you open,
+   not a form you fill in. */
+a.mode-card{text-decoration:none;color:inherit;transition:transform .15s ease, box-shadow .2s ease;}
+a.mode-card:hover{transform:translateY(-2px);}
+a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accent));}
+
+/* The two sibling tabs, from Practice: Review with its live count, Exams. */
+.runner-links{display:grid;gap:12px;grid-template-columns:1fr;margin-top:18px;}
+@media (min-width:700px){.runner-links{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.runner-link{
+  display:flex;flex-direction:column;gap:3px;padding:14px 18px;text-decoration:none;color:var(--ink);
+  background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);
+}
+.runner-link b{font:900 15px var(--font-ui);}
+.runner-link span{font-size:13px;font-weight:700;color:var(--muted);}
+.runner-link:hover b{color:var(--accent);}
+
+/* review.html: the queue as a page. */
+.due-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0 0;}
+.due-stats .stat-card .v{font-size:23px;}
+@media (max-width:520px){.due-stats .stat-card{padding:14px;}.due-stats .stat-card .v{font-size:19px;}}
+.due-panel{margin-top:22px;}
+.due-panel h2{font:900 19px var(--font-ui);margin:0 0 6px;}
+.due-panel p{font-size:14px;font-weight:600;color:var(--muted);line-height:1.55;margin:0 0 16px;}
+.due-panel .start-btn{max-width:360px;}
+.runner-aside{margin-top:22px;}
+@media (min-width:880px){.mode-grid--solo,.runner-aside{grid-template-columns:repeat(2,minmax(0,1fr));}}
+.mode-card .btn-press{align-self:flex-start;}
+.runner-links + .intro-row,.mode-grid--solo + .intro-row{margin-top:18px;}

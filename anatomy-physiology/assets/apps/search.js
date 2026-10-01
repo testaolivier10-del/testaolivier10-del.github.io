@@ -59,7 +59,7 @@
      ['review', 'Review', 'Your spaced review queue of missed questions.'],
      ['exams', 'Exams', 'Unit quizzes, system exams and TEAS A&P practice.'],
      ['flashcards', 'Flashcards', 'Spaced-repetition cards from the glossary and comparison tables.'],
-     ['mastery', 'Dashboard', 'Your mastery by topic, system and core concept.'],
+     ['dashboard', 'Dashboard', 'Your mastery by topic, system and core concept.'],
      ['glossary', 'Glossary', 'Every defined term with word roots and pronunciation.'],
      ['learn', 'Learn', 'Every chapter and topic in course order.']].forEach(function(p){
       out.push({ page: 'Pages', file: BASE + p[0] + '.html', heading: p[1], meta: 'Course page', text: p[1] + '. ' + p[2], weight: 1.5 });

@@ -139,7 +139,7 @@
 <body>
 <div id="site-header"></div>
 <div class="course-nav"></div>
-<noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+<noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 
 <div class="xshell">
 
@@ -433,12 +433,12 @@ document.addEventListener('DOMContentLoaded', function(){
     // difference between a reminder people act on and one they turn off.
     if(window.LevlReminders){
       window.LevlReminders.report('nremt', {
-        due: due, label: 'NREMT-EMT Prep', url: '/nremt/practice.html?start=spaced'
+        due: due, label: 'NREMT-EMT Prep', url: '/nremt/review.html?start=spaced'
       });
     }
     if(due > 0){
       cta.textContent = 'Continue \u2014 ' + due + ' due for review';
-      cta.href = 'practice.html?start=spaced';
+      cta.href = 'review.html?start=spaced';
       return;
     }
     // Nothing waiting: leave the markup's own new-visitor wording alone.

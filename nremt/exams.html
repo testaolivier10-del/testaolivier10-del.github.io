@@ -9,17 +9,17 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free NREMT-EMT Practice Test — 2,106 Questions</title>
-<meta name="description" content="Free NREMT-EMT practice questions: a 2,106-question bank, domain drills, weak-spot practice, flashcards and a missed-question queue. No account needed.">
-<link rel="canonical" href="https://levlprep.com/nremt/practice.html">
+<title>NREMT-EMT Practice Exam — Timed, 100 Questions</title>
+<meta name="description" content="A free timed NREMT-EMT practice exam: 100 questions in the real domain mix, a two-hour clock, scored by domain, resumable if you leave.">
+<link rel="canonical" href="https://levlprep.com/nremt/exams.html">
 <meta property="og:site_name" content="LevlPrep">
 <meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:title" content="Free NREMT-EMT Practice Test — 2,106 Questions">
-<meta property="og:description" content="A 2,106-question bank with 4 difficulty levels, select-N and sequencing item types, domain drills, weak-spot practice, flashcards, and a missed-question review queue — free, no account needed.">
-<meta property="og:url" content="https://levlprep.com/nremt/practice.html">
+<meta property="og:title" content="NREMT-EMT Practice Exam — Timed, 100 Questions">
+<meta property="og:description" content="A free timed NREMT-EMT practice exam: 100 questions in the real domain mix, a two-hour clock, scored by domain, resumable if you leave.">
+<meta property="og:url" content="https://levlprep.com/nremt/exams.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
@@ -43,10 +43,10 @@
   "@graph": [
     {
       "@type": "LearningResource",
-      "@id": "https://levlprep.com/nremt/practice.html#resource",
-      "name": "NREMT-EMT practice drills",
-      "url": "https://levlprep.com/nremt/practice.html",
-      "description": "Free NREMT-EMT practice questions: 2,106 across 4 difficulty levels, domain drills, weak-spot practice and a missed-question review queue. No account needed, nothing to install.",
+      "@id": "https://levlprep.com/nremt/exams.html#resource",
+      "name": "NREMT-EMT timed practice exam",
+      "url": "https://levlprep.com/nremt/exams.html",
+      "description": "A free timed NREMT-EMT practice exam: 100 questions in the real domain mix, a two-hour clock and a score by domain. No account needed.",
       "learningResourceType": "Practice test",
       "educationalLevel": "Professional certification",
       "inLanguage": "en",
@@ -76,8 +76,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "NREMT-EMT practice drills",
-          "item": "https://levlprep.com/nremt/practice.html"
+          "name": "NREMT-EMT timed practice exam",
+          "item": "https://levlprep.com/nremt/exams.html"
         }
       ]
     }
@@ -85,7 +85,7 @@
 }
 </script>
 </head>
-<body data-runner="practice">
+<body data-runner="exams">
 <div id="site-header"></div>
 <div class="course-nav"></div>
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
@@ -94,60 +94,26 @@
   <div id="introScreen">
     <div class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
-      <h1>Practice</h1>
-      <p class="lede">Drills and weak-spot sets from the 2,106-question bank, in multiple-choice, select-all-that-apply and drag-to-order formats. The timed exam has its own tab, <a href="exams.html">Exams</a>, and the spaced queue is under <a href="review.html">Review</a>.</p>
+      <h1>Exams</h1>
+      <p class="lede">A full 100-question exam in the real test&rsquo;s domain mix, against a two-hour clock, scored by domain. Leave mid-way and it waits here for you.</p>
     </div>
-
-    <div id="streakWidget"></div>
 
     <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
       <div class="resume-exam-text" id="resumeExamText"></div>
       <div class="resume-exam-actions">
-        <button class="primary" id="resumeExamBtn">Resume Exam</button>
+        <button class="primary" id="resumeExamBtn">Resume</button>
         <button class="exit-link" id="discardExamBtn">Discard</button>
       </div>
     </div>
 
-    <div class="mode-grid">
-
+    <div class="mode-grid mode-grid--solo">
       <div class="mode-card mode-card--primary">
-        <div class="k">Weak spots <span class="adaptive-tag">retargets live</span></div>
-        <h2>Weak-spot practice</h2>
-        <p>Weighted toward the domains and questions you’ve missed.</p>
+        <div class="k">Full length</div>
+        <h2>Timed exam</h2>
+        <p>100 questions in the exam&rsquo;s domain mix, scored by domain.</p>
         <div class="spacer"></div>
-        <div class="meta">Re-targets after<br>every question</div>
+        <div class="meta">100 q &middot; 2:00:00 &middot; ~72 s/q<br>pool of <span id="poolCount">2,106</span></div>
         <div class="controls">
-          <select id="adaptiveLength" aria-label="Weak-spot practice length">
-            <option value="15">15 questions</option>
-            <option value="20" selected>20 questions</option>
-            <option value="30">30 questions</option>
-            <option value="50">50 questions</option>
-          </select>
-        </div>
-        <button class="start-btn" id="adaptiveStartBtn">Start weak-spot practice</button>
-      </div>
-
-      <div class="mode-card">
-        <div class="k">Short session</div>
-        <h2>Drill one domain</h2>
-        <p>A short set from one domain. Fits a break.</p>
-        <div class="spacer"></div>
-        <div class="meta">pool of <span id="poolCount">2,106</span></div>
-        <div class="controls">
-          <select id="domainSelect" aria-label="Domain">
-            <option value="all">All Domains</option>
-            <option value="Assessment">Assessment</option>
-            <option value="Airway &amp; Respiratory">Airway &amp; Respiratory</option>
-            <option value="Cardiac &amp; Medical">Cardiac &amp; Medical</option>
-            <option value="Trauma">Trauma</option>
-            <option value="OB/Peds &amp; Special Populations">OB/Peds &amp; Special Populations</option>
-            <option value="EMS Operations">EMS Operations</option>
-          </select>
-          <select id="domainLength" aria-label="Drill length">
-            <option value="10">10 questions</option>
-            <option value="20" selected>20 questions</option>
-            <option value="30">30 questions</option>
-          </select>
           <select id="difficultySelect" aria-label="Difficulty">
             <option value="all">All levels</option>
             <option value="easy">Easy only</option>
@@ -156,39 +122,29 @@
             <option value="expert">Expert only</option>
           </select>
         </div>
-        <button class="start-btn" id="domainStartBtn">Start domain quiz</button>
-        <button class="review-btn" id="flashcardBtn" style="margin-top:10px">Flip through as cards</button>
+        <label class="realistic-toggle" for="realisticMode">
+          <input type="checkbox" id="realisticMode" checked>
+          <span><strong>Exam-realistic</strong> &mdash; no flagging, no going back, like the real thing</span>
+        </label>
+        <button class="start-btn" id="startBtn">Start timed exam</button>
       </div>
 
-      <a class="mode-card mode-card--link" href="flashcards.html">
-        <div class="k">Flashcards</div>
-        <h2>Spaced flashcards</h2>
-        <p>Short facts on cards, each one coming back just before you would forget it.</p>
+      <div class="mode-card">
+        <div class="k">Before the day</div>
+        <h2>How the real exam works</h2>
+        <p>The real NREMT is adaptive: 70 to 120 questions, no going back. This one is a fixed 100, so it trains pacing and stamina rather than the algorithm.</p>
         <div class="spacer"></div>
-        <span class="go">Open flashcards &rarr;</span>
-      </a>
-
-    </div>
-
-    <div class="review-row" id="reviewRow" hidden>
-      <button class="review-btn" id="reviewBtn">
-        <span>Review missed</span>
-        <span class="count" id="missedCount">0</span>
-      </button>
-      <button class="review-btn" id="flaggedReviewBtn">
-        <span>Review flagged</span>
-        <span class="count" id="flaggedCount">0</span>
-      </button>
-    </div>
-
-    <div class="runner-links">
-      <a class="runner-link" href="review.html"><b>Review</b><span><span data-due="all">0</span> due for another look</span></a>
-      <a class="runner-link" href="exams.html"><b>Exams</b><span>The timed 100-question exam</span></a>
+        <a class="btn-press sm alt" href="exam-day.html">Read about exam day</a>
+      </div>
     </div>
 
     <div class="intro-row">
       <div id="readinessCard"></div>
-      <div id="weakDomainsPanel"></div>
+      <div>
+        <div class="best-score" id="bestScoreLine"></div>
+        <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
+        <div class="progress-panel" id="progressPanel" style="display:none;"></div>
+      </div>
     </div>
   </div>
 

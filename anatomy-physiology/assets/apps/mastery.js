@@ -116,6 +116,9 @@
     if(firstUnstarted && !isNew) steps.push('<li><a href="' + esc(BASE + 'lessons/' + firstUnstarted.id + '.html') + '"><b>Next new topic: ' + esc(firstUnstarted.title) + '</b></a><span>Topic ' + firstUnstarted.n + ', the first one you have not started.</span></li>');
     if(steps.length && !isNew) html += '<section class="panel anp-db-next" aria-labelledby="anp-db-next-h"><h2 id="anp-db-next-h">Study next</h2><ul class="anp-db-nextlist">' + steps.slice(0, 4).join('') + '</ul></section>';
 
+    // The exam-date countdown (../../assets/exam-date.js), mounted below.
+    html += '<div id="anpExamDate"></div>';
+
     html += '<div class="anp-db-grid"><div class="anp-db-col">';
 
     /* --- weakest topics and core concepts --- */
@@ -194,6 +197,16 @@
 
     html += '</div></div>';
     app.innerHTML = html;
+    // Per day: the built topics not yet strong (60%), over the days left.
+    if(window.LevlExamDate) window.LevlExamDate.mount(document.getElementById('anpExamDate'), {
+      subject: 'anp',
+      links: { review: BASE + 'review.html', exams: BASE + 'exams.html' },
+      target: function(days){
+        var left = builtTopics.filter(function(t){ return A.topicMastery(t.id).value < 0.6; }).length;
+        if(!left) return { done: 'Every built topic is at strong or better. Keep Review clear and take a cumulative exam.' };
+        return { n: Math.ceil(left / days), unit: left === 1 ? 'topic' : 'topics', why: 'brought to strong covers the ' + left + ' not there yet' };
+      }
+    });
   }
 
   render();

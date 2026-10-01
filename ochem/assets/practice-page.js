@@ -143,6 +143,10 @@
     // implementations of it would drift apart.
     { mode:'review', title:'Spaced review', href:'review.html',
       desc:'Your due queue, on the Review page.' },
+    // Flashcards used to be a tab of their own; they are a way of practicing,
+    // so they are a mode here (and a link on Review).
+    { mode:'flashcards', title:'Flashcards', href:'flashcards.html',
+      desc:'Concepts, pKa, IR and NMR values and reagents, on spaced cards.' },
     { mode:'topic', title:'Pick a topic',
       desc:'One topic, at a difficulty you choose.' },
     { mode:'quick', title:'Quick 5',
@@ -219,7 +223,7 @@
     html += '<p style="margin-top:18px;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;">' +
       esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
       ' interactive. ') +
-      'Your concept map is on <a href="mastery.html">Mastery</a>.</p>';
+      'Your concept map is on the <a href="dashboard.html">Dashboard</a>.</p>';
     html += '</div><aside class="practice-side">';
     html += '<div class="section-head">Your numbers</div>' + snapshotHtml();
 
@@ -457,7 +461,7 @@
     html += '<div class="actions" style="margin-top:20px;justify-content:flex-start;flex-wrap:wrap;">' +
       (lead ? '<button class="btn-press" id="sumNext">' + esc(lead.cta) + '</button>' : '') +
       '<button class="btn-press alt" id="sumAgain">Practice again</button>' +
-      '<a href="mastery.html" class="btn-press alt">View mastery</a>' +
+      '<a href="dashboard.html" class="btn-press alt">View dashboard</a>' +
     '</div>';
 
     // The Premium waitlist; see assets/premium.js. Asks, locks nothing.

@@ -1,4 +1,4 @@
-/* Renders the mastery dashboard on mastery.html.
+/* Renders the mastery dashboard on dashboard.html.
 
    This page used to report OchemCurriculum lesson scores — how you did on
    the check questions inside each lesson, averaged per topic. That was the

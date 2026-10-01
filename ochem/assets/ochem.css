@@ -597,7 +597,7 @@ a.mode-card{text-decoration:none;display:block;}
 .oarrow:hover .oarrow-line{stroke-width:3.5;}
 
 /* ---------------------------------------------------------------------
-   Progression panel (mastery.html, rendered by assets/game-panel.js).
+   Progression panel (dashboard.html, rendered by assets/game-panel.js).
    Reuses the shared .badge/.badge-grid styles from the site theme for the
    achievement row; everything below is the level card, the two quest cards
    and the concept-tier bars.

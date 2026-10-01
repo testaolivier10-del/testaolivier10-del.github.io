@@ -100,7 +100,7 @@
         (up.next
           ? '<p>The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '') + '</p>'
           : '<p>Nothing is scheduled. Every question you miss, in a lesson, in practice, in an exam or in a tool, lands here and comes back just before you would forget it.</p>') +
-        '<p class="anp-rv-links"><a class="btn-press" href="' + BASE + 'practice.html">Practice</a> <a class="btn-outline" href="' + BASE + 'learn.html">Next lesson</a></p></div></div>';
+        '<p class="anp-rv-links"><a class="btn-press" href="' + BASE + 'practice.html">Practice</a> <a class="btn-outline" href="' + BASE + 'learn.html">Next lesson</a> <a class="btn-outline" href="' + BASE + 'flashcards.html">Flashcards</a></p></div></div>';
       app.innerHTML = html;
       // Something due within the hour: show it the moment it is due.
       clearTimeout(refreshTimer);
@@ -116,6 +116,8 @@
         (qs.length > SESSION_CAP ? '<button type="button" class="btn-outline" data-n="' + qs.length + '">Review all ' + qs.length + '</button>' : '') +
       '</div></div></div>';
     if(tools.length) html += '<h2 class="anp-rv-h">Due in the tools</h2><ul class="anp-rv-tools">' + tools.map(toolLine).join('') + '</ul>';
+    // Flashcards keep their own spaced schedule, on their own page.
+    html += '<p class="anp-small anp-rv-fc">The glossary flashcards keep a schedule of their own: <a href="' + BASE + 'flashcards.html">open the flashcards</a>.</p>';
     app.innerHTML = html;
     app.querySelectorAll('[data-n]').forEach(function(b){
       b.addEventListener('click', function(){ start(+b.getAttribute('data-n')); });

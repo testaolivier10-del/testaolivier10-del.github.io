@@ -800,7 +800,7 @@ ${homeSample(depth)}
       <li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary and comparison tables.</span></a></li>
       <li><a href="glossary.html"><b>Glossary</b><span>Every term, with word roots and where it is taught.</span></a></li>
       <li><a href="concepts/index.html"><b>Core concepts</b><span>${HOME_WORDS[map.coreConcepts.length] || map.coreConcepts.length} ideas that explain every system.</span></a></li>
-      <li><a href="mastery.html"><b>Dashboard</b><span>Mastery by topic, system and core concept.</span></a></li>
+      <li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by topic, system and core concept.</span></a></li>
     </ul>
   </section>
 
@@ -855,7 +855,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 ${footer(depth)}
 <link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script] })}
+${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script] })}
 </body>
 </html>
 `;
@@ -973,7 +973,7 @@ function toolsHubMount() {
   <ul class="anp-hub" aria-label="More tools">
     ${cards}
   </ul>
-  <p class="anp-hub-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="mastery.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
+  <p class="anp-hub-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
   `;
 }
 
@@ -991,6 +991,24 @@ const APP_EXTRAS = {
 };
 
 for (const a of PAGES.apps) put(`${a.slug}.html`, appShell(a, { path: `${a.slug}.html`, depth: '', h1: a.h1, eyebrow: COURSE_NAME, lede: a.desc, section: a.section, ...(APP_EXTRAS[a.slug] ? APP_EXTRAS[a.slug]() : {}) }));
+// Old URLs of renamed pages: a stub that forwards the query string and hash.
+// mastery.html became dashboard.html when every course's progress tab became
+// "Dashboard".
+const RENAMED = { mastery: 'dashboard' };
+for (const [from, to] of Object.entries(RENAMED)) put(`${from}.html`, `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>location.replace("${to}.html" + location.search + location.hash);</script>
+<meta http-equiv="refresh" content="0; url=${to}.html">
+<link rel="canonical" href="${SITE}${BASE}${to}.html">
+<title>Redirecting…</title>
+</head>
+<body>
+<p>This page has moved. <a href="${to}.html">Continue to ${to}.html</a></p>
+</body>
+</html>
+`);
 for (const t of PAGES.tools) put(`tools/${t.slug}.html`, appShell(t, { path: `tools/${t.slug}.html`, depth: '../', h1: t.name, eyebrow: 'A&P tool', lede: t.blurb, section: 'tools', isTool: true }));
 
 /* ------------------------------------------------------------ runtime */

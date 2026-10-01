@@ -32,6 +32,7 @@
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/exam-date.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Dashboard layout. Panels, stat cards, tracks, calendar and badges all come
@@ -167,7 +168,7 @@
 <body>
   <div id="site-header"></div>
 <div class="course-nav"></div>
-  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
 
   <div class="page-head">
@@ -207,6 +208,8 @@
     </div>
 
     <div class="dash-col">
+      <div id="examDateCard"></div>
+
       <div id="levelSection" style="margin-bottom:20px">
         <div id="levelBox"></div>
       </div>
@@ -507,7 +510,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const r = computeReadiness();
   const readinessBox = document.getElementById('readinessBox');
   if(!r.available){
-    readinessBox.innerHTML = `<div class="empty-note">Take a full <a href="practice.html">practice exam</a> to unlock your readiness score.</div>`;
+    readinessBox.innerHTML = `<div class="empty-note">Take a full <a href="exams.html">timed exam</a> to unlock your readiness score.</div>`;
   } else {
     const subParts = [`Recent average ${r.weightedAvg}% across ${r.attempts} full exam${r.attempts===1?'':'s'}`];
     if(r.weakestDomain) subParts.push(`weakest area: ${r.weakestDomain} (${r.weakestPct}%)`);
@@ -605,7 +608,8 @@ document.addEventListener('DOMContentLoaded', function(){
     const decay = Math.floor(daysSince/4);
     const effective = Math.max(0, (rec.level||0) - decay);
     levels[Math.min(5, Math.max(0, effective))]++;
-    if(rec.level > 0 && effective === 0) dueCount++;
+    // Same rule as the Review queue (practice-engine.js loadDueForReview).
+    if(effective < 5) dueCount++;
   });
   const totalTracked = Object.keys(mastery).length;
   if(totalTracked === 0){
@@ -619,10 +623,29 @@ document.addEventListener('DOMContentLoaded', function(){
       </div>
       <div style="height:22px"></div>
       <div class="cta-row">
-        <a class="btn-press sm" href="practice.html">Review missed questions</a>
+        <a class="btn-press sm" href="review.html">Start review</a>
         <a class="btn-outline" href="practice.html" style="padding:11px 20px;font-size:13.5px">Weak-spot practice</a>
       </div>
     `;
+  }
+
+  // ---- Exam date (assets/exam-date.js): the countdown that replaced the
+  // Study Plan page. The per-day number is the part of the bank not yet
+  // answered, spread over the days left. practice-engine.js records the bank's
+  // size, so this page does not download 1 MB of questions to count them.
+  if(window.LevlExamDate){
+    window.LevlExamDate.mount(document.getElementById('examDateCard'), {
+      subject: 'nremt',
+      links: { review: 'review.html', exams: 'exams.html' },
+      target: function(days){
+        let bank = 0;
+        try{ bank = parseInt(localStorage.getItem('nremt_bank_size'), 10) || 0; }catch(e){}
+        const left = Math.max(0, bank - Object.keys(mastery).length);
+        if(!bank) return { n: hubStreak().goal || 20, unit: 'questions', why: 'is your daily goal' };
+        if(!left) return { done: 'You have answered every question in the bank. Days from here are for Review and timed exams.' };
+        return { n: Math.ceil(left / days), unit: 'new questions', why: 'covers the ' + left.toLocaleString() + ' you have not answered yet, plus whatever Review has due' };
+      }
+    });
   }
 });
 </script>

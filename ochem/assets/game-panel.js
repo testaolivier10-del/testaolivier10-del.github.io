@@ -1,4 +1,4 @@
-/* The progression panel at the top of mastery.html.
+/* The progression panel at the top of dashboard.html.
 
    Everything here is a view over state something else already owns: the level
    comes from the shared hub engine, the badges and quest from ochem-xp.js,
