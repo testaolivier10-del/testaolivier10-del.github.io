@@ -35,8 +35,12 @@ const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty
 
 const SITE = 'https://levlprep.com';
 const DAY_MS = 86400000;
-// Standard Webhooks' own tolerance, and Polar's SDK uses that library as is.
-const WEBHOOK_TOLERANCE_S = 5 * 60;
+// Standard Webhooks suggests five minutes, but Polar's "Redeliver" resends an
+// event with its original timestamp, so a failed order could never be
+// recovered once five minutes had passed. Three days is safe here because a
+// replayed event cannot do anything twice: an order is recorded once (order_id
+// is unique) and a refund only touches a pass not yet refunded.
+const WEBHOOK_TOLERANCE_S = 3 * 24 * 60 * 60;
 
 /* Where Polar may send the student back to. Only our own site: an open
    redirect on a payment page is a phishing kit somebody else gets for free. */
@@ -139,36 +143,68 @@ function bytesToBase64(bytes) {
   return btoa(s);
 }
 
-/* Standard Webhooks, keyed the way Polar keys it. Polar's SDK
-   (polar-js src/webhooks.ts, validateEvent) does
-     new Webhook(Buffer.from(secret, 'utf-8').toString('base64'))
-   and the library base64-decodes that again, so the HMAC key is simply the
-   secret string's own bytes, `whsec_` prefix (if any) included.
+/* Standard Webhooks. Polar has used two keys, and which one signs depends on
+   when the endpoint's secret was made (polar.sh/docs, webhook delivery):
+
+   - secrets from September 8, 2026 on: plain Standard Webhooks. Drop the
+     `whsec_` prefix and base64-decode the rest; those bytes are the key.
+   - older secrets: the key is the UTF-8 bytes of the whole `whsec_...`
+     string (polar-js used to base64-encode it before handing it over).
+
+   Polar's own SDKs try both, so this does too. Shipping only the second one
+   rejected every real order from a new endpoint with "Bad signature".
    Signed content: `${webhook-id}.${webhook-timestamp}.${raw body}`; the
    header holds space-separated `v1,<base64>` entries, any of which may match. */
+function webhookKeys(secret) {
+  const keys = [];
+  const body = secret.startsWith('whsec_') ? secret.slice(6) : secret;
+  try {
+    const bin = atob(body);
+    if (bin.length) keys.push(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+  } catch { /* not base64: only the legacy key applies */ }
+  keys.push(new TextEncoder().encode(secret));
+  return keys;
+}
+
 export async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.floor(Date.now() / 1000)) {
   const get = (k) => (typeof headers.get === 'function' ? headers.get(k) : headers[k]) || '';
   const id = get('webhook-id');
   const ts = get('webhook-timestamp');
   const sigs = get('webhook-signature');
-  if (!secret || !id || !ts || !sigs) return false;
+  // A secret pasted into the dashboard can pick up a space or a newline.
+  secret = String(secret || '').trim();
+  if (!secret || !id || !ts || !sigs) {
+    console.log('premium webhook: missing', JSON.stringify({ secret: !!secret, id: !!id, ts: !!ts, sigs: !!sigs }));
+    return false;
+  }
 
   const t = Number(ts);
-  if (!Number.isInteger(t) || Math.abs(nowSeconds - t) > WEBHOOK_TOLERANCE_S) return false;
+  if (!Number.isInteger(t) || Math.abs(nowSeconds - t) > WEBHOOK_TOLERANCE_S) {
+    console.log('premium webhook: timestamp outside tolerance', ts);
+    return false;
+  }
 
-  const key = await crypto.subtle.importKey(
-    'raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'],
-  );
-  const mac = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(`${id}.${ts}.${rawBody}`));
-  const expected = bytesToBase64(new Uint8Array(mac));
+  const signed = new TextEncoder().encode(`${id}.${ts}.${rawBody}`);
+  const expected = [];
+  for (const raw of webhookKeys(secret)) {
+    const key = await crypto.subtle.importKey('raw', raw, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    expected.push(bytesToBase64(new Uint8Array(await crypto.subtle.sign('HMAC', key, signed))));
+  }
 
-  return sigs.split(' ').some((entry) => {
+  const ok = sigs.split(' ').some((entry) => {
     const [version, sig] = entry.split(',');
-    if (version !== 'v1' || !sig || sig.length !== expected.length) return false;
-    let diff = 0;
-    for (let i = 0; i < sig.length; i++) diff |= sig.charCodeAt(i) ^ expected.charCodeAt(i);
-    return diff === 0;
+    if (version !== 'v1' || !sig) return false;
+    return expected.some((exp) => {
+      if (sig.length !== exp.length) return false;
+      let diff = 0;
+      for (let i = 0; i < sig.length; i++) diff |= sig.charCodeAt(i) ^ exp.charCodeAt(i);
+      return diff === 0;
+    });
   });
+  // Never logs the secret; the prefix and length are enough to tell a
+  // pasted access token or a truncated paste from the real thing.
+  if (!ok) console.log('premium webhook: no signature matched', JSON.stringify({ secretPrefix: secret.slice(0, 6), secretLength: secret.length }));
+  return ok;
 }
 
 /* A pass bought while one is still running starts when that one ends, so
