@@ -30,7 +30,7 @@
    cannot drift far. */
 import { sb, MAX_UNANSWERED, EMAIL_BATCH } from './store.js';
 
-const TEMPLATE = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}}</title></head><body style="margin:0;padding:0;background:#F3F6F4;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{BODY}}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F4;padding:32px 16px;"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#FFFFFF;border-radius:16px;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"><tr><td style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;padding-bottom:14px;">LevlPrep</td></tr><tr><td style="font-size:21px;font-weight:800;color:#17241F;line-height:1.3;padding-bottom:8px;">{{TITLE}}</td></tr><tr><td style="font-size:15px;font-weight:400;color:#526C66;line-height:1.55;padding-bottom:24px;">{{BODY}}</td></tr><tr><td style="padding-bottom:26px;"><a href="{{URL}}" style="display:inline-block;background:#127264;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;">Pick up where you left off</a></td></tr><tr><td style="font-size:12px;font-weight:400;color:#8A9A95;line-height:1.6;border-top:1px solid #E4ECE8;padding-top:18px;">You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.<br><br><a href="{{UNSUB}}" style="color:#526C66;">Stop sending these</a> &mdash; one click, no sign-in.</td></tr></table></td></tr></table></body></html>`;
+const TEMPLATE = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}}</title></head><body style="margin:0;padding:0;background:#F3F6F4;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{BODY}}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F4;padding:32px 16px;"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#FFFFFF;border-radius:16px;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"><tr><td style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;padding-bottom:14px;">LevlPrep</td></tr><tr><td style="font-size:21px;font-weight:800;color:#17241F;line-height:1.3;padding-bottom:8px;">{{TITLE}}</td></tr><tr><td style="font-size:15px;font-weight:400;color:#526C66;line-height:1.55;padding-bottom:24px;">{{BODY}}</td></tr><tr><td style="padding-bottom:26px;"><a href="{{URL}}" style="display:inline-block;background:#127264;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;">{{CTA}}</a></td></tr><tr><td style="font-size:12px;font-weight:400;color:#8A9A95;line-height:1.6;border-top:1px solid #E4ECE8;padding-top:18px;">{{FOOTER}}</td></tr></table></td></tr></table></body></html>`;
 
 function esc(s) {
   return String(s == null ? '' : s)
@@ -38,15 +38,29 @@ function esc(s) {
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
 
+/* `footer` is HTML and is inserted as is, so it is only ever one of the
+   fixed strings in this file; everything else is escaped. */
+function fill({ title, body, url, cta, footer }) {
+  return TEMPLATE
+    .replace(/\{\{TITLE\}\}/g, esc(title))
+    .replace(/\{\{BODY\}\}/g, esc(body))
+    .replace(/\{\{URL\}\}/g, esc(url))
+    .replace(/\{\{CTA\}\}/g, esc(cta))
+    .replace(/\{\{FOOTER\}\}/g, footer);
+}
+
 function render(row, env) {
   const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
   const unsub = `${site}/api/unsubscribe?t=${encodeURIComponent(row.unsub_token)}`;
   const url = row.url && row.url.startsWith('http') ? row.url : site + (row.url || '/');
-  return TEMPLATE
-    .replace(/\{\{TITLE\}\}/g, esc(row.title))
-    .replace(/\{\{BODY\}\}/g, esc(row.body))
-    .replace(/\{\{URL\}\}/g, esc(url))
-    .replace(/\{\{UNSUB\}\}/g, esc(unsub));
+  return fill({
+    title: row.title,
+    body: row.body,
+    url,
+    cta: 'Pick up where you left off',
+    footer: 'You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.' +
+      `<br><br><a href="${esc(unsub)}" style="color:#526C66;">Stop sending these</a> &mdash; one click, no sign-in.`,
+  });
 }
 
 async function send(row, env) {
@@ -81,6 +95,35 @@ async function send(row, env) {
     gone: res.status === 422 || res.status === 400,
     status: res.status,
   };
+}
+
+/* The one email about a purchase: a pass is about to end. Called by
+   runPassEnding() in src/premium.js, which decides who and records that it
+   went. It is transactional, sent once per pass, and not covered by the
+   study-reminder opt-out (that is a separate list somebody joined), so there
+   is no unsubscribe link; the footer says why in one line. */
+export async function sendPassEndingEmail(env, { to, courseName, endsOn }) {
+  const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
+  const title = `Your ${courseName} pass ends on ${endsOn}`;
+  const body = `Your LevlPrep pass for ${courseName} ends on ${endsOn}. ` +
+    'Your progress is kept either way, and if you extend from your account page you pick up exactly where you left off.';
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: env.REMINDER_FROM || 'LevlPrep <reminders@levlprep.com>',
+      to: [to],
+      subject: title,
+      html: fill({
+        title,
+        body,
+        url: `${site}/account.html`,
+        cta: 'Extend your pass',
+        footer: 'You’re getting this one-time notice because a pass you bought is ending. It’s about your purchase, not marketing, and we send it once per pass.',
+      }),
+    }),
+  });
+  return { ok: res.ok, gone: res.status === 422 || res.status === 400, status: res.status };
 }
 
 /* One click out of the email, from the footer link. GET, because that is what

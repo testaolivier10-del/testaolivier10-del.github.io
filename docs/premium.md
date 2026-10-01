@@ -2,6 +2,8 @@
 
 **Status: launched 2026-10-01.** `LAUNCHED` is true; a real purchase and full refund were tested end to end. Polar signs this endpoint with the Standard Webhooks key (secrets made from Sept 8, 2026), and Redeliver resends with the original timestamp; the Worker handles both (worker/src/premium.js). Existing accounts got the 30-day launch grant.
 
+**Hardening (October 2026):** the Worker cron emails once when a pass is 3 days from ending (`ending_reminded_at`), reconciles Polar orders hourly (missed `order.paid`/`order.refunded`), and revokes passes for lost disputes via `GET /v1/disputes/` because Polar has no dispute webhook. The token needs `orders:read` and `disputes:read`; see worker/README.md, Premium.
+
 The free/premium split is built into every course but not switched on:
 nothing is locked and nothing charges anyone until `LAUNCHED` in
 `assets/premium.js` is flipped (see the launch checklist). This file is the

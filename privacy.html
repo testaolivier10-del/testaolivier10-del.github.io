@@ -68,7 +68,7 @@
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
     <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one. <a href="#reminders">Study reminders</a> are off unless you turn them on.</p>
-    <p class="updated">Last updated 22 September 2026</p>
+    <p class="updated">Last updated 1 October 2026</p>
   </div>
 
   <div class="xsection">
@@ -95,6 +95,7 @@
         <h2>One anonymous counter</h2>
         <p>Each page load increments a counter so we can see which pages get used. It records <strong>the page path and the date, and nothing else</strong> — no IP address, no cookie, no user id, no session id, no device fingerprint, no referrer. There is no way to tell two visits apart, or to tell whether a visit was yours.</p>
         <p>It works by calling a single database function that can only do one thing: add one to a <code>(path, day)</code> total. The table behind it is locked so that nothing — including this website — can read it back or write to it any other way.</p>
+        <p>Premium works the same way: when someone meets a Premium limit, opens the Premium dialog, starts a checkout or pays, a <code>(course, step, day)</code> total goes up by one. Again nothing else is recorded, and turning off site analytics below turns this off too.</p>
 
         <h2 id="errors">When a page breaks</h2>
         <p>If a page hits a JavaScript error, the site sends us a short report so it can be fixed. This matters here because the site is a few hundred hand-written pages with no framework behind them: a page can break in a way that shows you an ordinary-looking screen where nothing works, and without this the only person who knows is you.</p>

@@ -16,9 +16,13 @@
      premium_passes; a refunded one gets refunded_at.
 
    Payment is confirmed by the webhook alone, never by the redirect back to the
-   site. ?premium=success in a URL is something anybody can type. */
+   site. ?premium=success in a URL is something anybody can type.
 
-import { sb } from './store.js';
+   The cron (bottom of this file) sends the one "your pass ends soon" email
+   and, hourly, reconciles against Polar's own order and dispute records. */
+
+import { sb, EMAIL_BATCH } from './store.js';
+import { sendPassEndingEmail } from './email.js';
 
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it).
    `days` is what one purchase adds. Semester is five months, so a pass bought
@@ -329,13 +333,16 @@ async function recordPaid(env, order, now) {
   return { status: 200, body: { ok: true } };
 }
 
-async function recordRefund(env, order, now) {
-  // Only a full refund takes the pass away. A partial one is a goodwill
-  // gesture, and revoking access for it would turn that into a penalty.
-  const full = order.status === 'refunded'
+// Only a full refund takes the pass away. A partial one is a goodwill
+// gesture, and revoking access for it would turn that into a penalty.
+function isFullRefund(order) {
+  return order.status === 'refunded'
     || (Number.isInteger(order.refunded_amount) && Number.isInteger(order.total_amount)
         && order.total_amount > 0 && order.refunded_amount >= order.total_amount);
-  if (!order.id || !full) return { status: 200, body: { ok: true, ignored: 'partial' } };
+}
+
+async function recordRefund(env, order, now) {
+  if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
   const res = await sb(env,
     `premium_passes?order_id=eq.${encodeURIComponent(order.id)}&refunded_at=is.null`, {
       method: 'PATCH',
@@ -344,6 +351,23 @@ async function recordRefund(env, order, now) {
     });
   if (!res.ok) throw new Error(`refund pass ${res.status}`);
   return { status: 200, body: { ok: true } };
+}
+
+/* Revoke the passes of these orders, the same way a refund does: refunded_at
+   set, so my_premium() stops counting them. Returns how many changed. */
+async function revokeOrders(env, orderIds, now) {
+  let changed = 0;
+  for (let i = 0; i < orderIds.length; i += 100) {
+    const list = orderIds.slice(i, i + 100).map((id) => `"${String(id).replace(/"/g, '')}"`).join(',');
+    const res = await sb(env, `premium_passes?order_id=in.(${encodeURIComponent(list)})&refunded_at=is.null&select=order_id`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
+    });
+    if (!res.ok) throw new Error(`revoke passes ${res.status}`);
+    changed += (await res.json()).length;
+  }
+  return changed;
 }
 
 /* Returns { status, body }. A 5xx makes Polar retry, which is what we want
@@ -366,4 +390,206 @@ export async function premiumWebhook(request, env, now = Date.now()) {
     return { status: 500, body: { error: 'Try again' } };
   }
   return { status: 202, body: { ok: true, ignored: event?.type || 'unknown' } };
+}
+
+/* ---------------------------------------------------------------------------
+   The cron half (index.js scheduled()).
+
+   runPassEnding    every tick: one email when a pass is about to end.
+   reconcilePolar   hourly: whatever the webhook missed, from Polar's own
+                    records. Both are idempotent, so a tick that dies halfway
+                    is simply finished by the next one.
+   --------------------------------------------------------------------------- */
+
+/* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
+   checks it). */
+export const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
+
+export const ENDING_NOTICE_DAYS = 3;
+
+/* "October 3, 2026". UTC, because that is the day the row says. */
+export function endsOnText(iso) {
+  return new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+}
+
+/* Which rows get the notice, from every pass the candidate users hold. Per
+   user and course, only the latest unrefunded pass (paid or 'grant') counts:
+   a pass with a later one queued behind it is not really ending. That latest
+   pass gets the notice if it ends within ENDING_NOTICE_DAYS and has not had
+   it yet. */
+export function passesEnding(rows, now) {
+  const latest = new Map();
+  for (const r of rows) {
+    if (r.refunded_at) continue;
+    const key = `${r.user_id}|${r.course}`;
+    const cur = latest.get(key);
+    if (!cur || Date.parse(r.expires_at) > Date.parse(cur.expires_at)) latest.set(key, r);
+  }
+  return [...latest.values()].filter((r) => {
+    const end = Date.parse(r.expires_at);
+    return !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
+  });
+}
+
+async function userEmail(env, userId) {
+  const res = await fetch(`${env.SUPABASE_URL}/auth/v1/admin/users/${encodeURIComponent(userId)}`, {
+    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` },
+  });
+  if (!res.ok) throw new Error(`admin user ${res.status}`);
+  const user = await res.json();
+  return user?.email || null;
+}
+
+export async function runPassEnding(env, now = Date.now()) {
+  // Same rule as the study reminders: no provider, no noise.
+  if (!env.RESEND_API_KEY || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    return { skipped: 'no email provider configured' };
+  }
+  const from = new Date(now).toISOString();
+  const to = new Date(now + ENDING_NOTICE_DAYS * DAY_MS).toISOString();
+
+  // Who might be due: a cheap first pass over the window.
+  const candRes = await sb(env,
+    `premium_passes?select=user_id&refunded_at=is.null&ending_reminded_at=is.null` +
+    `&expires_at=gt.${from}&expires_at=lte.${to}&order=expires_at.asc&limit=200`);
+  if (!candRes.ok) return { error: `read failed: ${candRes.status}` };
+  const users = [...new Set((await candRes.json()).map((r) => r.user_id))];
+  if (!users.length) return { due: 0 };
+
+  // Everything those users still hold, so a queued later pass is seen.
+  const rowsRes = await sb(env,
+    `premium_passes?select=id,user_id,course,expires_at,refunded_at,ending_reminded_at` +
+    `&refunded_at=is.null&expires_at=gt.${from}&user_id=in.(${users.map(encodeURIComponent).join(',')})`);
+  if (!rowsRes.ok) return { error: `read failed: ${rowsRes.status}` };
+  const due = passesEnding(await rowsRes.json(), now).slice(0, EMAIL_BATCH);
+
+  let sent = 0, noEmail = 0, dropped = 0, failed = 0;
+  for (const row of due) {
+    let result;
+    try {
+      const email = await userEmail(env, row.user_id);
+      if (!email) {
+        noEmail++;
+      } else {
+        result = await sendPassEndingEmail(env, {
+          to: email, courseName: COURSE_NAMES[row.course] || row.course, endsOn: endsOnText(row.expires_at),
+        });
+        if (!result.ok && !result.gone) { failed++; continue; } // next tick retries
+        if (result.ok) sent++; else dropped++;
+      }
+    } catch (err) {
+      console.log('pass ending: failed', row.id, String(err));
+      failed++;
+      continue;
+    }
+    // Recorded on the row, so it goes once. A rejected or missing address is
+    // recorded too: retrying it every fifteen minutes cannot help.
+    await sb(env, `premium_passes?id=eq.${encodeURIComponent(row.id)}&ending_reminded_at=is.null`, {
+      method: 'PATCH',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({ ending_reminded_at: new Date(now).toISOString() }),
+    });
+  }
+  return { due: due.length, sent, noEmail, dropped, failed };
+}
+
+/* Reconciliation. The webhook is the normal path; this is the safety net for
+   a delivery Polar gave up on, a secret pasted wrong, or a Worker that was
+   down. Polar facts (from @polar-sh/sdk 1.0.1, API versions 2026-04 to
+   2027-01):
+
+   - GET /v1/orders/ takes created_after, product_id (repeatable), page,
+     limit and sorting, answers { items, pagination: { total_count,
+     max_page } }, and needs the token scope orders:read. Order.status is
+     draft | pending | paid | refunded | partially_refunded | void, and
+     nothing on an order says "disputed".
+   - Polar sends no webhook for disputes (no dispute.* event type, and
+     order.updated carries no dispute state). Disputes are only readable at
+     GET /v1/disputes/ (scope disputes:read), with status prevented |
+     early_warning | needs_response | under_review | lost | won. A
+     "prevented" dispute is one Polar refunded, so order.refunded already
+     covers it.
+
+   A token without a scope gets 401/403: logged once per run and skipped, so
+   the rest still works. */
+const RECONCILE_HOURS = 48;
+const RECONCILE_MAX_PAGES = 10;
+/* A dispute takes the pass only once it is lost: the money is gone for good.
+   While it is open the student keeps access, so a dispute the merchant wins
+   does not leave them locked out with a "refunded" pass on their account. */
+export const DISPUTE_REVOKES = ['lost'];
+
+async function polarList(env, path, params) {
+  const items = [];
+  for (let page = 1; page <= RECONCILE_MAX_PAGES; page++) {
+    const q = new URLSearchParams();
+    for (const [k, v] of Object.entries({ ...params, page, limit: 100 })) {
+      for (const one of [].concat(v)) q.append(k, String(one));
+    }
+    const res = await fetch(`${polarApi(env)}${path}?${q}`, {
+      headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}` },
+    });
+    if (res.status === 401 || res.status === 403) {
+      console.log('premium reconcile: no access to', path, res.status, '(token scope?)');
+      return null;
+    }
+    if (!res.ok) throw new Error(`polar ${path} ${res.status}`);
+    const data = await res.json();
+    items.push(...(data?.items || []));
+    if (page >= (data?.pagination?.max_page || 1)) break;
+  }
+  return items;
+}
+
+export async function reconcilePolar(env, now = Date.now()) {
+  if (!env.POLAR_ACCESS_TOKEN || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    return { skipped: 'not configured' };
+  }
+  const out = { orders: 0, added: 0, refunded: 0, disputesRevoked: 0 };
+
+  const params = { created_after: new Date(now - RECONCILE_HOURS * 3600000).toISOString(), sorting: '-created_at' };
+  const products = Object.values(productMap(env)).filter(Boolean);
+  if (products.length) params.product_id = products;
+  const orders = await polarList(env, '/v1/orders/', params);
+  if (orders === null) {
+    out.orders = 'no access';
+  } else {
+    out.orders = orders.length;
+    const known = new Map();
+    for (let i = 0; i < orders.length; i += 100) {
+      const ids = orders.slice(i, i + 100).map((o) => `"${String(o.id).replace(/"/g, '')}"`).join(',');
+      const res = await sb(env, `premium_passes?select=order_id,refunded_at&order_id=in.(${encodeURIComponent(ids)})`);
+      if (!res.ok) throw new Error(`read passes ${res.status}`);
+      for (const r of await res.json()) known.set(r.order_id, r);
+    }
+    for (const order of orders) {
+      if (!order?.id) continue;
+      const row = known.get(order.id);
+      if (!row) {
+        // Same as the webhook. A paid order later refunded in full never
+        // needs a pass; a partial refund keeps it, as it does there.
+        if ((order.status === 'paid' || order.status === 'partially_refunded') && !isFullRefund(order)) {
+          const r = await recordPaid(env, order, now);
+          if (r.body.ok && !r.body.duplicate && !r.body.ignored) {
+            out.added++;
+            console.log('premium reconcile: added missing pass', order.id);
+          }
+        }
+      } else if (!row.refunded_at && isFullRefund(order)) {
+        await recordRefund(env, order, now);
+        out.refunded++;
+        console.log('premium reconcile: marked refunded', order.id);
+      }
+    }
+  }
+
+  const disputes = await polarList(env, '/v1/disputes/', { status: DISPUTE_REVOKES, sorting: '-created_at' });
+  if (disputes === null) {
+    out.disputesRevoked = 'no access';
+  } else {
+    const ids = disputes.filter((d) => d?.order_id && DISPUTE_REVOKES.includes(d.status)).map((d) => d.order_id);
+    out.disputesRevoked = await revokeOrders(env, ids, now);
+    if (out.disputesRevoked) console.log('premium reconcile: revoked for lost disputes', out.disputesRevoked);
+  }
+  return out;
 }
