@@ -626,10 +626,10 @@ clinician, and that is the gap no amount of tooling closes.
 |---|---|
 | Named clinical reviewer | The single highest-value item. Four reviews have now bottlenecked on it. |
 | About section with a real name | Best done once a reviewer is named, so the two land together. Placeholder kept here deliberately. |
-| Sound trainer: Hawaii COPD Coalition clips | Re-hosting permission is a question for the rights holder, not a code change. |
 | Whether the state tests supine/seated spinal immobilization stations | Varies by state; needs the local office of EMS. |
 | Three openly licensed recordings: snoring, gurgling, diminished/absent breath sounds | Entries and teaching are on the page; only the audio is missing. Must be openly licensed — not synthesised. |
-| Whether the rhonchi and normal breath clips may be re-hosted | They are embedded as base64, not linked. Licence unestablished. |
+| Two recordings licensed for commercial use: rhonchi and normal breath sounds | The Hawaii COPD Coalition clips (licence never established) were removed 2026-10-01 because the site now sells passes. Re-add with public domain, CC0, CC BY or CC BY-SA audio, credited with title, author, licence and source. |
+| Author names and exact licence versions for the three Wikimedia clips | CC BY-SA needs the author named. Commons was unreachable from the cloud session; check each file page and add them to the credit lines. |
 | Whether drag-to-order items appear on the **EMT** cognitive exam | The 2024 technology-enhanced item changes are documented for AEMT and Paramedic. Could not confirm for EMT from here, so the claim is softened rather than asserted. |
 
 ---
@@ -697,7 +697,8 @@ Sourcing three openly licensed clips is now in **Needs a person**.
 While there, a licensing problem was made explicit rather than left implied: the
 rhonchi and normal breath clips are **embedded in the page as base64**, not
 linked as the credit line implied. The page now says so, says the licence has
-not been established, and gives a route to have them removed.
+not been established, and gives a route to have them removed. (Both clips were
+removed on 2026-10-01, once the site began selling passes.)
 
 ## Phase 4 — New EMT content — **done, except figures**
 

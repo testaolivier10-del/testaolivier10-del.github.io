@@ -27,8 +27,11 @@ is fine; `.ogg` and `.mp3` are the safe pair.
 | wheeze  | `wheeze.ogg`    | Wikimedia Commons, `Wheeze2O.ogg` |
 | crackles| `crackles.ogg`  | Wikimedia Commons, `Crackles_pneumoniaO.ogg` |
 | stridor | `stridor.ogg`   | Wikimedia Commons, `Stridor_NP_OGG_2.ogg` |
-| rhonchi | —               | already inlined as a data URI |
-| normal  | —               | already inlined as a data URI |
+
+Rhonchi and normal breath sounds have no clip: the earlier ones (Hawaii COPD
+Coalition) had no established licence and were removed. A replacement must be
+public domain, CC0, CC BY or CC BY-SA, because the site sells passes; add an
+entry to `SOUNDS` with `localSrc` and a credit (title, author, licence, source).
 
 Keep the `creditUrl` on each entry pointing at the original file page. These
 are freely licensed, not public domain — attribution is a condition, and the

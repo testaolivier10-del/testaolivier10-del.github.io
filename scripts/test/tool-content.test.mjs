@@ -438,8 +438,10 @@ test('every sound in the trainer has a source and a group', () => {
     if(x.group !== 'heart') assert.ok(!x.synth, `${x.id} is a recorded-only sound and must not be generated`);
   }
   // A round offers only its own group, so a group is quizzable only once it has
-  // four playable clips. Airway is described on the page before it reaches that.
-  for(const g of ['lung', 'heart']){
+  // four playable clips. Airway and lung are described on the page before they
+  // reach that (lung dropped to two when the unlicensed rhonchi and normal
+  // clips were removed); the page hides a group's quiz button until then.
+  for(const g of ['heart']){
     const n = s.S.filter(x => x.group === g && x.available).length;
     assert.ok(n >= 4, `only ${n} playable ${g} sounds — too few for a multiple choice`);
   }
@@ -450,7 +452,7 @@ test('missing a sound makes it come back, without taking over the quiz', () => {
   const s = browser().ctx;
   vm.runInContext(src + '\nthis.S=SOUNDS; this.draw=drawSound; this.misses=misses;', s);
 
-  const pool = s.S.filter(x => x.available && x.group === 'lung');
+  const pool = s.S.filter(x => x.available && x.group === 'heart');
   const target = pool[0];
   const rate = () => {
     let hits = 0;
