@@ -261,3 +261,43 @@ One is not a reminder, it is a coin flip against whether they had their phone.
 A daily notification forever is how an app gets its permission revoked — and a
 revoked permission cannot be asked for again. Three days of "you have work
 waiting" and then silence is the most a study app has earned.
+
+---
+
+## Premium
+
+`src/premium.js` sells the passes listed in `../assets/premium.js` through
+**Polar** (merchant of record: it handles sales tax and VAT). Two routes:
+
+- `POST /premium/checkout`: the site sends the student's Supabase session and
+  a pass id; the Worker checks the session with Supabase and returns a Polar
+  checkout URL. Only `https://levlprep.com` is accepted as the return address.
+- `POST /premium/webhook`: Polar reports a payment. The Standard Webhooks
+  signature is checked (and anything older than five minutes refused), then
+  `order.paid` adds a row to `premium_passes` and `order.refunded` (full
+  refunds only) sets its `refunded_at`. A pass bought while another is
+  running starts when that one ends. A redelivered order adds nothing.
+
+Nothing changes until all of this is set; until then checkout answers 503.
+
+1. **Run `scripts/sql/schema.sql`** (the PREMIUM PASSES section).
+2. **Polar → Products → New product**, one per pass: one-time purchase, fixed
+   price. Ids must cover every pass in `PASSES`: `nremt-90`,
+   `ochem-semester`, `ochem-year`, `anp-semester`, `anp-year`. Copy each
+   product's id.
+3. *(Optional)* **Polar → Discounts**: the founding-member discount. Copy its id.
+4. **Polar → Settings → Developers → New token** with `checkouts:write`.
+5. **Polar → Settings → Webhooks → Add endpoint**:
+   - URL `https://levlprep-ask.testaolivier10.workers.dev/premium/webhook`
+   - format **Raw**
+   - events **order.paid** and **order.refunded**
+   Copy the secret it shows.
+6. **Worker → Settings → Variables and Secrets.** Secrets:
+   `POLAR_ACCESS_TOKEN`, `POLAR_WEBHOOK_SECRET` (both copied exactly as
+   shown). Plaintext: `POLAR_PRODUCTS` as JSON,
+   `{"nremt-90":"<product id>", …}`, and if used, `FOUNDING_DISCOUNT_ID`.
+   `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` are the ones reminders use.
+7. Redeploy (paste `dist/worker.js` again), buy a pass in the sandbox first:
+   set `POLAR_API` to `https://sandbox-api.polar.sh` and use sandbox
+   products, token and webhook secret, then switch all four back.
+8. Set `LAUNCHED = true` in `assets/premium.js`.

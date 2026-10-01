@@ -34,9 +34,27 @@ SUPABASE_URL = "https://bsfcqrczehbcctwhxmrj.supabase.co"
 VAPID_PUBLIC_KEY = "BJQrCo49iKi_sn7czvlq2nNFI1G_uy9IJSo_0KruVHaz3Iu9h7Nug8ay2JXbzlaiqFJuULZ1d1Y2Qqbzp_2Psfk"
 VAPID_SUBJECT = "mailto:testaolivier10@gmail.com"
 
+# Premium passes (src/premium.js; setup in README.md, "Premium"). Left
+# commented so nothing changes until Polar is set up: with no product ids,
+# /premium/checkout answers 503 and the site's LAUNCHED switch stays off.
+#
+#   POLAR_PRODUCTS        JSON, pass id -> Polar product id, e.g.
+#                         '{"nremt-90":"<uuid>","ochem-semester":"<uuid>","ochem-year":"<uuid>","anp-semester":"<uuid>","anp-year":"<uuid>"}'
+#   POLAR_API             https://api.polar.sh (the default) or, for testing,
+#                         https://sandbox-api.polar.sh. Products, tokens and
+#                         webhook secrets do not cross between the two.
+#   FOUNDING_DISCOUNT_ID  a Polar discount id applied to every checkout while
+#                         set; unset it when the founding offer ends
+#
+# POLAR_PRODUCTS = ''
+# POLAR_API = "https://api.polar.sh"
+# FOUNDING_DISCOUNT_ID = ""
+
 # Secrets, NOT set here. `wrangler secret put NAME`, or Settings -> Variables
 # -> add as Secret in the dashboard:
 #
 #   VAPID_PRIVATE_KEY      the private half of the pair above
 #   SUPABASE_SERVICE_KEY   service role key; bypasses RLS, so it never goes
 #                          near a browser
+#   POLAR_ACCESS_TOKEN     Polar organization access token (checkouts:write)
+#   POLAR_WEBHOOK_SECRET   the secret Polar shows for the webhook endpoint
