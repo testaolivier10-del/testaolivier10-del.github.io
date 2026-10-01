@@ -41,6 +41,12 @@ jobs:
       # contents list a reader without JavaScript can see.
       - name: the ochem section pages match the curriculum
         run: node scripts/build-notes-pages.mjs --check
+      # The ochem glossary page and the JSON behind its popups are generated
+      # from ochem/data/glossary.json; the check also rejects a term filed under
+      # a topic that does not exist, a spelling claimed by two terms, and a
+      # "see also" that points at nothing.
+      - name: the ochem glossary matches its source
+        run: node scripts/build-ochem-glossary.mjs --check
       # The course map's two silent failure modes: a topic that is a dead link,
       # and a mastery percentage that overstates how much of the course has
       # actually been measured. Neither breaks a page, so nothing else here
@@ -112,6 +118,12 @@ jobs:
       # to avoid; a table restructured under a rule fails the build outright.
       - name: the ochem flashcard deck matches the notes it is read from
         run: node scripts/build-flashcards.mjs --check
+      # The NREMT deck is read out of the glossary, mnemonics and reference
+      # cards, plus authored key facts tied to study-notes sections. A
+      # definition corrected on the glossary and not rebuilt would leave its
+      # card teaching the old one; a term added without a domain fails.
+      - name: the NREMT flashcard deck matches the pages it is read from
+        run: node scripts/build-nremt-flashcards.mjs --check
       # The two files practice.html actually fetches are generated from
       # questions.json. Editing a question without rebuilding them would ship
       # the edit to nobody, silently.

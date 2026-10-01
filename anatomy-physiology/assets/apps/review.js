@@ -116,8 +116,7 @@
         (qs.length > SESSION_CAP ? '<button type="button" class="btn-outline" data-n="' + qs.length + '">Review all ' + qs.length + '</button>' : '') +
       '</div></div></div>';
     if(tools.length) html += '<h2 class="anp-rv-h">Due in the tools</h2><ul class="anp-rv-tools">' + tools.map(toolLine).join('') + '</ul>';
-    // Flashcards keep their own spaced schedule, on their own page.
-    html += '<p class="anp-small anp-rv-fc">The glossary flashcards keep a schedule of their own: <a href="' + BASE + 'flashcards.html">open the flashcards</a>.</p>';
+    html += '<p class="anp-small anp-rv-fc">Glossary terms are on spaced <a href="' + BASE + 'flashcards.html">flashcards</a>.</p>';
     app.innerHTML = html;
     app.querySelectorAll('[data-n]').forEach(function(b){
       b.addEventListener('click', function(){ start(+b.getAttribute('data-n')); });

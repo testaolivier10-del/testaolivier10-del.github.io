@@ -122,7 +122,12 @@
   var PROGRESS_KEYS = [
     'nremt_seen_questions', 'nremt_exam100_missed', 'nremt_exam100_flagged',
     'nremt_exam100_history', 'nremt_exam100_best', 'nremt_mastery',
-    'nremt_domain_stats_all', 'nremt_streak', 'nremt_xp'
+    'nremt_domain_stats_all', 'nremt_streak', 'nremt_xp',
+    // The flashcard schedule (flashcards.html). Registered here, on every
+    // page, not by the deck: a push replaces the whole 'nremt' bucket, so a
+    // key only the deck registered would be dropped by a sync from any other
+    // page. Merged card by card, newest grade wins.
+    'nremt_flashcards_v1'
   ];
   // Deliberately left out of sync: nremt_inprogress_exam (an in-progress
   // attempt is device-local to avoid two devices racing on the same quiz),
@@ -132,7 +137,10 @@
   // nremt_streak and nremt_xp stay listed even though hub-progress.js has
   // migrated off them: a device that hasn't run the migration yet still needs
   // them to arrive, and they cost nothing once it has.
-  if(window.StudyHubAccount) window.StudyHubAccount.registerNamespace('nremt', PROGRESS_KEYS);
+  if(window.StudyHubAccount){
+    window.StudyHubAccount.registerNamespace('nremt', PROGRESS_KEYS,
+      window.StudyHubAccount.mergeCardSchedules ? { 'nremt_flashcards_v1': window.StudyHubAccount.mergeCardSchedules } : null);
+  }
 
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', renderHeader);

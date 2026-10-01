@@ -453,8 +453,22 @@
       // the whole 'ochem' bucket, so a key only one page registered would be
       // wiped by the next sync from any other ochem page.
       'ochem_flashcards_v1',
+      // Finished exams (exams.html). Merged as a union, so an exam taken on
+      // either device stays in the history (newest 40, as exam-core.js keeps).
+      'ochem_exam_history_v1',
     ], {
       'ochem_flashcards_v1': mergeFlashcards,
+      'ochem_exam_history_v1': function(localRaw, cloudRaw){
+        var a = [], b = [];
+        try{ a = JSON.parse(localRaw) || []; }catch(e){}
+        try{ b = JSON.parse(cloudRaw) || []; }catch(e){ return localRaw; }
+        var seen = {}, out = [];
+        [].concat(Array.isArray(a) ? a : [], Array.isArray(b) ? b : []).forEach(function(x){
+          if(x && typeof x.ts === 'number' && !seen[x.ts]){ seen[x.ts] = 1; out.push(x); }
+        });
+        out.sort(function(x, y){ return x.ts - y.ts; });
+        return JSON.stringify(out.slice(-40));
+      },
       /* A read map is a set of sections with the date each was first read,
          so the two copies of it merge rather than compete: reading chapter 3
          on a phone and chapter 4 on a laptop should leave you having read

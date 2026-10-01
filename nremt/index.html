@@ -155,6 +155,7 @@
              if the script never runs. -->
         <div class="hero-ctas">
           <a href="practice.html" class="btn-press" id="heroPrimaryCta">Start practicing</a>
+          <script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>
           <a href="#sample" class="link-quiet">See a sample question</a>
         </div>
       </div>
@@ -413,9 +414,17 @@ document.addEventListener('DOMContentLoaded', function(){
     return n;
   }
 
+  // Also leaves the same target in LevlResume (site-chrome.js) for the hub's
+  // per-course Continue link, and un-hides the button the inline script above
+  // hid while this ran.
   function renderPrimaryCta(){
     var cta = document.getElementById('heroPrimaryCta');
     if(!cta) return;
+    var R = window.LevlResume;
+    try{ primaryCta(cta, R); }
+    finally{ if(R) R.ctaReady(cta); else cta.classList.remove('cta-pending'); }
+  }
+  function primaryCta(cta, R){
 
     // An attempt left running beats everything: it is the most specific
     // unfinished thing there is, and abandoning it loses real work.
@@ -423,6 +432,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(inProgress){
       cta.textContent = 'Resume your exam';
       cta.href = 'practice.html';
+      if(R) R.set('nremt', '/nremt/practice.html', 'Resume your exam');
       return;
     }
 
@@ -439,9 +449,11 @@ document.addEventListener('DOMContentLoaded', function(){
     if(due > 0){
       cta.textContent = 'Continue \u2014 ' + due + ' due for review';
       cta.href = 'review.html?start=spaced';
+      if(R) R.set('nremt', '/nremt/review.html?start=spaced', due + ' due for review');
       return;
     }
     // Nothing waiting: leave the markup's own new-visitor wording alone.
+    if(R) R.set('nremt', null);
   }
 
   // nav.js is deferred and defines window.LevlXP; run once it's there.

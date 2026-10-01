@@ -57,6 +57,7 @@
   .result-snippet mark{background:#FDE9A0;color:inherit;border-radius:2px;}
   :root[data-theme="dark"] .result-snippet mark{background:#6b5a1f;}
   .empty-note{font-size:14px;font-weight:700;color:var(--muted);}
+  .search-all{margin:-12px 0 18px;font:800 13px var(--font-ui);}
 
 </style>
 <!-- levlprep-structured-data -->
@@ -105,6 +106,7 @@
   <label class="sr-only" for="searchBox">Search this site</label>
   <input type="search" id="searchBox" placeholder="Search this site… (e.g. &quot;OPQRST&quot;, &quot;tension pneumothorax&quot;)" autocomplete="off">
   <div class="search-status" id="searchStatus">Building search index…</div>
+  <p class="search-all"><a id="searchAll" href="../search.html">Search all courses &rarr;</a></p>
   <div id="results"></div>
 
   <footer>
@@ -217,7 +219,12 @@ document.addEventListener('DOMContentLoaded', function(){
   // looks like eighteen months later.
   const S = window.LevlSearch;
 
+  // The site-wide search at /search.html, carrying the query across.
+  const allLink = document.getElementById('searchAll');
+  function syncAllLink(q){ allLink.href = '../search.html' + (q ? '?q=' + encodeURIComponent(q) : ''); }
+
   function runSearch(q){
+    syncAllLink(q);
     if(!q){ resultsEl.innerHTML = ''; return; }
     const terms = S.tokenize(q);
     if(!terms.length){ resultsEl.innerHTML = ''; return; }

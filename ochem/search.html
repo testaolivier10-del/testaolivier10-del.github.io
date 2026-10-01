@@ -72,6 +72,7 @@
   .result-snippet{font-size:13.5px;font-weight:600;color:var(--muted);line-height:1.6;}
   .result-snippet mark{background:#FDE9A0;color:inherit;border-radius:2px;}
   :root[data-theme="dark"] .result-snippet mark{background:#6b5a1f;}
+  .search-all{margin:-6px 0 14px;font:800 13px var(--font-ui);}
   .empty-note{font-size:14px;font-weight:700;color:var(--muted);line-height:1.6;}
 
   @media (prefers-reduced-motion: reduce){
@@ -115,7 +116,7 @@
 <body data-course="ochem">
   <div id="site-header"></div>
 <div class="course-nav"></div>
-  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="learn.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+  <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="learn.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
   <div class="page-head">
   <div class="eyebrow">Tools</div>
@@ -126,6 +127,7 @@
   <label class="sr-only" for="searchBox">Search the course</label>
   <input type="search" id="searchBox" placeholder="Search the course… (e.g. &quot;anti-periplanar&quot;, &quot;why is SN1 racemic&quot;)" autocomplete="off" aria-describedby="searchStatus">
   <div class="search-status" id="searchStatus" role="status" aria-live="polite">Building search index&hellip;</div>
+  <p class="search-all"><a id="searchAll" href="../search.html">Search all courses &rarr;</a></p>
   <div class="search-filters" id="searchFilters" role="group" aria-label="Filter results by kind"></div>
   <div id="results"></div>
 
@@ -393,7 +395,10 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+  // The site-wide search at /search.html, carrying the query across.
+  var allLink = document.getElementById('searchAll');
   function runSearch(q){
+    allLink.href = '../search.html' + (q ? '?q=' + encodeURIComponent(q) : '');
     if(!q){ resultsEl.innerHTML = ''; return; }
     var pool = activeKind === 'all' ? INDEX : INDEX.filter(function(c){ return c.page === activeKind; });
     var hits = S.rank(pool, q, { limit: 40, maxPerSource: 2 });

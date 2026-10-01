@@ -1,13 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<script>location.replace("/nremt/search.html" + location.search + location.hash);</script>
-<meta http-equiv="refresh" content="0; url=/nremt/search.html">
-<link rel="canonical" href="https://levlprep.com/nremt/search.html">
-<title>Redirecting…</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search All Courses — LevlPrep</title>
+<meta name="description" content="Search every LevlPrep course at once: NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology notes, lessons, glossary terms, tools and questions.">
+<link rel="canonical" href="https://levlprep.com/search.html">
+<meta property="og:title" content="Search All Courses — LevlPrep">
+<meta property="og:description" content="Search every LevlPrep course at once: NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology notes, lessons, glossary terms, tools and questions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/search.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+  .ss{max-width:820px;}
+  /* A search page is for the box: keep the opening panel short so the box
+     sits above the fold on a phone. */
+  .ss-hero{padding-top:clamp(22px,4vw,40px);padding-bottom:clamp(22px,4vw,40px);}
+  .ss-hero h1{margin-bottom:10px;}
+  @media (max-width:600px){.ss-hero .lede{font-size:15px;}}
+  .ss-box{position:relative;}
+  .ss-icon{position:absolute;left:16px;top:50%;width:20px;height:20px;transform:translateY(-50%);color:var(--muted);pointer-events:none;}
+  .ss-input{width:100%;box-sizing:border-box;min-height:54px;padding:12px 16px 12px 46px;border-radius:var(--radius);border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 16.5px var(--font-ui);box-shadow:var(--lift-sm);}
+  .ss-input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--tint-accent);}
+  .ss-help{margin:8px 0 0;font:600 12.5px/1.6 var(--font-ui);color:var(--muted);}
+  .ss-help kbd{font:800 11px var(--font-mono);background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);border-radius:5px;padding:1px 5px;color:var(--ink);}
+  @media (hover:none) and (pointer:coarse){.ss-help{display:none;}}
+  .ss-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;}
+  .ss-chip{min-height:40px;padding:7px 14px;border-radius:var(--radius-pill);border:0;background:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--line);font:800 13px var(--font-ui);color:var(--ink);cursor:pointer;}
+  .ss-chip span{color:var(--muted);font-weight:700;margin-left:3px;font-family:var(--font-mono);font-size:12px;}
+  .ss-chip[aria-pressed="true"]{background:var(--tint-accent);box-shadow:inset 0 0 0 1.5px var(--accent);color:var(--accent-text);}
+  .ss-chip:focus-visible,.ss-more:focus-visible,.ss-try:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+  .ss-status{margin:12px 0 0;min-height:1.5em;font:700 13px/1.5 var(--font-ui);color:var(--muted);}
+  .ss-group{margin-top:22px;}
+  .ss-gh{display:flex;align-items:center;gap:10px;margin:0 0 10px;font:900 13px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);}
+  .ss-gh .n{font:700 12px var(--font-mono);letter-spacing:0;color:var(--muted);}
+  .ss-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:var(--c-ink);}
+  .ss-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+  .ss-hit{display:flex;flex-direction:column;gap:3px;padding:12px 15px;border-radius:14px;background:var(--white);border:2px solid var(--line);color:var(--ink);text-decoration:none;box-shadow:var(--lift-sm);}
+  .ss-hit:hover{border-color:var(--accent);}
+  .ss-hit:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-color:var(--accent);}
+  .ss-kind{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font:800 11px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--accent-text);}
+  .ss-badge{font:800 10.5px var(--font-ui);letter-spacing:.03em;padding:2px 8px;border-radius:var(--radius-pill);background:var(--c-tint);color:var(--c-ink);text-transform:none;}
+  .ss-title{font:900 15px/1.35 var(--font-ui);overflow-wrap:anywhere;}
+  .ss-snip{font:600 13.5px/1.55 var(--font-ui);color:var(--muted);overflow-wrap:anywhere;}
+  .ss-hit mark{background:var(--tint-amber);color:var(--ink);border-radius:3px;padding:0 1px;box-shadow:inset 0 -2px 0 var(--amber);}
+  .ss-more{margin-top:8px;border:0;background:none;padding:8px 2px;font:800 13.5px var(--font-ui);color:var(--accent-text);text-decoration:underline;cursor:pointer;}
+  .ss-none{margin-top:18px;font:700 14.5px/1.6 var(--font-ui);color:var(--muted);}
+  .ss-tries{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+  .ss-try{border:0;background:none;padding:4px 2px;font:800 13.5px var(--font-ui);color:var(--accent-text);text-decoration:underline;cursor:pointer;}
+  /* One colour per course, the same tints the courses open with. */
+  [data-c="nremt"]{--c-tint:#DFF2ED;--c-ink:#0F5F53;}
+  [data-c="ochem"]{--c-tint:#ECE8FB;--c-ink:#4B3BA8;}
+  [data-c="anp"]{--c-tint:#FBE9E4;--c-ink:#A33B26;}
+  :root[data-theme="dark"] [data-c="nremt"]{--c-tint:rgba(63,194,169,0.16);--c-ink:#9FE6D6;}
+  :root[data-theme="dark"] [data-c="ochem"]{--c-tint:rgba(156,143,224,0.2);--c-ink:#C9C0F2;}
+  :root[data-theme="dark"] [data-c="anp"]{--c-tint:rgba(236,132,108,0.2);--c-ink:#F2B9A9;}
+</style>
 </head>
 <body>
-<p>This page has moved. <a href="/nremt/search.html">Continue to /nremt/search.html</a></p>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="index.html">
+      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#9681;</button>
+  </div>
+</div>
+
+<div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
+  <div class="hero ss-hero">
+    <div class="eyebrow">Search</div>
+    <h1>Search every course.</h1>
+    <p class="lede">NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology: notes and textbook, lessons, glossary terms, tools and practice questions.</p>
+  </div>
+
+  <div class="xsection">
+    <div class="ss">
+      <div class="ss-box">
+        <label class="sr-only" for="ssQ">Search all courses</label>
+        <svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <input type="search" id="ssQ" class="ss-input" placeholder="Search all courses (e.g. &ldquo;epinephrine&rdquo;, &ldquo;SN2&rdquo;)" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="ssStatus ssHelp" aria-controls="ssResults">
+      </div>
+      <p class="ss-help" id="ssHelp">Results appear as you type. <kbd>&darr;</kbd> moves into the results, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> between them, <kbd>Enter</kbd> opens one, <kbd>Esc</kbd> returns here. <kbd>/</kbd> jumps back to the box.</p>
+      <div class="ss-chips" id="ssChips" role="group" aria-label="Course"></div>
+      <div class="ss-status" id="ssStatus" role="status" aria-live="polite"></div>
+      <div id="ssResults"></div>
+      <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>.</p></noscript>
+    </div>
+  </div>
+
+  <div class="xsection">
+    <footer style="margin-top:0">
+      <p>Runs in your browser. Nothing you type is sent anywhere. A course&rsquo;s material is only downloaded when a search needs it.</p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+    </footer>
+  </div>
+</div>
+<script src="assets/errors.js" defer></script>
+<script src="assets/account.js" defer></script>
+<script src="assets/reminders.js" defer></script>
+<script src="assets/hub-progress.js" defer></script>
+<script src="assets/site-search.js" defer></script>
+<script src="assets/site-search-all.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.HubProgress) window.HubProgress.mount('hub');
+  var toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', function(){
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
+    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
+    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
+  });
+
+  /* The site-wide search. What each course contributes, and when it is
+     fetched, is assets/site-search-all.js; ranking is assets/site-search.js.
+     This is only the page: the box, the course chips, the grouped results and
+     the keyboard. */
+  // Tells scripts/check-a11y.mjs (and anything else waiting on the page) to
+  // wait for data-content-ready: results arrive over the network.
+  document.documentElement.setAttribute('data-content-async', '');
+  var S = window.LevlSearch, A = window.LevlSearchAll;
+  var box = document.getElementById('ssQ');
+  var chipsEl = document.getElementById('ssChips');
+  var statusEl = document.getElementById('ssStatus');
+  var resultsEl = document.getElementById('ssResults');
+  if(!S || !A){ document.documentElement.setAttribute('data-content-ready', ''); statusEl.textContent = 'Search did not load. Check your connection and reload the page.'; return; }
+
+  var PER_GROUP = 5;      // hits per course when searching all of them
+  var PER_COURSE = 100;   // the most any one course returns
+  var INDEX = {}, state = {}, missing = {};
+  A.COURSES.forEach(function(c){ INDEX[c.key] = []; state[c.key] = 'idle'; missing[c.key] = []; });
+
+  var params = new URLSearchParams(location.search);
+  var scope = A.parseCourse(params.get('course'));
+  box.value = params.get('q') || '';
+
+  function esc(s){ return S.escapeHtml(s == null ? '' : s); }
+
+  function ensure(keys){
+    keys.forEach(function(k){
+      if(state[k] !== 'idle') return;
+      state[k] = 'loading';
+      A.load(k, function(key, chunks){
+        INDEX[key] = INDEX[key].concat(chunks);
+        schedule();
+      }, function(key, miss){
+        state[key] = 'done';
+        missing[key] = miss;
+        schedule();
+      });
+    });
+  }
+
+  function syncUrl(q){
+    var p = new URLSearchParams();
+    if(q) p.set('q', q);
+    if(scope !== 'all') p.set('course', scope);
+    var s = p.toString();
+    try{ history.replaceState(null, '', s ? '?' + s : location.pathname); }catch(e){}
+  }
+
+  var lastCounts = {};
+  function renderChips(){
+    var q = box.value.trim();
+    var chips = [{ key: 'all', label: 'All' }].concat(A.COURSES.map(function(c){ return { key: c.key, label: c.label }; }));
+    chipsEl.innerHTML = chips.map(function(c){
+      var n = '';
+      if(q){
+        if(c.key === 'all'){
+          var total = 0, known = true, capped = false;
+          A.COURSES.forEach(function(x){
+            if(lastCounts[x.key] == null) known = false;
+            else { total += lastCounts[x.key]; if(lastCounts[x.key] >= PER_COURSE) capped = true; }
+          });
+          if(known) n = total + (capped ? '+' : '');
+        } else if(lastCounts[c.key] != null) n = lastCounts[c.key] >= PER_COURSE ? PER_COURSE + '+' : lastCounts[c.key];
+      }
+      return '<button type="button" class="ss-chip" data-scope="' + c.key + '" aria-pressed="' + (c.key === scope) + '">' + esc(c.label) +
+        (n !== '' ? ' <span>' + n + '</span>' : '') + '</button>';
+    }).join('');
+  }
+
+  function hitHtml(h, terms, showCourse){
+    var href = h.frag ? S.textFragment(h.file, terms) : h.file;
+    var course = A.courseOf(h.course);
+    var kind = h.opensSection ? 'Practice question · opens its section' : h.kind;
+    return '<li><a class="ss-hit" href="' + esc(href) + '" data-c="' + h.course + '">' +
+      '<span class="ss-kind">' + (showCourse ? '<span class="ss-badge">' + esc(course.label) + '</span>' : '') + esc(kind) + '</span>' +
+      '<span class="ss-title">' + S.highlight(h.heading, terms, { lead: 1000, span: 1000 }) + '</span>' +
+      '<span class="ss-snip">' + h.snippet + '</span></a></li>';
+  }
+
+  function loadingNames(keys){
+    return keys.filter(function(k){ return state[k] === 'loading'; }).map(function(k){ return A.courseOf(k).name; });
+  }
+
+  function run(){
+    var q = box.value.trim();
+    syncUrl(q);
+    if(!q){
+      document.documentElement.setAttribute('data-content-ready', '');
+      lastCounts = {};
+      renderChips();
+      statusEl.textContent = '';
+      resultsEl.innerHTML = '<p class="ss-none">Try <span class="ss-tries">' + ['heart', 'SN2', 'epinephrine', 'pKa', 'OPQRST'].map(function(t){
+        return '<button type="button" class="ss-try" data-try="' + esc(t) + '">' + esc(t) + '</button>';
+      }).join('') + '</span></p>';
+      return;
+    }
+    var keys = A.scopeKeys(scope);
+    ensure(keys);
+    var terms = S.tokenize(q);
+
+    // Ranked per course, so a course with a huge question bank cannot crowd
+    // the others out of a shared top-N, and every loaded course's chip can
+    // say how many it found.
+    var byCourse = {};
+    lastCounts = {};
+    A.COURSES.forEach(function(c){
+      if(!INDEX[c.key].length && state[c.key] !== 'done') return;
+      byCourse[c.key] = S.rank(INDEX[c.key], q, { limit: PER_COURSE, maxPerSource: 2 });
+      lastCounts[c.key] = byCourse[c.key].length;
+    });
+    renderChips();
+
+    var pending = loadingNames(keys);
+    if(!pending.length) document.documentElement.setAttribute('data-content-ready', '');
+    var all = [];
+    keys.forEach(function(k){ if(byCourse[k]) all = all.concat(byCourse[k]); });
+    var html = '';
+    if(scope === 'all'){
+      A.groupByCourse(all).forEach(function(g){
+        var shown = g.hits.slice(0, PER_GROUP);
+        html += '<section class="ss-group" aria-labelledby="ssg-' + g.course + '" data-c="' + g.course + '">' +
+          '<h2 class="ss-gh" id="ssg-' + g.course + '"><span class="ss-dot" aria-hidden="true"></span>' + esc(g.name) +
+          ' <span class="n">' + (g.hits.length >= PER_COURSE ? PER_COURSE + '+' : g.hits.length) + '</span></h2>' +
+          '<ul class="ss-list">' + shown.map(function(h){ return hitHtml(h, terms, false); }).join('') + '</ul>' +
+          (g.hits.length > shown.length ? '<button type="button" class="ss-more" data-scope="' + g.course + '">Show all ' +
+            (g.hits.length >= PER_COURSE ? PER_COURSE + '+' : g.hits.length) + ' ' + esc(g.label) + ' results</button>' : '') +
+          '</section>';
+      });
+    } else if(all.length){
+      html = '<ul class="ss-list" style="margin-top:18px">' + all.map(function(h){ return hitHtml(h, terms, true); }).join('') + '</ul>';
+    }
+
+    var where = scope === 'all' ? '' : ' in ' + A.courseOf(scope).name;
+    if(!html){
+      html = pending.length ? '' : '<p class="ss-none">No matches for &ldquo;' + esc(q) + '&rdquo;' + esc(where) + '.' +
+        (scope !== 'all' ? ' <button type="button" class="ss-try" data-scope="all">Search all courses</button>' : ' Try fewer words, or a related term.') + '</p>';
+    }
+    resultsEl.innerHTML = html;
+
+    var miss = [];
+    keys.forEach(function(k){ if(missing[k].length) miss.push(A.courseOf(k).label + ' ' + missing[k].join(', ')); });
+    var capped = keys.some(function(k){ return byCourse[k] && byCourse[k].length >= PER_COURSE; });
+    statusEl.textContent = (all.length ? all.length + (capped ? '+' : '') + (all.length === 1 ? ' result' : ' results') + where : (pending.length ? '' : 'No results' + where)) +
+      (pending.length ? (all.length ? ' so far. ' : '') + 'Loading ' + pending.join(', ') + '…' : '.') +
+      (miss.length ? ' Could not load ' + miss.join('; ') + ' (offline?).' : '');
+  }
+
+  // Index updates arrive in bursts as sources land; render once per frame.
+  var queued = false;
+  function schedule(){
+    if(queued) return;
+    queued = true;
+    setTimeout(function(){ queued = false; if(box.value.trim()) run(); }, 60);
+  }
+
+  function setScope(next, focusFirst){
+    scope = next;
+    run();
+    if(focusFirst){
+      var first = resultsEl.querySelector('.ss-hit');
+      if(first) first.focus(); else box.focus();
+    } else {
+      var chip = chipsEl.querySelector('[data-scope="' + next + '"]');
+      if(chip) chip.focus();
+    }
+  }
+
+  chipsEl.addEventListener('click', function(e){
+    var b = e.target.closest('button[data-scope]'); if(b) setScope(b.getAttribute('data-scope'));
+  });
+  resultsEl.addEventListener('click', function(e){
+    var more = e.target.closest('.ss-more, .ss-try[data-scope]');
+    if(more){ setScope(more.getAttribute('data-scope'), true); return; }
+    var t = e.target.closest('[data-try]');
+    if(t){ box.value = t.getAttribute('data-try'); run(); box.focus(); }
+  });
+
+  var timer = 0;
+  box.addEventListener('input', function(){ clearTimeout(timer); timer = setTimeout(run, 120); });
+
+  /* Keyboard: Down from the box enters the results; Up/Down move between
+     them (Home/End jump); Escape returns to the box, or clears it. */
+  function focusables(){ return Array.prototype.slice.call(resultsEl.querySelectorAll('.ss-hit, .ss-more')); }
+  box.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowDown'){ var h = focusables(); if(h[0]){ e.preventDefault(); h[0].focus(); } }
+    else if(e.key === 'Enter'){ clearTimeout(timer); run(); var f = focusables()[0]; if(f && f.tagName === 'A'){ e.preventDefault(); location.href = f.href; } }
+    else if(e.key === 'Escape' && box.value){ e.preventDefault(); box.value = ''; run(); }
+  });
+  resultsEl.addEventListener('keydown', function(e){
+    var h = focusables(), i = h.indexOf(document.activeElement);
+    if(i < 0) return;
+    if(e.key === 'ArrowDown'){ e.preventDefault(); if(h[i + 1]) h[i + 1].focus(); }
+    else if(e.key === 'ArrowUp'){ e.preventDefault(); (i ? h[i - 1] : box).focus(); }
+    else if(e.key === 'Home'){ e.preventDefault(); h[0].focus(); }
+    else if(e.key === 'End'){ e.preventDefault(); h[h.length - 1].focus(); }
+    else if(e.key === 'Escape'){ e.preventDefault(); box.focus(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === '/' && document.activeElement !== box && !/INPUT|TEXTAREA|SELECT/.test((e.target && e.target.tagName) || '')){ e.preventDefault(); box.focus(); box.select(); }
+  });
+
+  run();
+  if(!box.value) box.focus({ preventScroll: true });
+});
+</script>
 </body>
 </html>

@@ -10,6 +10,9 @@
    ---------------------------------------------------------------------
    Storage: localStorage['ochem_flashcards_v1'], synced with an account
    (registered in ochem-xp.js, which merges two devices' copies card by card).
+   Other courses reuse this scheduler under their own key:
+   OchemCardScheduler.forKey('nremt_flashcards_v1') returns the same API bound
+   to that key (NREMT's deck; its merge is StudyHubAccount.mergeCardSchedules).
      { v: 1,
        cards: { <cardId>: { i, e, d, r, l, t } },
        fresh: { day: 'YYYY-MM-DD', n } }
@@ -42,7 +45,6 @@
    every card a long interval it never earned.
    ------------------------------------------------------------------ */
 (function(){
-  var KEY = 'ochem_flashcards_v1';
   var MIN = 60000;
 
   var AGAIN = 1, HARD = 2, GOOD = 3, EASY = 4;
@@ -141,106 +143,111 @@
     return Math.round(d / 365 * 10) / 10 + 'y';
   }
 
-  /* ---- the store --------------------------------------------------------- */
+  /* ---- the store, one per localStorage key ------------------------------- */
 
-  function blank(){ return { v: 1, cards: {}, fresh: { day: '', n: 0 } }; }
-  function load(){
-    try{
-      var d = JSON.parse(localStorage.getItem(KEY) || 'null');
-      if(!d || d.v !== 1 || typeof d.cards !== 'object' || !d.cards) return blank();
-      if(!d.fresh || typeof d.fresh !== 'object') d.fresh = { day: '', n: 0 };
-      return d;
-    }catch(e){ return blank(); }
-  }
-  function save(d){
-    try{ localStorage.setItem(KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
-  }
-
-  function introducedToday(d, now){
-    return d.fresh && d.fresh.day === dayKey(now) ? (d.fresh.n || 0) : 0;
-  }
-
-  /* Grade one card and persist it. Returns { state, scheduled } where
-     `scheduled` says whether this was scheduled work (due, or a new card
-     being introduced) rather than studying ahead — the page pays XP only
-     for the former. */
-  function grade(cardId, g, now, opts){
-    opts = opts || {};
-    var d = load();
-    var prev = d.cards[cardId] || null;
-    var wasNew = isNew(prev);
-    // A new card is never early, even when met while studying ahead: it is
-    // being introduced either way, so it is scheduled and counts against
-    // today's new-card allowance.
-    var early = isEarly(prev, now);
-    var s = next(prev, g, now, early);
-    if(wasNew){
-      var today = dayKey(now);
-      if(d.fresh.day !== today) d.fresh = { day: today, n: 0 };
-      d.fresh.n++;
+  function forKey(KEY){
+    function blank(){ return { v: 1, cards: {}, fresh: { day: '', n: 0 } }; }
+    function load(){
+      try{
+        var d = JSON.parse(localStorage.getItem(KEY) || 'null');
+        if(!d || d.v !== 1 || typeof d.cards !== 'object' || !d.cards) return blank();
+        if(!d.fresh || typeof d.fresh !== 'object') d.fresh = { day: '', n: 0 };
+        return d;
+      }catch(e){ return blank(); }
     }
-    d.cards[cardId] = s;
-    save(d);
-    return { state: s, scheduled: !early && !opts.cram, wasNew: wasNew, early: early };
-  }
+    function save(d){
+      try{ localStorage.setItem(KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
+    }
 
-  /* Today's work within a set of cards (already filtered by the page):
-     every due card, most overdue first, then new cards in the order given
-     (curriculum order) up to what is left of the daily allowance. */
-  function queue(cardIds, now, opts){
-    opts = opts || {};
-    var d = opts.store || load();
-    var limit = opts.newPerDay === undefined ? NEW_PER_DAY : opts.newPerDay;
-    var due = [], fresh = [], learned = 0;
-    cardIds.forEach(function(id){
-      var s = d.cards[id];
-      if(isNew(s)) fresh.push(id);
-      else {
-        learned++;
-        if(s.d <= now) due.push(id);
+    function introducedToday(d, now){
+      return d.fresh && d.fresh.day === dayKey(now) ? (d.fresh.n || 0) : 0;
+    }
+
+    /* Grade one card and persist it. Returns { state, scheduled } where
+       `scheduled` says whether this was scheduled work (due, or a new card
+       being introduced) rather than studying ahead — the page pays XP only
+       for the former. */
+    function grade(cardId, g, now, opts){
+      opts = opts || {};
+      var d = load();
+      var prev = d.cards[cardId] || null;
+      var wasNew = isNew(prev);
+      // A new card is never early, even when met while studying ahead: it is
+      // being introduced either way, so it is scheduled and counts against
+      // today's new-card allowance.
+      var early = isEarly(prev, now);
+      var s = next(prev, g, now, early);
+      if(wasNew){
+        var today = dayKey(now);
+        if(d.fresh.day !== today) d.fresh = { day: today, n: 0 };
+        d.fresh.n++;
       }
-    });
-    due.sort(function(a, b){ return d.cards[a].d - d.cards[b].d; });
-    var allowance = Math.max(0, limit - introducedToday(d, now));
+      d.cards[cardId] = s;
+      save(d);
+      return { state: s, scheduled: !early && !opts.cram, wasNew: wasNew, early: early };
+    }
+
+    /* Today's work within a set of cards (already filtered by the page):
+       every due card, most overdue first, then new cards in the order given
+       (curriculum order) up to what is left of the daily allowance. */
+    function queue(cardIds, now, opts){
+      opts = opts || {};
+      var d = opts.store || load();
+      var limit = opts.newPerDay === undefined ? NEW_PER_DAY : opts.newPerDay;
+      var due = [], fresh = [], learned = 0;
+      cardIds.forEach(function(id){
+        var s = d.cards[id];
+        if(isNew(s)) fresh.push(id);
+        else {
+          learned++;
+          if(s.d <= now) due.push(id);
+        }
+      });
+      due.sort(function(a, b){ return d.cards[a].d - d.cards[b].d; });
+      var allowance = Math.max(0, limit - introducedToday(d, now));
+      return {
+        due: due,
+        fresh: fresh.slice(0, allowance),
+        newTotal: fresh.length,
+        learned: learned,
+        allowance: allowance,
+        total: cardIds.length
+      };
+    }
+
+    /* Cards coming due over the next `days` days, for the "coming up" line. */
+    function upcoming(cardIds, now, days){
+      var d = load(), until = midnightPlus(now, days || 7), n = 0;
+      cardIds.forEach(function(id){
+        var s = d.cards[id];
+        if(!isNew(s) && s.d > now && s.d < until) n++;
+      });
+      return n;
+    }
+
     return {
-      due: due,
-      fresh: fresh.slice(0, allowance),
-      newTotal: fresh.length,
-      learned: learned,
-      allowance: allowance,
-      total: cardIds.length
+      KEY: KEY,
+      GRADES: GRADES,
+      AGAIN: AGAIN, HARD: HARD, GOOD: GOOD, EASY: EASY,
+      NEW_PER_DAY: NEW_PER_DAY,
+      MAX_IVL: MAX_IVL,
+      next: next,
+      preview: preview,
+      isNew: isNew,
+      isDue: isDue,
+      isLearning: isLearning,
+      isEarly: isEarly,
+      load: load,
+      save: save,
+      get: function(id){ return load().cards[id] || null; },
+      grade: grade,
+      queue: queue,
+      upcoming: upcoming,
+      introducedToday: function(now){ return introducedToday(load(), now); },
+      dayKey: dayKey,
+      forKey: forKey
     };
   }
 
-  /* Cards coming due over the next `days` days, for the "coming up" line. */
-  function upcoming(cardIds, now, days){
-    var d = load(), until = midnightPlus(now, days || 7), n = 0;
-    cardIds.forEach(function(id){
-      var s = d.cards[id];
-      if(!isNew(s) && s.d > now && s.d < until) n++;
-    });
-    return n;
-  }
-
-  window.OchemCardScheduler = {
-    KEY: KEY,
-    GRADES: GRADES,
-    AGAIN: AGAIN, HARD: HARD, GOOD: GOOD, EASY: EASY,
-    NEW_PER_DAY: NEW_PER_DAY,
-    MAX_IVL: MAX_IVL,
-    next: next,
-    preview: preview,
-    isNew: isNew,
-    isDue: isDue,
-    isLearning: isLearning,
-    isEarly: isEarly,
-    load: load,
-    save: save,
-    get: function(id){ return load().cards[id] || null; },
-    grade: grade,
-    queue: queue,
-    upcoming: upcoming,
-    introducedToday: function(now){ return introducedToday(load(), now); },
-    dayKey: dayKey
-  };
+  window.OchemCardScheduler = forKey('ochem_flashcards_v1');
 })();

@@ -33,6 +33,7 @@
         '<svg class="anp-sr-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>' +
         '<input type="search" id="anp-sr-q" class="anp-sr-input" placeholder="Search lessons, notes, terms and tools (e.g. “gap junction”)" autocomplete="off" spellcheck="false" aria-describedby="anp-sr-status anp-sr-help" aria-controls="anp-sr-results"></div>' +
       '<p class="anp-sr-help" id="anp-sr-help">Results appear as you type. <kbd>↓</kbd> moves into the results, <kbd>↑</kbd> <kbd>↓</kbd> between them, <kbd>Enter</kbd> opens one, <kbd>Esc</kbd> returns here.</p>' +
+      '<p class="anp-sr-all"><a id="anp-sr-all" href="' + BASE + '../search.html">Search all courses &rarr;</a></p>' +
       '<div class="anp-sr-status" id="anp-sr-status" role="status" aria-live="polite">Building the search index…</div>' +
       '<div class="anp-sr-filters" id="anp-sr-filters" role="group" aria-label="Filter results by kind"></div>' +
       '<div id="anp-sr-results" class="anp-sr-results"></div>' +
@@ -41,6 +42,7 @@
   var statusEl = document.getElementById('anp-sr-status');
   var filtersEl = document.getElementById('anp-sr-filters');
   var resultsEl = document.getElementById('anp-sr-results');
+  var allLink = document.getElementById('anp-sr-all');
   box.value = params.get('q') || '';
 
   /* ---- the index ---- */
@@ -121,6 +123,8 @@
   function run(){
     var q = box.value.trim();
     try{ history.replaceState(null, '', q ? '?q=' + encodeURIComponent(q) : location.pathname); }catch(e){}
+    // The site-wide search (/search.html), carrying the query across.
+    allLink.href = BASE + '../search.html' + (q ? '?q=' + encodeURIComponent(q) : '');
     if(!S){ return; }
     if(!q){ resultsEl.innerHTML = ''; filtersEl.innerHTML = ''; setStatus(); return; }
     var terms = S.tokenize(q);

@@ -310,6 +310,65 @@
     return '<div class="tb-actions">' + links.join('') + '</div>';
   }
 
+  /* "In this chapter": the chapter's sections as a menu that stays under the
+     header on a phone. A long chapter is tens of thousands of pixels there,
+     and the contents drawer lives at the top of the page, so without this the
+     only way to the fourth section was to scroll to it. */
+  function jumpMenuHtml(mod){
+    return '<details class="tb-jump" id="tbJump">' +
+      '<summary>In this chapter <span class="tb-jump-n">' + mod.topics.length + ' sections</span></summary>' +
+      '<ol class="tb-jump-list">' + mod.topics.map(function(t){
+        return '<li><a href="#' + t.id + '" data-topic="' + t.id + '">' + escapeHtml(t.title) + '</a></li>';
+      }).join('') + '</ol>' +
+      '<button type="button" class="tb-jump-all">All chapters</button>' +
+    '</details>';
+  }
+  // One listener for whichever chapter's menu is on the page.
+  chapterEl.addEventListener('click', function(e){
+    var jump = document.getElementById('tbJump');
+    var t = e.target;
+    if(!jump || !t.closest || !jump.contains(t)) return;
+    if(t.closest('.tb-jump-list a')){ jump.open = false; return; }
+    if(t.closest('.tb-jump-all')){
+      jump.open = false;
+      document.body.classList.add('tb-toc-open');
+      window.scrollTo(0, 0);
+      if(toggleEl && toggleEl.offsetParent) toggleEl.focus(); else if(filterEl) filterEl.focus();
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    var jump = document.getElementById('tbJump');
+    if(e.key === 'Escape' && jump && jump.open){ jump.open = false; jump.querySelector('summary').focus(); }
+  });
+
+  // ---- back to top -------------------------------------------------------
+  /* Shown once you are a couple of screens down. Takes you to the chapter's
+     title and moves focus there too, so a keyboard user is not left on a
+     button at the bottom of a page that has scrolled away. */
+  (function(){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tb-totop';
+    btn.hidden = true;
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<span aria-hidden="true">&uarr;</span> Top';
+    document.body.appendChild(btn);
+    var ticking = false;
+    function update(){
+      ticking = false;
+      btn.hidden = window.scrollY < window.innerHeight * 1.5;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    btn.addEventListener('click', function(){
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      var h = chapterEl.querySelector('.tb-chapter-title');
+      if(h){ h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+    });
+  })();
+
   function renderChapter(index){
     var mod = C.MODULES[index];
     if(!mod) return;
@@ -353,6 +412,7 @@
           chapterMetaText(mod, doneCount, mastery) +
         '</p>' +
       '</header>' +
+      jumpMenuHtml(mod) +
       sections +
       '<nav class="tb-chapter-nav">' +
         (prev ? '<a class="tb-chapter-link prev" href="#m-' + prev.id + '"><span>&larr; Previous chapter</span><b>' + escapeHtml(prev.title) + '</b></a>' : '<span></span>') +
@@ -362,7 +422,11 @@
     mod.topics.forEach(function(t){
       loadNotes(t.id).then(function(html){
         var slot = mainEl.querySelector('[data-notes="' + t.id + '"]');
-        if(slot){ slot.innerHTML = html; makeFiguresReachable(slot); }
+        if(slot){
+          slot.innerHTML = html; makeFiguresReachable(slot);
+          // Glossary popups on the first use of each term (glossary-tip.js).
+          if(window.OchemGlossary) window.OchemGlossary.mark(slot, t.id);
+        }
         observeEnds();
         applyPendingHit();
       });
