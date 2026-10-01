@@ -434,9 +434,57 @@
     active = null;
   }
 
+  /* Polar's embedded checkout (@polar-sh/checkout), pinned and hashed so a
+     changed file on the CDN is refused rather than run. Loaded only when
+     someone actually buys. levlprep.com must be listed in Polar under
+     Settings -> Preferences -> Embedding, and pages allow frame-src polar.sh. */
+  var EMBED_SRC = 'https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js';
+  var EMBED_SRI = 'sha384-e+NbGcSWhyE0uyrB+P19KffckB1jt91+Jk0PrKhB/hqpFXVT5bgULrccH8Xyz3jT';
+  var embedLoading = null;
+  function loadEmbed() {
+    if (window.PolarEmbedCheckout) return Promise.resolve(window.PolarEmbedCheckout);
+    if (embedLoading) return embedLoading;
+    embedLoading = new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = EMBED_SRC;
+      s.integrity = EMBED_SRI;
+      s.crossOrigin = 'anonymous';
+      s.async = true;
+      var timer = setTimeout(function () { reject(new Error('embed timeout')); }, 8000);
+      s.onload = function () {
+        clearTimeout(timer);
+        if (window.PolarEmbedCheckout) resolve(window.PolarEmbedCheckout); else reject(new Error('embed missing'));
+      };
+      s.onerror = function () { clearTimeout(timer); reject(new Error('embed failed')); };
+      document.head.appendChild(s);
+    });
+    embedLoading.catch(function () { embedLoading = null; });
+    return embedLoading;
+  }
+
+  function darkTheme() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    try { return window.matchMedia('(prefers-color-scheme: dark)').matches; } catch (e) { return false; }
+  }
+
+  /* Payment is confirmed by the webhook, which can land a few seconds after
+     the buyer sees "paid", so ask again a few times before giving up. */
+  function waitForPass(course) {
+    var tries = 0;
+    (function poll() {
+      refresh();
+      if (course && expiry(course) && expiry(course) > Date.now()) {
+        if (window.LevlAnnounce) window.LevlAnnounce.say('Premium is unlocked. Thank you!');
+        return;
+      }
+      if (++tries < 8) setTimeout(poll, 2500);
+    })();
+  }
+
   /* Buying needs an account: the pass is attached to it, so it follows the
      student to every device. Not signed in → sign in first, then come back to
-     this dialog. Signed in → the Worker makes a Polar checkout and we go there. */
+     this dialog. Signed in → the Worker makes a Polar checkout and it opens over the page. */
   function checkout(passId, button) {
     var a = window.StudyHubAccount;
     if (!a) { setMsg('Couldn’t reach checkout just now. Try again in a moment.', 'error'); return; }
@@ -448,7 +496,8 @@
       a.openAuthModal('signup');
       return;
     }
-    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-start', { course: active && active.course, pass: passId });
+    var course = active && active.course;
+    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-start', { course: course, pass: passId });
     button.disabled = true;
     button.textContent = 'Opening…';
     a.accessToken().then(function (token) {
@@ -462,7 +511,19 @@
       return res.json().then(function (body) { return { ok: res.ok, body: body }; });
     }).then(function (r) {
       if (!r.ok || !r.body || !r.body.url) throw new Error((r.body && r.body.error) || 'checkout failed');
-      window.location.href = r.body.url;
+      var url = r.body.url;
+      // Pay without leaving the page: Polar's checkout in an overlay. If the
+      // library can't load (blocked, offline CDN), go to Polar's own page.
+      return loadEmbed().then(function (Polar) {
+        return Polar.create(url, { theme: darkTheme() ? 'dark' : 'light' });
+      }).then(function (embed) {
+        button.disabled = false;
+        button.textContent = 'Get it';
+        close();
+        embed.addEventListener('success', function () { waitForPass(course); });
+      }, function () {
+        window.location.href = url;
+      });
     }).catch(function () {
       button.disabled = false;
       button.textContent = 'Get it';
@@ -502,15 +563,7 @@
       var q = params.toString();
       window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
     } catch (e) { /* old browser: the query just stays */ }
-    var tries = 0;
-    (function poll() {
-      refresh();
-      if (course && expiry(course) && expiry(course) > Date.now()) {
-        if (window.LevlAnnounce) window.LevlAnnounce.say('Premium is unlocked. Thank you!');
-        return;
-      }
-      if (++tries < 6) setTimeout(poll, 2500);
-    })();
+    waitForPass(course);
   }
 
   function validEmail(s) {
