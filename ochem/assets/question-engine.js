@@ -36,6 +36,45 @@
    the argmax — a deterministic engine serves the same question every time
    the profile hasn't moved, which feels broken. */
 (function(){
+  /* ---- the free tier's question allowance and free exam ----------------
+     Without Premium, a free chapter's questions are always open. A question
+     from any other chapter is open while today's allowance
+     (LevlPremium.quota, shared by Practice and Review) has some left, and
+     showing one takes one. One full exam is free (LevlPremium.freeExam).
+     They live here, not in ochem-premium.js, because only the pages that ask
+     questions load this file; they are added to OchemPremium. Members and
+     pre-launch visitors are unlimited (premium.js). */
+  var G0 = window.OchemPremium;
+  if(G0){
+    var LP = function(){ return window.LevlPremium; };
+    var quota = function(){
+      return LP() && LP().quota ? LP().quota('ochem') : { limit: Infinity, used: 0, left: Infinity, take: function(){ return true; } };
+    };
+    G0.quota = quota;
+    G0.questionOpen = function(q){ return !q || !G0.topicLocked(q.topic) || quota().left > 0; };
+    G0.takeQuestion = function(q){ return !q || !G0.topicLocked(q.topic) || quota().take(); };
+    // True when the allowance is what stops a question being asked today.
+    G0.limitReached = function(){ return G0.locked() && quota().left <= 0; };
+    G0.limitGate = function(source){
+      return LP() ? LP().gate('ochem', 'daily-limit', source || 'daily-limit') +
+        '<p class="ochem-lock__notes">Questions from the first four chapters stay unlimited. ' +
+        'The allowance resets at midnight.</p>' : '';
+    };
+    // One line for a free user about what is left today; '' for members.
+    G0.quotaNote = function(){
+      if(!G0.locked()) return '';
+      var q = quota();
+      return '<p class="ochem-quota" role="status">' +
+        (q.left > 0
+          ? q.left + ' of ' + q.limit + ' free questions left today from chapters past the first four. The first four chapters are unlimited.'
+          : 'You have used today\u2019s ' + q.limit + ' free questions from chapters past the first four. The first four chapters stay unlimited, and the allowance resets at midnight.') +
+        ' ' + LP().badge('ochem') + '</p>';
+    };
+    G0.freeExam = function(){
+      return LP() && LP().freeExam ? LP().freeExam('ochem') : { unlimited: true, used: false, available: true, use: function(){ return true; } };
+    };
+  }
+
   var SEEN_KEY = 'ochem_practice_seen_v1';
   var MAX_SEEN = 500;
   var DAY = 86400000;
@@ -133,15 +172,13 @@
     return q;
   }
 
-  /* Without Premium (once it launches) the pool holds only the free
-     chapters' questions; ochem-premium.js says which. accessKey changes when
-     access does, which rebuilds the pool. */
-  var builtFor = null;
+  /* The pool is always the whole bank. Without Premium, a question past the
+     free chapters can only be SERVED while today's allowance lasts
+     (ochem-premium.js); that is applied where questions are picked, by
+     open() below, never here — flags, exams and history still find every
+     question by id. */
   function build(){
-    var G = window.OchemPremium;
-    var key = G ? G.accessKey() : 'all';
-    if(POOL && key === builtFor) return;
-    builtFor = key;
+    if(POOL) return;
     POOL = [];
     (window.OchemInteractiveBank ? window.OchemInteractiveBank.ALL : []).forEach(function(q){
       var copy = {};
@@ -157,7 +194,6 @@
     Object.keys(legacy).forEach(function(topicId){
       legacy[topicId].forEach(function(raw, i){ POOL.push(normalizeLegacy(topicId, raw, i)); });
     });
-    if(key !== 'all') POOL = POOL.filter(function(q){ return !G.topicLocked(q.topic); });
 
     BY_CONCEPT = {};
     BY_TOPIC = {};
@@ -185,6 +221,22 @@
   }
 
   function all(){ build(); return POOL; }
+
+  /* Keeps the questions that may be served right now. Without Premium, once
+     today's allowance is spent, that is the free chapters' questions only.
+     `record` notes when the allowance removed something, so the session
+     runner can show the limit instead of just ending; the note lasts until
+     resetLimited(), which the runner calls per session. */
+  var limitedHit = false;
+  function openOnly(list, record){
+    var G = window.OchemPremium;
+    if(!G || !G.limitReached()) return list;
+    var kept = list.filter(function(q){ return !G.topicLocked(q.topic); });
+    if(record !== false && kept.length < list.length) limitedHit = true;
+    return kept;
+  }
+  function resetLimited(){ limitedHit = false; }
+  function wasLimited(){ return limitedHit; }
   /* One question by id. Flags store ids, not questions, so anything that
      wants to show a flagged question's prompt has to come back through
      here. */
@@ -312,7 +364,7 @@
     }
     if(plan.interactiveOnly) pool = pool.filter(isInteractive);
     if(plan.maxTopicIndex !== undefined) pool = pool.filter(function(q){ return topicIndex(q.topic) <= plan.maxTopicIndex; });
-    return pool;
+    return openOnly(pool);
   }
 
   /* The one call the session runner makes between questions. Returns the
@@ -377,10 +429,10 @@
   function checkQuestion(conceptId, tier, excludeIds, lastKind, maxTopic){
     build();
     var max = maxTopic ? topicIndex(maxTopic) : Infinity;
-    var candidates = (BY_CONCEPT[conceptId] || []).filter(function(q){
+    var candidates = openOnly((BY_CONCEPT[conceptId] || []).filter(function(q){
       return excludeIds.indexOf(q.id) === -1 && (q.tier || 2) <= Math.max(1, tier) &&
         topicIndex(q.topic) <= max;
-    });
+    }), false);
     if(!candidates.length) return null;
     var seen = readSeen();
     candidates.sort(function(a, b){
@@ -446,7 +498,7 @@
     var avoid = avoidTopics || [];
     // "Somewhere else" still means somewhere the student has already been.
     var reach = frontierIndex();
-    var own = (BY_CONCEPT[conceptId] || []).filter(function(q){ return topicIndex(q.topic) <= reach; });
+    var own = openOnly((BY_CONCEPT[conceptId] || []).filter(function(q){ return topicIndex(q.topic) <= reach; }));
     var candidates = own.filter(function(q){
       return excludeIds.indexOf(q.id) === -1 && (q.tier || 2) <= tier;
     });
@@ -809,6 +861,8 @@
     markSeen: markSeen,
     topicTitle: topicTitle,
     stats: stats,
-    invalidate: invalidate
+    invalidate: invalidate,
+    resetLimited: resetLimited,
+    wasLimited: wasLimited
   };
 })();

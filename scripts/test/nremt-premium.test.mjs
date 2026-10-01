@@ -73,9 +73,9 @@ test('after launch, one timed exam is free and the second is gated', () => {
   assert.equal(g.canStartExam(), false, 'the free exam came back');
 });
 
-test('after launch, review, readiness and scenarios are gated for a free learner', () => {
+test('after launch, readiness and scenarios are gated for a free learner', () => {
   const { g } = fresh({ launched: true });
-  for (const f of ['readiness', 'review', 'scenarios']) {
+  for (const f of ['readiness', 'scenarios']) {
     assert.equal(g.canUse(f), false, f);
     const html = g.gate(f, 'test');
     assert.match(html, new RegExp(`data-premium-feature="${f}"`));
@@ -83,12 +83,40 @@ test('after launch, review, readiness and scenarios are gated for a free learner
   }
 });
 
+test('after launch, review is free and shares the 15 a day with practice', () => {
+  const { b, g } = fresh({ launched: true });
+  assert.equal(g.canUse('review'), true, 'review locked with the allowance untouched');
+  assert.equal(g.quotaApplies('review'), true, 'missed review not counted');
+  assert.equal(g.quotaApplies('spaced'), true, 'spaced review not counted');
+  // 10 practice questions, then review draws on what is left.
+  for (let i = 0; i < 10; i++) assert.equal(g.take(), true);
+  assert.equal(g.quotaLeft(), 5);
+  assert.equal(g.canUse('review'), true);
+  for (let i = 0; i < 5; i++) assert.equal(g.take(), true, `review question ${i + 1} refused`);
+  assert.equal(g.take(), false, 'a 16th question (practice or review) allowed');
+  assert.equal(g.canUse('review'), false, 'review still open with the allowance spent');
+  assert.match(g.gate('daily-limit'), /data-premium-feature="daily-limit"/);
+  b.advanceDays(1);
+  assert.equal(g.canUse('review'), true, 'review did not reopen the next day');
+  assert.equal(g.quotaLeft(), 15);
+});
+
+test('the practice engine counts review against the allowance and never locks it outright', () => {
+  const src = readFileSync('nremt/practice-engine.js', 'utf8');
+  assert.doesNotMatch(src, /blockWith\('review'\)/, 'review still has its own lock');
+  assert.doesNotMatch(src, /gate\('review'/, 'a review gate card is still rendered');
+  assert.match(src, /if\(G\.quotaApplies\(mode\)\)\{\s*const left = G\.quotaLeft\(\);\s*if\(left <= 0\)\{ blockWith\('daily-limit'\)/,
+    'starting a session no longer meets the daily-limit gate');
+});
+
 test('a member has everything, uncounted, and sees no badge', () => {
   const { b, g } = fresh({ launched: true, member: true });
   assert.equal(g.locked(), false);
   for (const f of FEATURES) assert.equal(g.gate(f), '', f);
   assert.equal(g.quotaApplies('domain'), false);
+  assert.equal(g.quotaApplies('review'), false);
   for (let i = 0; i < 40; i++) assert.equal(g.take(), true);
+  assert.equal(g.canUse('review'), true, 'a member ran out of review');
   g.examStarted();
   assert.equal(b.localStorage.getItem(g.FREE_EXAM_KEY), null, 'a member spent the free exam');
   assert.equal(g.canStartExam(), true);

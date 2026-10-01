@@ -1,5 +1,5 @@
 {
-  "about": "The A&P app and tool pages. premium names the Premium feature a page is (assets/premium.js; AnpCore gates it: exams and flashcards whole, the rest down to the free Foundations chapters). scripts/build-anp.mjs writes each page's shell (head, header, SEO, a <div id=\"app\"> mount, the page's script and stylesheet) from this file; the page's behavior lives in its script. Tools read their content from data/tools/<slug>.json. docs/anp-phase1-architecture.md.",
+  "about": "The A&P app and tool pages. premium names the Premium feature a page is (assets/premium.js; AnpCore gates it, spec decision 72): \"tools\" closes a Premium tool whole for free users; practice and review (\"question-bank\", \"review\") keep Foundations unlimited and draw other chapters from the daily allowance; \"exams\" allows one free exam. A page without it is free. scripts/build-anp.mjs writes each page's shell (head, header, SEO, a <div id=\"app\"> mount, the page's script and stylesheet) from this file; the page's behavior lives in its script. Tools read their content from data/tools/<slug>.json. docs/anp-phase1-architecture.md.",
   "apps": [
     {
       "slug": "practice",
@@ -33,7 +33,6 @@
     },
     {
       "slug": "flashcards",
-      "premium": "flashcards",
       "section": "practice",
       "h1": "Flashcards",
       "title": "A&P flashcards | Anatomy & Physiology",
@@ -97,7 +96,6 @@
     },
     {
       "slug": "feedback-loops",
-      "premium": "tools",
       "name": "Feedback loop builder",
       "tag": "Stimulus to response, one slot at a time.",
       "blurb": "Build each homeostatic loop from stimulus to response.",
@@ -133,7 +131,6 @@
     },
     {
       "slug": "calculators",
-      "premium": "tools",
       "name": "Worked-example calculators",
       "tag": "Every number, every step, every unit.",
       "blurb": "Cardiac output, MAP, flow and resistance, and capillary filtration, every step shown.",

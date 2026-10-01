@@ -2,10 +2,12 @@
    prices and COURSES.ochem.freeChapters; this file only says which ochem
    things are Premium and swaps the locked ones for a gate.
 
-   Free: every notes page and the textbook, the free chapters' lessons,
-   mechanisms and questions, the tools in FREE_TOOLS, and all progress, XP
-   and streaks. Everything else is Premium. Before launch nothing locks and
-   Premium features only carry a badge.
+   Free: every notes page and the textbook, the flashcards, the free
+   chapters' lessons, mechanisms and questions, 15 questions a day from any
+   other chapter and one full exam (both in question-engine.js, which adds
+   them to OchemPremium), the tools in FREE_TOOLS, and all progress, XP,
+   streaks and the weakest-concepts list. Everything else is Premium.
+   Before launch nothing locks and Premium features only carry a badge.
 
    Load it deferred right after ../assets/premium.js. It tolerates premium.js
    being absent: then nothing is ever locked and no badge is drawn.
@@ -28,12 +30,16 @@
   // For inside a link, where a button is not allowed.
   function pill(ch){ return badge(ch) ? '<span class="premium-badge">Premium</span>' : ''; }
   function toolFree(slug){ return FREE_TOOLS.indexOf(slug) !== -1; }
+  var topicChapter = null;
   function chapterOfTopic(id){
     var C = window.OchemCurriculum, m = C && C.MODULES;
-    for(var i = 0; m && i < m.length; i++){
-      for(var j = 0; j < m[i].topics.length; j++) if(m[i].topics[j].id === id) return m[i].id;
+    if(!topicChapter && m){
+      topicChapter = {};
+      for(var i = 0; i < m.length; i++){
+        for(var j = 0; j < m[i].topics.length; j++) topicChapter[m[i].topics[j].id] = m[i].id;
+      }
     }
-    return '';
+    return (topicChapter && topicChapter[id]) || '';
   }
   function topicLocked(id){ return locked(chapterOfTopic(id)); }
   function onChange(fn){ if(P()) P().onChange(fn); else fn(); }
@@ -105,8 +111,6 @@
     badge: badge,
     pill: pill,
     lock: lock,
-    whenOpen: whenOpen,
-    // Changes whenever what may be practised changes (question-engine.js).
-    accessKey: function(){ return locked() ? 'free' : 'all'; }
+    whenOpen: whenOpen
   };
 })();

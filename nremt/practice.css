@@ -507,8 +507,6 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
    card stands in, and the pill beside the review buttons. */
 .premium-quota{margin:10px 0 0;font-size:13px;font-weight:700;color:var(--muted);}
 .premium-slot:empty{display:none;}
-.review-row-badge{align-self:center;justify-self:start;}
-.review-row-badge:empty{display:none;}
 /* A gate card inside a mode card or panel would inherit their muted text,
    which is too faint on the card's tint. */
 #introScreen .premium-card p{color:var(--ink);}

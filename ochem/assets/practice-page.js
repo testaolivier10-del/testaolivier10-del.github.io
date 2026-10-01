@@ -224,9 +224,9 @@
       esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
       ' interactive. ') +
       'Your concept map is on the <a href="dashboard.html">Dashboard</a>.</p>';
-    // Without Premium the bank above is the free chapters' questions only.
+    // Without Premium: what is left of today's allowance past the free chapters.
     var G = window.OchemPremium;
-    if(G && G.locked()) html += window.LevlPremium.gate('ochem', 'practice', 'practice-home');
+    if(G) html += G.quotaNote();
     html += '</div><aside class="practice-side">';
     html += '<div class="section-head">Your numbers</div>' + snapshotHtml();
 
@@ -330,7 +330,8 @@
         count: parseInt(homeEl.querySelector('#lengthFilter').value, 10) || 10,
         tiers: tier ? [parseInt(tier, 10)] : null
       });
-      if(!E.availableCount(plan)){
+      E.resetLimited();
+      if(!E.availableCount(plan) && !E.wasLimited()){
         alert('No questions match that topic and difficulty yet. Try "Any difficulty".');
         return;
       }
@@ -351,6 +352,7 @@
   var currentPlan = null;
   var runner = window.OchemSessionRunner({
     els: { card: cardEl, progFill: progFill, progLabel: progLabel, modeLabel: modeLabel },
+    limitSource: 'practice',
     next: function(S){
       if(S.index >= S.meta.count) return null;
       return E.next(currentPlan, S);
@@ -371,7 +373,18 @@
   });
 
   function startSession(plan){
+    E.resetLimited();
     var available = E.availableCount(plan);
+    if(!available && E.wasLimited() && window.OchemPremium){
+      // Everything this plan would ask is past the free chapters, and today's
+      // allowance is spent.
+      show('session');
+      cardEl.innerHTML = window.OchemPremium.limitGate('practice') +
+        '<div class="actions" style="justify-content:flex-start;margin-top:14px;">' +
+          '<button type="button" class="btn-press alt sm" data-limit-back>Back to practice</button></div>';
+      cardEl.querySelector('[data-limit-back]').addEventListener('click', renderHome);
+      return;
+    }
     if(!available){
       alert('There are no questions available for that right now.');
       return;
@@ -530,7 +543,8 @@
      assets/bank-loader.js. */
   window.OchemPracticeBankReady.then(function(){
     var deepLink = planFromQuery();
-    if(deepLink && E.availableCount(deepLink)) startSession(deepLink);
+    E.resetLimited();
+    if(deepLink && (E.availableCount(deepLink) || E.wasLimited())) startSession(deepLink);
     else renderHome();
   });
 })();

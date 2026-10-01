@@ -1190,16 +1190,17 @@ function renderPremium(){
   document.querySelectorAll('[data-premium-badge]').forEach(el => { el.innerHTML = G.badge(); });
   const locked = G.locked();
 
-  // The daily allowance, said up front on Practice rather than discovered.
+  // The daily allowance, said up front on Practice and Review rather than
+  // discovered. The two pages share it: one 15 a day, however it is spent.
   const head = document.querySelector('#introScreen .page-head');
   const notice = head ? premiumSlot('premiumNotice', head) : null;
   if(notice){
     let html = '';
-    if(locked && RUNNER_PAGE === 'practice'){
+    if(locked && (RUNNER_PAGE === 'practice' || RUNNER_PAGE === 'review')){
       const left = G.quotaLeft();
       html = left > 0
-        ? `<p class="premium-quota">${left} free practice question${left === 1 ? '' : 's'} left today.</p>`
-        : G.gate('daily-limit', 'practice');
+        ? `<p class="premium-quota">${left} free question${left === 1 ? '' : 's'} left today, shared by practice and review.</p>`
+        : G.gate('daily-limit', RUNNER_PAGE);
     }
     notice.innerHTML = html;
   }
@@ -1214,26 +1215,11 @@ function renderPremium(){
       : locked ? '<p class="premium-quota">Your one free timed exam is ready when you are.</p>' : '';
   }
 
-  // Missed-question review. The list itself is kept and keeps growing.
-  const reviewRow = document.getElementById('reviewRow');
-  if(reviewRow && RUNNER_PAGE === 'practice'){
-    const slot = premiumSlot('missedGate', reviewRow);
-    const lockMissed = !G.canUse('review') && loadMissed().length > 0;
-    if(lockMissed){
-      $id('reviewBtn').hidden = true;
-      reviewRow.hidden = $id('flaggedReviewBtn').hidden;
-    }
-    slot.innerHTML = lockMissed ? G.gate('review', 'practice-missed') : '';
-  }
-
-  // The spaced queue. Its counts stay on show; only starting it is Premium.
+  // Missed and spaced review are free and draw on the same allowance; once it
+  // is spent the daily-limit card above stands in for the spaced start. The
+  // queues and their counts are always kept and shown.
   const spaced = document.getElementById('spacedReviewBtn');
-  if(spaced && RUNNER_PAGE === 'review'){
-    const slot = premiumSlot('reviewGate', spaced);
-    const lockSpaced = !G.canUse('review');
-    spaced.hidden = lockSpaced;
-    slot.innerHTML = lockSpaced ? G.gate('review', 'review') : '';
-  }
+  if(spaced && RUNNER_PAGE === 'review') spaced.hidden = !G.canUse('review');
 }
 // A start that was refused: the gate for it, on screen and in focus.
 function blockWith(feature){
@@ -1705,7 +1691,6 @@ function beginQuiz(withTimer, resumeState){
   // meets the same rules. A resumed attempt is the same attempt and always
   // carries on.
   if(!resumeState){
-    if((mode === 'review' || mode === 'spaced') && !G.canUse('review')){ blockWith('review'); return; }
     if(mode === 'full'){
       if(!G.canStartExam()){ blockWith('exam'); return; }
       G.examStarted();

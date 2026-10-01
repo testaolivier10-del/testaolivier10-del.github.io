@@ -35,8 +35,8 @@
   /* ---- the daily allowance ---------------------------------------------- */
 
   // The timed exam has its own one-exam rule; every other way of being shown a
-  // bank question (drills, weak-spot, flagged, a search result, flashcard
-  // flips) draws on the same 15.
+  // bank question (drills, weak-spot, flagged, missed and spaced review, a
+  // search result, flashcard flips) draws on the same 15.
   function quotaApplies(mode) { return locked() && mode !== 'full'; }
 
   function quotaLeft() {
@@ -74,10 +74,13 @@
 
   /* ---- whole features ---------------------------------------------------- */
 
-  // 'review' (missed queue and spaced review), 'readiness' (the score and the
-  // domain breakdowns), 'scenarios' (the simulator).
+  // 'readiness' (the score and the domain breakdowns) and 'scenarios' (the
+  // simulator) are Premium. 'review' (missed queue and spaced review) is free
+  // and shares the daily allowance: open while any of today's 15 is left, so
+  // a spent allowance meets the 'daily-limit' gate, never a review lock.
   function canUse(feature) {
     if (feature === 'exam') return canStartExam();
+    if (feature === 'review') return quotaLeft() > 0;
     return !locked();
   }
 

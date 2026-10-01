@@ -9,7 +9,11 @@
    Question items render here with AnpQuestions. Tool items (ids like
    "predict:hemorrhage-l4:heart-rate", whose first part is a tool slug) cannot
    be rebuilt outside their tool, so they link to it instead; they stay due
-   until they are answered there. */
+   until they are answered there.
+
+   The free tier (spec decision 72): a Foundations question is always served;
+   one from any other chapter takes one from the daily allowance shared with
+   practice (AnpCore.serve). Out of it, the item stays due, kept for later. */
 (function(){
   var BASE = window.ANP_BASE || '';
   var app = document.getElementById('app');
@@ -117,6 +121,8 @@
         (qs.length > SESSION_CAP ? '<button type="button" class="btn-outline" data-n="' + qs.length + '">Review all ' + qs.length + '</button>' : '') +
       '</div></div></div>';
     if(tools.length) html += '<h2 class="anp-rv-h">Due in the tools</h2><ul class="anp-rv-tools">' + tools.map(toolLine).join('') + '</ul>';
+    var a = Core.quota ? Core.quota() : null;
+    if(a && a.limit !== Infinity) html += '<p class="anp-small anp-pr-allow">Free: Foundations questions are unlimited. Questions from other chapters: <b>' + a.left + ' of ' + a.limit + '</b> left today, shared with practice.' + (Core.badge ? Core.badge() : '') + '</p>';
     html += '<p class="anp-small anp-rv-fc">Glossary terms are on spaced <a href="' + BASE + 'flashcards.html">flashcards</a>.</p>';
     app.innerHTML = html;
     app.querySelectorAll('[data-n]').forEach(function(b){
@@ -156,6 +162,16 @@
       stage.innerHTML = '<div class="anp-q anp-rv-toolcard"><p class="anp-q-stem" tabindex="-1">This item is from <b>' + esc(it.tool.name) + '</b>.</p>' +
         '<ul class="anp-rv-tools">' + toolLine(it) + '</ul><p class="anp-small">It stays in your queue until you answer it again in the tool.</p></div>';
       showNext(after, 'Skip for now');
+    } else if(!Core.serve(it.q)){
+      // Out of today's allowance: the rest stays due. Skip to the next
+      // Foundations item, or end with what was answered.
+      var j = session.i + 1;
+      while(j < session.list.length && !(session.list[j].kind === 'tool' || Core.serve(session.list[j].q))) j++;
+      if(j < session.list.length){ session.i = j; return next(); }
+      stage.innerHTML = Core.gate('daily-limit', 'review-limit', '', 'Foundations questions stay free and unlimited, and the allowance resets at midnight. The rest of your queue stays due.');
+      after.innerHTML = '<button type="button" class="btn-press anp-pr-next">' + (session.answered ? 'See how you did' : 'Back to the queue') + '</button>';
+      after.hidden = false;
+      after.querySelector('.anp-pr-next').addEventListener('click', function(){ if(session.answered) finish(); else { session.done = true; renderHome(); } });
     } else {
       Q.render(it.q, stage, { n: session.i + 1, onAnswer: function(res){
         session.answered++; if(res.correct) session.right++; else session.missed.push(it.q);

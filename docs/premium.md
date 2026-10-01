@@ -53,6 +53,22 @@ search traffic is unaffected.
    `scripts/sql/reports.sql` (30 days free for every existing account), and
    email the waitlist once.
 
+## The free tier, one rule for every course (decided 2026-10-01)
+
+| | Free | Premium |
+|---|---|---|
+| Practice + review | 15 questions a day from any topic, shared between the two; the free chapters (ochem's first four, A&P's Foundations) stay unlimited | Unlimited |
+| Exams | One full exam per course (`freeExam()` in `assets/premium.js`; NREMT keeps its synced flag) | Unlimited |
+| Flashcards | Free in every course: study material, like the notes | — |
+| Tools | Three per course (NREMT: all but the scenario simulator) | The rest |
+| Progress | Progress, XP, streak, a basic weak-topics list | Readiness, gap detection, detailed analytics |
+
+Why: students buy when they hit a limit on the topic they are studying that
+week, so every course lets them try every paid feature on their own topic
+and stops them at a daily limit rather than locking chapters outright. 15 a
+day is a starting point; the funnel report in `scripts/sql/reports.sql` says
+whether to move it.
+
 ## Decisions (October 2026 research)
 
 - **NREMT free allowance: 15 questions a day**, reset at local midnight, plus

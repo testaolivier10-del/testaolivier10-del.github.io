@@ -110,8 +110,9 @@
     var steps = [];
     if(reviewDue) steps.push('<li><a href="' + esc(BASE + 'review.html') + '"><b>Review ' + plural(reviewDue, 'question') + '</b></a><span>Missed questions come back just before you would forget them.</span></li>');
     if(fc.due) steps.push('<li><a href="' + esc(BASE + 'flashcards.html') + '"><b>' + plural(fc.due, 'flashcard') + ' due</b></a><span>A few minutes keeps the glossary fresh.</span></li>');
-    var weak = A.allowed('weak-spot-analytics') ? A.weakest(5) : [];
-    var weakCore = A.allowed('weak-spot-analytics') ? A.weakestCore(3) : [];
+    var analytics = A.allowed('analytics'), pill = A.badge ? A.badge() : '';
+    var weak = A.weakest(5);
+    var weakCore = analytics ? A.weakestCore(3) : [];
     if(weak[0] && weak[0].value < 0.6) steps.push('<li><a href="' + esc(BASE + 'practice.html?topic=' + encodeURIComponent(weak[0].id)) + '"><b>Shore up ' + esc(weak[0].title) + '</b></a><span>Your weakest topic so far, at ' + pct(weak[0].value) + '%.</span></li>');
     if(firstUnstarted && !isNew) steps.push('<li><a href="' + esc(BASE + 'lessons/' + firstUnstarted.id + '.html') + '"><b>Next new topic: ' + esc(firstUnstarted.title) + '</b></a><span>Topic ' + firstUnstarted.n + ', the first one you have not started.</span></li>');
     if(steps.length && !isNew) html += '<section class="panel anp-db-next" aria-labelledby="anp-db-next-h"><h2 id="anp-db-next-h">Study next</h2><ul class="anp-db-nextlist">' + steps.slice(0, 4).join('') + '</ul></section>';
@@ -120,18 +121,20 @@
 
     html += '<div class="anp-db-grid"><div class="anp-db-col">';
 
-    /* --- weakest topics and core concepts (Premium: the analytics; the
-       mastery and XP below are progress, and stay free) --- */
-    var analytics = A.allowed('weak-spot-analytics'), pill = A.badge ? A.badge() : '';
-    if(!analytics) html += A.gate('weak-spot-analytics', 'dashboard');
-    if(!isNew && analytics){
-      html += '<section class="panel" aria-labelledby="anp-db-weak-h"><h2 id="anp-db-weak-h">Weakest topics' + pill + '</h2>' +
+    /* --- weakest topics (free) and core concepts (Premium: the deeper
+       analytics, with tool accuracy; mastery, XP and streak are progress and
+       stay free, spec decision 72) --- */
+    if(!isNew){
+      html += '<section class="panel" aria-labelledby="anp-db-weak-h"><h2 id="anp-db-weak-h">Weakest topics</h2>' +
         (weak.length ? weak.map(function(w){
           return bar({ label: w.title, href: BASE + 'lessons/' + w.id + '.html', value: w.value, tier: tier(w.value, w.answered), note: plural(w.answered, 'item') + ' answered',
             action: action(BASE + 'practice.html?topic=' + encodeURIComponent(w.id), 'Practice') });
         }).join('') : '<p class="anp-db-emptynote">Answer a few questions and your weakest topics show up here.</p>') +
-        '</section>' +
-        '<section class="panel" aria-labelledby="anp-db-weakc-h"><h2 id="anp-db-weakc-h">Weakest core concepts</h2>' +
+        '</section>';
+    }
+    if(!analytics) html += A.gate('analytics', 'dashboard', '', 'Your progress, XP, streak, mastery and weakest topics stay free.');
+    if(!isNew && analytics){
+      html += '<section class="panel" aria-labelledby="anp-db-weakc-h"><h2 id="anp-db-weakc-h">Weakest core concepts' + pill + '</h2>' +
         (weakCore.length ? weakCore.map(function(w){
           return bar({ label: w.name, href: BASE + 'concepts/' + w.id + '.html', value: w.value, tier: tier(w.value, w.answered), note: plural(w.answered, 'item') + ' answered',
             action: action(BASE + 'practice.html?core=' + encodeURIComponent(w.id), 'Practice') });

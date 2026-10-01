@@ -54,7 +54,6 @@
   app.innerHTML = '<p class="pc-loading anp-hint">Loading scenarios…</p>';
   fetch(app.getAttribute('data-src') || (base() + 'data/tools/predict.json'))
     .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(d){ return window.AnpCore ? window.AnpCore.freeItems(d) : d; })
     .then(init)
     .catch(function(){ app.innerHTML = '<p class="anp-hint">The scenarios could not be loaded. Check your connection and reload the page.</p>'; });
 

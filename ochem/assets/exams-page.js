@@ -194,9 +194,23 @@
       }).join('') + '</ul></section>';
   }
 
+  /* Without Premium: one full exam, any chapters (LevlPremium.freeExam). It
+     is used when it starts; an attempt in progress can always be finished. */
+  function examAccess(){
+    var G = window.OchemPremium;
+    return G ? G.freeExam() : { unlimited: true, available: true, use: function(){ return true; } };
+  }
+
   function renderSetup(notice){
     view('setup');
     var r = savedRun();
+    var ex = examAccess();
+    var spent = !r && !ex.available;
+    var startHtml = spent
+      ? window.LevlPremium.gate('ochem', 'exam', 'exams') +
+        '<p class="ex-small">Practice and Review stay open: the first four chapters without limit, and 15 questions a day from the rest.</p>'
+      : '<button type="submit" class="btn-press ex-start"' + (r ? ' disabled' : '') + '>Start exam</button>' +
+        (!r && !ex.unlimited ? '<p class="ex-small">This is your free full exam: any chapters, any length. Unlimited exams are part of Premium.</p>' : '');
     var resume = '';
     if(r){
       var answered = r.choices.filter(function(c){ return c !== null; }).length;
@@ -216,7 +230,7 @@
         '<div class="ex-panel">' + panelHtml() + '</div>' +
         '<p class="ex-avail" aria-live="polite"></p>' +
         '<p class="ex-small ex-how">Exam mode shows no feedback until you submit, and the clock does not pause. You can change an answer, flag a question to come back to, and jump around with the question map. Your answers count toward your mastery and XP when you submit; anything you miss goes to your review queue.</p>' +
-        '<button type="submit" class="btn-press ex-start"' + (r ? ' disabled' : '') + '>Start exam</button>' +
+        startHtml +
         (r ? '<p class="ex-small">Finish or discard the exam in progress to start another.</p>' : '') +
       '</form>' + historyHtml();
 
@@ -224,7 +238,8 @@
     function refresh(){
       var s = summary();
       app.querySelector('.ex-avail').textContent = s.text;
-      if(!r) app.querySelector('.ex-start').disabled = !s.ok;
+      var btn = app.querySelector('.ex-start');
+      if(!r && btn) btn.disabled = !s.ok;
     }
     form.addEventListener('change', function(e){
       var n = e.target.name, v = e.target.value;
@@ -238,7 +253,7 @@
       savePrefs();
       refresh();
     });
-    form.addEventListener('submit', function(e){ e.preventDefault(); if(!r) begin(); });
+    form.addEventListener('submit', function(e){ e.preventDefault(); if(!r && !spent) begin(); });
     app.querySelectorAll('[data-act="resume"]').forEach(function(b){ b.addEventListener('click', function(){ resumeRun(r); }); });
     app.querySelectorAll('[data-act="discard"]').forEach(function(b){
       b.addEventListener('click', function(){
@@ -258,6 +273,8 @@
     var p = planFor();
     var ids = X.pick(poolFor(p.chapters), p.n, { cumulative: p.cumulative });
     if(!ids.length) return;
+    // Taken only now that an exam really starts; refused if already spent.
+    if(!examAccess().use()){ renderSetup(); return; }
     var k = timingK(), now = Date.now();
     var limit = k ? Math.round(ids.length * PER_Q_MS * k) : 0;
     var r = {
@@ -577,6 +594,12 @@
       // it stood, the same as if the page had been open when the clock hit 0.
       if(r && r.deadline && X.timeLeft(r, Date.now()) <= 0){ run = r; finish(true, true); return; }
       renderSetup();
+      // A pass confirmed after load opens unlimited exams without a reload.
+      var wasOpen = examAccess().available;
+      if(window.LevlPremium) window.LevlPremium.onChange(function(){
+        var now = examAccess().available;
+        if(now !== wasOpen && app.getAttribute('data-view') === 'setup'){ wasOpen = now; renderSetup(); }
+      });
     });
   }
   boot();

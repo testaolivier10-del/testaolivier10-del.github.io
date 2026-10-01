@@ -21,9 +21,13 @@
    score by topic, by system (or TEAS area), by core concept and by level.
 
    Timing: a clock with pause (the question hides while paused), extra-time
-   settings and a no-timer option for accessibility. Finals and TEAS mode ask
-   AnpCore.allowed('exams') first: spec section 14 says they may be premium
-   later. Nothing is gated now. */
+   settings and a no-timer option for accessibility.
+
+   The free tier (spec decision 72): one free exam, of any kind, through
+   AnpCore.freeExam (LevlPremium.freeExam). It is used when it starts, and an
+   exam in progress can always be finished; after it the setup shows the
+   Premium card. Exam questions never count against the daily practice
+   allowance. Members and pre-launch visitors are never limited. */
 (function(){
   var BASE = window.ANP_BASE || '';
   var app = document.getElementById('app');
@@ -324,10 +328,17 @@
     return plural(n, 'question') + ', ' + (t.k ? minutes(sec * t.k) + (t.k > 1 ? ' with extra time' : '') : 'no timer') + '.';
   }
 
+  function freeExamHtml(fe){
+    if(fe.unlimited) return '';
+    if(!fe.available) return Core.gate('exam', 'exams', '', 'Practice, review and flashcards stay open, and Foundations questions are unlimited in practice.');
+    return '<p class="anp-ex-note anp-ex-free"><b>Your free exam.</b> One full exam is free: starting any exam below uses it, and once started you can always finish it. ' + (Core.badge ? Core.badge() : '') + '</p>';
+  }
+
   function renderSetup(){
     view('setup');
     if(!cfg.chapter) cfg.chapter = builtChapters()[0].id;
-    app.innerHTML = '<form class="anp-pr-setup anp-ex-setup" novalidate>' +
+    var fe = Core.freeExam ? Core.freeExam() : { unlimited: true, available: true };
+    app.innerHTML = freeExamHtml(fe) + '<form class="anp-pr-setup anp-ex-setup" novalidate>' +
       '<fieldset class="anp-pr-modes"><legend>Choose an exam</legend>' + KINDS.map(function(k){
         return '<label class="anp-pr-mode"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '><span class="anp-pr-mode-t">' + esc(k.title) + '</span><span class="anp-pr-mode-d">' + esc(k.desc) + '</span></label>';
       }).join('') + '</fieldset>' +
@@ -338,7 +349,7 @@
     var form = app.querySelector('form');
     function refresh(){
       app.querySelector('.anp-pr-avail').textContent = planSummary();
-      var ok = !/^(No |Pick )/.test(app.querySelector('.anp-pr-avail').textContent);
+      var ok = fe.available && !/^(No |Pick )/.test(app.querySelector('.anp-pr-avail').textContent);
       app.querySelector('.anp-pr-start').disabled = !ok;
       app.querySelector('.anp-pr-start').textContent = START_LABEL[cfg.kind];
     }
@@ -370,10 +381,6 @@
 
   function begin(){
     var k = cfg.kind, qs = [], label = '', perQ = EXAM_SEC, meta = { kind: k };
-    if((k === 'final' || k === 'teas') && !Core.allowed('exams')){
-      app.querySelector('.anp-pr-avail').textContent = 'This exam mode is not available on your plan.';
-      return;
-    }
     if(k === 'unit'){
       qs = shuffle(spread(poolFor(), 15)); perQ = 0;
       var ch = CHAPTER[cfg.chapter];
@@ -405,6 +412,8 @@
       label = 'TEAS A&P practice (estimate)';
     }
     if(!qs.length) return;
+    // The free exam is used as it starts; already used, the setup shows the card.
+    if(Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
     var t = TIMINGS.filter(function(x){ return x.id === cfg.timing; })[0];
     var limit = perQ && t.k ? Math.round(qs.length * perQ * t.k * 1000) : 0;
     start(qs, label, limit, meta);
