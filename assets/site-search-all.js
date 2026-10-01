@@ -14,10 +14,9 @@
    The chunk builders are pure (data in, chunks out) and tested in
    scripts/test/site-search.test.mjs; only load() touches the network.
 
-   Adding a source is meant to be one line. The ochem glossary in particular:
-   when ochem/glossary.html and its data ship, set GLOSSARY.ochem below to the
-   JSON path. termsFromJson() already reads both shapes a glossary file on this
-   site is likely to have (A&P's {id: {t, d}} map, or a [{term, def}] list). */
+   Adding a source is meant to be one line. termsFromJson() reads every
+   glossary shape on this site (A&P's {id: {t, d}} map, ochem's
+   {terms: [{id, term, def}]}). */
 (function (window) {
   'use strict';
 
@@ -31,7 +30,7 @@
      live inline in nremt/glossary.html (see inlineTerms) and A&P's in its own
      loader, so this is only the slot for ochem's. */
   var GLOSSARY = {
-    ochem: null, // e.g. 'assets/glossary.json' once ochem/glossary.html exists
+    ochem: 'assets/glossary.json', // built by scripts/build-ochem-glossary.mjs; entries are #g-<id>
   };
 
   function courseOf(key) {
@@ -405,7 +404,7 @@
         if (!GLOSSARY.ochem) return Promise.resolve([]);
         return getJson('ochem/' + GLOSSARY.ochem).then(function (g) {
           return glossaryChunks('ochem', termsFromJson(g), function (x) {
-            return x.id ? { file: 'glossary.html#t-' + x.id } : { file: 'glossary.html', frag: true };
+            return x.id ? { file: 'glossary.html#g-' + x.id } : { file: 'glossary.html', frag: true };
           });
         });
       }],
