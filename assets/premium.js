@@ -80,7 +80,7 @@
     },
     ochem: {
       name: 'Organic Chemistry',
-      freeChapters: [],
+      freeChapters: ['foundations', 'electron-movement', 'nomenclature', 'acids-bases'],
       passes: [
         { id: 'ochem-semester', label: 'Semester (5 months)', price: 29 },
         { id: 'ochem-year', label: 'Full year', price: 49 },
@@ -93,7 +93,7 @@
       ],
       premium: [
         'Every interactive lesson and mechanism walkthrough',
-        'The full 3,635-question practice bank',
+        'The full 3,795-question practice bank',
         'Mastery dashboard and gap detection',
         'Spaced-repetition flashcards',
         'All eight interactive tools',

@@ -38,6 +38,23 @@
       }).join('') +
     '</nav>';
 
+  /* Premium tools (all but OchemPremium.FREE_TOOLS): a badge by the name,
+     and once Premium launches, the gate in place of the tool for anyone
+     without it. The tool's own script still runs underneath, unseen. */
+  var G = window.OchemPremium;
+  if(G && !G.toolFree(slug)){
+    var top = mount;
+    G.lock({
+      feature: 'tool', source: 'tool-' + slug,
+      hide: [].slice.call(top.parentNode.children).filter(function(el){ return el !== top; }),
+      after: top,
+      notes: '../learn.html', notesText: 'Read the free textbook',
+      locked: function(){ return G.locked(); },
+      badgeIn: top.querySelector('h1'),
+      badge: G.badge()
+    });
+  }
+
   /* Every tool can be linked to in the state you left it in, so the control
      is part of the shared chrome rather than something each tool remembers to
      add. Tools that keep nothing in the URL still get a working link to

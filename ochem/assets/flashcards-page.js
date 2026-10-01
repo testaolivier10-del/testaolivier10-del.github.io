@@ -672,6 +672,19 @@
 
   quitBtn.addEventListener('click', function(){ finish(false); });
 
+  /* ---- Premium: the spaced-repetition deck (ochem-premium.js) ----------------- */
+
+  var G = window.OchemPremium;
+  if(G) G.lock({
+    feature: 'flashcards', source: 'flashcards',
+    hide: [homeEl, sessionEl, doneEl],
+    after: heroEl,
+    notes: 'learn.html', notesText: 'Read the free textbook',
+    locked: function(){ return G.locked(); },
+    badgeIn: heroEl && heroEl.querySelector('h1'),
+    badge: G.badge()
+  });
+
   /* ---- boot ------------------------------------------------------------------ */
 
   homeEl.innerHTML = '<div class="empty-panel"><h2>Shuffling the deck…</h2></div>';

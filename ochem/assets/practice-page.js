@@ -224,6 +224,9 @@
       esc(stats.total.toLocaleString() + ' questions across ' + stats.topics + ' topics, ' + stats.interactive +
       ' interactive. ') +
       'Your concept map is on the <a href="dashboard.html">Dashboard</a>.</p>';
+    // Without Premium the bank above is the free chapters' questions only.
+    var G = window.OchemPremium;
+    if(G && G.locked()) html += window.LevlPremium.gate('ochem', 'practice', 'practice-home');
     html += '</div><aside class="practice-side">';
     html += '<div class="section-head">Your numbers</div>' + snapshotHtml();
 

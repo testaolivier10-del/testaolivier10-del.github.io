@@ -36,7 +36,16 @@
    engine just links there, and honors the old ?notes=1 URLs by redirecting to
    the matching section so existing bookmarks still land somewhere right. */
 (function(){
+  /* A Premium lesson the reader may not open yet stays unstarted, so it
+     writes no progress; it starts the moment access arrives
+     (ochem-premium.js). Old ?notes=1 links still redirect either way. */
   function start(opts){
+    var G = window.OchemPremium;
+    if(G && !/(^|[?&])notes=1(&|$)/.test(location.search)) G.whenOpen(function(){ run(opts); });
+    else run(opts);
+  }
+
+  function run(opts){
     var topicId = opts.topicId;
     var steps = opts.steps;
     var card = opts.card;

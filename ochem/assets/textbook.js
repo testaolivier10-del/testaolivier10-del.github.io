@@ -307,6 +307,9 @@
     if(!C.hasLesson(t)) return '<p class="tb-soon">' + escapeHtml(C.NOTES_ONLY_LABEL) + '</p>';
     var links = ['<a class="btn-press sm" href="' + t.href + '">Do the interactive lesson &rarr;</a>'];
     if(t.mechanism) links.push('<a class="btn-press alt sm" href="' + t.mechanism + '">Draw the mechanism &#9883;</a>');
+    // The reading is free; the lesson is Premium past the free chapters.
+    var G = window.OchemPremium;
+    if(G) links.push(G.badge(TOPIC_META[t.id] && TOPIC_META[t.id].moduleId));
     return '<div class="tb-actions">' + links.join('') + '</div>';
   }
 

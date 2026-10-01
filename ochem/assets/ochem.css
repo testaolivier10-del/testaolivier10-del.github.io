@@ -971,3 +971,11 @@ a.mode-card{text-decoration:none;display:block;}
 /* Bottom left: the study assistant's button holds bottom right. Above the
    phone's bottom tab bar. */
 @media (max-width:640px){.tb-totop{bottom:calc(86px + env(safe-area-inset-bottom));left:12px;}}
+
+/* Premium (ochem-premium.js): the gate that stands in for a locked lesson,
+   tool or deck, and the pill on a tile, which is a link and so gets a span. */
+.ochem-lock{margin:14px 0 18px;}
+.ochem-lock .premium-card{margin-top:0;}
+.ochem-lock__notes{margin:10px 0 0;font-weight:800;}
+.tb-actions .premium-badge{align-self:center;margin-left:0;}
+.tool-tile__name .premium-badge{cursor:inherit;}

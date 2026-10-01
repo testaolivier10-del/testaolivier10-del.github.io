@@ -208,4 +208,21 @@
         '<span class="track"><span class="fill" style="width:' + pct(r.strength) + '%"></span></span>' +
         '<span class="pct">' + pct(r.strength) + '%</span></div>';
     }).join('') + '</div>');
+
+  /* Premium: the concept analytics and gap detection. Overall mastery, the
+     per-module bars, XP, streak and achievements stay free: they are the
+     reader's own progress, and earned progress is never locked. */
+  var G = window.OchemPremium;
+  if(G){
+    var ids = ['masterySnapshot', 'leechAlerts', 'dependencyAlerts', 'recRow', 'weakHead', 'weakConcepts', 'familyHead', 'familyStats'];
+    G.lock({
+      feature: 'mastery', source: 'dashboard',
+      hide: ids.map(function(id){ return document.getElementById(id); }),
+      after: document.getElementById('overallCard'),
+      notes: 'learn.html', notesText: 'Read the free textbook',
+      locked: function(){ return G.locked(); },
+      badgeIn: document.querySelector('.hero h1'),
+      badge: G.badge()
+    });
+  }
 })();
