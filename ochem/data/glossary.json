@@ -1,0 +1,742 @@
+{
+  "atomic-structure": [
+    {"term":"atomic number","def":"The number of protons in an atom's nucleus. It identifies the element: every carbon atom has atomic number 6.","see":["mass number"]},
+    {"term":"mass number","def":"The total number of protons and neutrons in a nucleus. Isotopes of one element have the same atomic number but different mass numbers.","see":["atomic number","isotopes"]},
+    {"term":"isotopes","def":"Atoms of the same element (same number of protons) with different numbers of neutrons, such as ¹²C and ¹³C, or hydrogen and deuterium.","aliases":["isotope"],"see":["mass number"]},
+    {"term":"valence electrons","def":"The electrons in an atom's outermost shell, which form its bonds and lone pairs. Carbon has 4, nitrogen 5, oxygen 6 and each halogen 7.","aliases":["valence electron"],"see":["core electrons","octet rule"]},
+    {"term":"core electrons","def":"The electrons in an atom's inner, filled shells. They are held tightly and take no part in bonding.","see":["valence electrons"]},
+    {"term":"octet rule","def":"Second-row atoms (C, N, O, F) are most stable with eight valence electrons around them, counting both shared bonding pairs and lone pairs. Hydrogen is full with two.","aliases":["octet","octets","full octet"],"see":["expanded octet","valence electrons"]},
+    {"term":"lone pair","def":"A pair of valence electrons that belongs to one atom and is not shared in a bond. Lone pairs are where most bases and nucleophiles donate from.","aliases":["lone pairs","nonbonding pair"],"see":["Lewis structure"]},
+    {"term":"covalent bond","def":"A bond in which two atoms share a pair of electrons. Each line in a Lewis or skeletal structure is one shared pair.","aliases":["covalent bonds"],"see":["polar covalent bond","ionic bond"]},
+    {"term":"ionic bond","def":"The electrostatic attraction between oppositely charged ions, formed when one atom effectively transfers electrons to another. It is typical when the two atoms differ greatly in electronegativity, as in Na⁺Cl⁻.","aliases":["ionic bonds"],"see":["covalent bond","electronegativity"]},
+    {"term":"cation","def":"An atom or molecule with a positive charge: it has fewer electrons than protons.","aliases":["cations"],"see":["anion"]},
+    {"term":"anion","def":"An atom or molecule with a negative charge: it has more electrons than protons.","aliases":["anions"],"see":["cation"]},
+    {"term":"radical","def":"A species with an unpaired electron, such as Br• or CH₃•. Carbon radicals have only seven valence electrons and are usually very reactive.","aliases":["radicals","free radical","free radicals"],"see":["homolytic cleavage","fishhook arrow"]},
+    {"term":"halogens","def":"The group 17 elements fluorine, chlorine, bromine and iodine. In organic molecules a halogen usually forms one bond and carries three lone pairs.","aliases":["halogen"]}
+  ],
+  "orbitals": [
+    {"term":"orbital","def":"A region of space around a nucleus (or a molecule) where an electron is likely to be found. Each orbital holds at most two electrons.","aliases":["orbitals","atomic orbital","atomic orbitals"],"see":["Pauli exclusion principle","molecular orbital"]},
+    {"term":"Pauli exclusion principle","def":"No two electrons in an atom can be in exactly the same state, so one orbital holds at most two electrons and they must have opposite spins.","see":["orbital"]},
+    {"term":"Aufbau principle","def":"Electrons fill the lowest-energy orbitals first: 1s, then 2s, then 2p, then 3s, and so on.","see":["Hund's rule","electron configuration"]},
+    {"term":"Hund's rule","def":"When electrons enter orbitals of equal energy, they occupy them one at a time with parallel spins before any orbital takes a second electron.","aliases":["Hund’s rule"],"see":["degenerate orbitals"]},
+    {"term":"electron configuration","def":"A list of the orbitals an atom's electrons occupy, with the number in each, such as 1s² 2s² 2p² for carbon.","aliases":["electron configurations"],"see":["Aufbau principle"]},
+    {"term":"node","def":"A point or plane where an orbital's wavefunction is zero, so the electron is never found there. The two lobes of a p orbital are separated by a nodal plane.","aliases":["nodes","nodal plane","nodal planes"],"see":["phase"]},
+    {"term":"degenerate orbitals","def":"Orbitals with the same energy, such as the three 2p orbitals of an atom.","aliases":["degenerate"],"see":["Hund's rule"]},
+    {"term":"phase","def":"The sign, + or −, of an orbital's wavefunction in a region, usually shown by shading the lobes. Overlap of lobes with the same phase builds a bond; overlap of opposite phases does not.","pop":false,"see":["node","antibonding orbital"]},
+    {"term":"antibonding orbital","def":"A molecular orbital with a node between the two nuclei, higher in energy than the orbitals that formed it. Electrons that enter it weaken the bond; it is written σ* or π*.","aliases":["antibonding orbitals","antibonding","σ*","π*","sigma star"],"see":["molecular orbital","LUMO"]},
+    {"term":"ground state","def":"The lowest-energy arrangement of the electrons in an atom or molecule.","aliases":["ground-state"]}
+  ],
+  "hybridization": [
+    {"term":"hybridization","def":"Mixing an atom's s and p orbitals into the same number of hybrid orbitals that point toward its bonds and lone pairs. Count the electron groups: four means sp³, three sp², two sp.","aliases":["hybridized"],"see":["hybrid orbital","electron group"]},
+    {"term":"hybrid orbital","def":"An orbital made by mixing s and p orbitals on one atom, such as sp³, sp² or sp. Hybrids point in definite directions, which sets the bond angles.","aliases":["hybrid orbitals"],"see":["hybridization"]},
+    {"term":"sp³ hybridization","def":"One s and three p orbitals mixed into four sp³ orbitals pointing to the corners of a tetrahedron, 109.5° apart. An atom with four electron groups is sp³.","aliases":["sp³","sp³-hybridized","sp³ hybridized"],"see":["tetrahedral"]},
+    {"term":"sp² hybridization","def":"One s and two p orbitals mixed into three sp² orbitals lying in a plane 120° apart, leaving one unhybridized p orbital perpendicular to that plane. An atom with three electron groups is sp².","aliases":["sp²","sp²-hybridized","sp² hybridized"],"see":["trigonal planar","pi bond"]},
+    {"term":"sp hybridization","def":"One s and one p orbital mixed into two sp orbitals 180° apart, leaving two p orbitals free for π bonds. An atom with two electron groups, such as a triple-bonded carbon, is sp.","aliases":["sp-hybridized","sp hybridized"],"see":["linear geometry","triple bond"]},
+    {"term":"electron group","def":"Anything that occupies a direction around an atom: a lone pair, an unpaired electron or a bond to another atom. A double or triple bond counts as one group.","aliases":["electron groups","electron domain","electron domains"],"see":["VSEPR theory","hybridization"]},
+    {"term":"s-character","def":"The share of a hybrid orbital that comes from the s orbital: 25% for sp³, 33% for sp² and 50% for sp. More s-character holds electrons closer to the nucleus, so bonds are shorter and an anion in that orbital is more stable.","aliases":["s character"],"see":["hybridization","ARIO"]}
+  ],
+  "bonding": [
+    {"term":"sigma bond","def":"A bond whose electron density lies along the line joining the two nuclei, made by head-on overlap. Every single bond is a σ bond, and every double or triple bond contains exactly one.","aliases":["σ bond","σ bonds","sigma bonds","sigma (σ) bond"],"see":["pi bond"]},
+    {"term":"pi bond","def":"A bond made by side-by-side overlap of two parallel p orbitals, with its electron density above and below the bond axis. It blocks rotation and its electrons are exposed, so it is the reactive part of a C=C.","aliases":["π bond","π bonds","pi bonds","pi (π) bond"],"see":["sigma bond","double bond"]},
+    {"term":"double bond","def":"Two shared electron pairs between two atoms: one σ bond and one π bond. Both atoms are usually sp² and the bond cannot rotate.","aliases":["double bonds"],"see":["pi bond","alkene"]},
+    {"term":"triple bond","def":"Three shared electron pairs between two atoms: one σ bond and two π bonds at right angles to each other. Both atoms are sp and the arrangement is linear.","aliases":["triple bonds"],"see":["alkyne","sp hybridization"]},
+    {"term":"bond dissociation energy","def":"The energy needed to break a particular bond homolytically, giving two radicals. A larger value means a stronger bond.","aliases":["bond dissociation energies","BDE"],"see":["homolytic cleavage"]},
+    {"term":"homolytic cleavage","def":"Bond breaking in which each atom keeps one of the two bonding electrons, giving two radicals. It is drawn with two fishhook arrows.","aliases":["homolysis","homolytic","homolytically"],"see":["heterolytic cleavage","radical"]},
+    {"term":"heterolytic cleavage","def":"Bond breaking in which one atom keeps both bonding electrons, giving a cation and an anion. It is drawn with one full curved arrow.","aliases":["heterolysis","heterolytic","heterolytically"],"see":["homolytic cleavage","curved arrow"]}
+  ],
+  "electronegativity": [
+    {"term":"electronegativity","def":"An atom's pull on the electrons in a bond it shares. It increases up a group and to the right across a period; fluorine is the most electronegative element, and carbon and hydrogen are close.","aliases":["electronegative"],"see":["polar covalent bond","inductive effect"]},
+    {"term":"partial charge","def":"A fraction of a full charge on an atom in a polar bond, written δ+ or δ−. The more electronegative atom carries δ−.","aliases":["partial charges","partial positive charge","partial negative charge"],"see":["polar covalent bond","dipole moment"]},
+    {"term":"polar covalent bond","def":"A covalent bond whose electrons are shared unequally because the two atoms differ in electronegativity, leaving the atoms with partial charges. C–O, C–N and C–Cl are polar; C–C and C–H are essentially nonpolar.","aliases":["polar covalent","polar bond","polar bonds"],"see":["electronegativity","bond dipole"]},
+    {"term":"inductive effect","def":"The pull (or push) of electron density through σ bonds by a nearby electronegative (or electron-donating) group. It weakens quickly with distance and is small beyond about three bonds.","aliases":["induction","inductive effects","inductively"],"see":["electronegativity","ARIO"]}
+  ],
+  "formal-charge": [
+    {"term":"formal charge","def":"The charge an atom would have if every bond's electrons were split equally: valence electrons minus (lone-pair electrons + number of bonds). The formal charges in a structure add up to its overall charge.","aliases":["formal charges"],"see":["Lewis structure"]},
+    {"term":"carbanion","def":"A carbon with three bonds, one lone pair and a −1 formal charge. Carbanions are very strong bases and nucleophiles.","aliases":["carbanions"],"see":["carbocation","organometallic compound"]}
+  ],
+  "lewis-structures": [
+    {"term":"Lewis structure","def":"A drawing that shows every valence electron in a molecule: shared pairs as bond lines, unshared pairs as dots, and any formal charges.","aliases":["Lewis structures","Lewis dot structure"],"see":["formal charge","lone pair"]},
+    {"term":"condensed formula","def":"A written formula that lists each carbon with the hydrogens attached to it, in order, such as CH₃CH₂OH, with parentheses for branches.","aliases":["condensed formulas","condensed structure","condensed structures"],"see":["skeletal structure"]},
+    {"term":"expanded octet","def":"More than eight valence electrons drawn around an atom of period 3 or below, such as sulfur in a sulfone or phosphorus in a phosphate. Period 2 atoms (C, N, O, F) never exceed an octet.","aliases":["expanded octets"],"see":["octet rule"]}
+  ],
+  "molecular-geometry": [
+    {"term":"VSEPR theory","def":"Valence shell electron pair repulsion: the electron groups around an atom spread as far apart as possible, and that arrangement sets the molecule's shape.","aliases":["VSEPR"],"see":["electron group","tetrahedral"]},
+    {"term":"tetrahedral","def":"The shape of four electron groups around an atom, pointing to the corners of a tetrahedron about 109.5° apart, as in methane.","aliases":["tetrahedron"],"see":["sp³ hybridization"]},
+    {"term":"trigonal planar","def":"The shape of three electron groups around an atom, lying flat and 120° apart, as at an sp² carbon or a carbocation.","see":["sp² hybridization"]},
+    {"term":"trigonal pyramidal","def":"The shape of an atom with three bonds and one lone pair, such as the nitrogen in ammonia: a squat pyramid with bond angles near 107°.","aliases":["trigonal pyramid"],"see":["tetrahedral"]},
+    {"term":"bent geometry","def":"The shape of an atom with two bonds and two lone pairs, such as the oxygen in water, with a bond angle near 104.5°.","see":["tetrahedral"]},
+    {"term":"linear geometry","def":"Two electron groups on opposite sides of an atom, 180° apart, as at the sp carbons of an alkyne or the central carbon of CO₂.","see":["sp hybridization"]},
+    {"term":"wedge-and-dash notation","def":"The convention for drawing 3D shape on paper: a solid wedge is a bond coming toward you, a hashed (dashed) wedge is a bond going away, and a plain line lies in the plane of the page.","aliases":["solid wedge","dashed wedge","hashed wedge","wedges and dashes"],"see":["stereocenter"]}
+  ],
+  "bond-polarity": [
+    {"term":"dipole moment","def":"A measure of charge separation: the size of the separated charge times the distance between the charges, in debyes (D). A molecule's net dipole is the vector sum of its bond dipoles, so symmetric molecules such as CO₂ can have none.","aliases":["dipole moments","molecular dipole","net dipole"],"see":["bond dipole"]},
+    {"term":"bond dipole","def":"The dipole of a single polar bond, drawn in chemistry as an arrow pointing toward the δ− atom with a cross at the δ+ end.","aliases":["bond dipoles"],"see":["dipole moment","polar covalent bond"]},
+    {"term":"intermolecular forces","def":"Attractions between separate molecules: London dispersion forces, dipole–dipole forces and hydrogen bonds. They set boiling point, melting point and solubility.","aliases":["intermolecular force"],"see":["hydrogen bond","London dispersion forces"]},
+    {"term":"London dispersion forces","def":"Weak attractions between temporary, induced dipoles. Every molecule has them, and they grow with size and surface contact, which is why longer alkanes boil higher.","aliases":["London forces","dispersion forces"],"see":["intermolecular forces"]},
+    {"term":"dipole–dipole forces","def":"Attractions between the permanent dipoles of polar molecules, the δ+ end of one lining up with the δ− end of another.","aliases":["dipole-dipole forces","dipole–dipole","dipole–dipole interactions"],"see":["intermolecular forces"]},
+    {"term":"hydrogen bond","def":"A strong dipole–dipole attraction between an H bonded to N, O or F (the donor) and a lone pair on another N, O or F (the acceptor). It explains why alcohols boil far higher than ethers of the same size.","aliases":["hydrogen bonds","hydrogen bonding","H-bond","H-bonds","hydrogen-bond donor","hydrogen-bond acceptor"],"see":["intermolecular forces"]}
+  ],
+  "functional-groups": [
+    {"term":"functional group","def":"A specific group of atoms within a molecule, such as –OH or C=O, that has characteristic reactions. Molecules with the same functional group react in similar ways.","aliases":["functional groups"],"see":["principal characteristic group"]},
+    {"term":"alkane","def":"A hydrocarbon with only single bonds; an open-chain alkane has the formula CₙH₂ₙ₊₂.","aliases":["alkanes"],"see":["alkene","cycloalkane"]},
+    {"term":"alkene","def":"A hydrocarbon containing a carbon–carbon double bond, C=C.","aliases":["alkenes","olefin","olefins"],"see":["double bond","alkyne"]},
+    {"term":"alkyne","def":"A hydrocarbon containing a carbon–carbon triple bond, C≡C.","aliases":["alkynes"],"see":["triple bond","terminal alkyne"]},
+    {"term":"alkyl halide","def":"A compound with a halogen bonded to an sp³ carbon, written R–X. The C–X carbon is δ+ and X can leave, so alkyl halides are the classic substrates for substitution and elimination.","aliases":["alkyl halides","haloalkane","haloalkanes"],"see":["leaving group","SN2 reaction"]},
+    {"term":"alcohol","def":"A compound with an –OH group bonded to an sp³ carbon, R–OH.","aliases":["alcohols"],"see":["carbinol carbon","phenol"]},
+    {"term":"ether","def":"A compound with an oxygen bonded to two carbon groups, R–O–R′.","aliases":["ethers"],"see":["Williamson ether synthesis","epoxide"]},
+    {"term":"thiol","def":"The sulfur analog of an alcohol, R–SH.","aliases":["thiols"]},
+    {"term":"amine","def":"A derivative of ammonia in which one, two or three hydrogens are replaced by carbon groups: RNH₂, R₂NH or R₃N. The nitrogen lone pair makes amines bases and nucleophiles.","aliases":["amines"],"see":["amide","quaternary ammonium salt"]},
+    {"term":"nitrile","def":"A compound with a carbon triple-bonded to nitrogen, R–C≡N. The nitrile carbon is at the same oxidation level as a carboxylic acid.","aliases":["nitriles"],"see":["carboxylic acid derivative"]},
+    {"term":"carbonyl group","def":"A carbon double-bonded to an oxygen, C=O. The oxygen pulls electron density away, leaving the carbonyl carbon δ+ and electrophilic.","aliases":["carbonyl","carbonyls","carbonyl groups","carbonyl carbon","C=O group"],"see":["aldehyde","ketone","nucleophilic addition"]},
+    {"term":"aldehyde","def":"A compound whose carbonyl carbon is bonded to at least one hydrogen, R–CHO.","aliases":["aldehydes"],"see":["ketone","carbonyl group"]},
+    {"term":"ketone","def":"A compound whose carbonyl carbon is bonded to two carbons, R–CO–R′.","aliases":["ketones"],"see":["aldehyde","carbonyl group"]},
+    {"term":"carboxylic acid","def":"A compound with the carboxyl group, –COOH: a C=O and an OH on the same carbon. Typical pKa values are 4 to 5.","aliases":["carboxylic acids","carboxyl group"],"see":["carboxylate","carboxylic acid derivative"]},
+    {"term":"ester","def":"A carboxylic acid derivative in which the acid's OH is replaced by an OR group, R–CO–OR′.","aliases":["esters"],"see":["Fischer esterification","lactone"]},
+    {"term":"amide","def":"A carboxylic acid derivative with a nitrogen bonded to the carbonyl carbon, R–CO–NR′₂. (The same word is also used for the anion R₂N⁻, as in sodium amide.)","aliases":["amides"],"see":["peptide bond","lactam","amine"]},
+    {"term":"nitro group","def":"The group –NO₂, with nitrogen bonded to two oxygens and carrying formal charges (N⁺, one O⁻). It is strongly electron-withdrawing.","aliases":["nitro groups"],"see":["meta director"]},
+    {"term":"primary, secondary, tertiary, quaternary","def":"Degree of substitution: a carbon bonded to one other carbon is primary (1°), to two secondary (2°), to three tertiary (3°), to four quaternary (4°). Alcohols and halides take the label of their carbon; amines count the carbons on the nitrogen.","aliases":["primary carbon","secondary carbon","tertiary carbon","quaternary carbon","degree of substitution"],"see":["carbocation"]},
+    {"term":"ortho, meta, para","def":"Positions on a benzene ring relative to an existing substituent: ortho is the next carbon (1,2), meta is two carbons away (1,3) and para is directly opposite (1,4).","aliases":["ortho","meta","para"],"see":["ortho/para director","meta director"]}
+  ],
+  "skeletal-structures": [
+    {"term":"skeletal structure","def":"A drawing in which every line end and bend is a carbon, hydrogens on carbon are not drawn, and every other atom is written out with its hydrogens.","aliases":["skeletal structures","line-angle formula","bond-line structure","skeletal formula"],"see":["condensed formula"]}
+  ],
+  "curved-arrows": [
+    {"term":"curved arrow","def":"An arrow that shows one electron pair moving: its tail starts on a lone pair or a bond, and its head points to the atom or bond position where the pair ends up.","aliases":["curved arrows","arrow-pushing","arrow pushing"],"see":["fishhook arrow","mechanism"]},
+    {"term":"fishhook arrow","def":"A curved arrow with a single barb, showing one electron moving rather than a pair. Radical mechanisms are drawn with fishhooks.","aliases":["fishhook","fishhooks","fishhook arrows","single-barbed arrow"],"see":["radical","homolytic cleavage"]},
+    {"term":"mechanism","def":"The step-by-step account of how a reaction happens: which bonds break and form, in what order, and which intermediates form along the way, drawn with curved arrows.","aliases":["reaction mechanism","mechanisms"],"see":["curved arrow","intermediate"]},
+    {"term":"proton transfer","def":"A step in which an H⁺ moves from an acid to a base: one curved arrow from the base to the H, one from the H–A bond onto A.","aliases":["proton transfers"],"see":["Brønsted–Lowry acid"]}
+  ],
+  "resonance": [
+    {"term":"resonance structures","def":"Two or more Lewis structures for one species that differ only in where π electrons and lone pairs are placed, with every atom in the same position. The real species is one hybrid of them, not a flicker between them.","aliases":["resonance structure","resonance forms","resonance contributors","contributors","resonance"],"see":["resonance hybrid","major contributor"]},
+    {"term":"resonance hybrid","def":"The real electronic structure of a species that has resonance structures: a weighted blend of them, with electrons spread over several atoms.","see":["resonance structures","delocalization"]},
+    {"term":"delocalization","def":"The spreading of electrons, and any charge they carry, over several atoms through overlapping p orbitals. Delocalization lowers energy, which is why resonance stabilizes.","aliases":["delocalized"],"see":["resonance structures","conjugation"]},
+    {"term":"major contributor","def":"The resonance structure that most resembles the real hybrid. Rank them by: full octets first, then fewest formal charges, then any negative charge on the more electronegative atom.","aliases":["major contributors","minor contributor","minor contributors"],"see":["resonance structures"]}
+  ],
+  "naming-parent-chain": [
+    {"term":"IUPAC nomenclature","def":"The systematic naming rules of the International Union of Pure and Applied Chemistry, which give every structure one unambiguous name built from prefixes, a root and a suffix.","aliases":["IUPAC name","IUPAC names","IUPAC"],"see":["parent chain","locant"]},
+    {"term":"parent chain","def":"The chain whose length gives a name its root: the longest continuous chain of carbons, except that once a principal characteristic group is present, the parent must contain it. When two chains tie, take the one with more substituents.","aliases":["parent chains"],"see":["substituent","principal characteristic group"]},
+    {"term":"locant","def":"A number that gives the position of a substituent or functional group on the parent, such as the 2 in 2-methylpentane.","aliases":["locants"],"see":["first point of difference"]},
+    {"term":"substituent","def":"An atom or group attached to the parent chain in place of a hydrogen, named as a prefix such as methyl- or chloro-.","aliases":["substituents"],"see":["alkyl group","parent chain"]},
+    {"term":"first point of difference","def":"The tie-breaking rule for numbering: write out the competing locant sets in order and compare them term by term; the set that is lower at the first place they differ wins. The same idea breaks ties between CIP priorities.","aliases":["lowest locants","lowest set of locants"],"see":["locant","Cahn–Ingold–Prelog rules"]}
+  ],
+  "naming-substituents": [
+    {"term":"alkyl group","def":"A substituent made by removing one hydrogen from an alkane, named with the ending -yl: methyl, ethyl, propyl. It is often written R.","aliases":["alkyl groups"],"see":["substituent"]},
+    {"term":"isopropyl group","def":"The substituent (CH₃)₂CH–, a three-carbon group attached through its middle carbon; its systematic name is propan-2-yl.","aliases":["isopropyl"],"see":["alkyl group"]},
+    {"term":"tert-butyl group","def":"The substituent (CH₃)₃C–, attached through a carbon that carries three methyl groups. Its bulk makes it a common steric blocker.","aliases":["tert-butyl","t-butyl"],"see":["A-value","steric hindrance"]},
+    {"term":"multiplying prefixes","def":"The prefixes di-, tri-, tetra- (and bis-, tris- for complex substituents) that count identical substituents. They are ignored when substituents are put in alphabetical order.","aliases":["multiplying prefix"],"see":["substituent"]}
+  ],
+  "naming-functional-groups": [
+    {"term":"principal characteristic group","def":"The highest-priority functional group in a molecule. It is named as the suffix and gets the lowest possible locant; every other group becomes a prefix.","aliases":["principal group","principal characteristic groups"],"see":["suffix","functional group"]},
+    {"term":"suffix","def":"The ending of a name that states the principal characteristic group, such as -ol for an alcohol, -one for a ketone or -oic acid for a carboxylic acid.","pop":false,"see":["principal characteristic group"]}
+  ],
+  "naming-rings-unsaturation": [
+    {"term":"cycloalkane","def":"A saturated hydrocarbon ring, named by putting cyclo- in front of the alkane with the same number of carbons, as in cyclohexane.","aliases":["cycloalkanes"],"see":["alkane","chair conformation"]},
+    {"term":"phenyl group","def":"A benzene ring used as a substituent, C₆H₅–, abbreviated Ph.","aliases":["phenyl","phenyl groups"],"see":["benzyl group","benzene"]}
+  ],
+  "bronsted": [
+    {"term":"Brønsted–Lowry acid","def":"A proton (H⁺) donor.","aliases":["Brønsted–Lowry acids","Brønsted acid","Brønsted acids","Bronsted acid"],"see":["Brønsted–Lowry base","conjugate base"]},
+    {"term":"Brønsted–Lowry base","def":"A proton acceptor. It needs a lone pair, or occasionally a π bond, to bond to the incoming H⁺.","aliases":["Brønsted–Lowry bases","Brønsted base","Brønsted bases","Bronsted base"],"see":["Brønsted–Lowry acid","conjugate acid"]},
+    {"term":"conjugate acid","def":"The species a base becomes when it gains a proton. NH₄⁺ is the conjugate acid of NH₃.","aliases":["conjugate acids"],"see":["conjugate base","pKaH"]},
+    {"term":"conjugate base","def":"The species an acid becomes when it loses a proton. The more stable the conjugate base, the stronger the acid.","aliases":["conjugate bases"],"see":["conjugate acid","ARIO"]},
+    {"term":"amphoteric","def":"Able to act as either an acid or a base. Water is amphoteric: it gives H⁺ to bases and accepts H⁺ from acids.","see":["Brønsted–Lowry acid"]}
+  ],
+  "conjugate": [
+    {"term":"conjugate acid–base pair","def":"An acid and the base it becomes on losing H⁺, which differ by exactly one proton, such as H₂O and OH⁻.","aliases":["conjugate acid-base pair","conjugate acid–base pairs"],"see":["conjugate acid","conjugate base"]},
+    {"term":"strong acid","def":"An acid that gives up its proton essentially completely in water, such as HCl, HBr, HI or H₂SO₄. Its conjugate base is extremely weak.","aliases":["strong acids"],"see":["weak acid","leveling effect"]},
+    {"term":"weak acid","def":"An acid that gives up only a small fraction of its protons in water at equilibrium, such as acetic acid. Its conjugate base is a reasonable base.","aliases":["weak acids"],"see":["strong acid","pKa"]},
+    {"term":"oxonium ion","def":"A positively charged oxygen with three bonds and one lone pair, such as H₃O⁺ or a protonated alcohol, R–OH₂⁺.","aliases":["oxonium ions","oxonium"],"see":["oxocarbenium ion"]}
+  ],
+  "pka": [
+    {"term":"acid dissociation constant","def":"Ka, the equilibrium constant for an acid giving its proton to water, HA + H₂O ⇌ H₃O⁺ + A⁻. A larger Ka means a stronger acid.","aliases":["Ka"],"see":["pKa"]},
+    {"term":"pKa","def":"The negative base-10 logarithm of Ka. A lower pKa means a stronger acid, and each unit is a tenfold difference in strength. Acid–base equilibria favor the side with the weaker acid (higher pKa).","aliases":["pKa values","pKₐ"],"see":["pKaH","acid dissociation constant"]},
+    {"term":"pKaH","def":"The pKa of a base's conjugate acid, used to rank bases: the higher the pKaH, the stronger the base.","see":["pKa","conjugate acid"]},
+    {"term":"leveling effect","def":"In water, any acid stronger than H₃O⁺ is converted completely to H₃O⁺, and any base stronger than OH⁻ to OH⁻, so the solvent caps how strong an acid or base can act in it.","aliases":["leveling"],"see":["strong acid"]},
+    {"term":"alkoxide","def":"The conjugate base of an alcohol, RO⁻, such as methoxide or ethoxide. Alkoxides are strong bases and good nucleophiles.","aliases":["alkoxides","alkoxide ion","alkoxide ions"],"see":["Williamson ether synthesis"]},
+    {"term":"extraction","def":"Separating compounds by shaking them between two liquids that do not mix, usually water and an organic solvent. Turning an acid or base into its charged form moves it into the water layer.","aliases":["acid–base extraction","liquid–liquid extraction"],"see":["pKa"]}
+  ],
+  "acidity-factors": [
+    {"term":"ARIO","def":"A checklist for comparing acids by the stability of their conjugate bases, applied in order: Atom (which atom holds the charge), Resonance, Induction, Orbital (hybridization of the lone pair).","see":["conjugate base","inductive effect","s-character"]},
+    {"term":"polarizability","def":"How easily an atom's electron cloud is distorted. It grows down a group as atoms get larger, which lets a big atom such as iodine spread a charge or an electron pair over more space.","aliases":["polarizable"],"see":["nucleophilicity","hard and soft acids and bases"]},
+    {"term":"solvation","def":"The clustering of solvent molecules around a dissolved species, especially an ion, which stabilizes it. Small, concentrated charges are solvated most strongly.","aliases":["solvated"],"see":["polar protic solvent"]}
+  ],
+  "lewis-acids": [
+    {"term":"Lewis acid","def":"An electron-pair acceptor, usually a species with an empty orbital, such as BF₃, AlCl₃, H⁺ or a carbocation.","aliases":["Lewis acids"],"see":["Lewis base","electrophile"]},
+    {"term":"Lewis base","def":"An electron-pair donor, such as an amine, water or any anion with a lone pair.","aliases":["Lewis bases"],"see":["Lewis acid","nucleophile"]},
+    {"term":"adduct","def":"The single product formed when two species combine without losing any atoms, especially a Lewis base bonding to a Lewis acid through the base's lone pair.","aliases":["adducts","Lewis acid–base adduct"],"see":["dative bond"]},
+    {"term":"dative bond","def":"A covalent bond in which both electrons came from the same atom, as when a Lewis base donates its lone pair to a Lewis acid. Once formed it is an ordinary covalent bond.","aliases":["coordinate covalent bond","coordinate bond","dative bonds"],"see":["adduct"]},
+    {"term":"hard and soft acids and bases","def":"Hard acids and bases are small, often highly charged and weakly polarizable; soft ones are large and polarizable. Hard partners react best with hard, soft with soft.","aliases":["HSAB","hard and soft"],"see":["polarizability","Gilman reagent"]}
+  ],
+  "newman": [
+    {"term":"conformation","def":"One of the shapes a molecule can take by rotating around single bonds, without breaking any bond. Conformations interconvert rapidly, so they are not separate compounds.","aliases":["conformations","conformer","conformers"],"see":["Newman projection","configuration"]},
+    {"term":"Newman projection","def":"A view straight down one C–C bond: the front carbon is the point where three bonds meet, and the back carbon is a circle with its three bonds sticking out from behind.","aliases":["Newman projections"],"see":["dihedral angle"]},
+    {"term":"dihedral angle","def":"The angle between a bond on the front carbon and a bond on the back carbon, as seen in a Newman projection.","aliases":["torsion angle","dihedral angles"],"see":["staggered conformation","eclipsed conformation"]},
+    {"term":"staggered conformation","def":"A conformation in which each bond on the front carbon sits halfway between two on the back (dihedral angles of 60°). It is the low-energy arrangement.","aliases":["staggered"],"see":["eclipsed conformation","anti conformation"]},
+    {"term":"eclipsed conformation","def":"A conformation in which the bonds on the front carbon line up with those on the back (dihedral angle 0°). It is an energy maximum because of torsional strain.","aliases":["eclipsed"],"see":["torsional strain"]},
+    {"term":"torsional strain","def":"The extra energy of eclipsed bonds on neighboring atoms compared with staggered ones.","see":["eclipsed conformation","ring strain"]},
+    {"term":"steric strain","def":"The extra energy when atoms or groups are pushed closer together than their sizes allow, so their electron clouds repel.","aliases":["van der Waals strain"],"see":["1,3-diaxial interaction","gauche"]},
+    {"term":"anti conformation","def":"The staggered conformation in which the two largest groups are 180° apart. For butane it is the most stable conformation.","aliases":["anti conformer"],"see":["gauche","anti-periplanar"]},
+    {"term":"gauche","def":"A staggered conformation with the two largest groups 60° apart. Gauche butane is about 0.9 kcal/mol less stable than anti because of steric strain.","aliases":["gauche conformation","gauche interaction","gauche interactions"],"see":["anti conformation","steric strain"]},
+    {"term":"hyperconjugation","def":"Stabilizing overlap of a filled σ bond, usually C–H or C–C, with a neighboring empty or partly empty orbital, such as a carbocation's empty p orbital or an adjacent σ* orbital.","see":["carbocation","Zaitsev's rule"]}
+  ],
+  "cyclohexanes": [
+    {"term":"ring strain","def":"The extra energy of a ring compared with an unstrained open chain, made up of angle strain, torsional strain and steric strain. It is large in cyclopropane and cyclobutane and essentially zero in the chair of cyclohexane.","see":["angle strain","torsional strain"]},
+    {"term":"angle strain","def":"The extra energy when bond angles are forced away from their ideal values, such as the 60° C–C–C angles in cyclopropane instead of 109.5°.","see":["ring strain"]},
+    {"term":"chair conformation","def":"The most stable shape of cyclohexane, in which every C–C–C angle is close to 109.5° and every bond is staggered, so the ring has essentially no strain.","aliases":["chair","chairs","chair conformations"],"see":["axial","equatorial","ring flip"]},
+    {"term":"boat conformation","def":"A higher-energy cyclohexane shape with eclipsed bonds and two flagpole hydrogens that clash across the ring. Twisting it slightly gives the somewhat lower-energy twist-boat.","aliases":["boat","twist-boat"],"see":["chair conformation"]}
+  ],
+  "axial-equatorial": [
+    {"term":"axial","def":"A bond on a chair cyclohexane that points straight up or down, parallel to the ring's axis. Axial directions alternate up and down around the ring.","aliases":["axial position","axial positions"],"see":["equatorial","1,3-diaxial interaction"]},
+    {"term":"equatorial","def":"A bond on a chair cyclohexane that points outward, roughly along the ring's equator. Substituents prefer equatorial positions, where they avoid 1,3-diaxial interactions.","aliases":["equatorial position","equatorial positions"],"see":["axial","A-value"]},
+    {"term":"1,3-diaxial interaction","def":"Steric strain between an axial substituent and the two axial hydrogens (or groups) on the same face, two carbons away on either side.","aliases":["1,3-diaxial interactions"],"see":["axial","A-value"]},
+    {"term":"A-value","def":"The free-energy cost of a substituent sitting axial rather than equatorial on cyclohexane, in kcal/mol. A tert-butyl group's A-value (about 5) is large enough to lock the ring with it equatorial.","aliases":["A-values"],"see":["equatorial","1,3-diaxial interaction"]}
+  ],
+  "ring-flips": [
+    {"term":"ring flip","def":"The interconversion of one chair cyclohexane into the other by rotation about ring bonds. Every axial position becomes equatorial and vice versa, but a group that pointed up still points up.","aliases":["ring flips","chair flip","chair flips","ring-flip"],"see":["chair conformation","axial"]}
+  ],
+  "conformational-analysis": [
+    {"term":"conformational analysis","def":"Comparing the energies of a molecule's conformations, usually by adding up its strain interactions, to decide which conformation it mostly occupies.","see":["A-value","gauche"]}
+  ],
+  "chirality": [
+    {"term":"chiral","def":"Not superimposable on its mirror image, like a left hand. A chiral molecule and its mirror image are enantiomers.","aliases":["chirality"],"see":["achiral","enantiomers"]},
+    {"term":"achiral","def":"Superimposable on its mirror image. Any molecule with a plane of symmetry (or a center of symmetry) is achiral.","see":["chiral","plane of symmetry"]},
+    {"term":"plane of symmetry","def":"A plane that cuts a molecule into two halves that are mirror images of each other. A molecule that has one, in any conformation it can reach, is achiral.","aliases":["mirror plane","planes of symmetry","internal mirror plane"],"see":["achiral","meso compound"]},
+    {"term":"stereoisomers","def":"Isomers with the same atoms joined in the same order but arranged differently in space. Enantiomers and diastereomers are the two kinds.","aliases":["stereoisomer"],"see":["constitutional isomers","enantiomers","diastereomers"]},
+    {"term":"constitutional isomers","def":"Compounds with the same molecular formula but atoms joined in a different order, such as butane and 2-methylpropane.","aliases":["constitutional isomer","structural isomers"],"see":["stereoisomers"]},
+    {"term":"atropisomers","def":"Stereoisomers that can be separated because rotation around a single bond is blocked, as in some biaryls with bulky ortho groups.","aliases":["atropisomer"],"see":["chiral"]},
+    {"term":"allene","def":"A compound with two C=C bonds sharing one carbon, C=C=C. The two π bonds are perpendicular, so an allene with two different groups on each end is chiral without a stereocenter.","aliases":["allenes"],"see":["diene","chiral"]}
+  ],
+  "stereocenters": [
+    {"term":"stereocenter","def":"An atom at which swapping any two groups gives a stereoisomer. The common case is an sp³ carbon bearing four different groups.","aliases":["stereocenters","chirality center","chirality centers","chiral center","chiral centers","stereogenic center"],"see":["R/S configuration","chiral"]},
+    {"term":"configuration","def":"The fixed spatial arrangement of groups at a stereocenter or double bond. Unlike a conformation, it can change only by breaking and remaking bonds.","pop":false,"see":["conformation","R/S configuration"]}
+  ],
+  "rs-configuration": [
+    {"term":"Cahn–Ingold–Prelog rules","def":"The rules for ranking groups at a stereocenter or double bond: the atom of higher atomic number wins; ties are broken at the first point of difference moving outward; a double bond counts its atoms twice.","aliases":["CIP rules","CIP priorities","CIP priority","CIP system","Cahn-Ingold-Prelog"],"see":["R/S configuration","E/Z system"]},
+    {"term":"R/S configuration","def":"The label for a stereocenter: with the lowest-priority group pointing away, trace priorities 1 → 2 → 3. Clockwise is R, counterclockwise is S.","aliases":["R and S","R or S"],"see":["Cahn–Ingold–Prelog rules","stereocenter"]},
+    {"term":"vinyl group","def":"The substituent CH₂=CH–, an alkene carbon attached directly to the rest of the molecule.","aliases":["vinyl"],"see":["allylic"]}
+  ],
+  "enantiomers": [
+    {"term":"enantiomers","def":"Stereoisomers that are non-superimposable mirror images. They share every physical property except the direction they rotate plane-polarized light, and they behave differently only toward other chiral things.","aliases":["enantiomer","enantiomeric"],"see":["diastereomers","racemic mixture"]},
+    {"term":"optical activity","def":"The rotation of plane-polarized light by a sample that contains more of one enantiomer than the other. Clockwise rotation is labeled (+), counterclockwise (−); neither is linked to R or S.","aliases":["optically active","optically inactive","plane-polarized light"],"see":["specific rotation"]},
+    {"term":"specific rotation","def":"The rotation a chiral compound gives under standard conditions: the observed rotation divided by path length (dm) and concentration (g/mL), written [α].","see":["optical activity","enantiomeric excess"]},
+    {"term":"racemic mixture","def":"A 50:50 mixture of two enantiomers. It rotates plane-polarized light by zero, though each molecule in it is chiral.","aliases":["racemic","racemate","racemates","racemic mixtures"],"see":["racemization","resolution"]},
+    {"term":"racemization","def":"Conversion of a single enantiomer into a racemic mixture, as happens when a reaction passes through a flat carbocation or an enol.","aliases":["racemizes","racemized"],"see":["racemic mixture","SN1 reaction"]},
+    {"term":"enantiomeric excess","def":"The percentage of the major enantiomer minus the percentage of the minor one. It equals optical purity: observed specific rotation ÷ that of the pure enantiomer × 100.","aliases":["optical purity"],"see":["specific rotation"]},
+    {"term":"resolution","def":"Separation of a racemic mixture into its two enantiomers, usually by reacting it with a single enantiomer of another compound to make separable diastereomers.","pop":false,"see":["racemic mixture","diastereomers"]}
+  ],
+  "diastereomers": [
+    {"term":"diastereomers","def":"Stereoisomers that are not mirror images, such as cis and trans alkenes or compounds that differ at some but not all stereocenters. They have different physical properties.","aliases":["diastereomer","diastereomeric"],"see":["enantiomers","epimers"]},
+    {"term":"epimers","def":"Diastereomers that differ in configuration at only one of their stereocenters, such as D-glucose and D-mannose.","aliases":["epimer"],"see":["diastereomers","anomers"]}
+  ],
+  "meso": [
+    {"term":"meso compound","def":"A compound with stereocenters that is achiral, because an internal plane of symmetry makes it identical to its mirror image. It is optically inactive and is not a racemate.","aliases":["meso compounds","meso"],"see":["plane of symmetry","diastereomers"]}
+  ],
+  "fischer": [
+    {"term":"Fischer projection","def":"A flat cross drawing of stereocenters in which horizontal lines point toward you and vertical lines point away. Used mainly for sugars and amino acids.","aliases":["Fischer projections"],"see":["D/L notation","Haworth projection"]},
+    {"term":"D/L notation","def":"Labels for sugars and amino acids read from a Fischer projection with the most oxidized carbon at the top: D if the OH (or NH₂) on the lowest stereocenter, the one furthest from the carbonyl, points right; L if it points left.","aliases":["D and L","D-sugar","L-amino acid"],"see":["Fischer projection"]}
+  ],
+  "cis-trans-ez": [
+    {"term":"cis and trans","def":"Descriptors for two groups on a ring or a double bond: cis means on the same side, trans on opposite sides.","aliases":["cis–trans isomers","cis-trans isomers","cis/trans"],"see":["E/Z system","diastereomers"]},
+    {"term":"E/Z system","def":"Labels for a double bond: rank the two groups on each carbon by CIP priority. If the higher-priority groups are on the same side it is Z, on opposite sides E. E is not always trans.","aliases":["E/Z","E and Z"],"see":["Cahn–Ingold–Prelog rules","cis and trans"]}
+  ],
+  "prochirality": [
+    {"term":"homotopic","def":"Describes two atoms or groups for which replacing either one gives the same compound. They are equivalent in every environment.","see":["enantiotopic","diastereotopic"]},
+    {"term":"enantiotopic","def":"Describes two groups for which replacing each in turn gives a pair of enantiomers. They look identical in NMR but an enzyme or other chiral reagent can tell them apart.","see":["homotopic","diastereotopic"]},
+    {"term":"diastereotopic","def":"Describes two groups for which replacing each in turn gives a pair of diastereomers. They are chemically different and can give separate NMR signals.","see":["enantiotopic","chemically equivalent"]},
+    {"term":"prochiral","def":"Able to become chiral in one step: an sp³ atom with two identical groups, one of which could be replaced, or a flat sp² carbon whose two faces give different products when attacked.","aliases":["prochirality","prochiral center"],"see":["Re and Si faces"]},
+    {"term":"Re and Si faces","def":"Labels for the two faces of a trigonal carbon with three different groups: looking at one face, if priorities 1 → 2 → 3 run clockwise it is the Re face, counterclockwise the Si face.","aliases":["Re face","Si face"],"see":["prochiral"]}
+  ],
+  "nucleophiles": [
+    {"term":"nucleophile","def":"An electron-rich species that donates a pair of electrons to an electrophile to form a new bond. Anions, neutral molecules with lone pairs and π bonds can all act as nucleophiles.","aliases":["nucleophiles","nucleophilic"],"see":["electrophile","nucleophilicity"]},
+    {"term":"nucleophilicity","def":"How fast a nucleophile reacts, a rate property, unlike basicity, which is an equilibrium one. It rises with negative charge and polarizability and falls with electronegativity, steric bulk and strong solvation.","see":["nucleophile","polar aprotic solvent"]},
+    {"term":"steric hindrance","def":"Crowding around a reacting atom that blocks a reagent's approach and slows the reaction, as bulky groups do to SN2 at a tertiary carbon.","aliases":["sterics","sterically hindered"],"see":["steric strain","SN2 reaction"]},
+    {"term":"polar protic solvent","def":"A polar solvent with O–H or N–H bonds, such as water, methanol or ethanol. It hydrogen-bonds to anions, which slows small anionic nucleophiles and stabilizes ions, so it favors SN1 and E1.","aliases":["polar protic solvents","protic solvent","protic solvents","polar protic"],"see":["polar aprotic solvent","solvation"]},
+    {"term":"polar aprotic solvent","def":"A polar solvent with no O–H or N–H bonds, such as acetone, DMSO, DMF or acetonitrile. Anions stay poorly solvated and reactive in it, so it speeds SN2.","aliases":["polar aprotic solvents","aprotic solvent","aprotic solvents","polar aprotic"],"see":["polar protic solvent","SN2 reaction"]},
+    {"term":"ambident nucleophile","def":"A nucleophile that can react at two different atoms, such as an enolate, which can bond through carbon or oxygen.","aliases":["ambident"],"see":["enolate"]}
+  ],
+  "electrophiles": [
+    {"term":"electrophile","def":"An electron-poor species that accepts a pair of electrons from a nucleophile to form a new bond: a δ+ carbon, a carbocation, H⁺ or a Lewis acid.","aliases":["electrophiles","electrophilic"],"see":["nucleophile","Lewis acid"]}
+  ],
+  "leaving-groups": [
+    {"term":"leaving group","def":"The atom or group that departs from a molecule taking the old bond's electrons with it. Good leaving groups are weak bases, the conjugate bases of strong acids: I⁻, Br⁻, Cl⁻, sulfonates and H₂O.","aliases":["leaving groups"],"see":["sulfonate ester","SN2 reaction"]},
+    {"term":"sulfonate ester","def":"An ester R–O–SO₂R′ such as a tosylate (OTs), mesylate (OMs) or triflate (OTf). Making one turns an alcohol's poor OH leaving group into an excellent one without touching the C–O bond.","aliases":["sulfonate esters","tosylate","tosylates","mesylate","mesylates","triflate","triflates","OTs"],"see":["leaving group"]}
+  ],
+  "energy-diagrams": [
+    {"term":"energy diagram","def":"A plot of free energy against reaction progress (the reaction coordinate). Peaks are transition states and valleys are intermediates.","aliases":["energy diagrams","reaction coordinate diagram","free energy diagram"],"see":["transition state","intermediate"]},
+    {"term":"transition state","def":"The highest-energy point of one reaction step, with bonds partly made and partly broken. It has no lifetime and cannot be isolated; it is marked ‡.","aliases":["transition states"],"see":["intermediate","activation energy","Hammond postulate"]},
+    {"term":"intermediate","def":"A species made in one step of a mechanism and used up in a later one. It sits in an energy valley and has a real, if short, lifetime, like a carbocation.","aliases":["intermediates","reactive intermediate","reactive intermediates"],"see":["transition state"]},
+    {"term":"activation energy","def":"ΔG‡, the free-energy gap between the reactants and the transition state of a step. A higher barrier means a slower step.","aliases":["activation energies","activation barrier","free energy of activation","ΔG‡"],"see":["transition state","catalyst"]},
+    {"term":"exergonic","def":"Describes a step or reaction with ΔG° below zero: the products are lower in free energy, so equilibrium favors them. Endergonic is the reverse.","aliases":["endergonic"],"see":["exothermic"]},
+    {"term":"exothermic","def":"Describes a change that releases heat (ΔH below zero). Endothermic changes absorb heat (ΔH above zero).","aliases":["endothermic"],"see":["exergonic","Hammond postulate"]},
+    {"term":"rate-determining step","def":"The step of a multistep mechanism whose transition state is highest in energy. It limits the overall rate and sets the rate law.","aliases":["rate-limiting step","rate-determining steps"],"see":["energy diagram"]},
+    {"term":"Hammond postulate","def":"A transition state resembles whichever neighbor, reactants or products, is closer to it in energy. An uphill step has a late, product-like transition state; a downhill step an early, reactant-like one.","aliases":["Hammond's postulate"],"see":["transition state","radical halogenation"]},
+    {"term":"catalyst","def":"A substance that speeds a reaction by opening a lower-energy path and is regenerated at the end. It does not change the position of the equilibrium.","aliases":["catalysts","catalytic","catalyzed"],"see":["activation energy"]}
+  ],
+  "carbocations": [
+    {"term":"carbocation","def":"A carbon with three bonds, no lone pair, six valence electrons and a +1 charge. It is trigonal planar with an empty p orbital; stability runs 3° > 2° > 1° > methyl, and resonance (allylic, benzylic) stabilizes it further.","aliases":["carbocations","carbenium ion","carbenium ions"],"see":["hyperconjugation","1,2-shift","SN1 reaction"]},
+    {"term":"1,2-shift","def":"A carbocation rearrangement in which a hydrogen (as hydride) or an alkyl group moves with its bonding pair from a neighboring carbon to the cationic carbon, usually giving a more stable carbocation.","aliases":["1,2-shifts","1,2-hydride shift","1,2-alkyl shift","1,2-methyl shift","hydride shift","methyl shift","carbocation rearrangement"],"see":["carbocation"]},
+    {"term":"allylic","def":"Describes the position next to a C=C: an allylic carbon is an sp³ carbon bonded to an alkene carbon. Allylic cations, radicals and anions are stabilized by resonance with the π bond.","aliases":["allylic position","allyl"],"see":["benzylic","resonance structures"]},
+    {"term":"oxocarbenium ion","def":"A cation in which a positive carbon is bonded to an oxygen that shares a lone pair with it, C=O⁺R ↔ ⁺C–OR. It is the key intermediate in acetal formation and glycoside chemistry.","aliases":["oxocarbenium ions","oxocarbenium"],"see":["acetal","oxonium ion"]}
+  ],
+  "radical-halogenation": [
+    {"term":"radical halogenation","def":"Replacement of an alkane C–H with C–Cl or C–Br by a radical chain mechanism, started by light or heat. Bromination is highly selective for the most substituted C–H; chlorination is not.","aliases":["free-radical halogenation","radical bromination","radical chlorination"],"see":["radical chain mechanism","Hammond postulate"]},
+    {"term":"radical chain mechanism","def":"A radical reaction in three stages: initiation (radicals are created), propagation (each step consumes one radical and makes another, forming the product) and termination (two radicals combine).","aliases":["chain reaction","radical chain","initiation","propagation","termination"],"see":["radical","fishhook arrow"]},
+    {"term":"radical initiator","def":"A compound with a weak bond that breaks easily on heating or with light, such as a peroxide or AIBN, giving the first radicals of a chain.","aliases":["initiator","initiators"],"see":["radical chain mechanism"]},
+    {"term":"NBS","def":"N-Bromosuccinimide, a reagent that keeps a low, steady concentration of Br₂ so that radical bromination occurs at allylic and benzylic positions instead of addition to a C=C.","aliases":["N-bromosuccinimide"],"see":["allylic","benzylic"]}
+  ],
+  "sn2": [
+    {"term":"SN2 reaction","def":"Bimolecular nucleophilic substitution: in one concerted step the nucleophile attacks from the back as the leaving group leaves, inverting the carbon. Rate = k[Nu][substrate]; fastest at methyl and 1° carbons, impossible at 3°.","aliases":["SN2","SN2 reactions","Sₙ2"],"see":["backside attack","Walden inversion","SN1 reaction"]},
+    {"term":"substrate","def":"The molecule a reagent acts on. In substitution and elimination it is the compound that carries the leaving group, such as an alkyl halide.","aliases":["substrates"],"see":["leaving group"]},
+    {"term":"concerted","def":"Describes a step in which bonds break and form at the same time, through a single transition state with no intermediate.","see":["SN2 reaction","pericyclic reaction"]},
+    {"term":"backside attack","def":"Approach of a nucleophile to a carbon from the side directly opposite the leaving group, 180° away, into the large lobe of the C–LG σ* orbital. It is required in SN2.","see":["SN2 reaction","antibonding orbital"]},
+    {"term":"Walden inversion","def":"The inversion of configuration in SN2: the three groups that stay on the carbon flip over like an umbrella in the wind. The R/S letter may or may not change, because priorities can change too.","aliases":["inversion of configuration"],"see":["SN2 reaction","R/S configuration"]},
+    {"term":"nucleophilic substitution","def":"A reaction in which a nucleophile replaces a leaving group on a carbon. It happens by SN2 or SN1.","aliases":["substitution reaction","substitution reactions"],"see":["SN2 reaction","SN1 reaction"]}
+  ],
+  "sn1": [
+    {"term":"SN1 reaction","def":"Unimolecular nucleophilic substitution: the leaving group departs first to give a carbocation (the slow step), then the nucleophile adds to either face. Rate = k[substrate]; favored at 3°, allylic and benzylic carbons in polar protic solvents.","aliases":["SN1","SN1 reactions","Sₙ1"],"see":["carbocation","racemization","SN2 reaction"]},
+    {"term":"solvolysis","def":"A substitution (or elimination) in which the solvent itself, such as water or an alcohol, is the nucleophile or base.","see":["SN1 reaction"]},
+    {"term":"unimolecular","def":"Describes a step whose rate depends on the concentration of only one species, like the ionization in SN1 and E1. A bimolecular step depends on two.","aliases":["bimolecular"],"see":["rate-determining step"]}
+  ],
+  "e2": [
+    {"term":"E2 reaction","def":"Bimolecular elimination: in one concerted step a base removes a β-hydrogen while the leaving group departs, forming a C=C. The H and leaving group must be anti-periplanar; rate = k[base][substrate].","aliases":["E2","E2 reactions"],"see":["anti-periplanar","Zaitsev's rule","E1 reaction"]},
+    {"term":"elimination","def":"A reaction that removes atoms or groups from adjacent carbons and forms a π bond between them, such as loss of HBr to make an alkene.","aliases":["elimination reaction","elimination reactions","β-elimination"],"see":["E2 reaction","E1 reaction"]},
+    {"term":"beta hydrogen","def":"A hydrogen on a carbon next to the carbon that holds the leaving group (the β carbon). It is the hydrogen removed in an elimination.","aliases":["β-hydrogen","β-hydrogens","β hydrogen","β hydrogens","beta hydrogens"],"see":["E2 reaction","alpha carbon"]},
+    {"term":"anti-periplanar","def":"Two bonds on neighboring atoms that lie in one plane and point in opposite directions (dihedral angle 180°). E2 needs the β-H and the leaving group arranged this way; on a cyclohexane both must be axial.","aliases":["antiperiplanar","trans-diaxial"],"see":["E2 reaction","Newman projection"]},
+    {"term":"Zaitsev's rule","def":"An elimination usually gives the more substituted, more stable alkene as the major product.","aliases":["Zaitsev’s rule","Zaitsev product","Zaitsev"],"see":["Hofmann product","heat of hydrogenation"]},
+    {"term":"Hofmann product","def":"The less substituted alkene from an elimination. It is major when the base is bulky, such as tert-butoxide, or when the leaving group is a bulky trialkylammonium.","aliases":["Hofmann rule"],"see":["Zaitsev's rule","Hofmann elimination"]},
+    {"term":"stereospecific","def":"Describes a reaction in which stereoisomeric starting materials give stereoisomerically different products, by a mechanism that sets the outcome, such as inversion in SN2 or anti elimination in E2.","aliases":["stereospecifically"],"see":["stereoselective"]},
+    {"term":"kinetic isotope effect","def":"A change in rate when an atom is swapped for an isotope. Replacing an H with D slows a step that breaks that C–H bond several-fold, which shows the bond breaks in the rate-determining step.","see":["E2 reaction","isotopes"]}
+  ],
+  "e1": [
+    {"term":"E1 reaction","def":"Unimolecular elimination: the leaving group departs to form a carbocation, then a weak base removes a β-hydrogen. It is not stereospecific, can rearrange, and usually gives the Zaitsev product.","aliases":["E1","E1 reactions"],"see":["SN1 reaction","E2 reaction"]},
+    {"term":"dehydration","def":"Loss of a water molecule. Acid-catalyzed dehydration turns an alcohol into an alkene, by E1 for secondary and tertiary alcohols.","aliases":["acid-catalyzed dehydration","dehydrate","dehydrated"],"see":["E1 reaction","aldol condensation"]},
+    {"term":"Le Châtelier's principle","def":"An equilibrium shifts to counteract a change imposed on it: removing a product, or adding excess reactant, drives the reaction forward.","aliases":["Le Châtelier’s principle","Le Chatelier's principle"],"see":["Fischer esterification"]}
+  ],
+  "substrate-effects": [
+    {"term":"stereoselective","def":"Describes a reaction that forms one stereoisomer in preference to others when more than one could form.","aliases":["stereoselectivity"],"see":["stereospecific"]}
+  ],
+  "alkene-structure": [
+    {"term":"degree of unsaturation","def":"The number of rings plus π bonds in a molecule, worked out from its formula as (2C + 2 + N − H − X) ÷ 2. Each one costs two hydrogens compared with a saturated open chain.","aliases":["degrees of unsaturation","index of hydrogen deficiency","IHD"],"see":["saturated"]},
+    {"term":"saturated","def":"Holding as many hydrogens as its carbons allow: no π bonds. Unsaturated compounds have C=C or C≡C bonds (and, counted from a formula, rings).","aliases":["unsaturated"],"see":["degree of unsaturation","fatty acid"]},
+    {"term":"heat of hydrogenation","def":"The heat released when H₂ adds across a C=C. The less heat released, the more stable the alkene was, which is how alkene and diene stabilities are compared.","aliases":["heats of hydrogenation"],"see":["Zaitsev's rule","resonance energy"]},
+    {"term":"Bredt's rule","def":"A bridgehead carbon of a small bicyclic ring cannot be part of a double bond, because the p orbitals could not line up without severe strain.","aliases":["Bredt’s rule"],"see":["alkene"]}
+  ],
+  "addition-reactions": [
+    {"term":"addition reaction","def":"A reaction in which two pieces add across a π bond, turning it into two new σ bonds, such as HBr adding to an alkene.","aliases":["addition reactions","electrophilic addition"],"see":["Markovnikov's rule","elimination"]},
+    {"term":"Markovnikov's rule","def":"When HX adds to an unsymmetrical alkene, the H goes to the carbon that already has more hydrogens and X to the more substituted carbon, because that route goes through the more stable carbocation.","aliases":["Markovnikov’s rule","Markovnikov","Markovnikov addition"],"see":["anti-Markovnikov","regioselective"]},
+    {"term":"bromonium ion","def":"A three-membered ring cation in which a bromine bridges two carbons, formed when Br₂ adds to an alkene. Attack from the back side opens it, so the two bromines end up anti.","aliases":["bromonium ions","halonium ion","halonium ions","bromonium"],"see":["anti addition","halohydrin"]},
+    {"term":"anti addition","def":"An addition in which the two new groups bond to opposite faces of the π bond, as in Br₂ addition. In syn addition they bond to the same face.","aliases":["syn addition"],"see":["bromonium ion","catalytic hydrogenation"]},
+    {"term":"halohydrin","def":"A compound with a halogen and an OH on neighboring carbons, made by adding X₂ to an alkene in water. The OH ends up on the more substituted carbon, anti to the halogen.","aliases":["halohydrins","bromohydrin"],"see":["bromonium ion","epoxide"]},
+    {"term":"hydration","def":"Addition of water across a C=C to make an alcohol. Acid-catalyzed hydration is Markovnikov and goes through a carbocation, so it can rearrange.","aliases":["acid-catalyzed hydration"],"see":["oxymercuration–demercuration","hydroboration–oxidation"]},
+    {"term":"oxymercuration–demercuration","def":"Markovnikov addition of water to an alkene using Hg(OAc)₂ in water, then NaBH₄. It goes through a bridged mercurinium ion, so it does not rearrange.","aliases":["oxymercuration","oxymercuration-demercuration","mercurinium ion"],"see":["hydration"]}
+  ],
+  "markovnikov": [
+    {"term":"regioselective","def":"Describes a reaction that favors one of two possible orientations, putting a new group on one particular atom, such as Markovnikov addition.","aliases":["regioselectivity","regiochemistry"],"see":["Markovnikov's rule","stereoselective"]},
+    {"term":"anti-Markovnikov","def":"Addition in which the non-hydrogen group ends up on the less substituted carbon, as in hydroboration–oxidation or HBr with peroxides.","aliases":["anti-Markovnikov addition"],"see":["Markovnikov's rule","hydroboration–oxidation","peroxide effect"]},
+    {"term":"hydroboration–oxidation","def":"BH₃, then H₂O₂ and NaOH: adds H and OH across a C=C with the OH on the less substituted carbon (anti-Markovnikov) and both on the same face (syn), with no rearrangement.","aliases":["hydroboration","hydroboration-oxidation"],"see":["anti-Markovnikov","hydration"]},
+    {"term":"peroxide effect","def":"With peroxides present, HBr adds to an alkene anti-Markovnikov by a radical chain: Br• adds first, to the less substituted carbon, so that the more stable radical forms.","see":["anti-Markovnikov","radical chain mechanism"]}
+  ],
+  "alkene-oxidation": [
+    {"term":"peroxyacid","def":"A carboxylic acid with an extra oxygen, RCO₃H, such as mCPBA. It transfers one oxygen to an alkene in a single syn step, giving an epoxide.","aliases":["peroxyacids","peracid","peracids","mCPBA","peroxy acid"],"see":["epoxide","Baeyer–Villiger oxidation"]},
+    {"term":"syn dihydroxylation","def":"Adding an OH to each carbon of a C=C from the same face, with OsO₄ (often catalytic, with NMO) or cold dilute KMnO₄, to give a 1,2-diol.","aliases":["dihydroxylation","OsO₄"],"see":["vicinal diol"]},
+    {"term":"vicinal diol","def":"A compound with OH groups on neighboring carbons, also called a 1,2-diol or glycol.","aliases":["1,2-diol","1,2-diols","glycol","vicinal diols"],"see":["syn dihydroxylation","vicinal"]},
+    {"term":"ozonolysis","def":"Cleavage of a C=C with ozone, O₃. A reductive workup (Me₂S or Zn) gives aldehydes and ketones; an oxidative workup (H₂O₂) turns any aldehyde into a carboxylic acid.","see":["workup"]}
+  ],
+  "hydrogenation": [
+    {"term":"catalytic hydrogenation","def":"Addition of H₂ across a C=C or C≡C on a metal catalyst such as Pd/C, Pt or Ni. Both hydrogens add to the same face (syn addition).","aliases":["hydrogenation","hydrogenated"],"see":["Lindlar catalyst","heat of hydrogenation"]},
+    {"term":"Lindlar catalyst","def":"A deliberately poisoned palladium catalyst that hydrogenates an alkyne only as far as the cis (Z) alkene.","aliases":["Lindlar's catalyst","Lindlar’s catalyst","Lindlar"],"see":["dissolving-metal reduction"]},
+    {"term":"dissolving-metal reduction","def":"Reduction by sodium or lithium in liquid ammonia, which adds electrons one at a time. It turns an internal alkyne into the trans (E) alkene.","aliases":["dissolving metal reduction","Na in liquid NH₃"],"see":["Lindlar catalyst","Birch reduction"]},
+    {"term":"chemoselectivity","def":"A reagent's preference for reacting with one functional group over another in the same molecule, such as NaBH₄ reducing a ketone but leaving an ester alone.","aliases":["chemoselective"],"see":["protecting group"]}
+  ],
+  "alkynes": [
+    {"term":"terminal alkyne","def":"An alkyne at the end of a chain, R–C≡C–H. Its sp C–H is unusually acidic (pKa about 25). An internal alkyne has carbon groups on both ends.","aliases":["terminal alkynes","internal alkyne","internal alkynes"],"see":["acetylide ion"]},
+    {"term":"acetylide ion","def":"The conjugate base of a terminal alkyne, R–C≡C⁻, made with NaNH₂. It is a strong nucleophile that forms C–C bonds by SN2 with methyl and primary halides.","aliases":["acetylide","acetylides","acetylide anion","acetylide ions"],"see":["terminal alkyne","SN2 reaction"]},
+    {"term":"vicinal","def":"On neighboring carbons (a 1,2 relationship), as in a vicinal dihalide or a vicinal diol.","aliases":["vicinal dihalide"],"see":["geminal"]},
+    {"term":"geminal","def":"On the same carbon, as in a geminal dihalide or a gem-diol.","aliases":["geminal dihalide"],"see":["vicinal","carbonyl hydrate"]},
+    {"term":"dehydrohalogenation","def":"Elimination of HX, usually by E2 with a strong base. Two successive dehydrohalogenations of a dihalide with NaNH₂ make an alkyne.","see":["E2 reaction"]}
+  ],
+  "conjugated-systems": [
+    {"term":"conjugation","def":"Overlap of p orbitals on three or more adjacent atoms, as in alternating single and double bonds, which lets electrons spread over the whole system and lowers its energy.","aliases":["conjugated"],"see":["delocalization","diene"]},
+    {"term":"diene","def":"A compound with two C=C bonds. They are conjugated when separated by one single bond, isolated when separated by at least one sp³ carbon, and cumulated when they share a carbon (an allene).","aliases":["dienes","conjugated diene","conjugated dienes","isolated diene","cumulated"],"see":["conjugation","s-cis and s-trans"]},
+    {"term":"s-cis and s-trans","def":"The two conformations of a conjugated diene about its central single bond: s-cis has both double bonds on the same side, s-trans on opposite sides. Only the s-cis can do a Diels–Alder reaction.","aliases":["s-cis","s-trans"],"see":["Diels–Alder reaction"]},
+    {"term":"molecular orbital","def":"An orbital that spreads over two or more atoms, formed by combining atomic orbitals. Combining n atomic orbitals gives n molecular orbitals, some bonding (lower in energy) and some antibonding (higher).","aliases":["molecular orbitals"],"see":["HOMO","LUMO","antibonding orbital"]},
+    {"term":"HOMO","def":"The highest occupied molecular orbital: the highest-energy orbital that holds electrons. A nucleophile donates from its HOMO.","aliases":["highest occupied molecular orbital"],"see":["LUMO"]},
+    {"term":"LUMO","def":"The lowest unoccupied molecular orbital: the lowest-energy empty orbital. An electrophile accepts electrons into its LUMO.","aliases":["lowest unoccupied molecular orbital"],"see":["HOMO"]}
+  ],
+  "diene-addition": [
+    {"term":"1,2-addition and 1,4-addition","def":"The two ways to add across a conjugated system. In 1,2-addition the pieces bond to adjacent atoms; in 1,4-addition they bond to the two ends (C1 and C4) and the remaining double bond moves to the middle.","aliases":["1,2-addition","1,4-addition"],"see":["conjugate addition","kinetic product"]}
+  ],
+  "kinetic-thermodynamic": [
+    {"term":"kinetic product","def":"The product that forms fastest, through the lowest-energy transition state. It dominates under kinetic control: low temperature, where the reaction cannot reverse.","aliases":["kinetic control"],"see":["thermodynamic product"]},
+    {"term":"thermodynamic product","def":"The most stable product. It dominates under thermodynamic control: higher temperature, where every step can reverse and the products reach equilibrium.","aliases":["thermodynamic control"],"see":["kinetic product"]}
+  ],
+  "diels-alder": [
+    {"term":"Diels–Alder reaction","def":"A concerted [4+2] cycloaddition between a conjugated diene in its s-cis conformation and a dienophile, forming a cyclohexene with two new σ bonds in one step. It is stereospecific and usually favors the endo product.","aliases":["Diels-Alder reaction","Diels–Alder","Diels-Alder"],"see":["dienophile","endo product","pericyclic reaction"]},
+    {"term":"dienophile","def":"The alkene or alkyne partner in a Diels–Alder reaction. Electron-withdrawing groups on it, such as C=O or CN, make it react faster.","aliases":["dienophiles"],"see":["Diels–Alder reaction"]},
+    {"term":"endo product","def":"In a Diels–Alder reaction, the product in which the dienophile's electron-withdrawing group lay tucked under the diene in the transition state; with a cyclic diene it points toward the new C=C. It is usually the kinetic product. The other is exo.","aliases":["endo","exo","endo rule","exo product"],"see":["Diels–Alder reaction"]},
+    {"term":"pericyclic reaction","def":"A concerted reaction that passes through a cyclic transition state with no intermediates: cycloadditions, electrocyclic reactions and sigmatropic rearrangements.","aliases":["pericyclic reactions","pericyclic"],"see":["cycloaddition"]},
+    {"term":"cycloaddition","def":"A reaction in which two π systems join to form a ring, making two new σ bonds. The Diels–Alder reaction is a [4+2] cycloaddition.","aliases":["cycloadditions","[4+2] cycloaddition"],"see":["Diels–Alder reaction"]}
+  ],
+  "uv-vis": [
+    {"term":"UV-Vis spectroscopy","def":"Measuring which ultraviolet and visible wavelengths a compound absorbs, mainly by promoting a π electron from the HOMO to the LUMO. The longer the conjugated system, the longer the wavelength absorbed.","aliases":["UV–Vis spectroscopy","UV-Vis","UV–Vis","UV/Vis"],"see":["λmax","chromophore"]},
+    {"term":"λmax","def":"The wavelength at which a compound absorbs most strongly in its UV-Vis spectrum.","aliases":["lambda max"],"see":["UV-Vis spectroscopy","Woodward–Fieser rules"]},
+    {"term":"chromophore","def":"The part of a molecule that absorbs UV or visible light, usually a conjugated π system.","aliases":["chromophores"],"see":["UV-Vis spectroscopy"]},
+    {"term":"Beer–Lambert law","def":"A = εcl: absorbance equals the molar absorptivity times concentration times path length, so absorbance is proportional to concentration.","aliases":["Beer-Lambert law","Beer’s law","Beer's law","molar absorptivity"],"see":["UV-Vis spectroscopy"]},
+    {"term":"Woodward–Fieser rules","def":"Empirical rules that estimate λmax for a conjugated diene or enone: start from a base value and add fixed increments for ring residues, exocyclic double bonds and extra conjugated C=C.","aliases":["Woodward-Fieser rules"],"see":["λmax"]}
+  ],
+  "alcohol-reactions": [
+    {"term":"carbinol carbon","def":"The carbon that bears the OH group in an alcohol.","aliases":["carbinol"],"see":["alcohol"]},
+    {"term":"PBr₃","def":"Phosphorus tribromide, which turns a primary or secondary alcohol into an alkyl bromide by SN2, with inversion and no rearrangement.","aliases":["phosphorus tribromide"],"see":["SOCl₂"]},
+    {"term":"SOCl₂","def":"Thionyl chloride, which turns a primary or secondary alcohol into an alkyl chloride, and a carboxylic acid into an acid chloride, releasing SO₂ and HCl.","aliases":["thionyl chloride"],"see":["PBr₃","acid chloride"]}
+  ],
+  "ether-chemistry": [
+    {"term":"Williamson ether synthesis","def":"Making an ether by SN2 between an alkoxide and a methyl or primary alkyl halide (or sulfonate). Choose the half with the less hindered carbon to carry the leaving group.","aliases":["Williamson synthesis"],"see":["alkoxide","SN2 reaction"]},
+    {"term":"crown ether","def":"A large cyclic polyether whose oxygens wrap around a metal cation, as 18-crown-6 does K⁺. Holding the cation frees its anion to react, even in nonpolar solvents.","aliases":["crown ethers","18-crown-6"],"see":["ether"]}
+  ],
+  "epoxides": [
+    {"term":"epoxide","def":"A three-membered cyclic ether, also called an oxirane. Ring strain makes it open easily: strong nucleophiles attack the less substituted carbon, while under acid the nucleophile usually goes to the more substituted carbon; either way it attacks from the back.","aliases":["epoxides","oxirane","oxiranes"],"see":["peroxyacid","ring strain"]}
+  ],
+  "aldehydes-ketones": [
+    {"term":"Bürgi–Dunitz angle","def":"The angle, about 107° to the C=O bond, at which a nucleophile approaches a carbonyl carbon, aiming into the π* orbital.","aliases":["Bürgi-Dunitz angle"],"see":["nucleophilic addition"]},
+    {"term":"α,β-unsaturated carbonyl","def":"A carbonyl compound with a C=C between its α and β carbons, conjugated with the C=O, such as an enone. It is electrophilic at both the carbonyl carbon and the β carbon.","aliases":["α,β-unsaturated carbonyls","α,β-unsaturated ketone","α,β-unsaturated ketones","α,β-unsaturated","enone","enones"],"see":["conjugate addition","aldol condensation"]}
+  ],
+  "nucleophilic-addition": [
+    {"term":"nucleophilic addition","def":"The core carbonyl reaction: a nucleophile bonds to the carbonyl carbon, the π bond's electrons move onto oxygen to give a tetrahedral alkoxide, and that oxygen is then protonated.","aliases":["nucleophilic additions"],"see":["tetrahedral intermediate","nucleophilic acyl substitution"]},
+    {"term":"tetrahedral intermediate","def":"The sp³ species formed when a nucleophile adds to a carbonyl carbon. In acyl substitution it collapses, re-forming the C=O and expelling a leaving group.","aliases":["tetrahedral intermediates"],"see":["nucleophilic addition","nucleophilic acyl substitution"]},
+    {"term":"workup","def":"The steps after the main reaction that quench leftover reagents and isolate the product, such as adding aqueous acid (H₃O⁺) to protonate an alkoxide.","aliases":["aqueous workup","acidic workup","work-up"],"see":["Grignard reagent","LiAlH₄"]},
+    {"term":"hydride","def":"H⁻, a hydrogen with two electrons. Reagents such as NaBH₄ and LiAlH₄ deliver it to carbonyl carbons; it is never present as a free ion in these reactions.","aliases":["hydride ion","hydrides"],"see":["NaBH₄","LiAlH₄"]},
+    {"term":"NaBH₄","def":"Sodium borohydride, a mild hydride donor that reduces aldehydes and ketones to alcohols but normally leaves esters, acids and amides alone. It can be used in alcohol solvents.","aliases":["sodium borohydride"],"see":["LiAlH₄","chemoselectivity"]},
+    {"term":"LiAlH₄","def":"Lithium aluminum hydride, a powerful hydride donor that reduces aldehydes, ketones, esters and carboxylic acids to alcohols, and amides and nitriles to amines. It reacts violently with water, so it is used in dry ether with a separate aqueous workup.","aliases":["lithium aluminum hydride","LAH"],"see":["NaBH₄","workup"]}
+  ],
+  "hydrates-cyanohydrins": [
+    {"term":"carbonyl hydrate","def":"The gem-diol R₂C(OH)₂ formed when water adds to a C=O. The equilibrium lies on the hydrate side only for very electrophilic carbonyls such as formaldehyde.","aliases":["gem-diol","gem-diols","aldehyde hydrate","ketone hydrate","carbonyl hydrates"],"see":["nucleophilic addition"]},
+    {"term":"cyanohydrin","def":"A compound with an OH and a CN on the same carbon, made by adding HCN (with a little cyanide as catalyst) to an aldehyde or ketone. It adds one carbon to the chain.","aliases":["cyanohydrins"],"see":["nitrile"]}
+  ],
+  "acetals": [
+    {"term":"hemiacetal","def":"A carbon bonded to both an OH and an OR, formed when one alcohol adds to an aldehyde or ketone. Open-chain hemiacetals are usually unstable; cyclic ones, as in sugars, are favored.","aliases":["hemiacetals","hemiketal","hemiketals"],"see":["acetal","anomeric carbon"]},
+    {"term":"acetal","def":"A carbon bonded to two OR groups, made from an aldehyde or ketone and two alcohols (or a diol) with acid, removing water. Acetals survive base and nucleophiles and are hydrolyzed by aqueous acid, so they protect carbonyls.","aliases":["acetals","ketal","ketals"],"see":["hemiacetal","protecting group","glycosidic bond"]}
+  ],
+  "imines-enamines": [
+    {"term":"imine","def":"A compound with a C=N–R double bond, made from an aldehyde or ketone and a primary amine with loss of water, fastest near pH 4–5.","aliases":["imines","Schiff base"],"see":["enamine","reductive amination"]},
+    {"term":"enamine","def":"A compound with an amine nitrogen on a C=C (ene + amine), made from an aldehyde or ketone and a secondary amine. Like an enolate, it is nucleophilic at the α carbon.","aliases":["enamines"],"see":["imine","enolate"]},
+    {"term":"carbinolamine","def":"The tetrahedral intermediate, with an OH and an amine nitrogen on the same carbon, formed when an amine adds to a carbonyl. It loses water to give an imine or enamine.","aliases":["carbinolamines"],"see":["imine"]},
+    {"term":"iminium ion","def":"A C=N⁺ cation, the protonated or N-alkylated form of an imine. It is more electrophilic than a carbonyl.","aliases":["iminium ions","iminium"],"see":["imine","reductive amination"]}
+  ],
+  "wittig-reaction": [
+    {"term":"Wittig reaction","def":"An aldehyde or ketone plus a phosphorus ylide (Ph₃P=CR₂) gives an alkene and Ph₃P=O. The new C=C forms exactly where the C=O was.","aliases":["Wittig","Wittig reactions"],"see":["ylide","Horner–Wadsworth–Emmons reaction"]},
+    {"term":"ylide","def":"A neutral species with a positive and a negative charge on adjacent atoms, each with a full octet, such as Ph₃P⁺–C⁻H₂.","aliases":["ylides","phosphorus ylide","phosphonium ylide"],"see":["Wittig reaction"]},
+    {"term":"Horner–Wadsworth–Emmons reaction","def":"A Wittig variant that uses a phosphonate-stabilized carbanion instead of a phosphonium ylide. It mainly gives E alkenes, often α,β-unsaturated esters.","aliases":["Horner-Wadsworth-Emmons","Horner–Wadsworth–Emmons","HWE"],"see":["Wittig reaction"]}
+  ],
+  "aldehyde-oxidation": [
+    {"term":"Tollens' test","def":"Warming a sample with Tollens' reagent, Ag(NH₃)₂⁺ in aqueous ammonia: an aldehyde is oxidized and the silver is reduced to a metallic mirror. Ordinary ketones give no mirror.","aliases":["Tollens’ test","Tollens' reagent","Tollens’ reagent","silver mirror"],"see":["reducing sugar"]},
+    {"term":"Pinnick oxidation","def":"Oxidation of an aldehyde to a carboxylic acid with sodium chlorite (NaClO₂) under mild acid, with a scavenger to mop up the HOCl byproduct. It leaves C=C bonds alone.","see":["Jones reagent"]}
+  ],
+  "oxidation-states": [
+    {"term":"oxidation","def":"In organic chemistry, a gain of bonds from carbon to more electronegative atoms (O, N, halogens) or a loss of C–H bonds, such as alcohol → aldehyde → carboxylic acid.","aliases":["oxidations"],"see":["reduction","oxidation state"]},
+    {"term":"reduction","def":"The reverse of oxidation: a gain of C–H bonds or a loss of bonds from carbon to O, N or halogens, such as ketone → alcohol.","aliases":["reductions"],"see":["oxidation","hydride"]},
+    {"term":"oxidation state","def":"A carbon's bookkeeping charge: +1 for each bond to a more electronegative atom, −1 for each bond to hydrogen, 0 for each bond to carbon. It places a carbon on the oxidation ladder.","aliases":["oxidation states","oxidation level","oxidation levels","oxidation ladder"],"see":["oxidation"]}
+  ],
+  "alcohol-oxidation": [
+    {"term":"PCC","def":"Pyridinium chlorochromate, used in CH₂Cl₂ with no water. It oxidizes a primary alcohol to the aldehyde and stops there, and a secondary alcohol to a ketone.","aliases":["pyridinium chlorochromate"],"see":["Jones reagent","Swern oxidation"]},
+    {"term":"Jones reagent","def":"CrO₃ in aqueous sulfuric acid (chromic acid). It oxidizes a primary alcohol all the way to the carboxylic acid, through the aldehyde's hydrate, and a secondary alcohol to a ketone.","aliases":["Jones oxidation","chromic acid"],"see":["PCC"]},
+    {"term":"Swern oxidation","def":"Oxidation with DMSO and oxalyl chloride, then Et₃N, at −78 °C: a primary alcohol gives the aldehyde and a secondary alcohol the ketone, with no chromium.","aliases":["Swern"],"see":["PCC","Dess–Martin periodinane"]},
+    {"term":"Dess–Martin periodinane","def":"A hypervalent iodine reagent (DMP) that oxidizes primary alcohols to aldehydes and secondary alcohols to ketones under mild, neutral conditions.","aliases":["Dess-Martin periodinane","DMP"],"see":["Swern oxidation"]}
+  ],
+  "carbonyl-reduction": [
+    {"term":"Wolff–Kishner reduction","def":"Conversion of an aldehyde or ketone's C=O into CH₂ with hydrazine and strong base (KOH) on heating, through a hydrazone. It is the basic-conditions partner of the Clemmensen reduction.","aliases":["Wolff-Kishner reduction","Wolff–Kishner"],"see":["Clemmensen reduction"]},
+    {"term":"Clemmensen reduction","def":"Conversion of a C=O into CH₂ with zinc amalgam, Zn(Hg), in hot concentrated HCl. It suits molecules that tolerate strong acid.","aliases":["Clemmensen"],"see":["Wolff–Kishner reduction"]}
+  ],
+  "carboxylic-acids": [
+    {"term":"carboxylate","def":"RCOO⁻, the conjugate base of a carboxylic acid. Its negative charge is shared equally by the two oxygens through resonance.","aliases":["carboxylates","carboxylate ion","carboxylate ions","carboxylate anion"],"see":["carboxylic acid"]}
+  ],
+  "esters-amides": [
+    {"term":"carboxylic acid derivative","def":"A compound R–CO–Y that can be turned into another by swapping Y in nucleophilic acyl substitution: acid chlorides, anhydrides, esters and amides. Nitriles share their oxidation level.","aliases":["carboxylic acid derivatives","acid derivatives","acyl derivatives"],"see":["nucleophilic acyl substitution"]},
+    {"term":"acyl group","def":"The group R–C(=O)–, a carbonyl attached to one carbon group, as found in every carboxylic acid derivative.","aliases":["acyl groups","acyl"],"see":["carboxylic acid derivative","acylium ion"]},
+    {"term":"Fischer esterification","def":"Making an ester from a carboxylic acid and an alcohol with an acid catalyst. It is an equilibrium, driven forward by using excess alcohol or removing water.","aliases":["Fischer esterifications"],"see":["ester","Le Châtelier's principle"]},
+    {"term":"saponification","def":"Hydrolysis of an ester by hydroxide, giving a carboxylate salt and an alcohol. It does not reverse, because the acid formed is at once deprotonated to a carboxylate that the alcohol cannot attack; it is how soap is made from fats.","aliases":["saponified"],"see":["ester","triglyceride"]},
+    {"term":"transesterification","def":"Exchange of an ester's OR group for a different alcohol's OR, under acid or base catalysis.","see":["ester"]},
+    {"term":"lactone","def":"A cyclic ester: the ester's C=O and O are both part of a ring.","aliases":["lactones"],"see":["lactam","Baeyer–Villiger oxidation"]},
+    {"term":"lactam","def":"A cyclic amide, such as the four-membered β-lactam ring in penicillin.","aliases":["lactams","β-lactam"],"see":["lactone","amide"]}
+  ],
+  "acyl-substitution": [
+    {"term":"nucleophilic acyl substitution","def":"Addition–elimination at an acyl carbon: a nucleophile adds to give a tetrahedral intermediate, which collapses to expel the leaving group. Reactivity runs acid chloride > anhydride > ester > amide.","aliases":["acyl substitution","addition–elimination","addition-elimination"],"see":["tetrahedral intermediate","carboxylic acid derivative"]}
+  ],
+  "acyl-chlorides-anhydrides": [
+    {"term":"acid chloride","def":"R–CO–Cl, the most reactive carboxylic acid derivative, made from a carboxylic acid with SOCl₂. It reacts with water, alcohols and amines to give acids, esters and amides.","aliases":["acid chlorides","acyl chloride","acyl chlorides"],"see":["nucleophilic acyl substitution","SOCl₂"]},
+    {"term":"acid anhydride","def":"Two acyl groups joined through one oxygen, R–CO–O–CO–R. It is the second most reactive carboxylic acid derivative, after acid chlorides.","aliases":["anhydride","anhydrides","acid anhydrides"],"see":["acid chloride"]}
+  ],
+  "nitriles": [
+    {"term":"DIBAL-H","def":"Diisobutylaluminum hydride, a bulky hydride reagent that reduces an ester or a nitrile only as far as the aldehyde when used cold (−78 °C), with one equivalent.","aliases":["DIBAL","DIBALH"],"see":["LiAlH₄"]}
+  ],
+  "baeyer-villiger": [
+    {"term":"Baeyer–Villiger oxidation","def":"A peroxyacid turns a ketone into an ester (a cyclic ketone into a lactone) by inserting an oxygen between the carbonyl carbon and the group with the higher migratory aptitude. The migrating group keeps its configuration.","aliases":["Baeyer-Villiger oxidation","Baeyer–Villiger","Baeyer-Villiger"],"see":["migratory aptitude","peroxyacid"]},
+    {"term":"migratory aptitude","def":"How readily a group moves in a 1,2-shift. In the Baeyer–Villiger: H > tertiary > secondary ≈ cyclohexyl ≈ benzyl ≈ aryl > primary > methyl.","see":["Baeyer–Villiger oxidation","1,2-shift"]}
+  ],
+  "organometallic-bonding": [
+    {"term":"organometallic compound","def":"A compound with a carbon–metal bond. The carbon is δ− and behaves like a carbanion: a strong base and a carbon nucleophile.","aliases":["organometallic","organometallics","organometallic compounds","organometallic reagent","organometallic reagents"],"see":["Grignard reagent","umpolung"]},
+    {"term":"umpolung","def":"Polarity reversal: turning a normally electrophilic carbon into a nucleophilic one, as when the δ+ carbon of an alkyl halide becomes the δ− carbon of a Grignard reagent.","see":["organometallic compound"]}
+  ],
+  "grignard-reagents": [
+    {"term":"Grignard reagent","def":"R–MgX, made from an organic halide and magnesium in dry ether. It adds to aldehydes and ketones to give alcohols, to esters twice, and to CO₂ to give carboxylic acids; water, alcohols or any acidic H destroy it.","aliases":["Grignard reagents","Grignard","Grignards"],"see":["organometallic compound","workup"]},
+    {"term":"Weinreb amide","def":"An N-methoxy-N-methyl amide. A Grignard or organolithium adds to it only once, because the metal holds the tetrahedral intermediate together, so workup gives a ketone.","aliases":["Weinreb amides"],"see":["Grignard reagent"]}
+  ],
+  "organolithium-reagents": [
+    {"term":"organolithium reagent","def":"R–Li, such as butyllithium: more reactive and more basic than a Grignard reagent, and often used at −78 °C.","aliases":["organolithium","organolithiums","organolithium reagents","butyllithium","n-BuLi"],"see":["Grignard reagent","LDA"]}
+  ],
+  "gilman-reagents": [
+    {"term":"Gilman reagent","def":"A lithium dialkylcuprate, R₂CuLi. It is a soft nucleophile: it adds 1,4 (conjugate addition) to enones, couples with organic halides and turns acid chlorides into ketones.","aliases":["Gilman reagents","cuprate","cuprates","organocuprate","organocuprates","lithium dialkylcuprate"],"see":["conjugate addition","hard and soft acids and bases"]}
+  ],
+  "cross-coupling": [
+    {"term":"cross-coupling","def":"A palladium-catalyzed reaction that joins an organic halide or triflate to an organometallic partner through a cycle of oxidative addition, transmetalation and reductive elimination.","aliases":["cross-coupling reaction","cross-coupling reactions","cross-couplings","palladium cross-coupling"],"see":["Suzuki coupling","oxidative addition"]},
+    {"term":"oxidative addition","def":"A metal inserts into a bond such as C–X, gaining two ligands and raising its oxidation state by two, as Pd(0) becomes Pd(II).","see":["reductive elimination","cross-coupling"]},
+    {"term":"transmetalation","def":"Transfer of an organic group from one metal (boron, tin, zinc) to another, such as palladium, in a coupling cycle.","see":["cross-coupling"]},
+    {"term":"reductive elimination","def":"Two groups on a metal bond to each other and leave, lowering the metal's oxidation state by two. In cross-coupling this step makes the new C–C bond and regenerates Pd(0).","see":["oxidative addition"]},
+    {"term":"Suzuki coupling","def":"Palladium-catalyzed coupling of an organoboron compound, such as a boronic acid, with an aryl or vinyl halide in the presence of base. It is the classic way to make biaryls.","aliases":["Suzuki reaction","Suzuki","boronic acid","boronic acids"],"see":["cross-coupling"]},
+    {"term":"Heck reaction","def":"Palladium-catalyzed coupling of an aryl or vinyl halide with an alkene, replacing a vinylic hydrogen; it runs through migratory insertion and β-hydride elimination.","aliases":["Heck"],"see":["cross-coupling"]},
+    {"term":"Sonogashira coupling","def":"Palladium- and copper-catalyzed coupling of a terminal alkyne with an aryl or vinyl halide.","aliases":["Sonogashira"],"see":["cross-coupling","terminal alkyne"]},
+    {"term":"Stille coupling","def":"Palladium-catalyzed coupling of an organotin compound (an organostannane) with an organic halide.","aliases":["Stille"],"see":["cross-coupling"]},
+    {"term":"Negishi coupling","def":"Palladium- (or nickel-) catalyzed coupling of an organozinc compound with an organic halide.","aliases":["Negishi"],"see":["cross-coupling"]},
+    {"term":"convergent synthesis","def":"A synthesis that builds large pieces separately and joins them late, which gives a higher overall yield than adding pieces one at a time in a long line.","aliases":["convergent"],"see":["retrosynthesis"]}
+  ],
+  "alpha-hydrogens": [
+    {"term":"alpha carbon","def":"The carbon next to a functional group. In carbonyl chemistry it is the carbon bonded to the C=O carbon; in eliminations it is the carbon carrying the leaving group. The beta (β) carbon is the next one out.","aliases":["α carbon","α-carbon","α carbons","alpha carbons","alpha (α) carbon","beta carbon","β carbon","β-carbon"],"see":["alpha hydrogen","beta hydrogen"]},
+    {"term":"alpha hydrogen","def":"A hydrogen on the α carbon of a carbonyl compound. It is unusually acidic (pKa about 20 for a ketone) because its removal gives a resonance-stabilized enolate.","aliases":["alpha hydrogens","α-hydrogen","α-hydrogens","α hydrogen","α hydrogens"],"see":["enolate","alpha carbon"]},
+    {"term":"enolate","def":"The anion formed by removing an α hydrogen from a carbonyl compound. The negative charge is shared between the α carbon and the oxygen, and it usually reacts as a nucleophile through carbon.","aliases":["enolates","enolate ion","enolate ions","enolate anion"],"see":["enol","LDA","aldol reaction"]},
+    {"term":"enol","def":"An alkene with an OH on one of its carbons (ene + ol). It is the tautomer of a ketone or aldehyde, and the keto form is usually far more stable.","aliases":["enols"],"see":["tautomers","enolate"]},
+    {"term":"tautomers","def":"Constitutional isomers that interconvert quickly by moving a proton and shifting a double bond, such as a ketone and its enol. They are different compounds, not resonance structures, because an atom moves.","aliases":["tautomer","tautomerism","tautomerization","tautomerizes","keto–enol tautomerism"],"see":["enol","resonance structures"]}
+  ],
+  "aldol": [
+    {"term":"aldol reaction","def":"An enolate (or enol) adds to the carbonyl carbon of an aldehyde or ketone, giving a β-hydroxy carbonyl compound.","aliases":["aldol","aldol addition","aldol reactions","aldols"],"see":["aldol condensation","crossed aldol"]},
+    {"term":"aldol condensation","def":"An aldol reaction followed by loss of water, usually on heating, to give an α,β-unsaturated carbonyl compound.","aliases":["aldol condensations"],"see":["aldol reaction","E1cb"]},
+    {"term":"crossed aldol","def":"An aldol between two different carbonyl compounds. It gives one main product only when one partner cannot form an enolate (such as benzaldehyde) or one enolate is made first with LDA.","aliases":["crossed aldol reaction","mixed aldol"],"see":["aldol reaction"]},
+    {"term":"E1cb","def":"Elimination through the conjugate base: an acidic hydrogen (often α to a C=O) is removed first to give a carbanion or enolate, which then expels a leaving group from the next carbon, such as OH⁻ in an aldol condensation.","aliases":["E1cB"],"see":["aldol condensation","E2 reaction"]}
+  ],
+  "claisen": [
+    {"term":"Claisen condensation","def":"An ester enolate attacks a second ester by nucleophilic acyl substitution, giving a β-keto ester. A full equivalent of base is needed, because deprotonating the product drives the reaction.","aliases":["Claisen","Claisen condensations","crossed Claisen"],"see":["Dieckmann condensation","β-dicarbonyl compound"]},
+    {"term":"Dieckmann condensation","def":"An intramolecular Claisen condensation of a diester, giving a five- or six-membered cyclic β-keto ester.","aliases":["Dieckmann"],"see":["Claisen condensation"]}
+  ],
+  "alpha-halogenation": [
+    {"term":"α-halogenation","def":"Replacing an α hydrogen of a carbonyl compound with a halogen. With acid it goes through the enol and stops after one; with base it goes through the enolate and continues until every α H is replaced.","aliases":["alpha-halogenation","α-bromination"],"see":["haloform reaction","enol"]},
+    {"term":"haloform reaction","def":"A methyl ketone treated with excess halogen and base is cut into a carboxylate and CHX₃. With iodine the yellow iodoform precipitate is a test for methyl ketones.","aliases":["haloform","iodoform test","iodoform"],"see":["α-halogenation"]},
+    {"term":"Hell–Volhard–Zelinsky reaction","def":"α-Bromination of a carboxylic acid with Br₂ and PBr₃, which works through the acyl bromide's enol.","aliases":["Hell-Volhard-Zelinsky reaction","HVZ"],"see":["α-halogenation"]}
+  ],
+  "enolate-regiochemistry": [
+    {"term":"LDA","def":"Lithium diisopropylamide, a strong (pKaH about 36), bulky base that is a poor nucleophile. At −78 °C it converts a ketone completely and irreversibly into its kinetic enolate.","aliases":["lithium diisopropylamide"],"see":["kinetic enolate","enolate"]},
+    {"term":"kinetic enolate","def":"The enolate that forms faster, by removal of the more accessible α hydrogen; it is usually the less substituted one. LDA at −78 °C gives it.","aliases":["kinetic enolates"],"see":["thermodynamic enolate","LDA"]},
+    {"term":"thermodynamic enolate","def":"The more stable, usually more substituted enolate. It dominates when the enolates can interconvert: a weaker base, a little free ketone or proton source, and higher temperature.","aliases":["thermodynamic enolates"],"see":["kinetic enolate"]}
+  ],
+  "ester-syntheses": [
+    {"term":"β-dicarbonyl compound","def":"A compound with two C=O groups on either side of one carbon (a 1,3-dicarbonyl), such as a β-keto ester or a malonic ester. The H's on that middle carbon are unusually acidic (pKa about 9 to 13).","aliases":["β-dicarbonyl","1,3-dicarbonyl","1,3-dicarbonyls","β-keto ester","β-keto esters","β-ketoester","β-diketone","beta-ketoester"],"see":["malonic ester synthesis","Claisen condensation"]},
+    {"term":"decarboxylation","def":"Loss of CO₂. β-Keto acids and malonic acids lose CO₂ easily on heating through a six-membered cyclic transition state that gives an enol.","aliases":["decarboxylate","decarboxylates","decarboxylated"],"see":["malonic ester synthesis","acetoacetic ester synthesis"]},
+    {"term":"malonic ester synthesis","def":"Alkylate the enolate of diethyl malonate, then hydrolyze and heat to decarboxylate: the result is a substituted acetic acid, RCH₂COOH.","aliases":["malonic ester"],"see":["acetoacetic ester synthesis","decarboxylation"]},
+    {"term":"acetoacetic ester synthesis","def":"Alkylate the enolate of ethyl acetoacetate, then hydrolyze and decarboxylate: the result is a methyl ketone, CH₃COCH₂R.","see":["malonic ester synthesis"]}
+  ],
+  "michael-robinson": [
+    {"term":"conjugate addition","def":"Addition of a nucleophile to the β carbon of an α,β-unsaturated carbonyl (1,4-addition). The enolate formed is then protonated at the α carbon. Soft nucleophiles prefer it.","aliases":["conjugate additions","1,4-conjugate addition"],"see":["Michael addition","Gilman reagent"]},
+    {"term":"Michael addition","def":"Conjugate addition of a stabilized carbon nucleophile (the Michael donor, such as the enolate of a β-dicarbonyl) to an α,β-unsaturated carbonyl (the Michael acceptor), giving a 1,5-dicarbonyl compound.","aliases":["Michael reaction","Michael additions","Michael donor","Michael acceptor"],"see":["conjugate addition","Robinson annulation"]},
+    {"term":"Robinson annulation","def":"A Michael addition followed by an intramolecular aldol condensation, which builds a new six-membered ring containing an α,β-unsaturated ketone.","aliases":["Robinson annulations"],"see":["Michael addition","aldol condensation"]}
+  ],
+  "aromaticity": [
+    {"term":"aromatic","def":"Describes a ring that is cyclic, planar and fully conjugated with 4n + 2 π electrons (2, 6, 10...). Such rings are unusually stable, like benzene.","aliases":["aromaticity","aromatic ring","aromatic rings"],"see":["Hückel's rule","antiaromatic"]},
+    {"term":"Hückel's rule","def":"A cyclic, planar, fully conjugated ring is aromatic if it has 4n + 2 π electrons and antiaromatic if it has 4n.","aliases":["Hückel’s rule","4n + 2 rule"],"see":["aromatic","antiaromatic"]},
+    {"term":"antiaromatic","def":"Describes a ring that is cyclic, planar and fully conjugated but has 4n π electrons. It is less stable than a comparable open chain, so such molecules avoid being planar if they can.","aliases":["antiaromaticity"],"see":["aromatic","nonaromatic"]},
+    {"term":"nonaromatic","def":"Describes a ring that fails one of the first three tests (cyclic, planar, fully conjugated), for example because an sp³ ring carbon breaks the conjugation.","see":["aromatic"]},
+    {"term":"benzene","def":"C₆H₆, a flat six-membered ring of sp² carbons with six π electrons spread evenly around it; the parent aromatic compound.","see":["aromatic","phenyl group"]},
+    {"term":"resonance energy","def":"The extra stability that delocalization gives a molecule, measured as the gap between its expected and actual heat of hydrogenation; benzene's is about 36 kcal/mol (150 kJ/mol).","aliases":["aromatic stabilization","delocalization energy"],"see":["aromatic","heat of hydrogenation"]},
+    {"term":"pyridine","def":"A benzene-like aromatic ring with one CH replaced by N. The nitrogen's lone pair lies in the ring plane, outside the π system, so pyridine is a weak base.","see":["pyrrole","aromatic"]},
+    {"term":"pyrrole","def":"A five-membered aromatic ring containing an NH. The nitrogen's lone pair is part of the six-electron aromatic system, so pyrrole is hardly basic at all.","see":["pyridine","aromatic"]}
+  ],
+  "eas": [
+    {"term":"electrophilic aromatic substitution","def":"A reaction in which an electrophile replaces an H on an aromatic ring: the ring's π electrons attack E⁺ to give an arenium ion (the slow step), then loss of H⁺ restores aromaticity.","aliases":["EAS","electrophilic aromatic substitutions"],"see":["arenium ion","directing effects"]},
+    {"term":"arenium ion","def":"The resonance-stabilized carbocation formed when an electrophile adds to an aromatic ring; one ring carbon is sp³ and carries both the H and the E.","aliases":["arenium ions","sigma complex","σ complex","Wheland intermediate"],"see":["electrophilic aromatic substitution"]},
+    {"term":"nitronium ion","def":"NO₂⁺, the electrophile in aromatic nitration, made from nitric acid and sulfuric acid.","aliases":["nitration"],"see":["electrophilic aromatic substitution"]},
+    {"term":"sulfonation","def":"Adding an SO₃H group to an aromatic ring with SO₃ in sulfuric acid (fuming sulfuric acid). Because it is reversible, a sulfonic acid group can be used as a removable blocking group.","see":["blocking group"]},
+    {"term":"Friedel–Crafts alkylation","def":"Alkylating an aromatic ring with an alkyl halide and AlCl₃. The carbocation can rearrange, the product can react again, and strongly deactivated rings do not react.","aliases":["Friedel-Crafts alkylation"],"see":["Friedel–Crafts acylation","1,2-shift"]},
+    {"term":"Friedel–Crafts acylation","def":"Attaching an acyl group to an aromatic ring with an acid chloride and AlCl₃, through an acylium ion, to give an aryl ketone. There is no rearrangement and the product does not react a second time.","aliases":["Friedel-Crafts acylation","Friedel–Crafts","Friedel-Crafts"],"see":["acylium ion","Friedel–Crafts alkylation"]},
+    {"term":"acylium ion","def":"The cation R–C≡O⁺, an acyl group stabilized by the oxygen's lone pair. It is the electrophile in Friedel–Crafts acylation and does not rearrange.","aliases":["acylium ions","acylium"],"see":["Friedel–Crafts acylation"]}
+  ],
+  "directing-effects": [
+    {"term":"directing effects","def":"The way a substituent already on a benzene ring controls both how fast the ring reacts in EAS and which position (ortho, meta or para) the next group goes to.","aliases":["directing effect","directing group","directing groups"],"see":["ortho/para director","meta director"]},
+    {"term":"activating group","def":"A substituent that donates electron density to a benzene ring, making it react faster than benzene in EAS, such as –OH, –NH₂, –OR or alkyl. A deactivating group withdraws density and slows the reaction.","aliases":["activating groups","activator","activators","deactivating group","deactivating groups","deactivator","deactivators"],"see":["ortho/para director","meta director"]},
+    {"term":"ortho/para director","def":"A substituent that sends a new electrophile to the ortho and para positions: every activator, and the halogens, which are weakly deactivating. A lone pair or alkyl group next to the ring stabilizes the arenium ion for ortho/para attack.","aliases":["ortho/para directors","ortho,para director","ortho/para-directing"],"see":["meta director","activating group"]},
+    {"term":"meta director","def":"A substituent that withdraws electron density, such as –NO₂, C=O, –CN, –SO₃H or –NR₃⁺, and steers new electrophiles meta. Ortho or para attack would put positive charge right next to it.","aliases":["meta directors","meta-directing"],"see":["ortho/para director"]},
+    {"term":"blocking group","def":"A removable group, often SO₃H, put on a ring position temporarily so that a reaction is forced to happen elsewhere.","aliases":["blocking groups"],"see":["sulfonation"]}
+  ],
+  "amine-structure": [
+    {"term":"nitrogen inversion","def":"The rapid turning inside out of an amine's pyramid through a flat transition state. It is why most amines with three different groups cannot be separated into enantiomers.","see":["amine","stereocenter"]},
+    {"term":"aniline","def":"Aminobenzene, C₆H₅NH₂. It is a much weaker base than an alkylamine because its nitrogen lone pair is delocalized into the ring.","aliases":["anilines"],"see":["amine","diazonium salt"]}
+  ],
+  "amine-reactions": [
+    {"term":"quaternary ammonium salt","def":"A salt R₄N⁺ X⁻ whose nitrogen carries four carbon groups and a positive charge, with no lone pair and no N–H.","aliases":["quaternary ammonium salts","quaternary ammonium","quaternary ammonium ion"],"see":["Hofmann elimination","amine"]},
+    {"term":"Gabriel synthesis","def":"Making a primary amine without over-alkylation: alkylate the phthalimide anion with a primary alkyl halide, then release the amine (with hydrazine or by hydrolysis).","aliases":["Gabriel"],"see":["amine"]}
+  ],
+  "amine-synthesis": [
+    {"term":"reductive amination","def":"Combining an aldehyde or ketone with an amine to form an imine or iminium ion, which is reduced in the same pot (often by NaBH₃CN) to an amine with one more carbon group on nitrogen.","aliases":["reductive aminations"],"see":["imine","iminium ion"]},
+    {"term":"Hofmann rearrangement","def":"A primary amide treated with Br₂ and NaOH loses its carbonyl carbon and becomes a primary amine with one fewer carbon, through an isocyanate. The migrating group keeps its configuration.","aliases":["Hofmann rearrangements"],"see":["Curtius rearrangement","isocyanate"]},
+    {"term":"Curtius rearrangement","def":"An acyl azide, heated, loses N₂ and rearranges to an isocyanate, which water turns into a primary amine with one fewer carbon.","aliases":["Curtius"],"see":["Hofmann rearrangement","isocyanate"]},
+    {"term":"isocyanate","def":"A compound R–N=C=O. Water adds to it to give a carbamic acid, which loses CO₂ to leave an amine; alcohols add to give carbamates.","aliases":["isocyanates","diisocyanate"],"see":["carbamate","polyurethane"]}
+  ],
+  "hofmann-elimination": [
+    {"term":"Hofmann elimination","def":"Exhaustive methylation of an amine to a quaternary ammonium salt, then heating with hydroxide, which causes E2 to give mainly the less substituted alkene.","aliases":["Hofmann eliminations","exhaustive methylation"],"see":["Hofmann product","quaternary ammonium salt"]},
+    {"term":"Cope elimination","def":"Heating an amine oxide causes a syn elimination through a five-membered cyclic transition state, giving an alkene and a hydroxylamine.","aliases":["amine oxide"],"see":["Hofmann elimination"]}
+  ],
+  "nucleophilic-aromatic": [
+    {"term":"nucleophilic aromatic substitution","def":"A nucleophile replaces a leaving group on an aromatic ring that carries strong electron-withdrawing groups ortho or para to it. Addition comes first, giving a Meisenheimer complex; fluoride is the best leaving group here.","aliases":["SNAr","SₙAr"],"see":["Meisenheimer complex","benzyne"]},
+    {"term":"Meisenheimer complex","def":"The resonance-stabilized anion (a cyclohexadienyl anion) formed when a nucleophile adds to an electron-poor aromatic ring in SNAr.","aliases":["Meisenheimer complexes"],"see":["nucleophilic aromatic substitution"]},
+    {"term":"benzyne","def":"A very reactive intermediate: a benzene ring with an extra, strained π bond, made by eliminating HX from an aryl halide with a very strong base such as NaNH₂. A nucleophile can add at either end, so two products may form.","aliases":["benzynes","aryne"],"see":["nucleophilic aromatic substitution"]}
+  ],
+  "benzylic-reactivity": [
+    {"term":"benzylic","def":"Describes the carbon directly attached to a benzene ring. Benzylic cations, radicals and anions are stabilized by resonance with the ring, so benzylic positions react readily.","aliases":["benzylic position","benzylic carbon"],"see":["allylic","NBS","benzyl group"]},
+    {"term":"benzyl group","def":"The substituent C₆H₅CH₂–, a phenyl ring attached through a CH₂.","aliases":["benzyl","benzyl groups"],"see":["benzylic","phenyl group"]},
+    {"term":"side-chain oxidation","def":"Hot KMnO₄ (or chromic acid) oxidizes any alkyl side chain that has a benzylic hydrogen down to a –COOH on the ring, whatever its length.","aliases":["benzylic oxidation"],"see":["benzylic"]},
+    {"term":"hydrogenolysis","def":"Cleavage of a σ bond by H₂ over a catalyst, such as a benzyl ether giving toluene and an alcohol on H₂ and Pd/C. It removes benzyl and Cbz protecting groups.","see":["Cbz","protecting group"]}
+  ],
+  "phenols": [
+    {"term":"phenol","def":"A compound with an OH bonded directly to an aromatic ring. Phenol (pKa about 10) is far more acidic than an alcohol because the phenoxide ion is resonance-stabilized.","aliases":["phenols"],"see":["phenoxide","alcohol"]},
+    {"term":"phenoxide","def":"The conjugate base of a phenol, ArO⁻, whose negative charge is spread into the ring by resonance. It is a strongly activated ring and a good nucleophile.","aliases":["phenoxides","phenoxide ion"],"see":["phenol"]},
+    {"term":"Kolbe–Schmitt carboxylation","def":"Heating sodium phenoxide with CO₂ under pressure, then acidifying, to put a COOH ortho to the OH, giving salicylic acid.","aliases":["Kolbe–Schmitt","Kolbe-Schmitt"],"see":["phenoxide"]},
+    {"term":"quinone","def":"A six-membered ring with two C=O groups, most often para to each other (cyclohexa-2,5-diene-1,4-dione), made by oxidizing a hydroquinone. Reduction turns it back.","aliases":["quinones","hydroquinone"],"see":["phenol"]}
+  ],
+  "birch-reduction": [
+    {"term":"Birch reduction","def":"Reduction of an aromatic ring with Na or Li in liquid ammonia and an alcohol, giving a non-conjugated cyclohexa-1,4-diene. An electron-donating group ends up on a remaining C=C; an electron-withdrawing group on an sp³ carbon.","aliases":["Birch"],"see":["dissolving-metal reduction"]}
+  ],
+  "diazonium-chemistry": [
+    {"term":"diazonium salt","def":"Ar–N₂⁺ X⁻, made from a primary aromatic amine with NaNO₂ and HCl at 0 °C. N₂ is a superb leaving group, so the ring position can be turned into many other groups.","aliases":["diazonium salts","aryl diazonium salt","aryl diazonium salts","diazonium ion","diazonium"],"see":["Sandmeyer reaction","azo coupling"]},
+    {"term":"Sandmeyer reaction","def":"Replacing the N₂⁺ of an aryl diazonium salt with Cl, Br or CN using the copper(I) salt CuCl, CuBr or CuCN.","aliases":["Sandmeyer reactions","Sandmeyer"],"see":["diazonium salt","Schiemann reaction"]},
+    {"term":"Schiemann reaction","def":"Heating an aryl diazonium tetrafluoroborate, ArN₂⁺ BF₄⁻, to make an aryl fluoride.","aliases":["Balz–Schiemann reaction","Schiemann"],"see":["Sandmeyer reaction"]},
+    {"term":"azo coupling","def":"A diazonium ion, a weak electrophile, attacks a strongly activated ring such as a phenol or aniline, joining the two rings through –N=N–. The products are often brightly colored azo dyes.","aliases":["azo compound","azo compounds","azo dye","azo dyes"],"see":["diazonium salt"]}
+  ],
+  "ir": [
+    {"term":"IR spectroscopy","def":"Infrared spectroscopy: bonds absorb infrared light at frequencies matching their vibrations, so a spectrum shows which bonds and functional groups are present. A vibration absorbs only if it changes the dipole moment.","aliases":["infrared spectroscopy","IR spectrum","IR spectra","infrared (IR) spectroscopy"],"see":["wavenumber","fingerprint region"]},
+    {"term":"wavenumber","def":"The number of waves per centimeter (1/wavelength), in cm⁻¹, used for IR positions. Higher wavenumbers mean higher energy: stronger, stiffer bonds and lighter atoms vibrate higher.","aliases":["wavenumbers"],"see":["IR spectroscopy"]},
+    {"term":"fingerprint region","def":"The crowded part of an IR spectrum below about 1500 cm⁻¹, full of bending and single-bond vibrations. It is unique to each compound but hard to interpret band by band.","see":["IR spectroscopy"]}
+  ],
+  "h-nmr": [
+    {"term":"NMR spectroscopy","def":"Nuclear magnetic resonance: nuclei such as ¹H and ¹³C in a strong magnetic field absorb radio waves at frequencies set by their electronic surroundings, which reveals the carbon–hydrogen framework.","aliases":["NMR","nuclear magnetic resonance","proton NMR","¹H NMR"],"see":["chemical shift","¹³C NMR"]},
+    {"term":"chemical shift","def":"The position of an NMR signal, δ, in ppm from the TMS reference at 0. Nuclei near electronegative atoms or in aromatic rings are deshielded and appear at higher δ (downfield).","aliases":["chemical shifts"],"see":["shielded and deshielded","TMS"]},
+    {"term":"shielded and deshielded","def":"A nucleus surrounded by more electron density is shielded and comes into resonance upfield (lower δ); one stripped of electron density, as near O or a halogen, is deshielded and appears downfield (higher δ).","aliases":["shielded","deshielded","shielding","deshielding","upfield","downfield"],"see":["chemical shift","magnetic anisotropy"]},
+    {"term":"TMS","def":"Tetramethylsilane, Si(CH₃)₄, the NMR reference compound whose signal is set at δ = 0.","aliases":["tetramethylsilane"],"see":["chemical shift"]},
+    {"term":"magnetic anisotropy","def":"The local magnetic field set up by circulating π electrons. In an aromatic ring (the ring current) it deshields the ring's hydrogens, pushing them to about 7 to 8 ppm.","aliases":["anisotropy","ring current"],"see":["shielded and deshielded"]},
+    {"term":"integration","def":"The area under a ¹H NMR signal, proportional to the number of hydrogens that produce it. It gives ratios, not absolute counts.","aliases":["integrations"],"see":["NMR spectroscopy"]},
+    {"term":"chemically equivalent","def":"Describes nuclei that are interchanged by symmetry or by fast rotation, so they have identical surroundings and give one NMR signal.","aliases":["equivalent protons","chemically equivalent protons","chemical equivalence"],"see":["diastereotopic"]},
+    {"term":"spin–spin splitting","def":"Splitting of an NMR signal by hydrogens on neighboring atoms: n equivalent neighbors split it into n + 1 peaks (singlet, doublet, triplet, quartet...).","aliases":["spin-spin splitting","splitting","n + 1 rule","multiplicity","singlet","doublet","triplet","quartet"],"see":["coupling constant"]},
+    {"term":"coupling constant","def":"J, the spacing in Hz between the peaks of a split NMR signal. Two hydrogens that split each other share the same J; for alkene H's, trans J is larger than cis.","aliases":["coupling constants","J value"],"see":["spin–spin splitting"]}
+  ],
+  "c-nmr": [
+    {"term":"¹³C NMR","def":"NMR of the carbon-13 nuclei in a compound. With proton decoupling each unique carbon gives one line, spread over about 0 to 220 ppm; carbonyl carbons appear furthest downfield.","aliases":["13C NMR","carbon-13 NMR","¹³C NMR spectroscopy"],"see":["DEPT","NMR spectroscopy"]},
+    {"term":"DEPT","def":"A ¹³C NMR experiment that sorts carbons by how many hydrogens they carry. In DEPT-135, CH and CH₃ point up, CH₂ points down and carbons with no H vanish; DEPT-90 shows only CH.","aliases":["DEPT-135","DEPT-90"],"see":["¹³C NMR"]}
+  ],
+  "mass-spec": [
+    {"term":"mass spectrometry","def":"A technique that ionizes molecules, often breaking them into fragments, and sorts the ions by mass-to-charge ratio (m/z). It gives the molecular weight and clues to structure.","aliases":["mass spec","mass spectrum","mass spectra","MS"],"see":["molecular ion","base peak"]},
+    {"term":"molecular ion","def":"The radical cation M⁺• formed when a whole molecule loses one electron. Its m/z equals the molecular weight.","aliases":["molecular ion peak","molecular ions","M⁺"],"see":["mass spectrometry","nitrogen rule"]},
+    {"term":"base peak","def":"The tallest peak in a mass spectrum, set to 100% intensity. It belongs to the most abundant ion, which is not necessarily the molecular ion.","see":["molecular ion"]},
+    {"term":"m/z","def":"The mass-to-charge ratio of an ion. For the singly charged ions seen in most spectra it equals the ion's mass.","see":["mass spectrometry"]},
+    {"term":"nitrogen rule","def":"A molecule with an odd molecular weight contains an odd number of nitrogen atoms; an even molecular weight means zero or an even number.","see":["molecular ion"]},
+    {"term":"M+2 peak","def":"A peak two mass units above the molecular ion. Chlorine gives an M+2 about one third the height of M (3:1), and bromine gives M and M+2 of nearly equal height (1:1).","aliases":["M + 2","M+2"],"see":["isotopes","molecular ion"]},
+    {"term":"McLafferty rearrangement","def":"A mass-spectrum fragmentation of a carbonyl compound with a γ hydrogen: that H moves to the oxygen through a six-membered transition state and the α–β bond breaks, losing a neutral alkene.","aliases":["McLafferty"],"see":["alpha cleavage"]},
+    {"term":"alpha cleavage","def":"In mass spectrometry, breaking the bond next to a carbonyl carbon (or next to the carbon bearing O or N), which gives a stabilized cation such as an acylium ion.","aliases":["α-cleavage","α cleavage","alpha-cleavage"],"see":["acylium ion","McLafferty rearrangement"]}
+  ],
+  "retrosynthesis": [
+    {"term":"retrosynthesis","def":"Planning a synthesis backward: from the target, make imaginary cuts (disconnections) that each match a known reaction, until you reach simple starting materials. A retrosynthetic step is drawn with a double-lined arrow, ⇒.","aliases":["retrosynthetic analysis","retrosynthetic"],"see":["disconnection","synthon"]},
+    {"term":"disconnection","def":"An imaginary bond-breaking step in retrosynthesis that corresponds to a real forward reaction.","aliases":["disconnections"],"see":["retrosynthesis","retron"]},
+    {"term":"synthon","def":"An idealized fragment, often an ion, produced by a disconnection. The synthetic equivalent is the real reagent that plays its part, such as a Grignard reagent for an R⁻ synthon.","aliases":["synthons","synthetic equivalent","synthetic equivalents"],"see":["disconnection"]},
+    {"term":"retron","def":"A structural pattern in a target that points to a particular disconnection, such as a β-hydroxy carbonyl pointing to an aldol.","aliases":["retrons"],"see":["disconnection"]}
+  ],
+  "functional-group-interconversion": [
+    {"term":"functional group interconversion","def":"Changing one functional group into another without changing the carbon skeleton, such as oxidizing an alcohol to a ketone. Abbreviated FGI.","aliases":["functional group interconversions","FGI"],"see":["retrosynthesis","oxidation state"]}
+  ],
+  "protecting-groups": [
+    {"term":"protecting group","def":"A group that temporarily masks a reactive functional group so it survives a reaction elsewhere in the molecule, and is removed afterward: protect, react, deprotect.","aliases":["protecting groups","protection","deprotection"],"see":["silyl ether","acetal","Boc"]},
+    {"term":"silyl ether","def":"An alcohol protected as R–O–SiR₃, such as a TBS ether. It survives bases, Grignard reagents and oxidants, and is removed with fluoride (TBAF) or acid.","aliases":["silyl ethers","TBS ether","TBS"],"see":["protecting group"]},
+    {"term":"Boc","def":"The tert-butoxycarbonyl group, a carbamate that protects an amine. It is removed with acid, such as trifluoroacetic acid.","aliases":["Boc group","tert-butoxycarbonyl"],"see":["carbamate","Cbz","Fmoc"]},
+    {"term":"Cbz","def":"The benzyloxycarbonyl group, a carbamate that protects an amine and is removed by hydrogenolysis (H₂, Pd/C).","aliases":["Cbz group","benzyloxycarbonyl"],"see":["Boc","hydrogenolysis"]},
+    {"term":"carbamate","def":"A group R–O–CO–NR′₂, half ester and half amide. Boc and Cbz are carbamates that protect amines; polyurethanes are linked by carbamates.","aliases":["carbamates","urethane"],"see":["Boc","polyurethane"]},
+    {"term":"orthogonal protecting groups","def":"Protecting groups that come off under different conditions, so each can be removed without disturbing the others.","aliases":["orthogonal"],"see":["protecting group"]}
+  ],
+  "multistep-synthesis": [
+    {"term":"multistep synthesis","def":"A sequence of reactions that builds a target from available starting materials, planned so that every step's regiochemistry and stereochemistry are controlled.","aliases":["multistep syntheses"],"see":["retrosynthesis"]}
+  ],
+  "carbohydrates": [
+    {"term":"carbohydrate","def":"A polyhydroxy aldehyde or ketone, or a compound that hydrolyzes to them: sugars, starch and cellulose.","aliases":["carbohydrates","saccharide","saccharides"],"see":["monosaccharide"]},
+    {"term":"monosaccharide","def":"A simple sugar that cannot be hydrolyzed into smaller sugars, such as glucose or fructose. A disaccharide is two joined by a glycosidic bond; a polysaccharide is many.","aliases":["monosaccharides","disaccharide","disaccharides","polysaccharide","polysaccharides"],"see":["aldose","glycosidic bond"]},
+    {"term":"aldose","def":"A monosaccharide whose open-chain form is an aldehyde, such as glucose. A ketose has a ketone instead, such as fructose.","aliases":["aldoses","ketose","ketoses","aldohexose","aldohexoses","ketohexose"],"see":["monosaccharide"]},
+    {"term":"pyranose","def":"The six-membered ring form of a sugar (five carbons and one oxygen). A furanose is the five-membered ring form.","aliases":["pyranoses","furanose","furanoses"],"see":["Haworth projection","anomeric carbon"]},
+    {"term":"Haworth projection","def":"A flat drawing of a cyclic sugar seen edge-on. A group on the right in the Fischer projection points down in the Haworth projection.","aliases":["Haworth projections"],"see":["Fischer projection","pyranose"]},
+    {"term":"anomeric carbon","def":"The carbon that was the carbonyl carbon in a sugar's open-chain form (C1 of an aldose). In the ring it is the hemiacetal or acetal carbon, and it is a new stereocenter.","aliases":["anomeric carbons"],"see":["anomers","hemiacetal"]},
+    {"term":"anomers","def":"Cyclic sugar diastereomers that differ only at the anomeric carbon. In a D-sugar's Haworth projection, the α anomer has the anomeric OH down (trans to CH₂OH) and the β anomer has it up.","aliases":["anomer","α anomer","β anomer","α-anomer","β-anomer"],"see":["anomeric carbon","mutarotation","epimers"]},
+    {"term":"mutarotation","def":"The gradual change in specific rotation as the α and β anomers of a sugar interconvert through the open-chain form until they reach equilibrium (about 36% α : 64% β for glucose).","see":["anomers"]},
+    {"term":"glycosidic bond","def":"The acetal link from a sugar's anomeric carbon to an OR group, often another sugar's OH. Its configuration and positions are written like α(1→4).","aliases":["glycosidic bonds","glycosidic linkage","glycoside","glycosides","N-glycosidic bond"],"see":["acetal","reducing sugar"]},
+    {"term":"reducing sugar","def":"A sugar with a free hemiacetal (free anomeric carbon), which can open to the free carbonyl form and give a positive Tollens' or Benedict's test. Sucrose, with both anomeric carbons tied up, is a non-reducing sugar.","aliases":["reducing sugars","non-reducing sugar","nonreducing sugar"],"see":["Tollens' test","glycosidic bond"]}
+  ],
+  "amino-acids": [
+    {"term":"α-amino acid","def":"A compound with an amino group and a carboxylic acid on the same (α) carbon, H₂N–CHR–COOH. The 20 common amino acids differ in their side chain R; all but glycine are chiral.","aliases":["α-amino acids","amino acid","amino acids","alpha-amino acid"],"see":["zwitterion","isoelectric point"]},
+    {"term":"zwitterion","def":"A neutral molecule that carries a positive and a negative charge on different atoms, such as an amino acid near neutral pH, H₃N⁺–CHR–COO⁻.","aliases":["zwitterions","zwitterionic"],"see":["α-amino acid","isoelectric point"]},
+    {"term":"isoelectric point","def":"The pH at which a molecule carries no net charge, written pI. For an amino acid with a neutral side chain it is the average of its two pKa values.","aliases":["pI","isoelectric points"],"see":["zwitterion","electrophoresis"]},
+    {"term":"electrophoresis","def":"Separating charged molecules by their movement in an electric field: cations travel toward the cathode, anions toward the anode, and a molecule at its pI does not move.","aliases":["gel electrophoresis"],"see":["isoelectric point"]},
+    {"term":"disulfide bond","def":"An S–S bond formed by oxidizing two cysteine thiols. It links parts of a protein chain, or separate chains, together.","aliases":["disulfide bonds","disulfide bridge","disulfide"],"see":["thiol","tertiary structure"]}
+  ],
+  "peptides-proteins": [
+    {"term":"peptide bond","def":"The amide bond linking the carboxyl group of one amino acid to the amino group of the next. Resonance gives it partial double-bond character, so it is planar, does not rotate freely and is usually trans.","aliases":["peptide bonds","amide bond","amide bonds"],"see":["amide","polypeptide"]},
+    {"term":"polypeptide","def":"A chain of amino acid residues joined by peptide bonds, written from the N-terminus (free NH₂) to the C-terminus (free COOH). A protein is one or more long polypeptides.","aliases":["polypeptides","peptide","peptides","N-terminus","C-terminus"],"see":["peptide bond","primary structure"]},
+    {"term":"primary structure","def":"The sequence of amino acids in a protein chain, held by covalent peptide bonds.","see":["secondary structure"]},
+    {"term":"secondary structure","def":"Regular local folding of a protein backbone held by N–H···O=C hydrogen bonds: mainly the α-helix and the β-sheet.","aliases":["α-helix","α-helices","β-sheet","β-sheets","alpha helix","beta sheet"],"see":["primary structure","tertiary structure"]},
+    {"term":"tertiary structure","def":"The overall 3D fold of one protein chain, held by the hydrophobic effect, hydrogen bonds, salt bridges and disulfide bonds. Quaternary structure is the arrangement of several chains together.","aliases":["quaternary structure"],"see":["secondary structure","hydrophobic effect"]},
+    {"term":"hydrophobic effect","def":"The tendency of nonpolar groups to cluster together in water. It is driven mainly by entropy: clustering frees water molecules that were held in ordered cages around each nonpolar group.","see":["tertiary structure","micelle"]},
+    {"term":"denaturation","def":"Loss of a protein's folded 3D shape, by heat, pH change or solvents, without breaking its peptide bonds.","aliases":["denatured","denature"],"see":["tertiary structure"]},
+    {"term":"solid-phase peptide synthesis","def":"Building a peptide on a resin bead from the C-terminus: protect, couple (with DCC or a similar reagent), deprotect, wash, repeat, then cleave from the resin. Also called Merrifield synthesis.","aliases":["Merrifield synthesis","solid-phase synthesis"],"see":["DCC","Boc","Fmoc"]},
+    {"term":"DCC","def":"Dicyclohexylcarbodiimide, a coupling reagent that activates a carboxylic acid (as an O-acylisourea) so an amine can attack it and form an amide.","aliases":["dicyclohexylcarbodiimide"],"see":["peptide bond","solid-phase peptide synthesis"]},
+    {"term":"Fmoc","def":"The fluorenylmethoxycarbonyl group, a carbamate that protects an amine and is removed by a mild base (piperidine), so it is orthogonal to the acid-removed Boc.","aliases":["Fmoc group"],"see":["Boc","orthogonal protecting groups"]},
+    {"term":"Edman degradation","def":"A peptide-sequencing method that removes and identifies the N-terminal residue one at a time, as a phenylthiohydantoin, using phenyl isothiocyanate.","see":["polypeptide"]}
+  ],
+  "lipids": [
+    {"term":"lipid","def":"A biomolecule defined by its solubility in nonpolar solvents rather than by one functional group: fats, oils, phospholipids, steroids, waxes and terpenes.","aliases":["lipids"],"see":["fatty acid","triglyceride"]},
+    {"term":"fatty acid","def":"A long, unbranched carboxylic acid, usually with 12 to 20 carbons (an even number). Saturated fatty acids have no C=C; natural unsaturated ones have cis double bonds that kink the chain.","aliases":["fatty acids"],"see":["triglyceride","saturated"]},
+    {"term":"triglyceride","def":"A triester of glycerol with three fatty acids. Fats are solid triglycerides rich in saturated chains; oils are liquid ones rich in cis-unsaturated chains.","aliases":["triglycerides","triacylglycerol","triacylglycerols"],"see":["saponification","fatty acid"]},
+    {"term":"amphipathic","def":"Having both a polar, water-loving part and a nonpolar, water-avoiding part, like soaps and phospholipids.","aliases":["amphiphilic"],"see":["micelle","phospholipid"]},
+    {"term":"micelle","def":"A sphere of amphipathic molecules in water, with nonpolar tails packed inside and polar heads on the surface. Soap removes grease by trapping it in micelles.","aliases":["micelles"],"see":["amphipathic"]},
+    {"term":"phospholipid","def":"A lipid with two fatty acid chains and a polar phosphate-containing head group. Phospholipids form the bilayers of cell membranes.","aliases":["phospholipids","lipid bilayer","bilayer","bilayers"],"see":["amphipathic"]},
+    {"term":"steroid","def":"A lipid built on four fused rings, three six-membered and one five-membered, such as cholesterol.","aliases":["steroids"],"see":["lipid"]},
+    {"term":"terpene","def":"A natural product built from five-carbon isoprene units, usually joined head to tail.","aliases":["terpenes","isoprene","isoprene unit"],"see":["lipid"]}
+  ],
+  "nucleic-acids": [
+    {"term":"nucleoside","def":"A nitrogen base joined to a ribose or 2-deoxyribose through an N-glycosidic bond at the sugar's anomeric carbon. A nucleotide is a nucleoside with one or more phosphates.","aliases":["nucleosides","nucleotide","nucleotides"],"see":["purine","phosphodiester bond"]},
+    {"term":"purine","def":"A base with two fused rings, adenine (A) or guanine (G). Pyrimidines have one ring: cytosine (C), thymine (T) and uracil (U).","aliases":["purines","pyrimidine","pyrimidines"],"see":["base pairing","nucleoside"]},
+    {"term":"phosphodiester bond","def":"The link in a nucleic acid backbone: a phosphate esterified to the 3′-OH of one sugar and the 5′-OH of the next. A strand is read from its 5′ end to its 3′ end.","aliases":["phosphodiester bonds","phosphodiester","phosphodiester backbone"],"see":["nucleoside"]},
+    {"term":"base pairing","def":"Hydrogen bonding between bases on two antiparallel strands: A pairs with T (U in RNA) through two hydrogen bonds, and G pairs with C through three.","aliases":["base pairs","base pair","complementary base pairing","Chargaff's rules","Chargaff’s rules"],"see":["purine","hydrogen bond"]}
+  ],
+  "polymer-basics": [
+    {"term":"polymer","def":"A large molecule built from many repeating smaller units (monomers) joined by covalent bonds.","aliases":["polymers","macromolecule","macromolecules"],"see":["monomer","repeat unit"]},
+    {"term":"monomer","def":"A small molecule that joins with many others to form a polymer.","aliases":["monomers"],"see":["polymer"]},
+    {"term":"repeat unit","def":"The smallest piece of a polymer's structure that repeats along the chain, drawn in brackets with a subscript n.","aliases":["repeat units","repeating unit"],"see":["degree of polymerization"]},
+    {"term":"degree of polymerization","def":"The number of repeat units in a polymer chain, n. Molar mass ≈ n × the mass of the repeat unit.","see":["repeat unit"]},
+    {"term":"chain-growth polymerization","def":"Polymerization in which monomers add one at a time to a reactive chain end (a radical, cation or anion), so long chains appear early while most monomer is unreacted.","aliases":["chain-growth","chain growth"],"see":["step-growth polymerization","addition polymer"]},
+    {"term":"step-growth polymerization","def":"Polymerization in which any two molecules with complementary groups can react, so chains grow by joining fragments; high molar mass appears only at very high conversion.","aliases":["step-growth","step growth","step-growth polymers"],"see":["chain-growth polymerization","condensation polymer"]},
+    {"term":"copolymer","def":"A polymer made from two or more different monomers; the units can be arranged at random, alternating, or in blocks.","aliases":["copolymers","block copolymer","block copolymers","random copolymer"],"see":["living polymerization"]},
+    {"term":"cross-link","def":"A covalent bond (or bridge) connecting two polymer chains. A few cross-links make a rubber elastic; many make a rigid network.","aliases":["cross-links","cross-linking","cross-linked","crosslink","crosslinks"],"see":["vulcanization","thermoset"]},
+    {"term":"thermoplastic","def":"A polymer that softens when heated and can be remelted and reshaped, because its chains are not cross-linked.","aliases":["thermoplastics"],"see":["thermoset"]},
+    {"term":"thermoset","def":"A polymer that is cured into a cross-linked network and does not melt on reheating.","aliases":["thermosets","thermosetting"],"see":["thermoplastic","cross-link"]},
+    {"term":"living polymerization","def":"A chain-growth polymerization with no termination: chains keep growing as long as monomer remains, so adding a second monomer makes a block copolymer.","see":["copolymer"]}
+  ],
+  "addition-polymers": [
+    {"term":"addition polymer","def":"A polymer made by joining monomers, usually alkenes, without losing any atoms, such as polyethylene or polystyrene.","aliases":["addition polymers","addition polymerization"],"see":["chain-growth polymerization","condensation polymer"]},
+    {"term":"chain transfer","def":"A growing radical takes an H atom from another molecule, which ends its chain and starts a new one. When it takes an H from its own backbone (backbiting), growth carries on from there and leaves a branch.","aliases":["backbiting"],"see":["radical chain mechanism"]},
+    {"term":"tacticity","def":"The stereochemical pattern of substituents along a polymer chain: isotactic (all on one side), syndiotactic (alternating) or atactic (random).","aliases":["isotactic","syndiotactic","atactic"],"see":["Ziegler–Natta catalyst","crystallinity"]},
+    {"term":"Ziegler–Natta catalyst","def":"A titanium–aluminum catalyst that polymerizes alkenes such as propene by repeated insertion at a metal site, giving stereoregular (for example isotactic) chains with little branching.","aliases":["Ziegler-Natta catalyst","Ziegler–Natta","Ziegler-Natta"],"see":["tacticity"]}
+  ],
+  "condensation-polymers": [
+    {"term":"condensation polymer","def":"A polymer formed by reactions that release a small molecule, such as water, an alcohol or HCl, each time a link forms; polyesters and polyamides are examples.","aliases":["condensation polymers","condensation polymerization"],"see":["step-growth polymerization","polyester"]},
+    {"term":"polyester","def":"A polymer whose repeat units are joined by ester links, made from a diacid (or its derivative) and a diol, such as PET.","aliases":["polyesters"],"see":["condensation polymer","polyamide"]},
+    {"term":"polyamide","def":"A polymer whose repeat units are joined by amide links, made from a diacid (or acid chloride) and a diamine, such as nylon or Kevlar.","aliases":["polyamides","nylon","nylons"],"see":["polyester","peptide bond"]},
+    {"term":"polycarbonate","def":"A polymer joined by carbonate links, –O–CO–O–, such as the one made from bisphenol A and phosgene.","aliases":["polycarbonates"],"see":["polyester"]},
+    {"term":"polyurethane","def":"A polymer joined by carbamate (urethane) links, made by adding a diol to a diisocyanate without losing any small molecule.","aliases":["polyurethanes"],"see":["carbamate","isocyanate"]}
+  ],
+  "polymer-properties": [
+    {"term":"crystallinity","def":"The fraction of a polymer whose chains are packed in ordered regions. More crystalline polymers are stiffer, stronger and more opaque; amorphous regions are disordered.","aliases":["semicrystalline"],"see":["glass transition temperature","tacticity"]},
+    {"term":"glass transition temperature","def":"Tg, the temperature above which the amorphous regions of a polymer change from hard and glassy to soft and rubbery.","aliases":["glass transition","Tg"],"see":["crystallinity","plasticizer"]},
+    {"term":"vulcanization","def":"Heating natural rubber with sulfur to form sulfur cross-links between chains, which makes it elastic rather than sticky.","aliases":["vulcanized"],"see":["cross-link","elastomer"]},
+    {"term":"plasticizer","def":"A small molecule mixed into a polymer to push chains apart, lowering its glass transition temperature and making it softer and more flexible.","aliases":["plasticizers"],"see":["glass transition temperature"]},
+    {"term":"elastomer","def":"A polymer that stretches and springs back, typically amorphous, lightly cross-linked and used above its glass transition temperature.","aliases":["elastomers"],"see":["vulcanization"]}
+  ],
+  "polymer-design": [
+    {"term":"depolymerization","def":"Breaking a polymer back into its monomers or small pieces, for example by hydrolysis or methanolysis of a polyester; the basis of chemical recycling.","aliases":["chemical recycling"],"see":["polyester"]}
+  ]
+}

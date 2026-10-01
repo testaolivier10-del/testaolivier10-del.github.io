@@ -74,6 +74,9 @@
           seen[m[1]] = 1;
           out.push({ file: '/ochem/notes/' + m[1] + '.html', title: m[2] });
         }
+        // The glossary page ships term names only; its definitions live in
+        // the JSON file (scripts/build-ochem-glossary.mjs), keyed term/def.
+        out.push({ file: '/ochem/glossary.html', title: 'Glossary', data: '/ochem/assets/glossary.json' });
         return out;
       })
       .catch(function(){ return []; });
