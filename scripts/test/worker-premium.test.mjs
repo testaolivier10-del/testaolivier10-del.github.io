@@ -70,9 +70,13 @@ test('signature: good passes, wrong secret / tampered body / stale fails', async
   assert.equal(await verifyWebhook(body, sign(body), SECRET, now), true);
   assert.equal(await verifyWebhook(body, sign(body, { secret: 'other' }), SECRET, now), false);
   assert.equal(await verifyWebhook(body + ' ', sign(body), SECRET, now), false);
-  assert.equal(await verifyWebhook(body, sign(body, { ts: now - 301 }), SECRET, now), false);
-  assert.equal(await verifyWebhook(body, sign(body, { ts: now + 301 }), SECRET, now), false);
+  assert.equal(await verifyWebhook(body, sign(body, { ts: now - 3 * 86400 - 1 }), SECRET, now), false);
+  assert.equal(await verifyWebhook(body, sign(body, { ts: now + 3 * 86400 + 1 }), SECRET, now), false);
   assert.equal(await verifyWebhook(body, sign(body), '', now), false);
+  // Redelivered events keep their original timestamp; an hour old still passes.
+  assert.equal(await verifyWebhook(body, sign(body, { ts: now - 3600 }), SECRET, now), true);
+  // Whitespace around a pasted secret is ignored.
+  assert.equal(await verifyWebhook(body, sign(body), SECRET + '\n', now), true);
   // Several signatures (secret rotation): any one valid entry is enough.
   const h = sign(body);
   h['webhook-signature'] = `v1,AAAA ${h['webhook-signature']}`;

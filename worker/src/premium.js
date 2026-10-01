@@ -35,8 +35,12 @@ const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty
 
 const SITE = 'https://levlprep.com';
 const DAY_MS = 86400000;
-// Standard Webhooks' own tolerance, and Polar's SDK uses that library as is.
-const WEBHOOK_TOLERANCE_S = 5 * 60;
+// Standard Webhooks suggests five minutes, but Polar's "Redeliver" resends an
+// event with its original timestamp, so a failed order could never be
+// recovered once five minutes had passed. Three days is safe here because a
+// replayed event cannot do anything twice: an order is recorded once (order_id
+// is unique) and a refund only touches a pass not yet refunded.
+const WEBHOOK_TOLERANCE_S = 3 * 24 * 60 * 60;
 
 /* Where Polar may send the student back to. Only our own site: an open
    redirect on a payment page is a phishing kit somebody else gets for free. */
@@ -167,10 +171,18 @@ export async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.
   const id = get('webhook-id');
   const ts = get('webhook-timestamp');
   const sigs = get('webhook-signature');
-  if (!secret || !id || !ts || !sigs) return false;
+  // A secret pasted into the dashboard can pick up a space or a newline.
+  secret = String(secret || '').trim();
+  if (!secret || !id || !ts || !sigs) {
+    console.log('premium webhook: missing', JSON.stringify({ secret: !!secret, id: !!id, ts: !!ts, sigs: !!sigs }));
+    return false;
+  }
 
   const t = Number(ts);
-  if (!Number.isInteger(t) || Math.abs(nowSeconds - t) > WEBHOOK_TOLERANCE_S) return false;
+  if (!Number.isInteger(t) || Math.abs(nowSeconds - t) > WEBHOOK_TOLERANCE_S) {
+    console.log('premium webhook: timestamp outside tolerance', ts);
+    return false;
+  }
 
   const signed = new TextEncoder().encode(`${id}.${ts}.${rawBody}`);
   const expected = [];
@@ -179,7 +191,7 @@ export async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.
     expected.push(bytesToBase64(new Uint8Array(await crypto.subtle.sign('HMAC', key, signed))));
   }
 
-  return sigs.split(' ').some((entry) => {
+  const ok = sigs.split(' ').some((entry) => {
     const [version, sig] = entry.split(',');
     if (version !== 'v1' || !sig) return false;
     return expected.some((exp) => {
@@ -189,6 +201,10 @@ export async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.
       return diff === 0;
     });
   });
+  // Never logs the secret; the prefix and length are enough to tell a
+  // pasted access token or a truncated paste from the real thing.
+  if (!ok) console.log('premium webhook: no signature matched', JSON.stringify({ secretPrefix: secret.slice(0, 6), secretLength: secret.length }));
+  return ok;
 }
 
 /* A pass bought while one is still running starts when that one ends, so
