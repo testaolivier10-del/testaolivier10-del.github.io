@@ -18,3 +18,4 @@ node_modules
 
 # Python wheels a browser-test setup can drop in the repo root
 *.whl
+.claude/worktrees/
