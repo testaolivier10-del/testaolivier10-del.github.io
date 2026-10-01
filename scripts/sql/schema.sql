@@ -592,3 +592,23 @@ $$;
 
 revoke all on function public.my_premium() from public;
 grant execute on function public.my_premium() to authenticated;
+
+-- The signed-in user's own purchase history, for account.html: every pass
+-- they hold or held, newest first, refunds included. Nothing about anyone else.
+create or replace function public.my_purchases()
+returns table (course text, pass text, starts_at timestamptz, expires_at timestamptz,
+               order_id text, amount_cents integer, refunded_at timestamptz, created_at timestamptz)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select p.course, p.pass, p.starts_at, p.expires_at, p.order_id, p.amount_cents, p.refunded_at, p.created_at
+  from public.premium_passes p
+  where p.user_id = auth.uid()
+  order by p.created_at desc
+  limit 100;
+$$;
+
+revoke all on function public.my_purchases() from public;
+grant execute on function public.my_purchases() to authenticated;

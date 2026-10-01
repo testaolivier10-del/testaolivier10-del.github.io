@@ -16,7 +16,7 @@
 
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
-import { premiumCheckout, premiumWebhook } from './premium.js';
+import { premiumCheckout, premiumWebhook, premiumRefund } from './premium.js';
 
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
@@ -223,6 +223,12 @@ export default {
     // so it shares the Origin check and the throttle above, then leaves.
     if (path === '/premium/checkout') {
       const r = await premiumCheckout(request, env);
+      return json(r.body, r.status, origin);
+    }
+    // A refund from the account page: same Origin check and throttle; the
+    // rules that keep it from being abused are in premiumRefund().
+    if (path === '/premium/refund') {
+      const r = await premiumRefund(request, env);
       return json(r.body, r.status, origin);
     }
 

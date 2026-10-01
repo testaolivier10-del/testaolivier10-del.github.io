@@ -137,6 +137,83 @@ export async function premiumCheckout(request, env) {
   return { status: 200, body: { url: checkout.url } };
 }
 
+/* POST /premium/refund: a self-serve refund from the account page, with no
+   approval step. The rules live here, not in the page, so they cannot be
+   skipped by anyone calling this route directly:
+
+   - the order must be the caller's own, a real purchase (not a free month
+     or a guarantee extension) and not already refunded;
+   - within REFUND_WINDOW_DAYS of buying, as the terms promise;
+   - once per account, ever. Any refund already on the account (self-serve
+     or made by hand in Polar) means the next one goes through email, so a
+     buy-use-refund loop runs exactly once.
+
+   Polar refunds the pre-tax amount and the tax with it. The pass is marked
+   refunded here at once; order.refunded from Polar then finds nothing left
+   to change. */
+export const REFUND_WINDOW_DAYS = 14;
+
+export function refundRefusal(row, priorRefunds, now) {
+  if (!row || !row.order_id || !(row.amount_cents > 0)) return 'That purchase can’t be refunded here.';
+  if (row.refunded_at) return 'That purchase has already been refunded.';
+  if (now - Date.parse(row.created_at) > REFUND_WINDOW_DAYS * DAY_MS) {
+    return `Refunds are available for ${REFUND_WINDOW_DAYS} days after buying, and this purchase is older than that.`;
+  }
+  if (priorRefunds > 0) return 'This account has already had a refund, so this one needs a quick email instead.';
+  return null;
+}
+
+export async function premiumRefund(request, env, now = Date.now()) {
+  const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+  if (!token) return { status: 401, body: { error: 'Sign in first.' } };
+  let payload;
+  try { payload = await request.json(); } catch { return { status: 400, body: { error: 'Invalid JSON' } }; }
+  const orderId = String(payload?.order_id || '');
+  if (!/^[0-9a-f-]{36}$/i.test(orderId)) return { status: 400, body: { error: 'Unknown purchase.' } };
+  if (!env.POLAR_ACCESS_TOKEN || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) {
+    return { status: 503, body: { error: 'Refunds are not set up yet.' } };
+  }
+
+  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
+    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
+  });
+  const user = who.ok ? await who.json() : null;
+  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+
+  const uid = encodeURIComponent(user.id);
+  const [rowRes, priorRes] = await Promise.all([
+    sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at&user_id=eq.${uid}` +
+      `&order_id=eq.${encodeURIComponent(orderId)}&limit=1`),
+    sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
+  ]);
+  if (!rowRes.ok || !priorRes.ok) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
+  const row = (await rowRes.json())[0];
+  const prior = (await priorRes.json()).length;
+  const refusal = refundRefusal(row, prior, now);
+  if (refusal) return { status: 409, body: { error: refusal } };
+
+  const res = await fetch(`${polarApi(env)}/v1/refunds/`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      order_id: orderId,
+      reason: 'customer_request',
+      amount: row.amount_cents,
+      comment: 'Self-serve refund from the levlprep.com account page',
+    }),
+  });
+  if (!res.ok) {
+    console.log('polar refund failed', res.status, (await res.text()).slice(0, 300));
+    return { status: 502, body: { error: 'The refund didn’t go through automatically. Email us and we’ll sort it out.' } };
+  }
+  await sb(env, `premium_passes?order_id=eq.${encodeURIComponent(orderId)}&refunded_at=is.null`, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
+  });
+  return { status: 200, body: { ok: true } };
+}
+
 function bytesToBase64(bytes) {
   let s = '';
   for (const b of bytes) s += String.fromCharCode(b);

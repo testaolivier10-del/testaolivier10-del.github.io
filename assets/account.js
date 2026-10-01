@@ -514,6 +514,7 @@
         '<b>' + escapeHtml(currentUser.email || 'Signed in') + '</b>' +
         '<small id="accountMenuState">Progress syncs automatically.</small>' +
       '</div>' +
+      '<a role="menuitem" href="/account.html" id="accountPageLink">Account &amp; Premium</a>' +
       '<button type="button" role="menuitem" id="accountSyncBtn">Sync now</button>' +
       '<button type="button" role="menuitem" id="accountSignOutBtn">Sign out</button>' +
       '<button type="button" role="menuitem" class="account-menu__danger" id="accountDeleteBtn">Delete account</button>';
