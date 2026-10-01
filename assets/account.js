@@ -76,6 +76,40 @@
     if(merge) Object.keys(merge).forEach(function(k){ mergers[k] = merge[k]; });
   }
 
+  /* A ready-made merge for a flashcard schedule written by the shared
+     scheduler (ochem/assets/flashcard-scheduler.js): { v: 1, cards: { id:
+     { ..., t } }, fresh: { day, n }, paid?: { day, xp } }. Card by card, the
+     copy graded more recently wins, so a second device cannot un-review an
+     evening's cards; the day counters keep the later day, or the larger count
+     on the same day. A malformed copy never wins. Here rather than in a
+     course's deck script because the merge must be registered on every page
+     of the course: a push replaces the whole namespace. */
+  function mergeCardSchedules(localRaw, cloudRaw){
+    var mine = null, theirs = null;
+    try{ mine = JSON.parse(localRaw); }catch(e){}
+    try{ theirs = JSON.parse(cloudRaw); }catch(e){ return localRaw; }
+    function ok(x){ return x && typeof x === 'object' && x.v === 1 && x.cards && typeof x.cards === 'object'; }
+    if(!ok(theirs)) return localRaw;
+    if(!ok(mine)) return cloudRaw;
+    var out = { v: 1, cards: {} };
+    Object.keys(theirs.cards).forEach(function(id){ out.cards[id] = theirs.cards[id]; });
+    Object.keys(mine.cards).forEach(function(id){
+      var a = mine.cards[id], b = out.cards[id];
+      if(!b || ((a && a.t) || 0) > ((b && b.t) || 0)) out.cards[id] = a;
+    });
+    [['fresh', 'n'], ['paid', 'xp']].forEach(function(p){
+      var f = p[0], n = p[1];
+      var m = mine[f] && typeof mine[f] === 'object' ? mine[f] : null;
+      var t = theirs[f] && typeof theirs[f] === 'object' ? theirs[f] : null;
+      if(!m && !t) return;
+      if(!m || !t){ out[f] = m || t; return; }
+      if(String(m.day) > String(t.day)) out[f] = m;
+      else if(String(m.day) < String(t.day)) out[f] = t;
+      else { out[f] = { day: t.day }; out[f][n] = Math.max(m[n] || 0, t[n] || 0); }
+    });
+    return JSON.stringify(out);
+  }
+
   function collect(){
     var out = {};
     Object.keys(namespaces).forEach(function(ns){
@@ -1718,6 +1752,7 @@
        is worth a test rather than a careful read. */
     _clearLocalProgress: clearLocalProgress,
     registerNamespace: registerNamespace,
+    mergeCardSchedules: mergeCardSchedules,
     start: start,
     push: push,
     syncSoon: syncSoon,

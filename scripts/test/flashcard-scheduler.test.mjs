@@ -249,3 +249,50 @@ test('flashcard XP: per card, capped per day, and it keeps the streak', () => {
   assert.equal(H.subjectXp('ochem') - nextDay, 3 * X.CARD_XP, 'a new day, a new cap');
   assert.equal(X.onCards(0), null);
 });
+
+/* ---- reuse by another course: forKey, and the shared sync merge ---------- */
+
+test('forKey binds the same scheduler to another course\'s key, and keeps the two apart', () => {
+  const { b, S } = fresh();
+  const N = S.forKey('nremt_flashcards_v1');
+  assert.equal(N.KEY, 'nremt_flashcards_v1');
+  assert.equal(S.KEY, 'ochem_flashcards_v1');
+  N.grade('f:x', N.GOOD, b.now());
+  assert.ok(N.get('f:x'), 'graded under the NREMT key');
+  assert.equal(S.get('f:x'), null, 'ochem never sees it');
+  assert.ok(JSON.parse(b.localStorage.getItem('nremt_flashcards_v1')).cards['f:x']);
+  assert.equal(b.localStorage.getItem('ochem_flashcards_v1'), null);
+  // Same rules either way: the daily allowance counts per key.
+  assert.equal(N.introducedToday(b.now()), 1);
+  assert.equal(S.introducedToday(b.now()), 0);
+});
+
+test('the NREMT schedule is synced in the nremt namespace with the shared card merge', () => {
+  const b = createBrowser();
+  b.load('assets/account.js');
+  const A = b.window.StudyHubAccount;
+  const registered = {};
+  const real = A.registerNamespace;
+  A.registerNamespace = (name, keys, merge) => { registered[name] = { keys, merge: merge || {} }; return real(name, keys, merge); };
+  b.load('nremt/assets/nav.js');
+  assert.ok(registered.nremt.keys.includes('nremt_flashcards_v1'));
+  assert.equal(registered.nremt.merge.nremt_flashcards_v1, A.mergeCardSchedules);
+});
+
+test('mergeCardSchedules: newest grade per card, later day counters, never a malformed copy', () => {
+  const b = createBrowser();
+  b.load('assets/account.js');
+  const M = b.window.StudyHubAccount.mergeCardSchedules;
+  const local = { v: 1, cards: { a: { i: 3, t: 200 }, b: { i: 1, t: 50 } }, fresh: { day: '2026-01-15', n: 4 }, paid: { day: '2026-01-15', xp: 30 } };
+  const cloud = { v: 1, cards: { a: { i: 1, t: 100 }, b: { i: 8, t: 90 }, c: { i: 2, t: 10 } }, fresh: { day: '2026-01-15', n: 9 }, paid: { day: '2026-01-14', xp: 60 } };
+  const out = JSON.parse(M(JSON.stringify(local), JSON.stringify(cloud)));
+  assert.equal(out.cards.a.i, 3);
+  assert.equal(out.cards.b.i, 8);
+  assert.equal(out.cards.c.i, 2);
+  assert.equal(out.fresh.n, 9, 'same day: the larger count');
+  assert.deepEqual(plain(out.paid), { day: '2026-01-15', xp: 30 }, 'the later day wins');
+  const good = JSON.stringify(local);
+  assert.equal(M(good, 'garbage'), good);
+  assert.equal(M(good, JSON.stringify({ v: 2 })), good);
+  assert.equal(M(null, good), good);
+});

@@ -64,6 +64,7 @@ function priorityFor(path) {
   if (/^\/ochem\/(lessons|mechanisms)\//.test(path)) return '0.7';
   if (/^\/ochem\/tools\//.test(path)) return '0.6';
   if (/^\/ochem\/(practice|review|flashcards|mastery)\.html$/.test(path)) return '0.6';
+  if (path === '/nremt/flashcards.html') return '0.6';
   return '0.8';
 }
 
