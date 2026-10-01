@@ -237,6 +237,26 @@
     };
   }
 
+  /* The Premium funnel: Umami gets the event as before, and an anonymous
+     daily count goes to the database (count_premium_step in
+     scripts/sql/schema.sql), so the funnel can be read back without Umami:
+     limit hit -> dialog opened -> checkout started -> paid. No user, no
+     browser id, just a number per day; skipped when analytics is turned off.
+     A gate counts once per page load per feature, however often it repaints. */
+  var funnelSeen = {};
+  function funnel(step, course, data) {
+    var an = window.LevlAnalytics;
+    if (an) an.event('premium-' + step, data);
+    if (step === 'gate-shown') {
+      var k = course + ':' + (data && data.feature);
+      if (funnelSeen[k]) return;
+      funnelSeen[k] = true;
+    }
+    if (an && an.optedOut && an.optedOut()) return;
+    var a = window.StudyHubAccount;
+    if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
+  }
+
   /* ---- what a page renders ---------------------------------------------- */
 
   function openAttrs(course, source) {
@@ -258,7 +278,7 @@
   function gate(course, feature, source) {
     var c = COURSES[course];
     if (!c || has(course)) return '';
-    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-gate-shown', { course: course, feature: feature || '' });
+    funnel('gate-shown', course, { course: course, feature: feature || '' });
     return '<div class="premium-card premium-lock" data-premium-feature="' + esc(feature || '') + '">' +
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
@@ -422,7 +442,7 @@
     var first = overlay.querySelector('#premiumEmail, .premium-buy');
     if (first) first.focus();
 
-    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-interest', { course: course, source: active.source });
+    funnel('interest', course, { course: course, source: active.source });
   }
 
   function close() {
@@ -448,7 +468,7 @@
       a.openAuthModal('signup');
       return;
     }
-    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-start', { course: active && active.course, pass: passId });
+    funnel('checkout-start', passId.split('-')[0], { course: active && active.course, pass: passId });
     button.disabled = true;
     button.textContent = 'Opening…';
     var course = passId.split('-')[0];
@@ -472,7 +492,7 @@
           embed.addEventListener('success', function (ev) {
             ev.preventDefault(); // stay here instead of following the success URL
             embed.close();
-            if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-paid', { course: course, pass: passId });
+            funnel('checkout-paid', course, { course: course, pass: passId });
             if (window.LevlAnnounce) window.LevlAnnounce.say('Payment received. Unlocking Premium…');
             pollForPass(course);
           });

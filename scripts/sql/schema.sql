@@ -612,3 +612,37 @@ $$;
 
 revoke all on function public.my_purchases() from public;
 grant execute on function public.my_purchases() to authenticated;
+
+
+-- ===========================================================================
+-- PREMIUM FUNNEL
+-- ===========================================================================
+-- Anonymous daily counts of the four Premium steps, so the funnel can be read
+-- back from SQL (scripts/sql/reports.sql) without Umami: gate-shown (a free
+-- user met a limit), interest (opened the dialog), checkout-start, checkout-
+-- paid. One row per day, course and step; no user, no browser id. The usual
+-- shape: RLS on, no policies, one security-definer function in.
+-- ---------------------------------------------------------------------------
+create table if not exists public.premium_funnel (
+  day    date not null default current_date,
+  course text not null check (course in ('nremt', 'ochem', 'anp')),
+  step   text not null check (step in ('gate-shown', 'interest', 'checkout-start', 'checkout-paid')),
+  n      integer not null default 0,
+  primary key (day, course, step)
+);
+
+alter table public.premium_funnel enable row level security;
+
+create or replace function public.count_premium_step(p_course text, p_step text)
+returns void
+language sql
+security definer
+set search_path = public
+as $$
+  insert into public.premium_funnel (course, step, n)
+  values (p_course, p_step, 1)
+  on conflict (day, course, step) do update set n = premium_funnel.n + 1;
+$$;
+
+revoke all on function public.count_premium_step(text, text) from public;
+grant execute on function public.count_premium_step(text, text) to anon, authenticated;

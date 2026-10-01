@@ -186,6 +186,35 @@ where order_id is not null and refunded_at is null
 group by 1, 2, 3
 order by 3 desc, 1, 2;
 
+-- THE PREMIUM REPORT: per course, the funnel and what it earned. Last 30
+-- days by default; change the interval to taste. Funnel counts are anonymous
+-- daily totals (premium_funnel); sales and refunds come from premium_passes.
+with f as (
+  select course,
+         sum(n) filter (where step = 'gate-shown')     as hit_limit,
+         sum(n) filter (where step = 'interest')       as opened_dialog,
+         sum(n) filter (where step = 'checkout-start') as started_checkout,
+         sum(n) filter (where step = 'checkout-paid')  as paid_in_page
+  from public.premium_funnel
+  where day > current_date - 30
+  group by course
+), s as (
+  select course,
+         count(*) filter (where order_id is not null)                          as sales,
+         count(*) filter (where order_id is not null and refunded_at is not null) as refunds,
+         round(coalesce(sum(amount_cents) filter (where order_id is not null and refunded_at is null), 0) / 100.0, 2) as net_revenue,
+         count(distinct user_id) filter (where expires_at > now() and refunded_at is null) as active_now
+  from public.premium_passes
+  where created_at > now() - interval '30 days' or expires_at > now()
+  group by course
+)
+select c.course, f.hit_limit, f.opened_dialog, f.started_checkout, f.paid_in_page,
+       s.sales, s.refunds, s.net_revenue, s.active_now
+from (values ('nremt'), ('ochem'), ('anp')) as c(course)
+left join f using (course)
+left join s using (course)
+order by c.course;
+
 -- Launch-day grant: every account that existed before launch gets 30 days of
 -- Premium in every course (docs/premium.md, "Existing users"). Run once.
 -- insert into public.premium_passes (user_id, course, pass, expires_at)
