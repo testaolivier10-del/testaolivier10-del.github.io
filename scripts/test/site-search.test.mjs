@@ -131,3 +131,135 @@ test('ranking does not mutate the index it was given', () => {
   // score/snippet back onto it would accumulate a previous query's state.
   assert.deepEqual(JSON.parse(JSON.stringify(INDEX)), before);
 });
+
+/* assets/site-search-all.js — what the site-wide /search.html searches. The
+   builders are pure: each course's own data in, root-relative chunks out. The
+   failure modes are again quiet: a link built relative to the course folder
+   404s from the root page, a ?course= typo silently searches nothing, and a
+   glossary in a shape the reader does not expect indexes zero terms. */
+// Arrays made inside the sandbox have the sandbox's Array prototype, which
+// deepStrictEqual refuses to equate with ours; compare the plain values.
+const eq = (a, b, m) => assert.deepEqual(JSON.parse(JSON.stringify(a)), b, m);
+
+function searchAll() {
+  const b = createBrowser();
+  b.load('assets/site-search.js');
+  b.load('assets/site-search-all.js');
+  return { S: b.window.LevlSearch, A: b.window.LevlSearchAll };
+}
+
+test('?course= picks one course, and anything else means all of them', () => {
+  const { A } = searchAll();
+  assert.equal(A.parseCourse('nremt'), 'nremt');
+  assert.equal(A.parseCourse('OCHEM'), 'ochem');
+  assert.equal(A.parseCourse('anp'), 'anp');
+  assert.equal(A.parseCourse('anatomy-physiology'), 'anp');
+  assert.equal(A.parseCourse(''), 'all');
+  assert.equal(A.parseCourse(null), 'all');
+  assert.equal(A.parseCourse('biology'), 'all');
+  eq(A.scopeKeys('all'), ['nremt', 'ochem', 'anp']);
+  eq(A.scopeKeys('ochem'), ['ochem']);
+});
+
+test('HTML becomes plain text: tags out, entities decoded, blocks spaced', () => {
+  const { A } = searchAll();
+  assert.equal(A.stripHtml('<p>Give O<sub>2</sub> &amp; reassess&nbsp;&mdash; then</p><li>a</li><li>b</li>'), 'Give O 2 & reassess — then a b');
+  assert.equal(A.stripHtml('<script>var x = "<p>"</script>kept'), 'kept');
+  assert.equal(A.decodeEntities('&#8805; &#x2192; &unknown;'), '≥ → &unknown;');
+});
+
+test('long prose splits at sentence ends and never loses text', () => {
+  const { A } = searchAll();
+  const text = Array.from({ length: 40 }, (_, i) => `Sentence number ${i} is here.`).join(' ');
+  const parts = A.splitText(text, 200);
+  assert.ok(parts.length > 1);
+  assert.ok(parts.every((p) => p.length <= 200));
+  assert.ok(parts.slice(0, -1).every((p) => p.endsWith('.')));
+  assert.equal(parts.join(' '), text);
+  // One unbroken word longer than the limit still terminates.
+  assert.equal(A.splitText('x'.repeat(1300), 500).length, 3);
+});
+
+test('a page of headings and divs becomes one chunk per heading', () => {
+  const { A } = searchAll();
+  const chunks = A.sectionChunks([
+    { t: 'stray intro text that is long enough' },
+    { h: 'OPQRST' }, { t: 'Onset — sudden or gradual.' }, { t: 'Provocation — what makes it worse.' },
+    { h: 'AVPU' }, { t: 'short' },
+  ], { course: 'nremt', kind: 'Reference', file: 'nremt/mnemonics.html', heading: 'Mnemonics', frag: true });
+  assert.equal(chunks.length, 2, 'the AVPU section is too short to be a result');
+  assert.equal(chunks[0].heading, 'Mnemonics');
+  assert.equal(chunks[1].heading, 'Mnemonics — OPQRST');
+  assert.match(chunks[1].text, /Onset — sudden or gradual\. Provocation/);
+  assert.equal(chunks[1].file, 'nremt/mnemonics.html');
+});
+
+test('inline glossary terms are read from the page source', () => {
+  const { A } = searchAll();
+  const src = 'const TERMS = [\n  {term:"Ambulatory", def:"Able to walk."},\n  {term:"Say \\"ah\\"", def:"Open wide."}\n];';
+  const terms = A.inlineTerms(src);
+  eq(terms.map((t) => t.term), ['Ambulatory', 'Say "ah"']);
+  assert.equal(terms[0].def, 'Able to walk.');
+});
+
+test('a glossary JSON is read in either shape the site uses', () => {
+  const { A } = searchAll();
+  const map = A.termsFromJson({ 'c-1': { t: 'anatomy', d: 'The study of <b>structure</b>.', p: 'body-org' } });
+  assert.equal(map.length, 1);
+  assert.equal(map[0].id, 'c-1');
+  assert.equal(map[0].def, 'The study of structure .');
+  assert.equal(map[0].topic, 'body-org');
+  const list = A.termsFromJson([{ term: 'nucleophile', def: 'Donates a pair.' }, { id: 'pka', name: 'pKa', definition: '-log Ka' }, { term: 'orphan' }]);
+  eq(list.map((t) => t.term), ['nucleophile', 'pKa']);
+  assert.equal(list[1].id, 'pka');
+  assert.equal(A.termsFromJson({ terms: [{ term: 'a', def: 'b' }] }).length, 1);
+  assert.equal(A.termsFromJson(null).length, 0);
+});
+
+test('every link is relative to the site root, not the course folder', () => {
+  const { A } = searchAll();
+  const nremtNotes = A.nremtNotesChunks({ chapters: [{ num: 3, title: 'Airway', intro: 'Intro <i>text</i>.',
+    sections: [{ title: 'Adjuncts', id: 'ch3-adjuncts', topics: [{ heading: 'OPA', html: '<p>Measure from the corner of the mouth.</p>' }] }] }] });
+  eq(nremtNotes.map((c) => c.file), ['nremt/study-notes.html#chapter-3', 'nremt/study-notes.html#ch3-adjuncts']);
+  assert.equal(nremtNotes[1].heading, 'Ch. 3 Airway — OPA');
+  assert.ok(nremtNotes.every((c) => c.frag && c.course === 'nremt'));
+
+  const q = A.nremtQuestionChunks([{ id: 42, domain: 'Airway', topic: 'OPA', q: 'Size an OPA how?' }, { domain: 'Cardiology', q: 'Rate?' }], ['Corner of mouth.']);
+  eq(q.map((c) => c.file), ['nremt/practice.html?q=42', 'nremt/practice.html?q=1']);
+  assert.match(q[0].text, /Size an OPA how\? Corner of mouth\./);
+
+  const CU = { MODULES: [{ title: 'Substitution', topics: [
+    { id: 'sn2', title: 'SN2', href: 'lessons/sn2.html', mechanism: 'mechanisms/sn2.html' },
+    { id: 'future', title: 'Coming soon' },
+  ] }] };
+  const oc = A.ochemStructureChunks(CU);
+  eq(oc.map((c) => c.file), ['ochem/lessons/sn2.html', 'ochem/mechanisms/sn2.html']);
+  eq(oc.map((c) => c.kind), ['Lessons', 'Mechanisms']);
+  eq(A.ochemToolChunks({ ALL: [{ slug: 'pka', name: 'pKa table', tagline: 't', blurb: 'b', teaches: 'acidity' }] }).map((c) => c.file), ['ochem/tools/pka.html']);
+  const oq = A.ochemQuestionChunks({ sn2: [{ q: 'Inversion?' }] }, { sn2: ['Backside attack.'] }, CU);
+  assert.equal(oq[0].file, 'ochem/learn.html#sn2');
+  assert.equal(oq[0].heading, 'SN2');
+  assert.ok(oq[0].opensSection);
+
+  const anp = A.anpStructureChunks({ chapters: [{ id: 'heart', title: 'The heart' }], topics: [
+    { id: 'valves', title: 'Heart valves', chapter: 'heart', built: true }, { id: 'later', title: 'Later', chapter: 'heart', built: false },
+  ] }, [{ slug: 'graphs', name: 'Graph reader', blurb: 'Read graphs.' }]);
+  eq(anp.map((c) => c.file), ['anatomy-physiology/lessons/valves.html', 'anatomy-physiology/tools/graphs.html']);
+  const g = A.glossaryChunks('anp', A.termsFromJson({ c7: { t: 'systole', d: 'Contraction.' } }), (x) => ({ file: 'glossary.html#t-' + x.id }));
+  assert.equal(g[0].file, 'anatomy-physiology/glossary.html#t-c7');
+});
+
+test('results group by course, best course first, fixed order on ties', () => {
+  const { S, A } = searchAll();
+  const index = [
+    { course: 'nremt', file: 'nremt/a', heading: 'Cardiac arrest', text: 'The heart stops.' },
+    { course: 'anp', file: 'anatomy-physiology/b', heading: 'Heart', text: 'The heart pumps blood.', weight: 3 },
+    { course: 'ochem', file: 'ochem/c', heading: 'SN2', text: 'Backside attack.' },
+  ];
+  const groups = A.groupByCourse(S.rank(index, 'heart'));
+  eq(groups.map((g) => g.course), ['anp', 'nremt'], 'the A&P heading match outranks a body match; ochem has none');
+  assert.equal(groups[0].name, 'Anatomy & Physiology');
+  const tie = A.groupByCourse([{ course: 'anp', score: 1 }, { course: 'nremt', score: 1 }]);
+  eq(tie.map((g) => g.course), ['nremt', 'anp']);
+  eq(A.countByCourse([{ course: 'anp' }, { course: 'anp' }, { course: 'ochem' }]), { anp: 2, ochem: 1 });
+});

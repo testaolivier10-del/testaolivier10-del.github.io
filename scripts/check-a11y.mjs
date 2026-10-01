@@ -55,6 +55,9 @@ const PAGES = [
   ['/ochem/', 'the other course home'],
   ['/ochem/learn.html', 'the textbook'],
   ['/ochem/search.html', 'the other search page'],
+  // The site-wide search, with a query so its course chips and grouped
+  // results are on the page, not just the empty box.
+  ['/search.html?q=epinephrine&course=anp', 'the site-wide search with results'],
   ['/ochem/lessons/pka.html', 'a lesson'],
   ['/ochem/mechanisms/e2.html', 'a mechanism walkthrough'],
   ['/ochem/flashcards.html', 'a flashcard deck with filters'],
