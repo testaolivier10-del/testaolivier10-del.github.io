@@ -18184,7 +18184,7 @@
     "False"
    ],
    "correct": 1,
-   "why": "False. Here the bulk is on the base. tert-Butoxide is too crowded to reach the back of C1 for SN2, but it can still pull off a beta hydrogen on the outside of the chain, so E2 wins and but-1-ene is the major product. With a small base such as ethoxide, the same substrate does give mostly the substitution product.",
+   "why": "False. Here the bulk is on the base. tert-Butoxide is too crowded to reach the back of C1 for SN2, but it can still pull off a hydrogen on C2, which sits on the exposed outside of the molecule, so E2 wins and but-1-ene is the major product. With a small base such as ethoxide, the same substrate does give mostly the substitution product.",
    "difficulty": "easy",
    "type": "tf"
   },
@@ -44340,7 +44340,7 @@
     "Fehling's"
    ],
    "correct": 2,
-   "why": "Benedict's reagent is the more robust of the copper tests, because citrate holds the copper more firmly than tartrate does and the solution keeps well. That is why it was long used clinically to test urine for glucose.",
+   "why": "Benedict's reagent is the more robust of the copper tests: it is a single, stable solution made with the milder base sodium carbonate, whereas Fehling's must be mixed fresh from two solutions and uses NaOH. That is why it was long used clinically to test urine for glucose.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -44431,7 +44431,7 @@
     "A radical chain"
    ],
    "correct": 3,
-   "why": "Aldehydes oxidize slowly in air by a radical chain: the aldehyde C–H hydrogen is abstracted, O2 adds to the acyl radical, and the chain ends at the carboxylic acid. No added reagent is needed, which is why old aldehyde samples often contain acid.",
+   "why": "Aldehydes oxidize slowly in air by a radical chain: the aldehyde C–H hydrogen is abstracted, O2 adds to the acyl radical, and the acylperoxy radical takes an H from another aldehyde, carrying the chain on; the peroxyacid formed then oxidizes a second aldehyde, giving two carboxylic acids. No added reagent is needed, which is why old aldehyde samples often contain acid.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -45797,7 +45797,7 @@
    "type": "mcq"
   },
   {
-   "q": "To make the kinetic enolate of 2-methylcyclohexanone with LDA at −78 °C, why is the ketone added slowly to the LDA solution, not the LDA to the ketone?",
+   "q": "To make the kinetic enolate of 2-methylcyclohexanone with LDA at −78 °C, why is the ketone added to the LDA solution, not the LDA to the ketone?",
    "options": [
     "To keep the base cold",
     "To improve solubility",
