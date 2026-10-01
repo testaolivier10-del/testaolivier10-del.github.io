@@ -158,19 +158,19 @@
     ],
     "q": "Complete the sequence: blood pressure falls → baroreceptors fire fewer action potentials → fewer impulses reach the medulla oblongata → ____ → heart rate and TPR rise.",
     "options": [
-      "The cardiovascular center raises sympathetic output and lowers vagal output",
+      "The arterioles relax, and more blood flows back into the veins",
       "The cardiovascular center lowers sympathetic output and raises vagal output",
       "The baroreceptors release norepinephrine directly onto the SA node",
-      "The arterioles relax, and more blood flows back into the veins"
+      "The cardiovascular center raises sympathetic output and lowers vagal output"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Baroreceptor input normally boosts vagal output and holds back sympathetic output. Less input does the reverse, so sympathetic output rises and vagal output falls. That is what raises heart rate and constricts the arterioles.",
       "options": [
-        "Correct. This is the control center's response to reduced baroreceptor input.",
+        "Relaxed arterioles would lower TPR, the opposite of the result the sequence ends with.",
         "This is the response to a rise in pressure. Lower sympathetic and higher vagal output would slow the heart and widen the arterioles, lowering pressure further.",
         "Baroreceptors are sensory neurons. They send action potentials to the brainstem; they do not release norepinephrine onto the heart. Sympathetic neurons do that.",
-        "Relaxed arterioles would lower TPR, the opposite of the result the sequence ends with."
+        "Correct. This is the control center's response to reduced baroreceptor input."
       ]
     }
   },

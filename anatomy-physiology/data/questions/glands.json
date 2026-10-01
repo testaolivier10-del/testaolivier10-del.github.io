@@ -183,7 +183,10 @@
         "answer": "none",
         "why": "A merocrine cell releases its product by exocytosis and survives, so it does not depend on a steady supply of new cells. Its output is unaffected."
       }
-    ]
+    ],
+    "why": {
+      "correct": "A holocrine gland uses up its cells: each one fills with product and breaks apart, so output depends on stem cells dividing to replace them. Stopping mitosis stops new cells and secretion falls. A merocrine gland releases its product by exocytosis and keeps its cells, so it is unaffected."
+    }
   },
   {
     "id": "anp-glands-8",
@@ -249,19 +252,19 @@
     ],
     "q": "Fill the gap. A pituitary gland cell releases its hormone by exocytosis → ______ → the hormone enters a capillary → the blood carries it through the body → it binds a receptor protein on a target cell.",
     "options": [
-      "The hormone diffuses through the interstitial fluid",
+      "The hormone binds a receptor protein on the gland cell itself",
       "The hormone flows through a duct",
       "The hormone lands on the skin surface",
-      "The hormone binds a receptor protein on the gland cell itself"
+      "The hormone diffuses through the interstitial fluid"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "An endocrine gland has no duct. Its hormone first enters the interstitial fluid around the cell, then diffuses into a nearby capillary.",
       "options": [
-        "Correct. Between leaving the cell and entering a capillary, the hormone crosses the interstitial fluid by diffusion.",
+        "A cell responding to its own product is autocrine signaling. That would not lead on to the hormone entering a capillary and traveling in the blood.",
         "The pituitary gland is endocrine, so it has no duct. Ducts belong to exocrine glands.",
         "Release onto a surface is what an exocrine gland does. An endocrine product heads for the blood.",
-        "A cell responding to its own product is autocrine signaling. That would not lead on to the hormone entering a capillary and traveling in the blood."
+        "Correct. Between leaving the cell and entering a capillary, the hormone crosses the interstitial fluid by diffusion."
       ]
     }
   },

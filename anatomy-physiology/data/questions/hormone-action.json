@@ -155,20 +155,20 @@
     ],
     "q": "A student wrote out how a water-soluble hormone acts. One step is wrong. Which one?",
     "options": [
-      "The hormone binds a receptor protein on the cell surface",
+      "The hormone crosses the plasma membrane and binds a receptor protein in the cytosol",
       "A G protein switches on adenylyl cyclase",
       "Adenylyl cyclase makes cAMP from ATP",
-      "cAMP enters the nucleus and binds a hormone response element",
+      "cAMP switches on protein kinase A",
       "Protein kinase A phosphorylates target proteins"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "cAMP does not bind DNA at a hormone response element. It switches on protein kinase A in the cytosol. Hormone response elements are where the hormone–receptor complexes of lipid-soluble hormones bind.",
+      "correct": "A water-soluble hormone cannot cross the lipid core of the plasma membrane. It binds a receptor protein on the cell surface, and a second messenger such as cAMP carries the signal inside.",
       "options": [
-        "This step is right. A water-soluble hormone binds a receptor protein in the plasma membrane.",
+        "This is the error. A water-soluble hormone stays outside and binds a receptor protein in the plasma membrane.",
         "This step is right. The activated G protein switches on adenylyl cyclase.",
         "This step is right. Adenylyl cyclase converts ATP into cAMP, the second messenger.",
-        "This is the error. cAMP acts by switching on protein kinase A; binding a hormone response element is how lipid-soluble hormones work.",
+        "This step is right. cAMP acts by switching on protein kinase A in the cytosol.",
         "This step is right. The kinase changes target proteins by phosphorylating them."
       ]
     }

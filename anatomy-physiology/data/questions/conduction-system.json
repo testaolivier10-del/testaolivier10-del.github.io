@@ -222,18 +222,18 @@
     ],
     "q": "Fill the gap in this sequence in an SA node cell. The cell repolarizes to about −60 mV → ______ → Na⁺ moves into the cell → the membrane potential climbs slowly → T-type Ca²⁺ channels open → threshold is reached.",
     "options": [
-      "HCN channels open (the funny current)",
-      "Fast sodium channels open and let Na⁺ in",
       "L-type calcium channels open",
+      "Fast sodium channels open and let Na⁺ in",
+      "HCN channels open (the funny current)",
       "The sodium–potassium pump stops"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "HCN channels open when the cell becomes more negative. The inward current they carry, mostly Na⁺, is the funny current that starts the slow climb.",
       "options": [
-        "Correct. The funny current is carried by HCN channels, which open at the most negative point of the cycle.",
-        "Fast sodium channels are inactivated at SA node voltages, and they would give a sudden spike, not a slow climb.",
         "L-type calcium channels open at threshold and carry the upstroke. They come after the slow climb, not before it.",
+        "Fast sodium channels are inactivated at SA node voltages, and they would give a sudden spike, not a slow climb.",
+        "Correct. The funny current is carried by HCN channels, which open at the most negative point of the cycle.",
         "The pump keeps running. Stopping it would slowly run down the gradients, not produce a regular drift each cycle."
       ]
     }

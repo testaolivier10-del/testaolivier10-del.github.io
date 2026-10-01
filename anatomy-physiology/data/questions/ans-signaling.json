@@ -401,19 +401,19 @@
     ],
     "q": "Complete the sequence: epinephrine binds beta-1 receptor proteins on heart muscle → a G protein is activated → ____ → more calcium enters the cell → each contraction is stronger.",
     "options": [
-      "Cyclic AMP rises inside the cell",
+      "The cell hyperpolarizes",
       "Potassium channels open",
       "Acetylcholine is released",
-      "The cell hyperpolarizes"
+      "Cyclic AMP rises inside the cell"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Beta-1 receptor proteins couple to a G protein that raises cyclic AMP. The second messenger lets more calcium in through the membrane channels, and more calcium means a stronger contraction.",
       "options": [
-        "Correct. Cyclic AMP is the beta receptor protein's second messenger.",
+        "Hyperpolarization would move the cell away from threshold, the opposite of a sympathetic effect.",
         "Opening potassium channels is what muscarinic receptor proteins do on the heart, and it slows the heart rather than strengthening it.",
         "Acetylcholine release belongs to cholinergic neurons, not to a step inside a heart muscle cell.",
-        "Hyperpolarization would move the cell away from threshold, the opposite of a sympathetic effect."
+        "Correct. Cyclic AMP is the beta receptor protein's second messenger."
       ]
     }
   },

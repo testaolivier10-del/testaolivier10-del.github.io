@@ -464,21 +464,21 @@
     ],
     "q": "A student described the male HPG axis. One step is wrong. Which one?",
     "options": [
-      "The hypothalamus releases GnRH in pulses",
+      "The hypothalamus releases GnRH at a steady, continuous rate",
       "GnRH makes the anterior pituitary release LH and FSH",
       "LH drives the Leydig cells to make testosterone",
       "FSH and testosterone act on the Sertoli cells",
-      "Inhibin from the Leydig cells lowers FSH release"
+      "Inhibin from the Sertoli cells lowers FSH release"
     ],
-    "correct": 4,
+    "correct": 0,
     "why": {
-      "correct": "Inhibin comes from the Sertoli cells, not the Leydig cells. It acts on the anterior pituitary to lower FSH release.",
+      "correct": "GnRH is released in pulses, about every 1 to 3 hours. The pulses matter: a steady, unchanging GnRH level makes the pituitary stop responding, and LH and FSH fall.",
       "options": [
-        "This step is right. GnRH is released in bursts every 1 to 3 hours.",
+        "This is the error. GnRH is released in bursts every 1 to 3 hours, not continuously.",
         "This step is right. GnRH is the releasing hormone for both gonadotropins.",
         "This step is right. LH targets the Leydig cells.",
         "This step is right. The Sertoli cells respond to both.",
-        "This is the error. Sertoli cells, not Leydig cells, make inhibin."
+        "This step is right. The Sertoli cells make inhibin, which lowers FSH release from the anterior pituitary."
       ]
     },
     "id": "anp-male-physiology-17"

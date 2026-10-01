@@ -399,18 +399,18 @@
     "q": "Fill the gap: in sarcopenia, ____ fibers shrink the most, so older muscles lose power more than endurance.",
     "options": [
       "slow oxidative",
-      "fast glycolytic",
+      "smooth muscle",
       "cardiac",
-      "smooth muscle"
+      "fast glycolytic"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "Fast glycolytic fibers make quick, powerful contractions. They atrophy most with age, and some are lost when their motor neurons die, so power falls more than endurance.",
       "options": [
         "Slow oxidative fibers are relatively spared, which is why endurance holds up better than power.",
-        "Correct. Fast glycolytic fibers shrink most.",
+        "Sarcopenia describes skeletal muscle, not smooth muscle.",
         "Sarcopenia is the loss of skeletal muscle, not cardiac muscle.",
-        "Sarcopenia describes skeletal muscle, not smooth muscle."
+        "Correct. Fast glycolytic fibers shrink most."
       ]
     }
   },

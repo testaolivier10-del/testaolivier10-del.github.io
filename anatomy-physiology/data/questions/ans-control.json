@@ -287,18 +287,18 @@
     ],
     "q": "Complete the visceral reflex arc: sensory receptor → visceral sensory neuron → integration center in the CNS → preganglionic neuron → ____ → postganglionic neuron → effector.",
     "options": [
-      "Autonomic ganglion",
-      "Dorsal root ganglion",
       "Neuromuscular junction",
+      "Dorsal root ganglion",
+      "Autonomic ganglion",
       "Ventral horn"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "The efferent half of a visceral reflex is the two-neuron chain: the preganglionic neuron synapses in an autonomic ganglion on the postganglionic neuron.",
       "options": [
-        "Correct. The two efferent neurons meet in an autonomic ganglion.",
-        "The dorsal root ganglion holds sensory cell bodies on the afferent side, not the efferent relay.",
         "A neuromuscular junction is where a somatic motor neuron meets skeletal muscle, the effector of a somatic reflex.",
+        "The dorsal root ganglion holds sensory cell bodies on the afferent side, not the efferent relay.",
+        "Correct. The two efferent neurons meet in an autonomic ganglion.",
         "The ventral horn holds somatic motor neurons inside the CNS. The step needed is outside the CNS, between the two efferent neurons."
       ]
     }

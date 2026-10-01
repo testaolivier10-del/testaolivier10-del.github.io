@@ -356,20 +356,20 @@
     ],
     "q": "A student traced blood from the back of the right hand to the heart along the superficial route. Which step is wrong?",
     "options": [
-      "Veins on the back of the hand drain into the cephalic vein on the thumb side",
+      "Veins on the back of the hand drain into the cephalic vein on the little-finger side",
       "The cephalic vein drains into the axillary vein",
       "The axillary vein continues as the subclavian vein",
-      "The subclavian vein drains straight into the superior vena cava",
+      "The subclavian vein joins the internal jugular vein to form the right brachiocephalic vein, which drains into the superior vena cava",
       "The superior vena cava empties into the right atrium"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "The subclavian vein first joins the internal jugular vein to form the right brachiocephalic vein. Only then do the right and left brachiocephalic veins form the superior vena cava.",
+      "correct": "The cephalic vein starts on the thumb side of the venous network on the back of the hand. The vein that starts on the little-finger side is the basilic vein.",
       "options": [
-        "This step is right. The cephalic vein starts from the network on the back of the hand, on the thumb side.",
+        "This is the error. The cephalic vein starts on the thumb side; the basilic vein is on the little-finger side.",
         "This step is right. The cephalic vein runs up the outer arm and drains into the axillary vein near the shoulder.",
         "This step is right. The axillary vein is renamed subclavian at the outer edge of the first rib.",
-        "This is the error. A brachiocephalic vein sits between the subclavian vein and the superior vena cava.",
+        "This step is right. The subclavian vein joins the internal jugular vein to form the brachiocephalic vein, and the two brachiocephalic veins form the superior vena cava.",
         "This step is right. The superior vena cava enters the top of the right atrium."
       ]
     }

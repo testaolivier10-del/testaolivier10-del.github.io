@@ -323,19 +323,19 @@
     ],
     "q": "Fill in the missing step. Epithelium has no blood vessels → ______ → the deepest cells of a stratified epithelium, nearest the capillaries, are the best supplied.",
     "options": [
-      "Diffusion from capillaries below feeds its cells",
+      "Its basement membrane carries blood in channels between the cells",
       "Its cells make their own glucose from carbon dioxide",
       "Its surface cells absorb what they need from the air or food passing by",
-      "Its basement membrane carries blood in channels between the cells"
+      "Diffusion from capillaries below feeds its cells"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Without vessels of its own, epithelium depends on diffusion from capillaries in the tissue beneath. Diffusion is fastest over short distances, so the cells nearest the basement membrane get the best supply.",
       "options": [
-        "Correct. Diffusion from capillaries below links the missing vessels to the well-supplied deep cells.",
+        "The basement membrane is a protein mat with no blood flowing in it. Nutrients diffuse through it.",
         "Human cells cannot make glucose from carbon dioxide. They depend on nutrients delivered by the blood.",
         "Surface cells may be dead or far from any supply. Nutrients come from below, not from the air.",
-        "The basement membrane is a protein mat with no blood flowing in it. Nutrients diffuse through it."
+        "Correct. Diffusion from capillaries below links the missing vessels to the well-supplied deep cells."
       ]
     }
   },
@@ -423,7 +423,10 @@
         "answer": "down",
         "why": "With no goblet cells to trap particles and no cilia to move mucus, particles stay where they land."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Structure matches function. Stratified squamous epithelium resists abrasion because it has many layers, but it has no cilia and no goblet cells. The changed patches are tougher, yet they can no longer trap particles in mucus and sweep them upward."
+    }
   },
   {
     "id": "anp-epithelium-17",

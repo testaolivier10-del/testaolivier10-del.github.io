@@ -437,17 +437,17 @@
     ],
     "q": "This pathway explains how sweat cools your skin. Which step is wrong?",
     "options": [
-      "Heat flows from your skin into the film of sweat",
-      "The heat breaks covalent bonds inside each water molecule",
+      "Heat flows from the film of sweat into your skin",
+      "The heat breaks hydrogen bonds between neighboring water molecules",
       "Water molecules freed from their neighbors escape into the air as vapor",
       "The escaping molecules carry that heat away, so your skin cools"
     ],
-    "correct": 1,
+    "correct": 0,
     "why": {
-      "correct": "Evaporating water stays H2O: its covalent O–H bonds do not break. The heat breaks the weak hydrogen bonds between neighboring molecules, which frees them to leave as vapor.",
+      "correct": "Heat flows from warmer to cooler. Your skin is warmer than the sweat on it, so heat flows from the skin into the sweat, and that heat is what lets the water evaporate.",
       "options": [
-        "This step is right. Warmer skin passes heat to the sweat on it.",
-        "This is the error. The heat breaks hydrogen bonds between molecules, not the covalent bonds within them.",
+        "This is the error. Heat flows from the warmer skin into the sweat, not the other way.",
+        "This step is right. The heat breaks the weak hydrogen bonds between molecules, not the covalent bonds within them.",
         "This step is right. Once free of hydrogen bonds, a molecule can leave as vapor.",
         "This step is right. The heat used to free each molecule leaves with it, so the skin loses heat."
       ]

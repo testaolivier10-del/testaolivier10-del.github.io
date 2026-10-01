@@ -125,7 +125,10 @@
         "answer": "up",
         "why": "More warm blood near the surface and more evaporating sweat both increase heat loss, which opposes the rise in temperature."
       }
-    ]
+    ],
+    "why": {
+      "correct": "This is negative feedback: the response opposes the change. When temperature rises above the set point, the control center widens skin blood vessels and turns on sweating, and both increase heat loss so temperature falls back toward the set point."
+    }
   },
   {
     "id": "anp-homeostasis-feedback-6",
@@ -153,7 +156,10 @@
         "answer": "down",
         "why": "Heat loss is not reduced, so body temperature falls further below the set point than it would in a person with an intact loop."
       }
-    ]
+    ],
+    "why": {
+      "correct": "In cold, the intact loop constricts skin blood vessels to keep warm blood away from the surface. Here the efferent pathway is broken, so the command never reaches the effector. Skin blood flow and heat loss stay higher than in an intact person, and body temperature falls further."
+    }
   },
   {
     "id": "anp-homeostasis-feedback-7",
@@ -431,7 +437,10 @@
         "answer": "none",
         "why": "Reduced heat loss and increased heat production oppose the cooling, so negative feedback holds body temperature close to its set point, near where it started."
       }
-    ]
+    ],
+    "why": {
+      "correct": "The first drop in skin temperature is the stimulus, not a response. Negative feedback then cuts heat loss by narrowing skin blood vessels and raises heat production by shivering, so body temperature stays close to its set point even though the air stays cold."
+    }
   },
   {
     "id": "anp-homeostasis-feedback-17",
@@ -459,7 +468,10 @@
         "answer": "down",
         "why": "The control center triggers vasoconstriction of small arteries. Narrower vessels raise resistance, which raises pressure back toward the set point."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Blood pressure is held by negative feedback. Less stretch means fewer signals from the stretch-sensitive sensory receptors, and the control center responds by speeding the heart and narrowing small arteries. Both raise pressure back toward the set point."
+    }
   },
   {
     "id": "anp-homeostasis-feedback-18",

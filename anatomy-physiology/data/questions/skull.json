@@ -506,19 +506,19 @@
     ],
     "q": "A student traced how tears drain from the eye. One step is wrong. Which one?",
     "options": [
-      "Tears collect at the inner corner of the eye",
+      "Tears collect at the outer corner of the eye",
       "They enter a groove formed by the lacrimal bone",
       "They pass down the nasolacrimal canal",
-      "They empty into the maxillary sinus"
+      "They empty into the nose below the inferior nasal concha"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "Tears drain from the inner corner of the eye through the groove of the lacrimal bone and down the nasolacrimal canal, which opens into the nose below the inferior nasal concha. They do not enter any sinus.",
+      "correct": "Tears flow across the eye from its outer, upper side and collect at the inner corner, next to the nose, where the drainage route starts.",
       "options": [
-        "This step is right. Tears flow across the eye to its inner corner.",
+        "This is the error. Tears collect at the inner corner of the eye, next to the nose.",
         "This step is right. The lacrimal bone (lacrima = tear) holds the groove where drainage begins.",
         "This step is right. The nasolacrimal canal runs between the maxilla and lacrimal bone.",
-        "This is the error. The canal opens into the nose under the inferior nasal concha, not into the maxillary sinus."
+        "This step is right. The nasolacrimal canal opens into the nose below the inferior nasal concha, not into a sinus."
       ]
     }
   },

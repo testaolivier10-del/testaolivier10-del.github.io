@@ -232,19 +232,19 @@
     ],
     "q": "This route of blood through the heart has one wrong step. Find it.",
     "options": [
-      "Venae cavae to right atrium",
+      "Venae cavae to left atrium",
       "Right atrium to right ventricle through the tricuspid valve",
-      "Right ventricle to aorta through the aortic valve",
+      "Right ventricle to pulmonary trunk through the pulmonary valve",
       "Pulmonary veins to left atrium",
       "Left atrium to left ventricle through the mitral valve"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "The right ventricle pumps through the pulmonary valve into the pulmonary trunk, toward the lungs. The aortic valve and the aorta belong to the left ventricle.",
+      "correct": "The venae cavae return oxygen-poor blood from the body to the right atrium. The left atrium receives oxygen-rich blood from the pulmonary veins.",
       "options": [
-        "This step is correct. Both venae cavae empty into the right atrium.",
+        "This is the wrong step. Both venae cavae empty into the right atrium; the left atrium receives the pulmonary veins.",
         "This step is correct. The tricuspid valve lies between the right atrium and the right ventricle.",
-        "This is the wrong step. The right ventricle pumps through the pulmonary valve into the pulmonary trunk; the aortic valve guards the exit from the left ventricle.",
+        "This step is correct. The right ventricle pumps through the pulmonary valve into the pulmonary trunk, toward the lungs.",
         "This step is correct. The pulmonary veins bring oxygenated blood into the left atrium.",
         "This step is correct. The mitral valve lies between the left atrium and the left ventricle."
       ]
@@ -312,18 +312,18 @@
     ],
     "q": "Fill the gap in the left side of the heart: pulmonary veins → left atrium → ____ → left ventricle → aortic valve → aorta.",
     "options": [
-      "Mitral valve",
-      "Tricuspid valve",
       "Pulmonary valve",
+      "Tricuspid valve",
+      "Mitral valve",
       "Coronary sinus"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "The mitral valve is the left atrioventricular valve, between the left atrium and the left ventricle.",
       "options": [
-        "Correct. Blood crosses the mitral valve from the left atrium into the left ventricle.",
-        "The tricuspid valve lies on the right side, between the right atrium and the right ventricle.",
         "The pulmonary valve guards the exit from the right ventricle into the pulmonary trunk.",
+        "The tricuspid valve lies on the right side, between the right atrium and the right ventricle.",
+        "Correct. Blood crosses the mitral valve from the left atrium into the left ventricle.",
         "The coronary sinus is a vein on the back of the heart that drains the heart wall into the right atrium, not a valve."
       ]
     },

@@ -210,19 +210,19 @@
     ],
     "q": "This sequence describes the sodium–potassium pump. One step is wrong. Which one?",
     "options": [
-      "Three sodium ions bind to the pump on the cytoplasm side",
+      "Three sodium ions bind to the pump on the extracellular side",
       "ATP is split and a phosphate attaches to the pump",
-      "The pump changes shape and releases sodium into the cytoplasm",
+      "The pump changes shape and releases sodium outside the cell",
       "Two potassium ions bind from the extracellular fluid",
       "The phosphate comes off, and potassium is released into the cytoplasm"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "The shape change opens the pump toward the outside, so the sodium ions are released into the extracellular fluid, not back into the cytoplasm.",
+      "correct": "The pump moves sodium out of the cell, so each cycle starts with three sodium ions binding on the cytoplasm side. Sodium picked up from outside would be moved the wrong way.",
       "options": [
-        "This step is right. The cycle starts with sodium binding on the inside.",
+        "This is the error. Sodium binds on the cytoplasm side; the pump carries it out of the cell.",
         "This step is right. Phosphorylation by ATP powers the shape change.",
-        "This is the error. Sodium is released outside the cell; releasing it back inside would move nothing.",
+        "This step is right. The shape change opens the pump toward the outside, and sodium is released into the extracellular fluid.",
         "This step is right. The outward-facing pump picks up potassium from outside.",
         "This step is right. Losing the phosphate returns the pump to its inward-facing shape, releasing potassium inside."
       ]
@@ -317,19 +317,19 @@
     ],
     "q": "Fill in the missing step: a vesicle carrying digestive enzymes moves to the plasma membrane → ______ → the enzymes are released outside the cell.",
     "options": [
-      "The vesicle membrane fuses with the plasma membrane",
+      "The plasma membrane folds around the vesicle and pinches off",
       "A pump moves the enzymes across one at a time",
       "The enzymes diffuse through the bilayer",
-      "The plasma membrane folds around the vesicle and pinches off"
+      "The vesicle membrane fuses with the plasma membrane"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "In exocytosis, the vesicle membrane fuses with the plasma membrane, which opens the vesicle to the outside and releases its contents.",
       "options": [
-        "Correct. Fusion is the step that opens the vesicle to the outside.",
+        "Folding the membrane around material and pinching it off is endocytosis, which brings material in.",
         "Enzymes are large proteins. They leave in bulk inside vesicles, not one at a time through a pump.",
         "Proteins are far too large and polar to cross the bilayer.",
-        "Folding the membrane around material and pinching it off is endocytosis, which brings material in."
+        "Correct. Fusion is the step that opens the vesicle to the outside."
       ]
     },
     "id": "anp-active-transport-12"

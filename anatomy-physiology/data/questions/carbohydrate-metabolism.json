@@ -400,18 +400,18 @@
     ],
     "q": "Fill the gap in the first step of the citric acid cycle: acetyl CoA (2 carbons) + oxaloacetate (4 carbons) → ____ (6 carbons).",
     "options": [
-      "Citrate",
-      "Pyruvate",
       "Glucose-6-phosphate",
+      "Pyruvate",
+      "Citrate",
       "Succinate"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Acetyl CoA joins oxaloacetate to make citrate, the six-carbon molecule that gives the citric acid cycle its name.",
       "options": [
-        "Correct. The first product is citrate.",
-        "Pyruvate is a three-carbon molecule made by glycolysis, before the cycle.",
         "Glucose-6-phosphate is made in the first step of glycolysis, in the cytosol.",
+        "Pyruvate is a three-carbon molecule made by glycolysis, before the cycle.",
+        "Correct. The first product is citrate.",
         "Succinate is a four-carbon molecule made later in the cycle."
       ]
     }
