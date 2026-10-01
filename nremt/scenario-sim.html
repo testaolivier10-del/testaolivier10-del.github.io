@@ -28,6 +28,8 @@
      page's own inline script waits for DOMContentLoaded. -->
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
+<script src="../assets/premium.js" defer></script>
+<script src="assets/premium-gates.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
@@ -38,6 +40,7 @@
 
   .picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media (max-width:560px){.picker-grid{grid-template-columns:1fr;}}
+  .picker-grid > .premium-card{grid-column:1/-1;}
   .scenario-card{
     background:var(--white);border:2px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--lift);
     cursor:pointer;transition:border-color .12s,transform .08s,box-shadow .08s;text-align:left;font-family:var(--font-ui);
@@ -191,7 +194,7 @@
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
   <div class="page-head">
-  <div class="eyebrow">Tools</div>
+  <div class="eyebrow">Tools <span id="premiumBadge"></span></div>
   <h1>Clinical Scenario Simulator</h1>
   <p class="lede">Not recall: sequencing and judgment. Every choice leads somewhere, and a skipped step shows up later in the call.</p>
   </div>
@@ -1999,8 +2002,18 @@ let currentScenario = null;
 let currentNodeId = null;
 let pathLog = [];
 
+// Premium (assets/premium-gates.js): the simulator is part of it. Before launch,
+// or with the gate files missing, it is open as it always was, with a badge.
+const G = window.NremtGates || { canUse: () => true, gate: () => '', badge: () => '', onChange(fn){ fn(); } };
+
 function renderPicker(){
   const grid = document.getElementById('pickerGrid');
+  const badgeSlot = document.getElementById('premiumBadge');
+  if(badgeSlot) badgeSlot.innerHTML = G.badge();
+  if(!G.canUse('scenarios')){
+    grid.innerHTML = G.gate('scenarios', 'scenario-sim');
+    return;
+  }
   grid.innerHTML = SCENARIOS.map(s => `
     <button type="button" class="scenario-card" data-scenario="${s.id}">
       <div class="scenario-domain">${s.domain}</div>
@@ -2014,6 +2027,7 @@ function renderPicker(){
 }
 
 function startScenario(id){
+  if(!G.canUse('scenarios')) return;
   currentScenario = SCENARIOS.find(s => s.id === id);
   currentNodeId = currentScenario.startNode;
   pathLog = [];
@@ -2151,7 +2165,9 @@ function renderNode(consequenceText){
   else window.scrollTo({ top: box.offsetTop - 20, behavior: 'smooth' });
 }
 
-renderPicker();
+// Called now and whenever access changes. A run already under way when access
+// lapses is left to finish; the next pick meets the gate.
+G.onChange(renderPicker);
 });
 </script>
 <script src="assets/nav.js" defer></script>

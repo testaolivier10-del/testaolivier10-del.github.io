@@ -68,6 +68,7 @@ const PRECACHE_URLS = [
   'nremt/practice.css',
   'nremt/flashcards.html',
   'nremt/assets/flashcards-page.js',
+  'nremt/assets/premium-gates.js',
   'nremt/assets/flashcards.json',
   'nremt/exam-day.html',
   'nremt/dashboard.html',

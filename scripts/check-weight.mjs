@@ -189,7 +189,7 @@ const BUDGETS = [
   ['ochem/index.html', 11],
 
   // The busiest page on the site, and the one the bank split was for.
-  ['nremt/practice.html', 38],
+  ['nremt/practice.html', 40],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

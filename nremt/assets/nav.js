@@ -127,7 +127,11 @@
     // page, not by the deck: a push replaces the whole 'nremt' bucket, so a
     // key only the deck registered would be dropped by a sync from any other
     // page. Merged card by card, newest grade wins.
-    'nremt_flashcards_v1'
+    'nremt_flashcards_v1',
+    // Premium: whether this learner's one free timed exam has been used
+    // (assets/premium-gates.js). Synced so it is one per learner, not per
+    // browser; once spent on any device it stays spent.
+    'nremt_free_exam_v1'
   ];
   // Deliberately left out of sync: nremt_inprogress_exam (an in-progress
   // attempt is device-local to avoid two devices racing on the same quiz),
@@ -138,8 +142,18 @@
   // migrated off them: a device that hasn't run the migration yet still needs
   // them to arrive, and they cost nothing once it has.
   if(window.StudyHubAccount){
-    window.StudyHubAccount.registerNamespace('nremt', PROGRESS_KEYS,
-      window.StudyHubAccount.mergeCardSchedules ? { 'nremt_flashcards_v1': window.StudyHubAccount.mergeCardSchedules } : null);
+    var mergers = {
+      // The earliest record wins, so the flag never churns between devices.
+      'nremt_free_exam_v1': function(localRaw, cloudRaw){
+        function at(raw){ try{ var v = JSON.parse(raw); return v && typeof v.at === 'number' ? v.at : null; }catch(e){ return null; } }
+        var a = at(localRaw), b = at(cloudRaw);
+        if(a === null) return b === null ? localRaw : cloudRaw;
+        if(b === null) return localRaw;
+        return a <= b ? localRaw : cloudRaw;
+      }
+    };
+    if(window.StudyHubAccount.mergeCardSchedules) mergers['nremt_flashcards_v1'] = window.StudyHubAccount.mergeCardSchedules;
+    window.StudyHubAccount.registerNamespace('nremt', PROGRESS_KEYS, mergers);
   }
 
   if(document.readyState === 'loading'){
