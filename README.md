@@ -88,6 +88,7 @@ nremt/                 The NREMT-EMT Prep course
                           eligibility, retake rules, what to bring
   study-notes.html      The course textbook: forty chapters rendered one at a time
                            from inline data — see "The NREMT textbook" below
+  flashcards.html        Spaced-repetition deck by NREMT domain — see "NREMT flashcards" below
   glossary.html, mnemonics.html, flowcharts.html,
   skillsheets.html       Reference content
   body-map.html          Interactive 3D anatomy (three.js + a compressed .glb model, both
@@ -318,6 +319,12 @@ Scheduling (`flashcard-scheduler.js`) is SM-2 with Again/Hard/Good/Easy: new car
 The schedule syncs in the `ochem` namespace, registered in `ochem-xp.js` rather than on the deck page: a push replaces the whole namespace with what the current page registered, so a key only one page knew about would be wiped by the next sync from any lesson. The two copies merge card by card, the more recently graded winning.
 
 Input: tap or click the card, Space/Enter to flip, 1–4 to grade, and on a phone a swipe (right Good, left Again). The flip is a quarter-turn that swaps faces edge-on, so only one face is ever in the DOM; with reduced motion it swaps instantly.
+
+### NREMT flashcards (`nremt/flashcards.html`)
+
+The same deck design and the same scheduler, over NREMT material: 570 cards in the six exam domains. `scripts/build-nremt-flashcards.mjs` reads every term on `glossary.html`, every card on `mnemonics.html` and two tables on `reference-cards.html`, and adds the authored key facts in `scripts/lib/nremt-flashcard-sources.mjs` (EMT scope, 2025 AHA; each tied to the study-notes section that teaches it, which the build checks exists). That file also files every glossary term and mnemonic under a domain; a term added to the glossary without one fails the build, and `--check` runs in CI. Card ids are permanent — a fact's id is written in the file, not derived from its wording — so rewording a card keeps its schedule.
+
+Nothing is forked: `nremt/assets/flashcards-page.js` drives `../ochem/assets/flashcard-scheduler.js` bound to its own key with `OchemCardScheduler.forKey('nremt_flashcards_v1')`, and the card and controls are drawn by `assets/flashcards.css`, which the ochem deck now links too. The schedule syncs in the `nremt` namespace, registered by `nremt/assets/nav.js` on every NREMT page (same reason as ochem's) with `StudyHubAccount.mergeCardSchedules`, the card-by-card merge in `account.js`. XP is the ochem rule (2 per scheduled card, 60 a day) paid through `HubProgress` to `nremt`; the day's tally is kept in the schedule (`paid`) so it syncs with it. The Practice tab reads as active on the deck, and Practice links to it from its in-quiz flashcard mode.
 
 ## Tools
 
@@ -723,6 +730,7 @@ A third job re-derives everything that is generated from the pages and fails if 
 | `build-og-tags.mjs --check` | every page has a link-preview card |
 | `build-sitemap.mjs --check` | every page is in `sitemap.xml` |
 | `build-flashcards.mjs --check` | the flashcard deck matches the notes' tables it is read from |
+| `build-nremt-flashcards.mjs --check` | the NREMT deck matches the glossary, mnemonics and reference cards, and every card has a domain and a real study-notes section |
 | `build-question-bank.mjs --check` | the two files `practice.html` fetches match `questions.json` |
 | `build-leads-to.mjs --check` | the "Builds on" / "Leads to" rows under each ochem lesson and mechanism match `dependsOn` in `curriculum.js` |
 | `build-tutor-bank.mjs` + `git diff --exit-code` | the assistant's teaching index matches both banks |

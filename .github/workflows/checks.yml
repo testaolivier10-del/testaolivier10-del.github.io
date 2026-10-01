@@ -112,6 +112,12 @@ jobs:
       # to avoid; a table restructured under a rule fails the build outright.
       - name: the ochem flashcard deck matches the notes it is read from
         run: node scripts/build-flashcards.mjs --check
+      # The NREMT deck is read out of the glossary, mnemonics and reference
+      # cards, plus authored key facts tied to study-notes sections. A
+      # definition corrected on the glossary and not rebuilt would leave its
+      # card teaching the old one; a term added without a domain fails.
+      - name: the NREMT flashcard deck matches the pages it is read from
+        run: node scripts/build-nremt-flashcards.mjs --check
       # The two files practice.html actually fetches are generated from
       # questions.json. Editing a question without rebuilding them would ship
       # the edit to nobody, silently.
