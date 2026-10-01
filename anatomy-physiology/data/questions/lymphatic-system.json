@@ -169,20 +169,20 @@
     ],
     "q": "A student traced lymph through a lymph node. One step is wrong. Which one?",
     "options": [
-      "Lymph enters through several afferent lymphatic vessels on the curved surface",
+      "Lymph enters through a single afferent lymphatic vessel at the hilum",
       "It pours into the subcapsular sinus under the capsule",
       "It trickles through the sinuses of the cortex and medulla, past macrophages",
-      "It leaves through the efferent lymphatic vessels on the curved surface",
+      "It leaves through efferent lymphatic vessels at the hilum",
       "It continues toward the next node or a lymphatic trunk"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "Efferent lymphatic vessels leave at the hilum, the indented side of the node, not the curved surface. Only the afferent vessels enter on the curved surface.",
+      "correct": "Several afferent lymphatic vessels enter all over the curved surface of the node. The hilum, the indented side, is where the efferent vessels leave.",
       "options": [
-        "This step is right. Several afferent vessels enter all over the curved surface.",
+        "This is the error. Several afferent vessels enter on the curved surface; the hilum is the exit.",
         "This step is right. The subcapsular sinus is the first space lymph enters.",
         "This step is right. The sinuses are lined with macrophages that engulf what the lymph carries.",
-        "This is the error. Efferent vessels leave at the hilum.",
+        "This step is right. Efferent vessels leave at the hilum, the indented side of the node.",
         "This step is right. Lymph often passes through several nodes in a chain before reaching a trunk."
       ]
     }

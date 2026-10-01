@@ -298,19 +298,19 @@
     ],
     "q": "A student described the countercurrent multiplier. One step is wrong. Which one?",
     "options": [
-      "The thick ascending limb pumps NaCl into the interstitial fluid",
+      "The thick ascending limb pumps NaCl out, and water follows it into the interstitial fluid",
       "The descending limb loses water to the saltier interstitial fluid",
-      "The descending limb pumps salt in from the interstitial fluid",
+      "Fluid in the descending limb grows more concentrated as it flows down",
       "Flow carries the more concentrated fluid around the bend into the ascending limb",
       "Repeated pumping and flow make the bottom of the loop reach about 1,200 mOsm/L"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "The descending limb has few salt carriers and pumps nothing. Its fluid becomes concentrated because it loses water by osmosis.",
+      "correct": "The thick ascending limb pumps NaCl out but is impermeable to water, so water cannot follow. That is what makes the interstitial fluid saltier than the fluid left in the tubule, the difference the multiplier builds on.",
       "options": [
-        "This step is right. It is the multiplier's single active step.",
+        "This is the error. The thick ascending limb is impermeable to water, so salt leaves without water.",
         "This step is right. That is how the descending fluid comes to match the interstitial fluid.",
-        "This is the error. The descending limb concentrates its fluid by losing water, not by gaining salt through pumps.",
+        "This step is right. Losing water by osmosis, not gaining salt, concentrates the descending fluid.",
         "This step is right. Countercurrent flow brings ever more concentrated fluid to the bend.",
         "This step is right. The small difference at each level is multiplied along the loop."
       ]

@@ -407,19 +407,19 @@
     "core": ["structure-function"],
     "q": "A student described how platelets are made. One step is wrong. Which one?",
     "options": [
-      "Thrombopoietin from the liver drives myeloid stem cells toward the megakaryocyte line",
+      "Thrombopoietin from the kidneys drives myeloid stem cells toward the megakaryocyte line",
       "A megakaryoblast grows into a megakaryocyte",
-      "The megakaryocyte divides by mitosis into thousands of small cells",
+      "The megakaryocyte copies its DNA many times without dividing and grows very large",
       "It pushes arms of cytoplasm through the wall of a marrow vessel",
       "Flowing blood breaks the arms into platelets"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "A megakaryocyte copies its DNA many times without dividing, which is why it grows so large. Platelets are fragments of its cytoplasm, not daughter cells from mitosis, and they have no nucleus.",
+      "correct": "Thrombopoietin is made mainly by the liver. It is erythropoietin, the hormone that drives red cell production, that comes from the kidneys.",
       "options": [
-        "This step is right. Thrombopoietin, made mainly by the liver, drives the megakaryocyte line.",
+        "This is the error. The liver, not the kidneys, is the main source of thrombopoietin.",
         "This step is right. The megakaryoblast is the precursor.",
-        "This is the error. Platelets are fragments, not the products of cell division.",
+        "This step is right. Copying its DNA without dividing is why the megakaryocyte grows so large; platelets are later broken from its cytoplasm.",
         "This step is right. The arms reach into the vessel.",
         "This step is right. The blood pinches the arms into fragments."
       ]

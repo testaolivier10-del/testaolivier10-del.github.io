@@ -187,13 +187,13 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A student lists the steps of intramembranous ossification. One step is wrong. Which one?",
-    "options": ["Mesenchymal cells cluster and become osteoblasts", "Osteoblasts lay down a hyaline cartilage model", "Osteoid mineralizes and trapped osteoblasts become osteocytes", "Trabeculae form around blood vessels and the periosteum forms", "Compact bone plates form beneath the periosteum"],
-    "correct": 1,
+    "options": ["Mesenchymal cells lay down a hyaline cartilage model", "Mesenchymal cells cluster and become osteoblasts, which secrete osteoid", "Osteoid mineralizes and trapped osteoblasts become osteocytes", "Trabeculae form around blood vessels and the periosteum forms", "Compact bone plates form beneath the periosteum"],
+    "correct": 0,
     "why": {
-      "correct": "Intramembranous ossification has no cartilage stage: osteoblasts secrete osteoid directly in the mesenchyme. A cartilage model belongs to endochondral ossification, and chondrocytes, not osteoblasts, build it.",
+      "correct": "Intramembranous ossification has no cartilage stage: mesenchymal cells become osteoblasts that secrete osteoid directly. A hyaline cartilage model belongs to endochondral ossification.",
       "options": [
-        "This step is right. An ossification center begins as clustered mesenchymal cells becoming osteoblasts.",
-        "This is the error. Osteoblasts secrete osteoid, not cartilage, and this route uses no cartilage model.",
+        "This is the error. This route uses no cartilage model; bone forms directly in the mesenchyme.",
+        "This step is right. An ossification center begins as clustered mesenchymal cells becoming osteoblasts, which secrete osteoid.",
         "This step is right. Osteoid mineralizes, and enclosed osteoblasts become osteocytes.",
         "This step is right. Spongy bone forms first, and surface mesenchyme becomes periosteum.",
         "This step is right. Compact bone forms at the surfaces, with spongy bone between."
@@ -207,14 +207,14 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Complete the chain in the middle of a cartilage model: chondrocytes enlarge → the matrix calcifies → ____ → blood vessels and osteoblasts invade.",
-    "options": ["The chondrocytes secrete osteoid around themselves", "The chondrocytes, cut off from diffusion, die", "The chondrocytes divide into stacks", "The matrix is converted directly into bone"],
-    "correct": 1,
+    "options": ["The chondrocytes secrete osteoid around themselves", "The chondrocytes divide into stacks", "The chondrocytes, cut off from diffusion, die", "The matrix is converted directly into bone"],
+    "correct": 2,
     "why": {
       "correct": "Cartilage has no blood vessels, so chondrocytes depend on diffusion through their matrix. Calcified matrix blocks diffusion, many of the chondrocytes die, and their empty spaces are invaded by vessels and bone-forming cells.",
       "options": [
         "Chondrocytes make cartilage matrix, not osteoid. Osteoid is laid down by osteoblasts, which arrive with the vessels.",
-        "Correct. Calcified matrix starves the chondrocytes.",
         "Division into stacks happens in the proliferative zone of the plate, before cells enlarge, not after calcification.",
+        "Correct. Calcified matrix starves the chondrocytes.",
         "Cartilage is not converted into bone. It is removed and replaced by bone laid down by osteoblasts."
       ]
     }

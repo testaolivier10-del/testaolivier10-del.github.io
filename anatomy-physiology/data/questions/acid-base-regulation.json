@@ -129,14 +129,14 @@
     "diff": 1,
     "core": ["homeostasis"],
     "q": "Complete the Henderson–Hasselbalch equation for blood: pH = 6.1 + log ( HCO3− ÷ ____ ).",
-    "options": ["0.03 × PCO2", "PCO2 alone", "0.03 × PO2", "The hydrogen ion concentration"],
-    "correct": 0,
+    "options": ["0.03 × PO2", "PCO2 alone", "0.03 × PCO2", "The hydrogen ion concentration"],
+    "correct": 2,
     "why": {
       "correct": "The bottom of the ratio is dissolved carbon dioxide: 0.03 mmol/L for each mm Hg of PCO2. At a PCO2 of 40 mm Hg that is 1.2 mmol/L.",
       "options": [
-        "Correct. 0.03 × PCO2 converts the partial pressure into mmol/L of dissolved carbon dioxide, the same unit as bicarbonate.",
-        "Without the 0.03, the two sides of the ratio are in different units, and 24 ÷ 40 would give a pH near 5.9.",
         "Oxygen is not part of the carbonic acid–bicarbonate buffer. The equation uses carbon dioxide.",
+        "Without the 0.03, the two sides of the ratio are in different units, and 24 ÷ 40 would give a pH near 5.9.",
+        "Correct. 0.03 × PCO2 converts the partial pressure into mmol/L of dissolved carbon dioxide, the same unit as bicarbonate.",
         "pH is itself a measure of the hydrogen ion concentration, so it cannot also sit inside the ratio that predicts it."
       ]
     }

@@ -269,19 +269,19 @@
     ],
     "q": "Complete the sequence: sperm capacitate → sperm cross the corona radiata → ____ → sperm cross the zona pellucida → one sperm fuses with the oocyte.",
     "options": [
-      "The acrosomal reaction",
+      "Pronuclei form",
       "The cortical reaction",
       "The second polar body forms",
-      "Pronuclei form"
+      "The acrosomal reaction"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "The acrosomal reaction releases the enzymes that digest a path through the zona pellucida, so it comes just before the sperm crosses it.",
       "options": [
-        "Correct. The acrosome's enzymes open a path through the zona.",
+        "Pronuclei form after sperm entry, as the last stage of fertilization.",
         "The cortical reaction happens in the oocyte after a sperm has fused, so it comes after the last step shown.",
         "The second polar body forms when the oocyte finishes meiosis II, after sperm entry.",
-        "Pronuclei form after sperm entry, as the last stage of fertilization."
+        "Correct. The acrosome's enzymes open a path through the zona."
       ]
     }
   },

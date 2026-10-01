@@ -228,19 +228,19 @@
     ],
     "q": "This sequence explains what happens to a red blood cell placed in a hypotonic solution. One step is wrong. Which one?",
     "options": [
-      "The solution has fewer nonpenetrating solutes than the cell",
+      "The solution has more nonpenetrating solutes than the cell",
       "The trapped solutes inside the cell cannot leave to even out",
-      "Water moves out of the cell by osmosis",
+      "Water moves into the cell by osmosis",
       "The cell swells",
       "If the swelling is severe, the membrane tears"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "In a hypotonic solution, water moves into the cell, toward the side with more solute particles. It does not move out.",
+      "correct": "A hypotonic solution has fewer nonpenetrating solutes than the cell. With more trapped solute particles inside, water moves into the cell and it swells.",
       "options": [
-        "This step is right. That is what makes a solution hypotonic to the cell.",
+        "This is the error. A hypotonic solution has fewer nonpenetrating solutes than the cell; more would make it hypertonic.",
         "This step is right. The cell's potassium, proteins and phosphates stay inside, so the difference in solute particles lasts.",
-        "This is the error. Water moves into the cell, toward its trapped solutes.",
+        "This step is right. Water moves into the cell, toward its trapped solutes.",
         "This step is right. Water entering increases the cell's volume.",
         "This step is right. A tear from severe swelling is osmotic hemolysis."
       ]

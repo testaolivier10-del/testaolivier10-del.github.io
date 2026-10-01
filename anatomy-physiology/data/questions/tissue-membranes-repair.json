@@ -160,7 +160,10 @@
         "answer": "down",
         "why": "Histamine can no longer make capillaries and the smallest veins as leaky, so less fluid leaks into the interstitial fluid."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Histamine acts only by binding its receptor proteins on target cells. The drug leaves histamine release unchanged but blocks its effects, so there is less vasodilation and less leaking from small vessels: less redness, warmth and swelling."
+    }
   },
   {
     "id": "anp-tissue-membranes-repair-7",
@@ -470,6 +473,9 @@
         "answer": "down",
         "why": "Scar tissue holds the organ together but does not do the work of the lost liver cells, so function falls as the scar grows."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Repeated injury tips repair from regeneration toward fibrosis. Each round adds collagen scar, which replaces working liver cells and distorts the framework that regeneration needs. The scar holds the organ together but cannot do the liver's work, so function falls."
+    }
   }
 ]

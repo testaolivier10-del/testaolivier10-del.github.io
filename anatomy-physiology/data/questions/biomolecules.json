@@ -333,14 +333,14 @@
     "diff": 2,
     "core": ["energy"],
     "q": "Fill the gap: Glucose from a meal enters the blood → it reaches liver cells → ______ → the liver holds a store of glycogen",
-    "options": ["Liver cells hydrolyze glucose into smaller sugars", "Liver cells join glucose by dehydration synthesis", "Liver cells denature the glucose into a branched shape", "Liver cells link glucose units with peptide bonds"],
-    "correct": 1,
+    "options": ["Liver cells hydrolyze glucose into smaller sugars", "Liver cells denature the glucose into a branched shape", "Liver cells join glucose by dehydration synthesis", "Liver cells link glucose units with peptide bonds"],
+    "correct": 2,
     "why": {
       "correct": "Building a polymer from monomers is dehydration synthesis. Each new bond between glucose units releases one water molecule, and thousands of links make a branched glycogen molecule.",
       "options": [
         "Hydrolysis splits molecules apart. Building glycogen joins glucose units, the opposite reaction.",
-        "Correct. Joining monomers releases water, and repeated joining builds glycogen.",
         "Denaturation describes proteins losing their shape. Glucose is joined into glycogen by new covalent bonds.",
+        "Correct. Joining monomers releases water, and repeated joining builds glycogen.",
         "Peptide bonds join amino acids in proteins. Glucose units in glycogen are joined by a different covalent bond."
       ]
     }

@@ -320,17 +320,17 @@
     "q": "Complete the sequence: IgG binds antigens on a bacterium → ____ → the phagocyte engulfs the bacterium readily.",
     "options": [
       "The IgG molecules punch holes in the bacterium",
-      "Fc receptor proteins on a phagocyte bind the IgG stems",
       "The bacterium displays its peptides on MHC class I",
+      "Fc receptor proteins on a phagocyte bind the IgG stems",
       "IgG enters the bacterium and blocks the enzymes it needs to divide"
     ],
-    "correct": 1,
+    "correct": 2,
     "why": {
       "correct": "This is opsonization. Bound IgG leaves its Fc regions facing out, and phagocytes grab them with Fc receptor proteins, which strongly speeds engulfment.",
       "options": [
         "Antibodies do not make holes. The membrane attack complex of complement does.",
-        "Correct. Fc receptor proteins link the phagocyte to the coated bacterium.",
         "Bacteria do not have MHC proteins; MHC is found on your own cells.",
+        "Correct. Fc receptor proteins link the phagocyte to the coated bacterium.",
         "Antibodies act from outside, on surface antigens. They do not enter bacteria."
       ]
     }

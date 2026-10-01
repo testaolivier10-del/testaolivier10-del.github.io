@@ -300,17 +300,17 @@
     "q": "Fill the gap: Sodium channels inactivate at the peak → ______ → the membrane dips below rest → potassium channels close and rest returns",
     "options": [
       "Sodium–potassium pumps move sodium out and repolarize the membrane",
-      "Potassium flows out through delayed potassium channels",
       "Chloride enters through ligand-gated channels",
+      "Potassium flows out through delayed potassium channels",
       "Sodium activation gates close before any potassium moves"
     ],
-    "correct": 1,
+    "correct": 2,
     "why": {
       "correct": "With sodium inflow stopped, potassium leaving through the now-open delayed potassium channels carries the membrane back down. Those channels are slow to close, which produces the dip below rest that follows.",
       "options": [
         "The pump is far too slow to repolarize a membrane in a millisecond. It restores gradients over many action potentials, in the background.",
-        "Correct. Potassium outflow is the falling phase, and its slow shutoff causes the dip.",
         "Ligand-gated channels open in response to chemical messengers, not as a step in the axon's action potential.",
+        "Correct. Potassium outflow is the falling phase, and its slow shutoff causes the dip.",
         "Without potassium moving out, closing sodium gates alone would leave the membrane depolarized. The falling phase needs potassium outflow."
       ]
     }

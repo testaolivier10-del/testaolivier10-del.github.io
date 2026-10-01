@@ -376,19 +376,19 @@
     ],
     "q": "Complete the sequence of heart formation: cardiogenic area → cardiogenic cords → ____ → primitive heart tube.",
     "options": [
-      "Endocardial tubes",
+      "Septum primum",
       "Blood islands",
       "Endocardial cushions",
-      "Septum primum"
+      "Endocardial tubes"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "The cardiogenic cords hollow out into two endocardial tubes, which fuse into the primitive heart tube.",
       "options": [
-        "Correct. The paired endocardial tubes come between the cords and the single tube.",
+        "The septum primum forms later still, when the atria are divided.",
         "Blood islands are clusters of hemangioblasts that form vessels and blood cells, not the heart tube.",
         "Endocardial cushions form later, inside the looped tube, and divide the canal between atrium and ventricle.",
-        "The septum primum forms later still, when the atria are divided."
+        "Correct. The paired endocardial tubes come between the cords and the single tube."
       ]
     }
   },

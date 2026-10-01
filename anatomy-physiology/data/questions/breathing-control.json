@@ -549,18 +549,18 @@
     ],
     "q": "Complete the pathway: respiratory centers in the medulla oblongata → spinal cord → ____ nerves → diaphragm.",
     "options": [
-      "Phrenic",
-      "Vagus",
       "Glossopharyngeal",
+      "Vagus",
+      "Phrenic",
       "Intercostal"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Motor neurons from spinal segments C3–C5 leave through the phrenic nerves to the diaphragm.",
       "options": [
-        "Correct. The phrenic nerves supply the diaphragm.",
-        "The vagus nerves carry sensory signals from the lungs and aortic bodies to the brainstem; they do not drive the diaphragm.",
         "The glossopharyngeal nerves carry sensory signals from the carotid bodies to the medulla.",
+        "The vagus nerves carry sensory signals from the lungs and aortic bodies to the brainstem; they do not drive the diaphragm.",
+        "Correct. The phrenic nerves supply the diaphragm.",
         "The intercostal nerves drive the intercostal muscles, not the diaphragm."
       ]
     }

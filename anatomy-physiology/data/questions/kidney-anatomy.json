@@ -459,20 +459,20 @@
     ],
     "q": "A student wrote the path of urine from a pyramid to the bladder. One step is wrong. Which one?",
     "options": [
-      "Renal papilla",
-      "Minor calyx",
       "Renal column",
+      "Minor calyx",
+      "Major calyx",
       "Renal pelvis",
       "Ureter",
       "Urinary bladder"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "Renal columns are bands of tissue between the pyramids that carry blood vessels. Urine never passes through them. The step after the minor calyx should be the major calyx.",
+      "correct": "Urine leaves a pyramid through tiny openings on its tip, the renal papilla, which drains into a minor calyx. Renal columns are bands of tissue between the pyramids that carry blood vessels; urine never passes through them.",
       "options": [
-        "Correct step. Urine leaves the kidney tissue through tiny openings on the renal papilla.",
+        "This is the wrong step. The path starts at the renal papilla; renal columns are tissue between the pyramids, not part of the collecting system.",
         "Correct step. The minor calyx cups the papilla and receives the urine.",
-        "This is the wrong step. Renal columns are tissue between the pyramids, not part of the collecting system; the major calyx belongs here.",
+        "Correct step. Several minor calyces join to form a major calyx.",
         "Correct step. The major calyces empty into the renal pelvis.",
         "Correct step. The renal pelvis narrows into the ureter.",
         "Correct step. The ureter carries urine to the bladder."

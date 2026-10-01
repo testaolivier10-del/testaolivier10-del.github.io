@@ -493,21 +493,21 @@
     ],
     "q": "A student explained how most cases of Down syndrome arise. One step is wrong. Which one?",
     "options": [
-      "An oocyte pauses in meiosis I for decades",
+      "An oocyte pauses in meiosis II for decades",
       "The proteins holding its paired chromosomes together weaken",
       "In meiosis I, both copies of chromosome 21 go to the same end",
       "The egg carries 24 chromosomes, including two copies of chromosome 21",
-      "Fertilized by a normal sperm, the zygote has 45 chromosomes"
+      "Fertilized by a normal sperm, the zygote has 47 chromosomes"
     ],
-    "correct": 4,
+    "correct": 0,
     "why": {
-      "correct": "An egg with 24 chromosomes joined by a normal sperm with 23 gives 47, with three copies of chromosome 21: trisomy 21.",
+      "correct": "The long pause is in meiosis I: the oocyte waits there from before the mother's birth until ovulation, which gives the proteins holding its paired chromosomes decades to weaken. Meiosis II is completed only if the egg is fertilized.",
       "options": [
-        "This step is right. The oocyte waits in meiosis I from before the mother's birth until ovulation.",
+        "This is the error. The decades-long pause is in meiosis I; meiosis II finishes only at fertilization.",
         "This step is right. The proteins are not replaced, so they weaken with age.",
         "This step is right. That is nondisjunction in meiosis I.",
         "This step is right. The egg now has one extra chromosome.",
-        "This is the error. 24 + 23 = 47, not 45. A zygote with 45 would come from an egg missing a chromosome."
+        "This step is right. An egg with 24 chromosomes and a normal sperm with 23 give 47, with three copies of chromosome 21."
       ]
     }
   },

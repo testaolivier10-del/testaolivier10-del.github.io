@@ -70,14 +70,14 @@
     "core": ["homeostasis"],
     "q": "A man's kidneys have been failing slowly for years. His marrow, iron stores and lungs are healthy. Predict the change in each variable, compared with before his kidneys began to fail.",
     "variables": [
-      {"name": "Erythropoietin release", "answer": "down", "why": "The damaged kidneys have lost many of the cells that make EPO, so less is released even though oxygen delivery is low."},
+      {"name": "Erythropoietin release, compared with what healthy kidneys would release at this oxygen level", "answer": "down", "why": "The damaged kidneys have lost many of the cells that make EPO. His EPO level may sit near the usual range, but it is inappropriately low: healthy kidneys would release far more when oxygen delivery is this low."},
       {"name": "Reticulocyte count", "answer": "down", "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."},
       {"name": "Hematocrit", "answer": "down", "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."},
       {"name": "Oxygen carried per liter of blood", "answer": "down", "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."},
       {"name": "Resting heart rate", "answer": "up", "why": "With thinner blood and less oxygen in each liter, his heart pumps more blood each minute, partly by beating faster."}
     ],
     "why": {
-      "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) is missing, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."
+      "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) stays inappropriately low for how anemic he is, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."
     }
   },
   {
@@ -106,14 +106,14 @@
     "diff": 1,
     "core": ["structure-function"],
     "q": "Complete the sequence: heme (iron removed) → biliverdin → ____ → conjugated in the liver → bile.",
-    "options": ["Bilirubin", "Ferritin", "Transferrin", "Stercobilin"],
-    "correct": 0,
+    "options": ["Transferrin", "Ferritin", "Bilirubin", "Stercobilin"],
+    "correct": 2,
     "why": {
       "correct": "Biliverdin, the green pigment made when the heme ring is opened, is converted into yellow bilirubin. Bilirubin is what the liver conjugates.",
       "options": [
-        "Correct. Biliverdin becomes bilirubin.",
-        "Ferritin stores the iron that was removed from heme. It is not made from the ring.",
         "Transferrin carries iron in the plasma, not the heme ring.",
+        "Ferritin stores the iron that was removed from heme. It is not made from the ring.",
+        "Correct. Biliverdin becomes bilirubin.",
         "Stercobilin forms later, from bilirubin, in the intestine."
       ]
     }

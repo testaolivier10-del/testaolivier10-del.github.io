@@ -449,19 +449,19 @@
     ],
     "q": "A student described hemodialysis. One step is wrong. Which one?",
     "options": [
-      "Blood is pumped through a filter beside a semipermeable membrane",
+      "Blood is pumped beside a membrane that lets blood cells and plasma proteins pass into the dialysate",
       "Dialysate flows on the other side of the membrane",
-      "Urea diffuses from the dialysate into the blood",
+      "Urea diffuses from the blood into the dialysate",
       "Potassium diffuses from the blood into the dialysate",
       "Excess water is removed by pressure across the membrane"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "Dialysate contains no urea, so urea diffuses down its gradient from the blood into the dialysate, not the other way.",
+      "correct": "The dialysis membrane is semipermeable: water and small solutes such as urea and potassium cross it, but blood cells and plasma proteins are too large and stay in the blood.",
       "options": [
-        "This step is right. The membrane separates blood from dialysate.",
+        "This is the error. The membrane holds back blood cells and plasma proteins and lets only water and small solutes cross.",
         "This step is right. Dialysate flows past the other side.",
-        "This is the error. Urea moves from blood, where it is high, into dialysate, where it is absent.",
+        "This step is right. Dialysate contains no urea, so urea moves from the blood, where it is high, into the dialysate.",
         "This step is right. Dialysate has little potassium, so potassium leaves the blood.",
         "This step is right. Pressure pulls extra water out of the blood."
       ]

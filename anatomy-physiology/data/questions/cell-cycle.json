@@ -238,17 +238,17 @@
     ],
     "q": "A student describes mitosis. Which step contains the error?",
     "options": [
-      "Prophase: chromatin condenses and the spindle forms from the centrosomes.",
-      "Metaphase: sister chromatids separate and move to opposite ends of the cell.",
+      "Prophase: the DNA is copied and the spindle forms from the centrosomes.",
+      "Metaphase: chromosomes line up across the middle of the cell, sister chromatids still joined.",
       "Anaphase: kinetochore microtubules shorten, pulling chromatids apart.",
       "Telophase: nuclear envelopes re-form around each set, and the chromosomes loosen back into chromatin."
     ],
-    "correct": 1,
+    "correct": 0,
     "why": {
-      "correct": "In metaphase the chromosomes line up on the metaphase plate with sister chromatids still joined. They separate in anaphase, and the spindle checkpoint prevents that until every chromosome is attached.",
+      "correct": "DNA is copied in S phase of interphase, before mitosis begins. In prophase the already-copied chromatin condenses into chromosomes and the spindle forms.",
       "options": [
-        "This step is right. Prophase condenses the chromosomes and builds the spindle.",
-        "This is the error. Metaphase is when the chromosomes line up; separation is anaphase.",
+        "This is the error. DNA is copied in S phase, before mitosis; prophase condenses the chromatin.",
+        "This step is right. In metaphase the chromosomes line up with their sister chromatids still joined.",
         "This step is right. Shortening kinetochore microtubules pull the chromatids apart in anaphase.",
         "This step is right. Telophase rebuilds the two nuclei."
       ]
@@ -436,7 +436,10 @@
         "answer": "none",
         "why": "Each cell still replicates its DNA once in S phase and splits it evenly at division, so a cell in G1 holds the same amount as before."
       }
-    ]
+    ],
+    "why": {
+      "correct": "The size of a cell population is set by division minus death. Apoptosis is the main way damaged or unneeded cells are removed, so losing it lets the population grow and lets cells with unrepaired DNA damage survive and divide. Each cell still copies its DNA once and splits it evenly, so the amount of DNA in a G1 cell does not change."
+    }
   },
   {
     "id": "anp-cell-cycle-18",

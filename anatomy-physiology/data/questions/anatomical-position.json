@@ -427,18 +427,18 @@
     ],
     "q": "Complete the pairs of opposites: superior ↔ inferior; anterior ↔ posterior; medial ↔ lateral; superficial ↔ ____.",
     "options": [
-      "Deep",
-      "Distal",
       "Dorsal",
+      "Distal",
+      "Deep",
       "Caudal"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Superficial means toward the body surface; its opposite is deep, away from the surface.",
       "options": [
-        "Correct. Superficial and deep are the pair.",
-        "Distal is the opposite of proximal.",
         "Dorsal is the opposite of ventral.",
+        "Distal is the opposite of proximal.",
+        "Correct. Superficial and deep are the pair.",
         "Caudal is the opposite of cranial."
       ]
     }

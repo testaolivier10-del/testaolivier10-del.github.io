@@ -309,18 +309,18 @@
     "q": "Fill the gap: Neutral sodium atom (11 protons, 11 electrons) → ______ → sodium ion, Na+ (11 protons, 10 electrons) → attraction to a chloride ion",
     "options": [
       "Sodium gains one proton",
-      "Sodium loses one electron",
+      "Sodium gains an extra neutron",
       "Sodium loses one proton",
-      "Sodium gains an extra neutron"
+      "Sodium loses one electron"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "The before and after counts answer it: protons stay at 11 while electrons fall from 11 to 10. Losing its one valence electron leaves sodium with a +1 charge.",
       "options": [
         "The ion still has 11 protons. Gaining a proton would turn sodium into a different element, magnesium.",
-        "Correct. One fewer electron, same protons: a net charge of +1.",
+        "A neutron has no charge, so gaining one could never produce a +1 charge. It would make a heavier isotope of sodium instead.",
         "The ion still has 11 protons. Losing one would make the atom neon, a different element. Only electrons move when ions form.",
-        "A neutron has no charge, so gaining one could never produce a +1 charge. It would make a heavier isotope of sodium instead."
+        "Correct. One fewer electron, same protons: a net charge of +1."
       ]
     }
   },
