@@ -12,7 +12,7 @@ export const SITE = 'https://levlprep.com';
 export const BASE = '/anatomy-physiology/';
 export const COURSE_NAME = 'Anatomy & Physiology';
 export const COURSE_ID = `${SITE}${BASE}#course`;
-export const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'";
+export const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh";
 export const TEAS_DISCLAIMER = 'LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for.';
 
 export const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

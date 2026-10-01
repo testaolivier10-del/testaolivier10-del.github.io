@@ -451,6 +451,7 @@
     if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-start', { course: active && active.course, pass: passId });
     button.disabled = true;
     button.textContent = 'Opening…';
+    var course = passId.split('-')[0];
     a.accessToken().then(function (token) {
       if (!token) throw new Error('no session');
       return fetch(ENDPOINT + '/premium/checkout', {
@@ -462,12 +463,75 @@
       return res.json().then(function (body) { return { ok: res.ok, body: body }; });
     }).then(function (r) {
       if (!r.ok || !r.body || !r.body.url) throw new Error((r.body && r.body.error) || 'checkout failed');
-      window.location.href = r.body.url;
+      var url = r.body.url;
+      /* Pay on top of this page in Polar's own checkout frame. If that frame
+         can't load (blocked script, old browser), fall back to Polar's page. */
+      return loadEmbed().then(function (Embed) {
+        close();
+        return Embed.create(url, { theme: pageTheme() }).then(function (embed) {
+          embed.addEventListener('success', function (ev) {
+            ev.preventDefault(); // stay here instead of following the success URL
+            embed.close();
+            if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-paid', { course: course, pass: passId });
+            if (window.LevlAnnounce) window.LevlAnnounce.say('Payment received. Unlocking Premium…');
+            pollForPass(course);
+          });
+        });
+      }, function () { window.location.href = url; });
     }).catch(function () {
       button.disabled = false;
       button.textContent = 'Get it';
       setMsg('Checkout didn’t open — you may be offline. Nothing was charged. Try again in a moment.', 'error');
     });
+  }
+
+  /* Polar's embed script, pinned with its hash like the Supabase SDK in
+     account.js, and loaded only when someone actually buys. The pages' CSP
+     allows the frame it opens (frame-src polar.sh). */
+  var EMBED_SRC = 'https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js';
+  var EMBED_INTEGRITY = 'sha384-e+NbGcSWhyE0uyrB+P19KffckB1jt91+Jk0PrKhB/hqpFXVT5bgULrccH8Xyz3jT';
+  var embedPromise = null;
+  function loadEmbed() {
+    if (window.Polar && window.Polar.EmbedCheckout) return Promise.resolve(window.Polar.EmbedCheckout);
+    if (embedPromise) return embedPromise;
+    embedPromise = new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = EMBED_SRC;
+      s.integrity = EMBED_INTEGRITY;
+      s.crossOrigin = 'anonymous';
+      s.async = true;
+      var timer = setTimeout(function () { reject(new Error('timeout')); }, 8000);
+      s.onload = function () {
+        clearTimeout(timer);
+        if (window.Polar && window.Polar.EmbedCheckout) resolve(window.Polar.EmbedCheckout);
+        else reject(new Error('no embed'));
+      };
+      s.onerror = function () { clearTimeout(timer); reject(new Error('load failed')); };
+      document.head.appendChild(s);
+    });
+    embedPromise.catch(function () { embedPromise = null; });
+    return embedPromise;
+  }
+
+  function pageTheme() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark' || t === 'light') return t;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  /* The webhook that records the pass can land a few seconds after payment,
+     so ask a few times before giving up quietly. */
+  function pollForPass(course) {
+    var tries = 0;
+    (function poll() {
+      refresh();
+      if (course && expiry(course) && expiry(course) > Date.now()) {
+        if (window.LevlAnnounce) window.LevlAnnounce.say('Premium is unlocked. Thank you!');
+        notify();
+        return;
+      }
+      if (++tries < 8) setTimeout(poll, 2500);
+    })();
   }
 
   /* Coming back from Polar. Our success_url carries ?premium=success&course=,
@@ -502,15 +566,7 @@
       var q = params.toString();
       window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
     } catch (e) { /* old browser: the query just stays */ }
-    var tries = 0;
-    (function poll() {
-      refresh();
-      if (course && expiry(course) && expiry(course) > Date.now()) {
-        if (window.LevlAnnounce) window.LevlAnnounce.say('Premium is unlocked. Thank you!');
-        return;
-      }
-      if (++tries < 6) setTimeout(poll, 2500);
-    })();
+    pollForPass(course);
   }
 
   function validEmail(s) {

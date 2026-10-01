@@ -27,7 +27,9 @@ search traffic is unaffected.
   `premium-waitlist-joined`.
 - **When it is true** free users meet the gates and the dialog sells passes.
   Checkout: browser → Worker `/premium/checkout` → Polar; Polar's webhook →
-  Worker `/premium/webhook` → `premium_passes` row; the browser reads its own
+  Worker `/premium/webhook` → `premium_passes` row (the checkout opens as
+  Polar's embedded frame over the page, falling back to Polar's own page if
+  the embed script can't load; every page's CSP allows `frame-src polar.sh`); the browser reads its own
   access with `my_premium()` (`scripts/sql/schema.sql`).
 - It is a **soft gate**: GitHub Pages serves every file publicly, so the gate
   controls the app, not the data. Move to a hard gate only if revenue
