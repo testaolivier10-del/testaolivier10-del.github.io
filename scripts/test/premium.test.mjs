@@ -40,6 +40,7 @@ test('every course states both sides of the split', () => {
 
 test('the card asks until someone joins, then becomes a receipt', () => {
   const { premium } = fresh();
+  premium._setLaunched(false); // the waitlist card is the pre-launch state
   const before = premium.card('nremt', 'results');
   assert.ok(before.includes('data-premium-open="nremt"'));
   assert.ok(before.includes('data-premium-source="results"'));
@@ -94,6 +95,7 @@ test('a browser that refuses localStorage still shows a live card', () => {
 
 test('before launch nothing is locked, but Premium is still marked', () => {
   const { premium } = fresh();
+  premium._setLaunched(false);
   assert.equal(premium.launched(), false);
   for (const key of Object.keys(premium.COURSES)) {
     assert.equal(premium.has(key), true, `${key} locked before launch`);
@@ -136,4 +138,15 @@ test('a cached pass belongs to the user it was read for', () => {
   const past = new b.window.Date(b.window.Date.now() - 1000).toISOString();
   b.window.localStorage.setItem('levlprep_premium_v1', JSON.stringify({ userId: 'u2', courses: { nremt: past } }));
   assert.equal(premium.has('nremt'), false, 'an expired pass still unlocks');
+});
+
+test('coming back from Polar is recognized with or without our own query', () => {
+  const { premium } = fresh();
+  const rc = premium._returnCourse;
+  assert.equal(rc('?premium=success&course=ochem&checkout_id=x', '/nremt/exam.html'), 'ochem');
+  assert.equal(rc('?customer_session_token=polar_cst_x', '/nremt/practice.html'), 'nremt');
+  assert.equal(rc('?customer_session_token=polar_cst_x', '/anatomy-physiology/lessons/placenta.html'), 'anp');
+  assert.equal(rc('?customer_session_token=polar_cst_x', '/ochem/practice.html'), 'ochem');
+  assert.equal(rc('?customer_session_token=polar_cst_x', '/'), '');
+  assert.equal(rc('?q=1', '/nremt/practice.html'), null);
 });
