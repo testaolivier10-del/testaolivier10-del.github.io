@@ -64,7 +64,7 @@
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
-      guarantee: 'Fail the NREMT and your pass is extended free until you pass.',
+      guarantee: 'Fail the NREMT while your pass is active and we extend it free until you pass.',
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
@@ -445,12 +445,17 @@
     var fine = document.getElementById('premiumFine');
     if (LAUNCHED) {
       document.getElementById('premiumSub').textContent =
-        'One-time passes. No subscription, nothing renews.' +
+        'One-time passes. No subscription, nothing renews. Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
         (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
       body.innerHTML = '<ul class="premium-passes">' +
         c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>';
-      fine.textContent = (c.guarantee ? c.guarantee + ' ' : '') +
-        'When a pass ends, your progress stays; only the Premium parts lock again.';
+      // innerHTML for the one link; every other part is a fixed string or
+      // escaped, as elsewhere in this dialog.
+      fine.innerHTML = esc((c.guarantee ? c.guarantee + ' ' : '') +
+        'When a pass ends, your progress stays; only the Premium parts lock again. ' +
+        'Full refund within 7 days of buying, once per account. Sold by Polar, our merchant of record. ' +
+        (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '')) +
+        '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
       document.getElementById('premiumSub').textContent =
         'Premium for ' + c.name + ' (from ' + fromPrice(c) + ', one-time, no subscription) isn’t on sale yet, ' +

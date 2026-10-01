@@ -67,7 +67,7 @@
   <div class="hero">
     <div class="eyebrow">Privacy</div>
     <h1>What leaves your browser.</h1>
-    <p class="lede">Short version: almost nothing. There are no ads and no cookies on this site, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one. <a href="#reminders">Study reminders</a> are off unless you turn them on.</p>
+    <p class="lede">Short version: almost nothing. There are no ads, the site sets no cookies, and nothing here follows you anywhere else on the web. Everything you study is stored on your own device unless you choose to sign in. There is cookieless analytics, and <a href="#site-analytics">Site analytics</a> below lists every field it records. When a page breaks, a short report of the error is sent so it can be fixed; <a href="#errors">When a page breaks</a> lists exactly what is in one. <a href="#reminders">Study reminders</a> are off unless you turn them on. If you buy a Premium pass, <a href="#purchases">Buying a Premium pass</a> says what the payment company and we keep about it.</p>
     <p class="updated">Last updated 1 October 2026</p>
   </div>
 
@@ -138,8 +138,8 @@
         </div>
 
         <h2 id="waitlist">The Premium waitlist</h2>
-        <p>Every course here is free. At the end of a practice session you may see a card saying a Premium option is coming, with a button to be told when it launches. It is off unless you press it and type an address.</p>
-        <p>If you do, we store <strong>your email address, which course you asked about, the date, and which card you pressed</strong> &mdash; nothing about your progress or your answers. We use it to send <strong>one email</strong> when Premium launches for that course, with an unsubscribe link, and for nothing else: it is not a newsletter and is never shared.</p>
+        <p>Before Premium went on sale on 1 October 2026, a card at the end of a practice session offered to tell you when it launched. It was off unless you pressed it and typed an address.</p>
+        <p>If you do, we store <strong>your email address, which course you asked about, the date, and which card you pressed</strong> &mdash; nothing about your progress or your answers. We use it to send <strong>one email</strong> about Premium launching for that course, with an unsubscribe link, and for nothing else: it is not a newsletter and is never shared.</p>
         <p>Deleting your account removes any waitlist entry under the same address. If you joined without an account, email us at the address at the bottom of this page and we will remove it.</p>
 
         <h2>Signing in is optional</h2>
@@ -148,16 +148,32 @@
           <li>Your <strong>email address</strong>, used to sign you in and nothing else.</li>
           <li>Your <strong>progress data</strong> — the same values already on your device.</li>
         </ul>
-        <p>We send you email only when you ask us to. Four of the five are about getting you into your account: confirming a new account, a sign-in link if you request one, a password reset, and a confirmation if you change your address. The fifth is the <a href="#reminders">study reminder</a> above, which is off unless you switch it on, only exists for browsers that cannot do notifications, arrives at most once a day, and carries a one-click unsubscribe that needs no sign-in. Separately, if you join the <a href="#waitlist">Premium waitlist</a>, you get one email when it launches. There is still no newsletter.</p>
+        <p>We send you email only when you ask us to, or about something you bought. Four kinds are about getting you into your account: confirming a new account, a sign-in link if you request one, a password reset, and a confirmation if you change your address. The fifth is the <a href="#reminders">study reminder</a> above, which is off unless you switch it on, only exists for browsers that cannot do notifications, arrives at most once a day, and carries a one-click unsubscribe that needs no sign-in. The sixth is a <strong>single notice, three days before a Premium pass you bought ends</strong>. It is about your purchase rather than marketing, so it is sent without a separate opt-in and has no unsubscribe link, and it goes once per pass. Separately, if you joined the <a href="#waitlist">Premium waitlist</a>, you get one email about the launch. Polar, which handles payments, also emails you a receipt when you buy. There is still no newsletter. Our emails are delivered by <strong>Resend</strong>, acting as our processor: it receives the address and the message, and nothing else.</p>
         <p>This paragraph has been wrong twice and been corrected twice: it said we did not email you at all until password resets were added, and it said there was no product email until study reminders were. If it is ever wrong again, that is a bug in this page, not a change of policy.</p>
         <p>The data is never sold, shared or used for advertising. Accounts and storage are handled by <strong>Supabase</strong>, acting as our processor; each account can read and write only its own row, enforced by the database rather than by the app.</p>
         <p><strong>You can delete your account yourself, from the site.</strong> Open the account menu in the header and choose <em>Delete account</em>. It removes your account, your email address and the synced copy of your progress immediately and permanently; nobody has to approve it and there is nothing to wait for. Because your progress also lives in this browser separately from the account, the same screen offers to erase that too &mdash; and offers you a backup file first, since this is the one thing on the site that deletes your work on purpose. This used to be an email request.</p>
+        <p>If the account holds a Premium pass, deleting the account deletes our record of the pass with it, and the pass ends; it is not refunded (take a refund first if you are within the 7 days). Polar, as the seller, keeps its own record of the order, because tax and accounting law requires it to; deleting your account here does not delete that, and Polar&rsquo;s own privacy policy covers it.</p>
         <p>If the sign-in box offers a provider button — Google, Apple or GitHub — using it is optional and never required. If you do, that provider handles the sign-in itself and therefore learns that you signed in here and when; we receive your email address from them and nothing else, and no other route into your account sends them anything. Signing in with an email and password, or with a sign-in link, involves no provider at all.</p>
+
+        <h2 id="purchases">Buying a Premium pass</h2>
+        <p>Premium passes are sold by <strong>Polar</strong> (polar.sh), the merchant of record: Polar is the seller, takes the payment, works out and collects sales tax or VAT, and sends you the receipt. The checkout is Polar&rsquo;s own page, shown over this site or in a new tab. What you type there &mdash; your card details, name, billing address or country, and email &mdash; goes to Polar and its payment processor, not to us, and is covered by <a href="https://polar.sh/legal/privacy" target="_blank" rel="noopener">Polar&rsquo;s privacy policy</a>. That page may use its own cookies, for example for fraud prevention; this site does not.</p>
+        <p>To start a checkout, we send Polar your account&rsquo;s email address (so the receipt reaches you) and your account id and the pass you chose (so the payment can be matched to your account). When the payment goes through, Polar tells us, and we store <strong>the Polar order id, the pass and course, the amount paid, when the pass starts and ends, and, if it happens, when it was refunded</strong>. We never see or store your card number. Your <a href="account.html">Account</a> page shows all of this to you.</p>
+        <p>Refunds are made through Polar too: a self-serve refund from the Account page asks Polar to refund that order, and we mark the pass as refunded. To keep access correct, the site checks Polar&rsquo;s records of orders, refunds and payment disputes on your account from time to time.</p>
+
+        <h2 id="retention">How long things are kept</h2>
+        <ul>
+          <li><strong>Your account, synced progress and Premium pass records:</strong> until you delete the account. Deleting it removes them at once (see above).</li>
+          <li><strong>Reminder settings:</strong> until you turn reminders off, which deletes them, or delete the account.</li>
+          <li><strong>Waitlist entries:</strong> until you ask us to remove them or delete the account that uses the same address.</li>
+          <li><strong>The page counter, the Premium counter and error reports:</strong> kept as totals and reports with nothing identifying anyone, so there is nothing personal to expire.</li>
+          <li><strong>Polar&rsquo;s order and payment records:</strong> kept by Polar for as long as tax and accounting law requires, under its own policy.</li>
+          <li><strong>Service logs:</strong> the providers below keep short-lived technical logs of requests (for example Cloudflare, which also uses your IP address for a moment to rate-limit the assistant and Premium endpoints; we do not store it).</li>
+        </ul>
 
         <h2>What this site does not do</h2>
         <ul>
           <li>No advertising, and no advertising SDKs.</li>
-          <li>No cookies. (localStorage is not a cookie and is never transmitted.)</li>
+          <li>No cookies set by this site. (localStorage is not a cookie and is never transmitted.) Polar&rsquo;s checkout, which opens only if you choose to buy, is Polar&rsquo;s page and follows its own policy.</li>
           <li>No pixels, session recorders, heatmaps or A/B tools.</li>
           <li>No cross-site tracking: nothing here follows you to any other website.</li>
           <li>No selling or sharing of personal information, under CCPA or otherwise.</li>
@@ -175,18 +191,21 @@
           <li><strong>jsDelivr</strong> serves the Supabase client library, and only on pages where signing in is possible.</li>
           <li><strong>Google, Apple or GitHub</strong> — only if you choose one of those buttons to sign in, and only at the moment you press it. The buttons appear only where that provider is switched on for this site; if none is, your browser never contacts any of them.</li>
           <li><strong>Wikimedia Commons</strong> serves three lung-sound recordings, and only if you press play on one in the sound trainer.</li>
-          <li><strong>Cloudflare</strong> runs the study assistant's AI model, and only if AI answers are switched on and you ask it something. It receives the question and the matching passages, as described above.</li>
+          <li><strong>Cloudflare</strong> runs the study assistant's AI model, and only if AI answers are switched on and you ask it something. It receives the question and the matching passages, as described above. The same Cloudflare service starts Premium checkouts and refunds, sends reminders and the pass-ending email, and receives Polar&rsquo;s payment notices.</li>
           <li><strong>Umami</strong> receives the analytics described above, on every page.</li>
+          <li><strong>Polar</strong> &mdash; only if you open a Premium checkout. It receives what you enter there, as described in <a href="#purchases">Buying a Premium pass</a>.</li>
           <li><strong>GitHub Pages</strong> hosts the site and, like any web host, sees the requests for it.</li>
         </ul>
         <p>The two typefaces used to come from Google Fonts, which meant Google saw your IP address on every page. They are now served from this site, so no font service is contacted at all. This paragraph said otherwise for longer than it should have.</p>
 
         <h2>Your rights</h2>
         <p>Because there is no identifier attached to the page counter, there is nothing there to look up, correct or delete. The same is true of the error reports and question reports above: neither carries anything that identifies who sent it.</p>
-        <p>For an account, both rights are buttons rather than requests. <strong>Deletion</strong> is <em>Delete account</em> in the account menu, described above. <strong>Portability</strong> is <a href="#backup">Keeping a copy of it</a> on this page, which exports everything stored about your progress as a plain JSON file you can read, keep, or import back. If you are in the UK, EU or California, the access, correction, deletion and portability rights you have under GDPR or CCPA apply to that account data; you should not need to invoke them to use either button, and you do not have to tell us why.</p>
+        <p>For an account, the main rights are buttons rather than requests. <strong>Deletion</strong> is <em>Delete account</em> in the account menu, described above. <strong>Portability</strong> is <a href="#backup">Keeping a copy of it</a> on this page, which exports everything stored about your progress as a plain JSON file you can read, keep, or import back. <strong>Access</strong>: that export, plus your <a href="account.html">Account</a> page for your passes and purchases; for anything else we hold about you, email us and we will send it. If you are in the UK, EU or California, the access, correction, deletion and portability rights you have under GDPR or CCPA apply to that account data; you should not need to invoke them to use either button, and you do not have to tell us why. We answer emailed requests within 30 days.</p>
+        <p>For visitors in the UK and EU: we use account data to provide the account you asked for and the passes you bought (contract), send the pass-ending notice and keep purchase records for the same reason, and run the anonymous counters, error reports and analytics because we have a legitimate interest in keeping the site working and knowing what gets used (you can switch those off above). Reminders and the waitlist rest on your consent, which you can withdraw at any time. The services listed on this page are mostly in the United States, so your data is processed there. You can complain to your local data protection authority.</p>
+        <p>For California residents: in the past 12 months we have collected identifiers (email address), commercial information (the Premium passes you bought) and internet activity (your study progress, and the analytics above), for the purposes on this page. We do not sell or share personal information, or use it for targeted advertising, and we will not treat you differently for using these rights.</p>
 
         <h2>Children</h2>
-        <p>This site is built for people studying for professional certification and university courses. It isn't directed at children under 13, and we don't knowingly collect anything from them.</p>
+        <p>This site is built for people studying for professional certification and university courses. It isn't directed at children under 13, and we don't knowingly collect anything from them. You must be 13 or older to create an account. If we learn that an account belongs to a child under 13, we delete it; a parent who thinks this has happened can email us.</p>
 
         <h2 id="contact">Changes, and how to reach us</h2>
         <p>If this policy changes in a way that affects what is collected, the date above will change with it. Questions, or a deletion request: <a href="mailto:testaolivier10@gmail.com">testaolivier10@gmail.com</a>.</p>
