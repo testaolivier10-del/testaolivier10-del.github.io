@@ -35,8 +35,8 @@ search traffic is unaffected.
 
 1. **Sign-in email off Supabase's built-in mailer** (Part 1 of
    `docs/auth-setup.md`). Paying users must get their sign-in and reset mail.
-2. **Apply the SQL**: the PREMIUM PASSES section of `scripts/sql/schema.sql`
-   (and the updated `join_waitlist()`, which now accepts `anp`).
+2. ~~**Apply the SQL**~~ — done 2026-10-01 (migration `premium_passes`:
+   the table, `my_premium()` and `join_waitlist()` accepting `anp`).
 3. **Polar**: create the five products (table below) and a 30%-off
    founding-member discount ending 2027-01-31; add the webhook. Steps and the
    Worker's variables are in `worker/README.md` (Premium section).
