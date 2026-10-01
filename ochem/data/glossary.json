@@ -232,7 +232,7 @@
   ],
   "fischer": [
     {"term":"Fischer projection","def":"A flat cross drawing of stereocenters in which horizontal lines point toward you and vertical lines point away. Used mainly for sugars and amino acids.","aliases":["Fischer projections"],"see":["D/L notation","Haworth projection"]},
-    {"term":"D/L notation","def":"Labels for sugars and amino acids read from a Fischer projection with the most oxidized carbon at the top: D if the OH (or NH₂) on the lowest stereocenter, the one furthest from the carbonyl, points right; L if it points left.","aliases":["D and L","D-sugar","L-amino acid"],"see":["Fischer projection"]}
+    {"term":"D/L notation","def":"Labels for sugars and amino acids read from a Fischer projection with the most oxidized carbon at the top. For a sugar, look at the OH on the stereocenter furthest from the carbonyl; for an amino acid, look at the NH₂ on the α carbon. Pointing right is D; pointing left is L.","aliases":["D and L","D-sugar","L-amino acid"],"see":["Fischer projection"]}
   ],
   "cis-trans-ez": [
     {"term":"cis and trans","def":"Descriptors for two groups on a ring or a double bond: cis means on the same side, trans on opposite sides.","aliases":["cis–trans isomers","cis-trans isomers","cis/trans"],"see":["E/Z system","diastereomers"]},
@@ -304,7 +304,8 @@
     {"term":"Zaitsev's rule","def":"An elimination usually gives the more substituted, more stable alkene as the major product.","aliases":["Zaitsev’s rule","Zaitsev product","Zaitsev"],"see":["Hofmann product","heat of hydrogenation"]},
     {"term":"Hofmann product","def":"The less substituted alkene from an elimination. It is major when the base is bulky, such as tert-butoxide, or when the leaving group is a bulky trialkylammonium.","aliases":["Hofmann rule"],"see":["Zaitsev's rule","Hofmann elimination"]},
     {"term":"stereospecific","def":"Describes a reaction in which stereoisomeric starting materials give stereoisomerically different products, by a mechanism that sets the outcome, such as inversion in SN2 or anti elimination in E2.","aliases":["stereospecifically"],"see":["stereoselective"]},
-    {"term":"kinetic isotope effect","def":"A change in rate when an atom is swapped for an isotope. Replacing an H with D slows a step that breaks that C–H bond several-fold, which shows the bond breaks in the rate-determining step.","see":["E2 reaction","isotopes"]}
+    {"term":"kinetic isotope effect","def":"A change in rate when an atom is swapped for an isotope. Replacing an H with D slows a step that breaks that C–H bond several-fold, which shows the bond breaks in the rate-determining step.","see":["E2 reaction","isotopes"]},
+    {"term":"stereoselective","def":"Describes a reaction that forms one stereoisomer in preference to others when more than one could form.","aliases":["stereoselectivity"],"see":["stereospecific"]}
   ],
   "e1": [
     {"term":"E1 reaction","def":"Unimolecular elimination: the leaving group departs to form a carbocation, then a weak base removes a β-hydrogen. It is not stereospecific, can rearrange, and usually gives the Zaitsev product.","aliases":["E1","E1 reactions"],"see":["SN1 reaction","E2 reaction"]},
@@ -312,7 +313,7 @@
     {"term":"Le Châtelier's principle","def":"An equilibrium shifts to counteract a change imposed on it: removing a product, or adding excess reactant, drives the reaction forward.","aliases":["Le Châtelier’s principle","Le Chatelier's principle"],"see":["Fischer esterification"]}
   ],
   "substrate-effects": [
-    {"term":"stereoselective","def":"Describes a reaction that forms one stereoisomer in preference to others when more than one could form.","aliases":["stereoselectivity"],"see":["stereospecific"]}
+
   ],
   "alkene-structure": [
     {"term":"degree of unsaturation","def":"The number of rings plus π bonds in a molecule, worked out from its formula as (2C + 2 + N − H − X) ÷ 2. Each one costs two hydrogens compared with a saturated open chain.","aliases":["degrees of unsaturation","index of hydrogen deficiency","IHD"],"see":["saturated"]},
@@ -486,11 +487,11 @@
     {"term":"Gilman reagent","def":"A lithium dialkylcuprate, R₂CuLi. It is a soft nucleophile: it adds 1,4 (conjugate addition) to enones, couples with organic halides and turns acid chlorides into ketones.","aliases":["Gilman reagents","cuprate","cuprates","organocuprate","organocuprates","lithium dialkylcuprate"],"see":["conjugate addition","hard and soft acids and bases"]}
   ],
   "cross-coupling": [
-    {"term":"cross-coupling","def":"A palladium-catalyzed reaction that joins an organic halide or triflate to an organometallic partner through a cycle of oxidative addition, transmetalation and reductive elimination.","aliases":["cross-coupling reaction","cross-coupling reactions","cross-couplings","palladium cross-coupling"],"see":["Suzuki coupling","oxidative addition"]},
+    {"term":"cross-coupling","def":"A palladium-catalyzed reaction that joins an organic halide or triflate to an organometallic partner through a cycle of oxidative addition, transmetalation and reductive elimination (the Heck reaction instead uses alkene insertion and β-hydride elimination).","aliases":["cross-coupling reaction","cross-coupling reactions","cross-couplings","palladium cross-coupling"],"see":["Suzuki coupling","oxidative addition"]},
     {"term":"oxidative addition","def":"A metal inserts into a bond such as C–X, gaining two ligands and raising its oxidation state by two, as Pd(0) becomes Pd(II).","see":["reductive elimination","cross-coupling"]},
     {"term":"transmetalation","def":"Transfer of an organic group from one metal (boron, tin, zinc) to another, such as palladium, in a coupling cycle.","see":["cross-coupling"]},
     {"term":"reductive elimination","def":"Two groups on a metal bond to each other and leave, lowering the metal's oxidation state by two. In cross-coupling this step makes the new C–C bond and regenerates Pd(0).","see":["oxidative addition"]},
-    {"term":"Suzuki coupling","def":"Palladium-catalyzed coupling of an organoboron compound, such as a boronic acid, with an aryl or vinyl halide in the presence of base. It is the classic way to make biaryls.","aliases":["Suzuki reaction","Suzuki","boronic acid","boronic acids"],"see":["cross-coupling"]},
+    {"term":"Suzuki coupling","def":"Palladium-catalyzed coupling of an organoboron compound, such as a boronic acid, with an aryl or vinyl halide in the presence of base. It is the classic way to make biaryls.","aliases":["Suzuki reaction","Suzuki"],"see":["cross-coupling"]},
     {"term":"Heck reaction","def":"Palladium-catalyzed coupling of an aryl or vinyl halide with an alkene, replacing a vinylic hydrogen; it runs through migratory insertion and β-hydride elimination.","aliases":["Heck"],"see":["cross-coupling"]},
     {"term":"Sonogashira coupling","def":"Palladium- and copper-catalyzed coupling of a terminal alkyne with an aryl or vinyl halide.","aliases":["Sonogashira"],"see":["cross-coupling","terminal alkyne"]},
     {"term":"Stille coupling","def":"Palladium-catalyzed coupling of an organotin compound (an organostannane) with an organic halide.","aliases":["Stille"],"see":["cross-coupling"]},
@@ -542,16 +543,16 @@
     {"term":"nonaromatic","def":"Describes a ring that fails one of the first three tests (cyclic, planar, fully conjugated), for example because an sp³ ring carbon breaks the conjugation.","see":["aromatic"]},
     {"term":"benzene","def":"C₆H₆, a flat six-membered ring of sp² carbons with six π electrons spread evenly around it; the parent aromatic compound.","see":["aromatic","phenyl group"]},
     {"term":"resonance energy","def":"The extra stability that delocalization gives a molecule, measured as the gap between its expected and actual heat of hydrogenation; benzene's is about 36 kcal/mol (150 kJ/mol).","aliases":["aromatic stabilization","delocalization energy"],"see":["aromatic","heat of hydrogenation"]},
-    {"term":"pyridine","def":"A benzene-like aromatic ring with one CH replaced by N. The nitrogen's lone pair lies in the ring plane, outside the π system, so pyridine is a weak base.","see":["pyrrole","aromatic"]},
+    {"term":"pyridine","def":"A benzene-like aromatic ring with one CH replaced by N. The nitrogen's lone pair lies in the ring plane, outside the π system, so it is free to take a proton: pyridine is a base (pKaH about 5.2), though weaker than alkylamines because the lone pair sits in an sp² orbital.","see":["pyrrole","aromatic"]},
     {"term":"pyrrole","def":"A five-membered aromatic ring containing an NH. The nitrogen's lone pair is part of the six-electron aromatic system, so pyrrole is hardly basic at all.","see":["pyridine","aromatic"]}
   ],
   "eas": [
     {"term":"electrophilic aromatic substitution","def":"A reaction in which an electrophile replaces an H on an aromatic ring: the ring's π electrons attack E⁺ to give an arenium ion (the slow step), then loss of H⁺ restores aromaticity.","aliases":["EAS","electrophilic aromatic substitutions"],"see":["arenium ion","directing effects"]},
     {"term":"arenium ion","def":"The resonance-stabilized carbocation formed when an electrophile adds to an aromatic ring; one ring carbon is sp³ and carries both the H and the E.","aliases":["arenium ions","sigma complex","σ complex","Wheland intermediate"],"see":["electrophilic aromatic substitution"]},
-    {"term":"nitronium ion","def":"NO₂⁺, the electrophile in aromatic nitration, made from nitric acid and sulfuric acid.","aliases":["nitration"],"see":["electrophilic aromatic substitution"]},
+    {"term":"nitronium ion","def":"NO₂⁺, the electrophile in aromatic nitration, made from nitric acid and sulfuric acid.","see":["electrophilic aromatic substitution"]},
     {"term":"sulfonation","def":"Adding an SO₃H group to an aromatic ring with SO₃ in sulfuric acid (fuming sulfuric acid). Because it is reversible, a sulfonic acid group can be used as a removable blocking group.","see":["blocking group"]},
     {"term":"Friedel–Crafts alkylation","def":"Alkylating an aromatic ring with an alkyl halide and AlCl₃. The carbocation can rearrange, the product can react again, and strongly deactivated rings do not react.","aliases":["Friedel-Crafts alkylation"],"see":["Friedel–Crafts acylation","1,2-shift"]},
-    {"term":"Friedel–Crafts acylation","def":"Attaching an acyl group to an aromatic ring with an acid chloride and AlCl₃, through an acylium ion, to give an aryl ketone. There is no rearrangement and the product does not react a second time.","aliases":["Friedel-Crafts acylation","Friedel–Crafts","Friedel-Crafts"],"see":["acylium ion","Friedel–Crafts alkylation"]},
+    {"term":"Friedel–Crafts acylation","def":"Attaching an acyl group to an aromatic ring with an acid chloride and AlCl₃, through an acylium ion, to give an aryl ketone. There is no rearrangement and the product does not react a second time.","aliases":["Friedel-Crafts acylation"],"see":["acylium ion","Friedel–Crafts alkylation"]},
     {"term":"acylium ion","def":"The cation R–C≡O⁺, an acyl group stabilized by the oxygen's lone pair. It is the electrophile in Friedel–Crafts acylation and does not rearrange.","aliases":["acylium ions","acylium"],"see":["Friedel–Crafts acylation"]}
   ],
   "directing-effects": [
@@ -594,7 +595,7 @@
     {"term":"phenol","def":"A compound with an OH bonded directly to an aromatic ring. Phenol (pKa about 10) is far more acidic than an alcohol because the phenoxide ion is resonance-stabilized.","aliases":["phenols"],"see":["phenoxide","alcohol"]},
     {"term":"phenoxide","def":"The conjugate base of a phenol, ArO⁻, whose negative charge is spread into the ring by resonance. It is a strongly activated ring and a good nucleophile.","aliases":["phenoxides","phenoxide ion"],"see":["phenol"]},
     {"term":"Kolbe–Schmitt carboxylation","def":"Heating sodium phenoxide with CO₂ under pressure, then acidifying, to put a COOH ortho to the OH, giving salicylic acid.","aliases":["Kolbe–Schmitt","Kolbe-Schmitt"],"see":["phenoxide"]},
-    {"term":"quinone","def":"A six-membered ring with two C=O groups, most often para to each other (cyclohexa-2,5-diene-1,4-dione), made by oxidizing a hydroquinone. Reduction turns it back.","aliases":["quinones","hydroquinone"],"see":["phenol"]}
+    {"term":"quinone","def":"A six-membered ring with two C=O groups, most often para to each other (cyclohexa-2,5-diene-1,4-dione), made by oxidizing a hydroquinone. Reduction turns it back.","aliases":["quinones"],"see":["phenol"]}
   ],
   "birch-reduction": [
     {"term":"Birch reduction","def":"Reduction of an aromatic ring with Na or Li in liquid ammonia and an alcohol, giving a non-conjugated cyclohexa-1,4-diene. An electron-donating group ends up on a remaining C=C; an electron-withdrawing group on an sp³ carbon.","aliases":["Birch"],"see":["dissolving-metal reduction"]}
@@ -627,7 +628,7 @@
   ],
   "mass-spec": [
     {"term":"mass spectrometry","def":"A technique that ionizes molecules, often breaking them into fragments, and sorts the ions by mass-to-charge ratio (m/z). It gives the molecular weight and clues to structure.","aliases":["mass spec","mass spectrum","mass spectra","MS"],"see":["molecular ion","base peak"]},
-    {"term":"molecular ion","def":"The radical cation M⁺• formed when a whole molecule loses one electron. Its m/z equals the molecular weight.","aliases":["molecular ion peak","molecular ions","M⁺"],"see":["mass spectrometry","nitrogen rule"]},
+    {"term":"molecular ion","def":"The radical cation M⁺• formed when a whole molecule loses one electron. Its m/z gives the molecular mass calculated with the most common isotope of each element (¹²C, ¹H, ³⁵Cl, ⁷⁹Br).","aliases":["molecular ion peak","molecular ions","M⁺"],"see":["mass spectrometry","nitrogen rule"]},
     {"term":"base peak","def":"The tallest peak in a mass spectrum, set to 100% intensity. It belongs to the most abundant ion, which is not necessarily the molecular ion.","see":["molecular ion"]},
     {"term":"m/z","def":"The mass-to-charge ratio of an ion. For the singly charged ions seen in most spectra it equals the ion's mass.","see":["mass spectrometry"]},
     {"term":"nitrogen rule","def":"A molecule with an odd molecular weight contains an odd number of nitrogen atoms; an even molecular weight means zero or an even number.","see":["molecular ion"]},
@@ -664,7 +665,7 @@
     {"term":"anomeric carbon","def":"The carbon that was the carbonyl carbon in a sugar's open-chain form (C1 of an aldose). In the ring it is the hemiacetal or acetal carbon, and it is a new stereocenter.","aliases":["anomeric carbons"],"see":["anomers","hemiacetal"]},
     {"term":"anomers","def":"Cyclic sugar diastereomers that differ only at the anomeric carbon. In a D-sugar's Haworth projection, the α anomer has the anomeric OH down (trans to CH₂OH) and the β anomer has it up.","aliases":["anomer","α anomer","β anomer","α-anomer","β-anomer"],"see":["anomeric carbon","mutarotation","epimers"]},
     {"term":"mutarotation","def":"The gradual change in specific rotation as the α and β anomers of a sugar interconvert through the open-chain form until they reach equilibrium (about 36% α : 64% β for glucose).","see":["anomers"]},
-    {"term":"glycosidic bond","def":"The acetal link from a sugar's anomeric carbon to an OR group, often another sugar's OH. Its configuration and positions are written like α(1→4).","aliases":["glycosidic bonds","glycosidic linkage","glycoside","glycosides","N-glycosidic bond"],"see":["acetal","reducing sugar"]},
+    {"term":"glycosidic bond","def":"The bond from a sugar's anomeric carbon to another group: through oxygen (an acetal, often to another sugar's OH) or, in an N-glycosidic bond such as in nucleosides, through nitrogen. Its configuration and positions are written like α(1→4).","aliases":["glycosidic bonds","glycosidic linkage","glycoside","glycosides","N-glycosidic bond"],"see":["acetal","reducing sugar"]},
     {"term":"reducing sugar","def":"A sugar with a free hemiacetal (free anomeric carbon), which can open to the free carbonyl form and give a positive Tollens' or Benedict's test. Sucrose, with both anomeric carbons tied up, is a non-reducing sugar.","aliases":["reducing sugars","non-reducing sugar","nonreducing sugar"],"see":["Tollens' test","glycosidic bond"]}
   ],
   "amino-acids": [
@@ -675,7 +676,7 @@
     {"term":"disulfide bond","def":"An S–S bond formed by oxidizing two cysteine thiols. It links parts of a protein chain, or separate chains, together.","aliases":["disulfide bonds","disulfide bridge","disulfide"],"see":["thiol","tertiary structure"]}
   ],
   "peptides-proteins": [
-    {"term":"peptide bond","def":"The amide bond linking the carboxyl group of one amino acid to the amino group of the next. Resonance gives it partial double-bond character, so it is planar, does not rotate freely and is usually trans.","aliases":["peptide bonds","amide bond","amide bonds"],"see":["amide","polypeptide"]},
+    {"term":"peptide bond","def":"The amide bond linking the carboxyl group of one amino acid to the amino group of the next. Resonance gives it partial double-bond character, so it is planar, does not rotate freely and is usually trans.","aliases":["peptide bonds"],"see":["amide","polypeptide"]},
     {"term":"polypeptide","def":"A chain of amino acid residues joined by peptide bonds, written from the N-terminus (free NH₂) to the C-terminus (free COOH). A protein is one or more long polypeptides.","aliases":["polypeptides","peptide","peptides","N-terminus","C-terminus"],"see":["peptide bond","primary structure"]},
     {"term":"primary structure","def":"The sequence of amino acids in a protein chain, held by covalent peptide bonds.","see":["secondary structure"]},
     {"term":"secondary structure","def":"Regular local folding of a protein backbone held by N–H···O=C hydrogen bonds: mainly the α-helix and the β-sheet.","aliases":["α-helix","α-helices","β-sheet","β-sheets","alpha helix","beta sheet"],"see":["primary structure","tertiary structure"]},
@@ -695,7 +696,7 @@
     {"term":"micelle","def":"A sphere of amphipathic molecules in water, with nonpolar tails packed inside and polar heads on the surface. Soap removes grease by trapping it in micelles.","aliases":["micelles"],"see":["amphipathic"]},
     {"term":"phospholipid","def":"A lipid with two fatty acid chains and a polar phosphate-containing head group. Phospholipids form the bilayers of cell membranes.","aliases":["phospholipids","lipid bilayer","bilayer","bilayers"],"see":["amphipathic"]},
     {"term":"steroid","def":"A lipid built on four fused rings, three six-membered and one five-membered, such as cholesterol.","aliases":["steroids"],"see":["lipid"]},
-    {"term":"terpene","def":"A natural product built from five-carbon isoprene units, usually joined head to tail.","aliases":["terpenes","isoprene","isoprene unit"],"see":["lipid"]}
+    {"term":"terpene","def":"A natural product built from five-carbon isoprene units, usually joined head to tail.","aliases":["terpenes","isoprene unit"],"see":["lipid"]}
   ],
   "nucleic-acids": [
     {"term":"nucleoside","def":"A nitrogen base joined to a ribose or 2-deoxyribose through an N-glycosidic bond at the sugar's anomeric carbon. A nucleotide is a nucleoside with one or more phosphates.","aliases":["nucleosides","nucleotide","nucleotides"],"see":["purine","phosphodiester bond"]},
