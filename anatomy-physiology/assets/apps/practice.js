@@ -150,6 +150,7 @@
           ? '<h3>' + plural(due, 'item') + ' due now</h3><p>Questions and tool items you missed come back on a spacing schedule, so they stick. Clear them before new work.</p>'
           : '<h3>Your queue is clear</h3><p>Questions you miss come back here on a spacing schedule, so they stick.</p><p class="anp-pr-rcard-empty">' + check + 'Nothing due now</p>') +
         '<a class="anp-pr-rcard-more" href="' + BASE + 'review.html">' + (due ? 'Start your review' : 'Open review') + ' <span aria-hidden="true">&rarr;</span></a></div>' +
+      '<a class="anp-pr-exam anp-pr-fc" href="' + BASE + 'flashcards.html"><span class="anp-pr-exam-t">Flashcards<small>Spaced cards from the glossary.</small></span><span class="anp-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
       '<a class="anp-pr-exam" href="' + BASE + 'exams.html"><span class="anp-pr-exam-t">Ready for a timed test?<small>Unit quizzes, system exams, A&amp;P I and II finals.</small></span><span class="anp-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
     '</aside>';
   }

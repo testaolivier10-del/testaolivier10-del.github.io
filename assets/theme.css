@@ -801,9 +801,11 @@ strong,b{font-weight:900;}
   .bottom-sheet.open{transform:none;}
   .bottom-sheet__grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 12px;}
   .bottom-sheet a{
-    display:block;padding:13px 14px;border-radius:14px;font:800 15px var(--font-ui);
+    display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:14px;font:800 15px var(--font-ui);
     color:var(--ink);text-decoration:none;
   }
+  .bottom-sheet a .i{display:flex;width:22px;height:22px;flex-shrink:0;}
+  .bottom-sheet a .i svg{width:22px;height:22px;}
   .bottom-sheet a.active{background:var(--ctint);color:var(--cink);}
   .bottom-sheet a:hover{background:var(--hover-tint);}
   .bottom-scrim{position:fixed;inset:0;z-index:44;background:rgba(15,25,23,0.35);opacity:0;pointer-events:none;transition:opacity .2s;}

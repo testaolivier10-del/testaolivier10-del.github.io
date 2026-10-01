@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Organic Chemistry</title>
+<meta name="description" content="Your Organic Chemistry mastery by module, based on performance across every question you've answered.">
+<link rel="canonical" href="https://levlprep.com/ochem/dashboard.html">
+<meta property="og:title" content="Dashboard — Organic Chemistry">
+<meta property="og:description" content="Your Organic Chemistry mastery by module, based on performance across every question you've answered.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/ochem/dashboard.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/exam-date.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="assets/ochem.css">
+<link rel="stylesheet" href="assets/periodic-table.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+  .section-head{
+    font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);margin:26px 0 10px;
+  }
+  /* `.section-head` is centred, which suits the marketing home pages it was
+     built for. On a dashboard it put a centred label above left-aligned cards,
+     so the eye kept switching axis. Left-align it here only. */
+  .xshell .section-head{text-align:left;}
+  /* Concept map on the left; level, quests and badges stacked on the right. */
+  .mastery-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:0 36px;align-items:start;}
+  .mastery-main,.mastery-side{min-width:0;}
+  .mastery-side .game-grid{grid-template-columns:1fr;}
+  .mastery-lists{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 36px;align-items:start;}
+  .mastery-lists .section-head{margin-top:26px;}
+  .mastery-lists > div:has(> [hidden]){display:none;}
+  .mastery-side .badge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+  @media (max-width:900px){
+    .mastery-grid,.mastery-lists{grid-template-columns:1fr;}
+    .mastery-side{margin-top:26px;}
+  }
+
+  /* Width is the shell's job now — this page used to cap itself at 760px
+     while Home and Tools ran the full shell, so the course changed width
+     as you moved through it. */
+  .overall-card{
+    background:var(--navy);color:#fff;border-radius:22px;padding:28px clamp(20px,4vw,34px);
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px;
+  }
+  .overall-card .big{font:900 44px var(--font-ui);}
+  .overall-card .k{opacity:.75;font:800 12px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;}
+  .rec-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px;}
+  .rec-card{
+    flex:1 1 220px;background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--lift-sm);
+  }
+  .rec-card .k{font:900 11px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+  .rec-card .v{font:900 15px var(--font-ui);}
+  .rec-card a{color:var(--accent);text-decoration:none;}
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dashboard",
+          "item": "https://levlprep.com/ochem/dashboard.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="course-nav"></div>
+
+<div class="xshell narrow">
+  <div class="hero">
+    <div class="eyebrow">Organic Chemistry</div>
+    <h1 style="margin-bottom:4px;">Mastery, not a readiness score.</h1>
+    <p class="lede" style="margin-top:0;">Built from every question you've answered, not from lessons opened.</p>
+  </div>
+
+  <div class="xsection mastery-grid" style="padding-top:0;">
+    <div class="mastery-main">
+      <div class="section-head" style="margin-top:0;">Where you actually stand</div>
+      <noscript><div class="site-nav-fallback"><p>Mastery is computed in your browser from every question you have answered, so this page has nothing to show without JavaScript. The course itself is in the <a href="learn.html">textbook</a> and the <a href="index.html">lessons</a>.</p></div></noscript>
+      <div class="overall-card" id="overallCard"></div>
+      <div id="masterySnapshot"></div>
+      <div id="leechAlerts"></div>
+      <div id="dependencyAlerts"></div>
+      <div class="rec-row" id="recRow"></div>
+      <div class="section-head" id="weakHead">Weakest concepts</div>
+      <div id="weakConcepts"></div>
+    </div>
+    <aside class="mastery-side">
+      <div id="examDateCard"></div>
+      <div id="gameLevel"></div>
+      <div class="game-grid">
+        <div id="gameRounds"></div>
+        <div id="gameDebt"></div>
+      </div>
+      <div id="gameConcepts"></div>
+      <div class="section-head">Achievements</div>
+      <div class="badge-grid" id="gameAchievements"></div>
+    </aside>
+  </div>
+
+  <!-- The two long lists sit side by side under both columns, so neither
+       column runs on alone with empty space beside it. -->
+  <div class="xsection mastery-lists" style="padding-top:0;">
+    <div>
+      <div class="section-head" id="moduleHead">By module</div>
+      <div id="moduleStats"></div>
+    </div>
+    <div>
+      <div class="section-head" id="familyHead">By concept family</div>
+      <div id="familyStats"></div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'dashboard';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/periodic-table.js" defer></script>
+<script src="assets/game-panel.js" defer></script>
+<script src="assets/tools-registry.js" defer></script>
+<script src="assets/mastery-page.js" defer></script>
+<script>
+  /* The exam-date card (../assets/exam-date.js). Per day: the concepts not
+     yet solid, spread over the days left. */
+  document.addEventListener('DOMContentLoaded', function(){
+    var M = window.OchemMastery;
+    if(!window.LevlExamDate) return;
+    window.LevlExamDate.mount(document.getElementById('examDateCard'), {
+      subject: 'ochem',
+      links: { review: 'review.html', exams: 'exams.html' },
+      target: function(days){
+        if(!M) return null;
+        var c = M.counts();
+        var total = (c.unseen || 0) + (c.shaky || 0) + (c.developing || 0) + (c.solid || 0) + (c.mastered || 0);
+        var left = total - (c.solid || 0) - (c.mastered || 0);
+        if(!left) return { done: 'Every concept is solid or mastered. Keep the review queue clear and take a timed exam.' };
+        return { n: Math.ceil(left / days), unit: left === 1 ? 'concept' : 'concepts', why: 'to solid covers the ' + left + ' that are not there yet' };
+      }
+    });
+  });
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

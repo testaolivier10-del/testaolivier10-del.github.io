@@ -6,28 +6,37 @@
    tab row — now lives there, so NREMT and Organic Chemistry can't drift apart
    again.
 
-   What stays here: the tab list, the Tools-subpage active-state rule, the
+   What stays here: the tab list, the subpage active-state rules, the
    window.LevlXP shim the quiz pages were written against, and the sync
    namespace. */
 (function(){
+  // The same eight tabs, in the same order, as every LevlPrep course: Home,
+  // Learn, Practice, Review, Exams, Glossary, Tools, Dashboard. Search is not
+  // a tab (the header reaches it), and neither is the old Study Plan, whose
+  // countdown is now a card on the Dashboard.
   var NAV_ITEMS = [
     // The wordmark goes to the LevlPrep hub now, so the course's own homepage
     // needs a tab — otherwise there'd be no way back to it from a quiz.
     { href: 'index.html', label: 'Home' },
+    { href: 'study-notes.html', label: 'Learn' },
     { href: 'practice.html', label: 'Practice' },
-    { href: 'study-plan.html', label: 'Study Plan' },
-    { href: 'study-notes.html', label: 'Notes' },
-    { href: 'mnemonics.html', label: 'Mnemonics' },
+    { href: 'review.html', label: 'Review' },
+    { href: 'exams.html', label: 'Exams' },
     { href: 'glossary.html', label: 'Glossary' },
     { href: 'tools.html', label: 'Tools' },
     { href: 'dashboard.html', label: 'Dashboard' }
   ];
 
-  // Pages that live "under" Tools (linked from the tools.html hub) but keep
-  // their own URL — the Tools nav link should still read as active on them.
-  var TOOLS_SUBPAGES = ['tools.html', 'body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'search.html', 'formulary.html', 'reference-cards.html'];
-  // Same rule for Practice: the flashcard deck is a way of practicing.
-  var PRACTICE_SUBPAGES = ['flashcards.html'];
+  // Pages that live "under" a tab but keep their own URL — that tab should
+  // still read as active on them. Learn is the reading (the notes and the
+  // mnemonics); Tools is everything interactive that is not a question set;
+  // flashcards are a Practice mode; exam-day is about the exam itself.
+  var SUBPAGES = {
+    'study-notes.html': ['mnemonics.html'],
+    'practice.html': ['flashcards.html'],
+    'exams.html': ['exam-day.html'],
+    'tools.html': ['body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'formulary.html', 'reference-cards.html']
+  };
 
   function currentFile(){
     var p = location.pathname.split('/').pop();
@@ -97,8 +106,7 @@
         return {
           href: item.href,
           label: item.label,
-          active: item.href === cur || (item.href === 'tools.html' && TOOLS_SUBPAGES.indexOf(cur) !== -1) ||
-            (item.href === 'practice.html' && PRACTICE_SUBPAGES.indexOf(cur) !== -1)
+          active: item.href === cur || (SUBPAGES[item.href] || []).indexOf(cur) !== -1
         };
       })
     });

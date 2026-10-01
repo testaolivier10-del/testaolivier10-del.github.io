@@ -30,7 +30,7 @@
     },
     {
       "slug": "flashcards",
-      "section": "flashcards",
+      "section": "practice",
       "h1": "Flashcards",
       "title": "A&P flashcards | Anatomy & Physiology",
       "desc": "Spaced-repetition anatomy and physiology flashcards built from the glossary and the comparison tables, by topic, system or core concept.",
@@ -38,8 +38,9 @@
       "css": "apps/apps.css"
     },
     {
-      "slug": "mastery",
-      "section": "mastery",
+      "slug": "dashboard",
+      "section": "dashboard",
+      "siteScripts": ["exam-date.js"],
       "h1": "Dashboard",
       "title": "Your A&P dashboard | Anatomy & Physiology",
       "desc": "Your anatomy and physiology mastery by topic, system and core concept, with lab practical and prediction accuracy and what to study next.",
@@ -48,7 +49,7 @@
     },
     {
       "slug": "search",
-      "section": "search",
+      "section": "",
       "h1": "Search",
       "title": "Search the course | Anatomy & Physiology",
       "desc": "Search every anatomy and physiology lesson, notes page, glossary term and tool in the course.",

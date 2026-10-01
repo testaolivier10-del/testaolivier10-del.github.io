@@ -264,11 +264,12 @@
     'Practice':  '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
     'Learn':     '<path d="M4 5h6a3 3 0 013 3v12a2 2 0 00-2-2H4zM20 5h-6a3 3 0 00-3 3v12a2 2 0 012-2h7z"/>',
     'Notes':     '<path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/>',
-    'Study Plan':'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    // A stopwatch for timed exams; an "Aa" page for the glossary.
+    'Exams':     '<circle cx="12" cy="14" r="7"/><path d="M12 14V10.5M10 3h4M12 3v4M18.5 7.5l1.5-1.5"/>',
+    'Glossary':  '<path d="M5 4h11a3 3 0 013 3v13H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h11"/><path d="M9 11l1.6-4 1.6 4M9.6 9.8h2"/>',
     'Review':    '<path d="M3 12a9 9 0 019-9 9 9 0 017 3.4M21 12a9 9 0 01-9 9 9 9 0 01-7-3.4"/><path d="M21 3v4h-4M3 21v-4h4"/>',
     'Tools':     '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/>',
     'Dashboard': '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
-    'Mastery':   '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
     'More':      '<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>',
   };
   var GENERIC_ICON = '<path d="M5 3h9l5 5v13H5z"/><path d="M14 3v5h5"/>';
@@ -315,7 +316,7 @@
     sheet.setAttribute('role', 'dialog');
     sheet.setAttribute('aria-label', 'More sections');
     sheet.innerHTML = '<div class="bottom-sheet__grab"></div>' + rest.map(function(it){
-      return '<a href="' + it.href + '"' + (it.active ? ' class="active" aria-current="page"' : '') + '>' + escapeHtml(it.label) + '</a>';
+      return '<a href="' + it.href + '"' + (it.active ? ' class="active" aria-current="page"' : '') + '><span class="i">' + tabIcon(it.label) + '</span>' + escapeHtml(it.label) + '</a>';
     }).join('');
     document.body.appendChild(scrim);
     document.body.appendChild(sheet);

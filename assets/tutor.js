@@ -54,7 +54,7 @@
     { file: '/nremt/flowcharts.html',  title: 'Flow Diagrams' },
     { file: '/nremt/skillsheets.html', title: 'Skills Guide' },
     { file: '/nremt/scenario-sim.html',title: 'Scenarios' },
-    { file: '/nremt/study-plan.html',  title: 'Study Plan' }
+    { file: '/nremt/exam-day.html',    title: 'Exam Day' }
   ];
 
   // Ochem's prose is one fragment per topic under ochem/notes/. curriculum.js

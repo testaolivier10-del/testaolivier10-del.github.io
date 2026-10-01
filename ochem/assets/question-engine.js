@@ -658,7 +658,7 @@
           leech.attempts + '. Another question would just be the next wrong answer — this one needs the ' +
           'lesson again, not more drilling. It is out of your review queue until you go back to it.',
         cta: lessonTopic ? 'Re-read ' + lessonTopic.title : 'See your mastery map',
-        href: lessonTopic ? lessonTopic.href : 'mastery.html'
+        href: lessonTopic ? lessonTopic.href : 'dashboard.html'
       });
     }
 

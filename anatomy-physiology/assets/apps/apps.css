@@ -107,6 +107,9 @@
 .anp-pr-exam-t{flex:1;font:900 14.5px var(--font-ui);}
 .anp-pr-exam-t small{display:block;font:700 12px var(--font-ui);color:inherit;opacity:.86;margin-top:2px;}
 .anp-pr-exam-go{font:900 18px var(--font-ui);}
+.anp-pr-exam.anp-pr-fc{background:var(--accent);color:var(--on-accent-fill, var(--on-accent));margin-bottom:12px;}
+.anp-pr-exam.anp-pr-fc:hover{background:var(--accent);color:var(--on-accent-fill, var(--on-accent));filter:brightness(.96);}
+.anp-rv-fc{margin-top:18px;}
 @media (max-width:920px){
   .anp-pr-grid{grid-template-columns:minmax(0,1fr);gap:18px;}
   .anp-pr-rail{position:static;}
@@ -274,9 +277,9 @@
 /* === flashcards, dashboard, search, hub === */
 /* Theme tokens only (assets/theme.css, anp.css), so dark mode comes free.
    Prefixes: anp-fc- flashcards, anp-db- dashboard, anp-sr- search. The tools hub has its own file, tools-hub.css. */
-.anp-app-mount[data-slug="flashcards"],.anp-app-mount[data-slug="mastery"],.anp-app-mount[data-slug="search"]{min-height:320px;margin:18px 0 28px;}
-.anp-app-mount[data-slug="flashcards"] .panel,.anp-app-mount[data-slug="mastery"] .panel{margin-bottom:18px;}
-.anp-app-mount[data-slug="flashcards"] .panel h2,.anp-app-mount[data-slug="mastery"] .panel h2{font-size:17px;}
+.anp-app-mount[data-slug="flashcards"],.anp-app-mount[data-slug="dashboard"],.anp-app-mount[data-slug="search"]{min-height:320px;margin:18px 0 28px;}
+.anp-app-mount[data-slug="flashcards"] .panel,.anp-app-mount[data-slug="dashboard"] .panel{margin-bottom:18px;}
+.anp-app-mount[data-slug="flashcards"] .panel h2,.anp-app-mount[data-slug="dashboard"] .panel h2{font-size:17px;}
 
 /* ---- flashcards ---- */
 .anp-fc-loading{min-height:260px;display:grid;place-items:center;color:var(--muted);font-weight:800;}
