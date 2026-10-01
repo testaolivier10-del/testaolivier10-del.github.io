@@ -1,8 +1,9 @@
 {
-  "about": "The A&P app and tool pages. scripts/build-anp.mjs writes each page's shell (head, header, SEO, a <div id=\"app\"> mount, the page's script and stylesheet) from this file; the page's behavior lives in its script. Tools read their content from data/tools/<slug>.json. docs/anp-phase1-architecture.md.",
+  "about": "The A&P app and tool pages. premium names the Premium feature a page is (assets/premium.js; AnpCore gates it: exams and flashcards whole, the rest down to the free Foundations chapters). scripts/build-anp.mjs writes each page's shell (head, header, SEO, a <div id=\"app\"> mount, the page's script and stylesheet) from this file; the page's behavior lives in its script. Tools read their content from data/tools/<slug>.json. docs/anp-phase1-architecture.md.",
   "apps": [
     {
       "slug": "practice",
+      "premium": "question-bank",
       "section": "practice",
       "h1": "Practice",
       "title": "Practice questions | Anatomy & Physiology",
@@ -12,6 +13,7 @@
     },
     {
       "slug": "review",
+      "premium": "review",
       "section": "review",
       "h1": "Review",
       "title": "Spaced review | Anatomy & Physiology",
@@ -21,6 +23,7 @@
     },
     {
       "slug": "exams",
+      "premium": "exams",
       "section": "exams",
       "h1": "Exams",
       "title": "A&P exams and TEAS practice | Anatomy & Physiology",
@@ -30,6 +33,7 @@
     },
     {
       "slug": "flashcards",
+      "premium": "flashcards",
       "section": "practice",
       "h1": "Flashcards",
       "title": "A&P flashcards | Anatomy & Physiology",
@@ -69,6 +73,7 @@
   "tools": [
     {
       "slug": "lab-practical",
+      "premium": "tools",
       "name": "Virtual lab practical",
       "tag": "Real figures with the labels masked. Name each structure, at your own pace or against the clock.",
       "blurb": "Identify structures on real figures: explore, study, quiz, or a timed practical.",
@@ -80,6 +85,7 @@
     },
     {
       "slug": "predict",
+      "premium": "tools",
       "name": "Predict the change",
       "tag": "Up, down or no change. Then the chain that explains it.",
       "blurb": "Something changes in the body: predict what goes up, down or stays the same, then see the chain.",
@@ -91,6 +97,7 @@
     },
     {
       "slug": "feedback-loops",
+      "premium": "tools",
       "name": "Feedback loop builder",
       "tag": "Stimulus to response, one slot at a time.",
       "blurb": "Build each homeostatic loop from stimulus to response.",
@@ -102,6 +109,7 @@
     },
     {
       "slug": "pathways",
+      "premium": "tools",
       "name": "Pathway tracer",
       "tag": "Put the steps in order. Then find the one that is wrong.",
       "blurb": "Put the steps of a pathway in order, find the missing step, or spot the error.",
@@ -113,6 +121,7 @@
     },
     {
       "slug": "graphs",
+      "premium": "tools",
       "name": "Graph reader",
       "tag": "Read the curve. Name the phase. Shift it.",
       "blurb": "Read values off physiology graphs, name the phases, and predict how curves shift.",
@@ -124,6 +133,7 @@
     },
     {
       "slug": "calculators",
+      "premium": "tools",
       "name": "Worked-example calculators",
       "tag": "Every number, every step, every unit.",
       "blurb": "Cardiac output, MAP, flow and resistance, and capillary filtration, every step shown.",

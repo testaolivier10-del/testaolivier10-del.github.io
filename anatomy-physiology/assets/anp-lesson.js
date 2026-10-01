@@ -69,7 +69,17 @@
     var dataEl = document.getElementById('anp-page-data');
     if(!dataEl) return;
     var data = JSON.parse(dataEl.textContent);
-    var topic = data.topic;
+    var topic = data.topic, C = window.AnpCore, ch = C && C.chapterOf ? C.chapterOf(topic) : '';
+    // Premium: outside Foundations the interactive lesson is part of Premium.
+    // Locked, the card and the step list give way to the gate and the notes.
+    if(C && C.locked && C.locked(ch)){
+      var card = document.querySelector('.anp-ls-card'), list = document.querySelector('.anp-ls-steps');
+      if(card){ card.insertAdjacentHTML('beforebegin', C.gate('lessons', 'lesson', topic)); card.style.display = 'none'; }
+      if(list) list.style.display = 'none';
+      return;
+    }
+    var tags = C && C.badge && document.querySelector('.anp-ls-hero .anp-tags');
+    if(tags) tags.insertAdjacentHTML('beforeend', C.badge(ch));
     steps(topic);
     if(!window.AnpQuestions) return;
 

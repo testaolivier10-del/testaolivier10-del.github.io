@@ -176,9 +176,57 @@
     try{ if(window.LevlAnalytics) window.LevlAnalytics.event(name, data || {}); }catch(e){}
   }
 
-  /* Premium, later (spec section 14): every feature that may be gated asks
-     here. Nothing is gated now, so this always says yes. */
-  function allowed(feature){ return true; }
+  /* Premium (assets/premium.js; spec section 14). Locked only when Premium has
+     launched and this browser has no A&P pass; without premium.js, nothing is.
+     A chapter in COURSES.anp.freeChapters (Foundations) stays open. Records
+     are never touched: a locked item is only not served. */
+  function prem(){ return window.LevlPremium; }
+  function locked(ch){
+    var P = prem();
+    if(!P || !P.launched || !P.launched() || P.has('anp')) return false;
+    return !(ch && P.isFreeChapter('anp', ch));
+  }
+  function chapterOf(topic){ var t = topicInfo(topic); return t ? t.chapter : ''; }
+  // Whole features, closed even for Foundations. The rest are filtered by chapter.
+  var WHOLE = { exams: 1, flashcards: 1, 'weak-spot-analytics': 1 };
+  function allowed(feature){ return !(WHOLE[feature] && locked()); }
+  // The pill beside a Premium feature ('' for a free chapter or a member).
+  function badge(ch){ var P = prem(); return P && !(ch && P.isFreeChapter('anp', ch)) ? P.badge('anp') : ''; }
+  /* The locked card, with the way to the free notes: the topic's own when
+     there is one, else the whole textbook. */
+  function gate(feature, source, topic, part){
+    var P = prem(), g = P ? P.gate('anp', feature, source || feature) : '';
+    if(!g) return '';
+    var t = topic && topicInfo(topic), b = window.ANP_BASE || '';
+    return '<div class="anp-gate">' + g + '<p class="anp-gate-notes">' + (part ? 'The Foundations chapters stay free here. ' : '') +
+      '<a href="' + b + (t ? 'notes/' + t.id + '.html">Read the free notes on ' + t.title.replace(/</g, '&lt;') : 'learn.html">Read the free notes for every topic') + ' &rarr;</a></p></div>';
+  }
+  // Tool data with only free-chapter items (items carry a topic or a chapter).
+  function freeItems(d){
+    if(!locked() || !d) return d;
+    Object.keys(d).forEach(function(k){
+      if(Array.isArray(d[k])) d[k] = d[k].filter(function(x){ return !x || !(x.topic || x.chapter) || !locked(x.chapter || chapterOf(x.topic)); });
+    });
+    return d;
+  }
+  /* An app or tool page marks its mount data-premium="<feature>". Locked: a
+     whole feature's mount becomes the card (its script then finds no #app);
+     any other gets the card above it and serves free chapters only. Before
+     launch, the pill goes beside the page's eyebrow. A change of access
+     (sign-in, a purchase) reloads the page so every surface agrees. */
+  function mountPremium(){
+    var P = prem(), app = document.getElementById('app'), f = app && app.getAttribute('data-premium');
+    if(!P) return;
+    var was = locked();
+    P.onChange(function(){ if(locked() !== was) location.reload(); });
+    if(!f) return;
+    if(!was){ var e = document.querySelector('.anp-hero .eyebrow'); if(e) e.insertAdjacentHTML('beforeend', ' ' + badge()); return; }
+    var p = new URLSearchParams(location.search).get('topic');
+    var g = gate(f, app.getAttribute('data-slug'), locked(chapterOf(p)) ? p : '', !WHOLE[f]);
+    if(WHOLE[f]){ app.removeAttribute('id'); app.innerHTML = g; }
+    else app.insertAdjacentHTML('beforebegin', g);
+  }
+  mountPremium();
 
   function pct(v){ return Math.round((v || 0) * 100) + '%'; }
 
@@ -247,13 +295,15 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mountDefs); else mountDefs();
 
   /* The question bank is split by chapter (scripts/build-anp.mjs). loadBank
-     fetches the chapters asked for (default: every chapter with a built topic)
+     fetches the chapters asked for (default: every chapter with a built topic),
+     less any chapter Premium locks,
      and resolves to one array of questions, explanations merged in unless
      opts.why is false. A missing explanation file never blocks the questions. */
   function loadBank(base, opts){
     opts = opts || {};
     var cur = curriculum();
-    var chs = opts.chapters || cur.chapters.filter(function(c){ return cur.topics.some(function(t){ return t.chapter === c.id && t.built; }); }).map(function(c){ return c.id; });
+    var chs = (opts.chapters || cur.chapters.filter(function(c){ return cur.topics.some(function(t){ return t.chapter === c.id && t.built; }); }).map(function(c){ return c.id; }))
+      .filter(function(ch){ return !locked(ch); });
     function get(u){ return fetch(base + u).then(function(r){ if(!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); }
     return Promise.all(chs.map(function(ch){
       return Promise.all([get('assets/bank/' + ch + '.json'), opts.why === false ? Promise.resolve({}) : get('assets/bank/' + ch + '-why.json').catch(function(){ return {}; })]);
@@ -277,7 +327,8 @@
     coreMastery: coreMastery, overallMastery: overallMastery, reviewQueue: reviewQueue,
     reviewCount: reviewCount, missed: missed, weakest: weakest, weakestCore: weakestCore,
     lessonComplete: lessonComplete, lessonsDone: lessonsDone, toolResult: toolResult,
-    toolStats: toolStats, event: event, allowed: allowed, pct: pct, merge: merge,
+    toolStats: toolStats, event: event, allowed: allowed, locked: locked, chapterOf: chapterOf,
+    badge: badge, gate: gate, freeItems: freeItems, pct: pct, merge: merge,
     levelKey: levelKey, load: load
   };
 })();

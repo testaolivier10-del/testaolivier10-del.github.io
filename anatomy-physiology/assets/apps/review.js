@@ -42,7 +42,8 @@
   function classify(id){
     if(bank[id]) return { kind: 'q', id: id, q: bank[id] };
     var parts = id.split(':');
-    if(parts.length > 1 && TOOL[parts[0]]) return { kind: 'tool', id: id, tool: TOOL[parts[0]], content: parts[1] || '', item: parts.slice(2).join(':') };
+    // A Premium tool's item waits, kept, while Premium is locked.
+    if(parts.length > 1 && TOOL[parts[0]] && !(TOOL[parts[0]].premium && Core.locked && Core.locked())) return { kind: 'tool', id: id, tool: TOOL[parts[0]], content: parts[1] || '', item: parts.slice(2).join(':') };
     return null;
   }
   function dueItems(){ return Core.reviewQueue().map(classify).filter(Boolean); }

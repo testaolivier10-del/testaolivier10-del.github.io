@@ -20,10 +20,14 @@
     });
   }
 
+  // A Premium tool's tile carries the pill (ochem-premium.js); a span, since
+  // the tile is a link and cannot hold a button.
+  var G = window.OchemPremium;
   mount.innerHTML = T.ALL.map(function(t){
+    var pill = G && !G.toolFree(t.slug) ? G.pill() : '';
     return '<a class="tool-tile" href="tools/' + esc(t.slug) + '.html">' +
       '<span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true">' + t.icon + '</svg></span>' +
-      '<span class="tool-tile__name">' + esc(t.name) + '</span>' +
+      '<span class="tool-tile__name">' + esc(t.name) + pill + '</span>' +
       '<span class="tool-tile__tag">' + esc(t.tagline) + '</span>' +
       '<span class="tool-tile__blurb">' + esc(t.blurb) + '</span>' +
       '<span class="tool-tile__foot">' +

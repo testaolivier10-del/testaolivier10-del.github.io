@@ -1,59 +1,68 @@
 # Premium: the plan
 
-Every course on LevlPrep is free today, and nothing in this repo charges
-anyone. This file is the plan for when that changes and the research behind
-it, so the decision is made from numbers rather than from a mood.
+The free/premium split is built into every course but not switched on:
+nothing is locked and nothing charges anyone until `LAUNCHED` in
+`assets/premium.js` is flipped (see the launch checklist). This file is the
+plan, its current state and the research behind it.
 
-Researched September 2026. Several competitor prices came from search results
+Researched September 2026; decisions updated October 2026. Several competitor prices came from search results
 rather than the vendors' own pages. Check the ones marked † in a browser
 before setting a price against them.
 
-## Where we are: Phase 0, asking
+## Where we are: built, not launched (October 2026)
 
-The site is new, and a paywall on a new site mostly costs visitors. So the
-first step is a question rather than a gate:
+Decided 2026-10-01: build the free/premium split now, while there are almost
+no users, so nobody ever loses something they had for free. (On that date the
+site had 3 accounts and 0 waitlist sign-ups.) Teaching pages stay free, so
+search traffic is unaffected.
 
-- **`assets/premium.js`** puts a "Premium is coming" card at the end of a
-  real session: the NREMT results screen (10+ questions) and the ochem
-  practice summary (8+ questions). Its button opens a dialog listing what
-  Premium would include and what stays free, and asks for an email.
-- **`join_waitlist()`** in `scripts/sql/schema.sql` stores the address, the
-  course and which card it came from. `scripts/sql/reports.sql` has the query
-  that reads it back.
-- **Umami** counts `premium-interest` (opened the dialog) and
-  `premium-waitlist-joined` (left an address).
-- **`privacy.html#waitlist`** says what is stored and that it is used for one
-  launch email only. Deleting an account removes the entry.
+- **`assets/premium.js`** holds the split for all three courses (`COURSES`),
+  the gating API every course calls (`has`, `gate`, `badge`, `quota`, …) and
+  one switch, `LAUNCHED`.
+- **While `LAUNCHED` is false** nothing is locked. Premium features carry a
+  "Premium" pill, and the dialog collects launch-email sign-ups
+  (`join_waitlist()`, as before). Umami counts `premium-interest` and
+  `premium-waitlist-joined`.
+- **When it is true** free users meet the gates and the dialog sells passes.
+  Checkout: browser → Worker `/premium/checkout` → Polar; Polar's webhook →
+  Worker `/premium/webhook` → `premium_passes` row; the browser reads its own
+  access with `my_premium()` (`scripts/sql/schema.sql`).
+- It is a **soft gate**: GitHub Pages serves every file publicly, so the gate
+  controls the app, not the data. Move to a hard gate only if revenue
+  justifies it.
 
-Nothing is locked. The free/premium lists in `COURSES` at the top of
-`premium.js` are the plan written down; they are shown in the dialog, not
-enforced anywhere.
+### Launch checklist
 
-### Before this means anything
+1. **Sign-in email off Supabase's built-in mailer** (Part 1 of
+   `docs/auth-setup.md`). Paying users must get their sign-in and reset mail.
+2. ~~**Apply the SQL**~~ — done 2026-10-01 (migration `premium_passes`:
+   the table, `my_premium()` and `join_waitlist()` accepting `anp`).
+3. **Polar**: create the five products (table below) and a 30%-off
+   founding-member discount ending 2027-01-31; add the webhook. Steps and the
+   Worker's variables are in `worker/README.md` (Premium section).
+4. **Worker**: set the secrets and `POLAR_PRODUCTS`, deploy, buy one pass in
+   Polar's sandbox end to end, refund it, and check the row.
+5. **Terms**: `terms.html` covers passes and refunds; re-read it.
+6. **Flip `LAUNCHED`** to true, run the launch-day grant in
+   `scripts/sql/reports.sql` (30 days free for every existing account), and
+   email the waitlist once.
 
-**Move sign-in email off Supabase's built-in mailer.** See Part 1 of
-`docs/auth-setup.md`. Paying users will rely on sign-in links and password
-resets arriving, and the built-in mailer allows a handful of messages an hour
-across the whole project.
+## Decisions (October 2026 research)
 
-## When to build the paywall
-
-Decide on signals, not a date. Build when, for a course, **both** hold:
-
-1. **Steady returning users.** Roughly 500+ active a week, with a healthy
-   share coming back on a second day (the `returned-second-day` and `visit`
-   events already measure this).
-2. **The waitlist says yes.** Over 2–4 weeks and at least 300–1,000 sessions:
-   - `premium-interest` ÷ `exam-finish` (or `ochem-session-finish`) above
-     about 5%;
-   - with real addresses arriving in `premium_waitlist`, not just clicks.
-     Clicks come from curiosity and misreads; a typed address is intent.
-
-Under about 1–2% means keep growing for free and ask again later.
-
-**Ochem timing:** fall finals are in December and demand peaks right before
-exams, so a launch by mid-November catches the biggest spike of the term.
-If the numbers are not there by then, aim for the spring semester.
+- **NREMT free allowance: 15 questions a day**, reset at local midnight, plus
+  one full timed exam. 15 covers Pocket Prep's recommended 10–15-question
+  daily sets; 20 a day would give away ~40% of the bank over six weeks.
+  Competitors give a fixed total (Pocket Prep ~30–65, EMTprep 130). A daily
+  cap brings people back; a total cap ends the relationship. A/B test 10/15/20
+  once traffic allows.
+- **Prices: target list prices plus a founding code, not low list prices.**
+  A low launch price becomes the reference price and makes raising it later
+  harder (McKinsey; reference-price literature); $9 endings lift demand,
+  more so for unfamiliar products (Anderson & Simester 2003). Ochem drops to
+  $29/$49 because Chad's Prep, a known brand, sells ~$30 a semester†.
+- **A&P is live** (owner's decision, 2026-10-01): the Beta label is gone and
+  it follows the same split as ochem. Its open accuracy questions stay in
+  `docs/anp-needs-author.md`.
 
 ## The model, once it is time
 
@@ -92,14 +101,19 @@ cut refunds: education already has the highest refund rate of any app
 category. And they are simpler to build: access is just "premium for this
 course until this date."
 
-### Prices to start with
+### Prices
 
-| Course | Pass | Price | Anchors |
+| Course | Pass | Price | Anchors (search results†) |
 |---|---|---|---|
-| NREMT | 90 days | **$29** (launch/waitlist $19) | Pocket Prep $39.99 per 3 months, auto-renewing, 1,030 EMT questions; Limmer EMT PASS $32.99 one-time; video courses $100–150 |
-| Ochem | Semester (~5 months) | **$39** | Chad's Prep $9.99/mo; Master Organic Chemistry $12.95/mo, $99/yr† |
-| Ochem | Full year | **$59** | Most students take Orgo I and II |
-| Ochem | 30-day finals pass (optional) | **$15** | Demand spikes before exams |
+| NREMT | 90 days | **$29** | Pocket Prep $39.99 / 3 months; Limmer $32.99; MedicTests $69 / 90 days; EMTprep $89 / quarter |
+| Ochem | Semester (150 days) | **$29** | Chad's Prep ~$30 / semester; Master Organic Chemistry $99 / yr |
+| Ochem | Full year | **$49** | Most students take Orgo I and II |
+| A&P | Semester (150 days) | **$29** | Visible Body $34.99 / yr; Ninja Nerd $50 / 3 months; Kenhub $180 / yr |
+| A&P | Full year | **$49** | A&P I and II |
+
+All with a **founding-member code, 30% off, until 2027-01-31**. A 30-day
+ochem finals pass ($15) is an option for later. Polar's fee (5% + $0.50) is
+6–7% at these prices; below ~$15 the fixed part hurts.
 
 - **NREMT pass guarantee:** fail the exam and your access is extended free
   until you pass. It costs almost nothing, and every serious competitor has

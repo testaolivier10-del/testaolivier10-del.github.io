@@ -29,6 +29,8 @@
      page's own inline script waits for DOMContentLoaded. -->
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
+<script src="../assets/premium.js" defer></script>
+<script src="assets/premium-gates.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
@@ -181,7 +183,7 @@
   <div class="dash-grid">
     <div class="dash-col">
       <div class="panel">
-        <h2>Domain mastery</h2>
+        <h2>Domain mastery <span id="domainBadge"></span></h2>
         <div id="domainBox"></div>
         <details class="score-map">
           <summary>How these map to your score report</summary>
@@ -507,8 +509,17 @@ document.addEventListener('DOMContentLoaded', function(){
       lowConfidence: n < 3,
     };
   }
-  const r = computeReadiness();
+  // Premium (assets/premium-gates.js): the readiness score and the domain
+  // breakdown. Before launch, or with the gate files missing, both render as
+  // they always have, with a badge; the stats behind them are never touched.
+  const G = window.NremtGates || { canUse: () => true, gate: () => '', badge: () => '', onChange(fn){ fn(); } };
+  function renderReadinessBox(){
   const readinessBox = document.getElementById('readinessBox');
+  if(!G.canUse('readiness')){
+    readinessBox.innerHTML = G.gate('readiness', 'dashboard-readiness');
+    return;
+  }
+  const r = computeReadiness();
   if(!r.available){
     readinessBox.innerHTML = `<div class="empty-note">Take a full <a href="exams.html">timed exam</a> to unlock your readiness score.</div>`;
   } else {
@@ -519,12 +530,13 @@ document.addEventListener('DOMContentLoaded', function(){
       : 'A rough estimate from your practice history, not an official prediction of NREMT results.';
     readinessBox.innerHTML = `
       <div class="readiness-card">
-        <span class="r-tag">Estimated pass probability</span>
+        <span class="r-tag">Estimated pass probability ${G.badge()}</span>
         <div class="r-head"><span class="r-num">${r.probabilityPct}%</span><span class="r-label tier-${r.tier}">${r.label}</span></div>
         <div class="r-sub">${subParts.join(' · ')}</div>
         <div class="r-note">${note}</div>
       </div>
     `;
+  }
   }
 
   // ---- Score-over-time chart ----
@@ -556,7 +568,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   // ---- Domain accuracy ----
+  function renderDomainBox(){
   const domainBox = document.getElementById('domainBox');
+  const badgeSlot = document.getElementById('domainBadge');
+  if(badgeSlot) badgeSlot.innerHTML = G.badge();
+  if(!G.canUse('readiness')){
+    domainBox.innerHTML = G.gate('readiness', 'dashboard-domains');
+    return;
+  }
   const attemptedDomains = DOMAINS.filter(d => domainStats[d] && domainStats[d].total > 0);
   if(attemptedDomains.length === 0){
     domainBox.innerHTML = `<div class="empty-note">Answer questions in any mode to see domain accuracy.</div>`;
@@ -580,6 +599,8 @@ document.addEventListener('DOMContentLoaded', function(){
       `;
     }).join('');
   }
+  }
+  G.onChange(function(){ renderReadinessBox(); renderDomainBox(); });
 
   // ---- Score-report mapping ----
   // Rendered from SCORE_REPORT_MAP rather than written out, so the five areas,
@@ -592,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function(){
       const chips = row.domains.map(d => {
         const st = domainStats[d];
         const pct = st && st.total ? Math.round(st.correct/st.total*100) : null;
-        const score = pct === null ? '' : ` <span class="sm-pct">${pct}%</span>`;
+        const score = pct === null || !G.canUse('readiness') ? '' : ` <span class="sm-pct">${pct}%</span>`;
         return `<a class="sm-chip" href="practice.html?domain=${encodeURIComponent(d)}">${d}${score}</a>`;
       }).join('');
       return `<div class="sm-row"><div class="sm-area">${row.area}</div><div class="sm-domains">${chips}</div></div>`;

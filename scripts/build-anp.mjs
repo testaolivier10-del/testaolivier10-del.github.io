@@ -218,7 +218,7 @@ ${parts.map((p, i) => `  <section class="anp-part anp-step" id="${p.id}" aria-la
 ${footer(depth)}
 <script type="application/json" id="anp-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
 <script src="../../assets/report-question.js" defer></script>
-${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], premium: true })}
 </body>
 </html>
 `;
@@ -723,7 +723,7 @@ function homeSample(depth) {
 function homePage() {
   const depth = '';
   const nb = builtTopics.length;
-  const title = 'Free Anatomy & Physiology Course (Beta) | LevlPrep';
+  const title = 'Free Anatomy & Physiology Course | LevlPrep';
   const desc = 'Free anatomy and physiology course: lessons that build in strict order, mechanism-first physiology, a virtual lab practical and TEAS A&P practice.';
   const url = `${SITE}${BASE}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -745,7 +745,7 @@ function homePage() {
 <main id="main" class="xshell anp-home">
   <header class="hero anp-home-hero">
     <div>
-      <div class="eyebrow">${COURSE_NAME} <span class="anp-beta">Beta</span></div>
+      <div class="eyebrow">${COURSE_NAME}</div>
       <h1>Anatomy &amp; physiology that builds in order.</h1>
       <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
@@ -797,7 +797,7 @@ function homePage() {
     <div>
       <h2 id="h-covers">What the course covers</h2>
       <p>${map.chapters.length} chapters and ${map.topics.length} topics: the full scope of a two-semester college A&amp;P course, matched to the OpenStax <i>Anatomy and Physiology 2e</i> textbook, the HAPS learning outcomes and the TEAS&nbsp;7 A&amp;P content areas. Each topic has an interactive lesson and a full notes page.</p>
-      <p class="anp-small">${nb === map.topics.length ? `All ${nb} topics are built, each with its lesson, notes and questions.` : `In this Beta, ${nb} of ${map.topics.length} topics are built. The rest are listed so you can see where everything fits; they arrive chapter by chapter.`}</p>
+      <p class="anp-small">${nb === map.topics.length ? `All ${nb} topics are built, each with its lesson, notes and questions.` : `So far, ${nb} of ${map.topics.length} topics are built. The rest are listed so you can see where everything fits; they arrive chapter by chapter.`}</p>
     </div>
     <div>
       <h2 id="h-how">How to use it</h2>
@@ -888,13 +888,13 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
   ${hero
     ? `<header class="hero anp-hero ${hero.cls}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(hero.h1)}</h1><p class="lede">${hero.ledeHtml}</p></header>`
     : `<header class="hero anp-hero"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}
-  <div id="app" class="anp-app-mount" data-slug="${entry.slug}"${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
+  <div id="app" class="anp-app-mount" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
 <link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script] })}
+${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
 </body>
 </html>
 `;
@@ -977,7 +977,7 @@ function toolsHubMount() {
   const lab = tools.find(t => t.slug === 'lab-practical');
   const labData = hubToolCounts('lab-practical');
   const figN = Object.keys(labData.figures).length;
-  const feat = `<section class="anp-hub-feat" aria-labelledby="anp-hub-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1">
+  const feat = `<section class="anp-hub-feat" aria-labelledby="anp-hub-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}>
     <div class="anp-hub-feat-text">
       <p class="anp-hub-feat-kick"><span class="anp-hub-dot" aria-hidden="true"></span>Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])}</p>
       <h2 id="anp-hub-feat-h">${esc(lab.name)}</h2>
@@ -996,7 +996,7 @@ function toolsHubMount() {
   const cards = others.map(t => {
     const c = hubToolCounts(t.slug);
     const [pl, sg] = HUB_ITEMS[t.slug];
-    return `<li><a class="anp-hub-card" href="tools/${t.slug}.html" data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}>
+    return `<li><a class="anp-hub-card" href="tools/${t.slug}.html" data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}${t.premium ? ' data-premium="1"' : ''}>
       <span class="anp-hub-top"><span class="anp-hub-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">${HUB_ICON[t.slug] || '<circle cx="12" cy="12" r="7"/>'}</svg></span><span class="anp-hub-skill">${esc(HUB_SKILL[t.slug] || '')}</span></span>
       <span class="anp-hub-name">${esc(t.name)}</span>
       <span class="anp-hub-tag">${esc(t.tag || '')}</span>
@@ -1119,7 +1119,7 @@ for (const c of map.coreConcepts) put(`concepts/${c.id}.html`, corePage(c.id));
 // pages (spec section 19, decision 1).
 for (const ch of map.chapters.filter(chapterBuilt)) put(`chapters/${ch.id}.html`, chapterPage(ch.id));
 for (const t of builtTopics) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
-put('assets/anp-curriculum.js', curriculumJs().replace('window.AnpCurriculum = ', `window.AnpTools = ${JSON.stringify(PAGES.tools.map(t => ({ slug: t.slug, name: t.name, blurb: t.blurb })))};\nwindow.AnpCurriculum = `));
+put('assets/anp-curriculum.js', curriculumJs().replace('window.AnpCurriculum = ', `window.AnpTools = ${JSON.stringify(PAGES.tools.map(t => ({ slug: t.slug, name: t.name, blurb: t.blurb, ...(t.premium ? { premium: 1 } : {}) })))};\nwindow.AnpCurriculum = `));
 put('assets/glossary.json', glossaryJson());
 put('assets/notes-index.json', notesIndexJson());
 for (const [ch, b] of Object.entries(bankJson())) {

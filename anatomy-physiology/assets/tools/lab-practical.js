@@ -789,7 +789,7 @@
 
   /* ------------------------------------------------------------------ boot */
   function boot(){
-    fetch(SRC).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+    fetch(SRC).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){ return window.AnpCore ? window.AnpCore.freeItems(d) : d; }).then(function(d){
       DATA = d; index();
       var live = document.createElement('p');
       live.id = 'lp-announce'; live.className = 'lp-sr'; live.setAttribute('aria-live', 'assertive');

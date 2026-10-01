@@ -120,9 +120,12 @@
 
     html += '<div class="anp-db-grid"><div class="anp-db-col">';
 
-    /* --- weakest topics and core concepts --- */
-    if(!isNew && A.allowed('weak-spot-analytics')){
-      html += '<section class="panel" aria-labelledby="anp-db-weak-h"><h2 id="anp-db-weak-h">Weakest topics</h2>' +
+    /* --- weakest topics and core concepts (Premium: the analytics; the
+       mastery and XP below are progress, and stay free) --- */
+    var analytics = A.allowed('weak-spot-analytics'), pill = A.badge ? A.badge() : '';
+    if(!analytics) html += A.gate('weak-spot-analytics', 'dashboard');
+    if(!isNew && analytics){
+      html += '<section class="panel" aria-labelledby="anp-db-weak-h"><h2 id="anp-db-weak-h">Weakest topics' + pill + '</h2>' +
         (weak.length ? weak.map(function(w){
           return bar({ label: w.title, href: BASE + 'lessons/' + w.id + '.html', value: w.value, tier: tier(w.value, w.answered), note: plural(w.answered, 'item') + ' answered',
             action: action(BASE + 'practice.html?topic=' + encodeURIComponent(w.id), 'Practice') });
@@ -191,7 +194,7 @@
           return bar({ label: groupLabel(t.kind, g), value: x.n ? x.c / x.n : 0, note: x.c + ' of ' + x.n + ' right' });
         }).join('') : '');
     }).join('');
-    html += '<section class="panel" aria-labelledby="anp-db-tools-h"><h2 id="anp-db-tools-h">Tool accuracy</h2>' +
+    if(analytics) html += '<section class="panel" aria-labelledby="anp-db-tools-h"><h2 id="anp-db-tools-h">Tool accuracy' + pill + '</h2>' +
       '<p class="anp-db-hint">Share of items right in each tool, all time.</p>' + toolHtml + '</section>';
 
     html += '</div></div>';

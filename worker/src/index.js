@@ -16,6 +16,7 @@
 
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
+import { premiumCheckout, premiumWebhook } from './premium.js';
 
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
@@ -122,7 +123,8 @@ function corsHeaders(origin) {
   return {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    // Authorization: /premium/checkout carries the student's Supabase session.
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',
   };
@@ -184,6 +186,15 @@ export default {
       return new Response(res.body, { status: res.status, headers });
     }
 
+    /* Polar's webhook. No Origin (it is a server) and no rate limit (Polar
+       retries, and a burst of real orders is the good kind); the signature
+       check inside is the whole of its trust. See src/premium.js. */
+    if (path === '/premium/webhook') {
+      if (request.method !== 'POST') return json({ error: 'POST only' }, 405, origin);
+      const r = await premiumWebhook(request, env);
+      return json(r.body, r.status, origin);
+    }
+
     if (request.method !== 'POST') {
       return json({ error: 'POST only' }, 405, origin);
     }
@@ -206,6 +217,13 @@ export default {
       if (!success) {
         return json({ error: 'Rate limited. The site will answer from its own material instead.' }, 429, origin);
       }
+    }
+
+    // Opening a checkout is a browser POST from the site like the assistant,
+    // so it shares the Origin check and the throttle above, then leaves.
+    if (path === '/premium/checkout') {
+      const r = await premiumCheckout(request, env);
+      return json(r.body, r.status, origin);
     }
 
     let payload;

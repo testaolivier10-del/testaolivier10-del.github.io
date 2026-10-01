@@ -178,6 +178,18 @@ const QID = window.NremtQuestionIds.attach(QUESTIONS);
 // the days left, and should not have to fetch the bank to know its size.
 if(QUESTIONS.length){ try{ localStorage.setItem('nremt_bank_size', String(QUESTIONS.length)); }catch(e){} }
 
+// Premium (assets/premium.js, through assets/premium-gates.js). Before launch
+// none of this locks or counts anything, and with either file missing every
+// mode stays open: the stand-in below answers "allowed" to everything.
+const G = window.NremtGates || {
+  locked: () => false, badge: () => '', gate: () => '', quotaApplies: () => false,
+  quotaLeft: () => Infinity, take: () => true, canStartExam: () => true,
+  examStarted(){}, canUse: () => true, onChange(){},
+};
+// Positions in this attempt already counted against the free daily allowance,
+// so going back to a question, or resuming the attempt, never counts it twice.
+let served = new Set();
+
 // The other half of the bank, started now and deliberately not awaited. The
 // earliest it can be wanted is the moment someone answers a question or flips
 // a flashcard, which is many seconds of reading away; by then this has long
@@ -457,6 +469,7 @@ function saveExamState(){
     mode, selectedDomain, activeIndices, current, answers, startTime,
     withTimer: $id('timerBar').style.display === 'block',
   };
+  if(served.size) state.served = Array.from(served);
   if(mode === 'adaptive' && adaptiveState){
     state.adaptiveState = {
       length: adaptiveState.length,
@@ -583,6 +596,12 @@ function renderReadiness(targetId, opts){
   opts = opts || {};
   const el = $id(targetId);
   if(!el) return;
+  // Premium: the score and the domain picture behind it. The history it is
+  // computed from is kept, and the card comes back with a pass.
+  if(!G.canUse('readiness')){
+    el.innerHTML = opts.compact ? '' : G.gate('readiness', 'readiness');
+    return;
+  }
   const r = computeReadiness();
   if(!r.available){
     el.innerHTML = opts.compact
@@ -615,7 +634,7 @@ function renderReadiness(targetId, opts){
   } else {
     el.innerHTML = `
       <div class="readiness-card">
-        <span class="r-tag">Estimated pass probability</span>
+        <span class="r-tag">Estimated pass probability ${G.badge()}</span>
         <div class="r-head">
           <span class="r-num">${r.probabilityPct}%</span>
           <span class="r-label tier-${r.tier}">${r.label}</span>
@@ -1152,7 +1171,92 @@ function refreshIntroState(){
   renderWeakDomainsPanel();
   renderStreakWidget();
   renderResumeCard();
+  renderPremium();
 }
+
+// ---- Premium on the start screens ----
+// A slot for a gate card or a note, made once next to what it stands in for.
+function premiumSlot(id, anchor){
+  let el = document.getElementById(id);
+  if(!el && anchor && anchor.parentNode){
+    el = document.createElement('div');
+    el.id = id;
+    el.className = 'premium-slot';
+    anchor.insertAdjacentElement('afterend', el);
+  }
+  return el;
+}
+function renderPremium(){
+  document.querySelectorAll('[data-premium-badge]').forEach(el => { el.innerHTML = G.badge(); });
+  const locked = G.locked();
+
+  // The daily allowance, said up front on Practice rather than discovered.
+  const head = document.querySelector('#introScreen .page-head');
+  const notice = head ? premiumSlot('premiumNotice', head) : null;
+  if(notice){
+    let html = '';
+    if(locked && RUNNER_PAGE === 'practice'){
+      const left = G.quotaLeft();
+      html = left > 0
+        ? `<p class="premium-quota">${left} free practice question${left === 1 ? '' : 's'} left today.</p>`
+        : G.gate('daily-limit', 'practice');
+    }
+    notice.innerHTML = html;
+  }
+
+  // One free timed exam; the start button gives way to the gate once it is spent.
+  const startBtn = document.getElementById('startBtn');
+  if(startBtn){
+    const slot = premiumSlot('examGate', startBtn);
+    const canStart = G.canStartExam();
+    startBtn.hidden = !canStart;
+    slot.innerHTML = !canStart ? G.gate('exam', 'exams')
+      : locked ? '<p class="premium-quota">Your one free timed exam is ready when you are.</p>' : '';
+  }
+
+  // Missed-question review. The list itself is kept and keeps growing.
+  const reviewRow = document.getElementById('reviewRow');
+  if(reviewRow && RUNNER_PAGE === 'practice'){
+    const slot = premiumSlot('missedGate', reviewRow);
+    const lockMissed = !G.canUse('review') && loadMissed().length > 0;
+    if(lockMissed){
+      $id('reviewBtn').hidden = true;
+      reviewRow.hidden = $id('flaggedReviewBtn').hidden;
+    }
+    slot.innerHTML = lockMissed ? G.gate('review', 'practice-missed') : '';
+  }
+
+  // The spaced queue. Its counts stay on show; only starting it is Premium.
+  const spaced = document.getElementById('spacedReviewBtn');
+  if(spaced && RUNNER_PAGE === 'review'){
+    const slot = premiumSlot('reviewGate', spaced);
+    const lockSpaced = !G.canUse('review');
+    spaced.hidden = lockSpaced;
+    slot.innerHTML = lockSpaced ? G.gate('review', 'review') : '';
+  }
+}
+// A start that was refused: the gate for it, on screen and in focus.
+function blockWith(feature){
+  refreshIntroState();
+  let card = document.querySelector(`#introScreen [data-premium-feature="${feature}"]`);
+  const notice = document.getElementById('premiumNotice');
+  if(!card && notice){
+    notice.innerHTML = G.gate(feature, 'start');
+    card = notice.querySelector('[data-premium-feature]');
+  }
+  if(!card) return;
+  card.scrollIntoView({block: 'center'});
+  const btn = card.querySelector('button');
+  if(btn) btn.focus();
+}
+// Signing in, or a pass landing, changes what the start screen offers.
+(function(){
+  let first = true;
+  G.onChange(() => {
+    if(first){ first = false; return; }
+    if(introScreen.style.display !== 'none') refreshIntroState();
+  });
+})();
 
 // The due-queue figures wherever a page shows them: the Review page's stat row,
 // its ready/empty states, and the link card on Practice. Everything due is
@@ -1345,9 +1449,11 @@ $id('flashcardBtn').addEventListener('click', () => {
     const filtered = pool.filter(i => QUESTIONS[i].diff === diffFilter);
     if(filtered.length > 0) pool = filtered;
   }
+  if(G.quotaApplies('flashcard') && G.quotaLeft() <= 0){ blockWith('daily-limit'); return; }
   fcIndices = shuffle(pool);
   fcCurrent = 0;
   fcFlipped = false;
+  fcServed = new Set();
   loadExplanations();
   introScreen.style.display = 'none';
   $id('flashcardScreen').style.display = 'block';
@@ -1358,13 +1464,29 @@ $id('flashcardBtn').addEventListener('click', () => {
 let fcIndices = [];
 let fcCurrent = 0;
 let fcFlipped = false;
+let fcServed = new Set(); // cards counted against the daily allowance
 
 async function renderFlashcard(){
   // The back of the card is the explanation, so this is one of the two places
   // that has to have it. Awaited before anything is written, rather than
   // rendering the front and patching the back in later.
   await loadExplanations();
-  const q = QUESTIONS[fcIndices[fcCurrent]];
+  // A card shows its answer, so it counts against the free allowance like a
+  // question does — once per card per sitting.
+  const fcIdx = fcIndices[fcCurrent];
+  if(G.quotaApplies('flashcard') && !fcServed.has(fcIdx)){
+    if(G.take()) fcServed.add(fcIdx);
+    else {
+      $id('fcFront').innerHTML = G.gate('daily-limit', 'flashcards');
+      $id('fcBack').innerHTML = '';
+      $id('fcFront').style.display = 'block';
+      $id('fcBack').style.display = 'none';
+      $id('fcNextBtn').disabled = true;
+      return;
+    }
+  }
+  $id('fcNextBtn').disabled = false;
+  const q = QUESTIONS[fcIdx];
   $id('fcProgressText').textContent = `Card ${fcCurrent+1} of ${fcIndices.length}`;
   $id('fcDomain').innerHTML = `${q.domain}<span class="diff-badge ${q.diff}">${q.diff}</span>`;
   $id('fcProgressFill').style.width = ((fcCurrent+1)/fcIndices.length*100) + '%';
@@ -1434,6 +1556,7 @@ $id('flashcardExitBtn').addEventListener('click', () => {
 });
 
 function startDomainQuiz(domain, length){
+  if(G.quotaApplies('domain')) length = Math.min(length, G.quotaLeft());
   const diffFilter = $id('difficultySelect').value;
   let pool = domain === 'all'
     ? QUESTIONS.map((_,i) => i)
@@ -1578,6 +1701,25 @@ $id('adaptiveStartBtn').addEventListener('click', () => {
 });
 
 function beginQuiz(withTimer, resumeState){
+  // Premium, checked once here so every way in (buttons, links, ?start=)
+  // meets the same rules. A resumed attempt is the same attempt and always
+  // carries on.
+  if(!resumeState){
+    if((mode === 'review' || mode === 'spaced') && !G.canUse('review')){ blockWith('review'); return; }
+    if(mode === 'full'){
+      if(!G.canStartExam()){ blockWith('exam'); return; }
+      G.examStarted();
+    }
+    if(G.quotaApplies(mode)){
+      const left = G.quotaLeft();
+      if(left <= 0){ blockWith('daily-limit'); return; }
+      if(mode === 'adaptive') adaptiveState.length = Math.min(adaptiveState.length, left);
+      else activeIndices = activeIndices.slice(0, left);
+    }
+    served = new Set();
+  } else {
+    served = new Set(resumeState.served || []);
+  }
   loadExplanations();
   if(resumeState){
     mode = resumeState.mode;
@@ -1688,6 +1830,13 @@ function updateTimer(){
 
 function renderQuestion(){
   const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+  // The free allowance counts a question when it is first shown: an answer
+  // key is visible in the results for every question shown, answered or not.
+  if(G.quotaApplies(mode) && !served.has(current)){
+    if(G.take()) served.add(current);
+    else { renderQuotaStop(totalLen); return; }
+  }
+  $id('nextBtn').hidden = false;
   const q = QUESTIONS[activeIndices[current]];
   $id('progressText').textContent = `Question ${current+1} of ${totalLen}`;
   $id('answeredText').textContent = `${answers.filter(a=>a!==null).length} answered`;
@@ -1827,6 +1976,18 @@ function renderQuestion(){
   saveExamState();
 }
 
+// Out of free questions mid-session (another tab used them, or a resumed
+// attempt): the gate takes this question's place, and Submit still scores
+// every question already shown.
+function renderQuotaStop(totalLen){
+  $id('progressText').textContent = `Question ${current+1} of ${totalLen}`;
+  $id('qDomain').innerHTML = '';
+  $id('qPrompt').textContent = '';
+  $id('qOptions').innerHTML = G.gate('daily-limit', 'quiz') +
+    '<p class="premium-quota">Submit to see your results for the questions you have had.</p>';
+  $id('nextBtn').hidden = true;
+}
+
 function renderJumpRow(){
   const row = $id('jumpRow');
   const flagged = new Set(loadFlagged());
@@ -1925,6 +2086,21 @@ function awardQuizXp(domainStats, score){
 }
 
 function showResults(){
+  // Only the questions actually shown are scored and reviewed when the free
+  // allowance cut a session short; the rest were never seen.
+  if(G.quotaApplies(mode) && served.size < activeIndices.length){
+    const keep = activeIndices.map((_, i) => i).filter(i => served.has(i));
+    activeIndices = keep.map(i => activeIndices[i]);
+    answers = keep.map(i => answers[i]);
+    if(!activeIndices.length){
+      clearInterval(timerInterval);
+      clearExamState();
+      quizScreen.style.display = 'none';
+      introScreen.style.display = 'block';
+      refreshIntroState();
+      return;
+    }
+  }
   clearInterval(timerInterval);
   clearExamState();
   const elapsed = Date.now() - startTime;

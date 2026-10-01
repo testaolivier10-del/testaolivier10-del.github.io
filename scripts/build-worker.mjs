@@ -29,13 +29,14 @@ const check = process.argv.includes('--check');
 
 /* Dependency order, not alphabetical: a function has to be defined before the
    code that calls it runs. store.js depends on nothing, push.js depends on
-   nothing, the two couriers depend on both, index.js calls everything.
+   nothing, the two couriers depend on both, premium.js depends on store.js,
+   index.js calls everything.
 
    Flattening is also what caught the duplication that store.js now holds: two
    identical sb() helpers and two copies of MAX_UNANSWERED collided in one
    scope, which is a fair way to be told that two identical functions are one
    function. */
-const ORDER = ['store.js', 'push.js', 'email.js', 'reminders.js', 'index.js'];
+const ORDER = ['store.js', 'push.js', 'email.js', 'reminders.js', 'premium.js', 'index.js'];
 
 /* Strip the module plumbing. Everything ends up in one scope, so an import
    from a sibling has nothing to do and an `export` keyword is just noise —

@@ -67,6 +67,13 @@
       if(st) st.innerHTML = statusHtml(el.getAttribute('data-tool'));
     });
   }
+  // The Premium pill on each Premium tool, beside its link (never inside it).
+  if(A && A.badge) tools.forEach(function(el){
+    var b = el.hasAttribute('data-premium') && A.badge();
+    if(!b) return;
+    if(el.matches('a')){ el.parentNode.classList.add('anp-hub-p'); el.insertAdjacentHTML('afterend', b); }
+    else el.querySelector('.anp-hub-feat-kick').insertAdjacentHTML('beforeend', ' ' + b);
+  });
   applyChapter();
   render();
   app.classList.add('is-ready');

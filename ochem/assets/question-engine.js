@@ -133,8 +133,15 @@
     return q;
   }
 
+  /* Without Premium (once it launches) the pool holds only the free
+     chapters' questions; ochem-premium.js says which. accessKey changes when
+     access does, which rebuilds the pool. */
+  var builtFor = null;
   function build(){
-    if(POOL) return;
+    var G = window.OchemPremium;
+    var key = G ? G.accessKey() : 'all';
+    if(POOL && key === builtFor) return;
+    builtFor = key;
     POOL = [];
     (window.OchemInteractiveBank ? window.OchemInteractiveBank.ALL : []).forEach(function(q){
       var copy = {};
@@ -150,6 +157,7 @@
     Object.keys(legacy).forEach(function(topicId){
       legacy[topicId].forEach(function(raw, i){ POOL.push(normalizeLegacy(topicId, raw, i)); });
     });
+    if(key !== 'all') POOL = POOL.filter(function(q){ return !G.topicLocked(q.topic); });
 
     BY_CONCEPT = {};
     BY_TOPIC = {};

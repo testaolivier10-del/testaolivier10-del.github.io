@@ -10,6 +10,11 @@ Status values:
 - **pending review**: the course follows the stated position, but a licensed A&P instructor
   should confirm it.
 
+Going live (2026-10-01): the owner took the course out of Beta. That does not settle anything
+below: every **open** and **pending review** item stays as it is, and no instructor review has
+happened yet. The site no longer says "pending review by a licensed instructor" in the course
+footer; it says the course follows current published sources and points to "Report a problem".
+
 ## Contested science
 
 The rule (spec section 16, decided at the Phase 0 review): teach the explanation best supported by
