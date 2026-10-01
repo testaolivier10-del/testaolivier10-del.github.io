@@ -65,57 +65,63 @@
       ],
       guarantee: 'Fail the NREMT and your pass is extended free until you pass.',
       free: [
-        'Study notes, glossary, flowcharts, mnemonics and the body map',
-        '15 practice questions a day',
+        'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
+        '15 practice or review questions a day, any topic',
         'One full timed exam',
-        'Your progress, XP and streak',
+        'Your progress, XP, streak and weak topics',
       ],
       premium: [
         'The full 2,106-question bank, unlimited',
         'Unlimited timed 100-question exams',
+        'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',
-        'Missed-question review and spaced repetition',
         'The clinical scenario simulator',
       ],
     },
     ochem: {
       name: 'Organic Chemistry',
+      dailyFree: 15,
       freeChapters: ['foundations', 'electron-movement', 'nomenclature', 'acids-bases'],
       passes: [
         { id: 'ochem-semester', label: 'Semester (5 months)', price: 29 },
         { id: 'ochem-year', label: 'Full year', price: 49 },
       ],
       free: [
-        'The textbook section for every topic',
-        'Foundations chapters, fully interactive',
-        'Some of the interactive tools',
-        'Your progress, XP and streak',
+        'The textbook section for every topic, and the flashcards',
+        'The first four chapters, fully interactive',
+        '15 practice or review questions a day from any chapter',
+        'One full exam, and three of the interactive tools',
+        'Your progress, XP, streak and weak topics',
       ],
       premium: [
         'Every interactive lesson and mechanism walkthrough',
-        'The full 3,795-question practice bank',
+        'The full 3,795-question bank, unlimited practice and review',
+        'Unlimited exams',
         'Mastery dashboard and gap detection',
-        'Spaced-repetition flashcards',
         'All eight interactive tools',
       ],
     },
     anp: {
       name: 'Anatomy & Physiology',
+      dailyFree: 15,
       freeChapters: ['orientation', 'chem-physics', 'cells', 'tissues', 'cell-communication'],
       passes: [
         { id: 'anp-semester', label: 'Semester (5 months)', price: 29 },
         { id: 'anp-year', label: 'Full year (A&P I and II)', price: 49 },
       ],
       free: [
-        'The notes page for every topic, and the glossary',
-        'Foundations chapters, fully interactive',
-        'Your progress, XP and streak',
+        'The notes page for every topic, the glossary and the flashcards',
+        'The Foundations chapters, fully interactive',
+        '15 practice or review questions a day from any chapter',
+        'One full exam, and three of the interactive tools',
+        'Your progress, XP, streak and weak topics',
       ],
       premium: [
         'Every interactive lesson',
-        'The full question bank and review',
-        'The interactive tools: lab practical, predict the change, feedback loops, pathways, graphs',
-        'Flashcards and the dashboard',
+        'The full question bank, unlimited practice and review',
+        'Unlimited exams',
+        'All the interactive tools, including the lab practical',
+        'Detailed dashboard analytics',
       ],
     },
   };
@@ -255,6 +261,31 @@
     if (an && an.optedOut && an.optedOut()) return;
     var a = window.StudyHubAccount;
     if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
+  }
+
+  /* ---- the free exam -------------------------------------------------------
+
+     One full exam per course for free users. Used up when it starts (an
+     attempt in progress can always be finished); remembered in this browser.
+     Members and pre-launch visitors are never limited. NREMT keeps its own
+     synced flag (nremt/assets/premium-gates.js) and does not use this. */
+  var EXAM_KEY = 'levlprep_free_exam_v1';
+  function freeExam(course) {
+    var unlimited = !COURSES[course] || has(course);
+    var used = !unlimited && readJson(EXAM_KEY)[course] === true;
+    return {
+      unlimited: unlimited,
+      used: used,
+      available: unlimited || !used,
+      use: function () {
+        if (unlimited) return true;
+        var s = readJson(EXAM_KEY);
+        if (s[course] === true) return false;
+        s[course] = true;
+        writeJson(EXAM_KEY, s);
+        return true;
+      },
+    };
   }
 
   /* ---- what a page renders ---------------------------------------------- */
@@ -657,6 +688,7 @@
     card: card,
     open: open,
     quota: quota,
+    freeExam: freeExam,
     onChange: onChange,
     refresh: refresh,
     /* Exported for scripts/test/premium.test.mjs. */
