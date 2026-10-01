@@ -34,8 +34,14 @@ assets/                Shared across every course
                          no per-course copy: the two copies that used to exist drifted
                          apart and cost the NREMT course its mute-button styling
   site-chrome.js       The two-row site header every course renders: row 1 is global
-                         (back arrow, LevlPrep wordmark, course name, streak, level,
-                         account, mute, theme), row 2 is that course's section tabs
+                         (back arrow, LevlPrep wordmark, course name, search, streak,
+                         level, account, mute, theme), row 2 is that course's section
+                         tabs. On a phone the wordmark text drops and the course shows
+                         its short name (NREMT, Ochem, A&P). The search button and the
+                         "/" key open /search.html?course=<key>. Also holds LevlResume:
+                         each course home stores where its "Continue" button points in
+                         localStorage['levl_resume'], and the hub links to it
+  hub-home.js          The hub's per-course Continue links and its header search
   chime.js             The correct-answer sound, shared by both courses
   motion.js            The moments that make progress visible: the "+N XP" chip
                          that flies to the level badge, the level-up toast and

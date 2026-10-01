@@ -22,9 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
-<!-- Shared across every subject on LevlPrep: one login, one level, one
-     streak. Deferred, like every script on the page, so the page paints
-     before they arrive; they still run first, in this order. -->
+<!-- Shared by every subject: one login, level and streak. Deferred. -->
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
@@ -1158,7 +1156,8 @@
         <h1>Push the arrows yourself.</h1>
         <p class="lede">Twenty-three chapters, 121 topics and ten mechanisms you perform yourself, with the why on every wrong step.</p>
         <div class="hero-ctas">
-          <a href="learn.html" class="btn-press">Open the textbook</a>
+          <a href="learn.html" class="btn-press" id="heroPrimaryCta">Open the textbook</a>
+          <script>try{if((localStorage.getItem('ochem_progress')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>
           <a href="mechanisms/sn2.html" class="link-quiet">Perform the SN2 mechanism &rarr;</a>
           <a href="how-to-study.html" class="link-quiet">How to study ochem &rarr;</a>
         </div>
@@ -1219,9 +1218,7 @@
     </div>
   </div>
 
-  <!-- The curriculum as a path: fourteen modules snaking down the page in
-       the order they build. ochem-home.js fills each ring, marks the module
-       you're in and draws the line between them. -->
+  <!-- The chapters as a path; ochem-home.js fills the rings and the line. -->
   <div class="xsection">
     <div class="section-head">
       <h2>The path through the course</h2>

@@ -106,6 +106,72 @@
       '<path d="M16 9.5l5 5"/><path d="M21 9.5l-5 5"/>' +
     '</svg>';
 
+  /* The theme toggle: a moon in light mode (tap for dark), a sun in dark mode.
+     Both are in the button and theme.css shows the one that fits, so the icon
+     is right before any script runs. It replaced a "◑" glyph that rendered as
+     a barely visible speck at 14px. */
+  var THEME_ICONS =
+    '<svg class="ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg>' +
+    '<svg class="ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+  var SEARCH_ICON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
+  /* What the header calls each course where there is no room for its full
+     name: beside the wordmark on a phone. */
+  var COURSE_SHORT = { nremt: 'NREMT', ochem: 'Ochem', anp: 'A&P' };
+
+  /* "/" opens site search from anywhere that is not a text field — the
+     convention GitHub, YouTube and MDN all share. On the search page itself it
+     focuses the box instead of reloading. Exposed so the hub, which draws its
+     own header, wires the same key the same way. */
+  function searchUrl(courseKey){
+    return '/search.html' + (courseKey ? '?course=' + encodeURIComponent(courseKey) : '');
+  }
+  function wireSearchKey(courseKey){
+    if(window.__levlSearchKey) return;
+    window.__levlSearchKey = true;
+    document.addEventListener('keydown', function(e){
+      if(e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
+      var t = e.target, tag = t && t.tagName;
+      if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+      e.preventDefault();
+      if(/\/search\.html$/.test(location.pathname)){
+        var box = document.querySelector('input[type="search"], input[name="q"]');
+        if(box){ box.focus(); if(box.select) box.select(); return; }
+      }
+      location.href = searchUrl(courseKey);
+    });
+  }
+  window.LevlSearch = { url: searchUrl, wireKey: wireSearchKey, icon: SEARCH_ICON };
+
+  /* Where each course would send a returning student. Each course home works
+     this out for its own "Continue" button and leaves it here, under
+     localStorage['levl_resume'] = { nremt|ochem|anp: { url, label, t } }, so
+     the hub can link straight to the same place without loading three
+     curricula. set(key) with no url clears that course's entry.
+     ctaReady(el) un-hides a hero button that the page's inline script hid
+     (class cta-pending) while its returning-student label was worked out. */
+  var RESUME_KEY = 'levl_resume';
+  window.LevlResume = {
+    get: function(){
+      try{ return JSON.parse(localStorage.getItem(RESUME_KEY) || '{}') || {}; }catch(e){ return {}; }
+    },
+    set: function(key, url, label){
+      try{
+        var all = window.LevlResume.get();
+        if(url) all[key] = { url: url, label: label || '', t: Date.now() };
+        else delete all[key];
+        localStorage.setItem(RESUME_KEY, JSON.stringify(all));
+      }catch(e){}
+    },
+    ctaReady: function(el){ if(el) el.classList.remove('cta-pending'); }
+  };
+
   /* Keeps the button's icon, tooltip and aria-pressed in step with the stored
      preference. Called on render and again on every change, including changes
      that did not come from this button. */
@@ -273,28 +339,33 @@
   function render(cfg){
     var mount = document.getElementById('site-header');
     if(!mount) return;
+    var courseKey = courseKeyOf(cfg.subject);
     // The course tint (see --ctint in theme.css) keys off this.
-    document.body.setAttribute('data-course', courseKeyOf(cfg.subject));
+    document.body.setAttribute('data-course', courseKey);
 
     mount.innerHTML =
       '<div class="site-header__inner">' +
         '<span class="site-header__brand-row">' +
           '<a class="hub-back" href="' + HUB_URL + '" title="Back to LevlPrep" aria-label="Back to LevlPrep">&larr;</a>' +
           '<a class="site-header__brand" href="' + HUB_URL + '">' +
-            '<span class="brand-mark" aria-hidden="true">+</span> LevlPrep' +
+            '<span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span>' +
           '</a>' +
           (cfg.course
-            ? '<a class="site-header__course" href="' + cfg.courseHref + '">' + escapeHtml(cfg.course) + '</a>'
+            ? '<a class="site-header__course" href="' + cfg.courseHref + '" aria-label="' + escapeHtml(cfg.course) + ' home">' +
+                '<span class="site-header__course-full">' + escapeHtml(cfg.course) + '</span>' +
+                '<span class="site-header__course-short" aria-hidden="true">' + escapeHtml(cfg.courseShort || COURSE_SHORT[courseKey] || cfg.course) + '</span>' +
+              '</a>'
             : '') +
         '</span>' +
         '<div class="nav-right">' +
+          '<a href="' + searchUrl(courseKey) + '" class="theme-toggle search-toggle" id="searchToggle" aria-label="Search all courses" title="Search (press /)">' + SEARCH_ICON + '</a>' +
           '<a href="' + cfg.progressHref + '" class="nav-streak" id="navStreak" title="Daily streak" hidden>' + FLAME_SVG + '<span id="navStreakCount">0</span></a>' +
           '<a href="' + cfg.progressHref + '" class="level-badge" id="levelBadge" title="Your level">L1</a>' +
           '<span id="accountSlot"></span>' +
           (window.LevlSound
             ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>'
             : '') +
-          '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">◑</button>' +
+          '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">' + THEME_ICONS + '</button>' +
         '</div>' +
       '</div>';
 
@@ -332,6 +403,8 @@
     if(toggle) toggle.addEventListener('click', function(){
       setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
+
+    wireSearchKey(courseKey);
 
     syncHeights();
     requestAnimationFrame(syncHeights);

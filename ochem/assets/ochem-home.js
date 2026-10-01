@@ -134,6 +134,44 @@
 
   var resumedTopicId = null;
 
+  /* ---- hero button: "Continue: <topic>" for a returning student ---------
+     The lesson the resume card offers; failing that (every lesson started
+     has been finished), the first unfinished lesson after the furthest one
+     finished. Someone with no progress keeps the authored "Open the
+     textbook". The same target is left in LevlResume for the hub's
+     per-course Continue link. */
+  function continueTopic(){
+    var t = resumableTopic();
+    if(t) return t;
+    var p = readProgress(), lessons = [], last = -1;
+    C.MODULES.forEach(function(m){ m.topics.forEach(function(x){ if(C.hasLesson(x)) lessons.push(x); }); });
+    lessons.forEach(function(x, i){ if(p[x.id] && p[x.id].completed) last = i; });
+    if(last < 0) return null;
+    for(var i = last + 1; i < lessons.length; i++){
+      if(!(p[lessons[i].id] && p[lessons[i].id].completed)) return lessons[i];
+    }
+    return null;
+  }
+
+  function renderHeroCta(){
+    var cta = el('heroPrimaryCta');
+    var R = window.LevlResume;
+    try{
+      var t = continueTopic();
+      if(t){
+        if(cta){
+          cta.textContent = 'Continue: ' + t.title;
+          cta.href = base + t.href;
+        }
+        if(R) R.set('ochem', '/ochem/' + t.href, t.title);
+      } else if(R){
+        R.set('ochem', null);
+      }
+    } finally {
+      if(R) R.ctaReady(cta); else if(cta) cta.classList.remove('cta-pending');
+    }
+  }
+
   function renderResume(){
     var topic = resumableTopic();
     if(!topic) return; // leave the authored "start here" card
@@ -362,6 +400,7 @@
 
   function render(){
     try{ renderHero(); }catch(e){}
+    try{ renderHeroCta(); }catch(e){}
     try{ renderResume(); }catch(e){}
     try{ renderReview(); }catch(e){}
     try{ renderNext(); }catch(e){}
