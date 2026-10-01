@@ -411,7 +411,7 @@
       "options": [
         "This is the wrong entry. Dense tissue absorbs X-rays and appears white, not dark.",
         "This entry is right. CT computes sections from many X-ray measurements.",
-        "This entry is right. MRI uses a magnet and radio waves, with no X-rays; a radioactive tracer belongs to PET.",
+        "This entry is right. MRI uses a magnet and radio waves, with no X-rays.",
         "This entry is right. Ultrasound builds a live section from echoes."
       ]
     }
