@@ -98,6 +98,7 @@
 
   var runner = window.OchemSessionRunner({
     els: { card: cardEl, progFill: progFill, progLabel: progLabel, modeLabel: modeLabel },
+    limitSource: 'review',
     next: function(S){
       while(queue.length){
         var conceptId = queue.shift();
@@ -270,6 +271,8 @@
             esc('+ ' + (q.today.length - 8) + ' more in this batch') + '</span></div>'
           : '') +
       '</div>';
+      // Without Premium: what is left of today's shared question allowance.
+      if(window.OchemPremium) html += window.OchemPremium.quotaNote();
     } else if(q.capReached){
       html += '<div class="rec-card">' +
         '<div class="k">Done for today</div>' +

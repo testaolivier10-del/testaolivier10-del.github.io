@@ -979,3 +979,5 @@ a.mode-card{text-decoration:none;display:block;}
 .ochem-lock__notes{margin:10px 0 0;font-weight:800;}
 .tb-actions .premium-badge{align-self:center;margin-left:0;}
 .tool-tile__name .premium-badge{cursor:inherit;}
+.ochem-quota{margin:14px 0 0;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;}
+.ochem-quota .premium-badge{margin-left:4px;vertical-align:middle;}

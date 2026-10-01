@@ -31,6 +31,7 @@
    card(course, source)        the end-of-session upsell card ('' for members)
    open(course, source)        open the dialog directly
    quota(course)               daily free allowance: {limit, used, left, take()}
+   freeExam(course)            the one free exam: {available, used, use()}
    onChange(fn)                called (now and) whenever access changes
    Locked cards and pills open the dialog through one delegated listener
    ([data-premium-open]), so a page only renders HTML. */

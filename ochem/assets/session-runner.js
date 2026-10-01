@@ -696,21 +696,50 @@
       return String((q && q.id) || ('unknown:' + (q && q.topic))) + ':' + h.toString(36);
     }
 
+    /* Without Premium, a question past the free chapters takes one from the
+       daily allowance as it is shown (ochem-premium.js). The engine stops
+       offering them once it is spent, so this only says no in a race. */
+    function take(q){
+      var G = window.OchemPremium;
+      return !G || G.takeQuestion(q);
+    }
+
+    // The allowance, not the material, is what ended this session.
+    function showLimit(){
+      var G = window.OchemPremium;
+      S.limitHit = true;
+      cardEl.innerHTML = G.limitGate(config.limitSource || 'daily-limit') +
+        '<div class="actions" style="justify-content:flex-start;margin-top:14px;">' +
+          '<button type="button" class="btn-press alt sm" data-limit-done>' +
+            (S.asked ? 'Finish session' : 'Back') + '</button>' +
+        '</div>';
+      cardEl.querySelector('[data-limit-done]').addEventListener('click', finish);
+    }
+
     function advance(){
       S.viewIndex = null;
       // A queued remediation check jumps the line — the whole point is that it
       // arrives immediately after the teaching, while the correction is fresh.
+      // One the allowance can no longer cover is simply skipped.
       if(S.pendingCheck){
         var cq = S.pendingCheck;
         S.pendingCheck = null;
-        S.isCheck = true;
-        renderQuestion(cq);
-        return;
+        if(take(cq)){
+          S.isCheck = true;
+          renderQuestion(cq);
+          return;
+        }
       }
       S.isCheck = false;
       S.checkConcept = null;
+      if(E.resetLimited) E.resetLimited();   // wasLimited() then speaks for this pick only
       var q = config.next(S);
-      if(!q){ finish(); return; }
+      if(q && !take(q)){ showLimit(); return; }
+      if(!q){
+        if(E.wasLimited && E.wasLimited() && window.OchemPremium){ showLimit(); return; }
+        finish();
+        return;
+      }
       renderQuestion(q);
     }
 
