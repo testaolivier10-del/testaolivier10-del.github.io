@@ -436,19 +436,19 @@
     ],
     "q": "Fill the gap, going from top to bottom through the center of the brain: cerebrum → ____ → midbrain → pons → medulla oblongata → spinal cord.",
     "options": [
-      "Diencephalon",
+      "Basal nuclei",
       "Cerebellum",
       "Corpus callosum",
-      "Basal nuclei"
+      "Diencephalon"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "The diencephalon (thalamus, hypothalamus, epithalamus) sits between the cerebrum above and the brainstem, which starts with the midbrain, below.",
       "options": [
-        "Correct. The diencephalon links the cerebrum to the brainstem.",
+        "The basal nuclei are gray matter inside the cerebrum, not a separate level below it.",
         "The cerebellum lies behind the brainstem, attached beside the pons, not in the line from cerebrum to midbrain.",
         "The corpus callosum is white matter inside the cerebrum, joining the two hemispheres side to side.",
-        "The basal nuclei are gray matter inside the cerebrum, not a separate level below it."
+        "Correct. The diencephalon links the cerebrum to the brainstem."
       ]
     }
   },

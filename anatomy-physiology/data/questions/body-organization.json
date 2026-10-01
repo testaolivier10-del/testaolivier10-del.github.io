@@ -31,18 +31,18 @@
     "q": "Fill in the missing level: chemical level → cell → ____ → organ → organ system → organism.",
     "options": [
       "Molecule",
-      "Tissue",
+      "Organ system",
       "Organism",
-      "Organ system"
+      "Tissue"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "Between the cell and the organ sits the tissue: a group of similar cells, with the material around them, working on one job. Organs are built from two or more kinds of tissue.",
       "options": [
         "Molecules belong to the chemical level, which comes before the cell. The gap sits after the cell, so it must be something built from cells.",
-        "Correct. Similar cells group into tissues, and two or more kinds of tissue make an organ.",
+        "An organ system is a group of organs, so it comes after the organ, not before it. It already appears later in the sequence.",
         "The organism is the top level, a whole living individual. It is already at the end of the sequence.",
-        "An organ system is a group of organs, so it comes after the organ, not before it. It already appears later in the sequence."
+        "Correct. Similar cells group into tissues, and two or more kinds of tissue make an organ."
       ]
     }
   },

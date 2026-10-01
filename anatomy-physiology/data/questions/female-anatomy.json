@@ -518,18 +518,18 @@
   ],
   "q": "Complete the path of milk: alveoli → smaller ducts → ____ → openings at the nipple.",
   "options": [
-   "Lactiferous ducts",
-   "Areolar glands",
    "Suspensory ligaments",
+   "Areolar glands",
+   "Lactiferous ducts",
    "Uterine tubes"
   ],
-  "correct": 0,
+  "correct": 2,
   "why": {
    "correct": "Milk made in the alveoli drains through branching ducts into the lactiferous ducts, which open at the nipple.",
    "options": [
-    "Correct. The lactiferous ducts carry milk to the nipple.",
-    "Areolar glands are small separate glands on the areola that release an oily secretion, not milk channels.",
     "Suspensory ligaments are supporting bands of connective tissue, not ducts.",
+    "Areolar glands are small separate glands on the areola that release an oily secretion, not milk channels.",
+    "Correct. The lactiferous ducts carry milk to the nipple.",
     "Uterine tubes carry oocytes, not milk."
    ]
   }

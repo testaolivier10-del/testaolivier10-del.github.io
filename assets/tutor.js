@@ -54,7 +54,7 @@
     { file: '/nremt/flowcharts.html',  title: 'Flow Diagrams' },
     { file: '/nremt/skillsheets.html', title: 'Skills Guide' },
     { file: '/nremt/scenario-sim.html',title: 'Scenarios' },
-    { file: '/nremt/study-plan.html',  title: 'Study Plan' }
+    { file: '/nremt/exam-day.html',    title: 'Exam Day' }
   ];
 
   // Ochem's prose is one fragment per topic under ochem/notes/. curriculum.js
@@ -74,6 +74,9 @@
           seen[m[1]] = 1;
           out.push({ file: '/ochem/notes/' + m[1] + '.html', title: m[2] });
         }
+        // The glossary page ships term names only; its definitions live in
+        // the JSON file (scripts/build-ochem-glossary.mjs), keyed term/def.
+        out.push({ file: '/ochem/glossary.html', title: 'Glossary', data: '/ochem/assets/glossary.json' });
         return out;
       })
       .catch(function(){ return []; });
@@ -853,7 +856,15 @@
     '.lp-avatar{width:26px;height:26px;flex:none;}',
     '.lp-avatar svg{width:100%;height:100%;border-radius:8px;display:block;}',
     '@media(prefers-reduced-motion:reduce){.lp-bob,.lp-blip{animation:none;}.lp-launch{transition:none;}}',
-    '@media(max-width:640px){.lp-launch{right:10px;bottom:calc(80px + env(safe-area-inset-bottom));width:46px;height:46px;}.lp-tip{display:none;}}',
+    // Phones: a smaller mascot parked just above the bottom tab bar (74px
+    // tall), and tucked away while the reader scrolls down so it never sits on
+    // the line being read; it comes back on any scroll up, or at the page end.
+    // body.lp-has-fab gives the page enough bottom padding (theme.css) that
+    // the last lines can always be scrolled clear of it.
+    '.lp-launch{transition:transform .16s ease, opacity .2s ease;}',
+    '@media(max-width:640px){.lp-launch{right:12px;bottom:calc(84px + env(safe-area-inset-bottom));width:42px;height:42px;}',
+      '.lp-launch svg{border-radius:13px;}.lp-tip{display:none;}',
+      'html.lp-tucked .lp-launch{opacity:0;transform:translateY(16px);pointer-events:none;}}',
     '.lp-panel{position:fixed;right:20px;bottom:20px;z-index:901;width:min(408px,calc(100vw - 32px));',
       'height:min(620px,calc(100vh - 40px));display:flex;flex-direction:column;background:var(--paper);',
       'border:var(--bw) solid var(--line);border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.22);overflow:hidden;}',
@@ -1171,6 +1182,8 @@
     btn.setAttribute('aria-label', 'Ask the study assistant');
     btn.innerHTML = mascotSvg();
     document.body.appendChild(btn);
+    document.body.classList.add('lp-has-fab');
+    tuckOnScroll();
 
     var tip = document.createElement('div');
     tip.className = 'lp-tip';
@@ -1211,6 +1224,25 @@
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && host && host.style.display !== 'none') close();
     });
+  }
+
+  /* Sets html.lp-tucked while the page is scrolling down, so the phone-width
+     CSS above can move the floating buttons off the text being read (ochem's
+     periodic-table button follows the same class). Scrolling up, stopping near
+     the end of the page, or a page too short to scroll brings them back. */
+  function tuckOnScroll(){
+    var root = document.documentElement, lastY = window.scrollY || 0, ticking = false;
+    function update(){
+      ticking = false;
+      var y = window.scrollY || 0;
+      var atEnd = y + window.innerHeight >= root.scrollHeight - 40;
+      if(atEnd || y < 80 || y < lastY - 4) root.classList.remove('lp-tucked');
+      else if(y > lastY + 4) root.classList.add('lp-tucked');
+      if(Math.abs(y - lastY) > 4) lastY = y;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
   }
 
   function initInline(){

@@ -395,18 +395,18 @@
     "q": "Complete the stages of fracture repair: fracture hematoma → ____ → bony callus → remodeling.",
     "options": [
       "Epiphyseal plate",
-      "Fibrocartilaginous callus",
+      "Granulation of the periosteum",
       "Primary ossification center",
-      "Granulation of the periosteum"
+      "Fibrocartilaginous callus"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "After the hematoma, capillaries, fibroblasts and chondrocytes turn it into a soft fibrocartilaginous callus, which bone then replaces.",
       "options": [
         "An epiphyseal plate is the growth cartilage of a growing long bone, not a stage of repair.",
-        "Correct. The soft callus comes between hematoma and bony callus.",
+        "Granulation tissue does form in the hematoma, but the stage that follows is named for the callus of collagen and cartilage it produces.",
         "A primary ossification center is a stage of development before birth, not of fracture repair.",
-        "Granulation tissue does form in the hematoma, but the stage that follows is named for the callus of collagen and cartilage it produces."
+        "Correct. The soft callus comes between hematoma and bony callus."
       ]
     }
   },

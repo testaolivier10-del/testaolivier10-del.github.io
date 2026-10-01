@@ -224,19 +224,19 @@
     ],
     "q": "A student describes the response to a low blood calcium. One step is wrong. Which one?",
     "options": [
-      "The gland cells behind the thyroid release more calcium-raising hormone",
+      "The gland cells behind the thyroid release less calcium-raising hormone",
       "Osteoclasts resorb more bone",
-      "The kidneys excrete more calcium in the urine",
+      "The kidneys excrete less calcium in the urine",
       "The kidneys activate more vitamin D",
       "The intestine absorbs more calcium"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "When calcium is low, the calcium-raising hormone makes the kidney tubules return more calcium to the blood, so less, not more, is lost in the urine. It is phosphate that the kidneys excrete more of.",
+      "correct": "Low blood calcium is the stimulus for the gland cells behind the thyroid, so they release more of their calcium-raising hormone, not less. Every later step depends on that rise.",
       "options": [
-        "This step is right. Low calcium increases the hormone's release.",
+        "This is the error. Low calcium increases the hormone's release.",
         "This step is right. Bone resorption releases calcium into the blood.",
-        "This is the error. The kidneys keep more calcium when it is low; they excrete more phosphate.",
+        "This step is right. The hormone makes the kidney tubules return more calcium to the blood, so less is lost in the urine.",
         "This step is right. The hormone switches on the kidney step that activates vitamin D.",
         "This step is right. Activated vitamin D increases calcium absorption."
       ]
@@ -253,18 +253,18 @@
     "q": "Complete the chain: the kidneys activate more vitamin D → ____ → blood calcium rises over the next days.",
     "options": [
       "Osteoblasts lay down more osteoid on bone surfaces",
-      "The intestine absorbs more calcium from food",
+      "The gland cells release less hormone",
       "The kidneys excrete more calcium",
-      "The gland cells release less hormone"
+      "The intestine absorbs more calcium from food"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "Activated vitamin D acts on the intestinal lining, which makes more calcium transport proteins and absorbs more of the calcium in food. Because it works through new proteins, this takes a day or more.",
       "options": [
         "Laying down osteoid would take calcium out of the blood as it mineralizes, not raise blood calcium.",
-        "Correct. The intestine is vitamin D's main target in the loop.",
+        "Less hormone is the result once calcium has risen, not the step that raises it.",
         "Excreting more calcium would lower blood calcium.",
-        "Less hormone is the result once calcium has risen, not the step that raises it."
+        "Correct. The intestine is vitamin D's main target in the loop."
       ]
     }
   },

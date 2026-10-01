@@ -547,18 +547,18 @@
     ],
     "q": "A pregnant woman with a dangerous rise in blood pressure is receiving IV magnesium to prevent seizures. Nurses check a sign every hour, because it disappears first as magnesium climbs too high: ____.",
     "options": [
-      "Tendon reflexes",
-      "Pupil response to light",
       "Blood glucose",
+      "Pupil response to light",
+      "Tendon reflexes",
       "Skin color"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "High magnesium depresses nerve and muscle, and the tendon reflexes, such as the knee jerk, are lost first, before weakness, slow breathing and cardiac arrest.",
       "options": [
-        "Correct. Loss of tendon reflexes is the earliest warning.",
-        "The pupil response is not the early sign of high magnesium.",
         "Magnesium does not change blood glucose in a way that warns of toxicity.",
+        "The pupil response is not the early sign of high magnesium.",
+        "Correct. Loss of tendon reflexes is the earliest warning.",
         "Skin color changes only late, if breathing fails. It is not the early warning."
       ]
     }

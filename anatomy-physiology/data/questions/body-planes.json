@@ -375,17 +375,17 @@
     "q": "Complete the list. Sagittal divides right from left; frontal divides anterior from posterior; transverse divides ____.",
     "options": [
       "Medial from lateral",
-      "Superior from inferior",
       "Proximal from distal",
+      "Superior from inferior",
       "Superficial from deep"
     ],
-    "correct": 1,
+    "correct": 2,
     "why": {
       "correct": "The transverse plane is horizontal, so it separates the upper (superior) part from the lower (inferior) part.",
       "options": [
         "Medial and lateral compare distance from the midline; the sagittal plane divides along that direction.",
-        "Correct. Transverse separates superior from inferior.",
         "Proximal and distal apply along a limb and are not divided by one standard plane.",
+        "Correct. Transverse separates superior from inferior.",
         "Superficial and deep compare distance from the surface, not a direction a main plane divides."
       ]
     }
@@ -400,18 +400,18 @@
     ],
     "q": "A student lists how each imaging method works. One entry is wrong. Find it.",
     "options": [
-      "Radiograph: X-rays absorbed by dense tissue leave white areas on a flat image",
+      "Radiograph: X-rays absorbed by dense tissue leave dark areas on a flat image",
       "CT: X-rays from many angles are turned into sections by a computer",
-      "MRI: X-rays and a radioactive tracer make sections in any plane",
+      "MRI: a strong magnet and radio waves make sections in any plane",
       "Ultrasound: echoes of sound waves make a live section"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "MRI uses a strong magnet and radio waves, not X-rays or a tracer. The magnetic field lines up hydrogen nuclei, radio pulses disturb them, and their returning signals build the image.",
+      "correct": "Dense tissue such as bone absorbs more X-rays, so fewer reach the detector behind it and it shows white on a radiograph. Air-filled spaces, which absorb little, look dark.",
       "options": [
-        "This entry is right. Dense tissue absorbs more X-rays and appears white on the flat projection.",
+        "This is the wrong entry. Dense tissue absorbs X-rays and appears white, not dark.",
         "This entry is right. CT computes sections from many X-ray measurements.",
-        "This is the wrong entry. MRI uses a magnet and radio waves; a radioactive tracer belongs to PET.",
+        "This entry is right. MRI uses a magnet and radio waves, with no X-rays.",
         "This entry is right. Ultrasound builds a live section from echoes."
       ]
     }

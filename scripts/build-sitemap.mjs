@@ -39,7 +39,7 @@ const SKIP_FILES = /^(404\.html|offline\.html|googleb[0-9a-f]+\.html)$/;
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
-    if (SKIP_DIRS.has(name)) continue;
+    if (SKIP_DIRS.has(name) || name.startsWith('.')) continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds the A&P sources (notes are HTML
     // fragments); build-anp.mjs turns them into the pages listed here.
@@ -64,6 +64,7 @@ function priorityFor(path) {
   if (/^\/ochem\/(lessons|mechanisms)\//.test(path)) return '0.7';
   if (/^\/ochem\/tools\//.test(path)) return '0.6';
   if (/^\/ochem\/(practice|review|flashcards|mastery)\.html$/.test(path)) return '0.6';
+  if (path === '/nremt/flashcards.html') return '0.6';
   return '0.8';
 }
 

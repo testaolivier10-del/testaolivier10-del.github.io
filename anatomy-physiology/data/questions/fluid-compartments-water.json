@@ -267,19 +267,19 @@
     ],
     "q": "Complete the loop: plasma osmolality rises → osmoreceptors fire faster → ____ → aquaporins inserted in the collecting ducts → water reabsorbed.",
     "options": [
-      "The posterior pituitary releases ADH",
+      "The kidneys release renin",
       "The adrenal cortex releases aldosterone",
       "The atria release ANP",
-      "The kidneys release renin"
+      "The posterior pituitary releases ADH"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Osmoreceptors drive hypothalamic neurons whose axons end in the posterior pituitary. They release ADH, which acts on principal cells to insert aquaporins.",
       "options": [
-        "Correct. ADH from the posterior pituitary is the link between osmoreceptors and aquaporins.",
+        "Renin starts the RAAS in response to low pressure or volume. It is not the step that follows osmoreceptor firing.",
         "Aldosterone makes principal cells keep sodium and secrete potassium. It does not insert aquaporins, and osmoreceptors do not drive it.",
         "ANP is released when the atria are stretched, and it makes the kidneys excrete sodium and water, the opposite of this step.",
-        "Renin starts the RAAS in response to low pressure or volume. It is not the step that follows osmoreceptor firing."
+        "Correct. ADH from the posterior pituitary is the link between osmoreceptors and aquaporins."
       ]
     }
   },

@@ -139,7 +139,7 @@
 <body>
 <div id="site-header"></div>
 <div class="course-nav"></div>
-<noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="practice.html">Practice</a> · <a href="study-plan.html">Study Plan</a> · <a href="study-notes.html">Notes</a> · <a href="mnemonics.html">Mnemonics</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
+<noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 
 <div class="xshell">
 
@@ -155,6 +155,7 @@
              if the script never runs. -->
         <div class="hero-ctas">
           <a href="practice.html" class="btn-press" id="heroPrimaryCta">Start practicing</a>
+          <script>try{if(localStorage.getItem('nremt_inprogress_exam')||(localStorage.getItem('nremt_mastery')||'{}').length>2)heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>
           <a href="#sample" class="link-quiet">See a sample question</a>
         </div>
       </div>
@@ -413,9 +414,17 @@ document.addEventListener('DOMContentLoaded', function(){
     return n;
   }
 
+  // Also leaves the same target in LevlResume (site-chrome.js) for the hub's
+  // per-course Continue link, and un-hides the button the inline script above
+  // hid while this ran.
   function renderPrimaryCta(){
     var cta = document.getElementById('heroPrimaryCta');
     if(!cta) return;
+    var R = window.LevlResume;
+    try{ primaryCta(cta, R); }
+    finally{ if(R) R.ctaReady(cta); else cta.classList.remove('cta-pending'); }
+  }
+  function primaryCta(cta, R){
 
     // An attempt left running beats everything: it is the most specific
     // unfinished thing there is, and abandoning it loses real work.
@@ -423,6 +432,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(inProgress){
       cta.textContent = 'Resume your exam';
       cta.href = 'practice.html';
+      if(R) R.set('nremt', '/nremt/practice.html', 'Resume your exam');
       return;
     }
 
@@ -433,15 +443,17 @@ document.addEventListener('DOMContentLoaded', function(){
     // difference between a reminder people act on and one they turn off.
     if(window.LevlReminders){
       window.LevlReminders.report('nremt', {
-        due: due, label: 'NREMT-EMT Prep', url: '/nremt/practice.html?start=spaced'
+        due: due, label: 'NREMT-EMT Prep', url: '/nremt/review.html?start=spaced'
       });
     }
     if(due > 0){
       cta.textContent = 'Continue \u2014 ' + due + ' due for review';
-      cta.href = 'practice.html?start=spaced';
+      cta.href = 'review.html?start=spaced';
+      if(R) R.set('nremt', '/nremt/review.html?start=spaced', due + ' due for review');
       return;
     }
     // Nothing waiting: leave the markup's own new-visitor wording alone.
+    if(R) R.set('nremt', null);
   }
 
   // nav.js is deferred and defines window.LevlXP; run once it's there.

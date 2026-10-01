@@ -251,19 +251,19 @@
     "core": ["homeostasis", "interdependence"],
     "q": "A student wrote out how diabetic ketoacidosis develops. One step is wrong. Which one?",
     "options": [
-      "With almost no insulin, lipolysis runs unchecked",
+      "With almost no glucagon, lipolysis runs unchecked",
       "The liver turns the fatty acids into ketone bodies faster than tissues burn them",
-      "Ketone bodies release hydrogen ions, which raise plasma bicarbonate",
+      "Ketone bodies release hydrogen ions, which use up plasma bicarbonate",
       "The low pH stimulates the carotid bodies, and breathing becomes deep and fast",
       "The extra breathing lowers PaCO2 and moves the pH partway back toward normal"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "Hydrogen ions from ketone bodies use up bicarbonate as it buffers them, so plasma bicarbonate falls, not rises. The fall in bicarbonate is what defines a metabolic acidosis.",
+      "correct": "Diabetic ketoacidosis starts with too little insulin, not too little glucagon. Insulin normally restrains lipolysis, and glucagon, which is high in DKA, drives the liver to turn the freed fatty acids into ketone bodies.",
       "options": [
-        "This step is right. Insulin normally restrains lipolysis; without it, fat breakdown runs unchecked.",
+        "This is the error. Lipolysis runs unchecked because insulin is missing; glucagon is high in DKA, not low.",
         "This step is right. The flood of fatty acids drives ketogenesis in the liver.",
-        "This is the error. Bicarbonate takes up the H+ and is used up, so it falls.",
+        "This step is right. Bicarbonate takes up the H+ as it buffers them and is used up, so it falls.",
         "This step is right. The carotid bodies sense arterial pH from any cause and drive Kussmaul breathing.",
         "This step is right. Lowering PaCO2 is respiratory compensation; it raises the ratio but does not fully correct the pH."
       ]
@@ -276,15 +276,15 @@
     "diff": 1,
     "core": ["homeostasis"],
     "q": "Complete the formula: anion gap = Na+ − ( ____ + HCO3− ).",
-    "options": ["Cl−", "K+", "PaCO2", "Albumin"],
-    "correct": 0,
+    "options": ["Albumin", "K+", "PaCO2", "Cl−"],
+    "correct": 3,
     "why": {
       "correct": "The anion gap is sodium, the main measured cation, minus the two main measured anions, chloride and bicarbonate.",
       "options": [
-        "Correct. Na+ − (Cl− + HCO3−), normally about 8 to 12 mmol/L.",
+        "Albumin is the main unmeasured anion. It is part of what the gap stands for, not part of the formula.",
         "Potassium is a cation, not an anion, and the usual formula leaves it out.",
         "PaCO2 is a gas pressure, not an ion concentration.",
-        "Albumin is the main unmeasured anion. It is part of what the gap stands for, not part of the formula."
+        "Correct. Na+ − (Cl− + HCO3−), normally about 8 to 12 mmol/L."
       ]
     }
   },

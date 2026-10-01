@@ -234,18 +234,18 @@
     "q": "Fill in the missing step. Membrane reaches threshold → ______ → membrane rises rapidly to about +30 mV.",
     "options": [
       "Voltage-gated potassium channels open and potassium leaves",
-      "Voltage-gated sodium channels open and sodium rushes into the cell",
+      "Leak channels close",
       "The pump moves 3 Na+ out and 2 K+ in",
-      "Leak channels close"
+      "Voltage-gated sodium channels open and sodium rushes into the cell"
     ],
-    "correct": 1,
+    "correct": 3,
     "why": {
       "correct": "At threshold, enough voltage-gated sodium channels open that sodium entry outpaces potassium exit. The entering positive charge drives the rapid rise.",
       "options": [
         "Potassium leaving would make the inside more negative. That drives repolarization, which comes after the peak.",
-        "Correct. Sodium rushing in drives the rapid rise toward sodium's equilibrium potential.",
+        "Leak channels stay open throughout. The rise comes from voltage-gated sodium channels opening.",
         "The pump moves more positive charge out than in, which would make the inside slightly more negative, and it is far too slow to shape an action potential.",
-        "Leak channels stay open throughout. The rise comes from voltage-gated sodium channels opening."
+        "Correct. Sodium rushing in drives the rapid rise toward sodium's equilibrium potential."
       ]
     }
   },

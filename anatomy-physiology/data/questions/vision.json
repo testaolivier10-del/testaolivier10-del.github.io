@@ -231,19 +231,19 @@
     ],
     "q": "A student wrote this sequence for focusing on a near object. Which step is wrong?",
     "options": [
-      "The oculomotor nerve carries parasympathetic signals to the eye",
+      "The oculomotor nerve carries sympathetic signals to the eye",
       "The ciliary muscle contracts and its ring becomes smaller",
-      "The zonule fibers are pulled tighter",
+      "The zonule fibers go slack",
       "The lens bulges into a rounder shape",
       "Light from the near object is bent more and focuses on the retina"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "When the ring of ciliary muscle contracts and shrinks, it moves closer to the lens, so the zonule fibers go slack. Slack fibers release the lens, which rounds up.",
+      "correct": "Focusing on a near object is driven by parasympathetic fibers carried in the oculomotor nerve (cranial nerve III), not by sympathetic signals.",
       "options": [
-        "This step is right. Parasympathetic fibers of cranial nerve III drive accommodation.",
+        "This is the error. The oculomotor nerve carries the parasympathetic fibers that drive focusing on near objects.",
         "This step is right. The ciliary muscle is a ring, so contracting makes it smaller.",
-        "This is the error. The zonule fibers slacken; taut fibers would flatten the lens.",
+        "This step is right. When the ring of ciliary muscle shrinks, the zonule fibers go slack and release the lens.",
         "This step is right. The released lens rounds up because it is elastic.",
         "This step is right. A rounder lens refracts more."
       ]

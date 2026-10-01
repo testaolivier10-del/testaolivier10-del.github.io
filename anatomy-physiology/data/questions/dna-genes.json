@@ -194,19 +194,19 @@
     ],
     "q": "A student lists the steps of DNA replication. Which step contains the error?",
     "options": [
-      "Helicase separates the two strands by breaking the hydrogen bonds between paired bases.",
+      "DNA polymerase separates the two strands by breaking the hydrogen bonds between paired bases.",
       "Free nucleotides pair with the exposed bases: A with T and G with C.",
       "DNA polymerase links the new nucleotides into a strand and removes most wrongly placed bases.",
-      "Each new double helix is made of two new strands, and the two old strands rejoin each other."
+      "Each new double helix is made of one old strand and one new strand."
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "Replication is semiconservative. Each new double helix keeps one old strand, which served as the template, and pairs it with one new strand. The old strands do not rejoin.",
+      "correct": "Helicase, not DNA polymerase, separates the strands by breaking the hydrogen bonds between paired bases. DNA polymerase then builds new strands on the exposed templates.",
       "options": [
-        "This step is right. Helicase breaks the hydrogen bonds between bases, which separates the strands without breaking either backbone.",
+        "This is the error. Helicase separates the strands; DNA polymerase builds and proofreads the new strands.",
         "This step is right. Free nucleotides pair with the template by the base-pairing rule.",
         "This step is right. DNA polymerase joins the nucleotides with covalent bonds and proofreads as it goes.",
-        "This is the error. Each copy keeps one old strand and gains one new strand (semiconservative replication)."
+        "This step is right. Replication is semiconservative: each copy keeps one old strand, which served as its template."
       ]
     }
   },
@@ -220,19 +220,19 @@
     ],
     "q": "Fill in the missing step. Helicase unwinds the helix and separates the strands → free nucleotides pair with the exposed bases → ______ → two identical double helices, each with one old and one new strand.",
     "options": [
-      "DNA polymerase joins the paired nucleotides into a new strand",
+      "The nucleolus assembles the new strands",
       "Histones wrap each separated single strand into nucleosomes of its own",
       "Helicase joins the paired nucleotides into a new strand",
-      "The nucleolus assembles the new strands"
+      "DNA polymerase joins the paired nucleotides into a new strand"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Pairing places the right nucleotides, but something must join them with covalent bonds into a continuous strand. That is DNA polymerase's job.",
       "options": [
-        "Correct. DNA polymerase links each nucleotide to the growing strand and proofreads it.",
+        "The nucleolus assembles ribosome halves. It plays no part in copying DNA.",
         "Histones package double-stranded DNA after copying. They do not build new strands.",
         "Helicase separates strands; it does not link nucleotides. Linking is done by DNA polymerase.",
-        "The nucleolus assembles ribosome halves. It plays no part in copying DNA."
+        "Correct. DNA polymerase links each nucleotide to the growing strand and proofreads it."
       ]
     }
   },
@@ -418,7 +418,10 @@
         "answer": "none",
         "why": "Chromosome number depends on how many DNA molecules there are. The existing 46 are not destroyed, and without copying none are added."
       }
-    ]
+    ],
+    "why": {
+      "correct": "Copying DNA starts when helicase separates the two strands so each can serve as a template. With helicase blocked, the strands stay paired, nothing is exposed for DNA polymerase to copy, and little new DNA is made. The existing chromosomes are untouched, so their number does not change."
+    }
   },
   {
     "id": "anp-dna-genes-17",

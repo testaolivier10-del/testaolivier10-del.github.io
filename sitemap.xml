@@ -2,27 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://levlprep.com/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/autonomic.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -37,12 +37,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/cardiovascular.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/cell-communication.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -52,12 +52,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/chem-physics.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/cns.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -67,7 +67,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/digestive.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -77,7 +77,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/fluid-acid-base.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -97,7 +97,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/metabolism.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -112,12 +112,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/nervous-tissue.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/orientation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -127,7 +127,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/reproductive.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/chapters/urinary.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -172,7 +172,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/gradients.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -182,7 +182,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/concepts/index.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -206,28 +206,33 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/anatomy-physiology/dashboard.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/anatomy-physiology/exams.html</loc>
     <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/flashcards.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/glossary.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/learn.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/absorptive-postabsorptive.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -237,7 +242,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/acid-base-regulation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -252,22 +257,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/action-potential.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/active-transport.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/adaptive-immunity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/adrenal-glands.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -282,22 +287,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ans-anatomy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ans-control.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ans-signaling.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/antibody-immunity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -307,7 +312,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/biomolecules.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -317,17 +322,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/blood-flow-heart.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/blood-pressure-flow.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/blood-typing.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -337,7 +342,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/body-movements.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -352,7 +357,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/body-regions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -362,12 +367,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/bone-development.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/bone-histology.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -387,7 +392,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/bp-short-term.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -397,32 +402,32 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/brain-regions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/breathing-control.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/capillary-exchange.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/carbohydrate-metabolism.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cardiac-cycle.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cardiac-muscle-ap.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -432,12 +437,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cell-cycle.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cell-junctions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -447,7 +452,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cellular-respiration.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -467,22 +472,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/co2-transport.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/conduction-system.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/connective-tissue.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/cranial-nerves.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -492,12 +497,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/diffusion-osmosis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/digestion-absorption.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -507,12 +512,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/dna-genes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ecg.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -527,12 +532,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/embryonic-development.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/energy-balance-thermoregulation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -542,12 +547,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/epithelium.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/erythrocytes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -557,22 +562,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/female-anatomy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/female-hormones-cycle.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/fertilization.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/fetal-development-circulation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -587,17 +592,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/gas-exchange.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/glands.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/glomerular-filtration.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -607,12 +612,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/head-neck-muscles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/hearing-balance.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -622,7 +627,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/heart-chambers-valves.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -632,12 +637,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/higher-functions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/homeostasis-feedback.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -647,7 +652,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/hypothalamus-pituitary.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -662,12 +667,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/innate-immunity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/joint-classification.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -687,22 +692,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/leukocytes-platelets.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/lipid-protein-metabolism.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/liver-pancreas-gallbladder.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/lower-airway-lungs.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -717,12 +722,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/lung-volumes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/lymphatic-system.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -732,7 +737,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/male-physiology.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -747,7 +752,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/motor-pathways.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -762,7 +767,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/muscle-metabolism.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -782,7 +787,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/nervous-system-organization.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -797,7 +802,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/neuromuscular-junction.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -807,17 +812,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/nutrition.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/organelles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/other-endocrine.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -832,22 +837,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/pancreas-glucose.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/passive-transport.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/placenta.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/plasma-membrane.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -862,22 +867,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/protein-synthesis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/reflexes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/renal-function-urine.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/respiratory-disorders.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -887,22 +892,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/skeletal-muscle-structure.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/skin-accessory.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/skin-functions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/skin-injury.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -912,17 +917,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/skull.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/small-intestine.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/smooth-cardiac-muscle.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -937,7 +942,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/stomach.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -947,17 +952,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/synovial-joints.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/systemic-arteries.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/systemic-veins.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -967,17 +972,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/thyroid-parathyroid.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/tissue-membranes-repair.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/trunk-muscles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -987,27 +992,27 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/upper-airway.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/upper-limb-muscles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/upper-limb.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/urine-concentration.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/ventilation-mechanics.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1017,27 +1022,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/vessel-structure.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/vision.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/water-solutions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/lessons/word-parts.html</loc>
     <lastmod>2026-09-29</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://levlprep.com/anatomy-physiology/mastery.html</loc>
-    <lastmod>2026-09-24</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1047,7 +1047,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/acid-base-disorders.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1057,7 +1057,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/acids-bases-ph.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1077,27 +1077,27 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/adaptive-immunity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/adrenal-glands.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/aging.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/anatomical-position.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ans-anatomy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1107,7 +1107,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ans-signaling.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1132,12 +1132,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/blood-flow-heart.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/blood-pressure-flow.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1147,12 +1147,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/body-cavities.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/body-movements.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1162,37 +1162,37 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/body-planes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/body-regions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bone-calcium.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bone-development.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bone-histology.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bone-remodeling-repair.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/bone-structure.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1212,7 +1212,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/brain-regions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1227,7 +1227,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/carbohydrate-metabolism.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1237,12 +1237,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/cardiac-muscle-ap.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/cardiac-output.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1287,7 +1287,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/conduction-system.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1322,12 +1322,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/dna-genes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ecg.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1357,7 +1357,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/epithelium.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1372,7 +1372,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/female-anatomy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1382,7 +1382,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/fertilization.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1392,12 +1392,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/fiber-types.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/fluid-compartments-water.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1412,7 +1412,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/glomerular-filtration.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1427,7 +1427,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/hearing-balance.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1442,7 +1442,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/hemostasis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1472,12 +1472,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/inheritance.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/innate-immunity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1487,12 +1487,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/kidney-anatomy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/labor-birth.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1502,7 +1502,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/leukocytes-platelets.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1517,7 +1517,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/lower-airway-lungs.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1532,27 +1532,27 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/lung-volumes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/lymphatic-system.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/male-anatomy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/male-physiology.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/meiosis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1562,12 +1562,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/motor-pathways.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/mouth-esophagus.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1602,12 +1602,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/nervous-tissue-overview.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/neuro-exam.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1622,12 +1622,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/nutrition.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/organelles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1637,12 +1637,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ovarian-cycle.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/oxygen-transport.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1667,12 +1667,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/postnatal-lactation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/pregnancy.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1682,7 +1682,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/reflexes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1692,12 +1692,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/sensory-pathways.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1707,12 +1707,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/skin-accessory.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/skin-functions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1732,12 +1732,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/small-intestine.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/smooth-cardiac-muscle.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1747,7 +1747,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/spinal-nerves.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1757,12 +1757,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/synapses.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/synovial-joints.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1772,7 +1772,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/systemic-veins.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1787,7 +1787,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/tissue-membranes-repair.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1797,17 +1797,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/tubular-transport.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/upper-airway.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/upper-limb-muscles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1822,12 +1822,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/ventilation-mechanics.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/vertebral-column.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1837,12 +1837,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/vision.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/notes/water-solutions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -1857,782 +1857,807 @@
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/review.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/search.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/calculators.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/feedback-loops.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/graphs.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/lab-practical.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/pathways.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/predict.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/anatomy-physiology/tools/word-roots.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/changelog.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/body-map.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/dashboard.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/exam-day.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/nremt/exams.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/flowcharts.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/formulary.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/glossary.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/mnemonics.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/practice.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/reference-cards.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/nremt/review.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/scenario-sim.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/search.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/skillsheets.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/sound-trainer.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/study-notes.html</loc>
-    <lastmod>2026-09-24</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://levlprep.com/nremt/study-plan.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/nremt/tools.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/dashboard.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/exams.html</loc>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/ochem/glossary.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/how-to-study.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/learn.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/acetals.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/acidity-factors.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/acyl-chlorides-anhydrides.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/acyl-substitution.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/addition-polymers.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/addition-reactions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alcohol-oxidation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alcohol-reactions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/aldehyde-oxidation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/aldehydes-ketones.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/aldol.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alkene-oxidation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alkene-structure.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alkynes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alpha-halogenation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/alpha-hydrogens.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/amine-reactions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/amine-structure.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/amine-synthesis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/amino-acids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/aromaticity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/atomic-structure.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/axial-equatorial.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/baeyer-villiger.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/benzylic-reactivity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/birch-reduction.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/bond-polarity.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/bonding.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/bronsted.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/c-nmr.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/carbocations.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/carbohydrates.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/carbon-carbon-bonds.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/carbonyl-reduction.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/carboxylic-acids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/chirality.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/cis-trans-ez.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/claisen.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/condensation-polymers.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/conformational-analysis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/conjugate.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/conjugated-systems.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/cross-coupling.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/curved-arrows.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/cyclohexanes.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/diastereomers.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/diazonium-chemistry.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/diels-alder.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/diene-addition.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/directing-effects.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/e1.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/e2.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/eas.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/electron-rich-poor.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/electronegativity.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/electrophiles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/enantiomers.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/energy-diagrams.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/enolate-regiochemistry.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/epoxides.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/ester-syntheses.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/esters-amides.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/ether-chemistry.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/fischer.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/formal-charge.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/functional-group-interconversion.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/functional-groups.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/gilman-reagents.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/grignard-reagents.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/h-nmr.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/hofmann-elimination.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/hybridization.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/hydrates-cyanohydrins.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/hydrogenation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/imines-enamines.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/ir.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/kinetic-thermodynamic.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/leaving-groups.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/lewis-acids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/lewis-structures.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/lipids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/markovnikov.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/mass-spec.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/meso.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/michael-robinson.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/molecular-geometry.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/multistep-synthesis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/naming-functional-groups.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/naming-parent-chain.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/naming-rings-unsaturation.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/naming-substituents.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/newman.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/nitriles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/nucleic-acids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/nucleophiles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/nucleophilic-addition.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/nucleophilic-aromatic.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/orbitals.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/organolithium-reagents.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/organometallic-bonding.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/oxidation-states.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/peptides-proteins.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/phenols.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/pka.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/polymer-basics.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/polymer-design.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/polymer-properties.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/prochirality.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/protecting-groups.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/radical-halogenation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/resonance.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/retrosynthesis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/ring-flips.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/rs-configuration.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/skeletal-structures.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/sn1.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/sn2.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/stereocenters.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/substrate-effects.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/uv-vis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/notes/wittig-reaction.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/search.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/privacy.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/search.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/sources.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/terms.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/acetals.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2642,7 +2667,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/acyl-chlorides-anhydrides.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2652,7 +2677,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/addition-polymers.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2667,17 +2692,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/alcohol-reactions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/aldehyde-oxidation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/aldehydes-ketones.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2702,27 +2727,27 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/alpha-halogenation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/alpha-hydrogens.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/amine-reactions.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/amine-structure.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/amine-synthesis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2742,22 +2767,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/axial-equatorial.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/baeyer-villiger.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/benzylic-reactivity.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/birch-reduction.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2777,7 +2802,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/c-nmr.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2802,7 +2827,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/carboxylic-acids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2817,17 +2842,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/claisen.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/condensation-polymers.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/conformational-analysis.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2842,7 +2867,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/cross-coupling.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2862,7 +2887,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/diazonium-chemistry.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2877,12 +2902,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/directing-effects.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/eas.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2907,12 +2932,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/energy-diagrams.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/enolate-regiochemistry.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2922,7 +2947,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/ester-syntheses.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2937,7 +2962,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/fischer.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2952,7 +2977,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/functional-groups.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2967,12 +2992,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/h-nmr.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/hofmann-elimination.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2982,7 +3007,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/hydrates-cyanohydrins.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2997,7 +3022,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/ir.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3037,12 +3062,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/meso.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/michael-robinson.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3077,17 +3102,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/newman.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/nitriles.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/nucleic-acids.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3097,12 +3122,12 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/nucleophilic-addition.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/nucleophilic-aromatic.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3117,7 +3142,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/organometallic-bonding.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3132,7 +3157,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/phenols.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3142,22 +3167,22 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/polymer-basics.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/polymer-design.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/polymer-properties.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/prochirality.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3167,7 +3192,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/radical-halogenation.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3192,17 +3217,17 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/skeletal-structures.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/stereocenters.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/substrate-effects.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -3212,117 +3237,117 @@
   </url>
   <url>
     <loc>https://levlprep.com/ochem/lessons/wittig-reaction.html</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/acyl-substitution.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/addition.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/aldol.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/carbonyl-addition.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/claisen.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/e1.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/e2.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/eas.html</loc>
-    <lastmod>2026-09-29</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/sn1.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/mechanisms/sn2.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-29</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://levlprep.com/ochem/flashcards.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://levlprep.com/nremt/flashcards.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://levlprep.com/ochem/mastery.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <loc>https://levlprep.com/ochem/flashcards.html</loc>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/practice.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/review.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-10-01</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/acid-base.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/arrow-pusher.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/conformations.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/reaction-predictor.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/reagent-roadmap.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/resonance.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/spectroscopy.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/ochem/tools/viewer-3d.html</loc>
-    <lastmod>2026-09-24</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

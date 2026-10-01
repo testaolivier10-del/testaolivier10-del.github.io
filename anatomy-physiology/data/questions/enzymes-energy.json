@@ -166,18 +166,18 @@
     "core": ["energy"],
     "q": "Fill the gap in this chain. Catabolic reactions break down glucose and release energy → ______ → ATP hydrolysis releases energy → anabolic reactions join amino acids into proteins.",
     "options": [
-      "ADP and phosphate are joined to form ATP",
-      "ATP is split into ADP and phosphate",
       "Glucose molecules are linked into glycogen",
+      "ATP is split into ADP and phosphate",
+      "ADP and phosphate are joined to form ATP",
       "Enzymes add their own energy to the reactants"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Catabolism releases energy, and part of it is captured by rebuilding ATP from ADP and phosphate. That ATP is then hydrolyzed to power anabolic reactions such as protein building.",
       "options": [
-        "Correct. Rebuilding ATP is how energy released by catabolism is captured and carried to the reactions that need it.",
-        "Splitting ATP is the next step in the chain, not the missing one. ATP has to be made before it can be split.",
         "Building glycogen is itself an anabolic, energy-requiring reaction. It uses energy rather than capturing it for protein building.",
+        "Splitting ATP is the next step in the chain, not the missing one. ATP has to be made before it can be split.",
+        "Correct. Rebuilding ATP is how energy released by catabolism is captured and carried to the reactions that need it.",
         "Enzymes lower activation energy; they do not add energy. They come out of each reaction unchanged."
       ]
     }

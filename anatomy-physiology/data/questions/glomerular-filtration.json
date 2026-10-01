@@ -419,19 +419,19 @@
     ],
     "q": "Fill the gap in the layers of the filtration membrane, from the blood side: fenestrated endothelium → ____ → filtration slits between podocyte pedicels.",
     "options": [
-      "Glomerular basement membrane",
+      "Mesangial cells",
       "Parietal layer of the capsule",
       "Capsular space",
-      "Mesangial cells"
+      "Glomerular basement membrane"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "The glomerular basement membrane, formed from the fused basement membranes of the endothelium and the podocytes, lies between the two cell layers. It is thick and negatively charged, and it holds back large proteins.",
       "options": [
-        "Correct. The basement membrane sits between the endothelium and the podocytes.",
+        "Mesangial cells lie between the capillary loops; filtrate does not pass through them.",
         "The parietal layer is the outer wall of the capsule, across the capsular space, not part of the filter.",
         "The capsular space is where the filtrate ends up, after all three layers.",
-        "Mesangial cells lie between the capillary loops; filtrate does not pass through them."
+        "Correct. The basement membrane sits between the endothelium and the podocytes."
       ]
     }
   },

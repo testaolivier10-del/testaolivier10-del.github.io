@@ -305,18 +305,18 @@
     ],
     "q": "Complete the sequence: blood volume rises → the atria are stretched more → atrial muscle cells release ANP → ____ → blood volume falls back toward normal.",
     "options": [
-      "The kidneys excrete more sodium and water",
-      "The adrenal cortex releases more aldosterone",
       "The posterior pituitary releases more ADH",
+      "The adrenal cortex releases more aldosterone",
+      "The kidneys excrete more sodium and water",
       "Arterioles constrict and TPR rises"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "ANP makes the kidneys excrete more sodium, and water leaves with it. It also lowers renin, aldosterone and ADH. The lost fluid lowers blood volume, which reduces atrial stretch.",
       "options": [
-        "Correct. Natriuresis, with water following, is the step that lowers volume.",
-        "ANP reduces aldosterone release. More aldosterone would make the kidneys keep sodium and raise volume.",
         "ANP reduces ADH release. More ADH would make the kidneys keep water.",
+        "ANP reduces aldosterone release. More aldosterone would make the kidneys keep sodium and raise volume.",
+        "Correct. Natriuresis, with water following, is the step that lowers volume.",
         "ANP relaxes arteriole smooth muscle, lowering TPR. Constriction is the opposite of its effect."
       ]
     }

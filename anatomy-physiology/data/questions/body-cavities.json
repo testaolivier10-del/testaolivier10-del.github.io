@@ -199,19 +199,19 @@
     ],
     "q": "Complete the statement. The dorsal body cavity = the cranial cavity + the ____.",
     "options": [
-      "vertebral canal",
+      "mediastinum",
       "pelvic cavity",
       "pleural cavity",
-      "mediastinum"
+      "vertebral canal"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "The dorsal body cavity has two continuous parts: the cranial cavity inside the skull, holding the brain, and the vertebral canal inside the backbone, holding the spinal cord.",
       "options": [
-        "Correct. The vertebral canal is the lower part of the dorsal body cavity.",
+        "The mediastinum is the central compartment of the thoracic cavity, in the ventral body cavity.",
         "The pelvic cavity is the lower part of the abdominopelvic cavity, in the ventral body cavity.",
         "The pleural cavities are serous spaces around the lungs, in the ventral body cavity.",
-        "The mediastinum is the central compartment of the thoracic cavity, in the ventral body cavity."
+        "Correct. The vertebral canal is the lower part of the dorsal body cavity."
       ]
     }
   },

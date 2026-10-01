@@ -597,7 +597,7 @@ a.mode-card{text-decoration:none;display:block;}
 .oarrow:hover .oarrow-line{stroke-width:3.5;}
 
 /* ---------------------------------------------------------------------
-   Progression panel (mastery.html, rendered by assets/game-panel.js).
+   Progression panel (dashboard.html, rendered by assets/game-panel.js).
    Reuses the shared .badge/.badge-grid styles from the site theme for the
    achievement row; everything below is the level card, the two quest cards
    and the concept-tier bars.
@@ -940,3 +940,34 @@ a.mode-card{text-decoration:none;display:block;}
 .tb-static-flag{
   font:800 11px var(--font-ui);color:var(--muted);white-space:nowrap;
 }
+
+/* ---- Learn: "In this chapter" and back to top (textbook.js) ----
+   A chapter is one long page; on a phone the contents drawer is at the very
+   top. The jump menu lists the chapter's sections and, on narrow screens,
+   stays under the header; the Top button appears a couple of screens down. */
+.tb-jump{margin:14px 0 6px;border:var(--bw) solid var(--line);border-radius:var(--radius-lg,14px);background:var(--white);}
+.tb-jump summary{cursor:pointer;padding:10px 14px;font:800 13.5px var(--font-ui);color:var(--ink);list-style-position:inside;}
+.tb-jump summary:hover{color:var(--accent);}
+.tb-jump-n{color:var(--muted);font-weight:700;margin-left:4px;}
+.tb-jump-list{margin:0;padding:0 14px 8px 36px;max-height:55vh;overflow-y:auto;}
+.tb-jump-list li{padding:4px 0;}
+.tb-jump-list a{font:700 14px var(--font-ui);color:var(--ink);text-decoration:none;}
+.tb-jump-list a:hover{color:var(--accent);text-decoration:underline;}
+.tb-jump-all{margin:0 14px 12px;padding:6px 14px;border-radius:var(--radius-pill,999px);border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 12.5px var(--font-ui);cursor:pointer;}
+.tb-jump-all:hover{border-color:var(--accent);color:var(--accent);}
+@media (min-width:901px){.tb-jump-all{display:none;}}
+@media (max-width:900px){
+  .tb-jump{position:sticky;top:calc(var(--site-header-h,60px) + 6px);z-index:6;box-shadow:var(--lift-sm,0 2px 8px rgba(0,0,0,.08));}
+  .tb-section{scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
+}
+.tb-totop{
+  position:fixed;left:18px;bottom:calc(22px + env(safe-area-inset-bottom));z-index:35;
+  display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:var(--radius-pill,999px);
+  border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 13px var(--font-ui);
+  box-shadow:var(--lift-sm,0 4px 14px rgba(0,0,0,.12));cursor:pointer;
+}
+.tb-totop:hover{border-color:var(--accent);color:var(--accent);}
+.tb-totop[hidden]{display:none;}
+/* Bottom left: the study assistant's button holds bottom right. Above the
+   phone's bottom tab bar. */
+@media (max-width:640px){.tb-totop{bottom:calc(86px + env(safe-area-inset-bottom));left:12px;}}

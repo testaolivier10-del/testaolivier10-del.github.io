@@ -24,7 +24,7 @@
 // model, the 670 KB three.js bundle and the fonts. Those never change with
 // the shell (they are content-addressed by path, and a new model would be a
 // new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v38';
+const CACHE_NAME = 'levlprep-v39';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
@@ -43,6 +43,10 @@ const PRECACHE_URLS = [
   'assets/analytics.js',
   'assets/chime.js',
   'assets/icon.svg',
+  'assets/exam-date.js',
+  'assets/flashcards.css',
+  'search.html',
+  'assets/site-search-all.js',
   'nremt/index.html',
   'nremt/practice.html',
   'nremt/body-map.html',
@@ -57,7 +61,13 @@ const PRECACHE_URLS = [
   // split, and without this file it is a shell that says "the notes did not
   // load" — so the data is content, not an optional extra.
   'nremt/assets/study-notes.json',
-  'nremt/study-plan.html',
+  'nremt/review.html',
+  'nremt/exams.html',
+  'nremt/practice-engine.js',
+  'nremt/practice.css',
+  'nremt/flashcards.html',
+  'nremt/assets/flashcards-page.js',
+  'nremt/assets/flashcards.json',
   'nremt/exam-day.html',
   'nremt/dashboard.html',
   'nremt/tools.html',
@@ -102,6 +112,14 @@ const PRECACHE_URLS = [
   'ochem/assets/concept-teach.json',
   'ochem/assets/mastery-engine.js',
   'ochem/assets/ochem-xp.js',
+  'ochem/dashboard.html',
+  'ochem/exams.html',
+  'ochem/assets/exam-core.js',
+  'ochem/assets/exams-page.js',
+  'ochem/glossary.html',
+  'ochem/assets/glossary-page.js',
+  'ochem/assets/glossary-tip.js',
+  'ochem/assets/glossary.json',
   // The A&P shell: the course home, the lesson list, search and the runtime
   // every A&P page loads. Lessons, notes and figures are cached as visited.
   'anatomy-physiology/index.html',
@@ -116,6 +134,7 @@ const PRECACHE_URLS = [
   'anatomy-physiology/assets/anp-nav.js',
   'anatomy-physiology/assets/anp-glossary.js',
   'anatomy-physiology/assets/glossary.json',
+  'anatomy-physiology/dashboard.html',
 ];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude

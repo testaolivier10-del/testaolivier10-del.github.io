@@ -75,6 +75,27 @@
       '<a class="btn-press" href="' + base + 'lessons/' + t.id + '.html">' + (resumed.fresh ? 'Start the lesson' : resumed.done ? 'Go back to the lesson' : 'Continue the lesson') + '</a>';
   }
 
+  /* The hero's main button: "Continue: <topic>" once there is somewhere to
+     continue to (the same topic the card below offers), else the authored
+     "Start here". The target is also left in LevlResume for the hub. */
+  function renderHeroCta(){
+    var cta = el('heroPrimaryCta'), R = window.LevlResume;
+    try{
+      if(resumed){
+        var t = resumed.topic;
+        if(cta){
+          cta.textContent = 'Continue: ' + t.title;
+          cta.href = base + 'lessons/' + t.id + '.html';
+        }
+        if(R) R.set('anp', '/anatomy-physiology/lessons/' + t.id + '.html', t.title);
+      } else if(R){
+        R.set('anp', null);
+      }
+    } finally {
+      if(R) R.ctaReady(cta); else if(cta) cta.classList.remove('cta-pending');
+    }
+  }
+
   function renderReview(){
     if(!A) return;
     var n = A.reviewCount(), card = el('anpReview');
@@ -167,6 +188,7 @@
   function render(){
     try{ renderHero(); }catch(e){}
     try{ renderStart(); }catch(e){}
+    try{ renderHeroCta(); }catch(e){}
     try{ renderReview(); }catch(e){}
     try{ renderGoal(); }catch(e){}
     try{ renderPath(); }catch(e){}

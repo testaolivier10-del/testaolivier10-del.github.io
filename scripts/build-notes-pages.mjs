@@ -266,6 +266,7 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
+<script src="../assets/glossary-tip.js" defer></script>
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -291,7 +292,7 @@ ${ldJson}
   <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
        asides); it is the same class the textbook view uses, so a section looks
        identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view">
+  <article class="notes-body notes-view" data-glossary-topic="${topic.id}">
 ${START}
 ${prose}
 ${END}
@@ -300,7 +301,7 @@ ${END}
   <nav class="notes-onward" aria-label="Section navigation">${nav}</nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All ${total} sections</a></p>
+    <p><a href="../learn.html">&larr; All ${total} sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
     <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
   </footer>
 </div>

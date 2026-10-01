@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry Exams — Chapter Tests and a Timed Final</title>
+<meta name="description" content="Timed organic chemistry exams: a test for every chapter, midterms over the chapters you pick and a 50-question cumulative final, each ending with a full review.">
+<link rel="canonical" href="https://levlprep.com/ochem/exams.html">
+<meta property="og:title" content="Organic Chemistry Exams — Chapter Tests and a Timed Final">
+<meta property="og:description" content="Timed organic chemistry exams: a test for every chapter, midterms over the chapters you pick and a 50-question cumulative final, each ending with a full review.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/ochem/exams.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="../assets/errors.js" defer></script>
+<script src="../assets/account.js" defer></script>
+<script src="../assets/hub-progress.js" defer></script>
+<script src="../assets/chime.js" defer></script>
+<script src="../assets/site-chrome.js" defer></script>
+<script src="assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="assets/ochem.css">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<style>
+  .ex-small{display:block;font-size:13px;font-weight:700;color:var(--muted);line-height:1.5;}
+  .ex-note{font-size:14px;font-weight:700;color:var(--ink);line-height:1.55;margin:0 0 14px;}
+  .ex-notice{background:var(--tint-accent);color:var(--accent-text);border-radius:var(--radius);padding:10px 14px;font-weight:800;font-size:14px;}
+  .section-head{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;text-align:left;}
+  #examApp{margin-top:24px;}
+  .ex-run,.ex-results{max-width:1000px;margin-left:auto;margin-right:auto;}
+  .ex-field select{width:100%;max-width:480px;}
+  .ex-kinds{border:0;padding:0;margin:0 0 18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+  .ex-kinds legend{padding:0;margin:0 0 10px;}
+  .ex-kind{position:relative;display:flex;flex-direction:column;gap:4px;background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);padding:14px 16px;cursor:pointer;box-shadow:var(--lift-sm);}
+  .ex-kind input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;}
+  .ex-kind:has(input:checked){box-shadow:inset 0 0 0 2px var(--accent),var(--lift-sm);background:var(--tint-accent);}
+  .ex-kind:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px;}
+  .ex-kind-t{font:900 15px var(--font-ui);color:var(--ink);}
+  .ex-kind-d{font-size:13px;font-weight:700;color:var(--muted);line-height:1.45;}
+  .ex-panel{display:flex;flex-direction:column;gap:12px;margin-bottom:6px;}
+  .ex-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .ex-row .ex-field{flex:1 1 220px;}
+  .ex-field{display:flex;flex-direction:column;gap:6px;font:900 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);}
+  .ex-field select{font:800 15px var(--font-ui);color:var(--ink);background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-sm);padding:10px 12px;max-width:100%;text-transform:none;letter-spacing:0;}
+  .ex-group{border:0;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .ex-group legend{font:900 12px var(--font-ui);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:6px;}
+  .ex-chip{position:relative;}
+  .ex-chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;}
+  .ex-chip span{display:inline-block;padding:8px 14px;border-radius:var(--radius-pill);background:var(--white);border:var(--bw) solid var(--line);font:800 14px var(--font-ui);color:var(--ink);box-shadow:var(--lift-sm);}
+  .ex-chip input:checked + span{background:var(--accent);color:var(--on-accent-fill);}
+  .ex-chip input:focus-visible + span{outline:3px solid var(--accent);outline-offset:2px;}
+  .ex-avail{font:900 15px var(--font-ui);color:var(--ink);margin:16px 0 6px;}
+  .ex-how{margin:0 0 16px;max-width:680px;}
+  .ex-resume{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--tint-amber);border-radius:var(--radius);padding:14px 16px;margin:0 0 20px;color:var(--ink);font-weight:700;}
+  .ex-resume-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  .ex-history{margin-top:30px;max-width:720px;}
+  .ex-history ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+  .ex-history li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;background:var(--white);border:var(--bw) solid var(--line-soft);border-radius:var(--radius-sm);padding:10px 14px;}
+  .ex-h-label{font-weight:800;color:var(--ink);font-size:14px;}
+  .ex-h-score{font:900 18px var(--font-mono);color:var(--accent-text);}
+
+  /* Running */
+  .ex-bar{position:sticky;top:var(--site-header-h,112px);z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--paper);padding:10px 0 12px;border-bottom:var(--bw) solid var(--line-soft);margin-bottom:16px;}
+  .ex-bar-t{display:flex;flex-direction:column;min-width:0;}
+  .ex-label{font:900 15px var(--font-ui);color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .ex-status{font-size:13px;font-weight:700;color:var(--muted);}
+  .ex-clock{text-align:right;flex-shrink:0;}
+  .ex-time{display:block;font:900 22px var(--font-mono);color:var(--ink);}
+  .ex-time.is-low{color:var(--bad-text);}
+  .ex-layout{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:24px;align-items:start;}
+  .ex-q{border:0;padding:0;margin:0;min-width:0;}
+  .ex-q legend{padding:0;width:100%;}
+  .ex-q .step-title:focus{outline:none;}
+  .ex-q .step-title:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:6px;}
+  .ex-opts{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+  .ex-opt{display:flex;align-items:flex-start;gap:12px;background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);padding:13px 14px;font:800 15px var(--font-ui);color:var(--ink);cursor:pointer;box-shadow:var(--lift-sm);line-height:1.45;}
+  .ex-opt:hover{background:var(--hover-tint);}
+  .ex-opt input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--accent);flex-shrink:0;}
+  .ex-opt:has(input:checked){background:var(--tint-accent);box-shadow:inset 0 0 0 2px var(--accent);}
+  .ex-opt:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px;}
+  .ex-letter{font:900 13px var(--font-mono);color:var(--muted);min-width:1.2em;padding-top:2px;}
+  .ex-otext{flex:1;min-width:0;overflow-wrap:anywhere;}
+  .ex-controls{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-top:16px;}
+  .ex-controls .ex-flag[aria-pressed="true"]{background:var(--tint-bad);color:var(--bad-text);}
+  .ex-side{position:sticky;top:calc(var(--site-header-h,112px) + 90px);display:flex;flex-direction:column;gap:14px;}
+  .ex-navwrap summary{cursor:pointer;font:900 13px var(--font-ui);color:var(--ink);padding:4px 0;}
+  .ex-navcount{font-weight:700;color:var(--muted);}
+  .ex-nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:6px;margin-top:10px;}
+  .ex-nav button{position:relative;height:38px;border-radius:10px;border:var(--bw) solid var(--line);background:var(--white);font:800 13px var(--font-mono);color:var(--ink);cursor:pointer;}
+  .ex-nav button.is-done{background:var(--tint-accent);color:var(--accent-text);border-color:var(--accent);}
+  .ex-nav button.is-flag::after{content:"";position:absolute;top:3px;right:3px;width:7px;height:7px;border-radius:50%;background:var(--bad);}
+  .ex-nav button[aria-current="step"]{box-shadow:inset 0 0 0 2px var(--accent);}
+  .ex-key{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:8px;}
+  .ex-key-a,.ex-key-f{display:inline-block;width:12px;height:12px;border-radius:4px;background:var(--tint-accent);box-shadow:inset 0 0 0 1.5px var(--accent);}
+  .ex-key-f{border-radius:50%;width:8px;height:8px;background:var(--bad);margin-left:8px;}
+  .ex-dialog{border:0;border-radius:var(--radius-lg);padding:22px;max-width:min(440px,calc(100% - 32px));background:var(--white);color:var(--ink);box-shadow:var(--shadow-pop);}
+  .ex-dialog::backdrop{background:var(--overlay-bg,rgba(0,0,0,.4));}
+  .ex-dialog p{font-weight:800;font-size:15px;line-height:1.5;margin:0 0 16px;}
+  .ex-dialog-actions{display:flex;gap:10px;flex-wrap:wrap;}
+  @media (max-width:900px){
+    .ex-layout{grid-template-columns:1fr;}
+    .ex-side{position:static;}
+  }
+  @media (max-width:640px){
+    .ex-kinds{grid-template-columns:1fr;}
+    .ex-controls .btn-press,.ex-controls .btn-outline{flex:1 1 auto;}
+    .ex-time{font-size:19px;}
+  }
+
+  /* Results */
+  .ex-score{margin-bottom:14px;}
+  .ex-score:focus{outline:none;}
+  /* ochem.css colours .overall-card .k for a dark card and .xp-line em at
+     80% opacity; both fall under 4.5:1 here (light and dark respectively). */
+  .ex-score .k{color:var(--muted);}
+  .ex-results .xp-line em{opacity:1;}
+  .ex-score-d{max-width:380px;font-size:14px;font-weight:700;line-height:1.55;opacity:.9;}
+  .ex-next{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-direction:column;gap:8px;}
+  .ex-next li{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--white);border:var(--bw) solid var(--line-soft);border-radius:var(--radius-sm);padding:10px 14px;}
+  .ex-next b{color:var(--ink);}
+  .ex-next-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .ex-next-links .btn-outline{padding:8px 14px;font-size:13px;}
+  .ex-breaks{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+  .ex-break h3{font:900 14px var(--font-ui);margin:0 0 8px;color:var(--ink);}
+  .ex-bars{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;}
+  .ex-bars li{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(60px,1fr) auto;gap:10px;align-items:center;font-size:13.5px;font-weight:700;}
+  .ex-bar-name a{color:var(--accent-text);}
+  .ex-bars .track > i.is-hi{background:var(--good);}
+  .ex-bars .track > i.is-mid{background:var(--amber);}
+  .ex-bars .track > i.is-lo{background:var(--bad);}
+  .ex-bar-v{font:800 13px var(--font-mono);color:var(--muted);}
+  .ex-actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0;}
+  .ex-filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .ex-chip-b{padding:8px 14px;border-radius:var(--radius-pill);border:var(--bw) solid var(--line);background:var(--white);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+  .ex-chip-b[aria-pressed="true"]{background:var(--accent);color:var(--on-accent-fill);border-color:transparent;}
+  .ex-chip-b:disabled{opacity:.5;cursor:default;}
+  .ex-review{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;}
+  .ex-ritem{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--lift-sm);}
+  .ex-ritem.is-no{box-shadow:inset 4px 0 0 var(--bad),var(--lift-sm);}
+  .ex-ritem.is-ok{box-shadow:inset 4px 0 0 var(--good),var(--lift-sm);}
+  .ex-verdict{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 8px;}
+  .ex-verdict .ex-small{display:inline;}
+  .ex-vtag{font:900 12px var(--font-ui);text-transform:uppercase;letter-spacing:.05em;}
+  .is-ok .ex-vtag{color:var(--good-text);}
+  .is-no .ex-vtag{color:var(--bad-text);}
+  .ex-rstem{font-weight:800;font-size:15px;color:var(--ink);line-height:1.5;margin:0 0 10px;}
+  .ex-rn{font-family:var(--font-mono);color:var(--muted);}
+  .ex-ropts{list-style:none;padding:0;margin:0 0 10px;display:flex;flex-direction:column;gap:6px;}
+  .ex-ropts li{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;padding:8px 10px;border-radius:var(--radius-sm);font-size:14px;font-weight:700;color:var(--ink);}
+  .ex-ropts li.is-right{background:var(--tint-good);}
+  .ex-ropts li.is-wrong{background:var(--tint-bad);}
+  .ex-tag{font:900 11px var(--font-ui);text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:var(--radius-pill);}
+  .ex-tag.ok,.ex-tag.key{background:var(--good);color:var(--white);}
+  .ex-tag.key{background:var(--good-text);}
+  .ex-tag.no{background:var(--bad-text);color:var(--white);}
+  .ex-tag.fl{background:var(--tint-bad);color:var(--bad-text);}
+  .ex-why{font-size:14px;font-weight:600;line-height:1.6;color:var(--ink);margin:0 0 8px;}
+  .ex-links{font-size:13px;font-weight:800;margin:0;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+  .ex-links a{color:var(--accent-text);}
+</style>
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Exams",
+          "item": "https://levlprep.com/ochem/exams.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div id="site-header"></div>
+<div class="course-nav"></div>
+
+<div class="xshell">
+  <div class="hero" id="examHero" style="padding-bottom:0;">
+    <div class="eyebrow">Organic Chemistry</div>
+    <h1 style="margin-bottom:4px;">Exams.</h1>
+    <p class="lede" style="margin-top:0;">Timed tests on one chapter, a range of chapters or the whole course, with a full review at the end.</p>
+  </div>
+
+  <div class="xsection" style="padding-top:0;">
+    <div id="examApp"></div>
+    <noscript><div class="site-nav-fallback"><p>Exams draw their questions from the practice bank and keep the clock, which needs JavaScript. With scripts off you can still read the <a href="learn.html">textbook</a>.</p></div></noscript>
+  </div>
+</div>
+
+<script src="assets/curriculum.js" defer></script>
+<script src="assets/concepts.js" defer></script>
+<script src="assets/molecules.js" defer></script>
+<script src="assets/question-molecules.js" defer></script>
+<script src="assets/mastery-engine.js" defer></script>
+<script src="assets/bank-loader.js" defer></script>
+<script src="assets/legacy-diagnosis.js" defer></script>
+<script src="assets/legacy-rules.js" defer></script>
+<script src="assets/diagnostic-engine.js" defer></script>
+<script src="assets/shuffle-options.js" defer></script>
+<script src="assets/question-engine.js" defer></script>
+<script src="../assets/report-question.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'exams';
+  window.OCHEM_BASE = '';
+</script>
+<script src="assets/ochem-nav.js" defer></script>
+<script src="assets/exam-core.js" defer></script>
+<script src="assets/exams-page.js" defer></script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+  </footer>
+</div>
+</body>
+</html>

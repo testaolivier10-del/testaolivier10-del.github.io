@@ -505,19 +505,19 @@
     ],
     "q": "Complete the rule: partial pressure of a gas = total pressure × ____.",
     "options": [
-      "The gas's fraction of the mixture",
+      "The temperature of the gas",
       "The solubility of the gas",
       "The volume of the container holding the gas",
-      "The temperature of the gas"
+      "The gas's fraction of the mixture"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "A gas's partial pressure is its share of the total pressure, set by its fraction of the molecules. Oxygen is 0.209 of dry air, so at 760 mm Hg its partial pressure is about 159 mm Hg.",
       "options": [
-        "Correct. Total pressure × fraction.",
+        "Temperature affects pressure overall but does not decide each gas's share.",
         "Solubility belongs to Henry's law, which gives how much gas dissolves, not its partial pressure.",
         "Container volume affects total pressure through Boyle's law but is not the factor that splits it among gases.",
-        "Temperature affects pressure overall but does not decide each gas's share."
+        "Correct. Total pressure × fraction."
       ]
     }
   },

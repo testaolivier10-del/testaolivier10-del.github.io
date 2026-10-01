@@ -1,17 +1,9 @@
-/* Floating periodic-table reference, available on every Ochem page.
-   Category colors are hardcoded (not theme tokens) since they need 11
-   distinct, recognizable hues regardless of light/dark mode — same
-   reasoning as the badge/tag colors elsewhere on the site.
-
-   The bottom offset stacks this button ABOVE the tutor mascot, which
-   site-chrome.js mounts on every page at right:20px/bottom:20px, 58px
-   square, z-index 900 (assets/tutor.js). Sharing that corner hid the
-   periodic table completely: same corner, larger box, far higher
-   z-index. 20 + 58 + 12 = 90 leaves a 12px gap between the two. The
-   phone rule below already clears the mascot's own phone position. */
+/* Floating periodic-table reference on every ochem page. Category colors are
+   fixed hues (not theme tokens) so 11 stay distinct in light and dark. The
+   button sits in the tutor mascot's column, above it (assets/tutor.js). */
 
 .pt-fab{
-  position:fixed;right:20px;bottom:90px;z-index:60;
+  position:fixed;right:23px;bottom:90px;z-index:60;
   width:52px;height:52px;border-radius:50%;
   background:var(--navy);color:var(--on-accent);border:none;
   font-size:24px;line-height:1;cursor:pointer;box-shadow:var(--shadow-pop);
@@ -43,28 +35,35 @@
 .pt-close:hover{border-color:var(--accent);color:var(--accent);}
 
 .pt-body{display:flex;gap:16px;padding:0 20px 12px;overflow:hidden;flex:1;min-height:0;}
-.pt-scroll{overflow:auto;flex:1;min-width:0;padding-bottom:8px;}
+/* Fits its box: no min-width, type scales in container units. */
+.pt-scroll{overflow:auto;flex:1;min-width:0;padding-bottom:8px;container-type:inline-size;}
 .pt-grid{
-  display:grid;grid-template-columns:repeat(18,minmax(40px,1fr));grid-auto-rows:minmax(40px,auto);
-  gap:3px;min-width:760px;padding-top:6px;
+  display:grid;grid-template-columns:repeat(18,minmax(0,1fr));
+  gap:clamp(1px,.4cqw,3px);padding-top:6px;
+  /* Short screens: height is ~0.6 x width, so cap the width. */
+  max-width:max(300px,calc((92vh - 190px) / .6));margin-inline:auto;
 }
 .pt-cell{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  border-radius:8px;border:1.5px solid transparent;cursor:pointer;padding:2px 0;
-  font-family:var(--font-mono);color:var(--ink);
+  border-radius:clamp(3px,1cqw,8px);border:1.5px solid transparent;cursor:pointer;padding:2px 0;
+  font-family:var(--font-mono);color:var(--ink);min-width:0;overflow:hidden;width:100%;
+  aspect-ratio:1/1.05;
 }
 .pt-cell:hover{border-color:var(--ink);}
 .pt-cell.chosen{border-color:var(--ink);box-shadow:0 0 0 2px var(--accent) inset;}
-.pt-z{font-size:8px;font-weight:700;opacity:.7;}
-.pt-sym{font-size:13px;font-weight:700;line-height:1.1;}
-.pt-en{font-size:8px;font-weight:600;opacity:.75;}
+.pt-z{font-size:clamp(5px,1.1cqw,8px);font-weight:700;opacity:.7;line-height:1.1;}
+.pt-sym{font-size:clamp(8px,2.1cqw,14px);font-weight:700;line-height:1.1;}
+.pt-en{font-size:clamp(5px,1.1cqw,8px);font-weight:600;opacity:.75;line-height:1.1;}
+/* Phones: symbol only; tapping shows the details. */
+@container (max-width:520px){ .pt-z,.pt-en{display:none;} }
 .pt-refcell{
-  display:flex;align-items:center;justify-content:center;font:700 10px var(--font-mono);
+  display:flex;align-items:center;justify-content:center;font:700 clamp(5px,1.2cqw,10px) var(--font-mono);
+  min-width:0;overflow:hidden;
   color:var(--muted);border:1.5px dashed var(--line);border-radius:8px;
 }
 
 .pt-detail{
-  flex:0 0 240px;border-left:var(--bw) solid var(--line);padding-left:16px;overflow:auto;
+  flex:0 0 220px;border-left:var(--bw) solid var(--line);padding-left:16px;overflow:auto;
 }
 .pt-detail-empty{font-size:13.5px;font-weight:700;color:var(--muted);padding-top:8px;}
 .pt-detail-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
@@ -102,5 +101,10 @@
 @media(max-width:720px){
   .pt-body{flex-direction:column;overflow:auto;}
   .pt-detail{flex:none;border-left:none;border-top:var(--bw) solid var(--line);padding-left:0;padding-top:12px;}
-  .pt-fab{width:46px;height:46px;font-size:20px;right:17px;bottom:calc(148px + env(safe-area-inset-bottom));}
+  .pt-fab{width:42px;height:42px;font-size:19px;right:12px;bottom:calc(136px + env(safe-area-inset-bottom));
+    transition:transform .16s ease, opacity .2s ease;}
+}
+/* Phones: tucks away with the mascot on scroll (tutor.js sets html.lp-tucked). */
+@media(max-width:640px){
+  html.lp-tucked .pt-fab{opacity:0;transform:translateY(16px);pointer-events:none;}
 }

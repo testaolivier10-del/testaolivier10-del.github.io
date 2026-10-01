@@ -326,19 +326,19 @@
     ],
     "q": "A student traced the body's response to stepping out into freezing wind. One step is wrong. Which one?",
     "options": [
-      "Cold thermoreceptors in the skin increase their firing",
+      "Warm thermoreceptors in the skin increase their firing",
       "Sensory signals reach the preoptic area of the hypothalamus",
-      "Sympathetic nerves widen the arterioles of the skin",
+      "Sympathetic nerves narrow the arterioles of the skin",
       "Skeletal muscles begin to shiver",
       "Heat loss falls and heat production rises"
     ],
-    "correct": 2,
+    "correct": 0,
     "why": {
-      "correct": "In the cold, sympathetic nerves release norepinephrine onto skin arterioles, narrowing them. Less warm blood reaches the surface, so the shell insulates the core.",
+      "correct": "Cold skin makes the cold thermoreceptors fire faster, while warm thermoreceptors slow down. That cold signal is what starts the heat-saving response.",
       "options": [
-        "This step is right. Skin sensors report the cold first, before the core cools.",
+        "This is the error. Cold thermoreceptors increase their firing in the cold; warm thermoreceptors slow down.",
         "This step is right. The preoptic area is the temperature control center.",
-        "This is the error. Skin arterioles narrow in the cold; they widen in the heat.",
+        "This step is right. Norepinephrine from sympathetic nerves narrows skin arterioles, so less warm blood reaches the surface.",
         "This step is right. Shivering raises heat production.",
         "This step is right. Both effects oppose the fall in temperature: negative feedback."
       ]
@@ -533,19 +533,19 @@
     ],
     "q": "Fill the gap: total metabolic rate = basal metabolic rate + energy to digest and store food + ____.",
     "options": [
-      "Physical activity",
+      "Heat lost by radiation",
       "Shivering alone",
       "Body mass index",
-      "Heat lost by radiation"
+      "Physical activity"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Total energy use has three parts: the BMR, the energy used handling food (about 10%), and physical activity, the most variable part.",
       "options": [
-        "Correct. Physical activity is the third part.",
+        "Radiation is a way heat leaves the body, not a separate use of energy.",
         "Shivering is only one kind of muscle activity, and it happens mainly in the cold.",
         "BMI is a ratio of weight to height, not a use of energy.",
-        "Radiation is a way heat leaves the body, not a separate use of energy."
+        "Correct. Physical activity is the third part."
       ]
     }
   }

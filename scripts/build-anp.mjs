@@ -544,6 +544,33 @@ ${tail({ depth, section: 'credits' })}
 
 /* ----------------------------------------------------------- glossary */
 
+/* Styles only the glossary page uses, inlined in its <head> so the shared
+   anp.css (on the critical path of every A&P page) does not carry them. The
+   A-Z bar stays under the header while the index scrolls; on a phone it is one
+   swipeable row. Letters and terms land below the header and the bar. */
+const GLOSSARY_CSS = `.anp-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;position:sticky;top:var(--site-header-h,60px);z-index:5;padding:8px 0;background:var(--paper);}
+.anp-letters a{padding:4px 9px;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
+.anp-letters a.on{background:var(--cink);color:var(--paper);}
+@media (max-width:640px){.anp-letters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.anp-letters a{flex:0 0 auto;padding:7px 11px;}}
+.anp-terms{margin:0;}
+.anp-glossary .anp-letter,.anp-glossary .anp-term,.anp-glossary .anp-term-index li{scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
+.anp-letter{margin:0 0 22px;}
+.anp-letter > .anp-gl-more{margin:0 0 8px;}
+.anp-terms-full{margin:0;}
+.anp-letter h2{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 6px;}
+.anp-term-index{list-style:none;margin:0;padding:0;line-height:1.9;}
+.anp-term-index li{display:inline;font-weight:700;}
+.anp-term-index li:not(:last-child)::after{content:" \\00b7 ";color:var(--muted);}
+.anp-gl-more{font:800 13px var(--font-ui);padding:5px 12px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--ink);cursor:pointer;}
+.anp-gl-more:hover{border-color:var(--cink);}
+.anp-term:target,.anp-term.hit{background:var(--ctint);border-radius:8px;padding-left:8px;padding-right:8px;}
+.anp-gl-results .anp-small{margin:4px 0 10px;}
+.anp-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.anp-term dt{font-weight:900;}
+.anp-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
+.anp-roots{display:block;color:var(--muted);font-size:13.5px;}
+.anp-say{color:var(--muted);font-weight:700;font-size:13.5px;}`;
+
 function glossaryPage() {
   const depth = '';
   const entries = map.concepts.filter(c => C.glossary[c.id]).map(c => ({ c, g: C.glossary[c.id] }))
@@ -556,27 +583,39 @@ function glossaryPage() {
     crumbs(orgCrumbs([{ name: 'Glossary', url }])),
   ] };
   const letters = [...new Set(entries.map(e => e.c.term[0].toUpperCase()))];
+  /* The page is an index, not the definitions. Written out in full, a
+     thousand definitions made a 700 KB page about 270,000 px tall on a phone.
+     The file carries every term once, under its letter, as a link to the page
+     that teaches it (and the anchor #t-<concept> other pages link to);
+     anp-glossary-page.js draws a letter's definitions from
+     assets/glossary.json when that letter is opened, and the filter searches
+     terms and their aliases (data-a). */
   const body = `
 <body>
 <div id="site-header"></div>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-glossary">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }], depth)}
-  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length} terms${C.built.size === map.topics.length ? '' : ' so far'}. Each one links to the page that teaches it.</p>
-    <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off"></label></header>
+  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.</p>
+    <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
+    <p class="anp-small" id="gl-status" role="status" aria-live="polite"></p></header>
   <nav class="anp-letters" aria-label="Jump to letter">${letters.map(l => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
-  <dl class="anp-terms">${letters.map(l => `<div class="anp-letter" id="l-${l}"><h2>${l}</h2>${entries.filter(e => e.c.term[0].toUpperCase() === l).map(({ c, g }) => {
-    const href = C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : null;
-    const roots = (g.roots || []).length ? `<span class="anp-roots">${g.roots.map(r => `<i>${esc(r[0])}</i> ${esc(r[1])}`).join(' · ')}</span>` : '';
-    return `<div class="anp-term" id="t-${c.id}" data-terms="${esc([c.term, ...c.aliases].join(' ').toLowerCase())}"><dt>${esc(c.term)}${g.say ? ` <span class="anp-say">(${esc(g.say)})</span>` : ''}</dt><dd>${esc(g.def)} ${roots} <span class="anp-small">Taught in ${href ? `<a href="${href}">${esc(topicById(c.taughtIn).title)}</a>` : esc(topicById(c.taughtIn).title)}.</span></dd></div>`;
-  }).join('')}</div>`).join('')}</dl>
+  <div id="gl-results" class="anp-gl-results" hidden></div>
+  <div class="anp-terms" id="gl-index">${letters.map(l => {
+    const here = entries.filter(e => e.c.term[0].toUpperCase() === l);
+    return `<section class="anp-letter" id="l-${l}" aria-labelledby="h-${l}"><h2 id="h-${l}">${l} <span class="anp-small">${here.length} term${here.length === 1 ? '' : 's'}</span></h2><ul class="anp-term-index">${here.map(({ c }) => {
+      const href = C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : null;
+      const aliases = c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase());
+      return `<li id="t-${c.id}"${aliases.length ? ` data-a="${esc(aliases.join('|'))}"` : ''}>${href ? `<a href="${href}">${esc(c.term)}</a>` : esc(c.term)}</li>`;
+    }).join('')}</ul></section>`;
+  }).join('\n  ')}</div>
 </main>
 ${footer(depth)}
 ${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld }) + body;
+  return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld }).replace('</head>', `<style>${GLOSSARY_CSS}</style>\n</head>`) + body;
 }
 
 /* -------------------------------------------------------- learn, home */
@@ -709,7 +748,7 @@ function homePage() {
       <div class="eyebrow">${COURSE_NAME} <span class="anp-beta">Beta</span></div>
       <h1>Anatomy &amp; physiology that builds in order.</h1>
       <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
-      <div class="hero-ctas">${first ? `<a class="btn-press" href="lessons/${first.id}.html">Start here</a>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
+      <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
     </div>
     <div class="anp-level-card" id="anpLevel">
       <div class="anp-level-top">
@@ -800,7 +839,7 @@ ${homeSample(depth)}
       <li><a href="flashcards.html"><b>Flashcards</b><span>Spaced-repetition cards from the glossary and comparison tables.</span></a></li>
       <li><a href="glossary.html"><b>Glossary</b><span>Every term, with word roots and where it is taught.</span></a></li>
       <li><a href="concepts/index.html"><b>Core concepts</b><span>${HOME_WORDS[map.coreConcepts.length] || map.coreConcepts.length} ideas that explain every system.</span></a></li>
-      <li><a href="mastery.html"><b>Dashboard</b><span>Mastery by topic, system and core concept.</span></a></li>
+      <li><a href="dashboard.html"><b>Dashboard</b><span>Mastery by topic, system and core concept.</span></a></li>
     </ul>
   </section>
 
@@ -855,7 +894,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
 ${footer(depth)}
 <link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script] })}
+${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script] })}
 </body>
 </html>
 `;
@@ -973,7 +1012,7 @@ function toolsHubMount() {
   <ul class="anp-hub" aria-label="More tools">
     ${cards}
   </ul>
-  <p class="anp-hub-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="mastery.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
+  <p class="anp-hub-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
   `;
 }
 
@@ -991,6 +1030,24 @@ const APP_EXTRAS = {
 };
 
 for (const a of PAGES.apps) put(`${a.slug}.html`, appShell(a, { path: `${a.slug}.html`, depth: '', h1: a.h1, eyebrow: COURSE_NAME, lede: a.desc, section: a.section, ...(APP_EXTRAS[a.slug] ? APP_EXTRAS[a.slug]() : {}) }));
+// Old URLs of renamed pages: a stub that forwards the query string and hash.
+// mastery.html became dashboard.html when every course's progress tab became
+// "Dashboard".
+const RENAMED = { mastery: 'dashboard' };
+for (const [from, to] of Object.entries(RENAMED)) put(`${from}.html`, `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script>location.replace("${to}.html" + location.search + location.hash);</script>
+<meta http-equiv="refresh" content="0; url=${to}.html">
+<link rel="canonical" href="${SITE}${BASE}${to}.html">
+<title>Redirecting…</title>
+</head>
+<body>
+<p>This page has moved. <a href="${to}.html">Continue to ${to}.html</a></p>
+</body>
+</html>
+`);
 for (const t of PAGES.tools) put(`tools/${t.slug}.html`, appShell(t, { path: `tools/${t.slug}.html`, depth: '../', h1: t.name, eyebrow: 'A&P tool', lede: t.blurb, section: 'tools', isTool: true }));
 
 /* ------------------------------------------------------------ runtime */

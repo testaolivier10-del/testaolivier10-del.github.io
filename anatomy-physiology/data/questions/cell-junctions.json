@@ -194,18 +194,18 @@
     ],
     "q": "Fill in the missing step: six connexins in one membrane form a ______ → it docks with a matching structure in the neighbor's membrane → a continuous tunnel links the two cytoplasms.",
     "options": [
-      "connexon",
-      "desmosome",
       "plaque",
+      "desmosome",
+      "connexon",
       "tight junction strand"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
       "correct": "Six connexins make a ring with a pore, the connexon. Two docked connexons form one gap junction tunnel.",
       "options": [
-        "Correct. A connexon is the half-tunnel built from six connexins.",
-        "A desmosome is a riveting junction built from cadherins and plaques, not connexins.",
         "A plaque is the dense protein pad inside a desmosome; it has no pore.",
+        "A desmosome is a riveting junction built from cadherins and plaques, not connexins.",
+        "Correct. A connexon is the half-tunnel built from six connexins.",
         "Tight junction strands are built from claudins and occludin and seal the gap rather than tunnel through it."
       ]
     }

@@ -318,21 +318,21 @@
     ],
     "q": "This pathway describes control of acid secretion during the gastric phase. Which step is wrong?",
     "options": [
-      "Protein fragments in the stomach stimulate G cells",
+      "Protein fragments in the stomach inhibit G cells",
       "G cells release gastrin into the blood",
       "Gastrin increases acid secretion, partly by releasing histamine",
       "The stomach contents become strongly acidic",
-      "The falling pH makes the G cells release even more gastrin"
+      "The falling pH makes the G cells release less gastrin"
     ],
-    "correct": 4,
+    "correct": 0,
     "why": {
-      "correct": "A falling pH inhibits gastrin release: below about pH 3, D cells release somatostatin, which shuts the G cells off. This negative feedback limits acid secretion.",
+      "correct": "Protein fragments stimulate the G cells: peptides and amino acids in the stomach are a main trigger for gastrin release during the gastric phase.",
       "options": [
-        "This step is right. Peptides and amino acids stimulate G cells directly.",
+        "This is the error. Peptides and amino acids stimulate G cells directly.",
         "This step is right. Gastrin is a hormone carried by the blood.",
         "This step is right. Gastrin acts mainly through histamine-releasing cells and partly on parietal cells.",
         "This step is right. Increased acid secretion lowers the pH of the contents.",
-        "This is the error. Low pH inhibits gastrin release through somatostatin."
+        "This step is right. Below about pH 3, D cells release somatostatin, which shuts the G cells off. This negative feedback limits acid secretion."
       ]
     }
   },

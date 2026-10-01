@@ -173,19 +173,19 @@
     ],
     "q": "Fill the gap: in a systemic capillary, bicarbonate leaves the red blood cell through band 3, and in exchange ____ enters the cell.",
     "options": [
-      "Chloride",
+      "Oxygen",
       "Sodium",
       "Potassium",
-      "Oxygen"
+      "Chloride"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Band 3 swaps one bicarbonate ion for one chloride ion. Both are negative ions, so the exchange keeps the charge across the membrane unchanged. This is the chloride shift.",
       "options": [
-        "Correct. Chloride enters as bicarbonate leaves.",
+        "Oxygen is leaving the red blood cell in a systemic capillary, and it crosses by simple diffusion, not through band 3.",
         "Sodium is a positive ion. Swapping it for bicarbonate, a negative ion, would change the charge across the membrane; band 3 exchanges negative ions only.",
         "Potassium is also a positive ion and is kept inside cells by the sodium–potassium pump, not exchanged for bicarbonate.",
-        "Oxygen is leaving the red blood cell in a systemic capillary, and it crosses by simple diffusion, not through band 3."
+        "Correct. Chloride enters as bicarbonate leaves."
       ]
     }
   },
@@ -199,20 +199,20 @@
     ],
     "q": "A student described what happens to carbon dioxide in a red blood cell in a systemic capillary. One step is wrong. Which one?",
     "options": [
-      "Carbon dioxide diffuses into the red blood cell",
+      "Carbon dioxide diffuses out of the red blood cell into the plasma",
       "Carbonic anhydrase speeds its reaction with water",
       "Carbonic acid splits into a hydrogen ion and bicarbonate",
-      "Band 3 pumps bicarbonate out using ATP",
+      "Bicarbonate leaves the cell through band 3",
       "Chloride enters the cell as bicarbonate leaves"
     ],
-    "correct": 3,
+    "correct": 0,
     "why": {
-      "correct": "Band 3 is a passive exchanger. Bicarbonate and chloride each move down their own concentration gradients, which is facilitated diffusion, and no ATP is used.",
+      "correct": "In a systemic capillary, the PCO2 of the plasma is higher than inside the red blood cell, so carbon dioxide diffuses into the cell, not out. It diffuses out of red blood cells in the lungs.",
       "options": [
-        "This step is right. The PCO2 in the plasma is higher than inside the red blood cell, so carbon dioxide diffuses in.",
+        "This is the error. In systemic capillaries the PCO2 is higher in the plasma, so carbon dioxide diffuses into the red blood cell.",
         "This step is right. Carbonic anhydrase speeds CO2 + H2O ⇌ H2CO3.",
         "This step is right. Carbonic acid splits almost at once.",
-        "This is the error. The chloride shift is facilitated diffusion through band 3, not an ATP-driven pump.",
+        "This step is right. Bicarbonate moves out through band 3, a passive exchanger that uses no ATP.",
         "This step is right. Chloride moves in as bicarbonate moves out, one for one."
       ]
     }

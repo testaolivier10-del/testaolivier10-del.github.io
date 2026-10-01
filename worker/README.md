@@ -69,7 +69,12 @@ no visible error.
 
 `ALLOWED_ORIGINS` in `src/index.js` restricts which sites may call the
 endpoint — it is already set to this site plus localhost. Without that, any
-website could point at your Worker and spend your daily allowance.
+website could point at your Worker and spend your daily allowance. A request
+must carry one of those origins: one with no `Origin` header at all (curl, a
+bot) is refused too, since a browser always sends it on a POST. Only the two
+non-assistant routes, `/reminders/text` and `/api/unsubscribe`, answer without
+one. The unsubscribe token is 144 random bits (`gen_random_bytes(18)` in
+`scripts/sql/schema.sql`), so it cannot be guessed.
 
 Deployed from the dashboard there is no per-IP rate limit, so a determined
 visitor could burn through the day's 10,000 Neurons. On the Workers Free plan

@@ -290,19 +290,19 @@
     "misconception": "capillaries reabsorb most filtered fluid at the venule end",
     "q": "In the revised Starling principle, sustained reabsorption shuts itself off. Complete the sequence: capillary hydrostatic pressure falls below the effective oncotic pull → fluid begins flowing into the capillary through the clefts → ____ → inward flow fades within minutes.",
     "options": [
-      "Interstitial proteins build up in the space beneath the glycocalyx",
+      "The glycocalyx dissolves, making the capillary wall fully permeable",
       "Plasma proteins leak out through the clefts into the interstitial fluid",
       "The arterioles dilate and raise the capillary pressure back up",
-      "The glycocalyx dissolves, making the capillary wall fully permeable"
+      "Interstitial proteins build up in the space beneath the glycocalyx"
     ],
-    "correct": 0,
+    "correct": 3,
     "why": {
       "correct": "Outward filtration normally washes the thin space beneath the glycocalyx, keeping its protein level near zero. Once flow reverses, the washing stops, interstitial proteins diffuse into that space, and its oncotic pressure rises. The effective oncotic pull into the blood shrinks, and the inward flow dies away.",
       "options": [
-        "Correct. Protein accumulation beneath the glycocalyx cancels the inward oncotic pull.",
+        "The glycocalyx stays in place. It is damaged in some diseases, but that is not part of the normal shutoff.",
         "The glycocalyx holds plasma proteins back whichever way fluid flows. Loss of plasma protein is not what stops reabsorption.",
         "Arteriole diameter is set by local and nervous signals, not by the direction of flow across the capillary wall. Reabsorption fades even when capillary pressure stays low.",
-        "The glycocalyx stays in place. It is damaged in some diseases, but that is not part of the normal shutoff."
+        "Correct. Protein accumulation beneath the glycocalyx cancels the inward oncotic pull."
       ]
     }
   },

@@ -11,19 +11,19 @@
     { key: 'practice', label: 'Practice', href: base + 'practice.html' },
     { key: 'review', label: 'Review', href: base + 'review.html' },
     { key: 'exams', label: 'Exams', href: base + 'exams.html' },
-    { key: 'tools', label: 'Tools', href: base + 'tools.html' },
-    { key: 'flashcards', label: 'Flashcards', href: base + 'flashcards.html' },
     { key: 'glossary', label: 'Glossary', href: base + 'glossary.html' },
-    { key: 'mastery', label: 'Dashboard', href: base + 'mastery.html' },
-    { key: 'search', label: 'Search', href: base + 'search.html' }
+    { key: 'tools', label: 'Tools', href: base + 'tools.html' },
+    { key: 'dashboard', label: 'Dashboard', href: base + 'dashboard.html' }
   ];
+  var ALIAS = { flashcards: 'practice', mastery: 'dashboard' };
+  section = ALIAS[section] || section;
   if(window.LevlChrome){
     window.LevlChrome.registerServiceWorker();
     window.LevlChrome.render({
       subject: 'anp',
       course: 'Anatomy & Physiology',
       courseHref: base + 'index.html',
-      progressHref: base + 'mastery.html',
+      progressHref: base + 'dashboard.html',
       items: ITEMS.map(function(it){ return { href: it.href, label: it.label, active: it.key === section }; })
     });
   }

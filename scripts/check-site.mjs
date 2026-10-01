@@ -19,7 +19,7 @@ function fail(msg) {
 
 function walk(dir, exts, out = []) {
   for (const name of readdirSync(dir)) {
-    if (name === '.git' || name === 'node_modules' || name === 'scripts') continue;
+    if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     const st = statSync(full);
     // The A&P notes sources are HTML fragments that build-anp.mjs wraps into
@@ -1545,15 +1545,16 @@ for (const file of htmlFiles) {
 }
 
 // ---- 24. The bank cannot outgrow the option letters the page can render ----
-// practice.html labels options from a fixed LETTERS array. The choking-sequence
+// The question runner (nremt/practice-engine.js, shared by practice.html,
+// review.html and exams.html) labels options from a fixed LETTERS array. The choking-sequence
 // ordering item became the bank's first six-option question, which is exactly
 // as many letters as exist — a seventh would render `undefined)` beside a step
 // and nothing would have caught it.
 {
-  const page = readFileSync(join(ROOT, 'nremt', 'practice.html'), 'utf8');
+  const page = readFileSync(join(ROOT, 'nremt', 'practice-engine.js'), 'utf8');
   const m = page.match(/const LETTERS\s*=\s*\[([^\]]*)\]/);
   if (!m) {
-    fail('nremt/practice.html: cannot find the LETTERS array that labels options.');
+    fail('nremt/practice-engine.js: cannot find the LETTERS array that labels options.');
   } else {
     const letters = m[1].split(',').filter((s) => s.trim()).length;
     const bank = JSON.parse(readFileSync(join(ROOT, 'nremt', 'assets', 'questions.json'), 'utf8'));
@@ -1563,7 +1564,7 @@ for (const file of htmlFiles) {
       if (n > worst) { worst = n; worstId = q.id; }
     }
     if (worst > letters) {
-      fail(`nremt/practice.html: LETTERS has ${letters} entries but questions.json id ${worstId} ` +
+      fail(`nremt/practice-engine.js: LETTERS has ${letters} entries but questions.json id ${worstId} ` +
            `has ${worst} options, so the last option(s) would render with no letter.`);
     }
   }

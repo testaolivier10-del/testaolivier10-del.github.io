@@ -243,6 +243,7 @@
           '<div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
             '<a href="practice.html" class="btn-press sm">Start practicing</a>' +
             '<a href="learn.html" class="btn-press alt sm">Open the textbook</a>' +
+            '<a href="flashcards.html" class="btn-press alt sm">Flashcards</a>' +
           '</div>' +
         '</div>';
       show('home');
@@ -328,6 +329,12 @@
         'They stay in rotation until you do. <a href="practice.html?mode=mistakes">Work through them</a>.' +
       '</div>';
     }
+
+    // The other spaced queue in the course: the flashcard deck keeps its own
+    // schedule, and used to be reachable only from a tab of its own.
+    html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Flashcards</div>' +
+      '<div class="next-up">The facts problems lean on (pKa, IR and NMR values, reagents) on spaced cards. ' +
+      '<a href="flashcards.html">Open the flashcards</a>.</div>';
 
     homeEl.innerHTML = html;
     var start = homeEl.querySelector('#startReview');

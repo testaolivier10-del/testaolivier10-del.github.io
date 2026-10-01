@@ -6,26 +6,37 @@
    tab row — now lives there, so NREMT and Organic Chemistry can't drift apart
    again.
 
-   What stays here: the tab list, the Tools-subpage active-state rule, the
+   What stays here: the tab list, the subpage active-state rules, the
    window.LevlXP shim the quiz pages were written against, and the sync
    namespace. */
 (function(){
+  // The same eight tabs, in the same order, as every LevlPrep course: Home,
+  // Learn, Practice, Review, Exams, Glossary, Tools, Dashboard. Search is not
+  // a tab (the header reaches it), and neither is the old Study Plan, whose
+  // countdown is now a card on the Dashboard.
   var NAV_ITEMS = [
     // The wordmark goes to the LevlPrep hub now, so the course's own homepage
     // needs a tab — otherwise there'd be no way back to it from a quiz.
     { href: 'index.html', label: 'Home' },
+    { href: 'study-notes.html', label: 'Learn' },
     { href: 'practice.html', label: 'Practice' },
-    { href: 'study-plan.html', label: 'Study Plan' },
-    { href: 'study-notes.html', label: 'Notes' },
-    { href: 'mnemonics.html', label: 'Mnemonics' },
+    { href: 'review.html', label: 'Review' },
+    { href: 'exams.html', label: 'Exams' },
     { href: 'glossary.html', label: 'Glossary' },
     { href: 'tools.html', label: 'Tools' },
     { href: 'dashboard.html', label: 'Dashboard' }
   ];
 
-  // Pages that live "under" Tools (linked from the tools.html hub) but keep
-  // their own URL — the Tools nav link should still read as active on them.
-  var TOOLS_SUBPAGES = ['tools.html', 'body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'search.html', 'formulary.html', 'reference-cards.html'];
+  // Pages that live "under" a tab but keep their own URL — that tab should
+  // still read as active on them. Learn is the reading (the notes and the
+  // mnemonics); Tools is everything interactive that is not a question set;
+  // flashcards are a Practice mode; exam-day is about the exam itself.
+  var SUBPAGES = {
+    'study-notes.html': ['mnemonics.html'],
+    'practice.html': ['flashcards.html'],
+    'exams.html': ['exam-day.html'],
+    'tools.html': ['body-map.html', 'sound-trainer.html', 'scenario-sim.html', 'skillsheets.html', 'flowcharts.html', 'formulary.html', 'reference-cards.html']
+  };
 
   function currentFile(){
     var p = location.pathname.split('/').pop();
@@ -95,7 +106,7 @@
         return {
           href: item.href,
           label: item.label,
-          active: item.href === cur || (item.href === 'tools.html' && TOOLS_SUBPAGES.indexOf(cur) !== -1)
+          active: item.href === cur || (SUBPAGES[item.href] || []).indexOf(cur) !== -1
         };
       })
     });
@@ -111,7 +122,12 @@
   var PROGRESS_KEYS = [
     'nremt_seen_questions', 'nremt_exam100_missed', 'nremt_exam100_flagged',
     'nremt_exam100_history', 'nremt_exam100_best', 'nremt_mastery',
-    'nremt_domain_stats_all', 'nremt_streak', 'nremt_xp'
+    'nremt_domain_stats_all', 'nremt_streak', 'nremt_xp',
+    // The flashcard schedule (flashcards.html). Registered here, on every
+    // page, not by the deck: a push replaces the whole 'nremt' bucket, so a
+    // key only the deck registered would be dropped by a sync from any other
+    // page. Merged card by card, newest grade wins.
+    'nremt_flashcards_v1'
   ];
   // Deliberately left out of sync: nremt_inprogress_exam (an in-progress
   // attempt is device-local to avoid two devices racing on the same quiz),
@@ -121,7 +137,10 @@
   // nremt_streak and nremt_xp stay listed even though hub-progress.js has
   // migrated off them: a device that hasn't run the migration yet still needs
   // them to arrive, and they cost nothing once it has.
-  if(window.StudyHubAccount) window.StudyHubAccount.registerNamespace('nremt', PROGRESS_KEYS);
+  if(window.StudyHubAccount){
+    window.StudyHubAccount.registerNamespace('nremt', PROGRESS_KEYS,
+      window.StudyHubAccount.mergeCardSchedules ? { 'nremt_flashcards_v1': window.StudyHubAccount.mergeCardSchedules } : null);
+  }
 
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', renderHeader);
