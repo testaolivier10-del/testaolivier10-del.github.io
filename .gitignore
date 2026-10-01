@@ -15,3 +15,5 @@ node_modules
 .cache/
 .serena/*
 !.serena/memories/
+# Python wheels downloaded to run a script locally (scripts/anp-figures.py).
+*.whl

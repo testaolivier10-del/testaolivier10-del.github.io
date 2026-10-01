@@ -6,7 +6,7 @@
    the same glossary markup. docs/anp-phase1-architecture.md describes the data. */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { loadMap, indexMap, scanTerms, termRegex, scanPage } from './anp-map.mjs';
+import { loadMap, indexMap, scanTerms, termRegex, scanPage, ASCII } from './anp-map.mjs';
 
 export const SITE = 'https://levlprep.com';
 export const BASE = '/anatomy-physiology/';
@@ -184,7 +184,7 @@ export function termIndex(C) {
     for (const t of scanTerms(c)) out.push({ t, id: c.id });
   }
   out.sort((a, b) => b.t.length - a.t.length);
-  return out.map(x => ({ ...x, re: termRegex(x.t) }));
+  return out.map(x => ({ ...x, re: termRegex(x.t), lower: ASCII.test(x.t) ? x.t.toLowerCase() : null }));
 }
 
 /* Where a concept is taught, as a link from `fromDepth`, or null when that
@@ -193,6 +193,37 @@ export function teachHref(C, conceptId, fromDepth, selfTopic) {
   const c = C.concepts.get(conceptId);
   if (!c || !C.built.has(c.taughtIn) || c.taughtIn === selfTopic) return null;
   return `${fromDepth}notes/${c.taughtIn}.html`;
+}
+
+/* The index positions of the terms that could occur in `lowerS`: an ASCII
+   term can match only where its lowercased first three letters (two, for a
+   two-letter term) appear, so the terms are bucketed by that prefix once and a
+   text node looks up the prefixes it contains. Non-ASCII terms are always
+   candidates. Returned in ascending order, which is the index's order. */
+const bucketCache = new WeakMap();
+function candidates(index, lowerS) {
+  let b = bucketCache.get(index);
+  if (!b) {
+    b = { two: new Map(), three: new Map(), always: [] };
+    index.forEach((x, k) => {
+      const low = x.lower;
+      if (low === null || low === undefined || low.length < 2) { b.always.push(k); return; }
+      const [map, key] = low.length === 2 ? [b.two, low] : [b.three, low.slice(0, 3)];
+      if (!map.has(key)) map.set(key, []);
+      map.get(key).push(k);
+    });
+    bucketCache.set(index, b);
+  }
+  const out = new Set(b.always);
+  for (let i = 0; i + 2 <= lowerS.length; i++) {
+    const l2 = b.two.get(lowerS.substr(i, 2));
+    if (l2) for (const k of l2) out.add(k);
+    if (i + 3 <= lowerS.length) {
+      const l3 = b.three.get(lowerS.substr(i, 3));
+      if (l3) for (const k of l3) out.add(k);
+    }
+  }
+  return [...out].sort((x, y) => x - y);
 }
 
 const SKIP_TAGS = new Set(['a', 'script', 'style', 'svg', 'h1', 'h2', 'h3', 'code', 'button', 'summary', 'figcaption', 'th', 'label', 'title', 'nav']);
@@ -220,8 +251,14 @@ export function glossify(C, html, { depth, topic, seen, index }) {
     // Inside a preview box a later term is allowed and still gets its hover.
     let s = p;
     const marks = [];
-    for (const { t, id, re } of index) {
+    // Only the terms whose opening letters occur in this text node can match
+    // it (see candidates); they are tried in the index's own order, longest
+    // first, exactly as a walk of the whole index would.
+    const lowerS = s.toLowerCase();
+    for (const k of candidates(index, lowerS)) {
+      const { id, re, lower } = index[k];
       if (seen.has(id)) continue;
+      if (lower !== null && lower !== undefined && !lowerS.includes(lower)) continue;
       re.lastIndex = 0;
       const m = re.exec(s);
       if (!m) continue;
@@ -254,7 +291,20 @@ export function glossify(C, html, { depth, topic, seen, index }) {
 /* A label printed on a figure names a concept. When that concept is taught
    after the page's topic, the label is covered for good on that page: a figure
    must not teach a word early any more than the text may (spec section 7). */
+const laterCache = new WeakMap();
 export function laterLabel(C, l, topicId) {
+  // The same label on the same topic's page always answers the same, and a
+  // figure is drawn on several pages (notes, lesson, questions), so the
+  // expensive half, a scan of the label's printed name, is remembered.
+  let byC = laterCache.get(C);
+  if (!byC) { byC = new Map(); laterCache.set(C, byC); }
+  const key = `${l.cover ? 1 : 0}\u0000${l.concept || ''}\u0000${l.name || ''}\u0000${topicId || ''}`;
+  if (byC.has(key)) return byC.get(key);
+  const v = laterLabelUncached(C, l, topicId);
+  byC.set(key, v);
+  return v;
+}
+function laterLabelUncached(C, l, topicId) {
   // A label marked "cover" is wrong or misleading as printed: covered on every
   // page and never quizzed.
   if (l.cover) return true;
