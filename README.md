@@ -118,6 +118,12 @@ ochem/                 The Organic Chemistry course
                             121 sections, fetched on demand by the textbook
   practice.html, review.html   Question practice and the review queue, both
                             driven by assets/session-runner.js
+  exams.html             Chapter tests, midterms over a range of chapters and a
+                            timed 50-question cumulative final, drawn from the
+                            practice bank. Picking and scoring are in
+                            assets/exam-core.js (tested); the page is
+                            assets/exams-page.js. Answers record through the same
+                            diagnostic engine as Practice when the exam is submitted
   flashcards.html        The flashcard deck: spaced repetition over cards read
                             out of the course itself (see Flashcards below)
   tools.html             Hub for the eight interactive tools, rendered from

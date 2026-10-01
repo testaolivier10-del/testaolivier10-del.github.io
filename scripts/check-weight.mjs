@@ -440,6 +440,13 @@ const DATA_BUDGETS = [
      downloaded before the first question on two pages that already wait on
      240 KB of bank. */
   ['ochem/assets/question-molecules.js', 10],
+  /* ochem/exams.html's own two scripts. Same reason as above: the page loads
+     the practice engines too, so like practice.html it is not in the page
+     list (it would set the ochem shell's high mark at about 141 KB, which is
+     the engines, not the shell), and nothing else would measure these.
+     Measured 3.4 and 10.0 KB gzipped, about a tenth added. */
+  ['ochem/assets/exam-core.js', 4],
+  ['ochem/assets/exams-page.js', 11],
   /* The flashcard deck, generated from the notes' tables by
      scripts/build-flashcards.mjs. Fetched by flashcards.html after it paints,
      alongside concept-teach.json. Measured at 25.3 KB for 526 cards — about
