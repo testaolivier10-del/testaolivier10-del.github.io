@@ -293,7 +293,7 @@ const BUDGETS = [
   // switch for them and the prose explaining exactly what is stored, and both
   // of those belong here rather than anywhere else — the cost is a page that
   // tells the truth at greater length, which is the one thing this page is for.
-  ['privacy.html', 12],
+  ['privacy.html', 15],
 ];
 
 /* Files fetched at RUNTIME by JavaScript, which the reference walk above

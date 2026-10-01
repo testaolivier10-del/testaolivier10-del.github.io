@@ -13,6 +13,26 @@ Researched September 2026; decisions updated October 2026. Several competitor pr
 rather than the vendors' own pages. Check the ones marked † in a browser
 before setting a price against them.
 
+## Legal audit (2026-10-01): open items
+
+Privacy, terms, LICENSE, the "free, permanently" claims and the Premium dialog
+(tax, refunds, terms link, NREMT non-affiliation) were updated. Still open, for
+the owner or a lawyer:
+
+- Hawaii COPD Coalition clips (rhonchi, normal) embedded in
+  `nremt/sound-trainer.html`: licence unknown; replace or remove.
+- Wikimedia lung-sound credits name no author; check each file's author and
+  licence version on Commons and add them.
+- A&P originality audit (`scripts/audit-anp-originality.mjs`) was run on the
+  29 pilot topics only; run it on the whole course.
+- No governing-law clause, no owner legal name and no postal address yet;
+  the waitlist launch email (commercial) needs the address and an unsubscribe
+  link before it is sent (CAN-SPAM). Reminder emails should carry the address too.
+- Pass guarantee limits (how long after the pass, proof, how many extensions).
+- Account deletion cascades `premium_passes`, which also resets the
+  once-per-account refund limit for a re-created account.
+- Check the Polar founding discount really ends 2027-01-31, as the dialog says.
+
 ## Where we are: built, not launched (October 2026)
 
 Decided 2026-10-01: build the free/premium split now, while there are almost

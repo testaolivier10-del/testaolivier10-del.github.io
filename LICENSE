@@ -10,14 +10,24 @@ licences. Which one applies depends on what you are copying.
 
 Applies to the study material: the question banks and their explanations, the
 study notes, the Organic Chemistry lessons, notes and mechanism walkthroughs,
-the branching scenarios, the glossary, mnemonics, skill sheets, flow diagrams
-and body-map descriptions. In file terms, everything under:
+the Anatomy & Physiology lessons, notes, questions, tool content and LevlPrep's
+own diagrams, the branching scenarios, the glossaries, flashcards, mnemonics,
+skill sheets, flow diagrams and body-map descriptions. In file terms,
+everything under:
 
     nremt/assets/*.json
     nremt/study-notes.html, glossary.html, mnemonics.html, skillsheets.html,
       flowcharts.html, scenario-sim.html, body-map.html   (their text content)
     ochem/notes/, ochem/lessons/, ochem/mechanisms/        (their text content)
-    ochem/assets/practice-bank.json
+    ochem/assets/*.json, ochem/data/
+    anatomy-physiology/notes/, anatomy-physiology/lessons/,
+      anatomy-physiology/chapters/, anatomy-physiology/concepts/
+                                                           (their text content)
+    anatomy-physiology/data/
+    anatomy-physiology/assets/*.json, anatomy-physiology/assets/bank/,
+      anatomy-physiology/assets/tool-data/
+    anatomy-physiology/figures/*.svg                       (LevlPrep's own;
+      the os-*.jpg figures there are OpenStax's, see section 3)
 
 You are free to share and adapt this material for non-commercial purposes,
 with attribution to LevlPrep (https://levlprep.com) and an indication of any
@@ -26,19 +36,23 @@ changes made. You may not use it for commercial purposes.
 Full text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
 Summary:   https://creativecommons.org/licenses/by-nc/4.0/
 
-The non-commercial term is the point of it. The core question bank and course
-material on this site are free, permanently, with no ads, and the licence
-exists so that the material
-cannot be repackaged and sold back to students. Using it to teach — in a
-classroom, a study group, or a course you do not charge for — is exactly what
-it is for, and needs no permission beyond the attribution.
+The non-commercial term is the point of it. LevlPrep itself charges for
+Premium: a one-time pass that adds unlimited practice, exams, analytics and
+some interactive tools on top of the free teaching material (notes, textbook
+sections, glossaries, flashcards and each course's free allowance). The
+teaching material stays free on the site. Only LevlPrep, as the copyright
+holder, may use the material commercially; this licence does not let anyone
+else repackage or sell it, or put it behind their own paywall. Using it to
+teach (in a classroom, a study group, or a course you do not charge for) is
+exactly what it is for, and needs no permission beyond the attribution.
 
 
 2. CODE — MIT
 ---------------------------------------------------------------------------
 
-Applies to the software: the JavaScript under assets/, nremt/assets/ and
-ochem/assets/ (excluding the .json content files listed above), the build and
+Applies to the software: the JavaScript under assets/, nremt/assets/,
+ochem/assets/ and anatomy-physiology/assets/ (excluding the .json content
+files listed above and the vendored three.js in section 3), the build and
 check scripts under scripts/, the service worker, the Cloudflare Worker under
 worker/, and the CSS and page scaffolding.
 
@@ -68,8 +82,20 @@ SOFTWARE.
 
 Some material here is not ours to license:
 
-  - Lung-sound recordings from Wikimedia Commons, under their own licences.
-    See the sound trainer page and privacy.html for attribution.
+  - Figures from OpenStax Anatomy and Physiology 2e (c) Rice University,
+    under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Stored as
+    anatomy-physiology/figures/os-*.jpg; each is credited where it appears and listed on anatomy-physiology/credits.html.
+    OpenStax and Rice University do not endorse LevlPrep.
+  - The 3D body model (nremt/assets/body3d.glb), built from BodyParts3D,
+    (c) 2008 Life Science Integrated Database Center, under CC BY-SA 2.1
+    Japan. The model and any adaptation of it stay under that licence.
+  - three.js (nremt/assets/vendor/three/), (c) three.js authors, MIT.
+  - Lung-sound recordings from Wikimedia Commons, under their own licences
+    (CC BY-SA), streamed from Commons and credited on the sound trainer page.
+  - Two lung-sound clips (rhonchi, normal breath sounds) embedded in
+    nremt/sound-trainer.html from the Hawaii COPD Coalition's lung sounds
+    page. Their licence has not been confirmed; they are not covered by
+    anything in this file.
   - IBM Plex Mono and Nunito, served from assets/fonts/, under the SIL Open
     Font License 1.1.
 

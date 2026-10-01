@@ -612,7 +612,7 @@
       '<div class="auth-modal delete-modal" role="dialog" aria-modal="true" aria-labelledby="deleteTitle" aria-describedby="deleteSub">' +
         '<button type="button" class="auth-modal-close" id="deleteClose" aria-label="Close">&times;</button>' +
         '<h2 id="deleteTitle">Delete your account</h2>' +
-        '<p class="auth-modal-sub" id="deleteSub">This removes your account, your email address and the synced copy of your progress. It cannot be undone and we cannot get it back for you.</p>' +
+        '<p class="auth-modal-sub" id="deleteSub">This removes your account, your email address and the synced copy of your progress. Any Premium pass on the account ends too, without a refund. It cannot be undone and we cannot get it back for you.</p>' +
         '<form id="deleteForm">' +
           '<div class="delete-backup">' +
             '<p>This is the one thing on the site that deletes your work on purpose. Take a copy first — it is a single file and it can be restored later.</p>' +
