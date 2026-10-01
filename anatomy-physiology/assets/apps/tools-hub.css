@@ -100,3 +100,4 @@
   .anp-hub-card,.anp-hub-card:hover,.anp-hub-cta,.anp-hub-cta:hover{transition:none;transform:none;}
   .anp-hub-fig{transform:none;}
 }
+.anp-hub li.anp-hub-p{position:relative;}.anp-hub-p>.premium-badge{position:absolute;top:10px;right:14px;}

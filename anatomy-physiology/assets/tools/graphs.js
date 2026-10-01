@@ -424,7 +424,7 @@
   function fail(msg){ app.innerHTML = '<p class="pw-error">' + esc(msg) + '</p>'; }
   var src = app.getAttribute('data-src');
   if(!src){ fail('No content file for this tool.'); return; }
-  fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+  fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){ return window.AnpCore ? window.AnpCore.freeItems(d) : d; }).then(function(d){
     DATA = d;
     DATA.graphs = (DATA.graphs || []).filter(function(g){ return g && g.panels && g.questions && g.questions.length; });
     if(window.AnpCore && window.AnpCore.allowed && !window.AnpCore.allowed('graphs')){ fail('This tool is not available right now.'); return; }

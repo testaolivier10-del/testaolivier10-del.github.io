@@ -101,7 +101,7 @@
     },
     anp: {
       name: 'Anatomy & Physiology',
-      freeChapters: [],
+      freeChapters: ['orientation', 'chem-physics', 'cells', 'tissues', 'cell-communication'],
       passes: [
         { id: 'anp-semester', label: 'Semester (5 months)', price: 29 },
         { id: 'anp-year', label: 'Full year (A&P I and II)', price: 49 },

@@ -68,7 +68,7 @@ const check = process.argv.includes('--check');
    rest, ~95 KB, is theme.css and the shared modules, and that is the part any
    commit can move. */
 const SHELL_BUDGETS = [
-  ['site', 240],
+  ['site', 246],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -168,7 +168,7 @@ const SHELL_BUDGETS = [
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. */
-  ['anatomy-physiology', 42],
+  ['anatomy-physiology', 44],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

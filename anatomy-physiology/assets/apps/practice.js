@@ -54,7 +54,10 @@
   }
 
   function store(){ return Core ? Core.load() : { q: {}, lessons: {} }; }
-  function builtTopics(){ return CUR.topics.filter(function(t){ return t.built && t.qn; }); }
+  // Premium locked: only the free (Foundations) chapters are offered; the bank
+  // is already trimmed to them by AnpCore.loadBank.
+  function builtTopics(){ return CUR.topics.filter(function(t){ return t.built && t.qn && !(Core && Core.locked && Core.locked(t.chapter)); }); }
+  function pill(){ return Core && Core.badge ? Core.badge() : ''; }
   function builtChapters(){
     var has = {}; builtTopics().forEach(function(t){ has[t.chapter] = 1; });
     return CUR.chapters.filter(function(c){ return has[c.id]; });
@@ -145,7 +148,7 @@
         tile('Due for review', due, due ? 'waiting in your queue' : 'nothing due now') +
         tile('To fix', miss, miss ? 'missed, not yet right' : 'no open misses') +
       '</div>' +
-      '<div class="anp-pr-rcard"><p class="anp-pr-rcard-k">Due for review</p>' +
+      '<div class="anp-pr-rcard"><p class="anp-pr-rcard-k">Due for review' + pill() + '</p>' +
         (due
           ? '<h3>' + plural(due, 'item') + ' due now</h3><p>Questions and tool items you missed come back on a spacing schedule, so they stick. Clear them before new work.</p>'
           : '<h3>Your queue is clear</h3><p>Questions you miss come back here on a spacing schedule, so they stick.</p><p class="anp-pr-rcard-empty">' + check + 'Nothing due now</p>') +
@@ -406,7 +409,10 @@
         '<button type="button" class="btn-press' + (stillWrong.length ? ' alt' : '') + '" data-act="again">Another set like this</button>' +
         '<button type="button" class="btn-outline" data-act="setup">Change what to practice</button>' +
         (Core && Core.reviewCount() ? '<a class="btn-outline" href="' + BASE + 'review.html">Review queue (' + Core.reviewCount() + ' due)</a>' : '') +
-      '</div></div>';
+      '</div>' +
+      // The Premium card under a finished set (assets/premium.js); '' for members.
+      (window.LevlPremium && res.length >= 5 ? window.LevlPremium.card('anp', 'summary') : '') +
+      '</div>';
     var mode = session.mode, count = state.count;
     app.querySelectorAll('[data-act]').forEach(function(b){
       b.addEventListener('click', function(){

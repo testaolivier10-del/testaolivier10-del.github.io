@@ -140,10 +140,14 @@ ${JSON.stringify(jsonld, null, 2)}
 </head>`;
 }
 
-/* The scripts every course page ends with. section picks the active tab. */
-export function tail({ depth, section, extra = [] }) {
+/* The scripts every course page ends with. section picks the active tab.
+   premium loads the site's Premium module (assets/premium.js) ahead of the
+   course scripts, on the pages with a Premium surface; AnpCore reads it and
+   does without it when it is absent. */
+export function tail({ depth, section, extra = [], premium = false }) {
   const s = src => `<script src="${depth}assets/${src}" defer></script>`;
   return [
+    ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
     `<script>window.ANP_SECTION = '${section}'; window.ANP_BASE = '${depth}';</script>`,
     s('anp-curriculum.js'), s('anp-core.js'), s('anp-glossary.js'), s('anp-nav.js'),
     ...extra.map(s),
@@ -169,7 +173,7 @@ export function crumbNav(items, depth) {
 
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
-  <p class="anp-beta-note"><span class="anp-beta">Beta</span> This course follows current published sources and is pending review by a licensed A&amp;P instructor. Spot something wrong? Every question has a “Report a problem” link.</p>
+  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
   <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a></p>
 </footer>`;
 }
