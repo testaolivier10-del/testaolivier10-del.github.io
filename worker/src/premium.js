@@ -151,7 +151,7 @@ export async function premiumCheckout(request, env) {
    Polar refunds the pre-tax amount and the tax with it. The pass is marked
    refunded here at once; order.refunded from Polar then finds nothing left
    to change. */
-export const REFUND_WINDOW_DAYS = 14;
+export const REFUND_WINDOW_DAYS = 7;
 
 export function refundRefusal(row, priorRefunds, now) {
   if (!row || !row.order_id || !(row.amount_cents > 0)) return 'That purchase can’t be refunded here.';
@@ -159,7 +159,7 @@ export function refundRefusal(row, priorRefunds, now) {
   if (now - Date.parse(row.created_at) > REFUND_WINDOW_DAYS * DAY_MS) {
     return `Refunds are available for ${REFUND_WINDOW_DAYS} days after buying, and this purchase is older than that.`;
   }
-  if (priorRefunds > 0) return 'This account has already had a refund, so this one needs a quick email instead.';
+  if (priorRefunds > 0) return 'This account has already had its one refund, so this purchase can’t be refunded.';
   return null;
 }
 

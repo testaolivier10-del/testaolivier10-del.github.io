@@ -232,17 +232,17 @@ test('checkout is refused from a foreign origin and answers 503 before setup', a
   assert.match(pre.headers.get('Access-Control-Allow-Headers'), /Authorization/);
 });
 
-test('self-serve refund rules: own paid order, within 14 days, once per account', () => {
+test('self-serve refund rules: own paid order, within 7 days, once per account', () => {
   const now = Date.parse('2026-10-20T12:00:00Z');
   const day = 86400000;
   const row = { order_id: 'o1', amount_cents: 2030, refunded_at: null, created_at: new Date(now - 3 * day).toISOString() };
-  assert.equal(REFUND_WINDOW_DAYS, 14);
+  assert.equal(REFUND_WINDOW_DAYS, 7);
   assert.equal(refundRefusal(row, 0, now), null);
   assert.match(refundRefusal(undefined, 0, now), /can’t be refunded/);                       // not theirs / unknown
   assert.match(refundRefusal({ ...row, order_id: null }, 0, now), /can’t be refunded/);      // free month
   assert.match(refundRefusal({ ...row, amount_cents: 0 }, 0, now), /can’t be refunded/);
   assert.match(refundRefusal({ ...row, refunded_at: '2026-10-19T00:00:00Z' }, 0, now), /already been refunded/);
-  assert.match(refundRefusal({ ...row, created_at: new Date(now - 15 * day).toISOString() }, 0, now), /14 days/);
-  assert.equal(refundRefusal({ ...row, created_at: new Date(now - 14 * day + 60000).toISOString() }, 0, now), null);
-  assert.match(refundRefusal(row, 1, now), /already had a refund/);
+  assert.match(refundRefusal({ ...row, created_at: new Date(now - 8 * day).toISOString() }, 0, now), /7 days/);
+  assert.equal(refundRefusal({ ...row, created_at: new Date(now - 7 * day + 60000).toISOString() }, 0, now), null);
+  assert.match(refundRefusal(row, 1, now), /already had its one refund/);
 });

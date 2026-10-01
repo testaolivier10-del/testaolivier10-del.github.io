@@ -3,14 +3,14 @@
    Reads my_purchases() (scripts/sql/schema.sql), which answers only for the
    signed-in user. Buying and extending go through the same dialog as every
    course page (LevlPremium.open). Refunds go to the Worker's /premium/refund,
-   which enforces the rules (own paid order, 14 days, once per account); the
+   which enforces the rules (own paid order, 7 days, once per account); the
    page only mirrors them so it doesn't offer a button that would be refused. */
 (function (window, document) {
   'use strict';
 
   var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
   var SUPPORT = 'testaolivier10@gmail.com';
-  var WINDOW_DAYS = 14;
+  var WINDOW_DAYS = 7;
   var DAY_MS = 86400000;
   var COURSE_ORDER = ['nremt', 'ochem', 'anp'];
 
@@ -107,9 +107,7 @@
             '<span>Available for ' + Math.max(1, Math.ceil(left / DAY_MS)) + ' more day' + (Math.ceil(left / DAY_MS) === 1 ? '' : 's') + '.</span>' +
           '</div>';
         } else if (left > 0) {
-          html += '<div class="refund"><span>This account has already had a refund, so <a href="mailto:' + SUPPORT +
-            '?subject=' + encodeURIComponent('LevlPrep refund') + '&body=' + encodeURIComponent('Order: ' + r.order_id) +
-            '">email us</a> about this one.</span></div>';
+          html += '<div class="refund"><span>Not refundable: this account has already had its one refund.</span></div>';
         }
       }
       return html + '<p class="note" data-refund-note="' + esc(r.order_id || '') + '"></p></li>';
@@ -150,7 +148,7 @@
       return res.json().then(function (body) { return { ok: res.ok, body: body }; }, function () { return { ok: false, body: {} }; });
     }).then(function (r) {
       busy = false;
-      if (!r.ok) throw new Error((r.body && r.body.error) || 'The refund didn’t go through. Try again, or email us.');
+      if (!r.ok) throw new Error((r.body && r.body.error) || 'The refund didn’t go through. Try again in a moment.');
       if (P && P.refresh) P.refresh();
       load();
       setTimeout(function () { note(id, 'Refunded. The money usually reaches your card in 5–10 business days.', true); }, 600);
@@ -159,7 +157,7 @@
       busy = false;
       btn.disabled = false;
       btn.textContent = 'Yes, refund it';
-      note(id, e && e.message ? e.message : 'The refund didn’t go through. Try again, or email us.', false);
+      note(id, e && e.message ? e.message : 'The refund didn’t go through. Try again in a moment.', false);
     });
   }
 
