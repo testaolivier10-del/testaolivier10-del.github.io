@@ -528,7 +528,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course not in ('nremt', 'ochem') then
+  if p_course not in ('nremt', 'ochem', 'anp') then
     raise exception 'unknown course';
   end if;
   if p_email is null or length(p_email) > 254
@@ -544,3 +544,51 @@ $$;
 
 revoke all on function public.join_waitlist(text, text, text) from public;
 grant execute on function public.join_waitlist(text, text, text) to anon, authenticated;
+
+
+-- ===========================================================================
+-- PREMIUM PASSES
+-- ===========================================================================
+-- One row per purchase (or grant). A pass is "Premium for this course until
+-- this date"; one-time, never renewing — docs/premium.md says why. Written
+-- only by the Worker (worker/src/premium.js) with the service key, when
+-- Polar's order.paid webhook arrives, and by hand for grants. RLS on with no
+-- policies: the browser reads its own access through my_premium() alone.
+-- ---------------------------------------------------------------------------
+create table if not exists public.premium_passes (
+  id          bigint generated always as identity primary key,
+  created_at  timestamptz not null default now(),
+  user_id     uuid not null references auth.users (id) on delete cascade,
+  course      text not null check (course in ('nremt', 'ochem', 'anp')),
+  pass        text not null,          -- 'nremt-90', 'ochem-semester', 'grant', …
+  starts_at   timestamptz not null default now(),
+  expires_at  timestamptz not null,
+  -- Polar's order id. Unique, so a webhook delivered twice adds one pass.
+  order_id    text unique,
+  amount_cents integer,
+  refunded_at timestamptz
+);
+
+create index if not exists premium_passes_user_idx on public.premium_passes (user_id, course);
+
+alter table public.premium_passes enable row level security;
+
+-- The signed-in user's live access: one row per course, the latest expiry of
+-- any unrefunded pass. Nothing about anyone else, and nothing without a session.
+create or replace function public.my_premium()
+returns table (course text, expires_at timestamptz)
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select p.course, max(p.expires_at)
+  from public.premium_passes p
+  where p.user_id = auth.uid()
+    and p.refunded_at is null
+    and p.expires_at > now()
+  group by p.course;
+$$;
+
+revoke all on function public.my_premium() from public;
+grant execute on function public.my_premium() to authenticated;

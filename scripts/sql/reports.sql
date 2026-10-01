@@ -173,3 +173,25 @@ order by 2 desc, 1;
 -- never used for anything else — see the note on the table in schema.sql.
 -- select email from public.premium_waitlist where course = 'nremt' order by created_at;
 
+
+-- ===========================================================================
+-- PREMIUM PASSES
+-- ===========================================================================
+
+-- Sales by course and pass, per week.
+select course, pass, date_trunc('week', created_at)::date as week,
+       count(*) as passes, sum(amount_cents) / 100.0 as revenue
+from public.premium_passes
+where order_id is not null and refunded_at is null
+group by 1, 2, 3
+order by 3 desc, 1, 2;
+
+-- Launch-day grant: every account that existed before launch gets 30 days of
+-- Premium in every course (docs/premium.md, "Existing users"). Run once.
+-- insert into public.premium_passes (user_id, course, pass, expires_at)
+-- select u.id, c.course, 'grant', now() + interval '30 days'
+-- from auth.users u cross join (values ('nremt'), ('ochem'), ('anp')) as c(course);
+
+-- The NREMT pass guarantee: extend a student who failed until they pass.
+-- insert into public.premium_passes (user_id, course, pass, expires_at)
+-- values ('<user id>', 'nremt', 'guarantee', now() + interval '90 days');

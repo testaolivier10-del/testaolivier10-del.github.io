@@ -1,58 +1,72 @@
-/* Premium, before there is a Premium — the waitlist.
+/* Premium — the free/premium split for every course, in one file.
 
-   Every course on the site is free, and nothing here changes that. What this
-   file does is find out whether anyone would pay, before a checkout, a price
-   or a single locked page gets built. docs/premium.md has the whole plan and
-   the research behind it; the short version is that a paywall on a new site
-   mostly costs visitors, so the first step is a question rather than a gate.
+   docs/premium.md has the plan and the research behind it. The rule is the
+   same in every course: teaching and reference stay free, the first part of
+   each course stays fully open, and Premium is serious practice — volume,
+   exam simulation and the analytics on top. Passes are one-time and never
+   auto-renew. Progress someone has earned is never locked.
 
-   The question is asked in one place per course: the end of a real session,
-   which is the moment a student has just seen what the site does for them.
-   Not on page load, not in a banner, not on every page — a card under the
-   score, with a button that says what it does.
+   THE LAUNCH SWITCH
+   -----------------
+   LAUNCHED below is false until the checkout is connected (Polar products,
+   the Worker's /premium routes and the premium_passes table; docs/premium.md
+   lists the steps). Until then:
+     - has() is true for everyone, so nothing anywhere is locked;
+     - badge() still marks what will be Premium, so the split is visible
+       from day one and the launch takes nothing away by surprise;
+     - the dialog collects launch-email sign-ups, as before.
+   Flipping it to true is the launch: gates lock for free users, and the
+   dialog sells passes instead.
 
-   DESIGN NOTES
-   ------------
-   - **One file for every course.** COURSES below is the free/premium split
-     for each course, written once, in the same shape, so a new course is one
-     more entry rather than a new design. It is also the list the dialog
-     shows, so what someone signs up for is exactly what is written here.
-   - **It does not pretend.** The card says Premium is coming, not that it is
-     here, and the dialog says what happens next: one email, when it launches.
-     A fake door that looks like a real checkout gets clicks that mean nothing
-     and costs the trust of the people who clicked.
-   - **An email, not just a click.** Clicks come from curiosity and misreads;
-     an address typed into a box is the signal worth counting. Both are
-     counted (premium-interest, premium-waitlist-joined) so the gap between
-     them is visible.
-   - **Once per browser per course.** After joining, the card becomes a
-     receipt. Asking again after every session would turn a question into
-     nagging.
-   - **It reuses the auth dialog's styles**, like report-question.js and for
-     the same reason: one design system, in theme.css.
-   - **A failure is never silent.** If the write does not land it says so and
-     keeps the address in the box.
+   It is a soft gate. GitHub Pages serves every file to anyone, so a
+   determined visitor can always read the data; what this controls is the
+   app. That is the plan's deliberate first step.
 
-   Pages opt in by rendering LevlPremium.card(course, source) where the card
-   belongs; one delegated listener handles every button. */
+   API (window.LevlPremium)
+   ------------------------
+   has(course)                 true if this browser may use that course's Premium
+   isFreeChapter(course, ch)   true if a chapter id is in the always-open part
+   gate(course, feature, src)  '' when allowed, else the HTML of a locked card
+   badge(course)               a small "Premium" pill to put next to a feature
+   card(course, source)        the end-of-session upsell card ('' for members)
+   open(course, source)        open the dialog directly
+   quota(course)               daily free allowance: {limit, used, left, take()}
+   onChange(fn)                called (now and) whenever access changes
+   Locked cards and pills open the dialog through one delegated listener
+   ([data-premium-open]), so a page only renders HTML. */
 (function (window, document) {
   'use strict';
 
-  var STORE_KEY = 'levlprep_waitlist_v1';
+  var LAUNCHED = false;
 
-  /* The split, per course. Same rule everywhere: teaching and reference stay
-     free, the first part of every course stays fully open, and Premium is
-     serious practice — volume, exam simulation and the analytics on top.
-     `price` is shown on the card and in the dialog: an address left beside
-     a price is a much stronger signal than one left beside "coming soon".
-     One-time passes, never auto-renewing; docs/premium.md has the reasoning. */
+  // The Cloudflare Worker that creates checkouts and receives Polar's
+  // webhooks (worker/src/premium.js).
+  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+
+  var STORE_KEY = 'levlprep_waitlist_v1';
+  var ACCESS_KEY = 'levlprep_premium_v1';
+  var QUOTA_KEY = 'levlprep_quota_v1';
+
+  /* Founding-member offer: shown in the dialog, applied at checkout by the
+     Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
+  var FOUNDING = { off: 30, until: '2027-01-31' };
+
+  /* The split, per course. `free` and `premium` are what the dialog lists, so
+     what someone pays for is exactly what is written here. `passes` must match
+     PASSES in worker/src/premium.js; `freeChapters` is the always-open part.
+     `dailyFree` is the free daily practice allowance, where a course has one. */
   var COURSES = {
     nremt: {
       name: 'NREMT-EMT Prep',
-      price: '$29 for 90 days',
+      dailyFree: 15,
+      freeChapters: [],
+      passes: [
+        { id: 'nremt-90', label: '90 days', price: 29 },
+      ],
+      guarantee: 'Fail the NREMT and your pass is extended free until you pass.',
       free: [
         'Study notes, glossary, flowcharts, mnemonics and the body map',
-        'Daily practice questions',
+        '15 practice questions a day',
         'One full timed exam',
         'Your progress, XP and streak',
       ],
@@ -66,7 +80,11 @@
     },
     ochem: {
       name: 'Organic Chemistry',
-      price: '$39 a semester',
+      freeChapters: [],
+      passes: [
+        { id: 'ochem-semester', label: 'Semester (5 months)', price: 29 },
+        { id: 'ochem-year', label: 'Full year', price: 49 },
+      ],
       free: [
         'The textbook section for every topic',
         'Foundations chapters, fully interactive',
@@ -81,11 +99,31 @@
         'All eight interactive tools',
       ],
     },
+    anp: {
+      name: 'Anatomy & Physiology',
+      freeChapters: [],
+      passes: [
+        { id: 'anp-semester', label: 'Semester (5 months)', price: 29 },
+        { id: 'anp-year', label: 'Full year (A&P I and II)', price: 49 },
+      ],
+      free: [
+        'The notes page for every topic, and the glossary',
+        'Foundations chapters, fully interactive',
+        'Your progress, XP and streak',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'The full question bank and review',
+        'The interactive tools: lab practical, predict the change, feedback loops, pathways, graphs',
+        'Flashcards and the dashboard',
+      ],
+    },
   };
 
   var overlay = null;
   var lastFocused = null;
   var active = null; // { course, source }
+  var listeners = [];
 
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -93,53 +131,194 @@
     });
   }
 
-  function readStore() {
-    try { return JSON.parse(window.localStorage.getItem(STORE_KEY)) || {}; }
+  function readJson(key) {
+    try { return JSON.parse(window.localStorage.getItem(key)) || {}; }
     catch (e) { return {}; }
   }
+  function writeJson(key, value) {
+    try { window.localStorage.setItem(key, JSON.stringify(value)); }
+    catch (e) { /* private mode: nothing to remember, nothing breaks */ }
+  }
 
-  function joined(course) { return readStore()[course] === true; }
+  /* ---- access ---------------------------------------------------------- */
 
+  /* { userId, courses: { nremt: '2027-01-01T…Z' } }, cached so a page knows on
+     first paint, and tied to the user it was read for so signing out (or in as
+     somebody else) never inherits another person's pass. */
+  function access() { return readJson(ACCESS_KEY); }
+
+  function currentUserId() {
+    var a = window.StudyHubAccount;
+    var u = a && a.user ? a.user() : null;
+    return u ? u.id : null;
+  }
+
+  function expiry(course) {
+    var a = access();
+    // Before the session has been restored on page load the user is not known
+    // yet; the cache is trusted until then so a member never sees a flash of
+    // locks. A sign-out clears it (see refresh).
+    var uid = currentUserId();
+    if (!a.courses || !a.userId || (uid && a.userId !== uid)) return null;
+    var t = a.courses[course] ? Date.parse(a.courses[course]) : NaN;
+    return isNaN(t) ? null : t;
+  }
+
+  function has(course) {
+    if (!LAUNCHED) return true;
+    var t = expiry(course);
+    return t !== null && t > Date.now();
+  }
+
+  function isFreeChapter(course, chapter) {
+    var c = COURSES[course];
+    return !!c && c.freeChapters.indexOf(chapter) !== -1;
+  }
+
+  function notify() {
+    for (var i = 0; i < listeners.length; i++) {
+      try { listeners[i](); } catch (e) { /* one page's bug is not another's */ }
+    }
+  }
+  function onChange(fn) { listeners.push(fn); fn(); }
+
+  /* Asks the database which passes this user holds. my_premium() in
+     scripts/sql/schema.sql answers only for the signed-in user. */
+  var seenUser = false;
+  function refresh() {
+    var a = window.StudyHubAccount;
+    var uid = currentUserId();
+    if (!uid) {
+      // Only a real sign-out clears the cache; the null every page load starts
+      // with, before the session is restored, does not.
+      if (seenUser && access().userId) { writeJson(ACCESS_KEY, {}); notify(); }
+      return;
+    }
+    seenUser = true;
+    if (!a || !a.rpcData) return;
+    a.rpcData('my_premium', {}).then(function (rows) {
+      if (!Array.isArray(rows)) return; // offline: keep what we knew
+      var courses = {};
+      rows.forEach(function (r) { if (r && r.course) courses[r.course] = r.expires_at; });
+      writeJson(ACCESS_KEY, { userId: uid, courses: courses });
+      notify();
+    });
+  }
+
+  /* ---- the daily free allowance ----------------------------------------- */
+
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+  }
+
+  /* Counted in this browser, reset at local midnight. Members and courses
+     without an allowance get an unlimited quota, so callers never branch. */
+  function quota(course) {
+    var c = COURSES[course];
+    var unlimited = !c || !c.dailyFree || has(course);
+    var store = readJson(QUOTA_KEY);
+    var mine = store[course] && store[course].day === today() ? store[course].used : 0;
+    var limit = unlimited ? Infinity : c.dailyFree;
+    return {
+      limit: limit,
+      used: mine,
+      left: Math.max(0, limit - mine),
+      take: function (n) {
+        if (unlimited) return true;
+        n = n || 1;
+        var s = readJson(QUOTA_KEY);
+        var used = s[course] && s[course].day === today() ? s[course].used : 0;
+        if (used + n > limit) return false;
+        s[course] = { day: today(), used: used + n };
+        writeJson(QUOTA_KEY, s);
+        return true;
+      },
+    };
+  }
+
+  /* ---- what a page renders ---------------------------------------------- */
+
+  function openAttrs(course, source) {
+    return ' data-premium-open="' + esc(course) + '" data-premium-source="' + esc(source || '') + '"';
+  }
+
+  function badge(course) {
+    if (!COURSES[course]) return '';
+    if (LAUNCHED && has(course)) return '';
+    return '<button type="button" class="premium-badge"' + openAttrs(course, 'badge') +
+      ' title="' + (LAUNCHED ? 'Part of Premium' : 'Part of Premium — free until it launches') + '">Premium</button>';
+  }
+
+  function fromPrice(c) {
+    var p = c.passes.map(function (x) { return x.price; });
+    return '$' + Math.min.apply(null, p);
+  }
+
+  function gate(course, feature, source) {
+    var c = COURSES[course];
+    if (!c || has(course)) return '';
+    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-gate-shown', { course: course, feature: feature || '' });
+    return '<div class="premium-card premium-lock" data-premium-feature="' + esc(feature || '') + '">' +
+      '<span class="premium-card__tag">Premium</span>' +
+      '<b>' + esc(lockTitle(feature)) + '</b>' +
+      '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
+      '<span class="premium-card__price">From ' + fromPrice(c) + ', one-time. No subscription.</span>' +
+      '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
+    '</div>';
+  }
+
+  function lockTitle(feature) {
+    if (feature === 'daily-limit') return 'That’s today’s 15 free questions';
+    if (feature === 'exam') return 'You’ve used your free timed exam';
+    return 'This is part of Premium';
+  }
+
+  function joined(course) { return readJson(STORE_KEY)[course] === true; }
   function markJoined(course) {
-    try {
-      var store = readStore();
-      store[course] = true;
-      window.localStorage.setItem(STORE_KEY, JSON.stringify(store));
-    } catch (e) { /* private mode: the card just stays live */ }
+    var s = readJson(STORE_KEY);
+    s[course] = true;
+    writeJson(STORE_KEY, s);
   }
 
-  /* Deliberately loose. The database checks the same shape, and the real test
-     of an address is whether the launch email arrives; a strict pattern here
-     only turns away valid addresses nobody thought of. */
-  function validEmail(s) {
-    return typeof s === 'string' && s.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-  }
-
+  /* The card under a finished session. Before launch it asks for a launch
+     email; after, it offers the passes. Members see nothing. */
   function card(course, source) {
     var c = COURSES[course];
     if (!c) return '';
-    if (joined(course)) {
+    if (LAUNCHED && has(course)) return '';
+    if (!LAUNCHED && joined(course)) {
       return '<div class="premium-card is-joined">' +
         '<b>You’re on the Premium list</b>' +
         '<p>We’ll email you once, when it launches.</p>' +
       '</div>';
     }
     return '<div class="premium-card">' +
-      '<span class="premium-card__tag">Coming soon</span>' +
+      '<span class="premium-card__tag">' + (LAUNCHED ? 'Premium' : 'Coming soon') + '</span>' +
       '<b>Premium for ' + esc(c.name) + '</b>' +
-      (c.price ? '<span class="premium-card__price">' + esc(c.price) + ', one-time</span>' : '') +
+      '<span class="premium-card__price">From ' + fromPrice(c) + ', one-time</span>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
-      '<button type="button" class="btn-press sm" data-premium-waitlist="' + esc(course) + '"' +
-        ' data-premium-source="' + esc(source || '') + '">Get notified</button>' +
+      '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
+        (LAUNCHED ? 'See Premium' : 'Get notified') + '</button>' +
     '</div>';
   }
 
-  function repaint(course) {
-    var all = document.querySelectorAll('[data-premium-waitlist="' + course + '"]');
-    for (var i = 0; i < all.length; i++) {
-      var box = all[i].closest('.premium-card');
-      if (box) box.outerHTML = card(course);
-    }
+  /* ---- the dialog ------------------------------------------------------- */
+
+  function foundingLive() {
+    return !!(FOUNDING.until && Date.now() < Date.parse(FOUNDING.until + 'T23:59:59Z'));
+  }
+
+  function passHtml(course, p) {
+    var now = foundingLive() ? Math.round(p.price * (100 - FOUNDING.off)) / 100 : null;
+    return '<li class="premium-pass">' +
+      '<span><b>' + esc(p.label) + '</b>' +
+      (now !== null
+        ? ' <s>$' + p.price + '</s> <b class="premium-pass__now">$' + now.toFixed(2).replace(/\.00$/, '') + '</b>'
+        : ' <b class="premium-pass__now">$' + p.price + '</b>') +
+      '</span>' +
+      '<button type="button" class="auth-modal-submit premium-buy" data-premium-buy="' + esc(p.id) + '">Get it</button>' +
+    '</li>';
   }
 
   function ensureDialog() {
@@ -150,23 +329,22 @@
     overlay.innerHTML =
       '<div class="auth-modal premium-modal" role="dialog" aria-modal="true" aria-labelledby="premiumTitle" aria-describedby="premiumSub">' +
         '<button type="button" class="auth-modal-close" id="premiumClose" aria-label="Close">&times;</button>' +
-        '<h2 id="premiumTitle">Premium is coming</h2>' +
+        '<h2 id="premiumTitle">Premium</h2>' +
         '<p class="auth-modal-sub" id="premiumSub"></p>' +
         '<div class="premium-lists" id="premiumLists"></div>' +
-        '<form id="premiumForm" novalidate>' +
-          '<label for="premiumEmail">Email' +
-            '<input type="email" id="premiumEmail" autocomplete="email" maxlength="254" required>' +
-          '</label>' +
-          '<div class="auth-modal-msg" id="premiumMsg" role="alert" aria-live="polite"></div>' +
-          '<button type="submit" class="auth-modal-submit" id="premiumSubmit">Tell me when it launches</button>' +
-        '</form>' +
-        '<p class="premium-fine">One email when it launches. No newsletter, and nothing changes on the site until then.</p>' +
+        '<div id="premiumBody"></div>' +
+        '<div class="auth-modal-msg" id="premiumMsg" role="alert" aria-live="polite"></div>' +
+        '<p class="premium-fine" id="premiumFine"></p>' +
       '</div>';
     document.body.appendChild(overlay);
 
-    overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) { close(); return; }
+      var buy = e.target.closest && e.target.closest('[data-premium-buy]');
+      if (buy) checkout(buy.getAttribute('data-premium-buy'), buy);
+    });
     document.getElementById('premiumClose').addEventListener('click', close);
-    document.getElementById('premiumForm').addEventListener('submit', submit);
+    overlay.addEventListener('submit', submitWaitlist);
 
     // On the document, not the overlay, for the reason report-question.js
     // gives: a disabled submit blurs focus to <body> and an overlay-bound
@@ -192,32 +370,57 @@
       items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
   }
 
+  function setMsg(text, kind) {
+    var msg = document.getElementById('premiumMsg');
+    msg.className = 'auth-modal-msg' + (kind ? ' ' + kind : '');
+    msg.textContent = text || '';
+  }
+
   function open(course, source, button) {
     var c = COURSES[course];
     if (!c) return;
     ensureDialog();
     active = { course: course, source: source || '' };
     lastFocused = button || document.activeElement;
+    setMsg('');
 
-    document.getElementById('premiumSub').textContent =
-      'Premium for ' + c.name + (c.price ? ' (' + c.price + ', one-time, no subscription)' : '') +
-      ' isn’t available yet. Leave your email and we’ll tell you when it is.';
+    document.getElementById('premiumTitle').textContent =
+      LAUNCHED ? 'Premium for ' + c.name : 'Premium is coming';
     document.getElementById('premiumLists').innerHTML =
       listHtml('Premium', c.premium) + listHtml('Always free', c.free);
-    var input = document.getElementById('premiumEmail');
-    var account = window.StudyHubAccount;
-    var user = account && account.user ? account.user() : null;
-    if (!input.value && user && user.email) input.value = user.email;
-    var msg = document.getElementById('premiumMsg');
-    msg.textContent = '';
-    msg.className = 'auth-modal-msg';
-    var submitBtn = document.getElementById('premiumSubmit');
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Tell me when it launches';
+
+    var body = document.getElementById('premiumBody');
+    var fine = document.getElementById('premiumFine');
+    if (LAUNCHED) {
+      document.getElementById('premiumSub').textContent =
+        'One-time passes. No subscription, nothing renews.' +
+        (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
+      body.innerHTML = '<ul class="premium-passes">' +
+        c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>';
+      fine.textContent = (c.guarantee ? c.guarantee + ' ' : '') +
+        'When a pass ends, your progress stays; only the Premium parts lock again.';
+    } else {
+      document.getElementById('premiumSub').textContent =
+        'Premium for ' + c.name + ' (from ' + fromPrice(c) + ', one-time, no subscription) isn’t on sale yet, ' +
+        'and until it is, everything marked Premium is free. Leave your email and we’ll tell you when it launches.';
+      body.innerHTML =
+        '<form id="premiumForm" novalidate>' +
+          '<label for="premiumEmail">Email' +
+            '<input type="email" id="premiumEmail" autocomplete="email" maxlength="254" required>' +
+          '</label>' +
+          '<button type="submit" class="auth-modal-submit" id="premiumSubmit">Tell me when it launches</button>' +
+        '</form>';
+      fine.textContent = 'One email when it launches. No newsletter.';
+      var input = document.getElementById('premiumEmail');
+      var a = window.StudyHubAccount;
+      var user = a && a.user ? a.user() : null;
+      if (user && user.email) input.value = user.email;
+    }
 
     overlay.classList.add('open');
     document.documentElement.classList.add('auth-modal-open');
-    input.focus();
+    var first = overlay.querySelector('#premiumEmail, .premium-buy');
+    if (first) first.focus();
 
     if (window.LevlAnalytics) window.LevlAnalytics.event('premium-interest', { course: course, source: active.source });
   }
@@ -231,32 +434,84 @@
     active = null;
   }
 
-  function submit(e) {
+  /* Buying needs an account: the pass is attached to it, so it follows the
+     student to every device. Not signed in → sign in first, then come back to
+     this dialog. Signed in → the Worker makes a Polar checkout and we go there. */
+  function checkout(passId, button) {
+    var a = window.StudyHubAccount;
+    if (!a) { setMsg('Couldn’t reach checkout just now. Try again in a moment.', 'error'); return; }
+    if (!currentUserId()) {
+      var resume = active;
+      close();
+      var once = false;
+      a.onAuthChange(function (u) { if (u && !once && resume) { once = true; open(resume.course, resume.source); } });
+      a.openAuthModal('signup');
+      return;
+    }
+    if (window.LevlAnalytics) window.LevlAnalytics.event('premium-checkout-start', { course: active && active.course, pass: passId });
+    button.disabled = true;
+    button.textContent = 'Opening…';
+    a.accessToken().then(function (token) {
+      if (!token) throw new Error('no session');
+      return fetch(ENDPOINT + '/premium/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ pass: passId, returnTo: window.location.href }),
+      });
+    }).then(function (res) {
+      return res.json().then(function (body) { return { ok: res.ok, body: body }; });
+    }).then(function (r) {
+      if (!r.ok || !r.body || !r.body.url) throw new Error((r.body && r.body.error) || 'checkout failed');
+      window.location.href = r.body.url;
+    }).catch(function () {
+      button.disabled = false;
+      button.textContent = 'Get it';
+      setMsg('Checkout didn’t open — you may be offline. Nothing was charged. Try again in a moment.', 'error');
+    });
+  }
+
+  /* Coming back from Polar: ?premium=success. Payment is confirmed by the
+     webhook, which can land a few seconds after the redirect, so ask again
+     a few times before saying anything is wrong. */
+  function handleReturn() {
+    var params;
+    try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+    if (params.get('premium') !== 'success') return;
+    var course = params.get('course');
+    try {
+      params.delete('premium'); params.delete('course'); params.delete('checkout_id');
+      var q = params.toString();
+      window.history.replaceState(null, '', window.location.pathname + (q ? '?' + q : '') + window.location.hash);
+    } catch (e) { /* old browser: the query just stays */ }
+    var tries = 0;
+    (function poll() {
+      refresh();
+      if (course && expiry(course) && expiry(course) > Date.now()) {
+        if (window.LevlAnnounce) window.LevlAnnounce.say('Premium is unlocked. Thank you!');
+        return;
+      }
+      if (++tries < 6) setTimeout(poll, 2500);
+    })();
+  }
+
+  function validEmail(s) {
+    return typeof s === 'string' && s.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+  }
+
+  function submitWaitlist(e) {
     e.preventDefault();
     if (!active) return;
-    var msg = document.getElementById('premiumMsg');
     var submitBtn = document.getElementById('premiumSubmit');
     var email = document.getElementById('premiumEmail').value.trim();
-
-    if (!validEmail(email)) {
-      msg.className = 'auth-modal-msg error';
-      msg.textContent = 'That doesn’t look like an email address.';
-      return;
-    }
-    var account = window.StudyHubAccount;
-    if (!account || !account.rpc) {
-      msg.className = 'auth-modal-msg error';
-      msg.textContent = 'Couldn’t send that just now. Try again in a moment.';
-      return;
-    }
+    if (!validEmail(email)) { setMsg('That doesn’t look like an email address.', 'error'); return; }
+    var a = window.StudyHubAccount;
+    if (!a || !a.rpc) { setMsg('Couldn’t send that just now. Try again in a moment.', 'error'); return; }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
-    msg.className = 'auth-modal-msg';
-    msg.textContent = '';
-
+    setMsg('');
     var sending = active;
-    account.rpc('join_waitlist', {
+    a.rpc('join_waitlist', {
       p_course: sending.course,
       p_email: email,
       p_source: sending.source || null,
@@ -264,8 +519,7 @@
       if (!ok) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Tell me when it launches';
-        msg.className = 'auth-modal-msg error';
-        msg.textContent = 'That didn’t send — you may be offline. Try again when you’re back.';
+        setMsg('That didn’t send — you may be offline. Try again when you’re back.', 'error');
         return;
       }
       markJoined(sending.course);
@@ -276,25 +530,47 @@
     });
   }
 
+  function repaint(course) {
+    var all = document.querySelectorAll('.premium-card [data-premium-open="' + course + '"]');
+    for (var i = 0; i < all.length; i++) {
+      var box = all[i].closest('.premium-card');
+      if (box && !box.classList.contains('premium-lock')) box.outerHTML = card(course);
+    }
+  }
+
   function mount() {
     if (window.__levlPremiumMounted) return;
     window.__levlPremiumMounted = true;
     document.addEventListener('click', function (e) {
-      var btn = e.target && e.target.closest && e.target.closest('[data-premium-waitlist]');
+      var btn = e.target && e.target.closest && e.target.closest('[data-premium-open]');
       if (!btn) return;
       e.preventDefault();
-      open(btn.getAttribute('data-premium-waitlist'), btn.getAttribute('data-premium-source'), btn);
+      open(btn.getAttribute('data-premium-open'), btn.getAttribute('data-premium-source'), btn);
     });
+    var a = window.StudyHubAccount;
+    if (a && a.onAuthChange) a.onAuthChange(function () { refresh(); });
+    handleReturn();
   }
 
   window.LevlPremium = {
-    card: card,
+    launched: function () { return LAUNCHED; },
     COURSES: COURSES,
+    has: has,
+    isFreeChapter: isFreeChapter,
+    gate: gate,
+    badge: badge,
+    card: card,
+    open: open,
+    quota: quota,
+    onChange: onChange,
+    refresh: refresh,
     /* Exported for scripts/test/premium.test.mjs. */
     _joined: joined,
     _markJoined: markJoined,
     _validEmail: validEmail,
+    _setLaunched: function (v) { LAUNCHED = !!v; },
   };
 
-  mount();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
+  else mount();
 })(window, document);

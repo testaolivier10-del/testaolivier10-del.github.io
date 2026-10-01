@@ -1740,6 +1740,26 @@
       return !(res && res.error);
     }, function(){ return false; });
   }
+  /* The same call for the few RPCs whose answer matters (premium.js asks which
+     passes this user holds). Resolves to the data, or null when there is no
+     client yet, the call failed or the browser is offline. */
+  function rpcData(name, args){
+    var c = getClient();
+    if(!c) return Promise.resolve(null);
+    return c.rpc(name, args || {}).then(function(res){
+      return res && !res.error ? res.data : null;
+    }, function(){ return null; });
+  }
+  /* The signed-in user's access token, for the Worker routes that act on
+     their behalf (premium checkout). Null when signed out. */
+  function accessToken(){
+    var c = getClient();
+    if(!c || !currentUser) return Promise.resolve(null);
+    return c.auth.getSession().then(function(res){
+      var s = res && res.data && res.data.session;
+      return s ? s.access_token : null;
+    }, function(){ return null; });
+  }
   function flushRpcQueue(){
     var queued = rpcQueue.splice(0, rpcQueue.length);
     queued.forEach(function(call){ rpc(call[0], call[1]); });
@@ -1747,6 +1767,8 @@
 
   window.StudyHubAccount = {
     rpc: rpc,
+    rpcData: rpcData,
+    accessToken: accessToken,
     /* Exported for scripts/test/account-delete.test.mjs. This one function
        erases a student's work on purpose, so what it does and does not touch
        is worth a test rather than a careful read. */

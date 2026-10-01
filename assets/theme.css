@@ -1144,6 +1144,18 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .premium-lists ul{margin:0;padding-left:18px;font-size:13px;font-weight:700;line-height:1.5;}
 .premium-fine{margin:12px 0 0;font-size:12px;font-weight:700;color:var(--muted);text-align:center;}
 @media (max-width:520px){.premium-lists{grid-template-columns:1fr;}}
+/* The pill that marks a Premium feature, and the pass list in the dialog. */
+.premium-badge{
+  display:inline-flex;align-items:center;margin-left:6px;padding:2px 8px;border:0;border-radius:999px;
+  background:var(--tint-accent);color:var(--accent-text);font:900 10.5px/1.4 var(--font-ui);
+  text-transform:uppercase;letter-spacing:.05em;cursor:pointer;vertical-align:middle;
+}
+.premium-badge:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;}
+.premium-passes{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px;}
+.premium-pass{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 12px;border-radius:var(--radius);background:var(--tint-accent);font-size:14px;}
+.premium-pass s{color:var(--muted);font-weight:700;}
+.premium-pass .premium-buy{width:auto;margin:0;padding:8px 16px;flex:none;}
 
 /* The signed-in menu. Replaces a window.confirm(), which could not show
    whether the work in this browser had actually reached the account yet —
