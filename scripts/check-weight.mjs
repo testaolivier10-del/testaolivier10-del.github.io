@@ -68,7 +68,11 @@ const check = process.argv.includes('--check');
    rest, ~95 KB, is theme.css and the shared modules, and that is the part any
    commit can move. */
 const SHELL_BUDGETS = [
-  ['site', 249],
+  /* 249 -> 250 for the October 2026 security audit: premium.js now checks
+     the signed-in user before trusting a cached pass and reports failed
+     refreshes, and site-chrome.js shows the service worker's new-version
+     toast (together about 1.1 KB gzipped, after trimming their comments). */
+  ['site', 250],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -177,7 +181,11 @@ const SHELL_BUDGETS = [
 const BUDGETS = [
   // The front doors. A first-time visitor's whole impression of whether this
   // site is fast is formed on one of these three.
-  ['index.html', 6],
+  /* 6 -> 6.1, and ochem/index.html 11 -> 11.2, for the tighter CSP every page
+     now carries (the two exact script files it may load, the one Worker
+     host, form-action): about 100 more bytes of policy per page, on pages
+     that were already within a few bytes of their budgets. */
+  ['index.html', 6.1],
   ['nremt/index.html', 9],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
@@ -186,7 +194,7 @@ const BUDGETS = [
      simply more topics — and the saving noted above (splitting the one
      lesson-concepts.js call out of ochem-home.js, worth about 4.4 KB) is
      still available if this ever needs to come back down. */
-  ['ochem/index.html', 11],
+  ['ochem/index.html', 11.2],
 
   // The busiest page on the site, and the one the bank split was for.
   ['nremt/practice.html', 40],

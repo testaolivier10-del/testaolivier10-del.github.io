@@ -13,6 +13,7 @@
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { STUB_CSP } from './lib/site-config.mjs';
 import { fileURLToPath } from 'node:url';
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampTitle, clampDesc,
@@ -1038,6 +1039,7 @@ for (const [from, to] of Object.entries(RENAMED)) put(`${from}.html`, `<!DOCTYPE
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="${STUB_CSP}">
 <script>location.replace("${to}.html" + location.search + location.hash);</script>
 <meta http-equiv="refresh" content="0; url=${to}.html">
 <link rel="canonical" href="${SITE}${BASE}${to}.html">

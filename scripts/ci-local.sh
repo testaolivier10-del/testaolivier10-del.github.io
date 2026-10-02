@@ -11,7 +11,7 @@ run node scripts/check-site.mjs
 for s in build-og-tags build-sitemap build-notes-pages build-ochem-glossary check-curriculum \
          check-anp-map build-anp check-anp-content build-ochem-home build-lesson-meta build-leads-to \
          build-tool-pages build-nremt-notes-toc build-ochem-figures build-notes-figures build-flashcards \
-         build-nremt-flashcards build-question-bank build-ochem-bank build-worker check-weight; do
+         build-nremt-flashcards build-question-bank build-ochem-bank build-worker build-site-config check-weight; do
   run node "scripts/$s.mjs" --check
 done
 node scripts/build-tutor-bank.mjs >/dev/null 2>&1

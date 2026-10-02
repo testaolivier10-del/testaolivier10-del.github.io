@@ -42,7 +42,7 @@
 
   // The Cloudflare Worker that creates checkouts and receives Polar's
   // webhooks (worker/src/premium.js).
-  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
 
   var STORE_KEY = 'levlprep_waitlist_v1';
   var ACCESS_KEY = 'levlprep_premium_v1';
@@ -160,12 +160,9 @@
     return u ? u.id : null;
   }
 
-  /* Signed out is never Premium. The cache answers only for the user it was
-     read for, and only once that user is loaded: before the session is
-     restored on page load nobody is known yet, so a member sees the locks
-     for a moment and refresh() lifts them as soon as the session arrives.
-     Trusting the cache before then is what let one line in the console
-     unlock everything (site audit, Fix-first 3). */
+  /* Signed out is never Premium: the cache counts only for the loaded user
+     it was read for (refresh() unlocks once the session is restored).
+     Trusting it before then was a one-line console unlock. */
   function expiry(course) {
     var uid = currentUserId();
     if (!uid) return null;
@@ -193,16 +190,10 @@
   }
   function onChange(fn) { listeners.push(fn); fn(); }
 
-  /* Asks the database which passes this user holds. my_premium() in
-     scripts/sql/schema.sql answers only for the signed-in user, and only for
-     passes that have started (a queued pass counts from its start date).
-
-     An empty answer clears the cached passes: a refund or an expiry has to
-     lock the next page, not whenever the cached date runs out. A failed call
-     keeps what we knew (offline is not a refund), and after
-     REFRESH_REPORT_AFTER failures in a row it is reported once through
-     errors.js, so a broken my_premium() shows up somewhere other than a
-     member's locked page. lastSynced() says when access was last confirmed. */
+  /* Asks my_premium() (scripts/sql/schema.sql) which started passes this
+     user holds. An empty answer clears the cache, so a refund locks the next
+     page; a failed call keeps it (offline is not a refund) and is reported
+     once after REFRESH_REPORT_AFTER in a row. */
   var REFRESH_REPORT_AFTER = 3;
   var refreshFailures = 0;
   var refreshReported = false;
@@ -211,8 +202,6 @@
     var a = window.StudyHubAccount;
     var uid = currentUserId();
     if (!uid) {
-      // has() already ignores the cache without a user; a real sign-out also
-      // removes it, so the next person on this browser starts clean.
       if (seenUser) { seenUser = false; clearAccess(); notify(); }
       return Promise.resolve(false);
     }
@@ -248,19 +237,15 @@
     }
   }
 
-  /* When this browser last confirmed the signed-in user's access with the
-     database (ms since epoch), or null if it never has. */
+  // When access was last confirmed for the signed-in user (ms), or null.
   function lastSynced() {
     var a = access();
     var uid = currentUserId();
     return uid && a.userId === uid && typeof a.syncedAt === 'number' ? a.syncedAt : null;
   }
 
-  /* A finished full timed exam, stamped by the database rather than by this
-     browser (record_exam_completion in scripts/sql/schema.sql). The NREMT
-     pass guarantee counts these, because the synced exam history is
-     something the student's own browser writes. Signed-out: nothing to
-     record. Never rejects. */
+  /* A finished timed exam, stamped by the database (record_exam_completion),
+     which the NREMT guarantee counts instead of browser-written history. */
   function recordExam(course, questions) {
     var a = window.StudyHubAccount;
     if (!COURSES[course] || !currentUserId() || !a || !a.rpc) return Promise.resolve(false);
@@ -315,8 +300,7 @@
       funnelSeen[k] = true;
     }
     if (an && an.optedOut && an.optedOut()) return;
-    // Paid is counted by the Worker when Polar's webhook lands; a browser
-    // saying so is not a payment (count_premium_step ignores it).
+    // Paid is counted by the Worker's webhook, not by a browser.
     if (step === 'checkout-paid') return;
     var a = window.StudyHubAccount;
     if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
@@ -833,10 +817,8 @@
     recordExam: recordExam,
   };
 
-  /* Internals for scripts/test/*premium*.test.mjs. Nothing here is on
-     window: the test harness defines __levlTestHooks in its VM sandbox, and
-     in a browser that name does not exist, so production ships no way to
-     flip the launch switch or reach these from the console. */
+  /* Test internals, never on window: only the test harness's VM sandbox
+     defines __levlTestHooks (scripts/test/harness.mjs). */
   if (typeof __levlTestHooks === 'object' && __levlTestHooks) {
     __levlTestHooks.premium = {
       joined: joined,

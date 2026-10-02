@@ -42,6 +42,7 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { CSP } from './lib/site-config.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 // Hand-written meta descriptions, for sections whose opening paragraph has no
@@ -245,7 +246,7 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="${CSP}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
