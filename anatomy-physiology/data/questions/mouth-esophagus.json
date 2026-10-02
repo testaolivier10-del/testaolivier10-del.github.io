@@ -241,6 +241,11 @@
         "name": "Ability to taste a dry cracker",
         "answer": "down",
         "why": "Taste molecules must dissolve in saliva to reach the taste buds."
+      },
+      {
+        "name": "Number of taste buds on his tongue",
+        "answer": "none",
+        "why": "Atropine changes how much saliva he makes, not how many taste buds he has. Food tastes weaker because less of it dissolves to reach them."
       }
     ],
     "why": {

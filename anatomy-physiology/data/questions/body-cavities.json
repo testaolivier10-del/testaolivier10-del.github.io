@@ -68,13 +68,12 @@
       "Esophagus",
       "Trachea",
       "Spleen",
-      "Thymus"
+      "Liver"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "The mediastinum is the central compartment of the thoracic cavity, between the lungs. It holds the heart, the large vessels, the trachea, the esophagus and the thymus.",
@@ -84,7 +83,7 @@
         "Correct. The esophagus runs down through the mediastinum, behind the trachea and heart.",
         "Correct. The trachea (windpipe) runs down the mediastinum before it splits toward the lungs.",
         "The spleen is below the diaphragm, in the abdominal cavity.",
-        "Correct. The thymus sits in the upper mediastinum, above the heart."
+        "The liver is below the diaphragm, in the abdominal cavity."
       ]
     }
   },
@@ -421,13 +420,12 @@
       "Urinary bladder",
       "Kidneys",
       "Thymus",
-      "Spleen"
+      "Lungs"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "Below the diaphragm, the abdominal cavity holds the liver, spleen, stomach, intestines and, against its back wall, the kidneys. The pelvic cavity holds the urinary bladder.",
@@ -437,7 +435,7 @@
         "Correct. The bladder is in the pelvic cavity.",
         "Correct. The kidneys lie against the back wall of the abdominal cavity, behind the peritoneum.",
         "The thymus is in the upper mediastinum, above the heart.",
-        "Correct. The spleen is in the upper left of the abdominal cavity."
+        "The lungs are in the thoracic cavity, above the diaphragm."
       ]
     }
   },

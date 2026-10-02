@@ -55,7 +55,8 @@
       {"name": "Red blood cell count", "answer": "up", "why": "Weeks of faster production add more red cells than are destroyed."},
       {"name": "Hematocrit", "answer": "up", "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."},
       {"name": "Hemoglobin per liter of blood", "answer": "up", "why": "More red cells in each liter means more hemoglobin in each liter."},
-      {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."}
+      {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."},
+      { "name": "Oxygen each gram of hemoglobin carries when fully loaded", "answer": "none", "why": "A fully loaded gram of hemoglobin still carries about 1.34 mL of oxygen. Altitude changes how much hemoglobin there is, not what each gram can hold." }
     ],
     "why": {
       "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises within hours and the marrow speeds up. EPO eases back from its early peak over the following days, but the extra red cells keep coming for weeks. Her red cell count, hematocrit and hemoglobin climb, and the cost is thicker blood."
@@ -74,7 +75,8 @@
       {"name": "Reticulocyte count", "answer": "down", "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."},
       {"name": "Hematocrit", "answer": "down", "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."},
       {"name": "Oxygen carried per liter of blood", "answer": "down", "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."},
-      {"name": "Resting heart rate", "answer": "up", "why": "With thinner blood and less oxygen in each liter, his heart pumps more blood each minute, partly by beating faster."}
+      {"name": "Resting heart rate", "answer": "up", "why": "With thinner blood and less oxygen in each liter, his heart pumps more blood each minute, partly by beating faster."},
+      { "name": "How fully his lungs load each red cell with oxygen", "answer": "none", "why": "His lungs are healthy, so each red cell leaves them as fully loaded as before. What falls is how many red cells there are to carry oxygen." }
     ],
     "why": {
       "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) stays inappropriately low for how anemic he is, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."

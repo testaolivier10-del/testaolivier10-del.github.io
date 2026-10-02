@@ -278,20 +278,19 @@
     "q": "Which of these fluids are part of the extracellular fluid? Select all that apply.",
     "options": [
       "Plasma",
-      "Interstitial fluid",
+      "The fluid inside a muscle cell",
       "The watery part of the cytoplasm",
       "The fluid inside a red blood cell",
       "The fluid inside the nucleus"
     ],
     "correct": [
-      0,
-      1
+      0
     ],
     "why": {
       "correct": "Extracellular fluid is all fluid outside cells. Its two main parts are interstitial fluid, which bathes the cells, and plasma, the fluid part of blood.",
       "options": [
         "Correct. Plasma is outside the blood cells, so it is extracellular fluid.",
-        "Correct. Interstitial fluid fills the spaces between cells and is most of the extracellular fluid.",
+        "A muscle cell is a cell, so the fluid inside it is intracellular.",
         "The fluid of the cytoplasm is intracellular fluid.",
         "A red blood cell is a cell, so the fluid inside it is intracellular, even though the cell itself floats in plasma.",
         "The nucleus is inside the cell, so its fluid is intracellular."

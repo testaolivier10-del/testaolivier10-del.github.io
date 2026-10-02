@@ -336,24 +336,23 @@
       "Several steps of blood clotting",
       "Carrying oxygen in the blood",
       "Mineralizing new osteoid",
-      "Setting how easily voltage-gated sodium channels open"
+      "Holding the resting membrane potential near −70 mV"
     ],
     "correct": [
       0,
       1,
       2,
-      4,
-      5
+      4
     ],
     "why": {
-      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis, is needed in clotting, forms bone mineral with phosphate, and, from outside the cell, sets how easily sodium channels open.",
+      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis, is needed in clotting and forms bone mineral with phosphate. From outside the cell it also sets how easily sodium channels open, but the resting potential itself comes from potassium.",
       "options": [
         "Correct. A rise in calcium inside muscle cells starts contraction.",
         "Correct. Calcium entry into the nerve ending triggers neurotransmitter exocytosis.",
         "Correct. Several clotting steps need calcium ions.",
         "Oxygen is carried by an iron-containing protein in red blood cells, not by calcium.",
         "Correct. Bone mineral is calcium phosphate.",
-        "Correct. Extracellular calcium acts as a brake on voltage-gated sodium channels."
+        "The resting potential comes mainly from potassium leaking out through open channels, kept up by the sodium–potassium pump. Calcium changes how easily sodium channels open, not the resting value itself."
       ]
     }
   },

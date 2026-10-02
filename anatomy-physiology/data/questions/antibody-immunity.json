@@ -185,13 +185,12 @@
       "IgG crossing from a mother into her fetus",
       "Recovering from chickenpox",
       "IgA a baby swallows in breast milk",
-      "Anti-D injected into an Rh-negative mother"
+      "A tetanus booster shot"
     ],
     "correct": [
       0,
       2,
-      4,
-      5
+      4
     ],
     "why": {
       "correct": "Passive immunity is protection by antibody someone else made. Antivenom, maternal IgG, IgA in breast milk and injected anti-D are all borrowed antibody. A vaccine and recovery from infection make your own immune system respond: active immunity.",
@@ -201,7 +200,7 @@
         "Correct. Maternal IgG is natural passive immunity.",
         "Recovering from an infection is natural active immunity; your own cells made the antibodies and memory cells.",
         "Correct. IgA in milk is natural passive immunity for the baby's gut.",
-        "Correct. Injected anti-D is borrowed antibody: artificial passive immunity."
+        "A booster is a vaccine: your own B cells respond again and refresh memory, so it is artificial active immunity."
       ]
     }
   },
@@ -479,8 +478,8 @@
     "options": [
       "Influenza's surface proteins keep changing, so old antibodies fit less well",
       "Influenza vaccines leave no memory cells",
-      "Measles virus hides inside nerve cells, where antibodies can never reach it",
-      "The body cannot make IgG against influenza"
+      "Measles virus hides inside nerve cells, out of reach of antibodies",
+      "The body makes little IgG against influenza"
     ],
     "correct": 0,
     "why": {

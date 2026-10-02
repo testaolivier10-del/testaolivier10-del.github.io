@@ -122,7 +122,7 @@
     "diff": 3,
     "core": ["homeostasis"],
     "q": "Mr. Farouk, 35, has vomited stomach fluid (about pH 2) many times over two days. His tingling fingers and muscle cramps suggest a change in his blood pH. Which change is most likely?",
-    "options": ["His blood pH has risen, because he has lost hydrogen ions", "His blood pH has fallen, because he has lost a strong acid", "His blood pH is unchanged, because stomach fluid never mixes with blood", "His blood pH has fallen, because he has gained hydroxide ions"],
+    "options": ["His blood pH has risen, because he has lost hydrogen ions", "His blood pH has fallen, because he has lost a strong acid", "His blood pH is unchanged, because stomach fluid is kept apart from the blood", "His blood pH has fallen, because he has gained hydroxide ions"],
     "correct": 0,
     "why": {
       "correct": "Stomach fluid is rich in hydrogen ions. Losing it repeatedly removes acid from the body, so hydrogen ions in the blood fall and pH rises toward alkalemia. Tingling and cramps are typical of alkalemia, which makes nerves and muscles fire too easily.",

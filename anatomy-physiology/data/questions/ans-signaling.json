@@ -128,6 +128,11 @@
         "name": "Movement of the stomach and intestine wall",
         "answer": "down",
         "why": "Parasympathetic acetylcholine speeds gut smooth muscle through muscarinic receptor proteins, so blocking them slows the gut."
+      },
+      {
+        "name": "Strength of skeletal muscle contraction",
+        "answer": "none",
+        "why": "Skeletal muscle responds to acetylcholine through nicotinic receptor proteins at the end plate, which atropine does not block."
       }
     ],
     "why": {
@@ -215,14 +220,13 @@
       "Widened pupils",
       "A fast heart rate",
       "Heavy drooling",
-      "Dry mouth",
+      "Loose, frequent stools",
       "Pinpoint pupils"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
       "correct": "Blocking muscarinic receptor proteins removes all parasympathetic effects and also sympathetic sweating. The pupils widen, the heart speeds up, the mouth goes dry, and without sweating the skin becomes hot, dry and flushed.",
@@ -231,7 +235,7 @@
         "Correct. The circular iris muscle is blocked, so the alpha-1 dilator muscle wins.",
         "Correct. The vagus nerve's slowing effect on the heart is blocked.",
         "Drooling means extra saliva, a muscarinic effect. A muscarinic antagonist does the opposite.",
-        "Correct. Watery saliva depends on muscarinic receptor proteins.",
+        "Gut movement and secretion depend on muscarinic signaling. Blocking it slows the gut rather than speeding it.",
         "Pinpoint pupils come from too much muscarinic activity, as in organophosphate poisoning, the opposite of this child's situation."
       ]
     }
@@ -509,7 +513,7 @@
     "options": [
       "Metoprolol, because it acts mainly on beta-1 receptor proteins",
       "Propranolol, because blocking beta-2 relaxes airway smooth muscle",
-      "Propranolol, because it acts only on the heart",
+      "Propranolol, because it acts mainly on the heart",
       "Metoprolol, because it activates beta-2 receptor proteins"
     ],
     "correct": 0,
@@ -599,7 +603,7 @@
       "Widen it, by relaxing the dilator muscle",
       "Widen it, by relaxing the circular muscle",
       "Narrow it, by contracting the circular muscle",
-      "Leave it unchanged, because pilocarpine acts only on the lens"
+      "Leave it unchanged, because pilocarpine acts on the lens instead"
     ],
     "correct": 2,
     "why": {

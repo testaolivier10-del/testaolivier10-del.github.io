@@ -387,6 +387,11 @@
         "name": "Fastest possible rate of action potentials",
         "answer": "down",
         "why": "A new action potential cannot start until the refractory period ends, so a longer refractory period lowers the ceiling on the rate."
+      },
+      {
+        "name": "Resting membrane potential",
+        "answer": "none",
+        "why": "The resting potential is held by a different set of potassium channels that stay open at rest, which this drug does not block."
       }
     ],
     "why": {

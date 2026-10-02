@@ -385,6 +385,11 @@
         "name": "pH",
         "answer": "up",
         "why": "pH rises when free hydrogen ions fall."
+      },
+      {
+        "name": "Hemoglobin in each liter of blood",
+        "answer": "none",
+        "why": "A minute of fast breathing changes the gases in the blood, not how much hemoglobin it holds."
       }
     ],
     "why": {

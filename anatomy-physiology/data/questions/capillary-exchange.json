@@ -438,17 +438,17 @@
     "options": [
       "Oxygen",
       "Glucose",
-      "Carbon dioxide",
+      "Amino acids",
       "Sodium ions",
       "Albumin"
     ],
-    "correct": [0, 2],
+    "correct": [0],
     "why": {
       "correct": "Lipid-soluble substances such as oxygen and carbon dioxide dissolve in the phospholipid bilayer and cross straight through the endothelial cells. Water-soluble solutes such as glucose and sodium use the water-filled clefts. Albumin is mostly held back.",
       "options": [
         "Crosses through the cells. Oxygen is small and lipid-soluble, so it dissolves in the bilayer.",
         "Uses the clefts. Glucose is water-soluble and does not cross the bilayer easily.",
-        "Crosses through the cells. Carbon dioxide is lipid-soluble, like oxygen.",
+        "Use the clefts. Amino acids are water-soluble, like glucose.",
         "Uses the clefts. Charged ions cannot dissolve in the lipid bilayer.",
         "Mostly held back. Albumin is too large for the clefts of a continuous capillary; a small amount crosses by transcytosis."
       ]

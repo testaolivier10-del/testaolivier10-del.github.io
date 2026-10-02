@@ -165,13 +165,12 @@
       "Gallbladder",
       "Esophagus",
       "Kidney",
-      "Appendix"
+      "Heart"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "The digestive system includes the tube food passes through (mouth, esophagus, stomach, intestines, with the appendix attached) and the organs that feed juices into it (liver, gallbladder, pancreas).",
@@ -181,7 +180,7 @@
         "Correct. The gallbladder stores bile from the liver and releases it into the intestine.",
         "Correct. The esophagus carries food from the throat to the stomach.",
         "The kidney belongs to the urinary system. It filters blood and makes urine.",
-        "Correct. The appendix is a small pouch attached to the intestine, so it is part of the digestive system."
+        "The heart belongs to the cardiovascular system. It pumps blood."
       ]
     }
   },

@@ -156,6 +156,11 @@
         "name": "Rise in blood glucose after drinking",
         "answer": "down",
         "why": "Undigested lactose yields no glucose or galactose for SGLT1 to absorb, so blood glucose rises less than it would after the milk in a person with high lactase."
+      },
+      {
+        "name": "Absorption of the fat in the milk",
+        "answer": "none",
+        "why": "Fat is digested by lipase with the help of bile, which lactase deficiency does not affect."
       }
     ],
     "why": {

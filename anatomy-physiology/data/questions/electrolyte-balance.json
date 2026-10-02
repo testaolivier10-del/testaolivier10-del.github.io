@@ -425,6 +425,11 @@
         "name": "Plasma potassium",
         "answer": "up",
         "why": "Fewer working nephrons secrete less potassium, so it tends to build up, especially after potassium-rich meals."
+      },
+      {
+        "name": "Plasma sodium",
+        "answer": "none",
+        "why": "Plasma sodium usually stays normal until kidney disease is far advanced: each remaining nephron excretes more sodium, and thirst and ADH keep water in balance with it."
       }
     ],
     "why": {

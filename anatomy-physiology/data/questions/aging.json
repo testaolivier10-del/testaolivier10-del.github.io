@@ -529,6 +529,11 @@
         "name": "Naive T cells in the blood",
         "answer": "down",
         "why": "The thymus shrinks from puberty on and makes few new naive T cells."
+      },
+      {
+        "name": "Resting heart rate",
+        "answer": "none",
+        "why": "Resting heart rate changes little with healthy aging. What falls is the maximum rate the heart can reach."
       }
     ],
     "why": {
@@ -600,7 +605,7 @@
       "Supplements stop oxidative damage and slow aging",
       "Reactive oxygen species play no part in aging",
       "Trials found no benefit, and some found harm",
-      "Antioxidants lengthen telomeres in all cells"
+      "Antioxidants lengthen telomeres in dividing cells"
     ],
     "correct": 2,
     "why": {
@@ -609,7 +614,7 @@
         "Supplements do not stop oxidative damage inside cells in any measurable way that slows aging, and trials have not shown a benefit.",
         "Oxidative damage is one contributor to aging; it is just not the single cause.",
         "Correct. The trials were negative, and some showed harm.",
-        "No antioxidant has been shown to lengthen telomeres in all cells. Telomerase is what adds repeats."
+        "No antioxidant has been shown to lengthen telomeres. Telomerase is what adds repeats."
       ]
     }
   },
@@ -626,7 +631,7 @@
       "Their muscles had not aged",
       "Much of the strength lost with age can be regained by training",
       "The gain came from new satellite cells forming whole new muscles",
-      "Strength gains in older adults come only from learning the exercise"
+      "The gain came from learning the movement, not from changes in muscle"
     ],
     "correct": 1,
     "why": {

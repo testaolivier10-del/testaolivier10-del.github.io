@@ -113,6 +113,11 @@
         "name": "Hydrostatic pressure in the peritubular capillaries",
         "answer": "down",
         "why": "Less pressure passes through the glomerulus and efferent arteriole to the capillaries downstream."
+      },
+      {
+        "name": "Pressure in the renal artery",
+        "answer": "none",
+        "why": "The constriction is downstream of the renal artery. With nothing else changing, the pressure that feeds each kidney stays the same; what falls is the pressure beyond the narrowed arterioles."
       }
     ],
     "why": {

@@ -251,6 +251,11 @@
         "name": "Pulse pressure",
         "answer": "up",
         "why": "Pulse pressure is systolic minus diastolic. A higher peak and a lower trough widen the gap."
+      },
+      {
+        "name": "Volume of blood the heart pumps each minute",
+        "answer": "none",
+        "why": "Stroke volume and heart rate are unchanged, so the volume pumped each minute, their product, is unchanged. Only the pressure swing around the mean widens."
       }
     ],
     "why": {

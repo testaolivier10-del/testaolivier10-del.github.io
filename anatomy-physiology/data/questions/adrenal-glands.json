@@ -344,7 +344,7 @@
     "q": "Select every effect of cortisol.",
     "options": [
       "More gluconeogenesis in the liver",
-      "Breakdown of muscle protein",
+      "Stronger immune responses",
       "Stronger inflammatory responses",
       "Blood vessels that respond normally to norepinephrine",
       "Faster bone building",
@@ -352,7 +352,6 @@
     ],
     "correct": [
       0,
-      1,
       3,
       5
     ],
@@ -360,7 +359,7 @@
       "correct": "Cortisol raises blood glucose by driving gluconeogenesis, breaking down muscle protein for its amino acids and making tissues resist insulin. It is permissive for the vessels' response to sympathetic signals. It damps inflammation and slows bone building.",
       "options": [
         "Correct. Cortisol switches on gluconeogenesis.",
-        "Correct. The amino acids feed gluconeogenesis; in excess, muscles waste.",
+        "Cortisol suppresses immune responses as well as inflammation; long-term excess raises the risk of infection.",
         "Cortisol damps inflammation, which is why glucocorticoid drugs treat inflammatory diseases.",
         "Correct. This permissive effect is why low cortisol causes low blood pressure.",
         "Cortisol slows bone building; long-term excess thins bone.",

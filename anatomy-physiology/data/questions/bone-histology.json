@@ -333,13 +333,12 @@
       "Spaces that can hold red marrow",
       "Fills the ends of long bones",
       "Makes up about 80% of the skeleton's mass",
-      "Osteocytes in lacunae"
+      "Makes up most of the shaft of a long bone"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "Spongy bone is a lattice of trabeculae with marrow in the spaces between them. It fills the ends of long bones and the inside of other bones, and its osteocytes sit in lacunae like those of compact bone.",
@@ -349,7 +348,7 @@
         "Correct. Its spaces hold marrow, red in some bones.",
         "Correct. The epiphyses are filled with spongy bone.",
         "About 80% of the skeleton's mass is compact bone. Spongy bone is about 20%.",
-        "Correct. Osteocytes of spongy bone also live in lacunae, linked by canaliculi."
+        "The shaft is mostly compact bone around the marrow cavity. Spongy bone fills the ends."
       ]
     }
   },

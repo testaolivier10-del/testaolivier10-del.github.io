@@ -195,13 +195,13 @@
     "diff": 2,
     "core": ["homeostasis"],
     "q": "Select every condition that commonly causes metabolic alkalosis.",
-    "options": ["Three days of vomiting", "Continuous suction of stomach contents through a tube", "A loop diuretic", "Severe diarrhea", "An aldosterone-secreting adrenal tumor", "An opioid overdose"],
-    "correct": [0, 1, 2, 4],
+    "options": ["Three days of vomiting", "A diet high in protein", "A loop diuretic", "Severe diarrhea", "An aldosterone-secreting adrenal tumor", "An opioid overdose"],
+    "correct": [0, 2, 4],
     "why": {
       "correct": "Vomiting and stomach suction remove hydrochloric acid and leave its matching bicarbonate in the blood. Loop diuretics and excess aldosterone speed H+ and K+ secretion in the collecting duct. Diarrhea causes metabolic acidosis, and an opioid overdose causes respiratory acidosis.",
       "options": [
         "Correct. Losing stomach acid leaves the bicarbonate of the alkaline tide in the blood.",
-        "Correct. Suction removes stomach acid just as vomiting does.",
+        "Breaking down protein adds sulfuric and phosphoric acid, which the kidneys must excrete. If anything, it pushes toward acidosis, not alkalosis.",
         "Correct. The diuretic causes loss of volume, chloride and potassium, and more sodium reaching the collecting duct is traded for H+ and K+.",
         "Diarrhea removes bicarbonate-rich intestinal fluid, causing metabolic acidosis.",
         "Correct. Aldosterone speeds H+ and K+ secretion, so the kidneys add new bicarbonate to the blood.",

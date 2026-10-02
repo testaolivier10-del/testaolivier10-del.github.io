@@ -222,13 +222,12 @@
       "Postganglionic fibers reach the skin through gray rami communicantes",
       "Preganglionic fibers are long and postganglionic fibers are short",
       "A preganglionic neuron branches to many chain ganglia",
-      "The vagus nerve carries most of its preganglionic fibers"
+      "Its preganglionic neurons release norepinephrine"
     ],
     "correct": [
       0,
       1,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "The parasympathetic division is craniosacral, uses terminal or intramural ganglia in or beside its targets, so its preganglionic fibers are long and postganglionic fibers short, and about three quarters of its fibers travel in the vagus nerve. It has no chain and no gray rami.",
@@ -238,7 +237,7 @@
         "Gray rami carry sympathetic postganglionic fibers. Parasympathetic fibers do not reach the skin.",
         "Correct. The ganglion sits at the target, so the first neuron covers almost the whole distance.",
         "Branching through the chain is the sympathetic pattern. Parasympathetic preganglionic neurons contact only a few postganglionic neurons, and there is no parasympathetic chain.",
-        "Correct. The vagus carries about three quarters of all parasympathetic preganglionic fibers."
+        "Preganglionic neurons of both divisions release acetylcholine onto the ganglion cells."
       ]
     }
   },
@@ -547,7 +546,7 @@
     "options": [
       "Sweat glands in the skin",
       "Arrector pili muscles",
-      "The adrenal medulla",
+      "The glands that make saliva",
       "The heart",
       "Smooth muscle in most blood vessel walls",
       "The iris"
@@ -555,7 +554,6 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
@@ -563,7 +561,7 @@
       "options": [
         "Correct. Sweat glands get sympathetic fibers through the gray rami.",
         "Correct. The arrector pili muscles are supplied only by sympathetic fibers.",
-        "Correct. Only sympathetic preganglionic fibers reach the adrenal medulla.",
+        "The glands that make saliva get both: parasympathetic fibers that drive watery saliva and sympathetic fibers that make it thick.",
         "The heart gets sympathetic fibers from the upper thoracic chain and parasympathetic fibers from the vagus.",
         "Correct. Most blood vessels receive only sympathetic fibers.",
         "The iris gets parasympathetic fibers from nerve III, which narrow the pupil, and sympathetic fibers, which widen it."

@@ -328,7 +328,7 @@
     "options": [
       "Heat melts some of the remaining myelin, which regrows once she cools",
       "Warmth speeds sodium inactivation, so current at demyelinated stretches falls short of threshold",
-      "Warmth slows every axon in her body below a useful speed",
+      "Warmth slows conduction in her healthy axons below a useful speed",
       "Heat raises her resting potential above threshold, so her neurons fire nonstop"
     ],
     "correct": 1,

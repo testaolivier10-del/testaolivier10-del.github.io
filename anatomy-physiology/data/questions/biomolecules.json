@@ -314,7 +314,7 @@
     "diff": 3,
     "core": ["energy", "structure-function"],
     "q": "Your body stores much more energy as triglycerides than as glycogen. Which feature of triglycerides makes them the more compact long-term store?",
-    "options": ["They dissolve easily in blood, so they are always ready to use", "They are polymers of glucose with extra branches", "They contain nitrogen, which holds extra energy", "About 9 kcal per gram, stored with almost no water"],
+    "options": ["They dissolve easily in blood, so they are ready to use at once", "They are polymers of glucose with extra branches", "They contain nitrogen, which holds extra energy", "About 9 kcal per gram, stored with almost no water"],
     "correct": 3,
     "why": {
       "correct": "Triglycerides are packed with carbon–hydrogen bonds, so they hold about 9 kcal per gram against about 4 for carbohydrate. Being hydrophobic, they are stored with almost no water, while glycogen holds a lot of water with it. Both facts pack more energy into each gram of stored tissue.",

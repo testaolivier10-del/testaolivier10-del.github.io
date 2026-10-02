@@ -456,6 +456,11 @@
         "name": "Lowest aortic pressure between beats",
         "answer": "down",
         "why": "Less stretch stored means less recoil during diastole to keep pressure up."
+      },
+      {
+        "name": "Average aortic pressure over a whole beat",
+        "answer": "none",
+        "why": "The average pressure is set by how much blood the heart pumps each minute and the resistance downstream, and neither has changed. Stiffness widens the swing around that average."
       }
     ],
     "why": {

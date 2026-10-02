@@ -170,20 +170,19 @@
     "options": [
       "Water vapor in exhaled air",
       "Sweat from sweat glands",
-      "Water evaporating through the epidermis",
+      "Water lost in vomit",
       "Urine",
       "Water in feces"
     ],
     "correct": [
-      0,
-      2
+      0
     ],
     "why": {
       "correct": "Insensible losses are the ones you do not notice: water evaporating through the epidermis and water vapor leaving in each breath. Together they are about 0.7 L a day at rest.",
       "options": [
         "Yes. Air leaving the lungs is saturated with water vapor.",
         "No. Sweat is a separate, visible loss controlled by the body temperature loop.",
-        "Yes. Water diffuses through the epidermis and evaporates, separately from sweat.",
+        "No. Vomit is an abnormal loss you can see and measure, so it is not insensible.",
         "No. Urine is a sensible loss, and the one the kidneys adjust.",
         "No. Fecal water is a small but sensible loss."
       ]

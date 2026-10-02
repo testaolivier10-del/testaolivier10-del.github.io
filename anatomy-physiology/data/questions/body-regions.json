@@ -93,13 +93,12 @@
       "Antebrachial",
       "Carpal",
       "Crural",
-      "Axillary"
+      "Patellar"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "The upper limb regions include axillary (armpit), brachial (arm), antecubital (front of elbow), antebrachial (forearm), carpal (wrist), palmar and digital. Femoral and crural are lower limb regions.",
@@ -109,7 +108,7 @@
         "Correct. Antebrachial is the forearm.",
         "Correct. Carpal is the wrist.",
         "Crural is the leg, knee to ankle, in the lower limb.",
-        "Correct. The axillary region, the armpit, is where the upper limb meets the trunk."
+        "Patellar is the front of the knee, in the lower limb."
       ]
     }
   },

@@ -111,6 +111,11 @@
         "name": "Internal body temperature",
         "answer": "up",
         "why": "At 36 °C the air is hotter than the skin, so evaporation is the only route of heat loss; with it reduced, heat builds up."
+      },
+      {
+        "name": "Heat produced by the worker's muscles",
+        "answer": "none",
+        "why": "The job and the work rate are the same on both days, so the muscles make the same heat. Only the heat lost by evaporation changes."
       }
     ],
     "why": {
