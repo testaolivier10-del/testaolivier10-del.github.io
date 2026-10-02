@@ -67,12 +67,12 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | # | Workstream | Branch | Status |
 |---|---|---|---|
 | W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | merged |
-| W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | in progress (wave 2) |
+| W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
 | W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | merged |
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
-| W7 | UX and accessibility | `-w7` | in progress (wave 2) |
+| W7 | UX and accessibility | `-w7` | to do |
 | W8 | SEO, performance, repo | `-w8` | to do |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
 
@@ -184,6 +184,5 @@ explanations after answering (A&P shell budget 44 → 46 KB). Rebalancing: selec
 
 ## Progress log
 
-- 2026-10-02: wave 1 merged, full CI green; wave 2 (W2, W7) started, W8 follows them.
 - 2026-10-02: wave 1 (W1, W3, W4, W5, W6) started; helpers write per-finding notes to `docs/site-audit-notes/wN.md`; local CI mirror is `scripts/ci-local.sh`.
 - 2026-10-02: status file, rule hook in check-site, audit copied to `docs/site-audit-2026-10.md`.

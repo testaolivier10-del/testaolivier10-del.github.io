@@ -286,6 +286,14 @@
 .atom--wrong circle{stroke:var(--bad);stroke-width:3.5;fill:var(--tint-bad);}
 .atom:focus{outline:none;}
 .atom:focus-visible circle{stroke:var(--accent);stroke-width:3.5;}
+/* Invisible hit areas around small targets (atomic-structure's shell slots,
+   practice atoms): never stroked or filled, whatever state the atom is in. */
+.atom circle.slot-hit,.atom circle.atom-hit{fill:transparent!important;stroke:none!important;}
+.shell-slot:focus-visible circle:not(.slot-hit){outline:none;stroke:var(--ink);stroke-width:3.5;}
+.shell-slot.blocked:hover circle:not(.slot-hit){stroke:var(--line);stroke-width:2;}
+.shell-controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 4px;}
+.shell-controls .btn-press{min-height:44px;}
+.shell-status{font:600 14px var(--font-ui);color:var(--muted);margin:6px 0 0;}
 .scene--locked .atom{cursor:default;}
 
 /* ---- recommendation dashboard ---- */

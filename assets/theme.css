@@ -1382,9 +1382,10 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 @keyframes levl-floatup{0%{transform:translate(0,0) scale(1);opacity:1}70%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.6);opacity:0}}
 .levl-pulse{animation:levl-pulse .6s cubic-bezier(.2,.8,.3,1.4);}
 @keyframes levl-pulse{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
-/* Level-up toast, bottom centre. */
+/* Level-up toast, anchored just under the header so it never lands on the
+   answer or explanation the student is reading (audit 2026-10). */
 .levl-toast{
-  position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:85;transform:translate(-50%,20px);
+  position:fixed;left:50%;top:calc(var(--site-header-h, 64px) + 8px);z-index:85;transform:translate(-50%,-12px);
   background:var(--navy);color:#fff;font:900 14.5px var(--font-ui);padding:14px 20px;border-radius:var(--radius);
   box-shadow:var(--shadow-pop);display:flex;align-items:center;gap:12px;opacity:0;
   transition:transform .35s cubic-bezier(.2,.8,.3,1.3),opacity .3s ease;max-width:calc(100vw - 32px);
@@ -1392,7 +1393,7 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .levl-toast.show{opacity:1;transform:translate(-50%,0);}
 .levl-toast .ring{width:34px;height:34px;border-radius:50%;border:2.5px solid var(--accent-bright);color:var(--accent-bright);display:grid;place-items:center;font-size:12px;flex-shrink:0;}
 .levl-toast small{display:block;font-weight:700;font-size:12.5px;opacity:.8;}
-@media (max-width:640px){.levl-toast{bottom:calc(84px + env(safe-area-inset-bottom));}}
+
 #levlConfetti{position:fixed;inset:0;pointer-events:none;z-index:90;}
 /* The site's two nudges — "save your progress" and "install this" — share
    one shape. Bottom centre like the level-up toast, but never at the same

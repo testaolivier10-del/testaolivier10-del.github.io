@@ -885,7 +885,7 @@
   }
 
   var CSS = [
-    '.lp-launch{position:fixed;right:20px;bottom:20px;z-index:900;width:58px;height:58px;padding:0;',
+    '.lp-launch{position:fixed;right:20px;bottom:20px;z-index:42;width:58px;height:58px;padding:0;',
       'border:none;background:transparent;cursor:pointer;line-height:0;',
       'filter:drop-shadow(0 4px 10px rgba(0,0,0,.26));transition:transform .16s ease;}',
     '.lp-launch svg{width:100%;height:100%;display:block;border-radius:18px;}',
@@ -894,7 +894,7 @@
     '.lp-launch:hover .lp-eye{r:5.6;}',
     // A mascot with no label is a mystery button on first visit, so it says
     // what it is until someone has actually opened it once.
-    '.lp-tip{position:fixed;right:86px;bottom:34px;z-index:900;background:var(--navy);color:#fff;',
+    '.lp-tip{position:fixed;right:86px;bottom:34px;z-index:42;background:var(--navy);color:#fff;',
       'font:800 12.5px var(--font-ui);padding:7px 12px;border-radius:10px;white-space:nowrap;',
       'pointer-events:none;opacity:0;transform:translateX(6px);transition:opacity .18s ease, transform .18s ease;}',
     '.lp-tip.show{opacity:1;transform:translateX(0);}',
@@ -1005,14 +1005,19 @@
 
     var root = document.createElement('div');
     root.className = 'lp-panel';
+    // A floating panel is a non-modal dialog: named, Esc closes it and focus
+    // goes back to the button that opened it. Answers land in a polite live
+    // log so a screen reader hears them (audit 2026-10, fix-first 12).
+    root.setAttribute('role', opts.inline ? 'region' : 'dialog');
+    root.setAttribute('aria-labelledby', 'lpTitle');
     root.innerHTML =
       '<div class="lp-head">'
       +  '<span class="lp-avatar">' + mascotSvg() + '</span>'
-      +  '<b>Ask LevlPrep<span class="lp-sub" data-role="mode"></span></b>'
+      +  '<b id="lpTitle">Ask LevlPrep<span class="lp-sub" data-role="mode"></span></b>'
       +  '<button class="lp-icon" data-act="settings" title="Settings" aria-label="Tutor settings">⚙</button>'
       +  (opts.inline ? '' : '<button class="lp-icon" data-act="close" title="Close" aria-label="Close">✕</button>')
       + '</div>'
-      + '<div class="lp-log" data-role="log"></div>'
+      + '<div class="lp-log" data-role="log" role="log" aria-live="polite" aria-label="Conversation"></div>'
       + '<div class="lp-settings" data-role="settings" hidden></div>'
       + '<form class="lp-form" data-role="form">'
       +  '<input type="text" placeholder="Ask me anything…" aria-label="Your question" autocomplete="off">'
@@ -1257,7 +1262,15 @@
     btn.addEventListener('mouseleave', function(){ if(met) tip.classList.remove('show'); });
 
     var host = null, tutor = null;
-    function close(){ if(host) host.style.display = 'none'; btn.style.display = ''; }
+    // z-index 42: above the phone tab bar (40), below the More sheet's scrim
+    // (44) and sheet (45), so an open sheet is never covered by a FAB.
+    function close(){
+      if(!host || host.style.display === 'none') return;
+      var inside = host.contains(document.activeElement);
+      host.style.display = 'none';
+      btn.style.display = '';
+      if(inside || document.activeElement === document.body) btn.focus();
+    }
     function meet(){
       met = true;
       tip.classList.remove('show');

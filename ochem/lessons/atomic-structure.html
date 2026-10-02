@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
@@ -151,15 +151,26 @@ document.addEventListener('DOMContentLoaded', function(){
       var rad = a * Math.PI/180;
       return [cx + lRadius*Math.cos(rad), cy + lRadius*Math.sin(rad)];
     });
+    /* Each slot is a real button for a keyboard or screen reader (role,
+       tabindex, a name that says its shell and whether it is filled; the
+       lesson's keydown handler takes Enter and Space), with an invisible hit
+       circle around the small visible dot so a finger has room
+       (audit 2026-10, fix-first 12). */
     function slot(pos, i, filled, key){
       var isFilled = !!filled[i];
-      return '<g class="atom' + (isFilled ? ' chosen' : '') + '" data-key="' + key + i + '">' +
+      var shell = key === 'k' ? 'K shell' : 'L shell';
+      // An L slot while K still has room is not a legal move, so it does not
+      // light up teal on hover (audit 2026-10: wrong slots turned teal).
+      var blocked = key === 'l' && !(kFilled[0] && kFilled[1]);
+      return '<g class="atom shell-slot' + (isFilled ? ' chosen' : '') + (blocked && !isFilled ? ' blocked' : '') + '" data-key="' + key + i + '" role="button" tabindex="0"' +
+        ' aria-label="' + shell + ', slot ' + (i + 1) + ', ' + (isFilled ? 'filled' : 'empty') + '"' + (isFilled ? ' aria-disabled="true"' : '') + '>' +
+        '<circle class="slot-hit" cx="' + pos[0] + '" cy="' + pos[1] + '" r="17" fill="transparent" stroke="none"/>' +
         '<circle cx="' + pos[0] + '" cy="' + pos[1] + '" r="10" fill="' + (isFilled ? 'var(--accent)' : 'var(--white)') + '" stroke="' + (isFilled ? 'var(--accent)' : 'var(--line)') + '" stroke-width="2"/>' +
       '</g>';
     }
     /* The notes-figure class on the group gives the labels the theme-aware
        fg- text colors, so they read in light and dark. */
-    return '<div class="scene"><svg viewBox="0 0 300 205"><g class="notes-figure">' +
+    return '<div class="scene"><svg viewBox="0 0 300 205" role="group" aria-label="Nitrogen nucleus with an inner K shell of 2 slots and an outer L shell of 8 slots"><g class="notes-figure">' +
       '<circle cx="150" cy="95" r="' + kRadius + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
       '<circle cx="150" cy="95" r="' + lRadius + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
       '<text class="fg-tag-mut" x="150" y="64" text-anchor="middle" pointer-events="none">K</text>' +
@@ -167,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function(){
       '<circle cx="150" cy="95" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="fg-lbl" x="150" y="100" text-anchor="middle" pointer-events="none">N</text>' +
       kSlots.map(function(p,i){ return slot(p, i, kFilled, 'k'); }).join('') +
       lSlots.map(function(p,i){ return slot(p, i, lFilled, 'l'); }).join('') +
-      '<text class="fg-tag-mut" x="150" y="197" text-anchor="middle" pointer-events="none">click empty slots; fill the inner shell first</text>' +
+      '<text class="fg-tag-mut" x="150" y="197" text-anchor="middle" pointer-events="none" aria-hidden="true">click empty slots; fill the inner shell first</text>' +
     '</g></svg></div>';
   }
 
@@ -197,45 +208,73 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body">Electrons sit in <b>shells</b>, layers at increasing distance from the nucleus. The inner (K) shell holds at most <b>2</b>. The next (L) shell holds at most <b>8</b>. The inner shell fills first, so carbon\'s 6 electrons go 2 into K, then 4 into L. Chemists write that as 2, 4. Atoms in the third row of the periodic table, such as sodium and magnesium, go on to fill a third shell, M.</p><p class="step-body">A neutral atom has exactly as many electrons as protons: its atomic number.</p><p class="step-body" style="margin-bottom:0;">The electrons in the <b>outermost</b> shell are the <b>valence electrons</b>. They are the only ones that take part in bonding, and carbon has 4. The electrons in the filled inner shells are <b>core electrons</b>, held too tightly by the nucleus to react.</p>'
       },
       {
+        railLabel: 'Build a nitrogen atom',
         render: function(api){
           var kSlots = [false, false];
           var lSlots = [false, false, false, false, false, false, false, false];
           var count = function(a){ var n = 0; for(var i=0;i<a.length;i++) if(a[i]) n++; return n; };
           var done = false;
+          /* The diagram is one way in; the two buttons under it are the
+             other, for anyone who cannot point at a 20 px dot or see it: each
+             adds one electron to that shell, and the status line says the
+             count. Both routes run through place(). */
+          function place(isK, idx){
+            if(done) return;
+            var fb = api.card.querySelector('#fb');
+            if(isK){
+              if(idx === -1) idx = kSlots.indexOf(false);
+              if(idx === -1){ api.showFeedback(fb, false, 'The K shell is full at 2. Add the rest to the L shell.'); return; }
+              if(kSlots[idx]) return;
+              kSlots[idx] = true;
+            } else {
+              if(count(kSlots) < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell. The inner shell is lower in energy.'); return; }
+              if(idx === -1) idx = lSlots.indexOf(false);
+              if(idx === -1 || lSlots[idx]) return;
+              lSlots[idx] = true;
+            }
+            var total = count(kSlots) + count(lSlots);
+            var focusKey = document.activeElement && document.activeElement.getAttribute && (document.activeElement.getAttribute('data-key') || document.activeElement.id);
+            if(total === 7){
+              done = true;
+              api.record(true);
+              paint();
+              api.showFeedback(api.card.querySelector('#fb'), true, 'Correct. The K shell is full with 2; the rest went into L.');
+              api.card.querySelector('#nextBtn').focus();
+            } else {
+              paint();
+              // The card is redrawn, so put focus back where it was.
+              var back = focusKey && (api.card.querySelector('[data-key="' + focusKey + '"]') || api.card.querySelector('#' + focusKey));
+              if(back) back.focus();
+              var st = api.card.querySelector('#shellStatus');
+              if(st && window.LevlAnnounce) window.LevlAnnounce.say(st.textContent);
+            }
+          }
           function paint(){
+            var k = count(kSlots), l = count(lSlots);
             api.card.innerHTML =
               '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
               '<h2 class="step-title">Build a neutral nitrogen atom (atomic number 7).</h2>' +
-              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click empty slots to add them; a filled slot gets a thick teal ring. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy. <i>Within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
+              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click empty slots, or use the two buttons below, to add them; a filled slot turns solid teal. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy. <i>Within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
               shellSvg(kSlots, lSlots) +
+              '<div class="shell-controls">' +
+                '<button type="button" class="btn-press sm" id="addK"' + (done ? ' disabled' : '') + '>Add an electron to K</button>' +
+                '<button type="button" class="btn-press sm" id="addL"' + (done ? ' disabled' : '') + '>Add an electron to L</button>' +
+              '</div>' +
+              '<p class="shell-status" id="shellStatus">Placed ' + (k + l) + ' of 7: K shell ' + k + ' of 2, L shell ' + l + ' of 8.</p>' +
               api.feedbackHtml('fb') +
               api.nextButtonHtml('Continue', done);
-            var fb = api.card.querySelector('#fb');
             api.card.querySelectorAll('.atom').forEach(function(g){
-              g.addEventListener('click', function(){
-                if(done) return;
+              function go(){
                 var key = g.getAttribute('data-key');
-                var isK = key.charAt(0) === 'k';
-                var idx = parseInt(key.slice(1), 10);
-                if(isK){
-                  if(kSlots[idx]){ return; }
-                  kSlots[idx] = true;
-                } else {
-                  if(count(kSlots) < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell. The inner shell is lower in energy.'); return; }
-                  if(lSlots[idx]){ return; }
-                  lSlots[idx] = true;
-                }
-                var total = count(kSlots) + count(lSlots);
-                if(total === 7){
-                  done = true;
-                  api.record(true);
-                  paint();
-                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct. The K shell is full with 2; the rest went into L.');
-                } else {
-                  paint();
-                }
+                place(key.charAt(0) === 'k', parseInt(key.slice(1), 10));
+              }
+              g.addEventListener('click', go);
+              g.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); }
               });
             });
+            api.card.querySelector('#addK').addEventListener('click', function(){ place(true, -1); });
+            api.card.querySelector('#addL').addEventListener('click', function(){ place(false, -1); });
             api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
           }
           paint();

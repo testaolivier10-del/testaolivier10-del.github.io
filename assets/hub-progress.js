@@ -111,6 +111,10 @@
     ],
   };
 
+  // Each course names its ranks differently, so a rank shown on its own says
+  // which course it belongs to ("A&P rank: Cell Scout").
+  var COURSE_RANK_LABEL = { nremt: 'NREMT rank', ochem: 'Ochem rank', anp: 'A&P rank', hub: 'LevlPrep rank' };
+
   // Set by each subject's bootstrap (nav.js / ochem-nav.js) so the header chip
   // knows which vocabulary to use. Defaults to the neutral hub set.
   var context = 'hub';
@@ -234,6 +238,10 @@
       level: levelForXp(state.total),
       leveledUp: levelForXp(state.total) > before,
       title: titleForLevel(levelForXp(state.total), subject),
+      // Ranks span several levels, so most level-ups keep the same name; the
+      // toast says "new rank" only when it really changed (audit 2026-10).
+      rankChanged: titleForLevel(levelForXp(state.total), subject) !== titleForLevel(before, subject),
+      course: COURSE_RANK_LABEL[subject || context] || '',
     };
     // assets/motion.js listens: the "+N XP" chip, and the level-up toast and
     // confetti. Plain DOM events, so nothing here depends on it having loaded.
@@ -517,7 +525,10 @@
     if(badge){
       var info = levelInfo();
       badge.textContent = 'L' + info.level;
-      badge.title = info.title + ' — ' + info.total + ' XP (' + info.into + '/' + info.span + ' to Level ' + (info.level + 1) + ')';
+      badge.title = 'Level ' + info.level + ' · ' + (COURSE_RANK_LABEL[context] || 'Rank') + ': ' + info.title + ' — ' + info.total + ' XP (' + info.into + '/' + info.span + ' to Level ' + (info.level + 1) + ')';
+      badge.setAttribute('aria-label', 'Level ' + info.level + ', ' + (COURSE_RANK_LABEL[context] || 'rank') + ' ' + info.title);
+      // A brand-new visitor has earned nothing, so there is no level to show.
+      badge.hidden = !(info.total > 0);
     }
     var chip = document.getElementById('navStreak');
     if(chip){

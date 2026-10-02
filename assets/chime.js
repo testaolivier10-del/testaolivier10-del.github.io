@@ -25,8 +25,9 @@
        sine. A bare sine reads as a UI error tone; the beating between two
        near-identical voices is what makes it read as a bell.
 
-   Off switch: the speaker button in the header (drawn by site-chrome.js),
-   remembered in localStorage. */
+   Off by default (site audit 2026-10: a site that beeps unasked is one people
+   mute or leave); the speaker button in the header (drawn by site-chrome.js)
+   turns it on, remembered in localStorage. Only an explicit 'on' plays. */
 (function(){
   var PREF_KEY = 'levl_sound';
 
@@ -39,9 +40,9 @@
                                     // and unresolved, so it lifts at the end
   var MASTER = 0.16;
 
-  var enabled = true;
+  var enabled = false;
   try {
-    enabled = localStorage.getItem(PREF_KEY) !== 'off';
+    enabled = localStorage.getItem(PREF_KEY) === 'on';
   } catch(e){}
 
   var streak = 0;

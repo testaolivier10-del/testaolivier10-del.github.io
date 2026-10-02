@@ -193,6 +193,19 @@
     else document.documentElement.removeAttribute('data-theme');
     try{ localStorage.setItem(THEME_KEY, mode); }catch(e){}
   }
+  /* With nothing saved, the inline script in every <head> takes the OS
+     setting (prefers-color-scheme) before first paint, so there is no flash.
+     Follow the OS when it changes too, until the student picks a theme. */
+  try{
+    var darkQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    if(darkQuery && darkQuery.addEventListener) darkQuery.addEventListener('change', function(e){
+      var saved = null;
+      try{ saved = localStorage.getItem(THEME_KEY); }catch(err){}
+      if(saved) return;
+      if(e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    });
+  }catch(e){}
 
   /* Both rows are measured, not assumed: row 2 wraps to a second line on a
      tablet and scrolls sideways on a phone, and an exam timer parked at a
@@ -323,14 +336,26 @@
     document.body.appendChild(scrim);
     document.body.appendChild(sheet);
     var more = document.getElementById('levlMoreTab');
+    more.setAttribute('aria-controls', 'levlBottomSheet');
+    /* Closed, the sheet sits off-screen but its links were still in the tab
+       order (audit 2026-10, fix-first 12): inert + aria-hidden take it out of
+       both the tab order and the accessibility tree until it opens. */
     function setOpen(open){
+      var was = sheet.classList.contains('open');
       sheet.classList.toggle('open', open);
       scrim.classList.toggle('open', open);
       more.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open){ sheet.removeAttribute('inert'); sheet.removeAttribute('aria-hidden'); }
+      else { sheet.setAttribute('inert', ''); sheet.setAttribute('aria-hidden', 'true'); }
+      if(open && !was){ var first = sheet.querySelector('a'); if(first) first.focus(); }
+      if(!open && was && sheet.contains(document.activeElement)) more.focus();
     }
+    setOpen(false);
     more.addEventListener('click', function(){ setOpen(!sheet.classList.contains('open')); });
     scrim.addEventListener('click', function(){ setOpen(false); });
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && sheet.classList.contains('open')){ setOpen(false); more.focus(); }
+    });
   }
 
   // The three courses' own keys; anything else is treated as NREMT, the
