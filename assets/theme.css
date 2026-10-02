@@ -672,7 +672,7 @@ strong,b{font-weight:900;}
 .nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;position:relative;}
 /* Account, answer sounds and theme: in the row from 641px up (the wrapper is
    display:contents), folded behind one menu button on a phone (below). */
-.chrome-more{display:none;}
+.nav-right .chrome-more{display:none;}
 .chrome-menu{display:contents;}
 .chrome-menu__lbl{display:none;}
 /* Every header control is a 44px target (WCAG 2.5.5) while staying a 34px
@@ -883,7 +883,7 @@ footer .privacy-link a:hover{color:var(--ink);}
   .course-nav__inner.at-end{-webkit-mask-image:none;mask-image:none;}
   .course-nav__link{scroll-snap-align:start;}
   /* The phone menu: one button in the row, a panel of 44px rows under it. */
-  .chrome-more{display:inline-flex;}
+  .nav-right .chrome-more{display:inline-flex;}
   .chrome-menu{
     display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:50;
     flex-direction:column;align-items:stretch;gap:2px;min-width:230px;padding:8px;
