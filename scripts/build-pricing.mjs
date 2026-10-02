@@ -140,17 +140,14 @@ ${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}
 </script>
 </head>
 <body>
-<!-- Like terms.html, this page draws its own header instead of calling
-     LevlChrome.render, so it carries its own skip link too. -->
+<!-- The shared site header (site-chrome.js renders it from data-site-header),
+     with its own skip link like the other pages outside a course. -->
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header">
+<header id="site-header" data-site-header>
   <div class="site-header__inner">
-    <a class="site-header__brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
-    </a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
   </div>
-</div>
+</header>
 
 <div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
   <div class="hero">
@@ -183,8 +180,10 @@ ${ORDER.map(courseSection).join('\n')}
     </div>
   </div>
 
+</div>
+<div class="xshell narrow">
   <footer>
-    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 
@@ -204,6 +203,7 @@ ${ORDER.map(courseSection).join('\n')}
 <script src="assets/errors.js" defer></script>
 <script src="assets/account.js" defer></script>
 <script src="assets/premium.js" defer></script>
+<script src="assets/hub-progress.js" defer></script>
 <script src="assets/site-chrome.js" defer></script>
 </body>
 </html>

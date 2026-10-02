@@ -184,7 +184,7 @@ export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
   <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
-  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a> &middot; <a href="${depth}../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
+  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a> &middot; <a href="${depth}../premium.html">Premium</a> &middot; <a href="${depth}../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>`;
 }
 

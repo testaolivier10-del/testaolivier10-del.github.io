@@ -563,7 +563,6 @@
     if(window.HubProgress) window.HubProgress.mount('hub', { href: opts.progressHref || '' });
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
     wireControls('');
-    addPremiumLink();
     syncHeights();
     requestAnimationFrame(syncHeights);
     mountMotion();
@@ -616,23 +615,6 @@
       el = el.nextElementSibling;
     }
     return null;
-  }
-
-  /* Every footer link row gets a Premium link (audit 2026-10: the footer had
-     no Premium, Account or Contact link). Account and Contact are written in
-     the pages; Premium is added here because /premium.html arrives from a
-     parallel branch (W2), and the link checker reads only static hrefs. Move
-     it into the pages once premium.html exists. */
-  function addPremiumLink(){
-    var rows = document.querySelectorAll('footer .privacy-link');
-    for(var i = 0; i < rows.length; i++){
-      if(rows[i].querySelector('a[href$="premium.html"]')) continue;
-      var a = document.createElement('a');
-      a.href = '/premium.html';
-      a.textContent = 'Premium';
-      rows[i].appendChild(document.createTextNode(' \u00b7 '));
-      rows[i].appendChild(a);
-    }
   }
 
   /* The page footer is contentinfo, which must not sit inside main (axe
@@ -689,7 +671,6 @@
     }
 
     liftFooter(document.querySelector('main, [role="main"]'));
-    addPremiumLink();
 
     var a = document.createElement('a');
     a.id = 'levlSkipLink';
