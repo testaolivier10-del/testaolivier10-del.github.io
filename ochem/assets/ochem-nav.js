@@ -5,7 +5,7 @@
    This file used to render only a five-link strip under a header each of
    ochem's 81 pages hand-wrote for itself — which is why ochem had no way back
    to the hub and NREMT did. Those hand-written headers are gone; every page
-   now carries an empty <div id="site-header"></div> and this file fills it.
+   now carries an empty <header id="site-header"></header> and this file fills it.
 
    Each page sets window.OCHEM_SECTION ('home'|'learn'|'practice'|'review'|
    'exams'|'glossary'|'tools'|'dashboard', or '' for none) and window.OCHEM_BASE (the

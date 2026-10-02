@@ -194,7 +194,7 @@ function lessonPage(id) {
   const lede = (text(L.summary).match(/^.*?[.!?](?=\s|$)/) || [text(L.summary)])[0];
   const body = `
 <body data-topic="${id}">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="xshell">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: t.title }], depth)}
@@ -350,7 +350,7 @@ function notesPage(id) {
     ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${x.id}.html"><span>${dir === 'next' ? `Topic ${topicNumber(x.id)} &rarr;` : `&larr; Topic ${topicNumber(x.id)}`}</span><b>${esc(x.title)}</b></a>` : '';
   const body = `
 <body data-topic="${id}">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   ${tocBtn(`Chapter ${chapterNumber(ch.id)} contents`)}
@@ -406,7 +406,7 @@ function chapterPage(chId) {
     ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${c.id}.html"><span>${dir === 'next' ? `Chapter ${chapterNumber(c.id)} &rarr;` : `&larr; Chapter ${chapterNumber(c.id)}`}</span><b>${esc(c.title)}</b></a>` : '';
   const body = `
 <body data-chapter="${chId}">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-chapter">
   ${tocBtn('Contents')}
@@ -461,7 +461,7 @@ function corePage(coreId) {
   ] };
   const body = `
 <body data-core="${coreId}">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-corepage">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Core concepts', href: 'index.html' }, { name: cc.name }], depth)}
@@ -499,7 +499,7 @@ function coreIndexPage() {
   ] };
   const body = `
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Core concepts' }], depth)}
@@ -536,7 +536,7 @@ function creditsPage() {
   ] };
   const body = `
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-credits">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Figure credits' }], depth)}
@@ -609,7 +609,7 @@ function glossaryPage() {
      terms and their aliases (data-a). */
   const body = `
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-glossary">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }], depth)}
@@ -659,7 +659,7 @@ function learnPage() {
   }).join('\n        ');
   const body = `
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-book">
   ${tocBtn('Contents')}
@@ -759,7 +759,7 @@ function homePage() {
   const bars = map.parts.map(p => `<div class="mini-domain-row"><span>${esc(p.title)}</span><span class="bar"><i data-part-bar="${p.id}" style="width:0%;--dc:${PART_COLORS[p.id][0]}"></i></span><span class="pct" data-part-pct="${p.id}">0%</span></div>`).join('');
   const body = `
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-home">
   <header class="hero anp-home-hero">
@@ -900,7 +900,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
   const teas = /\bTEAS\b/.test(entry.desc + ' ' + (lede || '')) || entry.slug === 'exams';
   const body = `
 <body data-app="${entry.slug}">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-app">
   ${crumbNav(crumbItems, depth)}

@@ -641,15 +641,6 @@ strong,b{font-weight:900;}
   gap:8px 14px;font-family:var(--font-ui);
 }
 .site-header__brand-row{display:inline-flex;align-items:center;gap:10px;min-width:0;}
-.hub-back{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
-  border:0;background:var(--white);box-shadow:var(--lift-sm);
-  font-size:14px;font-weight:900;color:var(--muted);
-  text-decoration:none;flex-shrink:0;line-height:1;
-}
-.hub-back:hover{border-color:var(--accent);color:var(--accent);}
-
 .site-header__brand{
   display:inline-flex;align-items:center;gap:10px;
   font-weight:900;font-size:17px;color:var(--ink);text-decoration:none;
@@ -677,7 +668,18 @@ strong,b{font-weight:900;}
 .site-header__course:hover{color:var(--ink);}
 .site-header__course-short{display:none;}
 
-.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;position:relative;}
+/* Account, answer sounds and theme: in the row from 641px up (the wrapper is
+   display:contents), folded behind one menu button on a phone (below). */
+.chrome-more{display:none;}
+.chrome-menu{display:contents;}
+.chrome-menu__lbl{display:none;}
+/* Every header control is a 44px target (WCAG 2.5.5) while staying a 34px
+   circle to look at: the hit area is a transparent ring around it. */
+.nav-right .theme-toggle,.nav-right .level-badge{position:relative;}
+.nav-right .theme-toggle::after,.nav-right .level-badge::after{content:"";position:absolute;inset:-5px;border-radius:50%;}
+.account-btn{position:relative;}
+.account-btn::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px;}
 
 /* Header streak chip. Hidden at 0 so a new user doesn't see an empty flame. */
 .nav-streak{
@@ -876,8 +878,23 @@ footer .privacy-link a:hover{color:var(--ink);}
   }
   .course-nav__inner.at-end{-webkit-mask-image:none;mask-image:none;}
   .course-nav__link{scroll-snap-align:start;}
-  .hub-back{display:none;} /* the wordmark goes to the hub too, and 360px of
-                              width is better spent on the course name */
+  /* The phone menu: one button in the row, a panel of 44px rows under it. */
+  .chrome-more{display:inline-flex;}
+  .chrome-menu{
+    display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:50;
+    flex-direction:column;align-items:stretch;gap:2px;min-width:230px;padding:8px;
+    background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-pop);
+  }
+  .chrome-menu.open{display:flex;}
+  .chrome-menu #accountSlot{display:block;}
+  .chrome-menu .theme-toggle,.chrome-menu .account-btn{
+    width:100%;height:44px;max-width:none;border-radius:10px;box-shadow:none;background:none;
+    justify-content:flex-start;gap:12px;padding:0 12px;
+    font:800 14.5px var(--font-ui);color:var(--ink);
+  }
+  .chrome-menu .theme-toggle::after{display:none;}
+  .chrome-menu .theme-toggle:hover,.chrome-menu .account-btn:hover{background:var(--hover-tint);color:var(--ink);}
+  .chrome-menu__lbl{display:inline;}
   /* The course name stays, in its short form: the bottom tabs say which
      section you are in, but not which course, and the three share most tab
      names. */
@@ -894,8 +911,7 @@ footer .privacy-link a:hover{color:var(--ink);}
   .site-header__brand .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
   .site-header__brand-row{gap:8px;}
   .nav-right{gap:6px;}
-  .theme-toggle,.level-badge{width:32px;height:32px;}
-  .account-btn{height:32px;padding:0 11px;max-width:96px;}
+  .nav-right .theme-toggle::after,.nav-right .level-badge::after{inset:-6px;}
 }
 @media (max-width:400px){
   .nav-streak{display:none;}
@@ -1620,3 +1636,18 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .notes-figure .fg-fill-mut{fill:var(--muted);}
 .notes-figure .fg-fill-warn{fill:var(--coral);}
 .notes-figure .fg-fill-good{fill:var(--good);}
+
+/* The "/" search overlay (site-chrome.js): search.html?embed=1 in a modal. */
+.lso{position:fixed;inset:0;z-index:1100;}
+.lso-scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);}
+.lso-panel{
+  position:absolute;left:50%;top:max(16px,6vh);transform:translateX(-50%);
+  width:min(760px,calc(100vw - 24px));height:min(720px,calc(100vh - 32px));height:min(720px,calc(100dvh - 32px));
+  display:flex;flex-direction:column;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);overflow:hidden;
+}
+.lso-bar{display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-bottom:var(--bw) solid var(--line);font:800 14px var(--font-ui);}
+.lso-bar b{margin-right:auto;font-weight:900;}
+.lso-bar a{color:var(--accent-text);}
+.lso-close{min-width:44px;min-height:44px;border:0;border-radius:10px;background:var(--paper);color:var(--ink);font:800 13px var(--font-ui);cursor:pointer;}
+.lso iframe{flex:1;width:100%;border:0;background:var(--white);}
+html.lso-open{overflow:hidden;}

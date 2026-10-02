@@ -223,7 +223,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 </script>
 </head>
 <body data-course="ochem">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell narrow">
   <div class="page-head">
