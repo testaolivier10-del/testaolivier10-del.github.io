@@ -10,6 +10,7 @@ const OUTDATED = [
   [/\bEMT-B(?:asic)?s?\b/, 'say "EMT"'],
   [/\bEMT Basic\b/, 'say "EMT"'],
   [/slide in a backboard/i, 'a long board is for extrication and moving, not routine'],
+  [/\bnear[- ]drown/i, 'say "drowning" (the WHO/Utstein definition covers survivors; state the outcome)'],
 ];
 
 export default function ({ ROOT, fail }) {

@@ -325,19 +325,15 @@ let timerInterval = null;
 const TIME_LIMIT_MS = 2 * 60 * 60 * 1000;
 let TARGET_PACE_MS = TIME_LIMIT_MS / 100;
 
-// Domain-balanced random draw: each full exam pulls this many questions from
-// each domain, randomly, from the full question pool.
-//
-// The domains and their bands are the National Registry's EMT exam as
-// launched on 7 April 2025 (EMT examination specifications, from the 2023 BLS
-// practice analysis): Scene Size-Up & Safety 15-19%, Primary Assessment
-// 39-43%, Secondary Assessment 5-9%, Patient Treatment & Transport 20-24%,
-// Operations 10-14%. Each count below sits inside its band and they sum to
-// 100. A question's `domain` says which decision in the patient encounter it
-// tests; its `system` keeps the older body-system label (Airway, Trauma, ...)
-// for the topic-area readouts. scripts/site-rules/nremt-domains.mjs fails the
-// build if these numbers leave the bands or a question carries any other
-// domain.
+// Questions per domain in a full exam (and the "All domains" drill's split).
+// NREMT EMT exam from 7 Apr 2025: Scene 15-19%, Primary 39-43%, Secondary
+// 5-9%, Treatment & Transport 20-24%, Operations 10-14%; site-rules/
+// nremt-domains.mjs keeps these in band. `system` is the old body-system label.
+// Tag by the decision tested: Scene = safe? how many patients? resources?
+// triage order, MOI. Primary = the life threat, or what first. Secondary =
+// history, exam, vitals trend, reassessment. Treatment & Transport = doing or
+// choosing an intervention, drug, packaging, destination. Operations = legal,
+// documentation, communication/handoff, ICS roles, vehicles/air medical, crew.
 const DOMAIN_TARGETS = {
   "Scene Size-Up & Safety": 17,
   "Primary Assessment": 41,
@@ -355,6 +351,16 @@ function poolFor(choice){
   const sys = choice.indexOf('system:') === 0 ? choice.slice(7) : null;
   const out = [];
   QUESTIONS.forEach((q, i) => { if(sys ? q.system === sys : q.domain === choice) out.push(i); });
+  return out;
+}
+// Splits `length` across the domains in DOMAIN_TARGETS proportions.
+function stratifiedCounts(length){
+  const rows = Object.entries(DOMAIN_TARGETS).map(([d, w]) => ({d, x: length * w / 100}));
+  rows.forEach(r => { r.n = Math.floor(r.x); });
+  let left = length - rows.reduce((a, r) => a + r.n, 0);
+  rows.slice().sort((a, b) => (b.x - b.n) - (a.x - a.n)).forEach(r => { if(left-- > 0) r.n++; });
+  const out = {};
+  rows.forEach(r => { if(r.n) out[r.d] = r.n; });
   return out;
 }
 function choiceLabel(choice){
@@ -1654,12 +1660,21 @@ $id('flashcardExitBtn').addEventListener('click', () => {
 function startDomainQuiz(domain, length){
   if(G.quotaApplies('domain')) length = Math.min(length, G.quotaLeft());
   const diffFilter = $id('difficultySelect').value;
-  let pool = poolFor(domain);
-  pool = filterPoolByDifficulty(shuffle(pool), diffFilter, length);
   mode = 'domain';
   selectedDomain = domain === 'all' ? null : domain;
   const seen = loadSeen();
-  activeIndices = preferUnseen(pool, seen).slice(0, length);
+  if(!domain || domain === 'all'){
+    const counts = stratifiedCounts(length);
+    let picked = [];
+    Object.keys(counts).forEach(d => {
+      const pool = filterPoolByDifficulty(shuffle(poolFor(d)), diffFilter, counts[d]);
+      picked = picked.concat(preferUnseen(pool, seen).slice(0, counts[d]));
+    });
+    activeIndices = shuffle(picked);
+  } else {
+    const pool = filterPoolByDifficulty(shuffle(poolFor(domain)), diffFilter, length);
+    activeIndices = preferUnseen(pool, seen).slice(0, length);
+  }
   markSeen(activeIndices);
   beginQuiz(false);
 }
