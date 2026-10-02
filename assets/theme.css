@@ -978,8 +978,9 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .auth-modal-close:hover{background:var(--hover-tint);color:var(--ink);}
 .auth-modal form{display:flex;flex-direction:column;gap:12px;}
 .auth-modal form[hidden]{display:none;}
-.auth-modal label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-.auth-modal label[hidden]{display:none;}
+.auth-modal label,.auth-modal .auth-field{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.auth-modal .auth-label-row label{display:inline;}
+.auth-modal label[hidden],.auth-modal .auth-field[hidden]{display:none;}
 .auth-modal input{
   font-family:inherit;font-size:16px;font-weight:700;padding:12px 13px;
   border:0;border-radius:var(--radius-sm);

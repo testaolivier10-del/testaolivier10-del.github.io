@@ -559,7 +559,7 @@
       close();
       var once = false;
       a.onAuthChange(function (u) { if (u && !once && resume) { once = true; open(resume.course, resume.source); } });
-      a.openAuthModal('signup');
+      a.openAuthModal('signup', { purpose: 'checkout' });
       return;
     }
     funnel('checkout-start', passId.split('-')[0], { course: active && active.course, pass: passId });
