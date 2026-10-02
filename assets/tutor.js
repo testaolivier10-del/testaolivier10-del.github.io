@@ -105,7 +105,8 @@
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
-  // NREMT's six exam domains, for deep-linking into the question bank.
+  // NREMT's six topic areas (the bank's system labels), for deep-linking a
+  // drill: practice.html reads ?domain=Trauma as the Trauma topic area.
   var DOMAINS = [
     { domain: 'Assessment', words: ['assessment','scene size-up','size up','primary survey','secondary survey','vital','opqrst','sample','reassess'] },
     { domain: 'Airway & Respiratory', words: ['airway','respiratory','breathing','ventilat','oxygen','copd','asthma','pneumothorax','suction','bvm','opa','npa','capnograph'] },
@@ -576,8 +577,19 @@
     return Math.log(1 + (N - df + 0.5) / (df + 0.5));
   }
 
+  var CHILD_RE = /\b(newborns?|neonat\w*|infants?|toddlers?|child(ren)?|pediatric\w*|preschool\w*|school-age|adolescen\w*|babies|baby)\b/i;
+  var ADULT_RE = /\b(adults?|elderly|older adults?|geriatric)\b/i;
+  // Which age group a question or passage is about, when it says.
+  function ageGroupOf(text){
+    var child = CHILD_RE.test(text), adult = ADULT_RE.test(text);
+    if(child && !adult) return 'child';
+    if(adult && !child) return 'adult';
+    return null;
+  }
+
   function search(q, limit){
     if(!INDEX || !INDEX.length) return [];
+    var ageGroup = ageGroupOf(q);
     var concepts = queryConcepts(q);
     if(!concepts.length) return [];
     var phrase = q.toLowerCase().trim();
@@ -634,6 +646,10 @@
       if(!matchedIdf) continue;
       score *= (0.35 + 0.65 * (matchedIdf / totalIdf));
       if(!hasKey) score *= 0.45;
+      // Age group. "Normal adult respiratory rate" once came back with the
+      // toddler passage (22 to 34 a minute): the numbers matched, the patient
+      // did not. A passage about the other age group is pushed well down.
+      if(ageGroup && ageGroupOf(c.text + ' ' + c.heading) === (ageGroup === 'adult' ? 'child' : 'adult')) score *= 0.3;
       if(usePhrase && c.text.toLowerCase().indexOf(phrase) !== -1) score += 3.5;
       if(usePhrase && c.heading.toLowerCase().indexOf(phrase) !== -1) score += 5;
       scored.push({ chunk: c, score: score });
@@ -702,9 +718,21 @@
       };
     }
     var top = hits[0].chunk;
-    var lead = hits[0].score >= CONFIDENT
-      ? 'Here’s what your <b>' + esc(top.page) + '</b> says about that:'
-      : 'I’m not certain this is what you meant, but the closest material in your course is:';
+    // Below the confidence line, quoting a passage presents a guess as the
+    // answer. Offer the pages instead, labelled as related rather than as an
+    // answer, and let the student read them in context.
+    if(hits[0].score < CONFIDENT){
+      var related = hits.slice(0, 4).filter(function(h){ return h.score >= Math.max(1.2, hits[0].score * 0.5); });
+      return {
+        html: '<p>I couldn’t find a passage that answers that directly. These pages in your course are related and may help:</p>'
+          + '<ul class="lp-more-list">' + related.map(function(h){
+              return '<li><a href="' + esc(sourceHref(h.chunk, q)) + '">' + esc(h.chunk.heading) + '</a> <span>— ' + esc(h.chunk.page) + '</span></li>';
+            }).join('') + '</ul>'
+          + '<p>Or try rewording it, or use the ' + fallbackLink(q) + '.</p>',
+        sources: [], domain: matchDomain(q)
+      };
+    }
+    var lead = 'Here’s what your <b>' + esc(top.page) + '</b> says about that:';
 
     var html = '<p>' + lead + '</p>'
       + '<blockquote class="lp-quote"><b>' + esc(top.heading) + '</b>'
