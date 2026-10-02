@@ -611,7 +611,8 @@
     var el = nav && nav.nextElementSibling;
     var skip = { NOSCRIPT:1, SCRIPT:1, STYLE:1, TEMPLATE:1, LINK:1 };
     while(el){
-      if(!skip[el.tagName]) return el;
+      // The breadcrumb row (build-crumbs.mjs) is navigation, not content.
+      if(!skip[el.tagName] && !el.hasAttribute('data-crumb')) return el;
       el = el.nextElementSibling;
     }
     return null;

@@ -869,6 +869,13 @@ footer .privacy-link a:hover{color:var(--ink);}
   overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
+/* Breadcrumbs: one component on every course (audit 2026-10). A&P's
+   generator writes .anp-crumb, the ochem notes .notes-crumb, and
+   scripts/build-crumbs.mjs .site-crumb on NREMT and the ochem pages. */
+.site-crumb,.anp-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.site-crumb a,.anp-crumb a{color:var(--muted);text-decoration:none;}
+.site-crumb a:hover,.anp-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.site-crumb [aria-current]{color:var(--ink);}
 .site-nav-fallback{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:24px;font-family:var(--font-ui);}
 .site-nav-fallback a{color:var(--accent);text-decoration:none;}
 .site-nav-fallback a:hover{text-decoration:underline;}
