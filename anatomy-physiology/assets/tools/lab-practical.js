@@ -336,6 +336,9 @@
       (missed.length ? '<p class="lp-review"><a class="btn-outline" href="#review">Quiz my missed structures (' + missed.length + ')</a></p>' : '') +
       '<div class="lp-chips" role="group" aria-label="Filter by chapter"><button type="button" class="lp-chip" data-ch="" aria-pressed="' + (!filt) + '">All</button>' +
       chapters.map(function(c){ return '<button type="button" class="lp-chip" data-ch="' + esc(c) + '" aria-pressed="' + (filt === c) + '">' + esc(chapterTitle(c)) + '</button>'; }).join('') + '</div>' +
+      // On a phone the chips are one select (audit 2026-10: 12 to 25 chips came before any content).
+      '<label class="lp-chsel">Chapter <select id="lp-chsel"><option value="">All chapters</option>' +
+      chapters.map(function(c){ return '<option value="' + esc(c) + '"' + (filt === c ? ' selected' : '') + '>' + esc(chapterTitle(c)) + '</option>'; }).join('') + '</select></label>' +
       chapters.filter(function(c){ return !filt || c === filt; }).map(function(c){
         return '<h2 class="lp-ch">' + esc(chapterTitle(c)) + '</h2><ul class="lp-cards">' + DATA.sets.filter(function(s){ return s.chapter === c; }).map(function(s){
           var its = setItems(s), right = 0, missedN = 0;
@@ -352,6 +355,8 @@
     app.querySelectorAll('.lp-chip').forEach(function(b){
       b.addEventListener('click', function(){ setPref('chapter', b.getAttribute('data-ch')); showHome(mode); var nb = app.querySelector('.lp-chip[data-ch="' + b.getAttribute('data-ch') + '"]'); if(nb) nb.focus(); });
     });
+    var sel = app.querySelector('#lp-chsel');
+    if(sel) sel.addEventListener('change', function(){ setPref('chapter', sel.value); showHome(mode); var ns = app.querySelector('#lp-chsel'); if(ns) ns.focus(); });
     document.title = 'Virtual lab practical | Anatomy & Physiology';
   }
 

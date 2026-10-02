@@ -169,3 +169,6 @@ button.lp-box:focus-visible{outline:3px solid var(--accent);outline-offset:2px;z
   .lp-group-sets{margin-left:0;}
 }
 @media print{ .lp-zoom,.lp-actions{display:none !important;} }
+.lp-chsel{display:none;align-items:center;gap:8px;margin:0 0 6px;font:800 14px var(--font-ui);}
+.lp-chsel select{flex:1;min-width:0;padding:8px 10px;border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);font:700 15px var(--font-ui);}
+@media (max-width:600px){.lp-chips{display:none;}.lp-chsel{display:flex;}}

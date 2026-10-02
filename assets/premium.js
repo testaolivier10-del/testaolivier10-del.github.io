@@ -310,6 +310,14 @@
     return '$' + money(low * (100 - FOUNDING.off) / 100) + ' (founding price, then $' + low + ')';
   }
 
+  // How long the cheapest pass lasts, so the price line says what it buys
+  // (audit 2026-10, A&P "Premium box": the price had no pass length).
+  function passLength(c) {
+    var low = c.passes.reduce(function (a, b) { return b.price < a.price ? b : a; });
+    var m = /(\d+\s*(?:days?|months?))/i.exec(low.label);
+    return m ? m[1] : (/year/i.test(low.label) ? 'a year' : low.label);
+  }
+
   function money(n) {
     return (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
   }
@@ -322,7 +330,7 @@
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
-      '<span class="premium-card__price">From ' + fromPrice(c) + ', one-time. No subscription.</span>' +
+      '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
     '</div>';
   }
@@ -355,7 +363,7 @@
     return '<div class="premium-card">' +
       '<span class="premium-card__tag">' + (LAUNCHED ? 'Premium' : 'Coming soon') + '</span>' +
       '<b>Premium for ' + esc(c.name) + '</b>' +
-      '<span class="premium-card__price">From ' + fromPrice(c) + ', one-time</span>' +
+      '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time</span>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
         (LAUNCHED ? 'See Premium' : 'Get notified') + '</button>' +
