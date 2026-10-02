@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v48';
+const CACHE_NAME = 'levlprep-v49';
 const STATIC_CACHE = 'levlprep-static';
 const PRECACHE_URLS = [
   'index.html',
