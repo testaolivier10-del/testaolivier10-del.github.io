@@ -29,7 +29,8 @@
      - the student has NOT started the target course (started(), below);
      - this pair has never been shown before. Once per pair, ever, whether it
        was clicked, dismissed or ignored;
-     - no .levl-prompt (save, reminders, install) is on screen. Those ask for
+     - no .levl-prompt (save, reminders, install) and no milestone
+       celebration (.levl-cele, milestones.js) is on screen. Those ask for
        something the student already has a stake in, so they go first: on an
        end screen this waits out the 2.6 s and 3.4 s at which save and
        reminders ask, and stands down if either did. If one appears while a
@@ -44,6 +45,15 @@
   var DAY = 86400000;
   var WAIT = 4500;   // after session-runner / practice-engine's save (2.6 s) and reminder (3.4 s) asks
   var A = '/anatomy-physiology/';
+
+  // The styles for this and for the next step, linked once (next-step.css
+  // says why they are not in theme.css). A dashboard loads only this file.
+  var D = window.document;
+  if(D && D.head && !D.getElementById('levlNextCss')){
+    var css = D.createElement('link');
+    css.id = 'levlNextCss'; css.rel = 'stylesheet'; css.href = '/assets/next-step.css';
+    D.head.appendChild(css);
+  }
 
   var MAP = [
     { id: 'nremt-cardiac', from: ['nremt:Cardiac', 'nremt:Cardiovascular', 'nremt:s2', 'nremt:s6'], to: 'anp',
@@ -79,15 +89,16 @@
     { id: 'nremt-pharm', from: ['nremt:Pharmacology'], to: 'anp',
       href: A + 'lessons/ans-signaling.html', link: 'Open the A&P lesson',
       text: 'Epinephrine and albuterol work on the alpha and beta receptors of the autonomic nervous system. A&P chapter 16 explains what each receptor does.' },
-    { id: 'anp-chem', from: ['anp:chem-physics', 'anp:atoms-ions-bonds'], to: 'ochem',
-      href: '/ochem/lessons/atomic-structure.html', link: 'Start organic chemistry',
-      text: 'The atoms, bonds and polarity in A&P chapter 2 are where organic chemistry starts. The ochem course builds from them to how molecules react.' },
+    // The two topic-level A&P pairs first: inside chapter 2 they say more than the chapter-level one.
     { id: 'anp-acid-base', from: ['anp:acids-bases-ph', 'anp:fluid-acid-base'], to: 'ochem',
       href: '/ochem/lessons/pka.html', link: 'Open the pKa lesson',
       text: 'The bicarbonate buffer is a weak acid and its conjugate base. Organic chemistry’s pKa lesson explains why some acids give up a proton far more readily than others.' },
     { id: 'anp-biomolecules', from: ['anp:biomolecules'], to: 'ochem',
       href: '/ochem/lessons/carbohydrates.html', link: 'Open the ochem chapter',
       text: 'A&P names the four families of biomolecules. Organic chemistry’s Biomolecules chapter shows how sugars, amino acids and lipids are built and how they react.' },
+    { id: 'anp-chem', from: ['anp:chem-physics', 'anp:atoms-ions-bonds'], to: 'ochem',
+      href: '/ochem/lessons/atomic-structure.html', link: 'Start organic chemistry',
+      text: 'The atoms, bonds and polarity in A&P chapter 2 are where organic chemistry starts. The ochem course builds from them to how molecules react.' },
     { id: 'ochem-acid-base', from: ['ochem:acids-bases'], to: 'anp',
       href: A + 'lessons/acid-base-regulation.html', link: 'Open the A&P lesson',
       text: 'Blood pH is held by the same acid–base equilibrium you just worked through. A&P chapter 25 shows the lungs and kidneys running the bicarbonate buffer.' },
@@ -156,7 +167,7 @@
 
   // window.document rather than bare: the same object in a browser, and one a
   // test can stand in for (scripts/test/cross-course.test.mjs).
-  function prompting(){ return !!window.document.querySelector('.levl-prompt'); }
+  function prompting(){ return !!window.document.querySelector('.levl-prompt, .levl-cele'); }
 
   /* Fill `slot` with the suggestion, if there is one and nothing is asking.
      opts.line: the quiet line under an end screen's next step (waits WAIT ms

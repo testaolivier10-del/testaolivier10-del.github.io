@@ -203,6 +203,9 @@
     html += '</div></div><div id="levlMilestones"></div>';
     app.innerHTML = html;
     if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'anp'); });
+    // A cross-course suggestion (assets/cross-course.js), once a finished session has recorded a milestone.
+    var cx = document.querySelector('[data-levl-cross]');
+    if(cx && window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(cx, 'anp'); });
     if(window.LevlExamDate) window.LevlExamDate.mount(document.getElementById('anpExamDate'), {
       subject: 'anp',
       links: { review: BASE + 'review.html', exams: BASE + 'exams.html' },

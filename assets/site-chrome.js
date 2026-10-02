@@ -417,7 +417,6 @@
     mountAnalytics();
     mountReminders();
     mountMotion();
-    mountCross();
   }
 
   /* Study reminders, mounted here for the same reason as the three above: the
@@ -450,48 +449,13 @@
     document.head.appendChild(el);
   }
 
-  /* The next step at the end of a session, and the cross-course card on a
-     dashboard (assets/next-step.js, assets/cross-course.js). Nothing needs
-     either until a session ends, so neither is in any page's weight: an end
-     screen drops in the placeholder this returns, in the same breath as the
-     rest of its HTML, and it is filled once the two scripts land. If they
-     never do (offline, uncached), the placeholder becomes a link to the
-     course home, so the screen is still not a dead end. */
-  var nextSeq = 0, nextWaiting = null;
-  function loadNext(done){
-    if(window.LevlNext) return setTimeout(done, 0);
-    if(nextWaiting) return nextWaiting.push(done);
-    nextWaiting = [done];
-    var left = 2;
-    ['next-step', 'cross-course'].forEach(function(n){
-      var s = document.createElement('script');
-      s.src = '/assets/' + n + '.js';
-      s.onload = s.onerror = function(){
-        if(--left) return;
-        var q = nextWaiting; nextWaiting = null;
-        q.forEach(function(f){ f(); });
-      };
-      document.head.appendChild(s);
-    });
-  }
+  // An end screen's next step: a placeholder, filled once next-step.js lands.
+  var nextSeq = 0;
   window.LevlNextStep = function(course, ctx){
     var id = 'levlNext' + (++nextSeq);
-    loadNext(function(){
-      var el = document.getElementById(id);
-      if(!el) return;
-      if(window.LevlNext) return window.LevlNext.mount(el, course, ctx || {});
-      el.innerHTML = '<a class="btn-press" href="/' + (course === 'anp' ? 'anatomy-physiology' : course) + '/">Back to the course home</a>';
-    });
+    setTimeout(function(){ lazy('next-step', function(N){ N.slot(id, course, ctx); }); }, 0);
     return '<div class="levl-next" id="' + id + '"></div>';
   };
-  // A dashboard marks the spot with data-levl-cross="<course>". The scripts
-  // are only fetched once a finished session has recorded some milestone.
-  function mountCross(){
-    var el = document.querySelector('[data-levl-cross]');
-    var st = readJSONSafe('levlprep_cross', null);
-    if(!el || !st || !st.m || !Object.keys(st.m).length) return;
-    loadNext(function(){ if(window.LevlCross) window.LevlCross.offer(el, el.getAttribute('data-levl-cross')); });
-  }
 
   /* Where "skip to content" should land. A real <main> if the page has one,
      otherwise the first real element after the tab row — every page on the
@@ -689,7 +653,6 @@
 
   function mayShowInstall(){
     if(isStandalone()) return false;             // already installed
-    // A cross-course suggestion (cross-course.js) counts as the one ask.
     if(document.querySelector('.levl-prompt, .levl-cross')) return false;
     if(!hasBeenBackBefore()) return false;
     var st = installState();
@@ -818,7 +781,7 @@
      of the shell every page pays for, and lets a results screen hook them in
      with one line. Each module loads once; callers queue until it lands, and
      a module that fails to load (offline, blocked) simply never calls back. */
-  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones' };
+  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones', 'next-step': 'LevlNext', 'cross-course': 'LevlCross' };
   var lazyWait = {};
   function lazy(name, cb){
     var g = LAZY[name];

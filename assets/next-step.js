@@ -29,8 +29,9 @@
    finished (`tags`, for the cross-course suggestion in cross-course.js).
 
    Loaded on demand by LevlNextStep() in site-chrome.js, so it is in no page's
-   weight: nothing needs it until a session ends. Tested in
-   scripts/test/next-step.test.mjs. */
+   weight: nothing needs it until a session ends. It fetches cross-course.js
+   the same way once the step is drawn, since that line comes 4.5 s later
+   anyway. Tested in scripts/test/next-step.test.mjs. */
 (function(){
   var DAY = 86400000;
 
@@ -108,19 +109,17 @@
         return n ? { n: n, noun: 'concept', href: '/ochem/review.html',
           reason: 'Due today on their spaced-review schedule.' } : null;
       },
-      /* The question engine's nextPathTopic rule: the first topic in
-         curriculum order with a lesson and no score. Notes-only topics are
-         skipped, since there is nothing in them to finish. */
+      /* The home page's "Continue" rule (ochem-home.js): the first unfinished
+         lesson after the furthest one finished, so a student who came in at
+         pKa is sent on from pKa rather than back to chapter 1. Notes-only
+         topics are skipped, since there is nothing in them to finish. */
       lesson: function(){
         var C = window.OchemCurriculum;
         if(!C) return null;
-        for(var i = 0; i < C.MODULES.length; i++){
-          var ts = C.MODULES[i].topics;
-          for(var j = 0; j < ts.length; j++){
-            if(C.hasLesson(ts[j]) && C.topicMastery(ts[j].id) === null) return { title: ts[j].title, href: '/ochem/' + ts[j].href };
-          }
-        }
-        return null;
+        var path = [];
+        C.MODULES.forEach(function(m){ m.topics.forEach(function(t){ if(C.hasLesson(t)) path.push(t); }); });
+        var t = nextOnPath(path, function(t){ return C.topicMastery(t.id) !== null; });
+        return t ? { title: t.title, href: '/ochem/' + t.href } : null;
       },
       // weakest() already refuses to name a concept on fewer than three
       // attempts, or one at 70% or better.
@@ -144,15 +143,16 @@
         return { n: ids.length, noun: allQ ? 'question' : 'item', href: '/anatomy-physiology/review.html',
           reason: 'Each comes back just before you would forget it.' };
       },
-      // Chapter order, then topic order within it: the order learn.html lists.
+      // The same rule, over chapter order then topic order: learn.html's order.
       lesson: function(){
         var C = window.AnpCurriculum, A = window.AnpCore;
         if(!C || !A) return null;
         var done = A.lessonsDone(), chN = {};
         C.chapters.forEach(function(c){ chN[c.id] = c.n; });
-        var next = C.topics.filter(function(t){ return t.built && !done[t.id]; })
-          .sort(function(a, b){ return (chN[a.chapter] - chN[b.chapter]) || (a.n - b.n); })[0];
-        return next ? { title: next.title, href: '/anatomy-physiology/lessons/' + next.id + '.html' } : null;
+        var path = C.topics.filter(function(t){ return t.built; })
+          .sort(function(a, b){ return (chN[a.chapter] - chN[b.chapter]) || (a.n - b.n); });
+        var t = nextOnPath(path, function(t){ return !!done[t.id]; });
+        return t ? { title: t.title, href: '/anatomy-physiology/lessons/' + t.id + '.html' } : null;
       },
       weakest: function(){
         var A = window.AnpCore, w = A && A.weakest(5).filter(function(x){ return x.answered >= 3 && x.value < 0.7; })[0];
@@ -161,6 +161,16 @@
       }
     }
   };
+
+  /* The first unfinished step after the furthest finished one; failing that
+     (the end of the path is done), the first unfinished one anywhere. */
+  function nextOnPath(path, finished){
+    var last = -1, i;
+    for(i = 0; i < path.length; i++) if(finished(path[i])) last = i;
+    for(i = last + 1; i < path.length; i++) if(!finished(path[i])) return path[i];
+    for(i = 0; i < path.length; i++) if(!finished(path[i])) return path[i];
+    return null;
+  }
 
   function ask(fn){
     if(!fn) return null;
@@ -258,13 +268,31 @@
     // The finished session is the milestone the cross-course suggestion
     // waits for. Two quiet links already is the most this block carries, so
     // with two the suggestion waits for the dashboard instead.
-    var X = window.LevlCross, tags = tagsFor(course, ctx);
-    if(X){
+    var tags = tagsFor(course, ctx), slotEl = el.querySelector('.levl-next__cross');
+    function cross(X){
       X.note(tags);
-      if(also.length < 2) X.offer(el.querySelector('.levl-next__cross'), course, { tags: tags, line: true });
+      if(also.length < 2) X.offer(slotEl, course, { tags: tags, line: true });
     }
+    if(window.LevlCross) cross(window.LevlCross);
+    else if(window.LevlLazy) window.LevlLazy('cross-course', cross);
     return p;
   }
 
-  window.LevlNext = { pick: pick, mount: mount, tagsFor: tagsFor, COURSES: COURSES };
+  /* What LevlNextStep() in site-chrome.js calls once this file has landed:
+     find the placeholder it handed the end screen, and fill it. */
+  function slot(id, course, ctx){
+    var el = document.getElementById(id);
+    if(el) mount(el, course, ctx || {});
+  }
+
+  /* The styles, linked once (next-step.css says why they are not in
+     theme.css). cross-course.js does the same for a dashboard card. */
+  var D = window.document;
+  if(D && D.head && !D.getElementById('levlNextCss')){
+    var css = D.createElement('link');
+    css.id = 'levlNextCss'; css.rel = 'stylesheet'; css.href = '/assets/next-step.css';
+    D.head.appendChild(css);
+  }
+
+  window.LevlNext = { pick: pick, mount: mount, slot: slot, tagsFor: tagsFor, COURSES: COURSES };
 })();

@@ -10,8 +10,8 @@ Branch: `claude/engagement`. Owner asked for items 1, 2, 3, 6, 7, 8 of the 2026-
 | 1 | Return-visit measurement | Already existed (`visit`, `returned-second-day` in `assets/analytics.js`); only the `ref` source is added under 2 |
 | 2 | Tracking gaps (NREMT drills and review were already tracked as `exam-*` with a mode); tag reminder/email/share links with `ref` and report it | done: flashcard and scenario events; `ref` capture in analytics.js, sw.js and worker email (worker needs a redeploy for email tagging) |
 | 3 | Share results (`navigator.share`, copy-link fallback) at exam finish, level-up, streak milestones, chapter/course completion | done on branch `engagement-share`: `assets/share.js` via `LevlLazy`; README "Sharing a result" |
-| 6 | Cross-course suggestions at milestones and on dashboards | in progress (helper B) |
-| 7 | One clear "next step" at the end of every session in all three courses | in progress (helper B) |
+| 6 | Cross-course suggestions at milestones and on dashboards | done on branch `engagement-next`: `assets/cross-course.js` (16 curated pairs, gating, dashboard card); README "The other courses" |
+| 7 | One clear "next step" at the end of every session in all three courses | done on branch `engagement-next`: `assets/next-step.js` + `LevlNextStep()` in site-chrome.js; README "One next step" |
 | 8 | Milestones and a printable/shareable completion certificate | done on branch `engagement-share`: `assets/milestones.js`, `certificate.html`; NREMT milestone = full timed exam at 80%+; README "Milestones and certificates" |
 
 ## Decisions
@@ -24,3 +24,7 @@ Branch: `claude/engagement`. Owner asked for items 1, 2, 3, 6, 7, 8 of the 2026-
   student and stays in the browser.
 - No new third parties; CSP unchanged.
 - `sw.js` `CACHE_NAME` is bumped once at the end, when the branches merge.
+- End screens: one pressed button from `LevlNext.pick` (due review, then the next lesson, then the weakest area, then
+  the course home), at most two quiet links. Styles live in `assets/next-step.css`, linked on load, for weight.
+- A cross-course suggestion counts as an ask: it never shows with `.levl-prompt` or `.levl-cele` up, and the install
+  prompt stands down while one is shown. Once per pair, ever.

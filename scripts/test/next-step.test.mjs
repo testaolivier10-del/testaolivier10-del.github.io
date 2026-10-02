@@ -99,11 +99,15 @@ test('ochem: the question engine’s own review queue is used when the page has 
   assert.equal(b.window.LevlNext.pick('ochem', {}).label, 'Review 5 due concepts');
 });
 
-test('ochem: next is the first unfinished lesson in curriculum order', () => {
+test('ochem: next is the first unfinished lesson after the furthest finished one', () => {
   const p = ochem({ completed: ['atomic-structure', 'orbitals'] }).window.LevlNext.pick('ochem', {});
   assert.equal(p.kind, 'lesson');
   assert.equal(p.label, 'Next lesson: Hybridization');
   assert.equal(p.href, '/ochem/lessons/hybridization.html');
+  // Came in at pKa: sent on from there, not back to chapter 1.
+  assert.equal(ochem({ completed: ['pka'] }).window.LevlNext.pick('ochem', {}).href, '/ochem/lessons/acidity-factors.html');
+  // Nothing finished at all: the start of the course.
+  assert.equal(ochem().window.LevlNext.pick('ochem', {}).href, '/ochem/lessons/atomic-structure.html');
 });
 
 test('ochem: a lesson outranks the weakest concept; skipping lessons reaches the drill', () => {

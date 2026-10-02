@@ -67,9 +67,17 @@ test('only pairs from this course are offered on its screens', () => {
   assert.equal(b.window.LevlCross.eligible('anp', []).id, 'anp-acid-base');
 });
 
+test('inside A&P chapter 2, the topic-level pair wins over the chapter-level one', () => {
+  const b = fresh();
+  const tags = ['anp:acids-bases-ph', 'anp:chem-physics'];
+  b.window.LevlCross.note(tags);
+  assert.equal(b.window.LevlCross.eligible('anp', tags).id, 'anp-acid-base');
+});
+
 /* offer(): the DOM half, against a document and slot that stand in for one. */
-function dom(b, { prompt = false } = {}){
-  b.window.document = { querySelector: sel => (prompt && sel === '.levl-prompt' ? {} : null), body: {} };
+// `up`: the class of whatever is on screen, matched the way querySelector would.
+function dom(b, { up = null } = {}){
+  b.window.document = { querySelector: sel => (up && sel.split(/\s*,\s*/).includes(up) ? {} : null), body: {} };
   const box = { isConnected: true, querySelector: () => ({ addEventListener(){} }) };
   return { isConnected: true, innerHTML: '', firstChild: box };
 }
@@ -89,13 +97,15 @@ test('shown once per pair, ever; the next eligible pair is offered after it', ()
   assert.equal(third.innerHTML, '');
 });
 
-test('never alongside a save, reminder or install prompt, and not counted as shown', () => {
-  const b = fresh();
-  b.window.LevlCross.note(['nremt:Cardiac']);
-  const slot = dom(b, { prompt: true });
-  b.window.LevlCross.offer(slot, 'nremt');
-  assert.equal(slot.innerHTML, '');
-  assert.equal(seen(b)['nremt-cardiac'], undefined);
+test('never alongside a save, reminder or install prompt or a milestone celebration, and not counted as shown', () => {
+  for (const up of ['.levl-prompt', '.levl-cele']) {
+    const b = fresh();
+    b.window.LevlCross.note(['nremt:Cardiac']);
+    const slot = dom(b, { up });
+    b.window.LevlCross.offer(slot, 'nremt');
+    assert.equal(slot.innerHTML, '', up);
+    assert.equal(seen(b)['nremt-cardiac'], undefined, up);
+  }
 });
 
 /* The mapping itself. */

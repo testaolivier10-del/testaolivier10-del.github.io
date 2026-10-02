@@ -44,6 +44,7 @@ const PRECACHE_URLS = [
   // The end-of-session next step and the cross-course card, fetched on demand
   // by site-chrome.js. Precached so an end screen offline still has one.
   'assets/next-step.js',
+  'assets/next-step.css',
   'assets/cross-course.js',
   'assets/analytics.js',
   'assets/chime.js',

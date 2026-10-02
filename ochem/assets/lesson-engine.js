@@ -161,13 +161,11 @@
       if(window.LevlAnnounce) window.LevlAnnounce.say(el.textContent);
     }
     function nextButtonHtml(label, enabled){ return '<div class="actions"><button class="btn-press" id="nextBtn"' + (enabled?'':' disabled') + '>' + label + '</button></div>'; }
-    /* The tool suggestion goes here rather than into each lesson because this
-       is the one place every lesson ends, so a topic that gains a tool later
-       starts offering it without anyone reopening fifty-eight files. Renders
-       nothing for the topics no tool covers, which is most of them. */
+    /* The next step and the tool suggestion go here, not into each lesson:
+       this is the one place every lesson ends, so a topic that gains a tool
+       offers it without anyone reopening fifty-eight files (most have none). */
     function doneBoxHtml(){
       var suggest = window.OchemToolSuggest ? window.OchemToolSuggest.html(topicId, '../') : '';
-      // One next step (assets/next-step.js), with the textbook as the quiet way back.
       return (window.LevlNextStep ? LevlNextStep('ochem', { topics: [topicId], also: [{ label: 'Back to the textbook', href: notesHref }] }) : '') + suggest;
     }
 

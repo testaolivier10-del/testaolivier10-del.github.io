@@ -594,6 +594,47 @@ What counts, all computed from progress each course already keeps (pinned by `sc
 
 `certificate.html?course=&m=` re-checks the milestone against this browser's progress and never trusts the URL. Earned: the student types a name (`levlprep_cert_name`, this browser only, not synced, not in backups, never in a link), then prints (one landscape page, always light), saves a PNG (canvas) or shares. Not earned here (someone the link was sent to, or another device): the course's description and a "Try" link, plus a note for a student on the wrong browser. Every copy says it is a record of study on LevlPrep, not a credential, and that LevlPrep is not affiliated with the NREMT or any school.
 
+### One next step (`assets/next-step.js`)
+
+A session that ends on a dead end is where a study habit stops, and the end screens did not agree on what to offer: three buttons of equal weight on one, a single "Back" on another, a paragraph and nothing else at the end of an A&P lesson. Every end screen in all three courses now ends the same way: **one pressed button, the reason under it, and at most two quiet links** for what belongs to that screen (retry the misses, back to the deck, the engine's own suggestion).
+
+The button comes from one picker, `LevlNext.pick(course, ctx)`, in one order:
+
+1. **review**: what the course's own scheduler says is due. NREMT: the Review page's count (every tracked question whose decayed level is under 5). ochem: the Review page's queue (no leeches, under the daily cap). A&P: `AnpCore.reviewQueue()`. A queue the page is holding open (the flashcard deck's remaining cards, a review session's remainder) is passed as `ctx.due` and outranks the course's.
+2. **lesson**: the first unfinished lesson after the furthest finished one (the home page's "Continue" rule, so a student who came in at pKa is sent on from pKa), else the first unfinished anywhere. NREMT has no lesson path.
+3. **drill**: the weakest area there is evidence to name. NREMT: a domain with 10+ answers under 80%. ochem: `OchemMastery.weakest()` (3+ attempts, under 70%). A&P: a topic with 3+ answers under 70%.
+4. **home**: the course home. Never nothing.
+
+Due work comes first because it is the only one that gets worse by waiting. A page can `skip` a tier that makes no sense right after it (NREMT skips the due queue straight after a review). Every insertion in an end screen is one call: `LevlNextStep(course, ctx)` (in `site-chrome.js`) returns a placeholder for the screen's HTML, fetches `next-step.js` through `LevlLazy` and fills it, so neither the module nor its styles (`assets/next-step.css`, linked when it loads) are in any page's weight. Pinned by `scripts/test/next-step.test.mjs`.
+
+Where it is: NREMT practice/exam/review results (`practice-engine.js`), flashcards, scenario endings; ochem practice and review summaries, flashcards, exams, the last step of every lesson and mechanism; A&P lessons, practice, review, exams (system and TEAS), flashcards, and the Predict and Lab practical results. The A&P tools that run one item at a time (feedback loops, graphs, pathways, word roots, calculators) already end each item on their own next item and were left alone.
+
+### The other courses (`assets/cross-course.js`)
+
+A student in one course has no reason to know another one teaches the thing they just finished. `cross-course.js` holds a small curated map, and every pair was checked against what the target page actually teaches: a pair is there only when the target explains the mechanism behind the source.
+
+| After (source) | Suggests |
+|---|---|
+| NREMT Cardiac questions, chest-pain and cardiac-arrest scenarios | A&P ch. 19, cardiovascular |
+| NREMT Airway Management, Oxygenation & Ventilation, Respiratory Emergencies; choking, croup and asthma scenarios | A&P ch. 21, respiratory |
+| NREMT Bleeding & Shock; the bleeding scenario | A&P lesson: short-term blood pressure regulation (baroreceptor reflex) |
+| NREMT Musculoskeletal & Burns | A&P lesson: burns, wounds and skin repair (ch. 6); then A&P ch. 8, the skeleton |
+| NREMT Head, Chest & Abdominal Trauma | A&P lesson: pulmonary ventilation (pleural pressure, pneumothorax) |
+| NREMT diabetic scenario | A&P lesson: the pancreas and blood glucose (ch. 17) |
+| NREMT anaphylaxis scenario | A&P lesson: immune disorders (ch. 20) |
+| NREMT stroke scenario | A&P lesson: regions of the brain (ch. 13) |
+| NREMT Obstetrics; the four OB scenarios | A&P ch. 27, development (labor, fetal-to-newborn circulation) |
+| NREMT Pharmacology | A&P lesson: autonomic receptors (ch. 16) |
+| A&P ch. 2 chemistry; atoms, ions and bonds | ochem: atomic structure, the start of the course |
+| A&P acids, bases and pH; ch. 25 fluid and acid–base | ochem: the pKa lesson |
+| A&P biomolecules | ochem: the Biomolecules chapter |
+| ochem Acids & Bases | A&P lesson: regulating acid–base balance (ch. 25) |
+| ochem Biomolecules | A&P lesson: chemical digestion and absorption (ch. 22) |
+
+Deliberately **not** mapped: NREMT's "Medical" topic to endocrine (about one question in eight there is about glucose, so only the diabetic scenario is), and anything from A&P to NREMT (an A&P student is not assumed to be heading for EMS).
+
+A suggestion appears only when all of these hold: a milestone in the source happened (a finished session, exam, scenario or lesson that included it); the student has **not started** the target course (XP in it on `hub_xp_v1`, or any record only studying writes); that pair has never been shown, ever; and nothing else is asking. It is the quiet line under the next step (only when the screen has at most one quiet link already) or a card at the top of the course's dashboard. On an end screen it waits 4.5 s, after the save (2.6 s) and reminder (3.4 s) asks, and stays away if either, the install prompt or a milestone celebration is up; if one arrives while it is showing, it withdraws and does not count as shown. The install prompt does not open over a suggestion. Dismissible. Stored in `levlprep_cross` (the milestone day per mapped tag, the day each pair was shown), cleared with everything else by "delete my account". `scripts/test/cross-course.test.mjs` pins the gating, and checks that every link is a real file, every "A&P chapter N" is the chapter the page is in, and every source tag names a real NREMT topic or scenario, A&P chapter or topic, or ochem chapter or topic.
+
 ### Icons
 
 `assets/icon.svg` is still the one drawing, and everything on the site uses it. The raster copies exist because **iOS ignores an SVG `apple-touch-icon`** and falls back to a screenshot of the page — so every iPhone home-screen install looked like a bookmark instead of an app, which is most of the reason to install one.
@@ -884,6 +925,7 @@ Events are **milestones, not actions**, and should stay that way. Umami's free t
 | `install-prompt-choice`, `installed` | same | outcome |
 | `premium-interest` / `premium-waitlist-joined` | `assets/premium.js` | course, which card. Read against `exam-finish` / `ochem-session-finish`; see `docs/premium.md` |
 | `share` | `assets/share.js`, from every share button | `what` (`exam`, `level`, `streak`, `milestone`), course, `method`: `native` (the share sheet completed), `copy` (link copied) or `cancel` (sheet dismissed; counted as not shared). Read against `ref-open` with `ref: share` for whether a shared link brought anyone |
+| `next-step-click` | `assets/next-step.js`, `assets/cross-course.js` | course, `kind`: which tier the end-of-session button was (`review`, `lesson`, `drill`, `home`), or `cross-course` for a suggestion's link. Only the one button and the suggestion are counted, not the quiet links. Read against `exam-finish` / `ochem-session-finish` / `anp-session-finish` for how often a session leads to another |
 | `milestone` | `assets/milestones.js`, `check()` | course, `kind` (`chapter`, `course`, `exam`), id (the chapter id, or `exam-80`). Once per milestone per browser |
 
 No answer a student gives and no question they see is ever sent.
