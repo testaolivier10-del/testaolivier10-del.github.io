@@ -149,6 +149,8 @@
     var first = !d.lessons[topicId];
     if(first){ d.lessons[topicId] = now(); save(d); }
     if(first && window.HubProgress) window.HubProgress.award('anp', XP.lesson);
+    // A first completion may finish a chapter (assets/milestones.js).
+    if(first && window.LevlLazy) window.LevlLazy('milestones', function(M){ M.check('anp', topicId); });
     event('anp-lesson-complete', { topic: topicId });
     return first;
   }

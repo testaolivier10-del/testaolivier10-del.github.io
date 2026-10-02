@@ -655,6 +655,7 @@
         app.querySelectorAll('.anp-ex-ritem').forEach(function(li){ li.hidden = miss && li.classList.contains('is-ok'); });
       });
     });
+    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.anp-pr-score'), { course: 'anp', right: right, total: total, label: k === 'teas' ? 'a TEAS-style A&P practice set' : 'an anatomy & physiology practice exam (' + run.label + ')' }); });
     var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
   }
 

@@ -574,6 +574,26 @@ Both needed a bound the walk never had: `firstActiveKey`, the first day this bro
 - **"Save your progress"** (`assets/account.js`, `promptToSave`). Progress that lives only in a browser dies with it, and nobody is warned. So it is offered — but at a high point, straight after a level-up or a finished exam, never at the door. It names what this browser would lose, from the strongest thing the student has: a streak of three days or more (with its own lines for a held freeze and a goal met today), an exam score and the review queue it built, or their level and XP, falling back to the plain wording when there is nothing to name (`saveCopy`, pinned by `scripts/test/save-prompt.test.mjs`). Signed-out only, at least two days apart, three answered asks ever, silent for good after two refusals. After one "Not now" it asks again only once the streak or level has grown since. It withdraws itself after 15 seconds, and that counts as neither a no nor one of the three asks. The level-up path waits out the confetti `motion.js` runs for the same event.
 - **"Add to home screen"** (`assets/site-chrome.js`, `showInstallPrompt`). Never on a first visit — it reads `levlprep_visits` and holds back until the student has been back at least once. Chrome's `beforeinstallprompt` is deferred so the timing is ours; Safari has no such event, so iOS gets the "Share, then Add to Home Screen" instruction instead, and its button is an acknowledgement rather than a refusal.
 
+### Sharing a result (`assets/share.js`)
+
+A share button sits on every exam finish screen (NREMT `showResults`, ochem `exams-page.js`, A&P `apps/exams.js`), in the level-up and streak toast (`motion.js`, on the day a streak reaches 7, 30 or 100: `hub-progress.js` fires `levl:streak`), in the milestone celebration and on the certificate. ochem's `session-runner.js` has none: it runs practice and review, and neither is a test.
+
+- **Lazy.** No page loads `share.js`. `site-chrome.js` defines `LevlLazy(name, fn)`, which fetches `/assets/<name>.js` the first time something asks, so each results screen hooks in with one line and the shell pays nothing.
+- **Native first.** `navigator.share`, with a file only where `navigator.canShare({ files })` accepts it (the certificate's PNG, drawn ahead of the tap so the share sheet still counts as user-initiated). Otherwise the link is copied, a toast confirms it and `announce.js` says so.
+- **Every link carries `?ref=share`**, merged into the existing query (`shareUrl`, pinned by `scripts/test/share.test.mjs`), so `analytics.js` can count what a share brought back.
+- **Wording.** A score only from the screen showing the student their own score; otherwise what was done, plainly. Never "certified", nothing implying an endorsement.
+
+### Milestones and certificates (`assets/milestones.js`, `certificate.html`)
+
+What counts, all computed from progress each course already keeps (pinned by `scripts/test/milestones.test.mjs`):
+
+- **ochem and A&P:** a chapter is complete when every lesson in it is finished (ochem: `ochem_progress[topic].bestScore` exists, which a redo never clears; a notes-only topic holds its chapter open. A&P: every built topic is in `anp_progress_v1.lessons`). The course is complete when every chapter is.
+- **NREMT:** no chapters, so one milestone: a full-length timed exam (100 questions) at 80% or higher, from `nremt_exam100_history` / `nremt_exam100_best`. 80 is the site's own top band ("On track", the top `exam-finish` band), not a pass mark: the real exam is adaptive and publishes no percentage. Per-domain mastery tiers were the alternative and were not used, because they count untimed single-domain drills and say less about sitting an exam.
+
+`check(course, topic)` runs after a lesson finishes (one line in ochem `completeLessonRun` and A&P `lessonComplete`) and after a full NREMT exam. It celebrates what that lesson finished with a dialog ("View certificate", Share) and records any backlog quietly. `levlprep_milestones` keeps only the date each was first seen (ochem keeps no dates) and which are not yet celebrated; a dashboard listing a milestone does not use up its celebration. Each course dashboard lists earned and unearned milestones with links to their certificates. Styles are in `assets/milestones.css`, linked when the module loads, for weight.
+
+`certificate.html?course=&m=` re-checks the milestone against this browser's progress and never trusts the URL. Earned: the student types a name (`levlprep_cert_name`, this browser only, not synced, not in backups, never in a link), then prints (one landscape page, always light), saves a PNG (canvas) or shares. Not earned here (someone the link was sent to, or another device): the course's description and a "Try" link, plus a note for a student on the wrong browser. Every copy says it is a record of study on LevlPrep, not a credential, and that LevlPrep is not affiliated with the NREMT or any school.
+
 ### Icons
 
 `assets/icon.svg` is still the one drawing, and everything on the site uses it. The raster copies exist because **iOS ignores an SVG `apple-touch-icon`** and falls back to a screenshot of the page — so every iPhone home-screen install looked like a bookmark instead of an app, which is most of the reason to install one.
@@ -863,6 +883,8 @@ Events are **milestones, not actions**, and should stay that way. Umami's free t
 | `install-prompt-shown` | `assets/site-chrome.js` | platform (`ios` / `other`) |
 | `install-prompt-choice`, `installed` | same | outcome |
 | `premium-interest` / `premium-waitlist-joined` | `assets/premium.js` | course, which card. Read against `exam-finish` / `ochem-session-finish`; see `docs/premium.md` |
+| `share` | `assets/share.js`, from every share button | `what` (`exam`, `level`, `streak`, `milestone`), course, `method`: `native` (the share sheet completed), `copy` (link copied) or `cancel` (sheet dismissed; counted as not shared). Read against `ref-open` with `ref: share` for whether a shared link brought anyone |
+| `milestone` | `assets/milestones.js`, `check()` | course, `kind` (`chapter`, `course`, `exam`), id (the chapter id, or `exam-80`). Once per milestone per browser |
 
 No answer a student gives and no question they see is ever sent.
 

@@ -550,6 +550,7 @@
         });
       });
     });
+    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.ex-score'), { course: 'ochem', right: s.right, total: s.total, label: 'an organic chemistry practice exam (' + r.label + ')' }); });
     focusEl(app.querySelector('.ex-score'));
   }
 

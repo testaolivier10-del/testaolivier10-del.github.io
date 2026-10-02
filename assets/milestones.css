@@ -1,0 +1,31 @@
+/* The milestone celebration and the dashboard's milestone list
+   (assets/milestones.js, which links this file when it loads). Kept out of
+   theme.css only for weight: theme.css is on the critical path of every page,
+   and these are drawn on a handful. Same tokens, same design system — both
+   themes come from the variables theme.css defines. */
+.levl-cele{
+  border:0;border-radius:var(--radius-lg);background:var(--white);color:var(--ink);box-shadow:var(--shadow-pop);
+  padding:26px 26px 22px;width:min(440px,calc(100vw - 32px));font-family:var(--font-ui);text-align:center;
+}
+@media print{.levl-cele{display:none !important;}}
+.levl-cele::backdrop{background:rgba(14,38,32,0.5);}
+.levl-cele__eyebrow{font:800 12px var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin:0 0 6px;}
+.levl-cele h2{font-size:22px;font-weight:900;margin:0 0 8px;}
+.levl-cele p{font-weight:700;color:var(--muted);line-height:1.5;margin:0 0 18px;}
+.levl-cele__actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;}
+.levl-cele__share{font-size:13.5px;padding:11px 20px;border-radius:13px;}
+.levl-cele__close{font:800 13.5px var(--font-ui);background:none;border:0;color:var(--muted);padding:11px 8px;cursor:pointer;}
+.levl-ms{margin:28px 0 0;}
+.levl-ms__h{font-size:18px;font-weight:900;margin:0 0 4px;}
+.levl-ms__sum{font-weight:700;color:var(--muted);margin:0 0 10px;font-size:14px;}
+.levl-ms__list{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
+.levl-ms__item{display:flex;align-items:center;gap:12px;background:var(--white);border-radius:var(--radius);padding:12px 14px;box-shadow:var(--lift-sm);}
+.levl-ms__mark{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-weight:900;background:var(--track);}
+.levl-ms__item.is-earned .levl-ms__mark{background:var(--tint-good);color:var(--good-text);}
+.levl-ms__text{flex:1;min-width:0;}
+.levl-ms__text b{display:block;font-weight:900;font-size:14.5px;}
+.levl-ms__text small{display:block;font:700 12.5px var(--font-ui);color:var(--muted);margin-top:2px;}
+.levl-ms__cert{font:800 13.5px var(--font-ui);color:var(--accent-text);white-space:nowrap;}
+.levl-ms__more{margin-top:10px;}
+.levl-ms__more summary{cursor:pointer;font:800 14px var(--font-ui);color:var(--ink);padding:6px 0;}
+.levl-ms__more .levl-ms__list{margin-top:8px;}
