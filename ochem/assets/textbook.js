@@ -430,7 +430,8 @@
       for(var k = 0; k < mod.topics.length; k++){
         if(!ready[mod.topics[k].id]) return;
         var sec = document.getElementById(mod.topics[k].id);
-        if(sec) sec.hidden = false;
+        // Overflow can only be measured once the section is laid out.
+        if(sec && sec.hidden){ sec.hidden = false; makeFiguresReachable(sec); }
       }
       var nav = chapterEl.querySelector('.tb-chapter-nav');
       if(nav) nav.hidden = false;
