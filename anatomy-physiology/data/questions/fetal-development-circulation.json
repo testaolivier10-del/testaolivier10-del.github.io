@@ -615,13 +615,12 @@
       "The first blood islands appear in the wall of the yolk sac",
       "Angioblasts at the edge of an island become endothelium",
       "The first vessels sprout from the heart tube",
-      "Cells in the center of an island become early blood cells"
+      "The first blood cells come from the bone marrow"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
       "correct": "In vasculogenesis, hemangioblasts cluster into blood islands, first in the yolk sac wall. Angioblasts at the edge flatten into endothelium, and the cells in the center become the first blood cells. The islands join into vascular tubes, and later vessels sprout from existing ones by angiogenesis.",
@@ -630,7 +629,7 @@
         "Correct. The yolk sac wall has the first blood islands, around day 17.",
         "Correct. Angioblasts form the endothelium.",
         "The first vessels form from scratch in blood islands. The heart tube links up with them; it does not sprout them.",
-        "Correct. The center of each island makes the first blood cells."
+        "Bone marrow takes over blood formation only late in fetal life. The first blood cells form in the blood islands of the yolk sac."
       ]
     }
   },

@@ -24,6 +24,8 @@
   function figMarks(fig){
     var at = function(b){ return 'left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%'; };
     return (fig.covers || []).map(function(b){ return '<span class="anp-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
+      // A label printed with a typo, with the right spelling drawn over it.
+      (fig.fixes || '') +   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
       (fig.pin ? '<span class="anp-pin" role="img" aria-label="The label in question" style="' + at(fig.pin) + '"><span aria-hidden="true">?</span></span>' : '');
   }
   function report(q){ return window.LevlReport ? window.LevlReport.button('anp', q.id) : ''; }

@@ -134,7 +134,7 @@
     "diff": 2,
     "core": ["structure-function"],
     "misconception": "papillary muscles open the valves",
-    "q": "Mrs. Okafor, 71, tears one of the papillary muscles in her left ventricle. What happens each time her left ventricle contracts?",
+    "q": "Mrs. Yilmaz, 71, tears one of the papillary muscles in her left ventricle. What happens each time her left ventricle contracts?",
     "options": [
       "The mitral valve cannot open, so blood cannot enter the ventricle",
       "Mitral cusps flip into the left atrium and blood leaks backward",
@@ -148,7 +148,7 @@
         "Papillary muscles do not open the valve. Blood pushes the cusps open. Their job is to keep the closed cusps from flipping up, so losing one causes backward leak, not a stuck valve.",
         "Correct. Without the anchor, the cusps flip into the left atrium and blood flows backward with every contraction.",
         "The aortic valve is a semilunar valve with no papillary muscles, so a torn papillary muscle does not affect it directly.",
-        "The tricuspid valve is on the right side of the heart. Mrs. Okafor's torn muscle is in the left ventricle."
+        "The tricuspid valve is on the right side of the heart. Mrs. Yilmaz's torn muscle is in the left ventricle."
       ]
     }
   },

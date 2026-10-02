@@ -91,7 +91,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Once pyrogens are cleared, prostaglandin E2 falls and the set point returns to about 36.6 °C. Body temperature is now above the set point, so the hypothalamus dilates skin vessels and triggers sweating, and temperature falls until the two match again.",
+      "correct": "Once pyrogens are cleared, prostaglandin E2 falls and the set point returns to its normal value (36.6 °C on this graph; normal is often rounded to 37 °C). Body temperature is now above the set point, so the hypothalamus dilates skin vessels and triggers sweating, and temperature falls until the two match again.",
       "options": [
         "Control is working normally throughout: body temperature follows the set point up and then down, as negative feedback should.",
         "Correct. Temperature is above the new, lower set point, so the body actively loses heat.",

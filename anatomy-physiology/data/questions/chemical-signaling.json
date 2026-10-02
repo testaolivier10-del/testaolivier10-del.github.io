@@ -293,7 +293,7 @@
     "core": [
       "communication"
     ],
-    "q": "Level 2. A drug blocks the enzyme that breaks down cAMP in heart muscle cells. A messenger that raises cAMP in these cells then binds its receptor protein as usual. Predict each variable compared with no drug.",
+    "q": "A drug blocks the enzyme that breaks down cAMP in heart muscle cells. A messenger that raises cAMP in these cells then binds its receptor protein as usual. Predict each variable compared with no drug.",
     "variables": [
       {
         "name": "Number of receptor proteins occupied by the messenger",
@@ -413,13 +413,12 @@
       "They bind intracellular receptors",
       "They mostly change gene expression",
       "They usually act within milliseconds",
-      "They travel in blood mostly bound to proteins that carry them"
+      "They bind receptor proteins on the outer surface of the plasma membrane"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
       "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Being hydrophobic, they ride in the blood bound to carrier proteins. Making new proteins takes hours, so they are slow.",
@@ -428,7 +427,7 @@
         "True. Their receptor proteins are in the cytosol or nucleus.",
         "True. The messenger–receptor pair acts as a transcription factor.",
         "False. Changing gene expression takes hours. Millisecond responses belong to neurotransmitters acting on ion channels.",
-        "True. Hydrophobic molecules dissolve poorly in plasma, so most are carried bound to proteins."
+        "False. Their receptor proteins are inside the cell. Surface receptor proteins serve water-soluble messengers, which cannot cross the bilayer."
       ]
     }
   },

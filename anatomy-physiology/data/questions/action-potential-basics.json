@@ -145,7 +145,7 @@
       "communication",
       "gradients"
     ],
-    "q": "Level 2. A toxin blocks the voltage-gated sodium channels in a nerve fiber. A stimulus is applied to the fiber's nerve ending. Predict each variable compared with before the toxin.",
+    "q": "A toxin blocks the voltage-gated sodium channels in a nerve fiber. A stimulus is applied to the fiber's nerve ending. Predict each variable compared with before the toxin.",
     "variables": [
       {
         "name": "Resting membrane potential",
@@ -471,7 +471,7 @@
       "communication",
       "gradients"
     ],
-    "q": "Mr. Okafor, 62, has a blood potassium of 8.0 mmol/L. His muscle cells have been held partly depolarized for hours, yet his muscles are weak rather than twitchy. What best explains the weakness?",
+    "q": "Mr. Patel, 62, has a blood potassium of 8.0 mmol/L. His muscle cells have been held partly depolarized for hours, yet his muscles are weak rather than twitchy. What best explains the weakness?",
     "options": [
       "The depolarization has made his resting potential more negative",
       "Many sodium channels are stuck inactivated",

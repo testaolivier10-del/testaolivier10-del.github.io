@@ -34,7 +34,7 @@
       "gradients"
     ],
     "figure": "neuron-ap-refractory",
-    "q": "On this graph, a second stimulus twice as strong as the first arrives at 1.5 ms. What happens?",
+    "q": "On this graph, a second stimulus twice as strong as the first arrives at 1.4 ms. What happens?",
     "options": [
       "No second action potential starts",
       "A second, smaller action potential starts at once",
@@ -43,7 +43,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "At 1.5 ms the membrane is at the peak, inside the absolute refractory period. Every sodium channel is open or inactivated, so there are no ready channels for a second stimulus to open, however strong it is.",
+      "correct": "At 1.4 ms the membrane is at the peak, inside the absolute refractory period. Every sodium channel is open or inactivated, so there are no ready channels for a second stimulus to open, however strong it is.",
       "options": [
         "Correct. In the absolute refractory period no stimulus can start another action potential.",
         "A smaller second action potential is possible only in the relative refractory period, which begins later, at about 2.1 ms.",

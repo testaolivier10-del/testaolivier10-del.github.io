@@ -24,7 +24,7 @@
     "ext": "svg",
     "w": 640,
     "h": 460,
-    "alt": "A graph of glucose handling by both kidneys against plasma glucose concentration from 0 to 800 mg/dL. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed amount follows the filtered load exactly up to about 180 mg/dL, then bends over and levels off at the transport maximum of about 375 mg/min from about 350 mg/dL upward. The excreted amount is zero up to about 180 mg/dL, the renal threshold, then rises, running parallel to the filtered load once reabsorption has leveled off. A marker at 90 mg/dL shows a normal fasting glucose, where all filtered glucose is reabsorbed.",
+    "alt": "A graph of glucose handling by both kidneys against plasma glucose concentration from 0 to 800 mg/dL. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed amount follows the filtered load exactly up to about 180 mg/dL, then bends over and levels off at the transport maximum of about 375 mg/min from about 400 mg/dL upward. The excreted amount is zero up to about 180 mg/dL, the renal threshold, then rises, running parallel to the filtered load once reabsorption has leveled off. A marker at 90 mg/dL shows a normal fasting glucose, where all filtered glucose is reabsorbed.",
     "labels": []
   }
 }

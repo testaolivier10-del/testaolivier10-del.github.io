@@ -215,13 +215,12 @@
       "Wider pulse pressure",
       "Lower maximum heart rate",
       "Resting cardiac output roughly halved",
-      "More reliance on atrial contraction to fill the ventricle"
+      "Lower resting heart rate"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
       "correct": "A stiffer aorta raises systolic pressure and widens pulse pressure; the SA node and sympathetic response decline, lowering maximum heart rate; and a thicker, stiffer left ventricle fills more slowly early in diastole, so atrial contraction matters more.",
@@ -230,7 +229,7 @@
         "Correct. Systolic rises while diastolic stays level or falls.",
         "Correct. Maximum heart rate falls by roughly 0.7 to 1 beat per minute a year.",
         "Resting cardiac output changes little in healthy aging. What falls is maximal output, the reserve.",
-        "Correct. The stiffer ventricle fills less early in diastole."
+        "Resting heart rate changes little with healthy aging. It is the maximum heart rate that falls."
       ]
     }
   },

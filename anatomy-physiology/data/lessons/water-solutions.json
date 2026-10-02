@@ -1,6 +1,6 @@
 {
   "topic": "water-solutions",
-  "hook": "<p>Mr. Okafor, 72, has been vomiting for two days and can barely stand. His nurse hangs a bag labeled \"0.9% sodium chloride\" and explains that its dissolved particles are close to those of his own blood. What does 0.9% mean, why does the particle count matter, and what makes sodium chloride dissolve at all? The answers all start with the water molecule.</p>",
+  "hook": "<p>Mr. Alvarez, 72, has been vomiting for two days and can barely stand. His nurse hangs a bag labeled \"0.9% sodium chloride\" and explains that its dissolved particles are close to those of his own blood. What does 0.9% mean, why does the particle count matter, and what makes sodium chloride dissolve at all? The answers all start with the water molecule.</p>",
   "prereq": [
     {
       "q": "Why is a water molecule polar?",

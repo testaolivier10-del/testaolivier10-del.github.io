@@ -86,7 +86,7 @@
       "gradients"
     ],
     "misconception": "the potassium inside cells is what changes in hyperkalemia",
-    "q": "Mr. Okafor, 62, with kidney failure, has a blood potassium of 7.1 mmol/L (normal 3.5–5.0). What happens to the resting membrane potential of his heart muscle cells?",
+    "q": "Mr. Mensah, 62, with kidney failure, has a blood potassium of 7.1 mmol/L (normal 3.5–5.0). What happens to the resting membrane potential of his heart muscle cells?",
     "options": [
       "It becomes more negative (hyperpolarized)",
       "It does not change",
@@ -249,7 +249,7 @@
     "core": [
       "gradients"
     ],
-    "q": "Level 1. Extracellular potassium around a neuron rises from 4 to 8 mmol/L. Nothing else changes. Predict each variable.",
+    "q": "Extracellular potassium around a neuron rises from 4 to 8 mmol/L. Nothing else changes. Predict each variable.",
     "variables": [
       {
         "name": "Potassium concentration gradient across the membrane",
@@ -286,7 +286,7 @@
       "energy"
     ],
     "misconception": "the pump creates the resting potential",
-    "q": "Level 4. A toxin completely blocks every sodium–potassium pump in a neuron. Predict each variable first in the first few seconds, then after several hours.",
+    "q": "A toxin completely blocks every sodium–potassium pump in a neuron. Predict each variable first in the first few seconds, then after several hours.",
     "variables": [
       {
         "name": "How negative the resting potential is, in the first few seconds",

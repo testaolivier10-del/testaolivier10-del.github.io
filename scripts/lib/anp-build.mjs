@@ -329,6 +329,33 @@ function laterLabelUncached(C, l, topicId) {
   return scanPage(C.map, `<p>${esc(l.name || '')}</p>`, topicId).length > 0;
 }
 
+/* Labels printed with a typo carry "fix", the right spelling. It is drawn over
+   the printed label as an SVG in the image's own pixel space, so it scales
+   with the figure on any screen (audit 2026-10: Figure 25.10 "conboluted").
+   Wrapped onto as many lines as the printed label has. */
+export function fixSvg(f, labels) {
+  const fx = (labels || []).filter(l => l.fix && l.box);
+  if (!fx.length) return '';
+  const W = f.w || 1000, H = f.h || 1000;
+  const parts = fx.map(l => {
+    const [x, y, w, h] = l.box;
+    const n = Math.max(1, (l.lines || []).length);
+    const words = l.fix.split(' ');
+    const lines = [];
+    // Balance by characters: fill each line up to its share of the text.
+    let cur = [], target = l.fix.length / n;
+    for (const word of words) {
+      if (cur.length && lines.length < n - 1 && (cur.join(' ') + ' ' + word).length > target + 2) { lines.push(cur.join(' ')); cur = []; }
+      cur.push(word);
+    }
+    lines.push(cur.join(' '));
+    const fs = Math.min(h / lines.length * 0.78, 26).toFixed(1);
+    const lh = h / lines.length;
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#fff"/><text font-family="Arial,Helvetica,sans-serif" font-size="${fs}" font-weight="600" fill="#231F20">${lines.map((t, i) => `<tspan x="${x + 2}" y="${(y + lh * (i + 0.72)).toFixed(1)}">${esc(t)} </tspan>`).join('')}</text>`;
+  });
+  return `<svg class="anp-fix" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true" focusable="false">${parts.join('')}</svg>`;
+}
+
 export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) {
   const f = C.figures[figId];
   if (!f) return '';
@@ -344,7 +371,10 @@ export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) 
   const maskHtml = masks && labels.length ? labels.map(l =>
     `<button type="button" class="anp-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="${at(l.box)}"><span>${esc(l.name)}</span></button>`).join('') : '';
   const coverHtml = covered.map(l => `<span class="anp-cover" aria-hidden="true" style="${at(l.box)}"></span>`).join('');
-  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${coverHtml}${maskHtml}</div>`;
+  // A label printed with a typo carries "fix": the right spelling is drawn
+  // over it (audit 2026-10: OpenStax Figure 25.10's "conboluted").
+  const fixHtml = fixSvg(f, labels);
+  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${coverHtml}${fixHtml}${maskHtml}</div>`;
 }
 
 /* Figure attribution, built from the figure's data (audit 2026-10, fix 11).
@@ -380,7 +410,7 @@ export function attribution(f, { adapted = false } = {}) {
   const sa = tp && isShareAlike(tp.license) ? '; this adaptation is shared under the same license' : '';
   const tpText = tp ? ` Original: ${tp.credit}, ${tp.license}${sa}.` : '';
   const tpHtml = tp ? ` Original: ${esc(tp.credit)}, ${lic(tp.license)}${sa}.` : '';
-  const ad = adapted ? ' Adapted: labels hidden.' : '';
+  const ad = (adapted ? ' Adapted: labels hidden.' : '') + ((f.labels || []).some(l => l.fix) ? ' A misspelled printed label is corrected.' : '');
   if (f.source === 'openstax') {
     const n = f.openstax && f.openstax.figure;
     return {
@@ -455,9 +485,11 @@ function figForQuestion(C, id, topicId, pin) {
   // could be read off the figure, and marks the pinned label's box as the
   // target. Any other figure question covers only labels taught later.
   const target = pin ? labels.find(l => l.id === pin) : null;
-  const covers = labels.filter(l => target ? l !== target : laterLabel(C, l, topicId)).map(l => pct(l.box));
+  const coveredL = labels.filter(l => target ? l !== target : laterLabel(C, l, topicId));
+  const covers = coveredL.map(l => pct(l.box));
+  const fixes = fixSvg(f, labels.filter(l => l.fix && l !== target && !coveredL.includes(l)));
   const credit = attribution(f, { adapted: covers.length > 0 || !!target }).text;
-  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}), credit };
+  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}), ...(fixes ? { fixes } : {}), credit };
 }
 
 /* The question as static HTML (readable without JavaScript; anp-questions.js

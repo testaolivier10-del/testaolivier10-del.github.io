@@ -67,6 +67,7 @@
 .lp-credit{margin:0;font:600 12px/1.45 var(--font-ui);color:var(--muted);}
 .lp-credit a{color:inherit;}
 .lp-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.lp-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .lp-box{position:absolute;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:4px;background:transparent;color:transparent;font:900 12px var(--font-ui);display:grid;place-items:center;overflow:visible;}
 button.lp-box{cursor:pointer;}
 /* a finger-sized hit area around small boxes */

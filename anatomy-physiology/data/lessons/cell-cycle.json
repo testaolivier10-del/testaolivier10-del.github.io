@@ -1,6 +1,6 @@
 {
   "topic": "cell-cycle",
-  "hook": "<p>Ms. Okafor, 51, starts chemotherapy for breast cancer. Ten days later she has painful mouth sores and her white blood cell count has dropped, but her heart and brain work normally. The drug harms cells that are dividing. Which of her cells divide, and how often, decides where the side effects appear.</p>",
+  "hook": "<p>Ms. Kowalski, 51, starts chemotherapy for breast cancer. Ten days later she has painful mouth sores and her white blood cell count has dropped, but her heart and brain work normally. The drug harms cells that are dividing. Which of her cells divide, and how often, decides where the side effects appear.</p>",
   "prereq": [
     {
       "q": "A cell has just finished copying its DNA and has not yet divided. How many chromosomes and chromatids does one of your body cells hold at this point?",

@@ -521,22 +521,21 @@
       "Deeper voice from a larger larynx",
       "Increased skeletal muscle mass",
       "Start of spermatogenesis",
-      "Growth of facial hair",
+      "Growth of breast tissue",
       "Closure of the epiphyseal plates without any conversion"
     ],
     "correct": [
       0,
       1,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "Testosterone enlarges the larynx, builds muscle, starts spermatogenesis and, through DHT in hair follicles, grows facial hair. Plate closure depends on estradiol made from testosterone by aromatase, so testosterone does not close the plates by itself.",
+      "correct": "Testosterone enlarges the larynx, builds muscle and starts spermatogenesis; through DHT it also grows facial hair. Breast growth and plate closure depend on estradiol made from testosterone by aromatase, so testosterone does not cause them directly.",
       "options": [
         "Correct. Testosterone enlarges the larynx and lengthens the vocal cords.",
         "Correct. Testosterone speeds protein synthesis in skeletal muscle.",
         "Correct. Spermatogenesis needs a high local testosterone level.",
-        "Correct. DHT acting on hair follicles drives male-pattern hair growth.",
+        "Breast growth in some boys at puberty comes from estrogen, made from testosterone by aromatase, not from testosterone or DHT acting directly.",
         "The plates close under estrogen. Men who cannot make or respond to estrogen keep growing into adulthood."
       ]
     },

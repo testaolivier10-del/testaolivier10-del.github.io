@@ -83,6 +83,8 @@ export function checkTopic(id, glossary, figures) {
     let higher = 0;
     for (const q of qs) {
       const w = `question ${q.id || '(no id)'}`;
+      // An internal tag left in a stem ("Level 1.", the prediction level) reads as noise (audit 2026-10).
+      if (/^\s*Level\s*\d\b/i.test(q.q || '')) err(`${w}: stem starts with an internal "Level N" tag`);
       if (!q.id || !new RegExp(`^anp-${id}-\\d+$`).test(q.id)) err(`${w}: id must be anp-${id}-<n>`);
       if (ids.has(q.id)) err(`${w}: duplicate id`); ids.add(q.id);
       if (!TYPES.includes(q.type)) err(`${w}: type must be one of ${TYPES.join(', ')}`);

@@ -150,22 +150,21 @@
       "Relaxation of the hamstrings during the knee jerk",
       "The withdrawal reflex",
       "The crossed-extensor reflex",
-      "The tendon reflex from Golgi tendon organs"
+      "Contraction of the calf muscle in the ankle jerk"
     ],
     "correct": [
       1,
       2,
-      3,
-      4
+      3
     ],
     "why": {
-      "correct": "Only the stretch reflex's path to the stretched muscle itself is monosynaptic. Inhibiting an antagonist, withdrawal, crossing the midline and the tendon reflex all need interneurons.",
+      "correct": "Only a stretch reflex's path to the stretched muscle itself is monosynaptic, in the knee jerk and the ankle jerk alike. Inhibiting an antagonist, withdrawal and crossing the midline all need interneurons.",
       "options": [
         "No. The spindle sensory axons synapse directly on the quadriceps motor neurons: one synapse.",
         "Yes. A sensory neuron can only excite, so inhibiting the hamstring motor neurons needs an inhibitory interneuron (reciprocal inhibition).",
         "Yes. Nociceptor signals pass through interneurons that spread across several segments.",
         "Yes. Interneurons carry the signal across the midline to the opposite limb.",
-        "Yes. The tendon organ's sensory neuron acts on the motor neurons through inhibitory interneurons."
+        "No. The ankle jerk is a stretch reflex like the knee jerk: the spindle sensory axons synapse directly on the calf's motor neurons."
       ]
     }
   },
@@ -556,13 +555,12 @@
       "Its sensory receptors are nociceptors",
       "It spreads across several spinal cord segments",
       "It is monosynaptic",
-      "It takes longer from stimulus to response",
+      "Its stimulus is a quick stretch of a muscle",
       "It can include the opposite limb"
     ],
     "correct": [
       0,
       1,
-      3,
       4
     ],
     "why": {
@@ -571,7 +569,7 @@
         "True. Harmful stimuli fire nociceptors; the stretch reflex starts in muscle spindles.",
         "True. Lifting a limb needs flexors whose motor neurons lie in several segments.",
         "False. It is polysynaptic. The stretch reflex is the monosynaptic one.",
-        "True. Extra synapses and slower pain axons lengthen the delay.",
+        "False. A quick stretch starts the stretch reflex. The withdrawal reflex starts with a harmful stimulus.",
         "True. The crossed-extensor reflex straightens the other limb."
       ]
     }

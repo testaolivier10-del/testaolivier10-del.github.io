@@ -158,22 +158,21 @@
       "Glucose uptake on a sodium–glucose symporter",
       "Oxygen diffusing across the bilayer",
       "Endocytosis",
-      "Exocytosis"
+      "Water entering the cell through aquaporins"
     ],
     "correct": [
       0,
       1,
-      3,
-      4
+      3
     ],
     "why": {
-      "correct": "Every form of active transport depends on ATP. The pump uses it directly; symporters depend on the sodium gradient the pump builds; vesicle formation and fusion use ATP. Simple diffusion needs none.",
+      "correct": "Every form of active transport depends on ATP. The pump uses it directly; symporters depend on the sodium gradient the pump builds; forming vesicles in endocytosis uses ATP. Simple diffusion and osmosis need none.",
       "options": [
         "Correct. The pump splits ATP with every cycle and stops at once.",
         "Correct. The symporter slows and stops as the sodium gradient runs down without the pump.",
         "Oxygen crosses by simple diffusion, powered by its own gradient, so it continues.",
         "Correct. Forming vesicles from the plasma membrane uses ATP.",
-        "Correct. Moving vesicles and fusing them with the plasma membrane uses ATP."
+        "Water moves by osmosis, which needs no ATP. As the pump fails and sodium builds up inside, water keeps moving in and the cell swells."
       ]
     },
     "id": "anp-active-transport-6"

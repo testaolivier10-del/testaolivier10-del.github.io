@@ -16,7 +16,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampTitle, clampDesc,
-  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, BETA_PILL,
+  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL,
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 
@@ -1183,7 +1183,11 @@ function publishedTool(file) {
     d.figures = Object.fromEntries(Object.entries(d.figures).filter(([id]) => used.has(id)));
     // The full credit line from the figure's own data (the lab practical
     // always hides printed labels, so every figure there is adapted).
-    for (const [id, f] of Object.entries(d.figures)) if (C.figures[id]) f.attribution = attribution(C.figures[id], { adapted: true }).html;
+    for (const [id, f] of Object.entries(d.figures)) if (C.figures[id]) {
+      f.attribution = attribution(C.figures[id], { adapted: true }).html;
+      const fx = fixSvg(C.figures[id], C.figures[id].labels);
+      if (fx) f.fixSvg = fx.replace('class="anp-fix"', 'class="lp-fix"');
+    }
   }
   if (file === 'calculators.json') d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));
   if (file === 'word-roots.json') {

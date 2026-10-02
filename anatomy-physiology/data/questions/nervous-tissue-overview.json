@@ -193,14 +193,13 @@
    "Carrying long-distance signals from the spinal cord to the toes",
    "Controlling the makeup of the fluid around neurons",
    "Engulfing dead cells and microbes",
-   "Holding neurons in place"
+   "Firing the electrical signals that travel along axons"
   ],
   "correct": [
    0,
    2,
-   3,
-   4
-  ],
+   3
+ ],
   "why": {
    "correct": "Glial cells support, insulate, feed and protect neurons. Neurons, not glia, carry the long-distance signals.",
    "options": [
@@ -208,7 +207,7 @@
     "Neurons carry long-distance signals along their axons. Glia support that work.",
     "Correct. Glia take up excess ions and chemicals from around neurons.",
     "Correct. Some glial cells engulf debris and microbes.",
-    "Correct. Glia give nervous tissue its structure and hold neurons in place."
+    "Neurons fire those signals. Some glial cells wrap axons, which speeds the signals, but glia do not carry them."
    ]
   }
  },

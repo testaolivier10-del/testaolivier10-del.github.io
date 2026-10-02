@@ -1,6 +1,6 @@
 {
   "topic": "enzymes-energy",
-  "hook": "<p>Mr. Okafor, 45, drank windshield washer fluid from an unlabeled bottle two hours ago. The fluid contains methanol. He feels fine and his blood pH is normal, yet the emergency team gives him a drug called fomepizole right away. Methanol does little harm by itself: enzymes in his liver turn it, in two steps, into formic acid, which can drive his blood pH down and damage his vision. Fomepizole blocks the first of those enzymes.</p>",
+  "hook": "<p>Mr. Nguyen, 45, drank windshield washer fluid from an unlabeled bottle two hours ago. The fluid contains methanol. He feels fine and his blood pH is normal, yet the emergency team gives him a drug called fomepizole right away. Methanol does little harm by itself: enzymes in his liver turn it, in two steps, into formic acid, which can drive his blood pH down and damage his vision. Fomepizole blocks the first of those enzymes.</p>",
   "prereq": [
     {
       "q": "What happens to a protein when it is denatured?",

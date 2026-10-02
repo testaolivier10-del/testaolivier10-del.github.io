@@ -1,6 +1,6 @@
 {
   "topic": "inheritance",
-  "hook": "<p>Mr. and Mrs. Okafor are both healthy. Their first child, a son, was diagnosed with cystic fibrosis after newborn screening, and his older sister wants to know if she could pass it on. Their genetic counselor draws a simple two-by-two grid on a notepad and, in a few minutes, gives the family three numbers: the chance their next child is affected, the chance a healthy child is a carrier, and the chance for their daughter's own children. This page teaches that grid and the rules behind it.</p>",
+  "hook": "<p>Mr. and Mrs. Lindqvist are both healthy. Their first child, a son, was diagnosed with cystic fibrosis after newborn screening, and his older sister wants to know if she could pass it on. Their genetic counselor draws a simple two-by-two grid on a notepad and, in a few minutes, gives the family three numbers: the chance their next child is affected, the chance a healthy child is a carrier, and the chance for their daughter's own children. This page teaches that grid and the rules behind it.</p>",
   "prereq": [
     {
       "q": "What is an allele?",

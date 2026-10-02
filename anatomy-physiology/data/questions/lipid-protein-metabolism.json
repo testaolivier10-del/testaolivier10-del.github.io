@@ -218,22 +218,21 @@
       "Insulin",
       "Cortisol",
       "Growth hormone",
-      "Norepinephrine"
+      "Aldosterone"
     ],
     "correct": [
       0,
       2,
-      3,
-      4
+      3
     ],
     "why": {
-      "correct": "Epinephrine and norepinephrine switch lipolysis on quickly through beta receptor proteins and cyclic AMP; cortisol and growth hormone raise it more slowly. Insulin switches it off, even at low levels.",
+      "correct": "Epinephrine (and norepinephrine from sympathetic nerves) switches lipolysis on quickly through beta receptor proteins and cyclic AMP; cortisol and growth hormone raise it more slowly. Insulin switches it off, even at low levels.",
       "options": [
         "Correct. Epinephrine raises lipolysis within minutes, as in exercise or stress.",
         "Insulin blocks lipolysis; it is the main brake on fat release after a meal.",
         "Correct. Cortisol helps release fatty acids and glycerol from fat.",
         "Correct. Growth hormone makes fat cells break down stored fat.",
-        "Correct. Norepinephrine from sympathetic nerves acts on the same beta receptor proteins as epinephrine."
+        "Aldosterone controls sodium and potassium in the kidney. It does not act on fat stores."
       ]
     }
   },

@@ -37,22 +37,21 @@
     "q": "Select every structure that belongs to the conducting zone.",
     "options": [
       "Nasal cavity",
-      "Pharynx",
+      "Diaphragm",
       "Alveoli",
       "Larynx",
       "Trachea"
     ],
     "correct": [
       0,
-      1,
       3,
       4
     ],
     "why": {
-      "correct": "The conducting zone runs from the nose through the pharynx, larynx and trachea to the smallest air tubes without alveoli. Alveoli are the respiratory zone.",
+      "correct": "The conducting zone runs from the nose through the pharynx, larynx and trachea to the smallest air tubes without alveoli. Alveoli are the respiratory zone, and the diaphragm is a muscle, not an airway.",
       "options": [
         "Correct. The nasal cavity filters, warms and humidifies air but exchanges no gas with blood.",
-        "Correct. The pharynx carries air (and in its lower two parts, food) but exchanges no gas with blood.",
+        "The diaphragm is the main breathing muscle. It moves air, but it is not an air passage.",
         "Alveoli are where gas exchange happens, so they are the respiratory zone.",
         "Correct. The larynx conducts air into the trachea and makes sound.",
         "Correct. The trachea conducts air down to the lungs."

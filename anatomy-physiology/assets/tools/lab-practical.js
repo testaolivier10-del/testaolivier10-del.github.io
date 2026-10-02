@@ -226,6 +226,8 @@
     // being tested (quiz, practical and their review) but shown to study.
     var testing = mode === 'name' || mode === 'point' || mode === 'show';
     var covers = (st.covered || []).concat(testing ? st.hints || [] : []).map(function(c){ return '<span class="lp-cover" aria-hidden="true" style="' + at(c.box, f) + '"></span>'; }).join('');
+    // A label printed with a typo has "fix": the right spelling drawn over it.
+    covers += f.fixSvg || '';   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
     var boxes = st.labels.map(function(lab){
       var style = at(lab.box, f), dl = ' data-label="' + esc(lab.id) + '"';
       if(mode === 'explore') return '<button type="button" class="lp-box lp-open' + (opts.pick === lab ? ' is-picked' : '') + '"' + dl + ' style="' + style + '" aria-label="' + esc(lab.name) + '"></button>';

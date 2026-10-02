@@ -331,22 +331,21 @@
       "Glucose",
       "ATP",
       "A large protein",
-      "Water"
+      "A fat droplet"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "Gap junction tunnels pass water, ions and small molecules such as glucose, amino acids and ATP. Large molecules like proteins are too big.",
+      "correct": "Gap junction tunnels pass ions and small molecules such as glucose, amino acids and ATP. Large structures such as proteins or fat droplets are too big.",
       "options": [
         "Correct. Ions pass freely, which is how gap junctions carry electrical current.",
         "Correct. Glucose is a small molecule that fits through the tunnel.",
         "Correct. ATP is small enough to pass.",
         "A protein is far too large for the tunnel's pore.",
-        "Correct. Water passes through the tunnels."
+        "A fat droplet is far too large. Only ions and small molecules fit through the tunnel."
       ]
     }
   },
