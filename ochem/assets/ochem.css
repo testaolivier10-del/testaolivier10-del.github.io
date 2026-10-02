@@ -88,6 +88,14 @@
   .lesson-step button{width:auto;padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
   .lesson-step .t{display:none;}
   .lesson-step.current .t{display:inline;}
+  /* Stacked above the card, the rail repeated the hero's chapter eyebrow and
+     wrapped ten step chips over two rows, so a lesson's content began about
+     450px down a phone (audit 2026-10). One eyebrow (the hero's), the two
+     links on one row, and only the current step: the bar above says where
+     it sits, and Back steps through the rest. */
+  .lesson-rail-k{display:none;}
+  .lesson-rail .lesson-mode-toggle{flex-direction:row;flex-wrap:wrap;gap:6px 16px;}
+  .lesson-step:not(.current){display:none;}
 }
 .progress-bar{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
 .progress-bar .track{flex:1;height:10px;border-radius:999px;background:var(--track);overflow:hidden;}

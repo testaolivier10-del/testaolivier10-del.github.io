@@ -1674,3 +1674,9 @@ html.lso-open{overflow:hidden;}
 .choice-btn.wrong::before,.anp-opt.is-wrong::before{content:"\2715  Your answer";content:"\2715  Your answer" / "";background:var(--bad-text);color:var(--white);}
 .anp-opt.is-right[aria-checked="true"]::before{content:"\2713  Your answer, correct";content:"\2713  Your answer, correct" / "";}
 .anp-opt[role="checkbox"].is-right[aria-checked="false"]::before{content:"\2713  Missed";content:"\2713  Missed" / "";}
+
+/* The tutor and periodic-table buttons float over the right edge of a phone.
+   Answer options keep their text clear of that column (audit 2026-10). */
+@media (max-width:640px){
+  body.lp-has-fab .choice-btn,body.lp-has-fab .anp-opt,body.lp-has-fab .option{padding-right:56px;}
+}
