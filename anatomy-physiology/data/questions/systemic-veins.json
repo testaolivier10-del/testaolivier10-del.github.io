@@ -248,23 +248,22 @@
       "Basilic vein",
       "Great saphenous vein",
       "Popliteal vein",
-      "External jugular vein"
+      "Internal jugular vein"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "The cephalic, basilic, great saphenous and external jugular veins run in the fat under the skin and have their own names. Deep veins such as the femoral and popliteal veins run beside arteries of the same name.",
+      "correct": "The cephalic, basilic and great saphenous veins run in the fat under the skin and have their own names. Deep veins such as the femoral, popliteal and internal jugular veins run beside arteries.",
       "options": [
         "Correct. The cephalic vein runs up the thumb side of the arm under the skin.",
         "The femoral vein is a deep vein beside the femoral artery.",
         "Correct. The basilic vein runs up the inner forearm and arm under the skin before diving deep.",
         "Correct. The great saphenous vein runs up the inner leg under the skin.",
         "The popliteal vein is a deep vein behind the knee, beside the popliteal artery.",
-        "Correct. The external jugular vein runs across the side of the neck just under the skin."
+        "The internal jugular vein is deep, running beside the common carotid artery in the neck."
       ]
     }
   },

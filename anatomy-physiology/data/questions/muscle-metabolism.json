@@ -341,7 +341,7 @@
     "q": "After a hard 5-minute run, you keep breathing heavily while you stand still. Select everything this excess post-exercise oxygen consumption pays for.",
     "options": [
       "Rebuilding creatine phosphate and ATP",
-      "Refilling muscle glycogen stores",
+      "Making extra red blood cells for the next run",
       "Storing extra oxygen for the next run",
       "Clearing lactate by burning it or turning it into glucose",
       "The higher costs of a warmer body and raised hormone levels"
@@ -352,10 +352,10 @@
       4
     ],
     "why": {
-      "correct": "EPOC pays for restoring creatine phosphate and ATP, reloading oxygen onto myoglobin and in the blood, clearing lactate, and the raised costs of recovery: a warmer body, hormones released in exercise, breathing and circulation and tissue repair. It is not a reserve banked for later.",
+      "correct": "EPOC pays for restoring creatine phosphate and ATP, clearing lactate, and the raised costs of recovery: a warmer body, hormones released in exercise, breathing and circulation. It is not a reserve banked for later, and new red blood cells take days.",
       "options": [
         "Correct. Aerobic respiration rebuilds the phosphate stores within minutes.",
-        "Muscle glycogen is rebuilt over hours to days from the carbohydrate you eat, long after your breathing has settled.",
+        "New red blood cells take days to make in the marrow. EPOC lasts minutes to hours and pays for recovery, not for new cells.",
         "The body does not bank extra oxygen beyond its normal stores; EPOC restores those stores and pays recovery costs.",
         "Correct. Lactate is burned or converted to glucose in the liver.",
         "Correct. Warmth speeds every reaction, and hormones raise metabolism for a while."

@@ -229,7 +229,7 @@
       2
     ],
     "why": {
-      "correct": "Blocking muscarinic receptor proteins removes all parasympathetic effects and also sympathetic sweating. The pupils widen, the heart speeds up, the mouth goes dry, and without sweating the skin becomes hot, dry and flushed.",
+      "correct": "Blocking muscarinic receptor proteins removes parasympathetic effects and also sympathetic sweating. The pupils widen, the heart speeds up, the gut slows, and without sweating the skin becomes hot, dry and flushed.",
       "options": [
         "Correct. Eccrine sweat glands need acetylcholine on muscarinic receptor proteins, so sweating stops and heat builds up.",
         "Correct. The circular iris muscle is blocked, so the alpha-1 dilator muscle wins.",
@@ -538,7 +538,7 @@
     "q": "Select every location of nicotinic receptor proteins.",
     "options": [
       "Cell bodies of sympathetic postganglionic neurons",
-      "Cell bodies of parasympathetic postganglionic neurons",
+      "Sweat glands in the skin",
       "Chromaffin cells of the adrenal medulla",
       "Smooth muscle of the stomach wall",
       "The motor end plate of skeletal muscle",
@@ -546,15 +546,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       4
     ],
     "why": {
-      "correct": "Nicotinic receptor proteins sit wherever a preganglionic neuron or a somatic motor neuron releases acetylcholine: on all postganglionic neurons, on chromaffin cells, and (as a different type) on skeletal muscle.",
+      "correct": "Nicotinic receptor proteins sit wherever a preganglionic neuron or a somatic motor neuron releases acetylcholine: on postganglionic neurons, on chromaffin cells, and (as a different type) at the skeletal muscle end plate. Sweat glands, gut smooth muscle and the pacemaker use muscarinic ones.",
       "options": [
         "Correct. Every chain and collateral ganglion uses nicotinic transmission.",
-        "Correct. Terminal and intramural ganglia use nicotinic transmission too.",
+        "Eccrine sweat glands respond to acetylcholine through muscarinic receptor proteins.",
         "Correct. Chromaffin cells are stimulated like postganglionic neurons.",
         "Gut smooth muscle responds to parasympathetic acetylcholine through muscarinic receptor proteins.",
         "Correct. The muscle type of nicotinic receptor protein sits at the end plate.",

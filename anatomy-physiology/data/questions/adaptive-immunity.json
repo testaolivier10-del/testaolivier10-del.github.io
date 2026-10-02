@@ -431,21 +431,20 @@
     "options": [
       "They are far more numerous for a given antigen",
       "They switch on faster and with less stimulation",
-      "They can live for years or decades",
+      "They live only a few days",
       "They recognize a different epitope from the original clone",
       "They carry no antigen receptor"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
       "correct": "Memory cells are a larger, longer-lived and quicker-to-respond version of the clone that met the antigen. They keep the same specificity.",
       "options": [
         "Correct. Clonal expansion leaves 100 to 1,000 times more matching cells.",
         "Correct. They respond within a day or two instead of about a week.",
-        "Correct. Some last for decades.",
+        "Memory cells can live for years or decades, which is why protection lasts.",
         "They belong to the same clone, so they carry the same antigen receptor and recognize the same epitope.",
         "They carry the clone's antigen receptor; that is how they recognize the antigen again."
       ]

@@ -260,7 +260,7 @@
     "q": "Which muscles belong to the rotator cuff? Select all that apply.",
     "options": [
       "Supraspinatus",
-      "Infraspinatus",
+      "Latissimus dorsi",
       "Teres major",
       "Teres minor",
       "Subscapularis",
@@ -268,15 +268,14 @@
     ],
     "correct": [
       0,
-      1,
       3,
       4
     ],
     "why": {
-      "correct": "The rotator cuff is SITS: supraspinatus, infraspinatus, teres minor and subscapularis. Their tendons wrap the shoulder joint and hold the head of the humerus in the glenoid cavity.",
+      "correct": "The rotator cuff is SITS: supraspinatus, infraspinatus, teres minor and subscapularis. Their tendons wrap the shoulder joint and hold the head of the humerus in the glenoid cavity. The latissimus dorsi, teres major and deltoid move the arm but are not cuff muscles.",
       "options": [
         "Yes. The S of SITS; it passes over the top of the joint.",
-        "Yes. The I of SITS; it lies below the spine of the scapula.",
+        "The latissimus dorsi is a large back muscle that pulls the arm down and back. It is not in the cuff.",
         "No. The teres major moves the humerus with the latissimus dorsi, but it does not join the cuff around the joint capsule.",
         "Yes. The T of SITS; it lies along the lateral border of the scapula.",
         "Yes. The final S of SITS, on the front of the scapula.",

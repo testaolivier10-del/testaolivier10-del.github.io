@@ -333,7 +333,7 @@
     "options": [
       "Triggering muscle contraction",
       "Release of neurotransmitter at a synapse",
-      "Several steps of blood clotting",
+      "Carrying carbon dioxide in the blood",
       "Carrying oxygen in the blood",
       "Mineralizing new osteoid",
       "Holding the resting membrane potential near −70 mV"
@@ -341,15 +341,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis, is needed in clotting and forms bone mineral with phosphate. From outside the cell it also sets how easily sodium channels open, but the resting potential itself comes from potassium.",
+      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis and forms bone mineral with phosphate. It does not carry oxygen or carbon dioxide, and the resting potential comes from potassium, not calcium.",
       "options": [
         "Correct. A rise in calcium inside muscle cells starts contraction.",
         "Correct. Calcium entry into the nerve ending triggers neurotransmitter exocytosis.",
-        "Correct. Several clotting steps need calcium ions.",
+        "Carbon dioxide travels mostly as bicarbonate, with some dissolved in plasma. Calcium plays no part.",
         "Oxygen is carried by an iron-containing protein in red blood cells, not by calcium.",
         "Correct. Bone mineral is calcium phosphate.",
         "The resting potential comes mainly from potassium leaking out through open channels, kept up by the sodium–potassium pump. Calcium changes how easily sodium channels open, not the resting value itself."
@@ -495,7 +494,7 @@
     "options": [
       "About 1,300 mg of calcium a day from food",
       "Enough vitamin D from sunlight, food or a supplement",
-      "Enough protein in her diet",
+      "Cutting out dairy foods",
       "Swimming instead of running and jumping sports",
       "Regular running and jumping sports",
       "Replacing milk with sugary soft drinks"
@@ -503,15 +502,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Teenagers need about 1,300 mg of calcium a day, vitamin D to absorb it, protein for the collagen matrix, and load on the bones: through Wolff's law, weight-bearing and impact exercise signals osteocytes to add bone. Peak bone mass built now protects her decades later.",
+      "correct": "Teenagers need about 1,300 mg of calcium a day, vitamin D to absorb it, and load on the bones: through Wolff's law, weight-bearing and impact exercise signals osteocytes to add bone. Cutting dairy or swapping milk for soft drinks removes calcium, and swimming loads bone little.",
       "options": [
         "Correct. 1,300 mg a day is the teen target.",
         "Correct. Without vitamin D she absorbs little of what she eats.",
-        "Correct. Collagen is protein, and most of the organic matrix is collagen.",
+        "Dairy foods are a major calcium source. Cutting them makes 1,300 mg a day hard to reach.",
         "Swimming is excellent exercise, but the water carries her weight, so it loads bone far less than running or jumping.",
         "Correct. Impact loading drives bone formation.",
         "Soft drinks replacing milk remove a major calcium source and add none."

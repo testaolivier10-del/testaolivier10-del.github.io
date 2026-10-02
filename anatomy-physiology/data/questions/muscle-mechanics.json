@@ -141,17 +141,17 @@
     "options": [
       "The prime mover is also called the agonist",
       "A synergist helps the prime mover or steadies the movement",
-      "A fixator holds a bone still so the prime mover has a stable base",
+      "A fixator produces the main movement",
       "An antagonist makes the same movement as the prime mover",
       "A muscle keeps the same role in every movement it takes part in"
     ],
-    "correct": [0, 1, 2],
+    "correct": [0, 1],
     "why": {
-      "correct": "The prime mover (agonist) does most of the work, synergists help or steady it, fixators hold the base still, and the antagonist makes the opposite movement. Roles belong to movements: the same muscle can be an antagonist in one movement and the prime mover in the next.",
+      "correct": "The prime mover (agonist) does most of the work and synergists help or steady it. Fixators hold the base still, the antagonist makes the opposite movement, and the same muscle can take different roles in different movements.",
       "options": [
         "Correct. Prime mover and agonist are two names for the muscle most responsible for a movement.",
         "Correct. Synergists add force to the same movement or keep it moving in the right direction.",
-        "Correct. A fixator is a kind of synergist that stabilizes the bone the prime mover pulls from.",
+        "The prime mover produces the main movement. A fixator holds a bone still.",
         "Incorrect. An antagonist makes the opposite movement; it relaxes and lengthens, often braking, while the prime mover contracts.",
         "Incorrect. The muscle on the back of the arm is the antagonist when you bend the elbow and the prime mover when you straighten it."
       ]

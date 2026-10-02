@@ -327,23 +327,22 @@
       "Long-chain fatty acids",
       "Vitamin K",
       "Glucose",
-      "Cholesterol",
+      "Sodium",
       "Amino acids",
       "Vitamin D"
     ],
     "correct": [
       0,
       1,
-      3,
       5
     ],
     "why": {
-      "correct": "Without bile salts, fat is poorly emulsified and no micelles form, so long-chain fatty acids, cholesterol and the vitamins that dissolve in fat, such as D and K, are poorly absorbed. Glucose and amino acids are water-soluble and absorbed by carriers that do not need bile.",
+      "correct": "Without bile salts, fat is poorly emulsified and no micelles form, so long-chain fatty acids and the vitamins that dissolve in fat, such as D and K, are poorly absorbed. Glucose, amino acids and sodium are absorbed by carriers and channels that do not need bile.",
       "options": [
         "Correct. Long-chain fatty acids need micelles to reach the brush border.",
         "Correct. Vitamin K travels with fat in micelles; its loss is why obstructive jaundice can cause bleeding.",
         "Glucose is absorbed through SGLT1, which does not need bile.",
-        "Correct. Cholesterol is absorbed from micelles.",
+        "Sodium is absorbed through carriers and channels that need no bile.",
         "Amino acids use carriers powered by sodium, not micelles.",
         "Correct. Vitamin D dissolves in fat and is absorbed with it."
       ]

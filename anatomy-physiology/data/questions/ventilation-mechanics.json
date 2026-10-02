@@ -509,13 +509,12 @@
       "Rectus abdominis",
       "Diaphragm",
       "Transversus abdominis",
-      "External oblique"
+      "Sternocleidomastoid"
     ],
     "correct": [
       0,
       2,
-      4,
-      5
+      4
     ],
     "why": {
       "correct": "Forced expiration uses the internal intercostals, which pull the ribs down, and the abdominal wall muscles, which push the abdominal organs up against the diaphragm.",
@@ -525,7 +524,7 @@
         "Correct. The rectus abdominis compresses the abdomen and pushes the diaphragm up.",
         "The diaphragm is the main muscle of inspiration. It is pushed up passively in forced expiration.",
         "Correct. The transversus abdominis squeezes the abdomen.",
-        "Correct. The external oblique helps compress the abdomen."
+        "The sternocleidomastoid lifts the sternum in a forceful breath in, not out."
       ]
     }
   },

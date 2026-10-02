@@ -372,23 +372,22 @@
       "Urea",
       "Red blood cells",
       "Sodium ions",
-      "Amino acids"
+      "Platelets"
     ],
     "correct": [
       0,
       2,
-      4,
-      5
+      4
     ],
     "why": {
-      "correct": "Small solutes such as glucose, urea, sodium and amino acids cross all three layers of the filter freely, so their concentrations in the filtrate match plasma. Cells and large proteins such as albumin are held back.",
+      "correct": "Small solutes such as glucose, urea and sodium cross all three layers of the filter freely, so their concentrations in the filtrate match plasma. Cells, platelets and large proteins such as albumin are held back.",
       "options": [
         "Correct. Glucose is small and filtered freely; the tubules take it back later.",
         "Albumin is mostly held back by the basement membrane and the slit diaphragms; only a trace gets through.",
         "Correct. Urea is a small molecule and is filtered freely.",
         "Blood cells are stopped by the fenestrated endothelium.",
         "Correct. Sodium and other small ions pass freely.",
-        "Correct. Amino acids are small and are filtered freely."
+        "Platelets are cell fragments, far too large to cross the filter."
       ]
     }
   },

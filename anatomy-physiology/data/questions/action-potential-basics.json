@@ -11,21 +11,20 @@
     "options": [
       "A neuron",
       "A skeletal muscle fiber",
-      "A heart muscle cell",
+      "A cell lining the stomach",
       "A red blood cell",
       "A fibroblast in a tendon"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Excitable cells are cells whose membranes can produce action potentials. Neurons and muscle fibers have the voltage-gated sodium and potassium channels this requires.",
+      "correct": "Excitable cells are cells whose membranes can produce action potentials. Neurons and muscle fibers, heart muscle included, have the voltage-gated sodium and potassium channels this requires. Red blood cells, fibroblasts and epithelial cells do not fire action potentials.",
       "options": [
         "Correct. Neurons produce action potentials along their axons.",
         "Correct. A skeletal muscle fiber's action potential starts its contraction.",
-        "Correct. Heart muscle cells produce action potentials, a longer kind covered in the heart chapter.",
+        "Epithelial cells lining the stomach do not fire action potentials.",
         "A red blood cell has a resting potential but lacks the voltage-gated channels needed for an action potential.",
         "A fibroblast has a resting potential too, but it is not excitable."
       ]

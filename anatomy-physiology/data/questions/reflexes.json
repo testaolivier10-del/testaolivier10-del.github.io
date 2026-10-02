@@ -564,7 +564,7 @@
       4
     ],
     "why": {
-      "correct": "The withdrawal reflex starts in nociceptors, runs through chains of interneurons that spread across several segments and across the midline, and so takes longer than the monosynaptic stretch reflex.",
+      "correct": "The withdrawal reflex starts in nociceptors and runs through chains of interneurons that spread across several segments and across the midline. The stretch reflex is the monosynaptic one, triggered by a quick stretch.",
       "options": [
         "True. Harmful stimuli fire nociceptors; the stretch reflex starts in muscle spindles.",
         "True. Lifting a limb needs flexors whose motor neurons lie in several segments.",

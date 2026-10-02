@@ -478,23 +478,22 @@
       "Peyer's patches",
       "The appendix",
       "The spleen",
-      "The lingual tonsil",
+      "Lymph nodes in the neck",
       "Bronchus-associated lymphoid tissue",
       "The thymus"
     ],
     "correct": [
       0,
       1,
-      3,
       4
     ],
     "why": {
-      "correct": "MALT is lymphoid tissue lying under mucous membranes: the tonsils, Peyer's patches, the appendix and BALT in the airways. The spleen and thymus are separate, encapsulated organs.",
+      "correct": "MALT is lymphoid tissue lying under mucous membranes, such as Peyer's patches, the appendix and BALT in the airways. The spleen, thymus and lymph nodes are separate, encapsulated organs.",
       "options": [
         "Correct. Peyer's patches are lymphoid nodules under the lining of the intestine.",
         "Correct. The wall of the appendix is thick with lymphoid nodules beneath its mucous membrane.",
         "The spleen is a separate organ with a capsule that filters blood. It does not lie in a mucous membrane.",
-        "Correct. The lingual tonsil lies under the mucous membrane at the back of the tongue.",
+        "Lymph nodes are encapsulated organs along lymphatic vessels, not tissue under a mucous membrane.",
         "Correct. BALT lies in the walls of the airways.",
         "The thymus is a primary lymphoid organ in the chest, with a capsule. It is not part of a mucous membrane."
       ]

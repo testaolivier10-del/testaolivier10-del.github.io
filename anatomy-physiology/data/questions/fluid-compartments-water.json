@@ -178,7 +178,7 @@
       0
     ],
     "why": {
-      "correct": "Insensible losses are the ones you do not notice: water evaporating through the epidermis and water vapor leaving in each breath. Together they are about 0.7 L a day at rest.",
+      "correct": "Insensible losses are the ones you do not notice, such as water vapor leaving in each breath and water evaporating through the epidermis. Sweat, urine, feces and vomit are losses you can see.",
       "options": [
         "Yes. Air leaving the lungs is saturated with water vapor.",
         "No. Sweat is a separate, visible loss controlled by the body temperature loop.",
@@ -501,21 +501,20 @@
     "options": [
       "Heart failure",
       "Heavy sweating without drinking",
-      "Kidney failure with continued salt and water intake",
+      "Severe vomiting for two days",
       "Diabetes insipidus",
       "Too much IV isotonic saline"
     ],
     "correct": [
       0,
-      2,
       4
     ],
     "why": {
-      "correct": "Hypervolemia comes from keeping or receiving salt and water together: heart failure (the kidneys keep salt and water), kidney failure (they cannot excrete it), and excess isotonic IV fluid. Sweating and diabetes insipidus remove water.",
+      "correct": "Hypervolemia comes from keeping or receiving salt and water together: heart failure (the kidneys keep salt and water) and excess isotonic IV fluid. Sweating, vomiting and diabetes insipidus remove fluid instead.",
       "options": [
         "Yes. A failing heart leaves the kidneys underperfused, and they keep salt and water through the RAAS.",
         "No. Sweat loss without drinking removes more water than salt: dehydration.",
-        "Yes. Failing kidneys cannot excrete the salt and water taken in.",
+        "Vomiting loses salt and water together, which shrinks ECF volume: hypovolemia, not hypervolemia.",
         "No. Without ADH action, the kidneys lose large volumes of water: dehydration if the person cannot drink enough.",
         "Yes. Isotonic saline stays in the ECF and expands it."
       ]

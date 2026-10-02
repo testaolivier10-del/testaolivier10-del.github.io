@@ -446,7 +446,7 @@
     "q": "Select every job that hepatocytes do.",
     "options": [
       "Make albumin",
-      "Make clotting factors",
+      "Make red blood cells in adults",
       "Store glycogen",
       "Make insulin",
       "Make bile salts from cholesterol",
@@ -454,15 +454,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       4
     ],
     "why": {
-      "correct": "Hepatocytes make albumin and most clotting factors, store glucose as glycogen, and make bile salts from cholesterol. Insulin comes from the beta cells of the pancreatic islets, and lipase from the pancreatic acinar cells.",
+      "correct": "Hepatocytes make albumin, store glucose as glycogen, and make bile salts from cholesterol. In adults, red blood cells come from the bone marrow; insulin comes from the beta cells of the pancreatic islets, and lipase from the pancreatic acinar cells.",
       "options": [
         "Correct. Albumin is the main plasma protein, and hepatocytes make it.",
-        "Correct. Hepatocytes make most clotting factors, using vitamin K for factors II, VII, IX and X.",
+        "In adults, red blood cells are made in the red bone marrow. The liver makes them only before birth.",
         "Correct. Hepatocytes store glucose as glycogen after a meal and release it between meals.",
         "Insulin is made by beta cells in the pancreatic islets, not by the liver.",
         "Correct. Bile salts are made from cholesterol in hepatocytes.",

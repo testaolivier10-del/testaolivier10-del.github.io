@@ -205,7 +205,7 @@
     "q": "Select every effect of complement activation.",
     "options": [
       "Coating microbes so phagocytes engulf them more easily",
-      "Making mast cells release histamine",
+      "Making antibodies against the microbe",
       "Attracting neutrophils to the site",
       "Punching pores in microbial membranes",
       "Raising the hypothalamic set point directly",
@@ -213,7 +213,6 @@
     ],
     "correct": [
       0,
-      1,
       2,
       3
     ],
@@ -221,7 +220,7 @@
       "correct": "Complement opsonizes microbes (C3b), promotes inflammation and attracts neutrophils (C3a and C5a), and bursts microbes with the membrane attack complex. Fever and antiviral protection come from cytokines and interferons.",
       "options": [
         "Correct. This is opsonization by C3b.",
-        "Correct. C3a and C5a trigger mast cells to release histamine.",
+        "Complement proteins are made by the liver and circulate ready-made. They do not make antibodies.",
         "Correct. C5a is a strong attractant for neutrophils.",
         "Correct. The membrane attack complex forms a pore and the cell bursts.",
         "The set point is raised by pyrogens such as interleukin-1 acting through prostaglandin E2, not by complement.",

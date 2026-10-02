@@ -283,21 +283,20 @@
     "q": "Select every layer that oxygen crosses in the respiratory membrane on its way from alveolar air into the blood plasma.",
     "options": [
       "Type I alveolar cell",
-      "Fused basement membrane",
+      "Smooth muscle of a bronchiole",
       "Capillary endothelial cell",
       "Type II alveolar cell",
       "Visceral pleura"
     ],
     "correct": [
       0,
-      1,
       2
     ],
     "why": {
-      "correct": "The respiratory membrane is a type I alveolar cell, the fused basement membranes of that cell and the capillary, and a capillary endothelial cell: about 0.5 µm in total.",
+      "correct": "The respiratory membrane is a type I alveolar cell, the fused basement membranes of that cell and the capillary, and a capillary endothelial cell: about 0.5 µm in total. Type II cells, bronchiole smooth muscle and the pleura are not in oxygen's path.",
       "options": [
         "Correct. The flattened type I cell is the air side of the barrier.",
-        "Correct. The two basement membranes are fused into one layer.",
+        "Bronchiole smooth muscle is in the airway wall, not in the thin membrane between alveolar air and capillary blood.",
         "Correct. The endothelial cell of a continuous capillary is the blood side.",
         "Type II cells are scattered and cover only about 5% of the surface; the barrier where gases cross is formed by type I cells.",
         "The visceral pleura covers the outside of the lung. Oxygen in the alveoli never crosses it."

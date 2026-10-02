@@ -703,23 +703,22 @@
       "Fast resting heart rate",
       "Feeling cold",
       "Weight loss despite a big appetite",
-      "Fine tremor of the hands",
+      "Slow, delayed reflexes",
       "High TSH in Graves disease",
       "Warm, moist skin"
     ],
     "correct": [
       0,
       2,
-      3,
       5
     ],
     "why": {
-      "correct": "Too much thyroid hormone speeds every tissue: more heat (warm, moist skin), more fuel burned (weight loss), more sympathetic sensitivity (fast heart, tremor). In Graves disease TSH is suppressed by feedback, not high.",
+      "correct": "Too much thyroid hormone speeds every tissue: more heat (warm, moist skin), more fuel burned (weight loss), more sympathetic sensitivity (fast heart). Reflexes are brisk, not slow, and in Graves disease TSH is suppressed by feedback, not high.",
       "options": [
         "Correct. More beta-1 receptor proteins and sympathetic sensitivity speed the heart.",
         "Feeling cold is a sign of too little thyroid hormone. Hyperthyroid people feel hot.",
         "Correct. Cells burn fuel faster than it is eaten.",
-        "Correct. Greater sympathetic sensitivity causes a fine tremor.",
+        "Slow reflexes are a sign of too little thyroid hormone. In hyperthyroidism reflexes are brisk.",
         "In Graves disease the high T4 and T3 suppress TSH almost to zero.",
         "Correct. Extra heat production makes the skin warm and sweaty."
       ]

@@ -154,7 +154,7 @@
     ],
     "q": "A man's sperm cannot swim well, so his partner's oocytes are fertilized by intracytoplasmic sperm injection (ICSI), in which one sperm is injected directly into the oocyte's cytoplasm. Select every step that ICSI bypasses.",
     "options": [
-      "Crossing the corona radiata",
+      "Formation of the male pronucleus",
       "The acrosomal reaction",
       "Calcium waves in the oocyte",
       "Crossing the zona pellucida",
@@ -162,15 +162,14 @@
       "Fusion of the sperm and oocyte membranes"
     ],
     "correct": [
-      0,
       1,
       3,
       5
     ],
     "why": {
-      "correct": "The needle carries the sperm through the corona radiata, the zona pellucida and the plasma membrane, so the steps for crossing them, including the acrosomal reaction and membrane fusion, are skipped. Once inside, the sperm still has to activate the oocyte with calcium waves, and the oocyte still has to finish meiosis II.",
+      "correct": "The needle carries the sperm through the zona pellucida and the plasma membrane, so the acrosomal reaction and membrane fusion are skipped. Once inside, the sperm still has to activate the oocyte with calcium waves, the oocyte still has to finish meiosis II, and the sperm's nucleus still forms the male pronucleus.",
       "options": [
-        "Correct. The needle passes through the corona radiata.",
+        "Inside the oocyte the sperm's nucleus still swells into the male pronucleus. ICSI does not skip it.",
         "Correct. No enzymes are needed to digest a path, so the acrosomal reaction is bypassed.",
         "Not bypassed. The injected sperm still releases its enzyme into the cytoplasm, which starts the calcium waves that activate the oocyte.",
         "Correct. The needle crosses the zona pellucida.",

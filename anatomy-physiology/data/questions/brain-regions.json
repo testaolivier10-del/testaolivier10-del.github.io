@@ -341,7 +341,7 @@
     "options": [
       "Body temperature",
       "Thirst and water balance",
-      "Release of hormones by the pituitary gland",
+      "Planning the movements of speech",
       "The timing and force of a movement while it is under way",
       "Heart rate, through the autonomic nervous system",
       "The relay of touch signals to the cerebral cortex"
@@ -349,15 +349,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "The hypothalamus is the control center for temperature, water balance and thirst, hunger, autonomic output and the pituitary gland. Correcting movement is the cerebellum's job, and relaying touch to the cortex is the thalamus's.",
+      "correct": "The hypothalamus is the control center for temperature, water balance and thirst, and autonomic output such as heart rate. Speech is planned in the frontal cortex, correcting movement is the cerebellum's job, and relaying touch to the cortex is the thalamus's.",
       "options": [
         "Yes. Hypothalamic neurons sense blood temperature and drive sweating, skin blood flow and shivering.",
         "Yes. The hypothalamus creates thirst and controls a hormone that makes the kidneys keep water.",
-        "Yes. The hypothalamus controls the pituitary gland just below it.",
+        "Speech is planned in the frontal lobe of the cerebral cortex, not in the hypothalamus.",
         "No. Correcting the force and timing of movement is the cerebellum's job.",
         "Yes. The hypothalamus sends axons to the brainstem and spinal cord neurons of the sympathetic and parasympathetic divisions.",
         "No. Relaying touch and other body sensations to the cortex is the thalamus's job."

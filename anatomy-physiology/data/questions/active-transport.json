@@ -427,21 +427,20 @@
       "It splits ATP",
       "It is an integral membrane protein",
       "It binds its cargo and changes shape",
-      "It moves net positive charge out of the cell"
+      "It moves glucose into the cell"
     ],
     "correct": [
       0,
-      1,
-      4
+      1
     ],
     "why": {
-      "correct": "Both are integral carrier proteins that bind their cargo and change shape. Only the pump splits ATP, moves its ions uphill, and moves net charge (three positive charges out, two in).",
+      "correct": "Both are integral carrier proteins that bind their cargo and change shape. Only the pump splits ATP and moves its ions uphill (and in doing so moves net positive charge out). It does not carry glucose.",
       "options": [
         "Correct. The pump moves both ions uphill; the glucose carrier moves glucose downhill.",
         "Correct. The pump is an ATPase; facilitated diffusion uses no ATP.",
         "Both are integral membrane proteins, so this does not distinguish them.",
         "Both bind their cargo and change shape, so this does not distinguish them.",
-        "Correct. Each pump cycle moves one net positive charge out; glucose carries no charge."
+        "The pump moves sodium and potassium only. Glucose rides on other carriers."
       ]
     },
     "id": "anp-active-transport-16"

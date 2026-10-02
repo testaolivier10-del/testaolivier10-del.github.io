@@ -303,16 +303,16 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Select every example of appositional growth.",
-    "options": ["Osteoblasts under the periosteum adding bone to the shaft surface", "Chondrocytes dividing in the proliferative zone", "A new layer of bone added around the outside of a skull bone", "Chondrocytes swelling in the zone of maturation and hypertrophy", "Cartilage growing by adding layers from its perichondrium"],
-    "correct": [0, 2, 4],
+    "options": ["Osteoblasts under the periosteum adding bone to the shaft surface", "Chondrocytes dividing in the proliferative zone", "A new layer of bone added around the outside of a skull bone", "Chondrocytes swelling in the zone of maturation and hypertrophy", "The epiphyseal plate lengthening a long bone"],
+    "correct": [0, 2],
     "why": {
-      "correct": "Appositional growth adds new layers to a surface. Bone grows wider this way, skull bones thicken this way, and cartilage can also grow this way from its perichondrium. Division and swelling of cells inside the plate expand the tissue from within: interstitial growth.",
+      "correct": "Appositional growth adds new layers to a surface: bone grows wider this way under the periosteum, and skull bones thicken this way. Division and swelling of cells inside the epiphyseal plate, which lengthens the bone, is interstitial growth.",
       "options": [
         "Correct. Adding bone to the outer surface is appositional.",
         "Division inside the tissue is interstitial growth.",
         "Correct. Layering bone onto a surface is appositional.",
         "Swelling of cells inside the plate expands it from within: interstitial.",
-        "Correct. New cartilage laid on the surface by cells of the perichondrium is appositional."
+        "Lengthening at the epiphyseal plate is interstitial growth: cartilage grows from within, then turns to bone."
       ]
     }
   },

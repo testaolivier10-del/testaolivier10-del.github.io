@@ -315,21 +315,20 @@
     "options": [
       "Masseter",
       "Temporalis",
-      "Medial pterygoid",
+      "Lateral pterygoid",
       "Buccinator",
       "Digastric"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "The masseter, temporalis and medial pterygoid all insert on the mandible and pull it up. The lateral pterygoid and the suprahyoid muscles, such as the digastric, help open the jaw instead.",
+      "correct": "The masseter and temporalis insert on the mandible and pull it up. The lateral pterygoid and the suprahyoid muscles, such as the digastric, help open the jaw instead, and the buccinator holds food against the teeth.",
       "options": [
         "Yes. The masseter is the prime mover of jaw closing.",
         "Yes. The temporalis elevates and retracts the mandible.",
-        "Yes. The medial pterygoid elevates the mandible from the inside, mirroring the masseter.",
+        "The lateral pterygoid pulls the mandible forward and helps open the jaw.",
         "No. The buccinator is a muscle of facial expression: it presses the cheek to the teeth but does not move the jaw.",
         "No. The digastric is a suprahyoid muscle; with the hyoid held still it pulls the mandible down, opening the mouth."
       ]

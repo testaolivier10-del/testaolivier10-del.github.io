@@ -242,7 +242,7 @@
     "q": "Baroreceptor firing falls sharply after a sudden drop in blood pressure. Which responses follow within seconds? Select all that apply.",
     "options": [
       "Heart rate rises",
-      "Ventricular contractility rises",
+      "Sympathetic output to the heart falls",
       "Arterioles in the skin and gut constrict",
       "Veins constrict and push blood toward the heart",
       "Arterioles in the brain constrict strongly",
@@ -250,7 +250,6 @@
     ],
     "correct": [
       0,
-      1,
       2,
       3
     ],
@@ -258,7 +257,7 @@
       "correct": "Less baroreceptor input raises sympathetic and lowers vagal output. The heart beats faster and more forcefully, arterioles in the skin, gut, kidneys and resting muscle constrict, and veins constrict and raise venous return. The brain's arterioles respond little to sympathetic signals and are controlled mainly by local autoregulation.",
       "options": [
         "Correct. More norepinephrine and less acetylcholine at the SA node speed the pacemaker potential.",
-        "Correct. Norepinephrine on beta-1 receptors in ventricular muscle raises contractility.",
+        "Less baroreceptor input raises sympathetic output to the heart, so rate and force rise.",
         "Correct. Sympathetic vasoconstriction is strong in these beds, which raises TPR.",
         "Correct. Venous constriction moves blood out of the venous reservoir, raising end-diastolic volume and stroke volume.",
         "Brain arterioles barely respond to sympathetic signals. Local autoregulation keeps brain flow steady, and strong constriction would cut it.",

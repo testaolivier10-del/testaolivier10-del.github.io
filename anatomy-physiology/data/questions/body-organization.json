@@ -173,7 +173,7 @@
       3
     ],
     "why": {
-      "correct": "The digestive system includes the tube food passes through (mouth, esophagus, stomach, intestines, with the appendix attached) and the organs that feed juices into it (liver, gallbladder, pancreas).",
+      "correct": "The digestive system includes the tube food passes through, such as the esophagus, and the organs that feed juices into it, such as the liver and gallbladder. The spleen, kidney and heart belong to other systems.",
       "options": [
         "Correct. The liver makes bile, a digestive juice that helps digest fatty foods, so it belongs to the digestive system.",
         "The spleen sits near the stomach but belongs to the lymphatic system. It filters blood and houses immune cells.",
@@ -198,13 +198,12 @@
       "Pancreas",
       "Testis",
       "Urinary bladder",
-      "Ovary",
+      "Esophagus",
       "Trachea"
     ],
     "correct": [
       0,
-      1,
-      3
+      1
     ],
     "why": {
       "correct": "The pancreas and the gonads (testes and ovaries) each belong to two systems. Each releases hormones into the blood (endocrine system) and also does a second job.",
@@ -212,7 +211,7 @@
         "Correct. The pancreas releases digestive juices into the intestine (digestive system) and hormones into the blood (endocrine system).",
         "Correct. A testis makes sperm cells (reproductive system) and releases hormones into the blood (endocrine system).",
         "The urinary bladder stores urine until you empty it. It is an organ of the urinary system only.",
-        "Correct. An ovary releases egg cells (reproductive system) and hormones into the blood (endocrine system).",
+        "The esophagus belongs only to the digestive system.",
         "The trachea is the airway to the lungs, an organ of the respiratory system only."
       ]
     }

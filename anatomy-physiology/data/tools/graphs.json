@@ -17319,7 +17319,7 @@
     "gradients"
    ],
    "intro": "How much glucose both kidneys filter, reabsorb and excrete each minute as plasma glucose rises, at a GFR of 125 mL/min. Drawn from the chapter’s figure; the curves are schematic.",
-   "alt": "A graph of glucose in mg/min, 0 to 1,000, against plasma glucose in mg/dL, 0 to 800. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed curve follows it up to about 180 mg/dL, bends over and levels off at about 375 mg/min from about 400 mg/dL. The excreted curve is zero up to about 180 mg/dL, then rises, reaching 250 mg/min at 500 mg/dL and running parallel to the filtered line after reabsorption has leveled off.",
+   "alt": "A graph of glucose in mg/min, 0 to 1,000, against plasma glucose in mg/dL, 0 to 800. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed curve follows it up to about 180 mg/dL, bends over and levels off at about 375 mg/min from about 380 mg/dL. The excreted curve is zero up to about 180 mg/dL, then rises, reaching 250 mg/min at 500 mg/dL and running parallel to the filtered line after reabsorption has leveled off.",
    "x": {
     "min": 0,
     "max": 800,

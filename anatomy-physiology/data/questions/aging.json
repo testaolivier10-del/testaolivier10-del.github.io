@@ -93,21 +93,20 @@
       "Most cancer cells",
       "Mature skin fibroblasts",
       "Senescent cells",
-      "Stem cells, to a small degree"
+      "Mature red blood cells"
     ],
     "correct": [
       0,
-      1,
-      4
+      1
     ],
     "why": {
-      "correct": "Germ cells use telomerase, so each generation starts with long telomeres. Most cancers switch it back on, which lets them divide without limit. Stem cells use a little, which slows but does not stop their telomere loss.",
+      "correct": "Germ cells use telomerase, so each generation starts with long telomeres. Most cancers switch it back on, which lets them divide without limit. Fibroblasts and senescent cells lack it, and mature red blood cells have no telomeres at all.",
       "options": [
         "Correct. Germ cells make telomerase.",
         "Correct. Most cancer cells reactivate telomerase.",
         "Ordinary body cells such as fibroblasts make almost no telomerase, which is why they reach a division limit.",
         "Senescent cells have stopped dividing, often because their telomeres became too short.",
-        "Correct. Stem cells make a small amount."
+        "Mature red blood cells have no nucleus, so they have no chromosomes or telomeres at all."
       ]
     }
   },
@@ -223,7 +222,7 @@
       2
     ],
     "why": {
-      "correct": "A stiffer aorta raises systolic pressure and widens pulse pressure; the SA node and sympathetic response decline, lowering maximum heart rate; and a thicker, stiffer left ventricle fills more slowly early in diastole, so atrial contraction matters more.",
+      "correct": "A stiffer aorta raises systolic pressure and widens pulse pressure; the SA node and sympathetic response decline, lowering maximum heart rate; and resting heart rate changes little.",
       "options": [
         "Correct. A stiff aorta cannot absorb each stroke volume, so systolic pressure rises.",
         "Correct. Systolic rises while diastolic stays level or falls.",

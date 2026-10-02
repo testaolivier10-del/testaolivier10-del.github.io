@@ -201,21 +201,20 @@
     "options": [
       "They have no duct.",
       "Their product enters interstitial fluid and then the blood.",
-      "Their product changes the cells that carry a matching receptor protein.",
+      "Their product acts on neighboring cells without entering the blood",
       "Their product is carried to the inside of the gut through a duct.",
       "They consist of a single cell."
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Endocrine glands are ductless. They release hormones into the interstitial fluid, the hormones diffuse into capillaries, and they act on target cells that carry the matching receptor protein.",
+      "correct": "Endocrine glands are ductless. They release hormones into the interstitial fluid, and the hormones diffuse into capillaries and travel in the blood to their target cells.",
       "options": [
         "True. Endocrine glands are also called ductless glands.",
         "True. The hormone leaves the cell into interstitial fluid and diffuses into nearby capillaries.",
-        "True. A hormone reaches every tissue in the blood but changes only its target cells, the ones with a matching receptor protein.",
+        "Acting on neighbors without the blood describes local (paracrine) signaling. Endocrine products travel in the blood.",
         "False. Delivery through a duct to a surface such as the inside of the gut is what exocrine glands do.",
         "False. Endocrine glands such as the thyroid gland are made of many cells. The one-cell gland you know, the goblet cell, is exocrine."
       ]

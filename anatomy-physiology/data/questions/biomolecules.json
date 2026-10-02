@@ -102,12 +102,12 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Which of these are lipids? Select all that apply.",
-    "options": ["Cholesterol", "Glycogen", "A triglyceride", "An amino acid", "A phospholipid"],
-    "correct": [0, 2, 4],
+    "options": ["Starch", "Glycogen", "A triglyceride", "An amino acid", "A phospholipid"],
+    "correct": [2, 4],
     "why": {
-      "correct": "Lipids are grouped by their behavior: they are made mostly of carbon and hydrogen and are largely hydrophobic. Cholesterol (a steroid), triglycerides and phospholipids all qualify. Glycogen is a carbohydrate and an amino acid is the monomer of proteins.",
+      "correct": "Lipids are grouped by their behavior: they are made mostly of carbon and hydrogen and are largely hydrophobic. Triglycerides and phospholipids qualify. Starch and glycogen are carbohydrates, and an amino acid is the monomer of proteins.",
       "options": [
-        "A lipid. Cholesterol is a steroid, built on four fused rings of carbon atoms, with hydrogens around them.",
+        "Starch is a carbohydrate, a polymer of glucose.",
         "Not a lipid. Glycogen is a polysaccharide, a carbohydrate made of glucose units rich in polar –OH groups.",
         "A lipid. A triglyceride is glycerol plus three long, nonpolar fatty acid chains.",
         "Not a lipid. An amino acid, with its amino and carboxyl groups, is the monomer of proteins.",

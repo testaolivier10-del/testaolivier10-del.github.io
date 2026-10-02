@@ -421,7 +421,7 @@
       2
     ],
     "why": {
-      "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Being hydrophobic, they ride in the blood bound to carrier proteins. Making new proteins takes hours, so they are slow.",
+      "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Making new proteins takes hours, so they are slow, and their receptor proteins are not on the cell surface.",
       "options": [
         "True. Their hydrophobic structure lets them dissolve through the bilayer.",
         "True. Their receptor proteins are in the cytosol or nucleus.",

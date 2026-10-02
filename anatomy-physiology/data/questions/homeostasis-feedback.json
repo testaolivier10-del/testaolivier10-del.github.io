@@ -253,21 +253,20 @@
     "options": [
       "The response opposes the stimulus.",
       "It moves the regulated variable back toward the set point.",
-      "It can raise a variable that has fallen.",
+      "It is how labor contractions grow stronger",
       "It keeps going until an outside event stops it.",
       "The response makes the original change larger."
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Negative feedback opposes the change. That pulls the variable back toward the set point, whichever direction it moved, and the loop switches itself off as the stimulus shrinks.",
+      "correct": "Negative feedback opposes the change. That pulls the variable back toward the set point, and the loop switches itself off as the stimulus shrinks. Labor contractions build by positive feedback.",
       "options": [
         "True. Opposing the stimulus is the defining feature of negative feedback.",
         "True. Opposing the change returns the variable toward its set point.",
-        "True. If the variable falls, the opposing response raises it, as when shivering warms a cold body.",
+        "Labor contractions build by positive feedback, which strengthens the original change.",
         "False. Needing an outside event to stop is a feature of positive feedback. Negative feedback stops itself as the stimulus shrinks.",
         "False. A response that enlarges the original change is positive feedback."
       ]

@@ -169,21 +169,20 @@
       "Superior and cranial",
       "Anterior and ventral",
       "Medial and proximal",
-      "Posterior and dorsal",
+      "Proximal and superior",
       "Lateral and distal"
     ],
     "correct": [
       0,
-      1,
-      3
+      1
     ],
     "why": {
-      "correct": "In an upright human, cranial matches superior, ventral matches anterior and dorsal matches posterior. Medial and lateral describe the midline, while proximal and distal describe distance along a limb, so those do not match.",
+      "correct": "In an upright human, cranial matches superior and ventral matches anterior. Medial and lateral describe the midline, while proximal and distal describe distance along a limb, so none of the other pairs match.",
       "options": [
         "Correct. Toward the head is both superior and cranial in a standing person.",
         "Correct. The belly side of a human is the front.",
         "Medial means toward the midline; proximal means nearer a limb's attachment. They are different axes.",
-        "Correct. The back of a human is both posterior and dorsal.",
+        "Proximal means closer to where a limb joins the trunk; superior means higher. They are different directions.",
         "Lateral means away from the midline; distal means farther from a limb's attachment. They are different axes."
       ]
     }

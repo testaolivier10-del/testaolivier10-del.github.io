@@ -357,21 +357,20 @@
       "Affected sons of unaffected carrier mothers",
       "An affected father with an affected son",
       "Every child of an affected parent affected",
-      "The condition skipping a generation through carrier daughters"
+      "About as many affected females as males"
     ],
     "correct": [
       0,
-      1,
-      4
+      1
     ],
     "why": {
-      "correct": "Males have one X, so a single recessive allele shows in them. Carrier mothers pass it to half their sons, and an affected man passes it to all daughters, who are carriers, so it can reappear in their sons, skipping a generation.",
+      "correct": "Males have one X, so a single recessive allele shows in them, and far more males than females are affected. Carrier mothers pass it to half their sons. Fathers pass their X only to daughters, so father-to-son passage rules it out.",
       "options": [
         "Correct. One copy is enough in males, two are needed in females.",
         "Correct. Carrier mothers pass the allele to half their sons.",
         "A father gives his son a Y, not an X, so father-to-son passing rules out X-linked inheritance.",
         "Every child affected is not typical of any single-gene pattern here; an affected man's sons are unaffected.",
-        "Correct. An affected man's daughters are carriers, and their sons can be affected."
+        "X-linked recessive conditions show far more often in males, who have one X."
       ]
     }
   },

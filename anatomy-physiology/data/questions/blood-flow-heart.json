@@ -178,21 +178,20 @@
       "Pulmonary trunk",
       "Aorta",
       "Superior vena cava",
-      "Coronary arteries"
+      "Inferior vena cava"
     ],
     "correct": [
       0,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "Oxygenated blood runs from the lungs through the pulmonary veins to the left heart, then out through the aorta and its branches, including the coronary arteries.",
+      "correct": "Oxygenated blood runs from the lungs through the pulmonary veins to the left heart, then out through the aorta. The pulmonary trunk and both venae cavae carry oxygen-poor blood.",
       "options": [
         "Yes. The pulmonary veins carry blood that has just picked up oxygen in the lungs back to the left atrium.",
         "No. The pulmonary trunk carries deoxygenated blood from the right ventricle toward the lungs.",
         "Yes. The left ventricle pumps oxygenated blood into the aorta.",
         "No. The superior vena cava returns deoxygenated blood from the upper body to the right atrium.",
-        "Yes. The coronary arteries are the first branches of the aorta, so they carry the same oxygenated blood."
+        "The inferior vena cava returns oxygen-poor blood from the lower body to the right atrium."
       ]
     },
     "id": "anp-blood-flow-heart-7"
@@ -582,21 +581,20 @@
       "Oxygen diffuses from the blood into the tissue",
       "Carbon dioxide diffuses from the tissue into the blood",
       "Oxygen diffuses from the tissue into the blood",
-      "The blood leaves with most of its oxygen still on board at rest",
+      "Blood pressure rises along the capillary",
       "Carbon dioxide diffuses from the blood into the tissue"
     ],
     "correct": [
       0,
-      1,
-      3
+      1
     ],
     "why": {
-      "correct": "In systemic capillaries, cells use oxygen and make carbon dioxide, so oxygen moves down its gradient out of the blood and carbon dioxide moves into it. At rest the tissue takes only about a quarter of the oxygen.",
+      "correct": "In systemic capillaries, cells use oxygen and make carbon dioxide, so oxygen moves down its gradient out of the blood and carbon dioxide moves into it. Pressure falls, not rises, along the capillary.",
       "options": [
         "Yes. Cells use oxygen, so it is lower in the tissue and diffuses out of the blood.",
         "Yes. Cells make carbon dioxide, so it is higher in the tissue and diffuses into the blood.",
         "No. Oxygen moves into the blood in the pulmonary capillaries, not in the tissues.",
-        "Yes. At rest, blood leaving the tissues is still about 75 percent loaded with oxygen.",
+        "Pressure falls along the capillary as blood flows from its arterial end to its venous end.",
         "No. Carbon dioxide moves out of the blood in the lungs, where it is lower in the air of the alveoli than in the blood."
       ]
     },

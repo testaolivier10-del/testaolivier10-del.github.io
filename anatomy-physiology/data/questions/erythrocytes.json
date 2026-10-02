@@ -56,7 +56,7 @@
       {"name": "Hematocrit", "answer": "up", "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."},
       {"name": "Hemoglobin per liter of blood", "answer": "up", "why": "More red cells in each liter means more hemoglobin in each liter."},
       {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."},
-      { "name": "Oxygen each gram of hemoglobin carries when fully loaded", "answer": "none", "why": "A fully loaded gram of hemoglobin still carries about 1.34 mL of oxygen. Altitude changes how much hemoglobin there is, not what each gram can hold." }
+      { "name": "Oxygen each gram of hemoglobin carries when fully loaded", "answer": "none", "why": "A fully loaded gram of hemoglobin carries the same oxygen as before. Altitude changes how much hemoglobin there is, not what each gram can hold." }
     ],
     "why": {
       "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises within hours and the marrow speeds up. EPO eases back from its early peak over the following days, but the extra red cells keep coming for weeks. Her red cell count, hematocrit and hemoglobin climb, and the cost is thicker blood."
@@ -344,18 +344,18 @@
       "Living at high altitude",
       "Severe dehydration",
       "Long-standing lung disease",
-      "A tumor that secretes erythropoietin",
+      "Long-standing kidney failure",
       "A mutation that makes marrow stem cells ignore erythropoietin's absence",
       "Injecting erythropoietin to improve race times"
     ],
-    "correct": [0, 2, 3, 5],
+    "correct": [0, 2, 5],
     "why": {
-      "correct": "Altitude and lung disease lower the oxygen reaching the kidneys, which release more EPO. A tumor or doping adds EPO directly. Dehydration and a marrow mutation raise the red cell count or hematocrit without raising EPO.",
+      "correct": "Altitude and lung disease lower the oxygen reaching the kidneys, which release more EPO, and doping adds EPO directly. Dehydration and a marrow mutation raise the red cell count or hematocrit without raising EPO, and failing kidneys make less EPO.",
       "options": [
         "Correct. Thin air lowers oxygen delivery to the kidneys.",
         "Dehydration raises the hematocrit by shrinking the plasma. The red cell count is unchanged and EPO does not rise.",
         "Correct. Poorly working lungs load less oxygen into the blood.",
-        "Correct. The tumor bypasses the feedback loop.",
+        "Failing kidneys make less erythropoietin, so the red cell count falls.",
         "This is polycythemia vera: red cells rise without EPO, and EPO falls.",
         "Correct. Injected EPO acts on the marrow like the body's own."
       ]

@@ -229,17 +229,17 @@
     "q": "Select every way healthy vessel lining keeps a clot from spreading past an injury.",
     "options": [
       "Releasing nitric oxide and prostacyclin",
-      "Destroying ADP with a surface enzyme",
+      "Releasing thromboxane A2",
       "Exposing tissue factor to the blood",
       "Carrying thrombomodulin, which turns thrombin toward activating protein C",
       "Releasing von Willebrand factor onto collagen"
     ],
-    "correct": [0, 1, 3],
+    "correct": [0, 3],
     "why": {
-      "correct": "Intact lining keeps platelets quiet with nitric oxide and prostacyclin, removes the ADP that recruits them, and uses thrombomodulin to switch thrombin from a clotting enzyme to an activator of protein C, which destroys Va and VIIIa.",
+      "correct": "Intact lining keeps platelets quiet with nitric oxide and prostacyclin, and uses thrombomodulin to switch thrombin from a clotting enzyme to an activator of protein C, which destroys Va and VIIIa. Thromboxane A2, exposed tissue factor and von Willebrand factor on collagen all promote clotting.",
       "options": [
         "Correct. Both keep platelets from activating.",
-        "Correct. Without ADP, passing platelets are not recruited.",
+        "Thromboxane A2 comes from activated platelets and spreads the plug. Healthy lining works against it.",
         "Tissue factor sits on cells outside the lining and starts clotting when a tear exposes it.",
         "Correct. Thrombomodulin turns thrombin into a brake.",
         "Von Willebrand factor on exposed collagen helps platelets adhere; it promotes the plug."
@@ -488,17 +488,17 @@
     "options": [
       "Direct injury to the smooth muscle of the vessel wall",
       "Thromboxane A2 and serotonin released by platelets",
-      "Nerve reflexes set off by pain fibers in the wall",
+      "Vitamin K made by bacteria in the colon",
       "Plasmin cutting fibrin",
       "Heparin released by basophils"
     ],
-    "correct": [0, 1, 2],
+    "correct": [0, 1],
     "why": {
-      "correct": "The injured smooth muscle contracts directly, platelets release constricting chemicals, and local pain reflexes add to the constriction.",
+      "correct": "The injured smooth muscle contracts directly, and platelets release constricting chemicals such as thromboxane A2 and serotonin. Vitamin K, plasmin and heparin do not constrict vessels.",
       "options": [
         "Correct. Damaged smooth muscle contracts.",
         "Correct. Both constrict the vessel.",
-        "Correct. Local reflexes add to the spasm.",
+        "Vitamin K is needed to make clotting factors in the liver. It does not constrict vessels.",
         "Plasmin dissolves clots days later; it does not constrict vessels.",
         "Heparin is an anticoagulant; it does not constrict vessels."
       ]

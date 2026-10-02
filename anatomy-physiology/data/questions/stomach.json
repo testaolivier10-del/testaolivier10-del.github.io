@@ -288,7 +288,7 @@
     "q": "Select every feature that helps protect the stomach lining from its own acid and pepsin.",
     "options": [
       "A thick mucus layer with bicarbonate trapped in it",
-      "Tight junctions between the epithelial cells",
+      "Pepsin released in its active form",
       "Replacement of surface cells every few days",
       "Prostaglandins made in the mucosa",
       "Pepsin working best at neutral pH",
@@ -296,15 +296,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       3
     ],
     "why": {
-      "correct": "The mucosal barrier includes alkaline mucus, tight junctions, rapid cell renewal, mucosal blood flow and prostaglandins that support the others. Pepsin works best in acid, and the stomach is lined by simple columnar epithelium.",
+      "correct": "The mucosal barrier includes alkaline mucus, rapid cell renewal and prostaglandins that support the rest. Pepsin is released as inactive pepsinogen and works best in acid, and the stomach is lined by simple columnar epithelium.",
       "options": [
         "Correct. The mucus holds bicarbonate, keeping the cell surface near pH 7.",
-        "Correct. Tight junctions stop acid leaking between the cells.",
+        "Pepsin is released as inactive pepsinogen, which acid activates in the lumen. Active pepsin inside the cells would digest them.",
         "Correct. Rapid renewal replaces damaged surface cells quickly.",
         "Correct. Prostaglandins increase mucus, bicarbonate and blood flow.",
         "Pepsin works best near pH 2 and is inactive near neutral pH, which is why the alkaline surface protects the cells.",

@@ -227,23 +227,22 @@
       "More capillaries around each fiber",
       "More mitochondria in each fiber",
       "Many new fibers formed by division",
-      "More myoglobin",
+      "Slow fibers turning into fast glycolytic fibers",
       "Large increase in fiber diameter",
       "Fast glycolytic fibers taking on fast oxidative properties"
     ],
     "correct": [
       0,
       1,
-      3,
       5
     ],
     "why": {
-      "correct": "Endurance training improves aerobic capacity: angiogenesis adds capillaries, fibers build more mitochondria and myoglobin, and fast glycolytic fibers shift toward fast oxidative. Fiber number does not rise, and large increases in diameter come from resistance training.",
+      "correct": "Endurance training improves aerobic capacity: angiogenesis adds capillaries, fibers build more mitochondria, and fast glycolytic fibers shift toward fast oxidative. Fiber number does not rise, fibers do not shift toward glycolytic, and large increases in diameter come from resistance training.",
       "options": [
         "Correct. Angiogenesis adds capillaries.",
         "Correct. More mitochondria means more aerobic capacity.",
         "Adult skeletal muscle fibers do not divide, and hyperplasia adds few if any fibers.",
-        "Correct. More myoglobin stores and shuttles more oxygen.",
+        "Endurance training pushes fibers toward oxidative properties, not toward fast glycolytic ones.",
         "Endurance training causes little hypertrophy; thick fibers are a result of heavy resistance training.",
         "Correct. The fast fibers become more oxidative."
       ]

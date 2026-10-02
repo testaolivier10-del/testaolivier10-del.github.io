@@ -433,17 +433,17 @@
     "q": "Which statements about the heart's position are correct? Select all that apply.",
     "options": [
       "It rests on the diaphragm",
-      "About two thirds of its mass lies left of the midline",
+      "It lies inside the pleural cavities",
       "It lies posterior to the esophagus",
       "Its apex points to the right shoulder",
       "It lies between the two lungs"
     ],
-    "correct": [0, 1, 4],
+    "correct": [0, 4],
     "why": {
-      "correct": "The heart sits on the diaphragm, between the lungs, with about two thirds of its mass left of the midline. It lies in front of the esophagus, and its apex points down and to the left.",
+      "correct": "The heart sits on the diaphragm, between the lungs, in the mediastinum rather than inside the pleural cavities. It lies in front of the esophagus, and its apex points down and to the left.",
       "options": [
         "Correct. The heart's lower surface rests on the diaphragm.",
-        "Correct. The heart is tilted so most of its mass is left of the midline.",
+        "The heart lies in the mediastinum, between the two pleural cavities, not inside them.",
         "Incorrect. The esophagus lies behind the heart, so the heart is anterior to it.",
         "Incorrect. The base faces toward the right shoulder. The apex points down, forward and to the left.",
         "Correct. The two lungs lie on either side of the mediastinum, which holds the heart."
@@ -497,8 +497,8 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Which of these vessels carry blood that is low in oxygen? Select all that apply.",
-    "options": ["Superior vena cava", "Pulmonary veins", "Pulmonary trunk", "Aorta", "Inferior vena cava", "Pulmonary arteries"],
-    "correct": [0, 2, 4, 5],
+    "options": ["Superior vena cava", "Pulmonary veins", "Pulmonary trunk", "Aorta", "Arteries of the arm", "Pulmonary arteries"],
+    "correct": [0, 2, 5],
     "why": {
       "correct": "Blood low in oxygen returns from the body's tissues through the two venae cavae into the right atrium. The right ventricle sends it out through the pulmonary trunk and pulmonary arteries to the lungs. Blood that has picked up oxygen in the lungs returns through the pulmonary veins to the left atrium and leaves the left ventricle through the aorta.",
       "options": [
@@ -506,7 +506,7 @@
         "No. The pulmonary veins carry blood that has just picked up oxygen in the lungs back to the left atrium.",
         "Yes. The pulmonary trunk carries blood from the right ventricle toward the lungs, before it picks up oxygen.",
         "No. The aorta carries blood rich in oxygen from the left ventricle out to the body.",
-        "Yes. The inferior vena cava returns blood from below the diaphragm after the tissues have taken oxygen from it.",
+        "The arteries of the arm carry blood the left ventricle pumped out after it passed through the lungs, so it is high in oxygen.",
         "Yes. The pulmonary arteries are the two branches of the pulmonary trunk, carrying blood low in oxygen to the lungs."
       ]
     }

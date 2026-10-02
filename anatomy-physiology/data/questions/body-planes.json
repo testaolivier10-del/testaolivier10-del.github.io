@@ -142,21 +142,20 @@
       "Horizontal plane",
       "Coronal plane",
       "Cross section",
-      "Axial plane",
+      "Sagittal plane",
       "Median plane"
     ],
     "correct": [
       0,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "The transverse plane is also called the horizontal plane, imaging staff call it the axial plane, and the section it produces is a cross section.",
+      "correct": "The transverse plane is also called the horizontal plane, and the section it produces is a cross section. Coronal, sagittal and median planes are vertical.",
       "options": [
         "Correct. Horizontal is another name for transverse.",
         "Coronal is another name for the frontal plane.",
         "Correct. A cut along the transverse plane is a cross section.",
-        "Correct. Axial is the imaging name for the transverse plane.",
+        "A sagittal plane divides the body into left and right parts.",
         "Median is another name for the midsagittal plane."
       ]
     }

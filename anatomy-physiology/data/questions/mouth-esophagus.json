@@ -316,7 +316,7 @@
     "options": [
       "Lysozyme",
       "IgA antibodies",
-      "Bicarbonate",
+      "Lingual lipase",
       "Salivary amylase",
       "Mucus",
       "Bile"
@@ -324,15 +324,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Lysozyme damages bacterial walls, IgA binds microbes on mucous membranes, bicarbonate buffers acids made by mouth bacteria, and mucus coats and protects the lining. Amylase digests starch, and bile is not in saliva.",
+      "correct": "Lysozyme damages bacterial walls, IgA binds microbes on mucous membranes, and mucus coats and protects the lining. Lingual lipase and amylase digest food, and bile is not in saliva.",
       "options": [
         "Correct. Lysozyme attacks bacteria.",
         "Correct. IgA is the antibody class secreted onto mucous membranes.",
-        "Correct. Bicarbonate buffers acid that would dissolve enamel.",
+        "Lingual lipase starts fat digestion. It does not protect against bacteria or acid.",
         "Salivary amylase digests starch; it is not a defense.",
         "Correct. Mucus coats the lining and traps microbes.",
         "Bile is made by the liver and enters the small intestine. It is not part of saliva."

@@ -198,7 +198,7 @@
     "options": ["Three days of vomiting", "A diet high in protein", "A loop diuretic", "Severe diarrhea", "An aldosterone-secreting adrenal tumor", "An opioid overdose"],
     "correct": [0, 2, 4],
     "why": {
-      "correct": "Vomiting and stomach suction remove hydrochloric acid and leave its matching bicarbonate in the blood. Loop diuretics and excess aldosterone speed H+ and K+ secretion in the collecting duct. Diarrhea causes metabolic acidosis, and an opioid overdose causes respiratory acidosis.",
+      "correct": "Vomiting removes hydrochloric acid and leaves its matching bicarbonate in the blood. A high-protein diet adds fixed acid, if anything. Loop diuretics and excess aldosterone speed H+ and K+ secretion in the collecting duct. Diarrhea causes metabolic acidosis, and an opioid overdose causes respiratory acidosis.",
       "options": [
         "Correct. Losing stomach acid leaves the bicarbonate of the alkaline tide in the blood.",
         "Breaking down protein adds sulfuric and phosphoric acid, which the kidneys must excrete. If anything, it pushes toward acidosis, not alkalosis.",

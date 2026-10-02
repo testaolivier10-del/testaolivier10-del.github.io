@@ -202,23 +202,22 @@
    "Cervix",
    "Clitoris",
    "Mons pubis",
-   "Greater vestibular glands",
+   "Ovaries",
    "Fimbriae"
   ],
   "correct": [
    0,
    2,
-   3,
-   4
-  ],
+   3
+ ],
   "why": {
-   "correct": "The vulva is the external genitals: the mons pubis, labia majora and minora, clitoris, vestibule and the greater vestibular glands that open into it. The cervix and fimbriae are internal.",
+   "correct": "The vulva is the external genitals, including the mons pubis, the labia minora and the clitoris. The cervix, ovaries and fimbriae are internal.",
    "options": [
     "Correct. The labia minora enclose the vestibule.",
     "The cervix is the lower end of the uterus, inside the body at the top of the vagina.",
     "Correct. Only its glans is visible, but the clitoris is part of the vulva.",
     "Correct. The fat pad over the pubic bones is part of the vulva.",
-    "Correct. These glands sit beside the vaginal opening and release mucus into the vestibule.",
+    "The ovaries lie inside the pelvic cavity. They are internal organs, not part of the vulva.",
     "The fimbriae are at the ovary end of the uterine tube, deep in the pelvis."
    ]
   }

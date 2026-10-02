@@ -454,21 +454,20 @@
     "options": [
       "Much less protein",
       "Very few cells",
-      "Somewhat lower glucose",
+      "About the same protein as plasma",
       "More protein, to keep water in the ventricles",
       "Many red blood cells"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "The choroid plexus cells are joined by tight junctions and secrete CSF rather than letting plasma leak through, so CSF has almost no protein, very few cells, and glucose about two thirds of the blood level.",
+      "correct": "The choroid plexus cells are joined by tight junctions and secrete CSF rather than letting plasma leak through, so CSF has far less protein than plasma and very few cells.",
       "options": [
         "Yes. CSF protein is less than 1% of the plasma level.",
         "Yes. Normal CSF has only a few white blood cells and no red cells.",
-        "Yes. CSF glucose is about two thirds of the blood level.",
+        "CSF has very little protein, far less than plasma.",
         "No. CSF has much less protein than plasma, not more.",
         "No. Red blood cells in CSF mean bleeding into the subarachnoid space, or a needle that nicked a vessel."
       ]

@@ -459,23 +459,22 @@
       "Their effects can last seconds to minutes",
       "They can amplify a signal through a second messenger",
       "They include the nicotinic receptor proteins at the neuromuscular junction",
-      "They can change which genes a cell uses"
+      "They are themselves ion channels"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "Metabotropic receptor proteins are G-protein-coupled receptor proteins. They work more slowly and for longer than channels, amplify signals through second messengers, and can change enzymes and gene expression.",
+      "correct": "Metabotropic receptor proteins are G-protein-coupled receptor proteins, not channels themselves. They work more slowly and for longer than channels and amplify signals through second messengers. The nicotinic receptor proteins at the neuromuscular junction are ionotropic.",
       "options": [
         "Correct. The G protein is the link to everything they do.",
         "They have no pore. An instant-opening pore describes an ionotropic receptor protein.",
         "Correct. G protein and second messenger effects outlast the neurotransmitter's binding.",
         "Correct. One bound receptor protein can lead to many second messenger molecules.",
         "Nicotinic receptor proteins at the neuromuscular junction are ionotropic: they are ligand-gated channels.",
-        "Correct. Second messengers can switch on enzymes that change gene expression."
+        "Ionotropic receptor proteins are channels. Metabotropic ones act through G proteins and open channels only indirectly."
       ]
     }
   },

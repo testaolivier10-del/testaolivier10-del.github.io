@@ -370,21 +370,20 @@
     "options": [
       "Lactate",
       "Alanine",
-      "Glycerol",
+      "Cholesterol",
       "Fatty acids",
       "Acetyl CoA"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Lactate and alanine become pyruvate, and glycerol enters as a three-carbon sugar phosphate; all three can be built into glucose. Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward, so neither can become glucose.",
+      "correct": "Lactate and alanine become pyruvate, which the liver can build into glucose. Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward, so neither can become glucose; cholesterol is not a fuel source for it either.",
       "options": [
         "Correct. Lactate is turned back into pyruvate.",
         "Correct. Alanine, from muscle protein, becomes pyruvate once its nitrogen is removed.",
-        "Correct. Glycerol from stored fat enters as a three-carbon sugar phosphate.",
+        "Cholesterol cannot be built into glucose. Its carbon ring is not broken down for fuel.",
         "Fatty acids are broken down to acetyl CoA, which cannot become pyruvate.",
         "The step that makes acetyl CoA from pyruvate is one way only, so acetyl CoA cannot become glucose."
       ]

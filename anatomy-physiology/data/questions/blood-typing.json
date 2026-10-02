@@ -414,17 +414,17 @@
       "A positive cells to an A negative woman of childbearing age",
       "B negative cells to an AB negative patient",
       "AB positive cells to an O positive patient",
-      "O positive cells to a B positive patient"
+      "O positive cells to a B negative woman of childbearing age"
     ],
-    "correct": [0, 2, 4],
+    "correct": [0, 2],
     "why": {
-      "correct": "Donor cells must not carry an antigen the recipient has, or will make, antibodies against. O negative cells suit anyone; B negative cells suit an AB negative patient, who has no anti-B and no D to meet; O positive cells suit a B positive patient.",
+      "correct": "Donor cells must not carry an antigen the recipient has, or will make, antibodies against. O negative cells suit anyone, and B negative cells suit an AB negative patient, who has no anti-B and no D to meet. Rh-positive cells should not go to an Rh-negative woman who may later be pregnant.",
       "options": [
         "Correct. O negative cells carry no A, B or D.",
         "The D antigen would sensitize her, putting future pregnancies at risk.",
         "Correct. B antigen is her own, and there is no D.",
         "An O patient has anti-A and anti-B, which would attack AB red cells.",
-        "Correct. O cells carry no A or B, and she is already Rh positive."
+        "Rh-positive cells could make her form anti-D, which would endanger a later Rh-positive fetus."
       ]
     }
   },

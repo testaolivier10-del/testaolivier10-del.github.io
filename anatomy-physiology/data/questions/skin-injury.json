@@ -419,14 +419,13 @@
       "The two halves do not match",
       "It is one even shade of tan",
       "It has a ragged, blurred border",
-      "It is 9 mm across",
+      "It is 3 mm across and has not changed",
       "It has grown and darkened over three months",
       "It has stayed the same for 20 years"
     ],
     "correct": [
       0,
       2,
-      3,
       4
     ],
     "why": {
@@ -435,7 +434,7 @@
         "Yes. Asymmetry is the A of ABCDE.",
         "No. A single even color is reassuring; several shades would be concerning.",
         "Yes. An irregular border is the B.",
-        "Yes. Larger than about 6 mm is the D.",
+        "A small mole that has not changed meets neither the diameter nor the evolving criterion.",
         "Yes. Change in size or color is the E, evolving, and it is the most important sign.",
         "No. A spot stable for decades is unlikely to be a melanoma."
       ]

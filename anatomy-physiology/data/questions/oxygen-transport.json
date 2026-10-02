@@ -227,13 +227,12 @@
       "Fetal hemoglobin in place of adult hemoglobin",
       "A rise in temperature",
       "Carbon monoxide bound to some heme sites",
-      "More 2,3-BPG in red blood cells"
+      "A fall in temperature"
     ],
     "correct": [
       0,
       1,
-      3,
-      5
+      3
     ],
     "why": {
       "correct": "Carbon dioxide, H+ (a lower pH), heat and 2,3-BPG all lower hemoglobin's affinity for oxygen and shift the curve right. Fetal hemoglobin and carbon monoxide shift it left.",
@@ -243,7 +242,7 @@
         "Fetal hemoglobin binds 2,3-BPG weakly and has a higher affinity, so its curve lies to the left.",
         "Correct. Heat weakens the oxygen–heme bond.",
         "Carbon monoxide holds hemoglobin in its high-affinity shape, shifting the curve left.",
-        "Correct. 2,3-BPG binds deoxyhemoglobin and holds its tense shape."
+        "Cooling raises hemoglobin's affinity for oxygen and shifts the curve to the left."
       ]
     }
   },

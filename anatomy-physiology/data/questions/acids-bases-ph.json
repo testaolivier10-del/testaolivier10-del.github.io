@@ -296,14 +296,14 @@
     "diff": 2,
     "core": ["homeostasis"],
     "q": "Which of these act as bases in water, taking up hydrogen ions directly or by releasing hydroxide? Select all that apply.",
-    "options": ["Bicarbonate ion (HCO<sub>3</sub><sup>−</sup>)", "Sodium chloride (NaCl)", "Sodium hydroxide (NaOH)", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
-    "correct": [0, 2, 4],
+    "options": ["Bicarbonate ion (HCO<sub>3</sub><sup>−</sup>)", "Sodium chloride (NaCl)", "Glucose", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
+    "correct": [0, 4],
     "why": {
-      "correct": "Bicarbonate takes up H+ directly to become carbonic acid. Sodium hydroxide releases OH−, and OH− joins H+ to form water. Sodium chloride is a salt and hydrogen chloride is an acid.",
+      "correct": "Bicarbonate takes up H+ directly to become carbonic acid, and OH− joins H+ to form water. Sodium chloride is a salt, hydrogen chloride is an acid, and glucose is neither acid nor base.",
       "options": [
         "A base. Bicarbonate takes up a hydrogen ion and becomes carbonic acid.",
         "Not a base. Sodium chloride is a salt: it separates into Na+ and Cl−, neither of which takes up or releases H+.",
-        "A base. It separates into Na+ and OH−, and each OH− takes up a hydrogen ion.",
+        "Glucose dissolves as whole molecules. It neither takes up nor releases hydrogen ions.",
         "Not a base. Hydrogen chloride releases H+ in water, which makes it a strong acid.",
         "A base. Hydroxide joins a hydrogen ion to form water."
       ]

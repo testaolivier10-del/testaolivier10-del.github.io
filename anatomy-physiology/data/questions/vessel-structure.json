@@ -440,7 +440,7 @@
       "structure-function",
       "gradients"
     ],
-    "q": "With age, elastic fibers in the aortic wall are replaced by stiffer collagen. Each beat still ejects the same volume. Predict each change in the aorta.",
+    "q": "With age, elastic fibers in the aortic wall are replaced by stiffer collagen. Each beat still ejects the same volume, at the same heart rate, with the same resistance downstream. Predict each change in the aorta.",
     "variables": [
       {
         "name": "How much the aorta stretches during ejection",

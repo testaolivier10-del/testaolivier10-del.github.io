@@ -154,13 +154,12 @@
       "Dermis",
       "Lining of the stomach",
       "Cardiac muscle",
-      "Bone"
+      "The brain and spinal cord"
     ],
     "correct": [
       0,
       2,
-      4,
-      5
+      4
     ],
     "why": {
       "correct": "Mesoderm forms all three kinds of muscle, the dermis, bone and cartilage, blood and vessels, the heart and the kidneys. Ectoderm forms the epidermis, and endoderm forms the lining of the digestive tract.",
@@ -170,7 +169,7 @@
         "Correct. The dermis comes from mesoderm, including the dermatome part of each somite.",
         "The epithelium lining the stomach comes from endoderm, which forms the gut tube.",
         "Correct. The heart muscle forms from mesoderm.",
-        "Correct. Bone, and the cartilage models it replaces, come from mesoderm."
+        "The brain and spinal cord come from ectoderm, through the neural tube."
       ]
     }
   },
@@ -541,14 +540,13 @@
       "Esophagus",
       "Stomach",
       "Rectum",
-      "Trachea",
+      "Colon",
       "Urinary bladder",
       "Pancreatic ducts"
     ],
     "correct": [
       0,
       1,
-      3,
       5
     ],
     "why": {
@@ -557,7 +555,7 @@
         "Correct. The esophagus is foregut.",
         "Correct. The stomach is foregut.",
         "The rectum forms from the hindgut.",
-        "Correct. The lining of the larynx, trachea and lungs buds from the foregut.",
+        "Most of the colon comes from the midgut and hindgut, not the foregut.",
         "The lining of the urinary bladder comes from the hindgut region.",
         "Correct. The pancreas buds from the foregut."
       ]

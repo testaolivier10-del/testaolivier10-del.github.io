@@ -389,7 +389,7 @@
     "q": "Select every change in pregnancy that comes mainly from progesterone.",
     "options": [
       "Relaxation of the lower esophageal sphincter",
-      "A rise in minute ventilation",
+      "A rise in the mother's blood volume",
       "Widening of the ureters",
       "A rise in clotting factors made by the liver",
       "Slower movement through the gut",
@@ -397,15 +397,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       4
     ],
     "why": {
-      "correct": "Progesterone relaxes smooth muscle, which explains the relaxed lower esophageal sphincter, the wider ureters and the slower gut. It also makes the brainstem more sensitive to carbon dioxide, raising ventilation. Estrogens drive the rise in liver clotting factors and the growth of the uterine muscle.",
+      "correct": "Progesterone relaxes smooth muscle, which explains the relaxed lower esophageal sphincter, the wider ureters and the slower gut. Estrogens drive the rise in liver clotting factors and the growth of the uterine muscle, and blood volume rises mainly through estrogen and the renin–angiotensin–aldosterone system.",
       "options": [
         "Correct. Relaxed sphincter muscle lets acid reflux.",
-        "Correct. Progesterone raises the brainstem's sensitivity to carbon dioxide.",
+        "Blood volume rises mainly because estrogen and the renin–angiotensin–aldosterone system make the kidneys keep salt and water.",
         "Correct. Relaxed ureteral smooth muscle slows urine flow.",
         "Estrogens, not progesterone, make the liver produce more clotting factors.",
         "Correct. Relaxed gut smooth muscle slows transit.",

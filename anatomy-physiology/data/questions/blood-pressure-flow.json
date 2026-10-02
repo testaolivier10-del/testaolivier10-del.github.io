@@ -410,21 +410,20 @@
       "Vessel radius",
       "The pressure difference between its ends",
       "Vessel length",
-      "Blood viscosity",
+      "The amount of oxygen in the blood",
       "The speed of the blood inside it"
     ],
     "correct": [
       0,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "Resistance depends on the vessel's radius (to the fourth power), its length and the viscosity of the blood. The pressure difference and the speed of blood are results of flow, not properties of the vessel that set resistance.",
+      "correct": "Resistance depends on the vessel's radius (to the fourth power), its length and the blood's viscosity. The pressure difference and the speed of blood are results of flow, and oxygen content plays no part.",
       "options": [
         "Correct. Radius has the largest effect, through the fourth-power rule.",
         "The pressure difference drives flow through the resistance; it does not set the resistance itself.",
         "Correct. A longer vessel has proportionally more resistance.",
-        "Correct. Thicker blood, with a higher hematocrit, has more resistance.",
+        "Oxygen content does not set how hard it is to push blood through a vessel.",
         "Velocity depends on flow and cross-sectional area. It is an outcome, not one of the factors in Poiseuille's law."
       ]
     }

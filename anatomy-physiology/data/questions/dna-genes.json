@@ -114,7 +114,7 @@
     "q": "Select every structure that is part of the nucleus.",
     "options": [
       "Nuclear envelope",
-      "Nucleolus",
+      "Ribosomes on the rough ER",
       "Chromatin",
       "Golgi apparatus",
       "Lysosome",
@@ -122,7 +122,6 @@
     ],
     "correct": [
       0,
-      1,
       2,
       5
     ],
@@ -130,7 +129,7 @@
       "correct": "The nucleus has a nuclear envelope pierced by nuclear pores, chromatin filling its interior, and one or more nucleoli. The Golgi apparatus and lysosomes are separate organelles in the cytoplasm.",
       "options": [
         "Part of the nucleus. The nuclear envelope is its double-membrane boundary.",
-        "Part of the nucleus. The nucleolus is a dense region inside it where ribosome halves are assembled.",
+        "Ribosomes on the rough ER sit in the cytoplasm, outside the nucleus.",
         "Part of the nucleus. Chromatin is the DNA with its packing proteins.",
         "Not part of the nucleus. The Golgi apparatus is a stack of membrane sacs in the cytoplasm that modifies and sorts proteins.",
         "Not part of the nucleus. Lysosomes are digestive vesicles in the cytoplasm.",

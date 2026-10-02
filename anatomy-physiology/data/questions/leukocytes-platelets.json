@@ -204,17 +204,17 @@
     "q": "Select every statement that is true of all leukocytes.",
     "options": [
       "They have a nucleus",
-      "They can leave the blood through capillary walls",
+      "They live for about 120 days",
       "They contain visible granules",
       "They come from hematopoietic stem cells in red marrow",
       "They carry oxygen on hemoglobin"
     ],
-    "correct": [0, 1, 3],
+    "correct": [0, 3],
     "why": {
-      "correct": "Every leukocyte keeps its nucleus, can squeeze out of the blood into tissue, and descends from hematopoietic stem cells. Only granulocytes have visible granules, and no leukocyte carries hemoglobin.",
+      "correct": "Every leukocyte keeps its nucleus and descends from hematopoietic stem cells. Only granulocytes have visible granules, no leukocyte carries hemoglobin, and the 120-day life span belongs to red blood cells.",
       "options": [
         "Correct. Unlike mature red cells, leukocytes keep their nucleus.",
-        "Correct. They do most of their work in the tissues.",
+        "About 120 days is the life span of a red blood cell. Leukocytes range from hours to years.",
         "Only the three granulocytes have visible granules; lymphocytes and monocytes do not.",
         "Correct. Both branches of hematopoiesis start from the same stem cell.",
         "Hemoglobin is carried by red blood cells, not leukocytes."
