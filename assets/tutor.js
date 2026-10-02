@@ -1235,23 +1235,31 @@
 
   function initFloating(){
     injectCss();
-    var btn = document.createElement('button');
-    btn.className = 'lp-launch';
-    btn.type = 'button';
-    btn.setAttribute('aria-label', 'Ask the study assistant');
-    btn.innerHTML = mascotSvg();
-    document.body.appendChild(btn);
-    document.body.classList.add('lp-has-fab');
-    tuckOnScroll();
-
-    var tip = document.createElement('div');
-    tip.className = 'lp-tip';
-    tip.textContent = 'Ask me anything';
-    document.body.appendChild(tip);
+    /* Normally assets/tutor-launcher.js has already drawn the button, tip and
+       scroll tucking, and loaded this file on the first reach for it (site
+       audit 2026-10: the assistant is no longer downloaded on every page).
+       A page that loads tutor.js directly still gets its own. */
+    var btn = document.querySelector('.lp-launch');
+    var tip = document.querySelector('.lp-tip');
+    if(!btn){
+      btn = document.createElement('button');
+      btn.className = 'lp-launch';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Ask the study assistant');
+      btn.innerHTML = mascotSvg();
+      document.body.appendChild(btn);
+      document.body.classList.add('lp-has-fab');
+      tuckOnScroll();
+      tip = document.createElement('div');
+      tip.className = 'lp-tip';
+      tip.textContent = 'Ask me anything';
+      document.body.appendChild(tip);
+    }
+    btn.removeAttribute('aria-busy');
 
     var met = false;
     try { met = localStorage.getItem(MET_KEY) === '1'; } catch(e){}
-    if(!met) setTimeout(function(){ tip.classList.add('show'); }, 1200);
+    if(!met && !tip.classList.contains('show')) setTimeout(function(){ tip.classList.add('show'); }, 1200);
     btn.addEventListener('mouseenter', function(){
       tip.classList.add('show');
       // Reaching for the button is the earliest honest signal that someone is
@@ -1288,6 +1296,10 @@
       meet();
       setTimeout(function(){ tutor.input.focus(); }, 50);
     });
+    // Pressed before this file had arrived: open now, and start reading the
+    // course so the first answer is not waiting on it.
+    ensureIndex();
+    if(window.__levlTutorOpenOnLoad){ window.__levlTutorOpenOnLoad = false; btn.click(); }
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && host && host.style.display !== 'none') close();
     });

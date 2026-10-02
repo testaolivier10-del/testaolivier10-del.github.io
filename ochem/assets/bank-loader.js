@@ -63,14 +63,29 @@
 
   /* The explanations are deliberately NOT part of the returned promise. Anything
      awaiting OchemPracticeBankReady is waiting to render a count or a question,
-     and neither needs them. */
-  get(whyUrl, 'practice bank explanations')
-    .then(function(why){ window.OchemPracticeWhy = why; })
-    .catch(function(err){
-      if(window.console && console.warn){
-        console.warn('Practice bank explanations unavailable; questions will still be asked.', err);
-      }
-    });
+     and neither needs them.
+
+     And they are not fetched with the page any more (site audit 2026-10,
+     performance: about 120 KB gzipped downloaded by everyone who opened
+     Practice, Review or Exams, including those who only looked at the setup
+     screen). OchemPracticeWhyLoad() fetches them once, when the first question
+     is shown (session-runner.js) or an exam begins (exams-page.js); a question
+     answered before they land is redrawn when they do. */
+  var whyPromise = null;
+  window.OchemPracticeWhyLoaded = false;
+  window.OchemPracticeWhyLoad = function(){
+    if(whyPromise) return whyPromise;
+    whyPromise = get(whyUrl, 'practice bank explanations')
+      .then(function(why){ window.OchemPracticeWhy = why; window.OchemPracticeWhyLoaded = true; return why; })
+      .catch(function(err){
+        whyPromise = null; // a later question may try again
+        if(window.console && console.warn){
+          console.warn('Practice bank explanations unavailable; questions will still be asked.', err);
+        }
+        return null;
+      });
+    return whyPromise;
+  };
 
   window.OchemPracticeBankReady = get(coreUrl, 'practice bank')
     .then(function(bank){

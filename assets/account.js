@@ -1325,6 +1325,7 @@
       var id = b.getAttribute('data-provider');
       var meta = PROVIDERS.filter(function(p){ return p.id === id; })[0];
       var c = getClient();
+      if(!c && whenConnected(function(){ b.click(); })) return;
       if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
       setMsg('Opening ' + (meta ? meta.name : 'provider') + '…');
       // Written before leaving the page, not after coming back: the redirect
@@ -1373,6 +1374,7 @@
       if(!email){ setMsg('Enter your email first, then we’ll send the link.', 'error'); el.authEmail.focus(); return; }
       if(!looksLikeEmail(email)){ setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
       var c = getClient();
+      if(!c && whenConnected(function(){ el.authMagicBtn.click(); })) return;
       if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
       el.authMagicBtn.disabled = true;
       setMsg('Sending…');
@@ -1401,6 +1403,7 @@
         if(!looksLikeEmail(email)) { setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
       }
       var c = getClient();
+      if(!c && whenConnected(function(){ el.authForm.dispatchEvent(new Event('submit', { cancelable: true })); })) return;
       if(!c) return setMsg('Accounts are unavailable right now — check your connection and try again.', 'error');
 
       if(COPY[authMode].password && password.length < MIN_PASSWORD && authMode !== 'signin'){
@@ -1591,6 +1594,9 @@
 
   function openAuthModal(mode, opts){
     authPurpose = (opts && opts.purpose) || '';
+    // The SDK arrives while the visitor types (it is not loaded for visitors
+    // who never sign in).
+    connect();
     ensureAuthModal();
     var overlay = document.getElementById('authModalOverlay');
 
@@ -1697,20 +1703,88 @@
   // write to page_views (the table has no RLS policies, so nothing can read
   // or write it directly).
   function trackPageview(){
-    var c = getClient();
-    if(!c) return;
-    c.rpc('track_pageview', { p_path: location.pathname }).then(function(){}, function(){});
+    postRpc('track_pageview', { p_path: location.pathname });
   }
 
-  function loadSdk(cb){
+  /* A one-way RPC as a plain POST, for a visitor with no session: the page
+     counter, a question report, a client error. Supabase's gateway takes the
+     publishable key in the apikey header alone and runs the call as anon,
+     which is all these security-definer functions need. Never rejects. */
+  function postRpc(name, args){
+    if(typeof fetch !== 'function') return Promise.resolve(false);
+    try {
+      return fetch(SUPABASE_URL + '/rest/v1/rpc/' + name, {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_PUBLISHABLE_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify(args || {}),
+        keepalive: true
+      }).then(function(r){ return !!r.ok; }, function(){ return false; });
+    } catch(e){ return Promise.resolve(false); }
+  }
+
+  /* The SDK (about 45 KB gzipped from jsDelivr) is loaded only when it is
+     needed: a session is stored in this browser, the URL carries a sign-in
+     callback, or the visitor opens the sign-in dialog. Before the site audit
+     (2026-10, performance) every visitor downloaded it on every page just to
+     count a page view. Sync (W4) and Premium (W3) only matter to a signed-in
+     visitor, who always has a stored session, so they start exactly as
+     before. */
+  var SESSION_KEY = 'sb-' + SUPABASE_URL.replace(/^https?:\/\//, '').split('.')[0] + '-auth-token';
+  function sessionLikely(){
+    try { if(localStorage.getItem(SESSION_KEY)) return true; } catch(e){ /* storage blocked */ }
+    return /[#&?](access_token|refresh_token|code|token_hash|error_description)=/.test(location.href);
+  }
+
+  function loadSdk(cb, onFail){
     if(window.supabase && window.supabase.createClient){ cb(); return; }
     var s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@' + SDK_VERSION + '/dist/umd/supabase.js';
     s.integrity = SDK_INTEGRITY;
     s.crossOrigin = 'anonymous';
     s.onload = cb;
-    s.onerror = function(){ /* offline, blocked, or integrity mismatch — accounts stay unavailable this load */ };
+    // offline, blocked, or integrity mismatch — accounts stay unavailable this load
+    s.onerror = function(){ if(onFail) onFail(); };
     document.head.appendChild(s);
+  }
+
+  var connectState = 'idle';     // idle | loading | ready | failed
+  var connectWaiters = [];
+  function connect(cb){
+    if(cb) connectWaiters.push(cb);
+    if(connectState === 'ready' || connectState === 'failed'){
+      var w = connectWaiters.splice(0, connectWaiters.length);
+      w.forEach(function(f){ f(getClient()); });
+      return;
+    }
+    if(connectState === 'loading') return;
+    connectState = 'loading';
+    loadSdk(function(){
+      var c = getClient();
+      connectState = c ? 'ready' : 'failed';
+      if(c){
+        flushRpcQueue();
+        c.auth.onAuthStateChange(handleAuthChange);
+        c.auth.getSession().then(function(res){
+          var session = res.data && res.data.session;
+          currentUser = session ? session.user : null;
+          renderAccountUI();
+          notify();
+          // The pull on every page load, not only on a fresh sign-in.
+          if(currentUser) startSyncTimer('load');
+        });
+      }
+      connect();
+    }, function(){ connectState = 'failed'; connect(); });
+  }
+
+  /* For the sign-in buttons: when the SDK is still on its way (or not yet
+     asked for), say so and run the action again once it is here. Returns
+     false when it already failed, so the caller shows its error. */
+  function whenConnected(retry){
+    if(connectState === 'failed') return false;
+    setMsg('Connecting…');
+    connect(function(c){ if(c) retry(); else setMsg('Accounts are unavailable right now — check your connection.', 'error'); });
+    return true;
   }
 
   var started = false;
@@ -1720,21 +1794,8 @@
     if(started) return;
     started = true;
     renderAccountUI();
-    loadSdk(function(){
-      var c = getClient();
-      if(!c) return;
-      flushRpcQueue();
-      trackPageview();
-      c.auth.onAuthStateChange(handleAuthChange);
-      c.auth.getSession().then(function(res){
-        var session = res.data && res.data.session;
-        currentUser = session ? session.user : null;
-        renderAccountUI();
-        notify();
-        // The pull on every page load, not only on a fresh sign-in.
-        if(currentUser) startSyncTimer('load');
-      });
-    });
+    trackPageview();
+    if(sessionLikely() || (window.supabase && window.supabase.createClient)) connect();
   }
 
 
@@ -1840,7 +1901,7 @@
 
   function mayPrompt(){
     if(currentUser) return false;               // already saved; nothing to offer
-    if(!getClient()) return false;              // no backend configured on this build
+    if(!SUPABASE_URL) return false;             // no backend configured on this build
     // Only ever one nudge on screen: site-chrome.js may have an install
     // prompt up, and two stacked boxes asking for things is a shakedown.
     if(document.querySelector('.levl-prompt')) return false;
@@ -2013,6 +2074,9 @@
   function rpc(name, args){
     var c = getClient();
     if(!c){
+      // No SDK coming (no session): post it directly. SDK on its way: queue
+      // it, so a signed-in visitor's call carries their session.
+      if(connectState !== 'loading') return postRpc(name, args);
       if(rpcQueue.length < 10) rpcQueue.push([name, args]);
       return Promise.resolve(false);
     }

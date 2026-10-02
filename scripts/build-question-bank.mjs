@@ -16,7 +16,7 @@
 
    Both are positionally aligned with questions.json and with each other, so
    explanations.json can stay a bare array of strings rather than repeating a
-   key 2,084 times. Nothing here reorders anything, and the check below fails
+   key 2,033 times. Nothing here reorders anything, and the check below fails
    if it ever does.
 
    IDS
@@ -103,7 +103,7 @@ const srcWanted = '[\n' + ordered.map((q) => JSON.stringify(q)).join(',\n') + '\
 
 const core = ordered.map(({ explain, ...rest }) => rest);
 // Kept as a positional array rather than an object keyed by index: the keys
-// would be the indices, written out as strings, for 2,084 entries — the same
+// would be the indices, written out as strings, for 2,033 entries — the same
 // information at a cost, and one more thing that could disagree with the
 // order it is supposed to mirror.
 const explanations = ordered.map((q) => (typeof q.explain === 'string' ? q.explain : ''));

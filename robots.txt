@@ -1,22 +1,9 @@
 User-agent: *
 Allow: /
 
-# ochem/notes/ used to be disallowed: the files were bare fragments with no
-# <title>, stylesheet or navigation, and indexed alone they would have ranked
-# as a wall of unstyled text with no way out. That was a fixable property of
-# the files rather than a reason the pages should not exist, and it is fixed —
-# each one is now a full page with a title, the site's styles, breadcrumbs and
-# links on to its lesson and to the next section (scripts/build-notes-pages.mjs).
-# They are the only form in which the course's written half is readable with
-# JavaScript switched off, so they are now indexed.
-
-# The full question bank is the editable source the two runtime files are
-# generated from; nothing on the site fetches it, so there is nothing to index.
+# Source files that scripts/build-*.mjs turn into real pages; nothing links to
+# them, and indexed they would compete with those pages as duplicates.
 Disallow: /nremt/assets/questions.json
-
-# The A&P notes sources are bare prose fragments that scripts/build-anp.mjs
-# wraps into the real pages under /anatomy-physiology/notes/. Nothing links to
-# or fetches them; indexed, they would compete with those pages as duplicates.
 Disallow: /anatomy-physiology/data/notes/
 
 Sitemap: https://levlprep.com/sitemap.xml

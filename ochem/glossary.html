@@ -10,10 +10,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organic Chemistry Glossary — Key Terms Defined</title>
+<title>Glossary of Key Terms — Organic Chemistry | LevlPrep</title>
 <meta name="description" content="502 organic chemistry terms in plain words, from atomic structure to polymers, each linked to the textbook section that teaches it.">
 <link rel="canonical" href="https://levlprep.com/ochem/glossary.html">
-<meta property="og:title" content="Organic Chemistry Glossary — Key Terms Defined">
+<meta property="og:title" content="Glossary of Key Terms — Organic Chemistry | LevlPrep">
 <meta property="og:description" content="502 organic chemistry terms in plain words, from atomic structure to polymers, each linked to the textbook section that teaches it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/ochem/glossary.html">
@@ -45,6 +45,11 @@
 .ogl-count{font:700 13px var(--font-ui);color:var(--muted);margin:8px 0 0;}
 .ogl-letter{scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
 .ogl-letter h2{font-size:22px;margin:22px 0 4px;}
+.ogl-toggle{all:unset;box-sizing:border-box;display:flex;align-items:baseline;gap:10px;width:100%;min-height:44px;cursor:pointer;font:900 22px var(--font-ui);color:var(--ink);border-bottom:2px solid var(--line);}
+.ogl-toggle::after{content:"+";margin-left:auto;font-size:20px;color:var(--muted);}
+.ogl-toggle[aria-expanded="true"]::after{content:"−";}
+.ogl-toggle:focus-visible{outline:3px solid var(--focus,#2C9C8B);outline-offset:2px;}
+.ogl-n{font:700 13px var(--font-ui);color:var(--muted);}
 .ogl-letter dl{margin:0;}
 .ogl-t{padding:11px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
 .ogl-t:target{background:var(--tint-accent);border-radius:8px;padding-left:8px;padding-right:8px;}

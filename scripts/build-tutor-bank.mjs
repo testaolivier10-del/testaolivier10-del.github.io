@@ -2,7 +2,7 @@
    for the study assistant to search.
 
    questions.json is 2.3MB because it carries every option array and answer key,
-   none of which teaches anything. The explanations do: 2,084 of them, all
+   none of which teaches anything. The explanations do: 2,033 of them, all
    distinct, 1.2MB of prose written to explain why an answer is right. That is
    more teaching text than the study notes, and the assistant could not see any
    of it.

@@ -91,7 +91,17 @@ const SHELL_BUDGETS = [
      motion.js, account.js, about 4.7 KB gzipped). Measured 259.2 KB.
      260 -> 260.5 for the follow-up: the one breadcrumb component and the
      written monospace/arrow rule with its --disclose token. Measured 260.1 KB. */
-  ['site', 260.5],
+  /* 260.5 -> 279 is a change of ruler, not of weight (audit 2026-10, W8). The
+     shell now also counts the scripts site-chrome.js mounts on every page
+     (motion, reminders, announcer, analytics and the assistant's button),
+     16.6 KB that were always downloaded and never measured. In the same pass
+     two every-page downloads left: the assistant itself (assets/tutor.js,
+     23 KB) now loads on the first reach for its button, and the Supabase SDK
+     (about 45 KB from jsDelivr, never counted here) loads only for a stored
+     session or the sign-in dialog. Measured the old way, the shell would be
+     about 298 KB plus the SDK; it is 277.2 KB. account.js grew 0.6 KB for the
+     lazy SDK and the plain-fetch page counter. */
+  ['site', 279],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -198,7 +208,10 @@ const SHELL_BUDGETS = [
      (index first, chapters on demand, explanations after the answer) adds
      about 1.5 KB to the exams page's scripts and saves up to 4 MB of bank
      fetches on Practice, Review and Exams. */
-  ['anatomy-physiology', 46],
+  /* 46 -> 46.5 (audit 2026-10, W8): anp-questions.js wraps a figure
+     question's image in <picture> with its AVIF copies (0.2 KB gzipped), which
+     saves a phone roughly 60% of each figure's bytes. */
+  ['anatomy-physiology', 46.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -219,7 +232,10 @@ const BUDGETS = [
      primary button, the returning student's Continue card drawn inline before
      first paint (a deferred script would push the page down), and a distinct
      line icon per course card. Measured 7.1 KB. */
-  ['index.html', 7.3],
+  /* 7.3 -> 7.8 (audit 2026-10, W8): the three-question FAQ (affiliation,
+     price, is it free), shown on the page and repeated as FAQPage data, plus
+     the Organization's founder and contact. Measured 7.6 KB. */
+  ['index.html', 7.8],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -338,7 +354,9 @@ const BUDGETS = [
      an A&P lesson's layout shift from 0.27-1.0 to under 0.1. Measured
      10.4 KB. */
   ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.6],
-  ['anatomy-physiology/notes/cardiac-cycle.html', 19],
+  /* 19 -> 19.5 (audit 2026-10, W8): each figure's <picture> with its AVIF
+     srcset (about 0.03 KB gzipped a figure) in exchange for AVIF images. */
+  ['anatomy-physiology/notes/cardiac-cycle.html', 19.5],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
   ['anatomy-physiology/exams.html', 3],
@@ -636,6 +654,14 @@ function weigh(pageRel) {
     if (!isLocal(ref) || !/\.(css|js)$/i.test(ref)) continue;
     const path = resolveRef(file, ref);
     const buf = take(path);
+    /* site-chrome.js mounts more scripts on every page it runs on (motion,
+       reminders, the assistant's button, the announcer, analytics). Those are
+       every-page downloads too, so they count here (site audit 2026-10, W8:
+       the shell budget measured only the scripts named in the HTML, so the
+       1,300-line tutor it used to mount on every page was never counted). */
+    if (buf && /assets\/site-chrome\.js$/.test(ref)) {
+      for (const m2 of buf.toString('utf8').matchAll(/\.src = '(\/assets\/[\w-]+\.js)'/g)) take(join(ROOT, m2[1]));
+    }
     if (!buf || !/\.css$/i.test(ref)) continue;
 
     // One level into a stylesheet, which is how assets/fonts/fonts.css pulls

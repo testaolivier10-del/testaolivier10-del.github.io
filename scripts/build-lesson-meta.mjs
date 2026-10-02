@@ -44,6 +44,7 @@ import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { readdirSync } from 'node:fs';
 import { premiumData, lockedLd } from './lib/premium-data.mjs';
+import { courseTitle } from './lib/page-title.mjs';
 
 /* Also owns whether each lesson and mechanism page says it is free (audit
    2026-10, W2). Outside premium.js's free chapters the interactive part
@@ -91,19 +92,11 @@ function loadModules() {
   return sandbox.M;
 }
 
-function titleFor(topic, mod) {
-  /* The last candidate is the topic's name on its own. Two topics are named
-     at a length where even " — Organic Chemistry" pushes them over, and for
-     those the subject is better carried by the breadcrumb, the URL and the
-     structured data than by three words a reader never sees because the
-     result list cut them off. */
-  const candidates = [
-    `${topic.title} — ${mod.title} | Organic Chemistry`,
-    `${topic.title} — Organic Chemistry Lesson`,
-    `${topic.title} — Organic Chemistry`,
-    topic.title,
-  ];
-  return candidates.find((c) => decode(c).length <= TITLE_MAX) ?? candidates[candidates.length - 1];
+/* "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs, site audit
+   2026-10). The kind stays in the label so a lesson and its notes page never
+   share a title; the course name shortens before the topic does. */
+function titleFor(topic) {
+  return courseTitle(decode(topic.title), ['Organic Chemistry', 'Organic Chem', 'OChem'].map((c) => `${c} Lesson`));
 }
 
 const modules = loadModules();

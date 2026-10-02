@@ -270,6 +270,9 @@
   var run = null, tickTimer = null, warned = {};
 
   function begin(){
+    // Explanations are needed only for the review at the end; fetch them while
+    // the exam runs (assets/bank-loader.js).
+    if(window.OchemPracticeWhyLoad) window.OchemPracticeWhyLoad();
     var p = planFor();
     var ids = X.pick(poolFor(p.chapters), p.n, { cumulative: p.cumulative });
     if(!ids.length) return;
@@ -487,6 +490,11 @@
       }, 2600);
     }
     renderResults(r, items, s, timeUp, whileAway, used);
+    // A restored exam, or explanations still in flight: redraw the review once
+    // they are here.
+    if(!window.OchemPracticeWhyLoaded && window.OchemPracticeWhyLoad){
+      window.OchemPracticeWhyLoad().then(function(why){ if(why && !run && document.querySelector('.ex-review')) renderResults(r, items, s, timeUp, whileAway, used); });
+    }
   }
 
   function bars(title, list, name, href){

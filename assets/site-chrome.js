@@ -696,8 +696,10 @@
       key: courseKeyOf(cfg.subject),
       name: cfg.course || 'LevlPrep'
     };
+    // Only the corner button; it fetches assets/tutor.js on first reach
+    // (site audit 2026-10, performance).
     var el = document.createElement('script');
-    el.src = '/assets/tutor.js';
+    el.src = '/assets/tutor-launcher.js';
     el.defer = true;
     document.head.appendChild(el);
   }

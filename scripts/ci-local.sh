@@ -1,7 +1,7 @@
 #!/bin/bash
 # Runs every job in .github/workflows/checks.yml locally, in one go.
 # BROWSER=1 adds check-a11y and check-console (needs playwright + axe-core
-# installed with `npm i --no-save playwright@1.49.1 axe-core@4.10.2`).
+# installed with `npm ci --ignore-scripts`, from package.json).
 # Usage: [BROWSER=1] scripts/ci-local.sh [repo-dir]
 cd "${1:-$(dirname "$0")/..}"
 export CHROMIUM_PATH=${CHROMIUM_PATH:-/opt/pw-browsers/chromium}

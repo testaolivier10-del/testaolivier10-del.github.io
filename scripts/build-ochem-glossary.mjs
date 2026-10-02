@@ -141,7 +141,7 @@ for (const e of entries) {
   groups.get(L).push(e);
 }
 const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const title = 'Organic Chemistry Glossary — Key Terms Defined';
+const title = 'Glossary of Key Terms — Organic Chemistry | LevlPrep';
 const desc = `${entries.length} organic chemistry terms in plain words, from atomic structure to polymers, each linked to the textbook section that teaches it.`;
 const url = `${ORIGIN}/ochem/glossary.html`;
 const ld = {
@@ -209,6 +209,11 @@ const html = `<!DOCTYPE html>
 .ogl-count{font:700 13px var(--font-ui);color:var(--muted);margin:8px 0 0;}
 .ogl-letter{scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
 .ogl-letter h2{font-size:22px;margin:22px 0 4px;}
+.ogl-toggle{all:unset;box-sizing:border-box;display:flex;align-items:baseline;gap:10px;width:100%;min-height:44px;cursor:pointer;font:900 22px var(--font-ui);color:var(--ink);border-bottom:2px solid var(--line);}
+.ogl-toggle::after{content:"+";margin-left:auto;font-size:20px;color:var(--muted);}
+.ogl-toggle[aria-expanded="true"]::after{content:"−";}
+.ogl-toggle:focus-visible{outline:3px solid var(--focus,#2C9C8B);outline-offset:2px;}
+.ogl-n{font:700 13px var(--font-ui);color:var(--muted);}
 .ogl-letter dl{margin:0;}
 .ogl-t{padding:11px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
 .ogl-t:target{background:var(--tint-accent);border-radius:8px;padding-left:8px;padding-right:8px;}

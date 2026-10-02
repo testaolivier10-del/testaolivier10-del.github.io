@@ -60,11 +60,21 @@
       fb.innerHTML = '<p class="anp-small">Loading the explanation…</p>';
       getWhy(q).then(cb, cb);
     }
+    // AVIF copies (scripts/build-figure-variants.py), JPG as fallback.
+    function figPicture(f){
+      var base = window.ANP_BASE || '';
+      var img = '<img src="' + esc(base + f.src) + '" alt="' + esc(f.alt) + '" width="' + f.w + '" height="' + f.h + '" loading="lazy">';
+      var m = /^figures\/([\w.-]+)\.jpg$/.exec(f.src);
+      if(!m) return img;
+      var set = [480, 800].filter(function(w){ return w < f.w; }).map(function(w){ return base + 'figures/avif/' + m[1] + '-' + w + '.avif ' + w + 'w'; });
+      set.push(base + 'figures/avif/' + m[1] + '.avif ' + f.w + 'w');
+      return '<picture><source type="image/avif" srcset="' + esc(set.join(', ')) + '" sizes="(max-width: 760px) 100vw, 720px">' + img + '</picture>';
+    }
     var wrap = document.createElement('div');
     wrap.className = 'anp-q';
     wrap.setAttribute('data-qid', q.id);
     var stem = '<p class="anp-q-stem">' + (opts.n ? '<span class="anp-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>';
-    var fig = q.fig ? '<div class="anp-q-fig anp-figimg"><img src="' + esc((window.ANP_BASE || '') + q.fig.src) + '" alt="' + esc(q.fig.alt) + '" width="' + q.fig.w + '" height="' + q.fig.h + '" loading="lazy">' +
+    var fig = q.fig ? '<div class="anp-q-fig anp-figimg">' + figPicture(q.fig) +
       figMarks(q.fig) + '</div>' + (q.fig.credit ? '<p class="anp-credit anp-q-credit">' + esc(q.fig.credit) + '</p>' : '') : '';
     wrap.innerHTML = stem + fig + '<div class="anp-q-body"></div><div class="anp-q-feedback" aria-live="polite"></div><div class="anp-q-actions"></div>';
     var body = wrap.querySelector('.anp-q-body');
