@@ -525,14 +525,10 @@
          can't load (blocked script, old browser), fall back to Polar's page. */
       return loadEmbed().then(function (Embed) {
         close();
-        return Embed.create(url, { theme: pageTheme() }).then(function (embed) {
-          embed.addEventListener('success', function (ev) {
-            ev.preventDefault(); // stay here instead of following the success URL
-            embed.close();
-            funnel('checkout-paid', course, { course: course, pass: passId });
-            if (window.LevlAnnounce) window.LevlAnnounce.say('Payment received. Unlocking Premium…');
-            pollForPass(course);
-          });
+        openEmbedded(Embed, url, function () {
+          funnel('checkout-paid', course, { course: course, pass: passId });
+          if (window.LevlAnnounce) window.LevlAnnounce.say('Payment received. Unlocking Premium…');
+          pollForPass(course);
         });
       }, function () { window.location.href = url; });
     }).catch(function () {
@@ -540,6 +536,77 @@
       button.textContent = 'Get it';
       setMsg('Checkout didn’t open — you may be offline. Nothing was charged. Try again in a moment.', 'error');
     });
+  }
+
+  /* Polar's checkout over the page, with our own way out.
+
+     Polar's embed script only trusts messages from polar.sh and
+     sandbox.polar.sh, but checkouts are now served from buy.polar.sh, so its
+     own close button and its "paid" message never reach it: the frame could
+     not be closed and create() never resolved. So this listens for Polar's
+     messages itself (any *.polar.sh origin), adds a close button and Escape,
+     and tears the frame down directly rather than waiting on the library.
+     While a payment is processing ("confirmed") closing is held, as Polar
+     intends. */
+  var POLAR_ORIGIN = /^https:\/\/([a-z0-9-]+\.)?polar\.sh$/;
+  function openEmbedded(Embed, url, onPaid) {
+    var done = false, processing = false, paid = false, lib = null;
+    var created = Embed.create(url, { theme: pageTheme() });
+    created.then(function (embed) {
+      lib = embed;
+      // If Polar's own handler does hear the success, stay on this page.
+      embed.addEventListener('success', function (ev) { ev.preventDefault(); });
+      if (done) { try { embed.close(); } catch (e) { /* already gone */ } }
+    }, function () { /* the frame still exists; our button closes it */ });
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'premium-embed-close';
+    btn.setAttribute('aria-label', 'Close checkout');
+    btn.textContent = '\u00d7';
+    btn.style.cssText = 'position:fixed;top:12px;right:12px;z-index:2147483647;width:40px;height:40px;' +
+      'border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font:700 24px/40px system-ui,sans-serif;cursor:pointer;';
+    document.body.appendChild(btn);
+
+    function teardown() {
+      if (done) return;
+      done = true;
+      window.removeEventListener('message', onMessage);
+      document.removeEventListener('keydown', onKey, true);
+      btn.remove();
+      if (lib) { try { lib.close(); } catch (e) { /* fall through to manual removal */ } }
+      Array.prototype.forEach.call(document.querySelectorAll('iframe'), function (f) {
+        if (/^https:\/\/([a-z0-9-]+\.)?polar\.sh\//.test(f.src || '')) f.remove();
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('.polar-loader-spinner'), function (sp) {
+        (sp.parentNode && sp.parentNode !== document.body ? sp.parentNode : sp).remove();
+      });
+      document.body.classList.remove('polar-no-scroll');
+    }
+    function tryClose() {
+      if (processing) return; // a payment is going through; Polar will finish it
+      teardown();
+    }
+    function succeed() {
+      if (paid) return;
+      paid = true;
+      processing = false;
+      teardown();
+      onPaid();
+    }
+    function onMessage(ev) {
+      if (!POLAR_ORIGIN.test(ev.origin || '')) return;
+      var d = ev.data || {};
+      if (d.type !== 'POLAR_CHECKOUT') return;
+      if (d.event === 'confirmed') { processing = true; btn.style.display = 'none'; }
+      else if (d.event === 'close') tryClose();
+      else if (d.event === 'success') succeed();
+    }
+    function onKey(ev) { if (ev.key === 'Escape') tryClose(); }
+    btn.addEventListener('click', tryClose);
+    window.addEventListener('message', onMessage);
+    document.addEventListener('keydown', onKey, true);
+    return created;
   }
 
   /* Polar's embed script, pinned with its hash like the Supabase SDK in
@@ -703,6 +770,7 @@
     _validEmail: validEmail,
     _returnCourse: returnCourse,
     _setLaunched: function (v) { LAUNCHED = !!v; },
+    _openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
