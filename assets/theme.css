@@ -157,7 +157,7 @@
   --ctint:rgba(63,194,169,0.14);
   --cink:#9FE6D6;
   --on-accent-fill:#0C1F1A;  /* 6.9:1 on the mint; white would be 2.37:1 */
-  --muted-on-dark:#A8BDB6;
+  --muted-on-dark:#C9D8D3;   /* 5.0:1 on the dark-mode navy panel (#A8BDB6 was 3.7) */
   --amber:#D9A54B;
   --amber-press:#A67A28;
   --coral:#E8776A;
@@ -209,7 +209,8 @@ body[data-course="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
 :root[data-theme="dark"] body[data-course="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
 /* Anatomy & Physiology: a warm coral, the one hue neither other course uses. */
 body[data-course="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
-:root[data-theme="dark"] body[data-course="anp"]{--ctint:rgba(236,132,108,0.18);--cink:#F2B9A9;}
+/* 7%: at 18% the coral over the dark page read as muddy brown (audit 2026-10). */
+:root[data-theme="dark"] body[data-course="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
 
 /* ==========================================================================
    2. Base
@@ -814,6 +815,9 @@ strong,b{font-weight:900;}
   .bottom-sheet a:hover{background:var(--hover-tint);}
   .bottom-scrim{position:fixed;inset:0;z-index:44;background:rgba(15,25,23,0.35);opacity:0;pointer-events:none;transition:opacity .2s;}
   .bottom-scrim.open{opacity:1;pointer-events:auto;}
+  /* A focused control near the bottom would sit under the 64px tab bar
+     (audit 2026-10); the browser keeps it this far clear when it scrolls. */
+  html{scroll-padding-bottom:80px;}
 }
 
 footer .privacy-link{margin-top:10px;}
@@ -950,6 +954,10 @@ html{scrollbar-color:var(--muted) transparent;}
   overflow-y:auto;
 }
 .auth-modal-overlay.open{opacity:1;pointer-events:auto;}
+/* The light theme's teal wash disappears on a dark page; dark mode dims the
+   page behind every dialog to 60% black instead (audit 2026-10). */
+:root[data-theme="dark"] .auth-modal-overlay,:root[data-theme="dark"] .bottom-scrim{background:rgba(0,0,0,.6);}
+:root[data-theme="dark"] dialog::backdrop{background:rgba(0,0,0,.6);}
 /* Set on <html> while the dialog is open, so the page behind cannot scroll
    out from under it — most noticeable on iOS, where dragging the backdrop
    otherwise moves the page and not the modal. */
@@ -1651,3 +1659,17 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .lso-close{min-width:44px;min-height:44px;border:0;border-radius:10px;background:var(--paper);color:var(--ink);font:800 13px var(--font-ui);cursor:pointer;}
 .lso iframe{flex:1;width:100%;border:0;background:var(--white);}
 html.lso-open{overflow:hidden;}
+
+/* Right and wrong are never colour alone (audit 2026-10, WCAG 1.4.1): a
+   graded option carries a check or a cross and a word. One rule for the ochem
+   choice buttons and the A&P options, so the courses mark answers alike.
+   The second content value gives an empty alt where browsers support it,
+   because each option already says the same to a screen reader. */
+.choice-btn.correct::before,.choice-btn.wrong::before,.anp-opt.is-right::before,.anp-opt.is-wrong::before{
+  display:inline-block;margin-right:8px;padding:1px 8px;border-radius:var(--radius-pill);
+  font:800 12px/1.6 var(--font-ui);vertical-align:1px;white-space:nowrap;
+}
+.choice-btn.correct::before,.anp-opt.is-right::before{content:"\2713  Correct";content:"\2713  Correct" / "";background:var(--good-text);color:var(--white);}
+.choice-btn.wrong::before,.anp-opt.is-wrong::before{content:"\2715  Your answer";content:"\2715  Your answer" / "";background:var(--bad-text);color:var(--white);}
+.anp-opt.is-right[aria-checked="true"]::before{content:"\2713  Your answer, correct";content:"\2713  Your answer, correct" / "";}
+.anp-opt[role="checkbox"].is-right[aria-checked="false"]::before{content:"\2713  Missed";content:"\2713  Missed" / "";}

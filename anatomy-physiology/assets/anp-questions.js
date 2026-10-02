@@ -97,8 +97,10 @@
       // The author varies where the wrong step sits instead.
       var items = (q.options || []).map(function(o, i){ return { o: o, i: i }; });
       if(type !== 'error') items = shuffle(items);
-      body.innerHTML = '<div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
+      // One answer, so a radio group like NREMT's, not toggle buttons
+      // (audit 2026-10): arrows move between options, Enter or Space answers.
+      body.innerHTML = '<div class="anp-opt-btns" role="radiogroup" aria-label="Answer options">' + items.map(function(it){
+        return '<button type="button" class="anp-opt" role="radio" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
@@ -112,7 +114,7 @@
             var i = +x.getAttribute('data-i');
             // aria-disabled: disabling would drop the keyboard focus.
             x.setAttribute('aria-disabled', 'true');
-            if(i === pick) x.setAttribute('aria-pressed', 'true');
+            if(i === pick) x.setAttribute('aria-checked', 'true');
             if(opts.exam) return;
             if(i === q.correct){ x.classList.add('is-right'); markOpt(x, i === pick ? 'your answer, correct' : 'correct answer'); }
             else if(i === pick){ x.classList.add('is-wrong'); markOpt(x, 'your answer, incorrect'); }
@@ -129,20 +131,25 @@
     function multi(){
       var items = shuffle((q.options || []).map(function(o, i){ return { o: o, i: i }; }));
       body.innerHTML = '<p class="anp-small">Select all that apply.</p><div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
+        return '<button type="button" class="anp-opt" role="checkbox" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
+      // Nothing picked is not an answer: Check waits for at least one pick.
+      function syncCheck(){
+        var c = actions.querySelector('.anp-check');
+        if(c) c.disabled = !body.querySelector('.anp-opt[aria-checked="true"]');
+      }
       body.querySelectorAll('.anp-opt').forEach(function(b){
-        b.addEventListener('click', function(){ if(!done && !busy) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
+        b.addEventListener('click', function(){ if(!done && !busy){ b.setAttribute('aria-checked', b.getAttribute('aria-checked') === 'true' ? 'false' : 'true'); syncCheck(); } });
       });
-      actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check</button>';
+      actions.innerHTML = '<button type="button" class="btn-press sm anp-check" disabled>Check</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
         if(busy) return;
         busy = true;
         explain(function(){
         var key = [].concat(q.correct), right = 0, total = q.options.length, chosen = [];
         body.querySelectorAll('.anp-opt').forEach(function(x){
-          var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-pressed') === 'true', should = key.indexOf(i) > -1;
+          var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-checked') === 'true', should = key.indexOf(i) > -1;
           x.setAttribute('aria-disabled', 'true');
           if(picked) chosen.push(i);
           if(picked === should) right++;

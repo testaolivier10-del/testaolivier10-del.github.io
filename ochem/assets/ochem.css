@@ -214,6 +214,8 @@
   background:var(--tint-good);border-radius:var(--radius);padding:12px 16px;
   font-size:14px;font-weight:700;color:var(--good-press);margin-bottom:14px;line-height:1.55;
 }
+/* --good-press is a pressed-button green, 2.4:1 on the dark tint. */
+:root[data-theme="dark"] .notes-view .notes-fact{color:#6FD39A;}
 
 /* Blocks the textbook sections are written against. Three kinds of aside,
    each visually distinct so a reader can tell at a glance whether they're

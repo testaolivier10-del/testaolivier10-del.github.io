@@ -56,7 +56,8 @@
     display:flex;align-items:center;justify-content:center;font:900 15px var(--font-ui);
   }
   .lvl-title{font:900 13px var(--font-ui);color:#F4D28C;display:block;}
-  .lvl-titlesub{font:700 12px var(--font-mono);color:#9FB5AE;display:block;margin-top:2px;}
+  .lvl-titlesub{font:700 12px var(--font-mono);color:var(--muted-on-dark);display:block;margin-top:2px;}
+  :root[data-theme="dark"] .lvl-ring{background:rgba(0,0,0,0.24);}
   .lvl-track{height:12px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.15);margin:0 0 8px;overflow:hidden;}
   .lvl-fill{height:100%;background:#F4D28C;border-radius:var(--radius-pill);transition:width .4s ease;}
   .lvl-sub{font:700 11.5px var(--font-mono);color:#DCEFEA;}
@@ -65,7 +66,7 @@
 
   /* Readiness — dark card, big number. */
   .readiness-card{background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);padding:24px;}
-  .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.06em;}
+  .r-tag{font:900 11px var(--font-ui);color:var(--muted-on-dark);text-transform:uppercase;letter-spacing:0.06em;}
   .r-head{display:flex;align-items:baseline;gap:14px;margin:8px 0 10px;flex-wrap:wrap;}
   .r-num{font:900 clamp(34px,5vw,44px) var(--font-ui);letter-spacing:-.03em;color:var(--on-accent);}
   .r-label{font:900 13px var(--font-ui);padding:5px 13px;border-radius:var(--radius-pill);}

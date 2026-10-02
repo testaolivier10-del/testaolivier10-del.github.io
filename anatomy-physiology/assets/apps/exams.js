@@ -551,7 +551,7 @@
       var norm = q.options.map(function(o){ var s = document.createElement('span'); s.innerHTML = o; return s.innerHTML; });
       return [].map.call(body.querySelectorAll('.anp-order-text'), function(el){ return norm.indexOf(el.innerHTML); });
     }
-    var picked = [].map.call(body.querySelectorAll('.anp-opt[aria-pressed="true"]'), function(b){ return +b.getAttribute('data-i'); });
+    var picked = [].map.call(body.querySelectorAll('.anp-opt[aria-checked="true"]'), function(b){ return +b.getAttribute('data-i'); });
     return q.type === 'multi' ? picked : (picked.length ? picked[0] : null);
   }
 
