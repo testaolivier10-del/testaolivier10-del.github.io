@@ -16,7 +16,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampTitle, clampDesc,
-  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit,
+  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution,
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 
@@ -153,7 +153,7 @@ function lessonPage(id) {
       html: `<div class="anp-qs" data-set="prereq">${pageData.prereq.map((p, i) => questionHtml(p, i + 1)).join('')}</div>` },
     fig && { id: 'anatomy', kind: 'Anatomy panel', nav: 'Anatomy', h: 'Anatomy', html: `<figure class="anp-figure anp-anatomy">
         ${figureImg(C, L.anatomy.figure, depth, { topic: id })}
-        <figcaption>${g(L.anatomy.caption || '')} ${credit(fig)}</figcaption>
+        <figcaption>${g(L.anatomy.caption || '')} ${credit(fig, { adapted: (fig.labels || []).some(l => l.box) })}</figcaption>
       </figure>
       ${(fig.labels || []).some(l => l.box) ? '<button type="button" class="btn-outline anp-toggle-labels" aria-pressed="false">Hide labels</button><p class="anp-hint">With labels hidden, select a box to reveal its label.</p>' : ''}` },
     { id: 'chain', kind: 'Causal chain', nav: 'How it works', h: 'How it works, step by step',
@@ -526,13 +526,14 @@ function creditsPage() {
 <main id="main" class="xshell anp-credits">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Figure credits' }], depth)}
   <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Figure credits</h1>
-    <p class="lede">Figures marked OpenStax come from <a href="https://openstax.org/details/books/anatomy-and-physiology-2e">OpenStax <i>Anatomy and Physiology 2e</i></a>, &copy; Rice University, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We resize them, and in lessons and the lab practical we cover some printed labels. OpenStax and Rice University do not endorse LevlPrep. Every other diagram in the course is drawn for it.</p></header>
-  <table class="anp-credit-table"><thead><tr><th scope="col">Figure</th><th scope="col">Used in</th><th scope="col">Source</th><th scope="col">License</th></tr></thead><tbody>
+    <p class="lede">Figures marked OpenStax come from J. Gordon Betts et al., <a href="https://openstax.org/details/books/anatomy-and-physiology-2e"><i>Anatomy and Physiology 2e</i></a>, OpenStax, &copy; Rice University, used under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. We resize them, and where a figure's printed labels are hidden (lessons, the lab practical, identification questions, and labels a page has not taught yet) its caption says "Adapted: labels hidden". A figure OpenStax credits to another source carries that source's own credit line and license as well. OpenStax and Rice University do not endorse LevlPrep. Every other diagram in the course is drawn for it.</p></header>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Figure credits table"><table class="anp-credit-table"><thead><tr><th scope="col">Figure</th><th scope="col">Used in</th><th scope="col">Credit and license</th><th scope="col">Changes</th></tr></thead><tbody>
   ${rows.map(({ id, f, t }) => {
-    const page = f.openstax && f.openstax.page ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}` : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
-    return `<tr><td>${esc((f.openstax && f.openstax.figure) ? `OpenStax Figure ${f.openstax.figure}` : id)}</td><td><a href="notes/${t.id}.html">${esc(t.title)}</a></td><td><a href="${page}">openstax.org</a></td><td>${esc(f.license)}</td></tr>`;
+    const n = (f.openstax && f.openstax.figure) ? `OpenStax Figure ${f.openstax.figure}` : id;
+    const changes = (f.labels || []).some(l => l.box) ? 'Resized; labels hidden where shown masked' : 'Resized';
+    return `<tr><td>${esc(n)}</td><td><a href="notes/${t.id}.html">${esc(t.title)}</a></td><td>${attribution(f).html}</td><td>${changes}</td></tr>`;
   }).join('\n  ')}
-  </tbody></table>
+  </tbody></table></div>
 </main>
 ${footer(depth)}
 ${tail({ depth, section: 'credits' })}
@@ -1140,6 +1141,9 @@ function publishedTool(file) {
     d.sets = d.sets.filter(set => set.stations.length);
     const used = new Set(d.sets.flatMap(set => set.stations.map(st => st.figure)));
     d.figures = Object.fromEntries(Object.entries(d.figures).filter(([id]) => used.has(id)));
+    // The full credit line from the figure's own data (the lab practical
+    // always hides printed labels, so every figure there is adapted).
+    for (const [id, f] of Object.entries(d.figures)) if (C.figures[id]) f.attribution = attribution(C.figures[id], { adapted: true }).html;
   }
   if (file === 'calculators.json') d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));
   if (file === 'word-roots.json') {

@@ -215,6 +215,8 @@
   function pct(v, of){ return (100 * v / of).toFixed(3) + '%'; }
   function at(b, f){ return 'left:' + pct(b[0], f.w) + ';top:' + pct(b[1], f.h) + ';width:' + pct(b[2], f.w) + ';height:' + pct(b[3], f.h); }
   function credit(f){
+    // Built from the figure's data by build-anp.mjs (trusted generator HTML).
+    if(f.attribution) return '<p class="lp-credit">' + f.attribution + '</p>';
     return '<p class="lp-credit">' + esc(f.credit) + ', <a href="' + esc(f.page) + '" rel="noopener">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">CC BY 4.0</a>.</p>';
   }
   function figureHtml(st, opts){

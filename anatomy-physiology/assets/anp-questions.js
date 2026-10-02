@@ -53,7 +53,7 @@
     wrap.setAttribute('data-qid', q.id);
     var stem = '<p class="anp-q-stem">' + (opts.n ? '<span class="anp-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>';
     var fig = q.fig ? '<div class="anp-q-fig anp-figimg"><img src="' + esc((window.ANP_BASE || '') + q.fig.src) + '" alt="' + esc(q.fig.alt) + '" width="' + q.fig.w + '" height="' + q.fig.h + '" loading="lazy">' +
-      figMarks(q.fig) + '</div>' : '';
+      figMarks(q.fig) + '</div>' + (q.fig.credit ? '<p class="anp-credit anp-q-credit">' + esc(q.fig.credit) + '</p>' : '') : '';
     wrap.innerHTML = stem + fig + '<div class="anp-q-body"></div><div class="anp-q-feedback" aria-live="polite"></div><div class="anp-q-actions"></div>';
     var body = wrap.querySelector('.anp-q-body');
     var fb = wrap.querySelector('.anp-q-feedback');

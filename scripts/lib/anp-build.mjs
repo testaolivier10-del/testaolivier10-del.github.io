@@ -338,15 +338,60 @@ export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) 
   return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${coverHtml}${maskHtml}</div>`;
 }
 
-export function credit(f) {
-  if (!f) return '';
+/* Figure attribution, built from the figure's data (audit 2026-10, fix 11).
+   OpenStax figures name the book's authors, publisher and rights holder and
+   its license; a figure OpenStax credits to someone else also carries that
+   party's own credit line and license (data: "thirdParty"), with share-alike
+   noted for a CC BY-SA source; a figure shown with any printed label hidden
+   or covered says "Adapted: labels hidden." */
+export const OPENSTAX_BOOK_TEXT = 'J. Gordon Betts et al., Anatomy and Physiology 2e, OpenStax, © Rice University';
+const OPENSTAX_BOOK_HTML = 'J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University';
+export const LICENSE_URL = {
+  'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
+  'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/',
+  'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
+  'CC BY-SA 3.0': 'https://creativecommons.org/licenses/by-sa/3.0/',
+  'CC BY-SA 2.0': 'https://creativecommons.org/licenses/by-sa/2.0/',
+  'Public domain': 'https://creativecommons.org/publicdomain/mark/1.0/',
+};
+export const isShareAlike = (license) => /\bBY-SA\b/.test(license || '');
+export function openstaxPage(f) {
+  return f.openstax && f.openstax.page
+    ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}`
+    : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
+}
+
+/* { text, html } for one figure as shown. adapted: some printed label is
+   hidden (masked or covered) where it is shown. */
+export function attribution(f, { adapted = false } = {}) {
+  if (!f) return { text: '', html: '' };
+  const lic = (name) => LICENSE_URL[name] ? `<a href="${LICENSE_URL[name]}" rel="license">${esc(name)}</a>` : esc(name);
+  const tp = f.thirdParty;
+  const sa = tp && isShareAlike(tp.license) ? '; this adaptation is shared under the same license' : '';
+  const tpText = tp ? ` Original: ${tp.credit}, ${tp.license}${sa}.` : '';
+  const tpHtml = tp ? ` Original: ${esc(tp.credit)}, ${lic(tp.license)}${sa}.` : '';
+  const ad = adapted ? ' Adapted: labels hidden.' : '';
   if (f.source === 'openstax') {
-    const page = f.openstax && f.openstax.page
-      ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}`
-      : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
-    return `<span class="anp-credit">${esc(f.credit)}, <a href="${page}">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>${f.modified ? ', modified' : ''}.</span>`;
+    const n = f.openstax && f.openstax.figure;
+    return {
+      text: `Figure ${n} from ${OPENSTAX_BOOK_TEXT}, ${f.license}.${tpText}${ad}`,
+      html: `Figure ${esc(n)} from ${OPENSTAX_BOOK_HTML}, <a href="${openstaxPage(f)}">openstax.org</a>, ${lic(f.license)}.${tpHtml}${ad}`,
+    };
   }
-  return f.credit ? `<span class="anp-credit">${esc(f.credit)} (${esc(f.license)}).</span>` : '';
+  if (!f.credit) return { text: '', html: '' };
+  return { text: `${f.credit} (${f.license}).${ad}`, html: `${esc(f.credit)} (${esc(f.license)}).${ad}` };
+}
+
+export function credit(f, opts = {}) {
+  const a = attribution(f, opts);
+  return a.html ? `<span class="anp-credit">${a.html}</span>` : '';
+}
+
+/* The printed labels a page for this topic paints over for good. */
+export function coveredLabels(C, figId, topic) {
+  const f = C.figures[figId];
+  return f ? (f.labels || []).filter(l => l.box && laterLabel(C, l, topic)) : [];
 }
 
 /* Numbers every figure on a page and rewrites <a class="figref"> to match,
@@ -365,7 +410,7 @@ export function renderFigures(C, html, depth, topic = null) {
     cap = cap.replace(/^\s*(<b>|<strong>)?\s*Figure\s+\d+[.:]?\s*(<\/b>|<\/strong>)?\s*/i, '');
     if (fig) body = figureImg(C, fig, depth, { masks: false, topic });
     else body = inner.replace(/<figcaption>[\s\S]*?<\/figcaption>/, '');
-    const cr = fig ? ' ' + credit(C.figures[fig]) : '';
+    const cr = fig ? ' ' + credit(C.figures[fig], { adapted: coveredLabels(C, fig, topic).length > 0 }) : '';
     const cls = (attrs.match(/\bclass="([^"]+)"/) || [])[1];
     const attrsOut = attrs.replace(/\bclass="[^"]*"/, '').replace(/\bdata-fig="[^"]*"/, '');
     return `<figure${attrsOut} class="anp-figure${cls ? ' ' + cls : ''}">${body}<figcaption><b>Figure ${n}.</b> ${cap}${cr}</figcaption></figure>`;
@@ -402,7 +447,8 @@ function figForQuestion(C, id, topicId, pin) {
   // target. Any other figure question covers only labels taught later.
   const target = pin ? labels.find(l => l.id === pin) : null;
   const covers = labels.filter(l => target ? l !== target : laterLabel(C, l, topicId)).map(l => pct(l.box));
-  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}) };
+  const credit = attribution(f, { adapted: covers.length > 0 || !!target }).text;
+  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}), credit };
 }
 
 /* The question as static HTML (readable without JavaScript; anp-questions.js

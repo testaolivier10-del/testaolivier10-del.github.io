@@ -14,7 +14,9 @@
     "labels": [],
     "ext": "jpg",
     "w": 1100,
-    "h": 488
+    "h": 488,
+    "kind": "X-ray with a drawing",
+    "provenance": "OpenStax gives this figure no third-party credit (live 2e and 1e captions checked 2026-10-02), so it is used under the book's CC BY 4.0."
   },
   "hiv-course": {
     "source": "levlprep",
