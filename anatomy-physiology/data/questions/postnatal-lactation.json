@@ -204,21 +204,21 @@
     ],
     "figure": "os-28-22",
     "pin": "ductus-arteriosus",
-    "q": "Name the pinned fetal shunt.",
+    "q": "The pinned channel closes in the days after birth. What does it become?",
     "options": [
-      "Ductus arteriosus",
-      "Foramen ovale",
-      "Ductus venosus",
-      "Umbilical vein"
+      "Fossa ovalis",
+      "Ligamentum venosum",
+      "Ligamentum arteriosum",
+      "Round ligament of the liver"
     ],
-    "correct": 0,
+    "correct": 2,
     "why": {
-      "correct": "The ductus arteriosus joins the pulmonary trunk to the aorta. Before birth it carries most of the right ventricle's output past the lungs; after birth it closes and becomes the ligamentum arteriosum.",
+      "correct": "The pinned channel is the ductus arteriosus, which joins the pulmonary trunk to the aorta. Once the lungs open and blood oxygen rises, its muscular wall constricts and it closes; over the following weeks it becomes a fibrous cord, the ligamentum arteriosum.",
       "options": [
-        "Correct. It links the pulmonary trunk and the aortic arch.",
-        "The foramen ovale is an opening between the two atria, inside the heart.",
-        "The ductus venosus is in the liver, linking the umbilical vein to the inferior vena cava.",
-        "The umbilical vein brings oxygen-rich blood from the placenta to the fetus's liver."
+        "The fossa ovalis is the shallow dip in the wall between the atria where the foramen ovale closed.",
+        "The ligamentum venosum is what the ductus venosus, at the liver, becomes.",
+        "Correct. The closed ductus arteriosus becomes the ligamentum arteriosum.",
+        "The round ligament of the liver is what the umbilical vein becomes."
       ]
     }
   },
@@ -260,21 +260,21 @@
     ],
     "figure": "os-28-22",
     "pin": "ductus-venosus",
-    "q": "Name the pinned fetal vessel.",
+    "q": "The pinned fetal vessel closes after birth. What does it become?",
     "options": [
-      "Hepatic portal vein",
-      "Inferior vena cava",
-      "Umbilical artery",
-      "Ductus venosus"
+      "Round ligament of the liver",
+      "Ligamentum arteriosum",
+      "Medial umbilical ligament",
+      "Ligamentum venosum"
     ],
     "correct": 3,
     "why": {
-      "correct": "The ductus venosus carries most of the umbilical vein's oxygen-rich blood past the liver into the inferior vena cava. After birth it closes and becomes the ligamentum venosum.",
+      "correct": "The pinned vessel is the ductus venosus, which carried most of the umbilical vein's oxygen-rich blood past the liver into the inferior vena cava. Once the cord is cut, flow through it stops; it closes in the first days to weeks and becomes the ligamentum venosum.",
       "options": [
-        "The hepatic portal vein carries blood from the intestines into the liver. It stays open for life.",
-        "The inferior vena cava is the large vein the ductus venosus empties into.",
-        "The umbilical arteries carry fetal blood to the placenta; they branch from arteries in the pelvis, not in the liver.",
-        "Correct. This shunt bypasses the liver before birth."
+        "The round ligament of the liver is what the umbilical vein becomes.",
+        "The ligamentum arteriosum is what the ductus arteriosus, between the pulmonary trunk and the aorta, becomes.",
+        "The medial umbilical ligaments are what the umbilical arteries become.",
+        "Correct. The closed ductus venosus becomes the ligamentum venosum."
       ]
     }
   },

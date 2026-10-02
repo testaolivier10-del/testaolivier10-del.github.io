@@ -181,43 +181,6 @@
     }
   },
   {
-    "id": "anp-adaptive-immunity-8",
-    "type": "predict",
-    "level": "analyze",
-    "diff": 3,
-    "predictLevel": 2,
-    "core": [
-      "communication",
-      "structure-function"
-    ],
-    "q": "A baby is born without a thymus. Compared with a healthy baby, predict each variable.",
-    "variables": [
-      {
-        "name": "Number of mature T cells in the blood",
-        "answer": "down",
-        "why": "T cells mature in the thymus. Without it, thymocytes from the marrow have nowhere to go through positive and negative selection, so few mature T cells appear."
-      },
-      {
-        "name": "Lymphocytes in the paracortex of the lymph nodes",
-        "answer": "down",
-        "why": "The paracortex is where T cells gather. With few T cells, it is nearly empty."
-      },
-      {
-        "name": "Production of B cells in the bone marrow",
-        "answer": "none",
-        "why": "B cells are made and mature in the red bone marrow, which is normal."
-      },
-      {
-        "name": "Neutrophil killing of bacteria by phagocytosis",
-        "answer": "none",
-        "why": "Neutrophils are innate cells made in the marrow and do not depend on the thymus."
-      }
-    ],
-    "why": {
-      "correct": "The thymus is where T cells mature, so without it T cells and the paracortex they fill are depleted. B cells, made in the marrow, and innate cells such as neutrophils are produced normally, though B cells get less T cell help."
-    }
-  },
-  {
     "id": "anp-adaptive-immunity-9",
     "type": "vignette",
     "level": "apply",

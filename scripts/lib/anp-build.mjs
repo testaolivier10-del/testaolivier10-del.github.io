@@ -175,7 +175,9 @@ export function crumbNav(items, depth) {
 /* Beta label (audit 2026-10, fix 11; spec decision 74): the course has had no
    review by a licensed A&P instructor and docs/anp-needs-author.md holds open
    items, so every page says so. Remove only after that review. */
-export const BETA_PILL = '<span class="anp-beta">Beta</span>';
+// anp-nav-ref: a label, not teaching, so the page check skips it ("Beta" next
+// to a title like "Cell cycle" read as "beta cell").
+export const BETA_PILL = '<span class="anp-beta anp-nav-ref">Beta</span>';
 export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&amp;P instructor.';
 
 export function footer(depth) {

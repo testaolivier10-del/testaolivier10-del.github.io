@@ -417,32 +417,6 @@
     }
   },
   {
-    "id": "anp-carbohydrate-metabolism-16",
-    "type": "single",
-    "level": "recall",
-    "diff": 1,
-    "core": [
-      "energy"
-    ],
-    "q": "What is the terminal electron acceptor of the electron transport chain?",
-    "options": [
-      "NAD+",
-      "Carbon dioxide",
-      "Oxygen",
-      "ATP synthase"
-    ],
-    "correct": 2,
-    "why": {
-      "correct": "At complex IV, each O2 accepts 4 electrons and 4 H+ and becomes 2 water molecules. Removing electrons from the end of the chain keeps them moving.",
-      "options": [
-        "NAD+ accepts electrons earlier, from fuel molecules, and delivers them to the chain as NADH.",
-        "CO2 is a waste product of the citric acid cycle; it does not accept electrons from the chain.",
-        "Correct. Oxygen accepts the electrons at the end of the chain.",
-        "ATP synthase uses the H+ gradient; it does not accept electrons."
-      ]
-    }
-  },
-  {
     "id": "anp-carbohydrate-metabolism-17",
     "type": "vignette",
     "level": "analyze",

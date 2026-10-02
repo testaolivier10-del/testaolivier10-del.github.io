@@ -129,28 +129,6 @@
     }
   },
   {
-    "id": "anp-bp-long-term-5",
-    "type": "order",
-    "level": "apply",
-    "diff": 2,
-    "core": [
-      "homeostasis",
-      "interdependence"
-    ],
-    "q": "Put the steps of the renin–angiotensin–aldosterone system in order, starting with a fall in blood pressure.",
-    "options": [
-      "Pressure falls in the kidney's small arteries",
-      "The kidneys release renin into the blood",
-      "Renin converts angiotensinogen into angiotensin I",
-      "ACE, mostly in the lungs, converts angiotensin I into angiotensin II",
-      "Angiotensin II makes the adrenal cortex release aldosterone",
-      "The kidneys keep more sodium and water, and blood volume rises"
-    ],
-    "why": {
-      "correct": "Low pressure is sensed in the kidney, which releases renin. Renin forms angiotensin I from angiotensinogen, ACE converts it to angiotensin II, angiotensin II releases aldosterone, and aldosterone makes the kidneys keep sodium, which water follows."
-    }
-  },
-  {
     "id": "anp-bp-long-term-6",
     "type": "error",
     "level": "analyze",

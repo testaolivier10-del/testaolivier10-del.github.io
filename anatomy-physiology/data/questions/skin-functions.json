@@ -118,32 +118,6 @@
     }
   },
   {
-    "id": "anp-skin-functions-4",
-    "type": "single",
-    "level": "apply",
-    "diff": 2,
-    "core": [
-      "homeostasis"
-    ],
-    "q": "The air around a resting person is 40 °C, hotter than her skin. By which route can she still lose heat?",
-    "options": [
-      "Radiation",
-      "Conduction to the air",
-      "Convection",
-      "Evaporation"
-    ],
-    "correct": 3,
-    "why": {
-      "correct": "Heat moves from warmer to cooler. When the surroundings are hotter than the skin, radiation, conduction and convection all carry heat into the body. Evaporation only ever removes heat, so it is the one route left.",
-      "options": [
-        "With surroundings hotter than her skin, radiation carries heat toward her, not away.",
-        "Air hotter than her skin conducts heat into her.",
-        "Moving air hotter than her skin adds heat as it flows past.",
-        "Correct. Evaporation removes heat whatever the air temperature, as long as the air is not saturated."
-      ]
-    }
-  },
-  {
     "id": "anp-skin-functions-5",
     "type": "single",
     "level": "apply",

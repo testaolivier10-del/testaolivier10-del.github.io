@@ -126,33 +126,6 @@
     }
   },
   {
-    "id": "anp-energy-balance-thermoregulation-5",
-    "type": "single",
-    "level": "apply",
-    "diff": 2,
-    "core": [
-      "energy",
-      "homeostasis"
-    ],
-    "q": "A cyclist makes 870 kcal of heat per hour in air hotter than his skin. Each liter of sweat that evaporates removes about 580 kcal. At least how much sweat must evaporate each hour to remove the heat he makes?",
-    "options": [
-      "About 0.7 L",
-      "About 1.0 L",
-      "About 1.5 L",
-      "About 5.0 L"
-    ],
-    "correct": 2,
-    "why": {
-      "correct": "In air hotter than skin, evaporation is the only route of heat loss. 870 ÷ 580 = 1.5 L per hour must evaporate, and more must be secreted if some drips off.",
-      "options": [
-        "0.7 L would remove only about 400 kcal.",
-        "1.0 L removes 580 kcal, less than the 870 kcal he makes.",
-        "Correct. 870 ÷ 580 = 1.5 L.",
-        "5.0 L would remove about 2,900 kcal, far more than he makes."
-      ]
-    }
-  },
-  {
     "id": "anp-energy-balance-thermoregulation-6",
     "type": "vignette",
     "level": "apply",
