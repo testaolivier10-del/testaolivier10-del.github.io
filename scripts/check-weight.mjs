@@ -82,7 +82,14 @@ const SHELL_BUDGETS = [
   /* 254 -> 254.5 for the free-vs-Premium pass (audit 2026-10, W2): the purchase
      dialog now shows Pass-or-extend's conditions next to the price instead of
      behind a link, and links the pricing page (about 0.15 KB gzipped). */
-  ['site', 254.5],
+  /* 254.5 -> 260 for the UX and accessibility pass (audit 2026-10, W7). On
+     every page: one shared header for course and site pages with the phone
+     menu and 44px targets, the "/" search overlay, the More sheet's inert
+     handling, footers lifted out of main, the tutor's dialog semantics,
+     right/wrong marks, dark-mode scrims and contrast, reserved space against
+     layout shift, two elevation tokens (site-chrome.js, theme.css, tutor.js,
+     motion.js, account.js, about 4.7 KB gzipped). Measured 259.2 KB. */
+  ['site', 260],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -178,7 +185,11 @@ const SHELL_BUDGETS = [
      at roughly 0.1 KB each. If it needs to move again before the pass ends,
      take the saving noted above (lesson-concepts.js out of ochem/index.html)
      or move the map to a fetched file, rather than raising again. */
-  ['ochem', 108],
+  /* 108 -> 110.5 (audit 2026-10, W7): keyboard access for every hand-drawn
+     clickable atom (ochem-nav.js), hit areas on practice atoms, the phone
+     lesson rail and reserved card space (ochem.css), rail labels from step
+     titles (step-back.js). Measured 109.9 KB. */
+  ['ochem', 110.5],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
@@ -202,7 +213,11 @@ const BUDGETS = [
      hub states what is free and the price from premium.js, and both pages'
      structured data now list each course's passes as offers instead of
      claiming the course is free. W7's one-sentence hero should give some back. */
-  ['index.html', 6.6],
+  /* 6.6 -> 7.3 (audit 2026-10, W7): the hero's one-sentence lede and
+     primary button, the returning student's Continue card drawn inline before
+     first paint (a deferred script would push the page down), and a distinct
+     line icon per course card. Measured 7.1 KB. */
+  ['index.html', 7.3],
   ['nremt/index.html', 9.1],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
@@ -313,7 +328,11 @@ const BUDGETS = [
      one real bank question with its explanations, all in the markup so they
      read without JavaScript. Measured 6.4 KB; ochem's home is budgeted at 11. */
   ['anatomy-physiology/index.html', 7],
-  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10],
+  /* 10 -> 10.6 (audit 2026-10, W7): the stepped view is in the markup and a
+     tiny inline script opens the saved step before first paint, which took
+     an A&P lesson's layout shift from 0.27-1.0 to under 0.1. Measured
+     10.4 KB. */
+  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.6],
   ['anatomy-physiology/notes/cardiac-cycle.html', 19],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
