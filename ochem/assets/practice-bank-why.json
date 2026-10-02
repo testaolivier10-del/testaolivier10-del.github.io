@@ -2218,7 +2218,7 @@
   "Cyclopropane’s C–C–C angles are 60°, far below the tetrahedral angle, which costs about 27.6 kcal/mol. The carbene or carbenoid starts higher still, so forming two C–C bonds pays for the strain.",
   "The CH₂ bonds to both alkene carbons in one step from one face: a syn addition. With no intermediate, nothing can rotate, so the alkene’s cis or trans relationship is kept in the ring.",
   "cis-But-2-ene gives cis-1,2-dimethylcyclopropane: two stereocenters and a mirror plane, so meso. trans-But-2-ene gives a chiral, racemic ring; (Z)-pent-2-ene gives a cis ring with two different groups, which is chiral; 2-methylpropene gives 1,1-dimethylcyclopropane, which has no stereocenters at all.",
-  "The product has one new carbon carrying two chlorines, fused across the old C=C. Chloroform and a strong base supply exactly that, as dichlorocarbene. Cl₂ and light would substitute at an allylic C–H instead.",
+  "The product has one new carbon carrying two chlorines, fused across the old C=C. Chloroform and a strong base supply exactly that, as dichlorocarbene. Cl₂ and light would chlorinate the ring (allylic substitution or addition), not add one carbon.",
   "True. Both new bonds form in one step on one face, so the alkene’s geometry is carried straight into the ring.",
   "False. The trans relationship survives, and trans-1,1-dichloro-2,3-dimethylcyclopropane has no mirror plane, so it is chiral and forms as a racemate. The meso ring comes from cis-but-2-ene."
  ],
@@ -3081,7 +3081,7 @@
   "Two extra steps means two extra yields lost, so it is worth it only when the alternatives fail.",
   "Two carbons in and four out, so the electrophile has to bring two and leave the OH on the end carbon: that is ethylene oxide, attacked at the less hindered carbon. Formaldehyde adds only one, and CO₂ would give an acid.",
   "The phenyl carbon adds to the carbonyl carbon, so the OH and the phenyl end up on the same ring carbon. That carbon already carried two ring carbons, and the phenyl makes three, so the alcohol is tertiary. 2-Phenylcyclohexan-1-ol would need the phenyl on the next carbon, which the reagent never touches; cyclohexyl(phenyl)methanol is what cyclohexanecarbaldehyde would give. Benzene forms only if something acidic meets the reagent before the ketone does, and here the acid is added afterward.",
-  "Having the electrophile present while the reagent forms invites enolization and self-condensation.",
+  "Form RMgX first in dry ether, then add the electrophile, and only then add aqueous acid. Anything acidic or electrophilic present while the reagent forms destroys it or reacts uncontrollably, and acid added early only protonates the reagent.",
   "Esters, nitriles and ketones are all electrophiles the reagent attacks.",
   "The metal insertion does not touch the double bond.",
   "Two additions again, but not for the ester's reason: an acid chloride's chlorine barely donates, so it is even more electrophilic than the ketone it gives, and that ketone is still reactive enough to be attacked as fast as it forms.",

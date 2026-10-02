@@ -469,7 +469,7 @@
       topics:['cyclopropanation'], dependsOn:['acidity-factors','formal-charge-calc'],
       hint:'A haloform plus strong base loses H then X from one carbon; CH2I2 with Zn(Cu) gives a carbenoid instead.' },
     { id:'carbene-addition', title:'Carbene addition to an alkene', family:'Alkenes & alkynes',
-      topics:['cyclopropanation','alkene-oxidation'], dependsOn:['addition-stereochem','carbene-generation'],
+      topics:['cyclopropanation'], dependsOn:['addition-stereochem','carbene-generation'],
       hint:'One carbon bonds to both alkene carbons in one step from one face, so cis stays cis and trans stays trans.' },
 
     /* ---- Alcohols, ethers, epoxides ------------------------------------ */

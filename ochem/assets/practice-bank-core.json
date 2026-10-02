@@ -20308,7 +20308,7 @@
    "type": "mcq"
   },
   {
-   "q": "trans-3,4-Dimethylcyclobut-1-ene is heated and opens to a hexa-2,4-diene. Which isomer forms?",
+   "q": "trans-3,4-Dimethylcyclobut-1-ene is heated and opens to a hexa-2,4-diene. Which isomer mainly forms?",
    "options": [
     "(2E,4Z)-Hexa-2,4-diene",
     "(2E,4E)-Hexa-2,4-diene",
@@ -20322,10 +20322,10 @@
   {
    "q": "Why does light reverse the rotation of an electrocyclic reaction?",
    "options": [
-    "Light heats the molecule more than an oil bath can",
-    "Light breaks a σ bond before the ring starts to close",
-    "An electron moves into the old LUMO, whose end lobes have the opposite phase pattern",
-    "Light changes the number of π electrons that take part"
+    "Light heats the molecule more evenly than an oil bath can manage",
+    "Light breaks a σ bond first, before the ring starts to close",
+    "The excited electron sits in the old LUMO, whose end lobes are reversed",
+    "Light changes how many π electrons take part in the ring closure"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -20334,10 +20334,10 @@
   {
    "q": "How is the [3,3] in a [3,3] sigmatropic rearrangement counted?",
    "options": [
-    "Count the π bonds in the starting material and in the product",
-    "Count the atoms in the ring that forms in the product",
-    "Count the carbons on each side of the new σ bond",
-    "Number outward from each end of the σ bond that breaks; the new bond joins atom 3 to atom 3"
+    "Count the π bonds in the starting material and again in the product",
+    "Count the atoms in the new ring that forms in the product itself",
+    "Count the carbons on each side of the new σ bond once it has formed",
+    "Number out from each end of the breaking σ bond; atom 3 bonds to atom 3"
    ],
    "correct": 3,
    "difficulty": "medium",
@@ -20370,10 +20370,10 @@
   {
    "q": "Why does the Claisen rearrangement run essentially one way?",
    "options": [
-    "Its product is a gas that escapes from the flask",
-    "Its product cannot reach a chair-shaped transition state",
-    "Its product has a C=O, a much stronger bond than the C=C it replaces",
-    "Its starting material is too strained to survive"
+    "Its product is a gas that escapes from the flask as it forms",
+    "Its product cannot reach a chair-shaped transition state again",
+    "Its product has a C=O, much stronger than the C=C it replaces",
+    "Its starting material is too strained to survive the heating"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -20416,12 +20416,12 @@
    "type": "mcq"
   },
   {
-   "q": "An electrocyclic ring closure turns both end groups pointing in, and the rotation is disrotatory. How are the two groups arranged on the new ring?",
+   "q": "Both end groups point in, and the closure is disrotatory. How are the two groups arranged on the new ring?",
    "options": [
-    "trans",
-    "One axial and one equatorial",
-    "cis",
-    "They are no longer stereocenters"
+    "trans, on opposite faces of the new ring",
+    "One axial and one equatorial on the ring",
+    "cis, on the same face of the new ring",
+    "Neither: they are no longer stereocenters"
    ],
    "correct": 2,
    "difficulty": "hard",
@@ -24419,10 +24419,10 @@
   {
    "q": "Which reagents carry out a Simmons–Smith cyclopropanation?",
    "options": [
-    "CHCl₃ and potassium tert-butoxide",
-    "OsO₄, then aqueous NaHSO₃",
+    "CHCl₃ and potassium tert-butoxide in ether",
+    "OsO₄, then aqueous NaHSO₃ treatment",
     "CH₂I₂ and a zinc–copper couple, Zn(Cu)",
-    "mCPBA in dichloromethane"
+    "mCPBA in dichloromethane, cold"
    ],
    "correct": 2,
    "difficulty": "easy",
@@ -24467,10 +24467,10 @@
   {
    "q": "Cl₃C⁻ loses Cl⁻ to give dichlorocarbene. What kind of elimination is this?",
    "options": [
-    "A β-elimination like E2, making a C=C",
-    "An E1 elimination through a carbocation",
-    "An α-elimination: both groups leave from the same carbon",
-    "A syn elimination across neighboring carbons"
+    "A β-elimination like E2, making a new C=C double bond",
+    "An E1 elimination that goes through a carbocation first",
+    "An α-elimination: both groups leave from one carbon",
+    "A syn elimination across two neighboring carbon atoms"
    ],
    "correct": 2,
    "difficulty": "medium",
@@ -24491,7 +24491,7 @@
   {
    "q": "What is the formal charge on the carbon of methylene, :CH₂?",
    "options": [
-    "Zero",
+    "0",
     "−1",
     "+1",
     "−2"
@@ -24527,10 +24527,10 @@
   {
    "q": "Why is CH₂I₂ with Zn(Cu) preferred to diazomethane and light for adding a CH₂ to an alkene?",
    "options": [
-    "Diazomethane turns a cis alkene into a trans cyclopropane",
-    "Free methylene cannot add to a C=C at all",
-    "The zinc reagent adds two CH₂ groups to each alkene",
-    "Diazomethane is toxic and explosive, and free :CH₂ also attacks C–H bonds"
+    "Diazomethane turns a cis alkene into a trans cyclopropane ring",
+    "Free methylene cannot add to a C=C double bond at all",
+    "The zinc reagent adds two CH₂ groups to each of the alkenes",
+    "Diazomethane is explosive, and free :CH₂ also attacks C–H bonds"
    ],
    "correct": 3,
    "difficulty": "medium",

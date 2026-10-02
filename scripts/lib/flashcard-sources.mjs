@@ -320,7 +320,7 @@ export const AUTHORED = [
   { id: 'claisen-cope', topic: 'electrocyclic-sigmatropic', q: 'Cope and Claisen rearrangements', ask: 'What shifts, what forms, and which way does the equilibrium lie?',
     a: [['Shift', 'A [3,3] sigmatropic rearrangement: the σ bond between atoms 1 and 1′ breaks, atoms 3 and 3′ bond, both π bonds move one place, through a chair-shaped transition state.'],
         ['Cope', 'A hexa-1,5-diene gives another hexa-1,5-diene; reversible, and the more substituted diene is favored.'],
-        ['Claisen', 'An allyl vinyl ether gives a γ,δ-unsaturated carbonyl compound; the new C=O makes it effectively one-way.']] },
+        ['Claisen', 'An allyl vinyl ether gives a carbonyl compound with a C=C between the third and fourth carbons from the C=O; the new C=O makes it effectively one-way.']] },
   { id: 'aldol-condensation', topic: 'aldol', q: 'Aldol condensation', ask: 'The two stages, and what decides where it stops?',
     a: [['Addition', 'An enolate adds to a second carbonyl → β-hydroxy aldehyde or ketone.'],
         ['Condensation', 'Dehydration of that product → α,β-unsaturated carbonyl (enone) + water.'],
