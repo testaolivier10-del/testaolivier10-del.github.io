@@ -50,7 +50,7 @@ assets/                Shared across every course
                          hub-progress.js fires; site-chrome.js mounts it
   tutor.js             The study assistant behind the mascot in the corner of every
                          page. Indexes the current course's own material in the browser
-                         (NREMT's reference pages, or ochem's 64 note sections listed by
+                         (NREMT's reference pages, or ochem's 121 note sections listed by
                          curriculum.js) and answers by quoting the passage that covers the
                          question. Optionally posts the question plus those passages to an
                          AI endpoint for a written answer; see worker/. site-chrome.js
@@ -73,9 +73,10 @@ assets/                Shared across every course
   report-question.js   "This looks wrong" — the one-tap report under every
                          explanation in both courses. See Reporting a bad
                          question
-  premium.js           The Premium waitlist: a "coming soon" card at the end of a
-                         session, and the per-course free/premium split. Locks
-                         nothing; see docs/premium.md
+  premium.js           The free/Premium split for all three courses, the gates
+                         every course calls (has, gate, quota), and the purchase
+                         dialog for one-time passes (Worker + Polar). Live since
+                         2026-10-01; see docs/premium.md
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP.
@@ -373,7 +374,7 @@ answer makes the rules look tidy.
 
 ## Data & accounts
 
-All progress (seen/missed questions, streaks, XP, mastery, domain stats) is stored in the browser's `localStorage` — no account is required to use any feature, in any subject.
+All progress (seen/missed questions, streaks, XP, mastery, domain stats) is stored in the browser's `localStorage` — no account is required for any free feature, in any subject (AI answers from the study assistant and buying a Premium pass need one).
 
 Signing in is optional and layers **cross-device sync** on top of that same local data, via Supabase (`assets/account.js`). The Supabase key committed in that file is a *publishable* anon key — safe to expose, since access is enforced entirely by Postgres row-level security (each user can read/write only their own `user_progress` row).
 

@@ -1376,7 +1376,7 @@ if (existsSync(notesDir)) {
 // root-level redirect stubs are a meta-refresh and nothing else, and the ochem
 // lessons and mechanisms have never had a footer. That second gap is real but
 // it is a layout gap rather than a missing link, and it is recorded in
-// TRACKER.md instead of being papered over by a check that would pass.
+// docs/TRACKER.md instead of being papered over by a check that would pass.
 for (const file of htmlFiles) {
   const rel = relative(ROOT, file).split(sep).join('/');
   const html = readFileSync(file, 'utf8');

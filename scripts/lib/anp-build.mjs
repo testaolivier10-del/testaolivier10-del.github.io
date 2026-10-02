@@ -5,7 +5,8 @@
    the same head, the same 11-part lesson order (docs/anp-spec.md section 4) and
    the same glossary markup. docs/anp-phase1-architecture.md describes the data. */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadMap, indexMap, scanTerms, termRegex, scanPage, ASCII } from './anp-map.mjs';
 
 export const SITE = 'https://levlprep.com';
@@ -358,6 +359,20 @@ export function fixSvg(f, labels) {
   return `<svg class="anp-fix" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true" focusable="false">${parts.join('')}</svg>`;
 }
 
+/* AVIF copies at 480 px, 800 px and full width, written by
+   scripts/build-figure-variants.py (site audit 2026-10, performance: phones got
+   the 1,100 px JPG for a 360 px slot). Empty when a figure has none, so the
+   page falls back to the plain <img>. The JPG stays the fallback inside
+   <picture>. anp-questions.js derives the same names for figure questions. */
+const AVIF_DIR = join(dirname(dirname(dirname(fileURLToPath(import.meta.url)))), 'anatomy-physiology', 'figures', 'avif');
+export const AVIF_WIDTHS = [480, 800];
+// The figure column is at most about 720 px wide; on a phone it is the screen.
+export const FIG_SIZES = '(max-width: 760px) 100vw, 720px';
+export function avifSrcset(figId, W, depth) {
+  if (!existsSync(join(AVIF_DIR, `${figId}.avif`))) return '';
+  return [...AVIF_WIDTHS.filter(w => w < W).map(w => `${depth}figures/avif/${figId}-${w}.avif ${w}w`), `${depth}figures/avif/${figId}.avif ${W}w`].join(', ');
+}
+
 export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) {
   const f = C.figures[figId];
   if (!f) return '';
@@ -376,7 +391,10 @@ export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) 
   // A label printed with a typo carries "fix": the right spelling is drawn
   // over it (audit 2026-10: OpenStax Figure 25.10's "conboluted").
   const fixHtml = fixSvg(f, labels);
-  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${coverHtml}${fixHtml}${maskHtml}</div>`;
+  const img = `<img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">`;
+  const avif = (f.ext || 'jpg') === 'jpg' ? avifSrcset(figId, W, depth) : '';
+  const pic = avif ? `<picture><source type="image/avif" srcset="${avif}" sizes="${FIG_SIZES}">${img}</picture>` : img;
+  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}">${pic}${coverHtml}${fixHtml}${maskHtml}</div>`;
 }
 
 /* Figure attribution, built from the figure's data (audit 2026-10, fix 11).

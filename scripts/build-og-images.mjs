@@ -4,7 +4,7 @@
    pasted into a chat. There were two of them, both hand-made and both wrong by
    the time anyone looked: the site card still said "Study Hub", a name the
    site has not used in months, and the NREMT card advertised "978 practice
-   questions" against a bank that now holds 2,084. Nothing pointed either fact
+   questions" against a bank that by then held 2,084. Nothing pointed either fact
    at the thing it described, so neither could go stale loudly.
 
    Ochem had no card at all, which is what prompted this — 80 of its pages now

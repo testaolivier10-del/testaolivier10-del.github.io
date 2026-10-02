@@ -206,7 +206,10 @@ const SHELL_BUDGETS = [
      (index first, chapters on demand, explanations after the answer) adds
      about 1.5 KB to the exams page's scripts and saves up to 4 MB of bank
      fetches on Practice, Review and Exams. */
-  ['anatomy-physiology', 46],
+  /* 46 -> 46.5 (audit 2026-10, W8): anp-questions.js wraps a figure
+     question's image in <picture> with its AVIF copies (0.2 KB gzipped), which
+     saves a phone roughly 60% of each figure's bytes. */
+  ['anatomy-physiology', 46.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -349,7 +352,9 @@ const BUDGETS = [
      an A&P lesson's layout shift from 0.27-1.0 to under 0.1. Measured
      10.4 KB. */
   ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.6],
-  ['anatomy-physiology/notes/cardiac-cycle.html', 19],
+  /* 19 -> 19.5 (audit 2026-10, W8): each figure's <picture> with its AVIF
+     srcset (about 0.03 KB gzipped a figure) in exchange for AVIF images. */
+  ['anatomy-physiology/notes/cardiac-cycle.html', 19.5],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
   ['anatomy-physiology/exams.html', 3],

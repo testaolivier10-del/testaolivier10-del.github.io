@@ -19,3 +19,10 @@ node_modules
 # Python wheels a browser-test setup can drop in the repo root
 *.whl
 .claude/worktrees/
+
+# Secrets and local tool state that must never be committed (site audit
+# 2026-10): wrangler's local cache and dev vars, env files, private keys.
+.wrangler/
+.dev.vars
+.env*
+*.pem
