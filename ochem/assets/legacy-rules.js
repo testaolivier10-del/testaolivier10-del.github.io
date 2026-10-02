@@ -862,7 +862,8 @@
   var ANY = /[\s\S]/;
 
   L.define('carbohydrates', [
-    { q:/carbohydrate, in functional-group terms|What does that make it|How many stereo|stereoisomeric|Fischer projection, which carbon|Which is it\?|rotates polarized|is stirred with NaBH4/i, recall:true },
+    { q:/carbohydrate, in functional-group terms|What does that make it|How many stereo|stereoisomeric|Fischer projection, which carbon|Which is it\?|rotates polarized/i, recall:true },
+    { q:/NaBH4/i, c:'reductant-scope' },
     { q:/Tollens|reducing sugar|non-reducing|Is it reducing|Bromine water|gluconic|glucaric|distinguishes an aldehyde/i, c:'aldehyde-oxidizability' },
     { q:/hemiacetal|anomer|ring|Haworth|pyranos|glycoside|acetal|alpha-1,4|optical rotation|cellulose|amylose|starch|beta-D/i, c:'sugar-ring' }
   ]);
@@ -936,7 +937,7 @@
     { q:ANY, c:'activating-group' }
   ]);
   L.define('baeyer-villiger', [
-    { q:/reagent performs|intermediate called|What is a lactone|Which other reaction uses|What leaves|charged\?|kind of ring expansion|kind of step|also has an alkene/i, recall:true },
+    { q:/do to a ketone\?|What class of compound is the product|reagent performs|intermediate called|What is a lactone|Which other reaction uses|What leaves|charged\?|kind of ring expansion|kind of step|also has an alkene/i, recall:true },
     { q:ANY, c:'migratory-aptitude' }
   ]);
   L.define('nucleophilic-aromatic', [
@@ -959,7 +960,7 @@
     { q:ANY, c:'phenol-acidity' }
   ]);
   L.define('birch-reduction', [
-    { q:/deep blue|Birch conditions|What does the alcohol do|catalytic hydrogenation give from benzene|What is a radical anion/i, recall:true },
+    { q:/deep blue|What are the Birch conditions|What does the alcohol do|catalytic hydrogenation give from benzene|What is a radical anion/i, recall:true },
     { q:ANY, c:'partial-reduction' }
   ]);
   L.define('diazonium-chemistry', [

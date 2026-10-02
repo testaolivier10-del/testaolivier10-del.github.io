@@ -227,8 +227,8 @@
            hydrogen) and a reagent chosen for NOT attacking carbon. Calling
            that SN1 handed back a mechanism with no product. */
         out.major = 'No reaction';
-        out.verdict = 'Not a pairing anyone would choose. ' + r.name + ' is used to pull a beta proton, and benzyl bromide has none on the ring side, so there is no elimination to make; and ' + r.name +
-          ' is picked precisely because it is a poor nucleophile, so there is no substitution product to write either. Pick a nucleophile to see what this substrate does.';
+        out.verdict = 'No elimination, and no useful substitution: at most a slow N-alkylation of ' + r.name + ' itself. ' + r.name +
+          ' is used to pull a beta proton, and benzyl bromide has none on the ring side. It is chosen for being a poor nucleophile, but a reactive benzylic halide can still slowly alkylate its nitrogen, which consumes the base rather than giving a product anyone wants. Pick a nucleophile to see what this substrate does.';
         out.reasons = reasons;
         return out;
       }

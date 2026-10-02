@@ -1060,4 +1060,10 @@ test('the spectrum predictor reads splitting, anhydrides, para rings and condens
   const st = C.fromMolecule(mx);
   assert.equal(C.formula(st), 'C₈H₁₀', 'm-xylene formula');
   assert.ok(S.predictNMR(st).some(x => x.h === 6 && x.label === 'CH₃'), 'm-xylene methyls missing');
+
+  // Repeated halogens hang off the atom before them; sulfonic acid is S(=O)(=O)OH, not a chain.
+  const star = (g) => JSON.stringify(C.parseGroup(g).bonds.map(b => [b[0], b[2]]));
+  assert.equal(star('CF₃'), '[[0,1],[0,1],[0,1]]', 'CF3 read as a chain');
+  assert.equal(star('CCl₃'), '[[0,1],[0,1],[0,1]]', 'CCl3 read as a chain');
+  assert.equal(star('SO₃H'), '[[0,2],[0,2],[0,1]]', 'SO3H read as a chain');
 });

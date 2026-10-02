@@ -9717,12 +9717,12 @@
    "q": "A carboxylic acid has pKa around 4 to 5, while a simple alcohol has pKa around 16 to 18. Approximately how many orders of magnitude more acidic is the carboxylic acid?",
    "options": [
     "They are about equally acidic",
-    "About 10^12",
+    "About 10¹²",
     "About 2 times",
     "About 10 times"
    ],
    "correct": 1,
-   "why": "Since pKa is a log scale, a difference of about 12 pKa units corresponds to roughly 10^12 difference in Ka, reflecting the large stabilizing effect of resonance in the carboxylate compared to the alkoxide.",
+   "why": "Since pKa is a log scale, a difference of about 12 pKa units corresponds to roughly 10¹² difference in Ka, reflecting the large stabilizing effect of resonance in the carboxylate compared to the alkoxide.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9735,7 +9735,7 @@
     "significantly higher than 5, so products are favored"
    ],
    "correct": 3,
-   "why": "For deprotonation to run to completion, the acid produced has to be weaker than the acid consumed — higher pKa, not lower. Write it as K ≈ 10^(pKa of the acid formed − pKa of the acid consumed): with the carboxylic acid at 5, a base whose conjugate acid sits at 10 gives K ≈ 10⁵ and a base whose conjugate acid sits at 2 gives K ≈ 10^−3. The first goes, the second does not. In practice a carboxylic acid is easy: even bicarbonate, pKaH 6.4, is enough, which is why a bicarbonate wash pulls carboxylic acids out of an organic layer.",
+   "why": "For deprotonation to run to completion, the acid produced has to be weaker than the acid consumed — higher pKa, not lower. Write it as K ≈ 10^(pKa of the acid formed − pKa of the acid consumed): with the carboxylic acid at 5, a base whose conjugate acid sits at 10 gives K ≈ 10⁵ and a base whose conjugate acid sits at 2 gives K ≈ 10⁻³. The first goes, the second does not. In practice a carboxylic acid is easy: even bicarbonate, pKaH 6.4, is enough, which is why a bicarbonate wash pulls carboxylic acids out of an organic layer.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -9835,7 +9835,7 @@
     "A 1,3-diketone"
    ],
    "correct": 0,
-   "why": "Ethoxide removes a proton well when the substrate’s pKa is below 16, and the further below, the more complete the reaction. Acetic acid at 4.76, a 1,3-diketone at 9 and phenol at 10 are all comfortably below, by eleven, seven and six units, so ethoxide takes all three essentially completely. The terminal alkyne at 25 is nine units above: K ≈ 10^(16 − 25) = 10^−9, about a billion to one against. The diketone is the one worth noticing — its acidic hydrogen is on carbon, and it is still more acidic than phenol, because the anion delocalizes onto two carbonyl oxygens.",
+   "why": "Ethoxide removes a proton well when the substrate’s pKa is below 16, and the further below, the more complete the reaction. Acetic acid at 4.76, a 1,3-diketone at 9 and phenol at 10 are all comfortably below, by eleven, seven and six units, so ethoxide takes all three essentially completely. The terminal alkyne at 25 is nine units above: K ≈ 10^(16 − 25) = 10⁻⁹, about a billion to one against. The diketone is the one worth noticing — its acidic hydrogen is on carbon, and it is still more acidic than phenol, because the anion delocalizes onto two carbonyl oxygens.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -9853,7 +9853,7 @@
    "type": "mcq"
   },
   {
-   "q": "If Ka for acid A is 1 times 10⁻5 and Ka for acid B is 1 times 10⁻3, what is the approximate difference in their pKa values, and which acid has the higher pKa?",
+   "q": "If Ka for acid A is 1 times 10⁻⁵ and Ka for acid B is 1 times 10⁻³, what is the approximate difference in their pKa values, and which acid has the higher pKa?",
    "options": [
     "100 units, either way round",
     "No difference at all",
@@ -9861,7 +9861,7 @@
     "2 units, with B the higher pKa"
    ],
    "correct": 2,
-   "why": "pKa = -log(Ka), so a Ka of 10⁻5 gives pKa = 5 and a Ka of 10⁻3 gives pKa = 3; acid A, with the smaller Ka, has the higher pKa, a difference of 2 units.",
+   "why": "pKa = -log(Ka), so a Ka of 10⁻⁵ gives pKa = 5 and a Ka of 10⁻³ gives pKa = 3; acid A, with the smaller Ka, has the higher pKa, a difference of 2 units.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15862,7 +15862,7 @@
     "Four, as a double bond is not counted"
    ],
    "correct": 0,
-   "why": "Stereocenters and stereogenic double bonds both feed the exponent, so the bound is 2^(n+m) = 2^3 = 8. The phrase 'at most' is doing real work: the formula is an upper limit, and internal symmetry can collapse two arrangements into one molecule, which is what happens in meso compounds. Eight is a ceiling rather than a guarantee.",
+   "why": "Stereocenters and stereogenic double bonds both feed the exponent, so the bound is 2^(n+m) = 2³ = 8. The phrase 'at most' is doing real work: the formula is an upper limit, and internal symmetry can collapse two arrangements into one molecule, which is what happens in meso compounds. Eight is a ceiling rather than a guarantee.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -15979,7 +15979,7 @@
     "The formula counts stereocenters, so it never applies to dienes"
    ],
    "correct": 2,
-   "why": "Both double bonds are stereogenic, so the upper bound is 2^2 = 4. But the molecule carries a methyl at each end and is symmetric about its middle, so labelling the first bond E and the second Z describes the identical substance as labelling the first Z and the second E: rotate the drawing and the two superimpose. That leaves 2E,4E, 2Z,4Z and one mixed isomer, which is three, and it is precisely the overcount the words 'at most' warn about.",
+   "why": "Both double bonds are stereogenic, so the upper bound is 2² = 4. But the molecule carries a methyl at each end and is symmetric about its middle, so labelling the first bond E and the second Z describes the identical substance as labelling the first Z and the second E: rotate the drawing and the two superimpose. That leaves 2E,4E, 2Z,4Z and one mixed isomer, which is three, and it is precisely the overcount the words 'at most' warn about.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -17705,7 +17705,7 @@
    "options": [
     "Rate = k[substrate], first order overall",
     "Rate = k[base], first order overall",
-    "Rate = k[substrate]^2, second order in substrate",
+    "Rate = k[substrate]², second order in substrate",
     "Rate = k[substrate][base], second order overall"
    ],
    "correct": 3,
@@ -45765,7 +45765,7 @@
     "Its poor solubility in cold THF"
    ],
    "correct": 2,
-   "why": "Diisopropylamine has a pKa near 36 and a ketone's alpha C-H is about 20. Sixteen pKa units put the equilibrium about 10^16 toward the enolate, so the proton never goes back to the amide. The lithium counterion and the cold matter for other parts of the recipe - a tight enolate, and a stalled proton shuttle through any leftover ketone - but neither is what makes the deprotonation one-way, and solubility has nothing to do with it.",
+   "why": "Diisopropylamine has a pKa near 36 and a ketone's alpha C-H is about 20. Sixteen pKa units put the equilibrium about 10¹⁶ toward the enolate, so the proton never goes back to the amide. The lithium counterion and the cold matter for other parts of the recipe - a tight enolate, and a stalled proton shuttle through any leftover ketone - but neither is what makes the deprotonation one-way, and solubility has nothing to do with it.",
    "difficulty": "easy",
    "type": "mcq"
   },

@@ -102,7 +102,12 @@ const CHARGED = /(?<![A-Za-z0-9₀-₉⁺⁻])([A-Z][A-Za-z0-9₀-₉()]*)([+-])
 export function normalizeText(s){
   let out = s;
   // Caret charges: ^-, ^+, ^2-, ^2+.
+  // Exponents first ("10^-5", "10^3"): sign then digits, all superscript.
+  // A decimal exponent (10^1.6) has no superscript point, so it stays as written.
+  out = out.replace(/\^([+\-−]?)(\d+)(?![+\-\d]|\.\d)/g, (m, sign, d) => (sign ? SUP[sign === '−' ? '-' : sign] : '') + d.replace(/\d/g, (c) => SUP[c]));
   out = out.replace(/\^(\d?)([+-])/g, (m, n, sign) => (n ? SUP[n] : '') + SUP[sign]);
+  // A half-converted power of ten ("10⁻5") gets its digits raised too.
+  out = out.replace(/(10[⁺⁻])(\d+)/g, (m, base, d) => base + d.replace(/\d/g, (c) => SUP[c]));
   // Ions whose digit is a charge, not a count (O2- is oxide, not O2 with a dash).
   out = out.replace(SPECIAL, (m, ion) => SPECIAL_IONS[ion]);
   // Formula tokens.

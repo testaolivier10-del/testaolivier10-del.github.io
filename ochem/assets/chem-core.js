@@ -271,7 +271,8 @@
     COOH:'C(=O)OH', CO2H:'C(=O)OH', HOOC:'C(=O)OH', HO2C:'C(=O)OH',
     CHO:'CH=O', OHC:'CH=O', CN:'C#N', NC:'C#N', NO2:'N+(=O)O-', O2N:'N+(=O)O-',
     COCH3:'C(=O)CH3', CO2CH3:'C(=O)OCH3', CO2Me:'C(=O)OCH3', COOCH3:'C(=O)OCH3',
-    CO2Et:'C(=O)OCH2CH3', COOEt:'C(=O)OCH2CH3', CONH2:'C(=O)NH2', COCl:'C(=O)Cl'
+    CO2Et:'C(=O)OCH2CH3', COOEt:'C(=O)OCH2CH3', CONH2:'C(=O)NH2', COCl:'C(=O)Cl',
+    SO3H:'S(=O)(=O)OH', HO3S:'S(=O)(=O)OH', SO2Cl:'S(=O)(=O)Cl', SO2NH2:'S(=O)(=O)NH2', OCF3:'OC(F)(F)F'
   };
   var GROUP_ASCII = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','⁺':'+','⁻':'-','−':'-' };
   function groupAscii(label){
@@ -323,6 +324,16 @@
         var cnt = m[2] ? parseInt(m[2], 10) : 1;
         if(m[1] === 'H'){
           if(prev !== null) atoms[prev].h += cnt; else pendingH += cnt;
+          continue;
+        }
+        /* A halogen with a count is several atoms on the one before it, not a
+           chain: CF3 is C(F)(F)F, never C-F-F-F. */
+        if(cnt > 1 && prev !== null && /^(F|Cl|Br|I)$/.test(m[1])){
+          for(var x=0;x<cnt;x++){
+            atoms.push({ el:m[1], h:0, charge:0 });
+            bonds.push([prev, atoms.length - 1, 1]);
+          }
+          pendingOrder = 1;
           continue;
         }
         for(var c=0;c<cnt;c++){

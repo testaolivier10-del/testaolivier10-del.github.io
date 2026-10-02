@@ -8959,7 +8959,7 @@
    "q": "A carboxylic acid has pKa around 4 to 5, while a simple alcohol has pKa around 16 to 18. Approximately how many orders of magnitude more acidic is the carboxylic acid?",
    "options": [
     "They are about equally acidic",
-    "About 10^12",
+    "About 10¹²",
     "About 2 times",
     "About 10 times"
    ],
@@ -9084,7 +9084,7 @@
    "type": "mcq"
   },
   {
-   "q": "If Ka for acid A is 1 times 10⁻5 and Ka for acid B is 1 times 10⁻3, what is the approximate difference in their pKa values, and which acid has the higher pKa?",
+   "q": "If Ka for acid A is 1 times 10⁻⁵ and Ka for acid B is 1 times 10⁻³, what is the approximate difference in their pKa values, and which acid has the higher pKa?",
    "options": [
     "100 units, either way round",
     "No difference at all",
@@ -16322,7 +16322,7 @@
    "options": [
     "Rate = k[substrate], first order overall",
     "Rate = k[base], first order overall",
-    "Rate = k[substrate]^2, second order in substrate",
+    "Rate = k[substrate]², second order in substrate",
     "Rate = k[substrate][base], second order overall"
    ],
    "correct": 3,
