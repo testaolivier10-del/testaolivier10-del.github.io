@@ -218,7 +218,10 @@ const BUDGETS = [
      first paint (a deferred script would push the page down), and a distinct
      line icon per course card. Measured 7.1 KB. */
   ['index.html', 7.3],
-  ['nremt/index.html', 9.1],
+  /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
+     preloads its one text face (Nunito, latin) so it is ready at first paint
+     with font-display: optional, which removed the font-swap layout shift. */
+  ['nremt/index.html', 9.2],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-
@@ -226,7 +229,7 @@ const BUDGETS = [
      simply more topics — and the saving noted above (splitting the one
      lesson-concepts.js call out of ochem-home.js, worth about 4.4 KB) is
      still available if this ever needs to come back down. */
-  ['ochem/index.html', 11.2],
+  ['ochem/index.html', 11.3],
 
   // The busiest page on the site, and the one the bank split was for.
   /* 40 -> 44 in the 2026-10 audit follow-up: the runner gained a check step

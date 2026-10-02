@@ -165,6 +165,7 @@ const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="manifest" href="manifest.json">

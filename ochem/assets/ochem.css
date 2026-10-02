@@ -219,7 +219,7 @@
    an entire lesson, reachable via ?notes=1 without re-running the
    interactive steps. */
 .lesson-mode-toggle{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-bottom:10px;}
-.lesson-mode-toggle a{font:800 13px var(--font-ui);}
+.lesson-mode-toggle a{font:800 13px var(--font-ui);display:inline-flex;align-items:center;gap:6px;}
 .lesson-resume-note{background:var(--tint-accent);border-radius:var(--radius);padding:10px 16px;font:700 13.5px var(--font-ui);color:var(--ink);margin-bottom:10px;line-height:1.5;}
 .lesson-resume-note a{font-weight:800;margin-left:4px;white-space:nowrap;}
 .notes-view{padding-bottom:4px;}
@@ -1009,4 +1009,4 @@ a.mode-card{text-decoration:none;display:block;}
 .tool-tile__name .premium-badge{cursor:inherit;}
 .ochem-quota{margin:14px 0 0;font:700 12.5px var(--font-ui);color:var(--muted);line-height:1.6;}
 .ochem-quota .premium-badge{margin-left:4px;vertical-align:middle;}
-.ico-notes{vertical-align:-2px;}
+.ico-notes{flex-shrink:0;}
