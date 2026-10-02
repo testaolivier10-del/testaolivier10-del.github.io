@@ -25,7 +25,8 @@ test('the unsubscribe link and List-Unsubscribe go to the Worker, never the stat
   assert.equal(unsubscribeUrl(row, { API_URL: 'https://api.levlprep.com/' }), 'https://api.levlprep.com/api/unsubscribe?t=abc');
   const html = render(row, {});
   assert.ok(html.includes(`${API_URL_DEFAULT}/api/unsubscribe?t=abc`));
-  assert.ok(!html.includes('levlprep.com/api/unsubscribe'));
+  // The static site (GitHub Pages) answers 404 there; api.levlprep.com is the Worker.
+  assert.ok(!/(?:\/\/|www\.)levlprep\.com\/api\/unsubscribe/.test(html));
 });
 
 test('a reminder link is always a page on this site', () => {
