@@ -74,7 +74,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
 | W7 | UX and accessibility | `-w7` | merged |
 | W8 | SEO, performance, repo | `-w8` | merged |
-| W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
+| W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | in progress |
 
 ### Which audit findings each workstream owns
 
