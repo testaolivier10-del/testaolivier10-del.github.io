@@ -46,7 +46,9 @@
 
   /* Hides o.hide while o.locked() holds and shows a gate after o.after,
      linking to o.notes. Follows access changes both ways, so a pass confirmed
-     after load opens the page without a reload. o.badgeIn gets a badge. */
+     after load opens the page without a reload. o.badgeIn gets a badge: the
+     eyebrow, where it does not wrap the title onto another line and push the
+     page down after first paint (audit 2026-10, layout shift). */
   function lock(o){
     var box = null, badged = false;
     onChange(function(){
@@ -87,7 +89,7 @@
       after: hero,
       notes: read ? read.getAttribute('href') : '../learn.html',
       locked: function(){ return locked(pageChapter); },
-      badgeIn: hero && hero.querySelector('h1'),
+      badgeIn: hero && (hero.querySelector('.eyebrow') || hero.querySelector('h1')),
       badge: badge(pageChapter)
     });
   }

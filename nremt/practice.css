@@ -427,6 +427,10 @@ select:focus{outline:none;border-color:var(--accent);}
 }
 
 /* ---- Daily streak card ---- */
+/* Space held for the streak card the engine draws, so the modes below it do
+   not jump when it lands (audit 2026-10, layout shift). */
+#streakWidget:empty{min-height:125px;}
+@media (max-width:640px){ #streakWidget:empty{min-height:167px;} }
 .streak-card{
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
   box-shadow:var(--lift);padding:18px 20px;margin-bottom:22px;

@@ -219,6 +219,9 @@ a.anp-tag:hover{text-decoration:underline;}
   .anp-stepped .anp-ls-steps .current .t{display:inline;}
 }
 @media (max-width:560px){.anp-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.anp-stepped .anp-step{display:block;margin:0 0 28px;}.anp-ls-prog,.anp-ls-actions{display:none;}.anp-stepped .anp-ls-steps .t{display:inline;}}
 @media print{.anp-ls{display:block;}.anp-ls-rail,.anp-ls-actions{display:none !important;}.anp-stepped .anp-step{display:block;}}
 
 /* Glossary terms in running text: underlined, with a definition on hover,
@@ -404,3 +407,7 @@ a.anp-chap-title:hover{color:var(--cink);}
 .anp-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .anp-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
 .anp-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (anp-book.js), so nothing on screen moves. */
+.anp-book #anp-book{min-height:100vh;}

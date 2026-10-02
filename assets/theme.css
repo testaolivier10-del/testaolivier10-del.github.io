@@ -1178,6 +1178,8 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   text-transform:uppercase;letter-spacing:.05em;cursor:pointer;vertical-align:middle;
 }
 .premium-badge:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;}
+/* In an eyebrow line the pill must not make the line taller once it lands. */
+.eyebrow .premium-badge{margin-block:-4px;}
 .premium-passes{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px;}
 .premium-pass{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:10px 12px;border-radius:var(--radius);background:var(--tint-accent);font-size:14px;}
@@ -1349,6 +1351,9 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 
 /* --- the chapter frame --- */
 .tb-main{padding:26px 0 60px;min-width:0;max-width:74ch;}
+/* The textbook column fills in by script; a screen of height keeps the
+   footer from being on screen and then thrown down (audit 2026-10). */
+#tbChapter{min-height:100vh;}
 .tb-chapter-head{border-bottom:var(--bw) solid var(--line);padding-bottom:18px;margin-bottom:8px;}
 .tb-chapter-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;}
 .tb-chapter-title{font:900 clamp(27px,4vw,36px) var(--font-ui);letter-spacing:-.02em;margin:0 0 8px;}

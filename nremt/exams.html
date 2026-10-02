@@ -123,8 +123,11 @@
             <option value="expert">Expert only</option>
           </select>
         </div>
+        <!-- Off by default (audit 2026-10): a free student gets one exam, and
+             locking answers and hiding Flag on that one attempt costs them the
+             review they came for. Switch it on to rehearse the real rules. -->
         <label class="realistic-toggle" for="realisticMode">
-          <input type="checkbox" id="realisticMode" checked>
+          <input type="checkbox" id="realisticMode">
           <span><strong>Exam-realistic</strong> &mdash; no flagging, no going back, like the real thing</span>
         </label>
         <button class="start-btn" id="startBtn">Start timed exam</button>

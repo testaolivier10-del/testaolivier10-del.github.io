@@ -6,7 +6,9 @@
    reuse the shared anp-pr- session chrome (bar, stage, summary, chips). */
 
 /* Reserve room before the bank loads, so the footer does not jump. */
-.anp-app-mount[data-slug="practice"],.anp-app-mount[data-slug="review"],.anp-app-mount[data-slug="exams"]{min-height:420px;margin:22px 0 10px;max-width:820px;}
+/* At least a screen tall, so the footer is not on screen at first paint and
+   then thrown down the page when the app draws (audit 2026-10, layout shift). */
+.anp-app-mount[data-slug="practice"],.anp-app-mount[data-slug="review"],.anp-app-mount[data-slug="exams"]{min-height:max(420px,calc(100vh - 160px));margin:22px 0 10px;max-width:820px;}
 .anp-pr-loading{padding:20px 0;}
 
 /* Stat tiles */
@@ -277,7 +279,7 @@
 /* === flashcards, dashboard, search, hub === */
 /* Theme tokens only (assets/theme.css, anp.css), so dark mode comes free.
    Prefixes: anp-fc- flashcards, anp-db- dashboard, anp-sr- search. The tools hub has its own file, tools-hub.css. */
-.anp-app-mount[data-slug="flashcards"],.anp-app-mount[data-slug="dashboard"],.anp-app-mount[data-slug="search"]{min-height:320px;margin:18px 0 28px;}
+.anp-app-mount[data-slug="flashcards"],.anp-app-mount[data-slug="dashboard"],.anp-app-mount[data-slug="search"]{min-height:max(320px,calc(100vh - 160px));margin:18px 0 28px;}
 .anp-app-mount[data-slug="flashcards"] .panel,.anp-app-mount[data-slug="dashboard"] .panel{margin-bottom:18px;}
 .anp-app-mount[data-slug="flashcards"] .panel h2,.anp-app-mount[data-slug="dashboard"] .panel h2{font-size:17px;}
 

@@ -111,6 +111,16 @@ const disclaimer = html => mentionsTeas(html) ? `<p class="anp-disclaimer">${esc
 
 /* ------------------------------------------------------------- lesson */
 
+
+/* The stepped lesson view is in the page from the first paint (audit
+   2026-10, layout shift): anp-lesson.js used to switch the page from one long
+   scroll to one part at a time after load, which moved everything below the
+   card on a phone (CLS 0.27 to 1.0). The markup is the stepped first part;
+   this opens the part the script will (the #hash's part, else the saved
+   step) before the script runs. Without JavaScript, anp.css shows every part
+   in one scroll (@media (scripting: none)). */
+const STEP_FIRST_PAINT = `<script>(function(){var s=document.querySelector('.anp-ls'),p=s&&s.querySelectorAll('.anp-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.anp-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('anp_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>`;
+
 function lessonPage(id) {
   const t = topicById(id), ch = chapterById(t.chapter), L = C.lessons[id];
   const depth = '../';
@@ -199,11 +209,11 @@ function lessonPage(id) {
 <div class="xshell">
   ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: t.title }], depth)}
 </div>
-<div class="xshell anp-ls">
+<div class="xshell anp-ls${parts.length > 1 ? ' anp-stepped' : ''}">
   <aside class="anp-ls-rail anp-nav-ref" aria-label="Lesson parts">
     <p class="anp-ls-k">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)}</p>
     <p class="anp-ls-links"><a href="../chapters/${ch.id}.html">&larr; Back to the chapter</a><a href="../notes/${id}.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></svg>Read the notes</a></p>
-    <div class="anp-ls-prog" hidden><div class="anp-ls-track"><div class="anp-ls-fill"></div></div><span class="anp-ls-count">Step 1 / ${parts.length}</span></div>
+    <div class="anp-ls-prog"><div class="anp-ls-track"><div class="anp-ls-fill"></div></div><span class="anp-ls-count">Step 1 / ${parts.length}</span></div>
     <ol class="anp-ls-steps">${parts.map((p, i) => `<li><a href="#${p.id}"><span class="n">${i + 1}</span><span class="t">${p.nav}</span></a></li>`).join('')}</ol>
   </aside>
   <main id="main" class="anp-ls-main anp-lesson">
@@ -214,12 +224,12 @@ function lessonPage(id) {
     <p class="anp-tags anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span><span class="anp-tag">${esc(t.kind)}</span></p>
   </header>
   <div class="anp-ls-card">
-${parts.map((p, i) => `  <section class="anp-part anp-step" id="${p.id}" aria-labelledby="h-${p.id}">
+${parts.map((p, i) => `  <section class="anp-part anp-step${i === 0 ? ' is-on' : ''}" id="${p.id}" aria-labelledby="h-${p.id}">
     <p class="anp-step-k">Part ${i + 1} · ${p.kind}</p>
     <h2 id="h-${p.id}" tabindex="-1">${p.h}</h2>
     <div class="anp-step-body${p.cls ? ` ${p.cls}` : ''}">${p.html}</div>
   </section>`).join('\n')}
-    <div class="anp-ls-actions anp-nav-ref" hidden><button type="button" class="anp-ls-back">&larr; Previous</button><button type="button" class="anp-ls-go">Continue &rarr;</button><a class="anp-ls-go" hidden href="${nxBuilt ? `${nx.id}.html">Next lesson` : `../chapters/${ch.id}.html">Back to the chapter`} &rarr;</a></div>
+    <div class="anp-ls-actions anp-nav-ref"><button type="button" class="anp-ls-back">&larr; Previous</button><button type="button" class="anp-ls-go">Continue &rarr;</button><a class="anp-ls-go" hidden href="${nxBuilt ? `${nx.id}.html">Next lesson` : `../chapters/${ch.id}.html">Back to the chapter`} &rarr;</a></div>
   </div>
   <nav class="anp-ls-related anp-nav-ref" aria-label="Related lessons">
     ${chipRow('Read', `<a href="../notes/${id}.html">${esc(t.title)} notes</a>`)}
@@ -229,6 +239,7 @@ ${parts.map((p, i) => `  <section class="anp-part anp-step" id="${p.id}" aria-la
   ${disclaimer(L.hook + L.summary)}
   </main>
 </div>
+${STEP_FIRST_PAINT}
 ${footer(depth)}
 <script type="application/json" id="anp-page-data">${JSON.stringify(pageData).replace(/</g, '\\u003c')}</script>
 <script src="../../assets/report-question.js" defer></script>

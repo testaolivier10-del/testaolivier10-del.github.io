@@ -47,6 +47,9 @@
    link ochem.css instead of repeating it.
    ========================================================================== */
 .lesson-shell{max-width:1180px;margin:0 auto;}
+/* ochem-nav.js prefixes "Chapter N · " after first paint; on one line it
+   cannot wrap the eyebrow onto a second and push the title down. */
+.eyebrow[data-chapter]{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 /* With a rail (every engine-driven lesson and mechanism): a sticky column of
    where-you-are beside the card. Without one: a single reading column. */
 .lesson-shell:not(:has(.lesson-rail)) > *{max-width:820px;margin-left:auto;margin-right:auto;}
@@ -81,8 +84,15 @@
 .lesson-step.current .n{background:var(--accent);color:var(--on-accent-fill);}
 .lesson-shell:has(.lesson-rail) .hero{padding-bottom:22px;}
 .lesson-shell:has(.lesson-rail) .lesson-card .step-body,.lesson-shell:has(.lesson-rail) .lesson-card .explain-box{max-width:72ch;}
+/* The step card is drawn by the lesson engine; hold its usual height so the
+   page does not jump when it lands (audit 2026-10, layout shift). */
+.lesson-shell > #card:empty{min-height:calc(100vh - 200px);}
 @media (max-width:900px){
-  .lesson-shell:has(.lesson-rail){display:block;}
+  /* Stacked, the rail goes under the hero, where the static progress bar
+     already sits, rather than above it: inserted on top it pushed the whole
+     lesson down after first paint (audit 2026-10, CLS 0.7 to 0.9). */
+  .lesson-shell:has(.lesson-rail){display:flex;flex-direction:column;}
+  .lesson-shell > .hero{order:-1;}
   .lesson-shell > .lesson-rail{position:static;max-height:none;overflow:visible;padding:0 0 14px;gap:10px;}
   .lesson-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
   .lesson-step button{width:auto;padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}

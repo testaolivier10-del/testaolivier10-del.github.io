@@ -40,6 +40,11 @@
   /* Dashboard layout. Panels, stat cards, tracks, calendar and badges all come
      from the shared system in assets/theme.css; this only sets the page grid
      and the few dashboard-specific bits (level card, readiness card, charts). */
+  /* Space held for the stat cards the script draws, so the page below does
+     not jump when they land (audit 2026-10, layout shift: CLS 0.77 on a phone). */
+  #statCards:empty{min-height:167px;}
+  #topicBox:empty{min-height:430px;}
+  @media (max-width:640px){ #statCards:empty{min-height:334px;} #topicBox:empty{min-height:513px;} }
   .dash-grid{display:grid;grid-template-columns:1.35fr 0.65fr;gap:28px;padding:26px 0 56px;align-items:start;}
   .dash-col > .panel{margin-bottom:20px;}
   .dash-col > .panel:last-child{margin-bottom:0;}
