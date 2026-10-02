@@ -137,7 +137,7 @@
      That is right only when the file is newer than everything on the device;
      restore a month-old backup onto a browser you have studied on since and it
      quietly deleted the month. So a restore MERGES, the way account.js
-     reconciles a synced copy with the local one:
+     reconciles a synced copy with the local one (same code):
 
        - a key only one side has is kept;
        - a key with a merge rule registered with StudyHubAccount (flashcard
@@ -152,80 +152,17 @@
          more recently (the later day in hub_activity_v1); the caller can
          override that after asking the person. */
 
-  // Taken whole rather than merged: an in-progress attempt or a preference is
-  // one choice, and half of one plus half of another is neither.
-  function wholeValue(key){
-    return key === 'nremt_inprogress_exam' || /(_theme|_prefs(_v\d+)?|_sound|_opt_out|_ai_met)$/.test(key);
-  }
-
-  var STAMPS = ['updatedAt', 'updated', 'ts', 't', 'at', 'time', 'lastSeen', 'last', 'date', 'day'];
-  var DATE_RE = /^\d{4}-\d{2}-\d{2}/;
-
-  function isObj(x){ return x !== null && typeof x === 'object' && !Array.isArray(x); }
-  function same(a, b){ return JSON.stringify(a) === JSON.stringify(b); }
-
-  function stampOf(o){
-    for(var i = 0; i < STAMPS.length; i++){
-      var v = o[STAMPS[i]];
-      if(typeof v === 'number' || (typeof v === 'string' && v)) return { name: STAMPS[i], v: v };
-    }
-    return null;
-  }
-
-  /* local, backup -> merged. ctx.prefer ('local' | 'backup') settles a
-     conflict; ctx.conflict records that one happened. */
-  function mergeValue(a, b, ctx){
-    if(same(a, b)) return a;
-    if(typeof a === 'number' && typeof b === 'number') return Math.max(a, b);
-    if(typeof a === 'boolean' && typeof b === 'boolean') return a || b;
-    if(typeof a === 'string' && typeof b === 'string' && DATE_RE.test(a) && DATE_RE.test(b)) return a > b ? a : b;
-    if(Array.isArray(a) && Array.isArray(b)){
-      var out = a.slice(), seen = {};
-      a.forEach(function(x){ seen[JSON.stringify(x)] = 1; });
-      b.forEach(function(x){ var k = JSON.stringify(x); if(!seen[k]){ seen[k] = 1; out.push(x); } });
-      return out;
-    }
-    if(isObj(a) && isObj(b)){
-      // A record that says when it was last touched is one record: a later
-      // copy replaces it whole (a flashcard's schedule, a per-day counter on a
-      // different day). The same stamp merges field by field.
-      var sa = stampOf(a), sb = stampOf(b);
-      if(sa && sb && sa.name === sb.name && typeof sa.v === typeof sb.v && sa.v !== sb.v){
-        return sa.v > sb.v ? a : b;
-      }
-      var o = {};
-      Object.keys(a).forEach(function(k){ o[k] = a[k]; });
-      Object.keys(b).forEach(function(k){
-        o[k] = Object.prototype.hasOwnProperty.call(a, k) ? mergeValue(a[k], b[k], ctx) : b[k];
-      });
-      return o;
-    }
-    ctx.conflict = true;
-    return ctx.prefer === 'backup' ? b : a;
-  }
-
-  function registeredMerger(key){
-    var acct = window.StudyHubAccount;
-    return acct && typeof acct.mergerFor === 'function' ? acct.mergerFor(key) : null;
-  }
-
-  // Raw localStorage strings in, a raw string out.
+  /* The rules themselves live in account.js (StudyHubAccount.mergeRaw), the
+     one merge both a sync and a restore use, so the two cannot drift apart.
+     Every page that offers a restore also loads account.js; without it a
+     restore still never deletes, it just keeps one side of each key that
+     both have. */
   function mergeRaw(key, localRaw, backupRaw, prefer){
     if(localRaw === null || localRaw === undefined) return { value: backupRaw, conflict: false };
     if(localRaw === backupRaw) return { value: localRaw, conflict: false };
-    var rule = registeredMerger(key);
-    if(rule){
-      try { var r = rule(localRaw, backupRaw); if(typeof r === 'string') return { value: r, conflict: false }; }
-      catch(e){}
-    }
-    var pick = { value: prefer === 'backup' ? backupRaw : localRaw, conflict: true };
-    if(wholeValue(key)) return pick;
-    var a, b;
-    try { a = JSON.parse(localRaw); b = JSON.parse(backupRaw); }
-    catch(e){ return pick; }
-    var ctx = { prefer: prefer, conflict: false };
-    var merged = mergeValue(a, b, ctx);
-    return { value: JSON.stringify(merged), conflict: ctx.conflict };
+    var acct = window.StudyHubAccount;
+    if(acct && typeof acct.mergeRaw === 'function') return acct.mergeRaw(key, localRaw, backupRaw, prefer === 'backup' ? 'other' : 'local');
+    return { value: prefer === 'backup' ? backupRaw : localRaw, conflict: true };
   }
 
   // The latest day anybody studied, from the shared activity record.

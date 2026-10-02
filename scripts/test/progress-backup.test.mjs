@@ -6,10 +6,13 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createBrowser } from './harness.mjs';
 
+// account.js always: the merge rules live there (StudyHubAccount.mergeRaw), and
+// every page that offers a restore loads it. withAccount adds the subjects'
+// registered merge rules on top.
 function fresh(withAccount = false){
   const b = createBrowser();
+  b.load('assets/account.js');
   if(withAccount){
-    b.load('assets/account.js');
     b.load('assets/hub-progress.js');
     b.load('ochem/assets/ochem-xp.js');
   }
