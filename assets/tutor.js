@@ -577,13 +577,15 @@
     return Math.log(1 + (N - df + 0.5) / (df + 0.5));
   }
 
-  var CHILD_RE = /\b(newborns?|neonat\w*|infants?|toddlers?|child(ren)?|pediatric\w*|preschool\w*|school-age|adolescen\w*|babies|baby)\b/i;
-  var ADULT_RE = /\b(adults?|elderly|older adults?|geriatric)\b/i;
-  // Which age group a question or passage is about, when it says.
+  var CHILD_RE = /\b(newborns?|neonat\w*|infants?|toddlers?|child(ren)?|pediatric\w*|preschool\w*|school-age|adolescen\w*|babies|baby)\b/gi;
+  var ADULT_RE = /\b(adults?|elderly|geriatric)\b/gi;
+  // Which age group a question or passage is mostly about, when it says. A
+  // passage on toddlers usually mentions adults once, for comparison, so this
+  // counts mentions rather than asking whether either appears.
   function ageGroupOf(text){
-    var child = CHILD_RE.test(text), adult = ADULT_RE.test(text);
-    if(child && !adult) return 'child';
-    if(adult && !child) return 'adult';
+    var child = (text.match(CHILD_RE) || []).length, adult = (text.match(ADULT_RE) || []).length;
+    if(child > adult) return 'child';
+    if(adult > child) return 'adult';
     return null;
   }
 
@@ -719,7 +721,7 @@
     }
     var top = hits[0].chunk;
     // Below the confidence line, quoting a passage presents a guess as the
-    // answer. Offer the pages instead, labelled as related rather than as an
+    // answer. Offer the pages instead, labeled as related rather than as an
     // answer, and let the student read them in context.
     if(hits[0].score < CONFIDENT){
       var related = hits.slice(0, 4).filter(function(h){ return h.score >= Math.max(1.2, hits[0].score * 0.5); });
