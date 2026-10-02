@@ -144,9 +144,10 @@ ${JSON.stringify(jsonld, null, 2)}
    premium loads the site's Premium module (assets/premium.js) ahead of the
    course scripts, on the pages with a Premium surface; AnpCore reads it and
    does without it when it is absent. */
-export function tail({ depth, section, extra = [], premium = false }) {
+export function tail({ depth, section, extra = [], premium = false, site = [] }) {
   const s = src => `<script src="${depth}assets/${src}" defer></script>`;
   return [
+    ...site.map(f => `<script src="${depth}../assets/${f}" defer></script>`),
     ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
     `<script>window.ANP_SECTION = '${section}'; window.ANP_BASE = '${depth}';</script>`,
     s('anp-curriculum.js'), s('anp-core.js'), s('anp-glossary.js'), s('anp-nav.js'),
@@ -171,9 +172,15 @@ export function crumbNav(items, depth) {
       : `<a href="${it.href}">${esc(it.name)}</a> <span aria-hidden="true">&rsaquo;</span>`).join(' ')}</nav>`;
 }
 
+/* Beta label (audit 2026-10, fix 11; spec decision 74): the course has had no
+   review by a licensed A&P instructor and docs/anp-needs-author.md holds open
+   items, so every page says so. Remove only after that review. */
+export const BETA_PILL = '<span class="anp-beta">Beta</span>';
+export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&amp;P instructor.';
+
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
+  <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
   <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a></p>
 </footer>`;
 }

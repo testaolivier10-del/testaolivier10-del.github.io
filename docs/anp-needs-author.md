@@ -12,8 +12,9 @@ Status values:
 
 Going live (2026-10-01): the owner took the course out of Beta. That does not settle anything
 below: every **open** and **pending review** item stays as it is, and no instructor review has
-happened yet. The site no longer says "pending review by a licensed instructor" in the course
-footer; it says the course follows current published sources and points to "Report a problem".
+happened yet. Site audit follow-up (2026-10-02): the Beta label is back (spec decision 74); every
+A&P page says the course has not yet been reviewed by a licensed A&P instructor, until that review
+settles the items below.
 
 ## Contested science
 
