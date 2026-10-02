@@ -83,7 +83,7 @@ const MIME = {
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
-    if (name === '.git' || name === 'node_modules' || name === 'scripts') continue;
+    if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
     if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
