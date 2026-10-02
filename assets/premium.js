@@ -52,9 +52,7 @@
      Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
   var FOUNDING = { off: 30, until: '2027-01-31' };
 
-  /* Pass-or-extend (NREMT): fail the exam during a bought pass and claim one
-     free extension. The numbers must match GUARANTEE in worker/src/premium.js,
-     which enforces them (site rule premium-copy checks the two agree). */
+  // Pass-or-extend; must match the Worker's GUARANTEE (rule premium-copy).
   var GUARANTEE = { minExams: 2, claimDays: 30, extendDays: 90 };
 
   /* The split, per course. `free` and `premium` are what the dialog lists, so
@@ -419,8 +417,7 @@
 
   /* ---- the dialog ------------------------------------------------------- */
 
-  /* Pass-or-extend in one paragraph, from GUARANTEE: the dialog, the
-     account page and premium.html all show this same text. */
+  // Shown by the dialog, the account page and premium.html alike.
   function guaranteeText() {
     var g = GUARANTEE;
     return 'Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, ' +
@@ -522,8 +519,6 @@
         (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
       body.innerHTML = '<ul class="premium-passes">' +
         c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>' +
-        // The conditions sit next to the price, not behind a link: "pass
-        // guarantee" alone promised more than the terms give (audit 2026-10).
         (c.guarantee ? '<p class="premium-guarantee">' + esc(guaranteeText()) + '</p>' : '');
       // innerHTML for the links; every other part is a fixed string or
       // escaped, as elsewhere in this dialog.

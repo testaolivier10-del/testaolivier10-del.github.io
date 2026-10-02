@@ -250,7 +250,7 @@ function hubLd() {
       },
     ],
   };
-  return `<script type="application/ld+json">\n${JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/')}\n</script>`;
+  return `<script type="application/ld+json">\n${JSON.stringify(ld).replace(/<\//g, '<\\/')}\n</script>`;
 }
 
 {

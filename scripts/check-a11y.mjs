@@ -72,6 +72,7 @@ const PAGES = [
   // in for all eight: it renders the shell, the quiz and a page of controls.
   ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
   ['/privacy.html', 'a prose page with controls'],
+  ['/premium.html', 'the pricing page (free vs Premium, generated)'],
   // The A&P course: its own generator and runtime, so its own shapes.
   ['/anatomy-physiology/', 'the A&P course home'],
   ['/anatomy-physiology/lessons/heart-chambers-valves.html', 'an A&P lesson with a masked figure'],

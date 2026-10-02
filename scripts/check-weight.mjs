@@ -79,7 +79,10 @@ const SHELL_BUDGETS = [
      the signed-in user before trusting a cached pass and reports failed
      refreshes, and site-chrome.js shows the service worker's new-version
      toast (together about 1.1 KB gzipped, after trimming their comments). */
-  ['site', 254],
+  /* 254 -> 254.5 for the free-vs-Premium pass (audit 2026-10, W2): the purchase
+     dialog now shows Pass-or-extend's conditions next to the price instead of
+     behind a link, and links the pricing page (about 0.15 KB gzipped). */
+  ['site', 254.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -195,8 +198,12 @@ const BUDGETS = [
      now carries (the two exact script files it may load, the one Worker
      host, form-action): about 100 more bytes of policy per page, on pages
      that were already within a few bytes of their budgets. */
-  ['index.html', 6.1],
-  ['nremt/index.html', 9],
+  /* index.html 6.1 -> 6.6 and nremt/index.html 9 -> 9.1 (audit 2026-10, W2): the
+     hub states what is free and the price from premium.js, and both pages'
+     structured data now list each course's passes as offers instead of
+     claiming the course is free. W7's one-sentence hero should give some back. */
+  ['index.html', 6.6],
+  ['nremt/index.html', 9.1],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-
