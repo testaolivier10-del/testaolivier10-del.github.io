@@ -127,7 +127,7 @@
     font-size:12px;font-weight:700;color:var(--accent);cursor:pointer;
     list-style:none;display:inline-flex;align-items:center;gap:4px;
   }
-  .path-alts summary::before{content:"▸";font-size:10px;transition:transform .15s;}
+  .path-alts summary::before{content:var(--disclose);font-size:15px;line-height:1;transition:transform .15s;}
   .path-alts[open] summary::before{transform:rotate(90deg);}
   .path-alts summary::-webkit-details-marker{display:none;}
   .path-alts ul{margin:6px 0 0;padding-left:16px;}

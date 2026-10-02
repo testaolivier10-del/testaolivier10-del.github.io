@@ -340,7 +340,7 @@
 .rec-alt button:active{transform:scale(.985);}
 .rec-alt .t{font:800 14px var(--font-ui);flex:1;min-width:0;}
 .rec-alt .d{display:block;font:600 12.5px var(--font-ui);color:var(--muted);margin-top:2px;line-height:1.45;}
-.rec-alt .go{font:900 18px var(--font-mono);color:var(--accent);flex-shrink:0;}
+.rec-alt .go{font:900 18px var(--font-ui);color:var(--accent);flex-shrink:0;}
 
 /* ---- mastery snapshot strip ---- */
 .snapshot{
@@ -782,7 +782,7 @@ a.mode-card{text-decoration:none;display:block;}
 .tb-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
 .tb-section-title{font:900 clamp(19px,2.4vw,23px) var(--font-ui);letter-spacing:-.01em;margin:0;}
 .tb-section-meta{display:flex;align-items:center;gap:9px;flex-shrink:0;}
-.tb-mastery{font:900 11.5px var(--font-mono);color:var(--accent);background:var(--tint-accent);padding:5px 9px;border-radius:var(--radius-pill);white-space:nowrap;}
+.tb-mastery{font:900 11.5px var(--font-ui);font-variant-numeric:tabular-nums;color:var(--accent);background:var(--tint-accent);padding:5px 9px;border-radius:var(--radius-pill);white-space:nowrap;}
 .tb-mastery.none{color:var(--muted);background:var(--hover-tint);}
 .tb-readtoggle{
   display:inline-flex;align-items:center;gap:6px;cursor:pointer;

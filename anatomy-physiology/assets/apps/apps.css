@@ -404,7 +404,7 @@ button.anp-fc-face:hover{border-color:var(--accent);}
 .anp-db-ch:first-of-type{border-top:0;}
 .anp-db-ch > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:18px minmax(0,1fr);gap:6px;align-items:start;border-radius:10px;}
 .anp-db-ch > summary::-webkit-details-marker{display:none;}
-.anp-db-ch > summary::before{content:"\203A";font:900 18px/1 var(--font-ui);color:var(--accent);padding-top:10px;transition:transform .2s ease;}
+.anp-db-ch > summary::before{content:var(--disclose);font:900 18px/1 var(--font-ui);color:var(--accent);padding-top:10px;transition:transform .2s ease;}
 .anp-db-ch[open] > summary::before{transform:rotate(90deg);}
 .anp-db-ch > summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .anp-db-ch > summary .anp-db-row{border-top:0;}
