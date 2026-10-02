@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carbenes &amp; cyclopropanation — Organic Chem Lesson | LevlPrep</title>
+<meta name="description" content="Learn what a carbene is, how dichlorocarbene and the Simmons–Smith reagent turn an alkene into a cyclopropane, and why the addition keeps cis and trans.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/cyclopropanation.html">
+<meta property="og:title" content="Carbenes &amp; cyclopropanation — Organic Chem Lesson | LevlPrep">
+<meta property="og:description" content="Learn what a carbene is, how dichlorocarbene and the Simmons–Smith reagent turn an alkene into a cyclopropane, and why the addition keeps cis and trans.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/cyclopropanation.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script src="../assets/ochem-premium.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/cyclopropanation.html#lesson",
+      "name": "Carbenes & cyclopropanation",
+      "url": "https://levlprep.com/ochem/lessons/cyclopropanation.html",
+      "description": "Learn what a carbene is, how dichlorocarbene and the Simmons–Smith reagent turn an alkene into a cyclopropane, and why the addition keeps cis and trans.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Carbenes & cyclopropanation"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Alkenes & Alkynes",
+          "item": "https://levlprep.com/ochem/learn.html#m-alkenes-alkynes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Carbenes & cyclopropanation",
+          "item": "https://levlprep.com/ochem/lessons/cyclopropanation.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carbenes &amp; cyclopropanation</span></nav></div>
+<!-- crumb:end -->
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow" data-chapter="alkenes-alkynes">Alkenes &amp; Alkynes</div>
+    <h1 style="margin-bottom:4px;">Carbenes &amp; cyclopropanation.</h1>
+    <p class="lede" style="margin-top:0;">One carbon that adds to both ends of a C=C at once, from the same face.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 10</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/cyclopropanation.html">Carbenes &amp; cyclopropanation &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/alkene-oxidation.html">Oxidative cleavage &amp; dihydroxylation</a><a href="../lessons/cis-trans-ez.html">Cis/trans and E/Z</a><a href="../lessons/acidity-factors.html">Factors affecting acidity</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Next</span><span class="lesson-links-list"><a href="../lessons/hydrogenation.html">Catalytic hydrogenation</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Which group does each reagent put on the ring? Three possible answers,
+     four rows, ordered so the answers do not run down the option order.
+     The point is that the reagent, not the alkene, decides the one-carbon
+     piece, and that two very different reagents both deliver plain CH2. */
+  var CASES = [
+    { id:'c1', t:'CHCl₃ and KOC(CH₃)₃', right:'cl',
+      why:'The base removes chloroform&rsquo;s H, the anion loses Cl⁻, and dichlorocarbene, :CCl₂, adds. The ring carbon it supplies carries two chlorines.' },
+    { id:'c2', t:'CH₂I₂ and Zn(Cu)', right:'h',
+      why:'The Simmons&ndash;Smith carbenoid, ICH₂ZnI, hands over a plain CH₂. Both iodines leave with the zinc as ZnI₂.' },
+    { id:'c3', t:'CHBr₃ and KOC(CH₃)₃', right:'br',
+      why:'Bromoform behaves exactly like chloroform: deprotonation, loss of Br⁻, and dibromocarbene, :CBr₂, adds.' },
+    { id:'c4', t:'CH₂N₂ and light', right:'h',
+      why:'Light breaks diazomethane into N₂ and free methylene, :CH₂. It adds a plain CH₂ too, but it is dangerous to handle and also attacks C&ndash;H bonds, so Simmons&ndash;Smith is the usual choice.' }
+  ];
+  var OPTS = [ { k:'br', l:'CBr₂' }, { k:'cl', l:'CCl₂' }, { k:'h', l:'CH₂' } ];
+  window.OchemLessonEngine.start({
+    topicId: 'cyclopropanation',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'One carbon, two new bonds, one face.',
+        bodyHtml: '<p class="step-body">Stir <i>cis</i>-but-2-ene with diiodomethane, CH₂I₂, and a zinc&ndash;copper mixture, Zn(Cu). A CH₂ group bridges the two carbons of the double bond, and the product is <i>cis</i>-1,2-dimethylcyclopropane. <i>trans</i>-But-2-ene gives <i>trans</i>-1,2-dimethylcyclopropane. Making a three-membered carbon ring from an alkene is called <b>cyclopropanation</b>.</p>' +
+          '<p class="step-body">Both new C&ndash;C bonds form in one step on the same face of the alkene: a <b>syn addition</b>, like OsO₄ dihydroxylation. Nothing can rotate on the way, so the alkene&rsquo;s <i>cis</i> or <i>trans</i> relationship is carried into the ring. A reaction like this, where each stereoisomer of the starting material gives its own stereoisomer of the product, is <b>stereospecific</b>.</p>',
+        diagramHtml: '<!-- fig:cp-syn-stereo:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 300" role="img" aria-label="Top: cis-but-2-ene, with both methyl groups on the upper side of the double bond, reacts with CH2I2 and Zn(Cu) to give a cyclopropane drawn as a triangle with the new CH2 at the apex and both methyls on wedges: the cis ring, which is meso. Bottom: trans-but-2-ene, with one methyl up and one down, gives the ring with one methyl on a wedge and one on a hashed bond: the trans ring, formed as a racemate. The two new ring bonds are in color."><line class="fg-bond" x1="48" y1="66" x2="92" y2="66"></line><line class="fg-bond" x1="48" y1="74" x2="92" y2="74"></line><line class="fg-bond" x1="48" y1="70" x2="39.51" y2="55.32"></line><circle class="fg-atom" cx="31" cy="40.6" r="17"></circle><text class="fg-lbl" x="31" y="44.12" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="92" y1="70" x2="100.49" y2="55.32"></line><circle class="fg-atom" cx="109" cy="40.6" r="17"></circle><text class="fg-lbl" x="109" y="44.12" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="48" y1="70" x2="40.5" y2="82.98"></line><circle class="fg-atom" cx="35" cy="92.5" r="11"></circle><text class="fg-lbl" x="35" y="96.94" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="92" y1="70" x2="99.5" y2="82.98"></line><circle class="fg-atom" cx="105" cy="92.5" r="11"></circle><text class="fg-lbl" x="105" y="96.94" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="70" y="132" text-anchor="middle" font-size="11">cis-but-2-ene</text><line class="fg-arrow" x1="132" y1="72" x2="198" y2="72"></line><path class="fg-head" d="M206 72 L198 76.16 L198 67.84 Z"></path><text class="fg-tag-mut" x="169" y="60" text-anchor="middle" font-size="10">CH₂I₂</text><text class="fg-tag-mut" x="169" y="90" text-anchor="middle" font-size="10">Zn(Cu)</text><line class="fg-bond" x1="258" y1="88" x2="306" y2="88"></line><line class="fg-bond-hi" x1="306" y1="88" x2="282" y2="48"></line><line class="fg-bond-hi" x1="282" y1="48" x2="258" y2="88"></line><text class="fg-lbl" x="282" y="38.44" text-anchor="middle" font-size="12">CH₂</text><path class="fg-wedge" d="M258 88 L242.84 96.8 L249.2 103.16 Z"></path><circle class="fg-atom" cx="234" cy="112" r="17"></circle><text class="fg-lbl" x="234" y="115.52" text-anchor="middle" font-size="9.5">CH₃</text><path class="fg-wedge" d="M306 88 L314.8 103.16 L321.16 96.8 Z"></path><circle class="fg-atom" cx="330" cy="112" r="17"></circle><text class="fg-lbl" x="330" y="115.52" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag-good" x="282" y="142" text-anchor="middle" font-size="10">cis ring, meso</text><line class="fg-rule" x1="16" y1="150" x2="344" y2="150"></line><line class="fg-bond" x1="48" y1="210" x2="92" y2="210"></line><line class="fg-bond" x1="48" y1="218" x2="92" y2="218"></line><line class="fg-bond" x1="48" y1="214" x2="39.51" y2="199.32"></line><circle class="fg-atom" cx="31" cy="184.6" r="17"></circle><text class="fg-lbl" x="31" y="188.11" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="92" y1="214" x2="100.49" y2="228.68"></line><circle class="fg-atom" cx="109" cy="243.4" r="17"></circle><text class="fg-lbl" x="109" y="246.92" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="48" y1="214" x2="40.5" y2="226.98"></line><circle class="fg-atom" cx="35" cy="236.5" r="11"></circle><text class="fg-lbl" x="35" y="240.94" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="92" y1="214" x2="99.5" y2="201.02"></line><circle class="fg-atom" cx="105" cy="191.5" r="11"></circle><text class="fg-lbl" x="105" y="195.94" text-anchor="middle" font-size="12">H</text><text class="fg-tag" x="70" y="276" text-anchor="middle" font-size="11">trans-but-2-ene</text><line class="fg-arrow" x1="132" y1="216" x2="198" y2="216"></line><path class="fg-head" d="M206 216 L198 220.16 L198 211.84 Z"></path><text class="fg-tag-mut" x="169" y="204" text-anchor="middle" font-size="10">CH₂I₂</text><text class="fg-tag-mut" x="169" y="234" text-anchor="middle" font-size="10">Zn(Cu)</text><line class="fg-bond" x1="258" y1="232" x2="306" y2="232"></line><line class="fg-bond-hi" x1="306" y1="232" x2="282" y2="192"></line><line class="fg-bond-hi" x1="282" y1="192" x2="258" y2="232"></line><text class="fg-lbl" x="282" y="182.44" text-anchor="middle" font-size="12">CH₂</text><path class="fg-wedge" d="M258 232 L242.84 240.8 L249.2 247.16 Z"></path><circle class="fg-atom" cx="234" cy="256" r="17"></circle><text class="fg-lbl" x="234" y="259.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-hash" x1="307.41" y1="234.59" x2="308.59" y2="233.41"></line><line class="fg-hash" x1="308.81" y1="237.17" x2="311.17" y2="234.81"></line><line class="fg-hash" x1="310.22" y1="239.76" x2="313.76" y2="236.22"></line><line class="fg-hash" x1="311.63" y1="242.34" x2="316.34" y2="237.63"></line><line class="fg-hash" x1="313.04" y1="244.93" x2="318.93" y2="239.04"></line><circle class="fg-atom" cx="330" cy="256" r="17"></circle><text class="fg-lbl" x="330" y="259.52" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag" x="282" y="286" text-anchor="middle" font-size="11">trans ring, racemic</text></svg><figcaption>The two bonds in color are new. A cis alkene gives the cis ring and a trans alkene the trans ring: both bonds form in one step, so nothing rotates.</figcaption></figure><!-- fig:cp-syn-stereo:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: '<i>trans</i>-But-2-ene is treated with CH₂I₂ and Zn(Cu). What forms?',
+        options: [
+          '<i>cis</i>-1,2-Dimethylcyclopropane, a single meso compound',
+          '<i>trans</i>-1,2-Dimethylcyclopropane, as a racemic mixture',
+          'A roughly equal mixture of the <i>cis</i> and <i>trans</i> rings',
+          'Methylcyclobutane, from a ring that includes all four carbons'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The CH₂ adds to one face in one step, so the methyls stay on opposite sides and the ring is <i>trans</i>. That ring has no mirror plane, so it is chiral, and because the CH₂ arrives at the top and bottom faces equally often, both enantiomers form: a racemate. The <i>cis</i> ring, the meso one, comes only from <i>cis</i>-but-2-ene.',
+        wrongFeedback: 'Ask whether anything in this reaction could let the C&ndash;C bond rotate before the ring closes. Both new bonds form at once, so the alkene&rsquo;s geometry goes straight into the ring.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A carbon with six electrons.',
+        bodyHtml: '<p class="step-body">The piece that adds is a <b>carbene</b>: a neutral carbon with two bonds and two nonbonding electrons, six valence electrons in all. The simplest is methylene, :CH₂. Its formal charge is zero (4 valence electrons, minus 2 nonbonding, minus 2 bonds), but it has no octet, so it is extremely reactive.</p>' +
+          '<p class="step-body">In the form that adds to alkenes, the <b>singlet carbene</b>, the two nonbonding electrons sit as a pair in an sp² orbital and the p orbital is empty. So one carbon has a lone pair, like a nucleophile, and an empty p orbital, like a carbocation. The empty p orbital takes the alkene&rsquo;s &pi; electrons while the lone pair makes the second bond, all in one step.</p>',
+        diagramHtml: '<!-- fig:cp-carbene-orbitals:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 220" role="img" aria-label="Two singlet carbenes, methylene CH2 and dichlorocarbene CCl2. In each, the carbon has two bonds pointing down-left and down-right, a filled lobe pointing straight up holding two dots for the lone pair, and a dashed p orbital drawn in perspective, one lobe in front of the page and one behind, labeled empty."><ellipse class="fg-orb-node" cx="65" cy="119" rx="22" ry="9" transform="rotate(-20 65 119)"></ellipse><ellipse class="fg-orb-node" cx="115" cy="101" rx="22" ry="9" transform="rotate(-20 115 101)"></ellipse><ellipse class="fg-orb" cx="90" cy="76" rx="11" ry="20" fill-opacity="0.18"></ellipse><circle class="fg-lp" cx="85" cy="76" r="2.3"></circle><circle class="fg-lp" cx="95" cy="76" r="2.3"></circle><line class="fg-bond" x1="90" y1="110" x2="71.37" y2="132.18"></line><circle class="fg-atom" cx="64.3" cy="140.6" r="11"></circle><text class="fg-lbl" x="64.3" y="145.04" text-anchor="middle" font-size="12">H</text><line class="fg-bond" x1="90" y1="110" x2="108.63" y2="132.18"></line><circle class="fg-atom" cx="115.7" cy="140.6" r="11"></circle><text class="fg-lbl" x="115.7" y="145.04" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="90" cy="110" r="13"></circle><text class="fg-lbl" x="90" y="114.44" text-anchor="middle" font-size="12">C</text><text class="fg-lbl" x="90" y="24" text-anchor="middle" font-size="13">:CH₂</text><ellipse class="fg-orb-node" cx="245" cy="119" rx="22" ry="9" transform="rotate(-20 245 119)"></ellipse><ellipse class="fg-orb-node" cx="295" cy="101" rx="22" ry="9" transform="rotate(-20 295 101)"></ellipse><ellipse class="fg-orb" cx="270" cy="76" rx="11" ry="20" fill-opacity="0.18"></ellipse><circle class="fg-lp" cx="265" cy="76" r="2.3"></circle><circle class="fg-lp" cx="275" cy="76" r="2.3"></circle><line class="fg-bond" x1="270" y1="110" x2="251.37" y2="132.18"></line><circle class="fg-atom" cx="244.3" cy="140.6" r="11"></circle><text class="fg-lbl" x="244.3" y="144.48" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="270" y1="110" x2="288.63" y2="132.18"></line><circle class="fg-atom" cx="295.7" cy="140.6" r="11"></circle><text class="fg-lbl" x="295.7" y="144.48" text-anchor="middle" font-size="10.5">Cl</text><circle class="fg-atom" cx="270" cy="110" r="13"></circle><text class="fg-lbl" x="270" y="114.44" text-anchor="middle" font-size="12">C</text><text class="fg-lbl" x="270" y="24" text-anchor="middle" font-size="13">:CCl₂</text><line class="fg-rule" x1="180" y1="30" x2="180" y2="190"></line><text class="fg-tag-mut" x="180" y="206" text-anchor="middle" font-size="10.5">filled: the lone pair (sp²) · dashed: the empty p</text></svg><figcaption>Like a nucleophile, the carbon has a lone pair; like a carbocation, it has an empty p orbital. The dashed p orbital points out of the page, at right angles to the lone pair.</figcaption></figure><!-- fig:cp-carbene-orbitals:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: 'How many valence electrons surround the carbon of dichlorocarbene, :CCl₂, and what is its formal charge?',
+        options: [
+          'Eight electrons, with a formal charge of zero',
+          'Six electrons, with a formal charge of &minus;1',
+          'Six electrons, with a formal charge of zero',
+          'Seven electrons, with a formal charge of zero'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct. Two bonds give four shared electrons and the lone pair adds two, so six in all. Formal charge: 4 valence electrons, minus 2 nonbonding, minus 2 bonds, is zero. Neutral, but short of an octet, which is why carbenes react with almost anything.',
+        wrongFeedback: 'Count the two C&ndash;Cl bonds and the one lone pair. Then use formal charge = valence electrons &minus; nonbonding electrons &minus; bonds.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Dichlorocarbene, made in the flask.',
+        bodyHtml: '<p class="step-body">Chloroform, CHCl₃, and a strong base such as potassium <i>tert</i>-butoxide, KOC(CH₃)₃, make dichlorocarbene in two steps.</p>' +
+          '<ol class="step-body"><li>The base removes chloroform&rsquo;s H. That C&ndash;H is unusually acidic, because the three chlorines pull electron density away and spread the negative charge left behind. The product is Cl₃C⁻.</li>' +
+          '<li>Cl₃C⁻ loses a chloride ion, and the carbon keeps the lone pair: :CCl₂.</li></ol>' +
+          '<p class="step-body">The H and the Cl leave from the <b>same</b> carbon, so this is an <b>&alpha;-elimination</b>. In an E2 they leave from neighboring carbons (a &beta;-elimination) and make a C=C. Dichlorocarbene then adds to an alkene in one syn step, so cyclohexene gives 7,7-dichlorobicyclo[4.1.0]heptane, and <i>cis</i>-but-2-ene gives only the <i>cis</i> dichlorocyclopropane.</p>',
+        diagramHtml: '<!-- fig:cp-dichlorocarbene:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 420" role="img" aria-label="Three rows. Row 1: chloroform, a carbon with one hydrogen and three chlorines, and tert-butoxide; a curved arrow runs from the oxygen lone pair to the hydrogen and a second from the C–H bond onto the carbon, giving the trichloromethyl anion and tert-butanol. Row 2: the trichloromethyl anion, with a lone pair on carbon, loses chloride; a curved arrow runs from one C–Cl bond onto the chlorine, leaving dichlorocarbene with its lone pair. Row 3: dichlorocarbene adds to cyclohexene to give 7,7-dichlorobicyclo[4.1.0]heptane, a six-membered ring fused to a three-membered ring whose apex carbon carries two chlorines."><text class="fg-lbl" x="180" y="20" text-anchor="middle" font-size="13">1. The base takes the H</text><line class="fg-bond" x1="70" y1="90" x2="45" y2="90"></line><circle class="fg-atom" cx="34" cy="90" r="11"></circle><text class="fg-lbl" x="34" y="93.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="70" y1="90" x2="95" y2="90"></line><circle class="fg-atom" cx="106" cy="90" r="11"></circle><text class="fg-lbl" x="106" y="93.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="70" y1="90" x2="70" y2="115"></line><circle class="fg-atom" cx="70" cy="126" r="11"></circle><text class="fg-lbl" x="70" y="129.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="70" y1="90" x2="70" y2="69"></line><circle class="fg-atom" cx="70" cy="58" r="11"></circle><text class="fg-lbl" x="70" y="62.44" text-anchor="middle" font-size="12">H</text><circle class="fg-atom" cx="70" cy="90" r="13"></circle><text class="fg-lbl" x="70" y="94.44" text-anchor="middle" font-size="12">C</text><text class="fg-lbl" x="160" y="62.07" text-anchor="middle" font-size="11">⁻OC(CH₃)₃</text><circle class="fg-lp" cx="122" cy="55.5" r="2.3"></circle><circle class="fg-lp" cx="122" cy="64.5" r="2.3"></circle><path class="fg-arrow" d="M124 66 Q101.25 75.73 89.58 63.73"></path><path class="fg-head" d="M84 58 L92.56 60.83 L86.6 66.63 Z"></path><path class="fg-arrow" d="M76 72 Q89.77 79.65 84.96 85.72"></path><path class="fg-head" d="M80 92 L81.7 83.14 L88.22 88.3 Z"></path><line class="fg-arrow" x1="204" y1="90" x2="236" y2="90"></line><path class="fg-head" d="M244 90 L236 94.16 L236 85.84 Z"></path><line class="fg-bond" x1="300" y1="90" x2="275" y2="90"></line><circle class="fg-atom" cx="264" cy="90" r="11"></circle><text class="fg-lbl" x="264" y="93.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="300" y1="90" x2="325" y2="90"></line><circle class="fg-atom" cx="336" cy="90" r="11"></circle><text class="fg-lbl" x="336" y="93.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="300" y1="90" x2="300" y2="115"></line><circle class="fg-atom" cx="300" cy="126" r="11"></circle><text class="fg-lbl" x="300" y="129.89" text-anchor="middle" font-size="10.5">Cl</text><circle class="fg-atom" cx="300" cy="90" r="13"></circle><text class="fg-lbl" x="300" y="94.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="304.5" cy="70" r="2.3"></circle><circle class="fg-lp" cx="295.5" cy="70" r="2.3"></circle><text class="fg-warn" x="316" y="76" text-anchor="middle" font-size="15">−</text><text class="fg-tag" x="300" y="46" text-anchor="middle" font-size="11">Cl₃C⁻</text><line class="fg-rule" x1="16" y1="150" x2="344" y2="150"></line><text class="fg-lbl" x="180" y="170" text-anchor="middle" font-size="13">2. The same carbon loses Cl⁻ (α-elimination)</text><line class="fg-bond" x1="70" y1="225" x2="45" y2="225"></line><circle class="fg-atom" cx="34" cy="225" r="11"></circle><text class="fg-lbl" x="34" y="228.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="70" y1="225" x2="95" y2="225"></line><circle class="fg-atom" cx="106" cy="225" r="11"></circle><text class="fg-lbl" x="106" y="228.89" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="70" y1="225" x2="70" y2="250"></line><circle class="fg-atom" cx="70" cy="261" r="11"></circle><text class="fg-lbl" x="70" y="264.89" text-anchor="middle" font-size="10.5">Cl</text><circle class="fg-atom" cx="70" cy="225" r="13"></circle><text class="fg-lbl" x="70" y="229.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="74.5" cy="205" r="2.3"></circle><circle class="fg-lp" cx="65.5" cy="205" r="2.3"></circle><text class="fg-warn" x="86" y="211" text-anchor="middle" font-size="15">−</text><path class="fg-arrow" d="M88 228 Q99.51 234.36 101.27 229.52"></path><path class="fg-head" d="M104 222 L105.18 230.94 L97.36 228.1 Z"></path><line class="fg-arrow" x1="140" y1="225" x2="178" y2="225"></line><path class="fg-head" d="M186 225 L178 229.16 L178 220.84 Z"></path><line class="fg-bond" x1="250" y1="225" x2="233.96" y2="244.16"></line><circle class="fg-atom" cx="226.9" cy="252.6" r="11"></circle><text class="fg-lbl" x="226.9" y="256.49" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="250" y1="225" x2="266.04" y2="244.16"></line><circle class="fg-atom" cx="273.1" cy="252.6" r="11"></circle><text class="fg-lbl" x="273.1" y="256.49" text-anchor="middle" font-size="10.5">Cl</text><circle class="fg-atom" cx="250" cy="225" r="13"></circle><text class="fg-lbl" x="250" y="229.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="254.5" cy="205" r="2.3"></circle><circle class="fg-lp" cx="245.5" cy="205" r="2.3"></circle><text class="fg-tag-good" x="306" y="212" text-anchor="middle" font-size="10">:CCl₂</text><text class="fg-lbl" x="306" y="244" text-anchor="middle" font-size="12.5">+ Cl⁻</text><line class="fg-rule" x1="16" y1="284" x2="344" y2="284"></line><text class="fg-lbl" x="180" y="304" text-anchor="middle" font-size="13">3. One syn step across the C=C</text><line class="fg-bond" x1="70" y1="332" x2="44.02" y2="347"></line><line class="fg-bond" x1="44.02" y1="347" x2="44.02" y2="377"></line><line class="fg-bond" x1="44.02" y1="377" x2="70" y2="392"></line><line class="fg-bond" x1="70" y1="392" x2="95.98" y2="377"></line><line class="fg-bond" x1="95.98" y1="377" x2="95.98" y2="347"></line><line class="fg-bond" x1="91.38" y1="371" x2="91.38" y2="353"></line><line class="fg-bond" x1="95.98" y1="347" x2="70" y2="332"></line><line class="fg-arrow" x1="118" y1="362" x2="164" y2="362"></line><path class="fg-head" d="M172 362 L164 366.16 L164 357.84 Z"></path><text class="fg-tag-mut" x="145" y="350" text-anchor="middle" font-size="10">:CCl₂</text><line class="fg-bond" x1="240" y1="332" x2="214.02" y2="347"></line><line class="fg-bond" x1="214.02" y1="347" x2="214.02" y2="377"></line><line class="fg-bond" x1="214.02" y1="377" x2="240" y2="392"></line><line class="fg-bond" x1="240" y1="392" x2="265.98" y2="377"></line><line class="fg-bond" x1="265.98" y1="377" x2="265.98" y2="347"></line><line class="fg-bond" x1="265.98" y1="347" x2="240" y2="332"></line><line class="fg-bond-hi" x1="265.98" y1="377" x2="294" y2="362"></line><line class="fg-bond-hi" x1="265.98" y1="347" x2="294" y2="362"></line><line class="fg-bond" x1="294" y1="362" x2="309.59" y2="351.1"></line><circle class="fg-atom" cx="318.6" cy="344.8" r="11"></circle><text class="fg-lbl" x="318.6" y="348.69" text-anchor="middle" font-size="10.5">Cl</text><line class="fg-bond" x1="294" y1="362" x2="309.59" y2="372.9"></line><circle class="fg-atom" cx="318.6" cy="379.2" r="11"></circle><text class="fg-lbl" x="318.6" y="383.09" text-anchor="middle" font-size="10.5">Cl</text><text class="fg-tag" x="240" y="412" text-anchor="middle" font-size="11">7,7-dichlorobicyclo[4.1.0]heptane</text></svg><figcaption>Steps 1 and 2 make the carbene from chloroform; step 3 is the cyclopropanation. Both new ring bonds (in color) form at once.</figcaption></figure><!-- fig:cp-dichlorocarbene:end -->'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Which group does each reagent put on the ring?</h2>' +
+            '<p class="step-body">Every reagent here adds one carbon across a C=C. Decide what that carbon carries when it arrives.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Group added">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Look at the carbon in the reagent. Chloroform or bromoform loses its H and one halogen, so its carbon arrives carrying the other two halogens. A CH₂ reagent arrives as plain CH₂.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All four. Chloroform and bromoform keep two halogens on the new ring carbon; the CH₂ reagents add plain CH₂.'
+                  : 'All four on the first try, including diazomethane, which reaches the same CH₂ by a much more dangerous route.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Simmons&ndash;Smith: a carbene without a free carbene.',
+        bodyHtml: '<p class="step-body">With CH₂I₂ and Zn(Cu), the zinc inserts into a C&ndash;I bond and gives ICH₂ZnI. This is a <b>carbenoid</b>: it hands over a CH₂ the way a carbene would, but no free :CH₂ is ever released. The CH₂ bonds to both alkene carbons in one step while ZnI₂ leaves. This is the <b>Simmons&ndash;Smith reaction</b>.</p>' +
+          '<p class="step-body">Free :CH₂ can be made by shining light on diazomethane, CH₂N₂, but diazomethane is toxic and explosive, and free methylene also pushes into C&ndash;H bonds. The carbenoid adds only to the C=C.</p>' +
+          '<div class="explain-box"><b>Stereochemistry, one rule.</b> Every reagent here adds in one step to one face, so a <i>cis</i> alkene gives a <i>cis</i> ring and a <i>trans</i> alkene a <i>trans</i> ring. Then check the product for a mirror plane: <i>cis</i>-1,2-dimethylcyclopropane has one and is meso; a <i>trans</i> ring, or a <i>cis</i> ring with two different groups, is chiral and forms as a racemate.</div>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Which reagents turn cyclohexene into 7,7-dichlorobicyclo[4.1.0]heptane, cyclohexene with a CCl₂ bridging the old double bond?',
+        options: [
+          'CH₂Cl₂ and Zn(Cu)',
+          'CHCl₃ and KOC(CH₃)₃',
+          'Cl₂ in CH₂Cl₂, in the dark',
+          'HCl, then heat'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The base removes chloroform&rsquo;s H, the anion loses Cl⁻ (an &alpha;-elimination), and :CCl₂ adds across the C=C in one step. Cl₂ would add two chlorines to the two alkene carbons instead, and HCl would add H and Cl.',
+        wrongFeedback: 'The product has a new carbon carrying two chlorines. Which reagent supplies one carbon with two chlorines and a lone pair?'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: '(<i>Z</i>)-Pent-2-ene, CH₃CH=CHCH₂CH₃, is treated with CH₂I₂ and Zn(Cu). What is the product?',
+        options: [
+          '<i>trans</i>-1-Ethyl-2-methylcyclopropane, as a racemate',
+          '<i>cis</i>-1-Ethyl-2-methylcyclopropane, as a single meso compound',
+          '<i>cis</i>-1-Ethyl-2-methylcyclopropane, as a racemate',
+          'A mixture of the <i>cis</i> and <i>trans</i> 1-ethyl-2-methylcyclopropanes'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct. Syn addition keeps the <i>Z</i> geometry, so the methyl and the ethyl end up on the same face: the <i>cis</i> ring. It is not meso, because a methyl and an ethyl are different groups and no mirror plane can swap them. So it is chiral, and attack on the two faces of the alkene gives both enantiomers equally.',
+        wrongFeedback: 'First carry the geometry over: <i>Z</i> means the two groups were on the same side. Then look for a mirror plane: can one exist when the two ring substituents are different?'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: 'Why does <i>cis</i>-but-2-ene give only the <i>cis</i> ring with CHCl₃ and KOC(CH₃)₃, and never any <i>trans</i>?',
+        options: [
+          'The <i>trans</i> ring is less stable, so any that forms opens up and closes again as <i>cis</i>',
+          'Both new C&ndash;C bonds form in one step on one face, so the C&ndash;C bond never gets a chance to rotate',
+          'The two chlorines on the carbene are too bulky to approach from the methyl side of the alkene',
+          'The base removes a proton from the alkene first, which locks its geometry in place'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. The singlet carbene adds in a single step, with no intermediate in which the old C=C carbons are joined by a single bond that could rotate. So the methyls keep the relationship they had in the alkene. The rings do not interconvert, and the base acts on chloroform, not on the alkene.',
+        wrongFeedback: 'Ask whether there is any moment in this reaction when the two former alkene carbons are joined by a single bond and nothing else holds them. If there is not, can their groups swap sides?'
+      }
+    ]
+  });
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
+  </footer>
+</div>
+</body>
+</html>

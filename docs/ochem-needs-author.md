@@ -950,3 +950,57 @@ confirm it.
     tosylate solvolysis is not stated; the 3° "SN1 (slow)" cell with a strong nucleophile differs
     between published charts; a claim that a protic solvent pushes secondary SN2/E2 toward E2 was
     removed as unverified.
+
+## Sequencing and new pericyclic and carbene topics (site audit 2026-10, W9)
+
+Each item below is pending review. The pages teach the stated position, and a person should
+confirm it.
+
+### w9-order: the October 2026 chapter order
+- **Status:** pending review.
+- **Where:** `ochem/assets/curriculum.js`; reasoning in `docs/site-audit-notes/w9.md`.
+- **Positions taken:**
+  - Only organometallic bonding and Grignard reagents moved before Carbonyl Chemistry, as their own
+    chapter after Alcohols, Ethers & Related Chemistry. Organolithiums, cuprates and cross-coupling
+    stay after the acid derivatives (chapter renamed "Organolithiums, Cuprates & Cross-Coupling").
+  - The Grignard section now introduces C=O addition itself (two arrows, then a workup) and the
+    ester double addition (add, re-form the C=O, lose ethoxide), the way Wade and Klein do before
+    their carbonyl chapters. The nitrile row and the Weinreb amide stay, with one-line pointers to
+    Nitriles and to Nucleophilic acyl substitution. An instructor may prefer to move the Weinreb
+    amide out of this chapter.
+  - IR and mass spectrometry are a chapter of their own right after Alkenes & Alkynes. Their
+    examples still use acid chlorides, anhydrides, aromatic rings and phenol by name (named in
+    Foundations); conjugation lowering a C=O band is defined in place; tropylium and the acylium ion
+    are explained in place with one-line pointers to Aromatic Chemistry.
+  - Aromatic Chemistry follows Conjugation. Friedel–Crafts acylation then Clemmensen or
+    Wolff–Kishner reduction is taught by what the reductions do, with a pointer to Reducing
+    carbonyls for how.
+
+### w9-carbenes: cyclopropanation
+- **Status:** pending review.
+- **Where:** `cyclopropanation` notes, lesson, bank and figures.
+- **Positions taken:**
+  - Singlet vs triplet carbenes at intro level: the stereospecific additions are the singlet's; a
+    triplet "adds in two steps and loses the alkene's geometry".
+  - Chloroform's acidity is explained by the three chlorines' inductive pull; no pKa is given
+    (values differ widely by solvent).
+  - Free methylene from diazomethane and light is described as also inserting into C–H bonds; its
+    stereochemistry cell reads "syn, but C–H insertion competes".
+  - Cyclopropane strain 27.6 kcal/mol, the figure the Cyclohexanes section already uses.
+
+### w9-pericyclic: electrocyclic and sigmatropic reactions
+- **Status:** pending review.
+- **Where:** `electrocyclic-sigmatropic` notes, lesson, bank and figures.
+- **Positions taken:**
+  - (2E,4Z,6E)-octa-2,4,6-triene gives cis-5,6-dimethylcyclohexa-1,3-diene with heat and the trans
+    isomer with light (the textbook example; photochemical runs give mixtures in practice, which the
+    page does not mention).
+  - The in/out shortcut (both out or both in: dis gives cis, con gives trans; one in, one out: the
+    reverse) and its use backwards for ring openings; trans-3,4-dimethylcyclobutene opens to the
+    (2E,4E) diene because outward rotation is less crowded (torquoselectivity is not named).
+  - HOMO end-lobe phases drawn from Hückel coefficients (diene ψ2: 0.60, 0.37, −0.37, −0.60; triene
+    ψ3: 0.52, 0.23, −0.42, −0.42, 0.23, 0.52).
+  - Cope of 3-methylhexa-1,5-diene gives mainly (E)-hepta-1,5-diene through a chair with the methyl
+    equatorial; no reaction temperatures are given. The Claisen rearrangement is "effectively
+    irreversible" because a C=O replaces a C=C.
+  - Woodward and Hoffmann, 1965; Hoffmann shared the 1981 Nobel Prize in Chemistry (with Fukui).

@@ -4,7 +4,7 @@
    was written. It explained the correction policy, said where corrections get
    listed, and then never said how to report one: the only address anywhere on
    the site was at the bottom of the privacy policy. So the promise was kept by
-   nobody, which for banks of 2,033 NREMT, 3,635 ochem and 3,321 A&P questions is
+   nobody, which for banks of 2,033 NREMT, 3,675 ochem and 3,321 A&P questions is
    the most expensive gap on the site. No script can check whether an answer is
    clinically right. A student who has just answered a question and thinks the
    key is wrong is the only reviewer who can, and they are on the one screen

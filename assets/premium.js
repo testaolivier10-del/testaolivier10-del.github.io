@@ -99,7 +99,7 @@
       ],
       premium: [
         'Every interactive lesson and mechanism walkthrough',
-        'The full 3,635-question bank, unlimited practice and review', // count:ochem
+        'The full 3,675-question bank, unlimited practice and review', // count:ochem
         'Unlimited exams',
         'Mastery dashboard and gap detection',
         'All eight interactive tools',

@@ -20,6 +20,17 @@ from, kept for the reasoning. What landed and what did not:
   E2 half to e2. The remaining splits are listed under "Decisions for
   Olivier" in docs/TRACKER.md.
 
+**Second reorder, 2026-10 (site audit, W9).** Three audit rows moved chapters
+again, and the order below is no longer current: organometallic bonding and
+Grignard reagents became their own chapter before Carbonyl Chemistry (the
+other three organometallic topics stay after the acid derivatives), Aromatic
+Chemistry moved to just after Conjugation, and IR and mass spectrometry became
+a chapter right after Alkenes & Alkynes (NMR stays late, as "NMR
+Spectroscopy"). Two topics were added: Carbenes & cyclopropanation (Alkenes)
+and Electrocyclic & sigmatropic reactions (end of Conjugation). 25 chapters,
+123 topics. Reasoning and what was rewritten: `docs/site-audit-notes/w9.md`;
+the order is held by `scripts/site-rules/ochem-sequencing.mjs`.
+
 This document was written before the reorder; below, "current order" means
 the order as it stood on 2026-09-16. The evidence behind it is `docs/concept-map.json`: for
 every one of the 116 sections, what it teaches, what it relies on and where

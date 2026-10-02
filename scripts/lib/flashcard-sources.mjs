@@ -127,12 +127,18 @@ export const TABLES = [
     ask: 'Added to an alkene: what happens to the C=C, and what is the product?' },
   { id: 'diol-stereo', topic: 'alkene-oxidation', head: ['Alkene', 'OsO₄ (syn)', 'mCPBA then H₃O⁺ (anti)'], key: 0,
     ask: 'Which butane-2,3-diol from each dihydroxylation?' },
+  { id: 'cyclopropanation', topic: 'cyclopropanation', head: ['Reagents', 'Species that adds', 'Group put on the ring', 'Stereochemistry'], key: 0,
+    ask: 'Added to an alkene: what species adds, what goes on the ring, and with what stereochemistry?' },
 
   /* ---- Conjugation ---------------------------------------------------- */
   { id: 'uv-lambda', topic: 'uv-vis', head: ['Compound', 'Conjugated C=C', 'λmax (approx.)'], key: 0,
     ask: 'Number of conjugated C=C, and approximate λmax?' },
   { id: 'woodward-fieser', topic: 'uv-vis', head: ['Contribution', 'Increment'], key: 0,
     ask: 'Diene λmax rules: how much does this contribute?' },
+  { id: 'electrocyclic-rules', topic: 'electrocyclic-sigmatropic', head: ['π electrons', 'Heat (thermal)', 'Light (photochemical)'], key: 0,
+    ask: 'Electrocyclic reaction with this many π electrons: which rotation with heat, and with light?' },
+  { id: 'pericyclic-kinds', topic: 'electrocyclic-sigmatropic', head: ['Kind', 'What changes', 'Example'], key: 0,
+    ask: 'Pericyclic reaction: what changes, and an example?' },
 
   /* ---- Alcohols & ethers --------------------------------------------- */
   { id: 'epoxide-opening', topic: 'epoxides', head: ['', 'Basic / neutral', 'Acidic'] },
@@ -311,6 +317,10 @@ export const AUTHORED = [
     a: [['Reaction', 'A conjugated diene (4 π e⁻) + a dienophile (2 π e⁻) → a cyclohexene, in one concerted [4+2] cycloaddition; two new C–C σ bonds form at once.'],
         ['Diene', 'Must be able to reach the s-cis conformation.'],
         ['Stereo', 'Stereospecific: groups cis on the dienophile stay cis in the ring.']] },
+  { id: 'claisen-cope', topic: 'electrocyclic-sigmatropic', q: 'Cope and Claisen rearrangements', ask: 'What shifts, what forms, and which way does the equilibrium lie?',
+    a: [['Shift', 'A [3,3] sigmatropic rearrangement: the σ bond between atoms 1 and 1′ breaks, atoms 3 and 3′ bond, both π bonds move one place, through a chair-shaped transition state.'],
+        ['Cope', 'A hexa-1,5-diene gives another hexa-1,5-diene; reversible, and the more substituted diene is favored.'],
+        ['Claisen', 'An allyl vinyl ether gives a carbonyl compound with a C=C between the third and fourth carbons from the C=O; the new C=O makes it effectively one-way.']] },
   { id: 'aldol-condensation', topic: 'aldol', q: 'Aldol condensation', ask: 'The two stages, and what decides where it stops?',
     a: [['Addition', 'An enolate adds to a second carbonyl → β-hydroxy aldehyde or ketone.'],
         ['Condensation', 'Dehydration of that product → α,β-unsaturated carbonyl (enone) + water.'],
