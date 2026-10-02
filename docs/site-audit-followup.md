@@ -72,7 +72,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
-| W7 | UX and accessibility | `-w7` | merged; 3 follow-ups in progress |
+| W7 | UX and accessibility | `-w7` | merged |
 | W8 | SEO, performance, repo | `-w8` | in progress |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
 
@@ -194,7 +194,7 @@ through ochem atomic-structure step 4; More sheet inert when closed; tutor is a 
 right/wrong icons plus text; contrast and landmark fixes; sound off by default; confetti only on level-up and
 session end. Layout shift on phones: A&P lesson 0.27–0.35 → ≤0.07, ochem practice 0.79 → 0.02, dashboards up to
 0.98 → ≤0.09, A&P learn 0.58 → 0. "/" opens an in-page search overlay. New a11y interaction checks and three site
-rules. Follow-ups in progress: ochem/NREMT breadcrumbs, NREMT review CLS (0.21), monospace and arrow tokens.
+rules. Follow-ups merged: breadcrumbs on 162 NREMT and ochem pages from their BreadcrumbList (`scripts/build-crumbs.mjs`, `--check` in CI); NREMT review CLS 0.21 → 0.004; one monospace rule and one disclosure marker in theme.css (rule `one-disclosure-marker`).
 
 ## Open items for the owner
 
