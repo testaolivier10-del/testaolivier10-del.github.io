@@ -66,7 +66,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 
 | # | Workstream | Branch | Status |
 |---|---|---|---|
-| W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | in progress (wave 1) |
+| W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | merged |
 | W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
 | W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | merged |
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
@@ -107,6 +107,9 @@ Calls made without asking, per the brief. Each says why.
 - **After merging any branch that touches page `<head>`s, run `node scripts/build-site-config.mjs`** (it writes the CSP).
 - **Ochem energy units:** kcal/mol is primary; pages built on kJ/mol data keep their tables and give kcal/mol beside the key numbers.
 - **Ochem concept tags:** vocabulary questions are tagged `recall` and show no concept; a question with no matching rule shows no concept line.
+- **NREMT domain tagging rule:** Scene = safe? how many patients? which resources? who first in triage? mechanism. Primary = the life threat / what first. Secondary = history, exam, vitals trend, reassessment. Treatment & Transport = doing or choosing an intervention, drug, packaging, destination. Operations = legal, documentation, communication, ICS, vehicles/air medical, crew wellness.
+- **No 130 new Scene items in this pass;** the shortfall is an open item. Exams draw by weight, so exam mixes are already right.
+- **NREMT item types:** the site simulates multiple choice and multiple response; build-list, drag-and-drop and options tables are described on exam-day.html but not simulated, and the copy says so.
 - **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
 
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
@@ -145,9 +148,24 @@ rules. Accuracy check found 6 issues (half-converted exponents, two mis-tagged c
 DBU wording, a dropped "achiral solvent" qualifier); all fixed before merge. Ochem shell and home sit exactly at
 their weight budgets.
 
+### W1 NREMT exam alignment — merged
+39 fixed, 1 deferred (sound-trainer clips: Wikimedia unreachable and no licensed rhonchi/normal clip found), 1 row
+left to W7. Bank now 2,033 items, each tagged to a 2025 domain (old body-system label kept for weak topics): Scene
+172 (8.5%), Primary 853 (42.0%), Secondary 131 (6.4%), Treatment & Transport 619 (30.4%), Operations 258 (12.7%).
+Full exams and the "All domains" drill draw 17/41/7/22/13, so every exam sits inside the bands. 77 duplicates
+deleted, 18 turned into new scenarios, ~70 self-refuting and 26 absurd distractors fixed, 56 select-N items at 5–6
+options, new items 2109–2112 (soft-surface CPR, delayed cord clamping). Field triage rewritten to the 2021
+guideline. Drill UX: check step in untimed practice, "End session", free goal 15, readiness estimate, focus on the
+question heading. Two independent checks (clinical, and domain tagging at 93% agreement) found stale explanations,
+skill-sheet gaps and 14 mis-tags; all fixed, then a third check of the fixes passed. New rule
+`nremt-stale-explanations` fails when an item's options change without its explanation.
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
+- **NREMT Scene content gap:** about 133 more Scene Size-Up & Safety items are needed for the bank itself to sit in the 15–19% band (exams already draw in band). Write and clinically review them.
+- **Confirm E213, E215 (17) and E216 skill-sheet totals against the official PDFs** (nremt.org was unreachable from here).
+- **Sound trainer:** needs licensed rhonchi and normal breath-sound clips to self-host.
 - An instructor could spot-check the new ochem concept rules (`ochem/assets/legacy-rules.js`, blocks marked "site audit, October 2026").
 - Check RLS on `user_progress` allows UPDATE where `auth.uid() = id` (it must already, for the old upsert).
 
