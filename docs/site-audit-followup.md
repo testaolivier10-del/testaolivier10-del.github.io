@@ -5,32 +5,33 @@ findings). A fresh session should read this file and `CLAUDE.md`, not the chat h
 
 ## Owner checklist (only you can do these)
 
-Nothing below has been attempted from the repo. Do them in this order: the Worker calls new database functions,
+Items marked [x] are done. Do the rest in this order: the Worker calls new database functions,
 so **the migration must be applied before the first Worker deploy** or purchase webhooks fail.
 
-- [ ] **1. Apply the SQL migration.** Supabase dashboard → project `bsfcqrczehbcctwhxmrj` → SQL Editor → New query →
+- [x] **1. Apply the SQL migration.** Done and verified 2026-10-02 (new tables, functions and columns present; anon can run only the 7 intended functions). Supabase dashboard → project `bsfcqrczehbcctwhxmrj` → SQL Editor → New query →
       paste `scripts/sql/migrations/2026-10-audit.sql` → Run (idempotent). Then Advisors → Security Advisor →
       Refresh: no "Function … executable by anon" warnings should remain. Check page views still record:
       `select * from page_views order by day desc limit 5;`. If you apply it after 2026-10-15, set
       `EXAM_LOG_SINCE` in `worker/src/premium.js` to that day and run `node scripts/build-worker.mjs`.
 - [ ] **2. Turn on leaked-password protection.** Supabase → Authentication → Sign In / Providers → Email (or
       Policies → Password security) → enable "Prevent use of leaked passwords" → Save.
-- [ ] **3. Deploy the Worker with the new GitHub Action.** Cloudflare → My Profile → API Tokens → Create Token →
+- [x] **3. Deploy the Worker with the new GitHub Action.** Done 2026-10-02 (Deploy Worker run #2 succeeded). Cloudflare → My Profile → API Tokens → Create Token →
       "Edit Cloudflare Workers" template → your account → Create → copy. Cloudflare → Workers & Pages → Overview →
       copy the Account ID. GitHub → repo → Settings → Secrets and variables → Actions → New repository secret:
       `CLOUDFLARE_API_TOKEN`, then `CLOUDFLARE_ACCOUNT_ID`. Actions → "Deploy Worker" → Run workflow → main.
       Afterwards Workers → levlprep-ask → Settings → Variables and Secrets: `POLAR_PRODUCTS` and
       `FOUNDING_DISCOUNT_ID` must still be listed (`keep_vars = true` should keep them).
-- [ ] **4. api.levlprep.com.** Cloudflare → Add a site → levlprep.com (moves DNS to Cloudflare) → Workers & Pages →
-      levlprep-ask → Settings → Domains & Routes → Add → Custom domain → `api.levlprep.com`. When it answers, set
-      `API_URL_DEFAULT` in `worker/src/config.js`, run `node scripts/build-site-config.mjs` and
-      `node scripts/build-worker.mjs`, commit. Then Polar → Settings → Webhooks → endpoint
-      `https://api.levlprep.com/premium/webhook`.
-- [ ] **5. Frame-protection headers** (needs step 4's zone). Cloudflare → levlprep.com → DNS: GitHub Pages records
-      proxied (orange cloud) → Rules → Transform Rules → Modify Response Header → all requests → set
-      `X-Frame-Options: DENY` and `Content-Security-Policy: frame-ancestors 'none'` → Deploy.
-- [ ] **6. hello@levlprep.com.** Cloudflare → levlprep.com → Email → Email Routing → enable, add the MX/TXT records
-      it offers, create `hello@levlprep.com` → forward to your Gmail. Verify it in Resend if it becomes the sender.
+- [x] **4. api.levlprep.com.** Done 2026-10-02: custom domain on `levlprep-ask` (declared in `worker/wrangler.toml`);
+      `API_URL_DEFAULT` is `https://api.levlprep.com`, written into every site file and CSP by
+      `scripts/build-site-config.mjs`. The old workers.dev address stays on (`workers_dev = true`) for open tabs.
+  - [ ] Polar → Settings → Webhooks → set the endpoint to `https://api.levlprep.com/premium/webhook` (owner).
+  - [ ] On or after 2026-10-09: set `workers_dev = false` in `worker/wrangler.toml`, commit to main (the Action
+        deploys). Old tabs will have reloaded by then.
+- [x] **5. Frame-protection headers.** Marked done 2026-10-02 by the owner (Cloudflare Transform Rule:
+      `X-Frame-Options: DENY`, `Content-Security-Policy: frame-ancestors 'none'`).
+- [x] **6. hello@levlprep.com.** Done 2026-10-02: Email Routing forwards it to the LevlPrep inbox. It replaced the
+      personal address on every page, `account-page.js`, the generators and `VAPID_SUBJECT`; site rule
+      `public-contact` keeps the personal address off anything served. Verify it in Resend if it becomes the sender.
 - [ ] **7. Polar settings.** Check each product's description says "Pass-or-extend", not "Pass guarantee"; check
       Polar's buyer-age rule against terms.html (see Open items).
 - [ ] **8. Clinical reviewer.** Recruit one paramedic or EMS instructor to review the NREMT bank before promoting
@@ -244,6 +245,8 @@ and every fix those checks asked for was applied before its merge. The `sw.js` c
 - **A&P select-all/predict rebalancing** and the other A&P edits are in `docs/anp-needs-author.md` for the instructor review the Beta note promises.
 
 ## Progress log
+
+- 2026-10-02: site and Worker switched to api.levlprep.com; public contact is hello@levlprep.com; checklist 1, 3, 4, 5, 6 done (Polar webhook and the workers.dev switch-off left).
 
 - 2026-10-02: W9 merged; all workstreams done, full CI green.
 - 2026-10-02: W8 merged; W9 (ochem sequencing) started.

@@ -73,8 +73,10 @@ The Worker's address is one constant, `API_URL_DEFAULT` in `src/config.js`.
 `node scripts/build-site-config.mjs` writes it into the site files that call the
 Worker (`assets/tutor.js`, `premium.js`, `account-page.js`, `reminders.js`,
 `sw.js`) and into every page's Content-Security-Policy, which names this one
-host (not `*.workers.dev`). To move to `api.levlprep.com`: change the constant,
-run that script and `node scripts/build-worker.mjs`, commit, deploy.
+host (not `*.workers.dev`). It is `https://api.levlprep.com`, a custom domain on
+the Worker declared in `wrangler.toml`; the old workers.dev address stays on
+until 2026-10-09 for tabs opened before the switch. To move it again: change
+the constant, run that script and `node scripts/build-worker.mjs`, commit, deploy.
 
 The assistant answers signed-in students only: the browser sends its Supabase
 session (only to this Worker, never to an endpoint set by hand), and the Worker
@@ -335,7 +337,7 @@ Nothing changes until all of this is set; until then checkout answers 503.
    (the hourly reconciliation). An existing token can't gain scopes: make a
    new one and replace `POLAR_ACCESS_TOKEN`.
 5. **Polar → Settings → Webhooks → Add endpoint**:
-   - URL `https://levlprep-ask.testaolivier10.workers.dev/premium/webhook`
+   - URL `https://api.levlprep.com/premium/webhook`
    - format **Raw**
    - events **order.paid** and **order.refunded** (there is no dispute event
      to tick; disputes come in through the reconciliation)
