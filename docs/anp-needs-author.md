@@ -1887,6 +1887,32 @@ are about the notes pages or question explanations, which the pass did not edit.
   ideas in the nervous system and endocrine chapters read as impersonal definitions rather than
   second person.
 
+## Site audit follow-up (2026-10-02): items for review
+
+- **os-15-15-provenance** (open). The audit says OpenStax credits the belladonna photo (Figure
+  15.15) to Wikimedia contributors. The live OpenStax A&P 2e and 1e captions, checked 2026-10-02,
+  name no source for it, and the image file carries no credit; Wikimedia and LibreTexts cannot be
+  reached from this environment. It is used under the book's CC BY 4.0 with that provenance
+  recorded in its figure entry. If its original is found to be CC BY-SA (or anything other than CC
+  BY or public domain), add a "thirdParty" entry with the credit and license, or drop the figure
+  (it appears only in the Drugs that affect the autonomic system notes). The same check found no
+  third-party credit on the other ten photographs, micrographs, X-rays and scans in the course
+  (os-3-15, os-3-18, os-3-32, os-7-21, os-13-13, os-18-6, os-19-16, os-21-29, os-24-24, os-28-21).
+- **dhea-sex-drive** (pending review). adrenal-glands-19 now says adrenal androgens may contribute
+  to sex drive in women but that trials of DHEA supplements show small or inconsistent effects,
+  instead of stating the link flatly.
+- **sodium-channel-inactivated** (pending review). action-potential-basics (notes and questions
+  13, 14, 18) now calls the post-opening state "inactivated" and says it differs from the closed,
+  ready state, without naming the inactivation gate (that term is taught in Action potentials in
+  neurons).
+- **myosin-atp** (pending review). excitation-contraction-13: the ATP-using step is "binding ATP
+  to detach and splitting it to recock", not the pull itself.
+- **resting-hr-aging** (pending review). aging-8 and aging-19 key resting heart rate as little
+  changed with healthy aging (maximum heart rate falls).
+- **rebalancing-left** (open). The select-all and predict rebalancing is a first pass (see
+  docs/site-audit-notes/w6.md). An instructor may want to review the new false options and the
+  16 added "no change" variables.
+
 ## Decided at the Phase 0 reviews
 
 These are recorded in the spec's decisions log (section 19) and kept here so the history stays in
