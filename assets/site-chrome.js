@@ -563,6 +563,46 @@
     window.addEventListener('load', function(){
       navigator.serviceWorker.register('/sw.js').catch(function(){ /* best-effort */ });
     });
+    /* A new worker takes over open tabs at once (skipWaiting + claim), but
+       the page on screen is still the old one. Say so, once, with a way to
+       load the new one, instead of leaving an old page talking to new files.
+       Only for an update: the first install also fires controllerchange, on
+       a page that had no controller and nothing old to replace. */
+    var hadController = !!navigator.serviceWorker.controller;
+    var told = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if(!hadController){ hadController = true; return; }
+      if(told) return;
+      told = true;
+      showUpdateToast();
+    });
+  }
+
+  function showUpdateToast(){
+    if(!document.body) return;
+    var box = document.createElement('div');
+    box.className = 'lp-update-toast';
+    box.setAttribute('role', 'status');
+    box.style.cssText = 'position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:2147483000;' +
+      'max-width:calc(100% - 32px);display:flex;gap:12px;align-items:center;padding:10px 14px;border-radius:12px;' +
+      'background:#17241F;color:#fff;font:600 14px/1.4 system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.25);';
+    var text = document.createElement('span');
+    text.textContent = 'A new version of LevlPrep is ready.';
+    var reload = document.createElement('button');
+    reload.type = 'button';
+    reload.textContent = 'Reload';
+    reload.style.cssText = 'font:inherit;border:0;border-radius:8px;padding:6px 12px;background:#fff;color:#17241F;cursor:pointer;';
+    reload.addEventListener('click', function(){ window.location.reload(); });
+    var dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.setAttribute('aria-label', 'Dismiss');
+    dismiss.textContent = '×';
+    dismiss.style.cssText = 'font:inherit;font-size:18px;border:0;background:transparent;color:#fff;cursor:pointer;padding:0 4px;';
+    dismiss.addEventListener('click', function(){ box.remove(); });
+    box.appendChild(text);
+    box.appendChild(reload);
+    box.appendChild(dismiss);
+    document.body.appendChild(box);
   }
 
 
