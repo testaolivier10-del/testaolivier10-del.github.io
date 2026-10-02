@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', function(){
     shell.insertBefore(toggleBar, progressBarEl || card);
     // Old ?notes=1 links now resolve to this topic's section of the textbook.
     if(notesMode){ location.replace(NOTES_HREF); return; }
-    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet">&#128221; Read this section</a>';
+    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet"><svg class="ico-notes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/></svg> Read this section</a>';
   })();
 
   var SB = window.OchemStepBack;

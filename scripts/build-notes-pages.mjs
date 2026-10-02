@@ -383,7 +383,7 @@ if (existsSync(learnPath)) {
 
   const block = `${TOC_START}\n` +
     `      <div class="tb-static-toc">\n` +
-    `        <h1>The Organic Chemistry Textbook</h1>\n` +
+    `        <h1>The Organic Chemistry textbook</h1>\n` +
     `        <p class="step-body">${modules.length} chapters, ${n} sections. Every section below is a page you can read on its own.${notesOnlyNote}</p>\n` +
     `${toc}\n` +
     `      </div>\n` +

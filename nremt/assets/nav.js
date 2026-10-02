@@ -90,7 +90,7 @@
     renderNavStreak: function(){ if(HP()) HP().renderChips(); },
     // Shared daily streak: studying ANY subject keeps it alive.
     recordActivity: function(n){ return HP() ? HP().recordActivity('nremt', n) : null; },
-    streak: function(){ return HP() ? HP().streak() : { current: 0, longest: 0, todayCount: 0, goal: 20, metToday: false, days: {} }; },
+    streak: function(){ return HP() ? HP().streak() : { current: 0, longest: 0, todayCount: 0, goal: 15, metToday: false, days: {} }; },
     DOMAIN_TIER_THRESHOLDS: DOMAIN_TIER_THRESHOLDS,
   };
 
