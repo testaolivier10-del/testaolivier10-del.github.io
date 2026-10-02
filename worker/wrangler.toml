@@ -8,6 +8,15 @@ compatibility_date = "2025-09-01"
 # checkout would have answered 503 until someone noticed.
 keep_vars = true
 
+# Where the Worker answers. api.levlprep.com is the address the site uses
+# (worker/src/config.js, API_URL_DEFAULT). The workers.dev address stays on
+# so tabs opened before the switch, whose scripts and CSP still name it, keep
+# working; turn it off (workers_dev = false) on or after 2026-10-09.
+workers_dev = true
+routes = [
+  { pattern = "api.levlprep.com", custom_domain = true },
+]
+
 # Workers AI. Free accounts get a daily allowance; past it, requests fail and
 # the site falls back to its own answers. No card, no overage.
 [ai]
@@ -38,7 +47,7 @@ SUPABASE_URL = "https://bsfcqrczehbcctwhxmrj.supabase.co"
 # assets/reminders.js, because the browser has to send it when subscribing.
 # Generate both halves with: node scripts/vapid-keys.mjs
 VAPID_PUBLIC_KEY = "BJQrCo49iKi_sn7czvlq2nNFI1G_uy9IJSo_0KruVHaz3Iu9h7Nug8ay2JXbzlaiqFJuULZ1d1Y2Qqbzp_2Psfk"
-VAPID_SUBJECT = "mailto:testaolivier10@gmail.com"
+VAPID_SUBJECT = "mailto:hello@levlprep.com"
 
 # Premium passes (src/premium.js; setup in README.md, "Premium"). Left
 # commented so nothing changes until Polar is set up: with no product ids,

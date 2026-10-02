@@ -31,7 +31,7 @@
    here, run `node scripts/build-site-config.mjs`, rebuild the Worker and
    deploy. An API_URL variable on the Worker overrides it without a rebuild,
    for the Worker only. */
-const API_URL_DEFAULT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
+const API_URL_DEFAULT = 'https://api.levlprep.com'; // site-config:API_URL
 const SITE_URL_DEFAULT = 'https://levlprep.com';
 
 function apiUrl(env) {

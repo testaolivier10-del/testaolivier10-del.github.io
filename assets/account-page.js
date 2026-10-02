@@ -8,8 +8,8 @@
 (function (window, document) {
   'use strict';
 
-  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
-  var SUPPORT = 'testaolivier10@gmail.com';
+  var ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
+  var SUPPORT = 'hello@levlprep.com';
   var WINDOW_DAYS = 7;
   var DAY_MS = 86400000;
   var COURSE_ORDER = ['nremt', 'ochem', 'anp'];

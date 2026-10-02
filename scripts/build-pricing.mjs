@@ -49,7 +49,7 @@ const ORDER = ['nremt', 'ochem', 'anp'];
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
 /* The address terms.html and privacy.html publish. When hello@levlprep.com
    is set up (owner checklist), change it here and on those two pages. */
-const CONTACT_EMAIL = 'testaolivier10@gmail.com';
+const CONTACT_EMAIL = 'hello@levlprep.com';
 const lowest = (c) => c.passes.reduce((a, b) => (b.price < a.price ? b : a));
 
 /* ---- 1. premium.html ----------------------------------------------------- */
@@ -187,7 +187,7 @@ ${ORDER.map(courseSection).join('\n')}
 </div>
 <div class="xshell narrow">
   <footer>
-    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
+    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 

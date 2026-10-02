@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v52';
+const CACHE_NAME = 'levlprep-v53';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -343,7 +343,7 @@ self.addEventListener('fetch', event => {
    A service worker that receives a push and shows nothing gets its
    permission revoked on most platforms, so every path below ends in a
    notification — including the paths where the fetch failed. */
-const REMINDER_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
+const REMINDER_ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
 
 /* A notification only ever opens a page on this site. The text comes from
    the Worker, which already limits it to a path, but this is the last place

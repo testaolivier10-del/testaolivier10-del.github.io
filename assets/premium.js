@@ -42,7 +42,7 @@
 
   // The Cloudflare Worker that creates checkouts and receives Polar's
   // webhooks (worker/src/premium.js).
-  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
+  var ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
 
   var STORE_KEY = 'levlprep_waitlist_v1';
   var ACCESS_KEY = 'levlprep_premium_v1';
