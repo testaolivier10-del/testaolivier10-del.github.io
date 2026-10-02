@@ -123,6 +123,9 @@
     'nremt_seen_questions', 'nremt_exam100_missed', 'nremt_exam100_flagged',
     'nremt_exam100_history', 'nremt_exam100_best', 'nremt_mastery',
     'nremt_domain_stats_all', 'nremt_streak', 'nremt_xp',
+    // Accuracy by 2025 exam domain (Scene Size-Up ... Operations), for the
+    // dashboard. nremt_domain_stats_all above is by topic area.
+    'nremt_exam_domain_stats',
     // The flashcard schedule (flashcards.html). Registered here, on every
     // page, not by the deck: a push replaces the whole 'nremt' bucket, so a
     // key only the deck registered would be dropped by a sync from any other

@@ -131,18 +131,27 @@
       <div class="mode-card">
         <div class="k">Short session</div>
         <h2>Drill one domain</h2>
-        <p>A short set from one domain. Fits a break.</p>
+        <p>A short set from one exam domain or topic area, with each answer checked as you go. Fits a break.</p>
         <div class="spacer"></div>
         <div class="meta">pool of <span id="poolCount">2,106</span></div>
         <div class="controls">
           <select id="domainSelect" aria-label="Domain">
-            <option value="all">All Domains</option>
-            <option value="Assessment">Assessment</option>
-            <option value="Airway &amp; Respiratory">Airway &amp; Respiratory</option>
-            <option value="Cardiac &amp; Medical">Cardiac &amp; Medical</option>
-            <option value="Trauma">Trauma</option>
-            <option value="OB/Peds &amp; Special Populations">OB/Peds &amp; Special Populations</option>
-            <option value="EMS Operations">EMS Operations</option>
+            <option value="all">All domains</option>
+            <optgroup label="Exam domains (2025 outline)">
+              <option value="Scene Size-Up &amp; Safety">Scene Size-Up &amp; Safety</option>
+              <option value="Primary Assessment">Primary Assessment</option>
+              <option value="Secondary Assessment">Secondary Assessment</option>
+              <option value="Patient Treatment &amp; Transport">Patient Treatment &amp; Transport</option>
+              <option value="Operations">Operations</option>
+            </optgroup>
+            <optgroup label="Topic areas">
+              <option value="system:Assessment">Assessment</option>
+              <option value="system:Airway &amp; Respiratory">Airway &amp; Respiratory</option>
+              <option value="system:Cardiac &amp; Medical">Cardiac &amp; Medical</option>
+              <option value="system:Trauma">Trauma</option>
+              <option value="system:OB/Peds &amp; Special Populations">OB/Peds &amp; Special Populations</option>
+              <option value="system:EMS Operations">EMS Operations</option>
+            </optgroup>
           </select>
           <select id="domainLength" aria-label="Drill length">
             <option value="10">10 questions</option>

@@ -51,7 +51,11 @@
   var FREEZE_EARN_STREAK = 7;   // days of streak before the first one is earned
   var FREEZE_EARN_EVERY = 7;    // and at most one per this many days after
 
-  var DEFAULT_GOAL = 20;
+  // 15, the free daily allowance on every course (assets/premium.js), so a
+  // free student can always reach the default goal. It was 20, which the free
+  // allowance made unreachable.
+  var DEFAULT_GOAL = 15;
+  var OLD_DEFAULT_GOAL = 20;
   var MIN_GOAL = 5;
   var EASE_WINDOW = 3;          // look back this many days...
   var EASE_MISSES = 2;          // ...and ease off after this many were missed
@@ -168,6 +172,9 @@
       if(typeof s.goal !== 'number') s.goal = DEFAULT_GOAL;
       if(typeof s.goalBase !== 'number') s.goalBase = s.goal;
       if(typeof s.goalAuto !== 'boolean') s.goalAuto = true;
+      // The old default, never chosen by the student, moves to the new one.
+      // A goal they picked by hand (goalAuto false) is left alone.
+      if(s.goalAuto && s.goalBase === OLD_DEFAULT_GOAL){ s.goal = DEFAULT_GOAL; s.goalBase = DEFAULT_GOAL; }
       return s;
     }
     return migrateActivity();
@@ -181,7 +188,7 @@
         days[d] = { nremt: legacy.dailyCounts[d] };
       });
     }
-    var goal = (legacy && legacy.dailyGoal) || DEFAULT_GOAL;
+    var goal = (legacy && legacy.dailyGoal && legacy.dailyGoal !== OLD_DEFAULT_GOAL) ? legacy.dailyGoal : DEFAULT_GOAL;
     var state = {
       v: 1,
       days: days,
