@@ -264,7 +264,8 @@
     var applied = [];
     Object.keys(local).forEach(function(k){
       var w = local[k];
-      if(localStorage.getItem(k) !== w.was) return;
+      // Skipped: the next sync must merge, not take this page's copy as is.
+      if(localStorage.getItem(k) !== w.was){ touched[k] = true; return; }
       try {
         if(w.v === null) localStorage.removeItem(k); else localStorage.setItem(k, w.v);
         applied.push(k);

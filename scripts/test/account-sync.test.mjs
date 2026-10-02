@@ -326,3 +326,25 @@ test('failures are counted, reported once after three in a row, and cleared by a
   assert.equal(d.A.syncStatus().failures, 0);
   assert.ok(d.A.syncStatus().lastSynced > 0);
 });
+
+test('a change the page makes while a sync is in flight is kept, then merged, not lost', async () => {
+  const server = fakeServer();
+  const phone = device(server, 0), laptop = device(server, 3);
+  laptop.ls.setItem(READ, J({ pka: '2026-01-10T10:00:00.000Z' }));
+  await laptop.sync();
+  await phone.sync();
+  phone.ls.setItem(READ, J({ ...readMap(phone.ls), sn2: '2026-01-11T10:00:00.000Z' }));
+  await phone.sync();
+  // The laptop has its own change to push, and its page saves again (from
+  // its own copy) between the sync's read and the moment it would apply sn2.
+  laptop.ls.setItem(READ, J({ ...readMap(laptop.ls), e1: '2026-01-12T10:00:00.000Z' }));
+  server.beforeWrite = async () => {
+    server.beforeWrite = null;
+    laptop.ls.setItem(READ, J({ ...readMap(laptop.ls), e2: '2026-01-12T11:00:00.000Z' }));
+  };
+  await laptop.sync();
+  assert.deepEqual(Object.keys(readMap(laptop.ls)).sort(), ['e1', 'e2', 'pka'], 'the sync left the page’s newer write alone');
+  await laptop.sync();
+  assert.deepEqual(Object.keys(JSON.parse(cloudNs(server).ochem[READ])).sort(), ['e1', 'e2', 'pka', 'sn2']);
+  assert.deepEqual(Object.keys(readMap(laptop.ls)).sort(), ['e1', 'e2', 'pka', 'sn2']);
+});
