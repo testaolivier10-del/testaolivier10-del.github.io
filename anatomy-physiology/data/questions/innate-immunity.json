@@ -497,6 +497,11 @@
         "name": "C-reactive protein in the blood",
         "answer": "up",
         "why": "Cytokines reaching the liver make it release C-reactive protein and other proteins of inflammation into the blood."
+      },
+      {
+        "name": "Red blood cell count over the next day",
+        "answer": "none",
+        "why": "Red cells live about 120 days, and a day of local infection does not change their number."
       }
     ],
     "why": {

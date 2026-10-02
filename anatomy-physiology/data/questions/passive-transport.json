@@ -77,6 +77,11 @@
         "name": "Number of potassium ions inside the cell",
         "answer": "none",
         "why": "Osmosis moves water, not the trapped solutes. The cell keeps the same potassium ions, now in a smaller volume."
+      },
+      {
+        "name": "Number of protein channels in the membrane",
+        "answer": "none",
+        "why": "Shrinking changes the cell's water and solute concentration, not how many channel proteins sit in its membrane."
       }
     ],
     "why": {

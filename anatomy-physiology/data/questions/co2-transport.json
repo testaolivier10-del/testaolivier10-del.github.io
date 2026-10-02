@@ -136,6 +136,11 @@
         "name": "Chloride moving into red blood cells",
         "answer": "down",
         "why": "The chloride shift swaps chloride in for bicarbonate out. With less bicarbonate made, less chloride moves in."
+      },
+      {
+        "name": "Hemoglobin in each liter of blood",
+        "answer": "none",
+        "why": "Blocking the enzyme changes how carbon dioxide is carried, not how much hemoglobin there is."
       }
     ],
     "why": {

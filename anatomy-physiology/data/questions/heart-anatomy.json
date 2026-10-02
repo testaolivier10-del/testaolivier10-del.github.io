@@ -252,6 +252,11 @@
         "name": "Bulging of the neck veins",
         "answer": "up",
         "why": "Blood returning to the heart cannot get into the squeezed heart, so it backs up in the large veins, including those in the neck."
+      },
+      {
+        "name": "Oxygen carried in each liter of arterial blood",
+        "answer": "none",
+        "why": "The problem is filling, not oxygen loading. Each liter that is pumped carries the same oxygen; less blood is pumped."
       }
     ],
     "why": {

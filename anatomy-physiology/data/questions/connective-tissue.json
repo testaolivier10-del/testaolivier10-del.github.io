@@ -494,6 +494,11 @@
         "name": "Ability of bone to resist bending without breaking",
         "answer": "down",
         "why": "Collagen gives bone its flexibility; with weak collagen, the mineral matrix is more brittle and breaks more easily."
+      },
+      {
+        "name": "Oxygen carried in each liter of blood",
+        "answer": "none",
+        "why": "Collagen is a structural protein of connective tissue. It plays no part in loading oxygen into the blood."
       }
     ],
     "why": {

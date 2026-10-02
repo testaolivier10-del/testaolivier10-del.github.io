@@ -243,6 +243,11 @@
         "name": "Filtering of lymph by lymph nodes",
         "answer": "none",
         "why": "The spleen filters blood, not lymph: it has no afferent lymphatic vessels. The lymph nodes keep filtering lymph as before."
+      },
+      {
+        "name": "Number of lymph nodes in her body",
+        "answer": "none",
+        "why": "Removing the spleen does not remove any lymph nodes."
       }
     ],
     "why": {

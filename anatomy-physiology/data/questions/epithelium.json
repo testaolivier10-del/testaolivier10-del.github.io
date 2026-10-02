@@ -422,6 +422,11 @@
         "name": "Clearing of trapped particles from those patches",
         "answer": "down",
         "why": "With no goblet cells to trap particles and no cilia to move mucus, particles stay where they land."
+      },
+      {
+        "name": "Thickness of the cartilage rings of the trachea",
+        "answer": "none",
+        "why": "Metaplasia changes the epithelium lining the airway. The cartilage rings in the wall are untouched."
       }
     ],
     "why": {

@@ -211,6 +211,11 @@
         "name": "Blood flow into the skin's capillary beds",
         "answer": "down",
         "why": "With the pressure gradient about the same and resistance higher, flow = ΔP ÷ R falls."
+      },
+      {
+        "name": "Blood flow to the brain",
+        "answer": "none",
+        "why": "The sympathetic signal narrows skin arterioles. Brain blood flow is held steady by its own control."
       }
     ],
     "why": {

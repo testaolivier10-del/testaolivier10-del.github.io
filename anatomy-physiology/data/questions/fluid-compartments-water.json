@@ -229,6 +229,16 @@
         "name": "Urine osmolality",
         "answer": "down",
         "why": "The dilute fluid leaving the loop is not concentrated further in the collecting duct, so urine can fall toward 50 mOsm/L."
+      },
+      {
+        "name": "Total amount of sodium in the body",
+        "answer": "none",
+        "why": "Plain water adds no sodium. The concentration falls, but the amount is the same over the hour."
+      },
+      {
+        "name": "Total amount of potassium in the body",
+        "answer": "none",
+        "why": "Plain water adds no potassium, and an hour of dilute urine removes little."
       }
     ],
     "why": {
@@ -483,6 +493,11 @@
         "name": "Thirst",
         "answer": "up",
         "why": "The rise in osmolality acts on the osmoreceptors, and angiotensin II from the RAAS adds to it, stimulating the thirst center."
+      },
+      {
+        "name": "Glucose in the urine",
+        "answer": "none",
+        "why": "Dehydration does not overwhelm the glucose carriers, so the urine stays free of glucose."
       }
     ],
     "why": {

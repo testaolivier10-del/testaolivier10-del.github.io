@@ -165,7 +165,8 @@
       { "name": "Free hydrogen ions in the unbuffered water", "answer": "up", "why": "Nothing in plain water takes up the added H+, so every hydrogen ion the strong acid releases stays free." },
       { "name": "Bicarbonate in the buffered beaker", "answer": "down", "why": "Bicarbonate takes up the added hydrogen ions, and each one it takes up turns one bicarbonate into carbonic acid." },
       { "name": "Carbonic acid in the buffered beaker", "answer": "up", "why": "Each bicarbonate that takes up a hydrogen ion becomes a carbonic acid molecule, so carbonic acid rises." },
-      { "name": "pH of the unbuffered water", "answer": "down", "why": "Added H+ stays free, so [H+] rises steeply and the pH plunges, in this case by several whole units." }
+      { "name": "pH of the unbuffered water", "answer": "down", "why": "Added H+ stays free, so [H+] rises steeply and the pH plunges, in this case by several whole units." },
+      { "name": "Volume of liquid in each beaker", "answer": "none", "why": "A small amount of acid does not measurably change the volume. What changes is what happens to the added hydrogen ions." }
     ],
     "why": {
       "correct": "In plain water, every added hydrogen ion stays free, so pH falls steeply. In the buffered beaker, bicarbonate takes up the hydrogen ions and becomes carbonic acid, so bicarbonate falls and carbonic acid rises."

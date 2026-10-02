@@ -404,6 +404,16 @@
         "name": "Feeling a pinprick on the foot",
         "answer": "down",
         "why": "Every ascending tract is cut at T6, so signals from the foot cannot reach the cortex, even though they still drive the reflex."
+      },
+      {
+        "name": "Voluntary movement of the arms",
+        "answer": "none",
+        "why": "The arm's motor neurons lie in the cervical cord, above the cut at T6."
+      },
+      {
+        "name": "Feeling a pinprick on the hand",
+        "answer": "none",
+        "why": "Sensation from the hand enters the cord above T6 and reaches the brain normally."
       }
     ],
     "why": {

@@ -288,6 +288,11 @@
         "name": "Stroke volume",
         "answer": "down",
         "why": "Less blood gets through the narrowed valve in the time available, so more is left behind: ESV rises and SV = EDV − ESV falls."
+      },
+      {
+        "name": "Peak right ventricular pressure",
+        "answer": "none",
+        "why": "The narrowing is on the left side, at the aortic valve. The right ventricle ejects into the pulmonary trunk as before."
       }
     ],
     "why": {

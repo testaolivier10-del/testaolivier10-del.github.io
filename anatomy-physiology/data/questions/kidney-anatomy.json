@@ -417,6 +417,11 @@
         "name": "Volume left in the bladder after emptying",
         "answer": "up",
         "why": "A weaker detrusor contraction may not empty the bladder fully, so more urine can be left behind."
+      },
+      {
+        "name": "Urine made by the kidneys each hour",
+        "answer": "none",
+        "why": "The drug acts on the bladder wall. The kidneys keep making urine at the same rate."
       }
     ],
     "why": {

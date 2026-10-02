@@ -234,6 +234,11 @@
     "name": "Monthly shedding of the functional layer",
     "answer": "down",
     "why": "Without the rise and fall of ovarian hormones, the endometrium is not rebuilt and shed each month, so periods stop."
+   },
+   {
+    "name": "TSH",
+    "answer": "none",
+    "why": "The thyroid has its own control loop through TSH. Removing the ovaries does not change it."
    }
   ],
   "why": {

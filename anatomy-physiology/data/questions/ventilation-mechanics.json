@@ -315,6 +315,11 @@
         "name": "Time needed to breathe out fully",
         "answer": "up",
         "why": "Airways narrow further as the lungs shrink during expiration, so air leaves slowly and some is trapped."
+      },
+      {
+        "name": "Surface area of the alveolar walls",
+        "answer": "none",
+        "why": "Asthma narrows the airways. It does not destroy alveolar walls."
       }
     ],
     "why": {

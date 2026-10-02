@@ -193,6 +193,11 @@
         "name": "Time it takes to fall asleep once in bed",
         "answer": "up",
         "why": "With the sleep pressure signal blocked, the arousal systems stay active longer, so falling asleep takes longer."
+      },
+      {
+        "name": "Adenosine built up in the brain from 16 hours awake",
+        "answer": "none",
+        "why": "Caffeine blocks the receptor proteins adenosine binds. It does not clear the adenosine already built up, which is why sleepiness returns as the caffeine wears off."
       }
     ],
     "why": {

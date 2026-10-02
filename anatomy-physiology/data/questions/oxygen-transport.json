@@ -282,6 +282,11 @@
         "name": "Oxygen released per 100 mL of blood",
         "answer": "up",
         "why": "A lower tissue PO2 on the steep part of the curve, plus a right shift, lowers the saturation of blood leaving the muscle."
+      },
+      {
+        "name": "PO2 of the arterial blood entering the muscle",
+        "answer": "none",
+        "why": "In a healthy person the lungs keep arterial PO2 normal during exercise. The changes happen as blood passes through the working muscle."
       }
     ],
     "why": {

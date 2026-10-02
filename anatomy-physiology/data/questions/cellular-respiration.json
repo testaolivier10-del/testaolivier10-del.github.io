@@ -288,6 +288,11 @@
         "name": "CO2 production",
         "answer": "down",
         "why": "CO2 is released as pyruvate is broken down and in the citric acid cycle. Both stop when NADH cannot be oxidized, so less CO2 is made."
+      },
+      {
+        "name": "Number of mitochondria in the cells",
+        "answer": "none",
+        "why": "Within a minute the mitochondria are all still there. They simply cannot run the electron transport chain without oxygen."
       }
     ],
     "why": {

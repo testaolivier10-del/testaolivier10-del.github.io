@@ -197,6 +197,11 @@
         "name": "Drive from her central chemoreceptors",
         "answer": "down",
         "why": "With less carbon dioxide crossing into the brain's fluid, its hydrogen ions fall and the central chemoreceptors fire less."
+      },
+      {
+        "name": "Hemoglobin in each liter of blood",
+        "answer": "none",
+        "why": "Fast breathing changes the blood's gases, not how much hemoglobin it holds."
       }
     ],
     "why": {

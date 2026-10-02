@@ -141,6 +141,11 @@
         "name": "Absorption of vitamin C",
         "answer": "none",
         "why": "Vitamin C is water-soluble and is absorbed by carriers in the intestinal lining, which do not depend on bile."
+      },
+      {
+        "name": "Absorption of amino acids",
+        "answer": "none",
+        "why": "Amino acids are absorbed by carriers that do not need bile."
       }
     ],
     "why": {

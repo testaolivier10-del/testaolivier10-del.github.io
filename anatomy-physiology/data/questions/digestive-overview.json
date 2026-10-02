@@ -290,6 +290,11 @@
         "name": "Rate of stomach emptying",
         "answer": "down",
         "why": "Both secretin and CCK slow stomach emptying, so less arrives until the intestine has handled what it has."
+      },
+      {
+        "name": "Saliva secreted into the mouth",
+        "answer": "none",
+        "why": "Salivary secretion is driven by the mouth and brain, not by food reaching the small intestine."
       }
     ],
     "why": {

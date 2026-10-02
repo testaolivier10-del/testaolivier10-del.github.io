@@ -166,6 +166,11 @@
         "name": "How long she can keep this pace",
         "answer": "down",
         "why": "Fast glycolytic fibers fatigue within a minute or two as glycogen falls and phosphate builds up."
+      },
+      {
+        "name": "Number of muscle fibers in her legs",
+        "answer": "none",
+        "why": "The sprint changes which fibers are recruited and how they make ATP, not how many fibers there are."
       }
     ],
     "why": {

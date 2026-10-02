@@ -509,6 +509,11 @@
         "name": "Blood flow to the skin, one minute later",
         "answer": "down",
         "why": "Skin arterioles constrict strongly under sympathetic stimulation, which is why a bleeding person looks pale and feels cool."
+      },
+      {
+        "name": "Hematocrit, first few seconds",
+        "answer": "none",
+        "why": "Whole blood is lost, plasma and cells together, so at first the hematocrit is unchanged. It falls hours later as fluid moves in."
       }
     ],
     "why": {

@@ -79,7 +79,8 @@
       {"name": "Free hemoglobin in the plasma", "answer": "up", "why": "Antibodies on the donor cells trigger plasma proteins that burst them, releasing hemoglobin into the plasma."},
       {"name": "Hemoglobin in the urine", "answer": "up", "why": "Free hemoglobin in the plasma is small enough to be filtered by the kidneys and spills into the urine, darkening it."},
       {"name": "Body temperature", "answer": "up", "why": "Chemical signals released during the antibody attack cause fever and chills."},
-      {"name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow."}
+      {"name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow."},
+      { "name": "Blood type of the patient's own red cells", "answer": "none", "why": "The reaction destroys the donor cells. The patient's own cells stay type A." }
     ],
     "why": {
       "correct": "An ABO-incompatible transfusion sets off an immediate antibody attack on the donor cells. Agglutination and hemolysis release hemoglobin into the plasma and urine, and the reaction causes fever and a fall in blood pressure. The transfusion must be stopped at once."

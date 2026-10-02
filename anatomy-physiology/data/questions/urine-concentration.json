@@ -86,6 +86,16 @@
         "name": "Osmolarity of the plasma",
         "answer": "up",
         "why": "The body loses more water than solute, so the solute left in the plasma is more concentrated."
+      },
+      {
+        "name": "Sodium reabsorbed in the proximal tubule",
+        "answer": "none",
+        "why": "ADH acts on the collecting duct. In the first hours the proximal tubule reabsorbs sodium as before."
+      },
+      {
+        "name": "Glucose in the urine",
+        "answer": "none",
+        "why": "The glucose carriers are untouched, so filtered glucose is still all reabsorbed."
       }
     ],
     "why": {
@@ -128,6 +138,11 @@
         "name": "Blood volume",
         "answer": "down",
         "why": "The extra salt and water lost in urine come out of the extracellular fluid, including the plasma."
+      },
+      {
+        "name": "Glucose in the urine",
+        "answer": "none",
+        "why": "Loop diuretics block NaCl transport in the thick ascending limb. Glucose is still all reabsorbed in the proximal tubule."
       }
     ],
     "why": {
@@ -174,6 +189,11 @@
         "name": "Aldosterone release",
         "answer": "up",
         "why": "The fall in blood volume lowers pressure in the kidney's small arteries, so renin, angiotensin II and aldosterone rise."
+      },
+      {
+        "name": "Glucose in the urine",
+        "answer": "none",
+        "why": "Dehydration does not overwhelm the glucose carriers. The urine stays free of glucose."
       }
     ],
     "why": {

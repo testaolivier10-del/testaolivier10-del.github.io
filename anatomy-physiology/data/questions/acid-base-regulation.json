@@ -153,7 +153,8 @@
       { "name": "Bicarbonate in the urine", "answer": "up", "why": "Without carbonic anhydrase, the proximal tubule secretes less H+ and cannot turn filtered bicarbonate into carbon dioxide, so filtered bicarbonate stays in the lumen and leaves in the urine." },
       { "name": "Urine pH", "answer": "up", "why": "The urine now carries extra bicarbonate, a base, so it becomes more alkaline." },
       { "name": "Plasma bicarbonate", "answer": "down", "why": "Bicarbonate lost in the urine is not replaced, so less remains in the blood." },
-      { "name": "Blood pH", "answer": "down", "why": "Less bicarbonate at the same PCO2 lowers the bicarbonate to carbon dioxide ratio, so pH falls." }
+      { "name": "Blood pH", "answer": "down", "why": "Less bicarbonate at the same PCO2 lowers the bicarbonate to carbon dioxide ratio, so pH falls." },
+      { "name": "Glucose in the urine", "answer": "none", "why": "Acetazolamide acts on carbonic anhydrase, not on the glucose carriers, so filtered glucose is still all reabsorbed." }
     ],
     "why": { "correct": "Blocking carbonic anhydrase stops bicarbonate reclaim in the proximal tubule. Bicarbonate spills into the urine, blood bicarbonate and pH fall, and the mild acidity stimulates breathing, which is why the drug helps at altitude." }
   },
@@ -170,7 +171,8 @@
       { "name": "Plasma bicarbonate, just after", "answer": "down", "why": "Bicarbonate takes up the extra hydrogen ions, forming carbonic acid and then carbon dioxide, so bicarbonate is used up." },
       { "name": "Ventilation, just after", "answer": "up", "why": "The carotid bodies sense the lower arterial pH and drive the respiratory centers harder." },
       { "name": "Arterial PCO2, just after", "answer": "down", "why": "Breathing is driven up faster than carbon dioxide is being made, so more is blown off and PCO2 falls below normal." },
-      { "name": "Plasma bicarbonate, an hour later", "answer": "up", "why": "The liver and muscles use the lactate as fuel, which takes hydrogen ions back up and restores the bicarbonate that was used." }
+      { "name": "Plasma bicarbonate, an hour later", "answer": "up", "why": "The liver and muscles use the lactate as fuel, which takes hydrogen ions back up and restores the bicarbonate that was used." },
+      { "name": "Number of red blood cells in the body, an hour later", "answer": "none", "why": "A sprint changes the blood's acid and buffers, not how many red cells there are." }
     ],
     "why": { "correct": "Bicarbonate buffers the sprint's acid within seconds, and the lungs breathe off the carbon dioxide and push PCO2 below normal. Over the next hour, burning lactate reverses the acid load and restores bicarbonate, with little work for the kidneys." }
   },

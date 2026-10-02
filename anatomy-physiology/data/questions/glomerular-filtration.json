@@ -160,6 +160,16 @@
         "name": "Colloid osmotic pressure in the peritubular capillaries",
         "answer": "up",
         "why": "More protein-free fluid has been filtered out of the same plasma, so the proteins left in it are more concentrated."
+      },
+      {
+        "name": "Pressure in the renal artery",
+        "answer": "none",
+        "why": "The constriction is downstream of the glomerulus. With nothing else changing, the pressure feeding each kidney stays the same."
+      },
+      {
+        "name": "Glucose in the urine",
+        "answer": "none",
+        "why": "Slightly more glucose is filtered, but the load stays well below the carriers' maximum, so all of it is still reabsorbed."
       }
     ],
     "why": {

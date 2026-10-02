@@ -61,6 +61,11 @@
         "name": "Blood flow to the placenta",
         "answer": "down",
         "why": "The spiral arteries cannot constrict, so placental flow follows the mother's blood pressure and falls with it."
+      },
+      {
+        "name": "Oxygen carried in each liter of her arterial blood",
+        "answer": "none",
+        "why": "Compression of the vena cava cuts how much blood returns and is pumped, not how fully her lungs load each liter with oxygen."
       }
     ],
     "why": {

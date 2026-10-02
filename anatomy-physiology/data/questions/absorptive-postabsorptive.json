@@ -90,6 +90,11 @@
         "name": "Glucose used by the brain each day",
         "answer": "down",
         "why": "The brain takes up ketone bodies in proportion to their level, so it needs less glucose."
+      },
+      {
+        "name": "Blood calcium",
+        "answer": "none",
+        "why": "Blood calcium is held steady by PTH and calcitriol, drawing on bone if needed. A week of fasting does not change it."
       }
     ],
     "why": {

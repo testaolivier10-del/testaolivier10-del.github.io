@@ -219,6 +219,11 @@
         "name": "Total peripheral resistance",
         "answer": "down",
         "why": "The calf bed is one of many beds in parallel. Lowering the resistance of one lowers the total a little."
+      },
+      {
+        "name": "Blood flow through the arm muscles",
+        "answer": "none",
+        "why": "Only the calf's arterioles relaxed, and arterial pressure is unchanged, so flow through the arm is unchanged."
       }
     ],
     "why": {

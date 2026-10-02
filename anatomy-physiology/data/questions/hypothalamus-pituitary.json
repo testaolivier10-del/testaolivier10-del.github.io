@@ -209,6 +209,16 @@
         "name": "Water intake",
         "answer": "up",
         "why": "The intense thirst drives the patient to drink, which keeps plasma osmolarity from rising far."
+      },
+      {
+        "name": "Oxytocin release",
+        "answer": "none",
+        "why": "Oxytocin is made by separate hypothalamic neurons, which the injury spared."
+      },
+      {
+        "name": "ACTH release",
+        "answer": "none",
+        "why": "ACTH comes from the anterior pituitary under its own hypothalamic control, which this injury did not touch."
       }
     ],
     "why": {

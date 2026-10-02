@@ -351,6 +351,16 @@
         "name": "Sperm count",
         "answer": "down",
         "why": "Without working Sertoli cells and a high local testosterone level, spermatogenesis stops."
+      },
+      {
+        "name": "TSH",
+        "answer": "none",
+        "why": "The damage is in the testes. The thyroid's control loop is separate."
+      },
+      {
+        "name": "ACTH",
+        "answer": "none",
+        "why": "The adrenal axis is separate from the testes and is unchanged."
       }
     ],
     "why": {
@@ -393,6 +403,16 @@
         "name": "Size of the testes",
         "answer": "down",
         "why": "Without gonadotropin drive, the tubules and Leydig cells shrink."
+      },
+      {
+        "name": "TSH",
+        "answer": "none",
+        "why": "Only the cells making LH and FSH are destroyed. The cells making TSH still work."
+      },
+      {
+        "name": "ACTH",
+        "answer": "none",
+        "why": "The cells making ACTH are spared, so the adrenal axis is unchanged."
       }
     ],
     "why": {

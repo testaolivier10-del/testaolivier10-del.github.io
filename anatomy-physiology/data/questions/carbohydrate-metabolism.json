@@ -163,6 +163,11 @@
         "name": "Oxygen left in venous blood",
         "answer": "up",
         "why": "Oxygen is still delivered but the tissues cannot use it, so more of it stays in the blood returning to the heart."
+      },
+      {
+        "name": "Oxygen carried in arterial blood",
+        "answer": "none",
+        "why": "Cyanide stops cells using oxygen; it does not stop the lungs loading it. Arterial oxygen is normal, and venous oxygen rises."
       }
     ],
     "why": {

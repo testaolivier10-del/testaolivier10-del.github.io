@@ -143,6 +143,11 @@
         "name": "Number of memory B cells afterward",
         "answer": "up",
         "why": "Each secondary response makes new memory cells as well as plasma cells, so the pool grows."
+      },
+      {
+        "name": "Antibody against measles, which she was not exposed to",
+        "answer": "none",
+        "why": "The response is specific. A tetanus booster stimulates the clones that recognize the toxin, not those for other antigens."
       }
     ],
     "why": {

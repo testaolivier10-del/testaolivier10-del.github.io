@@ -344,6 +344,11 @@
         "name": "Ease of starting a movement",
         "answer": "down",
         "why": "A more inhibited thalamus excites the motor cortex less, so movements are slow, small and hard to start."
+      },
+      {
+        "name": "Sensation of light touch on the hands",
+        "answer": "none",
+        "why": "The basal nuclei loop selects movements. Touch pathways to the cortex do not pass through it."
       }
     ],
     "why": {

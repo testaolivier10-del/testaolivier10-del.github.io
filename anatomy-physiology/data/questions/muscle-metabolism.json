@@ -138,6 +138,16 @@
         "name": "ATP concentration in the fibers",
         "answer": "down",
         "why": "It falls only modestly, to roughly three quarters of its resting level, far less than creatine phosphate, because the energy systems remake ATP almost as fast as it is spent."
+      },
+      {
+        "name": "Number of muscle fibers",
+        "answer": "none",
+        "why": "A single run changes the fibers' fuel, not how many fibers there are."
+      },
+      {
+        "name": "Number of mitochondria in the fibers",
+        "answer": "none",
+        "why": "Building mitochondria takes weeks of training. A one-minute run does not change their number."
       }
     ],
     "why": {
@@ -543,6 +553,11 @@
         "name": "Lactate in her leg muscles",
         "answer": "down",
         "why": "Lactate leaves the fibers into the blood, and heart, resting muscle and liver burn it or turn it into glucose; it is gone within about an hour."
+      },
+      {
+        "name": "Number of muscle fibers in her legs",
+        "answer": "none",
+        "why": "Recovery restores the fibers' fuel stores, not how many fibers there are."
       }
     ],
     "why": {

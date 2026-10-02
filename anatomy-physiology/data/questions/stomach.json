@@ -370,6 +370,11 @@
         "name": "Stretch of the stomach wall",
         "answer": "none",
         "why": "No food was swallowed, so the stomach does not fill."
+      },
+      {
+        "name": "Chyme leaving the stomach for the small intestine",
+        "answer": "none",
+        "why": "Nothing is swallowed, so no chyme reaches the small intestine."
       }
     ],
     "why": {

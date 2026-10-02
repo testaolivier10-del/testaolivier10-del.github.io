@@ -133,6 +133,11 @@
         "name": "Intensity of a home pregnancy test line",
         "answer": "down",
         "why": "The test detects hCG in urine, so less hCG gives a fainter line or a negative result."
+      },
+      {
+        "name": "Number of chromosomes in the embryo's cells",
+        "answer": "none",
+        "why": "Low hCG threatens the corpus luteum, not the embryo's chromosome number."
       }
     ],
     "why": {

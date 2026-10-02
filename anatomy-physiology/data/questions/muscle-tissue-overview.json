@@ -164,6 +164,16 @@
     "name": "Skin temperature of the fingers",
     "answer": "down",
     "why": "Less warm blood reaches the fingers, so they cool toward the outside air."
+   },
+   {
+    "name": "Blood flow to the brain",
+    "answer": "none",
+    "why": "The narrowing is in the fingers' arteries. Brain blood flow is held steady by its own control."
+   },
+   {
+    "name": "Temperature deep inside the body over the first minutes",
+    "answer": "none",
+    "why": "Narrowing skin vessels protects the body's deep temperature. In the first minutes it stays where it was."
    }
   ],
   "why": {

@@ -124,6 +124,16 @@
         "name": "Heat lost from your skin to the air",
         "answer": "up",
         "why": "More warm blood near the surface and more evaporating sweat both increase heat loss, which opposes the rise in temperature."
+      },
+      {
+        "name": "The set point itself",
+        "answer": "none",
+        "why": "The set point stays where it was. The loop responds because body temperature has risen above it."
+      },
+      {
+        "name": "Number of sweat glands in the skin",
+        "answer": "none",
+        "why": "The loop changes how much each gland secretes, not how many glands there are."
       }
     ],
     "why": {
@@ -155,6 +165,11 @@
         "name": "Body temperature after an hour",
         "answer": "down",
         "why": "Heat loss is not reduced, so body temperature falls further below the set point than it would in a person with an intact loop."
+      },
+      {
+        "name": "The temperature set point",
+        "answer": "none",
+        "why": "Nerve damage to the skin vessels does not move the set point. Body temperature falls below it because one effector cannot respond."
       }
     ],
     "why": {
@@ -466,6 +481,11 @@
         "name": "Diameter of small arteries",
         "answer": "down",
         "why": "The control center triggers vasoconstriction of small arteries. Narrower vessels raise resistance, which raises pressure back toward the set point."
+      },
+      {
+        "name": "The control center's set point for blood pressure",
+        "answer": "none",
+        "why": "The set point stays the same. The fall in pressure below it is what drives the faster heart rate and narrower arteries."
       }
     ],
     "why": {

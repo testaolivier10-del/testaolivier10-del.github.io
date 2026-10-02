@@ -270,6 +270,11 @@
         "name": "Opening of the ileocecal sphincter",
         "answer": "up",
         "why": "The gastroileal reflex relaxes the sphincter, so leftover contents move into the large intestine."
+      },
+      {
+        "name": "Number of villi lining the small intestine",
+        "answer": "none",
+        "why": "A meal changes how the wall moves and secretes, not how many villi there are."
       }
     ],
     "why": {

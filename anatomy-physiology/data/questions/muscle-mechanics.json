@@ -392,6 +392,11 @@
         "name": "Distance the hand moves for each centimeter the muscle shortens",
         "answer": "down",
         "why": "The ratio of load arm to effort arm falls, so each centimeter of shortening swings the hand through a shorter distance: force is gained, range and speed are lost."
+      },
+      {
+        "name": "Load arm (elbow to the weight in the hand)",
+        "answer": "none",
+        "why": "The weight is held in the same place, so the load arm is unchanged. Only the effort arm doubled."
       }
     ],
     "why": {

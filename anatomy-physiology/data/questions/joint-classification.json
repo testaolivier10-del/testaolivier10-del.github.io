@@ -423,6 +423,16 @@
     "name": "How far the lower back can bend forward in total",
     "answer": "down",
     "why": "Bending of the whole spine is the sum of small movements at many discs. Each fused level adds nothing, so the total falls."
+   },
+   {
+    "name": "Movement at the knees",
+    "answer": "none",
+    "why": "The knees are separate joints. Fusing the lumbar discs does not change them."
+   },
+   {
+    "name": "Movement of the neck",
+    "answer": "none",
+    "why": "The disease is in the lower back. The cervical joints are unaffected."
    }
   ],
   "why": {

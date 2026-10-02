@@ -75,6 +75,11 @@
         "name": "Eccrine sweat output",
         "answer": "down",
         "why": "With the body cooling, the control center stops the signals that make eccrine glands secrete."
+      },
+      {
+        "name": "Number of sweat glands in his skin",
+        "answer": "none",
+        "why": "Cold changes how much each gland secretes, not how many glands there are."
       }
     ],
     "why": {

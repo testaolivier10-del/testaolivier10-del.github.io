@@ -229,6 +229,11 @@
         "name": "Pain perceived from the tooth",
         "answer": "down",
         "why": "Without signals reaching the brainstem, thalamus and cortex, no pain is perceived, even though the tissue is being stimulated."
+      },
+      {
+        "name": "Pain perceived from the upper teeth",
+        "answer": "none",
+        "why": "The anesthetic was injected around the nerve to the lower tooth. Signals from the upper teeth travel in other branches."
       }
     ],
     "why": {

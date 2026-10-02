@@ -78,6 +78,11 @@
         "name": "Calcium pumped into the SR",
         "answer": "down",
         "why": "The SR calcium pumps are ATPases; without ATP they stop."
+      },
+      {
+        "name": "Number of sarcomeres in each myofibril",
+        "answer": "none",
+        "why": "Rigor changes the bonds between thick and thin filaments, not how many sarcomeres there are."
       }
     ],
     "why": {

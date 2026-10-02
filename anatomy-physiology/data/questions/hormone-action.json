@@ -265,6 +265,11 @@
         "name": "Rate at which the hormone is cleared from the blood",
         "answer": "up",
         "why": "Free hormone is exposed to the liver's enzymes and to filtering by the kidneys; bound hormone is shielded, so clearance speeds up."
+      },
+      {
+        "name": "Rate at which the gland secretes the hormone, in the first hour",
+        "answer": "none",
+        "why": "The question sets the first hour before the gland adjusts. Feedback slows secretion later, once the extra free hormone is sensed."
       }
     ],
     "why": {

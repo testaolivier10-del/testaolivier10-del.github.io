@@ -140,6 +140,16 @@
         "name": "Share of cells in senescence",
         "answer": "up",
         "why": "Cells whose checkpoints have stopped the cycle for good stay alive but no longer divide."
+      },
+      {
+        "name": "Telomerase activity",
+        "answer": "none",
+        "why": "These fibroblasts make almost no telomerase at the start, and ageing in a dish does not switch it on."
+      },
+      {
+        "name": "Number of chromosomes in each cell",
+        "answer": "none",
+        "why": "Telomeres shorten at the chromosome ends, but each normal cell keeps its full set of 46 chromosomes."
       }
     ],
     "why": {

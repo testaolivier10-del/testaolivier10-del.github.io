@@ -84,6 +84,11 @@
         "name": "Glucose uptake by the symporter",
         "answer": "down",
         "why": "The symporter spends the sodium gradient. As sodium builds up inside, the gradient shrinks, so there is less energy to drag glucose in."
+      },
+      {
+        "name": "Number of pump proteins in the membrane",
+        "answer": "none",
+        "why": "The poison blocks the pumps that are there; it does not remove them from the membrane."
       }
     ],
     "why": {
