@@ -563,6 +563,7 @@
     if(window.HubProgress) window.HubProgress.mount('hub', { href: opts.progressHref || '' });
     if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
     wireControls('');
+    addPremiumLink();
     syncHeights();
     requestAnimationFrame(syncHeights);
     mountMotion();
@@ -617,6 +618,47 @@
     return null;
   }
 
+  /* Every footer link row gets a Premium link (audit 2026-10: the footer had
+     no Premium, Account or Contact link). Account and Contact are written in
+     the pages; Premium is added here because /premium.html arrives from a
+     parallel branch (W2), and the link checker reads only static hrefs. Move
+     it into the pages once premium.html exists. */
+  function addPremiumLink(){
+    var rows = document.querySelectorAll('footer .privacy-link');
+    for(var i = 0; i < rows.length; i++){
+      if(rows[i].querySelector('a[href$="premium.html"]')) continue;
+      var a = document.createElement('a');
+      a.href = '/premium.html';
+      a.textContent = 'Premium';
+      rows[i].appendChild(document.createTextNode(' \u00b7 '));
+      rows[i].appendChild(a);
+    }
+  }
+
+  /* The page footer is contentinfo, which must not sit inside main (axe
+     landmark-contentinfo-is-top-level; audit 2026-10 found it inside on most
+     pages, because the content wrapper that becomes main also holds the
+     footer). When the footer is the last thing in main, its block moves to a
+     sibling wrapper with the same width classes right after main, so the
+     layout is unchanged. A footer elsewhere (inside an article) is left. */
+  function liftFooter(main){
+    if(!main) return;
+    var f = main.querySelector('footer');
+    if(!f) return;
+    var top = f;
+    while(top.parentNode && top.parentNode !== main) top = top.parentNode;
+    if(top.parentNode !== main || (top !== f && top.textContent.trim() !== f.textContent.trim())) return;
+    var after = top.nextElementSibling;
+    while(after && /^(SCRIPT|STYLE|TEMPLATE|NOSCRIPT)$/.test(after.tagName)) after = after.nextElementSibling;
+    if(after) return;
+    var shell = document.createElement('div');
+    shell.className = (main.className.match(/\b(xshell|wrap|narrow)\b/g) || ['xshell']).join(' ');
+    // .wrap pads top and bottom: the footer takes over the bottom padding.
+    if(/\bwrap\b/.test(shell.className)){ shell.style.paddingTop = '0'; main.style.paddingBottom = '0'; }
+    main.parentNode.insertBefore(shell, main.nextSibling);
+    shell.appendChild(top);
+  }
+
   /* Injected rather than written into all 110 pages, for the same reason the
      header itself is: one place to fix, and a page added later gets it
      without anyone remembering to. Inserted as the first child of <body> so
@@ -645,6 +687,9 @@
     if(!document.querySelector('main, [role="main"]')){
       target.setAttribute('role', 'main');
     }
+
+    liftFooter(document.querySelector('main, [role="main"]'));
+    addPremiumLink();
 
     var a = document.createElement('a');
     a.id = 'levlSkipLink';
