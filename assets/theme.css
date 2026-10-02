@@ -726,6 +726,8 @@ strong,b{font-weight:900;}
   cursor:pointer;white-space:nowrap;flex-shrink:0;max-width:130px;overflow:hidden;text-overflow:ellipsis;
 }
 .account-btn:hover{color:var(--accent);}
+/* Set by account.js after three failed syncs in a row; the menu says why. */
+.account-btn[data-sync="error"]{box-shadow:var(--lift-sm),inset 0 0 0 2px var(--bad);}
 
 /* Row 2 — section tabs for the course you're in. Underlined tabs rather than
    pills: they read as "where am I in this course", which is exactly what a
