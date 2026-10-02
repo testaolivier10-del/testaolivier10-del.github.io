@@ -36,8 +36,12 @@
     });
   }
 
+  /* Picker and stage side by side on a wide screen (site audit 2026-10): stacked,
+     the picker filled the whole first screen at 1440 px and the molecule sat
+     below the fold. Narrow screens still stack them (viewer-3d.html). */
   root.innerHTML =
-    '<div class="tpanel">' +
+    '<div class="v3-layout">' +
+    '<div class="tpanel v3-pick">' +
       '<div class="tpanel__head">' +
         '<span>Where the molecule comes from</span>' +
         '<div class="tseg" id="v3Src">' +
@@ -50,7 +54,6 @@
       '<div id="v3BuildMsg"></div>' +
       '<div id="v3Send"></div>' +
     '</div>' +
-    '<div class="tsplit tsplit--wide">' +
       '<div class="tpanel">' +
         '<div class="tpanel__head"><span>Drag to turn it</span><span id="v3Name" class="tmuted"></span></div>' +
         '<div class="v3-stage" id="v3Stage">' +
@@ -79,15 +82,13 @@
         '</div>' +
         '<p class="tmuted" style="margin:12px 0 0;" id="v3Note"></p>' +
       '</div>' +
-      '<div>' +
-        '<div class="tpanel">' +
-          '<div class="tpanel__head">' +
-            '<span>What this atom is doing</span>' +
-            '<span class="tmuted" id="v3Hint">click an atom</span>' +
-          '</div>' +
-          '<div aria-live="polite" id="v3Analysis"></div>' +
-        '</div>' +
+    '</div>' +
+    '<div class="tpanel">' +
+      '<div class="tpanel__head">' +
+        '<span>What this atom is doing</span>' +
+        '<span class="tmuted" id="v3Hint">click an atom</span>' +
       '</div>' +
+      '<div aria-live="polite" id="v3Analysis"></div>' +
     '</div>';
 
   var svg      = document.getElementById('v3Svg');
