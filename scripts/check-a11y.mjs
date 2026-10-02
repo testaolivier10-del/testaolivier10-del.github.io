@@ -109,14 +109,10 @@ const OFF = {
    silencer.
 
    landmark-contentinfo-is-top-level
-     site-chrome.js marks the page's content wrapper role="main", which is what
-     gave 176 pages a main landmark they did not have. On most pages the footer
-     sits inside that wrapper, and <main> is not sectioning content, so the
-     footer still computes as contentinfo and is now nested inside main. The
-     alternative was to move the footer out of the wrapper on every page, which
-     is DOM surgery under CSS that was written around the current structure —
-     a real risk of breaking layout to fix a moderate advisory, in exchange for
-     a main landmark that is unambiguously worth having.
+     Fixed (audit 2026-10): the footer now sits after main on every page,
+     in the markup on the pages outside the courses and moved there by
+     site-chrome.js (liftFooter) on the rest. The site checks below fail if
+     one is ever inside main again.
 
    heading-order / aria-allowed-role
      Pre-existing, moderate, and in content rather than in the chrome. Worth
@@ -202,8 +198,14 @@ async function siteChecks(page, label) {
     // a screen reader's landmark list that leads nowhere — landmark noise is
     // its own accessibility problem, so the check does not ask for one.
     hasTabs: !!document.querySelector('.course-nav'),
+    banner: (document.getElementById('site-header') || {}).tagName === 'HEADER',
+    footerInMain: [...document.querySelectorAll('footer')].some((f) => f.closest('main, [role="main"]')),
   }));
   if (!landmarks.main) found.push('no <main> landmark after the header rendered');
+  // Audit 2026-10, landmarks: the header is a <header> (a banner landmark),
+  // and the page footer (contentinfo) is not inside main.
+  if (!landmarks.banner) found.push('the site header is not a <header> element, so it is not a banner landmark');
+  if (landmarks.footerInMain) found.push('the page <footer> sits inside the main landmark (move it after main)');
   if (landmarks.hasTabs && !landmarks.nav) found.push('section tabs rendered, but no <nav> landmark around them');
 
   const lang = await page.evaluate(() => document.documentElement.lang);
@@ -304,6 +306,123 @@ for (const [path, what] of PAGES) {
   } finally {
     await page.close();
   }
+}
+
+/* Interaction checks (audit 2026-10, fix-first 12 and the UX/a11y rows).
+   axe reads a page as it stands; these drive the parts that only exist after
+   a tap or a key, where the audit found people locked out. */
+async function interaction(label, fn, opts = {}) {
+  const context = await browser.newContext(opts);
+  const page = await context.newPage();
+  try {
+    const why = await fn(page);
+    if (why) { failures++; console.log(`[FAIL] ${label}: ${why}`); }
+    else console.log(`[ ok ] ${label}`);
+  } catch (e) {
+    failures++;
+    console.log(`[FAIL] ${label}: ${e.message.split('\n')[0]}`);
+  } finally {
+    await context.close();
+  }
+}
+const url = (p) => `http://127.0.0.1:${PORT}${p}`;
+const phone = { viewport: { width: 390, height: 844 } };
+
+console.log('\nInteraction checks.\n');
+
+// The closed phone "More" sheet must be out of the tab order and the
+// accessibility tree; open, focus goes in; Esc closes it and returns focus.
+await interaction('More sheet: inert when closed, Esc returns focus', async (page) => {
+  await page.goto(url('/ochem/lessons/pka.html'));
+  await page.waitForSelector('#levlMoreTab', { timeout: 15000 });
+  const closed = await page.$eval('#levlBottomSheet', (s) => s.hasAttribute('inert') && s.getAttribute('aria-hidden') === 'true');
+  if (!closed) return 'the closed sheet is not inert + aria-hidden';
+  await page.focus('#levlMoreTab');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(100);
+  const open = await page.evaluate(() => {
+    const s = document.getElementById('levlBottomSheet');
+    return !s.hasAttribute('inert') && s.contains(document.activeElement);
+  });
+  if (!open) return 'opening the sheet did not move focus into it';
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(100);
+  const back = await page.evaluate(() => document.activeElement && document.activeElement.id);
+  if (back !== 'levlMoreTab') return `Esc left focus on "${back}", not the More button`;
+  const fabs = await page.evaluate(() => {
+    const z = (sel) => { const e = document.querySelector(sel); return e ? Number(getComputedStyle(e).zIndex) || 0 : 0; };
+    return { sheet: z('#levlBottomSheet'), tutor: z('.lp-launch'), table: z('.pt-fab') };
+  });
+  if (fabs.tutor >= fabs.sheet || fabs.table >= fabs.sheet) return `a floating button (z ${Math.max(fabs.tutor, fabs.table)}) sits above the sheet (z ${fabs.sheet})`;
+  return '';
+}, phone);
+
+// The study assistant is a named dialog with a live log; Esc closes it and
+// focus goes back to the button that opened it.
+await interaction('Tutor: dialog role and name, live log, Esc returns focus', async (page) => {
+  await page.goto(url('/nremt/'));
+  await page.waitForSelector('.lp-launch', { timeout: 15000 });
+  await page.focus('.lp-launch');
+  await page.keyboard.press('Enter');
+  await page.waitForSelector('.lp-panel', { timeout: 5000 });
+  const sem = await page.evaluate(() => {
+    const d = document.querySelector('.lp-panel');
+    const name = d.getAttribute('aria-labelledby') && document.getElementById(d.getAttribute('aria-labelledby'));
+    const log = d.querySelector('[aria-live]');
+    return { role: d.getAttribute('role'), named: !!(name && name.textContent.trim()), live: !!log };
+  });
+  if (sem.role !== 'dialog') return `the panel's role is "${sem.role}", not dialog`;
+  if (!sem.named) return 'the dialog has no accessible name';
+  if (!sem.live) return 'answers do not land in an aria-live region';
+  await page.waitForTimeout(150);
+  await page.keyboard.press('Escape');
+  await page.waitForTimeout(100);
+  const back = await page.evaluate(() => document.activeElement && document.activeElement.className);
+  if (!/lp-launch/.test(back || '')) return `Esc left focus on "${back}", not the assistant button`;
+  return '';
+});
+
+// Lesson 1's hands-on step can be finished from the keyboard alone: the shell
+// slots are named buttons that take Enter and Space, and the add-to-shell
+// buttons are the non-visual route. Continue must open.
+await interaction('Atomic structure step 4: keyboard path to Continue', async (page) => {
+  await page.goto(url('/ochem/lessons/atomic-structure.html'));
+  await page.waitForSelector('#nextBtn', { timeout: 15000 });
+  for (let i = 0; i < 3; i++) {
+    await page.focus('#nextBtn');
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(60);
+  }
+  await page.waitForSelector('.shell-slot', { timeout: 5000 });
+  const named = await page.$$eval('.shell-slot', (els) => els.every((e) => e.getAttribute('role') === 'button' && e.getAttribute('tabindex') === '0' && /shell/.test(e.getAttribute('aria-label') || '')));
+  if (!named) return 'a shell slot is not a named, focusable button';
+  await page.focus('.shell-slot[data-key="k0"]');
+  await page.keyboard.press('Enter');
+  await page.focus('.shell-slot[data-key="k1"]');
+  await page.keyboard.press(' ');
+  for (let i = 0; i < 5; i++) {
+    await page.focus('#addL');
+    await page.keyboard.press('Enter');
+  }
+  const ok = await page.$eval('#nextBtn', (b) => !b.disabled);
+  return ok ? '' : 'seven electrons placed by keyboard, but Continue stayed disabled';
+});
+
+// Dark mode is the OS default for many readers now that the theme follows
+// prefers-color-scheme (audit 2026-10), so contrast is checked there too, on
+// the pages where axe found dark-only failures.
+for (const p of ['/ochem/learn.html', '/nremt/dashboard.html', '/ochem/dashboard.html', '/ochem/', '/']) {
+  await interaction(`Dark-mode contrast: ${p}`, async (page) => {
+    await page.goto(url(p));
+    await page.waitForTimeout(1200);
+    const dark = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    if (dark !== 'dark') return 'the page did not follow prefers-color-scheme: dark';
+    await page.addScriptTag({ content: axeSource });
+    const v = await page.evaluate(async () => (await window.axe.run(document, { runOnly: { type: 'rule', values: ['color-contrast'] } })).violations);
+    if (!v.length) return '';
+    const n = v[0].nodes.slice(0, 3).map((x) => x.target.join(' ')).join('; ');
+    return `${v[0].nodes.length} contrast failure(s), e.g. ${n}`;
+  }, { colorScheme: 'dark' });
 }
 
 await browser.close();

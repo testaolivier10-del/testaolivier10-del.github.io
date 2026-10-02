@@ -106,7 +106,8 @@ export function head({ title, desc, path, depth, ogType = 'article', jsonld, scr
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${up}assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="${up}assets/icon-180.png">
 <link rel="manifest" href="${depth}manifest.json">
@@ -184,7 +185,7 @@ export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
   <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
-  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a></p>
+  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a> &middot; <a href="${depth}../premium.html">Premium</a> &middot; <a href="${depth}../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>`;
 }
 

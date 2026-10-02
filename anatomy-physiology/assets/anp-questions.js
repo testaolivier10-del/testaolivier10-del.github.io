@@ -72,19 +72,22 @@
     var actions = wrap.querySelector('.anp-q-actions');
     host.appendChild(wrap);
 
-    function finish(correct, score, detailHtml, pick){
+    function finish(correct, score, detailHtml, pick, part){
       done = true;
+      wrap.classList.add('is-answered');
       var result = { correct: correct, score: score, q: q, pick: pick };
       if(opts.record !== false && window.AnpCore) window.AnpCore.record(q.id, correct, { topic: q.topic, core: q.core, level: q.level, diff: q.diff, src: 'q' });
       if(!opts.exam){
         fb.innerHTML = '<p><span class="anp-verdict ' + (correct ? 'ok' : 'no') + '">' +
-          (correct ? 'Correct.' : score > 0 ? 'Partly right.' : 'Not quite.') + '</span> ' +
+          (correct ? 'Correct.' : score > 0 && part ? part : score > 0 ? 'Partly right.' : 'Not quite.') + '</span> ' +
           (q.why && q.why.correct ? html(q.why.correct) : '') + '</p>' + (detailHtml || '') +
           (!correct && opts.record !== false ? '<p class="anp-small">Added to your review queue.</p>' : '');
         if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(correct); }catch(e){}
       }
       actions.innerHTML = report(q);
       if(opts.onAnswer) opts.onAnswer(result);
+      // Lets a lesson open its Continue button (anp-lesson.js).
+      try{ wrap.dispatchEvent(new CustomEvent('anp:answered', { bubbles: true, detail: result })); }catch(e){}
     }
 
     var type = q.type;
@@ -97,8 +100,10 @@
       // The author varies where the wrong step sits instead.
       var items = (q.options || []).map(function(o, i){ return { o: o, i: i }; });
       if(type !== 'error') items = shuffle(items);
-      body.innerHTML = '<div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
+      // One answer, so a radio group like NREMT's, not toggle buttons
+      // (audit 2026-10): arrows move between options, Enter or Space answers.
+      body.innerHTML = '<div class="anp-opt-btns" role="radiogroup" aria-label="Answer options">' + items.map(function(it){
+        return '<button type="button" class="anp-opt" role="radio" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
@@ -112,7 +117,7 @@
             var i = +x.getAttribute('data-i');
             // aria-disabled: disabling would drop the keyboard focus.
             x.setAttribute('aria-disabled', 'true');
-            if(i === pick) x.setAttribute('aria-pressed', 'true');
+            if(i === pick) x.setAttribute('aria-checked', 'true');
             if(opts.exam) return;
             if(i === q.correct){ x.classList.add('is-right'); markOpt(x, i === pick ? 'your answer, correct' : 'correct answer'); }
             else if(i === pick){ x.classList.add('is-wrong'); markOpt(x, 'your answer, incorrect'); }
@@ -129,20 +134,25 @@
     function multi(){
       var items = shuffle((q.options || []).map(function(o, i){ return { o: o, i: i }; }));
       body.innerHTML = '<p class="anp-small">Select all that apply.</p><div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
+        return '<button type="button" class="anp-opt" role="checkbox" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
+      // Nothing picked is not an answer: Check waits for at least one pick.
+      function syncCheck(){
+        var c = actions.querySelector('.anp-check');
+        if(c) c.disabled = !body.querySelector('.anp-opt[aria-checked="true"]');
+      }
       body.querySelectorAll('.anp-opt').forEach(function(b){
-        b.addEventListener('click', function(){ if(!done && !busy) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
+        b.addEventListener('click', function(){ if(!done && !busy){ b.setAttribute('aria-checked', b.getAttribute('aria-checked') === 'true' ? 'false' : 'true'); syncCheck(); } });
       });
-      actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check</button>';
+      actions.innerHTML = '<button type="button" class="btn-press sm anp-check" disabled>Check</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
         if(busy) return;
         busy = true;
         explain(function(){
         var key = [].concat(q.correct), right = 0, total = q.options.length, chosen = [];
         body.querySelectorAll('.anp-opt').forEach(function(x){
-          var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-pressed') === 'true', should = key.indexOf(i) > -1;
+          var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-checked') === 'true', should = key.indexOf(i) > -1;
           x.setAttribute('aria-disabled', 'true');
           if(picked) chosen.push(i);
           if(picked === should) right++;
@@ -151,7 +161,7 @@
           else if(picked){ x.classList.add('is-wrong'); markOpt(x, 'selected, incorrect'); }
           if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
         });
-        finish(right === total, right / total, '', chosen);
+        finish(right === total, right / total, '', chosen, right + ' of ' + total + ' options marked right.');
         var first = body.querySelector('.anp-opt');
         if(first && (!document.activeElement || document.activeElement === document.body)) first.focus();
         });
@@ -192,7 +202,7 @@
         // Exam mode redraws without feedback and without the move buttons.
         paint(true);
         var detail = opts.exam ? '' : '<p><b>Correct order:</b></p><ol>' + q.options.map(function(o){ return '<li>' + html(o) + '</li>'; }).join('') + '</ol>';
-        finish(right === n, right / n, detail, cur.slice());
+        finish(right === n, right / n, detail, cur.slice(), right + ' of ' + n + ' in place.');
         });
       });
     }
@@ -231,7 +241,7 @@
           var dirLabel = v.answer === 'up' ? 'increases' : v.answer === 'down' ? 'decreases' : 'no change';
           row.querySelector('.anp-var-why').innerHTML = (ok ? '✓ ' : '✗ ') + '<b>' + dirLabel + '.</b> ' + html(v.why || '');
         });
-        finish(right === q.variables.length, right / q.variables.length, '', Object.assign({}, picks));
+        finish(right === q.variables.length, right / q.variables.length, '', Object.assign({}, picks), right + ' of ' + q.variables.length + ' right.');
         });
       });
     }

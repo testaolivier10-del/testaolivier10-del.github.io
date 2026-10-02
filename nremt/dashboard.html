@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NREMT Study Dashboard — LevlPrep</title>
 <meta name="description" content="Your NREMT-EMT study dashboard: study streak, readiness estimate, accuracy by exam domain and by topic, and your review queue, all in one place.">
@@ -40,6 +41,11 @@
   /* Dashboard layout. Panels, stat cards, tracks, calendar and badges all come
      from the shared system in assets/theme.css; this only sets the page grid
      and the few dashboard-specific bits (level card, readiness card, charts). */
+  /* Space held for the stat cards the script draws, so the page below does
+     not jump when they land (audit 2026-10, layout shift: CLS 0.77 on a phone). */
+  #statCards:empty{min-height:167px;}
+  #topicBox:empty{min-height:430px;}
+  @media (max-width:640px){ #statCards:empty{min-height:334px;} #topicBox:empty{min-height:513px;} }
   .dash-grid{display:grid;grid-template-columns:1.35fr 0.65fr;gap:28px;padding:26px 0 56px;align-items:start;}
   .dash-col > .panel{margin-bottom:20px;}
   .dash-col > .panel:last-child{margin-bottom:0;}
@@ -56,7 +62,8 @@
     display:flex;align-items:center;justify-content:center;font:900 15px var(--font-ui);
   }
   .lvl-title{font:900 13px var(--font-ui);color:#F4D28C;display:block;}
-  .lvl-titlesub{font:700 12px var(--font-mono);color:#9FB5AE;display:block;margin-top:2px;}
+  .lvl-titlesub{font:700 12px var(--font-mono);color:var(--muted-on-dark);display:block;margin-top:2px;}
+  :root[data-theme="dark"] .lvl-ring{background:rgba(0,0,0,0.24);}
   .lvl-track{height:12px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.15);margin:0 0 8px;overflow:hidden;}
   .lvl-fill{height:100%;background:#F4D28C;border-radius:var(--radius-pill);transition:width .4s ease;}
   .lvl-sub{font:700 11.5px var(--font-mono);color:#DCEFEA;}
@@ -65,7 +72,7 @@
 
   /* Readiness — dark card, big number. */
   .readiness-card{background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);padding:24px;}
-  .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.06em;}
+  .r-tag{font:900 11px var(--font-ui);color:var(--muted-on-dark);text-transform:uppercase;letter-spacing:0.06em;}
   .r-head{display:flex;align-items:baseline;gap:14px;margin:8px 0 10px;flex-wrap:wrap;}
   .r-num{font:900 clamp(34px,5vw,44px) var(--font-ui);letter-spacing:-.03em;color:var(--on-accent);}
   .r-label{font:900 13px var(--font-ui);padding:5px 13px;border-radius:var(--radius-pill);}
@@ -171,7 +178,7 @@
 </script>
 </head>
 <body>
-  <div id="site-header"></div>
+  <header id="site-header"></header>
 <div class="course-nav"></div>
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
@@ -239,7 +246,7 @@
 
   <footer>
     <p>Computed from data in your browser only. Clearing browser data resets it.</p>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
     </footer>
 
 </div>
@@ -382,20 +389,28 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     const longest = hubStreak().longest;
     const best = history.length ? Math.max(...history.map(h2 => Math.round(h2.score/h2.total*100))) : 0;
+    // Each badge shows its own icon, greyed until earned, and how far along it
+    // is (audit 2026-10: six identical locks said nothing about any of them).
+    const lvl = badgeLevel();
     const defs = [
-      { icon: '🎖️', label: '7-day streak',  earned: longest >= 7 },
-      { icon: '🔥', label: '30-day streak', earned: longest >= 30 },
-      { icon: '🚑', label: 'First exam',    earned: history.length >= 1 },
-      { icon: '💯', label: '90%+ exam',     earned: best >= 90 },
-      { icon: '📚', label: '500 questions', earned: allTotal >= 500 },
-      { icon: '🏅', label: 'Level 10',      earned: badgeLevel() >= 10 },
+      { icon: '🎖️', label: '7-day streak',  have: longest, need: 7, unit: 'days' },
+      { icon: '🔥', label: '30-day streak', have: longest, need: 30, unit: 'days' },
+      { icon: '🚑', label: 'First exam',    have: history.length, need: 1, unit: 'exam' },
+      { icon: '💯', label: '90%+ exam',     have: best, need: 90, unit: '% best' },
+      { icon: '📚', label: '500 questions', have: allTotal, need: 500, unit: 'answered' },
+      { icon: '🏅', label: 'Level 10',      have: lvl, need: 10, unit: 'level' },
     ];
-    document.getElementById('badgeGrid').innerHTML = defs.map(b => `
-      <div class="badge">
-        <div class="badge-circle${b.earned ? '' : ' locked'}">${b.earned ? b.icon : '🔒'}</div>
-        <span>${b.label}</span>
-      </div>
-    `).join('');
+    document.getElementById('badgeGrid').innerHTML = defs.map(b => {
+      const earned = b.have >= b.need;
+      const shown = Math.min(b.have, b.need);
+      const prog = earned ? 'Earned' : `${shown}/${b.need}`;
+      return `
+      <div class="badge${earned ? '' : ' is-locked'}" role="img" aria-label="${b.label}: ${earned ? 'earned' : `not yet, ${shown} of ${b.need} ${b.unit}`}">
+        <div class="badge-circle${earned ? '' : ' locked'}" aria-hidden="true">${b.icon}</div>
+        <span aria-hidden="true">${b.label}</span>
+        <small class="badge-prog" aria-hidden="true">${prog}</small>
+      </div>`;
+    }).join('');
   })();
 
   // ---- Recent activity: the last few full exams, newest first ----

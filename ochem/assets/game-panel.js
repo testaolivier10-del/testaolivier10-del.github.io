@@ -131,9 +131,11 @@
   function renderAchievements(){
     var list = XP.achievements();
     set('gameAchievements', list.map(function(a){
-      return '<div class="badge" title="' + esc(a.blurb) + '">' +
-        '<div class="badge-circle' + (a.earned ? '' : ' locked') + '">' + (a.earned ? a.icon : '🔒') + '</div>' +
-        '<span>' + esc(a.label) + '</span>' +
+      // Its own icon, greyed until earned, rather than one lock for all
+      // (audit 2026-10); the blurb says how to earn it.
+      return '<div class="badge' + (a.earned ? '' : ' is-locked') + '" title="' + esc(a.blurb) + '" role="img" aria-label="' + esc(a.label + ': ' + (a.earned ? 'earned' : 'not yet. ' + a.blurb)) + '">' +
+        '<div class="badge-circle' + (a.earned ? '' : ' locked') + '" aria-hidden="true">' + a.icon + '</div>' +
+        '<span aria-hidden="true">' + esc(a.label) + '</span>' +
       '</div>';
     }).join(''));
   }

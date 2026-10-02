@@ -240,7 +240,8 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
@@ -303,7 +304,7 @@ ${END}
 
   <footer class="notes-foot">
     <p><a href="../learn.html">&larr; All ${total} sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>
@@ -383,7 +384,7 @@ if (existsSync(learnPath)) {
 
   const block = `${TOC_START}\n` +
     `      <div class="tb-static-toc">\n` +
-    `        <h1>The Organic Chemistry Textbook</h1>\n` +
+    `        <h1>The Organic Chemistry textbook</h1>\n` +
     `        <p class="step-body">${modules.length} chapters, ${n} sections. Every section below is a page you can read on its own.${notesOnlyNote}</p>\n` +
     `${toc}\n` +
     `      </div>\n` +

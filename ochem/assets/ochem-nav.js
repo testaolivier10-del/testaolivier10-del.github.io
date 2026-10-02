@@ -5,7 +5,7 @@
    This file used to render only a five-link strip under a header each of
    ochem's 81 pages hand-wrote for itself — which is why ochem had no way back
    to the hub and NREMT did. Those hand-written headers are gone; every page
-   now carries an empty <div id="site-header"></div> and this file fills it.
+   now carries an empty <header id="site-header"></header> and this file fills it.
 
    Each page sets window.OCHEM_SECTION ('home'|'learn'|'practice'|'review'|
    'exams'|'glossary'|'tools'|'dashboard', or '' for none) and window.OCHEM_BASE (the
@@ -47,6 +47,54 @@
         break;
       }
     }
+  }
+
+
+  /* Clickable atoms a lesson or mechanism page draws by hand (a <g> or
+     <circle> with class "atom") had a click handler and nothing else, so a
+     keyboard or screen-reader user could not answer (audit 2026-10,
+     accessibility: atomic-structure step 4 and "click the atom" items).
+     Every such atom becomes a named button in the tab order, and Enter or
+     Space clicks it, unless the page already handles keys itself (it calls
+     preventDefault) or drew it as a static, locked picture. */
+  function atomName(el){
+    var t = el.querySelector && el.querySelector('text');
+    var s = t ? t.textContent : '';
+    var svg = el.ownerSVGElement;
+    if(!s && svg && el.tagName.toLowerCase() === 'circle'){
+      var cx = +el.getAttribute('cx'), cy = +el.getAttribute('cy'), r = +el.getAttribute('r') || 12;
+      var texts = svg.querySelectorAll('text');
+      for(var i = 0; i < texts.length && !s; i++){
+        var x = +texts[i].getAttribute('x'), y = +texts[i].getAttribute('y');
+        if(Math.abs(x - cx) <= r && Math.abs(y - cy) <= r + 6) s = texts[i].textContent;
+      }
+    }
+    return (s || el.getAttribute('data-label') || 'atom').replace(/\s+/g, ' ').trim();
+  }
+  function enhanceAtoms(){
+    var list = document.querySelectorAll('.atom:not(.atom--static):not([tabindex])');
+    for(var i = 0; i < list.length; i++){
+      var el = list[i];
+      if(el.closest('.scene--locked')) continue;
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('role', 'button');
+      if(!el.hasAttribute('aria-label')) el.setAttribute('aria-label', atomName(el));
+    }
+  }
+  document.addEventListener('keydown', function(e){
+    if((e.key !== 'Enter' && e.key !== ' ') || e.defaultPrevented) return;
+    var t = e.target;
+    if(!t || !t.classList || !t.classList.contains('atom') || t.getAttribute('role') !== 'button') return;
+    e.preventDefault();
+    t.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+  });
+  if(window.MutationObserver){
+    var atomTick = false;
+    new MutationObserver(function(){
+      if(atomTick) return;
+      atomTick = true;
+      requestAnimationFrame(function(){ atomTick = false; enhanceAtoms(); });
+    }).observe(document.documentElement, { childList: true, subtree: true });
   }
 
   if(window.LevlChrome){

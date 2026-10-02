@@ -164,7 +164,8 @@ const termHtml = (e) => `<li><a href="notes/${e.topic}.html">${esc(e.term)}</a><
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="manifest" href="manifest.json">
@@ -223,7 +224,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 </script>
 </head>
 <body data-course="ochem">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell narrow">
   <div class="page-head">
@@ -250,7 +251,7 @@ ${letters.map((L) => `  <section class="ogl-letter" id="l-${L}"><h2>${L}</h2><ul
 <script src="assets/glossary-page.js" defer></script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>

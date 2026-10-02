@@ -9,8 +9,10 @@
                     wherever the viewer last clicked up to the level badge in
                     the header, and the badge pulses as the number lands.
      levl:levelup   { level, title }
-                    fired once per level crossed — a toast at the bottom of
-                    the screen and a short burst of confetti.
+                    fired once per level crossed — a toast just under the
+                    header (never over the answer just given) and a short
+                    burst of confetti. Confetti is kept for this moment only
+                    (audit 2026-10): a burst per answer covered explanations.
 
    Plus one thing that is not an event: progress bars fill from zero when the
    page opens, so a reading you earned is seen being earned. Every bar the
@@ -45,9 +47,12 @@
   function floatXp(gained){
     if(!gained) return;
     var to = badge();
-    var from = lastPoint || { x: window.innerWidth / 2, y: window.innerHeight * 0.6 };
-    if(reduced() || !to){ pulseBadge(); return; }
+    if(reduced() || !to || to.hidden || !to.offsetWidth){ pulseBadge(); return; }
     var b = to.getBoundingClientRect();
+    // Starts just under the badge rather than where the answer was clicked:
+    // flying up from the option it crossed the explanation the student was
+    // about to read (audit 2026-10, gamification row).
+    var from = { x: b.left + b.width / 2 - 20, y: b.bottom + 52 };
     var chip = document.createElement('span');
     chip.className = 'levl-xp-float';
     chip.textContent = '+' + gained + ' XP';
@@ -69,7 +74,7 @@
 
   /* ---- level-up toast + confetti ---- */
   var toastTimer;
-  function toast(level, title){
+  function toast(level, title, rankChanged, course){
     var el = document.getElementById('levlToast');
     if(!el){
       el = document.createElement('div');
@@ -78,7 +83,11 @@
       el.setAttribute('role', 'status');
       document.body.appendChild(el);
     }
-    el.innerHTML = '<span class="ring">L' + level + '</span><span>Level ' + level + ' · ' + escapeHtml(title || '') + '<small>New rank unlocked.</small></span>';
+    // "Level 4 · A&P rank: Cell Scout", and "New A&P rank: Tissue Tracker"
+    // only on the level where the name actually changes.
+    var rank = escapeHtml((course || 'Rank') + ': ' + (title || ''));
+    el.innerHTML = '<span class="ring">L' + level + '</span><span>Level ' + level +
+      '<small>' + (rankChanged ? 'New ' : '') + rank + '</small></span>';
     clearTimeout(toastTimer);
     requestAnimationFrame(function(){ el.classList.add('show'); });
     toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 4200);
@@ -167,7 +176,7 @@
   });
   document.addEventListener('levl:levelup', function(e){
     var d = e.detail || {};
-    setTimeout(function(){ toast(d.level, d.title); confetti(); }, reduced() ? 0 : 900);
+    setTimeout(function(){ toast(d.level, d.title, d.rankChanged !== false, d.course); confetti(); }, reduced() ? 0 : 900);
   });
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchBars);

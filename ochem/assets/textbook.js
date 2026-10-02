@@ -383,7 +383,10 @@
     var sections = mod.topics.map(function(t){
       var pct = topicPct(t.id);
       var done = !!read[t.id];
-      return '<section class="tb-section" id="' + t.id + '" data-topic="' + t.id + '">' +
+      // Hidden until its notes and every earlier section's have arrived, so a
+      // section landing never pushes the ones below it down the screen
+      // (audit 2026-10, layout shift: CLS 0.5 on a phone).
+      return '<section class="tb-section" id="' + t.id + '" data-topic="' + t.id + '" hidden>' +
         '<div class="tb-section-head">' +
           '<h2 class="tb-section-title">' + escapeHtml(t.title) + '</h2>' +
           '<div class="tb-section-meta">' +
@@ -417,19 +420,34 @@
       '</header>' +
       jumpMenuHtml(mod) +
       sections +
-      '<nav class="tb-chapter-nav">' +
+      '<nav class="tb-chapter-nav" hidden>' +
         (prev ? '<a class="tb-chapter-link prev" href="#m-' + prev.id + '"><span>&larr; Previous chapter</span><b>' + escapeHtml(prev.title) + '</b></a>' : '<span></span>') +
         (next ? '<a class="tb-chapter-link next" href="#m-' + next.id + '"><span>Next chapter &rarr;</span><b>' + escapeHtml(next.title) + '</b></a>' : '<span></span>') +
       '</nav>';
 
+    var ready = {};
+    function reveal(){
+      for(var k = 0; k < mod.topics.length; k++){
+        if(!ready[mod.topics[k].id]) return;
+        var sec = document.getElementById(mod.topics[k].id);
+        // Overflow can only be measured once the section is laid out.
+        if(sec && sec.hidden){ sec.hidden = false; makeFiguresReachable(sec); }
+      }
+      var nav = chapterEl.querySelector('.tb-chapter-nav');
+      if(nav) nav.hidden = false;
+    }
     mod.topics.forEach(function(t){
       loadNotes(t.id).then(function(html){
         var slot = mainEl.querySelector('[data-notes="' + t.id + '"]');
+        ready[t.id] = true;
         if(slot){
           slot.innerHTML = html; makeFiguresReachable(slot);
           // Glossary popups on the first use of each term (glossary-tip.js).
           if(window.OchemGlossary) window.OchemGlossary.mark(slot, t.id);
         }
+        // Shown in order: a section appears once it and every one before it
+        // has landed.
+        reveal();
         observeEnds();
         applyPendingHit();
       });

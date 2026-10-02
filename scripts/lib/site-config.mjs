@@ -59,7 +59,9 @@ export const CSP = [
   "base-uri 'self'",
   "object-src 'none'",
   "form-action 'self'",
-  'frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh',
+  // 'self' for the "/" search overlay, which is search.html?embed=1 in an
+  // iframe (site-chrome.js, audit 2026-10 UX row).
+  "frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh",
 ].join('; ');
 
 /* A redirect stub: one inline location.replace() and nothing else. */
@@ -87,6 +89,7 @@ export function normalizeCsp(content) {
       d.vals = d.vals.filter((v) => !WIDE.has(v) && !SCRIPT_PINS.includes(v));
       if (hadCdn) d.vals.push(...SCRIPT_PINS);
     }
+    if (d.name === 'frame-src' && !d.vals.includes("'self'")) d.vals.unshift("'self'");
     if (d.name === 'connect-src') {
       const hadWorker = d.vals.some((v) => /workers\.dev|^https:\/\/api\./.test(v)) || d.vals.includes(API_ORIGIN);
       const hadUmami = d.vals.includes(UMAMI_ORIGIN);

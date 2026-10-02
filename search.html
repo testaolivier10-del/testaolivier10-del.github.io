@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Search All Courses — LevlPrep</title>
 <meta name="description" content="Search every LevlPrep course at once: NREMT-EMT, Organic Chemistry and Anatomy &amp; Physiology notes, lessons, glossary terms, tools and questions.">
@@ -22,6 +23,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/theme.css">
+<script>if(/[?&]embed=1(&|$)/.test(location.search))document.documentElement.classList.add("ss-embed");</script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
   .ss{max-width:820px;}
@@ -67,18 +69,20 @@
   :root[data-theme="dark"] [data-c="nremt"]{--c-tint:rgba(63,194,169,0.16);--c-ink:#9FE6D6;}
   :root[data-theme="dark"] [data-c="ochem"]{--c-tint:rgba(156,143,224,0.2);--c-ink:#C9C0F2;}
   :root[data-theme="dark"] [data-c="anp"]{--c-tint:rgba(236,132,108,0.2);--c-ink:#F2B9A9;}
+  /* ?embed=1: this page inside the "/" search overlay every page opens
+     (site-chrome.js), so only the box, chips and results show. */
+  .ss-embed #site-header,.ss-embed .skip-link,.ss-embed .ss-hero,.ss-embed .ss-help,.ss-embed .xsection:has(> footer){display:none;}
+  .ss-embed body{background:var(--white);}
+  .ss-embed .xshell{padding-top:6px;padding-bottom:24px;}.ss-embed .xsection{margin-top:0;padding-top:0;}
 </style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header">
+<header id="site-header" data-site-header>
   <div class="site-header__inner">
-    <a class="site-header__brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
-    </a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">&#9681;</button>
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
   </div>
-</div>
+</header>
 
 <div class="xshell" id="main" role="main" data-skip-target tabindex="-1">
   <div class="hero ss-hero">
@@ -92,7 +96,7 @@
       <div class="ss-box">
         <label class="sr-only" for="ssQ">Search all courses</label>
         <svg class="ss-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-        <input type="search" id="ssQ" class="ss-input" placeholder="Search all courses (e.g. &ldquo;epinephrine&rdquo;, &ldquo;SN2&rdquo;)" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="ssStatus ssHelp" aria-controls="ssResults">
+        <input type="search" id="ssQ" class="ss-input" placeholder="Search notes, terms, questions" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="ssStatus ssHelp" aria-controls="ssResults">
       </div>
       <p class="ss-help" id="ssHelp">Results appear as you type. <kbd>&darr;</kbd> moves into the results, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> between them, <kbd>Enter</kbd> opens one, <kbd>Esc</kbd> returns here. <kbd>/</kbd> jumps back to the box.</p>
       <div class="ss-chips" id="ssChips" role="group" aria-label="Course"></div>
@@ -101,11 +105,12 @@
       <noscript><p class="ss-none">Search runs in your browser and needs JavaScript. Each course&rsquo;s notes and glossary work without it: <a href="nremt/">NREMT</a>, <a href="ochem/">Organic Chemistry</a>, <a href="anatomy-physiology/">Anatomy &amp; Physiology</a>.</p></noscript>
     </div>
   </div>
-
+</div>
+<div class="xshell">
   <div class="xsection">
     <footer style="margin-top:0">
       <p>Runs in your browser. Nothing you type is sent anywhere. A course&rsquo;s material is only downloaded when a search needs it.</p>
-      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
     </footer>
   </div>
 </div>
@@ -113,18 +118,12 @@
 <script src="assets/account.js" defer></script>
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
+<script src="assets/site-chrome.js" defer></script>
 <script src="assets/site-search.js" defer></script>
 <script src="assets/site-search-all.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   if(window.HubProgress) window.HubProgress.mount('hub');
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem('nremt_theme', isDark ? 'light' : 'dark'); }catch(e){}
-  });
 
   /* The site-wide search. What each course contributes, and when it is
      fetched, is assets/site-search-all.js; ranking is assets/site-search.js.
@@ -134,6 +133,11 @@ document.addEventListener('DOMContentLoaded', function(){
   // wait for data-content-ready: results arrive over the network.
   document.documentElement.setAttribute('data-content-async', '');
   var S = window.LevlSearch, A = window.LevlSearchAll;
+  // In the overlay, a result opens in the page that opened the overlay, and
+  // Esc from an empty box closes the overlay.
+  var EMBED = document.documentElement.classList.contains('ss-embed') && window.parent !== window;
+  if(EMBED){ var baseEl = document.createElement('base'); baseEl.target = '_top'; document.head.appendChild(baseEl); }
+  function closeEmbed(){ try{ window.parent.postMessage({ levl: 'close-search' }, location.origin); }catch(e){} }
   var box = document.getElementById('ssQ');
   var chipsEl = document.getElementById('ssChips');
   var statusEl = document.getElementById('ssStatus');
@@ -311,8 +315,9 @@ document.addEventListener('DOMContentLoaded', function(){
   function focusables(){ return Array.prototype.slice.call(resultsEl.querySelectorAll('.ss-hit, .ss-more')); }
   box.addEventListener('keydown', function(e){
     if(e.key === 'ArrowDown'){ var h = focusables(); if(h[0]){ e.preventDefault(); h[0].focus(); } }
-    else if(e.key === 'Enter'){ clearTimeout(timer); run(); var f = focusables()[0]; if(f && f.tagName === 'A'){ e.preventDefault(); location.href = f.href; } }
+    else if(e.key === 'Enter'){ clearTimeout(timer); run(); var f = focusables()[0]; if(f && f.tagName === 'A'){ e.preventDefault(); (EMBED ? window.top : window).location.href = f.href; } }
     else if(e.key === 'Escape' && box.value){ e.preventDefault(); box.value = ''; run(); }
+    else if(e.key === 'Escape' && EMBED){ e.preventDefault(); closeEmbed(); }
   });
   resultsEl.addEventListener('keydown', function(e){
     var h = focusables(), i = h.indexOf(document.activeElement);

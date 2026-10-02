@@ -1063,6 +1063,17 @@
   /* ---- auth modal ------------------------------------------------------ */
 
   var authMode = 'signin';       // signin | signup | reset | newpassword
+  /* Why the dialog was opened. From a Premium "Get it" button the account
+     is for attaching a pass, and the usual "free, only so your progress
+     survives a new phone" line contradicted the purchase in progress
+     (audit 2026-10). */
+  var authPurpose = '';
+  var PURPOSE_SUB = {
+    checkout: {
+      signup: 'Create an account to attach your pass. You’ll pay next.',
+      signin: 'Sign in to attach your pass to your account. You’ll pay next.'
+    }
+  };
   var lastFocused = null;        // restored when the modal closes
   var pendingEmail = '';         // address a confirmation mail just went to
 
@@ -1097,13 +1108,13 @@
               'autocapitalize="none" autocorrect="off" spellcheck="false" aria-describedby="authEmailHint">' +
           '</label>' +
           '<p class="auth-hint" id="authEmailHint" hidden></p>' +
-          '<label id="authPasswordLabel">' +
+          '<div class="auth-field" id="authPasswordLabel">' +
             '<span class="auth-label-row">' +
-              '<span id="authPasswordText">Password</span>' +
-              '<button type="button" class="auth-reveal" id="authReveal" aria-pressed="false" tabindex="-1">Show</button>' +
+              '<label for="authPassword" id="authPasswordText">Password</label>' +
+              '<button type="button" class="auth-reveal" id="authReveal" aria-pressed="false" aria-label="Show password" aria-controls="authPassword">Show</button>' +
             '</span>' +
             '<input type="password" id="authPassword" autocomplete="current-password" aria-describedby="authPwHint">' +
-          '</label>' +
+          '</div>' +
           '<div class="auth-strength" id="authStrength" hidden>' +
             '<div class="auth-strength__bar"><i id="authStrengthFill"></i></div>' +
             '<span class="auth-strength__label" id="authStrengthLabel"></span>' +
@@ -1174,7 +1185,7 @@
       authMode = m;
       var c = COPY[m];
       el.authModalTitle.textContent = c.title;
-      el.authModalSub.textContent = c.sub;
+      el.authModalSub.textContent = (PURPOSE_SUB[authPurpose] && PURPOSE_SUB[authPurpose][m]) || c.sub;
       el.authSubmitBtn.textContent = c.submit;
       el.authSubmitBtn.disabled = false;
 
@@ -1360,6 +1371,7 @@
     el.authMagicBtn.addEventListener('click', function(){
       var email = el.authEmail.value.trim();
       if(!email){ setMsg('Enter your email first, then we’ll send the link.', 'error'); el.authEmail.focus(); return; }
+      if(!looksLikeEmail(email)){ setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
       var c = getClient();
       if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
       el.authMagicBtn.disabled = true;
@@ -1384,12 +1396,13 @@
       e.preventDefault();
       var email = el.authEmail.value.trim();
       var password = el.authPassword.value;
+      if(authMode !== 'newpassword'){
+        if(!email) { setMsg('Enter the email you use for your account.', 'error'); el.authEmail.focus(); return; }
+        if(!looksLikeEmail(email)) { setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
+      }
       var c = getClient();
       if(!c) return setMsg('Accounts are unavailable right now — check your connection and try again.', 'error');
 
-      if(authMode !== 'newpassword'){
-        if(!email || email.indexOf('@') < 1) { setMsg('Enter the email you use for your account.', 'error'); el.authEmail.focus(); return; }
-      }
       if(COPY[authMode].password && password.length < MIN_PASSWORD && authMode !== 'signin'){
         setMsg('Use at least ' + MIN_PASSWORD + ' characters.', 'error');
         el.authPassword.focus();
@@ -1573,7 +1586,11 @@
     if(window.LevlAnalytics) window.LevlAnalytics.event(name, data);
   }
 
-  function openAuthModal(mode){
+  // Something@something.tld: enough to catch a typo before any network call.
+  function looksLikeEmail(s){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s || '')); }
+
+  function openAuthModal(mode, opts){
+    authPurpose = (opts && opts.purpose) || '';
     ensureAuthModal();
     var overlay = document.getElementById('authModalOverlay');
 

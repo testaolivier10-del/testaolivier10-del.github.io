@@ -548,7 +548,7 @@
 
   function planLabel(plan){
     switch(plan.mode){
-      case 'adaptive': return 'Adaptive practice';
+      case 'adaptive': return window.OchemMastery && window.OchemMastery.overall && !window.OchemMastery.overall() ? 'Diagnostic' : 'Adaptive practice';
       case 'weak':     return 'Targeted: ' + (plan.conceptTitle || 'your weak spots');
       case 'mistakes': return 'Review your mistakes';
       case 'flagged':  return 'Flagged questions';

@@ -3,7 +3,7 @@
    button sits in the tutor mascot's column, above it (assets/tutor.js). */
 
 .pt-fab{
-  position:fixed;right:23px;bottom:90px;z-index:60;
+  position:fixed;right:23px;bottom:90px;z-index:42; /* below the phone More sheet (44/45) */
   width:52px;height:52px;border-radius:50%;
   background:var(--navy);color:var(--on-accent);border:none;
   font-size:24px;line-height:1;cursor:pointer;box-shadow:var(--shadow-pop);

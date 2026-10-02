@@ -16,7 +16,7 @@
                            for the correct-answer chime and the theme toggle.
      Row 2 (.course-nav)   the current course's section tabs.
 
-   A page only needs an empty <div id="site-header"></div>; row 2 is injected
+   A page only needs an empty <header id="site-header"></header>; row 2 is injected
    directly after it, so no page has to know the two-row shape exists.
 
    Height vars, both set from the real rendered boxes since the tab row wraps
@@ -144,12 +144,62 @@
         var box = document.querySelector('input[type="search"], input[name="q"]');
         if(box){ box.focus(); if(box.select) box.select(); return; }
       }
-      location.href = searchUrl(courseKey);
+      openSearchOverlay(courseKey);
     });
+  }
+
+  /* "/" opens search over the page instead of leaving it, so a student in a
+     lesson keeps their place and the course chrome (audit 2026-10). The
+     overlay is the search page itself in embed mode (search.html?embed=1),
+     so there is one search, not two; a result opens in this window. A modal
+     dialog: the page behind is inert, Esc or the close button returns focus
+     to where it was. */
+  var overlayState = null;
+  function openSearchOverlay(courseKey){
+    if(overlayState) return;
+    var back = document.activeElement;
+    var wrap = document.createElement('div');
+    wrap.className = 'lso';
+    wrap.innerHTML =
+      '<div class="lso-scrim"></div>' +
+      '<div class="lso-panel" role="dialog" aria-modal="true" aria-label="Search">' +
+        '<div class="lso-bar"><b>Search</b>' +
+          '<a href="' + searchUrl(courseKey) + '">Open the search page</a>' +
+          '<button type="button" class="lso-close" aria-label="Close search">Esc</button></div>' +
+        '<iframe title="Search" src="/search.html?embed=1' + (courseKey ? '&course=' + encodeURIComponent(courseKey) : '') + '"></iframe>' +
+      '</div>';
+    var hidden = [];
+    Array.prototype.forEach.call(document.body.children, function(el){
+      if(el.tagName === 'SCRIPT' || el.hasAttribute('inert')) return;
+      el.setAttribute('inert', ''); hidden.push(el);
+    });
+    document.body.appendChild(wrap);
+    document.documentElement.classList.add('lso-open');
+    var frame = wrap.querySelector('iframe');
+    frame.addEventListener('load', function(){
+      try{ var b = frame.contentDocument.getElementById('ssQ'); if(b) b.focus(); else frame.focus(); }catch(e){ frame.focus(); }
+    });
+    function close(){
+      if(!overlayState) return;
+      hidden.forEach(function(el){ el.removeAttribute('inert'); });
+      wrap.remove();
+      document.documentElement.classList.remove('lso-open');
+      window.removeEventListener('message', onMsg);
+      document.removeEventListener('keydown', onKey, true);
+      overlayState = null;
+      if(back && back.focus) back.focus();
+    }
+    function onMsg(e){ if(e.origin === location.origin && e.data && e.data.levl === 'close-search') close(); }
+    function onKey(e){ if(e.key === 'Escape'){ e.preventDefault(); close(); } }
+    window.addEventListener('message', onMsg);
+    document.addEventListener('keydown', onKey, true);
+    wrap.querySelector('.lso-scrim').addEventListener('click', close);
+    wrap.querySelector('.lso-close').addEventListener('click', close);
+    overlayState = { close: close };
   }
   /* Not window.LevlSearch: that name is the search engine (assets/site-search.js),
      which A&P search loads only when the name is free (audit 2026-10, fix 6). */
-  window.LevlSearchChrome = { url: searchUrl, wireKey: wireSearchKey, icon: SEARCH_ICON };
+  window.LevlSearchChrome = { url: searchUrl, wireKey: wireSearchKey, icon: SEARCH_ICON, open: function(k){ openSearchOverlay(k || ''); } };
 
   /* Where each course would send a returning student. Each course home works
      this out for its own "Continue" button and leaves it here, under
@@ -180,7 +230,7 @@
   function syncSoundButton(btn){
     if(!btn || !window.LevlSound) return;
     var on = window.LevlSound.isEnabled();
-    btn.innerHTML = on ? SPEAKER_ON : SPEAKER_OFF;
+    btn.innerHTML = (on ? SPEAKER_ON : SPEAKER_OFF) + '<span class="chrome-menu__lbl">Answer sounds: ' + (on ? 'on' : 'off') + '</span>';
     btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     var label = on ? 'Turn answer sounds off' : 'Turn answer sounds on';
     btn.setAttribute('aria-label', label);
@@ -193,6 +243,19 @@
     else document.documentElement.removeAttribute('data-theme');
     try{ localStorage.setItem(THEME_KEY, mode); }catch(e){}
   }
+  /* With nothing saved, the inline script in every <head> takes the OS
+     setting (prefers-color-scheme) before first paint, so there is no flash.
+     Follow the OS when it changes too, until the student picks a theme. */
+  try{
+    var darkQuery = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+    if(darkQuery && darkQuery.addEventListener) darkQuery.addEventListener('change', function(e){
+      var saved = null;
+      try{ saved = localStorage.getItem(THEME_KEY); }catch(err){}
+      if(saved) return;
+      if(e.matches) document.documentElement.setAttribute('data-theme', 'dark');
+      else document.documentElement.removeAttribute('data-theme');
+    });
+  }catch(e){}
 
   /* Both rows are measured, not assumed: row 2 wraps to a second line on a
      tablet and scrolls sideways on a phone, and an exam timer parked at a
@@ -323,20 +386,121 @@
     document.body.appendChild(scrim);
     document.body.appendChild(sheet);
     var more = document.getElementById('levlMoreTab');
+    more.setAttribute('aria-controls', 'levlBottomSheet');
+    /* Closed, the sheet sits off-screen but its links were still in the tab
+       order (audit 2026-10, fix-first 12): inert + aria-hidden take it out of
+       both the tab order and the accessibility tree until it opens. */
     function setOpen(open){
+      var was = sheet.classList.contains('open');
       sheet.classList.toggle('open', open);
       scrim.classList.toggle('open', open);
       more.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open){ sheet.removeAttribute('inert'); sheet.removeAttribute('aria-hidden'); }
+      else { sheet.setAttribute('inert', ''); sheet.setAttribute('aria-hidden', 'true'); }
+      if(open && !was){ var first = sheet.querySelector('a'); if(first) first.focus(); }
+      if(!open && was && sheet.contains(document.activeElement)) more.focus();
     }
+    setOpen(false);
     more.addEventListener('click', function(){ setOpen(!sheet.classList.contains('open')); });
     scrim.addEventListener('click', function(){ setOpen(false); });
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') setOpen(false); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && sheet.classList.contains('open')){ setOpen(false); more.focus(); }
+    });
   }
 
   // The three courses' own keys; anything else is treated as NREMT, the
   // original course, exactly as before A&P existed.
   function courseKeyOf(subject){
     return subject === 'ochem' || subject === 'anp' ? subject : 'nremt';
+  }
+
+  var MENU_ICON =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+      'stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+
+  /* Row 1, the same on every page of the site (audit 2026-10: the hub, 404,
+     search, terms and the courses each showed a different set of controls).
+     The wordmark goes to the hub and the course name to the course home; the
+     back arrow that also went to the hub read as "previous page" on a lesson
+     and is gone. On a phone, account, answer sounds and theme fold into one
+     menu (.chrome-menu); from 641px up the same nodes sit in the row, because
+     the menu is display:contents there. */
+  function headerHtml(o){
+    var link = function(cls, id, title, inner, hidden){
+      return o.progressHref
+        ? '<a href="' + o.progressHref + '" class="' + cls + '" id="' + id + '" title="' + title + '"' + (hidden ? ' hidden' : '') + '>' + inner + '</a>'
+        : '<span class="' + cls + '" id="' + id + '" title="' + title + '"' + (hidden ? ' hidden' : '') + '>' + inner + '</span>';
+    };
+    return '<div class="site-header__inner">' +
+        '<span class="site-header__brand-row">' +
+          '<a class="site-header__brand" href="' + HUB_URL + '"' + (o.course ? '' : ' aria-label="LevlPrep home"') + '>' +
+            '<span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span>' +
+          '</a>' +
+          (o.course
+            ? '<a class="site-header__course" href="' + o.courseHref + '" aria-label="' + escapeHtml(o.course) + ' home">' +
+                '<span class="site-header__course-full">' + escapeHtml(o.course) + '</span>' +
+                '<span class="site-header__course-short" aria-hidden="true">' + escapeHtml(o.courseShort || COURSE_SHORT[o.courseKey] || o.course) + '</span>' +
+              '</a>'
+            : '') +
+        '</span>' +
+        '<div class="nav-right">' +
+          '<a href="' + searchUrl(o.courseKey) + '" class="theme-toggle search-toggle" id="searchToggle" aria-label="Search' + (o.courseKey ? '' : ' all courses') + '" title="Search (press /)">' + SEARCH_ICON + '</a>' +
+          link('nav-streak', 'navStreak', 'Daily streak', FLAME_SVG + '<span id="navStreakCount">0</span>', true) +
+          link('level-badge', 'levelBadge', 'Your level', 'L1', true) +
+          '<button type="button" class="theme-toggle chrome-more" id="chromeMenuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="chromeMenu" aria-label="Account and settings" title="Account and settings">' + MENU_ICON + '</button>' +
+          '<div class="chrome-menu" id="chromeMenu">' +
+            '<span id="accountSlot"></span>' +
+            (window.LevlSound ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>' : '') +
+            '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Dark mode" title="Dark mode">' + THEME_ICONS + '<span class="chrome-menu__lbl">Dark mode</span></button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  /* The phone menu. Closed it is display:none (so out of the tab order);
+     Esc or a click elsewhere closes it and focus goes back to the button. A
+     click inside the account menu or the sign-in dialog, which are drawn
+     outside it, does not count as elsewhere. */
+  function wireChromeMenu(){
+    var btn = document.getElementById('chromeMenuBtn');
+    var menu = document.getElementById('chromeMenu');
+    if(!btn || !menu) return;
+    function setOpen(open, refocus){
+      menu.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open){ var first = menu.querySelector('button, a'); if(first) first.focus(); }
+      else if(refocus) btn.focus();
+    }
+    btn.addEventListener('click', function(){ setOpen(!menu.classList.contains('open')); });
+    document.addEventListener('click', function(e){
+      if(!menu.classList.contains('open')) return;
+      var t = e.target;
+      if(menu.contains(t) || btn.contains(t) || (t.closest && t.closest('#accountMenu, .auth-modal, .modal-overlay'))) return;
+      setOpen(false);
+    }, true);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && menu.classList.contains('open') && !document.getElementById('accountMenu')) setOpen(false, true);
+    });
+  }
+
+  function wireControls(courseKey){
+    var sound = document.getElementById('soundToggle');
+    if(sound && window.LevlSound){
+      syncSoundButton(sound);
+      window.LevlSound.onChange(function(){ syncSoundButton(sound); });
+      sound.addEventListener('click', function(){ window.LevlSound.toggle(); });
+    }
+    var toggle = document.getElementById('themeToggle');
+    if(toggle){
+      var syncPressed = function(){ toggle.setAttribute('aria-pressed', document.documentElement.getAttribute('data-theme') === 'dark' ? 'true' : 'false'); };
+      syncPressed();
+      toggle.addEventListener('click', function(){
+        setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        syncPressed();
+      });
+    }
+    wireChromeMenu();
+    wireSearchKey(courseKey);
   }
 
   function render(cfg){
@@ -346,31 +510,10 @@
     // The course tint (see --ctint in theme.css) keys off this.
     document.body.setAttribute('data-course', courseKey);
 
-    mount.innerHTML =
-      '<div class="site-header__inner">' +
-        '<span class="site-header__brand-row">' +
-          '<a class="hub-back" href="' + HUB_URL + '" title="Back to LevlPrep" aria-label="Back to LevlPrep">&larr;</a>' +
-          '<a class="site-header__brand" href="' + HUB_URL + '">' +
-            '<span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span>' +
-          '</a>' +
-          (cfg.course
-            ? '<a class="site-header__course" href="' + cfg.courseHref + '" aria-label="' + escapeHtml(cfg.course) + ' home">' +
-                '<span class="site-header__course-full">' + escapeHtml(cfg.course) + '</span>' +
-                '<span class="site-header__course-short" aria-hidden="true">' + escapeHtml(cfg.courseShort || COURSE_SHORT[courseKey] || cfg.course) + '</span>' +
-              '</a>'
-            : '') +
-        '</span>' +
-        '<div class="nav-right">' +
-          '<a href="' + searchUrl(courseKey) + '" class="theme-toggle search-toggle" id="searchToggle" aria-label="Search all courses" title="Search (press /)">' + SEARCH_ICON + '</a>' +
-          '<a href="' + cfg.progressHref + '" class="nav-streak" id="navStreak" title="Daily streak" hidden>' + FLAME_SVG + '<span id="navStreakCount">0</span></a>' +
-          '<a href="' + cfg.progressHref + '" class="level-badge" id="levelBadge" title="Your level">L1</a>' +
-          '<span id="accountSlot"></span>' +
-          (window.LevlSound
-            ? '<button type="button" class="theme-toggle sound-toggle" id="soundToggle"></button>'
-            : '') +
-          '<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">' + THEME_ICONS + '</button>' +
-        '</div>' +
-      '</div>';
+    mount.innerHTML = headerHtml({
+      course: cfg.course, courseHref: cfg.courseHref, courseShort: cfg.courseShort,
+      courseKey: courseKey, progressHref: cfg.progressHref
+    });
 
     var nav = document.querySelector('.course-nav');
     if(!nav){
@@ -394,20 +537,7 @@
 
     wireOverflowFade(nav.querySelector('.course-nav__inner'));
     renderBottomNav(cfg, mount);
-
-    var sound = document.getElementById('soundToggle');
-    if(sound && window.LevlSound){
-      syncSoundButton(sound);
-      window.LevlSound.onChange(function(){ syncSoundButton(sound); });
-      sound.addEventListener('click', function(){ window.LevlSound.toggle(); });
-    }
-
-    var toggle = document.getElementById('themeToggle');
-    if(toggle) toggle.addEventListener('click', function(){
-      setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    });
-
-    wireSearchKey(courseKey);
+    wireControls(courseKey);
 
     syncHeights();
     requestAnimationFrame(syncHeights);
@@ -418,6 +548,23 @@
     mountAnnouncer();
     mountAnalytics();
     mountReminders();
+    mountMotion();
+  }
+
+  /* The same row 1 for the pages outside any course: the hub, search, 404,
+     terms, privacy, sources, the changelog and the account page. No course
+     name, no tabs, the neutral rank names. Each of those pages carries the
+     wordmark in its HTML so the row is never empty before this runs. */
+  function renderSite(opts){
+    opts = opts || {};
+    var mount = document.getElementById('site-header');
+    if(!mount) return;
+    mount.innerHTML = headerHtml({ courseKey: '', progressHref: opts.progressHref || '' });
+    if(window.HubProgress) window.HubProgress.mount('hub', { href: opts.progressHref || '' });
+    if(window.StudyHubAccount) window.StudyHubAccount.renderAccountUI();
+    wireControls('');
+    syncHeights();
+    requestAnimationFrame(syncHeights);
     mountMotion();
   }
 
@@ -470,6 +617,30 @@
     return null;
   }
 
+  /* The page footer is contentinfo, which must not sit inside main (axe
+     landmark-contentinfo-is-top-level; audit 2026-10 found it inside on most
+     pages, because the content wrapper that becomes main also holds the
+     footer). When the footer is the last thing in main, its block moves to a
+     sibling wrapper with the same width classes right after main, so the
+     layout is unchanged. A footer elsewhere (inside an article) is left. */
+  function liftFooter(main){
+    if(!main) return;
+    var f = main.querySelector('footer');
+    if(!f) return;
+    var top = f;
+    while(top.parentNode && top.parentNode !== main) top = top.parentNode;
+    if(top.parentNode !== main || (top !== f && top.textContent.trim() !== f.textContent.trim())) return;
+    var after = top.nextElementSibling;
+    while(after && /^(SCRIPT|STYLE|TEMPLATE|NOSCRIPT)$/.test(after.tagName)) after = after.nextElementSibling;
+    if(after) return;
+    var shell = document.createElement('div');
+    shell.className = (main.className.match(/\b(xshell|wrap|narrow)\b/g) || ['xshell']).join(' ');
+    // .wrap pads top and bottom: the footer takes over the bottom padding.
+    if(/\bwrap\b/.test(shell.className)){ shell.style.paddingTop = '0'; main.style.paddingBottom = '0'; }
+    main.parentNode.insertBefore(shell, main.nextSibling);
+    shell.appendChild(top);
+  }
+
   /* Injected rather than written into all 110 pages, for the same reason the
      header itself is: one place to fix, and a page added later gets it
      without anyone remembering to. Inserted as the first child of <body> so
@@ -498,6 +669,8 @@
     if(!document.querySelector('main, [role="main"]')){
       target.setAttribute('role', 'main');
     }
+
+    liftFooter(document.querySelector('main, [role="main"]'));
 
     var a = document.createElement('a');
     a.id = 'levlSkipLink';
@@ -799,8 +972,18 @@
      listener is attached everywhere and costs nothing where it never fires. */
   watchForInstall();
 
+  /* A page outside the courses marks its header with data-site-header and
+     loads this file; that is all it needs for the shared row 1. */
+  function autoSite(){
+    var h = document.getElementById('site-header');
+    if(h && h.hasAttribute('data-site-header')) renderSite();
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', autoSite);
+  else autoSite();
+
   window.LevlChrome = {
     render: render,
+    renderSite: renderSite,
     setTheme: setTheme,
     syncHeights: syncHeights,
     registerServiceWorker: registerServiceWorker,

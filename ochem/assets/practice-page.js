@@ -172,9 +172,13 @@
       }
       // A one- or two-digit pill needs far less room reserved beside the
       // title than the word "Default" does.
+      // Before any answer, adaptive practice has no profile to adapt to: it
+      // is a diagnostic, and says so (audit 2026-10).
+      var title = m.title, desc = m.desc;
+      if(m.mode === 'adaptive' && !M.overall()){ title = 'Diagnostic'; desc = 'Ten questions across the course to find where to start.'; }
       var inner = (pill ? '<span class="pill' + (countPill ? ' pill--count' : '') + '">' + esc(pill) + '</span>' : '') +
-        '<span class="t">' + esc(m.title) + '</span>' +
-        '<span class="d">' + esc(m.desc) + '</span>';
+        '<span class="t">' + esc(title) + '</span>' +
+        '<span class="d">' + esc(desc) + '</span>';
       if(m.href) return '<a class="mode-card" href="' + m.href + '">' + inner + '</a>';
       return '<button type="button" class="mode-card" data-mode="' + i + '"' + disabled + '>' + inner + '</button>';
     }).join('') + '</div>' +
