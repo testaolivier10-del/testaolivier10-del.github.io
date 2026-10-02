@@ -74,6 +74,13 @@ search traffic is unaffected.
    `scripts/sql/reports.sql` (30 days free for every existing account), and
    email the waitlist once.
 
+## Owner and law
+
+LevlPrep is run by Olivier Testa, a sole proprietor in Minnesota (owner is
+over 18). Terms are governed by Minnesota law. Open: a Minnesota Certificate
+of Assumed Name for "LevlPrep", and a virtual mailbox address before the
+first marketing email (CAN-SPAM).
+
 ## The free tier, one rule for every course (decided 2026-10-01)
 
 | | Free | Premium |
