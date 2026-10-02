@@ -771,6 +771,9 @@ if (existsSync(sitemapForCoverage)) {
     // Redirect stubs, and Google's site-verification file, are not pages.
     if (/http-equiv="refresh"/.test(body)) continue;
     if (/^google[0-9a-f]+\.html$/.test(relative(ROOT, file))) continue;
+    // Nor a noindex page (dashboards, account, search, review): it asks not
+    // to be indexed (scripts/lib/app-pages.mjs, site rule sitemap-noindex).
+    if (/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(body)) continue;
     // Nor 404.html and offline.html: each is served in place of some other
     // URL — the first by GitHub Pages for anything it cannot resolve, the
     // second by sw.js for anything it cannot fetch — so neither has an

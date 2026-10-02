@@ -140,7 +140,7 @@ for (const e of entries) {
   groups.get(L).push(e);
 }
 const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const title = 'Organic Chemistry Glossary — Key Terms Defined';
+const title = 'Glossary of Key Terms — Organic Chemistry | LevlPrep';
 const desc = `${entries.length} organic chemistry terms in plain words, from atomic structure to polymers, each linked to the textbook section that teaches it.`;
 const url = `${ORIGIN}/ochem/glossary.html`;
 const ld = {

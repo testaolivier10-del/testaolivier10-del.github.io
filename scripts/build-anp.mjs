@@ -16,8 +16,12 @@ import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import { fileURLToPath } from 'node:url';
+import { courseTitle } from './lib/page-title.mjs';
+import { APP_STATE_PAGES, NOINDEX } from './lib/app-pages.mjs';
+/* Course labels for page titles, longest first (scripts/lib/page-title.mjs). */
+const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
 import {
-  SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampTitle, clampDesc,
+  SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampDesc,
   head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL,
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
@@ -130,13 +134,9 @@ function lessonPage(id) {
   const qs = C.questions[id];
   const byId = new Map(qs.map(q => [q.id, q]));
   const check = (L.check || []).map(qid => byId.get(qid)).filter(Boolean);
-  const title = clampTitle([
-    `${t.title}: Lesson | ${COURSE_NAME}`,
-    `${t.title}: Lesson | A&P`,
-    `${t.title} | A&P lesson`,
-    // Truncated last: the kind goes first so the lesson and notes titles differ.
-    `A&P lesson: ${t.title}`,
-  ]);
+  // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs); the kind
+  // stays in the course label, so a lesson and its notes never share a title.
+  const title = courseTitle(t.title, AP_LABELS.map(l => `${l} Lesson`));
   const desc = DESCRIPTIONS.lessons?.[id] || clampDesc(`${text(L.summary)}`, `${t.title}: an anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
   const url = `${SITE}${BASE}lessons/${id}.html`;
   /* Free in the Foundations chapters (premium.js COURSES.anp.freeChapters);
@@ -338,12 +338,7 @@ function notesPage(id) {
   // The opening two paragraphs: the first is often a one-line hook.
   const firstP = [...C.notes[id].matchAll(/<p>([\s\S]*?)<\/p>/g)].slice(0, 2).map(m => m[1]).join(' ') || t.title;
   const minutes = Math.max(1, Math.round(text(C.notes[id]).split(' ').length / 200));
-  const title = clampTitle([
-    `${t.title}: Notes | ${COURSE_NAME}`,
-    `${t.title}: Notes | A&P`,
-    `${t.title} | A&P notes`,
-    `A&P notes: ${t.title}`,
-  ]);
+  const title = courseTitle(t.title, AP_LABELS.map(l => `${l} Notes`));
   const desc = DESCRIPTIONS.notes?.[id] || clampDesc(firstP, `${t.title} explained in plain language: anatomy and physiology study notes with labeled figures, free to read.`);
   const url = `${SITE}${BASE}notes/${id}.html`;
   const pv = prevTopic(id), nx = nextTopic(id);
@@ -410,7 +405,7 @@ function chapterPage(chId) {
   const kinds = TOOL_KINDS.filter(([k]) => (tools[k] || []).length);
   const toolGroups = kinds.map(([k, label]) => `<section class="anp-chap-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="anp-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
-  const title = clampTitle([`${ch.title} | ${COURSE_NAME}`, `${ch.title} | A&P`]);
+  const title = courseTitle(ch.title, AP_LABELS);
   const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: anatomy and physiology lessons, notes, practice questions and study tools.`);
   const url = `${SITE}${BASE}chapters/${chId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -468,7 +463,7 @@ function corePage(coreId) {
   const tagged = map.topics.filter(t => t.coreConcepts.includes(coreId));
   const byCh = new Map();
   for (const t of tagged) { if (!byCh.has(t.chapter)) byCh.set(t.chapter, []); byCh.get(t.chapter).push(t); }
-  const title = clampTitle([`${cc.name}: a core concept | ${COURSE_NAME}`, `${cc.name} | A&P core concept`]);
+  const title = courseTitle(cc.name, ['A&P Core Concept']);
   const desc = clampDesc(`${cc.summary} See where it appears in every body system.`);
   const url = `${SITE}${BASE}concepts/${coreId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -506,7 +501,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-chapter.js'] })}
 
 function coreIndexPage() {
   const depth = '../';
-  const title = `Core concepts of physiology | ${COURSE_NAME}`;
+  const title = courseTitle('Core concepts of physiology', AP_LABELS);
   const desc = 'Eight ideas that explain every body system, from homeostasis to flow down gradients, with every place each one appears in the course.';
   const url = `${SITE}${BASE}concepts/index.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -543,7 +538,7 @@ function creditsPage() {
     if (!existsSync(p)) continue;
     for (const [id, f] of Object.entries(JSON.parse(readFileSync(p, 'utf8')))) if (f.source === 'openstax') rows.push({ id, f, t });
   }
-  const title = `Figure credits | ${COURSE_NAME}`;
+  const title = courseTitle('Figure credits', AP_LABELS);
   const desc = clampDesc(`The source and license of every figure in the ${COURSE_NAME} course. OpenStax figures are used under CC BY 4.0.`);
   const url = `${SITE}${BASE}credits.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -608,7 +603,7 @@ function glossaryPage() {
   const depth = '';
   const entries = map.concepts.filter(c => C.glossary[c.id]).map(c => ({ c, g: C.glossary[c.id] }))
     .sort((a, b) => a.c.term.localeCompare(b.c.term, 'en', { sensitivity: 'base' }));
-  const title = `Glossary of anatomy & physiology terms | ${COURSE_NAME}`.length <= 60 ? `Glossary of anatomy & physiology terms | ${COURSE_NAME}` : 'A&P glossary: terms, word roots and definitions';
+  const title = courseTitle('Glossary: terms and word roots', AP_LABELS);
   const desc = clampDesc(`${entries.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -662,7 +657,7 @@ ${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'], site: ['re
    table of contents linking to every notes page. */
 function learnPage() {
   const depth = '';
-  const title = `All chapters and topics | ${COURSE_NAME}`;
+  const title = courseTitle('All chapters and topics', AP_LABELS);
   const desc = clampDesc(`Every chapter of the course in order: ${map.chapters.length} chapters and ${map.topics.length} topics, from orientation to the body through development and inheritance.`);
   const url = `${SITE}${BASE}learn.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -935,7 +930,10 @@ ${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer
 </body>
 </html>
 `;
-  return head({ title: entry.title, desc: entry.desc, path, depth, ogType: 'website', jsonld }) + body;
+  // Dashboard, review and search show the visitor's own state: noindex, and
+  // left out of the sitemap (scripts/lib/app-pages.mjs).
+  const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
+  return head({ title: courseTitle(entry.title, AP_LABELS), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
 }
 
 /* ---- Tools hub and practice page (redesign) ----

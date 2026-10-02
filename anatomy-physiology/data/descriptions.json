@@ -19,6 +19,7 @@
     "water-solutions": "Water, solutions and concentration step by step: polarity, hydrogen bonds, hydrophilic vs hydrophobic, concentration units and osmolarity, with practice."
   },
   "notes": {
+    "absorptive-postabsorptive": "Fed and fasting states: what happens to fuel after a meal and between meals, the hormones that set fuel use, a longer fast and starvation.",
     "acid-base-disorders": "Acid-base disorders explained: respiratory and metabolic acidosis and alkalosis, compensation, and step-by-step ABG interpretation, with figures.",
     "adaptive-immunity": "Antigens, T and B lymphocytes, MHC and antigen presentation explained in full, with figures on thymus selection, self-tolerance and clonal selection.",
     "ans-anatomy": "Full notes on sympathetic and parasympathetic anatomy: thoracolumbar and craniosacral outflow, the sympathetic chain and adrenal medulla, with figures.",
@@ -26,6 +27,7 @@
     "bone-calcium": "Blood calcium regulation via a patient case: the normal range, hypocalcemia and hypercalcemia, the PTH feedback loop, calcium balance and bone nutrients.",
     "bone-structure": "Long bone structure and bone functions in written notes: hematopoiesis, bone shapes, diaphysis and epiphysis, marrow, periosteum and bone markings.",
     "carbohydrate-metabolism": "Cellular respiration in detail: glycolysis, citric acid cycle, electron transport chain, ATP yield, glycogen metabolism and gluconeogenesis, with figures.",
+    "circulatory-disorders": "Circulatory disorders explained by mechanism: hypertension, atherosclerosis, heart failure, the types of circulatory shock and compensation for hemorrhage.",
     "conduction-system": "Cardiac conduction system notes: pacemaker potential, SA node, AV node delay, AV bundle and Purkinje fibers, and autonomic control of heart rate.",
     "fluid-compartments-water": "Body fluid compartments explained: intracellular and extracellular fluid, water intake and output, plasma osmolarity control and fluid imbalances.",
     "glomerular-filtration": "Glomerular filtration in full: the filtration membrane, net filtration pressure, GFR and its autoregulation, and neural and hormonal control, with figures.",
@@ -35,8 +37,12 @@
     "lymphatic-system": "The lymphatic system explained: lymph, lymphatic capillaries and ducts, lymph nodes, the spleen, mucosal lymphoid tissue and lymphedema, with figures.",
     "male-anatomy": "Male reproductive anatomy explained: scrotum and testes, the duct system, seminal vesicles and prostate, semen, the penis, erection and ejaculation.",
     "meiosis": "Meiosis explained in full: homologous chromosomes, meiosis I and II, crossing over, mitosis vs meiosis, gametes and nondisjunction, with figures.",
+    "mouth-esophagus": "The mouth and esophagus: the oral cavity, teeth, salivary glands and saliva, chewing, the three phases of swallowing, and how the esophagus moves food down.",
     "neuro-exam": "The neurological exam explained: mental status, Glasgow Coma Scale, cranial nerve, sensory, motor and gait testing, stroke signs and localizing a lesion.",
     "organelles": "Organelles and the cytoskeleton explained: ribosomes, ER, Golgi apparatus, lysosomes, peroxisomes, mitochondria, cilia and microvilli, with figures.",
+    "oxygen-transport": "How blood carries oxygen: hemoglobin saturation and pulse oximetry, the dissociation curve and its shifts, fetal hemoglobin, CO poisoning and hypoxia.",
+    "postnatal-lactation": "The newborn's first breath and the switch from fetal circulation, respiratory distress, the Apgar score, newborn thermoregulation and how milk is made.",
+    "respiratory-disorders": "Respiratory disorders worked out from normal breathing: the four ways a lung can fail, COPD, pulmonary edema and respiratory infections.",
     "skin-functions": "Functions of the skin in written notes: barrier protection, sensation, heat exchange and the body temperature loop, and vitamin D synthesis, illustrated.",
     "smooth-cardiac-muscle": "Smooth muscle vs cardiac muscle in full notes: fiber structure, calcium–calmodulin activation, the latch state and single-unit vs multi-unit, with figures.",
     "synapses": "Synapses and neurotransmitters explained: electrical and chemical synapses, EPSPs and IPSPs, summation, major neurotransmitters, drugs and toxins.",

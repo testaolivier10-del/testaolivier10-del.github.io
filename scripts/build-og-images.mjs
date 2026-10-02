@@ -1,4 +1,4 @@
-/* Renders the three link-preview cards.
+/* Renders the link-preview cards (site, NREMT, ochem, A&P).
 
    These are the 1200x630 images an unfurler shows when a LevlPrep link is
    pasted into a chat. There were two of them, both hand-made and both wrong by
@@ -57,6 +57,9 @@ const questionCount = JSON.parse(
    lessons are the pages. */
 const lessonCount = readdirSync('ochem/lessons').filter((f) => f.endsWith('.html')).length;
 
+/* Chapters are the chapter pages build-anp.mjs writes. */
+const anpChapterCount = readdirSync('anatomy-physiology/chapters').filter((f) => f.endsWith('.html')).length;
+
 const CARDS = [
   {
     out: 'assets/og-image.png',
@@ -78,6 +81,15 @@ const CARDS = [
     brand: 'LevlPrep',
     title: 'Organic Chemistry, learned by doing the mechanisms',
     sub: `${lessonCount} interactive lessons where you push the arrows yourself, with instant feedback.`,
+  },
+  /* A&P had 378 pages pointing at this file and no file (site audit 2026-10):
+     every shared A&P link unfurled with no picture. */
+  {
+    out: 'anatomy-physiology/assets/og-image.png',
+    badge: 'Free to start · No ads',
+    brand: 'LevlPrep',
+    title: 'Anatomy & Physiology, in the order it builds',
+    sub: `${anpChapterCount} chapters of free notes, mechanism-first physiology, and interactive lessons with instant feedback.`,
   },
 ];
 

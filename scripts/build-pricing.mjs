@@ -47,6 +47,9 @@ function between(src, start, end, inner, rel) {
 const COURSE_URL = { nremt: '/nremt/', ochem: '/ochem/', anp: '/anatomy-physiology/' };
 const ORDER = ['nremt', 'ochem', 'anp'];
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
+/* The address terms.html and privacy.html publish. When hello@levlprep.com
+   is set up (owner checklist), change it here and on those two pages. */
+const CONTACT_EMAIL = 'testaolivier10@gmail.com';
 const lowest = (c) => c.passes.reduce((a, b) => (b.price < a.price ? b : a));
 
 /* ---- 1. premium.html ----------------------------------------------------- */
@@ -75,7 +78,7 @@ function courseSection(key) {
 }
 
 function premiumPage() {
-  const title = 'Free vs Premium — Prices | LevlPrep';
+  const title = 'Free vs Premium: Prices and Passes | LevlPrep';
   const desc = `What is free in each LevlPrep course and what Premium adds: one-time passes from ${money(Math.min(...ORDER.map((k) => lowest(COURSES[k]).price)))}, no subscription, 7-day refunds, and Pass-or-extend for NREMT.`;
   const url = `${ORIGIN}/premium.html`;
   const ld = {
@@ -231,16 +234,53 @@ function hubPricing() {
 <script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>`;
 }
 
+/* The hub's three questions (site audit 2026-10, SEO: "No FAQ (affiliation,
+   price, is it free)"). Shown on the page and given as FAQPage structured
+   data; both come from here, the prices from premium.js. The founding price
+   is left out: it expires on a date, and the block above states it and hides
+   it once it has. */
+const AFFILIATION = 'No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax or any university.';
+const passWords = (p) => (/^(semester|full year)/i.test(p.label) ? `a ${p.label[0].toLowerCase()}${p.label.slice(1)}` : `for ${p.label}`);
+const passList = (k) => COURSES[k].passes.map((p) => `${money(p.price)} ${passWords(p)}`).join(' or ');
+const PRICE = `Premium is a one-time pass per course, with no subscription: ${ORDER.map((k) => `${COURSES[k].name}, ${passList(k)}`).join('; ')}. Prices are in US dollars.`;
+const FAQ = [
+  ['Is LevlPrep free?', FREE_SENTENCE],
+  ['How much does Premium cost?', PRICE],
+  ['Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
+];
+
+function hubFaq() {
+  return `  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Questions</div>
+      <div class="xcontent">
+        <div class="hub-faq">
+${FAQ.map(([q, a], i) => `          <h2>${esc(q)}</h2>
+          <p>${esc(a)}${i === 1 ? ' <a href="premium.html">Free vs Premium, course by course</a>.' : ''}</p>`).join('\n')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
 function hubLd() {
   const ld = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Organization', '@id': `${ORIGIN}/#org`, name: 'LevlPrep', url: `${ORIGIN}/`,
-        logo: `${ORIGIN}/assets/icon.svg`,
+        // Raster, 112 px or more: Google does not take an SVG logo (audit 2026-10).
+        logo: { '@type': 'ImageObject', url: `${ORIGIN}/assets/icon-512.png`, width: 512, height: 512 },
         description: `Exam prep tools and interactive courses. ${FREE_SENTENCE} No ads.`,
+        // Who runs it and how to reach him, as terms.html and privacy.html say.
+        founder: { '@type': 'Person', name: 'Olivier Testa' },
+        contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, url: `${ORIGIN}/terms.html` },
       },
       { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: 'LevlPrep', url: `${ORIGIN}/`, publisher: { '@id': `${ORIGIN}/#org` }, inLanguage: 'en' },
+      {
+        '@type': 'FAQPage', '@id': `${ORIGIN}/#faq`,
+        mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      },
       {
         '@type': 'ItemList', name: 'Courses and exam prep on LevlPrep',
         itemListElement: ORDER.map((k, i) => ({
@@ -258,6 +298,7 @@ function hubLd() {
   const rel = 'index.html';
   let src = readFileSync(join(ROOT, rel), 'utf8');
   src = between(src, '<!-- pricing:start -->', '<!-- pricing:end -->', hubPricing(), rel);
+  src = between(src, '<!-- faq:start -->', '<!-- faq:end -->', hubFaq(), rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);

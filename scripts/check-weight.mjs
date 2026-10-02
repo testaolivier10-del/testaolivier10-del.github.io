@@ -217,7 +217,10 @@ const BUDGETS = [
      primary button, the returning student's Continue card drawn inline before
      first paint (a deferred script would push the page down), and a distinct
      line icon per course card. Measured 7.1 KB. */
-  ['index.html', 7.3],
+  /* 7.3 -> 7.8 (audit 2026-10, W8): the three-question FAQ (affiliation,
+     price, is it free), shown on the page and repeated as FAQPage data, plus
+     the Organization's founder and contact. Measured 7.6 KB. */
+  ['index.html', 7.8],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
