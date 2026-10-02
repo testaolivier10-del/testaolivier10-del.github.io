@@ -160,13 +160,17 @@
     return u ? u.id : null;
   }
 
+  /* Signed out is never Premium. The cache answers only for the user it was
+     read for, and only once that user is loaded: before the session is
+     restored on page load nobody is known yet, so a member sees the locks
+     for a moment and refresh() lifts them as soon as the session arrives.
+     Trusting the cache before then is what let one line in the console
+     unlock everything (site audit, Fix-first 3). */
   function expiry(course) {
-    var a = access();
-    // Before the session has been restored on page load the user is not known
-    // yet; the cache is trusted until then so a member never sees a flash of
-    // locks. A sign-out clears it (see refresh).
     var uid = currentUserId();
-    if (!a.courses || !a.userId || (uid && a.userId !== uid)) return null;
+    if (!uid) return null;
+    var a = access();
+    if (!a.courses || a.userId !== uid) return null;
     var t = a.courses[course] ? Date.parse(a.courses[course]) : NaN;
     return isNaN(t) ? null : t;
   }
@@ -190,26 +194,77 @@
   function onChange(fn) { listeners.push(fn); fn(); }
 
   /* Asks the database which passes this user holds. my_premium() in
-     scripts/sql/schema.sql answers only for the signed-in user. */
+     scripts/sql/schema.sql answers only for the signed-in user, and only for
+     passes that have started (a queued pass counts from its start date).
+
+     An empty answer clears the cached passes: a refund or an expiry has to
+     lock the next page, not whenever the cached date runs out. A failed call
+     keeps what we knew (offline is not a refund), and after
+     REFRESH_REPORT_AFTER failures in a row it is reported once through
+     errors.js, so a broken my_premium() shows up somewhere other than a
+     member's locked page. lastSynced() says when access was last confirmed. */
+  var REFRESH_REPORT_AFTER = 3;
+  var refreshFailures = 0;
+  var refreshReported = false;
   var seenUser = false;
   function refresh() {
     var a = window.StudyHubAccount;
     var uid = currentUserId();
     if (!uid) {
-      // Only a real sign-out clears the cache; the null every page load starts
-      // with, before the session is restored, does not.
-      if (seenUser && access().userId) { writeJson(ACCESS_KEY, {}); notify(); }
-      return;
+      // has() already ignores the cache without a user; a real sign-out also
+      // removes it, so the next person on this browser starts clean.
+      if (seenUser) { seenUser = false; clearAccess(); notify(); }
+      return Promise.resolve(false);
     }
     seenUser = true;
-    if (!a || !a.rpcData) return;
-    a.rpcData('my_premium', {}).then(function (rows) {
-      if (!Array.isArray(rows)) return; // offline: keep what we knew
+    // The cached pass belongs to this user: unlock now, confirm below.
+    if (access().userId === uid) notify();
+    if (!a || !a.rpcData) return Promise.resolve(false);
+    return a.rpcData('my_premium', {}).then(function (rows) {
+      if (!Array.isArray(rows)) { refreshFailed(); return false; }
+      refreshFailures = 0;
+      if (currentUserId() !== uid) return false; // signed out or switched meanwhile
       var courses = {};
-      rows.forEach(function (r) { if (r && r.course) courses[r.course] = r.expires_at; });
-      writeJson(ACCESS_KEY, { userId: uid, courses: courses });
+      rows.forEach(function (r) { if (r && r.course && r.expires_at) courses[r.course] = r.expires_at; });
+      writeJson(ACCESS_KEY, { userId: uid, courses: courses, syncedAt: Date.now() });
       notify();
+      return true;
     });
+  }
+
+  function clearAccess() {
+    try { window.localStorage.removeItem(ACCESS_KEY); }
+    catch (e) { /* private mode: nothing was cached */ }
+  }
+
+  function refreshFailed() {
+    refreshFailures++;
+    if (refreshFailures < REFRESH_REPORT_AFTER || refreshReported) return;
+    refreshReported = true;
+    var errs = window.LevlErrors;
+    if (errs && errs.report) {
+      try { errs.report('premium: my_premium failed ' + refreshFailures + ' times in a row', 'assets/premium.js', null, null, ''); }
+      catch (e) { /* reporting must never break a page */ }
+    }
+  }
+
+  /* When this browser last confirmed the signed-in user's access with the
+     database (ms since epoch), or null if it never has. */
+  function lastSynced() {
+    var a = access();
+    var uid = currentUserId();
+    return uid && a.userId === uid && typeof a.syncedAt === 'number' ? a.syncedAt : null;
+  }
+
+  /* A finished full timed exam, stamped by the database rather than by this
+     browser (record_exam_completion in scripts/sql/schema.sql). The NREMT
+     pass guarantee counts these, because the synced exam history is
+     something the student's own browser writes. Signed-out: nothing to
+     record. Never rejects. */
+  function recordExam(course, questions) {
+    var a = window.StudyHubAccount;
+    if (!COURSES[course] || !currentUserId() || !a || !a.rpc) return Promise.resolve(false);
+    return a.rpc('record_exam_completion', { p_course: course, p_questions: Math.round(Number(questions) || 0) });
   }
 
   /* ---- the daily free allowance ----------------------------------------- */
@@ -260,6 +315,9 @@
       funnelSeen[k] = true;
     }
     if (an && an.optedOut && an.optedOut()) return;
+    // Paid is counted by the Worker when Polar's webhook lands; a browser
+    // saying so is not a payment (count_premium_step ignores it).
+    if (step === 'checkout-paid') return;
     var a = window.StudyHubAccount;
     if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
   }
@@ -771,14 +829,24 @@
     freeExam: freeExam,
     onChange: onChange,
     refresh: refresh,
-    /* Exported for scripts/test/premium.test.mjs. */
-    _joined: joined,
-    _markJoined: markJoined,
-    _validEmail: validEmail,
-    _returnCourse: returnCourse,
-    _setLaunched: function (v) { LAUNCHED = !!v; },
-    _openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
+    lastSynced: lastSynced,
+    recordExam: recordExam,
   };
+
+  /* Internals for scripts/test/*premium*.test.mjs. Nothing here is on
+     window: the test harness defines __levlTestHooks in its VM sandbox, and
+     in a browser that name does not exist, so production ships no way to
+     flip the launch switch or reach these from the console. */
+  if (typeof __levlTestHooks === 'object' && __levlTestHooks) {
+    __levlTestHooks.premium = {
+      joined: joined,
+      markJoined: markJoined,
+      validEmail: validEmail,
+      returnCourse: returnCourse,
+      setLaunched: function (v) { LAUNCHED = !!v; },
+      openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
+    };
+  }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();

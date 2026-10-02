@@ -86,6 +86,10 @@ export function createBrowser(){
     requestAnimationFrame: () => 0,
     matchMedia: window.matchMedia,
     fetch: () => Promise.reject(new Error('no network in tests')),
+    // Test-only internals. A module that has some (assets/premium.js) puts
+    // them here rather than on window; this name exists only in this
+    // sandbox, never in a browser.
+    __levlTestHooks: {},
   };
   sandbox.globalThis = sandbox;
   vm.createContext(sandbox);
@@ -93,6 +97,7 @@ export function createBrowser(){
   return {
     window,
     localStorage,
+    hooks: sandbox.__levlTestHooks,
     /* Load one of the site's files into this context. */
     load(path){
       vm.runInContext(readFileSync(path, 'utf8'), sandbox, { filename: path });

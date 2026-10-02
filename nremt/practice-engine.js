@@ -2215,6 +2215,8 @@ function showResults(){
       localStorage.setItem(STORAGE_KEY, JSON.stringify({score, total: activeIndices.length, timeMs: elapsed}));
     }
     saveHistoryEntry({score, total: activeIndices.length, timeMs: elapsed, date: Date.now(), domainStats});
+    // Server-stamped record for the pass guarantee (assets/premium.js).
+    if(window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', activeIndices.length);
   }
 
   if(mode === 'full' || mode === 'domain' || mode === 'adaptive' || mode === 'spaced'){
