@@ -89,7 +89,7 @@
     "options": [
       "It matches the true mean",
       "It overestimates the true mean",
-      "It applies at rest, not during a sprint",
+      "It gives a value above her systolic pressure",
       "It underestimates the true mean"
     ],
     "correct": 3,
@@ -98,7 +98,7 @@
       "options": [
         "The one-third rule is fitted to resting heart rates. How well it matches depends on how each cycle is split between systole and diastole, and a sprint changes that split.",
         "An overestimate would need more time spent near diastolic pressure. A fast heart rate does the opposite: diastole shrinks.",
-        "The formula can be applied at any rate: her pulse pressure is 160 − 80 = 80 mm Hg. The problem is that its one-third weighting no longer fits.",
+        "The estimate is 80 + 80 ÷ 3 ≈ 107 mm Hg, well below her systolic 160 mm Hg. The question is whether it is above or below the true mean.",
         "Correct. With diastole shortened, the true mean is higher than the resting formula predicts."
       ]
     }

@@ -45,7 +45,7 @@
     "core": ["homeostasis"],
     "misconception": "pH depends on the amount of bicarbonate",
     "q": "Patient A has a bicarbonate of 12 mmol/L and an arterial PCO2 of 20 mm Hg. Patient B has a bicarbonate of 24 mmol/L and an arterial PCO2 of 40 mm Hg. How do their blood pH values compare?",
-    "options": ["Patient A's pH is lower than Patient B's", "Both are about 7.40", "Patient A's pH is higher than Patient B's", "They are compared by measuring hydrogen ions directly"],
+    "options": ["Patient A's pH is lower than Patient B's", "Both are about 7.40", "Patient A's pH is higher than Patient B's", "Patient B's is lower, because his PCO2 is higher"],
     "correct": 1,
     "why": {
       "correct": "pH depends on the ratio, not the amounts. Patient A: 12 ÷ (0.03 × 20) = 12 ÷ 0.6 = 20. Patient B: 24 ÷ 1.2 = 20. The same ratio gives the same pH, 7.40.",
@@ -53,7 +53,7 @@
         "Patient A has half the bicarbonate, but also half the carbon dioxide, so the ratio is unchanged and so is the pH.",
         "Correct. Both ratios are 20 to 1, so both pH values are 7.40, even though Patient A's values are both abnormal.",
         "A's carbon dioxide is low, which on its own would raise pH, but his bicarbonate is low by the same proportion, which cancels it.",
-        "The Henderson–Hasselbalch equation gives pH from bicarbonate and PCO2 alone. That is how blood gas analyzers relate the three values."
+        "B's carbon dioxide is higher, but so is his bicarbonate, by the same proportion. The ratio, and so the pH, is the same."
       ]
     }
   },

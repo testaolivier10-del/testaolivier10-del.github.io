@@ -270,7 +270,7 @@
       4
     ],
     "why": {
-      "correct": "In type II hypersensitivity, IgG or IgM binds an antigen fixed on a cell. Recipient antibodies destroy donor red cells, maternal anti-D destroys fetal red cells, and antibodies against the acetylcholine receptor protein and the TSH receptor protein change how those receptor proteins work.",
+      "correct": "In type II hypersensitivity, IgG or IgM binds an antigen fixed on a cell. Recipient antibodies destroy donor red cells, and antibodies against the acetylcholine receptor protein and the TSH receptor protein change how those receptor proteins work. Poison ivy and nickel contact dermatitis are type IV (T cells), and hay fever is type I (IgE).",
       "options": [
         "Correct. Recipient anti-A or anti-B bind the donor red cells.",
         "Poison ivy rash is type IV, caused by T cells over days.",

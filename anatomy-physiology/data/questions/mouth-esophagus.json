@@ -351,7 +351,7 @@
       "The upper third",
       "The lower third",
       "The whole length equally",
-      "The middle third"
+      "The lower esophageal sphincter"
     ],
     "correct": 0,
     "why": {
@@ -360,7 +360,7 @@
         "Correct. The upper third is skeletal muscle driven directly by brainstem motor neurons.",
         "The lower third is smooth muscle, which the drug does not affect.",
         "Only the skeletal part is affected, so the esophagus is not affected evenly.",
-        "The middle third is a mixture of skeletal and smooth muscle, so it is weakened, but the upper third, which is all skeletal, is the part that stops."
+        "The lower esophageal sphincter is smooth muscle, which the drug does not affect. The upper third, which is skeletal muscle, is the part that stops."
       ]
     }
   },

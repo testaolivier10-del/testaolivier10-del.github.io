@@ -361,7 +361,7 @@
     "options": [
       "Body temperature is fixed at one exact value",
       "The body keeps an internal condition within a normal range",
-      "Muscles work harder in cold weather than in warm",
+      "Muscles make heat only during exercise",
       "The outside temperature sets the temperature inside your body"
     ],
     "correct": 1,
@@ -370,7 +370,7 @@
       "options": [
         "Body temperature does change, which is why the response is triggered. It is kept within a range, not fixed at one value.",
         "Correct. Detecting a change and pushing the value back keeps it within its normal range.",
-        "Muscles work in every temperature. Shivering is one response among the many things muscles do.",
+        "Muscles make heat all the time, and shivering makes heat without any exercise. That heat is what holds the temperature here.",
         "If the outside temperature set body temperature, you would cool along with the air. The scenario shows the opposite."
       ]
     }

@@ -177,7 +177,7 @@
     "core": [
       "communication"
     ],
-    "q": "Late in the evening, after 16 hours awake, you drink a strong coffee. Predict the change in each over the next hour.",
+    "q": "Late in the evening, after 16 hours awake, you drink a strong coffee. Predict the change in each over the next hour, compared with the same hour without the coffee.",
     "variables": [
       {
         "name": "Binding of adenosine to its receptor proteins in the brain",
@@ -195,9 +195,9 @@
         "why": "With the sleep pressure signal blocked, the arousal systems stay active longer, so falling asleep takes longer."
       },
       {
-        "name": "Adenosine built up in the brain from 16 hours awake",
+        "name": "Adenosine in the brain",
         "answer": "none",
-        "why": "Caffeine blocks the receptor proteins adenosine binds. It does not clear the adenosine already built up, which is why sleepiness returns as the caffeine wears off."
+        "why": "Caffeine blocks the receptor proteins adenosine binds. It does not remove adenosine, so the amount is about the same as without the coffee, which is why sleepiness returns as the caffeine wears off."
       }
     ],
     "why": {

@@ -37,7 +37,7 @@
     "options": [
       "It has no mitochondria, so pyruvate cannot be broken down with oxygen",
       "Its oxygen-carrying protein holds oxygen too tightly to use",
-      "Its glycolysis enzymes work when oxygen is absent",
+      "Its glycolysis enzymes stop working when oxygen is present",
       "It makes lactate so that it can save its oxygen for other tissues"
     ],
     "correct": 0,
@@ -46,7 +46,7 @@
       "options": [
         "Correct. No mitochondria means no aerobic stages, whatever oxygen is present.",
         "How tightly the red cell's protein binds oxygen is not the limit. Even with free oxygen inside, the cell has no electron transport chain to use it.",
-        "Glycolysis does not use oxygen, so oxygen neither turns it on nor off. It runs in cells with plenty of oxygen as well.",
+        "Glycolysis does not use oxygen, and oxygen does not switch it off. It runs in cells with plenty of oxygen as well, including this one, which carries oxygen all day.",
         "This gives a purpose, not a mechanism. The cell makes lactate because it lacks the organelle for the aerobic stages."
       ]
     }

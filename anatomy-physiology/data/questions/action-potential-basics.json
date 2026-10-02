@@ -341,7 +341,7 @@
     "options": [
       "The patch just behind it has just fired and is refractory",
       "Axons have most of their sodium channels on the side facing the terminals",
-      "Positive charge spreads toward the terminals inside an axon",
+      "Positive charge inside an axon flows only toward the terminals, never back",
       "The axon terminals attract positive ions"
     ],
     "correct": 0,

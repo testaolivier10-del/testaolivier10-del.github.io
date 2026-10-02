@@ -575,7 +575,7 @@
       "Karyotype both parents to look for the rearrangement",
       "Nothing; her risk next time is the low risk for her age",
       "Test the baby for cystic fibrosis",
-      "Tell her the risk rises after age 35"
+      "Tell her to wait until she is older, when the risk is lower"
     ],
     "correct": 0,
     "why": {
@@ -584,7 +584,7 @@
         "Correct. A parent may be a balanced carrier of the translocation.",
         "The age-based risk applies to Down syndrome from nondisjunction. A translocation may come from a parent, which can raise the risk sharply.",
         "Cystic fibrosis is a single-gene disease and has nothing to do with this karyotype.",
-        "Translocation Down syndrome is not tied to maternal age, so her age does not set her risk."
+        "Age does not lower the risk; for Down syndrome from nondisjunction, risk rises with age. And this translocation is not tied to age at all, so a parent may carry it."
       ]
     }
   },

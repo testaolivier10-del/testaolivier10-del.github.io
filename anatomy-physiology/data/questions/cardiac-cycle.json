@@ -290,9 +290,9 @@
         "why": "Less blood gets through the narrowed valve in the time available, so more is left behind: ESV rises and SV = EDV − ESV falls."
       },
       {
-        "name": "Peak right ventricular pressure",
+        "name": "Hemoglobin in each liter of blood",
         "answer": "none",
-        "why": "The narrowing is on the left side, at the aortic valve. The right ventricle ejects into the pulmonary trunk as before."
+        "why": "The narrowed valve changes pressures and flow, not how much hemoglobin each liter of blood carries."
       }
     ],
     "why": {
@@ -478,7 +478,7 @@
       "During ventricular filling",
       "During ventricular systole",
       "During atrial contraction",
-      "During isovolumetric relaxation"
+      "During the slow filling late in diastole"
     ],
     "correct": 1,
     "why": {
@@ -487,7 +487,7 @@
         "During filling the mitral valve is supposed to be open, and blood flows forward, from atrium to ventricle, down its pressure gradient.",
         "Correct. Left ventricular pressure is far above atrial pressure throughout systole, so blood is driven backward through the leaky valve: mitral regurgitation, a murmur between S1 and S2.",
         "Atrial contraction pushes blood forward into the ventricle through the open mitral valve.",
-        "Leaking starts as soon as ventricular pressure rises above atrial pressure, so it runs through isovolumetric contraction and ejection. By the end of relaxation, ventricular pressure falls below atrial pressure and the backward push stops."
+        "Late in diastole the mitral valve is open and blood flows forward, from atrium to ventricle. Backward leak needs ventricular pressure above atrial pressure, which happens in systole."
       ]
     }
   },

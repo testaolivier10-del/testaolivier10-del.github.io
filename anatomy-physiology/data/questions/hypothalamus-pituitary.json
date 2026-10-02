@@ -183,7 +183,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "A head injury destroys the hypothalamic neurons that make ADH, causing central diabetes insipidus. The patient has free access to water. Predict the change in each variable, compared with before the injury.",
+    "q": "A head injury destroys the hypothalamic neurons that make ADH, causing central diabetes insipidus; the neighboring oxytocin neurons are spared. The patient has free access to water. Predict the change in each variable, compared with before the injury.",
     "variables": [
       {
         "name": "ADH in the blood",
@@ -213,7 +213,7 @@
       {
         "name": "Oxytocin release",
         "answer": "none",
-        "why": "Oxytocin is made by separate hypothalamic neurons, which the injury spared."
+        "why": "Oxytocin is made by separate hypothalamic neurons, which the injury spared, so its release is unchanged."
       },
       {
         "name": "ACTH release",
@@ -422,7 +422,7 @@
       3
     ],
     "why": {
-      "correct": "TSH, ACTH, FSH and LH each drive another endocrine gland: the thyroid gland, the adrenal gland's outer layer, and the gonads. Prolactin acts on the breast's milk-producing glands and ADH on the kidneys and blood vessels, which are not endocrine glands.",
+      "correct": "TSH, ACTH and FSH each drive another endocrine gland: the thyroid gland, the adrenal gland's outer layer, and the gonads. Prolactin acts on the breast's milk-producing glands, oxytocin on the uterus and the milk ducts, and ADH on the kidneys and blood vessels, which are not endocrine glands.",
       "options": [
         "Correct. TSH drives the thyroid gland.",
         "Correct. ACTH drives the outer layer of the adrenal gland.",
