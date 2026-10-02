@@ -10442,7 +10442,7 @@
     "stays the same, since all four halides behave alike"
    ],
    "correct": 1,
-   "why": "Acidity increases down the column: HF 3.2, HCl −7, HBr −9, HI −10, so HI is about thirteen orders of magnitude stronger than HF. The explanation this course uses is size and polarizability — iodide spreads one unit of charge over a vastly bigger, floppier electron cloud than fluoride can, and that dilution stabilizes the anion far more than the loss of electronegativity costs. A second effect points the same way and some textbooks lead with it: the H–X bond also gets longer and weaker down the group, from about 570 kJ/mol for H–F to 300 for H–I. Both are real; size is the one to quote, with bond strength reinforcing it.",
+   "why": "Acidity increases down the column: HF 3.2, HCl −7, HBr −9, HI −10, so HI is about thirteen orders of magnitude stronger than HF. The explanation this course uses is size and polarizability — iodide spreads one unit of charge over a vastly bigger, floppier electron cloud than fluoride can, and that dilution stabilizes the anion far more than the loss of electronegativity costs. A second effect points the same way and some textbooks lead with it: the H–X bond also gets longer and weaker down the group, from about 570 kJ/mol (136 kcal/mol) for H–F to 300 (72 kcal/mol) for H–I. Both are real; size is the one to quote, with bond strength reinforcing it.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -20009,7 +20009,7 @@
     "buta-1,3-diene > propa-1,2-diene > penta-1,4-diene"
    ],
    "correct": 1,
-   "why": "Conjugated beats isolated beats cumulated. Buta-1,3-diene collects about 15 kJ/mol of delocalization energy for having its p orbitals in one continuous run. Penta-1,4-diene collects none, because an sp3 carbon separates its double bonds. Propa-1,2-diene collects none either and pays besides, since its sp center holds the two pi systems perpendicular to each other.",
+   "why": "Conjugated beats isolated beats cumulated. Buta-1,3-diene collects about 15 kJ/mol of delocalization energy for having its p orbitals in one continuous run. Penta-1,4-diene collects none, because an sp3 carbon separates its double bonds. Propa-1,2-diene collects none either and pays besides, since its sp center holds the two pi systems perpendicular to each other. For scale, 15 kJ/mol is about 3.6 kcal/mol.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20035,7 +20035,7 @@
     "112 kJ/mol"
    ],
    "correct": 2,
-   "why": "Build a reference with the same number of pi bonds as the compound you are testing: two independent C=C should release 2 × 120 = 240 kJ/mol. The diene releases only 232 reaching the same saturated ring, so it began 240 − 232 = 8 kJ/mol lower down. Subtracting one cyclohexene instead measures the second double bond rather than the conjugation.",
+   "why": "Build a reference with the same number of pi bonds as the compound you are testing: two independent C=C should release 2 × 120 = 240 kJ/mol. The diene releases only 232 reaching the same saturated ring, so it began 240 − 232 = 8 kJ/mol lower down. Subtracting one cyclohexene instead measures the second double bond rather than the conjugation. In kcal/mol: 120, 232 and 240 kJ/mol are about 28.7, 55.4 and 57.4, so the delocalization energy is about 1.9 kcal/mol.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20100,7 +20100,7 @@
     "They sit at the same energy"
    ],
    "correct": 0,
-   "why": "s-trans wins because s-cis brings the inward-pointing hydrogen on C1 and the one on C4 close enough to crowd each other. The penalty is around 12 kJ/mol — nearly the size of the whole delocalization energy, so it is not a rounding error. It is still small enough that rotation keeps refilling the s-cis population at room temperature.",
+   "why": "s-trans wins because s-cis brings the inward-pointing hydrogen on C1 and the one on C4 close enough to crowd each other. The penalty is around 12 kJ/mol — nearly the size of the whole delocalization energy, so it is not a rounding error. It is still small enough that rotation keeps refilling the s-cis population at room temperature. (12 kJ/mol is about 2.9 kcal/mol.)",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -20347,7 +20347,7 @@
     "Butadiene is locked s-cis in the first place"
    ],
    "correct": 0,
-   "why": "s-cis is a minor conformer, not an absent one. Rotation about the central single bond happens far faster than the cycloaddition, so every molecule consumed from the s-cis pool is replaced at once and the reaction drains the whole sample through that conformation. A diene held s-trans by a ring has no rotation available, which is why that case is fatal and this one is only slow.",
+   "why": "s-cis is a minor conformer, not an absent one. Rotation about the central single bond happens far faster than the cycloaddition, so every molecule consumed from the s-cis pool is replaced at once and the reaction drains the whole sample through that conformation. A diene held s-trans by a ring has no rotation available, which is why that case is fatal and this one is only slow. (12 kJ/mol is about 2.9 kcal/mol.)",
    "difficulty": "medium",
    "type": "mcq"
   }
@@ -20806,7 +20806,7 @@
     "About 1:1, since 10 kJ/mol is small"
    ],
    "correct": 1,
-   "why": "Rate depends exponentially on the barrier, so small-looking gaps are not small. At room temperature about 6 kJ/mol is already a factor of ten, and 10 kJ/mol is around fifty. Because nothing can revert, that rate ratio is frozen in as the product ratio — which is what kinetic control means.",
+   "why": "Rate depends exponentially on the barrier, so small-looking gaps are not small. At room temperature about 6 kJ/mol is already a factor of ten, and 10 kJ/mol is around fifty. Because nothing can revert, that rate ratio is frozen in as the product ratio — which is what kinetic control means. In kcal/mol: 10 kJ/mol is about 2.4, and 6 kJ/mol about 1.4.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -20884,7 +20884,7 @@
     "Q under both conditions"
    ],
    "correct": 0,
-   "why": "Cold, nothing can reverse, so the lower barrier wins: P, at 50 kJ/mol against 65. Warm enough to reverse, the mixture drains into the deeper well: Q, 30 kJ/mol down against 10. Choosing Q cold mixes up the deeper well with the lower hill.",
+   "why": "Cold, nothing can reverse, so the lower barrier wins: P, at 50 kJ/mol against 65. Warm enough to reverse, the mixture drains into the deeper well: Q, 30 kJ/mol down against 10. Choosing Q cold mixes up the deeper well with the lower hill. In kcal/mol the barriers are about 12 and 15.5, and P and Q sit about 2.4 and 7.2 below the intermediate.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -21001,7 +21001,7 @@
     "About 1 kJ/mol"
    ],
    "correct": 2,
-   "why": "Equilibrium ratios depend exponentially on the free-energy difference, so a factor of a hundred needs surprisingly little: around 12 kJ/mol at room temperature, which is about the size of one weak hydrogen bond. It is the same steepness that makes a 10 kJ/mol barrier difference worth a factor of fifty in rate.",
+   "why": "Equilibrium ratios depend exponentially on the free-energy difference, so a factor of a hundred needs surprisingly little: around 12 kJ/mol at room temperature, which is about the size of one weak hydrogen bond. It is the same steepness that makes a 10 kJ/mol barrier difference worth a factor of fifty in rate. (12 kJ/mol is about 2.9 kcal/mol.)",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -25625,7 +25625,7 @@
     "trans-but-2-ene, because it releases the least energy and so started lowest",
     "They are equally stable, since they give the same product"
    ],
-   "why": "Every bar ends at the same molecule, so a smaller heat out can only mean a starting material already lower in energy. That gives trans-disubstituted > cis-disubstituted > monosubstituted - measured, not asserted.",
+   "why": "Every bar ends at the same molecule, so a smaller heat out can only mean a starting material already lower in energy. That gives trans-disubstituted > cis-disubstituted > monosubstituted - measured, not asserted. In kcal/mol the three heats are about 30.4, 28.7 and 27.7.",
    "correct": 2,
    "difficulty": "easy",
    "type": "mcq"
@@ -25665,7 +25665,7 @@
     "All three release the same amount"
    ],
    "correct": 0,
-   "why": "Same product, so the heat released measures how high each alkene started. 3-Methylbut-1-ene is monosubstituted, the least stable, and has the farthest to fall (about 127 kJ/mol). 2-Methylbut-1-ene is disubstituted (about 119) and 2-methylbut-2-ene trisubstituted (about 113), the most stable and the least heat. Equal heats would mean equal stabilities, which the substitution pattern rules out.",
+   "why": "Same product, so the heat released measures how high each alkene started. 3-Methylbut-1-ene is monosubstituted, the least stable, and has the farthest to fall (about 127 kJ/mol). 2-Methylbut-1-ene is disubstituted (about 119) and 2-methylbut-2-ene trisubstituted (about 113), the most stable and the least heat. Equal heats would mean equal stabilities, which the substitution pattern rules out. (127 kJ/mol is about 30 kcal/mol.)",
    "difficulty": "easy",
    "type": "mcq"
   },

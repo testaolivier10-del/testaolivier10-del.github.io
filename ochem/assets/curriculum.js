@@ -120,7 +120,7 @@
     { id: 'substitution-elimination', title: 'Substitution & Elimination', topics: [
       { id: 'sn2', title: 'SN2', href: 'mechanisms/sn2.html', dependsOn: ['nucleophiles', 'leaving-groups', 'curved-arrows', 'molecular-geometry'] },
       { id: 'sn1', title: 'SN1', href: 'mechanisms/sn1.html', dependsOn: ['sn2', 'leaving-groups', 'resonance', 'enantiomers'] },
-      { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['conformational-analysis', 'leaving-groups', 'bronsted', 'sn2'] },
+      { id: 'e2', title: 'E2', href: 'mechanisms/e2.html', dependsOn: ['newman', 'leaving-groups', 'bronsted', 'sn2'] },
       { id: 'e1', title: 'E1', href: 'mechanisms/e1.html', dependsOn: ['sn1', 'e2'] },
       { id: 'substrate-effects', title: 'Substrate & solvent effects', href: 'lessons/substrate-effects.html', dependsOn: ['sn2', 'sn1', 'e1', 'e2'] }
     ]},
