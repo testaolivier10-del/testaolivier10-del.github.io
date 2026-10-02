@@ -37,6 +37,10 @@ jobs:
       # scripts/lib/site-config.mjs.
       - name: Worker address and CSP match scripts/lib/site-config.mjs
         run: node scripts/build-site-config.mjs --check
+      # Prices, the free/Premium wording, bank counts in the purchase dialog,
+      # the manifests and premium.html come from assets/premium.js and the data.
+      - name: prices, counts and free/Premium copy match premium.js and the data
+        run: node scripts/build-pricing.mjs --check
       # The ochem prose is one file per section, and each of those files is
       # both the source learn.html fetches AND a page you can open. The shell
       # around the prose, and learn.html's static contents, are generated from

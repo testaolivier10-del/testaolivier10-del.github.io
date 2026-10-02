@@ -584,7 +584,7 @@ renders `icon-180.png` (apple-touch), `icon-192.png`, `icon-512.png` and `icon-m
 
 ## Study assistant (`assets/tutor.js`)
 
-A mascot sits in the corner of every page in both courses. It is mounted from
+The study assistant (its one user-facing name) sits in the corner of every course page. It is mounted from
 `assets/site-chrome.js` rather than page by page, so all ~157 pages get it,
 including ochem's lessons, mechanisms and tools, and any page added later.
 

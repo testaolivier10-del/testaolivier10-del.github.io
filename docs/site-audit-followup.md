@@ -67,12 +67,12 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | # | Workstream | Branch | Status |
 |---|---|---|---|
 | W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | merged |
-| W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
+| W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | merged |
 | W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | merged |
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
-| W7 | UX and accessibility | `-w7` | to do |
+| W7 | UX and accessibility | `-w7` | in progress (wave 2) |
 | W8 | SEO, performance, repo | `-w8` | to do |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
 
@@ -110,6 +110,8 @@ Calls made without asking, per the brief. Each says why.
 - **NREMT domain tagging rule:** Scene = safe? how many patients? which resources? who first in triage? mechanism. Primary = the life threat / what first. Secondary = history, exam, vitals trend, reassessment. Treatment & Transport = doing or choosing an intervention, drug, packaging, destination. Operations = legal, documentation, communication, ICS, vehicles/air medical, crew wellness.
 - **No 130 new Scene items in this pass;** the shortfall is an open item. Exams draw by weight, so exam mixes are already right.
 - **NREMT item types:** the site simulates multiple choice and multiple response; build-list, drag-and-drop and options tables are described on exam-day.html but not simulated, and the copy says so.
+- **One name for the assistant:** "the study assistant".
+- **Polar buyer age:** polar.sh was unreachable; terms follow Polar's general terms as found by search (legal age to contract or a parent's permission; Polar takes no personal data from under-16s). Confirm against Polar's buyer terms (checklist item 7).
 - **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
 
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
@@ -172,6 +174,16 @@ explanations after answering (A&P shell budget 44 → 46 KB). Rebalancing: selec
 "no change" predict keys 12.8% → 20.6%, absolutes now rarer in distractors (2.2%) than in keys (2.4%), held by
 `anp-test-wise`. Three accuracy checks (first pass, then pass 2 split in two) found 2 + 3 + 12 issues; all fixed.
 
+### W2 free vs Premium honesty — merged
+33 fixed, 1 no change needed (bank licence: owner decision), 5 deferred (owner steps). The owner's sentence lives
+once in `scripts/lib/premium-data.mjs`. New `scripts/build-pricing.mjs` generates premium.html, the hub's "Free and
+Premium" block and structured data, bank counts in premium.js, the four manifests and the 404 card (`--check` in
+CI). Founding price comes from premium.js and hides itself after 2027-01-31. "Pass guarantee" is now
+"Pass-or-extend" everywhere (Worker included); its conditions come from a `GUARANTEE` object checked against the
+Worker and show in the purchase dialog, account page and premium.html. Gated pages say `isAccessibleForFree: false`
+with `hasPart`; no price-0 offers on Premium tools. Ochem dialog count 3,795 → 3,635 (NREMT 2,033, A&P 3,321).
+Legal pages dated 1 October, every privacy/terms gap closed, history moved to the changelog. Four new site rules.
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
@@ -184,5 +196,6 @@ explanations after answering (A&P shell budget 44 → 46 KB). Rebalancing: selec
 
 ## Progress log
 
+- 2026-10-02: wave 1 merged, full CI green; wave 2 (W2, W7) started, W8 follows them.
 - 2026-10-02: wave 1 (W1, W3, W4, W5, W6) started; helpers write per-finding notes to `docs/site-audit-notes/wN.md`; local CI mirror is `scripts/ci-local.sh`.
 - 2026-10-02: status file, rule hook in check-site, audit copied to `docs/site-audit-2026-10.md`.
