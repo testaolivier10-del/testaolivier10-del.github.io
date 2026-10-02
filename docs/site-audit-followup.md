@@ -60,12 +60,12 @@ Nothing below has been attempted from the repo. Each step says where to click.
 
 | # | Workstream | Branch | Status |
 |---|---|---|---|
-| W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | to do |
+| W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | in progress (wave 1) |
 | W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
-| W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | to do |
-| W4 | Cross-device sync in account.js, with tests | `-w4` | to do |
-| W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | to do |
-| W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | to do |
+| W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | in progress (wave 1) |
+| W4 | Cross-device sync in account.js, with tests | `-w4` | in progress (wave 1) |
+| W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | in progress (wave 1) |
+| W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | in progress (wave 1) |
 | W7 | UX and accessibility | `-w7` | to do |
 | W8 | SEO, performance, repo | `-w8` | to do |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
@@ -110,4 +110,5 @@ Calls made without asking, per the brief. Each says why.
 
 ## Progress log
 
+- 2026-10-02: wave 1 (W1, W3, W4, W5, W6) started; helpers write per-finding notes to `docs/site-audit-notes/wN.md`; local CI mirror is `scripts/ci-local.sh`.
 - 2026-10-02: status file, rule hook in check-site, audit copied to `docs/site-audit-2026-10.md`.
