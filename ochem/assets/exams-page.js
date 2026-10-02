@@ -107,16 +107,32 @@
     kind: prefs.kind || 'chapter',
     chapter: prefs.chapter || CHAPTERS[0].id,
     chLen: prefs.chLen === 25 ? 25 : 20,
-    // Chapters 1 to 9 (through alkenes and alkynes) is where a first-semester
-    // course usually takes its midterm or ends; remembered once changed.
-    from: prefs.from || 1,
-    to: prefs.to || 9,
+    // Foundations through Alkenes & Alkynes is where a first-semester course
+    // usually takes its midterm; remembered once changed. Saved as chapter
+    // ids (fromId/toId); an older save holds chapter numbers in the order of
+    // the day, which exam-core's midtermRange reads back as ids.
+    from: 1,
+    to: 1,
     midLen: prefs.midLen === 30 ? 30 : 40,
     timing: prefs.timing || 'std'
   };
   if(!CHAPTER[cfg.chapter]) cfg.chapter = CHAPTERS[0].id;
+  (function(){
+    var range = X.midtermRange(prefs, CHAPTERS.map(function(c){ return c.id; }),
+      { fromId: 'foundations', toId: 'alkenes-alkynes' });
+    cfg.from = CHAPTER[range.fromId].n;
+    cfg.to = CHAPTER[range.toId].n;
+  })();
   if(!TIMINGS.some(function(t){ return t.id === cfg.timing; })) cfg.timing = 'std';
-  function savePrefs(){ write(PREF_KEY, cfg); }
+  /* The numbers are what the two selects show; what is stored is the ids, so
+     a later reorder of the chapters cannot change a saved range. */
+  function savePrefs(){
+    var out = {};
+    Object.keys(cfg).forEach(function(k){ if(k !== 'from' && k !== 'to') out[k] = cfg[k]; });
+    out.fromId = CHAPTERS[cfg.from - 1].id;
+    out.toId = CHAPTERS[cfg.to - 1].id;
+    write(PREF_KEY, out);
+  }
 
   function planFor(){
     var k = cfg.kind;

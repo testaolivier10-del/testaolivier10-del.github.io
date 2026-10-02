@@ -20222,6 +20222,244 @@
    "type": "mcq"
   }
  ],
+ "electrocyclic-sigmatropic": [
+  {
+   "q": "What forms in an electrocyclic ring closure?",
+   "options": [
+    "Two new σ bonds between two separate π systems",
+    "A σ bond that moves to a new position along a π system",
+    "One new σ bond between the two ends of a conjugated π system",
+    "A new π bond between two carbons of a ring"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A thermal electrocyclic reaction of a 4n π-electron system, such as a diene, goes which way?",
+   "options": [
+    "Disrotatory",
+    "Either way, at equal rates",
+    "Neither way: it is forbidden",
+    "Conrotatory"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A thermal electrocyclic reaction of a 6 π-electron triene goes which way?",
+   "options": [
+    "Disrotatory",
+    "Conrotatory",
+    "Either way, at equal rates",
+    "Neither way: it is forbidden"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "A 4 π-electron electrocyclic reaction is run photochemically. Which way do the ends turn?",
+   "options": [
+    "Conrotatory",
+    "Disrotatory",
+    "It depends only on the solvent",
+    "The ends do not turn at all"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(2E,4Z,6E)-Octa-2,4,6-triene is heated. What is the product?",
+   "options": [
+    "trans-5,6-Dimethylcyclohexa-1,3-diene",
+    "A 1:1 mixture of cis and trans rings",
+    "cis-5,6-Dimethylcyclohexa-1,3-diene",
+    "cis-3,4-Dimethylcyclobutene"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(2E,4Z,6E)-Octa-2,4,6-triene is irradiated with UV light. What is the product?",
+   "options": [
+    "cis-5,6-Dimethylcyclohexa-1,3-diene",
+    "A 1:1 mixture of cis and trans rings",
+    "trans-3,4-Dimethylcyclobutene",
+    "trans-5,6-Dimethylcyclohexa-1,3-diene"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "cis-3,4-Dimethylcyclobut-1-ene is heated and opens to a hexa-2,4-diene. Which isomer forms?",
+   "options": [
+    "(2E,4Z)-Hexa-2,4-diene",
+    "(2E,4E)-Hexa-2,4-diene",
+    "(2Z,4Z)-Hexa-2,4-diene",
+    "A mixture of all three isomers"
+   ],
+   "correct": 0,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "trans-3,4-Dimethylcyclobut-1-ene is heated and opens to a hexa-2,4-diene. Which isomer forms?",
+   "options": [
+    "(2E,4Z)-Hexa-2,4-diene",
+    "(2E,4E)-Hexa-2,4-diene",
+    "(2Z,4Z)-Hexa-2,4-diene",
+    "An equal mixture of the E,Z and Z,Z isomers"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does light reverse the rotation of an electrocyclic reaction?",
+   "options": [
+    "Light heats the molecule more than an oil bath can",
+    "Light breaks a σ bond before the ring starts to close",
+    "An electron moves into the old LUMO, whose end lobes have the opposite phase pattern",
+    "Light changes the number of π electrons that take part"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "How is the [3,3] in a [3,3] sigmatropic rearrangement counted?",
+   "options": [
+    "Count the π bonds in the starting material and in the product",
+    "Count the atoms in the ring that forms in the product",
+    "Count the carbons on each side of the new σ bond",
+    "Number outward from each end of the σ bond that breaks; the new bond joins atom 3 to atom 3"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "The Cope rearrangement is a [3,3] sigmatropic rearrangement of which kind of compound?",
+   "options": [
+    "A hexa-1,5-diene",
+    "An allyl vinyl ether",
+    "A conjugated hexatriene",
+    "A cyclohexene"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Allyl vinyl ether, CH₂=CH–O–CH₂–CH=CH₂, is heated. What forms?",
+   "options": [
+    "Pent-4-en-2-one",
+    "Pent-4-enal",
+    "Cyclopentanol",
+    "Prop-2-en-1-ol and acetaldehyde"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Why does the Claisen rearrangement run essentially one way?",
+   "options": [
+    "Its product is a gas that escapes from the flask",
+    "Its product cannot reach a chair-shaped transition state",
+    "Its product has a C=O, a much stronger bond than the C=C it replaces",
+    "Its starting material is too strained to survive"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "3-Methylhexa-1,5-diene undergoes a Cope rearrangement. What is the main product?",
+   "options": [
+    "(Z)-Hepta-1,5-diene",
+    "3-Methylcyclohexene",
+    "Hepta-1,6-diene",
+    "(E)-Hepta-1,5-diene"
+   ],
+   "correct": 3,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "What shape does the six-atom transition state of a Cope rearrangement usually prefer?",
+   "options": [
+    "A chair, like cyclohexane",
+    "A boat, like the cyclohexane boat",
+    "A flat hexagon",
+    "A twisted chain with no ring"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Octa-1,3,5,7-tetraene closes to a ring on heating. Which way do the ends turn?",
+   "options": [
+    "Disrotatory",
+    "Conrotatory",
+    "Either way, at equal rates",
+    "It cannot close on heating"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "An electrocyclic ring closure turns both end groups pointing in, and the rotation is disrotatory. How are the two groups arranged on the new ring?",
+   "options": [
+    "trans",
+    "One axial and one equatorial",
+    "cis",
+    "They are no longer stereocenters"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "In which kind of reaction does one σ bond move along a π system in a single step?",
+   "options": [
+    "An electrocyclic reaction",
+    "A cycloaddition",
+    "An SN2 substitution",
+    "A sigmatropic rearrangement"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "For hexa-1,3,5-triene and cyclohexa-1,3-diene, the equilibrium lies on the side of the ring.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "tf"
+  },
+  {
+   "q": "The Claisen rearrangement and the Claisen condensation are the same reaction.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "tf"
+  }
+ ],
  "alcohol-reactions": [
   {
    "q": "Why can’t OH⁻ typically leave directly from an alcohol in a substitution reaction?",
@@ -24163,6 +24401,244 @@
    "correct": 0,
    "difficulty": "medium",
    "type": "mcq"
+  }
+ ],
+ "cyclopropanation": [
+  {
+   "q": "What is a carbene?",
+   "options": [
+    "A carbon with three bonds, a lone pair and a negative charge",
+    "A neutral carbon with two bonds and two nonbonding electrons",
+    "A carbon with three bonds, an empty p orbital and a positive charge",
+    "A carbon with three bonds and one unpaired electron"
+   ],
+   "correct": 1,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagents carry out a Simmons–Smith cyclopropanation?",
+   "options": [
+    "CHCl₃ and potassium tert-butoxide",
+    "OsO₄, then aqueous NaHSO₃",
+    "CH₂I₂ and a zinc–copper couple, Zn(Cu)",
+    "mCPBA in dichloromethane"
+   ],
+   "correct": 2,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "cis-But-2-ene is treated with CH₂I₂ and Zn(Cu). What is the product?",
+   "options": [
+    "trans-1,2-Dimethylcyclopropane, as a racemate",
+    "A 1:1 mixture of cis- and trans-1,2-dimethylcyclopropane",
+    "Methylcyclobutane",
+    "cis-1,2-Dimethylcyclopropane, a meso compound"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "trans-But-2-ene is treated with CHCl₃ and KOC(CH₃)₃. What is the product?",
+   "options": [
+    "trans-1,1-Dichloro-2,3-dimethylcyclopropane, as a racemate",
+    "cis-1,1-Dichloro-2,3-dimethylcyclopropane, a meso compound",
+    "A mixture of cis and trans dichlorocyclopropanes",
+    "2,3-Dichlorobutane"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Chloroform is turned into dichlorocarbene with a strong base. What happens first?",
+   "options": [
+    "A chloride ion leaves to give a carbocation",
+    "The base removes the hydrogen from CHCl₃",
+    "The base adds to the carbon of CHCl₃",
+    "Light breaks one of the C–Cl bonds"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Cl₃C⁻ loses Cl⁻ to give dichlorocarbene. What kind of elimination is this?",
+   "options": [
+    "A β-elimination like E2, making a C=C",
+    "An E1 elimination through a carbocation",
+    "An α-elimination: both groups leave from the same carbon",
+    "A syn elimination across neighboring carbons"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Cyclohexene is treated with CHBr₃ and KOC(CH₃)₃. What forms?",
+   "options": [
+    "trans-1,2-Dibromocyclohexane",
+    "Bromocyclohexane",
+    "cis-Cyclohexane-1,2-diol",
+    "7,7-Dibromobicyclo[4.1.0]heptane"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the formal charge on the carbon of methylene, :CH₂?",
+   "options": [
+    "Zero",
+    "−1",
+    "+1",
+    "−2"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In a singlet carbene, where are the two nonbonding electrons?",
+   "options": [
+    "One in the sp² orbital and one in the p orbital, unpaired",
+    "Paired in an sp² orbital, with the p orbital left empty",
+    "Paired in the p orbital, with the sp² orbital left empty",
+    "Shared with a neighboring atom as a third bond"
+   ],
+   "correct": 1,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "(Z)-Pent-2-ene is treated with CH₂I₂ and Zn(Cu). What is the product?",
+   "options": [
+    "cis-1-Ethyl-2-methylcyclopropane, a meso compound",
+    "trans-1-Ethyl-2-methylcyclopropane, as a racemate",
+    "cis-1-Ethyl-2-methylcyclopropane, as a racemate",
+    "A mixture of the cis and trans 1-ethyl-2-methylcyclopropanes"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Why is CH₂I₂ with Zn(Cu) preferred to diazomethane and light for adding a CH₂ to an alkene?",
+   "options": [
+    "Diazomethane turns a cis alkene into a trans cyclopropane",
+    "Free methylene cannot add to a C=C at all",
+    "The zinc reagent adds two CH₂ groups to each alkene",
+    "Diazomethane is toxic and explosive, and free :CH₂ also attacks C–H bonds"
+   ],
+   "correct": 3,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "In the Simmons–Smith reaction, ICH₂ZnI is best described as which of these?",
+   "options": [
+    "A carbenoid: it transfers CH₂ without releasing a free carbene",
+    "A free carbene, released before it meets the alkene",
+    "A carbocation that adds to the alkene and then loses H⁺",
+    "A radical that adds to one alkene carbon at a time"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "1-Methylcyclohexene is treated with CH₂I₂ and Zn(Cu). What is the product?",
+   "options": [
+    "2-Methylbicyclo[4.1.0]heptane",
+    "1-Methylbicyclo[4.1.0]heptane",
+    "1-Methylcycloheptene",
+    "Methylcyclohexane"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "A singlet carbene has an empty p orbital. Which species does that make it resemble?",
+   "options": [
+    "A carbanion, with its lone pair in a p orbital",
+    "An alkyl radical, with one electron in a p orbital",
+    "A carbocation, with its empty p orbital",
+    "An alkene, with its filled π orbital"
+   ],
+   "correct": 2,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "What is the ring strain of cyclopropane, roughly?",
+   "options": [
+    "About 0 kcal/mol",
+    "About 3 kcal/mol",
+    "About 100 kcal/mol",
+    "About 27.6 kcal/mol"
+   ],
+   "correct": 3,
+   "difficulty": "easy",
+   "type": "mcq"
+  },
+  {
+   "q": "Which statement about the stereochemistry of a Simmons–Smith reaction is correct?",
+   "options": [
+    "Both new C–C bonds form on the same face of the alkene",
+    "The two new C–C bonds form on opposite faces of the alkene",
+    "A carbocation forms first, so the alkene geometry is lost",
+    "The ring has the opposite cis or trans relationship to the alkene"
+   ],
+   "correct": 0,
+   "difficulty": "medium",
+   "type": "mcq"
+  },
+  {
+   "q": "Which alkene gives a meso cyclopropane with CH₂I₂ and Zn(Cu)?",
+   "options": [
+    "trans-But-2-ene",
+    "cis-But-2-ene",
+    "(Z)-Pent-2-ene",
+    "2-Methylpropene"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Which reagents turn cyclopentene into 6,6-dichlorobicyclo[3.1.0]hexane?",
+   "options": [
+    "CH₂Cl₂ and Zn(Cu)",
+    "Cl₂ and light",
+    "CHCl₃ and KOC(CH₃)₃",
+    "CCl₄ and heat"
+   ],
+   "correct": 2,
+   "difficulty": "hard",
+   "type": "mcq"
+  },
+  {
+   "q": "Cyclopropanation with a singlet carbene is stereospecific: a cis alkene gives a cis cyclopropane and a trans alkene a trans one.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 0,
+   "difficulty": "easy",
+   "type": "tf"
+  },
+  {
+   "q": "Dichlorocarbene adds to trans-but-2-ene to give a meso product.",
+   "options": [
+    "True",
+    "False"
+   ],
+   "correct": 1,
+   "difficulty": "hard",
+   "type": "tf"
   }
  ],
  "carboxylic-acids": [

@@ -102,6 +102,12 @@
       topics:['diels-alder','conjugated-systems','diastereomers'],
       dependsOn:['conjugation-recognition'],
       hint:'s-cis or nothing — and because it is concerted, the starting geometry survives into the product.' },
+    { id:'electrocyclic-rules', title:'Conrotatory or disrotatory', family:'Conjugation',
+      topics:['electrocyclic-sigmatropic'], dependsOn:['conjugation-recognition'],
+      hint:'Thermal 4n is conrotatory; switch to 4n + 2 or to light and it flips. Then follow the in and out groups.' },
+    { id:'sigmatropic-shift', title:'[3,3] sigmatropic shifts', family:'Conjugation',
+      topics:['electrocyclic-sigmatropic'], dependsOn:['conjugation-recognition'],
+      hint:'Number out from the bond that breaks; the new bond joins atom 3 to atom 3, through a chair.' },
     /* ---- Oxidation & reduction -----------------------------------------
        Four concepts. Counting the oxidation level is a separate skill from
        knowing the reagents; and among the reagents, "where does it stop" and
@@ -459,6 +465,12 @@
     { id:'keto-enol-tautomerism', title:'Keto-enol tautomerism', family:'Alkenes & alkynes',
       topics:['alkynes','alpha-hydrogens'], dependsOn:['resonance-delocalization'],
       hint:'A hydrogen actually moves, so these are two compounds, not two resonance forms.' },
+    { id:'carbene-generation', title:'Making a carbene', family:'Alkenes & alkynes',
+      topics:['cyclopropanation'], dependsOn:['acidity-factors','formal-charge-calc'],
+      hint:'A haloform plus strong base loses H then X from one carbon; CH2I2 with Zn(Cu) gives a carbenoid instead.' },
+    { id:'carbene-addition', title:'Carbene addition to an alkene', family:'Alkenes & alkynes',
+      topics:['cyclopropanation','alkene-oxidation'], dependsOn:['addition-stereochem','carbene-generation'],
+      hint:'One carbon bonds to both alkene carbons in one step from one face, so cis stays cis and trans stays trans.' },
 
     /* ---- Alcohols, ethers, epoxides ------------------------------------ */
     { id:'alcohol-activation', title:'Activating alcohols', family:'Alcohols & ethers',
@@ -726,7 +738,8 @@
     'alkene-oxidation':'alkene-cleavage-scope',
     'energy-diagrams':'energy-diagram-reading',
     'carbocations':'carbocation-stability',
-    'prochirality':'topicity-test'
+    'prochirality':'topicity-test',
+    'cyclopropanation':'carbene-addition', 'electrocyclic-sigmatropic':'electrocyclic-rules'
   };
   function defaultConceptFor(topicId){
     if(TOPIC_PRIMARY[topicId]) return TOPIC_PRIMARY[topicId];

@@ -795,6 +795,10 @@
     { q:/units must|What is absorbance|visible region|concentration\?|diluted|quantitative|molar absorptivity|chromophore|look orange|Retinal|A = εcl|ε = 21/i, recall:true },
     { q:ANY, c:'conjugation-recognition' }
   ]);
+  L.define('electrocyclic-sigmatropic', [
+    { q:/sigmatropic|Cope|Claisen|allyl vinyl|\[3,3\]|hexa-1,5-diene|one σ bond move/i, c:'sigmatropic-shift' },
+    { q:ANY, c:'electrocyclic-rules' }
+  ]);
   L.define('diels-alder', [
     { q:/stored and prepared/i, recall:true },
     { q:/retro|disconnect|which pair makes|You want/i, c:'disconnection' },
@@ -828,6 +832,11 @@
   L.define('hydrogenation', [
     { q:/Lindlar|liquid NH3|trans alkene|cis alkene|stereochem|syn addition|cis product|achiral|D2 over|meso|either alkene geometry|\(E\)-oct|imethylcyclohex/i, c:'redox-stereochemistry' },
     { q:/nitro|benzene ring|ketone|ester|carboxylic|Raney|equivalents? of H2|What reacts|takes up|Cyclohexene is stirred|NOT reduce|PtO2/i, c:'reductant-scope' }
+  ]);
+  L.define('cyclopropanation', [
+    { q:/ring strain/i, recall:true },
+    { q:/What is the product|What forms\?|stereochem|meso|racemate|same face|stereospecific/i, c:'carbene-addition' },
+    { q:ANY, c:'carbene-generation' }
   ]);
   L.define('alkene-oxidation', [
     { q:/stereo|anti diol|syn|meso|opposite diol|same diol|mCPBA|OsO4 never|cis-cyclopentane|epoxide opening/i, c:'redox-stereochemistry' },

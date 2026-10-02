@@ -232,7 +232,36 @@
     return out.slice(-HISTORY_MAX);
   }
 
+  /* ---- a saved midterm range ---------------------------------------
+
+     The midterm's "from chapter" and "to chapter" used to be saved as chapter
+     NUMBERS. Numbers go stale the day a chapter moves: after the October 2026
+     reorder (IR & MS, Aromatic Chemistry and the Grignard chapter moved
+     forward) a saved "chapters 1-12, through Carbonyl" would have meant
+     through Aromatic Chemistry instead. So the range is saved as chapter ids
+     now, and a range saved the old way is read against the order it was
+     saved under, LEGACY_ORDER, and turned into ids. `chapterIds` is the
+     current order. Returns { fromId, toId }, always two ids in that order. */
+  var LEGACY_ORDER = ['foundations', 'electron-movement', 'nomenclature', 'acids-bases',
+    'alkanes-conformations', 'stereochemistry', 'reactivity', 'substitution-elimination',
+    'alkenes-alkynes', 'conjugation', 'alcohols-ethers', 'carbonyl-chemistry', 'redox',
+    'carboxylic-acids', 'organometallics', 'enolate-chemistry', 'aromatic-chemistry', 'amines',
+    'aromatic-breadth', 'spectroscopy', 'synthesis', 'biomolecules', 'polymers'];
+  function midtermRange(prefs, chapterIds, dflt){
+    var p = prefs || {}, has = function(id){ return chapterIds.indexOf(id) !== -1; };
+    var from = has(p.fromId) ? p.fromId : null, to = has(p.toId) ? p.toId : null;
+    function legacy(n){ var id = LEGACY_ORDER[(+n) - 1]; return has(id) ? id : null; }
+    if(!from && p.from != null) from = legacy(p.from);
+    if(!to && p.to != null) to = legacy(p.to);
+    from = from || (dflt && has(dflt.fromId) ? dflt.fromId : chapterIds[0]);
+    to = to || (dflt && has(dflt.toId) ? dflt.toId : chapterIds[chapterIds.length - 1]);
+    if(chapterIds.indexOf(from) > chapterIds.indexOf(to)){ var t = from; from = to; to = t; }
+    return { fromId: from, toId: to };
+  }
+
   window.OchemExamCore = {
+    LEGACY_ORDER: LEGACY_ORDER,
+    midtermRange: midtermRange,
     MIX: MIX,
     HISTORY_MAX: HISTORY_MAX,
     shuffle: shuffle,

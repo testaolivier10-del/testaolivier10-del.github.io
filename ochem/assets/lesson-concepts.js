@@ -363,6 +363,19 @@
       10:['alkene-stability-ranking'],
       11:['reductant-scope'] } },
 
+    'cyclopropanation': { n:10, steps:{
+      1:['carbene-addition'],
+      3:['carbene-generation'],
+      5:['carbene-generation'],
+      7:['carbene-generation'],
+      8:['carbene-addition'],
+      9:['carbene-addition'] } },
+    'electrocyclic-sigmatropic': { n:11, steps:{
+      1:['electrocyclic-rules'],
+      4:['electrocyclic-rules'],
+      6:['electrocyclic-rules'],
+      8:['sigmatropic-shift'],
+      10:['electrocyclic-rules'] } },
     'alkene-oxidation': { n:13, steps:{
       2:['redox-stereochemistry'],
       5:['redox-stereochemistry'],
