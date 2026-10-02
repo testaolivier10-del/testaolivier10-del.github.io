@@ -73,7 +73,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
 | W7 | UX and accessibility | `-w7` | merged |
-| W8 | SEO, performance, repo | `-w8` | in progress |
+| W8 | SEO, performance, repo | `-w8` | merged |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
 
 ### Which audit findings each workstream owns
@@ -196,6 +196,20 @@ session end. Layout shift on phones: A&P lesson 0.27–0.35 → ≤0.07, ochem p
 0.98 → ≤0.09, A&P learn 0.58 → 0. "/" opens an in-page search overlay. New a11y interaction checks and three site
 rules. Follow-ups merged: breadcrumbs on 162 NREMT and ochem pages from their BreadcrumbList (`scripts/build-crumbs.mjs`, `--check` in CI); NREMT review CLS 0.21 → 0.004; one monospace rule and one disclosure marker in theme.css (rule `one-disclosure-marker`).
 
+### W8 SEO, performance and repo — merged
+27 fixed, 9 no change needed (already done by W2/W3/W7), 3 deferred with plans in the notes (tutor-bank sharding:
+the bank already loads only on first use; Supabase CLI migrations layout: needs a pull from the live DB; build to
+`dist/` with a Pages Action: plan only). Titles follow "{Topic} — {Course} | LevlPrep" (≤60 chars) from
+`scripts/lib/page-title.mjs`; 11 app-state pages noindex and out of the sitemap; sitemap lastmod from each file's
+author date; A&P share image exists; hub has a raster logo, founder, contact and a visible FAQ with FAQPage data;
+exam-day.html targets the 2025 exam. Supabase SDK loads only for a stored session or the sign-in dialog (page views
+by plain fetch); the assistant loads on first tap; ochem explanations load per question; ochem learn.html shows one
+section at a time and glossary letters collapse; A&P figures ship as AVIF at 480/800/full with JPG fallback (+27.9
+MB repo; WebP skipped, it would add ~30 MB more); SW precaches per course. Workflows read-only, actions pinned by
+SHA, `package.json` + lockfile for CI tools, `.gitignore`, TRACKER.md moved to docs/, README and docs updated. Ten
+new site rules. Shell budget 260.5 → 279 KB is a change of ruler: the scripts site-chrome.js mounts on every page are
+now counted; real every-page downloads fell (tutor 23 KB and the ~45 KB SDK left the first load).
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
@@ -203,11 +217,14 @@ rules. Follow-ups merged: breadcrumbs on 162 NREMT and ochem pages from their Br
 - **Confirm E213, E215 (17) and E216 skill-sheet totals against the official PDFs** (nremt.org was unreachable from here).
 - **Sound trainer:** needs licensed rhonchi and normal breath-sound clips to self-host.
 - **A&P Fig 15.15 (belladonna photo) provenance:** no credit found in OpenStax 2e/1e captions; Wikimedia was unreachable. Logged in `docs/anp-needs-author.md`.
+- **After this deploys, check the live hub title** matches the repo (the audit saw an old live title; a Pages deploy timing issue).
+- **playwright 1.49.1** (CI-only) is flagged by `npm audit`; upgrading may shift axe results, so it is pinned until someone re-baselines.
 - An instructor could spot-check the new ochem concept rules (`ochem/assets/legacy-rules.js`, blocks marked "site audit, October 2026").
 - Check RLS on `user_progress` allows UPDATE where `auth.uid() = id` (it must already, for the old upsert).
 
 ## Progress log
 
+- 2026-10-02: W8 merged; W9 (ochem sequencing) started.
 - 2026-10-02: W2 and W7 merged; W8 started; W7 finishing three follow-ups.
 - 2026-10-02: wave 1 merged, full CI green; wave 2 (W2, W7) started, W8 follows them.
 - 2026-10-02: wave 1 (W1, W3, W4, W5, W6) started; helpers write per-finding notes to `docs/site-audit-notes/wN.md`; local CI mirror is `scripts/ci-local.sh`.
