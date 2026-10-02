@@ -14,6 +14,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
+import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import { fileURLToPath } from 'node:url';
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampTitle, clampDesc,
@@ -126,14 +127,18 @@ function lessonPage(id) {
     // Truncated last: the kind goes first so the lesson and notes titles differ.
     `A&P lesson: ${t.title}`,
   ]);
-  const desc = DESCRIPTIONS.lessons?.[id] || clampDesc(`${text(L.summary)}`, `${t.title}: a free anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
+  const desc = DESCRIPTIONS.lessons?.[id] || clampDesc(`${text(L.summary)}`, `${t.title}: an anatomy and physiology lesson that builds the mechanism step by step, with practice questions.`);
   const url = `${SITE}${BASE}lessons/${id}.html`;
+  /* Free in the Foundations chapters (premium.js COURSES.anp.freeChapters);
+     elsewhere the interactive lesson (.anp-ls-card) is Premium, so the page
+     says so in the markup Google reads for paywalled content (audit 2026-10). */
+  const access = premiumData().COURSES.anp.freeChapters.includes(ch.id) ? { isAccessibleForFree: true } : lockedLd('.anp-ls-card');
   const jsonld = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'LearningResource', '@id': `${url}#lesson`, name: t.title, url, description: desc,
-        learningResourceType: 'Lesson', educationalLevel: 'Undergraduate', inLanguage: 'en', isAccessibleForFree: true,
+        learningResourceType: 'Lesson', educationalLevel: 'Undergraduate', inLanguage: 'en', ...access,
         teaches: map.concepts.filter(c => c.taughtIn === id).slice(0, 12).map(c => ({ '@type': 'DefinedTerm', name: c.term })),
         isPartOf: { '@id': COURSE_ID }, provider: { '@id': `${SITE}/#org` },
         competencyRequired: buildsOn(id).filter(x => C.built.has(x)).map(x => ({ '@type': 'DefinedTerm', name: topicById(x).title, url: `${SITE}${BASE}lessons/${x}.html` })),
@@ -328,7 +333,7 @@ function notesPage(id) {
     `${t.title} | A&P notes`,
     `A&P notes: ${t.title}`,
   ]);
-  const desc = DESCRIPTIONS.notes?.[id] || clampDesc(firstP, `${t.title} explained in plain language: free anatomy and physiology study notes with labeled figures.`);
+  const desc = DESCRIPTIONS.notes?.[id] || clampDesc(firstP, `${t.title} explained in plain language: anatomy and physiology study notes with labeled figures, free to read.`);
   const url = `${SITE}${BASE}notes/${id}.html`;
   const pv = prevTopic(id), nx = nextTopic(id);
   const jsonld = {
@@ -395,7 +400,7 @@ function chapterPage(chId) {
   const toolGroups = kinds.map(([k, label]) => `<section class="anp-chap-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="anp-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
   const title = clampTitle([`${ch.title} | ${COURSE_NAME}`, `${ch.title} | A&P`]);
-  const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: free anatomy and physiology lessons, notes, practice questions and study tools.`);
+  const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: anatomy and physiology lessons, notes, practice questions and study tools.`);
   const url = `${SITE}${BASE}chapters/${chId}.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'CollectionPage', '@id': `${url}#chapter`, name: ch.title, url, description: desc, isPartOf: { '@id': COURSE_ID } },
@@ -593,7 +598,7 @@ function glossaryPage() {
   const entries = map.concepts.filter(c => C.glossary[c.id]).map(c => ({ c, g: C.glossary[c.id] }))
     .sort((a, b) => a.c.term.localeCompare(b.c.term, 'en', { sensitivity: 'base' }));
   const title = `Glossary of anatomy & physiology terms | ${COURSE_NAME}`.length <= 60 ? `Glossary of anatomy & physiology terms | ${COURSE_NAME}` : 'A&P glossary: terms, word roots and definitions';
-  const desc = clampDesc(`${entries.length} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
+  const desc = clampDesc(`${entries.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'DefinedTermSet', '@id': `${url}#terms`, name: `${COURSE_NAME} glossary`, url, description: desc },
@@ -613,7 +618,7 @@ function glossaryPage() {
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-glossary">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }], depth)}
-  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.</p>
+  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length.toLocaleString('en-US')} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.</p>
     <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
     <p class="anp-small" id="gl-status" role="status" aria-live="polite"></p></header>
   <p class="anp-letters-hint anp-small" aria-hidden="true">Swipe the letters for ${letters[letters.length - 1]} &rarr;</p>
@@ -742,11 +747,12 @@ function homeSample(depth) {
 function homePage() {
   const depth = '';
   const nb = builtTopics.length;
-  const title = 'Free Anatomy & Physiology Course | LevlPrep';
-  const desc = 'Free anatomy and physiology course: lessons that build in strict order, mechanism-first physiology, a virtual lab practical and TEAS A&P practice.';
+  const title = 'Anatomy & Physiology Course, Free to Start | LevlPrep';
+  const desc = 'Anatomy and physiology course with every notes page free: lessons that build in strict order, mechanism-first physiology, a lab practical and TEAS A&P practice.';
   const url = `${SITE}${BASE}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
-    { '@type': 'Course', '@id': COURSE_ID, name: COURSE_NAME, url, description: desc, inLanguage: 'en', isAccessibleForFree: true,
+    { '@type': 'Course', '@id': COURSE_ID, name: COURSE_NAME, url, description: desc, inLanguage: 'en',
+      offers: courseOffers('anp'),
       provider: { '@id': `${SITE}/#org` }, educationalLevel: 'Undergraduate',
       hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online', courseWorkload: 'Self-paced' },
       syllabusSections: map.chapters.map(c => ({ '@type': 'Syllabus', name: c.title })) },
@@ -864,9 +870,10 @@ ${homeSample(depth)}
 
   <section class="xsection" aria-label="About LevlPrep">
     <div class="trust-row">
-      <div class="trust-pill">Every lesson and notes page free</div>
+      <div class="trust-pill">Every notes page free</div>
+      <div class="trust-pill">Foundations lessons free</div>
       <div class="trust-pill">Progress saved on your device</div>
-      <div class="trust-pill">No account required</div>
+      <div class="trust-pill">No subscription</div>
     </div>
     <p class="anp-disclaimer anp-home-legal">${esc(TEAS_DISCLAIMER)} OpenStax is credited as a source of figures and coverage; OpenStax does not endorse LevlPrep.</p>
   </section>
@@ -890,7 +897,7 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
   const url = `${SITE}${BASE}${path}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     isTool
-      ? { '@type': 'WebApplication', '@id': `${url}#tool`, name: entry.name, url, description: entry.desc, applicationCategory: 'EducationalApplication', operatingSystem: 'Any', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, isPartOf: { '@id': COURSE_ID } }
+      ? { '@type': 'WebApplication', '@id': `${url}#tool`, name: entry.name, url, description: entry.desc, applicationCategory: 'EducationalApplication', operatingSystem: 'Any', ...(entry.premium ? lockedLd('.anp-app-mount') : { isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }), isPartOf: { '@id': COURSE_ID } }
       : { '@type': 'WebPage', '@id': `${url}#page`, name: h1, url, description: entry.desc, isPartOf: { '@id': COURSE_ID } },
     crumbs(orgCrumbs(isTool ? [{ name: 'Tools', url: `${SITE}${BASE}tools.html` }, { name: entry.name, url }] : [{ name: h1, url }])),
   ] };

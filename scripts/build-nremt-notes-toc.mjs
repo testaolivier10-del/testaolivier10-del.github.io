@@ -75,7 +75,7 @@ const sections = chapters.reduce((n, ch) => n + (ch.sections ? ch.sections.lengt
 const block = `${START}
       <div class="tb-static-toc">
         <h1>NREMT-EMT Study Notes</h1>
-        <p>${chapters.length} chapters and ${sections} sections, in course order — the written half of the EMT course, free and with no account needed.</p>
+        <p>${chapters.length} chapters and ${sections} sections, in course order — the written half of the EMT course, free forever.</p>
         <ol>
 ${items}
         </ol>

@@ -162,7 +162,7 @@ All with a **founding-member code, 30% off, until 2027-01-31**. A 30-day
 ochem finals pass ($15) is an option for later. Polar's fee (5% + $0.50) is
 6–7% at these prices; below ~$15 the fixed part hurts.
 
-- **NREMT pass guarantee:** fail the exam during a bought pass and claim one
+- **Pass-or-extend (NREMT; called "pass guarantee" until 2026-10-02):** fail the exam during a bought pass and claim one
   free 90-day extension from the Account page (Worker `/premium/guarantee`),
   within 30 days of the exam, after at least 2 full timed exams on the site
   during the pass. Once per account and email. Nobody can prove a fail (the

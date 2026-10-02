@@ -60,21 +60,21 @@ const lessonCount = readdirSync('ochem/lessons').filter((f) => f.endsWith('.html
 const CARDS = [
   {
     out: 'assets/og-image.png',
-    badge: 'Free core · No ads',
+    badge: 'Free to start · No ads',
     brand: 'LevlPrep',
-    title: 'Free practice tools for certification exams',
-    sub: 'Real question banks and interactive courses, with honest practice conditions.',
+    title: 'Practice tools for certification exams',
+    sub: 'Original practice questions and interactive courses, with honest practice conditions.',
   },
   {
     out: 'nremt/assets/og-image.png',
-    badge: 'Free · No account needed',
+    badge: 'Free to start · No ads',
     brand: 'LevlPrep',
     title: 'NREMT-EMT Practice Exam & Study Tools',
-    sub: `${questionCount.toLocaleString('en-US')} practice questions, timed exams, scenarios and a 3D body map — free, right in your browser.`,
+    sub: `${questionCount.toLocaleString('en-US')} original practice questions, timed exams, study notes and a 3D body map, right in your browser.`,
   },
   {
     out: 'ochem/assets/og-image.png',
-    badge: 'Free · No account needed',
+    badge: 'Free to start · No ads',
     brand: 'LevlPrep',
     title: 'Organic Chemistry, learned by doing the mechanisms',
     sub: `${lessonCount} interactive lessons where you push the arrows yourself, with instant feedback.`,
@@ -88,8 +88,7 @@ const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt
    header uses. Fonts are the two the site loads, with a system stack behind
    them so a card still renders if Google Fonts is unreachable. */
 const page = (c) => `<!DOCTYPE html><html><head><meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=IBM+Plex+Mono:wght@600;700&display=swap">
+<link rel="stylesheet" href="file://${join(process.cwd(), 'assets', 'fonts', 'fonts.css')}">
 <style>
   :root{
     --navy:#16332E; --paper:#F2EEE6; --ink:#16241F; --muted:#5F7770;
@@ -140,7 +139,7 @@ const page = (c) => `<!DOCTYPE html><html><head><meta charset="utf-8">
   </div>
 </body></html>`;
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const ctx = await browser.newContext({
   viewport: { width: 1200, height: 630 },
   deviceScaleFactor: 1,
