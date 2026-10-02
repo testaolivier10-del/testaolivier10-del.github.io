@@ -556,13 +556,10 @@
         '<div class="lp-score" tabindex="-1"><span class="lp-score-n">' + right + ' / ' + results.length + '</span><span class="anp-small">named right on the first try</span></div>' +
         breakdown(results) +
         (byStruct.length ? '<h3>To review</h3><ul class="lp-misslist">' + byStruct.map(function(x){ return '<li><b>' + esc(x.it.lab.name) + '</b> <span class="anp-small">' + esc(x.it.set.title) + '</span></li>'; }).join('') + '</ul>' : '<p class="lp-lead">Every structure named. Try the timed practical next.</p>') +
-        '<div class="lp-actions">' + (byStruct.length ? '<button type="button" class="btn-press sm lp-retry">Retry the ' + byStruct.length + ' missed</button>' : '') +
-        (s ? '<a class="btn-outline" href="#quiz/' + s.id + '" data-again>New round</a>' : '') + '<a class="btn-outline" href="#practical">Timed practical</a></div>';
+        (window.LevlNextStep ? LevlNextStep('anp', { also: [byStruct.length
+          ? { label: 'Retry the ' + byStruct.length + ' missed', act: function(){ startQuiz(s, byStruct.map(function(x){ return x.it; }), s ? s.title + ': missed' : title); } }
+          : { label: 'Timed practical', href: '#practical' }] }) : '');
       paint(html);
-      var rb = app.querySelector('.lp-retry');
-      if(rb) rb.addEventListener('click', function(){ startQuiz(s, byStruct.map(function(x){ return x.it; }), s ? s.title + ': missed' : title); });
-      var ag = app.querySelector('[data-again]');
-      if(ag) ag.addEventListener('click', function(e){ e.preventDefault(); startQuiz(s, null); });
       focusEl(app.querySelector('.lp-score'));
     }
     step(true);
@@ -768,7 +765,7 @@
         '<div class="lp-score"><span class="lp-score-n">' + right + ' / ' + stations.length + '</span><span class="anp-small">stations right (' + Math.round(100 * right / stations.length) + '%)' + (fol.length ? ' · follow-ups ' + fright + ' / ' + fol.length : '') + '</span></div>' +
         breakdown(results) +
         (right < stations.length ? '<p class="anp-small">Every missed structure was added to your review queue.</p>' : '') +
-        '<div class="lp-actions"><a class="btn-press sm" href="#practical" data-again>New practical</a>' + (right < stations.length ? '<a class="btn-outline" href="#review">Quiz my missed structures</a>' : '') + '</div>' +
+        (window.LevlNextStep ? LevlNextStep('anp', { also: [right < stations.length ? { label: 'Quiz my missed structures', href: '#review' } : { label: 'New practical', act: showSetup }] }) : '') +
         '<h3>Every station</h3><ol class="lp-review-list">' + stations.map(function(s, i){
           var lab = s.it.lab, f = lab.follow;
           var yours = s.kind === 'point' ? (s.g.pick ? 'You pointed to ' + esc(s.g.pick.name) + '.' : 'No box chosen.') : (s.typed ? 'You wrote “' + esc(s.typed) + '”.' : 'No answer.');
@@ -779,7 +776,6 @@
             (s.follow ? '<p class="lp-fq"><span class="lp-part">(b)</span> ' + f.q + '</p><p class="lp-fn"><b class="' + (s.fok ? 'ok' : 'no') + '">' + (s.fok ? 'Right.' : 'Missed.') + '</b> Answer: ' + f.options[f.correct] + '. ' + f.why + '</p>' : '') +
             '<div class="lp-actions">' + report(s.it.id) + '</div></div></div></li>';
         }).join('') + '</ol>');
-      app.querySelector('[data-again]').addEventListener('click', function(e){ e.preventDefault(); showSetup(); });
       focusEl(app.querySelector('.lp-title'));
     }
     station();

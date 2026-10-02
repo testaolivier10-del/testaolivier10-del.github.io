@@ -474,11 +474,9 @@
         '<div class="next-up"><b>' + esc(lead.headline) + '.</b> ' + esc(lead.detail) + '</div></div>';
     }
 
-    html += '<div class="actions" style="margin-top:20px;justify-content:flex-start;flex-wrap:wrap;">' +
-      (lead ? '<button class="btn-press" id="sumNext">' + esc(lead.cta) + '</button>' : '') +
-      '<button class="btn-press alt" id="sumAgain">Practice again</button>' +
-      '<a href="dashboard.html" class="btn-press alt">View dashboard</a>' +
-    '</div>';
+    // One next step (assets/next-step.js); the engine's own pick stays as a quiet alternative.
+    html += window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
+      also: [lead ? { label: lead.cta, act: function(){ startSession(lead.plan); } } : { label: 'Practice again', act: renderHome }] }) : '';
 
     // The Premium waitlist; see assets/premium.js. Asks, locks nothing.
     if(window.LevlPremium && asked >= 8) html += window.LevlPremium.card('ochem', 'summary');
@@ -486,10 +484,6 @@
     summaryEl.innerHTML = html;
     show('summary');
 
-    var againBtn = summaryEl.querySelector('#sumAgain');
-    if(againBtn) againBtn.addEventListener('click', renderHome);
-    var nextBtn = summaryEl.querySelector('#sumNext');
-    if(nextBtn) nextBtn.addEventListener('click', function(){ startSession(lead.plan); });
     summaryEl.querySelectorAll('[data-concept]').forEach(function(btn){
       btn.addEventListener('click', function(){
         var id = btn.getAttribute('data-concept');

@@ -167,7 +167,8 @@
        nothing for the topics no tool covers, which is most of them. */
     function doneBoxHtml(){
       var suggest = window.OchemToolSuggest ? window.OchemToolSuggest.html(topicId, '../') : '';
-      return '<div class="actions" style="margin-top:8px;"><a href="' + notesHref + '" class="btn-press">Back to the textbook</a></div>' + suggest;
+      // One next step (assets/next-step.js), with the textbook as the quiet way back.
+      return (window.LevlNextStep ? LevlNextStep('ochem', { topics: [topicId], also: [{ label: 'Back to the textbook', href: notesHref }] }) : '') + suggest;
     }
 
     function advance(){ step++; render(); }

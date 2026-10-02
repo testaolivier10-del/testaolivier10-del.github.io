@@ -554,18 +554,10 @@
       (xp ? '<p class="fc-xp"><b>+' + xp + ' XP</b></p>' : '') +
       '<p>' + esc(line + ' ' + note) + '</p>' +
       (tomorrow ? '<p>' + esc(plural(tomorrow, 'card') + ' due by tomorrow.') + '</p>' : '') +
-      '<div class="actions">' +
-        (more ? '<button type="button" class="btn-press" id="fcMore">Keep going · ' + plural(more, 'card') + '</button>' : '') +
-        '<button type="button" class="btn-press alt" id="fcBack">Back to the deck</button>' +
-      '</div></div>' +
-      '<p class="fc-note">Ready for exam-style questions? <a href="practice.html">Go to Practice</a>.</p>';
+      (window.LevlNextStep ? LevlNextStep('nremt', { focus: true, also: [{ label: 'Back to the deck', act: renderHome }, { label: 'Exam-style questions', href: 'practice.html' }],
+        due: { n: more, label: 'Keep going \u00b7 ' + plural(more, 'card'), act: function(){ startSession('review'); } } }) : '') + '</div>';
     doneEl.innerHTML = html;
     show('done');
-    var m = doneEl.querySelector('#fcMore');
-    if(m) m.addEventListener('click', function(){ startSession('review'); });
-    doneEl.querySelector('#fcBack').addEventListener('click', renderHome);
-    var focusTo = m || doneEl.querySelector('#fcBack');
-    if(focusTo) focusTo.focus({ preventScroll: true });
   }
 
   quitBtn.addEventListener('click', function(){ finish(false); });

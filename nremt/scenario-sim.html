@@ -2098,10 +2098,8 @@ function renderNode(consequenceText){
       </div>
       <span class="ending-badge ${node.ending}">${node.ending === 'good' ? 'Good outcome' : node.ending === 'bad' ? 'Poor outcome' : 'Mixed outcome'}</span>
       <p class="node-text">${node.text}</p>
-      <div class="sim-actions">
-        <button type="button" class="btn-primary" id="retryBtn">Try This Scenario Again</button>
-        <button type="button" class="btn-secondary" id="anotherBtn">Choose Another Scenario</button>
-      </div>
+      ${window.LevlNextStep ? LevlNextStep('nremt', { tags: ['nremt:' + currentScenario.id],
+        also: [{ label: 'Try this scenario again', act: () => startScenario(currentScenario.id) }] }) : ''}
       <div class="path-log">
         <div class="path-log-title">Your path through this call</div>
         <ol>
@@ -2121,8 +2119,6 @@ function renderNode(consequenceText){
       </div>
     `;
     document.getElementById('backBtn').addEventListener('click', backToPicker);
-    document.getElementById('retryBtn').addEventListener('click', () => startScenario(currentScenario.id));
-    document.getElementById('anotherBtn').addEventListener('click', backToPicker);
     box.querySelectorAll('[data-rewind]').forEach(btn => {
       btn.addEventListener('click', () => rewindTo(parseInt(btn.dataset.rewind, 10)));
     });

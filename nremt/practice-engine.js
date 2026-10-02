@@ -82,6 +82,7 @@ const RUNNER_SCREENS = `
         <div id="readinessUpdate"></div>
       </div>
       <div id="clearedNote" class="cleared-note" style="display:none;"></div>
+      <div id="nextSlot"></div>
       <div id="premiumSlot"></div>
     </div>
     <div class="results-main">
@@ -2178,6 +2179,10 @@ function showResults(){
   // bank does. See assets/premium.js: this asks, it does not lock anything.
   $id('premiumSlot').innerHTML =
     (window.LevlPremium && activeIndices.length >= 10) ? window.LevlPremium.card('nremt', 'results') : '';
+
+  // One next step (assets/next-step.js). Right after a review the due queue is what was just done.
+  $id('nextSlot').innerHTML = window.LevlNextStep ? LevlNextStep('nremt', { skip: mode === 'spaced' || mode === 'review' ? ['review'] : [],
+    tags: Object.values(domainStats).flatMap(s => Object.keys(s.topics).filter(t => s.topics[t].total >= 5)).map(t => 'nremt:' + t) }) : '';
 
   $id('scoreBig').textContent = `${score}/${activeIndices.length}`;
   $id('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct — completed in ${formatDuration(elapsed)}`;

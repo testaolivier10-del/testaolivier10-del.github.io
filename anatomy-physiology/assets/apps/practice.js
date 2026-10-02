@@ -415,6 +415,7 @@
     var coreHtml = cores.length ? '<p class="anp-small">The misses cluster on ' + cores.map(function(c){ return '<a href="' + BASE + 'concepts/' + c + '.html">' + esc(CORE[c].name) + '</a>'; }).join(' and ') + '. The concept page shows the same idea in every system.</p>' : '';
 
     var pctRight = Math.round(right / res.length * 100);
+    var mode = session.mode, count = state.count;
     view('summary');
     app.innerHTML = '<div class="anp-pr-summary">' +
       '<div class="anp-pr-score"><span class="anp-pr-score-big">' + right + '<small>/' + res.length + '</small></span>' +
@@ -424,24 +425,13 @@
         topicOrder.map(function(t){ var b = byTopic[t], m = Core ? Core.topicMastery(t) : { value: 0 };
           return '<tr><th scope="row"><a href="' + lessonHref(t) + '">' + esc(TOPIC[t].title) + '</a></th><td>' + b.c + '/' + b.n + '</td><td>' + (Core ? Core.pct(m.value) : '') + '</td></tr>'; }).join('') +
       '</tbody></table>' +
-      '<div class="anp-pr-actions">' +
-        (stillWrong.length ? '<button type="button" class="btn-press" data-act="retry">Retry the ' + plural(stillWrong.length, 'miss', 'misses') + '</button>' : '') +
-        '<button type="button" class="btn-press' + (stillWrong.length ? ' alt' : '') + '" data-act="again">Another set like this</button>' +
-        '<button type="button" class="btn-outline" data-act="setup">Change what to practice</button>' +
-        (Core && Core.reviewCount() ? '<a class="btn-outline" href="' + BASE + 'review.html">Review queue (' + Core.reviewCount() + ' due)</a>' : '') +
-      '</div>' +
+      // One next step (assets/next-step.js); retrying this set's misses is the quiet alternative.
+      (window.LevlNextStep ? LevlNextStep('anp', { topics: topicOrder, also: [stillWrong.length
+        ? { label: 'Retry the ' + plural(stillWrong.length, 'miss', 'misses'), act: function(){ start('retry', 0, stillWrong); } }
+        : { label: 'Another set like this', act: function(){ if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); } }] }) : '') +
       // The Premium card under a finished set (assets/premium.js); '' for members.
       (window.LevlPremium && res.length >= 5 ? window.LevlPremium.card('anp', 'summary') : '') +
       '</div>';
-    var mode = session.mode, count = state.count;
-    app.querySelectorAll('[data-act]').forEach(function(b){
-      b.addEventListener('click', function(){
-        var a = b.getAttribute('data-act');
-        if(a === 'retry') start('retry', 0, stillWrong);
-        else if(a === 'again') { if(mode === 'retry' || !poolFor(mode).length) renderSetup(); else start(mode, count); }
-        else renderSetup();
-      });
-    });
     var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
   }
 

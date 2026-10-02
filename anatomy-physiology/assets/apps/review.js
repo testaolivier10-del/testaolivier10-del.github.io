@@ -216,12 +216,9 @@
         return '<li><div><b>' + esc(TOPIC[t].title) + '</b><span class="anp-small">' + plural(missTopics[t], 'miss', 'misses') + ' in this review</span></div>' +
           '<a class="btn-outline" href="' + BASE + 'lessons/' + t + '.html">Lesson</a><a class="btn-outline" href="' + BASE + 'notes/' + t + '.html">Notes</a></li>';
       }).join('') + '</ul>' : '') +
-      '<div class="anp-pr-actions">' + (left ? '<button type="button" class="btn-press" data-act="more">Keep going</button>' : '') +
-      '<button type="button" class="btn-outline" data-act="home">Back to the queue</button>' +
-      '<a class="btn-outline" href="' + BASE + 'practice.html">Practice something new</a></div></div>';
-    app.querySelectorAll('[data-act]').forEach(function(b){
-      b.addEventListener('click', function(){ if(b.getAttribute('data-act') === 'more') start(SESSION_CAP); else renderHome(); });
-    });
+      // One next step (assets/next-step.js): what is still due here comes first.
+      (window.LevlNextStep ? LevlNextStep('anp', { due: { n: left, noun: 'question', act: function(){ start(SESSION_CAP); } },
+        also: [{ label: 'Back to the queue', act: renderHome }] }) : '') + '</div>';
     var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
   }
 

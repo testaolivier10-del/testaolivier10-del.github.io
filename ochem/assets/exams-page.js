@@ -529,7 +529,7 @@
         bars('By topic', byTopic, function(k){ return TOPIC[k].title; }, function(k){ return 'learn.html#' + k; }) +
         bars('By difficulty', byDiff, function(k){ return DIFF_NAME[k]; }) +
       '</div>' +
-      '<div class="ex-actions"><button type="button" class="btn-press sm" data-act="again">Take another exam</button></div>' +
+      (window.LevlNextStep ? LevlNextStep('ochem', { topics: s.byTopic.map(function(x){ return x.key; }), also: [{ label: 'Take another exam', act: renderSetup }] }) : '') +
       '<h2 class="section-head" id="exReviewH">Review every question</h2>' +
       '<div class="ex-filter" role="group" aria-label="Show">' +
         '<button type="button" class="ex-chip-b" aria-pressed="true" data-f="all">All ' + s.total + '</button>' +
@@ -537,7 +537,7 @@
         '<button type="button" class="ex-chip-b" aria-pressed="false" data-f="flag"' + (flaggedN ? '' : ' disabled') + '>Flagged ' + flaggedN + '</button>' +
       '</div>' +
       '<ol class="ex-review">' + items.map(function(it, i){ return reviewItem(it, r.orders[i], i + 1); }).join('') + '</ol>' +
-      '<div class="ex-actions"><button type="button" class="btn-press sm" data-act="again">Take another exam</button></div>' +
+      '<div class="ex-actions"><button type="button" class="btn-outline" data-act="again">Take another exam</button></div>' +
     '</div>';
 
     app.querySelectorAll('[data-act="again"]').forEach(function(b){ b.addEventListener('click', function(){ renderSetup(); }); });

@@ -661,18 +661,11 @@
       '<h2>' + esc(completed ? (r.mode === 'review' && !more ? 'That’s everything due.' : 'Done.') : 'Stopped early — the rest is still waiting.') + '</h2>' +
       '<p>' + esc(line + ' ' + note) + '</p>' +
       (tomorrow ? '<p>' + esc(plural(tomorrow, 'card') + ' due by tomorrow.') + '</p>' : '') +
-      '<div class="actions">' +
-        (more ? '<button type="button" class="btn-press" id="fcMore">Keep going · ' + plural(more, 'card') + '</button>' : '') +
-        '<button type="button" class="btn-press alt" id="fcBack">Back to the deck</button>' +
-      '</div></div>';
+      (window.LevlNextStep ? LevlNextStep('ochem', { focus: true, also: [{ label: 'Back to the deck', act: renderHome }],
+        due: { n: more, label: 'Keep going \u00b7 ' + plural(more, 'card'), act: function(){ startSession('review'); } } }) : '') + '</div>';
     run = null;
     doneEl.innerHTML = html;
     show('done');
-    var m = doneEl.querySelector('#fcMore');
-    if(m) m.addEventListener('click', function(){ startSession('review'); });
-    doneEl.querySelector('#fcBack').addEventListener('click', renderHome);
-    var focusTo = m || doneEl.querySelector('#fcBack');
-    if(focusTo) focusTo.focus({ preventScroll: true });
   }
 
   quitBtn.addEventListener('click', function(){ finish(false); });

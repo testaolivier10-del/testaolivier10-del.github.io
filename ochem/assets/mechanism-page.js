@@ -84,10 +84,8 @@
      alongside the graded practice. Empty for topics no tool covers. */
   function doneBox(){
     var suggest = window.OchemToolSuggest ? window.OchemToolSuggest.html(CFG.topicId, '../') : '';
-    return '<div class="actions" style="margin-top:8px;flex-wrap:wrap;">' +
-      '<a href="../practice.html?topic=' + esc(CFG.topicId) + '" class="btn-press">Practice this</a>' +
-      '<a href="../learn.html" class="btn-press alt">Back to the textbook</a>' +
-    '</div>' + suggest;
+    return (window.LevlNextStep ? LevlNextStep('ochem', { topics: [CFG.topicId], also: [
+      { label: 'Practice this', href: '../practice.html?topic=' + CFG.topicId }, { label: 'Back to the textbook', href: '../learn.html' }] }) : '') + suggest;
   }
   function advance(){ step++; render(); }
   function goBack(){ if(step > 0){ step--; render(); } }
