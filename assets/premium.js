@@ -42,7 +42,7 @@
 
   // The Cloudflare Worker that creates checkouts and receives Polar's
   // webhooks (worker/src/premium.js).
-  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
 
   var STORE_KEY = 'levlprep_waitlist_v1';
   var ACCESS_KEY = 'levlprep_premium_v1';
@@ -160,13 +160,14 @@
     return u ? u.id : null;
   }
 
+  /* Signed out is never Premium: the cache counts only for the loaded user
+     it was read for (refresh() unlocks once the session is restored).
+     Trusting it before then was a one-line console unlock. */
   function expiry(course) {
-    var a = access();
-    // Before the session has been restored on page load the user is not known
-    // yet; the cache is trusted until then so a member never sees a flash of
-    // locks. A sign-out clears it (see refresh).
     var uid = currentUserId();
-    if (!a.courses || !a.userId || (uid && a.userId !== uid)) return null;
+    if (!uid) return null;
+    var a = access();
+    if (!a.courses || a.userId !== uid) return null;
     var t = a.courses[course] ? Date.parse(a.courses[course]) : NaN;
     return isNaN(t) ? null : t;
   }
@@ -189,27 +190,66 @@
   }
   function onChange(fn) { listeners.push(fn); fn(); }
 
-  /* Asks the database which passes this user holds. my_premium() in
-     scripts/sql/schema.sql answers only for the signed-in user. */
+  /* Asks my_premium() (scripts/sql/schema.sql) which started passes this
+     user holds. An empty answer clears the cache, so a refund locks the next
+     page; a failed call keeps it (offline is not a refund) and is reported
+     once after REFRESH_REPORT_AFTER in a row. */
+  var REFRESH_REPORT_AFTER = 3;
+  var refreshFailures = 0;
+  var refreshReported = false;
   var seenUser = false;
   function refresh() {
     var a = window.StudyHubAccount;
     var uid = currentUserId();
     if (!uid) {
-      // Only a real sign-out clears the cache; the null every page load starts
-      // with, before the session is restored, does not.
-      if (seenUser && access().userId) { writeJson(ACCESS_KEY, {}); notify(); }
-      return;
+      if (seenUser) { seenUser = false; clearAccess(); notify(); }
+      return Promise.resolve(false);
     }
     seenUser = true;
-    if (!a || !a.rpcData) return;
-    a.rpcData('my_premium', {}).then(function (rows) {
-      if (!Array.isArray(rows)) return; // offline: keep what we knew
+    // The cached pass belongs to this user: unlock now, confirm below.
+    if (access().userId === uid) notify();
+    if (!a || !a.rpcData) return Promise.resolve(false);
+    return a.rpcData('my_premium', {}).then(function (rows) {
+      if (!Array.isArray(rows)) { refreshFailed(); return false; }
+      refreshFailures = 0;
+      if (currentUserId() !== uid) return false; // signed out or switched meanwhile
       var courses = {};
-      rows.forEach(function (r) { if (r && r.course) courses[r.course] = r.expires_at; });
-      writeJson(ACCESS_KEY, { userId: uid, courses: courses });
+      rows.forEach(function (r) { if (r && r.course && r.expires_at) courses[r.course] = r.expires_at; });
+      writeJson(ACCESS_KEY, { userId: uid, courses: courses, syncedAt: Date.now() });
       notify();
+      return true;
     });
+  }
+
+  function clearAccess() {
+    try { window.localStorage.removeItem(ACCESS_KEY); }
+    catch (e) { /* private mode: nothing was cached */ }
+  }
+
+  function refreshFailed() {
+    refreshFailures++;
+    if (refreshFailures < REFRESH_REPORT_AFTER || refreshReported) return;
+    refreshReported = true;
+    var errs = window.LevlErrors;
+    if (errs && errs.report) {
+      try { errs.report('premium: my_premium failed ' + refreshFailures + ' times in a row', 'assets/premium.js', null, null, ''); }
+      catch (e) { /* reporting must never break a page */ }
+    }
+  }
+
+  // When access was last confirmed for the signed-in user (ms), or null.
+  function lastSynced() {
+    var a = access();
+    var uid = currentUserId();
+    return uid && a.userId === uid && typeof a.syncedAt === 'number' ? a.syncedAt : null;
+  }
+
+  /* A finished timed exam, stamped by the database (record_exam_completion),
+     which the NREMT guarantee counts instead of browser-written history. */
+  function recordExam(course, questions) {
+    var a = window.StudyHubAccount;
+    if (!COURSES[course] || !currentUserId() || !a || !a.rpc) return Promise.resolve(false);
+    return a.rpc('record_exam_completion', { p_course: course, p_questions: Math.round(Number(questions) || 0) });
   }
 
   /* ---- the daily free allowance ----------------------------------------- */
@@ -260,6 +300,8 @@
       funnelSeen[k] = true;
     }
     if (an && an.optedOut && an.optedOut()) return;
+    // Paid is counted by the Worker's webhook, not by a browser.
+    if (step === 'checkout-paid') return;
     var a = window.StudyHubAccount;
     if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
   }
@@ -771,14 +813,22 @@
     freeExam: freeExam,
     onChange: onChange,
     refresh: refresh,
-    /* Exported for scripts/test/premium.test.mjs. */
-    _joined: joined,
-    _markJoined: markJoined,
-    _validEmail: validEmail,
-    _returnCourse: returnCourse,
-    _setLaunched: function (v) { LAUNCHED = !!v; },
-    _openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
+    lastSynced: lastSynced,
+    recordExam: recordExam,
   };
+
+  /* Test internals, never on window: only the test harness's VM sandbox
+     defines __levlTestHooks (scripts/test/harness.mjs). */
+  if (typeof __levlTestHooks === 'object' && __levlTestHooks) {
+    __levlTestHooks.premium = {
+      joined: joined,
+      markJoined: markJoined,
+      validEmail: validEmail,
+      returnCourse: returnCourse,
+      setLaunched: function (v) { LAUNCHED = !!v; },
+      openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
+    };
+  }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();

@@ -1,0 +1,43 @@
+# Deploys the Cloudflare Worker (worker/) with wrangler, so the rate-limit
+# binding, the cron and keep_vars in worker/wrangler.toml are what actually
+# runs. A dashboard paste has none of the bindings, which is how the
+# assistant ended up with no per-IP throttle.
+#
+# Needs two repository secrets (Settings -> Secrets and variables -> Actions):
+#   CLOUDFLARE_API_TOKEN   a token from the "Edit Cloudflare Workers" template
+#   CLOUDFLARE_ACCOUNT_ID  the account id shown on the Workers overview page
+# Worker secrets (SUPABASE_SERVICE_KEY, POLAR_*, RESEND_API_KEY, VAPID_PRIVATE_KEY)
+# stay in Cloudflare and are not touched by a deploy.
+name: Deploy Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'worker/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-worker
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The pasted single-file build must match the source it ships beside.
+      - run: node scripts/build-worker.mjs --check
+      - run: node --test scripts/test/worker-*.test.mjs
+      - name: wrangler deploy
+        working-directory: worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy

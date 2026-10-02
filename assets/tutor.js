@@ -206,7 +206,7 @@
   // Set this to a deployed Worker URL (see worker/README.md) and every visitor
   // gets AI answers with nothing to configure. Left empty, the assistant stays
   // in local-search mode unless someone sets an endpoint by hand in settings.
-  var DEFAULT_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+  var DEFAULT_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
 
   function readEndpoint(){
     try {
@@ -773,11 +773,16 @@
     var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
     var timer = setTimeout(function(){ ctrl && ctrl.abort(); }, 30000);
 
-    return fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: q, context: context, history: (history || []).slice(-4), course: courseKey() }),
-      signal: ctrl ? ctrl.signal : undefined
+    return sessionHeader(endpoint).then(function(auth){
+      if(auth === false) throw new Error('sign in to get AI answers');
+      var headers = { 'Content-Type': 'application/json' };
+      if(auth) headers.Authorization = auth;
+      return fetch(endpoint, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ question: q, context: context, history: (history || []).slice(-4), course: courseKey() }),
+        signal: ctrl ? ctrl.signal : undefined
+      });
     }).then(function(r){
       if(!r.ok){
         // The endpoint explains itself in the body — rate limited, model
@@ -795,6 +800,18 @@
       if(!answer) throw new Error('empty');
       return answer;
     }).catch(function(err){ clearTimeout(timer); throw err; });
+  }
+
+  /* The site's own Worker answers signed-in students only (worker/src/index.js),
+     so it gets the Supabase session token. Resolves to the header value, to
+     false when the default endpoint is set but nobody is signed in (no request
+     is made; the course's own material answers), or to null for an endpoint
+     someone set by hand, which is never handed a session token. */
+  function sessionHeader(endpoint){
+    if(String(endpoint).replace(/\/+$/, '') !== DEFAULT_ENDPOINT) return Promise.resolve(null);
+    var A = window.StudyHubAccount;
+    if(!A || !A.user || !A.user() || !A.accessToken) return Promise.resolve(false);
+    return A.accessToken().then(function(t){ return t ? 'Bearer ' + t : false; }, function(){ return false; });
   }
 
   // Model output is plain text; render the handful of shapes it actually uses
@@ -993,7 +1010,12 @@
   }
 
   Tutor.prototype.refreshMode = function(){
-    this.modeEl.textContent = readEndpoint() ? 'AI answers · grounded in your course' : 'Answers from this course’s material';
+    var ep = readEndpoint();
+    var A = window.StudyHubAccount;
+    var ai = ep && (String(ep).replace(/\/+$/, '') !== DEFAULT_ENDPOINT || (A && A.user && A.user()));
+    this.modeEl.textContent = ai ? 'AI answers · grounded in your course'
+      : ep ? 'Answers from this course’s material · sign in for AI answers'
+      : 'Answers from this course’s material';
   };
 
   Tutor.prototype.scroll = function(){ this.log.scrollTop = this.log.scrollHeight; };

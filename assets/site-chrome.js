@@ -563,6 +563,29 @@
     window.addEventListener('load', function(){
       navigator.serviceWorker.register('/sw.js').catch(function(){ /* best-effort */ });
     });
+    // A new worker takes over open tabs at once (skipWaiting + claim) while
+    // the page on screen is still the old one: offer a reload. The first
+    // install also fires controllerchange, with nothing old to replace.
+    var hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', function(){
+      if(hadController && !document.querySelector('.lp-update-toast')) showUpdateToast();
+      hadController = true;
+    });
+  }
+
+  function showUpdateToast(){
+    var box = document.createElement('div');
+    box.className = 'lp-update-toast';
+    box.setAttribute('role', 'status');
+    box.style.cssText = 'position:fixed;left:16px;right:16px;bottom:16px;margin:auto;max-width:420px;z-index:2147483000;' +
+      'display:flex;gap:12px;align-items:center;padding:10px 14px;border-radius:12px;background:#17241F;color:#fff;font:600 14px/1.4 system-ui,sans-serif';
+    box.innerHTML = '<span style="flex:1">A new version of LevlPrep is ready.</span>' +
+      '<button type="button" style="font:inherit;border:0;border-radius:8px;padding:6px 12px;cursor:pointer">Reload</button>' +
+      '<button type="button" aria-label="Dismiss" style="font:inherit;border:0;background:none;color:#fff;cursor:pointer">×</button>';
+    var b = box.querySelectorAll('button');
+    b[0].onclick = function(){ location.reload(); };
+    b[1].onclick = function(){ box.remove(); };
+    document.body.appendChild(box);
   }
 
 

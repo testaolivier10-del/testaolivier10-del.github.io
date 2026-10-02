@@ -16,7 +16,7 @@
 
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
-import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar } from './premium.js';
+import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar, bearerToken, sessionUser } from './premium.js';
 
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
@@ -35,9 +35,47 @@ const MODELS = [
 const ALLOWED_ORIGINS = [
   'https://levlprep.com',
   'https://www.levlprep.com',
-  'http://localhost:8000',
-  'http://127.0.0.1:8000',
 ];
+// A local copy of the site, only on a Worker that says so (a dev deploy with
+// ALLOW_LOCALHOST = "true"). Production never trusts localhost: any page
+// someone serves on their own machine would otherwise count as the site.
+const DEV_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000'];
+
+export function allowedOrigins(env) {
+  return env && String(env.ALLOW_LOCALHOST) === 'true' ? ALLOWED_ORIGINS.concat(DEV_ORIGINS) : ALLOWED_ORIGINS;
+}
+
+/* The per-IP throttle (wrangler.toml, RATE_LIMITER), bucketed per route so a
+   busy assistant does not lock somebody out of unsubscribing. True when this
+   request is over the limit. No binding (a dashboard paste) means no limit,
+   which is why deploys go through wrangler (.github/workflows/deploy-worker.yml). */
+async function throttled(env, request, bucket) {
+  if (!env.RATE_LIMITER) return false;
+  const ip = request.headers.get('CF-Connecting-IP') || 'anonymous';
+  const { success } = await env.RATE_LIMITER.limit({ key: `${bucket}:${ip}` });
+  return !success;
+}
+
+/* The assistant answers signed-in students only: a Supabase session the
+   Worker can verify, which needs no setup beyond what Premium already uses.
+   The Origin header alone was the gate, and any script can send one.
+   (Turnstile was the other option; it needs a site key and a secret the
+   owner would have to create first.) Verified tokens are remembered for a
+   few minutes per Worker instance, so a conversation is not one auth call
+   per question. */
+const SESSION_TTL_MS = 5 * 60 * 1000;
+const sessionCache = new Map();
+async function signedIn(env, request) {
+  const token = bearerToken(request);
+  if (!token) return false;
+  const hit = sessionCache.get(token);
+  if (hit && hit > Date.now()) return true;
+  const user = await sessionUser(env, token);
+  if (!user) return false;
+  if (sessionCache.size > 500) sessionCache.clear();
+  sessionCache.set(token, Date.now() + SESSION_TTL_MS);
+  return true;
+}
 
 // The model may teach — rephrase, analogize, connect topics — but it may not
 // invent the facts it teaches from. The passages are the floor, not the
@@ -118,8 +156,8 @@ function extractText(result) {
   return '';
 }
 
-function corsHeaders(origin) {
-  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+function corsHeaders(origin, env) {
+  const allowed = allowedOrigins(env).includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -130,10 +168,10 @@ function corsHeaders(origin) {
   };
 }
 
-function json(body, status, origin) {
+function json(body, status, origin, env) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
+    headers: { 'Content-Type': 'application/json', ...corsHeaders(origin, env) },
   });
 }
 
@@ -163,30 +201,34 @@ export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
     const path = new URL(request.url).pathname;
+    const reply = (body, status) => json(body, status, origin, env);
 
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders(origin) });
+      return new Response(null, { status: 204, headers: corsHeaders(origin, env) });
     }
 
-    /* The only GET on this Worker, and the only route that is not the
-       assistant. A service worker woken by a push asks what to say; the
-       notification text is fetched at the moment it is shown rather than
-       carried in the push, which is what lets the push itself be payload-less
-       and skips the entire RFC 8291 encryption path. See src/push.js.
+    /* The way out of the reminder emails, from the footer link and from the
+       List-Unsubscribe header. It must work with nobody signed in on a
+       device that has never seen this site, so it takes no Origin. A GET
+       shows a confirmation; only the POST deletes (src/email.js says why). */
+    if (path === '/api/unsubscribe' || path === '/reminders/unsubscribe') {
+      if (await throttled(env, request, 'unsub')) {
+        return new Response('Too many requests. Try again in a minute.', { status: 429, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Retry-After': '60' } });
+      }
+      return unsubscribe(request, env);
+    }
+
+    /* A service worker woken by a push asks what to say; the notification
+       text is fetched at the moment it is shown rather than carried in the
+       push, which is what lets the push itself be payload-less and skips the
+       entire RFC 8291 encryption path. See src/push.js.
 
        Answered for any origin, because the caller is a service worker whose
        fetch carries no Origin header at all — and because it returns only what
        somebody already holding that endpoint could learn anyway. */
-    /* The one-click way out of the reminder emails, from the footer link and
-       from the List-Unsubscribe header. A GET, because that is what a link in
-       an email is, and it must work with nobody signed in on a device that has
-       never seen this site. */
-    if (path === '/api/unsubscribe' || path === '/reminders/unsubscribe') {
-      return unsubscribe(request, env);
-    }
-
     if (path === '/reminders/text') {
-      if (request.method !== 'GET') return json({ error: 'GET only' }, 405, origin);
+      if (request.method !== 'GET') return reply({ error: 'GET only' }, 405);
+      if (await throttled(env, request, 'text')) return reply({ error: 'Rate limited' }, 429);
       const res = await reminderText(request, env);
       const headers = new Headers(res.headers);
       headers.set('Access-Control-Allow-Origin', '*');
@@ -197,59 +239,59 @@ export default {
        retries, and a burst of real orders is the good kind); the signature
        check inside is the whole of its trust. See src/premium.js. */
     if (path === '/premium/webhook') {
-      if (request.method !== 'POST') return json({ error: 'POST only' }, 405, origin);
+      if (request.method !== 'POST') return reply({ error: 'POST only' }, 405);
       const r = await premiumWebhook(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
     }
 
     if (request.method !== 'POST') {
-      return json({ error: 'POST only' }, 405, origin);
+      return reply({ error: 'POST only' }, 405);
     }
     // An allowed Origin is REQUIRED, not merely "not a wrong one". A browser
     // always sends Origin on a POST fetch, same-origin or cross-origin, so the
     // only callers this turns away are scripts (curl, a bot) — which used to
-    // walk straight through by leaving the header off, and then only the
-    // per-IP throttle below stood between them and the day's free allowance.
-    // A script can forge the header, but it now has to mean to, and the rate
-    // limit still applies to it.
-    if (!ALLOWED_ORIGINS.includes(origin)) {
-      return json({ error: 'Origin not allowed' }, 403, origin);
+    // walk straight through by leaving the header off. A script can forge the
+    // header, which is why the assistant also needs a session (below).
+    if (!allowedOrigins(env).includes(origin)) {
+      return reply({ error: 'Origin not allowed' }, 403);
     }
 
     // Per-visitor throttle, so one person (or one script) can't drain the
     // day's free allowance in a minute.
-    if (env.RATE_LIMITER) {
-      const ip = request.headers.get('CF-Connecting-IP') || 'anonymous';
-      const { success } = await env.RATE_LIMITER.limit({ key: ip });
-      if (!success) {
-        return json({ error: 'Rate limited. The site will answer from its own material instead.' }, 429, origin);
-      }
+    if (await throttled(env, request, 'post')) {
+      return reply({ error: 'Rate limited. The site will answer from its own material instead.' }, 429);
     }
 
     // Opening a checkout is a browser POST from the site like the assistant,
     // so it shares the Origin check and the throttle above, then leaves.
     if (path === '/premium/checkout') {
       const r = await premiumCheckout(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
     }
     // A refund from the account page: same Origin check and throttle; the
     // rules that keep it from being abused are in premiumRefund().
     if (path === '/premium/refund') {
       const r = await premiumRefund(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
     }
 
     // The NREMT pass guarantee; its rules are in premiumGuarantee().
     if (path === '/premium/guarantee') {
       const r = await premiumGuarantee(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
+    }
+
+    // The assistant: signed-in students only (see signedIn above). The site
+    // answers from its own material for everyone else.
+    if (!(await signedIn(env, request))) {
+      return reply({ error: 'Sign in to get AI answers.' }, 401);
     }
 
     let payload;
     try {
       payload = await request.json();
     } catch {
-      return json({ error: 'Invalid JSON' }, 400, origin);
+      return reply({ error: 'Invalid JSON' }, 400);
     }
 
     const question = String(payload?.question || '').trim().slice(0, 500);
@@ -257,7 +299,7 @@ export default {
     const history = Array.isArray(payload?.history) ? payload.history.slice(-4) : [];
     const course = payload?.course === 'ochem' || payload?.course === 'anp' ? payload.course : 'nremt';
 
-    if (!question) return json({ error: 'Missing question' }, 400, origin);
+    if (!question) return reply({ error: 'Missing question' }, 400);
 
     // An empty context is legitimate: the student asked something the course
     // doesn't cover. The model answers from general knowledge and is told to
@@ -289,7 +331,7 @@ export default {
       try {
         const result = await env.AI.run(model, { messages, max_tokens: 500, temperature: 0.2 });
         const answer = extractText(result);
-        if (answer) return json({ answer, model }, 200, origin);
+        if (answer) return reply({ answer, model }, 200);
         // Name the keys that did come back, so an unfamiliar response shape is
         // a five-second fix instead of another round of guessing.
         const shape = result && typeof result === 'object' ? Object.keys(result).join(',') : typeof result;
@@ -302,7 +344,10 @@ export default {
       }
     }
     // Every model failed: say so plainly and let the client fall back to the
-    // course's own material rather than pretend to have answered.
-    return json({ error: 'Model unavailable', detail: String(lastError).slice(0, 200) }, 502, origin);
+    // course's own material rather than pretend to have answered. The reason
+    // goes to the Worker's log, not to the browser: raw platform errors name
+    // models, accounts and limits nobody outside needs to see.
+    console.log('assistant: every model failed', String(lastError).slice(0, 300));
+    return reply({ error: 'Model unavailable' }, 502);
   },
 };

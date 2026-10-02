@@ -12,7 +12,7 @@
    table here, so this is the only way in — and the key never goes near a
    browser. */
 export function sb(env, path, init) {
-  return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {
+  return timedFetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {
     ...init,
     headers: {
       apikey: env.SUPABASE_SERVICE_KEY,
@@ -21,6 +21,18 @@ export function sb(env, path, init) {
       ...(init && init.headers),
     },
   });
+}
+
+/* Every outbound call has a deadline. Without one, a hung Polar, Resend or
+   push service held a request (or a whole cron tick) open until the platform
+   killed it, and the rows after it were never reached. */
+export const FETCH_TIMEOUT_MS = 10000;
+
+export function timedFetch(url, init = {}, ms = FETCH_TIMEOUT_MS) {
+  if (init.signal || typeof AbortSignal === 'undefined' || typeof AbortSignal.timeout !== 'function') {
+    return fetch(url, init);
+  }
+  return fetch(url, { ...init, signal: AbortSignal.timeout(ms) });
 }
 
 export async function sha256Hex(s) {
@@ -51,3 +63,22 @@ export const MAX_UNANSWERED = 3;
    trip to an email provider is not, so fewer of the latter fit in a tick. */
 export const PUSH_BATCH = 200;
 export const EMAIL_BATCH = 100;
+
+/* A row whose sends keep failing for reasons that are not about the whole
+   service (a timeout, a 5xx, a 429) is retried an hour later rather than on
+   the next tick, so it cannot sit at the front of the queue forever, and is
+   deleted after this many failures in a row. */
+export const MAX_FAILURES = 5;
+export const RETRY_AFTER_MS = 60 * 60 * 1000;
+
+/* The next daily send: the time this one was scheduled for plus a day, not
+   the time it happened to go out plus a day (which drifted up to fifteen
+   minutes later every day). A row that fell behind skips ahead whole days. */
+export const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+export function nextDailySend(scheduledIso, now) {
+  const at = Date.parse(scheduledIso);
+  if (!Number.isFinite(at)) return new Date(now + ONE_DAY_MS).toISOString();
+  let t = at + ONE_DAY_MS;
+  if (t <= now) t += Math.ceil((now - t + 1) / ONE_DAY_MS) * ONE_DAY_MS;
+  return new Date(t).toISOString();
+}
