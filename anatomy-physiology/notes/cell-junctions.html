@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cell junctions: Notes | Anatomy &amp; Physiology</title>
+<title>Cell junctions — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="Rub the back of your hand hard. The skin cells there are pushed and pulled, yet they do not slide apart. Now think of the lining of your urinary bladder.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/cell-junctions.html">
-<meta property="og:title" content="Cell junctions: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Cell junctions — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="Rub the back of your hand hard. The skin cells there are pushed and pulled, yet they do not slide apart. Now think of the lining of your urinary bladder.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/cell-junctions.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="cell-junctions">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 3 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cells.html">Cells</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cell junctions: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cell-junctions.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 17 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 17 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Cell junctions</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">8 min read</span><span class="anp-tb-chip" data-chip-topic="cell-junctions">Not practiced</span></p>
     </header>
@@ -120,7 +121,7 @@
 <li><strong>Gap junctions</strong> connect the <a class="gl" href="../notes/plasma-membrane.html" data-c="cell-parts">cytoplasm</a> of neighboring cells so small substances pass between them.</li>
 </ul>
 <p><a class="figref" href="#fig-os-4-5">Figure 1</a> shows each one up close.</p>
-<figure id="fig-os-4-5"  class="anp-figure"><div class="anp-figimg" data-fig="os-4-5"><img src="../figures/os-4-5.jpg" alt="Close-up drawings of the membranes of two neighboring cells joined in different ways: a tight junction, where strands of protein stitch the two membranes together; a gap junction, where paired protein tubes connect the two cells' interiors; and anchoring junctions, including a desmosome with dense plaques on each side linked across the gap by adhesion proteins and anchored inside to rope-like filaments." width="1100" height="1284" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:2.27%;top:60.28%;width:10.27%;height:5.06%"></span><span class="anp-cover" aria-hidden="true" style="left:2.36%;top:92.60%;width:5.91%;height:3.19%"></span></div><figcaption><b>Figure 1.</b> Types of cell junction: a tight junction, a gap junction, and anchoring junctions, including the desmosome. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 4.5, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-4-5"  class="anp-figure"><div class="anp-figimg" data-fig="os-4-5"><picture><source type="image/avif" srcset="../figures/avif/os-4-5-480.avif 480w, ../figures/avif/os-4-5-800.avif 800w, ../figures/avif/os-4-5.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-4-5.jpg" alt="Close-up drawings of the membranes of two neighboring cells joined in different ways: a tight junction, where strands of protein stitch the two membranes together; a gap junction, where paired protein tubes connect the two cells' interiors; and anchoring junctions, including a desmosome with dense plaques on each side linked across the gap by adhesion proteins and anchored inside to rope-like filaments." width="1100" height="1284" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:2.27%;top:60.28%;width:10.27%;height:5.06%"></span><span class="anp-cover" aria-hidden="true" style="left:2.36%;top:92.60%;width:5.91%;height:3.19%"></span></div><figcaption><b>Figure 1.</b> Types of cell junction: a tight junction, a gap junction, and anchoring junctions, including the desmosome. <span class="anp-credit">Figure 4.5 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/4-2-epithelial-tissue">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 
 <h2 id="tight-junctions-the-seal">Tight junctions: the seal</h2>
 <p>A <strong>tight junction</strong> is a continuous seam where the plasma membranes of two neighboring cells are pressed together and stitched shut. Rows of integral <a class="gl" href="../notes/biomolecules.html" data-c="protein">proteins</a> in one membrane (claudins and occludin) bind to matching rows in the other membrane, like the interlocking ridges of a zipper-seal bag. The band runs all the way around each cell, near the surface that faces the inside of a tube or a hollow <a class="gl" href="../notes/body-organization.html" data-c="organ">organ</a>.</p>
@@ -190,7 +191,7 @@
 <figcaption><b>Figure 2.</b> The usual arrangement in a lining: a tight junction seals the top, desmosomes rivet the cells lower down, and gap junctions connect their interiors.</figcaption></figure>
 
 <h2 id="comparing-the-three">Comparing the three</h2>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Tight junction</th><th>Desmosome</th><th>Gap junction</th></tr></thead>
 <tbody>
 <tr><td>Main job</td><td>Seals the space between cells</td><td>Holds cells together against pulling</td><td>Lets ions and small molecules pass from cell to cell</td></tr>
@@ -217,13 +218,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:cell-junctions">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="organelles.html"><span>&larr; Topic 16</span><b>Organelles and the cytoskeleton</b></a><a class="tb-chapter-link next" href="passive-transport.html"><span>Topic 18 &rarr;</span><b>Passive transport across membranes</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

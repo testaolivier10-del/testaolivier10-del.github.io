@@ -420,7 +420,7 @@
       "structure-function"
     ],
     "misconception": "osteoporotic bone is soft or poorly mineralized",
-    "q": "Mrs. Okafor, 81, has osteoporosis. A sample of her hip bone is examined. Compared with a healthy 30-year-old's bone, which finding is expected?",
+    "q": "Mrs. Begay, 81, has osteoporosis. A sample of her hip bone is examined. Compared with a healthy 30-year-old's bone, which finding is expected?",
     "options": [
       "The bone present is soft because it lacks mineral",
       "The bone is dense but brittle from faulty collagen",
@@ -452,23 +452,22 @@
       "Regular weight-bearing exercise",
       "Smoking",
       "A low peak bone mass in young adulthood",
-      "Being female",
+      "A higher body weight",
       "Adequate calcium and vitamin D"
     ],
     "correct": [
       0,
       2,
-      3,
-      4
+      3
     ],
     "why": {
-      "correct": "Anything that lowers peak bone mass or tips remodeling toward resorption raises the risk: long-term steroid medicines, smoking, a low peak and female sex (a lower peak and faster loss after the reproductive years).",
+      "correct": "Anything that lowers peak bone mass or tips remodeling toward resorption raises the risk: long-term steroid medicines, smoking and a low peak. Weight-bearing exercise, a higher body weight and enough calcium and vitamin D all protect bone.",
       "options": [
         "Correct. Long-term steroid medicines slow bone formation.",
         "Weight-bearing exercise loads bone and, through Wolff's law, protects it.",
         "Correct. Smoking lowers bone mass and slows fracture healing.",
         "Correct. A low peak leaves less bone to lose before it becomes fragile.",
-        "Correct. Women reach a lower peak and lose bone fast for several years at the end of their reproductive years.",
+        "A heavier body loads the skeleton more and goes with higher bone density. Low body weight is the risk factor.",
         "Enough calcium and vitamin D supports bone formation and is part of prevention."
       ]
     }

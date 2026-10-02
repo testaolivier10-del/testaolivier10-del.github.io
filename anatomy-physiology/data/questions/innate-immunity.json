@@ -91,7 +91,7 @@
     ],
     "correct": 1,
     "why": {
-      "correct": "Once pyrogens are cleared, prostaglandin E2 falls and the set point returns to about 36.6 °C. Body temperature is now above the set point, so the hypothalamus dilates skin vessels and triggers sweating, and temperature falls until the two match again.",
+      "correct": "Once pyrogens are cleared, prostaglandin E2 falls and the set point returns to its normal value (36.6 °C on this graph; normal is often rounded to 37 °C). Body temperature is now above the set point, so the hypothalamus dilates skin vessels and triggers sweating, and temperature falls until the two match again.",
       "options": [
         "Control is working normally throughout: body temperature follows the set point up and then down, as negative feedback should.",
         "Correct. Temperature is above the new, lower set point, so the body actively loses heat.",
@@ -205,7 +205,7 @@
     "q": "Select every effect of complement activation.",
     "options": [
       "Coating microbes so phagocytes engulf them more easily",
-      "Making mast cells release histamine",
+      "Making antibodies against the microbe",
       "Attracting neutrophils to the site",
       "Punching pores in microbial membranes",
       "Raising the hypothalamic set point directly",
@@ -213,7 +213,6 @@
     ],
     "correct": [
       0,
-      1,
       2,
       3
     ],
@@ -221,7 +220,7 @@
       "correct": "Complement opsonizes microbes (C3b), promotes inflammation and attracts neutrophils (C3a and C5a), and bursts microbes with the membrane attack complex. Fever and antiviral protection come from cytokines and interferons.",
       "options": [
         "Correct. This is opsonization by C3b.",
-        "Correct. C3a and C5a trigger mast cells to release histamine.",
+        "Complement proteins are made by the liver and circulate ready-made. They do not make antibodies.",
         "Correct. C5a is a strong attractant for neutrophils.",
         "Correct. The membrane attack complex forms a pore and the cell bursts.",
         "The set point is raised by pyrogens such as interleukin-1 acting through prostaglandin E2, not by complement.",
@@ -498,6 +497,11 @@
         "name": "C-reactive protein in the blood",
         "answer": "up",
         "why": "Cytokines reaching the liver make it release C-reactive protein and other proteins of inflammation into the blood."
+      },
+      {
+        "name": "Red blood cell count over the next day",
+        "answer": "none",
+        "why": "Red cells live about 120 days, and a day of local infection does not change their number."
       }
     ],
     "why": {

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inheritance: Notes | Anatomy &amp; Physiology</title>
+<title>Inheritance — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="Why can two parents with normal clotting have a son with hemophilia, and why can a child have a blood type neither parent has?">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/inheritance.html">
-<meta property="og:title" content="Inheritance: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Inheritance — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="Why can two parents with normal clotting have a son with hemophilia, and why can a child have a blood type neither parent has?">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/inheritance.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="inheritance">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 27 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/development.html">Development and inheritance</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Inheritance: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/inheritance.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 27 &middot; Topic 161 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 27 &middot; Topic 161 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Inheritance</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="inheritance">Not practiced</span></p>
     </header>
@@ -142,7 +143,7 @@
 <h2 id="segregation-and-the-punnett-square">Segregation and the Punnett square</h2>
 <p>In the 1860s, the monk Gregor Mendel crossed pea plants and counted their offspring. He concluded that each plant carries two "factors" for a trait, which separate when it makes its sex cells. Meiosis explains his result. In <a class="gl" href="../notes/cell-cycle.html" data-c="mitosis">anaphase</a> I, homologous chromosomes are pulled to opposite ends of the cell, so the two alleles of each gene end up in different gametes. This is the <em>law of segregation</em>: each gamete carries only one allele of each gene, and each of a parent's two alleles has an equal, 1 in 2, chance of going into any one gamete. Inheritance of a trait that depends on one gene with this dominant and recessive behavior is called <em>Mendelian inheritance</em>.</p>
 <p>A <em>Punnett square</em>, named after the geneticist Reginald Punnett, is a grid that lists all the equally likely combinations of one parent's gametes with the other's. Write one parent's two possible gametes across the top and the other's down the side, and fill each box with the allele from its column plus the allele from its row. Each of the four boxes has a 1 in 4 chance. <a class="figref" href="#fig-segregation">Figure 1</a> follows a cross over two generations.</p>
-<figure id="fig-segregation"  class="anp-figure"><div class="anp-figimg" data-fig="os-28-25"><img src="../figures/os-28-25.jpg" alt="Two Punnett squares, one above the other. Top, labeled generation 1 cross: AA crossed with aa. The AA parent's A alleles run down the side and the aa parent's a alleles across the top; all four boxes read Aa, and an arrow leads to the note that all offspring in generation 2 are Aa, showing the dominant phenotype. Bottom, labeled generation 2 cross: Aa crossed with Aa, with A and a down the side and across the top. The boxes read AA, Aa, Aa and aa, and an arrow leads to the note that in generation 3, 75% are AA or Aa, showing the dominant phenotype, and 25% are aa, showing the recessive phenotype." width="1100" height="923" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Segregation over two generations. Top: a parent homozygous for a dominant allele (AA) and one homozygous recessive (aa) can only have heterozygous (Aa) children. Bottom: two heterozygotes give AA, Aa, Aa and aa in equal boxes, so 3 in 4 children show the dominant phenotype and 1 in 4 the recessive one. The figure's "(dominant)" and "recessive" describe the phenotype. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 28.25, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-7-patterns-of-inheritance">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-segregation"  class="anp-figure"><div class="anp-figimg" data-fig="os-28-25"><picture><source type="image/avif" srcset="../figures/avif/os-28-25-480.avif 480w, ../figures/avif/os-28-25-800.avif 800w, ../figures/avif/os-28-25.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-28-25.jpg" alt="Two Punnett squares, one above the other. Top, labeled generation 1 cross: AA crossed with aa. The AA parent's A alleles run down the side and the aa parent's a alleles across the top; all four boxes read Aa, and an arrow leads to the note that all offspring in generation 2 are Aa, showing the dominant phenotype. Bottom, labeled generation 2 cross: Aa crossed with Aa, with A and a down the side and across the top. The boxes read AA, Aa, Aa and aa, and an arrow leads to the note that in generation 3, 75% are AA or Aa, showing the dominant phenotype, and 25% are aa, showing the recessive phenotype." width="1100" height="923" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> Segregation over two generations. Top: a parent homozygous for a dominant allele (AA) and one homozygous recessive (aa) can only have heterozygous (Aa) children. Bottom: two heterozygotes give AA, Aa, Aa and aa in equal boxes, so 3 in 4 children show the dominant phenotype and 1 in 4 the recessive one. The figure's "(dominant)" and "recessive" describe the phenotype. <span class="anp-credit">Figure 28.25 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-7-patterns-of-inheritance">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <div class="worked">
 <h3>Worked example 1: two carriers of cystic fibrosis</h3>
 <p><strong>Problem.</strong> Both parents are healthy carriers of cystic fibrosis. Call the working allele C and the disease allele c. What is the chance that their next child has cystic fibrosis, and that a healthy child is a carrier?</p>
@@ -230,7 +231,7 @@
 <h3>X-linked dominant</h3>
 <p>An <em>X-linked dominant</em> allele shows in anyone with one copy, male or female. These conditions are rare; one example is a form of <a class="gl" href="../notes/skin-functions.html" data-c="vitamin-d-activation">rickets</a> in which the kidneys waste phosphate. The pattern has a signature: an affected father passes the condition to all his daughters and none of his sons, and an affected heterozygous mother passes it to half her children of either sex. Some X-linked dominant alleles are so damaging to males, who have no second X, that affected families contain mostly females.</p>
 <aside class="going-further"><p>Going further: in every cell of an early female embryo, one of the two X chromosomes is packed into dense, silent chromatin, chosen at random, and that choice is kept by all the cell's descendants. A female is therefore a mosaic of patches that use her mother's X and patches that use her father's. That is why some carriers of X-linked recessive disorders have mild symptoms: by chance, more of their cells silenced the X with the working allele.</p></aside>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Autosomal dominant</th><th>Autosomal recessive</th><th>Codominant</th><th>X-linked recessive</th></tr></thead>
 <tbody>
 <tr><th>Copies needed to show the phenotype</th><td>One</td><td>Two</td><td>Each allele shows whenever present</td><td>One in males; two in females</td></tr>
@@ -265,13 +266,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:inheritance">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="postnatal-lactation.html"><span>&larr; Topic 160</span><b>Newborn adjustments and lactation</b></a><a class="tb-chapter-link next" href="aging.html"><span>Topic 162 &rarr;</span><b>Aging across the body</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

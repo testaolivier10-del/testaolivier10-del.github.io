@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A&amp;P notes: Blood flow through the heart and the two circuits</title>
+<title>Blood flow through the heart and the two… — A&amp;P Notes</title>
 <meta name="description" content="Blood flow through the heart, step by step, is one continuous loop with two halves.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/blood-flow-heart.html">
-<meta property="og:title" content="A&amp;P notes: Blood flow through the heart and the two circuits">
+<meta property="og:title" content="Blood flow through the heart and the two… — A&amp;P Notes">
 <meta property="og:description" content="Blood flow through the heart, step by step, is one continuous loop with two halves.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/blood-flow-heart.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="blood-flow-heart">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 19 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cardiovascular.html">The cardiovascular system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Blood flow through the heart and the two circuits: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/blood-flow-heart.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 97 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 97 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Blood flow through the heart and the two circuits</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/gradients.html">Flow down gradients</a><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">14 min read</span><span class="anp-tb-chip" data-chip-topic="blood-flow-heart">Not practiced</span></p>
     </header>
@@ -182,7 +183,7 @@
 <h3>Why "in series" matters</h3>
 <p>The two circuits are connected in series: the output of one is the input of the other. Every drop of blood that leaves the left ventricle must pass through the body, then the right heart, then the lungs, before it can reach the left ventricle again. Because of that, both ventricles must pump the same volume of blood per minute. If the right ventricle pumped even slightly more than the left each beat, blood would pile up in the lungs within minutes.</p>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
   <thead><tr><th></th><th>Pulmonary circuit</th><th>Systemic circuit</th></tr></thead>
   <tbody>
     <tr><th>Pump</th><td>Right ventricle</td><td>Left ventricle</td></tr>
@@ -200,7 +201,7 @@
 
 <h2 id="the-path-of-blood-through-the">The path of blood through the heart</h2>
 <p>Now put the chambers, great vessels and valves from the last two topics in order. Start with blood returning from your body, and trace each step on <a class="figref" href="#fig-dual-circulation">Figure 2</a>.</p>
-<figure id="fig-dual-circulation"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-4"><img src="../figures/os-19-4.jpg" alt="Two drawings of the circulation. Above, the heart with its large vessels: vessels carrying oxygen-poor blood shown in blue and vessels carrying oxygen-rich blood shown in red. Below, a loop diagram: the right side of the heart sends blood through a small loop to the capillaries of the lungs and back to the left side, which sends it through a larger loop to the capillaries of the body and back to the right side." width="1100" height="1214" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> The same route drawn on the heart and body. Vessels carrying deoxygenated blood are blue and vessels carrying oxygenated blood are red. Notice that the pulmonary arteries are blue and the pulmonary veins are red. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.4, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-dual-circulation"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-4"><picture><source type="image/avif" srcset="../figures/avif/os-19-4-480.avif 480w, ../figures/avif/os-19-4-800.avif 800w, ../figures/avif/os-19-4.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-4.jpg" alt="Two drawings of the circulation. Above, the heart with its large vessels: vessels carrying oxygen-poor blood shown in blue and vessels carrying oxygen-rich blood shown in red. Below, a loop diagram: the right side of the heart sends blood through a small loop to the capillaries of the lungs and back to the left side, which sends it through a larger loop to the capillaries of the body and back to the right side." width="1100" height="1214" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> The same route drawn on the heart and body. Vessels carrying deoxygenated blood are blue and vessels carrying oxygenated blood are red. Notice that the pulmonary arteries are blue and the pulmonary veins are red. <span class="anp-credit">Figure 19.4 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <ol>
   <li>Deoxygenated blood from the body enters the <strong>right atrium</strong> through the superior and inferior venae cavae. Blood from the heart's own wall enters too, through the <span class="gl" tabindex="0" data-c="coronary-circulation">coronary sinus</span> (below).</li>
   <li>It passes through the <strong><a class="gl" href="../notes/heart-chambers-valves.html" data-c="av-valves">tricuspid valve</a></strong> into the <strong>right ventricle</strong>.</li>
@@ -233,7 +234,7 @@
 <h2 id="the-heart-s-own-blood-supply">The heart's own blood supply</h2>
 <p>The blood rushing through your heart's chambers does not feed its muscle. The myocardium is too thick for oxygen to diffuse in from the chambers, except for a thin inner layer next to the <a class="gl" href="../notes/heart-anatomy.html" data-c="heart-wall">endocardium</a>. Instead, the heart has its own set of vessels on its surface: the <strong>coronary circulation</strong> (coron- = crown, for the way the vessels circle the heart). <a class="figref" href="#fig-coronary">Figure 3</a> shows them.</p>
 
-<figure id="fig-coronary"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-15"><img src="../figures/os-19-15.jpg" alt="Front and back views of the heart showing its own blood vessels. Red arteries branch from the base of the aorta: one runs down the front groove toward the tip, one curves around the left side in the groove between upper and lower chambers, and one runs around the right side and down the back. Blue veins run beside them and gather into a wide vein in the groove on the back of the heart that empties into the right upper chamber." width="1100" height="1010" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> The coronary arteries and cardiac veins, from the front and the back. Most run in the fat-filled grooves between the chambers. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.15, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-coronary"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-15"><picture><source type="image/avif" srcset="../figures/avif/os-19-15-480.avif 480w, ../figures/avif/os-19-15-800.avif 800w, ../figures/avif/os-19-15.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-15.jpg" alt="Front and back views of the heart showing its own blood vessels. Red arteries branch from the base of the aorta: one runs down the front groove toward the tip, one curves around the left side in the groove between upper and lower chambers, and one runs around the right side and down the back. Blue veins run beside them and gather into a wide vein in the groove on the back of the heart that empties into the right upper chamber." width="1100" height="1010" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> The coronary arteries and cardiac veins, from the front and the back. Most run in the fat-filled grooves between the chambers. <span class="anp-credit">Figure 19.15 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h3>Coronary arteries</h3>
 <p>The two <strong>coronary arteries</strong> are the first branches of the aorta. They leave it just above the aortic valve.</p>
@@ -274,7 +275,7 @@
 <p><strong>Angina</strong> (angina pectoris; angina = strangling, pectoris = of the chest) is chest pain from ischemia that reverses. A typical example: a narrowed artery supplies enough blood at rest, but not during exercise, so pain comes on climbing stairs and fades within minutes of resting.</p>
 <p>A <strong>myocardial infarction</strong> (MI), the common "<strong>heart attack</strong>," is death of heart muscle caused by prolonged ischemia (infarct = stuffed in). It usually starts when a fatty plaque cracks and a <a class="gl" href="../notes/connective-tissue.html" data-c="clot-basic">blood clot</a> forms on it, suddenly blocking the artery. The dead muscle fibers cannot regenerate; they are replaced over weeks by <a class="gl" href="../notes/tissue-membranes-repair.html" data-c="tissue-repair">scar tissue</a>, which does not contract. Dying fibers release their contents, including the regulatory <a class="gl" href="../notes/biomolecules.html" data-c="protein">protein</a> <a class="gl" href="../notes/skeletal-muscle-structure.html" data-c="thin-filament">troponin</a>, into the blood, and a rise in blood troponin is the main lab test for an MI. Because muscle dies steadily while the artery stays blocked, clinicians say "time is muscle": the sooner flow is restored, the more muscle survives.</p>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
   <thead><tr><th></th><th>Angina</th><th>Myocardial infarction</th></tr></thead>
   <tbody>
     <tr><th>What happens to the muscle</th><td>Ischemia that reverses</td><td>Ischemia long enough to kill muscle</td></tr>
@@ -296,13 +297,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:blood-flow-heart">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="heart-chambers-valves.html"><span>&larr; Topic 96</span><b>Heart valves, septa and internal structure</b></a><a class="tb-chapter-link next" href="cardiac-muscle-ap.html"><span>Topic 98 &rarr;</span><b>Cardiac muscle cells and their action potential</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

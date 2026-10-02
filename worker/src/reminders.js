@@ -22,7 +22,9 @@
      wrangler secret put SUPABASE_SERVICE_KEY
 */
 import { sendPush } from './push.js';
-import { sb, sha256Hex, MAX_UNANSWERED, PUSH_BATCH } from './store.js';
+import { sb, sha256Hex, MAX_UNANSWERED, PUSH_BATCH, nextDailySend } from './store.js';
+import { recordFailure } from './email.js';
+import { sitePath } from './config.js';
 
 /* The words for one notification, fetched by the service worker when it wakes.
 
@@ -45,61 +47,71 @@ export async function reminderText(request, env) {
   // The alternative is a notification that says "undefined", or a push the
   // service worker cannot answer — and a service worker that receives a push
   // and shows nothing is, on most platforms, a permission the browser revokes.
-  return new Response(JSON.stringify(row || {
+  const out = row ? { title: row.title, body: row.body, url: sitePath(row.url) } : {
     title: 'Time to study',
     body: 'Pick up where you left off.',
     url: '/',
-  }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
+  };
+  return new Response(JSON.stringify(out), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 }
 
 /* The cron. Runs on whatever schedule wrangler.toml declares. */
-export async function runReminders(env) {
+export async function runReminders(env, now = Date.now()) {
   if (!env.SUPABASE_SERVICE_KEY || !env.VAPID_PRIVATE_KEY) {
     // Not configured is not an error: the site works without reminders, and a
     // half-configured cron that throws every fifteen minutes is noise.
     return { skipped: 'not configured' };
   }
 
-  const now = new Date().toISOString();
   const res = await sb(
     env,
-    `push_subscriptions?next_send_at=lte.${now}&next_send_at=not.is.null` +
-      `&select=id,endpoint,p256dh,auth,unanswered&order=next_send_at.asc&limit=${PUSH_BATCH}`,
+    `push_subscriptions?next_send_at=lte.${new Date(now).toISOString()}&next_send_at=not.is.null` +
+      `&select=*&order=next_send_at.asc&limit=${PUSH_BATCH}`,
     { method: 'GET' }
   );
   if (!res.ok) return { error: `read failed: ${res.status}` };
 
   const due = await res.json();
-  let sent = 0, dropped = 0, stopped = 0, failed = 0;
+  let sent = 0, dropped = 0, stopped = 0, failed = 0, config = null;
 
   for (const row of due) {
+    const where = `push_subscriptions?id=eq.${encodeURIComponent(row.id)}`;
     let result;
     try {
       result = await sendPush(row, env);
     } catch (e) {
-      failed++;
-      continue;
+      result = { ok: false, status: 0, gone: false };
     }
 
     if (result.gone) {
       // The endpoint is dead: profile deleted, permission revoked, or expired.
       // Delete rather than retry — a push service asked repeatedly to deliver
       // to dead endpoints starts rate-limiting the live ones.
-      await sb(env, `push_subscriptions?id=eq.${row.id}`, { method: 'DELETE' });
+      await sb(env, where, { method: 'DELETE' });
       dropped++;
       continue;
     }
 
+    if (result.config) {
+      // Our VAPID key or JWT is wrong: every row would fail the same way, so
+      // stop and touch nothing rather than count failures against them all.
+      config = result.status || result.error || 'vapid';
+      console.log('push reminders: refused for our own credentials', String(config));
+      break;
+    }
+
     if (!result.ok) {
-      // A transient failure keeps its slot: next_send_at is untouched, so the
-      // next tick tries again. It does NOT count as unanswered, because
+      // A transient failure: retried in an hour, and after MAX_FAILURES in a
+      // row the row is dropped. It does NOT count as unanswered, because
       // nothing reached anybody.
       failed++;
+      await recordFailure(env, where, row, now);
       continue;
     }
 
     const unanswered = (row.unanswered || 0) + 1;
-    const patch = { unanswered, last_sent_at: new Date().toISOString() };
+    const patch = { unanswered, last_sent_at: new Date(now).toISOString() };
+    if ('failures' in row) patch.failures = 0;
 
     if (unanswered >= MAX_UNANSWERED) {
       // Silence, until the browser writes a row again — which only happens
@@ -107,12 +119,12 @@ export async function runReminders(env) {
       patch.next_send_at = null;
       stopped++;
     } else {
-      // Same time tomorrow. Adding 24 hours to the time that just fired keeps
-      // the student's chosen hour without this having to know what it was.
-      patch.next_send_at = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+      // Same time tomorrow: the time it was scheduled for plus a day, so the
+      // student's chosen hour does not drift with the cron.
+      patch.next_send_at = nextDailySend(row.next_send_at, now);
     }
 
-    await sb(env, `push_subscriptions?id=eq.${row.id}`, {
+    await sb(env, where, {
       method: 'PATCH',
       headers: { Prefer: 'return=minimal' },
       body: JSON.stringify(patch),
@@ -120,5 +132,5 @@ export async function runReminders(env) {
     sent++;
   }
 
-  return { due: due.length, sent, dropped, stopped, failed };
+  return { due: due.length, sent, dropped, stopped, failed, ...(config ? { config } : {}) };
 }

@@ -29,6 +29,7 @@
    VAPID_PRIVATE_KEY  `wrangler secret put VAPID_PRIVATE_KEY`
    VAPID_SUBJECT      a mailto: or https: URL identifying the sender
 */
+import { timedFetch } from './store.js';
 
 /* ---- base64url ---------------------------------------------------------- */
 
@@ -107,10 +108,10 @@ export async function sendPush(subscription, env) {
     jwt = await vapidJwt(audience, env.VAPID_SUBJECT || 'mailto:hello@levlprep.com',
                          env.VAPID_PUBLIC_KEY, env.VAPID_PRIVATE_KEY);
   } catch (e) {
-    return { ok: false, status: 0, gone: false, error: 'VAPID key problem: ' + e.message };
+    return { ok: false, status: 0, gone: false, config: true, error: 'VAPID key problem: ' + e.message };
   }
 
-  const res = await fetch(subscription.endpoint, {
+  const res = await timedFetch(subscription.endpoint, {
     method: 'POST',
     headers: {
       // No body, so no Content-Encoding and no Content-Type. A push service
@@ -127,5 +128,9 @@ export async function sendPush(subscription, env) {
     ok: res.ok,
     status: res.status,
     gone: res.status === 404 || res.status === 410,
+    // A 401/403 is not treated as "our key is wrong" for everyone: FCM also
+    // answers 403 for one subscription made under an older VAPID key. It
+    // counts as that row's failure, and the row goes after MAX_FAILURES.
+    // Only a key that will not even import (above) stops the whole run.
   };
 }

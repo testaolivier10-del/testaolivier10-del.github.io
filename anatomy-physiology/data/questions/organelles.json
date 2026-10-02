@@ -430,6 +430,11 @@
         "name": "Amount of undigested material stored inside the cell",
         "answer": "up",
         "why": "Material keeps arriving at lysosomes but is no longer broken down, so it builds up."
+      },
+      {
+        "name": "Thickness of the plasma membrane",
+        "answer": "none",
+        "why": "The drug acts inside the lysosomes. The plasma membrane's bilayer keeps its usual thickness."
       }
     ],
     "why": {

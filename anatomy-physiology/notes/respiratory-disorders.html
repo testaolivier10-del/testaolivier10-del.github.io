@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Respiratory disorders: Notes | Anatomy &amp; Physiology</title>
-<meta name="description" content="If you know what normally happens, you can work out what goes wrong. Every breath depends on four steps, and every lung disorder damages at least one of them:">
+<title>Respiratory disorders — A&amp;P Notes | LevlPrep</title>
+<meta name="description" content="Respiratory disorders worked out from normal breathing: the four ways a lung can fail, COPD, pulmonary edema and respiratory infections.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html">
-<meta property="og:title" content="Respiratory disorders: Notes | Anatomy &amp; Physiology">
-<meta property="og:description" content="If you know what normally happens, you can work out what goes wrong. Every breath depends on four steps, and every lung disorder damages at least one of them:">
+<meta property="og:title" content="Respiratory disorders — A&amp;P Notes | LevlPrep">
+<meta property="og:description" content="Respiratory disorders worked out from normal breathing: the four ways a lung can fail, COPD, pulmonary edema and respiratory infections.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -40,7 +41,7 @@
       "@id": "https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html#reading",
       "name": "Respiratory disorders",
       "url": "https://levlprep.com/anatomy-physiology/notes/respiratory-disorders.html",
-      "description": "If you know what normally happens, you can work out what goes wrong. Every breath depends on four steps, and every lung disorder damages at least one of them:",
+      "description": "Respiratory disorders worked out from normal breathing: the four ways a lung can fail, COPD, pulmonary edema and respiratory infections.",
       "learningResourceType": "Reading",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="respiratory-disorders">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 21 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/respiratory.html">The respiratory system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Respiratory disorders: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/respiratory-disorders.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 21 &middot; Topic 125 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 21 &middot; Topic 125 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Respiratory disorders</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/interdependence.html">Interdependence of systems</a><span class="anp-small">15 min read</span><span class="anp-tb-chip" data-chip-topic="respiratory-disorders">Not practiced</span></p>
     </header>
@@ -139,7 +140,7 @@
 
 <h3>Emphysema</h3>
 <p><em>Emphysema</em> (em- = in, physa- = to blow: "inflated") is the destruction of alveolar walls, so that many small alveoli merge into fewer, larger air spaces. <a class="figref" href="#fig-os-22-10">Figure 1</a> shows the healthy structures it destroys: grape-like clusters of alveoli around alveolar ducts, each wrapped in <a class="gl" href="../notes/body-organization.html" data-c="blood-vessel-basics">capillaries</a>, at the end of the smallest <a class="gl" href="../notes/lower-airway-lungs.html" data-c="bronchial-tree">bronchioles</a>.</p>
-<figure id="fig-os-22-10"  class="anp-figure"><div class="anp-figimg" data-fig="os-22-10"><img src="../figures/os-22-10.jpg" alt="A small airway wrapped in spiral bands of smooth muscle branches into smaller airways, the first of which have a few air sacs budding from their walls. These lead through short passages into grape-like clusters of air sacs, some cut open to show holes linking neighbors. A net of small blood vessels, blue where they arrive and red where they leave, covers one cluster." width="1100" height="840" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The respiratory zone of a healthy lung: respiratory bronchioles, alveolar ducts and alveolar sacs, with the capillary network that covers the alveoli. In emphysema the walls between these alveoli break down; in pneumonia and pulmonary edema they fill with fluid. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 22.10, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-22-10"  class="anp-figure"><div class="anp-figimg" data-fig="os-22-10"><picture><source type="image/avif" srcset="../figures/avif/os-22-10-480.avif 480w, ../figures/avif/os-22-10-800.avif 800w, ../figures/avif/os-22-10.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-22-10.jpg" alt="A small airway wrapped in spiral bands of smooth muscle branches into smaller airways, the first of which have a few air sacs budding from their walls. These lead through short passages into grape-like clusters of air sacs, some cut open to show holes linking neighbors. A net of small blood vessels, blue where they arrive and red where they leave, covers one cluster." width="1100" height="840" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The respiratory zone of a healthy lung: respiratory bronchioles, alveolar ducts and alveolar sacs, with the capillary network that covers the alveoli. In emphysema the walls between these alveoli break down; in pneumonia and pulmonary edema they fill with fluid. <span class="anp-credit">Figure 22.10 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Emphysema develops like this (<a class="figref" href="#fig-emphysema">Figure 2</a>):</p>
 <ol>
 <li>Smoke irritates the lungs and draws in <a class="gl" href="../notes/leukocytes-platelets.html" data-c="granulocytes">neutrophils</a> and activates alveolar <a class="gl" href="../notes/connective-tissue.html" data-c="macrophage-basic">macrophages</a>. This is <a class="gl" href="../notes/innate-immunity.html" data-c="inflammation">chronic inflammation</a>.</li>
@@ -183,7 +184,7 @@
 <li><strong>Loss of elastic recoil, and collapsing airways.</strong> Elastic fibers in the alveolar walls do two jobs. Their recoil pushes air out when you breathe out, and they are attached to the outside of the smallest airways, which have no <a class="gl" href="../notes/connective-tissue.html" data-c="cartilage">cartilage</a>, pulling them open like guy ropes on a tent. When the fibers are destroyed, recoil weakens, and during <a class="gl" href="../notes/ventilation-mechanics.html" data-c="expiration">expiration</a> the pressure around the small airways squeezes them shut. Air is trapped behind them.</li>
 </ul>
 <p>Trapped air has consequences you can predict from the lung volumes in <a class="figref" href="#fig-os-22-18">Figure 3</a>. <a class="gl" href="../notes/lung-volumes.html" data-c="lung-volumes">Residual volume</a> and functional residual capacity rise, the lungs are overinflated (hyperinflated), and total lung capacity can rise too. The chest becomes rounder (a "barrel chest") and the <a class="gl" href="../notes/body-cavities.html" data-c="diaphragm">diaphragm</a> is pushed flat, which makes it a weaker muscle. <a class="gl" href="../notes/ventilation-mechanics.html" data-c="compliance-surfactant">Lung compliance</a> rises, because there is less elastic tissue to stretch.</p>
-<figure id="fig-os-22-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-22-18"><img src="../figures/os-22-18.jpg" alt="Two panels on a vertical scale from 0 to 6,000 milliliters. The left panel is a spirogram: a trace of lung volume over time shows small, regular breaths between about 2,500 and 2,900 mL, one deepest possible breath in to 6,000 mL, and one fullest possible breath out to about 1,200 mL. Colored bands behind the trace mark the four volumes: residual volume from 0 to about 1,200 mL, expiratory reserve volume up to about 2,500 mL, tidal volume up to about 2,900 mL, and inspiratory reserve volume up to 6,000 mL. The right panel shows the capacities as bars built from those volumes: inspiratory capacity above functional residual capacity; vital capacity above residual volume; and total lung capacity spanning the whole scale." width="1100" height="443" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> Normal lung volumes and capacities. In emphysema, trapped air enlarges the residual volume band at the bottom of the scale, and with it the functional residual capacity, while the vital capacity above it shrinks. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 22.18, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/22-3-the-process-of-breathing">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-22-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-22-18"><picture><source type="image/avif" srcset="../figures/avif/os-22-18-480.avif 480w, ../figures/avif/os-22-18-800.avif 800w, ../figures/avif/os-22-18.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-22-18.jpg" alt="Two panels on a vertical scale from 0 to 6,000 milliliters. The left panel is a spirogram: a trace of lung volume over time shows small, regular breaths between about 2,500 and 2,900 mL, one deepest possible breath in to 6,000 mL, and one fullest possible breath out to about 1,200 mL. Colored bands behind the trace mark the four volumes: residual volume from 0 to about 1,200 mL, expiratory reserve volume up to about 2,500 mL, tidal volume up to about 2,900 mL, and inspiratory reserve volume up to 6,000 mL. The right panel shows the capacities as bars built from those volumes: inspiratory capacity above functional residual capacity; vital capacity above residual volume; and total lung capacity spanning the whole scale." width="1100" height="443" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> Normal lung volumes and capacities. In emphysema, trapped air enlarges the residual volume band at the bottom of the scale, and with it the functional residual capacity, while the vital capacity above it shrinks. <span class="anp-credit">Figure 22.18 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/22-3-the-process-of-breathing">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>People with emphysema often breathe out through pursed lips. The narrow opening at the lips keeps the pressure inside the airways higher during expiration, which holds the collapsing small airways open a little longer and lets more air out.</p>
 
 <h3>Chronic bronchitis</h3>
@@ -198,7 +199,7 @@
 
 <h3>Emphysema, chronic bronchitis and asthma</h3>
 <p>You met asthma with airway resistance: inflamed airways that overreact to triggers with bronchoconstriction, swelling of the airway wall and extra mucus, often driven by an allergic response involving <a class="gl" href="../notes/antibody-immunity.html" data-c="antibody-classes">IgE</a>, mast cells and eosinophils. All three are obstructive, and all three lower FEV1 ÷ FVC. They differ in where the problem lies and whether it reverses.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Emphysema</th><th>Chronic bronchitis</th><th>Asthma</th></tr></thead>
 <tbody>
 <tr><th>Main site</th><td>Alveolar walls</td><td>Bronchi and bronchioles</td><td>Bronchi and bronchioles</td></tr>
@@ -233,7 +234,7 @@
 <h3>Why healthy lungs stay dry</h3>
 <p>Fluid moves out of capillaries by the balance of hydrostatic and colloid osmotic pressures you met with capillary exchange. The pulmonary circuit is a low-pressure circuit: pulmonary <a class="gl" href="../notes/capillary-exchange.html" data-c="capillary-hydrostatic">capillary hydrostatic pressure</a> is only about 10 <a class="gl" href="../notes/gradients-flow.html" data-c="pressure">mm Hg</a>, well below the <a class="gl" href="../notes/capillary-exchange.html" data-c="colloid-osmotic">blood colloid osmotic pressure</a> of about 25 mm Hg. But the lung's <a class="gl" href="../notes/plasma-membrane.html" data-c="icf-ecf">interstitial fluid</a> sits at a slightly negative pressure and holds a fair amount of protein, so a little fluid still filters out, as in every <a class="gl" href="../notes/vessel-structure.html" data-c="capillary-types">capillary bed</a>, and the <a class="gl" href="../notes/lymphatic-system.html" data-c="lymphatic-vessels">lymphatic vessels</a> of the lung carry it away. They can increase their flow several-fold before fluid starts to build up.</p>
 <h3>Two causes</h3>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Cardiogenic pulmonary edema</th><th>Noncardiogenic pulmonary edema</th></tr></thead>
 <tbody>
 <tr><th>What goes wrong</th><td>Pressure in the pulmonary capillaries rises</td><td>The capillary wall and respiratory membrane become leaky</td></tr>
@@ -275,7 +276,7 @@
 <li>In most people, this contains the infection for life. The bacteria stay alive but dormant: latent TB infection.</li>
 <li>If immunity weakens later, for example with <a class="gl" href="../notes/immune-disorders.html" data-c="immunodeficiency">HIV</a>, some cancer treatments, diabetes or old age, the bacteria can break out and cause active TB, which destroys lung tissue and can form cavities.</li>
 </ol>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Latent TB infection</th><th>Active TB disease</th></tr></thead>
 <tbody>
 <tr><th>Bacteria</th><td>Alive but held in check inside granulomas</td><td>Multiplying and destroying tissue</td></tr>
@@ -294,13 +295,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:respiratory-disorders">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="breathing-control.html"><span>&larr; Topic 124</span><b>Control of breathing</b></a><a class="tb-chapter-link next" href="digestive-overview.html"><span>Topic 126 &rarr;</span><b>Organization and regulation of the digestive system</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

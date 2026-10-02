@@ -36,7 +36,7 @@ const check = process.argv.includes('--check');
    identical sb() helpers and two copies of MAX_UNANSWERED collided in one
    scope, which is a fair way to be told that two identical functions are one
    function. */
-const ORDER = ['store.js', 'push.js', 'email.js', 'reminders.js', 'premium.js', 'index.js'];
+const ORDER = ['config.js', 'store.js', 'push.js', 'email.js', 'reminders.js', 'premium.js', 'index.js'];
 
 /* Strip the module plumbing. Everything ends up in one scope, so an import
    from a sibling has nothing to do and an `export` keyword is just noise —

@@ -1,0 +1,11 @@
+{
+  "name": "levlprep-ci-tools",
+  "private": true,
+  "type": "module",
+  "description": "CI-only tools for the browser checks (check-a11y, check-console). The site itself has no build step and no runtime dependencies; nothing here is shipped.",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "axe-core": "4.10.2",
+    "playwright": "1.49.1"
+  }
+}

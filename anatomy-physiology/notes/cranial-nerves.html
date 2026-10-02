@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cranial nerves: Notes | Anatomy &amp; Physiology</title>
+<title>Cranial nerves — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="You have 12 pairs of cranial nerves, numbered I to XII from front to back along the underside of the brain.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/cranial-nerves.html">
-<meta property="og:title" content="Cranial nerves: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Cranial nerves — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="You have 12 pairs of cranial nerves, numbered I to XII from front to back along the underside of the brain.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/cranial-nerves.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="cranial-nerves">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 14 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/pns.html">Nerves, reflexes and pathways</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cranial nerves: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cranial-nerves.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 14 &middot; Topic 73 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 14 &middot; Topic 73 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Cranial nerves</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="cranial-nerves">Not practiced</span></p>
     </header>
@@ -115,7 +116,7 @@
 <p>A <strong><span class="gl" tabindex="0" data-c="cranial-nerve-list">cranial nerve</span></strong> (crani- = skull) is a nerve that attaches to the brain rather than to the spinal cord. There are 12 pairs. Like <a class="gl" href="../notes/spinal-nerves.html" data-c="spinal-nerve">spinal nerves</a>, they are part of the <a class="gl" href="../notes/nervous-system-organization.html" data-c="cns-pns">peripheral nervous system</a>. Unlike spinal nerves, they are not all mixed: a few are purely sensory, a few are purely motor, and the rest carry both.</p>
 <p>Each is named in two ways: by a Roman numeral, which gives its order from front (I) to back (XII) along the underside of the brain, and by a name that hints at its job. Look at the underside of the brain in <a class="figref" href="#fig-cranial-nerves">Figure 1</a> and find them in order.</p>
 
-<figure id="fig-cranial-nerves"  class="anp-figure"><div class="anp-figimg" data-fig="os-13-23"><img src="../figures/os-13-23.jpg" alt="The underside of the brain, with the frontal lobes at the top and the brainstem and cerebellum at the bottom. Twelve pairs of nerve roots are highlighted. Two slender bulb-tipped nerves lie under the frontal lobes, an X-shaped crossing of two thick nerves sits behind them, and the remaining roots emerge in order down the midbrain, pons and medulla, the last ones as rows of small rootlets along the medulla and a long root running up beside it." width="784" height="491" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The underside of the brain, with the roots of the 12 cranial nerves. The olfactory nerves (I) lie farthest forward under the frontal lobes; most of the rest emerge from the brainstem. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 13.23, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-cranial-nerves"  class="anp-figure"><div class="anp-figimg" data-fig="os-13-23"><picture><source type="image/avif" srcset="../figures/avif/os-13-23-480.avif 480w, ../figures/avif/os-13-23.avif 784w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-13-23.jpg" alt="The underside of the brain, with the frontal lobes at the top and the brainstem and cerebellum at the bottom. Twelve pairs of nerve roots are highlighted. Two slender bulb-tipped nerves lie under the frontal lobes, an X-shaped crossing of two thick nerves sits behind them, and the remaining roots emerge in order down the midbrain, pons and medulla, the last ones as rows of small rootlets along the medulla and a long root running up beside it." width="784" height="491" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The underside of the brain, with the roots of the 12 cranial nerves. The olfactory nerves (I) lie farthest forward under the frontal lobes; most of the rest emerge from the brainstem. <span class="anp-credit">Figure 13.23 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h3>Where they attach</h3>
 <ul>
@@ -137,7 +138,7 @@
 
 <h2 id="the-twelve-nerves-at-a-glance">The twelve nerves at a glance</h2>
 <p>This table is the one to study from. The sections after it add the detail and the reasoning behind each test.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
   <thead><tr><th>Nerve</th><th>Type</th><th>Main functions</th><th>Leaves the skull through</th><th>Quick test</th></tr></thead>
   <tbody>
     <tr><th>I Olfactory</th><td>Sensory</td><td>Smell</td><td><a class="gl" href="../notes/skull.html" data-c="skull-landmarks">Cribriform plate</a> of the <a class="gl" href="../notes/skull.html" data-c="cranial-bones">ethmoid bone</a></td><td>Identify a familiar smell (coffee, soap) through one nostril at a time, eyes closed</td></tr>
@@ -201,7 +202,7 @@
 <p>In <strong>Bell's palsy</strong>, the facial nerve swells inside its narrow bony canal, often linked to a viral infection. The whole half of the face goes slack: the brow will not lift, the eye will not close fully, and the mouth droops. Taste from the front of the tongue on that side may be lost.</p>
 <p><strong>Test:</strong> ask the person to raise the eyebrows, shut the eyes tight while you try to open them, smile, and puff out the cheeks. Compare the two sides.</p>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
   <thead><tr><th></th><th>V Trigeminal</th><th>VII Facial</th></tr></thead>
   <tbody>
     <tr><th>Main job on the face</th><td>Feeling: touch, pain, temperature</td><td>Moving: facial expression</td></tr>
@@ -258,13 +259,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:cranial-nerves">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="spinal-nerves.html"><span>&larr; Topic 72</span><b>Spinal nerves and plexuses</b></a><a class="tb-chapter-link next" href="sensory-pathways.html"><span>Topic 74 &rarr;</span><b>Sensory receptors and ascending pathways</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

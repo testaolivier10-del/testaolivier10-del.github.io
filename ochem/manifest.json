@@ -1,7 +1,7 @@
 {
-  "name": "LevlPrep — Organic Chemistry I",
-  "short_name": "Ochem",
-  "description": "A full 14-module Organic Chemistry I curriculum with mechanism walkthroughs, spaced review and eight interactive tools. Free, offline, no account needed.",
+  "name": "LevlPrep — Organic Chemistry I & II",
+  "short_name": "LevlPrep Ochem",
+  "description": "Organic Chemistry I and II in 25 chapters and 123 topics, with mechanisms you perform yourself and 8 interactive tools. Every textbook page is free forever and the first 4 chapters are fully interactive; Premium adds unlimited practice, exams, every lesson and analytics.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

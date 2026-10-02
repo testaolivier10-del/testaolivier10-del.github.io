@@ -11,9 +11,9 @@
     "q": "In anatomical terms, what does the leg (the crural region) include?",
     "options": [
       "The whole lower limb, from hip to toes",
-      "Only the part from the hip to the knee",
+      "The part from the hip to the knee",
       "Only the part from the knee to the ankle",
-      "Only the foot and ankle"
+      "The foot and ankle"
     ],
     "correct": 2,
     "why": {
@@ -93,23 +93,22 @@
       "Antebrachial",
       "Carpal",
       "Crural",
-      "Axillary"
+      "Patellar"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "The upper limb regions include axillary (armpit), brachial (arm), antecubital (front of elbow), antebrachial (forearm), carpal (wrist), palmar and digital. Femoral and crural are lower limb regions.",
+      "correct": "Brachial (arm), antebrachial (forearm) and carpal (wrist) are upper limb regions. Femoral, crural and patellar are lower limb regions.",
       "options": [
         "Correct. Brachial is the arm, shoulder to elbow.",
         "Femoral is the thigh, in the lower limb.",
         "Correct. Antebrachial is the forearm.",
         "Correct. Carpal is the wrist.",
         "Crural is the leg, knee to ankle, in the lower limb.",
-        "Correct. The axillary region, the armpit, is where the upper limb meets the trunk."
+        "Patellar is the front of the knee, in the lower limb."
       ]
     }
   },
@@ -350,21 +349,20 @@
     "q": "Select every pair that correctly matches a region with the part of the body it names.",
     "options": [
       "Cephalic: head",
-      "Lumbar: lower back",
+      "Femoral: knee",
       "Buccal: chin",
       "Plantar: sole of the foot",
       "Brachial: forearm"
     ],
     "correct": [
       0,
-      1,
       3
     ],
     "why": {
-      "correct": "Cephalic is the head, lumbar is the lower back, and plantar is the sole of the foot. Buccal is the cheek, and brachial is the arm between shoulder and elbow.",
+      "correct": "Cephalic is the head and plantar is the sole of the foot. Femoral is the thigh, buccal is the cheek, and brachial is the arm between shoulder and elbow.",
       "options": [
         "Correct. Cephalic (kephale = head) is the head.",
-        "Correct. Lumbar (lumbus = loin) is the lower back.",
+        "Femoral is the thigh. The front of the knee is patellar.",
         "Buccal (bucca = cheek) is the cheek. The chin is the mental region.",
         "Correct. Plantar (planta = sole) is the sole of the foot.",
         "Brachial is the arm, shoulder to elbow. The forearm is antebrachial."

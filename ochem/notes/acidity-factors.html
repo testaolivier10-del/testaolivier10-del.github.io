@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Factors affecting acidity — Organic Chemistry Notes</title>
+<title>Factors affecting acidity — Organic Chem Notes | LevlPrep</title>
 <meta name="description" content="Acetic acid and ethanol both give up a proton from an O–H bond. Yet acetic acid (pKa 4.76) is about 10¹¹ times stronger than ethanol (pKa 16).">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/acidity-factors.html">
-<meta property="og:title" content="Factors affecting acidity — Organic Chemistry Notes">
+<meta property="og:title" content="Factors affecting acidity — Organic Chem Notes | LevlPrep">
 <meta property="og:description" content="Acetic acid and ethanol both give up a proton from an O–H bond. Yet acetic acid (pKa 4.76) is about 10¹¹ times stronger than ethanol (pKa 16).">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/acidity-factors.html">
@@ -46,7 +47,7 @@
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Acids &amp; Bases &middot; Section 21 of 121</p>
+    <p class="notes-eyebrow">Acids &amp; Bases &middot; Section 21 of 123</p>
     <h1>Factors affecting acidity</h1>
     <a class="notes-onward-cta" href="../lessons/acidity-factors.html">Practice this — interactive lesson</a>
   </header>
@@ -89,7 +90,7 @@
 <p class="step-body">These four atoms are all about the same size, so electronegativity makes the difference. A more electronegative atom holds a negative charge more willingly. Its anion is more stable, and so its acid is stronger.</p>
 <p class="step-body">Now go down a group. HF has pKa 3.2, HCl −7, HBr −9 and HI −10. Acidity rises again, even though electronegativity <i>falls</i> from fluorine to iodine.</p>
 <p class="step-body">Here size wins. An iodide ion is far bigger than a fluoride ion, so its single negative charge is spread over a much larger volume. A large electron cloud is also more <b>polarizable</b>: it distorts easily, so the charge can shift to wherever it is least crowded. Spreading the charge out stabilizes the anion by far more than the lost electronegativity costs.</p>
-<p class="step-body">You will also see this trend explained by bond strength. The H–X bond gets longer and weaker down the group, from about 570 kJ/mol for H–F to about 300 for H–I, so there is less to break. That argument points the same way. This course leads with size and polarizability and treats bond strength as a second reason.</p>
+<p class="step-body">You will also see this trend explained by bond strength. The H–X bond gets longer and weaker down the group, from about 570 kJ/mol (136 kcal/mol) for H–F to about 300 (72 kcal/mol) for H–I, so there is less to break. That argument points the same way. This course leads with size and polarizability and treats bond strength as a second reason.</p>
 <!-- fig:atom-trends:start -->
 <figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 250" role="img" aria-label="Left panel, across a row: the anions CH3−, NH2−, HO− and F− drawn as discs of about the same size, with the pKa of each parent acid, 50, 38, 15.7 and 3.2, and an arrow saying electronegativity and acidity both rise to the right. Right panel, down a group: F−, Cl−, Br− and I− drawn to scale, growing from left to right, with pKa 3.2, −7, −9 and −10, and arrows saying size and acidity rise while electronegativity falls."><rect class="fg-panel" x="10" y="12" width="360" height="226" rx="10"></rect><rect class="fg-panel" x="390" y="12" width="360" height="226" rx="10"></rect><text class="fg-tag" x="190" y="36" text-anchor="middle" font-size="11">ACROSS A ROW: ELECTRONEGATIVITY DECIDES</text><text class="fg-tag" x="570" y="36" text-anchor="middle" font-size="11">DOWN A GROUP: SIZE DECIDES</text><circle class="fg-atom-hi" cx="55" cy="104" r="26"></circle><text class="fg-lbl" x="55" y="108.44" text-anchor="middle" font-size="12">CH₃⁻</text><text class="fg-sm" x="55" y="152" text-anchor="middle" font-size="10.5">from CH₄</text><text class="fg-tag" x="55" y="170" text-anchor="middle" font-size="11">pKa 50</text><circle class="fg-atom-hi" cx="145" cy="104" r="26"></circle><text class="fg-lbl" x="145" y="108.44" text-anchor="middle" font-size="12">NH₂⁻</text><text class="fg-sm" x="145" y="152" text-anchor="middle" font-size="10.5">from NH₃</text><text class="fg-tag" x="145" y="170" text-anchor="middle" font-size="11">pKa 38</text><circle class="fg-atom-hi" cx="235" cy="104" r="26"></circle><text class="fg-lbl" x="235" y="108.44" text-anchor="middle" font-size="12">HO⁻</text><text class="fg-sm" x="235" y="152" text-anchor="middle" font-size="10.5">from H₂O</text><text class="fg-tag" x="235" y="170" text-anchor="middle" font-size="11">pKa 15.7</text><circle class="fg-atom-hi" cx="325" cy="104" r="26"></circle><text class="fg-lbl" x="325" y="108.44" text-anchor="middle" font-size="12">F⁻</text><text class="fg-sm" x="325" y="152" text-anchor="middle" font-size="10.5">from HF</text><text class="fg-tag" x="325" y="170" text-anchor="middle" font-size="11">pKa 3.2</text><line class="fg-arrow" x1="40" y1="196" x2="332" y2="196"></line><path class="fg-head" d="M340 196 L332 200.16 L332 191.84 Z"></path><text class="fg-tag-good" x="190" y="222" text-anchor="middle" font-size="11">electronegativity rises → acidity rises</text><circle class="fg-atom-hi" cx="425.28" cy="104" r="21.28"></circle><text class="fg-lbl" x="425.28" y="108.44" text-anchor="middle" font-size="12">F⁻</text><text class="fg-sm" x="425.28" y="152" text-anchor="middle" font-size="10.5">from HF</text><text class="fg-tag" x="425.28" y="170" text-anchor="middle" font-size="11">pKa 3.2</text><circle class="fg-atom-hi" cx="501.52" cy="104" r="28.96"></circle><text class="fg-lbl" x="501.52" y="108.44" text-anchor="middle" font-size="12">Cl⁻</text><text class="fg-sm" x="501.52" y="152" text-anchor="middle" font-size="10.5">from HCl</text><text class="fg-tag" x="501.52" y="170" text-anchor="middle" font-size="11">pKa −7</text><circle class="fg-atom-hi" cx="587.84" cy="104" r="31.36"></circle><text class="fg-lbl" x="587.84" y="108.44" text-anchor="middle" font-size="12">Br⁻</text><text class="fg-sm" x="587.84" y="152" text-anchor="middle" font-size="10.5">from HBr</text><text class="fg-tag" x="587.84" y="170" text-anchor="middle" font-size="11">pKa −9</text><circle class="fg-atom-hi" cx="680.4" cy="104" r="35.2"></circle><text class="fg-lbl" x="680.4" y="108.44" text-anchor="middle" font-size="12">I⁻</text><text class="fg-sm" x="680.4" y="152" text-anchor="middle" font-size="10.5">from HI</text><text class="fg-tag" x="680.4" y="170" text-anchor="middle" font-size="11">pKa −10</text><line class="fg-arrow" x1="420" y1="196" x2="712" y2="196"></line><path class="fg-head" d="M720 196 L712 200.16 L712 191.84 Z"></path><text class="fg-tag-good" x="570" y="214" text-anchor="middle" font-size="11">size rises → acidity rises</text><text class="fg-sm" x="570" y="230" text-anchor="middle" font-size="10.5">even though electronegativity falls</text></svg><figcaption>Left: the discs are one size, and only the atom changes. Right: the four halide ions drawn to scale.</figcaption></figure>
 <!-- fig:atom-trends:end -->
@@ -210,8 +211,8 @@
   <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="pka.html"><span>Previous</span>pKa</a><a class="notes-prevnext notes-next" href="lewis-acids.html"><span>Next</span>Lewis acids/bases</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 121 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>

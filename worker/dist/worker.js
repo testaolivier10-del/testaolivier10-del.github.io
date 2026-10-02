@@ -10,8 +10,45 @@
  * route cannot create the cron trigger from wrangler.toml, so you have to add
  * it by hand under Settings -> Triggers.
  *
- * Built: store.js, push.js, email.js, reminders.js, premium.js, index.js
+ * Built: config.js, store.js, push.js, email.js, reminders.js, premium.js, index.js
  */
+
+/* ===========================================================================
+   config.js
+   =========================================================================== */
+
+/* The addresses the Worker hands to people, in one place.
+
+   API_URL is where this Worker answers: the unsubscribe link and the
+   List-Unsubscribe header in every reminder email point here. They used to
+   point at the site (levlprep.com/api/unsubscribe), which is GitHub Pages and
+   answered 404, so nobody could leave the list (site audit, Fix-first 8).
+
+   The value below is the one source for the Worker host across the repo:
+   scripts/lib/site-config.mjs reads it, and scripts/build-site-config.mjs
+   writes it into the four site files and the CSP of every page. To move to
+   api.levlprep.com (owner step in docs/site-audit-notes/w3.md), change it
+   here, run `node scripts/build-site-config.mjs`, rebuild the Worker and
+   deploy. An API_URL variable on the Worker overrides it without a rebuild,
+   for the Worker only. */
+const API_URL_DEFAULT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
+const SITE_URL_DEFAULT = 'https://levlprep.com';
+
+function apiUrl(env) {
+  return String((env && env.API_URL) || API_URL_DEFAULT).replace(/\/+$/, '');
+}
+
+function siteUrl(env) {
+  return String((env && env.SITE_URL) || SITE_URL_DEFAULT).replace(/\/+$/, '');
+}
+
+/* A path on this site, or '/'. Reminder links come from the browser that
+   wrote the row; an absolute URL, a protocol-relative `//host` or a
+   backslash trick would turn a study reminder into a link to anywhere. */
+function sitePath(raw) {
+  const s = String(raw == null ? '' : raw);
+  return s.length <= 200 && /^\/(?![/\\])[^\s\\]*$/.test(s) ? s : '/';
+}
 
 /* ===========================================================================
    store.js
@@ -31,7 +68,7 @@
    table here, so this is the only way in — and the key never goes near a
    browser. */
 function sb(env, path, init) {
-  return fetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {
+  return timedFetch(`${env.SUPABASE_URL}/rest/v1/${path}`, {
     ...init,
     headers: {
       apikey: env.SUPABASE_SERVICE_KEY,
@@ -40,6 +77,18 @@ function sb(env, path, init) {
       ...(init && init.headers),
     },
   });
+}
+
+/* Every outbound call has a deadline. Without one, a hung Polar, Resend or
+   push service held a request (or a whole cron tick) open until the platform
+   killed it, and the rows after it were never reached. */
+const FETCH_TIMEOUT_MS = 10000;
+
+function timedFetch(url, init = {}, ms = FETCH_TIMEOUT_MS) {
+  if (init.signal || typeof AbortSignal === 'undefined' || typeof AbortSignal.timeout !== 'function') {
+    return fetch(url, init);
+  }
+  return fetch(url, { ...init, signal: AbortSignal.timeout(ms) });
 }
 
 async function sha256Hex(s) {
@@ -70,6 +119,25 @@ const MAX_UNANSWERED = 3;
    trip to an email provider is not, so fewer of the latter fit in a tick. */
 const PUSH_BATCH = 200;
 const EMAIL_BATCH = 100;
+
+/* A row whose sends keep failing for reasons that are not about the whole
+   service (a timeout, a 5xx, a 429) is retried an hour later rather than on
+   the next tick, so it cannot sit at the front of the queue forever, and is
+   deleted after this many failures in a row. */
+const MAX_FAILURES = 5;
+const RETRY_AFTER_MS = 60 * 60 * 1000;
+
+/* The next daily send: the time this one was scheduled for plus a day, not
+   the time it happened to go out plus a day (which drifted up to fifteen
+   minutes later every day). A row that fell behind skips ahead whole days. */
+const ONE_DAY_MS = 24 * 60 * 60 * 1000;
+function nextDailySend(scheduledIso, now) {
+  const at = Date.parse(scheduledIso);
+  if (!Number.isFinite(at)) return new Date(now + ONE_DAY_MS).toISOString();
+  let t = at + ONE_DAY_MS;
+  if (t <= now) t += Math.ceil((now - t + 1) / ONE_DAY_MS) * ONE_DAY_MS;
+  return new Date(t).toISOString();
+}
 
 /* ===========================================================================
    push.js
@@ -184,10 +252,10 @@ async function sendPush(subscription, env) {
     jwt = await vapidJwt(audience, env.VAPID_SUBJECT || 'mailto:hello@levlprep.com',
                          env.VAPID_PUBLIC_KEY, env.VAPID_PRIVATE_KEY);
   } catch (e) {
-    return { ok: false, status: 0, gone: false, error: 'VAPID key problem: ' + e.message };
+    return { ok: false, status: 0, gone: false, config: true, error: 'VAPID key problem: ' + e.message };
   }
 
-  const res = await fetch(subscription.endpoint, {
+  const res = await timedFetch(subscription.endpoint, {
     method: 'POST',
     headers: {
       // No body, so no Content-Encoding and no Content-Type. A push service
@@ -204,6 +272,10 @@ async function sendPush(subscription, env) {
     ok: res.ok,
     status: res.status,
     gone: res.status === 404 || res.status === 410,
+    // A 401/403 is not treated as "our key is wrong" for everyone: FCM also
+    // answers 403 for one subscription made under an older VAPID key. It
+    // counts as that row's failure, and the row goes after MAX_FAILURES.
+    // Only a key that will not even import (above) stops the whole run.
   };
 }
 
@@ -230,7 +302,9 @@ async function sendPush(subscription, env) {
      REMINDER_FROM      e.g. "LevlPrep <reminders@levlprep.com>" — a verified
                         domain on the provider, not a gmail address, or every
                         message lands in spam
-     SITE_URL           https://levlprep.com
+     SITE_URL           https://levlprep.com (the default; links in the
+                        email go here, the unsubscribe link goes to API_URL
+                        in src/config.js)
 
    Unset RESEND_API_KEY and this whole path is skipped, silently and by design:
    the site works without it, and a cron that throws every fifteen minutes
@@ -241,6 +315,7 @@ async function sendPush(subscription, env) {
    edited as a file rather than as a string in a Worker. Inlined here at deploy
    time by whoever pastes this in — kept minimal and in one place so the two
    cannot drift far. */
+
 
 const TEMPLATE = `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}}</title></head><body style="margin:0;padding:0;background:#F3F6F4;"><div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{BODY}}</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F3F6F4;padding:32px 16px;"><tr><td align="center"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#FFFFFF;border-radius:16px;padding:32px 28px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"><tr><td style="font-size:13px;font-weight:700;color:#127264;letter-spacing:.04em;text-transform:uppercase;padding-bottom:14px;">LevlPrep</td></tr><tr><td style="font-size:21px;font-weight:800;color:#17241F;line-height:1.3;padding-bottom:8px;">{{TITLE}}</td></tr><tr><td style="font-size:15px;font-weight:400;color:#526C66;line-height:1.55;padding-bottom:24px;">{{BODY}}</td></tr><tr><td style="padding-bottom:26px;"><a href="{{URL}}" style="display:inline-block;background:#127264;color:#FFFFFF;font-size:15px;font-weight:700;text-decoration:none;padding:13px 24px;border-radius:12px;">{{CTA}}</a></td></tr><tr><td style="font-size:12px;font-weight:400;color:#8A9A95;line-height:1.6;border-top:1px solid #E4ECE8;padding-top:18px;">{{FOOTER}}</td></tr></table></td></tr></table></body></html>`;
 
@@ -261,25 +336,67 @@ function fill({ title, body, url, cta, footer }) {
     .replace(/\{\{FOOTER\}\}/g, footer);
 }
 
+/* CAN-SPAM wants a valid physical postal address in every commercial email,
+   and Gmail's bulk-sender rules look for one. The owner fills this in (a PO
+   box or a virtual mailbox is fine) and redeploys; until then it is empty and
+   the footer simply leaves the line out. */
+const POSTAL_ADDRESS = '';
+
+function postalLine() {
+  return POSTAL_ADDRESS ? `<br><br>LevlPrep &middot; ${esc(POSTAL_ADDRESS)}` : '';
+}
+
+/* The unsubscribe address for one row: on the Worker (API_URL), never on
+   the site, which is static hosting and cannot act on it. */
+function unsubscribeUrl(row, env) {
+  return `${apiUrl(env)}/api/unsubscribe?t=${encodeURIComponent(row.unsub_token)}`;
+}
+
 function render(row, env) {
-  const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
-  const unsub = `${site}/api/unsubscribe?t=${encodeURIComponent(row.unsub_token)}`;
-  const url = row.url && row.url.startsWith('http') ? row.url : site + (row.url || '/');
+  const unsub = unsubscribeUrl(row, env);
   return fill({
     title: row.title,
     body: row.body,
-    url,
+    // Only ever a page on this site, whatever the row says.
+    url: siteUrl(env) + sitePath(row.url),
     cta: 'Pick up where you left off',
     footer: 'You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.' +
-      `<br><br><a href="${esc(unsub)}" style="color:#526C66;">Stop sending these</a> &mdash; one click, no sign-in.`,
+      `<br><br><a href="${esc(unsub)}" style="color:#526C66;">Stop sending these</a> &mdash; no sign-in needed.` +
+      postalLine(),
   });
 }
 
-async function send(row, env) {
-  const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
-  const unsub = `${site}/api/unsubscribe?t=${encodeURIComponent(row.unsub_token)}`;
+/* What a Resend answer means for the row it was about.
 
-  const res = await fetch('https://api.resend.com/emails', {
+   ok         sent
+   gone       this recipient can never be sent to: delete the row
+   config     the request itself is wrong (key, sender, domain): stop the
+              whole run and touch nothing, because every row would fail the
+              same way. A 400 or 422 used to delete the row, so one typo in
+              REMINDER_FROM would have deleted every opt-in on the next tick.
+   transient  try this row again later */
+async function resendOutcome(res) {
+  if (res.ok) return 'ok';
+  let body = null;
+  try { body = await res.json(); } catch { /* not JSON */ }
+  const name = String((body && body.name) || '');
+  const message = String((body && body.message) || '');
+  if (res.status === 401 || res.status === 403
+      || /api_key|from_address|invalid_access|missing_required_field|invalid_region/.test(name)
+      || /\bfrom\b|domain|api key/i.test(message)) {
+    return 'config';
+  }
+  if ((res.status === 400 || res.status === 422)
+      && /\bto\b|recipient|email address|invalid email/i.test(message)) {
+    return 'gone';
+  }
+  return 'transient';
+}
+
+async function send(row, env) {
+  const unsub = unsubscribeUrl(row, env);
+
+  const res = await timedFetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${env.RESEND_API_KEY}`,
@@ -291,9 +408,10 @@ async function send(row, env) {
       subject: row.title,
       html: render(row, env),
       // The header every serious mail client turns into a one-click
-      // Unsubscribe button of its own. Without it, somebody who wants out
-      // presses "spam" instead, and that costs the domain's reputation for
-      // every message it sends including the password resets.
+      // Unsubscribe button of its own (RFC 8058: the client POSTs to it).
+      // Without it, somebody who wants out presses "spam" instead, and that
+      // costs the domain's reputation for every message it sends including
+      // the password resets.
       headers: {
         'List-Unsubscribe': `<${unsub}>`,
         'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
@@ -301,12 +419,7 @@ async function send(row, env) {
     }),
   });
 
-  return {
-    ok: res.ok,
-    // A hard bounce or a rejected address is not worth retrying tomorrow.
-    gone: res.status === 422 || res.status === 400,
-    status: res.status,
-  };
+  return { outcome: await resendOutcome(res), status: res.status };
 }
 
 /* The one email about a purchase: a pass is about to end. Called by
@@ -315,11 +428,10 @@ async function send(row, env) {
    study-reminder opt-out (that is a separate list somebody joined), so there
    is no unsubscribe link; the footer says why in one line. */
 async function sendPassEndingEmail(env, { to, courseName, endsOn }) {
-  const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
   const title = `Your ${courseName} pass ends on ${endsOn}`;
   const body = `Your LevlPrep pass for ${courseName} ends on ${endsOn}. ` +
     'Your progress is kept either way, and if you extend from your account page you pick up exactly where you left off.';
-  const res = await fetch('https://api.resend.com/emails', {
+  const res = await timedFetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -329,100 +441,144 @@ async function sendPassEndingEmail(env, { to, courseName, endsOn }) {
       html: fill({
         title,
         body,
-        url: `${site}/account.html`,
+        url: `${siteUrl(env)}/account.html`,
         cta: 'Extend your pass',
-        footer: 'You’re getting this one-time notice because a pass you bought is ending. It’s about your purchase, not marketing, and we send it once per pass.',
+        footer: 'You’re getting this one-time notice because a pass you bought is ending. It’s about your purchase, not marketing, and we send it once per pass.' +
+          postalLine(),
       }),
     }),
   });
-  return { ok: res.ok, gone: res.status === 422 || res.status === 400, status: res.status };
+  const outcome = await resendOutcome(res);
+  return { ok: outcome === 'ok', gone: outcome === 'gone', config: outcome === 'config', status: res.status };
 }
 
-/* One click out of the email, from the footer link. GET, because that is what
-   a link in an email is, and it deletes rather than flags. */
-async function unsubscribe(request, env) {
-  const token = new URL(request.url).searchParams.get('t');
-  const html = (title, note) =>
-    new Response(
-      `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">` +
-      `<title>${title}</title>` +
-      `<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F3F6F4;margin:0;padding:48px 20px;">` +
-      `<div style="max-width:420px;margin:0 auto;background:#fff;border-radius:16px;padding:32px 28px;">` +
-      `<h1 style="font-size:20px;color:#17241F;margin:0 0 10px;">${title}</h1>` +
-      `<p style="font-size:15px;color:#526C66;line-height:1.55;margin:0 0 20px;">${note}</p>` +
-      `<a href="${(env.SITE_URL || 'https://levlprep.com')}" style="color:#127264;font-weight:700;">Back to LevlPrep</a>` +
-      `</div></body>`,
-      { status: 200, headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+/* The way out of the reminder emails, with no sign-in.
 
-  if (!token || !env.SUPABASE_SERVICE_KEY) {
-    return html('That link didn’t work', 'It may have been cut in half by your mail client. You can also turn reminders off on the privacy page.');
+   GET (the footer link) shows a page with one button; only the POST it
+   sends deletes. Mail scanners and link previewers open every link in a
+   message, and a GET that deleted meant people were unsubscribed by their
+   own spam filter without ever knowing. The List-Unsubscribe-Post header
+   makes Gmail and Apple Mail send that POST themselves (RFC 8058), so their
+   one-click button still works in one click. */
+const TOKEN_RE = /^[0-9a-f]{20,128}$/i;
+
+function page(env, title, note, extra = '', status = 200) {
+  return new Response(
+    `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">` +
+    `<meta name="robots" content="noindex">` +
+    `<title>${esc(title)}</title>` +
+    `<body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F3F6F4;margin:0;padding:48px 20px;">` +
+    `<main style="max-width:420px;margin:0 auto;background:#fff;border-radius:16px;padding:32px 28px;">` +
+    `<h1 style="font-size:20px;color:#17241F;margin:0 0 10px;">${esc(title)}</h1>` +
+    `<p style="font-size:15px;color:#526C66;line-height:1.55;margin:0 0 20px;">${esc(note)}</p>` +
+    extra +
+    `<a href="${esc(siteUrl(env))}/" style="color:#127264;font-weight:700;">Back to LevlPrep</a>` +
+    `</main></body></html>`,
+    {
+      status,
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Cache-Control': 'no-store',
+        'Referrer-Policy': 'no-referrer',
+        'X-Frame-Options': 'DENY',
+        'Content-Security-Policy': "default-src 'none'; style-src 'unsafe-inline'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'",
+      },
+    });
+}
+
+async function unsubscribe(request, env) {
+  const url = new URL(request.url);
+  let token = url.searchParams.get('t') || '';
+  if (request.method === 'POST' && !token) {
+    try { token = String((await request.formData()).get('t') || ''); } catch { /* no form body */ }
   }
+  if (!TOKEN_RE.test(token) || !env.SUPABASE_SERVICE_KEY) {
+    return page(env, 'That link didn’t work',
+      'It may have been cut in half by your mail client. You can also turn reminders off on the privacy page.');
+  }
+
+  if (request.method === 'GET' || request.method === 'HEAD') {
+    return page(env, 'Stop the reminder emails?',
+      'One click and we won’t email you about studying again. Your account and your progress stay as they are.',
+      `<form method="post" action="/api/unsubscribe?t=${esc(encodeURIComponent(token))}" style="margin:0 0 20px;">` +
+      `<button type="submit" style="font:inherit;font-weight:700;background:#127264;color:#fff;border:0;border-radius:12px;padding:12px 22px;cursor:pointer;">Unsubscribe</button>` +
+      `</form>`);
+  }
+  if (request.method !== 'POST') return page(env, 'Not allowed', 'Use the link in the email.', '', 405);
 
   const res = await sb(env, 'rpc/unsubscribe_email_reminder', {
     method: 'POST',
     body: JSON.stringify({ p_token: token }),
   });
-  const removed = res.ok ? await res.json() : false;
+  if (!res.ok) {
+    return page(env, 'That didn’t go through',
+      'Something went wrong on our side. Try the link again in a minute, or turn reminders off on the privacy page.', '', 503);
+  }
+  const removed = await res.json();
 
   // Both answers are the same page. "That token was already used" is a fact
   // about our database, not about whether this person is going to get another
   // email — and they are not, either way.
-  return html(
+  return page(env,
     removed ? 'Done — no more reminders' : 'You’re already unsubscribed',
-    'We won’t email you about studying again. Your account and your progress are untouched, and you can turn reminders back on any time from the privacy page.'
-  );
+    'We won’t email you about studying again. Your account and your progress are untouched, and you can turn reminders back on any time from the privacy page.');
 }
 
 /* The cron half. Same shape as the push sender, deliberately: same batch, same
-   MAX_UNANSWERED, same "a transient failure keeps its slot" rule. */
-async function runEmailReminders(env) {
+   MAX_UNANSWERED, same failure rules (src/store.js). */
+async function runEmailReminders(env, now = Date.now()) {
   if (!env.RESEND_API_KEY || !env.SUPABASE_SERVICE_KEY) {
     return { skipped: 'no email provider configured' };
   }
 
-  const now = new Date().toISOString();
   const res = await sb(
     env,
-    `email_reminders?next_send_at=lte.${now}&next_send_at=not.is.null` +
-      `&select=user_id,email,unsub_token,title,body,url,unanswered&order=next_send_at.asc&limit=${EMAIL_BATCH}`,
+    `email_reminders?next_send_at=lte.${new Date(now).toISOString()}&next_send_at=not.is.null` +
+      `&select=*&order=next_send_at.asc&limit=${EMAIL_BATCH}`,
     { method: 'GET' }
   );
   if (!res.ok) return { error: `read failed: ${res.status}` };
 
   const due = await res.json();
-  let sent = 0, dropped = 0, stopped = 0, failed = 0;
+  let sent = 0, dropped = 0, stopped = 0, failed = 0, config = null;
 
   for (const row of due) {
+    const where = `email_reminders?user_id=eq.${encodeURIComponent(row.user_id)}`;
     let result;
     try {
       result = await send(row, env);
     } catch (e) {
-      failed++;
-      continue;
+      result = { outcome: 'transient', status: 0 };
     }
 
-    if (result.gone) {
-      await sb(env, `email_reminders?user_id=eq.${row.user_id}`, { method: 'DELETE' });
+    if (result.outcome === 'config') {
+      // Every row would fail the same way. Stop, change nothing, and say so.
+      config = result.status;
+      console.log('email reminders: provider refused the request itself', result.status);
+      break;
+    }
+    if (result.outcome === 'gone') {
+      await sb(env, where, { method: 'DELETE' });
       dropped++;
       continue;
     }
-    if (!result.ok) {
-      // next_send_at untouched, so the next tick retries. Not counted as
-      // unanswered, because nothing reached anybody.
+    if (result.outcome !== 'ok') {
       failed++;
+      await recordFailure(env, where, row, now);
       continue;
     }
 
     const unanswered = (row.unanswered || 0) + 1;
-    const patch = { unanswered, last_sent_at: new Date().toISOString() };
+    const patch = { unanswered, last_sent_at: new Date(now).toISOString() };
+    if ('failures' in row) patch.failures = 0;
     if (unanswered >= MAX_UNANSWERED) {
       patch.next_send_at = null;
       stopped++;
     } else {
-      patch.next_send_at = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+      patch.next_send_at = nextDailySend(row.next_send_at, now);
     }
 
-    await sb(env, `email_reminders?user_id=eq.${row.user_id}`, {
+    await sb(env, where, {
       method: 'PATCH',
       headers: { Prefer: 'return=minimal' },
       body: JSON.stringify(patch),
@@ -430,7 +586,24 @@ async function runEmailReminders(env) {
     sent++;
   }
 
-  return { due: due.length, sent, dropped, stopped, failed };
+  return { due: due.length, sent, dropped, stopped, failed, ...(config ? { config } : {}) };
+}
+
+/* Shared by both channels: back off an hour, and after MAX_FAILURES in a
+   row give up on the row. Rows from before the failures column existed
+   (the migration not yet applied) keep their slot, as they always did. */
+async function recordFailure(env, where, row, now) {
+  if (!('failures' in row)) return;
+  const failures = (row.failures || 0) + 1;
+  if (failures >= MAX_FAILURES) {
+    await sb(env, where, { method: 'DELETE' });
+    return;
+  }
+  await sb(env, where, {
+    method: 'PATCH',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ failures, next_send_at: new Date(now + RETRY_AFTER_MS).toISOString() }),
+  });
 }
 
 /* ===========================================================================
@@ -462,6 +635,8 @@ async function runEmailReminders(env) {
 */
 
 
+
+
 /* The words for one notification, fetched by the service worker when it wakes.
 
    Keyed on the endpoint, which the caller must already hold: this returns
@@ -483,61 +658,71 @@ async function reminderText(request, env) {
   // The alternative is a notification that says "undefined", or a push the
   // service worker cannot answer — and a service worker that receives a push
   // and shows nothing is, on most platforms, a permission the browser revokes.
-  return new Response(JSON.stringify(row || {
+  const out = row ? { title: row.title, body: row.body, url: sitePath(row.url) } : {
     title: 'Time to study',
     body: 'Pick up where you left off.',
     url: '/',
-  }), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
+  };
+  return new Response(JSON.stringify(out), { headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
 }
 
 /* The cron. Runs on whatever schedule wrangler.toml declares. */
-async function runReminders(env) {
+async function runReminders(env, now = Date.now()) {
   if (!env.SUPABASE_SERVICE_KEY || !env.VAPID_PRIVATE_KEY) {
     // Not configured is not an error: the site works without reminders, and a
     // half-configured cron that throws every fifteen minutes is noise.
     return { skipped: 'not configured' };
   }
 
-  const now = new Date().toISOString();
   const res = await sb(
     env,
-    `push_subscriptions?next_send_at=lte.${now}&next_send_at=not.is.null` +
-      `&select=id,endpoint,p256dh,auth,unanswered&order=next_send_at.asc&limit=${PUSH_BATCH}`,
+    `push_subscriptions?next_send_at=lte.${new Date(now).toISOString()}&next_send_at=not.is.null` +
+      `&select=*&order=next_send_at.asc&limit=${PUSH_BATCH}`,
     { method: 'GET' }
   );
   if (!res.ok) return { error: `read failed: ${res.status}` };
 
   const due = await res.json();
-  let sent = 0, dropped = 0, stopped = 0, failed = 0;
+  let sent = 0, dropped = 0, stopped = 0, failed = 0, config = null;
 
   for (const row of due) {
+    const where = `push_subscriptions?id=eq.${encodeURIComponent(row.id)}`;
     let result;
     try {
       result = await sendPush(row, env);
     } catch (e) {
-      failed++;
-      continue;
+      result = { ok: false, status: 0, gone: false };
     }
 
     if (result.gone) {
       // The endpoint is dead: profile deleted, permission revoked, or expired.
       // Delete rather than retry — a push service asked repeatedly to deliver
       // to dead endpoints starts rate-limiting the live ones.
-      await sb(env, `push_subscriptions?id=eq.${row.id}`, { method: 'DELETE' });
+      await sb(env, where, { method: 'DELETE' });
       dropped++;
       continue;
     }
 
+    if (result.config) {
+      // Our VAPID key or JWT is wrong: every row would fail the same way, so
+      // stop and touch nothing rather than count failures against them all.
+      config = result.status || result.error || 'vapid';
+      console.log('push reminders: refused for our own credentials', String(config));
+      break;
+    }
+
     if (!result.ok) {
-      // A transient failure keeps its slot: next_send_at is untouched, so the
-      // next tick tries again. It does NOT count as unanswered, because
+      // A transient failure: retried in an hour, and after MAX_FAILURES in a
+      // row the row is dropped. It does NOT count as unanswered, because
       // nothing reached anybody.
       failed++;
+      await recordFailure(env, where, row, now);
       continue;
     }
 
     const unanswered = (row.unanswered || 0) + 1;
-    const patch = { unanswered, last_sent_at: new Date().toISOString() };
+    const patch = { unanswered, last_sent_at: new Date(now).toISOString() };
+    if ('failures' in row) patch.failures = 0;
 
     if (unanswered >= MAX_UNANSWERED) {
       // Silence, until the browser writes a row again — which only happens
@@ -545,12 +730,12 @@ async function runReminders(env) {
       patch.next_send_at = null;
       stopped++;
     } else {
-      // Same time tomorrow. Adding 24 hours to the time that just fired keeps
-      // the student's chosen hour without this having to know what it was.
-      patch.next_send_at = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+      // Same time tomorrow: the time it was scheduled for plus a day, so the
+      // student's chosen hour does not drift with the cron.
+      patch.next_send_at = nextDailySend(row.next_send_at, now);
     }
 
-    await sb(env, `push_subscriptions?id=eq.${row.id}`, {
+    await sb(env, where, {
       method: 'PATCH',
       headers: { Prefer: 'return=minimal' },
       body: JSON.stringify(patch),
@@ -558,7 +743,7 @@ async function runReminders(env) {
     sent++;
   }
 
-  return { due: due.length, sent, dropped, stopped, failed };
+  return { due: due.length, sent, dropped, stopped, failed, ...(config ? { config } : {}) };
 }
 
 /* ===========================================================================
@@ -657,6 +842,28 @@ function polarApi(env) {
   return (env.POLAR_API || 'https://api.polar.sh').replace(/\/+$/, '');
 }
 
+/* The Supabase user behind a session token, or null. Supabase answers for
+   its own tokens; we never decode one ourselves, so an expired or revoked
+   session is refused too. Used by every route that acts for a student,
+   including the assistant (index.js). */
+function bearerToken(request) {
+  return (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+}
+
+async function sessionUser(env, token) {
+  if (!token || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return null;
+  try {
+    const who = await timedFetch(`${env.SUPABASE_URL}/auth/v1/user`, {
+      headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
+    });
+    if (!who.ok) return null;
+    const user = await who.json();
+    return user && user.id ? user : null;
+  } catch {
+    return null;
+  }
+}
+
 /* Returns { status, body }; index.js adds the CORS headers. */
 async function premiumCheckout(request, env) {
   const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
@@ -675,14 +882,8 @@ async function premiumCheckout(request, env) {
     return { status: 503, body: { error: 'Checkout is not set up yet.' } };
   }
 
-  // Who is this? Supabase answers for its own tokens; we never decode one
-  // ourselves, so an expired or revoked session is refused here too.
-  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
-  });
-  if (!who.ok) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
-  const user = await who.json();
-  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+  const user = await sessionUser(env, token);
+  if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const body = {
     products: [productId],
@@ -693,7 +894,7 @@ async function premiumCheckout(request, env) {
   if (user.email) body.customer_email = user.email;
   if (env.FOUNDING_DISCOUNT_ID) body.discount_id = env.FOUNDING_DISCOUNT_ID;
 
-  const res = await fetch(`${polarApi(env)}/v1/checkouts/`, {
+  const res = await timedFetch(`${polarApi(env)}/v1/checkouts/`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -713,12 +914,16 @@ async function premiumCheckout(request, env) {
 
    - the order must be the caller's own, a real purchase (not a free month
      or a guarantee extension) and not already refunded;
-   - within REFUND_WINDOW_DAYS of buying, as the terms promise;
+   - within REFUND_WINDOW_DAYS of buying, as the terms promise, counted
+     from Polar's own order time (the reconcile can write the row up to 48
+     hours after the purchase, and that delay must not lengthen the window);
    - once per account, ever. Any refund already on the account (self-serve
      or made by hand in Polar) means the next one goes through email, so a
-     buy-use-refund loop runs exactly once. The account's email is also
-     written to premium_ledger (as a hash), which deleting the account does
-     not clear, so deleting and re-creating it does not reset the limit.
+     buy-use-refund loop runs exactly once. premium_ledger also records the
+     person (as hashes): the email address normalized (case, +tags, Gmail
+     dots), the Polar customer, and the account. Deleting the account does
+     not clear it, so neither a new account nor an address alias resets the
+     limit.
 
    Polar refunds the pre-tax amount and the tax with it. The pass is marked
    refunded here at once; order.refunded from Polar then finds nothing left
@@ -728,7 +933,8 @@ const REFUND_WINDOW_DAYS = 7;
 function refundRefusal(row, priorRefunds, now) {
   if (!row || !row.order_id || !(row.amount_cents > 0)) return 'That purchase can’t be refunded here.';
   if (row.refunded_at) return 'That purchase has already been refunded.';
-  if (now - Date.parse(row.created_at) > REFUND_WINDOW_DAYS * DAY_MS) {
+  const bought = Date.parse(row.order_created_at || row.created_at);
+  if (!Number.isFinite(bought) || now - bought > REFUND_WINDOW_DAYS * DAY_MS) {
     return `Refunds are available for ${REFUND_WINDOW_DAYS} days after buying, and this purchase is older than that.`;
   }
   if (priorRefunds > 0) return 'This account has already had its one refund, so this purchase can’t be refunded.';
@@ -736,7 +942,7 @@ function refundRefusal(row, priorRefunds, now) {
 }
 
 async function premiumRefund(request, env, now = Date.now()) {
-  const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+  const token = bearerToken(request);
   if (!token) return { status: 401, body: { error: 'Sign in first.' } };
   let payload;
   try { payload = await request.json(); } catch { return { status: 400, body: { error: 'Invalid JSON' } }; }
@@ -746,89 +952,134 @@ async function premiumRefund(request, env, now = Date.now()) {
     return { status: 503, body: { error: 'Refunds are not set up yet.' } };
   }
 
-  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
-  });
-  const user = who.ok ? await who.json() : null;
-  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+  const user = await sessionUser(env, token);
+  if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const key = await emailKey(user.email);
-  const [rowRes, priorRes, ledger] = await Promise.all([
-    sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at&user_id=eq.${uid}` +
-      `&order_id=eq.${encodeURIComponent(orderId)}&limit=1`),
-    sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
-    ledgerHas(env, key, 'refund'),
-  ]);
-  if (!rowRes.ok || !priorRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
+  const rowRes = await sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at,order_created_at,customer_id` +
+    `&user_id=eq.${uid}&order_id=eq.${encodeURIComponent(orderId)}&limit=1`);
+  if (!rowRes.ok) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const row = (await rowRes.json())[0];
+  const keys = await ledgerKeys({ email: user.email, customerId: row && row.customer_id, userId: user.id });
+  const [priorRes, ledger] = await Promise.all([
+    sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
+    ledgerHas(env, keys, 'refund'),
+  ]);
+  if (!priorRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const prior = (await priorRes.json()).length + (ledger ? 1 : 0);
   const refusal = refundRefusal(row, prior, now);
   if (refusal) return { status: 409, body: { error: refusal } };
   // Claimed before Polar is asked, so two clicks at once cannot both refund:
-  // the second insert hits the unique key. Released if Polar says no.
-  const claimed = await ledgerAdd(env, key, 'refund');
+  // the second insert hits the unique key. Released if Polar clearly says no.
+  const claimed = await ledgerAdd(env, keys, 'refund');
   if (claimed === 'taken') return { status: 409, body: { error: refundRefusal(row, 1, now) } };
   if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
 
-  const res = await fetch(`${polarApi(env)}/v1/refunds/`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      order_id: orderId,
-      reason: 'customer_request',
-      amount: row.amount_cents,
-      comment: 'Self-serve refund from the levlprep.com account page',
-    }),
-  });
-  if (!res.ok) {
-    console.log('polar refund failed', res.status, (await res.text()).slice(0, 300));
-    await ledgerRemove(env, key, 'refund');
+  let res = null;
+  try {
+    res = await timedFetch(`${polarApi(env)}/v1/refunds/`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        order_id: orderId,
+        reason: 'customer_request',
+        amount: row.amount_cents,
+        comment: 'Self-serve refund from the levlprep.com account page',
+      }),
+    });
+  } catch (err) {
+    console.log('polar refund: no answer', String(err));
+  }
+  if (!res || !res.ok) {
+    if (res) console.log('polar refund failed', res.status, (await res.text()).slice(0, 300));
+    // A timeout or a 5xx may still have refunded: the lock stays, so a second
+    // click cannot refund twice, and the order.refunded webhook (or a person)
+    // settles it. Only a clear refusal (4xx) gives the one refund back.
+    if (res && res.status < 500) await ledgerRemove(env, keys, 'refund');
     return { status: 502, body: { error: 'The refund didn’t go through automatically. Email us and we’ll sort it out.' } };
   }
-  await sb(env, `premium_passes?order_id=eq.${encodeURIComponent(orderId)}&refunded_at=is.null`, {
-    method: 'PATCH',
-    headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
-  });
+  await refundOrder(env, orderId, now);
   return { status: 200, body: { ok: true } };
 }
 
-/* premium_ledger: what an email address has already used, kept after the
-   account is deleted. Only a hash of the lower-cased address is stored, and
-   only the Worker (service role) can read it. One row per address and kind,
-   so inserting doubles as the lock. */
-async function emailKey(email) {
-  // Every account here has an address; without one there is nothing to key
-  // on, and the per-account checks still apply.
-  if (!String(email || '').trim()) return null;
-  return sha256Hex('levlprep-ledger:' + String(email || '').trim().toLowerCase());
+/* premium_ledger: what a person has already used, kept after the account is
+   deleted. Only hashes are stored, and only the Worker (service role) can
+   read them. One row per key and kind, so inserting doubles as the lock.
+
+   A person is several keys, any one of which counts as "already used":
+   - the email address normalized: lower case, any +tag dropped, and for
+     Gmail the dots dropped and googlemail.com read as gmail.com, so
+     a.b+x@gmail.com and ab@gmail.com are one person;
+   - the address as it was keyed before normalization (rows written before
+     this change);
+   - the Polar customer id, which follows the card holder across accounts;
+   - the account id, which is also the lock when there is no address. */
+function normalizeEmail(email) {
+  const s = String(email || '').trim().toLowerCase();
+  const at = s.lastIndexOf('@');
+  if (at < 1) return s;
+  let local = s.slice(0, at);
+  let domain = s.slice(at + 1);
+  const plus = local.indexOf('+');
+  if (plus > 0) local = local.slice(0, plus);
+  if (domain === 'googlemail.com') domain = 'gmail.com';
+  if (domain === 'gmail.com') local = local.replace(/\./g, '');
+  return `${local}@${domain}`;
 }
 
-async function ledgerHas(env, key, kind) {
-  if (!key) return false;
-  const res = await sb(env, `premium_ledger?select=kind&email_key=eq.${key}&kind=eq.${kind}&limit=1`);
+async function emailKey(email) {
+  if (!String(email || '').trim()) return null;
+  return sha256Hex('levlprep-ledger:' + normalizeEmail(email));
+}
+
+async function ledgerKeys({ email, customerId, userId }) {
+  const keys = [];
+  const raw = String(email || '').trim().toLowerCase();
+  if (raw) {
+    keys.push(await emailKey(raw));
+    const legacy = await sha256Hex('levlprep-ledger:' + raw);
+    if (!keys.includes(legacy)) keys.push(legacy);
+  }
+  if (customerId) keys.push(await sha256Hex('levlprep-ledger:polar:' + String(customerId)));
+  if (userId) keys.push(await sha256Hex('levlprep-ledger:user:' + String(userId)));
+  return keys;
+}
+
+async function ledgerHas(env, keys, kind) {
+  if (!keys.length) return false;
+  const res = await sb(env, `premium_ledger?select=kind&email_key=in.(${keys.join(',')})&kind=eq.${kind}&limit=1`);
   if (!res.ok) return null;
   return (await res.json()).length > 0;
 }
 
-async function ledgerAdd(env, key, kind) {
-  if (!key) return 'ok';
+/* The first key is the lock: two requests for the same person race on it
+   and only one insert succeeds. The rest are recorded as well, so a later
+   alias, card or account finds the use. */
+async function ledgerAdd(env, keys, kind) {
+  if (!keys.length) return 'ok';
   const res = await sb(env, 'premium_ledger', {
     method: 'POST',
     headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({ email_key: key, kind }),
+    body: JSON.stringify({ email_key: keys[0], kind }),
   });
   if (res.status === 409) return 'taken';
-  return res.ok ? 'ok' : 'error';
+  if (!res.ok) return 'error';
+  for (const key of keys.slice(1)) {
+    await sb(env, 'premium_ledger', {
+      method: 'POST',
+      headers: { Prefer: 'return=minimal,resolution=ignore-duplicates' },
+      body: JSON.stringify({ email_key: key, kind }),
+    });
+  }
+  return 'ok';
 }
 
-async function ledgerRemove(env, key, kind) {
-  if (!key) return;
-  await sb(env, `premium_ledger?email_key=eq.${key}&kind=eq.${kind}`, { method: 'DELETE' });
+async function ledgerRemove(env, keys, kind) {
+  if (!keys.length) return;
+  await sb(env, `premium_ledger?email_key=in.(${keys.join(',')})&kind=eq.${kind}`, { method: 'DELETE' });
 }
 
-/* POST /premium/guarantee: the NREMT pass guarantee, claimed from the account
+/* POST /premium/guarantee: Pass-or-extend (its old name was retired 2026-10), claimed from the account
    page with no approval step. Nobody can prove they failed (the National
    Registry publishes who is certified, not who failed), so the rules keep
    what a false claim can win small and make it checkable afterwards:
@@ -836,22 +1087,49 @@ async function ledgerRemove(env, key, kind) {
    - an NREMT pass that was bought (not a free month), not refunded;
    - the exam date falls inside that paid pass and is at most
      GUARANTEE.claimDays ago;
-   - at least GUARANTEE.minExams full timed exams in the account's synced
-     history, taken during the paid pass and before the exam date, so the
-     pass was actually used to prepare;
+   - at least GUARANTEE.minExams full timed exams taken during the paid
+     pass and before the exam date, so the pass was actually used to
+     prepare. They are counted from exam_completions, which the database
+     stamps (record_exam_completion), not from the synced history the
+     browser writes; history entries dated before EXAM_LOG_SINCE still
+     count, since nothing recorded exams on the server then;
    - once per account and per email address, ever (premium_ledger again);
    - the claim records the legal name and state the candidate tested under,
      so it can be checked against the Registry's public certification
      lookup. The terms say a claim from someone already certified ends the
      extension.
 
-   It adds GUARANTEE.extendDays, starting when the current pass ends. */
+   It adds GUARANTEE.extendDays, starting when the current pass ends, and
+   records which bought pass it extends (funded_by): refunding that order
+   takes the extension back (premium_refund_order in schema.sql). */
 const GUARANTEE = { claimDays: 30, extendDays: 90, minExams: 2 };
+
+/* Server-stamped exam records start with the 2026-10 migration. Synced
+   history entries dated before this still count toward the guarantee; after
+   it, only exam_completions do. Set to the day the migration is applied. */
+const EXAM_LOG_SINCE = Date.parse('2026-10-15T00:00:00Z');
+const FULL_EXAM_MIN_QUESTIONS = 50;
+
+/* The exams that count: server records, plus history from before the log. */
+function countableExams(completions, legacyHistory) {
+  const server = (completions || [])
+    .filter((c) => c && Number(c.questions) >= FULL_EXAM_MIN_QUESTIONS && Number.isFinite(Date.parse(c.finished_at)))
+    .map((c) => ({ date: Date.parse(c.finished_at) }));
+  const legacy = (legacyHistory || []).filter((h) => h && Number(h.date) < EXAM_LOG_SINCE);
+  return server.concat(legacy);
+}
+
+/* The bought pass the exam fell in: the one a guarantee extends. */
+function guaranteeFunding(passes, examDate) {
+  const exam = Date.parse(examDate + 'T12:00:00Z');
+  return (passes || []).find((p) => p.order_id && p.amount_cents > 0 && !p.refunded_at
+    && exam >= Date.parse(p.starts_at) - DAY_MS && exam <= Date.parse(p.expires_at) + DAY_MS) || null;
+}
 
 function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const paid = (passes || []).filter((p) => p.order_id && p.amount_cents > 0 && !p.refunded_at);
-  if (!paid.length) return 'The pass guarantee comes with a bought NREMT pass, and this account doesn’t have one.';
-  if (used) return 'This account has already used its pass guarantee.';
+  if (!paid.length) return 'Pass-or-extend comes with a bought NREMT pass, and this account doesn’t have one.';
+  if (used) return 'This account has already used Pass-or-extend.';
   const exam = Date.parse(examDate + 'T12:00:00Z');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(examDate)) || !Number.isFinite(exam)) return 'Enter the date of your exam.';
   if (exam > now + DAY_MS) return 'The exam date can’t be in the future.';
@@ -864,8 +1142,8 @@ function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const from = Math.min(...paid.map((p) => Date.parse(p.starts_at)));
   const exams = (history || []).filter((h) => h && Number(h.date) >= from && Number(h.date) <= exam + DAY_MS).length;
   if (exams < GUARANTEE.minExams) {
-    return `The guarantee needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
-      `This account has ${exams}. (Exams count once your progress has synced while signed in.)`;
+    return `Pass-or-extend needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
+      `This account has ${exams}. (An exam counts when you finish it while signed in.)`;
   }
   return null;
 }
@@ -881,7 +1159,7 @@ function examHistory(data) {
 }
 
 async function premiumGuarantee(request, env, now = Date.now()) {
-  const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+  const token = bearerToken(request);
   if (!token) return { status: 401, body: { error: 'Sign in first.' } };
   let payload;
   try { payload = await request.json(); } catch { return { status: 400, body: { error: 'Invalid JSON' } }; }
@@ -892,54 +1170,52 @@ async function premiumGuarantee(request, env, now = Date.now()) {
   if (state.length < 2 || state.length > 40) return { status: 400, body: { error: 'Enter the state you tested for.' } };
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { status: 503, body: { error: 'This isn’t set up yet.' } };
 
-  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
-  });
-  const user = who.ok ? await who.json() : null;
-  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+  const user = await sessionUser(env, token);
+  if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const key = await emailKey(user.email);
-  const [passRes, progRes, ledger] = await Promise.all([
-    sb(env, `premium_passes?select=pass,order_id,amount_cents,refunded_at,starts_at,expires_at&user_id=eq.${uid}&course=eq.nremt`),
+  const [passRes, examRes, progRes] = await Promise.all([
+    sb(env, `premium_passes?select=pass,order_id,amount_cents,refunded_at,starts_at,expires_at,customer_id&user_id=eq.${uid}&course=eq.nremt`),
+    sb(env, `exam_completions?select=questions,finished_at&user_id=eq.${uid}&course=eq.nremt&order=finished_at.desc&limit=200`),
     sb(env, `user_progress?select=data&id=eq.${uid}&limit=1`),
-    ledgerHas(env, key, 'guarantee'),
   ]);
-  if (!passRes.ok || !progRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
+  if (!passRes.ok || !examRes.ok || !progRes.ok) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
   const passes = await passRes.json();
   const prog = (await progRes.json())[0];
+  const history = countableExams(await examRes.json(), examHistory(prog && prog.data));
+  const customer = (passes.find((p) => p.customer_id) || {}).customer_id;
+  const keys = await ledgerKeys({ email: user.email, customerId: customer, userId: user.id });
+  const ledger = await ledgerHas(env, keys, 'guarantee');
+  if (ledger === null) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
   const used = ledger || passes.some((p) => p.pass === 'guarantee');
-  const refusal = guaranteeRefusal({ passes, examDate, history: examHistory(prog && prog.data), used, now });
+  const refusal = guaranteeRefusal({ passes, examDate, history, used, now });
   if (refusal) return { status: 409, body: { error: refusal } };
+  const funding = guaranteeFunding(passes, examDate);
 
-  const claimed = await ledgerAdd(env, key, 'guarantee');
-  if (claimed === 'taken') return { status: 409, body: { error: 'This account has already used its pass guarantee.' } };
+  const claimed = await ledgerAdd(env, keys, 'guarantee');
+  if (claimed === 'taken') return { status: 409, body: { error: 'This account has already used Pass-or-extend.' } };
   if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
 
-  const startsAt = await startFor(env, user.id, 'nremt', now);
-  const expiresAt = new Date(startsAt.getTime() + GUARANTEE.extendDays * DAY_MS);
-  const [claimRes, passIns] = await Promise.all([
-    sb(env, 'premium_guarantee_claims', {
-      method: 'POST',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({ user_id: user.id, legal_name: name, state, exam_date: examDate }),
-    }),
-    sb(env, 'premium_passes', {
-      method: 'POST',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({
-        user_id: user.id, course: 'nremt', pass: 'guarantee',
-        starts_at: startsAt.toISOString(), expires_at: expiresAt.toISOString(),
-      }),
-    }),
-  ]);
-  if (!passIns.ok) {
-    console.log('guarantee insert failed', passIns.status, (await passIns.text()).slice(0, 200));
-    await ledgerRemove(env, key, 'guarantee');
+  let added = null;
+  try {
+    added = await addPass(env, {
+      userId: user.id, course: 'nremt', pass: 'guarantee', days: GUARANTEE.extendDays,
+      fundedBy: funding ? funding.order_id : null,
+    });
+  } catch (err) {
+    console.log('guarantee insert failed', String(err));
+  }
+  if (!added || !added.inserted) {
+    await ledgerRemove(env, keys, 'guarantee');
     return { status: 500, body: { error: 'That didn’t go through. Try again in a moment.' } };
   }
+  const claimRes = await sb(env, 'premium_guarantee_claims', {
+    method: 'POST',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ user_id: user.id, legal_name: name, state, exam_date: examDate }),
+  });
   if (!claimRes.ok) console.log('guarantee claim record failed', claimRes.status);
-  return { status: 200, body: { ok: true, expires_at: expiresAt.toISOString() } };
+  return { status: 200, body: { ok: true, expires_at: new Date(added.expires_at).toISOString() } };
 }
 
 function bytesToBase64(bytes) {
@@ -1012,16 +1288,41 @@ async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.floor(D
   return ok;
 }
 
-/* A pass bought while one is still running starts when that one ends, so
-   buying early never throws days away. Refunded passes do not count. */
-async function startFor(env, userId, course, now) {
-  const res = await sb(env,
-    `premium_passes?select=expires_at&user_id=eq.${encodeURIComponent(userId)}` +
-    `&course=eq.${course}&refunded_at=is.null&order=expires_at.desc&limit=1`);
-  if (!res.ok) throw new Error(`read passes ${res.status}`);
-  const rows = await res.json();
-  const latest = rows?.[0]?.expires_at ? Date.parse(rows[0].expires_at) : 0;
-  return new Date(Math.max(now, latest || 0));
+/* Creating a pass is one database function, premium_add_pass() in
+   scripts/sql/schema.sql: under a per-user lock it reads where the latest
+   unrefunded pass ends, starts the new one there (or now), and inserts it,
+   so a pass bought early never throws days away and the webhook and the
+   reconcile racing on one order cannot stack two passes on the same days.
+   It answers { inserted, starts_at, expires_at }; inserted is false for an
+   order it already has. */
+async function addPass(env, { userId, course, pass, days, orderId = null, amountCents = null, orderCreatedAt = null, customerId = null, fundedBy = null }) {
+  const res = await sb(env, 'rpc/premium_add_pass', {
+    method: 'POST',
+    body: JSON.stringify({
+      p_user: userId, p_course: course, p_pass: pass, p_days: days,
+      p_order_id: orderId, p_amount_cents: amountCents, p_order_created_at: orderCreatedAt,
+      p_customer_id: customerId, p_funded_by: fundedBy,
+    }),
+  });
+  if (!res.ok) throw new Error(`add pass ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  return res.json();
+}
+
+/* A full refund, also one database function (premium_refund_order): marks
+   the order's pass, takes back a guarantee it paid for, and re-chains the
+   passes queued behind it. Returns how many bought passes it marked. */
+async function refundOrder(env, orderId, now) {
+  const res = await sb(env, 'rpc/premium_refund_order', {
+    method: 'POST',
+    body: JSON.stringify({ p_order_id: String(orderId), p_at: new Date(now).toISOString() }),
+  });
+  if (!res.ok) throw new Error(`refund pass ${res.status}`);
+  return Number(await res.json()) || 0;
+}
+
+function isoOrNull(v) {
+  const t = Date.parse(v || '');
+  return Number.isFinite(t) ? new Date(t).toISOString() : null;
 }
 
 async function recordPaid(env, order, now) {
@@ -1035,25 +1336,20 @@ async function recordPaid(env, order, now) {
     return { status: 200, body: { ok: true, ignored: 'unattributable' } };
   }
 
-  const startsAt = await startFor(env, userId, pass.course, now);
-  const expiresAt = new Date(startsAt.getTime() + pass.days * DAY_MS);
-  const res = await sb(env, 'premium_passes', {
-    method: 'POST',
-    headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({
-      user_id: userId,
-      course: pass.course,
-      pass: passId,
-      starts_at: startsAt.toISOString(),
-      expires_at: expiresAt.toISOString(),
-      order_id: order.id,
-      amount_cents: Number.isInteger(order.net_amount) ? order.net_amount : null,
-    }),
+  const added = await addPass(env, {
+    userId, course: pass.course, pass: passId, days: pass.days,
+    orderId: order.id,
+    amountCents: Number.isInteger(order.net_amount) ? order.net_amount : null,
+    orderCreatedAt: isoOrNull(order.created_at),
+    customerId: order.customer_id || order.customer?.id || null,
   });
-  // order_id is unique: a second delivery of the same order is a 409 from
-  // PostgREST, and the pass it would add already exists.
-  if (res.status === 409) return { status: 200, body: { ok: true, duplicate: true } };
-  if (!res.ok) throw new Error(`insert pass ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  // A second delivery of the same order adds nothing.
+  if (!added || !added.inserted) return { status: 200, body: { ok: true, duplicate: true } };
+  // The funnel's last step, counted here where payment is a fact. Best
+  // effort: a missed count must not make Polar redeliver the order.
+  try {
+    await sb(env, 'rpc/count_premium_paid', { method: 'POST', body: JSON.stringify({ p_course: pass.course }) });
+  } catch { /* the count is not worth a retry */ }
   return { status: 200, body: { ok: true } };
 }
 
@@ -1067,30 +1363,15 @@ function isFullRefund(order) {
 
 async function recordRefund(env, order, now) {
   if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
-  const res = await sb(env,
-    `premium_passes?order_id=eq.${encodeURIComponent(order.id)}&refunded_at=is.null`, {
-      method: 'PATCH',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
-    });
-  if (!res.ok) throw new Error(`refund pass ${res.status}`);
+  await refundOrder(env, order.id, now);
   return { status: 200, body: { ok: true } };
 }
 
-/* Revoke the passes of these orders, the same way a refund does: refunded_at
-   set, so my_premium() stops counting them. Returns how many changed. */
+/* Revoke the passes of these orders, the same way a refund does, so
+   my_premium() stops counting them. Returns how many changed. */
 async function revokeOrders(env, orderIds, now) {
   let changed = 0;
-  for (let i = 0; i < orderIds.length; i += 100) {
-    const list = orderIds.slice(i, i + 100).map((id) => `"${String(id).replace(/"/g, '')}"`).join(',');
-    const res = await sb(env, `premium_passes?order_id=in.(${encodeURIComponent(list)})&refunded_at=is.null&select=order_id`, {
-      method: 'PATCH',
-      headers: { Prefer: 'return=representation' },
-      body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
-    });
-    if (!res.ok) throw new Error(`revoke passes ${res.status}`);
-    changed += (await res.json()).length;
-  }
+  for (const id of new Set(orderIds)) changed += await refundOrder(env, id, now);
   return changed;
 }
 
@@ -1137,10 +1418,11 @@ function endsOnText(iso) {
 }
 
 /* Which rows get the notice, from every pass the candidate users hold. Per
-   user and course, only the latest unrefunded pass (paid or 'grant') counts:
-   a pass with a later one queued behind it is not really ending. That latest
-   pass gets the notice if it ends within ENDING_NOTICE_DAYS and has not had
-   it yet. */
+   user and course, only the latest unrefunded pass counts: a pass with a
+   later one queued behind it is not really ending. That latest pass gets the
+   notice if it was bought (order_id: the copy says "a pass you bought", so a
+   free founding month or a guarantee extension gets nothing), ends within
+   ENDING_NOTICE_DAYS and has not had it yet. */
 function passesEnding(rows, now) {
   const latest = new Map();
   for (const r of rows) {
@@ -1151,12 +1433,12 @@ function passesEnding(rows, now) {
   }
   return [...latest.values()].filter((r) => {
     const end = Date.parse(r.expires_at);
-    return !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
+    return r.order_id && !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
   });
 }
 
 async function userEmail(env, userId) {
-  const res = await fetch(`${env.SUPABASE_URL}/auth/v1/admin/users/${encodeURIComponent(userId)}`, {
+  const res = await timedFetch(`${env.SUPABASE_URL}/auth/v1/admin/users/${encodeURIComponent(userId)}`, {
     headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` },
   });
   if (!res.ok) throw new Error(`admin user ${res.status}`);
@@ -1174,7 +1456,7 @@ async function runPassEnding(env, now = Date.now()) {
 
   // Who might be due: a cheap first pass over the window.
   const candRes = await sb(env,
-    `premium_passes?select=user_id&refunded_at=is.null&ending_reminded_at=is.null` +
+    `premium_passes?select=user_id&refunded_at=is.null&ending_reminded_at=is.null&order_id=not.is.null` +
     `&expires_at=gt.${from}&expires_at=lte.${to}&order=expires_at.asc&limit=200`);
   if (!candRes.ok) return { error: `read failed: ${candRes.status}` };
   const users = [...new Set((await candRes.json()).map((r) => r.user_id))];
@@ -1182,7 +1464,7 @@ async function runPassEnding(env, now = Date.now()) {
 
   // Everything those users still hold, so a queued later pass is seen.
   const rowsRes = await sb(env,
-    `premium_passes?select=id,user_id,course,expires_at,refunded_at,ending_reminded_at` +
+    `premium_passes?select=id,user_id,course,order_id,expires_at,refunded_at,ending_reminded_at` +
     `&refunded_at=is.null&expires_at=gt.${from}&user_id=in.(${users.map(encodeURIComponent).join(',')})`);
   if (!rowsRes.ok) return { error: `read failed: ${rowsRes.status}` };
   const due = passesEnding(await rowsRes.json(), now).slice(0, EMAIL_BATCH);
@@ -1198,6 +1480,7 @@ async function runPassEnding(env, now = Date.now()) {
         result = await sendPassEndingEmail(env, {
           to: email, courseName: COURSE_NAMES[row.course] || row.course, endsOn: endsOnText(row.expires_at),
         });
+        if (result.config) { failed++; break; } // our sender is wrong: stop, mark nothing
         if (!result.ok && !result.gone) { failed++; continue; } // next tick retries
         if (result.ok) sent++; else dropped++;
       }
@@ -1242,6 +1525,10 @@ const RECONCILE_MAX_PAGES = 10;
    While it is open the student keeps access, so a dispute the merchant wins
    does not leave them locked out with a "refunded" pass on their account. */
 const DISPUTE_REVOKES = ['lost'];
+/* Only disputes opened in this window are acted on. Every run used to list
+   (and re-apply) every lost dispute ever; an old one has long since been
+   applied, and one somebody resolved by hand must not be undone hourly. */
+const DISPUTE_WINDOW_DAYS = 120;
 
 async function polarList(env, path, params) {
   const items = [];
@@ -1250,7 +1537,7 @@ async function polarList(env, path, params) {
     for (const [k, v] of Object.entries({ ...params, page, limit: 100 })) {
       for (const one of [].concat(v)) q.append(k, String(one));
     }
-    const res = await fetch(`${polarApi(env)}${path}?${q}`, {
+    const res = await timedFetch(`${polarApi(env)}${path}?${q}`, {
       headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}` },
     });
     if (res.status === 401 || res.status === 403) {
@@ -1311,7 +1598,11 @@ async function reconcilePolar(env, now = Date.now()) {
   if (disputes === null) {
     out.disputesRevoked = 'no access';
   } else {
-    const ids = disputes.filter((d) => d?.order_id && DISPUTE_REVOKES.includes(d.status)).map((d) => d.order_id);
+    const since = now - DISPUTE_WINDOW_DAYS * DAY_MS;
+    const ids = disputes
+      .filter((d) => d?.order_id && DISPUTE_REVOKES.includes(d.status))
+      .filter((d) => !d.created_at || Date.parse(d.created_at) >= since)
+      .map((d) => d.order_id);
     out.disputesRevoked = await revokeOrders(env, ids, now);
     if (out.disputesRevoked) console.log('premium reconcile: revoked for lost disputes', out.disputesRevoked);
   }
@@ -1358,9 +1649,47 @@ const MODELS = [
 const ALLOWED_ORIGINS = [
   'https://levlprep.com',
   'https://www.levlprep.com',
-  'http://localhost:8000',
-  'http://127.0.0.1:8000',
 ];
+// A local copy of the site, only on a Worker that says so (a dev deploy with
+// ALLOW_LOCALHOST = "true"). Production never trusts localhost: any page
+// someone serves on their own machine would otherwise count as the site.
+const DEV_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000'];
+
+function allowedOrigins(env) {
+  return env && String(env.ALLOW_LOCALHOST) === 'true' ? ALLOWED_ORIGINS.concat(DEV_ORIGINS) : ALLOWED_ORIGINS;
+}
+
+/* The per-IP throttle (wrangler.toml, RATE_LIMITER), bucketed per route so a
+   busy assistant does not lock somebody out of unsubscribing. True when this
+   request is over the limit. No binding (a dashboard paste) means no limit,
+   which is why deploys go through wrangler (.github/workflows/deploy-worker.yml). */
+async function throttled(env, request, bucket) {
+  if (!env.RATE_LIMITER) return false;
+  const ip = request.headers.get('CF-Connecting-IP') || 'anonymous';
+  const { success } = await env.RATE_LIMITER.limit({ key: `${bucket}:${ip}` });
+  return !success;
+}
+
+/* The assistant answers signed-in students only: a Supabase session the
+   Worker can verify, which needs no setup beyond what Premium already uses.
+   The Origin header alone was the gate, and any script can send one.
+   (Turnstile was the other option; it needs a site key and a secret the
+   owner would have to create first.) Verified tokens are remembered for a
+   few minutes per Worker instance, so a conversation is not one auth call
+   per question. */
+const SESSION_TTL_MS = 5 * 60 * 1000;
+const sessionCache = new Map();
+async function signedIn(env, request) {
+  const token = bearerToken(request);
+  if (!token) return false;
+  const hit = sessionCache.get(token);
+  if (hit && hit > Date.now()) return true;
+  const user = await sessionUser(env, token);
+  if (!user) return false;
+  if (sessionCache.size > 500) sessionCache.clear();
+  sessionCache.set(token, Date.now() + SESSION_TTL_MS);
+  return true;
+}
 
 // The model may teach — rephrase, analogize, connect topics — but it may not
 // invent the facts it teaches from. The passages are the floor, not the
@@ -1441,8 +1770,8 @@ function extractText(result) {
   return '';
 }
 
-function corsHeaders(origin) {
-  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+function corsHeaders(origin, env) {
+  const allowed = allowedOrigins(env).includes(origin) ? origin : ALLOWED_ORIGINS[0];
   return {
     'Access-Control-Allow-Origin': allowed,
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -1453,10 +1782,10 @@ function corsHeaders(origin) {
   };
 }
 
-function json(body, status, origin) {
+function json(body, status, origin, env) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json', ...corsHeaders(origin) },
+    headers: { 'Content-Type': 'application/json', ...corsHeaders(origin, env) },
   });
 }
 
@@ -1486,30 +1815,34 @@ export default {
   async fetch(request, env) {
     const origin = request.headers.get('Origin') || '';
     const path = new URL(request.url).pathname;
+    const reply = (body, status) => json(body, status, origin, env);
 
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: corsHeaders(origin) });
+      return new Response(null, { status: 204, headers: corsHeaders(origin, env) });
     }
 
-    /* The only GET on this Worker, and the only route that is not the
-       assistant. A service worker woken by a push asks what to say; the
-       notification text is fetched at the moment it is shown rather than
-       carried in the push, which is what lets the push itself be payload-less
-       and skips the entire RFC 8291 encryption path. See src/push.js.
+    /* The way out of the reminder emails, from the footer link and from the
+       List-Unsubscribe header. It must work with nobody signed in on a
+       device that has never seen this site, so it takes no Origin. A GET
+       shows a confirmation; only the POST deletes (src/email.js says why). */
+    if (path === '/api/unsubscribe' || path === '/reminders/unsubscribe') {
+      if (await throttled(env, request, 'unsub')) {
+        return new Response('Too many requests. Try again in a minute.', { status: 429, headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Retry-After': '60' } });
+      }
+      return unsubscribe(request, env);
+    }
+
+    /* A service worker woken by a push asks what to say; the notification
+       text is fetched at the moment it is shown rather than carried in the
+       push, which is what lets the push itself be payload-less and skips the
+       entire RFC 8291 encryption path. See src/push.js.
 
        Answered for any origin, because the caller is a service worker whose
        fetch carries no Origin header at all — and because it returns only what
        somebody already holding that endpoint could learn anyway. */
-    /* The one-click way out of the reminder emails, from the footer link and
-       from the List-Unsubscribe header. A GET, because that is what a link in
-       an email is, and it must work with nobody signed in on a device that has
-       never seen this site. */
-    if (path === '/api/unsubscribe' || path === '/reminders/unsubscribe') {
-      return unsubscribe(request, env);
-    }
-
     if (path === '/reminders/text') {
-      if (request.method !== 'GET') return json({ error: 'GET only' }, 405, origin);
+      if (request.method !== 'GET') return reply({ error: 'GET only' }, 405);
+      if (await throttled(env, request, 'text')) return reply({ error: 'Rate limited' }, 429);
       const res = await reminderText(request, env);
       const headers = new Headers(res.headers);
       headers.set('Access-Control-Allow-Origin', '*');
@@ -1520,59 +1853,59 @@ export default {
        retries, and a burst of real orders is the good kind); the signature
        check inside is the whole of its trust. See src/premium.js. */
     if (path === '/premium/webhook') {
-      if (request.method !== 'POST') return json({ error: 'POST only' }, 405, origin);
+      if (request.method !== 'POST') return reply({ error: 'POST only' }, 405);
       const r = await premiumWebhook(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
     }
 
     if (request.method !== 'POST') {
-      return json({ error: 'POST only' }, 405, origin);
+      return reply({ error: 'POST only' }, 405);
     }
     // An allowed Origin is REQUIRED, not merely "not a wrong one". A browser
     // always sends Origin on a POST fetch, same-origin or cross-origin, so the
     // only callers this turns away are scripts (curl, a bot) — which used to
-    // walk straight through by leaving the header off, and then only the
-    // per-IP throttle below stood between them and the day's free allowance.
-    // A script can forge the header, but it now has to mean to, and the rate
-    // limit still applies to it.
-    if (!ALLOWED_ORIGINS.includes(origin)) {
-      return json({ error: 'Origin not allowed' }, 403, origin);
+    // walk straight through by leaving the header off. A script can forge the
+    // header, which is why the assistant also needs a session (below).
+    if (!allowedOrigins(env).includes(origin)) {
+      return reply({ error: 'Origin not allowed' }, 403);
     }
 
     // Per-visitor throttle, so one person (or one script) can't drain the
     // day's free allowance in a minute.
-    if (env.RATE_LIMITER) {
-      const ip = request.headers.get('CF-Connecting-IP') || 'anonymous';
-      const { success } = await env.RATE_LIMITER.limit({ key: ip });
-      if (!success) {
-        return json({ error: 'Rate limited. The site will answer from its own material instead.' }, 429, origin);
-      }
+    if (await throttled(env, request, 'post')) {
+      return reply({ error: 'Rate limited. The site will answer from its own material instead.' }, 429);
     }
 
     // Opening a checkout is a browser POST from the site like the assistant,
     // so it shares the Origin check and the throttle above, then leaves.
     if (path === '/premium/checkout') {
       const r = await premiumCheckout(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
     }
     // A refund from the account page: same Origin check and throttle; the
     // rules that keep it from being abused are in premiumRefund().
     if (path === '/premium/refund') {
       const r = await premiumRefund(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
     }
 
-    // The NREMT pass guarantee; its rules are in premiumGuarantee().
+    // Pass-or-extend (NREMT); its rules are in premiumGuarantee().
     if (path === '/premium/guarantee') {
       const r = await premiumGuarantee(request, env);
-      return json(r.body, r.status, origin);
+      return reply(r.body, r.status);
+    }
+
+    // The assistant: signed-in students only (see signedIn above). The site
+    // answers from its own material for everyone else.
+    if (!(await signedIn(env, request))) {
+      return reply({ error: 'Sign in to get AI answers.' }, 401);
     }
 
     let payload;
     try {
       payload = await request.json();
     } catch {
-      return json({ error: 'Invalid JSON' }, 400, origin);
+      return reply({ error: 'Invalid JSON' }, 400);
     }
 
     const question = String(payload?.question || '').trim().slice(0, 500);
@@ -1580,7 +1913,7 @@ export default {
     const history = Array.isArray(payload?.history) ? payload.history.slice(-4) : [];
     const course = payload?.course === 'ochem' || payload?.course === 'anp' ? payload.course : 'nremt';
 
-    if (!question) return json({ error: 'Missing question' }, 400, origin);
+    if (!question) return reply({ error: 'Missing question' }, 400);
 
     // An empty context is legitimate: the student asked something the course
     // doesn't cover. The model answers from general knowledge and is told to
@@ -1612,7 +1945,7 @@ export default {
       try {
         const result = await env.AI.run(model, { messages, max_tokens: 500, temperature: 0.2 });
         const answer = extractText(result);
-        if (answer) return json({ answer, model }, 200, origin);
+        if (answer) return reply({ answer, model }, 200);
         // Name the keys that did come back, so an unfamiliar response shape is
         // a five-second fix instead of another round of guessing.
         const shape = result && typeof result === 'object' ? Object.keys(result).join(',') : typeof result;
@@ -1625,7 +1958,10 @@ export default {
       }
     }
     // Every model failed: say so plainly and let the client fall back to the
-    // course's own material rather than pretend to have answered.
-    return json({ error: 'Model unavailable', detail: String(lastError).slice(0, 200) }, 502, origin);
+    // course's own material rather than pretend to have answered. The reason
+    // goes to the Worker's log, not to the browser: raw platform errors name
+    // models, accounts and limits nobody outside needs to see.
+    console.log('assistant: every model failed', String(lastError).slice(0, 300));
+    return reply({ error: 'Model unavailable' }, 502);
   },
 };

@@ -15,17 +15,27 @@
 // Pages/CSS/JS use network-first: when online, always fetch the latest
 // version and update the cache, so a site update reaches every open tab on
 // its next load instead of being stuck behind a stale cache indefinitely.
-// The cached copy is only served as a fallback when the network fails.
+// The cached copy is served when the network fails, or when it has not
+// answered in NETWORK_TIMEOUT_MS (weak campus wifi used to leave a blank page
+// for as long as the browser cared to wait); the network answer still lands
+// in the cache for next time.
 // Bump CACHE_NAME whenever this file changes, so old cached entries are
 // dropped instead of lingering forever.
 //
 // Two caches, not one. Bumping CACHE_NAME used to delete everything, so a
 // one-line CSS change made every device re-download the 3.2 MB body-map
 // model, the 670 KB three.js bundle and the fonts. Those never change with
-// the shell (they are content-addressed by path, and a new model would be a
-// new file), so they live in STATIC_CACHE, which activate leaves alone.
-const CACHE_NAME = 'levlprep-v42';
+// the shell, so they live in STATIC_CACHE, which activate leaves alone.
+// They are served stale-while-revalidate: the cached copy at once, and a
+// fresh fetch behind it replaces the copy, so a replaced image or figure
+// (same path, new bytes) shows up on the next view instead of never.
+const CACHE_NAME = 'levlprep-v52';
 const STATIC_CACHE = 'levlprep-static';
+/* Precached per course (site audit 2026-10, performance: about 110 URLs
+   across all three courses were fetched on a first visit to any page). Install
+   takes only the site shell below; a course's own shell (COURSE_URLS) is
+   warmed in the background the first time a page of that course is opened,
+   so someone studying only ochem never downloads the NREMT question bank. */
 const PRECACHE_URLS = [
   'index.html',
   // Shown in place of an uncached page while offline. Precached rather than
@@ -38,6 +48,7 @@ const PRECACHE_URLS = [
   'assets/premium.js',
   'assets/hub-progress.js',
   'assets/site-chrome.js',
+  'assets/tutor-launcher.js',
   'assets/tutor.js',
   'assets/announce.js',
   'assets/motion.js',
@@ -48,6 +59,11 @@ const PRECACHE_URLS = [
   'assets/flashcards.css',
   'search.html',
   'assets/site-search-all.js',
+  'assets/site-search.js',
+];
+
+const COURSE_URLS = {};
+COURSE_URLS.nremt = [
   'nremt/index.html',
   'nremt/practice.html',
   'nremt/body-map.html',
@@ -87,12 +103,14 @@ const PRECACHE_URLS = [
   'nremt/assets/flow-drill.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
+];
+
+COURSE_URLS.ochem = [
   // The ochem shell. That course was cached only as pages happened to be
   // visited, so the one page a reader opens specifically to FIND something was
   // the one most likely not to be there when they were offline.
   // (No apostrophes in this block: the precache test parses this list by
   // pulling quoted strings out of the file, and one would open a string.)
-  'assets/site-search.js',
   'ochem/index.html',
   'ochem/learn.html',
   'ochem/search.html',
@@ -123,6 +141,9 @@ const PRECACHE_URLS = [
   'ochem/assets/glossary-page.js',
   'ochem/assets/glossary-tip.js',
   'ochem/assets/glossary.json',
+];
+
+COURSE_URLS['anatomy-physiology'] = [
   // The A&P shell: the course home, the lesson list, search and the runtime
   // every A&P page loads. Lessons, notes and figures are cached as visited.
   'anatomy-physiology/index.html',
@@ -148,20 +169,64 @@ const PRECACHE_URLS = [
 //
 // Core first. If the connection dies partway through warming these, the half
 // that makes practice work at all is the half already in the cache.
-const DEFERRED_URLS = [
-  'nremt/assets/questions-core.json',
-  'nremt/assets/explanations.json',
-];
+const DEFERRED_URLS = {
+  nremt: [
+    'nremt/assets/questions-core.json',
+    'nremt/assets/explanations.json',
+  ],
+};
+
+/* A course's shell, warmed once per worker the first time one of its pages is
+   opened: entries already cached are skipped, nothing here can fail a page,
+   and the course's deferred files follow its shell. */
+const warmed = new Set();
+function warmCourse(course) {
+  if (!COURSE_URLS[course] || warmed.has(course)) return Promise.resolve();
+  warmed.add(course);
+  return caches.open(CACHE_NAME).then(cache => {
+    const missing = url => cache.match(url).then(hit => (hit ? null : precache(cache, url)));
+    return Promise.allSettled(COURSE_URLS[course].map(missing))
+      .then(() => Promise.allSettled((DEFERRED_URLS[course] || []).map(missing)));
+  }).catch(() => {});
+}
+
+const NETWORK_TIMEOUT_MS = 3500;
+
+/* Fetched past the browser's HTTP cache (cache: 'reload'), so a new worker
+   never precaches a stale copy the HTTP cache still held from the old site.
+   Each URL is added on its own: one missing or failing file used to reject
+   cache.addAll() and with it the whole install, forever. Only the two pages
+   the offline fallback depends on are required. */
+const REQUIRED_URLS = ['index.html', 'offline.html'];
+
+function precache(cache, url) {
+  return fetch(new Request(url, { cache: 'reload' })).then(res => {
+    if (!cacheable(res)) throw new Error('precache ' + url + ' ' + res.status);
+    return cache.put(url, res);
+  });
+}
+
+/* Only a complete, same-origin 200 is stored: a 206 (a range request for
+   audio or video) makes cache.put() throw, and an error page or a redirect
+   stored under a real URL would be served offline as if it were the page. */
+function cacheable(res) {
+  return !!res && res.status === 200 && res.type === 'basic';
+}
+
+function putLater(cacheName, request, res) {
+  if (!cacheable(res)) return;
+  const copy = res.clone();
+  caches.open(cacheName).then(cache => cache.put(request, copy)).catch(() => {});
+}
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        // Warm the deferred entries in the background — install resolves as
-        // soon as the core shell is cached, and a failure here (offline mid
-        // install, say) must not fail the installation.
-        cache.addAll(DEFERRED_URLS).catch(() => {});
-        return cache.addAll(PRECACHE_URLS);
+        return Promise.allSettled(PRECACHE_URLS.map(u => precache(cache, u))).then(results => {
+          const failedRequired = PRECACHE_URLS.filter((u, i) => results[i].status === 'rejected' && REQUIRED_URLS.includes(u));
+          if (failedRequired.length) throw new Error('precache failed: ' + failedRequired.join(', '));
+        });
       })
       .then(() => self.skipWaiting())
   );
@@ -191,16 +256,24 @@ self.addEventListener('fetch', event => {
   if(url.protocol !== 'http:' && url.protocol !== 'https:') return;
   if(url.origin !== self.location.origin) return;
   const isNetworkFirst = event.request.mode === 'navigate' || NETWORK_FIRST_EXTENSIONS.test(url.pathname);
+  if(event.request.mode === 'navigate'){
+    const course = url.pathname.split('/')[1];
+    if(COURSE_URLS[course]) event.waitUntil(warmCourse(course));
+  }
 
   if(isNetworkFirst){
+    const network = fetch(event.request).then(response => {
+      putLater(CACHE_NAME, event.request, response);
+      return response;
+    });
+    // Whichever comes first: the network, or (after NETWORK_TIMEOUT_MS) a
+    // cached copy. With nothing cached, keep waiting for the network.
+    const slow = new Promise(resolve => setTimeout(resolve, NETWORK_TIMEOUT_MS))
+      .then(() => caches.match(event.request))
+      .then(cached => cached || network);
+    event.waitUntil(network.catch(() => {}));
     event.respondWith(
-      fetch(event.request).then(response => {
-        if(response && response.ok){
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-        }
-        return response;
-      }).catch(() =>
+      Promise.race([network, slow]).catch(() =>
         caches.match(event.request).then(cached => {
           if(cached) return cached;
           if(event.request.mode !== 'navigate') return undefined;
@@ -227,9 +300,13 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Everything else (3D model, vendor JS, fonts, images): cache-first, since
-  // these are large/static and don't need to be re-fetched on every visit.
-  // They go in STATIC_CACHE, which survives a CACHE_NAME bump.
+  // Everything else (3D model, vendor JS, fonts, images): stale-while-
+  // revalidate in STATIC_CACHE, which survives a CACHE_NAME bump. The cached
+  // copy answers at once; a fetch behind it refreshes the copy (a 200 only),
+  // so a replaced figure under the same path is current on the next view.
+  // Range requests (audio, video) go straight to the network: their 206
+  // answers cannot be cached and a cached 200 cannot answer them.
+  if(event.request.headers.has('range')) return;
   //
   // If the network fails for something not yet cached, fall back to a match
   // that ignores the query string (a font or model fetched under a cache-
@@ -237,14 +314,15 @@ self.addEventListener('fetch', event => {
   // warmed cache can still answer.
   event.respondWith(
     caches.match(event.request).then(cached => {
-      if(cached) return cached;
-      return fetch(event.request).then(response => {
-        if(response && response.ok){
-          const copy = response.clone();
-          caches.open(STATIC_CACHE).then(cache => cache.put(event.request, copy));
-        }
+      const fresh = fetch(event.request).then(response => {
+        putLater(STATIC_CACHE, event.request, response);
         return response;
-      }).catch(() =>
+      });
+      if(cached){
+        event.waitUntil(fresh.catch(() => {}));
+        return cached;
+      }
+      return fresh.catch(() =>
         caches.match(event.request, { ignoreSearch: true }).then(fallback => fallback || Response.error())
       );
     })
@@ -265,7 +343,19 @@ self.addEventListener('fetch', event => {
    A service worker that receives a push and shows nothing gets its
    permission revoked on most platforms, so every path below ends in a
    notification — including the paths where the fetch failed. */
-const REMINDER_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+const REMINDER_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
+
+/* A notification only ever opens a page on this site. The text comes from
+   the Worker, which already limits it to a path, but this is the last place
+   it can be checked. */
+function sitePath(raw) {
+  try {
+    const u = new URL(String(raw || '/'), self.location.origin);
+    return u.origin === self.location.origin ? u.pathname + u.search + u.hash : '/';
+  } catch (e) {
+    return '/';
+  }
+}
 
 self.addEventListener('push', event => {
   event.waitUntil((async () => {
@@ -294,27 +384,29 @@ self.addEventListener('push', event => {
       // is supposed to avoid.
       tag: 'levlprep-reminder',
       renotify: false,
-      data: { url: text.url || '/' },
+      data: { url: sitePath(text.url) },
     });
   })());
 });
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const target = (event.notification.data && event.notification.data.url) || '/';
+  const target = sitePath(event.notification.data && event.notification.data.url);
+  const want = new URL(target, self.location.origin);
   event.waitUntil((async () => {
-    const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    // Reuse a tab the student already has open rather than stacking another
-    // copy of the site on top of it.
+    const all = (await self.clients.matchAll({ type: 'window', includeUncontrolled: true }))
+      .filter(c => { try { return new URL(c.url).origin === self.location.origin; } catch (e) { return false; } });
+    // Reuse a tab that is already on exactly that page rather than stacking
+    // another copy of it. (A substring match made "/" match every tab.)
     for (const client of all) {
-      if (client.url.includes(new URL(target, self.location.origin).pathname) && 'focus' in client) {
+      if (new URL(client.url).pathname === want.pathname && 'focus' in client) {
         return client.focus();
       }
     }
     if (all.length && 'navigate' in all[0]) {
       await all[0].focus();
-      return all[0].navigate(target);
+      return all[0].navigate(want.href);
     }
-    return self.clients.openWindow(target);
+    return self.clients.openWindow(want.href);
   })());
 });

@@ -1,7 +1,7 @@
 {
   "name": "LevlPrep — NREMT-EMT Practice Exam & Study Tools",
-  "short_name": "LevlPrep",
-  "description": "NREMT-EMT prep, free to start: question bank, timed exams, domain drills, flashcards, mnemonics, and progress tracking.",
+  "short_name": "LevlPrep NREMT",
+  "description": "NREMT-EMT prep, free to start: a 2,033-question bank, timed exams, study notes, flashcards and mnemonics. The notes are free forever, with 15 practice questions a day and one full exam free; Premium adds unlimited practice, exams and analytics.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

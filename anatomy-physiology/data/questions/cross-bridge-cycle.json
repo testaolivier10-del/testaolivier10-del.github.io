@@ -78,6 +78,11 @@
         "name": "Calcium pumped into the SR",
         "answer": "down",
         "why": "The SR calcium pumps are ATPases; without ATP they stop."
+      },
+      {
+        "name": "Number of sarcomeres in each myofibril",
+        "answer": "none",
+        "why": "Rigor changes the bonds between thick and thin filaments, not how many sarcomeres there are."
       }
     ],
     "why": {
@@ -97,7 +102,7 @@
       "It stays slack and stretchable",
       "It goes stiff, locked in rigor",
       "It contracts with normal force",
-      "It contracts and then cannot relax"
+      "It contracts and then stays contracted"
     ],
     "correct": 0,
     "why": {
@@ -224,7 +229,7 @@
     ],
     "q": "Select every change that happens when a sarcomere contracts.",
     "options": [
-      "The Z discs move closer together",
+      "The thick filaments get shorter",
       "The I bands narrow",
       "The A band narrows",
       "The H zone narrows",
@@ -232,15 +237,14 @@
       "The overlap of thick and thin filaments increases"
     ],
     "correct": [
-      0,
       1,
       3,
       5
     ],
     "why": {
-      "correct": "Thin filaments slide toward the M line, so overlap increases, the Z discs are pulled closer, and the I bands and H zone, which are gaps between filaments, narrow. The A band and the filaments themselves keep their lengths.",
+      "correct": "Thin filaments slide toward the M line, so overlap increases and the I bands and H zone, which are gaps between filaments, narrow. The A band and the filaments themselves keep their lengths.",
       "options": [
-        "Correct. The thin filaments are anchored to the Z discs and pull them inward.",
+        "Neither filament shortens. Thick and thin filaments slide past each other.",
         "Correct. The thick filaments now reach closer to the Z discs.",
         "The A band is the length of the thick filaments, which does not change.",
         "Correct. The thin filaments from both ends move toward each other.",
@@ -317,7 +321,7 @@
       "The A band is made of thin filaments, which would have to lengthen",
       "The I band contains the thick filaments, and its narrowing shows they slide",
       "The A band spans the thick filaments, and it did not narrow",
-      "Filaments made of protein cannot change length"
+      "Filaments made of protein are too stiff to change length"
     ],
     "correct": 2,
     "why": {

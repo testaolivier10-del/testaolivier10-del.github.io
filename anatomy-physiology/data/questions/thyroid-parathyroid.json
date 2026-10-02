@@ -92,6 +92,11 @@
         "name": "Blood calcium",
         "answer": "none",
         "why": "PTH and calcitriol, the main regulators, still work, so calcium stays normal despite losing calcitonin."
+      },
+      {
+        "name": "PTH",
+        "answer": "none",
+        "why": "Her parathyroid glands are intact and her blood calcium is normal, so PTH release is unchanged."
       }
     ],
     "why": {
@@ -129,6 +134,16 @@
         "name": "Heart rate",
         "answer": "down",
         "why": "With less thyroid hormone, heart cells have fewer beta-1 receptor proteins and less drive, so the resting heart rate falls."
+      },
+      {
+        "name": "Iodine atoms in each T4 molecule made",
+        "answer": "none",
+        "why": "Each T4 molecule still carries four iodine atoms. With little iodine, the gland simply makes fewer of them."
+      },
+      {
+        "name": "Blood calcium",
+        "answer": "none",
+        "why": "Blood calcium is set by PTH and calcitriol, which iodine deficiency does not change."
       }
     ],
     "why": {
@@ -171,6 +186,11 @@
         "name": "Size of the thyroid gland",
         "answer": "up",
         "why": "The immune protein drives growth just as TSH would."
+      },
+      {
+        "name": "Iodine atoms in each T4 molecule",
+        "answer": "none",
+        "why": "Every T4 molecule carries four iodine atoms. Graves disease makes more molecules, not different ones."
       }
     ],
     "why": {
@@ -551,6 +571,11 @@
         "name": "Phosphate lost in the urine",
         "answer": "up",
         "why": "The higher PTH makes the kidneys keep less phosphate."
+      },
+      {
+        "name": "TSH",
+        "answer": "none",
+        "why": "Vitamin D deficiency affects the calcium loop, not the thyroid's control loop."
       }
     ],
     "why": {
@@ -703,23 +728,22 @@
       "Fast resting heart rate",
       "Feeling cold",
       "Weight loss despite a big appetite",
-      "Fine tremor of the hands",
+      "Slow, delayed reflexes",
       "High TSH in Graves disease",
       "Warm, moist skin"
     ],
     "correct": [
       0,
       2,
-      3,
       5
     ],
     "why": {
-      "correct": "Too much thyroid hormone speeds every tissue: more heat (warm, moist skin), more fuel burned (weight loss), more sympathetic sensitivity (fast heart, tremor). In Graves disease TSH is suppressed by feedback, not high.",
+      "correct": "Too much thyroid hormone speeds every tissue: more heat (warm, moist skin), more fuel burned (weight loss), more sympathetic sensitivity (fast heart). Reflexes are brisk, not slow, and in Graves disease TSH is suppressed by feedback, not high.",
       "options": [
         "Correct. More beta-1 receptor proteins and sympathetic sensitivity speed the heart.",
         "Feeling cold is a sign of too little thyroid hormone. Hyperthyroid people feel hot.",
         "Correct. Cells burn fuel faster than it is eaten.",
-        "Correct. Greater sympathetic sensitivity causes a fine tremor.",
+        "Slow reflexes are a sign of too little thyroid hormone. In hyperthyroidism reflexes are brisk.",
         "In Graves disease the high T4 and T3 suppress TSH almost to zero.",
         "Correct. Extra heat production makes the skin warm and sweaty."
       ]

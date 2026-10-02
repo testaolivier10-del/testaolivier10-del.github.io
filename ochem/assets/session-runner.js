@@ -446,7 +446,9 @@
     }
 
     function headHtml(q, isCheck, conceptId){
-      var concept = CO.get(conceptId);
+      // A legacy question whose concept is only its topic's default does not
+      // name that concept above the stem (see question-engine normalizeLegacy).
+      var concept = (q.conceptFallback && !isCheck) ? null : CO.get(conceptId);
       var kindLabel = KIND_LABEL[q.kind] || '';
       return navHtml() +
         '<div class="step-eyebrow">' +
@@ -491,6 +493,9 @@
     /* ---- rendering ------------------------------------------------------ */
 
     function renderQuestion(q, opts){
+      // The explanations file is fetched when the first question is shown,
+      // not with the page (assets/bank-loader.js).
+      if(window.OchemPracticeWhyLoad) window.OchemPracticeWhyLoad();
       S.current = q;
       S.viewIndex = null;
       S.liveAnswered = false;
@@ -594,6 +599,19 @@
       S.liveAnswered = true;
 
       document.getElementById('afterAnswer').innerHTML = feedbackHtml(q, d, check, false);
+      // Answered before the explanations file landed: redraw this card's
+      // feedback when it does, if the card is still on screen.
+      if(!d.why && !window.OchemPracticeWhyLoaded && window.OchemPracticeWhyLoad){
+        var entry = S.history[S.history.length - 1];
+        window.OchemPracticeWhyLoad().then(function(){
+          var box = document.getElementById('afterAnswer');
+          if(!box || !q.why || S.history[S.history.length - 1] !== entry || S.current !== q) return;
+          d.why = q.why;
+          box.innerHTML = feedbackHtml(q, d, check, false);
+          var nb = cardEl.querySelector('#nextBtn');
+          if(nb) nb.addEventListener('click', advance);
+        });
+      }
       /* The panel above is written into a card the runner replaces between
          questions, so nothing in it is announced on its own. Send the verdict
          and the reason to the site's live region — the diagnosis is the part
@@ -615,7 +633,7 @@
         html += '<div class="diag"><div class="k">' +
           (d.precise ? 'Here is what went wrong' : 'Not quite') + '</div>' +
           (d.whatYouDid ? '<div class="did">' + esc(d.whatYouDid) + '</div>' : '') +
-          '<p class="msg">' + esc(d.diagnosis) + '</p>' +
+          (d.diagnosis ? '<p class="msg">' + esc(d.diagnosis) + '</p>' : '') +
           (d.why ? '<p class="msg">' + esc(d.why) + '</p>' : '') +
         '</div>';
 

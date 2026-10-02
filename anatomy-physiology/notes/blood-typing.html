@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blood types and transfusion: Notes | Anatomy &amp; Physiology</title>
+<title>Blood types and transfusion — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Before anyone receives a unit of blood, a lab checks two things about the donor's red cells and the patient's plasma.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/blood-typing.html">
-<meta property="og:title" content="Blood types and transfusion: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Blood types and transfusion — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Before anyone receives a unit of blood, a lab checks two things about the donor's red cells and the patient's plasma.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/blood-typing.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="blood-typing">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 18 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/blood.html">Blood</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Blood types and transfusion: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/blood-typing.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 18 &middot; Topic 94 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 18 &middot; Topic 94 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Blood types and transfusion</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="blood-typing">Not practiced</span></p>
     </header>
@@ -127,10 +128,10 @@
 <li><strong>Type AB:</strong> both A and B antigens.</li>
 <li><strong>Type O:</strong> neither A nor B antigen.</li>
 </ul>
-<figure id="fig-os-18-17"  class="anp-figure"><div class="anp-figimg" data-fig="os-18-17"><img src="../figures/os-18-17.jpg" alt="A table of the four ABO blood types. For each type, a red blood cell is drawn with the surface markers it carries: round-tipped markers for type A, diamond-tipped markers for type B, both for type AB and none for type O. Rows below show the Y-shaped antibodies in each type's plasma, the markers on its red cells, and the donor types it can receive in an emergency." width="1100" height="845" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The ABO blood groups. Each type is defined by the antigens on its red cells, and its plasma holds antibodies against the ABO antigens it lacks. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 18.17, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/18-6-blood-typing">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-18-17"  class="anp-figure"><div class="anp-figimg" data-fig="os-18-17"><picture><source type="image/avif" srcset="../figures/avif/os-18-17-480.avif 480w, ../figures/avif/os-18-17-800.avif 800w, ../figures/avif/os-18-17.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-18-17.jpg" alt="A table of the four ABO blood types. For each type, a red blood cell is drawn with the surface markers it carries: round-tipped markers for type A, diamond-tipped markers for type B, both for type AB and none for type O. Rows below show the Y-shaped antibodies in each type's plasma, the markers on its red cells, and the donor types it can receive in an emergency." width="1100" height="845" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The ABO blood groups. Each type is defined by the antigens on its red cells, and its plasma holds antibodies against the ABO antigens it lacks. <span class="anp-credit">Figure 18.17 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/18-6-blood-typing">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>Inheriting a blood type</h3>
 <p>You inherit one copy of the ABO gene from each parent. An A or B copy makes its antigen whenever it is present, so a person with one A copy and one B copy makes both antigens and is type AB. An O copy makes nothing, so it only shows when both copies are O.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Gene copies</th><th>AA or AO</th><th>BB or BO</th><th>AB</th><th>OO</th></tr></thead>
 <tbody>
 <tr><th>Antigens on red cells</th><td>A</td><td>B</td><td>A and B</td><td>Neither</td></tr>
@@ -141,7 +142,7 @@
 
 <h2 id="anti-a-and-anti-b-antibodies">Anti-A and anti-B antibodies</h2>
 <p>Here is the feature that makes ABO dangerous. By a few months of age, everyone has antibodies in their plasma against whichever of the A and B antigens their own red cells lack, without ever having received blood. The best explanation is that bacteria in the intestine and in food carry sugar chains that look like the A and B antigens. The immune system makes antibodies against those it sees as foreign; it does not make antibodies against antigens on its own cells.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Type A</th><th>Type B</th><th>Type AB</th><th>Type O</th></tr></thead>
 <tbody>
 <tr><th>Antigens on red cells</th><td>A</td><td>B</td><td>A and B</td><td>None</td></tr>
@@ -197,7 +198,7 @@
 <li><strong>Rh negative:</strong> red cells lack the D antigen, because both copies of the gene are missing or do not work.</li>
 </ul>
 <p>The Rh blood group behaves differently from ABO in one crucial way. <strong>An Rh-negative person does not have anti-D antibodies until they are exposed to Rh-positive red cells</strong>, by a transfusion or by a pregnancy with an Rh-positive fetus. The first exposure makes the immune system start producing anti-D over weeks, too late to harm the cells that caused it. Once a person has been sensitized in this way, a second exposure produces a fast, strong attack on Rh-positive cells.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>ABO blood groups</th><th>Rh blood group</th></tr></thead>
 <tbody>
 <tr><th>Antigen</th><td>Sugar chains (A, B) at the end of the H antigen</td><td>The D protein in the membrane</td></tr>
@@ -220,7 +221,7 @@
 </ol>
 <p><strong>Answer.</strong> O negative. (A negative would be the first choice if the bank had it.)</p>
 </div>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Blood type</th><th>Antigens on red cells</th><th>Antibodies in plasma</th><th>Can receive red cells from</th><th>Share of people (US, about)</th></tr></thead>
 <tbody>
 <tr><th>O negative</th><td>None</td><td>Anti-A, anti-B</td><td>O−</td><td>7%</td></tr>
@@ -258,7 +259,7 @@
 <p><em>Hemolytic disease of the newborn</em> (HDN), also called hemolytic disease of the fetus and newborn, is the destruction of a fetus's red cells by its mother's antibodies. Its most severe form is caused by the Rh factor (<a class="figref" href="#fig-os-18-15">Figure 3</a>).</p>
 <aside class="anp-preview" data-concept="placenta"><p>Preview: the <a class="gl" href="../notes/placenta.html" data-c="placenta">placenta</a> is the <a class="gl" href="../notes/body-organization.html" data-c="organ">organ</a> through which a fetus exchanges oxygen, <a class="gl" href="../notes/body-organization.html" data-c="characteristics-of-life">nutrients</a> and wastes with its mother's blood. The two bloods flow close together but normally do not mix, and some antibodies can cross from mother to fetus. It is taught in the placenta topic.</p></aside>
 <aside class="anp-preview" data-concept="antibody-classes"><p>Preview: antibodies come in five classes. The anti-A and anti-B that everyone has are mostly IgM, too large to cross the placenta. Anti-D made after exposure is <a class="gl" href="../notes/antibody-immunity.html" data-c="antibody-classes">IgG</a>, the only class that crosses it. The classes are taught in <a class="gl" href="../notes/adaptive-immunity.html" data-c="b-cell">B cells</a> and antibodies.</p></aside>
-<figure id="fig-os-18-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-18-15"><img src="../figures/os-18-15.jpg" alt="A drawing of the organ that joins mother and fetus, with a fetal blood vessel branching inside a pool of maternal blood, and two enlarged panels. The first panel shows the first birth: red cells from the baby leak across a break into the mother's blood, and her immune cells begin making Y-shaped antibodies against them. The second panel shows a later pregnancy: many antibodies are already present in the mother's blood, and they cross into the fetal vessel and attach to the fetus's red cells." width="1100" height="1006" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:18.45%;top:0.80%;width:7.55%;height:1.89%"></span><span class="anp-cover" aria-hidden="true" style="left:0.45%;top:2.58%;width:8.91%;height:6.36%"></span><span class="anp-cover" aria-hidden="true" style="left:40.91%;top:8.85%;width:22.64%;height:2.29%"></span><span class="anp-cover" aria-hidden="true" style="left:40.91%;top:14.21%;width:21.36%;height:2.29%"></span><span class="anp-cover" aria-hidden="true" style="left:40.91%;top:21.57%;width:15.73%;height:2.29%"></span><span class="anp-cover" aria-hidden="true" style="left:0.36%;top:30.12%;width:15.45%;height:8.35%"></span><span class="anp-cover" aria-hidden="true" style="left:40.36%;top:43.44%;width:9.09%;height:3.98%"></span><span class="anp-cover" aria-hidden="true" style="left:40.36%;top:82.80%;width:9.09%;height:3.98%"></span><span class="anp-cover" aria-hidden="true" style="left:83.27%;top:30.91%;width:16.55%;height:18.29%"></span><span class="anp-cover" aria-hidden="true" style="left:83.36%;top:51.39%;width:14.64%;height:12.03%"></span><span class="anp-cover" aria-hidden="true" style="left:83.36%;top:84.59%;width:15.18%;height:12.43%"></span></div><figcaption><b>Figure 3.</b> How Rh antibodies harm a later pregnancy. In a first pregnancy with an Rh-positive fetus, fetal red cells enter the Rh-negative mother's blood, mostly at birth, and she begins making anti-D. In a later pregnancy, her anti-D crosses into the fetus and attacks its Rh-positive red cells. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 18.15, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/18-6-blood-typing">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-18-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-18-15"><picture><source type="image/avif" srcset="../figures/avif/os-18-15-480.avif 480w, ../figures/avif/os-18-15-800.avif 800w, ../figures/avif/os-18-15.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-18-15.jpg" alt="A drawing of the organ that joins mother and fetus, with a fetal blood vessel branching inside a pool of maternal blood, and two enlarged panels. The first panel shows the first birth: red cells from the baby leak across a break into the mother's blood, and her immune cells begin making Y-shaped antibodies against them. The second panel shows a later pregnancy: many antibodies are already present in the mother's blood, and they cross into the fetal vessel and attach to the fetus's red cells." width="1100" height="1006" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:18.45%;top:0.80%;width:7.55%;height:1.89%"></span><span class="anp-cover" aria-hidden="true" style="left:0.45%;top:2.58%;width:8.91%;height:6.36%"></span><span class="anp-cover" aria-hidden="true" style="left:40.91%;top:8.85%;width:22.64%;height:2.29%"></span><span class="anp-cover" aria-hidden="true" style="left:40.91%;top:14.21%;width:21.36%;height:2.29%"></span><span class="anp-cover" aria-hidden="true" style="left:40.91%;top:21.57%;width:15.73%;height:2.29%"></span><span class="anp-cover" aria-hidden="true" style="left:0.36%;top:30.12%;width:15.45%;height:8.35%"></span><span class="anp-cover" aria-hidden="true" style="left:40.36%;top:43.44%;width:9.09%;height:3.98%"></span><span class="anp-cover" aria-hidden="true" style="left:40.36%;top:82.80%;width:9.09%;height:3.98%"></span><span class="anp-cover" aria-hidden="true" style="left:83.27%;top:30.91%;width:16.55%;height:18.29%"></span><span class="anp-cover" aria-hidden="true" style="left:83.36%;top:51.39%;width:14.64%;height:12.03%"></span><span class="anp-cover" aria-hidden="true" style="left:83.36%;top:84.59%;width:15.18%;height:12.43%"></span></div><figcaption><b>Figure 3.</b> How Rh antibodies harm a later pregnancy. In a first pregnancy with an Rh-positive fetus, fetal red cells enter the Rh-negative mother's blood, mostly at birth, and she begins making anti-D. In a later pregnancy, her anti-D crosses into the fetus and attacks its Rh-positive red cells. <span class="anp-credit">Figure 18.15 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/18-6-blood-typing">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <ol>
 <li><strong>The setup.</strong> An Rh-negative mother carries an Rh-positive fetus, which inherited a D gene from its father.</li>
 <li><strong>First pregnancy.</strong> Fetal and maternal blood normally stay apart. At delivery, and sometimes after a miscarriage, bleeding or a procedure in pregnancy, some fetal red cells enter the mother's blood. Her immune system makes anti-D over the following weeks. The first baby is usually unharmed, because it has already been born.</li>
@@ -273,13 +274,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:blood-typing">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="hemostasis.html"><span>&larr; Topic 93</span><b>Hemostasis and clotting</b></a><a class="tb-chapter-link next" href="heart-anatomy.html"><span>Topic 95 &rarr;</span><b>Heart location, coverings, chambers and great vessels</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

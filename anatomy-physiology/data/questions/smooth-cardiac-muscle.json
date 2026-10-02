@@ -282,23 +282,22 @@
       "Fibers linked by many gap junctions",
       "Spontaneous rhythmic activity from pacesetter cells",
       "Each fiber controlled by its own nerve endings",
-      "Contraction in response to stretch",
+      "Found in the walls of the large airways and large arteries",
       "Found in the walls of the stomach, intestines and urinary bladder",
       "Striations from lined-up sarcomeres"
     ],
     "correct": [
       0,
       1,
-      3,
       4
     ],
     "why": {
-      "correct": "Single-unit smooth muscle is a gap-junction-linked sheet with pacesetter activity that contracts when stretched, and it lines most hollow organs. Individual nerve control describes multi-unit smooth muscle, and no smooth muscle has sarcomeres.",
+      "correct": "Single-unit smooth muscle is a gap-junction-linked sheet with pacesetter activity, and it lines most hollow organs. Individual nerve control and the large airways and arteries belong to multi-unit smooth muscle, and no smooth muscle has sarcomeres.",
       "options": [
         "Correct. Gap junctions let the sheet act as one unit.",
         "Correct. Pacesetter cells set its rhythm.",
         "This is multi-unit smooth muscle.",
-        "Correct. Stretch depolarizes the fibers and can trigger contraction.",
+        "The large airways and large arteries have multi-unit smooth muscle, controlled fiber by fiber.",
         "Correct. These walls are mostly single-unit smooth muscle.",
         "All smooth muscle is nonstriated; its filaments are not arranged in sarcomeres."
       ]

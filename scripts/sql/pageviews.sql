@@ -19,7 +19,7 @@
 -- 0. What the table actually looks like.
 --
 -- Run this first. Everything after it assumes the shape the counter was built
--- with — one row per (path, day) with a running count — and if the column names
+-- with — one row per (path, day) with a running total in `views` — and if the names
 -- differ, this is what tells you, rather than five queries failing one at a
 -- time.
 -- ---------------------------------------------------------------------------
@@ -32,7 +32,7 @@ order by ordinal_position;
 -- 1. The headline: total views, distinct pages, and the range covered.
 -- ---------------------------------------------------------------------------
 select
-  sum(count)                       as total_views,
+  sum(views)                       as total_views,
   count(distinct path)             as pages,
   min(day)                         as first_day,
   max(day)                         as last_day,
@@ -45,7 +45,7 @@ from public.page_views;
 -- The one thing the counter is genuinely good at. Umami answers this too, but
 -- only for the period since it was installed.
 -- ---------------------------------------------------------------------------
-select path, sum(count) as views
+select path, sum(views) as views
 from public.page_views
 group by path
 order by views desc
@@ -56,7 +56,7 @@ limit 40;
 --
 -- Useful for spotting the days something was shared somewhere.
 -- ---------------------------------------------------------------------------
-select day, sum(count) as views
+select day, sum(views) as views
 from public.page_views
 group by day
 order by day desc
@@ -74,7 +74,7 @@ select
     when path like '/ochem/%' then 'Organic Chemistry'
     else 'Hub and other'
   end as area,
-  sum(count) as views
+  sum(views) as views
 from public.page_views
 group by area
 order by views desc;
@@ -87,7 +87,7 @@ order by views desc;
 -- ---------------------------------------------------------------------------
 select
   replace(replace(path, '/ochem/lessons/', ''), '.html', '') as lesson,
-  sum(count) as views
+  sum(views) as views
 from public.page_views
 where path like '/ochem/lessons/%'
 group by lesson
@@ -98,7 +98,7 @@ order by views desc;
 -- ---------------------------------------------------------------------------
 select
   date_trunc('month', day)::date as month,
-  sum(count)                     as views,
+  sum(views)                     as views,
   count(distinct path)           as pages_touched
 from public.page_views
 group by month
@@ -111,6 +111,6 @@ order by month desc;
 -- identifiers of any kind, so there is nothing sensitive in the result — it is
 -- a list of paths, dates and integers.
 -- ---------------------------------------------------------------------------
-select path, day, count
+select path, day, views
 from public.page_views
-order by day desc, count desc;
+order by day desc, views desc;

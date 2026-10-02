@@ -397,23 +397,22 @@
       "A fast heart rate",
       "Cool, pale, clammy skin",
       "A narrowed pulse pressure",
-      "Reduced urine output",
+      "Blood pressure well above normal",
       "Warm, flushed skin",
       "A heart rate slower than normal"
     ],
     "correct": [
       0,
       1,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "In compensated hypovolemic shock, sympathetic output raises heart rate and constricts the skin's arterioles. Diastolic pressure is held up while stroke volume falls, so pulse pressure narrows. The RAAS and ADH make the kidneys keep salt and water, so urine output falls.",
+      "correct": "In compensated hypovolemic shock, sympathetic output raises heart rate and constricts the skin's arterioles, so the skin is cool and pale. Diastolic pressure is held up while stroke volume falls, so pulse pressure narrows, and overall pressure is near normal or a little low, not raised.",
       "options": [
         "Correct. The baroreceptor reflex speeds the heart.",
         "Correct. Skin arterioles constrict, and sympathetic stimulation of sweat glands makes the skin clammy.",
         "Correct. Systolic pressure falls with stroke volume while vasoconstriction holds diastolic pressure up.",
-        "Correct. Aldosterone and ADH reduce the loss of salt and water in urine.",
+        "Compensation holds pressure near normal or a little low. It does not push it well above normal.",
         "Warm, flushed skin means dilated skin vessels, as in early septic shock. In blood loss the skin vessels constrict.",
         "A slow heart rate is expected in neurogenic shock, not in blood loss, where the reflex speeds the heart."
       ]

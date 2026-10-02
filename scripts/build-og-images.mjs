@@ -1,10 +1,10 @@
-/* Renders the three link-preview cards.
+/* Renders the link-preview cards (site, NREMT, ochem, A&P).
 
    These are the 1200x630 images an unfurler shows when a LevlPrep link is
    pasted into a chat. There were two of them, both hand-made and both wrong by
    the time anyone looked: the site card still said "Study Hub", a name the
    site has not used in months, and the NREMT card advertised "978 practice
-   questions" against a bank that now holds 2,084. Nothing pointed either fact
+   questions" against a bank that by then held 2,084. Nothing pointed either fact
    at the thing it described, so neither could go stale loudly.
 
    Ochem had no card at all, which is what prompted this — 80 of its pages now
@@ -57,27 +57,39 @@ const questionCount = JSON.parse(
    lessons are the pages. */
 const lessonCount = readdirSync('ochem/lessons').filter((f) => f.endsWith('.html')).length;
 
+/* Chapters are the chapter pages build-anp.mjs writes. */
+const anpChapterCount = readdirSync('anatomy-physiology/chapters').filter((f) => f.endsWith('.html')).length;
+
 const CARDS = [
   {
     out: 'assets/og-image.png',
-    badge: 'Free core · No ads',
+    badge: 'Free to start · No ads',
     brand: 'LevlPrep',
-    title: 'Free practice tools for certification exams',
-    sub: 'Real question banks and interactive courses, with honest practice conditions.',
+    title: 'Practice tools for certification exams',
+    sub: 'Original practice questions and interactive courses, with honest practice conditions.',
   },
   {
     out: 'nremt/assets/og-image.png',
-    badge: 'Free · No account needed',
+    badge: 'Free to start · No ads',
     brand: 'LevlPrep',
     title: 'NREMT-EMT Practice Exam & Study Tools',
-    sub: `${questionCount.toLocaleString('en-US')} practice questions, timed exams, scenarios and a 3D body map — free, right in your browser.`,
+    sub: `${questionCount.toLocaleString('en-US')} original practice questions, timed exams, study notes and a 3D body map, right in your browser.`,
   },
   {
     out: 'ochem/assets/og-image.png',
-    badge: 'Free · No account needed',
+    badge: 'Free to start · No ads',
     brand: 'LevlPrep',
     title: 'Organic Chemistry, learned by doing the mechanisms',
     sub: `${lessonCount} interactive lessons where you push the arrows yourself, with instant feedback.`,
+  },
+  /* A&P had 378 pages pointing at this file and no file (site audit 2026-10):
+     every shared A&P link unfurled with no picture. */
+  {
+    out: 'anatomy-physiology/assets/og-image.png',
+    badge: 'Free to start · No ads',
+    brand: 'LevlPrep',
+    title: 'Anatomy & Physiology, in the order it builds',
+    sub: `${anpChapterCount} chapters of free notes, mechanism-first physiology, and interactive lessons with instant feedback.`,
   },
 ];
 
@@ -88,8 +100,7 @@ const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt
    header uses. Fonts are the two the site loads, with a system stack behind
    them so a card still renders if Google Fonts is unreachable. */
 const page = (c) => `<!DOCTYPE html><html><head><meta charset="utf-8">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=IBM+Plex+Mono:wght@600;700&display=swap">
+<link rel="stylesheet" href="file://${join(process.cwd(), 'assets', 'fonts', 'fonts.css')}">
 <style>
   :root{
     --navy:#16332E; --paper:#F2EEE6; --ink:#16241F; --muted:#5F7770;
@@ -140,7 +151,7 @@ const page = (c) => `<!DOCTYPE html><html><head><meta charset="utf-8">
   </div>
 </body></html>`;
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const ctx = await browser.newContext({
   viewport: { width: 1200, height: 630 },
   deviceScaleFactor: 1,

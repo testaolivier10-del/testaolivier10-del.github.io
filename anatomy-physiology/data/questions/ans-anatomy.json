@@ -124,7 +124,7 @@
       "In the brainstem and in sacral segments S2–S4",
       "In the lateral horn of the spinal cord, segments T1–L2",
       "In the chain ganglia beside the vertebral column",
-      "In the ventral horn at every spinal segment"
+      "In the ventral horn along the whole cord"
     ],
     "correct": 1,
     "why": {
@@ -222,23 +222,22 @@
       "Postganglionic fibers reach the skin through gray rami communicantes",
       "Preganglionic fibers are long and postganglionic fibers are short",
       "A preganglionic neuron branches to many chain ganglia",
-      "The vagus nerve carries most of its preganglionic fibers"
+      "Its preganglionic neurons release norepinephrine"
     ],
     "correct": [
       0,
       1,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "The parasympathetic division is craniosacral, uses terminal or intramural ganglia in or beside its targets, so its preganglionic fibers are long and postganglionic fibers short, and about three quarters of its fibers travel in the vagus nerve. It has no chain and no gray rami.",
+      "correct": "The parasympathetic division is craniosacral and uses terminal or intramural ganglia in or beside its targets, so its preganglionic fibers are long and its postganglionic fibers short. It has no chain and no gray rami, and its preganglionic neurons, like all preganglionic neurons, release acetylcholine.",
       "options": [
         "Correct. Nerves III, VII, IX and X, plus S2–S4.",
         "Correct. These are the terminal and intramural ganglia.",
         "Gray rami carry sympathetic postganglionic fibers. Parasympathetic fibers do not reach the skin.",
         "Correct. The ganglion sits at the target, so the first neuron covers almost the whole distance.",
         "Branching through the chain is the sympathetic pattern. Parasympathetic preganglionic neurons contact only a few postganglionic neurons, and there is no parasympathetic chain.",
-        "Correct. The vagus carries about three quarters of all parasympathetic preganglionic fibers."
+        "Preganglionic neurons of both divisions release acetylcholine onto the ganglion cells."
       ]
     }
   },
@@ -277,7 +276,7 @@
       "structure-function",
       "communication"
     ],
-    "q": "Mr. Okafor, 61, has a tumor at the very top of his right lung, beside the upper thoracic vertebrae. His right pupil is smaller than his left, his right upper eyelid droops slightly, and the right side of his face does not sweat. Which structure has the tumor most likely damaged?",
+    "q": "Mr. Dubois, 61, has a tumor at the very top of his right lung, beside the upper thoracic vertebrae. His right pupil is smaller than his left, his right upper eyelid droops slightly, and the right side of his face does not sweat. Which structure has the tumor most likely damaged?",
     "options": [
       "The right oculomotor nerve",
       "The right sympathetic chain",
@@ -361,7 +360,7 @@
     ],
     "q": "Why does a burst of sympathetic activity reach many organs at once, while parasympathetic activity can affect one organ at a time?",
     "options": [
-      "Sympathetic fibers are myelinated all the way to the target, so their signal spreads farther",
+      "Sympathetic fibers are myelinated up to the target, so their signal spreads farther",
       "The sympathetic division has more preganglionic neurons than there are organs to supply",
       "Sympathetic preganglionic neurons branch widely through the chain",
       "Parasympathetic postganglionic fibers are too long to reach more than one organ"
@@ -494,7 +493,7 @@
     "q": "A frightening near-miss in traffic triggers a sympathetic burst. Your heart is still pounding minutes after the nerve activity has died down. Which feature of the sympathetic division best explains this?",
     "options": [
       "Postganglionic fibers are unmyelinated and conduct slowly",
-      "Gray rami carry signals only to the skin",
+      "Gray rami carry signals to the skin rather than the heart",
       "Epinephrine released into the blood keeps acting after the nerve signal stops",
       "Preganglionic fibers are short"
     ],
@@ -547,7 +546,7 @@
     "options": [
       "Sweat glands in the skin",
       "Arrector pili muscles",
-      "The adrenal medulla",
+      "The glands that make saliva",
       "The heart",
       "Smooth muscle in most blood vessel walls",
       "The iris"
@@ -555,15 +554,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Parasympathetic fibers do not travel in the gray rami or spinal nerves, so they never reach the skin or most blood vessels, and they do not supply the adrenal medulla. The heart and the iris get fibers from both divisions.",
+      "correct": "Parasympathetic fibers do not travel in the gray rami or spinal nerves, so they never reach the sweat glands, the arrector pili muscles or most blood vessels. The heart, the iris and the glands that make saliva get fibers from both divisions.",
       "options": [
         "Correct. Sweat glands get sympathetic fibers through the gray rami.",
         "Correct. The arrector pili muscles are supplied only by sympathetic fibers.",
-        "Correct. Only sympathetic preganglionic fibers reach the adrenal medulla.",
+        "The glands that make saliva get both: parasympathetic fibers that drive watery saliva and sympathetic fibers that make it thick.",
         "The heart gets sympathetic fibers from the upper thoracic chain and parasympathetic fibers from the vagus.",
         "Correct. Most blood vessels receive only sympathetic fibers.",
         "The iris gets parasympathetic fibers from nerve III, which narrow the pupil, and sympathetic fibers, which widen it."

@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hypertension, heart failure and shock: Notes | A&amp;P</title>
-<meta name="description" content="This page covers four ways the circulation fails: hypertension, atherosclerosis, heart failure and shock.">
+<title>Hypertension, heart failure and shock — A&amp;P Notes | LevlPrep</title>
+<meta name="description" content="Circulatory disorders explained by mechanism: hypertension, atherosclerosis, heart failure, the types of circulatory shock and compensation for hemorrhage.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/circulatory-disorders.html">
-<meta property="og:title" content="Hypertension, heart failure and shock: Notes | A&amp;P">
-<meta property="og:description" content="This page covers four ways the circulation fails: hypertension, atherosclerosis, heart failure and shock.">
+<meta property="og:title" content="Hypertension, heart failure and shock — A&amp;P Notes | LevlPrep">
+<meta property="og:description" content="Circulatory disorders explained by mechanism: hypertension, atherosclerosis, heart failure, the types of circulatory shock and compensation for hemorrhage.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/circulatory-disorders.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -40,7 +41,7 @@
       "@id": "https://levlprep.com/anatomy-physiology/notes/circulatory-disorders.html#reading",
       "name": "Hypertension, heart failure and shock",
       "url": "https://levlprep.com/anatomy-physiology/notes/circulatory-disorders.html",
-      "description": "This page covers four ways the circulation fails: hypertension, atherosclerosis, heart failure and shock.",
+      "description": "Circulatory disorders explained by mechanism: hypertension, atherosclerosis, heart failure, the types of circulatory shock and compensation for hemorrhage.",
       "learningResourceType": "Reading",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="circulatory-disorders">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 19 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cardiovascular.html">The cardiovascular system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hypertension, heart failure and shock: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/circulatory-disorders.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 110 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 110 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Hypertension, heart failure and shock</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/interdependence.html">Interdependence of systems</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="circulatory-disorders">Not practiced</span></p>
     </header>
@@ -111,7 +112,7 @@
 <p>This page covers four ways the circulation fails: <span class="gl" tabindex="0" data-c="hypertension">hypertension</span>, <span class="gl" tabindex="0" data-c="atherosclerosis">atherosclerosis</span>, <span class="gl" tabindex="0" data-c="heart-failure">heart failure</span> and shock. For each one, you will see the pathophysiology in terms you already know: <a class="gl" href="../notes/bp-short-term.html" data-c="map-co-tpr">MAP = CO × TPR</a>, the Frank–Starling mechanism, the <a class="gl" href="../notes/capillary-exchange.html" data-c="net-filtration-capillary">Starling forces</a> and the <a class="gl" href="../notes/reflexes.html" data-c="reflex">reflexes</a> and <a class="gl" href="../notes/chemical-signaling.html" data-c="hormone">hormones</a> that control pressure. The largest section explains the types of shock and their pathophysiology, and the page ends with how your body compensates for a hemorrhage, from the first seconds to the following weeks.</p>
 
 <h2 id="hypertension">Hypertension</h2>
-<p>Mr. Okafor, 52, feels fine. At a pharmacy kiosk his <a class="gl" href="../notes/gradients-flow.html" data-c="blood-pressure-basic">blood pressure</a> reads 152/96. A week later his doctor measures 148/94, and again 150/95 the week after. He has no symptoms at all, and that is typical. <strong>Hypertension</strong> (hyper- = above, tens- = stretched, pressure), also called high blood pressure, is arterial pressure that stays above normal on repeated measurements.</p>
+<p>Mr. Banerjee, 52, feels fine. At a pharmacy kiosk his <a class="gl" href="../notes/gradients-flow.html" data-c="blood-pressure-basic">blood pressure</a> reads 152/96. A week later his doctor measures 148/94, and again 150/95 the week after. He has no symptoms at all, and that is typical. <strong>Hypertension</strong> (hyper- = above, tens- = stretched, pressure), also called high blood pressure, is arterial pressure that stays above normal on repeated measurements.</p>
 <p>The cutoffs in the widely used American (ACC/AHA) guidelines, set in 2017 and kept in the 2025 update, are:</p>
 <ul>
   <li><strong>Normal:</strong> below 120 systolic and below 80 diastolic.</li>
@@ -123,7 +124,7 @@
 
 <div class="worked">
   <h3>Worked example 1: classify a reading and find its MAP</h3>
-  <p>Mr. Okafor's average reading is 150/95 <a class="gl" href="../notes/gradients-flow.html" data-c="pressure">mm Hg</a>.</p>
+  <p>Mr. Banerjee's average reading is 150/95 <a class="gl" href="../notes/gradients-flow.html" data-c="pressure">mm Hg</a>.</p>
   <ol>
     <li>Classify each number. Systolic 150 is 140 or more: stage 2. Diastolic 95 is 90 or more: stage 2.</li>
     <li>The category is stage 2 hypertension.</li>
@@ -160,7 +161,7 @@
   <li><strong>The plaque narrows or ruptures.</strong> A slowly growing plaque narrows the lumen. A plaque with a thin cap can crack. Blood then meets the core, platelets stick, and a <a class="gl" href="../notes/hemostasis.html" data-c="clotting-disorders">thrombus</a> forms within minutes. It may block the artery completely.</li>
 </ol>
 <p><a class="figref" href="#fig-angiogram">Figure 1</a> shows what this looks like in a living heart.</p>
-<figure id="fig-angiogram"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-16"><img src="../figures/os-19-16.jpg" alt="An X-ray image of the heart's arteries made visible with injected dye. Two places, one in the common trunk of the left coronary artery and one in its circumflex branch, show where atherosclerotic plaque blocks the flow of dye." width="1100" height="1100" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A coronary angiogram: dye injected into the coronary arteries shows two places where atherosclerotic plaque has blocked the flow of blood. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.16, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-angiogram"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-16"><picture><source type="image/avif" srcset="../figures/avif/os-19-16-480.avif 480w, ../figures/avif/os-19-16-800.avif 800w, ../figures/avif/os-19-16.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-16.jpg" alt="An X-ray image of the heart's arteries made visible with injected dye. Two places, one in the common trunk of the left coronary artery and one in its circumflex branch, show where atherosclerotic plaque blocks the flow of dye." width="1100" height="1100" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> A coronary angiogram: dye injected into the coronary arteries shows two places where atherosclerotic plaque has blocked the flow of blood. <span class="anp-credit">Figure 19.16 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-1-heart-anatomy">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h3>Why narrowing matters so much</h3>
 <div class="worked">
@@ -186,7 +187,7 @@
   <li><strong>Right-sided heart failure:</strong> the right ventricle cannot keep up with what the body returns. Pressure rises in the right atrium, the venae cavae and the systemic veins. The jugular veins bulge, the liver swells with blood, and fluid filters out of systemic capillaries: <a class="gl" href="../notes/capillary-exchange.html" data-c="edema">edema</a> in the ankles and legs. The most common cause is left-sided failure, which raises the pressure the right ventricle must pump against.</li>
 </ul>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
   <thead><tr><th></th><th>Left-sided heart failure</th><th>Right-sided heart failure</th></tr></thead>
   <tbody>
     <tr><th>Pump that fails</th><td>Left ventricle</td><td>Right ventricle</td></tr>
@@ -227,7 +228,7 @@
     The result is a sudden, severe fall in TPR plus loss of plasma into the tissues.</li>
 </ul>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
   <thead><tr><th></th><th>Hypovolemic</th><th>Cardiogenic</th><th>Obstructive</th><th>Distributive (septic)</th></tr></thead>
   <tbody>
     <tr><th>What fails</th><td>Blood volume</td><td>The heart as a pump</td><td>Flow into or out of the heart</td><td>Arteriole and vein tone</td></tr>
@@ -317,13 +318,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:circulatory-disorders">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="bp-long-term.html"><span>&larr; Topic 109</span><b>Long-term blood pressure regulation</b></a><a class="tb-chapter-link next" href="lymphatic-system.html"><span>Topic 111 &rarr;</span><b>The lymphatic system</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

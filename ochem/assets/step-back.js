@@ -32,6 +32,7 @@
      and mechanism-page.js) right after they know their steps; the shell's
      CSS lays it out beside the card once it exists. */
   var railEl = null, railItems = [];
+  var GENERIC_EYEBROW = /^(explain|explanation|visuali[sz]e( & interact| &amp; interact)?|guided practice|independent practice|practice|challenge|check( understanding)?|why it matters)$/i;
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function buildRail(opts){
     var shell = opts.shell; if(!shell || railEl) return null;
@@ -42,14 +43,16 @@
     html += '<div class="lesson-rail-links"></div>';
     html += '<div class="lesson-rail-progress"></div>';
     html += '<ol class="lesson-steps">' + opts.steps.map(function(cfg, i){
-      // The eyebrow first, because it is the short label written for exactly
-      // this job ("Step 2 · Attack" -> "Attack"). The title is the step's
-      // question stem, a whole sentence, so preferring it filled the rail with
-      // text cut off mid-question — and any step without one fell through to a
-      // bare "Step 2", which tells a student nothing about what is on it.
-      var label = (cfg && cfg.eyebrow) ? cfg.eyebrow : ((cfg && cfg.title) ? cfg.title : 'Step ' + (i + 1));
+      // A distinctive eyebrow first ("Step 2 · Attack" -> "Attack"). Most
+      // lesson eyebrows are generic ("Explain" on 606 steps), and a rail of
+      // "Explain, Explain, Explain, Step 4" says nothing (audit 2026-10), so a
+      // generic one gives way to the step's title, shortened; a hands-on step
+      // with neither names itself with railLabel.
+      var eb = (cfg && cfg.eyebrow) ? String(cfg.eyebrow).replace(/<[^>]*>/g, '').replace(/^step\s*\d+\s*[\u00b7\-\u2013:]\s*/i, '') : '';
+      var generic = !eb || GENERIC_EYEBROW.test(eb);
+      var label = (cfg && cfg.railLabel) || (!generic ? eb : ((cfg && cfg.title) || eb || (cfg && cfg.render ? 'Hands-on step' : 'Step ' + (i + 1))));
       label = String(label).replace(/<[^>]*>/g, '').replace(/^step\s*\d+\s*[\u00b7\-\u2013:]\s*/i, '');
-      if(label.length > 64) label = label.slice(0, 61).replace(/\s+\S*$/, '') + '\u2026';
+      if(label.length > 56) label = label.slice(0, 53).replace(/\s+\S*$/, '') + '\u2026';
       return '<li class="lesson-step" data-step="' + i + '"><button type="button"><span class="n">' + (i + 1) + '</span><span class="t">' + esc(label) + '</span></button></li>';
     }).join('') + '</ol>';
     railEl.innerHTML = html;

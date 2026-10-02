@@ -84,6 +84,11 @@
         "name": "Glucose uptake by the symporter",
         "answer": "down",
         "why": "The symporter spends the sodium gradient. As sodium builds up inside, the gradient shrinks, so there is less energy to drag glucose in."
+      },
+      {
+        "name": "Number of pump proteins in the membrane",
+        "answer": "none",
+        "why": "The poison blocks the pumps that are there; it does not remove them from the membrane."
       }
     ],
     "why": {
@@ -158,22 +163,21 @@
       "Glucose uptake on a sodium–glucose symporter",
       "Oxygen diffusing across the bilayer",
       "Endocytosis",
-      "Exocytosis"
+      "Water entering the cell through aquaporins"
     ],
     "correct": [
       0,
       1,
-      3,
-      4
+      3
     ],
     "why": {
-      "correct": "Every form of active transport depends on ATP. The pump uses it directly; symporters depend on the sodium gradient the pump builds; vesicle formation and fusion use ATP. Simple diffusion needs none.",
+      "correct": "Every form of active transport depends on ATP. The pump uses it directly; symporters depend on the sodium gradient the pump builds; forming vesicles in endocytosis uses ATP. Simple diffusion and osmosis need none.",
       "options": [
         "Correct. The pump splits ATP with every cycle and stops at once.",
         "Correct. The symporter slows and stops as the sodium gradient runs down without the pump.",
         "Oxygen crosses by simple diffusion, powered by its own gradient, so it continues.",
         "Correct. Forming vesicles from the plasma membrane uses ATP.",
-        "Correct. Moving vesicles and fusing them with the plasma membrane uses ATP."
+        "Water moves by osmosis, which needs no ATP. As the pump fails and sodium builds up inside, water keeps moving in and the cell swells."
       ]
     },
     "id": "anp-active-transport-6"
@@ -346,7 +350,7 @@
     "options": [
       "The vesicles fuse without adding membrane",
       "The extra membrane dissolves in the fluid outside",
-      "The cell grows larger with every release",
+      "The cell grows steadily larger as it releases enzymes",
       "Endocytosis removes membrane from the surface at a matching rate"
     ],
     "correct": 3,
@@ -428,21 +432,20 @@
       "It splits ATP",
       "It is an integral membrane protein",
       "It binds its cargo and changes shape",
-      "It moves net positive charge out of the cell"
+      "It moves glucose into the cell"
     ],
     "correct": [
       0,
-      1,
-      4
+      1
     ],
     "why": {
-      "correct": "Both are integral carrier proteins that bind their cargo and change shape. Only the pump splits ATP, moves its ions uphill, and moves net charge (three positive charges out, two in).",
+      "correct": "Both are integral carrier proteins that bind their cargo and change shape. Only the pump splits ATP and moves its ions uphill (and in doing so moves net positive charge out). It does not carry glucose.",
       "options": [
         "Correct. The pump moves both ions uphill; the glucose carrier moves glucose downhill.",
         "Correct. The pump is an ATPase; facilitated diffusion uses no ATP.",
         "Both are integral membrane proteins, so this does not distinguish them.",
         "Both bind their cargo and change shape, so this does not distinguish them.",
-        "Correct. Each pump cycle moves one net positive charge out; glucose carries no charge."
+        "The pump moves sodium and potassium only. Glucose rides on other carriers."
       ]
     },
     "id": "anp-active-transport-16"
@@ -485,8 +488,8 @@
     "options": [
       "Much more, because sodium now leaks in faster",
       "Much less, because far less sodium leaks in",
-      "The same, because swelling depends only on ATP",
-      "Not at all, because the pumps are what cause swelling"
+      "The same, because swelling depends on ATP rather than on sodium",
+      "It shrinks, because the pumps are what cause swelling"
     ],
     "correct": 1,
     "why": {

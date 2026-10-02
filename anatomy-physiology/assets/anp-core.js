@@ -332,8 +332,64 @@
     });
   }
 
+  /* Lazy bank (audit 2026-10): loadIndex -> stubs from assets/bank/index.json;
+     loadQuestions -> full questions, fetching only their chapters; loadWhy ->
+     merges an explanation after the answer. Each file is fetched once. */
+  var files = {};
+  function getOnce(base, u){
+    var k = base + u;
+    if(!files[k]) files[k] = fetch(base + u).then(function(r){ if(!r.ok) throw new Error(u + ' ' + r.status); return r.json(); });
+    files[k].catch(function(){ delete files[k]; });
+    return files[k];
+  }
+  function loadIndex(base){
+    var cur = curriculum(), T = {};
+    cur.topics.forEach(function(t){ T[t.id] = t; });
+    var CH = {};
+    cur.chapters.forEach(function(c){ CH[c.id] = c; });
+    return getOnce(base, 'assets/bank/index.json').then(function(ix){
+      var out = [];
+      Object.keys(ix.t).forEach(function(topic){
+        var t = T[topic];
+        if(!t || !t.built || !ix.t[topic]) return;
+        var ch = CH[t.chapter] || {};
+        ix.t[topic].split(',').forEach(function(e){
+          var f = e.split('.');
+          out.push({ id: 'anp-' + topic + '-' + f[0], topic: topic, chapter: t.chapter, course: t.course, teas: ch.teas,
+            type: ix.ty[+f[1]], level: ix.lv[+f[2]], diff: +f[3],
+            core: f[4] ? f[4].split('+').map(function(i){ return ix.core[+i]; }) : [], stub: true });
+        });
+      });
+      return out;
+    });
+  }
+  function loadQuestions(base, xs){
+    var ids = {}, chs = {}, T = {};
+    curriculum().topics.forEach(function(t){ T[t.id] = t; });
+    (xs || []).forEach(function(x){
+      var id = typeof x === 'string' ? x : x.id;
+      ids[id] = 1;
+      var ch = typeof x === 'object' && x.chapter;
+      if(!ch){ var m = /^anp-(.+)-\d+$/.exec(id); ch = m && T[m[1]] && T[m[1]].chapter; }
+      if(ch) chs[ch] = 1;
+    });
+    return Promise.all(Object.keys(chs).map(function(ch){ return getOnce(base, 'assets/bank/' + ch + '.json'); })).then(function(parts){
+      var by = {};
+      parts.forEach(function(p){ p.forEach(function(q){ if(ids[q.id]) by[q.id] = q; }); });
+      return (xs || []).map(function(x){ return by[typeof x === 'string' ? x : x.id]; }).filter(Boolean);
+    });
+  }
+  function loadWhy(base, q){
+    if(!q || q.why || !q.chapter) return Promise.resolve(q);
+    return getOnce(base, 'assets/bank/' + q.chapter + '-why.json').then(function(why){
+      var w = why[q.id];
+      if(w){ if(w.why) q.why = w.why; if(w.variables) q.variables = w.variables; }
+      return q;
+    }, function(){ return q; });
+  }
+
   window.AnpCore = {
-    loadBank: loadBank,
+    loadBank: loadBank, loadIndex: loadIndex, loadQuestions: loadQuestions, loadWhy: loadWhy,
     KEY: KEY, record: record, topicMastery: topicMastery, chapterMastery: chapterMastery,
     coreMastery: coreMastery, overallMastery: overallMastery, reviewQueue: reviewQueue,
     reviewCount: reviewCount, missed: missed, weakest: weakest, weakestCore: weakestCore,

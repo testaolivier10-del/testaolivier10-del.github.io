@@ -117,7 +117,7 @@
     "q": "A patient's blood calcium falls below the normal range. Before it has been corrected, predict how each variable responds.",
     "variables": [
       {
-        "name": "Release of the calcium-raising hormone from the small glands behind the thyroid",
+        "name": "Release of PTH from the small glands behind the thyroid",
         "answer": "up",
         "why": "Fewer calcium ions bind the receptor protein on the gland cells, so they release more hormone within seconds."
       },
@@ -148,7 +148,7 @@
       }
     ],
     "why": {
-      "correct": "Low calcium triggers the calcium-raising hormone, which acts on all three effectors: bone releases calcium, the kidneys keep calcium and lose phosphate, and the kidneys activate vitamin D so the intestine absorbs more. Calcium rises, and hormone release falls again: negative feedback."
+      "correct": "Low calcium triggers PTH release, and PTH acts on all three effectors: bone releases calcium, the kidneys keep calcium and lose phosphate, and the kidneys activate vitamin D so the intestine absorbs more. Calcium rises, and hormone release falls again: negative feedback."
     }
   },
   {
@@ -169,14 +169,14 @@
         "why": "Without vitamin D to activate, the intestinal lining makes too few calcium transport proteins, so it absorbs only a small fraction of the calcium eaten."
       },
       {
-        "name": "Release of the calcium-raising hormone",
+        "name": "PTH release",
         "answer": "up",
         "why": "Less calcium enters the blood, calcium dips, and the gland cells release more hormone to hold it up."
       },
       {
         "name": "Osteoclast activity",
         "answer": "up",
-        "why": "More calcium-raising hormone acts through osteoblasts to drive osteoclasts, withdrawing calcium from bone."
+        "why": "More PTH acts through osteoblasts to drive osteoclasts, withdrawing calcium from bone."
       },
       {
         "name": "Phosphate lost in the urine",
@@ -190,7 +190,7 @@
       }
     ],
     "why": {
-      "correct": "Vitamin D deficiency cuts calcium absorption. The loop defends blood calcium by raising the calcium-raising hormone, which takes calcium from bone and dumps phosphate in the urine. Blood calcium may stay near normal, but bone pays: resorption rises and new matrix cannot mineralize, which in children causes rickets."
+      "correct": "Vitamin D deficiency cuts calcium absorption. The loop defends blood calcium by raising PTH, which takes calcium from bone and dumps phosphate in the urine. Blood calcium may stay near normal, but bone pays: resorption rises and new matrix cannot mineralize, which in children causes rickets."
     }
   },
   {
@@ -204,7 +204,7 @@
     "q": "Put the steps of the calcium loop in order, starting when blood calcium falls.",
     "options": [
       "Fewer calcium ions bind the receptor protein on the small glands' cells",
-      "The cells release more calcium-raising hormone",
+      "The cells release more PTH",
       "Bone releases calcium, the kidneys keep calcium, and vitamin D is activated",
       "The intestine absorbs more calcium from food",
       "Blood calcium rises back toward its set point",
@@ -224,7 +224,7 @@
     ],
     "q": "A student describes the response to a low blood calcium. One step is wrong. Which one?",
     "options": [
-      "The gland cells behind the thyroid release less calcium-raising hormone",
+      "The gland cells behind the thyroid release less PTH",
       "Osteoclasts resorb more bone",
       "The kidneys excrete less calcium in the urine",
       "The kidneys activate more vitamin D",
@@ -232,7 +232,7 @@
     ],
     "correct": 0,
     "why": {
-      "correct": "Low blood calcium is the stimulus for the gland cells behind the thyroid, so they release more of their calcium-raising hormone, not less. Every later step depends on that rise.",
+      "correct": "Low blood calcium is the stimulus for the gland cells behind the thyroid, so they release more PTH, not less. Every later step depends on that rise.",
       "options": [
         "This is the error. Low calcium increases the hormone's release.",
         "This step is right. Bone resorption releases calcium into the blood.",
@@ -305,14 +305,14 @@
     ],
     "q": "For years, a 45-year-old has eaten far less calcium than she needs. Her blood calcium is normal on every test. What does the normal result tell you?",
     "options": [
-      "Her diet has been adequate for her needs after all",
+      "Her diet has been adequate for her needs",
       "Her bones have been covering the shortfall",
       "Her kidneys have been making calcium",
-      "Her blood calcium test must be wrong"
+      "Her blood calcium test is probably wrong"
     ],
     "correct": 1,
     "why": {
-      "correct": "The loop protects blood calcium first. When intake falls short, the calcium-raising hormone increases bone resorption and kidney calcium saving, so the blood level stays normal. By mass balance, the shortfall comes out of the skeleton, which slowly thins.",
+      "correct": "The loop protects blood calcium first. When intake falls short, PTH increases bone resorption and kidney calcium saving, so the blood level stays normal. By mass balance, the shortfall comes out of the skeleton, which slowly thins.",
       "options": [
         "A normal blood level says the loop is working, not that intake is enough. The shortfall is being covered by bone.",
         "Correct. Normal blood calcium, thinning bone.",
@@ -333,27 +333,25 @@
     "options": [
       "Triggering muscle contraction",
       "Release of neurotransmitter at a synapse",
-      "Several steps of blood clotting",
+      "Carrying carbon dioxide in the blood",
       "Carrying oxygen in the blood",
       "Mineralizing new osteoid",
-      "Setting how easily voltage-gated sodium channels open"
+      "Holding the resting membrane potential near −70 mV"
     ],
     "correct": [
       0,
       1,
-      2,
-      4,
-      5
+      4
     ],
     "why": {
-      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis, is needed in clotting, forms bone mineral with phosphate, and, from outside the cell, sets how easily sodium channels open.",
+      "correct": "Calcium triggers contraction, triggers neurotransmitter exocytosis and forms bone mineral with phosphate. It does not carry oxygen or carbon dioxide, and the resting potential comes from potassium, not calcium.",
       "options": [
         "Correct. A rise in calcium inside muscle cells starts contraction.",
         "Correct. Calcium entry into the nerve ending triggers neurotransmitter exocytosis.",
-        "Correct. Several clotting steps need calcium ions.",
+        "Carbon dioxide travels mostly as bicarbonate, with some dissolved in plasma. Calcium plays no part.",
         "Oxygen is carried by an iron-containing protein in red blood cells, not by calcium.",
         "Correct. Bone mineral is calcium phosphate.",
-        "Correct. Extracellular calcium acts as a brake on voltage-gated sodium channels."
+        "The resting potential comes mainly from potassium leaking out through open channels, kept up by the sodium–potassium pump. Calcium changes how easily sodium channels open, not the resting value itself."
       ]
     }
   },
@@ -416,7 +414,7 @@
       "homeostasis",
       "mass-balance"
     ],
-    "q": "When calcium is low, the calcium-raising hormone makes the kidneys excrete more phosphate. How does that help raise free calcium?",
+    "q": "When calcium is low, PTH makes the kidneys excrete more phosphate. How does that help raise free calcium?",
     "options": [
       "Phosphate in the urine pulls calcium out of the kidneys",
       "Less phosphate in the blood leaves more calcium free instead of bound",
@@ -452,7 +450,7 @@
     "why": {
       "correct": "Activated vitamin D acts inside the intestinal cells to switch on the making of calcium channels, carriers and pumps. Making new proteins takes a day or more, so the intestine handles long-term balance while bone and the kidneys handle quick changes.",
       "options": [
-        "Existing osteoclasts respond to the calcium-raising hormone within hours, so bone is one of the fast effectors.",
+        "Existing osteoclasts respond to PTH within hours, so bone is one of the fast effectors.",
         "The kidneys filter the blood continuously, and their calcium handling changes within minutes to hours.",
         "Correct. Activated vitamin D works by making new transport proteins, which takes a day or more."
       ]
@@ -475,12 +473,12 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "With no thyroid, she has none of its calcium-lowering hormone, yet her calcium is normal. The calcium-raising hormone from the small glands, with activated vitamin D, does the everyday regulation; when calcium rises, its release simply falls. Many exams still present the thyroid's calcium-lowering hormone as an equal partner, but its adult role is minor.",
+      "correct": "With no thyroid, she has none of its calcium-lowering hormone, yet her calcium is normal. PTH from the small glands, with activated vitamin D, does the everyday regulation; when calcium rises, its release simply falls. Many exams still present the thyroid's calcium-lowering hormone as an equal partner, but its adult role is minor.",
       "options": [
         "If it were the main regulator, losing it would disturb her calcium. It did not.",
         "Her tablets replace the thyroid's other hormones, which set how fast cells use fuel, not the calcium-lowering hormone.",
         "Correct. Normal calcium without it shows its adult role is small.",
-        "The small glands make the calcium-raising hormone, not the thyroid's calcium-lowering one."
+        "The small glands make PTH, not the thyroid's calcium-lowering hormone."
       ]
     }
   },
@@ -496,7 +494,7 @@
     "options": [
       "About 1,300 mg of calcium a day from food",
       "Enough vitamin D from sunlight, food or a supplement",
-      "Enough protein in her diet",
+      "Cutting out dairy foods",
       "Swimming instead of running and jumping sports",
       "Regular running and jumping sports",
       "Replacing milk with sugary soft drinks"
@@ -504,15 +502,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Teenagers need about 1,300 mg of calcium a day, vitamin D to absorb it, protein for the collagen matrix, and load on the bones: through Wolff's law, weight-bearing and impact exercise signals osteocytes to add bone. Peak bone mass built now protects her decades later.",
+      "correct": "Teenagers need about 1,300 mg of calcium a day, vitamin D to absorb it, and load on the bones: through Wolff's law, weight-bearing and impact exercise signals osteocytes to add bone. Cutting dairy or swapping milk for soft drinks removes calcium, and swimming loads bone little.",
       "options": [
         "Correct. 1,300 mg a day is the teen target.",
         "Correct. Without vitamin D she absorbs little of what she eats.",
-        "Correct. Collagen is protein, and most of the organic matrix is collagen.",
+        "Dairy foods are a major calcium source. Cutting them makes 1,300 mg a day hard to reach.",
         "Swimming is excellent exercise, but the water carries her weight, so it loads bone far less than running or jumping.",
         "Correct. Impact loading drives bone formation.",
         "Soft drinks replacing milk remove a major calcium source and add none."

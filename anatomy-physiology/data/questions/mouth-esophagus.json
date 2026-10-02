@@ -241,6 +241,11 @@
         "name": "Ability to taste a dry cracker",
         "answer": "down",
         "why": "Taste molecules must dissolve in saliva to reach the taste buds."
+      },
+      {
+        "name": "Number of taste buds on his tongue",
+        "answer": "none",
+        "why": "Atropine changes how much saliva he makes, not how many taste buds he has. Food tastes weaker because less of it dissolves to reach them."
       }
     ],
     "why": {
@@ -311,7 +316,7 @@
     "options": [
       "Lysozyme",
       "IgA antibodies",
-      "Bicarbonate",
+      "Lingual lipase",
       "Salivary amylase",
       "Mucus",
       "Bile"
@@ -319,15 +324,14 @@
     "correct": [
       0,
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Lysozyme damages bacterial walls, IgA binds microbes on mucous membranes, bicarbonate buffers acids made by mouth bacteria, and mucus coats and protects the lining. Amylase digests starch, and bile is not in saliva.",
+      "correct": "Lysozyme damages bacterial walls, IgA binds microbes on mucous membranes, and mucus coats and protects the lining. Lingual lipase and amylase digest food, and bile is not in saliva.",
       "options": [
         "Correct. Lysozyme attacks bacteria.",
         "Correct. IgA is the antibody class secreted onto mucous membranes.",
-        "Correct. Bicarbonate buffers acid that would dissolve enamel.",
+        "Lingual lipase starts fat digestion. It does not protect against bacteria or acid.",
         "Salivary amylase digests starch; it is not a defense.",
         "Correct. Mucus coats the lining and traps microbes.",
         "Bile is made by the liver and enters the small intestine. It is not part of saliva."
@@ -347,7 +351,7 @@
       "The upper third",
       "The lower third",
       "The whole length equally",
-      "The middle third only"
+      "The lower esophageal sphincter"
     ],
     "correct": 0,
     "why": {
@@ -356,7 +360,7 @@
         "Correct. The upper third is skeletal muscle driven directly by brainstem motor neurons.",
         "The lower third is smooth muscle, which the drug does not affect.",
         "Only the skeletal part is affected, so the esophagus is not affected evenly.",
-        "The middle third is a mixture of skeletal and smooth muscle, so it is weakened, but the upper third, which is all skeletal, is the part that stops."
+        "The lower esophageal sphincter is smooth muscle, which the drug does not affect. The upper third, which is skeletal muscle, is the part that stops."
       ]
     }
   },

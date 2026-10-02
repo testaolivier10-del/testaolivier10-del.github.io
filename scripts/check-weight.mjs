@@ -68,7 +68,40 @@ const check = process.argv.includes('--check');
    rest, ~95 KB, is theme.css and the shared modules, and that is the part any
    commit can move. */
 const SHELL_BUDGETS = [
-  ['site', 249],
+  /* 249 -> 253 for cross-device sync (audit 2026-10, Fix-first 5). A sync
+     used to replace whole namespaces and pull only on sign-in, so two signed-in
+     devices erased each other's progress. account.js now carries a per-key
+     three-way merge, conditional writes with retry, pull on load and focus,
+     and failure reporting; the merge rules moved there from
+     progress-backup.js (-0.8 KB) so a restore and a sync share one copy.
+     Measured 252.0 KB. */
+  /* +1 (so 253 -> 254 after the merge) for the October 2026 security audit: premium.js now checks
+     the signed-in user before trusting a cached pass and reports failed
+     refreshes, and site-chrome.js shows the service worker's new-version
+     toast (together about 1.1 KB gzipped, after trimming their comments). */
+  /* 254 -> 254.5 for the free-vs-Premium pass (audit 2026-10, W2): the purchase
+     dialog now shows Pass-or-extend's conditions next to the price instead of
+     behind a link, and links the pricing page (about 0.15 KB gzipped). */
+  /* 254.5 -> 260 for the UX and accessibility pass (audit 2026-10, W7). On
+     every page: one shared header for course and site pages with the phone
+     menu and 44px targets, the "/" search overlay, the More sheet's inert
+     handling, footers lifted out of main, the tutor's dialog semantics,
+     right/wrong marks, dark-mode scrims and contrast, reserved space against
+     layout shift, two elevation tokens (site-chrome.js, theme.css, tutor.js,
+     motion.js, account.js, about 4.7 KB gzipped). Measured 259.2 KB.
+     260 -> 260.5 for the follow-up: the one breadcrumb component and the
+     written monospace/arrow rule with its --disclose token. Measured 260.1 KB. */
+  /* 260.5 -> 279 is a change of ruler, not of weight (audit 2026-10, W8). The
+     shell now also counts the scripts site-chrome.js mounts on every page
+     (motion, reminders, announcer, analytics and the assistant's button),
+     16.6 KB that were always downloaded and never measured. In the same pass
+     two every-page downloads left: the assistant itself (assets/tutor.js,
+     23 KB) now loads on the first reach for its button, and the Supabase SDK
+     (about 45 KB from jsDelivr, never counted here) loads only for a stored
+     session or the sign-in dialog. Measured the old way, the shell would be
+     about 298 KB plus the SDK; it is 277.2 KB. account.js grew 0.6 KB for the
+     lazy SDK and the plain-fetch page counter. */
+  ['site', 279],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -164,11 +197,21 @@ const SHELL_BUDGETS = [
      at roughly 0.1 KB each. If it needs to move again before the pass ends,
      take the saving noted above (lesson-concepts.js out of ochem/index.html)
      or move the map to a fetched file, rather than raising again. */
-  ['ochem', 108],
+  /* 108 -> 110.5 (audit 2026-10, W7): keyboard access for every hand-drawn
+     clickable atom (ochem-nav.js), hit areas on practice atoms, the phone
+     lesson rail and reserved card space (ochem.css), rail labels from step
+     titles (step-back.js). Measured 109.9 KB. */
+  ['ochem', 110.5],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
-     37.3 KB at the Phase 1 pilot. */
-  ['anatomy-physiology', 44],
+     37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
+     (index first, chapters on demand, explanations after the answer) adds
+     about 1.5 KB to the exams page's scripts and saves up to 4 MB of bank
+     fetches on Practice, Review and Exams. */
+  /* 46 -> 46.5 (audit 2026-10, W8): anp-questions.js wraps a figure
+     question's image in <picture> with its AVIF copies (0.2 KB gzipped), which
+     saves a phone roughly 60% of each figure's bytes. */
+  ['anatomy-physiology', 46.5],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -177,8 +220,26 @@ const SHELL_BUDGETS = [
 const BUDGETS = [
   // The front doors. A first-time visitor's whole impression of whether this
   // site is fast is formed on one of these three.
-  ['index.html', 6],
-  ['nremt/index.html', 9],
+  /* 6 -> 6.1, and ochem/index.html 11 -> 11.2, for the tighter CSP every page
+     now carries (the two exact script files it may load, the one Worker
+     host, form-action): about 100 more bytes of policy per page, on pages
+     that were already within a few bytes of their budgets. */
+  /* index.html 6.1 -> 6.6 and nremt/index.html 9 -> 9.1 (audit 2026-10, W2): the
+     hub states what is free and the price from premium.js, and both pages'
+     structured data now list each course's passes as offers instead of
+     claiming the course is free. W7's one-sentence hero should give some back. */
+  /* 6.6 -> 7.3 (audit 2026-10, W7): the hero's one-sentence lede and
+     primary button, the returning student's Continue card drawn inline before
+     first paint (a deferred script would push the page down), and a distinct
+     line icon per course card. Measured 7.1 KB. */
+  /* 7.3 -> 7.8 (audit 2026-10, W8): the three-question FAQ (affiliation,
+     price, is it free), shown on the page and repeated as FAQPage data, plus
+     the Organization's founder and contact. Measured 7.6 KB. */
+  ['index.html', 7.8],
+  /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
+     preloads its one text face (Nunito, latin) so it is ready at first paint
+     with font-display: optional, which removed the font-swap layout shift. */
+  ['nremt/index.html', 9.2],
   /* 10 -> 11. The home page lists every chapter's topics, so it grows by a
      line of markup each time the course gains a section; the generated list
      crossed 10 KB gzipped when the reactivity chapter gained its energy-
@@ -186,10 +247,23 @@ const BUDGETS = [
      simply more topics — and the saving noted above (splitting the one
      lesson-concepts.js call out of ochem-home.js, worth about 4.4 KB) is
      still available if this ever needs to come back down. */
-  ['ochem/index.html', 11],
+  /* 11.3 -> 11.6 (audit 2026-10, W9): the reorder split two chapters out
+     (IR & Mass Spectrometry; Organometallic Bonding & Grignard Reagents) and
+     added two topics (cyclopropanation, electrocyclic and sigmatropic
+     reactions), so the generated path gained two chapter nodes and two
+     topic lines. Measured 11.5 KB. */
+  ['ochem/index.html', 11.6],
 
   // The busiest page on the site, and the one the bank split was for.
-  ['nremt/practice.html', 40],
+  /* 40 -> 44 in the 2026-10 audit follow-up: the runner gained a check step
+     with feedback after every untimed answer, a next step on the results
+     page, drills by 2025 exam domain or by topic area, exam-domain stats and
+     quota-capped length pickers (about 3.9 KB gzipped of engine). The bank
+     itself, the page's real weight, is a separate fetch and got lighter.
+     44 -> 45 in the W1 review: the "All domains" drill now splits its length
+     by the exam weights, and the domain-tagging rule is written next to
+     DOMAIN_TARGETS so later tagging stays consistent (about 0.2 KB). */
+  ['nremt/practice.html', 45],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -280,8 +354,14 @@ const BUDGETS = [
      one real bank question with its explanations, all in the markup so they
      read without JavaScript. Measured 6.4 KB; ochem's home is budgeted at 11. */
   ['anatomy-physiology/index.html', 7],
-  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10],
-  ['anatomy-physiology/notes/cardiac-cycle.html', 19],
+  /* 10 -> 10.6 (audit 2026-10, W7): the stepped view is in the markup and a
+     tiny inline script opens the saved step before first paint, which took
+     an A&P lesson's layout shift from 0.27-1.0 to under 0.1. Measured
+     10.4 KB. */
+  ['anatomy-physiology/lessons/heart-chambers-valves.html', 10.6],
+  /* 19 -> 19.5 (audit 2026-10, W8): each figure's <picture> with its AVIF
+     srcset (about 0.03 KB gzipped a figure) in exchange for AVIF images. */
+  ['anatomy-physiology/notes/cardiac-cycle.html', 19.5],
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
   ['anatomy-physiology/exams.html', 3],
@@ -378,7 +458,9 @@ const DATA_BUDGETS = [
      expanded to real sentences and 81 true/false items rewritten as false
      statements, each explanation now stating the correct fact. Measured
      325.0 KB. */
-  ['ochem/assets/tutor-bank.json', 328],
+  /* 328 -> 332 (audit 2026-10, W9): the two new topics' notes sections and
+     their 40 questions with explanations. Measured 329.7 KB. */
+  ['ochem/assets/tutor-bank.json', 332],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first
@@ -444,7 +526,9 @@ const DATA_BUDGETS = [
   /* 241 -> 248 for the site-review pass (see the tutor index above): terse
      explanations expanded and 81 true/false items rewritten. Measured
      245.4 KB, still fetched after paint. */
-  ['ochem/assets/practice-bank-why.json', 248],
+  /* 248 -> 250 (audit 2026-10, W9): explanations for the 40 questions of
+     the two new topics. Measured 248.9 KB, still fetched after paint. */
+  ['ochem/assets/practice-bank-why.json', 250],
   /* The structures drawn above practice-bank stems. This one is here for an
      unusual reason: it is a <script src>, not a fetched file, so the
      reference walk above WOULD see it — except that the only two pages
@@ -579,6 +663,14 @@ function weigh(pageRel) {
     if (!isLocal(ref) || !/\.(css|js)$/i.test(ref)) continue;
     const path = resolveRef(file, ref);
     const buf = take(path);
+    /* site-chrome.js mounts more scripts on every page it runs on (motion,
+       reminders, the assistant's button, the announcer, analytics). Those are
+       every-page downloads too, so they count here (site audit 2026-10, W8:
+       the shell budget measured only the scripts named in the HTML, so the
+       1,300-line tutor it used to mount on every page was never counted). */
+    if (buf && /assets\/site-chrome\.js$/.test(ref)) {
+      for (const m2 of buf.toString('utf8').matchAll(/\.src = '(\/assets\/[\w-]+\.js)'/g)) take(join(ROOT, m2[1]));
+    }
     if (!buf || !/\.css$/i.test(ref)) continue;
 
     // One level into a stylesheet, which is how assets/fonts/fonts.css pulls

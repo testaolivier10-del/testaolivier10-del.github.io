@@ -37,7 +37,7 @@
     "options": [
       "It has no mitochondria, so pyruvate cannot be broken down with oxygen",
       "Its oxygen-carrying protein holds oxygen too tightly to use",
-      "Its glycolysis enzymes work only when oxygen is absent",
+      "Its glycolysis enzymes stop working when oxygen is present",
       "It makes lactate so that it can save its oxygen for other tissues"
     ],
     "correct": 0,
@@ -46,7 +46,7 @@
       "options": [
         "Correct. No mitochondria means no aerobic stages, whatever oxygen is present.",
         "How tightly the red cell's protein binds oxygen is not the limit. Even with free oxygen inside, the cell has no electron transport chain to use it.",
-        "Glycolysis does not use oxygen, so oxygen neither turns it on nor off. It runs in cells with plenty of oxygen as well.",
+        "Glycolysis does not use oxygen, and oxygen does not switch it off. It runs in cells with plenty of oxygen as well, including this one, which carries oxygen all day.",
         "This gives a purpose, not a mechanism. The cell makes lactate because it lacks the organelle for the aerobic stages."
       ]
     }
@@ -63,7 +63,7 @@
     "q": "A 58-year-old man is rescued from a house fire. His blood carries plenty of oxygen, but his blood lactate is very high. Cyanide from burning plastics has blocked the final complex of his electron transport chain. What best explains the high lactate?",
     "options": [
       "Cyanide binds the glycolysis enzymes in his cytosol and makes them work much faster than usual",
-      "Smoke has stopped his red blood cells from delivering oxygen to every tissue in his body",
+      "Smoke has stopped his red blood cells from delivering oxygen to his tissues",
       "Blocked electron transport leaves NADH unoxidized, so cells make lactate to regenerate NAD+",
       "Cyanide turns pyruvate into lactate inside the mitochondrion"
     ],
@@ -288,6 +288,11 @@
         "name": "CO2 production",
         "answer": "down",
         "why": "CO2 is released as pyruvate is broken down and in the citric acid cycle. Both stop when NADH cannot be oxidized, so less CO2 is made."
+      },
+      {
+        "name": "Number of mitochondria in the cells",
+        "answer": "none",
+        "why": "Within a minute the mitochondria are all still there. They simply cannot run the electron transport chain without oxygen."
       }
     ],
     "why": {
@@ -359,7 +364,7 @@
     "options": [
       "Her friend is right: lactate stays in muscle until the soreness passes",
       "Lactate was cleared within an hour or so; the soreness comes from small injuries inside the muscle and their repair",
-      "The soreness means her muscles made no lactate at all during the workout",
+      "The soreness means her muscles made little lactate during the workout",
       "Lactate turned into CO2 that is still held inside the thigh muscles, and this trapped gas is what now causes the pain"
     ],
     "correct": 1,

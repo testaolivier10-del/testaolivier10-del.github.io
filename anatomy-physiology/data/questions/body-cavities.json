@@ -68,23 +68,22 @@
       "Esophagus",
       "Trachea",
       "Spleen",
-      "Thymus"
+      "Liver"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "The mediastinum is the central compartment of the thoracic cavity, between the lungs. It holds the heart, the large vessels, the trachea, the esophagus and the thymus.",
+      "correct": "The mediastinum is the central compartment of the thoracic cavity, between the lungs. It holds the heart, the large vessels, the trachea and the esophagus. The lungs lie on either side, and the spleen and liver are below the diaphragm.",
       "options": [
         "Correct. The heart, wrapped in its own serous membrane, sits in the lower part of the mediastinum.",
         "Each lung lies lateral to the mediastinum, wrapped by the pleura on its own side of the chest.",
         "Correct. The esophagus runs down through the mediastinum, behind the trachea and heart.",
         "Correct. The trachea (windpipe) runs down the mediastinum before it splits toward the lungs.",
         "The spleen is below the diaphragm, in the abdominal cavity.",
-        "Correct. The thymus sits in the upper mediastinum, above the heart."
+        "The liver is below the diaphragm, in the abdominal cavity."
       ]
     }
   },
@@ -421,23 +420,22 @@
       "Urinary bladder",
       "Kidneys",
       "Thymus",
-      "Spleen"
+      "Lungs"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "Below the diaphragm, the abdominal cavity holds the liver, spleen, stomach, intestines and, against its back wall, the kidneys. The pelvic cavity holds the urinary bladder.",
+      "correct": "Below the diaphragm, the abdominal cavity holds the liver and, against its back wall, the kidneys; the pelvic cavity holds the urinary bladder. The heart, thymus and lungs are in the thoracic cavity.",
       "options": [
         "Correct. The liver sits in the upper right of the abdominal cavity, just under the diaphragm.",
         "The heart is in the mediastinum, above the diaphragm.",
         "Correct. The bladder is in the pelvic cavity.",
         "Correct. The kidneys lie against the back wall of the abdominal cavity, behind the peritoneum.",
         "The thymus is in the upper mediastinum, above the heart.",
-        "Correct. The spleen is in the upper left of the abdominal cavity."
+        "The lungs are in the thoracic cavity, above the diaphragm."
       ]
     }
   },
@@ -454,7 +452,7 @@
     "options": [
       "Each lung has its own separate pleural cavity",
       "The diaphragm seals the left lung off inside the abdomen",
-      "Air cannot enter a pleural cavity from outside",
+      "Air enters a pleural cavity from the lung, not from outside",
       "The left lung sits in the dorsal body cavity"
     ],
     "correct": 0,

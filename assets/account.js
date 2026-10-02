@@ -24,12 +24,17 @@
      { v: 2, ns: { hub: {...}, nremt: {...}, ochem: {...} } }
 
    Each subject calls registerNamespace() with the localStorage keys it owns.
-   A push reads the current row, merges in ONLY the namespaces this page has
-   registered, and writes the result back — so an ochem page can never clobber
-   NREMT data, and adding subject #3 is one registerNamespace() call.
+   A sync reads the current row, reconciles it KEY BY KEY with this browser
+   (see reconcileKey: a three-way merge against what the last sync saw), and
+   writes it back only if nobody else wrote in between (updated_at is the
+   version). Keys this page did not register pass through untouched, so an
+   ochem page can never clobber NREMT data, two devices cannot erase each
+   other's progress, and adding subject #3 is one registerNamespace() call.
+   It runs on every page load, on coming back to the tab, every 30 seconds,
+   shortly after a change (syncSoon) and on leaving the page.
 
    Legacy rows (no `v`) are read as if they were `ns.nremt`, which is exactly
-   what they were. The next push rewrites them in the new shape.
+   what they were. The next sync that writes rewrites them in the new shape.
    ------------------------------------------------------------------ */
 (function(){
   var SUPABASE_URL = 'https://bsfcqrczehbcctwhxmrj.supabase.co';
@@ -82,8 +87,8 @@
      copy graded more recently wins, so a second device cannot un-review an
      evening's cards; the day counters keep the later day, or the larger count
      on the same day. A malformed copy never wins. Here rather than in a
-     course's deck script because the merge must be registered on every page
-     of the course: a push replaces the whole namespace. */
+     course's deck script so every page of the course merges the key the
+     same way, whichever page happens to sync it. */
   function mergeCardSchedules(localRaw, cloudRaw){
     var mine = null, theirs = null;
     try{ mine = JSON.parse(localRaw); }catch(e){}
@@ -110,32 +115,177 @@
     return JSON.stringify(out);
   }
 
-  function collect(){
-    var out = {};
-    Object.keys(namespaces).forEach(function(ns){
-      var bucket = {};
-      namespaces[ns].forEach(function(k){
-        var v = localStorage.getItem(k);
-        if(v !== null) bucket[k] = v;
+  /* ---- merging two copies of one key ---------------------------------
+
+     One set of rules wherever two copies of the progress meet: a sync (this
+     browser vs the account) and a restore (this browser vs a backup file,
+     progress-backup.js). Raw localStorage strings in:
+
+       - a key only one side has is kept;
+       - a key with a merge rule from registerNamespace() uses that rule;
+       - otherwise two JSON values merge structurally: numbers take the larger
+         (XP, counts, bests), booleans OR, arrays the union (answered, missed
+         and flagged ids, attempts), date strings the later, an object that
+         carries its own timestamp (t, ts, updatedAt, day...) is taken whole
+         from the side that touched it last, any other object key by key;
+       - what is left (two settings, two in-progress exams: wholeValue()) is a
+         CONFLICT, settled by `prefer` ('local', or 'other' / 'backup'). */
+  function wholeValue(key){
+    return key === 'nremt_inprogress_exam' || /(_theme|_prefs(_v\d+)?|_sound|_opt_out|_ai_met)$/.test(key);
+  }
+  var STAMPS = ['updatedAt', 'updated', 'ts', 't', 'at', 'time', 'lastSeen', 'last', 'date', 'day'];
+  var DATE_RE = /^\d{4}-\d{2}-\d{2}/;
+  function isObj(x){ return x !== null && typeof x === 'object' && !Array.isArray(x); }
+  function stampOf(o){
+    for(var i = 0; i < STAMPS.length; i++){
+      var v = o[STAMPS[i]];
+      if(typeof v === 'number' || (typeof v === 'string' && v)) return { name: STAMPS[i], v: v };
+    }
+    return null;
+  }
+  function mergeValue(a, b, ctx){
+    if(JSON.stringify(a) === JSON.stringify(b)) return a;
+    if(typeof a === 'number' && typeof b === 'number') return Math.max(a, b);
+    if(typeof a === 'boolean' && typeof b === 'boolean') return a || b;
+    if(typeof a === 'string' && typeof b === 'string' && DATE_RE.test(a) && DATE_RE.test(b)) return a > b ? a : b;
+    if(Array.isArray(a) && Array.isArray(b)){
+      var out = a.slice(), seen = {};
+      a.forEach(function(x){ seen[JSON.stringify(x)] = 1; });
+      b.forEach(function(x){ var k = JSON.stringify(x); if(!seen[k]){ seen[k] = 1; out.push(x); } });
+      return out;
+    }
+    if(isObj(a) && isObj(b)){
+      var sa = stampOf(a), sb = stampOf(b);
+      if(sa && sb && sa.name === sb.name && typeof sa.v === typeof sb.v && sa.v !== sb.v){
+        return sa.v > sb.v ? a : b;
+      }
+      var o = {};
+      Object.keys(a).forEach(function(k){ o[k] = a[k]; });
+      Object.keys(b).forEach(function(k){
+        o[k] = Object.prototype.hasOwnProperty.call(a, k) ? mergeValue(a[k], b[k], ctx) : b[k];
       });
-      out[ns] = bucket;
-    });
-    return out;
+      return o;
+    }
+    ctx.conflict = true;
+    return ctx.other ? b : a;
+  }
+  // -> { value, conflict }
+  function mergeRaw(key, localRaw, otherRaw, prefer){
+    if(localRaw === null || localRaw === undefined) return { value: otherRaw, conflict: false };
+    if(otherRaw === null || otherRaw === undefined || localRaw === otherRaw) return { value: localRaw, conflict: false };
+    if(mergers[key]){
+      try { var r = mergers[key](localRaw, otherRaw); if(typeof r === 'string') return { value: r, conflict: false }; }
+      catch(e){}
+    }
+    var other = prefer === 'other' || prefer === 'backup';
+    var pick = { value: other ? otherRaw : localRaw, conflict: true };
+    if(wholeValue(key)) return pick;
+    var a, b;
+    try { a = JSON.parse(localRaw); b = JSON.parse(otherRaw); } catch(e){ return pick; }
+    var ctx = { other: other, conflict: false };
+    var merged = mergeValue(a, b, ctx);
+    return { value: JSON.stringify(merged), conflict: ctx.conflict };
   }
 
-  // Only ever writes keys the namespace actually declared. A tampered or
-  // stale cloud row can't inject arbitrary localStorage keys this way.
+  /* ---- sync state -----------------------------------------------------
+
+     Per browser, in levlprep_sync_v1 (cleared with the progress, never in a
+     backup): whose it is, when a sync last succeeded, how many have failed in
+     a row since, and `base`, a hash of each key's value at the last sync. The
+     base makes a sync a three-way merge instead of a guess: a side whose copy
+     still matches it has not changed, so the other side's copy wins outright,
+     which is how a reset, an un-flag or a finished exam reaches the other
+     device. Only when both changed do the rules above run. */
+  var STATE_KEY = 'levlprep_sync_v1';
+  var FAIL_REPORT_AFTER = 3;
+  var FOCUS_THROTTLE_MS = 20000;
+  var MAX_TRIES = 4;
+
+  function hash(s){
+    var h = 0x811c9dc5;
+    for(var i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+    return (h >>> 0).toString(36) + ':' + s.length;
+  }
+  function loadState(){
+    var s = null;
+    try { s = JSON.parse(localStorage.getItem(STATE_KEY)); } catch(e){}
+    var uid = currentUser && currentUser.id;
+    if(!isObj(s) || s.uid !== uid || !isObj(s.base)) s = { uid: uid, at: 0, fails: 0, base: {} };
+    return s;
+  }
+  function saveState(s){ try { localStorage.setItem(STATE_KEY, JSON.stringify(s)); } catch(e){} }
+
+  /* One key. L local, C cloud (null = absent), B its base hash, undefined if
+     this browser never synced it. Returns the value both sides end up with
+     (null = deleted on both). */
+  var touched = {};   // keys a sync wrote into this browser during this page
+  function reconcileKey(k, L, C, B){
+    if(L === C) return L;
+    var known = B !== undefined;
+    if(C === null) return (known && B === hash(L)) ? null : L;   // deleted there, or new here
+    if(L === null) return (known && B === hash(C)) ? null : C;   // deleted here, or new there
+    if(known && B === hash(L)) return C;                         // only the cloud changed
+    // Only this browser changed: its copy wins (an un-flag or a reset is a
+    // real edit), unless a sync rewrote this key under the open page. A page
+    // that read its state at load and keeps it in memory then writes a stale
+    // copy back, and merging is what stops that erasing the other device's
+    // progress.
+    if(known && B === hash(C) && !touched[k]) return L;
+    // Both changed, or first sync on this device: merge. A first sync lets
+    // the account win true conflicts, as it always has.
+    return mergeRaw(k, L, C, known ? 'local' : 'other').value;
+  }
+
+  /* Every registered key against the cloud row. Cloud keys this page did not
+     register (another page of the same subject did) pass through untouched:
+     nothing here replaces a whole namespace. */
+  function reconcile(cloud, base){
+    var out = {}, local = {}, newBase = {}, changed = false;
+    Object.keys(cloud).forEach(function(n){ out[n] = cloud[n]; });   // untouched namespaces pass through
+    Object.keys(namespaces).forEach(function(ns){
+      var src = isObj(cloud[ns]) ? cloud[ns] : {}, bucket = {};
+      Object.keys(src).forEach(function(k){ bucket[k] = src[k]; });
+      namespaces[ns].forEach(function(k){
+        var L = localStorage.getItem(k);
+        var C = typeof bucket[k] === 'string' ? bucket[k] : null;
+        var v = reconcileKey(k, L, C, base[k]);
+        if(v === null) delete bucket[k]; else { bucket[k] = v; newBase[k] = hash(v); }
+        if(v !== C) changed = true;
+        if(v !== L) local[k] = { was: L, v: v };
+      });
+      if(Object.keys(bucket).length || cloud[ns]) out[ns] = bucket;
+    });
+    return { ns: out, local: local, base: newBase, changed: changed };
+  }
+
+  // Writes only keys a namespace declared, and only where the page has not
+  // changed the key since it was read (the next sync merges that change).
+  function applyLocal(local){
+    var applied = [];
+    Object.keys(local).forEach(function(k){
+      var w = local[k];
+      // Skipped: the next sync must merge, not take this page's copy as is.
+      if(localStorage.getItem(k) !== w.was){ touched[k] = true; return; }
+      try {
+        if(w.v === null) localStorage.removeItem(k); else localStorage.setItem(k, w.v);
+        applied.push(k);
+        touched[k] = true;
+      } catch(e){}
+    });
+    return applied;
+  }
+
+  // What a first sync on a device does with one cloud bucket, without the
+  // round trip. Exported for scripts/test/account-sync.test.mjs.
   function applyNamespace(ns, bucket){
     if(!bucket || !namespaces[ns]) return;
-    Object.keys(bucket).forEach(function(k){
-      if(namespaces[ns].indexOf(k) === -1) return;
-      var value = bucket[k];
-      if(mergers[k]){
-        try{ value = mergers[k](localStorage.getItem(k), bucket[k]); }
-        catch(e){ value = bucket[k]; }
-      }
-      if(value !== null && value !== undefined) localStorage.setItem(k, value);
+    var local = {};
+    namespaces[ns].forEach(function(k){
+      if(typeof bucket[k] !== 'string') return;
+      var L = localStorage.getItem(k), v = reconcileKey(k, L, bucket[k], undefined);
+      if(v !== L) local[k] = { was: L, v: v };
     });
+    applyLocal(local);
   }
 
   // Reads a row of either shape. Pre-v2 rows were a flat bag of nremt_* keys.
@@ -152,36 +302,145 @@
     return client;
   }
 
-  // Read-merge-write rather than a blind upsert: the row holds namespaces
-  // this page may know nothing about, and they have to survive our write.
-  function push(){
-    var c = getClient();
-    if(!c || !currentUser) return Promise.resolve();
-    var mine = collect();
-    return c.from('user_progress').select('data').eq('id', currentUser.id).maybeSingle()
+  /* The row's updated_at is its version. A write names the version it read
+     (update ... where updated_at = what was read; an insert when there was no
+     row), and a write that matched nothing means another device wrote in
+     between: re-read, re-merge, try again, up to MAX_TRIES. The new stamp is
+     always later than the one read, even from a device whose clock is behind. */
+  function nextStamp(readAt){
+    var t = Date.now(), r = readAt ? Date.parse(readAt) : NaN;
+    if(r >= t) t = r + 1;
+    return new Date(t).toISOString();
+  }
+  function writeRow(c, uid, data, row){
+    var stamp = nextStamp(row && row.updated_at), q;
+    if(!row){
+      q = c.from('user_progress').insert({ id: uid, data: data, updated_at: stamp });
+    } else {
+      q = c.from('user_progress').update({ data: data, updated_at: stamp }).eq('id', uid);
+      q = row.updated_at == null ? q.is('updated_at', null) : q.eq('updated_at', row.updated_at);
+    }
+    return q.select('updated_at').then(function(res){
+      if(res.error){
+        if(!row && res.error.code === '23505') return 'conflict';   // a row appeared meanwhile
+        throw res.error;
+      }
+      return res.data && res.data.length ? 'ok' : 'conflict';
+    });
+  }
+
+  function attempt(c, uid, tries){
+    return c.from('user_progress').select('data, updated_at').eq('id', uid).maybeSingle()
       .then(function(res){
-        var merged = (res && !res.error && res.data) ? unpack(res.data.data) : {};
-        Object.keys(mine).forEach(function(ns){ merged[ns] = mine[ns]; });
-        return c.from('user_progress').upsert({
-          id: currentUser.id,
-          data: { v: 2, ns: merged },
-          updated_at: new Date().toISOString()
+        if(res.error) throw res.error;
+        var row = res.data || null;
+        var rec = reconcile(unpack(row && row.data), loadState().base);
+        var write = rec.changed ? writeRow(c, uid, { v: 2, ns: rec.ns }, row) : Promise.resolve('ok');
+        return write.then(function(outcome){
+          if(outcome === 'conflict'){
+            if(tries + 1 >= MAX_TRIES) throw new Error('sync conflict: the row kept changing');
+            return attempt(c, uid, tries + 1);
+          }
+          var applied = applyLocal(rec.local);
+          var state = loadState();
+          Object.keys(namespaces).forEach(function(ns){
+            namespaces[ns].forEach(function(k){
+              if(k in rec.base) state.base[k] = rec.base[k]; else delete state.base[k];
+            });
+          });
+          state.at = Date.now();
+          state.fails = 0;
+          saveState(state);
+          return { ok: true, applied: applied, wrote: rec.changed };
         });
-      })
-      .then(function(){}, function(){ /* best-effort; the next tick retries */ });
+      });
+  }
+
+  var inflight = null, again = false, lastStart = 0, reported = false;
+
+  /* Pull and push in one: read the row, reconcile it key by key with this
+     browser, write it back if it changed (conditionally, above), and write
+     the merged values here if they changed. Single-flight: a call made while
+     one runs queues one more. Resolves { ok, applied: [keys], wrote }; never
+     rejects. A failure is counted; after FAIL_REPORT_AFTER in a row it shows
+     on the account button and menu and is reported once per page. */
+  function sync(){
+    var c = getClient();
+    if(!c || !currentUser) return Promise.resolve({ ok: false, applied: [] });
+    if(inflight){ again = true; return inflight; }
+    lastStart = Date.now();
+    inflight = attempt(c, currentUser.id, 0).then(null, function(err){
+      var state = loadState();
+      state.fails = (state.fails || 0) + 1;
+      saveState(state);
+      if(state.fails >= FAIL_REPORT_AFTER && !reported && navigator.onLine !== false && window.LevlErrors && window.LevlErrors.report){
+        reported = true;
+        try { window.LevlErrors.report('progress sync failed ' + state.fails + ' times in a row: ' + String((err && (err.code || err.message)) || err).slice(0, 120), 'account.js'); } catch(e){}
+      }
+      return { ok: false, applied: [], error: err };
+    }).then(function(r){
+      inflight = null;
+      renderSyncState();
+      if(r.applied.length) announceApplied(r.applied);
+      if(again){ again = false; sync(); }
+      return r;
+    });
+    return inflight;
+  }
+
+  /* Pages that already listen for another tab's writes (A&P's dashboards)
+     re-render on a synced write the same way; anything else picks the new
+     values up on its next read or the next page. */
+  function announceApplied(keys){
+    keys.forEach(function(k){
+      try { window.dispatchEvent(new StorageEvent('storage', { key: k })); } catch(e){}
+    });
+    try { window.dispatchEvent(new CustomEvent('levlprep:synced', { detail: { keys: keys } })); } catch(e){}
+  }
+
+  function syncStatus(){
+    var s = loadState(), f = s.fails || 0;
+    return { lastSynced: s.at || 0, failures: f, failing: f >= FAIL_REPORT_AFTER };
+  }
+  function ago(ms){
+    var m = Math.round((Date.now() - ms) / 60000);
+    if(m < 1) return 'just now';
+    if(m < 60) return m + ' min ago';
+    var h = Math.round(m / 60);
+    if(h < 48) return h + (h === 1 ? ' hour ago' : ' hours ago');
+    return Math.round(h / 24) + ' days ago';
+  }
+  function syncStatusText(){
+    var s = syncStatus();
+    var last = s.lastSynced ? 'Last synced ' + ago(s.lastSynced) + '.' : 'Not synced from this browser yet.';
+    if(!s.failing) return last;
+    return 'Sync has failed ' + s.failures + ' times in a row. ' + last +
+      ' Your progress is safe in this browser and will sync once the connection is back.';
+  }
+  // The button carries the failing state so it shows without opening the
+  // menu; the menu line says the rest.
+  function renderSyncState(){
+    var btn = document.getElementById('accountBtn');
+    var failing = !!currentUser && syncStatus().failing;
+    if(btn && currentUser){
+      btn.setAttribute('title', (currentUser.email || '') + (failing ? ' (progress sync is failing)' : ''));
+      if(failing){
+        btn.setAttribute('data-sync', 'error');
+        btn.setAttribute('aria-label', btn.textContent + ', progress sync is failing');
+      } else { btn.removeAttribute('data-sync'); btn.removeAttribute('aria-label'); }
+    }
+    var state = document.getElementById('accountMenuState');
+    if(state && !state.getAttribute('data-busy')) state.textContent = syncStatusText();
   }
 
   /* Progress used to reach the cloud only on the 30-second timer or when the
-     page was hidden, and the hidden-page push is two round trips (read the
-     row, then write it) that a closing tab rarely lives long enough to
-     finish. Anything done in the last half minute of a visit could therefore
-     stay on that one browser, and the next device to sign in would pull a row
-     that had never heard of it. Calling this after a change starts the write
+     page was hidden, and the hidden-page sync is two round trips a closing
+     tab rarely lives to finish. Calling this after a change starts the write
      while the page is still open and has a network. */
   function syncSoon(){
     if(!currentUser) return;
     if(soonTimer) clearTimeout(soonTimer);
-    soonTimer = setTimeout(function(){ soonTimer = null; push(); }, 1500);
+    soonTimer = setTimeout(function(){ soonTimer = null; sync(); }, 1500);
   }
   function flushSoon(){
     if(!soonTimer) return;
@@ -189,51 +448,54 @@
     soonTimer = null;
   }
 
-  // First sign-in on a device: for each namespace, the cloud wins if it has
-  // one (the common case — syncing an existing account onto a new device),
-  // otherwise this account has never synced that subject, so seed it from
-  // whatever guest progress is already here rather than discarding it.
-  function pullOrSeed(){
-    var c = getClient();
-    if(!c || !currentUser) return Promise.resolve(false);
-    return c.from('user_progress').select('data').eq('id', currentUser.id).maybeSingle()
-      .then(function(res){
-        if(res.error) return false;
-        var cloud = unpack(res.data && res.data.data);
-        var appliedAny = false;
-        var needsSeed = false;
-        Object.keys(namespaces).forEach(function(ns){
-          if(cloud[ns] && Object.keys(cloud[ns]).length){
-            applyNamespace(ns, cloud[ns]);
-            appliedAny = true;
-          } else {
-            needsSeed = true;
-          }
-        });
-        if(needsSeed) push();
-        return appliedAny;
-      }, function(){ return false; });
+  /* A sync that brought another device's progress in, before anybody has
+     touched the page (or right after signing in), reloads it once per tab
+     session so the level, streak and dashboards on screen show it. Later
+     ones only announce the keys: reloading under somebody mid-question is
+     worse than a stale badge until the next page. */
+  var interacted = false;
+  function markInteracted(){ interacted = true; }
+  function reloadOnceIf(r, force){
+    if(!r.ok || !r.applied.length || (!force && interacted)) return;
+    if(sessionStorage.getItem(RELOAD_ONCE_KEY)) return;
+    sessionStorage.setItem(RELOAD_ONCE_KEY, '1');
+    location.reload();
   }
 
-  function startSyncTimer(){
+  // Signed in on this page: sync now (the pull on every page load), then on
+  // the timer, on coming back to the tab, and on leaving it.
+  function startSyncTimer(reason){
     stopSyncTimer();
-    syncTimer = setInterval(push, SYNC_INTERVAL_MS);
+    syncTimer = setInterval(sync, SYNC_INTERVAL_MS);
     document.addEventListener('visibilitychange', onVisibilityChange);
+    window.addEventListener('focus', onFocus);
     window.addEventListener('pagehide', onPageHide);
+    document.addEventListener('pointerdown', markInteracted, true);
+    document.addEventListener('keydown', markInteracted, true);
+    return sync().then(function(r){ reloadOnceIf(r, reason === 'signin'); return r; });
   }
   function stopSyncTimer(){
     if(syncTimer) clearInterval(syncTimer);
     syncTimer = null;
     flushSoon();
     document.removeEventListener('visibilitychange', onVisibilityChange);
+    window.removeEventListener('focus', onFocus);
     window.removeEventListener('pagehide', onPageHide);
   }
+  // Back on the tab: the other device may have moved on. Throttled, since
+  // focus and visibilitychange arrive together and alt-tabbing is common.
+  function onFocus(){
+    if(Date.now() - lastStart < FOCUS_THROTTLE_MS) return;
+    flushSoon();
+    sync();
+  }
   function onVisibilityChange(){
-    if(document.visibilityState === 'hidden'){ flushSoon(); push(); }
+    if(document.visibilityState === 'hidden'){ flushSoon(); sync(); }
+    else onFocus();
   }
   // Safari on iOS often skips straight to pagehide when a tab is closed or
   // the app is swapped out, so visibilitychange alone loses that last write.
-  function onPageHide(){ flushSoon(); push(); }
+  function onPageHide(){ flushSoon(); sync(); }
 
   /* ---- auth UI --------------------------------------------------------
 
@@ -472,6 +734,7 @@
     if(btn) btn.addEventListener('click', function(){
       if(currentUser) toggleAccountMenu(btn); else openAuthModal('signin');
     });
+    renderSyncState();
   }
 
   /* This was a window.confirm(), which is the wrong shape twice over: it
@@ -512,7 +775,7 @@
     menu.innerHTML =
       '<div class="account-menu__who">' +
         '<b>' + escapeHtml(currentUser.email || 'Signed in') + '</b>' +
-        '<small id="accountMenuState">Progress syncs automatically.</small>' +
+        '<small id="accountMenuState" aria-live="polite">' + escapeHtml(syncStatusText()) + '</small>' +
       '</div>' +
       '<a role="menuitem" href="/account.html" id="accountPageLink">Account &amp; Premium</a>' +
       '<button type="button" role="menuitem" id="accountSyncBtn">Sync now</button>' +
@@ -534,18 +797,30 @@
     document.addEventListener('keydown', onMenuKeydown, true);
 
     var state = document.getElementById('accountMenuState');
+    function busy(text){ state.setAttribute('data-busy', '1'); state.textContent = text; }
+    function idle(text){ state.removeAttribute('data-busy'); state.textContent = text || syncStatusText(); }
     document.getElementById('accountSyncBtn').addEventListener('click', function(){
-      state.textContent = 'Syncing…';
-      push().then(function(){ state.textContent = 'Saved to your account just now.'; });
+      busy('Syncing…');
+      sync().then(function(r){
+        idle(r.ok ? 'Synced just now.' : 'That sync didn\u2019t go through. Your progress is safe in this browser; try again in a moment.');
+      });
     });
+    var signOutAnyway = false;
     document.getElementById('accountSignOutBtn').addEventListener('click', function(){
       var b = this;
       b.disabled = true;
-      state.textContent = 'Saving your progress first…';
+      busy('Saving your progress first…');
       // Sign out only once the last write is away. Dropping the session
-      // first would strand whatever happened since the last tick in a
-      // browser that is about to look signed-out.
-      push().then(function(){
+      // first would strand whatever happened since the last sync in a
+      // browser that is about to look signed-out. If it cannot be saved,
+      // say so and let a second click sign out anyway.
+      sync().then(function(r){
+        if(!r.ok && !signOutAnyway){
+          signOutAnyway = true;
+          b.disabled = false;
+          idle('Couldn\u2019t save your latest progress to your account, so it is only in this browser for now. Choose Sign out again to sign out anyway.');
+          return;
+        }
         var c = getClient();
         if(c) c.auth.signOut();
         closeAccountMenu();
@@ -788,6 +1063,17 @@
   /* ---- auth modal ------------------------------------------------------ */
 
   var authMode = 'signin';       // signin | signup | reset | newpassword
+  /* Why the dialog was opened. From a Premium "Get it" button the account
+     is for attaching a pass, and the usual "free, only so your progress
+     survives a new phone" line contradicted the purchase in progress
+     (audit 2026-10). */
+  var authPurpose = '';
+  var PURPOSE_SUB = {
+    checkout: {
+      signup: 'Create an account to attach your pass. You’ll pay next.',
+      signin: 'Sign in to attach your pass to your account. You’ll pay next.'
+    }
+  };
   var lastFocused = null;        // restored when the modal closes
   var pendingEmail = '';         // address a confirmation mail just went to
 
@@ -822,13 +1108,13 @@
               'autocapitalize="none" autocorrect="off" spellcheck="false" aria-describedby="authEmailHint">' +
           '</label>' +
           '<p class="auth-hint" id="authEmailHint" hidden></p>' +
-          '<label id="authPasswordLabel">' +
+          '<div class="auth-field" id="authPasswordLabel">' +
             '<span class="auth-label-row">' +
-              '<span id="authPasswordText">Password</span>' +
-              '<button type="button" class="auth-reveal" id="authReveal" aria-pressed="false" tabindex="-1">Show</button>' +
+              '<label for="authPassword" id="authPasswordText">Password</label>' +
+              '<button type="button" class="auth-reveal" id="authReveal" aria-pressed="false" aria-label="Show password" aria-controls="authPassword">Show</button>' +
             '</span>' +
             '<input type="password" id="authPassword" autocomplete="current-password" aria-describedby="authPwHint">' +
-          '</label>' +
+          '</div>' +
           '<div class="auth-strength" id="authStrength" hidden>' +
             '<div class="auth-strength__bar"><i id="authStrengthFill"></i></div>' +
             '<span class="auth-strength__label" id="authStrengthLabel"></span>' +
@@ -899,7 +1185,7 @@
       authMode = m;
       var c = COPY[m];
       el.authModalTitle.textContent = c.title;
-      el.authModalSub.textContent = c.sub;
+      el.authModalSub.textContent = (PURPOSE_SUB[authPurpose] && PURPOSE_SUB[authPurpose][m]) || c.sub;
       el.authSubmitBtn.textContent = c.submit;
       el.authSubmitBtn.disabled = false;
 
@@ -1039,6 +1325,7 @@
       var id = b.getAttribute('data-provider');
       var meta = PROVIDERS.filter(function(p){ return p.id === id; })[0];
       var c = getClient();
+      if(!c && whenConnected(function(){ b.click(); })) return;
       if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
       setMsg('Opening ' + (meta ? meta.name : 'provider') + '…');
       // Written before leaving the page, not after coming back: the redirect
@@ -1085,7 +1372,9 @@
     el.authMagicBtn.addEventListener('click', function(){
       var email = el.authEmail.value.trim();
       if(!email){ setMsg('Enter your email first, then we’ll send the link.', 'error'); el.authEmail.focus(); return; }
+      if(!looksLikeEmail(email)){ setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
       var c = getClient();
+      if(!c && whenConnected(function(){ el.authMagicBtn.click(); })) return;
       if(!c) return setMsg('Accounts are unavailable right now — check your connection.', 'error');
       el.authMagicBtn.disabled = true;
       setMsg('Sending…');
@@ -1109,12 +1398,14 @@
       e.preventDefault();
       var email = el.authEmail.value.trim();
       var password = el.authPassword.value;
+      if(authMode !== 'newpassword'){
+        if(!email) { setMsg('Enter the email you use for your account.', 'error'); el.authEmail.focus(); return; }
+        if(!looksLikeEmail(email)) { setMsg('That doesn’t look like an email address. Check it and try again.', 'error'); el.authEmail.focus(); return; }
+      }
       var c = getClient();
+      if(!c && whenConnected(function(){ el.authForm.dispatchEvent(new Event('submit', { cancelable: true })); })) return;
       if(!c) return setMsg('Accounts are unavailable right now — check your connection and try again.', 'error');
 
-      if(authMode !== 'newpassword'){
-        if(!email || email.indexOf('@') < 1) { setMsg('Enter the email you use for your account.', 'error'); el.authEmail.focus(); return; }
-      }
       if(COPY[authMode].password && password.length < MIN_PASSWORD && authMode !== 'signin'){
         setMsg('Use at least ' + MIN_PASSWORD + ' characters.', 'error');
         el.authPassword.focus();
@@ -1298,7 +1589,14 @@
     if(window.LevlAnalytics) window.LevlAnalytics.event(name, data);
   }
 
-  function openAuthModal(mode){
+  // Something@something.tld: enough to catch a typo before any network call.
+  function looksLikeEmail(s){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(s || '')); }
+
+  function openAuthModal(mode, opts){
+    authPurpose = (opts && opts.purpose) || '';
+    // The SDK arrives while the visitor types (it is not loaded for visitors
+    // who never sign in).
+    connect();
     ensureAuthModal();
     var overlay = document.getElementById('authModalOverlay');
 
@@ -1344,13 +1642,7 @@
   // After a recovery link is used the session is real but no pull has run,
   // because PASSWORD_RECOVERY is not SIGNED_IN. Do the first sync here.
   function afterRecovery(){
-    pullOrSeed().then(function(applied){
-      if(applied && !sessionStorage.getItem(RELOAD_ONCE_KEY)){
-        sessionStorage.setItem(RELOAD_ONCE_KEY, '1');
-        location.reload();
-      }
-    });
-    startSyncTimer();
+    startSyncTimer('signin');
   }
 
   /* ---- lifecycle ------------------------------------------------------ */
@@ -1379,18 +1671,10 @@
     renderAccountUI();
     notify();
     if(event === 'SIGNED_IN' && wasSignedOut){
-      pullOrSeed().then(function(applied){
-        // One reload after the first sync of a session means every page's
-        // already-rendered stats (level badge, streak, dashboards) reflect
-        // the freshly-synced data, without every page separately listening
-        // for a sync event. Skipped when nothing was pulled, since then
-        // local storage is already what's on screen.
-        if(applied && !sessionStorage.getItem(RELOAD_ONCE_KEY)){
-          sessionStorage.setItem(RELOAD_ONCE_KEY, '1');
-          location.reload();
-        }
-      });
-      startSyncTimer();
+      // One reload after the first sync of a session (see reloadOnceIf) means
+      // every page's already-rendered stats reflect the synced data. Skipped
+      // when nothing came down, since then what's on screen is current.
+      startSyncTimer('signin');
     }
     /* The recovery link signs you in and fires this instead of SIGNED_IN, so
        without a branch here the link "works" and then silently does nothing
@@ -1419,20 +1703,88 @@
   // write to page_views (the table has no RLS policies, so nothing can read
   // or write it directly).
   function trackPageview(){
-    var c = getClient();
-    if(!c) return;
-    c.rpc('track_pageview', { p_path: location.pathname }).then(function(){}, function(){});
+    postRpc('track_pageview', { p_path: location.pathname });
   }
 
-  function loadSdk(cb){
+  /* A one-way RPC as a plain POST, for a visitor with no session: the page
+     counter, a question report, a client error. Supabase's gateway takes the
+     publishable key in the apikey header alone and runs the call as anon,
+     which is all these security-definer functions need. Never rejects. */
+  function postRpc(name, args){
+    if(typeof fetch !== 'function') return Promise.resolve(false);
+    try {
+      return fetch(SUPABASE_URL + '/rest/v1/rpc/' + name, {
+        method: 'POST',
+        headers: { 'apikey': SUPABASE_PUBLISHABLE_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify(args || {}),
+        keepalive: true
+      }).then(function(r){ return !!r.ok; }, function(){ return false; });
+    } catch(e){ return Promise.resolve(false); }
+  }
+
+  /* The SDK (about 45 KB gzipped from jsDelivr) is loaded only when it is
+     needed: a session is stored in this browser, the URL carries a sign-in
+     callback, or the visitor opens the sign-in dialog. Before the site audit
+     (2026-10, performance) every visitor downloaded it on every page just to
+     count a page view. Sync (W4) and Premium (W3) only matter to a signed-in
+     visitor, who always has a stored session, so they start exactly as
+     before. */
+  var SESSION_KEY = 'sb-' + SUPABASE_URL.replace(/^https?:\/\//, '').split('.')[0] + '-auth-token';
+  function sessionLikely(){
+    try { if(localStorage.getItem(SESSION_KEY)) return true; } catch(e){ /* storage blocked */ }
+    return /[#&?](access_token|refresh_token|code|token_hash|error_description)=/.test(location.href);
+  }
+
+  function loadSdk(cb, onFail){
     if(window.supabase && window.supabase.createClient){ cb(); return; }
     var s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@' + SDK_VERSION + '/dist/umd/supabase.js';
     s.integrity = SDK_INTEGRITY;
     s.crossOrigin = 'anonymous';
     s.onload = cb;
-    s.onerror = function(){ /* offline, blocked, or integrity mismatch — accounts stay unavailable this load */ };
+    // offline, blocked, or integrity mismatch — accounts stay unavailable this load
+    s.onerror = function(){ if(onFail) onFail(); };
     document.head.appendChild(s);
+  }
+
+  var connectState = 'idle';     // idle | loading | ready | failed
+  var connectWaiters = [];
+  function connect(cb){
+    if(cb) connectWaiters.push(cb);
+    if(connectState === 'ready' || connectState === 'failed'){
+      var w = connectWaiters.splice(0, connectWaiters.length);
+      w.forEach(function(f){ f(getClient()); });
+      return;
+    }
+    if(connectState === 'loading') return;
+    connectState = 'loading';
+    loadSdk(function(){
+      var c = getClient();
+      connectState = c ? 'ready' : 'failed';
+      if(c){
+        flushRpcQueue();
+        c.auth.onAuthStateChange(handleAuthChange);
+        c.auth.getSession().then(function(res){
+          var session = res.data && res.data.session;
+          currentUser = session ? session.user : null;
+          renderAccountUI();
+          notify();
+          // The pull on every page load, not only on a fresh sign-in.
+          if(currentUser) startSyncTimer('load');
+        });
+      }
+      connect();
+    }, function(){ connectState = 'failed'; connect(); });
+  }
+
+  /* For the sign-in buttons: when the SDK is still on its way (or not yet
+     asked for), say so and run the action again once it is here. Returns
+     false when it already failed, so the caller shows its error. */
+  function whenConnected(retry){
+    if(connectState === 'failed') return false;
+    setMsg('Connecting…');
+    connect(function(c){ if(c) retry(); else setMsg('Accounts are unavailable right now — check your connection.', 'error'); });
+    return true;
   }
 
   var started = false;
@@ -1442,20 +1794,8 @@
     if(started) return;
     started = true;
     renderAccountUI();
-    loadSdk(function(){
-      var c = getClient();
-      if(!c) return;
-      flushRpcQueue();
-      trackPageview();
-      c.auth.onAuthStateChange(handleAuthChange);
-      c.auth.getSession().then(function(res){
-        var session = res.data && res.data.session;
-        currentUser = session ? session.user : null;
-        renderAccountUI();
-        notify();
-        if(currentUser) startSyncTimer();
-      });
-    });
+    trackPageview();
+    if(sessionLikely() || (window.supabase && window.supabase.createClient)) connect();
   }
 
 
@@ -1561,7 +1901,7 @@
 
   function mayPrompt(){
     if(currentUser) return false;               // already saved; nothing to offer
-    if(!getClient()) return false;              // no backend configured on this build
+    if(!SUPABASE_URL) return false;             // no backend configured on this build
     // Only ever one nudge on screen: site-chrome.js may have an install
     // prompt up, and two stacked boxes asking for things is a shakedown.
     if(document.querySelector('.levl-prompt')) return false;
@@ -1734,6 +2074,9 @@
   function rpc(name, args){
     var c = getClient();
     if(!c){
+      // No SDK coming (no session): post it directly. SDK on its way: queue
+      // it, so a signed-in visitor's call carries their session.
+      if(connectState !== 'loading') return postRpc(name, args);
       if(rpcQueue.length < 10) rpcQueue.push([name, args]);
       return Promise.resolve(false);
     }
@@ -1777,14 +2120,30 @@
     registerNamespace: registerNamespace,
     mergeCardSchedules: mergeCardSchedules,
     start: start,
-    push: push,
+    // push is the old name; a sync is a pull and a push in one.
+    push: sync,
+    sync: sync,
     syncSoon: syncSoon,
-    // The pull's write path, exposed so the merge rules a namespace registers
-    // can be tested without a Supabase round trip.
+    // { lastSynced (ms, 0 = never), failures, failing } for this browser.
+    syncStatus: syncStatus,
+    // A first sync's write path, exposed so the merge rules a namespace
+    // registers can be tested without a Supabase round trip.
     applyNamespace: applyNamespace,
     // The same rules, for progress-backup.js: restoring a file is one more
     // copy of the progress to reconcile, and it should reconcile the same way.
+    mergeRaw: mergeRaw,
     mergerFor: function(k){ return mergers[k] || null; },
+    // For scripts/test/account-sync.test.mjs: drive sync with a fake client.
+    _test: {
+      setClient: function(c){ client = c; },
+      setUser: function(u){ currentUser = u; },
+      startSyncTimer: startSyncTimer,
+      stopSyncTimer: stopSyncTimer,
+      onFocus: onFocus,
+      onVisibilityChange: onVisibilityChange,
+      reconcileKey: reconcileKey,
+      hash: hash
+    },
     user: function(){ return currentUser; },
     onAuthChange: function(fn){ authListeners.push(fn); fn(currentUser); },
     openAuthModal: openAuthModal,

@@ -16,13 +16,15 @@ const FEATURES = ['daily-limit', 'exam', 'readiness', 'review', 'scenarios'];
 function fresh({ launched = false, member = false, premium = true } = {}) {
   const b = createBrowser();
   if (member) {
+    // A pass counts only for the signed-in user it was read for.
+    b.window.StudyHubAccount = { user: () => ({ id: 'u1' }) };
     b.localStorage.setItem('levlprep_premium_v1', JSON.stringify({
       userId: 'u1', courses: { nremt: new Date(b.now() + 30 * 86400000).toISOString() },
     }));
   }
   if (premium) {
     b.load('assets/premium.js');
-    b.window.LevlPremium._setLaunched(launched);
+    b.hooks.premium.setLaunched(launched);
   }
   b.load('nremt/assets/premium-gates.js');
   return { b, g: b.window.NremtGates };

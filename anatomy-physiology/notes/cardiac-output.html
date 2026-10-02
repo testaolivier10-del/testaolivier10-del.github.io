@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cardiac output and its control: Notes | Anatomy &amp; Physiology</title>
+<title>Cardiac output and its control — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Suppose your heart beats 70 times a minute, and each beat your left ventricle ejects 70 mL.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/cardiac-output.html">
-<meta property="og:title" content="Cardiac output and its control: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Cardiac output and its control — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Suppose your heart beats 70 times a minute, and each beat your left ventricle ejects 70 mL.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/cardiac-output.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="cardiac-output">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 19 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cardiovascular.html">The cardiovascular system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cardiac output and its control: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cardiac-output.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 106 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 106 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Cardiac output and its control</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">15 min read</span><span class="anp-tb-chip" data-chip-topic="cardiac-output">Not practiced</span></p>
     </header>
@@ -195,7 +196,7 @@
 <li><strong><a class="gl" href="../notes/vessel-structure.html" data-c="venous-return">Venous return</a></strong>, the rate at which blood flows back into the heart through the <a class="gl" href="../notes/body-organization.html" data-c="blood-vessel-basics">veins</a>. More venous return fills the ventricle more. The <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="skeletal-muscle-tissue">skeletal muscle</a> pump and the respiratory pump raise it; standing up suddenly, or losing blood, lowers it.</li>
 <li><strong>Filling time</strong>, the length of diastole. A slower heart rate gives the ventricle longer to fill. At very fast heart rates, diastole becomes so short that the ventricle cannot fill fully, and EDV falls.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Preload</th><th>Afterload</th></tr></thead>
 <tbody>
 <tr><th>What it is</th><td>The stretch on ventricular muscle at the end of filling</td><td>The pressure the ventricle must overcome to eject blood</td></tr>
@@ -293,7 +294,7 @@
 
 <h2 id="control-of-heart-rate">Control of heart rate</h2>
 <p>Left to itself, your SA node fires about 100 times a minute. At rest, your heart rate is usually 60 to 80, because the parasympathetic system slows it all the time: <a class="gl" href="../notes/ans-control.html" data-c="autonomic-tone">vagal tone</a>. Heart rate is set by nerves, hormones and the chemistry of the blood. A factor that changes heart rate is called <em><span class="gl" tabindex="0" data-c="heart-rate-control">chronotropic</span></em> (chron- = time): positive chronotropic factors speed the heart up, negative ones slow it down.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Chronotropy</th><th>Inotropy (contractility)</th></tr></thead>
 <tbody>
 <tr><th>What it changes</th><td>Heart rate</td><td>Strength of each contraction</td></tr>
@@ -310,14 +311,14 @@
 <li>The <strong>cardioaccelerator center</strong> sends signals down the spinal cord to sympathetic neurons in the upper thoracic segments. Their fibers, the <a class="gl" href="../notes/ans-control.html" data-c="sympathetic-effects">cardiac accelerator nerves</a>, pass through the <strong>cardiac plexus</strong>, a network of autonomic nerves at the <a class="gl" href="../notes/heart-anatomy.html" data-c="heart-location">base of the heart</a>, to the SA node, the AV node and the ventricular muscle.</li>
 <li>The <strong>cardioinhibitory center</strong> sends signals through the vagus nerves, the parasympathetic supply, which also pass through the cardiac plexus. They reach mainly the SA node, the AV node and the atria.</li>
 </ul>
-<figure id="fig-os-19-32"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-32"><img src="../figures/os-19-32.jpg" alt="A drawing of the brain, spinal column and heart. A nerve runs from the lower brainstem down to the upper chambers of the heart and is labeled as parasympathetic, slowing heart rate. Other nerves run from the upper thoracic spinal cord through a relay near the spine to both the upper chambers and the ventricles, labeled as sympathetic, raising heart rate and force of contraction." width="1081" height="2037" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> Autonomic nerves to the heart. The vagus nerve (parasympathetic) slows the heart; sympathetic cardiac nerves speed it and strengthen its contractions. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.32, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-4-cardiac-physiology">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-19-32"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-32"><picture><source type="image/avif" srcset="../figures/avif/os-19-32-480.avif 480w, ../figures/avif/os-19-32-800.avif 800w, ../figures/avif/os-19-32.avif 1081w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-32.jpg" alt="A drawing of the brain, spinal column and heart. A nerve runs from the lower brainstem down to the upper chambers of the heart and is labeled as parasympathetic, slowing heart rate. Other nerves run from the upper thoracic spinal cord through a relay near the spine to both the upper chambers and the ventricles, labeled as sympathetic, raising heart rate and force of contraction." width="1081" height="2037" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> Autonomic nerves to the heart. The vagus nerve (parasympathetic) slows the heart; sympathetic cardiac nerves speed it and strengthen its contractions. <span class="anp-credit">Figure 19.32 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-4-cardiac-physiology">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>How the nerves change the pacemaker potential</h3>
 <p>You met the pacemaker potential in the conduction system: SA node cells drift up to <a class="gl" href="../notes/action-potential-basics.html" data-c="threshold">threshold</a> by themselves, then fire. The nerves change how fast they get there (<a class="figref" href="#fig-os-19-33">Figure 4</a>):</p>
 <ul>
 <li><strong>Sympathetic.</strong> Norepinephrine binds beta-1 receptor proteins on SA node cells. The rise in cyclic AMP increases the funny current and calcium entry, so the pacemaker potential climbs more steeply and reaches threshold sooner. Heart rate rises. The same signal speeds conduction through the AV node.</li>
 <li><strong>Parasympathetic.</strong> <a class="gl" href="../notes/neuromuscular-junction.html" data-c="acetylcholine">Acetylcholine</a> binds <a class="gl" href="../notes/ans-signaling.html" data-c="muscarinic-receptor">muscarinic receptor</a> proteins on SA node cells. It opens extra potassium channels, so each cycle starts from a more negative <a class="gl" href="../notes/electricity-basics.html" data-c="voltage">voltage</a>, and it reduces the funny current, so the climb is slower. Threshold is reached later, and heart rate falls. The same signal slows conduction through the AV node.</li>
 </ul>
-<figure id="fig-os-19-33"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-33"><img src="../figures/os-19-33.jpg" alt="Three graphs of a pacemaker cell's membrane potential over 2.4 seconds, with a dashed threshold line at about minus 40 millivolts. In the resting graph, the potential drifts up from about minus 60 to threshold and fires about every 0.8 seconds. With parasympathetic stimulation, it starts lower, near minus 70, and drifts up more slowly, so it fires less often. With sympathetic stimulation, it starts higher, near minus 50, and drifts up faster, so it fires more often." width="1100" height="1657" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> SA node pacemaker potentials at rest, with parasympathetic stimulation and with sympathetic stimulation. The slope of the climb to threshold sets the heart rate. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.33, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-4-cardiac-physiology">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-19-33"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-33"><picture><source type="image/avif" srcset="../figures/avif/os-19-33-480.avif 480w, ../figures/avif/os-19-33-800.avif 800w, ../figures/avif/os-19-33.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-33.jpg" alt="Three graphs of a pacemaker cell's membrane potential over 2.4 seconds, with a dashed threshold line at about minus 40 millivolts. In the resting graph, the potential drifts up from about minus 60 to threshold and fires about every 0.8 seconds. With parasympathetic stimulation, it starts lower, near minus 70, and drifts up more slowly, so it fires less often. With sympathetic stimulation, it starts higher, near minus 50, and drifts up faster, so it fires more often." width="1100" height="1657" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> SA node pacemaker potentials at rest, with parasympathetic stimulation and with sympathetic stimulation. The slope of the climb to threshold sets the heart rate. <span class="anp-credit">Figure 19.33 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-4-cardiac-physiology">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>What the cardiovascular center responds to</h3>
 <ul>
 <li><strong>Movement.</strong> Sensory receptors in muscles and joints report movement, and heart rate rises within a second of starting to exercise, before any chemical change in the blood.</li>
@@ -364,13 +365,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:cardiac-output">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="blood-pressure-flow.html"><span>&larr; Topic 105</span><b>Blood pressure, flow and resistance</b></a><a class="tb-chapter-link next" href="capillary-exchange.html"><span>Topic 107 &rarr;</span><b>Capillary exchange</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

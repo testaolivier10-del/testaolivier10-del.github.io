@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organelles and the cytoskeleton: Notes | A&amp;P</title>
+<title>Organelles and the cytoskeleton — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Organelles and the cytoskeleton explained: ribosomes, ER, Golgi apparatus, lysosomes, peroxisomes, mitochondria, cilia and microvilli, with figures.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/organelles.html">
-<meta property="og:title" content="Organelles and the cytoskeleton: Notes | A&amp;P">
+<meta property="og:title" content="Organelles and the cytoskeleton — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Organelles and the cytoskeleton explained: ribosomes, ER, Golgi apparatus, lysosomes, peroxisomes, mitochondria, cilia and microvilli, with figures.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/organelles.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="organelles">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 3 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cells.html">Cells</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Organelles and the cytoskeleton: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/organelles.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 16 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 16 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Organelles and the cytoskeleton</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><a class="anp-tag" href="../concepts/compartments.html">Membranes and compartments</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="organelles">Not practiced</span></p>
     </header>
@@ -118,7 +119,7 @@
 <li><strong>The organelles</strong> (organ + -elle = little, so "little <a class="gl" href="../notes/body-organization.html" data-c="organ">organs</a>"): structures in the cytoplasm, each with a specific job. Most are wrapped in their own membrane, which is a <a class="gl" href="../notes/plasma-membrane.html" data-c="phospholipid-bilayer">phospholipid bilayer</a> like the plasma membrane.</li>
 </ul>
 <p>A membrane around an organelle does the same thing the plasma membrane does for the whole cell: it keeps one fluid separate from another. That lets a cell run reactions side by side that would otherwise interfere with each other. Strong digestive enzymes, for example, stay locked inside one organelle, away from the proteins they would destroy in the cytosol. <a class="figref" href="#fig-os-3-13">Figure 1</a> shows a generalized cell with its main organelles.</p>
-<figure id="fig-os-3-13"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-13"><img src="../figures/os-3-13.jpg" alt="A cutaway drawing of a generalized human cell showing the plasma membrane, the nucleus, and the internal structures of the cytoplasm, including the endoplasmic reticulum, Golgi apparatus, mitochondria, lysosomes, peroxisomes, ribosomes and a pair of centrioles." width="813" height="645" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:7.01%;top:36.90%;width:9.72%;height:3.10%"></span><span class="anp-cover" aria-hidden="true" style="left:2.09%;top:45.74%;width:11.56%;height:2.95%"></span><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:55.97%;width:11.56%;height:3.10%"></span></div><figcaption><b>Figure 1.</b> A generalized human cell. No real cell looks exactly like this; each cell type has more of the organelles its job demands. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.13, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-13"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-13"><picture><source type="image/avif" srcset="../figures/avif/os-3-13-480.avif 480w, ../figures/avif/os-3-13-800.avif 800w, ../figures/avif/os-3-13.avif 813w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-13.jpg" alt="A cutaway drawing of a generalized human cell showing the plasma membrane, the nucleus, and the internal structures of the cytoplasm, including the endoplasmic reticulum, Golgi apparatus, mitochondria, lysosomes, peroxisomes, ribosomes and a pair of centrioles." width="813" height="645" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:7.01%;top:36.90%;width:9.72%;height:3.10%"></span><span class="anp-cover" aria-hidden="true" style="left:2.09%;top:45.74%;width:11.56%;height:2.95%"></span><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:55.97%;width:11.56%;height:3.10%"></span></div><figcaption><b>Figure 1.</b> A generalized human cell. No real cell looks exactly like this; each cell type has more of the organelles its job demands. <span class="anp-credit">Figure 3.13 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p>Some structures have no membrane: <span class="gl" tabindex="0" data-c="ribosome">ribosomes</span>, the <span class="gl" tabindex="0" data-c="cytoskeleton">cytoskeleton</span> and centrioles. Most courses still count them as organelles because each has a specific structure and job. This page does too.</p>
 
 <h2 id="ribosomes-where-proteins-are-built">Ribosomes: where proteins are built</h2>
@@ -132,7 +133,7 @@
 
 <h2 id="the-endoplasmic-reticulum">The endoplasmic reticulum</h2>
 <p>The <strong>endoplasmic reticulum</strong> (ER) (endo- = within, -plasm = formed material, reticulum = little net) is a network of membrane sacs and tubes that winds through the cytoplasm. Its membrane is continuous with the membrane around the nucleus. The space inside its sacs is separate from the cytosol. There are two regions.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Rough ER</th><th>Smooth ER</th></tr></thead>
 <tbody>
 <tr><td>Appearance</td><td>Flattened sacs studded with ribosomes, so it looks grainy</td><td>Branching tubes with no ribosomes, so it looks smooth</td></tr>
@@ -153,7 +154,7 @@
 <li><strong>sorts</strong> them by destination, using chemical tags they carry;</li>
 <li><strong>packages</strong> them into vesicles addressed to the right place.</li>
 </ul>
-<figure id="fig-os-3-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-15"><img src="../figures/os-3-15.jpg" alt="The Golgi apparatus drawn as a stack of flattened, curved membrane sacs, with small vesicles arriving on the side facing the endoplasmic reticulum and budding off the far side, beside an electron micrograph of the same stacked sacs." width="1100" height="738" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:5.82%;top:2.71%;width:6.73%;height:3.52%"></span></div><figcaption><b>Figure 2.</b> The Golgi apparatus: a stack of flattened sacs. Vesicles arrive from the ER on one side and leave for their destinations from the other. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.15, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-15"><picture><source type="image/avif" srcset="../figures/avif/os-3-15-480.avif 480w, ../figures/avif/os-3-15-800.avif 800w, ../figures/avif/os-3-15.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-15.jpg" alt="The Golgi apparatus drawn as a stack of flattened, curved membrane sacs, with small vesicles arriving on the side facing the endoplasmic reticulum and budding off the far side, beside an electron micrograph of the same stacked sacs." width="1100" height="738" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:5.82%;top:2.71%;width:6.73%;height:3.52%"></span></div><figcaption><b>Figure 2.</b> The Golgi apparatus: a stack of flattened sacs. Vesicles arrive from the ER on one side and leave for their destinations from the other. <span class="anp-credit">Figure 3.15 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p>Vesicles leaving the Golgi go to one of three places: into the plasma membrane (new <a class="gl" href="../notes/plasma-membrane.html" data-c="membrane-proteins">membrane proteins</a>), out of the cell (for example, digestive enzymes), or to lysosomes (digestive enzymes kept inside the cell). <a class="figref" href="#fig-endomembrane">Figure 3</a> shows the whole route.</p>
 <figure id="fig-endomembrane"  class="anp-figure anp-fig">
 <svg viewBox="0 0 420 230" role="img" aria-label="A flow diagram of the endomembrane system. A protein made on the rough ER travels in a vesicle to the Golgi apparatus. From the Golgi, vesicles flow to three destinations: the plasma membrane, the outside of the cell, and a lysosome.">
@@ -199,7 +200,7 @@
 <li>break down some toxins, including part of the alcohol you drink, in liver and kidney cells.</li>
 </ul>
 <p>Those <a class="gl" href="../notes/enzymes-energy.html" data-c="redox">oxidation</a> reactions produce hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>), which is harmful to the cell. An enzyme called catalase, packed into the same peroxisome, breaks it down to water and oxygen before it can escape.</p>
-<figure id="fig-os-3-17"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-17"><img src="../figures/os-3-17.jpg" alt="A peroxisome drawn as a small round sac bounded by a single membrane, with a dense, crystal-like core of enzymes inside." width="541" height="443" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:82.26%;top:53.50%;width:17.74%;height:9.03%"></span></div><figcaption><b>Figure 4.</b> A peroxisome: a single membrane around a core of enzymes. The drawing labels this membrane "plasma membrane". It means the peroxisome's own membrane, a lipid bilayer like the plasma membrane, not the cell's outer boundary. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.17, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-17"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-17"><picture><source type="image/avif" srcset="../figures/avif/os-3-17-480.avif 480w, ../figures/avif/os-3-17.avif 541w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-17.jpg" alt="A peroxisome drawn as a small round sac bounded by a single membrane, with a dense, crystal-like core of enzymes inside." width="541" height="443" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:82.26%;top:53.50%;width:17.74%;height:9.03%"></span></div><figcaption><b>Figure 4.</b> A peroxisome: a single membrane around a core of enzymes. The drawing labels this membrane "plasma membrane". It means the peroxisome's own membrane, a lipid bilayer like the plasma membrane, not the cell's outer boundary. <span class="anp-credit">Figure 3.17 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p>Hydrogen peroxide is one of the <strong>reactive oxygen species</strong>: oxygen-containing <a class="gl" href="../notes/body-organization.html" data-c="chemical-level">molecules</a> that react readily with proteins, lipids and nucleic acids and damage them. Some reactive oxygen species are <strong>free radicals</strong>: molecules with an unpaired <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="subatomic-particles">electron</a>, which grab an electron from whatever they touch and can start a chain of damage. Peroxisomes both make and destroy these molecules, and the cell's <span class="gl" tabindex="0" data-c="mitochondrion">mitochondria</span> produce them as a by-product too.</p>
 
 <h2 id="mitochondria-converting-fuel-energy-into-atp">Mitochondria: converting fuel energy into ATP</h2>
@@ -221,7 +222,7 @@
 
 <h2 id="the-cytoskeleton-the-cell-s-framework">The cytoskeleton: the cell's framework</h2>
 <p>The cytosol is not a loose soup with organelles drifting in it. A network of protein fibers, the <strong>cytoskeleton</strong> (cyto- = cell), runs through it. The cytoskeleton gives the cell its shape, holds organelles in place, provides tracks for moving cargo, and moves the cell or parts of it. It has three kinds of fiber (<a class="figref" href="#fig-os-3-18">Figure 6</a>).</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Microfilaments</th><th>Intermediate filaments</th><th>Microtubules</th></tr></thead>
 <tbody>
 <tr><td>Width</td><td>Thinnest, about 7 nm</td><td>Middle, about 10 nm</td><td>Thickest, about 25 nm</td></tr>
@@ -230,7 +231,7 @@
 <tr><td>Stability</td><td>Built and taken apart quickly</td><td>Most permanent</td><td>Built and taken apart quickly</td></tr>
 </tbody>
 </table></div>
-<figure id="fig-os-3-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-18"><img src="../figures/os-3-18.jpg" alt="The three kinds of cytoskeleton fiber side by side: a hollow microtubule built from paired protein subunits, a thin microfilament made of two twisted strands of actin, and a rope-like intermediate filament made of many coiled protein strands." width="1100" height="550" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:70.91%;top:65.45%;width:19.64%;height:8.18%"></span></div><figcaption><b>Figure 6.</b> The three cytoskeleton fibers: microtubules, microfilaments and intermediate filaments. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.18, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-18"><picture><source type="image/avif" srcset="../figures/avif/os-3-18-480.avif 480w, ../figures/avif/os-3-18-800.avif 800w, ../figures/avif/os-3-18.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-18.jpg" alt="The three kinds of cytoskeleton fiber side by side: a hollow microtubule built from paired protein subunits, a thin microfilament made of two twisted strands of actin, and a rope-like intermediate filament made of many coiled protein strands." width="1100" height="550" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:70.91%;top:65.45%;width:19.64%;height:8.18%"></span></div><figcaption><b>Figure 6.</b> The three cytoskeleton fibers: microtubules, microfilaments and intermediate filaments. <span class="anp-credit">Figure 3.18 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-2-the-cytoplasm-and-cellular-organelles">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p><strong>Actin and myosin.</strong> <em>Actin</em> is the protein of microfilaments. <em>Myosin</em> is a motor protein: it grips an actin filament and uses the energy of ATP to pull on it. Every cell uses this pair to change shape and to crawl. Muscle cells, including those in your heart, are packed with actin and myosin; the muscle chapter covers that in detail.</p>
 <p><strong>Motor proteins on microtubules.</strong> Other motor proteins (kinesin and dynein) walk along microtubules, carrying vesicles and organelles. Each step uses one ATP. In the long extensions of cells in your spinal cord, which can be a meter long, this is how cargo made near the nucleus reaches the far end.</p>
 <p><strong>The centrosome.</strong> Microtubules grow outward from the <strong>centrosome</strong> (centr- = center, -some = body), a region near the nucleus. The centrosome contains a pair of <strong>centrioles</strong> (little centers): short cylinders, each made of nine sets of three microtubules, set at right angles to each other. When a cell divides, the centrosome helps organize the microtubules that separate the genetic material into the two new cells.</p>
@@ -247,7 +248,7 @@
 <h2 id="microvilli-more-surface-no-movement">Microvilli: more surface, no movement</h2>
 <p><strong>Microvilli</strong> (micro- = small; singular <em>microvillus</em>) are tiny finger-like folds of the plasma membrane. Each is about 1 micrometer long, far shorter than a cilium, and has a core of actin microfilaments, not microtubules. Microvilli do not beat. They increase surface area.</p>
 <p>Recall from the <a class="gl" href="../notes/diffusion-osmosis.html" data-c="diffusion">diffusion</a> topic that the rate of diffusion rises with surface area. A cell lining your intestine carries thousands of microvilli on its exposed surface, which multiplies the area available for absorbing nutrients many times over. Under a light microscope, this dense fringe looks like the bristles of a brush, so it is called the <strong>brush border</strong>. Cells lining the kidney tubules have one too.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Cilia</th><th>Flagellum</th><th>Microvilli</th></tr></thead>
 <tbody>
 <tr><td>Core</td><td>Microtubules (9 pairs + 2)</td><td>Microtubules (9 pairs + 2)</td><td>Actin microfilaments</td></tr>
@@ -263,13 +264,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:organelles">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="plasma-membrane.html"><span>&larr; Topic 15</span><b>The cell and its plasma membrane</b></a><a class="tb-chapter-link next" href="cell-junctions.html"><span>Topic 17 &rarr;</span><b>Cell junctions</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

@@ -56,9 +56,13 @@
   /* ---- Rings and aromaticity ---------------------------------------------
 
      Not a Hückel analysis: a six-membered all-carbon ring in which every atom
-     carries a double bond. That covers benzene and its substituted versions,
-     which is every aromatic ring an Organic I spectroscopy question contains,
-     and it declines to call anything else aromatic rather than guessing. */
+     carries a double bond to another atom of a ring. That covers benzene and its
+     substituted versions, which is every aromatic ring an Organic I
+     spectroscopy question contains, and it declines to call anything else
+     aromatic rather than guessing. The double bond has to be IN a ring: a
+     quinone's carbons each carry one, but two of them are C=O bonds pointing
+     out of the ring, and counting those gave a non-aromatic quinone a ring
+     current. (A fused partner ring counts, so naphthalene's shared bond does.) */
   function ringsOf(st){
     var keys = heavy(st), found = [], seen = {};
     keys.forEach(function(start){
@@ -82,12 +86,17 @@
   }
 
   function aromaticSet(st){
-    var out = {};
-    ringsOf(st).forEach(function(ring){
+    var out = {}, rings = ringsOf(st), inRing = {};
+    rings.forEach(function(ring){ ring.forEach(function(k){ inRing[k] = true; }); });
+    rings.forEach(function(ring){
       if(ring.length !== 6) return;
       var ok = ring.every(function(k){
         if(el(st, k) !== 'C') return false;
-        return C.bondsAt(st, k).some(function(b){ return b.order === 2; });
+        return C.bondsAt(st, k).some(function(b){
+          if(b.order !== 2) return false;
+          var other = b.a === k ? b.b : b.a;
+          return inRing[other] && el(st, other) === 'C';
+        });
       });
       if(ok) ring.forEach(function(k){ out[k] = true; });
     });
@@ -108,10 +117,23 @@
     });
     var hasOH = others.some(function(n){ return el(st, n) === 'O' && hOn(st, n) > 0; });
     var hasOR = others.some(function(n){ return el(st, n) === 'O' && hOn(st, n) === 0; });
+    /* An anhydride: the single-bonded oxygen leads on to a second carbonyl.
+       Checked by looking for that C=O directly, not by asking carbonylKind
+       about the other carbon, which would ask about this one in turn. */
+    var hasOAcyl = others.some(function(n){
+      if(el(st, n) !== 'O' || hOn(st, n) > 0) return false;
+      return neighboursHeavy(st, n).some(function(m){
+        return m !== k && el(st, m) === 'C' && C.bondsAt(st, m).some(function(b){
+          var o = b.a === m ? b.b : b.a;
+          return b.order === 2 && el(st, o) === 'O';
+        });
+      });
+    });
     var hasN  = others.some(function(n){ return el(st, n) === 'N'; });
     var hasX  = others.some(function(n){ return ['Cl','Br','I','F'].indexOf(el(st, n)) >= 0; });
     if(hasOH) return 'acid';
     if(hasX)  return 'acylhalide';
+    if(hasOAcyl) return 'anhydride';
     if(hasOR) return 'ester';
     if(hasN)  return 'amide';
     if(hOn(st, k) > 0) return 'aldehyde';
@@ -128,10 +150,21 @@
     amide:      { cm:1660, w:26, d:72, label:'amide C=O',           note:'The lowest carbonyl there is. The nitrogen lone pair delocalizes into the C=O, giving it real single-bond character and softening it.' },
     aldehyde:   { cm:1725, w:22, d:78, label:'aldehyde C=O',        note:'Just above a ketone. The two weak bands near 2820 and 2720 are what actually settle it — that C–H is the only thing separating an aldehyde from a ketone in an IR.' },
     ketone:     { cm:1715, w:22, d:78, label:'ketone C=O',          note:'The reference point every other carbonyl is quoted against.' },
-    acylhalide: { cm:1800, w:22, d:82, label:'acyl halide C=O',     note:'The highest carbonyl in the course. The halogen pulls inductively on the carbonyl carbon and stiffens the bond.' }
+    acylhalide: { cm:1800, w:22, d:82, label:'acyl halide C=O',     note:'The highest single carbonyl band in the course. The halogen pulls inductively on the carbonyl carbon and stiffens the bond.' },
+    /* Two bands, because the two C=O groups stretch together: in phase and
+       out of phase. Two carbonyl peaks about 60 cm⁻¹ apart is the anhydride's
+       signature, and one band at 1740 would have read as an ester. */
+    anhydride: [
+      { cm:1820, w:20, d:70, label:'anhydride C=O (higher)', note:'The first of an anhydride’s two carbonyl bands. Its two C=O groups stretch together, in step and out of step, so the carbonyl shows up twice: near 1820 and near 1760.' },
+      { cm:1760, w:20, d:78, label:'anhydride C=O (lower)',  note:'The second anhydride carbonyl band. Two strong peaks about 60 cm⁻¹ apart, both above an ester’s 1740, are what identify an anhydride.' }
+    ]
   };
 
+  // Condensed labels ('CH₃', 'CO₂H') opened into atoms, so they show up.
+  function opened(st){ return C.expandGroups ? C.expandGroups(st) : st; }
+
   function predictIR(st){
+    st = opened(st);
     var keys = heavy(st);
     var arom = aromaticSet(st);
     var bands = [];
@@ -150,7 +183,7 @@
 
     var acidOH = false, alcoholOH = false, nh = 0, nhPrimary = false;
     var sp3CH = false, sp2CH = false, alkyneCH = false, aldehydeCH = false;
-    var co = false, cc2 = false, cc3 = false, cn3 = false;
+    var co = false, cc2 = false, cc3 = false, cn3 = false, nitro = false;
 
     keys.forEach(function(k){
       var e = el(st, k);
@@ -161,7 +194,9 @@
       /* A C–O STRETCH needs a C–O single bond. Counting the carbonyl's own
          double-bonded oxygen here put a 1100 band on acetaldehyde, which has
          no C–O single bond anywhere. */
-      if(e === 'O' && neighboursHeavy(st, k).some(function(n){ return bondTo(st, k, n) === 1; })) co = true;
+      if(e === 'O' && neighboursHeavy(st, k).some(function(n){ return bondTo(st, k, n) === 1 && el(st, n) === 'C'; })) co = true;
+      // A nitro group: N bonded to two oxygens. Its N–O single bond is not a C–O.
+      if(e === 'N' && neighboursHeavy(st, k).filter(function(n){ return el(st, n) === 'O'; }).length >= 2) nitro = true;
       if(e === 'N' && hOn(st, k) > 0){ nh++; if(hOn(st, k) >= 2) nhPrimary = true; }
 
       if(e === 'C'){
@@ -208,11 +243,17 @@
       note:'An alkyne, and weak — a symmetrical internal one can be invisible, because the stretch changes no dipole.' });
 
     Object.keys(kinds).forEach(function(kind){
-      if(CARBONYL[kind]) add(CARBONYL[kind]);
+      [].concat(CARBONYL[kind] || []).forEach(add);
     });
 
     if(Object.keys(arom).length) add({ cm:1600, w:26, d:40, label:'aromatic C=C',
       note:'Ring stretching. Usually two or three bands between 1450 and 1600, and taken together with sp² C–H above 3000 they are what say "aromatic".' });
+    if(nitro){
+      add({ cm:1530, w:22, d:70, label:'N–O stretch (nitro)',
+        note:'A nitro group gives two strong bands, near 1530 and 1350: its two N–O bonds stretching out of step and in step.' });
+      add({ cm:1350, w:22, d:62, label:'N–O stretch (nitro, lower)',
+        note:'The second nitro band. Two strong bands at about 1530 and 1350, with no carbonyl, point to NO₂.' });
+    }
     if(cc2) add({ cm:1650, w:20, d:30, label:'C=C stretch',
       note:'An alkene. Weak to medium — and weaker the more symmetrical the alkene is.' });
 
@@ -242,6 +283,12 @@
   function environments(st){
     var keys = heavy(st);
     var label = {};
+    /* A benzene ring is drawn with alternating single and double bonds, but
+       those are one bond type really. Comparing them as drawn split p-xylene's
+       four equivalent ring hydrogens into two "environments" that differ only
+       in where the Kekulé double bonds happened to go. */
+    var arom = aromaticSet(st);
+    function order(k, n){ return arom[k] && arom[n] ? 'a' : bondTo(st, k, n); }
     keys.forEach(function(k){
       label[k] = el(st, k) + ':' + hOn(st, k) + ':' + neighboursHeavy(st, k).length +
                  ':' + (C.formalCharge(st, k) || 0);
@@ -250,7 +297,7 @@
       var next = {};
       keys.forEach(function(k){
         var around = neighboursHeavy(st, k).map(function(n){
-          return bondTo(st, k, n) + label[n];
+          return order(k, n) + label[n];
         }).sort().join('|');
         next[k] = label[k] + '{' + around + '}';
       });
@@ -308,9 +355,69 @@
      by assumption — which is the assumption the whole method rests on and the
      reason it drifts on anything heavily substituted. */
   var ALPHA = { O:2.3, N:1.4, F:2.6, Cl:2.2, Br:2.3, I:1.9, S:1.3 };
+
+  /* n+1 names. Equivalent neighbours count as one set however many atoms they
+     sit on: 2-chloropropane's CH has six neighbouring H on two equivalent
+     methyls, and is a septet. Past eight neighbours (isobutane's CH has nine,
+     so ten lines) the outer lines are too weak to see and it is reported as a
+     multiplet, which is how a real spectrum reads. */
+  var MULT = { 1:'d', 2:'t', 3:'q', 4:'quint', 5:'sext', 6:'sept', 7:'oct', 8:'non' };
+
+  /* Benzene ring substituent increments (ortho, meta, para), from the standard
+     additivity table (Pretsch, Structure Determination of Organic Compounds).
+     Added to benzene's 7.26 for each substituent on the ring. */
+  var ARZ = {
+    alkyl:[-0.18,-0.11,-0.21], OH:[-0.56,-0.12,-0.45], OR:[-0.48,-0.09,-0.44], OCOR:[-0.25,0.03,-0.13],
+    NH2:[-0.75,-0.25,-0.65], NHCOR:[0.12,-0.07,-0.28], NO2:[0.95,0.26,0.38], CN:[0.36,0.18,0.28],
+    aldehyde:[0.56,0.22,0.29], ketone:[0.62,0.14,0.21], acid:[0.85,0.18,0.27], ester:[0.71,0.11,0.21],
+    amide:[0.61,0.10,0.17], acylhalide:[0.84,0.22,0.36], anhydride:[0.71,0.11,0.21],
+    F:[-0.26,0.00,-0.20], Cl:[0.03,-0.02,-0.09], Br:[0.18,-0.08,-0.04], I:[0.39,-0.21,0.00]
+  };
+  function substituentKind(st, ringAtom, s){
+    var e = el(st, s);
+    if(e === 'F' || e === 'Cl' || e === 'Br' || e === 'I') return e;
+    if(e === 'O'){
+      if(hOn(st, s) > 0) return 'OH';
+      var acyl = neighboursHeavy(st, s).some(function(m){ return m !== ringAtom && carbonylKind(st, m); });
+      return acyl ? 'OCOR' : 'OR';
+    }
+    if(e === 'N'){
+      var os = neighboursHeavy(st, s).filter(function(m){ return el(st, m) === 'O'; }).length;
+      if(os >= 2) return 'NO2';
+      var amideN = neighboursHeavy(st, s).some(function(m){ return m !== ringAtom && carbonylKind(st, m); });
+      return amideN ? 'NHCOR' : 'NH2';
+    }
+    if(e === 'C'){
+      var ck = carbonylKind(st, s);
+      if(ck) return ck;
+      if(C.bondsAt(st, s).some(function(b){ return b.order === 3; })){
+        var nitrile = C.bondsAt(st, s).some(function(b){ return b.order === 3 && el(st, b.a === s ? b.b : b.a) === 'N'; });
+        return nitrile ? 'CN' : null;
+      }
+      var sat = C.bondsAt(st, s).every(function(b){ return b.order === 1; });
+      return sat ? 'alkyl' : null;
+    }
+    return null;
+  }
+  function aromaticShift(st, k, arom){
+    var ring = ringsOf(st).filter(function(r){ return r.length === 6 && r.indexOf(k) >= 0 && r.every(function(x){ return arom[x]; }); })[0];
+    if(!ring) return 7.26;
+    var ppm = 7.26, i = ring.indexOf(k);
+    ring.forEach(function(rk, j){
+      if(rk === k) return;
+      var d = Math.abs(i - j); d = Math.min(d, 6 - d);      // 1 ortho, 2 meta, 3 para
+      neighboursHeavy(st, rk).forEach(function(s){
+        if(ring.indexOf(s) >= 0 || arom[s]) return;
+        var z = ARZ[substituentKind(st, rk, s)];
+        if(z) ppm += z[d - 1];
+      });
+    });
+    return ppm;
+  }
   var BETA  = { O:0.4, N:0.2, F:0.3, Cl:0.4, Br:0.4, I:0.4, S:0.2 };
 
   function predictNMR(st){
+    st = opened(st);
     var keys = heavy(st);
     var arom = aromaticSet(st);
     var env = environments(st);
@@ -350,7 +457,7 @@
         ppm = 9.7; label = 'CHO';
         note = 'An aldehyde proton. Nothing else in an ordinary spectrum sits near 9.7, which makes this the single most useful signal there is.';
       } else if(arom[k]){
-        ppm = 7.26; label = 'Ar–H';
+        ppm = aromaticShift(st, k, arom); label = 'Ar–H';
         note = 'Aromatic. The ring current adds about 1.5 ppm on top of an ordinary alkene — substituents then push individual positions either side of 7.26, which is benzene’s own value.';
       } else {
         var maxOrder = C.bondsAt(st, k).reduce(function(m, b){ return Math.max(m, b.order); }, 1);
@@ -415,15 +522,14 @@
           if(first === null) first = env[n];
           else if(first !== env[n]) mixed = true;
         });
-        mult = nbH === 0 ? 's'
-             : (mixed ? 'm'
-             : (nbH === 1 ? 'd' : nbH === 2 ? 't' : nbH === 3 ? 'q' : nbH === 4 ? 'quint' : nbH === 5 ? 'sext' : 'm'));
+        mult = nbH === 0 ? 's' : (mixed ? 'm' : (MULT[nbH] || 'm'));
         if(nbH) j = 7;
         if(!note){
           note = (nbH === 0
             ? 'A singlet: there is no hydrogen on any neighboring carbon for this one to couple with.'
             : 'Split into ' + (nbH + 1) + ' lines by the ' + nbH + ' hydrogen' + (nbH === 1 ? '' : 's') +
-              ' on the neighboring carbon' + (mixed ? 's, which are not all equivalent — so in practice this is a multiplet rather than a clean n+1 pattern' : '') + '.');
+              ' on the neighboring carbon' + (mixed ? 's, which are not all equivalent — so in practice this is a multiplet rather than a clean n+1 pattern'
+            : (nbH > 8 ? 's. The outermost of those lines are too faint to see, so in practice it reads as a multiplet' : '')) + '.');
         }
       }
 
@@ -439,15 +545,36 @@
        five separate aromatic singlets describes a spectrum nobody has seen.
        They merge, and the note says what has been merged. */
     var aromatic = signals.filter(function(x){ return x.label === 'Ar–H'; });
-    if(aromatic.length > 1){
+    /* The one ring pattern a first course does expect you to see: a ring with
+       two different groups para to each other. Its four hydrogens are two
+       pairs, each pair coupled to its ortho neighbour, so the spectrum shows
+       two doublets of 2H each (strictly an AA′BB′ pattern, which at ordinary
+       field looks like two doublets). Merging those would hide the most
+       recognizable shape in aromatic NMR, so they stay apart. */
+    var para = aromatic.length === 2 && aromatic.every(function(x){ return x.h === 2 && x.mult === 'd'; }) &&
+      ringsOf(st).some(function(r){
+        if(r.length !== 6 || !r.every(function(x){ return arom[x]; })) return false;
+        var bare = [];
+        r.forEach(function(x, i){ if(!hOn(st, x)) bare.push(i); });
+        return bare.length === 2 && bare[1] - bare[0] === 3;
+      });
+    if(para){
+      aromatic.forEach(function(x){
+        x.j = 8;
+        x.note = 'Two of the ring hydrogens. A ring with two different groups para to each other has two pairs of equivalent hydrogens, ' +
+                 'each pair next to the other, so it shows two doublets of 2H each. Strictly this is an AA′BB′ pattern, but at ordinary ' +
+                 'field strength it looks like two doublets, and that pair of doublets is the signature of para substitution.';
+      });
+    }
+    if(aromatic.length > 1 && !para){
       var totalH = aromatic.reduce(function(n, x){ return n + x.h; }, 0);
       var mean = aromatic.reduce(function(n, x){ return n + x.ppm * x.h; }, 0) / totalH;
       signals = signals.filter(function(x){ return x.label !== 'Ar–H'; });
       signals.push({
         ppm: Math.round(mean * 100) / 100, h: totalH, mult:'m', j:null, label:'Ar–H',
         note:'The ring hydrogens, as one multiplet. They are not actually equivalent — ortho, meta and para each sit ' +
-             'slightly differently — but on a teaching-scale spectrum they overlap into a single lump near 7.2, and ' +
-             'pulling them apart is what a higher-field instrument is for.',
+             'slightly differently, and the shift shown is their average — but on a teaching-scale spectrum they often ' +
+             'overlap into one lump, and pulling them apart is what a higher-field instrument is for.',
         exchangeable:false
       });
     }

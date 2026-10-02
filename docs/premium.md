@@ -31,7 +31,7 @@ the owner or a lawyer:
   link before it is sent (CAN-SPAM). Reminder emails should carry the address too.
 - Check the Polar founding discount really ends 2027-01-31, as the dialog says.
 
-## Where we are: built, not launched (October 2026)
+## Where we are: launched (1 October 2026)
 
 Decided 2026-10-01: build the free/premium split now, while there are almost
 no users, so nobody ever loses something they had for free. (On that date the
@@ -40,12 +40,12 @@ search traffic is unaffected.
 
 - **`assets/premium.js`** holds the split for all three courses (`COURSES`),
   the gating API every course calls (`has`, `gate`, `badge`, `quota`, …) and
-  one switch, `LAUNCHED`.
-- **While `LAUNCHED` is false** nothing is locked. Premium features carry a
+  one switch, `LAUNCHED`, which has been **true since 2026-10-01**.
+- **Had `LAUNCHED` been false** nothing would be locked. Premium features carry a
   "Premium" pill, and the dialog collects launch-email sign-ups
   (`join_waitlist()`, as before). Umami counts `premium-interest` and
   `premium-waitlist-joined`.
-- **When it is true** free users meet the gates and the dialog sells passes.
+- **Now that it is true** free users meet the gates and the dialog sells passes.
   Checkout: browser → Worker `/premium/checkout` → Polar; Polar's webhook →
   Worker `/premium/webhook` → `premium_passes` row (the checkout opens as
   Polar's embedded frame over the page, falling back to Polar's own page if
@@ -162,7 +162,7 @@ All with a **founding-member code, 30% off, until 2027-01-31**. A 30-day
 ochem finals pass ($15) is an option for later. Polar's fee (5% + $0.50) is
 6–7% at these prices; below ~$15 the fixed part hurts.
 
-- **NREMT pass guarantee:** fail the exam during a bought pass and claim one
+- **Pass-or-extend (NREMT; called "pass guarantee" until 2026-10-02):** fail the exam during a bought pass and claim one
   free 90-day extension from the Account page (Worker `/premium/guarantee`),
   within 30 days of the exam, after at least 2 full timed exams on the site
   during the pass. Once per account and email. Nobody can prove a fail (the

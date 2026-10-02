@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrocyclic &amp; sigmatropic reactions — OChem Lesson</title>
+<meta name="description" content="Learn conrotatory and disrotatory ring closures, the Woodward–Hoffmann rules for heat and light, and the Cope and Claisen [3,3] rearrangements.">
+<link rel="canonical" href="https://levlprep.com/ochem/lessons/electrocyclic-sigmatropic.html">
+<meta property="og:title" content="Electrocyclic &amp; sigmatropic reactions — OChem Lesson">
+<meta property="og:description" content="Learn conrotatory and disrotatory ring closures, the Woodward–Hoffmann rules for heat and light, and the Cope and Claisen [3,3] rearrangements.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/lessons/electrocyclic-sigmatropic.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<!-- Shared across every subject on LevlPrep: one login, one level, one
+     streak. Deferred, like every script on the page, so the page paints
+     before they arrive; they still run first, in this order. -->
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script src="../assets/ochem-premium.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../assets/periodic-table.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/ochem/lessons/electrocyclic-sigmatropic.html#lesson",
+      "name": "Electrocyclic & sigmatropic reactions",
+      "url": "https://levlprep.com/ochem/lessons/electrocyclic-sigmatropic.html",
+      "description": "Learn conrotatory and disrotatory ring closures, the Woodward–Hoffmann rules for heat and light, and the Cope and Claisen [3,3] rearrangements.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "Undergraduate",
+      "inLanguage": "en",
+      "isAccessibleForFree": false,
+      "teaches": {
+        "@type": "DefinedTerm",
+        "name": "Electrocyclic & sigmatropic reactions"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/ochem/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Organic Chemistry",
+          "item": "https://levlprep.com/ochem/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Conjugation & Pericyclic Reactions",
+          "item": "https://levlprep.com/ochem/learn.html#m-conjugation"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Electrocyclic & sigmatropic reactions",
+          "item": "https://levlprep.com/ochem/lessons/electrocyclic-sigmatropic.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Electrocyclic &amp; sigmatropic reactions</span></nav></div>
+<!-- crumb:end -->
+
+<div class="xshell lesson-shell">
+  <div class="hero">
+    <div class="eyebrow" data-chapter="conjugation">Conjugation &amp; Pericyclic Reactions</div>
+    <h1 style="margin-bottom:4px;">Electrocyclic &amp; sigmatropic reactions.</h1>
+    <p class="lede" style="margin-top:0;">Two more pericyclic reactions, and the orbital rule that decides their stereochemistry.</p>
+  </div>
+  <div class="progress-bar">
+    <div class="track"><div class="fill" id="progFill" style="width:0%"></div></div>
+    <div class="label" id="progLabel">Step 1 / 11</div>
+  </div>
+  <div class="lesson-card" id="card"></div>
+</div>
+
+<nav class="lesson-links xshell" aria-label="Related lessons">
+  <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/electrocyclic-sigmatropic.html">Electrocyclic &amp; sigmatropic reactions &mdash; the written section</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/diels-alder.html">The Diels–Alder reaction</a><a href="../lessons/uv-vis.html">UV-Vis spectroscopy</a><a href="../lessons/cis-trans-ez.html">Cis/trans and E/Z</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Next</span><span class="lesson-links-list"><a href="../lessons/aromaticity.html">Aromaticity</a></span></div>
+</nav>
+<script src="../assets/shuffle-options.js" defer></script>
+<script src="../assets/step-back.js" defer></script>
+<script src="../assets/curriculum.js" defer></script>
+<script src="../assets/concepts.js" defer></script>
+<script src="../assets/mastery-engine.js" defer></script>
+<script src="../assets/tools-registry.js" defer></script>
+<script src="../assets/tool-suggest.js" defer></script>
+<script src="../assets/lesson-concepts.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../assets/periodic-table.js" defer></script>
+<script src="../assets/lesson-engine.js" defer></script>
+<script>
+// Runs after the deferred scripts above it: every external script on this
+// page is deferred so the page can paint before they arrive, and deferred
+// scripts execute, in order, just before DOMContentLoaded.
+document.addEventListener('DOMContentLoaded', function(){
+(function(){
+  /* Con or dis? Five cases mixing the electron count and heat or light, so
+     neither one alone gives the answer, and the answers do not follow the
+     option order. */
+  var CASES = [
+    { id:'e1', t:'4 &pi; electrons, heat', right:'con',
+      why:'4 is 4<i>n</i>. Thermal 4<i>n</i> is conrotatory: in the diene&rsquo;s HOMO the end lobes on top have opposite phases, so the ends must turn the same way.' },
+    { id:'e2', t:'6 &pi; electrons, heat', right:'dis',
+      why:'6 is 4<i>n</i> + 2. In the triene&rsquo;s HOMO the end lobes on top match, so the ends turn toward each other: disrotatory.' },
+    { id:'e3', t:'4 &pi; electrons, light', right:'dis',
+      why:'Light moves an electron into the old LUMO, whose end lobes have the opposite pattern. Thermal con becomes photochemical dis.' },
+    { id:'e4', t:'6 &pi; electrons, light', right:'con',
+      why:'Thermal dis becomes photochemical con, for the same reason: the orbital in charge is now the old LUMO.' },
+    { id:'e5', t:'8 &pi; electrons, heat', right:'con',
+      why:'8 is 4<i>n</i> with <i>n</i> = 2, so it behaves like the diene: conrotatory with heat.' }
+  ];
+  var OPTS = [ { k:'dis', l:'Disrotatory' }, { k:'con', l:'Conrotatory' } ];
+  window.OchemLessonEngine.start({
+    topicId: 'electrocyclic-sigmatropic',
+    card: document.getElementById('card'),
+    progFill: document.getElementById('progFill'),
+    progLabel: document.getElementById('progLabel'),
+    steps: [
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'A chain that closes into a ring.',
+        bodyHtml: '<p class="step-body">Heat hexa-1,3,5-triene and it closes into cyclohexa-1,3-diene. The two end carbons, C1 and C6, join with a new &sigma; bond, and three &pi; bonds become two. A reaction in which the ends of a conjugated &pi; system join to make a ring, or the reverse ring opening, is an <b>electrocyclic reaction</b>.</p>' +
+          '<p class="step-body">Like the Diels&ndash;Alder, it is <b>pericyclic</b>: every bond changes in one step, with no intermediate. A four-electron diene could close to a cyclobutene the same way, but the strained four-membered ring is the less stable side, so what you usually see is a cyclobutene <b>opening</b> to a diene on heating. Both directions follow the same path and the same rule.</p>'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Guided Practice',
+        title: 'How many &pi; electrons take part when hexa-1,3,5-triene closes to cyclohexa-1,3-diene?',
+        options: [ 'Two', 'Four', 'Eight', 'Six' ],
+        correctIndex: 3,
+        correctFeedback: 'Correct. Three C=C bonds, two &pi; electrons each, all in one conjugated system. That count, 6, is what the rule for this reaction is written in.',
+        wrongFeedback: 'Count the C=C bonds in the conjugated chain and give each one two &pi; electrons.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Two ways to turn the ends.',
+        bodyHtml: '<p class="step-body">To make the new &sigma; bond, the p orbitals on the two end carbons must turn about 90&deg; until their lobes point at each other. There are two ways:</p>' +
+          '<ul class="step-body"><li><b>Conrotatory</b>: both ends turn the same way, both clockwise or both counterclockwise.</li>' +
+          '<li><b>Disrotatory</b>: the ends turn opposite ways, one clockwise and one counterclockwise.</li></ul>' +
+          '<p class="step-body">The choice matters because each end carbon carries two groups, one pointing out of the U-shaped chain and one pointing in. The rotation decides which face of the new ring each group ends up on.</p>',
+        diagramHtml: '<!-- fig:ec-rotation:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 330" role="img" aria-label="Two rows. Top, conrotatory: the two end carbons of a chain each carry an upright p orbital; on the left end the upper lobe is one color, on the right end the upper lobe is the other color. Curved arrows show both ends turning clockwise. After a quarter turn, each end points a lobe at the other, and the two facing lobes are the same color, labeled as the new sigma bond. Bottom, disrotatory: both upper lobes are the same color; the left end turns clockwise and the right end counterclockwise, and again the two facing lobes match."><text class="fg-lbl" x="180" y="18" text-anchor="middle" font-size="12.5">Conrotatory: both ends turn the same way</text><path class="fg-bond-soft" fill="none" stroke-dasharray="4 4" d="M70 78 C 70 140 170 140 170 78"></path><text class="fg-tag-mut" x="120" y="136" text-anchor="middle" font-size="10">rest of the chain</text><ellipse class="fg-orb" cx="70" cy="60" rx="9" ry="16" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="70" cy="96" rx="9" ry="16" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="170" cy="60" rx="9" ry="16" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="170" cy="96" rx="9" ry="16" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="70" cy="78" r="3.5"></circle><circle class="fg-atom" cx="170" cy="78" r="3.5"></circle><path class="fg-arrow" d="M40 44 Q70 28 93.82 40.71"></path><path class="fg-head" d="M100 44 L92.11 43.92 L95.54 37.49 Z"></path><path class="fg-arrow" d="M140 44 Q170 28 193.82 40.71"></path><path class="fg-head" d="M200 44 L192.11 43.92 L195.54 37.49 Z"></path><line class="fg-arrow" x1="200" y1="78" x2="213" y2="78"></line><path class="fg-head" d="M220 78 L213 81.64 L213 74.36 Z"></path><ellipse class="fg-orb" cx="272" cy="78" rx="14" ry="9" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="240" cy="78" rx="14" ry="9" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="332" cy="78" rx="14" ry="9" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="300" cy="78" rx="14" ry="9" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="256" cy="78" r="3.5"></circle><circle class="fg-atom" cx="316" cy="78" r="3.5"></circle><text class="fg-tag-good" x="286" y="112" text-anchor="middle" font-size="10.5">same color meets</text><text class="fg-tag-good" x="286" y="126" text-anchor="middle" font-size="10.5">the new σ bond</text><line class="fg-rule" x1="16" y1="162" x2="344" y2="162"></line><text class="fg-lbl" x="180" y="184" text-anchor="middle" font-size="12.5">Disrotatory: the ends turn opposite ways</text><path class="fg-bond-soft" fill="none" stroke-dasharray="4 4" d="M70 244 C 70 306 170 306 170 244"></path><text class="fg-tag-mut" x="120" y="302" text-anchor="middle" font-size="10">rest of the chain</text><ellipse class="fg-orb" cx="70" cy="226" rx="9" ry="16" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="70" cy="262" rx="9" ry="16" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="170" cy="226" rx="9" ry="16" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="170" cy="262" rx="9" ry="16" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="70" cy="244" r="3.5"></circle><circle class="fg-atom" cx="170" cy="244" r="3.5"></circle><path class="fg-arrow" d="M40 210 Q70 194 93.82 206.71"></path><path class="fg-head" d="M100 210 L92.11 209.92 L95.54 203.49 Z"></path><path class="fg-arrow" d="M200 210 Q170 194 146.18 206.71"></path><path class="fg-head" d="M140 210 L144.46 203.49 L147.89 209.92 Z"></path><line class="fg-arrow" x1="200" y1="244" x2="213" y2="244"></line><path class="fg-head" d="M220 244 L213 247.64 L213 240.36 Z"></path><ellipse class="fg-orb" cx="272" cy="244" rx="14" ry="9" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="240" cy="244" rx="14" ry="9" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="332" cy="244" rx="14" ry="9" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="300" cy="244" rx="14" ry="9" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="256" cy="244" r="3.5"></circle><circle class="fg-atom" cx="316" cy="244" r="3.5"></circle><text class="fg-tag-good" x="286" y="278" text-anchor="middle" font-size="10.5">same color meets</text><text class="fg-tag-good" x="286" y="292" text-anchor="middle" font-size="10.5">the new σ bond</text></svg><figcaption>The two colors are the two phases of a p orbital. A bond forms only where lobes of the same color meet, so the colors at the two ends decide which way the ends must turn.</figcaption></figure><!-- fig:ec-rotation:end -->'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The HOMO picks the rotation, and light flips it.',
+        bodyHtml: '<p class="step-body">A bond forms only where lobes of the <b>same phase</b> meet, and the orbital that matters is the HOMO, the highest occupied &pi; orbital.</p>' +
+          '<ul class="step-body"><li>In buta-1,3-diene&rsquo;s HOMO (4 &pi; electrons), the top lobes at the two ends have <b>opposite</b> phases. Turning both ends the same way, <b>conrotatory</b>, brings matching lobes together.</li>' +
+          '<li>In hexa-1,3,5-triene&rsquo;s HOMO (6 &pi; electrons), the top lobes at the two ends <b>match</b>. Turning the ends toward each other, <b>disrotatory</b>, brings them together.</li></ul>' +
+          '<p class="step-body">Light lifts one electron from the HOMO to the LUMO, as in UV-Vis. The old LUMO is now the highest orbital holding an electron, and its end lobes have the opposite pattern, so the rotation flips: con becomes dis, and dis becomes con.</p>',
+        diagramHtml: '<!-- fig:ec-homo-ends:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 340" role="img" aria-label="Two rows of p orbitals. Top: the HOMO of buta-1,3-diene, four orbitals; the upper lobes of C1 and C2 are one color and those of C3 and C4 the other, so the circled end lobes, on C1 and C4, differ: conrotatory. Bottom: the HOMO of hexa-1,3,5-triene, six orbitals; the upper lobes run two of one color, two of the other, two of the first, so the circled end lobes, on C1 and C6, match: disrotatory. End lobes are drawn larger, as in the real orbitals."><text class="fg-lbl" x="180" y="18" text-anchor="middle" font-size="12.5">Buta-1,3-diene HOMO (4 π electrons)</text><line class="fg-bond-soft" x1="75" y1="80" x2="285" y2="80"></line><ellipse class="fg-orb" cx="75" cy="60.6" rx="9.8" ry="17.4" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="75" cy="99.4" rx="9.8" ry="17.4" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="75" cy="80" r="3.5"></circle><circle class="fg-orb-node" cx="75" cy="58" r="17" fill="none" stroke-dasharray="3 3"></circle><text class="fg-tag-mut" x="75" y="134" text-anchor="middle" font-size="10">C1</text><ellipse class="fg-orb" cx="145" cy="63.9" rx="7.9" ry="14.1" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="145" cy="96.1" rx="7.9" ry="14.1" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="145" cy="80" r="3.5"></circle><text class="fg-tag-mut" x="145" y="134" text-anchor="middle" font-size="10">C2</text><ellipse class="fg-orb-alt" cx="215" cy="63.9" rx="7.9" ry="14.1" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="215" cy="96.1" rx="7.9" ry="14.1" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="215" cy="80" r="3.5"></circle><text class="fg-tag-mut" x="215" y="134" text-anchor="middle" font-size="10">C3</text><ellipse class="fg-orb-alt" cx="285" cy="60.6" rx="9.8" ry="17.4" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="285" cy="99.4" rx="9.8" ry="17.4" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="285" cy="80" r="3.5"></circle><circle class="fg-orb-node" cx="285" cy="58" r="17" fill="none" stroke-dasharray="3 3"></circle><text class="fg-tag-mut" x="285" y="134" text-anchor="middle" font-size="10">C4</text><text class="fg-tag" x="180" y="152" text-anchor="middle" font-size="11">top end lobes differ → conrotatory with heat</text><line class="fg-rule" x1="16" y1="168" x2="344" y2="168"></line><text class="fg-lbl" x="180" y="188" text-anchor="middle" font-size="12.5">Hexa-1,3,5-triene HOMO (6 π electrons)</text><line class="fg-bond-soft" x1="50" y1="250" x2="310" y2="250"></line><ellipse class="fg-orb" cx="50" cy="231.7" rx="9.2" ry="16.3" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="50" cy="268.3" rx="9.2" ry="16.3" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="50" cy="250" r="3.5"></circle><circle class="fg-orb-node" cx="50" cy="228" r="17" fill="none" stroke-dasharray="3 3"></circle><text class="fg-tag-mut" x="50" y="304" text-anchor="middle" font-size="10">C1</text><ellipse class="fg-orb" cx="102" cy="235.9" rx="6.8" ry="12.1" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="102" cy="264.1" rx="6.8" ry="12.1" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="102" cy="250" r="3.5"></circle><text class="fg-tag-mut" x="102" y="304" text-anchor="middle" font-size="10">C2</text><ellipse class="fg-orb-alt" cx="154" cy="233.2" rx="8.4" ry="14.8" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="154" cy="266.8" rx="8.4" ry="14.8" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="154" cy="250" r="3.5"></circle><text class="fg-tag-mut" x="154" y="304" text-anchor="middle" font-size="10">C3</text><ellipse class="fg-orb-alt" cx="206" cy="233.2" rx="8.4" ry="14.8" fill-opacity="0.18"></ellipse><ellipse class="fg-orb" cx="206" cy="266.8" rx="8.4" ry="14.8" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="206" cy="250" r="3.5"></circle><text class="fg-tag-mut" x="206" y="304" text-anchor="middle" font-size="10">C4</text><ellipse class="fg-orb" cx="258" cy="235.9" rx="6.8" ry="12.1" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="258" cy="264.1" rx="6.8" ry="12.1" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="258" cy="250" r="3.5"></circle><text class="fg-tag-mut" x="258" y="304" text-anchor="middle" font-size="10">C5</text><ellipse class="fg-orb" cx="310" cy="231.7" rx="9.2" ry="16.3" fill-opacity="0.18"></ellipse><ellipse class="fg-orb-alt" cx="310" cy="268.3" rx="9.2" ry="16.3" fill-opacity="0.18"></ellipse><circle class="fg-atom" cx="310" cy="250" r="3.5"></circle><circle class="fg-orb-node" cx="310" cy="228" r="17" fill="none" stroke-dasharray="3 3"></circle><text class="fg-tag-mut" x="310" y="304" text-anchor="middle" font-size="10">C6</text><text class="fg-tag-good" x="180" y="322" text-anchor="middle" font-size="11">top end lobes match → disrotatory with heat</text></svg><figcaption>Only the circled end lobes matter. Light moves an electron into the next orbital up, whose end lobes are arranged the other way, so each answer flips.</figcaption></figure><!-- fig:ec-homo-ends:end -->'
+      },
+      {
+        render: function(api){
+          api.card.innerHTML =
+            '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
+            '<h2 class="step-title">Conrotatory or disrotatory?</h2>' +
+            '<p class="step-body">Write the count as 4<i>n</i> (4, 8) or 4<i>n</i> + 2 (6, 10). Thermal 4<i>n</i> is conrotatory; changing either the count or heat to light flips it.</p>' +
+            '<div class="radical-sort">' +
+            CASES.map(function(c){
+              return '<div class="radical-row" data-case="' + c.id + '">' +
+                '<div class="radical-eq" style="font-family:var(--font-ui);font-size:14px;">' + c.t + '</div>' +
+                '<div class="radical-choices" role="group" aria-label="Rotation">' +
+                OPTS.map(function(o){
+                  return '<button type="button" class="choice-btn sm" data-case="' + c.id + '" data-o="' + o.k + '">' + o.l + '</button>';
+                }).join('') + '</div><div class="radical-why" data-why="' + c.id + '"></div></div>';
+            }).join('') +
+            '</div>' + api.feedbackHtml('fb') + api.nextButtonHtml('Continue', false);
+          var fb = api.card.querySelector('#fb'), next = api.card.querySelector('#nextBtn');
+          var done = {}, missed = false;
+          api.card.querySelectorAll('.radical-choices .choice-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id = btn.getAttribute('data-case');
+              if(done[id]) return;
+              var cfg = CASES.filter(function(c){ return c.id === id; })[0];
+              if(btn.getAttribute('data-o') !== cfg.right){
+                missed = true; btn.classList.add('wrong'); btn.disabled = true;
+                api.showFeedback(fb, false, 'Start from thermal 4<i>n</i> = conrotatory. Then flip once for 4<i>n</i> + 2 and once more for light.');
+                return;
+              }
+              done[id] = true; btn.classList.add('correct');
+              api.card.querySelectorAll('.choice-btn[data-case="' + id + '"]').forEach(function(b){ b.disabled = true; });
+              api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
+              if(Object.keys(done).length === CASES.length){
+                api.showFeedback(fb, true, missed
+                  ? 'All five. One fixed point, thermal 4<i>n</i> conrotatory, and two switches give the rest.'
+                  : 'All five on the first try, including 8 electrons, which behaves like 4.');
+                api.record(!missed); next.disabled = false;
+              }
+            });
+          });
+          next.addEventListener('click', api.advance);
+        }
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Following the end groups.',
+        bodyHtml: '<p class="step-body">In (2<i>E</i>,4<i>Z</i>,6<i>E</i>)-octa-2,4,6-triene the middle <i>Z</i> bond lets the chain curl into a U, and each <i>E</i> end has its methyl pointing <b>out</b>. Six electrons with heat: disrotatory. Turning the ends in opposite directions sends both outward methyls to the same face, so the ring is <i>cis</i>-5,6-dimethylcyclohexa-1,3-diene. With light the rotation is conrotatory, and the ring is <i>trans</i>.</p>' +
+          '<div class="explain-box"><b>Shortcut.</b> Label each end group in or out. Both out (or both in): dis gives <i>cis</i>, con gives <i>trans</i>. One in, one out: dis gives <i>trans</i>, con gives <i>cis</i>. It works backwards for ring openings too.</div>',
+        diagramHtml: '<!-- fig:ec-triene-stereo:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 320" role="img" aria-label="Left: (2E,4Z,6E)-octa-2,4,6-triene drawn curled into a U on five corners of a hexagon, with a dashed line across the open bottom where the new bond will form; both end carbons carry a methyl pointing outward. An upper arrow labeled heat, disrotatory, leads to 5,6-dimethylcyclohexa-1,3-diene with both methyls on wedges: cis. A lower arrow labeled light, conrotatory, leads to the same ring with one methyl on a wedge and one on a hashed bond: trans. The new bond is in color."><line class="fg-bond" x1="50" y1="177.71" x2="34" y2="150"></line><line class="fg-bond" x1="50.98" y1="170.22" x2="40.98" y2="152.9"></line><line class="fg-bond" x1="34" y1="150" x2="50" y2="122.29"></line><line class="fg-bond" x1="50" y1="122.29" x2="82" y2="122.29"></line><line class="fg-bond" x1="56" y1="126.89" x2="76" y2="126.89"></line><line class="fg-bond" x1="82" y1="122.29" x2="98" y2="150"></line><line class="fg-bond" x1="98" y1="150" x2="82" y2="177.71"></line><line class="fg-bond" x1="91.02" y1="152.9" x2="81.02" y2="170.22"></line><line class="fg-dash" x1="50" y1="177.71" x2="82" y2="177.71"></line><line class="fg-bond" x1="50" y1="177.71" x2="42.5" y2="190.71"></line><circle class="fg-atom" cx="35" cy="203.7" r="15"></circle><text class="fg-lbl" x="35" y="207.21" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="82" y1="177.71" x2="89.5" y2="190.71"></line><circle class="fg-atom" cx="97" cy="203.7" r="15"></circle><text class="fg-lbl" x="97" y="207.21" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag-mut" x="66" y="236" text-anchor="middle" font-size="10.5">both methyls out</text><text class="fg-tag" x="66" y="252" text-anchor="middle" font-size="10.5">(2E,4Z,6E)-octatriene</text><line class="fg-arrow" x1="124" y1="130" x2="197.06" y2="87.99"></line><path class="fg-head" d="M204 84 L199.14 91.59 L194.99 84.38 Z"></path><text class="fg-tag" x="150" y="84" text-anchor="middle" font-size="11">heat</text><text class="fg-tag-mut" x="150" y="98" text-anchor="middle" font-size="10">dis</text><line class="fg-arrow" x1="124" y1="172" x2="197.22" y2="217.76"></line><path class="fg-head" d="M204 222 L195.01 221.29 L199.42 214.23 Z"></path><text class="fg-tag" x="150" y="222" text-anchor="middle" font-size="11">light</text><text class="fg-tag-mut" x="150" y="236" text-anchor="middle" font-size="10">con</text><line class="fg-bond" x1="256" y1="89.71" x2="240" y2="62"></line><line class="fg-bond" x1="240" y1="62" x2="256" y2="34.29"></line><line class="fg-bond" x1="246.98" y1="59.1" x2="256.98" y2="41.78"></line><line class="fg-bond" x1="256" y1="34.29" x2="288" y2="34.29"></line><line class="fg-bond" x1="288" y1="34.29" x2="304" y2="62"></line><line class="fg-bond" x1="287.02" y1="41.78" x2="297.02" y2="59.1"></line><line class="fg-bond" x1="304" y1="62" x2="288" y2="89.71"></line><line class="fg-bond-hi" x1="256" y1="89.71" x2="288" y2="89.71"></line><path class="fg-wedge" d="M256 89.71 L243.61 102.16 L251.4 106.66 Z"></path><circle class="fg-atom" cx="240" cy="117.4" r="15"></circle><text class="fg-lbl" x="240" y="120.92" text-anchor="middle" font-size="9.5">CH₃</text><path class="fg-wedge" d="M288 89.71 L292.6 106.66 L300.39 102.16 Z"></path><circle class="fg-atom" cx="304" cy="117.4" r="15"></circle><text class="fg-lbl" x="304" y="120.92" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag-good" x="272" y="138" text-anchor="middle" font-size="11.5">cis</text><line class="fg-bond" x1="256" y1="249.71" x2="240" y2="222"></line><line class="fg-bond" x1="240" y1="222" x2="256" y2="194.29"></line><line class="fg-bond" x1="246.98" y1="219.1" x2="256.98" y2="201.78"></line><line class="fg-bond" x1="256" y1="194.29" x2="288" y2="194.29"></line><line class="fg-bond" x1="288" y1="194.29" x2="304" y2="222"></line><line class="fg-bond" x1="287.02" y1="201.78" x2="297.02" y2="219.1"></line><line class="fg-bond" x1="304" y1="222" x2="288" y2="249.71"></line><line class="fg-bond-hi" x1="256" y1="249.71" x2="288" y2="249.71"></line><path class="fg-wedge" d="M256 249.71 L243.61 262.16 L251.4 266.66 Z"></path><circle class="fg-atom" cx="240" cy="277.4" r="15"></circle><text class="fg-lbl" x="240" y="280.91" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-hash" x1="288.69" y1="252.58" x2="290.14" y2="251.75"></line><line class="fg-hash" x1="289.39" y1="255.45" x2="292.27" y2="253.78"></line><line class="fg-hash" x1="290.08" y1="258.31" x2="294.41" y2="255.81"></line><line class="fg-hash" x1="290.78" y1="261.18" x2="296.55" y2="257.84"></line><line class="fg-hash" x1="291.47" y1="264.05" x2="298.69" y2="259.88"></line><circle class="fg-atom" cx="304" cy="277.4" r="15"></circle><text class="fg-lbl" x="304" y="280.91" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag" x="272" y="298" text-anchor="middle" font-size="11.5">trans</text></svg><figcaption>Same triene, same ring; only the rotation differs. The bond in color is the new σ bond between the two end carbons.</figcaption></figure><!-- fig:ec-triene-stereo:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: '<i>trans</i>-3,4-Dimethylcyclobut-1-ene is heated and opens to a hexa-2,4-diene. Which one?',
+        options: [
+          '(2<i>E</i>,4<i>Z</i>)-Hexa-2,4-diene',
+          '(2<i>Z</i>,4<i>Z</i>)-Hexa-2,4-diene',
+          '(2<i>E</i>,4<i>E</i>)-Hexa-2,4-diene',
+          'An equal mixture of all three isomers'
+        ],
+        correctIndex: 2,
+        correctFeedback: 'Correct. Four &pi; electrons with heat is conrotatory. A <i>trans</i> ring made or opened by conrotation goes with both end groups out (or both in), and both out is the less crowded choice: (2<i>E</i>,4<i>E</i>). The <i>cis</i> cyclobutene gives the (2<i>E</i>,4<i>Z</i>) diene instead.',
+        wrongFeedback: 'Count the electrons in the diene that forms, read the rotation for heat, then use the shortcut backwards: a <i>trans</i> ring and a conrotatory path go with both ends out or both in.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'Sigmatropic rearrangements: a &sigma; bond moves.',
+        bodyHtml: '<p class="step-body">Heat 3-methylhexa-1,5-diene and the &sigma; bond between C3 and C4 breaks while a new one forms between C1 and C6; both &pi; bonds shift one place. The product is hepta-1,5-diene. A reaction like this, one &sigma; bond moving along a &pi; system in one step, is a <b>sigmatropic rearrangement</b>. Number outward from each end of the bond that breaks: the new bond joins atom 3 to atom 3, so it is a <b>[3,3]</b> shift. On a hexa-1,5-diene it is the <b>Cope rearrangement</b>, and it favors the more substituted diene.</p>' +
+          '<p class="step-body">Put an oxygen in place of C3 of the hexa-1,5-diene (atom 1 in the [3,3] count) and you have allyl vinyl ether, CH₂=CH&ndash;O&ndash;CH₂&ndash;CH=CH₂. The same [3,3] shift breaks the O&ndash;C bond and makes a C=O. The product is pent-4-enal, and the reaction is the <b>Claisen rearrangement</b>. Trading a C=C for a much stronger C=O makes it effectively one-way.</p>',
+        diagramHtml: '<!-- fig:sig-cope-claisen:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 372" role="img" aria-label="Two rows, each drawn on the six corners of a hexagon. Top, Cope rearrangement: 3-methylhexa-1,5-diene with the bond across the bottom, between the atoms numbered 1 and 1-prime, in color as the bond that breaks, and a dashed bond across the top, between the atoms numbered 3 and 3-prime, as the bond that forms. Three curved arrows run round the ring. The product, hepta-1,5-diene, has the new bond across the top and the two double bonds moved one place each. Bottom, Claisen rearrangement: allyl vinyl ether, with an oxygen at the lower-left corner, gives pent-4-enal, in which that oxygen is now double-bonded to carbon."><text class="fg-lbl" x="180" y="16" text-anchor="middle" font-size="13">Cope rearrangement</text><line class="fg-bond" x1="65" y1="49.63" x2="44" y2="86"></line><line class="fg-bond" x1="65.98" y1="57.12" x2="50.98" y2="83.1"></line><line class="fg-bond" x1="44" y1="86" x2="65" y2="122.37"></line><line class="fg-bond-hi" x1="65" y1="122.37" x2="107" y2="122.37"></line><line class="fg-bond" x1="107" y1="122.37" x2="128" y2="86"></line><line class="fg-bond" x1="128" y1="86" x2="107" y2="49.63"></line><line class="fg-bond" x1="121.02" y1="83.1" x2="106.02" y2="57.12"></line><line class="fg-dash-hi" x1="107" y1="49.63" x2="65" y2="49.63"></line><path class="fg-arrow" d="M123.6 64.3 Q111.8 41.32 92.99 42.25"></path><path class="fg-head" d="M86 42.6 L92.81 38.62 L93.17 45.89 Z"></path><path class="fg-arrow" d="M48.4 64.3 Q34.4 86 44.61 101.82"></path><path class="fg-head" d="M48.4 107.7 L41.55 103.79 L47.66 99.84 Z"></path><path class="fg-arrow" d="M86 129.4 Q111.8 130.68 120.4 113.93"></path><path class="fg-head" d="M123.6 107.7 L123.64 115.59 L117.16 112.26 Z"></path><line class="fg-bond" x1="65" y1="122.37" x2="57.49" y2="135.4"></line><circle class="fg-atom" cx="50" cy="148.4" r="15"></circle><text class="fg-lbl" x="50" y="151.92" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag-mut" x="71.5" y="115.1" text-anchor="middle" font-size="10">1</text><text class="fg-tag-mut" x="57" y="90" text-anchor="middle" font-size="10">2</text><text class="fg-tag-mut" x="71.5" y="64.9" text-anchor="middle" font-size="10">3</text><text class="fg-tag-mut" x="100.5" y="115.1" text-anchor="middle" font-size="10">1′</text><text class="fg-tag-mut" x="115" y="90" text-anchor="middle" font-size="10">2′</text><text class="fg-tag-mut" x="100.5" y="64.9" text-anchor="middle" font-size="10">3′</text><line class="fg-arrow" x1="150" y1="86" x2="198" y2="86"></line><path class="fg-head" d="M206 86 L198 90.16 L198 81.84 Z"></path><text class="fg-tag-mut" x="178" y="76" text-anchor="middle" font-size="10.5">heat</text><line class="fg-bond-hi" x1="293" y1="49.63" x2="251" y2="49.63"></line><line class="fg-bond" x1="251" y1="49.63" x2="230" y2="86"></line><line class="fg-bond" x1="230" y1="86" x2="251" y2="122.37"></line><line class="fg-bond" x1="236.98" y1="88.9" x2="251.98" y2="114.88"></line><line class="fg-bond" x1="293" y1="122.37" x2="314" y2="86"></line><line class="fg-bond" x1="292.02" y1="114.88" x2="307.02" y2="88.9"></line><line class="fg-bond" x1="314" y1="86" x2="293" y2="49.63"></line><line class="fg-bond" x1="251" y1="122.37" x2="243.49" y2="135.4"></line><circle class="fg-atom" cx="236" cy="148.4" r="15"></circle><text class="fg-lbl" x="236" y="151.92" text-anchor="middle" font-size="9.5">CH₃</text><text class="fg-tag" x="86" y="172" text-anchor="middle" font-size="10.5">3-methylhexa-1,5-diene</text><text class="fg-tag" x="272" y="172" text-anchor="middle" font-size="10.5">hepta-1,5-diene</text><line class="fg-rule" x1="16" y1="184" x2="344" y2="184"></line><text class="fg-lbl" x="180" y="202" text-anchor="middle" font-size="13">Claisen rearrangement</text><line class="fg-bond" x1="65" y1="235.63" x2="44" y2="272"></line><line class="fg-bond" x1="65.98" y1="243.12" x2="50.98" y2="269.1"></line><line class="fg-bond" x1="44" y1="272" x2="58.5" y2="297.11"></line><line class="fg-bond-hi" x1="78" y1="308.37" x2="107" y2="308.37"></line><line class="fg-bond" x1="107" y1="308.37" x2="128" y2="272"></line><line class="fg-bond" x1="128" y1="272" x2="107" y2="235.63"></line><line class="fg-bond" x1="121.02" y1="269.1" x2="106.02" y2="243.12"></line><line class="fg-dash-hi" x1="107" y1="235.63" x2="65" y2="235.63"></line><path class="fg-arrow" d="M123.6 250.3 Q111.8 227.32 92.99 228.25"></path><path class="fg-head" d="M86 228.6 L92.81 224.62 L93.17 231.89 Z"></path><path class="fg-arrow" d="M48.4 250.3 Q34.4 272 44.61 287.82"></path><path class="fg-head" d="M48.4 293.7 L41.55 289.79 L47.66 285.84 Z"></path><path class="fg-arrow" d="M86 315.4 Q111.8 316.68 120.4 299.93"></path><path class="fg-head" d="M123.6 293.7 L123.64 301.59 L117.16 298.26 Z"></path><circle class="fg-atom" cx="65" cy="308.37" r="13"></circle><text class="fg-lbl" x="65" y="312.81" text-anchor="middle" font-size="12">O</text><text class="fg-tag-mut" x="71.5" y="301.1" text-anchor="middle" font-size="10">1</text><text class="fg-tag-mut" x="57" y="276" text-anchor="middle" font-size="10">2</text><text class="fg-tag-mut" x="71.5" y="250.9" text-anchor="middle" font-size="10">3</text><text class="fg-tag-mut" x="100.5" y="301.1" text-anchor="middle" font-size="10">1′</text><text class="fg-tag-mut" x="115" y="276" text-anchor="middle" font-size="10">2′</text><text class="fg-tag-mut" x="100.5" y="250.9" text-anchor="middle" font-size="10">3′</text><line class="fg-arrow" x1="150" y1="272" x2="198" y2="272"></line><path class="fg-head" d="M206 272 L198 276.16 L198 267.84 Z"></path><text class="fg-tag-mut" x="178" y="262" text-anchor="middle" font-size="10.5">heat</text><line class="fg-bond-hi" x1="293" y1="235.63" x2="251" y2="235.63"></line><line class="fg-bond" x1="251" y1="235.63" x2="230" y2="272"></line><line class="fg-bond" x1="233.46" y1="270" x2="247.96" y2="295.11"></line><line class="fg-bond" x1="226.54" y1="274" x2="241.04" y2="299.11"></line><line class="fg-bond" x1="293" y1="308.37" x2="314" y2="272"></line><line class="fg-bond" x1="292.02" y1="300.88" x2="307.02" y2="274.9"></line><line class="fg-bond" x1="314" y1="272" x2="293" y2="235.63"></line><circle class="fg-atom" cx="251" cy="308.37" r="13"></circle><text class="fg-lbl" x="251" y="312.81" text-anchor="middle" font-size="12">O</text><text class="fg-tag" x="86" y="358" text-anchor="middle" font-size="10.5">allyl vinyl ether</text><text class="fg-tag" x="272" y="358" text-anchor="middle" font-size="10.5">pent-4-enal</text></svg><figcaption>Left: the bond in color breaks and the dashed bond forms, numbered 1 to 3 out from each end of the breaking bond. Right: the new bond is in color. No atom is added or lost.</figcaption></figure><!-- fig:sig-cope-claisen:end -->'
+      },
+      {
+        type: 'mcq',
+        eyebrow: 'Independent Practice',
+        title: 'Allyl vinyl ether, CH₂=CH&ndash;O&ndash;CH₂&ndash;CH=CH₂, is heated. What forms?',
+        options: [
+          'Prop-2-en-1-ol and acetaldehyde, from cleavage of the ether',
+          'Pent-4-enal, an aldehyde with a C=C at the far end of the chain',
+          'Cyclopentanol, from a ring closure through the oxygen',
+          'Pent-4-en-2-one, a methyl ketone'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. This is the Claisen rearrangement. The O&ndash;CH₂ bond breaks, the two end carbons join, and the oxygen becomes a C=O: OHC&ndash;CH₂&ndash;CH₂&ndash;CH=CH₂. No atom is lost, so the formula stays C₅H₈O.',
+        wrongFeedback: 'Number outward from the O&ndash;CH₂ bond: O is 1, then the vinyl carbons are 2 and 3; on the other side the allyl carbons are 1, 2 and 3. Join the two atom-3 carbons and let the &pi; bonds shift.'
+      },
+      {
+        type: 'explain',
+        eyebrow: 'Explain',
+        title: 'The chair transition state.',
+        bodyHtml: '<p class="step-body">In a [3,3] shift the six atoms taking part form a ring in the transition state, and it prefers the chair shape of cyclohexane. A substituent sits more comfortably in an equatorial-like position, pointing out from the ring, than in an axial-like one.</p>' +
+          '<p class="step-body">That choice sets the new C=C. In the Cope rearrangement of 3-methylhexa-1,5-diene, the chair with the methyl equatorial leads to the <b>(<i>E</i>)</b> alkene, so (<i>E</i>)-hepta-1,5-diene is the main product.</p>',
+        diagramHtml: '<!-- fig:sig-chair-ts:start --><figure class="notes-figure notes-figure--wide" style="--vb:360"><svg viewBox="0 0 360 230" role="img" aria-label="A cyclohexane-shaped chair made of the six atoms of the Cope rearrangement, C1 to C6. Two of its bonds are dashed: the C3 to C4 bond that is breaking and the C1 to C6 bond that is forming. C3 carries a methyl in the equatorial position, pointing out from the ring, and a hydrogen in the axial position, pointing straight up. A note says the equatorial methyl leads to the E double bond."><line class="fg-dash" x1="136.3" y1="62.9" x2="243.7" y2="97.5"></line><line class="fg-bond" x1="243.7" y1="97.5" x2="297.5" y2="94.7"></line><line class="fg-bond" x1="297.5" y1="94.7" x2="243.7" y2="161.1"></line><line class="fg-dash-hi" x1="243.7" y1="161.1" x2="136.2" y2="126.5"></line><line class="fg-bond" x1="136.2" y1="126.5" x2="82.5" y2="129.3"></line><line class="fg-bond" x1="82.5" y1="129.3" x2="136.3" y2="62.9"></line><line class="fg-bond-hi" x1="136.3" y1="62.9" x2="111.42" y2="65.53"></line><circle class="fg-atom" cx="96.5" cy="67.1" r="15"></circle><text class="fg-lbl" x="96.5" y="70.61" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="136.3" y1="62.9" x2="136.3" y2="41.9"></line><circle class="fg-atom" cx="136.3" cy="32.9" r="9"></circle><text class="fg-lbl" x="136.3" y="37.34" text-anchor="middle" font-size="12">H</text><text class="fg-tag-mut" x="315.5" y="100.7" text-anchor="middle" font-size="10">C5</text><text class="fg-tag-mut" x="251.7" y="115.5" text-anchor="middle" font-size="10">C4</text><text class="fg-tag-mut" x="152.3" y="76.9" text-anchor="middle" font-size="10">C3</text><text class="fg-tag-mut" x="62.5" y="133.3" text-anchor="middle" font-size="10">C2</text><text class="fg-tag-mut" x="130.2" y="146.5" text-anchor="middle" font-size="10">C1</text><text class="fg-tag-mut" x="249.7" y="181.1" text-anchor="middle" font-size="10">C6</text><text class="fg-tag-mut" x="200" y="214" text-anchor="middle" font-size="10">dashed: C3–C4 breaking, C1–C6 forming</text><text class="fg-tag-good" x="14" y="176" text-anchor="start" font-size="11">methyl equatorial</text><text class="fg-tag-good" x="14" y="192" text-anchor="start" font-size="11">→ the (E) alkene</text></svg><figcaption>The six atoms sit in a chair, like cyclohexane. The methyl on C3 takes the equatorial position, pointing out from the ring; that choice makes the new C2=C3 double bond <i>E</i>.</figcaption></figure><!-- fig:sig-chair-ts:end -->'
+      },
+      {
+        type: 'final',
+        eyebrow: 'Challenge',
+        title: '(2<i>E</i>,4<i>Z</i>,6<i>E</i>)-Octa-2,4,6-triene is heated, and a second sample is irradiated with UV light. What do the two samples give?',
+        options: [
+          'Heat: <i>trans</i>-5,6-dimethylcyclohexa-1,3-diene; light: <i>cis</i>',
+          'Heat: <i>cis</i>-5,6-dimethylcyclohexa-1,3-diene; light: <i>trans</i>',
+          'Both give <i>cis</i>-5,6-dimethylcyclohexa-1,3-diene',
+          'Both give a 1:1 mixture of <i>cis</i> and <i>trans</i>'
+        ],
+        correctIndex: 1,
+        correctFeedback: 'Correct. Six &pi; electrons with heat is disrotatory, and both methyls point out, so they land on the same face: <i>cis</i>. Light flips the rotation to conrotatory, which sends one methyl up and one down: <i>trans</i>.',
+        wrongFeedback: 'Six is 4<i>n</i> + 2, so heat gives disrotatory and light gives conrotatory. Both methyls point out of the U. Which rotation puts two outward groups on the same face?'
+      }
+    ]
+  });
+})();
+});
+</script>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
+  </footer>
+</div>
+</body>
+</html>

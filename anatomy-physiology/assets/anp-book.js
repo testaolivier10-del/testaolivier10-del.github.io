@@ -50,6 +50,14 @@
           else if(!/^[a-z]+:/i.test(v)){ var u = new URL(v, url); el.setAttribute(a, u.pathname + u.search + u.hash); }
         });
       });
+      // A figure's AVIF srcset (<picture>) is relative to the notes page too.
+      art.querySelectorAll('[srcset]').forEach(function(el){
+        el.setAttribute('srcset', el.getAttribute('srcset').split(',').map(function(part){
+          var bits = part.trim().split(/\s+/);
+          if(bits[0] && !/^[a-z]+:/i.test(bits[0])) bits[0] = new URL(bits[0], url).pathname;
+          return bits.join(' ');
+        }).join(', '));
+      });
       art.querySelectorAll('[id]').forEach(function(el){ el.id = id + '--' + el.id; });
       // The topic title is this section's h2, so the notes' own headings step down one.
       art.querySelectorAll('h3').forEach(function(h){ rename(h, 'h4'); });
@@ -104,21 +112,37 @@
           '<p class="tb-chapter-meta">' + ts.length + ' topics &middot; A&amp;P ' + esc(ch.course) + ' &middot; <span data-chap-meta="' + ch.id + '">not practiced yet</span></p>' +
         '</div><p class="anp-chap-acts"><a class="anp-tb-btn solid" href="practice.html?chapter=' + ch.id + '">Chapter quiz</a><a class="anp-tb-btn ghost" href="chapters/' + ch.id + '.html">Chapter page</a></p></header>' +
         ts.map(function(t){
-          return '<section class="anp-book-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '">' +
+          // Hidden until its prose and every earlier topic's has arrived, so
+          // a topic landing never pushes the ones below it down the screen
+          // (audit 2026-10, layout shift: CLS 0.57 on a phone).
+          return '<section class="anp-book-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '" hidden>' +
             '<div class="anp-book-head"><h2 id="h-' + t.id + '"><span class="anp-toc-n">' + t.n + '</span>' + esc(t.title) + '</h2>' +
             '<div class="anp-book-acts"><span class="anp-tb-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
             '<a class="anp-tb-btn solid" href="lessons/' + t.id + '.html" aria-label="Lesson: ' + esc(t.title) + '">Lesson</a></div></div>' +
             '<div class="anp-prose" data-book-t="' + t.id + '"><p class="anp-book-wait">Loading&hellip;</p></div></section>';
         }).join('') +
-        '<nav class="tb-chapter-nav anp-nav-ref" aria-label="Chapter navigation">' + link(prev, 'prev') + link(next, 'next') + '</nav>';
+        '<nav class="tb-chapter-nav anp-nav-ref" aria-label="Chapter navigation" hidden>' + link(prev, 'prev') + link(next, 'next') + '</nav>';
       if(window.AnpToc) window.AnpToc.paint();
+      var ready = {};
+      var reveal = function(){
+        if(shown !== chId) return;
+        for(var k = 0; k < ts.length; k++){
+          if(!ready[ts[k].id]) return;
+          var sec = document.getElementById(ts[k].id);
+          if(sec) sec.hidden = false;
+        }
+        var nav = book.querySelector('.tb-chapter-nav');
+        if(nav) nav.hidden = false;
+      };
       var loads = ts.map(function(t){
         return prose(t.id).then(function(html){
           var slot = book.querySelector('[data-book-t="' + t.id + '"]');
           if(slot && shown === chId) slot.innerHTML = html;
+          ready[t.id] = true;
+          reveal();
         });
       });
-      Promise.all(loads).then(function(){ if(shown === chId && topicId) jump(topicId); });
+      Promise.all(loads).then(function(){ reveal(); if(shown === chId && topicId) jump(topicId); });
     }
     if(topicId) jump(topicId);
     else if(moved){ window.scrollTo(0, 0); var h = book.querySelector('h1'); if(h) h.focus({ preventScroll: true }); }

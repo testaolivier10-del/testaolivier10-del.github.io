@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The conduction system and pacemaker cells: Notes | A&amp;P</title>
+<title>The conduction system and pacemaker cells — A&amp;P Notes</title>
 <meta name="description" content="Cardiac conduction system notes: pacemaker potential, SA node, AV node delay, AV bundle and Purkinje fibers, and autonomic control of heart rate.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/conduction-system.html">
-<meta property="og:title" content="The conduction system and pacemaker cells: Notes | A&amp;P">
+<meta property="og:title" content="The conduction system and pacemaker cells — A&amp;P Notes">
 <meta property="og:description" content="Cardiac conduction system notes: pacemaker potential, SA node, AV node delay, AV bundle and Purkinje fibers, and autonomic control of heart rate.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/conduction-system.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="conduction-system">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 19 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cardiovascular.html">The cardiovascular system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The conduction system and pacemaker cells: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/conduction-system.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 99 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 19 &middot; Topic 99 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">The conduction system and pacemaker cells</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">15 min read</span><span class="anp-tb-chip" data-chip-topic="conduction-system">Not practiced</span></p>
     </header>
@@ -159,14 +160,14 @@
 <figcaption><b>Figure 1.</b> The pacemaker potential of an SA node cell, drawn from the ion currents described in the text. There is no flat resting line: each action potential is followed at once by the slow climb toward the next one.</figcaption></figure>
 
 <p>OpenStax draws the same cycle over 1.6 seconds (<a class="figref" href="#fig-os-19-20">Figure 2</a>). Read the time axis: one full cycle takes 0.8 seconds, which is 60 ÷ 0.8 = 75 cycles, and so 75 beats, per minute.</p>
-<figure id="fig-os-19-20"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-20"><img src="../figures/os-19-20.jpg" alt="A graph of membrane potential in millivolts against time in seconds, from 0 to 1.6 seconds, for a pacemaker cell. A dashed line marks threshold at minus 40 millivolts and a solid line marks minus 60. The trace starts at threshold, rises steeply to about plus 15, falls back to minus 60, then climbs slowly and steadily back to threshold at 0.8 seconds, and repeats. Labels mark the slow climb as sodium entering, the steep rise as calcium entering, and the fall as potassium leaving." width="1100" height="528" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Two cycles of a pacemaker cell's membrane potential. The slope of the slow climb sets how long each cycle lasts. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.20, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-19-20"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-20"><picture><source type="image/avif" srcset="../figures/avif/os-19-20-480.avif 480w, ../figures/avif/os-19-20-800.avif 800w, ../figures/avif/os-19-20.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-20.jpg" alt="A graph of membrane potential in millivolts against time in seconds, from 0 to 1.6 seconds, for a pacemaker cell. A dashed line marks threshold at minus 40 millivolts and a solid line marks minus 60. The trace starts at threshold, rises steeply to about plus 15, falls back to minus 60, then climbs slowly and steadily back to threshold at 0.8 seconds, and repeats. Labels mark the slow climb as sodium entering, the steep rise as calcium entering, and the fall as potassium leaving." width="1100" height="528" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Two cycles of a pacemaker cell's membrane potential. The slope of the slow climb sets how long each cycle lasts. <span class="anp-credit">Figure 19.20 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h3>The slope sets the rate</h3>
 <p>How fast the pacemaker potential climbs decides how soon the cell reaches threshold, and so how many times a minute it fires. A steeper climb reaches threshold sooner and gives a faster rate. A shallower climb, or a start from a more negative voltage, takes longer and gives a slower rate. Remember this: every influence on how fast the SA node fires works by changing the slope, the starting point, or the threshold.</p>
 
 <h2 id="pacemaker-cells-and-contractile-cells-compared">Pacemaker cells and contractile cells compared</h2>
 <p>Students often mix up the two cardiac action potentials. The table sets them side by side.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Feature, Contractile cardiac muscle cell, Autorhythmic (pacemaker) cell"><table class="compare">
   <thead><tr><th scope="col">Feature</th><th scope="col">Contractile cardiac muscle cell</th><th scope="col">Autorhythmic (pacemaker) cell</th></tr></thead>
   <tbody>
     <tr><th scope="row">Share of heart cells</th><td>About 99 percent</td><td>About 1 percent</td></tr>
@@ -185,7 +186,7 @@
 <h2 id="the-sinoatrial-node-where-each-beat">The sinoatrial node: where each beat begins</h2>
 <p>The <strong>sinoatrial node</strong>, or <strong>SA node</strong> (sino- = sinus, here the embryonic chamber the venae cavae open into; atri- = atrium; node = knot), is a small patch of autorhythmic cells in the upper back wall of the <a class="gl" href="../notes/heart-anatomy.html" data-c="chambers">right atrium</a>, near where the <a class="gl" href="../notes/heart-anatomy.html" data-c="great-vessels">superior vena cava</a> enters (<a class="figref" href="#fig-os-19-18">Figure 3</a>). Its pacemaker potential climbs faster than that of any other cells in the heart, so it reaches threshold first. That makes it the heart's <strong>pacemaker</strong>: the site that sets the rate for the whole heart.</p>
 <p>A heartbeat that starts in the SA node and follows the normal path is called <strong>sinus rhythm</strong>. At rest in a healthy adult it runs between about 60 and 100 beats per minute.</p>
-<figure id="fig-os-19-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-18"><img src="../figures/os-19-18.jpg" alt="The heart cut open in a frontal plane, seen from the front, with its conduction pathway drawn as yellow lines. A small node sits high in the wall of the right upper chamber near where the large vein from above enters. Three pathways run from it down through the right upper chamber to a second node low in the wall between the upper chambers, and a band crosses to the left upper chamber. From the second node a single bundle runs into the wall between the lower chambers, splits into right and left branches that run down toward the tip, and then fans out as fine fibers up the walls of both lower chambers." width="1100" height="737" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> The conduction system in a frontal section of the heart. Trace it in order: SA node, the pathways through the atria, the AV node, the AV bundle, the right and left bundle branches, and the Purkinje fibers. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.18, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-19-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-18"><picture><source type="image/avif" srcset="../figures/avif/os-19-18-480.avif 480w, ../figures/avif/os-19-18-800.avif 800w, ../figures/avif/os-19-18.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-18.jpg" alt="The heart cut open in a frontal plane, seen from the front, with its conduction pathway drawn as yellow lines. A small node sits high in the wall of the right upper chamber near where the large vein from above enters. Three pathways run from it down through the right upper chamber to a second node low in the wall between the upper chambers, and a band crosses to the left upper chamber. From the second node a single bundle runs into the wall between the lower chambers, splits into right and left branches that run down toward the tip, and then fans out as fine fibers up the walls of both lower chambers." width="1100" height="737" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> The conduction system in a frontal section of the heart. Trace it in order: SA node, the pathways through the atria, the AV node, the AV bundle, the right and left bundle branches, and the Purkinje fibers. <span class="anp-credit">Figure 19.18 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h2 id="spreading-through-the-atria">Spreading through the atria</h2>
 <p>An action potential that starts in the SA node spreads into the neighboring atrial muscle cells through gap junctions. Each cell that fires depolarizes the next, so the wave sweeps across both atria in about a tenth of a second, and the atrial muscle contracts behind it.</p>
@@ -262,11 +263,11 @@
 <figcaption><b>Figure 4.</b> The timing of one heartbeat's signal. The long box is the AV nodal delay: the slowest stretch of the path, and the reason the atria finish contracting before the ventricles start.</figcaption></figure>
 
 <p>You can watch the whole sequence as a series of snapshots (<a class="figref" href="#fig-os-19-19">Figure 5</a>): the SA node fires, the atria depolarize, the signal pauses and then runs down the septum, and the ventricles depolarize from the apex up.</p>
-<figure id="fig-os-19-19"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-19"><img src="../figures/os-19-19.jpg" alt="Six numbered outline drawings of the heart arranged in a circle, each with purple shading showing which tissue is electrically active. In the first nothing is shaded. In the second only the node in the right upper chamber is active. In the third the shading covers both upper chambers. In the fourth the upper chambers are clear and the shading runs along the bundle and its branches in the wall between the lower chambers. In the fifth the shading fills the lower chambers from the tip upward. In the sixth the shading fades from the lower chambers, starting at the top." width="1100" height="1104" loading="lazy" decoding="async"></div><figcaption><b>Figure 5.</b> Snapshots of one heartbeat's signal, shaded where tissue is depolarized. Name what is happening in each panel before reading on. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 19.19, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-19-19"  class="anp-figure"><div class="anp-figimg" data-fig="os-19-19"><picture><source type="image/avif" srcset="../figures/avif/os-19-19-480.avif 480w, ../figures/avif/os-19-19-800.avif 800w, ../figures/avif/os-19-19.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-19-19.jpg" alt="Six numbered outline drawings of the heart arranged in a circle, each with purple shading showing which tissue is electrically active. In the first nothing is shaded. In the second only the node in the right upper chamber is active. In the third the shading covers both upper chambers. In the fourth the upper chambers are clear and the shading runs along the bundle and its branches in the wall between the lower chambers. In the fifth the shading fills the lower chambers from the tip upward. In the sixth the shading fades from the lower chambers, starting at the top." width="1100" height="1104" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 5.</b> Snapshots of one heartbeat's signal, shaded where tissue is depolarized. Name what is happening in each panel before reading on. <span class="anp-credit">Figure 19.19 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/19-2-cardiac-muscle-and-electrical-activity">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h2 id="intrinsic-rates-and-ectopic-pacemakers">Intrinsic rates and ectopic pacemakers</h2>
 <p>Every part of the conduction system can make its own pacemaker potential. What differs is the slope, and so the rate. These are the <strong><span class="gl" tabindex="0" data-c="intrinsic-rates">intrinsic pacemaker rates</span></strong>: the rate each region would set if it were left on its own.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table: Region, Intrinsic rate (beats per minute), When it sets the rate"><table class="compare">
   <thead><tr><th scope="col">Region</th><th scope="col">Intrinsic rate (beats per minute)</th><th scope="col">When it sets the rate</th></tr></thead>
   <tbody>
     <tr><th scope="row">SA node</th><td>About 60 to 100 at rest (about 100 with no nerve input)</td><td>Normally, in sinus rhythm</td></tr>
@@ -299,13 +300,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:conduction-system">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="cardiac-muscle-ap.html"><span>&larr; Topic 98</span><b>Cardiac muscle cells and their action potential</b></a><a class="tb-chapter-link next" href="ecg.html"><span>Topic 100 &rarr;</span><b>The electrocardiogram</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

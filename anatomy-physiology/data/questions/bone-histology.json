@@ -203,9 +203,9 @@
     ],
     "q": "Mia, 4, has had eleven broken bones. The bone she makes is fully mineralized, but a gene change makes her collagen faulty. Why do her bones break so easily?",
     "options": [
-      "Her bones cannot store calcium",
+      "Her bones store too little calcium",
       "Her bone lacks the flexibility to bend under a load",
-      "Her osteoclasts cannot resorb old or damaged bone",
+      "Her osteoclasts fail to resorb old or damaged bone",
       "Her bones have too few lacunae for osteocytes"
     ],
     "correct": 1,
@@ -333,23 +333,22 @@
       "Spaces that can hold red marrow",
       "Fills the ends of long bones",
       "Makes up about 80% of the skeleton's mass",
-      "Osteocytes in lacunae"
+      "Makes up most of the shaft of a long bone"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "Spongy bone is a lattice of trabeculae with marrow in the spaces between them. It fills the ends of long bones and the inside of other bones, and its osteocytes sit in lacunae like those of compact bone.",
+      "correct": "Spongy bone is a lattice of trabeculae with marrow in the spaces between them, and it fills the ends of long bones. Osteons, most of the shaft and about 80% of the skeleton's mass are compact bone.",
       "options": [
         "Correct. Trabeculae are its struts.",
         "Osteons with central canals are the units of compact bone. Trabeculae are thin enough not to need a central canal.",
         "Correct. Its spaces hold marrow, red in some bones.",
         "Correct. The epiphyses are filled with spongy bone.",
         "About 80% of the skeleton's mass is compact bone. Spongy bone is about 20%.",
-        "Correct. Osteocytes of spongy bone also live in lacunae, linked by canaliculi."
+        "The shaft is mostly compact bone around the marrow cavity. Spongy bone fills the ends."
       ]
     }
   },
@@ -418,7 +417,7 @@
     "q": "What is the diploë?",
     "options": [
       "The spongy bone between the two plates of a flat skull bone",
-      "The outer shell of compact bone that covers every bone of the skeleton",
+      "The outer shell of compact bone that covers a flat bone",
       "The lining membrane of the medullary cavity",
       "The central canal of an osteon"
     ],

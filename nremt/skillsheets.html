@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Psychomotor Skills Study Guide — NREMT-EMT | LevlPrep</title>
-<meta name="description" content="A study guide for the 10 official NREMT-EMT psychomotor skill sheets, with links to verify against official sources.">
+<meta name="description" content="A study guide for the 10 NREMT-EMT psychomotor skill sheets: points, time limits and critical criteria per station, with links to the official sheets.">
 <link rel="canonical" href="https://levlprep.com/nremt/skillsheets.html">
 <meta property="og:title" content="Psychomotor Skills Study Guide — NREMT-EMT | LevlPrep">
 <meta property="og:description" content="A study guide for the 10 official NREMT-EMT psychomotor skill sheets, with links to verify against official sources.">
@@ -98,6 +99,12 @@
      mark is the one you cannot afford to miss at a glance. */
   .run-step.is-critical{border-color:var(--warn);background:var(--tint-warn);}
   .run-step.is-critical.is-done{border-color:var(--good-text);background:var(--tint-good);}
+  .sheets-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .sheets-table th,.sheets-table td{text-align:left;vertical-align:top;padding:9px 10px;border-top:1px solid var(--line);}
+  .sheets-table thead th{border-top:0;font:800 12px var(--font-ui);color:var(--muted);}
+  .sheets-table tbody th{font-weight:800;min-width:150px;}
+  .sheets-table .sheet-code{display:block;font:700 11px var(--font-mono);color:var(--muted);margin-top:2px;}
+  .sheets-glance .table-wrap{overflow-x:auto;}
   .run-flag{
     font:700 10px var(--font-mono);text-transform:uppercase;letter-spacing:.06em;
     color:var(--bad-text);white-space:nowrap;margin-top:3px;
@@ -178,8 +185,11 @@
 </script>
 </head>
 <body>
-  <div id="site-header"></div>
+  <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT psychomotor skill sheets</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
   <div class="page-head">
@@ -229,6 +239,26 @@
     </ul>
   </div>
 
+  <div class="general-tips sheets-glance">
+    <h2 style="margin-top:0;">The official sheets at a glance</h2>
+    <p style="font-size:14.5px;margin:0 0 10px;">The National Registry&rsquo;s EMT psychomotor sheets, linked from the source. Points are the total on each sheet; the time is the station limit printed on it; the last column paraphrases the critical criteria, any one of which fails the station however many points you score. Your state or program runs the EMT skills exam and may use its own version of a sheet, so practice with the one you will be tested on.</p>
+    <div class="table-wrap"><table class="sheets-table">
+      <thead><tr><th scope="col">Station and sheet</th><th scope="col">Points</th><th scope="col">Time</th><th scope="col">Critical criteria (summary)</th></tr></thead>
+      <tbody>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E201_NREMT.pdf" rel="noopener">Patient Assessment/Management &mdash; Trauma</a><span class="sheet-code">E201</span></th><td>42</td><td>10 min</td><td>No PPE; no scene safety check; no spinal protection when indicated; no high-concentration oxygen; misses or mismanages an airway, breathing, bleeding or shock problem; does other assessment before treating threats to airway, breathing and circulation; no transport call within the 10 minutes</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E202_NREMT.pdf" rel="noopener">Patient Assessment/Management &mdash; Medical</a><span class="sheet-code">E202</span></th><td>42</td><td>15 min</td><td>No PPE; no scene safety check; no high-concentration oxygen when needed; misses or mismanages a life threat; secondary exam before treating threats to airway, breathing and circulation; no medical direction or standing order for a medication; no transport call within the 15 minutes</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E215_NREMT.pdf" rel="noopener">Cardiac Arrest Management / AED</a><span class="sheet-code">E215</span></th><td>17</td><td>10 min</td><td>No PPE; responsiveness not checked, then breathing and pulse not checked together in no more than 10 seconds; compressions not begun as soon as pulselessness is confirmed; compressions not of acceptable quality; CPR interrupted for more than 10 seconds; AED attached or operated incorrectly; shock not delivered in a timely manner; anyone not clear during analysis or shock; compressions not resumed immediately after the shock</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E203_NREMT.pdf" rel="noopener">BVM Ventilation of an Apneic Adult</a><span class="sheet-code">E203</span></th><td>16</td><td>5 min</td><td>No suctioning before ventilating, or suctioning too long; responsiveness, breathing and pulse not checked (no more than 10 seconds); high-concentration oxygen not voiced and given; inadequate volume per breath (more than 2 errors a minute); ventilation rate below 10 or above 12 a minute (one ventilation every 5&ndash;6 seconds); interruption of ventilation for more than 30 seconds</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E204_NREMT.pdf" rel="noopener">Oxygen Administration by Non-Rebreather Mask</a><span class="sheet-code">E204</span></th><td>11</td><td>5 min</td><td>No PPE; tank and regulator assembled with leaks; reservoir not prefilled; flow below 10 L/min; mask not sealed to the face</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E212_NREMT.pdf" rel="noopener">Spinal Immobilization &mdash; Supine Patient</a><span class="sheet-code">E212</span></th><td>14</td><td>10 min</td><td>Manual stabilization not taken at once, or released before mechanical immobilization; collar not applied before release; excessive movement of the patient; head secured before the torso; head not neutral and in line at the end; distal motor, sensory and circulation not reassessed</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E211_NREMT.pdf" rel="noopener">Spinal Immobilization &mdash; Seated Patient</a><span class="sheet-code">E211</span></th><td>12</td><td>10 min</td><td>As for the supine station, plus the device moving excessively on the torso and the torso straps not tight enough</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E217_NREMT.pdf" rel="noopener">Long Bone Immobilization</a><span class="sheet-code">E217</span></th><td>10</td><td>5 min</td><td>Extremity not stabilized at once; gross movement of the injured limb; joints above and below not immobilized; hand or foot not in a position of function; distal motor, sensory and circulation not checked before and after splinting</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E216_NREMT.pdf" rel="noopener">Joint Immobilization</a><span class="sheet-code">E216</span></th><td>9</td><td>5 min</td><td>Joint not supported so it bears no distal weight; bones above and below not immobilized; distal motor, sensory and circulation not checked before and after splinting</td></tr>
+      <tr><th scope="row"><a href="https://content.nremt.org/static/documents/skills/E213_NREMT.pdf" rel="noopener">Bleeding Control / Shock Management</a><span class="sheet-code">E213</span></th><td>7</td><td>10 min</td><td>No PPE; high-concentration oxygen not applied; bleeding not controlled correctly and in time; need for immediate transport not indicated</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
   <h2>The skill stations</h2>
 
   <!-- The page states three things — examiners score what you say, critical
@@ -266,7 +296,7 @@
   <div class="skill-card">
     <h3>BVM Ventilation of an Apneic Adult</h3>
     <div class="structure">Airway assessment and positioning → adjunct placement as needed → ventilation technique and rate → reassessment of effectiveness.</div>
-    <div class="tip">Ventilation rate and technique are heavily scrutinized here — this pairs well with the Airway & Respiratory domain in the cognitive exam prep.</div>
+    <div class="tip">Ventilation rate and technique are heavily scrutinized here — this pairs well with the Airway &amp; Respiratory topic area in the cognitive exam prep.</div>
     <div class="watch"><b>Watch for:</b> ventilating too fast or with too much volume — beyond just being poor technique, excessive ventilation (and the gastric distention/aspiration risk it creates) is commonly called out as a critical-criteria failure, not only a lost point.</div>
   </div>
 
@@ -315,14 +345,14 @@
 
   <div class="general-tips">
     <h2 style="margin-top:0;">Verify against the source</h2>
-    <p style="font-size:14.5px;margin:0 0 10px;">The official NREMT psychomotor skill sheets are published at <a href="https://www.nremt.org" style="color:var(--ink);">nremt.org</a> (search their site for the current EMT psychomotor exam skill sheets, typically hosted under content.nremt.org). Your program's portal or printed materials are the other essential source — when the two differ, ask your instructor which one you're actually tested on.</p>
+    <p style="font-size:14.5px;margin:0 0 10px;">Each sheet in the table above links to the National Registry&rsquo;s own PDF. Your program&rsquo;s portal or printed materials are the other essential source &mdash; when the two differ, ask your instructor which one you&rsquo;re actually tested on.</p>
   </div>
 
   </div><!-- /stationCards -->
 
   <footer>
     <p>This page reflects general structural patterns across NREMT-EMT psychomotor stations and is not a substitute for your program's official skill sheets. Exact step order, wording, and critical-fail criteria should always be verified against your specific program's materials before your skills exam.</p>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
     </footer>
 </div>
 <script src="assets/nav.js" defer></script>

@@ -170,22 +170,6 @@
     "why": { "correct": "An acute rise in PaCO2 lowers pH at once, because the kidneys need days to act. Over 3 to 5 days, they excrete more acid and add new bicarbonate, and pH climbs back toward normal while PaCO2 stays high: acute respiratory acidosis becomes partially compensated." }
   },
   {
-    "id": "anp-acid-base-disorders-10",
-    "type": "predict",
-    "level": "apply",
-    "diff": 2,
-    "predictLevel": 2,
-    "core": ["homeostasis"],
-    "q": "During a panic attack, a student breathes fast and deep for ten minutes. Predict the change in each variable compared with before the attack.",
-    "variables": [
-      { "name": "Arterial PaCO2", "answer": "down", "why": "She breathes out carbon dioxide faster than her cells make it." },
-      { "name": "Blood pH", "answer": "up", "why": "Less carbon dioxide raises the bicarbonate to carbon dioxide ratio." },
-      { "name": "Free calcium in plasma", "answer": "down", "why": "In alkalemia, more calcium binds to albumin, leaving less free." },
-      { "name": "Blood flow to the brain", "answer": "down", "why": "Low carbon dioxide constricts the brain's arterioles, which is why she feels lightheaded." }
-    ],
-    "why": { "correct": "Hyperventilation lowers PaCO2 and causes an acute respiratory alkalosis. Low free calcium explains her tingling and hand spasms, and constricted brain arterioles explain her lightheadedness. Ten minutes is far too short for the kidneys to respond." }
-  },
-  {
     "id": "anp-acid-base-disorders-11",
     "type": "predict",
     "level": "analyze",
@@ -211,13 +195,13 @@
     "diff": 2,
     "core": ["homeostasis"],
     "q": "Select every condition that commonly causes metabolic alkalosis.",
-    "options": ["Three days of vomiting", "Continuous suction of stomach contents through a tube", "A loop diuretic", "Severe diarrhea", "An aldosterone-secreting adrenal tumor", "An opioid overdose"],
-    "correct": [0, 1, 2, 4],
+    "options": ["Three days of vomiting", "A diet high in protein", "A loop diuretic", "Severe diarrhea", "An aldosterone-secreting adrenal tumor", "An opioid overdose"],
+    "correct": [0, 2, 4],
     "why": {
-      "correct": "Vomiting and stomach suction remove hydrochloric acid and leave its matching bicarbonate in the blood. Loop diuretics and excess aldosterone speed H+ and K+ secretion in the collecting duct. Diarrhea causes metabolic acidosis, and an opioid overdose causes respiratory acidosis.",
+      "correct": "Vomiting removes hydrochloric acid and leaves its matching bicarbonate in the blood. A high-protein diet adds fixed acid, if anything. Loop diuretics and excess aldosterone speed H+ and K+ secretion in the collecting duct. Diarrhea causes metabolic acidosis, and an opioid overdose causes respiratory acidosis.",
       "options": [
         "Correct. Losing stomach acid leaves the bicarbonate of the alkaline tide in the blood.",
-        "Correct. Suction removes stomach acid just as vomiting does.",
+        "Breaking down protein adds sulfuric and phosphoric acid, which the kidneys must excrete. If anything, it pushes toward acidosis, not alkalosis.",
         "Correct. The diuretic causes loss of volume, chloride and potassium, and more sodium reaching the collecting duct is traded for H+ and K+.",
         "Diarrhea removes bicarbonate-rich intestinal fluid, causing metabolic acidosis.",
         "Correct. Aldosterone speeds H+ and K+ secretion, so the kidneys add new bicarbonate to the blood.",

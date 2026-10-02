@@ -223,7 +223,7 @@
       after: document.getElementById('masterySnapshot'),
       notes: 'learn.html', notesText: 'Read the free textbook',
       locked: function(){ return G.locked(); },
-      badgeIn: document.querySelector('.hero h1'),
+      badgeIn: document.querySelector('.hero .eyebrow') || document.querySelector('.hero h1'),
       badge: G.badge()
     });
   }

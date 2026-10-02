@@ -89,7 +89,7 @@
     "options": [
       "It matches the true mean",
       "It overestimates the true mean",
-      "It cannot be applied during a sprint",
+      "It gives a value above her systolic pressure",
       "It underestimates the true mean"
     ],
     "correct": 3,
@@ -98,7 +98,7 @@
       "options": [
         "The one-third rule is fitted to resting heart rates. How well it matches depends on how each cycle is split between systole and diastole, and a sprint changes that split.",
         "An overestimate would need more time spent near diastolic pressure. A fast heart rate does the opposite: diastole shrinks.",
-        "The formula can be applied at any rate: her pulse pressure is 160 − 80 = 80 mm Hg. The problem is that its one-third weighting no longer fits.",
+        "The estimate is 80 + 80 ÷ 3 ≈ 107 mm Hg, well below her systolic 160 mm Hg. The question is whether it is above or below the true mean.",
         "Correct. With diastole shortened, the true mean is higher than the resting formula predicts."
       ]
     }
@@ -219,6 +219,11 @@
         "name": "Total peripheral resistance",
         "answer": "down",
         "why": "The calf bed is one of many beds in parallel. Lowering the resistance of one lowers the total a little."
+      },
+      {
+        "name": "Blood flow through the arm muscles",
+        "answer": "none",
+        "why": "Only the calf's arterioles relaxed, and arterial pressure is unchanged, so flow through the arm is unchanged."
       }
     ],
     "why": {
@@ -251,6 +256,11 @@
         "name": "Pulse pressure",
         "answer": "up",
         "why": "Pulse pressure is systolic minus diastolic. A higher peak and a lower trough widen the gap."
+      },
+      {
+        "name": "Volume of blood the heart pumps each minute",
+        "answer": "none",
+        "why": "Stroke volume and heart rate are unchanged, so the volume pumped each minute, their product, is unchanged. Only the pressure swing around the mean widens."
       }
     ],
     "why": {
@@ -353,7 +363,7 @@
       "It will read too low",
       "It will read accurately",
       "It will read too high",
-      "Only the diastolic value will be wrong"
+      "The diastolic value will be wrong, but the systolic will be right"
     ],
     "correct": 2,
     "why": {
@@ -405,21 +415,20 @@
       "Vessel radius",
       "The pressure difference between its ends",
       "Vessel length",
-      "Blood viscosity",
+      "The amount of oxygen in the blood",
       "The speed of the blood inside it"
     ],
     "correct": [
       0,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "Resistance depends on the vessel's radius (to the fourth power), its length and the viscosity of the blood. The pressure difference and the speed of blood are results of flow, not properties of the vessel that set resistance.",
+      "correct": "Resistance depends on the vessel's radius (to the fourth power), its length and the blood's viscosity. The pressure difference and the speed of blood are results of flow, and oxygen content plays no part.",
       "options": [
         "Correct. Radius has the largest effect, through the fourth-power rule.",
         "The pressure difference drives flow through the resistance; it does not set the resistance itself.",
         "Correct. A longer vessel has proportionally more resistance.",
-        "Correct. Thicker blood, with a higher hematocrit, has more resistance.",
+        "Oxygen content does not set how hard it is to push blood through a vessel.",
         "Velocity depends on flow and cross-sectional area. It is an outcome, not one of the factors in Poiseuille's law."
       ]
     }

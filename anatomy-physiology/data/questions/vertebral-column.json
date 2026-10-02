@@ -475,6 +475,11 @@
         "name": "Height of each vertebral body",
         "answer": "none",
         "why": "The vertebral bodies are bone and do not measurably compress under everyday loads."
+      },
+      {
+        "name": "Number of vertebrae",
+        "answer": "none",
+        "why": "A day of standing changes the discs' water content, not how many vertebrae there are."
       }
     ],
     "why": {

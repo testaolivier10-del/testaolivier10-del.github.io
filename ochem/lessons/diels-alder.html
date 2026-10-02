@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Diels–Alder reaction — Organic Chemistry Lesson</title>
+<title>The Diels–Alder reaction — Organic Chem Lesson | LevlPrep</title>
 <meta name="description" content="The [4+2] cycloaddition: the s-cis requirement, electron-rich diene with electron-poor dienophile, stereospecificity, the endo rule and the retro reaction.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/diels-alder.html">
-<meta property="og:title" content="The Diels–Alder reaction — Organic Chemistry Lesson">
+<meta property="og:title" content="The Diels–Alder reaction — Organic Chem Lesson | LevlPrep">
 <meta property="og:description" content="The [4+2] cycloaddition: the s-cis requirement, electron-rich diene with electron-poor dienophile, stereospecificity, the endo rule and the retro reaction.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/diels-alder.html">
@@ -44,22 +45,27 @@
     {
       "@type": "LearningResource",
       "@id": "https://levlprep.com/ochem/lessons/diels-alder.html#lesson",
-      "name": "The Diels\u2013Alder reaction",
+      "name": "The Diels–Alder reaction",
       "url": "https://levlprep.com/ochem/lessons/diels-alder.html",
       "description": "The [4+2] cycloaddition: the s-cis requirement, electron-rich diene with electron-poor dienophile, stereospecificity, the endo rule and the retro reaction.",
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
-        "name": "The Diels\u2013Alder reaction"
+        "name": "The Diels–Alder reaction"
       },
       "isPartOf": {
         "@id": "https://levlprep.com/ochem/#course"
       },
       "provider": {
         "@id": "https://levlprep.com/#org"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
       }
     },
     {
@@ -86,7 +92,7 @@
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "The Diels\u2013Alder reaction",
+          "name": "The Diels–Alder reaction",
           "item": "https://levlprep.com/ochem/lessons/diels-alder.html"
         }
       ]
@@ -96,8 +102,11 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Diels–Alder reaction</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
@@ -115,7 +124,7 @@
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/diels-alder.html">The Diels–Alder reaction &mdash; the written section</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/conjugated-systems.html">Conjugated systems</a><a href="../lessons/kinetic-thermodynamic.html">Kinetic vs thermodynamic control</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/carbon-carbon-bonds.html">Making carbon–carbon bonds</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/electrocyclic-sigmatropic.html">Electrocyclic &amp; sigmatropic reactions</a><a href="../lessons/carbon-carbon-bonds.html">Making carbon–carbon bonds</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
@@ -174,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function(){
         title: 'Why it runs, and why nothing rearranges.',
         bodyHtml: '<p class="step-body">Count the bonds. Three π bonds go in, and two σ bonds and one π bond come out. A σ bond is stronger than a π bond, so trading two π bonds for two σ bonds releases energy, and the reaction is downhill.</p>' +
           '<div class="explain-box">It is <b>concerted</b>: every bond breaks and forms in the same step, through a single ring-shaped transition state, with <b>no intermediate at all</b>. So there is no carbocation, no rearrangement, and no intermediate whose stability you need to compare.</div>' +
-          '<p class="step-body" style="margin-bottom:0;">A reaction in which all the bonds change together, as electrons move round a closed loop, is called <b>pericyclic</b>. The Diels–Alder is the pericyclic reaction this course studies in depth. The ozone and OsO₄ additions in Oxidative cleavage &amp; dihydroxylation were cycloadditions too.</p>'
+          '<p class="step-body" style="margin-bottom:0;">A reaction in which all the bonds change together, as electrons move round a closed loop, is called <b>pericyclic</b>. The Diels–Alder is the first pericyclic reaction in this course; the last lesson of this chapter adds electrocyclic and sigmatropic reactions. The ozone and OsO₄ additions in Oxidative cleavage &amp; dihydroxylation were cycloadditions too.</p>'
       },
       {
         type: 'explain',
@@ -375,7 +384,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>

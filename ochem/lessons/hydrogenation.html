@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalytic hydrogenation — Organic Chemistry Lesson</title>
+<title>Catalytic hydrogenation — Organic Chem Lesson | LevlPrep</title>
 <meta name="description" content="H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/hydrogenation.html">
-<meta property="og:title" content="Catalytic hydrogenation — Organic Chemistry Lesson">
+<meta property="og:title" content="Catalytic hydrogenation — Organic Chem Lesson | LevlPrep">
 <meta property="og:description" content="H2 with a metal catalyst: syn addition, what is reduced and what survives, and the Lindlar/dissolving-metal pair that sets alkene geometry.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/hydrogenation.html">
@@ -50,7 +51,7 @@
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
         "name": "Catalytic hydrogenation"
@@ -60,6 +61,11 @@
       },
       "provider": {
         "@id": "https://levlprep.com/#org"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
       }
     },
     {
@@ -96,8 +102,11 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Catalytic hydrogenation</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
@@ -162,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function(){
         eyebrow: 'Explain',
         title: 'A reaction that happens on a metal surface.',
         bodyHtml: '<p class="step-body">Stir cyclohexene with powdered palladium under hydrogen gas, and it becomes cyclohexane: one hydrogen has joined each carbon of the old C=C. This is <b>catalytic hydrogenation</b>. The usual metals are palladium on charcoal (Pd/C), platinum, and Raney nickel, a spongy form of nickel.</p>' +
-          '<p class="step-body">Gaining bonds to hydrogen is a <b>reduction</b>, the opposite of the oxidation in the last lesson, where the carbons gained bonds to oxygen.</p>' +
+          '<p class="step-body">Gaining bonds to hydrogen is a <b>reduction</b>, the opposite of the oxidation in Oxidative cleavage &amp; dihydroxylation, where the carbons gained bonds to oxygen.</p>' +
           '<p class="step-body">A hydride reagent cannot do this job. A hydride, H⁻, and the alkene\'s pi bond are both nucleophiles, so an isolated C=C gives the hydride nothing electrophilic to attack.</p>' +
           '<p class="step-body">The metal is a <b>catalyst</b>: it speeds the reaction up and comes out unchanged. The reaction releases heat, yet H₂ and an alkene alone do nothing at room temperature. Before any hydrogen can add, the H–H bond has to break, and only the metal makes that step easy.</p>' +
           '<div class="explain-box">H₂ sticks to the metal and splits into H atoms. The alkene lies flat on the metal, and the H atoms move onto its two carbons one at a time.</div>',
@@ -328,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>

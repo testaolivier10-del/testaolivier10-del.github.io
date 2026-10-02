@@ -214,8 +214,8 @@
     "q": "A person's mean arterial pressure rises to a new, higher level and stays there for a week. Why does the baroreceptor reflex not bring it back down?",
     "options": [
       "The baroreceptors reset and treat the higher pressure as normal",
-      "Baroreceptors respond only to falls in pressure, never to rises",
-      "The vagus nerve cannot slow the heart for more than a few hours",
+      "Baroreceptors respond to falls in pressure, not to rises",
+      "The vagus nerve tires after a few hours of slowing the heart",
       "Higher pressure damages the carotid sinuses within the first day"
     ],
     "correct": 0,
@@ -242,7 +242,7 @@
     "q": "Baroreceptor firing falls sharply after a sudden drop in blood pressure. Which responses follow within seconds? Select all that apply.",
     "options": [
       "Heart rate rises",
-      "Ventricular contractility rises",
+      "Sympathetic output to the heart falls",
       "Arterioles in the skin and gut constrict",
       "Veins constrict and push blood toward the heart",
       "Arterioles in the brain constrict strongly",
@@ -250,7 +250,6 @@
     ],
     "correct": [
       0,
-      1,
       2,
       3
     ],
@@ -258,7 +257,7 @@
       "correct": "Less baroreceptor input raises sympathetic and lowers vagal output. The heart beats faster and more forcefully, arterioles in the skin, gut, kidneys and resting muscle constrict, and veins constrict and raise venous return. The brain's arterioles respond little to sympathetic signals and are controlled mainly by local autoregulation.",
       "options": [
         "Correct. More norepinephrine and less acetylcholine at the SA node speed the pacemaker potential.",
-        "Correct. Norepinephrine on beta-1 receptors in ventricular muscle raises contractility.",
+        "Less baroreceptor input raises sympathetic output to the heart, so rate and force rise.",
         "Correct. Sympathetic vasoconstriction is strong in these beds, which raises TPR.",
         "Correct. Venous constriction moves blood out of the venous reservoir, raising end-diastolic volume and stroke volume.",
         "Brain arterioles barely respond to sympathetic signals. Local autoregulation keeps brain flow steady, and strong constriction would cut it.",
@@ -510,6 +509,11 @@
         "name": "Blood flow to the skin, one minute later",
         "answer": "down",
         "why": "Skin arterioles constrict strongly under sympathetic stimulation, which is why a bleeding person looks pale and feels cool."
+      },
+      {
+        "name": "Hematocrit, first few seconds",
+        "answer": "none",
+        "why": "Whole blood is lost, plasma and cells together, so at first the hematocrit is unchanged. It falls hours later as fluid moves in."
       }
     ],
     "why": {

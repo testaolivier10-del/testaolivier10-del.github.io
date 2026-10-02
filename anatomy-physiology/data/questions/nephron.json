@@ -305,7 +305,7 @@
     "q": "Which are parts of the renal corpuscle? Select all that apply.",
     "options": [
       "Glomerulus",
-      "Podocytes",
+      "Peritubular capillaries",
       "Capsular space",
       "Macula densa",
       "Proximal convoluted tubule",
@@ -313,15 +313,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       5
     ],
     "why": {
-      "correct": "The renal corpuscle is the glomerulus plus the glomerular capsule. The capsule has a parietal layer, a visceral layer of podocytes and the capsular space between them.",
+      "correct": "The renal corpuscle is the glomerulus plus the glomerular capsule, whose parietal layer encloses the capsular space. The macula densa, the tubule and the peritubular capillaries lie outside it.",
       "options": [
         "Correct. The glomerulus is the capillary tuft of the corpuscle.",
-        "Correct. Podocytes form the capsule's visceral layer on the capillaries.",
+        "Peritubular capillaries wrap the tubules, outside the renal corpuscle.",
         "Correct. The capsular space collects the filtered fluid.",
         "The macula densa is in the wall of the tubule where it returns to the corpuscle. It is part of the juxtaglomerular apparatus, not the corpuscle.",
         "The proximal convoluted tubule starts where the corpuscle ends, at the tubular pole.",

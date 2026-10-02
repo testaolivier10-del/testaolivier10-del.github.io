@@ -233,21 +233,20 @@
       "Her contractions are painful",
       "Her contractions come closer together and get longer over several hours",
       "Her contractions stop when she lies down and rests",
-      "Her cervix has thinned from 30% to 80% effaced"
+      "Her contractions ease when she walks around"
     ],
     "correct": [
       0,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "True labor is defined by progressive change in the cervix, dilation and effacement, and it comes with a regular pattern that builds. Pain and a pattern that fades with rest do not show true labor.",
+      "correct": "True labor is defined by progressive change in the cervix, and it comes with a regular pattern that builds. Pain alone, and a pattern that fades with rest or walking, do not show true labor.",
       "options": [
         "Correct. Progressive dilation defines true labor.",
         "Braxton Hicks contractions can also be painful near term. Pain alone does not distinguish them.",
         "Correct. A pattern that becomes more frequent and longer is typical of true labor.",
         "Contractions that stop with rest point to false labor.",
-        "Correct. Progressive effacement is a change in the cervix, which marks true labor."
+        "Contractions that ease with walking or rest point to false labor."
       ]
     }
   },
@@ -431,7 +430,7 @@
       "An episiotomy slows the birth by adding a step to the second stage",
       "Routine cutting neither prevents severe tears nor heals better",
       "The perineum cannot stretch enough for the head without tearing",
-      "An episiotomy is done only in the placental stage"
+      "An episiotomy is done in the placental stage"
     ],
     "correct": 1,
     "why": {

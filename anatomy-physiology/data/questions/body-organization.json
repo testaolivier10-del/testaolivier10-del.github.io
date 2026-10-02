@@ -165,23 +165,22 @@
       "Gallbladder",
       "Esophagus",
       "Kidney",
-      "Appendix"
+      "Heart"
     ],
     "correct": [
       0,
       2,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "The digestive system includes the tube food passes through (mouth, esophagus, stomach, intestines, with the appendix attached) and the organs that feed juices into it (liver, gallbladder, pancreas).",
+      "correct": "The digestive system includes the tube food passes through, such as the esophagus, and the organs that feed juices into it, such as the liver and gallbladder. The spleen, kidney and heart belong to other systems.",
       "options": [
         "Correct. The liver makes bile, a digestive juice that helps digest fatty foods, so it belongs to the digestive system.",
         "The spleen sits near the stomach but belongs to the lymphatic system. It filters blood and houses immune cells.",
         "Correct. The gallbladder stores bile from the liver and releases it into the intestine.",
         "Correct. The esophagus carries food from the throat to the stomach.",
         "The kidney belongs to the urinary system. It filters blood and makes urine.",
-        "Correct. The appendix is a small pouch attached to the intestine, so it is part of the digestive system."
+        "The heart belongs to the cardiovascular system. It pumps blood."
       ]
     }
   },
@@ -199,13 +198,12 @@
       "Pancreas",
       "Testis",
       "Urinary bladder",
-      "Ovary",
+      "Esophagus",
       "Trachea"
     ],
     "correct": [
       0,
-      1,
-      3
+      1
     ],
     "why": {
       "correct": "The pancreas and the gonads (testes and ovaries) each belong to two systems. Each releases hormones into the blood (endocrine system) and also does a second job.",
@@ -213,7 +211,7 @@
         "Correct. The pancreas releases digestive juices into the intestine (digestive system) and hormones into the blood (endocrine system).",
         "Correct. A testis makes sperm cells (reproductive system) and releases hormones into the blood (endocrine system).",
         "The urinary bladder stores urine until you empty it. It is an organ of the urinary system only.",
-        "Correct. An ovary releases egg cells (reproductive system) and hormones into the blood (endocrine system).",
+        "The esophagus belongs only to the digestive system.",
         "The trachea is the airway to the lungs, an organ of the respiratory system only."
       ]
     }
@@ -361,9 +359,9 @@
     ],
     "q": "On a cold day your skin cools, you start shivering, with small, rapid muscle contractions that make heat, and your body temperature stays near 37 °C. What does this show?",
     "options": [
-      "Body temperature can never change",
+      "Body temperature is fixed at one exact value",
       "The body keeps an internal condition within a normal range",
-      "Muscles work only in cold weather",
+      "Muscles make heat only during exercise",
       "The outside temperature sets the temperature inside your body"
     ],
     "correct": 1,
@@ -372,7 +370,7 @@
       "options": [
         "Body temperature does change, which is why the response is triggered. It is kept within a range, not fixed at one value.",
         "Correct. Detecting a change and pushing the value back keeps it within its normal range.",
-        "Muscles work in every temperature. Shivering is one response among the many things muscles do.",
+        "Muscles make heat all the time, and shivering makes heat without any exercise. That heat is what holds the temperature here.",
         "If the outside temperature set body temperature, you would cool along with the air. The scenario shows the opposite."
       ]
     }
@@ -419,7 +417,7 @@
     "q": "Mr. Okafor's kidneys have almost stopped working. Water builds up in his blood, his ankles swell, and fluid collects in his lungs. Which chain best explains why he is now short of breath?",
     "options": [
       "Fluid builds up, collects in his lungs and cuts oxygen entry",
-      "Urinary failure directly damages the airway, so air cannot reach his lungs",
+      "Urinary failure directly damages the airway, so less air reaches his lungs",
       "His lungs have failed first, which then caused his kidneys to fail",
       "Swollen ankles press on the lungs from below and stop them expanding"
     ],

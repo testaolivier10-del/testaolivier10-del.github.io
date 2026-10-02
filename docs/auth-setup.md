@@ -95,6 +95,22 @@ The reset link returns to `/`; everything else returns to whatever page the
 student started on. Without the wildcard those redirects are rejected and the
 links appear broken.
 
+### 1.6 Confirm email and leaked-password protection
+
+**Authentication → Sign In / Providers → Email.**
+
+- **Confirm email: on.** A new account must open the confirmation link before
+  it can sign in. account.js already handles this (the "check your inbox"
+  screen and "Send it again"), and paid passes are tied to the account's
+  address, so an unconfirmed typo'd address must not be able to buy one.
+- **Prevent use of leaked passwords: on** (in the same panel, or under
+  *Policies → Password security* on some plans). Supabase then refuses
+  passwords found in the HaveIBeenPwned breach list; account.js shows its
+  message as written. The Security Advisor flags this setting while it is off.
+
+Both are dashboard switches, not code; check them again after any Supabase
+plan change.
+
 ---
 
 ## Part 2 — Account linking (check before Part 3)
@@ -136,6 +152,8 @@ prove the whole OAuth path works end to end.
 
 In a private window, on a phone if you can:
 
+- [ ] **Sign up with a known-breached password** (for example `password123`):
+      it must be refused (1.6).
 - [ ] **Sign up** with a real address. The confirmation arrives, looks like
       LevlPrep, and the link works.
 - [ ] **Reset a password.** This is the one to test hardest — its failure mode

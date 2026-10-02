@@ -5,12 +5,17 @@ on:
     branches: [main]
   pull_request:
 
+# Read-only token: nothing here writes to the repository (site audit 2026-10).
+# Actions are pinned to a commit SHA, so a moved tag cannot change what runs.
+permissions:
+  contents: read
+
 jobs:
   check-links-and-json:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
       - run: node scripts/check-site.mjs
@@ -20,10 +25,10 @@ jobs:
     steps:
       # fetch-depth: 0 because build-sitemap.mjs reads each page's last commit
       # date out of git history; a shallow clone has none.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
       # Both of these are generated from the pages themselves, so the failure
@@ -33,6 +38,14 @@ jobs:
         run: node scripts/build-og-tags.mjs --check
       - name: sitemap.xml lists every page
         run: node scripts/build-sitemap.mjs --check
+      # The Worker address and every page's CSP come from one place,
+      # scripts/lib/site-config.mjs.
+      - name: Worker address and CSP match scripts/lib/site-config.mjs
+        run: node scripts/build-site-config.mjs --check
+      # Prices, the free/Premium wording, bank counts in the purchase dialog,
+      # the manifests and premium.html come from assets/premium.js and the data.
+      - name: prices, counts and free/Premium copy match premium.js and the data
+        run: node scripts/build-pricing.mjs --check
       # The ochem prose is one file per section, and each of those files is
       # both the source learn.html fetches AND a page you can open. The shell
       # around the prose, and learn.html's static contents, are generated from
@@ -90,6 +103,10 @@ jobs:
       # leads to, which sends a student backwards through the course.
       - name: the ochem lessons' related-topic rows match the curriculum
         run: node scripts/build-leads-to.mjs --check
+      # The visible breadcrumb row on NREMT and ochem pages is written from each
+      # page's own BreadcrumbList JSON-LD, so the two never disagree.
+      - name: NREMT and ochem breadcrumbs match their BreadcrumbList
+        run: node scripts/build-crumbs.mjs --check
       # The seven tool pages are three empty divs until their scripts run. The
       # first screen is written into them from tools-registry.js so the page
       # has a heading and a body before that happens; stale, it would show a
@@ -149,8 +166,8 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
       # The scoring engines: XP, levels, streaks, concept strength, decay and
@@ -163,8 +180,8 @@ jobs:
   page-weight:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
       # What a page costs on arrival, against a number written down. The bank
@@ -179,16 +196,16 @@ jobs:
   accessibility:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
-      # --no-save, so nothing is committed and the repo keeps having no
-      # package.json — the no-build-step stack is the point, and this is a CI
-      # tool rather than a dependency of the site.
+      # package.json and package-lock.json pin the two CI tools (playwright,
+      # axe-core) exactly; the site itself still has no build step and no
+      # runtime dependency, and nothing in node_modules is published.
       - name: install the checker
         run: |
-          npm i --no-save playwright@1.49.1 axe-core@4.10.2
+          npm ci --ignore-scripts
           npx playwright install --with-deps chromium
       # axe-core over one page of every SHAPE the site has, plus the three
       # things axe cannot check because they are this site's own decisions:

@@ -2,9 +2,9 @@
 
 Source for [LevlPrep](https://levlprep.com/), home to three courses:
 
-**[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,106-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+**[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,033-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
-**[Organic Chemistry](https://levlprep.com/ochem/)** — a mastery/learning product, not exam prep: a full 23-chapter, 121-topic organic chemistry curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **All 121 topics are built: 117 interactive lessons, 10 mechanism walkthroughs (SN1, SN2, E1 and E2 are taught through theirs), a textbook section per topic and a 3,635-question practice bank**, from Foundations through spectroscopy, synthesis and polymers; `curriculum.js` is the single source of truth for what exists. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **eight interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator, a spectroscopy lab and a reagent roadmap — see [Tools](#tools). A spaced-repetition flashcard deck (`ochem/flashcards.html`) draws its cards from the course's own notes and concepts.
+**[Organic Chemistry](https://levlprep.com/ochem/)** — a mastery/learning product, not exam prep: a full 25-chapter, 123-topic organic chemistry curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **All 123 topics are built: 119 interactive lessons, 10 mechanism walkthroughs (SN1, SN2, E1 and E2 are taught through theirs), a textbook section per topic and a 3,675-question practice bank**, from Foundations through spectroscopy, synthesis and polymers; `curriculum.js` is the single source of truth for what exists. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **eight interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator, a spectroscopy lab and a reagent roadmap — see [Tools](#tools). A spaced-repetition flashcard deck (`ochem/flashcards.html`) draws its cards from the course's own notes and concepts.
 
 **[Anatomy & Physiology](https://levlprep.com/anatomy-physiology/)** — a two-semester college A&P course built in strict dependency order: `docs/anp-dependency-map.json` lists every concept and the topic that teaches it, and `scripts/check-anp-map.mjs` fails the build if any page uses a term before it is taught. The course is data (`anatomy-physiology/data/`: lessons, notes, questions, glossary, figures, tool content) turned into pages by `scripts/build-anp.mjs`; `scripts/check-anp-content.mjs` checks the data. The plan and every decision live in `docs/anp-spec.md`; open science questions in `docs/anp-needs-author.md`. All 27 chapters are built (5 Foundations, 11 A&P I, 11 A&P II): 162 topics, each with a lesson and a notes page, a question bank, a 1,041-term glossary and interactive tools (lab practical, predict the change, feedback loop builder, pathway tracer, graph reader); `docs/anp-phase3-report.md` reports the finished course.
 
@@ -50,7 +50,7 @@ assets/                Shared across every course
                          hub-progress.js fires; site-chrome.js mounts it
   tutor.js             The study assistant behind the mascot in the corner of every
                          page. Indexes the current course's own material in the browser
-                         (NREMT's reference pages, or ochem's 64 note sections listed by
+                         (NREMT's reference pages, or ochem's 121 note sections listed by
                          curriculum.js) and answers by quoting the passage that covers the
                          question. Optionally posts the question plus those passages to an
                          AI endpoint for a written answer; see worker/. site-chrome.js
@@ -73,9 +73,10 @@ assets/                Shared across every course
   report-question.js   "This looks wrong" — the one-tap report under every
                          explanation in both courses. See Reporting a bad
                          question
-  premium.js           The Premium waitlist: a "coming soon" card at the end of a
-                         session, and the per-course free/premium split. Locks
-                         nothing; see docs/premium.md
+  premium.js           The free/Premium split for all three courses, the gates
+                         every course calls (has, gate, quota), and the purchase
+                         dialog for one-time passes (Worker + Polar). Live since
+                         2026-10-01; see docs/premium.md
   account.js           One login for the whole site: Supabase auth + namespaced
                          cross-device sync (see Data & accounts)
   hub-progress.js      One shared level and one shared streak; per-subject XP.
@@ -116,7 +117,7 @@ nremt/                 The NREMT-EMT Prep course
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
   assets/
-    questions.json        The 2,106-question bank: the file you edit. Nothing fetches
+    questions.json        The 2,033-question bank: the file you edit. Nothing fetches
                             it; questions-core.json and explanations.json are
                             generated from it (scripts/build-question-bank.mjs)
     question-ids.js        What every stored question record refers to. Pure
@@ -186,8 +187,8 @@ ochem/                 The Organic Chemistry course
                             back safe: a step you have already left never records a
                             second attempt, so walking back and forth can't move a score
                             (retries within a step are unaffected)
-    practice-bank.json     3,635 multiple-choice/true-false questions, about 30 per topic
-                            across all 121 topics, keyed by topic id. This is
+    practice-bank.json     3,675 multiple-choice/true-false questions, about 30 per topic
+                            across all 123 topics, keyed by topic id. This is
                             the file you EDIT; nothing fetches it at runtime any more
     practice-bank-core.json  Generated. Stems, options and answer keys — what the two
                             pages actually wait on before their first screen (168 KB gz)
@@ -291,7 +292,7 @@ speaker button in the header mutes it, remembered in `localStorage` under
 
 ### Textbook (`ochem/learn.html`)
 
-Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 121 in all — and `ochem/assets/textbook.js` renders a contents rail (23 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 121 topics.
+Learn is the course's written half. Every topic's prose is one HTML fragment under `ochem/notes/<topic>.html` — one per curriculum topic, 123 in all — and `ochem/assets/textbook.js` renders a contents rail (23 chapters, searchable, with per-chapter read counts) beside one chapter at a time, fetching that chapter's notes on open so the book costs a chapter rather than all 121 topics.
 
 The rail's box searches the prose, not just the 121 section names. `ochem/assets/textbook-search.js` indexes each note fragment as it is fetched — the index is built from the same cache the chapters read from, so there is no separate corpus to keep in sync, and the first query fetches whatever has not been read yet. A query lists the matching passages with the words highlighted; picking one opens that chapter and scrolls to the exact paragraph, still highlighted. Every query term has to appear in a section for it to match, and ordinary question words ("what is a nucleophile") are dropped so a typed question searches for the idea.
 
@@ -373,7 +374,7 @@ answer makes the rules look tidy.
 
 ## Data & accounts
 
-All progress (seen/missed questions, streaks, XP, mastery, domain stats) is stored in the browser's `localStorage` — no account is required to use any feature, in any subject.
+All progress (seen/missed questions, streaks, XP, mastery, domain stats) is stored in the browser's `localStorage` — no account is required for any free feature, in any subject (AI answers from the study assistant and buying a Premium pass need one).
 
 Signing in is optional and layers **cross-device sync** on top of that same local data, via Supabase (`assets/account.js`). The Supabase key committed in that file is a *publishable* anon key — safe to expose, since access is enforced entirely by Postgres row-level security (each user can read/write only their own `user_progress` row).
 
@@ -584,7 +585,7 @@ renders `icon-180.png` (apple-touch), `icon-192.png`, `icon-512.png` and `icon-m
 
 ## Study assistant (`assets/tutor.js`)
 
-A mascot sits in the corner of every page in both courses. It is mounted from
+The study assistant (its one user-facing name) sits in the corner of every course page. It is mounted from
 `assets/site-chrome.js` rather than page by page, so all ~157 pages get it,
 including ochem's lessons, mechanisms and tools, and any page added later.
 
@@ -604,7 +605,7 @@ It works in two layers, and the first one is always on:
 
    When the reference pages answer weakly, a second tier loads: each course's
    practice explanations, built by `scripts/build-tutor-bank.mjs` into
-   `<course>/assets/tutor-bank.json` (NREMT 2,106 entries, ochem 2,917). That
+   `<course>/assets/tutor-bank.json` (NREMT 2,033 entries, ochem 2,917). That
    is the largest body of teaching prose either course has — written to explain
    why an answer is right — and it was invisible to the assistant because it
    sits inside megabyte question banks alongside answer keys. It is fetched
@@ -620,9 +621,10 @@ It works in two layers, and the first one is always on:
    quota, outage, no endpoint — falls back to layer 1, so the feature degrades
    instead of breaking.
 
-The page CSP allows `https://*.workers.dev` under `connect-src` so a deployed
-Worker can actually be reached; without that the browser blocks the call
-silently.
+The page CSP allows the one Worker host (`API_URL` in `worker/src/config.js`,
+written into every page by `scripts/build-site-config.mjs`) under
+`connect-src`; any other host is blocked silently, so a Worker set by hand in
+the assistant's settings only works on a copy of the site with its own CSP.
 
 ## Accessibility
 
@@ -663,7 +665,7 @@ Each course has a search page that indexes the whole course in the browser and s
 - **Escape, then mark.** Marking the raw string and escaping afterwards eats its own `<mark>` tags; marking raw text with a raw pattern misses any term containing `& < > ' "`. So: slice, escape, then match the escaped term against the escaped text.
 - **A URL has one fragment.** Ochem's textbook links already carry a hash naming the section, and appending `#:~:text=` to that produced `learn.html#e2#:~:text=…` — a second `#`, which matches no element and is not a text directive either. A broken text fragment is ignored by the browser rather than reported, so the only symptom was a link that quietly stopped opening the right chapter.
 
-**`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 116 lessons, the 10 mechanism walkthroughs, the 7 tools and 3,635 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
+**`ochem/search.html`** is the new one. `learn.html`'s rail already searched the textbook, but only the textbook, and only the sections that happened to have been fetched already — which left the 116 lessons, the 10 mechanism walkthroughs, the 7 tools and 3,675 practice questions with no way in at all. Someone who could not remember whether anti-periplanar was explained in a lesson, a mechanism walkthrough or the textbook had to guess.
 
 Its five sources are all *derived*, never listed: `curriculum.js` for the lessons and mechanisms (so a topic with no page yet is not a result — a hit that leads to "coming soon" is worse than no hit), the note fragments for the textbook, `tools-registry.js` for the tools, and `practice-bank-core.json` for the questions (with `practice-bank-why.json` stitched back on by position, so an explanation is searchable too). Structure is indexed synchronously so a query typed immediately finds the lessons while the megabyte of prose is still arriving; each source may fail on its own, and the status line names **what is missing** rather than only what is present — offline, the difference between "the bank isn't here" and "your search found nothing" is the whole difference between a working page and a broken one, and an empty result list cannot tell them apart. A filter row exists because a mixed index of five kinds returns forty practice questions and "show me only the lessons" is the first thing anyone wants next.
 
@@ -673,7 +675,7 @@ Search is now a tab in the ochem header (the tab row scrolls horizontally, so a 
 
 ## Reporting a bad question (`assets/report-question.js`)
 
-`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,106 NREMT questions and 3,635 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
+`sources.html` promised a way to tell us when a question is wrong from the day it was written. It explained the correction policy and said where corrections get listed, and then never said *how* — the only address anywhere on the site was at the bottom of the privacy policy. For a bank of 2,106 NREMT questions and 3,675 ochem ones, written against reference material rather than by a committee, that was the most expensive gap on the site. No script can check whether an answer is clinically right; a student who has just answered one and thinks the key is wrong is the only reviewer who can, and they are on the one screen where saying so costs a tap.
 
 So it is a tap, under the explanation — in the results list after an exam, on the back of a flashcard, and under every ochem question's feedback. Not on a contact page the reader would have to go looking for while holding the thought.
 

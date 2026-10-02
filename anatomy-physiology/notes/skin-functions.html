@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Functions of the skin: Notes | Anatomy &amp; Physiology</title>
+<title>Functions of the skin — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Functions of the skin in written notes: barrier protection, sensation, heat exchange and the body temperature loop, and vitamin D synthesis, illustrated.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/skin-functions.html">
-<meta property="og:title" content="Functions of the skin: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Functions of the skin — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Functions of the skin in written notes: barrier protection, sensation, heat exchange and the body temperature loop, and vitamin D synthesis, illustrated.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/skin-functions.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="skin-functions">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 6 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/integumentary.html">Integumentary system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Functions of the skin: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/skin-functions.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 6 &middot; Topic 36 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 6 &middot; Topic 36 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Functions of the skin</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="skin-functions">Not practiced</span></p>
     </header>
@@ -142,7 +143,7 @@
 <li>An <em>encapsulated ending</em> is a nerve ending wrapped in a capsule of <a class="gl" href="../notes/connective-tissue.html" data-c="connective-tissue">connective tissue</a> or specialized cells. The capsule shapes how the ending responds to mechanical forces.</li>
 </ul>
 <p>The main touch receptors of the skin:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Free nerve endings</th><th>Tactile (Merkel) cells</th><th>Tactile (Meissner) corpuscles</th><th>Lamellated (Pacinian) corpuscles</th><th>Hair follicle endings</th></tr></thead>
 <tbody>
 <tr><th>Structure</th><td>Bare branching nerve tips</td><td>A <a class="gl" href="../notes/skin-layers.html" data-c="epidermal-other-cells">tactile cell</a> pressed against a flattened nerve ending</td><td>An oval capsule around coiled nerve endings</td><td>A large capsule of many layers, like an onion, around one nerve ending</td><td>Nerve endings wrapped around the base of a follicle</td></tr>
@@ -153,7 +154,7 @@
 </tbody>
 </table></div>
 <p>The tactile corpuscle (Meissner corpuscle) and lamellated corpuscle (Pacinian corpuscle) each have two names: the descriptive name used here, and the name of the anatomist who first described it. You will see both in exams. You can find a lamellated corpuscle, deep in the dermis, in <a class="figref" href="#fig-skin-sense">Figure 1</a>.</p>
-<figure id="fig-skin-sense"  class="anp-figure"><div class="anp-figimg" data-fig="os-5-2"><img src="../figures/os-5-2.jpg" alt="A cut-away block of skin. A thin pale top layer, the epidermis, covers a thick pink middle layer, the dermis, which holds hairs and their roots, small oil glands beside them, a slanting strip of muscle attached to one hair, a coiled sweat gland with a duct rising to a pore, an onion-like nerve ending, nerve fibers, and red and blue blood vessels. The bottom layer, the hypodermis, is made of rounded yellow fat lobules with larger blood vessels running through it." width="1100" height="862" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:71.69%;width:15.91%;height:2.78%"></span><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:95.82%;width:14.00%;height:2.32%"></span></div><figcaption><b>Figure 1.</b> Nerve endings and blood vessels in a block of skin. The onion-like lamellated corpuscle sits deep in the dermis; fine nerve fibers run up toward the epidermis; the vessel networks lie in the hypodermis and dermis. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 5.2, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-skin-sense"  class="anp-figure"><div class="anp-figimg" data-fig="os-5-2"><picture><source type="image/avif" srcset="../figures/avif/os-5-2-480.avif 480w, ../figures/avif/os-5-2-800.avif 800w, ../figures/avif/os-5-2.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-5-2.jpg" alt="A cut-away block of skin. A thin pale top layer, the epidermis, covers a thick pink middle layer, the dermis, which holds hairs and their roots, small oil glands beside them, a slanting strip of muscle attached to one hair, a coiled sweat gland with a duct rising to a pore, an onion-like nerve ending, nerve fibers, and red and blue blood vessels. The bottom layer, the hypodermis, is made of rounded yellow fat lobules with larger blood vessels running through it." width="1100" height="862" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:71.69%;width:15.91%;height:2.78%"></span><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:95.82%;width:14.00%;height:2.32%"></span></div><figcaption><b>Figure 1.</b> Nerve endings and blood vessels in a block of skin. The onion-like lamellated corpuscle sits deep in the dermis; fine nerve fibers run up toward the epidermis; the vessel networks lie in the hypodermis and dermis. <span class="anp-credit">Figure 5.2 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p>The endings that signal only when pressure changes explain why you feel your socks when you put them on and then stop noticing them. The endings that keep signaling let you feel how hard you are gripping a cup for as long as you hold it.</p>
 <p>How finely you can feel depends on how densely the endings are packed. On a fingertip, two pencil points about 2 to 3 mm apart feel like two touches. On your back they must be several centimeters apart before they stop feeling like one.</p>
 
@@ -165,7 +166,7 @@
 <li><em>Convection</em>: moving air or water carries away the warmed layer next to your skin and replaces it with cooler fluid. Wind and a fan speed up heat loss this way.</li>
 <li><em>Evaporation</em>: water on your skin turns to vapor, and the energy that change takes comes from your skin. Sweat evaporating is the main example; some water also evaporates from your airways with every breath.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Radiation</th><th>Conduction</th><th>Convection</th><th>Evaporation</th></tr></thead>
 <tbody>
 <tr><th>How heat moves</th><td>Infrared rays to surfaces not touching you</td><td>Directly into an object you touch</td><td>Carried off by air or water flowing past</td><td>Used up turning water on the skin into vapor</td></tr>
@@ -217,7 +218,7 @@
 <li><em>Shivering</em> is rapid, involuntary contraction of skeletal muscles in small bursts. The contractions move nothing outside the body, so nearly all their energy is released as heat. Shivering can raise heat production three- to fivefold for a time.</li>
 </ul>
 <p>The two columns of the loop:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Loop part</th><th>Body too warm</th><th>Body too cold</th></tr></thead>
 <tbody>
 <tr><th>Stimulus</th><td>Exercise or hot surroundings warm the body</td><td>Cold air or water cools the skin and blood</td></tr>
@@ -339,13 +340,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:skin-functions">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="skin-accessory.html"><span>&larr; Topic 35</span><b>Hair, nails and skin glands</b></a><a class="tb-chapter-link next" href="skin-injury.html"><span>Topic 37 &rarr;</span><b>Burns, wounds and skin repair</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

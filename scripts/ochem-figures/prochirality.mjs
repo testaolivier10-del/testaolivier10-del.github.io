@@ -520,35 +520,4 @@ FIGURES.push({
   caption: 'Nu stands for the group the nucleophile brings.',
 });
 
-/* ---------------------------------------------------------------- NMR sketch
-   A preview of what diastereotopic hydrogens do to a proton spectrum. */
-FIGURES.push({
-  id: 'nmr-diastereotopic',
-  section: 'prochirality',
-  viewBox: '0 0 340 298',
-  alt: 'Two sketched proton NMR traces. Top: if the two hydrogens of a CH2 were equivalent, they would give one signal. Bottom: diastereotopic hydrogens Ha and Hb can give two signals at different positions, and each is split into two lines because the two hydrogens split each other.',
-  build() {
-    let s = '';
-    const peak = (x, h, base, cls) =>
-      `<path class="${cls}" fill="none" d="M${x - 12} ${base} Q${x - 4} ${base} ${x} ${base - h} Q${x + 4} ${base} ${x + 12} ${base}"></path>`;
-    s += text(170, 16, 'a preview of ¹H NMR', { cls: 'fg-tag' });
-    s += rule(20, 118, 320, 118);
-    s += peak(170, 70, 118, 'fg-bond-soft');
-    s += text(170, 140, 'if Ha and Hb were equivalent:', { cls: 'fg-tag' });
-    s += text(170, 158, 'one signal', { cls: 'fg-tag' });
-
-    s += rule(20, 250, 320, 250);
-    for (const x of [100, 240]) {
-      s += peak(x - 7, 56, 250, 'fg-bond-hi');
-      s += peak(x + 7, 56, 250, 'fg-bond-hi');
-    }
-    s += text(100, 184, 'Ha', { cls: 'fg-tag-warn' });
-    s += text(240, 184, 'Hb', { cls: 'fg-tag-warn' });
-    s += text(170, 272, 'diastereotopic: two positions,', { cls: 'fg-tag-warn' });
-    s += text(170, 288, 'and each split by the other', { cls: 'fg-tag-warn' });
-    return s;
-  },
-  caption: 'Each diastereotopic hydrogen gives its own signal, drawn here split into two lines by its partner.',
-});
-
 export default FIGURES;

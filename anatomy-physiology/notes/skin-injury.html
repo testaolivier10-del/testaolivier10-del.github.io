@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Burns, wounds and skin repair: Notes | Anatomy &amp; Physiology</title>
+<title>Burns, wounds and skin repair — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Burn classification and the rule of nines are how clinicians describe a burn: how deep it goes, and how much of the body's surface it covers.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/skin-injury.html">
-<meta property="og:title" content="Burns, wounds and skin repair: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Burns, wounds and skin repair — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Burn classification and the rule of nines are how clinicians describe a burn: how deep it goes, and how much of the body's surface it covers.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/skin-injury.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="skin-injury">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 6 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/integumentary.html">Integumentary system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Burns, wounds and skin repair: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/skin-injury.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 6 &middot; Topic 37 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 6 &middot; Topic 37 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Burns, wounds and skin repair</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="skin-injury">Not practiced</span></p>
     </header>
@@ -134,7 +135,7 @@
 </ol>
 <h3>Primary and secondary union</h3>
 <p>How far apart the edges are changes how much of that work is needed.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Primary union</th><th>Secondary union</th></tr></thead>
 <tbody>
 <tr><th>Example</th><td>A clean surgical cut closed with stitches</td><td>A gaping wound with tissue lost, such as a deep scrape or an ulcer left open</td></tr>
@@ -181,7 +182,7 @@
 </svg>
 
 <figcaption><b>Figure 1.</b> How deep each class of burn reaches. The bars' lengths show the deepest layer destroyed; the older degree names are along the bottom.</figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Superficial</th><th>Superficial partial-thickness</th><th>Deep partial-thickness</th><th>Full-thickness</th></tr></thead>
 <tbody>
 <tr><th>Older name</th><td>First-degree</td><td>Second-degree</td><td>Second-degree</td><td>Third-degree</td></tr>
@@ -205,7 +206,7 @@
 
 <h2 id="the-rule-of-nines">The rule of nines</h2>
 <p>How much skin is burned matters as much as how deep. The <em>rule of nines</em> is a quick way to estimate the burned share of the total body <a class="gl" href="../notes/diffusion-osmosis.html" data-c="diffusion-rate">surface area</a> (TBSA) in an adult by dividing the body into regions worth 9% or multiples of 9% (<a class="figref" href="#fig-nines">Figure 2</a>):</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Region</th><th>Adult</th><th>Infant</th></tr></thead>
 <tbody>
 <tr><th>Head and neck</th><td>9%</td><td>18%</td></tr>
@@ -217,7 +218,7 @@
 <tr><th>Total</th><td>100%</td><td>100%</td></tr>
 </tbody>
 </table></div>
-<figure id="fig-nines"  class="anp-figure"><div class="anp-figimg" data-fig="os-5-23"><img src="../figures/os-5-23.jpg" alt="Front and back outlines of an adult body shaded by region with percentages of body surface. The head and neck together are 9%, each upper limb is 9%, the trunk front and back together is 36%, each lower limb is 18%, and the genital area is 1%." width="696" height="780" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> The rule of nines in an adult. Each region's share of the body surface is printed on it; front and back of a region count together unless only one side is burned. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 5.23, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/5-4-diseases-disorders-and-injuries-of-the-integumentary-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-nines"  class="anp-figure"><div class="anp-figimg" data-fig="os-5-23"><picture><source type="image/avif" srcset="../figures/avif/os-5-23-480.avif 480w, ../figures/avif/os-5-23.avif 696w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-5-23.jpg" alt="Front and back outlines of an adult body shaded by region with percentages of body surface. The head and neck together are 9%, each upper limb is 9%, the trunk front and back together is 36%, each lower limb is 18%, and the genital area is 1%." width="696" height="780" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> The rule of nines in an adult. Each region's share of the body surface is printed on it; front and back of a region count together unless only one side is burned. <span class="anp-credit">Figure 5.23 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/5-4-diseases-disorders-and-injuries-of-the-integumentary-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Three rules for using it:</p>
 <ul>
 <li><strong>Count only partial-thickness and full-thickness burns.</strong> A superficial burn does not break the barrier or cause large fluid loss, so sunburned skin is left out.</li>
@@ -272,7 +273,7 @@
 <h2 id="skin-cancer">Skin cancer</h2>
 <p><span class="gl" tabindex="0" data-c="skin-cancer">Skin cancer</span> is the most common cancer. Almost all of it traces to the same cause: ultraviolet light damaging the <a class="gl" href="../notes/dna-genes.html" data-c="dna">DNA</a> of skin cells. UVB is absorbed by DNA directly and fuses neighboring bases, the pyrimidines, together. If the cell copies its DNA before repairing the damage, the error becomes a mutation. <a class="gl" href="../notes/protein-synthesis.html" data-c="mutation">Mutations</a> that disable <a class="gl" href="../notes/cell-cycle.html" data-c="cancer-basic">tumor</a> suppressor <a class="gl" href="../notes/dna-genes.html" data-c="gene">genes</a> or switch on oncogenes release the cell from <a class="gl" href="../notes/cell-cycle.html" data-c="cell-cycle-control">control of the cell cycle</a>, and it divides without stopping. The more UV exposure over a lifetime, and the more intense sunburns, the more mutations build up.</p>
 <p>There are three main types, named for the cell they start in:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Basal cell carcinoma</th><th>Squamous cell carcinoma</th><th>Melanoma</th></tr></thead>
 <tbody>
 <tr><th>Starts in</th><td>Basal cells of the stratum basale</td><td><a class="gl" href="../notes/skin-layers.html" data-c="keratinocyte">Keratinocytes</a> above the basal layer</td><td><a class="gl" href="../notes/skin-layers.html" data-c="melanocyte">Melanocytes</a></td></tr>
@@ -307,13 +308,13 @@
 <li>A bacterium that normally lives in follicles feeds on the trapped sebum and multiplies.</li>
 <li>Bacterial products trigger inflammation. The follicle swells, and if its wall bursts, sebum and bacteria spill into the dermis, making a red, painful lump. Deep, burst lesions can heal with scars.</li>
 </ol>
-<figure id="fig-acne"  class="anp-figure"><div class="anp-figimg" data-fig="os-5-22"><img src="../figures/os-5-22.jpg" alt="Three blocks of skin in sequence, each cut through one hair follicle with a sebaceous gland beside it. In the first, the upper follicle is swollen and plugged by a pale mass of shed cells and oily secretion. In the second, the plug is larger, bacteria are shown multiplying, and the tissue around it is pink with mild inflammation. In the third, the swollen follicle has burst into the surrounding dermis, which is bright red with marked inflammation." width="820" height="446" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> How acne develops. A follicle plugged with shed keratinocytes and sebum lets bacteria multiply, inflammation follows, and a burst follicle spills its contents into the dermis. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 5.22, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/5-4-diseases-disorders-and-injuries-of-the-integumentary-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-acne"  class="anp-figure"><div class="anp-figimg" data-fig="os-5-22"><picture><source type="image/avif" srcset="../figures/avif/os-5-22-480.avif 480w, ../figures/avif/os-5-22-800.avif 800w, ../figures/avif/os-5-22.avif 820w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-5-22.jpg" alt="Three blocks of skin in sequence, each cut through one hair follicle with a sebaceous gland beside it. In the first, the upper follicle is swollen and plugged by a pale mass of shed cells and oily secretion. In the second, the plug is larger, bacteria are shown multiplying, and the tissue around it is pink with mild inflammation. In the third, the swollen follicle has burst into the surrounding dermis, which is bright red with marked inflammation." width="820" height="446" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> How acne develops. A follicle plugged with shed keratinocytes and sebum lets bacteria multiply, inflammation follows, and a burst follicle spills its contents into the dermis. <span class="anp-credit">Figure 5.22 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/5-4-diseases-disorders-and-injuries-of-the-integumentary-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>Stretch marks</h3>
 <p><em>Stretch marks</em> are thin lines in the skin where the dermis was stretched faster than it could grow. Collagen and elastic fibers in the reticular layer tear and thin, and the skin over the damaged dermis thins and flattens into a line. They form in growth spurts, in pregnancy, with rapid weight gain, and with long-term use of <a class="gl" href="../notes/biomolecules.html" data-c="steroid">steroid</a> medicines. They start red or purple and fade to silvery white, but the damaged dermis does not return to normal.</p>
 <h3>Calluses and corns</h3>
 <p>Rub one area of skin again and again, as a guitarist's fingertips or a runner's heels are rubbed. The basal cells there divide faster, and the stratum corneum thickens. A <em>callus</em> is that broad, flat patch of thickened stratum corneum. It protects the skin beneath and fades if the rubbing stops. A <em>corn</em> is a small callus with a hard, cone-shaped core that points inward, usually over a bony point on a toe. The core presses on the nerve endings of the dermis beneath, so corns are painful where calluses usually are not.</p>
 <h3>Albinism and vitiligo</h3>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Albinism</th><th>Vitiligo</th></tr></thead>
 <tbody>
 <tr><th>What is wrong</th><td>Melanocytes make little or no melanin</td><td>Melanocytes are destroyed</td></tr>
@@ -333,13 +334,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:skin-injury">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="skin-functions.html"><span>&larr; Topic 36</span><b>Functions of the skin</b></a><a class="tb-chapter-link next" href="bone-structure.html"><span>Topic 38 &rarr;</span><b>Functions of bone and long bone structure</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

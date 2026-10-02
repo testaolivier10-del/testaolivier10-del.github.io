@@ -29,7 +29,7 @@
       "Fibrinogen: without it, blood leaks out of the capillaries into the tissues",
       "Gamma globulins: without them, infection inflames the tissues",
       "Albumin: less of it means a weaker osmotic pull holding water in his blood vessels",
-      "Beta globulins: without them, hormones cannot reach the kidneys"
+      "Beta globulins: without them, hormones reach the kidneys poorly"
     ],
     "correct": 2,
     "why": {
@@ -393,17 +393,17 @@
     "q": "Select every way blood helps keep conditions in the body stable.",
     "options": [
       "Buffers in blood take up or release hydrogen ions",
-      "Blood carries heat from active muscles to the skin",
+      "Blood digests nutrients as it carries them",
       "Blood makes hormones in the plasma",
       "Albumin's osmotic pull helps set how much water stays in the vessels",
       "Red blood cells divide in the bloodstream to replace losses"
     ],
-    "correct": [0, 1, 3],
+    "correct": [0, 3],
     "why": {
-      "correct": "Blood regulates pH through its buffers, body temperature by carrying heat, and fluid balance through the osmotic pull of its proteins.",
+      "correct": "Blood regulates pH through its buffers and fluid balance through the osmotic pull of its proteins. It does not digest food, make hormones in the plasma, or make new red cells by division.",
       "options": [
         "Correct. Bicarbonate, phosphate and proteins buffer blood pH within 7.35–7.45.",
-        "Correct. Blood picks up heat in warm tissues and loses it where skin vessels are widened.",
+        "Digestion happens in the digestive tract. Blood carries nutrients already absorbed.",
         "Blood carries hormones; glands make them. Plasma itself makes no hormones.",
         "Correct. Albumin held in the capillaries draws water toward the blood.",
         "Mature red blood cells cannot divide. New ones come from the marrow."

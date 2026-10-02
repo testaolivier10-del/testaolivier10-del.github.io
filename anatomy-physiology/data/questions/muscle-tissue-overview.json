@@ -63,20 +63,19 @@
   "options": [
    "Striations",
    "Voluntary control",
-   "Actin and myosin filaments",
+   "Gap junctions linking neighboring fibers",
    "Many nuclei at the edge of each fiber",
    "Intercalated discs"
   ],
   "correct": [
-   0,
-   2
-  ],
+   0
+ ],
   "why": {
-   "correct": "Both are striated, because both stack actin and myosin in lined-up repeating units. They differ in control, nuclei and junctions.",
+   "correct": "Both are striated, because both stack actin and myosin in lined-up repeating units. They differ in control, nuclei and junctions: only cardiac fibers are joined by intercalated discs with gap junctions, and only skeletal muscle is voluntary.",
    "options": [
     "Correct. Both show the light and dark bands of striated muscle.",
     "Only skeletal muscle is voluntary. You cannot make your heart beat by deciding to.",
-    "Correct. Every muscle tissue, smooth included, contracts using actin and myosin.",
+    "Only cardiac muscle couples its cells through gap junctions, in the intercalated discs. Each skeletal fiber is stimulated on its own, by its own nerve ending.",
     "Only skeletal fibers have many nuclei at the edge. A cardiac fiber usually has one nucleus in its center.",
     "Only cardiac muscle has intercalated discs."
    ]
@@ -165,6 +164,16 @@
     "name": "Skin temperature of the fingers",
     "answer": "down",
     "why": "Less warm blood reaches the fingers, so they cool toward the outside air."
+   },
+   {
+    "name": "Blood flow to the brain",
+    "answer": "none",
+    "why": "The narrowing is in the fingers' arteries. Brain blood flow is held steady by its own control."
+   },
+   {
+    "name": "Temperature deep inside the body over the first minutes",
+    "answer": "none",
+    "why": "Narrowing skin vessels protects the body's deep temperature. In the first minutes it stays where it was."
    }
   ],
   "why": {

@@ -342,7 +342,7 @@
       "Homologs come one from each parent; sisters are copies from DNA replication",
       "Homologs are identical copies; sisters come one from each parent",
       "Homologs carry different genes; sister chromatids carry the same genes",
-      "Homologs are found only in gametes; sisters are found only in body cells"
+      "Homologs are found in gametes; sisters are found in body cells"
     ],
     "correct": 0,
     "why": {

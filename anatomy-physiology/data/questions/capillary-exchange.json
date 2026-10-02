@@ -129,7 +129,7 @@
     "q": "Plasma contains far more sodium ions than protein molecules. Why do plasma proteins, and not sodium, create the osmotic pull that holds fluid in capillaries?",
     "options": [
       "Endothelial cells actively pump sodium ions back out of the capillary",
-      "Charged particles such as sodium ions cannot cause osmosis",
+      "Charged particles such as sodium ions have little osmotic effect",
       "Osmotic pressure depends on solute mass, and proteins are far heavier",
       "Sodium crosses the wall freely and evens out; proteins are held back"
     ],
@@ -153,18 +153,18 @@
     "q": "Which changes would increase net filtration out of the capillaries in a tissue? Select all that apply.",
     "options": [
       "The arterioles feeding the tissue dilate",
-      "Pressure in the veins draining the tissue rises",
+      "Protein in the interstitial fluid falls",
       "Plasma albumin concentration falls",
       "The arterioles feeding the tissue constrict",
       "Plasma albumin concentration rises",
       "The capillary walls become leaky to protein"
     ],
-    "correct": [0, 1, 2, 5],
+    "correct": [0, 2, 5],
     "why": {
-      "correct": "Filtration rises when capillary hydrostatic pressure rises (dilated arterioles, higher venous pressure), when blood colloid osmotic pressure falls (less albumin), or when protein leaks out and shrinks the oncotic difference (leaky walls).",
+      "correct": "Filtration rises when capillary hydrostatic pressure rises (dilated arterioles), when blood colloid osmotic pressure falls (less albumin), or when protein leaks out and shrinks the oncotic difference (leaky walls). Less protein in the interstitial fluid does the opposite.",
       "options": [
         "Increases filtration. Dilated arterioles lose less pressure, so more pressure reaches the capillaries and CHP rises.",
-        "Increases filtration. With no large resistance between capillaries and veins, a rise in venous pressure passes back into the capillaries and raises CHP.",
+        "Less protein outside the capillary weakens the osmotic pull outward, so filtration falls.",
         "Increases filtration. Less albumin means a lower blood colloid osmotic pressure, so less inward pull opposes filtration.",
         "Decreases filtration. Constricted arterioles lose more pressure, so CHP downstream falls.",
         "Decreases filtration. More albumin raises the inward oncotic pull.",
@@ -438,17 +438,17 @@
     "options": [
       "Oxygen",
       "Glucose",
-      "Carbon dioxide",
+      "Amino acids",
       "Sodium ions",
       "Albumin"
     ],
-    "correct": [0, 2],
+    "correct": [0],
     "why": {
-      "correct": "Lipid-soluble substances such as oxygen and carbon dioxide dissolve in the phospholipid bilayer and cross straight through the endothelial cells. Water-soluble solutes such as glucose and sodium use the water-filled clefts. Albumin is mostly held back.",
+      "correct": "Lipid-soluble substances such as oxygen dissolve in the phospholipid bilayer and cross straight through the endothelial cells. Water-soluble solutes such as glucose, amino acids and sodium use the water-filled clefts. Albumin is mostly held back.",
       "options": [
         "Crosses through the cells. Oxygen is small and lipid-soluble, so it dissolves in the bilayer.",
         "Uses the clefts. Glucose is water-soluble and does not cross the bilayer easily.",
-        "Crosses through the cells. Carbon dioxide is lipid-soluble, like oxygen.",
+        "Use the clefts. Amino acids are water-soluble, like glucose.",
         "Uses the clefts. Charged ions cannot dissolve in the lipid bilayer.",
         "Mostly held back. Albumin is too large for the clefts of a continuous capillary; a small amount crosses by transcytosis."
       ]

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autonomic control and visceral reflexes: Notes | A&amp;P</title>
+<title>Autonomic control and visceral reflexes — A&amp;P Notes</title>
 <meta name="description" content="Most of your organs get nerve fibers from both autonomic divisions, and both divisions fire all the time.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/ans-control.html">
-<meta property="og:title" content="Autonomic control and visceral reflexes: Notes | A&amp;P">
+<meta property="og:title" content="Autonomic control and visceral reflexes — A&amp;P Notes">
 <meta property="og:description" content="Most of your organs get nerve fibers from both autonomic divisions, and both divisions fire all the time.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/ans-control.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="ans-control">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 16 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/autonomic.html">The autonomic nervous system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Autonomic control and visceral reflexes: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/ans-control.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 16 &middot; Topic 83 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 16 &middot; Topic 83 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Autonomic control and visceral reflexes</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="ans-control">Not practiced</span></p>
     </header>
@@ -112,7 +113,7 @@
 
 <h2 id="dual-innervation">Dual innervation</h2>
 <p>Your <a class="gl" href="../notes/body-organization.html" data-c="major-organs">heart</a> has two sets of autonomic nerves (<a class="figref" href="#fig-heart-nerves">Figure 1</a>). Sympathetic fibers from the upper thoracic cord (T1–T4) climb into the chain, <a class="gl" href="../notes/chemical-signaling.html" data-c="synapse-basic">synapse</a> there, and run to the heart as the <em><span class="gl" tabindex="0" data-c="sympathetic-effects">cardiac accelerator nerves</span></em>. Parasympathetic fibers leave the medulla oblongata in the <a class="gl" href="../notes/cranial-nerves.html" data-c="vagus-nerve">vagus nerve</a> and synapse in <a class="gl" href="../notes/ans-anatomy.html" data-c="parasympathetic-anatomy">terminal ganglia</a> on the heart itself.</p>
-<figure id="fig-heart-nerves"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-13"><img src="../figures/os-15-13.jpg" alt="The brainstem and upper spinal cord drawn from the front, with the pons, medulla and segments T1 to T6 labeled and a sympathetic chain of ganglia beside the cord on each side, topped by the superior cervical ganglion. A blue parasympathetic fiber runs from a nucleus in the medulla, labeled as the dorsal nucleus of the vagus and nucleus ambiguus, along cranial nerve X to a small drawing of the heart on the right. Four red sympathetic fibers leave the cord at T1 to T4, pass through the chain ganglia and converge on the same heart." width="1100" height="953" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Both divisions reach the heart. Sympathetic fibers (red) leave the cord at T1–T4, synapse in the chain and run to the heart. Parasympathetic fibers (blue) run from nuclei in the medulla down the vagus nerve (cranial nerve X). <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 15.13, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-4-drugs-that-affect-the-autonomic-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-heart-nerves"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-13"><picture><source type="image/avif" srcset="../figures/avif/os-15-13-480.avif 480w, ../figures/avif/os-15-13-800.avif 800w, ../figures/avif/os-15-13.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-15-13.jpg" alt="The brainstem and upper spinal cord drawn from the front, with the pons, medulla and segments T1 to T6 labeled and a sympathetic chain of ganglia beside the cord on each side, topped by the superior cervical ganglion. A blue parasympathetic fiber runs from a nucleus in the medulla, labeled as the dorsal nucleus of the vagus and nucleus ambiguus, along cranial nerve X to a small drawing of the heart on the right. Four red sympathetic fibers leave the cord at T1 to T4, pass through the chain ganglia and converge on the same heart." width="1100" height="953" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> Both divisions reach the heart. Sympathetic fibers (red) leave the cord at T1–T4, synapse in the chain and run to the heart. Parasympathetic fibers (blue) run from nuclei in the medulla down the vagus nerve (cranial nerve X). <span class="anp-credit">Figure 15.13 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-4-drugs-that-affect-the-autonomic-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>An organ that receives fibers from both divisions has <em>dual innervation</em> (dual = two; in- = into, nerv- = nerve). Most organs of the chest and abdomen do. The two divisions usually act in opposite directions on the same <a class="gl" href="../notes/homeostasis-feedback.html" data-c="effector">effector</a>:</p>
 <ul>
 <li><strong>Heart rate:</strong> sympathetic speeds it, parasympathetic slows it.</li>
@@ -162,7 +163,7 @@
 </svg>
 
 <figcaption><b>Figure 2.</b> Sympathetic tone. Each bar is one impulse. A vessel with only sympathetic fibers is widened by less firing and narrowed by more, around a resting level that keeps it partly constricted.</figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Vagal tone</th><th>Sympathetic tone</th></tr></thead>
 <tbody>
 <tr><th>Division</th><td>Parasympathetic</td><td>Sympathetic</td></tr>
@@ -200,7 +201,7 @@
 <li><strong>Airways:</strong> smooth muscle contracts, narrowing the airways, and <a class="gl" href="../notes/epithelium.html" data-c="simple-columnar">mucus</a> secretion increases.</li>
 </ul>
 <p>Parasympathetic effects are <strong>local and short</strong>. The terminal ganglia sit on single organs, each <a class="gl" href="../notes/ans-anatomy.html" data-c="pre-postganglionic">preganglionic neuron</a> reaches few postganglionic neurons, and acetylcholine is destroyed within milliseconds. So your stomach can be stimulated without your pupils narrowing.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Sympathetic activation</th><th>Parasympathetic activation</th></tr></thead>
 <tbody>
 <tr><th>Overall pattern</th><td>Fight or flight: exercise, danger, stress</td><td>Rest and digest: quiet, after meals</td></tr>
@@ -264,7 +265,7 @@
 <li>Short postganglionic fibers release acetylcholine onto muscarinic receptor proteins of the circular iris muscle.</li>
 <li>The circular muscle contracts, and both pupils narrow.</li>
 </ol>
-<figure id="fig-pupil-reflex"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-10"><img src="../figures/os-15-10.jpg" alt="A view from above of both eyes, the optic nerves and the midbrain, with a gloved hand shining a penlight into the right eye. Numbered callouts trace the reflex: light enters the right eye only; signals from that eye reach the pretectal nuclei on both sides of the midbrain; the pretectal nuclei stimulate the Edinger–Westphal nuclei on both sides; and both oculomotor nerves carry signals to the ciliary ganglia behind the eyes, so both pupils constrict." width="1100" height="674" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> The pupillary light reflex. Light shone into the right eye alone (1) sends signals to the pretectal nuclei on both sides (2), which drive the Edinger–Westphal nuclei on both sides (3). Both oculomotor nerves then narrow both pupils (4). <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 15.10, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-3-central-control">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-pupil-reflex"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-10"><picture><source type="image/avif" srcset="../figures/avif/os-15-10-480.avif 480w, ../figures/avif/os-15-10-800.avif 800w, ../figures/avif/os-15-10.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-15-10.jpg" alt="A view from above of both eyes, the optic nerves and the midbrain, with a gloved hand shining a penlight into the right eye. Numbered callouts trace the reflex: light enters the right eye only; signals from that eye reach the pretectal nuclei on both sides of the midbrain; the pretectal nuclei stimulate the Edinger–Westphal nuclei on both sides; and both oculomotor nerves carry signals to the ciliary ganglia behind the eyes, so both pupils constrict." width="1100" height="674" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> The pupillary light reflex. Light shone into the right eye alone (1) sends signals to the pretectal nuclei on both sides (2), which drive the Edinger–Westphal nuclei on both sides (3). Both oculomotor nerves then narrow both pupils (4). <span class="anp-credit">Figure 15.10 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-3-central-control">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Because the midbrain crosses the signal to both sides, the unlit pupil narrows too. In dim light, the opposite happens: parasympathetic output falls and sympathetic output from the upper thoracic cord, relayed through the <a class="gl" href="../notes/anatomical-position.html" data-c="superior-inferior">superior</a> cervical ganglion, contracts the dilator muscle. Doctors test this reflex after head injuries because it checks the optic nerve, the midbrain and the oculomotor nerve in one quick look.</p>
 
 <h3>The blood pressure reflex</h3>
@@ -336,13 +337,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:ans-control">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ans-signaling.html"><span>&larr; Topic 82</span><b>Autonomic neurotransmitters and receptors</b></a><a class="tb-chapter-link next" href="hormone-action.html"><span>Topic 84 &rarr;</span><b>Hormones and how they act</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

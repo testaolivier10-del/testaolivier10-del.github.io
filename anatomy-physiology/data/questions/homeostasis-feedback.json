@@ -124,6 +124,16 @@
         "name": "Heat lost from your skin to the air",
         "answer": "up",
         "why": "More warm blood near the surface and more evaporating sweat both increase heat loss, which opposes the rise in temperature."
+      },
+      {
+        "name": "The set point itself",
+        "answer": "none",
+        "why": "The set point stays where it was. The loop responds because body temperature has risen above it."
+      },
+      {
+        "name": "Number of sweat glands in the skin",
+        "answer": "none",
+        "why": "The loop changes how much each gland secretes, not how many glands there are."
       }
     ],
     "why": {
@@ -155,6 +165,11 @@
         "name": "Body temperature after an hour",
         "answer": "down",
         "why": "Heat loss is not reduced, so body temperature falls further below the set point than it would in a person with an intact loop."
+      },
+      {
+        "name": "The temperature set point",
+        "answer": "none",
+        "why": "Nerve damage to the skin vessels does not move the set point. Body temperature falls below it because one effector cannot respond."
       }
     ],
     "why": {
@@ -253,21 +268,20 @@
     "options": [
       "The response opposes the stimulus.",
       "It moves the regulated variable back toward the set point.",
-      "It can raise a variable that has fallen.",
+      "It is how labor contractions grow stronger",
       "It keeps going until an outside event stops it.",
       "The response makes the original change larger."
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Negative feedback opposes the change. That pulls the variable back toward the set point, whichever direction it moved, and the loop switches itself off as the stimulus shrinks.",
+      "correct": "Negative feedback opposes the change. That pulls the variable back toward the set point, and the loop switches itself off as the stimulus shrinks. Labor contractions build by positive feedback.",
       "options": [
         "True. Opposing the stimulus is the defining feature of negative feedback.",
         "True. Opposing the change returns the variable toward its set point.",
-        "True. If the variable falls, the opposing response raises it, as when shivering warms a cold body.",
+        "Labor contractions build by positive feedback, which strengthens the original change.",
         "False. Needing an outside event to stop is a feature of positive feedback. Negative feedback stops itself as the stimulus shrinks.",
         "False. A response that enlarges the original change is positive feedback."
       ]
@@ -467,6 +481,11 @@
         "name": "Diameter of small arteries",
         "answer": "down",
         "why": "The control center triggers vasoconstriction of small arteries. Narrower vessels raise resistance, which raises pressure back toward the set point."
+      },
+      {
+        "name": "The control center's set point for blood pressure",
+        "answer": "none",
+        "why": "The set point stays the same. The fall in pressure below it is what drives the faster heart rate and narrower arteries."
       }
     ],
     "why": {

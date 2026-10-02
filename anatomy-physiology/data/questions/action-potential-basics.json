@@ -11,21 +11,20 @@
     "options": [
       "A neuron",
       "A skeletal muscle fiber",
-      "A heart muscle cell",
+      "A cell lining the stomach",
       "A red blood cell",
       "A fibroblast in a tendon"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Excitable cells are cells whose membranes can produce action potentials. Neurons and muscle fibers have the voltage-gated sodium and potassium channels this requires.",
+      "correct": "Excitable cells are cells whose membranes can produce action potentials. Neurons and muscle fibers, heart muscle included, have the voltage-gated sodium and potassium channels this requires. Red blood cells, fibroblasts and epithelial cells do not fire action potentials.",
       "options": [
         "Correct. Neurons produce action potentials along their axons.",
         "Correct. A skeletal muscle fiber's action potential starts its contraction.",
-        "Correct. Heart muscle cells produce action potentials, a longer kind covered in the heart chapter.",
+        "Epithelial cells lining the stomach do not fire action potentials.",
         "A red blood cell has a resting potential but lacks the voltage-gated channels needed for an action potential.",
         "A fibroblast has a resting potential too, but it is not excitable."
       ]
@@ -145,7 +144,7 @@
       "communication",
       "gradients"
     ],
-    "q": "Level 2. A toxin blocks the voltage-gated sodium channels in a nerve fiber. A stimulus is applied to the fiber's nerve ending. Predict each variable compared with before the toxin.",
+    "q": "A toxin blocks the voltage-gated sodium channels in a nerve fiber. A stimulus is applied to the fiber's nerve ending. Predict each variable compared with before the toxin.",
     "variables": [
       {
         "name": "Resting membrane potential",
@@ -341,13 +340,13 @@
     "q": "An action potential starts in the middle of an axon in a lab dish. Charge spreads in both directions from the firing patch. Why does an action potential in a living neuron, which starts near the cell body, travel only toward the axon terminals?",
     "options": [
       "The patch just behind it has just fired and is refractory",
-      "Axons have sodium channels only on the side facing the terminals",
-      "Positive charge spreads in only one direction inside an axon",
+      "Axons have most of their sodium channels on the side facing the terminals",
+      "Positive charge inside an axon flows only toward the terminals, never back",
       "The axon terminals attract positive ions"
     ],
     "correct": 0,
     "why": {
-      "correct": "Charge spreads both ways, but the patch behind has just fired: its sodium channels have closed on their own and cannot reopen yet. Only the patch ahead can reach threshold and fire.",
+      "correct": "Charge spreads both ways, but the patch behind has just fired: its sodium channels are inactivated (plugged shut from inside by part of the channel itself, a different state from the closed, ready state at rest) and cannot reopen yet. Only the patch ahead can reach threshold and fire.",
       "options": [
         "Correct. The refractory period of the patch behind makes propagation one-way.",
         "Voltage-gated sodium channels are spread along the axon. Their state, not their position, prevents backward firing.",
@@ -373,7 +372,7 @@
     ],
     "correct": 2,
     "why": {
-      "correct": "Half a millisecond in, the membrane is in its refractory period. The sodium channels are either already open or have closed on their own and cannot reopen until the membrane repolarizes, so a new action potential cannot start.",
+      "correct": "Half a millisecond in, the membrane is in its refractory period. The sodium channels are either already open or inactivated (plugged shut from inside, not simply closed), and an inactivated channel cannot open again until the membrane repolarizes, so a new action potential cannot start.",
       "options": [
         "The sodium channels are not available to start a new action potential during the refractory period.",
         "Action potentials are all-or-none; an extra stimulus does not add to one in progress.",
@@ -393,7 +392,7 @@
     ],
     "q": "A drug keeps the voltage-gated potassium channels of a neuron from opening. Sodium channels work normally. How does the neuron's action potential change?",
     "options": [
-      "It never reaches threshold",
+      "It stays below threshold",
       "Its peak rises far above +60 mV",
       "It shows a deeper dip below rest",
       "It returns to rest more slowly"
@@ -449,7 +448,7 @@
       "The wider axon",
       "The narrower axon",
       "Both at the same speed",
-      "Neither; axons without wrapping cannot propagate action potentials"
+      "Neither; axons without wrapping lose action potentials within a few millimeters"
     ],
     "correct": 0,
     "why": {
@@ -471,16 +470,16 @@
       "communication",
       "gradients"
     ],
-    "q": "Mr. Okafor, 62, has a blood potassium of 8.0 mmol/L. His muscle cells have been held partly depolarized for hours, yet his muscles are weak rather than twitchy. What best explains the weakness?",
+    "q": "Mr. Patel, 62, has a blood potassium of 8.0 mmol/L. His muscle cells have been held partly depolarized for hours, yet his muscles are weak rather than twitchy. What best explains the weakness?",
     "options": [
       "The depolarization has made his resting potential more negative",
-      "Many sodium channels are stuck closed",
-      "His potassium channels cannot open",
+      "Many sodium channels are stuck inactivated",
+      "His potassium channels are blocked",
       "The extra potassium blocks his sodium–potassium pumps"
     ],
     "correct": 1,
     "why": {
-      "correct": "Voltage-gated sodium channels close on their own after opening and cannot reopen until the membrane repolarizes. A membrane held depolarized for a long time keeps many of them in that closed state, so fewer are available to produce an action potential, and the cells respond weakly or not at all.",
+      "correct": "Voltage-gated sodium channels become inactivated soon after opening: part of the channel plugs it shut from inside, which is not the same as the closed, ready state at rest. An inactivated channel cannot reopen until the membrane repolarizes, so a membrane held depolarized for a long time keeps many of them inactivated, so fewer are available to produce an action potential, and the cells respond weakly or not at all.",
       "options": [
         "High blood potassium makes the resting potential less negative, not more.",
         "Correct. Sustained depolarization leaves too few sodium channels ready to open.",

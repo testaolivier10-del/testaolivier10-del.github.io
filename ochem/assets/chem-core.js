@@ -256,12 +256,146 @@
     return electronCount(st, key) > octetOf(st, key);
   }
 
+  /* ---- Condensed groups, opened up ----------------------------------------
+
+     A label like 'CH₃' or 'CO₂H' is one blob on the canvas, but a molecular
+     formula and a spectrum both need what is inside it. Counting the label as
+     a unit printed m-xylene as "C₆H₄CH₃₂", and the spectrum predictor, which
+     only sees real atoms, lost both methyl signals. So a label is read here
+     into atoms and bonds: element symbols with counts, hydrogens folded onto
+     the atom they belong to, brackets as branches, and the handful of
+     shorthands whose letters do not spell their connectivity (COOH is not a
+     peroxide). A label this cannot read stays a group, exactly as before. */
+  var GROUP_MACROS = {
+    Me:'CH3', Et:'CH2CH3', Pr:'CH2CH2CH3', iPr:'CH(CH3)2', tBu:'C(CH3)3', Ac:'C(=O)CH3', OAc:'OC(=O)CH3',
+    COOH:'C(=O)OH', CO2H:'C(=O)OH', HOOC:'C(=O)OH', HO2C:'C(=O)OH',
+    CHO:'CH=O', OHC:'CH=O', CN:'C#N', NC:'C#N', NO2:'N+(=O)O-', O2N:'N+(=O)O-',
+    COCH3:'C(=O)CH3', CO2CH3:'C(=O)OCH3', CO2Me:'C(=O)OCH3', COOCH3:'C(=O)OCH3',
+    CO2Et:'C(=O)OCH2CH3', COOEt:'C(=O)OCH2CH3', CONH2:'C(=O)NH2', COCl:'C(=O)Cl',
+    SO3H:'S(=O)(=O)OH', HO3S:'S(=O)(=O)OH', SO2Cl:'S(=O)(=O)Cl', SO2NH2:'S(=O)(=O)NH2', OCF3:'OC(F)(F)F'
+  };
+  var GROUP_ASCII = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9','⁺':'+','⁻':'-','−':'-' };
+  function groupAscii(label){
+    return String(label || '').replace(/[₀-₉⁺⁻−]/g, function(c){ return GROUP_ASCII[c]; }).replace(/\s+/g, '');
+  }
+  function parseGroup(label){
+    var s = groupAscii(label);
+    if(!s) return null;
+    if(GROUP_MACROS[s]) s = GROUP_MACROS[s];
+    else if(/^H\d*[A-Z]/.test(s) && !/[()=#+-]/.test(s)){
+      // Written right to left ('H₃C', 'HO', 'H₃CO'): attach through the last atom.
+      var lead = /^H(\d*)/.exec(s);
+      var rest = s.slice(lead[0].length);
+      var parts = rest.match(/[A-Z][a-z]?\d*/g) || [];
+      if(parts.join('') !== rest) return null;
+      var hLead = lead[1] ? parseInt(lead[1], 10) : 1;
+      var seq = parts.map(function(p, i){
+        var m = /^([A-Z][a-z]?)(\d*)$/.exec(p);
+        return { el:m[1], n: m[2] ? parseInt(m[2], 10) : 1, h: i === 0 ? hLead : 0 };
+      });
+      if(seq.some(function(x){ return x.el === 'H' || x.n !== 1; })) return null;
+      s = seq.reverse().map(function(x){ return x.el + (x.h ? 'H' + (x.h > 1 ? x.h : '') : ''); }).join('');
+    }
+    var atoms = [], bonds = [];
+    function run(src, attach){
+      var prev = attach, pendingH = 0, pendingOrder = 1, waiting = [], i = 0;
+      while(i < src.length){
+        var ch = src[i];
+        if(ch === '('){
+          var depth = 1, j = i + 1;
+          while(j < src.length && depth){ if(src[j] === '(') depth++; else if(src[j] === ')') depth--; j++; }
+          if(depth) return false;
+          var inner = src.slice(i + 1, j - 1), mult = '';
+          i = j;
+          while(i < src.length && /\d/.test(src[i])) mult += src[i++];
+          var n = mult ? parseInt(mult, 10) : 1;
+          if(prev === null){ waiting.push({ src:inner, n:n }); continue; }
+          for(var q=0;q<n;q++) if(run(inner, prev) === false) return false;
+          continue;
+        }
+        if(ch === '=' || ch === '#'){ pendingOrder = ch === '=' ? 2 : 3; i++; continue; }
+        if(ch === '+' || ch === '-'){
+          if(!atoms.length) return false;
+          atoms[atoms.length - 1].charge += ch === '+' ? 1 : -1; i++; continue;
+        }
+        var m = /^([A-Z][a-z]?)(\d*)/.exec(src.slice(i));
+        if(!m || !EL[m[1]]) return false;
+        i += m[0].length;
+        var cnt = m[2] ? parseInt(m[2], 10) : 1;
+        if(m[1] === 'H'){
+          if(prev !== null) atoms[prev].h += cnt; else pendingH += cnt;
+          continue;
+        }
+        /* A halogen with a count is several atoms on the one before it, not a
+           chain: CF3 is C(F)(F)F, never C-F-F-F. */
+        if(cnt > 1 && prev !== null && /^(F|Cl|Br|I)$/.test(m[1])){
+          for(var x=0;x<cnt;x++){
+            atoms.push({ el:m[1], h:0, charge:0 });
+            bonds.push([prev, atoms.length - 1, 1]);
+          }
+          pendingOrder = 1;
+          continue;
+        }
+        for(var c=0;c<cnt;c++){
+          atoms.push({ el:m[1], h:pendingH, charge:0 });
+          pendingH = 0;
+          var idx = atoms.length - 1;
+          if(prev !== null){ bonds.push([prev, idx, pendingOrder]); pendingOrder = 1; }
+          for(var w=0; w<waiting.length; w++)
+            for(var r=0; r<waiting[w].n; r++) if(run(waiting[w].src, idx) === false) return false;
+          waiting = [];
+          prev = idx;
+        }
+      }
+      return !waiting.length && !pendingH;
+    }
+    if(run(s, null) === false || !atoms.length) return null;
+    // Lone pairs from the valence left once bonds, hydrogens and charge are paid for.
+    atoms.forEach(function(a, i){
+      var used = a.h + bonds.reduce(function(n, b){ return n + (b[0] === i || b[1] === i ? b[2] : 0); }, 0);
+      a.lp = a.el === 'C' ? 0 : Math.max(0, Math.floor((EL[a.el].valence - a.charge - used) / 2));
+    });
+    return { atoms: atoms, bonds: bonds };
+  }
+
+  /* A copy of the structure with every readable group label opened into real
+     atoms. The group's own key becomes its first (attaching) atom, so bonds to
+     the rest of the molecule are untouched. */
+  function expandGroups(st){
+    var any = Object.keys(st.atoms).some(function(k){ return st.atoms[k].group; });
+    if(!any) return st;
+    var out = clone(st);
+    Object.keys(st.atoms).forEach(function(k){
+      var a = st.atoms[k];
+      if(!a.group) return;
+      var g = parseGroup(a.label);
+      if(!g) return;
+      var keyOf = g.atoms.map(function(x, i){ return i === 0 ? k : k + '~g' + i; });
+      g.atoms.forEach(function(x, i){
+        out.atoms[keyOf[i]] = {
+          el:x.el, label:x.el, group:false, x:a.x, y:a.y, r:a.r,
+          lp:x.lp, charge:x.charge, hImplicit:x.h, expandedFrom:k
+        };
+      });
+      g.bonds.forEach(function(b){ out.bonds.push({ a:keyOf[b[0]], b:keyOf[b[1]], order:b[2] }); });
+    });
+    return out;
+  }
+
   function formula(st, keys){
     var counts = {}, charge = 0;
     (keys || Object.keys(st.atoms)).forEach(function(k){
       var a = st.atoms[k];
       charge += formalCharge(st, k);
-      if(a.group){ counts[a.label] = (counts[a.label] || 0) + 1; return; }
+      if(a.group){
+        var g = parseGroup(a.label);
+        if(!g){ counts[a.label] = (counts[a.label] || 0) + 1; return; }
+        g.atoms.forEach(function(x){
+          counts[x.el] = (counts[x.el] || 0) + 1;
+          if(x.h) counts.H = (counts.H || 0) + x.h;
+        });
+        return;
+      }
       counts[a.el] = (counts[a.el] || 0) + 1;
       // The hydrogens nobody drew are still in the molecular formula.
       if(a.hImplicit) counts.H = (counts.H || 0) + a.hImplicit;
@@ -654,6 +788,8 @@
     octetOf: octetOf,
     overOctet: overOctet,
     formula: formula,
+    parseGroup: parseGroup,
+    expandGroups: expandGroups,
     fragments: fragments,
     parseBondKey: parseBondKey,
     isBondKey: isBondKey,

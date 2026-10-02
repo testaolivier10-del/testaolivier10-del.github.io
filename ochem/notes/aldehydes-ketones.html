@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aldehydes &amp; ketones — Organic Chemistry Notes</title>
+<title>Aldehydes &amp; ketones — Organic Chemistry Notes | LevlPrep</title>
 <meta name="description" content="Start with two familiar molecules. Acetone is the solvent in nail-polish remover.">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/aldehydes-ketones.html">
-<meta property="og:title" content="Aldehydes &amp; ketones — Organic Chemistry Notes">
+<meta property="og:title" content="Aldehydes &amp; ketones — Organic Chemistry Notes | LevlPrep">
 <meta property="og:description" content="Start with two familiar molecules. Acetone is the solvent in nail-polish remover.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/aldehydes-ketones.html">
@@ -33,7 +34,7 @@
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/aldehydes-ketones.html#notes","name":"Aldehydes & ketones","url":"https://levlprep.com/ochem/notes/aldehydes-ketones.html","description":"Start with two familiar molecules. Acetone is the solvent in nail-polish remover.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Aldehydes & ketones"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":63,"relatedLink":"https://levlprep.com/ochem/lessons/aldehydes-ketones.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Carbonyl Chemistry","item":"https://levlprep.com/ochem/learn.html#m-carbonyl-chemistry"},{"@type":"ListItem","position":4,"name":"Aldehydes & ketones","item":"https://levlprep.com/ochem/notes/aldehydes-ketones.html"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/aldehydes-ketones.html#notes","name":"Aldehydes & ketones","url":"https://levlprep.com/ochem/notes/aldehydes-ketones.html","description":"Start with two familiar molecules. Acetone is the solvent in nail-polish remover.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Aldehydes & ketones"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":72,"relatedLink":"https://levlprep.com/ochem/lessons/aldehydes-ketones.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Carbonyl Chemistry","item":"https://levlprep.com/ochem/learn.html#m-carbonyl-chemistry"},{"@type":"ListItem","position":4,"name":"Aldehydes & ketones","item":"https://levlprep.com/ochem/notes/aldehydes-ketones.html"}]}]}
 </script>
 </head>
 <body>
@@ -46,7 +47,7 @@
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Carbonyl Chemistry &middot; Section 63 of 121</p>
+    <p class="notes-eyebrow">Carbonyl Chemistry &middot; Section 72 of 123</p>
     <h1>Aldehydes &amp; ketones</h1>
     <a class="notes-onward-cta" href="../lessons/aldehydes-ketones.html">Practice this — interactive lesson</a>
   </header>
@@ -166,7 +167,7 @@
 <!-- fig:ak-sources:end -->
 
 <h3>Recognizing them in the lab</h3>
-<p class="step-body">Carbonyls are among the easiest groups to spot with instruments, which <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a> covers in full. Three signals are worth knowing now.</p>
+<p class="step-body">Carbonyls are among the easiest groups to spot with instruments. Three signals are worth knowing: the IR band you met in <a class="chapter-ref" href="/ochem/learn.html#m-ir-mass-spec">IR &amp; Mass Spectrometry</a>, and two NMR signals that <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">NMR Spectroscopy</a>, later in the course, explains.</p>
 <ul class="step-body">
 <li><b>Infrared (IR).</b> IR spectroscopy records which frequencies of infrared light a molecule's bonds absorb as they stretch, in units of cm⁻¹. The C=O stretch is a strong, sharp absorption at about 1680–1750 cm⁻¹ and is hard to mistake: a ketone near 1715, an aldehyde near 1730. Conjugation lowers both by about 30 cm⁻¹.</li>
 <li><b>¹H NMR.</b> This method reports each kind of hydrogen as a signal at a position measured in ppm. The H on an aldehyde's carbonyl carbon appears at 9–10 ppm, further along the scale than almost any other hydrogen.</li>
@@ -178,11 +179,11 @@
 <!-- notes:end -->
   </article>
 
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="epoxides.html"><span>Previous</span>Epoxides</a><a class="notes-prevnext notes-next" href="nucleophilic-addition.html"><span>Next</span>Nucleophilic addition</a></nav>
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="grignard-reagents.html"><span>Previous</span>Grignard reagents</a><a class="notes-prevnext notes-next" href="nucleophilic-addition.html"><span>Next</span>Nucleophilic addition</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 121 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>

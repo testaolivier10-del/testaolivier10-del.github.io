@@ -42,7 +42,7 @@
 
   // The Cloudflare Worker that creates checkouts and receives Polar's
   // webhooks (worker/src/premium.js).
-  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev'; // site-config:API_URL
 
   var STORE_KEY = 'levlprep_waitlist_v1';
   var ACCESS_KEY = 'levlprep_premium_v1';
@@ -51,6 +51,9 @@
   /* Founding-member offer: shown in the dialog, applied at checkout by the
      Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
   var FOUNDING = { off: 30, until: '2027-01-31' };
+
+  // Pass-or-extend; must match the Worker's GUARANTEE (rule premium-copy).
+  var GUARANTEE = { minExams: 2, claimDays: 30, extendDays: 90 };
 
   /* The split, per course. `free` and `premium` are what the dialog lists, so
      what someone pays for is exactly what is written here. `passes` must match
@@ -64,7 +67,7 @@
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
-      guarantee: 'Pass guarantee: take the NREMT during your pass and don’t pass, and claim a free 90-day extension (once, within 30 days of the exam).',
+      guarantee: true, // Pass-or-extend; the wording is guaranteeText()
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
@@ -72,7 +75,7 @@
         'Your progress, XP, streak and weak topics',
       ],
       premium: [
-        'The full 2,106-question bank, unlimited',
+        'The full 2,033-question bank, unlimited', // count:nremt
         'Unlimited timed 100-question exams',
         'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',
@@ -96,7 +99,7 @@
       ],
       premium: [
         'Every interactive lesson and mechanism walkthrough',
-        'The full 3,795-question bank, unlimited practice and review',
+        'The full 3,675-question bank, unlimited practice and review', // count:ochem
         'Unlimited exams',
         'Mastery dashboard and gap detection',
         'All eight interactive tools',
@@ -119,7 +122,7 @@
       ],
       premium: [
         'Every interactive lesson',
-        'The full question bank, unlimited practice and review',
+        'The full 3,321-question bank, unlimited practice and review', // count:anp
         'Unlimited exams',
         'All the interactive tools, including the lab practical',
         'Detailed dashboard analytics',
@@ -160,13 +163,14 @@
     return u ? u.id : null;
   }
 
+  /* Signed out is never Premium: the cache counts only for the loaded user
+     it was read for (refresh() unlocks once the session is restored).
+     Trusting it before then was a one-line console unlock. */
   function expiry(course) {
-    var a = access();
-    // Before the session has been restored on page load the user is not known
-    // yet; the cache is trusted until then so a member never sees a flash of
-    // locks. A sign-out clears it (see refresh).
     var uid = currentUserId();
-    if (!a.courses || !a.userId || (uid && a.userId !== uid)) return null;
+    if (!uid) return null;
+    var a = access();
+    if (!a.courses || a.userId !== uid) return null;
     var t = a.courses[course] ? Date.parse(a.courses[course]) : NaN;
     return isNaN(t) ? null : t;
   }
@@ -189,27 +193,66 @@
   }
   function onChange(fn) { listeners.push(fn); fn(); }
 
-  /* Asks the database which passes this user holds. my_premium() in
-     scripts/sql/schema.sql answers only for the signed-in user. */
+  /* Asks my_premium() (scripts/sql/schema.sql) which started passes this
+     user holds. An empty answer clears the cache, so a refund locks the next
+     page; a failed call keeps it (offline is not a refund) and is reported
+     once after REFRESH_REPORT_AFTER in a row. */
+  var REFRESH_REPORT_AFTER = 3;
+  var refreshFailures = 0;
+  var refreshReported = false;
   var seenUser = false;
   function refresh() {
     var a = window.StudyHubAccount;
     var uid = currentUserId();
     if (!uid) {
-      // Only a real sign-out clears the cache; the null every page load starts
-      // with, before the session is restored, does not.
-      if (seenUser && access().userId) { writeJson(ACCESS_KEY, {}); notify(); }
-      return;
+      if (seenUser) { seenUser = false; clearAccess(); notify(); }
+      return Promise.resolve(false);
     }
     seenUser = true;
-    if (!a || !a.rpcData) return;
-    a.rpcData('my_premium', {}).then(function (rows) {
-      if (!Array.isArray(rows)) return; // offline: keep what we knew
+    // The cached pass belongs to this user: unlock now, confirm below.
+    if (access().userId === uid) notify();
+    if (!a || !a.rpcData) return Promise.resolve(false);
+    return a.rpcData('my_premium', {}).then(function (rows) {
+      if (!Array.isArray(rows)) { refreshFailed(); return false; }
+      refreshFailures = 0;
+      if (currentUserId() !== uid) return false; // signed out or switched meanwhile
       var courses = {};
-      rows.forEach(function (r) { if (r && r.course) courses[r.course] = r.expires_at; });
-      writeJson(ACCESS_KEY, { userId: uid, courses: courses });
+      rows.forEach(function (r) { if (r && r.course && r.expires_at) courses[r.course] = r.expires_at; });
+      writeJson(ACCESS_KEY, { userId: uid, courses: courses, syncedAt: Date.now() });
       notify();
+      return true;
     });
+  }
+
+  function clearAccess() {
+    try { window.localStorage.removeItem(ACCESS_KEY); }
+    catch (e) { /* private mode: nothing was cached */ }
+  }
+
+  function refreshFailed() {
+    refreshFailures++;
+    if (refreshFailures < REFRESH_REPORT_AFTER || refreshReported) return;
+    refreshReported = true;
+    var errs = window.LevlErrors;
+    if (errs && errs.report) {
+      try { errs.report('premium: my_premium failed ' + refreshFailures + ' times in a row', 'assets/premium.js', null, null, ''); }
+      catch (e) { /* reporting must never break a page */ }
+    }
+  }
+
+  // When access was last confirmed for the signed-in user (ms), or null.
+  function lastSynced() {
+    var a = access();
+    var uid = currentUserId();
+    return uid && a.userId === uid && typeof a.syncedAt === 'number' ? a.syncedAt : null;
+  }
+
+  /* A finished timed exam, stamped by the database (record_exam_completion),
+     which the NREMT guarantee counts instead of browser-written history. */
+  function recordExam(course, questions) {
+    var a = window.StudyHubAccount;
+    if (!COURSES[course] || !currentUserId() || !a || !a.rpc) return Promise.resolve(false);
+    return a.rpc('record_exam_completion', { p_course: course, p_questions: Math.round(Number(questions) || 0) });
   }
 
   /* ---- the daily free allowance ----------------------------------------- */
@@ -260,6 +303,8 @@
       funnelSeen[k] = true;
     }
     if (an && an.optedOut && an.optedOut()) return;
+    // Paid is counted by the Worker's webhook, not by a browser.
+    if (step === 'checkout-paid') return;
     var a = window.StudyHubAccount;
     if (a && a.rpc && course) a.rpc('count_premium_step', { p_course: course, p_step: step });
   }
@@ -310,6 +355,14 @@
     return '$' + money(low * (100 - FOUNDING.off) / 100) + ' (founding price, then $' + low + ')';
   }
 
+  // How long the cheapest pass lasts, so the price line says what it buys
+  // (audit 2026-10, A&P "Premium box": the price had no pass length).
+  function passLength(c) {
+    var low = c.passes.reduce(function (a, b) { return b.price < a.price ? b : a; });
+    var m = /(\d+\s*(?:days?|months?))/i.exec(low.label);
+    return m ? m[1] : (/year/i.test(low.label) ? 'a year' : low.label);
+  }
+
   function money(n) {
     return (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
   }
@@ -322,7 +375,7 @@
       '<span class="premium-card__tag">Premium</span>' +
       '<b>' + esc(lockTitle(feature)) + '</b>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
-      '<span class="premium-card__price">From ' + fromPrice(c) + ', one-time. No subscription.</span>' +
+      '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time. No subscription.</span>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source || feature) + '>See Premium</button>' +
     '</div>';
   }
@@ -355,7 +408,7 @@
     return '<div class="premium-card">' +
       '<span class="premium-card__tag">' + (LAUNCHED ? 'Premium' : 'Coming soon') + '</span>' +
       '<b>Premium for ' + esc(c.name) + '</b>' +
-      '<span class="premium-card__price">From ' + fromPrice(c) + ', one-time</span>' +
+      '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time</span>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
         (LAUNCHED ? 'See Premium' : 'Get notified') + '</button>' +
@@ -363,6 +416,16 @@
   }
 
   /* ---- the dialog ------------------------------------------------------- */
+
+  // Shown by the dialog, the account page and premium.html alike.
+  function guaranteeText() {
+    var g = GUARANTEE;
+    return 'Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, ' +
+      'and you can claim one free ' + g.extendDays + '-day extension from your Account page within ' +
+      g.claimDays + ' days of the exam. It needs at least ' + g.minExams + ' full timed exams on LevlPrep, ' +
+      'finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. ' +
+      'Once per account and email address. It extends your access; it is not a refund.';
+  }
 
   function foundingLive() {
     return !!(FOUNDING.until && Date.now() < Date.parse(FOUNDING.until + 'T23:59:59Z'));
@@ -455,13 +518,15 @@
         'One-time passes. No subscription, nothing renews. Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
         (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
       body.innerHTML = '<ul class="premium-passes">' +
-        c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>';
-      // innerHTML for the one link; every other part is a fixed string or
+        c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>' +
+        (c.guarantee ? '<p class="premium-guarantee">' + esc(guaranteeText()) + '</p>' : '');
+      // innerHTML for the links; every other part is a fixed string or
       // escaped, as elsewhere in this dialog.
-      fine.innerHTML = esc((c.guarantee ? c.guarantee + ' ' : '') +
+      fine.innerHTML = esc(
         'When a pass ends, your progress stays; only the Premium parts lock again. ' +
-        'Full refund within 7 days of buying, once per account. Sold by Polar, our merchant of record. ' +
+        'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '')) +
+        '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
       document.getElementById('premiumSub').textContent =
@@ -509,7 +574,7 @@
       close();
       var once = false;
       a.onAuthChange(function (u) { if (u && !once && resume) { once = true; open(resume.course, resume.source); } });
-      a.openAuthModal('signup');
+      a.openAuthModal('signup', { purpose: 'checkout' });
       return;
     }
     funnel('checkout-start', passId.split('-')[0], { course: active && active.course, pass: passId });
@@ -761,6 +826,9 @@
   window.LevlPremium = {
     launched: function () { return LAUNCHED; },
     COURSES: COURSES,
+    FOUNDING: FOUNDING,
+    GUARANTEE: GUARANTEE,
+    guaranteeText: guaranteeText,
     has: has,
     isFreeChapter: isFreeChapter,
     gate: gate,
@@ -771,14 +839,22 @@
     freeExam: freeExam,
     onChange: onChange,
     refresh: refresh,
-    /* Exported for scripts/test/premium.test.mjs. */
-    _joined: joined,
-    _markJoined: markJoined,
-    _validEmail: validEmail,
-    _returnCourse: returnCourse,
-    _setLaunched: function (v) { LAUNCHED = !!v; },
-    _openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
+    lastSynced: lastSynced,
+    recordExam: recordExam,
   };
+
+  /* Test internals, never on window: only the test harness's VM sandbox
+     defines __levlTestHooks (scripts/test/harness.mjs). */
+  if (typeof __levlTestHooks === 'object' && __levlTestHooks) {
+    __levlTestHooks.premium = {
+      joined: joined,
+      markJoined: markJoined,
+      validEmail: validEmail,
+      returnCourse: returnCourse,
+      setLaunched: function (v) { LAUNCHED = !!v; },
+      openEmbedded: function (url, onPaid) { return loadEmbed().then(function (E) { return openEmbedded(E, url, onPaid); }); },
+    };
+  }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount);
   else mount();

@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NREMT-EMT Spaced Review Queue</title>
+<title>Spaced Review Queue — NREMT-EMT | LevlPrep</title>
 <meta name="description" content="Your NREMT-EMT spaced review queue: questions you have answered come back as they fade, weakest and longest-unseen first.">
+<meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/nremt/review.html">
 <meta property="og:site_name" content="LevlPrep">
 <meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:title" content="NREMT-EMT Spaced Review Queue">
+<meta property="og:title" content="Spaced Review Queue — NREMT-EMT | LevlPrep">
 <meta property="og:description" content="Your NREMT-EMT spaced review queue: questions you have answered come back as they fade, weakest and longest-unseen first.">
 <meta property="og:url" content="https://levlprep.com/nremt/review.html">
 <meta property="og:type" content="website">
@@ -87,8 +89,11 @@
 </script>
 </head>
 <body data-runner="review">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT spaced review</span></nav></div>
+<!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
 
@@ -98,6 +103,11 @@
       <h1>Review</h1>
       <p class="lede">Questions you have answered come back here as they fade: a miss straight away, a solid answer days later. Weakest and longest-unseen first, up to 40 a session.</p>
     </div>
+    <!-- The free-allowance line (practice-engine.js renderPremium) lands here;
+         the slot is in the page and holds its one line of height from the
+         first paint, so the page does not move when it is filled (audit
+         2026-10, layout shift 0.21 on a phone). -->
+    <div id="premiumNotice" class="premium-slot premium-slot--reserved"></div>
 
     <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
       <div class="resume-exam-text" id="resumeExamText"></div>
@@ -131,6 +141,20 @@
       <a class="btn-press sm alt" href="practice.html">Practice something new</a>
     </div>
 
+    <script>
+    /* Which of the three panels shows depends on this browser's answers
+       (renderDueSummary in practice-engine.js). Shown before first paint
+       from the same record, so the panel is in place when the page appears:
+       nothing answered yet, or something to review. "All caught up" is
+       decided by the engine a moment later; it is the same height. */
+    (function(){
+      var any = false;
+      try { var m = JSON.parse(localStorage.getItem('nremt_mastery') || '{}'); any = !!m && Object.keys(m).length > 0; } catch(e){}
+      var el = document.querySelector('[data-due-state="' + (any ? 'ready' : 'empty-new') + '"]');
+      if(el) el.hidden = false;
+    })();
+    </script>
+
     <div class="mode-grid runner-aside">
       <a class="mode-card mode-card--link" href="flashcards.html">
         <div class="k">Flashcards</div>
@@ -152,9 +176,9 @@
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
-      <p>Original, unofficial practice questions written to the NREMT-EMT blueprint; not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. Scores and history stay in your browser.</p>
+      <p>Original, unofficial practice questions, each tagged to one of the five domains of the National Registry&rsquo;s EMT exam outline (April 2025); not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. Scores and history stay in your browser.</p>
     </details>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
     </footer>
 </div>
 

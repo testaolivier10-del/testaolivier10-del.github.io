@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alkynes — Alkenes &amp; Alkynes Notes | Organic Chemistry</title>
+<title>Alkynes — Organic Chemistry Notes | LevlPrep</title>
 <meta name="description" content="Start with propyne, CH₃–C≡C–H: three carbons, with a triple bond between the second and the third.">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/alkynes.html">
-<meta property="og:title" content="Alkynes — Alkenes &amp; Alkynes Notes | Organic Chemistry">
+<meta property="og:title" content="Alkynes — Organic Chemistry Notes | LevlPrep">
 <meta property="og:description" content="Start with propyne, CH₃–C≡C–H: three carbons, with a triple bond between the second and the third.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/alkynes.html">
@@ -33,7 +34,7 @@
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/alkynes.html#notes","name":"Alkynes","url":"https://levlprep.com/ochem/notes/alkynes.html","description":"Start with propyne, CH₃–C≡C–H: three carbons, with a triple bond between the second and the third.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Alkynes"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":54,"relatedLink":"https://levlprep.com/ochem/lessons/alkynes.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Alkenes & Alkynes","item":"https://levlprep.com/ochem/learn.html#m-alkenes-alkynes"},{"@type":"ListItem","position":4,"name":"Alkynes","item":"https://levlprep.com/ochem/notes/alkynes.html"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/alkynes.html#notes","name":"Alkynes","url":"https://levlprep.com/ochem/notes/alkynes.html","description":"Start with propyne, CH₃–C≡C–H: three carbons, with a triple bond between the second and the third.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Alkynes"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":55,"relatedLink":"https://levlprep.com/ochem/lessons/alkynes.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Alkenes & Alkynes","item":"https://levlprep.com/ochem/learn.html#m-alkenes-alkynes"},{"@type":"ListItem","position":4,"name":"Alkynes","item":"https://levlprep.com/ochem/notes/alkynes.html"}]}]}
 </script>
 </head>
 <body>
@@ -46,7 +47,7 @@
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Alkenes &amp; Alkynes &middot; Section 54 of 121</p>
+    <p class="notes-eyebrow">Alkenes &amp; Alkynes &middot; Section 55 of 123</p>
     <h1>Alkynes</h1>
     <a class="notes-onward-cta" href="../lessons/alkynes.html">Practice this — interactive lesson</a>
   </header>
@@ -70,7 +71,7 @@
 <!-- fig:cyclooctyne-bend:start -->
 <figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 230" role="img" aria-label="Cyclooctyne drawn as an eight-membered ring with a triple bond along its top edge. At each end of the triple bond, a dashed line continues straight on, showing where a 180 degree bond would point; the ring bond instead bends down and away from it."><line class="fg-bond" x1="200" y1="70" x2="246" y2="89"></line><line class="fg-bond" x1="246" y1="89" x2="260" y2="138"></line><line class="fg-bond" x1="260" y1="138" x2="218" y2="180"></line><line class="fg-bond" x1="218" y1="180" x2="122" y2="180"></line><line class="fg-bond" x1="122" y1="180" x2="80" y2="138"></line><line class="fg-bond" x1="80" y1="138" x2="94" y2="89"></line><line class="fg-bond" x1="94" y1="89" x2="140" y2="70"></line><line class="fg-bond" x1="140" y1="64.88" x2="200" y2="64.88"></line><line class="fg-bond" x1="140" y1="70" x2="200" y2="70"></line><line class="fg-bond" x1="140" y1="75.12" x2="200" y2="75.12"></line><line class="fg-dash" x1="140" y1="70" x2="78" y2="70"></line><line class="fg-dash" x1="200" y1="70" x2="262" y2="70"></line><text class="fg-tag" x="40" y="58" text-anchor="middle" font-size="11">180° would</text><text class="fg-tag" x="40" y="72" text-anchor="middle" font-size="11">point here</text><text class="fg-tag" x="300" y="58" text-anchor="middle" font-size="11">180° would</text><text class="fg-tag" x="300" y="72" text-anchor="middle" font-size="11">point here</text><text class="fg-tag" x="170" y="30" text-anchor="middle" font-size="11">cyclooctyne, C₈H₁₂</text><text class="fg-tag-warn" x="170" y="216" text-anchor="middle" font-size="11">the ring pulls both ends down: strain</text></svg><figcaption>Compare each ring bond at the triple bond with the dashed line beside it.</figcaption></figure>
 <!-- fig:cyclooctyne-bend:end -->
-<p class="step-body">Compare but-1-yne and buta-1,3-diene. Both are C₄H₆: one has a triple bond, the other two double bonds, and the formula cannot tell them apart. That is because a triple bond counts as two degrees of unsaturation (see Alkene structure, earlier in this chapter), the same as two double bonds, or as one ring plus one double bond, as in cyclobutene. Telling such isomers apart is exactly the kind of job <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a> is for.</p>
+<p class="step-body">Compare but-1-yne and buta-1,3-diene. Both are C₄H₆: one has a triple bond, the other two double bonds, and the formula cannot tell them apart. That is because a triple bond counts as two degrees of unsaturation (see Alkene structure, earlier in this chapter), the same as two double bonds, or as one ring plus one double bond, as in cyclobutene. Telling such isomers apart is exactly the kind of job <a class="chapter-ref" href="/ochem/learn.html#m-ir-mass-spec">IR &amp; Mass Spectrometry</a>, the next chapter, is for.</p>
 <!-- fig:c4h6-isomers:start -->
 <figure class="notes-figure notes-figure--wide" style="--vb:760"><svg viewBox="0 0 760 170" role="img" aria-label="Three isomers of formula C4H6 drawn skeletal: but-1-yne with a triple bond, buta-1,3-diene with two double bonds, and cyclobutene with a ring and one double bond."><line class="fg-bond" x1="70" y1="74.88" x2="120" y2="74.88"></line><line class="fg-bond" x1="70" y1="80" x2="120" y2="80"></line><line class="fg-bond" x1="70" y1="85.12" x2="120" y2="85.12"></line><line class="fg-bond" x1="120" y1="80" x2="170" y2="80"></line><line class="fg-bond" x1="170" y1="80" x2="200" y2="58"></line><text class="fg-lbl" x="140" y="124" text-anchor="middle" font-size="13">but-1-yne</text><text class="fg-tag-mut" x="140" y="144" text-anchor="middle" font-size="11">one triple bond</text><line class="fg-bond" x1="318.23" y1="85.58" x2="348.23" y2="63.58"></line><line class="fg-bond" x1="321.77" y1="90.42" x2="351.77" y2="68.42"></line><line class="fg-bond" x1="350" y1="66" x2="390" y2="66"></line><line class="fg-bond" x1="388.23" y1="63.58" x2="418.23" y2="41.58"></line><line class="fg-bond" x1="391.77" y1="68.42" x2="421.77" y2="46.42"></line><text class="fg-lbl" x="370" y="124" text-anchor="middle" font-size="13">buta-1,3-diene</text><text class="fg-tag-mut" x="370" y="144" text-anchor="middle" font-size="11">two double bonds</text><line class="fg-bond" x1="560" y1="50" x2="600" y2="50"></line><line class="fg-bond" x1="600" y1="50" x2="600" y2="90"></line><line class="fg-bond" x1="600" y1="90" x2="560" y2="90"></line><line class="fg-bond" x1="560" y1="90" x2="560" y2="50"></line><line class="fg-bond" x1="564" y1="57" x2="596" y2="57"></line><text class="fg-lbl" x="580" y="124" text-anchor="middle" font-size="13">cyclobutene</text><text class="fg-tag-mut" x="580" y="144" text-anchor="middle" font-size="11">one ring, one double bond</text><text class="fg-tag" x="380" y="18" text-anchor="middle" font-size="11">all three are C₄H₆: two degrees of unsaturation each</text></svg><figcaption>Same formula, three different skeletons.</figcaption></figure>
 <!-- fig:c4h6-isomers:end -->
@@ -151,15 +152,15 @@
 <div class="notes-fact">The keto–enol relationship introduced here becomes central in <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>. Every enolate reaction there, including the aldol, the Claisen, alpha-halogenation and alkylation, runs through the same enol or its anion. Here you meet it first, in a simple setting.</div>
 
 <h3>What carries forward</h3>
-<p class="step-body">Acetylide alkylation returns among the carbon–carbon bond-forming tools of <a class="chapter-ref" href="/ochem/learn.html#m-synthesis">Synthesis &amp; Retrosynthesis</a>, and acetylides appear again beside organolithium reagents in <a class="chapter-ref" href="/ochem/learn.html#m-organometallics">Organometallics</a>.</p>
+<p class="step-body">Acetylide alkylation returns among the carbon–carbon bond-forming tools of <a class="chapter-ref" href="/ochem/learn.html#m-synthesis">Synthesis &amp; Retrosynthesis</a>, and acetylides appear again beside organolithium reagents in <a class="chapter-ref" href="/ochem/learn.html#m-organometallics">Organolithiums, Cuprates &amp; Cross-Coupling</a>.</p>
 <!-- notes:end -->
   </article>
 
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="hydrogenation.html"><span>Previous</span>Catalytic hydrogenation</a><a class="notes-prevnext notes-next" href="conjugated-systems.html"><span>Next</span>Conjugated systems</a></nav>
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="hydrogenation.html"><span>Previous</span>Catalytic hydrogenation</a><a class="notes-prevnext notes-next" href="ir.html"><span>Next</span>IR</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 121 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
   </footer>
 </div>
 </body>

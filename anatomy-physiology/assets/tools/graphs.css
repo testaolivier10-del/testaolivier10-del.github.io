@@ -116,3 +116,6 @@
   .gr-q{padding:14px 14px;}
   .gr-fig{padding:6px 2px 2px;border-radius:12px;}
 }
+.pw-chsel{display:none;align-items:center;gap:8px;margin:0 0 6px;font:800 14px var(--font-ui);}
+.pw-chsel select{flex:1;min-width:0;padding:8px 10px;border:2px solid var(--line);border-radius:10px;background:var(--white);color:var(--ink);font:700 15px var(--font-ui);}
+@media (max-width:600px){.pw-chips{display:none;}.pw-chsel{display:flex;}}

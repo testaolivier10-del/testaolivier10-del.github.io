@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <!-- The forty chapters are a 456 KB JSON file rather than inline markup, so
      that a reader who opens one chapter does not download the other
      thirty-nine as part of the HTML. Starting the request here, rather than
@@ -18,7 +19,7 @@ window.__notesData.catch(function(){});
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NREMT-EMT Study Notes — Chapter by Chapter | LevlPrep</title>
 <meta name="description" content="A forty-chapter NREMT-EMT textbook: chapter openers, numbered sections, key terms, review questions from the bank, and the whole book printable.">
@@ -379,8 +380,11 @@ window.__notesData.catch(function(){});
 </script>
 </head>
 <body>
-  <div id="site-header"></div>
+  <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT study notes</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="tb-shell">
   <button type="button" class="tb-toc-btn" id="tbContentsToggle" aria-controls="tbContents">&#9776; Chapters</button>
@@ -401,7 +405,7 @@ window.__notesData.catch(function(){});
       <!-- notes-toc:start -->
       <div class="tb-static-toc">
         <h1>NREMT-EMT Study Notes</h1>
-        <p>40 chapters and 80 sections, in course order — the written half of the EMT course, free and with no account needed.</p>
+        <p>40 chapters and 80 sections, in course order — the written half of the EMT course, free forever.</p>
         <ol>
           <li><a href="#ch1"><b>1</b> Introduction to EMS</a></li>
           <li><a href="#ch2"><b>2</b> Well-Being of the EMT</a></li>
@@ -447,11 +451,11 @@ window.__notesData.catch(function(){});
       </div>
       <!-- notes-toc:end -->
     </div>
-    <footer>
-      <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
-      <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
-    </footer>
   </main>
+  <footer>
+    <p>These notes are a supplementary study aid summarizing course concepts in plain language. They are not a substitute for your program's official textbook or instructor &mdash; always verify specifics (exact figures, current protocols, local scope of practice) against authoritative sources.</p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
+  </footer>
 </div>
 
 <script>
@@ -523,9 +527,9 @@ function toolsForChapter(ch){
 
 /* ---- Review questions: which of the bank's questions belong to a chapter --
    A textbook chapter ends with questions, and the site has a bank of two
-   thousand. They are tagged by exam domain and topic rather than by chapter,
+   thousand. They are tagged by topic area (the `system` field) and topic rather than by chapter,
    and the tags run wider than a chapter does: one topic, "Medical", is 200
-   questions across six chapters here. So a chapter names a domain and/or
+   questions across six chapters here. So a chapter names a topic area and/or
    topic and, where that is still too wide, a pattern the stem has to match.
    Single-answer items only: a select-N or sequencing item needs the practice
    page's interface. A chapter with no honest match (the history of EMS)
@@ -588,7 +592,7 @@ function questionsForChapter(bank, ch){
   const out = [];
   bank.forEach((q, i) => {
     if (q.type) return;                                   // select-N and sequencing
-    if (rule.domain && q.domain !== rule.domain) return;
+    if (rule.domain && q.system !== rule.domain) return; // the topic-area label, not the 2025 exam domain
     if (rule.topic && q.topic !== rule.topic) return;
     if (rule.match && !rule.match.test(q.q)) return;
     out.push({ q, i });

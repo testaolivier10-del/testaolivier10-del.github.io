@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autonomic neurotransmitters and receptors: Notes | A&amp;P</title>
+<title>Autonomic neurotransmitters and receptors — A&amp;P Notes</title>
 <meta name="description" content="Autonomic neurotransmitters and receptors: cholinergic and adrenergic neurons, nicotinic, muscarinic, alpha and beta receptors, and drugs, with figures.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/ans-signaling.html">
-<meta property="og:title" content="Autonomic neurotransmitters and receptors: Notes | A&amp;P">
+<meta property="og:title" content="Autonomic neurotransmitters and receptors — A&amp;P Notes">
 <meta property="og:description" content="Autonomic neurotransmitters and receptors: cholinergic and adrenergic neurons, nicotinic, muscarinic, alpha and beta receptors, and drugs, with figures.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/ans-signaling.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="ans-signaling">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 16 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/autonomic.html">The autonomic nervous system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Autonomic neurotransmitters and receptors: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/ans-signaling.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 16 &middot; Topic 82 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 16 &middot; Topic 82 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Autonomic neurotransmitters and receptors</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">11 min read</span><span class="anp-tb-chip" data-chip-topic="ans-signaling">Not practiced</span></p>
     </header>
@@ -175,7 +176,7 @@
 
 <h2 id="release-and-removal">Release and removal</h2>
 <p>You saw in the last topic that postganglionic <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="neuron-parts-basic">axons</a> release transmitter from varicosities strung along their length (<a class="figref" href="#fig-varicosity">Figure 2</a>). An <a class="gl" href="../notes/action-potential-basics.html" data-c="action-potential-basic">action potential</a> reaching a varicosity opens voltage-gated calcium channels, and calcium entry triggers <a class="gl" href="../notes/active-transport.html" data-c="exocytosis">exocytosis</a> of transmitter <a class="gl" href="../notes/organelles.html" data-c="vesicle">vesicles</a>, exactly as at any <a class="gl" href="../notes/synapses.html" data-c="chemical-synapse-steps">chemical synapse</a>. The transmitter then diffuses across a gap wider than a typical <a class="gl" href="../notes/chemical-signaling.html" data-c="synapse-basic">synaptic cleft</a> and reaches many smooth muscle or <a class="gl" href="../notes/glands.html" data-c="gland">gland</a> cells at once.</p>
-<figure id="fig-varicosity"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-5"><img src="../figures/os-15-5.jpg" alt="Left, a curved strip of smooth muscle with yellow postganglionic axons branching over its surface; the axons bulge at intervals into beaded swellings. A box around one swelling is enlarged on the right: the swelling holds round vesicles filled with green transmitter dots, two vesicles are fusing with the membrane and releasing the dots, and the dots drift across a wide gap to channel-shaped receptor proteins scattered on the muscle cell membrane below." width="1100" height="472" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Postganglionic varicosities. The postganglionic axon runs over a sheet of smooth muscle and swells at intervals. Each swelling releases transmitter from its vesicles, and the transmitter spreads to receptor proteins (labeled in the figure) on the muscle cell membrane. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 15.5, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-1-divisions-of-the-autonomic-nervous-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-varicosity"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-5"><picture><source type="image/avif" srcset="../figures/avif/os-15-5-480.avif 480w, ../figures/avif/os-15-5-800.avif 800w, ../figures/avif/os-15-5.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-15-5.jpg" alt="Left, a curved strip of smooth muscle with yellow postganglionic axons branching over its surface; the axons bulge at intervals into beaded swellings. A box around one swelling is enlarged on the right: the swelling holds round vesicles filled with green transmitter dots, two vesicles are fusing with the membrane and releasing the dots, and the dots drift across a wide gap to channel-shaped receptor proteins scattered on the muscle cell membrane below." width="1100" height="472" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Postganglionic varicosities. The postganglionic axon runs over a sheet of smooth muscle and swells at intervals. Each swelling releases transmitter from its vesicles, and the transmitter spreads to receptor proteins (labeled in the figure) on the muscle cell membrane. <span class="anp-credit">Figure 15.5 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-1-divisions-of-the-autonomic-nervous-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>How each signal ends sets how long it lasts:</p>
 <ul>
 <li><strong>ACh</strong> is split within milliseconds by <a class="gl" href="../notes/neuromuscular-junction.html" data-c="acetylcholinesterase">acetylcholinesterase</a>, the same <a class="gl" href="../notes/enzymes-energy.html" data-c="enzyme">enzyme</a> you met at the <a class="gl" href="../notes/neuromuscular-junction.html" data-c="nmj">neuromuscular junction</a>.</li>
@@ -195,7 +196,7 @@
 <li>On smooth muscle of the stomach and intestines, and on glands, a different muscarinic subtype raises calcium inside the cell. The muscle contracts harder and the glands secrete more.</li>
 </ul>
 <p>Because it works through a G protein, muscarinic signaling is slower to start and lasts longer than nicotinic signaling.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Nicotinic receptor protein (autonomic)</th><th>Muscarinic receptor protein</th></tr></thead>
 <tbody>
 <tr><th>Binds</th><td>ACh (and nicotine)</td><td>ACh (and muscarine)</td></tr>
@@ -231,7 +232,7 @@
 <aside class="anp-preview" data-concept="bronchial-tree"><p>Preview: the small airways of the lungs are the <a class="gl" href="../notes/lower-airway-lungs.html" data-c="bronchial-tree">bronchioles</a>, the narrowest branches of the tubes that carry air from the trachea toward the air sacs. Their walls are mostly smooth muscle, rich in beta-2 receptor proteins. They are taught with the lower airways and lungs.</p></aside>
 <p>Most beta-2 receptor proteins are not reached by any sympathetic varicosity. They respond mainly to <strong>epinephrine arriving in the blood</strong>, because NE binds beta-2 only weakly. That is why the adrenal medulla matters so much for widening the airways.</p>
 <aside class="going-further"><p>Going further: a third beta subtype, beta-3, sits on fat cells, where it speeds the breakdown of stored fat, and on the smooth muscle of the bladder wall. A drug that activates beta-3 is used to relax an overactive bladder.</p></aside>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Norepinephrine</th><th>Epinephrine</th></tr></thead>
 <tbody>
 <tr><th>Main source</th><td>Sympathetic postganglionic varicosities</td><td>Adrenal medulla, into the blood</td></tr>
@@ -245,7 +246,7 @@
 
 <h2 id="autonomic-receptor-proteins-and-their-effects">Autonomic receptor proteins and their effects, organ by organ</h2>
 <p>Most organs in the chest and abdomen receive fibers from both divisions. Which receptor protein sits on each organ determines what each division does to it. Read the table across: for each organ, the sympathetic response and its receptor protein, then the parasympathetic response and its receptor protein.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Organ or tissue</th><th>Sympathetic (NE or epinephrine)</th><th>Parasympathetic (ACh)</th></tr></thead>
 <tbody>
 <tr><th>Heart rate</th><td>Faster (beta-1)</td><td>Slower (muscarinic)</td></tr>
@@ -272,7 +273,7 @@
 <li>An <em>antagonist</em> (ant- = against) binds without activating it, and blocks the natural transmitter from binding.</li>
 </ul>
 <p>Drugs are also grouped by the division whose effects they copy or cancel. A <em>sympathomimetic drug</em> (mimet- = imitate) mimics sympathetic effects; a <em>sympatholytic drug</em> (lyt- = loosen, undo) blocks them. A <em>parasympathomimetic drug</em> mimics parasympathetic effects; an <em>anticholinergic drug</em> blocks ACh, in practice usually at muscarinic receptor proteins.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Drug or class</th><th>Receptor protein and action</th><th>Main effects</th></tr></thead>
 <tbody>
 <tr><td>Beta blocker (metoprolol mostly beta-1; propranolol beta-1 and beta-2)</td><td>Beta antagonist; sympatholytic</td><td>Slower heart rate, weaker contraction, lower <a class="gl" href="../notes/gradients-flow.html" data-c="blood-pressure-basic">blood pressure</a>. Propranolol can also narrow the airways.</td></tr>
@@ -287,7 +288,7 @@
 </tbody>
 </table></div>
 <p>Atropine comes from deadly nightshade (<a class="figref" href="#fig-belladonna">Figure 3</a>). Its species name, belladonna, means "beautiful woman": drops of the plant's juice were once used to widen the pupils for a striking look.</p>
-<figure id="fig-belladonna"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-15"><img src="../figures/os-15-15.jpg" alt="A photograph of a leafy green shrub in sunlight. Shiny round black berries, each about the size of a cherry, sit singly in star-shaped purple-green cups along the stems between broad oval leaves." width="1100" height="831" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> Deadly nightshade (Atropa belladonna), the plant atropine was named after. Its shiny black berries contain muscarinic antagonists and are poisonous when eaten. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 15.15, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-4-drugs-that-affect-the-autonomic-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-belladonna"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-15"><picture><source type="image/avif" srcset="../figures/avif/os-15-15-480.avif 480w, ../figures/avif/os-15-15-800.avif 800w, ../figures/avif/os-15-15.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-15-15.jpg" alt="A photograph of a leafy green shrub in sunlight. Shiny round black berries, each about the size of a cherry, sit singly in star-shaped purple-green cups along the stems between broad oval leaves." width="1100" height="831" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> Deadly nightshade (Atropa belladonna), the plant atropine was named after. Its shiny black berries contain muscarinic antagonists and are poisonous when eaten. <span class="anp-credit">Figure 15.15 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-4-drugs-that-affect-the-autonomic-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <aside class="going-further"><p>Going further: organophosphate insecticides and military nerve agents block acetylcholinesterase. ACh builds up at every cholinergic synapse. At muscarinic receptor proteins it causes drooling, tearing, sweating, pinpoint pupils, a slow heart, vomiting, and airways that narrow and fill with secretions; at the neuromuscular junction it causes twitching, then weakness. Atropine is the antidote for the muscarinic effects, but it cannot fix the muscle weakness, because it does not block nicotinic receptor proteins.</p></aside>
 
 <h2 id="common-mix-ups">Common mix-ups</h2>
@@ -299,13 +300,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:ans-signaling">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ans-anatomy.html"><span>&larr; Topic 81</span><b>Sympathetic and parasympathetic divisions</b></a><a class="tb-chapter-link next" href="ans-control.html"><span>Topic 83 &rarr;</span><b>Autonomic control and visceral reflexes</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

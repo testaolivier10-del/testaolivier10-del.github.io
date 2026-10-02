@@ -48,11 +48,12 @@
     {
       id:'neopentyl', name:'Neopentyl bromide', cls:'1-hindered', formula:'(CH₃)₃CCH₂Br',
       sub:'(CH₃)₃CCH₂–{X}', zaitsev:null, hofmann:null,
-      note:'Primary by the carbon count and almost unreactive in practice. The quaternary carbon next door blocks backside attack, and there is no beta hydrogen on it to eliminate either — the textbook case of a substrate whose classification misleads you.'
+      note:'Primary by the carbon count and very slow in practice. The quaternary carbon next door blocks backside attack, and there is no beta hydrogen on it to eliminate either. Forced to ionize, it rearranges. The textbook case of a substrate whose classification misleads you.'
     },
     {
       id:'bubr2', name:'2-bromobutane', cls:'2', formula:'CH₃CHBrCH₂CH₃',
-      sub:'CH₃CH({X})CH₂CH₃', zaitsev:'CH₃CH=CHCH₃', hofmann:'CH₂=CHCH₂CH₃',
+      sub:'CH₃CH({X})CH₂CH₃', zaitsev:'(E)-CH₃CH=CHCH₃', hofmann:'CH₂=CHCH₂CH₃',
+      zaitsevEZ:'(E)-But-2-ene is the major alkene, with less of the (Z) isomer: the conformer that puts the two methyls on opposite sides is lower in energy, so more of the elimination goes through it.',
       note:'Secondary, which is the genuinely ambiguous case: every mechanism is available to it and the reagent and solvent decide. Two different alkenes are possible, so the base you pick also decides which one.'
     },
     {
@@ -138,7 +139,7 @@
         'Primary and unhindered. Backside attack is easy; a primary carbocation is so unstable that SN1 and E1 are effectively ruled out here.');
     } else if(sub.cls === '1-hindered'){
       say('Substrate', 'nothing',
-        'Primary on paper, but the quaternary carbon next door blocks the backside trajectory, and it cannot ionize either. Almost nothing happens to this substrate at a reasonable rate.');
+        'Primary on paper, but the quaternary carbon next door blocks the backside trajectory, and the primary cation it would make is too unstable to form on its own. Everything is very slow here.');
     } else if(sub.cls === '2'){
       say('Substrate', 'either',
         'Secondary — the genuinely ambiguous case. It can be attacked from behind and it can ionize, so the substrate alone does not settle anything and the reagent has to.');
@@ -199,7 +200,8 @@
         : 'Nothing worth writing down. The reagent is too weak a nucleophile to attack, and with no beta hydrogen and no possible carbocation there is no other pathway.';
     } else if(sub.cls === '1-hindered'){
       out.major = 'No reaction';
-      out.verdict = 'Effectively nothing. This is the trap: counting carbons says primary and therefore SN2, but the neighboring quaternary carbon blocks the approach, and with no beta hydrogen on it and no possibility of ionizing, there is no second-choice pathway either.';
+      out.verdict = 'Very slow, so effectively nothing under these conditions. This is the trap: counting carbons says primary and therefore SN2, but the neighboring quaternary carbon blocks the approach (SN2 here is tens of thousands of times slower than on 1-bromopropane), and there is no beta hydrogen on it to eliminate. ' +
+        'Forced under SN1 conditions (long heating in a protic solvent, or a silver salt to pull the bromide off), it does react, but not as neopentyl: a methyl shifts as the bromide leaves, giving a tertiary cation, so the products are rearranged (2-methylbut-2-ene and a tert-pentyl ether or alcohol).';
     } else if(sub.cls === '1'){
       if(r.bulky && strongBase){
         /* A bulky base still gives a little substitution if it is a
@@ -220,6 +222,16 @@
       }
     } else if(sub.cls === 'benzylic'){
       var bnNu = (r.bulky && r.nu >= 1) ? 3 : r.nu;
+      if(r.nu === 0 && strongBase){
+        /* DBU and benzyl bromide: a base with nothing to take (no beta
+           hydrogen) and a reagent chosen for NOT attacking carbon. Calling
+           that SN1 handed back a mechanism with no product. */
+        out.major = 'No reaction';
+        out.verdict = 'No elimination, and no useful substitution: at most a slow N-alkylation of ' + r.name + ' itself. ' + r.name +
+          ' is used to pull a beta proton, and benzyl bromide has none on the ring side. It is chosen for being a poor nucleophile, but a reactive benzylic halide can still slowly alkylate its nitrogen, which consumes the base rather than giving a product anyone wants. Pick a nucleophile to see what this substrate does.';
+        out.reasons = reasons;
+        return out;
+      }
       out.major = bnNu >= 2 ? 'SN2' : 'SN1';
       out.verdict = bnNu >= 2
         ? 'SN2. Benzylic carbons are open to attack and a strong nucleophile takes that route directly rather than waiting for an ionization.'
@@ -286,7 +298,8 @@
       out.alkene = useHofmann ? 'Hofmann' : 'Zaitsev';
       out.productNote = useHofmann
         ? 'The Hofmann product — the LESS substituted alkene. A bulky base cannot get at the crowded, more substituted beta position, so it takes a proton from the accessible end instead. With an alkyl halide, this is the usual situation where Zaitsev loses.'
-        : 'The Zaitsev product — the more substituted alkene, which is the more stable one, and the one you get whenever the base is small enough to choose.';
+        : 'The Zaitsev product — the more substituted alkene, which is the more stable one, and the one you get whenever the base is small enough to choose.' +
+          (sub.zaitsevEZ ? ' ' + sub.zaitsevEZ : '');
     }
 
     out.reasons = reasons;
@@ -317,6 +330,14 @@
 
     var lead = 65;                       // two live pathways, no thumb on either
     var why = [];
+
+    /* A primary carbon is not an even contest: 1-bromopropane with ethoxide
+       gives about 90% ether and 10% alkene. Starting it at 65 showed a third
+       of the flask as alkene, which is the wrong lesson about primary
+       substrates. */
+    if(s.sub.cls === '1' && out.major === 'SN2'){
+      lead = 90; why.push('a primary carbon is the SN2 home ground, so even a strong base takes only about a tenth of it as E2');
+    }
 
     if(s.heat){
       if(isElim(out.major)){ lead += 12; why.push('heat widens the elimination’s lead'); }

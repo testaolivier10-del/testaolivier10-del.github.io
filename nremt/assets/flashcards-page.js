@@ -230,7 +230,7 @@
       '</button>';
     }).join('');
     if(!rows) return '';
-    return '<div class="fc-label" id="fcDomainsLabel">By domain</div>' +
+    return '<div class="fc-label" id="fcDomainsLabel">By topic area</div>' +
       '<div class="module-card fc-chapters" role="group" aria-labelledby="fcDomainsLabel">' + rows + '</div>';
   }
 

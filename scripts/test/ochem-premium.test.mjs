@@ -22,7 +22,7 @@ function fresh({ launched, member = false } = {}) {
   }
   b.load('assets/premium.js');
   b.window.LevlPremium.COURSES.ochem.freeChapters = FREE.slice();
-  b.window.LevlPremium._setLaunched(launched);
+  b.hooks.premium.setLaunched(launched);
   b.load('ochem/assets/curriculum.js');
   b.load('ochem/assets/ochem-premium.js');
   // The question allowance and the free exam are added by question-engine.js.
@@ -83,7 +83,7 @@ test('the free tools are real tools and leave most of them Premium', () => {
 });
 
 test('the whole bank stays in the pool; the allowance decides what is served', () => {
-  const { E, G, P } = fresh({ launched: true });
+  const { b, E, G, P } = fresh({ launched: true });
   const topics = (list) => [...new Set(list.map((x) => x.topic))].sort();
   assert.deepEqual(topics(E.all()), ['pka', 'sn2'], 'nothing is filtered out of the bank');
   const sn2 = E.all().find((x) => x.topic === 'sn2');
@@ -109,7 +109,7 @@ test('the whole bank stays in the pool; the allowance decides what is served', (
   assert.equal(E.wasLimited(), false);
   assert.ok(E.byId(sn2.id), 'a spent allowance hides nothing already in the bank');
 
-  P._setLaunched(false);
+  b.hooks.premium.setLaunched(false);
   assert.equal(E.availableCount(plan), 2, 'before launch the whole bank is open');
 });
 

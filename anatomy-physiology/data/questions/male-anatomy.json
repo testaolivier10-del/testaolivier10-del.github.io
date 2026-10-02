@@ -401,23 +401,22 @@
       "Pampiniform plexus",
       "Ejaculatory duct",
       "Seminal vesicle",
-      "Cremaster muscle fibers"
+      "Ducts of the prostate"
     ],
     "correct": [
       0,
       1,
-      2,
-      5
+      2
     ],
     "why": {
-      "correct": "The spermatic cord holds the ductus deferens, the testicular artery, the pampiniform plexus of veins, nerves and lymphatic vessels, wrapped in connective tissue and strands of cremaster muscle. The ejaculatory duct and seminal vesicle lie deep in the pelvis.",
+      "correct": "The spermatic cord holds the ductus deferens, the testicular artery and the pampiniform plexus of veins, with nerves and lymphatic vessels, wrapped in connective tissue. The ejaculatory duct, seminal vesicle and prostate lie deep in the pelvis.",
       "options": [
         "Correct. The ductus deferens climbs from the scrotum in the cord.",
         "Correct. The testicular artery reaches the testis through the cord.",
         "Correct. The veins of the plexus drain the testis through the cord.",
         "The ejaculatory duct lies inside the prostate, far below the inguinal canal.",
         "The seminal vesicles sit behind the bladder in the pelvis.",
-        "Correct. Cremaster fibers wrap the cord and the testis."
+        "The prostate sits below the bladder, and its ducts open into the urethra, far from the cord."
       ]
     },
     "id": "anp-male-anatomy-16"

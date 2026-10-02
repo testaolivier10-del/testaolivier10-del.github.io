@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fertilization: Notes | Anatomy &amp; Physiology</title>
+<title>Fertilization — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="Start with timing. A couple has intercourse on a Monday, and the woman ovulates on Thursday.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/fertilization.html">
-<meta property="og:title" content="Fertilization: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Fertilization — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="Start with timing. A couple has intercourse on a Monday, and the woman ovulates on Thursday.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/fertilization.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="fertilization">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 27 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/development.html">Development and inheritance</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Fertilization: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/fertilization.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 27 &middot; Topic 154 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 27 &middot; Topic 154 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Fertilization</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="fertilization">Not practiced</span></p>
     </header>
@@ -141,7 +142,7 @@
 <li>The <em><span class="gl" tabindex="0" data-c="polyspermy-block">corona radiata</span></em> (corona = crown, radiata = radiating) is the ring of <a class="gl" href="../notes/ovarian-cycle.html" data-c="follicle-development">granulosa cells</a> that stayed attached to the oocyte when it left its follicle. The cells are glued together by hyaluronic acid, a long <a class="gl" href="../notes/biomolecules.html" data-c="carbohydrate">sugar</a> chain.</li>
 <li>The <em>zona pellucida</em> (zona = belt, pellucida = clear) is the clear coat of glycoproteins between the corona radiata and the oocyte's plasma membrane. You met it forming in the primary follicle. In humans it is built from four glycoproteins, named ZP1 to ZP4.</li>
 </ul>
-<figure id="fig-os-28-2"  class="anp-figure"><div class="anp-figimg" data-fig="os-28-2"><img src="../figures/os-28-2.jpg" alt="Three numbered drawings. Top left: a round yellow oocyte ringed by a fuzzy pink layer of cells, with many green sperm pointing inward through that layer toward a thin clear band around the oocyte. Top right: the same view, with holes opening in the pink layer as sperm release enzymes against the clear band. Bottom, an enlarged boxed view: several sperm tunnel through the pink cell layer; their caps of enzymes are released at the clear band; one sperm has crossed the band and its head has merged with the oocyte's membrane, its nucleus entering the yellow cytoplasm. Labels mark the acrosome, sperm nucleus, oocyte cytoplasm, plasma membrane, sperm-binding proteins in that membrane, the clear band and the outer cell layer." width="1100" height="759" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Sperm reaching and entering the oocyte. Many sperm work through the corona radiata; each releases its acrosome's enzymes and digests a path through the zona pellucida; one reaches the oocyte's plasma membrane and fuses with it. The figure shows the classic sequence, in which contact with the zona pellucida starts the acrosomal reaction; see the text for what newer studies show. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 28.2, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-1-fertilization">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-28-2"  class="anp-figure"><div class="anp-figimg" data-fig="os-28-2"><picture><source type="image/avif" srcset="../figures/avif/os-28-2-480.avif 480w, ../figures/avif/os-28-2-800.avif 800w, ../figures/avif/os-28-2.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-28-2.jpg" alt="Three numbered drawings. Top left: a round yellow oocyte ringed by a fuzzy pink layer of cells, with many green sperm pointing inward through that layer toward a thin clear band around the oocyte. Top right: the same view, with holes opening in the pink layer as sperm release enzymes against the clear band. Bottom, an enlarged boxed view: several sperm tunnel through the pink cell layer; their caps of enzymes are released at the clear band; one sperm has crossed the band and its head has merged with the oocyte's membrane, its nucleus entering the yellow cytoplasm. Labels mark the acrosome, sperm nucleus, oocyte cytoplasm, plasma membrane, sperm-binding proteins in that membrane, the clear band and the outer cell layer." width="1100" height="759" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> Sperm reaching and entering the oocyte. Many sperm work through the corona radiata; each releases its acrosome's enzymes and digests a path through the zona pellucida; one reaches the oocyte's plasma membrane and fuses with it. The figure shows the classic sequence, in which contact with the zona pellucida starts the acrosomal reaction; see the text for what newer studies show. <span class="anp-credit">Figure 28.2 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/28-1-fertilization">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>A capacitated sperm passes the corona radiata with two tools: its hyperactivated beat, which forces it between the cells, and an enzyme on its head, hyaluronidase (hyaluron- = hyaluronic acid, -ase = enzyme), which digests the glue between them.</p>
 
 <h2 id="the-acrosomal-reaction">The acrosomal reaction</h2>
@@ -154,7 +155,7 @@
 </ul>
 <aside class="for-your-exam"><p>For your exam: many courses teach that binding to a zona pellucida glycoprotein (often named as ZP3) triggers the acrosomal reaction. Give that answer if it is asked. The point that holds either way: a sperm that cannot release its acrosome's enzymes cannot get through the zona pellucida.</p></aside>
 <p>Capacitation and the acrosomal reaction are easy to mix up, because both happen to sperm inside the female tract and both are needed. <a class="figref" href="#tbl-cap-acro">Table 1</a> sets them side by side.</p>
-<div class="table-wrap"><table class="compare" id="tbl-cap-acro">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare" id="tbl-cap-acro">
 <thead><tr><th></th><th>Capacitation</th><th>Acrosomal reaction</th></tr></thead>
 <tbody>
 <tr><th>What it is</th><td>A set of slow changes that make a sperm able to fertilize</td><td>Exocytosis of the acrosome's enzymes</td></tr>
@@ -221,13 +222,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:fertilization">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="female-hormones-cycle.html"><span>&larr; Topic 153</span><b>Hormonal control of the ovarian and uterine cycles</b></a><a class="tb-chapter-link next" href="embryonic-development.html"><span>Topic 155 &rarr;</span><b>Cleavage, implantation and the embryo</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

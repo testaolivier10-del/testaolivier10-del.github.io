@@ -25,8 +25,9 @@ const RUNNER_SCREENS = `
         <div class="q-domain" id="qDomain"></div>
         <button type="button" class="flag-btn" id="flagBtn"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px;margin-right:5px;"><path d="M4 22V4a1 1 0 0 1 1-1h13.5a1 1 0 0 1 .9 1.5l-2.4 4.8a1 1 0 0 0 0 .9l2.4 4.8a1 1 0 0 1-.9 1.5H5"/></svg>Flag for review</button>
       </div>
-      <div class="q-prompt" id="qPrompt"></div>
+      <div class="q-prompt" id="qPrompt" role="heading" aria-level="2" tabindex="-1"></div>
       <div class="options" id="qOptions"></div>
+      <div class="q-feedback" id="qFeedback" role="status" hidden></div>
       <div class="nav-row" style="margin-bottom:20px;">
         <button id="prevBtn">Previous</button>
         <button class="primary" id="nextBtn">Next</button>
@@ -81,6 +82,7 @@ const RUNNER_SCREENS = `
         <div class="domain-breakdown" id="domainBreakdown"></div>
         <div id="readinessUpdate"></div>
       </div>
+      <div id="nextStep" class="next-step"></div>
       <div id="clearedNote" class="cleared-note" style="display:none;"></div>
       <div id="premiumSlot"></div>
     </div>
@@ -317,21 +319,54 @@ let selectedDomain = null;
 let activeIndices = []; // maps position-in-quiz -> index into QUESTIONS
 let current = 0;
 let answers = [];
+let checked = []; // untimed practice: which positions have had their answer checked
 let startTime = null;
 let timerInterval = null;
 const TIME_LIMIT_MS = 2 * 60 * 60 * 1000;
 let TARGET_PACE_MS = TIME_LIMIT_MS / 100;
 
-// Domain-balanced random draw: each full exam pulls this many questions
-// from each domain, randomly, from the full question pool.
+// Questions per domain in a full exam (and the "All domains" drill's split).
+// NREMT EMT exam from 7 Apr 2025: Scene 15-19%, Primary 39-43%, Secondary
+// 5-9%, Treatment & Transport 20-24%, Operations 10-14%; site-rules/
+// nremt-domains.mjs keeps these in band. `system` is the old body-system label.
+// Tag by the decision tested: Scene = safe? how many patients? resources?
+// triage order, MOI. Primary = the life threat, or what first. Secondary =
+// history, exam, vitals trend, reassessment. Treatment & Transport = doing or
+// choosing an intervention, drug, packaging, destination. Operations = legal,
+// documentation, communication/handoff, ICS roles, vehicles/air medical, crew.
 const DOMAIN_TARGETS = {
-  "Assessment": 15,
-  "Airway & Respiratory": 15,
-  "Cardiac & Medical": 20,
-  "Trauma": 20,
-  "OB/Peds & Special Populations": 15,
-  "EMS Operations": 15
+  "Scene Size-Up & Safety": 17,
+  "Primary Assessment": 41,
+  "Secondary Assessment": 7,
+  "Patient Treatment & Transport": 22,
+  "Operations": 13
 };
+// The body-system labels the bank also carries, for drills by topic area and
+// the weak-area readouts. Not exam domains.
+const SYSTEMS = ["Assessment", "Airway & Respiratory", "Cardiac & Medical", "Trauma", "OB/Peds & Special Populations", "EMS Operations"];
+// A drill picker value is either an exam domain, "system:<label>" for a topic
+// area, or "all".
+function poolFor(choice){
+  if(!choice || choice === 'all') return QUESTIONS.map((_,i) => i);
+  const sys = choice.indexOf('system:') === 0 ? choice.slice(7) : null;
+  const out = [];
+  QUESTIONS.forEach((q, i) => { if(sys ? q.system === sys : q.domain === choice) out.push(i); });
+  return out;
+}
+// Splits `length` across the domains in DOMAIN_TARGETS proportions.
+function stratifiedCounts(length){
+  const rows = Object.entries(DOMAIN_TARGETS).map(([d, w]) => ({d, x: length * w / 100}));
+  rows.forEach(r => { r.n = Math.floor(r.x); });
+  let left = length - rows.reduce((a, r) => a + r.n, 0);
+  rows.slice().sort((a, b) => (b.x - b.n) - (a.x - a.n)).forEach(r => { if(left-- > 0) r.n++; });
+  const out = {};
+  rows.forEach(r => { if(r.n) out[r.d] = r.n; });
+  return out;
+}
+function choiceLabel(choice){
+  if(!choice || choice === 'all') return 'All domains';
+  return choice.indexOf('system:') === 0 ? choice.slice(7) + ' (topic area)' : choice;
+}
 
 function shuffle(arr){
   const a = arr.slice();
@@ -348,6 +383,17 @@ function shuffle(arr){
 // 'order' — build-list/drag-and-drop; q.correct is the array of option indices
 // in their correct sequence.
 const LETTERS = ['A','B','C','D','E','F'];
+
+// Answered means a full answer: a select-N item counts once N options are
+// picked, not at the first click.
+function isAnswered(q, ans){
+  if(ans === null || ans === undefined) return false;
+  if(q && q.type === 'multi') return Array.isArray(ans) && ans.length === q.correct.length;
+  return true;
+}
+function answeredCount(){
+  return answers.filter((a, i) => isAnswered(QUESTIONS[activeIndices[i]], a)).length;
+}
 
 function isAnswerCorrect(q, ans){
   if(ans === null || ans === undefined) return false;
@@ -466,7 +512,7 @@ const HISTORY_KEY = 'nremt_exam100_history';
 const EXAM_STATE_KEY = 'nremt_inprogress_exam';
 function saveExamState(){
   const state = {
-    mode, selectedDomain, activeIndices, current, answers, startTime,
+    mode, selectedDomain, activeIndices, current, answers, checked, startTime,
     withTimer: $id('timerBar').style.display === 'block',
   };
   if(served.size) state.served = Array.from(served);
@@ -616,16 +662,19 @@ function renderReadiness(targetId, opts){
       : `${r.weakestDomain} (${r.weakestPct}%)`;
     subParts.push(`weakest area: ${weakLabel}`);
   }
-  const note = r.lowConfidence
-    ? 'Based on very few attempts — take a few more full exams for a more reliable estimate.'
-    : 'A rough estimate from your practice history, not an official prediction of NREMT results.';
+  // Not a probability. The number is a smooth curve over this browser's own
+  // practice scores; nobody has checked it against real NREMT outcomes, so it
+  // is named and explained as a readiness scale, never as odds of passing.
+  const note = (r.lowConfidence
+    ? 'Based on very few attempts — take a few more full exams for a steadier number. '
+    : '') + 'A 0–100 readiness scale from your own practice scores. It is not calibrated against real NREMT results and is not a chance of passing.';
 
   if(opts.compact){
     el.innerHTML = `
       <div class="readiness-update">
         <div class="r-head">
-          <span class="r-tag">Updated pass probability</span>
-          <span class="r-num">${r.probabilityPct}%</span>
+          <span class="r-tag">Updated readiness estimate</span>
+          <span class="r-num">${r.probabilityPct}<small>/100</small></span>
           <span class="r-label tier-${r.tier}">${r.label}</span>
         </div>
         <div class="r-sub">${subParts.join(' · ')}</div>
@@ -634,9 +683,9 @@ function renderReadiness(targetId, opts){
   } else {
     el.innerHTML = `
       <div class="readiness-card">
-        <span class="r-tag">Estimated pass probability ${G.badge()}</span>
+        <span class="r-tag">Readiness estimate ${G.badge()}</span>
         <div class="r-head">
-          <span class="r-num">${r.probabilityPct}%</span>
+          <span class="r-num">${r.probabilityPct}<small>/100</small></span>
           <span class="r-label tier-${r.tier}">${r.label}</span>
         </div>
         <div class="r-sub">${subParts.join(' · ')}</div>
@@ -884,6 +933,37 @@ function subtopicStatsAll(){
   });
   return out;
 }
+// The same cross-mode record by 2025 exam domain, for the dashboard's Exam
+// domains panel (which does not load the bank, so it cannot work this out from
+// question ids). Started from the per-question mastery record the first time,
+// so a learner with history before the 2025 domains sees it sorted under them.
+const EXAM_DOMAIN_STATS_KEY = 'nremt_exam_domain_stats';
+function recordExamDomainStats(stats){
+  let agg = {};
+  try{ agg = JSON.parse(localStorage.getItem(EXAM_DOMAIN_STATS_KEY) || '{}') || {}; }catch(e){ agg = {}; }
+  Object.entries(stats).forEach(([d, s]) => {
+    if(!agg[d]) agg[d] = {correct:0, total:0};
+    agg[d].correct += s.correct;
+    agg[d].total += s.total;
+  });
+  try{ localStorage.setItem(EXAM_DOMAIN_STATS_KEY, JSON.stringify(agg)); }catch(e){}
+}
+function seedExamDomainStatsIfNeeded(){
+  if(localStorage.getItem(EXAM_DOMAIN_STATS_KEY)) return;
+  const mastery = loadMastery();
+  const agg = {};
+  Object.keys(mastery).forEach(id => {
+    const i = QID.indexOf(id);
+    if(i === -1) return;
+    const d = QUESTIONS[i].domain;
+    const rec = mastery[id];
+    if(!agg[d]) agg[d] = {correct:0, total:0};
+    agg[d].correct += rec.timesCorrect || 0;
+    agg[d].total += (rec.timesCorrect || 0) + (rec.timesWrong || 0);
+  });
+  if(Object.keys(agg).length){ try{ localStorage.setItem(EXAM_DOMAIN_STATS_KEY, JSON.stringify(agg)); }catch(e){} }
+}
+
 // One-time migration so users who already had full-exam history (recorded before
 // this cross-mode aggregate existed) don't lose that domain signal.
 function migrateDomainStatsIfNeeded(){
@@ -912,7 +992,7 @@ function loadStreak(){
   const raw = localStorage.getItem(STREAK_KEY);
   const defaults = {
     currentStreak: 0, longestStreak: 0, lastActiveDate: null, dailyCounts: {},
-    dailyGoal: 20, remindersEnabled: false, reminderHour: 18, lastNotifiedDate: null,
+    dailyGoal: 15, remindersEnabled: false, reminderHour: 18, lastNotifiedDate: null,
   };
   return raw ? Object.assign(defaults, JSON.parse(raw)) : defaults;
 }
@@ -1048,6 +1128,9 @@ function renderStreakWidget(){
   let nudge;
   if(st.freezePending && !st.metToday) nudge = `<span class="streak-warn">A streak freeze is holding yesterday open — study today to keep it</span>`;
   else if(st.metToday) nudge = `<span class="streak-done">Today's goal complete ✓</span>`;
+  // Any study today already keeps the streak; the goal is a separate target.
+  // Saying "practice today to keep your streak" after they have was wrong.
+  else if(st.todayCount > 0) nudge = `<span class="streak-done">Streak safe for today</span>`;
   else if(st.display > 0) nudge = `<span class="streak-warn">Practice today to keep your streak alive</span>`;
   else nudge = `<span>Answer a few questions today to start a streak</span>`;
 
@@ -1075,7 +1158,7 @@ function renderStreakWidget(){
         <div class="streak-settings-row">
           <label for="dailyGoalSelect">Daily goal</label>
           <select id="dailyGoalSelect">
-            ${[10,20,30,50].map(g => `<option value="${g}" ${(st.goalBase||st.goal)===g?'selected':''}>${g} questions/day</option>`).join('')}
+            ${[10,15,20,30,50].map(g => `<option value="${g}" ${(st.goalBase||st.goal)===g?'selected':''}>${g} questions/day${G.locked() && g > 15 ? ' (more than the free 15)' : ''}</option>`).join('')}
           </select>
         </div>
         <div class="streak-settings-row">
@@ -1220,6 +1303,35 @@ function renderPremium(){
   // queues and their counts are always kept and shown.
   const spaced = document.getElementById('spacedReviewBtn');
   if(spaced && RUNNER_PAGE === 'review') spaced.hidden = !G.canUse('review');
+
+  capLengthPickers();
+}
+
+// A drill can never be longer than the free questions left today, so the
+// length pickers stop offering what would be cut short. (They said "20" and
+// ran 15.) The full list comes back with a pass, or tomorrow.
+function drillLen(n){
+  return G.quotaApplies('domain') ? Math.max(0, Math.min(n, G.quotaLeft())) : n;
+}
+function capLengthPickers(){
+  ['domainLength', 'adaptiveLength'].forEach(id => {
+    const sel = document.getElementById(id);
+    if(!sel) return;
+    if(!sel.dataset.full) sel.dataset.full = sel.innerHTML;
+    const want = sel.value;
+    sel.innerHTML = sel.dataset.full;
+    if(!G.quotaApplies('domain')){ if(want) sel.value = want; return; }
+    const left = G.quotaLeft();
+    [...sel.options].forEach(o => { if(+o.value > left) o.remove(); });
+    if(left > 0 && ![...sel.options].some(o => +o.value === left)){
+      const o = document.createElement('option');
+      o.value = String(left);
+      o.textContent = `${left} questions (today's free)`;
+      sel.appendChild(o);
+    }
+    const values = [...sel.options].map(o => +o.value);
+    sel.value = values.includes(+want) ? want : String(Math.max(0, ...values));
+  });
 }
 // A start that was refused: the gate for it, on screen and in focus.
 function blockWith(feature){
@@ -1265,7 +1377,7 @@ function renderDueSummary(sessionCount){
 
 function examStateSummary(state){
   const totalLen = state.mode === 'adaptive' ? state.adaptiveState.length : state.activeIndices.length;
-  const answeredCount = state.answers.filter(a => a !== null).length;
+  const answeredN = state.answers.filter((a, i) => isAnswered(QUESTIONS[state.activeIndices[i]], a)).length;
   const labels = {full:'Timed exam', review:'Missed-question review', flagged:'Flagged-question review', spaced:'Spaced review', domain:'Domain drill', adaptive:'Weak-spot practice', single:'Single question'};
   const label = labels[state.mode] || 'Practice session';
   let extra = '';
@@ -1273,7 +1385,7 @@ function examStateSummary(state){
     const remaining = Math.max(0, TIME_LIMIT_MS - (Date.now() - state.startTime));
     extra = ` · ${formatDuration(remaining)} left`;
   }
-  return `${label} in progress — question ${state.current+1} of ${totalLen}, ${answeredCount} answered${extra}`;
+  return `${label} in progress — question ${state.current+1} of ${totalLen}, ${answeredN} answered${extra}`;
 }
 function renderResumeCard(){
   const card = $id('resumeExamCard');
@@ -1305,6 +1417,7 @@ $id('discardExamBtn').addEventListener('click', () => {
 });
 
 migrateDomainStatsIfNeeded();
+seedExamDomainStatsIfNeeded();
 refreshIntroState();
 maybeShowStudyReminder();
 setInterval(maybeShowStudyReminder, 15*60*1000);
@@ -1323,7 +1436,12 @@ setInterval(maybeShowStudyReminder, 15*60*1000);
 // manually reselect it from the dropdown. Skipped if there's an in-progress
 // exam to resume — that takes priority over a fresh auto-launch.
 (function(){
-  const domain = new URLSearchParams(location.search).get('domain');
+  const params = new URLSearchParams(location.search);
+  let domain = params.get('domain');
+  // ?system=Trauma drills a topic area. Links made before the 2025 domains
+  // (bookmarks, the tutor) said ?domain=Trauma; those are topic areas now.
+  if(params.get('system')) domain = 'system:' + params.get('system');
+  else if(domain && SYSTEMS.includes(domain)) domain = 'system:' + domain;
   if(!domain || loadExamState()) return;
   const sel = $id('domainSelect');
   if(![...sel.options].some(o => o.value === domain)) return;
@@ -1428,9 +1546,7 @@ $id('spacedReviewBtn').addEventListener('click', () => {
 $id('flashcardBtn').addEventListener('click', () => {
   const domain = $id('domainSelect').value;
   const diffFilter = $id('difficultySelect').value;
-  let pool = domain === 'all'
-    ? QUESTIONS.map((_,i) => i)
-    : QUESTIONS.map((q,i) => ({q,i})).filter(o => o.q.domain === domain).map(o => o.i);
+  let pool = poolFor(domain);
   if(diffFilter && diffFilter !== 'all'){
     const filtered = pool.filter(i => QUESTIONS[i].diff === diffFilter);
     if(filtered.length > 0) pool = filtered;
@@ -1544,14 +1660,21 @@ $id('flashcardExitBtn').addEventListener('click', () => {
 function startDomainQuiz(domain, length){
   if(G.quotaApplies('domain')) length = Math.min(length, G.quotaLeft());
   const diffFilter = $id('difficultySelect').value;
-  let pool = domain === 'all'
-    ? QUESTIONS.map((_,i) => i)
-    : QUESTIONS.map((q,i) => ({q,i})).filter(o => o.q.domain === domain).map(o => o.i);
-  pool = filterPoolByDifficulty(shuffle(pool), diffFilter, length);
   mode = 'domain';
   selectedDomain = domain === 'all' ? null : domain;
   const seen = loadSeen();
-  activeIndices = preferUnseen(pool, seen).slice(0, length);
+  if(!domain || domain === 'all'){
+    const counts = stratifiedCounts(length);
+    let picked = [];
+    Object.keys(counts).forEach(d => {
+      const pool = filterPoolByDifficulty(shuffle(poolFor(d)), diffFilter, counts[d]);
+      picked = picked.concat(preferUnseen(pool, seen).slice(0, counts[d]));
+    });
+    activeIndices = shuffle(picked);
+  } else {
+    const pool = filterPoolByDifficulty(shuffle(poolFor(domain)), diffFilter, length);
+    activeIndices = preferUnseen(pool, seen).slice(0, length);
+  }
   markSeen(activeIndices);
   beginQuiz(false);
 }
@@ -1580,12 +1703,12 @@ function renderWeakDomainsPanel(){
   if(weak.length === 0){ panel.innerHTML = ''; return; }
   panel.innerHTML = `
     <div class="weak-domains-panel">
-      <div class="weak-domains-title">Your weaker domains — worth a focused drill</div>
+      <div class="weak-domains-title">Your weaker topic areas — worth a focused drill</div>
       ${weak.map(r => `
         <div class="weak-domain-row">
           <span class="name">${r.domain}</span>
           <span class="pct">${r.pct}% (${r.correct}/${r.total})</span>
-          <button type="button" data-domain="${r.domain}">Practice 20</button>
+          <button type="button" data-domain="system:${r.domain}">Practice ${drillLen(20)}</button>
         </div>
       `).join('')}
     </div>
@@ -1636,7 +1759,9 @@ function pickNextAdaptiveQuestion(){
     if(adaptiveState.sessionSeen.has(i)) return;
     const lvl = effectiveMasteryLevel(mastery[i]);
     const itemFactor = 6 - lvl; // less-mastered items are weighted higher
-    const dWeight = adaptiveDomainWeight(q.domain);
+    // Weighted by topic area (the body-system label), which is what the
+    // cross-mode accuracy record is kept by.
+    const dWeight = adaptiveDomainWeight(q.system);
     const diffFactor = DIFF_TO_NUM[q.diff] === targetRounded ? 2 : 1;
     const unseenBonus = globalSeen.has(i) ? 1 : 2; // favor questions never served before
     candidates.push({i, weight: dWeight * itemFactor * diffFactor * unseenBonus});
@@ -1663,9 +1788,9 @@ function updateAdaptiveDifficulty(q, correct){
 function recordAdaptiveAnswer(qIdx, correct){
   const q = QUESTIONS[qIdx];
   updateMastery(qIdx, correct);
-  if(!adaptiveState.sessionDomainStats[q.domain]) adaptiveState.sessionDomainStats[q.domain] = {correct:0, total:0};
-  adaptiveState.sessionDomainStats[q.domain].total++;
-  if(correct) adaptiveState.sessionDomainStats[q.domain].correct++;
+  if(!adaptiveState.sessionDomainStats[q.system]) adaptiveState.sessionDomainStats[q.system] = {correct:0, total:0};
+  adaptiveState.sessionDomainStats[q.system].total++;
+  if(correct) adaptiveState.sessionDomainStats[q.system].correct++;
   updateAdaptiveDifficulty(q, correct);
   recordStudyActivity(1);
 }
@@ -1712,6 +1837,7 @@ function beginQuiz(withTimer, resumeState){
     activeIndices = resumeState.activeIndices;
     current = resumeState.current;
     answers = resumeState.answers;
+    checked = Array.isArray(resumeState.checked) ? resumeState.checked : [];
     startTime = resumeState.startTime;
     if(resumeState.adaptiveState){
       adaptiveState = {
@@ -1727,6 +1853,7 @@ function beginQuiz(withTimer, resumeState){
     current = 0;
     const totalLen0 = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
     answers = new Array(totalLen0).fill(null);
+    checked = new Array(totalLen0).fill(false);
     startTime = Date.now();
   }
   const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
@@ -1758,13 +1885,23 @@ function beginQuiz(withTimer, resumeState){
     } else if(mode === 'single'){
       banner.textContent = 'One question from search — answer it, or head back to the start';
     } else {
-      banner.textContent = `Domain drill: ${QUESTIONS[activeIndices[0]] ? QUESTIONS[activeIndices[0]].domain : ''} — untimed practice mode`;
+      // Named from the choice that built the drill, not from whichever
+      // question happened to come first (which said "EMS Operations" for an
+      // all-domains drill).
+      banner.textContent = `Domain drill: ${choiceLabel(selectedDomain)} — untimed, each answer checked as you go`;
     }
   } else {
     banner.style.display = 'none';
   }
+  // Practice says "End session" once, where the exam says "Submit exam";
+  // the second, top-of-screen submit is only for the long timed exam.
+  $id('exitBtn').innerHTML = withTimer ? '&larr; Exit exam' : '&larr; Save and exit';
+  $id('submitBtn').textContent = withTimer ? 'Submit exam' : 'End session';
+  $id('submitBtnTop').textContent = withTimer ? 'Submit exam' : 'End session';
+  $id('submitBtnTop').hidden = !withTimer;
   renderQuestion();
   renderJumpRow();
+  focusQuestion();
   if(withTimer){
     timerInterval = setInterval(updateTimer, 1000);
     updateTimer();
@@ -1793,7 +1930,7 @@ function updateTimer(){
   // your pace look great, and which declared you "ahead of pace" one second in
   // with nothing answered at all. Below the first answer there is no pace to
   // report, so report none.
-  const answered = answers.filter(a => a !== null).length;
+  const answered = answeredCount();
   const targetSec = Math.round(TARGET_PACE_MS/1000);
   if(answered === 0){
     paceEl.textContent = `Target pace: ${targetSec}s per question`;
@@ -1824,7 +1961,6 @@ function renderQuestion(){
   $id('nextBtn').hidden = false;
   const q = QUESTIONS[activeIndices[current]];
   $id('progressText').textContent = `Question ${current+1} of ${totalLen}`;
-  $id('answeredText').textContent = `${answers.filter(a=>a!==null).length} answered`;
   $id('progressFill').style.width = ((current+1)/totalLen*100) + '%';
   $id('qDomain').innerHTML = `${q.domain}<span class="diff-badge ${q.diff}">${q.diff}</span>`;
   $id('qPrompt').textContent = q.q;
@@ -1845,7 +1981,8 @@ function renderQuestion(){
   if(q.type === 'multi'){
     const hint = document.createElement('div');
     hint.className = 'tei-hint';
-    hint.textContent = `Select the ${q.correct.length} answer options which are correct.`;
+    const picked = Array.isArray(answers[current]) ? answers[current].length : 0;
+    hint.textContent = `Select ${q.correct.length} answer options (${picked} of ${q.correct.length} picked).`;
     optsEl.appendChild(hint);
     const selected = Array.isArray(answers[current]) ? answers[current] : [];
     optsEl.setAttribute('role', 'group');
@@ -1862,6 +1999,12 @@ function renderQuestion(){
       const toggle = () => {
         const cur = Array.isArray(answers[current]) ? answers[current].slice() : [];
         const pos = cur.indexOf(i);
+        // Exactly N, as on the real exam: with N already picked, a new pick
+        // has to wait until one is un-picked.
+        if(pos === -1 && cur.length >= q.correct.length){
+          if(window.LevlAnnounce) window.LevlAnnounce.say(`You have picked ${q.correct.length}. Unselect one to change your answer.`);
+          return;
+        }
         if(pos === -1) cur.push(i); else cur.splice(pos, 1);
         answers[current] = cur;
         renderQuestion();
@@ -1941,7 +2084,19 @@ function renderQuestion(){
       optsEl.appendChild(div);
     });
   }
-  if(focusedOpt !== null){
+  // Untimed practice checks each answer as you go. Once checked, the options
+  // are frozen (cloned without their handlers), marked right or wrong, and the
+  // explanation follows. The timed exam never does this: it withholds every
+  // answer until you submit, as the real exam does.
+  const isChecked = practiceChecks() && !!checked[current];
+  if(isChecked){
+    showCheckedState(q, optsEl);
+  } else {
+    const fb = $id('qFeedback');
+    fb.hidden = true;
+    fb.innerHTML = '';
+  }
+  if(focusedOpt !== null && !isChecked){
     const el = optsEl.querySelector(`[data-opt="${focusedOpt}"]`);
     if(el) el.focus();
   }
@@ -1957,8 +2112,51 @@ function renderQuestion(){
   if(flagBtnEl) flagBtnEl.hidden = realistic;
   const jumpRowEl = $id('jumpRow');
   if(jumpRowEl) jumpRowEl.hidden = realistic;
-  $id('nextBtn').textContent = current === totalLen-1 ? 'Finish' : 'Next';
+  const needsCheck = practiceChecks() && !isChecked && isAnswered(q, answers[current]);
+  $id('nextBtn').textContent = needsCheck ? 'Check answer' : current === totalLen-1 ? 'Finish' : 'Next';
+  $id('answeredText').textContent = `${answeredCount()} answered`;
   saveExamState();
+}
+
+// Every untimed mode. The timed exam is the only one that withholds.
+function practiceChecks(){ return mode !== 'full'; }
+
+function showCheckedState(q, optsEl){
+  const ans = answers[current];
+  const right = isAnswerCorrect(q, ans);
+  if(q.type === 'order'){
+    optsEl.querySelectorAll('.order-btns button').forEach(b => { b.disabled = true; });
+    optsEl.querySelectorAll('.order-item').forEach((el, pos) => {
+      const ok = Array.isArray(ans) && ans[pos] === q.correct[pos];
+      el.classList.add(ok ? 'correct' : 'incorrect');
+    });
+  } else {
+    optsEl.querySelectorAll('[data-opt]').forEach(el => {
+      const i = +el.getAttribute('data-opt');
+      const isKey = q.type === 'multi' ? q.correct.includes(i) : q.correct === i;
+      const picked = q.type === 'multi' ? Array.isArray(ans) && ans.includes(i) : ans === i;
+      const frozen = el.cloneNode(true);
+      frozen.classList.toggle('correct', isKey);
+      frozen.classList.toggle('incorrect', picked && !isKey);
+      frozen.setAttribute('aria-disabled', 'true');
+      frozen.tabIndex = -1;
+      frozen.style.cursor = 'default';
+      el.replaceWith(frozen);
+    });
+  }
+  const fb = $id('qFeedback');
+  fb.hidden = false;
+  fb.className = 'q-feedback ' + (right ? 'is-right' : 'is-wrong');
+  fb.innerHTML = `<p class="q-feedback-head">${right ? 'Correct.' : 'Not quite.'}</p>` +
+    (right ? '' : `<p class="q-feedback-key">Answer: ${formatCorrectAnswerText(q, LETTERS)}</p>`) +
+    `<div class="q-feedback-explain">${q.explain || ''}</div>`;
+  // The explanation may still be on its way on a slow connection.
+  if(!q.explain){
+    loadExplanations().then(() => {
+      const ex = fb.querySelector('.q-feedback-explain');
+      if(ex && q.explain && checked[current] && QUESTIONS[activeIndices[current]] === q) ex.innerHTML = q.explain;
+    });
+  }
 }
 
 // Out of free questions mid-session (another tab used them, or a resumed
@@ -1979,9 +2177,9 @@ function renderJumpRow(){
   row.innerHTML = '';
   activeIndices.forEach((qIdx,i) => {
     const btn = document.createElement('button');
-    btn.className = 'jump-btn' + (i===current?' current':'') + (answers[i]!==null?' answered':'') + (flagged.has(qIdx)?' flagged':'');
+    btn.className = 'jump-btn' + (i===current?' current':'') + (isAnswered(QUESTIONS[qIdx], answers[i])?' answered':'') + (flagged.has(qIdx)?' flagged':'');
     btn.textContent = i+1;
-    btn.addEventListener('click', () => { current = i; renderQuestion(); renderJumpRow(); });
+    btn.addEventListener('click', () => { current = i; renderQuestion(); renderJumpRow(); focusQuestion(); });
     row.appendChild(btn);
   });
 }
@@ -1995,10 +2193,28 @@ $id('flagBtn').addEventListener('click', () => {
 
 $id('prevBtn').addEventListener('click', () => {
   if(realisticMode && mode === 'full') return;
-  if(current > 0){ current--; renderQuestion(); renderJumpRow(); }
+  if(current > 0){ current--; renderQuestion(); renderJumpRow(); focusQuestion(); }
 });
+// The question heading takes focus on start and on every move between
+// questions, so a screen reader starts reading the new question instead of
+// being left on <body> or on a button that no longer means anything.
+function focusQuestion(){
+  const h = $id('qPrompt');
+  if(h && h.textContent && typeof h.focus === 'function') h.focus({preventScroll: false});
+}
 $id('nextBtn').addEventListener('click', () => {
   const totalLen = mode === 'adaptive' ? adaptiveState.length : activeIndices.length;
+  const qNow = QUESTIONS[activeIndices[current]];
+  if(qNow && practiceChecks() && !checked[current] && isAnswered(qNow, answers[current])){
+    checked[current] = true;
+    renderQuestion();
+    renderJumpRow();
+    const right = isAnswerCorrect(qNow, answers[current]);
+    if(window.LevlSound && window.LevlSound.answer) window.LevlSound.answer(right);
+    if(window.LevlAnnounce) window.LevlAnnounce.say(right ? 'Correct.' : 'Not quite. ' + formatCorrectAnswerText(qNow, LETTERS));
+    $id('nextBtn').focus();
+    return;
+  }
   const atFrontier = current === activeIndices.length - 1;
 
   if(mode === 'adaptive' && atFrontier){
@@ -2014,6 +2230,7 @@ $id('nextBtn').addEventListener('click', () => {
     current++;
     renderQuestion();
     renderJumpRow();
+    focusQuestion();
   } else {
     showResults();
   }
@@ -2039,6 +2256,7 @@ $id('submitBtn').addEventListener('click', confirmSubmitNow);
 $id('submitBtnTop').addEventListener('click', confirmSubmitNow);
 
 let allReviewData = [];
+let lastSessionMisses = [];
 
 // XP for a completed quiz session (any mode): a flat completion bonus, 10 XP per
 // correct answer, plus a one-time bonus the first time a domain crosses an
@@ -2068,6 +2286,7 @@ function awardQuizXp(domainStats, score){
   });
 
   window.LevlXP.awardXp(xpGain, tierUpdates);
+  return xpGain;
 }
 
 function showResults(){
@@ -2096,25 +2315,38 @@ function showResults(){
   window.scrollTo(0, 0);
 
   let score = 0;
+  // Two tallies. domainStats is by topic area (the body-system label), which
+  // is what the cross-mode accuracy record and the XP tiers have always been
+  // kept by. examStats is by 2025 exam domain, for the breakdown on screen.
   const domainStats = {};
+  const examStats = {};
   let missedSet = new Set(loadMissed());
+  const sessionMisses = [];
 
   activeIndices.forEach((qIdx,i) => {
     const q = QUESTIONS[qIdx];
-    if(!domainStats[q.domain]) domainStats[q.domain] = {correct:0,total:0,topics:{}};
-    const ds = domainStats[q.domain];
+    if(!domainStats[q.system]) domainStats[q.system] = {correct:0,total:0,topics:{}};
+    const ds = domainStats[q.system];
+    if(!examStats[q.domain]) examStats[q.domain] = {correct:0,total:0,topics:{}};
+    const es = examStats[q.domain];
     ds.total++;
+    es.total++;
     const topic = q.topic || 'General';
     if(!ds.topics[topic]) ds.topics[topic] = {correct:0,total:0};
     ds.topics[topic].total++;
+    if(!es.topics[q.system]) es.topics[q.system] = {correct:0,total:0};
+    es.topics[q.system].total++;
     const correct = isAnswerCorrect(q, answers[i]);
     if(correct){
       score++;
       ds.correct++;
+      es.correct++;
       ds.topics[topic].correct++;
+      es.topics[q.system].correct++;
       missedSet.delete(qIdx);
     } else {
       missedSet.add(qIdx);
+      sessionMisses.push(qIdx);
     }
     // Weak-spot sessions already update mastery live, per-question, as they go —
     // every other mode records it here in bulk instead.
@@ -2122,8 +2354,9 @@ function showResults(){
   });
   saveMissed(Array.from(missedSet));
   recordDomainStatsAll(domainStats);
+  recordExamDomainStats(examStats);
   if(mode !== 'adaptive') recordStudyActivity(activeIndices.length);
-  awardQuizXp(domainStats, score);
+  const xpGained = awardQuizXp(domainStats, score);
 
   /* The one page on the site with no per-answer chime: this quiz withholds
      right/wrong until you submit, the way the real exam does, so a sound on
@@ -2182,14 +2415,29 @@ function showResults(){
   $id('scoreBig').textContent = `${score}/${activeIndices.length}`;
   $id('scoreSub').textContent = `${Math.round(score/activeIndices.length*100)}% correct — completed in ${formatDuration(elapsed)}`;
 
+  // By exam domain, in the order the exam outline lists them; each domain's
+  // rows underneath are the topic areas its questions came from.
   const breakdownEl = $id('domainBreakdown');
-  breakdownEl.innerHTML = Object.entries(domainStats).map(([d,s]) => {
+  const examOrder = Object.keys(DOMAIN_TARGETS);
+  breakdownEl.innerHTML = Object.entries(examStats)
+    .sort((a,b) => examOrder.indexOf(a[0]) - examOrder.indexOf(b[0]))
+    .map(([d,s]) => {
     const topicRows = Object.entries(s.topics || {})
       .sort((a,b) => a[0].localeCompare(b[0]))
       .map(([t,ts]) => `<div class="row topic-row"><span>${t}</span><span>${ts.correct}/${ts.total}</span></div>`)
       .join('');
     return `<div class="row"><span>${d}</span><span>${s.correct}/${s.total}</span></div>${topicRows}`;
   }).join('');
+
+  // A next step, so the end of a session is not a dead end: the misses from
+  // this session first, while the explanations are fresh.
+  lastSessionMisses = sessionMisses.slice();
+  const nextStepEl = $id('nextStep');
+  const xpLine = xpGained ? `<p class="next-xp">+${xpGained} XP</p>` : '';
+  nextStepEl.innerHTML = sessionMisses.length
+    ? `${xpLine}<button type="button" class="primary next-step-btn" id="reviewMissesBtn">Review your misses (${sessionMisses.length})</button>
+       <p class="next-note">Goes back over the ${sessionMisses.length === 1 ? 'question' : 'questions'} you got wrong, with the explanation after each answer.</p>`
+    : `${xpLine}<p class="next-note">No misses this time. Try a <a href="practice.html">weak-spot session</a> or a domain you have not drilled yet.</p>`;
 
   const clearedNote = $id('clearedNote');
   if(mode === 'review' && missedSet.size === 0){
@@ -2214,7 +2462,9 @@ function showResults(){
     if(!bestData || score > bestData.score){
       localStorage.setItem(STORAGE_KEY, JSON.stringify({score, total: activeIndices.length, timeMs: elapsed}));
     }
-    saveHistoryEntry({score, total: activeIndices.length, timeMs: elapsed, date: Date.now(), domainStats});
+    saveHistoryEntry({score, total: activeIndices.length, timeMs: elapsed, date: Date.now(), domainStats, examStats});
+    // Server-stamped record for the Pass-or-extend (assets/premium.js).
+    if(window.LevlPremium && window.LevlPremium.recordExam) window.LevlPremium.recordExam('nremt', activeIndices.length);
   }
 
   if(mode === 'full' || mode === 'domain' || mode === 'adaptive' || mode === 'spaced'){
@@ -2240,8 +2490,8 @@ async function renderReview(filter){
   await loadExplanations();
   const reviewEl = $id('reviewList');
   let items = allReviewData;
-  if(filter === 'incorrect') items = allReviewData.filter(d => !d.isCorrect && d.userAns !== null);
-  if(filter === 'unanswered') items = allReviewData.filter(d => d.userAns === null);
+  if(filter === 'incorrect') items = allReviewData.filter(d => !d.isCorrect && isAnswered(d.q, d.userAns));
+  if(filter === 'unanswered') items = allReviewData.filter(d => !isAnswered(d.q, d.userAns));
 
   const flagged = new Set(loadFlagged());
   reviewEl.innerHTML = items.map(({q,qIdx,userAns,isCorrect,letters}) => `
@@ -2292,6 +2542,17 @@ $id('printResultBtn').addEventListener('click', () => {
   window.print();
 });
 $id('retryBtnTop').addEventListener('click', backToStart);
+$id('nextStep').addEventListener('click', (e) => {
+  if(!e.target.closest('#reviewMissesBtn') || !lastSessionMisses.length) return;
+  resultsScreen.style.display = 'none';
+  mode = 'review';
+  selectedDomain = null;
+  activeIndices = lastSessionMisses.slice();
+  // Review always runs on the practice page; from Exams or Review it hands
+  // the queue over there, where the missed list it came from already lives.
+  if(RUNNER_PAGE !== 'practice'){ location.href = 'practice.html?start=review'; return; }
+  beginQuiz(false);
+});
 
 })();
 });

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Water, solutions and concentration: Notes | A&amp;P</title>
+<title>Water, solutions and concentration — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Every fluid in your body is water with things dissolved or spread through it.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/water-solutions.html">
-<meta property="og:title" content="Water, solutions and concentration: Notes | A&amp;P">
+<meta property="og:title" content="Water, solutions and concentration — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Every fluid in your body is water with things dissolved or spread through it.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/water-solutions.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="water-solutions">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 2 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/chem-physics.html">Chemistry and physics for physiology</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Water, solutions and concentration: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/water-solutions.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 2 &middot; Topic 8 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 2 &middot; Topic 8 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Water, solutions and concentration</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/mass-balance.html">Mass balance</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="water-solutions">Not practiced</span></p>
     </header>
@@ -131,7 +132,7 @@
 <h2 id="solutions-solute-and-solvent">Solutions: solute and solvent</h2>
 <p>Stir a pinch of sodium chloride into a glass of water. The crystals vanish, and every sip tastes the same. You have made a <em>solution</em>: a <span class="gl" tabindex="0" data-c="mixtures">mixture</span> in which one substance is spread evenly, particle by particle, through another. The substance that dissolves is the <em><span class="gl" tabindex="0" data-c="solution">solute</span></em> (solutus = loosened). The substance it dissolves in is the <em>solvent</em> (solvere = to loosen). In your body the solvent is almost always water, and a solution in water is called an aqueous solution (aqua = water).</p>
 <p>How does water pull a crystal apart? Look at <a class="figref" href="#fig-os-2-15">Figure 1</a>. Water molecules crowd the crystal's surface. Their partly negative oxygen ends are attracted to sodium <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="ion">ions</a>, and their partly positive hydrogen ends are attracted to chloride ions. Many small attractions together outweigh the <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="ionic-bond">ionic bond</a> holding each ion in the crystal, so ions are pulled out one by one. Each ion then travels wrapped in a shell of water molecules, which keeps it from rejoining the crystal.</p>
-<figure id="fig-os-2-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-2-15"><img src="../figures/os-2-15.jpg" alt="A crystal of sodium chloride dissolving in water. Water molecules crowd around each ion as it leaves the crystal: the oxygen ends of the water molecules face the sodium ions, and the hydrogen ends face the chloride ions." width="1100" height="1105" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Sodium chloride dissolving. Oxygen ends of water molecules face each sodium ion; hydrogen ends face each chloride ion. The shells of water keep the ions apart. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 2.15, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/2-4-inorganic-compounds-essential-to-human-functioning">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-2-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-2-15"><picture><source type="image/avif" srcset="../figures/avif/os-2-15-480.avif 480w, ../figures/avif/os-2-15-800.avif 800w, ../figures/avif/os-2-15.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-2-15.jpg" alt="A crystal of sodium chloride dissolving in water. Water molecules crowd around each ion as it leaves the crystal: the oxygen ends of the water molecules face the sodium ions, and the hydrogen ends face the chloride ions." width="1100" height="1105" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> Sodium chloride dissolving. Oxygen ends of water molecules face each sodium ion; hydrogen ends face each chloride ion. The shells of water keep the ions apart. <span class="anp-credit">Figure 2.15 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/2-4-inorganic-compounds-essential-to-human-functioning">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Polar molecules dissolve the same way, minus the full charges: their partial charges form hydrogen bonds or other attractions with water. That is why water dissolves ions, polar molecules and many gases, and why your blood can carry so many different substances at once.</p>
 
 <h2 id="hydrophilic-and-hydrophobic">Hydrophilic and hydrophobic</h2>
@@ -145,7 +146,7 @@
 
 <h2 id="solutions-colloids-and-suspensions">Solutions, colloids and suspensions</h2>
 <p>Draw blood into a tube treated so the blood stays liquid, and let the tube stand in a rack. Over an hour or more, the blood <a class="gl" href="../notes/body-organization.html" data-c="cell">cells</a> sink toward the bottom and a straw-colored liquid collects above them. Blood is a <em>mixture</em>: several substances combined physically, without chemical bonds between them, so they can be separated again. Mixtures come in three kinds, and blood contains all three.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Solutions</th><th>Colloids</th><th>Suspensions</th></tr></thead>
 <tbody>
 <tr><th>Size of the spread-out particles</th><td>Smallest: single ions and small molecules</td><td>Medium: very large molecules or tiny clusters</td><td>Largest: big enough to see under a light microscope</td></tr>
@@ -220,13 +221,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:water-solutions">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="atoms-ions-bonds.html"><span>&larr; Topic 7</span><b>Atoms, ions and chemical bonds</b></a><a class="tb-chapter-link next" href="biomolecules.html"><span>Topic 9 &rarr;</span><b>Carbohydrates, lipids, proteins and nucleic acids</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

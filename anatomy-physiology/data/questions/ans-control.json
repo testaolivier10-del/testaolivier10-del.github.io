@@ -161,7 +161,7 @@
       "It sends acetylcholine to them through the vagus nerve",
       "It lowers sympathetic tone, so the vessels constrict less",
       "It raises sympathetic tone, which widens them through alpha-1 receptor proteins",
-      "It cannot widen them; only local heat can"
+      "It widens them through parasympathetic fibers that run with the spinal nerves"
     ],
     "correct": 1,
     "why": {
@@ -170,7 +170,7 @@
         "The vagus nerve does not supply skin vessels, and most blood vessels have no parasympathetic fibers at all.",
         "Correct. Withdrawing sympathetic tone widens the vessels.",
         "Alpha-1 receptor proteins make vessel smooth muscle contract. More sympathetic tone narrows skin vessels.",
-        "The hypothalamus widens these vessels through the nervous system, by withdrawing sympathetic tone. Local warmth helps, but it is not the only route."
+        "No parasympathetic fibers reach skin vessels. The hypothalamus widens them by withdrawing sympathetic tone; local warmth helps too."
       ]
     }
   },
@@ -313,7 +313,7 @@
     ],
     "q": "Select every effect of strong sympathetic activation.",
     "options": [
-      "Blood vessels in the skin narrow",
+      "The bladder wall contracts to empty the bladder",
       "The liver releases glucose into the blood",
       "The pupils narrow",
       "Sweating increases",
@@ -321,15 +321,14 @@
       "The small airways widen"
     ],
     "correct": [
-      0,
       1,
       3,
       5
     ],
     "why": {
-      "correct": "Sympathetic activation narrows skin vessels (alpha-1), widens the airways (beta-2, mostly epinephrine), releases glucose from the liver (beta-2), and drives sweating (muscarinic, through cholinergic sympathetic fibers). It widens the pupils and slows the gut.",
+      "correct": "Sympathetic activation widens the airways (beta-2, mostly epinephrine), releases glucose from the liver (beta-2), and drives sweating (through cholinergic sympathetic fibers). It widens the pupils, slows the gut and relaxes the bladder wall.",
       "options": [
-        "Correct. Norepinephrine from the vasomotor nerves acts on alpha-1 receptor proteins and contracts the smooth muscle of skin vessels.",
+        "Emptying the bladder is a parasympathetic effect. Sympathetic activity relaxes the bladder wall and tightens the internal sphincter.",
         "Correct. Epinephrine on beta-2 receptor proteins makes the liver break down glycogen.",
         "Narrowing the pupils is a parasympathetic effect. Sympathetic activity widens them through alpha-1 receptor proteins.",
         "Correct. Sympathetic cholinergic fibers drive the eccrine sweat glands.",
@@ -382,7 +381,7 @@
     ],
     "q": "Before giving a speech, a student's mouth feels dry and sticky. Which statement explains this?",
     "options": [
-      "Sympathetic activity stops all saliva secretion",
+      "Sympathetic activity shuts the glands that make saliva",
       "Parasympathetic activity is increased by feeling nervous before speaking",
       "Sympathetic activity adds thick saliva as watery secretion falls",
       "The glands that make saliva have no autonomic supply"
@@ -542,7 +541,7 @@
     ],
     "q": "On a warm afternoon, a resting hiker's skin flushes and she sweats, yet her pupils do not widen and her gut keeps working. What does this show about the sympathetic division?",
     "options": [
-      "It acts only as an all-or-none mass discharge",
+      "It acts as a single mass discharge to its targets at once",
       "Its output can be targeted at some effectors without the others",
       "Sweating and skin blood flow are controlled by the parasympathetic division",
       "Heat blocks the alpha-1 receptor proteins of the iris"
@@ -620,6 +619,11 @@
         "name": "Diameter of vessels in the skin and gut",
         "answer": "down",
         "why": "More vasomotor firing acts on alpha-1 receptor proteins, and the vessels narrow."
+      },
+      {
+        "name": "Oxygen carried in each liter of arterial blood",
+        "answer": "none",
+        "why": "Standing up does not change how much oxygen the lungs load into the blood. The reflex responds to pressure, not to oxygen."
       }
     ],
     "why": {
