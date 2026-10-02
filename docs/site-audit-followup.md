@@ -5,38 +5,44 @@ findings). A fresh session should read this file and `CLAUDE.md`, not the chat h
 
 ## Owner checklist (only you can do these)
 
-Nothing below has been attempted from the repo. Each step says where to click.
+Nothing below has been attempted from the repo. Do them in this order: the Worker calls new database functions,
+so **the migration must be applied before the first Worker deploy** or purchase webhooks fail.
 
-- [ ] **Apply the SQL migration.** Supabase dashboard → project `bsfcqrczehbcctwhxmrj` → SQL Editor → New query →
-      paste `scripts/sql/migrations/2026-10-audit.sql` (written by W3) → Run. It is idempotent; run it once. Then
-      Database → Advisors → Security and confirm no "function executable by anon" warnings remain.
-- [ ] **Turn on leaked-password protection.** Supabase → Authentication → Sign In / Providers (or Policies,
-      depending on dashboard version) → Password security → enable "Leaked password protection".
-- [ ] **Deploy the Worker with wrangler, and switch to the GitHub Action.** Cloudflare dashboard → My Profile →
-      API Tokens → Create token from the "Edit Cloudflare Workers" template. In GitHub → repo Settings → Secrets
-      and variables → Actions, add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Then Actions → "Deploy
-      Worker" → Run workflow (the workflow W3 adds; it runs `wrangler deploy` from `worker/`). First time only:
-      check that `POLAR_PRODUCTS` and `FOUNDING_DISCOUNT_ID` still show under Worker → Settings → Variables
-      after the deploy (`keep_vars = true` should keep them).
-- [ ] **api.levlprep.com.** Cloudflare → add `levlprep.com` as a zone if it is not one already (DNS must move to
-      Cloudflare for this) → Workers Routes → Add custom domain `api.levlprep.com` on worker `levlprep-ask`.
-      The site's code reads one constant (`API_URL`, see W3 notes) — after the domain answers, change it from the
-      workers.dev URL and redeploy.
-- [ ] **hello@levlprep.com.** Cloudflare → levlprep.com → Email → Email Routing → enable, add the MX/TXT records
-      it offers, create `hello@levlprep.com` → forward to your Gmail. Then verify the address in Resend if it
-      becomes the reminder sender.
-- [ ] **Polar settings.** Polar dashboard → Settings → Webhooks: confirm the endpoint is the API URL above +
-      `/premium/webhook` once it moves. Products: check that each product's description says "Pass-or-extend",
-      not "Pass guarantee". Check Polar's buyer-age rule against terms.html (see Open items).
-- [ ] **Clinical reviewer.** Recruit one paramedic or EMS instructor to review the NREMT bank before promoting
-      Pass-or-extend. The re-tagged domains and new items are listed in W1 below for their first pass.
-- [ ] **License for question banks.** Decide whether the banks stay CC BY-NC 4.0 or become all-rights-reserved
-      (notes and textbook pages can stay CC BY-NC). The code does not change until you decide; the LICENSE file
-      and sources.html carry the current wording.
-- [ ] **Postal address.** Get a PO box or virtual mailbox, then put it in `worker/src/email.js` (`POSTAL_ADDRESS`)
-      and redeploy. CAN-SPAM needs it in every reminder email.
-- [ ] **Minnesota assumed-name filing.** Minnesota Secretary of State → Business Filings Online → "Assumed Name"
-      for "LevlPrep" (fee about $50; publication in a qualified newspaper is also required).
+- [ ] **1. Apply the SQL migration.** Supabase dashboard → project `bsfcqrczehbcctwhxmrj` → SQL Editor → New query →
+      paste `scripts/sql/migrations/2026-10-audit.sql` → Run (idempotent). Then Advisors → Security Advisor →
+      Refresh: no "Function … executable by anon" warnings should remain. Check page views still record:
+      `select * from page_views order by day desc limit 5;`. If you apply it after 2026-10-15, set
+      `EXAM_LOG_SINCE` in `worker/src/premium.js` to that day and run `node scripts/build-worker.mjs`.
+- [ ] **2. Turn on leaked-password protection.** Supabase → Authentication → Sign In / Providers → Email (or
+      Policies → Password security) → enable "Prevent use of leaked passwords" → Save.
+- [ ] **3. Deploy the Worker with the new GitHub Action.** Cloudflare → My Profile → API Tokens → Create Token →
+      "Edit Cloudflare Workers" template → your account → Create → copy. Cloudflare → Workers & Pages → Overview →
+      copy the Account ID. GitHub → repo → Settings → Secrets and variables → Actions → New repository secret:
+      `CLOUDFLARE_API_TOKEN`, then `CLOUDFLARE_ACCOUNT_ID`. Actions → "Deploy Worker" → Run workflow → main.
+      Afterwards Workers → levlprep-ask → Settings → Variables and Secrets: `POLAR_PRODUCTS` and
+      `FOUNDING_DISCOUNT_ID` must still be listed (`keep_vars = true` should keep them).
+- [ ] **4. api.levlprep.com.** Cloudflare → Add a site → levlprep.com (moves DNS to Cloudflare) → Workers & Pages →
+      levlprep-ask → Settings → Domains & Routes → Add → Custom domain → `api.levlprep.com`. When it answers, set
+      `API_URL_DEFAULT` in `worker/src/config.js`, run `node scripts/build-site-config.mjs` and
+      `node scripts/build-worker.mjs`, commit. Then Polar → Settings → Webhooks → endpoint
+      `https://api.levlprep.com/premium/webhook`.
+- [ ] **5. Frame-protection headers** (needs step 4's zone). Cloudflare → levlprep.com → DNS: GitHub Pages records
+      proxied (orange cloud) → Rules → Transform Rules → Modify Response Header → all requests → set
+      `X-Frame-Options: DENY` and `Content-Security-Policy: frame-ancestors 'none'` → Deploy.
+- [ ] **6. hello@levlprep.com.** Cloudflare → levlprep.com → Email → Email Routing → enable, add the MX/TXT records
+      it offers, create `hello@levlprep.com` → forward to your Gmail. Verify it in Resend if it becomes the sender.
+- [ ] **7. Polar settings.** Check each product's description says "Pass-or-extend", not "Pass guarantee"; check
+      Polar's buyer-age rule against terms.html (see Open items).
+- [ ] **8. Clinical reviewer.** Recruit one paramedic or EMS instructor to review the NREMT bank before promoting
+      Pass-or-extend. W1's re-tagged domains and new items are listed in `docs/site-audit-notes/w1.md`.
+- [ ] **9. License for question banks.** Decide whether banks stay CC BY-NC 4.0 or become all-rights-reserved. The
+      code doesn't change until you decide.
+- [ ] **10. Postal address.** PO box or virtual mailbox → `POSTAL_ADDRESS` in `worker/src/email.js` →
+      `node scripts/build-worker.mjs` → commit to main (the Action deploys). CAN-SPAM needs it.
+- [ ] **11. Minnesota assumed-name filing.** Minnesota Secretary of State → Business Filings Online → "Assumed Name"
+      for "LevlPrep" (about $50; publication in a qualified newspaper is also required).
+- [ ] **12. After the next site deploy, check Umami still counts.** Private window on the site → Umami Cloud →
+      Realtime shows the visit within a minute. If not, `HOST_URL` in `assets/analytics.js` needs Umami's host.
 
 ## How the work is organised
 
@@ -62,7 +68,7 @@ Nothing below has been attempted from the repo. Each step says where to click.
 |---|---|---|---|
 | W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | in progress (wave 1) |
 | W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
-| W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | in progress (wave 1) |
+| W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | merged |
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | in progress (wave 1) |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | in progress (wave 1) |
@@ -97,6 +103,8 @@ Findings are named by the audit's section and "Where" column.
 
 Calls made without asking, per the brief. Each says why.
 
+- **AI tutor needs sign-in for AI answers** (a Supabase session token, not Turnstile — no new setup for you). Signed-out visitors get answers from course material only.
+- **After merging any branch that touches page `<head>`s, run `node scripts/build-site-config.mjs`** (it writes the CSP).
 - **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
 
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
@@ -116,6 +124,15 @@ fingerprint of the last sync so deletions propagate), writes only if `updated_at
 runs on every load, tab focus, the 30 s timer and hide. Failures show after 3 in a row; menu shows "Last synced".
 Merge rules now live in account.js and progress-backup.js reuses them. Guarded by 11 two-device tests and
 `scripts/site-rules/progress-sync.mjs`. Shell weight budget 249 → 253 KB (the sync code must be on every page).
+
+### W3 payments and security — merged
+29 fixed, 3 deferred (server-side gating is a plan in `docs/premium-server-gating.md`; free quota and free exam
+still counted in the browser until that plan is built; leaked-password protection is an owner step). Signed-out
+means no Premium; `_` hooks gone (tests use `__levlTestHooks` only the harness defines). One idempotent migration
+`scripts/sql/migrations/2026-10-audit.sql` (schema.sql matches; tested twice on PGlite, never on the live DB).
+Worker: API_URL constant, unsubscribe confirm-then-POST, safe Resend error handling, same-origin URLs, timeouts,
+keep_vars, generic errors, rate limits. CSP on all pages from `scripts/build-site-config.mjs` (`--check` in CI).
+Umami self-hosted (`assets/vendor/umami-2.10.0.js`). New `.github/workflows/deploy-worker.yml`.
 
 ## Open items for the owner
 
