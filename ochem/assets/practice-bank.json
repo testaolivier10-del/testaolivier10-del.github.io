@@ -16157,7 +16157,7 @@
    "type": "mcq"
   },
   {
-   "q": "A preview of Spectroscopy — all you need is that a ¹H NMR spectrum shows one signal per chemical environment. Which relationship between two hydrogens guarantees they are entitled to separate signals in an ordinary (achiral) solvent?",
+   "q": "A preview of NMR Spectroscopy — all you need is that a ¹H NMR spectrum shows one signal per chemical environment. Which relationship between two hydrogens guarantees they are entitled to separate signals in an ordinary (achiral) solvent?",
    "options": [
     "Diastereotopic",
     "Enantiotopic",
@@ -16288,7 +16288,7 @@
    "type": "mcq"
   },
   {
-   "q": "A preview of Spectroscopy — all you need is that inequivalent hydrogens may give separate signals. In 2-bromo-3-methylbutane, CH₃CHBrCH(CH₃)₂, the two methyl groups of the isopropyl unit give two separate signals rather than one. Why?",
+   "q": "A preview of NMR Spectroscopy — all you need is that inequivalent hydrogens may give separate signals. In 2-bromo-3-methylbutane, CH₃CHBrCH(CH₃)₂, the two methyl groups of the isopropyl unit give two separate signals rather than one. Why?",
    "options": [
     "C2 is a stereocenter, so the two methyls are diastereotopic",
     "One methyl is held closer to the bromine by hydrogen bonding",
@@ -16361,7 +16361,7 @@
     "Equivalent, because they share one sp² carbon atom"
    ],
    "correct": 2,
-   "why": "Substitution on an sp² CH₂ does not create a stereocenter, but it does create a geometry: one product has the label cis to the methyl group, the other trans, and those are diastereomers. So the two alkene hydrogens are diastereotopic. A preview of Spectroscopy: this is why a terminal alkene gives two distinct =CH₂ signals rather than one — but the topicity call above is made entirely from the substitution test.",
+   "why": "Substitution on an sp² CH₂ does not create a stereocenter, but it does create a geometry: one product has the label cis to the methyl group, the other trans, and those are diastereomers. So the two alkene hydrogens are diastereotopic. A preview of NMR Spectroscopy: this is why a terminal alkene gives two distinct =CH₂ signals rather than one — but the topicity call above is made entirely from the substitution test.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -16379,7 +16379,7 @@
    "type": "mcq"
   },
   {
-   "q": "A preview of Spectroscopy — all you need is that equivalent hydrogens give one signal and inequivalent ones may give two that also split each other. A CH₂ group that a student expected to give a single signal instead gives two, each split further. Which structural feature best explains it?",
+   "q": "A preview of NMR Spectroscopy — all you need is that equivalent hydrogens give one signal and inequivalent ones may give two that also split each other. A CH₂ group that a student expected to give a single signal instead gives two, each split further. Which structural feature best explains it?",
    "options": [
     "Coupling through space to a distant aromatic ring current",
     "Restricted rotation has frozen out one single conformation",
@@ -29865,7 +29865,7 @@
    "options": [
     "NaOH, because sulfonic acids are strongly acidic and dissolve",
     "Hot dilute aqueous H₂SO₄, because sulfonation is reversible",
-    "LiAlH₄, which reduces the sulfonic acid group straight off",
+    "H₂ over Pd, which hydrogenates the sulfonic acid group off",
     "Nothing removes it — sulfonation is permanent once it is done"
    ],
    "correct": 1,
@@ -30648,7 +30648,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclohexanol is oxidized with Jones reagent. Which change in the IR spectrum shows the reaction has gone to completion?",
+   "q": "Cyclohexanol is oxidized to cyclohexanone. Which change in the IR spectrum shows the reaction has gone to completion?",
    "options": [
     "The strong 1715 band is gone and a broad 3350 band has now appeared",
     "The broad 3350 band is gone and a strong 1715 band has appeared",
@@ -30656,7 +30656,7 @@
     "Two weak new bands have appeared at 2720 and 2820"
    ],
    "correct": 1,
-   "why": "Cyclohexanol is oxidized to cyclohexanone, so the spectrum should lose the alcohol and gain a ketone: the broad O–H at 3350 disappears and the C=O appears at 1715. The reverse change is what a reduction would show. The 2720/2820 pair belongs to an aldehyde C–H, which a secondary alcohol cannot give, and a band at 2250 would mean a nitrile.",
+   "why": "The secondary alcohol becomes a ketone, so the spectrum should lose the alcohol and gain a ketone: the broad O–H at 3350 disappears and the C=O appears at 1715. The reverse change is what a reduction would show. The 2720/2820 pair belongs to an aldehyde C–H, which a secondary alcohol cannot give, and a band at 2250 would mean a nitrile.",
    "difficulty": "medium",
    "type": "mcq"
   },
@@ -36301,7 +36301,7 @@
     "A carboxylic acid"
    ],
    "correct": 3,
-   "why": "One carbon longer, and it arrives already at the carboxylic acid oxidation level.",
+   "why": "One carbon longer, and that new carbon arrives already as the COOH carbon.",
    "difficulty": "hard",
    "type": "mcq"
   },
@@ -36340,7 +36340,7 @@
     "An amine"
    ],
    "correct": 2,
-   "why": "The imine anion that forms is hydrolyzed on workup.",
+   "why": "The reagent adds to the C≡N once, and the C=N⁻ salt that forms is hydrolyzed to the ketone on workup.",
    "difficulty": "easy",
    "type": "mcq"
   },
@@ -36397,7 +36397,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent gives a ketone from an acyl chloride?",
+   "q": "Which reagent gives a ketone from an acid chloride?",
    "options": [
     "A Grignard",
     "An organolithium",
@@ -36413,7 +36413,7 @@
    "q": "What is a Weinreb amide used for?",
    "options": [
     "Reducing an ester",
-    "Stopping an acyl addition at the ketone",
+    "Stopping a Grignard addition at the ketone",
     "Protecting an alcohol",
     "Making a Grignard"
    ],
@@ -36428,7 +36428,7 @@
     "Formaldehyde and CO₂",
     "A nitrile and an epoxide",
     "A ketone and an ester",
-    "An aldehyde and an acyl chloride"
+    "An aldehyde and an acid chloride"
    ],
    "correct": 0,
    "why": "Formaldehyde adds one carbon and stops at a primary alcohol; CO₂ adds one carbon already at the acid level. A nitrile R′CN brings R′ along with its carbon, and an epoxide brings two.",
@@ -36566,16 +36566,16 @@
    "type": "mcq"
   },
   {
-   "q": "A bulky Grignard is added to a hindered ketone that has alpha hydrogens, and most of the ketone is recovered after workup. What happened?",
+   "q": "Phenylmagnesium bromide is added to cyclohexanone, and the mixture is then worked up with aqueous acid. What is the product?",
    "options": [
-    "It was enolized by the reagent",
-    "It was reduced by the reagent",
-    "It was oxidized by the reagent",
-    "It was too hindered to deprotonate"
+    "1-Phenylcyclohexan-1-ol, a tertiary alcohol",
+    "2-Phenylcyclohexan-1-ol, a secondary alcohol",
+    "Cyclohexyl(phenyl)methanol, a secondary alcohol",
+    "Benzene, with the cyclohexanone recovered unchanged"
    ],
    "correct": 0,
-   "why": "When the carbonyl carbon is too crowded to reach, the Grignard acts as a base and takes an alpha hydrogen, which sits on the outside of the molecule. The enolate picks the proton back up on workup, so the ketone comes back. Reduction would leave an alcohol, and a Grignard is not an oxidant.",
-   "difficulty": "easy",
+   "why": "The phenyl carbon adds to the carbonyl carbon, so the OH and the phenyl end up on the same ring carbon. That carbon already carried two ring carbons, and the phenyl makes three, so the alcohol is tertiary. 2-Phenylcyclohexan-1-ol would need the phenyl on the next carbon, which the reagent never touches; cyclohexyl(phenyl)methanol is what cyclohexanecarbaldehyde would give. Benzene forms only if something acidic meets the reagent before the ketone does, and here the acid is added afterward.",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -36618,7 +36618,7 @@
    "type": "mcq"
   },
   {
-   "q": "What class of alcohol comes from a Grignard plus an acyl chloride in excess?",
+   "q": "What class of alcohol comes from a Grignard plus an acid chloride in excess?",
    "options": [
     "Tertiary",
     "Secondary",
@@ -36626,7 +36626,7 @@
     "No alcohol forms"
    ],
    "correct": 0,
-   "why": "Two additions again, but not for the ester's reason: an acyl chloride is the most electrophilic acyl derivative, and the ketone it gives is simply still reactive enough to be attacked as fast as it forms.",
+   "why": "Two additions again, but not for the ester's reason: an acid chloride's chlorine barely donates, so it is even more electrophilic than the ketone it gives, and that ketone is still reactive enough to be attacked as fast as it forms.",
    "difficulty": "easy",
    "type": "mcq"
   },

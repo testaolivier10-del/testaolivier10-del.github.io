@@ -14893,7 +14893,7 @@
    "type": "mcq"
   },
   {
-   "q": "A preview of Spectroscopy — all you need is that a ¹H NMR spectrum shows one signal per chemical environment. Which relationship between two hydrogens guarantees they are entitled to separate signals in an ordinary (achiral) solvent?",
+   "q": "A preview of NMR Spectroscopy — all you need is that a ¹H NMR spectrum shows one signal per chemical environment. Which relationship between two hydrogens guarantees they are entitled to separate signals in an ordinary (achiral) solvent?",
    "options": [
     "Diastereotopic",
     "Enantiotopic",
@@ -15014,7 +15014,7 @@
    "type": "mcq"
   },
   {
-   "q": "A preview of Spectroscopy — all you need is that inequivalent hydrogens may give separate signals. In 2-bromo-3-methylbutane, CH₃CHBrCH(CH₃)₂, the two methyl groups of the isopropyl unit give two separate signals rather than one. Why?",
+   "q": "A preview of NMR Spectroscopy — all you need is that inequivalent hydrogens may give separate signals. In 2-bromo-3-methylbutane, CH₃CHBrCH(CH₃)₂, the two methyl groups of the isopropyl unit give two separate signals rather than one. Why?",
    "options": [
     "C2 is a stereocenter, so the two methyls are diastereotopic",
     "One methyl is held closer to the bromine by hydrogen bonding",
@@ -15098,7 +15098,7 @@
    "type": "mcq"
   },
   {
-   "q": "A preview of Spectroscopy — all you need is that equivalent hydrogens give one signal and inequivalent ones may give two that also split each other. A CH₂ group that a student expected to give a single signal instead gives two, each split further. Which structural feature best explains it?",
+   "q": "A preview of NMR Spectroscopy — all you need is that equivalent hydrogens give one signal and inequivalent ones may give two that also split each other. A CH₂ group that a student expected to give a single signal instead gives two, each split further. Which structural feature best explains it?",
    "options": [
     "Coupling through space to a distant aromatic ring current",
     "Restricted rotation has frozen out one single conformation",
@@ -27534,7 +27534,7 @@
    "options": [
     "NaOH, because sulfonic acids are strongly acidic and dissolve",
     "Hot dilute aqueous H₂SO₄, because sulfonation is reversible",
-    "LiAlH₄, which reduces the sulfonic acid group straight off",
+    "H₂ over Pd, which hydrogenates the sulfonic acid group off",
     "Nothing removes it — sulfonation is permanent once it is done"
    ],
    "correct": 1,
@@ -28255,7 +28255,7 @@
    "type": "mcq"
   },
   {
-   "q": "Cyclohexanol is oxidized with Jones reagent. Which change in the IR spectrum shows the reaction has gone to completion?",
+   "q": "Cyclohexanol is oxidized to cyclohexanone. Which change in the IR spectrum shows the reaction has gone to completion?",
    "options": [
     "The strong 1715 band is gone and a broad 3350 band has now appeared",
     "The broad 3350 band is gone and a strong 1715 band has appeared",
@@ -33562,7 +33562,7 @@
    "type": "mcq"
   },
   {
-   "q": "Which reagent gives a ketone from an acyl chloride?",
+   "q": "Which reagent gives a ketone from an acid chloride?",
    "options": [
     "A Grignard",
     "An organolithium",
@@ -33577,7 +33577,7 @@
    "q": "What is a Weinreb amide used for?",
    "options": [
     "Reducing an ester",
-    "Stopping an acyl addition at the ketone",
+    "Stopping a Grignard addition at the ketone",
     "Protecting an alcohol",
     "Making a Grignard"
    ],
@@ -33591,7 +33591,7 @@
     "Formaldehyde and CO₂",
     "A nitrile and an epoxide",
     "A ketone and an ester",
-    "An aldehyde and an acyl chloride"
+    "An aldehyde and an acid chloride"
    ],
    "correct": 0,
    "difficulty": "medium",
@@ -33718,15 +33718,15 @@
    "type": "mcq"
   },
   {
-   "q": "A bulky Grignard is added to a hindered ketone that has alpha hydrogens, and most of the ketone is recovered after workup. What happened?",
+   "q": "Phenylmagnesium bromide is added to cyclohexanone, and the mixture is then worked up with aqueous acid. What is the product?",
    "options": [
-    "It was enolized by the reagent",
-    "It was reduced by the reagent",
-    "It was oxidized by the reagent",
-    "It was too hindered to deprotonate"
+    "1-Phenylcyclohexan-1-ol, a tertiary alcohol",
+    "2-Phenylcyclohexan-1-ol, a secondary alcohol",
+    "Cyclohexyl(phenyl)methanol, a secondary alcohol",
+    "Benzene, with the cyclohexanone recovered unchanged"
    ],
    "correct": 0,
-   "difficulty": "easy",
+   "difficulty": "medium",
    "type": "mcq"
   },
   {
@@ -33766,7 +33766,7 @@
    "type": "mcq"
   },
   {
-   "q": "What class of alcohol comes from a Grignard plus an acyl chloride in excess?",
+   "q": "What class of alcohol comes from a Grignard plus an acid chloride in excess?",
    "options": [
     "Tertiary",
     "Secondary",

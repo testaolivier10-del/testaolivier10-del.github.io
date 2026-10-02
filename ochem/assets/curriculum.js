@@ -127,35 +127,77 @@
     /* Oxidative cleavage, dihydroxylation and hydrogenation live with the
        alkenes, where the substrate is, so that heats of hydrogenation,
        epoxidation (needed by Epoxides) and ozonolysis are available as soon
-       as alkenes are. */
+       as alkenes are. Cyclopropanation sits beside them: like OsO4 and
+       mCPBA it adds to one face of the C=C in a single step, so it is a
+       stereospecific syn addition and reads as the third of that family. */
     { id: 'alkenes-alkynes', title: 'Alkenes & Alkynes', topics: [
       { id: 'alkene-structure', title: 'Alkene structure', href: 'lessons/alkene-structure.html', dependsOn: ['hybridization'] },
       { id: 'addition-reactions', title: 'Addition reactions', href: 'lessons/addition-reactions.html', mechanism: 'mechanisms/addition.html', dependsOn: ['alkene-structure', 'nucleophiles', 'electrophiles'] },
       { id: 'markovnikov', title: 'Markovnikov / anti-Markovnikov', href: 'lessons/markovnikov.html', dependsOn: ['addition-reactions', 'sn1'] },
       { id: 'alkene-oxidation', title: 'Oxidative cleavage & dihydroxylation', href: 'lessons/alkene-oxidation.html', dependsOn: ['addition-reactions', 'diastereomers'] },
+      { id: 'cyclopropanation', title: 'Carbenes & cyclopropanation', href: 'lessons/cyclopropanation.html', dependsOn: ['alkene-oxidation', 'cis-trans-ez', 'acidity-factors'] },
       { id: 'hydrogenation', title: 'Catalytic hydrogenation', href: 'lessons/hydrogenation.html', dependsOn: ['alkene-structure', 'addition-reactions'] },
       { id: 'alkynes', title: 'Alkynes', href: 'lessons/alkynes.html', dependsOn: ['alkene-structure', 'acidity-factors', 'sn2', 'hydrogenation'] }
     ]},
-    /* Conjugation goes directly after Alkenes & Alkynes: it is alkene
-       chemistry with the p orbitals joined up, and it needs resonance from
-       module 2. It also has to precede Aromatic Chemistry, which is the
+    /* IR and mass spectrometry come straight after the alkenes, as they do in
+       most first-semester courses and their labs: by then a student has made
+       alkenes, alkynes, alcohols and halides at the bench and needs a way to
+       tell starting material from product. Both read functional groups the
+       Foundations chapter named, so neither needs the reaction chapters that
+       follow. NMR waits for the later Spectroscopy chapter, after aromatic
+       rings, because ring currents and aromatic splitting are half of it. */
+    { id: 'ir-mass-spec', title: 'IR & Mass Spectrometry', topics: [
+      { id: 'ir', title: 'IR', href: 'lessons/ir.html', dependsOn: ['bonding', 'hybridization', 'functional-groups', 'alkynes'] },
+      { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['carbocations', 'markovnikov', 'ir'] }
+    ]},
+    /* Conjugation comes after the alkenes (and their two instruments): it is
+       alkene chemistry with the p orbitals joined up, and it needs resonance
+       from module 2. It also has to precede Aromatic Chemistry, which is the
        limiting case of the same idea, and Enolate Chemistry, which reuses the
        kinetic/thermodynamic argument wholesale.
 
        UV-Vis lives here rather than in Spectroscopy because it measures
        conjugation specifically, and is close to useless for anything else —
-       it is the experimental half of this chapter, not a fourth instrument. */
+       it is the experimental half of this chapter, not a fourth instrument.
+       The electrocyclic and sigmatropic reactions close the chapter: they
+       need the Diels–Alder (the first pericyclic reaction) and UV-Vis (a
+       photon moving an electron from the HOMO to the LUMO, which is what
+       makes a photochemical ring closure turn the other way). */
     { id: 'conjugation', title: 'Conjugation & Pericyclic Reactions', topics: [
       { id: 'conjugated-systems', title: 'Conjugated systems', href: 'lessons/conjugated-systems.html', dependsOn: ['alkene-structure', 'resonance'] },
       { id: 'diene-addition', title: '1,2- vs 1,4-addition', href: 'lessons/diene-addition.html', dependsOn: ['conjugated-systems', 'markovnikov'] },
       { id: 'kinetic-thermodynamic', title: 'Kinetic vs thermodynamic control', href: 'lessons/kinetic-thermodynamic.html', dependsOn: ['diene-addition'] },
       { id: 'diels-alder', title: 'The Diels–Alder reaction', href: 'lessons/diels-alder.html', dependsOn: ['conjugated-systems', 'kinetic-thermodynamic'] },
-      { id: 'uv-vis', title: 'UV-Vis spectroscopy', href: 'lessons/uv-vis.html', dependsOn: ['conjugated-systems'] }
+      { id: 'uv-vis', title: 'UV-Vis spectroscopy', href: 'lessons/uv-vis.html', dependsOn: ['conjugated-systems'] },
+      { id: 'electrocyclic-sigmatropic', title: 'Electrocyclic & sigmatropic reactions', href: 'lessons/electrocyclic-sigmatropic.html', dependsOn: ['diels-alder', 'uv-vis', 'cis-trans-ez'] }
+    ]},
+    /* Aromatic Chemistry follows Conjugation directly, before any carbonyl
+       chapter: aromaticity is the limiting case of conjugation, and
+       electrophilic aromatic substitution needs only resonance,
+       hybridization and the carbocation additions of Alkenes & Alkynes.
+       Benzaldehyde, acetophenone and benzoic acid appear in every carbonyl
+       chapter after it, so the ring is already familiar there. */
+    { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
+      { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization', 'conjugated-systems'] },
+      { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', mechanism: 'mechanisms/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
+      { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: 'lessons/directing-effects.html', dependsOn: ['eas', 'resonance', 'electron-rich-poor'] }
     ]},
     { id: 'alcohols-ethers', title: 'Alcohols, Ethers & Related Chemistry', topics: [
       { id: 'alcohol-reactions', title: 'Alcohol reactions', href: 'lessons/alcohol-reactions.html', dependsOn: ['leaving-groups', 'e1'] },
       { id: 'ether-chemistry', title: 'Ether chemistry', href: 'lessons/ether-chemistry.html', dependsOn: ['sn2', 'alcohol-reactions'] },
       { id: 'epoxides', title: 'Epoxides', href: 'lessons/epoxides.html', dependsOn: ['ether-chemistry', 'cyclohexanes', 'substrate-effects', 'alkene-oxidation'] }
+    ]},
+    /* The organometallic bond and the Grignard reagent come before Carbonyl
+       Chemistry, as in every major textbook: the carbonyl chapters add
+       Grignard reagents to aldehydes, ketones, esters and CO2 from their
+       first page. Ether solvents and epoxide opening, which a Grignard
+       reaction needs, are in the chapter just before. Organolithiums,
+       cuprates and palladium stay later (the Organometallics chapter after
+       the acid derivatives), because each one is taught through what it
+       does to a carbonyl compound or an acid derivative. */
+    { id: 'grignard', title: 'Organometallic Bonding & Grignard Reagents', topics: [
+      { id: 'organometallic-bonding', title: 'Why C–metal means nucleophilic carbon', href: 'lessons/organometallic-bonding.html', dependsOn: ['electronegativity', 'bond-polarity', 'nucleophiles', 'pka'] },
+      { id: 'grignard-reagents', title: 'Grignard reagents', href: 'lessons/grignard-reagents.html', dependsOn: ['organometallic-bonding', 'ether-chemistry', 'epoxides', 'electrophiles'] }
     ]},
     /* Imines, enamines and the Wittig are nucleophilic additions to a C=O,
        so they belong here, where the mechanism is taught, rather than in a
@@ -163,7 +205,7 @@
        had to point forward to. */
     { id: 'carbonyl-chemistry', title: 'Carbonyl Chemistry', topics: [
       { id: 'aldehydes-ketones', title: 'Aldehydes & ketones', href: 'lessons/aldehydes-ketones.html', dependsOn: ['hybridization', 'electrophiles'] },
-      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles'] },
+      { id: 'nucleophilic-addition', title: 'Nucleophilic addition', href: 'lessons/nucleophilic-addition.html', mechanism: 'mechanisms/carbonyl-addition.html', dependsOn: ['aldehydes-ketones', 'nucleophiles', 'grignard-reagents'] },
       { id: 'hydrates-cyanohydrins', title: 'Hydrates & cyanohydrins', href: 'lessons/hydrates-cyanohydrins.html', dependsOn: ['nucleophilic-addition', 'electronegativity'] },
       { id: 'acetals', title: 'Acetals & hemiacetals', href: 'lessons/acetals.html', dependsOn: ['nucleophilic-addition', 'hydrates-cyanohydrins', 'alcohol-reactions', 'resonance'] },
       { id: 'imines-enamines', title: 'Imines and enamines', href: 'lessons/imines-enamines.html', dependsOn: ['nucleophilic-addition', 'acetals', 'bronsted'] },
@@ -192,13 +234,14 @@
       { id: 'nitriles', title: 'Nitriles', href: 'lessons/nitriles.html', dependsOn: ['acyl-chlorides-anhydrides', 'sn2'] },
       { id: 'baeyer-villiger', title: 'Baeyer–Villiger oxidation', href: 'lessons/baeyer-villiger.html', dependsOn: ['epoxides', 'esters-amides', 'sn1', 'alcohol-oxidation'] }
     ]},
-    /* Organometallics come right after the acid derivatives because the
-       chapter's core argument — an acid chloride or ester adds two
-       equivalents — needs the derivatives, and because everything after it
-       (Michael with cuprates, Synthesis) wants a Grignard already known. */
-    { id: 'organometallics', title: 'Organometallics', topics: [
-      { id: 'organometallic-bonding', title: 'Why C–metal means nucleophilic carbon', href: 'lessons/organometallic-bonding.html', dependsOn: ['electronegativity', 'bond-polarity', 'nucleophiles'] },
-      { id: 'grignard-reagents', title: 'Grignard reagents', href: 'lessons/grignard-reagents.html', dependsOn: ['organometallic-bonding', 'nucleophilic-addition', 'acyl-substitution'] },
+    /* The rest of the organometallic family comes after the acid
+       derivatives: an organolithium is taught through what it does that a
+       Grignard reagent cannot (add to a carboxylate, deprotonate an
+       alkyne), a cuprate through the one addition a Grignard reagent will
+       not make, and palladium coupling through the aryl and vinyl halides
+       nothing else joins. Everything after it (Michael with cuprates,
+       Synthesis) wants them known. */
+    { id: 'organometallics', title: 'Organolithiums, Cuprates & Cross-Coupling', topics: [
       { id: 'organolithium-reagents', title: 'Organolithiums and acetylides', href: 'lessons/organolithium-reagents.html', dependsOn: ['grignard-reagents', 'alkynes', 'acidity-factors'] },
       { id: 'gilman-reagents', title: 'Cuprates and conjugate addition', href: 'lessons/gilman-reagents.html', dependsOn: ['grignard-reagents', 'nucleophilic-addition', 'resonance'] },
       { id: 'cross-coupling', title: 'Palladium cross-coupling', href: 'lessons/cross-coupling.html', dependsOn: ['gilman-reagents', 'sn2', 'alkene-structure'] }
@@ -215,14 +258,10 @@
       { id: 'ester-syntheses', title: 'Malonic and acetoacetic ester', href: 'lessons/ester-syntheses.html', dependsOn: ['claisen', 'alpha-hydrogens', 'sn2'] },
       { id: 'michael-robinson', title: 'Michael and Robinson', href: 'lessons/michael-robinson.html', dependsOn: ['aldol', 'alpha-hydrogens', 'gilman-reagents'] }
     ]},
-    { id: 'aromatic-chemistry', title: 'Aromatic Chemistry', topics: [
-      { id: 'aromaticity', title: 'Aromaticity', href: 'lessons/aromaticity.html', dependsOn: ['resonance', 'hybridization'] },
-      { id: 'eas', title: 'Electrophilic aromatic substitution', href: 'lessons/eas.html', mechanism: 'mechanisms/eas.html', dependsOn: ['aromaticity', 'addition-reactions', 'markovnikov'] },
-      { id: 'directing-effects', title: 'Ortho/meta/para directing effects', href: 'lessons/directing-effects.html', dependsOn: ['eas', 'esters-amides'] }
-    ]},
-    /* Amines come after Aromatic Chemistry because the aniline / pyridine /
-       pyrrole basicity argument is an aromaticity argument, and half of
-       amine reactions are run on an aromatic amine. */
+    /* Amines come well after Aromatic Chemistry because the aniline /
+       pyridine / pyrrole basicity argument is an aromaticity argument, and
+       half of amine reactions are run on an aromatic amine; they also need
+       imines and acyl substitution. */
     { id: 'amines', title: 'Amines', topics: [
       { id: 'amine-structure', title: 'Structure & basicity', href: 'lessons/amine-structure.html', dependsOn: ['bronsted', 'lewis-acids', 'esters-amides', 'aromaticity'] },
       { id: 'amine-reactions', title: 'Amine reactions', href: 'lessons/amine-reactions.html', dependsOn: ['amine-structure', 'sn2', 'nucleophilic-addition', 'acyl-substitution', 'imines-enamines'] },
@@ -233,7 +272,8 @@
        and stopped. This is everything that follows from it: the two ways to
        put a NUCLEOPHILE on a ring, the position next to the ring, what an OH
        on a ring does, how to reduce a ring partway, and the intermediate that
-       reaches the groups substitution cannot. */
+       reaches the groups substitution cannot. It waits for Amines because
+       diazonium chemistry starts from an aniline. */
     { id: 'aromatic-breadth', title: 'Aromatic Follow-Through', topics: [
       { id: 'nucleophilic-aromatic', title: 'SNAr and benzyne', href: 'lessons/nucleophilic-aromatic.html', dependsOn: ['eas', 'directing-effects', 'sn2'] },
       { id: 'benzylic-reactivity', title: 'Benzylic reactivity', href: 'lessons/benzylic-reactivity.html', dependsOn: ['resonance', 'sn1', 'radical-halogenation'] },
@@ -241,14 +281,14 @@
       { id: 'birch-reduction', title: 'Birch reduction', href: 'lessons/birch-reduction.html', dependsOn: ['aromaticity', 'hydrogenation', 'conjugated-systems'] },
       { id: 'diazonium-chemistry', title: 'Diazonium salts and Sandmeyer', href: 'lessons/diazonium-chemistry.html', dependsOn: ['amine-reactions', 'eas', 'directing-effects'] }
     ]},
-    /* Spectroscopy stays after the aromatic chapters, so that every
-       functional group is known when spectra are read, and Synthesis
-       follows immediately, which is where "confirm the product" is used. */
-    { id: 'spectroscopy', title: 'Spectroscopy', topics: [
-      { id: 'ir', title: 'IR', href: 'lessons/ir.html', dependsOn: ['bonding', 'hybridization'] },
-      { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity'] },
-      { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] },
-      { id: 'mass-spec', title: 'Mass spectrometry', href: 'lessons/mass-spec.html', dependsOn: ['sn1', 'markovnikov', 'eas'] }
+    /* NMR stays after the aromatic chapters, so that every functional group
+       is known when a spectrum is worked, and Synthesis follows immediately,
+       which is where "confirm the product" is used. IR and mass spectrometry
+       moved out to their own chapter after the alkenes; the chapter id stays
+       'spectroscopy' so old links to it still land here. */
+    { id: 'spectroscopy', title: 'NMR Spectroscopy', topics: [
+      { id: 'h-nmr', title: '¹H NMR', href: 'lessons/h-nmr.html', dependsOn: ['electronegativity', 'aromaticity', 'ir'] },
+      { id: 'c-nmr', title: '¹³C NMR', href: 'lessons/c-nmr.html', dependsOn: ['h-nmr'] }
     ]},
     /* Synthesis is the capstone: it plans with reactions from every chapter
        before it, including Spectroscopy, since confirming a product is part

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://levlprep-ask.testaolivier10.workers.dev https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrocyclic &amp; sigmatropic reactions — OChem Notes</title>
+<meta name="description" content="Electrocyclic &amp; sigmatropic reactions explained step by step: free organic chemistry notes from the Conjugation &amp; Pericyclic Reactions chapter.">
+<link rel="canonical" href="https://levlprep.com/ochem/notes/electrocyclic-sigmatropic.html">
+<meta property="og:title" content="Electrocyclic &amp; sigmatropic reactions — OChem Notes">
+<meta property="og:description" content="Electrocyclic &amp; sigmatropic reactions explained step by step: free organic chemistry notes from the Conjugation &amp; Pericyclic Reactions chapter.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/ochem/notes/electrocyclic-sigmatropic.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/ochem/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<script src="../assets/ochem-xp.js" defer></script>
+<script src="../assets/glossary-tip.js" defer></script>
+<link rel="stylesheet" href="../assets/ochem.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/electrocyclic-sigmatropic.html#notes","name":"Electrocyclic & sigmatropic reactions","url":"https://levlprep.com/ochem/notes/electrocyclic-sigmatropic.html","description":"Electrocyclic & sigmatropic reactions explained step by step: free organic chemistry notes from the Conjugation & Pericyclic Reactions chapter.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Electrocyclic & sigmatropic reactions"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":63,"relatedLink":"https://levlprep.com/ochem/lessons/electrocyclic-sigmatropic.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Conjugation & Pericyclic Reactions","item":"https://levlprep.com/ochem/learn.html#m-conjugation"},{"@type":"ListItem","position":4,"name":"Electrocyclic & sigmatropic reactions","item":"https://levlprep.com/ochem/notes/electrocyclic-sigmatropic.html"}]}]}
+</script>
+</head>
+<body>
+<div class="wrap notes-page">
+  <nav class="notes-crumb" aria-label="Breadcrumb">
+    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
+    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
+    <span>Conjugation &amp; Pericyclic Reactions</span>
+  </nav>
+
+  <header class="notes-head">
+    <p class="notes-eyebrow">Conjugation &amp; Pericyclic Reactions &middot; Section 63 of 123</p>
+    <h1>Electrocyclic &amp; sigmatropic reactions</h1>
+    <a class="notes-onward-cta" href="../lessons/electrocyclic-sigmatropic.html">Practice this — interactive lesson</a>
+  </header>
+
+  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+       asides); it is the same class the textbook view uses, so a section looks
+       identical whether it is read here or inside learn.html. -->
+  <article class="notes-body notes-view" data-glossary-topic="electrocyclic-sigmatropic">
+<!-- notes:start -->
+<p class="step-body">Heat (2<i>E</i>,4<i>Z</i>,6<i>E</i>)-octa-2,4,6-triene, a chain of eight carbons with three conjugated C=C bonds, and it closes into a six-membered ring: 5,6-dimethylcyclohexa-1,3-diene. Only the <i>cis</i> isomer forms, with both methyls on the same face of the ring. Shine ultraviolet light on the same triene instead, and the ring that forms is the <i>trans</i> isomer. Same starting material, same ring, opposite stereochemistry, and the only thing that changed is heat against light.</p>
+
+<p class="step-body">This section explains that result, and then a second family of reactions that obeys the same kind of rule. Both are <b>pericyclic</b>, like <a class="chapter-ref" href="/ochem/notes/diels-alder.html">The Diels&ndash;Alder reaction</a>: every bond changes in one step, as electrons move round a closed loop, with no intermediate.</p>
+
+<h3>Electrocyclic reactions: a chain closes into a ring</h3>
+
+<p class="step-body">In an <b>electrocyclic reaction</b>, the two end carbons of a conjugated &pi; system join with a new &sigma; bond, and the chain becomes a ring with one fewer &pi; bond. Hexa-1,3,5-triene has three &pi; bonds, six &pi; electrons; it closes to cyclohexa-1,3-diene, with two &pi; bonds and a new &sigma; bond between C1 and C6. Buta-1,3-diene, with four &pi; electrons, would close to cyclobutene in the same way.</p>
+
+<p class="step-body">The reverse reaction, a ring opening, is electrocyclic too. For the six-electron case the ring is favored: three-membered and four-membered rings are strained, but a six-membered ring is not, and a &sigma; bond is stronger than the &pi; bond it replaces. For the four-electron case the strain of cyclobutene wins, so what you usually see is a cyclobutene opening to a diene on heating. Either direction goes by the same path, so the same rule covers both.</p>
+
+<h3>Conrotatory and disrotatory</h3>
+
+<p class="step-body">To make the new &sigma; bond, the p orbitals on the two end carbons have to turn about 90&deg;, so that their lobes point at each other instead of straight up. Each end turns about the bond that joins it to the rest of the chain, and there are only two ways to do it.</p>
+
+<ul class="step-body">
+<li><b>Conrotatory</b>: both ends turn the same way, both clockwise or both counterclockwise, like two wheels on one axle.</li>
+<li><b>Disrotatory</b>: the ends turn opposite ways, one clockwise and one counterclockwise, like a pair of doors swinging toward each other.</li>
+</ul>
+<!-- fig:ec-rotation:start -->
+<!-- fig:ec-rotation:end -->
+
+<p class="step-body">The direction matters because of the groups on the end carbons. Each end carbon carries two groups, one pointing out of the U-shaped chain and one pointing in. Turning the ends moves those groups above or below the new ring, so the rotation decides which face each one ends up on.</p>
+
+<h3>Which way the ends turn: the HOMO decides</h3>
+
+<p class="step-body">A new bond forms only where two lobes of the <b>same phase</b> meet (the phases from <a class="chapter-ref" href="/ochem/notes/orbitals.html">Orbitals</a>, drawn here as two colors). The orbital that matters is the HOMO, the highest occupied &pi; orbital, because its electrons are the ones that move into the new bond. So the question is: in the HOMO, do the top lobes at the two ends have the same phase or opposite phases?</p>
+
+<ul class="step-body">
+<li><b>Buta-1,3-diene, 4 &pi; electrons.</b> In its HOMO the top lobes at C1 and C4 have opposite phases. Turning both ends the same way, conrotatory, brings the top lobe of one end to meet the bottom lobe of the other, and those match.</li>
+<li><b>Hexa-1,3,5-triene, 6 &pi; electrons.</b> In its HOMO the top lobes at C1 and C6 have the same phase. Turning the ends toward each other, disrotatory, brings the two top lobes together.</li>
+</ul>
+<!-- fig:ec-homo-ends:start -->
+<!-- fig:ec-homo-ends:end -->
+
+<p class="step-body">Light reverses both answers. A photon of ultraviolet light lifts one electron from the HOMO to the LUMO, the lowest empty orbital, exactly as in <a class="chapter-ref" href="/ochem/notes/uv-vis.html">UV-Vis spectroscopy</a>. The highest orbital holding an electron is now the old LUMO, and its end lobes have the opposite pattern to the HOMO&rsquo;s. So a reaction that is conrotatory with heat is disrotatory with light, and the other way round.</p>
+
+<h3>The Woodward&ndash;Hoffmann rules for electrocyclic reactions</h3>
+
+<p class="step-body">The diene and the triene are the first two members of a repeating pattern. Count the &pi; electrons that take part. A count of 4, 8, 12 is written 4<i>n</i>; a count of 6, 10, 14 is written 4<i>n</i> + 2. Then:</p>
+
+<div class="notes-table-wrap">
+<table class="notes-table">
+<thead><tr><th>&pi; electrons</th><th>Heat (thermal)</th><th>Light (photochemical)</th></tr></thead>
+<tbody>
+<tr><td>4<i>n</i>: 4, 8</td><td>conrotatory</td><td>disrotatory</td></tr>
+<tr><td>4<i>n</i> + 2: 6, 10</td><td>disrotatory</td><td>conrotatory</td></tr>
+</tbody></table></div>
+
+<p class="step-body">These are the <b>Woodward&ndash;Hoffmann rules</b>, worked out from orbital symmetry by Robert Woodward and Roald Hoffmann in 1965. The table is all you need to predict an electrocyclic reaction: count the electrons, read off the rotation, then follow the end groups.</p>
+
+<div class="notes-fact">Thermal 4<i>n</i> is conrotatory; change either the count to 4<i>n</i> + 2 or the heat to light and it becomes disrotatory. Change both and it is conrotatory again.</div>
+
+<h3>Following the end groups</h3>
+
+<p class="step-body">Go back to the triene from the opening. In (2<i>E</i>,4<i>Z</i>,6<i>E</i>)-octa-2,4,6-triene, the central <i>Z</i> double bond lets the chain curl into a U, with C2 and C7 facing each other. Each <i>E</i> end then has its methyl pointing <b>out</b> of the U. Six &pi; electrons with heat means disrotatory. Turning the two ends in opposite directions sends both outward methyls to the same face of the new ring, so the product is <i>cis</i>-5,6-dimethylcyclohexa-1,3-diene. With light the rotation is conrotatory, one outward methyl goes up and the other goes down, and the product is <i>trans</i>.</p>
+<!-- fig:ec-triene-stereo:start -->
+<!-- fig:ec-triene-stereo:end -->
+
+<p class="step-body">A short rule saves drawing the rotation every time. Label each end group in or out.</p>
+
+<ul class="step-body">
+<li>Both out, or both in: disrotatory gives <i>cis</i>, conrotatory gives <i>trans</i>.</li>
+<li>One in and one out: disrotatory gives <i>trans</i>, conrotatory gives <i>cis</i>.</li>
+</ul>
+
+<div class="notes-example">
+<span class="k">Worked example &mdash; a cyclobutene that opens on heating</span>
+<p><i>cis</i>-3,4-Dimethylcyclobut-1-ene is heated. Which hexa-2,4-diene forms?</p>
+<p><b>Step 1 &mdash; count the electrons.</b> Ring opening breaks the C3&ndash;C4 &sigma; bond and makes the diene. The diene has 4 &pi; electrons, 4<i>n</i> with <i>n</i> = 1.</p>
+<p><b>Step 2 &mdash; read the rule.</b> Thermal and 4<i>n</i>: conrotatory, in both directions.</p>
+<p><b>Step 3 &mdash; follow the methyls.</b> The rule above works backwards too: a <i>cis</i> ring made by conrotation must come from a diene with one end group in and one out. One methyl ends up pointing out of the diene&rsquo;s U (an <i>E</i> end) and the other in (a <i>Z</i> end).</p>
+<p><b>Answer.</b> (2<i>E</i>,4<i>Z</i>)-Hexa-2,4-diene. The <i>trans</i> cyclobutene would give (2<i>E</i>,4<i>E</i>)-hexa-2,4-diene, both methyls out.</p>
+</div>
+
+<h3>Sigmatropic rearrangements: a &sigma; bond moves</h3>
+
+<p class="step-body">Heat 3-methylhexa-1,5-diene, CH<sub>2</sub>=CH&ndash;CH(CH<sub>3</sub>)&ndash;CH<sub>2</sub>&ndash;CH=CH<sub>2</sub>, strongly enough, and it becomes hepta-1,5-diene, CH<sub>3</sub>CH=CH&ndash;CH<sub>2</sub>CH<sub>2</sub>&ndash;CH=CH<sub>2</sub>. No atom has been added or lost. The &sigma; bond between C3 and C4 has broken, a new &sigma; bond has formed between C1 and C6, and both &pi; bonds have shifted one place along.</p>
+
+<p class="step-body">A reaction in which one &sigma; bond breaks and another forms elsewhere, while the &pi; bonds shift, all in one step, is a <b>sigmatropic rearrangement</b>. It is named with two numbers in brackets. Number the atoms outward from each end of the bond that breaks, starting at 1 on each side. The new bond joins atom 3 on one side to atom 3 on the other, so this is a <b>[3,3] sigmatropic rearrangement</b>. A [3,3] shift of a hexa-1,5-diene has its own name: the <b>Cope rearrangement</b>.</p>
+<!-- fig:sig-cope-claisen:start -->
+<!-- fig:sig-cope-claisen:end -->
+
+<p class="step-body">The Cope rearrangement can run in both directions, and the equilibrium favors the more stable diene. Here the product wins because its new internal C=C carries two carbon groups, while the C=C it replaced, at the end of the chain, carried only one. More substituted alkenes are more stable, as <a class="chapter-ref" href="/ochem/notes/alkene-structure.html">Alkene structure</a> showed.</p>
+
+<h3>The Claisen rearrangement</h3>
+
+<p class="step-body">Put an oxygen in place of C3 and you have allyl vinyl ether, CH<sub>2</sub>=CH&ndash;O&ndash;CH<sub>2</sub>&ndash;CH=CH<sub>2</sub>. Heated, it undergoes the same [3,3] shift. The O&ndash;CH<sub>2</sub> bond breaks, a new C&ndash;C bond forms between the two end carbons, and the oxygen ends up double-bonded to carbon. The product is pent-4-enal, CH<sub>2</sub>=CH&ndash;CH<sub>2</sub>&ndash;CH<sub>2</sub>&ndash;CHO, an aldehyde with a C=C two carbons further along the chain. This oxygen version is the <b>Claisen rearrangement</b>.</p>
+
+<p class="step-body">The Claisen rearrangement does not run backwards. The product has traded a C=C for a C=O, and a C=O bond is much stronger, so the equilibrium lies far on the carbonyl side. That makes it a reliable way to build a carbon&ndash;carbon bond next to a carbonyl group.</p>
+
+<div class="notes-pitfall"><b>Two reactions share the name Claisen.</b> The Claisen <i>rearrangement</i> here is a pericyclic [3,3] shift of an allyl vinyl ether. The Claisen <i>condensation</i>, in Enolate Chemistry later in the course, is an unrelated reaction of esters. Read the second word.</div>
+
+<h3>The chair transition state</h3>
+
+<p class="step-body">In a [3,3] shift the six atoms that take part, the three on each side of the breaking bond, form a ring in the transition state. That ring has the same shape as cyclohexane, and it prefers the same <b>chair</b> (<a class="chapter-ref" href="/ochem/notes/cyclohexanes.html">Cyclohexanes</a>). A substituent on the ring of six atoms can sit in a position like an equatorial one, pointing out from the ring, or like an axial one, crowding the atoms above or below.</p>
+
+<p class="step-body">Just as on a cyclohexane, a substituent is more comfortable in the equatorial-like position. That choice fixes the geometry of the new C=C. In the Cope rearrangement of 3-methylhexa-1,5-diene, the chair with the methyl equatorial puts the methyl and the rest of the chain on opposite sides of the new double bond, so the main product is (<i>E</i>)-hepta-1,5-diene.</p>
+<!-- fig:sig-chair-ts:start -->
+<!-- fig:sig-chair-ts:end -->
+
+<h3>Three kinds of pericyclic reaction</h3>
+
+<div class="notes-table-wrap">
+<table class="notes-table">
+<thead><tr><th>Kind</th><th>What changes</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Cycloaddition</td><td>two &pi; systems join; two new &sigma; bonds</td><td>Diels&ndash;Alder, [4+2]</td></tr>
+<tr><td>Electrocyclic</td><td>the ends of one &pi; system join; one new &sigma; bond</td><td>hexatriene to cyclohexadiene</td></tr>
+<tr><td>Sigmatropic</td><td>one &sigma; bond moves along a &pi; system</td><td>Cope and Claisen, [3,3]</td></tr>
+</tbody></table></div>
+
+<p class="step-body">All three are concerted, so the stereochemistry of the starting material is carried into the product in a predictable way, and none of them goes through an ionic intermediate, so they are far less sensitive to the solvent than S<sub>N</sub>1 or E1. They are switched on by heat or by light, and orbital symmetry decides what each one can do.</p>
+
+<h3>What carries forward</h3>
+
+<p class="step-body">For an electrocyclic reaction, count the &pi; electrons, decide heat or light, read conrotatory or disrotatory from the table, and then follow the in and out groups. For a sigmatropic rearrangement, find the &sigma; bond that breaks, number outward from it, and draw the six-atom chair. Woodward and Hoffmann&rsquo;s idea, that orbital phases decide which concerted reactions are allowed, is the reason Hoffmann shared the 1981 Nobel Prize in Chemistry.</p>
+<!-- notes:end -->
+  </article>
+
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="uv-vis.html"><span>Previous</span>UV-Vis spectroscopy</a><a class="notes-prevnext notes-next" href="aromaticity.html"><span>Next</span>Aromaticity</a></nav>
+
+  <footer class="notes-foot">
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:testaolivier10@gmail.com">Contact</a></p>
+  </footer>
+</div>
+</body>
+</html>
