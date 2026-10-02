@@ -713,3 +713,354 @@
       m:'Two \u2014 and only two, because the Pauli exclusion principle requires their spins to be opposite and there are only two spin states available.' }
   ]);
 })();
+
+/* ---- topics with no rules of their own (site audit, October 2026) -----
+   The audit found 1,946 of 3,606 non-recall bank questions (54%) falling
+   back to their topic's default concept, so an isotope question told the
+   student it "turns on valence electrons". Every topic below had NO rule
+   reaching it. The rules were written against the questions themselves:
+   specific concepts first, `recall` for pure vocabulary or lab facts, and a
+   last catch-all only where every remaining question in the topic really is
+   about that concept. scripts/site-rules/ochem-concept-fallback.mjs measures
+   the fallback share and fails if it climbs back. */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  /* Foundations */
+  L.define('functional-groups', [
+    { q:/aldehyde from a ketone|ester|amide|acid chloride|anhydride|CHO\b|formate|calls the C=O|different groups/i, c:'carbonyl-family-distinction' },
+    { q:ANY, c:'functional-group-recognition' }
+  ]);
+  L.define('skeletal-structures', [
+    { q:/how many hydrogens|hydrogens? (sit|are drawn|appear)|hydrogen count|formula\?|lone pairs?|cannot exist|on that carbon|carries how many|oxygen carry/i, c:'implicit-hydrogens' },
+    { q:/functional group/i, c:'functional-group-recognition' },
+    { q:ANY, c:'skeletal-notation' }
+  ]);
+
+  /* Naming */
+  L.define('naming-parent-chain', [
+    { q:/\{|numbering|locant|punctuat|same compound as|Is that right|What decides\?/i, c:'locant-rules' },
+    { q:ANY, c:'parent-chain' }
+  ]);
+  L.define('naming-substituents', [
+    { q:/Which group is it|Which group attaches|systematic name of the tert-butyl|common name|commonly called|Which structure is tert-butyl|attaches through which carbon|How is a halogen named|is named, in parentheses/i, recall:true },
+    { q:/alphabeti|which letter|in what order|cited first|file\?|How is the name written|Write the name|branch is itself branched/i, c:'alphabetization' },
+    { q:ANY, c:'locant-rules' }
+  ]);
+  L.define('naming-functional-groups', [
+    { q:/systematic name for|spelled|which fragment is/i, recall:true },
+    { q:/longest chain|parent/i, c:'parent-chain' },
+    { q:/lowest locant|need no locant|numbering|from one end/i, c:'locant-rules' },
+    { q:ANY, c:'group-priority' }
+  ]);
+  L.define('naming-rings-unsaturation', [
+    { q:/called what|also called|which prefix|two different compounds|prefix in cis/i, recall:true },
+    { q:/parent|attached to|textbook rule|chain is attached/i, c:'parent-chain' },
+    { q:/suffix|principal|double bond and an alcohol|OH/i, c:'group-priority' },
+    { q:ANY, c:'locant-rules' }
+  ]);
+
+  /* Energy, radicals, conjugation */
+  L.define('energy-diagrams', [
+    { q:/Hammond|late transition|early transition|resemble|tracks the stability|endothermic\. Using|product ratio most strongly/i, c:'hammond-postulate' },
+    { q:ANY, c:'energy-diagram-reading' }
+  ]);
+  L.define('radical-halogenation', [
+    { q:/allylic/i, c:'allylic-capture' },
+    { q:/bond (dissociation )?energ|kcal|Fluorine and iodine/i, c:'energy-diagram-reading' },
+    { q:/less reactive bromine radical the more selective|transition state/i, c:'hammond-postulate' },
+    { q:/stabilit|prefers|selectiv|monochlori|product domin|major product|even amounts|easier for a halogen radical|times faster|stereocenter|which orbital|cleanly|how many different/i, c:'radical-stability' },
+    { q:ANY, c:'radical-chain' }
+  ]);
+  L.define('prochirality', [
+    { q:/\bface\b|faces|nucleophile adds|carbocation|reducing agent|chiral aldehyde/i, c:'prochiral-faces' },
+    { q:ANY, c:'topicity-test' }
+  ]);
+  L.define('conjugated-systems', [
+    { q:/s-cis|s-trans|Diels|locked/i, c:'cycloaddition-geometry' },
+    { q:ANY, c:'conjugation-recognition' }
+  ]);
+  L.define('diene-addition', [
+    { q:/also called|what do the numbers refer|reappear later|which formula\?/i, recall:true },
+    { q:/80 ?C|80 °C|warm|kinetic|temperature|more stable|interconvert|cannot reverse|15:85/i, c:'kinetic-vs-thermodynamic' },
+    { q:ANY, c:'allylic-capture' }
+  ]);
+  L.define('kinetic-thermodynamic', [
+    { q:/Hofmann|bulky base/i, c:'hofmann-elimination-rule' },
+    { q:/reaction-coordinate diagram|double dagger/i, c:'energy-diagram-reading' },
+    { q:ANY, c:'kinetic-vs-thermodynamic' }
+  ]);
+  L.define('uv-vis', [
+    { q:/units must|What is absorbance|visible region|concentration\?|diluted|quantitative|molar absorptivity|chromophore|look orange|Retinal|A = εcl|ε = 21/i, recall:true },
+    { q:ANY, c:'conjugation-recognition' }
+  ]);
+  L.define('diels-alder', [
+    { q:/stored and prepared/i, recall:true },
+    { q:/retro|disconnect|which pair makes|You want/i, c:'disconnection' },
+    { q:ANY, c:'cycloaddition-geometry' }
+  ]);
+
+  /* Oxidation */
+  L.define('alcohol-oxidation', [
+    { q:/tertiary alcohol|alcohol class|secondary alcohols|ketone (be|not)|ethers have|Which alcohol (w|g)|cis- and trans-|C4H10O/i, c:'oxidation-level' },
+    { q:ANY, c:'oxidant-choice' }
+  ]);
+  L.define('aldehyde-oxidation', [
+    { q:/contains which metal|active species|looks like|holds Cu|used clinically|unreliable with|How much open-chain/i, recall:true },
+    { q:ANY, c:'aldehyde-oxidizability' }
+  ]);
+})();
+
+/* Redox and synthesis (site audit, October 2026; see the note above). */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  L.define('oxidation-states', [
+    { q:/nitrile|acetonitrile|CH3CN|CH3CH2CN/i, c:'nitrile-as-acyl-level' },
+    { q:/same rung|ladder explain|needs neither|alcohol to an alkyl halide|requires what\?|How many rungs/i, c:'fgi-map' },
+    { q:ANY, c:'oxidation-level' }
+  ]);
+  L.define('carbonyl-reduction', [
+    { q:ANY, c:'reductant-scope' }
+  ]);
+  L.define('hydrogenation', [
+    { q:/Lindlar|liquid NH3|trans alkene|cis alkene|stereochem|syn addition|cis product|achiral|D2 over|meso|either alkene geometry|\(E\)-oct|imethylcyclohex/i, c:'redox-stereochemistry' },
+    { q:/nitro|benzene ring|ketone|ester|carboxylic|Raney|equivalents? of H2|What reacts|takes up|Cyclohexene is stirred|NOT reduce|PtO2/i, c:'reductant-scope' }
+  ]);
+  L.define('alkene-oxidation', [
+    { q:/stereo|anti diol|syn|meso|opposite diol|same diol|mCPBA|OsO4 never|cis-cyclopentane|epoxide opening/i, c:'redox-stereochemistry' },
+    { q:ANY, c:'alkene-cleavage-scope' }
+  ]);
+  L.define('retrosynthesis', [
+    { q:/overall yield/i, recall:true },
+    { q:/beta-hydroxy|1,3-dicarbonyl/i, c:'product-spacing' },
+    { q:/Grignard|synthon R|Count carbons|carbon count|one-carbon|EtMgBr|acetylene|magnesium|tertiary alcohol/i, c:'cc-bond-toolkit' },
+    { q:ANY, c:'disconnection' }
+  ]);
+  L.define('functional-group-interconversion', [
+    { q:ANY, c:'fgi-map' }
+  ]);
+  L.define('protecting-groups', [
+    { q:/Which diol is standard|reagent pair installs|product of treating an alcohol/i, recall:true },
+    { q:/Grignard (is )?destroyed|destroy a Grignard|pKa of an alcohol|wet solvent|extra equivalent/i, c:'organometallic-quench' },
+    { q:ANY, c:'protection' }
+  ]);
+  L.define('multistep-synthesis', [
+    { q:/protect/i, c:'protection' },
+    { q:/Clemmensen|Wolff|CrO3|wrong carbon|overshot/i, c:'fgi-map' },
+    { q:/retrosynthetic/i, c:'disconnection' },
+    { q:/extra carbon|count the carbons|acylate rather than alkylate|Friedel-Crafts alkylation with/i, c:'cc-bond-toolkit' },
+    { q:ANY, c:'route-order' }
+  ]);
+})();
+
+/* Biomolecules and organometallics (site audit, October 2026). */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  L.define('carbohydrates', [
+    { q:/carbohydrate, in functional-group terms|What does that make it|How many stereo|stereoisomeric|Fischer projection, which carbon|Which is it\?|rotates polarized/i, recall:true },
+    { q:/NaBH4/i, c:'reductant-scope' },
+    { q:/Tollens|reducing sugar|non-reducing|Is it reducing|Bromine water|gluconic|glucaric|distinguishes an aldehyde/i, c:'aldehyde-oxidizability' },
+    { q:/hemiacetal|anomer|ring|Haworth|pyranos|glycoside|acetal|alpha-1,4|optical rotation|cellulose|amylose|starch|beta-D/i, c:'sugar-ring' }
+  ]);
+  L.define('amino-acids', [
+    { q:/Br2 with PBr3|into the alpha-amino acid|turns a carboxylic acid/i, c:'alpha-halogenation-control' },
+    { q:/achiral|stereochemical series|R configuration|Which class does|unusual about proline|cross-link|disulfide|end up in a folded|distinguishes cysteine/i, recall:true },
+    { q:ANY, c:'zwitterion' }
+  ]);
+  L.define('peptides-proteins', [
+    { q:/primary structure|secondary structure|tertiary structure|alpha helix|hydrophobic|is covalent|salt bridge|denaturing|disulfide|proline disrupt|point mutation|beta sheet|water soluble|Trypsin|tripeptides|Edman|Which end of a written|Which terminus|Gly-Ala/i, recall:true },
+    { q:/plane|rotation|basic\?|protonated|rigid plates|acyl derivatives/i, c:'amide-resonance' },
+    { q:ANY, c:'peptide-bond' }
+  ]);
+  L.define('lipids', [
+    { q:/lipid class defined|even number|fused rings|estradiol|terpenes|reaction called|compact energy/i, recall:true },
+    { q:/melt|pack|kink|fat from an oil|intermolecular force|trans fats|industrially|bilayer|micelle|amphipathic|grease|cholesterol|until no alkene/i, c:'packing-and-properties' },
+    { q:ANY, c:'lipid-ester' }
+  ]);
+  L.define('nucleic-acids', [
+    { q:/purines|in place of thymine|complement|hydrogen bonds|pairs with|antiparallel|outside of the double|guanine content|melt|denaturing|genetic information|direction are nucleic|Which sugar does DNA/i, recall:true },
+    { q:ANY, c:'nucleotide-assembly' }
+  ]);
+  L.define('organometallic-bonding', [
+    { q:/appeared before this chapter/i, recall:true },
+    { q:/water|destroys|hydroxy|carboxylic acid|O-H|D2O|ethanol|free OH|alkoxide|tolerate|terminal alkyne|acidic proton|reach first|failed/i, c:'organometallic-quench' },
+    { q:ANY, c:'polarity-reversal' }
+  ]);
+  L.define('grignard-reagents', [
+    { q:/workup step|order of operations|vinyl Grignard/i, recall:true },
+    { q:/nitrile/i, c:'nitrile-as-acyl-level' },
+    { q:/O-H|carboxylic acid\. What happens first|terminal alkyne|acidic proton|recovered/i, c:'organometallic-quench' },
+    { q:ANY, c:'grignard-scope' }
+  ]);
+  L.define('organolithium-reagents', [
+    { q:/water get into|destroy/i, c:'organometallic-quench' },
+    { q:/ketone|aldehyde|carboxylic acid|benzoic|everything a Grignard|acetylide plus|propargylic/i, c:'grignard-scope' }
+  ]);
+})();
+
+/* Carbon-carbon bond formation and aromatic substitution (site audit, October 2026). */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  L.define('gilman-reagents', [
+    // PCC on a tertiary alcohol is oxidation level, which this topic does not carry: record nothing.
+    { q:/How is a Gilman reagent made|tolerate|organozinc|PCC/i, recall:true },
+    { q:ANY, c:'hard-soft-addition' }
+  ]);
+  L.define('cross-coupling', [
+    { q:/Which metal|Which coupling uses|Which coupling joins|industrially|convergent/i, recall:true },
+    { q:/not undergo SN2/i, c:'aromatic-nucleophilic' },
+    { q:ANY, c:'catalytic-cycle' }
+  ]);
+  L.define('wittig-reaction', [
+    { q:/four-membered intermediate called|by-product|What reagent class/i, recall:true },
+    { q:ANY, c:'alkene-by-construction' }
+  ]);
+  L.define('imines-enamines', [
+    { q:/Which amine is most used|H2NNH2/i, recall:true },
+    { q:/reductive amination|secondary amine cleanly|reduces an imine/i, c:'amine-synthesis-routes' },
+    { q:/enamine (is|differ|good)|Stork|nucleophilic\?|comparable|alkylate only once|benzyl bromide|allyl bromide|hydrolyzing an enamine/i, c:'enamine-nucleophile' },
+    { q:ANY, c:'amine-condensation' }
+  ]);
+  L.define('michael-robinson', [
+    { q:/spacing|Robinson|ring size|cyclohexenone|annulation|intramolecular aldol|irreversible|then warmed/i, c:'product-spacing' },
+    { q:ANY, c:'hard-soft-addition' }
+  ]);
+  L.define('ester-syntheses', [
+    { q:/structure\?|What is lost|How many carboxyls|What type of reaction is the alkylation/i, recall:true },
+    { q:ANY, c:'activating-group' }
+  ]);
+  L.define('baeyer-villiger', [
+    { q:/do to a ketone\?|What class of compound is the product|reagent performs|intermediate called|What is a lactone|Which other reaction uses|What leaves|charged\?|kind of ring expansion|kind of step|also has an alkene/i, recall:true },
+    { q:ANY, c:'migratory-aptitude' }
+  ]);
+  L.define('nucleophilic-aromatic', [
+    { q:/proved benzyne|Which chapter/i, recall:true },
+    { q:ANY, c:'aromatic-nucleophilic' }
+  ]);
+})();
+
+/* Aromatic side chains, phenols, Birch, diazonium, polymers (site audit, October 2026). */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  L.define('benzylic-reactivity', [
+    { q:/benzyl bromide used for|benzyl ether removed/i, recall:true },
+    { q:ANY, c:'benzylic-stabilization' }
+  ]);
+  L.define('phenols', [
+    { q:/What is a phenol\?|activator or deactivator|ortho\/para or meta|bromine water|brominate|SN2 at its C-O|Williamson|oxidizing a phenol|quinones colored|dehydrated|usually made|acyl chloride|CO2 at 125/i, recall:true },
+    { q:ANY, c:'phenol-acidity' }
+  ]);
+  L.define('birch-reduction', [
+    { q:/deep blue|What are the Birch conditions|What does the alcohol do|catalytic hydrogenation give from benzene|What is a radical anion/i, recall:true },
+    { q:ANY, c:'partial-reduction' }
+  ]);
+  L.define('diazonium-chemistry', [
+    { q:/formula of an aryl diazonium|reduces a nitro group|azo compounds colored|What is azo coupling|Sandmeyer reaction specifically|What intermediate forms/i, recall:true },
+    { q:ANY, c:'diazonium-hub' }
+  ]);
+  L.define('polymer-basics', [
+    { q:/What is a monomer|degree of polymerization\?|thermoplastic\?|thermoset\?|melted and remolded|repeat unit of polyethylene|What is a repeat unit|chain length raise|branching do|cross-links do|regularity/i, recall:true },
+    { q:/reactive sites?|monofunctional|contributed two|glycerol/i, c:'two-reactive-sites' },
+    { q:/condensation|step-growth|stoichiometry|conversion|nylon 6,6|builds a condensation|repeat unit is C6/i, c:'step-growth' },
+    { q:/addition|chain-growth|stop it and analyze|monomer class/i, c:'chain-growth' }
+  ]);
+  L.define('addition-polymers', [
+    { q:/What polymer comes from|used for\?|same formula/i, recall:true },
+    { q:/tactic|Ziegler|LDPE|HDPE|branch|amorphous|stiff|polyethylene is|polypropylene like/i, c:'packing-and-properties' },
+    { q:ANY, c:'chain-growth' }
+  ]);
+  L.define('condensation-polymers', [
+    { q:/made from\?|numbers in nylon|used for\?|linkage does a polycarbonate|Which polymer is made from|What bond does PET|comparison does a polyamide|pair of monomers|monomers of a polyester/i, recall:true },
+    { q:/recycl|hydroly|alkali|cross-linked/i, c:'crosslink-and-end-of-life' },
+    { q:/Kevlar so strong|para substitution|strong for the same/i, c:'packing-and-properties' },
+    { q:ANY, c:'step-growth' }
+  ]);
+  L.define('polymer-properties', [
+    { q:/cross-link|vulcaniz|thermoset|rubber with no|example of a thermoset|cannot\?|polyethylene cannot/i, c:'crosslink-and-end-of-life' },
+    { q:ANY, c:'packing-and-properties' }
+  ]);
+})();
+
+/* Carbonyl additions, acyl chemistry, enolates and amines (site audit, October 2026). */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  L.define('polymer-design', [
+    { q:/disconnection|reactive group|reactive sites|third site|trifunctional|What were the monomers|What was the monomer|atom count/i, c:'two-reactive-sites' },
+    { q:/recycl|degradab|hydroly|persist|PLA|end of life|compost|durability/i, c:'crosslink-and-end-of-life' },
+    { q:ANY, c:'packing-and-properties' }
+  ]);
+  L.define('hydrates-cyanohydrins', [
+    { q:/more commonly called|Cyanide adds to a carbonyl to give|cyanohydrin carbon carries|Hydrolyzing a cyanohydrin|Reducing a cyanohydrin|unsaturated nitrile|by how many carbons|crystalline salt|reversed by|racemic|which sequence gives/i, recall:true },
+    { q:ANY, c:'addition-equilibrium' }
+  ]);
+  L.define('acyl-chlorides-anhydrides', [
+    { q:/By-products?|releases:|pKa|Standard acetylating|Ring size|imide\?|amic acid|acylium|Friedel-Crafts acylation forms|SOCl2 converts alcohols|SOCl2 do to an OH|Heating succinic/i, recall:true },
+    { q:ANY, c:'activation-before-acylation' }
+  ]);
+  L.define('nitriles', [
+    { q:/IR band|stretch|cm-1|pKa of HCN|hybridized|boils|Mechanism of cyanide|2-Bromo-2-methylbutane/i, recall:true },
+    { q:/LiAlH4|amine/i, c:'amine-synthesis-routes' },
+    { q:ANY, c:'nitrile-as-acyl-level' }
+  ]);
+  L.define('alpha-halogenation', [
+    { q:/good alkylating agent|with pyridine/i, recall:true },
+    { q:ANY, c:'alpha-halogenation-control' }
+  ]);
+  L.define('enolate-regiochemistry', [
+    { q:/A ketone plus a secondary amine gives|enamine is nucleophilic at|enamine stop after|completes the Stork|alkylation proceeds by|Which halide alkylates|tertiary halide with|Secondary halides with|what is C6|How many ring hydrogens/i, recall:true },
+    { q:ANY, c:'enolate-regiocontrol' }
+  ]);
+  L.define('amine-synthesis', [
+    { q:/Hofmann rearrangement|Curtius|what migrates|Which intermediate do Hofmann/i, recall:true },
+    { q:/self-limiting|phthalimide be alkylated only once/i, c:'acylation-self-termination' },
+    { q:ANY, c:'amine-synthesis-routes' }
+  ]);
+  L.define('hofmann-elimination', [
+    { q:/once used to work out|What did the released alkenes/i, recall:true },
+    { q:ANY, c:'hofmann-elimination-rule' }
+  ]);
+})();
+
+/* Topics that had some rules but still fell back often (site audit, October 2026). */
+(function(){
+  var L = window.OchemLegacyDiagnosis;
+  var ANY = /[\s\S]/;
+
+  L.define('carbon-carbon-bonds', [
+    { q:/acetylide|alkyne/i, c:'acetylide-alkylation' },
+    { q:/disconnection|cyclohexene/i, c:'disconnection' },
+    { q:ANY, c:'cc-bond-toolkit' }
+  ]);
+  L.define('carbocations', [
+    { q:/migrat|shift|fate\?|solvolyzes/i, c:'carbocation-rearrangement' },
+    { q:/rank|stable|stabiliz|ionizes faster|hyperconjugation|induction|vinyl cation|protonated|positive charge on one/i, c:'carbocation-stability' }
+  ]);
+  L.define('aldehydes-ketones', [
+    { q:/partial negative|reactive toward a nucleophile|approaches a carbonyl|Resonance stabilization usually/i, c:'carbonyl-electrophilicity' },
+    { q:/adds water|hydrate/i, c:'addition-equilibrium' },
+    { q:/Which of these compounds is a ketone|only aldehyde with two|differ specifically/i, c:'carbonyl-family-distinction' }
+  ]);
+  L.define('cis-trans-ez', [
+    { q:/cyclohex|cyclopent|ring/i, c:'ring-cis-trans' },
+    { q:/outranks|ranks higher/i, c:'cip-priority' },
+    { q:/descriptor|E or Z|cis and trans apply|full name/i, c:'ez-assignment' }
+  ]);
+  L.define('bronsted', [
+    { q:/proton|deprotonat|pKa|weaker acid/i, c:'bronsted-identification' }
+  ]);
+  L.define('atomic-structure', [
+    { q:/mass number|carbon-14|planet-like|ionic bond|bonds by transferring|kind of bonding forms|gains an extra electron/i, recall:true },
+    { q:/charge|electrons surround|lone pair|loses one electron/i, c:'valence-electrons' }
+  ]);
+})();

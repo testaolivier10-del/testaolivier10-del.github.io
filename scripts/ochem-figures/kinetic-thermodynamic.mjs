@@ -239,32 +239,6 @@ function ring(c, o = {}) {
 const enolateO = (o) => LP(o, 90) + LP(o, 160) + LP(o, 20) + chg(o.x + 25, o.y - 19);
 const ketoneO = (o) => LP(o, 150) + LP(o, 30);
 
-FIGURES.push({
-  id: 'kinetic-thermodynamic-enolates',
-  section: 'kinetic-thermodynamic',
-  anchor: 'This is the thermodynamic enolate.</p>',
-  alt: 'Preview. 2-Methylcyclohexanone at the top. An arrow labeled take H from C6 leads down-left to the kinetic enolate, whose C=C joins C1 and C6 and carries two carbons. An arrow labeled take H from C2 leads down-right to the thermodynamic enolate, whose C=C joins C1 and C2 and carries three carbons, one of them the methyl.',
-  viewBox: '0 0 760 380',
-  build() {
-    let s = '';
-    const ket = ring(P(380, 110), { loc: [1, 2, 6], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
-    s += ket.s + ketoneO(ket.top);
-    const kin = ring(P(170, 280), { dbl: 'C1C6', loc: [1, 2, 6], hi: [0, 4], subs: [{ at: 2, deg: 30, label: 'CH₃' }] });
-    s += kin.s + enolateO(kin.top);
-    const thd = ring(P(590, 280), { dbl: 'C1C2', loc: [1, 2, 6], hi: [5, 1], subs: [{ at: 2, deg: 30, label: 'CH₃', bondCls: 'fg-bond-hi', kind: 'hi' }] });
-    s += thd.s + enolateO(thd.top);
-    s += arrow(P(318, 150), P(236, 206)) + T(262, 164, 'take H from C6', { anchor: 'end' });
-    s += arrow(P(442, 150), P(524, 206)) + T(498, 164, 'take H from C2', { anchor: 'start' });
-    s += T(380, 180, '2-methylcyclohexanone');
-    s += T(170, 348, 'kinetic enolate: C1=C6', { cls: 'fg-tag-good' });
-    s += T(170, 366, 'two carbons on the C=C');
-    s += T(590, 348, 'thermodynamic enolate: C1=C2');
-    s += T(590, 366, 'three carbons on the C=C');
-    return s;
-  },
-  caption: 'Preview only. The highlighted bonds join each C=C to the carbons it carries: two for the enolate from C6, three for the enolate from C2.',
-});
-
 /* ================================================================ 4 ===
    Preview: sulfonation of naphthalene. C1 and C8 point the same way, so a
    group on C1 crowds the hydrogen on C8; a group on C2 does not. */

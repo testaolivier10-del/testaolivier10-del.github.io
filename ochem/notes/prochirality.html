@@ -57,7 +57,7 @@
   <article class="notes-body notes-view" data-glossary-topic="prochirality">
 <!-- notes:start -->
 <p class="step-body">Look at the CH₂ group of ethanol, CH₃–CH₂–OH. Its two hydrogens sit on the same carbon and are drawn the same way. It is natural to assume they are interchangeable, but they are not: the liver enzyme that breaks down ethanol removes one of them and never the other.</p>
-<p class="step-body">Whether two look-alike groups are really interchangeable matters all through the course. It decides how many signals a molecule gives in a proton NMR spectrum (a plot with one signal for each different kind of hydrogen, taught in <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a>). It also decides what happens when a reagent attacks a flat C=O group from one side or the other. This page gives you one test that settles the question, and the names for its three possible answers.</p>
+<p class="step-body">Whether two look-alike groups are really interchangeable matters all through the course. It decides which hydrogens count as equivalent, which <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a> relies on. It also decides what happens when a reagent attacks a flat C=O group from one side or the other. This page gives you one test that settles the question, and the names for its three possible answers.</p>
 
 <h3>The question, and the test that answers it</h3>
 <p class="step-body">The test is easiest to see on a case where the answer is obvious, so start with propane.</p>
@@ -99,7 +99,7 @@
 <!-- fig:ethanol-substitution-test:end -->
 </div>
 
-<p class="step-body">Enantiotopic groups behave identically toward anything achiral. An achiral reagent removes either one at the same rate, and they share one NMR signal in an ordinary solvent. This is why, in <a class="chapter-ref" href="/ochem/notes/radical-halogenation.html">Radical halogenation</a> (a preview), two hydrogens count as equivalent when replacing either one gives the same compound or its mirror image. Only a chiral environment, such as the inside of an enzyme, can tell enantiotopic groups apart.</p>
+<p class="step-body">Enantiotopic groups behave identically toward anything achiral. An achiral reagent removes either one at the same rate, and in an ordinary (achiral) solvent the two hydrogens share one NMR signal. This is why, in <a class="chapter-ref" href="/ochem/notes/radical-halogenation.html">Radical halogenation</a> (a preview), two hydrogens count as equivalent when replacing either one gives the same compound or its mirror image. Only a chiral environment, such as the inside of an enzyme, can tell enantiotopic groups apart.</p>
 
 <div class="notes-example">
 <span class="k">Worked example 3 — C3 of 2-bromobutane: diastereotopic</span>
@@ -113,7 +113,7 @@
 <!-- fig:bromobutane-c3-test:end -->
 </div>
 
-<p class="step-body">Diastereomers are different compounds, with different melting points, different spectra and different reaction rates. So diastereotopic groups differ toward everything, including an achiral reagent and an ordinary NMR spectrometer.</p>
+<p class="step-body">Diastereomers are different compounds, with different melting points, different spectra and different reaction rates. So diastereotopic groups differ toward everything, including an achiral reagent.</p>
 
 <div class="notes-fact">A methyl group always comes out homotopic. Replace any one of its three hydrogens and you get CH₂D. Turning the methyl about its C–C bond carries each hydrogen into the next one's place, so all three replacements give the same compound. That is why a CH₃ always gives one signal for all three of its hydrogens. A CH₂ has no such guarantee.</div>
 
@@ -148,7 +148,7 @@
 </div>
 
 <p class="step-body">The rule ties straight back to the substitution test. Deuterium outranks hydrogen, so replacing a hydrogen with D promotes it in exactly this way. Replacing the pro-R hydrogen of ethanol with D therefore gives (R)-1-deuterioethanol. Worked example 2 shows it: Hb, on the hash, is the pro-R hydrogen, and replacing it gave the R product.</p>
-<p class="step-body">Many exam questions stop one step short of these labels and ask only whether a pair is diastereotopic, because that is the part NMR needs. Learn the labels anyway. Biochemistry is written in them, and a question about which hydrogen an enzyme removes can only be answered in these terms.</p>
+<p class="step-body">Many exam questions stop one step short of these labels and ask only whether a pair is diastereotopic, because that is the distinction used most. Learn the labels anyway. Biochemistry is written in them, and a question about which hydrogen an enzyme removes can only be answered in these terms.</p>
 
 <h3>Faces: Re and Si</h3>
 <p class="step-body">Acetaldehyde, CH₃CHO, has a flat carbonyl carbon bonded to O, CH₃ and H. All four atoms lie in one plane, so a reagent can reach that carbon from in front of the plane or from behind it. Those two sides are the carbon's two <b>faces</b>.</p>
@@ -165,22 +165,17 @@
 <p class="step-body">The same picture explains a result you will meet sooner. A <b>carbocation</b>, a carbon with only three bonds and a positive charge, is flat, so a nucleophile can reach it from either face. When the rest of the ion is achiral, those faces are enantiotopic, capture on each is equally likely, and the product is racemic. That is what racemization means in the S<sub>N</sub>1 mechanism in <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> (a preview). The flat shape is not a side detail of that mechanism; it is the reason for the outcome.</p>
 
 <h3>Why this matters</h3>
-<p class="step-body"><b>Proton NMR.</b> This is where topicity matters most. A proton NMR spectrum shows one signal for each chemical environment, not one for each hydrogen. Homotopic hydrogens always share an environment, and so do enantiotopic hydrogens in an ordinary achiral solvent.</p>
-<p class="step-body">Diastereotopic hydrogens do not. No symmetry operation swaps them, so nothing forces their signals to line up, and they can appear at two different positions. The two C3 hydrogens of 2-bromobutane are the standard case: a CH₂ that you might expect to give one signal can give two.</p>
-<p class="step-body">Because the two hydrogens are not equivalent, they can also split each other's signal. Two equivalent hydrogens on one carbon never do that. The simple rule for splitting in <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a> leaves this extra splitting out, so a CH₂ next to a stereocenter often looks messier than the rule predicts. Topicity tells you only that the two signals are allowed to differ, never by how much. Sometimes they happen to land in the same place, and the pair looks equivalent.</p>
-<!-- fig:nmr-diastereotopic:start -->
-<figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 298" role="img" aria-label="Two sketched proton NMR traces. Top: if the two hydrogens of a CH2 were equivalent, they would give one signal. Bottom: diastereotopic hydrogens Ha and Hb can give two signals at different positions, and each is split into two lines because the two hydrogens split each other."><text class="fg-tag" x="170" y="16" text-anchor="middle" font-size="11">a preview of ¹H NMR</text><line class="fg-rule" x1="20" y1="118" x2="320" y2="118"></line><path class="fg-bond-soft" fill="none" d="M158 118 Q166 118 170 48 Q174 118 182 118"></path><text class="fg-tag" x="170" y="140" text-anchor="middle" font-size="11">if Ha and Hb were equivalent:</text><text class="fg-tag" x="170" y="158" text-anchor="middle" font-size="11">one signal</text><line class="fg-rule" x1="20" y1="250" x2="320" y2="250"></line><path class="fg-bond-hi" fill="none" d="M81 250 Q89 250 93 194 Q97 250 105 250"></path><path class="fg-bond-hi" fill="none" d="M95 250 Q103 250 107 194 Q111 250 119 250"></path><path class="fg-bond-hi" fill="none" d="M221 250 Q229 250 233 194 Q237 250 245 250"></path><path class="fg-bond-hi" fill="none" d="M235 250 Q243 250 247 194 Q251 250 259 250"></path><text class="fg-tag-warn" x="100" y="184" text-anchor="middle" font-size="10">Ha</text><text class="fg-tag-warn" x="240" y="184" text-anchor="middle" font-size="10">Hb</text><text class="fg-tag-warn" x="170" y="272" text-anchor="middle" font-size="10">diastereotopic: two positions,</text><text class="fg-tag-warn" x="170" y="288" text-anchor="middle" font-size="10">and each split by the other</text></svg><figcaption>Each diastereotopic hydrogen gives its own signal, drawn here split into two lines by its partner.</figcaption></figure>
-<!-- fig:nmr-diastereotopic:end -->
+<p class="step-body"><b>Spectroscopy.</b> Proton NMR, taught in <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a>, gives one signal per kind of hydrogen: homotopic and enantiotopic hydrogens share a signal, while diastereotopic ones, such as the two on C3 of 2-bromobutane, can give two.</p>
 <p class="step-body"><b>Enzymes.</b> An enzyme is built from single enantiomers of amino acids, so the pocket where it holds its target, the active site, is chiral. A chiral pocket can tell enantiotopic groups apart, because the two hydrogens fit it in two different ways. Alcohol dehydrogenase, the enzyme that oxidizes ethanol to acetaldehyde, removes the <b>pro-R</b> hydrogen from C1 and leaves the pro-S hydrogen alone. To any achiral reagent the two hydrogens are indistinguishable, yet the enzyme picks the same one every time.</p>
 
 <h3>Mistakes to avoid</h3>
 <div class="notes-pitfall"><b>"They're on the same carbon, so they're equivalent."</b> Being attached to the same atom proves nothing. Run the test. A CH₃ always passes it, but a CH₂ has to earn it.</div>
-<p class="step-body"><b>Mixing up the two -topic words.</b> Enantiotopic groups differ only in a chiral environment. Diastereotopic groups differ everywhere. If you predict two NMR signals for a pair, you must have concluded diastereotopic, because enantiotopic hydrogens give one signal in an ordinary solvent.</p>
+<p class="step-body"><b>Mixing up the two -topic words.</b> Enantiotopic groups differ only in a chiral environment. Diastereotopic groups differ everywhere.</p>
 <p class="step-body"><b>Assuming a stereocenter is required.</b> Enantiotopic groups need no stereocenter at all, as ethanol shows. Diastereotopic groups need something else stereogenic, but a ring or a C=C can supply it, as methylcyclohexane and propene show.</p>
 <p class="step-body"><b>Reading "prochiral" as "chiral".</b> A prochiral center is not a stereocenter; it is one substitution away from becoming one. Many books also call a whole achiral molecule prochiral when one substitution would make it chiral, so ethanol is a prochiral molecule. Either way, the prefix means "one substitution short": of a stereocenter for a center, or of chirality for a whole molecule.</p>
 
 <h3>What carries forward</h3>
-<p class="step-body">Topicity links the stereochemistry you have just finished to the two places it is used most. It is what makes a proton NMR spectrum readable when it shows more signals than you counted. It is also the language every stereoselective reaction is described in: which face was attacked, which hydrogen was removed, and which of two diastereomeric transition states won. Keep the substitution test ready. Replace one, replace the other, and compare the products; every question in this area comes down to that.</p>
+<p class="step-body">Topicity links the stereochemistry you have just finished to the two places it is used most. It is how Spectroscopy decides which hydrogens give separate signals. It is also the language every stereoselective reaction is described in: which face was attacked, which hydrogen was removed, and which of two diastereomeric transition states won. Keep the substitution test ready. Replace one, replace the other, and compare the products; every question in this area comes down to that.</p>
 <!-- notes:end -->
   </article>
 

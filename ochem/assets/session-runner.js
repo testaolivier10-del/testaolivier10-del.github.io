@@ -446,7 +446,9 @@
     }
 
     function headHtml(q, isCheck, conceptId){
-      var concept = CO.get(conceptId);
+      // A legacy question whose concept is only its topic's default does not
+      // name that concept above the stem (see question-engine normalizeLegacy).
+      var concept = (q.conceptFallback && !isCheck) ? null : CO.get(conceptId);
       var kindLabel = KIND_LABEL[q.kind] || '';
       return navHtml() +
         '<div class="step-eyebrow">' +
@@ -615,7 +617,7 @@
         html += '<div class="diag"><div class="k">' +
           (d.precise ? 'Here is what went wrong' : 'Not quite') + '</div>' +
           (d.whatYouDid ? '<div class="did">' + esc(d.whatYouDid) + '</div>' : '') +
-          '<p class="msg">' + esc(d.diagnosis) + '</p>' +
+          (d.diagnosis ? '<p class="msg">' + esc(d.diagnosis) + '</p>' : '') +
           (d.why ? '<p class="msg">' + esc(d.why) + '</p>' : '') +
         '</div>';
 

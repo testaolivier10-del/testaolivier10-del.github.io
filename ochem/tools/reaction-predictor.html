@@ -118,6 +118,9 @@
 <!-- tool-ld:end -->
 <style>
 .rp-setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+  /* Two wide columns on a desktop: four narrow ones cut the reagent and substrate
+     names off mid-word at 1440 px (site audit 2026-10). */
+  @media(min-width:900px){ .rp-setup{grid-template-columns:1fr 1fr;} }
   .rp-setup .tfield{margin-bottom:0;}
   .rp-equation{
     display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;
