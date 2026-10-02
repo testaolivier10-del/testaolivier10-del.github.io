@@ -34,6 +34,8 @@
   }
   .nf-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin:0 0 40px;}
   .nf-card{display:block;text-decoration:none;color:inherit;}
+  .nf-search{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 24px;max-width:520px;}
+  .nf-search input{flex:1;min-width:0;min-height:44px;padding:0 14px;border-radius:12px;border:var(--bw) solid var(--line);background:var(--white);color:var(--ink);font:700 15px var(--font-ui);}
   .nf-card h2{font-size:17px;margin:0 0 6px;}
   .nf-card p{margin:0;color:var(--muted);font-size:14px;font-weight:700;}
 </style>
@@ -52,6 +54,11 @@
     <h1>That page isn&rsquo;t here.</h1>
     <p class="lede">The link may be out of date, or the address may have a typo in it. Nothing is broken on your end.</p>
     <p class="nf-path" id="nfPath" hidden></p>
+    <form class="nf-search" action="/search.html" method="get" role="search">
+      <label class="sr-only" for="nfQ">Search every course</label>
+      <input type="search" id="nfQ" name="q" placeholder="Search notes, terms, questions" autocomplete="off" enterkeyhint="search">
+      <button type="submit" class="btn-press sm">Search</button>
+    </form>
     <div class="hero-ctas">
       <a class="btn-press" href="/">Go to LevlPrep</a>
       <button type="button" class="link-underline" id="nfBack" hidden>Back to the last page</button>
@@ -98,6 +105,11 @@ document.addEventListener('DOMContentLoaded', function(){
       el.textContent = path;
       el.hidden = false;
     }
+    // The missing page's own words are the likeliest search: "sn2-old.html"
+    // becomes "sn2 old" in the box.
+    var q = document.getElementById('nfQ');
+    var words = decodeURIComponent(location.pathname.split('/').pop() || '').replace(/\.html?$/, '').replace(/[-_]+/g, ' ').trim();
+    if(q && words && words !== 'index') q.value = words;
     // Going back lands nowhere when this page is the first entry in the
     // session — someone following a dead link from outside the site. So the
     // offer ships hidden and is only revealed when there is somewhere to go.
