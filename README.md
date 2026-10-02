@@ -2,7 +2,7 @@
 
 Source for [LevlPrep](https://levlprep.com/), home to three courses:
 
-**[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,106-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
+**[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,033-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
 **[Organic Chemistry](https://levlprep.com/ochem/)** — a mastery/learning product, not exam prep: a full 23-chapter, 121-topic organic chemistry curriculum (`ochem/assets/curriculum.js`), each lesson built as Explain → Visualize → Interact → Guided Practice → Independent Practice → Explanation → Challenge. **All 121 topics are built: 117 interactive lessons, 10 mechanism walkthroughs (SN1, SN2, E1 and E2 are taught through theirs), a textbook section per topic and a 3,635-question practice bank**, from Foundations through spectroscopy, synthesis and polymers; `curriculum.js` is the single source of truth for what exists. A Mastery dashboard scores performance per module from real question attempts, not just completion, and flags concept dependencies: struggling on E2 surfaces a "possible gap detected" callout pointing at its declared prerequisites, whether or not those prerequisite lessons exist yet. Alongside the course there are **eight interactive tools** (`ochem/tools.html`) — an arrow pusher that shows you the product your mechanism makes, a resonance explorer, a 3D viewer, a conformation lab, a reaction predictor, an acid/base comparator, a spectroscopy lab and a reagent roadmap — see [Tools](#tools). A spaced-repetition flashcard deck (`ochem/flashcards.html`) draws its cards from the course's own notes and concepts.
 
@@ -116,7 +116,7 @@ nremt/                 The NREMT-EMT Prep course
   scenario-sim.html       Branching clinical scenarios
   search.html             Client-side search across notes + the question bank
   assets/
-    questions.json        The 2,106-question bank: the file you edit. Nothing fetches
+    questions.json        The 2,033-question bank: the file you edit. Nothing fetches
                             it; questions-core.json and explanations.json are
                             generated from it (scripts/build-question-bank.mjs)
     question-ids.js        What every stored question record refers to. Pure
@@ -604,7 +604,7 @@ It works in two layers, and the first one is always on:
 
    When the reference pages answer weakly, a second tier loads: each course's
    practice explanations, built by `scripts/build-tutor-bank.mjs` into
-   `<course>/assets/tutor-bank.json` (NREMT 2,106 entries, ochem 2,917). That
+   `<course>/assets/tutor-bank.json` (NREMT 2,033 entries, ochem 2,917). That
    is the largest body of teaching prose either course has — written to explain
    why an answer is right — and it was invisible to the assistant because it
    sits inside megabyte question banks alongside answer keys. It is fetched
