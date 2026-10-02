@@ -242,10 +242,10 @@
      ================================================================= */
   { id:'sn1-cation-order', kind:'order', tier:2, topic:'sn1', concepts:['carbocation-stability'],
     prompt:'Rank these carbocations, most stable first.',
-    items:['(CH₃)₃C⁺ (tertiary)','CH₂=CH–CH₂⁺ (allylic)','(CH₃)₂CH⁺ (secondary)','CH₃CH₂⁺ (primary)'],
+    items:['(CH₃)₃C⁺ (tertiary)','CH₂=CH–C⁺(CH₃)₂ (tertiary allylic)','(CH₃)₂CH⁺ (secondary)','CH₃CH₂⁺ (primary)'],
     answer:[1,0,2,3],
-    why:'Resonance beats substitution: the allylic cation spreads its charge over two carbons, which stabilizes it more than the hyperconjugation a tertiary cation gets. After that it is the familiar 3° > 2° > 1°.',
-    diag:{ any:{ concept:'carbocation-stability', msg:'Two effects are in play, in this priority: resonance delocalization first, then degree of substitution. An allylic or benzylic cation outranks even a tertiary one because the charge is genuinely shared between atoms.' } } },
+    why:'The tertiary allylic cation has both effects at once: three carbons donating by hyperconjugation and resonance that shares the charge with the far end of the C=C. So it beats plain tertiary. After that it is the familiar 3° > 2° > 1°.',
+    diag:{ any:{ concept:'carbocation-stability', msg:'Count both effects: resonance with a C=C or ring adds to the stability that substitution gives. Resonance helps a lot, but not without limit: a primary allylic cation is only about as stable as a secondary alkyl one, and a primary benzylic about as stable as a tertiary.' } } },
 
   { id:'sn1-rate-law', kind:'mcq', tier:2, topic:'sn1', concepts:['rate-law-kinetics','carbocation-stability'],
     prompt:'You triple the nucleophile concentration in an SN1 reaction. What happens to the rate?',
@@ -817,9 +817,9 @@
 
   { id:'challenge-multi-1', kind:'mcq', tier:4, topic:'substrate-effects', concepts:['mechanism-selection','carbocation-rearrangement','stereochemical-outcome'],
     prompt:'(S)-3-bromo-2,2-dimethylbutane is warmed in methanol. What best describes the product?',
-    options:['A single inverted ether from clean SN2','An ether derived from a rearranged tertiary carbocation, essentially racemic at the new center','The starting material, unchanged','An alkene only, with no substitution product'],
+    options:['A single inverted ether from clean SN2','An ether derived from a rearranged tertiary carbocation; the stereocenter is destroyed and the product is achiral','The starting material, unchanged','An alkene only, with no substitution product'],
     answer:1,
-    why:'Three things chain together: methanol is a weak neutral nucleophile, so this is solvolysis (SN1). The secondary cation formed sits next to a quaternary carbon, so a methyl shift gives the tertiary cation. Attack on that planar cation happens from either face, so the product is racemic — and the stereochemistry you started with is gone.',
+    why:'Three things chain together: methanol is a weak neutral nucleophile, so this is solvolysis (SN1). The secondary cation formed sits next to a quaternary carbon, so a methyl shift gives the tertiary cation. Methanol then adds to that tertiary carbon, giving 2-methoxy-2,3-dimethylbutane. That carbon carries two methyls, so it is not a stereocenter: the product is achiral, and the stereochemistry you started with is gone.',
     diag:{
       0:{ concept:'mechanism-selection', msg:'Neutral methanol is a weak nucleophile — it cannot drive SN2 on a secondary, hindered carbon. Weak neutral nucleophile plus heat means solvolysis, which means a carbocation, which means both rearrangement and loss of stereochemistry.' },
       2:{ concept:'mechanism-selection', msg:'Warm methanol with a secondary bromide readily solvolyzes. Something definitely happens.' },
@@ -1908,7 +1908,7 @@
   // ---- Spectroscopy ---------------------------------------------------
 
   { id:'ir-distinguish-pair', kind:'mcq', tier:4, topic:'ir', concepts:['ir-functional-groups'],
-    prompt:'One IR spectrum shows a strong band at 1715 cm⁻¹ and no broad absorption near 3300. The other shows both. Which pair does this distinguish?',
+    prompt:'One IR spectrum shows a strong band at 1715 cm⁻¹ and nothing above 3000 except C–H. The other shows the 1715 band plus a very broad trough from about 2500 to 3300 cm⁻¹. Which pair does this distinguish?',
     options:[
       'A ketone from a carboxylic acid',
       'An alkane from an alkene',

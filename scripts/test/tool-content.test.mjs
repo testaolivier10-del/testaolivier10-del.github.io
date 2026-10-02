@@ -1013,3 +1013,51 @@ test('roadmap: the reagent search finds what students type', () => {
   }
   assert.equal(E.searchReagents('zzzz').length, 0);
 });
+
+/* ====================================================================== */
+/* Spectrum predictor (site audit 2026-10)                                 */
+/* ====================================================================== */
+
+test('the spectrum predictor reads splitting, anhydrides, para rings and condensed groups', () => {
+  const s = browser().load('ochem/assets/molecules.js', 'ochem/assets/chem-core.js',
+                           'ochem/assets/mol-builder.js', 'ochem/assets/spectra-predict.js');
+  const { OchemBuilder: B, OchemSpectra: S, OchemChem: C } = s;
+  const nmr = f => S.predictNMR(B.parse(f).st);
+
+  // n+1 past a sextet: six equivalent neighbours make a septet.
+  const ipr = nmr('(CH3)2CHCl');
+  assert.ok(ipr.some(x => x.h === 1 && x.mult === 'sept'), '2-chloropropane CH is not a septet');
+
+  // Acetic anhydride shows two carbonyl bands, not one ester band.
+  const ir = S.predictIR(B.parse('CH3COOCOCH3').st).map(b => b.cm);
+  assert.ok(ir.includes(1820) && ir.includes(1760) && !ir.includes(1740), 'anhydride carbonyls wrong: ' + ir);
+
+  // A para ring with two different groups: two 2H doublets, ortho-to-NO2 downfield.
+  B.RINGS['p-nitrotoluene (test)'] = { n:6, aromatic:true, subs:{0:'CH3', 3:'NO2'} };
+  const ar = S.predictNMR(B.parse('p-nitrotoluene (test)').st).filter(x => x.label === 'Ar–H');
+  assert.equal(ar.length, 2, 'para ring merged into one signal');
+  assert.ok(ar.every(x => x.h === 2 && x.mult === 'd'), 'para ring is not two 2H doublets');
+  assert.ok(Math.abs(ar[0].ppm - ar[1].ppm) > 0.5, 'para doublets not separated');
+
+  // Equivalent ring hydrogens stay one singlet whatever the Kekulé drawing.
+  const px = S.predictNMR(B.parse('p-xylene').st).filter(x => x.label === 'Ar–H');
+  assert.ok(px.length === 1 && px[0].mult === 's' && px[0].h === 4, 'p-xylene ring H is not a 4H singlet');
+
+  // A C=O pointing out of the ring does not make the ring aromatic (quinone).
+  B.RINGS['quinone (test)'] = { n:6, unsat:[[1,2],[4,5]], ketone:0 };
+  const q = B.parse('quinone (test)').st;
+  q.atoms.o2 = { el:'O', label:'O', group:false, x:0, y:0, r:18, lp:2, charge:0, hImplicit:0 };
+  q.bonds.push({ a:'r4', b:'o2', order:2 });
+  C.countImplicitHydrogens(q);
+  assert.equal(Object.keys(S.aromaticSet(q)).length, 0, 'a quinone is called aromatic');
+
+  // Condensed CH₃ labels count in the formula and show up in the spectrum.
+  const mx = { atoms:{}, bonds:[] };
+  for(let i = 1; i <= 6; i++) mx.atoms['c' + i] = { label:'C', x:i, y:0 };
+  mx.atoms.m1 = { label:'CH₃', x:0, y:0 }; mx.atoms.m3 = { label:'CH₃', x:0, y:0 };
+  for(let i = 1; i <= 6; i++) mx.bonds.push({ a:'c' + i, b:'c' + (i % 6 + 1), order: i % 2 ? 2 : 1 });
+  mx.bonds.push({ a:'c1', b:'m1' }, { a:'c3', b:'m3' });
+  const st = C.fromMolecule(mx);
+  assert.equal(C.formula(st), 'C₈H₁₀', 'm-xylene formula');
+  assert.ok(S.predictNMR(st).some(x => x.h === 6 && x.label === 'CH₃'), 'm-xylene methyls missing');
+});
