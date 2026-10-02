@@ -115,7 +115,7 @@ export function glossaryTerms(ROOT) {
     for (const e of list) {
       if (e.pop === false) continue;
       const forms = [e.term, ...(e.aliases || [])].filter((f) => f && f.length >= 3);
-      terms.push({ term: e.term, topic, res: forms.map(termRe) });
+      terms.push({ term: e.term, topic, forms, res: forms.map(termRe) });
     }
   }
   return terms;
@@ -128,17 +128,25 @@ function termRe(form) {
   return new RegExp(`(?<![A-Za-z0-9-])${body}(?![A-Za-z0-9])`, form === form.toLowerCase() ? 'gi' : 'g');
 }
 
-/* Forward references: { topic, term, taughtIn, kind, file, count }. */
+/* Forward references: { topic, term, taughtIn, kind, file, count }.
+   Terms already taught (here or earlier) are blanked out first, longest
+   first, so a taught "Claisen rearrangement" or "singlet carbene" is not
+   read as the later "Claisen" or NMR "singlet" inside it. */
 export function forwardRefs(MODULES, sources, terms) {
   const pos = positions(MODULES).topic;
   const out = [];
   for (const m of MODULES) for (const t of m.topics) {
     const here = pos[t.id];
     const later = terms.filter((g) => pos[g.topic] !== undefined && pos[g.topic] > here);
+    const known = terms.filter((g) => pos[g.topic] !== undefined && pos[g.topic] <= here)
+      .flatMap((g) => g.forms.map((f, i) => ({ len: f.length, re: g.res[i] })))
+      .sort((a, b) => b.len - a.len);
     for (const src of sources[t.id] || []) {
+      let text = src.text;
+      for (const k of known) { k.re.lastIndex = 0; text = text.replace(k.re, (s) => ' '.repeat(s.length)); }
       for (const g of later) {
         let n = 0;
-        for (const re of g.res) { re.lastIndex = 0; n += (src.text.match(re) || []).length; }
+        for (const re of g.res) { re.lastIndex = 0; n += (text.match(re) || []).length; }
         if (n) out.push({ topic: t.id, term: g.term, taughtIn: g.topic, kind: src.kind, file: src.file, count: n });
       }
     }

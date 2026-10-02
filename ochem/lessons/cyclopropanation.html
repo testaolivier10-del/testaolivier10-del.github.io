@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function(){
               var cfg = CASES.filter(function(c){ return c.id === id; })[0];
               if(btn.getAttribute('data-o') !== cfg.right){
                 missed = true; btn.classList.add('wrong'); btn.disabled = true;
-                api.showFeedback(fb, false, 'Look at the carbon in the reagent. A haloform loses its H and one halogen, so its carbon arrives carrying the other two halogens. A CH₂ reagent arrives as plain CH₂.');
+                api.showFeedback(fb, false, 'Look at the carbon in the reagent. Chloroform or bromoform loses its H and one halogen, so its carbon arrives carrying the other two halogens. A CH₂ reagent arrives as plain CH₂.');
                 return;
               }
               done[id] = true; btn.classList.add('correct');
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function(){
               api.card.querySelector('[data-why="' + id + '"]').innerHTML = cfg.why;
               if(Object.keys(done).length === CASES.length){
                 api.showFeedback(fb, true, missed
-                  ? 'All four. The haloform reagents keep two halogens on the new ring carbon; the CH₂ reagents add plain CH₂.'
+                  ? 'All four. Chloroform and bromoform keep two halogens on the new ring carbon; the CH₂ reagents add plain CH₂.'
                   : 'All four on the first try, including diazomethane, which reaches the same CH₂ by a much more dangerous route.');
                 api.record(!missed); next.disabled = false;
               }
