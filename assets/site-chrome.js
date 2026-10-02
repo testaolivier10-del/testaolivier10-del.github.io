@@ -767,6 +767,33 @@
     scrollIntoView: scrollIntoView
   };
 
+  /* Share buttons and milestone certificates are needed at the end of an exam
+     or a chapter, not on arrival, so their modules are fetched the first time
+     something asks: LevlLazy('share', function(S){ ... }). That keeps them out
+     of the shell every page pays for, and lets a results screen hook them in
+     with one line. Each module loads once; callers queue until it lands, and
+     a module that fails to load (offline, blocked) simply never calls back. */
+  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones' };
+  var lazyWait = {};
+  function lazy(name, cb){
+    var g = LAZY[name];
+    if(!g) return;
+    if(window[g]){ cb(window[g]); return; }
+    if(lazyWait[name]){ lazyWait[name].push(cb); return; }
+    lazyWait[name] = [cb];
+    var el = document.createElement('script');
+    el.src = '/assets/' + name + '.js';
+    el.onload = function(){
+      var q = lazyWait[name] || [];
+      q.forEach(function(f){ if(window[g]) f(window[g]); });
+      lazyWait[name] = null;
+    };
+    // Forget the attempt, so the next ask (back online) tries again.
+    el.onerror = function(){ lazyWait[name] = null; el.remove(); };
+    document.head.appendChild(el);
+  }
+  window.LevlLazy = lazy;
+
   /* At module scope rather than inside render(): Chrome can fire
      beforeinstallprompt before a page has called render(), and an event with
      no listener is simply gone — with it, the only chance to offer the

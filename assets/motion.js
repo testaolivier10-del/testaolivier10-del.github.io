@@ -11,6 +11,14 @@
      levl:levelup   { level, title }
                     fired once per level crossed — a toast at the bottom of
                     the screen and a short burst of confetti.
+     levl:streak    { days }
+                    fired by HubProgress.recordActivity() on the day a streak
+                    reaches 7, 30 or 100 — the same toast and confetti.
+
+   Both toasts carry a Share button (assets/share.js, fetched only if it is
+   pressed). The toast stays up while the pointer or keyboard focus is in it,
+   so the button can actually be reached; otherwise it leaves on its usual
+   schedule, before account.js's save prompt takes the same spot.
 
    Plus one thing that is not an event: progress bars fill from zero when the
    page opens, so a reading you earned is seen being earned. Every bar the
@@ -67,9 +75,13 @@
     el.classList.add('levl-pulse');
   }
 
-  /* ---- level-up toast + confetti ---- */
-  var toastTimer;
-  function toast(level, title){
+  /* ---- level-up and streak toast + confetti ---- */
+  var toastTimer, busyUntil = 0;
+  function hideLater(el, ms){
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ el.classList.remove('show'); }, ms);
+  }
+  function show(ring, line, sub, share){
     var el = document.getElementById('levlToast');
     if(!el){
       el = document.createElement('div');
@@ -77,11 +89,47 @@
       el.className = 'levl-toast';
       el.setAttribute('role', 'status');
       document.body.appendChild(el);
+      // Held open while someone is reaching for the button in it.
+      el.addEventListener('mouseenter', function(){ clearTimeout(toastTimer); });
+      el.addEventListener('focusin', function(){ clearTimeout(toastTimer); });
+      el.addEventListener('mouseleave', function(){ hideLater(el, 2000); });
+      el.addEventListener('focusout', function(){ hideLater(el, 2000); });
     }
-    el.innerHTML = '<span class="ring">L' + level + '</span><span>Level ' + level + ' · ' + escapeHtml(title || '') + '<small>New rank unlocked.</small></span>';
-    clearTimeout(toastTimer);
+    el.innerHTML = '<span class="ring">' + escapeHtml(ring) + '</span><span>' + escapeHtml(line) + '<small>' + escapeHtml(sub) + '</small></span>' +
+      (share && window.LevlLazy ? '<button type="button" class="levl-toast__share">Share</button>' : '');
+    var b = el.querySelector('.levl-toast__share');
+    if(b) b.addEventListener('click', function(){
+      window.LevlLazy('share', function(S){ S.share(share); });
+    });
     requestAnimationFrame(function(){ el.classList.add('show'); });
-    toastTimer = setTimeout(function(){ el.classList.remove('show'); }, 4200);
+    hideLater(el, 4200);
+  }
+  function courseHome(){
+    var p = location.pathname;
+    return p.indexOf('/nremt') > -1 ? '/nremt/' : p.indexOf('/ochem') > -1 ? '/ochem/'
+         : p.indexOf('/anatomy-physiology') > -1 ? '/anatomy-physiology/' : '/';
+  }
+  function toast(level, title){
+    show('L' + level, 'Level ' + level + ' \u00b7 ' + (title || ''), 'New rank unlocked.', {
+      what: 'level', title: 'LevlPrep',
+      text: 'I reached Level ' + level + (title ? ' (' + title + ')' : '') + ' studying on LevlPrep.',
+      url: courseHome()
+    });
+  }
+  function streakToast(days){
+    show(days + 'd', days + '-day streak', 'Studied ' + days + ' days in a row.', {
+      what: 'streak', title: 'LevlPrep',
+      text: 'I have studied on LevlPrep ' + days + ' days in a row.',
+      url: courseHome()
+    });
+  }
+  /* A streak mark and a level-up can land on the same answer (the first
+     answer of the day earns a show-up bonus). One after the other, then,
+     not one over the other. */
+  function celebrate(fn){
+    var at = Math.max(Date.now() + (reduced() ? 0 : 900), busyUntil);
+    busyUntil = at + 4600;
+    setTimeout(function(){ fn(); confetti(); }, at - Date.now());
   }
 
   function confetti(){
@@ -167,7 +215,11 @@
   });
   document.addEventListener('levl:levelup', function(e){
     var d = e.detail || {};
-    setTimeout(function(){ toast(d.level, d.title); confetti(); }, reduced() ? 0 : 900);
+    celebrate(function(){ toast(d.level, d.title); });
+  });
+  document.addEventListener('levl:streak', function(e){
+    var d = e.detail || {};
+    if(d.days) celebrate(function(){ streakToast(d.days); });
   });
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watchBars);

@@ -200,8 +200,9 @@
     if(analytics) html += '<section class="panel" aria-labelledby="anp-db-tools-h"><h2 id="anp-db-tools-h">Tool accuracy' + pill + '</h2>' +
       '<p class="anp-db-hint">Share of items right in each tool, all time.</p>' + toolHtml + '</section>';
 
-    html += '</div></div>';
+    html += '</div></div><div id="levlMilestones"></div>';
     app.innerHTML = html;
+    if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'anp'); });
     if(window.LevlExamDate) window.LevlExamDate.mount(document.getElementById('anpExamDate'), {
       subject: 'anp',
       links: { review: BASE + 'review.html', exams: BASE + 'exams.html' },

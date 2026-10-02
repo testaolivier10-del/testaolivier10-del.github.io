@@ -2174,6 +2174,15 @@ function showResults(){
     });
   }
 
+  // A share button under the score, and for a full timed exam the 80%
+  // milestone (assets/share.js, assets/milestones.js; both fetched on demand).
+  // check() reads the exam history asynchronously, after it is saved below.
+  if(window.LevlLazy){
+    window.LevlLazy('share', S => S.result($id('scoreSub'), { course: 'nremt', right: score, total: activeIndices.length,
+      label: mode === 'full' ? 'a full-length NREMT-EMT practice exam' : 'an NREMT-EMT practice set' }));
+    if(mode === 'full') window.LevlLazy('milestones', M => M.check('nremt'));
+  }
+
   // The Premium waitlist, after a session long enough to have shown what the
   // bank does. See assets/premium.js: this asks, it does not lock anything.
   $id('premiumSlot').innerHTML =

@@ -1428,6 +1428,26 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   .levl-prompt__no{white-space:nowrap;}
 }
 
+/* Sharing (assets/share.js) and milestones (assets/milestones.js). The share
+   button sits on whatever a results screen is made of — NREMT's score card is
+   navy, ochem's and A&P's are light — so it carries its own card surface and
+   ink rather than borrowing the colours around it. */
+.levl-share-row{margin:12px 0 0;}
+.levl-share-btn{
+  display:inline-flex;align-items:center;gap:8px;font:800 14px var(--font-ui);color:var(--ink);
+  background:var(--white);border:0;border-radius:var(--radius-pill);padding:9px 16px;cursor:pointer;box-shadow:var(--lift-sm);
+}
+.levl-share-btn svg{color:var(--accent-text);flex-shrink:0;}
+.levl-share-btn:hover{background:var(--hover-tint);}
+.levl-toast__share{
+  font:900 13px var(--font-ui);background:var(--accent-bright);color:var(--navy);border:0;
+  border-radius:calc(var(--radius) - 6px);padding:8px 13px;cursor:pointer;margin-left:4px;
+}
+@media print{.levl-share-row{display:none !important;}}
+/* The milestone dialog and the dashboard list are in assets/milestones.css,
+   fetched with assets/milestones.js: they are drawn on a handful of pages,
+   and this file is on the critical path of every one. */
+
 
 /* Honor the OS "reduce motion" setting across the whole site.
 

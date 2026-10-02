@@ -46,6 +46,13 @@ const PRECACHE_URLS = [
   'assets/icon.svg',
   'assets/exam-date.js',
   'assets/flashcards.css',
+  // Fetched on demand (site-chrome.js, LevlLazy) at the end of an exam or a
+  // chapter, which is exactly when a student on a train has no signal.
+  'assets/share.js',
+  'assets/milestones.js',
+  'assets/milestones.css',
+  'certificate.html',
+  'assets/certificate.js',
   'search.html',
   'assets/site-search-all.js',
   'nremt/index.html',
