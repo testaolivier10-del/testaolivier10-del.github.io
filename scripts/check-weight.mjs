@@ -178,8 +178,11 @@ const SHELL_BUDGETS = [
   ['ochem', 108],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
-     37.3 KB at the Phase 1 pilot. */
-  ['anatomy-physiology', 44],
+     37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
+     (index first, chapters on demand, explanations after the answer) adds
+     about 1.5 KB to the exams page's scripts and saves up to 4 MB of bank
+     fetches on Practice, Review and Exams. */
+  ['anatomy-physiology', 46],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as

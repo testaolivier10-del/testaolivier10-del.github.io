@@ -346,23 +346,22 @@
       "Parietal",
       "Zygomatic",
       "Vomer",
-      "Sphenoid",
+      "Temporal",
       "Lacrimal"
     ],
     "correct": [
       0,
       2,
-      4,
       5
     ],
     "why": {
-      "correct": "Seven bones build each orbit: the frontal, zygomatic, maxilla, lacrimal, ethmoid, sphenoid and palatine. The parietal bones and the vomer are not among them.",
+      "correct": "Seven bones build each orbit: the frontal, zygomatic, maxilla, lacrimal, ethmoid, sphenoid and palatine. The parietal and temporal bones and the vomer are not among them.",
       "options": [
         "Yes. The frontal bone forms the roof of the orbit.",
         "No. The parietal bones form the side walls and roof of the brain case, well above and behind the eye.",
         "Yes. The zygomatic bone forms the outer wall and part of the floor.",
         "No. The vomer lies in the midline of the nose, between the two orbits.",
-        "Yes. The sphenoid forms the back of the orbit, around the optic canal.",
+        "The temporal bones form the sides of the skull around the ears, not the walls of the orbit.",
         "Yes. The small lacrimal bone lies in the inner wall."
       ]
     }

@@ -265,6 +265,11 @@
         "name": "Rate at which the hormone is cleared from the blood",
         "answer": "up",
         "why": "Free hormone is exposed to the liver's enzymes and to filtering by the kidneys; bound hormone is shielded, so clearance speeds up."
+      },
+      {
+        "name": "Rate at which the gland secretes the hormone, in the first hour",
+        "answer": "none",
+        "why": "The question sets the first hour before the gland adjusts. Feedback slows secretion later, once the extra free hormone is sensed."
       }
     ],
     "why": {
@@ -311,21 +316,20 @@
       "A rise in glucose in the blood after a meal triggers pancreatic cells to release a hormone",
       "A pituitary hormone triggers the thyroid gland to release its hormones",
       "A fall in blood calcium triggers the small glands on the thyroid gland",
-      "A hypothalamic hormone triggers the pituitary gland to release a hormone"
+      "A fall in glucose in the blood between meals triggers pancreatic cells to release a hormone"
     ],
     "correct": [
       0,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "Nerve signals (the adrenal medulla) are neural stimuli, and one hormone triggering another gland (hypothalamus to pituitary, pituitary to thyroid) is a hormonal stimulus. Changes in glucose or calcium in the blood are humoral stimuli.",
+      "correct": "Nerve signals (the adrenal medulla) are neural stimuli, and one hormone triggering another gland (pituitary to thyroid) is a hormonal stimulus. Changes in glucose or calcium in the blood are humoral stimuli.",
       "options": [
         "Correct. Nerve fibers trigger release: a neural stimulus.",
         "Glucose is a nutrient in the blood acting on the gland directly: a humoral stimulus.",
         "Correct. One hormone triggering another gland is a hormonal stimulus.",
         "Calcium is an ion in the blood acting on the gland directly: a humoral stimulus.",
-        "Correct. The hypothalamus's hormone triggers the pituitary gland: a hormonal stimulus."
+        "A change in a blood level acting directly on the gland is a humoral stimulus."
       ]
     }
   },
@@ -527,21 +531,20 @@
     "options": [
       "Epinephrine from the adrenal medulla",
       "A steroid hormone from the outer part of the adrenal gland",
-      "An androgen from the testes",
+      "A water-soluble protein hormone from the pituitary",
       "A short peptide hormone",
       "The thyroid gland's iodine-carrying amine hormones"
     ],
     "correct": [
       1,
-      2,
       4
     ],
     "why": {
-      "correct": "Lipid-soluble hormones travel mostly bound to carrier proteins: steroids, including androgens, and the thyroid gland's amines. Water-soluble hormones such as epinephrine and peptides dissolve in the plasma.",
+      "correct": "Lipid-soluble hormones travel mostly bound to carrier proteins: steroids and the thyroid gland's amines. Water-soluble hormones such as epinephrine, peptides and protein hormones dissolve in the plasma.",
       "options": [
         "Epinephrine is water-soluble and dissolves in the plasma, which is one reason its half-life is only about two minutes.",
         "Correct. Steroids are lipid-soluble and ride on carrier proteins.",
-        "Correct. Androgens are steroids, so they travel bound to carrier proteins.",
+        "Water-soluble hormones dissolve in plasma and travel mostly free.",
         "Peptides are water-soluble and travel dissolved in the plasma.",
         "Correct. These amines are unusually hydrophobic and travel almost entirely bound."
       ]

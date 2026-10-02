@@ -89,7 +89,7 @@
     "core": [
       "communication"
     ],
-    "q": "Mr. Okafor has a transplanted kidney and takes tacrolimus, which stops activated T cells from making IL-2. He skips it for five days, and acute rejection begins. What did tacrolimus normally prevent?",
+    "q": "Mr. Hughes has a transplanted kidney and takes tacrolimus, which stops activated T cells from making IL-2. He skips it for five days, and acute rejection begins. What did tacrolimus normally prevent?",
     "options": [
       "His B cells from making antibodies against ABO antigens",
       "His T cells from recognizing donor HLA proteins",
@@ -236,9 +236,9 @@
     "q": "A 3-month-old boy has severe watery stools, a scaly rash and type 1 diabetes. Genetic testing shows a broken FOXP3 gene. Which cells does he lack, and why does that explain his illness?",
     "options": [
       "Cytotoxic T cells, so viruses destroy his gut, skin and islets",
-      "Helper T cells, so none of his lymphocytes can be activated",
+      "Helper T cells, so his lymphocytes are poorly activated",
       "Regulatory T cells, so his self-reactive T cells go unchecked",
-      "Dendritic cells, so his T cells never receive costimulation"
+      "Dendritic cells, so his T cells receive no costimulation"
     ],
     "correct": 2,
     "why": {
@@ -393,7 +393,7 @@
     ],
     "q": "Before a kidney transplant, donor and recipient are tissue typed for HLA. Before a red cell transfusion, they are not. Why?",
     "options": [
-      "HLA antibodies cannot reach red cells in the bloodstream",
+      "HLA antibodies stay out of the bloodstream",
       "Transfused red cells are removed by the spleen before T cells see them",
       "Red cells carry HLA types that are the same in everyone",
       "Mature red blood cells carry almost no HLA proteins"
@@ -514,7 +514,7 @@
     "options": [
       "Identical twins share the same HLA proteins",
       "Kidneys carry no MHC proteins",
-      "His T cells tolerate all kidneys",
+      "His T cells tolerate kidneys in general",
       "Identical twins share the same ABO type"
     ],
     "correct": 0,

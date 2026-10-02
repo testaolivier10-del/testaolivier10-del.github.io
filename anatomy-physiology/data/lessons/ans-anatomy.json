@@ -1,6 +1,6 @@
 {
   "topic": "ans-anatomy",
-  "hook": "<p>Mr. Okafor, 61, a long-time smoker, notices in the mirror that his right pupil is smaller than his left and his right eyelid droops a little. On a hot day, only the left side of his face sweats. A scan finds a tumor at the very top of his right lung, pressing on a chain of nerve ganglia beside his upper thoracic spine. To see why a lung tumor changes his eye and his sweating, you need the wiring of the two autonomic divisions.</p>",
+  "hook": "<p>Mr. Dubois, 61, a long-time smoker, notices in the mirror that his right pupil is smaller than his left and his right eyelid droops a little. On a hot day, only the left side of his face sweats. A scan finds a tumor at the very top of his right lung, pressing on a chain of nerve ganglia beside his upper thoracic spine. To see why a lung tumor changes his eye and his sweating, you need the wiring of the two autonomic divisions.</p>",
   "prereq": [
     {
       "q": "Which horn of the spinal cord's gray matter holds the cell bodies of autonomic motor neurons in the thoracic cord?",

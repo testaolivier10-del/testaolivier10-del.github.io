@@ -24,6 +24,8 @@
   function figMarks(fig){
     var at = function(b){ return 'left:' + b[0] + '%;top:' + b[1] + '%;width:' + b[2] + '%;height:' + b[3] + '%'; };
     return (fig.covers || []).map(function(b){ return '<span class="anp-cover" aria-hidden="true" style="' + at(b) + '"></span>'; }).join('') +
+      // A label printed with a typo, with the right spelling drawn over it.
+      (fig.fixes || '') +   // generator-built SVG (scripts/lib/anp-build.mjs fixSvg)
       (fig.pin ? '<span class="anp-pin" role="img" aria-label="The label in question" style="' + at(fig.pin) + '"><span aria-hidden="true">?</span></span>' : '');
   }
   function report(q){ return window.LevlReport ? window.LevlReport.button('anp', q.id) : ''; }
@@ -47,13 +49,23 @@
   function render(q, host, opts){
     opts = opts || {};
     var reveal = opts.reveal !== false && !opts.exam;
-    var done = false;
+    var done = false, busy = false;
+    /* The explanation may not be loaded yet: the bank serves explanations
+       from <chapter>-why.json after a question is answered (AnpCore.loadWhy,
+       audit 2026-10). explain(cb) fetches it if needed, then marks the answer.
+       An exam marks nothing until its review, so it never waits. */
+    var getWhy = opts.why || (window.AnpCore && window.AnpCore.loadWhy ? function(x){ return window.AnpCore.loadWhy(window.ANP_BASE || '', x); } : null);
+    function explain(cb){
+      if(opts.exam || (q.why && q.why.correct) || !getWhy || !q.chapter) return cb();
+      fb.innerHTML = '<p class="anp-small">Loading the explanation…</p>';
+      getWhy(q).then(cb, cb);
+    }
     var wrap = document.createElement('div');
     wrap.className = 'anp-q';
     wrap.setAttribute('data-qid', q.id);
     var stem = '<p class="anp-q-stem">' + (opts.n ? '<span class="anp-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>';
     var fig = q.fig ? '<div class="anp-q-fig anp-figimg"><img src="' + esc((window.ANP_BASE || '') + q.fig.src) + '" alt="' + esc(q.fig.alt) + '" width="' + q.fig.w + '" height="' + q.fig.h + '" loading="lazy">' +
-      figMarks(q.fig) + '</div>' : '';
+      figMarks(q.fig) + '</div>' + (q.fig.credit ? '<p class="anp-credit anp-q-credit">' + esc(q.fig.credit) + '</p>' : '') : '';
     wrap.innerHTML = stem + fig + '<div class="anp-q-body"></div><div class="anp-q-feedback" aria-live="polite"></div><div class="anp-q-actions"></div>';
     var body = wrap.querySelector('.anp-q-body');
     var fb = wrap.querySelector('.anp-q-feedback');
@@ -80,14 +92,20 @@
 
     /* single, vignette, graph, image, missing, error: one right option. */
     function choice(){
-      var items = shuffle((q.options || []).map(function(o, i){ return { o: o, i: i }; }));
+      // A find-the-error item lists a pathway's steps in order, and the order
+      // is part of what it tests, so it is never shuffled (audit 2026-10).
+      // The author varies where the wrong step sits instead.
+      var items = (q.options || []).map(function(o, i){ return { o: o, i: i }; });
+      if(type !== 'error') items = shuffle(items);
       body.innerHTML = '<div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
         return '<button type="button" class="anp-opt" aria-pressed="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
         b.addEventListener('click', function(){
-          if(done) return;
+          if(done || busy) return;
+          busy = true;
+          explain(function(){
           var pick = +b.getAttribute('data-i');
           var ok = pick === q.correct;
           body.querySelectorAll('.anp-opt').forEach(function(x){
@@ -101,6 +119,7 @@
             if(reveal && q.why && q.why.options && q.why.options[i]) x.insertAdjacentHTML('beforeend', '<span class="anp-opt-why">' + html(q.why.options[i]) + '</span>');
           });
           finish(ok, ok ? 1 : 0, '', pick);
+          });
         });
       });
     }
@@ -114,10 +133,13 @@
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
-        b.addEventListener('click', function(){ if(!done) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
+        b.addEventListener('click', function(){ if(!done && !busy) b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); });
       });
       actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
+        if(busy) return;
+        busy = true;
+        explain(function(){
         var key = [].concat(q.correct), right = 0, total = q.options.length, chosen = [];
         body.querySelectorAll('.anp-opt').forEach(function(x){
           var i = +x.getAttribute('data-i'), picked = x.getAttribute('aria-pressed') === 'true', should = key.indexOf(i) > -1;
@@ -132,6 +154,7 @@
         finish(right === total, right / total, '', chosen);
         var first = body.querySelector('.anp-opt');
         if(first && (!document.activeElement || document.activeElement === document.body)) first.focus();
+        });
       });
     }
 
@@ -150,6 +173,7 @@
         if(result) return;
         body.querySelectorAll('button[data-k]').forEach(function(b){
           b.addEventListener('click', function(){
+            if(busy) return;
             var k = +b.getAttribute('data-k'), dd = +b.getAttribute('data-d'), j = k + dd;
             var t = cur[k]; cur[k] = cur[j]; cur[j] = t;
             paint(false);
@@ -161,11 +185,15 @@
       paint(false);
       actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check order</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
+        if(busy) return;
+        busy = true;
+        explain(function(){
         var right = cur.filter(function(v, k){ return v === k; }).length;
         // Exam mode redraws without feedback and without the move buttons.
         paint(true);
         var detail = opts.exam ? '' : '<p><b>Correct order:</b></p><ol>' + q.options.map(function(o){ return '<li>' + html(o) + '</li>'; }).join('') + '</ol>';
         finish(right === n, right / n, detail, cur.slice());
+        });
       });
     }
 
@@ -181,7 +209,7 @@
       body.querySelectorAll('.anp-dir').forEach(function(g, k){
         g.querySelectorAll('button').forEach(function(b){
           b.addEventListener('click', function(){
-            if(done) return;
+            if(done || busy) return;
             g.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); });
             b.setAttribute('aria-pressed', 'true'); picks[k] = b.getAttribute('data-v');
           });
@@ -189,6 +217,9 @@
       });
       actions.innerHTML = '<button type="button" class="btn-press sm anp-check">Check predictions</button>';
       actions.querySelector('.anp-check').addEventListener('click', function(){
+        if(busy) return;
+        busy = true;
+        explain(function(){
         var right = 0;
         q.variables.forEach(function(v, k){
           var ok = picks[k] === v.answer;
@@ -201,6 +232,7 @@
           row.querySelector('.anp-var-why').innerHTML = (ok ? '✓ ' : '✗ ') + '<b>' + dirLabel + '.</b> ' + html(v.why || '');
         });
         finish(right === q.variables.length, right / q.variables.length, '', Object.assign({}, picks));
+        });
       });
     }
 

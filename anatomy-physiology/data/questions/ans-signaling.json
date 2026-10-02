@@ -9,10 +9,10 @@
     ],
     "q": "Which autonomic neurons release acetylcholine?",
     "options": [
-      "Only parasympathetic neurons, both preganglionic and postganglionic",
+      "Parasympathetic neurons, both preganglionic and postganglionic, and no sympathetic ones",
       "All preganglionic neurons, all parasympathetic postganglionic neurons, and sympathetic postganglionic neurons to sweat glands",
-      "All postganglionic neurons of both the sympathetic and parasympathetic divisions",
-      "Only the preganglionic neurons that end on the adrenal medulla"
+      "Postganglionic neurons of both divisions, but not preganglionic ones",
+      "The preganglionic neurons that end on the adrenal medulla, and no others"
     ],
     "correct": 1,
     "why": {
@@ -128,6 +128,11 @@
         "name": "Movement of the stomach and intestine wall",
         "answer": "down",
         "why": "Parasympathetic acetylcholine speeds gut smooth muscle through muscarinic receptor proteins, so blocking them slows the gut."
+      },
+      {
+        "name": "Strength of skeletal muscle contraction",
+        "answer": "none",
+        "why": "Skeletal muscle responds to acetylcholine through nicotinic receptor proteins at the end plate, which atropine does not block."
       }
     ],
     "why": {
@@ -215,23 +220,22 @@
       "Widened pupils",
       "A fast heart rate",
       "Heavy drooling",
-      "Dry mouth",
+      "Loose, frequent stools",
       "Pinpoint pupils"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "Blocking muscarinic receptor proteins removes all parasympathetic effects and also sympathetic sweating. The pupils widen, the heart speeds up, the mouth goes dry, and without sweating the skin becomes hot, dry and flushed.",
+      "correct": "Blocking muscarinic receptor proteins removes parasympathetic effects and also sympathetic sweating. The pupils widen, the heart speeds up, the gut slows, and without sweating the skin becomes hot, dry and flushed.",
       "options": [
         "Correct. Eccrine sweat glands need acetylcholine on muscarinic receptor proteins, so sweating stops and heat builds up.",
         "Correct. The circular iris muscle is blocked, so the alpha-1 dilator muscle wins.",
         "Correct. The vagus nerve's slowing effect on the heart is blocked.",
         "Drooling means extra saliva, a muscarinic effect. A muscarinic antagonist does the opposite.",
-        "Correct. Watery saliva depends on muscarinic receptor proteins.",
+        "Gut movement and secretion depend on muscarinic signaling. Blocking it slows the gut rather than speeding it.",
         "Pinpoint pupils come from too much muscarinic activity, as in organophosphate poisoning, the opposite of this child's situation."
       ]
     }
@@ -300,7 +304,7 @@
     "q": "Clonidine activates alpha-2 receptor proteins, including those on adrenergic varicosities. What happens to norepinephrine release from those varicosities?",
     "options": [
       "It rises, because alpha-2 receptor proteins open calcium channels in the varicosity membrane",
-      "It is unchanged, because alpha-2 receptor proteins sit only on smooth muscle",
+      "It is unchanged, because alpha-2 receptor proteins sit on smooth muscle",
       "It falls, because alpha-2 receptor proteins on the varicosity inhibit further release",
       "It rises briefly and then stops for good"
     ],
@@ -509,7 +513,7 @@
     "options": [
       "Metoprolol, because it acts mainly on beta-1 receptor proteins",
       "Propranolol, because blocking beta-2 relaxes airway smooth muscle",
-      "Propranolol, because it acts only on the heart",
+      "Propranolol, because it acts mainly on the heart",
       "Metoprolol, because it activates beta-2 receptor proteins"
     ],
     "correct": 0,
@@ -534,7 +538,7 @@
     "q": "Select every location of nicotinic receptor proteins.",
     "options": [
       "Cell bodies of sympathetic postganglionic neurons",
-      "Cell bodies of parasympathetic postganglionic neurons",
+      "Sweat glands in the skin",
       "Chromaffin cells of the adrenal medulla",
       "Smooth muscle of the stomach wall",
       "The motor end plate of skeletal muscle",
@@ -542,15 +546,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       4
     ],
     "why": {
-      "correct": "Nicotinic receptor proteins sit wherever a preganglionic neuron or a somatic motor neuron releases acetylcholine: on all postganglionic neurons, on chromaffin cells, and (as a different type) on skeletal muscle.",
+      "correct": "Nicotinic receptor proteins sit wherever a preganglionic neuron or a somatic motor neuron releases acetylcholine: on postganglionic neurons, on chromaffin cells, and (as a different type) at the skeletal muscle end plate. Sweat glands, gut smooth muscle and the pacemaker use muscarinic ones.",
       "options": [
         "Correct. Every chain and collateral ganglion uses nicotinic transmission.",
-        "Correct. Terminal and intramural ganglia use nicotinic transmission too.",
+        "Eccrine sweat glands respond to acetylcholine through muscarinic receptor proteins.",
         "Correct. Chromaffin cells are stimulated like postganglionic neurons.",
         "Gut smooth muscle responds to parasympathetic acetylcholine through muscarinic receptor proteins.",
         "Correct. The muscle type of nicotinic receptor protein sits at the end plate.",
@@ -599,7 +602,7 @@
       "Widen it, by relaxing the dilator muscle",
       "Widen it, by relaxing the circular muscle",
       "Narrow it, by contracting the circular muscle",
-      "Leave it unchanged, because pilocarpine acts only on the lens"
+      "Leave it unchanged, because pilocarpine acts on the lens instead"
     ],
     "correct": 2,
     "why": {
@@ -623,7 +626,7 @@
     ],
     "q": "Mr. Chen takes his first dose of prazosin, an alpha-1 antagonist, and feels faint when he stands up quickly. What best explains this?",
     "options": [
-      "His heart cannot speed up, because beta-1 receptor proteins are blocked",
+      "His heart stays slow, because beta-1 receptor proteins are blocked",
       "Alpha-1 blockade stops his vessels from constricting when he stands",
       "His vagus nerve is overactive, because muscarinic receptor proteins are stimulated",
       "His airways narrow, lowering the oxygen reaching his brain"

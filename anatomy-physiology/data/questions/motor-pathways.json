@@ -59,7 +59,7 @@
       "About 10–15%",
       "About 50%",
       "About 85–90%",
-      "Every one of them"
+      "About 30%"
     ],
     "correct": 2,
     "why": {
@@ -68,7 +68,7 @@
         "That is the share that does not cross at the decussation: the anterior corticospinal tract.",
         "The split is far from even. The large majority cross in the medulla.",
         "Correct. Most corticospinal axons cross at the pyramidal decussation.",
-        "Not every axon crosses here. The anterior corticospinal tract, about 10–15% of the axons, stays uncrossed in the medulla."
+        "Far more cross than that. Only the anterior corticospinal tract, about 10–15% of the axons, stays uncrossed in the medulla."
       ]
     }
   },
@@ -216,53 +216,6 @@
     }
   },
   {
-    "id": "anp-motor-pathways-9",
-    "type": "predict",
-    "level": "analyze",
-    "diff": 3,
-    "predictLevel": 2,
-    "core": [
-      "structure-function",
-      "communication"
-    ],
-    "q": "A knife wound cuts through the right half of the spinal cord at T8. Weeks later, predict the change in each finding compared with before the injury.",
-    "variables": [
-      {
-        "name": "Voluntary strength of the right leg",
-        "answer": "down",
-        "why": "The right lateral corticospinal tract has already crossed in the medulla and carries commands for the right leg, so cutting it at T8 weakens the right leg."
-      },
-      {
-        "name": "Muscle tone and tendon jerks in the right leg",
-        "answer": "up",
-        "why": "The right leg's lower motor neurons below T8 survive but lose descending control, so after the early floppy phase tone and tendon jerks increase."
-      },
-      {
-        "name": "Vibration and position sense in the right leg",
-        "answer": "down",
-        "why": "The right dorsal column carries fine touch, vibration and position from the right side and does not cross until the medulla."
-      },
-      {
-        "name": "Pain and temperature sense in the right leg",
-        "answer": "none",
-        "why": "Pain from the right leg crosses in the cord near where it enters and climbs in the left spinothalamic tract, which is intact."
-      },
-      {
-        "name": "Pain and temperature sense in the left leg",
-        "answer": "down",
-        "why": "Pain from the left leg crosses within a segment or two and climbs in the right spinothalamic tract, which is cut."
-      },
-      {
-        "name": "Voluntary strength of the left leg",
-        "answer": "none",
-        "why": "Commands for the left leg descend in the left lateral corticospinal tract, which is intact."
-      }
-    ],
-    "why": {
-      "correct": "Damage to one half of the cord removes the motor tract and dorsal column for the same side, both of which crossed higher up, and the spinothalamic tract carrying pain from the opposite side, which crossed at entry. The result: same-side upper motor neuron weakness and loss of position sense, opposite-side loss of pain and temperature."
-    }
-  },
-  {
     "id": "anp-motor-pathways-10",
     "type": "predict",
     "level": "analyze",
@@ -391,6 +344,11 @@
         "name": "Ease of starting a movement",
         "answer": "down",
         "why": "A more inhibited thalamus excites the motor cortex less, so movements are slow, small and hard to start."
+      },
+      {
+        "name": "Sensation of light touch on the hands",
+        "answer": "none",
+        "why": "The basal nuclei loop selects movements. Touch pathways to the cortex do not pass through it."
       }
     ],
     "why": {

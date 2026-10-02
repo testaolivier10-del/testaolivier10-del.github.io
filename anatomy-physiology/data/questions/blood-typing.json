@@ -51,7 +51,7 @@
     "q": "A patient is O positive. Which red cells can she safely receive?",
     "options": [
       "O negative and O positive only",
-      "O positive only",
+      "O positive, but not O negative",
       "Any Rh-positive type",
       "O, A and B, as long as they are Rh positive"
     ],
@@ -79,7 +79,8 @@
       {"name": "Free hemoglobin in the plasma", "answer": "up", "why": "Antibodies on the donor cells trigger plasma proteins that burst them, releasing hemoglobin into the plasma."},
       {"name": "Hemoglobin in the urine", "answer": "up", "why": "Free hemoglobin in the plasma is small enough to be filtered by the kidneys and spills into the urine, darkening it."},
       {"name": "Body temperature", "answer": "up", "why": "Chemical signals released during the antibody attack cause fever and chills."},
-      {"name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow."}
+      {"name": "Blood pressure", "answer": "down", "why": "Signals released in the reaction widen blood vessels, so pressure falls and shock can follow."},
+      { "name": "Blood type of the patient's own red cells", "answer": "none", "why": "The reaction destroys the donor cells. The patient's own cells stay type A." }
     ],
     "why": {
       "correct": "An ABO-incompatible transfusion sets off an immediate antibody attack on the donor cells. Agglutination and hemolysis release hemoglobin into the plasma and urine, and the reaction causes fever and a fall in blood pressure. The transfusion must be stopped at once."
@@ -93,9 +94,9 @@
     "core": ["structure-function"],
     "q": "Why can a person with AB positive blood receive red cells of any ABO and Rh type?",
     "options": [
-      "Their red cells carry every antigen, so donor cells cannot bind them",
+      "Their red cells carry both A and B antigens, so donor cells bind them less",
       "Their plasma has no anti-A, anti-B or anti-D to attack donor cells",
-      "Their immune system cannot make antibodies",
+      "Their immune system makes few antibodies",
       "Their plasma dilutes the donor's antibodies"
     ],
     "correct": 1,
@@ -232,7 +233,7 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A mother is type O and the father is type AB. Which blood types are possible for their children?",
-    "options": ["A or B", "O only", "AB only", "A, B, AB or O"],
+    "options": ["A or B", "O", "AB", "A, B, AB or O"],
     "correct": 0,
     "why": {
       "correct": "The mother has two O copies and passes on an O. The father passes on either A or B. Children are therefore AO (type A) or BO (type B).",
@@ -414,17 +415,17 @@
       "A positive cells to an A negative woman of childbearing age",
       "B negative cells to an AB negative patient",
       "AB positive cells to an O positive patient",
-      "O positive cells to a B positive patient"
+      "O positive cells to a B negative woman of childbearing age"
     ],
-    "correct": [0, 2, 4],
+    "correct": [0, 2],
     "why": {
-      "correct": "Donor cells must not carry an antigen the recipient has, or will make, antibodies against. O negative cells suit anyone; B negative cells suit an AB negative patient, who has no anti-B and no D to meet; O positive cells suit a B positive patient.",
+      "correct": "Donor cells must not carry an antigen the recipient has, or will make, antibodies against. O negative cells suit anyone, and B negative cells suit an AB negative patient, who has no anti-B and no D to meet. Rh-positive cells should not go to an Rh-negative woman who may later be pregnant.",
       "options": [
         "Correct. O negative cells carry no A, B or D.",
         "The D antigen would sensitize her, putting future pregnancies at risk.",
         "Correct. B antigen is her own, and there is no D.",
         "An O patient has anti-A and anti-B, which would attack AB red cells.",
-        "Correct. O cells carry no A or B, and she is already Rh positive."
+        "Rh-positive cells could make her form anti-D, which would endanger a later Rh-positive fetus."
       ]
     }
   },

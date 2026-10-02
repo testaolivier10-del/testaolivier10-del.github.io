@@ -129,28 +129,6 @@
     }
   },
   {
-    "id": "anp-bp-long-term-5",
-    "type": "order",
-    "level": "apply",
-    "diff": 2,
-    "core": [
-      "homeostasis",
-      "interdependence"
-    ],
-    "q": "Put the steps of the renin–angiotensin–aldosterone system in order, starting with a fall in blood pressure.",
-    "options": [
-      "Pressure falls in the kidney's small arteries",
-      "The kidneys release renin into the blood",
-      "Renin converts angiotensinogen into angiotensin I",
-      "ACE, mostly in the lungs, converts angiotensin I into angiotensin II",
-      "Angiotensin II makes the adrenal cortex release aldosterone",
-      "The kidneys keep more sodium and water, and blood volume rises"
-    ],
-    "why": {
-      "correct": "Low pressure is sensed in the kidney, which releases renin. Renin forms angiotensin I from angiotensinogen, ACE converts it to angiotensin II, angiotensin II releases aldosterone, and aldosterone makes the kidneys keep sodium, which water follows."
-    }
-  },
-  {
     "id": "anp-bp-long-term-6",
     "type": "error",
     "level": "analyze",
@@ -220,7 +198,7 @@
     "options": [
       "Pure water is breathed out by the lungs faster than salty fluid is",
       "Sodium makes plasma proteins larger, so they pull in more water",
-      "Pure water cannot cross capillary walls, so it stays in the gut",
+      "Pure water crosses capillary walls slowly, so it stays in the gut",
       "Pure water spreads into the cells too, so less stays in the blood"
     ],
     "correct": 3,
@@ -274,21 +252,20 @@
     "options": [
       "Constricts arterioles, raising TPR",
       "Makes the adrenal cortex release aldosterone",
-      "Increases thirst and ADH release",
+      "Relaxes the smooth muscle of arterioles",
       "Makes atrial muscle cells release ANP",
       "Makes the kidneys excrete more sodium"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Angiotensin II raises pressure on several fronts: it constricts arterioles, releases aldosterone, triggers thirst and ADH release, and makes the kidneys keep sodium directly. ANP is released by atrial stretch, and it works against angiotensin II.",
+      "correct": "Angiotensin II raises pressure on several fronts, including constricting arterioles and releasing aldosterone from the adrenal cortex. ANP is released by atrial stretch and works against angiotensin II, and angiotensin II makes the kidneys keep sodium, not lose it.",
       "options": [
         "Correct. This is the fast arm, acting within minutes.",
         "Correct. Aldosterone is the slow arm, raising volume over hours to days.",
-        "Correct. Angiotensin II acts on the hypothalamus.",
+        "Angiotensin II contracts arteriolar smooth muscle. Relaxing it would lower pressure.",
         "ANP release is triggered by atrial stretch, not angiotensin II. ANP opposes the RAAS.",
         "Angiotensin II makes the kidneys keep sodium, both directly and through aldosterone. Excreting sodium is what ANP promotes."
       ]

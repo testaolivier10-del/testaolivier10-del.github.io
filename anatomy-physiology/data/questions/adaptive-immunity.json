@@ -181,43 +181,6 @@
     }
   },
   {
-    "id": "anp-adaptive-immunity-8",
-    "type": "predict",
-    "level": "analyze",
-    "diff": 3,
-    "predictLevel": 2,
-    "core": [
-      "communication",
-      "structure-function"
-    ],
-    "q": "A baby is born without a thymus. Compared with a healthy baby, predict each variable.",
-    "variables": [
-      {
-        "name": "Number of mature T cells in the blood",
-        "answer": "down",
-        "why": "T cells mature in the thymus. Without it, thymocytes from the marrow have nowhere to go through positive and negative selection, so few mature T cells appear."
-      },
-      {
-        "name": "Lymphocytes in the paracortex of the lymph nodes",
-        "answer": "down",
-        "why": "The paracortex is where T cells gather. With few T cells, it is nearly empty."
-      },
-      {
-        "name": "Production of B cells in the bone marrow",
-        "answer": "none",
-        "why": "B cells are made and mature in the red bone marrow, which is normal."
-      },
-      {
-        "name": "Neutrophil killing of bacteria by phagocytosis",
-        "answer": "none",
-        "why": "Neutrophils are innate cells made in the marrow and do not depend on the thymus."
-      }
-    ],
-    "why": {
-      "correct": "The thymus is where T cells mature, so without it T cells and the paracortex they fill are depleted. B cells, made in the marrow, and innate cells such as neutrophils are produced normally, though B cells get less T cell help."
-    }
-  },
-  {
     "id": "anp-adaptive-immunity-9",
     "type": "vignette",
     "level": "apply",
@@ -227,7 +190,7 @@
     ],
     "q": "In the thymus cortex, a thymocyte's new receptor cannot bind any of the person's own MHC proteins. What happens to it, and why?",
     "options": [
-      "It is kept, because it cannot attack self",
+      "It is kept, because it is unlikely to attack self",
       "It leaves as a naive T cell and waits for a matching microbe",
       "It becomes a memory cell without further testing",
       "It dies, because it could never recognize any antigen"
@@ -362,9 +325,9 @@
     "q": "A two-child family needs a bone marrow donor for one child. Why is the brother the first person tested, and what is the chance he matches?",
     "options": [
       "Siblings share one set of MHC genes from each parent; the chance is 1 in 4",
-      "Siblings always have identical MHC; the chance is 1 in 1",
-      "Siblings share MHC only if they are the same sex; the chance is 1 in 2",
-      "MHC is the same in every family member; the chance is 1 in 1"
+      "Siblings inherit identical MHC; the chance is 1 in 1",
+      "Siblings share MHC if they are the same sex; the chance is 1 in 2",
+      "MHC is shared across a family; the chance is 1 in 1"
     ],
     "correct": 0,
     "why": {
@@ -468,21 +431,20 @@
     "options": [
       "They are far more numerous for a given antigen",
       "They switch on faster and with less stimulation",
-      "They can live for years or decades",
+      "They live a few days",
       "They recognize a different epitope from the original clone",
       "They carry no antigen receptor"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
       "correct": "Memory cells are a larger, longer-lived and quicker-to-respond version of the clone that met the antigen. They keep the same specificity.",
       "options": [
         "Correct. Clonal expansion leaves 100 to 1,000 times more matching cells.",
         "Correct. They respond within a day or two instead of about a week.",
-        "Correct. Some last for decades.",
+        "Memory cells can live for years or decades, which is why protection lasts.",
         "They belong to the same clone, so they carry the same antigen receptor and recognize the same epitope.",
         "They carry the clone's antigen receptor; that is how they recognize the antigen again."
       ]

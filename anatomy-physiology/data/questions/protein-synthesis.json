@@ -443,6 +443,11 @@
         "name": "Number of genes in the nucleus",
         "answer": "none",
         "why": "The drug acts on ribosomes in the cytoplasm. The DNA in the nucleus, and so the genes, are untouched."
+      },
+      {
+        "name": "Number of ribosomes in the cell",
+        "answer": "none",
+        "why": "The drug stops the ribosomes working; it does not remove them."
       }
     ],
     "why": {

@@ -398,7 +398,7 @@
     "q": "Which are functions of the vagus nerve? Select all that apply.",
     "options": [
       "Slowing the heart",
-      "Moving the muscles of the voice box",
+      "Carrying taste from the front of the tongue",
       "Carrying sensory signals from the stomach to the brainstem",
       "Moving the tongue",
       "Increasing the activity of the stomach and intestines",
@@ -406,15 +406,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       4
     ],
     "why": {
-      "correct": "The vagus nerve is both motor and sensory. It supplies the throat and voice box, sends parasympathetic output to the heart, lungs and digestive organs, and carries sensory signals back from those organs.",
+      "correct": "The vagus nerve is both motor and sensory. It sends parasympathetic output to the heart, lungs and digestive organs, and carries sensory signals back from those organs. Taste from the front of the tongue travels in the facial nerve, the tongue is moved by the hypoglossal nerve, and the eyes are closed through the facial nerve.",
       "options": [
         "Yes. Vagal acetylcholine slows the heart’s pacemaker.",
-        "Yes. The vagus nerve supplies all the muscles of the voice box, so damage makes the voice hoarse.",
+        "Taste from the front two thirds of the tongue travels in the facial nerve (VII).",
         "Yes. Most vagal axons are sensory, carrying signals such as stomach stretch to the brainstem.",
         "No. The tongue is moved by the hypoglossal nerve.",
         "Yes. Vagal parasympathetic output increases gut muscle activity and gland secretion.",
@@ -617,7 +616,7 @@
     ],
     "q": "Which cranial nerves carry parasympathetic axons? Select all that apply.",
     "options": [
-      "Oculomotor (III)",
+      "Hypoglossal (XII)",
       "Trigeminal (V)",
       "Facial (VII)",
       "Glossopharyngeal (IX)",
@@ -625,15 +624,14 @@
       "Accessory (XI)"
     ],
     "correct": [
-      0,
       2,
       3,
       4
     ],
     "why": {
-      "correct": "Parasympathetic axons travel in III, VII, IX and X (\"1973\").",
+      "correct": "Parasympathetic axons travel in III, VII, IX and X (\"1973\"). Of those offered here, that means VII, IX and X.",
       "options": [
-        "Yes. III narrows the center of the eye and adjusts focus for near vision.",
+        "The hypoglossal nerve is purely motor to the tongue muscles. It carries no parasympathetic axons.",
         "No. The trigeminal nerve has no parasympathetic axons of its own, though some ride along its branches after leaving other nerves.",
         "Yes. VII supplies the tear glands and two pairs of saliva glands.",
         "Yes. IX supplies the largest saliva gland.",

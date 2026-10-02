@@ -159,6 +159,11 @@
         "name": "Swelling",
         "answer": "down",
         "why": "Histamine can no longer make capillaries and the smallest veins as leaky, so less fluid leaks into the interstitial fluid."
+      },
+      {
+        "name": "Number of mast cells in the skin",
+        "answer": "none",
+        "why": "The drug blocks histamine's receptor proteins. It does not change how many mast cells there are."
       }
     ],
     "why": {

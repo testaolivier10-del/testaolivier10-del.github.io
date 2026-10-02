@@ -295,6 +295,11 @@
         "name": "Osmolality of his blood",
         "answer": "up",
         "why": "Osmolality counts all dissolved particles per kilogram of water. The particles stay while the water shrinks, so the count per kilogram rises."
+      },
+      {
+        "name": "Number of red blood cells in his body",
+        "answer": "none",
+        "why": "Losing water changes their concentration, not how many red cells there are."
       }
     ],
     "why": {

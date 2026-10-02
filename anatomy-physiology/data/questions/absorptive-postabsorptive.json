@@ -90,6 +90,11 @@
         "name": "Glucose used by the brain each day",
         "answer": "down",
         "why": "The brain takes up ketone bodies in proportion to their level, so it needs less glucose."
+      },
+      {
+        "name": "Blood calcium",
+        "answer": "none",
+        "why": "Blood calcium is held steady by PTH and calcitriol, drawing on bone if needed. A week of fasting does not change it."
       }
     ],
     "why": {
@@ -164,21 +169,20 @@
       "Insulin",
       "Glucagon",
       "Epinephrine",
-      "Cortisol",
+      "Aldosterone",
       "IGF-1"
     ],
     "correct": [
       1,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "Glucagon, epinephrine and cortisol break down stores and raise blood glucose, opposing insulin. Insulin and IGF-1 build and store.",
+      "correct": "Glucagon and epinephrine break down stores and raise blood glucose, opposing insulin (cortisol does too, more slowly). Insulin and IGF-1 build and store, and aldosterone acts on salt balance.",
       "options": [
         "Insulin is the main anabolic hormone: it drives uptake and storage.",
         "Correct. Glucagon releases glucose from the liver.",
         "Correct. Epinephrine drives glycogenolysis and lipolysis.",
-        "Correct. Cortisol breaks down muscle protein and drives gluconeogenesis.",
+        "Aldosterone controls sodium and potassium in the kidney. It does not release stored fuel.",
         "IGF-1, made in response to growth hormone, builds protein and tissue: it is anabolic."
       ]
     }
@@ -251,7 +255,7 @@
       "A fasting pattern: releasing glucose and burning fat",
       "The absorptive state: storing the extra glucose as glycogen and fat",
       "Normal between-meal balance, with glucagon matching the glucose level",
-      "The absorptive state in the liver, with fasting only in muscle"
+      "The absorptive state in the liver, with fasting in muscle"
     ],
     "correct": 0,
     "why": {

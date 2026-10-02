@@ -118,21 +118,20 @@
       "Oxygen gas (O2)",
       "Potassium chloride (KCl)",
       "Nitrogen gas (N2)",
-      "Calcium chloride (CaCl2)"
+      "Methane gas (CH4)"
     ],
     "correct": [
       0,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "Sodium chloride, potassium chloride and calcium chloride are built from ions held by ionic bonds. In water they separate into Na+, K+, Ca2+ and Cl− ions. Oxygen and nitrogen gas are held together by covalent bonds and dissolve as whole, uncharged molecules.",
+      "correct": "Sodium chloride and potassium chloride are built from ions held by ionic bonds. In water they separate into Na+, K+ and Cl− ions. Oxygen, nitrogen and methane are held together by covalent bonds and dissolve as whole, uncharged molecules, if at all.",
       "options": [
         "Electrolyte. It separates into Na+ and Cl−.",
         "Not an electrolyte. O2 is two oxygen atoms sharing electrons in a covalent bond. It dissolves as an uncharged molecule.",
         "Electrolyte. It separates into K+ and Cl−.",
         "Not an electrolyte. N2 is held by a covalent triple bond and dissolves without forming ions.",
-        "Electrolyte. It separates into one Ca2+ and two Cl− ions."
+        "Methane is held together by covalent bonds and does not separate into ions."
       ]
     }
   },
@@ -469,7 +468,7 @@
       "Hydrogen bonds between different parts of the chain",
       "Covalent bonds between the atoms of the chain",
       "The attraction between electrons and protons in each atom",
-      "Every bond in the molecule, which then re-formed as a straight chain"
+      "The covalent bonds of the chain, which then re-formed as a straight chain"
     ],
     "correct": 0,
     "why": {
@@ -478,7 +477,7 @@
         "Correct. Weak hydrogen bonds hold the fold; they give way to heat first.",
         "The chain stayed intact, so its covalent bonds did not break. Covalent bonds are far stronger than hydrogen bonds and need a chemical reaction to break.",
         "Gentle heat does not strip electrons from atoms. The atoms themselves are unchanged.",
-        "If every bond broke, the chain would fall apart into separate atoms. The chain survived, so only the weak attractions gave way."
+        "If the covalent bonds broke, the chain would fall apart. The chain survived, so the weak attractions are what gave way."
       ]
     }
   }

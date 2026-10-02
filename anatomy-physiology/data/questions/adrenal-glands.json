@@ -344,7 +344,7 @@
     "q": "Select every effect of cortisol.",
     "options": [
       "More gluconeogenesis in the liver",
-      "Breakdown of muscle protein",
+      "Stronger immune responses",
       "Stronger inflammatory responses",
       "Blood vessels that respond normally to norepinephrine",
       "Faster bone building",
@@ -352,15 +352,14 @@
     ],
     "correct": [
       0,
-      1,
       3,
       5
     ],
     "why": {
-      "correct": "Cortisol raises blood glucose by driving gluconeogenesis, breaking down muscle protein for its amino acids and making tissues resist insulin. It is permissive for the vessels' response to sympathetic signals. It damps inflammation and slows bone building.",
+      "correct": "Cortisol raises blood glucose by driving gluconeogenesis and making muscle and fat resist insulin, and it is permissive for the vessels' response to norepinephrine. It damps immune and inflammatory responses and slows bone building.",
       "options": [
         "Correct. Cortisol switches on gluconeogenesis.",
-        "Correct. The amino acids feed gluconeogenesis; in excess, muscles waste.",
+        "Cortisol suppresses immune responses as well as inflammation; long-term excess raises the risk of infection.",
         "Cortisol damps inflammation, which is why glucocorticoid drugs treat inflammatory diseases.",
         "Correct. This permissive effect is why low cortisol causes low blood pressure.",
         "Cortisol slows bone building; long-term excess thins bone.",
@@ -429,21 +428,21 @@
       "homeostasis",
       "communication"
     ],
-    "q": "A man lost in the mountains without food for three days still has a normal blood glucose, though his liver glycogen ran out on the first day. Which hormone most directly supplies that glucose, and from what?",
+    "q": "A man lost in the mountains without food for three days still has a normal blood glucose, though his liver glycogen ran out on the first day. Which adrenal hormone keeps that glucose coming, and from what?",
     "options": [
       "Cortisol, from muscle protein",
       "Aldosterone, from sodium kept by the kidneys",
       "Epinephrine, from glycogen stored in the liver",
-      "Insulin, from glucose stored in fat"
+      "DHEA, from glycogen stored in muscle"
     ],
     "correct": 0,
     "why": {
-      "correct": "With liver glycogen gone, glucose must be made new. Cortisol, with glucagon, switches on gluconeogenesis in the liver and breaks down muscle protein to supply amino acids for it.",
+      "correct": "With liver glycogen gone, glucose must be made new. Glucagon from the pancreas drives this too; among the adrenal hormones, cortisol is the one that sustains it, switching on gluconeogenesis in the liver and breaking down muscle protein to supply amino acids for it.",
       "options": [
         "Correct. Cortisol drives gluconeogenesis from amino acids.",
         "Aldosterone controls sodium and potassium. Sodium is not a fuel.",
         "Epinephrine releases glucose from liver glycogen, but the glycogen is gone after the first day.",
-        "Insulin lowers blood glucose and is low during fasting."
+        "DHEA is a weak androgen with no role in fasting glucose, and muscle cannot release its glycogen into the blood as glucose."
       ]
     }
   },
@@ -539,16 +538,16 @@
       "Setting the level of sodium in the blood",
       "Triggering the release of an egg from an ovary each month",
       "Raising blood glucose during a fast",
-      "Supplying androgen for body hair and sex drive"
+      "Supplying androgen for pubic and underarm hair"
     ],
     "correct": 3,
     "why": {
-      "correct": "In women, the adrenal glands are a main source of androgen. DHEA is weak itself, but tissues convert it into stronger androgens, which support pubic and underarm hair and contribute to sex drive. In adult men, the testes make far more.",
+      "correct": "In women, the adrenal glands are a main source of androgen. DHEA is weak itself, but tissues convert it into stronger androgens, which support pubic and underarm hair. They may also contribute to sex drive, but that is less certain: trials of DHEA supplements in women show small or inconsistent effects. In adult men, the testes make far more.",
       "options": [
         "Sodium is set by aldosterone from the zona glomerulosa.",
         "The monthly release of an egg is triggered by the pituitary's gonadotropins, not by adrenal androgens.",
         "Cortisol, from the zona fasciculata, raises blood glucose during fasting.",
-        "Correct. Adrenal androgens matter most in women."
+        "Correct. In women the adrenal glands are a main androgen source, so this role matters most in them."
       ]
     }
   },

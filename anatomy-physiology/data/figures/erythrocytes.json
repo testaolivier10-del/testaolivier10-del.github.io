@@ -15,7 +15,9 @@
     "license": "CC BY 4.0",
     "credit": "OpenStax Anatomy and Physiology 2e, Figure 18.6",
     "labels": [],
-    "ext": "jpg"
+    "ext": "jpg",
+    "kind": "scanning electron micrograph",
+    "provenance": "OpenStax gives this figure no third-party credit (live 2e and 1e captions checked 2026-10-02), so it is used under the book's CC BY 4.0."
   },
   "os-18-7": {
     "file": "figures/openstax/os-18-7.jpg",

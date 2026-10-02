@@ -59,7 +59,7 @@
     "core": [
       "mass-balance"
     ],
-    "q": "Mr. Okafor, 74, has eaten mostly tea, toast and canned soup for four months. His gums bleed, he has bruises on his shins, and a six-week-old cut has not healed. Which nutrient is he most likely missing, and why does its lack cause these signs?",
+    "q": "Mr. Petrov, 74, has eaten mostly tea, toast and canned soup for four months. His gums bleed, he has bruises on his shins, and a six-week-old cut has not healed. Which nutrient is he most likely missing, and why does its lack cause these signs?",
     "options": [
       "Vitamin C: the collagen made without it is weak",
       "Vitamin K: clotting factors stay unfinished",
@@ -91,23 +91,22 @@
       "Vitamin C",
       "Vitamin D",
       "Folate",
-      "Vitamin E",
+      "Vitamin B12",
       "Vitamin K"
     ],
     "correct": [
       0,
       2,
-      4,
       5
     ],
     "why": {
-      "correct": "The fat-soluble vitamins are A, D, E and K. Vitamin C and the B vitamins, including folate, are water-soluble.",
+      "correct": "The fat-soluble vitamins are A, D, E and K. Vitamin C and the B vitamins, including folate and B12, are water-soluble.",
       "options": [
         "Correct. Vitamin A is fat-soluble.",
         "Vitamin C is water-soluble; it is stored little and needs a steady supply.",
         "Correct. Vitamin D is fat-soluble.",
         "Folate is a B vitamin (B9), and the B vitamins are water-soluble.",
-        "Correct. Vitamin E is fat-soluble.",
+        "Vitamin B12 is one of the water-soluble B vitamins.",
         "Correct. Vitamin K is fat-soluble."
       ]
     }
@@ -142,6 +141,11 @@
         "name": "Absorption of vitamin C",
         "answer": "none",
         "why": "Vitamin C is water-soluble and is absorbed by carriers in the intestinal lining, which do not depend on bile."
+      },
+      {
+        "name": "Absorption of amino acids",
+        "answer": "none",
+        "why": "Amino acids are absorbed by carriers that do not need bile."
       }
     ],
     "why": {

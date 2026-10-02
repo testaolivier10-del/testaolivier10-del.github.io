@@ -12,7 +12,7 @@
     "options": [
       "Her corpus luteum had not yet started to make hCG in amounts a test can detect",
       "The embryo had not yet implanted",
-      "hCG is made only once the embryo's heart begins to beat",
+      "hCG is made once the embryo's heart begins to beat",
       "The zygote's hCG was still trapped inside the zona pellucida"
     ],
     "correct": 1,
@@ -133,6 +133,11 @@
         "name": "Intensity of a home pregnancy test line",
         "answer": "down",
         "why": "The test detects hCG in urine, so less hCG gives a fainter line or a negative result."
+      },
+      {
+        "name": "Number of chromosomes in the embryo's cells",
+        "answer": "none",
+        "why": "Low hCG threatens the corpus luteum, not the embryo's chromosome number."
       }
     ],
     "why": {
@@ -154,13 +159,12 @@
       "Dermis",
       "Lining of the stomach",
       "Cardiac muscle",
-      "Bone"
+      "The brain and spinal cord"
     ],
     "correct": [
       0,
       2,
-      4,
-      5
+      4
     ],
     "why": {
       "correct": "Mesoderm forms all three kinds of muscle, the dermis, bone and cartilage, blood and vessels, the heart and the kidneys. Ectoderm forms the epidermis, and endoderm forms the lining of the digestive tract.",
@@ -170,7 +174,7 @@
         "Correct. The dermis comes from mesoderm, including the dermatome part of each somite.",
         "The epithelium lining the stomach comes from endoderm, which forms the gut tube.",
         "Correct. The heart muscle forms from mesoderm.",
-        "Correct. Bone, and the cartilage models it replaces, come from mesoderm."
+        "The brain and spinal cord come from ectoderm, through the neural tube."
       ]
     }
   },
@@ -463,7 +467,7 @@
       "By week 12 the zona pellucida protects the fetus",
       "By week 12 the mother's liver had adapted to break the drug down before it reached the fetus",
       "The limbs form during weeks 4 to 8, so by week 12 they were already formed",
-      "Drugs cannot reach the fetus after the end of week 8"
+      "Drugs stop reaching the fetus after the end of week 8"
     ],
     "correct": 2,
     "why": {
@@ -541,14 +545,13 @@
       "Esophagus",
       "Stomach",
       "Rectum",
-      "Trachea",
+      "Colon",
       "Urinary bladder",
       "Pancreatic ducts"
     ],
     "correct": [
       0,
       1,
-      3,
       5
     ],
     "why": {
@@ -557,7 +560,7 @@
         "Correct. The esophagus is foregut.",
         "Correct. The stomach is foregut.",
         "The rectum forms from the hindgut.",
-        "Correct. The lining of the larynx, trachea and lungs buds from the foregut.",
+        "Most of the colon comes from the midgut and hindgut, not the foregut.",
         "The lining of the urinary bladder comes from the hindgut region.",
         "Correct. The pancreas buds from the foregut."
       ]

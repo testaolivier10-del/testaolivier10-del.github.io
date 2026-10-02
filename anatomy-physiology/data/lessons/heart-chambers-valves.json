@@ -1,6 +1,6 @@
 {
   "topic": "heart-chambers-valves",
-  "hook": "<p>Mrs. Okafor, 71, suddenly becomes short of breath two days after chest pain. Her doctor hears a new whooshing sound with every beat. An ultrasound shows why: one of the small muscles that holds the cords of her mitral valve has torn, and the valve now flips backward into the left atrium each time the left ventricle squeezes.</p>",
+  "hook": "<p>Mrs. Yilmaz, 71, suddenly becomes short of breath two days after chest pain. Her doctor hears a new whooshing sound with every beat. An ultrasound shows why: one of the small muscles that holds the cords of her mitral valve has torn, and the valve now flips backward into the left atrium each time the left ventricle squeezes.</p>",
   "prereq": [
     {
       "q": "Which layer of the heart wall lines the inside of the heart and covers its valves?",

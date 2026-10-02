@@ -40,7 +40,7 @@
       "About 30",
       "About 50",
       "About 75",
-      "It never does"
+      "Not until after 90"
     ],
     "correct": 2,
     "why": {
@@ -49,7 +49,7 @@
         "At 30 capacity is at its peak, 100%, far above the stress line.",
         "At 50 capacity is still about 85%, above the stress line.",
         "Correct. The curve crosses the stress line at about 75.",
-        "The curve does cross the stress line, although it never falls below the resting line on this graph."
+        "The curve crosses the stress line much earlier, at about 75."
       ]
     }
   },
@@ -63,7 +63,7 @@
     ],
     "q": "Why do telomeres get shorter each time most body cells divide?",
     "options": [
-      "Reactive oxygen species cut off a fixed length at every division",
+      "Reactive oxygen species cut off a fixed length at each division",
       "Telomerase removes repeats from the chromosome ends each time",
       "Apoptosis trims the chromosome ends before each division",
       "The polymerase cannot copy the chromosome's very end"
@@ -93,21 +93,20 @@
       "Most cancer cells",
       "Mature skin fibroblasts",
       "Senescent cells",
-      "Stem cells, to a small degree"
+      "Mature red blood cells"
     ],
     "correct": [
       0,
-      1,
-      4
+      1
     ],
     "why": {
-      "correct": "Germ cells use telomerase, so each generation starts with long telomeres. Most cancers switch it back on, which lets them divide without limit. Stem cells use a little, which slows but does not stop their telomere loss.",
+      "correct": "Germ cells use telomerase, so each generation starts with long telomeres. Most cancers switch it back on, which lets them divide without limit. Fibroblasts and senescent cells lack it, and mature red blood cells have no telomeres at all.",
       "options": [
         "Correct. Germ cells make telomerase.",
         "Correct. Most cancer cells reactivate telomerase.",
         "Ordinary body cells such as fibroblasts make almost no telomerase, which is why they reach a division limit.",
         "Senescent cells have stopped dividing, often because their telomeres became too short.",
-        "Correct. Stem cells make a small amount."
+        "Mature red blood cells have no nucleus, so they have no chromosomes or telomeres at all."
       ]
     }
   },
@@ -141,6 +140,16 @@
         "name": "Share of cells in senescence",
         "answer": "up",
         "why": "Cells whose checkpoints have stopped the cycle for good stay alive but no longer divide."
+      },
+      {
+        "name": "Telomerase activity",
+        "answer": "none",
+        "why": "These fibroblasts make almost no telomerase at the start, and ageing in a dish does not switch it on."
+      },
+      {
+        "name": "Number of chromosomes in each cell",
+        "answer": "none",
+        "why": "Telomeres shorten at the chromosome ends, but each normal cell keeps its full set of 46 chromosomes."
       }
     ],
     "why": {
@@ -215,22 +224,21 @@
       "Wider pulse pressure",
       "Lower maximum heart rate",
       "Resting cardiac output roughly halved",
-      "More reliance on atrial contraction to fill the ventricle"
+      "Lower resting heart rate"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "A stiffer aorta raises systolic pressure and widens pulse pressure; the SA node and sympathetic response decline, lowering maximum heart rate; and a thicker, stiffer left ventricle fills more slowly early in diastole, so atrial contraction matters more.",
+      "correct": "A stiffer aorta raises systolic pressure and widens pulse pressure; the SA node and sympathetic response decline, lowering maximum heart rate; and resting heart rate changes little.",
       "options": [
         "Correct. A stiff aorta cannot absorb each stroke volume, so systolic pressure rises.",
         "Correct. Systolic rises while diastolic stays level or falls.",
         "Correct. Maximum heart rate falls by roughly 0.7 to 1 beat per minute a year.",
         "Resting cardiac output changes little in healthy aging. What falls is maximal output, the reserve.",
-        "Correct. The stiffer ventricle fills less early in diastole."
+        "Resting heart rate changes little with healthy aging. It is the maximum heart rate that falls."
       ]
     }
   },
@@ -424,10 +432,10 @@
     ],
     "q": "Why do older adults respond less well to a new vaccine, such as one against a strain of influenza they have never met?",
     "options": [
-      "Their memory cells from past infections have all died",
+      "Their memory cells from past infections have died off",
       "The shrunken thymus makes few new naive T cells",
       "Their antibodies no longer bind antigens well",
-      "Vaccines cannot reach the lymph nodes of older adults"
+      "Vaccines reach the lymph nodes of older adults poorly"
     ],
     "correct": 1,
     "why": {
@@ -530,6 +538,11 @@
         "name": "Naive T cells in the blood",
         "answer": "down",
         "why": "The thymus shrinks from puberty on and makes few new naive T cells."
+      },
+      {
+        "name": "Resting heart rate",
+        "answer": "none",
+        "why": "Resting heart rate changes little with healthy aging. What falls is the maximum rate the heart can reach."
       }
     ],
     "why": {
@@ -601,7 +614,7 @@
       "Supplements stop oxidative damage and slow aging",
       "Reactive oxygen species play no part in aging",
       "Trials found no benefit, and some found harm",
-      "Antioxidants lengthen telomeres in all cells"
+      "Antioxidants lengthen telomeres in dividing cells"
     ],
     "correct": 2,
     "why": {
@@ -610,7 +623,7 @@
         "Supplements do not stop oxidative damage inside cells in any measurable way that slows aging, and trials have not shown a benefit.",
         "Oxidative damage is one contributor to aging; it is just not the single cause.",
         "Correct. The trials were negative, and some showed harm.",
-        "No antioxidant has been shown to lengthen telomeres in all cells. Telomerase is what adds repeats."
+        "No antioxidant has been shown to lengthen telomeres. Telomerase is what adds repeats."
       ]
     }
   },
@@ -627,7 +640,7 @@
       "Their muscles had not aged",
       "Much of the strength lost with age can be regained by training",
       "The gain came from new satellite cells forming whole new muscles",
-      "Strength gains in older adults come only from learning the exercise"
+      "The gain came from learning the movement, not from changes in muscle"
     ],
     "correct": 1,
     "why": {

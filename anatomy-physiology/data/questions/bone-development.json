@@ -303,16 +303,16 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Select every example of appositional growth.",
-    "options": ["Osteoblasts under the periosteum adding bone to the shaft surface", "Chondrocytes dividing in the proliferative zone", "A new layer of bone added around the outside of a skull bone", "Chondrocytes swelling in the zone of maturation and hypertrophy", "Cartilage growing by adding layers from its perichondrium"],
-    "correct": [0, 2, 4],
+    "options": ["Osteoblasts under the periosteum adding bone to the shaft surface", "Chondrocytes dividing in the proliferative zone", "A new layer of bone added around the outside of a skull bone", "Chondrocytes swelling in the zone of maturation and hypertrophy", "The epiphyseal plate lengthening a long bone"],
+    "correct": [0, 2],
     "why": {
-      "correct": "Appositional growth adds new layers to a surface. Bone grows wider this way, skull bones thicken this way, and cartilage can also grow this way from its perichondrium. Division and swelling of cells inside the plate expand the tissue from within: interstitial growth.",
+      "correct": "Appositional growth adds new layers to a surface: bone grows wider this way under the periosteum, and skull bones thicken this way. Division and swelling of cells inside the epiphyseal plate, which lengthens the bone, is interstitial growth.",
       "options": [
         "Correct. Adding bone to the outer surface is appositional.",
         "Division inside the tissue is interstitial growth.",
         "Correct. Layering bone onto a surface is appositional.",
         "Swelling of cells inside the plate expands it from within: interstitial.",
-        "Correct. New cartilage laid on the surface by cells of the perichondrium is appositional."
+        "Lengthening at the epiphyseal plate is interstitial growth: cartilage grows from within, then turns to bone."
       ]
     }
   },
@@ -328,7 +328,8 @@
       { "name": "Size of the medullary cavity", "answer": "down", "why": "Osteoclasts open and widen the medullary cavity. Without resorption, the cavity stays small and filled with bone." },
       { "name": "Density of the bones", "answer": "up", "why": "Osteoblasts keep adding bone and none is removed, so the bones become abnormally dense." },
       { "name": "Space available for red marrow", "answer": "down", "why": "Marrow lives in the medullary cavity and the spaces of spongy bone, which stay filled with bone when it is not cleared." },
-      { "name": "Clearing of calcified cartilage below the epiphyseal plate", "answer": "down", "why": "Osteoclasts remove the old calcified cartilage and first bone below the plate; without them this material accumulates." }
+      { "name": "Clearing of calcified cartilage below the epiphyseal plate", "answer": "down", "why": "Osteoclasts remove the old calcified cartilage and first bone below the plate; without them this material accumulates." },
+      { "name": "Osteoblast activity", "answer": "none", "why": "The disorder affects only osteoclasts. Osteoblasts keep laying bone as usual." }
     ],
     "why": { "correct": "Bone growth needs removal as well as building. Osteoclasts hollow the medullary cavity, clear old cartilage below the plates and keep marrow spaces open. Without them, bone piles up: dense bone, a small cavity and little room for red marrow." }
   },

@@ -38,7 +38,7 @@
     "q": "Just after the initial exposure, antibody stays low for a while before it climbs. What is happening in the lymph nodes during this early stretch?",
     "options": [
       "Memory B cells are releasing IgG",
-      "Antigen is being broken down so none reaches the B cells",
+      "Antigen is broken down before it reaches the B cells",
       "The few matching naïve B cells are being activated and are dividing",
       "Plasma cells are releasing IgM that is not yet detectable because it is bound to red cells"
     ],
@@ -143,6 +143,11 @@
         "name": "Number of memory B cells afterward",
         "answer": "up",
         "why": "Each secondary response makes new memory cells as well as plasma cells, so the pool grows."
+      },
+      {
+        "name": "Antibody against measles, which she was not exposed to",
+        "answer": "none",
+        "why": "The response is specific. A tetanus booster stimulates the clones that recognize the toxin, not those for other antigens."
       }
     ],
     "why": {
@@ -185,23 +190,22 @@
       "IgG crossing from a mother into her fetus",
       "Recovering from chickenpox",
       "IgA a baby swallows in breast milk",
-      "Anti-D injected into an Rh-negative mother"
+      "A tetanus booster shot"
     ],
     "correct": [
       0,
       2,
-      4,
-      5
+      4
     ],
     "why": {
-      "correct": "Passive immunity is protection by antibody someone else made. Antivenom, maternal IgG, IgA in breast milk and injected anti-D are all borrowed antibody. A vaccine and recovery from infection make your own immune system respond: active immunity.",
+      "correct": "Passive immunity is protection by antibody someone else made. Antivenom, maternal IgG and IgA in breast milk are all borrowed antibody. A vaccine, a booster and recovery from infection make your own immune system respond: active immunity.",
       "options": [
         "Correct. Antivenom is antibody made in another animal: artificial passive immunity.",
         "A vaccine makes your own B and T cells respond and leave memory: artificial active immunity.",
         "Correct. Maternal IgG is natural passive immunity.",
         "Recovering from an infection is natural active immunity; your own cells made the antibodies and memory cells.",
         "Correct. IgA in milk is natural passive immunity for the baby's gut.",
-        "Correct. Injected anti-D is borrowed antibody: artificial passive immunity."
+        "A booster is a vaccine: your own B cells respond again and refresh memory, so it is artificial active immunity."
       ]
     }
   },
@@ -268,7 +272,7 @@
     "q": "An 18-month-old responds poorly to a vaccine made of a bacterium's capsule sugar alone, but well to one in which the sugar is attached to a protein. Why does the protein help?",
     "options": [
       "The protein makes the sugar a larger target for IgM",
-      "Protein antigens do not need B cells at all",
+      "Protein antigens are handled by T cells instead of B cells",
       "The protein stops the sugar from being broken down before B cells can reach it",
       "Helper T cells that recognize the protein can help B cells that recognize the sugar"
     ],
@@ -400,7 +404,7 @@
     "q": "Why is IgM better than IgG at clumping bacteria together?",
     "options": [
       "It binds antigens more tightly at each site",
-      "It is the only class able to leave the blood and enter tissue fluid",
+      "It leaves the blood and enters tissue fluid more easily",
       "It carries more light chains than heavy chains",
       "As a pentamer it has ten binding sites to link many cells"
     ],
@@ -479,8 +483,8 @@
     "options": [
       "Influenza's surface proteins keep changing, so old antibodies fit less well",
       "Influenza vaccines leave no memory cells",
-      "Measles virus hides inside nerve cells, where antibodies can never reach it",
-      "The body cannot make IgG against influenza"
+      "Measles virus hides inside nerve cells, out of reach of antibodies",
+      "The body makes little IgG against influenza"
     ],
     "correct": 0,
     "why": {

@@ -260,7 +260,7 @@
     "options": [
       "The shaft's cavity holds mostly yellow marrow in an adult",
       "The hip bone has no periosteum to pierce",
-      "Red marrow is found only in flat bones in newborns",
+      "Red marrow is found mainly in flat bones in newborns",
       "The thigh bone's shaft is solid bone with no cavity"
     ],
     "correct": 0,
@@ -315,14 +315,13 @@
       "Making blood cells",
       "Making vitamin D from sunlight",
       "Protecting the brain, heart and lungs",
-      "Storing fat",
+      "Making digestive enzymes",
       "Filtering waste from the blood"
     ],
     "correct": [
       0,
       1,
-      3,
-      4
+      3
     ],
     "why": {
       "correct": "The skeleton supports the body, protects organs, allows movement, stores minerals (about 99% of the body's calcium), makes blood cells in red marrow, and stores fat in yellow marrow.",
@@ -331,7 +330,7 @@
         "Correct. Red marrow carries out hematopoiesis.",
         "Vitamin D is made in the skin, from a cholesterol derivative, when ultraviolet light strikes it. Bone uses calcium, but it does not make the vitamin.",
         "Correct. The skull, vertebrae and rib cage enclose the brain, spinal cord, heart and lungs.",
-        "Correct. Yellow marrow is mostly adipose tissue that stores triglycerides.",
+        "Digestive enzymes come from glands along the digestive tract, not from bone.",
         "Filtering waste from the blood is done by the kidneys, not by bone."
       ]
     }

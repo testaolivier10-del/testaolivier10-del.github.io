@@ -371,6 +371,11 @@
         "name": "Skeletal muscle mass",
         "answer": "up",
         "why": "The drug binds androgen receptor proteins in muscle and increases protein synthesis, causing hypertrophy."
+      },
+      {
+        "name": "TSH",
+        "answer": "none",
+        "why": "Anabolic steroids suppress LH and FSH through feedback. The thyroid's control loop is separate."
       }
     ],
     "why": {
@@ -389,23 +394,22 @@
     "options": [
       "Earlier closure of his epiphyseal plates",
       "Taller adult height",
-      "Growth of breast tissue",
+      "A lower red blood cell count",
       "Higher LH from his anterior pituitary",
       "Acne",
       "Shrinking testes"
     ],
     "correct": [
       0,
-      2,
       4,
       5
     ],
     "why": {
-      "correct": "Excess androgen, and the estrogen made from it, closes the epiphyseal plates early, so adult height ends up lower. Some of the drug becomes estrogen and grows breast tissue. Acne is common. Feedback suppresses LH, so the testes shrink.",
+      "correct": "Excess androgen, and the estrogen made from it, closes the epiphyseal plates early, so adult height ends up lower. Acne is common. Feedback suppresses LH, so the testes shrink, and androgens raise rather than lower the red cell count.",
       "options": [
         "Correct. Estrogen made from the extra androgen matures and closes the plates early.",
         "Early plate closure stops growth in length sooner, so adult height is lower, not higher.",
-        "Correct. Aromatase converts some of the drug to estrogen.",
+        "Androgens raise the red blood cell count, not lower it.",
         "Feedback lowers LH, not raises it.",
         "Correct. Androgens drive the skin's oil glands.",
         "Correct. Without LH and FSH, the testes shrink."

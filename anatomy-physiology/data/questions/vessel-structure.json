@@ -211,6 +211,11 @@
         "name": "Blood flow into the skin's capillary beds",
         "answer": "down",
         "why": "With the pressure gradient about the same and resistance higher, flow = ΔP ÷ R falls."
+      },
+      {
+        "name": "Blood flow to the brain",
+        "answer": "none",
+        "why": "The sympathetic signal narrows skin arterioles. Brain blood flow is held steady by its own control."
       }
     ],
     "why": {
@@ -440,7 +445,7 @@
       "structure-function",
       "gradients"
     ],
-    "q": "With age, elastic fibers in the aortic wall are replaced by stiffer collagen. Each beat still ejects the same volume. Predict each change in the aorta.",
+    "q": "With age, elastic fibers in the aortic wall are replaced by stiffer collagen. Each beat still ejects the same volume, at the same heart rate, with the same resistance downstream. Predict each change in the aorta.",
     "variables": [
       {
         "name": "How much the aorta stretches during ejection",
@@ -456,6 +461,11 @@
         "name": "Lowest aortic pressure between beats",
         "answer": "down",
         "why": "Less stretch stored means less recoil during diastole to keep pressure up."
+      },
+      {
+        "name": "Average aortic pressure over a whole beat",
+        "answer": "none",
+        "why": "The average pressure is set by how much blood the heart pumps each minute and the resistance downstream, and neither has changed. Stiffness widens the swing around that average."
       }
     ],
     "why": {

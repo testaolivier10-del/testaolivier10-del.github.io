@@ -298,22 +298,21 @@
     ],
     "q": "Which of these are warning signs in the BE FAST stroke check? Select all that apply.",
     "options": [
-      "Sudden loss of balance",
+      "A sudden high fever",
       "One side of the face drooping",
       "One arm drifting down when both are raised",
       "Slow, gradual memory loss over months",
       "Slurred or strange speech"
     ],
     "correct": [
-      0,
       1,
       2,
       4
     ],
     "why": {
-      "correct": "BE FAST stands for balance, eyes, face, arm, speech and time. The signs of a stroke start suddenly.",
+      "correct": "BE FAST stands for balance, eyes, face, arm, speech and time. The signs of a stroke start suddenly; fever and slow memory loss are not on the list.",
       "options": [
-        "Yes. Sudden loss of balance or coordination is the B.",
+        "No. Fever is not a BE FAST sign. The checks are balance, eyes, face, arm and speech, then time to call.",
         "Yes. Face droop is the F.",
         "Yes. Arm weakness is the A.",
         "No. A stroke starts suddenly. Memory loss that creeps in over months points to a slowly progressing disease.",

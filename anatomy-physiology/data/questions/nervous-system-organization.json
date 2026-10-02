@@ -67,21 +67,20 @@
     "options": [
       "A nerve in the forearm",
       "The spinal cord",
-      "A ganglion beside the spinal cord",
+      "A nerve cell body inside the brain",
       "Sensory receptors in the skin",
       "Gray matter of the brain"
     ],
     "correct": [
       0,
-      2,
       3
     ],
     "why": {
-      "correct": "The PNS is everything outside the brain and spinal cord: nerves, ganglia and sensory receptors. The spinal cord and the brain's gray matter are CNS.",
+      "correct": "The PNS is everything outside the brain and spinal cord, such as nerves and sensory receptors. The spinal cord, the brain's gray matter and nerve cell bodies inside the brain are CNS.",
       "options": [
         "Yes. Nerves run outside the CNS, so they are PNS.",
         "No. The spinal cord and the brain together make up the CNS.",
-        "Yes. A ganglion is a cluster of cell bodies outside the CNS, so it is PNS.",
+        "Anything inside the brain or spinal cord is CNS.",
         "Yes. Sensory receptors sit at the ends of PNS axons, out in the tissues.",
         "No. Gray matter is found in the brain and spinal cord, so it is CNS tissue."
       ]
@@ -203,21 +202,20 @@
     "q": "Which of these are controlled by the autonomic nervous system? Select all that apply.",
     "options": [
       "How fast your heart beats",
-      "Sweating from your palms",
+      "Kicking a ball",
       "Writing your name",
       "Movement of food along your gut",
       "Blinking on purpose to signal a friend"
     ],
     "correct": [
       0,
-      1,
       3
     ],
     "why": {
       "correct": "The autonomic nervous system controls cardiac muscle, smooth muscle and glands: heart rate, sweat glands and the smooth muscle of the gut. Writing and deliberate blinking use skeletal muscle, so they are somatic.",
       "options": [
         "Yes. Heart rate is set by autonomic signals to cardiac muscle.",
-        "Yes. Sweat glands are glands, and glands are autonomic effectors.",
+        "Kicking uses skeletal muscle under voluntary, somatic control.",
         "No. Writing uses skeletal muscles of the hand, controlled by the somatic nervous system.",
         "Yes. The gut wall's smooth muscle is an autonomic effector.",
         "No. The muscles that close your eyes are skeletal muscles, so a deliberate blink is somatic output."

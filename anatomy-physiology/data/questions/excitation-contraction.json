@@ -342,7 +342,7 @@
     "options": [
       "Pumping calcium back into the sarcoplasmic reticulum",
       "Calcium flowing out of the SR through ryanodine receptors",
-      "Myosin heads pulling on actin",
+      "Myosin heads binding ATP to detach and splitting it to recock",
       "Acetylcholine diffusing across the synaptic cleft",
       "Restoring sodium and potassium gradients after action potentials"
     ],
@@ -352,11 +352,11 @@
       4
     ],
     "why": {
-      "correct": "The SR calcium ATPase, the myosin heads and the sodium–potassium pump all split ATP. Calcium flowing out of the SR and acetylcholine diffusing across the cleft both move down their gradients and need no ATP.",
+      "correct": "The SR calcium ATPase, the myosin heads (binding ATP to detach, splitting it to recock) and the sodium–potassium pump all use ATP directly. Calcium flowing out of the SR and acetylcholine diffusing across the cleft both move down their gradients and need no ATP.",
       "options": [
         "Correct. The SR calcium pumps are ATPases working against a steep gradient.",
         "Release is passive: calcium flows down its gradient through open channels.",
-        "Correct. Myosin heads split ATP for the energy of each pull; the next topic shows how.",
+        "Correct. A myosin head binds a fresh ATP to let go of actin and splits it to recock. The pull itself is powered by the energy stored when the head recocked; the next topic shows the cycle.",
         "Diffusion needs no ATP.",
         "Correct. The sodium–potassium pump restores the gradients over time."
       ]

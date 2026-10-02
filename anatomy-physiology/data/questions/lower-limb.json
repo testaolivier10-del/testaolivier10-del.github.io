@@ -480,21 +480,20 @@
     "options": [
       "A wider subpubic angle",
       "A heart-shaped pelvic inlet",
-      "A shallower lesser pelvis",
+      "A deeper, narrower lesser pelvis",
       "Ischial spines closer together",
       "A shorter, wider, less curved sacrum"
     ],
     "correct": [
       0,
-      2,
       4
     ],
     "why": {
-      "correct": "On average the female pelvis has a wider subpubic angle, a shallower lesser pelvis, a round inlet, ischial spines farther apart and a shorter, wider, less curved sacrum.",
+      "correct": "On average the female pelvis has a wider subpubic angle and a shorter, wider, less curved sacrum, with a round inlet, a shallower lesser pelvis and ischial spines farther apart.",
       "options": [
         "Yes. The female subpubic angle is about 80 to 90 degrees or more.",
         "No. A heart-shaped inlet is typical of the male pelvis; the female inlet is round or oval.",
-        "Yes. The female lesser pelvis is shallower.",
+        "That describes the male pelvis. The female lesser pelvis is shallower and wider.",
         "No. In the female pelvis the ischial spines are farther apart.",
         "Yes. The female sacrum is shorter, wider and less curved."
       ]

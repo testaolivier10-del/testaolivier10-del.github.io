@@ -1,6 +1,6 @@
 {
   "topic": "chemical-senses",
-  "hook": "<p>Mr. Okafor, 58, tells his doctor that since a bad bout of flu two months ago, food \"has no taste\" and coffee is just hot and bitter. On testing, he names sugar, salt, lemon juice and quinine solutions on his tongue without a mistake. He cannot name a single scent from a set of sniff sticks. His taste buds are fine. What he has lost is smell, and most of what he called taste was smell all along.</p>",
+  "hook": "<p>Mr. Santos, 58, tells his doctor that since a bad bout of flu two months ago, food \"has no taste\" and coffee is just hot and bitter. On testing, he names sugar, salt, lemon juice and quinine solutions on his tongue without a mistake. He cannot name a single scent from a set of sniff sticks. His taste buds are fine. What he has lost is smell, and most of what he called taste was smell all along.</p>",
   "prereq": [
     {
       "q": "What kind of sensory receptor responds to particular chemicals?",

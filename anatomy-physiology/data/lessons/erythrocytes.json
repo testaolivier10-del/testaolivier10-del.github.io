@@ -1,6 +1,6 @@
 {
   "topic": "erythrocytes",
-  "hook": "<p>Mr. Okafor, 58, has felt tired for months and now gets breathless climbing one flight of stairs. He looks pale. His hemoglobin is 8.9 g/dL, and his red blood cells are small and pale. A stool test finds traces of blood: a slow bleed somewhere in his gut has been draining his iron for a year. To see how a hidden bleed turns into small, pale red cells, you need to follow a red blood cell from the marrow to its breakdown.</p>",
+  "hook": "<p>Mr. Castillo, 58, has felt tired for months and now gets breathless climbing one flight of stairs. He looks pale. His hemoglobin is 8.9 g/dL, and his red blood cells are small and pale. A stool test finds traces of blood: a slow bleed somewhere in his gut has been draining his iron for a year. To see how a hidden bleed turns into small, pale red cells, you need to follow a red blood cell from the marrow to its breakdown.</p>",
   "prereq": [
     {
       "q": "In a negative feedback loop, what does the response do to the stimulus?",

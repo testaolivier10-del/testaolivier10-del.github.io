@@ -83,6 +83,8 @@ export function checkTopic(id, glossary, figures) {
     let higher = 0;
     for (const q of qs) {
       const w = `question ${q.id || '(no id)'}`;
+      // An internal tag left in a stem ("Level 1.", the prediction level) reads as noise (audit 2026-10).
+      if (/^\s*Level\s*\d\b/i.test(q.q || '')) err(`${w}: stem starts with an internal "Level N" tag`);
       if (!q.id || !new RegExp(`^anp-${id}-\\d+$`).test(q.id)) err(`${w}: id must be anp-${id}-<n>`);
       if (ids.has(q.id)) err(`${w}: duplicate id`); ids.add(q.id);
       if (!TYPES.includes(q.type)) err(`${w}: type must be one of ${TYPES.join(', ')}`);
@@ -214,7 +216,18 @@ export function checkTopic(id, glossary, figures) {
         if (!url || !/^https:\/\/openstax\.org\//.test(url)) err(`figure ${fid}: OpenStax figures must come from openstax.org (the original A&P 2e)`);
         const c = OPENSTAX_CATALOG && url && OPENSTAX_CATALOG.get(url);
         if (OPENSTAX_CATALOG && !c) err(`figure ${fid}: not an A&P 2e figure in the catalog`);
-        else if (c && c.license !== 'CC BY 4.0 (OpenStax)') err(`figure ${fid}: OpenStax figure ${c.figure} credits a third party (${c.thirdParty.join('; ')}); not cleared for commercial use`);
+        else if (c && c.license !== 'CC BY 4.0 (OpenStax)' && !f.thirdParty) err(`figure ${fid}: OpenStax figure ${c.figure} credits a third party (${c.thirdParty.join('; ')}); record it as "thirdParty" with its verified license, or do not use it`);
+        // The credit line every caption and credits.html build from (audit
+        // 2026-10, fix 11): the book's figure number, with any third party's
+        // own credit and license copied from the OpenStax caption.
+        const n = f.openstax && f.openstax.figure;
+        if (!n || f.credit !== `OpenStax Anatomy and Physiology 2e, Figure ${n}`) err(`figure ${fid}: credit must read "OpenStax Anatomy and Physiology 2e, Figure ${n || '<n>'}" (with "openstax.figure" set)`);
+        if (f.thirdParty) {
+          const tp = f.thirdParty;
+          if (!tp.credit || !tp.license) err(`figure ${fid}: thirdParty needs the source's own "credit" line and "license"`);
+          else if (!/^(CC BY( \d\.\d)?|Public domain)$/.test(tp.license)) err(`figure ${fid}: third-party license "${tp.license}" is not CC BY or public domain (spec section 2; a CC BY-SA source would also need share-alike, which the course does not use)`);
+        }
+        if (f.kind && !f.thirdParty && !f.provenance) err(`figure ${fid}: a ${f.kind} needs "thirdParty" (credit and license from OpenStax's caption) or "provenance" saying the caption credits no one else`);
       }
     }
   }

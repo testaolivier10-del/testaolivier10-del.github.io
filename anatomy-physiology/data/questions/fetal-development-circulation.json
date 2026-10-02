@@ -244,7 +244,7 @@
     "options": [
       "Her testes made anti-Müllerian hormone",
       "Without androgen action, the mesonephric ducts could not form a uterus",
-      "Her ovaries never formed, and ovaries make the uterus",
+      "Her ovaries did not form, and ovaries make the uterus",
       "High testosterone destroyed the uterus after puberty"
     ],
     "correct": 0,
@@ -430,7 +430,7 @@
     "q": "A woman learns she took a drug known to cause limb defects on day 10 after fertilization, before she knew she was pregnant. Based on the timing of development, what is the most likely outcome?",
     "options": [
       "Missing or shortened limbs",
-      "Poor growth in late pregnancy only",
+      "Poor growth in late pregnancy",
       "A heart defect in place of a limb defect",
       "Loss of the pregnancy or no lasting effect"
     ],
@@ -615,22 +615,21 @@
       "The first blood islands appear in the wall of the yolk sac",
       "Angioblasts at the edge of an island become endothelium",
       "The first vessels sprout from the heart tube",
-      "Cells in the center of an island become early blood cells"
+      "The first blood cells come from the bone marrow"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "In vasculogenesis, hemangioblasts cluster into blood islands, first in the yolk sac wall. Angioblasts at the edge flatten into endothelium, and the cells in the center become the first blood cells. The islands join into vascular tubes, and later vessels sprout from existing ones by angiogenesis.",
+      "correct": "In vasculogenesis, hemangioblasts cluster into blood islands, first in the yolk sac wall, and angioblasts at the edge flatten into endothelium. The islands join into vascular tubes; the heart tube links up with them later. Bone marrow makes blood only late in fetal life.",
       "options": [
         "Correct. Blood islands are clusters of hemangioblasts.",
         "Correct. The yolk sac wall has the first blood islands, around day 17.",
         "Correct. Angioblasts form the endothelium.",
         "The first vessels form from scratch in blood islands. The heart tube links up with them; it does not sprout them.",
-        "Correct. The center of each island makes the first blood cells."
+        "Bone marrow takes over blood formation only late in fetal life. The first blood cells form in the blood islands of the yolk sac."
       ]
     }
   },

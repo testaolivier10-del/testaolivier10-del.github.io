@@ -13,6 +13,8 @@
     "labels": [],
     "w": 1100,
     "h": 1100,
-    "ext": "jpg"
+    "ext": "jpg",
+    "kind": "X-ray (coronary angiogram)",
+    "provenance": "OpenStax gives this figure no third-party credit (live 2e and 1e captions checked 2026-10-02), so it is used under the book's CC BY 4.0."
   }
 }

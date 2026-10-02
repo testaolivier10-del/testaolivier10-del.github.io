@@ -1,6 +1,6 @@
 {
   "topic": "cell-mediated-immunity",
-  "hook": "<p>Mr. Okafor, 52, received a kidney from a deceased donor eight weeks ago. He ran out of his tacrolimus tablets on a trip and skipped them for five days. Now he has a low fever, the new kidney is swollen and tender, and he is making much less urine. A biopsy shows the kidney packed with his own T cells, killing the donor cells one by one. To see why one missed drug lets this happen, you need to know how T cells are switched on and what each kind does.</p>",
+  "hook": "<p>Mr. Hughes, 52, received a kidney from a deceased donor eight weeks ago. He ran out of his tacrolimus tablets on a trip and skipped them for five days. Now he has a low fever, the new kidney is swollen and tender, and he is making much less urine. A biopsy shows the kidney packed with his own T cells, killing the donor cells one by one. To see why one missed drug lets this happen, you need to know how T cells are switched on and what each kind does.</p>",
   "prereq": [
     {
       "q": "Which cells carry MHC class I proteins?",

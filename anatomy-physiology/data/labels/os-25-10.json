@@ -58,7 +58,6 @@
       "id": "proximal-convoluted-tubule",
       "name": "Proximal convoluted tubule",
       "accept": [
-        "proximal conboluted tubule",
         "pct",
         "proximal tubule",
         "proximal convoluted tubules"
@@ -68,7 +67,8 @@
         5
       ],
       "concept": "renal-tubule",
-      "note": "OpenStax prints the typo 'Proximal conboluted tubule'; the label is named correctly and the printed form is accepted. Not covered: it names a real structure.",
+      "note": "OpenStax prints the typo 'Proximal conboluted tubule'. The pages and the lab practical print the correct spelling over it (fix), so the typo is never shown or accepted (audit 2026-10).",
+      "fix": "Proximal convoluted tubule",
       "box": [
         268,
         336,

@@ -17,7 +17,7 @@ import { STUB_CSP } from './lib/site-config.mjs';
 import { fileURLToPath } from 'node:url';
 import {
   SITE, BASE, COURSE_NAME, COURSE_ID, TEAS_DISCLAIMER, esc, text, loadCourse, clampTitle, clampDesc,
-  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit,
+  head, tail, crumbs, orgCrumbs, crumbNav, footer, termIndex, glossify, teachHref, figureImg, credit, attribution, fixSvg, BETA_PILL,
   renderFigures, questionForPage, questionHtml,
 } from './lib/anp-build.mjs';
 
@@ -47,8 +47,21 @@ const INDEX = termIndex(C);
 const outputs = new Map(); // relative path -> content
 // Every table on a page sits in a scrolling wrapper, so a wide one scrolls
 // inside itself instead of widening the page on a phone (check-site).
-const wrapTables = html => html.replace(/(<div class="table-wrap">\s*)?<table\b([\s\S]*?)<\/table>(\s*<\/div>)?/g,
-  (m, open, inner, close) => open && close ? m : `<div class="table-wrap"><table${inner}</table></div>`);
+// The wrapper is a focusable, named region so a keyboard user can scroll it
+// with the arrow keys (audit 2026-10; site rule table-wrap-keyboard). Its name
+// is the table's caption, else its column headings.
+const tableLabel = (inner) => {
+  const cap = inner.match(/<caption[^>]*>([\s\S]*?)<\/caption>/);
+  const heads = [...inner.matchAll(/<th\b[^>]*scope="col"[^>]*>([\s\S]*?)<\/th>/g)].map(x => text(x[1]).trim()).filter(Boolean);
+  const name = cap ? text(cap[1]).trim() : heads.length ? `Table: ${heads.slice(0, 4).join(', ')}` : 'Table';
+  return esc(name.length > 90 ? name.slice(0, 87).replace(/\s+\S*$/, '') + '…' : name);
+};
+const wrapTables = html => html.replace(/(<div class="table-wrap"[^>]*>\s*)?<table\b([\s\S]*?)<\/table>(\s*<\/div>)?/g,
+  (m, open, inner, close) => open && close ? m : `<div class="table-wrap" tabindex="0" role="region" aria-label="${tableLabel(inner)}"><table${inner}</table></div>`);
+// "Report a problem" for a page of prose (notes, glossary), using the site's
+// report dialog (assets/report-question.js) with its page wording. Audit
+// 2026-10: until now only questions had the link.
+const reportPage = (pageId) => `<p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="${esc(pageId)}">Report a problem</button></p>`;
 const put = (rel, content) => outputs.set(rel, rel.endsWith('.html') ? wrapTables(content) : content);
 
 const topicById = id => map.topics[C.topicIndex.get(id)];
@@ -154,7 +167,7 @@ function lessonPage(id) {
       html: `<div class="anp-qs" data-set="prereq">${pageData.prereq.map((p, i) => questionHtml(p, i + 1)).join('')}</div>` },
     fig && { id: 'anatomy', kind: 'Anatomy panel', nav: 'Anatomy', h: 'Anatomy', html: `<figure class="anp-figure anp-anatomy">
         ${figureImg(C, L.anatomy.figure, depth, { topic: id })}
-        <figcaption>${g(L.anatomy.caption || '')} ${credit(fig)}</figcaption>
+        <figcaption>${g(L.anatomy.caption || '')} ${credit(fig, { adapted: (fig.labels || []).some(l => l.box) })}</figcaption>
       </figure>
       ${(fig.labels || []).some(l => l.box) ? '<button type="button" class="btn-outline anp-toggle-labels" aria-pressed="false">Hide labels</button><p class="anp-hint">With labels hidden, select a box to reveal its label.</p>' : ''}` },
     { id: 'chain', kind: 'Causal chain', nav: 'How it works', h: 'How it works, step by step',
@@ -195,7 +208,7 @@ function lessonPage(id) {
   </aside>
   <main id="main" class="anp-ls-main anp-lesson">
   <header class="anp-ls-hero">
-    <div class="eyebrow">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)} · Topic ${topicNumber(id)}</div>
+    <div class="eyebrow">Chapter ${chapterNumber(ch.id)} · ${esc(ch.title)} · Topic ${topicNumber(id)} ${BETA_PILL}</div>
     <h1>${esc(t.title)}</h1>
     <p class="lede">${esc(lede)}</p>
     <p class="anp-tags anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span><span class="anp-tag">${esc(t.kind)}</span></p>
@@ -346,7 +359,7 @@ function notesPage(id) {
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: `${t.title}: notes` }], depth)}
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/${id}.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter ${chapterNumber(ch.id)} &middot; Topic ${topicNumber(id)} of ${map.topics.length}</p>
+      <p class="anp-notes-eyebrow">Chapter ${chapterNumber(ch.id)} &middot; Topic ${topicNumber(id)} of ${map.topics.length} ${BETA_PILL}</p>
       <h1 class="anp-notes-title">${esc(t.title)}</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="anp-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<span class="anp-small">${minutes} min read</span>${chip(id)}</p>
     </header>
@@ -354,11 +367,12 @@ function notesPage(id) {
 ${html}
     </article>
     ${disclaimer(html)}
+    ${reportPage(`notes:${id}`)}
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation">${link(pv, 'prev')}${link(nx, 'next')}</nav>
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js'] })}
 </body>
 </html>
 `;
@@ -527,13 +541,14 @@ function creditsPage() {
 <main id="main" class="xshell anp-credits">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Figure credits' }], depth)}
   <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Figure credits</h1>
-    <p class="lede">Figures marked OpenStax come from <a href="https://openstax.org/details/books/anatomy-and-physiology-2e">OpenStax <i>Anatomy and Physiology 2e</i></a>, &copy; Rice University, used under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. We resize them, and in lessons and the lab practical we cover some printed labels. OpenStax and Rice University do not endorse LevlPrep. Every other diagram in the course is drawn for it.</p></header>
-  <table class="anp-credit-table"><thead><tr><th scope="col">Figure</th><th scope="col">Used in</th><th scope="col">Source</th><th scope="col">License</th></tr></thead><tbody>
+    <p class="lede">Figures marked OpenStax come from J. Gordon Betts et al., <a href="https://openstax.org/details/books/anatomy-and-physiology-2e"><i>Anatomy and Physiology 2e</i></a>, OpenStax, &copy; Rice University, used under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. We resize them, and where a figure's printed labels are hidden (lessons, the lab practical, identification questions, and labels a page has not taught yet) its caption says "Adapted: labels hidden". A figure OpenStax credits to another source carries that source's own credit line and license as well. OpenStax and Rice University do not endorse LevlPrep. Every other diagram in the course is drawn for it.</p></header>
+  <div class="table-wrap" tabindex="0" role="region" aria-label="Figure credits table"><table class="anp-credit-table"><thead><tr><th scope="col">Figure</th><th scope="col">Used in</th><th scope="col">Credit and license</th><th scope="col">Changes</th></tr></thead><tbody>
   ${rows.map(({ id, f, t }) => {
-    const page = f.openstax && f.openstax.page ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}` : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
-    return `<tr><td>${esc((f.openstax && f.openstax.figure) ? `OpenStax Figure ${f.openstax.figure}` : id)}</td><td><a href="notes/${t.id}.html">${esc(t.title)}</a></td><td><a href="${page}">openstax.org</a></td><td>${esc(f.license)}</td></tr>`;
+    const n = (f.openstax && f.openstax.figure) ? `OpenStax Figure ${f.openstax.figure}` : id;
+    const changes = (f.labels || []).some(l => l.box) ? 'Resized; labels hidden where shown masked' : 'Resized';
+    return `<tr><td>${esc(n)}</td><td><a href="notes/${t.id}.html">${esc(t.title)}</a></td><td>${attribution(f).html}</td><td>${changes}</td></tr>`;
   }).join('\n  ')}
-  </tbody></table>
+  </tbody></table></div>
 </main>
 ${footer(depth)}
 ${tail({ depth, section: 'credits' })}
@@ -549,10 +564,11 @@ ${tail({ depth, section: 'credits' })}
    anp.css (on the critical path of every A&P page) does not carry them. The
    A-Z bar stays under the header while the index scrolls; on a phone it is one
    swipeable row. Letters and terms land below the header and the bar. */
-const GLOSSARY_CSS = `.anp-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;position:sticky;top:var(--site-header-h,60px);z-index:5;padding:8px 0;background:var(--paper);}
+const GLOSSARY_CSS = `.anp-letters-hint{display:none;margin:4px 0 0;}
+.anp-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;position:sticky;top:var(--site-header-h,60px);z-index:5;padding:8px 0;background:var(--paper);}
 .anp-letters a{padding:4px 9px;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
 .anp-letters a.on{background:var(--cink);color:var(--paper);}
-@media (max-width:640px){.anp-letters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.anp-letters a{flex:0 0 auto;padding:7px 11px;}}
+@media (max-width:640px){.anp-letters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:32px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);}.anp-letters-hint{display:block;}.anp-letters a{flex:0 0 auto;padding:7px 11px;}}
 .anp-terms{margin:0;}
 .anp-glossary .anp-letter,.anp-glossary .anp-term,.anp-glossary .anp-term-index li{scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
 .anp-letter{margin:0 0 22px;}
@@ -600,6 +616,7 @@ function glossaryPage() {
   <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.</p>
     <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
     <p class="anp-small" id="gl-status" role="status" aria-live="polite"></p></header>
+  <p class="anp-letters-hint anp-small" aria-hidden="true">Swipe the letters for ${letters[letters.length - 1]} &rarr;</p>
   <nav class="anp-letters" aria-label="Jump to letter">${letters.map(l => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
   <div id="gl-results" class="anp-gl-results" hidden></div>
   <div class="anp-terms" id="gl-index">${letters.map(l => {
@@ -610,9 +627,10 @@ function glossaryPage() {
       return `<li id="t-${c.id}"${aliases.length ? ` data-a="${esc(aliases.join('|'))}"` : ''}>${href ? `<a href="${href}">${esc(c.term)}</a>` : esc(c.term)}</li>`;
     }).join('')}</ul></section>`;
   }).join('\n  ')}</div>
+  ${reportPage('glossary')}
 </main>
 ${footer(depth)}
-${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'] })}
+${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'], site: ['report-question.js'] })}
 </body>
 </html>
 `;
@@ -746,7 +764,7 @@ function homePage() {
 <main id="main" class="xshell anp-home">
   <header class="hero anp-home-hero">
     <div>
-      <div class="eyebrow">${COURSE_NAME}</div>
+      <div class="eyebrow">${COURSE_NAME} ${BETA_PILL}</div>
       <h1>Anatomy &amp; physiology that builds in order.</h1>
       <p class="lede">${HOME_WORDS[map.chapters.length] || map.chapters.length} chapters and ${map.topics.length} topics, each taught before it is used. Physiology is taught as mechanism: what causes what, one step at a time. Practice sits inside the reading.</p>
       <div class="hero-ctas">${first ? `<a class="btn-press" id="heroPrimaryCta" href="lessons/${first.id}.html">Start here</a><script>try{var d=JSON.parse(localStorage.getItem('anp_progress_v1')||'null');if(d&&(Object.keys(d.lessons||{}).length||Object.keys(d.q||{}).length))heroPrimaryCta.classList.add('cta-pending')}catch(e){}</script>` : ''}<a class="link-quiet" href="learn.html">All chapters &rarr;</a><a class="link-quiet" href="tools/predict.html">Predict the change &rarr;</a></div>
@@ -1101,6 +1119,28 @@ function bankJson() {
   return out;
 }
 
+/* The bank's index (audit 2026-10: Practice, Review and Exams fetched all 54
+   bank files, 4.2 MB, before showing anything). Every question's id, type,
+   level, difficulty and core concepts, compact enough to fetch first; a page
+   then fetches only the chapters a set or exam draws from, and each chapter's
+   explanations only after a question is answered (AnpCore.loadIndex,
+   loadQuestions, loadWhy). Per topic, one entry per question:
+   "n.type.level.diff.core+core" with type, level and core as indexes into the
+   lists at the top; the question's id is anp-<topic>-<n>. */
+function bankIndexJson() {
+  const ty = [], lv = [], core = [];
+  const at = (list, v) => { let i = list.indexOf(v); if (i < 0) { i = list.length; list.push(v); } return i; };
+  const t = {};
+  for (const topic of builtTopics) {
+    t[topic.id] = C.questions[topic.id].map(q => {
+      const m = q.id.match(/^anp-(.+)-(\d+)$/);
+      if (!m || m[1] !== topic.id) throw new Error(`bank index: question id ${q.id} is not anp-${topic.id}-<n>`);
+      return [m[2], at(ty, q.type), at(lv, q.level), q.diff, (q.core || []).map(c => at(core, c)).join('+')].join('.');
+    }).join(',');
+  }
+  return JSON.stringify({ v: 1, ty, lv, core, t });
+}
+
 function notesIndexJson() {
   return JSON.stringify(builtTopics.map(t => ({ file: `${BASE}notes/${t.id}.html`, title: t.title })));
 }
@@ -1128,6 +1168,7 @@ for (const [ch, b] of Object.entries(bankJson())) {
   put(`assets/bank/${ch}.json`, JSON.stringify(b.core));
   put(`assets/bank/${ch}-why.json`, JSON.stringify(b.why));
 }
+put('assets/bank/index.json', bankIndexJson());
 
 /* Tool data as served: only items whose topic is built, so a chapter's tool
    items go live with its pages and not before (spec decision 53). The source
@@ -1142,6 +1183,13 @@ function publishedTool(file) {
     d.sets = d.sets.filter(set => set.stations.length);
     const used = new Set(d.sets.flatMap(set => set.stations.map(st => st.figure)));
     d.figures = Object.fromEntries(Object.entries(d.figures).filter(([id]) => used.has(id)));
+    // The full credit line from the figure's own data (the lab practical
+    // always hides printed labels, so every figure there is adapted).
+    for (const [id, f] of Object.entries(d.figures)) if (C.figures[id]) {
+      f.attribution = attribution(C.figures[id], { adapted: true }).html;
+      const fx = fixSvg(C.figures[id], C.figures[id].labels);
+      if (fx) f.fixSvg = fx.replace('class="anp-fix"', 'class="lp-fix"');
+    }
   }
   if (file === 'calculators.json') d.groups = d.groups.filter(g => d.calculators.some(c => c.group === g.id));
   if (file === 'word-roots.json') {

@@ -1,6 +1,6 @@
 {
   "topic": "membrane-potential",
-  "hook": "<p>Mr. Okafor, 62, has kidney failure and missed two treatments that clear waste from his blood. He arrives feeling weak, with a slow, irregular pulse. His blood potassium is 7.1 mmol/L (normal 3.5–5.0). Nothing is wrong with his heart muscle itself. The extra potassium outside his cells has shifted the voltage across every cell membrane, and his heart cells are the most sensitive to that shift.</p>",
+  "hook": "<p>Mr. Mensah, 62, has kidney failure and missed two treatments that clear waste from his blood. He arrives feeling weak, with a slow, irregular pulse. His blood potassium is 7.1 mmol/L (normal 3.5–5.0). Nothing is wrong with his heart muscle itself. The extra potassium outside his cells has shifted the voltage across every cell membrane, and his heart cells are the most sensitive to that shift.</p>",
   "prereq": [
     {
       "q": "Where is potassium more concentrated at rest?",

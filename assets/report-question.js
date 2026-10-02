@@ -55,6 +55,17 @@
     ['other', 'Something else'],
   ];
 
+  /* A button with data-report-kind="page" reports a page (A&P notes and
+     glossary, audit 2026-10) rather than a question: same five reason codes
+     (the server accepts only these), worded for prose. */
+  var PAGE_LABELS = {
+    'wrong-answer': 'A fact is wrong',
+    'unclear': 'Something is unclear or confusing',
+    'typo': 'A typo or formatting problem',
+    'outdated': 'It disagrees with current sources',
+    'other': 'Something else',
+  };
+
   var overlay = null;
   var lastFocused = null;
   var active = null; // { course, id, button }
@@ -174,6 +185,13 @@
     submitBtn.textContent = 'Send report';
     var first = overlay.querySelector('input[name="reportReason"]');
     if (first) first.checked = true;
+    var page = !!(button && button.getAttribute && button.getAttribute('data-report-kind') === 'page');
+    document.getElementById('reportTitle').textContent = page ? 'Report a problem on this page' : 'Report this question';
+    var labels = overlay.querySelectorAll('.report-reason');
+    for (var i = 0; i < labels.length; i++) {
+      var span = labels[i].querySelector('span');
+      if (span) span.textContent = page ? PAGE_LABELS[REASONS[i][0]] : REASONS[i][1];
+    }
 
     overlay.classList.add('open');
     document.documentElement.classList.add('auth-modal-open');
