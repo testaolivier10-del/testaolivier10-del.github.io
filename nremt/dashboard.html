@@ -107,7 +107,7 @@
   .score-map{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:14px;}
   .score-map>summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--accent);list-style:none;}
   .score-map>summary::-webkit-details-marker{display:none;}
-  .score-map>summary::before{content:"\203A";display:inline-block;margin-right:8px;transition:transform .2s ease;}
+  .score-map>summary::before{content:var(--disclose);display:inline-block;margin-right:8px;transition:transform .2s ease;}
   .score-map[open]>summary::before{transform:rotate(90deg);}
   .score-map p{font-size:13px;color:var(--muted);margin:12px 0;}
   .score-map-note{border-left:3px solid var(--line);padding-left:12px;}
@@ -180,6 +180,9 @@
 <body>
   <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
 

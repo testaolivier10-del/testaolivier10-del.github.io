@@ -138,13 +138,17 @@
     font:900 12px var(--font-ui);color:var(--accent);cursor:pointer;list-style:none;
   }
   .ap-hint summary::-webkit-details-marker{display:none;}
-  .ap-hint summary::before{content:'? ';font-family:var(--font-mono);}
+  .ap-hint summary::before{content:var(--disclose);display:inline-block;margin-right:8px;transition:transform .2s ease;}
+  .ap-hint[open] summary::before{transform:rotate(90deg);}
   .ap-hint[open] summary{margin-bottom:8px;}
 </style>
 </head>
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Arrow Pusher</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell">
   <div class="tool-top" id="tool-top">

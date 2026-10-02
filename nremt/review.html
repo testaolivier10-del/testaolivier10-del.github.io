@@ -90,6 +90,9 @@
 <body data-runner="review">
 <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT spaced review</span></nav></div>
+<!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
 
@@ -99,6 +102,11 @@
       <h1>Review</h1>
       <p class="lede">Questions you have answered come back here as they fade: a miss straight away, a solid answer days later. Weakest and longest-unseen first, up to 40 a session.</p>
     </div>
+    <!-- The free-allowance line (practice-engine.js renderPremium) lands here;
+         the slot is in the page and holds its one line of height from the
+         first paint, so the page does not move when it is filled (audit
+         2026-10, layout shift 0.21 on a phone). -->
+    <div id="premiumNotice" class="premium-slot premium-slot--reserved"></div>
 
     <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
       <div class="resume-exam-text" id="resumeExamText"></div>
@@ -131,6 +139,20 @@
       <p>Everything you have answered is holding steady. Each question drifts back into this queue a few days after you last got it right.</p>
       <a class="btn-press sm alt" href="practice.html">Practice something new</a>
     </div>
+
+    <script>
+    /* Which of the three panels shows depends on this browser's answers
+       (renderDueSummary in practice-engine.js). Shown before first paint
+       from the same record, so the panel is in place when the page appears:
+       nothing answered yet, or something to review. "All caught up" is
+       decided by the engine a moment later; it is the same height. */
+    (function(){
+      var any = false;
+      try { var m = JSON.parse(localStorage.getItem('nremt_mastery') || '{}'); any = !!m && Object.keys(m).length > 0; } catch(e){}
+      var el = document.querySelector('[data-due-state="' + (any ? 'ready' : 'empty-new') + '"]');
+      if(el) el.hidden = false;
+    })();
+    </script>
 
     <div class="mode-grid runner-aside">
       <a class="mode-card mode-card--link" href="flashcards.html">

@@ -446,7 +446,8 @@ strong,b{font-weight:900;}
 }
 .xrow:last-child,.kv-row:last-child{border-bottom:0;}
 .xnum{font:700 13px var(--font-mono);color:var(--accent);}
-.xmeta,.kv-row .v{font:700 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.xmeta{font:700 12.5px var(--font-ui);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;}
+.kv-row .v{font:700 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
 
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4.5vw,52px);align-items:start;}
 .split-divider{border-left:1px solid var(--line-soft);padding-left:clamp(20px,3vw,30px);}
@@ -477,7 +478,7 @@ strong,b{font-weight:900;}
   background-image:repeating-linear-gradient(135deg,var(--hover-tint) 0 8px,var(--paper) 8px 16px);
   display:flex;align-items:flex-end;padding:14px;box-shadow:var(--lift);
 }
-.screenshot-slot span{font:700 11px var(--font-mono);color:var(--muted);background:var(--paper);padding:4px 8px;border-radius:6px;}
+.screenshot-slot span{font:700 11px var(--font-ui);color:var(--muted);background:var(--paper);padding:4px 8px;border-radius:6px;}
 
 /* ==========================================================================
    5. Gamification components
@@ -869,6 +870,13 @@ footer .privacy-link a:hover{color:var(--ink);}
   overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
+/* Breadcrumbs: one component on every course (audit 2026-10). A&P's
+   generator writes .anp-crumb, the ochem notes .notes-crumb, and
+   scripts/build-crumbs.mjs .site-crumb on NREMT and the ochem pages. */
+.site-crumb,.anp-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.site-crumb a,.anp-crumb a{color:var(--muted);text-decoration:none;}
+.site-crumb a:hover,.anp-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.site-crumb [aria-current]{color:var(--ink);}
 .site-nav-fallback{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:24px;font-family:var(--font-ui);}
 .site-nav-fallback a{color:var(--accent);text-decoration:none;}
 .site-nav-fallback a:hover{text-decoration:underline;}
@@ -1695,3 +1703,18 @@ html.lso-open{overflow:hidden;}
 @media (max-width:640px){
   body.lp-has-fab .choice-btn,body.lp-has-fab .anp-opt,body.lp-has-fab .option{padding-right:56px;}
 }
+
+/* Type and arrows: the rules (audit 2026-10, visual system).
+   Monospace (--font-mono) is for three things only:
+     1. figures that count or compare: scores, percentages, counts, timers,
+        "Step 3 / 10", XP readouts (they line up as they change);
+     2. keyboard keys (kbd);
+     3. chemistry written as text: formulas and atom labels in figures.
+   Everything else, labels, hints and sentences that happen to hold a number
+   included, is --font-ui; where numbers in it change, add
+   font-variant-numeric: tabular-nums instead of switching face.
+   Arrows: the text arrows "→" and "←" (&rarr; / &larr;) for going somewhere
+   and coming back, set in the surrounding face; one disclosure marker,
+   var(--disclose), turned 90° when its <details> is open. Reaction arrows in
+   chemistry content are notation, not UI, and are not covered here. */
+:root{--disclose:"\203A";}

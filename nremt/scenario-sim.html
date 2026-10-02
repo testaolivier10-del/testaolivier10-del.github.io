@@ -127,7 +127,7 @@
     font-size:12px;font-weight:700;color:var(--accent);cursor:pointer;
     list-style:none;display:inline-flex;align-items:center;gap:4px;
   }
-  .path-alts summary::before{content:"▸";font-size:10px;transition:transform .15s;}
+  .path-alts summary::before{content:var(--disclose);font-size:15px;line-height:1;transition:transform .15s;}
   .path-alts[open] summary::before{transform:rotate(90deg);}
   .path-alts summary::-webkit-details-marker{display:none;}
   .path-alts ul{margin:6px 0 0;padding-left:16px;}
@@ -197,6 +197,9 @@
 <body>
   <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Clinical scenario simulator</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
   <div class="page-head">

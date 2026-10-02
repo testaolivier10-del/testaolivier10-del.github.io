@@ -98,6 +98,10 @@ jobs:
       # leads to, which sends a student backwards through the course.
       - name: the ochem lessons' related-topic rows match the curriculum
         run: node scripts/build-leads-to.mjs --check
+      # The visible breadcrumb row on NREMT and ochem pages is written from each
+      # page's own BreadcrumbList JSON-LD, so the two never disagree.
+      - name: NREMT and ochem breadcrumbs match their BreadcrumbList
+        run: node scripts/build-crumbs.mjs --check
       # The seven tool pages are three empty divs until their scripts run. The
       # first screen is written into them from tools-registry.js so the page
       # has a heading and a body before that happens; stale, it would show a

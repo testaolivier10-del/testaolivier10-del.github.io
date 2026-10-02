@@ -346,7 +346,7 @@ a.anp-chap-title:hover{color:var(--cink);}
 .anp-chap-tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
 .anp-chap-toolset{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 16px;}
 .anp-chap-toolset h3{font:900 14px var(--font-ui);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;}
-.anp-chap-toolset h3 small{font:800 11px var(--font-mono);color:var(--muted);}
+.anp-chap-toolset h3 small{font:800 11px var(--font-ui);color:var(--muted);}
 .anp-chap-toolset ul{margin:0;padding-left:18px;font:600 13.5px/1.5 var(--font-ui);}
 /* Learn page: the course as one textbook (anp-book.js). */
 .anp-book .tb-main{max-width:760px;}

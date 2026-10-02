@@ -149,7 +149,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .timer-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-weight:700;font-size:13px;}
 .timer-row .time-remaining{font-size:20px;font-weight:700;color:var(--ink);}
 .timer-row .time-remaining.warn{color:var(--bad-text);}
-.pace-line{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--font-mono);}
+.pace-line{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--font-ui);font-variant-numeric:tabular-nums;}
 .pace-line.ahead{color:var(--good-text);}
 .pace-line.behind{color:var(--bad-text);}
 .practice-banner{
@@ -326,7 +326,7 @@ select:focus{outline:none;border-color:var(--accent);}
   #resultsScreen .score-card{box-shadow:none !important;border:1px solid #ccc;}
   #resultsScreen::before{content:"LevlPrep practice result — " attr(data-printed);display:block;font:700 12px monospace;margin-bottom:12px;}
 }
-.fc-hint{text-align:center;font:700 11.5px var(--font-mono);color:var(--muted);margin-top:16px;}
+.fc-hint{text-align:center;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:16px;}
 
 /* ---- Results ---- */
 #resultsScreen{display:none;}
@@ -451,7 +451,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .streak-track{background:var(--track);border-radius:var(--radius-pill);height:10px;overflow:hidden;}
 .streak-fill{background:var(--accent);height:100%;border-radius:var(--radius-pill);transition:width .3s ease;}
 .streak-fill.met{background:var(--good);}
-.streak-best{font:700 11.5px var(--font-mono);color:var(--muted);margin-top:9px;}
+.streak-best{font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;color:var(--muted);margin-top:9px;}
 .streak-settings{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-soft);}
 .streak-settings-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--muted);flex-wrap:wrap;}
 .streak-settings-row select{padding:7px 10px;font-size:12.5px;}
@@ -465,7 +465,7 @@ select:focus{outline:none;border-color:var(--accent);}
   list-style:none;display:inline-flex;align-items:center;gap:7px;
 }
 .fine-print summary::-webkit-details-marker{display:none;}
-.fine-print summary::before{content:'\25B8';font-size:11px;transition:transform .12s ease;}
+.fine-print summary::before{content:var(--disclose);font-size:15px;line-height:1;transition:transform .12s ease;}
 .fine-print[open] summary::before{transform:rotate(90deg);}
 .fine-print summary:hover{color:var(--accent);}
 .fine-print p{margin-top:12px;}
@@ -511,6 +511,12 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
    card stands in, and the pill beside the review buttons. */
 .premium-quota{margin:10px 0 0;font-size:13px;font-weight:700;color:var(--muted);}
 .premium-slot:empty{display:none;}
+/* A reserved slot keeps one quota line of height from the first paint
+   (review.html), so filling it moves nothing. */
+.premium-slot--reserved{display:block;min-height:30px;padding-top:10px;box-sizing:border-box;}
+.premium-slot--reserved:empty{display:block;}
+.premium-slot--reserved .premium-quota{margin-top:0;}
+@media (max-width:640px){ .premium-slot--reserved{min-height:44px;} }
 /* A gate card inside a mode card or panel would inherit their muted text,
    which is too faint on the card's tint. */
 #introScreen .premium-card p{color:var(--ink);}
