@@ -70,7 +70,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
 | W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | merged |
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
-| W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | in progress (wave 1) |
+| W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | in progress (wave 1) |
 | W7 | UX and accessibility | `-w7` | to do |
 | W8 | SEO, performance, repo | `-w8` | to do |
@@ -105,6 +105,8 @@ Calls made without asking, per the brief. Each says why.
 
 - **AI tutor needs sign-in for AI answers** (a Supabase session token, not Turnstile — no new setup for you). Signed-out visitors get answers from course material only.
 - **After merging any branch that touches page `<head>`s, run `node scripts/build-site-config.mjs`** (it writes the CSP).
+- **Ochem energy units:** kcal/mol is primary; pages built on kJ/mol data keep their tables and give kcal/mol beside the key numbers.
+- **Ochem concept tags:** vocabulary questions are tagged `recall` and show no concept; a question with no matching rule shows no concept line.
 - **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
 
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
@@ -134,9 +136,19 @@ Worker: API_URL constant, unsubscribe confirm-then-POST, safe Resend error handl
 keep_vars, generic errors, rate limits. CSP on all pages from `scripts/build-site-config.mjs` (`--check` in CI).
 Umami self-hosted (`assets/vendor/umami-2.10.0.js`). New `.github/workflows/deploy-worker.yml`.
 
+### W5 ochem content and tools — merged
+26 fixed (4 rows left for W9). Interactive-bank errors, Spectroscopy Lab (n+1 to nonet, anhydride bands, AA'BB'
+doublets, in-ring aromaticity, formula expansion), reaction predictor (90:10 primary SN2, neopentyl, (E)-but-2-ene),
+bank items, 50 stems now name their reaction, glossary, notation normalized by `scripts/normalize-ochem-notation.mjs`
+(1,472 strings). Concept fallback 54.0% → 6.0%; the concept line is hidden when nothing matched. Five new site
+rules. Accuracy check found 6 issues (half-converted exponents, two mis-tagged concepts, CF₃/SO₃H parsed as chains,
+DBU wording, a dropped "achiral solvent" qualifier); all fixed before merge. Ochem shell and home sit exactly at
+their weight budgets.
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
+- An instructor could spot-check the new ochem concept rules (`ochem/assets/legacy-rules.js`, blocks marked "site audit, October 2026").
 - Check RLS on `user_progress` allows UPDATE where `auth.uid() = id` (it must already, for the old upsert).
 
 ## Progress log
