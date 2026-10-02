@@ -328,7 +328,7 @@ async function ledgerRemove(env, keys, kind) {
   await sb(env, `premium_ledger?email_key=in.(${keys.join(',')})&kind=eq.${kind}`, { method: 'DELETE' });
 }
 
-/* POST /premium/guarantee: Pass-or-extend (formerly "the pass guarantee"), claimed from the account
+/* POST /premium/guarantee: Pass-or-extend (its old name was retired 2026-10), claimed from the account
    page with no approval step. Nobody can prove they failed (the National
    Registry publishes who is certified, not who failed), so the rules keep
    what a false claim can win small and make it checkable afterwards:

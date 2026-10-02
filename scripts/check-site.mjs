@@ -732,6 +732,11 @@ if (Array.isArray(bank)) {
     // The README describes both courses in the same file, so a figure in it is
     // correct if it matches either bank. Everything else belongs to one course.
     const isReadme = rel === 'README.md';
+    // The changelog is a dated record (it quotes old, wrong figures on
+    // purpose), and premium.html quotes all three banks, generated from them
+    // by build-pricing.mjs, whose --check and site rule advertised-counts
+    // keep it current.
+    if (rel === 'changelog.html' || rel === 'premium.html') continue;
     const isOchem = rel.split(/[\\/]/)[0] === 'ochem';
     // A&P question counts come from its own bank, written by build-anp.mjs.
     if (rel.split(/[\\/]/)[0] === 'anatomy-physiology') continue;

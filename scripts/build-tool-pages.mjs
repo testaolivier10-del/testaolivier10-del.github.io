@@ -39,6 +39,14 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { lockedLd } from './lib/premium-data.mjs';
+
+/* The free tools, from the one list ochem-premium.js gates by. The rest are
+   Premium, so their structured data marks the tool (.tool-root) as locked and
+   carries no "price: 0" offer (audit 2026-10). */
+const FREE_TOOLS = JSON.parse(
+  /var FREE_TOOLS = (\[[^\]]*\])/.exec(readFileSync(join(dirname(dirname(fileURLToPath(import.meta.url))), 'ochem', 'assets', 'ochem-premium.js'), 'utf8'))[1].replace(/'/g, '"'),
+);
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -114,8 +122,9 @@ function ldJson(tool) {
         learningResourceType: 'Interactive Tool',
         educationalLevel: 'Undergraduate',
         inLanguage: 'en',
-        isAccessibleForFree: true,
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+        ...(FREE_TOOLS.includes(tool.slug)
+          ? { isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
+          : lockedLd('.tool-root')),
         teaches: tool.teaches.split(/,\s*/).map((name) => ({ '@type': 'DefinedTerm', name })),
         isPartOf: { '@id': `${ORIGIN}/ochem/#course` },
         provider: { '@id': `${ORIGIN}/#org` },

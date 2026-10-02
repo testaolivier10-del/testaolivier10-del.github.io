@@ -58,11 +58,11 @@
       "learningResourceType": "Interactive Tool",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".tool-root"
       },
       "teaches": [
         {
@@ -289,7 +289,7 @@
 <!-- tool-top:end -->
 </div>
   <noscript><div class="site-nav-fallback"><p>The roadmap searches its routes in your browser and needs JavaScript to run. The same reactions are taught, section by section, in <a href="../notes/functional-group-interconversion.html">Functional group interconversion</a>.</p></div></noscript>
-  <div id="rrRoot"></div>
+  <div id="rrRoot" class="tool-root"></div>
 
   <div id="tool-quiz"></div>
 
