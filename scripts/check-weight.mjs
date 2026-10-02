@@ -88,8 +88,10 @@ const SHELL_BUDGETS = [
      handling, footers lifted out of main, the tutor's dialog semantics,
      right/wrong marks, dark-mode scrims and contrast, reserved space against
      layout shift, two elevation tokens (site-chrome.js, theme.css, tutor.js,
-     motion.js, account.js, about 4.7 KB gzipped). Measured 259.2 KB. */
-  ['site', 260],
+     motion.js, account.js, about 4.7 KB gzipped). Measured 259.2 KB.
+     260 -> 260.5 for the follow-up: the one breadcrumb component and the
+     written monospace/arrow rule with its --disclose token. Measured 260.1 KB. */
+  ['site', 260.5],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
