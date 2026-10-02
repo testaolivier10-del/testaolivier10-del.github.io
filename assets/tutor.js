@@ -139,7 +139,9 @@
     'ntg':['nitroglycerin'], 'epi':['epinephrine'], 'narcan':['naloxone'],
     'kids':['pediatric','child','infant'], 'child':['pediatric'],
     'heart':['cardiac'], 'lungs':['respiratory','pulmonary'], 'breathing':['respiratory','ventilation'],
-    'attack':['infarction'], 'bleeding':['hemorrhage'], 'pregnant':['obstetric','pregnancy']
+    'attack':['infarction'], 'bleeding':['hemorrhage'], 'pregnant':['obstetric','pregnancy'],
+    // The vital-signs tables say "respirations"; people ask about the "respiratory rate".
+    'respiratory':['respirations']
   };
 
   var STOP = new Set(('a an the is are was were be been being of for to in on at by with from as it its this that these those and or but if then than so what whats when where which who whom how why do does did doing can could should would will shall may might must i you he she they we me my your their there here about into over under again further once all any both each few more most other some such no nor not only own same too very just also get got have has had').split(' '));

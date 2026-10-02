@@ -189,7 +189,12 @@ const BUDGETS = [
   ['ochem/index.html', 11],
 
   // The busiest page on the site, and the one the bank split was for.
-  ['nremt/practice.html', 40],
+  /* 40 -> 44 in the 2026-10 audit follow-up: the runner gained a check step
+     with feedback after every untimed answer, a next step on the results
+     page, drills by 2025 exam domain or by topic area, exam-domain stats and
+     quota-capped length pickers (about 3.9 KB gzipped of engine). The bank
+     itself, the page's real weight, is a separate fetch and got lighter. */
+  ['nremt/practice.html', 44],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

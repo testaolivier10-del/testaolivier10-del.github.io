@@ -216,7 +216,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .progress-fill{height:100%;background:var(--accent);border-radius:var(--radius-pill);transition:width 0.25s ease;}
 
 .q-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px;}
-.q-domain{font:900 11.5px var(--font-ui);color:var(--coral);background:var(--tint-coral);padding:6px 13px;border-radius:var(--radius-pill);display:inline-block;}
+.q-domain{font:900 11.5px var(--font-ui);color:var(--coral-text);background:var(--tint-coral);padding:6px 13px;border-radius:var(--radius-pill);display:inline-block;}
 .diff-badge{
   display:inline-block;font:900 11px var(--font-ui);
   padding:6px 12px;border-radius:var(--radius-pill);margin-left:6px;text-transform:none;letter-spacing:0;
