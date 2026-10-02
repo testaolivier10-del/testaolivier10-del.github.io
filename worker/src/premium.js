@@ -21,7 +21,7 @@
    The cron (bottom of this file) sends the one "your pass ends soon" email
    and, hourly, reconciles against Polar's own order and dispute records. */
 
-import { sb, EMAIL_BATCH } from './store.js';
+import { sb, sha256Hex, EMAIL_BATCH } from './store.js';
 import { sendPassEndingEmail } from './email.js';
 
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it).
@@ -150,7 +150,9 @@ export async function premiumCheckout(request, env) {
    - within REFUND_WINDOW_DAYS of buying, as the terms promise;
    - once per account, ever. Any refund already on the account (self-serve
      or made by hand in Polar) means the next one goes through email, so a
-     buy-use-refund loop runs exactly once.
+     buy-use-refund loop runs exactly once. The account's email is also
+     written to premium_ledger (as a hash), which deleting the account does
+     not clear, so deleting and re-creating it does not reset the limit.
 
    Polar refunds the pre-tax amount and the tax with it. The pass is marked
    refunded here at once; order.refunded from Polar then finds nothing left
@@ -185,16 +187,23 @@ export async function premiumRefund(request, env, now = Date.now()) {
   if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const [rowRes, priorRes] = await Promise.all([
+  const key = await emailKey(user.email);
+  const [rowRes, priorRes, ledger] = await Promise.all([
     sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at&user_id=eq.${uid}` +
       `&order_id=eq.${encodeURIComponent(orderId)}&limit=1`),
     sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
+    ledgerHas(env, key, 'refund'),
   ]);
-  if (!rowRes.ok || !priorRes.ok) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
+  if (!rowRes.ok || !priorRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const row = (await rowRes.json())[0];
-  const prior = (await priorRes.json()).length;
+  const prior = (await priorRes.json()).length + (ledger ? 1 : 0);
   const refusal = refundRefusal(row, prior, now);
   if (refusal) return { status: 409, body: { error: refusal } };
+  // Claimed before Polar is asked, so two clicks at once cannot both refund:
+  // the second insert hits the unique key. Released if Polar says no.
+  const claimed = await ledgerAdd(env, key, 'refund');
+  if (claimed === 'taken') return { status: 409, body: { error: refundRefusal(row, 1, now) } };
+  if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
 
   const res = await fetch(`${polarApi(env)}/v1/refunds/`, {
     method: 'POST',
@@ -208,6 +217,7 @@ export async function premiumRefund(request, env, now = Date.now()) {
   });
   if (!res.ok) {
     console.log('polar refund failed', res.status, (await res.text()).slice(0, 300));
+    await ledgerRemove(env, key, 'refund');
     return { status: 502, body: { error: 'The refund didn’t go through automatically. Email us and we’ll sort it out.' } };
   }
   await sb(env, `premium_passes?order_id=eq.${encodeURIComponent(orderId)}&refunded_at=is.null`, {
@@ -216,6 +226,154 @@ export async function premiumRefund(request, env, now = Date.now()) {
     body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
   });
   return { status: 200, body: { ok: true } };
+}
+
+/* premium_ledger: what an email address has already used, kept after the
+   account is deleted. Only a hash of the lower-cased address is stored, and
+   only the Worker (service role) can read it. One row per address and kind,
+   so inserting doubles as the lock. */
+export async function emailKey(email) {
+  // Every account here has an address; without one there is nothing to key
+  // on, and the per-account checks still apply.
+  if (!String(email || '').trim()) return null;
+  return sha256Hex('levlprep-ledger:' + String(email || '').trim().toLowerCase());
+}
+
+async function ledgerHas(env, key, kind) {
+  if (!key) return false;
+  const res = await sb(env, `premium_ledger?select=kind&email_key=eq.${key}&kind=eq.${kind}&limit=1`);
+  if (!res.ok) return null;
+  return (await res.json()).length > 0;
+}
+
+async function ledgerAdd(env, key, kind) {
+  if (!key) return 'ok';
+  const res = await sb(env, 'premium_ledger', {
+    method: 'POST',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ email_key: key, kind }),
+  });
+  if (res.status === 409) return 'taken';
+  return res.ok ? 'ok' : 'error';
+}
+
+async function ledgerRemove(env, key, kind) {
+  if (!key) return;
+  await sb(env, `premium_ledger?email_key=eq.${key}&kind=eq.${kind}`, { method: 'DELETE' });
+}
+
+/* POST /premium/guarantee: the NREMT pass guarantee, claimed from the account
+   page with no approval step. Nobody can prove they failed (the National
+   Registry publishes who is certified, not who failed), so the rules keep
+   what a false claim can win small and make it checkable afterwards:
+
+   - an NREMT pass that was bought (not a free month), not refunded;
+   - the exam date falls inside that paid pass and is at most
+     GUARANTEE.claimDays ago;
+   - at least GUARANTEE.minExams full timed exams in the account's synced
+     history, taken during the paid pass and before the exam date, so the
+     pass was actually used to prepare;
+   - once per account and per email address, ever (premium_ledger again);
+   - the claim records the legal name and state the candidate tested under,
+     so it can be checked against the Registry's public certification
+     lookup. The terms say a claim from someone already certified ends the
+     extension.
+
+   It adds GUARANTEE.extendDays, starting when the current pass ends. */
+export const GUARANTEE = { claimDays: 30, extendDays: 90, minExams: 2 };
+
+export function guaranteeRefusal({ passes, examDate, history, used, now }) {
+  const paid = (passes || []).filter((p) => p.order_id && p.amount_cents > 0 && !p.refunded_at);
+  if (!paid.length) return 'The pass guarantee comes with a bought NREMT pass, and this account doesn’t have one.';
+  if (used) return 'This account has already used its pass guarantee.';
+  const exam = Date.parse(examDate + 'T12:00:00Z');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(examDate)) || !Number.isFinite(exam)) return 'Enter the date of your exam.';
+  if (exam > now + DAY_MS) return 'The exam date can’t be in the future.';
+  if (now - exam > GUARANTEE.claimDays * DAY_MS) {
+    return `Claims are made within ${GUARANTEE.claimDays} days of the exam, and that date is older than that.`;
+  }
+  // A day either side, since the date is the candidate's own calendar day.
+  const during = paid.find((p) => exam >= Date.parse(p.starts_at) - DAY_MS && exam <= Date.parse(p.expires_at) + DAY_MS);
+  if (!during) return 'The exam has to fall within a bought NREMT pass.';
+  const from = Math.min(...paid.map((p) => Date.parse(p.starts_at)));
+  const exams = (history || []).filter((h) => h && Number(h.date) >= from && Number(h.date) <= exam + DAY_MS).length;
+  if (exams < GUARANTEE.minExams) {
+    return `The guarantee needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
+      `This account has ${exams}. (Exams count once your progress has synced while signed in.)`;
+  }
+  return null;
+}
+
+// The synced NREMT exam history: user_progress.data is { v: 2, ns: { nremt } }
+// (older rows are the nremt keys flat), each value the raw localStorage string.
+export function examHistory(data) {
+  const ns = data && data.v === 2 ? data.ns && data.ns.nremt : data;
+  try {
+    const list = JSON.parse((ns && ns.nremt_exam100_history) || '[]');
+    return Array.isArray(list) ? list : [];
+  } catch { return []; }
+}
+
+export async function premiumGuarantee(request, env, now = Date.now()) {
+  const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+  if (!token) return { status: 401, body: { error: 'Sign in first.' } };
+  let payload;
+  try { payload = await request.json(); } catch { return { status: 400, body: { error: 'Invalid JSON' } }; }
+  const examDate = String(payload?.exam_date || '');
+  const name = String(payload?.legal_name || '').trim().replace(/\s+/g, ' ');
+  const state = String(payload?.state || '').trim().replace(/\s+/g, ' ');
+  if (name.length < 3 || name.length > 100) return { status: 400, body: { error: 'Enter your full legal name as the Registry has it.' } };
+  if (state.length < 2 || state.length > 40) return { status: 400, body: { error: 'Enter the state you tested for.' } };
+  if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { status: 503, body: { error: 'This isn’t set up yet.' } };
+
+  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
+    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
+  });
+  const user = who.ok ? await who.json() : null;
+  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+
+  const uid = encodeURIComponent(user.id);
+  const key = await emailKey(user.email);
+  const [passRes, progRes, ledger] = await Promise.all([
+    sb(env, `premium_passes?select=pass,order_id,amount_cents,refunded_at,starts_at,expires_at&user_id=eq.${uid}&course=eq.nremt`),
+    sb(env, `user_progress?select=data&id=eq.${uid}&limit=1`),
+    ledgerHas(env, key, 'guarantee'),
+  ]);
+  if (!passRes.ok || !progRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
+  const passes = await passRes.json();
+  const prog = (await progRes.json())[0];
+  const used = ledger || passes.some((p) => p.pass === 'guarantee');
+  const refusal = guaranteeRefusal({ passes, examDate, history: examHistory(prog && prog.data), used, now });
+  if (refusal) return { status: 409, body: { error: refusal } };
+
+  const claimed = await ledgerAdd(env, key, 'guarantee');
+  if (claimed === 'taken') return { status: 409, body: { error: 'This account has already used its pass guarantee.' } };
+  if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
+
+  const startsAt = await startFor(env, user.id, 'nremt', now);
+  const expiresAt = new Date(startsAt.getTime() + GUARANTEE.extendDays * DAY_MS);
+  const [claimRes, passIns] = await Promise.all([
+    sb(env, 'premium_guarantee_claims', {
+      method: 'POST',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({ user_id: user.id, legal_name: name, state, exam_date: examDate }),
+    }),
+    sb(env, 'premium_passes', {
+      method: 'POST',
+      headers: { Prefer: 'return=minimal' },
+      body: JSON.stringify({
+        user_id: user.id, course: 'nremt', pass: 'guarantee',
+        starts_at: startsAt.toISOString(), expires_at: expiresAt.toISOString(),
+      }),
+    }),
+  ]);
+  if (!passIns.ok) {
+    console.log('guarantee insert failed', passIns.status, (await passIns.text()).slice(0, 200));
+    await ledgerRemove(env, key, 'guarantee');
+    return { status: 500, body: { error: 'That didn’t go through. Try again in a moment.' } };
+  }
+  if (!claimRes.ok) console.log('guarantee claim record failed', claimRes.status);
+  return { status: 200, body: { ok: true, expires_at: expiresAt.toISOString() } };
 }
 
 function bytesToBase64(bytes) {

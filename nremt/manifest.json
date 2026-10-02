@@ -1,7 +1,7 @@
 {
   "name": "LevlPrep — NREMT-EMT Practice Exam & Study Tools",
   "short_name": "LevlPrep",
-  "description": "Free NREMT-EMT prep: question bank, timed exams, domain drills, flashcards, mnemonics, and progress tracking.",
+  "description": "NREMT-EMT prep, free to start: question bank, timed exams, domain drills, flashcards, mnemonics, and progress tracking.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

@@ -61,6 +61,76 @@
     if (rows === null) { $('acctCourses').innerHTML = '<p>Loading…</p>'; return; }
     renderCourses();
     renderOrders();
+    renderGuarantee();
+  }
+
+  /* The NREMT pass guarantee. The Worker's /premium/guarantee holds the rules
+     (worker/src/premium.js, premiumGuarantee); this only shows the form to
+     someone who could use it and explains a refusal in the Worker's words. */
+  var GUARANTEE_TEXT = 'Took the NREMT cognitive exam during a bought NREMT pass and didn’t pass? ' +
+    'Claim one free 90-day extension here, within 30 days of the exam. You need to have taken at least ' +
+    '2 full timed exams on LevlPrep during your pass, and each account gets one extension. ' +
+    'We may check claims against the National Registry’s public certification lookup.';
+
+  function renderGuarantee() {
+    var box = $('acctGuarantee');
+    if (!box) return;
+    var nremt = rows.filter(function (r) { return r.course === 'nremt'; });
+    var used = nremt.filter(function (r) { return r.pass === 'guarantee'; })[0];
+    var bought = nremt.some(function (r) { return isPurchase(r) && !r.refunded_at; });
+    if (used) {
+      box.innerHTML = '<p>You’ve used your pass guarantee: your extension runs until <strong>' +
+        esc(day(Date.parse(used.expires_at))) + '</strong>. Good luck on the retake.</p>';
+      return;
+    }
+    if (!bought) {
+      box.innerHTML = '<p>Comes with a bought NREMT pass. ' + esc(GUARANTEE_TEXT.replace(/^[^?]*\? /, '')) + '</p>';
+      return;
+    }
+    box.innerHTML = '<p>' + esc(GUARANTEE_TEXT) + '</p>' +
+      '<form class="gform" id="gForm" novalidate>' +
+        '<label>Full legal name, as the Registry has it<input type="text" id="gName" autocomplete="name" maxlength="100" required></label>' +
+        '<label>State you tested for<input type="text" id="gState" autocomplete="address-level1" maxlength="40" required></label>' +
+        '<label>Exam date<input type="date" id="gDate" required></label>' +
+        '<label class="check"><input type="checkbox" id="gTrue" required> I took the NREMT cognitive exam on that date and did not pass.</label>' +
+        '<div><button type="submit" class="btn-press sm" id="gSend">Claim my extension</button></div>' +
+        '<p class="note" id="gNote" role="status"></p>' +
+      '</form>';
+    $('gDate').max = new Date().toISOString().slice(0, 10);
+  }
+
+  function claimGuarantee(e) {
+    e.preventDefault();
+    if (busy) return;
+    var out = $('gNote');
+    function say(t, good) { out.textContent = t; out.className = 'note ' + (good ? 'good' : 'bad'); }
+    if (!$('gTrue').checked) { say('Tick the box to confirm you didn’t pass.'); return; }
+    if (!$('gDate').value) { say('Enter the date of your exam.'); return; }
+    var btn = $('gSend');
+    busy = true;
+    btn.disabled = true;
+    A.accessToken().then(function (token) {
+      if (!token) throw new Error('Your session has expired. Sign in again.');
+      // The Worker counts exams from the synced copy (the NREMT pages sync it
+      // while signed in), not from this browser.
+      return fetch(ENDPOINT + '/premium/guarantee', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ legal_name: $('gName').value, state: $('gState').value, exam_date: $('gDate').value }),
+      });
+    }).then(function (res) {
+      return res.json().then(function (body) { return { ok: res.ok, body: body }; }, function () { return { ok: false, body: {} }; });
+    }).then(function (r) {
+      busy = false;
+      if (!r.ok) throw new Error((r.body && r.body.error) || 'That didn’t go through. Try again in a moment.');
+      if (P && P.refresh) P.refresh();
+      load();
+      if (window.LevlAnnounce) window.LevlAnnounce.say('Extension added.');
+    }).catch(function (err) {
+      busy = false;
+      btn.disabled = false;
+      say(err && err.message ? err.message : 'That didn’t go through. Try again in a moment.');
+    });
   }
 
   function renderCourses() {
@@ -175,6 +245,7 @@
     A = window.StudyHubAccount;
     P = window.LevlPremium;
     document.addEventListener('click', onClick);
+    document.addEventListener('submit', function (e) { if (e.target && e.target.id === 'gForm') claimGuarantee(e); });
     if (!A) { render(); return; }
     if (A.renderAccountUI) A.renderAccountUI();
     A.onAuthChange(function () { load(); });

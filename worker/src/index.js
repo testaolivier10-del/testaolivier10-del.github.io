@@ -16,7 +16,7 @@
 
 import { runReminders, reminderText } from './reminders.js';
 import { runEmailReminders, unsubscribe } from './email.js';
-import { premiumCheckout, premiumWebhook, premiumRefund, runPassEnding, reconcilePolar } from './premium.js';
+import { premiumCheckout, premiumWebhook, premiumRefund, premiumGuarantee, runPassEnding, reconcilePolar } from './premium.js';
 
 // Tried in order until one answers. A single hard-coded model is a time bomb:
 // this shipped on @cf/meta/llama-3.1-8b-instruct, which the docs still list but
@@ -236,6 +236,12 @@ export default {
     // rules that keep it from being abused are in premiumRefund().
     if (path === '/premium/refund') {
       const r = await premiumRefund(request, env);
+      return json(r.body, r.status, origin);
+    }
+
+    // The NREMT pass guarantee; its rules are in premiumGuarantee().
+    if (path === '/premium/guarantee') {
+      const r = await premiumGuarantee(request, env);
       return json(r.body, r.status, origin);
     }
 

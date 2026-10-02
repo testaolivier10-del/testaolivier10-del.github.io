@@ -64,7 +64,7 @@
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
-      guarantee: 'Fail the NREMT while your pass is active and we extend it free until you pass.',
+      guarantee: 'Pass guarantee: take the NREMT during your pass and don’t pass, and claim a free 90-day extension (once, within 30 days of the exam).',
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
@@ -302,9 +302,16 @@
       ' title="' + (LAUNCHED ? 'Part of Premium' : 'Part of Premium — free until it launches') + '">Premium</button>';
   }
 
+  // The lowest pass price, at the founding price while it runs, so the cards
+  // show what someone would actually pay.
   function fromPrice(c) {
-    var p = c.passes.map(function (x) { return x.price; });
-    return '$' + Math.min.apply(null, p);
+    var low = Math.min.apply(null, c.passes.map(function (x) { return x.price; }));
+    if (!foundingLive()) return '$' + low;
+    return '$' + money(low * (100 - FOUNDING.off) / 100) + ' (founding price, then $' + low + ')';
+  }
+
+  function money(n) {
+    return (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
   }
 
   function gate(course, feature, source) {
@@ -362,11 +369,11 @@
   }
 
   function passHtml(course, p) {
-    var now = foundingLive() ? Math.round(p.price * (100 - FOUNDING.off)) / 100 : null;
+    var now = foundingLive() ? p.price * (100 - FOUNDING.off) / 100 : null;
     return '<li class="premium-pass">' +
       '<span><b>' + esc(p.label) + '</b>' +
       (now !== null
-        ? ' <s>$' + p.price + '</s> <b class="premium-pass__now">$' + now.toFixed(2).replace(/\.00$/, '') + '</b>'
+        ? ' <s>$' + p.price + '</s> <b class="premium-pass__now">$' + money(now) + '</b>'
         : ' <b class="premium-pass__now">$' + p.price + '</b>') +
       '</span>' +
       '<button type="button" class="auth-modal-submit premium-buy" data-premium-buy="' + esc(p.id) + '">Get it</button>' +

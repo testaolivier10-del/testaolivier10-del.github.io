@@ -48,6 +48,10 @@
   .acct ul.links{padding-left:20px;margin:6px 0 0;}
   .acct ul.links li{font-size:15px;font-weight:600;color:var(--muted);line-height:1.6;margin-bottom:6px;}
   .acct [hidden]{display:none !important;}
+  .acct .gform{display:grid;gap:10px;max-width:420px;margin-top:10px;}
+  .acct .gform label{font:800 13.5px var(--font-ui);color:var(--ink);display:grid;gap:4px;}
+  .acct .gform input[type=text],.acct .gform input[type=date]{font:600 15px var(--font-ui);padding:9px 11px;border:var(--bw) solid var(--line);border-radius:var(--radius);background:var(--bg,#fff);color:var(--ink);}
+  .acct .gform .check{display:flex;gap:8px;align-items:flex-start;font-weight:700;}
 </style>
 </head>
 <body>
@@ -96,10 +100,12 @@
           <h2>Refunds</h2>
           <p>You can refund a pass yourself, in full, within <strong>7 days</strong> of buying it, from its entry above. The pass ends straight away and the money goes back to your card, usually within 5&ndash;10 business days. Each account gets one refund; after that, or after 7 days, passes can&rsquo;t be refunded. Full terms are on the <a href="terms.html#premium">Terms</a> page.</p>
 
+          <h2>NREMT pass guarantee</h2>
+          <div id="acctGuarantee"></div>
+
           <h2>Receipts &amp; help</h2>
           <ul class="links">
             <li><a href="https://polar.sh/levlprep/portal" target="_blank" rel="noopener">Receipts and invoices</a> &mdash; on our payment provider, Polar. Sign in there with the email you paid with.</li>
-            <li><strong>NREMT pass guarantee:</strong> held an NREMT pass and didn&rsquo;t pass the exam? <a href="mailto:testaolivier10@gmail.com?subject=LevlPrep%20NREMT%20pass%20guarantee">Email us</a> and we&rsquo;ll extend your pass free until you do.</li>
             <li>Sync, sign out and delete your account are in the menu under your name, top right. Backups and your data are on the <a href="privacy.html">Privacy</a> page.</li>
           </ul>
         </div>
