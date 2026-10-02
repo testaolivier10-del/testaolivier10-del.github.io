@@ -74,7 +74,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
 | W7 | UX and accessibility | `-w7` | merged |
 | W8 | SEO, performance, repo | `-w8` | merged |
-| W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | in progress |
+| W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | merged |
 
 ### Which audit findings each workstream owns
 
@@ -116,7 +116,8 @@ Calls made without asking, per the brief. Each says why.
 - **Hub primary button goes to NREMT practice** (the largest course). Change `index.html` if another course should lead.
 - **Fonts use `font-display: optional`**: no layout shift, but a first visit on a slow connection may show the system font on that first page.
 - **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
-
+- **Ochem order:** organometallic bonding + Grignard became their own chapter (`grignard`) just before Carbonyl Chemistry; organolithiums, cuprates and cross-coupling stay after the acid derivatives (`organometallics`, retitled). IR and MS became their own chapter (`ir-mass-spec`) right after Alkenes & Alkynes; NMR stays late (`spectroscopy` id kept). Aromatic Chemistry follows Conjugation. No topic id changed, so every URL still works.
+- **Weinreb amide stays in the Grignard section** (it answers the ester double-addition problem there); logged for an instructor.
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
   session", free goal 15, picker cap, focus on the question heading, readiness rename) is done by W1, not W7,
   because it all lives in `nremt/practice-engine.js`. The /premium page is built by W2 (it is the honest-pricing
@@ -187,7 +188,7 @@ Worker and show in the purchase dialog, account page and premium.html. Gated pag
 with `hasPart`; no price-0 offers on Premium tools. Ochem dialog count 3,795 → 3,635 (NREMT 2,033, A&P 3,321).
 Legal pages dated 1 October, every privacy/terms gap closed, history moved to the changelog. Four new site rules.
 
-### W7 UX and accessibility — merged (follow-ups pending)
+### W7 UX and accessibility — merged
 41 fixed, 7 no change needed (already done by W1, or already fine). Hero is one sentence plus a "Start a free
 practice test" button and a Continue card; one shared header; dark mode follows the OS until set; keyboard path
 through ochem atomic-structure step 4; More sheet inert when closed; tutor is a labelled dialog that returns focus;
@@ -210,6 +211,24 @@ SHA, `package.json` + lockfile for CI tools, `.gitignore`, TRACKER.md moved to d
 new site rules. Shell budget 260.5 → 279 KB is a change of ruler: the scripts site-chrome.js mounts on every page are
 now counted; real every-page downloads fell (tutor 23 KB and the ~45 KB SDK left the first load).
 
+### W9 ochem sequencing — merged
+4 fixed. 25 chapters, 123 topics. Grignard teaches carbonyl addition and the ester double addition itself; IR, MS,
+EAS and directing effects explain conjugation, the α carbon, acylium and tropylium in place. About 30 pages of
+"later/you saw" wording and seven Grignard bank items were fixed. New topics "Carbenes & cyclopropanation" (in
+Alkenes) and "Electrocyclic & sigmatropic reactions" (end of Conjugation), each with notes, lesson, figures,
+glossary, concepts, flashcards and 20 questions. Free chapters unchanged (gating keys on chapter ids); the exam
+page's saved midterm range now stores chapter ids and reads old saves against the previous order (tested). New
+`scripts/ochem-forward-refs.mjs` and site rule `ochem-sequencing` hold the order and fail on use-before-taught,
+contradicting "later/earlier" wording and wrong chapter links. Two independent checks (order and rewrites; new
+chemistry plus a readability pass) found 3 + 11 issues, including an ester-IR contradiction and answer-length tells;
+all fixed before merge.
+
+## Outcome (2026-10-02)
+
+All nine workstreams are merged into `claude/friendly-galileo-qb7yzd`; every check in `checks.yml` passes locally,
+including check-a11y and check-console. Every science or clinical edit had at least one independent accuracy check,
+and every fix those checks asked for was applied before its merge. The `sw.js` cache is at v52.
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
@@ -220,10 +239,13 @@ now counted; real every-page downloads fell (tutor 23 KB and the ~45 KB SDK left
 - **After this deploys, check the live hub title** matches the repo (the audit saw an old live title; a Pages deploy timing issue).
 - **playwright 1.49.1** (CI-only) is flagged by `npm audit`; upgrading may shift axe results, so it is pinned until someone re-baselines.
 - An instructor could spot-check the new ochem concept rules (`ochem/assets/legacy-rules.js`, blocks marked "site audit, October 2026").
-- Check RLS on `user_progress` allows UPDATE where `auth.uid() = id` (it must already, for the old upsert).
+- `user_progress` own-row RLS policies and a 2 MB size check are in the migration (checklist item 1); sync needs nothing else.
+- **Ochem W9 positions for an instructor:** `docs/ochem-needs-author.md` entries w9-order, w9-carbenes, w9-pericyclic. The two new topics have had one accuracy check with a readability pass, not the readability audit's two-reviewer pass.
+- **A&P select-all/predict rebalancing** and the other A&P edits are in `docs/anp-needs-author.md` for the instructor review the Beta note promises.
 
 ## Progress log
 
+- 2026-10-02: W9 merged; all workstreams done, full CI green.
 - 2026-10-02: W8 merged; W9 (ochem sequencing) started.
 - 2026-10-02: W2 and W7 merged; W8 started; W7 finishing three follow-ups.
 - 2026-10-02: wave 1 merged, full CI green; wave 2 (W2, W7) started, W8 follows them.
