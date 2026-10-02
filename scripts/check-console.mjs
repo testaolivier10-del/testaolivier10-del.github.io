@@ -120,7 +120,7 @@ try {
   process.exit(0);
 }
 
-const PORT = 8732;
+const PORT = Number(process.env.CONSOLE_PORT) || 8732;
 const ORIGIN = `http://localhost:${PORT}`;
 /* The thirteen redirect stubs at the site root are a <meta http-equiv="refresh">
    and one link, no script at all, and each one's target is itself in this
@@ -212,6 +212,35 @@ await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
     results.push(await visit(next));
   }
 }));
+
+/* Flows: a page that loads clean can still fail at the one thing it is for.
+   A&P course search once caught its own error and only printed "The search
+   engine did not load" (a name collision with site-chrome.js, audit 2026-10
+   fix 6), which no listener above sees. So this types a query into the search
+   box on the A&P Learn page, follows the form to the course search page and
+   requires results there. */
+async function flowAnpSearch() {
+  const path = '/anatomy-physiology/learn.html → search';
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  const problems = [];
+  await page.route((url) => !url.href.startsWith(ORIGIN), (route) => route.abort('blockedbyclient'));
+  page.on('pageerror', (e) => problems.push(`uncaught exception: ${e.message.split('\n')[0]}`));
+  try {
+    await page.goto(ORIGIN + '/anatomy-physiology/learn.html', { waitUntil: 'load', timeout: 30000 });
+    const box = page.locator('form.anp-toc-search input[name="q"]').first();
+    await box.fill('sodium', { force: true });
+    await Promise.all([page.waitForURL(/search\.html\?q=sodium/, { timeout: 15000 }), box.press('Enter')]);
+    await page.waitForSelector('#anp-sr-results .anp-sr-hit', { timeout: 15000 });
+    const status = await page.textContent('#anp-sr-status');
+    if (/did not load/i.test(status || '')) problems.push(`search status: ${status}`);
+  } catch (e) {
+    problems.push(`A&P search returned no results: ${e.message.split('\n')[0]}`);
+  }
+  await ctx.close();
+  return { path, problems };
+}
+results.push(await flowAnpSearch());
 results.sort((a, b) => a.path.localeCompare(b.path));
 
 let failures = 0;

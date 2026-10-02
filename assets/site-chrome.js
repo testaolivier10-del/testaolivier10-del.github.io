@@ -147,7 +147,9 @@
       location.href = searchUrl(courseKey);
     });
   }
-  window.LevlSearch = { url: searchUrl, wireKey: wireSearchKey, icon: SEARCH_ICON };
+  /* Not window.LevlSearch: that name is the search engine (assets/site-search.js),
+     which A&P search loads only when the name is free (audit 2026-10, fix 6). */
+  window.LevlSearchChrome = { url: searchUrl, wireKey: wireSearchKey, icon: SEARCH_ICON };
 
   /* Where each course would send a returning student. Each course home works
      this out for its own "Continue" button and leaves it here, under
