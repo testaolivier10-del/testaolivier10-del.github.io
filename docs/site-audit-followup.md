@@ -63,7 +63,7 @@ Nothing below has been attempted from the repo. Each step says where to click.
 | W1 | NREMT exam alignment (2025 domains), triage notes, bank fixes, NREMT drill UX | `-w1` | in progress (wave 1) |
 | W2 | Free vs Premium honesty, numbers and dates, legal pages, /premium page | `-w2` | to do |
 | W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | in progress (wave 1) |
-| W4 | Cross-device sync in account.js, with tests | `-w4` | in progress (wave 1) |
+| W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | in progress (wave 1) |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | in progress (wave 1) |
 | W7 | UX and accessibility | `-w7` | to do |
@@ -97,6 +97,8 @@ Findings are named by the audit's section and "Where" column.
 
 Calls made without asking, per the brief. Each says why.
 
+- **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
+
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
   session", free goal 15, picker cap, focus on the question heading, readiness rename) is done by W1, not W7,
   because it all lives in `nremt/practice-engine.js`. The /premium page is built by W2 (it is the honest-pricing
@@ -104,9 +106,21 @@ Calls made without asking, per the brief. Each says why.
 - **check-site rule hook.** `check-site.mjs` loads every `scripts/site-rules/*.mjs` so parallel branches add rules
   without conflicts.
 
+## Workstream results
+
+Per-finding status lives in `docs/site-audit-notes/wN.md`; this is the summary.
+
+### W4 sync — merged
+3 fixed, 0 no change needed, 0 deferred. One `sync()` reads the row, merges per key (three-way, with a per-browser
+fingerprint of the last sync so deletions propagate), writes only if `updated_at` is unchanged (retries 4x), and
+runs on every load, tab focus, the 30 s timer and hide. Failures show after 3 in a row; menu shows "Last synced".
+Merge rules now live in account.js and progress-backup.js reuses them. Guarded by 11 two-device tests and
+`scripts/site-rules/progress-sync.mjs`. Shell weight budget 249 → 253 KB (the sync code must be on every page).
+
 ## Open items for the owner
 
-(Added as workstreams finish.)
+- **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
+- Check RLS on `user_progress` allows UPDATE where `auth.uid() = id` (it must already, for the old upsert).
 
 ## Progress log
 

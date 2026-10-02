@@ -157,7 +157,7 @@ try {
   process.exit(0);
 }
 
-const PORT = 8731;
+const PORT = Number(process.env.CHECK_A11Y_PORT) || 8731;
 const server = await serve(PORT);
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_PATH || undefined,

@@ -18,6 +18,8 @@ node scripts/build-tutor-bank.mjs >/dev/null 2>&1
 git diff --quiet -- nremt/assets/tutor-bank.json ochem/assets/tutor-bank.json || { echo "FAIL: tutor banks stale"; fail=1; }
 run node --test scripts/test/*.test.mjs
 if [ "$BROWSER" = 1 ]; then
+  # Random ports so parallel runs (several worktrees) do not collide.
+  export CHECK_A11Y_PORT=$((20000 + RANDOM % 20000)) CHECK_CONSOLE_PORT=$((40000 + RANDOM % 20000))
   run node scripts/check-a11y.mjs --check
   run node scripts/check-console.mjs --check
 fi

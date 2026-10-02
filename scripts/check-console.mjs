@@ -120,7 +120,7 @@ try {
   process.exit(0);
 }
 
-const PORT = 8732;
+const PORT = Number(process.env.CHECK_CONSOLE_PORT) || 8732;
 const ORIGIN = `http://localhost:${PORT}`;
 /* The thirteen redirect stubs at the site root are a <meta http-equiv="refresh">
    and one link, no script at all, and each one's target is itself in this
