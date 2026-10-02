@@ -523,9 +523,9 @@ function toolsForChapter(ch){
 
 /* ---- Review questions: which of the bank's questions belong to a chapter --
    A textbook chapter ends with questions, and the site has a bank of two
-   thousand. They are tagged by exam domain and topic rather than by chapter,
+   thousand. They are tagged by topic area (the `system` field) and topic rather than by chapter,
    and the tags run wider than a chapter does: one topic, "Medical", is 200
-   questions across six chapters here. So a chapter names a domain and/or
+   questions across six chapters here. So a chapter names a topic area and/or
    topic and, where that is still too wide, a pattern the stem has to match.
    Single-answer items only: a select-N or sequencing item needs the practice
    page's interface. A chapter with no honest match (the history of EMS)
@@ -588,7 +588,7 @@ function questionsForChapter(bank, ch){
   const out = [];
   bank.forEach((q, i) => {
     if (q.type) return;                                   // select-N and sequencing
-    if (rule.domain && q.domain !== rule.domain) return;
+    if (rule.domain && q.system !== rule.domain) return; // the topic-area label, not the 2025 exam domain
     if (rule.topic && q.topic !== rule.topic) return;
     if (rule.match && !rule.match.test(q.q)) return;
     out.push({ q, i });
