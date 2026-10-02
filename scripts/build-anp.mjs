@@ -1117,6 +1117,28 @@ function bankJson() {
   return out;
 }
 
+/* The bank's index (audit 2026-10: Practice, Review and Exams fetched all 54
+   bank files, 4.2 MB, before showing anything). Every question's id, type,
+   level, difficulty and core concepts, compact enough to fetch first; a page
+   then fetches only the chapters a set or exam draws from, and each chapter's
+   explanations only after a question is answered (AnpCore.loadIndex,
+   loadQuestions, loadWhy). Per topic, one entry per question:
+   "n.type.level.diff.core+core" with type, level and core as indexes into the
+   lists at the top; the question's id is anp-<topic>-<n>. */
+function bankIndexJson() {
+  const ty = [], lv = [], core = [];
+  const at = (list, v) => { let i = list.indexOf(v); if (i < 0) { i = list.length; list.push(v); } return i; };
+  const t = {};
+  for (const topic of builtTopics) {
+    t[topic.id] = C.questions[topic.id].map(q => {
+      const m = q.id.match(/^anp-(.+)-(\d+)$/);
+      if (!m || m[1] !== topic.id) throw new Error(`bank index: question id ${q.id} is not anp-${topic.id}-<n>`);
+      return [m[2], at(ty, q.type), at(lv, q.level), q.diff, (q.core || []).map(c => at(core, c)).join('+')].join('.');
+    }).join(',');
+  }
+  return JSON.stringify({ v: 1, ty, lv, core, t });
+}
+
 function notesIndexJson() {
   return JSON.stringify(builtTopics.map(t => ({ file: `${BASE}notes/${t.id}.html`, title: t.title })));
 }
@@ -1144,6 +1166,7 @@ for (const [ch, b] of Object.entries(bankJson())) {
   put(`assets/bank/${ch}.json`, JSON.stringify(b.core));
   put(`assets/bank/${ch}-why.json`, JSON.stringify(b.why));
 }
+put('assets/bank/index.json', bankIndexJson());
 
 /* Tool data as served: only items whose topic is built, so a chapter's tool
    items go live with its pages and not before (spec decision 53). The source

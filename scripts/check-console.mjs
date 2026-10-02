@@ -241,6 +241,71 @@ async function flowAnpSearch() {
   return { path, problems };
 }
 results.push(await flowAnpSearch());
+
+/* A&P Practice, Review and Exams load the bank's index, then only the
+   chapters a set draws from, and explanations after an answer (audit 2026-10:
+   they fetched 54 files first). Each flow runs the page for real and checks
+   both that it works and what it fetched. */
+async function anpFlow(name, fn) {
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  const problems = [], bank = [];
+  await page.route((url) => !url.href.startsWith(ORIGIN), (route) => route.abort('blockedbyclient'));
+  page.on('pageerror', (e) => problems.push(`uncaught exception: ${e.message.split('\n')[0]}`));
+  page.on('request', (r) => { const m = r.url().match(/assets\/bank\/([\w-]+\.json)/); if (m) bank.push(m[1]); });
+  try { await fn(page, bank, problems); } catch (e) { problems.push(`${name}: ${e.message.split('\n')[0]}`); }
+  await ctx.close();
+  return { path: name, problems };
+}
+// Answers whatever the question is (first option, or Check as it stands).
+async function answerOne(page) {
+  const opt = page.locator('.anp-q .anp-opt').first();
+  if (await opt.count()) await opt.click();
+  const check = page.locator('.anp-q .anp-check');
+  if (await check.count() && await check.isVisible()) await check.click();
+}
+results.push(await anpFlow('/anatomy-physiology/practice.html (flow)', async (page, bank, problems) => {
+  await page.goto(ORIGIN + '/anatomy-physiology/practice.html?topic=blood-composition', { waitUntil: 'load', timeout: 30000 });
+  await page.waitForSelector('.anp-pr-start:not([disabled])', { timeout: 15000 });
+  await page.click('.anp-pr-start');
+  await page.waitForSelector('.anp-pr-stage .anp-q', { timeout: 15000 });
+  if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+  await answerOne(page);
+  await page.waitForSelector('.anp-q-feedback .anp-verdict', { timeout: 15000 });
+  const fb = await page.textContent('.anp-q-feedback');
+  if (!fb || fb.replace(/\s+/g, ' ').trim().length < 40) problems.push('no explanation after answering');
+  const want = ['blood-why.json', 'blood.json', 'index.json'];
+  if (bank.slice().sort().join() !== want.join()) problems.push(`fetched ${bank.join(', ')}; expected only ${want.join(', ')}`);
+}));
+results.push(await anpFlow('/anatomy-physiology/review.html (flow)', async (page, bank, problems) => {
+  // One due miss from the urinary chapter, written the way AnpCore stores it.
+  await page.addInitScript(() => {
+    const t = Date.now() - 60000;
+    localStorage.setItem('anp_progress_v1', JSON.stringify({ v: 1, q: { 'anp-nephron-1': { t: 'nephron', k: [], l: 'r', d: 1, n: 1, c: 0, right: 0, seen: t, due: t, ivl: 0, ease: 2.3, lapses: 1, src: 'q' } }, lessons: {} }));
+  });
+  await page.goto(ORIGIN + '/anatomy-physiology/review.html', { waitUntil: 'load', timeout: 30000 });
+  await page.waitForSelector('#app button[data-n]', { timeout: 15000 });
+  await page.click('#app button[data-n]');
+  await page.waitForSelector('.anp-pr-stage .anp-q', { timeout: 15000 });
+  await answerOne(page);
+  await page.waitForSelector('.anp-q-feedback .anp-verdict', { timeout: 15000 });
+  const want = ['index.json', 'urinary-why.json', 'urinary.json'];
+  if (bank.slice().sort().join() !== want.join()) problems.push(`fetched ${bank.join(', ')}; expected only ${want.join(', ')}`);
+}));
+results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page, bank, problems) => {
+  await page.goto(ORIGIN + '/anatomy-physiology/exams.html', { waitUntil: 'load', timeout: 30000 });
+  await page.waitForSelector('.anp-ex-setup .anp-pr-start:not([disabled])', { timeout: 15000 });
+  await page.click('.anp-ex-setup .anp-pr-start');
+  await page.waitForSelector('.anp-ex-run .anp-q', { timeout: 15000 });
+  if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched during the exam: ${bank.join(', ')}`);
+  if (bank.length > 3) problems.push(`a unit quiz fetched ${bank.length} bank files: ${bank.join(', ')}`);
+  await answerOne(page);
+  await page.click('.anp-ex-finish');
+  const yes = page.locator('.anp-ex-yes');
+  if (await yes.isVisible()) await yes.click();
+  await page.waitForSelector('.anp-ex-results', { timeout: 15000 });
+  if (!/Why:/.test(await page.textContent('.anp-ex-results'))) problems.push('the exam review shows no explanations');
+}));
 results.sort((a, b) => a.path.localeCompare(b.path));
 
 let failures = 0;
