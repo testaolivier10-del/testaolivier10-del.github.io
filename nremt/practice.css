@@ -511,6 +511,12 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
    card stands in, and the pill beside the review buttons. */
 .premium-quota{margin:10px 0 0;font-size:13px;font-weight:700;color:var(--muted);}
 .premium-slot:empty{display:none;}
+/* A reserved slot keeps one quota line of height from the first paint
+   (review.html), so filling it moves nothing. */
+.premium-slot--reserved{display:block;min-height:30px;padding-top:10px;box-sizing:border-box;}
+.premium-slot--reserved:empty{display:block;}
+.premium-slot--reserved .premium-quota{margin-top:0;}
+@media (max-width:640px){ .premium-slot--reserved{min-height:44px;} }
 /* A gate card inside a mode card or panel would inherit their muted text,
    which is too faint on the card's tint. */
 #introScreen .premium-card p{color:var(--ink);}
