@@ -72,8 +72,8 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
 | W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
-| W7 | UX and accessibility | `-w7` | in progress (wave 2) |
-| W8 | SEO, performance, repo | `-w8` | to do |
+| W7 | UX and accessibility | `-w7` | merged; 3 follow-ups in progress |
+| W8 | SEO, performance, repo | `-w8` | in progress |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
 
 ### Which audit findings each workstream owns
@@ -112,6 +112,9 @@ Calls made without asking, per the brief. Each says why.
 - **NREMT item types:** the site simulates multiple choice and multiple response; build-list, drag-and-drop and options tables are described on exam-day.html but not simulated, and the copy says so.
 - **One name for the assistant:** "the study assistant".
 - **Polar buyer age:** polar.sh was unreachable; terms follow Polar's general terms as found by search (legal age to contract or a parent's permission; Polar takes no personal data from under-16s). Confirm against Polar's buyer terms (checklist item 7).
+- **Three quiz engines stay separate for now.** Merging them into one answer-card component rewrites reviewed course code in all three courses; it should be its own workstream. The shared daily goal (15) is done.
+- **Hub primary button goes to NREMT practice** (the largest course). Change `index.html` if another course should lead.
+- **Fonts use `font-display: optional`**: no layout shift, but a first visit on a slow connection may show the system font on that first page.
 - **Sync conflicts:** when both devices changed a setting-like key between syncs, this device wins (except on a device's first sync, where the account wins). Numbers take the max, lists the union, stamped objects the newer.
 
 - **File ownership beats the audit's grouping where they collide.** NREMT drill UX (feedback per question, "End
@@ -184,6 +187,15 @@ Worker and show in the purchase dialog, account page and premium.html. Gated pag
 with `hasPart`; no price-0 offers on Premium tools. Ochem dialog count 3,795 → 3,635 (NREMT 2,033, A&P 3,321).
 Legal pages dated 1 October, every privacy/terms gap closed, history moved to the changelog. Four new site rules.
 
+### W7 UX and accessibility — merged (follow-ups pending)
+41 fixed, 7 no change needed (already done by W1, or already fine). Hero is one sentence plus a "Start a free
+practice test" button and a Continue card; one shared header; dark mode follows the OS until set; keyboard path
+through ochem atomic-structure step 4; More sheet inert when closed; tutor is a labelled dialog that returns focus;
+right/wrong icons plus text; contrast and landmark fixes; sound off by default; confetti only on level-up and
+session end. Layout shift on phones: A&P lesson 0.27–0.35 → ≤0.07, ochem practice 0.79 → 0.02, dashboards up to
+0.98 → ≤0.09, A&P learn 0.58 → 0. "/" opens an in-page search overlay. New a11y interaction checks and three site
+rules. Follow-ups in progress: ochem/NREMT breadcrumbs, NREMT review CLS (0.21), monospace and arrow tokens.
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
@@ -196,6 +208,7 @@ Legal pages dated 1 October, every privacy/terms gap closed, history moved to th
 
 ## Progress log
 
+- 2026-10-02: W2 and W7 merged; W8 started; W7 finishing three follow-ups.
 - 2026-10-02: wave 1 merged, full CI green; wave 2 (W2, W7) started, W8 follows them.
 - 2026-10-02: wave 1 (W1, W3, W4, W5, W6) started; helpers write per-finding notes to `docs/site-audit-notes/wN.md`; local CI mirror is `scripts/ci-local.sh`.
 - 2026-10-02: status file, rule hook in check-site, audit copied to `docs/site-audit-2026-10.md`.
