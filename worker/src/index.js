@@ -275,7 +275,7 @@ export default {
       return reply(r.body, r.status);
     }
 
-    // The NREMT pass guarantee; its rules are in premiumGuarantee().
+    // Pass-or-extend (NREMT); its rules are in premiumGuarantee().
     if (path === '/premium/guarantee') {
       const r = await premiumGuarantee(request, env);
       return reply(r.body, r.status);

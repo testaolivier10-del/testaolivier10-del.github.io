@@ -328,7 +328,7 @@ async function ledgerRemove(env, keys, kind) {
   await sb(env, `premium_ledger?email_key=in.(${keys.join(',')})&kind=eq.${kind}`, { method: 'DELETE' });
 }
 
-/* POST /premium/guarantee: the NREMT pass guarantee, claimed from the account
+/* POST /premium/guarantee: Pass-or-extend (formerly "the pass guarantee"), claimed from the account
    page with no approval step. Nobody can prove they failed (the National
    Registry publishes who is certified, not who failed), so the rules keep
    what a false claim can win small and make it checkable afterwards:
@@ -377,8 +377,8 @@ export function guaranteeFunding(passes, examDate) {
 
 export function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const paid = (passes || []).filter((p) => p.order_id && p.amount_cents > 0 && !p.refunded_at);
-  if (!paid.length) return 'The pass guarantee comes with a bought NREMT pass, and this account doesn’t have one.';
-  if (used) return 'This account has already used its pass guarantee.';
+  if (!paid.length) return 'Pass-or-extend comes with a bought NREMT pass, and this account doesn’t have one.';
+  if (used) return 'This account has already used Pass-or-extend.';
   const exam = Date.parse(examDate + 'T12:00:00Z');
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(examDate)) || !Number.isFinite(exam)) return 'Enter the date of your exam.';
   if (exam > now + DAY_MS) return 'The exam date can’t be in the future.';
@@ -391,7 +391,7 @@ export function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const from = Math.min(...paid.map((p) => Date.parse(p.starts_at)));
   const exams = (history || []).filter((h) => h && Number(h.date) >= from && Number(h.date) <= exam + DAY_MS).length;
   if (exams < GUARANTEE.minExams) {
-    return `The guarantee needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
+    return `Pass-or-extend needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
       `This account has ${exams}. (An exam counts when you finish it while signed in.)`;
   }
   return null;
@@ -442,7 +442,7 @@ export async function premiumGuarantee(request, env, now = Date.now()) {
   const funding = guaranteeFunding(passes, examDate);
 
   const claimed = await ledgerAdd(env, keys, 'guarantee');
-  if (claimed === 'taken') return { status: 409, body: { error: 'This account has already used its pass guarantee.' } };
+  if (claimed === 'taken') return { status: 409, body: { error: 'This account has already used Pass-or-extend.' } };
   if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
 
   let added = null;

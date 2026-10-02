@@ -35,7 +35,7 @@
   }
   function passLabel(row) {
     if (row.pass === 'grant') return 'Free month';
-    if (row.pass === 'guarantee') return 'Pass-guarantee extension';
+    if (row.pass === 'guarantee') return 'Pass-or-extend extension';
     var c = P && P.COURSES[row.course];
     var hit = c && (c.passes || []).filter(function (p) { return p.id === row.pass; })[0];
     return hit ? hit.label : row.pass;
@@ -64,13 +64,17 @@
     renderGuarantee();
   }
 
-  /* The NREMT pass guarantee. The Worker's /premium/guarantee holds the rules
+  /* Pass-or-extend (NREMT). The Worker's /premium/guarantee holds the rules
      (worker/src/premium.js, premiumGuarantee); this only shows the form to
-     someone who could use it and explains a refusal in the Worker's words. */
-  var GUARANTEE_TEXT = 'Took the NREMT cognitive exam during a bought NREMT pass and didn’t pass? ' +
-    'Claim one free 90-day extension here, within 30 days of the exam. You need to have taken at least ' +
-    '2 full timed exams on LevlPrep during your pass, and each account gets one extension. ' +
-    'We may check claims against the National Registry’s public certification lookup.';
+     someone who could use it and explains a refusal in the Worker's words.
+     The conditions are LevlPremium.guaranteeText(), the same paragraph the
+     purchase dialog and premium.html show. */
+  function guaranteeText() {
+    var P = window.LevlPremium;
+    return (P && P.guaranteeText ? P.guaranteeText() : '') +
+      ' An exam counts only when you finish it while signed in. ' +
+      'We may check claims against the National Registry’s public certification lookup.';
+  }
 
   function renderGuarantee() {
     var box = $('acctGuarantee');
@@ -79,15 +83,15 @@
     var used = nremt.filter(function (r) { return r.pass === 'guarantee'; })[0];
     var bought = nremt.some(function (r) { return isPurchase(r) && !r.refunded_at; });
     if (used) {
-      box.innerHTML = '<p>You’ve used your pass guarantee: your extension runs until <strong>' +
+      box.innerHTML = '<p>You’ve used Pass-or-extend: your extension runs until <strong>' +
         esc(day(Date.parse(used.expires_at))) + '</strong>. Good luck on the retake.</p>';
       return;
     }
     if (!bought) {
-      box.innerHTML = '<p>Comes with a bought NREMT pass. ' + esc(GUARANTEE_TEXT.replace(/^[^?]*\? /, '')) + '</p>';
+      box.innerHTML = '<p>Comes with a bought NREMT pass. ' + esc(guaranteeText()) + '</p>';
       return;
     }
-    box.innerHTML = '<p>' + esc(GUARANTEE_TEXT) + '</p>' +
+    box.innerHTML = '<p>' + esc(guaranteeText()) + '</p>' +
       '<form class="gform" id="gForm" novalidate>' +
         '<label>Full legal name, as the Registry has it<input type="text" id="gName" autocomplete="name" maxlength="100" required></label>' +
         '<label>State you tested for<input type="text" id="gState" autocomplete="address-level1" maxlength="40" required></label>' +

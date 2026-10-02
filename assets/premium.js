@@ -52,6 +52,11 @@
      Worker (its FOUNDING_DISCOUNT_ID). Set `until` to null to end it. */
   var FOUNDING = { off: 30, until: '2027-01-31' };
 
+  /* Pass-or-extend (NREMT): fail the exam during a bought pass and claim one
+     free extension. The numbers must match GUARANTEE in worker/src/premium.js,
+     which enforces them (site rule premium-copy checks the two agree). */
+  var GUARANTEE = { minExams: 2, claimDays: 30, extendDays: 90 };
+
   /* The split, per course. `free` and `premium` are what the dialog lists, so
      what someone pays for is exactly what is written here. `passes` must match
      PASSES in worker/src/premium.js; `freeChapters` is the always-open part.
@@ -64,7 +69,7 @@
       passes: [
         { id: 'nremt-90', label: '90 days', price: 29 },
       ],
-      guarantee: 'Pass guarantee: take the NREMT during your pass and don’t pass, and claim a free 90-day extension (once, within 30 days of the exam).',
+      guarantee: true, // Pass-or-extend; the wording is guaranteeText()
       free: [
         'Study notes, glossary, flowcharts, mnemonics, flashcards and the body map',
         '15 practice or review questions a day, any topic',
@@ -72,7 +77,7 @@
         'Your progress, XP, streak and weak topics',
       ],
       premium: [
-        'The full 2,033-question bank, unlimited',
+        'The full 2,033-question bank, unlimited', // count:nremt
         'Unlimited timed 100-question exams',
         'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',
@@ -96,7 +101,7 @@
       ],
       premium: [
         'Every interactive lesson and mechanism walkthrough',
-        'The full 3,795-question bank, unlimited practice and review',
+        'The full 3,635-question bank, unlimited practice and review', // count:ochem
         'Unlimited exams',
         'Mastery dashboard and gap detection',
         'All eight interactive tools',
@@ -119,7 +124,7 @@
       ],
       premium: [
         'Every interactive lesson',
-        'The full question bank, unlimited practice and review',
+        'The full 3,321-question bank, unlimited practice and review', // count:anp
         'Unlimited exams',
         'All the interactive tools, including the lab practical',
         'Detailed dashboard analytics',
@@ -414,6 +419,17 @@
 
   /* ---- the dialog ------------------------------------------------------- */
 
+  /* Pass-or-extend in one paragraph, from GUARANTEE: the dialog, the
+     account page and premium.html all show this same text. */
+  function guaranteeText() {
+    var g = GUARANTEE;
+    return 'Pass-or-extend: take the NREMT cognitive exam during an NREMT pass you bought and don’t pass, ' +
+      'and you can claim one free ' + g.extendDays + '-day extension from your Account page within ' +
+      g.claimDays + ' days of the exam. It needs at least ' + g.minExams + ' full timed exams on LevlPrep, ' +
+      'finished while signed in, during your pass and before the real exam, and the legal name and state you tested under. ' +
+      'Once per account and email address. It extends your access; it is not a refund.';
+  }
+
   function foundingLive() {
     return !!(FOUNDING.until && Date.now() < Date.parse(FOUNDING.until + 'T23:59:59Z'));
   }
@@ -505,13 +521,17 @@
         'One-time passes. No subscription, nothing renews. Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
         (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
       body.innerHTML = '<ul class="premium-passes">' +
-        c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>';
-      // innerHTML for the one link; every other part is a fixed string or
+        c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>' +
+        // The conditions sit next to the price, not behind a link: "pass
+        // guarantee" alone promised more than the terms give (audit 2026-10).
+        (c.guarantee ? '<p class="premium-guarantee">' + esc(guaranteeText()) + '</p>' : '');
+      // innerHTML for the links; every other part is a fixed string or
       // escaped, as elsewhere in this dialog.
-      fine.innerHTML = esc((c.guarantee ? c.guarantee + ' ' : '') +
+      fine.innerHTML = esc(
         'When a pass ends, your progress stays; only the Premium parts lock again. ' +
-        'Full refund within 7 days of buying, once per account. Sold by Polar, our merchant of record. ' +
+        'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
         (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '')) +
+        '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
       document.getElementById('premiumSub').textContent =
@@ -811,6 +831,9 @@
   window.LevlPremium = {
     launched: function () { return LAUNCHED; },
     COURSES: COURSES,
+    FOUNDING: FOUNDING,
+    GUARANTEE: GUARANTEE,
+    guaranteeText: guaranteeText,
     has: has,
     isFreeChapter: isFreeChapter,
     gate: gate,

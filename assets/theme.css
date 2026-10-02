@@ -1145,6 +1145,7 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .premium-lists h3{margin:0 0 6px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
 .premium-lists ul{margin:0;padding-left:18px;font-size:13px;font-weight:700;line-height:1.5;}
 .premium-fine{margin:12px 0 0;font-size:12px;font-weight:700;color:var(--muted);text-align:center;}
+.premium-guarantee{margin:4px 0 0;padding:10px 12px;border:var(--bw) solid var(--line);border-radius:var(--radius);font-size:13px;font-weight:700;line-height:1.5;color:var(--ink);}
 @media (max-width:520px){.premium-lists{grid-template-columns:1fr;}}
 /* The pill that marks a Premium feature, and the pass list in the dialog. */
 .premium-badge{
