@@ -24,9 +24,23 @@ This Worker is built so that running out is harmless:
 There is also a per-IP rate limit (12/min) so one visitor cannot drain the
 day's allowance.
 
-## Deploy — dashboard (no install)
+## Deploy — GitHub Action (the normal way)
 
-Nothing to install; everything happens in the browser.
+`.github/workflows/deploy-worker.yml` runs `wrangler deploy` from this folder on
+every push to `main` that touches `worker/`, and on demand (Actions → Deploy
+Worker → Run workflow). It needs two repository secrets: `CLOUDFLARE_API_TOKEN`
+(Cloudflare → My Profile → API Tokens → "Edit Cloudflare Workers" template) and
+`CLOUDFLARE_ACCOUNT_ID`. Deploying with wrangler is what gives the Worker the
+per-IP rate limiter and the cron from `wrangler.toml`; `keep_vars = true` there
+keeps variables set in the dashboard (`POLAR_PRODUCTS`, `FOUNDING_DISCOUNT_ID`).
+
+Apply `scripts/sql/migrations/2026-10-audit.sql` before the first deploy of
+this version: the Worker calls the database functions it adds.
+
+## Deploy — dashboard (fallback, no install)
+
+Nothing to install; everything happens in the browser. Prefer the Action: a
+dashboard paste has no rate limiter.
 
 1. Go to **dash.cloudflare.com** → **Compute (Workers)** → **Create** →
    **Start with Hello World** → **Deploy**. Name it `levlprep-ask`.
@@ -55,26 +69,31 @@ wrangler deploy
 
 ## Turning it on for everyone
 
-Paste the Worker URL into `DEFAULT_ENDPOINT` at the top of
-`../assets/tutor.js`. Every visitor then gets AI answers with nothing to
-configure. Leave it empty and the assistant stays in local-search mode unless
-someone sets an endpoint by hand under its gear icon.
+The Worker's address is one constant, `API_URL_DEFAULT` in `src/config.js`.
+`node scripts/build-site-config.mjs` writes it into the site files that call the
+Worker (`assets/tutor.js`, `premium.js`, `account-page.js`, `reminders.js`,
+`sw.js`) and into every page's Content-Security-Policy, which names this one
+host (not `*.workers.dev`). To move to `api.levlprep.com`: change the constant,
+run that script and `node scripts/build-worker.mjs`, commit, deploy.
 
-The site's Content-Security-Policy already allows `https://*.workers.dev`
-under `connect-src`. If you later move the Worker to a custom domain, add that
-origin to the CSP in the site's HTML or the browser will block the call with
-no visible error.
+The assistant answers signed-in students only: the browser sends its Supabase
+session (only to this Worker, never to an endpoint set by hand), and the Worker
+checks it with Supabase before calling the model. Signed-out visitors get the
+course's own material.
 
 ## Abuse
 
 `ALLOWED_ORIGINS` in `src/index.js` restricts which sites may call the
-endpoint — it is already set to this site plus localhost. Without that, any
+endpoint — this site only; a development Worker with `ALLOW_LOCALHOST = "true"`
+also accepts `localhost:8000`. Without that, any
 website could point at your Worker and spend your daily allowance. A request
 must carry one of those origins: one with no `Origin` header at all (curl, a
 bot) is refused too, since a browser always sends it on a POST. Only the two
 non-assistant routes, `/reminders/text` and `/api/unsubscribe`, answer without
-one. The unsubscribe token is 144 random bits (`gen_random_bytes(18)` in
-`scripts/sql/schema.sql`), so it cannot be guessed.
+one, and both are throttled per IP. The unsubscribe token is 144 random bits
+(`gen_random_bytes(18)` in `scripts/sql/schema.sql`), so it cannot be guessed.
+The assistant also needs a verified Supabase session, so a forged Origin
+header alone gets a 401.
 
 Deployed from the dashboard there is no per-IP rate limit, so a determined
 visitor could burn through the day's 10,000 Neurons. On the Workers Free plan
@@ -243,12 +262,17 @@ wrangler secret put RESEND_API_KEY
 ```
 
 plus `REMINDER_FROM` (a verified domain on the provider, **not** a gmail
-address, or every message lands in spam) and `SITE_URL`. Leave `RESEND_API_KEY`
+address, or every message lands in spam) and `SITE_URL`. Fill in
+`POSTAL_ADDRESS` in `src/email.js` (CAN-SPAM wants a postal address in every
+reminder). Leave `RESEND_API_KEY`
 unset and the whole email path is skipped silently.
 
-Every message carries a one-click unsubscribe — in the footer and in the
+Every message carries an unsubscribe — in the footer and in the
 `List-Unsubscribe` header, which serious mail clients turn into their own
-button. Without that header, somebody who wants out presses "spam" instead, and
+button. Both point at this Worker (`API_URL`), not at the site, which is static
+hosting and answered 404. The footer link opens a page with one button (a GET
+never deletes, because mail scanners open every link); the mail client's own
+button sends the RFC 8058 POST and is one click. Without that header, somebody who wants out presses "spam" instead, and
 that costs the domain's reputation for every message it sends *including the
 password resets*.
 

@@ -620,9 +620,10 @@ It works in two layers, and the first one is always on:
    quota, outage, no endpoint — falls back to layer 1, so the feature degrades
    instead of breaking.
 
-The page CSP allows `https://*.workers.dev` under `connect-src` so a deployed
-Worker can actually be reached; without that the browser blocks the call
-silently.
+The page CSP allows the one Worker host (`API_URL` in `worker/src/config.js`,
+written into every page by `scripts/build-site-config.mjs`) under
+`connect-src`; any other host is blocked silently, so a Worker set by hand in
+the assistant's settings only works on a copy of the site with its own CSP.
 
 ## Accessibility
 
