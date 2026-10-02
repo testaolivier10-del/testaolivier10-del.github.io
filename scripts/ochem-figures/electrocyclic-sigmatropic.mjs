@@ -255,7 +255,7 @@ FIGURES.push({
     s += bond(v[2], ax, { rFrom: 0, rTo: 9 }) + atom(ax.x, ax.y, 'H', { r: 9 });
     const lbl = [['C5', 0, 18, 6], ['C4', 1, 8, 18], ['C3', 2, 16, 14], ['C2', 3, -20, 4], ['C1', 4, -6, 20], ['C6', 5, 6, 20]];
     for (const [t, i, dx, dy] of lbl) s += text(r1(v[i].x + dx), r1(v[i].y + dy), t, { cls: 'fg-tag-mut', size: 10 });
-    s += text(104, 214, 'dashed: breaking (C3–C4) and forming (C1–C6)', { cls: 'fg-tag-mut', size: 10, anchor: 'start' });
+    s += text(200, 214, 'dashed: C3–C4 breaking, C1–C6 forming', { cls: 'fg-tag-mut', size: 10 });
     s += text(14, 176, 'methyl equatorial', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     s += text(14, 192, '→ the (E) alkene', { cls: 'fg-tag-good', size: 11, anchor: 'start' });
     return s;

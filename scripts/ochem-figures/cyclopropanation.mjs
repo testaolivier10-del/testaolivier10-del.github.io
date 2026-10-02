@@ -104,7 +104,7 @@ FIGURES.push({
     let s = carbene(90, 110, 'H', ':CH₂');
     s += carbene(270, 110, 'Cl', ':CCl₂');
     s += rule(180, 30, 180, 190);
-    s += text(180, 206, 'filled lobe: the lone pair (sp²) · dashed lobes: the empty p orbital', { cls: 'fg-tag-mut', size: 10.5 });
+    s += text(180, 206, 'filled: the lone pair (sp²) · dashed: the empty p', { cls: 'fg-tag-mut', size: 10.5 });
     return s;
   },
   caption: 'Like a nucleophile, the carbon has a lone pair; like a carbocation, it has an empty p orbital. The dashed p orbital points out of the page, at right angles to the lone pair.',

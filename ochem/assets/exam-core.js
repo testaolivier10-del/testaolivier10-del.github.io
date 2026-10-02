@@ -232,16 +232,10 @@
     return out.slice(-HISTORY_MAX);
   }
 
-  /* ---- a saved midterm range ---------------------------------------
-
-     The midterm's "from chapter" and "to chapter" used to be saved as chapter
-     NUMBERS. Numbers go stale the day a chapter moves: after the October 2026
-     reorder (IR & MS, Aromatic Chemistry and the Grignard chapter moved
-     forward) a saved "chapters 1-12, through Carbonyl" would have meant
-     through Aromatic Chemistry instead. So the range is saved as chapter ids
-     now, and a range saved the old way is read against the order it was
-     saved under, LEGACY_ORDER, and turned into ids. `chapterIds` is the
-     current order. Returns { fromId, toId }, always two ids in that order. */
+  /* A saved midterm range. It used to be chapter NUMBERS, which go stale
+     when chapters move (October 2026 reorder), so it is saved as ids now; an
+     old numeric save is read against LEGACY_ORDER, the order it was saved
+     under. Returns { fromId, toId } in course order. */
   var LEGACY_ORDER = ['foundations', 'electron-movement', 'nomenclature', 'acids-bases',
     'alkanes-conformations', 'stereochemistry', 'reactivity', 'substitution-elimination',
     'alkenes-alkynes', 'conjugation', 'alcohols-ethers', 'carbonyl-chemistry', 'redox',

@@ -247,7 +247,12 @@ const BUDGETS = [
      simply more topics — and the saving noted above (splitting the one
      lesson-concepts.js call out of ochem-home.js, worth about 4.4 KB) is
      still available if this ever needs to come back down. */
-  ['ochem/index.html', 11.3],
+  /* 11.3 -> 11.6 (audit 2026-10, W9): the reorder split two chapters out
+     (IR & Mass Spectrometry; Organometallic Bonding & Grignard Reagents) and
+     added two topics (cyclopropanation, electrocyclic and sigmatropic
+     reactions), so the generated path gained two chapter nodes and two
+     topic lines. Measured 11.5 KB. */
+  ['ochem/index.html', 11.6],
 
   // The busiest page on the site, and the one the bank split was for.
   /* 40 -> 44 in the 2026-10 audit follow-up: the runner gained a check step
@@ -453,7 +458,9 @@ const DATA_BUDGETS = [
      expanded to real sentences and 81 true/false items rewritten as false
      statements, each explanation now stating the correct fact. Measured
      325.0 KB. */
-  ['ochem/assets/tutor-bank.json', 328],
+  /* 328 -> 332 (audit 2026-10, W9): the two new topics' notes sections and
+     their 40 questions with explanations. Measured 329.7 KB. */
+  ['ochem/assets/tutor-bank.json', 332],
   /* Ochem's question bank, now split in two (scripts/build-ochem-bank.mjs).
 
      The core is what practice.html and review.html WAIT on before their first
@@ -519,7 +526,9 @@ const DATA_BUDGETS = [
   /* 241 -> 248 for the site-review pass (see the tutor index above): terse
      explanations expanded and 81 true/false items rewritten. Measured
      245.4 KB, still fetched after paint. */
-  ['ochem/assets/practice-bank-why.json', 248],
+  /* 248 -> 250 (audit 2026-10, W9): explanations for the 40 questions of
+     the two new topics. Measured 248.9 KB, still fetched after paint. */
+  ['ochem/assets/practice-bank-why.json', 250],
   /* The structures drawn above practice-bank stems. This one is here for an
      unusual reason: it is a <script src>, not a fetched file, so the
      reference walk above WOULD see it — except that the only two pages
