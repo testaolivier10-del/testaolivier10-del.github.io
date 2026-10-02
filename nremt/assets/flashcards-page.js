@@ -298,6 +298,7 @@
     modeEl.textContent = (mode === 'review' ? 'Review' : 'Studying ahead') +
       (prefs.domain === 'all' ? '' : ' · ' + DOMAIN[prefs.domain].label);
     show('session');
+    if(window.LevlAnalytics) window.LevlAnalytics.event('flashcards-start', { course: 'nremt', mode: mode, cards: run.total });
     nextCard();
   }
 
@@ -528,6 +529,7 @@
   function finish(completed){
     if(!run) return;
     var reviewed = run.counts[1] + run.counts[2] + run.counts[3] + run.counts[4];
+    if(window.LevlAnalytics) window.LevlAnalytics.event('flashcards-finish', { course: 'nremt', mode: run.mode, completed: !!completed, graded: reviewed });
     var xp = settle();
     var r = run;
     run = null;

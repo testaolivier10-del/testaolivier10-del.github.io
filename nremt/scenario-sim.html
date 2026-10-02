@@ -2031,6 +2031,7 @@ function startScenario(id){
   currentScenario = SCENARIOS.find(s => s.id === id);
   currentNodeId = currentScenario.startNode;
   pathLog = [];
+  if(window.LevlAnalytics) window.LevlAnalytics.event('scenario-start', { scenario: id });
   document.getElementById('pickerScreen').style.display = 'none';
   document.getElementById('simBox').classList.add('active');
   renderNode();
@@ -2069,6 +2070,8 @@ function rewindTo(i){
 function renderNode(consequenceText){
   const node = currentScenario.nodes[currentNodeId];
   const box = document.getElementById('simBox');
+  // The other half of scenario-start: which call, and how it went.
+  if(node.ending && window.LevlAnalytics) window.LevlAnalytics.event('scenario-finish', { scenario: currentScenario.id, ending: node.ending });
 
   /* Choosing an action replaces this whole panel, which a screen reader is
      told nothing about — and unlike the quizzes there is no right/wrong chime

@@ -311,10 +311,15 @@ self.addEventListener('notificationclick', event => {
         return client.focus();
       }
     }
+    // Only a page that actually loads is tagged (?ref=push, read by
+    // assets/analytics.js). Focusing a tab that is already open does not
+    // reload it, and must not: it may be mid-exam. Those clicks go uncounted.
+    const tagged = new URL(target, self.location.origin);
+    tagged.searchParams.set('ref', 'push');
     if (all.length && 'navigate' in all[0]) {
       await all[0].focus();
-      return all[0].navigate(target);
+      return all[0].navigate(tagged.href);
     }
-    return self.clients.openWindow(target);
+    return self.clients.openWindow(tagged.href);
   })());
 });

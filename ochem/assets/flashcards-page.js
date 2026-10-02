@@ -394,6 +394,9 @@
     };
     modeEl.textContent = (mode === 'review' ? 'Review' : 'Studying ahead') + (onlyTopic ? ' · ' + TOPIC[onlyTopic].topic.title : chapter);
     show('session');
+    // Started and finished, like the practice sessions: the pair is what gives
+    // a completion rate. A deck reopened mid-run is a new session, honestly.
+    if(window.LevlAnalytics) window.LevlAnalytics.event('flashcards-start', { course: 'ochem', mode: mode, cards: run.total });
     nextCard();
   }
 
@@ -632,6 +635,8 @@
   function finish(completed){
     if(!run) return;
     var reviewed = run.counts[1] + run.counts[2] + run.counts[3] + run.counts[4];
+    // One event per session, with how far it got rather than what was answered.
+    if(window.LevlAnalytics) window.LevlAnalytics.event('flashcards-finish', { course: 'ochem', mode: run.mode, completed: !!completed, graded: reviewed });
     settle();
     var r = run;
     var xpHtml = window.OchemXP && paidCount() ? window.OchemXP.summaryHtml() : '';

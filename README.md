@@ -844,7 +844,7 @@ Setup: put the website id from the Umami dashboard into `WEBSITE_ID` at the top 
 
 There is also a per-browser opt-out, on `privacy.html` under **Site analytics**. It writes `levlprep_analytics_opt_out` to `localStorage`, and `assets/analytics.js` checks it *before* creating the script tag, so opting out means no request to Umami rather than one discarded at the far end. Two people want this for different reasons: a visitor who would rather not be counted, and whoever runs the site, whose own testing is otherwise indistinguishable from real traffic. **Turn it on in your own browser** or every number on the dashboard includes you.
 
-Events are **milestones, not actions**, and should stay that way. Umami's free tier counts every event against a monthly total, so tracking each answered question would cost 100 events for one exam instead of 2. The thirteen that exist:
+Events are **milestones, not actions**, and should stay that way. Umami's free tier counts every event against a monthly total, so tracking each answered question would cost 100 events for one exam instead of 2. The ones that exist (A&P's `anp-*` events are listed in `anatomy-physiology/assets/anp-core.js`):
 
 | Event | Where | Carries |
 |---|---|---|
@@ -855,6 +855,9 @@ Events are **milestones, not actions**, and should stay that way. Umami's free t
 | `lesson-complete` | `ochem/assets/lesson-engine.js`, on the final step | topic id |
 | `visit` | `assets/analytics.js`, from `mount()` | cohort band, days since first visit, distinct days studied, course. **Once per browser per day**, not per page load |
 | `returned-second-day` | same | days since first visit |
+| `ref-open` | same, on a page opened with `?ref=` | `ref` (`push`, `email`, `share`; anything else is dropped), course. Fires even when today's `visit` was already sent, so a student brought back in the evening by a reminder still counts. The `visit` event carries the same `ref` (`none` otherwise). The tag is set by `sw.js` (`notificationclick`, only when it loads a page: focusing an already-open tab does not reload it and goes uncounted), `worker/src/email.js` (`withRef`) and shared links, and is stripped from the address bar on arrival |
+| `flashcards-start` / `flashcards-finish` | `nremt/assets/flashcards-page.js`, `ochem/assets/flashcards-page.js` | course, mode (`review`/`ahead`), card count; on finish whether the session ran to the end and how many cards were graded |
+| `scenario-start` / `scenario-finish` | `nremt/scenario-sim.html` | scenario id; on finish the ending (`good`/`neutral`/`bad`). A rewind that reaches a different ending sends a second finish |
 | `first-questions` | both courses, on the first session ever started | seconds from page load, mode. Fires once per browser, ever |
 | `save-prompt-shown` / `save-prompt-accepted` / `save-prompt-dismissed` | `assets/account.js` | `variant`: which wording was shown (`streak`, `goal`, `freeze`, `exam`, `level`, `generic`) |
 | `install-prompt-shown` | `assets/site-chrome.js` | platform (`ios` / `other`) |

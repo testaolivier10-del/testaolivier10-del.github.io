@@ -261,10 +261,22 @@ function fill({ title, body, url, cta, footer }) {
     .replace(/\{\{FOOTER\}\}/g, footer);
 }
 
+/* ?ref=email on the button, so assets/analytics.js can tell a visit the email
+   brought from any other: most mail apps send no referrer at all. */
+function withRef(url, ref) {
+  try {
+    const u = new URL(url);
+    u.searchParams.set('ref', ref);
+    return u.href;
+  } catch (e) {
+    return url;
+  }
+}
+
 function render(row, env) {
   const site = (env.SITE_URL || 'https://levlprep.com').replace(/\/$/, '');
   const unsub = `${site}/api/unsubscribe?t=${encodeURIComponent(row.unsub_token)}`;
-  const url = row.url && row.url.startsWith('http') ? row.url : site + (row.url || '/');
+  const url = withRef(row.url && row.url.startsWith('http') ? row.url : site + (row.url || '/'), 'email');
   return fill({
     title: row.title,
     body: row.body,

@@ -8,7 +8,7 @@ Branch: `claude/engagement`. Owner asked for items 1, 2, 3, 6, 7, 8 of the 2026-
 | # | Item | Status |
 |---|---|---|
 | 1 | Return-visit measurement | Already existed (`visit`, `returned-second-day` in `assets/analytics.js`); only the `ref` source is added under 2 |
-| 2 | Tracking gaps: NREMT drill/review/flashcard events; tag reminder/email/share links with `ref` and report it | in progress (main session) |
+| 2 | Tracking gaps (NREMT drills and review were already tracked as `exam-*` with a mode); tag reminder/email/share links with `ref` and report it | done: flashcard and scenario events; `ref` capture in analytics.js, sw.js and worker email (worker needs a redeploy for email tagging) |
 | 3 | Share results (`navigator.share`, copy-link fallback) at exam finish, level-up, streak milestones, chapter/course completion | in progress (helper A) |
 | 6 | Cross-course suggestions at milestones and on dashboards | in progress (helper B) |
 | 7 | One clear "next step" at the end of every session in all three courses | in progress (helper B) |

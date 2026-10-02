@@ -181,18 +181,48 @@
     v.sent = t;
     writeVisits(v);
 
+    // Its own event, and before the once-a-day guard: a student who studied this
+    // morning and came back from the evening reminder is the reminder working.
+    if(landedRef) event('ref-open', { ref: landedRef, course: courseOf(location.pathname) });
+
     if(alreadySentToday) return; // nine pages in one evening is still one visit
 
     event('visit', {
       cohort: cohort(age, isFirst),
       day: age,          // days since first ever visit
       visits: v.days,    // distinct days studied, all time
-      course: courseOf(location.pathname)
+      course: courseOf(location.pathname),
+      ref: landedRef || 'none'
     });
 
     // The 1 -> 2 conversion, called out on its own because it is the number
     // worth moving and the one that gets lost inside a property filter.
     if(v.days === 2) event('returned-second-day', { day: age });
+  }
+
+  /* Where this visit came from, when the site itself sent them. Every link the
+     site hands a student to come back on carries ?ref=: the reminder push
+     (sw.js), the reminder email (worker/src/email.js) and anything shared
+     (assets/share.js). Umami's referrer cannot see any of the three — a
+     notification and most mail apps send none, and a shared link arrives from
+     whatever app it was pasted into — so without this a reminder that works and
+     one that is ignored look the same on the dashboard.
+
+     Read once per page load and taken out of the address bar straight away, so
+     a student who bookmarks or re-shares the page does not carry the tag on.
+     Only known values are reported; anything else is dropped, not echoed. */
+  var REFS = { push: 1, email: 1, share: 1 };
+  var landedRef = takeRef();
+
+  function takeRef(){
+    try {
+      var url = new URL(location.href);
+      var ref = url.searchParams.get('ref');
+      if(ref === null) return null;
+      url.searchParams.delete('ref');
+      if(history.replaceState) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+      return REFS[ref] ? ref : null;
+    } catch(e){ return null; }
   }
 
   function courseOf(path){
