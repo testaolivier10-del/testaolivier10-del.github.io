@@ -74,16 +74,35 @@ function resp(status, type = 'basic') {
 test('install survives a missing precache file and fetches past the HTTP cache', async () => {
   const seen = [];
   const { handlers, stores } = boot({
-    fetchImpl: async (req) => { seen.push(req); return /premium-gates/.test(req.url) ? resp(404) : resp(200); },
+    fetchImpl: async (req) => { seen.push(req); return /exam-date/.test(req.url) ? resp(404) : resp(200); },
   });
   let done;
   handlers.install({ waitUntil: (p) => { done = p; } });
   await done; // must not reject
-  assert.ok(seen.length > 20);
+  assert.ok(seen.length > 15);
   assert.ok(seen.every((r) => r.cache === 'reload'), 'precache went through the HTTP cache');
   const shell = [...stores.values()][0];
   assert.ok(shell.has(ORIGIN + '/index.html'));
-  assert.ok(![...shell.keys()].some((k) => k.includes('premium-gates')), 'a 404 was stored');
+  assert.ok(![...shell.keys()].some((k) => k.includes('exam-date')), 'a 404 was stored');
+  assert.ok(!seen.some((r) => /\/(nremt|ochem|anatomy-physiology)\//.test(r.url)), 'install fetched a course shell');
+});
+
+test('a course shell is warmed on the first visit to that course, once', async () => {
+  const seen = [];
+  const { handlers, Req } = boot({ fetchImpl: async (req) => { seen.push(req.url); return resp(200); } });
+  const nav = (path) => {
+    const waits = [];
+    handlers.fetch({ request: new Req(path, { mode: 'navigate' }), respondWith: () => {}, waitUntil: (p) => waits.push(p) });
+    return Promise.all(waits);
+  };
+  await nav('/ochem/learn.html');
+  assert.ok(seen.some((u) => u.endsWith('/ochem/assets/curriculum.js')), 'ochem shell not warmed');
+  assert.ok(!seen.some((u) => u.includes('/nremt/')), 'an ochem visit warmed NREMT');
+  const n = seen.length;
+  await nav('/ochem/index.html');
+  assert.equal(seen.filter((u) => u.includes('/ochem/assets/')).length, seen.slice(0, n).filter((u) => u.includes('/ochem/assets/')).length, 'warmed twice');
+  await nav('/nremt/practice.html');
+  assert.ok(seen.some((u) => u.endsWith('/nremt/assets/questions-core.json')), 'NREMT bank not warmed with its course');
 });
 
 test('install fails only when a page the offline fallback needs is missing', async () => {

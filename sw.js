@@ -31,6 +31,11 @@
 // (same path, new bytes) shows up on the next view instead of never.
 const CACHE_NAME = 'levlprep-v49';
 const STATIC_CACHE = 'levlprep-static';
+/* Precached per course (site audit 2026-10, performance: about 110 URLs
+   across all three courses were fetched on a first visit to any page). Install
+   takes only the site shell below; a course's own shell (COURSE_URLS) is
+   warmed in the background the first time a page of that course is opened,
+   so someone studying only ochem never downloads the NREMT question bank. */
 const PRECACHE_URLS = [
   'index.html',
   // Shown in place of an uncached page while offline. Precached rather than
@@ -43,6 +48,7 @@ const PRECACHE_URLS = [
   'assets/premium.js',
   'assets/hub-progress.js',
   'assets/site-chrome.js',
+  'assets/tutor-launcher.js',
   'assets/tutor.js',
   'assets/announce.js',
   'assets/motion.js',
@@ -53,6 +59,11 @@ const PRECACHE_URLS = [
   'assets/flashcards.css',
   'search.html',
   'assets/site-search-all.js',
+  'assets/site-search.js',
+];
+
+const COURSE_URLS = {};
+COURSE_URLS.nremt = [
   'nremt/index.html',
   'nremt/practice.html',
   'nremt/body-map.html',
@@ -92,12 +103,14 @@ const PRECACHE_URLS = [
   'nremt/assets/flow-drill.js',
   'nremt/assets/station-run.js',
   'nremt/assets/sound-bank.js',
+];
+
+COURSE_URLS.ochem = [
   // The ochem shell. That course was cached only as pages happened to be
   // visited, so the one page a reader opens specifically to FIND something was
   // the one most likely not to be there when they were offline.
   // (No apostrophes in this block: the precache test parses this list by
   // pulling quoted strings out of the file, and one would open a string.)
-  'assets/site-search.js',
   'ochem/index.html',
   'ochem/learn.html',
   'ochem/search.html',
@@ -128,6 +141,9 @@ const PRECACHE_URLS = [
   'ochem/assets/glossary-page.js',
   'ochem/assets/glossary-tip.js',
   'ochem/assets/glossary.json',
+];
+
+COURSE_URLS['anatomy-physiology'] = [
   // The A&P shell: the course home, the lesson list, search and the runtime
   // every A&P page loads. Lessons, notes and figures are cached as visited.
   'anatomy-physiology/index.html',
@@ -153,10 +169,26 @@ const PRECACHE_URLS = [
 //
 // Core first. If the connection dies partway through warming these, the half
 // that makes practice work at all is the half already in the cache.
-const DEFERRED_URLS = [
-  'nremt/assets/questions-core.json',
-  'nremt/assets/explanations.json',
-];
+const DEFERRED_URLS = {
+  nremt: [
+    'nremt/assets/questions-core.json',
+    'nremt/assets/explanations.json',
+  ],
+};
+
+/* A course's shell, warmed once per worker the first time one of its pages is
+   opened: entries already cached are skipped, nothing here can fail a page,
+   and the course's deferred files follow its shell. */
+const warmed = new Set();
+function warmCourse(course) {
+  if (!COURSE_URLS[course] || warmed.has(course)) return Promise.resolve();
+  warmed.add(course);
+  return caches.open(CACHE_NAME).then(cache => {
+    const missing = url => cache.match(url).then(hit => (hit ? null : precache(cache, url)));
+    return Promise.allSettled(COURSE_URLS[course].map(missing))
+      .then(() => Promise.allSettled((DEFERRED_URLS[course] || []).map(missing)));
+  }).catch(() => {});
+}
 
 const NETWORK_TIMEOUT_MS = 3500;
 
@@ -191,10 +223,6 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        // Warm the deferred entries in the background — install resolves as
-        // soon as the core shell is cached, and a failure here (offline mid
-        // install, say) must not fail the installation.
-        Promise.allSettled(DEFERRED_URLS.map(u => precache(cache, u)));
         return Promise.allSettled(PRECACHE_URLS.map(u => precache(cache, u))).then(results => {
           const failedRequired = PRECACHE_URLS.filter((u, i) => results[i].status === 'rejected' && REQUIRED_URLS.includes(u));
           if (failedRequired.length) throw new Error('precache failed: ' + failedRequired.join(', '));
@@ -228,6 +256,10 @@ self.addEventListener('fetch', event => {
   if(url.protocol !== 'http:' && url.protocol !== 'https:') return;
   if(url.origin !== self.location.origin) return;
   const isNetworkFirst = event.request.mode === 'navigate' || NETWORK_FIRST_EXTENSIONS.test(url.pathname);
+  if(event.request.mode === 'navigate'){
+    const course = url.pathname.split('/')[1];
+    if(COURSE_URLS[course]) event.waitUntil(warmCourse(course));
+  }
 
   if(isNetworkFirst){
     const network = fetch(event.request).then(response => {

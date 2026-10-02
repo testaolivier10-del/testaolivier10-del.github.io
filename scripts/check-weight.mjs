@@ -89,7 +89,17 @@ const SHELL_BUDGETS = [
      right/wrong marks, dark-mode scrims and contrast, reserved space against
      layout shift, two elevation tokens (site-chrome.js, theme.css, tutor.js,
      motion.js, account.js, about 4.7 KB gzipped). Measured 259.2 KB. */
-  ['site', 260],
+  /* 260 -> 278 is a change of ruler, not of weight (audit 2026-10, W8). The
+     shell now also counts the scripts site-chrome.js mounts on every page
+     (motion, reminders, announcer, analytics and the assistant's button),
+     16.6 KB that were always downloaded and never measured. In the same pass
+     two every-page downloads left: the assistant itself (assets/tutor.js,
+     23 KB) now loads on the first reach for its button, and the Supabase SDK
+     (about 45 KB from jsDelivr, never counted here) loads only for a stored
+     session or the sign-in dialog. Measured the old way, the shell would be
+     about 298 KB plus the SDK; it is 277.2 KB. account.js grew 0.6 KB for the
+     lazy SDK and the plain-fetch page counter. */
+  ['site', 278],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -637,6 +647,14 @@ function weigh(pageRel) {
     if (!isLocal(ref) || !/\.(css|js)$/i.test(ref)) continue;
     const path = resolveRef(file, ref);
     const buf = take(path);
+    /* site-chrome.js mounts more scripts on every page it runs on (motion,
+       reminders, the assistant's button, the announcer, analytics). Those are
+       every-page downloads too, so they count here (site audit 2026-10, W8:
+       the shell budget measured only the scripts named in the HTML, so the
+       1,300-line tutor it used to mount on every page was never counted). */
+    if (buf && /assets\/site-chrome\.js$/.test(ref)) {
+      for (const m2 of buf.toString('utf8').matchAll(/\.src = '(\/assets\/[\w-]+\.js)'/g)) take(join(ROOT, m2[1]));
+    }
     if (!buf || !/\.css$/i.test(ref)) continue;
 
     // One level into a stylesheet, which is how assets/fonts/fonts.css pulls
