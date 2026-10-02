@@ -50,6 +50,14 @@
           else if(!/^[a-z]+:/i.test(v)){ var u = new URL(v, url); el.setAttribute(a, u.pathname + u.search + u.hash); }
         });
       });
+      // A figure's AVIF srcset (<picture>) is relative to the notes page too.
+      art.querySelectorAll('[srcset]').forEach(function(el){
+        el.setAttribute('srcset', el.getAttribute('srcset').split(',').map(function(part){
+          var bits = part.trim().split(/\s+/);
+          if(bits[0] && !/^[a-z]+:/i.test(bits[0])) bits[0] = new URL(bits[0], url).pathname;
+          return bits.join(' ');
+        }).join(', '));
+      });
       art.querySelectorAll('[id]').forEach(function(el){ el.id = id + '--' + el.id; });
       // The topic title is this section's h2, so the notes' own headings step down one.
       art.querySelectorAll('h3').forEach(function(h){ rename(h, 'h4'); });
