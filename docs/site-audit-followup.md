@@ -71,7 +71,7 @@ so **the migration must be applied before the first Worker deploy** or purchase 
 | W3 | Payments and security (premium.js, worker, SQL migration, SW, CSP) + premium-server-gating plan | `-w3` | merged |
 | W4 | Cross-device sync in account.js, with tests | `-w4` | merged |
 | W5 | Ochem content and tools, concept tagging, notation lint | `-w5` | merged |
-| W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | in progress (wave 1) |
+| W6 | A&P: search collision, attribution, Beta label, bank loading, science items | `-w6` | merged |
 | W7 | UX and accessibility | `-w7` | to do |
 | W8 | SEO, performance, repo | `-w8` | to do |
 | W9 | Ochem sequencing (Grignard, Aromatic, IR/MS moves), pericyclic + cyclopropanation | `-w9` | to do |
@@ -160,12 +160,25 @@ question heading. Two independent checks (clinical, and domain tagging at 93% ag
 skill-sheet gaps and 14 mis-tags; all fixed, then a third check of the fixes passed. New rule
 `nremt-stale-explanations` fails when an item's options change without its explanation.
 
+### W6 A&P — merged
+Fix-first 6 and 11 and all A&P rows fixed except 2 "no change needed" (os-14-23 boxes never overlap on the one page
+that draws them; glucose Tm numbers already added up — only the alt text was wrong). LevlSearch collision fixed
+(chrome global is now `window.LevlSearchChrome`) with a smoke test and check-console flows for A&P search, Practice,
+Review and Exams. Figure credits come from data; all 389 OpenStax figures were checked against live captions and
+none carries a third-party credit (the build is ready if one is found); credits.html names Betts et al. and Rice
+University; masked figures say "adapted: labels hidden". Beta pill and "not yet reviewed by a licensed A&P
+instructor" note on every A&P page. Find-the-error sequences no longer shuffled; bank loads per chapter with
+explanations after answering (A&P shell budget 44 → 46 KB). Rebalancing: select-all options 61.4% → 50.0% correct,
+"no change" predict keys 12.8% → 20.6%, absolutes now rarer in distractors (2.2%) than in keys (2.4%), held by
+`anp-test-wise`. Three accuracy checks (first pass, then pass 2 split in two) found 2 + 3 + 12 issues; all fixed.
+
 ## Open items for the owner
 
 - **XP on two devices between syncs** is max'd, not summed (needs per-device counters; deferred).
 - **NREMT Scene content gap:** about 133 more Scene Size-Up & Safety items are needed for the bank itself to sit in the 15–19% band (exams already draw in band). Write and clinically review them.
 - **Confirm E213, E215 (17) and E216 skill-sheet totals against the official PDFs** (nremt.org was unreachable from here).
 - **Sound trainer:** needs licensed rhonchi and normal breath-sound clips to self-host.
+- **A&P Fig 15.15 (belladonna photo) provenance:** no credit found in OpenStax 2e/1e captions; Wikimedia was unreachable. Logged in `docs/anp-needs-author.md`.
 - An instructor could spot-check the new ochem concept rules (`ochem/assets/legacy-rules.js`, blocks marked "site audit, October 2026").
 - Check RLS on `user_progress` allows UPDATE where `auth.uid() = id` (it must already, for the old upsert).
 
