@@ -618,6 +618,38 @@ $$;
 revoke all on function public.my_purchases() from public;
 grant execute on function public.my_purchases() to authenticated;
 
+-- ===========================================================================
+-- PREMIUM LEDGER AND PASS-GUARANTEE CLAIMS
+-- ===========================================================================
+-- premium_ledger: what an email address has used (its one self-serve refund,
+-- its one pass guarantee), so deleting and re-creating an account does not
+-- reset either. Only a SHA-256 hash of the lower-cased address is kept, with
+-- no link to the account, so it stays when the account is deleted. Written
+-- and read by the Worker alone (service role): RLS on, no policies.
+create table if not exists public.premium_ledger (
+  email_key  text not null,
+  kind       text not null check (kind in ('refund', 'guarantee')),
+  created_at timestamptz not null default now(),
+  primary key (email_key, kind)
+);
+
+alter table public.premium_ledger enable row level security;
+
+-- premium_guarantee_claims: who claimed the NREMT pass guarantee, with the
+-- legal name and state they tested under, so a claim can be checked against
+-- the National Registry's public certification lookup. Deleted with the
+-- account. Worker only: RLS on, no policies.
+create table if not exists public.premium_guarantee_claims (
+  id         bigint generated always as identity primary key,
+  created_at timestamptz not null default now(),
+  user_id    uuid not null references auth.users (id) on delete cascade,
+  legal_name text not null check (length(legal_name) between 3 and 100),
+  state      text not null check (length(state) between 2 and 40),
+  exam_date  date not null
+);
+
+alter table public.premium_guarantee_claims enable row level security;
+
 
 -- ===========================================================================
 -- PREMIUM FUNNEL

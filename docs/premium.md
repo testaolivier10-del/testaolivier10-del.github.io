@@ -29,9 +29,6 @@ the owner or a lawyer:
 - No governing-law clause, no owner legal name and no postal address yet;
   the waitlist launch email (commercial) needs the address and an unsubscribe
   link before it is sent (CAN-SPAM). Reminder emails should carry the address too.
-- Pass guarantee limits (how long after the pass, proof, how many extensions).
-- Account deletion cascades `premium_passes`, which also resets the
-  once-per-account refund limit for a re-created account.
 - Check the Polar founding discount really ends 2027-01-31, as the dialog says.
 
 ## Where we are: built, not launched (October 2026)
@@ -165,9 +162,15 @@ All with a **founding-member code, 30% off, until 2027-01-31**. A 30-day
 ochem finals pass ($15) is an option for later. Polar's fee (5% + $0.50) is
 6–7% at these prices; below ~$15 the fixed part hurts.
 
-- **NREMT pass guarantee:** fail the exam and your access is extended free
-  until you pass. It costs almost nothing, and every serious competitor has
-  one.
+- **NREMT pass guarantee:** fail the exam during a bought pass and claim one
+  free 90-day extension from the Account page (Worker `/premium/guarantee`),
+  within 30 days of the exam, after at least 2 full timed exams on the site
+  during the pass. Once per account and email. Nobody can prove a fail (the
+  Registry lists who is certified, not who failed), so the claim stores the
+  legal name and state; spot-check with the PASS-GUARANTEE CLAIMS query in
+  `scripts/sql/reports.sql`. Refund and guarantee use are also kept as an
+  email hash in `premium_ledger`, so deleting and re-creating an account
+  resets neither (decided 2026-10-02).
 - **Existing users:** everyone with an account before launch gets 30 days of
   Premium free plus the launch price. Announce it two weeks ahead.
 

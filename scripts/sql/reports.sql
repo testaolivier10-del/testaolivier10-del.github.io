@@ -224,3 +224,17 @@ order by c.course;
 -- The NREMT pass guarantee: extend a student who failed until they pass.
 -- insert into public.premium_passes (user_id, course, pass, expires_at)
 -- values ('<user id>', 'nremt', 'guarantee', now() + interval '90 days');
+
+
+-- PASS-GUARANTEE CLAIMS: every claim, newest first. For each, search the
+-- National Registry's public certification lookup (nremt.org) for the name
+-- and state. Someone listed as certified before their claim's exam date did
+-- not fail it; end their extension with:
+--   update premium_passes set refunded_at = now()
+--    where user_id = '<user_id>' and pass = 'guarantee';
+select c.created_at::date as claimed, c.exam_date, c.legal_name, c.state, c.user_id,
+       p.expires_at::date as extension_ends
+from public.premium_guarantee_claims c
+left join public.premium_passes p
+  on p.user_id = c.user_id and p.pass = 'guarantee' and p.refunded_at is null
+order by c.created_at desc;

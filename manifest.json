@@ -1,7 +1,7 @@
 {
-  "name": "LevlPrep — Free NREMT-EMT and Organic Chemistry study tools",
+  "name": "LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools",
   "short_name": "LevlPrep",
-  "description": "Two courses, one login: NREMT-EMT exam prep and a full Organic Chemistry I curriculum. Free, offline, no account needed.",
+  "description": "Three courses, one login: NREMT-EMT exam prep, Organic Chemistry and Anatomy & Physiology. Free to start, works offline, no account needed.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
