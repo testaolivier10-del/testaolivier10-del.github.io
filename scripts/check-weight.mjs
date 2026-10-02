@@ -204,7 +204,15 @@ const BUDGETS = [
   ['ochem/index.html', 11.2],
 
   // The busiest page on the site, and the one the bank split was for.
-  ['nremt/practice.html', 40],
+  /* 40 -> 44 in the 2026-10 audit follow-up: the runner gained a check step
+     with feedback after every untimed answer, a next step on the results
+     page, drills by 2025 exam domain or by topic area, exam-domain stats and
+     quota-capped length pickers (about 3.9 KB gzipped of engine). The bank
+     itself, the page's real weight, is a separate fetch and got lighter.
+     44 -> 45 in the W1 review: the "All domains" drill now splits its length
+     by the exam weights, and the domain-tagging rule is written next to
+     DOMAIN_TARGETS so later tagging stays consistent (about 0.2 KB). */
+  ['nremt/practice.html', 45],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

@@ -72,7 +72,7 @@
         'Your progress, XP, streak and weak topics',
       ],
       premium: [
-        'The full 2,106-question bank, unlimited',
+        'The full 2,033-question bank, unlimited',
         'Unlimited timed 100-question exams',
         'Unlimited missed-question review and spaced repetition',
         'Readiness score and domain breakdowns',

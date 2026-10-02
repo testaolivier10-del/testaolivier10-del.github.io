@@ -31,6 +31,7 @@
 <script src="../assets/hub-progress.js" defer></script>
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
+<script src="../assets/premium.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Homepage-only layout. Everything visual (cards, buttons, path nodes,
@@ -47,7 +48,7 @@
   .level-chip .t b{display:block;font-weight:900;font-size:16px;}
   .level-chip .t span{font-size:12.5px;color:var(--muted);font-weight:700;}
 
-  /* Six-domain skill path + its sticky side rail. */
+  /* Five-domain skill path + its sticky side rail. */
   .path-row{display:grid;grid-template-columns:1.15fr 0.85fr;gap:clamp(28px,4vw,48px);align-items:start;margin-top:40px;}
   .side-rail{position:sticky;top:calc(var(--site-header-h) + 16px);display:flex;flex-direction:column;gap:16px;}
 
@@ -76,7 +77,12 @@
   }
   .qcard{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);padding:26px;box-shadow:var(--lift-lg);}
   .qcard .qtext{font-weight:800;font-size:16px;margin:14px 0 18px;line-height:1.5;}
-  .qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);}
+  .qcard .qopt{font-size:14.5px;padding:13px 16px;box-shadow:var(--lift-sm);width:100%;text-align:left;font-family:inherit;color:inherit;cursor:pointer;}
+  .qcard .qopt[disabled]{cursor:default;}
+  #sample{scroll-margin-top:calc(var(--site-header-h,72px) + 16px);}
+  .sample-note{font-size:13px;color:var(--muted);margin:18px 0 0;}
+  .sample-feedback{font-size:14px;line-height:1.5;margin:14px 0 0;}
+  .sample-feedback:empty{display:none;}
 
   @media(max-width:900px){
     .home-hero,.feature-card,.path-row,.sample-row{grid-template-columns:1fr;}
@@ -148,7 +154,7 @@
       <div>
         <div class="eyebrow">NREMT&#8209;EMT &middot; Cognitive exam</div>
         <h1>Level up before the real exam does.</h1>
-        <p class="lede">2,106 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start, works offline, no account needed.</p>
+        <p class="lede">2,033 questions, forty chapters of notes and scenarios that run a call start to finish. Free to start, works offline, no account needed.</p>
         <!-- The primary button is rewritten below for anyone with work
              waiting: an attempt to resume, or questions due for review. The
              markup here is the new-visitor state, and the state anyone sees
@@ -187,47 +193,41 @@
 
   <div class="xsection">
     <div class="section-head">
-      <h2>The six domains</h2>
-      <p class="section-lede">Mapped onto the exam's five content areas, with assessment split out. Clear one, then the next.</p>
+      <h2>The five exam domains</h2>
+      <p class="section-lede">The National Registry&rsquo;s EMT exam since 7 April 2025 follows a call from arrival to handover. Every question here is tagged by the step it tests, and practice exams draw them in the exam&rsquo;s proportions.</p>
     </div>
 
     <div class="path-row">
       <div class="path">
         <div class="node left">
-          <a class="node-circle" href="practice.html?domain=Assessment" style="--c:#2C9C8B;--cd:#1F7A6C" aria-label="Practice Assessment">
+          <a class="node-circle" href="practice.html?domain=Scene%20Size-Up%20%26%20Safety" style="--c:#C9973A;--cd:#A67A28" aria-label="Practice Scene Size-Up and Safety">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 8l13 23H7z" stroke="#C9973A" stroke-width="3" stroke-linejoin="round"/><path d="M20 17v6M20 27v.5" stroke="#C9973A" stroke-width="3" stroke-linecap="round"/></svg>
+          </a>
+          <div class="node-text"><div class="n">Scene Size-Up &amp; Safety</div><div class="d">15&ndash;19% &middot; hazards, PPE, resources, triage</div></div>
+        </div>
+        <div class="node right">
+          <a class="node-circle" href="practice.html?domain=Primary%20Assessment" style="--c:#2C9C8B;--cd:#1F7A6C" aria-label="Practice Primary Assessment">
             <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="16" stroke="#2C9C8B" stroke-width="3"/><path d="M13 20h5l2-6 4 12 2-6h5" stroke="#2C9C8B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <div class="node-text"><div class="n">Assessment</div><div class="d">Scene size-up, vitals, survey</div></div>
-        </div>
-        <div class="node right">
-          <a class="node-circle" href="practice.html?domain=Airway%20%26%20Respiratory" style="--c:#E8776A;--cd:#C15A4E" aria-label="Practice Airway &amp; Respiratory">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M12 26c0-8 4-14 8-14s8 6 8 14" stroke="#E8776A" stroke-width="3" stroke-linecap="round"/><circle cx="12" cy="27" r="2.6" fill="#E8776A"/><circle cx="28" cy="27" r="2.6" fill="#E8776A"/></svg>
-          </a>
-          <div class="node-text"><div class="n">Airway &amp; Respiratory</div><div class="d">Ventilation, oxygenation</div></div>
+          <div class="node-text"><div class="n">Primary Assessment</div><div class="d">39&ndash;43% &middot; impression, ABCs, life threats, priority</div></div>
         </div>
         <div class="node left">
-          <a class="node-circle" href="practice.html?domain=Cardiac%20%26%20Medical" style="--c:#C9973A;--cd:#A67A28" aria-label="Practice Cardiac &amp; Medical">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 30s-11-6.5-11-14a6 6 0 0111-3 6 6 0 0111 3c0 7.5-11 14-11 14z" stroke="#C9973A" stroke-width="3" stroke-linejoin="round"/></svg>
+          <a class="node-circle" href="practice.html?domain=Secondary%20Assessment" style="--c:#E8776A;--cd:#C15A4E" aria-label="Practice Secondary Assessment">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="17" cy="17" r="8" stroke="#E8776A" stroke-width="3"/><path d="M23 23l8 8" stroke="#E8776A" stroke-width="3" stroke-linecap="round"/></svg>
           </a>
-          <div class="node-text"><div class="n">Cardiac &amp; Medical</div><div class="d">Arrest, chest pain, diabetic</div></div>
+          <div class="node-text"><div class="n">Secondary Assessment</div><div class="d">5&ndash;9% &middot; history, focused exam, reassessment</div></div>
         </div>
         <div class="node right">
-          <a class="node-circle" href="practice.html?domain=Trauma" style="--c:#2C9C8B;--cd:#1F7A6C" aria-label="Practice Trauma">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 30l8-16 4 8 4-6 8 14" stroke="#2C9C8B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a class="node-circle" href="practice.html?domain=Patient%20Treatment%20%26%20Transport" style="--c:#2C9C8B;--cd:#1F7A6C" aria-label="Practice Patient Treatment and Transport">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 30s-11-6.5-11-14a6 6 0 0111-3 6 6 0 0111 3c0 7.5-11 14-11 14z" stroke="#2C9C8B" stroke-width="3" stroke-linejoin="round"/></svg>
           </a>
-          <div class="node-text"><div class="n">Trauma</div><div class="d">Bleeding, shock, injury</div></div>
-        </div>
-        <div class="node left">
-          <a class="node-circle" href="practice.html?domain=OB%2FPeds%20%26%20Special%20Populations" style="--c:#E8776A;--cd:#C15A4E" aria-label="Practice OB/Peds and Special Populations">
-            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="15" cy="14" r="4" stroke="#E8776A" stroke-width="3"/><circle cx="27" cy="20" r="6" stroke="#E8776A" stroke-width="3"/><path d="M15 20v8" stroke="#E8776A" stroke-width="3" stroke-linecap="round"/></svg>
-          </a>
-          <div class="node-text"><div class="n">OB/Peds &amp; Special Pops</div><div class="d">Delivery, pediatric, geriatric</div></div>
+          <div class="node-text"><div class="n">Patient Treatment &amp; Transport</div><div class="d">20&ndash;24% &middot; interventions, medications, transport</div></div>
         </div>
         <div class="node center">
-          <a class="node-circle" href="practice.html?domain=EMS%20Operations" style="--c:#C9973A;--cd:#A67A28" aria-label="Practice EMS Operations">
+          <a class="node-circle" href="practice.html?domain=Operations" style="--c:#C9973A;--cd:#A67A28" aria-label="Practice Operations">
             <svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="9" y="12" width="22" height="16" rx="2" stroke="#C9973A" stroke-width="3"/><path d="M9 18h22M16 12v-3h8v3" stroke="#C9973A" stroke-width="3" stroke-linecap="round"/></svg>
           </a>
-          <div class="node-text"><div class="n">EMS Operations</div><div class="d">Safety, MCI, documentation</div></div>
+          <div class="node-text"><div class="n">Operations</div><div class="d">10&ndash;14% &middot; equipment, documentation, legal, wellness</div></div>
         </div>
       </div>
 
@@ -235,7 +235,7 @@
         <div class="tip-card">
           <div class="k">Start here</div>
           <div class="v">A 20-question domain drill</div>
-          <div class="s">Short, focused, and enough to put a first reading on each of the six domains. Your weakest one shows up here once you've answered a few.</div>
+          <div class="s">Short, focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you've answered a few.</div>
           <div style="margin-top:14px"><a href="practice.html" class="btn-press alt sm">Start a drill</a></div>
         </div>
         <div class="tip-card">
@@ -272,20 +272,24 @@
     <div class="sample-row">
       <div>
         <h2 style="margin-top:0">Try one.</h2>
-        <p class="section-lede" style="margin:0 0 24px;text-align:left">Real exam formatting, pulled straight from the practice bank.</p>
+        <p class="section-lede" style="margin:0 0 24px;text-align:left">A sample from the practice bank. Pick an answer to check it.</p>
         <div class="sample-list">
-          <div class="row"><span class="n">A</span> Single-best-answer</div>
-          <div class="row"><span class="n">N</span> Select-N (choose all that apply)</div>
-          <div class="row"><span class="n">S</span> Sequencing (put steps in order)</div>
+          <div class="row"><span class="n">A</span> Single best answer</div>
+          <div class="row"><span class="n">N</span> Select N (the item says how many)</div>
+          <div class="row"><span class="n">S</span> Build list (put steps in order)</div>
         </div>
+        <p class="sample-note">The real exam also uses drag-and-drop sorting and options-table items. This site does not simulate those two yet; its build-list items use move-up and move-down buttons rather than dragging.</p>
       </div>
-      <div class="qcard">
-        <span class="tag domain">Trauma</span> <span class="tag diff">Moderate</span>
-        <div class="qtext">A patient has a penetrating chest wound with an audible sucking sound on inspiration. Your next action is to:</div>
-        <div class="qopt"><span class="letter">A</span> Apply high-flow oxygen via non-rebreather</div>
-        <div class="qopt correct"><span class="letter">B</span> Seal the wound with an occlusive dressing</div>
-        <div class="qopt"><span class="letter">C</span> Begin positive-pressure ventilation</div>
-        <div class="qopt" style="margin-bottom:0"><span class="letter">D</span> Position the patient supine and transport</div>
+      <div class="qcard" id="sampleCard">
+        <span class="tag domain">Patient Treatment &amp; Transport</span> <span class="tag diff">Moderate</span>
+        <div class="qtext" id="sampleQ">A patient has a penetrating chest wound with an audible sucking sound on inspiration. Your next action is to:</div>
+        <div class="sample-opts" role="group" aria-labelledby="sampleQ">
+          <button type="button" class="qopt" data-ok="0"><span class="letter">A</span> Apply high-flow oxygen via non-rebreather</button>
+          <button type="button" class="qopt" data-ok="1"><span class="letter">B</span> Seal the wound with an occlusive dressing</button>
+          <button type="button" class="qopt" data-ok="0"><span class="letter">C</span> Begin positive-pressure ventilation</button>
+          <button type="button" class="qopt" data-ok="0" style="margin-bottom:0"><span class="letter">D</span> Position the patient supine and transport</button>
+        </div>
+        <p class="sample-feedback" id="sampleFeedback" role="status"></p>
       </div>
     </div>
   </div>
@@ -360,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     renderPrimaryCta();
 
-    // Domain bars: the four most-answered domains, so the card stays compact.
+    // Topic-area bars: the four most-answered, so the card stays compact.
     var stats = readJSON('nremt_domain_stats_all', {});
     var attempted = DOMAINS
       .map(function(d, i){ return { name: d, i: i, s: stats[d] }; })
@@ -371,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var box = document.getElementById('heroDomains');
     if(!attempted.length){
       box.innerHTML = '<div class="mini-domain-row" style="border-top:1px solid var(--line-soft);color:var(--muted);font-weight:700;font-size:12.5px;display:block;padding-top:12px">' +
-        'Answer a few questions and your six domain readings appear here.</div>';
+        'Answer a few questions and your topic-area readings appear here.</div>';
       return;
     }
     box.innerHTML = attempted.map(function(x){
@@ -446,6 +450,17 @@ document.addEventListener('DOMContentLoaded', function(){
         due: due, label: 'NREMT-EMT Prep', url: '/nremt/review.html?start=spaced'
       });
     }
+    // With today's free questions spent, "15 due" would only lead to the
+    // daily-limit card. The notes are free and unlimited, so offer those and
+    // leave the due queue for tomorrow.
+    var P = window.LevlPremium;
+    var spent = !!(P && P.launched && P.launched() && !P.has('nremt') && P.quota('nremt').left <= 0);
+    if(due > 0 && spent){
+      cta.textContent = 'Read the notes \u2014 free questions reset tomorrow';
+      cta.href = 'study-notes.html';
+      if(R) R.set('nremt', '/nremt/study-notes.html', 'Read the notes');
+      return;
+    }
     if(due > 0){
       cta.textContent = 'Continue \u2014 ' + due + ' due for review';
       cta.href = 'review.html?start=spaced';
@@ -455,6 +470,26 @@ document.addEventListener('DOMContentLoaded', function(){
     // Nothing waiting: leave the markup's own new-visitor wording alone.
     if(R) R.set('nremt', null);
   }
+
+  // The sample question: answer it here, see why. It was a static card with
+  // the answer already highlighted.
+  (function(){
+    var card = document.getElementById('sampleCard');
+    if(!card) return;
+    card.addEventListener('click', function(e){
+      var b = e.target.closest('button.qopt');
+      if(!b || b.disabled) return;
+      var opts = card.querySelectorAll('button.qopt');
+      opts.forEach(function(o){
+        o.disabled = true;
+        if(o.getAttribute('data-ok') === '1') o.classList.add('correct');
+      });
+      var right = b.getAttribute('data-ok') === '1';
+      if(!right) b.classList.add('incorrect');
+      document.getElementById('sampleFeedback').innerHTML = (right ? '<b>Correct.</b> ' : '<b>Not quite: the answer is B.</b> ') +
+        'An open chest wound is sealed first, with a vented chest seal or an occlusive dressing, so air stops entering the chest through it; then watch for a developing tension pneumothorax. <a href="practice.html">Try a drill &rarr;</a>';
+    });
+  })();
 
   // nav.js is deferred and defines window.LevlXP; run once it's there.
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
