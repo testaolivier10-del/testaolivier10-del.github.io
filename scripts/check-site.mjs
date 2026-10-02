@@ -2192,6 +2192,21 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
   }
 }
 
+// ---- 34+. Rules added by the 2026-10 audit follow-up, one file per workstream ----
+// Each file in scripts/site-rules/ exports a default function that receives the
+// shared helpers and calls fail() for every problem it finds. Kept as separate
+// files so parallel workstreams can each add rules without editing this one.
+{
+  const { pathToFileURL } = await import('node:url');
+  const rulesDir = join(ROOT, 'scripts', 'site-rules');
+  if (existsSync(rulesDir)) {
+    for (const name of readdirSync(rulesDir).filter((n) => n.endsWith('.mjs')).sort()) {
+      const mod = await import(pathToFileURL(join(rulesDir, name)).href);
+      await mod.default({ ROOT, fail, walk, htmlFiles, jsonFiles });
+    }
+  }
+}
+
 if (failures > 0) {
   console.error(`\n${failures} check(s) failed.`);
   process.exit(1);
