@@ -38,7 +38,7 @@
     "q": "Just after the initial exposure, antibody stays low for a while before it climbs. What is happening in the lymph nodes during this early stretch?",
     "options": [
       "Memory B cells are releasing IgG",
-      "Antigen is being broken down so none reaches the B cells",
+      "Antigen is broken down before it reaches the B cells",
       "The few matching naïve B cells are being activated and are dividing",
       "Plasma cells are releasing IgM that is not yet detectable because it is bound to red cells"
     ],
@@ -272,7 +272,7 @@
     "q": "An 18-month-old responds poorly to a vaccine made of a bacterium's capsule sugar alone, but well to one in which the sugar is attached to a protein. Why does the protein help?",
     "options": [
       "The protein makes the sugar a larger target for IgM",
-      "Protein antigens do not need B cells at all",
+      "Protein antigens are handled by T cells instead of B cells",
       "The protein stops the sugar from being broken down before B cells can reach it",
       "Helper T cells that recognize the protein can help B cells that recognize the sugar"
     ],
@@ -404,7 +404,7 @@
     "q": "Why is IgM better than IgG at clumping bacteria together?",
     "options": [
       "It binds antigens more tightly at each site",
-      "It is the only class able to leave the blood and enter tissue fluid",
+      "It leaves the blood and enters tissue fluid more easily",
       "It carries more light chains than heavy chains",
       "As a pentamer it has ten binding sites to link many cells"
     ],

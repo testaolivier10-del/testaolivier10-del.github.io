@@ -413,7 +413,7 @@
     "options": [
       "A milk allergy: IgE against milk proteins",
       "Low lactase: lactose reaches her colon and is fermented",
-      "A pancreatic lipase deficiency: she cannot digest milk fat",
+      "A pancreatic lipase deficiency: she digests milk fat poorly",
       "Too much lactase: glucose floods her colon"
     ],
     "correct": 1,
@@ -494,7 +494,7 @@
     "options": [
       "Those amino acids diffuse freely through the lipid bilayer of the brush border",
       "Much of them enters inside dipeptides and tripeptides on another carrier",
-      "The colon absorbs all the amino acids the small intestine misses",
+      "The colon absorbs the amino acids the small intestine misses",
       "Pepsin converts them into other amino acids that use working carriers"
     ],
     "correct": 1,
@@ -623,7 +623,7 @@
     ],
     "q": "Some fatty acids in milk have short chains. How does their route into the body differ from that of long-chain fatty acids?",
     "options": [
-      "They cannot be absorbed at all",
+      "They pass through unabsorbed",
       "They are absorbed in the colon, packaged into chylomicrons",
       "They cross the cell unchanged and enter the blood capillaries",
       "They are absorbed in the terminal ileum with intrinsic factor"

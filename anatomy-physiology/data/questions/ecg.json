@@ -170,7 +170,7 @@
       "The atria are depolarizing chaotically, and the AV node passes signals at irregular moments",
       "The SA node is firing faster than normal but conduction is normal",
       "The ventricles are depolarizing chaotically and pump no blood",
-      "No signals are crossing the AV node at all, so a backup pacemaker in the ventricles has taken over"
+      "No signals are crossing the AV node, so a backup pacemaker in the ventricles has taken over"
     ],
     "correct": 0,
     "why": {
@@ -356,7 +356,7 @@
     "misconception": "you can shock a flat line",
     "q": "A patient's monitor shows a completely flat line in every lead, and the leads are firmly attached. Why would defibrillation not restore a rhythm?",
     "options": [
-      "A shock only works on atrial rhythms",
+      "A shock works on atrial rhythms, not ventricular ones",
       "The shock would make the heart beat too fast",
       "The flat line shows the SA node is firing normally, so the heart needs no treatment",
       "A shock works by resetting chaotic electrical activity, and there is none to reset"
@@ -490,7 +490,7 @@
       "The monitor is showing a delayed recording",
       "The ECG records electrical activity, and the muscle is not contracting effectively in response",
       "The atria are pumping but the ventricles are not",
-      "A normal rate and rhythm prove the heart is pumping, so the pulse check must be mistaken"
+      "A normal rate and rhythm prove the heart is pumping, so the pulse check is mistaken"
     ],
     "correct": 1,
     "why": {

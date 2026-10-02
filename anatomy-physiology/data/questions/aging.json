@@ -40,7 +40,7 @@
       "About 30",
       "About 50",
       "About 75",
-      "It never does"
+      "Not until after 90"
     ],
     "correct": 2,
     "why": {
@@ -49,7 +49,7 @@
         "At 30 capacity is at its peak, 100%, far above the stress line.",
         "At 50 capacity is still about 85%, above the stress line.",
         "Correct. The curve crosses the stress line at about 75.",
-        "The curve does cross the stress line, although it never falls below the resting line on this graph."
+        "The curve crosses the stress line much earlier, at about 75."
       ]
     }
   },
@@ -63,7 +63,7 @@
     ],
     "q": "Why do telomeres get shorter each time most body cells divide?",
     "options": [
-      "Reactive oxygen species cut off a fixed length at every division",
+      "Reactive oxygen species cut off a fixed length at each division",
       "Telomerase removes repeats from the chromosome ends each time",
       "Apoptosis trims the chromosome ends before each division",
       "The polymerase cannot copy the chromosome's very end"
@@ -432,10 +432,10 @@
     ],
     "q": "Why do older adults respond less well to a new vaccine, such as one against a strain of influenza they have never met?",
     "options": [
-      "Their memory cells from past infections have all died",
+      "Their memory cells from past infections have died off",
       "The shrunken thymus makes few new naive T cells",
       "Their antibodies no longer bind antigens well",
-      "Vaccines cannot reach the lymph nodes of older adults"
+      "Vaccines reach the lymph nodes of older adults poorly"
     ],
     "correct": 1,
     "why": {

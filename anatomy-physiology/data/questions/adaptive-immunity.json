@@ -190,7 +190,7 @@
     ],
     "q": "In the thymus cortex, a thymocyte's new receptor cannot bind any of the person's own MHC proteins. What happens to it, and why?",
     "options": [
-      "It is kept, because it cannot attack self",
+      "It is kept, because it is unlikely to attack self",
       "It leaves as a naive T cell and waits for a matching microbe",
       "It becomes a memory cell without further testing",
       "It dies, because it could never recognize any antigen"
@@ -325,9 +325,9 @@
     "q": "A two-child family needs a bone marrow donor for one child. Why is the brother the first person tested, and what is the chance he matches?",
     "options": [
       "Siblings share one set of MHC genes from each parent; the chance is 1 in 4",
-      "Siblings always have identical MHC; the chance is 1 in 1",
-      "Siblings share MHC only if they are the same sex; the chance is 1 in 2",
-      "MHC is the same in every family member; the chance is 1 in 1"
+      "Siblings inherit identical MHC; the chance is 1 in 1",
+      "Siblings share MHC if they are the same sex; the chance is 1 in 2",
+      "MHC is shared across a family; the chance is 1 in 1"
     ],
     "correct": 0,
     "why": {
@@ -431,7 +431,7 @@
     "options": [
       "They are far more numerous for a given antigen",
       "They switch on faster and with less stimulation",
-      "They live only a few days",
+      "They live a few days",
       "They recognize a different epitope from the original clone",
       "They carry no antigen receptor"
     ],

@@ -143,7 +143,7 @@
       "A synergist helps the prime mover or steadies the movement",
       "A fixator produces the main movement",
       "An antagonist makes the same movement as the prime mover",
-      "A muscle keeps the same role in every movement it takes part in"
+      "A muscle keeps the same role in each movement it takes part in"
     ],
     "correct": [0, 1],
     "why": {

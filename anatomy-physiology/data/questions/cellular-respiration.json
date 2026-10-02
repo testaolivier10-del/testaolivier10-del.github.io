@@ -37,7 +37,7 @@
     "options": [
       "It has no mitochondria, so pyruvate cannot be broken down with oxygen",
       "Its oxygen-carrying protein holds oxygen too tightly to use",
-      "Its glycolysis enzymes work only when oxygen is absent",
+      "Its glycolysis enzymes work when oxygen is absent",
       "It makes lactate so that it can save its oxygen for other tissues"
     ],
     "correct": 0,
@@ -63,7 +63,7 @@
     "q": "A 58-year-old man is rescued from a house fire. His blood carries plenty of oxygen, but his blood lactate is very high. Cyanide from burning plastics has blocked the final complex of his electron transport chain. What best explains the high lactate?",
     "options": [
       "Cyanide binds the glycolysis enzymes in his cytosol and makes them work much faster than usual",
-      "Smoke has stopped his red blood cells from delivering oxygen to every tissue in his body",
+      "Smoke has stopped his red blood cells from delivering oxygen to his tissues",
       "Blocked electron transport leaves NADH unoxidized, so cells make lactate to regenerate NAD+",
       "Cyanide turns pyruvate into lactate inside the mitochondrion"
     ],
@@ -364,7 +364,7 @@
     "options": [
       "Her friend is right: lactate stays in muscle until the soreness passes",
       "Lactate was cleared within an hour or so; the soreness comes from small injuries inside the muscle and their repair",
-      "The soreness means her muscles made no lactate at all during the workout",
+      "The soreness means her muscles made little lactate during the workout",
       "Lactate turned into CO2 that is still held inside the thigh muscles, and this trapped gas is what now causes the pain"
     ],
     "correct": 1,

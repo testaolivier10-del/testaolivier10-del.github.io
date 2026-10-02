@@ -468,7 +468,7 @@
       "Hydrogen bonds between different parts of the chain",
       "Covalent bonds between the atoms of the chain",
       "The attraction between electrons and protons in each atom",
-      "Every bond in the molecule, which then re-formed as a straight chain"
+      "The covalent bonds of the chain, which then re-formed as a straight chain"
     ],
     "correct": 0,
     "why": {
@@ -477,7 +477,7 @@
         "Correct. Weak hydrogen bonds hold the fold; they give way to heat first.",
         "The chain stayed intact, so its covalent bonds did not break. Covalent bonds are far stronger than hydrogen bonds and need a chemical reaction to break.",
         "Gentle heat does not strip electrons from atoms. The atoms themselves are unchanged.",
-        "If every bond broke, the chain would fall apart into separate atoms. The chain survived, so only the weak attractions gave way."
+        "If the covalent bonds broke, the chain would fall apart. The chain survived, so the weak attractions are what gave way."
       ]
     }
   }

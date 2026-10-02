@@ -204,7 +204,7 @@
     "q": "A newborn has not passed stool, and his abdomen is swelling. A biopsy shows that the last stretch of his large intestine has no enteric neurons in its wall; the intestine above it is normal. The segment without neurons is narrow and tightly contracted. Why does this segment block the passage of stool?",
     "options": [
       "Its muscle has no nerve input, so it is paralyzed and floppy",
-      "Its mucosa cannot absorb water, so stool becomes too large to pass",
+      "Its mucosa absorbs too little water, so stool becomes too large to pass",
       "Its sympathetic fibers are missing, so its sphincters stay open",
       "Its circular muscle cannot relax, so no peristaltic wave can pass"
     ],
@@ -341,7 +341,7 @@
       "Gastrin is released into the blood",
       "Motilin is released into the blood",
       "Secretin is released into the blood",
-      "The myenteric plexus stops all contractions"
+      "The myenteric plexus stops the gut's contractions"
     ],
     "correct": 2,
     "why": {
@@ -419,7 +419,7 @@
     "options": [
       "It stays put until vagal signals are supplied to the muscle",
       "Peristalsis run by the wall's own neurons pushes it along",
-      "It moves only after epinephrine is added to the solution",
+      "It moves after epinephrine is added to the solution",
       "It is squeezed by the whole length contracting at once"
     ],
     "correct": 1,
@@ -500,7 +500,7 @@
       "Between meals the pacesetter cells slow to less than once a minute",
       "Nerve and hormone signals after a meal push each slow wave past threshold",
       "After a meal the stomach switches from smooth to skeletal muscle control",
-      "Between meals the gap junctions between the muscle cells close completely"
+      "Between meals the gap junctions between the muscle cells close"
     ],
     "correct": 1,
     "why": {

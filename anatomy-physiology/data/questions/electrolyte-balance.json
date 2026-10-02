@@ -116,7 +116,7 @@
     ],
     "q": "A woman has had a plasma sodium of 112 mmol/L for a week. Her doctors raise it by no more than about 8 mmol/L in the first day. Why so slowly?",
     "options": [
-      "Her kidneys cannot excrete water any faster than that",
+      "Her kidneys excrete water no faster than that",
       "Faster correction would cause hypernatremia",
       "Her brain cells have adapted, and fast correction can damage them",
       "Salt given by vein takes several days to reach the plasma"
@@ -268,7 +268,7 @@
     "q": "Mr. Reyes, whose potassium is 6.8 mmol/L with peaked T waves, first receives calcium gluconate by vein. His potassium is unchanged 10 minutes later. Why was calcium given first?",
     "options": [
       "It raises heart cells' threshold, protecting the heart for a while",
-      "It binds potassium in the plasma so it cannot act on cells",
+      "It binds potassium in the plasma and keeps it off the cells",
       "It stimulates the kidneys to secrete potassium",
       "It moves potassium into cells, like insulin does"
     ],

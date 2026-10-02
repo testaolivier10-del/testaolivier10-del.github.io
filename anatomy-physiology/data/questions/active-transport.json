@@ -488,8 +488,8 @@
     "options": [
       "Much more, because sodium now leaks in faster",
       "Much less, because far less sodium leaks in",
-      "The same, because swelling depends only on ATP",
-      "Not at all, because the pumps are what cause swelling"
+      "The same, because swelling depends on ATP rather than on sodium",
+      "It shrinks, because the pumps are what cause swelling"
     ],
     "correct": 1,
     "why": {

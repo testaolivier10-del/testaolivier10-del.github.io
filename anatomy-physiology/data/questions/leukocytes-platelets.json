@@ -157,7 +157,7 @@
     "options": [
       "His blasts cannot fight infection and crowd out normal marrow cells",
       "His anemia leaves too little oxygen for his white cells to work",
-      "His high white count uses up all his antibodies",
+      "His high white count uses up his antibodies",
       "His low platelets let bacteria into his blood"
     ],
     "correct": 0,
@@ -293,7 +293,7 @@
     "options": [
       "Each has two or more binding sites, so it can bridge two cells",
       "Antibodies dissolve the bacteria's cell walls",
-      "Antibodies are sticky on every surface",
+      "Antibodies are sticky on any surface they touch",
       "Antibodies make the bacteria divide without the daughters separating"
     ],
     "correct": 0,

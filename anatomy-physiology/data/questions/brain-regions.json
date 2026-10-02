@@ -312,8 +312,8 @@
     ],
     "q": "A patient cannot be woken by loud noise or pain after an injury to the core of the upper brainstem on both sides. His cerebral cortex is undamaged. What best explains this?",
     "options": [
-      "The injury destroyed the basal nuclei, which start all movement",
-      "The injury cut the corpus callosum, so the hemispheres cannot communicate",
+      "The injury destroyed the basal nuclei, which start movement",
+      "The injury cut the corpus callosum, so the hemispheres stopped communicating",
       "The injury destroyed the hypothalamus, which controls body temperature",
       "The injury destroyed the reticular activating system, which keeps the cortex awake"
     ],
@@ -542,8 +542,8 @@
     "q": "Why does this course call the caudate, putamen and globus pallidus the basal nuclei rather than the basal ganglia?",
     "options": [
       "They are made of white matter, and a ganglion is made of gray matter",
-      "They lie in the brainstem, and ganglia lie only in the cerebrum",
-      "They contain glial cells only, and a ganglion contains neurons",
+      "They lie in the brainstem, and ganglia lie in the cerebrum",
+      "They are made of glial cells, and a ganglion contains neurons",
       "They are clusters of cell bodies inside the CNS; a ganglion lies outside it"
     ],
     "correct": 3,

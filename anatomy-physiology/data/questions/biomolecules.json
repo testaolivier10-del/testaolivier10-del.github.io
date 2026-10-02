@@ -45,7 +45,7 @@
     "core": ["structure-function", "energy"],
     "misconception": "all carbohydrates reach the blood equally fast",
     "q": "Jordan, 19, is shaky and sweaty during a run because the glucose level in his blood has fallen. Glucose gel steadies him within minutes, faster than a starchy granola bar would. Why does the gel act faster?",
-    "options": ["Starch is a lipid, which cannot be absorbed", "Glucose is already a monosaccharide and needs no hydrolysis", "Glucose is hydrophobic, so it slips into the blood more easily", "Starch must be denatured by heat before it can be absorbed"],
+    "options": ["Starch is a lipid, which is absorbed slowly", "Glucose is already a monosaccharide and needs no hydrolysis", "Glucose is hydrophobic, so it slips into the blood more easily", "Starch is absorbed whole once heat has denatured it"],
     "correct": 1,
     "why": {
       "correct": "Only monosaccharides are absorbed. Starch is a polysaccharide, so digestion must first hydrolyze its many bonds to free glucose. Gel supplies free glucose that can be absorbed right away.",

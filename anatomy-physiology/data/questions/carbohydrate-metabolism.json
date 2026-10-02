@@ -91,9 +91,9 @@
     ],
     "q": "How many CO2 molecules does the citric acid cycle itself release from one glucose, and how many does the whole of aerobic respiration release?",
     "options": [
-      "2 from the cycle; 6 in all",
-      "4 from the cycle; 4 in all",
-      "6 from the cycle; 6 in all",
+      "2 from the cycle; 6 in total",
+      "4 from the cycle; 4 in total",
+      "6 from the cycle; 6 in total",
       "4 from the cycle; 6 in all"
     ],
     "correct": 3,
@@ -184,7 +184,7 @@
     ],
     "q": "Ms. Brandt was pulled from a house fire. Her oxygen saturation is 99%, her venous blood is bright red, and her blood lactate is very high. Which explanation fits all three findings?",
     "options": [
-      "Her lungs cannot load oxygen onto hemoglobin",
+      "Her lungs load too little oxygen onto hemoglobin",
       "Her working muscles make more lactate than her liver can clear",
       "Her red blood cells have lost their mitochondria",
       "Her tissues get oxygen but cannot pass electrons to it"
@@ -264,7 +264,7 @@
     ],
     "q": "Why does one FADH2 yield less ATP than one NADH?",
     "options": [
-      "FADH2 carries only one electron",
+      "FADH2 carries one electron, NADH two",
       "It is made in the cytosol and shuttled in",
       "Its electrons skip the H+ pump in complex I",
       "Its electrons bypass complexes III and IV"
@@ -320,7 +320,7 @@
     ],
     "q": "Skeletal muscle stores about four times as much glycogen as the liver. Why can't a person's muscle glycogen keep the glucose in their blood up between meals?",
     "options": [
-      "Muscle glycogen is broken down only during sleep",
+      "Muscle glycogen is broken down mainly during sleep",
       "Muscle cells lack glycogen phosphorylase",
       "Insulin blocks glucose from leaving muscle cells between meals",
       "Muscle has no glucose-6-phosphatase to free glucose"

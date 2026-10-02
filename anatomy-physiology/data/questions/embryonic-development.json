@@ -12,7 +12,7 @@
     "options": [
       "Her corpus luteum had not yet started to make hCG in amounts a test can detect",
       "The embryo had not yet implanted",
-      "hCG is made only once the embryo's heart begins to beat",
+      "hCG is made once the embryo's heart begins to beat",
       "The zygote's hCG was still trapped inside the zona pellucida"
     ],
     "correct": 1,
@@ -467,7 +467,7 @@
       "By week 12 the zona pellucida protects the fetus",
       "By week 12 the mother's liver had adapted to break the drug down before it reached the fetus",
       "The limbs form during weeks 4 to 8, so by week 12 they were already formed",
-      "Drugs cannot reach the fetus after the end of week 8"
+      "Drugs stop reaching the fetus after the end of week 8"
     ],
     "correct": 2,
     "why": {

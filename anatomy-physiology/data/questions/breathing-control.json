@@ -311,7 +311,7 @@
       "Arterial PCO2 rising to 50 mm Hg",
       "Arterial pH falling to 7.25",
       "Anemia with a normal arterial PO2",
-      "A rise in hydrogen ions in the cerebrospinal fluid only",
+      "A rise in hydrogen ions in the cerebrospinal fluid",
       "Inflation of the lungs to a large volume"
     ],
     "correct": [
@@ -608,7 +608,7 @@
     "q": "In moderate steady exercise, ventilation may triple while arterial PCO2 and PO2 barely change. What does this tell you about the drive to breathe during exercise?",
     "options": [
       "It comes from the carotid bodies sensing a fall in arterial PO2",
-      "Carbon dioxide production must not rise during exercise",
+      "Carbon dioxide production stays the same during exercise",
       "Most of the drive does not come from blood-gas changes",
       "The Hering–Breuer reflex is the main drive"
     ],

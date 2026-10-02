@@ -203,9 +203,9 @@
     ],
     "q": "Mia, 4, has had eleven broken bones. The bone she makes is fully mineralized, but a gene change makes her collagen faulty. Why do her bones break so easily?",
     "options": [
-      "Her bones cannot store calcium",
+      "Her bones store too little calcium",
       "Her bone lacks the flexibility to bend under a load",
-      "Her osteoclasts cannot resorb old or damaged bone",
+      "Her osteoclasts fail to resorb old or damaged bone",
       "Her bones have too few lacunae for osteocytes"
     ],
     "correct": 1,
@@ -417,7 +417,7 @@
     "q": "What is the diploë?",
     "options": [
       "The spongy bone between the two plates of a flat skull bone",
-      "The outer shell of compact bone that covers every bone of the skeleton",
+      "The outer shell of compact bone that covers a flat bone",
       "The lining membrane of the medullary cavity",
       "The central canal of an osteon"
     ],

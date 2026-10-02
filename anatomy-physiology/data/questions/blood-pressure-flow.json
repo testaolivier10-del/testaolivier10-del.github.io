@@ -89,7 +89,7 @@
     "options": [
       "It matches the true mean",
       "It overestimates the true mean",
-      "It cannot be applied during a sprint",
+      "It applies at rest, not during a sprint",
       "It underestimates the true mean"
     ],
     "correct": 3,
@@ -363,7 +363,7 @@
       "It will read too low",
       "It will read accurately",
       "It will read too high",
-      "Only the diastolic value will be wrong"
+      "The diastolic value will be wrong, but the systolic will be right"
     ],
     "correct": 2,
     "why": {

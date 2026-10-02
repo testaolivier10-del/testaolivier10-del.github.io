@@ -401,8 +401,8 @@
     "q": "Both a child with influenza and a marathon runner have a core temperature of 39.5 °C. Why does a fever-reducing drug lower the child's temperature but not the runner's?",
     "options": [
       "The runner's sweat washes the drug out of the blood",
-      "The drug works only in children",
-      "The runner's muscles make heat the drug cannot reach",
+      "The drug works in children, not adults",
+      "The runner's muscles make heat out of the drug's reach",
       "Only the child's set point is raised"
     ],
     "correct": 3,
@@ -480,7 +480,7 @@
     ],
     "q": "A 25-year-old rugby player is 1.80 m tall and weighs 105 kg, with little body fat. His BMI is 32.4. What does this show about BMI?",
     "options": [
-      "He has obesity, because a BMI over 30 always means excess fat",
+      "He has obesity, because a BMI over 30 means excess fat",
       "BMI underestimates fat in athletes",
       "BMI cannot tell muscle from fat",
       "His height was measured wrongly"

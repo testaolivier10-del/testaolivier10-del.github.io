@@ -38,7 +38,7 @@
     "options": [
       "Mostly fast glycolytic fibers with large glycogen stores",
       "Mostly slow oxidative fibers with many capillaries and mitochondria",
-      "Equal numbers of the three types, all pale in color",
+      "Equal numbers of the three types, pale in color",
       "Fibers much thicker than in untrained people"
     ],
     "correct": 1,
@@ -88,7 +88,7 @@
     ],
     "q": "Why do fast glycolytic fibers fatigue within a minute or two of hard work?",
     "options": [
-      "Their myosin cannot split ATP",
+      "Their myosin splits ATP slowly",
       "They have no sarcoplasmic reticulum",
       "They burn glycogen fast and build up phosphate",
       "Their motor neurons fire too slowly to keep the fibers contracting"
@@ -493,7 +493,7 @@
     "q": "You walk slowly across a room, then jump as high as you can. Which fibers in your calf muscles are active in each task?",
     "options": [
       "Walking: fast glycolytic. Jumping: slow oxidative",
-      "Walking and jumping: all three types equally",
+      "Walking and jumping: the three types equally",
       "Walking: mainly slow oxidative. Jumping: all three types",
       "Walking: none. Jumping: fast glycolytic"
     ],

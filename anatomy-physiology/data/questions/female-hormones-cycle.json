@@ -40,7 +40,7 @@
    "LH peaks about a day before estradiol does",
    "They peak at the same moment",
    "Estradiol peaks about a day before LH",
-   "Estradiol peaks only after ovulation"
+   "Estradiol peaks after ovulation"
   ],
   "correct": 2,
   "why": {
@@ -93,7 +93,7 @@
   "q": "According to the graph, resting body temperature rises by about 0.3 to 0.5 °C just after day 14. Why can a woman not use a daily temperature chart to predict ovulation for that cycle?",
   "options": [
    "It comes after ovulation, once progesterone has risen",
-   "The rise happens only in cycles without ovulation",
+   "The rise happens in cycles without ovulation",
    "Temperature falls, not rises, after ovulation",
    "The rise is caused by the LH surge several days earlier"
   ],
@@ -140,10 +140,10 @@
   ],
   "q": "During the luteal phase, why does no follicle go on to ovulate?",
   "options": [
-   "All remaining follicles have already been used up",
+   "The remaining follicles have already been used up",
    "Progesterone, estradiol and inhibin from the corpus luteum keep FSH and LH low",
    "The corpus luteum physically blocks the rest of the ovary",
-   "Oxytocin from the posterior pituitary holds back the growth of every remaining follicle"
+   "Oxytocin from the posterior pituitary holds back the growth of the remaining follicles"
   ],
   "correct": 1,
   "why": {
@@ -423,7 +423,7 @@
   "options": [
    "It has the most FSH receptor proteins, and its granulosa cells also respond to LH",
    "It makes its own FSH",
-   "It is the only follicle that contains an oocyte",
+   "It is the one follicle that contains an oocyte",
    "It is protected by progesterone from the corpus luteum left over from the last cycle"
   ],
   "correct": 0,
@@ -530,7 +530,7 @@
    "Her uterus is still too small to build up and shed its lining on a regular monthly schedule",
    "The LH surge mechanism is still maturing, so many early cycles have no ovulation",
    "Her ovaries have too few follicles",
-   "Her pituitary cannot yet make LH"
+   "Her pituitary makes no LH yet"
   ],
   "correct": 1,
   "why": {

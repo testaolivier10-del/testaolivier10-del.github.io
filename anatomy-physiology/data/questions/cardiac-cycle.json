@@ -36,8 +36,8 @@
     ],
     "q": "During isovolumetric contraction of the left ventricle, which valves are open?",
     "options": [
-      "The mitral valve only",
-      "The aortic valve only",
+      "The mitral valve, while the aortic valve is closed",
+      "The aortic valve, while the mitral valve is closed",
       "Both the mitral and the aortic valve",
       "Neither valve"
     ],
@@ -478,7 +478,7 @@
       "During ventricular filling",
       "During ventricular systole",
       "During atrial contraction",
-      "Only during isovolumetric relaxation"
+      "During isovolumetric relaxation"
     ],
     "correct": 1,
     "why": {

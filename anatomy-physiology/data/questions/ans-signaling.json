@@ -9,10 +9,10 @@
     ],
     "q": "Which autonomic neurons release acetylcholine?",
     "options": [
-      "Only parasympathetic neurons, both preganglionic and postganglionic",
+      "Parasympathetic neurons, both preganglionic and postganglionic, and no sympathetic ones",
       "All preganglionic neurons, all parasympathetic postganglionic neurons, and sympathetic postganglionic neurons to sweat glands",
-      "All postganglionic neurons of both the sympathetic and parasympathetic divisions",
-      "Only the preganglionic neurons that end on the adrenal medulla"
+      "Postganglionic neurons of both divisions, but not preganglionic ones",
+      "The preganglionic neurons that end on the adrenal medulla, and no others"
     ],
     "correct": 1,
     "why": {
@@ -304,7 +304,7 @@
     "q": "Clonidine activates alpha-2 receptor proteins, including those on adrenergic varicosities. What happens to norepinephrine release from those varicosities?",
     "options": [
       "It rises, because alpha-2 receptor proteins open calcium channels in the varicosity membrane",
-      "It is unchanged, because alpha-2 receptor proteins sit only on smooth muscle",
+      "It is unchanged, because alpha-2 receptor proteins sit on smooth muscle",
       "It falls, because alpha-2 receptor proteins on the varicosity inhibit further release",
       "It rises briefly and then stops for good"
     ],
@@ -626,7 +626,7 @@
     ],
     "q": "Mr. Chen takes his first dose of prazosin, an alpha-1 antagonist, and feels faint when he stands up quickly. What best explains this?",
     "options": [
-      "His heart cannot speed up, because beta-1 receptor proteins are blocked",
+      "His heart stays slow, because beta-1 receptor proteins are blocked",
       "Alpha-1 blockade stops his vessels from constricting when he stands",
       "His vagus nerve is overactive, because muscarinic receptor proteins are stimulated",
       "His airways narrow, lowering the oxygen reaching his brain"

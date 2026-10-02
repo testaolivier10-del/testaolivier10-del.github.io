@@ -1909,9 +1909,9 @@ are about the notes pages or question explanations, which the pass did not edit.
   to detach and splitting it to recock", not the pull itself.
 - **resting-hr-aging** (pending review). aging-8 and aging-19 key resting heart rate as little
   changed with healthy aging (maximum heart rate falls).
-- **rebalancing-left** (open). The select-all and predict rebalancing is a first pass (see
-  docs/site-audit-notes/w6.md). An instructor may want to review the new false options and the
-  16 added "no change" variables.
+- **rebalancing-left** (pending review). The select-all, predict and absolutes rebalancing is done
+  (spec decision 79; docs/site-audit-notes/w6.md lists every edit). An instructor may want to review
+  the new false options, the added "no change" variables and the reworded distractors.
 
 ## Decided at the Phase 0 reviews
 

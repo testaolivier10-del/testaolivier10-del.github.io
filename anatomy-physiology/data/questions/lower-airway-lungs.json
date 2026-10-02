@@ -474,7 +474,7 @@
     "options": [
       "The pulmonary veins reverse direction and supply it",
       "Alveolar pores carry blood from neighboring alveoli",
-      "The tissue needs no oxygen at all",
+      "The tissue needs very little oxygen",
       "Its bronchial arteries still supply it"
     ],
     "correct": 3,
@@ -578,8 +578,8 @@
     "options": [
       "The left lung has three lobes and the right lung has two",
       "The right has three lobes; the left, a cardiac notch",
-      "Only the right lung has a hilum",
-      "Only the left lung is covered by visceral pleura"
+      "The right lung has a hilum and the left does not",
+      "The left lung is covered by visceral pleura and the right is not"
     ],
     "correct": 1,
     "why": {

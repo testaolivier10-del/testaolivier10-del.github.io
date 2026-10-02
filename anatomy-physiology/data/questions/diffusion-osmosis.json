@@ -9,9 +9,9 @@
     "q": "A drop of dye has spread evenly through a glass of still water. What are the dye particles doing now?",
     "options": [
       "They have stopped moving because the gradient is gone",
-      "They are all drifting slowly toward the bottom of the glass",
+      "They are drifting slowly toward the bottom of the glass",
       "They keep moving at random, crossing any line each way in equal numbers",
-      "They move only when the water is stirred or warmed"
+      "They move when the water is stirred or warmed, and are still otherwise"
     ],
     "correct": 2,
     "why": {
@@ -236,9 +236,9 @@
     "q": "A membrane lets both water and substance X cross freely. Side A holds a solution of X; side B holds pure water. What is the state after a long time?",
     "options": [
       "Side A ends up holding more water, because X keeps drawing water toward it",
-      "Side B holds all of X, because X moves away from where it is concentrated",
+      "Side B holds most of X, because X moves away from where it is concentrated",
       "X evens out on both sides, and neither side gains water for good",
-      "Nothing crosses at all, because both sides started out at the same pressure"
+      "Nothing crosses, because both sides started out at the same pressure"
     ],
     "correct": 2,
     "why": {
@@ -373,10 +373,10 @@
     "core": ["gradients", "structure-function"],
     "q": "Oxygen diffuses from a capillary to a cell a few micrometers away in a fraction of a second. Why can't diffusion alone carry oxygen from your lungs to your toes?",
     "options": [
-      "Oxygen cannot diffuse through liquid, only through air",
+      "Oxygen diffuses through air but not through liquid",
       "The oxygen concentration gradient reverses partway down the body",
       "Diffusion time grows with the square of the distance, so a meter would take years",
-      "Diffusion works only across membranes, and none lies between lungs and toes"
+      "Diffusion needs a membrane to cross, and there is no membrane between lungs and toes"
     ],
     "correct": 2,
     "why": {
@@ -423,9 +423,9 @@
     "q": "What makes a membrane semipermeable?",
     "options": [
       "It lets some substances cross and blocks others",
-      "It lets water cross the membrane in only one direction",
-      "It lets substances cross only half of the time",
-      "It uses energy to move every substance across"
+      "It lets water cross the membrane in one direction",
+      "It lets substances cross half of the time",
+      "It uses energy to move substances across"
     ],
     "correct": 0,
     "why": {

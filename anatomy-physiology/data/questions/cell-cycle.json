@@ -136,7 +136,7 @@
     "options": [
       "Heart and brain cells lack the genes the drug acts on",
       "The mouth lining and bone marrow cells divide often; most heart and brain cells rest in G0",
-      "The drug cannot pass out of the vessels into heart or brain tissue",
+      "The drug stays inside the vessels of the heart and brain",
       "Mouth and blood cells are cancer cells too"
     ],
     "correct": 1,
@@ -292,7 +292,7 @@
     "options": [
       "Two normal daughter cells",
       "One cell with two nuclei",
-      "One cell whose chromosomes never separated",
+      "One cell whose chromosomes did not separate",
       "Two cells, each without a nucleus"
     ],
     "correct": 1,

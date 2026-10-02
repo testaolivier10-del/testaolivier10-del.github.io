@@ -37,7 +37,7 @@
     "q": "Why does very little bicarbonate form in the plasma itself, even though the plasma is full of water and carbon dioxide?",
     "options": [
       "Plasma has almost no carbonic anhydrase",
-      "Carbon dioxide cannot dissolve in plasma",
+      "Carbon dioxide dissolves poorly in plasma",
       "Plasma is too alkaline for carbonic acid to form",
       "Chloride in the plasma blocks the reaction"
     ],
@@ -414,7 +414,7 @@
       "Chloride moves into red blood cells as bicarbonate moves out",
       "Chloride moves out of red blood cells as bicarbonate moves in",
       "Chloride is breathed out with the carbon dioxide",
-      "Chloride stays where it is, because the chloride shift happens only in the tissues"
+      "Chloride stays where it is, because the chloride shift happens in the tissues"
     ],
     "correct": 1,
     "why": {

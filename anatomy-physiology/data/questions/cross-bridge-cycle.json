@@ -102,7 +102,7 @@
       "It stays slack and stretchable",
       "It goes stiff, locked in rigor",
       "It contracts with normal force",
-      "It contracts and then cannot relax"
+      "It contracts and then stays contracted"
     ],
     "correct": 0,
     "why": {
@@ -321,7 +321,7 @@
       "The A band is made of thin filaments, which would have to lengthen",
       "The I band contains the thick filaments, and its narrowing shows they slide",
       "The A band spans the thick filaments, and it did not narrow",
-      "Filaments made of protein cannot change length"
+      "Filaments made of protein are too stiff to change length"
     ],
     "correct": 2,
     "why": {

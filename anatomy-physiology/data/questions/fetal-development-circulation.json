@@ -244,7 +244,7 @@
     "options": [
       "Her testes made anti-Müllerian hormone",
       "Without androgen action, the mesonephric ducts could not form a uterus",
-      "Her ovaries never formed, and ovaries make the uterus",
+      "Her ovaries did not form, and ovaries make the uterus",
       "High testosterone destroyed the uterus after puberty"
     ],
     "correct": 0,
@@ -430,7 +430,7 @@
     "q": "A woman learns she took a drug known to cause limb defects on day 10 after fertilization, before she knew she was pregnant. Based on the timing of development, what is the most likely outcome?",
     "options": [
       "Missing or shortened limbs",
-      "Poor growth in late pregnancy only",
+      "Poor growth in late pregnancy",
       "A heart defect in place of a limb defect",
       "Loss of the pregnancy or no lasting effect"
     ],

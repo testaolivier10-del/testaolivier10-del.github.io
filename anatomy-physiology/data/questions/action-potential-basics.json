@@ -340,8 +340,8 @@
     "q": "An action potential starts in the middle of an axon in a lab dish. Charge spreads in both directions from the firing patch. Why does an action potential in a living neuron, which starts near the cell body, travel only toward the axon terminals?",
     "options": [
       "The patch just behind it has just fired and is refractory",
-      "Axons have sodium channels only on the side facing the terminals",
-      "Positive charge spreads in only one direction inside an axon",
+      "Axons have most of their sodium channels on the side facing the terminals",
+      "Positive charge spreads toward the terminals inside an axon",
       "The axon terminals attract positive ions"
     ],
     "correct": 0,
@@ -392,7 +392,7 @@
     ],
     "q": "A drug keeps the voltage-gated potassium channels of a neuron from opening. Sodium channels work normally. How does the neuron's action potential change?",
     "options": [
-      "It never reaches threshold",
+      "It stays below threshold",
       "Its peak rises far above +60 mV",
       "It shows a deeper dip below rest",
       "It returns to rest more slowly"
@@ -448,7 +448,7 @@
       "The wider axon",
       "The narrower axon",
       "Both at the same speed",
-      "Neither; axons without wrapping cannot propagate action potentials"
+      "Neither; axons without wrapping lose action potentials within a few millimeters"
     ],
     "correct": 0,
     "why": {
@@ -474,7 +474,7 @@
     "options": [
       "The depolarization has made his resting potential more negative",
       "Many sodium channels are stuck inactivated",
-      "His potassium channels cannot open",
+      "His potassium channels are blocked",
       "The extra potassium blocks his sodium–potassium pumps"
     ],
     "correct": 1,

@@ -64,9 +64,9 @@
     "q": "At 3 ms on this graph, a stimulus exactly as strong as the one that started the first action potential arrives. It fails to trigger a second one. Why?",
     "options": [
       "The sodium–potassium pump has not yet restored the sodium and potassium concentrations after the first spike",
-      "Voltage-gated potassium channels have closed and cannot reopen yet",
+      "Voltage-gated potassium channels have already closed",
       "Some sodium channels are still inactivated, and open potassium channels hold the membrane below rest",
-      "Every sodium channel is still in the inactivated state"
+      "The sodium channels are still in the inactivated state"
     ],
     "correct": 2,
     "why": {
@@ -90,7 +90,7 @@
     "figure": "os-12-23",
     "q": "On this graph, what holds the membrane below −70 mV during the dip labeled hyperpolarization?",
     "options": [
-      "Sodium–potassium pumps moving three sodium out for every two potassium in",
+      "Sodium–potassium pumps moving three sodium out per two potassium in",
       "Chloride rushing in through voltage-gated channels",
       "Sodium channels stuck in the open state",
       "Voltage-gated potassium channels that are slow to close"
@@ -467,7 +467,7 @@
     "options": [
       "Current flows along the inside with little leak, and no action potential fires there",
       "The action potential leaps through the extracellular fluid outside the myelin sheath to the next node",
-      "A full action potential fires in every patch, but faster than without myelin",
+      "A full action potential fires patch by patch, but faster than without myelin",
       "No current flows until the next node fires on its own"
     ],
     "correct": 0,
@@ -544,7 +544,7 @@
     ],
     "q": "Sodium's equilibrium potential is about +60 mV, yet a neuron's action potential peaks near +30 mV. Why does the rise stop short?",
     "options": [
-      "The sodium gradient is used up by all the sodium that has entered during the rising phase",
+      "The sodium gradient is used up by the sodium that enters during the rising phase",
       "The sodium–potassium pump switches on at the peak",
       "Sodium's equilibrium potential falls to +30 mV during the spike",
       "Sodium channels inactivate and potassium channels open, cutting the rise off"
@@ -570,7 +570,7 @@
     ],
     "q": "What is saltatory conduction?",
     "options": [
-      "Every patch of an unmyelinated axon firing in turn, one after another",
+      "Each patch of an unmyelinated axon firing in turn, one after another",
       "Action potentials regenerated only at the nodes of Ranvier",
       "The spread of a graded potential across the cell body",
       "Conduction that depends on the salt concentration of the blood"

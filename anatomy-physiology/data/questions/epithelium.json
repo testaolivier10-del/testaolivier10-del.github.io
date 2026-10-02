@@ -64,7 +64,7 @@
     "options": [
       "Its cells have no nuclei",
       "It contains no blood vessels of its own",
-      "It cannot divide or renew itself",
+      "It divides too slowly to renew itself",
       "It is not attached to deeper tissue"
     ],
     "correct": 1,

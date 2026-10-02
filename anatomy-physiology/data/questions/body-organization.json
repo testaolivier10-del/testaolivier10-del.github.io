@@ -359,9 +359,9 @@
     ],
     "q": "On a cold day your skin cools, you start shivering, with small, rapid muscle contractions that make heat, and your body temperature stays near 37 °C. What does this show?",
     "options": [
-      "Body temperature can never change",
+      "Body temperature is fixed at one exact value",
       "The body keeps an internal condition within a normal range",
-      "Muscles work only in cold weather",
+      "Muscles work harder in cold weather than in warm",
       "The outside temperature sets the temperature inside your body"
     ],
     "correct": 1,
@@ -417,7 +417,7 @@
     "q": "Mr. Okafor's kidneys have almost stopped working. Water builds up in his blood, his ankles swell, and fluid collects in his lungs. Which chain best explains why he is now short of breath?",
     "options": [
       "Fluid builds up, collects in his lungs and cuts oxygen entry",
-      "Urinary failure directly damages the airway, so air cannot reach his lungs",
+      "Urinary failure directly damages the airway, so less air reaches his lungs",
       "His lungs have failed first, which then caused his kidneys to fail",
       "Swollen ankles press on the lungs from below and stop them expanding"
     ],

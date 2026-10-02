@@ -141,7 +141,7 @@
     "diff": 3,
     "core": ["homeostasis", "structure-function"],
     "q": "Why can a blood pH outside 7.35 to 7.45 disturb so many body functions at once?",
-    "options": ["Hydrogen ions break the peptide bonds of every protein", "Extra hydrogen ions dissolve the fats around each cell", "Hydrogen ions change side-chain charges, altering the shape of proteins", "Acidic blood cannot carry water to the cells"],
+    "options": ["Hydrogen ions break the peptide bonds of the body's proteins", "Extra hydrogen ions dissolve the fats around each cell", "Hydrogen ions change side-chain charges, altering the shape of proteins", "Acidic blood carries less water to the cells"],
     "correct": 2,
     "why": {
       "correct": "Many amino acid side chains gain or lose a hydrogen ion as [H+] changes, which changes their charge. That disturbs the ionic bonds holding each protein's fold. Shape sets function, and proteins do almost every job in a cell, so many functions change together.",

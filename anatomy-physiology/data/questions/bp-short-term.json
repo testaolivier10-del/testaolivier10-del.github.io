@@ -214,8 +214,8 @@
     "q": "A person's mean arterial pressure rises to a new, higher level and stays there for a week. Why does the baroreceptor reflex not bring it back down?",
     "options": [
       "The baroreceptors reset and treat the higher pressure as normal",
-      "Baroreceptors respond only to falls in pressure, never to rises",
-      "The vagus nerve cannot slow the heart for more than a few hours",
+      "Baroreceptors respond to falls in pressure, not to rises",
+      "The vagus nerve tires after a few hours of slowing the heart",
       "Higher pressure damages the carotid sinuses within the first day"
     ],
     "correct": 0,

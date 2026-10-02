@@ -11,9 +11,9 @@
     "q": "In anatomical terms, what does the leg (the crural region) include?",
     "options": [
       "The whole lower limb, from hip to toes",
-      "Only the part from the hip to the knee",
+      "The part from the hip to the knee",
       "Only the part from the knee to the ankle",
-      "Only the foot and ankle"
+      "The foot and ankle"
     ],
     "correct": 2,
     "why": {

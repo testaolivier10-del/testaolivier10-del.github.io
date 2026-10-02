@@ -225,8 +225,8 @@
     "options": [
       "In the right arm and leg",
       "In the left arm and leg",
-      "In both legs only",
-      "In the face only, on the right"
+      "In both legs",
+      "In the face, on the right"
     ],
     "correct": 1,
     "why": {
@@ -329,8 +329,8 @@
     "q": "A student raises an arm straight overhead and says, \"Now my hand is superior to my elbow, so it is proximal.\" What is the error?",
     "options": [
       "The hand is still distal to the elbow in every posture",
-      "The hand becomes proximal only when the elbow is bent",
-      "Proximal and distal are used only on the trunk",
+      "The hand becomes proximal when the elbow is bent",
+      "Proximal and distal are used mainly on the trunk",
       "The hand is lateral, not proximal"
     ],
     "correct": 0,

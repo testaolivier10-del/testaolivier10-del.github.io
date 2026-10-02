@@ -9,7 +9,7 @@
     ],
     "q": "What is a ligand?",
     "options": [
-      "A protein channel that is always open",
+      "A protein channel that stays open at rest",
       "A cell that responds to a hormone",
       "An enzyme that breaks down chemical messengers after they are released",
       "A molecule that binds specifically to a site on a protein"
@@ -39,7 +39,7 @@
       "The hormone is broken down before reaching the skin and fat tissue",
       "Liver cells have more ATP than skin and fat cells",
       "Only the liver cells carry receptor proteins that bind this hormone",
-      "The hormone enters every cell equally but produces an effect only in the liver"
+      "The hormone enters the three tissues equally but produces an effect in the liver alone"
     ],
     "correct": 2,
     "why": {
@@ -65,7 +65,7 @@
       "It reaches the heart in a smaller amount",
       "Heart cells and gut cells carry different receptor proteins for it",
       "It is converted into a different molecule in the gut",
-      "Heart muscle has no receptor proteins for it, so it responds only indirectly"
+      "Heart muscle has no receptor proteins for it, so it responds indirectly"
     ],
     "correct": 1,
     "why": {
@@ -141,7 +141,7 @@
     "q": "Leo, 30, takes ibuprofen for a sprained ankle for two weeks. The pain and swelling ease, but he develops stomach pain. Which explanation fits both effects?",
     "options": [
       "Ibuprofen blocks the receptor proteins for neurotransmitters in both the injured ankle and the lining of the stomach",
-      "Ibuprofen raises cAMP in every cell",
+      "Ibuprofen raises cAMP throughout the body",
       "Less prostaglandin is made, so fewer pain endings are sensitized and the stomach lining is less protected",
       "Ibuprofen kills white blood cells in the ankle and stomach"
     ],
@@ -441,8 +441,8 @@
     ],
     "q": "You touch a hot pan and pull your hand away in a fraction of a second. Why is this response carried by the nervous system rather than by a hormone?",
     "options": [
-      "Hormones cannot reach the arm",
-      "Hormones only affect organs, not muscles",
+      "Hormones reach the arm poorly",
+      "Hormones affect organs, not muscles",
       "Neurotransmitters travel through the blood to the arm muscles much faster than hormones do",
       "Nerve signals reach specific muscles in milliseconds; hormones take seconds or more"
     ],

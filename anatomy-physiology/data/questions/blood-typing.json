@@ -51,7 +51,7 @@
     "q": "A patient is O positive. Which red cells can she safely receive?",
     "options": [
       "O negative and O positive only",
-      "O positive only",
+      "O positive, but not O negative",
       "Any Rh-positive type",
       "O, A and B, as long as they are Rh positive"
     ],
@@ -94,9 +94,9 @@
     "core": ["structure-function"],
     "q": "Why can a person with AB positive blood receive red cells of any ABO and Rh type?",
     "options": [
-      "Their red cells carry every antigen, so donor cells cannot bind them",
+      "Their red cells carry both A and B antigens, so donor cells bind them less",
       "Their plasma has no anti-A, anti-B or anti-D to attack donor cells",
-      "Their immune system cannot make antibodies",
+      "Their immune system makes few antibodies",
       "Their plasma dilutes the donor's antibodies"
     ],
     "correct": 1,
@@ -233,7 +233,7 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "A mother is type O and the father is type AB. Which blood types are possible for their children?",
-    "options": ["A or B", "O only", "AB only", "A, B, AB or O"],
+    "options": ["A or B", "O", "AB", "A, B, AB or O"],
     "correct": 0,
     "why": {
       "correct": "The mother has two O copies and passes on an O. The father passes on either A or B. Children are therefore AO (type A) or BO (type B).",

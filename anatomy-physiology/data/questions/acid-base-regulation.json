@@ -45,7 +45,7 @@
     "core": ["homeostasis"],
     "misconception": "pH depends on the amount of bicarbonate",
     "q": "Patient A has a bicarbonate of 12 mmol/L and an arterial PCO2 of 20 mm Hg. Patient B has a bicarbonate of 24 mmol/L and an arterial PCO2 of 40 mm Hg. How do their blood pH values compare?",
-    "options": ["Patient A's pH is lower than Patient B's", "Both are about 7.40", "Patient A's pH is higher than Patient B's", "They cannot be compared without measuring hydrogen ions"],
+    "options": ["Patient A's pH is lower than Patient B's", "Both are about 7.40", "Patient A's pH is higher than Patient B's", "They are compared by measuring hydrogen ions directly"],
     "correct": 1,
     "why": {
       "correct": "pH depends on the ratio, not the amounts. Patient A: 12 ÷ (0.03 × 20) = 12 ÷ 0.6 = 20. Patient B: 24 ÷ 1.2 = 20. The same ratio gives the same pH, 7.40.",

@@ -124,7 +124,7 @@
       "In the brainstem and in sacral segments S2–S4",
       "In the lateral horn of the spinal cord, segments T1–L2",
       "In the chain ganglia beside the vertebral column",
-      "In the ventral horn at every spinal segment"
+      "In the ventral horn along the whole cord"
     ],
     "correct": 1,
     "why": {
@@ -360,7 +360,7 @@
     ],
     "q": "Why does a burst of sympathetic activity reach many organs at once, while parasympathetic activity can affect one organ at a time?",
     "options": [
-      "Sympathetic fibers are myelinated all the way to the target, so their signal spreads farther",
+      "Sympathetic fibers are myelinated up to the target, so their signal spreads farther",
       "The sympathetic division has more preganglionic neurons than there are organs to supply",
       "Sympathetic preganglionic neurons branch widely through the chain",
       "Parasympathetic postganglionic fibers are too long to reach more than one organ"
@@ -493,7 +493,7 @@
     "q": "A frightening near-miss in traffic triggers a sympathetic burst. Your heart is still pounding minutes after the nerve activity has died down. Which feature of the sympathetic division best explains this?",
     "options": [
       "Postganglionic fibers are unmyelinated and conduct slowly",
-      "Gray rami carry signals only to the skin",
+      "Gray rami carry signals to the skin rather than the heart",
       "Epinephrine released into the blood keeps acting after the nerve signal stops",
       "Preganglionic fibers are short"
     ],
