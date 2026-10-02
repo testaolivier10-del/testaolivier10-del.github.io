@@ -192,8 +192,9 @@
     } else if(LG() && q.legacy){
       /* Legacy bank. The rules in legacy-rules.js do two separate jobs here.
          The concept attribution is the important one — it is what the mastery
-         engine records, and rules fix it for 95% of the bank where keyword
-         inference got it right only 61% of the time. The message is a bonus
+         engine records, and rules fix it for about 94% of the non-recall bank
+         (measured October 2026; it was 46% before rules were written for the
+         topics that had none). The message is a bonus
          on top, and only some wrong answers carry enough information to earn
          one: "False" and "sp³" say nothing on their own. */
       var d = LG().forOption(q.topic, q.prompt || '', chosenText);
@@ -205,15 +206,24 @@
         out.soft = !!d.soft;
       }
       if(!out.conceptId){
-        out.conceptId = C().inferConcept(q.prompt || '', q.topic) ||
-                        C().inferConcept(chosenText, q.topic) || primary;
+        var inferred = C().inferConcept(q.prompt || '', q.topic) ||
+                       C().inferConcept(chosenText, q.topic);
+        out.conceptId = inferred || primary;
+        /* Nothing matched: the concept is only the topic's default. It is
+           still recorded (below), but it is not shown as "the idea this
+           question turns on", because for a default that sentence was wrong
+           about half the time (an isotope question "turned on valence
+           electrons"). The question's own explanation carries the feedback. */
+        if(!inferred && q.conceptFallback) out.fallback = true;
       }
       /* Recall questions — IUPAC suffixes, "nylon is which polymer", trivia —
          are not about any concept in the graph. Recording one would have the
          review scheduler drilling mechanisms to fix a vocabulary gap, so this
-         flag tells applyResult to write no concept evidence at all. */
+         flag tells applyResult to write no concept evidence at all. Nor is a
+         concept named to the student for one. */
       out.recall = recall;
-      if(!out.diagnosis){
+      if(recall && !d) out.fallback = true;
+      if(!out.diagnosis && !out.fallback){
         var rc = C().get(out.conceptId);
         out.diagnosis = rc
           ? 'This question turns on ' + rc.title.toLowerCase() + ' — that is the idea to check.'
@@ -232,7 +242,9 @@
         : '';
     }
 
-    out.concept = C().get(out.conceptId);
+    // A fallback concept is not presented as the one the mistake revealed:
+    // no "concept behind it" box, lesson link or prerequisite warning for it.
+    out.concept = out.fallback ? null : C().get(out.conceptId);
     out.whatYouDid = whatYouDid(q, response);
     if(out.concept) out.teach = out.concept.teach || '';
 
@@ -244,7 +256,7 @@
 
     // If the real gap is upstream, say so — more questions on the symptom
     // won't help someone whose prerequisite is missing.
-    out.prereqs = window.OchemMastery.weakPrerequisites(out.conceptId).slice(0, 2);
+    out.prereqs = out.fallback ? [] : window.OchemMastery.weakPrerequisites(out.conceptId).slice(0, 2);
     out.lessonTopic = C().lessonTopicFor(out.conceptId);
 
     return out;

@@ -666,6 +666,8 @@
      when nothing matches, and the caller falls back to the topic default. */
   function inferConcept(text, topicId){
     if(!text) return null;
+    var LG = window.OchemLegacyDiagnosis;   // reads H₂O as H2O
+    if(LG) text = LG.plain(text);
     var allowed = topicId ? BY_TOPIC[topicId] : null;
     for(var i=0;i<KEYWORD_RULES.length;i++){
       if(KEYWORD_RULES[i][0].test(text)){
