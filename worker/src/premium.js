@@ -21,7 +21,7 @@
    The cron (bottom of this file) sends the one "your pass ends soon" email
    and, hourly, reconciles against Polar's own order and dispute records. */
 
-import { sb, sha256Hex, EMAIL_BATCH } from './store.js';
+import { sb, sha256Hex, timedFetch, EMAIL_BATCH } from './store.js';
 import { sendPassEndingEmail } from './email.js';
 
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it).
@@ -91,6 +91,28 @@ function polarApi(env) {
   return (env.POLAR_API || 'https://api.polar.sh').replace(/\/+$/, '');
 }
 
+/* The Supabase user behind a session token, or null. Supabase answers for
+   its own tokens; we never decode one ourselves, so an expired or revoked
+   session is refused too. Used by every route that acts for a student,
+   including the assistant (index.js). */
+export function bearerToken(request) {
+  return (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+}
+
+export async function sessionUser(env, token) {
+  if (!token || !env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return null;
+  try {
+    const who = await timedFetch(`${env.SUPABASE_URL}/auth/v1/user`, {
+      headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
+    });
+    if (!who.ok) return null;
+    const user = await who.json();
+    return user && user.id ? user : null;
+  } catch {
+    return null;
+  }
+}
+
 /* Returns { status, body }; index.js adds the CORS headers. */
 export async function premiumCheckout(request, env) {
   const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
@@ -109,14 +131,8 @@ export async function premiumCheckout(request, env) {
     return { status: 503, body: { error: 'Checkout is not set up yet.' } };
   }
 
-  // Who is this? Supabase answers for its own tokens; we never decode one
-  // ourselves, so an expired or revoked session is refused here too.
-  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
-  });
-  if (!who.ok) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
-  const user = await who.json();
-  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+  const user = await sessionUser(env, token);
+  if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const body = {
     products: [productId],
@@ -127,7 +143,7 @@ export async function premiumCheckout(request, env) {
   if (user.email) body.customer_email = user.email;
   if (env.FOUNDING_DISCOUNT_ID) body.discount_id = env.FOUNDING_DISCOUNT_ID;
 
-  const res = await fetch(`${polarApi(env)}/v1/checkouts/`, {
+  const res = await timedFetch(`${polarApi(env)}/v1/checkouts/`, {
     method: 'POST',
     headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -147,12 +163,16 @@ export async function premiumCheckout(request, env) {
 
    - the order must be the caller's own, a real purchase (not a free month
      or a guarantee extension) and not already refunded;
-   - within REFUND_WINDOW_DAYS of buying, as the terms promise;
+   - within REFUND_WINDOW_DAYS of buying, as the terms promise, counted
+     from Polar's own order time (the reconcile can write the row up to 48
+     hours after the purchase, and that delay must not lengthen the window);
    - once per account, ever. Any refund already on the account (self-serve
      or made by hand in Polar) means the next one goes through email, so a
-     buy-use-refund loop runs exactly once. The account's email is also
-     written to premium_ledger (as a hash), which deleting the account does
-     not clear, so deleting and re-creating it does not reset the limit.
+     buy-use-refund loop runs exactly once. premium_ledger also records the
+     person (as hashes): the email address normalized (case, +tags, Gmail
+     dots), the Polar customer, and the account. Deleting the account does
+     not clear it, so neither a new account nor an address alias resets the
+     limit.
 
    Polar refunds the pre-tax amount and the tax with it. The pass is marked
    refunded here at once; order.refunded from Polar then finds nothing left
@@ -162,7 +182,8 @@ export const REFUND_WINDOW_DAYS = 7;
 export function refundRefusal(row, priorRefunds, now) {
   if (!row || !row.order_id || !(row.amount_cents > 0)) return 'That purchase can’t be refunded here.';
   if (row.refunded_at) return 'That purchase has already been refunded.';
-  if (now - Date.parse(row.created_at) > REFUND_WINDOW_DAYS * DAY_MS) {
+  const bought = Date.parse(row.order_created_at || row.created_at);
+  if (!Number.isFinite(bought) || now - bought > REFUND_WINDOW_DAYS * DAY_MS) {
     return `Refunds are available for ${REFUND_WINDOW_DAYS} days after buying, and this purchase is older than that.`;
   }
   if (priorRefunds > 0) return 'This account has already had its one refund, so this purchase can’t be refunded.';
@@ -170,7 +191,7 @@ export function refundRefusal(row, priorRefunds, now) {
 }
 
 export async function premiumRefund(request, env, now = Date.now()) {
-  const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+  const token = bearerToken(request);
   if (!token) return { status: 401, body: { error: 'Sign in first.' } };
   let payload;
   try { payload = await request.json(); } catch { return { status: 400, body: { error: 'Invalid JSON' } }; }
@@ -180,86 +201,131 @@ export async function premiumRefund(request, env, now = Date.now()) {
     return { status: 503, body: { error: 'Refunds are not set up yet.' } };
   }
 
-  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
-  });
-  const user = who.ok ? await who.json() : null;
-  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+  const user = await sessionUser(env, token);
+  if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const key = await emailKey(user.email);
-  const [rowRes, priorRes, ledger] = await Promise.all([
-    sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at&user_id=eq.${uid}` +
-      `&order_id=eq.${encodeURIComponent(orderId)}&limit=1`),
-    sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
-    ledgerHas(env, key, 'refund'),
-  ]);
-  if (!rowRes.ok || !priorRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
+  const rowRes = await sb(env, `premium_passes?select=order_id,amount_cents,refunded_at,created_at,order_created_at,customer_id` +
+    `&user_id=eq.${uid}&order_id=eq.${encodeURIComponent(orderId)}&limit=1`);
+  if (!rowRes.ok) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const row = (await rowRes.json())[0];
+  const keys = await ledgerKeys({ email: user.email, customerId: row && row.customer_id, userId: user.id });
+  const [priorRes, ledger] = await Promise.all([
+    sb(env, `premium_passes?select=id&user_id=eq.${uid}&order_id=not.is.null&refunded_at=not.is.null&limit=1`),
+    ledgerHas(env, keys, 'refund'),
+  ]);
+  if (!priorRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
   const prior = (await priorRes.json()).length + (ledger ? 1 : 0);
   const refusal = refundRefusal(row, prior, now);
   if (refusal) return { status: 409, body: { error: refusal } };
   // Claimed before Polar is asked, so two clicks at once cannot both refund:
-  // the second insert hits the unique key. Released if Polar says no.
-  const claimed = await ledgerAdd(env, key, 'refund');
+  // the second insert hits the unique key. Released if Polar clearly says no.
+  const claimed = await ledgerAdd(env, keys, 'refund');
   if (claimed === 'taken') return { status: 409, body: { error: refundRefusal(row, 1, now) } };
   if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check that purchase. Try again.' } };
 
-  const res = await fetch(`${polarApi(env)}/v1/refunds/`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      order_id: orderId,
-      reason: 'customer_request',
-      amount: row.amount_cents,
-      comment: 'Self-serve refund from the levlprep.com account page',
-    }),
-  });
-  if (!res.ok) {
-    console.log('polar refund failed', res.status, (await res.text()).slice(0, 300));
-    await ledgerRemove(env, key, 'refund');
+  let res = null;
+  try {
+    res = await timedFetch(`${polarApi(env)}/v1/refunds/`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        order_id: orderId,
+        reason: 'customer_request',
+        amount: row.amount_cents,
+        comment: 'Self-serve refund from the levlprep.com account page',
+      }),
+    });
+  } catch (err) {
+    console.log('polar refund: no answer', String(err));
+  }
+  if (!res || !res.ok) {
+    if (res) console.log('polar refund failed', res.status, (await res.text()).slice(0, 300));
+    // A timeout or a 5xx may still have refunded: the lock stays, so a second
+    // click cannot refund twice, and the order.refunded webhook (or a person)
+    // settles it. Only a clear refusal (4xx) gives the one refund back.
+    if (res && res.status < 500) await ledgerRemove(env, keys, 'refund');
     return { status: 502, body: { error: 'The refund didn’t go through automatically. Email us and we’ll sort it out.' } };
   }
-  await sb(env, `premium_passes?order_id=eq.${encodeURIComponent(orderId)}&refunded_at=is.null`, {
-    method: 'PATCH',
-    headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
-  });
+  await refundOrder(env, orderId, now);
   return { status: 200, body: { ok: true } };
 }
 
-/* premium_ledger: what an email address has already used, kept after the
-   account is deleted. Only a hash of the lower-cased address is stored, and
-   only the Worker (service role) can read it. One row per address and kind,
-   so inserting doubles as the lock. */
-export async function emailKey(email) {
-  // Every account here has an address; without one there is nothing to key
-  // on, and the per-account checks still apply.
-  if (!String(email || '').trim()) return null;
-  return sha256Hex('levlprep-ledger:' + String(email || '').trim().toLowerCase());
+/* premium_ledger: what a person has already used, kept after the account is
+   deleted. Only hashes are stored, and only the Worker (service role) can
+   read them. One row per key and kind, so inserting doubles as the lock.
+
+   A person is several keys, any one of which counts as "already used":
+   - the email address normalized: lower case, any +tag dropped, and for
+     Gmail the dots dropped and googlemail.com read as gmail.com, so
+     a.b+x@gmail.com and ab@gmail.com are one person;
+   - the address as it was keyed before normalization (rows written before
+     this change);
+   - the Polar customer id, which follows the card holder across accounts;
+   - the account id, which is also the lock when there is no address. */
+export function normalizeEmail(email) {
+  const s = String(email || '').trim().toLowerCase();
+  const at = s.lastIndexOf('@');
+  if (at < 1) return s;
+  let local = s.slice(0, at);
+  let domain = s.slice(at + 1);
+  const plus = local.indexOf('+');
+  if (plus > 0) local = local.slice(0, plus);
+  if (domain === 'googlemail.com') domain = 'gmail.com';
+  if (domain === 'gmail.com') local = local.replace(/\./g, '');
+  return `${local}@${domain}`;
 }
 
-async function ledgerHas(env, key, kind) {
-  if (!key) return false;
-  const res = await sb(env, `premium_ledger?select=kind&email_key=eq.${key}&kind=eq.${kind}&limit=1`);
+export async function emailKey(email) {
+  if (!String(email || '').trim()) return null;
+  return sha256Hex('levlprep-ledger:' + normalizeEmail(email));
+}
+
+export async function ledgerKeys({ email, customerId, userId }) {
+  const keys = [];
+  const raw = String(email || '').trim().toLowerCase();
+  if (raw) {
+    keys.push(await emailKey(raw));
+    const legacy = await sha256Hex('levlprep-ledger:' + raw);
+    if (!keys.includes(legacy)) keys.push(legacy);
+  }
+  if (customerId) keys.push(await sha256Hex('levlprep-ledger:polar:' + String(customerId)));
+  if (userId) keys.push(await sha256Hex('levlprep-ledger:user:' + String(userId)));
+  return keys;
+}
+
+async function ledgerHas(env, keys, kind) {
+  if (!keys.length) return false;
+  const res = await sb(env, `premium_ledger?select=kind&email_key=in.(${keys.join(',')})&kind=eq.${kind}&limit=1`);
   if (!res.ok) return null;
   return (await res.json()).length > 0;
 }
 
-async function ledgerAdd(env, key, kind) {
-  if (!key) return 'ok';
+/* The first key is the lock: two requests for the same person race on it
+   and only one insert succeeds. The rest are recorded as well, so a later
+   alias, card or account finds the use. */
+async function ledgerAdd(env, keys, kind) {
+  if (!keys.length) return 'ok';
   const res = await sb(env, 'premium_ledger', {
     method: 'POST',
     headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({ email_key: key, kind }),
+    body: JSON.stringify({ email_key: keys[0], kind }),
   });
   if (res.status === 409) return 'taken';
-  return res.ok ? 'ok' : 'error';
+  if (!res.ok) return 'error';
+  for (const key of keys.slice(1)) {
+    await sb(env, 'premium_ledger', {
+      method: 'POST',
+      headers: { Prefer: 'return=minimal,resolution=ignore-duplicates' },
+      body: JSON.stringify({ email_key: key, kind }),
+    });
+  }
+  return 'ok';
 }
 
-async function ledgerRemove(env, key, kind) {
-  if (!key) return;
-  await sb(env, `premium_ledger?email_key=eq.${key}&kind=eq.${kind}`, { method: 'DELETE' });
+async function ledgerRemove(env, keys, kind) {
+  if (!keys.length) return;
+  await sb(env, `premium_ledger?email_key=in.(${keys.join(',')})&kind=eq.${kind}`, { method: 'DELETE' });
 }
 
 /* POST /premium/guarantee: the NREMT pass guarantee, claimed from the account
@@ -270,17 +336,44 @@ async function ledgerRemove(env, key, kind) {
    - an NREMT pass that was bought (not a free month), not refunded;
    - the exam date falls inside that paid pass and is at most
      GUARANTEE.claimDays ago;
-   - at least GUARANTEE.minExams full timed exams in the account's synced
-     history, taken during the paid pass and before the exam date, so the
-     pass was actually used to prepare;
+   - at least GUARANTEE.minExams full timed exams taken during the paid
+     pass and before the exam date, so the pass was actually used to
+     prepare. They are counted from exam_completions, which the database
+     stamps (record_exam_completion), not from the synced history the
+     browser writes; history entries dated before EXAM_LOG_SINCE still
+     count, since nothing recorded exams on the server then;
    - once per account and per email address, ever (premium_ledger again);
    - the claim records the legal name and state the candidate tested under,
      so it can be checked against the Registry's public certification
      lookup. The terms say a claim from someone already certified ends the
      extension.
 
-   It adds GUARANTEE.extendDays, starting when the current pass ends. */
+   It adds GUARANTEE.extendDays, starting when the current pass ends, and
+   records which bought pass it extends (funded_by): refunding that order
+   takes the extension back (premium_refund_order in schema.sql). */
 export const GUARANTEE = { claimDays: 30, extendDays: 90, minExams: 2 };
+
+/* Server-stamped exam records start with the 2026-10 migration. Synced
+   history entries dated before this still count toward the guarantee; after
+   it, only exam_completions do. Set to the day the migration is applied. */
+export const EXAM_LOG_SINCE = Date.parse('2026-10-15T00:00:00Z');
+const FULL_EXAM_MIN_QUESTIONS = 50;
+
+/* The exams that count: server records, plus history from before the log. */
+export function countableExams(completions, legacyHistory) {
+  const server = (completions || [])
+    .filter((c) => c && Number(c.questions) >= FULL_EXAM_MIN_QUESTIONS && Number.isFinite(Date.parse(c.finished_at)))
+    .map((c) => ({ date: Date.parse(c.finished_at) }));
+  const legacy = (legacyHistory || []).filter((h) => h && Number(h.date) < EXAM_LOG_SINCE);
+  return server.concat(legacy);
+}
+
+/* The bought pass the exam fell in: the one a guarantee extends. */
+export function guaranteeFunding(passes, examDate) {
+  const exam = Date.parse(examDate + 'T12:00:00Z');
+  return (passes || []).find((p) => p.order_id && p.amount_cents > 0 && !p.refunded_at
+    && exam >= Date.parse(p.starts_at) - DAY_MS && exam <= Date.parse(p.expires_at) + DAY_MS) || null;
+}
 
 export function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const paid = (passes || []).filter((p) => p.order_id && p.amount_cents > 0 && !p.refunded_at);
@@ -299,7 +392,7 @@ export function guaranteeRefusal({ passes, examDate, history, used, now }) {
   const exams = (history || []).filter((h) => h && Number(h.date) >= from && Number(h.date) <= exam + DAY_MS).length;
   if (exams < GUARANTEE.minExams) {
     return `The guarantee needs at least ${GUARANTEE.minExams} full timed exams taken during your pass, before the real exam. ` +
-      `This account has ${exams}. (Exams count once your progress has synced while signed in.)`;
+      `This account has ${exams}. (An exam counts when you finish it while signed in.)`;
   }
   return null;
 }
@@ -315,7 +408,7 @@ export function examHistory(data) {
 }
 
 export async function premiumGuarantee(request, env, now = Date.now()) {
-  const token = (request.headers.get('Authorization') || '').replace(/^Bearer\s+/i, '').trim();
+  const token = bearerToken(request);
   if (!token) return { status: 401, body: { error: 'Sign in first.' } };
   let payload;
   try { payload = await request.json(); } catch { return { status: 400, body: { error: 'Invalid JSON' } }; }
@@ -326,54 +419,52 @@ export async function premiumGuarantee(request, env, now = Date.now()) {
   if (state.length < 2 || state.length > 40) return { status: 400, body: { error: 'Enter the state you tested for.' } };
   if (!env.SUPABASE_URL || !env.SUPABASE_SERVICE_KEY) return { status: 503, body: { error: 'This isn’t set up yet.' } };
 
-  const who = await fetch(`${env.SUPABASE_URL}/auth/v1/user`, {
-    headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${token}` },
-  });
-  const user = who.ok ? await who.json() : null;
-  if (!user?.id) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
+  const user = await sessionUser(env, token);
+  if (!user) return { status: 401, body: { error: 'Your session has expired. Sign in again.' } };
 
   const uid = encodeURIComponent(user.id);
-  const key = await emailKey(user.email);
-  const [passRes, progRes, ledger] = await Promise.all([
-    sb(env, `premium_passes?select=pass,order_id,amount_cents,refunded_at,starts_at,expires_at&user_id=eq.${uid}&course=eq.nremt`),
+  const [passRes, examRes, progRes] = await Promise.all([
+    sb(env, `premium_passes?select=pass,order_id,amount_cents,refunded_at,starts_at,expires_at,customer_id&user_id=eq.${uid}&course=eq.nremt`),
+    sb(env, `exam_completions?select=questions,finished_at&user_id=eq.${uid}&course=eq.nremt&order=finished_at.desc&limit=200`),
     sb(env, `user_progress?select=data&id=eq.${uid}&limit=1`),
-    ledgerHas(env, key, 'guarantee'),
   ]);
-  if (!passRes.ok || !progRes.ok || ledger === null) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
+  if (!passRes.ok || !examRes.ok || !progRes.ok) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
   const passes = await passRes.json();
   const prog = (await progRes.json())[0];
+  const history = countableExams(await examRes.json(), examHistory(prog && prog.data));
+  const customer = (passes.find((p) => p.customer_id) || {}).customer_id;
+  const keys = await ledgerKeys({ email: user.email, customerId: customer, userId: user.id });
+  const ledger = await ledgerHas(env, keys, 'guarantee');
+  if (ledger === null) return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
   const used = ledger || passes.some((p) => p.pass === 'guarantee');
-  const refusal = guaranteeRefusal({ passes, examDate, history: examHistory(prog && prog.data), used, now });
+  const refusal = guaranteeRefusal({ passes, examDate, history, used, now });
   if (refusal) return { status: 409, body: { error: refusal } };
+  const funding = guaranteeFunding(passes, examDate);
 
-  const claimed = await ledgerAdd(env, key, 'guarantee');
+  const claimed = await ledgerAdd(env, keys, 'guarantee');
   if (claimed === 'taken') return { status: 409, body: { error: 'This account has already used its pass guarantee.' } };
   if (claimed !== 'ok') return { status: 500, body: { error: 'Couldn’t check your account. Try again.' } };
 
-  const startsAt = await startFor(env, user.id, 'nremt', now);
-  const expiresAt = new Date(startsAt.getTime() + GUARANTEE.extendDays * DAY_MS);
-  const [claimRes, passIns] = await Promise.all([
-    sb(env, 'premium_guarantee_claims', {
-      method: 'POST',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({ user_id: user.id, legal_name: name, state, exam_date: examDate }),
-    }),
-    sb(env, 'premium_passes', {
-      method: 'POST',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({
-        user_id: user.id, course: 'nremt', pass: 'guarantee',
-        starts_at: startsAt.toISOString(), expires_at: expiresAt.toISOString(),
-      }),
-    }),
-  ]);
-  if (!passIns.ok) {
-    console.log('guarantee insert failed', passIns.status, (await passIns.text()).slice(0, 200));
-    await ledgerRemove(env, key, 'guarantee');
+  let added = null;
+  try {
+    added = await addPass(env, {
+      userId: user.id, course: 'nremt', pass: 'guarantee', days: GUARANTEE.extendDays,
+      fundedBy: funding ? funding.order_id : null,
+    });
+  } catch (err) {
+    console.log('guarantee insert failed', String(err));
+  }
+  if (!added || !added.inserted) {
+    await ledgerRemove(env, keys, 'guarantee');
     return { status: 500, body: { error: 'That didn’t go through. Try again in a moment.' } };
   }
+  const claimRes = await sb(env, 'premium_guarantee_claims', {
+    method: 'POST',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({ user_id: user.id, legal_name: name, state, exam_date: examDate }),
+  });
   if (!claimRes.ok) console.log('guarantee claim record failed', claimRes.status);
-  return { status: 200, body: { ok: true, expires_at: expiresAt.toISOString() } };
+  return { status: 200, body: { ok: true, expires_at: new Date(added.expires_at).toISOString() } };
 }
 
 function bytesToBase64(bytes) {
@@ -446,16 +537,41 @@ export async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.
   return ok;
 }
 
-/* A pass bought while one is still running starts when that one ends, so
-   buying early never throws days away. Refunded passes do not count. */
-async function startFor(env, userId, course, now) {
-  const res = await sb(env,
-    `premium_passes?select=expires_at&user_id=eq.${encodeURIComponent(userId)}` +
-    `&course=eq.${course}&refunded_at=is.null&order=expires_at.desc&limit=1`);
-  if (!res.ok) throw new Error(`read passes ${res.status}`);
-  const rows = await res.json();
-  const latest = rows?.[0]?.expires_at ? Date.parse(rows[0].expires_at) : 0;
-  return new Date(Math.max(now, latest || 0));
+/* Creating a pass is one database function, premium_add_pass() in
+   scripts/sql/schema.sql: under a per-user lock it reads where the latest
+   unrefunded pass ends, starts the new one there (or now), and inserts it,
+   so a pass bought early never throws days away and the webhook and the
+   reconcile racing on one order cannot stack two passes on the same days.
+   It answers { inserted, starts_at, expires_at }; inserted is false for an
+   order it already has. */
+async function addPass(env, { userId, course, pass, days, orderId = null, amountCents = null, orderCreatedAt = null, customerId = null, fundedBy = null }) {
+  const res = await sb(env, 'rpc/premium_add_pass', {
+    method: 'POST',
+    body: JSON.stringify({
+      p_user: userId, p_course: course, p_pass: pass, p_days: days,
+      p_order_id: orderId, p_amount_cents: amountCents, p_order_created_at: orderCreatedAt,
+      p_customer_id: customerId, p_funded_by: fundedBy,
+    }),
+  });
+  if (!res.ok) throw new Error(`add pass ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  return res.json();
+}
+
+/* A full refund, also one database function (premium_refund_order): marks
+   the order's pass, takes back a guarantee it paid for, and re-chains the
+   passes queued behind it. Returns how many bought passes it marked. */
+async function refundOrder(env, orderId, now) {
+  const res = await sb(env, 'rpc/premium_refund_order', {
+    method: 'POST',
+    body: JSON.stringify({ p_order_id: String(orderId), p_at: new Date(now).toISOString() }),
+  });
+  if (!res.ok) throw new Error(`refund pass ${res.status}`);
+  return Number(await res.json()) || 0;
+}
+
+function isoOrNull(v) {
+  const t = Date.parse(v || '');
+  return Number.isFinite(t) ? new Date(t).toISOString() : null;
 }
 
 async function recordPaid(env, order, now) {
@@ -469,25 +585,20 @@ async function recordPaid(env, order, now) {
     return { status: 200, body: { ok: true, ignored: 'unattributable' } };
   }
 
-  const startsAt = await startFor(env, userId, pass.course, now);
-  const expiresAt = new Date(startsAt.getTime() + pass.days * DAY_MS);
-  const res = await sb(env, 'premium_passes', {
-    method: 'POST',
-    headers: { Prefer: 'return=minimal' },
-    body: JSON.stringify({
-      user_id: userId,
-      course: pass.course,
-      pass: passId,
-      starts_at: startsAt.toISOString(),
-      expires_at: expiresAt.toISOString(),
-      order_id: order.id,
-      amount_cents: Number.isInteger(order.net_amount) ? order.net_amount : null,
-    }),
+  const added = await addPass(env, {
+    userId, course: pass.course, pass: passId, days: pass.days,
+    orderId: order.id,
+    amountCents: Number.isInteger(order.net_amount) ? order.net_amount : null,
+    orderCreatedAt: isoOrNull(order.created_at),
+    customerId: order.customer_id || order.customer?.id || null,
   });
-  // order_id is unique: a second delivery of the same order is a 409 from
-  // PostgREST, and the pass it would add already exists.
-  if (res.status === 409) return { status: 200, body: { ok: true, duplicate: true } };
-  if (!res.ok) throw new Error(`insert pass ${res.status}: ${(await res.text()).slice(0, 200)}`);
+  // A second delivery of the same order adds nothing.
+  if (!added || !added.inserted) return { status: 200, body: { ok: true, duplicate: true } };
+  // The funnel's last step, counted here where payment is a fact. Best
+  // effort: a missed count must not make Polar redeliver the order.
+  try {
+    await sb(env, 'rpc/count_premium_paid', { method: 'POST', body: JSON.stringify({ p_course: pass.course }) });
+  } catch { /* the count is not worth a retry */ }
   return { status: 200, body: { ok: true } };
 }
 
@@ -501,30 +612,15 @@ function isFullRefund(order) {
 
 async function recordRefund(env, order, now) {
   if (!order.id || !isFullRefund(order)) return { status: 200, body: { ok: true, ignored: 'partial' } };
-  const res = await sb(env,
-    `premium_passes?order_id=eq.${encodeURIComponent(order.id)}&refunded_at=is.null`, {
-      method: 'PATCH',
-      headers: { Prefer: 'return=minimal' },
-      body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
-    });
-  if (!res.ok) throw new Error(`refund pass ${res.status}`);
+  await refundOrder(env, order.id, now);
   return { status: 200, body: { ok: true } };
 }
 
-/* Revoke the passes of these orders, the same way a refund does: refunded_at
-   set, so my_premium() stops counting them. Returns how many changed. */
+/* Revoke the passes of these orders, the same way a refund does, so
+   my_premium() stops counting them. Returns how many changed. */
 async function revokeOrders(env, orderIds, now) {
   let changed = 0;
-  for (let i = 0; i < orderIds.length; i += 100) {
-    const list = orderIds.slice(i, i + 100).map((id) => `"${String(id).replace(/"/g, '')}"`).join(',');
-    const res = await sb(env, `premium_passes?order_id=in.(${encodeURIComponent(list)})&refunded_at=is.null&select=order_id`, {
-      method: 'PATCH',
-      headers: { Prefer: 'return=representation' },
-      body: JSON.stringify({ refunded_at: new Date(now).toISOString() }),
-    });
-    if (!res.ok) throw new Error(`revoke passes ${res.status}`);
-    changed += (await res.json()).length;
-  }
+  for (const id of new Set(orderIds)) changed += await refundOrder(env, id, now);
   return changed;
 }
 
@@ -571,10 +667,11 @@ export function endsOnText(iso) {
 }
 
 /* Which rows get the notice, from every pass the candidate users hold. Per
-   user and course, only the latest unrefunded pass (paid or 'grant') counts:
-   a pass with a later one queued behind it is not really ending. That latest
-   pass gets the notice if it ends within ENDING_NOTICE_DAYS and has not had
-   it yet. */
+   user and course, only the latest unrefunded pass counts: a pass with a
+   later one queued behind it is not really ending. That latest pass gets the
+   notice if it was bought (order_id: the copy says "a pass you bought", so a
+   free founding month or a guarantee extension gets nothing), ends within
+   ENDING_NOTICE_DAYS and has not had it yet. */
 export function passesEnding(rows, now) {
   const latest = new Map();
   for (const r of rows) {
@@ -585,12 +682,12 @@ export function passesEnding(rows, now) {
   }
   return [...latest.values()].filter((r) => {
     const end = Date.parse(r.expires_at);
-    return !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
+    return r.order_id && !r.ending_reminded_at && end > now && end <= now + ENDING_NOTICE_DAYS * DAY_MS;
   });
 }
 
 async function userEmail(env, userId) {
-  const res = await fetch(`${env.SUPABASE_URL}/auth/v1/admin/users/${encodeURIComponent(userId)}`, {
+  const res = await timedFetch(`${env.SUPABASE_URL}/auth/v1/admin/users/${encodeURIComponent(userId)}`, {
     headers: { apikey: env.SUPABASE_SERVICE_KEY, Authorization: `Bearer ${env.SUPABASE_SERVICE_KEY}` },
   });
   if (!res.ok) throw new Error(`admin user ${res.status}`);
@@ -608,7 +705,7 @@ export async function runPassEnding(env, now = Date.now()) {
 
   // Who might be due: a cheap first pass over the window.
   const candRes = await sb(env,
-    `premium_passes?select=user_id&refunded_at=is.null&ending_reminded_at=is.null` +
+    `premium_passes?select=user_id&refunded_at=is.null&ending_reminded_at=is.null&order_id=not.is.null` +
     `&expires_at=gt.${from}&expires_at=lte.${to}&order=expires_at.asc&limit=200`);
   if (!candRes.ok) return { error: `read failed: ${candRes.status}` };
   const users = [...new Set((await candRes.json()).map((r) => r.user_id))];
@@ -616,7 +713,7 @@ export async function runPassEnding(env, now = Date.now()) {
 
   // Everything those users still hold, so a queued later pass is seen.
   const rowsRes = await sb(env,
-    `premium_passes?select=id,user_id,course,expires_at,refunded_at,ending_reminded_at` +
+    `premium_passes?select=id,user_id,course,order_id,expires_at,refunded_at,ending_reminded_at` +
     `&refunded_at=is.null&expires_at=gt.${from}&user_id=in.(${users.map(encodeURIComponent).join(',')})`);
   if (!rowsRes.ok) return { error: `read failed: ${rowsRes.status}` };
   const due = passesEnding(await rowsRes.json(), now).slice(0, EMAIL_BATCH);
@@ -632,6 +729,7 @@ export async function runPassEnding(env, now = Date.now()) {
         result = await sendPassEndingEmail(env, {
           to: email, courseName: COURSE_NAMES[row.course] || row.course, endsOn: endsOnText(row.expires_at),
         });
+        if (result.config) { failed++; break; } // our sender is wrong: stop, mark nothing
         if (!result.ok && !result.gone) { failed++; continue; } // next tick retries
         if (result.ok) sent++; else dropped++;
       }
@@ -676,6 +774,10 @@ const RECONCILE_MAX_PAGES = 10;
    While it is open the student keeps access, so a dispute the merchant wins
    does not leave them locked out with a "refunded" pass on their account. */
 export const DISPUTE_REVOKES = ['lost'];
+/* Only disputes opened in this window are acted on. Every run used to list
+   (and re-apply) every lost dispute ever; an old one has long since been
+   applied, and one somebody resolved by hand must not be undone hourly. */
+export const DISPUTE_WINDOW_DAYS = 120;
 
 async function polarList(env, path, params) {
   const items = [];
@@ -684,7 +786,7 @@ async function polarList(env, path, params) {
     for (const [k, v] of Object.entries({ ...params, page, limit: 100 })) {
       for (const one of [].concat(v)) q.append(k, String(one));
     }
-    const res = await fetch(`${polarApi(env)}${path}?${q}`, {
+    const res = await timedFetch(`${polarApi(env)}${path}?${q}`, {
       headers: { Authorization: `Bearer ${env.POLAR_ACCESS_TOKEN}` },
     });
     if (res.status === 401 || res.status === 403) {
@@ -745,7 +847,11 @@ export async function reconcilePolar(env, now = Date.now()) {
   if (disputes === null) {
     out.disputesRevoked = 'no access';
   } else {
-    const ids = disputes.filter((d) => d?.order_id && DISPUTE_REVOKES.includes(d.status)).map((d) => d.order_id);
+    const since = now - DISPUTE_WINDOW_DAYS * DAY_MS;
+    const ids = disputes
+      .filter((d) => d?.order_id && DISPUTE_REVOKES.includes(d.status))
+      .filter((d) => !d.created_at || Date.parse(d.created_at) >= since)
+      .map((d) => d.order_id);
     out.disputesRevoked = await revokeOrders(env, ids, now);
     if (out.disputesRevoked) console.log('premium reconcile: revoked for lost disputes', out.disputesRevoked);
   }

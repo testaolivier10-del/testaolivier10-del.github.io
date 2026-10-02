@@ -2,6 +2,12 @@ name = "levlprep-ask"
 main = "src/index.js"
 compatibility_date = "2025-09-01"
 
+# Variables set in the dashboard (POLAR_PRODUCTS, FOUNDING_DISCOUNT_ID, ...)
+# survive a `wrangler deploy`. Without this, deploying with the [vars]
+# block below replaced every dashboard variable with just these, and Premium
+# checkout would have answered 503 until someone noticed.
+keep_vars = true
+
 # Workers AI. Free accounts get a daily allowance; past it, requests fail and
 # the site falls back to its own answers. No card, no overage.
 [ai]
@@ -49,6 +55,12 @@ VAPID_SUBJECT = "mailto:testaolivier10@gmail.com"
 # POLAR_PRODUCTS = ''
 # POLAR_API = "https://api.polar.sh"
 # FOUNDING_DISCOUNT_ID = ""
+
+#   ALLOW_LOCALHOST       "true" on a development Worker only: lets a copy of
+#                         the site on localhost:8000 call it. Never in
+#                         production.
+#   API_URL               where this Worker answers, if not the default in
+#                         src/config.js (the unsubscribe link uses it)
 
 # Secrets, NOT set here. `wrangler secret put NAME`, or Settings -> Variables
 # -> add as Secret in the dashboard:

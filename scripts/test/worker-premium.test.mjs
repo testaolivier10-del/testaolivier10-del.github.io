@@ -8,10 +8,11 @@ import { test, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import { createHmac } from 'node:crypto';
 import { createBrowser } from './harness.mjs';
+import { premiumRpc } from './worker-fakes.mjs';
 import worker from '../../worker/src/index.js';
 import {
   PASSES, safeReturnTo, successUrl, verifyWebhook, premiumWebhook, refundRefusal, REFUND_WINDOW_DAYS,
-  COURSE_NAMES, passesEnding, runPassEnding, reconcilePolar,
+  COURSE_NAMES, passesEnding, runPassEnding, reconcilePolar, DISPUTE_WINDOW_DAYS,
 } from '../../worker/src/premium.js';
 
 const SECRET = 'polar_whs_test_secret';
@@ -84,12 +85,17 @@ test('signature: good passes, wrong secret / tampered body / stale fails', async
   assert.equal(await verifyWebhook(body, h, SECRET, now), true);
 });
 
-/* A tiny PostgREST: premium_passes with a unique order_id. */
-function fakeDb(rows = []) {
+/* A tiny PostgREST: premium_passes with a unique order_id, and the Premium
+   database functions (worker-fakes.mjs) on the database clock `now`. */
+function fakeDb(rows = [], now = Date.now()) {
   const calls = [];
+  const counts = [];
   globalThis.fetch = async (url, init = {}) => {
     const u = new URL(url);
     calls.push({ method: init.method || 'GET', url: u.pathname + u.search });
+    if (u.pathname.startsWith('/rest/v1/rpc/')) {
+      return premiumRpc(rows, u.pathname.split('/').pop(), JSON.parse(init.body || '{}'), now, counts) || new Response('{}', { status: 404 });
+    }
     if (!u.pathname.endsWith('/rest/v1/premium_passes')) return new Response('{}', { status: 404 });
     if ((init.method || 'GET') === 'GET') {
       const user = u.searchParams.get('user_id').replace('eq.', '');
@@ -111,7 +117,7 @@ function fakeDb(rows = []) {
     }
     return new Response('{}', { status: 405 });
   };
-  return { rows, calls };
+  return { rows, calls, counts };
 }
 
 const ENV = {
@@ -134,8 +140,8 @@ const paid = (over = {}) => ({
 });
 
 test('order.paid adds one pass; the same order delivered again adds nothing', async () => {
-  const db = fakeDb();
   const now = Date.UTC(2026, 9, 1);
+  const db = fakeDb([], now);
   const r1 = await premiumWebhook(delivery(paid(), now), ENV, now);
   const r2 = await premiumWebhook(delivery(paid(), now), ENV, now);
   assert.equal(r1.status, 200);
@@ -147,6 +153,17 @@ test('order.paid adds one pass; the same order delivered again adds nothing', as
   assert.equal(row.amount_cents, 2900);
   assert.equal(row.starts_at, new Date(now).toISOString());
   assert.equal(row.expires_at, new Date(now + 90 * 86400000).toISOString());
+  // Paid is counted here, once, where it is a fact (not by the browser).
+  assert.deepEqual(db.counts, ['nremt']);
+});
+
+test('order.paid stores Polar\'s order time and customer for the refund rules', async () => {
+  const now = Date.UTC(2026, 9, 3);
+  const db = fakeDb([], now);
+  const r = await premiumWebhook(delivery(paid({ id: 'ord_t', created_at: '2026-10-01T08:00:00Z', customer_id: 'cus_9' }), now), ENV, now);
+  assert.equal(r.status, 200);
+  assert.equal(db.rows[0].order_created_at, '2026-10-01T08:00:00.000Z');
+  assert.equal(db.rows[0].customer_id, 'cus_9');
 });
 
 test('a second pass starts when the running one ends; refunded ones do not count', async () => {
@@ -154,7 +171,7 @@ test('a second pass starts when the running one ends; refunded ones do not count
   const db = fakeDb([
     { user_id: USER, course: 'ochem', order_id: 'old', expires_at: '2026-12-01T00:00:00.000Z' },
     { user_id: USER, course: 'ochem', order_id: 'ref', expires_at: '2027-06-01T00:00:00.000Z', refunded_at: '2026-09-01T00:00:00.000Z' },
-  ]);
+  ], now);
   // No metadata.pass: falls back to the product id; user from external_id.
   const r = await premiumWebhook(delivery(paid({ id: 'ord_2', metadata: {}, product_id: 'prod_oy' }), now), ENV, now);
   assert.equal(r.status, 200);
@@ -166,7 +183,7 @@ test('a second pass starts when the running one ends; refunded ones do not count
 
 test('order.refunded marks the pass; partial refunds and unknown events are a 2xx no-op', async () => {
   const now = Date.UTC(2026, 9, 1);
-  const db = fakeDb([{ user_id: USER, course: 'nremt', order_id: 'ord_1', expires_at: '2027-01-01T00:00:00.000Z' }]);
+  const db = fakeDb([{ user_id: USER, course: 'nremt', order_id: 'ord_1', expires_at: '2027-01-01T00:00:00.000Z' }], now);
   const partial = await premiumWebhook(delivery({ type: 'order.refunded', data: { id: 'ord_1', status: 'partially_refunded', refunded_amount: 500, total_amount: 2900 } }, now), ENV, now);
   assert.equal(partial.status, 200);
   assert.equal(db.rows[0].refunded_at, undefined);
@@ -175,6 +192,25 @@ test('order.refunded marks the pass; partial refunds and unknown events are a 2x
   assert.equal(db.rows[0].refunded_at, new Date(now).toISOString());
   const other = await premiumWebhook(delivery({ type: 'checkout.updated', data: {} }, now), ENV, now);
   assert.ok(other.status >= 200 && other.status < 300);
+});
+
+/* Site audit, Fix-first 4: two passes plus one refund, or a guarantee plus
+   a refund, kept up to 180 days for one payment. */
+test('a refund re-chains the queued pass and takes back the guarantee it funded', async () => {
+  const now = Date.UTC(2026, 9, 1);
+  const db = fakeDb([], now);
+  await premiumWebhook(delivery(paid({ id: 'A' }), now), ENV, now);
+  await premiumWebhook(delivery(paid({ id: 'B' }), now), ENV, now);
+  const [a, b] = db.rows;
+  assert.equal(b.starts_at, a.expires_at, 'the second pass is queued behind the first');
+  db.rows.push({ id: 9, user_id: USER, course: 'nremt', pass: 'guarantee', funded_by: 'A',
+    starts_at: b.expires_at, expires_at: new Date(Date.parse(b.expires_at) + 90 * 86400000).toISOString() });
+  const r = await premiumWebhook(delivery({ type: 'order.refunded', data: { id: 'A', status: 'refunded' } }, now), ENV, now);
+  assert.equal(r.status, 200);
+  assert.ok(a.refunded_at);
+  assert.equal(b.starts_at, new Date(now).toISOString(), 'B moves up to start now');
+  assert.equal(b.expires_at, new Date(now + 90 * 86400000).toISOString());
+  assert.ok(db.rows.find((x) => x.pass === 'guarantee').refunded_at, 'the guarantee A paid for is taken back');
 });
 
 test('a bad signature never touches the database', async () => {
@@ -252,7 +288,7 @@ test('self-serve refund rules: own paid order, within 7 days, once per account',
 
 /* A slightly bigger PostgREST than fakeDb(): the filters the cron uses, plus
    Supabase's admin user lookup, Resend and Polar's list endpoints. */
-function fakeWorld({ rows = [], emails = {}, orders = [], disputes = [], polarStatus = 200 } = {}) {
+function fakeWorld({ rows = [], emails = {}, orders = [], disputes = [], polarStatus = 200, now = Date.UTC(2026, 9, 1, 12) } = {}) {
   const sent = [];
   const polarCalls = [];
   const match = (r, key, cond) => {
@@ -260,6 +296,7 @@ function fakeWorld({ rows = [], emails = {}, orders = [], disputes = [], polarSt
     if (cond === 'is.null') return v == null;
     const [op, ...rest] = cond.split('.');
     const arg = rest.join('.');
+    if (op === 'not' && arg === 'is.null') return v != null;
     if (op === 'eq') return String(v) === arg;
     if (op === 'gt') return v != null && Date.parse(v) > Date.parse(arg);
     if (op === 'lte') return v != null && Date.parse(v) <= Date.parse(arg);
@@ -287,6 +324,9 @@ function fakeWorld({ rows = [], emails = {}, orders = [], disputes = [], polarSt
       const st = u.searchParams.getAll('status');
       if (u.pathname === '/v1/disputes/' && st.length) items = items.filter((d) => st.includes(d.status));
       return new Response(JSON.stringify({ items, pagination: { total_count: items.length, max_page: 1 } }), { status: 200 });
+    }
+    if (u.pathname.startsWith('/rest/v1/rpc/')) {
+      return premiumRpc(rows, u.pathname.split('/').pop(), JSON.parse(init.body || '{}'), now) || new Response('{}', { status: 404 });
     }
     if (!u.pathname.endsWith('/rest/v1/premium_passes')) return new Response('{}', { status: 404 });
     if (method === 'GET') {
@@ -370,6 +410,21 @@ test('pass ending: a later pass queued, or a refunded pass, means no email', asy
   assert.deepEqual(passesEnding([{ user_id: USER, course: 'anp', expires_at: iso(now + 4 * DAY) }], now), []);
 });
 
+test('pass ending: a free grant or a guarantee extension gets no "you bought" email', async () => {
+  const now = Date.UTC(2026, 9, 1, 12);
+  const w = fakeWorld({
+    rows: [
+      { id: 1, user_id: USER, course: 'anp', pass: 'grant', expires_at: iso(now + 2 * DAY) },
+      { id: 2, user_id: USER, course: 'nremt', pass: 'nremt-90', order_id: 'o1', expires_at: iso(now - DAY) },
+      { id: 3, user_id: USER, course: 'nremt', pass: 'guarantee', expires_at: iso(now + 2 * DAY) },
+    ],
+    emails: { [USER]: 'student@example.com' },
+  });
+  await runPassEnding(CRON_ENV, now);
+  assert.equal(w.sent.length, 0);
+  assert.deepEqual(passesEnding([{ user_id: USER, course: 'anp', pass: 'grant', expires_at: iso(now + 2 * DAY) }], now), []);
+});
+
 test('reconcile: a paid order with no pass is added once; a full refund is applied', async () => {
   const now = Date.UTC(2026, 9, 1, 12);
   const order = { id: 'ord_missed', status: 'paid', paid: true, net_amount: 4900, total_amount: 4900, refunded_amount: 0,
@@ -408,12 +463,25 @@ test('reconcile: a lost dispute revokes the pass; open ones do not', async () =>
       { id: 2, user_id: USER, course: 'anp', order_id: 'ord_open', expires_at: iso(now + 100 * DAY) },
     ],
     disputes: [{ id: 'd1', status: 'lost', order_id: 'ord_lost' }, { id: 'd2', status: 'under_review', order_id: 'ord_open' }],
+    now,
   });
   const r = await reconcilePolar(CRON_ENV, now);
   assert.equal(r.disputesRevoked, 1);
   assert.equal(w.rows[0].refunded_at, iso(now));
   assert.equal(w.rows[1].refunded_at, undefined);
   assert.ok(w.polarCalls.some((c) => c.startsWith('/v1/disputes/?status=lost')));
+});
+
+test('reconcile: a lost dispute older than the window is left alone', async () => {
+  const now = Date.UTC(2026, 9, 1, 12);
+  const w = fakeWorld({
+    rows: [{ id: 1, user_id: USER, course: 'ochem', order_id: 'ord_old', expires_at: iso(now + 100 * DAY) }],
+    disputes: [{ id: 'd1', status: 'lost', order_id: 'ord_old', created_at: iso(now - (DISPUTE_WINDOW_DAYS + 1) * DAY) }],
+    now,
+  });
+  const r = await reconcilePolar(CRON_ENV, now);
+  assert.equal(r.disputesRevoked, 0);
+  assert.equal(w.rows[0].refunded_at, undefined);
 });
 
 test('reconcile: a token without the scope (401/403) is skipped quietly', async () => {

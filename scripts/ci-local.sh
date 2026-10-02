@@ -16,7 +16,7 @@ for s in build-og-tags build-sitemap build-notes-pages build-ochem-glossary chec
 done
 node scripts/build-tutor-bank.mjs >/dev/null 2>&1
 git diff --quiet -- nremt/assets/tutor-bank.json ochem/assets/tutor-bank.json || { echo "FAIL: tutor banks stale"; fail=1; }
-run node --test scripts/test/
+run node --test scripts/test/*.test.mjs
 if [ "$BROWSER" = 1 ]; then
   run node scripts/check-a11y.mjs --check
   run node scripts/check-console.mjs --check
