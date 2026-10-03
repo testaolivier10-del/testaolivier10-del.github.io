@@ -1,0 +1,85 @@
+{
+  "topic": "energy-flow-ecosystems",
+  "hook": "<p>On an African grassland there are millions of wildebeest and zebras, but only a few thousand lions, and no animal that hunts lions. Why so few? It is not that lions are unlucky or slow to breed. Every time energy passes from grass to a zebra, or from a zebra to a lion, most of it leaves as heat. By the top of a food chain, there is not much energy left to feed anything bigger.</p>",
+  "prereq": [
+    {
+      "q": "In photosynthesis, light energy is converted into",
+      "options": ["chemical energy stored in sugar", "heat that warms the leaf", "kinetic energy of water molecules"],
+      "correct": 0,
+      "why": "Photosynthesis uses light to build sugar from carbon dioxide and water; the energy is stored in the sugar's bonds.",
+      "review": "photosynthesis"
+    },
+    {
+      "q": "When cells break down sugar in cellular respiration, they release",
+      "options": ["carbon dioxide and water, with some of the energy captured as ATP and the rest as heat", "oxygen and sugar", "nitrogen gas and ammonia"],
+      "correct": 0,
+      "why": "Respiration returns carbon dioxide and water; much of the energy leaves as heat because no conversion is complete.",
+      "review": "cellular-respiration"
+    },
+    {
+      "q": "Why does every energy conversion in a living thing release some heat?",
+      "options": ["No conversion is 100% efficient, so some energy always becomes disordered heat (the second law)", "Heat is needed to break every chemical bond", "Cells destroy some energy each time they use it"],
+      "correct": 0,
+      "why": "Energy is conserved, but each transfer turns part of it into heat, which cells cannot use to do work.",
+      "review": "cellular-energy"
+    }
+  ],
+  "figure": {
+    "figure": "trophic-energy-flow",
+    "caption": "About 10% of the energy stored at one level is stored at the next; the rest leaves as heat or goes to decomposers. Atoms return to producers; energy does not."
+  },
+  "chain": [
+    {
+      "cause": "Producers capture light energy (or, at deep-sea vents, chemical energy) and store it in sugars and other organic molecules.",
+      "effect": "Energy enters the ecosystem, which is gross primary productivity."
+    },
+    {
+      "cause": "Producers use part of that energy in their own cellular respiration, and it leaves as heat.",
+      "effect": "What remains, net primary productivity, is the energy available to every consumer."
+    },
+    {
+      "cause": "A primary consumer eats plants, but much plant material is never eaten or passes through undigested, and most absorbed energy fuels the animal's own respiration.",
+      "effect": "Only about 10% of the energy stored at one level ends up stored at the next."
+    },
+    {
+      "cause": "The same losses happen at every step up the food chain.",
+      "effect": "Each level holds about a tenth of the energy of the one below, so top predators are few, and food chains rarely pass four or five levels."
+    },
+    {
+      "cause": "Dead bodies and wastes from every level are broken down by decomposers.",
+      "effect": "Carbon returns to the air as CO₂, and nitrogen and phosphorus return to soil and water as simple ions."
+    },
+    {
+      "cause": "Producers take up those atoms again, while the energy that left as heat cannot be captured to build sugar.",
+      "effect": "Matter cycles through the ecosystem, but energy flows through it one way and must be supplied again by the sun."
+    }
+  ],
+  "ideas": [
+    "<b>Producers</b> make food by <b>photosynthesis</b> or <b>chemosynthesis</b>. <b>Consumers</b> eat other organisms; <b>decomposers</b> break down dead matter. Each feeding step is a <b>trophic level</b>; linked <b>food chains</b> make a <b>food web</b>.",
+    "<b>GPP</b> is the energy producers capture; <b>NPP</b> = GPP − producer respiration, the energy available to consumers.",
+    "About <b>10%</b> of the energy at one level is stored at the next (<b>trophic efficiency</b>); the rest becomes heat or goes to decomposers. That is why energy pyramids narrow upward.",
+    "<b>Endotherms</b> burn much of their food to make body heat, so they need more food and add less biomass per meal than <b>ectotherms</b>.",
+    "Matter cycles through <b>biogeochemical cycles</b>: carbon (photosynthesis, respiration, burning <b>fossil fuels</b>), nitrogen (fixation, nitrification, denitrification, all by bacteria), phosphorus (rock weathering, no gas phase) and water (evaporation, transpiration, precipitation)."
+  ],
+  "misconception": {
+    "wrong": "Energy is recycled in an ecosystem the way nutrients are: decomposers return it to the plants.",
+    "right": "Decomposers return atoms, not usable energy. Every organism, decomposers included, releases energy as heat, and producers cannot turn heat into sugar. Energy flows through one way; only matter cycles."
+  },
+  "check": [
+    "bio-energy-flow-ecosystems-1",
+    "bio-energy-flow-ecosystems-2",
+    "bio-energy-flow-ecosystems-4",
+    "bio-energy-flow-ecosystems-7",
+    "bio-energy-flow-ecosystems-8",
+    "bio-energy-flow-ecosystems-15",
+    "bio-energy-flow-ecosystems-20"
+  ],
+  "summary": "<p>An ecosystem is a community of organisms together with its nonliving surroundings. Producers capture energy by photosynthesis or chemosynthesis; consumers get it by eating other organisms; decomposers break down dead matter. Gross primary productivity is the energy producers capture; net primary productivity, what is left after their own respiration, feeds everything else. At each trophic level most energy is released as heat by cellular respiration or passes to decomposers, so only about 10% is stored at the next level. Energy pyramids therefore narrow upward, top predators are few, and food chains are short. Endotherms spend more of their food on body heat than ectotherms, so they need more food and store less of it. Matter, unlike energy, cycles: carbon through photosynthesis, respiration, the oceans and fossil fuels; nitrogen through fixation, nitrification, ammonification and denitrification by bacteria; phosphorus from rock through living things and back to sediments; and water through evaporation, transpiration and precipitation.</p>",
+  "connections": [
+    { "href": "../notes/photosynthesis.html", "label": "Back: photosynthesis captures light energy (3.5)" },
+    { "href": "../notes/cellular-respiration.html", "label": "Back: cellular respiration releases heat (3.6)" },
+    { "href": "../notes/cell-size.html", "label": "Back: endotherms, ectotherms and metabolic rate (2.2)" },
+    { "href": "../tools/energy-flow.html", "label": "Try it: the energy flow simulator" },
+    { "href": "../notes/population-ecology.html", "label": "Next: how populations grow (8.3)" }
+  ]
+}

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="bn-t bn-d">
+<title id="bn-t">Fundamental and realized niches of two barnacles on a rocky shore</title>
+<desc id="bn-d">A rocky shore between the high-tide and low-tide lines. Small barnacles of species A live only in the upper zone, which is exposed to air for long periods; large barnacles of species B cover the lower zone. Bars on the right compare niches. Species A's fundamental niche, where it can live when species B is removed, runs from the high-tide line to the low-tide line; its realized niche, where it actually lives, is only the upper zone, because species B crowds it out lower down. Species B's fundamental and realized niches are both the lower zone, because it dries out higher up.</desc>
+<defs>
+  <g id="bn-small"><path d="M-7,6 L0,-6 L7,6 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/></g>
+  <g id="bn-big"><path d="M-12,9 L0,-10 L12,9 Z" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.8"/></g>
+</defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <!-- sea and rock -->
+  <rect x="40" y="60" width="300" height="280" fill="#EEF2F1"/>
+  <rect x="40" y="340" width="300" height="34" fill="#D2EAF8"/>
+  <path d="M40,60 L340,60" stroke="#0072B2" stroke-width="2" stroke-dasharray="8 5"/>
+  <path d="M40,340 L340,340" stroke="#0072B2" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="44" y="52" font-size="13" font-weight="700" fill="#005A8C">high-tide line</text>
+  <text x="44" y="392" font-size="13" font-weight="700" fill="#005A8C">low-tide line (always under water below)</text>
+  <line x1="40" y1="165" x2="340" y2="165" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="190" y="30" font-size="16" font-weight="700" text-anchor="middle">Rock face</text>
+  <!-- small barnacles, upper zone -->
+  <use href="#bn-small" x="70" y="85"/><use href="#bn-small" x="110" y="100"/><use href="#bn-small" x="150" y="80"/><use href="#bn-small" x="190" y="110"/>
+  <use href="#bn-small" x="230" y="90"/><use href="#bn-small" x="270" y="120"/><use href="#bn-small" x="310" y="95"/><use href="#bn-small" x="90" y="135"/>
+  <use href="#bn-small" x="135" y="145"/><use href="#bn-small" x="215" y="140"/><use href="#bn-small" x="295" y="148"/><use href="#bn-small" x="175" y="130"/>
+  <!-- big barnacles, lower zone -->
+  <use href="#bn-big" x="70" y="195"/><use href="#bn-big" x="120" y="210"/><use href="#bn-big" x="170" y="190"/><use href="#bn-big" x="220" y="215"/>
+  <use href="#bn-big" x="270" y="195"/><use href="#bn-big" x="315" y="220"/><use href="#bn-big" x="85" y="250"/><use href="#bn-big" x="140" y="265"/>
+  <use href="#bn-big" x="195" y="245"/><use href="#bn-big" x="250" y="260"/><use href="#bn-big" x="305" y="275"/><use href="#bn-big" x="65" y="300"/>
+  <use href="#bn-big" x="115" y="315"/><use href="#bn-big" x="165" y="300"/><use href="#bn-big" x="215" y="320"/><use href="#bn-big" x="265" y="305"/><use href="#bn-big" x="320" y="320"/>
+  <text x="352" y="118" font-size="12" fill="#8A5A00">upper zone:</text>
+  <text x="352" y="133" font-size="12" fill="#8A5A00">long dry spells</text>
+  <text x="352" y="255" font-size="12" fill="#005A8C">lower zone:</text>
+  <text x="352" y="270" font-size="12" fill="#005A8C">wet most of the time</text>
+
+  <!-- niche bars -->
+  <text x="610" y="30" font-size="16" font-weight="700" text-anchor="middle">Niches along the shore</text>
+  <text x="520" y="52" font-size="13" font-weight="700" text-anchor="middle">Species A (small)</text>
+  <text x="680" y="52" font-size="13" font-weight="700" text-anchor="middle">Species B (large)</text>
+  <rect x="478" y="60" width="34" height="280" fill="#FFF7E6" stroke="#E69F00" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="528" y="60" width="34" height="105" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+  <rect x="638" y="165" width="34" height="175" fill="#E8F2FA" stroke="#0072B2" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="688" y="165" width="34" height="175" fill="#D2EAF8" stroke="#0072B2" stroke-width="2.5"/>
+  <g font-size="12" text-anchor="middle">
+    <text x="495" y="356">fundamental</text>
+    <text x="545" y="372">realized</text>
+    <text x="655" y="356">fundamental</text>
+    <text x="705" y="372">realized</text>
+  </g>
+  <text x="545" y="200" font-size="12" text-anchor="middle">crowded</text>
+  <text x="545" y="215" font-size="12" text-anchor="middle">out by B</text>
+  <text x="655" y="120" font-size="12" text-anchor="middle">dries</text>
+  <text x="655" y="135" font-size="12" text-anchor="middle">out</text>
+</g>
+</svg>

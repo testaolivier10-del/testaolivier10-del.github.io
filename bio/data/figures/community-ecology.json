@@ -1,0 +1,12 @@
+{
+  "barnacle-niches": {
+    "file": "figures/barnacle-niches.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A rocky shore between the high-tide and low-tide lines. Small barnacles of species A live only in the upper zone, which dries out for long periods; large barnacles of species B cover the lower zone. Bars compare niches: species A's fundamental niche runs the whole way from the high-tide line to the low-tide line, but its realized niche is only the upper zone, because species B crowds it out lower down. Species B's fundamental and realized niches are both the lower zone, because it dries out higher up."
+  },
+  "lake-trophic-cascade": {
+    "file": "figures/lake-trophic-cascade.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two lakes with four feeding levels: bass eat minnows, minnows eat zooplankton and zooplankton eat phytoplankton. With bass present there are few minnows, many zooplankton and few phytoplankton, and the water is clear. With the bass removed there are many minnows, few zooplankton and many phytoplankton, and the water is green and cloudy. Removing the top predator changes each level below it, alternately up and down."
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "topic": "biodiversity",
+  "hook": "<p>In 1963, the ecologist Robert Paine started prying purple sea stars off a stretch of rocky shore in Washington State and throwing them into the sea, again and again for years. Next to it he left a stretch untouched. On the untouched rocks, about 15 species of barnacles, mussels, limpets and seaweeds lived side by side. Where the sea stars were gone, mussels spread over the rock, and within a few years only about 8 species were left. A single predator, never very common, had been holding the whole community together.</p>",
+  "prereq": [
+    {
+      "q": "Species diversity combines",
+      "options": ["species richness and relative abundance (evenness)", "population size and growth rate", "the number of trophic levels and their energy"],
+      "correct": 0,
+      "why": "Diversity counts how many species there are and how evenly individuals are spread among them.",
+      "review": "community-ecology"
+    },
+    {
+      "q": "In a trophic cascade, removing a top predator",
+      "options": ["changes each level below it, alternately up and down", "changes only the predator's own prey", "has no effect on producers"],
+      "correct": 0,
+      "why": "Its prey increase, the prey's food decreases, and so on down the food web.",
+      "review": "community-ecology"
+    },
+    {
+      "q": "Which process makes the offspring of sexually reproducing organisms genetically varied?",
+      "options": ["Crossing over and independent assortment in meiosis, plus random fertilization", "Mitosis in body cells", "DNA replication without errors"],
+      "correct": 0,
+      "why": "Meiosis reshuffles alleles and fertilization combines two parents, producing genetic variation.",
+      "review": "meiosis-genetic-diversity"
+    }
+  ],
+  "figure": {
+    "figure": "biodiversity-levels-roles",
+    "caption": "Biodiversity exists at the level of genes, species and ecosystems. Some species, keystone and foundation species and ecosystem engineers, matter far more than others."
+  },
+  "chain": [
+    {
+      "cause": "A community has many species, and each species carries many different alleles.",
+      "effect": "Its individuals and species differ in how they cope with a drought, a disease or a cold winter."
+    },
+    {
+      "cause": "A disruption harms the sensitive individuals and species.",
+      "effect": "Tolerant ones survive and use the light, water and space the others leave, so some of each job in the ecosystem still gets done."
+    },
+    {
+      "cause": "Production, nutrient cycling and food supply drop less and bounce back sooner.",
+      "effect": "Diverse ecosystems tend to be more stable and resilient than species-poor ones."
+    },
+    {
+      "cause": "A keystone predator eats the species that is the strongest competitor, such as mussels on a rocky shore.",
+      "effect": "The strong competitor cannot take over, so many other species keep room to live."
+    },
+    {
+      "cause": "The keystone species is removed.",
+      "effect": "The strong competitor excludes others, and diversity falls, though the keystone species itself was never abundant."
+    },
+    {
+      "cause": "Foundation species (kelp, coral, forest trees) and ecosystem engineers (beavers) build or change the habitat.",
+      "effect": "Many other species depend on them, so losing them reshapes the whole community."
+    }
+  ],
+  "ideas": [
+    "<b>Biodiversity</b> has three levels: genetic diversity, species diversity and <b>ecosystem diversity</b>.",
+    "Ecosystems with more species and more genetic variation tend to be more <b>stable</b>: they resist disruptions and recover faster (<b>resilience</b>), partly because some species can take over the jobs of others.",
+    "A <b>keystone species</b> has an effect far larger than its numbers; removing it can collapse community structure.",
+    "<b>Foundation species</b> build habitat by being abundant (kelp, corals, dominant trees); <b>ecosystem engineers</b> physically change it (beavers). Producers set what every level above can have.",
+    "<b>Ecosystem services</b>, such as pollination, clean water and flood control, depend on biodiversity. Simpson's index lets you compare diversity with numbers (skill: Simpson's diversity index)."
+  ],
+  "misconception": {
+    "wrong": "The most important species in a community is always the most common one.",
+    "right": "A keystone species can be rare: sea stars were a small fraction of the animals on Paine's rocks, yet removing them halved the number of species. Importance comes from the species' role, not its numbers."
+  },
+  "check": [
+    "bio-biodiversity-1",
+    "bio-biodiversity-3",
+    "bio-biodiversity-6",
+    "bio-biodiversity-8",
+    "bio-biodiversity-9",
+    "bio-biodiversity-12",
+    "bio-biodiversity-13",
+    "bio-biodiversity-15"
+  ],
+  "summary": "<p>Biodiversity is the variety of life at three levels: the alleles within species, the species in a community and the ecosystems in a region. Ecosystems with more species and more genetic variation tend to be more stable: they lose less when a drought, disease or other disruption strikes and recover faster, because some individuals and species tolerate the stress and take over the jobs of those that suffer. Species do not matter equally. A keystone species has an effect much larger than its abundance; a predatory sea star that eats mussels keeps the mussels from crowding out other species, and removing it lowers diversity. Foundation species such as kelp, corals and forest trees build the habitat others need, and ecosystem engineers such as beavers reshape it. Producers set the energy available to every level above. People depend on biodiversity for ecosystem services such as pollination, clean water and flood control. Simpson's diversity index puts a number on species diversity so that communities can be compared.</p>",
+  "connections": [
+    { "href": "../notes/community-ecology.html", "label": "Back: species diversity and trophic cascades (8.5)" },
+    { "href": "../notes/stats-simpson.html", "label": "Skill: calculate Simpson's diversity index step by step" },
+    { "href": "../tools/simpson-diversity.html", "label": "Tool: Simpson's diversity index practice" },
+    { "href": "../notes/ecosystem-disruptions.html", "label": "Next: what disrupts ecosystems (8.7)" }
+  ]
+}

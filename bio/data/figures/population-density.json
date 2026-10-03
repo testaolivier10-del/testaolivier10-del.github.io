@@ -1,0 +1,7 @@
+{
+  "exponential-logistic": {
+    "file": "figures/exponential-logistic.svg", "ext": "svg", "w": 760, "h": 380,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: population size against time for one population with r_max 0.5 per unit time and a carrying capacity K of 1,000, starting at 20. The exponential curve is J-shaped and keeps getting steeper. The logistic curve is S-shaped: it is steepest at half the carrying capacity and levels off at K. Right: growth rate dN/dt against population size N. Exponential growth gives a straight line rising with N; logistic growth gives an arch that is zero at N = 0, highest at N = K/2 and zero again at N = K."
+  }
+}

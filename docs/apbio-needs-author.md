@@ -473,6 +473,46 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   work finds the asymmetry continuous and partly plastic, not a simple two-allele trait. For your exam: rare-form
   advantage keeps both forms near equal frequency; no key depends on the genetics.
 
+Unit 8 (Ecology), raised by its author, 2026-10-03:
+
+- **u8-illustrative-data** (open). Every Unit 8 stimulus and FRQ uses invented numbers modeled on
+  classic studies (choice chambers, photoperiod night breaks, a Mauna Loa-type CO₂ record, Paine's
+  sea stars, Connell's barnacles, Gause's *Paramecium*, hare and lynx, grassland diversity plots,
+  Great Lakes PCBs, an oxygen sag below an outfall). Values are plausible, not measurements, and no
+  item depends on matching a published figure. Confirm a label such as "model data" is not needed.
+- **trophic-efficiency-10** (open). The "10% rule" is a rule of thumb (real trophic efficiencies run
+  from under 1% to about 20%). Meanwhile: notes call it an average and a "For your exam" box says to
+  use 10% only when no data are given (`energy-flow-ecosystems`).
+- **r-k-selection** (open). Research ecology treats r/K selection as a dated simplification; the
+  exam still uses the labels. Meanwhile: taught as two ends of a range, with a "For your exam" box
+  (`population-ecology`).
+- **hare-lynx-cause** (open). How much of the snowshoe hare cycle is driven by predators and how much
+  by winter food is debated; fenced-plot experiments point to both. Meanwhile: notes give both, items
+  `bio-population-density-3` and `-5` key the predator-prey lag and food limitation, and a "For your
+  exam" box explains the choice.
+- **diversity-stability** (open). The diversity-stability link was long contested (models predicting
+  the reverse); field experiments support it for community-level production more than for single
+  populations. Meanwhile: the general rule is taught with a "For your exam" box (`biodiversity`).
+- **trophic-cascade-examples** (decided by the author, confirm). The Yellowstone wolf-elk-aspen cascade
+  is contested, so the course uses lake bass-minnow-zooplankton experiments and sea otters instead.
+- **otter-orca** (open). The 1990s Aleutian sea otter decline is usually attributed to killer whales,
+  but that explanation has critics. `frq-keystone-otter` calls it "the leading explanation"; no point
+  depends on the cause.
+- **dead-zone-oxygen** (open). Low dissolved oxygen in eutrophic water comes from decomposition of dead
+  algae (bottom water, dead zones) and from algal and microbial respiration at night (dawn lows in
+  streams). Meanwhile: the course says decomposers use most of the oxygen in deep water and teaches the
+  dawn low separately (`ecosystem-disruptions` notes, figure `eutrophication-chain`, stimulus s1).
+- **photoperiod-mechanism** (open). Lessons say plants "measure the night" with phytochrome (red light
+  to the active form, far-red back, slow reversion in the dark) and leave out the flowering signal
+  (florigen/FT protein) and the circadian clock's role. Check this simplification, and that
+  long-day plants are fairly described as flowering when the night is shorter than a critical length.
+- **kinesis-pill-bugs** (open). The pill bug stimulus (`environment-responses-s1`) builds a humidity
+  kinesis into its data (no steering at the border). Real isopods also show other responses; the
+  stimulus states its own data, and the items key only what those data show.
+- **seal-logistic** (open). `frq-seal-logistic-growth` gives r_max = 0.12 per year and K = 10,000 for a
+  gray seal colony; the counts were generated from the logistic equation with small rounding, so
+  part (b) (300 per year) matches r_max K/4 exactly. Real colonies fluctuate more.
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer
