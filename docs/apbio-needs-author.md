@@ -24,4 +24,49 @@ course does meanwhile.
 
 ## Contested science
 
-(none yet)
+Raised by the Phase 0 map review (2026-10-03, `docs/apbio-phase0.md`). Each is open until a
+person decides; lessons follow the "meanwhile" line.
+
+- **ci-overlap** (open). Non-overlapping 95% CI error bars imply a difference at p < 0.05, but
+  overlapping bars do not prove there is none, and "±2 SE" approximates a 95% CI only for large
+  samples. AP materials state the overlap rule more strongly than statistics texts. Meanwhile:
+  teach "no overlap: likely a real difference; overlap: the data do not show a difference",
+  never "overlap proves no difference" (`overlap-rule`, `significance`).
+- **atp-yield** (open). Older texts give 36-38 ATP per glucose; current estimates are about
+  30-32, and OpenStax 7.4 says the yield varies. Meanwhile: "about 30-32 ATP", with a note that
+  older sources say 36-38; no question hinges on the exact number (`atp-yield`).
+- **ten-percent-rule** (open). Real trophic transfer efficiencies run about 5-20%. Meanwhile:
+  "roughly 10%, varying by ecosystem"; calculations state the efficiency they use
+  (`trophic-efficiency`).
+- **diversity-stability** (open). The CED says more diverse ecosystems are more stable and
+  recover faster; ecologists still debate how general this is. Meanwhile: teach the CED claim
+  as a tendency, with evidence, not a law (`ecosystem-stability`).
+- **photolysis** (open). Water is split by the oxygen-evolving complex, driven by oxidized
+  P680, not by light directly; "photolysis" is common in AP materials but imprecise.
+  Meanwhile: "water splitting at photosystem II" as the main term, "photolysis" as an alias.
+- **noncompetitive-inhibition** (open). The AP sense ("binds elsewhere, changes the active
+  site") covers pure noncompetitive and allosteric/mixed inhibition, which biochemistry texts
+  separate. Meanwhile: the AP sense; allosteric regulation is its own concept.
+- **organelle-inheritance** (open). Mitochondria and plastids are usually inherited from one
+  parent, but plastids are paternal in many gymnosperms and biparental in some plants, and
+  paternal mtDNA leakage occurs. Meanwhile: "usually from one parent (in humans, the mother)"
+  (`nonnuclear`).
+- **ethylene-feedback** (open). Ethylene ripening is positive feedback only in climacteric
+  fruit. Meanwhile: say "in fruits such as apples and bananas" (`ethylene`).
+- **prokaryote-grouping** (open). "Prokaryote" is not a clade; some curricula avoid grouping
+  archaea with bacteria. Meanwhile: "prokaryote" as a cell type (no nucleus), with the three
+  domains taught in 7.7.
+- **membrane-infolding** (open). Infolding of the plasma membrane as the origin of the
+  endomembrane system is a hypothesis, and its timing relative to mitochondrial endosymbiosis is
+  debated. Meanwhile: present it as a hypothesis (`membrane-infolding`).
+- **extinction-placement** (open). The 2025 CED reportedly dropped the Extinction topic; the map
+  teaches extinction in 7.6 (needed by fossils, trees and adaptive radiation). Confirm with the
+  official CED (see ced-verify).
+
+## Map content to confirm
+
+- **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer
+  name are kept in the map as enrichment: plasmodesmata (4.1), peppered moth (7.2), lac and trp
+  operons by name (6.5, needed by the operon simulator), rubisco/RuBP/G3P (3.5; enzyme names
+  are outside the exam beyond ATP synthase). Question writers must not treat them as required
+  knowledge. Someone with the official CED should confirm.

@@ -212,7 +212,8 @@ test('real map: an allowed term containing a later word is not a use of it', () 
   // is taught by Lipids, so a Lipids page may say it.
   assert.deepEqual(scanPage(real, page('A phospholipid bilayer forms the cell membrane.'), 'lipids'), []);
   assert.equal(scanPage(real, page('The Golgi complex packages proteins.'), 'lipids').length, 1);
-  assert.deepEqual(scanPage(real, page('Plants make sugar by photosynthesis; DNA holds genes.'), 'water-hydrogen-bonding'), []);
+  assert.deepEqual(scanPage(real, page('Bacteria and fungi hold DNA; genes make proteins.'), 'water-hydrogen-bonding'), []);
+  assert.equal(scanPage(real, page('Plants make sugar by photosynthesis.'), 'water-hydrogen-bonding').length, 1);
 });
 
 test('question banks: q, options, stimulus and why are all read; sets share their stimulus', () => {
