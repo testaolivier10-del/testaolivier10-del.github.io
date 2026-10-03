@@ -1,0 +1,1027 @@
+{
+  "stimuli": {
+    "population-genetics-s1": {
+      "kind": "graph",
+      "title": "Allele frequency over generations in small and large populations",
+      "text": "<p>Researchers set up five laboratory populations of fruit flies from one stock in which the frequency of an eye-color allele, <i>e</i>, was 0.50. The allele has no known effect on survival or reproduction in the lab. Each generation, a set number of adults was taken at random to be the parents of the next generation: 10 adults in each of the small populations S1, S2 and S3, and 500 adults in each of the large populations L1 and L2. All populations were kept on the same food at the same temperature. The graph shows the frequency of <i>e</i> among the parents of each generation.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Generation",
+          "unit": "",
+          "min": 0,
+          "max": 20,
+          "step": 2
+        },
+        "y": {
+          "label": "Frequency of allele e",
+          "unit": "",
+          "min": 0,
+          "max": 1,
+          "step": 0.1
+        },
+        "series": [
+          {
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                1,
+                0.3
+              ],
+              [
+                2,
+                0.3
+              ],
+              [
+                3,
+                0.5
+              ],
+              [
+                4,
+                0.65
+              ],
+              [
+                5,
+                0.55
+              ],
+              [
+                6,
+                0.7
+              ],
+              [
+                7,
+                0.85
+              ],
+              [
+                8,
+                0.85
+              ],
+              [
+                9,
+                0.8
+              ],
+              [
+                10,
+                0.8
+              ],
+              [
+                11,
+                0.85
+              ],
+              [
+                12,
+                0.85
+              ],
+              [
+                13,
+                0.9
+              ],
+              [
+                14,
+                0.9
+              ],
+              [
+                15,
+                1
+              ],
+              [
+                16,
+                1
+              ],
+              [
+                17,
+                1
+              ],
+              [
+                18,
+                1
+              ],
+              [
+                19,
+                1
+              ],
+              [
+                20,
+                1
+              ]
+            ]
+          },
+          {
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                1,
+                0.35
+              ],
+              [
+                2,
+                0.25
+              ],
+              [
+                3,
+                0.25
+              ],
+              [
+                4,
+                0.3
+              ],
+              [
+                5,
+                0.3
+              ],
+              [
+                6,
+                0.15
+              ],
+              [
+                7,
+                0.15
+              ],
+              [
+                8,
+                0.15
+              ],
+              [
+                9,
+                0.05
+              ],
+              [
+                10,
+                0.05
+              ],
+              [
+                11,
+                0
+              ],
+              [
+                12,
+                0
+              ],
+              [
+                13,
+                0
+              ],
+              [
+                14,
+                0
+              ],
+              [
+                15,
+                0
+              ],
+              [
+                16,
+                0
+              ],
+              [
+                17,
+                0
+              ],
+              [
+                18,
+                0
+              ],
+              [
+                19,
+                0
+              ],
+              [
+                20,
+                0
+              ]
+            ]
+          },
+          {
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                1,
+                0.6
+              ],
+              [
+                2,
+                0.65
+              ],
+              [
+                3,
+                0.6
+              ],
+              [
+                4,
+                0.65
+              ],
+              [
+                5,
+                0.3
+              ],
+              [
+                6,
+                0.25
+              ],
+              [
+                7,
+                0.3
+              ],
+              [
+                8,
+                0.35
+              ],
+              [
+                9,
+                0.3
+              ],
+              [
+                10,
+                0.4
+              ],
+              [
+                11,
+                0.25
+              ],
+              [
+                12,
+                0.4
+              ],
+              [
+                13,
+                0.4
+              ],
+              [
+                14,
+                0.25
+              ],
+              [
+                15,
+                0.2
+              ],
+              [
+                16,
+                0.2
+              ],
+              [
+                17,
+                0.25
+              ],
+              [
+                18,
+                0.3
+              ],
+              [
+                19,
+                0.5
+              ],
+              [
+                20,
+                0.4
+              ]
+            ]
+          },
+          {
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                1,
+                0.49
+              ],
+              [
+                2,
+                0.49
+              ],
+              [
+                3,
+                0.49
+              ],
+              [
+                4,
+                0.51
+              ],
+              [
+                5,
+                0.52
+              ],
+              [
+                6,
+                0.51
+              ],
+              [
+                7,
+                0.51
+              ],
+              [
+                8,
+                0.51
+              ],
+              [
+                9,
+                0.51
+              ],
+              [
+                10,
+                0.52
+              ],
+              [
+                11,
+                0.51
+              ],
+              [
+                12,
+                0.54
+              ],
+              [
+                13,
+                0.54
+              ],
+              [
+                14,
+                0.56
+              ],
+              [
+                15,
+                0.54
+              ],
+              [
+                16,
+                0.52
+              ],
+              [
+                17,
+                0.52
+              ],
+              [
+                18,
+                0.53
+              ],
+              [
+                19,
+                0.52
+              ],
+              [
+                20,
+                0.51
+              ]
+            ]
+          },
+          {
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                1,
+                0.46
+              ],
+              [
+                2,
+                0.46
+              ],
+              [
+                3,
+                0.47
+              ],
+              [
+                4,
+                0.47
+              ],
+              [
+                5,
+                0.47
+              ],
+              [
+                6,
+                0.47
+              ],
+              [
+                7,
+                0.49
+              ],
+              [
+                8,
+                0.52
+              ],
+              [
+                9,
+                0.54
+              ],
+              [
+                10,
+                0.54
+              ],
+              [
+                11,
+                0.53
+              ],
+              [
+                12,
+                0.54
+              ],
+              [
+                13,
+                0.54
+              ],
+              [
+                14,
+                0.54
+              ],
+              [
+                15,
+                0.51
+              ],
+              [
+                16,
+                0.5
+              ],
+              [
+                17,
+                0.48
+              ],
+              [
+                18,
+                0.45
+              ],
+              [
+                19,
+                0.47
+              ],
+              [
+                20,
+                0.48
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "population-genetics-s2": {
+      "kind": "table",
+      "title": "A shrinking population of grassland birds",
+      "text": "<p>A grassland bird once lived across a whole state. As its prairie was plowed, one remaining population became cut off from all others by many kilometers of farmland. Researchers counted displaying males each spring, recorded the percentage of eggs that hatched in nests they monitored, and estimated genetic variation from the average number of alleles per gene at six genes, using DNA from feathers. Between 1992 and 1996 they released 270 birds caught in three large populations in other states.</p>",
+      "table": {
+        "caption": "Population size, hatching and genetic variation in the isolated population",
+        "cols": [
+          "Year",
+          "Displaying males",
+          "Eggs that hatched (%)",
+          "Alleles per gene (mean of 6 genes)"
+        ],
+        "rows": [
+          [
+            "1960",
+            "2,000",
+            "93",
+            "5.2"
+          ],
+          [
+            "1975",
+            "300",
+            "85",
+            "4.5"
+          ],
+          [
+            "1990",
+            "40",
+            "56",
+            "3.1"
+          ],
+          [
+            "1992-1996",
+            "270 birds released from other states",
+            "—",
+            "—"
+          ],
+          [
+            "1999",
+            "70",
+            "92",
+            "5.0"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-population-genetics-1",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "population-genetics-s1",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "The small populations swung widely, and two reached 0 or 1; the large ones stayed near 0.5.",
+        "Frequencies in each population rose toward 1 over time, but the small populations got there sooner.",
+        "The small populations stayed near 0.5, while the large populations swung widely between 0.4 and 0.6.",
+        "Frequencies in the small populations fell toward 0, while those in the large populations rose toward 1."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "S1 reached 1 by generation 15 and S2 reached 0 by generation 11, while S3 wandered between 0.2 and 0.65; L1 and L2 stayed between about 0.45 and 0.56.",
+        "options": [
+          "Correct: wide random swings in the small populations, little change in the large ones.",
+          "S2 fell to 0 and S3 ended at 0.4, so not every population rose toward 1.",
+          "This reverses the populations: the small ones swung widely, the large ones barely moved.",
+          "S1 rose to 1 while S2 fell to 0, and both large populations stayed near 0.5, so there is no common direction."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-2",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-genetics-s1",
+      "q": "Which explanation best accounts for the difference between the small and the large populations?",
+      "options": [
+        "Ten parents carry 20 copies of the gene, a small sample that strays from the last generation by chance far more than 1,000 copies do.",
+        "The allele helps flies survive in small populations but harms them in large ones, so natural selection pushes the frequencies apart.",
+        "Flies in small populations mutate more often, so the eye-color allele is created and destroyed more often in them.",
+        "The large populations exchanged flies with one another, which kept their allele frequencies close to 0.5."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is genetic drift. Each generation is a random sample of the last one's alleles, and small samples stray much further from the true proportion than large ones, just as 10 coin tosses stray from half heads more than 1,000 do.",
+        "options": [
+          "Correct: the size of the random sample sets how strong drift is.",
+          "The allele has no known effect on fitness, and two small populations went in opposite directions, which selection would not do.",
+          "Mutation rates do not depend on population size, and mutation is far too rare to move frequencies this fast.",
+          "The stimulus describes separate populations with no exchange of flies."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-3",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-genetics-s1",
+      "q": "A student claims that allele <i>e</i> was favored by natural selection in population S1. Which evidence from the experiment best refutes this claim?",
+      "options": [
+        "Population S2, of the same size and in the same conditions, lost allele e.",
+        "Allele e reached a frequency of 1 in population S1 by generation 15 of the experiment.",
+        "Population S1's frequency of allele e fell from 0.5 to 0.3 in the very first generation.",
+        "The large populations both ended the experiment with frequencies close to 0.5."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Selection in identical conditions would push the same allele the same way in every population. S1 rising to 1 while S2, identical in size and conditions, fell to 0 shows the direction was random: drift.",
+        "options": [
+          "Correct: opposite outcomes in identical replicates point to chance.",
+          "Reaching 1 is what the student's claim predicts, so it does not refute it.",
+          "One early dip is consistent with either drift or weak selection, so it is weak evidence.",
+          "Large populations staying near 0.5 fits no strong selection, but the two small populations are the more direct test, because they differ only by chance."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-4",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-genetics-s1",
+      "q": "In generation 10, the frequency of allele e among the 10 parents of population S3 was 0.40. How many copies of allele e did those 10 parents carry? Give a whole number.",
+      "numeric": {
+        "answer": 8,
+        "tol": 0,
+        "unit": "copies",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Ten diploid flies carry 2 × 10 = 20 copies of the gene. 0.40 × 20 = 8 copies of e. With so few copies, gaining or losing just one copy changes the frequency by 0.05."
+      }
+    },
+    {
+      "id": "bio-population-genetics-5",
+      "type": "predict",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-genetics-s1",
+      "q": "Suppose the experiment ran for 100 generations under the same conditions. Predict each of these, compared with generation 20.",
+      "variables": [
+        {
+          "name": "Share of heterozygous (Ee) flies in population S1",
+          "answer": "none",
+          "why": "Allele e is already fixed in S1, so every fly is ee and there are no heterozygotes to lose; without mutation or gene flow, nothing changes."
+        },
+        {
+          "name": "Share of heterozygous flies in population S3",
+          "answer": "down",
+          "why": "Drift will eventually fix or lose e in S3 too, and as it nears 0 or 1, fewer flies carry both alleles."
+        },
+        {
+          "name": "Spread of allele frequencies among the five populations",
+          "answer": "up",
+          "why": "Drift sends each population its own random way, and the large ones slowly drift apart as well, so they become more different from each other."
+        }
+      ],
+      "why": {
+        "correct": "Drift removes variation within each population and increases differences between populations, faster in small ones."
+      }
+    },
+    {
+      "id": "bio-population-genetics-6",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-genetics-s2",
+      "q": "Calculate the percent decrease in alleles per gene from 1960 to 1990. Give a positive number to one decimal place.",
+      "numeric": {
+        "answer": 40.4,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "(5.2 − 3.1) ÷ 5.2 × 100 = 2.1 ÷ 5.2 × 100 = 40.4%. Two in every five alleles present in 1960, on average, had been lost by 1990."
+      }
+    },
+    {
+      "id": "bio-population-genetics-7",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-genetics-s2",
+      "q": "Which explanation best accounts for the fall in hatching success between 1960 and 1990?",
+      "options": [
+        "In a small isolated group, drift and matings among relatives made harmful recessive alleles homozygous more often.",
+        "Birds in the small population chose to lay fewer eggs in each nest, so a smaller share of the eggs hatched.",
+        "The loss of prairie caused mutations in the birds that made their eggs less likely to hatch.",
+        "Fewer males displayed each spring, so many females could not find mates and laid unfertilized eggs instead."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "As the population shrank to a few dozen birds, drift raised some harmful recessive alleles to high frequencies, and close relatives mated more often. More embryos were homozygous for these alleles and failed to develop.",
+        "options": [
+          "Correct: small size raised homozygosity for harmful recessive alleles.",
+          "Clutch size does not determine what percentage of laid eggs hatch.",
+          "Plowing does not cause particular mutations; the problem was the alleles already present becoming homozygous.",
+          "Seventy displaying males in 1999 gave 92% hatching, so the number of males alone does not explain the failures."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-8",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-genetics-s2",
+      "q": "Which process best explains the changes between 1990 and 1999?",
+      "options": [
+        "Gene flow from the released birds restored lost alleles, so fewer embryos were homozygous for harmful ones.",
+        "The released birds outcompeted the local birds, so the local birds' alleles disappeared and were replaced.",
+        "Natural selection in the local population produced new alleles that let a larger share of the eggs hatch.",
+        "The larger number of birds raised the mutation rate, so genetic variation came back within a few years of release."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The released birds came from large populations that still held many alleles. Breeding with them raised alleles per gene from 3.1 to 5.0 and made offspring heterozygous at more genes, masking harmful recessive alleles.",
+        "options": [
+          "Correct: gene flow restored variation and lowered homozygosity.",
+          "The released birds bred with local birds; nothing shows the local alleles disappeared.",
+          "Selection does not create alleles, and mutation is far too slow to add this many in a few years.",
+          "Mutation rates do not rise with population size, and mutation adds alleles far too slowly to explain this."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-9",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-genetics-s2",
+      "q": "Prairie managers also burned and restored grassland in the same years the birds were released. Which addition to the study would best show that the released birds caused the recovery in hatching?",
+      "options": [
+        "Monitoring a similar isolated population that got the grassland work but no birds",
+        "Counting the displaying males twice as often each spring in the same population",
+        "Measuring hatching in the three large source populations during those same years",
+        "Releasing another 270 birds later and checking whether hatching rises above 92%"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two changes happened at once, so their effects are confounded. A comparison population with the habitat work but no gene flow would show whether hatching recovers without the new birds.",
+        "options": [
+          "Correct: a control population separates the two possible causes.",
+          "More frequent counts make the size estimate more precise, but do not separate gene flow from habitat work.",
+          "The source populations did not receive the habitat work or the birds, so they do not test either cause here.",
+          "Hatching is already near its 1960 level; a second release with no comparison would still confound the two causes."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-10",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A population of 200 snails contains 120 BB, 60 Bb and 20 bb individuals. Calculate the frequency of allele b. Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.25,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Copies of the gene: 2 × 200 = 400. Copies of b: (2 × 20) + 60 = 100. Frequency of b = 100 ÷ 400 = 0.25."
+      }
+    },
+    {
+      "id": "bio-population-genetics-11",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a sample of 50 deer mice, 20 are DD, 10 are Dd and 20 are dd. A student calculates the frequency of allele d as 20 ÷ 50 = 0.40. What is the correct frequency, and what did the student miss?",
+      "options": [
+        "0.50; the d alleles carried by the 10 heterozygotes, and the fact that each mouse has two copies",
+        "0.40; the student's method is correct for any population with a recessive allele",
+        "0.60; the student forgot to add the heterozygotes to the dd mice without halving them",
+        "0.20; the student should have divided by the total number of alleles, 100, without other changes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Copies of d = (2 × 20) + 10 = 50, out of 2 × 50 = 100 copies, so the frequency is 0.50. Dividing dd mice by all mice gives the share of one genotype, not the allele frequency.",
+        "options": [
+          "Correct: count alleles, not individuals.",
+          "20 ÷ 50 is the share of dd mice, which leaves out the d alleles in heterozygotes.",
+          "(20 + 10) ÷ 50 = 0.60 counts each heterozygote as a whole d, double-counting its one copy.",
+          "Dividing by 100 is right, but the d count must include both copies in each dd mouse and the one in each Dd mouse: 50, not 20."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-12",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which of these is an example of microevolution?",
+      "options": [
+        "An allele for dark scales rises in frequency from 0.2 to 0.5 over 30 generations of lizards.",
+        "A lizard keeps growing larger each year of its life until it reaches its adult size.",
+        "A lizard darkens its skin on cold mornings and lightens it again on warm afternoons.",
+        "A lizard regrows a new tail after it loses its old one to a hungry predator."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Microevolution is a change in allele frequencies in a population across generations.",
+        "options": [
+          "Correct: allele frequencies in a population changed over generations.",
+          "Growth happens within one individual's life and does not change the population's alleles.",
+          "A color change in one lizard is a response of its phenotype, not a change in the population's alleles.",
+          "Regrowing a tail is a change in one individual, not in the gene pool."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-13",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which process, by itself, changes the proportion of homozygous individuals in a population without changing its allele frequencies?",
+      "options": [
+        "Nonrandom mating, such as self-fertilization",
+        "Gene flow from a population with different alleles",
+        "Genetic drift in a small population",
+        "Natural selection against one allele"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mating with relatives or with oneself pairs like alleles more often, so homozygotes become more common and heterozygotes rarer, but the alleles themselves are passed on in the same proportions.",
+        "options": [
+          "Correct: nonrandom mating rearranges alleles into genotypes without changing their frequencies.",
+          "Gene flow brings in alleles in different proportions, which changes allele frequencies.",
+          "Drift changes allele frequencies at random.",
+          "Selection removes one allele faster than the other, changing allele frequencies."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-14",
+      "type": "multi",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A small, isolated population of mountain frogs has lost much of its genetic variation. Which events would increase genetic variation within this population? Select ALL that apply.",
+      "options": [
+        "Frogs from a large lowland population move in and breed.",
+        "New mutations arise in the population over many generations.",
+        "A cold winter kills most of the frogs at random.",
+        "Frogs keep mating with close relatives for many generations.",
+        "The population stays at its present small size for 50 more generations."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Variation is added by gene flow, which brings in alleles the population lacks, and by mutation, which creates new alleles. Bottlenecks, matings among relatives and continued drift all reduce it.",
+        "options": [
+          "Adds variation: immigrants bring alleles from a larger gene pool.",
+          "Adds variation: mutation is the source of new alleles, though it is slow.",
+          "Reduces it: a bottleneck leaves a few survivors carrying only some of the alleles.",
+          "Reduces heterozygosity: matings among relatives make more individuals homozygous.",
+          "Reduces it: drift in a small population keeps fixing or losing alleles."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-15",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A recessive form of dwarfism with extra fingers is far more common among the Old Order Amish of Lancaster County, Pennsylvania, than in most populations. This community descends from a few hundred settlers who arrived in the 1700s and mostly married within the community. Which explanation best fits?",
+      "options": [
+        "Founder effect: a founder happened to carry the rare allele, and it became common in the small population.",
+        "Natural selection: the allele helped carriers survive the conditions of farm life in Pennsylvania.",
+        "Gene flow: the allele was brought in repeatedly by people who joined the community from outside.",
+        "Mutation: the community's farming way of life raised the rate of this particular mutation in its families."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A few hundred founders are a small sample of the European population they came from. One couple happened to carry the allele, and with few founders and marriages within the community, it reached a high frequency by drift.",
+        "options": [
+          "Correct: chance sampling at the founding, then drift in a small population.",
+          "The allele causes a disorder; nothing suggests it raised fitness.",
+          "The community mostly married within itself, which limits gene flow.",
+          "Ways of life do not raise the rate of a particular mutation; the allele was present at the founding."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-16",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Northern elephant seals were hunted to perhaps a few dozen animals in the 1890s. Protected since, they now number over 200,000, yet they have very little genetic variation. Why has the population's recovery not restored its variation?",
+      "options": [
+        "The survivors held only some of the alleles; growth copies those, and new ones arise slowly by mutation.",
+        "Large populations lose variation faster than small ones do, so the population's growth itself removed alleles.",
+        "Hunting caused mutations that removed alleles from the seals that survived it.",
+        "The seals have had too little time since protection to relearn the traits their ancestors had before hunting."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A bottleneck is drift: the few survivors are a chance sample, and alleles they did not carry are gone. A growing population multiplies the alleles it has; replacing lost ones needs new mutations, which accumulate very slowly.",
+        "options": [
+          "Correct: numbers recover quickly, alleles do not.",
+          "Drift is weaker in large populations, so growth slows further loss but does not reverse it.",
+          "Hunting removed individuals at random with respect to their alleles; it did not cause mutations.",
+          "Genetic variation is alleles, not learned traits."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-17",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A grass population grows on soil polluted with copper at an old mine, where copper-tolerant plants survive far better. Wind blows large amounts of pollen onto the mine from a big population of the same grass on clean soil nearby, where tolerance gives no advantage. What is the most likely effect of this pollen on the mine population?",
+      "options": [
+        "It brings in copper-sensitivity alleles, so tolerance stays rarer on the mine than selection alone would make it.",
+        "It makes the mine plants more copper-tolerant, because the pollen comes from a larger population of grass.",
+        "It has no effect, because natural selection on the mine removes any sensitive seedlings at once.",
+        "It causes the clean-soil plants to become copper-tolerant, because pollen carries tolerance away from the mine."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Gene flow mixes the two gene pools. Pollen from the clean-soil plants carries sensitivity alleles into the mine population each generation, opposing selection there, so tolerance stays less common, especially near the mine's edge.",
+        "options": [
+          "Correct: gene flow can work against local adaptation.",
+          "The clean-soil plants mostly lack tolerance alleles, so their pollen lowers tolerance on the mine.",
+          "Selection removes many sensitive seedlings, but new sensitive alleles keep arriving, so they are never all gone; the balance is lower tolerance.",
+          "The wind carries pollen onto the mine, so little gene flow goes the other way, and tolerance gives no advantage on clean soil anyway."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-18",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Cheetahs carry so little genetic variation that skin grafted from one unrelated cheetah to another is often not rejected. Why does this worry conservation biologists, even though some cheetah populations are stable?",
+      "options": [
+        "Fewer cheetahs are likely to carry alleles for surviving a new disease, so selection has less to work with.",
+        "Low variation means cheetahs reproduce poorly, so their populations are certain to decline within decades.",
+        "Animals with little genetic variation mutate faster, so harmful mutations will build up quickly in cheetahs.",
+        "Low variation makes cheetahs' skin grafts fail more often, which threatens their survival."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Genetic variation is the raw material for adapting to change. A population whose members are nearly identical may lack any individuals able to survive a new threat.",
+        "options": [
+          "Correct: lost variation reduces a population's ability to respond to change.",
+          "Cheetahs do reproduce; low variation raises risk, but a decline is not certain.",
+          "Mutation rates do not rise because variation is low.",
+          "The opposite: grafts are accepted because the cheetahs are so alike; grafts are not a threat in the wild."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-19",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which statement correctly contrasts genetic drift with natural selection?",
+      "options": [
+        "Drift changes allele frequencies at random; selection changes them according to fitness.",
+        "Drift happens in large populations, while natural selection happens mainly in small populations.",
+        "Drift creates new alleles, while selection removes alleles that already exist.",
+        "Drift changes the traits of individuals, while selection changes the traits of whole populations."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both change allele frequencies across generations. Drift does so by chance and can spread harmful alleles; selection consistently favors alleles that raise survival and reproduction.",
+        "options": [
+          "Correct: chance versus fitness.",
+          "Drift is strongest in small populations, and selection acts in populations of any size.",
+          "Neither creates alleles; mutation does.",
+          "Both change populations; neither changes an individual's alleles."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-genetics-20",
+      "type": "order",
+      "unit": "unit-7",
+      "topic": "population-genetics",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the events of a founder effect in order.",
+      "options": [
+        "A large mainland population carries a rare allele at a low frequency.",
+        "A storm carries a few individuals, one of them a carrier, to an empty island.",
+        "The founders' alleles, a small chance sample, form the island's whole gene pool.",
+        "The island population grows, with drift strong while it is small.",
+        "The allele that was rare on the mainland is common on the island."
+      ],
+      "why": {
+        "correct": "A small chance sample of founders, then drift while the population is small, can make a rare allele common, with no role for fitness."
+      }
+    }
+  ]
+}

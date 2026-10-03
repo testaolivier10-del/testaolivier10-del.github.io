@@ -1,0 +1,7 @@
+{
+  "bottleneck-founder": {
+    "file": "figures/bottleneck-founder.svg", "ext": "svg", "w": 760, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Circles stand for allele copies in three colors. Bottleneck effect: a population of 12 blue, 8 orange and 4 green alleles; a disaster kills most individuals at random, leaving 4 blue and 1 orange; the population grows back as 20 blue and 4 orange, with green lost. Founder effect: a mainland population of 12 blue, 8 orange and 4 green; three founders carrying 3 green, 2 orange and 1 blue reach an island; the island population grows to 12 green, 8 orange and 4 blue, so an allele rare on the mainland is common there. Chance, not fitness, decided which alleles came through."
+  }
+}
