@@ -1,75 +1,529 @@
 {
-  "about": "Skills tool: graph construction. Each data set names its independent (iv) and dependent (dv) column, the right graph type with a reason for each type, the right reason among the shared justifications, optional ±2 SE error bars, and a reference scale the validator checks against ApBioMath.graph.checkScale (proof the set can be graphed to full credit).",
-  "slug": "graph-builder",
-  "kind": "graph",
-  "topic": "stats-plots",
-  "intro": "<p>Build a graph from a data table the way a free-response question asks: the right kind of graph, the variables on the right axes, labels with units, a sensible scale, every point plotted and the error bars drawn. Then check it: each part gets its own feedback.</p>",
-  "howItWorks": "<ul><li><b>Type.</b> A <b>line graph</b> when the independent variable is continuous (time, temperature, concentration) and you measured at set values. A <b>bar graph</b> when it is a set of separate categories. A <b>scatter plot</b> when each point is a separate individual and both variables were measured rather than set.</li><li><b>Axes.</b> The independent variable (what the investigator chose) on the x-axis, the dependent variable (what was measured) on the y-axis. On a scatter plot, put the variable that explains or predicts the other on the x-axis.</li><li><b>Labels.</b> Each axis names its variable and its unit, for example “Temperature (°C)”.</li><li><b>Scale.</b> Equal steps in an easy interval (1, 2, 5, 10, 25…), every value (and error bar) fits, the data fill at least half of the axis, and the axis starts at 0 unless every value is far from zero. A bar graph’s axis always includes 0, and any axis with negative values must show the zero line.</li><li><b>Points.</b> A point counts when it is within half a grid step of its value. Error bars of ±2 SE show the 95% confidence interval of each mean.</li></ul>",
-  "types": [
-    { "id": "line", "name": "Line graph" },
-    { "id": "bar", "name": "Bar graph" },
-    { "id": "scatter", "name": "Scatter plot" }
-  ],
-  "justifications": [
-    "The independent variable is continuous, so joining the means shows the trend between the values tested",
-    "The independent variable is a set of separate categories, so each group gets its own bar",
-    "Each point is a separate individual and both variables were measured, so the points are not joined",
-    "Data with error bars always go on a line graph"
-  ],
-  "datasets": [
-    { "id": "catalase-temperature", "topic": "stats-plots", "title": "Catalase activity and temperature",
-      "text": "<p>Students measured the oxygen made by a catalase extract in 1 minute at six temperatures, with five trials at each. The table gives the mean and ±2 SE.</p>",
-      "caption": "Oxygen produced by catalase in 1 minute",
-      "columns": [{ "id": "t", "name": "Temperature", "unit": "°C", "wrongUnits": ["K"] }, { "id": "o2", "name": "Oxygen produced", "unit": "mL", "wrongUnits": ["L"] }],
-      "iv": "t", "dv": "o2", "type": "line",
-      "rows": [[10, 2.1], [20, 3.8], [30, 5.6], [40, 6.9], [50, 4.2], [60, 1]], "err": [0.3, 0.4, 0.5, 0.6, 0.5, 0.3],
-      "typeWhy": { "line": "Temperature is continuous and was set at regular values, so a line graph shows how the rate changes across the range.", "bar": "Bars suit separate categories. Temperature is a continuous number scale, and bars would hide the trend between the values tested.", "scatter": "A scatter plot suits individuals with two measured variables. Here temperature was set by the students and each value has a mean, so join the means with a line." },
-      "justify": { "correct": 0, "why": ["Temperature is continuous, and joining the means shows how the rate rises and then falls.", "Temperature is not a set of categories: 30 °C lies between 20 °C and 40 °C on a scale.", "Each value is the mean of five trials at a temperature the students chose, not a separate measured individual.", "Error bars can go on bar graphs and line graphs alike; they do not decide the type."] },
-      "scale": { "x": { "min": 0, "max": 60, "interval": 10 }, "y": { "min": 0, "max": 8, "interval": 1 } } },
-    { "id": "potato-sucrose", "topic": "stats-plots", "title": "Potato cores in sucrose",
-      "text": "<p>Potato cores were left in sucrose solutions for 24 hours. The table gives the mean percent change in mass of six cores at each concentration, with ±2 SE.</p>",
-      "caption": "Percent change in mass of potato cores",
-      "columns": [{ "id": "c", "name": "Sucrose concentration", "unit": "M", "wrongUnits": ["%"] }, { "id": "m", "name": "Change in mass", "unit": "%", "wrongUnits": ["g"] }],
-      "iv": "c", "dv": "m", "type": "line",
-      "rows": [[0, 18.2], [0.2, 6.1], [0.4, -4.9], [0.6, -13.8], [0.8, -20.3], [1, -24.6]], "err": [2, 1.6, 1.8, 2.2, 2.4, 2.1],
-      "typeWhy": { "line": "Concentration is continuous, and the line shows where the mass change crosses zero, which a later question will ask for.", "bar": "Concentration is a number scale, not categories, and you need the line to read where it crosses zero.", "scatter": "The concentrations were chosen by the students and each value is a mean of six cores, so join the means with a line." },
-      "justify": { "correct": 0, "why": ["Concentration is continuous; joining the means lets you read the concentration where the mass change is zero.", "Sucrose concentrations lie on a continuous scale, not in separate categories.", "Each value is the mean of six cores at a concentration the students set, not an individual with two measured values.", "Error bars do not decide the type of graph."] },
-      "scale": { "x": { "min": 0, "max": 1, "interval": 0.2 }, "y": { "min": -30, "max": 25, "interval": 5 } } },
-    { "id": "fertilizer", "topic": "stats-plots", "title": "Bean plants and fertilizers",
-      "text": "<p>Bean plants were grown with no fertilizer, two fertilizers or compost, eight plants in each group. The table gives the mean dry mass after three weeks, with ±2 SE.</p>",
-      "caption": "Mean dry mass of bean plants after three weeks",
-      "columns": [{ "id": "f", "name": "Treatment", "unit": "" }, { "id": "m", "name": "Dry mass", "unit": "g", "wrongUnits": ["kg"] }],
-      "iv": "f", "dv": "m", "type": "bar",
-      "rows": [["None", 4.2], ["Fertilizer A", 6.8], ["Fertilizer B", 5.1], ["Compost", 6]], "err": [0.4, 0.6, 0.5, 0.7],
-      "typeWhy": { "line": "The treatments are separate categories with no order between them, so a line joining them would suggest values in between that do not exist.", "bar": "The treatments are separate categories, so each gets its own bar.", "scatter": "The treatments are categories, not numbers, so they cannot go on a number scale." },
-      "justify": { "correct": 1, "why": ["The treatments are not on a continuous scale: there is nothing between fertilizer A and compost.", "Right: no fertilizer, two fertilizers and compost are separate categories.", "Each value is a group mean for a treatment the investigator chose, not a measured individual.", "Error bars can go on bar graphs; here the categories decide the type."] },
-      "scale": { "y": { "min": 0, "max": 8, "interval": 1 } } },
-    { "id": "seed-mass", "topic": "stats-plots", "title": "Seed mass and seedling height",
-      "text": "<p>A student weighed ten bean seeds, planted each one, and measured each seedling’s height after 7 days.</p>",
-      "caption": "Seed mass and seedling height for ten bean seeds",
-      "columns": [{ "id": "s", "name": "Seed mass", "unit": "g", "wrongUnits": ["mg"] }, { "id": "h", "name": "Seedling height", "unit": "cm", "wrongUnits": ["mm"] }],
-      "iv": "s", "dv": "h", "type": "scatter",
-      "rows": [[0.42, 6.1], [0.55, 7.4], [0.61, 8.2], [0.48, 6.6], [0.7, 9.1], [0.52, 7], [0.66, 8.5], [0.58, 7.9], [0.45, 6.4], [0.74, 9.6]],
-      "typeWhy": { "line": "Each point is a different seed, and seed mass was measured, not set, so joining the points in order would draw a path that means nothing.", "bar": "Seed mass is a continuous number, not a category, and each seed is an individual.", "scatter": "Each point is one seed with two measured values, so a scatter plot shows whether heavier seeds give taller seedlings." },
-      "justify": { "correct": 2, "why": ["The student did not set the seed masses; each value belongs to a different seed, so there is no trend line to draw between means.", "Seed mass is a continuous number, not a set of categories.", "Right: separate individuals with two measured variables call for a scatter plot.", "There are no error bars here, and error bars never decide the type anyway."] },
-      "scale": { "x": { "min": 0.4, "max": 0.8, "interval": 0.05 }, "y": { "min": 0, "max": 10, "interval": 1 } } },
-    { "id": "agar-cubes", "topic": "stats-plots", "title": "Agar cubes and diffusion",
-      "text": "<p>Agar cubes of four sizes, made with an indicator, were soaked in acid for 10 minutes. The table gives the mean percent of each cube’s volume the acid reached (five cubes per size), with ±2 SE.</p>",
-      "caption": "Percent of cube volume reached by acid in 10 minutes",
-      "columns": [{ "id": "l", "name": "Cube side length", "unit": "cm", "wrongUnits": ["cm²"] }, { "id": "p", "name": "Volume reached by acid", "unit": "%", "wrongUnits": ["cm³"] }],
-      "iv": "l", "dv": "p", "type": "line",
-      "rows": [[1, 93.6], [2, 65.7], [3, 48.8], [4, 38.6]], "err": [3.1, 2.8, 2.5, 2.2],
-      "typeWhy": { "line": "Side length is continuous and was set by the students, so a line graph shows the trend.", "bar": "Side length is a number scale, not categories; a line graph shows how the percent falls as cubes get bigger.", "scatter": "The sizes were set by the students and each value is a mean, so join the means with a line." },
-      "justify": { "correct": 0, "why": ["Right: side length is continuous, and the line shows the percent reached falling as cubes grow.", "Cube sizes lie on a continuous scale, not in separate categories.", "Each value is a mean for a size the students chose, not an individual with two measured values.", "Error bars do not decide the type of graph."] },
-      "scale": { "x": { "min": 0, "max": 5, "interval": 1 }, "y": { "min": 0, "max": 100, "interval": 10 } } },
-    { "id": "yeast-sugars", "topic": "stats-plots", "title": "Yeast and different sugars",
-      "text": "<p>Yeast was given glucose, sucrose, lactose or no sugar, and the carbon dioxide made in 20 minutes was measured in six tubes of each. The table gives the mean with ±2 SE.</p>",
-      "caption": "Mean carbon dioxide made by yeast in 20 minutes",
-      "columns": [{ "id": "s", "name": "Sugar", "unit": "" }, { "id": "c", "name": "Carbon dioxide produced", "unit": "mL", "wrongUnits": ["mL/min"] }],
-      "iv": "s", "dv": "c", "type": "bar",
-      "rows": [["Glucose", 8.4], ["Sucrose", 7.9], ["Lactose", 0.6], ["No sugar", 0.3]], "err": [0.6, 0.7, 0.2, 0.2],
-      "typeWhy": { "line": "The sugars are separate categories, so a line between them would imply in-between sugars that do not exist.", "bar": "The sugars are separate categories, so each gets its own bar.", "scatter": "The sugars are categories, not numbers, so they cannot go on a number scale." },
-      "justify": { "correct": 1, "why": ["The sugars have no order on a scale: there is nothing between sucrose and lactose.", "Right: four sugars (and the control) are separate categories.", "Each value is a group mean for a sugar the investigator chose, not an individual.", "Error bars can go on bar graphs; here the categories decide the type."] },
-      "scale": { "y": { "min": 0, "max": 10, "interval": 1 } } }
-  ]
+ "about": "Skills tool: graph construction. Each data set names its independent (iv) and dependent (dv) column, the right graph type with a reason for each type, the right reason among the shared justifications, optional ±2 SE error bars, and a reference scale the validator checks against ApBioMath.graph.checkScale (proof the set can be graphed to full credit). alsoAccept lists a type that also earns the point (scatter for means at set values of a continuous variable, as many rubrics allow; needs-author graph-line-vs-scatter).",
+ "slug": "graph-builder",
+ "kind": "graph",
+ "topic": "stats-plots",
+ "intro": "<p>Build a graph from a data table the way a free-response question asks: the right kind of graph, the variables on the right axes, labels with units, a sensible scale, every point plotted and the error bars drawn. Then check it: each part gets its own feedback.</p>",
+ "howItWorks": "<ul><li><b>Type.</b> A <b>line graph</b> when the independent variable is continuous (time, temperature, concentration) and you measured at set values. A <b>bar graph</b> when it is a set of separate categories. A <b>scatter plot</b> when each point is a separate individual and both variables were measured rather than set.</li><li><b>Axes.</b> The independent variable (what the investigator chose) on the x-axis, the dependent variable (what was measured) on the y-axis. On a scatter plot, put the variable that explains or predicts the other on the x-axis.</li><li><b>Labels.</b> Each axis names its variable and its unit, for example “Temperature (°C)”.</li><li><b>Scale.</b> Equal steps in an easy interval (1, 2, 5, 10, 25…), every value (and error bar) fits, the data fill at least half of the axis, and the axis starts at 0 unless every value is far from zero. A bar graph’s axis always includes 0, and any axis with negative values must show the zero line.</li><li><b>Points.</b> A point counts when it is within half a grid step of its value. Error bars of ±2 SE show the 95% confidence interval of each mean.</li></ul>",
+ "types": [
+  {
+   "id": "line",
+   "name": "Line graph"
+  },
+  {
+   "id": "bar",
+   "name": "Bar graph"
+  },
+  {
+   "id": "scatter",
+   "name": "Scatter plot"
+  }
+ ],
+ "justifications": [
+  "The independent variable is continuous, so joining the means shows the trend between the values tested",
+  "The independent variable is a set of separate categories, so each group gets its own bar",
+  "Each point is a separate individual and both variables were measured, so the points are not joined",
+  "Data with error bars always go on a line graph"
+ ],
+ "datasets": [
+  {
+   "id": "catalase-temperature",
+   "topic": "stats-plots",
+   "title": "Catalase activity and temperature",
+   "text": "<p>Students measured the oxygen made by a catalase extract in 1 minute at six temperatures, with five trials at each. The table gives the mean and ±2 SE.</p>",
+   "caption": "Oxygen produced by catalase in 1 minute",
+   "columns": [
+    {
+     "id": "t",
+     "name": "Temperature",
+     "unit": "°C",
+     "wrongUnits": [
+      "K"
+     ]
+    },
+    {
+     "id": "o2",
+     "name": "Oxygen produced",
+     "unit": "mL",
+     "wrongUnits": [
+      "L"
+     ]
+    }
+   ],
+   "iv": "t",
+   "dv": "o2",
+   "type": "line",
+   "rows": [
+    [
+     10,
+     2.1
+    ],
+    [
+     20,
+     3.8
+    ],
+    [
+     30,
+     5.6
+    ],
+    [
+     40,
+     6.9
+    ],
+    [
+     50,
+     4.2
+    ],
+    [
+     60,
+     1
+    ]
+   ],
+   "err": [
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.5,
+    0.3
+   ],
+   "typeWhy": {
+    "line": "Temperature is continuous and was set at regular values, so a line graph shows how the rate changes across the range.",
+    "bar": "Bars suit separate categories. Temperature is a continuous number scale, and bars would hide the trend between the values tested.",
+    "scatter": "Accepted: many rubrics take a scatter plot for means at set values of a continuous variable. A line graph, joining the means, shows the trend more clearly, so it is the best choice here."
+   },
+   "justify": {
+    "correct": 0,
+    "why": [
+     "Temperature is continuous, and joining the means shows how the rate rises and then falls.",
+     "Temperature is not a set of categories: 30 °C lies between 20 °C and 40 °C on a scale.",
+     "Each value is the mean of five trials at a temperature the students chose, not a separate measured individual.",
+     "Error bars can go on bar graphs and line graphs alike; they do not decide the type."
+    ]
+   },
+   "scale": {
+    "x": {
+     "min": 0,
+     "max": 60,
+     "interval": 10
+    },
+    "y": {
+     "min": 0,
+     "max": 8,
+     "interval": 1
+    }
+   },
+   "alsoAccept": [
+    "scatter"
+   ]
+  },
+  {
+   "id": "potato-sucrose",
+   "topic": "stats-plots",
+   "title": "Potato cores in sucrose",
+   "text": "<p>Potato cores were left in sucrose solutions for 24 hours. The table gives the mean percent change in mass of six cores at each concentration, with ±2 SE.</p>",
+   "caption": "Percent change in mass of potato cores",
+   "columns": [
+    {
+     "id": "c",
+     "name": "Sucrose concentration",
+     "unit": "M",
+     "wrongUnits": [
+      "%"
+     ]
+    },
+    {
+     "id": "m",
+     "name": "Change in mass",
+     "unit": "%",
+     "wrongUnits": [
+      "g"
+     ]
+    }
+   ],
+   "iv": "c",
+   "dv": "m",
+   "type": "line",
+   "rows": [
+    [
+     0,
+     18.2
+    ],
+    [
+     0.2,
+     6.1
+    ],
+    [
+     0.4,
+     -4.9
+    ],
+    [
+     0.6,
+     -13.8
+    ],
+    [
+     0.8,
+     -20.3
+    ],
+    [
+     1,
+     -24.6
+    ]
+   ],
+   "err": [
+    2,
+    1.6,
+    1.8,
+    2.2,
+    2.4,
+    2.1
+   ],
+   "typeWhy": {
+    "line": "Concentration is continuous, and the line shows where the mass change crosses zero, which a later question will ask for.",
+    "bar": "Concentration is a number scale, not categories, and you need the line to read where it crosses zero.",
+    "scatter": "Accepted: many rubrics take a scatter plot for means at set values of a continuous variable. A line graph, joining the means, shows the trend more clearly, so it is the best choice here."
+   },
+   "justify": {
+    "correct": 0,
+    "why": [
+     "Concentration is continuous; joining the means lets you read the concentration where the mass change is zero.",
+     "Sucrose concentrations lie on a continuous scale, not in separate categories.",
+     "Each value is the mean of six cores at a concentration the students set, not an individual with two measured values.",
+     "Error bars do not decide the type of graph."
+    ]
+   },
+   "scale": {
+    "x": {
+     "min": 0,
+     "max": 1,
+     "interval": 0.2
+    },
+    "y": {
+     "min": -30,
+     "max": 25,
+     "interval": 5
+    }
+   },
+   "alsoAccept": [
+    "scatter"
+   ]
+  },
+  {
+   "id": "fertilizer",
+   "topic": "stats-plots",
+   "title": "Bean plants and fertilizers",
+   "text": "<p>Bean plants were grown with no fertilizer, two fertilizers or compost, eight plants in each group. The table gives the mean dry mass after three weeks, with ±2 SE.</p>",
+   "caption": "Mean dry mass of bean plants after three weeks",
+   "columns": [
+    {
+     "id": "f",
+     "name": "Treatment",
+     "unit": ""
+    },
+    {
+     "id": "m",
+     "name": "Dry mass",
+     "unit": "g",
+     "wrongUnits": [
+      "kg"
+     ]
+    }
+   ],
+   "iv": "f",
+   "dv": "m",
+   "type": "bar",
+   "rows": [
+    [
+     "None",
+     4.2
+    ],
+    [
+     "Fertilizer A",
+     6.8
+    ],
+    [
+     "Fertilizer B",
+     5.1
+    ],
+    [
+     "Compost",
+     6
+    ]
+   ],
+   "err": [
+    0.4,
+    0.6,
+    0.5,
+    0.7
+   ],
+   "typeWhy": {
+    "line": "The treatments are separate categories with no order between them, so a line joining them would suggest values in between that do not exist.",
+    "bar": "The treatments are separate categories, so each gets its own bar.",
+    "scatter": "The treatments are categories, not numbers, so they cannot go on a number scale."
+   },
+   "justify": {
+    "correct": 1,
+    "why": [
+     "The treatments are not on a continuous scale: there is nothing between fertilizer A and compost.",
+     "Right: no fertilizer, two fertilizers and compost are separate categories.",
+     "Each value is a group mean for a treatment the investigator chose, not a measured individual.",
+     "Error bars can go on bar graphs; here the categories decide the type."
+    ]
+   },
+   "scale": {
+    "y": {
+     "min": 0,
+     "max": 8,
+     "interval": 1
+    }
+   }
+  },
+  {
+   "id": "seed-mass",
+   "topic": "stats-plots",
+   "title": "Seed mass and seedling height",
+   "text": "<p>A student weighed ten bean seeds, planted each one, and measured each seedling’s height after 7 days.</p>",
+   "caption": "Seed mass and seedling height for ten bean seeds",
+   "columns": [
+    {
+     "id": "s",
+     "name": "Seed mass",
+     "unit": "g",
+     "wrongUnits": [
+      "mg"
+     ]
+    },
+    {
+     "id": "h",
+     "name": "Seedling height",
+     "unit": "cm",
+     "wrongUnits": [
+      "mm"
+     ]
+    }
+   ],
+   "iv": "s",
+   "dv": "h",
+   "type": "scatter",
+   "rows": [
+    [
+     0.42,
+     6.1
+    ],
+    [
+     0.55,
+     7.4
+    ],
+    [
+     0.61,
+     8.2
+    ],
+    [
+     0.48,
+     6.6
+    ],
+    [
+     0.7,
+     9.1
+    ],
+    [
+     0.52,
+     7
+    ],
+    [
+     0.66,
+     8.5
+    ],
+    [
+     0.58,
+     7.9
+    ],
+    [
+     0.45,
+     6.4
+    ],
+    [
+     0.74,
+     9.6
+    ]
+   ],
+   "typeWhy": {
+    "line": "Each point is a different seed, and seed mass was measured, not set, so joining the points in order would draw a path that means nothing.",
+    "bar": "Seed mass is a continuous number, not a category, and each seed is an individual.",
+    "scatter": "Each point is one seed with two measured values, so a scatter plot shows whether heavier seeds give taller seedlings."
+   },
+   "justify": {
+    "correct": 2,
+    "why": [
+     "The student did not set the seed masses; each value belongs to a different seed, so there is no trend line to draw between means.",
+     "Seed mass is a continuous number, not a set of categories.",
+     "Right: separate individuals with two measured variables call for a scatter plot.",
+     "There are no error bars here, and error bars never decide the type anyway."
+    ]
+   },
+   "scale": {
+    "x": {
+     "min": 0.4,
+     "max": 0.8,
+     "interval": 0.05
+    },
+    "y": {
+     "min": 0,
+     "max": 10,
+     "interval": 1
+    }
+   }
+  },
+  {
+   "id": "agar-cubes",
+   "topic": "stats-plots",
+   "title": "Agar cubes and diffusion",
+   "text": "<p>Agar cubes of four sizes, made with an indicator, were soaked in acid for 10 minutes. The table gives the mean percent of each cube’s volume the acid reached (five cubes per size), with ±2 SE.</p>",
+   "caption": "Percent of cube volume reached by acid in 10 minutes",
+   "columns": [
+    {
+     "id": "l",
+     "name": "Cube side length",
+     "unit": "cm",
+     "wrongUnits": [
+      "cm²"
+     ]
+    },
+    {
+     "id": "p",
+     "name": "Volume reached by acid",
+     "unit": "%",
+     "wrongUnits": [
+      "cm³"
+     ]
+    }
+   ],
+   "iv": "l",
+   "dv": "p",
+   "type": "line",
+   "rows": [
+    [
+     1,
+     93.6
+    ],
+    [
+     2,
+     65.7
+    ],
+    [
+     3,
+     48.8
+    ],
+    [
+     4,
+     38.6
+    ]
+   ],
+   "err": [
+    3.1,
+    2.8,
+    2.5,
+    2.2
+   ],
+   "typeWhy": {
+    "line": "Side length is continuous and was set by the students, so a line graph shows the trend.",
+    "bar": "Side length is a number scale, not categories; a line graph shows how the percent falls as cubes get bigger.",
+    "scatter": "Accepted: many rubrics take a scatter plot for means at set values of a continuous variable. A line graph, joining the means, shows the trend more clearly, so it is the best choice here."
+   },
+   "justify": {
+    "correct": 0,
+    "why": [
+     "Right: side length is continuous, and the line shows the percent reached falling as cubes grow.",
+     "Cube sizes lie on a continuous scale, not in separate categories.",
+     "Each value is a mean for a size the students chose, not an individual with two measured values.",
+     "Error bars do not decide the type of graph."
+    ]
+   },
+   "scale": {
+    "x": {
+     "min": 0,
+     "max": 5,
+     "interval": 1
+    },
+    "y": {
+     "min": 0,
+     "max": 100,
+     "interval": 10
+    }
+   },
+   "alsoAccept": [
+    "scatter"
+   ]
+  },
+  {
+   "id": "yeast-sugars",
+   "topic": "stats-plots",
+   "title": "Yeast and different sugars",
+   "text": "<p>Yeast was given glucose, sucrose, lactose or no sugar, and the carbon dioxide made in 20 minutes was measured in six tubes of each. The table gives the mean with ±2 SE.</p>",
+   "caption": "Mean carbon dioxide made by yeast in 20 minutes",
+   "columns": [
+    {
+     "id": "s",
+     "name": "Sugar",
+     "unit": ""
+    },
+    {
+     "id": "c",
+     "name": "Carbon dioxide produced",
+     "unit": "mL",
+     "wrongUnits": [
+      "mL/min"
+     ]
+    }
+   ],
+   "iv": "s",
+   "dv": "c",
+   "type": "bar",
+   "rows": [
+    [
+     "Glucose",
+     8.4
+    ],
+    [
+     "Sucrose",
+     7.9
+    ],
+    [
+     "Lactose",
+     0.6
+    ],
+    [
+     "No sugar",
+     0.3
+    ]
+   ],
+   "err": [
+    0.6,
+    0.7,
+    0.2,
+    0.2
+   ],
+   "typeWhy": {
+    "line": "The sugars are separate categories, so a line between them would imply in-between sugars that do not exist.",
+    "bar": "The sugars are separate categories, so each gets its own bar.",
+    "scatter": "The sugars are categories, not numbers, so they cannot go on a number scale."
+   },
+   "justify": {
+    "correct": 1,
+    "why": [
+     "The sugars have no order on a scale: there is nothing between sucrose and lactose.",
+     "Right: four sugars (and the control) are separate categories.",
+     "Each value is a group mean for a sugar the investigator chose, not an individual.",
+     "Error bars can go on bar graphs; here the categories decide the type."
+    ]
+   },
+   "scale": {
+    "y": {
+     "min": 0,
+     "max": 10,
+     "interval": 1
+    }
+   }
+  }
+ ]
 }

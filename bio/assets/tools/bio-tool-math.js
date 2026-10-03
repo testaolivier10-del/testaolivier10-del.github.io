@@ -43,9 +43,9 @@
   function tol(answer, d, rel){ return Math.max(Math.pow(10, -(d || 0)), Math.abs(answer) * (rel == null ? 0.01 : rel)); }
 
   /* ------------------------------------------------------ chi-square */
-  /* Critical values of χ² (formula sheet table), df 1-8. */
+  /* Critical values of χ² as printed on the formula sheet, df 1-8 (df 3 at p = 0.05 is 7.815, printed 7.82). */
   var CHI_CRIT = {
-    '0.05': [null, 3.84, 5.99, 7.81, 9.49, 11.07, 12.59, 14.07, 15.51],
+    '0.05': [null, 3.84, 5.99, 7.82, 9.49, 11.07, 12.59, 14.07, 15.51],
     '0.01': [null, 6.63, 9.21, 11.34, 13.28, 15.09, 16.81, 18.48, 20.09]
   };
   function chiSquare(obs, exp){
@@ -142,7 +142,7 @@
      part that is not osmotic water (b) plus the water: m = b + (1 - b)W.
      The outside solution is large, so its concentration does not change.
      An animal cell has no wall (ψp = 0) and bursts (lyses) when its volume
-     passes lyseAt times the start. */
+     passes lyseAt times the start (the model tests mass, which here tracks volume: water plus a fixed non-water part). */
   function osmo(sys, c){
     var RT = R_BAR * kelvin(c.T);
     var n = sys.kind === 'bag' ? (c.inI || 1) * (c.inC || 0) : sys.osmIn;

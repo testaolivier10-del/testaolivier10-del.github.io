@@ -5,7 +5,7 @@
  "topic": "design-variables",
  "status": "placeholder",
  "intro": "<p>Practice the points free-response graders most often see missed: naming the variables, choosing a control and saying what it rules out, writing a null hypothesis, telling claim from evidence from reasoning, and predicting a result with the mechanism behind it. Each part is checked on its own.</p>",
- "howItWorks": "<ul><li><b>Independent variable:</b> what the investigator changes on purpose. <b>Dependent variable:</b> what is measured in response. <b>Controlled variables:</b> everything kept the same.</li><li><b>A negative control</b> is a group without the factor being tested (no enzyme, no light, no sugar). It shows what happens without that factor, so the effect can be credited to it. Saying what a control <b>rules out</b> earns its own point.</li><li><b>Null hypothesis:</b> the independent variable has no effect, so there is no difference in the dependent variable among the groups.</li><li><b>Claim</b> answers the question. <b>Evidence</b> is data. <b>Reasoning</b> is the biology that explains why the evidence supports the claim.</li><li><b>Prediction</b> says what will happen; the <b>mechanism</b> says why, in biological terms. Each is scored separately.</li></ul>",
+ "howItWorks": "<ul><li><b>Independent variable:</b> what the investigator changes on purpose. <b>Dependent variable:</b> what is measured in response. <b>Controlled variables:</b> everything kept the same.</li><li><b>A negative control</b> is a group in which the effect being measured should not happen (no enzyme, no light, no sugar). It shows the baseline, so the effect can be credited to the factor being tested. Saying what a control <b>rules out</b> earns its own point.</li><li><b>Null hypothesis:</b> the independent variable has no effect, so there is no difference in the dependent variable among the groups.</li><li><b>Claim</b> answers the question. <b>Evidence</b> is data. <b>Reasoning</b> is the biology that explains why the evidence supports the claim.</li><li><b>Prediction</b> says what will happen; the <b>mechanism</b> says why, in biological terms. Each is scored separately.</li></ul>",
  "partTopics": {
   "iv": "design-variables",
   "dv": "design-variables",
@@ -238,14 +238,14 @@
    "controlWhy": {
     "q": "What do the water-only tubes rule out?",
     "options": [
-     "That the yeast make carbon dioxide from their own stored food, without any added sugar",
+     "That the gas measured comes from the yeast’s own stored food rather than from the added sugar",
      "That the yeast cannot use lactose, because it is a sugar they have no enzyme to break down",
      "That the temperature changed during the experiment",
      "That glucose is the best sugar for yeast"
     ],
     "correct": 0,
     "why": [
-     "Right: yeast cells hold some stored food; the water tubes measure the gas made from it, so only gas above that can be credited to the added sugar.",
+     "Right: yeast cells hold some stored food; the water tubes measure the gas made from it, so only gas above that baseline is credited to the added sugar.",
      "That is one of the results being tested, not something the control rules out.",
      "Temperature is kept constant by the water bath; the water-only tubes do not check it.",
      "That is a result to compare among the sugars, not what the control rules out."
@@ -850,14 +850,14 @@
    "controlWhy": {
     "q": "What does the 0% ethanol tube rule out?",
     "options": [
-     "That pigment leaks from cut, damaged cells even without ethanol, so only leakage above that is blamed on ethanol",
+     "That the extra pigment comes from cutting damage rather than from the ethanol",
      "That ethanol dissolves the red pigment itself and carries it out of the beet pieces into the surrounding solution",
      "That the beet pieces were of different sizes",
      "That the colorimeter works"
     ],
     "correct": 0,
     "why": [
-     "Right: cutting the beet breaks some cells, and the water tube measures the pigment they release.",
+     "Right: cutting the beet breaks some cells; the water tube measures that leak, so only pigment above it is blamed on ethanol.",
      "Whether ethanol dissolves pigment is not tested by a tube without ethanol.",
      "Equal sizes come from careful cutting, not from this tube.",
      "The colorimeter is checked with a blank, not with beet in water."
@@ -968,7 +968,7 @@
    "requires": [
     "unit-3"
    ],
-   "setup": "<p>Students mix amylase with starch in buffers of pH 4, 5, 6, 7, 8 and 9 at 37 °C. Every 30 seconds they put a drop of each mixture on iodine solution, which turns blue-black while starch is present, and record the time until the drop stays brown because no starch is left.</p>",
+   "setup": "<p>Students mix salivary amylase with starch in buffers of pH 4, 5, 6, 7, 8 and 9 at 37 °C. Every 30 seconds they put a drop of each mixture on iodine solution, which turns blue-black while starch is present, and record the time until the drop stays brown because no starch is left.</p>",
    "variables": {
     "options": [
      "pH of the buffer",

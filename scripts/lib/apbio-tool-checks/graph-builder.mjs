@@ -23,6 +23,7 @@ export function check(data, map) {
     const ci = id => d.columns.findIndex(c => c.id === id);
     if (ci(d.iv) < 0 || ci(d.dv) < 0 || d.iv === d.dv) { errs.push(`${w}: iv and dv must be two of its columns`); continue; }
     if (!types.includes(d.type)) errs.push(`${w}: unknown type ${d.type}`);
+    for (const t of d.alsoAccept || []) if (!types.includes(t) || t === d.type || (t === 'bar') !== (d.type === 'bar')) errs.push(`${w}: alsoAccept ${t} must be another number-axis type`);
     for (const t of types) if (!d.typeWhy || !d.typeWhy[t]) errs.push(`${w}: typeWhy.${t} is required`);
     if (d.justify?.correct !== TYPE_REASON[d.type]) errs.push(`${w}: the right justification for a ${d.type} graph is "${data.justifications[TYPE_REASON[d.type]]}"`);
     if ((d.justify?.why || []).length !== 4) errs.push(`${w}: one why per justification`);

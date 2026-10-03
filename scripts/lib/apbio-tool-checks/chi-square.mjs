@@ -7,7 +7,7 @@ export function check(data, map) {
   const errs = [];
   const { M, P } = skills(data, 'chi-square', 'chi', map, errs);
   // The standard table (formula sheet), typed here independently of the runtime.
-  const P05 = [3.84, 5.99, 7.81, 9.49, 11.07, 12.59, 14.07, 15.51], P01 = [6.63, 9.21, 11.34, 13.28, 15.09, 16.81, 18.48, 20.09];
+  const P05 = [3.84, 5.99, 7.82, 9.49, 11.07, 12.59, 14.07, 15.51], P01 = [6.63, 9.21, 11.34, 13.28, 15.09, 16.81, 18.48, 20.09];
   P05.forEach((v, i) => { if (M.CHI_CRIT['0.05'][i + 1] !== v) errs.push(`critical value at p = 0.05, df = ${i + 1} must be ${v}`); });
   P01.forEach((v, i) => { if (M.CHI_CRIT['0.01'][i + 1] !== v) errs.push(`critical value at p = 0.01, df = ${i + 1} must be ${v}`); });
   const sumOk = a => Math.abs(a.reduce((s, x) => s + x, 0) - 1) < 1e-9;

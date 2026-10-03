@@ -12,8 +12,8 @@
       "topic": "stats-hardy-weinberg",
       "mode": "counts",
       "text": "<p>In snapdragons, flower color shows incomplete dominance: C<sup>R</sup>C<sup>R</sup> plants are red, C<sup>R</sup>C<sup>W</sup> are pink and C<sup>W</sup>C<sup>W</sup> are white. A survey counted {N} plants.</p>",
-      "A": "R",
-      "a": "W",
+      "A": "C<sup>R</sup>",
+      "a": "C<sup>W</sup>",
       "N": [
         150,
         800

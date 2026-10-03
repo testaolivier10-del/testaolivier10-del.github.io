@@ -21,7 +21,7 @@ test('statistics follow the formula sheet', () => {
   near(M.median([5, 1, 3, 2]), 2.5);
   const c = M.ci95(10, 0.5); near(c.lo, 9); near(c.hi, 11);
   near(M.percentChange(4, 5), 25);
-  assert.deepEqual(Array.from(M.CHI_CRIT['0.05'].slice(1)), [3.84, 5.99, 7.81, 9.49, 11.07, 12.59, 14.07, 15.51]);
+  assert.deepEqual(Array.from(M.CHI_CRIT['0.05'].slice(1)), [3.84, 5.99, 7.82, 9.49, 11.07, 12.59, 14.07, 15.51]);
   const x = M.chiSquare([32, 18, 14, 16], [20, 20, 20, 20]);
   near(x.chi2, 10); assert.equal(x.df, 3); assert.equal(x.reject, true);
   near(M.psiS(1, 0.3, 22), -0.3 * 0.0831 * 295);

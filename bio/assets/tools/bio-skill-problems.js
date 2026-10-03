@@ -53,7 +53,7 @@
         'Median: sort the values: ' + srt.map(function(a){ return F(a, dp); }).join(', ') + '. ' + mid,
         'Range = largest − smallest = ' + F(srt[n - 1], dp) + ' − ' + F(srt[0], dp) + ' = <b>' + F(rg, d) + U(u) + '</b>.',
         'Standard deviation: square each value’s distance from the mean and add them up.' + tableHtml(['x', 'x − x̄', '(x − x̄)²'], dev) + 'Σ(x − x̄)² = ' + F(Q, d + 2) + '.',
-        's = √( Σ(x − x̄)² / (n − 1) ) = √( ' + F(Q, d + 2) + ' / ' + (n - 1) + ' ) = √' + F(Q / (n - 1), d + 3) + ' = <b>' + F(s, d) + U(u) + '</b>. Divide by n − 1, not n: a sample spreads a little less than the whole population it comes from, and n − 1 corrects for that.',
+        's = √( Σ(x − x̄)² / (n − 1) ) = √( ' + F(Q, d + 2) + ' / ' + (n - 1) + ' ) = √' + F(Q / (n - 1), d + 3) + ' = <b>' + F(s, d) + U(u) + '</b>. Divide by n − 1, not n: distances measured from the sample’s own mean come out a little too small, and dividing by n − 1 corrects for that.',
         'Standard error: SE = s / √n = ' + F(s, d + 2) + ' / √' + n + ' = ' + F(s, d + 2) + ' / ' + F(Math.sqrt(n), 3) + ' = <b>' + F(se, d) + U(u) + '</b>. SE measures how far the sample mean is likely to be from the true mean; it shrinks as n grows.'
       ],
       table: tableHtml([x.label || 'Measurement', 'Value' + (u ? ' (' + u + ')' : '')], v.map(function(a, i){ return [String(i + 1), F(a, dp)]; }), x.caption || '')
@@ -131,7 +131,9 @@
     var parts = exp.map(function(e, i){ return num('exp-' + i, 'Expected count: ' + x.cats[i], e, 1, '', '5.C'); });
     parts.push(num('chi2', 'Chi-square value (χ²)', res.chi2, d, '', '5.C'));
     parts.push(num('df', 'Degrees of freedom', res.df, 0, '', '5.C', { exact: true }));
-    parts.push(num('crit', 'Critical value at p = 0.05', res.crit, 2, '', '5.C', { exact: true }));
+    var crit = num('crit', 'Critical value at p = 0.05', res.crit, 2, '', '5.C', { exact: true });
+    crit.tol = 0.011;   // 7.815 is printed 7.82 on the formula sheet; accept 7.81 too
+    parts.push(crit);
     parts.push(choice('decision', 'Decision about the null hypothesis', CHI_DECIDE, res.reject ? 0 : 1, '5.D'));
     var rows = x.cats.map(function(c, i){ return [c, String(x.obs[i]), F(exp[i], 1), F(x.obs[i] - exp[i], 1), F(res.terms[i], 3)]; });
     rows.push(['Total', String(N), F(N, 1), '', '<b>χ² = ' + F(res.chi2, d) + '</b>']);

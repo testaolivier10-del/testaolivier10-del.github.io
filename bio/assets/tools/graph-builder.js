@@ -219,7 +219,8 @@
     function check(){
       var out = [], items = [], ys = scaleOf('ys'), xs = scaleOf('xs');
       function add(key, ok, msg){ out.push({ ok: ok, msg: msg }); items.push({ id: SLUG + ':' + ds.id + ':' + key, correct: ok, topic: ds.topic, practice: '4.A', level: 'apply', diff: 2, group: key }); }
-      add('type', st.type === ds.type, st.type ? (st.type === ds.type ? 'Graph type: right. ' : 'Graph type: not the best choice. ') + ds.typeWhy[st.type] : 'Graph type: choose a type. ' + ds.typeWhy[ds.type]);
+      var typeOk = st.type === ds.type || (ds.alsoAccept || []).indexOf(st.type) > -1;
+      add('type', typeOk, st.type ? (st.type === ds.type ? 'Graph type: right. ' : typeOk ? 'Graph type: accepted. ' : 'Graph type: not the best choice. ') + ds.typeWhy[st.type] : 'Graph type: choose a type. ' + ds.typeWhy[ds.type]);
       add('justify', st.just === ds.justify.correct, st.just < 0 ? 'Reason: choose why that type fits.' : (st.just === ds.justify.correct ? 'Reason: right. ' : 'Reason: not quite. ') + ds.justify.why[st.just]);
       var axOk = st.x === ds.iv && st.y === ds.dv;
       add('axes', axOk, axOk ? 'Axes: right. The ' + (ds.type === 'scatter' ? 'explanatory variable' : 'independent variable') + ', ' + col(ds.iv).name.toLowerCase() + ', is on the x-axis and ' + col(ds.dv).name.toLowerCase() + ' is on the y-axis.'
