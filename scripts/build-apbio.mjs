@@ -31,14 +31,14 @@ import {
   ROOT, SITE, BASE, COURSE_NAME, COURSE_HTML, COURSE_ID, COURSE_KEY, DISCLAIMER, BETA_NOTE, BETA_PILL,
   esc, text, loadMap, loadCourse, isFreeTopic, clampDesc, head, tail, crumbs, orgCrumbs, crumbNav, footer, reportButton,
   termIndex, glossify, figureImg, credit, renderFigures, stimulusBody, stimulusPanel, questionForPage, questionHtml,
-  groupSets, hasApToken,
+  groupSets, hasApToken, stripMark, STIM_KIND,
 } from './lib/apbio-build.mjs';
 
 const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT, 'bio');
 const map = loadMap();
-const C = loadCourse(ROOT, { map, published: process.env.APBIO_PUBLISHED ? process.env.APBIO_PUBLISHED.split(',').filter(Boolean) : undefined });
+const C = loadCourse(ROOT, { map, published: process.env.APBIO_PUBLISHED !== undefined ? process.env.APBIO_PUBLISHED.split(',').filter(Boolean) : undefined });
 const outputs = new Map();
 const LABEL = 'AP® Biology';
 const PRELAUNCH = C.published.size === 0;
@@ -96,6 +96,15 @@ function build() {
   const nextBuilt = id => topics.slice(pos(id) + 1).find(t => C.built.has(t.id)) || null;
   const prevBuilt = id => topics.slice(0, pos(id)).reverse().find(t => C.built.has(t.id)) || null;
   const bodyOpen = (attrs = '') => `<body class="bio"${attrs}>\n<header id="site-header"></header>\n<div class="course-nav"></div>`;
+  /* A stable link, "Share to Google Classroom", Copy link and Print, on every
+     lesson, notes page, unit sheet and FRQ (spec section 1, "Teachers"). The
+     shared title never carries the mark (it travels in a URL). Copy link and
+     Print are wired by bio-nav.js. */
+  const shareBar = (path, title, what) => {
+    const url = `${SITE}${BASE}${path}`;
+    const gc = `https://classroom.google.com/share?url=${encodeURIComponent(url)}&title=${encodeURIComponent(stripMark(title))}`;
+    return `<div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this ${what}"><a class="bio-share-btn" href="${esc(gc)}" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="${esc(url)}">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>`;
+  };
 
   /* Stimuli used by a list of questions, with paths from bio/ (the runtime
      prefixes the page's base, as it does for the bank). */
@@ -168,6 +177,8 @@ ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
     <h1>${esc(t.title)}</h1>
     <p class="lede">${esc(lede)}</p>
     <p class="bio-tags bio-nav-ref">${(t.practices || []).map(n => `<span class="bio-tag">Practice ${n}: ${esc(practiceName(n))}</span>`).join('')}</p>
+    ${shareBar(`lessons/${id}.html`, `${t.title}: biology lesson`, 'lesson')}
+    <p class="bio-small bio-nav-ref"><a href="../practice.html?topic=${id}">Question set for this topic</a></p>
   </header>
   <div class="bio-ls-card">
 ${parts.map((p, i) => `  <section class="bio-part bio-step${i === 0 ? ' is-on' : ''}" id="${p.id}" aria-labelledby="h-${p.id}">
@@ -266,6 +277,7 @@ ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
       <p class="bio-notes-eyebrow">${unitLabel(ch)}${t.ced ? ` &middot; Topic ${esc(t.ced)}` : ''} ${BETA_PILL}</p>
       <h1 class="bio-notes-title">${esc(t.title)}</h1>
       <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">${minutes} min read &middot; free</span>${chip(id)}</p>
+      ${shareBar(`notes/${id}.html`, `${t.title}: biology notes`, 'notes page')}
     </header>
     <article class="bio-prose">
 ${html}
@@ -343,7 +355,7 @@ ${bodyOpen(` data-unit="${chId}"`)}
   <header class="bio-sheet-head">
     <p class="eyebrow">${unitLabel(ch)} ${BETA_PILL}</p>
     <h1>${esc(ch.title)}: the one-page sheet</h1>
-    <p class="bio-nav-ref"><button type="button" class="btn-press sm" data-print>Print this sheet</button></p>
+    ${shareBar(`unit-sheets/${chId}.html`, `${ch.title}: biology unit sheet`, 'unit sheet')}
   </header>
   <div class="bio-sheet-grid">${ts.map(t => {
       const L = C.lessons[t.id];
@@ -534,6 +546,214 @@ ${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth
     return head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
   }
 
+  /* ------------------------------------------------------------- FRQs */
+  /* Free-response questions (data/frq/<id>.json, docs/apbio-architecture.md).
+     One goes out when every unit it lists is published and its topics are
+     in the map: assets/frq/index.json (the list frq.html and exams.html
+     read), assets/frq/<id>.json (the whole question, stimulus rendered) and
+     frq/<id>.html, the stable, shareable, printable page. The rubric and the
+     sample answer are not in that page's HTML: frq-kit.js fetches them when
+     the student asks for them (and prints them only when asked). */
+  const FRQ_TYPE_NAME = {
+    iee: 'Interpreting and Evaluating Experimental Results', 'iee-graph': 'Interpreting and Evaluating Experimental Results, with Graphing',
+    investigation: 'Scientific Investigation', conceptual: 'Conceptual Analysis', model: 'Analyze Model or Visual Representation', data: 'Analyze Data',
+  };
+  const FRQ_ORDER = Object.keys(FRQ_TYPE_NAME);
+  const frqStimulus = f => {
+    if (f.stimulus && typeof f.stimulus === 'object') return f.stimulus;
+    for (const q of Object.values(C.questions)) if (q.stimuli && q.stimuli[f.stimulus]) return q.stimuli[f.stimulus];
+    return null;
+  };
+  const frqs = Object.values(C.frq)
+    .filter(f => f && f.id && FRQ_TYPE_NAME[f.type] && (f.units || []).length && f.units.every(u => C.published.has(u)) && (f.topics || []).every(t => map.topicById(t)) && frqStimulus(f))
+    .sort((a, b) => FRQ_ORDER.indexOf(a.type) - FRQ_ORDER.indexOf(b.type) || a.id.localeCompare(b.id));
+  const frqTitle = f => f.title || frqStimulus(f).title || FRQ_TYPE_NAME[f.type];
+  const frqUnitLabel = f => f.units.map(u => { const c = chapterById(u); return c ? unitLabel(c) + (c.part === 'course' ? '' : `: ${c.title}`) : u; }).join(', ');
+  function frqJson(f) {
+    const s = frqStimulus(f);
+    return {
+      id: f.id, type: f.type, typeName: FRQ_TYPE_NAME[f.type], points: f.points, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices,
+      ...(f.placeholder ? { placeholder: true } : {}),
+      stimulus: { kind: s.kind, title: s.title || '', html: stimulusBody(C, s, '') },
+      parts: f.parts.map(p => ({ label: p.label, prompt: p.prompt, points: p.points, rubric: p.rubric, sample: p.sample })),
+      ...(f.graphSpec ? { graphSpec: f.graphSpec } : {}),
+    };
+  }
+  const frqIndex = () => JSON.stringify(frqs.map(f => ({ id: f.id, type: f.type, points: f.points, title: frqTitle(f), units: f.units, topics: f.topics, practices: f.practices, ...(f.placeholder ? { placeholder: true } : {}) })));
+  /* Lined answer space for paper (shown only in print): about six lines a point. */
+  const lines = n => `<div class="bio-lines" aria-hidden="true">${'<div></div>'.repeat(n)}</div>`;
+  const graphGrid = g => `<div class="bio-frq-grid" role="img" aria-label="Blank grid for your graph${g.x && g.x.label ? `: ${esc(text(g.x.label))} on the x-axis` : ''}${g.y && g.y.label ? `, ${esc(text(g.y.label))} on the y-axis` : ''}"></div>`;
+  function frqPage(f) {
+    const depth = '../', s = frqStimulus(f), title = frqTitle(f);
+    const url = `${SITE}${BASE}frq/${f.id}.html`;
+    const desc = clampDesc(`${title}: a ${f.points}-point biology free-response question (${FRQ_TYPE_NAME[f.type].toLowerCase()}) with a point-by-point rubric, a sample answer and a printable answer sheet.`);
+    const jsonld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'LearningResource', '@id': `${url}#frq`, name: title, url, description: desc, learningResourceType: 'Free-response question', educationalLevel: 'High school', inLanguage: 'en', isPartOf: { '@id': COURSE_ID }, provider: { '@id': `${SITE}/#org` } },
+      crumbs(orgCrumbs([{ name: 'Free-response practice', url: `${SITE}${BASE}frq.html` }, { name: title, url }])),
+    ] };
+    const g = f.type === 'iee-graph' ? f.graphSpec || {} : null;
+    const body = `
+${bodyOpen(` data-frq="${f.id}"`)}
+<main id="main" class="xshell bio-app bio-frq-page">
+  ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Free-response practice', href: '../frq.html' }, { name: title }])}
+  <header class="hero bio-hero">
+    <div class="eyebrow">Free response &middot; ${esc(frqUnitLabel(f))} ${BETA_PILL}</div>
+    <h1>${esc(title)}</h1>
+    <p class="lede">${esc(FRQ_TYPE_NAME[f.type])} &middot; ${f.points} points${f.placeholder ? ' &middot; <b>placeholder question</b>, written to test the page and not checked for accuracy' : ''}</p>
+    ${shareBar(`frq/${f.id}.html`, `${title}: biology free-response question`, 'question')}
+  </header>
+  <article class="bio-frq" aria-labelledby="h-frq-q">
+    <h2 id="h-frq-q" class="sr-only">The question</h2>
+    <p class="bio-frq-print-head">Name: ______________________ &nbsp; Date: ____________ &nbsp; ${esc(title)} (${f.points} points)</p>
+    ${stimulusPanel(`frq-${f.id}`, s, stimulusBody(C, s, depth))}
+    <ol class="bio-frq-parts">${f.parts.map(p => `<li class="bio-frq-part" data-part="${esc(p.label)}"><p class="bio-frq-prompt"><b class="bio-frq-label">(${esc(p.label)})</b> ${p.prompt} <span class="bio-small">[${p.points} point${p.points === 1 ? '' : 's'}]</span></p>${g && /graph|plot|construct/i.test(text(p.prompt)) ? graphGrid(g) + lines(4) : lines(Math.max(5, p.points * 6))}</li>`).join('')}</ol>
+  </article>
+  <div id="app" class="bio-app-mount bio-frq-work" data-slug="frq-item" data-frq="${f.id}" data-unit="${esc(f.units[0])}" data-topic="${esc(f.topics[0] || '')}"><noscript><p>Writing your answer, the rubric and the sample answer need JavaScript. The question above prints without it.</p></noscript></div>
+</main>
+${footer(depth, `frq:${f.id}`)}
+<link rel="stylesheet" href="../assets/pages/pages.css">
+${tail({ depth, section: 'exams', extra: ['pages/frq-kit.js', 'pages/frq.js'], premium: true })}
+</body>
+</html>
+`;
+    return head({ title: courseTitle(title, [`${LABEL} Free Response`, LABEL]), desc, path: `frq/${f.id}.html`, depth, jsonld, noindex }) + body;
+  }
+
+  /* ---------------------------------------------------------- teachers */
+  /* For teachers (spec section 1, "Teachers and under-18s"): generated,
+     indexable once the course is live, not an app. The framework order with
+     our lessons, how to assign (stable links, question sets, FRQs, printing,
+     Google Classroom), access, privacy. Nothing here that is not true of the
+     site today: no instructor sign-up flow exists, so access is by email,
+     and no class discount is published (docs/apbio-needs-author.md). */
+  function teachersPage(a) {
+    const depth = '', url = `${SITE}${BASE}teachers.html`;
+    const jsonld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebPage', '@id': `${url}#page`, name: a.h1, url, description: a.desc, audience: { '@type': 'EducationalAudience', educationalRole: 'teacher' }, isPartOf: { '@id': COURSE_ID } },
+      crumbs(orgCrumbs([{ name: a.h1, url }])),
+    ] };
+    const link = (href, label) => `<a href="${href}">${label}</a>`;
+    const unitTable = ch => {
+      const ts = topicsOf(ch.id);
+      const rows = ts.map(t => {
+        const b = C.built.has(t.id);
+        return `<tr><th scope="row">${esc(t.ced || 'Skill')}</th><td>${b ? link(`lessons/${t.id}.html`, esc(t.title)) : esc(t.title)}</td><td>${b ? `${link(`notes/${t.id}.html`, 'Notes')} &middot; ${link(`practice.html?topic=${t.id}`, 'Question set')}` : '<span class="bio-small">Coming soon</span>'}</td></tr>`;
+      }).join('');
+      const has = chapterBuilt(ch);
+      return `<section class="bio-tc-unit" aria-labelledby="tc-${ch.id}"><h3 id="tc-${ch.id}">${ch.part === 'course' ? `Unit ${ch.n}: ` : ''}${esc(ch.title)}${Array.isArray(ch.weight) ? ` <span class="bio-small">${ch.weight[0]}&ndash;${ch.weight[1]}% of the exam</span>` : ''}</h3>
+      ${has ? `<p class="bio-small">${link(`units/${ch.id}.html`, 'Unit page')} &middot; ${link(`unit-sheets/${ch.id}.html`, 'Printable unit sheet')} &middot; ${link(`practice.html?unit=${ch.id}`, 'Question set for the unit')}${ch.part === 'course' ? ` &middot; ${link(`exams.html?unit=${ch.id}`, 'Unit test')}` : ''}</p>` : ''}
+      <table class="bio-tc-table"><caption class="sr-only">${esc(ch.title)}: topics in framework order</caption><thead><tr><th scope="col">Topic</th><th scope="col">Lesson</th><th scope="col">Assign</th></tr></thead><tbody>${rows}</tbody></table></section>`;
+    };
+    const frqList = frqs.length ? `<ul class="bio-links">${frqs.map(f => `<li>${link(`frq/${f.id}.html`, esc(frqTitle(f)))} <span class="bio-small">${esc(FRQ_TYPE_NAME[f.type])}, ${f.points} points${f.placeholder ? ', placeholder' : ''}</span></li>`).join('')}</ul>` : '<p>Free-response questions appear here as units are published.</p>';
+    const body = `
+${bodyOpen(' data-app="teachers"')}
+<main id="main" class="xshell bio-app bio-teachers">
+  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: a.h1 }])}
+  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>${esc(a.h1)}</h1><p class="lede">${esc(a.lede || a.desc)}</p></header>
+
+  <section class="xsection" aria-labelledby="h-assign">
+    <h2 id="h-assign">How to assign it</h2>
+    <ul class="bio-tc-list">
+      <li><b>Stable links.</b> Each lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com/bio/notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
+      <li><b>Question sets.</b> <code>practice.html?topic=&lt;topic&gt;</code> opens practice on one topic, <code>practice.html?unit=unit-1</code> on a whole unit. Students get feedback and an explanation for every option. The practice page can also print a set as a worksheet.</li>
+      <li><b>Free-response questions.</b> Each has its own page with the prompt, the data and a printable answer sheet with lined space. Students write, then reveal the rubric and score themselves point by point. Nothing is graded by AI.</li>
+      <li><b>Printing.</b> Each lesson, notes page, unit sheet and free-response question has a Print button. A lesson prints all its parts in one run; a free-response question prints with lined answer space, and its rubric can print on a separate page.</li>
+      <li><b>Google Classroom.</b> The "Share to Google Classroom" button on each of those pages posts the link to your class.</li>
+    </ul>
+  </section>
+
+  <section class="xsection" aria-labelledby="h-students">
+    <h2 id="h-students">No login for students</h2>
+    <p>Students open a link and start. They need no account, and nothing they do leaves their device unless they choose to sign in. Progress, answers and scores are stored in their own browser, and typed free-response answers stay on the device they were written on.</p>
+    <p>Privacy, in short: no ads, no cookies, no tracking across other sites, and no new personal data collected from students. The site uses cookieless analytics and sends a short report when a page breaks. Details are on the <a href="../privacy.html#schools">privacy page</a>.</p>
+  </section>
+
+  <section class="xsection" aria-labelledby="h-access">
+    <h2 id="h-access">Access for teachers and classes</h2>
+    <p>Every notes page, the glossary and the unit sheets are free. Teachers can ask for free access to the rest of the course: email <a href="mailto:hello@levlprep.com">hello@levlprep.com</a> from your school address. Ask about discounts for classes at the same address.</p>
+  </section>
+
+  <section class="xsection" aria-labelledby="h-frq">
+    <h2 id="h-frq">Free-response questions</h2>
+    ${frqList}
+    <p class="bio-small"><a href="frq.html">All free-response practice</a></p>
+  </section>
+
+  <section class="xsection" aria-labelledby="h-align">
+    <h2 id="h-align">Alignment with the course framework</h2>
+    <p>The units and topics follow the order of the 2025 course framework, mapped to our lessons. Titles and explanations are in our own words; nothing reproduces the framework's text. The course is in Beta: it has not yet been reviewed by an ${COURSE_HTML} teacher.</p>
+    ${units.map(unitTable).join('\n    ')}
+    ${skills.length ? `<h3 class="bio-tc-skills">Skills</h3><p class="bio-small">Each skills topic sits right after the framework topic it supports.</p>${skills.map(unitTable).join('\n    ')}` : ''}
+  </section>
+
+  <p class="bio-disclaimer">Questions are original and never copied from released exams or course materials. ${esc(DISCLAIMER)}</p>
+</main>
+${footer(depth, 'page:teachers')}
+${tail({ depth, section: '' })}
+</body>
+</html>
+`;
+    return head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path: 'teachers.html', depth, ogType: 'website', jsonld, noindex }) + body;
+  }
+
+  /* ------------------------------------------------------------- tools
+     Simulators, skills tools and drills (docs/apbio-architecture.md,
+     "Tools"): pages.json tools[] gives each tool's shell at tools/<slug>.html;
+     its content (data/tools/<slug>.json) is served filtered at
+     assets/tool-data/<slug>.json. An item is live when its topic is
+     published: the topic's chapter is, and for a skill or drill topic also
+     the chapter of the topic it sits after (so Hardy-Weinberg practice waits
+     for Unit 7). A scenario that "requires" units waits for them too. */
+  const topicLive = id => { const t = map.topicById(id); if (!t || !C.published.has(t.chapter)) return false; const a = t.after && map.topicById(t.after); return !a || C.published.has(a.chapter); };
+  const releaseOf = id => { const t = map.topicById(id); if (!t) return null; const a = t.after && map.topicById(t.after); return chapterById(a ? a.chapter : t.chapter); };
+  function toolData(entry) {
+    const d = JSON.parse(readFileSync(join(C.data, 'tools', `${entry.slug}.json`), 'utf8'));
+    const live = x => (!x.topic || topicLive(x.topic)) && (!x.requires || x.requires.every(u => C.published.has(u)));
+    const used = new Set();
+    const walk = v => {
+      if (Array.isArray(v)) return v.filter(x => !(x && typeof x === 'object' && !Array.isArray(x)) || live(x)).map(walk);
+      if (v && typeof v === 'object') { if (typeof v.topic === 'string') used.add(v.topic); return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)])); }
+      return v;
+    };
+    const out = walk(d);
+    for (const t of Object.values(d.partTopics || {})) used.add(t);
+    delete out.about;
+    const rel = releaseOf(d.topic);
+    const arrives = rel ? (rel.part === 'course' ? `Unit ${rel.n}` : `the ${rel.title.toLowerCase()} chapter`) : 'its unit';
+    const content = ['questions', 'contexts', 'problems', 'datasets', 'scenarios'].reduce((n, k) => n + (out[k] ? out[k].length : 0), 0);
+    if (!topicLive(d.topic) || !content) return { slug: d.slug, live: false, arrives };
+    out.live = true;
+    out.units = Object.fromEntries([...used].filter(t => map.topicById(t)).map(t => [t, map.topicById(t).chapter]));
+    return out;
+  }
+  const toolLive = entry => existsSync(join(C.data, 'tools', `${entry.slug}.json`)) && toolData(entry).live;
+  function toolShell(t) {
+    const depth = '../', path = `tools/${t.slug}.html`, url = `${SITE}${BASE}${path}`;
+    const scriptOk = existsSync(join(ROOT, 'bio', 'assets', 'tools', `${t.slug}.js`));
+    const jsonld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebApplication', '@id': `${url}#tool`, name: t.name, url, description: t.desc, applicationCategory: 'EducationalApplication', operatingSystem: 'Any',
+        ...(t.premium ? lockedLd('.bio-app-mount') : { isAccessibleForFree: true }), isPartOf: { '@id': COURSE_ID } },
+      crumbs(orgCrumbs([{ name: 'Tools', url: `${SITE}${BASE}tools.html` }, { name: t.name, url }])),
+    ] };
+    const extra = ['bio-questions.js', 'tools/bio-tool-math.js', ...(t.kind === 'skill' ? ['tools/bio-skill-problems.js'] : []), 'tools/bio-tools.js', ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
+    const body = `
+${bodyOpen(` data-app="tool-${t.slug}"`)}
+<main id="main" class="xshell bio-app">
+  ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
+  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'simulator' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.blurb)}</p></header>
+  <div id="app" class="bio-app-mount" data-slug="${t.slug}" data-src="${depth}assets/tool-data/${t.slug}.json"${t.premium ? ` data-premium="${t.premium}"` : ''}>${scriptOk
+    ? '<noscript><p>This tool needs JavaScript. Every notes page works without it.</p></noscript>'
+    : `<p class="bio-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
+</main>
+${footer(depth, `tool:${t.slug}`)}
+<link rel="stylesheet" href="${depth}assets/tools/bio-tools.css">
+${tail({ depth, section: 'tools', extra, premium: true })}
+</body>
+</html>
+`;
+    return head({ title: courseTitle(t.title, [LABEL]), desc: t.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || !toolLive(t) }) + body;
+  }
+
   /* ----------------------------------------------------------- runtime */
   function curriculumJs() {
     const data = {
@@ -545,8 +765,10 @@ ${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth
       practiceCounts: Object.fromEntries(map.practices.map(p => [p.id, built.reduce((n, t) => n + C.questions[t.id].items.filter(q => String(q.practice).split('.')[0] === String(p.id)).length, 0)])),
     };
     const pages = (C.pages.apps || []).map(a => ({ slug: a.slug, h1: a.h1 }));
+    const toolList = (C.pages.tools || []).map(t => { const d = toolData(t); return { slug: t.slug, kind: t.kind, name: t.name, blurb: t.blurb, topic: JSON.parse(readFileSync(join(C.data, 'tools', `${t.slug}.json`), 'utf8')).topic, live: !!d.live, ...(d.live ? {} : { arrives: d.arrives }), ...(t.premium ? { premium: 1 } : {}) }; });
     return `/* Generated by scripts/build-apbio.mjs from the course map. Do not edit. */
 window.ApBioPages = ${JSON.stringify(pages)};
+window.ApBioToolList = ${JSON.stringify(toolList)};
 window.ApBioCurriculum = ${JSON.stringify(data)};
 `;
   }
@@ -596,7 +818,11 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
   put('glossary.html', glossaryPage());
   for (const ch of map.chapters.filter(chapterBuilt)) { put(`units/${ch.id}.html`, unitPage(ch.id)); put(`unit-sheets/${ch.id}.html`, unitSheet(ch.id)); }
   for (const t of built) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
-  for (const a of C.pages.apps || []) put(`${a.slug}.html`, appShell(a));
+  for (const a of C.pages.apps || []) put(`${a.slug}.html`, a.static ? teachersPage(a) : appShell(a));
+  put('assets/frq/index.json', frqIndex());
+  for (const f of frqs) { put(`assets/frq/${f.id}.json`, JSON.stringify(frqJson(f))); put(`frq/${f.id}.html`, frqPage(f)); }
+  put('assets/summaries.json', JSON.stringify(Object.fromEntries(built.map(t => [t.id, text(C.lessons[t.id].summary)]))));
+  for (const t of C.pages.tools || []) { put(`tools/${t.slug}.html`, toolShell(t)); put(`assets/tool-data/${t.slug}.json`, JSON.stringify(toolData(t))); }
   put('assets/bio-curriculum.js', curriculumJs());
   put('assets/glossary.json', glossaryJson());
   put('assets/notes-index.json', JSON.stringify(built.map(t => ({ file: `${BASE}notes/${t.id}.html`, title: t.title }))));
@@ -609,8 +835,8 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
 
 /* Generated places hold nothing else. With no map, every generated file
    left behind is stale. */
-const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank'];
-const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/bio-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json',
+const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'frq', 'assets/frq', 'tools', 'assets/tool-data'];
+const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/bio-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json', 'assets/summaries.json',
   ...(C.pages.apps || []).map(a => `${a.slug}.html`)];
 const stale = [];
 for (const d of OWNED_DIRS) {

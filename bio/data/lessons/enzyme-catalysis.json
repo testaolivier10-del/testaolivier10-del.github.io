@@ -1,0 +1,76 @@
+{
+  "topic": "enzyme-catalysis",
+  "hook": "<p>Pour hydrogen peroxide on a cut and it foams. On a clean countertop it just sits there. Both are the same reaction, hydrogen peroxide breaking down into water and oxygen gas, and on the counter it runs so slowly you cannot see it. In the cut, an enzyme called catalase, released from damaged cells, makes it run millions of times faster. The enzyme does not add energy or change the products. It lowers the hill the molecules have to climb.</p>",
+  "prereq": [
+    {
+      "q": "What determines which molecule an enzyme acts on?",
+      "options": [
+        "The match between the molecule and the active site in shape and in charge or polarity",
+        "The size of the molecule: any molecule small enough to enter the active site is acted on",
+        "The number of atoms in the molecule, since enzymes act on molecules with the same atom count"
+      ],
+      "correct": 0,
+      "why": "Specificity comes from the active site: its shape and its pattern of charged, polar and nonpolar side chains must match the substrate.",
+      "review": "enzyme-structure"
+    },
+    {
+      "q": "In the reaction 2 H₂O₂ → 2 H₂O + O₂, which molecules are the reactants?",
+      "options": [
+        "Water and oxygen",
+        "Hydrogen peroxide",
+        "Hydrogen peroxide and oxygen"
+      ],
+      "correct": 1,
+      "why": "Reactants are on the left of the arrow and are used up; products are on the right and are formed. Here hydrogen peroxide is the reactant; water and oxygen are the products.",
+      "review": "macromolecules-intro"
+    },
+    {
+      "q": "Water molecules in a warm beaker move faster on average than those in a cold beaker. Which form of energy is higher in the warm beaker?",
+      "options": [
+        "Kinetic energy, the energy of motion",
+        "Potential energy stored in covalent bonds",
+        "Chemical energy released by breaking hydrogen bonds"
+      ],
+      "correct": 0,
+      "why": "Temperature measures the average kinetic energy of the molecules: warmer means faster-moving molecules.",
+      "review": "water-hydrogen-bonding"
+    }
+  ],
+  "figure": {
+    "figure": "activation-energy-diagram",
+    "caption": "Reactants must climb an energy hill, the activation energy, to reach the transition state before they can become products. An enzyme lowers the hill. It does not change the energy of the reactants or the products, so the energy released is the same."
+  },
+  "chain": [
+    { "cause": "Before reactants can become products, some of their existing bonds must be stretched or partly broken.", "effect": "The molecules must first absorb energy and pass through an unstable, high-energy arrangement: the transition state. The energy needed to get there is the activation energy." },
+    { "cause": "At body temperature, only a tiny fraction of molecules move fast enough to reach the transition state when they bump into each other.", "effect": "Without a catalyst, many reactions that release energy still run extremely slowly." },
+    { "cause": "An enzyme binds its substrate in the active site and holds it in a strained position, in the right orientation, next to charged or polar side chains.", "effect": "The transition state is easier to reach: the activation energy is lower." },
+    { "cause": "With a lower activation energy, a much larger fraction of substrate molecules can react at the same temperature.", "effect": "The reaction rate rises, often by millions of times." },
+    { "cause": "The enzyme does not change the energy of the reactants or of the products.", "effect": "The same products form and the same amount of energy is released or absorbed; the reaction just happens faster." },
+    { "cause": "After the products are released, the enzyme has its original structure.", "effect": "It binds another substrate: enzymes are not used up, so a little enzyme processes a lot of substrate." }
+  ],
+  "ideas": [
+    "<b>Activation energy</b> is the hill between reactants and products. A reaction can release energy overall and still be slow if its hill is high.",
+    "Enzymes speed reactions by <b>lowering the activation energy</b>. They do not add energy, change the products, or change how much energy the reaction releases.",
+    "Heat and enzymes both speed reactions, but differently: heat gives more molecules enough energy to clear the same hill, while an enzyme lowers the hill.",
+    "<b>Reaction rate</b> is product formed (or substrate used) per unit time. On a graph of product against time it is the slope; the steepest part, at the start, is the initial rate."
+  ],
+  "misconception": {
+    "wrong": "An enzyme gives the substrate the extra energy it needs to react, so the reaction releases more energy with the enzyme than without it.",
+    "right": "An enzyme adds no energy. It lowers the energy needed to reach the transition state. The reactants and products have the same energy with or without it, so the energy released is the same."
+  },
+  "check": [
+    "bio-enzyme-catalysis-6",
+    "bio-enzyme-catalysis-7",
+    "bio-enzyme-catalysis-8",
+    "bio-enzyme-catalysis-9",
+    "bio-enzyme-catalysis-16",
+    "bio-enzyme-catalysis-18",
+    "bio-enzyme-catalysis-20"
+  ],
+  "summary": "<p>Every reaction has an activation energy: the energy reactants must absorb to reach the unstable transition state before becoming products. Enzymes lower the activation energy by holding the substrate in the active site in a strained, well-oriented position next to helpful side chains. More molecules can then react at the same temperature, so the reaction rate, measured as product made or substrate used per unit time, rises. The enzyme does not change the reactants, the products or the energy released, and it comes out unchanged, so it is used again and again.</p>",
+  "connections": [
+    { "href": "../notes/enzyme-structure.html", "label": "Back: enzyme structure and the active site (3.1)" },
+    { "href": "../notes/enzyme-environment.html", "label": "Next: what speeds enzymes up or slows them down (3.3)" },
+    { "href": "../notes/cellular-energy.html", "label": "Reactions that release or absorb energy (3.4)" }
+  ]
+}

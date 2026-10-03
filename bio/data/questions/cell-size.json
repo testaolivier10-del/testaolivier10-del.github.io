@@ -1,0 +1,621 @@
+{
+  "stimuli": {
+    "cell-size-s1": {
+      "kind": "table",
+      "title": "Acid soaking into agar cubes",
+      "text": "<p>Students made agar containing an indicator that is pink when basic and turns clear in acid. They cut cubes with sides of 1, 2 and 3 cm and soaked them together in the same beaker of dilute vinegar for 10 minutes at room temperature. Then they cut each cube in half and measured how far the clear zone reached in from each face. Each depth is the mean ± SD of four cubes; the pink volume is calculated from the mean depth.</p>",
+      "table": {
+        "caption": "Agar cubes after 10 minutes in dilute vinegar",
+        "cols": [
+          "Side (cm)",
+          "Surface area (cm²)",
+          "Volume (cm³)",
+          "Surface area ÷ volume (per cm)",
+          "Depth of clear zone (cm)",
+          "Volume still pink (cm³)"
+        ],
+        "rows": [
+          [
+            "1",
+            "6",
+            "1",
+            "6.0",
+            "0.40 ± 0.03",
+            "0.008"
+          ],
+          [
+            "2",
+            "24",
+            "8",
+            "3.0",
+            "0.40 ± 0.04",
+            "1.73"
+          ],
+          [
+            "3",
+            "54",
+            "27",
+            "?",
+            "0.40 ± 0.02",
+            "10.6"
+          ]
+        ]
+      }
+    },
+    "cell-size-s2": {
+      "kind": "graph",
+      "title": "Oxygen use per gram in mammals of different sizes",
+      "text": "<p>The graph shows the oxygen each mammal uses per gram of body mass per hour while resting, a measure of its metabolic rate. Typical body masses: shrew 4 g, mouse 25 g, rat 290 g, dog 12 kg, human 70 kg, horse 650 kg, elephant 3,800 kg. All are endotherms.</p>",
+      "chart": {
+        "type": "bar",
+        "x": {
+          "label": "Mammal (smallest to largest)",
+          "categories": [
+            "Shrew",
+            "Mouse",
+            "Rat",
+            "Dog",
+            "Human",
+            "Horse",
+            "Elephant"
+          ]
+        },
+        "y": {
+          "label": "Oxygen used",
+          "unit": "mL O₂ per g per h",
+          "min": 0,
+          "max": 8,
+          "step": 1
+        },
+        "series": [
+          {
+            "name": "Resting oxygen use",
+            "points": [
+              [
+                "Shrew",
+                7.4
+              ],
+              [
+                "Mouse",
+                1.65
+              ],
+              [
+                "Rat",
+                0.87
+              ],
+              [
+                "Dog",
+                0.33
+              ],
+              [
+                "Human",
+                0.21
+              ],
+              [
+                "Horse",
+                0.11
+              ],
+              [
+                "Elephant",
+                0.07
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cell-size-1",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-size-s1",
+      "q": "Calculate the missing surface area ÷ volume value for the 3 cm cube. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 2.0,
+        "tol": 0.05,
+        "unit": "per cm",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Surface area = 6 × 3² = 54 cm²; volume = 3³ = 27 cm³. 54 ÷ 27 = 2.0 per cm."
+      }
+    },
+    {
+      "id": "bio-cell-size-2",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cell-size-s1",
+      "q": "What percentage of the 2 cm cube's volume did the acid reach in 10 minutes? Give a whole number.",
+      "numeric": {
+        "answer": 78,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Volume reached = 8 − 1.73 = 6.27 cm³. 6.27 ÷ 8 × 100 = 78.4%, which rounds to 78%. (For the 1 cm cube it is over 99%; for the 3 cm cube about 61%.)"
+      }
+    },
+    {
+      "id": "bio-cell-size-3",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-size-s1",
+      "q": "Which conclusion is best supported by the data?",
+      "options": [
+        "Acid moves faster into large cubes, because they have more surface through which acid can enter.",
+        "Acid reaches the same depth in each cube, so it reaches a smaller share of a larger cube.",
+        "Acid reaches a smaller depth in large cubes, because their surface area ÷ volume is lower.",
+        "Acid reaches the whole volume of each cube, but large cubes take longer to turn clear."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The depth is about 0.4 cm in every cube (the SDs overlap), but 0.4 cm covers nearly all of a 1 cm cube and much less of a 3 cm cube, whose center is 1.5 cm from any face.",
+        "options": [
+          "The depths are all about 0.4 cm, so acid did not move faster into the larger cubes.",
+          "This is what the table shows: equal depth, so the reached share falls as the cube grows.",
+          "The depth is the same in all three cubes; what changes is the share of the volume that depth covers.",
+          "The 2 and 3 cm cubes still have pink volume left (1.73 and 10.6 cm³), so the acid did not reach all of them."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-4",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-size-s1",
+      "q": "Which choice correctly names the independent and dependent variables in this experiment?",
+      "options": [
+        "Independent: soaking time. Dependent: cube size.",
+        "Independent: concentration of the vinegar. Dependent: depth of the clear zone.",
+        "Independent: cube size. Dependent: how far the acid spread into each cube.",
+        "Independent: the color of the indicator. Dependent: surface area ÷ volume of each cube."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "The students chose the cube sizes (independent variable) and measured how far the acid got in and what share of each cube it reached (dependent variables).",
+        "options": [
+          "Soaking time was held at 10 minutes for every cube, so it is a controlled variable, and cube size was chosen, not measured.",
+          "All cubes sat in the same vinegar, so its concentration was held constant, not varied.",
+          "Size was set by the students, and the acid's spread was measured in response.",
+          "The color change is how the acid's spread was seen; surface area ÷ volume follows from the size the students chose."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-5",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cell-size-s1",
+      "q": "A student also soaks a flat slab of the same agar, 4 cm × 4 cm × 0.5 cm, which has the same volume as the 2 cm cube. Predict the result after 10 minutes in the same vinegar.",
+      "options": [
+        "About 78% of the slab turns clear, the same share as the 2 cm cube, because the volumes are equal.",
+        "Nearly the whole slab turns clear, because no point in it is more than 0.25 cm from a face.",
+        "Less of the slab turns clear than of the 2 cm cube, because the slab has a lower surface area ÷ volume.",
+        "Little of the slab turns clear, because acid enters mainly through the narrow edges of a flat shape."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Acid reaches about 0.4 cm from each face in 10 minutes. The slab is only 0.5 cm thick, so acid entering from the top and bottom meets in the middle. Its surface area ÷ volume is 40 cm² ÷ 8 cm³ = 5 per cm, higher than the cube's 3.",
+        "options": [
+          "Equal volume does not mean equal exposure: the slab has more surface (40 cm² against 24 cm²) for the same volume.",
+          "Being thin puts every point close to a face, so the 0.4 cm the acid travels reaches the whole slab.",
+          "The slab's surface area ÷ volume is 5 per cm, higher than the cube's 3 per cm, not lower.",
+          "Acid enters through every face, and the large top and bottom faces are the slab's biggest surfaces."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-6",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-size-s2",
+      "q": "Which statement best describes the data in the graph?",
+      "options": [
+        "Larger mammals use more oxygen per gram of body mass than smaller mammals do at rest.",
+        "Oxygen use per gram falls as body mass rises, steeply among the smallest mammals.",
+        "Oxygen use per gram falls by the same amount from each mammal to the next.",
+        "Oxygen use per gram is about the same in each of the seven mammals shown."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Per gram, the shrew uses 7.4 mL O₂ per hour and the elephant 0.07. The drop is huge from shrew to mouse (7.4 to 1.65) and small from horse to elephant (0.11 to 0.07).",
+        "options": [
+          "The values fall from the smallest mammal to the largest, the opposite of this statement.",
+          "This matches both the direction of the trend and its shape.",
+          "The steps shrink from left to right (a drop of 5.75 first, then 0.04 at the end), so the drops are not equal.",
+          "The values differ about a hundredfold between shrew and elephant."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-7",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cell-size-s2",
+      "q": "How much oxygen, in mL, does a whole 4 g shrew use in one hour at rest? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 29.6,
+        "tol": 0.2,
+        "unit": "mL",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Total use = use per gram × mass = 7.4 mL per g per h × 4 g × 1 h = 29.6 mL."
+      }
+    },
+    {
+      "id": "bio-cell-size-8",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-size-s2",
+      "q": "Which explanation best accounts for the shrew's high oxygen use per gram?",
+      "options": [
+        "Its body has a high surface area ÷ volume, so it loses heat fast for its mass and releases more heat per gram by respiration.",
+        "Its cells are much larger than an elephant's cells, so oxygen has to travel much farther inside each one to reach the mitochondria.",
+        "Its small body holds less heat, so it needs less oxygen to keep warm than a large animal does.",
+        "Its small lungs take in oxygen slowly, so it has to breathe in more of it per gram of body mass to catch up with demand."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Endotherms keep warm with heat released by their own cellular respiration. A small body has a lot of surface for its volume, so heat escapes fast relative to mass, and each gram must burn more fuel, using more oxygen, to replace it.",
+        "options": [
+          "This links small size to a high surface area ÷ volume, fast heat loss, and more respiration per gram to replace the heat.",
+          "Shrew and elephant cells are about the same size; the difference is in the whole body's surface and volume.",
+          "Holding less heat means losing it faster for its mass, so a small endotherm needs more oxygen per gram to stay warm, not less.",
+          "Taking in oxygen slowly would limit its oxygen use, not raise it; the high use reflects high demand."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-9",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cell-size-s2",
+      "q": "A student says the graph shows that an elephant uses less oxygen each hour than a mouse. Which response is correct?",
+      "options": [
+        "The student is right: the elephant's bar is about one twenty-fifth as tall as the bar for the mouse.",
+        "The student is right, because larger animals have a lower surface area ÷ volume and so need less oxygen in total.",
+        "Wrong: the graph gives use per gram, and the elephant's far greater mass makes its total far larger.",
+        "The student is wrong, because the graph shows the elephant uses more oxygen per gram than the mouse."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Total use = per-gram use × mass. Elephant: 0.07 × 3,800,000 g ≈ 266,000 mL per hour. Mouse: 1.65 × 25 g ≈ 41 mL per hour. Each gram of elephant uses less, but the whole elephant uses thousands of times more.",
+        "options": [
+          "The bars compare use per gram, not per animal, so their heights do not show total use.",
+          "A lower surface area ÷ volume lowers the need per gram; total need still grows with body mass.",
+          "Per-gram values must be multiplied by mass to compare whole animals, and the elephant's total is far larger.",
+          "The elephant's per-gram value (0.07) is lower than the mouse's (1.65), so this reason is false."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-10",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-size-s2",
+      "q": "A 25 g lizard, an ectotherm, rests at the same air temperature as the mouse. Predict its oxygen use per gram compared with the mouse's.",
+      "options": [
+        "Much lower, because it does not burn fuel to keep its body warm.",
+        "About the same, because the two animals have the same mass.",
+        "Much higher, because ectotherms lose heat faster than endotherms.",
+        "Higher, because a lizard's scaly skin gives it a larger surface area ÷ volume than a mouse."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "An ectotherm's body temperature follows its surroundings; it does not burn extra fuel to stay warm. So at rest it uses far less oxygen per gram than an endotherm of the same mass.",
+        "options": [
+          "The mouse burns fuel to replace lost heat; the lizard does not, so its oxygen use per gram is much lower.",
+          "Same mass gives a similar surface area ÷ volume, but only the mouse spends energy keeping warm.",
+          "Losing heat costs an ectotherm no extra oxygen, because it does not replace that heat from its own respiration.",
+          "Scales do not change body shape much, and the lizard does not spend oxygen replacing lost heat anyway."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-11",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "A spherical cell grows until its radius has doubled, keeping the same shape. What happens to its surface area ÷ volume?",
+      "options": [
+        "It doubles, because both surface area and volume grow with size.",
+        "It stays the same, because the cell keeps its shape.",
+        "It halves, because surface area rises 4 times and volume rises 8 times.",
+        "It falls to a quarter, because volume rises 4 times faster than surface area."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Surface area = 4πr², so doubling r multiplies it by 2² = 4. Volume = 4/3 πr³, so it is multiplied by 2³ = 8. The ratio is multiplied by 4 ÷ 8 = ½.",
+        "options": [
+          "Both grow, but volume grows faster, so the ratio falls, not rises.",
+          "Keeping the shape keeps proportions, but surface area and volume still scale differently with size.",
+          "4 times the surface over 8 times the volume gives half the ratio.",
+          "Volume rises 8 times and surface 4 times, so the ratio halves; it does not drop to a quarter."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-12",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A spherical cell has a radius of 5 µm. Using surface area = 4πr² and volume = 4/3 πr³, calculate its surface area ÷ volume in µm⁻¹ (per µm). Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 0.6,
+        "tol": 0.05,
+        "unit": "µm⁻¹",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Surface area = 4 × 3.14 × 25 = 314 µm²; volume = 4/3 × 3.14 × 125 = 524 µm³. 314 ÷ 524 = 0.6 per µm. (For any sphere the ratio simplifies to 3 ÷ r.)"
+      }
+    },
+    {
+      "id": "bio-cell-size-13",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these features increase the surface area available for exchange relative to the volume it serves? Select all that apply.",
+      "options": [
+        "Root hairs growing out from cells at the surface of a root",
+        "Cells becoming rounder and larger as a tissue grows",
+        "Microvilli on the cells lining the small intestine",
+        "A thicker layer of cells between the air in the lungs and the blood",
+        "A few large air sacs in the lungs replacing many small ones"
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "why": {
+        "correct": "Root hairs and microvilli are thin projections that add a lot of membrane without adding much volume. The other changes lower the surface for exchange or make the path longer.",
+        "options": [
+          "Each root hair is a long, thin outgrowth of one cell, adding surface for taking in water and minerals.",
+          "Larger, rounder cells have a lower surface area ÷ volume, so they exchange less per unit of volume.",
+          "Microvilli are tiny finger-like folds of the cell membrane that multiply the surface for absorbing food molecules.",
+          "A thicker layer does not add surface; it lengthens the distance gases must travel, slowing exchange.",
+          "Merging many small alveoli into fewer large ones lowers the total surface for gas exchange."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-14",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In emphysema, the thin walls between neighboring alveoli break down, so many small air sacs merge into fewer, larger ones. Which effect follows most directly?",
+      "options": [
+        "More oxygen enters the blood with each breath, because the larger air sacs hold more air at once.",
+        "Less oxygen enters the blood with each breath, because there is less surface for exchange.",
+        "Oxygen enters the blood at the same pace, because the lungs hold the same volume of air.",
+        "Oxygen stops entering the blood, because larger sacs have no thin walls left for exchange."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Many small alveoli have far more total surface than a few large ones holding the same air. Losing that surface means less oxygen can diffuse into the blood per breath.",
+        "options": [
+          "Larger sacs hold air but have less total surface, and exchange happens across surface, not volume.",
+          "Fewer, larger sacs give less total surface, so less oxygen diffuses into the blood each breath.",
+          "The volume of air can stay similar while the surface for exchange shrinks, so exchange slows.",
+          "Larger sacs still have walls that oxygen crosses; there is less surface, not none."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-15",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Why can a single cell not keep growing larger and larger?",
+      "options": [
+        "Its volume, and so its need for materials, grows faster than its surface.",
+        "Its membrane runs out of phospholipids once the cell reaches a set size.",
+        "Larger cells take in materials faster, so they would soon run out of nearby nutrients.",
+        "Its DNA stops working properly once the cell grows past a set diameter."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Materials enter and wastes leave across the surface, but every part of the volume uses materials and makes wastes. As a cell grows, volume outpaces surface, and the center lies farther from the surface, so diffusion cannot keep up.",
+        "options": [
+          "Demand rises with volume; supply rises with surface; volume wins as size increases.",
+          "Cells make new phospholipids as they grow; membrane supply is not the limit.",
+          "Per unit of volume, a larger cell takes in materials more slowly, not faster.",
+          "DNA works the same in large and small cells; the limit is exchange across the surface."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-16",
+      "type": "predict",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A cube-shaped cell grows from 10 µm to 20 µm along each side. Predict how each quantity changes.",
+      "variables": [
+        {
+          "name": "Surface area of the cell",
+          "answer": "up",
+          "why": "Surface area is 6 × side², so it rises from 600 µm² to 2,400 µm², four times as much."
+        },
+        {
+          "name": "Surface area ÷ volume",
+          "answer": "down",
+          "why": "Volume rises eightfold (1,000 to 8,000 µm³) while surface rises fourfold, so the ratio halves, from 0.6 to 0.3 per µm."
+        },
+        {
+          "name": "Time for oxygen to cross the membrane itself",
+          "answer": "none",
+          "why": "The membrane is the same thickness in a large cell as in a small one, so crossing it takes the same time; what changes is the distance to the cell's center and the surface per unit of volume."
+        }
+      ],
+      "why": {
+        "correct": "Doubling each side multiplies surface by 4 and volume by 8, so the ratio halves. The membrane itself is no thicker, so crossing it takes the same time."
+      }
+    },
+    {
+      "id": "bio-cell-size-17",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "On hot days, African elephants flap their very large, thin ears, which are full of blood vessels. How do the ears help the elephant?",
+      "options": [
+        "They add a lot of surface for little volume, so heat leaves the blood faster.",
+        "They make the elephant look larger to predators, so it can rest more and use less oxygen per gram.",
+        "They store extra water, which the elephant draws on to keep its blood cool on hot days.",
+        "They lower the elephant's volume, which lowers its body temperature."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A huge animal has a low surface area ÷ volume and loses heat slowly. Large, thin ears with many blood vessels add a lot of exchange surface, and flapping moves air over it, so heat leaves the blood faster.",
+        "options": [
+          "Thin ears add much surface with little volume, speeding heat loss from the blood.",
+          "Looking larger does not change how much oxygen the body uses per gram.",
+          "The ears are thin flaps of skin and blood vessels, not water stores.",
+          "Ears add a little volume, not remove it; their value is the surface they add."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-18",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "On cold nights, small birds often huddle together in a tight group. Predict how huddling affects each bird's oxygen use.",
+      "options": [
+        "It rises, because the birds keep shifting and moving to stay close together in the group.",
+        "It falls, because each bird has less surface exposed to cold air and loses heat more slowly.",
+        "It stays the same, because each bird's own surface area ÷ volume does not change.",
+        "It rises, because the group shares the oxygen in the air between them."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Pressed together, the birds act like one larger body with a lower surface area ÷ volume. Each loses heat more slowly, so it needs to release less heat by cellular respiration and uses less oxygen.",
+        "options": [
+          "Huddling birds stay mostly still; the saving in heat loss far outweighs any extra movement.",
+          "Less exposed surface means slower heat loss, so less fuel and oxygen are needed to stay warm.",
+          "A bird's own shape does not change, but much of its surface now touches warm neighbors instead of cold air.",
+          "There is plenty of oxygen in the air around the group; the change is in how much each bird needs."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-19",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which statement correctly describes diffusion?",
+      "options": [
+        "Particles spread from where they are crowded to where they are sparse.",
+        "Particles are moved by the cell from where they are sparse to where they are crowded.",
+        "Particles move toward the center of a cell, because the center of the cell has the most room.",
+        "Particles stop moving once they reach the side of a container where they are crowded."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In diffusion, particles move randomly, and more of them happen to move from a crowded region to a sparse one than the reverse, so they spread down their concentration gradient with no energy from the cell.",
+        "options": [
+          "This is diffusion: net spreading down a concentration gradient, driven by random motion.",
+          "Moving particles from sparse to crowded needs an energy input; diffusion runs the other way.",
+          "Diffusion has no preferred direction toward the center; it follows the concentration gradient.",
+          "Particles keep moving all the time; diffusion is the net spreading that results."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-size-20",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "cell-size",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In a version of the agar-cube experiment, a student soaked a 1 cm cube in vinegar for 10 minutes and a 3 cm cube for 20 minutes, then compared the share of each cube that turned clear. What is the main problem with this design?",
+      "options": [
+        "The cubes should have been made of different agar, so that size was not the sole difference.",
+        "Soaking time differed, so any difference in results could come from time rather than size.",
+        "Two cube sizes are too many to compare in one experiment.",
+        "The 3 cm cube should have been soaked for less time, because it is larger."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "To test the effect of size, everything else must be held constant. Here soaking time changed along with size, so it is a second variable that could explain the result.",
+        "options": [
+          "Using different agar would add another difference, making the comparison worse, not better.",
+          "Time is a second variable that changed with size, so it must be held constant.",
+          "Comparing two or more sizes is exactly what the experiment needs; more sizes would be better.",
+          "Changing the time in either direction still mixes time with size; it should be the same for both."
+        ]
+      }
+    }
+  ]
+}

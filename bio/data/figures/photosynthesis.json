@@ -1,0 +1,12 @@
+{
+  "photosynthesis-stages": {
+    "file": "figures/photosynthesis-stages.svg", "ext": "svg", "w": 740, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A chloroplast. On the left, a stack of thylakoids runs the light reactions: light and water go in, oxygen comes out, and ATP and NADPH are passed to the Calvin cycle on the right. The Calvin cycle, in the stroma, takes in carbon dioxide and releases sugar, and sends ADP, phosphate and NADP+ back to the thylakoids."
+  },
+  "thylakoid-light-reactions": {
+    "file": "figures/thylakoid-light-reactions.svg", "ext": "svg", "w": 780, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A strip of thylakoid membrane, stroma above and thylakoid space below. Light hits photosystem II, which splits water into oxygen, hydrogen ions and electrons. Electrons move through the cytochrome complex, which pumps hydrogen ions into the thylakoid space, then to photosystem I, which is hit by light again and passes electrons to NADP+ reductase, making NADPH in the stroma. Hydrogen ions crowd the thylakoid space and flow back out through ATP synthase, which makes ATP in the stroma."
+  }
+}

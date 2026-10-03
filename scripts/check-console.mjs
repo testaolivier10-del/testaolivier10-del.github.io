@@ -306,6 +306,35 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
   await page.waitForSelector('.anp-ex-results', { timeout: 15000 });
   if (!/Why:/.test(await page.textContent('.anp-ex-results'))) problems.push('the exam review shows no explanations');
 }));
+/* AP® Biology Practice, once a unit is published: the first published topic's
+   set loads the bank index, then that unit's file, and explanations only
+   after an answer. Nothing to run before then (bio/assets/notes-index.json
+   is empty), so the flow is data-driven like the course itself. */
+{
+  const idx = join(ROOT, 'bio', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const topic = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    results.push(await anpFlow('/bio/practice.html (flow)', async (page, bank, problems) => {
+      await page.goto(ORIGIN + '/bio/practice.html?topic=' + topic, { waitUntil: 'load', timeout: 30000 });
+      await page.waitForSelector('.bio-pr-start:not([disabled])', { timeout: 15000 });
+      await page.click('.bio-pr-start');
+      await page.waitForSelector('.bio-pr-stage .bio-q', { timeout: 15000 });
+      if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+      // Whatever kind comes first: an option, a number, a prediction table
+      // (one choice per row) or an order (checked as it stands).
+      const q = page.locator('.bio-pr-stage .bio-q').first();
+      const opt = q.locator('.bio-opt').first();
+      if (await opt.count()) await opt.click();
+      else if (await q.locator('.bio-num input, input[inputmode]').count()) await q.locator('.bio-num input, input[inputmode]').first().fill('1');
+      else for (const g of await q.locator('.bio-dir').all()) await g.locator('button, [role="radio"]').first().click();
+      const check = page.locator('.bio-pr-stage .bio-q .bio-check').first();
+      if (await check.count() && await check.isVisible()) await check.click();
+      await page.waitForSelector('.bio-q-feedback .bio-verdict', { timeout: 15000 });
+      if (!bank.includes('index.json')) problems.push(`the bank index was not loaded first: ${bank.join(', ')}`);
+    }));
+  }
+}
 results.sort((a, b) => a.path.localeCompare(b.path));
 
 let failures = 0;

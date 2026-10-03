@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" width="640" height="380" role="img" aria-labelledby="t d">
+<title id="t">Anatomy of a line graph</title>
+<desc id="d">A line graph of water temperature against heating time for 100 g and 200 g of water. Callouts point to the title, the x-axis label "Time (min)" with an even scale, the y-axis label "Temperature (°C)", the key naming the two lines, and a rise-over-run triangle showing the slope of the 100 g line: 30 °C over 5 min, or 6 °C per minute.</desc>
+<rect width="640" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#1F2A28">
+  <text x="270" y="26" text-anchor="middle" font-size="16" font-weight="700">Heating 100 g and 200 g of water</text>
+  <g stroke="#D5DDDB" stroke-width="1">
+    <line x1="80" y1="60" x2="430" y2="60"/><line x1="80" y1="105" x2="430" y2="105"/><line x1="80" y1="150" x2="430" y2="150"/><line x1="80" y1="195" x2="430" y2="195"/><line x1="80" y1="240" x2="430" y2="240"/><line x1="80" y1="285" x2="430" y2="285"/>
+  </g>
+  <line x1="80" y1="330" x2="430" y2="330" stroke="#1F2A28" stroke-width="2"/>
+  <line x1="80" y1="60" x2="80" y2="330" stroke="#1F2A28" stroke-width="2"/>
+  <g text-anchor="middle"><text x="80" y="350">0</text><text x="150" y="350">1</text><text x="220" y="350">2</text><text x="290" y="350">3</text><text x="360" y="350">4</text><text x="430" y="350">5</text></g>
+  <text x="255" y="372" text-anchor="middle" font-weight="700">Time (min)</text>
+  <g text-anchor="end"><text x="72" y="335">0</text><text x="72" y="290">10</text><text x="72" y="245">20</text><text x="72" y="200">30</text><text x="72" y="155">40</text><text x="72" y="110">50</text><text x="72" y="65">60</text></g>
+  <text x="24" y="195" text-anchor="middle" font-weight="700" transform="rotate(-90 24 195)">Temperature (°C)</text>
+  <polyline points="80,240 150,213 220,185.5 290,159.5 360,132 430,104.5" fill="none" stroke="#D55E00" stroke-width="3"/>
+  <polyline points="80,240 150,226.5 220,212.5 290,200 360,186 430,172.5" fill="none" stroke="#0072B2" stroke-width="3" stroke-dasharray="9 5"/>
+  <g fill="#D55E00"><circle cx="80" cy="240" r="4.5"/><circle cx="150" cy="213" r="4.5"/><circle cx="220" cy="185.5" r="4.5"/><circle cx="290" cy="159.5" r="4.5"/><circle cx="360" cy="132" r="4.5"/><circle cx="430" cy="104.5" r="4.5"/></g>
+  <g fill="#0072B2"><rect x="146" y="222.5" width="8" height="8"/><rect x="216" y="208.5" width="8" height="8"/><rect x="286" y="196" width="8" height="8"/><rect x="356" y="182" width="8" height="8"/><rect x="426" y="168.5" width="8" height="8"/></g>
+  <path d="M80 240 H430 V105" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="255" y="258" text-anchor="middle" fill="#5D6B69">run = 5 min</text>
+  <text x="438" y="178" fill="#5D6B69">rise ≈ 30 °C</text>
+  <rect x="460" y="60" width="170" height="64" rx="6" fill="#ffffff" stroke="#5D6B69"/>
+  <line x1="472" y1="82" x2="502" y2="82" stroke="#D55E00" stroke-width="3"/><text x="510" y="87">100 g water</text>
+  <line x1="472" y1="108" x2="502" y2="108" stroke="#0072B2" stroke-width="3" stroke-dasharray="9 5"/><text x="510" y="113">200 g water</text>
+  <text x="545" y="145" text-anchor="middle" fill="#5D6B69">key</text>
+  <rect x="455" y="215" width="178" height="80" rx="8" fill="#F8E3B8" stroke="#E69F00"/>
+  <text x="544" y="238" text-anchor="middle" font-weight="700">slope = rise ÷ run</text>
+  <text x="544" y="260" text-anchor="middle">= 30 °C ÷ 5 min</text>
+  <text x="544" y="282" text-anchor="middle">= 6 °C/min</text>
+</g>
+</svg>

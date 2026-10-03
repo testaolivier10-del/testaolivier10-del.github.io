@@ -1,0 +1,7 @@
+{
+  "cell-secretory-path": {
+    "file": "figures/cell-secretory-path.svg", "ext": "svg", "w": 680, "h": 450,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A simplified animal cell with the nucleus, nucleolus and nuclear pores, rough ER with ribosomes, smooth ER, the Golgi complex, vesicles, a lysosome, a mitochondrion and free ribosomes. Numbered arrows trace a protein for export: built on the rough ER, carried in a vesicle to the Golgi, modified and packaged, then released at the cell membrane."
+  }
+}

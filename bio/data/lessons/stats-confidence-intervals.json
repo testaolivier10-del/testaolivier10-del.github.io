@@ -1,0 +1,99 @@
+{
+  "topic": "stats-confidence-intervals",
+  "hook": "<p>Two bars on a graph: 0.46 and 0.62. The second is taller, but is it really different, or would another eight beet cubes flip the order? Error bars answer that at a glance, and on the exam you will be asked both to draw them and to say what they show.</p>",
+  "prereq": [
+    {
+      "q": "What is the standard error of a mean with s = 0.30 and n = 9?",
+      "options": [
+        "0.10",
+        "0.03",
+        "0.90"
+      ],
+      "correct": 0,
+      "why": "SE = s ÷ √n = 0.30 ÷ 3 = 0.10.",
+      "review": "stats-sd-se"
+    },
+    {
+      "q": "What does a selectively permeable membrane do?",
+      "options": [
+        "Lets some substances cross easily while blocking or slowing others",
+        "Lets every dissolved substance cross at the same speed",
+        "Blocks water while letting large charged molecules through"
+      ],
+      "correct": 0,
+      "why": "The hydrophobic core and specific proteins let small nonpolar molecules (and water through aquaporins) cross, while large or charged molecules are held back.",
+      "review": "membrane-permeability"
+    },
+    {
+      "q": "An experiment shows a difference far larger than chance variation. What do you do with the null hypothesis?",
+      "options": [
+        "Reject it",
+        "Accept it",
+        "Prove it"
+      ],
+      "correct": 0,
+      "why": "A difference too large to blame on chance leads you to reject the null hypothesis.",
+      "review": "design-null-hypothesis"
+    }
+  ],
+  "figure": {
+    "figure": "ci-overlap",
+    "caption": "With 95% confidence interval error bars: no overlap, the difference is likely real (reject the null); overlap, the data do not show a difference (fail to reject)."
+  },
+  "chain": [
+    {
+      "cause": "A sample mean is only an estimate of the true mean, and its uncertainty is measured by SE = s ÷ √n.",
+      "effect": "You can build a range around it that very probably contains the true mean."
+    },
+    {
+      "cause": "About 95% of sample means fall within 2 standard errors of the true mean.",
+      "effect": "The interval x̄ ± 2SE is an approximate 95% confidence interval."
+    },
+    {
+      "cause": "You draw that interval as an error bar on each plotted mean.",
+      "effect": "A reader can see how precisely each mean is known."
+    },
+    {
+      "cause": "Two groups' 95% CI error bars do not overlap.",
+      "effect": "The difference is unlikely to be chance: it is statistically significant, and you reject the null hypothesis."
+    },
+    {
+      "cause": "Two groups' bars overlap.",
+      "effect": "The data do not show a difference, so you fail to reject the null; more data could still reveal one."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> 15 °C: n = 9, x̄ = 1.8, s = 0.30, SE = 0.10, CI = 1.6-2.0. 25 °C: n = 9, x̄ = 2.5, s = 0.36, SE = 0.12, CI = 2.26-2.74. No overlap: likely a real difference.",
+    "Formula sheet: SE = s ÷ √n; 95% CI ≈ x̄ ± 2SE. A bigger sample gives a smaller SE and a narrower interval.",
+    "Overlap rule (95% CI bars only): no overlap, likely a real difference; overlap, the data do not show one. Overlap never proves the means are equal.",
+    "Always say what your error bars show (SD, SE or 95% CI). The same picture means different things for each."
+  ],
+  "misconception": {
+    "wrong": "If two 95% confidence interval error bars overlap, the two means are the same.",
+    "right": "Overlap means only that the data do not show a difference at this level of confidence. A real difference can hide behind overlapping bars, especially with small samples."
+  },
+  "check": [
+    "bio-stats-confidence-intervals-1",
+    "bio-stats-confidence-intervals-2",
+    "bio-stats-confidence-intervals-3",
+    "bio-stats-confidence-intervals-4",
+    "bio-stats-confidence-intervals-5",
+    "bio-stats-confidence-intervals-8",
+    "bio-stats-confidence-intervals-14"
+  ],
+  "summary": "<p>A 95% confidence interval, about x̄ ± 2SE, is a range that very probably contains the true mean; drawn on a graph it becomes an error bar. If two groups' 95% CI bars do not overlap, the difference is statistically significant and the null hypothesis is rejected. If they overlap, the data do not show a difference, which is not the same as showing there is none. Larger samples narrow the intervals. Always label what error bars represent.</p>",
+  "connections": [
+    {
+      "href": "../tools/confidence-intervals.html",
+      "label": "Tool: confidence interval and error bar calculator"
+    },
+    {
+      "href": "../tools/graph-builder.html",
+      "label": "Tool: graph builder with error bars"
+    },
+    {
+      "href": "stats-sd-se.html",
+      "label": "Skill: standard deviation and standard error"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "id": "frq-root-potassium",
+  "type": "iee-graph",
+  "points": 9,
+  "units": ["unit-2"],
+  "topics": ["membrane-transport", "membrane-permeability"],
+  "practices": ["3.C", "4.A", "5.B", "5.A", "6.E"],
+  "stimulus": {
+    "kind": "table",
+    "title": "Potassium uptake by root tissue with and without oxygen",
+    "text": "<p>Researchers grew barley seedlings in a solution without potassium, so their roots started with very little K⁺. They cut equal masses of young root tips and placed them in flasks of a solution containing 1.0 mM potassium ions (K⁺) at 25 °C. Air was bubbled through half of the flasks. Nitrogen gas was bubbled through the other half, which removes oxygen; without oxygen, the root cells make very little ATP. At each time, root samples were rinsed and the K⁺ they had taken up was measured. Values are means of 6 flasks ± 2 SE.</p>",
+    "table": {
+      "caption": "K⁺ taken up by root tissue (µmol per g of root)",
+      "cols": ["Time (min)", "Air bubbled (mean ± 2 SE)", "Nitrogen bubbled (mean ± 2 SE)"],
+      "rows": [
+        ["0", "0.0 ± 0.0", "0.0 ± 0.0"],
+        ["30", "2.4 ± 0.3", "0.6 ± 0.2"],
+        ["60", "4.6 ± 0.4", "0.8 ± 0.2"],
+        ["90", "6.9 ± 0.5", "0.9 ± 0.2"],
+        ["120", "9.0 ± 0.6", "0.9 ± 0.3"]
+      ]
+    }
+  },
+  "graphSpec": {
+    "type": "line",
+    "x": { "label": "Time", "unit": "min", "min": 0, "max": 120, "step": 30 },
+    "y": { "label": "K⁺ taken up", "unit": "µmol per g of root", "min": 0, "max": 10, "step": 1 },
+    "series": [
+      { "name": "Air bubbled", "points": [[0, 0], [30, 2.4, 0.3], [60, 4.6, 0.4], [90, 6.9, 0.5], [120, 9.0, 0.6]] },
+      { "name": "Nitrogen bubbled", "points": [[0, 0], [30, 0.6, 0.2], [60, 0.8, 0.2], [90, 0.9, 0.2], [120, 0.9, 0.3]] }
+    ],
+    "errorBars": true,
+    "checks": ["line graph with time on the x-axis", "axes labeled with units", "linear scales starting at 0 that use most of the grid", "both series plotted with a key", "error bars of ±2 SE at each point"]
+  },
+  "parts": [
+    {
+      "label": "a",
+      "points": 2,
+      "prompt": "(i) <b>Identify</b> the independent variable in this experiment. (ii) <b>Justify</b> keeping the K⁺ concentration of the solution at 1.0 mM in every flask.",
+      "rubric": [
+        { "point": "Identifies the independent variable as the gas bubbled through the flask (air or nitrogen), that is, the presence or absence of oxygen (accept: the ATP supply of the root cells, if linked to the gas).", "accept": ["presence of oxygen", "air versus nitrogen", "type of gas bubbled"] },
+        { "point": "Justifies holding K⁺ at 1.0 mM: the outside concentration (and so the gradient) affects how much K⁺ enters, so it must be the same in both treatments for any difference to be due to oxygen/ATP.", "accept": ["a different K⁺ concentration would change uptake by itself", "so the only difference between flasks is the gas"] }
+      ],
+      "sample": "(i) The independent variable is the gas bubbled through the solution: air (with oxygen) or nitrogen (no oxygen). (ii) How much K⁺ enters depends on how much K⁺ is outside, so keeping it at 1.0 mM in every flask makes sure any difference in uptake comes from the gas, not from the amount of K⁺ available."
+    },
+    {
+      "label": "b",
+      "points": 4,
+      "prompt": "<b>Construct</b> an appropriately labeled graph that shows the mean K⁺ taken up over time for both treatments, including error bars.",
+      "rubric": [
+        { "point": "Correct graph type (line graph or scatterplot with points joined) with time on the x-axis and K⁺ taken up on the y-axis, each axis labeled with its unit (min; µmol per g).", "accept": ["axes labeled Time (min) and K⁺ taken up (µmol/g)"] },
+        { "point": "Appropriate linear scales on both axes, and all ten means plotted correctly.", "accept": ["evenly spaced scale starting at 0", "points within half a grid square"] },
+        { "point": "Error bars drawn correctly (±2 SE) on the plotted means.", "accept": ["each bar spans mean − 2 SE to mean + 2 SE"] },
+        { "point": "The two treatments are distinguished with a key or direct labels.", "accept": ["legend for air and nitrogen", "lines labeled on the graph"] }
+      ],
+      "sample": "A line graph with Time (min) on the x-axis from 0 to 120 in steps of 30, and K⁺ taken up (µmol per g of root) on the y-axis from 0 to 10 in steps of 1. The air line rises steadily from 0 to 9.0; the nitrogen line rises to about 0.9 and levels off. Each point carries a vertical error bar of ±2 SE (for example 9.0 ± 0.6 at 120 min), and a key identifies the two lines."
+    },
+    {
+      "label": "c",
+      "points": 1,
+      "prompt": "<b>Determine</b> whether the K⁺ taken up at 30 minutes differs between the two treatments. Use the error bars to <b>justify</b> your answer.",
+      "rubric": [
+        { "point": "States that the treatments differ (likely a real or statistically significant difference) because the ±2 SE intervals do not overlap (2.1 to 2.7 and 0.4 to 0.8).", "accept": ["error bars do not overlap, so the difference is significant", "non-overlapping intervals at 30 min"] }
+      ],
+      "sample": "They differ. The air-bubbled interval runs from 2.1 to 2.7 µmol per g and the nitrogen interval from 0.4 to 0.8; the ±2 SE error bars do not overlap, so the difference is likely real."
+    },
+    {
+      "label": "d",
+      "points": 1,
+      "prompt": "Root tissue contains about 0.9 mL of water per gram. <b>Calculate</b> the K⁺ concentration inside the air-bubbled roots at 120 minutes, in mM (µmol per mL), and use it to <b>explain</b> what kind of transport moved the K⁺.",
+      "rubric": [
+        { "point": "Calculates about 10 mM (9.0 ÷ 0.9) and explains that because this is about ten times the 1.0 mM outside, K⁺ moved against its gradient, so the transport was active transport using energy (ATP).", "accept": ["10 mM inside versus 1 mM outside, so active transport", "uptake against the concentration gradient requires ATP"] }
+      ],
+      "sample": "9.0 µmol ÷ 0.9 mL = 10 µmol per mL = 10 mM. The roots hold ten times as much K⁺ as the 1.0 mM solution, so K⁺ was moved from low to high concentration, against its concentration gradient. Moving a substance against its gradient takes energy, so this is active transport powered by ATP, which fits the nitrogen result: with little ATP, uptake nearly stopped."
+    },
+    {
+      "label": "e",
+      "points": 1,
+      "prompt": "At 120 minutes, nitrogen gas replaces the air in the air-bubbled flasks. <b>Predict</b> how the K⁺ content of those roots will change over the next hour, and <b>justify</b> your prediction.",
+      "rubric": [
+        { "point": "Predicts that uptake stops (the K⁺ content levels off) and may slowly fall, because without oxygen the cells make little ATP, active transport stops, and K⁺ can leak out down its gradient from about 10 mM inside to 1 mM outside.", "accept": ["K⁺ content stops rising because active transport needs ATP", "K⁺ slowly leaks out down its gradient"] }
+      ],
+      "sample": "The K⁺ content will stop rising and slowly fall. Without oxygen the root cells make very little ATP, so active transport of K⁺ stops, and K⁺, now ten times more concentrated inside than outside, slowly leaks out down its gradient."
+    }
+  ]
+}

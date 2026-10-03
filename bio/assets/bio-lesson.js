@@ -86,7 +86,7 @@
     if(!dataEl) return;
     var data = JSON.parse(dataEl.textContent);
     var topic = data.topic, C = window.ApBioCore, ch = data.unit;
-    // Premium: outside Units 1 and 2 and each skills chapter's first lesson,
+    // Premium: outside Units 1 and 2 and the skills lessons,
     // the interactive lesson is part of Premium.
     // Locked, the card and the step list give way to the gate and the notes.
     if(C && C.locked && !data.free && C.locked(ch, topic)){

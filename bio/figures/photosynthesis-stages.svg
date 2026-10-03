@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" width="740" height="400" role="img" aria-labelledby="t d">
+<title id="t">The two stages of photosynthesis in a chloroplast</title>
+<desc id="d">A chloroplast. In the thylakoid membranes, the light reactions take in light and water and release oxygen; they make ATP and NADPH. In the stroma, the Calvin cycle takes in carbon dioxide and uses the ATP and NADPH to build sugar, returning ADP, phosphate and NADP+ to the light reactions.</desc>
+<defs><marker id="a5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="740" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <rect x="90" y="60" width="560" height="290" rx="140" fill="#EAF6EF" stroke="#009E73" stroke-width="4"/>
+  <text x="370" y="335" font-size="15" text-anchor="middle" fill="#006B4F">chloroplast</text>
+  <!-- thylakoid stack -->
+  <g fill="#C4E8DC" stroke="#006B4F" stroke-width="2.5">
+    <rect x="160" y="120" width="140" height="26" rx="13"/><rect x="160" y="150" width="140" height="26" rx="13"/>
+    <rect x="160" y="180" width="140" height="26" rx="13"/><rect x="160" y="210" width="140" height="26" rx="13"/>
+    <rect x="160" y="240" width="140" height="26" rx="13"/>
+  </g>
+  <text x="230" y="108" font-size="15" font-weight="700" text-anchor="middle">Light reactions</text>
+  <text x="230" y="290" font-size="14" text-anchor="middle">in thylakoid membranes</text>
+  <!-- calvin cycle -->
+  <circle cx="520" cy="200" r="62" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+  <text x="520" y="196" font-size="15" font-weight="700" text-anchor="middle">Calvin</text>
+  <text x="520" y="214" font-size="15" font-weight="700" text-anchor="middle">cycle</text>
+  <text x="520" y="290" font-size="14" text-anchor="middle">in the stroma</text>
+  <!-- arrows between -->
+  <path d="M305,165 L452,165" stroke="#1F2A28" stroke-width="3" marker-end="url(#a5)"/>
+  <text x="378" y="155" font-size="15" text-anchor="middle" font-weight="700">ATP, NADPH</text>
+  <path d="M455,238 L308,238" stroke="#1F2A28" stroke-width="3" marker-end="url(#a5)"/>
+  <text x="380" y="262" font-size="14" text-anchor="middle">ADP + Pi, NADP+</text>
+  <!-- inputs outputs -->
+  <path d="M40,40 L150,120" stroke="#E69F00" stroke-width="4" marker-end="url(#a5)"/>
+  <text x="20" y="32" font-size="16" font-weight="700">light</text>
+  <path d="M30,210 L150,210" stroke="#0072B2" stroke-width="3" marker-end="url(#a5)"/>
+  <text x="10" y="200" font-size="16" font-weight="700">H<tspan font-size="12" baseline-shift="sub">2</tspan>O</text>
+  <path d="M190,300 L120,380" stroke="#0072B2" stroke-width="3" marker-end="url(#a5)"/>
+  <text x="150" y="392" font-size="16" font-weight="700" text-anchor="end">O<tspan font-size="12" baseline-shift="sub">2</tspan> out</text>
+  <path d="M700,90 L570,150" stroke="#5B6B8C" stroke-width="3" marker-end="url(#a5)"/>
+  <text x="700" y="80" font-size="16" font-weight="700" text-anchor="end">CO<tspan font-size="12" baseline-shift="sub">2</tspan> in</text>
+  <path d="M570,252 L690,330" stroke="#8E3B2E" stroke-width="3" marker-end="url(#a5)"/>
+  <text x="730" y="356" font-size="16" font-weight="700" text-anchor="end">sugar</text>
+</g>
+</svg>

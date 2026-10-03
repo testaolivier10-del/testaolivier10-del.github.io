@@ -1,0 +1,12 @@
+{
+  "dot-plot-center": {
+    "file": "figures/dot-plot-center.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 300,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A dot plot of eight drop counts: 13, 14, 14, 15, 15, 16, 16 and 31. The median, 15, sits in the middle of the cluster; the mean, 16.75, is pulled to the right toward the single high value of 31. The range runs from 13 to 31."
+  }
+}

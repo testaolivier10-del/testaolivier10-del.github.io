@@ -1,0 +1,14 @@
+{
+  "rate": {
+    "def": "How fast a quantity changes per unit of something else, usually time: change in y ÷ change in x (for example, mm per minute). On a graph it is the slope."
+  },
+  "percent-change": {
+    "def": "The change in a value as a percentage of its starting value: (final − initial) ÷ initial × 100. Positive for an increase, negative for a decrease."
+  },
+  "metric-prefixes": {
+    "def": "Prefixes that scale metric units by powers of ten: kilo (10³), centi (10⁻²), milli (10⁻³), micro (10⁻⁶), nano (10⁻⁹). Scientific notation writes numbers as a × 10ⁿ."
+  },
+  "average-rate": {
+    "def": "The total change divided by the total time over an interval (the slope of the straight line joining its end points). The instantaneous rate is the slope at a single moment, which can differ along a curve."
+  }
+}

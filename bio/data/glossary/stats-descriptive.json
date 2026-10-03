@@ -1,0 +1,26 @@
+{
+  "data-types": {
+    "def": "Quantitative data are numbers from counting or measuring (discrete if counted in whole units, continuous if measured on a scale). Qualitative (categorical) data are descriptions or categories, such as color or \"yes/no\"."
+  },
+  "sample": {
+    "def": "The set of measurements or individuals you actually collected, used to stand for the larger group you cannot measure in full. The sample size, n, is how many values it holds."
+  },
+  "mean": {
+    "def": "The arithmetic average: add every value and divide by how many values there are (x̄ = Σx / n). Every value pulls on it, including extreme ones."
+  },
+  "median": {
+    "def": "The middle value once the data are sorted from smallest to largest; with an even number of values, the average of the two middle ones. Extreme values barely move it."
+  },
+  "mode": {
+    "def": "The value that appears most often in a data set. A set can have one mode, several, or none."
+  },
+  "range": {
+    "def": "The largest value minus the smallest value: the simplest measure of how spread out the data are."
+  },
+  "outlier": {
+    "def": "A value far from the rest of the data. It may be a recording mistake or a real but unusual result, so it is checked and reported, not silently deleted."
+  },
+  "variability": {
+    "def": "How much repeated measurements differ from each other. Low spread means the values cluster tightly; high spread means they scatter widely."
+  }
+}

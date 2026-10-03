@@ -123,11 +123,12 @@
       '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
   /* What the header calls each course where there is no room for its full
      name: beside the wordmark on a phone. */
-  // courses:begin COURSE_LIST key,short (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  // courses:begin COURSE_LIST key,short,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
   var COURSE_LIST = [
-    { key: 'nremt', short: 'NREMT' },
-    { key: 'ochem', short: 'Ochem' },
-    { key: 'anp', short: 'A&P' },
+    { key: 'nremt', short: 'NREMT', dir: 'nremt' },
+    { key: 'ochem', short: 'Ochem', dir: 'ochem' },
+    { key: 'anp', short: 'A&P', dir: 'anatomy-physiology' },
+    { key: 'apbio', short: 'Biology', dir: 'bio' },
   ];
   // courses:end
   var COURSE_SHORT = {};
@@ -137,8 +138,17 @@
      convention GitHub, YouTube and MDN all share. On the search page itself it
      focuses the box instead of reloading. Exposed so the hub, which draws its
      own header, wires the same key the same way. */
+  /* A course key with the token "ap" in it (apbio) never goes into a URL
+     (docs/apbio-spec.md decision 2): it travels as its folder ("bio"), which
+     site search accepts as an alias. */
+  function urlCourse(courseKey){
+    var t = String(courseKey || '').toLowerCase().split(/[^a-z0-9]+/);
+    if(t.indexOf('ap') === -1 && t.indexOf('apbio') === -1) return courseKey;
+    for(var i = 0; i < COURSE_LIST.length; i++) if(COURSE_LIST[i].key === courseKey) return COURSE_LIST[i].dir;
+    return courseKey;
+  }
   function searchUrl(courseKey){
-    return '/search.html' + (courseKey ? '?course=' + encodeURIComponent(courseKey) : '');
+    return '/search.html' + (courseKey ? '?course=' + encodeURIComponent(urlCourse(courseKey)) : '');
   }
   function wireSearchKey(courseKey){
     if(window.__levlSearchKey) return;
@@ -174,7 +184,7 @@
         '<div class="lso-bar"><b>Search</b>' +
           '<a href="' + searchUrl(courseKey) + '">Open the search page</a>' +
           '<button type="button" class="lso-close" aria-label="Close search">Esc</button></div>' +
-        '<iframe title="Search" src="/search.html?embed=1' + (courseKey ? '&course=' + encodeURIComponent(courseKey) : '') + '"></iframe>' +
+        '<iframe title="Search" src="/search.html?embed=1' + (courseKey ? '&course=' + encodeURIComponent(urlCourse(courseKey)) : '') + '"></iframe>' +
       '</div>';
     var hidden = [];
     Array.prototype.forEach.call(document.body.children, function(el){

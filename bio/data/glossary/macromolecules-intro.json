@@ -1,0 +1,26 @@
+{
+  "macromolecule": {
+    "def": "A very large biological molecule, usually thousands of atoms. Carbohydrates, proteins and nucleic acids are macromolecules built as polymers; large lipids are macromolecules that are not polymers."
+  },
+  "monomer": {
+    "def": "A small molecule that can link with others like it to form a polymer; one building block."
+  },
+  "polymer": {
+    "def": "A large molecule made of many monomers joined in a chain by covalent bonds."
+  },
+  "chemical-reaction": {
+    "def": "A process that breaks some chemical bonds and forms new ones, turning reactants into products. Atoms are rearranged, not created or destroyed."
+  },
+  "dehydration-synthesis": {
+    "def": "A reaction that joins two monomers with a covalent bond by removing an –OH from one and an –H from the other, which leave as a water molecule. Also called a condensation reaction."
+  },
+  "hydrolysis": {
+    "def": "A reaction that breaks the bond between two monomers by adding a water molecule: the –H goes to one monomer and the –OH to the other."
+  },
+  "enzyme": {
+    "def": "A protein that speeds up a chemical reaction, such as the hydrolysis of a polymer, without being used up. Enzymes are taught in full in Unit 3."
+  },
+  "structure-function": {
+    "def": "The principle that a molecule's (or a cell's, or an organ's) structure, especially its shape, determines what it can do."
+  }
+}

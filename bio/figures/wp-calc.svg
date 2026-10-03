@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d">
+<title id="t">Water potential of a cell and its surroundings</title>
+<desc id="d">A plant cell in a beaker of sucrose solution. The beaker: 0.3 M sucrose at 22 °C, open, so pressure potential 0 and water potential −7.4 bars. The cell: solute potential −9.0 bars and pressure potential +3.0 bars, so water potential −6.0 bars. An arrow shows net water moving out of the cell, from −6.0 toward −7.4 bars.</desc>
+<rect width="640" height="360" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0072B2"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" font-size="14" text-anchor="middle" fill="#1F2A28">
+  <path d="M30 40 V320 Q30 340 50 340 H370 Q390 340 390 320 V40" fill="#D2EAF8" stroke="#5D6B69" stroke-width="3"/>
+  <line x1="30" y1="70" x2="390" y2="70" stroke="#56B4E9" stroke-width="2"/>
+  <rect x="120" y="130" width="180" height="140" rx="14" fill="#C4E8DC" stroke="#009E73" stroke-width="5"/>
+  <rect x="134" y="144" width="152" height="112" rx="10" fill="#EEF2F1" stroke="#6B5E3C" stroke-width="2"/>
+  <text x="210" y="176" font-weight="700">cell</text>
+  <text x="210" y="200">Ψs = −9.0 bars</text>
+  <text x="210" y="222">ΨP = +3.0 bars</text>
+  <text x="210" y="246" font-weight="700">Ψ = −6.0 bars</text>
+  <text x="210" y="100" font-weight="700">0.3 M sucrose, 22 °C, open</text>
+  <text x="210" y="300">ΨP = 0, Ψ = Ψs = −7.4 bars</text>
+  <path d="M302 200 H360" stroke="#0072B2" stroke-width="4" marker-end="url(#a)"/>
+  <text x="340" y="190" fill="#0072B2" font-weight="700">H₂O</text>
+  <rect x="410" y="40" width="215" height="300" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <text x="517" y="66" font-weight="700">Beaker: Ψs = −iCRT</text>
+  <text x="517" y="92">i = 1 (sucrose)</text>
+  <text x="517" y="114">C = 0.3 mol/L</text>
+  <text x="517" y="136">R = 0.0831 L·bar/(mol·K)</text>
+  <text x="517" y="158">T = 22 + 273 = 295 K</text>
+  <text x="517" y="184" font-weight="700">Ψs = −7.4 bars</text>
+  <line x1="425" y1="200" x2="610" y2="200" stroke="#E69F00"/>
+  <text x="517" y="226" font-weight="700">Cell: Ψ = ΨP + Ψs</text>
+  <text x="517" y="250">= 3.0 + (−9.0)</text>
+  <text x="517" y="274" font-weight="700">= −6.0 bars</text>
+  <text x="517" y="306">water moves toward</text>
+  <text x="517" y="326">the more negative Ψ</text>
+</g>
+</svg>

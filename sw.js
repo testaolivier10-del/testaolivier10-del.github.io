@@ -173,6 +173,24 @@ COURSE_URLS['anatomy-physiology'] = [
   'anatomy-physiology/assets/glossary.json',
   'anatomy-physiology/dashboard.html',
 ];
+COURSE_URLS.bio = [
+  // The AP® Biology shell (key apbio, folder bio): home, learn, search, tools,
+  // dashboard and the runtime every course page loads. Lessons, notes, the
+  // bank and figures are cached as visited.
+  'bio/index.html',
+  'bio/learn.html',
+  'bio/search.html',
+  'bio/tools.html',
+  'bio/dashboard.html',
+  'bio/manifest.json',
+  'bio/assets/bio.css',
+  'bio/assets/bio-curriculum.js',
+  'bio/assets/bio-core.js',
+  'bio/assets/bio-questions.js',
+  'bio/assets/bio-nav.js',
+  'bio/assets/bio-glossary.js',
+  'bio/assets/glossary.json',
+];
 
 // The question bank is 2.3 MB across its two files — an order of magnitude
 // more than everything above put together — so it is NOT in PRECACHE_URLS:

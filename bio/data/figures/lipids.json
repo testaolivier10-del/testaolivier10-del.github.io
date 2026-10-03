@@ -1,0 +1,22 @@
+{
+  "fatty-acids-bilayer": {
+    "file": "figures/fatty-acids-bilayer.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 380,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Left: a saturated fatty acid drawn as a straight zigzag chain and an unsaturated fatty acid with a bend at its cis double bond, each with a COOH end. Middle: a phospholipid with a round polar head and two tails, one bent. Right: a bilayer of phospholipids with heads facing water above and below and tails meeting in the middle."
+  },
+  "lipid-types": {
+    "file": "figures/lipid-types.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 300,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Left: a triglyceride, a three-carbon glycerol backbone with three fatty acid tails attached by ester bonds. Right: cholesterol, four fused carbon rings (three six-sided and one five-sided) with an OH group at one end and a short hydrocarbon tail at the other."
+  }
+}

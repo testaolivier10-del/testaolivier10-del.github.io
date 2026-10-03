@@ -1,0 +1,94 @@
+{
+  "topic": "facilitated-diffusion",
+  "hook": "<p>A puffer fish carries a poison so strong that a few milligrams can kill an adult. It does not damage any organ. It simply plugs one kind of protein tunnel in the membranes of nerve cells, so sodium ions can no longer rush in, and the nerves fall silent. Your cells depend on thousands of these tunnels and on the pumps that keep ions lined up on the right side of the membrane.</p>",
+  "prereq": [
+    {
+      "q": "Why can a sodium ion (Na⁺) not slip directly through a phospholipid bilayer?",
+      "options": [
+        "Its charge is repelled by the hydrophobic middle of the bilayer.",
+        "It is too large to fit between the phospholipids.",
+        "It reacts with the phosphate heads and is destroyed.",
+        "It is pulled out of the membrane by cholesterol."
+      ],
+      "correct": 0,
+      "why": "Ions are charged, and the fatty-acid tails in the middle of the bilayer are nonpolar, so ions cannot dissolve in it. Size is not the problem: Na⁺ is smaller than an O₂ molecule, which crosses easily.",
+      "review": "membrane-permeability"
+    },
+    {
+      "q": "Which describes passive transport?",
+      "options": [
+        "Movement down a concentration gradient with no energy input from the cell.",
+        "Movement against a concentration gradient using ATP.",
+        "Movement of large particles inside vesicles.",
+        "Movement that happens only through the lipid bilayer."
+      ],
+      "correct": 0,
+      "why": "Passive transport runs on the gradient itself: substances spread from where they are crowded to where they are scarce, and the cell spends no ATP.",
+      "review": "membrane-transport"
+    }
+  ],
+  "figure": {
+    "figure": "channels-carriers-pumps",
+    "caption": "Three kinds of transport protein. A channel (left) is an open tunnel; a carrier (middle) binds a molecule and changes shape. Both are passive and move substances from crowded to scarce. A pump (right) spends ATP to move ions from scarce to crowded."
+  },
+  "chain": [
+    {
+      "cause": "The middle of the lipid bilayer is hydrophobic.",
+      "effect": "Ions and polar molecules such as glucose cannot dissolve in it, so they barely cross the membrane on their own."
+    },
+    {
+      "cause": "A channel protein forms a water-filled tunnel, sized and lined to fit one kind of ion (or water, for aquaporins).",
+      "effect": "That ion streams through, from the side where it is crowded to the side where it is scarce, with no ATP spent: facilitated diffusion."
+    },
+    {
+      "cause": "Many channels are gated: they open only when a signaling molecule binds or when the membrane voltage changes.",
+      "effect": "The cell controls when ions flow, so an ion rush can serve as a signal."
+    },
+    {
+      "cause": "A carrier protein binds a specific molecule, changes shape, and releases it on the other side, a few molecules at a time.",
+      "effect": "Uptake speeds up as the outside concentration rises, until every carrier is busy; then the rate levels off at a ceiling."
+    },
+    {
+      "cause": "The sodium-potassium pump uses one ATP to move three Na⁺ out and two K⁺ in, against both gradients.",
+      "effect": "Na⁺ stays crowded outside and K⁺ crowded inside, and slightly more positive charge leaves than enters."
+    },
+    {
+      "cause": "With those gradients in place, K⁺ leaks out through open potassium channels and leaves negative charges behind.",
+      "effect": "The inside of the cell is negative (a membrane potential, about −70 mV in a resting nerve cell): an electrochemical gradient that stores energy for later work."
+    }
+  ],
+  "ideas": [
+    "<b>Facilitated diffusion</b> is still diffusion: the substance moves down its gradient and no ATP is spent. The protein only provides a path through the bilayer.",
+    "<b>Channels</b> are tunnels (fast, millions of ions per second). <b>Carriers</b> bind and change shape (slower, and they max out when every carrier is busy). <b>Pumps</b> spend ATP to push substances against their gradient.",
+    "An ion feels two pushes: its concentration difference and the charge difference across the membrane. Together they make its <b>electrochemical gradient</b>. For Na⁺ entering a cell, both push inward.",
+    "A gradient is stored energy. The pump spends ATP to build the Na⁺ and K⁺ gradients; nerve signals, and other transport you will meet in topic 2.8, spend that stored energy."
+  ],
+  "misconception": {
+    "wrong": "Any transport that uses a protein must use energy, so facilitated diffusion is a kind of active transport.",
+    "right": "The protein only gives the substance a path. Whether energy is needed depends on direction: down the gradient is passive (channels and most carriers), against it needs energy (pumps)."
+  },
+  "check": [
+    "bio-facilitated-diffusion-1",
+    "bio-facilitated-diffusion-2",
+    "bio-facilitated-diffusion-3",
+    "bio-facilitated-diffusion-4",
+    "bio-facilitated-diffusion-5",
+    "bio-facilitated-diffusion-11",
+    "bio-facilitated-diffusion-14"
+  ],
+  "summary": "<p>Ions and polar molecules need transport proteins to cross the hydrophobic bilayer. Channels form tunnels, often gated so the cell controls when they open; carriers bind and change shape, so their uptake rate levels off once every carrier is busy. Both are facilitated diffusion: passive, down the gradient. Pumps such as the sodium-potassium pump spend ATP to move ions against their gradients (3 Na⁺ out, 2 K⁺ in). The resulting electrochemical gradients, including a negative membrane potential, store energy the cell uses later.</p>",
+  "connections": [
+    {
+      "href": "../notes/membrane-transport.html",
+      "label": "Notes: Membrane Transport (passive and active transport)"
+    },
+    {
+      "href": "../notes/membrane-permeability.html",
+      "label": "Notes: Membrane Permeability (what crosses the bilayer on its own)"
+    },
+    {
+      "href": "../notes/plasma-membrane.html",
+      "label": "Notes: Plasma Membrane (membrane proteins and receptors)"
+    }
+  ]
+}

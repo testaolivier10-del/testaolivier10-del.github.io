@@ -1,0 +1,8 @@
+{
+  "simpson-formula": {
+    "def": "The formula-sheet equation for Simpson's diversity index: D = 1 − Σ(n/N)², where n is the number of individuals of one species and N the total of all species. D runs from 0 (one species) toward 1 (many, evenly represented species)."
+  },
+  "compare-diversity": {
+    "def": "Using Simpson's index (with species richness and evenness) to judge which of two communities, or one community at two times, is more diverse, and explaining the difference."
+  }
+}

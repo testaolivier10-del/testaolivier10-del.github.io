@@ -1,0 +1,1151 @@
+{
+  "stimuli": {
+    "photosynthesis-s1": {
+      "kind": "graph",
+      "title": "Pigments and the action spectrum",
+      "text": "<p>The graph shows how strongly three pigments of green algae and leaves, extracted and dissolved separately, absorb each wavelength of visible light (absorption spectra). It also shows the action spectrum: the rate of O₂ release by a thin suspension of green algae lit with equal intensities of each wavelength, as a percentage of the highest rate.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Wavelength",
+          "unit": "nm",
+          "min": 400,
+          "max": 700,
+          "step": 50
+        },
+        "y": {
+          "label": "Absorption or rate",
+          "unit": "% of maximum",
+          "min": 0,
+          "max": 100,
+          "step": 20
+        },
+        "series": [
+          {
+            "name": "Chlorophyll a (absorption)",
+            "points": [
+              [
+                400,
+                45
+              ],
+              [
+                425,
+                85
+              ],
+              [
+                450,
+                40
+              ],
+              [
+                475,
+                12
+              ],
+              [
+                500,
+                5
+              ],
+              [
+                525,
+                4
+              ],
+              [
+                550,
+                4
+              ],
+              [
+                575,
+                6
+              ],
+              [
+                600,
+                14
+              ],
+              [
+                625,
+                25
+              ],
+              [
+                650,
+                60
+              ],
+              [
+                675,
+                72
+              ],
+              [
+                700,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Chlorophyll b (absorption)",
+            "points": [
+              [
+                400,
+                15
+              ],
+              [
+                425,
+                35
+              ],
+              [
+                450,
+                85
+              ],
+              [
+                475,
+                60
+              ],
+              [
+                500,
+                15
+              ],
+              [
+                525,
+                5
+              ],
+              [
+                550,
+                5
+              ],
+              [
+                575,
+                8
+              ],
+              [
+                600,
+                15
+              ],
+              [
+                625,
+                40
+              ],
+              [
+                650,
+                55
+              ],
+              [
+                675,
+                10
+              ],
+              [
+                700,
+                2
+              ]
+            ]
+          },
+          {
+            "name": "Carotenoids (absorption)",
+            "points": [
+              [
+                400,
+                30
+              ],
+              [
+                425,
+                55
+              ],
+              [
+                450,
+                75
+              ],
+              [
+                475,
+                80
+              ],
+              [
+                500,
+                65
+              ],
+              [
+                525,
+                15
+              ],
+              [
+                550,
+                3
+              ],
+              [
+                575,
+                1
+              ],
+              [
+                600,
+                0
+              ],
+              [
+                625,
+                0
+              ],
+              [
+                650,
+                0
+              ],
+              [
+                675,
+                0
+              ],
+              [
+                700,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Rate of O₂ release (action spectrum)",
+            "points": [
+              [
+                400,
+                55
+              ],
+              [
+                425,
+                85
+              ],
+              [
+                450,
+                90
+              ],
+              [
+                475,
+                85
+              ],
+              [
+                500,
+                65
+              ],
+              [
+                525,
+                35
+              ],
+              [
+                550,
+                25
+              ],
+              [
+                575,
+                30
+              ],
+              [
+                600,
+                45
+              ],
+              [
+                625,
+                65
+              ],
+              [
+                650,
+                85
+              ],
+              [
+                675,
+                90
+              ],
+              [
+                700,
+                30
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "photosynthesis-s2": {
+      "kind": "table",
+      "title": "Chloroplasts and a blue dye",
+      "text": "<p>DCPIP is a blue dye that becomes colorless when it is reduced (gains electrons). In isolated chloroplasts it can accept electrons from the light reactions in place of NADP⁺. Blue DCPIP absorbs light at 600 nm, so as it is reduced the absorbance at 600 nm falls. DCMU is a weed killer that binds a protein in photosystem II and blocks electrons from leaving photosystem II. Five tubes were set up at 20 °C and the absorbance read every 5 minutes.</p>",
+      "table": {
+        "caption": "Absorbance at 600 nm",
+        "cols": [
+          "Tube",
+          "Contents and conditions",
+          "0 min",
+          "5 min",
+          "10 min",
+          "15 min",
+          "20 min"
+        ],
+        "rows": [
+          [
+            "A",
+            "chloroplasts + DCPIP, light",
+            "0.80",
+            "0.62",
+            "0.45",
+            "0.30",
+            "0.18"
+          ],
+          [
+            "B",
+            "chloroplasts + DCPIP, dark",
+            "0.80",
+            "0.80",
+            "0.79",
+            "0.80",
+            "0.79"
+          ],
+          [
+            "C",
+            "boiled chloroplasts + DCPIP, light",
+            "0.80",
+            "0.79",
+            "0.79",
+            "0.78",
+            "0.78"
+          ],
+          [
+            "D",
+            "DCPIP, no chloroplasts, light",
+            "0.80",
+            "0.80",
+            "0.80",
+            "0.80",
+            "0.80"
+          ],
+          [
+            "E",
+            "chloroplasts + DCPIP + DCMU, light",
+            "0.80",
+            "0.79",
+            "0.78",
+            "0.78",
+            "0.77"
+          ]
+        ]
+      }
+    },
+    "photosynthesis-s3": {
+      "kind": "graph",
+      "title": "Light, carbon dioxide and a leaf",
+      "text": "<p>A leaf was sealed in a chamber at 25 °C and its net CO₂ uptake was measured (CO₂ taken in by photosynthesis minus CO₂ released by the leaf's own cellular respiration) at different light intensities. The experiment was run with air at normal CO₂ (0.04%) and with CO₂ raised to 0.10%. Points are means of 5 leaves; bars show ± 2 standard errors.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Light intensity",
+          "unit": "% of full sunlight",
+          "min": 0,
+          "max": 100,
+          "step": 20
+        },
+        "y": {
+          "label": "Net CO₂ uptake",
+          "unit": "µmol/m²/s",
+          "min": -4,
+          "max": 20,
+          "step": 4
+        },
+        "series": [
+          {
+            "name": "0.04% CO₂",
+            "points": [
+              [
+                0,
+                -1.5,
+                0.4
+              ],
+              [
+                10,
+                3,
+                0.5
+              ],
+              [
+                20,
+                6.5,
+                0.6
+              ],
+              [
+                40,
+                9,
+                0.7
+              ],
+              [
+                60,
+                9.5,
+                0.7
+              ],
+              [
+                80,
+                9.6,
+                0.8
+              ],
+              [
+                100,
+                9.6,
+                0.8
+              ]
+            ]
+          },
+          {
+            "name": "0.10% CO₂",
+            "points": [
+              [
+                0,
+                -1.5,
+                0.4
+              ],
+              [
+                10,
+                3.2,
+                0.5
+              ],
+              [
+                20,
+                7,
+                0.6
+              ],
+              [
+                40,
+                13,
+                0.8
+              ],
+              [
+                60,
+                16.5,
+                0.9
+              ],
+              [
+                80,
+                18,
+                0.9
+              ],
+              [
+                100,
+                18.3,
+                1
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "photosynthesis-s4": {
+      "kind": "setup",
+      "title": "ATP in the dark",
+      "text": "<p>Thylakoids were isolated from spinach chloroplasts and kept in the dark for the whole experiment. Each sample was first soaked in a buffer of one pH until the inside of the thylakoids reached that pH. It was then moved quickly into a second buffer containing ADP and Pi, and ATP was measured 15 seconds later.</p>",
+      "table": {
+        "caption": "ATP made in the dark (nmol per mg of chlorophyll; mean of 3 trials)",
+        "cols": [
+          "Sample",
+          "Soaked at",
+          "Moved to",
+          "Added to second buffer",
+          "ATP made"
+        ],
+        "rows": [
+          [
+            "1",
+            "pH 4",
+            "pH 8",
+            "—",
+            "100"
+          ],
+          [
+            "2",
+            "pH 8",
+            "pH 8",
+            "—",
+            "2"
+          ],
+          [
+            "3",
+            "pH 4",
+            "pH 4",
+            "—",
+            "3"
+          ],
+          [
+            "4",
+            "pH 4",
+            "pH 8",
+            "a chemical that lets H⁺ leak across membranes",
+            "4"
+          ],
+          [
+            "5",
+            "pH 4",
+            "pH 8",
+            "a drug that blocks the channel of ATP synthase",
+            "3"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-photosynthesis-1",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "photosynthesis-s1",
+      "q": "In which range of wavelengths is the rate of O₂ release lowest?",
+      "options": [
+        "525-575 nm (green)",
+        "425-475 nm (blue)",
+        "650-675 nm (red)",
+        "400-425 nm (violet)"
+      ],
+      "correct": 0,
+      "fixed": true,
+      "why": {
+        "correct": "The action spectrum dips to 25-35% between 525 and 575 nm, the green part of the spectrum, where the pigments absorb least.",
+        "options": [
+          "The action spectrum is lowest here, at 25-35% of maximum.",
+          "Blue light gives 85-90% of the maximum rate.",
+          "Red light gives 85-90% of the maximum rate.",
+          "Violet light gives 55-85% of the maximum rate."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-2",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "photosynthesis-s1",
+      "q": "At 475 nm, chlorophyll a absorbs only 12% as strongly as at its peak, yet O₂ release is 85% of maximum. Which explanation do the data best support?",
+      "options": [
+        "Chlorophyll b and carotenoids absorb strongly at 475 nm and pass the energy on to chlorophyll a in the photosystems.",
+        "Light at 475 nm carries more energy per photon, so the little that chlorophyll a absorbs is enough to drive photosynthesis at full speed.",
+        "Carotenoids split water themselves at 475 nm, producing O₂ without any help from chlorophyll a or the photosystems.",
+        "The action spectrum was measured on living cells, so its values are higher than absorption at each wavelength."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Chlorophyll b (60%) and carotenoids (80%) absorb strongly at 475 nm. As accessory pigments in the light-harvesting complex, they pass absorbed energy to the reaction center's chlorophyll a.",
+        "options": [
+          "Accessory pigments widen the range of light a plant can use.",
+          "Shorter wavelengths do carry more energy per photon, but a photon must be absorbed to be used, and chlorophyll a absorbs few here.",
+          "Water is split at photosystem II's reaction center, not by carotenoids on their own.",
+          "At 550 nm the cells' rate (25%) is still low, so measuring living cells does not raise the rate everywhere; the pigments explain the pattern."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-3",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "photosynthesis-s1",
+      "q": "Two identical cultures of these algae are grown for a week, one under light of 550 nm and one under light of 450 nm at the same intensity. What is the most likely result?",
+      "options": [
+        "The culture under 550 nm grows less, because its pigments absorb little of that light.",
+        "The culture under 550 nm grows more, because green light is the color algae reflect and use best.",
+        "Both grow the same, because the two lights have the same intensity and so deliver the same usable energy.",
+        "The culture under 450 nm grows less, because carotenoids absorb blue light and block it from chlorophyll."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 550 nm the action spectrum is 25%, against 90% at 450 nm. Less absorbed light means less ATP and NADPH and less sugar.",
+        "options": [
+          "Light that is not absorbed cannot drive photosynthesis.",
+          "Reflected light is the light the cells do not use; green algae look green because they reflect it.",
+          "The same intensity is not the same absorbed energy; absorption differs hugely between the two wavelengths.",
+          "Carotenoids pass absorbed energy on to chlorophyll a; they help rather than block."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-4",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "3.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "photosynthesis-s1",
+      "q": "A long strand of alga is lit with a spectrum spread from violet to red along its length. Bacteria that swim toward higher O₂ are added. Where will the bacteria gather most?",
+      "options": [
+        "Along the blue and red parts of the strand",
+        "Along the green and yellow parts of the strand",
+        "Evenly along the whole strand",
+        "Along the violet end, where the light energy per photon is highest"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The bacteria follow O₂, and O₂ release is highest in blue (425-475 nm) and red (650-675 nm) light, matching the action spectrum.",
+        "options": [
+          "These are the parts where the action spectrum, and so O₂ release, peaks.",
+          "Green and yellow light give the lowest O₂ release.",
+          "O₂ release varies strongly with wavelength, so the bacteria will not spread evenly.",
+          "Energy per photon matters only if the photon is absorbed; the action spectrum at 400 nm (55%) is below the blue and red peaks."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-5",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 3,
+      "stimulus": "photosynthesis-s2",
+      "q": "In tube A, what is the average rate of change in absorbance over the 20 minutes, in absorbance units per minute? Give the size of the change (no sign) to three decimal places.",
+      "numeric": {
+        "answer": 0.031,
+        "tol": 0.001,
+        "unit": "per min",
+        "decimals": 3
+      },
+      "why": {
+        "correct": "Rate = (0.80 − 0.18) ÷ 20 min = 0.62 ÷ 20 = 0.031 absorbance units per minute (a decrease)."
+      }
+    },
+    {
+      "id": "bio-photosynthesis-6",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "photosynthesis-s2",
+      "q": "What does the fall in absorbance in tube A show?",
+      "options": [
+        "Illuminated chloroplasts released electrons, which reduced the DCPIP and turned it colorless.",
+        "Illuminated chloroplasts made sugar, which mixed with the DCPIP and diluted its blue color.",
+        "Light alone bleached the DCPIP, because light energy breaks down blue dyes over time.",
+        "Chloroplasts in the light took in DCPIP through their membranes, removing it from the solution."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "DCPIP loses its color when reduced. In the light, chloroplasts pass electrons from water through the light reactions to DCPIP instead of NADP⁺.",
+        "options": [
+          "The dye was reduced by electrons flowing out of the light reactions.",
+          "Isolated chloroplasts in this setup have no CO₂ source mentioned, and sugar does not reduce DCPIP; the color change tracks electron flow.",
+          "Tube D, DCPIP in the light without chloroplasts, stayed at 0.80, so light alone does not bleach it.",
+          "Nothing suggests uptake of dye; boiled chloroplasts (tube C) left the dye in solution, pointing to a working process, not absorption."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-7",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "photosynthesis-s2",
+      "q": "Which comparison shows that the reaction in tube A requires working chloroplast proteins, not just chloroplast material?",
+      "options": [
+        "Tube A with tube C",
+        "Tube A with tube B",
+        "Tube A with tube D",
+        "Tube B with tube D"
+      ],
+      "correct": 0,
+      "fixed": true,
+      "why": {
+        "correct": "Tube A and tube C differ only in boiling. Boiling denatures proteins such as the photosystems, and tube C's absorbance barely changed.",
+        "options": [
+          "Only boiling differs, so the comparison tests whether intact, folded proteins are needed.",
+          "Tube A and tube B differ in light, so they show that light is required.",
+          "Tube A and tube D differ in whether chloroplasts are present at all, not in whether their proteins work.",
+          "Neither tube B nor tube D changed, and they differ in two ways (light and chloroplasts), so this comparison tests nothing clearly."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-8",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "photosynthesis-s2",
+      "q": "In tube E, DCMU blocks electrons from leaving photosystem II. Which prediction about tube E is best supported?",
+      "options": [
+        "O₂ release and H⁺ pumping by the cytochrome complex both stop, because electron flow through the chain stops.",
+        "O₂ release continues, because water splitting happens before the block, but no NADPH or ATP is made.",
+        "ATP is still made at the normal rate, because ATP synthase does not depend on electron transport.",
+        "Photosystem I keeps reducing DCPIP at the normal rate, because it receives its electrons directly from water."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With electrons stuck at photosystem II, it cannot accept more from water, so water splitting and O₂ release stop. No electrons reach the cytochrome complex, so H⁺ pumping stops too, and the gradient for ATP fades.",
+        "options": [
+          "A block anywhere on the chain stops flow along all of it, including water splitting at the start.",
+          "Photosystem II splits water only to replace electrons it has passed on; if it cannot pass them on, splitting stops.",
+          "ATP synthase needs the H⁺ gradient that electron transport builds.",
+          "Photosystem I receives electrons from the chain that starts at photosystem II, not from water; tube E's dye barely changed."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-9",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "photosynthesis-s2",
+      "q": "In an intact chloroplast, which molecule receives the electrons that DCPIP receives in this experiment?",
+      "options": [
+        "NADP⁺",
+        "O₂",
+        "CO₂",
+        "ATP"
+      ],
+      "correct": 0,
+      "fixed": false,
+      "why": {
+        "correct": "Electrons from photosystem I normally reduce NADP⁺ to NADPH. DCPIP stands in for NADP⁺ and changes color when reduced.",
+        "options": [
+          "NADP⁺ is the natural final acceptor of the light reactions' electrons.",
+          "O₂ is released by water splitting; it does not accept these electrons in photosynthesis.",
+          "CO₂ is reduced later, in the Calvin cycle, by NADPH, not directly by the light reactions.",
+          "ATP is made by ATP synthase using the H⁺ gradient; it does not accept electrons."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-10",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "photosynthesis-s3",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "Below 20% light the two curves overlap, but above 40% the leaf at 0.10% CO₂ takes up clearly more CO₂.",
+        "At each light intensity, the leaf at 0.10% CO₂ takes up about twice as much CO₂ as the leaf at 0.04%.",
+        "At 0.04% CO₂ uptake keeps rising steadily up to full sunlight, while at 0.10% it levels off early.",
+        "In the dark both leaves take up a small amount of CO₂, about 1.5 µmol/m²/s."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 0-20% light the means differ by 0.5 or less and the error bars overlap. From 40% up, the 0.10% curve is higher by 4-9 µmol/m²/s with no overlap.",
+        "options": [
+          "Same at low light, different at high light: that is the pattern.",
+          "At 10% light the values are 3.0 and 3.2, nowhere near double.",
+          "This reverses the curves: 0.04% levels off near 9.6, while 0.10% keeps rising to 18.3.",
+          "In the dark net uptake is −1.5: the leaf releases CO₂ rather than taking it up."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-11",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "photosynthesis-s3",
+      "q": "Which factor most limits photosynthesis at 10% light and at 80% light in normal air (0.04% CO₂)?",
+      "options": [
+        "At 10%, light intensity; at 80%, CO₂ concentration",
+        "At 10%, CO₂ concentration; at 80%, light intensity",
+        "At both, light intensity",
+        "At both, CO₂ concentration"
+      ],
+      "correct": 0,
+      "fixed": true,
+      "why": {
+        "correct": "At 10% light, adding CO₂ changes nothing (3.0 against 3.2) but more light raises uptake, so light limits. At 80% in normal air, more light changes nothing (9.5 to 9.6) but extra CO₂ nearly doubles uptake, so CO₂ limits.",
+        "options": [
+          "A limiting factor is the one whose increase raises the rate; that is light at 10% and CO₂ at 80%.",
+          "At 10%, extra CO₂ barely helps; at 80%, extra light barely helps.",
+          "At 80% the curve for normal air is flat, so more light does not help there.",
+          "At 10% the two CO₂ levels give the same uptake, so CO₂ is not limiting there."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-12",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "photosynthesis-s3",
+      "q": "Why is net CO₂ uptake negative at 0% light?",
+      "options": [
+        "With no light, photosynthesis stops but the leaf's cells keep releasing CO₂ by cellular respiration.",
+        "With no light, the Calvin cycle runs backward and breaks sugar down, releasing CO₂ from the stroma.",
+        "With no light, the stomata release the CO₂ stored in the leaf during the earlier light treatments.",
+        "Negative values are measurement errors, because a leaf is unable to release more CO₂ than it takes in."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Plant cells carry out cellular respiration all the time. In the dark nothing offsets it, so the leaf gives off CO₂ and net uptake is negative.",
+        "options": [
+          "Respiration continues in light and dark; only photosynthesis needs light.",
+          "The Calvin cycle builds sugar from CO₂; breaking sugar down is cellular respiration, a different pathway.",
+          "The value stays at −1.5 at steady state in both CO₂ levels, matching ongoing respiration rather than a stored pool emptying.",
+          "Both curves give the same −1.5 with small error bars, which is a real, repeatable value, not an error."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-13",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "photosynthesis-s3",
+      "q": "At full sunlight (100%), by what percentage does raising CO₂ from 0.04% to 0.10% increase net CO₂ uptake? Give a whole number.",
+      "numeric": {
+        "answer": 91,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Percent change = (new − old) ÷ old × 100 = (18.3 − 9.6) ÷ 9.6 × 100 = 90.6%, which rounds to 91%."
+      }
+    },
+    {
+      "id": "bio-photosynthesis-14",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "photosynthesis-s3",
+      "q": "The run at 0.10% CO₂ and full sunlight is repeated with the chamber cooled from 25 °C to 10 °C. Which prediction is best supported?",
+      "options": [
+        "Net CO₂ uptake will fall, because the Calvin cycle's enzymes run more slowly in the cold.",
+        "Net CO₂ uptake will rise, because the cold leaf respires less and so releases less CO₂.",
+        "Net CO₂ uptake will stay at 18.3, because light and CO₂ are the main factors that control photosynthesis, and neither changed.",
+        "Net CO₂ uptake will fall to zero, because chlorophyll stops absorbing light at 10 °C."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With light and CO₂ both high, the limit shifts to the enzyme reactions of the Calvin cycle, and enzymes slow down at low temperature (fewer energetic collisions).",
+        "options": [
+          "Temperature becomes the limiting factor when light and CO₂ are plentiful.",
+          "Respiration does slow, but it is small (1.5); the much larger slowing of the Calvin cycle dominates.",
+          "Temperature also affects photosynthesis, through its enzymes.",
+          "Light absorption by pigments hardly depends on temperature; enzymes slow, but the leaf does not stop."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-15",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "photosynthesis-s4",
+      "q": "Which claim do the results for samples 1-3 best support?",
+      "options": [
+        "A difference in H⁺ concentration across the thylakoid membrane is enough to make ATP, even with no light.",
+        "Light is needed for ATP synthase to make ATP, because no sample made ATP in the dark.",
+        "Thylakoids make ATP whenever they are placed in a buffer of pH 8, whatever treatment they had beforehand.",
+        "Thylakoids make ATP when their inside is less acidic than the buffer around them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Only sample 1 had a gradient (inside pH 4, outside pH 8), and only it made much ATP, in the dark. This supports chemiosmosis: the H⁺ gradient itself drives ATP synthesis.",
+        "options": [
+          "The gradient, not light, was the energy source; light normally just builds the gradient.",
+          "Sample 1 made 100 nmol of ATP in the dark.",
+          "Sample 2 was also moved to pH 8 but had no gradient, and made almost none.",
+          "In sample 1 the inside (pH 4) was more acidic, with more H⁺, than the outside."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-16",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "photosynthesis-s4",
+      "q": "Why did sample 4, with a chemical that lets H⁺ leak across membranes, make almost no ATP?",
+      "options": [
+        "H⁺ leaked across the membrane instead of through ATP synthase, so the gradient ran down without making ATP.",
+        "The chemical destroyed the ADP and Pi in the second buffer, so ATP synthase had nothing to join together into ATP.",
+        "The chemical blocked the channel of ATP synthase, as the drug in sample 5 did.",
+        "The chemical raised the pH inside the thylakoids to 4, so the inside became more acidic."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "ATP synthase makes ATP only as H⁺ pass through it. If H⁺ can cross anywhere, they run down the gradient by the leak, and its energy is lost as heat.",
+        "options": [
+          "A leak lets the gradient run down without passing through ATP synthase.",
+          "The chemical acts on membranes; nothing suggests it destroys ADP or Pi.",
+          "The stem says the chemical makes membranes leaky; sample 5's drug acts on ATP synthase itself, a different mechanism with the same result.",
+          "Raising pH makes a solution less acidic; and leaking H⁺ out would raise the inner pH toward 8, erasing the gradient."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-17",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "photosynthesis-s4",
+      "q": "A new sample is soaked at pH 4 and moved to pH 9 instead of pH 8. Compared with sample 1, how much ATP is it most likely to make?",
+      "options": [
+        "More, because the H⁺ gradient is ten times steeper and stores more energy.",
+        "Less, because a pH of 9 is too basic for ATP synthase to work properly.",
+        "The same, because ATP synthase makes ATP at one fixed rate when any gradient is present.",
+        "Very little, because H⁺ flow through ATP synthase works just at pH 8 outside."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "pH 4 to pH 9 is a 10⁵-fold difference in H⁺ concentration, against 10⁴ for pH 4 to pH 8. A steeper gradient drives more H⁺ through ATP synthase.",
+        "options": [
+          "More stored energy in the gradient means more ATP.",
+          "pH 9 is close to the normal stroma pH of about 8, not an extreme that would denature the enzyme.",
+          "The amount of ATP depends on how much H⁺ flows, which depends on the size of the gradient.",
+          "Nothing in the setup makes pH 8 special; any outside pH higher than the inside gives a gradient."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-18",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "photosynthesis-s4",
+      "q": "Why did the researchers keep the thylakoids in the dark for the whole experiment?",
+      "options": [
+        "So light could not build an H⁺ gradient by electron transport, leaving the pH difference as the energy source.",
+        "So the pigments would not absorb the ATP produced by ATP synthase and break it down again into ADP and Pi.",
+        "So the thylakoids would not split the buffer's water and change its pH from 8 to some other value.",
+        "So the Calvin cycle would run, since it works best in the dark and would use up any ATP that was made in the light."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In light, electron transport pumps H⁺ and makes ATP anyway. Keeping them dark removes that source, so any ATP must come from the pH difference the researchers created.",
+        "options": [
+          "Removing light removes the normal way the gradient is built, isolating the variable being tested.",
+          "Pigments absorb light, not ATP.",
+          "Splitting water would also be driven by light, but the main reason is to stop all light-driven electron flow, including H⁺ pumping; the buffer holds pH steady.",
+          "The Calvin cycle does not need darkness; it needs ATP and NADPH, and it is not present in isolated thylakoids anyway."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-19",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "1.B",
+      "level": "recall",
+      "diff": 1,
+      "q": "Where does the Calvin cycle take place, and which products of the light reactions does it use?",
+      "options": [
+        "In the stroma, using ATP and NADPH",
+        "In the thylakoid space, using ATP and O₂",
+        "In the thylakoid membrane, using light and water",
+        "In the stroma, using O₂ and glucose"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The Calvin cycle's enzymes are in the stroma, and it spends ATP (energy) and NADPH (electrons) to reduce CO₂ to sugar.",
+        "options": [
+          "Stroma, ATP and NADPH: all three are right.",
+          "The thylakoid space collects H⁺; O₂ is a waste product the Calvin cycle does not use.",
+          "Light and water are used by the light reactions, not by the Calvin cycle.",
+          "The Calvin cycle makes sugar from CO₂; it does not use O₂ or glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-20",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Algae were given water containing heavy oxygen (¹⁸O) and normal CO₂. A second batch got normal water and CO₂ containing ¹⁸O. In which batch will the O₂ released contain ¹⁸O, and why?",
+      "options": [
+        "The first batch, because O₂ comes from splitting water at photosystem II.",
+        "The second batch, because the O₂ is released when carbon is removed from CO₂ in the Calvin cycle.",
+        "Both batches equally, because O₂ is made from a mixture of the oxygen in water and in CO₂.",
+        "Neither batch, because ¹⁸O is too heavy to be built into molecules by living cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Water splitting (2 H₂O → 4 H⁺ + 4 e⁻ + O₂) is the source of the O₂ released. The oxygen atoms of CO₂ end up in sugar and water made by the Calvin cycle.",
+        "options": [
+          "Labeled water gives labeled O₂: the classic evidence that O₂ comes from water.",
+          "The Calvin cycle keeps the oxygen of CO₂ in its products; it releases no O₂.",
+          "All the O₂ released comes from water.",
+          "Cells use heavy isotopes normally; that is why the labels can be traced."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-21",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Which observation best supports the idea that chloroplasts descend from cyanobacteria?",
+      "options": [
+        "Chloroplasts have their own circular DNA and photosystems very similar to those of cyanobacteria.",
+        "Chloroplasts are found in plant cells but not in animal cells, which use mitochondria instead.",
+        "Chloroplasts are green, and green is the most common color of bacteria found in ponds and lakes.",
+        "Chloroplasts make sugar, and bacteria in general are able to make sugar from carbon dioxide and water."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Circular DNA like a bacterial chromosome, bacteria-like ribosomes, a double membrane and photosystems matching those of cyanobacteria all point to a cyanobacterial ancestor taken in by endosymbiosis.",
+        "options": [
+          "Shared, specific molecular features are the evidence for common ancestry.",
+          "Plant cells have mitochondria too, and where chloroplasts occur says nothing about where they came from.",
+          "Most bacteria are not green, and color alone is weak evidence.",
+          "Most bacteria cannot photosynthesize, so this claim is false."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-22",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two products of the light reactions that the Calvin cycle uses directly.",
+      "options": [
+        "ATP",
+        "NADPH",
+        "O₂",
+        "CO₂",
+        "Glucose"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "fixed": true,
+      "why": {
+        "correct": "The light reactions make ATP, NADPH and O₂; the Calvin cycle uses the ATP for energy and the NADPH for electrons.",
+        "options": [
+          "ATP supplies energy for carbon fixation and for regenerating the cycle's starting molecule.",
+          "NADPH supplies the electrons that reduce CO₂ to sugar.",
+          "O₂ is released as a by-product; the Calvin cycle does not use it.",
+          "CO₂ comes from the air, not from the light reactions.",
+          "Glucose is made from the Calvin cycle's products; it is not an input."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-23",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "The Calvin cycle is sometimes called the light-independent reactions. A student claims it therefore runs fastest at night. Which response is best?",
+      "options": [
+        "The claim is wrong: the cycle needs ATP and NADPH from the light reactions, so it slows within minutes of darkness.",
+        "The claim is right: without light the light reactions stop, leaving more chloroplast resources for the Calvin cycle.",
+        "The claim is right: the Calvin cycle's enzymes are damaged by light, so they work best at night when it is dark.",
+        "The claim is wrong: the Calvin cycle needs light to be absorbed directly by its enzymes in the stroma at each step."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Light-independent means light is not absorbed by the cycle's own steps. But the cycle depends on the light reactions' ATP and NADPH, which run out soon after dark.",
+        "options": [
+          "No light means no new ATP and NADPH, so the Calvin cycle slows and stops.",
+          "The Calvin cycle uses the light reactions' products; stopping them starves it.",
+          "Nothing suggests light damages these enzymes; they work during the day.",
+          "The cycle does not absorb light itself; the problem in the dark is lack of ATP and NADPH."
+        ]
+      }
+    },
+    {
+      "id": "bio-photosynthesis-24",
+      "type": "predict",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A plant that has been in bright light is suddenly moved into darkness. Predict the change in each variable over the next few minutes.",
+      "variables": [
+        {
+          "name": "O₂ released by the chloroplasts",
+          "answer": "down",
+          "why": "Without light, photosystem II stops losing electrons, so water is no longer split and no O₂ is released."
+        },
+        {
+          "name": "H⁺ concentration in the thylakoid space",
+          "answer": "down",
+          "why": "Electron transport stops pumping H⁺ in, while H⁺ keeps flowing out through ATP synthase, so the gradient runs down."
+        },
+        {
+          "name": "Rate of CO₂ fixation by the Calvin cycle",
+          "answer": "down",
+          "why": "As ATP and NADPH from the light reactions run out, the Calvin cycle slows and stops."
+        },
+        {
+          "name": "Amount of chlorophyll in the leaf",
+          "answer": "none",
+          "why": "Pigments are not used up in a few minutes; the leaf keeps the same chlorophyll whether or not light is shining."
+        }
+      ],
+      "why": {
+        "correct": "Darkness stops the light reactions at once (no O₂, no new gradient), and the Calvin cycle follows as its ATP and NADPH run out. The pigments themselves stay."
+      }
+    },
+    {
+      "id": "bio-photosynthesis-25",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "photosynthesis",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "In the thylakoid membrane, what does the energy released by electrons moving along the electron transport chain do?",
+      "options": [
+        "It pumps H⁺ from the stroma into the thylakoid space, building a gradient that drives ATP synthase.",
+        "It joins ADP and Pi directly, with each electron that passes making one ATP at the cytochrome complex.",
+        "It splits CO₂ into carbon and O₂, which is the source of the oxygen released by plants in the light.",
+        "It is stored as heat in the thylakoid space, which warms the Calvin cycle's enzymes so they work faster."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Electron transport releases energy in small steps; the cytochrome complex uses it to pump H⁺ into the thylakoid space. ATP synthase then uses the H⁺ gradient to make ATP (chemiosmosis).",
+        "options": [
+          "Energy goes into the H⁺ gradient first, then into ATP.",
+          "ATP is made by ATP synthase from the gradient, not directly at the cytochrome complex.",
+          "CO₂ is never split; the O₂ comes from water at photosystem II.",
+          "Heat cannot be used to do the cell's work, and the energy is captured in the gradient instead."
+        ]
+      }
+    }
+  ]
+}

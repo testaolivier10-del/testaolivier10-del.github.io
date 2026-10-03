@@ -1,0 +1,11 @@
+{
+  "standard-deviation": {
+    "def": "A measure of how far the values in a sample typically sit from their mean: s = √[Σ(x − x̄)² ÷ (n − 1)]. It has the same units as the data, and a larger s means more spread."
+  },
+  "standard-error": {
+    "def": "The standard error of the mean, SE = s ÷ √n: an estimate of how much the sample mean would vary if you repeated the whole sample. It shrinks as the sample gets larger."
+  },
+  "normal-distribution": {
+    "def": "A symmetric, bell-shaped spread of values around the mean. About 68% of values fall within 1 standard deviation of the mean and about 95% within 2."
+  }
+}

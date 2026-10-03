@@ -1,0 +1,17 @@
+{
+  "claim": {
+    "def": "A one-sentence answer to the question that the data can support or refute, such as \"Catalase from potato works fastest near pH 7.\""
+  },
+  "evidence": {
+    "def": "The specific data that back the claim, quoted with numbers and units and compared across groups, such as \"4.8 mL O₂/min at pH 7 versus 2.1 at pH 5 and 3.0 at pH 9\"."
+  },
+  "reasoning": {
+    "def": "The biological explanation of why the evidence supports the claim, linking the data to a principle (for example, how pH changes the charges in an active site). It is more than restating the data."
+  },
+  "cer": {
+    "def": "Claim-evidence-reasoning: a structure for a scientific argument. State the claim, give the evidence from the data, then explain with biology why that evidence supports the claim."
+  },
+  "limitations": {
+    "def": "Weaknesses in a study that limit what it can conclude, such as too few repeats, an uncontrolled variable, or conditions too narrow to generalize from, and sources of error in how measurements were made."
+  }
+}

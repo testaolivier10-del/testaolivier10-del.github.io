@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph construction — AP® Biology Notes | LevlPrep</title>
+<meta name="description" content="A table of temperatures every minute for two beakers is twelve numbers. Plot them and you see at once that one beaker warms twice as steeply as the other.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/stats-plots.html">
+<meta property="og:title" content="Graph construction — AP® Biology Notes | LevlPrep">
+<meta property="og:description" content="A table of temperatures every minute for two beakers is twelve numbers. Plot them and you see at once that one beaker warms twice as steeply as the other.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/stats-plots.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/stats-plots.html#reading",
+      "name": "Graph construction",
+      "url": "https://levlprep.com/bio/notes/stats-plots.html",
+      "description": "A table of temperatures every minute for two beakers is twelve numbers. Plot them and you see at once that one beaker warms twice as steeply as the other.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "graph construction biology practice",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Graph construction: notes",
+          "item": "https://levlprep.com/bio/notes/stats-plots.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-plots" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>7 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bio-toc-n">S</span>Mean, median, mode and range</a></li><li class="current" data-toc-t="stats-plots"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>Graph construction</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Why graph at all?</a><a href="#worked">Worked example: building a line graph and finding a slope</a><a href="#choice">Choosing the graph type</a><a href="#axes">Axes, scales and keys: where points are lost</a><a href="#reading">Reading a graph: trends, interpolation and extrapolation</a><a href="#correlation">Correlation is not causation</a></div></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bio-toc-n">S</span>Chi-square test</a></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Graph construction: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-plots.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">Graph construction</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">5 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-plots">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-plots.html&amp;title=Graph%20construction%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-plots.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<h2 id="why">Why graph at all?</h2>
+<p>A table of temperatures every minute for two beakers is twelve numbers. Plot them and you see at once that one beaker warms twice as steeply as the other. Graphs turn data into patterns you can describe and compare. On the exam you will read graphs in nearly every question set, and at least one free-response question asks you to build one by hand, scored on details: axes, labels, units, scale, plotting and <span class="gl" tabindex="0" data-c="graph-choice">graph type</span>.</p>
+
+<h2 id="worked">Worked example: building a line graph and finding a slope</h2>
+<figure  id="fig-graph" class="bio-figure"><div class="bio-figimg" data-fig="graph-anatomy"><img src="../figures/graph-anatomy.svg" alt="A line graph of water temperature against heating time for 100 g and 200 g of water. Callouts point to the title, the x-axis label &quot;Time (min)&quot; with an even scale, the y-axis label &quot;Temperature (°C)&quot;, the key naming the two lines, and a rise-over-run triangle showing the slope of the 100 g line: 30 °C over 5 min, or 6 °C per minute." width="640" height="380" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The parts of a correctly built graph, with the slope of the 100 g line shown as rise over run. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Data:</b> 100 g and 200 g of water, starting at 20 °C, heated on identical hot plates. Temperatures at 0, 1, 2, 3, 4, 5 min: 100 g: 20.0, 26.0, 32.1, 37.9, 44.0, 50.1 °C; 200 g: 20.0, 23.0, 26.1, 28.9, 32.0, 35.0 °C.</p>
+<ol>
+<li><b>Variables:</b> time is set (independent, <span class="gl" tabindex="0" data-c="axes">x-axis</span>); temperature is measured (dependent, y-axis).</li>
+<li><b>Graph type:</b> time is continuous, so a <span class="gl" tabindex="0" data-c="line-graph">line graph</span>.</li>
+<li><b>Axes:</b> "Time (min)" from 0 to 5 in steps of 1; "Temperature (°C)" from 0 to 60 in steps of 10. Even steps, and the data fill most of the grid.</li>
+<li><b>Plot</b> each point and join each set in order; add a <b>key</b>: "100 g water", "200 g water"; add a title.</li>
+<li><b><span class="gl" tabindex="0" data-c="slope">Slope</span></b> of the 100 g line = rise ÷ run = (50.1 − 20.0) °C ÷ (5 − 0) min = <b>6.0 °C/min</b>. For 200 g: 15.0 ÷ 5 = <b>3.0 °C/min</b>.</li>
+</ol>
+</div>
+<p>The slope has units: the y-unit per x-unit. Here twice the mass of water warms half as steeply, because equal heat per minute is spread over twice as many grams, and water's <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="specific-heat">specific heat</a> is a fixed amount per gram.</p>
+
+<h2 id="choice">Choosing the graph type</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Which graph for which data"><table class="compare">
+<caption>Which graph for which data</caption>
+<thead><tr><th scope="col">Graph</th><th scope="col">Use it when</th><th scope="col">Example</th></tr></thead>
+<tbody>
+<tr><th scope="row">Line graph</th><td>The <a class="gl" href="../notes/design-variables.html" data-c="independent-variable">independent variable</a> is continuous (time, temperature, concentration)</td><td>Water temperature every minute</td></tr>
+<tr><th scope="row">Bar graph</th><td>The independent variable is a set of categories</td><td><a class="gl" href="../notes/macromolecules-intro.html" data-c="monomer">Monomer</a> released by four different <a class="gl" href="../notes/macromolecules-intro.html" data-c="enzyme">enzymes</a></td></tr>
+<tr><th scope="row">Scatterplot</th><td>Two measured variables for each individual; looking for a relationship</td><td>Mass of water against time to boil, for 12 beakers</td></tr>
+<tr><th scope="row">Histogram</th><td>Showing how values of one variable are spread across ranges</td><td>Number of seeds in each 0.1 g mass range</td></tr>
+</tbody>
+</table></div>
+<p>A line implies there are values between the points. That is true for time, false for "enzyme A, enzyme B". Joining category means with a line is a classic lost point.</p>
+
+<h2 id="axes">Axes, scales and keys: where points are lost</h2>
+<ul>
+<li><b>Label every axis with the quantity and its unit</b>: "Temperature (°C)", not "Temp" or "°C".</li>
+<li><b>Use an even scale.</b> Equal distances must stand for equal amounts. Marking the axis with only the values you recorded (20, 25, 35, 40, 60) makes the gaps unequal and bends the shape of the curve.</li>
+<li><b>Fill the grid.</b> Pick steps so the data use most of the space. An axis may start above zero if it is labeled clearly.</li>
+<li><b>Add a key</b> whenever more than one group is on the graph.</li>
+<li><b><span class="gl" tabindex="0" data-c="trend-line">Trend lines</span></b> follow the overall pattern. Draw one line of best fit through scattered points; do not zigzag from point to point unless the question asks you to connect them.</li>
+</ul>
+
+<h2 id="reading">Reading a graph: trends, interpolation and extrapolation</h2>
+<p>Describe a curve in words with numbers. In one experiment an enzyme was added to 50 mg of a <a class="gl" href="../notes/macromolecules-intro.html" data-c="polymer">polymer</a> and the monomer released was measured: 0, 18, 34, 44, 49, 50 mg at 0, 2, 4, 6, 8, 10 min. The increases per 2 minutes shrink (18, 16, 10, 5, 1 mg), so the curve rises steeply and then levels off near 50 mg, about the total the polymer could release (slightly more by mass, since each <a class="gl" href="../notes/macromolecules-intro.html" data-c="hydrolysis">hydrolysis</a> adds a <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="water-molecule">water molecule</a>). Over the first 4 minutes the slope is 34 ÷ 4 = 8.5 mg/min; between 6 and 10 minutes it is only 6 ÷ 4 = 1.5 mg/min.</p>
+<p><b><span class="gl" tabindex="0" data-c="interpolation">Interpolation</span></b> means reading between measured points: the 100 g water at 2.5 min was about (32.1 + 37.9) ÷ 2 = 35 °C. <b>Extrapolation</b> means reading beyond them, and it is risky because the pattern may change. Extend the 100 g line to 15 minutes and you would predict 110 °C, but at normal air pressure water stops getting hotter near 100 °C, because added heat goes into breaking <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="hydrogen-bond">hydrogen bonds</a> as it boils.</p>
+
+<h2 id="correlation">Correlation is not causation</h2>
+<p>A <span class="gl" tabindex="0" data-c="scatterplot">scatterplot</span> whose points rise from lower left to upper right shows a <b><span class="gl" tabindex="0" data-c="correlation">positive correlation</span></b>: the two variables tend to increase together. Points falling from upper left to lower right show a <b>negative correlation</b>. Points close to a trend line show a strong correlation; widely scattered points, a weak one.</p>
+<p>A correlation does not tell you that one variable causes the other. Across 40 lakes, more shoreline plant growth might go with warmer water because shallow, sunny lakes have more of both. To test <b><span class="gl" tabindex="0" data-c="causation">causation</span></b> you need a <a class="gl" href="../notes/design-variables.html" data-c="controlled-experiment">controlled experiment</a>: change one factor, hold the rest constant, and see whether the other responds.</p>
+
+<aside class="going-further"><h3>Going further: slope from a trend line</h3>
+<p>When points scatter, find the slope from two points on the trend line, not from two data points. If the line passes through (3 min, 14 mg) and (9 min, 41 mg), the slope is (41 − 14) ÷ (9 − 3) = 4.5 mg/min. Choose points far apart to reduce reading error.</p></aside>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-plots">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="macromolecules-intro.html"><span>&larr; Previous</span><b>Introduction to Macromolecules</b></a><a class="tb-chapter-link next" href="carbohydrates.html"><span>Next &rarr;</span><b>Carbohydrates</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-plots">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>

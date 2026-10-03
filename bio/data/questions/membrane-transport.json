@@ -1,0 +1,701 @@
+{
+  "stimuli": {
+    "membrane-transport-s1": {
+      "kind": "setup",
+      "title": "A dialysis tubing bag in iodine solution",
+      "text": "<p>Dialysis tubing is a thin plastic film with tiny pores. It lets water, glucose and iodine through but not starch. A student filled a tubing bag with a solution of 10% glucose and 1% starch, tied it shut and placed it in a beaker of water with a little iodine added. Iodine turns blue-black when it meets starch. The student tested the bag and the beaker at the start and after 30 minutes.</p>",
+      "table": {
+        "caption": "Results of the dialysis tubing experiment",
+        "cols": [
+          "Location",
+          "Color at start",
+          "Color after 30 min",
+          "Glucose test at start",
+          "Glucose test after 30 min"
+        ],
+        "rows": [
+          [
+            "Inside the bag",
+            "Cloudy white",
+            "Blue-black",
+            "Positive",
+            "Positive"
+          ],
+          [
+            "Beaker water",
+            "Amber (iodine)",
+            "Amber (iodine)",
+            "Negative",
+            "Positive"
+          ]
+        ]
+      }
+    },
+    "membrane-transport-s2": {
+      "kind": "graph",
+      "title": "Amino acid uptake with and without ATP",
+      "text": "<p>Yeast cells growing not on sugar but on a fuel they can break down only by respiration in their mitochondria were placed in a medium containing a radioactively labeled amino acid. One batch was first treated with cyanide, which stops mitochondria from making ATP, so these cells made almost no ATP. Researchers measured the concentration of labeled amino acid inside the cells and divided it by the concentration outside. A value of 1.0 means the concentrations are equal. Points are means of 5 samples; error bars show ±2 SE.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "min",
+          "min": 0,
+          "max": 60,
+          "step": 10
+        },
+        "y": {
+          "label": "Inside ÷ outside concentration",
+          "unit": "",
+          "min": 0,
+          "max": 11,
+          "step": 1
+        },
+        "series": [
+          {
+            "name": "No cyanide",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                2.1,
+                0.3
+              ],
+              [
+                20,
+                4.3,
+                0.4
+              ],
+              [
+                30,
+                6.2,
+                0.5
+              ],
+              [
+                45,
+                8.4,
+                0.6
+              ],
+              [
+                60,
+                9.6,
+                0.6
+              ]
+            ]
+          },
+          {
+            "name": "Cyanide",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0.6,
+                0.1
+              ],
+              [
+                20,
+                0.9,
+                0.1
+              ],
+              [
+                30,
+                1.0,
+                0.1
+              ],
+              [
+                45,
+                1.0,
+                0.1
+              ],
+              [
+                60,
+                1.0,
+                0.1
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "membrane-transport-s3": {
+      "kind": "table",
+      "title": "LDL uptake by skin cells",
+      "text": "<p>LDL particles carry cholesterol in the blood. Cells take them in by receptor-mediated endocytosis. Researchers grew skin cells from a healthy person and from a person whose cells make no working LDL receptor. They gave each culture labeled LDL for 1 hour at 4 °C, a temperature at which the membrane stops folding inward, or at 37 °C, and then measured LDL bound to the cell surface and LDL inside the cells (mean of 3 cultures).</p>",
+      "table": {
+        "caption": "Labeled LDL after 1 hour (ng per mg of cell protein)",
+        "cols": [
+          "Cells",
+          "Temperature (°C)",
+          "LDL bound to surface",
+          "LDL inside cells"
+        ],
+        "rows": [
+          [
+            "Healthy",
+            "4",
+            "120",
+            "5"
+          ],
+          [
+            "Healthy",
+            "37",
+            "40",
+            "310"
+          ],
+          [
+            "No working receptor",
+            "4",
+            "6",
+            "3"
+          ],
+          [
+            "No working receptor",
+            "37",
+            "5",
+            "12"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-membrane-transport-1",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-transport-s1",
+      "q": "Why did the bag turn blue-black while the beaker water stayed amber?",
+      "options": [
+        "Starch moved out of the bag and reacted with iodine at the bag's surface.",
+        "Iodine diffused into the bag; starch is too large to get out.",
+        "The cell-like bag used energy to pull iodine inside.",
+        "Glucose leaving the bag dragged iodine molecules along with it in the opposite direction, into the bag."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Iodine was concentrated in the beaker and absent from the bag, so it diffused in and met the starch. Starch molecules are too large for the tubing's pores, so they stayed in the bag and none reached the beaker.",
+        "options": [
+          "Starch cannot pass the tubing's pores; if it had left, the beaker would have turned blue-black.",
+          "Iodine moved in down its gradient and starch stayed put, so the color appeared only inside.",
+          "Tubing is a plastic film; it has no proteins or ATP, so the movement was passive.",
+          "Iodine and glucose diffuse independently, each down its own gradient; glucose moving out cannot carry iodine in."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-2",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-transport-s1",
+      "q": "The bag is left in the beaker for 24 hours. Predict the state of the glucose at the end.",
+      "options": [
+        "Almost the whole of the glucose has left the bag and ended up in the much larger beaker.",
+        "Equal concentrations, with molecules still crossing both ways.",
+        "Glucose concentration is about equal inside and out, and the glucose molecules have stopped crossing the tubing.",
+        "Glucose has moved back into the bag, where it is now more concentrated."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Glucose diffuses out until its concentration is the same on both sides. Molecules keep moving at random, so they still cross both ways, but equal numbers cross each way, so there is no net change: a dynamic equilibrium.",
+        "options": [
+          "Diffusion evens out concentrations; it does not move every molecule to one side.",
+          "This describes dynamic equilibrium: equal concentrations, crossings still happening at equal rates both ways.",
+          "Molecules keep moving and crossing at equilibrium; only the net movement stops.",
+          "Passive movement cannot build up a higher concentration on one side; that would need energy."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-3",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-transport-s1",
+      "q": "Which kind of transport moved glucose and iodine in this experiment?",
+      "options": [
+        "Passive transport: each moved down its own gradient.",
+        "Active transport, because the two substances moved in opposite directions across the same tubing at the same time.",
+        "Bulk transport, because the bag took in iodine in vesicles.",
+        "Active transport, because the movement continued for 30 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glucose moved from the bag (high) to the beaker (none), and iodine from the beaker (high) to the bag (none). Each went down its gradient, driven by its own motion, which is passive transport.",
+        "options": [
+          "Each substance moved from high to low concentration with no energy supplied, which is passive transport.",
+          "Opposite directions just mean the two gradients pointed opposite ways; each move was still downhill.",
+          "There are no vesicles in tubing; the molecules passed through pores one by one.",
+          "Passive movement continues for as long as a gradient exists; time alone does not make it active."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-4",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "membrane-transport-s1",
+      "q": "The bag is often used as a model of a cell. Which is the most important way the model differs from a real plasma membrane?",
+      "options": [
+        "Tubing sorts by size alone; a membrane sorts by polarity, charge and its proteins.",
+        "The tubing is selectively permeable, while a plasma membrane lets each kind of substance through freely.",
+        "The tubing lets water through, while a plasma membrane keeps water out.",
+        "The tubing has a much thicker wall than a membrane, so diffusion through it takes several days."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Tubing is a sieve: whatever fits the pores passes. A plasma membrane is a hydrophobic bilayer, so small ions are blocked while nonpolar molecules pass, and its transport proteins let particular substances through, some using energy.",
+        "options": [
+          "This names the real difference: size-based pores against chemistry plus specific proteins.",
+          "Both are selectively permeable; a plasma membrane is very selective.",
+          "Water crosses plasma membranes, through the bilayer and especially through aquaporins.",
+          "Glucose reached the beaker within 30 minutes, so diffusion through the tubing is not that slow."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-5",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-transport-s2",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "In both batches the inside concentration rises well above the outside concentration within the hour.",
+        "Untreated cells reach about ten times the outside level; cyanide-treated cells level off at equal.",
+        "With cyanide the cells take up the amino acid faster, then stop at a ratio of 1.0.",
+        "Without cyanide the ratio levels off at 1.0 after about 30 minutes."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The untreated cells reach a ratio of 9.6 by 60 minutes; the cyanide-treated cells rise to 1.0 by 30 minutes and stay there.",
+        "options": [
+          "The cyanide batch never goes above 1.0, so only the untreated batch accumulates the amino acid.",
+          "This matches both curves.",
+          "At every time point the cyanide batch is below the untreated batch, so its uptake is slower.",
+          "The ratio of 1.0 is where the cyanide batch levels off; the untreated batch keeps rising past 9."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-6",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "membrane-transport-s2",
+      "q": "Which explanation best accounts for the difference between the two batches?",
+      "options": [
+        "Cyanide damages the bilayer of the cells, so the amino acid leaks back out as fast as it comes in.",
+        "Untreated cells use ATP to move it against its gradient; without ATP it moves only until both sides are equal.",
+        "Cyanide makes the outside concentration of the amino acid rise, so the ratio stays at or below 1.0.",
+        "The untreated cells make new amino acid of this kind inside, which raises the concentration measured inside."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "A ratio above 1.0 means the amino acid is moving from low to high concentration, which takes energy. When cyanide stops ATP production, the cells can still take it in passively, but only until inside equals outside.",
+        "options": [
+          "If the bilayer were leaky, the ratio would not climb neatly to 1.0 and hold; the pattern fits passive movement to equal concentrations.",
+          "This links the ratio above 1.0 to active transport and ATP, and the level at 1.0 to passive transport.",
+          "Cyanide stops ATP production in the cells; it does not change the amino acid outside.",
+          "The measured amino acid is the labeled one from the medium, so cells making their own would not raise its value."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-7",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-transport-s2",
+      "q": "At 10 minutes the ratios are 2.1 ± 0.3 without cyanide and 0.6 ± 0.1 with cyanide (±2 SE). What can you conclude?",
+      "options": [
+        "No overlap, so the difference is likely real.",
+        "The error bars overlap, so the batches are the same at 10 minutes.",
+        "The error bars do not overlap, so there is certainly no difference.",
+        "Nothing can be concluded, because error bars matter just for the last time point of a time course."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The untreated range runs from 1.8 to 2.4 and the cyanide range from 0.5 to 0.7. Error bars of ±2 SE that do not overlap suggest the difference is statistically significant, not just sampling noise.",
+        "options": [
+          "Non-overlapping ±2 SE bars are evidence of a real difference.",
+          "The ranges (1.8 to 2.4 and 0.5 to 0.7) do not overlap at all.",
+          "Non-overlapping bars point to a difference, not the absence of one.",
+          "Error bars can be compared at any time point where both means have them."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-8",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-transport-s2",
+      "q": "The outside concentration of the amino acid is 0.50 mM. What is the concentration inside the untreated cells at 60 minutes, in mM? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 4.8,
+        "tol": 0.05,
+        "unit": "mM",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Inside ÷ outside = 9.6, so inside = 9.6 × 0.50 mM = 4.8 mM."
+      }
+    },
+    {
+      "id": "bio-membrane-transport-9",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "membrane-transport-s2",
+      "q": "At 60 minutes, cyanide is added to the untreated cells. Predict how their ratio changes over the next hour.",
+      "options": [
+        "It stays at about 9.6, because the amino acid already inside is trapped there by the membrane.",
+        "It keeps rising, because the cells have stored ATP for the transport.",
+        "It falls toward 1.0 as the amino acid leaks out down its gradient.",
+        "It drops to 0 at once, because cyanide destroys the amino acid."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "With no new ATP, active transport stops. The amino acid is far more concentrated inside, so it slowly moves out down its gradient until inside and outside are about equal.",
+        "options": [
+          "A steep gradient now points outward, and nothing is moving the amino acid back in, so it leaks out.",
+          "Cells hold only a small amount of ATP, used up within minutes once production stops.",
+          "Without ATP the gradient is no longer maintained, so the ratio falls toward equal.",
+          "Cyanide stops ATP production; it does not destroy amino acids, and passive leakage is gradual."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-10",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-transport-s3",
+      "q": "Which statement best describes the data at 37 °C?",
+      "options": [
+        "Healthy cells and cells with no working receptor took in about the same amount of LDL.",
+        "Healthy cells took in about 25 times as much LDL as cells with no working receptor.",
+        "Cells with no working receptor bound more LDL to their surface than healthy cells.",
+        "Healthy cells bound more LDL at 37 °C than at 4 °C."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "At 37 °C healthy cells had 310 ng of LDL inside, against 12 ng for cells lacking the receptor: 310 ÷ 12 ≈ 26, about 25 times as much.",
+        "options": [
+          "310 against 12 ng is a large difference, not about the same.",
+          "This matches the inside-the-cell column at 37 °C.",
+          "Receptor-lacking cells bound 5 ng, against 40 ng for healthy cells.",
+          "Healthy cells bound 120 ng at 4 °C and 40 ng at 37 °C, so binding was lower at 37 °C."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-11",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "membrane-transport-s3",
+      "q": "Healthy cells at 4 °C have a lot of LDL on their surface but very little inside. Which explanation is best?",
+      "options": [
+        "At 4 °C the LDL receptors are destroyed by the cold, so LDL sticks loosely to the bilayer instead of to receptors.",
+        "LDL binds its receptors, but in the cold no vesicles form to take it in.",
+        "At 4 °C LDL diffuses straight through the bilayer and out the other side.",
+        "At 4 °C the cells use active transport to push LDL back out."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Binding to a receptor needs no work from the cell, so it happens in the cold. Taking the bound LDL in needs the membrane to fold inward and pinch off a vesicle, which stops at 4 °C. So LDL piles up on the surface.",
+        "options": [
+          "Healthy cells bound 120 ng at 4 °C against 6 ng for receptor-lacking cells, so the receptors are clearly working.",
+          "This separates binding (still works) from endocytosis (stops in the cold).",
+          "LDL particles are far too large to diffuse through a bilayer.",
+          "There is no evidence of LDL being pushed out; it is bound but not taken in."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-12",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-transport-s3",
+      "q": "Predict the level of LDL cholesterol in the blood of the person whose cells lack a working LDL receptor.",
+      "options": [
+        "Lower than normal, because their cells take in LDL by other routes faster.",
+        "Higher than normal, because their cells remove little LDL from the blood.",
+        "Normal, because LDL is removed from the blood by diffusion anyway.",
+        "Lower than normal, because LDL that is not taken in breaks down in the blood."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Cells clear LDL from the blood by binding it to receptors and taking it in. Without working receptors, LDL builds up in the blood. (This is what happens in an inherited disease that causes very high blood cholesterol and early heart disease.)",
+        "options": [
+          "Receptor-lacking cells took in only 12 ng against 310 for healthy cells, so they are slower, not faster.",
+          "Less removal by cells means more LDL stays in the blood.",
+          "LDL particles are far too large to cross membranes by diffusion.",
+          "Nothing in the data suggests LDL breaks down on its own in the blood; it is cleared by cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-13",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-transport-s3",
+      "q": "What does the 4 °C treatment add to the experiment?",
+      "options": [
+        "It separates binding from uptake: binding works in the cold, uptake does not.",
+        "It acts as a negative control by killing the cells.",
+        "It doubles the sample size of the experiment, which makes the results at 37 °C more reliable.",
+        "It shows that LDL is made by the cells at low temperature."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the cold, receptors still bind LDL but endocytosis stops. Comparing 4 °C with 37 °C shows the receptors work at the surface first and that the uptake step is a separate, energy-using process.",
+        "options": [
+          "The 4 °C data show binding without uptake, isolating the two steps.",
+          "Cold slows the cells without killing them; they still bind LDL.",
+          "The 4 °C cultures test a different condition; they are not extra replicates of 37 °C.",
+          "The LDL is supplied, labeled, by the researchers; the cells do not make it."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-14",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these is an example of passive transport? Select all that apply.",
+      "options": [
+        "Oxygen moving from the lungs' air sacs into the blood",
+        "A white blood cell engulfing a bacterium",
+        "A pancreas cell releasing insulin from vesicles",
+        "Root cells taking in potassium from soil water where potassium is much scarcer than inside the cells"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Only oxygen moving from the air sacs into the blood goes down its gradient with no energy from the cell. The other three need energy: engulfing and releasing in vesicles are bulk transport, and taking in potassium against its gradient is active transport.",
+        "options": [
+          "Oxygen is more concentrated in the air sacs than in the blood arriving there, so it diffuses in.",
+          "Engulfing a bacterium is endocytosis (phagocytosis), which uses energy to reshape the membrane.",
+          "Releasing insulin from vesicles is exocytosis, a form of bulk transport that uses energy.",
+          "Moving potassium from low to high concentration is active transport and needs ATP."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-15",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Root cells contain potassium at about 100 times the concentration in the surrounding soil water. What does this tell you about how the cells take in potassium?",
+      "options": [
+        "They take it in by diffusion, because potassium ions are small enough to slip through the bilayer quickly.",
+        "By active transport, using ATP to move it against its gradient.",
+        "They take it in by exocytosis, in vesicles from the soil.",
+        "They take it in through aquaporins, along with water."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Building up a concentration 100 times higher inside means moving potassium from low to high concentration, against its gradient, which needs energy from ATP.",
+        "options": [
+          "Diffusion moves particles from high to low, so it could never build up a higher concentration inside.",
+          "Moving ions against a steep gradient is active transport.",
+          "Exocytosis releases material from a cell; it does not take anything in.",
+          "Aquaporins let water through, not ions, and water flow could not concentrate potassium."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-16",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A gland cell releases large amounts of protein by exocytosis but, in an experiment, its endocytosis is blocked. Predict what happens to the cell's surface over time.",
+      "options": [
+        "The surface grows, because each fused vesicle adds its membrane to it.",
+        "The plasma membrane shrinks, because each vesicle removes a patch of membrane as it leaves.",
+        "The plasma membrane stays the same size, because vesicles release their contents without fusing with it.",
+        "The plasma membrane becomes thicker, because vesicles stack on top of it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In exocytosis the vesicle's membrane becomes part of the plasma membrane. Normally endocytosis takes membrane back in at a similar pace. With endocytosis blocked, membrane is added but not removed, so the surface grows.",
+        "options": [
+          "Fusion adds vesicle membrane to the cell surface, and blocked endocytosis cannot take it back.",
+          "Removing membrane in vesicles is endocytosis, which is blocked here.",
+          "Releasing contents by exocytosis requires the vesicle to fuse with the plasma membrane.",
+          "Fused vesicle membrane joins the bilayer sideways; the membrane stays one bilayer thick."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-17",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "A cell folds its membrane inward around droplets of fluid and pinches them off in small vesicles, taking in whatever is dissolved in the fluid. What is this process called?",
+      "options": [
+        "Pinocytosis",
+        "Phagocytosis",
+        "Exocytosis",
+        "Simple diffusion"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Pinocytosis (\"cell drinking\") takes in droplets of extracellular fluid in small vesicles, without choosing particular molecules.",
+        "options": [
+          "Pinocytosis is the non-selective uptake of fluid in small vesicles.",
+          "Phagocytosis (\"cell eating\") engulfs large particles, such as bacteria, in large vesicles.",
+          "Exocytosis releases material from the cell; it does not take fluid in.",
+          "Simple diffusion moves single molecules through the bilayer, with no vesicles."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-18",
+      "type": "predict",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A poison stops a cell from making ATP. Predict how each process changes in the next few minutes.",
+      "variables": [
+        {
+          "name": "Active transport of ions into the cell",
+          "answer": "down",
+          "why": "Active transport moves substances against their gradient using energy from ATP; once the cell's small ATP store is used up, it slows and stops."
+        },
+        {
+          "name": "Diffusion of oxygen into the cell",
+          "answer": "none",
+          "why": "Oxygen crosses by simple diffusion, driven by its own motion down its gradient, so it needs no ATP and is not directly affected."
+        },
+        {
+          "name": "Exocytosis of secretory vesicles",
+          "answer": "down",
+          "why": "Moving vesicles to the membrane and fusing them uses energy from ATP, so release slows."
+        }
+      ],
+      "why": {
+        "correct": "Without ATP, active transport and bulk transport slow and stop, while passive transport such as the diffusion of oxygen continues."
+      }
+    },
+    {
+      "id": "bio-membrane-transport-19",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Animal cells keep K⁺ much more concentrated inside than outside and Na⁺ much more concentrated outside than inside. Which explanation is best?",
+      "options": [
+        "The membrane is impermeable to both ions, so the differences were set when the cell first formed and stay put.",
+        "Ions leak slowly, and active transport keeps moving them back.",
+        "K⁺ is attracted to the inside of the cell and Na⁺ to the outside, so no energy is needed.",
+        "Diffusion moves each ion from low to high concentration until the differences form."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Selective permeability slows ion leaks, and active transport, powered by ATP, keeps moving K⁺ in and Na⁺ out. Together they maintain an internal environment different from the outside. Stop the ATP and the differences slowly run down toward equal.",
+        "options": [
+          "Ions do leak across slowly, so the differences would fade without continual work.",
+          "Slow leaks plus continual active transport keep the inside different from the outside.",
+          "Keeping the concentrations unequal takes energy; without ATP they slowly even out.",
+          "Diffusion moves particles from high to low, so it erases differences rather than creating them."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-transport-20",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-transport",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student says passive transport \"uses no energy at all.\" Which correction is most accurate?",
+      "options": [
+        "Passive transport uses ATP, but less than active transport does.",
+        "It needs no energy from the cell; the particles' own motion drives it.",
+        "Passive transport is driven by the energy released when small parts of the membrane break down.",
+        "Passive transport uses heat from cellular respiration to push particles."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "In passive transport the cell spends no ATP. The particles move because they already have kinetic energy, and random motion spreads them down their gradient.",
+        "options": [
+          "Passive transport uses no ATP; that is what makes it passive.",
+          "The energy is the particles' own kinetic energy, not the cell's.",
+          "The membrane stays intact; nothing about passive transport breaks it down.",
+          "Particles move by their own thermal motion; the cell does not direct heat to push them."
+        ]
+      }
+    }
+  ]
+}

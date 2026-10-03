@@ -1,0 +1,7 @@
+{
+  "sodium-glucose-cotransport": {
+    "file": "figures/sodium-glucose-cotransport.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two proteins in a cell membrane. On the left, the sodium-potassium pump uses ATP to move three sodium ions out and two potassium ions in. On the right, a cotransporter lets sodium ions flow back into the cell down their gradient and carries a glucose molecule in with them, against the glucose gradient."
+  }
+}

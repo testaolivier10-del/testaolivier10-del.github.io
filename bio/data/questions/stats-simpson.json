@@ -1,0 +1,452 @@
+{
+  "stimuli": {
+    "stats-simpson-s1": {
+      "kind": "table",
+      "title": "Two meadows with the same five species",
+      "text": "<p>Ecologists counted the flowering plants in 1 m² quadrats in two meadows. Both meadows contain the same five species.</p>",
+      "table": {
+        "caption": "Number of plants of each species",
+        "cols": [
+          "Species",
+          "Meadow A",
+          "Meadow B"
+        ],
+        "rows": [
+          [
+            "Clover",
+            "20",
+            "80"
+          ],
+          [
+            "Yarrow",
+            "20",
+            "5"
+          ],
+          [
+            "Buttercup",
+            "20",
+            "5"
+          ],
+          [
+            "Plantain",
+            "20",
+            "5"
+          ],
+          [
+            "Daisy",
+            "20",
+            "5"
+          ],
+          [
+            "Total",
+            "100",
+            "100"
+          ]
+        ]
+      }
+    },
+    "stats-simpson-s2": {
+      "kind": "table",
+      "title": "A stream bank before and after a fast-spreading plant arrived",
+      "text": "<p>A survey of 100 plants along a stream bank was repeated eight years after a fast-growing plant from another continent (species X) began spreading there.</p>",
+      "table": {
+        "caption": "Number of plants of each species",
+        "cols": [
+          "Species",
+          "First survey",
+          "Eight years later"
+        ],
+        "rows": [
+          [
+            "Sedge",
+            "30",
+            "12"
+          ],
+          [
+            "Rush",
+            "25",
+            "8"
+          ],
+          [
+            "Fern",
+            "20",
+            "6"
+          ],
+          [
+            "Mint",
+            "15",
+            "4"
+          ],
+          [
+            "Violet",
+            "10",
+            "0"
+          ],
+          [
+            "Species X",
+            "0",
+            "70"
+          ],
+          [
+            "Total",
+            "100",
+            "100"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-simpson-1",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "stats-simpson-s1",
+      "q": "Calculate Simpson's diversity index for meadow A, to two decimal places.",
+      "numeric": {
+        "answer": 0.8,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Each species is 20/100 = 0.2 of the total. (0.2)² = 0.04, and five species give Σ = 0.20. D = 1 − 0.20 = 0.80."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-2",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-simpson-s1",
+      "q": "Calculate Simpson's diversity index for meadow B, to two decimal places.",
+      "numeric": {
+        "answer": 0.35,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Clover: (80/100)² = 0.64. Each other species: (5/100)² = 0.0025, × 4 = 0.01. Σ = 0.65. D = 1 − 0.65 = 0.35."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-3",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-simpson-s1",
+      "q": "Both meadows have five species. Why is meadow B's index so much lower?",
+      "options": [
+        "Meadow B is dominated by clover, so its species are unevenly represented, and the index counts evenness as well as the number of species.",
+        "Meadow B has fewer individual plants in total, and Simpson's index falls whenever the total number of plants counted in the quadrats is smaller.",
+        "Meadow B has fewer species than meadow A, because four of its species have just five plants each.",
+        "Meadow B's clover plants are larger than meadow A's, and the index weighs each species by the size of its plants."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Richness (5) is the same. In B one species makes up 80% of plants, so two plants picked at random are very likely the same species, which is what a low D means.",
+        "options": [
+          "Correct: same richness, very different evenness.",
+          "Both totals are 100.",
+          "Both meadows have five species; rare species still count toward richness.",
+          "The index uses counts of individuals, not their size."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-4",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-simpson-s1",
+      "q": "A disease kills most of the clover in both meadows. Which prediction is best supported?",
+      "options": [
+        "Meadow B loses far more of its plants, because clover made up most of them; meadow A's plants are spread among species.",
+        "Both meadows lose the same share of their plants, because clover is one of five species in each meadow.",
+        "Meadow A loses more plant cover, because a more diverse meadow has more species for the disease to infect.",
+        "Neither meadow changes much, because the other four species immediately take over the space that the dying clover plants leave behind."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Clover is 80% of B's plants but 20% of A's. Losing it removes most of B's plants but only a fifth of A's: more even communities tend to keep functioning when one species declines.",
+        "options": [
+          "Correct.",
+          "The share differs: 80% in B, 20% in A.",
+          "The disease attacks clover here, not every species.",
+          "Regrowth takes time, and B has very few plants of the other species to fill the gap."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-5",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-simpson-s2",
+      "q": "Calculate Simpson's index for the first survey, to three decimal places.",
+      "numeric": {
+        "answer": 0.775,
+        "tol": 0.002,
+        "unit": "",
+        "decimals": 3
+      },
+      "why": {
+        "correct": "Σ(n/N)² = 0.3² + 0.25² + 0.2² + 0.15² + 0.1² = 0.09 + 0.0625 + 0.04 + 0.0225 + 0.01 = 0.225. D = 1 − 0.225 = 0.775."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-simpson-s2",
+      "q": "Calculate Simpson's index eight years later, to three decimal places.",
+      "numeric": {
+        "answer": 0.484,
+        "tol": 0.002,
+        "unit": "",
+        "decimals": 3
+      },
+      "why": {
+        "correct": "Σ = 0.7² + 0.12² + 0.08² + 0.06² + 0.04² = 0.49 + 0.0144 + 0.0064 + 0.0036 + 0.0016 = 0.516 (violet, with 0 plants, adds nothing). D = 1 − 0.516 = 0.484."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-7",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-simpson-s2",
+      "q": "Calculate the percent change in Simpson's index between the surveys, to the nearest whole percent (use a minus sign for a decrease).",
+      "numeric": {
+        "answer": -38,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "(0.484 − 0.775) ÷ 0.775 × 100 = −37.5%, which rounds to −38%."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-simpson-s2",
+      "q": "Species richness was 5 in both surveys. Which statement best describes how the community changed?",
+      "options": [
+        "Richness stayed at 5 because species X replaced violet, but evenness fell sharply as X came to make up 70% of the plants.",
+        "Diversity did not change, because the number of species was the same in both surveys and richness is what diversity measures.",
+        "Diversity rose, because a new species arrived, and adding a species to a community raises its diversity index.",
+        "Each native species increased in number, but species X increased faster, which lowered the index."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "One species was lost and one gained, so richness is unchanged. The fall in D comes from dominance: X is 70% of plants, so evenness collapsed.",
+        "options": [
+          "Correct.",
+          "Simpson's index measures evenness as well as richness; it fell from 0.775 to 0.484.",
+          "X's arrival came with violet's loss and with heavy dominance, so D fell.",
+          "Every native species decreased (sedge 30 to 12, and so on)."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-9",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-simpson-s2",
+      "q": "Which explanation best accounts for the change in the native species' numbers?",
+      "options": [
+        "Species X competed with the native plants for light, water and space, and its fast growth let it take most of these limited resources.",
+        "Species X produced food that the native plants needed, so the natives became dependent on it and stopped growing.",
+        "The native plants evolved to become less numerous, so that species X would have room to grow on the bank.",
+        "The native plants moved upstream to avoid species X, so they were no longer within the area of the survey."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Plants on a stream bank compete for limited light, water, nutrients and space. A fast-spreading competitor can take most of them, reducing native numbers (interspecific competition).",
+        "options": [
+          "Correct.",
+          "Plants make their own food; nothing suggests dependence on X.",
+          "Populations do not shrink \"so that\" another species can grow; that is a purpose, not a mechanism.",
+          "Rooted plants do not move away; their numbers changed through survival and reproduction."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-10",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What does a Simpson's index of 0 mean?",
+      "options": [
+        "The community contains a single species.",
+        "The quadrats held no organisms to count.",
+        "The community is perfectly even across many species.",
+        "The community has exactly two species in equal numbers."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With one species, n/N = 1, so Σ = 1 and D = 1 − 1 = 0: two individuals picked at random are certainly the same species.",
+        "options": [
+          "Correct.",
+          "With no organisms the index cannot be calculated (N = 0).",
+          "Many even species give D close to 1.",
+          "Two equal species give D = 1 − (0.25 + 0.25) = 0.5."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-11",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A pond sample has 6 snails, 3 beetles and 1 leech. Calculate Simpson's index, to two decimal places.",
+      "numeric": {
+        "answer": 0.54,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "N = 10. Σ = 0.6² + 0.3² + 0.1² = 0.36 + 0.09 + 0.01 = 0.46. D = 1 − 0.46 = 0.54."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-12",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "One plant of a sixth species is found in meadow A (which had 20 each of five species, D = 0.80). What happens to Simpson's index?",
+      "options": [
+        "It rises only slightly, to about 0.80, because a species with one individual adds almost nothing to the sum of squares.",
+        "It rises to about 0.83, because adding a species raises the index by roughly one sixth of its old value.",
+        "It falls, because the new species has far fewer plants than the others and makes the community less even.",
+        "It does not change, because Simpson's index ignores species that make up less than 1% of the community."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "N = 101. Σ = 5 × (20/101)² + (1/101)² = 0.1960 + 0.0001 = 0.1961. D = 0.804. Rare species barely move Simpson's index, which is dominated by common ones.",
+        "options": [
+          "Correct: from 0.800 to 0.804.",
+          "The rise is tiny, not a sixth.",
+          "A rare new species still slightly lowers Σ(n/N)², so D rises a little.",
+          "It is included; its effect is just very small."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-13",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A student reports a Simpson's index of 0.65 for meadow B. What mistake did the student most likely make?",
+      "options": [
+        "Reporting Σ(n/N)² without subtracting it from 1",
+        "Using percentages instead of fractions for each species",
+        "Leaving the rare species out of the calculation",
+        "Squaring the total number of plants instead of each fraction"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "For meadow B, Σ(n/N)² = 0.65, so D = 1 − 0.65 = 0.35. Forgetting the \"1 −\" reports the chance two random plants are the same species instead of different.",
+        "options": [
+          "Correct.",
+          "Percentages would give numbers in the thousands, not 0.65.",
+          "Leaving out the rare species gives Σ = 0.64 and D = 0.36, not 0.65.",
+          "That would not produce 0.65."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-simpson-14",
+      "type": "order",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps for calculating Simpson's diversity index in order.",
+      "options": [
+        "Count the individuals of each species (n) and the total (N).",
+        "Divide each n by N.",
+        "Square each fraction.",
+        "Add the squares.",
+        "Subtract the sum from 1."
+      ],
+      "why": {
+        "correct": "D = 1 − Σ(n/N)²: count, divide, square, add, subtract from 1."
+      }
+    },
+    {
+      "id": "bio-stats-simpson-15",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-simpson",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Two forests have Simpson's indices of 0.91 and 0.62. Which claim is justified?",
+      "options": [
+        "The forest with 0.91 is more diverse: two trees picked at random are more likely to be different species.",
+        "The forest with 0.91 has more species, because Simpson's index measures the number of species present.",
+        "The forest with 0.62 is more diverse, because a lower index means that species are spread out more evenly.",
+        "The forest with 0.91 has more trees in total, because the index rises with the number of individuals counted."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Higher D means higher diversity: richness and evenness together. D is the probability that two individuals picked at random belong to different species.",
+        "options": [
+          "Correct.",
+          "D combines richness and evenness; a higher D does not by itself mean more species.",
+          "A higher D, not a lower one, means more even and diverse.",
+          "D depends on proportions, not on the total count."
+        ]
+      }
+    }
+  ]
+}

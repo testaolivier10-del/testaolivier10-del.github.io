@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 430" width="640" height="430" role="img" aria-labelledby="t d">
+<title id="t">Alpha and beta glucose, starch and cellulose</title>
+<desc id="d">Top: alpha glucose, with the OH on carbon 1 below the ring, and beta glucose, with it above. Middle: a starch chain of alpha glucose units all facing the same way, joined by oxygen bridges that dip below the rings, so the chain curves. Bottom: two straight cellulose chains of beta glucose with every other unit flipped; dashed hydrogen bonds join the two chains.</desc>
+<defs>
+  <g id="r">
+    <polygon points="15,-17 34,0 15,17 -15,17 -34,0 -15,-17" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+    <circle cx="15" cy="-17" r="8" fill="#ffffff" stroke="#D55E00" stroke-width="2"/>
+    <text x="15" y="-12.5" font-size="11" font-weight="700" text-anchor="middle" fill="#8E3B2E">O</text>
+  </g>
+</defs>
+<rect width="640" height="430" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <!-- monomers -->
+  <use href="#r" x="150" y="70"/>
+  <text x="182" y="78" font-size="12" font-weight="700">1</text><text x="110" y="78" font-size="12" font-weight="700">4</text>
+  <line x1="184" y1="70" x2="184" y2="100" stroke="#1F2A28" stroke-width="2.5"/><text x="184" y="116" font-size="14" font-weight="700" text-anchor="middle" fill="#D55E00">OH</text>
+  <text x="150" y="28" font-size="16" font-weight="700" text-anchor="middle">α-glucose</text>
+  <text x="150" y="140" font-size="13" text-anchor="middle">carbon-1 OH below the ring</text>
+
+  <use href="#r" x="470" y="80"/>
+  <text x="502" y="88" font-size="12" font-weight="700">1</text><text x="430" y="88" font-size="12" font-weight="700">4</text>
+  <line x1="504" y1="80" x2="504" y2="50" stroke="#1F2A28" stroke-width="2.5"/><text x="504" y="44" font-size="14" font-weight="700" text-anchor="middle" fill="#D55E00">OH</text>
+  <text x="400" y="28" font-size="16" font-weight="700" text-anchor="middle">β-glucose</text>
+  <text x="470" y="140" font-size="13" text-anchor="middle">carbon-1 OH above the ring</text>
+
+  <line x1="20" y1="156" x2="620" y2="156" stroke="#C9D2D0" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- starch: alpha links dip below; chain curves -->
+  <text x="20" y="180" font-size="15" font-weight="700">Starch or glycogen: α links, the chain curves into a coil</text>
+  <g stroke="#1F2A28" stroke-width="2.5" fill="none">
+    <polyline points="114,206 135,232 156,224"/>
+    <polyline points="224,224 245,250 266,238"/>
+    <polyline points="334,238 355,262 376,244"/>
+    <polyline points="444,244 465,262 486,240"/>
+  </g>
+  <g fill="#ffffff" stroke="#D55E00" stroke-width="2"><circle cx="135" cy="232" r="7"/><circle cx="245" cy="250" r="7"/><circle cx="355" cy="262" r="7"/><circle cx="465" cy="262" r="7"/></g>
+  <use href="#r" x="80" y="206"/><use href="#r" x="190" y="224"/><use href="#r" x="300" y="238"/><use href="#r" x="410" y="244"/><use href="#r" x="520" y="240"/>
+  <path d="M556,234 C590,222 600,196 584,180" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <line x1="20" y1="282" x2="620" y2="282" stroke="#C9D2D0" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- cellulose: straight chains, alternate units flipped, H bonds between chains -->
+  <text x="20" y="306" font-size="15" font-weight="700">Cellulose: β links, straight chains bonded side by side</text>
+  <g stroke="#1F2A28" stroke-width="2.5">
+    <line x1="114" y1="340" x2="156" y2="340"/><line x1="224" y1="340" x2="266" y2="340"/><line x1="334" y1="340" x2="376" y2="340"/><line x1="444" y1="340" x2="486" y2="340"/>
+    <line x1="114" y1="400" x2="156" y2="400"/><line x1="224" y1="400" x2="266" y2="400"/><line x1="334" y1="400" x2="376" y2="400"/><line x1="444" y1="400" x2="486" y2="400"/>
+  </g>
+  <g fill="#ffffff" stroke="#D55E00" stroke-width="2">
+    <circle cx="135" cy="340" r="7"/><circle cx="245" cy="340" r="7"/><circle cx="355" cy="340" r="7"/><circle cx="465" cy="340" r="7"/>
+    <circle cx="135" cy="400" r="7"/><circle cx="245" cy="400" r="7"/><circle cx="355" cy="400" r="7"/><circle cx="465" cy="400" r="7"/>
+  </g>
+  <use href="#r" x="80" y="340"/><use href="#r" x="190" y="340" transform="rotate(180 190 340)"/><use href="#r" x="300" y="340"/><use href="#r" x="410" y="340" transform="rotate(180 410 340)"/><use href="#r" x="520" y="340"/>
+  <use href="#r" x="80" y="400"/><use href="#r" x="190" y="400" transform="rotate(180 190 400)"/><use href="#r" x="300" y="400"/><use href="#r" x="410" y="400" transform="rotate(180 410 400)"/><use href="#r" x="520" y="400"/>
+  <g stroke="#0072B2" stroke-width="2.5" stroke-dasharray="5 4">
+    <line x1="95" y1="358" x2="95" y2="383"/><line x1="175" y1="358" x2="175" y2="383"/><line x1="285" y1="358" x2="285" y2="383"/><line x1="395" y1="358" x2="395" y2="383"/><line x1="535" y1="358" x2="535" y2="383"/>
+  </g>
+  <text x="600" y="375" font-size="12" font-weight="700" fill="#0072B2" text-anchor="end">H bonds</text>
+</g>
+</svg>

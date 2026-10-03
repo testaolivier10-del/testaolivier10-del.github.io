@@ -12,7 +12,7 @@ import { premiumRpc } from './worker-fakes.mjs';
 import worker from '../../worker/src/index.js';
 import {
   PASSES, safeReturnTo, successUrl, verifyWebhook, premiumWebhook, refundRefusal, REFUND_WINDOW_DAYS,
-  COURSE_NAMES, passesEnding, runPassEnding, reconcilePolar, DISPUTE_WINDOW_DAYS,
+  COURSE_NAMES, passesEnding, runPassEnding, reconcilePolar, DISPUTE_WINDOW_DAYS, passOnSale, passTerms, urlCourse,
 } from '../../worker/src/premium.js';
 
 const SECRET = 'polar_whs_test_secret';
@@ -64,6 +64,21 @@ test('returnTo is limited to https://levlprep.com', () => {
 test('success URL carries what handleReturn() reads, braces intact', () => {
   const u = successUrl('https://levlprep.com/nremt/exam.html?a=1#results', 'nremt');
   assert.equal(u, 'https://levlprep.com/nremt/exam.html?a=1&premium=success&course=nremt&checkout_id={CHECKOUT_ID}');
+});
+
+test('a course key with "ap" in it goes back in the success URL as its folder', () => {
+  assert.equal(urlCourse('apbio'), 'bio');
+  assert.equal(urlCourse('anp'), 'anp');
+  const u = successUrl('https://levlprep.com/bio/practice.html', 'apbio');
+  assert.equal(u, 'https://levlprep.com/bio/practice.html?premium=success&course=bio&checkout_id={CHECKOUT_ID}');
+  // No pass id the site sells carries the token "ap" (it can reach a URL).
+  for (const id of Object.keys(PASSES)) assert.ok(!id.toLowerCase().split(/[^a-z0-9]+/).some((t) => t === 'ap' || t === 'apbio'), id);
+  // The site reads either form back.
+  const b = createBrowser();
+  b.load('assets/premium.js');
+  assert.equal(b.hooks.premium.returnCourse('?premium=success&course=bio', '/'), 'apbio');
+  assert.equal(b.hooks.premium.returnCourse('?premium=success&course=apbio', '/'), 'apbio');
+  assert.equal(b.hooks.premium.returnCourse('?customer_session_token=x', '/bio/index.html'), 'apbio');
 });
 
 test('signature: good passes, wrong secret / tampered body / stale fails', async () => {
@@ -179,6 +194,62 @@ test('a second pass starts when the running one ends; refunded ones do not count
   assert.equal(row.pass, 'ochem-year');
   assert.equal(row.starts_at, '2026-12-01T00:00:00.000Z');
   assert.equal(row.expires_at, new Date(Date.UTC(2026, 11, 1) + 365 * 86400000).toISOString());
+});
+
+test('the AP® Biology pass runs through June 30, 2027 (Hawaii) whenever it is bought, never shorter', async () => {
+  const END = Date.parse('2027-06-30T23:59:59-10:00');
+  assert.equal(PASSES['bio-2027'].course, 'apbio');
+  assert.deepEqual(passTerms(PASSES['bio-2027']), { days: 1, until: new Date(END).toISOString() });
+  assert.deepEqual(passTerms(PASSES['anp-year']), { days: 365, until: null });
+  const bio = (id, over = {}) => paid({ id, metadata: { user_id: USER, pass: 'bio-2027' }, net_amount: 1750, ...over });
+
+  // Bought today: ends exactly at the date.
+  let now = Date.UTC(2026, 9, 3, 15);
+  let db = fakeDb([], now);
+  assert.equal((await premiumWebhook(delivery(bio('ord_b1'), now), ENV, now)).status, 200);
+  assert.equal(db.rows[0].course, 'apbio');
+  assert.equal(db.rows[0].starts_at, new Date(now).toISOString());
+  assert.equal(db.rows[0].expires_at, new Date(END).toISOString());
+  assert.deepEqual(db.counts, ['apbio']);
+
+  // Bought late: still the whole date.
+  now = Date.parse('2027-06-20T08:00:00-10:00');
+  db = fakeDb([], now);
+  await premiumWebhook(delivery(bio('ord_b2'), now), ENV, now);
+  assert.equal(db.rows[0].expires_at, new Date(END).toISOString());
+  // Within its last day it gets one day: never less than the date.
+  now = Date.parse('2027-06-30T20:00:00-10:00');
+  db = fakeDb([], now);
+  await premiumWebhook(delivery(bio('ord_b4'), now), ENV, now);
+  assert.equal(db.rows[0].expires_at, new Date(now + 86400000).toISOString());
+
+  // Behind a running grant: starts when it ends, still runs to the date.
+  now = Date.UTC(2026, 9, 3);
+  db = fakeDb([{ user_id: USER, course: 'apbio', pass: 'grant', starts_at: '2026-10-01T00:00:00.000Z', expires_at: '2026-11-01T00:00:00.000Z' }], now);
+  await premiumWebhook(delivery(bio('ord_b3'), now), ENV, now);
+  const row = db.rows.find((r) => r.order_id === 'ord_b3');
+  assert.equal(row.starts_at, '2026-11-01T00:00:00.000Z');
+  assert.equal(row.expires_at, new Date(END).toISOString());
+
+  // On sale until the end of the date, not after.
+  assert.equal(passOnSale(PASSES['bio-2027'], END - 1000), true);
+  assert.equal(passOnSale(PASSES['bio-2027'], END + 1000), false);
+  assert.equal(passOnSale(PASSES['nremt-90'], END + 1000), true);
+});
+
+test('checkout refuses the AP® Biology pass after its date', async () => {
+  const realNow = Date.now;
+  Date.now = () => Date.parse('2027-07-02T00:00:00Z');
+  try {
+    globalThis.fetch = async () => { throw new Error('should not be called'); };
+    const env = { ...ENV, POLAR_ACCESS_TOKEN: 'pat', POLAR_PRODUCTS: JSON.stringify({ 'bio-2027': 'prod_bio' }) };
+    const res = await worker.fetch(new Request('https://w.example/premium/checkout', {
+      method: 'POST',
+      headers: { Origin: 'https://levlprep.com', 'Content-Type': 'application/json', Authorization: 'Bearer good' },
+      body: JSON.stringify({ pass: 'bio-2027', returnTo: 'https://levlprep.com/bio/' }),
+    }), env);
+    assert.equal(res.status, 410);
+  } finally { Date.now = realNow; }
 });
 
 test('order.refunded marks the pass; partial refunds and unknown events are a 2xx no-op', async () => {

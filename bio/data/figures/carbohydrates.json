@@ -1,0 +1,12 @@
+{
+  "starch-cellulose": {
+    "file": "figures/starch-cellulose.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 420,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Top: alpha glucose with the carbon-1 OH below the ring and beta glucose with it above. Middle: a starch chain of alpha glucose units, all facing the same way, linked by oxygen bridges, curving into a coil. Bottom: two straight cellulose chains of beta glucose, every other unit flipped, joined to each other by dashed hydrogen bonds."
+  }
+}

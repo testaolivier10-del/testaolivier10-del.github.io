@@ -1,0 +1,84 @@
+{
+  "topic": "stats-water-potential",
+  "hook": "<p>Drop slices of potato into salty water and in an hour they go limp; leave them in plain water and they turn crisp. Water potential predicts which way water will move, and the formula sheet gives you the equation to put a number on it. The arithmetic is short, but nearly every lost point comes from the same three slips: i, kelvin and the sign.</p>",
+  "prereq": [
+    {
+      "q": "Water moves by osmosis from…",
+      "options": [
+        "higher (less negative) water potential to lower (more negative) water potential",
+        "lower water potential to higher water potential",
+        "higher solute concentration to lower solute concentration"
+      ],
+      "correct": 0,
+      "why": "Water moves down its water potential gradient, toward the more negative Ψ, which is where solutes are more concentrated.",
+      "review": "tonicity-osmoregulation"
+    },
+    {
+      "q": "What does turgor pressure do to a plant cell's pressure potential?",
+      "options": [
+        "Makes it positive, raising the cell's water potential",
+        "Makes it negative, lowering the cell's water potential",
+        "Has no effect; pressure potential depends on solutes alone"
+      ],
+      "correct": 0,
+      "why": "A turgid cell pushes on its wall and the wall pushes back, so ΨP is positive and adds to Ψ.",
+      "review": "tonicity-osmoregulation"
+    }
+  ],
+  "figure": {
+    "figure": "wp-calc",
+    "caption": "Ψ = ΨP + Ψs. The open beaker has ΨP = 0; the turgid cell has ΨP > 0. Water moves toward the more negative water potential, here out of the cell."
+  },
+  "chain": [
+    {
+      "cause": "A solute dissolves and each formula unit makes i particles (1 for sucrose, about 2 for NaCl).",
+      "effect": "The concentration of dissolved particles is i × C."
+    },
+    {
+      "cause": "Dissolved particles attract and hold water molecules, lowering water's tendency to move.",
+      "effect": "Solute potential is negative and proportional to particles and temperature: Ψs = −iCRT."
+    },
+    {
+      "cause": "R = 0.0831 L·bar/(mol·K) is defined per kelvin.",
+      "effect": "T must be in kelvin (°C + 273), and the answer comes out in bars."
+    },
+    {
+      "cause": "A cell wall pushing back on a swollen cell adds pressure; an open beaker adds none.",
+      "effect": "Water potential is Ψ = ΨP + Ψs, with ΨP = 0 in an open container."
+    },
+    {
+      "cause": "A cell and its surroundings have different water potentials.",
+      "effect": "Net water moves from the higher (less negative) Ψ to the lower (more negative) Ψ until they are equal."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> 0.30 M sucrose, 22 °C, open beaker. i = 1, C = 0.30 mol/L, R = 0.0831 L·bar/(mol·K), T = 295 K. Ψs = −(1)(0.30)(0.0831)(295) = −7.35 bars. ΨP = 0, so Ψ = −7.35 bars (−0.74 MPa).",
+    "Same molarity is not same water potential: 0.1 M NaCl (i = 2) has Ψs = −4.95 bars at 25 °C, twice the 0.1 M sucrose value of −2.48 bars.",
+    "A potato-core graph crossing 0% mass change at about 0.30 M sucrose means the cells' Ψ equals that solution's Ψ: about −7.4 bars at 22 °C.",
+    "Three classic slips: using °C instead of kelvin, forgetting i for salts, and dropping the minus sign."
+  ],
+  "misconception": {
+    "wrong": "Two solutions with the same molar concentration have the same water potential.",
+    "right": "Water potential depends on the number of dissolved particles. 0.1 M NaCl makes about 0.2 M of ions (i = 2), so its Ψ is about twice as negative as 0.1 M sucrose (i = 1)."
+  },
+  "check": [
+    "bio-stats-water-potential-1",
+    "bio-stats-water-potential-2",
+    "bio-stats-water-potential-3",
+    "bio-stats-water-potential-4",
+    "bio-stats-water-potential-6",
+    "bio-stats-water-potential-8",
+    "bio-stats-water-potential-10"
+  ],
+  "summary": "<p>Water potential is Ψ = ΨP + Ψs. Solute potential is Ψs = −iCRT: i is the number of particles per formula unit (1 for sucrose, about 2 for NaCl), C the molar concentration, R = 0.0831 L·bar/(mol·K) and T the temperature in kelvin. In an open container ΨP = 0. Water moves from higher to lower water potential. 10 bars = 1 MPa.</p>",
+  "connections": [
+    {
+      "href": "../tools/water-potential.html",
+      "label": "Tool: water potential calculator"
+    },
+    {
+      "href": "stats-confidence-intervals.html",
+      "label": "Skill: 95% confidence intervals and error bars"
+    }
+  ]
+}

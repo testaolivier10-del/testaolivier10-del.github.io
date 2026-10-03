@@ -1,0 +1,7 @@
+{
+  "activation-energy-diagram": {
+    "file": "figures/activation-energy-diagram.svg", "ext": "svg", "w": 680, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Energy diagram. Energy of the molecules rises on the vertical axis; progress of the reaction runs left to right. Reactants start at a higher level than products. The curve without an enzyme climbs a tall hill to the transition state; the curve with an enzyme climbs a much lower hill. Both end at the same product level, so the energy released is the same."
+  }
+}

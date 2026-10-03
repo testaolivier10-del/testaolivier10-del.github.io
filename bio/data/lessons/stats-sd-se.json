@@ -1,0 +1,84 @@
+{
+  "topic": "stats-sd-se",
+  "hook": "<p>Five eggs in the same 85 °C bath set in 62, 58, 66, 60 and 64 seconds. Five eggs at 65 °C took between 380 and 445 seconds. The range says the second set is more spread out, but it uses only two of the five values. Standard deviation uses all of them, and standard error tells you how far to trust the mean. Both are on the exam's formula sheet.</p>",
+  "prereq": [
+    {
+      "q": "Heat makes egg white turn white and firm. What happens to its proteins?",
+      "options": [
+        "They denature: heat breaks the weak interactions that hold their folded shape.",
+        "Their peptide bonds break, splitting them into single amino acids.",
+        "They gain new amino acids, changing their primary structure."
+      ],
+      "correct": 0,
+      "why": "Denaturation disrupts hydrogen bonds and other weak interactions in secondary and tertiary structure. The amino acid sequence (primary structure) is unchanged.",
+      "review": "proteins"
+    },
+    {
+      "q": "What is the mean of 58, 60, 62, 64 and 66?",
+      "options": [
+        "62",
+        "60",
+        "64"
+      ],
+      "correct": 0,
+      "why": "Sum = 310; 310 ÷ 5 = 62.",
+      "review": "stats-descriptive"
+    }
+  ],
+  "figure": {
+    "figure": "sd-bell-curves",
+    "caption": "Same mean, different spread. The wide curve has a larger standard deviation; about 68% of its values lie within 1 SD of the mean and about 95% within 2 SD."
+  },
+  "chain": [
+    {
+      "cause": "Each value in a sample sits some distance from the mean.",
+      "effect": "You find each deviation (x − x̄); positive and negative deviations would cancel, so you square them."
+    },
+    {
+      "cause": "You add the squared deviations and divide by n − 1.",
+      "effect": "This gives the average squared distance from the mean (dividing by n − 1 corrects for using the sample's own mean)."
+    },
+    {
+      "cause": "Taking the square root brings the units back to those of the data.",
+      "effect": "The result is the standard deviation, s: a typical distance of a value from the mean."
+    },
+    {
+      "cause": "A mean from many values wobbles less than single values do.",
+      "effect": "The standard error, SE = s ÷ √n, estimates how much the mean itself would vary if you repeated the sample."
+    },
+    {
+      "cause": "Increasing n shrinks SE by the square root of n but does not make individual values less variable.",
+      "effect": "Larger samples pin down the mean more precisely, while the standard deviation stays about the same."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> 58, 60, 62, 64, 66 s. x̄ = 62. Deviations −4, −2, 0, 2, 4; squares 16, 4, 0, 4, 16; sum 40. 40 ÷ (5 − 1) = 10. s = √10 = 3.16 s. SE = 3.16 ÷ √5 = 1.41 s.",
+    "Formula sheet: s = √[Σ(x<sub>i</sub> − x̄)² ÷ (n − 1)] and SE<sub>x̄</sub> = s ÷ √n. The standard deviation has the same units as the data.",
+    "In a <b>normal distribution</b>, about 68% of values lie within ±1 SD of the mean and about 95% within ±2 SD.",
+    "<b>SD</b> answers \"how much do individuals vary?\"; <b>SE</b> answers \"how precisely do I know the mean?\". To halve SE, collect four times as many values."
+  ],
+  "misconception": {
+    "wrong": "Testing more samples makes the standard deviation smaller, because the data become more reliable.",
+    "right": "More samples make the standard error smaller (it falls with √n). The standard deviation reflects how much individuals really differ, so it stays about the same however many you test."
+  },
+  "check": [
+    "bio-stats-sd-se-1",
+    "bio-stats-sd-se-2",
+    "bio-stats-sd-se-3",
+    "bio-stats-sd-se-5",
+    "bio-stats-sd-se-6",
+    "bio-stats-sd-se-7",
+    "bio-stats-sd-se-8"
+  ],
+  "summary": "<p>The standard deviation, s = √[Σ(x − x̄)² ÷ (n − 1)], is the typical distance of a value from the mean, in the data's units. In a normal distribution about 68% of values lie within 1 SD and about 95% within 2 SD. The standard error, SE = s ÷ √n, measures how precisely the sample mean is known; it shrinks as n grows, while the SD does not.</p>",
+  "connections": [
+    {
+      "href": "../tools/descriptive-stats.html",
+      "label": "Tool: descriptive statistics calculator (mean, SD, SE)"
+    },
+    {
+      "href": "stats-descriptive.html",
+      "label": "Skill: mean, median, mode and range"
+    }
+  ]
+}

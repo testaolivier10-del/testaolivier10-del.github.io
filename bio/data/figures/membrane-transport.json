@@ -1,0 +1,7 @@
+{
+  "transport-modes": {
+    "file": "figures/transport-modes.svg", "ext": "svg", "w": 700, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four panels. Passive transport: particles crowded outside move into the cell, where they are sparse, with no ATP. Active transport: particles sparse outside are moved into the cell, where they are crowded, by a transport protein using ATP. Endocytosis: the membrane folds in around a particle and pinches off a vesicle. Exocytosis: a vesicle fuses with the membrane and releases its contents outside."
+  }
+}

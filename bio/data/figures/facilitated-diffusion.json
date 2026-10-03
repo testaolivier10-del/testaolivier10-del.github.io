@@ -1,0 +1,7 @@
+{
+  "channels-carriers-pumps": {
+    "file": "figures/channels-carriers-pumps.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A membrane with three transport proteins. A channel protein is an open tube that lets ions pass from the crowded side to the scarce side. A carrier protein binds a glucose molecule on the crowded side, changes shape and releases it on the scarce side. A pump uses ATP to move ions from the scarce side to the crowded side."
+  }
+}

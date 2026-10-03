@@ -1,0 +1,99 @@
+{
+  "topic": "lipids",
+  "hook": "<p>Butter is solid on the counter; olive oil pours. Both are fats made of the same three kinds of atoms, in the same basic shape. The difference is a few bends in their carbon chains. The same bends decide whether the thin oily film around every one of your cells stays flexible in the cold, which is why fish in icy water build their cell boundaries from the bent chains found in oils rather than the straight chains of butter.</p>",
+  "prereq": [
+    {
+      "q": "Why do nonpolar molecules not dissolve in water?",
+      "options": [
+        "Water molecules hydrogen-bond to each other and push nonpolar molecules together",
+        "Nonpolar molecules carry a full negative charge that repels water",
+        "Nonpolar molecules are always larger than water molecules"
+      ],
+      "correct": 0,
+      "why": "Nonpolar molecules have no partial charges for water to grab, so water molecules bond to each other instead and squeeze the nonpolar molecules into droplets: they are hydrophobic.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "Which functional group makes a molecule act as an acid?",
+      "options": [
+        "Hydroxyl, –OH",
+        "Carboxyl, –COOH",
+        "Methyl, –CH3"
+      ],
+      "correct": 1,
+      "why": "A carboxyl group releases H+ and becomes –COO−. Hydroxyl is polar but not acidic; methyl is nonpolar.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "How many water molecules are released when three molecules are each joined to a fourth by dehydration synthesis?",
+      "options": [
+        "One",
+        "Two",
+        "Three"
+      ],
+      "correct": 2,
+      "why": "Each new covalent bond made by dehydration synthesis releases one water, so three bonds release three waters.",
+      "review": "macromolecules-intro"
+    }
+  ],
+  "figure": {
+    "figure": "fatty-acids-bilayer",
+    "caption": "A saturated fatty acid (straight) and an unsaturated one (bent at a cis double bond). A phospholipid has a polar head and two nonpolar tails; in water, phospholipids line up tail to tail as a bilayer with the heads facing the water on both sides."
+  },
+  "chain": [
+    {
+      "cause": "Lipids are built mostly of C–H and C–C bonds, which are nonpolar.",
+      "effect": "Lipids are hydrophobic: they do not dissolve in water, and water pushes them together."
+    },
+    {
+      "cause": "A fatty acid is a long hydrocarbon chain with a carboxyl group at one end; a saturated chain has only single C–C bonds and is straight.",
+      "effect": "Straight chains pack tightly side by side, attract each other strongly, and need more heat to melt: saturated fats such as butter are solid at room temperature."
+    },
+    {
+      "cause": "A cis double bond in an unsaturated chain puts a fixed bend (kink) in it.",
+      "effect": "Kinked chains cannot pack tightly, attract each other less and melt at lower temperatures: unsaturated fats such as olive oil are liquid."
+    },
+    {
+      "cause": "A phospholipid has a polar, phosphate-containing head and two nonpolar fatty acid tails.",
+      "effect": "In water, phospholipids arrange themselves into a bilayer, heads facing the water on both sides and tails hidden in the middle: the basic structure of every cell membrane."
+    },
+    {
+      "cause": "Triglycerides are made of three fatty acids joined to glycerol, rich in C–H bonds and low in oxygen.",
+      "effect": "They store about twice as much energy per gram as carbohydrates, which makes fat the body's long-term energy store."
+    }
+  ],
+  "ideas": [
+    "A <b>triglyceride</b> (fat or oil) is <b>glycerol</b> + three <b>fatty acids</b>, joined by dehydration synthesis (three waters released). Lipids are not polymers: there is no repeating chain of monomers.",
+    "<b>Saturated</b>: no C=C double bonds, chains \"saturated\" with hydrogen, straight, solid at room temperature (animal fats). <b>Unsaturated</b>: one or more C=C double bonds, kinked, liquid (plant and fish oils).",
+    "<b>Phospholipids</b> are <b>amphipathic</b>: a hydrophilic head and hydrophobic tails. That is why they form <b>bilayers</b>, and cell <b>membranes</b> are phospholipid bilayers.",
+    "<b>Steroids</b> are lipids built from four fused carbon rings. <b>Cholesterol</b> sits in animal cell membranes; steroid hormones such as testosterone and estrogen act as signals."
+  ],
+  "misconception": {
+    "wrong": "Unsaturated fats are liquid because they have fewer hydrogen atoms, which makes them lighter.",
+    "right": "The missing hydrogens matter only because of the shape they leave behind. Each cis double bond bends the chain, so neighboring chains cannot pack closely; fewer, weaker attractions between them mean they melt at a lower temperature. A trans double bond leaves the chain nearly straight, so a trans fat packs almost like a saturated one and is solid, even though it has the same number of hydrogens as its cis twin."
+  },
+  "check": [
+    "bio-lipids-11",
+    "bio-lipids-15",
+    "bio-lipids-1",
+    "bio-lipids-2",
+    "bio-lipids-3",
+    "bio-lipids-4",
+    "bio-lipids-5"
+  ],
+  "summary": "<p>Lipids are mostly nonpolar, so they are hydrophobic. Triglycerides (glycerol plus three fatty acids) store energy densely. Saturated fatty acids are straight and pack tightly, so they are solid at room temperature; cis double bonds in unsaturated fatty acids kink the chains, so they are liquid. Phospholipids have a hydrophilic head and two hydrophobic tails and form the bilayers of cell membranes. Steroids such as cholesterol and steroid hormones are built on four fused rings.</p>",
+  "connections": [
+    {
+      "href": "../notes/carbohydrates.html",
+      "label": "Short-term versus long-term energy stores (Carbohydrates)"
+    },
+    {
+      "href": "../notes/water-hydrogen-bonding.html",
+      "label": "Why hydrophobic molecules cluster in water (Structure of Water and Hydrogen Bonding)"
+    },
+    {
+      "href": "../notes/proteins.html",
+      "label": "Why oily parts of proteins end up inside them"
+    }
+  ]
+}

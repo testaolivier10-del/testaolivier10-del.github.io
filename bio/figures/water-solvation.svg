@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 640 320" width="640" height="320" role="img" aria-labelledby="t d">
+<title id="t">Water molecules surrounding dissolved ions</title>
+<desc id="d">Left: a sodium ion, Na+, surrounded by five water molecules, each turned so its partly negative oxygen points at the ion. Right: a chloride ion, Cl−, surrounded by five water molecules, each turned so one partly positive hydrogen points at the ion.</desc>
+<defs>
+  <g id="w">
+    <line x1="0" y1="0" x2="-15" y2="12" stroke="#1F2A28" stroke-width="3"/>
+    <line x1="0" y1="0" x2="15" y2="12" stroke="#1F2A28" stroke-width="3"/>
+    <circle r="13" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/>
+    <circle cx="-17" cy="14" r="8" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/>
+    <circle cx="17" cy="14" r="8" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/>
+  </g>
+</defs>
+<rect width="640" height="320" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" text-anchor="middle">
+  <!-- sodium: oxygen toward ion, hydrogens outward -->
+  <g transform="translate(165,160)">
+    <use xlink:href="#w" href="#w" transform="rotate(0) translate(0,62)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(72) translate(0,62)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(144) translate(0,62)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(216) translate(0,62)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(288) translate(0,62)"/>
+    <circle r="26" fill="#C3DDF0" stroke="#0072B2" stroke-width="3"/>
+    <text y="7" font-size="20" font-weight="700" fill="#1F2A28">Na⁺</text>
+  </g>
+  <!-- chloride: one hydrogen toward ion -->
+  <g transform="translate(470,160)">
+    <use xlink:href="#w" href="#w" transform="rotate(20) translate(0,-78) rotate(-50)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(92) translate(0,-78) rotate(-50)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(164) translate(0,-78) rotate(-50)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(236) translate(0,-78) rotate(-50)"/>
+    <use xlink:href="#w" href="#w" transform="rotate(308) translate(0,-78) rotate(-50)"/>
+    <circle r="34" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+    <text y="7" font-size="20" font-weight="700" fill="#1F2A28">Cl⁻</text>
+  </g>
+  <g font-size="15" fill="#1F2A28">
+    <text x="165" y="292">oxygen ends (δ−) face the</text>
+    <text x="165" y="310">positive sodium ion</text>
+    <text x="470" y="292">hydrogen ends (δ+) face the</text>
+    <text x="470" y="310">negative chloride ion</text>
+  </g>
+  <g font-size="13" fill="#1F2A28">
+    <circle cx="300" cy="22" r="8" fill="#F6D2BD" stroke="#D55E00" stroke-width="2"/><text x="330" y="27">O</text>
+    <circle cx="300" cy="46" r="6" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/><text x="330" y="51">H</text>
+  </g>
+</g>
+</svg>

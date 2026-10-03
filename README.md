@@ -1,6 +1,6 @@
 # levlprep.com
 
-Source for [LevlPrep](https://levlprep.com/), home to three courses:
+Source for [LevlPrep](https://levlprep.com/), home to four courses:
 
 **[NREMT-EMT Prep](https://levlprep.com/nremt/)** — a free NREMT-EMT exam prep app: a 2,033-question bank (4 difficulty levels, multiple-choice/select-N/sequencing item types), timed 100-question exams, domain drills, a dashboard with XP/streaks/mastery tracking, study notes, mnemonics, a glossary, protocol flowcharts, an interactive 3D body map, an auscultation sound trainer, and a branching clinical scenario simulator.
 
@@ -11,6 +11,8 @@ Source for [LevlPrep](https://levlprep.com/), home to three courses:
 ## Stack
 
 Plain HTML/CSS/vanilla JS — no framework, no bundler, no build step. Hosted on GitHub Pages. Every external script on every page is `defer`red so a page paints before its JavaScript arrives; deferred scripts still run in document order, so the shared modules in `<head>` run ahead of a page's own, and a page's inline bootstrap waits for `DOMContentLoaded`. The two typefaces are served from `assets/fonts/`, not a third party. A service worker at the site root (`sw.js`) gives the app offline support. It sits at the root rather than under `nremt/` so its scope covers the shared `/assets/` modules every subject loads. There are three manifests, one per installable thing — `manifest.json`, `nremt/manifest.json`, `ochem/manifest.json` — so installing from a course gives you that course rather than the landing page, and every page declares the one it belongs to.
+
+**[AP® Biology](https://levlprep.com/bio/)** (Beta) — high-school exam prep built on the 2025 course framework, in its order, at `/bio/` (no "ap" in any URL or file name; AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site). Same architecture as A&P: data in `bio/data/`, one generator (`scripts/build-apbio.mjs`), a dependency map (`docs/apbio-dependency-map.json`) with the "nothing used before it is taught" check (`scripts/check-apbio-map.mjs`), content rules (`scripts/check-apbio-content.mjs`), lazy per-unit banks, per-option explanations and SM-2 review, in its own `ApBio*` modules. Every question is tagged with unit, topic and science practice; stimulus sets share one table, graph or experiment. Published: Units 1-3 and the statistics and experimental-design skills (35 topics, 688 questions, 13 free-response questions with rubrics, the osmosis and enzyme simulators, nine skills tools). The plan, status and decisions live in `docs/apbio-spec.md`; formats in `docs/apbio-architecture.md`; open science questions in `docs/apbio-needs-author.md`; accuracy reviews in `docs/apbio-reviews/`.
 
 ## Structure
 
@@ -814,6 +816,7 @@ To add a course: add its entry to `assets/courses.js`, run `node scripts/build-c
 - Pricing copy in `scripts/build-pricing.mjs` (each manifest's description, the 404 card) and the `// count:<key>` line in `premium.js`; the bank count in `scripts/lib/premium-data.mjs`.
 - Content keyed by course that no table holds: the hub's course cards in `index.html` and `404.html`, the noscript links in `search.html`, `scripts/lib/app-pages.mjs` (noindex app pages), `scripts/build-og-tags.mjs` (card image), page budgets in `scripts/check-weight.mjs`, sample pages in `check-a11y.mjs`, the tutor's question bank (`BANKS` in `tutor.js`), and `scripts/sql/pageviews.sql`.
 - Bump `CACHE_NAME` in `sw.js`.
+- A course published chapter by chapter (`<dir>/data/published.json`, AP® Biology) is registered at once but stays off the hub, the 404 page, premium.html, the FAQ and the sitemap until a chapter is listed (`isOpen()` in `scripts/lib/courses.mjs`; `<KEY>_PUBLISHED=…` previews it). A course key containing the token "ap" (`apbio`) never goes into a URL: links and the Polar return use its folder (`bio`).
 
 ## CI
 

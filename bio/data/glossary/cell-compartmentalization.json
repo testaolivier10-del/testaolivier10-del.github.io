@@ -1,0 +1,7 @@
+{
+  "compartmentalization": { "def": "The division of a eukaryotic cell by internal membranes into separate spaces, the organelles, each holding its own set of molecules and conditions." },
+  "separate-conditions": { "def": "Keeping different chemical conditions, such as pH, in different compartments, so reactions that need different conditions, or that would undo each other, can run in the same cell at the same time." },
+  "membrane-folding": { "def": "Internal membranes folded into ridges or stacks, such as the cristae of mitochondria and the thylakoids of chloroplasts. Folding packs more membrane area, and so more membrane proteins, into a small space." },
+  "nucleoid": { "def": "The region of a prokaryotic cell where its DNA is concentrated. Unlike a nucleus, it has no membrane around it." },
+  "prokaryote-regions": { "def": "Prokaryotes have no membrane-bound organelles, but their insides are still organized: DNA gathers in the nucleoid, and some have internal membrane folds or protein-walled compartments for particular jobs." }
+}

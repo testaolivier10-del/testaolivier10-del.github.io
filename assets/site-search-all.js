@@ -27,6 +27,7 @@
     { key: 'nremt', searchLabel: 'NREMT', name: 'NREMT-EMT', dir: 'nremt', aliases: [], status: 'live' },
     { key: 'ochem', searchLabel: 'Organic Chem', name: 'Organic Chemistry', dir: 'ochem', aliases: ['organic-chemistry'], status: 'live' },
     { key: 'anp', searchLabel: 'A&P', name: 'Anatomy & Physiology', dir: 'anatomy-physiology', aliases: ['a&p', 'ap', 'anatomy-physiology'], status: 'beta' },
+    { key: 'apbio', searchLabel: 'Biology', name: 'AP® Biology', dir: 'bio', aliases: ['bio', 'biology'], status: 'beta' },
   ];
   // courses:end
   var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
@@ -52,6 +53,16 @@
     var v = String(value || '').toLowerCase().trim();
     COURSE_LIST.forEach(function (c) { if (c.aliases.indexOf(v) !== -1) v = c.key; });
     return courseOf(v) ? v : 'all';
+  }
+
+  /* The ?course= value written for a course. A key with the token "ap" in it
+     (apbio) never goes into a URL (docs/apbio-spec.md decision 2): it travels
+     as its folder ("bio"), which parseCourse reads back through its aliases. */
+  function urlKey(key) {
+    var tokens = String(key || '').toLowerCase().split(/[^a-z0-9]+/);
+    if (tokens.indexOf('ap') === -1 && tokens.indexOf('apbio') === -1) return key;
+    for (var i = 0; i < COURSE_LIST.length; i++) if (COURSE_LIST[i].key === key) return COURSE_LIST[i].dir;
+    return key;
   }
 
   function scopeKeys(scope) {
@@ -291,6 +302,19 @@
     return out;
   }
 
+  function apbioStructureChunks(CU) {
+    var out = [];
+    var units = {};
+    ((CU && CU.units) || []).forEach(function (u) { units[u.id] = u; });
+    ((CU && CU.topics) || []).filter(function (t) { return t.built; }).forEach(function (t) {
+      var u = units[t.unit];
+      var where = u ? (u.part === 'course' ? 'Unit ' + u.n + ': ' + u.title : 'Skills: ' + u.title) : 'the course';
+      out.push({ course: 'apbio', kind: 'Lessons', file: 'bio/lessons/' + t.id + '.html', heading: t.title,
+        text: t.title + '. Interactive lesson in ' + where + '.', weight: 3 });
+    });
+    return out;
+  }
+
   /* ---- results ---- */
 
   /* Hits (already ranked, best first) grouped by course. Groups are ordered by
@@ -459,7 +483,8 @@
       ['notes', function () {
         return getJson('anatomy-physiology/assets/notes-index.json').then(function (list) {
           return Promise.all(list.map(function (n) {
-            var id = String(n.file).replace(/^.*\/notes\//, '').replace(/\.html$/, '');
+            // [/] rather than \/: "\//" reads as a comment to scripts/check-courses.mjs.
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
             var href = 'anatomy-physiology/notes/' + id + '.html';
             return getText(href).then(function (html) {
               var doc = parseHtml(html);
@@ -474,6 +499,46 @@
                 if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
                 if (text.length < 30) return;
                 out.push({ course: 'anp', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
+                  heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
+              });
+              return out;
+            }).catch(function () { return []; });
+          })).then(function (all) { return [].concat.apply([], all); });
+        });
+      }],
+    ],
+    // AP® Biology: only what is published. The curriculum, glossary and notes
+    // index come from scripts/build-apbio.mjs and are empty until a unit is
+    // published, so the course adds nothing to a search before then.
+    apbio: [
+      ['lessons', function () {
+        return loadScript('bio/assets/bio-curriculum.js').then(function () {
+          return apbioStructureChunks(window.ApBioCurriculum);
+        });
+      }],
+      ['glossary', function () {
+        return getJson('bio/assets/glossary.json').then(function (g) {
+          return glossaryChunks('apbio', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
+      ['notes', function () {
+        return getJson('bio/assets/notes-index.json').then(function (list) {
+          return Promise.all(list.map(function (n) {
+            var id = String(n.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+            var href = 'bio/notes/' + id + '.html';
+            return getText(href).then(function (html) {
+              var doc = parseHtml(html);
+              var root = doc.querySelector('.bio-prose') || doc.querySelector('main') || doc.body;
+              root.querySelectorAll('.bio-crumb,.bio-onward,.bio-share,.bio-foot').forEach(function (x) { x.remove(); });
+              var out = [];
+              var heading = n.title;
+              var hid = '';
+              root.querySelectorAll('h2,h3,p,li,td,th,dd,figcaption').forEach(function (el) {
+                var text = (el.textContent || '').replace(/\s+/g, ' ').trim();
+                if (!text) return;
+                if (/^H[23]$/.test(el.tagName)) { heading = text; hid = el.id || ''; return; }
+                if (text.length < 30) return;
+                out.push({ course: 'apbio', kind: 'Notes', file: href + (hid ? '#' + hid : ''), frag: true,
                   heading: heading === n.title ? n.title : n.title + ' — ' + heading, text: text });
               });
               return out;
@@ -504,6 +569,7 @@
     COURSES: COURSES,
     GLOSSARY: GLOSSARY,
     courseOf: courseOf,
+    urlKey: urlKey,
     parseCourse: parseCourse,
     scopeKeys: scopeKeys,
     decodeEntities: decodeEntities,

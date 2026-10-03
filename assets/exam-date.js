@@ -14,7 +14,12 @@
    The date stays on this device. It is not added to the course's sync
    namespace, because a push from a page that never loaded this file would
    drop it from the server copy, and a countdown that comes and goes is worse
-   than one you set once per device. */
+   than one you set once per device.
+
+   A course whose exam is on one fixed date for everyone (AP® Biology) has a
+   default in DEFAULTS: the card counts down to it, named, until the student
+   sets their own date. Clearing the card stores "none", so the default does
+   not come back; a default that has passed is not shown. */
 (function(){
   var STYLE_ID = 'levlExamDateStyle';
   var CSS =
@@ -39,12 +44,32 @@
     s.textContent = CSS;
     document.head.appendChild(s);
   }
+  // Per-course defaults, keyed by course key (the `subject`).
+  var DEFAULTS = {
+    apbio: { date: '2027-05-03', label: 'AP® Biology exam (Mon, May 3, 2027)' }
+  };
   function key(subject){ return (subject || 'levl') + '_exam_date'; }
+  function stored(subject){
+    try{ return localStorage.getItem(key(subject)); }catch(e){ return null; }
+  }
+  // The student's own date, else the course's default while it is ahead.
   function read(subject){
-    try{ var v = localStorage.getItem(key(subject)); return /^\d{4}-\d{2}-\d{2}$/.test(v || '') ? v : null; }catch(e){ return null; }
+    var v = stored(subject);
+    if(/^\d{4}-\d{2}-\d{2}$/.test(v || '')) return v;
+    var d = v === null && DEFAULTS[subject];
+    return d && daysUntil(d.date) >= 0 ? d.date : null;
+  }
+  // True when read() is the course's default rather than a date the student set.
+  function isDefault(subject){
+    var d = DEFAULTS[subject];
+    return !!d && stored(subject) === null && read(subject) === d.date;
   }
   function write(subject, v){
-    try{ if(v) localStorage.setItem(key(subject), v); else localStorage.removeItem(key(subject)); }catch(e){}
+    try{
+      if(v) localStorage.setItem(key(subject), v);
+      else if(DEFAULTS[subject]) localStorage.setItem(key(subject), 'none');
+      else localStorage.removeItem(key(subject));
+    }catch(e){}
   }
   function todayIso(){
     var d = new Date();
@@ -98,12 +123,14 @@
           '<p class="xd-note">Set it and this card counts down, with what that means per day. Stored on this device only.</p>';
       } else {
         var days = daysUntil(date);
+        var dflt = isDefault(subject) ? DEFAULTS[subject] : null;
         html += '<h2 id="xdHead-' + esc(subject) + '">Your exam</h2>';
         if(days < 0){
           html += '<p class="xd-phase" style="margin-top:0">Your exam date, ' + esc(longDate(date)) + ', has passed. Set the next one?</p>';
         } else {
           html += '<div class="xd-big"><b>' + (days === 0 ? 'Today' : days + (days === 1 ? ' day' : ' days')) + '</b><span>' +
-            (days === 0 ? 'Good luck.' : 'until ' + esc(longDate(date))) + '</span></div>';
+            (days === 0 ? 'Good luck.' : 'until ' + (dflt ? 'the ' + esc(dflt.label) : esc(longDate(date)))) + '</span></div>';
+          if(dflt) html += '<p class="xd-note" style="margin-top:0">The scheduled date for everyone. If yours is different, change it.</p>';
           var t = days > 0 && typeof opts.target === 'function' ? opts.target(days) : null;
           if(t && t.n > 0){
             html += '<div class="xd-target"><b>' + t.n.toLocaleString() + '</b> ' + esc(t.unit) + ' a day ' + esc(t.why || '') + '.</div>';
@@ -135,5 +162,5 @@
     return { render: render };
   }
 
-  window.LevlExamDate = { mount: mount, read: read, daysUntil: daysUntil };
+  window.LevlExamDate = { mount: mount, read: read, daysUntil: daysUntil, isDefault: isDefault, DEFAULTS: DEFAULTS };
 })();

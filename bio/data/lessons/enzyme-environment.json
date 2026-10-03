@@ -1,0 +1,76 @@
+{
+  "topic": "enzyme-environment",
+  "hook": "<p>A fever of 39 °C makes you feel awful, and a fever of 42 °C can kill. Pepsin digests meat in your acidic stomach and stops cold the moment it reaches your small intestine. Many poisons and drugs work by sticking to one enzyme. All of these come down to the same idea: an enzyme's rate depends on its surroundings, and on what else is binding to it.</p>",
+  "prereq": [
+    {
+      "q": "How does an enzyme speed up a reaction?",
+      "options": [
+        "It supplies energy to the substrate so more molecules can react",
+        "It lowers the activation energy needed to reach the transition state",
+        "It changes the products into lower-energy molecules"
+      ],
+      "correct": 1,
+      "why": "Enzymes lower the energy hill (activation energy). They add no energy and do not change the products.",
+      "review": "enzyme-catalysis"
+    },
+    {
+      "q": "A protein is denatured. What has changed?",
+      "options": [
+        "Its three-dimensional shape, because weak interactions between side chains were disrupted",
+        "Its sequence of amino acids, because some were removed from the chain",
+        "Its number of peptide bonds, because water was added across them"
+      ],
+      "correct": 0,
+      "why": "Denaturation unfolds the protein by breaking hydrogen bonds, ionic attractions and other weak interactions. The amino acid sequence and peptide bonds stay the same.",
+      "review": "proteins"
+    },
+    {
+      "q": "Compared with a solution at pH 8, a solution at pH 2 has",
+      "options": [
+        "fewer hydrogen ions, because a lower number means fewer",
+        "6 times as many hydrogen ions",
+        "1,000,000 times as many hydrogen ions"
+      ],
+      "correct": 2,
+      "why": "Each pH unit is a tenfold change in hydrogen ion concentration, and lower pH means more hydrogen ions. Six units apart: 10⁶ = 1,000,000 times as many.",
+      "review": "water-hydrogen-bonding"
+    }
+  ],
+  "figure": {
+    "figure": "enzyme-rate-factors",
+    "caption": "A: rate rises with temperature until the enzyme starts to denature. B: each enzyme has its own optimal pH. C: rate levels off once the active sites are full; a competitive inhibitor can be outcompeted by extra substrate, a noncompetitive inhibitor cannot."
+  },
+  "chain": [
+    { "cause": "Raising the temperature makes enzyme and substrate molecules move faster.", "effect": "They meet more often and more of those collisions have enough energy to react, so the rate rises." },
+    { "cause": "Above the optimal temperature, the extra motion breaks the weak bonds that hold the enzyme's fold.", "effect": "The active site loses its shape (denaturation), so the rate falls steeply." },
+    { "cause": "A pH away from the optimum adds hydrogen ions to, or removes them from, side chains.", "effect": "Side-chain charges change, so attractions inside the protein and with the substrate change, and the rate falls; extreme pH denatures the enzyme." },
+    { "cause": "Adding substrate fills more of the active sites at any moment.", "effect": "The rate rises, then levels off at a maximum once nearly all active sites are busy (saturation). Now the amount of enzyme is the limiting factor." },
+    { "cause": "A competitive inhibitor looks like the substrate and occupies the active site.", "effect": "Fewer active sites hold substrate; adding much more substrate outcompetes the inhibitor, so the same maximum rate is eventually reached." },
+    { "cause": "A noncompetitive inhibitor binds an allosteric site and changes the enzyme's shape.", "effect": "Those enzyme molecules work poorly whatever the substrate level, so extra substrate cannot restore the rate and the maximum is lower." }
+  ],
+  "ideas": [
+    "Each enzyme has an <b>optimal temperature</b> and <b>optimal pH</b> that match where it works: about 37 °C for most human enzymes, pH 2 for stomach pepsin, pH 8 for intestinal trypsin.",
+    "Cold slows an enzyme without unfolding it: warm it up and the rate returns. Heat past the optimum unfolds it; mild damage may reverse (<b>renaturation</b>), severe damage usually does not.",
+    "On a rate-against-substrate graph, the rising part is limited by substrate and the plateau by enzyme. To raise the plateau, add enzyme.",
+    "<b>Competitive</b>: same maximum, reached at higher substrate. <b>Noncompetitive</b>: lower maximum. <b>Irreversible</b> inhibitors bind for good. Many enzymes also need a <b>cofactor</b>, such as a metal ion."
+  ],
+  "misconception": {
+    "wrong": "Adding more substrate overcomes any inhibitor, because the substrate eventually pushes the inhibitor out of the way.",
+    "right": "Extra substrate outcompetes a competitive inhibitor, which fights for the active site. A noncompetitive inhibitor binds somewhere else and changes the enzyme's shape, so extra substrate cannot reverse it."
+  },
+  "check": [
+    "bio-enzyme-environment-1",
+    "bio-enzyme-environment-2",
+    "bio-enzyme-environment-4",
+    "bio-enzyme-environment-5",
+    "bio-enzyme-environment-17",
+    "bio-enzyme-environment-20",
+    "bio-enzyme-environment-24"
+  ],
+  "summary": "<p>An enzyme's rate depends on its surroundings. Warming speeds collisions until heat denatures the enzyme past its optimal temperature; pH away from the optimum changes side-chain charges and, at extremes, denatures it. More substrate raises the rate until the active sites are saturated, after which the enzyme amount limits the rate. Inhibitors lower the rate: competitive ones occupy the active site and can be outcompeted by substrate, noncompetitive ones bind an allosteric site and lower the maximum, and irreversible ones bind for good. Many enzymes need a cofactor to work.</p>",
+  "connections": [
+    { "href": "../notes/enzyme-catalysis.html", "label": "Back: activation energy and reaction rate (3.2)" },
+    { "href": "../notes/cellular-energy.html", "label": "Next: how cells control whole chains of enzymes (3.4)" },
+    { "href": "../notes/cellular-respiration.html", "label": "Poisons that stop respiration (3.6)" }
+  ]
+}

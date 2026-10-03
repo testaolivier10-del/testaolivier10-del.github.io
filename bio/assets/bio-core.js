@@ -170,8 +170,8 @@
   /* Premium (assets/premium.js), mirroring AnpCore. Nothing is locked unless
      premium.js is present, has launched, knows this course (the course
      registry adds it) and this browser has no pass. Free: every notes page,
-     Units 1 and 2 and the first lesson of each skills chapter (topic.free,
-     from the generator), 15 practice questions a day, one full exam. */
+     Units 1 and 2 and every skills lesson (topic.free, from the
+     generator; isFreeTopic in scripts/lib/apbio-build.mjs), 15 practice questions a day, one full exam. */
   function prem(){ var P = window.LevlPremium; return P && P.COURSES && P.COURSES[COURSE] ? P : null; }
   function locked(unit, topic){
     var P = prem();

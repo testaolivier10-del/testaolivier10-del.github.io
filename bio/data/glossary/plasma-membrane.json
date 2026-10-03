@@ -1,0 +1,9 @@
+{
+  "plasma-membrane": { "def": "The membrane that surrounds a cell and separates its inside from its surroundings: a phospholipid bilayer with proteins, cholesterol (in animal cells) and carbohydrates attached to some lipids and proteins." },
+  "membrane-protein": { "def": "A protein in or on a membrane. Integral (embedded) proteins sit in the bilayer, and transmembrane proteins cross it completely; peripheral proteins are attached loosely to one surface. They move substances across, receive signals, join cells and act as enzymes." },
+  "fluid-mosaic": { "def": "The accepted model of membrane structure: a fluid phospholipid bilayer in which lipids and many proteins slide sideways, with a patchwork (mosaic) of different proteins scattered through it." },
+  "membrane-fluidity": { "def": "How freely the lipids and proteins of a membrane move. Higher temperature and more unsaturated (kinked) fatty acid tails raise fluidity; cholesterol keeps it within a working range, restraining movement when warm and preventing tight packing when cold." },
+  "glycoprotein": { "def": "A protein with a carbohydrate chain attached; a glycolipid is a lipid with one. On the outer surface of the plasma membrane these chains act as identity tags that let cells recognize each other (cell recognition)." },
+  "receptor-basic": { "def": "A protein that a particular signaling molecule binds, which changes the cell's activity. Receptors for molecules that cannot cross the membrane sit in the plasma membrane with their binding site facing outside." },
+  "signal-molecule-basic": { "def": "A molecule that carries a message to a cell by binding a receptor, such as a hormone like insulin. A cell responds to a signal only if it has the matching receptor." }
+}

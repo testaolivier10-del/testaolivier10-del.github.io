@@ -1,0 +1,12 @@
+{
+  "dehydration-hydrolysis": {
+    "file": "figures/dehydration-hydrolysis.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 360,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Top row: two monomers, one ending in OH and the other in H, join; a water molecule leaves and a bond links the monomers (dehydration synthesis). Bottom row: a water molecule is added to the joined pair, the bond breaks, and the two monomers get back their OH and H (hydrolysis)."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "negative-control": {
+    "def": "A group or sample that should NOT give the response (for example, water in a test for fat). If it stays negative, the response in other samples was not caused by the procedure, the materials or contamination."
+  },
+  "positive-control": {
+    "def": "A group or sample known to give the response (for example, vegetable oil in a test for fat). If it turns positive, the test works under these conditions, so a negative result elsewhere is believable."
+  },
+  "confounding": {
+    "def": "A factor other than the independent variable that differs between groups and could also affect the dependent variable, so the result cannot be credited to the independent variable alone."
+  }
+}

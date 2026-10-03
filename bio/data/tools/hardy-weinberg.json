@@ -1,0 +1,111 @@
+{
+  "about": "Skills tool: Hardy-Weinberg calculations. Solver and generator: ApBioProblems, kind hw (mode counts or recessive). Built now, published with Unit 7: every item is tagged stats-hardy-weinberg, whose map entry sits after the Unit 7 topic hardy-weinberg, so the generator serves it only once Unit 7 is published.",
+  "slug": "hardy-weinberg",
+  "kind": "hw",
+  "topic": "stats-hardy-weinberg",
+  "intro": "<p>Find allele frequencies from genotype counts or from the share of individuals showing a recessive trait, and predict genotype frequencies for a population in Hardy-Weinberg equilibrium.</p>",
+  "howItWorksTitle": "The equations, their assumptions, and how answers are checked",
+  "howItWorks": "<p class=\"bt-eq\">p + q = 1</p><p class=\"bt-eq\">p² + 2pq + q² = 1</p><ul><li><b>p</b> and <b>q</b> are the frequencies of the two alleles of one gene; p², 2pq and q² are the expected frequencies of the two homozygous genotypes and the heterozygote.</li><li>From genotype counts, count alleles: every individual carries two. From a recessive phenotype, q² is the share of individuals showing it, because only homozygous recessive individuals do.</li><li>The genotype frequencies are expected only if the population is in equilibrium: very large, mating at random, with no mutation, no migration and no natural selection.</li><li>Frequencies count when within one unit of the last decimal place asked for (0.01 for p, q and 2pq; 0.001 for q²) or 1%; numbers of individuals within 2%.</li></ul>",
+  "contexts": [
+    {
+      "id": "snapdragons",
+      "topic": "stats-hardy-weinberg",
+      "mode": "counts",
+      "text": "<p>In snapdragons, flower color shows incomplete dominance: C<sup>R</sup>C<sup>R</sup> plants are red, C<sup>R</sup>C<sup>W</sup> are pink and C<sup>W</sup>C<sup>W</sup> are white. A survey counted {N} plants.</p>",
+      "A": "C<sup>R</sup>",
+      "a": "C<sup>W</sup>",
+      "N": [
+        150,
+        800
+      ],
+      "p": [
+        0.25,
+        0.75
+      ]
+    },
+    {
+      "id": "mice",
+      "topic": "stats-hardy-weinberg",
+      "mode": "counts",
+      "text": "<p>A DNA test told apart all three genotypes for a coat-color gene (alleles B and b) in {N} wild mice.</p>",
+      "A": "B",
+      "a": "b",
+      "N": [
+        100,
+        600
+      ],
+      "p": [
+        0.2,
+        0.8
+      ]
+    },
+    {
+      "id": "rabbits",
+      "topic": "stats-hardy-weinberg",
+      "mode": "recessive",
+      "text": "<p>White fur is a recessive trait in a population of rabbits. Of {N} rabbits, {affected} have white fur. Assume the population is in Hardy-Weinberg equilibrium.</p>",
+      "N": [
+        200,
+        1000
+      ],
+      "q2": [
+        0.04,
+        0.3
+      ]
+    },
+    {
+      "id": "beetles",
+      "topic": "stats-hardy-weinberg",
+      "mode": "recessive",
+      "text": "<p>Green body color is recessive to brown in a beetle population. Of {N} beetles collected, {affected} are green. Assume the population is in Hardy-Weinberg equilibrium.</p>",
+      "N": [
+        100,
+        800
+      ],
+      "q2": [
+        0.05,
+        0.36
+      ]
+    }
+  ],
+  "problems": [
+    {
+      "id": "moths",
+      "topic": "stats-hardy-weinberg",
+      "input": {
+        "kind": "hw",
+        "mode": "counts",
+        "text": "<p>A DNA test of 400 moths found 196 AA, 168 Aa and 36 aa individuals.</p>",
+        "A": "A",
+        "a": "a",
+        "AA": 196,
+        "Aa": 168,
+        "aa": 36
+      },
+      "expect": {
+        "p": 0.7,
+        "q": 0.3,
+        "pq2": 0.42,
+        "het": 168
+      }
+    },
+    {
+      "id": "flowers",
+      "topic": "stats-hardy-weinberg",
+      "input": {
+        "kind": "hw",
+        "mode": "recessive",
+        "text": "<p>In a meadow of 500 plants, 80 have white flowers, a recessive trait. Assume the population is in Hardy-Weinberg equilibrium.</p>",
+        "N": 500,
+        "affected": 80
+      },
+      "expect": {
+        "q2": 0.16,
+        "q": 0.4,
+        "p": 0.6,
+        "pq2": 0.48,
+        "carriers": 240
+      }
+    }
+  ]
+}

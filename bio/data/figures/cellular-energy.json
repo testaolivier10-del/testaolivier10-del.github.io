@@ -1,0 +1,12 @@
+{
+  "atp-cycle": {
+    "file": "figures/atp-cycle.svg", "ext": "svg", "w": 700, "h": 380,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A cycle with ATP at the top and ADP plus phosphate at the bottom. On the right, ATP hydrolysis releases energy that drives work: building molecules, pumping ions and moving muscle. On the left, energy from breaking down food molecules adds a phosphate back to ADP to make ATP. The same molecules are recycled over and over."
+  },
+  "feedback-inhibition-pathway": {
+    "file": "figures/feedback-inhibition-pathway.svg", "ext": "svg", "w": 720, "h": 270,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A pathway from molecule A to B to C to D, each step run by its own enzyme, numbered 1 to 3. A dashed line from the end product D loops back to enzyme 1, the first enzyme, and ends in a block symbol: D binds enzyme 1's allosteric site and slows step 1 when D builds up."
+  }
+}

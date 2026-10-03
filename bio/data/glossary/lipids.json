@@ -1,0 +1,38 @@
+{
+  "fatty-acid": {
+    "def": "A long hydrocarbon chain (the hydrocarbon tail) with a carboxyl group at one end; the building block of fats, oils and phospholipids."
+  },
+  "triglyceride": {
+    "def": "A fat or oil molecule: glycerol joined to three fatty acids, made by dehydration synthesis (releasing three waters). The main long-term energy store."
+  },
+  "saturated": {
+    "def": "A fatty acid with only single carbon-carbon bonds, so it carries as much hydrogen as possible and its chain is straight. Saturated fats pack tightly and are solid at room temperature."
+  },
+  "unsaturated": {
+    "def": "A fatty acid with one or more carbon-carbon double bonds. A cis double bond kinks the chain, so unsaturated fats pack loosely and are liquid (oils) at room temperature."
+  },
+  "phospholipid": {
+    "def": "A lipid made of glycerol, two fatty acid tails and a phosphate-containing head. Its hydrophilic head and hydrophobic tails make it form bilayers in water."
+  },
+  "amphipathic": {
+    "def": "Having both a hydrophilic (water-loving) part and a hydrophobic (water-avoiding) part, like a phospholipid with its polar head and nonpolar tails."
+  },
+  "lipid-bilayer": {
+    "def": "A double layer of phospholipids in water, with the hydrophobic tails facing each other in the middle and the hydrophilic heads facing the water on both sides."
+  },
+  "membrane-basic": {
+    "def": "A thin boundary, built on a phospholipid bilayer, that encloses a cell (the cell membrane) or a space inside it. Membranes are taught in full in Unit 2."
+  },
+  "steroid": {
+    "def": "A lipid whose carbon skeleton is four fused rings, such as cholesterol, testosterone and estrogen."
+  },
+  "cholesterol": {
+    "def": "A steroid found in animal cell membranes, where it steadies the membrane against temperature changes; the starting molecule for steroid hormones."
+  },
+  "steroid-hormone": {
+    "def": "A hormone that is a steroid, such as testosterone or estrogen. Being hydrophobic, it can pass through the lipid bilayer of a cell membrane."
+  },
+  "lipid-energy": {
+    "def": "Fats store about 37 kJ per gram, more than twice as much as carbohydrates (about 17 kJ per gram), because their chains are rich in C–H bonds and low in oxygen."
+  }
+}

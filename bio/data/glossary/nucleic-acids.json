@@ -1,0 +1,53 @@
+{
+  "pentose": {
+    "def": "A sugar with five carbon atoms, such as ribose and deoxyribose; the sugar part of every nucleotide. Its carbons are numbered 1′ to 5′."
+  },
+  "deoxyribose": {
+    "def": "The five-carbon sugar in DNA nucleotides; it lacks the –OH group that ribose has on carbon 2′."
+  },
+  "ribose": {
+    "def": "The five-carbon sugar in RNA nucleotides; it has an –OH group on carbon 2′."
+  },
+  "nitrogenous-base": {
+    "def": "The nitrogen-containing ring molecule attached to the sugar of a nucleotide: adenine, guanine, cytosine, thymine (DNA only) or uracil (RNA only). Its order along a strand carries information."
+  },
+  "dna-bases": {
+    "def": "The four bases of DNA: adenine (A), thymine (T), guanine (G) and cytosine (C). A pairs with T, and G with C."
+  },
+  "uracil": {
+    "def": "The base (U) that takes the place of thymine in RNA; it pairs with adenine."
+  },
+  "nucleotide": {
+    "def": "The monomer of nucleic acids: a phosphate group, a five-carbon sugar and a nitrogenous base."
+  },
+  "sugar-phosphate-backbone": {
+    "def": "The repeating sugar–phosphate–sugar chain of a nucleic acid strand, held together by covalent phosphodiester bonds formed by dehydration synthesis; the bases stick out from it."
+  },
+  "strand-direction": {
+    "def": "The two different ends of a nucleic acid strand: the 5′ end (free phosphate on a 5′ carbon) and the 3′ end (free –OH on a 3′ carbon). Sequences are written 5′ to 3′, and strands grow at the 3′ end."
+  },
+  "dna": {
+    "def": "Deoxyribonucleic acid: a nucleic acid of deoxyribose nucleotides with the bases A, T, G and C, usually a double helix; it stores genetic information."
+  },
+  "rna": {
+    "def": "Ribonucleic acid: a nucleic acid of ribose nucleotides with the bases A, U, G and C, usually single-stranded; it has several roles in using genetic information."
+  },
+  "complementary-base-pairing": {
+    "def": "The rule that bases on opposite strands pair A with T (or U in RNA) by two hydrogen bonds and G with C by three, so the sequence of one strand fixes the sequence of the other."
+  },
+  "double-helix": {
+    "def": "The shape of DNA: two antiparallel strands twisted around each other, with the sugar-phosphate backbones outside and the base pairs inside, like a twisted ladder."
+  },
+  "antiparallel": {
+    "def": "Running in opposite directions: in double-stranded DNA one strand runs 5′ to 3′ and its partner 3′ to 5′."
+  },
+  "single-stranded": {
+    "def": "Made of one nucleotide strand, as most RNA is. Double-stranded nucleic acid, as most DNA is, has two complementary strands paired by hydrogen bonds."
+  },
+  "genetic-information": {
+    "def": "The information carried by the order (sequence) of bases in DNA or RNA."
+  },
+  "gene-basic": {
+    "def": "A stretch of DNA whose base sequence the cell uses, often as the instructions for building a particular protein."
+  }
+}

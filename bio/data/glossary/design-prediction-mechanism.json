@@ -1,0 +1,14 @@
+{
+  "prediction-mechanism": {
+    "def": "A prediction that states what will change, in which direction, and the step-by-step biological cause: \"ATP will fall, because blocking the last electron carrier stops proton pumping, so the gradient that drives ATP synthase runs down.\""
+  },
+  "perturbation": {
+    "def": "A deliberate or natural disruption of one part of a biological system (a poison, an inhibitor, a missing molecule), used to predict or test how the rest of the system responds."
+  },
+  "next-experiment": {
+    "def": "An experiment proposed after the first one to test what it could not: a new variable, a missing control, a wider range, or the mechanism behind the result."
+  },
+  "model-prediction": {
+    "def": "A prediction made by tracing a change through a model or diagram of a system, step by step, to its effect on a measurable variable."
+  }
+}

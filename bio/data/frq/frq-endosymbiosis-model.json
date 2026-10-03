@@ -1,0 +1,52 @@
+{
+  "id": "frq-endosymbiosis-model",
+  "type": "model",
+  "points": 4,
+  "units": ["unit-2"],
+  "topics": ["compartment-origins"],
+  "practices": ["2.A", "2.B", "2.D", "6.E"],
+  "stimulus": {
+    "kind": "model",
+    "title": "A model of an engulfed bacterium",
+    "text": "<p>The model shows part of an early host cell shortly after it took in a free-living bacterium. Labels 1 and 2 mark the two membranes around the bacterium.</p>",
+    "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 300\" width=\"640\" height=\"300\" role=\"img\" aria-labelledby=\"frq-endo-t frq-endo-d\"><title id=\"frq-endo-t\">Bacterium inside a host cell</title><desc id=\"frq-endo-d\">Part of a host cell, bounded by its plasma membrane, with a nucleus on the left and large 80 S ribosomes in its cytoplasm. On the right, a bacterium sits inside the host, surrounded by two membranes: membrane 1, the inner one directly around the bacterium, and membrane 2, the outer one. Inside the bacterium are a closed loop of DNA and small 70 S ribosomes.</desc><rect width=\"640\" height=\"300\" fill=\"#ffffff\"/><g font-family=\"Arial,Helvetica,sans-serif\" font-size=\"15\" fill=\"#1F2A28\"><path d=\"M20 30 H620 V270 H20 Z\" fill=\"#EEF2F1\" stroke=\"#6B5E3C\" stroke-width=\"4\"/><text x=\"30\" y=\"22\">Host cell plasma membrane</text><circle cx=\"130\" cy=\"150\" r=\"70\" fill=\"#E1E6F0\" stroke=\"#5B6B8C\" stroke-width=\"3\"/><text x=\"130\" y=\"155\" text-anchor=\"middle\">Nucleus</text><g fill=\"#1F2A28\"><circle cx=\"250\" cy=\"80\" r=\"6\"/><circle cx=\"270\" cy=\"220\" r=\"6\"/><circle cx=\"300\" cy=\"130\" r=\"6\"/></g><text x=\"236\" y=\"252\">host ribosomes (80 S)</text><ellipse cx=\"470\" cy=\"150\" rx=\"120\" ry=\"80\" fill=\"#ffffff\" stroke=\"#6B5E3C\" stroke-width=\"3\"/><ellipse cx=\"470\" cy=\"150\" rx=\"98\" ry=\"60\" fill=\"#F6D2BD\" stroke=\"#D55E00\" stroke-width=\"3\"/><circle cx=\"445\" cy=\"150\" r=\"22\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2.5\"/><text x=\"445\" y=\"192\" text-anchor=\"middle\" font-size=\"13\">loop of DNA</text><g fill=\"#1F2A28\"><circle cx=\"510\" cy=\"125\" r=\"3.5\"/><circle cx=\"525\" cy=\"160\" r=\"3.5\"/><circle cx=\"500\" cy=\"175\" r=\"3.5\"/></g><text x=\"530\" y=\"130\" font-size=\"13\">70 S ribosomes</text><line x1=\"568\" y1=\"150\" x2=\"604\" y2=\"110\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"592\" y=\"104\" font-weight=\"bold\">1</text><line x1=\"590\" y1=\"170\" x2=\"612\" y2=\"200\" stroke=\"#1F2A28\" stroke-width=\"1.5\"/><text x=\"604\" y=\"218\" font-weight=\"bold\">2</text></g></svg>"
+  },
+  "parts": [
+    {
+      "label": "a", "points": 1,
+      "prompt": "According to the model, <b>describe</b> where membrane 2 came from.",
+      "rubric": [
+        { "point": "Membrane 2 is part of the host cell's plasma membrane, which wrapped around the bacterium and pinched off as the bacterium was taken in.",
+          "accept": ["from the host cell's plasma membrane during engulfing", "the host's membrane that surrounded the bacterium when it was taken in by endocytosis"] }
+      ],
+      "sample": "Membrane 2 came from the host cell's plasma membrane. When the host took in the bacterium, its membrane wrapped around it and pinched off, leaving that piece of host membrane around the bacterium's own membrane (membrane 1)."
+    },
+    {
+      "label": "b", "points": 1,
+      "prompt": "<b>Explain</b> how two features of the bacterium shown in the model are used today as evidence that mitochondria descend from bacteria.",
+      "rubric": [
+        { "point": "Names two features shown (the loop of circular DNA, the 70 S ribosomes, or the double membrane) and explains that mitochondria today share them with bacteria but not with the host's nucleus and cytoplasm, which points to a bacterial ancestor.",
+          "accept": ["mitochondria have circular DNA and 70 S ribosomes like bacteria, unlike the host's chromosomes in the nucleus and 80 S ribosomes", "mitochondria have a double membrane, as engulfing would leave, and circular DNA like bacteria"] }
+      ],
+      "sample": "Mitochondria today carry their own circular DNA, like the loop of DNA in the bacterium, while the host's DNA is in chromosomes in the nucleus. Mitochondria also have small ribosomes built like the bacterium's 70 S ribosomes, not like the 80 S ribosomes of the host cytoplasm. Sharing these features with bacteria rather than with the host is what we would expect if mitochondria descend from a bacterium like the one in the model."
+    },
+    {
+      "label": "c", "points": 1,
+      "prompt": "The model shows how mitochondria began. <b>Describe</b> how the model would need to be changed or extended to show the origin of chloroplasts in plant cells.",
+      "rubric": [
+        { "point": "Adds a second, later engulfing event in which a cell that already contains mitochondria takes in a photosynthetic bacterium, which also ends up inside two membranes and becomes the chloroplast.",
+          "accept": ["show a later step where a host cell that already has mitochondria engulfs a photosynthetic bacterium", "add a photosynthetic bacterium being taken in by a cell that already has the mitochondria"] }
+      ],
+      "sample": "The model would need a later, second step: a descendant of this cell, which by then has mitochondria, takes in a photosynthetic bacterium in the same way. That bacterium would also be wrapped in two membranes and, over many generations, become the chloroplast. Because the cell already had mitochondria, plant cells end up with both organelles."
+    },
+    {
+      "label": "d", "points": 1,
+      "prompt": "Researchers grow descendants of a modern plant cell for many generations with a low dose of a drug that blocks 70 S ribosomes but not 80 S ribosomes. <b>Predict</b> the effect on the cells' mitochondria and <b>justify</b> your prediction using the model.",
+      "rubric": [
+        { "point": "Predicts that mitochondria (and chloroplasts) work less well, for example make less ATP, AND justifies it: mitochondria make some of their own proteins on bacteria-like 70 S ribosomes, which the drug blocks, while the cell's 80 S ribosomes keep working.",
+          "accept": ["mitochondria make less ATP because the proteins they build on their own 70 S ribosomes cannot be made", "mitochondrial function declines because the drug stops the bacteria-like ribosomes inside mitochondria, not the host's 80 S ribosomes"] }
+      ],
+      "sample": "The mitochondria would gradually work less well and the cells would make less ATP. In the model, the bacterium's ribosomes are 70 S, and mitochondria kept that kind of ribosome. Some proteins mitochondria need are still made inside them, on those 70 S ribosomes, and the drug blocks them. The host's 80 S ribosomes keep working, so the cell survives for a time, but its mitochondria cannot replace those proteins."
+    }
+  ]
+}

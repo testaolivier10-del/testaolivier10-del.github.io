@@ -14,7 +14,7 @@ import { trademarkProblems, hasApToken } from '../lib/apbio-build.mjs';
 
 function build(published) {
   const root = mkdtempSync(join(tmpdir(), 'apbio-build-'));
-  execFileSync(process.execPath, ['scripts/build-apbio.mjs', '--out', join(root, 'bio')], { env: { ...process.env, APBIO_MAP_STUB: '1', APBIO_PUBLISHED: published } });
+  execFileSync(process.execPath, ['scripts/build-apbio.mjs', '--out', join(root, 'bio')], { env: { ...process.env, APBIO_PUBLISHED: published } });
   const files = [];
   const walk = d => { for (const n of readdirSync(d)) { const f = join(d, n); statSync(f).isDirectory() ? walk(f) : files.push(f); } };
   walk(root);
@@ -52,4 +52,31 @@ test('trademark wording', () => {
   assert.equal(trademarkProblems("the AP®'s format").length, 1);
   assert.equal(trademarkProblems('ready for the AP® exam').length, 1, 'lowercase noun: use "AP® Biology exam"');
   assert.deepEqual(trademarkProblems('the AP&reg; Biology exam, a map, APA style'), []);
+});
+
+test('FRQ pages, the FRQ index, the teachers page and share links', () => {
+  const { root, files } = build('unit-1');
+  const rel = files.map(f => f.slice(root.length + 1));
+  for (const p of ['bio/frq/frq-buried-side-chain.html', 'bio/assets/frq/index.json', 'bio/assets/frq/frq-buried-side-chain.json', 'bio/teachers.html', 'bio/assets/summaries.json']) assert.ok(rel.includes(p), p);
+  const index = JSON.parse(readFileSync(join(root, 'bio/assets/frq/index.json'), 'utf8'));
+  assert.ok(index.some(f => f.id === 'frq-buried-side-chain' && f.points === 4));
+  const one = JSON.parse(readFileSync(join(root, 'bio/assets/frq/frq-buried-side-chain.json'), 'utf8'));
+  assert.ok(one.stimulus.html.length > 0 && one.parts.every(p => p.rubric.length === p.points && p.sample));
+  const page = readFileSync(join(root, 'bio/frq/frq-buried-side-chain.html'), 'utf8');
+  assert.match(page, /class="bio-lines"/, 'printable lined space');
+  assert.ok(!page.includes(one.parts[0].sample.replace(/<[^>]+>/g, '').slice(0, 60)), 'the sample answer is not in the page HTML');
+  for (const p of ['bio/frq/frq-buried-side-chain.html', 'bio/lessons/water-hydrogen-bonding.html', 'bio/notes/water-hydrogen-bonding.html', 'bio/unit-sheets/unit-1.html']) {
+    const h = readFileSync(join(root, p), 'utf8');
+    const gc = h.match(/href="(https:\/\/classroom\.google\.com\/share\?url=[^"]+)"/);
+    assert.ok(gc, `${p}: Share to Google Classroom`);
+    const u = new URL(gc[1].replace(/&amp;/g, '&'));
+    assert.equal(u.searchParams.get('url'), `https://levlprep.com/bio/${p.slice(4)}`);
+    assert.doesNotMatch(u.searchParams.get('title'), /\bAP\b/);
+    assert.match(h, /data-copy="https:\/\/levlprep\.com\/bio\//);
+  }
+  const teachers = readFileSync(join(root, 'bio/teachers.html'), 'utf8');
+  assert.match(teachers, /practice\.html\?topic=water-hydrogen-bonding/);
+  assert.match(teachers, /hello@levlprep\.com/);
+  assert.match(teachers, /privacy\.html#schools/);
+  assert.doesNotMatch(teachers, /pages\/teachers\.js/, 'generated, not an app');
 });

@@ -1,0 +1,12 @@
+{
+  "rate-curve": {
+    "file": "figures/rate-curve.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 360,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A curve of dye depth in an agar cube against time, rising steeply at first and flattening. A straight line from 0 to 10 minutes shows the average rate, 3.6 mm in 10 min or 0.36 mm/min. A short steep tangent near 1 minute and a shallow one near 9 minutes show that the instantaneous rate falls over time."
+  }
+}

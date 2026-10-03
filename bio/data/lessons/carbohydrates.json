@@ -1,0 +1,98 @@
+{
+  "topic": "carbohydrates",
+  "hook": "<p>A cow can live on grass and a termite on wood, yet you would starve on either, even though grass and wood are packed with the same sugar, glucose, that powers your cells. A potato is also glucose, linked into chains, and you digest it easily. The difference between a potato and a plank comes down to which way one oxygen bridge points between neighboring glucose units.</p>",
+  "prereq": [
+    {
+      "q": "What happens in dehydration synthesis?",
+      "options": [
+        "Two monomers are joined and a water molecule is released",
+        "A polymer is broken apart by adding water",
+        "A molecule loses all its hydrogen atoms"
+      ],
+      "correct": 0,
+      "why": "Dehydration synthesis joins monomers with a covalent bond, removing an –OH and an –H as water. Breaking with water is hydrolysis.",
+      "review": "macromolecules-intro"
+    },
+    {
+      "q": "Two molecules have the same formula, C6H12O6, but different structures. They are:",
+      "options": [
+        "Isotopes",
+        "Isomers",
+        "Polymers"
+      ],
+      "correct": 1,
+      "why": "Isomers share a formula but differ in how their atoms are arranged. Isotopes are forms of one element; polymers are chains of monomers.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "Which elements make up carbohydrates?",
+      "options": [
+        "C, H and O",
+        "C, H, O and N",
+        "C, H, O, N and P"
+      ],
+      "correct": 0,
+      "why": "Carbohydrates are built from carbon, hydrogen and oxygen. Proteins add N; nucleic acids add N and P.",
+      "review": "elements-of-life"
+    }
+  ],
+  "figure": {
+    "figure": "starch-cellulose",
+    "caption": "Alpha and beta glucose differ only in whether the –OH on carbon 1 points down (α) or up (β). Chains of α-glucose (starch, glycogen) bend into coils; chains of β-glucose (cellulose) are straight, with every other unit flipped, so neighboring chains line up and hydrogen-bond into fibers."
+  },
+  "chain": [
+    {
+      "cause": "A simple sugar such as glucose (C6H12O6) has many polar –OH groups.",
+      "effect": "It dissolves easily in water and is the monomer from which larger carbohydrates are built."
+    },
+    {
+      "cause": "Dehydration synthesis between an –OH on carbon 1 of one sugar and an –OH on another sugar forms a glycosidic bond.",
+      "effect": "Two sugars make a disaccharide (such as sucrose); hundreds or thousands make a polysaccharide."
+    },
+    {
+      "cause": "Glucose comes in two ring forms: α, with the carbon-1 –OH below the ring, and β, with it above.",
+      "effect": "Bonds between α-glucose units give a chain that coils (starch, glycogen); bonds between β-glucose units give a straight chain with every other unit flipped (cellulose)."
+    },
+    {
+      "cause": "Coiled, branched α chains are compact, and many chain ends are exposed.",
+      "effect": "Starch in plants and glycogen in animals store glucose that enzymes can quickly hydrolyze when energy is needed."
+    },
+    {
+      "cause": "Straight β chains lie side by side, and their –OH groups hydrogen-bond chain to chain.",
+      "effect": "Cellulose forms strong fibers in plant cell walls; enzymes that cut α bonds do not fit β bonds, so most animals cannot digest it."
+    }
+  ],
+  "ideas": [
+    "<b>Monosaccharides</b> (glucose, fructose, galactose) are single sugars; <b>disaccharides</b> are two joined by a <b>glycosidic bond</b> (sucrose = glucose + fructose; lactose = glucose + galactose; maltose = glucose + glucose); <b>polysaccharides</b> are long chains.",
+    "<b>Storage</b> polysaccharides: <b>starch</b> (plants) and <b>glycogen</b> (animals, in liver and muscle), both α-glucose, coiled and branched. <b>Structural</b> polysaccharides: <b>cellulose</b> (plant cell walls, β-glucose) and <b>chitin</b> (insect exoskeletons and the walls of fungi, a β-linked sugar that contains nitrogen).",
+    "Same monomer, different bond, different job: starch and cellulose are both pure glucose. The α or β link changes the chain's shape, and shape decides both its role and which enzymes can break it."
+  ],
+  "misconception": {
+    "wrong": "Cellulose passes through us undigested because it is made of a different, indigestible sugar.",
+    "right": "Cellulose is made entirely of glucose, the same monomer as starch. What differs is the glycosidic bond: β instead of α. Our starch-digesting enzymes fit α bonds and cannot grip β bonds. Cows and termites digest cellulose mainly with the help of microbes in their guts that make enzymes for β bonds."
+  },
+  "check": [
+    "bio-carbohydrates-14",
+    "bio-carbohydrates-16",
+    "bio-carbohydrates-1",
+    "bio-carbohydrates-2",
+    "bio-carbohydrates-3",
+    "bio-carbohydrates-4",
+    "bio-carbohydrates-5"
+  ],
+  "summary": "<p>Carbohydrates are built from monosaccharides such as glucose, fructose and galactose. Glycosidic bonds, made by dehydration synthesis, join them into disaccharides (sucrose, lactose, maltose) and polysaccharides. Starch and glycogen are coiled, branched chains of α-glucose that store energy. Cellulose is straight chains of β-glucose that hydrogen-bond into fibers in plant cell walls, and chitin is a similar structural polymer that contains nitrogen. The α or β link changes shape, and shape decides function and digestibility.</p>",
+  "connections": [
+    {
+      "href": "../notes/macromolecules-intro.html",
+      "label": "Dehydration synthesis and hydrolysis (Introduction to Macromolecules)"
+    },
+    {
+      "href": "../notes/lipids.html",
+      "label": "The other energy store: fats (Lipids)"
+    },
+    {
+      "href": "../notes/proteins.html",
+      "label": "Shape decides function, again: proteins (Proteins)"
+    }
+  ]
+}

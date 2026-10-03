@@ -1,0 +1,66 @@
+<h2 id="why">Beyond the range</h2>
+<p>Heat unfolds (denatures) the proteins in egg white, the unfolded chains tangle, and the clear liquid turns white and firm. Five eggs in an 85 °C water bath set in 62, 58, 66, 60 and 64 seconds. The range, 66 − 58 = 8 s, describes their spread using only the two extreme values. The <b>standard deviation</b> uses every value, and the <b>standard error</b> builds on it to say how well you know the mean. Both are on the formula sheet, and the exam expects you to calculate and interpret them.</p>
+
+<h2 id="worked-sd">Worked example: standard deviation</h2>
+<div class="worked">
+<p><b>Data:</b> 62, 58, 66, 60, 64 s (n = 5). Formula: s = √[ Σ(x<sub>i</sub> − x̄)² ÷ (n − 1) ]</p>
+<table class="compare">
+<caption>Working the standard deviation in a table</caption>
+<thead><tr><th scope="col">x (s)</th><th scope="col">x − x̄ (s)</th><th scope="col">(x − x̄)² (s²)</th></tr></thead>
+<tbody>
+<tr><td>62</td><td>0</td><td>0</td></tr>
+<tr><td>58</td><td>−4</td><td>16</td></tr>
+<tr><td>66</td><td>4</td><td>16</td></tr>
+<tr><td>60</td><td>−2</td><td>4</td></tr>
+<tr><td>64</td><td>2</td><td>4</td></tr>
+</tbody>
+</table>
+<ol>
+<li>Mean: x̄ = 310 ÷ 5 = 62 s.</li>
+<li>Sum of squared deviations: 0 + 16 + 16 + 4 + 4 = 40 s².</li>
+<li>Divide by n − 1 = 4: 40 ÷ 4 = 10 s².</li>
+<li>Square root: s = √10 = <b>3.16 s</b>.</li>
+</ol>
+</div>
+<p>Why square? The deviations add to zero (−4 − 2 + 0 + 2 + 4 = 0), so their plain average tells you nothing. Squaring makes them all positive; the square root at the end puts the answer back in seconds. Why n − 1? The deviations are measured from the sample's own mean, which sits a little closer to the data than the true mean would; dividing by one less than n corrects for that.</p>
+
+<h2 id="worked-se">Worked example: standard error</h2>
+<div class="worked">
+<p>Formula: SE<sub>x̄</sub> = s ÷ √n. For the 85 °C eggs: SE = 3.16 ÷ √5 = 3.16 ÷ 2.236 = <b>1.41 s</b>.</p>
+<p>For five eggs at 75 °C, s = 8.2 s: SE = 8.2 ÷ 2.236 = <b>3.7 s</b>.</p>
+</div>
+<p>The standard error estimates how much the mean would shift if you repeated the whole experiment with five new eggs. A mean of several values wobbles less than any single value, and the more values, the less it wobbles.</p>
+
+<h2 id="meaning">What SD and SE mean</h2>
+<figure data-fig="sd-bell-curves" id="fig-bell"><figcaption>Two normal distributions with the same mean and different standard deviations.</figcaption></figure>
+<p>Many biological measurements, such as set times or protein content, pile up around the mean in a symmetric, bell-shaped <b>normal distribution</b> (<a class="figref" href="#fig-bell">see the curves</a>). For such data:</p>
+<ul>
+<li>about <b>68%</b> of values lie within 1 SD of the mean (x̄ ± s);</li>
+<li>about <b>95%</b> lie within 2 SD (x̄ ± 2s);</li>
+<li>almost all (about 99.7%) lie within 3 SD.</li>
+</ul>
+<table class="compare">
+<caption>Standard deviation and standard error compared</caption>
+<thead><tr><th scope="col"></th><th scope="col">Standard deviation (s)</th><th scope="col">Standard error (SE)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Question it answers</th><td>How much do individual values vary?</td><td>How precisely is the mean known?</td></tr>
+<tr><th scope="row">Formula</th><td>√[Σ(x − x̄)² ÷ (n − 1)]</td><td>s ÷ √n</td></tr>
+<tr><th scope="row">More data (larger n)</th><td>Stays about the same</td><td>Shrinks (÷ √n)</td></tr>
+<tr><th scope="row">Units</th><td>Same as the data</td><td>Same as the data</td></tr>
+</tbody>
+</table>
+<p>Two cereals both average about 10 g of protein per 100 g. Cereal A's boxes have s = 0.26 g/100 g; cereal B's have s = 1.75 g/100 g, with boxes from 7.9 to 12.1. Same center, very different consistency: the standard deviation exposes what the mean hides.</p>
+
+<h2 id="n">How sample size changes SE</h2>
+<p>Because SE = s ÷ √n, the standard error falls with the square root of the sample size. To halve SE you need four times as many values; to cut it to a third, nine times as many. Cereal B with 6 boxes has SE = 1.75 ÷ √6 = 0.71 g/100 g. With 24 boxes, SE = 1.75 ÷ √24 = 0.36 g/100 g. The boxes are no more alike; the mean is simply better pinned down.</p>
+
+<h2 id="pitfalls">Common slips</h2>
+<ul>
+<li>Dividing by n instead of n − 1. With 5 values this makes s about 11% too small.</li>
+<li>Forgetting the square root, which leaves the answer in squared units (s²).</li>
+<li>Reporting SE as if it described how variable the individuals were. It is smaller than SD only because of the ÷ √n.</li>
+<li>Comparing raw SDs of measurements of very different sizes. The 65 °C eggs (mean 410 s) had s = 24.7 s, much larger than the 85 °C eggs' 3.2 s, yet both are about 5-6% of their means.</li>
+</ul>
+
+<aside class="bio-preview"><h3>Coming next: from SE to error bars</h3>
+<p>The standard error is the building block for the error bars you will meet in the next skill: a mean plus or minus about 2 SE marks a range that very probably contains the true mean, which is how you will decide whether two groups really differ.</p></aside>

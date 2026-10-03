@@ -1,0 +1,586 @@
+{
+  "stimuli": {
+    "nucleic-acids-s1": {
+      "kind": "table",
+      "title": "Base composition of DNA from five sources",
+      "text": "<p>Researchers purified DNA from four organisms and from a virus that infects bacteria (Virus X), broke each sample down into nucleotides, and measured the percent of each base. Values are rounded and may not add to exactly 100.</p>",
+      "table": {
+        "caption": "Percent of each base in DNA",
+        "cols": [
+          "Source",
+          "Adenine (%)",
+          "Thymine (%)",
+          "Guanine (%)",
+          "Cytosine (%)"
+        ],
+        "rows": [
+          [
+            "Human",
+            "30.9",
+            "29.4",
+            "19.9",
+            "19.8"
+          ],
+          [
+            "Wheat",
+            "27.3",
+            "27.1",
+            "22.7",
+            "22.8"
+          ],
+          [
+            "Yeast",
+            "31.3",
+            "32.9",
+            "18.7",
+            "17.1"
+          ],
+          [
+            "<i>E. coli</i> (a bacterium)",
+            "24.7",
+            "23.6",
+            "26.0",
+            "25.7"
+          ],
+          [
+            "Virus X",
+            "24.0",
+            "31.2",
+            "23.3",
+            "21.5"
+          ]
+        ]
+      }
+    },
+    "nucleic-acids-s2": {
+      "kind": "graph",
+      "title": "Heat needed to separate DNA strands",
+      "text": "<p>DNA from six species of bacteria was dissolved in the same salt solution and heated slowly. For each sample, the researchers recorded the temperature at which half of the DNA had separated into single strands, and plotted it against the sample's G + C content (the percent of its bases that are G or C).</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "G + C content",
+          "unit": "%",
+          "min": 25,
+          "max": 75,
+          "step": 5
+        },
+        "y": {
+          "label": "Temperature at which half the DNA separates",
+          "unit": "°C",
+          "min": 75,
+          "max": 100,
+          "step": 5
+        },
+        "series": [
+          {
+            "name": "Six bacterial species",
+            "points": [
+              [
+                30,
+                81.6
+              ],
+              [
+                38,
+                84.9
+              ],
+              [
+                45,
+                87.8
+              ],
+              [
+                52,
+                90.6
+              ],
+              [
+                60,
+                93.9
+              ],
+              [
+                68,
+                97.2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "nucleic-acids-s3": {
+      "kind": "model",
+      "title": "A short stretch of double-stranded DNA",
+      "text": "<p>The model shows nine base pairs of a DNA molecule. Strand 1 is on top, written 5′ to 3′ from left to right; Strand 2 is below it.</p>",
+      "html": "<table class=\"compare\"><caption>Nine base pairs</caption><tbody><tr><th scope=\"row\">Strand 1</th><td>5′</td><td>A</td><td>T</td><td>G</td><td>G</td><td>C</td><td>A</td><td>T</td><td>T</td><td>C</td><td>3′</td></tr><tr><th scope=\"row\">Strand 2</th><td>3′</td><td>T</td><td>A</td><td>C</td><td>C</td><td>G</td><td>T</td><td>A</td><td>A</td><td>G</td><td>5′</td></tr></tbody></table>"
+    }
+  },
+  "items": [
+    {
+      "id": "bio-nucleic-acids-1",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "nucleic-acids-s1",
+      "q": "Which pattern holds for the DNA of the four organisms (human, wheat, yeast and <i>E. coli</i>)?",
+      "options": [
+        "The four bases are present in about equal amounts in each organism.",
+        "%A is close to %T, and %G is close to %C, though the values differ between organisms.",
+        "%A is close to %G, and %T is close to %C, in each organism.",
+        "Each organism has the same base percentages, since their DNA is built from the same four nucleotides."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Compare columns within a row. A matches T and G matches C in each organism, because each A on one strand pairs with a T on the other, and each G with a C.",
+        "options": [
+          "In human DNA A is about 31% and G about 20%, far from equal.",
+          "Correct. Within each organism A ≈ T and G ≈ C (human 30.9 and 29.4; 19.9 and 19.8), while the A + T share varies from species to species.",
+          "In human DNA A is 30.9% but G is 19.9%; the matching pairs are A with T and G with C.",
+          "The percentages differ a lot: A is 24.7% in <i>E. coli</i> but 31.3% in yeast."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-2",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s1",
+      "q": "Which conclusion about Virus X is best supported by the data?",
+      "options": [
+        "Its DNA is single-stranded, since its %A does not match its %T and its %G does not match its %C.",
+        "Its DNA contains uracil in place of thymine, since its values do not follow the pattern of the organisms.",
+        "Its DNA is double-stranded but contains more hydrogen bonds than the organisms' DNA.",
+        "Its measurements are less reliable than the others, since a virus is too small to give accurate data."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In double-stranded DNA, %A = %T and %G = %C because the bases pair. A sample that breaks this rule must have unpaired bases: a single strand.",
+        "options": [
+          "Correct. Equal A and T (and G and C) result from base pairing between two strands. Virus X's 24.0% A versus 31.2% T shows its DNA is not paired.",
+          "The table reports thymine for Virus X (31.2%), so its nucleic acid has T, not U.",
+          "More hydrogen bonds would not break the A = T rule; in any double-stranded DNA, A pairs with T.",
+          "Size does not make the measurement unreliable; the pattern is consistent with a real structural difference."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-3",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s1",
+      "q": "A sample of double-stranded DNA from a new species is 21% guanine. What percent of its bases are adenine? Give a whole number.",
+      "numeric": {
+        "answer": 29,
+        "tol": 0,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "G pairs with C, so C = 21% and G + C = 42%. A + T = 100 − 42 = 58%, and A = T, so A = 29%."
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-4",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "nucleic-acids-s1",
+      "q": "Why does the DNA of each organism contain nearly equal amounts of adenine and thymine?",
+      "options": [
+        "Cells make adenine and thymine at exactly the same rate, so they enter DNA in equal numbers.",
+        "Each A on one strand pairs with a T on the other, so across both strands the counts match.",
+        "Adenine and thymine are bonded to each other within one strand by the sugar-phosphate backbone.",
+        "Adenine and thymine are isomers, so the cell produces them together whenever it builds new DNA."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Complementary base pairing: each A sits opposite a T. Count the bases on both strands and every pair adds one A and one T, so %A = %T.",
+        "options": [
+          "The amounts in DNA are set by pairing, not by how fast free bases are made; single-stranded Virus X shows unequal A and T.",
+          "Correct. Every base pair contributes one A and one T (or one G and one C), so the totals are equal however the pairs are arranged.",
+          "The backbone links sugars and phosphates along a strand; A and T are linked across the two strands by hydrogen bonds.",
+          "A and T have different formulas and shapes; they are partners in pairing, not isomers."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-5",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s1",
+      "q": "The researchers next analyze a virus whose genes are carried in single-stranded RNA. Which result is most likely?",
+      "options": [
+        "Uracil in place of thymine, with %A and %U that need not match.",
+        "Thymine and uracil both present, with %T equal to %U.",
+        "Uracil in place of thymine, with %A exactly equal to %U because they pair.",
+        "The same four bases as DNA, with %G equal to %C."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two facts: RNA uses U instead of T, and equal amounts of partner bases arise only from pairing between two strands. A single-stranded RNA need not show it.",
+        "options": [
+          "Correct. RNA uses uracil, and in a single strand there is no partner strand to force A to equal U.",
+          "RNA contains uracil instead of thymine, not in addition to it.",
+          "A and U pair only where two strands (or folded parts of one strand) meet; a single strand need not have equal A and U.",
+          "RNA lacks thymine; and %G = %C is a feature of double strands."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-6",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "nucleic-acids-s2",
+      "q": "Which statement best describes the relationship shown in the graph?",
+      "options": [
+        "As G + C content rises, the temperature needed to separate half the DNA rises steadily.",
+        "As G + C content increases, the temperature needed to separate half the DNA decreases.",
+        "The temperature rises with G + C content up to 52% and then levels off.",
+        "G + C content has little effect, since the six temperatures differ by less than a few degrees."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The points form a straight rising line, a positive relationship: more G + C, higher separation temperature.",
+        "options": [
+          "Correct. The points rise in a nearly straight line from 81.6 °C at 30% G + C to 97.2 °C at 68%.",
+          "The temperatures rise, not fall, as G + C content goes up.",
+          "The rise continues past 52%: 90.6, then 93.9, then 97.2 °C.",
+          "They span almost 16 °C, from 81.6 to 97.2 °C."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-7",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s2",
+      "q": "Using the first and last points, by how many °C does the separation temperature rise for each 1% increase in G + C content? Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.41,
+        "tol": 0.01,
+        "unit": "°C per %",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Slope = (97.2 − 81.6) ÷ (68 − 30) = 15.6 ÷ 38 = 0.41 °C per percentage point of G + C."
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-8",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s2",
+      "q": "Which explanation for the trend would the exam expect?",
+      "options": [
+        "G–C pairs have three hydrogen bonds and A–T pairs two, so G–C-rich DNA needs more heat to separate.",
+        "G–C pairs are joined by covalent bonds, which are stronger than the hydrogen bonds joining A–T pairs.",
+        "G and C are heavier bases, so the strands rich in them move apart more slowly when the DNA is heated.",
+        "Heating breaks the sugar-phosphate backbone, and G–C-rich backbones are stronger."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Separating strands means breaking the hydrogen bonds between paired bases. Three per G–C pair against two per A–T pair: the more G–C pairs, the more heat needed.",
+        "options": [
+          "Correct. More hydrogen bonds per pair means more attraction holding the strands together. (Base stacking adds to this too; see the notes.)",
+          "All base pairs are held by hydrogen bonds; covalent bonds are inside each strand.",
+          "Mass does not set the separation temperature; the attraction between paired bases does.",
+          "The backbone stays intact when strands separate; heating breaks the hydrogen bonds between bases."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-9",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s2",
+      "fixed": true,
+      "q": "DNA from a seventh species has a G + C content of 50%. At about what temperature would half of it separate under the same conditions?",
+      "options": [
+        "About 84 °C",
+        "About 90 °C",
+        "About 95 °C",
+        "About 100 °C"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Read between the 45% and 52% points (87.8 and 90.6 °C). Or use the line: 81.6 + 0.41 × (50 − 30) ≈ 89.8 °C.",
+        "options": [
+          "84 °C fits a G + C content near 36%, well below 50%.",
+          "Correct. 50% lies between the 45% and 52% points (87.8 and 90.6 °C), so about 90 °C.",
+          "95 °C fits about 62% G + C.",
+          "100 °C is beyond the highest point, which is 97.2 °C at 68%."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "nucleic-acids-s2",
+      "q": "A student concludes, \"Bacteria that live in hot springs must have DNA with a high G + C content.\" How well do these data support that conclusion?",
+      "options": [
+        "Strongly, because the data show that a higher G + C content raises the temperature that DNA can withstand.",
+        "Weakly: they show a test-tube effect of G + C content but say nothing about where any species lives.",
+        "Hardly, because the G + C content of DNA makes little difference to how it responds to heat.",
+        "Strongly, because the six species include some with G + C contents above 60%."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Separate what the data show (a test-tube property of DNA) from the claim (a pattern in nature). A claim about where organisms live needs data about those organisms; cells also have other ways to protect their DNA.",
+        "options": [
+          "The data show how purified DNA behaves when heated; they include no hot-spring bacteria and say nothing about where these species live.",
+          "Correct. Testing the claim would need G + C contents of bacteria from hot springs and from cooler places. (Surveys of real species find little link for whole DNA content.)",
+          "The data do show an effect of G + C content, so this part is wrong.",
+          "High values exist among the six, but nothing links those species to hot habitats."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s3",
+      "fixed": true,
+      "q": "What is the sequence of Strand 2, written from its 5′ end to its 3′ end?",
+      "options": [
+        "5′-TACCGTAAG-3′",
+        "5′-GAATGCCAT-3′",
+        "5′-ATGGCATTC-3′",
+        "5′-CTTACGGTA-3′"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Strands are antiparallel. Read Strand 2 from its 5′ end, which is on the right: G A A T G C C A T.",
+        "options": [
+          "These are Strand 2's bases read left to right, which is its 3′ to 5′ direction. Written 5′ to 3′, the order must be reversed.",
+          "Correct. Strand 2 runs 3′-TACCGTAAG-5′; reversed to start at its 5′ end, it reads 5′-GAATGCCAT-3′.",
+          "This is Strand 1's sequence, not its partner.",
+          "This is Strand 1 reversed without pairing the bases."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-12",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s3",
+      "q": "How many hydrogen bonds hold these nine base pairs together?",
+      "numeric": {
+        "answer": 22,
+        "tol": 0,
+        "unit": "hydrogen bonds",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Strand 1 is A T G G C A T T C. Positions 1, 2, 6, 7 and 8 are A–T pairs: 5 × 2 = 10. Positions 3, 4, 5 and 9 are G–C pairs: 4 × 3 = 12. Total 10 + 12 = 22."
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-13",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "nucleic-acids-s3",
+      "fixed": true,
+      "q": "Which end of Strand 1 carries a free phosphate group?",
+      "options": [
+        "The left end, labeled 5′",
+        "The right end, labeled 3′",
+        "Both ends, since each nucleotide has a phosphate",
+        "Neither end, since the phosphates link to the bases"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Strand direction comes from the sugar's numbered carbons: a free phosphate on carbon 5′ marks the 5′ end; a free –OH on carbon 3′ marks the 3′ end.",
+        "options": [
+          "Correct. The 5′ end of a strand has a free phosphate attached to the 5′ carbon of its sugar.",
+          "The 3′ end has a free –OH on the 3′ carbon, where new nucleotides would be added.",
+          "Every nucleotide has a phosphate, but inside the strand each one links two sugars; only at the 5′ end is one left free.",
+          "Phosphates link sugars to sugars in the backbone; the bases are attached to carbon 1′."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-14",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "nucleic-acids-s3",
+      "q": "An RNA molecule has the same base sequence as Strand 1, except that RNA uses its own bases. What is the RNA's sequence?",
+      "options": [
+        "5′-AUGGCAUUC-3′",
+        "5′-ATGGCATTC-3′",
+        "5′-UACCGUAAG-3′",
+        "5′-AUGGCUAAC-3′"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "RNA uses the same A, G and C as DNA, with U in place of T. Matching Strand 1: ATGGCATTC becomes AUGGCAUUC.",
+        "options": [
+          "Correct. Every T becomes U; A, G and C stay the same.",
+          "RNA does not use thymine; each T must be uracil.",
+          "This is the complement of Strand 1 with U for T; the RNA was meant to match Strand 1, not pair with it.",
+          "Only T changes to U. Changing A to U (or the order of bases) gives a different sequence."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which three parts make up a single nucleotide?",
+      "options": [
+        "A phosphate, a five-carbon sugar and a nitrogenous base",
+        "An amino group, a carboxyl group and a side group",
+        "Glycerol, two fatty acids and a phosphate group",
+        "A six-carbon sugar, a phosphate group and a nitrogenous base"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Nucleotide = phosphate + pentose (five-carbon sugar) + nitrogenous base.",
+        "options": [
+          "Correct. These three parts make up every DNA and RNA nucleotide.",
+          "These are the parts of an amino acid, the monomer of proteins.",
+          "These make up a phospholipid, a lipid.",
+          "Nucleotides contain a five-carbon sugar (ribose or deoxyribose), not a six-carbon sugar."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-16",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which features does RNA have that DNA does not? Select all that apply.",
+      "options": [
+        "Ribose sugar",
+        "Phosphate groups in its backbone",
+        "The base uracil",
+        "A 5′ end and a 3′ end",
+        "The base guanine"
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "why": {
+        "correct": "The two chemical differences are the sugar (ribose versus deoxyribose) and one base (uracil versus thymine). Backbones, strand direction and A, G, C are shared.",
+        "options": [
+          "RNA only. DNA uses deoxyribose, which lacks the –OH on carbon 2′.",
+          "Both have sugar-phosphate backbones.",
+          "RNA only. DNA uses thymine in its place.",
+          "Both: every nucleic acid strand has a direction.",
+          "Both use guanine."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-17",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "When DNA is heated to 95 °C, its two strands separate, but each strand stays one long chain. Which explanation is best?",
+      "options": [
+        "Hydrogen bonds join the bases across the strands and heat breaks them; covalent bonds hold each backbone and stay intact.",
+        "Heat breaks the covalent bonds between bases, but the hydrogen bonds in each backbone are strong enough to survive the heat.",
+        "Heat breaks the backbone into separate nucleotides, which stay joined to their partners by their bases.",
+        "The two strands repel each other at high temperature because both carry negative phosphate groups."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two kinds of bonds, two strengths: weak hydrogen bonds across the helix (broken by moderate heat), strong covalent bonds along each strand (unbroken).",
+        "options": [
+          "Correct. Hydrogen bonds are weak attractions; the covalent bonds of the sugar-phosphate backbone need far more energy to break.",
+          "This reverses the bonds: hydrogen bonds join the base pairs, covalent bonds hold the backbone.",
+          "If the backbone broke, each strand would fall apart into nucleotides, not stay one long chain.",
+          "The phosphates do repel, at any temperature; the change with heating is that the hydrogen bonds between bases break."
+        ]
+      }
+    },
+    {
+      "id": "bio-nucleic-acids-18",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "nucleic-acids",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Two DNA molecules from different genes are each exactly 1,000 base pairs long and each 25% A, 25% T, 25% G and 25% C. Which statement about them is most accurate?",
+      "options": [
+        "They carry the same information, since their base percentages are identical.",
+        "They can carry different information, since their base order can differ.",
+        "They have identical sequences, since DNA pairs A with T and G with C in each molecule.",
+        "They are unlikely to both be real genes, since genes differ in base percentages."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Information is carried by the order of bases, not by how many of each there are. Two molecules with the same composition can have entirely different sequences.",
+        "options": [
+          "Percentages say nothing about order; information is in the sequence.",
+          "Correct. Like words made of the same letters, molecules with the same base counts can have completely different sequences.",
+          "Pairing links the two strands of one molecule; it does not force two different molecules to have the same order.",
+          "Genes can have the same percentages; what makes them different is their sequences."
+        ]
+      }
+    }
+  ]
+}

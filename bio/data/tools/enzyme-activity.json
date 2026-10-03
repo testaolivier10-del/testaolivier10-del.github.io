@@ -1,0 +1,91 @@
+{
+  "about": "Simulator: enzyme activity and inhibition. Model code: bio/assets/tools/bio-tool-math.js (ApBioMath.enzyme). Validator: scripts/lib/apbio-tool-checks/enzyme-activity.mjs recomputes every number in the stimulus tables and checks each profile's stated optimum.",
+  "slug": "enzyme-activity",
+  "kind": "simulator",
+  "topic": "enzyme-environment",
+  "intro": "<p>Change the substrate concentration, the temperature, the pH and the inhibitor, and watch the reaction rate. Run trials to collect data points as you would in a lab, then answer the questions below about the same model.</p>",
+  "howItWorks": "<p>The rate is the amount of product made per minute. This model makes the following assumptions:</p><ul><li><b>Substrate.</b> Rate = V<sub>max</sub>[S] / (K<sub>m</sub> + [S]) (the Michaelis-Menten equation). At low substrate, more substrate means more collisions with free active sites, so the rate rises steeply. At high substrate nearly every active site is busy, so the rate levels off at V<sub>max</sub> (saturation). K<sub>m</sub> is the substrate concentration that gives half of V<sub>max</sub>.</li><li><b>Temperature.</b> Warmer molecules move faster and collide more often with enough energy, so the rate rises (here it roughly doubles for each 10 °C in the cool range). Above a point the enzyme unfolds (denatures): its active site loses its shape. The model treats unfolding as instant and reversible and multiplies V<sub>max</sub> by the fraction of enzyme still folded. Real denaturation takes time and is often permanent, so a measured best temperature depends on how long the assay runs.</li><li><b>pH.</b> pH changes the charges on amino acids in the active site. The model multiplies V<sub>max</sub> by the fraction of enzyme whose active-site groups carry the right charges. In real enzymes pH can also change K<sub>m</sub>, and extreme pH unfolds the protein.</li><li><b>Competitive inhibitor.</b> It resembles the substrate and binds the active site, so substrate and inhibitor compete. Apparent K<sub>m</sub> = K<sub>m</sub>(1 + [I]/K<sub>i</sub>); V<sub>max</sub> is unchanged, because enough substrate outcompetes the inhibitor.</li><li><b>Noncompetitive inhibitor.</b> It binds another site and changes the enzyme’s shape, so enzyme molecules holding it do not work. Apparent V<sub>max</sub> = V<sub>max</sub> / (1 + [I]/K<sub>i</sub>); K<sub>m</sub> is unchanged. Real inhibitors can show a mix of both effects.</li><li><b>Runs.</b> Each trial adds random scatter (standard deviation 3% of the rate), like measurement error in a real lab. The curve shows the model without scatter.</li><li>The three enzymes are models with made-up numbers. Their best temperatures and pH values are typical of the kinds of enzyme they are named after. K<sub>i</sub> = 1 mM for both inhibitors.</li></ul>",
+  "rateUnit": "µmol/min",
+  "substrate": { "min": 0, "max": 20, "step": 0.5, "value": 5, "unit": "mM" },
+  "temperature": { "max": 100 },
+  "inhibitor": { "max": 5, "step": 0.25, "value": 2, "unit": "mM" },
+  "series": { "S": [0.5, 1, 2, 4, 6, 8, 10, 15, 20], "T": [10, 20, 30, 40, 50, 60, 70, 80, 90], "pH": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13] },
+  "inhibitors": [
+    { "id": "none", "name": "No inhibitor" },
+    { "id": "competitive", "name": "Competitive inhibitor" },
+    { "id": "noncompetitive", "name": "Noncompetitive inhibitor" }
+  ],
+  "profiles": [
+    { "id": "a", "short": "A", "name": "Enzyme A (from a human cell)", "blurb": "Works best near 40 °C and pH 7, like many enzymes inside human cells.",
+      "Km": 2, "Vmax": 100, "Ea": 50, "Tm": 45, "w": 3, "pKa1": 5.5, "pKa2": 8.5, "Ki": 1, "optT": 40.5, "optPH": 7, "defaults": { "T": 37, "pH": 7 } },
+    { "id": "b", "short": "B", "name": "Enzyme B (a stomach protease)", "blurb": "Works best near pH 2, the acidity of the stomach, like the protein-digesting enzyme pepsin.",
+      "Km": 1, "Vmax": 80, "Ea": 45, "Tm": 47, "w": 3, "pKa1": 0.6, "pKa2": 3.4, "Ki": 1, "optT": 42, "optPH": 2, "defaults": { "T": 37, "pH": 2 } },
+    { "id": "c", "short": "C", "name": "Enzyme C (from a hot-spring bacterium)", "blurb": "Stays folded up to about 80 °C, like enzymes of bacteria that live in hot springs.",
+      "Km": 4, "Vmax": 120, "Ea": 60, "Tm": 82, "w": 3, "pKa1": 5, "pKa2": 9, "Ki": 1, "optT": 77, "optPH": 7, "defaults": { "T": 75, "pH": 7 } }
+  ],
+  "stimuli": {
+    "enz-s1": {
+      "kind": "table",
+      "title": "Enzyme A with two inhibitors",
+      "text": "<p>A student used the model with Enzyme A at pH 7.0. Table 1 shows the rate at 37 °C with no inhibitor, with 2.0 mM of inhibitor X and with 2.0 mM of inhibitor Y. Table 2 shows the rate at 10 mM substrate with no inhibitor, at different temperatures.</p>",
+      "tables": [
+        { "caption": "Table 1. Reaction rate (µmol/min) at 37 °C", "cols": ["Substrate (mM)", "No inhibitor", "With X", "With Y"],
+          "rows": [["0.5", "18.4", "7.1", "6.1"], ["1", "30.7", "13.2", "10.2"], ["2", "46.1", "23.0", "15.4"], ["5", "65.8", "41.9", "21.9"], ["10", "76.8", "57.6", "25.6"], ["20", "83.7", "70.9", "27.9"]],
+          "check": { "profile": "a", "T": 37, "pH": 7, "I": 2, "x": "S", "series": ["none", "competitive", "noncompetitive"] } },
+        { "caption": "Table 2. Reaction rate (µmol/min) at 10 mM substrate", "cols": ["Temperature (°C)", "Rate"],
+          "rows": [["20", "26.7"], ["30", "52.1"], ["37", "76.8"], ["40", "83.1"], ["45", "66.8"], ["50", "28.5"], ["60", "2.1"]],
+          "check": { "profile": "a", "S": 10, "pH": 7, "x": "T", "series": ["none"] } }
+      ]
+    }
+  },
+  "questions": [
+    { "id": "enzyme-activity:inhibitors:1", "type": "single", "topic": "enzyme-environment", "practice": "6.B", "level": "analyze", "diff": 2, "stimulus": "enz-s1",
+      "q": "Which claim about inhibitors X and Y do the data in Table 1 best support?",
+      "options": ["X is a competitive inhibitor and Y is a noncompetitive inhibitor", "X is a noncompetitive inhibitor and Y is a competitive inhibitor", "Both are competitive inhibitors, and Y binds more tightly than X", "Both are noncompetitive inhibitors, because both lower the rate at every substrate concentration"],
+      "correct": 0,
+      "why": { "correct": "As substrate rises, the rate with X climbs toward the uninhibited rate (70.9 against 83.7 at 20 mM), so substrate outcompetes X. With Y the rate stays at about one third of the uninhibited rate at every concentration, so adding substrate cannot overcome it.",
+        "options": ["Right: X’s effect shrinks as substrate rises (substrate outcompetes it for the active site), while Y removes the same fraction of activity at every concentration (it lowers the maximum rate).", "This swaps them. A competitive inhibitor’s effect fades at high substrate, which is what X does; Y’s effect does not fade.", "A competitive inhibitor of any strength is overcome by enough substrate. Y’s rate stays at a third of the uninhibited rate even at 20 mM, so Y is not behaving competitively.", "Lowering the rate at every concentration is true of both kinds of inhibitor. What tells them apart is whether high substrate overcomes the inhibition, and it does for X."] } },
+    { "id": "enzyme-activity:inhibitors:2", "type": "single", "topic": "enzyme-catalysis", "practice": "4.B", "level": "apply", "diff": 2, "stimulus": "enz-s1", "fixed": true,
+      "q": "With no inhibitor, the rate levels off at about 92 µmol/min at very high substrate. Which is the best estimate of the substrate concentration that gives half of that maximum rate (the value called K<sub>m</sub>)?",
+      "options": ["0.5 mM", "2 mM", "10 mM", "20 mM"],
+      "correct": 1,
+      "why": { "correct": "Half of 92 is 46 µmol/min, and the uninhibited rate is 46.1 µmol/min at 2 mM substrate.",
+        "options": ["At 0.5 mM the rate is only 18.4 µmol/min, about a fifth of the maximum, not half.", "Right: half of the maximum is about 46 µmol/min, which the enzyme reaches at 2 mM.", "At 10 mM the rate is 76.8 µmol/min, well over half of the maximum.", "At 20 mM the rate is 83.7 µmol/min, close to the maximum, not half of it."] } },
+    { "id": "enzyme-activity:inhibitors:3", "type": "single", "topic": "enzyme-environment", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "enz-s1",
+      "q": "The student raises the substrate concentration to 200 mM, keeping 2.0 mM of each inhibitor in its own tube. Which prediction is most likely?",
+      "options": ["The rate with X is close to the uninhibited rate, and the rate with Y stays at about one third of it", "Both rates become close to the uninhibited rate, because the substrate now far outnumbers each inhibitor", "Both rates stay at the fractions of the uninhibited rate seen at 20 mM", "The rate with Y is close to the uninhibited rate, and the rate with X stays low"],
+      "correct": 0,
+      "why": { "correct": "At very high substrate, substrate molecules occupy the active site far more often than X can, so X barely matters. Y binds elsewhere and disables the enzyme molecules it holds, so the maximum rate stays lowered.",
+        "options": ["Right: competition with X is won by the huge excess of substrate, but Y’s effect does not depend on substrate.", "Y does not compete with the substrate, so extra substrate cannot undo it.", "X’s effect was already shrinking between 1 and 20 mM (from 43% to 85% of the uninhibited rate), so it keeps shrinking at higher substrate.", "This reverses the two inhibitors’ behaviors: it is X whose effect fades at high substrate."] } },
+    { "id": "enzyme-activity:inhibitors:4", "type": "single", "topic": "enzyme-environment", "practice": "1.B", "level": "apply", "diff": 2, "stimulus": "enz-s1",
+      "q": "Which explanation best accounts for the drop in rate between 40 °C and 50 °C in Table 2?",
+      "options": ["Many enzyme molecules unfold, so their active sites lose the shape that binds the substrate", "Molecules move more slowly at 50 °C, so they collide less often", "The substrate is used up faster at 50 °C, leaving less to react", "Heat breaks the covalent peptide bonds that join the enzyme’s amino acids into one chain"],
+      "correct": 0,
+      "why": { "correct": "Above about 40 °C the weak bonds that hold Enzyme A’s three-dimensional shape break, the enzyme denatures, and an active site without its shape cannot bind substrate.",
+        "options": ["Right: denaturation changes the active site’s shape, so fewer enzyme molecules can catalyze the reaction.", "Molecules move faster, not slower, as temperature rises; that is why the rate rose from 20 °C to 40 °C.", "The rates are initial rates measured at a fixed 10 mM substrate, so running out of substrate does not explain the drop.", "Denaturation breaks weak interactions such as hydrogen bonds, not the covalent peptide bonds of the primary structure, which survive these temperatures."] } },
+    { "id": "enzyme-activity:inhibitors:5", "type": "numeric", "topic": "enzyme-environment", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "enz-s1",
+      "q": "Using Table 1, calculate the percent decrease in rate that inhibitor Y causes at 10 mM substrate.",
+      "numeric": { "answer": 66.7, "tol": 0.3, "unit": "%", "decimals": 1 },
+      "why": { "correct": "Percent decrease = (76.8 − 25.6) / 76.8 × 100 = 51.2 / 76.8 × 100 = 66.7%. Y removes two thirds of the activity, as expected for 2 mM of a noncompetitive inhibitor with K<sub>i</sub> = 1 mM (rate divided by 1 + 2/1 = 3)." } }
+  ],
+  "frq": {
+    "id": "frq-inhibitors",
+    "topic": "enzyme-environment",
+    "title": "Mini free-response question: two inhibitors",
+    "intro": "<p>Use Tables 1 and 2 above (Enzyme A, pH 7.0).</p>",
+    "parts": [
+      { "label": "a", "points": 1, "practice": "4.B", "prompt": "Describe how inhibitor X affects the substrate concentration needed to reach half of the maximum rate, and how it affects the maximum rate itself.",
+        "rubric": [{ "point": "States that X increases the substrate concentration needed for half of the maximum rate (raises the apparent K<sub>m</sub>) AND that the maximum rate is unchanged (the rates with X approach the uninhibited rates as substrate rises).", "accept": ["more substrate is needed to reach the same rate, but the same top rate is reached eventually"] }],
+        "sample": "<p>With X, more substrate is needed to reach half of the maximum rate (about 6 mM instead of about 2 mM), but the maximum rate is not changed: at 20 mM the rate with X (70.9) is already close to the uninhibited rate (83.7) and keeps approaching it.</p>" },
+      { "label": "b", "points": 2, "practice": "6.C", "prompt": "Explain why raising the substrate concentration reduces the effect of inhibitor X but not the effect of inhibitor Y.",
+        "rubric": [
+          { "point": "Explains that X binds the active site and competes with the substrate, so at high substrate concentration substrate molecules occupy the active site most of the time.", "accept": ["X has a shape like the substrate"] },
+          { "point": "Explains that Y binds a site other than the active site and changes the enzyme’s shape, so the enzyme molecules bound to Y cannot work no matter how much substrate is present.", "accept": ["Y binds an allosteric site", "Y lowers the amount of working enzyme"] }
+        ],
+        "sample": "<p>X resembles the substrate and binds the active site, so X and the substrate compete for the same place. When there is far more substrate than X, substrate molecules win most of the collisions with active sites and the effect of X fades. Y binds a different site on the enzyme and changes its shape, so an enzyme molecule holding Y cannot catalyze the reaction whatever the substrate concentration; extra substrate cannot reach active sites that no longer work.</p>" },
+      { "label": "c", "points": 1, "practice": "6.E", "prompt": "Predict how the rate with inhibitor Y at 20 mM substrate would change if the temperature were raised from 37 °C to 50 °C. Justify your prediction.",
+        "rubric": [{ "point": "Predicts that the rate decreases AND justifies it: at 50 °C much of the enzyme is denatured (Table 2 shows the uninhibited rate falling to about a third of its 37 °C value), on top of the inhibition by Y.", "accept": ["the active site changes shape at high temperature"] }],
+        "sample": "<p>The rate would fall. Table 2 shows that at 50 °C Enzyme A works at only about 37% of its 37 °C rate because much of it has denatured, and Y still disables two thirds of the enzyme that stays folded, so the rate would drop from about 27.9 µmol/min to roughly 10 µmol/min (about 37% of 27.9).</p>" }
+    ]
+  }
+}

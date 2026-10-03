@@ -52,6 +52,14 @@
       path: '/anatomy-physiology/', dir: 'anatomy-physiology', storagePrefix: 'anp_', rankLabel: 'A&P rank',
       searchLabel: 'A&P', aliases: ['a&p', 'ap', 'anatomy-physiology'], paid: true, status: 'beta', order: 3,
     },
+    {
+      // The mark only as an adjective, with the ® (docs/apbio-spec.md,
+      // "Trademark"); the short, rank and search labels leave it out, and
+      // "ap" stays A&P's alias (no "ap" in a course URL either).
+      key: 'apbio', short: 'Biology', name: 'AP® Biology', productName: 'AP® Biology',
+      path: '/bio/', dir: 'bio', storagePrefix: 'apbio_', rankLabel: 'Biology rank',
+      searchLabel: 'Biology', aliases: ['bio', 'biology'], paid: true, status: 'beta', order: 4,
+    },
   ];
 
   var list = LIST.slice().sort(function (a, b) { return a.order - b.order; });

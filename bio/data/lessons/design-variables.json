@@ -1,0 +1,84 @@
+{
+  "topic": "design-variables",
+  "hook": "<p>Leave a glass of water on a sunny windowsill and another in a cool cupboard. A week later the windowsill glass is lower. Was it the warmth? The light? The draft from the window? Unless you change one thing at a time, you cannot tell, and every lab question on the exam starts by asking which thing you changed.</p>",
+  "prereq": [
+    {
+      "q": "To escape from liquid water as vapor, what must a water molecule do?",
+      "options": [
+        "Break the hydrogen bonds holding it to its neighbors",
+        "Break the covalent bonds inside the molecule",
+        "Gain extra hydrogen atoms from the air"
+      ],
+      "correct": 0,
+      "why": "Evaporation means pulling free of neighboring molecules, which are held by hydrogen bonds. The covalent bonds inside the molecule stay intact.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "A student measures 30, 32, 31 and 45 drops. Which summary is least affected by the 45?",
+      "options": [
+        "The median",
+        "The mean",
+        "The range"
+      ],
+      "correct": 0,
+      "why": "The median depends only on the middle of the sorted values, so one extreme value barely moves it.",
+      "review": "stats-descriptive"
+    }
+  ],
+  "figure": {
+    "figure": "experiment-variables",
+    "caption": "A controlled experiment on evaporation: change one factor (temperature), measure one result (mass lost), and keep everything else the same."
+  },
+  "chain": [
+    {
+      "cause": "You ask a testable question: does temperature affect how much water evaporates in 24 hours?",
+      "effect": "The question names the factor you will change (temperature) and the result you will measure (mass lost)."
+    },
+    {
+      "cause": "You set dishes to 20, 30 and 40 °C.",
+      "effect": "Temperature is the independent variable: you choose its values."
+    },
+    {
+      "cause": "You weigh each dish before and after 24 hours.",
+      "effect": "Mass lost is the dependent variable: it may respond to temperature."
+    },
+    {
+      "cause": "You keep dish shape, starting mass, time and air movement identical in every group.",
+      "effect": "These controlled variables cannot explain a difference, so a change in mass lost can be traced to temperature."
+    },
+    {
+      "cause": "You run three dishes per temperature and add an unheated group for comparison.",
+      "effect": "Repeats show chance variation, and the control group shows the baseline, so you can judge whether temperature really made a difference."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> \"Dishes of 50.0 g water at 20, 30 and 40 °C; mass lost in 24 h measured.\" Independent variable: temperature (set). Dependent variable: mass lost (measured). Controlled: dish, starting mass, time, air movement. Control group: unheated dishes. If-then: if temperature rises, then more water evaporates, because more molecules escape their hydrogen bonds.",
+    "Quick test: the <b>independent variable</b> is what you set before the run; the <b>dependent variable</b> is what you read off at the end.",
+    "A <b>control group</b> is a whole group given the baseline; a <b>controlled variable</b> is one factor held the same in every group. Exams mark answers down for mixing them up.",
+    "If two factors change together (temperature and a fan), the result cannot be traced to either one. Look for that flaw in every described experiment."
+  ],
+  "misconception": {
+    "wrong": "The control group is the group where everything is controlled.",
+    "right": "Every group in a good experiment has the same controlled variables. The control group is the one given the baseline condition (no treatment, or the normal value), used for comparison."
+  },
+  "check": [
+    "bio-design-variables-1",
+    "bio-design-variables-2",
+    "bio-design-variables-3",
+    "bio-design-variables-5",
+    "bio-design-variables-7",
+    "bio-design-variables-8",
+    "bio-design-variables-10"
+  ],
+  "summary": "<p>A controlled experiment changes one factor, the independent variable, and measures one response, the dependent variable. Everything else is held constant as controlled variables, a control group shows the baseline, and repeated runs show chance variation. A testable question names both variables, and an if-then prediction links them with a reason.</p>",
+  "connections": [
+    {
+      "href": "../tools/design-drills.html",
+      "label": "Tool: experimental design drills"
+    },
+    {
+      "href": "stats-descriptive.html",
+      "label": "Skill: mean, median, mode and range"
+    }
+  ]
+}

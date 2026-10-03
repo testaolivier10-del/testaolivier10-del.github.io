@@ -1,0 +1,596 @@
+{
+  "stimuli": {
+    "lipids-s1": {
+      "kind": "table",
+      "title": "Melting points of eight fatty acids",
+      "text": "<p>The table lists published melting points for eight fatty acids found in foods. \"Cis\" and \"trans\" describe the shape around a double bond: a cis double bond bends the chain; a trans double bond leaves it nearly straight.</p>",
+      "table": {
+        "caption": "Chain length, double bonds and melting point of eight fatty acids",
+        "cols": [
+          "Fatty acid",
+          "Carbons in chain",
+          "C=C double bonds",
+          "Melting point (°C)"
+        ],
+        "rows": [
+          [
+            "Lauric",
+            "12",
+            "0",
+            "44"
+          ],
+          [
+            "Myristic",
+            "14",
+            "0",
+            "54"
+          ],
+          [
+            "Palmitic",
+            "16",
+            "0",
+            "63"
+          ],
+          [
+            "Stearic",
+            "18",
+            "0",
+            "70"
+          ],
+          [
+            "Oleic",
+            "18",
+            "1 (cis)",
+            "13"
+          ],
+          [
+            "Elaidic",
+            "18",
+            "1 (trans)",
+            "45"
+          ],
+          [
+            "Linoleic",
+            "18",
+            "2 (cis)",
+            "−5"
+          ],
+          [
+            "α-Linolenic",
+            "18",
+            "3 (cis)",
+            "−11"
+          ]
+        ]
+      }
+    },
+    "lipids-s2": {
+      "kind": "graph",
+      "title": "Membrane fatty acids and water temperature",
+      "text": "<p>Researchers divided 60 goldfish from one supplier into six groups and kept each group in a tank held at one temperature for four weeks, with the same food and light. They then measured, for each fish, the percent of fatty acid tails in its membrane phospholipids that were unsaturated. Points are group averages; bars show the spread among the ten fish in each group.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Water temperature",
+          "unit": "°C",
+          "min": 0,
+          "max": 35,
+          "step": 5
+        },
+        "y": {
+          "label": "Unsaturated tails in membrane phospholipids",
+          "unit": "%",
+          "min": 40,
+          "max": 75,
+          "step": 5
+        },
+        "series": [
+          {
+            "name": "Goldfish",
+            "points": [
+              [
+                5,
+                68,
+                3
+              ],
+              [
+                10,
+                64,
+                3
+              ],
+              [
+                15,
+                60,
+                2
+              ],
+              [
+                20,
+                56,
+                3
+              ],
+              [
+                25,
+                52,
+                2
+              ],
+              [
+                30,
+                48,
+                3
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-lipids-1",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "lipids-s1",
+      "q": "What do the four saturated fatty acids show about chain length and melting point?",
+      "options": [
+        "Melting point rises as the chain gets longer.",
+        "Melting point falls as the chain gets longer.",
+        "Chain length has no clear effect, since the four are solid at room temperature.",
+        "Melting point rises with chain length, but the 18-carbon acid alone is solid at room temperature."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Hold double bonds constant (zero) and compare lengths: each extra two carbons raises the melting point by roughly 7 to 10 °C. Longer straight chains have more length over which to attract their neighbors.",
+        "options": [
+          "Correct. 12, 14, 16 and 18 carbons melt at 44, 54, 63 and 70 °C.",
+          "The values go up, not down, from lauric (12 carbons, 44 °C) to stearic (18 carbons, 70 °C).",
+          "All four are solid at room temperature, but their melting points still rise steadily with length.",
+          "All four melt above about 22 °C, so all four are solid at room temperature."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-2",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "lipids-s1",
+      "q": "Stearic and oleic acids both have 18 carbons, but oleic acid melts 57 °C lower. Which explanation is best?",
+      "options": [
+        "Oleic acid has two fewer hydrogen atoms, which makes each molecule lighter and easier to melt.",
+        "A cis double bond bends oleic acid's chain, so the chains cannot pack closely and attract each other less.",
+        "The double bond in oleic acid makes the chain polar, so it forms hydrogen bonds with water molecules instead.",
+        "Oleic acid's double bond is weaker than a single bond, so it breaks when the fatty acid melts."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Melting pulls molecules apart, overcoming the attractions between them. A cis kink keeps chains from packing, so there are fewer attractions to overcome.",
+        "options": [
+          "Two hydrogens change the mass by about 1%, far too little to explain 57 °C; elaidic acid has the same formula as oleic acid yet melts at 45 °C.",
+          "Correct. Fewer, weaker contacts between bent chains mean less heat is needed to pull them apart.",
+          "A C=C double bond is nonpolar; melting point is measured on the pure fatty acid, with no water involved.",
+          "Melting separates whole molecules from each other; no covalent bonds inside the chain break."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-3",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "lipids-s1",
+      "fixed": true,
+      "q": "A student claims that chain shape, not the number of hydrogen atoms, is what lowers the melting point of unsaturated fatty acids. Which comparison in the table gives the strongest evidence for this claim?",
+      "options": [
+        "Stearic acid (70 °C) compared with lauric acid (44 °C)",
+        "Oleic acid (13 °C) compared with α-linolenic acid (−11 °C)",
+        "Oleic acid (13 °C) compared with elaidic acid (45 °C)",
+        "Stearic acid (70 °C) compared with oleic acid (13 °C)"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "To isolate one factor, compare two molecules that differ only in that factor. Oleic and elaidic acids have identical formulas; only the cis or trans shape differs, and that alone shifts the melting point by 32 °C.",
+        "options": [
+          "Both are saturated; this comparison changes chain length, not shape.",
+          "These differ in both the number of hydrogens and the number of kinks, so the two cannot be separated.",
+          "Correct. Same length and same number of hydrogens (one double bond each); only the shape differs, cis bent versus trans straight, and the melting points differ by 32 °C.",
+          "This changes both the hydrogens and the shape at once, so it cannot show which one matters."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-4",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "lipids-s1",
+      "q": "Which of these fatty acids would be liquid at a room temperature of 22 °C? Select all that apply.",
+      "options": [
+        "Lauric acid",
+        "Palmitic acid",
+        "Oleic acid",
+        "Elaidic acid",
+        "Stearic acid"
+      ],
+      "correct": [
+        2
+      ],
+      "why": {
+        "correct": "A substance is liquid when the room is warmer than its melting point. Of these, only oleic acid (13 °C) qualifies; the others, including trans elaidic acid, melt above 22 °C.",
+        "options": [
+          "Solid: it melts at 44 °C, above room temperature.",
+          "Solid: it melts at 63 °C.",
+          "Liquid: it melts at 13 °C, below room temperature.",
+          "Solid: as a straight trans chain it melts at 45 °C, despite its double bond.",
+          "Solid: it melts at 70 °C."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-5",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "lipids-s1",
+      "q": "Across the saturated fatty acids from lauric (12 carbons) to stearic (18 carbons), by how many °C does the melting point rise, on average, for each 2 carbons added to the chain? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 8.7,
+        "tol": 0.1,
+        "unit": "°C",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Total rise: 70 − 44 = 26 °C. From 12 to 18 carbons is three steps of 2 carbons. 26 ÷ 3 = 8.67, which rounds to 8.7 °C per 2 carbons."
+      }
+    },
+    {
+      "id": "bio-lipids-6",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "lipids-s2",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "The colder the water, the higher the percent of unsaturated tails in the fish's membrane phospholipids.",
+        "The warmer the water, the higher the percent of unsaturated tails in the fish's membrane phospholipids.",
+        "The percent of unsaturated tails stayed about the same between 5 °C and 30 °C.",
+        "The percent of unsaturated tails fell sharply between 5 °C and 10 °C and stayed level above that."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The points fall in a nearly straight line from 68% at 5 °C to 48% at 30 °C, a negative relationship between temperature and unsaturated tails.",
+        "options": [
+          "Correct. The percent falls steadily from 68% at 5 °C to 48% at 30 °C.",
+          "This reverses the trend: the highest value (68%) is in the coldest water.",
+          "It fell by 20 percentage points, much more than the spread within each group.",
+          "The drop is about the same at each step, roughly 4 points per 5 °C."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-7",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "lipids-s2",
+      "q": "Using the values at 5 °C and 30 °C, by how many percentage points does the unsaturated share fall for each 1 °C rise in water temperature? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 0.8,
+        "tol": 0.05,
+        "unit": "percentage points per °C",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Slope = change in percent ÷ change in temperature = (48 − 68) ÷ (30 − 5) = −20 ÷ 25 = −0.8. The share falls by 0.8 percentage points per °C."
+      }
+    },
+    {
+      "id": "bio-lipids-8",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "lipids-s2",
+      "q": "Which explanation best accounts for the higher percent of unsaturated tails in fish kept in cold water?",
+      "options": [
+        "Unsaturated tails release more energy when broken down, which helps the fish produce heat in cold water.",
+        "Kinked unsaturated tails pack loosely, so the membrane stays flexible instead of stiffening as the water cools.",
+        "Cold water contains less dissolved fat, so the fish take up mostly unsaturated fatty acids from their food.",
+        "Unsaturated tails are more hydrophilic, so they help the membrane mix with the colder water around it."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Lower temperature favors tight packing of straight tails, which would stiffen the bilayer. More cis double bonds add kinks that keep the bilayer flexible in the cold, the same reason oils stay liquid when fats set.",
+        "options": [
+          "Goldfish do not warm themselves this way, and the tails measured are in membranes, not fuel stores.",
+          "Correct. Cold slows molecules and lets straight tails pack into a stiff, near-solid layer; kinks keep the tails apart.",
+          "All groups had the same food. The fish built different membranes, not different diets.",
+          "Unsaturated tails are still hydrocarbons and still hydrophobic; a membrane that mixed with water would fall apart."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-9",
+      "type": "predict",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "lipids-s2",
+      "q": "Fish from the 25 °C tank are moved to a 5 °C tank and kept there for four weeks. Predict how each value for their membrane phospholipids changes over those weeks.",
+      "variables": [
+        {
+          "name": "Percent of tails that are unsaturated",
+          "answer": "up",
+          "why": "The 5 °C group in the study had about 68% unsaturated tails, against 52% at 25 °C, so the moved fish should shift toward the cold-water value."
+        },
+        {
+          "name": "Temperature at which the membrane lipids would become stiff and gel-like",
+          "answer": "down",
+          "why": "More kinked tails pack less tightly, so the lipids stay flexible to a lower temperature, as oils stay liquid at lower temperatures than fats."
+        },
+        {
+          "name": "Number of fatty acid tails on each phospholipid",
+          "answer": "none",
+          "why": "A phospholipid has two tails whatever the temperature; what changes is which fatty acids fill those positions."
+        }
+      ],
+      "why": {
+        "correct": "Cold-kept fish build more unsaturated tails. Kinks lower the temperature at which the bilayer stiffens. The basic phospholipid structure, a head and two tails, does not change."
+      }
+    },
+    {
+      "id": "bio-lipids-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "lipids-s2",
+      "q": "Which feature of the study best supports the conclusion that water temperature caused the change in membrane fatty acids, rather than just being correlated with it?",
+      "options": [
+        "The researchers set each tank's temperature and kept food and light the same for every group.",
+        "The points fall on a nearly straight line, which shows that the temperature caused the change.",
+        "The fish came from one supplier, so each fish started with identical membranes.",
+        "Ten fish were measured in each group, so the averages are not affected by chance."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A controlled experiment supports a causal claim when the researcher sets the independent variable and holds other variables constant. Here temperature was assigned to groups and food and light were kept the same.",
+        "options": [
+          "Correct. Temperature was the independent variable, set by the researchers, with other conditions held constant, so differences can be credited to it.",
+          "A straight-line pattern shows a strong relationship, but a pattern alone, without control of other factors, cannot show cause.",
+          "One supplier reduces differences between fish but does not make them identical; the key is that temperature was assigned and other factors held constant.",
+          "Larger groups reduce the effect of chance but never remove it; and group size alone does not separate cause from correlation."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Phospholipids are shaken into a beaker of water. Which arrangement are they most likely to form?",
+      "options": [
+        "A double layer with tails facing each other in the middle and heads facing the water on both sides",
+        "A double layer with heads facing each other in the middle and tails facing the water on both sides",
+        "A single layer lying flat on the bottom of the beaker, with heads and tails pointing in random directions",
+        "Separate molecules spread evenly through the water, like dissolved salt"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Amphipathic molecules arrange themselves so that hydrophilic parts touch water and hydrophobic parts touch each other. For a two-tailed phospholipid that is a bilayer, the basis of every cell membrane.",
+        "options": [
+          "Correct. This bilayer keeps the hydrophobic tails away from water and the hydrophilic heads in contact with it.",
+          "This would put the hydrophobic tails in contact with water, the arrangement water pushes them out of.",
+          "Random orientation would expose tails to water; the molecules arrange themselves to hide them.",
+          "The long nonpolar tails keep phospholipids from dissolving as single molecules."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-12",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "How many water molecules are released when a cell builds 4 triglyceride molecules from glycerol and fatty acids?",
+      "numeric": {
+        "answer": 12,
+        "tol": 0,
+        "unit": "water molecules",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Each triglyceride has three fatty acids, each joined to glycerol by one dehydration synthesis that releases one water: 3 waters per triglyceride × 4 = 12."
+      }
+    },
+    {
+      "id": "bio-lipids-13",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A small bird needs 740 kJ of energy for a long nonstop flight. Fat yields 37 kJ per gram and glycogen 17 kJ per gram. How many more grams of fuel would it need to carry if it stored the energy as glycogen instead of fat? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 23.5,
+        "tol": 0.1,
+        "unit": "g",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Fat: 740 ÷ 37 = 20.0 g. Glycogen: 740 ÷ 17 = 43.5 g. Difference: 43.5 − 20.0 = 23.5 g more as glycogen."
+      }
+    },
+    {
+      "id": "bio-lipids-14",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "1.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Which feature of fatty acids best explains why fats store more energy per gram than carbohydrates?",
+      "options": [
+        "Fatty acid chains are mostly C–H and C–C bonds and carry far less oxygen per carbon than sugars do.",
+        "Fats are polymers with many more monomers per molecule than carbohydrates, so each molecule holds more bonds.",
+        "Fatty acids contain phosphorus, which stores extra energy in the bonds around it.",
+        "Fats are hydrophobic, so they hold their energy in the water they exclude."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Energy per gram depends on what the mass is made of. Fat is nearly all C–H and C–C bonds; a sugar such as glucose is about half oxygen by mass, already bonded to its carbons.",
+        "options": [
+          "Correct. A sugar's carbons each carry oxygen already; a fat's chain is almost pure hydrocarbon, so more of its mass is energy-rich C–H bonds.",
+          "Fats are not polymers, and energy per gram depends on the kind of bonds, not on molecule size.",
+          "Fatty acids and triglycerides contain no phosphorus; that is in phospholipids, and it is not why fat is energy dense.",
+          "Excluding water does not store energy; the energy is in the molecule's chemical bonds."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Why do phospholipids form bilayers in water while triglycerides form oily droplets instead?",
+      "options": [
+        "Triglycerides are heavier than phospholipids, so they sink to the bottom and pool together in droplets.",
+        "Phospholipids have a polar head to face the water; triglycerides have none, so they cluster away from water.",
+        "Triglycerides have three tails, which are too many to fit in the middle of a bilayer.",
+        "Phospholipids are saturated and triglycerides are unsaturated, so phospholipids alone pack into flat sheets."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "A bilayer needs an amphipathic molecule: a hydrophilic end to face water and a hydrophobic end to hide. Phospholipids have both; triglycerides are almost entirely hydrophobic, so they gather into droplets.",
+        "options": [
+          "Triglycerides are less dense than water (oil floats), and weight does not decide the arrangement.",
+          "Correct. With nothing hydrophilic to face outward, triglycerides minimize contact with water by pooling into droplets.",
+          "The number of tails is not the problem: with no hydrophilic part, a triglyceride has nothing to place against the water.",
+          "Both can be either saturated or unsaturated; how saturated the tails are affects how tightly they pack, not whether a bilayer forms."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-16",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which feature identifies a lipid as a steroid?",
+      "options": [
+        "A skeleton of four fused carbon rings",
+        "A glycerol bonded to three fatty acids",
+        "A phosphate-containing head and two fatty acid tails",
+        "A long chain with no carbon-carbon double bonds"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Steroids are defined by their structure: four fused rings. Their side groups vary, which is how one skeleton gives cholesterol and several different hormones.",
+        "options": [
+          "Correct. Cholesterol, testosterone and estrogen all share this four-ring skeleton.",
+          "That describes a triglyceride, a fat or oil.",
+          "That describes a phospholipid.",
+          "That describes a saturated fatty acid."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-17",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Estrogen, a steroid hormone, passes straight through the lipid bilayer of a cell membrane, but a hormone made of a chain of amino acids does not. Which explanation is best?",
+      "options": [
+        "Estrogen is a smaller molecule than any protein, and the bilayer lets small molecules through whatever their chemistry.",
+        "Estrogen is hydrophobic, so it dissolves into the nonpolar middle of the bilayer; a polar protein hormone does not.",
+        "Estrogen carries a phosphate head like a phospholipid, so the bilayer takes it in as one of its own.",
+        "Protein hormones are broken down by hydrolysis as soon as they touch the bilayer."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The middle of a bilayer is a hydrophobic layer of fatty acid tails. Hydrophobic molecules such as steroids dissolve into it and cross; polar and charged molecules are repelled.",
+        "options": [
+          "Small ions such as Na<sup>+</sup> do not pass through the oily middle of a bilayer; chemistry matters, not just size.",
+          "Correct. Like dissolves like: the bilayer's core is hydrocarbon, so nonpolar molecules cross it and polar or charged ones do not.",
+          "Steroids have no phosphate head; their four-ring skeleton is almost entirely hydrophobic.",
+          "Proteins are not hydrolyzed by contact with a membrane; they are kept out by their polarity."
+        ]
+      }
+    },
+    {
+      "id": "bio-lipids-18",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "lipids",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Which of these molecules are lipids? Select all that apply.",
+      "options": [
+        "Cholesterol",
+        "Glycogen",
+        "A triglyceride from olive oil",
+        "Cellulose",
+        "A phospholipid",
+        "An amino acid"
+      ],
+      "correct": [
+        0,
+        2,
+        4
+      ],
+      "why": {
+        "correct": "Lipids are grouped by being largely hydrophobic: fats and oils (triglycerides), phospholipids and steroids. Polysaccharides and amino acids are polar.",
+        "options": [
+          "Lipid: a steroid, hydrophobic and built on four fused rings.",
+          "Not a lipid: a polysaccharide of α-glucose.",
+          "Lipid: glycerol plus three fatty acids.",
+          "Not a lipid: a polysaccharide of β-glucose.",
+          "Lipid: glycerol, two fatty acids and a phosphate head.",
+          "Not a lipid: the polar building block of proteins."
+        ]
+      }
+    }
+  ]
+}

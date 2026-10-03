@@ -1,0 +1,920 @@
+{
+  "stimuli": {
+    "enzyme-environment-s1": {
+      "kind": "graph",
+      "title": "Two inhibitors of one enzyme",
+      "text": "<p>Researchers measured the initial rate of an enzyme reaction at seven substrate concentrations, with no inhibitor, with 1 mM of inhibitor X, or with 1 mM of inhibitor Y. Temperature, pH and the amount of enzyme were the same in every trial.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Substrate concentration",
+          "unit": "mM",
+          "min": 0,
+          "max": 32,
+          "step": 4
+        },
+        "y": {
+          "label": "Initial reaction rate",
+          "unit": "µmol/min",
+          "min": 0,
+          "max": 50,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "No inhibitor",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                16.7
+              ],
+              [
+                2,
+                25
+              ],
+              [
+                4,
+                33.3
+              ],
+              [
+                8,
+                40
+              ],
+              [
+                16,
+                44.4
+              ],
+              [
+                32,
+                47.1
+              ]
+            ]
+          },
+          {
+            "name": "Inhibitor X",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                7.1
+              ],
+              [
+                2,
+                12.5
+              ],
+              [
+                4,
+                20
+              ],
+              [
+                8,
+                28.6
+              ],
+              [
+                16,
+                36.4
+              ],
+              [
+                32,
+                42.1
+              ]
+            ]
+          },
+          {
+            "name": "Inhibitor Y",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                8.3
+              ],
+              [
+                2,
+                12.5
+              ],
+              [
+                4,
+                16.7
+              ],
+              [
+                8,
+                20
+              ],
+              [
+                16,
+                22.2
+              ],
+              [
+                32,
+                23.5
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "enzyme-environment-s2": {
+      "kind": "table",
+      "title": "Slowed or damaged?",
+      "text": "<p>Samples of an enzyme from a mammal were each held at one temperature for 10 minutes. The reaction rate was measured at that temperature. Each sample was then cooled to 37 °C, left for 30 minutes, and its rate measured again at 37 °C. The same amounts of enzyme and substrate and the same pH were used throughout. Values are means of 3 trials.</p>",
+      "table": {
+        "caption": "Reaction rate (µmol of product per minute)",
+        "cols": [
+          "Holding temperature (°C)",
+          "Rate measured at the holding temperature",
+          "Rate measured at 37 °C after cooling"
+        ],
+        "rows": [
+          [
+            "25",
+            "18",
+            "41"
+          ],
+          [
+            "37",
+            "40",
+            "40"
+          ],
+          [
+            "45",
+            "55",
+            "39"
+          ],
+          [
+            "50",
+            "34",
+            "30"
+          ],
+          [
+            "60",
+            "6",
+            "14"
+          ],
+          [
+            "70",
+            "1",
+            "2"
+          ]
+        ]
+      }
+    },
+    "enzyme-environment-s3": {
+      "kind": "graph",
+      "title": "Two digestive enzymes and pH",
+      "text": "<p>Pepsin works in the stomach; trypsin works in the small intestine. The rate of each was measured across a range of pH values at 37 °C and is shown as a percentage of that enzyme's highest rate.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "pH",
+          "min": 1,
+          "max": 10,
+          "step": 1
+        },
+        "y": {
+          "label": "Rate",
+          "unit": "% of maximum",
+          "min": 0,
+          "max": 100,
+          "step": 20
+        },
+        "series": [
+          {
+            "name": "Pepsin",
+            "points": [
+              [
+                1,
+                62
+              ],
+              [
+                2,
+                100
+              ],
+              [
+                3,
+                78
+              ],
+              [
+                4,
+                40
+              ],
+              [
+                5,
+                12
+              ],
+              [
+                6,
+                2
+              ],
+              [
+                7,
+                0
+              ],
+              [
+                8,
+                0
+              ],
+              [
+                9,
+                0
+              ],
+              [
+                10,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Trypsin",
+            "points": [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                2
+              ],
+              [
+                4,
+                8
+              ],
+              [
+                5,
+                22
+              ],
+              [
+                6,
+                55
+              ],
+              [
+                7,
+                88
+              ],
+              [
+                8,
+                100
+              ],
+              [
+                9,
+                85
+              ],
+              [
+                10,
+                50
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-enzyme-environment-1",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s1",
+      "q": "Which statement best describes the data at the highest substrate concentration tested?",
+      "options": [
+        "With X the rate is close to the uninhibited rate, while with Y it is about half the uninhibited rate.",
+        "Both inhibitors lower the rate to about half of the uninhibited rate at each substrate concentration.",
+        "With Y the rate is close to the uninhibited rate, while with X it is about half the uninhibited rate.",
+        "Neither inhibitor changes the rate at 32 mM, because the enzyme is saturated with substrate there."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 32 mM: no inhibitor 47.1, X 42.1 (about 89%), Y 23.5 (about 50%).",
+        "options": [
+          "X nearly catches up (42.1 against 47.1) while Y stays near half (23.5).",
+          "At 32 mM, X is at about 89% of the uninhibited rate, not half.",
+          "This reverses the two inhibitors: Y is the one stuck near half.",
+          "Y still halves the rate at 32 mM, so the inhibitors do change it there."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-2",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-environment-s1",
+      "q": "Which identification of the inhibitors is best supported by the data?",
+      "options": [
+        "X is competitive, since extra substrate brings it toward the uninhibited maximum; Y is noncompetitive, since its maximum stays low.",
+        "X is noncompetitive, since it lowers the rate the most at low substrate; Y is competitive, since its rate levels off at a lower value early.",
+        "Both are competitive, since both of their curves level off as substrate rises, just as the curve of an uninhibited enzyme does.",
+        "Both are noncompetitive, since at 2 mM substrate they give exactly the same rate, 12.5 µmol/min."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Extra substrate outcompetes a competitive inhibitor, so X's curve keeps climbing toward the uninhibited maximum. Y levels off near half: extra substrate cannot undo a shape change at an allosteric site.",
+        "options": [
+          "The pattern at high substrate tells them apart: X catches up, Y's plateau stays low.",
+          "Lowering the rate most at low substrate is what a competitive inhibitor does, because there the inhibitor wins most of the competition.",
+          "Every curve levels off eventually; what matters is the height of the plateau, and Y's is about half.",
+          "Equal rates at one concentration do not identify the type; the curves separate sharply at high substrate."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-3",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-environment-s1",
+      "q": "At 8 mM substrate, the rate with inhibitor Y is what percentage of the rate with no inhibitor? Give a whole number.",
+      "numeric": {
+        "answer": 50,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Rate with Y ÷ rate with no inhibitor × 100 = 20.0 ÷ 40.0 × 100 = 50%."
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-4",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s1",
+      "q": "The experiment is repeated at 100 mM substrate. Which prediction is most consistent with the data?",
+      "options": [
+        "The rate with X will be very close to the uninhibited rate, while the rate with Y will stay near 25 µmol/min.",
+        "The rates with X and with Y will both rise to the uninhibited rate, because substrate now far outnumbers each inhibitor.",
+        "The rate with Y will rise above the uninhibited rate, because Y slows the reaction less as the substrate builds up.",
+        "The rates with X and with Y will both fall, because so much substrate denatures the enzyme in each of the trials."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "X's curve is still climbing toward the uninhibited maximum of about 50 µmol/min; Y's has nearly leveled off near 25 µmol/min, half the maximum.",
+        "options": [
+          "Following each curve's trend: X keeps closing the gap, Y stays at its lower plateau.",
+          "Substrate can outcompete only an inhibitor that competes for the active site; Y's plateau has already flattened.",
+          "An inhibitor lowers the rate; nothing in the data suggests Y could make the enzyme faster than no inhibitor.",
+          "Substrate does not denature enzymes; the uninhibited curve keeps rising toward its maximum."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-5",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s1",
+      "q": "Which explanation best accounts for the shape of the curve with inhibitor Y?",
+      "options": [
+        "Y binds away from the active site and alters the enzyme's shape, so enzymes it binds work poorly at any substrate level.",
+        "Y fits the active site so tightly that substrate molecules can push it back out just at very high substrate concentrations.",
+        "Y breaks down the substrate before it reaches the enzyme, so less substrate is left to react at each of the concentrations tested.",
+        "Y raises the activation energy of the reaction above its uncatalyzed value, so the enzyme makes product more slowly."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "An inhibitor at an allosteric site changes the active site's shape. Substrate cannot compete with something that is not in the active site, so the maximum rate stays lower.",
+        "options": [
+          "A noncompetitive inhibitor removes working enzyme without competing, so the plateau drops.",
+          "An inhibitor that substrate eventually pushes out is competitive; that describes X, whose curve catches up.",
+          "Nothing in the setup suggests Y reacts with the substrate; the pattern matches binding to the enzyme.",
+          "An inhibited enzyme still lowers the barrier for the substrate it does handle; Y reduces how many enzymes work well."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-6",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-environment-s2",
+      "q": "Of the temperatures tested, at which was the reaction fastest when measured at the holding temperature?",
+      "options": [
+        "25 °C",
+        "37 °C",
+        "45 °C",
+        "50 °C"
+      ],
+      "correct": 2,
+      "fixed": true,
+      "why": {
+        "correct": "Read the middle column: 55 µmol/min at 45 °C is the highest rate measured at a holding temperature.",
+        "options": [
+          "At 25 °C the rate was 18, the lowest of the first four.",
+          "37 °C gave 40, lower than the 55 at 45 °C.",
+          "45 °C gave the highest rate, 55 µmol/min.",
+          "By 50 °C the rate had already fallen to 34."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-7",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s2",
+      "q": "Which evidence best shows that the low rate at 25 °C was not caused by damage to the enzyme?",
+      "options": [
+        "After cooling, the 25 °C sample worked at 37 °C as fast (41) as the sample kept at 37 °C (40).",
+        "The rate at 25 °C (18) was higher than the rate at 60 °C (6) and at 70 °C (1).",
+        "The 25 °C sample was the coldest one tested, and cold slows down chemical reactions in general.",
+        "The rate at 25 °C was less than half of the rate at 45 °C, the fastest of the temperatures that were measured."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Returned to 37 °C, the sample matched the undamaged control. The enzyme was intact; at 25 °C there were simply fewer collisions with enough energy.",
+        "options": [
+          "Full recovery at 37 °C shows the enzyme's shape was intact; the slowdown came from slower molecules.",
+          "Being faster than damaged samples does not show this sample was undamaged.",
+          "This states a general idea but cites no data from this enzyme; the third column is the direct test.",
+          "A low rate at 25 °C could come from damage or from slow molecules; this comparison cannot tell which."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-8",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-environment-s2",
+      "q": "The 60 °C sample made product at 6 µmol/min while hot but 14 µmol/min after 30 minutes at 37 °C. Which explanation is most consistent with all the data?",
+      "options": [
+        "Some enzyme molecules unfolded at 60 °C and then refolded on cooling, but most stayed damaged.",
+        "The enzyme was not damaged at 60 °C; it just slowed down, as at 25 °C, and then recovered.",
+        "Cooling made new enzyme molecules to replace the ones that were destroyed by the heat.",
+        "The enzyme works faster at 37 °C than at 60 °C, so the rise in rate shows no change in the enzyme."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Recovery from 6 to 14 shows that some denaturation reversed (renaturation). Recovering to 14, not 40, shows most of the enzyme stayed denatured.",
+        "options": [
+          "Partial recovery fits partial renaturation with lasting damage to the rest.",
+          "Full recovery would bring the rate back to about 40; it reached only 14.",
+          "A tube of purified enzyme has no cells to make new protein.",
+          "If the enzyme were unchanged it would recover to about 40 at 37 °C, like the 25 °C sample; it did not."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-9",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s2",
+      "q": "Why did the researchers measure every sample again at 37 °C after cooling?",
+      "options": [
+        "To separate temporary slowing while hot or cold from lasting damage to the enzyme",
+        "To give each sample the same total time in the water bath, so that time becomes the independent variable",
+        "To find the optimal temperature, which is accurate just when it is measured after cooling",
+        "To let the substrate refold after heating, so that it fits the active site again"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Measuring all samples under the same conditions shows what each sample can still do. A sample that recovers was only slowed; one that does not was damaged.",
+        "options": [
+          "The second measurement isolates lasting damage, because conditions are now identical for all samples.",
+          "The holding temperature is the independent variable; time was held constant, not varied.",
+          "The optimum comes from the rate measured at each temperature, the middle column.",
+          "Substrates are usually small molecules, not folded proteins; the enzyme is what may have changed."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-10",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s2",
+      "q": "After cooling, what percentage of the rate of the sample kept at 37 °C did the 60 °C sample recover? Give a whole number.",
+      "numeric": {
+        "answer": 35,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Recovered rate ÷ control rate × 100 = 14 ÷ 40 × 100 = 35%."
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-11",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s3",
+      "q": "At which pH do both enzymes work at more than 10% of their maximum rate?",
+      "options": [
+        "pH 3",
+        "pH 4",
+        "pH 5",
+        "pH 6"
+      ],
+      "correct": 2,
+      "fixed": true,
+      "why": {
+        "correct": "At pH 5, pepsin is at 12% and trypsin at 22%: both above 10%. At pH 4 trypsin is at 8%; at pH 6 pepsin is at 2%.",
+        "options": [
+          "At pH 3 trypsin is at 2%.",
+          "At pH 4 trypsin is at 8%, below 10%.",
+          "Pepsin 12% and trypsin 22%: both above 10%.",
+          "At pH 6 pepsin has fallen to 2%."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-12",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s3",
+      "q": "Food moves from the stomach (about pH 2) into the small intestine, where the pH is about 8. What happens to pepsin's activity there, and why?",
+      "options": [
+        "It stops, because at pH 8 pepsin's side chains change charge and its active site no longer works.",
+        "It doubles, because a solution at pH 8 has more hydrogen ions available to help the reaction along.",
+        "It stays the same, because pepsin's active site is already bound to the substrate it carried from the stomach.",
+        "It rises to match trypsin, because both are digestive enzymes that break down proteins."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The graph shows pepsin at 0% at pH 8. With far fewer hydrogen ions, side chains lose hydrogen ions and change charge, altering the active site and the fold.",
+        "options": [
+          "Pepsin's rate is 0% at pH 8 in the data; changed side-chain charges explain why.",
+          "pH 8 has a million times fewer hydrogen ions than pH 2, not more.",
+          "Enzymes bind and release substrate continuously; a change in pH affects every new binding.",
+          "Each enzyme has its own optimal pH; pepsin's is 2, and it does not work at trypsin's optimum."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-13",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-environment-s3",
+      "q": "Which reasoning best explains why trypsin's rate falls on both sides of pH 8?",
+      "options": [
+        "Moving the pH either way adds or removes hydrogen ions on side chains whose charges the active site needs.",
+        "Lower pH speeds the reaction past its maximum and higher pH slows it, so both directions lower the rate.",
+        "At pH values away from 8, the substrate dissolves less well in water, so less of it reaches the enzyme.",
+        "Trypsin is denatured at each pH other than 8, so its rate is zero at the other pH values tested."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Side chains such as –COO⁻ and –NH₃⁺ gain or lose hydrogen ions as pH changes. Active-site charges that bind the substrate, and ionic attractions that hold the fold, work best at pH 8.",
+        "options": [
+          "Gaining or losing hydrogen ions changes charges on either side of the optimum.",
+          "A rate cannot be pushed above its maximum by pH; the curve falls on both sides because conditions are worse.",
+          "The data measure the enzyme's rate; nothing suggests the substrate stops dissolving.",
+          "The graph shows trypsin above zero from pH 3 to 10, for example 55% at pH 6."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-14",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-environment-s3",
+      "q": "How many times greater is the hydrogen ion concentration at pepsin's optimal pH than at trypsin's optimal pH? Give the whole number.",
+      "numeric": {
+        "answer": 1000000,
+        "tol": 0,
+        "unit": "",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Pepsin's optimum is pH 2 and trypsin's pH 8. Each pH unit is a tenfold change, so 6 units is 10⁶ = 1,000,000 times."
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-15",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Carbonic anhydrase needs a zinc ion held in its active site to work. The zinc ion is best described as",
+      "options": [
+        "a cofactor",
+        "a substrate",
+        "a competitive inhibitor",
+        "a product"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A cofactor is a non-protein helper the enzyme needs; metal ions such as zinc are common cofactors.",
+        "options": [
+          "The zinc is a helper the enzyme needs, which is the definition of a cofactor.",
+          "A substrate is changed by the enzyme; the zinc stays and helps with each reaction.",
+          "An inhibitor lowers the rate; the enzyme needs this zinc in order to work.",
+          "A product is made by the reaction and released; the zinc stays bound."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-16",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "An enzyme needs magnesium ions (Mg²⁺) as a cofactor. EDTA, a chemical that grabs metal ions out of solution, is added, and the rate drops to near zero. Then excess Mg²⁺ is added. What is the most likely result?",
+      "options": [
+        "The rate recovers, because the extra Mg²⁺ is more than the EDTA can hold.",
+        "The rate stays near zero, because EDTA unfolded the enzyme when it removed the magnesium.",
+        "The rate stays near zero, because magnesium is a substrate that EDTA has already used up.",
+        "The rate rises far above its starting value, because the enzyme now has extra cofactor to use."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "EDTA lowered the rate by taking away the cofactor. Once there is more Mg²⁺ than EDTA can bind, free Mg²⁺ returns to the enzyme and it works again.",
+        "options": [
+          "Replacing the missing cofactor restores the enzyme's function.",
+          "EDTA binds metal ions; it does not unfold proteins, and the rate loss is explained by the missing cofactor.",
+          "A cofactor helps the enzyme and is not used up; it is not the substrate.",
+          "Once every enzyme has its cofactor, extra Mg²⁺ adds nothing; the rate returns to about its starting value."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-17",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "An enzyme reaction is running with a very large excess of substrate, and the rate has leveled off. Which change would most increase the rate?",
+      "options": [
+        "Adding more enzyme",
+        "Adding more substrate",
+        "Adding a competitive inhibitor",
+        "Lowering the temperature by 10 °C"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "On the plateau, nearly every active site is busy, so the amount of enzyme is the limiting factor. More enzyme means more active sites and a higher rate.",
+        "options": [
+          "Enzyme is the limiting factor on the plateau; adding it adds active sites.",
+          "The active sites are already saturated, so extra substrate has little effect.",
+          "An inhibitor lowers the rate.",
+          "Cooling slows collisions and lowers the rate."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-18",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "An inhibitor is mixed with an enzyme. The mixture is then placed in a bag with tiny pores that let small molecules such as the inhibitor pass out into a large volume of buffer, but keep the enzyme inside. Which result would show the inhibitor is irreversible?",
+      "options": [
+        "The enzyme still works poorly after the free inhibitor has diffused out of the bag.",
+        "The enzyme works normally again after the free inhibitor has diffused out of the bag.",
+        "The enzyme works poorly at low substrate but normally at high substrate.",
+        "The inhibitor diffuses out of the bag faster than the substrate does."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A reversible inhibitor lets go and diffuses away, so the enzyme recovers. An irreversible inhibitor is bound for good, usually by a covalent bond, so the enzyme stays inhibited.",
+        "options": [
+          "Activity that does not return after the free inhibitor is removed points to permanent binding.",
+          "Recovery shows the inhibitor let go: that is reversible inhibition.",
+          "Being overcome by substrate is the sign of a competitive, reversible inhibitor.",
+          "How fast small molecules cross the bag says nothing about how the inhibitor binds the enzyme."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-19",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "A student tests how pH affects the rate of an enzyme. Which set of conditions should be held constant across the trials?",
+      "options": [
+        "Temperature, enzyme amount and substrate amount",
+        "pH, temperature and amount of substrate",
+        "pH, amount of enzyme and reaction rate",
+        "Reaction rate, temperature and the amount of enzyme used"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "pH is the independent variable and the rate is the dependent variable. Everything else that affects rate, such as temperature and the amounts of enzyme and substrate, must stay the same.",
+        "options": [
+          "These all affect rate, so they are controlled variables.",
+          "pH is the variable being tested; it cannot be held constant.",
+          "pH is tested and rate is measured; neither is held constant.",
+          "Rate is the dependent variable, the thing being measured."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-20",
+      "type": "predict",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A human enzyme reaction runs at 37 °C and pH 7 with substrate in large excess, so the rate is at its maximum. Predict the change in the rate after each separate change.",
+      "variables": [
+        {
+          "name": "Doubling the substrate concentration",
+          "answer": "none",
+          "why": "The active sites are already saturated, so extra substrate has nowhere to bind and the rate stays at the maximum."
+        },
+        {
+          "name": "Doubling the enzyme concentration",
+          "answer": "up",
+          "why": "Enzyme is the limiting factor on the plateau; twice the active sites gives about twice the rate."
+        },
+        {
+          "name": "Adding a noncompetitive inhibitor",
+          "answer": "down",
+          "why": "It binds an allosteric site and changes the enzyme's shape, removing working enzyme; substrate cannot reverse it."
+        },
+        {
+          "name": "Cooling the reaction to 27 °C",
+          "answer": "down",
+          "why": "Molecules move more slowly, so fewer collisions have enough energy to react."
+        }
+      ],
+      "why": {
+        "correct": "At saturation the enzyme amount limits the rate: more enzyme raises it, extra substrate does not, and inhibitors or cooling lower it."
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-21",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A molecule binds an enzyme at a location away from the active site and makes the reaction faster. Which explanation is most likely?",
+      "options": [
+        "It shifts the enzyme into a shape whose active site binds substrate better: allosteric activation.",
+        "It acts as a second substrate, so the enzyme makes twice as much product from each reaction.",
+        "It competes with the substrate for the active site, pushing out molecules that slow the enzyme down.",
+        "It adds energy to the active site, so that substrate molecules can reach the transition state more easily."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Binding at an allosteric site changes the enzyme's shape. A molecule that speeds the enzyme up holds the active site in its working shape; an allosteric inhibitor does the reverse.",
+        "options": [
+          "Allosteric regulation can work in either direction; this molecule favors the active shape.",
+          "It binds away from the active site and is not changed into product.",
+          "A molecule that binds away from the active site does not compete for it.",
+          "Enzymes and their regulators do not add energy; they change shape and lower the barrier."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-22",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Select the two changes that would lower the maximum rate a sample of enzyme can reach, even with unlimited substrate.",
+      "options": [
+        "Adding a noncompetitive inhibitor",
+        "Heating the sample so that part of the enzyme is permanently denatured",
+        "Adding a competitive inhibitor",
+        "Lowering the substrate concentration",
+        "Adding more of the same enzyme"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "The maximum rate depends on how many working active sites there are. A noncompetitive inhibitor and permanent denaturation both reduce working enzyme, and substrate cannot fix either.",
+        "options": [
+          "It takes enzyme out of action in a way extra substrate cannot undo.",
+          "Permanently denatured enzymes have no working active site, so fewer remain.",
+          "Enough substrate outcompetes it, so the same maximum is still reached.",
+          "The maximum is defined with unlimited substrate, so the substrate level does not change it.",
+          "More enzyme raises the maximum rate."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-23",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Methanol is not toxic itself, but an enzyme in the liver converts it to a toxic product. Doctors treat methanol poisoning with fomepizole, a drug that binds the same enzyme's active site and is not converted to a toxic product. Which explanation best fits?",
+      "options": [
+        "Fomepizole competes with methanol for the active site, so less methanol is converted while the body removes it.",
+        "Fomepizole binds an allosteric site and changes the enzyme's shape, so that the enzyme is no longer able to bind methanol.",
+        "Fomepizole denatures the enzyme permanently, so the liver stops converting methanol until new enzyme is made.",
+        "Fomepizole reacts with the toxic product directly and turns it back into methanol, which is harmless."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both molecules use the same active site. With plenty of fomepizole, most active sites hold it at any moment, so methanol is converted slowly and leaves the body before much toxic product forms.",
+        "options": [
+          "A molecule that competes with the substrate for the active site is a competitive inhibitor; giving enough of it protects the patient.",
+          "The stem says fomepizole binds the active site, not an allosteric site.",
+          "A permanently denatured enzyme would not depend on the drug staying present; nothing suggests the drug unfolds the enzyme.",
+          "The treatment acts on the enzyme, stopping the toxic product from forming, not on the product afterward."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-environment-24",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-environment",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Product made by an enzyme was measured at two temperatures: at 37 °C, 10, 20, 48 and 90 µmol after 1, 2, 5 and 10 minutes; at 55 °C, 18, 30, 40 and 41 µmol at the same times. Which interpretation best fits the data?",
+      "options": [
+        "At 55 °C the enzyme starts faster but denatures within minutes, so it makes less product over 10 minutes.",
+        "At 55 °C the enzyme runs out of substrate first, because it starts faster and uses the substrate up sooner.",
+        "At 37 °C the enzyme is slowly denaturing, which is why its product keeps rising over the 10 minutes.",
+        "At 55 °C the enzyme stays active the whole time, but the product breaks down as fast as it forms after 5 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the first minute 55 °C wins (18 against 10 µmol), but by 5-10 minutes it adds almost nothing (40 to 41) while 37 °C keeps going. The hot enzyme is losing its shape over time.",
+        "options": [
+          "A fast start then a stall at a lower total points to the enzyme failing, not the substrate.",
+          "Both tubes started with the same substrate, and the 37 °C tube made 90 µmol, so substrate was still available when the 55 °C tube stalled near 41.",
+          "Steady production at 37 °C shows a working enzyme; denaturing would slow it down.",
+          "Nothing in the data shows product breaking down; an enzyme losing its shape explains the stall more simply."
+        ]
+      }
+    }
+  ]
+}

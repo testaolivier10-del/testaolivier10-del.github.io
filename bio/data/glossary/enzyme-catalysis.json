@@ -1,0 +1,7 @@
+{
+  "activation-energy": { "def": "The energy reactants must absorb before a reaction can start: the climb from the reactants' energy up to the transition state. Enzymes speed reactions by lowering it." },
+  "transition-state": { "def": "The unstable, highest-energy arrangement that reactants pass through on the way to becoming products, when old bonds are partly broken and new ones partly formed. An enzyme's active site holds the substrate in a way that makes this state easier to reach." },
+  "enzyme-reuse": { "def": "Enzymes are not used up by the reactions they catalyze. After the products are released the enzyme has its original structure and can bind another substrate, so a small amount of enzyme can process a large amount of substrate." },
+  "reaction-rate": { "def": "How fast a reaction goes, measured as the amount of product formed, or of substrate used up, per unit of time (for example µmol per minute or mL of gas per second). Often called enzyme activity when an enzyme catalyzes the reaction." },
+  "energy-diagram": { "def": "A graph of the energy of the reacting molecules (vertical axis) as the reaction proceeds (horizontal axis). The height of the hill above the reactants is the activation energy; the difference between reactants and products is the energy released or absorbed." }
+}

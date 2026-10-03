@@ -1,0 +1,84 @@
+{
+  "topic": "design-controls",
+  "hook": "<p>A home test for fat says \"yes\" for every food you try, even plain water. Is everything fatty, or is the test broken? Without the right controls you cannot tell, and graders award a point only when you say exactly what your control rules out.</p>",
+  "prereq": [
+    {
+      "q": "Why does oil leave a lasting see-through spot on paper while water does not?",
+      "options": [
+        "Oil is a nonpolar lipid that does not evaporate at room temperature; water evaporates.",
+        "Oil is more polar than water, so it bonds to the paper more strongly.",
+        "Water is hydrophobic, so it is pushed out of the paper fibers."
+      ],
+      "correct": 0,
+      "why": "Lipids such as triglycerides are nonpolar and do not evaporate at room temperature, so their spot stays. Water is polar and evaporates.",
+      "review": "lipids"
+    },
+    {
+      "q": "What is a control group?",
+      "options": [
+        "The group given the baseline condition, used for comparison",
+        "Any factor kept the same in every group",
+        "The group in which the independent variable is largest"
+      ],
+      "correct": 0,
+      "why": "A control group is a whole group at the baseline. A factor kept the same in every group is a controlled variable.",
+      "review": "design-variables"
+    }
+  ],
+  "figure": {
+    "figure": "controls-grid",
+    "caption": "Grease-spot test with both controls. Water (negative control) leaves no spot, so the method does not make spots by itself. Oil (positive control) leaves one, so the test can detect fat today."
+  },
+  "chain": [
+    {
+      "cause": "A test can go wrong in two directions: a \"yes\" when the substance is absent, or a \"no\" when it is present.",
+      "effect": "You need one control for each kind of error."
+    },
+    {
+      "cause": "You run a sample known to lack the substance (water) through exactly the same steps.",
+      "effect": "This negative control should give \"no\"; if it does, a \"yes\" from a food is not caused by the paper, handling or contamination."
+    },
+    {
+      "cause": "You run a sample known to contain the substance (vegetable oil) through the same steps.",
+      "effect": "This positive control should give \"yes\"; if it does, a \"no\" from a food is believable, because the test is working."
+    },
+    {
+      "cause": "A control gives the wrong result (water turns positive).",
+      "effect": "Every result from that run is suspect, so you find the cause (such as a contaminated wash tub) and repeat."
+    },
+    {
+      "cause": "Some other factor differs between your groups (sample mass, reading time).",
+      "effect": "That confounding factor could explain the difference, so it must be held constant before the result can be credited to the independent variable."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> Grease-spot test. Negative control: water, treated the same way. Justification: \"Water has no lipid, so if it leaves no spot after 30 minutes, a lasting spot from a food is not caused by moisture or handling.\" Positive control: vegetable oil. Justification: \"Oil is a known lipid, so a spot shows the test can detect fat today.\"",
+    "To earn the point, a justification names what the control <b>rules out</b>. \"Water is the control because it is the control\" scores nothing.",
+    "A <b>confounding variable</b> differs between groups and could change the dependent variable. Different pans, different sample masses or different reading times are classic examples.",
+    "The control must go through every step the test samples go through. An untouched sheet of paper is not a negative control for a test that involves rubbing and wetting."
+  ],
+  "misconception": {
+    "wrong": "The control is the group where nothing happens, so any control will do.",
+    "right": "A negative control is chosen to show the method does not make a positive by itself; a positive control is chosen to show the method can make a positive. Each rules out a specific error, and an answer must say which."
+  },
+  "check": [
+    "bio-design-controls-1",
+    "bio-design-controls-2",
+    "bio-design-controls-3",
+    "bio-design-controls-5",
+    "bio-design-controls-6",
+    "bio-design-controls-9",
+    "bio-design-controls-11"
+  ],
+  "summary": "<p>A negative control (should be \"no\") rules out false positives from the method, materials or contamination. A positive control (should be \"yes\") rules out false negatives from a test that is not working. If either control fails, the run's results are not trusted. A confounding variable is a second difference between groups that could explain the result; hold it constant. When asked to justify a control, say what it rules out.</p>",
+  "connections": [
+    {
+      "href": "../tools/design-drills.html",
+      "label": "Tool: experimental design drills"
+    },
+    {
+      "href": "design-variables.html",
+      "label": "Skill: independent and dependent variables"
+    }
+  ]
+}

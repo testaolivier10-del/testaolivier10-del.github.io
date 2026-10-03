@@ -1,0 +1,8 @@
+{
+  "simple-diffusion": { "def": "Diffusion of a substance straight through the phospholipid bilayer, with no protein involved. Small nonpolar molecules such as O₂, CO₂ and N₂, and lipid-soluble molecules such as steroids, cross this way." },
+  "selective-permeability": { "def": "The property of a membrane that lets some substances cross easily and others hardly at all (it is selectively permeable). It comes from the hydrophobic core of the bilayer and the particular transport proteins the membrane carries." },
+  "transport-protein": { "def": "A membrane protein that gives a particular ion or polar molecule a route across the membrane, so it can cross far faster than through the bilayer alone. Aquaporins are one example." },
+  "aquaporin": { "def": "A transport protein that lets water molecules cross a membrane rapidly, in single file through a narrow pore. A little water crosses the bilayer directly, but most crosses through aquaporins." },
+  "peptidoglycan": { "def": "The material of most bacterial cell walls: long sugar chains cross-linked by short chains of amino acids into one tough mesh around the cell. Penicillin blocks the cross-linking." },
+  "wall-support": { "def": "The cell walls of plants, fungi and most prokaryotes give the cell its shape and resist stretching. When water moves into the cell and it swells, the wall presses back and protects it from bursting." }
+}

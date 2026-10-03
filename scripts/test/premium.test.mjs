@@ -114,6 +114,18 @@ test('after launch a free user meets the gates', () => {
   assert.equal(premium.card('ochem', 'summary').includes('See Premium'), true);
 });
 
+test('a course not yet on sale stays open after the site launches', () => {
+  const { premium, hooks } = fresh();
+  hooks.setLaunched(true);
+  premium.COURSES.ochem.onSale = false;
+  assert.equal(premium.has('ochem'), true);
+  assert.equal(premium.gate('ochem', 'exam', 'results'), '');
+  assert.equal(premium.launched('ochem'), false);
+  assert.equal(premium.launched(), true);
+  assert.ok(premium.card('ochem', 'summary').includes('Coming soon'));
+  assert.equal(premium.has('nremt'), false); // the others still gate
+});
+
 test('the daily allowance counts down and stops at the limit', () => {
   const { premium, hooks } = fresh();
   hooks.setLaunched(true);

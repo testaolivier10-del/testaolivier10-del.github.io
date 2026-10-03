@@ -1,0 +1,19 @@
+{
+  "osmosis": { "def": "The net movement of water across a selectively permeable membrane, from the side with fewer dissolved solutes (higher water potential) to the side with more solutes (lower water potential)." },
+  "tonicity": { "def": "How a solution would change a cell's volume by osmosis, judged by comparing the concentrations of solutes that cannot cross the membrane on the two sides." },
+  "hypotonic": { "def": "Describes a solution with a lower concentration of non-crossing solutes than the cell it is compared with. A cell in a hypotonic solution gains water." },
+  "hypertonic": { "def": "Describes a solution with a higher concentration of non-crossing solutes than the cell it is compared with. A cell in a hypertonic solution loses water." },
+  "isotonic": { "def": "Describes a solution with the same concentration of non-crossing solutes as the cell. Water moves in and out at equal rates, so there is no net change in volume." },
+  "osmolarity": { "def": "The total concentration of all dissolved solute particles in a solution. A salt that splits into two ions in water counts twice." },
+  "water-potential": { "def": "A measure of how likely water is to move out of a region, written Ψ (psi). It is the sum of solute potential and pressure potential, and water moves from higher to lower water potential. Pure water in an open container has Ψ = 0." },
+  "solute-potential": { "def": "The part of water potential set by dissolved solutes, written Ψs. It is zero for pure water and becomes more negative as more solute is added, because solutes hold water molecules and lower their freedom to move." },
+  "pressure-potential": { "def": "The part of water potential set by physical pressure, written Ψp. It is zero in an open container, positive when water is pushed on (as inside a firm plant cell), and negative when water is pulled (as in the xylem)." },
+  "turgor": { "def": "The pressure of a plant cell's contents pushing outward against its cell wall after water has entered. It makes plant cells firm (turgid) and holds up soft stems and leaves." },
+  "flaccid": { "def": "Limp. A plant cell is flaccid when its contents no longer press against the wall, as happens in an isotonic solution." },
+  "plasmolysis": { "def": "The shrinking of a plant cell's contents away from its cell wall as the cell loses water in a hypertonic solution." },
+  "lysis": { "def": "The bursting of a cell. An animal cell with no cell wall can swell and burst (cytolysis) when it takes in too much water in a hypotonic solution." },
+  "crenation": { "def": "The shriveling of an animal cell, such as a red blood cell, into a spiky shape as it loses water in a hypertonic solution." },
+  "osmoregulation": { "def": "The control of water and solute balance in an organism, so its cells stay at a workable volume and solute concentration even when its surroundings differ." },
+  "contractile-vacuole": { "def": "A vacuole in some single-celled freshwater organisms, such as Paramecium, that collects the extra water entering by osmosis and squeezes it out of the cell, using energy." },
+  "kidney": { "def": "An organ of vertebrates that filters the blood and adjusts how much water and which solutes leave the body in urine, a main organ of osmoregulation." }
+}

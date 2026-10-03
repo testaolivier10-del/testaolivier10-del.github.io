@@ -1,0 +1,14 @@
+{
+  "confidence-interval": {
+    "def": "A range around a sample mean that very probably contains the true mean. For the exam, a 95% confidence interval is about the mean ± 2 standard errors (x̄ ± 2SE)."
+  },
+  "error-bar": {
+    "def": "A line drawn above and below a plotted mean to show uncertainty. Bars can show SD, SE or a 95% confidence interval, so the graph must say which."
+  },
+  "overlap-rule": {
+    "def": "A rule of thumb for 95% confidence interval error bars: if the bars of two means do not overlap, the difference is likely real; if they overlap, the data do not show a difference (which is not proof that there is none)."
+  },
+  "significance": {
+    "def": "A difference is statistically significant when it is too large to be explained by chance alone if the null hypothesis were true, so the null hypothesis is rejected."
+  }
+}

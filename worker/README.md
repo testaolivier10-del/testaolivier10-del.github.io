@@ -329,8 +329,10 @@ Nothing changes until all of this is set; until then checkout answers 503.
    adds `ending_reminded_at` to an existing table).
 2. **Polar → Products → New product**, one per pass: one-time purchase, fixed
    price. Ids must cover every pass in `PASSES`: `nremt-90`,
-   `ochem-semester`, `ochem-year`, `anp-semester`, `anp-year`. Copy each
-   product's id.
+   `ochem-semester`, `ochem-year`, `anp-semester`, `anp-year`, `bio-2027`
+   (AP® Biology, $25, runs through June 30, 2027 whenever bought: its
+   `until`; apply `scripts/sql/migrations/2026-10b-apbio.sql` first, the
+   Worker passes `p_until` to `premium_add_pass`). Copy each product's id.
 3. *(Optional)* **Polar → Discounts**: the founding-member discount. Copy its id.
 4. **Polar → Settings → Developers → New token** with `checkouts:write`,
    `refunds:write` (self-serve refunds), `orders:read` and `disputes:read`

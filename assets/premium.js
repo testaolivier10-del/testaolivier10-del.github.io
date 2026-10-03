@@ -130,6 +130,39 @@
         'Detailed dashboard analytics',
       ],
     },
+    apbio: {
+      name: 'AP® Biology',
+      dailyFree: 15,
+      // Until the owner creates the Polar product (docs/apbio-spec.md, launch
+      // checklist), the course is fully open and Premium reads "Coming soon".
+      onSale: false,
+      // Units 1 and 2 are fully open. Every skills lesson is free too, per
+      // topic rather than per chapter (topic.free in bio-curriculum.js, from
+      // isFreeTopic in scripts/lib/apbio-build.mjs), so skills practice still
+      // counts against the daily allowance (docs/apbio-spec.md decision 10).
+      freeChapters: ['unit-1', 'unit-2'],
+      // A fixed-date pass: it lasts until `until` whenever it is bought, and
+      // the Worker never ends it sooner (PASSES in worker/src/premium.js).
+      passes: [
+        { id: 'bio-2027', label: 'Through June 30, 2027', price: 25, until: '2027-06-30' },
+      ],
+      free: [
+        'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'Every lesson in Units 1 and 2, and every skills lesson',
+        'One simulator',
+        '15 practice or review questions a day from any unit',
+        'One full practice exam',
+        'Your progress, XP, streak and weak topics',
+      ],
+      premium: [
+        'Every interactive lesson',
+        'Unlimited practice and review from the whole question bank',
+        'Every simulator',
+        'All free-response questions, unit tests and practice exams',
+        'The cram kit (study plans and timed mixed sets, from March 2027)',
+        'The full dashboard: mastery by unit, topic and science practice',
+      ],
+    },
   };
 
   // Which course a page belongs to, for returnCourse().
@@ -138,6 +171,7 @@
     { key: 'nremt', path: '/nremt/' },
     { key: 'ochem', path: '/ochem/' },
     { key: 'anp', path: '/anatomy-physiology/' },
+    { key: 'apbio', path: '/bio/' },
   ];
   // courses:end
 
@@ -186,8 +220,15 @@
     return isNaN(t) ? null : t;
   }
 
+  /* A course can wait for its own checkout after the site has launched:
+     `onSale: false` in COURSES keeps it as before launch (nothing locked,
+     "Coming soon" cards, launch-email sign-ups) until its product exists. */
+  function live(course) {
+    return LAUNCHED && !(COURSES[course] && COURSES[course].onSale === false);
+  }
+
   function has(course) {
-    if (!LAUNCHED) return true;
+    if (!live(course)) return true;
     var t = expiry(course);
     return t !== null && t > Date.now();
   }
@@ -353,9 +394,9 @@
 
   function badge(course) {
     if (!COURSES[course]) return '';
-    if (LAUNCHED && has(course)) return '';
+    if (live(course) && has(course)) return '';
     return '<button type="button" class="premium-badge"' + openAttrs(course, 'badge') +
-      ' title="' + (LAUNCHED ? 'Part of Premium' : 'Part of Premium — free until it launches') + '">Premium</button>';
+      ' title="' + (live(course) ? 'Part of Premium' : 'Part of Premium — free until it launches') + '">Premium</button>';
   }
 
   // The lowest pass price, at the founding price while it runs, so the cards
@@ -370,6 +411,7 @@
   // (audit 2026-10, A&P "Premium box": the price had no pass length).
   function passLength(c) {
     var low = c.passes.reduce(function (a, b) { return b.price < a.price ? b : a; });
+    if (low.until) return 'a pass valid through ' + untilText(low.until);
     var m = /(\d+\s*(?:days?|months?))/i.exec(low.label);
     return m ? m[1] : (/year/i.test(low.label) ? 'a year' : low.label);
   }
@@ -409,20 +451,20 @@
   function card(course, source) {
     var c = COURSES[course];
     if (!c) return '';
-    if (LAUNCHED && has(course)) return '';
-    if (!LAUNCHED && joined(course)) {
+    if (live(course) && has(course)) return '';
+    if (!live(course) && joined(course)) {
       return '<div class="premium-card is-joined">' +
         '<b>You’re on the Premium list</b>' +
         '<p>We’ll email you once, when it launches.</p>' +
       '</div>';
     }
     return '<div class="premium-card">' +
-      '<span class="premium-card__tag">' + (LAUNCHED ? 'Premium' : 'Coming soon') + '</span>' +
+      '<span class="premium-card__tag">' + (live(course) ? 'Premium' : 'Coming soon') + '</span>' +
       '<b>Premium for ' + esc(c.name) + '</b>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time</span>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
-        (LAUNCHED ? 'See Premium' : 'Get notified') + '</button>' +
+        (live(course) ? 'See Premium' : 'Get notified') + '</button>' +
     '</div>';
   }
 
@@ -442,10 +484,18 @@
     return !!(FOUNDING.until && Date.now() < Date.parse(FOUNDING.until + 'T23:59:59Z'));
   }
 
+  /* "June 30, 2027" from a pass's `until` ("2027-06-30"), the day as written. */
+  function untilText(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    if (!m) return String(iso || '');
+    var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return months[+m[2] - 1] + ' ' + (+m[3]) + ', ' + m[1];
+  }
+
   function passHtml(course, p) {
     var now = foundingLive() ? p.price * (100 - FOUNDING.off) / 100 : null;
     return '<li class="premium-pass">' +
-      '<span><b>' + esc(p.label) + '</b>' +
+      '<span><b>' + esc(p.until ? 'One pass, valid through ' + untilText(p.until) : p.label) + '</b>' +
       (now !== null
         ? ' <s>$' + p.price + '</s> <b class="premium-pass__now">$' + money(now) + '</b>'
         : ' <b class="premium-pass__now">$' + p.price + '</b>') +
@@ -518,25 +568,35 @@
     setMsg('');
 
     document.getElementById('premiumTitle').textContent =
-      LAUNCHED ? 'Premium for ' + c.name : 'Premium is coming';
+      live(course) ? 'Premium for ' + c.name : 'Premium is coming';
     document.getElementById('premiumLists').innerHTML =
       listHtml('Premium', c.premium) + listHtml('Always free', c.free);
 
     var body = document.getElementById('premiumBody');
     var fine = document.getElementById('premiumFine');
-    if (LAUNCHED) {
+    if (live(course)) {
+      var dated = c.passes.filter(function (p) { return p.until; })[0];
       document.getElementById('premiumSub').textContent =
-        'One-time passes. No subscription, nothing renews. Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
+        (dated
+          ? 'A one-time pass, valid through ' + untilText(dated.until) + ' whenever you buy it. No subscription, nothing renews.'
+          : 'One-time passes. No subscription, nothing renews.') +
+        ' Prices in US dollars, plus any sales tax or VAT, shown before you pay.' +
         (foundingLive() ? ' Founding-member price: ' + FOUNDING.off + '% off until ' + FOUNDING.until + '.' : '');
-      body.innerHTML = '<ul class="premium-passes">' +
-        c.passes.map(function (p) { return passHtml(course, p); }).join('') + '</ul>' +
+      // A fixed-date pass is off sale once its day is over (the Worker refuses
+      // it too); Hawaii time, the last US day to end.
+      var sale = c.passes.filter(function (p) { return !p.until || Date.now() <= Date.parse(p.until + 'T23:59:59-10:00'); });
+      body.innerHTML = (sale.length
+        ? '<ul class="premium-passes">' + sale.map(function (p) { return passHtml(course, p); }).join('') + '</ul>'
+        : '<p>This pass is no longer on sale.</p>') +
         (c.guarantee ? '<p class="premium-guarantee">' + esc(guaranteeText()) + '</p>' : '');
       // innerHTML for the links; every other part is a fixed string or
       // escaped, as elsewhere in this dialog.
       fine.innerHTML = esc(
         'When a pass ends, your progress stays; only the Premium parts lock again. ' +
         'Full refund within 7 days of buying, once per account and email address. Sold by Polar, our merchant of record. ' +
-        (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '')) +
+        'Under 18? You need a parent or guardian’s permission, and they accept the terms for you; under 16, they should make the purchase. ' +
+        (course === 'nremt' ? 'Not affiliated with or endorsed by the National Registry of EMTs. ' : '') +
+        (course === 'apbio' ? 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site. ' : '')) +
         '<a href="/premium.html" target="_blank" rel="noopener">Free vs Premium</a> &middot; ' +
         '<a href="/terms.html#premium" target="_blank" rel="noopener">Terms and refunds</a>';
     } else {
@@ -757,6 +817,11 @@
     if (q.premium !== 'success' && !Object.prototype.hasOwnProperty.call(q, 'customer_session_token')) return null;
     var course = q.course;
     if (course && Object.prototype.hasOwnProperty.call(COURSES, course)) return course;
+    // A course whose key may not appear in a URL (apbio, docs/apbio-spec.md
+    // decision 2) comes back named by its folder ("bio").
+    for (var j = 0; course && j < COURSE_LIST.length; j++) {
+      if (COURSE_LIST[j].path === '/' + course + '/') return COURSE_LIST[j].key;
+    }
     var path = String(pathname || '');
     for (var i = 0; i < COURSE_LIST.length; i++) {
       if (path.indexOf(COURSE_LIST[i].path) !== -1) return COURSE_LIST[i].key;
@@ -835,7 +900,8 @@
   }
 
   window.LevlPremium = {
-    launched: function () { return LAUNCHED; },
+    // launched(course): that course's passes are on sale; launched(): the site has launched.
+    launched: function (course) { return course ? live(course) : LAUNCHED; },
     COURSES: COURSES,
     FOUNDING: FOUNDING,
     GUARANTEE: GUARANTEE,

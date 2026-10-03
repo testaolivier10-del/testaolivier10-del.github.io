@@ -19,8 +19,35 @@ course does meanwhile.
   agree). Map summary with sources: `docs/apbio-ced-map.json`.
 - **title-mark** (resolved 2026-10-03). Owner: use "AP® Biology", with the ®, in page titles
   (spec decision 3).
+- **teacher-access** (open). The repo has no instructor request flow, so `bio/teachers.html` says
+  "Teachers can ask for free access to the rest of the course: email hello@levlprep.com from your
+  school address." The owner should confirm that offer (and how access is granted: a coupon, a
+  Polar discount, a manual pass) or have the sentence changed.
+- **class-discount** (open). No student or class discount exists (`assets/premium.js` has only the
+  founding-member offer, 30% off for everyone until 2027-01-31, and `docs/premium.md` lists no
+  other). The teachers page says "Ask about discounts for classes" at hello@levlprep.com. Decide
+  whether there is one.
+- **privacy-schools** (resolved 2026-10-03). `privacy.html#schools` exists (spec decision 20);
+  its legal follow-ups are under "Legal and launch" below.
+- **frq-gating** (open). The spec puts "all FRQs" in Premium. The FRQ pages gate the workspace
+  (rubric, self-scoring) the way lessons are gated: free in Units 1 and 2, Premium elsewhere; the
+  prompt and the printable sheet stay open everywhere so teachers can assign them. Confirm.
+- **readiness-band** (open). The practice exam's readiness band (1-5) weights MCQ 60% and FRQ 40%
+  and uses cut-offs 75/60/45/30% of the composite. It is labelled "Not calibrated: a rough guide,
+  not a predicted score." Replace with better cut-offs if a teacher can suggest them.
 - **teacher-review** (open). No AP® Biology teacher has reviewed the course. Beta badge and note
   stay until one signs off.
+
+- **tools-premium** (open). Spec: one simulator free, every simulator Premium. Osmosis is free and
+  enzyme is Premium. The spec does not say whether the skills tools (stats practice, graph
+  builder) and the design drills are Premium; they are free for now. Owner to decide.
+- **design-drills-review** (open). The 8 design and argumentation scenarios
+  (`bio/data/tools/design-drills.json`) are placeholder content: a biology teacher should review
+  the scenarios, the best control in each, and the claim/evidence/reasoning tags (graders differ
+  on whether a general-principle sentence counts as reasoning). The page shows a Draft note until
+  `status` becomes "reviewed".
+- **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
+  `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
 
 ## Contested science
 
@@ -62,6 +89,141 @@ person decides; lessons follow the "meanwhile" line.
 - **extinction-placement** (open). The 2025 CED reportedly dropped the Extinction topic; the map
   teaches extinction in 7.6 (needed by fossils, trees and adaptive radiation). Confirm with the
   official CED (see ced-verify).
+- **hw-chi-square-df** (open). A chi-square test of genotype counts against Hardy-Weinberg
+  expectations has 3 − 1 = 2 df by the usual goodness-of-fit rule, but 1 df when p is estimated
+  from the same sample (statistics texts). Course materials differ. Meanwhile:
+  `stats-hardy-weinberg` explains both and its data are chosen so both give the same decision
+  (χ² = 11.6), with a "For your exam" box; no item hinges on the choice.
+- **ci-two-se** (open). The skills topics use 95% CI ≈ x̄ ± 2SE, as exam materials do; for small
+  samples (n = 4-9 in our items) the exact t multiplier is 2.3-3.2, so true intervals are wider.
+  Meanwhile: the notes say "the exam uses 2" once (`stats-confidence-intervals`); items use 2SE.
+- **nacl-ionization** (open). Items use i = 2 for NaCl and i = 3 for CaCl₂ (formula-sheet
+  convention); real solutions ionize slightly less than completely. Meanwhile: the notes call it a
+  convenient approximation (`stats-water-potential`).
+
+- **membrane-potential-origin** (open, 2.6). Most of the resting membrane potential comes from K⁺
+  leaking out through open channels; the pump's 3:2 ratio adds only a few millivolts. Exam
+  materials often say the pump "creates" the potential. Meanwhile: the pump builds the gradients
+  and adds a little charge; the K⁺ leak makes most of the potential; a "For your exam" note says
+  the short version is acceptable.
+- **osmosis-mechanism** (open, 2.7). "Solutes bind water, so fewer free water molecules" is a
+  common teaching picture (OpenStax uses it) but not the full physical account. Meanwhile: the
+  free-water picture, no question hinges on the mechanism beyond direction.
+- **endosymbiosis-host** (open, 2.10). Evidence suggests the host cell was related to archaea,
+  and whether it already had a nucleus and endomembranes when it took in the mitochondrial
+  ancestor is debated. Meanwhile: lessons say "an ancestral host cell" and draw it with a
+  nucleus as a simplification; nothing is asked about the host's identity.
+- **metabolic-scaling** (open). Topic 2.2 explains the higher metabolic rate per gram of small
+  endotherms by heat loss through a larger surface area-to-volume ratio, the framing the CED uses.
+  Physiologists still debate why metabolic rate scales with body mass to about the 3/4 power
+  (Kleiber's law) rather than the 2/3 the surface rule predicts, and ectotherms show a similar
+  pattern. Meanwhile: the surface-area explanation as the main reason, with no claim that it is
+  the whole story; no question asks for a scaling exponent (`metabolic-rate`, `heat-exchange`).
+- **permeability-values** (open). The 2.4 bilayer permeability table (stimulus and notes) gives
+  values rounded to the nearest power of ten from published synthetic-bilayer measurements, which
+  vary between studies by up to an order of magnitude (Na⁺ is reported from about 10⁻¹² to 10⁻¹⁴
+  cm/s). Meanwhile: values are labelled approximate, and items use only the ordering and
+  powers-of-ten differences (`simple-diffusion`, `selective-permeability`).
+- **organelle-outer-membrane** (open, 2.10; review u2b). OpenStax 23.1 and most AP materials say
+  the outer membrane of mitochondria and chloroplasts came from the host membrane that engulfed
+  the bacterium. Alphaproteobacteria and cyanobacteria have two membranes of their own, and the
+  organelles' outer-membrane import proteins (Tom40/Sam50, Toc75) are related to bacterial
+  outer-membrane proteins, so many researchers now trace the outer membrane to the bacterium.
+  Meanwhile: the engulfing model is taught and asked "according to the model"; the notes add one
+  hedging sentence and no longer list "two membranes because the bacterium had two" as a mistake.
+- **mitoribosome-size** (open, 2.10; review u2b). Bacterial and chloroplast ribosomes are 70 S;
+  mitochondrial ribosomes vary (about 55 S in mammals, about 78 S in plants). Exams usually say
+  "70 S". Meanwhile: notes say "built like bacterial 70 S ribosomes" with the variation noted;
+  the stimulus table (plant mitochondria, "70 to 78") and the FRQ model (the bacterium's 70 S
+  ribosomes) are left as they are.
+- **ion-accumulation-active** (open, 2.5; raised by the Unit 2 review, `docs/apbio-reviews/u2a.md`).
+  Topic 2.5 and `frq-root-potassium` infer active transport from K⁺ held at a higher
+  concentration inside than outside ("diffusion alone could never do that"). For ions this is
+  only strictly true for the electrochemical gradient: a root cell's membrane potential (about
+  −120 to −200 mV) can pull K⁺ in passively through channels to 100-fold or more (Nernst), and real
+  roots in millimolar K⁺ do take much of it up that way. The exam frames uptake against a
+  concentration gradient as active. Meanwhile: the concentration-gradient framing; the FRQ sample
+  also cites the ATP (nitrogen) result as evidence (`bio-membrane-transport-14`, `-15`, notes,
+  `frq-root-potassium` part d). Decide whether to add a "For your exam" note or raise the ratios.
+- **cholesterol-cold** (open, 2.3). `bio-plasma-membrane-5` keys "extra cholesterol gives somewhat
+  more mixing at 15 °C" from the textbook fluidity-buffer model. In real mammalian membranes,
+  which already hold 30-40% cholesterol, loading more cholesterol usually slows protein
+  diffusion at any temperature; the buffer effect is clearest against a cholesterol-free bilayer.
+  Meanwhile: keyed to the textbook model, which the exam uses.
+- **aquaporin-gases** (open, 2.4, low priority). Some aquaporins (e.g. AQP1) have been reported to
+  pass CO₂, a claim still disputed. `bio-membrane-permeability-18` keys CO₂ crossing as "no
+  change" when aquaporins are blocked. Meanwhile: as keyed (most CO₂ crosses the bilayer).
+- **cyanide-gradient-skills** (same point as cyanide-gradient below, for the skills item) (open, low priority; review `docs/apbio-reviews/skills.md`).
+  `bio-design-prediction-mechanism-1` keys the H⁺ gradient "down" in cyanide-treated cells that
+  can ferment. In intact cells ATP synthase can run in reverse, using glycolytic ATP to pump H⁺
+  and hold much of the gradient, so the real fall can be partial. The exam's model (gradient
+  runs down, ATP synthase makes less ATP) is what is keyed; ATP made by ATP synthase falls either
+  way. Meanwhile: as keyed.
+Raised while writing Unit 3 (2026-10-03, branch `claude/apbio-u3`):
+
+- **induced-fit-models** (open). Biochemistry now often describes binding as conformational
+  selection (the enzyme already samples the closed shape) as well as induced fit. The exam and
+  OpenStax 6.5 use induced fit refining lock-and-key. Meanwhile: induced fit only
+  (`enzyme-structure`).
+- **optimum-depends-on-assay** (open). A measured optimal temperature depends on how long the
+  assay runs, because denaturation takes time. The course mentions this in a going-further box
+  and in one data item (`bio-enzyme-environment-24`); exam items treat the optimum as a fixed
+  property. Meanwhile: questions give the data and never ask for a "true" optimum.
+- **atp-turnover** (open). "About 50 g of ATP in the body, about 50 kg (roughly body mass)
+  hydrolyzed per day" is a widely quoted order-of-magnitude estimate; published figures vary.
+  Used in the 3.4 hook, notes and `bio-cellular-energy-18` (which asks only for the ratio).
+- **calvin-dark** (open). "Light-independent reactions" is kept as an alias of the Calvin cycle,
+  and the course stresses that it stops in the dark (several Calvin enzymes are also
+  light-activated, which the course does not teach). "Dark reactions" is not used.
+- **oxygenic-origin-date** (open). The notes say oxygenic photosynthesis arose in cyanobacteria
+  "more than 2.4 billion years ago" (the Great Oxidation Event); when it first evolved is
+  debated (estimates run to 3 billion years or more). No question asks for a date.
+- **dcmu-water-splitting** (open). `bio-photosynthesis-8` keys "O₂ release stops" when DCMU
+  blocks electrons leaving photosystem II. Strictly, PSII can turn over a few times before
+  water oxidation halts; over minutes the statement holds. A reviewer should confirm the
+  wording.
+Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
+
+- **gc-stability** (open). Exam materials explain why G–C-rich DNA separates at higher
+  temperature by "three hydrogen bonds versus two"; biophysics finds base stacking contributes at
+  least as much. Meanwhile: the hydrogen-bond answer is keyed, with a going-further box and a
+  "For your exam" line in the Nucleic Acids notes (`complementary-base-pairing`).
+- **xylem-capillarity** (open). Many AP-style sources say adhesion/capillary action lifts water
+  up xylem; capillarity alone lifts it only centimeters, and the cohesion-tension pull from
+  transpiration does the work in tall plants. Meanwhile: Water notes teach the transpiration pull
+  through a cohesive column, adhesion as helping hold the column; no item keys capillarity as
+  the main mechanism (`capillary-action`, `transpiration`).
+- **activated-monomers** (open). Dehydration synthesis is the exam's model for building every
+  polymer, but in cells nucleotides arrive as triphosphates (releasing pyrophosphate) and amino
+  acids are attached to carriers first. Meanwhile: the dehydration model throughout, with a
+  going-further note in Introduction to Macromolecules (`dehydration-synthesis`).
+- **glycogen-branching** (open). "More branches give more ends for fast glucose release" is the
+  textbook advantage of glycogen; the carbohydrate stimulus deliberately does not claim branching
+  explains its (invented) amylase data. The Unit 1 model FRQ (frq-starch-cellulose-model, part d)
+  accepts the textbook answer. Confirm this is what the exam expects.
+- **lipid-macromolecule** (open). The CED says lipids are not polymers; some texts still call
+  large lipids macromolecules. Meanwhile: "large molecules but not polymers".
+- **termite-cellulase** (open; Unit 1 review, 2026-10-03). Textbooks (OpenStax 3.2 included)
+  credit termites' cellulose digestion to gut microbes, but termites also secrete some cellulase
+  of their own, and the share varies between termite groups. Meanwhile: "mainly because of gut
+  microbes" (Carbohydrates notes, lesson misconception, `bio-carbohydrates-5`, whose stem already
+  says termites make a little enzyme themselves). Confirm the wording.
+  wording. (Unit 3 review, `docs/apbio-reviews/u3.md`: holds for the 20-minute assay; kept.)
+- **action-spectrum-green** (open, 3.5; review u3). Extracted-pigment spectra and thin algal
+  suspensions show a deep green dip, but whole leaves absorb much of the green light that
+  reaches them and use it fairly well (McCree-type leaf action spectra give roughly 65-75% of the
+  peak rate per photon near 550 nm). `photosynthesis-s1` now says its action spectrum came from a
+  thin suspension of green algae, and `bio-photosynthesis-3` grows algal cultures, not plants.
+  The notes still say the action spectrum is "lowest in green", which is true but larger in
+  algae than in leaves. Meanwhile: as changed; decide whether the notes need a hedge.
+- **dcpip-entry-point** (open, 3.5; review u3). DCPIP mostly takes electrons from the
+  plastoquinone/cytochrome part of the chain, before photosystem I, not from the end of the
+  chain. AP lab materials say it stands in for NADP⁺, and `bio-photosynthesis-6` and `-9` use
+  that framing. Meanwhile: the lab framing; no item depends on where exactly DCPIP is reduced.
+- **cyanide-gradient** (open, 3.6; review u3). In intact cells after cyanide, ATP synthase can
+  run backward, using ATP from glycolysis to hold part of the H⁺ gradient. `bio-cellular-respiration-22`
+  keys the intermembrane H⁺ concentration as "down", which is right in direction. Meanwhile: as
+  keyed.
 
 ## Map content to confirm
 
@@ -70,3 +232,59 @@ person decides; lessons follow the "meanwhile" line.
   operons by name (6.5, needed by the operon simulator), rubisco/RuBP/G3P (3.5; enzyme names
   are outside the exam beyond ATP synthase). Question writers must not treat them as required
   knowledge. Someone with the official CED should confirm.
+- **ci-overlap-rule** (pending review). The confidence-interval tool teaches the course rule of
+  thumb: ±2 SE bars that do not overlap → the difference is likely significant; overlapping →
+  not shown to be significant. Strictly, slightly overlapping 95% CIs can still differ at
+  p < 0.05. The tool says so, and its problems avoid bars that nearly touch (`ciBorderline`).
+- **graph-line-vs-scatter** (pending review). For means at set values of a continuous
+  independent variable the graph builder prefers a line graph but also accepts a scatter plot
+  (`alsoAccept`), with a note, since many rubrics take either; for measured individuals only a
+  scatter plot counts. A teacher should confirm.
+- **ci-wording** (pending review). The tools describe a 95% CI as "the range that very likely
+  contains the true mean": fine at this level, not the strict frequentist meaning.
+- **water-heating-hydrogen-bonds** (pending review). The water/oil drill explains water's high
+  specific heat as heat going into breaking hydrogen bonds before molecules speed up: the
+  textbook explanation, a simplification of the physics.
+- **chi-square-df3** (resolved 2026-10-03). The critical value for df 3 at p = 0.05 is 7.82 as
+  printed on the formula sheet (exact 7.815); the tool accepts 7.81 and 7.82.
+- Independent accuracy review (2026-10-03) of both simulators and every skills tool: numbers,
+  formulas, tables and fixed answers recomputed and correct apart from df 3 (fixed); wording
+  fixes applied (red blood cell swelling, lysis threshold, potato gradient, control definitions,
+  salivary amylase, snapdragon notation, the n − 1 reason). Design drills stay placeholder until
+  a teacher reviews them (design-drills-review).
+- **osmosis-model-numbers** (pending review). The osmosis simulator's potato numbers (cell sap
+  0.33 osmol/L, 45% non-water mass, wall modulus 15 bar) and red blood cell lysis at 1.55× volume
+  are illustrative (lysis is tested on mass, which tracks volume here), chosen to give lab-like curves (zero crossing ≈ 0.30 M sucrose at 22 °C,
+  hemolysis near 0.46% NaCl). NaCl is treated as i = 2 (real ≈ 1.9); the page says so.
+- **enzyme-model** (pending review). Temperature and pH scale Vmax only (not Km); denaturation is
+  modeled as instant and reversible. Both simplifications are stated on the page.
+
+## Legal and launch (site registration, 2026-10-03)
+
+- **minor-buyers** (open). terms.html lets someone under 18 buy with a parent or guardian's
+  permission (the parent accepts the terms; under 16 the parent should buy, Polar's rule), and the
+  dialog and premium.html now say so. A lawyer should confirm that this is enough for a course
+  sold to high-school students (contract capacity, Polar's buyer terms, refunds to a parent).
+  Meanwhile the existing terms stand, unweakened.
+- **student-privacy-laws** (open). A site marketed to teachers for a high-school course may be an
+  "operator" under student-privacy laws such as California's SOPIPA and similar state laws. The
+  site already does what those require as far as we know (no targeted ads, no profiling, no
+  selling, deletion on request), and privacy.html#schools says so. A lawyer should confirm, and
+  confirm the 30-day deletion promise to schools.
+- **ndpa** (open). privacy.html#schools says LevlPrep is willing to sign the SDPC National Data
+  Privacy Agreement (the brief asked for it). The owner should confirm before a district asks;
+  the NDPA has security and breach-notice terms to check.
+- **retention-unknowns** (open). Not knowable from the code: Umami Cloud's retention of
+  analytics, Supabase backups (how long a deleted account survives in a backup), Resend's
+  message logs, Cloudflare's request logs. privacy.html points to "How long things are kept",
+  which says the providers keep short-lived logs. Look these up and add numbers if they matter
+  to a school. Question reports, error reports and the page counter are never deleted by code.
+- **cram-kit-claim** (open). premium.js lists "The cram kit (study plans and timed mixed sets,
+  from March 2027)" as Premium; it does not exist yet (spec schedule: by 2027-03-01). If it
+  slips, change the line before anyone buys on it.
+- **free-simulator** (open). The free list says "One simulator"; `ApBioCore.allowed('tools')`
+  locks every tool when locked. The tools branch (0.4b) must free exactly one simulator, or the
+  line changes.
+- **polar-product-name** (open). The product name proposed in the launch checklist (spec section
+  6) uses the mark as an adjective with the ®; receipts and Polar's pages then carry it. Confirm,
+  or name it "LevlPrep Biology Premium (through June 30, 2027)" instead.

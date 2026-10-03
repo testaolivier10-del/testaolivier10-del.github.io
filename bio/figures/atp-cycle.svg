@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" width="700" height="380" role="img" aria-labelledby="t d">
+<title id="t">The ATP cycle couples energy-releasing and energy-requiring reactions</title>
+<desc id="d">ATP sits at the top of a cycle and ADP plus inorganic phosphate at the bottom. On the right, ATP hydrolysis releases energy that drives energy-requiring work such as building large molecules, pumping ions and moving muscle. On the left, energy released by breaking down food molecules is used to add a phosphate back to ADP, making ATP again.</desc>
+<defs><marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="700" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <rect x="270" y="30" width="160" height="56" rx="12" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="3"/>
+  <text x="350" y="56" font-size="22" font-weight="700" text-anchor="middle">ATP</text>
+  <text x="350" y="76" font-size="13" text-anchor="middle">3 phosphate groups</text>
+  <rect x="250" y="290" width="200" height="56" rx="12" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="3"/>
+  <text x="350" y="316" font-size="20" font-weight="700" text-anchor="middle">ADP + P<tspan font-size="14" baseline-shift="sub">i</tspan></text>
+  <text x="350" y="336" font-size="13" text-anchor="middle">2 phosphate groups + phosphate</text>
+  <path d="M440,70 C540,100 540,250 460,300" fill="none" stroke="#1F2A28" stroke-width="4" marker-end="url(#a3)"/>
+  <path d="M240,310 C160,270 160,110 260,70" fill="none" stroke="#1F2A28" stroke-width="4" marker-end="url(#a3)"/>
+  <text x="545" y="140" font-size="16" font-weight="700">ATP hydrolysis</text>
+  <text x="545" y="160" font-size="14">releases energy</text>
+  <path d="M520,190 L560,190" stroke="#D55E00" stroke-width="4" marker-end="url(#a3)"/>
+  <rect x="566" y="172" width="126" height="92" rx="8" fill="#F6D2BD" stroke="#D55E00" stroke-width="2"/>
+  <text x="629" y="192" font-size="13" font-weight="700" text-anchor="middle">drives work</text>
+  <text x="629" y="211" font-size="13" text-anchor="middle">building molecules</text>
+  <text x="629" y="229" font-size="13" text-anchor="middle">pumping ions</text>
+  <text x="629" y="247" font-size="13" text-anchor="middle">moving muscle</text>
+  <rect x="8" y="150" width="128" height="92" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+  <text x="72" y="170" font-size="13" font-weight="700" text-anchor="middle">energy in</text>
+  <text x="72" y="189" font-size="13" text-anchor="middle">from breaking</text>
+  <text x="72" y="207" font-size="13" text-anchor="middle">down food</text>
+  <text x="72" y="225" font-size="13" text-anchor="middle">molecules</text>
+  <path d="M138,196 L178,196" stroke="#009E73" stroke-width="4" marker-end="url(#a3)"/>
+  <text x="72" y="112" font-size="16" font-weight="700" text-anchor="middle">ATP made:</text>
+  <text x="72" y="132" font-size="14" text-anchor="middle">phosphate added</text>
+  <text x="350" y="190" font-size="15" text-anchor="middle" fill="#3D4A66">the same molecules</text>
+  <text x="350" y="208" font-size="15" text-anchor="middle" fill="#3D4A66">are recycled</text>
+  <text x="350" y="226" font-size="15" text-anchor="middle" fill="#3D4A66">over and over</text>
+</g>
+</svg>

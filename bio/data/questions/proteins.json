@@ -1,0 +1,604 @@
+{
+  "stimuli": {
+    "proteins-s1": {
+      "kind": "table",
+      "title": "Single amino acid changes in Enzyme Q",
+      "text": "<p>Enzyme Q is a single polypeptide of 240 amino acids. Researchers made six versions, each with one amino acid replaced, and measured each version's activity as a percent of the normal enzyme's. In the normal enzyme, position 45 is buried in the hydrophobic core, position 112 is on the surface facing water, cysteine 78 forms a disulfide bridge with cysteine 150, and position 160 lies in the middle of an α helix.</p>",
+      "table": {
+        "caption": "Activity of Enzyme Q versions (percent of normal)",
+        "cols": [
+          "Version",
+          "Position",
+          "Change",
+          "Side chain change",
+          "Activity (% of normal)"
+        ],
+        "rows": [
+          [
+            "V1",
+            "45 (core)",
+            "Leucine → isoleucine",
+            "nonpolar → nonpolar",
+            "96"
+          ],
+          [
+            "V2",
+            "45 (core)",
+            "Leucine → aspartic acid",
+            "nonpolar → negative charge",
+            "3"
+          ],
+          [
+            "V3",
+            "112 (surface)",
+            "Lysine → arginine",
+            "positive → positive",
+            "99"
+          ],
+          [
+            "V4",
+            "112 (surface)",
+            "Lysine → glutamic acid",
+            "positive → negative",
+            "91"
+          ],
+          [
+            "V5",
+            "78 (core)",
+            "Cysteine → serine",
+            "–SH → –OH",
+            "18"
+          ],
+          [
+            "V6",
+            "160 (helix)",
+            "Alanine → proline",
+            "small → rigid ring that kinks the backbone",
+            "22"
+          ]
+        ]
+      }
+    },
+    "proteins-s2": {
+      "kind": "setup",
+      "title": "Unfolding and refolding an enzyme",
+      "text": "<p>A small enzyme of 124 amino acids contains 8 cysteines that form 4 disulfide bridges. Urea breaks hydrogen bonds and hydrophobic interactions; a reducing agent breaks disulfide bridges into separate –SH groups. Both can be removed slowly by dialysis, after which disulfide bridges re-form in air.</p>",
+      "table": {
+        "caption": "Activity of the enzyme after each treatment",
+        "cols": [
+          "Sample",
+          "Treatment",
+          "Activity (% of untreated)"
+        ],
+        "rows": [
+          [
+            "A",
+            "Untreated enzyme",
+            "100"
+          ],
+          [
+            "B",
+            "Urea + reducing agent",
+            "less than 1"
+          ],
+          [
+            "C",
+            "B, then urea and reducing agent removed together, slowly",
+            "95"
+          ],
+          [
+            "D",
+            "B, then reducing agent removed first (bridges re-form while urea is still present), then urea removed",
+            "1"
+          ],
+          [
+            "E",
+            "D, then a trace of reducing agent added for 10 hours",
+            "90"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-proteins-1",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "proteins-s1",
+      "q": "Which statement best describes the pattern in the data?",
+      "options": [
+        "Swaps that kept similar chemistry had little effect; a charge buried in the core had the largest.",
+        "Each of the six changes reduced the enzyme's activity by about the same amount, whatever the side chain.",
+        "Changes at the surface reduced activity more than changes in the core.",
+        "Swapping a positive side chain for a negative one had the largest effect of the six."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Compare versions that differ in one thing. At position 45, a similar swap (V1) kept 96% while a charged one (V2) left 3%. At the surface even a charge reversal (V4) kept 91%.",
+        "options": [
+          "Correct. V1 and V3 (similar chemistry) kept 96% and 99%; V2 (a charge placed in the core) fell to 3%.",
+          "Activity ranged from 3% to 99%, so the effects were very different.",
+          "The surface changes (V3, V4) kept 99% and 91%, more than any core change except the similar swap in V1.",
+          "That swap (V4) kept 91% of activity, among the smallest effects."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-2",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "proteins-s1",
+      "q": "Which explanation best accounts for the very low activity of V2?",
+      "options": [
+        "A buried charged side chain disrupts the hydrophobic core, so the chain folds into a different shape.",
+        "Aspartic acid breaks peptide bonds near position 45, cutting Enzyme Q into two pieces.",
+        "Aspartic acid is a larger amino acid than leucine, so it makes the whole polypeptide too long to fold.",
+        "The new side chain forms a disulfide bridge with cysteine 78, locking the core in the wrong place."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "R-group chemistry drives folding. Nonpolar side chains pack into the core by hydrophobic interactions. A charged side chain there is out of place, so the protein folds differently and loses its working shape.",
+        "options": [
+          "Correct. The core is held together by nonpolar side chains clustering away from water; a charge there is unstable and disrupts the tertiary structure.",
+          "Swapping a side chain does not break the backbone; V2 is still one intact polypeptide.",
+          "Each version still has 240 amino acids. The problem is chemistry, a charge in a nonpolar region, not length.",
+          "Disulfide bridges form between two cysteines; aspartic acid has no sulfhydryl group."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-3",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "proteins-s1",
+      "q": "Serine differs from cysteine only in having –OH where cysteine has –SH. Why did V5 lose most of its activity?",
+      "options": [
+        "Serine's –OH group makes the core so polar that the whole protein falls apart into its separate amino acids.",
+        "Without an –SH at position 78, the disulfide bridge to cysteine 150 cannot form, so that fold is no longer locked.",
+        "Serine does not form peptide bonds, so the chain is broken at position 78.",
+        "Serine's –OH group forms a new disulfide bridge with cysteine 150 that holds that part of the protein too tightly."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "A disulfide bridge is a covalent bond between two cysteine sulfhydryl groups. Replace one cysteine with serine and the bridge is lost, so the fold it held is free to shift.",
+        "options": [
+          "Dissolving would not break peptide bonds; the chain stays intact. The loss is in the shape.",
+          "Correct. Two –SH groups are needed for an S–S bridge. Losing the bridge leaves the tertiary structure less stable.",
+          "Every amino acid forms peptide bonds through its amino and carboxyl groups; the side chain does not take part.",
+          "A disulfide bridge needs sulfur on both sides; serine has oxygen, not sulfur."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-4",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "proteins-s1",
+      "q": "Researchers plan a seventh version with a different amino acid at position 45. Which replacement for leucine is most likely to leave activity close to normal?",
+      "options": [
+        "Lysine, which has a positively charged side chain",
+        "Glutamic acid, which has a negatively charged side chain",
+        "Valine, which has a nonpolar side chain",
+        "Serine, which has a polar side chain with an –OH group"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Position 45 sits in the nonpolar core. The safest replacement keeps the side chain nonpolar; V1 shows that such a swap barely changes activity.",
+        "options": [
+          "A charge buried in the core would disrupt folding, as V2 shows.",
+          "This is nearly the same change as V2, which left 3% activity.",
+          "Correct. A nonpolar side chain fits the hydrophobic core, as isoleucine did in V1.",
+          "A polar group buried in the core is less disruptive than a charge but still does not fit the hydrophobic environment."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-5",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "proteins-s1",
+      "fixed": true,
+      "q": "A student claims that where a change happens in a protein matters more than how different the new side chain is. Which pair of versions gives the best evidence for this claim?",
+      "options": [
+        "V1 and V2, which both change the buried position 45",
+        "V3 and V4, which both change the surface position 112",
+        "V2 and V4: a new negative charge at two positions",
+        "V5 and V6, which end with similar activities"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "To test the effect of position, compare two changes that are chemically alike but at different positions. V2 and V4 both introduce a negative side chain; the core change is devastating, the surface change mild.",
+        "options": [
+          "Both are at the same position, so this pair tests how different the new side chain is, not where the change is.",
+          "Both are at the same surface position; again only the side chain differs.",
+          "Correct. Both put a negative side chain in place, and V4's change (positive to negative) is if anything the bigger one, yet it kept 91% at the surface while V2 kept 3% in the core. Position made the difference.",
+          "These differ in both position and kind of change, and their similar activities do not separate the two factors."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-6",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "proteins-s2",
+      "q": "What does Sample B show?",
+      "options": [
+        "Breaking the bonds that hold its shape removes nearly all of the enzyme's activity.",
+        "Urea and the reducing agent break the enzyme into its separate amino acids.",
+        "The enzyme's activity is not affected by the loss of its shape.",
+        "The enzyme keeps about half of its activity when its disulfide bridges are broken by the agent."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Urea and the reducing agent break the bonds of secondary and tertiary structure. With its shape gone, the enzyme does not work.",
+        "options": [
+          "Correct. Activity fell from 100% to less than 1% when the bonds holding its shape were broken.",
+          "Neither breaks peptide bonds; Sample C regains activity from the same chains, which could not happen if they had been cut up.",
+          "Activity dropped to less than 1%, so shape is essential.",
+          "In B the activity is less than 1%, not about half."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-7",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "proteins-s2",
+      "q": "Which claim is best supported by the result for Sample C?",
+      "options": [
+        "The sequence alone holds the information needed to refold into the working shape.",
+        "Urea is needed for the enzyme to fold correctly in cells, so removing it slowly helped.",
+        "The enzyme needs chaperone proteins to fold into its working shape inside the tube.",
+        "Disulfide bridges do not affect the enzyme's shape or activity."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If an unfolded chain refolds and works again with nothing else added, the instructions for its shape must be in the chain itself: sequence determines shape.",
+        "options": [
+          "Correct. With only the chain itself present and normal conditions restored, it regained 95% of its activity.",
+          "Activity returned when urea was removed; urea unfolds the enzyme.",
+          "No chaperones were present in C, yet the enzyme refolded on its own.",
+          "Sample D shows that bridges formed in the wrong places keep activity at 1%, so they matter a great deal."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-8",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "proteins-s2",
+      "q": "Which explanation best accounts for the 1% activity of Sample D?",
+      "options": [
+        "The reducing agent destroyed some of the enzyme's peptide bonds before it could be removed by dialysis.",
+        "In urea, cysteines paired at random as bridges re-formed, locking most chains into wrong shapes.",
+        "The urea had permanently changed the sequence of amino acids in the chain.",
+        "The enzyme in D had too few cysteines left to make any disulfide bridges."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "In D the bridges re-formed while the chain was unfolded, so cysteines paired at random. Wrong covalent bridges hold the chain in wrong shapes; a trace of reducing agent, as in Sample E, lets them break and re-form until the correct shape wins.",
+        "options": [
+          "Sample E, made from D, recovered 90% of its activity, so its chains were intact.",
+          "Correct. Covalent bridges formed before folding fix whatever pairings happen; most random pairings are wrong.",
+          "Urea does not break or rearrange peptide bonds; E shows the chain could still fold correctly.",
+          "All 8 cysteines are still present; D's bridges formed, but in the wrong places."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-9",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "proteins-s2",
+      "q": "If the 8 cysteines paired up at random into 4 disulfide bridges, how many different sets of pairings are possible? (Hint: the first cysteine can pair with any of the other 7; the next unpaired cysteine with any of the remaining 5; and so on.)",
+      "numeric": {
+        "answer": 105,
+        "tol": 0,
+        "unit": "pairings",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "7 × 5 × 3 × 1 = 105. Only one set is correct, so random pairing gives the right bridges about 1 time in 105, roughly 1%, matching Sample D's activity."
+      }
+    },
+    {
+      "id": "bio-proteins-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "proteins-s2",
+      "q": "In Sample B, which level of the enzyme's structure is left intact?",
+      "options": [
+        "Primary structure, because urea and the reducing agent do not break peptide bonds",
+        "Secondary structure, because α helices are held by covalent bonds",
+        "Tertiary structure, because hydrophobic interactions are too strong for urea to break apart",
+        "Quaternary structure, because the enzyme has several subunits"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Denaturing treatments break the weak bonds of secondary and tertiary structure (and disulfides, with a reducing agent), but peptide bonds survive, so the primary structure remains.",
+        "options": [
+          "Correct. The sequence survives, which is why the chains can refold in C.",
+          "Helices and sheets are held by hydrogen bonds, which urea breaks.",
+          "Urea breaks hydrophobic interactions, and activity is lost, so the 3-D shape is gone.",
+          "The enzyme is a single chain of 124 amino acids, so it has no quaternary structure."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What makes one amino acid different from another?",
+      "options": [
+        "Its R group (side chain)",
+        "Its number of amino groups",
+        "The type of bond it forms with the next amino acid",
+        "Whether it contains carbon"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Amino acids share a common core; the R group gives each one its chemistry: nonpolar, polar or charged.",
+        "options": [
+          "Correct. The amino group, carboxyl group, hydrogen and central carbon are the same in all 20; only the R group differs.",
+          "Every amino acid has one amino group on its central carbon (some side chains carry extra nitrogen, but that is part of the R group).",
+          "All amino acids link by the same peptide bond.",
+          "All amino acids contain carbon."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-12",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Two amino acids are joined by a peptide bond. Between which atoms does the new bond form?",
+      "options": [
+        "Between the carboxyl carbon of one amino acid and the amino nitrogen of the next",
+        "Between the R groups of the two amino acids",
+        "Between the two central carbons, which share a pair of electrons directly with each other",
+        "Between the nitrogen atoms of the two amino groups"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Dehydration synthesis: –OH from the carboxyl group and –H from the amino group leave as water; the carbonyl carbon bonds to the nitrogen, forming C–N, the peptide bond.",
+        "options": [
+          "Correct. The carboxyl group loses –OH, the amino group loses –H, water is released, and C bonds to N.",
+          "R groups interact during folding, but the peptide bond is in the backbone, between carboxyl and amino groups.",
+          "The central carbons are not bonded to each other; they are linked through the C–N peptide bond.",
+          "A peptide bond links a carboxyl carbon to an amino nitrogen, not two nitrogens."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-13",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "What holds an α helix in its coiled shape?",
+      "options": [
+        "Hydrogen bonds between backbone C=O and N–H groups a few positions apart",
+        "Disulfide bridges between neighboring cysteines that lie in the same chain",
+        "Peptide bonds that link each amino acid to the fourth one along the chain",
+        "Hydrophobic interactions between side chains inside the coil"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Secondary structure (α helices and β sheets) is held by hydrogen bonds between the backbone's C=O and N–H groups. Side-chain interactions belong to tertiary structure.",
+        "options": [
+          "Correct. Secondary structure depends on the backbone, not the side chains.",
+          "Disulfide bridges stabilize tertiary structure and need two cysteines; most helices have none.",
+          "Peptide bonds link neighboring amino acids along the chain, not every fourth one.",
+          "Side chains point outward from a helix; hydrophobic interactions shape the tertiary structure."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-14",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Which of these would change a protein's primary structure? Select all that apply.",
+      "options": [
+        "Replacing one amino acid with a different one",
+        "Heating the protein until it unfolds",
+        "Moving it to a solution with a very different pH",
+        "Breaking one of its disulfide bridges",
+        "Adding a chaperone protein"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Primary structure is the sequence of amino acids. Only changing which amino acids are in the chain (or their order) changes it; denaturing and folding act on the higher levels.",
+        "options": [
+          "Changes primary structure: the sequence itself is different.",
+          "Does not: heat breaks weak bonds, not peptide bonds, so the sequence is unchanged.",
+          "Does not: pH changes charges on side chains and can unfold the protein, but the sequence stays the same.",
+          "Does not: disulfide bridges are part of tertiary structure.",
+          "Does not: chaperones help folding; they do not change the sequence."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "In the inherited disorder that makes red blood cells sickle-shaped, valine (nonpolar) replaces glutamic acid (charged) at a position on the outer surface of a hemoglobin subunit. Which explanation best accounts for the problem this causes?",
+      "options": [
+        "A nonpolar patch on the surface sticks to nonpolar areas of other hemoglobin molecules, forming long fibers.",
+        "Valine breaks the peptide bonds around it, so the hemoglobin chain falls apart into several shorter pieces.",
+        "The change removes a disulfide bridge, so the four subunits come apart.",
+        "Valine carries a positive charge that repels the other subunits of the same hemoglobin molecule."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A surface position normally faces water, where a charged side chain fits well. A nonpolar side chain there creates a sticky hydrophobic spot that binds neighboring molecules.",
+        "options": [
+          "Correct. A hydrophobic patch exposed to water binds other hydrophobic surfaces, stacking hemoglobin into fibers when oxygen is low.",
+          "A side-chain swap does not break the backbone; the chain stays full length.",
+          "Glutamic acid has no sulfhydryl group, so no disulfide bridge is lost.",
+          "Valine is nonpolar and uncharged; the problem is extra stickiness, not repulsion."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-16",
+      "type": "predict",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "An egg white protein is heated until it turns from clear to white. Predict how each feature of the protein changes.",
+      "variables": [
+        {
+          "name": "Number of peptide bonds in each chain",
+          "answer": "none",
+          "why": "Cooking temperatures do not break peptide bonds; the sequence of each chain is unchanged."
+        },
+        {
+          "name": "Number of hydrogen bonds holding helices and sheets",
+          "answer": "down",
+          "why": "Heat makes the chain vibrate hard enough to break these weak bonds, so secondary structure is lost."
+        },
+        {
+          "name": "Number of nonpolar side chains exposed to water",
+          "answer": "up",
+          "why": "As the chain unfolds, nonpolar side chains that were buried in the core are exposed; they then stick to other unfolded chains, turning the egg white solid and white."
+        }
+      ],
+      "why": {
+        "correct": "Denaturation breaks the weak bonds of secondary and tertiary structure but not peptide bonds. Unfolding exposes hydrophobic side chains, which clump with other chains, so the protein does not refold on cooling."
+      }
+    },
+    {
+      "id": "bio-proteins-17",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Cells make many chaperone proteins when they are heated. What is the most likely reason?",
+      "options": [
+        "Heat partly unfolds proteins, and chaperones help them refold correctly instead of clumping together.",
+        "Chaperones break heated proteins down into amino acids so that new proteins can be built.",
+        "Chaperones change the amino acid sequences of heated proteins to make them stable at high temperature.",
+        "Chaperones replace heat-damaged proteins and do their jobs for them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Heat unfolds proteins and exposes hydrophobic regions that clump. Chaperones shield those regions and help chains refold into working shapes.",
+        "options": [
+          "Correct. Chaperones bind partly unfolded chains, keep their exposed nonpolar regions from sticking to each other, and give them a chance to refold.",
+          "Breaking proteins into amino acids is hydrolysis; chaperones assist folding.",
+          "Chaperones do not change sequences; the sequence is set by the gene.",
+          "Chaperones help other proteins fold; they do not take over their functions."
+        ]
+      }
+    },
+    {
+      "id": "bio-proteins-18",
+      "type": "order",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put these steps in order as a newly made hemoglobin chain becomes part of a working hemoglobin molecule.",
+      "options": [
+        "Amino acids are joined by peptide bonds in the sequence set by the gene.",
+        "Backbone hydrogen bonds coil parts of the chain into α helices.",
+        "Nonpolar side chains cluster inside as the chain folds into its 3-D shape.",
+        "Four folded chains assemble into one hemoglobin molecule."
+      ],
+      "why": {
+        "correct": "Primary (sequence) → secondary (helices from backbone hydrogen bonds) → tertiary (folding driven by side chains) → quaternary (four subunits together). Each level depends on the one before."
+      }
+    },
+    {
+      "id": "bio-proteins-19",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "proteins",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A protein dissolves in the watery fluid of blood. Where would most of its leucine and valine side chains (both nonpolar) most likely be found?",
+      "options": [
+        "On the outer surface, where they make the protein dissolve in the fluid",
+        "Buried in the protein's interior, away from water",
+        "Spread evenly between the surface and the interior of the protein",
+        "Joined to each other by disulfide bridges on the surface"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "In water, a folding chain hides its nonpolar side chains inside and exposes its polar and charged ones, the same hydrophobic effect that makes oil form drops.",
+        "options": [
+          "Nonpolar side chains do not help a protein dissolve; water-soluble proteins have mostly polar and charged surfaces.",
+          "Correct. Hydrophobic interactions pack nonpolar side chains into the core, leaving polar and charged ones on the water-facing surface.",
+          "Folding sorts side chains by chemistry, not evenly; nonpolar ones gather inside.",
+          "Only cysteines form disulfide bridges; leucine and valine have no sulfur."
+        ]
+      }
+    }
+  ]
+}

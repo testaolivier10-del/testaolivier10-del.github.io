@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" width="680" height="400" role="img" aria-labelledby="t d">
+<title id="t">The fluid mosaic model of the plasma membrane</title>
+<desc id="d">A slice through a plasma membrane. Two layers of phospholipids face each other: water-loving heads on the outside and cytoplasm faces, water-avoiding tails in the middle. A transmembrane protein spans the whole bilayer. A glycoprotein, a protein with a branched carbohydrate chain, also spans it and faces outward. A receptor protein has a signaling molecule bound to its outer end. A peripheral protein sits on the cytoplasm side. Cholesterol molecules sit among the tails, and a glycolipid carries a carbohydrate chain on the outer face.</desc>
+<rect width="680" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="20" y="186" width="576" height="48" fill="#F8E3B8" opacity="0.45"/>
+<g stroke="#6B5E3C" stroke-width="2" fill="none"><path d="M27 159 v46 M33 159 v20 l4 8 v18"/><path d="M27 261 v-46 M33 261 v-46"/><path d="M49 159 v46 M55 159 v20 l4 8 v18"/><path d="M49 261 v-46 M55 261 v-46"/><path d="M71 159 v46 M77 159 v20 l4 8 v18"/><path d="M71 261 v-46 M77 261 v-46"/><path d="M93 159 v46 M99 159 v20 l4 8 v18"/><path d="M93 261 v-46 M99 261 v-46"/><path d="M115 159 v46 M121 159 v20 l4 8 v18"/><path d="M115 261 v-46 M121 261 v-46"/><path d="M137 159 v46 M143 159 v20 l4 8 v18"/><path d="M137 261 v-46 M143 261 v-46"/><path d="M159 159 v46 M165 159 v20 l4 8 v18"/><path d="M159 261 v-46 M165 261 v-46"/><path d="M181 159 v46 M187 159 v20 l4 8 v18"/><path d="M181 261 v-46 M187 261 v-46"/><path d="M291 159 v46 M297 159 v20 l4 8 v18"/><path d="M291 261 v-46 M297 261 v-46"/><path d="M313 159 v46 M319 159 v20 l4 8 v18"/><path d="M313 261 v-46 M319 261 v-46"/><path d="M401 159 v46 M407 159 v20 l4 8 v18"/><path d="M401 261 v-46 M407 261 v-46"/><path d="M423 159 v46 M429 159 v20 l4 8 v18"/><path d="M423 261 v-46 M429 261 v-46"/><path d="M445 159 v46 M451 159 v20 l4 8 v18"/><path d="M445 261 v-46 M451 261 v-46"/><path d="M533 159 v46 M539 159 v20 l4 8 v18"/><path d="M533 261 v-46 M539 261 v-46"/><path d="M555 159 v46 M561 159 v20 l4 8 v18"/><path d="M555 261 v-46 M561 261 v-46"/><path d="M577 159 v46 M583 159 v20 l4 8 v18"/><path d="M577 261 v-46 M583 261 v-46"/></g>
+<g fill="#56B4E9" stroke="#0072B2" stroke-width="1.5"><circle cx="30" cy="150" r="9"/><circle cx="30" cy="270" r="9"/><circle cx="52" cy="150" r="9"/><circle cx="52" cy="270" r="9"/><circle cx="74" cy="150" r="9"/><circle cx="74" cy="270" r="9"/><circle cx="96" cy="150" r="9"/><circle cx="96" cy="270" r="9"/><circle cx="118" cy="150" r="9"/><circle cx="118" cy="270" r="9"/><circle cx="140" cy="150" r="9"/><circle cx="140" cy="270" r="9"/><circle cx="162" cy="150" r="9"/><circle cx="162" cy="270" r="9"/><circle cx="184" cy="150" r="9"/><circle cx="184" cy="270" r="9"/><circle cx="294" cy="150" r="9"/><circle cx="294" cy="270" r="9"/><circle cx="316" cy="150" r="9"/><circle cx="316" cy="270" r="9"/><circle cx="404" cy="150" r="9"/><circle cx="404" cy="270" r="9"/><circle cx="426" cy="150" r="9"/><circle cx="426" cy="270" r="9"/><circle cx="448" cy="150" r="9"/><circle cx="448" cy="270" r="9"/><circle cx="536" cy="150" r="9"/><circle cx="536" cy="270" r="9"/><circle cx="558" cy="150" r="9"/><circle cx="558" cy="270" r="9"/><circle cx="580" cy="150" r="9"/><circle cx="580" cy="270" r="9"/></g>
+<rect x="52" y="166" width="8" height="34" rx="3" fill="#CC79A7"/>
+<rect x="140" y="166" width="8" height="34" rx="3" fill="#CC79A7"/>
+<rect x="536" y="166" width="8" height="34" rx="3" fill="#CC79A7"/>
+<path d="M210 135 q30 -20 60 0 v150 q-30 20 -60 0 z" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+<path d="M335 132 q25 -18 50 0 v156 q-25 18 -50 0 z" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+<g stroke="#E69F00" stroke-width="3" fill="none"><path d="M360 124 v-30 m0 10 l-14 -14 m14 4 l14 -14 m-14 -6 l-8 -12"/></g>
+<g fill="#E69F00"><circle cx="360" cy="94" r="5"/><circle cx="346" cy="90" r="5"/><circle cx="374" cy="90" r="5"/><circle cx="352" cy="76" r="5"/></g>
+<path d="M475 130 h40 v160 h-40 z" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+<path d="M482 130 l13 -18 l13 18" fill="#ffffff" stroke="#009E73" stroke-width="3"/>
+<circle cx="495" cy="110" r="10" fill="#D55E00"/>
+<ellipse cx="540" cy="296" rx="36" ry="16" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="3"/>
+<g stroke="#E69F00" stroke-width="3" fill="none"><path d="M118 141 v-34 m0 12 l-12 -12 m12 0 l12 -12"/></g>
+<g fill="#E69F00"><circle cx="118" cy="107" r="5"/><circle cx="106" cy="95" r="5"/><circle cx="130" cy="95" r="5"/></g>
+<text x="20" y="30" font-size="15" font-style="italic">Outside the cell (watery)</text>
+<text x="20" y="362" font-size="15" font-style="italic">Cytoplasm (watery)</text>
+<text x="118" y="62" font-size="15" text-anchor="middle">glycolipid</text>
+<text x="240" y="62" font-size="15" text-anchor="middle">transmembrane</text>
+<text x="240" y="80" font-size="15" text-anchor="middle">protein</text>
+<text x="360" y="52" font-size="15" text-anchor="middle">glycoprotein</text>
+<text x="495" y="62" font-size="15" text-anchor="middle">signaling molecule</text>
+<text x="495" y="80" font-size="15" text-anchor="middle">on a receptor</text>
+<text x="540" y="333" font-size="15" text-anchor="middle">peripheral protein</text>
+<text x="150" y="330" font-size="15" text-anchor="middle">cholesterol</text>
+<line x1="240" y1="86" x2="240" y2="126" stroke="#1F2A28" stroke-width="1.2"/>
+<line x1="150" y1="316" x2="144" y2="202" stroke="#1F2A28" stroke-width="1.2"/>
+<line x1="495" y1="86" x2="495" y2="98" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="606" y="155" font-size="14">heads</text><text x="606" y="275" font-size="14">heads</text>
+<text x="606" y="215" font-size="14">tails</text>
+
+</g></svg>

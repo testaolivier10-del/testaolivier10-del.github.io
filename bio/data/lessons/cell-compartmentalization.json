@@ -1,0 +1,54 @@
+{
+  "topic": "cell-compartmentalization",
+  "hook": "<p>Inside each of your liver cells sit hundreds of tiny sacs of acid, about a hundred times more acidic than the fluid around them, filled with enzymes that can take apart almost anything a cell is made of. The cell survives because each sac is sealed off by a membrane. Dividing one cell into many separate rooms is what lets it run incompatible chemistry all at once.</p>",
+  "prereq": [
+    {
+      "q": "What does a lysosome do?",
+      "options": ["It breaks down worn-out cell parts and material taken into the cell, using enzymes.", "It makes proteins for export from the cell.", "It holds the cell's DNA.", "It makes ATP from food molecules."],
+      "correct": 0,
+      "why": "Lysosomes are membrane sacs of digestive enzymes that break down large molecules, old organelles and material brought in by endocytosis.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "What happens to a cube's surface area-to-volume ratio as the cube gets larger?",
+      "options": ["It gets smaller, because volume grows faster than surface area.", "It gets larger, because surface area grows faster than volume.", "It stays the same at every size.", "It depends only on the cube's material."],
+      "correct": 0,
+      "why": "Doubling the side multiplies surface area by 4 but volume by 8, so the ratio falls as cells grow.",
+      "review": "cell-size"
+    }
+  ],
+  "figure": { "figure": "cell-compartments", "caption": "A eukaryotic cell (left) is divided by membranes into compartments with different contents and conditions, such as an acidic lysosome inside a neutral cytosol. A prokaryotic cell (right) has no membrane-bound organelles, but its DNA still gathers in one region, the nucleoid." },
+  "chain": [
+    { "cause": "Membranes are barriers to ions and most polar molecules, and transport proteins in each membrane control what crosses it.", "effect": "Each organelle can hold its own mix of molecules: its own enzymes, its own concentrations, its own pH." },
+    { "cause": "Proton pumps in the lysosome membrane keep its inside at about pH 5, while the cytosol stays near pH 7.2.", "effect": "Lysosomal enzymes work well inside the lysosome but poorly if they leak out, so the rest of the cell is protected." },
+    { "cause": "Opposing processes, such as building fatty acids and breaking them down, sit in different compartments.", "effect": "They do not undo each other, and the cell can run and control each one separately." },
+    { "cause": "Packing reactants into a small compartment keeps them at high concentration.", "effect": "Reactions run faster than they would if the same molecules were spread through the whole cell." },
+    { "cause": "Some internal membranes are folded or stacked, like the cristae of mitochondria and the thylakoids of chloroplasts.", "effect": "Far more membrane area, and so more membrane proteins, fits in a small space." },
+    { "cause": "Prokaryotes have no membrane-bound organelles.", "effect": "They still organize their insides: DNA gathers in the nucleoid, and some have internal membrane folds or protein-walled compartments." }
+  ],
+  "ideas": [
+    "<b>Compartmentalization</b> means internal membranes divide a eukaryotic cell into organelles, each with its own contents and conditions.",
+    "Three payoffs: <b>separate conditions</b> (acid lysosome, neutral cytosol), <b>separate processes</b> that would undo each other, and <b>concentrated reactants</b> in small spaces.",
+    "<b>Folded membranes</b> (cristae, thylakoids, ER) add area. More area means more room for membrane proteins that do the work.",
+    "Prokaryotes lack membrane-bound organelles but are not unorganized: their DNA sits in a <b>nucleoid</b>, a region with no membrane around it."
+  ],
+  "misconception": {
+    "wrong": "Prokaryotic cells have no internal organization: everything floats around randomly in one open space.",
+    "right": "They lack membrane-bound organelles, but their DNA gathers in the nucleoid, and some species have internal membrane folds or protein shells that set aside space for particular jobs."
+  },
+  "check": [
+    "bio-cell-compartmentalization-1",
+    "bio-cell-compartmentalization-2",
+    "bio-cell-compartmentalization-3",
+    "bio-cell-compartmentalization-4",
+    "bio-cell-compartmentalization-5",
+    "bio-cell-compartmentalization-12",
+    "bio-cell-compartmentalization-13"
+  ],
+  "summary": "<p>Internal membranes divide a eukaryotic cell into compartments. Because membranes and their transport proteins control what crosses, each compartment keeps its own contents and conditions: lysosomes stay at about pH 5 inside a cytosol at about 7.2, opposing processes run apart, and reactants stay concentrated. Folded membranes such as cristae and thylakoids pack extra area for membrane proteins. Prokaryotes have no membrane-bound organelles, but their DNA is concentrated in a nucleoid and some have other specialized regions.</p>",
+  "connections": [
+    { "href": "../notes/cell-structure-function.html", "label": "Notes: Cell Structure and Function (the organelles)" },
+    { "href": "../notes/cell-size.html", "label": "Notes: Cell Size (surface area and volume)" },
+    { "href": "../notes/transport-mechanisms.html", "label": "Notes: Mechanisms of Transport (pumps that set conditions)" }
+  ]
+}

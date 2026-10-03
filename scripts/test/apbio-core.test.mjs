@@ -116,15 +116,18 @@ test('lazy bank: the index, then only the units a set needs, then explanations',
   for (const f of [join(out, 'bio', 'assets', 'bio-curriculum.js'), 'bio/assets/bio-core.js']) vm.runInContext(readFileSync(f, 'utf8'), sandbox, { filename: f });
   const Core = window.ApBioCore;
   const stubs = await Core.loadIndex('');
-  assert.equal(stubs.length, 15);
-  const s = stubs.find(x => x.id === 'bio-water-hydrogen-bonding-2');
-  assert.deepEqual({ unit: s.unit, practice: s.practice, type: s.type, stimulus: s.stimulus }, { unit: 'unit-1', practice: '5.A', type: 'numeric', stimulus: 'water-hydrogen-bonding-s1' });
-  assert.equal(stubs.filter(x => x.stimulus).length, 8, 'two sets of four');
+  // Content-agnostic: the Unit 1 bank is authored content, so read the expected values from it.
+  const src = JSON.parse(readFileSync('bio/data/questions/water-hydrogen-bonding.json', 'utf8'));
+  const want = src.items.find(x => x.type === 'numeric' && x.stimulus && src.stimuli[x.stimulus].table);
+  assert.ok(stubs.length >= src.items.length);
+  const s = stubs.find(x => x.id === want.id);
+  assert.deepEqual({ unit: s.unit, practice: s.practice, type: s.type, stimulus: s.stimulus }, { unit: 'unit-1', practice: want.practice, type: 'numeric', stimulus: want.stimulus });
+  assert.ok(stubs.filter(x => x.stimulus).length >= 4, 'stimulus sets in the index');
   const qs = await Core.loadQuestions('', [s]);
-  assert.equal(qs[0].numeric.answer, 11.3);
+  assert.equal(qs[0].numeric.answer, want.numeric.answer);
   assert.ok(qs[0].stim && /<table/.test(qs[0].stim.html), 'stimulus attached');
   assert.ok(!qs[0].why, 'no explanation yet');
   await Core.loadWhy('', qs[0]);
-  assert.match(qs[0].why.correct, /2,260/);
+  assert.equal(qs[0].why.correct, want.why.correct);
   assert.deepEqual(fetched, ['assets/bank/index.json', 'assets/bank/unit-1.json', 'assets/bank/unit-1-why.json']);
 });

@@ -1,0 +1,1272 @@
+{
+ "about": "Experimental design and argumentation drills. PLACEHOLDER content (status \"placeholder\") until a biology teacher reviews it (docs/apbio-needs-author.md, design-drills-review). Each scenario requires the unit whose biology it uses (\"requires\"); the generator serves a scenario only when that unit is published, and each drill only when its topic (drills[].topic) is. Validator: scripts/lib/apbio-tool-checks/design-drills.mjs.",
+ "slug": "design-drills",
+ "kind": "drill",
+ "topic": "design-variables",
+ "status": "placeholder",
+ "intro": "<p>Practice the points free-response graders most often see missed: naming the variables, choosing a control and saying what it rules out, writing a null hypothesis, telling claim from evidence from reasoning, and predicting a result with the mechanism behind it. Each part is checked on its own.</p>",
+ "howItWorks": "<ul><li><b>Independent variable:</b> what the investigator changes on purpose. <b>Dependent variable:</b> what is measured in response. <b>Controlled variables:</b> everything kept the same.</li><li><b>A negative control</b> is a group in which the effect being measured should not happen (no enzyme, no light, no sugar). It shows the baseline, so the effect can be credited to the factor being tested. Saying what a control <b>rules out</b> earns its own point.</li><li><b>Null hypothesis:</b> the independent variable has no effect, so there is no difference in the dependent variable among the groups.</li><li><b>Claim</b> answers the question. <b>Evidence</b> is data. <b>Reasoning</b> is the biology that explains why the evidence supports the claim.</li><li><b>Prediction</b> says what will happen; the <b>mechanism</b> says why, in biological terms. Each is scored separately.</li></ul>",
+ "partTopics": {
+  "iv": "design-variables",
+  "dv": "design-variables",
+  "control": "design-controls",
+  "control-why": "design-controls",
+  "null": "design-null-hypothesis",
+  "cer": "design-cer",
+  "predict": "design-prediction-mechanism",
+  "mechanism": "design-prediction-mechanism"
+ },
+ "drills": [
+  {
+   "id": "variables",
+   "name": "Variables",
+   "topic": "design-variables"
+  },
+  {
+   "id": "controls",
+   "name": "Controls and what they rule out",
+   "topic": "design-controls"
+  },
+  {
+   "id": "null",
+   "name": "Null hypothesis",
+   "topic": "design-null-hypothesis"
+  },
+  {
+   "id": "cer",
+   "name": "Claim, evidence and reasoning",
+   "topic": "design-cer"
+  },
+  {
+   "id": "predict",
+   "name": "Prediction and mechanism",
+   "topic": "design-prediction-mechanism"
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "catalase-temperature",
+   "title": "Catalase and temperature",
+   "requires": [
+    "unit-3"
+   ],
+   "setup": "<p>Students add 1 mL of potato extract, which contains the enzyme catalase, to 10 mL of 3% hydrogen peroxide in a sealed flask held in a water bath at 10, 20, 30, 40 or 50 °C. Catalase breaks hydrogen peroxide into water and oxygen. They measure the volume of oxygen gas collected in 1 minute, with three flasks at each temperature.</p>",
+   "variables": {
+    "options": [
+     "Temperature of the water bath",
+     "Volume of oxygen collected in 1 minute",
+     "Volume and concentration of hydrogen peroxide",
+     "Amount of potato extract added",
+     "Time allowed for each reading"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose the five temperatures: temperature is what they changed on purpose.",
+     "dv": "The oxygen volume is what they measured to see the effect of temperature."
+    }
+   },
+   "control": {
+    "q": "Which added flask would be the best negative control?",
+    "options": [
+     "A flask at each temperature with boiled potato extract and hydrogen peroxide",
+     "A flask with potato extract and hydrogen peroxide at room temperature",
+     "A flask with twice as much potato extract at 30 °C, to check the enzyme is not limiting",
+     "A flask with potato extract and hydrogen peroxide held at 60 °C"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: boiling destroys catalase, so this flask shows how much oxygen forms without working enzyme at each temperature.",
+     "Room temperature is just one more temperature level, not a control.",
+     "This changes a second variable (the amount of enzyme), so it is a different experiment, not a control.",
+     "A higher temperature extends the range tested; it does not show what happens without the enzyme."
+    ]
+   },
+   "controlWhy": {
+    "q": "What does the boiled-extract flask rule out?",
+    "options": [
+     "That the oxygen comes from hydrogen peroxide breaking down on its own, not from the enzyme",
+     "That the potato extract contained too little catalase to measure",
+     "That the students read the gas volume wrongly",
+     "That temperature, rather than anything else in the flask, is what changes the rate of the reaction"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: hydrogen peroxide slowly breaks down on its own, faster when warm; the boiled-extract flask measures that, so the rest can be credited to catalase.",
+     "The boiled flask has no working catalase at all, so it says nothing about how much the fresh extract held.",
+     "A control does not check measuring skill; repeated trials and careful technique do that.",
+     "That is the question being tested, not something the control rules out."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the volume of oxygen collected in 1 minute",
+       "in the temperature of the water baths",
+       "in the amount of catalase in the extract"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the oxygen volume is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among flasks kept at different temperatures",
+       "between the extract and the hydrogen peroxide",
+       "after the enzyme is denatured"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in temperature, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "Within the temperatures tested, catalase works fastest at 40 °C.",
+     "tag": "claim",
+     "why": "This is the claim: the answer to the question the experiment asked."
+    },
+    {
+     "text": "The mean oxygen volume rose from 2.1 mL at 10 °C to 6.9 mL at 40 °C, then fell to 4.2 mL at 50 °C.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data."
+    },
+    {
+     "text": "The ±2 SE error bars at 40 °C and 50 °C do not overlap.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports what the data show about the difference."
+    },
+    {
+     "text": "Warmer molecules collide more often, which speeds the reaction, but above about 40 °C the enzyme begins to denature and its active site loses its shape.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it uses biology to explain why the evidence supports the claim."
+    }
+   ],
+   "predict": {
+    "q": "The students repeat the 40 °C flasks with half the volume of potato extract. Predict the rate of oxygen production compared with the original 40 °C flasks.",
+    "options": [
+     "Lower",
+     "Higher",
+     "About the same"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: with plenty of hydrogen peroxide, the rate depends on how much enzyme there is.",
+     "Less enzyme cannot make the reaction faster.",
+     "With hydrogen peroxide in excess, the amount of enzyme limits the rate, so halving it lowers the rate."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "Fewer enzyme molecules means fewer active sites, so fewer substrate molecules are converted each minute",
+     "Less extract raises the activation energy of the reaction, so fewer collisions have enough energy to react",
+     "With less extract, each catalase molecule denatures faster",
+     "Less extract leaves less hydrogen peroxide to react"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: the rate is set by how many active sites are working at once.",
+     "An enzyme lowers activation energy; having fewer enzyme molecules does not change the energy barrier each one provides.",
+     "How fast a catalase molecule denatures depends on temperature, not on how many other molecules are present.",
+     "The hydrogen peroxide is added separately; the extract supplies the enzyme, not the substrate."
+    ]
+   }
+  },
+  {
+   "id": "yeast-sugars",
+   "title": "Yeast and sugars",
+   "requires": [
+    "unit-3"
+   ],
+   "setup": "<p>Students mix yeast with 10 mL of a 5% solution of glucose, sucrose or lactose, or with water only, in sealed tubes at 30 °C. They measure the volume of carbon dioxide collected in 20 minutes, with four tubes for each solution.</p>",
+   "variables": {
+    "options": [
+     "Type of sugar in the solution",
+     "Volume of carbon dioxide collected in 20 minutes",
+     "Temperature of the tubes",
+     "Amount of yeast in each tube",
+     "Concentration of the sugar solution"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose which sugar went in each tube: the type of sugar is what they changed.",
+     "dv": "The carbon dioxide volume is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which tubes serve as the negative control?",
+    "options": [
+     "Yeast with water and no sugar",
+     "Yeast with glucose, the sugar yeast use best",
+     "Yeast with a 10% glucose solution",
+     "Yeast with glucose kept at 20 °C"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: these tubes have everything except the sugar, so they show what happens without the factor being tested.",
+     "Glucose is one of the treatments, not a control, even if it gives the most gas.",
+     "This changes the concentration, a second variable, instead of removing the sugar.",
+     "This changes the temperature, a second variable, instead of removing the sugar."
+    ]
+   },
+   "controlWhy": {
+    "q": "What do the water-only tubes rule out?",
+    "options": [
+     "That the gas measured comes from the yeast’s own stored food rather than from the added sugar",
+     "That the yeast cannot use lactose, because it is a sugar they have no enzyme to break down",
+     "That the temperature changed during the experiment",
+     "That glucose is the best sugar for yeast"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: yeast cells hold some stored food; the water tubes measure the gas made from it, so only gas above that baseline is credited to the added sugar.",
+     "That is one of the results being tested, not something the control rules out.",
+     "Temperature is kept constant by the water bath; the water-only tubes do not check it.",
+     "That is a result to compare among the sugars, not what the control rules out."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the volume of carbon dioxide produced in 20 minutes",
+       "in the amount of yeast in each tube",
+       "in the temperature of the tubes"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the carbon dioxide volume is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among yeast given different sugars",
+       "between yeast and water",
+       "after 20 minutes"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in the type of sugar, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "These yeast can use glucose and sucrose for fermentation, but not lactose.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "Tubes with glucose or sucrose produced over 7 mL of carbon dioxide, while tubes with lactose produced 0.6 mL, close to the 0.3 mL from water alone.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data and compares them."
+    },
+    {
+     "text": "Yeast release carbon dioxide when they break down sugar by fermentation, so a sugar they cannot take in and break down produces almost no gas.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it links the gas volumes to how fermentation works."
+    },
+    {
+     "text": "Using lactose would need an enzyme that splits it into simple sugars, which these yeast appear to lack.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it gives the biological reason lactose is not used."
+    }
+   ],
+   "predict": {
+    "q": "Students add a drug that blocks one enzyme of glycolysis to tubes of yeast with glucose. Predict the carbon dioxide produced compared with glucose tubes without the drug.",
+    "options": [
+     "Less carbon dioxide",
+     "More carbon dioxide",
+     "About the same amount"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: blocking glycolysis cuts off the supply of pyruvate that fermentation turns into carbon dioxide.",
+     "Blocking an enzyme the pathway needs cannot make the pathway run faster.",
+     "Glycolysis comes before the step that releases carbon dioxide, so blocking it must reduce the gas."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "Fermentation depends on glycolysis to split glucose into pyruvate, which yeast then convert to ethanol and carbon dioxide",
+     "The drug supplies oxygen to the cells, so the yeast switch to aerobic respiration and stop releasing carbon dioxide altogether",
+     "The drug breaks down the glucose before the yeast can take it in",
+     "With glycolysis blocked, the yeast switch to using lactose instead"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: no glycolysis means no pyruvate, and no pyruvate means no carbon dioxide from fermentation.",
+     "The drug blocks an enzyme; it does not supply oxygen. Aerobic respiration also releases carbon dioxide.",
+     "The drug blocks an enzyme inside the cell; it does not destroy glucose outside it.",
+     "There is no lactose in these tubes, and these yeast cannot use lactose anyway."
+    ]
+   }
+  },
+  {
+   "id": "potato-osmosis",
+   "title": "Potato cores in sucrose",
+   "requires": [
+    "unit-2"
+   ],
+   "setup": "<p>Students cut potato cores, weigh them, and place three cores in each of six sucrose solutions from 0.0 to 1.0 M at room temperature. After 24 hours they blot the cores dry, reweigh them and calculate the percent change in mass.</p>",
+   "variables": {
+    "options": [
+     "Concentration of the sucrose solution",
+     "Percent change in mass of the cores",
+     "Size of the potato cores",
+     "Time left in the solution",
+     "Temperature of the room"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose the six concentrations: concentration is what they changed.",
+     "dv": "The percent change in mass is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which practice best controls variables other than the sucrose concentration?",
+    "options": [
+     "Cut all the cores from the same potato with the same borer, and trim them to the same length",
+     "Use a different potato for each concentration, so that each group of cores is independent of the others",
+     "Weigh the cores only after they have soaked",
+     "Leave the cores in the stronger solutions for longer"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: cores from one potato, of one size, differ only in the solution they sit in.",
+     "Potatoes differ in water potential, so using a different one for each concentration adds a second variable that changes with the first.",
+     "Without a starting mass there is no change to calculate.",
+     "Unequal times add a second variable: the time in solution would change along with the concentration."
+    ]
+   },
+   "controlWhy": {
+    "q": "What does cutting every core from the same potato rule out?",
+    "options": [
+     "That differences between potatoes, such as their starting water potential, cause the differences in mass change",
+     "That sucrose enters the potato cells",
+     "That the cores lose a lot of water by evaporation during the time they are out of the solution being blotted and weighed",
+     "That the potato cells were alive"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: with one potato, the tissue’s starting water potential is the same in every group.",
+     "Using one potato does nothing to stop sucrose crossing membranes.",
+     "Evaporation is limited by weighing quickly, not by the choice of potato.",
+     "Using one potato does not test whether the cells were alive."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the mean percent change in mass",
+       "in the starting mass of the cores",
+       "in the size of the cores"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the percent change in mass is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among cores in different sucrose concentrations",
+       "between the two halves of the potato",
+       "before and after weighing"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in sucrose concentration, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "The potato tissue has about the same water potential as a 0.3 M sucrose solution.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "The cores gained 6.1% of their mass in 0.2 M sucrose and lost 4.9% in 0.4 M sucrose.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data on either side of zero change."
+    },
+    {
+     "text": "Water moves from higher to lower water potential, so there is no net movement where the solution’s water potential equals the tissue’s.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains why the zero point tells you the tissue’s water potential."
+    },
+    {
+     "text": "A sucrose solution’s water potential becomes more negative as its concentration rises.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it is the principle that links concentration to water potential."
+    }
+   ],
+   "predict": {
+    "q": "The students repeat the experiment with 0.6 M NaCl in place of 0.6 M sucrose. Predict the change in mass compared with cores in 0.6 M sucrose.",
+    "options": [
+     "The cores lose more mass",
+     "The cores lose less mass",
+     "The mass change is the same"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: 0.6 M NaCl has a more negative water potential than 0.6 M sucrose.",
+     "NaCl makes the solution’s water potential lower, not higher, than the same molarity of sucrose.",
+     "Equal molarity does not mean equal solute potential when one solute splits into ions."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "NaCl splits into two ions, so 0.6 M NaCl has a more negative solute potential, and more water leaves the cells",
+     "NaCl molecules are smaller, so they pull water out through the membrane faster",
+     "NaCl ions enter the cells through open channels and draw water in after them, so the cores end up taking up extra water",
+     "Salt kills the cells, so their walls collapse"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: ψs = −iCRT with i = 2 for NaCl, so the gradient driving water out is steeper.",
+     "Particle size does not set the solute potential; the number of particles does.",
+     "If salt entered the cells it would draw water in, but the cores lose mass in a strong salt solution.",
+     "Mass loss comes from water leaving down a water potential gradient, not from collapsing walls."
+    ]
+   }
+  },
+  {
+   "id": "leaf-disks",
+   "title": "Leaf disks and light",
+   "requires": [
+    "unit-3"
+   ],
+   "setup": "<p>Students use a syringe to pull the air out of spinach leaf disks so that they sink in a sodium bicarbonate solution, a source of dissolved carbon dioxide. They place cups of 10 disks at 10, 20, 40 or 80 cm from a lamp and record the time for half of the disks to float. Oxygen made by photosynthesis collects in the disks and makes them rise.</p>",
+   "variables": {
+    "options": [
+     "Distance from the lamp (light intensity)",
+     "Time for half of the disks to float",
+     "Concentration of sodium bicarbonate",
+     "Number of disks per cup",
+     "Temperature of the solution"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose the distances, which set how bright the light is: that is what they changed.",
+     "dv": "The time for half the disks to float is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which added cup would be the best negative control?",
+    "options": [
+     "Disks in sodium bicarbonate solution kept in the dark",
+     "Disks in sodium bicarbonate solution 5 cm from the lamp",
+     "Twice as many disks 20 cm from the lamp",
+     "Disks that still have air in them, under the lamp"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: with no light there is no photosynthesis, so this cup shows what happens without the factor being tested.",
+     "This adds another light level; it does not show what happens without light.",
+     "This changes the number of disks, a second variable.",
+     "Disks with air float from the start, so they cannot show anything about photosynthesis."
+    ]
+   },
+   "controlWhy": {
+    "q": "What does the cup kept in the dark rule out?",
+    "options": [
+     "That the disks rise for a reason other than photosynthesis, such as air left in them after the syringe step",
+     "That light intensity affects photosynthesis",
+     "That spinach leaves contain enough chlorophyll to absorb the light from the lamp at every distance tested here",
+     "That sodium bicarbonate supplies carbon dioxide"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: if dark disks float too, something other than photosynthesis is lifting them.",
+     "That is the question being tested, not something the control rules out.",
+     "The dark cup does not test for chlorophyll.",
+     "All cups contain bicarbonate, so this control does not test its role."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the time for half of the disks to float",
+       "in the number of disks per cup",
+       "in the amount of sodium bicarbonate"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the time to float is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among cups at different distances from the lamp",
+       "between spinach and other leaves",
+       "after the disks float"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in distance from the lamp, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "Brighter light makes spinach leaf disks photosynthesize faster.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "Half of the disks floated after 9 minutes at 10 cm from the lamp but after 24 minutes at 80 cm.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data."
+    },
+    {
+     "text": "In the light reactions, light energy drives the splitting of water, which releases oxygen, so more light makes oxygen collect in the disks sooner.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains why faster floating means faster photosynthesis."
+    },
+    {
+     "text": "Disks kept in the dark did not float within 30 minutes.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the control’s result."
+    }
+   ],
+   "predict": {
+    "q": "The students repeat the 10 cm cup using water with no sodium bicarbonate. Predict the time for half of the disks to float.",
+    "options": [
+     "It takes longer, or they never float",
+     "It takes less time",
+     "It takes about the same time as before"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: without dissolved carbon dioxide, photosynthesis soon slows to a crawl.",
+     "Removing a reactant of photosynthesis cannot make it faster.",
+     "Carbon dioxide is needed for the Calvin cycle, which keeps the light reactions running."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "Without carbon dioxide the Calvin cycle stops, so NADP⁺ is not regenerated and the light reactions, which release oxygen, slow down",
+     "Sodium bicarbonate supplies the oxygen that makes the disks float",
+     "Without bicarbonate in the water, the chlorophyll in the disks cannot absorb the lamp’s light, so no light energy is captured at all",
+     "Bicarbonate keeps the leaf cells from bursting"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: the light reactions need NADP⁺ from the Calvin cycle, and the Calvin cycle needs carbon dioxide.",
+     "The oxygen released in photosynthesis comes from splitting water, not from bicarbonate.",
+     "Chlorophyll absorbs light whether or not carbon dioxide is present.",
+     "Bicarbonate is a carbon dioxide source here, not a protection against bursting."
+    ]
+   }
+  },
+  {
+   "id": "agar-cubes",
+   "title": "Agar cubes and cell size",
+   "requires": [
+    "unit-2"
+   ],
+   "setup": "<p>Students cut cubes with 1, 2 and 3 cm sides from agar containing an indicator that is pink until acid reaches it. They soak the cubes in dilute acid for 10 minutes, cut them in half, measure how far the acid reached and work out the percent of each cube’s volume it reached.</p>",
+   "variables": {
+    "options": [
+     "Side length of the cube",
+     "Percent of the cube’s volume reached by acid",
+     "Concentration of the acid",
+     "Time in the acid",
+     "Amount of indicator in the agar"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose the three sizes: cube size is what they changed.",
+     "dv": "The percent of the volume reached is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which variable is most important to keep the same for every cube?",
+    "options": [
+     "The time each cube spends in the acid",
+     "The size of the cubes",
+     "The percent of each cube reached by the acid",
+     "The color of the cubes after soaking"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: time is a controlled variable that would change the result if it varied.",
+     "Size is the independent variable; it must differ between cubes.",
+     "That is the dependent variable, the result being measured.",
+     "The color is how the result is read, not a condition to control."
+    ]
+   },
+   "controlWhy": {
+    "q": "Why must every cube spend the same time in the acid?",
+    "options": [
+     "Diffusion distance depends on time, so unequal times would change results for a reason other than cube size",
+     "Longer soaking would soften the agar and change each cube’s surface area, so the sizes would no longer match the plan",
+     "Acid only diffuses for the first 10 minutes",
+     "So that the cubes all end up the same color"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: equal times make cube size the only difference between the groups.",
+     "Soaking does not change the cubes’ dimensions.",
+     "Diffusion continues as long as there is a concentration gradient.",
+     "The cubes are expected to end up different; that is the result."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the percent of the volume reached by acid",
+       "in the time in the acid",
+       "in the concentration of the acid"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the percent of volume reached is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among cubes of different sizes",
+       "between the acid and the indicator",
+       "after the cubes are cut"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in cube size, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "Acid reaches a larger share of a small cube’s volume than of a large cube’s in the same time.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "In 10 minutes the acid reached 94% of each 1 cm cube but only 49% of each 3 cm cube.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data."
+    },
+    {
+     "text": "Smaller cubes have more surface area for each unit of volume, so diffusion from the surface reaches a larger share of the inside.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains the result with surface area to volume ratio."
+    },
+    {
+     "text": "This is why cells stay small: a small cell can exchange materials fast enough to supply its whole volume.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it connects the result to a larger biological idea."
+    }
+   ],
+   "predict": {
+    "q": "A block with the same volume as a 3 cm cube is cut as a thin flat slab instead. Predict the percent of its volume the acid reaches in 10 minutes, compared with the 3 cm cube.",
+    "options": [
+     "A larger percent",
+     "A smaller percent",
+     "About the same percent"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: the slab is thin, so acid reaches far more of it.",
+     "Flattening the block brings every point closer to a surface, so the percent goes up, not down.",
+     "Same volume does not mean same surface area: the slab has much more."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "The slab has a larger surface area-to-volume ratio: every point inside is close to a surface",
+     "The slab has a smaller volume than the cube",
+     "Acid diffuses faster through thin pieces of agar than through thick ones, because there is less agar in the way",
+     "The slab holds less indicator, so it changes color sooner"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: shape changes the surface area-to-volume ratio even when the volume stays the same.",
+     "The slab was cut to the same volume as the cube.",
+     "Acid moves through agar at the same speed whatever the shape; what changes is the distance to the center.",
+     "The indicator is spread evenly through the agar, so the amount per unit of volume is the same."
+    ]
+   }
+  },
+  {
+   "id": "beet-membranes",
+   "title": "Beet root and ethanol",
+   "requires": [
+    "unit-2"
+   ],
+   "setup": "<p>Beet root cells keep a red pigment inside their central vacuole. Students place equal pieces of beet root in 0%, 10%, 20%, 30% and 40% ethanol for 15 minutes, then measure how red each solution has become with a colorimeter (higher absorbance means more pigment).</p>",
+   "variables": {
+    "options": [
+     "Ethanol concentration",
+     "Absorbance (redness) of the solution",
+     "Size of the beet pieces",
+     "Time in the solution",
+     "Temperature of the solutions"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose the five ethanol concentrations: that is what they changed.",
+     "dv": "The absorbance of the solution is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which tube is the control that the others are compared with?",
+    "options": [
+     "Beet pieces in 0% ethanol (water)",
+     "Beet pieces in 40% ethanol",
+     "Beet pieces left on the bench in air",
+     "A larger beet piece in 20% ethanol"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: water shows how much pigment leaks with no ethanol at all.",
+     "40% ethanol is one of the treatments.",
+     "Pieces in air give no solution to measure, so they cannot be compared.",
+     "This changes the size of the piece, a second variable."
+    ]
+   },
+   "controlWhy": {
+    "q": "What does the 0% ethanol tube rule out?",
+    "options": [
+     "That the extra pigment comes from cutting damage rather than from the ethanol",
+     "That ethanol dissolves the red pigment itself and carries it out of the beet pieces into the surrounding solution",
+     "That the beet pieces were of different sizes",
+     "That the colorimeter works"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: cutting the beet breaks some cells; the water tube measures that leak, so only pigment above it is blamed on ethanol.",
+     "Whether ethanol dissolves pigment is not tested by a tube without ethanol.",
+     "Equal sizes come from careful cutting, not from this tube.",
+     "The colorimeter is checked with a blank, not with beet in water."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the absorbance of the solutions",
+       "in the size of the beet pieces",
+       "in the time in the solutions"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the absorbance is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among pieces kept in different ethanol concentrations",
+       "between red and white beets",
+       "before and after cutting"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in ethanol concentration, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "Ethanol damages the membranes of beet cells.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "Absorbance stayed below 0.10 up to 10% ethanol but rose to 0.85 at 40% ethanol.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data."
+    },
+    {
+     "text": "Ethanol dissolves into the phospholipid bilayer and disrupts it, so the membranes around the vacuole and the cell leak what they normally hold in.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains how ethanol could cause the leak."
+    },
+    {
+     "text": "The pigment is a large, charged molecule that cannot cross an intact membrane.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains why pigment in the solution means damaged membranes."
+    }
+   ],
+   "predict": {
+    "q": "The students heat beet pieces in water to 70 °C instead of using ethanol. Predict the absorbance compared with pieces in water at room temperature.",
+    "options": [
+     "Higher",
+     "Lower",
+     "About the same"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: heat also damages membranes, so more pigment leaks out.",
+     "Heating cannot make the membranes hold pigment better than at room temperature.",
+     "At 70 °C membranes and their proteins are damaged, so the result changes."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "High temperature makes the bilayer too fluid and denatures membrane proteins, so the membranes leak pigment",
+     "Heat makes the pigment molecules small enough to pass through intact membranes",
+     "Heat makes the cells take in water by osmosis until they swell up and burst, spilling all of their pigment",
+     "Heat dissolves the cell walls, which hold the pigment"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: heat disrupts both parts of the membrane, the lipids and the proteins.",
+     "Heat does not shrink molecules.",
+     "Water uptake depends on water potential, not on temperature alone, and plant cell walls stop cells bursting.",
+     "The pigment is held in the vacuole by membranes; the wall is outside the cell membrane."
+    ]
+   }
+  },
+  {
+   "id": "amylase-ph",
+   "title": "Amylase and pH",
+   "requires": [
+    "unit-3"
+   ],
+   "setup": "<p>Students mix salivary amylase with starch in buffers of pH 4, 5, 6, 7, 8 and 9 at 37 °C. Every 30 seconds they put a drop of each mixture on iodine solution, which turns blue-black while starch is present, and record the time until the drop stays brown because no starch is left.</p>",
+   "variables": {
+    "options": [
+     "pH of the buffer",
+     "Time until no starch is left",
+     "Temperature of the mixtures",
+     "Volume of amylase added",
+     "Starting concentration of starch"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose the six pH values: pH is what they changed.",
+     "dv": "The time until the starch is gone is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which tube would be the best negative control?",
+    "options": [
+     "Starch and buffer with water in place of amylase",
+     "Amylase and starch at pH 7",
+     "Amylase and starch at 20 °C",
+     "Twice as much starch, with the usual amount of amylase, at pH 7"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: with no enzyme, this tube shows what happens to starch without the factor that breaks it down.",
+     "pH 7 is one of the treatments.",
+     "This changes the temperature, a second variable.",
+     "This changes the amount of substrate, a second variable."
+    ]
+   },
+   "controlWhy": {
+    "q": "What does the tube without amylase rule out?",
+    "options": [
+     "That starch breaks down by itself in the buffers, so any loss of starch can be credited to the enzyme",
+     "That amylase works best at pH 7",
+     "That temperature affects amylase",
+     "That the iodine solution is too weak to show the small amounts of starch still left near the end of each test"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: if starch vanished without amylase, the enzyme could not be credited.",
+     "That is a result of the experiment, not something the control rules out.",
+     "Temperature is held at 37 °C; this tube does not test it.",
+     "A tube with starch and iodine would show the iodine works, but that is not the job of a no-enzyme control."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the time for the starch to be broken down",
+       "in the amount of starch at the start",
+       "in the temperature of the mixtures"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the time for the starch to disappear is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "among mixtures at different pH values",
+       "between amylase and iodine",
+       "after the drop turns brown"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in pH, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "Amylase works fastest near pH 7.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "The starch was gone after 2 minutes at pH 7 but was still present after 10 minutes at pH 4 and pH 9.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data."
+    },
+    {
+     "text": "At pH 6 and pH 8 the starch took 4 minutes to disappear.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports more of the data."
+    },
+    {
+     "text": "pH changes the charges on amino acids in the active site, which changes its shape and how well it binds starch.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains why pH affects the enzyme."
+    }
+   ],
+   "predict": {
+    "q": "The students boil the amylase for 5 minutes, cool it to 37 °C and repeat the test at pH 7. Predict the time until no starch is left.",
+    "options": [
+     "Much longer, or the starch is never broken down",
+     "Shorter",
+     "About the same, because the amylase is cooled back to 37 °C first"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: boiled amylase has lost the shape it needs to work.",
+     "Boiling cannot make the enzyme faster.",
+     "Cooling does not undo the damage boiling does to amylase."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "Boiling denatures amylase: its active site loses its shape and does not regain it on cooling, so it cannot bind starch",
+     "Boiling breaks the starch into sugar before the test starts",
+     "Cooling the amylase back to 37 °C lets its chains fold back into their original shape, so it works as well as before",
+     "Boiling removes the water that amylase needs to work"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: denaturation by boiling is usually permanent for amylase.",
+     "Only the amylase was boiled, not the starch.",
+     "Most enzymes, amylase included, do not refold correctly after boiling.",
+     "The amylase is still in water; the loss of activity is a change of shape."
+    ]
+   }
+  },
+  {
+   "id": "water-oil",
+   "title": "Heating water and oil",
+   "requires": [
+    "unit-1"
+   ],
+   "setup": "<p>Students heat 100 g of water and 100 g of vegetable oil, each in an identical beaker on an identical hot plate at the same setting, for 5 minutes, and record the rise in temperature. They repeat the test three times.</p>",
+   "variables": {
+    "options": [
+     "Type of liquid (water or oil)",
+     "Rise in temperature after 5 minutes",
+     "Mass of liquid heated",
+     "Heating time",
+     "Hot plate setting"
+    ],
+    "iv": 0,
+    "dv": 1,
+    "why": {
+     "iv": "The students chose which liquid to heat: the type of liquid is what they changed.",
+     "dv": "The rise in temperature is what they measured."
+    }
+   },
+   "control": {
+    "q": "Which is most important to keep the same for both liquids?",
+    "options": [
+     "The mass of each liquid and the heat supplied (same time and setting)",
+     "The final temperature of each liquid",
+     "The type of liquid",
+     "The color of each liquid, since darker liquids absorb more heat from the plate"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: equal mass and equal heat make the type of liquid the only difference.",
+     "The final temperature is the result being measured.",
+     "The type of liquid is the independent variable; it must differ.",
+     "Color does not affect heating on a hot plate in this design."
+    ]
+   },
+   "controlWhy": {
+    "q": "Why must the two masses be equal?",
+    "options": [
+     "Heat needed for a given rise depends on the mass heated, so unequal masses would change results for another reason",
+     "Water and oil have different densities, so using equal masses means the two beakers hold equal volumes of liquid",
+     "Heavier liquids boil sooner",
+     "So that the two beakers are equally full"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: more mass needs more heat for the same rise, so the masses must match.",
+     "Different densities mean equal masses have different volumes, not equal ones.",
+     "Mass does not change a liquid’s boiling point.",
+     "Equal masses of water and oil have different volumes, so the beakers will not be equally full."
+    ]
+   },
+   "null": {
+    "slots": [
+     {
+      "label": "How the statement starts",
+      "options": [
+       "There is no difference",
+       "There is a difference",
+       "There is an increase"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: a null hypothesis says the independent variable has no effect, so it predicts no difference.",
+       "That is the alternative hypothesis, the claim the experiment looks for evidence of. The null says there is no difference.",
+       "A null hypothesis predicts no effect at all, not an effect in one direction."
+      ]
+     },
+     {
+      "label": "What is (not) different",
+      "options": [
+       "in the mean rise in temperature",
+       "in the mass of liquid heated",
+       "in the heating time"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the rise in temperature is the dependent variable, the thing the null hypothesis says will not differ.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about.",
+       "This was kept the same on purpose (a controlled variable), so it is not what the hypothesis is about."
+      ]
+     },
+     {
+      "label": "Among which groups",
+      "options": [
+       "between water and vegetable oil heated the same way",
+       "among the three repeats",
+       "after 5 minutes"
+      ],
+      "correct": 0,
+      "why": [
+       "Right: the groups differ only in the type of liquid, the independent variable.",
+       "This does not name the groups set up by the independent variable.",
+       "This does not name the groups set up by the independent variable."
+      ]
+     }
+    ]
+   },
+   "cer": [
+    {
+     "text": "Water needs more heat than oil to warm by the same amount.",
+     "tag": "claim",
+     "why": "This is the claim."
+    },
+    {
+     "text": "After 5 minutes the water had warmed by 12 °C and the oil by 25 °C.",
+     "tag": "evidence",
+     "why": "This is evidence: it reports the data."
+    },
+    {
+     "text": "Much of the heat added to water is used to break hydrogen bonds between water molecules before the molecules can move faster.",
+     "tag": "reasoning",
+     "why": "This is reasoning: it explains water’s high specific heat."
+    },
+    {
+     "text": "The ±2 SE error bars for the two liquids did not overlap.",
+     "tag": "evidence",
+     "why": "This is evidence: it shows the difference is unlikely to be due to chance."
+    }
+   ],
+   "predict": {
+    "q": "A lake and a sandy beach next to it are in full sun all day. Predict which warms more by the afternoon.",
+    "options": [
+     "The sand warms more",
+     "The lake warms more",
+     "They warm by the same amount"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: the same sunlight raises the temperature of sand much more than that of water.",
+     "Water’s high specific heat makes it warm slowly.",
+     "Sand and water have very different specific heats, so equal sunlight warms them by different amounts."
+    ]
+   },
+   "mechanism": {
+    "q": "Which mechanism explains your prediction?",
+    "options": [
+     "Water has a high specific heat because of hydrogen bonding, so the same energy warms it less than it warms sand",
+     "Water reflects all of the sunlight that reaches it",
+     "Solids always warm faster than liquids, because their particles are packed closer together and pass heat on",
+     "The lake loses its heat by boiling"
+    ],
+    "correct": 0,
+    "why": [
+     "Right: energy that breaks hydrogen bonds does not raise the water’s temperature.",
+     "Water absorbs most of the sunlight that reaches it.",
+     "This is not a rule: some solids warm more slowly than some liquids. What matters is specific heat.",
+     "A lake in the sun does not boil."
+    ]
+   }
+  }
+ ]
+}

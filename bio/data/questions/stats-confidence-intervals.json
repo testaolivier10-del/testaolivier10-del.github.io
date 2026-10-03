@@ -1,0 +1,485 @@
+{
+  "stimuli": {
+    "stats-confidence-intervals-s1": {
+      "kind": "graph",
+      "title": "Leakage from heated beet cubes",
+      "text": "<p>Beet cells hold a red, water-soluble substance behind selectively permeable membranes. Cubes were heated for 1 minute at four temperatures and then soaked for 20 minutes in water; the absorbance of the water measures how much red substance leaked. Bars show means; error bars show 95% confidence intervals (mean ± 2SE), n = 8 cubes per temperature.</p>",
+      "chart": {
+        "type": "bar",
+        "x": {
+          "label": "Heating temperature",
+          "categories": [
+            "20 °C",
+            "40 °C",
+            "60 °C",
+            "70 °C"
+          ]
+        },
+        "y": {
+          "label": "Absorbance",
+          "unit": "arbitrary units",
+          "min": 0,
+          "max": 0.8,
+          "step": 0.2
+        },
+        "series": [
+          {
+            "name": "Mean absorbance",
+            "points": [
+              [
+                "20 °C",
+                0.08,
+                0.03
+              ],
+              [
+                "40 °C",
+                0.1,
+                0.04
+              ],
+              [
+                "60 °C",
+                0.46,
+                0.06
+              ],
+              [
+                "70 °C",
+                0.62,
+                0.12
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "stats-confidence-intervals-s2": {
+      "kind": "table",
+      "title": "Membrane fluidity at three temperatures",
+      "text": "<p>Researchers measured how fast a labeled lipid moved sideways in artificial membranes (faster means more fluid) at three temperatures.</p>",
+      "table": {
+        "caption": "Sideways movement of a labeled lipid",
+        "cols": [
+          "Temperature (°C)",
+          "Number of membranes, n",
+          "Mean (µm²/s)",
+          "Standard deviation (µm²/s)"
+        ],
+        "rows": [
+          [
+            "15",
+            "9",
+            "1.8",
+            "0.30"
+          ],
+          [
+            "25",
+            "9",
+            "2.5",
+            "0.36"
+          ],
+          [
+            "35",
+            "4",
+            "3.0",
+            "0.60"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-confidence-intervals-1",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-confidence-intervals-s1",
+      "q": "Select ALL pairs of temperatures whose means are likely different, based on the error bars.",
+      "options": [
+        "20 °C and 40 °C",
+        "40 °C and 60 °C",
+        "60 °C and 70 °C",
+        "20 °C and 70 °C"
+      ],
+      "correct": [
+        1,
+        3
+      ],
+      "why": {
+        "correct": "Intervals: 20 °C, 0.05-0.11; 40 °C, 0.06-0.14; 60 °C, 0.40-0.52; 70 °C, 0.50-0.74. Bars that do not overlap (40 vs 60, 20 vs 70) point to real differences.",
+        "options": [
+          "Overlap (0.06-0.11 is shared), so the data do not show a difference.",
+          "No overlap: 40 °C tops out at 0.14; 60 °C starts at 0.40.",
+          "Overlap: 60 °C reaches 0.52 and 70 °C starts at 0.50, so the data do not show a difference.",
+          "No overlap: 0.11 versus 0.50."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-2",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-confidence-intervals-s1",
+      "q": "The 70 °C mean is 0.16 higher than the 60 °C mean. Which conclusion is best supported?",
+      "options": [
+        "The data do not show a difference between 60 °C and 70 °C, because the error bars overlap; a larger sample might reveal one.",
+        "Heating to 70 °C caused more leakage than 60 °C, because the 70 °C mean is higher by 0.16 absorbance units.",
+        "Heating to 70 °C caused the same leakage as 60 °C, because overlapping error bars prove the means are equal.",
+        "No conclusion is possible about any of the temperatures, because the 70 °C error bar is the widest of the four bars on the graph."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The 60 °C interval (0.40-0.52) and the 70 °C interval (0.50-0.74) overlap, so the difference is not clearly larger than chance variation. Overlap means \"not shown\", not \"shown to be equal\".",
+        "options": [
+          "Correct: overlap means fail to reject the null hypothesis for this pair.",
+          "A higher mean is not enough when the intervals overlap.",
+          "Overlap does not prove equality; it means the data cannot distinguish the means.",
+          "A wide bar affects comparisons with that group, not every comparison on the graph."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-3",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-confidence-intervals-s1",
+      "q": "The 70 °C error bar is ± 0.12 and represents ± 2SE. With n = 8, what is the standard deviation of the 70 °C absorbances? Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.17,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "2SE = 0.12, so SE = 0.06. SE = s ÷ √n, so s = SE × √n = 0.06 × √8 = 0.06 × 2.83 = 0.17."
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-4",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-confidence-intervals-s1",
+      "q": "Which explanation best accounts for the large increase in leakage between 40 °C and 60 °C?",
+      "options": [
+        "Above about 40 °C, heat disrupts the bilayer and denatures membrane proteins, so the membrane stops being a selective barrier.",
+        "Above 40 °C, the red substance becomes small and nonpolar, so it passes through an intact bilayer by simple diffusion.",
+        "Above 40 °C, aquaporins open wider and let the red substance pass through them along with the water molecules.",
+        "Above 40 °C, the cell walls dissolve, and the cell wall is the structure that keeps the red substance in the cell."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Selective permeability depends on an intact bilayer and properly folded proteins. Heat loosens the hydrophobic core and unfolds proteins, so large water-soluble molecules leak out.",
+        "options": [
+          "Correct: a damaged barrier loses selectivity.",
+          "Heating does not change the substance's polarity in this way; the change is in the membrane.",
+          "Aquaporins are selective for water; they do not pass large solutes even when the cell is warm.",
+          "The cell wall is porous and gives support; the membrane is the barrier to dissolved molecules."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-5",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-confidence-intervals-s1",
+      "q": "Why is the 70 °C error bar wider than the 20 °C error bar?",
+      "options": [
+        "The 70 °C cubes varied more from one another, so the standard error of their mean is larger.",
+        "More cubes were tested at 70 °C, and testing more cubes tends to make an error bar wider.",
+        "The 70 °C mean is larger, and a larger mean comes with a proportionally wider error bar.",
+        "Error bars get wider as temperature rises, whatever the data, because heat adds uncertainty."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With the same n = 8, the width of a ±2SE bar depends on the standard deviation. Cubes heated to 70 °C were damaged to differing degrees, so their values spread more.",
+        "options": [
+          "Correct.",
+          "Every group had n = 8, and more data make the bar narrower, not wider.",
+          "Bar width depends on spread and n, not on the size of the mean.",
+          "Bar width comes from the data's spread, not from the temperature itself."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-confidence-intervals-s2",
+      "q": "Calculate the standard error of the mean at 25 °C, in µm²/s, to two decimal places.",
+      "numeric": {
+        "answer": 0.12,
+        "tol": 0.005,
+        "unit": "µm²/s",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "SE = s ÷ √n = 0.36 ÷ √9 = 0.36 ÷ 3 = 0.12 µm²/s."
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-7",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-confidence-intervals-s2",
+      "q": "Calculate the upper limit of the 95% confidence interval (x̄ + 2SE) for the 15 °C mean, in µm²/s, to one decimal place.",
+      "numeric": {
+        "answer": 2,
+        "tol": 0.05,
+        "unit": "µm²/s",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "SE = 0.30 ÷ √9 = 0.10. Upper limit = 1.8 + 2 × 0.10 = 2.0 µm²/s (the interval is 1.6 to 2.0)."
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-confidence-intervals-s2",
+      "q": "Using 95% confidence intervals (x̄ ± 2SE), which comparison shows a likely real difference?",
+      "options": [
+        "15 °C and 25 °C: the intervals 1.6-2.0 and 2.26-2.74 do not overlap.",
+        "25 °C and 35 °C: the 35 °C mean is 0.5 higher than the 25 °C mean.",
+        "Both comparisons, because fluidity rises steadily from each temperature to the next.",
+        "Neither comparison, because the 35 °C group has fewer membranes than the other groups."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "15 °C: 1.8 ± 0.20 = 1.6-2.0. 25 °C: 2.5 ± 0.24 = 2.26-2.74. 35 °C: SE = 0.60 ÷ √4 = 0.30, so 3.0 ± 0.60 = 2.4-3.6, which overlaps 25 °C.",
+        "options": [
+          "Correct: no overlap between 15 and 25 °C.",
+          "The 35 °C interval (2.4-3.6) overlaps the 25 °C interval, so this difference is not shown.",
+          "A rising trend in means is not enough; the 25-35 °C intervals overlap.",
+          "A small n widens the 35 °C interval, but it does not affect the 15-25 °C comparison."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-9",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "3.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-confidence-intervals-s2",
+      "q": "The researchers suspect fluidity really is higher at 35 °C than at 25 °C. What change to the experiment would best test this?",
+      "options": [
+        "Test more membranes at 35 °C, which shrinks its standard error and narrows its confidence interval.",
+        "Report the standard deviation instead of the confidence interval, because it does not depend on n.",
+        "Remove the lowest 35 °C value so the mean rises and the interval moves away from the 25 °C one.",
+        "Raise the temperature to 45 °C, so that the difference from 25 °C becomes large enough to see clearly."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With n = 4, SE = 0.30. With n = 16 and a similar SD, SE = 0.60 ÷ 4 = 0.15, halving the interval; a real difference could then show as non-overlapping bars.",
+        "options": [
+          "Correct: a larger n gives a narrower interval.",
+          "Switching what the bars show does not make a comparison of means more reliable.",
+          "Deleting inconvenient data is not a valid fix.",
+          "A 45 °C test answers a different question; it does not test 25 versus 35 °C."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-10",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "For the exam, how is an approximate 95% confidence interval for a mean calculated?",
+      "options": [
+        "Mean ± 2 standard errors",
+        "Mean ± 2 standard deviations",
+        "Mean ± 1 standard error",
+        "Mean ± the range ÷ 2"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The 95% confidence interval is about x̄ ± 2SE, where SE = s ÷ √n.",
+        "options": [
+          "Correct.",
+          "x̄ ± 2s describes where about 95% of individual values fall, not where the true mean lies.",
+          "± 1 SE gives a much narrower interval (about 68%).",
+          "The range is not used for confidence intervals."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-11",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A graph shows two bars with error bars that do not overlap, but the caption does not say what the error bars represent. What is the best response?",
+      "options": [
+        "Ask what the bars show, because non-overlapping SD or SE bars mean something different from non-overlapping 95% CI bars.",
+        "Conclude the means differ, because non-overlapping error bars of any kind show a real difference.",
+        "Conclude the means do not differ, because error bars that are not labeled are usually standard deviations.",
+        "Ignore the error bars and compare just the heights of the two bars, which is what the means are."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The overlap rule applies to 95% confidence interval bars. SE bars are half as long, so non-overlapping SE bars are weaker evidence. A graph must say what its error bars show.",
+        "options": [
+          "Correct.",
+          "The rule depends on what the bars are; ±1 SE bars can fail to overlap even when the CIs overlap.",
+          "There is no such convention, and the conclusion does not follow.",
+          "Ignoring uncertainty throws away the information needed to judge the difference."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-12",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In an experiment on how a substance affects leakage from beet cells, the 95% CI error bars of the treated and untreated groups do not overlap. Which conclusion is worded best?",
+      "options": [
+        "The difference is statistically significant, so we reject the null hypothesis that the substance has no effect on leakage.",
+        "The substance has been proved to cause leakage, so the alternative hypothesis is now known to be true for beet cells in general.",
+        "The difference is due to chance, because the two groups were made of different beet cubes.",
+        "The null hypothesis is accepted, because the error bars show where the true means lie."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Non-overlapping 95% CI bars indicate a difference unlikely to arise by chance, so the null hypothesis is rejected. That supports, but does not prove, an effect.",
+        "options": [
+          "Correct.",
+          "Data support hypotheses; they never prove them.",
+          "Different cubes in each group is normal; the error bars account for chance differences between cubes.",
+          "Non-overlap leads to rejecting the null, and a null is never accepted."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-13",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Sixteen beet cubes gave a mean absorbance of 0.40 with a standard deviation of 0.08. Calculate the lower limit of the 95% confidence interval (x̄ − 2SE), to two decimal places.",
+      "numeric": {
+        "answer": 0.36,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "SE = 0.08 ÷ √16 = 0.02. Lower limit = 0.40 − 2 × 0.02 = 0.36."
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-14",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Group P: mean 5.0, 95% CI 4.6-5.4. Group Q: mean 5.5, 95% CI 5.3-5.7. A student says, \"The bars overlap, so the treatment had no effect.\" What is the best evaluation?",
+      "options": [
+        "Too strong: overlap means the data do not show a difference, not that there is none; overlapping 95% CIs can still hide a real one.",
+        "Correct: overlapping 95% confidence intervals prove that the two population means are equal.",
+        "Incorrect: Q's interval is narrower, so Q's data are more reliable, and its higher mean therefore shows a clear effect of the treatment.",
+        "Incorrect: the means differ by 0.5, which is larger than the width of Q's interval, so they differ."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Overlap of 95% CIs means the data are not enough to show a difference at that level of confidence. Slight overlap is common even when a formal test would find a difference, which is why \"no effect\" overstates it.",
+        "options": [
+          "Correct: \"not shown\" is not \"shown not\".",
+          "Confidence intervals never prove means are equal.",
+          "A narrower interval does not make a higher mean significant on its own.",
+          "The comparison is overlap between intervals, not the gap against one interval's width."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-15",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which change makes a 95% confidence interval narrower?",
+      "options": [
+        "Measuring more individuals",
+        "Measuring fewer individuals",
+        "Reporting ± 2 SD instead of ± 2 SE",
+        "Rounding the mean to fewer decimal places"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "CI half-width ≈ 2 × s ÷ √n, so a larger n shrinks it.",
+        "options": [
+          "Correct.",
+          "A smaller n makes the interval wider.",
+          "± 2 SD is wider than ± 2 SE whenever n > 1.",
+          "Rounding changes how the number is written, not the uncertainty."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-confidence-intervals-16",
+      "type": "order",
+      "unit": "skills-stats",
+      "topic": "stats-confidence-intervals",
+      "practice": "5.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the steps for comparing two group means with 95% confidence intervals in order.",
+      "options": [
+        "Calculate the mean and standard deviation of each group.",
+        "Calculate each group's standard error, SE = s ÷ √n.",
+        "Calculate each interval as mean ± 2SE.",
+        "Check whether the two intervals overlap.",
+        "Decide whether to reject the null hypothesis of no difference."
+      ],
+      "why": {
+        "correct": "Mean and SD, then SE, then the interval, then the overlap check, then the decision about the null."
+      }
+    }
+  ]
+}

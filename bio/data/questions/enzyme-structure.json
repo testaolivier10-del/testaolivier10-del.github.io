@@ -1,0 +1,725 @@
+{
+  "stimuli": {
+    "enzyme-structure-s1": {
+      "kind": "table",
+      "title": "Swapping one amino acid in enzyme E",
+      "text": "<p>Enzyme E breaks down substrate S. The end of S that enters the active site carries a negative charge. Substrate T has the same shape and size as S, but that end is uncharged. In the original enzyme, position 102 is lysine, whose side chain is positively charged and lines the active site. Position 100 is glycine, which has the smallest side chain (a single hydrogen atom) and also lines the active site. Position 245 is on the outer surface, far from the active site.</p><p>Researchers made five versions of E, each with one amino acid swapped, and measured product formed at 30 °C and pH 7 with the same amount of enzyme and substrate in every trial. Values are means of 4 trials.</p>",
+      "table": {
+        "caption": "Product formed by original and variant versions of enzyme E (µmol per minute per mg of enzyme)",
+        "cols": [
+          "Version",
+          "Swap",
+          "Side chain added",
+          "With substrate S (charged end)",
+          "With substrate T (uncharged end)"
+        ],
+        "rows": [
+          [
+            "Original",
+            "none",
+            "—",
+            "48.0",
+            "2.1"
+          ],
+          [
+            "Variant 1",
+            "lysine 102 → arginine",
+            "positively charged",
+            "44.5",
+            "2.0"
+          ],
+          [
+            "Variant 2",
+            "lysine 102 → glutamate",
+            "negatively charged",
+            "0.6",
+            "1.8"
+          ],
+          [
+            "Variant 3",
+            "lysine 102 → alanine",
+            "small, nonpolar",
+            "3.9",
+            "2.4"
+          ],
+          [
+            "Variant 4",
+            "serine 245 → alanine",
+            "small, nonpolar",
+            "47.2",
+            "2.2"
+          ],
+          [
+            "Variant 5",
+            "glycine 100 → tryptophan",
+            "very large, nonpolar",
+            "1.1",
+            "0.4"
+          ]
+        ]
+      }
+    },
+    "enzyme-structure-s2": {
+      "kind": "setup",
+      "title": "Does enzyme H change shape?",
+      "text": "<p>Enzyme H is built from two lobes with the active site in the cleft between them. H joins sugar G to a second molecule. Researchers used a method that measures the distance between two points, one on each lobe, while different molecules were added. Water is present in every sample and is small enough to enter the cleft.</p>",
+      "table": {
+        "caption": "Gap between the two lobes of enzyme H (mean of 6 measurements)",
+        "cols": [
+          "Molecule added",
+          "Description",
+          "Gap between lobes (nm)",
+          "Product made?"
+        ],
+        "rows": [
+          [
+            "None (water only)",
+            "—",
+            "2.6",
+            "no"
+          ],
+          [
+            "Sugar G",
+            "the substrate",
+            "0.9",
+            "yes"
+          ],
+          [
+            "Molecule L",
+            "same size as G; one –OH group of G replaced by –H",
+            "2.3",
+            "no"
+          ],
+          [
+            "Molecule M",
+            "about twice the size of G",
+            "2.6",
+            "no"
+          ]
+        ]
+      }
+    },
+    "enzyme-structure-s3": {
+      "kind": "table",
+      "title": "Which sugars does the enzyme break?",
+      "text": "<p>A purified enzyme from a gut bacterium was tested with three disaccharides, each made of two sugar units: lactose (galactose + glucose), maltose (glucose + glucose) and sucrose (glucose + fructose). Each tube held 20 mM of one disaccharide at 30 °C and pH 7. After 10 minutes the glucose in each tube was measured. Breaking one lactose or one sucrose releases one glucose; breaking one maltose releases two.</p>",
+      "table": {
+        "caption": "Glucose in each tube after 10 minutes",
+        "cols": [
+          "Tube",
+          "Contents",
+          "Glucose (mM)"
+        ],
+        "rows": [
+          [
+            "1",
+            "lactose + enzyme",
+            "11.6"
+          ],
+          [
+            "2",
+            "maltose + enzyme",
+            "0.2"
+          ],
+          [
+            "3",
+            "sucrose + enzyme",
+            "0.1"
+          ],
+          [
+            "4",
+            "lactose + enzyme that was boiled for 10 minutes first",
+            "0.1"
+          ],
+          [
+            "5",
+            "lactose, no enzyme",
+            "0.1"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-enzyme-structure-1",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s1",
+      "q": "Which statement best describes the data for variants 1, 2 and 3 with substrate S?",
+      "options": [
+        "A positive-for-positive swap changed little, but losing or reversing the charge at 102 cut output with S by over 90%.",
+        "Any change at position 102 cut product formation with S by more than 90%, whatever side chain replaced lysine.",
+        "Replacing lysine 102 lowered product formation with S and with T by about the same proportion in each of the three variants.",
+        "Product formation with S fell in proportion to how much larger the new side chain was than lysine's side chain."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Arginine (positive) kept 44.5 of 48.0, about 93%. Glutamate (negative) gave 0.6 and alanine (no charge) gave 3.9, both below 10% of the original. The charge at 102, not just its presence, matters.",
+        "options": [
+          "This matches the table: the positive-for-positive swap kept most of the output, while losing (alanine) or reversing (glutamate) the charge dropped it below a tenth.",
+          "Variant 1 kept about 93% of the original output, so a change at 102 did not always cut it sharply; it depended on the new side chain's charge.",
+          "With T the three variants stayed near the original (1.8-2.4 against 2.1), while with S two of them collapsed, so the effects were not proportional.",
+          "Alanine is smaller than lysine and arginine is larger, yet alanine cut output far more; size of the side chain does not explain the pattern."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-2",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-structure-s1",
+      "q": "With substrate S, variant 3 forms product at what percentage of the original enzyme's value? Round to one decimal place.",
+      "numeric": {
+        "answer": 8.1,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Percentage of original = (variant ÷ original) × 100 = (3.9 ÷ 48.0) × 100 = 8.125, which rounds to 8.1%."
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-3",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-structure-s1",
+      "q": "Variant 2 makes almost no product from S but makes product from T at nearly the original level. Which reasoning best explains this?",
+      "options": [
+        "The negative side chain at 102 repels the negative end of S; T's uncharged end did not rely on an attraction at 102.",
+        "Glutamate's side chain is larger than lysine's, so it blocks S from entering the active site but leaves room for the slightly smaller T.",
+        "Swapping position 102 unfolded the whole enzyme, and T is able to bind to an unfolded protein while S is not.",
+        "T is the enzyme's true substrate, so a change in the active site affects S, which is acted on by accident."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Like charges repel. Lysine's positive side chain attracts S's negative end; glutamate's negative side chain pushes it away. T has no charge at that end, so it neither gained from lysine nor suffers from glutamate.",
+        "options": [
+          "Charge explains both results: reversing the charge turns attraction into repulsion for S, while uncharged T is unaffected either way.",
+          "The stem says S and T have the same shape and size, so a size-based block would affect both equally.",
+          "An unfolded enzyme would lose its active site for both substrates; T's near-normal output shows the enzyme is still folded.",
+          "The original enzyme forms 48.0 units from S and only 2.1 from T, so S, not T, is the substrate the active site matches best."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-4",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s1",
+      "q": "Which conclusion about variant 5 is best supported by the data?",
+      "options": [
+        "The large side chain at 100 reshapes the pocket, so neither substrate fits well, whatever its charge.",
+        "The tryptophan side chain adds a negative charge that repels both substrates, as glutamate did in variant 2.",
+        "Position 100 lies far from the active site, so the drop is more likely to come from a change in the amount of enzyme added to each trial.",
+        "Tryptophan makes the enzyme hold substrate more tightly, so the products stay bound and are not released."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Variant 5 cut output with both S (to 1.1) and T (to 0.4). A charge effect would spare uncharged T, as variant 2 showed; a change that hurts both points to shape: a bulky side chain filling the pocket.",
+        "options": [
+          "Both substrates are affected, which fits a shape change in the pocket rather than a charge change, which spared T in variant 2.",
+          "The table lists tryptophan's side chain as nonpolar, not charged, and a charge effect would not have hurt uncharged T.",
+          "The stem says position 100 lines the active site, and every trial used the same amount of enzyme.",
+          "The data show product formation only; nothing measures binding strength, and a pocket filled by a large side chain is the simpler explanation."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-5",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s1",
+      "q": "What does variant 4 contribute to the study?",
+      "options": [
+        "It shows a swap far from the active site barely changed output, tying the large drops in other variants to the active site.",
+        "It shows that serine is required for the enzyme to fold, since output with S fell by more than half when serine was removed.",
+        "It serves as the negative control for the whole study, because it contains no working enzyme and measures the product formed without catalysis.",
+        "It shows that the enzyme's output depends on the substrate's charge, since S and T gave very different results in this variant."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Variant 4 changed a surface amino acid and kept 47.2 of 48.0. That shows the swapping process itself does not wreck the enzyme, which strengthens the case that the active-site swaps cause the drops.",
+        "options": [
+          "A swap far from the active site barely changed output, which helps tie the big effects of the other swaps to the active site.",
+          "Output fell from 48.0 to 47.2, under 2%, so removing serine 245 had almost no effect.",
+          "Variant 4 is an enzyme with one changed amino acid; a no-enzyme tube would be the negative control, and none is shown.",
+          "The S-versus-T difference is the same in the original enzyme, so variant 4 adds nothing new about substrate charge."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-6",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s2",
+      "q": "Which model of substrate binding do the data best support?",
+      "options": [
+        "Induced fit: the lobes close around the substrate when it binds, so the enzyme's shape changes during binding.",
+        "Lock and key: the active site has a fixed shape, and the substrate fits it without the enzyme moving.",
+        "The substrate changes shape to fit the enzyme, while the enzyme's lobes stay where they were.",
+        "The enzyme changes shape in the same way whenever any molecule that is small enough to enter the cleft is present."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The gap shrinks from 2.6 nm to 0.9 nm only when G binds. The enzyme itself changes shape as the substrate binds: induced fit.",
+        "options": [
+          "The lobes move closer by 1.7 nm when G binds, the enzyme shape change that defines induced fit.",
+          "A rigid lock would keep the gap the same with or without G; the gap clearly changes.",
+          "The measurement is between two points on the enzyme, so a change in that distance shows the enzyme moving.",
+          "Water is in every sample and is small enough to enter, yet the gap stays at 2.6 nm; molecule L also leaves it mostly open."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-7",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-structure-s2",
+      "q": "Molecule L is the same size as G but lacks one –OH group. The gap barely closes and no product forms. Which explanation is most consistent with these data?",
+      "options": [
+        "Without that –OH, a hydrogen bond to an active-site side chain is lost, so binding does not trigger the full shape change.",
+        "Molecule L is too large to enter the cleft, so it stays outside and the lobes remain open.",
+        "Molecule L binds the active site more tightly than sugar G does, and this tight binding locks the two lobes in their open position.",
+        "Molecule L has a positive charge that repels the lobes and pushes them farther apart."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "An –OH group is polar and can hydrogen bond with a polar side chain. Replacing it with –H removes that contact. With less of the right attraction, the lobes do not close and the substrate's bonds are not held in place to react.",
+        "options": [
+          "Losing one polar contact is enough to stop the shape change, showing that both shape and chemical matching matter.",
+          "The table says L is the same size as G, so it can enter the cleft as G does.",
+          "Nothing in the data shows tighter binding; an open gap fits weak, partial binding better.",
+          "Swapping –OH for –H adds no charge, and the gap (2.3 nm) is smaller than with water alone, not larger."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-8",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s2",
+      "q": "A variant of enzyme H has its lobes stuck at a 0.9 nm gap before any substrate is added. What is the most likely effect on product formation, and why?",
+      "options": [
+        "It falls, because sugar G can no longer get into the closed cleft to reach the active site.",
+        "It rises, because the enzyme is already in the shape it takes when the substrate is bound.",
+        "It stays the same, because the gap matters after the product has been released, not during binding.",
+        "It rises, because water molecules can no longer enter the cleft and compete with G for space there."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Closing happens around the substrate. If the cleft is already closed, G cannot enter, so the enzyme-substrate complex cannot form and little product is made.",
+        "options": [
+          "The substrate must get in before the lobes close; a cleft that is already shut keeps it out.",
+          "Being in the bound shape is useless without the substrate inside; the closed lobes block entry.",
+          "In the data the gap changes when G binds, before product forms, so it matters for binding.",
+          "Water entering the open cleft did not stop the original enzyme from working, so keeping it out offers no gain."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-9",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s2",
+      "q": "A student claims the active site of enzyme H is a rigid mold that fits G exactly. Which observation in the table most directly contradicts the claim?",
+      "options": [
+        "The gap between the lobes shrinks from 2.6 nm to 0.9 nm when G is added.",
+        "Molecule M, about twice the size of G, makes no product.",
+        "Water is present in each of the samples but is not joined to anything.",
+        "Each gap in the table is the mean of six measurements rather than one."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A rigid mold would not move. The 1.7 nm change shows the enzyme's shape changes when G binds.",
+        "options": [
+          "This is direct evidence that the enzyme's shape changes on binding, which a rigid mold could not do.",
+          "A molecule too big to fit makes no product under either model, so this cannot tell them apart.",
+          "Water gives no product under either model; it says nothing about whether the enzyme moves.",
+          "Averaging repeated measurements makes the data more reliable but says nothing about rigidity."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-10",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s3",
+      "q": "Which conclusion is best supported by the data?",
+      "options": [
+        "It breaks lactose but not maltose or sucrose, though each of the three is a disaccharide containing glucose.",
+        "The enzyme breaks any disaccharide that contains glucose, but it works fastest on lactose.",
+        "The enzyme breaks maltose and sucrose at the same rate, and lactose at a slightly higher rate.",
+        "The enzyme still breaks lactose after it has been boiled, but at a lower rate than when it has not been boiled first."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Tube 1 reached 11.6 mM glucose. Tubes 2 and 3 stayed at 0.2 and 0.1 mM, the same as the no-enzyme tube (0.1), so maltose and sucrose were not broken.",
+        "options": [
+          "The maltose and sucrose tubes match the no-enzyme background, so only lactose was broken.",
+          "Maltose and sucrose both contain glucose, but their tubes show no more glucose than the background.",
+          "Maltose and sucrose show essentially nothing, while lactose released over 11 mM; the difference is not slight.",
+          "The boiled-enzyme tube (0.1 mM) matches the tube with no enzyme, so boiling stopped the breakdown."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-11",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s3",
+      "q": "Using tube 5 to correct for glucose that is present without the enzyme, what concentration of lactose (in mM) was broken down in tube 1 in 10 minutes? Give one decimal place.",
+      "numeric": {
+        "answer": 11.5,
+        "tol": 0.05,
+        "unit": "mM",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Glucose made by the enzyme = 11.6 − 0.1 = 11.5 mM. Each lactose broken releases one glucose, so 11.5 mM of lactose was broken down."
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-12",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-structure-s3",
+      "q": "Why did the researchers include tube 4?",
+      "options": [
+        "To show the folded enzyme is needed, so tube 1's glucose comes from the enzyme, not a heat-stable substance.",
+        "To show that lactose breaks down on its own when it is heated, so that heat alone could explain the glucose found in tube 1.",
+        "To measure how much glucose the enzyme sample contained before it was added to any of the sugars.",
+        "To show that the enzyme works faster at high temperature, since boiling speeds up the movement of molecules."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Boiling denatures the enzyme and destroys the active site's shape. If something else in the sample, unharmed by heat, were breaking lactose, tube 4 would still show glucose. It does not.",
+        "options": [
+          "Boiling unfolds the protein; the loss of glucose production ties the effect to the intact enzyme.",
+          "Only the enzyme was boiled, before it was added; the lactose was not heated, and tube 5 shows lactose alone makes no glucose.",
+          "Tube 4 contains lactose, so any glucose there could come from breakdown; it is not a measure of glucose in the enzyme sample alone.",
+          "The enzyme was boiled before the test, which denatures it; tube 4's result shows it stopped working."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-13",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-structure-s3",
+      "q": "Lactose and maltose are both disaccharides of almost the same size, and both contain glucose. Which reasoning best explains why the enzyme breaks only lactose?",
+      "options": [
+        "Galactose and glucose differ in how their –OH groups point, and the active site's side chains match lactose's pattern.",
+        "Maltose is too large to enter the active site, because two glucose units take up more space than galactose and glucose.",
+        "Maltose has a positive charge and lactose a negative charge, and the active site is lined with positive side chains.",
+        "The enzyme is used up after breaking the first disaccharide it meets, and in each tube lactose happened to reach the active site first."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Galactose and glucose have the same atoms but one –OH points a different way. The active site's polar side chains form hydrogen bonds with the –OH groups in the positions lactose has, so only lactose binds and is held in the right position to react.",
+        "options": [
+          "Specificity depends on fine details of shape and polar contacts, such as which way each –OH group points.",
+          "The stem says the two are almost the same size; glucose and galactose have the same number of atoms.",
+          "These sugars are uncharged; the matching here is about –OH positions and hydrogen bonding, not ionic charge.",
+          "Each tube held only one disaccharide, and enzymes come out of a reaction unchanged and act again."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-14",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which description fits an enzyme acting as a catalyst?",
+      "options": [
+        "It speeds up a reaction and comes out of the reaction with its structure unchanged.",
+        "It supplies the atoms that become part of the products of the reaction it speeds up.",
+        "It speeds up a reaction by being broken down into smaller pieces as the reaction runs.",
+        "It changes which products a reaction makes, so the reaction yields different molecules."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A catalyst speeds a reaction and is unchanged at the end, so one enzyme molecule can act on many substrate molecules.",
+        "options": [
+          "This is the definition of a catalyst: faster reaction, catalyst unchanged.",
+          "The products' atoms come from the substrate; the enzyme's atoms stay in the enzyme.",
+          "An enzyme that broke down as it worked could act only once; enzymes act again and again.",
+          "An enzyme speeds up a reaction that could happen anyway; the products are the same with or without it."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-15",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "An enzyme's active site is lined by a positively charged side chain at its base and a patch of nonpolar side chains along one wall. Which molecule is most likely to be its substrate?",
+      "options": [
+        "A molecule with a negatively charged group at one end and a nonpolar ring along one side",
+        "A molecule with a positively charged group at one end and a nonpolar ring along one side",
+        "A molecule with a negatively charged group at one end and several polar –OH groups along one side",
+        "A molecule with no charged groups and several polar –OH groups spread over its surface"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A negative group is attracted to the positive side chain, and a nonpolar ring clusters with the nonpolar wall. Both parts of the substrate match the active site.",
+        "options": [
+          "Both regions match: opposite charges attract and nonpolar groups cluster together.",
+          "A positive group would be repelled by the positive side chain at the base.",
+          "The charge matches, but polar –OH groups would sit against a nonpolar wall instead of a matching surface.",
+          "With no charged group, nothing in this molecule is attracted to the positive side chain, and its polar groups do not match the nonpolar wall."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-16",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "In an enzyme, amino acid 310 is far from the active site, but its side chain forms an ionic attraction that holds two folded parts of the protein together. Amino acid 310 is replaced with one that has no charge. What is the most likely result?",
+      "options": [
+        "Folding near the active site may shift, changing its shape and lowering how well the substrate binds.",
+        "Nothing changes, because amino acids that do not line the active site have no effect on whether the substrate binds.",
+        "The enzyme becomes able to bind many more kinds of substrate, because the active site is no longer held in place.",
+        "The substrate binds amino acid 310 instead of the active site, because the charge that blocked it is gone."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The active site's shape comes from the folding of the whole protein. Losing an attraction that holds two parts together can loosen the fold and distort the active site.",
+        "options": [
+          "Distant amino acids hold the overall shape, and the active site's shape depends on that overall shape.",
+          "The active site is formed by the whole folded chain; distant contacts that hold the fold can change it.",
+          "A distorted active site matches the substrate worse; it does not become a better match for other molecules.",
+          "Position 310 is far from the active site and not shaped to hold the substrate, so the substrate has no reason to bind there."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-17",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A human enzyme is kept at 70 °C for 10 minutes and then cooled to 37 °C. Its substrate is added, and almost no product forms. Which explanation is best?",
+      "options": [
+        "Heat broke weak bonds holding the protein's fold, and the active site did not regain its shape on cooling.",
+        "The heat broke the peptide bonds of the enzyme, leaving free amino acids that are unable to bind the substrate.",
+        "At 37 °C the molecules move too slowly for the substrate to reach an enzyme that was heated.",
+        "The heat used up the enzyme's stored energy, so it has no energy left to change the substrate into product."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "High heat denatures the protein: it breaks hydrogen bonds and other weak interactions that hold the fold. Here the shape did not come back on cooling, so the active site no longer fits the substrate.",
+        "options": [
+          "Denaturation unfolds the protein and wrecks the active site's shape; this enzyme did not refold.",
+          "Heating to 70 °C unfolds proteins but does not hydrolyze peptide bonds; the chain stays intact.",
+          "37 °C is the normal temperature for a human enzyme, so slow movement cannot be the reason.",
+          "Enzymes do not store energy that runs out; they work by holding the substrate in the active site."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-18",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Two different enzymes in the same cell both bind glucose, but each makes a different product from it. Which explanation is most consistent with how enzymes work?",
+      "options": [
+        "Each active site holds glucose in a different orientation, placing different bonds near its reactive side chains.",
+        "Glucose changes its own shape before it binds, so each enzyme receives a different form of the same sugar.",
+        "One of the two enzymes is a catalyst and the other is not, so just one of them changes glucose into a product.",
+        "The two enzymes have identical active sites, but they sit in different parts of the cell, which decides the product."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Specificity covers more than which molecule binds: it also covers how it is held. Different active sites position different parts of glucose next to their reactive side chains, so different bonds change.",
+        "options": [
+          "Different active sites grip the same substrate differently, so different bonds break or form.",
+          "Glucose has the same structure in solution near both enzymes; the difference lies in the enzymes.",
+          "Both make products from glucose, so both act as catalysts.",
+          "Identical active sites would hold glucose the same way and make the same product, wherever they were."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-19",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two statements that correctly describe an enzyme-substrate complex.",
+      "options": [
+        "The substrate is held in the active site by weak attractions such as hydrogen bonds and ionic attractions.",
+        "The active site may change shape slightly to grip the substrate more closely.",
+        "The substrate is joined to the enzyme by covalent bonds that become part of the product.",
+        "The complex lasts as long as the enzyme exists, so each enzyme acts on one substrate molecule.",
+        "The complex forms when any molecule of about the right size enters the active site."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Weak, reversible attractions hold the substrate (so it can leave as product), and induced fit tightens the grip.",
+        "options": [
+          "Weak attractions hold the substrate firmly enough to react, yet let the products go.",
+          "This is induced fit: binding shifts the active site's shape.",
+          "Products are released and the enzyme is unchanged, so the enzyme's atoms are not built into the product.",
+          "The complex is short-lived; after the products leave, the enzyme binds another substrate.",
+          "Size is not enough: the substrate must match the active site's shape and chemical character."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-20",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Some RNA molecules speed up reactions much as protein enzymes do. Which feature must such an RNA catalyst share with a protein enzyme?",
+      "options": [
+        "A folded 3-D shape with a binding pocket whose shape and chemistry match its substrate",
+        "A chain of amino acids whose side chains line a pocket where the substrate binds",
+        "Peptide bonds that join it to the substrate for as long as the reaction runs",
+        "A set of positively charged side chains that attract any negatively charged molecule nearby"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "What makes an enzyme work is a folded shape that forms a specific binding site. RNA can fold into such shapes using base pairing and other weak attractions.",
+        "options": [
+          "Specific 3-D shape and a matching binding site are what any biological catalyst needs.",
+          "RNA is made of nucleotides, not amino acids, so it has no amino acid side chains.",
+          "Neither kind of enzyme is bonded permanently to its substrate; the products are released.",
+          "Attracting any negative molecule would mean no specificity; real active sites match particular substrates."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-21",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "An enzyme from a deep-sea fish and the matching enzyme from a mouse catalyze the same reaction. The two proteins differ at 40 of their 330 amino acids, but none of the differences are in the active site. Which claim is most reasonable?",
+      "options": [
+        "Their active sites are probably very similar, while the other differences may change how stable the fold is.",
+        "The two enzymes are unlikely to catalyze the same reaction, because a protein's job depends on its whole sequence.",
+        "The fish enzyme probably binds a different substrate, since 40 changes are enough to change any active site.",
+        "The differences outside the active site have no effect on the enzyme, because those amino acids do not touch the substrate."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The same reaction implies the same substrate and a similar active site. Changes elsewhere can affect how firmly the protein holds its fold, for example in cold, high-pressure water, without changing what it binds.",
+        "options": [
+          "Conserved active sites explain the shared reaction; other changes can tune stability of the fold.",
+          "The stem says both catalyze the same reaction, and many different sequences can fold into similar active sites.",
+          "None of the 40 changes is in the active site, and the stem says both catalyze the same reaction.",
+          "Amino acids away from the active site help hold the fold, so they can affect stability even if they never touch the substrate."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-structure-22",
+      "type": "predict",
+      "unit": "unit-3",
+      "topic": "enzyme-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A drug molecule has nearly the same shape and charge pattern as an enzyme's substrate, so it binds the active site, but the enzyme cannot change it into product. The drug is added to a tube of enzyme and substrate. Predict the change in each variable.",
+      "variables": [
+        {
+          "name": "Number of active sites holding the substrate at any moment",
+          "answer": "down",
+          "why": "Some active sites are occupied by the drug, so fewer are free to hold the substrate at a given moment."
+        },
+        {
+          "name": "Product formed per minute",
+          "answer": "down",
+          "why": "Product forms only from substrate in an active site; with fewer sites holding substrate, less product forms each minute."
+        },
+        {
+          "name": "Total number of enzyme molecules in the tube",
+          "answer": "none",
+          "why": "The drug binds the enzymes but does not destroy them or add new ones, so the count is unchanged."
+        }
+      ],
+      "why": {
+        "correct": "A look-alike molecule takes up active sites without reacting, so fewer sites are free for the real substrate and product forms more slowly. The enzymes themselves are still there."
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "topic": "design-null-hypothesis",
+  "hook": "<p>Heat beet cubes and the water around them turns red. Heat them a little and it turns slightly pinker, or does it? Four cubes at 20 °C and four at 40 °C give means of 0.08 and 0.09. Is that a real effect or luck? Science answers with a careful double negative: assume no effect, then ask whether the data are too extreme for that to be believable.</p>",
+  "prereq": [
+    {
+      "q": "What keeps the red substance inside a healthy beet cell?",
+      "options": [
+        "A membrane: a phospholipid bilayer whose hydrophobic interior blocks water-soluble substances",
+        "The cell wall, which is waterproof and keeps all liquids in",
+        "Hydrogen bonds between the red substance and the cytoplasm"
+      ],
+      "correct": 0,
+      "why": "The plasma membrane's hydrophobic core keeps water-soluble molecules from crossing freely; damage to it lets them leak.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "In an if-then prediction, which variable goes after \"if\"?",
+      "options": [
+        "The independent variable",
+        "The dependent variable",
+        "A controlled variable"
+      ],
+      "correct": 0,
+      "why": "\"If [the independent variable changes this way], then [the dependent variable will respond this way].\"",
+      "review": "design-variables"
+    }
+  ],
+  "figure": {
+    "figure": "null-decision",
+    "caption": "State both hypotheses before collecting data. The decision is always about the null: reject it, or fail to reject it. Neither branch proves anything."
+  },
+  "chain": [
+    {
+      "cause": "Measurements vary by chance even when nothing is changed.",
+      "effect": "Two groups will almost never have exactly the same mean, so a difference alone proves nothing."
+    },
+    {
+      "cause": "You state the null hypothesis: temperature has no effect on leakage.",
+      "effect": "The null predicts that any difference between groups will be about as small as chance variation."
+    },
+    {
+      "cause": "You collect data and compare the gap between groups with the spread within groups.",
+      "effect": "At 20 vs 40 °C the gap (0.01) is smaller than the spread (0.06); at 20 vs 80 °C the groups do not even overlap."
+    },
+    {
+      "cause": "A gap far larger than chance variation is unlikely if the null were true.",
+      "effect": "You reject the null hypothesis, and the data support the alternative."
+    },
+    {
+      "cause": "A gap no bigger than chance variation is just what the null predicts.",
+      "effect": "You fail to reject the null: the data do not show an effect, though a small one could still exist."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> Question: does heating temperature affect leakage from beet? H₀: heating temperature has no effect on leakage. H₁: heating temperature affects leakage (directional: higher temperature increases leakage). 20 vs 80 °C: no overlap, reject H₀. 20 vs 40 °C: heavy overlap, fail to reject H₀.",
+    "The null hypothesis says <b>no effect, no difference, no relationship</b>. The alternative says there is one, with or without a direction.",
+    "The only two decisions are <b>reject</b> or <b>fail to reject</b> the null. Never write \"accept the null\" or \"prove the hypothesis\".",
+    "Failing to reject is not the same as showing there is no effect: a small effect, few repeats or noisy data can hide a real difference."
+  ],
+  "misconception": {
+    "wrong": "If an experiment fails to reject the null hypothesis, it has proved the independent variable has no effect.",
+    "right": "It shows only that this experiment did not detect an effect. A small effect, too few repeats or high variability could hide one. That is why the phrase is \"fail to reject\", not \"accept\"."
+  },
+  "check": [
+    "bio-design-null-hypothesis-1",
+    "bio-design-null-hypothesis-2",
+    "bio-design-null-hypothesis-3",
+    "bio-design-null-hypothesis-4",
+    "bio-design-null-hypothesis-6",
+    "bio-design-null-hypothesis-7",
+    "bio-design-null-hypothesis-9"
+  ],
+  "summary": "<p>A null hypothesis states that the independent variable has no effect; the alternative states that it does (optionally in a named direction). Because measurements vary by chance, you judge a difference against the variation within groups. A difference much larger than that variation leads you to reject the null; otherwise you fail to reject it. Data support or fail to support hypotheses; they never prove them, and a null is never accepted.</p>",
+  "connections": [
+    {
+      "href": "../tools/design-drills.html",
+      "label": "Tool: experimental design drills"
+    },
+    {
+      "href": "design-controls.html",
+      "label": "Skill: controls and what they rule out"
+    }
+  ]
+}

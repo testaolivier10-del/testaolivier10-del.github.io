@@ -1,0 +1,379 @@
+{
+  "stimuli": {
+    "facilitated-diffusion-s1": {
+      "kind": "graph",
+      "title": "Uptake of two substances by red blood cells",
+      "text": "<p>Researchers suspended equal numbers of red blood cells in solutions containing different starting concentrations of either glucose or substance X, a small molecule. Neither substance was present inside the cells at the start. They measured how fast each substance entered the cells during the first minute. Each point is the mean of four trials; the variation between trials was less than 5%.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Concentration outside the cells", "unit": "mM", "min": 0, "max": 20, "step": 5 },
+        "y": { "label": "Uptake rate", "unit": "nmol/min", "min": 0, "max": 16, "step": 4 },
+        "series": [
+          { "name": "Glucose", "points": [[0, 0], [2, 6.0], [4, 9.0], [6, 10.8], [8, 12.0], [10, 12.9], [15, 14.2], [20, 15.0]] },
+          { "name": "Substance X", "points": [[0, 0], [2, 1.0], [4, 2.0], [6, 3.0], [8, 4.0], [10, 5.0], [15, 7.5], [20, 10.0]] }
+        ]
+      }
+    },
+    "facilitated-diffusion-s2": {
+      "kind": "table",
+      "title": "Ion concentrations before and after a pump blocker",
+      "text": "<p>Ouabain is a plant toxin that binds the sodium-potassium pump and stops it. Researchers measured ion concentrations and the membrane potential of cultured animal cells, then added ouabain and measured again 60 minutes later. The concentrations outside the cells did not change measurably, because the dish held far more fluid than the cells.</p>",
+      "table": {
+        "caption": "Mean values for cultured animal cells (n = 6 dishes)",
+        "cols": ["Measurement", "Before ouabain", "60 min after ouabain"],
+        "rows": [
+          ["Na⁺ inside the cell (mM)", "12", "38"],
+          ["Na⁺ outside the cell (mM)", "145", "145"],
+          ["K⁺ inside the cell (mM)", "140", "112"],
+          ["K⁺ outside the cell (mM)", "4", "4"],
+          ["Membrane potential (mV, inside relative to outside)", "−70", "−52"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-facilitated-diffusion-1", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "4.B", "level": "analyze", "diff": 2, "stimulus": "facilitated-diffusion-s1",
+      "q": "Which statement best describes the glucose data?",
+      "options": [
+        "Uptake rate rises steeply at low concentrations, then by less and less as concentration grows.",
+        "Uptake rate climbs by the same amount with each additional 2 mM of glucose, across the whole range tested.",
+        "Uptake rate rises slowly at first and then faster once the concentration passes about 10 mM.",
+        "Uptake rate peaks near 10 mM and then falls as more glucose is added outside the cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glucose uptake gains 6.0 nmol/min over the first 2 mM but only 0.8 nmol/min over the last 5 mM: the curve flattens toward a ceiling.",
+        "options": [
+          "Correct: the first 2 mM add 6.0 nmol/min, while going from 15 to 20 mM adds only 0.8 nmol/min.",
+          "That describes substance X, whose rate climbs 1.0 nmol/min for every 2 mM. Glucose gains less with each step.",
+          "The pattern is the reverse: the steep part is at low concentrations and the curve flattens at high ones.",
+          "The rate never falls; it keeps creeping up, from 12.9 at 10 mM to 15.0 at 20 mM."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-2", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.C", "level": "analyze", "diff": 2, "stimulus": "facilitated-diffusion-s1",
+      "q": "Which explanation best accounts for the difference between the two curves?",
+      "options": [
+        "Glucose uses a limited number of carrier proteins that all become occupied; X diffuses through the bilayer itself.",
+        "Glucose is pumped in using ATP, and the cells run short of ATP at high glucose levels, while X needs no energy.",
+        "Glucose is too large to fit through the bilayer at high concentrations, while X fits through at any concentration.",
+        "Glucose molecules attract one another at high concentrations and slow down, while X molecules stay evenly spread out."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A curve that levels off is the signature of a fixed number of transport proteins: once every carrier is busy, adding more glucose cannot speed transport. A straight line means rate tracks the gradient, as in simple diffusion through the bilayer.",
+        "options": [
+          "Correct: a fixed number of carriers caps the rate, while diffusion through the bilayer has no such cap and stays proportional to the gradient.",
+          "Nothing was inside the cells at the start, so glucose was moving down its gradient: no pump is needed. Glucose enters red blood cells by facilitated diffusion.",
+          "Size does not change with concentration. A molecule either can or cannot cross the bilayer; glucose cannot at any concentration and needs a carrier throughout.",
+          "Glucose molecules dissolve and move independently in water; the leveling off comes from the limited number of carriers, not from clumping."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-3", "type": "numeric", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "facilitated-diffusion-s1",
+      "q": "Calculate the percent increase in the glucose uptake rate when the outside concentration doubles from 10 mM to 20 mM. Round to the nearest whole percent.",
+      "numeric": { "answer": 16, "tol": 0.6, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Percent change = (new − old) ÷ old × 100 = (15.0 − 12.9) ÷ 12.9 × 100 ≈ 16%. Doubling the concentration raised the rate by only about a sixth, because nearly every carrier was already busy at 10 mM. For substance X the same doubling raises the rate by 100%." }
+    },
+    {
+      "id": "bio-facilitated-diffusion-4", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "facilitated-diffusion-s1",
+      "q": "The experiment is repeated with cells treated with a drug that permanently blocks half of their glucose carriers. Which prediction is most consistent with the explanation of the curves?",
+      "options": [
+        "The glucose curve levels off at about half its original height; the X curve does not change.",
+        "The glucose curve keeps its original ceiling but takes twice the concentration to reach it; the X curve does not change.",
+        "Both curves level off at about half their original heights, because the membrane has fewer open routes.",
+        "The glucose curve becomes a straight line like X, because the remaining carriers are no longer crowded."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The ceiling of the glucose curve is set by how many carriers there are. Halve the carriers and the top rate halves. X does not use the carriers, so its line is unchanged.",
+        "options": [
+          "Correct: with half the carriers, the most glucose they can move per minute is about half as much, and X's route through the bilayer is untouched.",
+          "Blocking carriers lowers the ceiling. A shift to higher concentration with the same ceiling would come from something competing with glucose for the same carriers, not from losing carriers.",
+          "X crosses the lipid bilayer directly, so blocking glucose carriers has no effect on it.",
+          "Fewer carriers fill up sooner, not later; the glucose curve still levels off, just at a lower rate."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-5", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "3.C", "level": "analyze", "diff": 3, "stimulus": "facilitated-diffusion-s1",
+      "q": "A student proposes that substance X also uses a carrier, one with so many copies that it never fills up in this range. Which new result would best support the student's idea?",
+      "options": [
+        "Adding a large amount of a molecule shaped like X to the solution slows the uptake of X.",
+        "Repeating the experiment at 25 °C instead of 37 °C slows the uptake of X by a small amount.",
+        "The uptake of X at 20 mM is twice its uptake at 10 mM, just as in the original data.",
+        "Cells given extra glucose take up X at the same rate as cells given no glucose."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Carriers are specific: they bind molecules of a particular shape. If a look-alike molecule slows X's uptake, the two are competing for the same binding sites, which a bilayer route would not show.",
+        "options": [
+          "Correct: competition for a binding site is evidence for a specific transport protein, because diffusion through the bilayer has no site to compete for.",
+          "Lower temperature slows nearly all movement of molecules, including simple diffusion, so it cannot tell the two routes apart.",
+          "This repeats the original pattern, which is exactly what simple diffusion predicts; it adds no evidence for a carrier.",
+          "This shows only that X does not share the glucose carrier. X could still diffuse through the bilayer or use some other carrier."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-6", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "facilitated-diffusion-s2",
+      "q": "Which change in the table shows an ion moving down its concentration gradient once the pump stopped?",
+      "options": [
+        "Na⁺ inside the cell rose from 12 to 38 mM, because Na⁺ is more concentrated outside.",
+        "K⁺ inside the cell fell from 140 to 112 mM, because K⁺ is more concentrated outside.",
+        "Na⁺ outside the cell stayed at 145 mM, because Na⁺ is more concentrated inside.",
+        "K⁺ outside the cell stayed at 4 mM, because K⁺ moved into the cell from outside."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Na⁺ is 145 mM outside and 12 mM inside, so its gradient points inward. With the pump stopped, Na⁺ leaking in is no longer removed, and the inside concentration climbs.",
+        "options": [
+          "Correct: Na⁺ moved from 145 mM outside toward 12 mM inside, from crowded to scarce.",
+          "K⁺ did leave, which is down its gradient, but the reason given is wrong: K⁺ is more concentrated inside (140 mM) than outside (4 mM).",
+          "Na⁺ is more concentrated outside, not inside. The outside value stayed flat because the dish holds far more fluid than the cells.",
+          "K⁺ moved out of the cells, not in; the inside value fell. The outside value barely moved because the dish is so large."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-7", "type": "numeric", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "facilitated-diffusion-s2",
+      "q": "Before ouabain, how many times more concentrated was Na⁺ outside the cell than inside? Give your answer to one decimal place.",
+      "numeric": { "answer": 12.1, "tol": 0.1, "unit": "", "decimals": 1 },
+      "why": { "correct": "Outside ÷ inside = 145 mM ÷ 12 mM ≈ 12.1. The pump keeps Na⁺ about twelve times more concentrated outside, a steep gradient that stores energy." }
+    },
+    {
+      "id": "bio-facilitated-diffusion-8", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.C", "level": "analyze", "diff": 2, "stimulus": "facilitated-diffusion-s2",
+      "q": "Which explanation best accounts for the rise in Na⁺ inside the cells after ouabain was added?",
+      "options": [
+        "Na⁺ keeps leaking in through channels down its gradient, but it is no longer moved back out by the pump.",
+        "Ouabain opens extra Na⁺ channels in the membrane, so more Na⁺ floods into the cells than before.",
+        "The cells begin making Na⁺ from other molecules once they can no longer import it from outside.",
+        "The pump runs backward without ATP and carries Na⁺ inward instead of carrying it out of the cell."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Before ouabain, the inside Na⁺ level was steady because the pump removed Na⁺ as fast as it leaked in. Stopping the pump removes the outflow while the leak continues, so Na⁺ builds up inside.",
+        "options": [
+          "Correct: a steady level is a balance of leak in and pumping out; remove the pumping and the leak wins.",
+          "The description says ouabain binds the pump and stops it. No extra channels are needed to explain the data: the normal leak is enough.",
+          "Na⁺ is an element's ion; cells cannot make it from other molecules. It can only come in from outside.",
+          "A stopped pump does not reverse. The extra Na⁺ comes in passively through channels, down its gradient."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-9", "type": "predict", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "facilitated-diffusion-s2",
+      "q": "Suppose ouabain had been left on the cells for several hours instead of 60 minutes. Predict how each quantity would compare with its 60-minute value.",
+      "variables": [
+        { "name": "Na⁺ inside the cell", "answer": "up", "why": "Na⁺ keeps leaking in down its gradient with nothing removing it, so the inside level keeps rising toward the outside level." },
+        { "name": "K⁺ inside the cell", "answer": "down", "why": "K⁺ keeps leaking out down its gradient, and the stopped pump no longer brings it back in." },
+        { "name": "Na⁺ outside the cell", "answer": "none", "why": "The dish holds far more fluid than the cells, so the small amount of Na⁺ moving into the cells does not change the outside concentration measurably." },
+        { "name": "Size of the charge difference across the membrane (how far from zero)", "answer": "down", "why": "As the Na⁺ and K⁺ gradients run down, less charge separation can be kept up, so the membrane potential moves further toward 0 mV, continuing the trend from −70 to −52 mV." }
+      ],
+      "why": { "correct": "With the pump stopped, nothing rebuilds the gradients. Ions keep moving down their gradients until the inside and outside become more alike, and the stored charge difference shrinks." }
+    },
+    {
+      "id": "bio-facilitated-diffusion-10", "type": "multi", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.B", "level": "apply", "diff": 2, "stimulus": "facilitated-diffusion-s2",
+      "q": "In these cells before ouabain was added, which movements use energy from ATP directly? Select all that apply.",
+      "options": [
+        "Na⁺ leaving the cell through the sodium-potassium pump",
+        "Na⁺ entering the cell through open sodium channels",
+        "K⁺ leaving the cell through open potassium channels",
+        "Water entering the cell through aquaporins",
+        "Glucose entering the cell through a glucose carrier"
+      ],
+      "correct": [0],
+      "why": {
+        "correct": "Only the pump moves an ion against its gradient, so only the pump needs ATP. The channels, aquaporins and the glucose carrier all let substances move down their gradients.",
+        "options": [
+          "The pump moves Na⁺ from 12 mM inside to 145 mM outside, against its gradient, and spends ATP to do it.",
+          "Na⁺ entering moves from 145 mM to 12 mM, down its gradient, through a channel: passive.",
+          "K⁺ leaving moves from 140 mM to 4 mM, down its gradient: passive.",
+          "Water moving through aquaporins follows its own gradient and uses no ATP.",
+          "A glucose carrier moves glucose from where it is more concentrated to where it is less concentrated: facilitated diffusion, no ATP."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-11", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.B", "level": "recall", "diff": 1,
+      "q": "Which feature separates a carrier protein from a channel protein?",
+      "options": [
+        "A carrier binds the substance and changes shape to move it across the membrane.",
+        "A carrier moves its substance from low concentration to high concentration.",
+        "A carrier uses ATP each time it moves a molecule across the membrane.",
+        "A carrier lets any small molecule through, while a channel is specific."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A channel is an open tunnel the substance passes through. A carrier grips the substance, changes shape and lets it go on the other side.",
+        "options": [
+          "Correct: binding plus a change of shape is what makes a protein a carrier.",
+          "Carriers in facilitated diffusion move substances down their gradient, from high to low, just as channels do.",
+          "Carriers in facilitated diffusion use no ATP; the gradient drives the movement. A protein that spends ATP is a pump.",
+          "Both are specific. A carrier binds only molecules that fit its binding site; a channel's size and charged lining admit only certain ions."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-12", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "Kidney tubule cells reabsorb large volumes of water. Some people inherit a faulty aquaporin that does not reach the cell membrane. Which outcome is expected in those tubule cells?",
+      "options": [
+        "Water crosses their membranes more slowly, because the bilayer alone lets water through slowly.",
+        "Water stops crossing their membranes, because water is a polar molecule and is blocked by the bilayer.",
+        "Water crosses faster, because the cells switch to pumping water with ATP instead.",
+        "Water crosses at the normal rate, because water moves by diffusion and needs no protein."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A little water slips through the bilayer, but aquaporins let it cross far faster. Without them, water movement drops sharply but does not fall to zero.",
+        "options": [
+          "Correct: aquaporins speed water across; without them only the slow route through the bilayer is left.",
+          "Small amounts of water still slip between the phospholipids, so movement slows rather than stopping.",
+          "Cells have no pumps for water molecules. Water moves passively, following its own gradient.",
+          "Diffusion still happens, but the aquaporin is the fast route. Losing it is why these people produce large volumes of dilute urine."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-13", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Tetrodotoxin, a poison from puffer fish, plugs the voltage-gated sodium channels of nerve cells. Which effect is expected in a poisoned nerve cell?",
+      "options": [
+        "Na⁺ cannot rush in when the membrane voltage changes, so the cell cannot send its normal signal.",
+        "Na⁺ is no longer pumped out of the cell, so it builds up inside and the cell slowly swells with water.",
+        "Na⁺ rushes into the cell through the blocked channels faster than usual, flooding the inside.",
+        "K⁺ can no longer leave the cell, because K⁺ shares the same channels as sodium ions do."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A voltage-gated Na⁺ channel opens when the membrane voltage changes, letting Na⁺ rush in down its electrochemical gradient. That inrush is the nerve signal. Plugging the channel stops it.",
+        "options": [
+          "Correct: the gated channel is the only fast route for Na⁺; blocked, it cannot open when the voltage changes, so the signal fails.",
+          "Pumping out uses the sodium-potassium pump, a different protein. Tetrodotoxin blocks channels, not the pump.",
+          "A plugged channel lets nothing through, so Na⁺ entry falls.",
+          "Channels are specific: K⁺ moves through its own potassium channels, which tetrodotoxin does not block."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-14", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.B", "level": "analyze", "diff": 3,
+      "q": "Inside a resting animal cell the membrane potential is −70 mV and Na⁺ is far more concentrated outside. Which statement correctly describes the electrochemical gradient for Na⁺?",
+      "options": [
+        "Both the concentration difference and the negative inside pull Na⁺ into the cell.",
+        "The concentration difference pulls Na⁺ in, but the negative inside pushes it back out.",
+        "The two forces cancel each other, which is why Na⁺ needs a pump to enter the cell.",
+        "Na⁺ feels no electrical push, because charge affects negatively charged ions but not positive ones."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Na⁺ is crowded outside, so diffusion favors entry. It is also positive, and opposite charges attract, so the negative inside draws it in too. Both parts of the gradient point inward, which is why Na⁺ rushes in when a channel opens.",
+        "options": [
+          "Correct: concentration and charge both favor Na⁺ entering, a steep inward electrochemical gradient.",
+          "A negative inside attracts a positive ion; it pulls Na⁺ in, it does not push it out.",
+          "The forces add rather than cancel, and Na⁺ enters through channels without a pump. The pump moves Na⁺ out.",
+          "Charge acts on every ion: a positive ion is drawn toward negative regions and a negative ion toward positive ones."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-15", "type": "numeric", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "5.A", "level": "apply", "diff": 2,
+      "q": "One sodium-potassium pump completes 100 cycles per second. How many more positive charges does it move out of the cell than into it each second?",
+      "numeric": { "answer": 100, "tol": 0, "unit": "charges", "decimals": 0 },
+      "why": { "correct": "Each cycle moves 3 Na⁺ out and 2 K⁺ in, a net of 1 positive charge out. 100 cycles × 1 = 100 more positive charges out than in each second, which adds a little to the negative charge inside." }
+    },
+    {
+      "id": "bio-facilitated-diffusion-16", "type": "order", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.A", "level": "recall", "diff": 2,
+      "q": "Put the steps of one cycle of the sodium-potassium pump in order, starting with the pump open to the inside of the cell.",
+      "options": [
+        "Three Na⁺ ions from the cytoplasm bind to the pump.",
+        "ATP transfers a phosphate group to the pump, and the pump changes shape.",
+        "The pump opens to the outside and releases the three Na⁺ ions.",
+        "Two K⁺ ions from outside the cell bind to the pump.",
+        "The phosphate group comes off, and the pump returns to its first shape, releasing K⁺ inside."
+      ],
+      "why": { "correct": "Na⁺ binds on the inside; the phosphate from ATP changes the pump's shape so it opens outward and lets Na⁺ go; K⁺ binds from outside; losing the phosphate snaps the pump back, delivering K⁺ inside. The energy from ATP is spent on the shape change that carries ions uphill." }
+    },
+    {
+      "id": "bio-facilitated-diffusion-17", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "6.C", "level": "analyze", "diff": 3,
+      "q": "Liver cells take in glucose through carriers that work by facilitated diffusion. As soon as glucose enters, the cell chemically changes it into a different molecule. How does this affect glucose uptake?",
+      "options": [
+        "It keeps the inside glucose level low, so a gradient into the cell is kept up and uptake continues.",
+        "It traps glucose behind the carrier, so the carrier stops working once the first molecules enter.",
+        "It gives the carrier the energy it needs to move glucose against its gradient into the cell.",
+        "It has no effect, because a carrier moves glucose at a fixed rate that does not depend on concentration."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Facilitated diffusion only moves glucose down its gradient. Converting glucose as it arrives stops it from building up inside, so the outside stays higher and net movement inward goes on.",
+        "options": [
+          "Correct: removing glucose on the inside keeps the gradient pointing inward, so passive uptake continues.",
+          "The changed molecule is no longer glucose, so it does not occupy the glucose carrier; the carrier keeps working.",
+          "A passive carrier gets no energy from chemical changes inside the cell; the glucose still moves down its gradient, not against it.",
+          "Carrier transport depends on the gradient: net movement stops when the inside and outside concentrations become equal."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-18", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "3.C", "level": "analyze", "diff": 3,
+      "q": "A researcher wants to show that a new transport protein moves substance Z by facilitated diffusion rather than by active transport. Which result would be the strongest evidence?",
+      "options": [
+        "Z still enters cells after ATP production is blocked, and net movement stops when inside and outside levels are equal.",
+        "Z enters cells faster at higher outside concentrations, and the rate levels off at high concentrations.",
+        "Z is a charged molecule that does not cross an artificial membrane made of phospholipids alone, with no protein present.",
+        "Z enters cells when the transport protein is present, and blocking the protein stops Z uptake."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "What separates facilitated diffusion from active transport is energy and direction. Uptake without ATP, ending when the concentrations are equal, shows the movement is passive and only goes down the gradient.",
+        "options": [
+          "Correct: no ATP needed, and no movement against the gradient. Both point to facilitated diffusion.",
+          "Leveling off shows a limited number of transport proteins, but pumps level off too, so it cannot separate the two.",
+          "This shows Z needs a protein, but both facilitated diffusion and active transport use proteins.",
+          "This again shows the protein is needed, which is true of both mechanisms; it says nothing about energy or direction."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-19", "type": "multi", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Which of these substances need a transport protein to cross a cell membrane at a useful rate? Select all that apply.",
+      "options": [
+        "Potassium ions (K⁺)",
+        "Oxygen gas (O₂)",
+        "Carbon dioxide (CO₂)",
+        "A small steroid hormone"
+      ],
+      "correct": [0],
+      "why": {
+        "correct": "The hydrophobic middle of the bilayer blocks charged particles, so ions need a channel or carrier. Small nonpolar molecules dissolve in the bilayer and slip straight across.",
+        "options": [
+          "K⁺ is charged, so the hydrophobic core of the bilayer repels it; it crosses through potassium channels.",
+          "O₂ is small and nonpolar and crosses the bilayer directly by simple diffusion.",
+          "CO₂ is small and crosses the bilayer directly by simple diffusion.",
+          "Steroids are lipids, so they dissolve in the bilayer and cross without a transport protein."
+        ]
+      }
+    },
+    {
+      "id": "bio-facilitated-diffusion-20", "type": "single", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "In muscle cells, a ligand-gated channel opens when a signaling molecule released by a nerve cell binds to it, and Na⁺ then enters the muscle cell. What does the gate add, compared with a channel that is always open?",
+      "options": [
+        "Control over when the ions flow, so Na⁺ enters only after the signal arrives.",
+        "Energy for the ions, so Na⁺ can move against its concentration gradient.",
+        "A larger number of channels, so the cell can take in more Na⁺ at rest.",
+        "A change in which ion passes, so the channel can carry K⁺ when it is closed."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A gate decides when a channel is open. The ions still move down their gradient once it opens; the gate ties that movement to the arrival of a signal.",
+        "options": [
+          "Correct: the gate turns the flow on only when the signaling molecule binds.",
+          "Gated channels are still passive: Na⁺ flows in down its gradient. No energy is added.",
+          "A gate does not add channels; it closes the existing ones most of the time.",
+          "A closed channel lets nothing through, and a gate does not change which ions the channel admits when it opens."
+        ]
+      }
+    }
+  ]
+}

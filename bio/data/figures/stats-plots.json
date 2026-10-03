@@ -1,0 +1,12 @@
+{
+  "graph-anatomy": {
+    "file": "figures/graph-anatomy.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 380,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A line graph of water temperature against heating time for 100 g and 200 g of water. Callouts point to the title, the x-axis label \"Time (min)\" with an even scale, the y-axis label \"Temperature (°C)\", the key naming the two lines, and a rise-over-run triangle showing the slope of the 100 g line: 30 °C over 5 min, or 6 °C per minute."
+  }
+}

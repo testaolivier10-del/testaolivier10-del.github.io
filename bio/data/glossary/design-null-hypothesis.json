@@ -1,0 +1,11 @@
+{
+  "null-hypothesis": {
+    "def": "The statement that the independent variable has no effect: any difference between groups is due to chance alone (H₀). It is the statement an experiment tests."
+  },
+  "alternative-hypothesis": {
+    "def": "The statement that the independent variable does have an effect, so groups really differ (H₁ or Hₐ). It may name a direction (\"higher temperature increases leakage\") or not (\"temperature changes leakage\")."
+  },
+  "reject-null": {
+    "def": "The decision made from data: reject the null hypothesis when the difference between groups is too large to blame on chance, or fail to reject it when it is not. A null hypothesis is never \"accepted\" or \"proved\"."
+  }
+}

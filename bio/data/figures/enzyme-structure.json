@@ -1,0 +1,7 @@
+{
+  "enzyme-active-site": {
+    "file": "figures/enzyme-active-site.svg", "ext": "svg", "w": 720, "h": 360,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three panels. A substrate with a negative charge approaches a groove on an enzyme, the active site, which carries a matching positive charge. The substrate sits in the active site and the enzyme's shape shifts slightly to grip it, forming the enzyme-substrate complex. Two product molecules leave and the enzyme returns to its original shape."
+  }
+}

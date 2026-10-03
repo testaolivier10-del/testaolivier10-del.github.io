@@ -110,6 +110,15 @@
       { min: 20, title: 'Physiology Pro' },
       { min: 30, title: 'A&P Legend' },
     ],
+    apbio: [
+      { min: 1,  title: 'Water Watcher' },
+      { min: 3,  title: 'Cell Builder' },
+      { min: 6,  title: 'Enzyme Tamer' },
+      { min: 10, title: 'Gene Reader' },
+      { min: 15, title: 'Data Analyst' },
+      { min: 20, title: 'Evolution Expert' },
+      { min: 30, title: 'Biology Legend' },
+    ],
   };
 
   // Each course names its ranks differently, so a rank shown on its own says
@@ -119,6 +128,7 @@
     { key: 'nremt', rankLabel: 'NREMT rank' },
     { key: 'ochem', rankLabel: 'Ochem rank' },
     { key: 'anp', rankLabel: 'A&P rank' },
+    { key: 'apbio', rankLabel: 'Biology rank' },
   ];
   // courses:end
   var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };

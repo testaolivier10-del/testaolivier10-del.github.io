@@ -1,0 +1,487 @@
+{
+  "stimuli": {
+    "stats-water-potential-s1": {
+      "kind": "graph",
+      "title": "Potato cores in sucrose solutions",
+      "text": "<p>Students weighed cores cut from one potato, left five cores in each of six sucrose solutions in open beakers at 22 °C for 24 hours, and weighed them again. The graph shows the mean percent change in mass; error bars show 95% confidence intervals.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Sucrose concentration",
+          "unit": "mol/L",
+          "min": 0,
+          "max": 1,
+          "step": 0.2
+        },
+        "y": {
+          "label": "Change in mass",
+          "unit": "%",
+          "min": -25,
+          "max": 20,
+          "step": 5
+        },
+        "series": [
+          {
+            "name": "Potato cores",
+            "points": [
+              [
+                0,
+                17,
+                2
+              ],
+              [
+                0.2,
+                5,
+                1.5
+              ],
+              [
+                0.4,
+                -5,
+                1.5
+              ],
+              [
+                0.6,
+                -12,
+                2
+              ],
+              [
+                0.8,
+                -17,
+                2
+              ],
+              [
+                1,
+                -20,
+                2.5
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "stats-water-potential-s2": {
+      "kind": "table",
+      "title": "Three solutions at 25 °C",
+      "text": "<p>A teacher prepared three solutions in open beakers at 25 °C. Use R = 0.0831 L·bar/(mol·K) and T = 298 K.</p>",
+      "table": {
+        "caption": "Solutions and their ionization constants",
+        "cols": [
+          "Solution",
+          "Concentration (mol/L)",
+          "Ionization constant, i",
+          "Solute potential (bars)"
+        ],
+        "rows": [
+          [
+            "Sucrose",
+            "0.1",
+            "1",
+            "−2.48"
+          ],
+          [
+            "Sodium chloride (NaCl)",
+            "0.1",
+            "2",
+            "?"
+          ],
+          [
+            "Calcium chloride (CaCl₂)",
+            "0.1",
+            "3",
+            "−7.43"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-water-potential-1",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-water-potential-s1",
+      "q": "Estimate the sucrose concentration at which the potato cores would neither gain nor lose mass. Give your answer in mol/L to two decimal places.",
+      "numeric": {
+        "answer": 0.3,
+        "tol": 0.02,
+        "unit": "mol/L",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "The line crosses 0% between 0.2 M (+5%) and 0.4 M (−5%). Zero is halfway along that segment: 0.2 + 0.2 × (5 ÷ 10) = 0.30 mol/L."
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-2",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-water-potential-s1",
+      "q": "Calculate the solute potential of a 0.30 mol/L sucrose solution at 22 °C. Give your answer in bars to one decimal place.",
+      "numeric": {
+        "answer": -7.4,
+        "tol": 0.1,
+        "unit": "bars",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Ψs = −iCRT = −(1)(0.30 mol/L)(0.0831 L·bar/(mol·K))(295 K) = −7.35, about −7.4 bars. Sucrose does not ionize, so i = 1; T = 22 + 273 = 295 K."
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-3",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-water-potential-s1",
+      "q": "What does the concentration where the cores neither gain nor lose mass tell you?",
+      "options": [
+        "At that concentration the solution's water potential equals the potato cells' water potential, so there is no net water movement.",
+        "At that concentration the potato cells contain exactly 0.30 mol/L of sucrose, the same as the surrounding solution in the beaker.",
+        "At that concentration water stops crossing the membranes in either direction, because the aquaporins close.",
+        "At that concentration the cores are plasmolyzed, so they can no longer take in or lose water by osmosis."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "No net mass change means no net water movement, which happens when Ψ outside equals Ψ inside. So the cells' water potential is about −7.4 bars. Water still crosses both ways; the flows just balance.",
+        "options": [
+          "Correct: equal water potentials, no net flow.",
+          "Cell water potential depends on all its solutes and its pressure potential, not only on sucrose.",
+          "Water keeps crossing in both directions at equal rates; the balance is dynamic.",
+          "Plasmolysis happens in solutions much more concentrated than this, where cells lose a lot of water."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-4",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-water-potential-s1",
+      "q": "Why did the cores in 0.8 mol/L sucrose lose mass?",
+      "options": [
+        "The solution had a lower (more negative) water potential than the cells, so water moved out of the cells by osmosis.",
+        "Sucrose moved into the cells by diffusion and pushed water out, so the cores became lighter as a result.",
+        "The solution had a higher water potential than the cells, so water moved from the solution into the cells.",
+        "The high sucrose concentration dissolved part of the potato cell walls, so the cores lost solid mass."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "0.8 M sucrose at 295 K has Ψ = −(1)(0.8)(0.0831)(295) ≈ −19.6 bars, far below the cells' ≈ −7.4 bars. Water moves from higher to lower Ψ, out of the cells.",
+        "options": [
+          "Correct.",
+          "Sucrose moving in would add mass; the loss is water leaving.",
+          "If the solution's Ψ were higher, water would move in and the cores would gain mass.",
+          "Sucrose does not dissolve cell walls; the change is water."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-5",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-water-potential-s1",
+      "q": "Why did the students record percent change in mass rather than change in grams?",
+      "options": [
+        "The cores did not all start at the same mass, and percent change lets cores of different sizes be compared fairly.",
+        "Percent change turns losses into positive numbers, which makes a graph of the results easier to read and compare.",
+        "Change in grams would be the same for each core, so it would not show any effect of sucrose concentration.",
+        "The balance could weigh just in percent, so grams were converted to percent for the final report."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A larger core gains or loses more grams in the same solution. Dividing by the starting mass removes that effect.",
+        "options": [
+          "Correct.",
+          "Percent change can be negative, and it is here.",
+          "Grams lost or gained differ between cores, partly because of their different sizes; that is the problem percent change solves.",
+          "Balances read mass in grams; the percentage is calculated from them."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-water-potential-s2",
+      "q": "Calculate the solute potential of the 0.1 mol/L NaCl solution at 25 °C. Give your answer in bars to two decimal places.",
+      "numeric": {
+        "answer": -4.95,
+        "tol": 0.02,
+        "unit": "bars",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Ψs = −iCRT = −(2)(0.1)(0.0831)(298) = −4.95 bars. NaCl splits into Na⁺ and Cl⁻, so i = 2."
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-7",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-water-potential-s2",
+      "q": "Why does the CaCl₂ solution have three times the solute potential magnitude of the sucrose solution at the same molar concentration?",
+      "options": [
+        "Each CaCl₂ unit dissolves into three particles (Ca²⁺ and two Cl⁻), and solute potential depends on the number of dissolved particles.",
+        "CaCl₂ molecules are about three times heavier than sucrose molecules, so each one lowers the water potential of the solution three times as much.",
+        "Calcium ions carry a charge of 2+, and solute potential depends on the charge on each dissolved particle.",
+        "CaCl₂ binds three times as many water molecules into covalent bonds, removing them from the solution."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Solute potential depends on the concentration of dissolved particles. Sucrose stays as one particle (i = 1); CaCl₂ gives three ions (i = 3).",
+        "options": [
+          "Correct: particle count, captured by i.",
+          "Mass is not in −iCRT; sucrose molecules are actually heavier than CaCl₂ units.",
+          "Charge is not what i counts; i counts particles.",
+          "Ions attract water by hydrogen bonding and charge attraction, not covalent bonds."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-water-potential-s2",
+      "q": "A bag made of membrane that lets water through but not sucrose or ions is filled with the 0.1 mol/L sucrose solution and placed in a beaker of the 0.1 mol/L NaCl solution. What happens?",
+      "options": [
+        "Water leaves the bag, because the NaCl solution's water potential (−4.95 bars) is lower than the sucrose solution's (−2.48 bars).",
+        "Water enters the bag, because sucrose molecules are larger than ions and attract more water molecules to them.",
+        "Nothing happens, because the two solutions have the same molar concentration of solute, 0.1 mol/L each, on both sides of the bag.",
+        "Sodium and chloride ions enter the bag until both sides have equal numbers of dissolved particles."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Equal molarity is not equal water potential. NaCl gives twice as many particles, so its Ψ is lower, and water moves from the bag (−2.48 bars) to the beaker (−4.95 bars).",
+        "options": [
+          "Correct.",
+          "Particle number, not particle size, sets solute potential.",
+          "Same molarity, different i: the NaCl solution has twice as many particles.",
+          "The membrane in the question lets water through but not ions."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-9",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-water-potential-s2",
+      "q": "Select ALL solutions that would have the same water potential as the 0.1 mol/L NaCl solution at 25 °C in an open beaker.",
+      "options": [
+        "0.2 mol/L sucrose",
+        "0.1 mol/L glucose",
+        "0.05 mol/L NaCl",
+        "0.2 mol/L CaCl₂",
+        "0.3 mol/L sucrose"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Water potential depends on i × C. NaCl at 0.1 M gives iC = 0.2. Only 0.2 M sucrose matches (1 × 0.2).",
+        "options": [
+          "Same: 1 × 0.2 = 0.2.",
+          "Different: 1 × 0.1 = 0.1, half as many particles.",
+          "Different: 2 × 0.05 = 0.1.",
+          "Different: 3 × 0.2 = 0.6.",
+          "Different: 1 × 0.3 = 0.3."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-10",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A plant cell has a solute potential of −9.0 bars and a pressure potential of +3.0 bars. Calculate its water potential in bars, to one decimal place.",
+      "numeric": {
+        "answer": -6,
+        "tol": 0.05,
+        "unit": "bars",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Ψ = ΨP + Ψs = 3.0 + (−9.0) = −6.0 bars."
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-11",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A plant cell with Ψs = −9.0 bars and ΨP = +3.0 bars (Ψ = −6.0 bars) is placed in a large beaker of 0.3 mol/L sucrose at 22 °C (Ψ ≈ −7.4 bars). What happens to the cell?",
+      "options": [
+        "It loses water, so its pressure potential falls as its turgor drops.",
+        "It gains water, so its pressure potential rises as it becomes more turgid.",
+        "It neither gains nor loses water, because its solute potential is more negative than the solution's.",
+        "It gains sucrose, so its solute potential becomes less negative over time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Water moves from higher Ψ (−6.0, the cell) to lower Ψ (−7.4, the solution). As water leaves, the cell pushes less on its wall, so ΨP falls (and Ψs becomes a little more negative) until the cell's Ψ matches −7.4 bars.",
+        "options": [
+          "Correct.",
+          "Water moves toward the lower water potential, which is the solution here.",
+          "Movement depends on total Ψ, not on Ψs alone; the cell's Ψ (−6.0) is higher than the solution's.",
+          "The question concerns water; sucrose movement is not what sets the direction here."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-12",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Calculate the solute potential of a 0.5 mol/L sucrose solution at 27 °C. Give your answer in bars to one decimal place.",
+      "numeric": {
+        "answer": -12.5,
+        "tol": 0.1,
+        "unit": "bars",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "T = 27 + 273 = 300 K. Ψs = −(1)(0.5)(0.0831)(300) = −12.465, about −12.5 bars."
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-13",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A student calculates the solute potential of 0.30 mol/L sucrose at 22 °C but uses T = 22 instead of 295. How does her answer compare with the correct value?",
+      "options": [
+        "It is about 13 times too close to zero (−0.55 instead of −7.4 bars).",
+        "It is about 13 times too negative (−98 instead of −7.4 bars).",
+        "It is the same, because temperature units cancel in the equation.",
+        "It has the wrong sign, because Celsius temperatures can be negative."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "−(1)(0.30)(0.0831)(22) = −0.55 bars, while 295 K gives −7.35 bars: 295 ÷ 22 ≈ 13 times smaller in size. R is defined per kelvin, so T must be in kelvin.",
+        "options": [
+          "Correct.",
+          "Using a smaller T makes the magnitude smaller, not larger.",
+          "R has units L·bar/(mol·K); the K only cancels if T is in kelvin.",
+          "22 °C is positive, so the sign is unchanged; the size is wrong."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-14",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A solution has a water potential of −7.4 bars. What is this in megapascals (MPa)?",
+      "options": [
+        "−0.74 MPa",
+        "−74 MPa",
+        "−7.4 MPa",
+        "−0.074 MPa"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "10 bars = 1 MPa, so −7.4 bars ÷ 10 = −0.74 MPa.",
+        "options": [
+          "Correct.",
+          "This multiplies by 10; bars are the smaller unit, so the MPa number is smaller.",
+          "Bars and MPa are different units.",
+          "This divides by 100; the factor is 10."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-15",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "For a solution in an open beaker, why is its water potential equal to its solute potential?",
+      "options": [
+        "An open beaker puts no extra pressure on the solution, so its pressure potential is 0.",
+        "An open beaker lets solutes evaporate, so the solute potential becomes the one potential left.",
+        "In an open beaker the solute potential is 0, so the pressure potential is what counts.",
+        "Water potential is defined as solute potential whenever the temperature is held constant."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Ψ = ΨP + Ψs. Exposed to the atmosphere with no wall pushing back, ΨP = 0, so Ψ = Ψs.",
+        "options": [
+          "Correct.",
+          "Dissolved solutes such as sucrose do not evaporate.",
+          "Any dissolved solute makes Ψs negative; it is ΨP that is 0.",
+          "Pressure, not temperature, decides whether ΨP is 0."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-water-potential-16",
+      "type": "order",
+      "unit": "skills-stats",
+      "topic": "stats-water-potential",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps for finding the water potential of a solution in an open beaker in order.",
+      "options": [
+        "Find i (1 for sucrose, about 2 for NaCl) and C in mol/L.",
+        "Convert the temperature to kelvin: °C + 273.",
+        "Calculate Ψs = −iCRT with R = 0.0831 L·bar/(mol·K).",
+        "Add ΨP, which is 0 for an open container, to get Ψ.",
+        "Compare Ψ values: water moves toward the more negative one."
+      ],
+      "why": {
+        "correct": "Gather i and C, convert T, calculate Ψs, add ΨP, then compare."
+      }
+    }
+  ]
+}

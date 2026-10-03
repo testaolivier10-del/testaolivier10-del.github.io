@@ -1,0 +1,80 @@
+{
+  "topic": "stats-simpson",
+  "hook": "<p>Two meadows each hold the same five kinds of wildflower. In one, every kind is common; in the other, clover covers almost everything. Counting species says they are equally diverse. Your eyes say they are not. Simpson's index, on the formula sheet, puts a number on the difference.</p>",
+  "prereq": [
+    {
+      "q": "What two things does species diversity combine?",
+      "options": [
+        "Species richness and relative abundance (evenness)",
+        "Population size and growth rate",
+        "Number of trophic levels and energy flow"
+      ],
+      "correct": 0,
+      "why": "Diversity counts how many species there are (richness) and how evenly individuals are spread among them (relative abundance).",
+      "review": "community-ecology"
+    },
+    {
+      "q": "Which community is more likely to keep functioning if one species declines?",
+      "options": [
+        "One with many species, evenly represented",
+        "One dominated by a single species",
+        "One with a single species"
+      ],
+      "correct": 0,
+      "why": "When individuals are spread among many species, the loss of one removes a smaller share of the community; diversity tends to support stability.",
+      "review": "biodiversity"
+    }
+  ],
+  "figure": {
+    "figure": "simpson-communities",
+    "caption": "Same four species, same 20 plants. The even plot has D = 0.75; the plot dominated by one species has D = 0.27."
+  },
+  "chain": [
+    {
+      "cause": "Each species makes up a fraction n/N of the community.",
+      "effect": "Squaring that fraction gives the chance that two individuals picked at random both belong to that species."
+    },
+    {
+      "cause": "Adding the squares over all species…",
+      "effect": "…gives Σ(n/N)², the chance that two random individuals are the same species."
+    },
+    {
+      "cause": "Subtracting from 1 flips it.",
+      "effect": "D = 1 − Σ(n/N)² is the chance that two random individuals are different species: higher D, more diversity."
+    },
+    {
+      "cause": "One common species has a large n/N, and squaring makes it larger still compared with rare species.",
+      "effect": "Dominance by one species pulls D down sharply, while adding a rare species raises D only slightly."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> 6 snails, 3 beetles, 1 leech (N = 10). Σ(n/N)² = 0.6² + 0.3² + 0.1² = 0.36 + 0.09 + 0.01 = 0.46. D = 1 − 0.46 = 0.54.",
+    "D runs from 0 (one species) toward 1 (many species, evenly represented). Two equal species give 0.5.",
+    "Same richness can give very different D: five species at 20 each give 0.80; one at 80 and four at 5 give 0.35.",
+    "Forgetting the \"1 −\" is the classic slip: it reports similarity (0.65) instead of diversity (0.35)."
+  ],
+  "misconception": {
+    "wrong": "Two communities with the same number of species have the same diversity.",
+    "right": "Simpson's index also counts evenness. A community dominated by one species has a much lower index than one with the same species in equal numbers."
+  },
+  "check": [
+    "bio-stats-simpson-1",
+    "bio-stats-simpson-2",
+    "bio-stats-simpson-3",
+    "bio-stats-simpson-4",
+    "bio-stats-simpson-5",
+    "bio-stats-simpson-6",
+    "bio-stats-simpson-8"
+  ],
+  "summary": "<p>Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species. It runs from 0 (one species) toward 1, and it rises with both species richness and evenness. Dominance by one species lowers it sharply; a single rare new species barely changes it. Compare communities, or one community over time, by their D values and explain the change with richness, evenness and the biology behind them.</p>",
+  "connections": [
+    {
+      "href": "../tools/simpson-diversity.html",
+      "label": "Tool: Simpson's diversity index calculator"
+    },
+    {
+      "href": "stats-rates.html",
+      "label": "Skill: rates and percent change"
+    }
+  ]
+}

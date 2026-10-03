@@ -1,0 +1,598 @@
+{
+  "stimuli": {
+    "compartment-origins-s1": {
+      "kind": "table",
+      "title": "Comparing organelles with bacteria",
+      "text": "<p>Researchers compared a free-living bacterium, mitochondria and chloroplasts from a plant, and the cytoplasm of the same plant cells. Ribosome size is given in S units, a measure of how fast a particle settles in a centrifuge; larger particles have larger S values. In the last row, each sample was given streptomycin, a drug that binds bacterial ribosomes, and protein production was measured as a percent of untreated samples.</p>",
+      "table": {
+        "caption": "Features of a bacterium, two organelles and the eukaryotic cytoplasm",
+        "cols": [
+          "Feature",
+          "Free-living bacterium",
+          "Mitochondrion",
+          "Chloroplast",
+          "Plant cell cytoplasm"
+        ],
+        "rows": [
+          [
+            "Typical length (µm)",
+            "1–5",
+            "1–10",
+            "3–10",
+            "Whole cell: 10–100"
+          ],
+          [
+            "Shape of DNA",
+            "Circular",
+            "Circular",
+            "Circular",
+            "Chromosomes in the nucleus (not loops)"
+          ],
+          [
+            "Ribosome size (S)",
+            "70",
+            "70 to 78",
+            "70",
+            "80"
+          ],
+          [
+            "Membranes around it",
+            "1 (plus a wall)",
+            "2",
+            "2",
+            "Not applicable"
+          ],
+          [
+            "How new ones form",
+            "Binary fission",
+            "Splitting of existing ones",
+            "Splitting of existing ones",
+            "Cell division"
+          ],
+          [
+            "Protein production with streptomycin (% of untreated)",
+            "8",
+            "15",
+            "12",
+            "97"
+          ]
+        ]
+      }
+    },
+    "compartment-origins-s2": {
+      "kind": "model",
+      "title": "A model of endosymbiosis",
+      "text": "<p>The model shows the endosymbiotic theory in four steps. Use it with what you know about cells to answer the questions.</p>",
+      "figure": "endosymbiosis-steps"
+    }
+  },
+  "items": [
+    {
+      "id": "bio-compartment-origins-1",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "compartment-origins-s1",
+      "q": "Which feature in the table do mitochondria share with bacteria but not with the plant cell's cytoplasm?",
+      "options": [
+        "Ribosomes of about 70 S, which streptomycin blocks",
+        "Chromosomes that are not loops, held inside a nucleus",
+        "A length of 10 to 100 micrometers, like the whole cell",
+        "New ones forming by ordinary cell division"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Bacteria and mitochondria both have ribosomes near 70 S, and streptomycin cuts protein production in both, while the cytoplasm's 80 S ribosomes are almost unaffected (97%).",
+        "options": [
+          "Correct: ribosome size and sensitivity to streptomycin match the bacterium, not the cytoplasm.",
+          "Chromosomes in a nucleus belong to the host cell; mitochondria have circular DNA.",
+          "That is the size of the whole plant cell; mitochondria are 1 to 10 µm, bacteria-sized.",
+          "Mitochondria form only by splitting of existing mitochondria, like bacterial fission."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-2",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "compartment-origins-s1",
+      "q": "Why is the streptomycin row evidence for the endosymbiotic theory?",
+      "options": [
+        "A drug aimed at bacterial ribosomes also blocks the organelles' ribosomes, so theirs are bacteria-like.",
+        "The drug kills mitochondria and chloroplasts, showing that they are separate living bacteria inside the cell today.",
+        "Protein production in the cytoplasm is unaffected, showing that the cytoplasm came from a bacterium.",
+        "Streptomycin enters organelles more easily than cytoplasm, showing that organelles have bacterial membranes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Streptomycin works by fitting bacterial ribosomes. Its strong effect on mitochondria (15%) and chloroplasts (12%), and almost none on the 80 S cytoplasmic ribosomes (97%), shows the organelles' ribosomes are built like bacterial ones, as expected if they descend from bacteria.",
+        "options": [
+          "Correct: matching drug sensitivity points to matching ribosome structure, inherited from bacterial ancestors.",
+          "The data measure protein production, not death; and mitochondria cannot live on their own as bacteria do.",
+          "The cytoplasm's ribosomes are unlike bacterial ones (80 S, unaffected), which points away from a bacterial origin for the host.",
+          "The data say nothing about how easily the drug enters; the difference fits ribosome structure, which the S values confirm."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-3",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "compartment-origins-s1",
+      "q": "Some antibiotics that block bacterial ribosomes can cause side effects in human tissues when given at high doses for a long time. Based on the table, which tissues are most likely to be affected?",
+      "options": [
+        "Tissues whose cells have many mitochondria, such as heart muscle, because mitochondrial ribosomes are bacteria-like.",
+        "Tissues whose cells have no mitochondria, such as mature red blood cells, because they depend on bacterial-type ribosomes.",
+        "Tissues whose cells divide most often, because the drug blocks the 80 S ribosomes in their cytoplasm.",
+        "Tissues whose cells are largest, because larger cells contain more of the bacterial ribosomes the drug binds."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mitochondria make some of their own proteins on bacteria-like ribosomes. A drug that blocks bacterial ribosomes can slow that, and cells that depend most on mitochondria, such as heart and skeletal muscle and nerve cells, are hit hardest.",
+        "options": [
+          "Correct: cells packed with mitochondria rely most on mitochondrial protein making.",
+          "Cells with no mitochondria have no bacteria-like ribosomes at all, so the drug has nothing in them to block.",
+          "The cytoplasm's 80 S ribosomes are barely affected (97%), so dividing cells are not the main target.",
+          "The cytoplasm of large cells still has 80 S ribosomes; size alone does not add bacteria-like ribosomes."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-4",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "compartment-origins-s1",
+      "q": "Which observations are evidence that chloroplasts descend from bacteria? Select all that apply.",
+      "options": [
+        "Chloroplast DNA is circular.",
+        "Chloroplast ribosomes are about 70 S.",
+        "New chloroplasts form by splitting of existing ones.",
+        "Chloroplasts are surrounded by two membranes.",
+        "Chloroplasts are found in plant and algal cells but not in animal cells.",
+        "Chloroplasts contain a green substance that absorbs light."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "why": {
+        "correct": "Evidence for a bacterial origin is a feature the chloroplast shares with bacteria, or one that engulfing would produce. Where chloroplasts occur and what they do are facts about their job and distribution, not their origin.",
+        "options": [
+          "Circular DNA matches bacteria and differs from the host's chromosomes in the nucleus.",
+          "Ribosomes near 70 S match bacterial ribosomes, not the host's 80 S ones.",
+          "Splitting of existing chloroplasts resembles binary fission; the cell cannot build them from scratch.",
+          "Two membranes fit a bacterial origin: in the engulfing model, the inner comes from the bacterium and the outer from the host membrane that wrapped around it.",
+          "This tells you which organisms have chloroplasts, which bears on when they were gained, not on whether they came from bacteria.",
+          "The green substance explains what chloroplasts do; any photosynthetic structure would need something like it, whatever its origin."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-5",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "compartment-origins-s1",
+      "q": "By what percent did streptomycin reduce protein production in mitochondria?",
+      "numeric": {
+        "answer": 85,
+        "tol": 0,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Treated mitochondria made 15% as much protein as untreated ones, so production fell by 100 − 15 = 85%."
+      }
+    },
+    {
+      "id": "bio-compartment-origins-6",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "compartment-origins-s2",
+      "q": "In step 2 of the model, the bacterium is surrounded by two membranes. According to the model, where does the outer membrane come from?",
+      "options": [
+        "The host cell's plasma membrane, which wrapped around the bacterium as it was taken in",
+        "The bacterium's cell wall, which turned into a membrane once it was inside",
+        "A second bacterium that was taken in at the same time and fused with the first",
+        "The host cell's nucleus, which sent a layer of its own envelope around the bacterium"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The host engulfed the bacterium the way a cell takes in a particle by endocytosis: its plasma membrane closed around it. In this model the inner membrane is the bacterium's own and the outer comes from the host.",
+        "options": [
+          "Correct: the engulfing membrane becomes the outer layer around the bacterium.",
+          "A cell wall is not a membrane, and it does not turn into one; the model shows the host's membrane wrapping around.",
+          "The model shows a single bacterium being taken in.",
+          "The model's outer membrane forms where the host's surface wraps around the bacterium, not from the nucleus."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-7",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "compartment-origins-s2",
+      "q": "According to the model, why do plant and algal cells have both mitochondria and chloroplasts, while animal cells have only mitochondria?",
+      "options": [
+        "Mitochondria came first; a photosynthetic bacterium was later taken in by one line of those cells.",
+        "Chloroplasts were gained first, and animal cells later lost theirs while keeping their mitochondria.",
+        "Both were gained at the same moment, and animal cells later turned their chloroplasts into mitochondria.",
+        "Plant cells are larger, so they had room to take in two kinds of bacteria at once while animal cells did not."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The model shows step 3 (mitochondria) before step 4 (chloroplast, in one line). Every descendant of the first event has mitochondria; only descendants of the later event have chloroplasts as well.",
+        "options": [
+          "Correct: the order of events explains why one organelle is nearly universal and the other limited to one group.",
+          "The model has mitochondria first; nothing in it shows animals losing chloroplasts.",
+          "The model shows two separate events, and the organelles differ in membranes, DNA and job.",
+          "Cell size does not explain the pattern; the order and branching of the events does."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-8",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "compartment-origins-s2",
+      "q": "Which new finding would most strongly support the model?",
+      "options": [
+        "Mitochondrial DNA matches DNA of certain living bacteria better than it matches the cell's nuclear DNA.",
+        "Mitochondria are found in the cells of most eukaryotes, including animals, plants, fungi and many single-celled groups.",
+        "Mitochondria move around inside the cell along the cytoskeleton, toward regions that need more ATP.",
+        "Cells with more mitochondria use more oxygen than cells with fewer mitochondria in the same tissue."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The model says mitochondria descend from bacteria, not from the host. If that is right, their DNA should resemble the DNA of living bacteria more than the host's own DNA, and it does.",
+        "options": [
+          "Correct: a close DNA match to bacteria tests the model's central claim about where mitochondria came from.",
+          "Wide distribution is consistent with the model, but organelles that arose in the host would also be widespread, so it does not test the origin.",
+          "Movement along the cytoskeleton tells you how mitochondria are moved now, not where they came from.",
+          "This connects mitochondria to oxygen use, a fact about their job, not about their origin."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-9",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "compartment-origins-s2",
+      "q": "A researcher removes every mitochondrion from a living yeast cell without killing it right away. If the model is correct, what is expected?",
+      "options": [
+        "The cell cannot build new mitochondria, because mitochondria form only by splitting of existing ones.",
+        "The cell builds new mitochondria from its own membranes, because it has the genes to make them.",
+        "The cell makes new mitochondria within hours by folding its plasma membrane inward.",
+        "The cell takes in free-living bacteria from its surroundings and turns them into mitochondria."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mitochondria come only from other mitochondria, just as bacteria come only from other bacteria. They carry their own DNA, and part of what they need is coded there, so a cell with none left has no way to make new ones.",
+        "options": [
+          "Correct: like bacteria, mitochondria arise only by division of existing ones.",
+          "The nucleus holds many genes for mitochondrial proteins, but not all of them; some are on the mitochondrial DNA, which was removed.",
+          "Infolding is a hypothesis for the origin of the nucleus and ER, not a way cells make mitochondria today.",
+          "Endosymbiosis happened over a vast span of time; a modern cell does not convert bacteria into organelles on demand."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-10",
+      "type": "order",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "compartment-origins-s2",
+      "q": "Put the events of the endosymbiotic theory in the order the model shows them.",
+      "options": [
+        "A host cell takes in an oxygen-using bacterium by wrapping its membrane around it.",
+        "The bacterium survives inside the host, enclosed by two membranes.",
+        "Over many generations the bacterium's descendants become mitochondria that divide inside the cell.",
+        "In one line of these cells, a photosynthetic bacterium is taken in and becomes the chloroplast."
+      ],
+      "why": {
+        "correct": "Engulfing, then surviving inside, then becoming an organelle over generations, then a second, later event in one line that produced chloroplasts."
+      }
+    },
+    {
+      "id": "bio-compartment-origins-11",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What does the endosymbiotic theory propose?",
+      "options": [
+        "Mitochondria and chloroplasts descend from free-living prokaryotes taken in by ancient host cells.",
+        "The nucleus formed when a large bacterium was swallowed by a smaller one and kept its DNA.",
+        "Mitochondria and chloroplasts formed from folds of the plasma membrane that pinched off inside the cell.",
+        "Prokaryotes descend from eukaryotic cells that lost their nucleus and organelles over time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The theory says two organelles, mitochondria and chloroplasts, began as prokaryotes living inside a host cell.",
+        "options": [
+          "Correct: engulfed prokaryotes became mitochondria and, later in one line, chloroplasts.",
+          "The theory is about mitochondria and chloroplasts, not the nucleus.",
+          "Membrane infolding is a separate hypothesis for the nucleus and endomembrane system; it does not explain the double membranes, DNA and ribosomes of these two organelles.",
+          "Prokaryote fossils are far older than eukaryote fossils; eukaryotes arose from prokaryotes, not the reverse."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-12",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "In the early partnership, the host cell gained a supply of ATP and the bacterium gained shelter and a steady supply of food molecules. How is this relationship best described?",
+      "options": [
+        "Mutualism, a kind of symbiosis in which both partners benefit",
+        "A partnership in which the host benefits while the bacterium is harmed",
+        "Competition, because the two partners use the same food molecules",
+        "A short-term encounter, because the bacterium was digested soon after"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two species living in close contact is symbiosis; when both gain, it is mutualism.",
+        "options": [
+          "Correct: ATP for the host, food and protection for the bacterium.",
+          "The scenario says the bacterium gained shelter and food, so it benefited too.",
+          "The two partners traded benefits rather than fighting over a shared supply.",
+          "A digested bacterium could not have become a permanent organelle."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-13",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Human mitochondrial DNA carries 37 genes. Free-living relatives of the bacteria that mitochondria came from carry more than 1,000. Most of the proteins inside a human mitochondrion are coded by genes in the nucleus. Which explanation fits these facts and the endosymbiotic theory?",
+      "options": [
+        "Over a long time, most of the endosymbiont's genes were lost or moved into the host's nucleus.",
+        "Mitochondria had no more than 37 genes at any point, so they did not descend from bacteria.",
+        "The host cell's nucleus made the mitochondrion from scratch and gave it a few genes to keep.",
+        "Mitochondria still have over 1,000 genes, but most of them are hidden in the nucleus of the bacterium."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A bacterium living permanently inside a host no longer needs many genes for life on its own, and some of its genes ended up in the host's nucleus. That leaves a small mitochondrial DNA and an organelle that depends on its host.",
+        "options": [
+          "Correct: gene loss and gene movement to the nucleus explain the small mitochondrial DNA.",
+          "A small number of genes now does not mean a small number at the start; the circular DNA and bacteria-like ribosomes still point to bacterial ancestors.",
+          "If the host built the organelle from scratch, its DNA would resemble nuclear DNA, but mitochondrial DNA is circular and bacteria-like.",
+          "Bacteria have no nucleus, and the mitochondrion has only its 37 genes."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-14",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A student says, \"Mitochondria are just bacteria that live in our cells today.\" Which evidence best shows this claim goes too far?",
+      "options": [
+        "Mitochondria cannot survive outside a cell, and most of their proteins are coded by genes in the nucleus.",
+        "Mitochondria have two membranes, circular DNA and ribosomes that resemble bacterial ribosomes in size and drug sensitivity.",
+        "Mitochondria divide by splitting, the way bacteria divide by binary fission.",
+        "Mitochondria are about the same size as many bacteria, 1 to 10 micrometers long."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mitochondria descend from bacteria but are no longer independent organisms: they depend on the host for most of their proteins and cannot live outside the cell.",
+        "options": [
+          "Correct: dependence on the host shows they are now organelles, not free bacteria.",
+          "These features show bacterial ancestry, which supports the student rather than limiting the claim.",
+          "Dividing like bacteria fits the student's claim; it does not show where it goes too far.",
+          "Similar size fits a bacterial origin; it does not show the difference between an organelle and a living bacterium."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-15",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "The outer membrane of the nuclear envelope is continuous with the membrane of the endoplasmic reticulum. How does this observation relate to the membrane infolding hypothesis?",
+      "options": [
+        "It fits the hypothesis, because both could have formed from the same inward folds of the plasma membrane.",
+        "It proves the hypothesis, because no other known process could connect two separate membranes inside one cell.",
+        "It shows the nucleus came from an engulfed bacterium, because the envelope has two membranes.",
+        "It contradicts the hypothesis, because folded membranes would stay attached to the plasma membrane."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If the nuclear envelope and ER both began as infoldings of the plasma membrane, you would expect them to be connected. The observation is consistent with the hypothesis, though it does not prove it.",
+        "options": [
+          "Correct: a shared origin from infolding would leave the two membranes connected.",
+          "One observation can support a hypothesis but cannot prove it; other histories could also connect them.",
+          "Unlike mitochondria, the nucleus has no circular DNA or bacteria-like ribosomes, so engulfing is not the favored explanation.",
+          "Folds can pinch off, as a vesicle pinches off in endocytosis, so separation from the plasma membrane is expected."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-16",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "1.B",
+      "level": "recall",
+      "diff": 1,
+      "q": "In biology, what does evolution mean?",
+      "options": [
+        "Change in the inherited traits of populations over many generations",
+        "Change in a single organism's body during its own lifetime",
+        "Any change in the number of individuals in a population",
+        "Improvement of a species toward a more complex and more perfect final form"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Evolution is a change in inherited traits across generations of a population, not changes in one individual's life.",
+        "options": [
+          "Correct: inherited traits, populations, generations.",
+          "Changes during one lifetime, such as growing stronger muscles, are not passed on and are not evolution.",
+          "A population can grow or shrink without any change in its inherited traits.",
+          "Evolution has no goal or final form; organisms do not evolve toward complexity on purpose."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-17",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "Nearly every eukaryote has mitochondria or traces of them, but only plants and algae have chloroplasts. What does this pattern suggest about common ancestry?",
+      "options": [
+        "Eukaryotes share an ancestor that already had mitochondria; chloroplasts came later in one branch.",
+        "Each eukaryotic group took in its own mitochondria separately, so they share no common ancestor.",
+        "Plants and algae are older than animals and fungi, because they carry a larger number of organelles.",
+        "Chloroplasts were in the first eukaryote and were lost by each group except plants and algae."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A feature shared by nearly all members of a group is best explained by inheritance from a common ancestor that had it. A feature limited to one branch was most likely gained later, in that branch.",
+        "options": [
+          "Correct: a widely shared feature points to an ancestor that had it; a narrowly shared one to a later gain.",
+          "Separate events in every group would be far less likely than one shared event, and mitochondrial DNA from different eukaryotes is closely alike.",
+          "Having more organelles does not make a group older; all living groups are equally recent descendants of their common ancestor.",
+          "Many separate losses are a less likely explanation than one gain in one branch."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-18",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which features are found in prokaryotic cells? Select all that apply.",
+      "options": [
+        "Ribosomes",
+        "A nucleus surrounded by a double membrane",
+        "Mitochondria",
+        "Endoplasmic reticulum and Golgi"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Prokaryotes generally lack internal membrane-bound organelles. They do have ribosomes, which every cell needs to make proteins.",
+        "options": [
+          "Every cell, prokaryotic or eukaryotic, has ribosomes.",
+          "Prokaryotes have a nucleoid, a DNA region without a membrane, not a nucleus.",
+          "Mitochondria are eukaryotic organelles; their bacterial ancestors were prokaryotes, but prokaryotes do not contain them.",
+          "The endomembrane system is a eukaryotic feature."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-19",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A single-celled organism called Paulinella holds photosynthetic bodies that are larger than typical chloroplasts, still carry many more genes than chloroplasts do, and arose from a much more recent engulfing event. How does this organism bear on the endosymbiotic theory?",
+      "options": [
+        "It shows the kind of event the theory describes can happen more than once, seen at an earlier stage.",
+        "It disproves the theory, because its photosynthetic bodies are different from the chloroplasts of plants.",
+        "It shows that chloroplasts are formed by infolding, because the bodies sit inside the cell.",
+        "It has no bearing on the theory, because the theory is about events that are finished and do not recur."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Paulinella's bodies look like a partnership partway along the path the theory describes: bacterium-like, gene-rich, and still being tamed. A second, younger case supports the idea that endosymbiosis is a real process.",
+        "options": [
+          "Correct: a younger, less reduced endosymbiont is what the theory would predict for a more recent event.",
+          "Being less reduced than plant chloroplasts is expected for a much younger partnership; it fits the theory.",
+          "The bodies came from an engulfed photosynthetic bacterium, not from folds of the host's membrane.",
+          "Nothing in the theory says engulfing can happen only once; Paulinella shows it can recur."
+        ]
+      }
+    },
+    {
+      "id": "bio-compartment-origins-20",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "compartment-origins",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Mitochondria in a muscle cell multiply when a person trains for endurance. How do the new mitochondria form?",
+      "options": [
+        "Existing mitochondria copy their circular DNA, grow, and split in two, much as bacteria do.",
+        "The nucleus releases new mitochondria from its outer membrane as the training goes on.",
+        "The cell takes in bacteria from the blood and converts them into mitochondria.",
+        "The endoplasmic reticulum folds up into new mitochondria wherever more ATP is needed."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mitochondria come only from existing mitochondria, by a splitting process like bacterial binary fission. That is one line of evidence for their bacterial ancestry.",
+        "options": [
+          "Correct: they replicate their DNA and divide by fission.",
+          "The nucleus does not produce mitochondria; it supplies many of their proteins.",
+          "Modern cells do not convert bacteria into mitochondria; that happened once, long ago.",
+          "The ER does not turn into mitochondria; mitochondria have their own DNA and ribosomes that the ER lacks."
+        ]
+      }
+    }
+  ]
+}

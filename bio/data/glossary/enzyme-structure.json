@@ -1,0 +1,8 @@
+{
+  "catalyst": { "def": "A substance that speeds up a chemical reaction and comes out of it unchanged, so it can act again. Enzymes are biological catalysts; most are proteins." },
+  "substrate": { "def": "The molecule an enzyme acts on. It binds in the enzyme's active site and is changed into one or more products." },
+  "active-site": { "def": "The pocket or groove on an enzyme where the substrate binds and the reaction happens. Its shape and the charges and polarity of the side chains lining it come from how the protein folds." },
+  "enzyme-specificity": { "def": "An enzyme's ability to act on one substrate, or a small group of similar ones, because only those molecules match the shape and chemical character (charge, polarity) of its active site." },
+  "enzyme-substrate-complex": { "def": "The short-lived unit formed when a substrate is bound in an enzyme's active site, held by weak attractions such as hydrogen bonds and ionic attractions, before it is changed into products." },
+  "induced-fit": { "def": "The model in which an enzyme's active site changes shape slightly as the substrate binds, gripping it more tightly. It refines the older lock-and-key model, which pictured a rigid active site with a fixed shape." }
+}

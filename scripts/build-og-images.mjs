@@ -1,4 +1,4 @@
-/* Renders the link-preview cards (site, NREMT, ochem, A&P).
+/* Renders the link-preview cards (site, NREMT, ochem, A&P, AP® Biology).
 
    These are the 1200x630 images an unfurler shows when a LevlPrep link is
    pasted into a chat. There were two of them, both hand-made and both wrong by
@@ -90,6 +90,18 @@ const CARDS = [
     brand: 'LevlPrep',
     title: 'Anatomy & Physiology, in the order it builds',
     sub: `${anpChapterCount} chapters of free notes, mechanism-first physiology, and interactive lessons with instant feedback.`,
+  },
+  /* AP® Biology (folder bio/). Original artwork, no College Board logo, and
+     no mark at all: an image cannot carry the disclaimer, and a preview card
+     is the nearest thing the site has to ad copy (docs/apbio-spec.md,
+     "Trademark"). No counts either: the course publishes unit by unit, and a
+     card is re-rendered by hand. */
+  {
+    out: 'bio/assets/og-image.png',
+    badge: 'Beta · Free notes',
+    brand: 'LevlPrep',
+    title: 'Biology for the May exam, from scratch',
+    sub: 'Free notes for every topic, data-heavy practice like the real exam, and the statistics skills, step by step.',
   },
 ];
 

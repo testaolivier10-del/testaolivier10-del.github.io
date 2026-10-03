@@ -1,0 +1,50 @@
+{
+  "topic": "cell-size",
+  "hook": "<p>A blue whale and a shrew are built from cells of about the same size. The whale simply has trillions more of them. Why don't big animals just have bigger cells? And why does a shrew, which weighs less than a coin, have to eat almost its own body weight in food every day while an elephant eats a few percent of its weight? Both answers come from one piece of geometry: as an object gets bigger, its inside grows faster than its outside.</p>",
+  "prereq": [
+    {
+      "q": "Through which structure must every material pass to enter or leave a cell?",
+      "options": ["The nucleus", "The cell membrane", "The Golgi complex"],
+      "correct": 1,
+      "why": "The cell membrane surrounds the whole cell, so everything that enters or leaves crosses it.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "In which organelle does cellular respiration make most of a eukaryotic cell's ATP, using oxygen?",
+      "options": ["The chloroplast", "The lysosome", "The mitochondrion"],
+      "correct": 2,
+      "why": "Mitochondria carry out most of cellular respiration, which uses oxygen to break down fuel, makes ATP and releases heat.",
+      "review": "cell-structure-function"
+    }
+  ],
+  "figure": { "figure": "sa-v-cubes", "caption": "As a cube grows from 1 cm to 3 cm on a side, its surface area grows 9 times but its volume grows 27 times, so its surface area-to-volume ratio falls from 6:1 to 2:1." },
+  "chain": [
+    { "cause": "A cell gets bigger.", "effect": "Its surface area grows with the square of its size, but its volume grows with the cube, so its surface area-to-volume ratio falls." },
+    { "cause": "Every part of the volume uses materials and makes wastes, but exchange happens only across the surface.", "effect": "Each unit of surface must serve more volume, and exchange per unit of volume slows." },
+    { "cause": "Diffusion is fast over short distances and slow over long ones, and the center of a big cell is far from its surface.", "effect": "Materials reach the center too slowly, which limits how large a cell can grow." },
+    { "cause": "Tissues that exchange a lot have thin projections and folds, such as microvilli, root hairs and alveoli.", "effect": "They add surface without adding much volume, raising the surface area-to-volume ratio." },
+    { "cause": "In a small endotherm, a high surface area-to-volume ratio lets heat escape quickly for its mass.", "effect": "Each gram must burn more fuel to replace the heat, so small endotherms have higher metabolic rates per gram than large ones." }
+  ],
+  "ideas": [
+    "For a cube with side s, surface area = 6s² and volume = s³. For a sphere, surface area = 4πr² and volume = 4/3 πr³. Doubling the size multiplies surface by 4 but volume by 8, so the ratio halves.",
+    "<b>Diffusion</b> is the net spreading of particles down their <b>concentration gradient</b>, from more crowded to less crowded, powered by their own motion. It is quick across a few micrometers and very slow across centimeters.",
+    "Small cells and thin, folded <b>exchange surfaces</b> (microvilli, root hairs, alveoli) keep the surface area-to-volume ratio high. Flattening a shape raises the ratio too: a thin slab exchanges far faster than a cube of the same volume.",
+    "<b>Endotherms</b> keep warm with heat from their own cellular respiration; <b>ectotherms</b> rely on outside heat. Small endotherms lose heat fast for their size, so their <b>metabolic rate</b> per gram is much higher than that of large endotherms."
+  ],
+  "misconception": {
+    "wrong": "A bigger cell has more surface area, so it can exchange materials with its surroundings better than a small cell.",
+    "right": "A bigger cell does have more total surface, but it has even more volume to supply. Per unit of volume it has less surface, so it exchanges materials more slowly for its size."
+  },
+  "check": [
+    "bio-cell-size-1",
+    "bio-cell-size-3",
+    "bio-cell-size-5",
+    "bio-cell-size-8",
+    "bio-cell-size-9",
+    "bio-cell-size-11",
+    "bio-cell-size-13",
+    "bio-cell-size-16"
+  ],
+  "summary": "<p>As an object grows, its volume grows faster than its surface, so its surface area-to-volume ratio falls. Cells exchange materials and heat across their surface, and diffusion is slow over long distances, so a high ratio is needed for fast exchange. That limits cell size and explains the thin, folded shapes of exchange surfaces such as microvilli, root hairs and alveoli. In endotherms the same geometry means small animals lose heat fast for their mass and have a higher metabolic rate per gram than large animals.</p>",
+  "connections": []
+}

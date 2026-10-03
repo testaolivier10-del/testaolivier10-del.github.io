@@ -1,0 +1,375 @@
+{
+  "stimuli": {
+    "transport-mechanisms-s1": {
+      "kind": "graph",
+      "title": "Glucose build-up in intestinal cells",
+      "text": "<p>Researchers placed samples of intestinal lining cells in a solution containing 5 mM glucose and followed the glucose concentration inside the cells. The graph shows the ratio of glucose inside the cells to glucose outside. Three conditions were tested: a normal salt solution (control); the same solution with all Na⁺ replaced by an equal concentration of choline (a positive ion that cells do not carry across the membrane); and the normal solution plus ouabain, a drug that stops the sodium-potassium pump. Points are means of four samples; error bars show ±2 standard errors.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time", "unit": "min", "min": 0, "max": 30, "step": 5 },
+        "y": { "label": "Glucose inside ÷ glucose outside", "unit": "", "min": 0, "max": 6, "step": 1 },
+        "series": [
+          { "name": "Control", "points": [[0, 0, 0], [5, 1.6, 0.2], [10, 2.9, 0.3], [15, 3.9, 0.3], [20, 4.5, 0.3], [30, 5.0, 0.4]] },
+          { "name": "Na⁺ replaced by choline", "points": [[0, 0, 0], [5, 0.4, 0.1], [10, 0.7, 0.1], [15, 0.9, 0.1], [20, 1.0, 0.1], [30, 1.0, 0.1]] },
+          { "name": "Ouabain", "points": [[0, 0, 0], [5, 1.4, 0.2], [10, 2.0, 0.2], [15, 1.8, 0.2], [20, 1.5, 0.2], [30, 1.1, 0.1]] }
+        ]
+      }
+    },
+    "transport-mechanisms-s2": {
+      "kind": "table",
+      "title": "Sucrose loading in plant cells",
+      "text": "<p>Plant cells that load sugar for transport around the plant take up sucrose through a membrane protein that carries one H⁺ and one sucrose molecule into the cell together. A proton pump in the same membrane uses ATP to move H⁺ out of the cell. Researchers gave leaf tissue sucrose and measured uptake under three treatments: no treatment, a drug that blocks the proton pump, and a chemical that lets H⁺ leak freely across the membrane.</p>",
+      "table": {
+        "caption": "Mean values for leaf tissue after 20 minutes of treatment (n = 5)",
+        "cols": ["Treatment", "pH just outside the membrane", "pH of the cytoplasm", "Sucrose uptake (nmol per g per min)", "ATP in the cells (% of control)"],
+        "rows": [
+          ["None (control)", "5.5", "7.5", "42", "100"],
+          ["Proton pump blocker", "6.9", "7.3", "6", "104"],
+          ["H⁺ leak chemical", "7.0", "7.2", "4", "88"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-transport-mechanisms-1", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "4.B", "level": "apply", "diff": 2, "stimulus": "transport-mechanisms-s1",
+      "q": "Which observation shows that, in the control, glucose was moved into the cells against its concentration gradient?",
+      "options": [
+        "After about 5 minutes the ratio rises above 1, and it reaches 5.0 by 30 minutes.",
+        "The ratio rises fastest during the first 5 minutes and then more slowly.",
+        "The control ratio is higher than the ouabain ratio at each time point after 10 minutes.",
+        "The error bars for the control grow larger as the experiment goes on."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A ratio above 1 means glucose is more concentrated inside than outside. Glucose kept entering after that point, so it was moving from low to high concentration.",
+        "options": [
+          "Correct: once the ratio passes 1, each further rise means glucose moving uphill, into the more concentrated side.",
+          "A fast start then slowing happens in passive transport too; on its own it says nothing about direction relative to the gradient.",
+          "This compares two conditions; it shows ouabain matters, but not that the control moved glucose uphill.",
+          "Error bars show how much the samples varied, not which way glucose moved."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-2", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.C", "level": "analyze", "diff": 2, "stimulus": "transport-mechanisms-s1",
+      "q": "Which explanation best accounts for the results when Na⁺ was replaced by choline?",
+      "options": [
+        "With no Na⁺ gradient to drive the cotransporter, glucose entered only passively and stopped at a ratio of 1.",
+        "Choline entered the cells through the cotransporter in place of Na⁺, and it carried glucose in more slowly than Na⁺ does.",
+        "Without Na⁺ the cells could not make ATP, so the glucose cotransporter had no energy and glucose could not enter.",
+        "Choline made the outside solution hypertonic, so water left the cells and glucose became trapped outside them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glucose climbs its gradient only by riding along with Na⁺ flowing down Na⁺'s gradient. Remove outside Na⁺ and that energy source is gone; glucose can still move passively, but only until the inside equals the outside (ratio 1.0).",
+        "options": [
+          "Correct: without Na⁺ flowing in, nothing pays for uphill glucose movement, so the ratio stops at 1.",
+          "The cotransporter is specific for Na⁺; if choline could drive it, glucose would still pile up above a ratio of 1, which it does not.",
+          "The cotransporter does not use ATP directly; and glucose did enter, reaching a ratio of 1.0.",
+          "Na⁺ was replaced by an equal concentration of choline, so the solution's solute level did not change."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-3", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "transport-mechanisms-s1",
+      "q": "With ouabain, glucose built up for about 10 minutes and then fell back toward a ratio of 1. Which explanation fits best?",
+      "options": [
+        "The existing Na⁺ gradient drove uptake at first, but with the pump stopped it ran down and glucose leaked out.",
+        "Ouabain needed about 10 minutes to enter the cells, and then it blocked the glucose cotransporter directly.",
+        "Ouabain stopped the cells from making ATP after 10 minutes, so the cotransporter ran out of the energy it uses directly.",
+        "The cells used up the glucose they had taken in for energy, which lowered the inside concentration after 10 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A gradient is stored energy. When the pump stops, the Na⁺ gradient built before the drug was added still powers the cotransporter, but Na⁺ entering is no longer pumped out. As the gradient runs down, it can no longer hold glucose above the outside level.",
+        "options": [
+          "Correct: the stored gradient lasts a while, then runs down without the pump to rebuild it.",
+          "Ouabain acts on the sodium-potassium pump, not the cotransporter; the delay comes from the gradient running down.",
+          "Ouabain stops the pump from using ATP; it does not stop ATP production. The cotransporter uses the Na⁺ gradient, not ATP.",
+          "If the cells were using glucose, the control would show the same fall. It keeps rising, so the fall must come from the pump being stopped."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-4", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "3.C", "level": "analyze", "diff": 3, "stimulus": "transport-mechanisms-s1",
+      "q": "Why did the researchers replace Na⁺ with an equal concentration of choline, instead of simply leaving the Na⁺ out?",
+      "options": [
+        "To keep total solute concentration the same, so water movement did not become a second variable.",
+        "To give the cells another ion they could use in place of Na⁺ to drive glucose into the cells.",
+        "To make sure the sodium-potassium pump had enough K⁺ to keep working at its normal rate.",
+        "To raise the electrical charge of the solution, so that glucose would be attracted into the cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Simply removing Na⁺ would make the solution hypotonic to the cells, so they would swell. Then any change in glucose uptake could come from the swelling instead of the missing Na⁺. Swapping in choline, an ion the cells do not transport, changes one variable only.",
+        "options": [
+          "Correct: matching total solute keeps the solution isotonic, so the only difference from the control is which ion is present.",
+          "The point of the condition is to remove the ion that drives glucose uphill, not to replace its job.",
+          "Normal solutions already contain K⁺; the swap was about keeping solute concentration constant.",
+          "Glucose is uncharged, so the solution's charge would not attract it; and swapping one positive ion for another leaves the charge unchanged."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-5", "type": "numeric", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "transport-mechanisms-s1",
+      "q": "In the control, the outside glucose concentration stayed at 5 mM. What was the glucose concentration inside the cells at 30 minutes, in mM?",
+      "numeric": { "answer": 25, "tol": 0.5, "unit": "mM", "decimals": 0 },
+      "why": { "correct": "Inside ÷ outside = 5.0, so inside = 5.0 × 5 mM = 25 mM: five times the outside level, built by cotransport with Na⁺." }
+    },
+    {
+      "id": "bio-transport-mechanisms-6", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "transport-mechanisms-s2",
+      "q": "What does the table show about the effect of the proton pump blocker?",
+      "options": [
+        "The pH just outside the membrane rose from 5.5 to 6.9, so fewer H⁺ were outside the cells.",
+        "The pH just outside the membrane fell from 6.9 to 5.5, so more H⁺ were outside the cells.",
+        "The cells' ATP fell sharply, so the blocker works by starving the pump of energy.",
+        "The cytoplasm became more acidic, so H⁺ built up inside the cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A higher pH means fewer H⁺. With the pump blocked, H⁺ stopped being pushed out, and the outside pH rose toward the inside value.",
+        "options": [
+          "Correct: from 5.5 to 6.9 is a rise in pH, so the concentration of H⁺ outside fell.",
+          "The control is 5.5 and the blocker 6.9, so pH rose, not fell.",
+          "ATP was 104% of control, essentially unchanged; the pump stopped because it was blocked, not for lack of ATP.",
+          "Cytoplasm pH went from 7.5 to 7.3, a small change; the large change was outside the membrane."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-7", "type": "numeric", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "5.A", "level": "apply", "diff": 3, "stimulus": "transport-mechanisms-s2",
+      "q": "In the control, how many times more concentrated is H⁺ just outside the membrane than in the cytoplasm?",
+      "numeric": { "answer": 100, "tol": 0, "unit": "times", "decimals": 0 },
+      "why": { "correct": "The pH scale is logarithmic: each pH unit is a tenfold change in H⁺ concentration. Outside is pH 5.5 and inside pH 7.5, two units apart, so H⁺ is 10 × 10 = 100 times more concentrated outside." }
+    },
+    {
+      "id": "bio-transport-mechanisms-8", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.C", "level": "analyze", "diff": 2, "stimulus": "transport-mechanisms-s2",
+      "q": "With the pump blocker, ATP stayed at the control level, yet sucrose uptake fell by about 85%. Which explanation fits?",
+      "options": [
+        "The sucrose carrier is driven by the H⁺ gradient, which collapsed when the pump stopped, despite normal ATP.",
+        "The sucrose carrier uses ATP directly, and the blocker kept it from reaching the ATP that was in the cells.",
+        "The blocker damaged the sucrose carrier as well as the pump, so neither protein could work.",
+        "Less H⁺ outside made the cell wall softer, so the cells could no longer hold the sucrose they took in."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The carrier uses the energy of H⁺ flowing back in, not ATP. ATP powers only the pump, which builds that H⁺ gradient. Block the pump and the gradient collapses (pH outside rose to 6.9), so sucrose uptake falls even with plenty of ATP.",
+        "options": [
+          "Correct: ATP is spent by the pump; the carrier spends the H⁺ gradient. No gradient, no uptake.",
+          "The carrier does not use ATP directly; that is what makes its transport secondary active transport.",
+          "The H⁺ leak chemical, which leaves the pump alone, cuts uptake just as much, so the gradient, not damage to the carrier, explains the drop.",
+          "The data show uptake falling; nothing suggests sucrose was taken in and lost again through the wall."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-9", "type": "predict", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "transport-mechanisms-s2",
+      "q": "Untreated tissue is moved into a solution buffered at pH 7.5, so the space just outside the membrane cannot become acidic. Predict how each quantity changes compared with the control.",
+      "variables": [
+        { "name": "Difference in H⁺ concentration across the membrane", "answer": "down", "why": "With the outside held at the same pH as the cytoplasm, the H⁺ concentration difference all but disappears, however hard the pump works." },
+        { "name": "Sucrose uptake", "answer": "down", "why": "The carrier depends on H⁺ flowing in down its gradient; with almost no H⁺ gradient, there is little energy to bring sucrose in." },
+        { "name": "Number of sucrose carrier proteins in the membrane", "answer": "none", "why": "Changing the pH outside does not add or remove carriers within the experiment; it removes the gradient that drives them." }
+      ],
+      "why": { "correct": "Cotransport needs the gradient, not just the proteins. A buffer that keeps the outside at pH 7.5 removes the H⁺ gradient, so sucrose uptake drops while the carriers themselves are untouched." }
+    },
+    {
+      "id": "bio-transport-mechanisms-10", "type": "multi", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "1.B", "level": "apply", "diff": 2, "stimulus": "transport-mechanisms-s2",
+      "q": "Which of these are examples of cotransport (secondary active transport)? Select all that apply.",
+      "options": [
+        "Sucrose entering a leaf cell together with H⁺",
+        "H⁺ being moved out of a leaf cell by the proton pump",
+        "Glucose entering an intestinal cell together with Na⁺",
+        "Na⁺ and K⁺ being exchanged by the sodium-potassium pump",
+        "Water entering a leaf cell through aquaporins"
+      ],
+      "correct": [0, 2],
+      "why": {
+        "correct": "Cotransport moves one substance uphill using another's downhill flow, with no ATP used by that protein. Pumps that spend ATP directly are primary active transport.",
+        "options": [
+          "Sucrose moves uphill using H⁺ flowing down its gradient: cotransport.",
+          "The proton pump spends ATP directly: primary active transport.",
+          "Glucose moves uphill using Na⁺ flowing down its gradient: cotransport.",
+          "The sodium-potassium pump spends ATP directly: primary active transport.",
+          "Water moves down its own gradient through a channel: facilitated diffusion (osmosis), not active transport."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-11", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "What distinguishes primary active transport from secondary active transport (cotransport)?",
+      "options": [
+        "Primary uses ATP directly; secondary uses the energy stored in a gradient that a pump built.",
+        "Primary moves substances down their gradient; secondary moves them against their gradient.",
+        "Primary moves ions; secondary moves large molecules inside vesicles.",
+        "Primary needs a transport protein; secondary happens through the lipid bilayer itself."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both move a substance uphill. The difference is the energy source: ATP spent on the protein itself (primary) or an existing gradient of another substance (secondary).",
+        "options": [
+          "Correct: the source of energy separates them.",
+          "Both kinds of active transport move something against its gradient; that is what makes them active.",
+          "Moving molecules in vesicles is bulk transport. Cotransport moves single ions and molecules through proteins.",
+          "Both require membrane proteins: a pump for primary, a cotransporter for secondary."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-12", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Heart muscle cells remove calcium using an exchanger that lets three Na⁺ flow into the cell while it carries one Ca²⁺ out. How is this transporter best described?",
+      "options": [
+        "An antiporter: the two ions cross in opposite directions, and Na⁺ flowing in powers Ca²⁺ moving out.",
+        "A symporter: the two ions cross together, and both move down their gradients at the same time.",
+        "A pump: it spends ATP directly to push both Na⁺ and Ca²⁺ against their gradients.",
+        "A channel: it forms an open tunnel through which both ions pass in whichever direction they are pushed."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Opposite directions makes it an antiporter. Na⁺ enters down its gradient (built by the sodium-potassium pump), and that flow pays for pushing Ca²⁺ out against its gradient: cotransport.",
+        "options": [
+          "Correct: opposite directions, and one ion's downhill flow drives the other uphill.",
+          "A symporter moves both substances the same way; here Na⁺ comes in while Ca²⁺ goes out.",
+          "No ATP is used by this protein; the energy comes from the Na⁺ gradient.",
+          "A channel lets one kind of ion run downhill; it cannot push a second ion out against its gradient."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-13", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "Digoxin partly blocks the sodium-potassium pump in heart muscle cells. Using the Na⁺/Ca²⁺ exchanger described above, predict the effect on calcium inside the cells.",
+      "options": [
+        "Calcium inside rises, because a weaker Na⁺ gradient drives less Ca²⁺ out through the exchanger.",
+        "Calcium inside falls, because more Na⁺ inside pushes Ca²⁺ out through the exchanger faster.",
+        "Calcium inside stays the same, because the exchanger does not use ATP and is unaffected.",
+        "Calcium inside falls, because the blocked pump now carries Ca²⁺ out in place of Na⁺."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With fewer working pumps, Na⁺ builds up inside and the Na⁺ gradient shrinks. Less Na⁺ flows in through the exchanger, so less Ca²⁺ is pushed out, and Ca²⁺ rises inside. That extra calcium strengthens each heartbeat.",
+        "options": [
+          "Correct: a smaller Na⁺ gradient is less stored energy for exporting Ca²⁺.",
+          "Extra Na⁺ inside reduces the inward Na⁺ gradient, which slows the exchanger rather than speeding it.",
+          "The exchanger does not use ATP, but it depends on the gradient the pump builds, so it is affected.",
+          "A blocked pump moves nothing, and the sodium-potassium pump does not carry calcium."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-14", "type": "numeric", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "5.A", "level": "analyze", "diff": 3,
+      "q": "The intestinal cotransporter carries 2 Na⁺ in with each glucose. The sodium-potassium pump spends 1 ATP to remove 3 Na⁺. If every Na⁺ that enters with glucose must be pumped back out, how many ATP are spent per glucose taken in? Round to two decimal places.",
+      "numeric": { "answer": 0.67, "tol": 0.01, "unit": "ATP", "decimals": 2 },
+      "why": { "correct": "Each glucose brings in 2 Na⁺. Pumping out 2 Na⁺ costs 2 ÷ 3 of an ATP ≈ 0.67 ATP. The cotransporter never touches ATP, but the cell still pays for every glucose, through the pump." }
+    },
+    {
+      "id": "bio-transport-mechanisms-15", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "Oral rehydration drinks for people with severe diarrhea contain both salt and glucose. Why does adding glucose help the gut absorb salt and water?",
+      "options": [
+        "Na⁺ and glucose enter intestinal cells together through cotransporters, and water follows the solutes.",
+        "Glucose makes the drink hypertonic to the intestinal cells, which pulls water from the cells into the gut.",
+        "Glucose gives the intestinal cells ATP that they spend to pump water directly from the gut into the blood.",
+        "Glucose binds to Na⁺ in the drink, forming a larger molecule that passes straight through the lipid bilayer."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Sodium-glucose cotransporters move Na⁺ and glucose in together. As those solutes build up in the cells and the blood beyond, the water potential there falls, and water follows by osmosis.",
+        "options": [
+          "Correct: glucose lets more Na⁺ in through cotransport, and water follows the absorbed solutes.",
+          "Pulling water into the gut would worsen dehydration; the drinks work because solutes, and then water, are absorbed.",
+          "Cells have no pumps for water; water moves by osmosis, following solutes.",
+          "Glucose and Na⁺ do not join into one molecule, and a larger polar or charged particle would cross the bilayer even less easily."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-16", "type": "predict", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.E", "level": "analyze", "diff": 2,
+      "q": "An intestinal cell is given a poison that stops it from making ATP. Predict how each process changes over the next hour.",
+      "variables": [
+        { "name": "Na⁺ moved out by the sodium-potassium pump", "answer": "down", "why": "The pump spends ATP directly, so it slows as ATP runs out." },
+        { "name": "Glucose built up inside the cell by sodium-glucose cotransport", "answer": "down", "why": "As pumping fails, Na⁺ accumulates inside and the Na⁺ gradient that drives the cotransporter runs down." },
+        { "name": "Entry of a small nonpolar test molecule that the cell does not use, held at a fixed concentration outside", "answer": "none", "why": "A small nonpolar molecule crosses the bilayer by simple diffusion, which depends only on its own gradient. The cell does not use it, so stopping ATP production leaves its gradient, and its entry, unchanged." }
+      ],
+      "why": { "correct": "Primary active transport fails first, because it uses ATP directly; cotransport fails soon after, because it spends the gradient the pump built; simple diffusion carries on." }
+    },
+    {
+      "id": "bio-transport-mechanisms-17", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.B", "level": "analyze", "diff": 2,
+      "q": "A cell takes in an amino acid that is already 20 times more concentrated inside than outside. The uptake stops when Na⁺ is removed from the outside solution, but not when the cell's ATP is briefly lowered. Which mechanism do the data point to?",
+      "options": [
+        "Cotransport with Na⁺, which runs on the stored Na⁺ gradient for a while after ATP drops.",
+        "A pump that spends ATP directly to move the amino acid into the cell against its gradient.",
+        "Facilitated diffusion through a channel, because the amino acid needs a transport protein.",
+        "Endocytosis, because amino acids are too large to cross the membrane through proteins."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Uptake against a 20-fold gradient is active. Depending on outside Na⁺ but not directly on ATP is the signature of cotransport: the Na⁺ gradient lasts a while even when ATP is briefly low.",
+        "options": [
+          "Correct: needs Na⁺, tolerates a short ATP dip, works uphill.",
+          "A pump that uses ATP directly would stop when ATP fell, and it would not need outside Na⁺.",
+          "Facilitated diffusion cannot build up a 20-fold excess inside; it stops when the two sides are equal.",
+          "Single amino acids are small and are carried by transport proteins; endocytosis is for large particles and fluid."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-18", "type": "multi", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "A white blood cell is about to engulf a bacterium. Which mechanism moves the bacterium into the cell? Select all that apply.",
+      "options": [
+        "Endocytosis, with the membrane wrapping around the bacterium",
+        "Cotransport, with Na⁺ carrying the bacterium in",
+        "Facilitated diffusion through a large channel protein",
+        "Simple diffusion through the lipid bilayer"
+      ],
+      "correct": [0],
+      "why": {
+        "correct": "A bacterium is far too large for any transport protein. The cell's membrane surrounds it and pinches off into a vesicle: endocytosis, a form of bulk transport that uses energy.",
+        "options": [
+          "Engulfing a whole cell is phagocytosis, a kind of endocytosis.",
+          "Cotransporters move single ions and small molecules, not whole cells.",
+          "Channel proteins pass ions or water molecules, nothing close to the size of a bacterium.",
+          "A bacterium is enormous compared with the molecules that slip through the bilayer."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-19", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.A", "level": "analyze", "diff": 2,
+      "q": "A small, nonpolar molecule is more concentrated outside a cell than inside. Which route will most of it take into the cell?",
+      "options": [
+        "Simple diffusion straight through the lipid bilayer, with no protein and no ATP needed",
+        "Facilitated diffusion through a specific carrier protein, because it moves down its gradient",
+        "Cotransport with Na⁺, because the cell keeps a steep Na⁺ gradient across its membrane",
+        "Active transport by a pump, because the cell controls which molecules may enter it"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Size, polarity, charge and gradient direction decide the route. Small and nonpolar means it dissolves in the bilayer; down its gradient means no energy is needed.",
+        "options": [
+          "Correct: small nonpolar molecules such as O₂ and CO₂ diffuse straight through the bilayer.",
+          "A carrier is needed for molecules the bilayer blocks, such as glucose; a small nonpolar molecule does not need one.",
+          "Cotransport is for moving something uphill; this molecule is already moving downhill.",
+          "Pumps move substances against their gradient; nothing needs to be spent to let this molecule in."
+        ]
+      }
+    },
+    {
+      "id": "bio-transport-mechanisms-20", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "2.B", "level": "analyze", "diff": 2,
+      "q": "In a model of an intestinal cell, the sodium-potassium pump sits on the side facing the blood, and the sodium-glucose cotransporter on the side facing the gut. What happens to glucose uptake from the gut if only the pump on the blood side stops?",
+      "options": [
+        "It slows, because Na⁺ that enters from the gut is no longer removed, so the inward Na⁺ gradient runs down.",
+        "It continues unchanged, because the pump and the cotransporter are on different sides of the cell.",
+        "It speeds up, because Na⁺ is no longer leaving the cell and is free to carry more glucose in.",
+        "It continues unchanged, because the cotransporter uses its own supply of ATP to move glucose."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The cytoplasm links the two sides. Na⁺ entering from the gut must be pumped out somewhere to keep the inside Na⁺ low. With the pump stopped, inside Na⁺ rises and the gradient across the gut-side membrane shrinks.",
+        "options": [
+          "Correct: the pump on one side keeps the whole cell's Na⁺ low, which the cotransporter on the other side depends on.",
+          "Both membranes face the same cytoplasm, so the Na⁺ level the pump sets affects the gut side too.",
+          "Na⁺ piling up inside reduces the gradient that drives the cotransporter, so uptake slows.",
+          "The cotransporter uses no ATP; its energy comes from the Na⁺ gradient."
+        ]
+      }
+    }
+  ]
+}

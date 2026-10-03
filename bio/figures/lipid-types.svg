@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d">
+<title id="t">A triglyceride and cholesterol</title>
+<desc id="d">Left: a triglyceride, a vertical three-carbon glycerol backbone with three fatty acid tails attached to the right through ester bonds; the middle tail is bent. Right: cholesterol, four fused rings with an OH group at the lower left and a short hydrocarbon tail at the upper right.</desc>
+<rect width="640" height="300" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28" text-anchor="middle">
+<rect x="40" y="60" width="54" height="150" rx="8" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+<text x="67" y="140" font-size="13" font-weight="700" transform="rotate(-90 67 140)">glycerol</text>
+<line x1="94" y1="85" x2="122" y2="85" stroke="#1F2A28" stroke-width="3"/><circle cx="130" cy="85" r="7" fill="#ffffff" stroke="#D55E00" stroke-width="2"/><polyline points="140,80 155,90 170,80 185,90 200,80 215,90 230,80 245,90 260,80 275,90 290,80 305,90 320,80" fill="none" stroke="#6B5E3C" stroke-width="3"/><line x1="94" y1="135" x2="122" y2="135" stroke="#1F2A28" stroke-width="3"/><circle cx="130" cy="135" r="7" fill="#ffffff" stroke="#D55E00" stroke-width="2"/><polyline points="140,130 155,140 170,130 185,140 200,130 215,140 230,134 245,148 260,142 275,156 290,150 305,164 320,158" fill="none" stroke="#6B5E3C" stroke-width="3"/><line x1="94" y1="185" x2="122" y2="185" stroke="#1F2A28" stroke-width="3"/><circle cx="130" cy="185" r="7" fill="#ffffff" stroke="#D55E00" stroke-width="2"/><polyline points="140,180 155,190 170,180 185,190 200,180 215,190 230,180 245,190 260,180 275,190 290,180 305,190 320,180" fill="none" stroke="#6B5E3C" stroke-width="3"/><text x="130" y="236" font-size="12" fill="#8E3B2E">ester bond</text><line x1="130" y1="224" x2="130" y2="194" stroke="#8E3B2E" stroke-width="1.5"/>
+<text x="220" y="40" font-size="15" font-weight="700">Triglyceride (fat or oil)</text>
+<text x="220" y="268" font-size="12">glycerol + 3 fatty acids; 3 waters released in building it</text>
+<line x1="380" y1="30" x2="380" y2="280" stroke="#C9D2D0" stroke-width="2" stroke-dasharray="6 6"/>
+<text x="510" y="40" font-size="15" font-weight="700">Cholesterol (a steroid)</text>
+<g fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5">
+<polygon points="456.0,155.0 456.0,185.0 430.0,200.0 404.0,185.0 404.0,155.0 430.0,140.0"/><polygon points="508.0,155.0 508.0,185.0 482.0,200.0 456.0,185.0 456.0,155.0 482.0,140.0"/><polygon points="534.0,110.0 534.0,140.0 508.0,155.0 482.0,140.0 482.0,110.0 508.0,95.0"/>
+</g><polygon points="534,110 560,98 576,125 560,152 534,140" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<polyline points="560,98 578,76 598,84 618,62" fill="none" stroke="#1F2A28" stroke-width="2.5"/>
+<line x1="404" y1="185" x2="388" y2="200" stroke="#1F2A28" stroke-width="2.5"/><text x="382" y="218" font-size="14" font-weight="700" fill="#D55E00">OH</text>
+<text x="510" y="268" font-size="12">four fused rings; hydrophobic except one –OH</text>
+</g>
+</svg>
