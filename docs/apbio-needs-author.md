@@ -153,7 +153,22 @@ Raised while writing Unit 3 (2026-10-03, branch `claude/apbio-u3`):
 - **dcmu-water-splitting** (open). `bio-photosynthesis-8` keys "O₂ release stops" when DCMU
   blocks electrons leaving photosystem II. Strictly, PSII can turn over a few times before
   water oxidation halts; over minutes the statement holds. A reviewer should confirm the
-  wording.
+  wording. (Unit 3 review, `docs/apbio-reviews/u3.md`: holds for the 20-minute assay; kept.)
+- **action-spectrum-green** (open, 3.5; review u3). Extracted-pigment spectra and thin algal
+  suspensions show a deep green dip, but whole leaves absorb much of the green light that
+  reaches them and use it fairly well (McCree-type leaf action spectra give roughly 65-75% of the
+  peak rate per photon near 550 nm). `photosynthesis-s1` now says its action spectrum came from a
+  thin suspension of green algae, and `bio-photosynthesis-3` grows algal cultures, not plants.
+  The notes still say the action spectrum is "lowest in green", which is true but larger in
+  algae than in leaves. Meanwhile: as changed; decide whether the notes need a hedge.
+- **dcpip-entry-point** (open, 3.5; review u3). DCPIP mostly takes electrons from the
+  plastoquinone/cytochrome part of the chain, before photosystem I, not from the end of the
+  chain. AP lab materials say it stands in for NADP⁺, and `bio-photosynthesis-6` and `-9` use
+  that framing. Meanwhile: the lab framing; no item depends on where exactly DCPIP is reduced.
+- **cyanide-gradient** (open, 3.6; review u3). In intact cells after cyanide, ATP synthase can
+  run backward, using ATP from glycolysis to hold part of the H⁺ gradient. `bio-cellular-respiration-22`
+  keys the intermembrane H⁺ concentration as "down", which is right in direction. Meanwhile: as
+  keyed.
 
 ## Map content to confirm
 

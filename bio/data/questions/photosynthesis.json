@@ -3,7 +3,7 @@
     "photosynthesis-s1": {
       "kind": "graph",
       "title": "Pigments and the action spectrum",
-      "text": "<p>The graph shows how strongly three leaf pigments, extracted and dissolved separately, absorb each wavelength of visible light (absorption spectra). It also shows the action spectrum: the rate of O₂ release by a leaf lit with equal intensities of each wavelength, as a percentage of the highest rate.</p>",
+      "text": "<p>The graph shows how strongly three pigments of green algae and leaves, extracted and dissolved separately, absorb each wavelength of visible light (absorption spectra). It also shows the action spectrum: the rate of O₂ release by a thin suspension of green algae lit with equal intensities of each wavelength, as a percentage of the highest rate.</p>",
       "chart": {
         "type": "line",
         "x": {
@@ -516,7 +516,7 @@
         "Chlorophyll b and carotenoids absorb strongly at 475 nm and pass the energy on to chlorophyll a in the photosystems.",
         "Light at 475 nm carries more energy per photon, so the little that chlorophyll a absorbs is enough to drive photosynthesis at full speed.",
         "Carotenoids split water themselves at 475 nm, producing O₂ without any help from chlorophyll a or the photosystems.",
-        "The action spectrum was measured on a leaf, so its values are higher than absorption at each wavelength."
+        "The action spectrum was measured on living cells, so its values are higher than absorption at each wavelength."
       ],
       "correct": 0,
       "why": {
@@ -525,7 +525,7 @@
           "Accessory pigments widen the range of light a plant can use.",
           "Shorter wavelengths do carry more energy per photon, but a photon must be absorbed to be used, and chlorophyll a absorbs few here.",
           "Water is split at photosystem II's reaction center, not by carotenoids on their own.",
-          "At 550 nm the leaf's rate (25%) is still low, so being measured on a leaf does not raise the rate everywhere; the pigments explain the pattern."
+          "At 550 nm the cells' rate (25%) is still low, so measuring living cells does not raise the rate everywhere; the pigments explain the pattern."
         ]
       }
     },
@@ -538,19 +538,19 @@
       "level": "apply",
       "diff": 2,
       "stimulus": "photosynthesis-s1",
-      "q": "Two identical plants are grown for a week, one under light of 550 nm and one under light of 450 nm at the same intensity. What is the most likely result?",
+      "q": "Two identical cultures of these algae are grown for a week, one under light of 550 nm and one under light of 450 nm at the same intensity. What is the most likely result?",
       "options": [
-        "The plant under 550 nm grows less, because its pigments absorb little of that light.",
-        "The plant under 550 nm grows more, because green light is the color plants reflect and use best.",
+        "The culture under 550 nm grows less, because its pigments absorb little of that light.",
+        "The culture under 550 nm grows more, because green light is the color algae reflect and use best.",
         "Both grow the same, because the two lights have the same intensity and so deliver the same usable energy.",
-        "The plant under 450 nm grows less, because carotenoids absorb blue light and block it from chlorophyll."
+        "The culture under 450 nm grows less, because carotenoids absorb blue light and block it from chlorophyll."
       ],
       "correct": 0,
       "why": {
         "correct": "At 550 nm the action spectrum is 25%, against 90% at 450 nm. Less absorbed light means less ATP and NADPH and less sugar.",
         "options": [
           "Light that is not absorbed cannot drive photosynthesis.",
-          "Reflected light is the light a plant does not use; leaves look green because they reflect it.",
+          "Reflected light is the light the cells do not use; green algae look green because they reflect it.",
           "The same intensity is not the same absorbed energy; absorption differs hugely between the two wavelengths.",
           "Carotenoids pass absorbed energy on to chlorophyll a; they help rather than block."
         ]
@@ -561,7 +561,7 @@
       "type": "single",
       "unit": "unit-3",
       "topic": "photosynthesis",
-      "practice": "3.D",
+      "practice": "3.B",
       "level": "analyze",
       "diff": 2,
       "stimulus": "photosynthesis-s1",

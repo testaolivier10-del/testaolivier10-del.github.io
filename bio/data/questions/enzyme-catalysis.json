@@ -329,19 +329,19 @@
       "stimulus": "enzyme-catalysis-s1",
       "q": "At 180 seconds the student adds another 5 mL of 1.5% hydrogen peroxide to the fresh-extract flask. What is the most likely result?",
       "options": [
-        "Oxygen production speeds up again, close to the starting rate, because the catalase was not used up.",
+        "Oxygen production speeds up again, well above its rate just before, because the catalase was not used up.",
         "Oxygen production stays near zero, because the catalase was used up breaking the first 5 mL.",
         "Oxygen production speeds up but stops after 0.2 mL, because each catalase molecule can act a few more times.",
         "Oxygen production slows further, because adding more reactant dilutes the catalase in the flask."
       ],
       "correct": 0,
       "why": {
-        "correct": "Catalase comes out of each reaction unchanged, so it can break down the new hydrogen peroxide. The rate returns to near the starting value.",
+        "correct": "Catalase comes out of each reaction unchanged, so it can break down the new hydrogen peroxide and oxygen production jumps from almost nothing. It will not quite match the first 30 seconds, because the new peroxide is mixed into liquid already in the flask, so its concentration is lower than at the start.",
         "options": [
           "The enzyme is reused; fresh reactant restarts the reaction at a similar rate.",
           "Enzymes are not consumed, so the catalase still works after the first batch is gone.",
           "Each catalase molecule can act millions of times; there is no small limit on uses.",
-          "The volume roughly doubles, but the new reactant gives the enzyme plenty to act on, so the rate rises rather than falls."
+          "The volume roughly doubles, which dilutes both catalase and peroxide somewhat, but the flask goes from almost no reactant to plenty, so the rate rises rather than falls."
         ]
       }
     },
