@@ -447,7 +447,9 @@ await interaction('Atomic structure step 4: keyboard path to Continue', async (p
 for (const p of ['/ochem/learn.html', '/nremt/dashboard.html', '/ochem/dashboard.html', '/ochem/', '/']) {
   await interaction(`Dark-mode contrast: ${p}`, async (page) => {
     await page.goto(url(p));
-    await page.waitForTimeout(1200);
+    // The tutor tip fades in at 1.2 s over 0.18 s; sampling mid-fade reads a
+    // blended colour as a contrast failure, so wait until it has settled.
+    await page.waitForTimeout(1600);
     const dark = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
     if (dark !== 'dark') return 'the page did not follow prefers-color-scheme: dark';
     await page.addScriptTag({ content: axeSource });
