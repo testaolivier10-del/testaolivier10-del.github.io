@@ -18,13 +18,16 @@ bio/                                    the course, at levlprep.com/bio/
   unit-sheets/<unit>.html               one-page printable unit summary            generated
   glossary.html                         every defined term                         generated
   practice.html review.html exams.html frq.html flashcards.html tools.html
-  dashboard.html search.html teachers.html   app page shells from pages.json       generated
+  dashboard.html search.html                 app page shells from pages.json       generated
+  teachers.html                         for teachers (not an app; "static" in pages.json) generated
+  frq/<id>.html                         one FRQ: stable, shareable, printable page generated
   figures/<id>.svg|jpg                  OpenStax Biology 2e (CC BY 4.0), public domain, our SVGs
   assets/                               runtime JS and CSS (hand-written) + generated JSON
     bio-curriculum.js                   window.ApBioCurriculum, window.ApBioPages  generated
     glossary.json  notes-index.json                                                generated
     bank/<unit>.json  bank/<unit>-why.json  bank/index.json                        generated
-    pages/<page>.js, pages/pages.css    app page scripts (not written yet)
+    frq/index.json  frq/<id>.json  summaries.json                                  generated
+    pages/<page>.js, pages/pages.css    app page scripts (see "App pages" below)
   data/                                 THE SOURCE: everything authored lives here
     lessons/<topic>.json   notes/<topic>.html   glossary/<topic>.json
     figures/<topic>.json   labels/<figure>.json questions/<topic>.json
@@ -69,6 +72,22 @@ and the registry key stay `apbio`; globals start `ApBio`; question ids start `bi
   A common mistake, Check yourself (items, sets under their panel), Summary, What comes next,
   Connections. Stepped view as A&P decisions 67 and 81.
 
+- **FRQs.** An FRQ goes out when every unit it lists is published: `assets/frq/index.json` (id, type,
+  points, title, units, topics, practices, placeholder), `assets/frq/<id>.json` (the whole question,
+  stimulus rendered) and `frq/<id>.html`: prompt and data as static HTML, a print-only answer sheet
+  (name line, lined space, about six lines a point; a blank grid for the graphing part), and the
+  workspace mount. The rubric and the sample answer are NOT in the page HTML; `frq-kit.js` fetches
+  them when asked.
+- **Share bar** (`shareBar` in the generator) on every lesson, notes page, unit sheet and FRQ:
+  "Share to Google Classroom" (`https://classroom.google.com/share?url=<encoded>&title=<encoded>`,
+  title without the mark), Copy link (`data-copy`, wired by `bio-nav.js`) and Print (`data-print`).
+  Lessons also link their question set, `practice.html?topic=<id>`. The lesson print CSS already
+  prints every step in one run.
+- **teachers.html** (`teachersPage`): how to assign (stable links, question sets, FRQs, printing,
+  Classroom), no login for students, a privacy summary linking `privacy.html#schools`, access by
+  email (no instructor flow exists), the framework order mapped to lessons. Indexable once launched.
+- `assets/summaries.json`: `{ topic: lesson summary text }` for the flashcards.
+
 ## Runtime (`bio/assets/`, every global `ApBio*`)
 
 | File | Job |
@@ -82,6 +101,28 @@ and the registry key stay `apbio`; globals start `ApBio`; question ids start `bi
 | `bio.css` | the A&P visual language tokens renamed `--bio-*`, dark mode, the course green, 44 px targets, stimulus panels, charts, numeric input, unit sheet print CSS |
 
 Pages set `window.ApBioBase` (path back to `bio/`) and `window.ApBioSection`.
+
+## App pages (`bio/assets/pages/`, forked from `anatomy-physiology/assets/apps/`)
+
+| File | Job |
+|---|---|
+| `practice.js` | set builder: unit, topic, science practice (1-6), type (standalone, stimulus sets, numeric), difficulty, count; modes weakest topics and missed (retried until right). A *step* is one standalone item or one whole set (authored order, one panel). Lazy: `loadIndex`, then only the units drawn from, `loadWhy` after each answer. `ApBioCore.serve` per item. The address bar follows the builder (`?unit= &topic= &practice= &type= &diff= &mode=`); share bar for the set and "Print as a worksheet" (answer key optional, on its own page; locked units left out). Summary ends with `LevlPremium.card('apbio','summary')`. **Skills hook:** `window.ApBioSkills.practiceItems(filters)` returns a Promise of full items (bank item format); they join as standalone steps |
+| `review.js` | SM-2 due queue, oldest first; a set item comes back alone under its stimulus; tool items (`<tool>:<content>:<item>`) link to `tools/<slug>.html` via `window.ApBioTools` |
+| `exams.js` | unit test (equal share per published topic of the unit, sets whole; 15, 25 or all) and practice exam (Section I: 60 MCQ in 90 min, per unit by the midpoint of its weight range, largest remainder, sets whole; Section II: one FRQ per type, 25 min per long and 10 per short = 90 min, no pause, printable booklet; then rubric self-scoring; results by unit and practice; readiness band 1-5 from 60% MCQ + 40% FRQ with cut-offs 75/60/45/30, labelled "Not calibrated: a rough guide, not a predicted score."). When the bank cannot fill a full exam the setup says so per unit and per FRQ type and offers a "shorter practice exam" (each built unit keeps its full-exam share, capped by what exists). Timing standard, 1.5x, 2x, untimed. Answers recorded at the end (A&P decision 42); one free exam via `ApBioCore.freeExam` |
+| `frq-kit.js` | `window.ApBioFrq`: load, question and rubric HTML, self-score, the printable booklet, `printOnly` (`#bio-print`, `body.bio-printing`), drafts, scores |
+| `frq.js` | `frq.html`: list by type and unit, best self-scores, the types not written yet. `frq/<id>.html`: write (a textarea per part), reveal the rubric, check points, sample answers, save; "print the rubric on a separate page" option. An FRQ in a locked unit shows the Premium card instead of the workspace |
+| `dashboard.js` | mastery by unit and topic and by science practice, weakest topics linked to their lesson and notes, FRQ self-scores, exam history, the exam-date card; Premium (`allowed('analytics')`): mastery by skill (4.B), tool accuracy |
+| `flashcards.js` | glossary both ways + one summary card per topic; decks all, unit, topic, missed terms; SM-2 as A&P |
+| `search.js` | lessons, notes passages, glossary, FRQs, tools, pages with `LevlSearch`; `?q=` |
+| `pages.css` | A&P `apps.css` renamed `bio-`, plus filters, FRQ workspace, Section II, print (lined space, grid, worksheet, booklet) |
+
+Storage besides `apbio_progress_v1` and `apbio_flashcards_v1`: `apbio_prefs_v1` (synced) holds
+`examTiming`, `examHistory` (last 30: `{ ts, kind, label, unit, mcq: {c, n}, frq: {got, of}, band,
+partial }`), `frqScores` (`{ id: { got, of, parts, best, tries, ts, title, type, units } }`),
+`flashcards` (deck prefs) and `examDateSeeded`; `apbio_frq_drafts_v1` holds typed FRQ answers on
+this device only, never synced; `apbio_exam_date` is the shared exam-date card's key (the dashboard
+seeds 2027-05-03 once, because `assets/exam-date.js` has no per-course default). Analytics events
+added: `apbio-session-finish`, `apbio-exam-finish`, `apbio-frq-score`.
 
 ## Content formats
 
@@ -136,6 +177,9 @@ href="#id">`, `<table class="compare">`, `<div class="worked">`, `<aside class="
 otherwise), units, topics, practices, stimulus (a stimulus object, as above, or a stimulus id),
 parts: [{ label, prompt, points, rubric: [{ point, accept: [] }] (one line per point), sample }],
 graphSpec? (iee-graph: the graph the student builds) }`. Parts' points add up to `points`.
+Optional: `title` (else the stimulus title) and `placeholder: true` (labelled "placeholder" on
+every page). `graphSpec`: `{ type: "line|bar", x: { label }, y: { label }, errorBars? }`; the part
+whose prompt says graph, plot or construct gets the blank grid on paper.
 
 ### Glossary, figures, labels
 
@@ -172,5 +216,6 @@ graphSpec? (iee-graph: the graph the student builds) }`. Parts' points add up to
 The topic `water-hydrogen-bonding` (lesson, notes, 15 items in two stimulus sets including two
 numeric items, glossary, the figure `water-hbond`, and `frq/frq-water-cooling.json`) is
 **placeholder** written to prove the engine in Phase 0 against the stub map. It has had no
-accuracy check. Content authors replace it (and its topic id must match the real map's) before
+accuracy check. Three more FRQs, `frq-placeholder-*.json` (iee-graph, investigation,
+conceptual; `"placeholder": true`), exist only to exercise the FRQ and exam pages. Content authors replace them and it (and its topic id must match the real map's) before
 Unit 1 is published.

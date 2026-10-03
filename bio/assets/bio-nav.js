@@ -1,8 +1,8 @@
 /* AP® Biology course nav: declares the course's tabs (the site's one tab set,
    A&P decision 70) and hands the rest to the shared site chrome
    (assets/site-chrome.js). Each page sets window.ApBioSection and
-   window.ApBioBase (the path back to bio/). Also wires [data-print] buttons
-   (the unit sheets) without an inline handler. */
+   window.ApBioBase (the path back to bio/). Also wires [data-print] and
+   [data-copy] (Copy link) buttons without an inline handler. */
 (function(){
   var base = window.ApBioBase || '';
   var section = window.ApBioSection || '';
@@ -33,6 +33,16 @@
   }catch(e){}
   document.addEventListener('click', function(e){
     var b = e.target && e.target.closest ? e.target.closest('[data-print]') : null;
-    if(b){ e.preventDefault(); window.print(); }
+    if(b){ e.preventDefault(); window.print(); return; }
+    // Copy link (the share bar on lessons, notes, unit sheets and FRQs).
+    var c = e.target && e.target.closest ? e.target.closest('[data-copy]') : null;
+    if(!c) return;
+    e.preventDefault();
+    var url = c.getAttribute('data-copy'), label = c.getAttribute('data-label') || c.textContent;
+    c.setAttribute('data-label', label);
+    function said(t){ c.textContent = t; setTimeout(function(){ c.textContent = label; }, 2500); }
+    try{
+      navigator.clipboard.writeText(url).then(function(){ said('Link copied'); }, function(){ window.prompt('Copy this link:', url); });
+    }catch(x){ window.prompt('Copy this link:', url); }
   });
 })();

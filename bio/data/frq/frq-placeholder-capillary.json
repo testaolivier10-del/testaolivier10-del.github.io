@@ -1,0 +1,29 @@
+{
+  "id": "frq-placeholder-capillary",
+  "placeholder": true,
+  "title": "Water rising in glass tubes (placeholder)",
+  "type": "investigation",
+  "points": 4,
+  "units": ["unit-1"],
+  "topics": ["water-hydrogen-bonding"],
+  "practices": ["3.A", "3.B", "3.C", "6.E"],
+  "stimulus": {
+    "kind": "setup",
+    "title": "Capillary tubes of different widths",
+    "text": "<p>PLACEHOLDER content, written only to test the free-response pages; it has had no accuracy check. A student stands glass tubes of three inside widths (0.5 mm, 1.0 mm and 2.0 mm) upright in a dish of water and measures how high the water rises inside each tube after one minute.</p>"
+  },
+  "parts": [
+    { "label": "a", "points": 1, "prompt": "<b>State</b> a null hypothesis for this investigation.",
+      "rubric": [{ "point": "The width of the tube has no effect on the height the water rises.", "accept": ["no difference in height among the tube widths"] }],
+      "sample": "The inside width of the tube has no effect on how high the water rises in it." },
+    { "label": "b", "points": 1, "prompt": "<b>Identify</b> one variable the student should keep the same in every tube.",
+      "rubric": [{ "point": "Any valid controlled variable: water temperature, tube material, time before measuring, depth the tube is placed.", "accept": ["same glass", "same temperature", "same time"] }],
+      "sample": "The water temperature should be the same for every tube." },
+    { "label": "c", "points": 1, "prompt": "<b>Predict</b> which tube will show the highest rise.",
+      "rubric": [{ "point": "The narrowest (0.5 mm) tube.", "accept": ["0.5 mm tube"] }],
+      "sample": "The 0.5 mm tube will show the highest rise." },
+    { "label": "d", "points": 1, "prompt": "<b>Justify</b> your prediction in part (c).",
+      "rubric": [{ "point": "In a narrow tube, adhesion to the glass acts on a larger share of the water column relative to its weight, and cohesion pulls the rest of the column up with it.", "accept": ["more glass surface per volume of water, so adhesion lifts it higher"] }],
+      "sample": "Water molecules stick to the glass by adhesion and pull the molecules below them up by cohesion. In a narrow tube there is more glass surface for each unit of water weight, so the water is pulled higher." }
+  ]
+}
