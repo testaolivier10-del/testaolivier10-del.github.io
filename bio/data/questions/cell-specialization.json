@@ -1,0 +1,817 @@
+{
+  "stimuli": {
+    "cell-specialization-s1": {
+      "kind": "graph",
+      "title": "Gene expression levels in three human tissues",
+      "text": "<p>Researchers measured the mRNA of four genes in samples of liver, pancreatic islets (clusters of hormone-making cells) and skeletal muscle from six donors. For each gene, the level is given as a percentage of that gene's level in the tissue where it is highest. Bars are means; error bars are ± 2 SE.</p>",
+      "chart": {
+        "type": "bar",
+        "x": {
+          "label": "Gene",
+          "categories": [
+            "Albumin",
+            "Insulin",
+            "Skeletal myosin",
+            "Glycolysis enzyme"
+          ]
+        },
+        "y": {
+          "label": "mRNA level",
+          "unit": "% of highest tissue",
+          "min": 0,
+          "max": 110,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "Liver",
+            "points": [
+              [
+                "Albumin",
+                100,
+                6
+              ],
+              [
+                "Insulin",
+                0.1,
+                0.1
+              ],
+              [
+                "Skeletal myosin",
+                0.3,
+                0.2
+              ],
+              [
+                "Glycolysis enzyme",
+                62,
+                7
+              ]
+            ]
+          },
+          {
+            "name": "Pancreatic islets",
+            "points": [
+              [
+                "Albumin",
+                0.5,
+                0.3
+              ],
+              [
+                "Insulin",
+                100,
+                9
+              ],
+              [
+                "Skeletal myosin",
+                0.4,
+                0.3
+              ],
+              [
+                "Glycolysis enzyme",
+                48,
+                6
+              ]
+            ]
+          },
+          {
+            "name": "Skeletal muscle",
+            "points": [
+              [
+                "Albumin",
+                0.2,
+                0.1
+              ],
+              [
+                "Insulin",
+                0.1,
+                0.1
+              ],
+              [
+                "Skeletal myosin",
+                100,
+                8
+              ],
+              [
+                "Glycolysis enzyme",
+                100,
+                9
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "cell-specialization-s2": {
+      "kind": "table",
+      "title": "A microRNA and its target",
+      "text": "<p>Cultured human cells make microRNA X (miR-X), which pairs with a short sequence near the 3′ end of the mRNA for protein P. Researchers added extra miR-X, added a molecule that blocks the cells' own miR-X, or gave the cells a version of the protein P gene whose mRNA has three bases changed in the pairing sequence (the protein it codes for is unchanged). After 48 hours they measured protein P's mRNA, protein P, and the rate at which the protein P gene was being transcribed. Values are relative to untreated cells (means of four dishes).</p>",
+      "table": {
+        "caption": "Effects on protein P (untreated cells = 1.00)",
+        "cols": [
+          "Treatment",
+          "Protein P mRNA",
+          "Protein P",
+          "Transcription rate of the protein P gene"
+        ],
+        "rows": [
+          [
+            "None",
+            "1.00",
+            "1.00",
+            "1.00"
+          ],
+          [
+            "Extra miR-X added",
+            "0.45",
+            "0.20",
+            "0.98"
+          ],
+          [
+            "Cells' own miR-X blocked",
+            "1.30",
+            "1.90",
+            "1.03"
+          ],
+          [
+            "Extra miR-X added; mRNA with changed pairing sequence",
+            "0.97",
+            "0.95",
+            "1.01"
+          ]
+        ]
+      }
+    },
+    "cell-specialization-s3": {
+      "kind": "graph",
+      "title": "A protein gradient along a fruit fly embryo",
+      "text": "<p>In a fruit fly egg, the mother's cells place the mRNA for a transcription factor called Bicoid at the front (head) end. After fertilization it is translated, and the protein spreads toward the back, forming a gradient. Cells in the embryo switch on the gene <i>hunchback</i> wherever Bicoid is above 15 units; front structures (head and thorax) form from the region where <i>hunchback</i> is on. The graph shows a simplified model of the gradient in embryos from normal mothers (two copies of the <i>bicoid</i> gene) and from mothers engineered with four copies.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Position along the embryo (0 = front end)",
+          "unit": "% of embryo length",
+          "min": 0,
+          "max": 100,
+          "step": 10
+        },
+        "y": {
+          "label": "Bicoid protein",
+          "unit": "units",
+          "min": 0,
+          "max": 200,
+          "step": 25
+        },
+        "series": [
+          {
+            "name": "Mother with 2 copies (normal)",
+            "points": [
+              [
+                0,
+                100
+              ],
+              [
+                10,
+                67
+              ],
+              [
+                20,
+                44.9
+              ],
+              [
+                30,
+                30.1
+              ],
+              [
+                40,
+                20.2
+              ],
+              [
+                50,
+                13.5
+              ],
+              [
+                60,
+                9.1
+              ],
+              [
+                70,
+                6.1
+              ],
+              [
+                80,
+                4.1
+              ],
+              [
+                90,
+                2.7
+              ],
+              [
+                100,
+                1.8
+              ]
+            ]
+          },
+          {
+            "name": "Mother with 4 copies",
+            "points": [
+              [
+                0,
+                200
+              ],
+              [
+                10,
+                134.1
+              ],
+              [
+                20,
+                89.9
+              ],
+              [
+                30,
+                60.2
+              ],
+              [
+                40,
+                40.4
+              ],
+              [
+                50,
+                27.1
+              ],
+              [
+                60,
+                18.1
+              ],
+              [
+                70,
+                12.2
+              ],
+              [
+                80,
+                8.2
+              ],
+              [
+                90,
+                5.5
+              ],
+              [
+                100,
+                3.7
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cell-specialization-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-specialization-s1",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "Albumin, insulin and myosin are each high in one tissue; the glycolysis enzyme is in each of them.",
+        "Each of the four mRNAs is high in one of the tissues and nearly absent from the other two tissues.",
+        "The four mRNAs are found at similar levels in the three tissues, within the error bars of the data.",
+        "The glycolysis enzyme mRNA is high in one tissue, while the other three are found in each tissue."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Albumin is high only in liver, insulin only in islets and myosin only in muscle (others below 1%), while the glycolysis enzyme is 48-100% in every tissue.",
+        "options": [
+          "Correct: three tissue-specific genes and one used everywhere.",
+          "The glycolysis enzyme is 48% or more in every tissue, so it is not limited to one.",
+          "Albumin is 100% in liver and under 1% elsewhere, far outside the error bars.",
+          "This reverses the pattern: the glycolysis enzyme is the one found everywhere."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-2",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-specialization-s1",
+      "q": "A student says the graph proves liver cells do not have the insulin gene. Which response is best?",
+      "options": [
+        "The graph measures mRNA, not DNA: liver cells have the gene but do not transcribe it.",
+        "The student is right, because a cell that carries a gene transcribes it at least at some level.",
+        "The graph shows a little insulin mRNA in liver, so liver cells probably secrete some insulin too.",
+        "The student is right, because each cell type keeps the genes it uses and discards the others."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Almost every cell in the body carries the same genome. The near-zero bar shows the gene is not being transcribed in liver, not that it is missing; testing the liver cells' DNA would find the gene.",
+        "options": [
+          "Correct: absence of mRNA is not absence of the gene.",
+          "Many genes are present but silent; differential gene expression is the rule.",
+          "0.1% is at the level of background, and mRNA alone would not show the hormone is made and released.",
+          "Cells do not discard unused genes; nuclei from specialized cells can still direct a whole new animal."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-3",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-specialization-s1",
+      "q": "Why is the glycolysis enzyme's mRNA found in all three tissues?",
+      "options": [
+        "Every cell breaks down glucose for energy, so each tissue expresses the gene.",
+        "The glycolysis enzyme gene is found in these three tissues and in no others.",
+        "Each tissue picks up the mRNA from the other tissues, carried through the blood.",
+        "Glycolysis happens in the nucleus, where each of a cell's genes is copied."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glycolysis is a housekeeping job that nearly all cells need, so its enzymes' genes are expressed in nearly every cell type, though at different levels.",
+        "options": [
+          "Correct: a housekeeping gene, used everywhere.",
+          "Every cell carries this gene, like every other gene.",
+          "mRNAs are made and used inside the cell that transcribes them.",
+          "Glycolysis happens in the cytoplasm, and genes are not all copied in any one cell."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cell-specialization-s1",
+      "q": "MyoD is a transcription factor normally made in cells that become skeletal muscle. Researchers make cultured skin cells produce MyoD. Predict the most likely result.",
+      "options": [
+        "Many skin cells start transcribing myosin and other muscle genes and begin to look like muscle cells.",
+        "The skin cells make MyoD protein but transcribe the same genes as before, since their genes are fixed.",
+        "The skin cells transcribe myosin but lose their copies of the genes that skin cells use.",
+        "The skin cells start transcribing albumin and insulin as well as myosin, since MyoD switches on silent genes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "MyoD is a master regulator: it binds enhancers of many muscle genes and switches them on together, and it activates more muscle transcription factors. Skin cells carry those genes, so MyoD can turn many of them into muscle-like cells, as was first shown in 1987.",
+        "options": [
+          "Correct: one factor can launch a whole coordinated program.",
+          "A cell's genes are not fixed off forever; a new transcription factor can switch on genes it targets.",
+          "Switching programs does not delete genes; DNA is not lost.",
+          "MyoD binds the enhancers of muscle genes; liver and islet genes need their own activators."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-5",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-specialization-s1",
+      "q": "How many times higher is the albumin mRNA level in liver than in pancreatic islets? Give a whole number.",
+      "numeric": {
+        "answer": 200,
+        "tol": 0,
+        "unit": "times",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "100 ÷ 0.5 = 200. Liver cells transcribe the albumin gene about 200 times as much as islet cells do."
+      }
+    },
+    {
+      "id": "bio-cell-specialization-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cell-specialization-s2",
+      "q": "Which statement about adding extra miR-X is supported by the table?",
+      "options": [
+        "It lowers protein P more than protein P's mRNA, without changing transcription.",
+        "It lowers transcription of the protein P gene, so less of its mRNA and protein are made.",
+        "It lowers protein P's mRNA, but protein P itself stays the same as in untreated cells.",
+        "It raises protein P, because more miR-X helps ribosomes read protein P's mRNA."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With extra miR-X, mRNA falls to 0.45 and protein to 0.20, while transcription stays at 0.98, essentially unchanged.",
+        "options": [
+          "Correct: a larger drop in protein than mRNA, transcription unchanged.",
+          "Transcription is 0.98, the same as untreated cells within error.",
+          "Protein P falls to 0.20.",
+          "Protein P falls; it is blocking miR-X that raises it."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-specialization-s2",
+      "q": "Which mechanism best explains the effect of miR-X?",
+      "options": [
+        "miR-X pairs with protein P's mRNA, so the mRNA is broken down and translated less.",
+        "miR-X binds to the protein P gene's promoter and stops RNA polymerase from copying it.",
+        "miR-X is translated into a protein that breaks down protein P after it is made.",
+        "miR-X adds methyl groups to the protein P gene, packing it into heterochromatin."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A microRNA is loaded into a protein complex and guided by base pairing to its target mRNA, where it reduces translation and speeds the mRNA's breakdown. That fits lower mRNA, even lower protein and unchanged transcription.",
+        "options": [
+          "Correct: post-transcriptional regulation by base pairing.",
+          "Transcription is unchanged, so miR-X does not act at the promoter.",
+          "MicroRNAs are not translated; they act as RNA.",
+          "Methylation would silence transcription, which did not change."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cell-specialization-s2",
+      "q": "What does the last row (changed pairing sequence) add to the experiment?",
+      "options": [
+        "It shows the effect depends on miR-X pairing with that sequence, not on adding RNA in general.",
+        "It shows that changing three bases of an mRNA changes the amino acids of the protein it codes for.",
+        "It shows that the cells' own miR-X keeps protein P lower than it would be without it.",
+        "It shows that miR-X lowers the transcription of each gene in the cell by about the same amount."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Extra miR-X has almost no effect (0.97, 0.95) on an mRNA it cannot pair with. So the effect requires complementary pairing at that site; it is not a side effect of adding RNA to cells.",
+        "options": [
+          "Correct: a control for specificity.",
+          "The stem says the protein is unchanged; the three bases lie outside the coding part.",
+          "That is shown by the row where the cells' own miR-X is blocked.",
+          "Transcription of the protein P gene is unchanged in every row."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-specialization-s2",
+      "q": "Which row is the evidence that the cells' own miR-X normally keeps protein P lower than it would otherwise be?",
+      "options": [
+        "Blocking the cells' own miR-X, which raised protein P",
+        "Adding extra miR-X, which lowered protein P to 0.20 of normal",
+        "Changing the pairing sequence, which left protein P at 0.95",
+        "The untreated cells, in which protein P is set to 1.00"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Removing the cells' own miR-X nearly doubles protein P, so at normal levels miR-X is already holding protein P down.",
+        "options": [
+          "Correct: taking away the natural regulator raises its target.",
+          "Adding extra miR-X shows what more of it can do, not what the normal amount does.",
+          "That row tests pairing with added miR-X; it does not remove the cells' own.",
+          "Untreated cells are the baseline; they cannot show an effect by themselves."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-10",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cell-specialization-s3",
+      "q": "In embryos from normal mothers, at about what position (in % of embryo length) does Bicoid fall to 15 units, the edge of the <i>hunchback</i> region? Give a whole number.",
+      "numeric": {
+        "answer": 47,
+        "tol": 3,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "The normal curve is 20.2 at 40% and 13.5 at 50%. 15 lies about three quarters of the way down that step: 40 + 10 × (20.2 − 15) ÷ (20.2 − 13.5) ≈ 48; reading the curve gives about 47%."
+      }
+    },
+    {
+      "id": "bio-cell-specialization-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cell-specialization-s3",
+      "q": "Predict how the embryos from mothers with four copies of <i>bicoid</i> will differ from normal embryos.",
+      "options": [
+        "The hunchback region extends back to about 65%, so front structures take up more of the embryo.",
+        "The hunchback region shrinks toward the front end, so front structures take up less of the embryo.",
+        "The hunchback region stays near 47%, because each cell carries the same genes in both kinds of embryo.",
+        "Hunchback is switched on along the whole length, so no back structures form anywhere in the embryo."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With twice as much Bicoid, the level stays above 15 units farther back: the four-copy curve is 18.1 at 60% and 12.2 at 70%, so the edge moves to about 65%. Real embryos from such mothers have enlarged head regions shifted backward.",
+        "options": [
+          "Correct: more morphogen moves each threshold away from the source.",
+          "More Bicoid raises the level at every position, so the region grows rather than shrinks.",
+          "Cells respond to the Bicoid level they experience, not just to which genes they carry.",
+          "The four-copy curve falls below 15 units by about 65%, so the back part still lacks hunchback."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-12",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cell-specialization-s3",
+      "q": "How can one protein gradient give cells at different positions different fates?",
+      "options": [
+        "Different genes switch on above different Bicoid levels, so each position turns on its own gene set.",
+        "Each cell receives a different set of genes, depending on how much Bicoid reaches its nucleus.",
+        "Bicoid destroys the DNA of the genes that are not needed in each part of the developing embryo.",
+        "Cells near the front divide faster, and faster division alone decides what they become."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Bicoid is a morphogen: target genes have enhancers that need different amounts of it, so high, middle and low levels switch on different combinations of genes, giving different regions their identities.",
+        "options": [
+          "Correct: concentration thresholds become positional information.",
+          "Every cell has the same genome; what differs is which genes are switched on.",
+          "No DNA is destroyed; genes are left off, not removed.",
+          "The model is about which genes are transcribed at each Bicoid level, not about division rate."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-13",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cell-specialization-s3",
+      "q": "A mother has no working copies of <i>bicoid</i>. Her mate has two working copies. Predict the embryos' development.",
+      "options": [
+        "They lack head and thorax, because no Bicoid is put in the egg, whatever the father's genes.",
+        "They develop normally, because the father's two working copies make Bicoid in the embryo.",
+        "They form a head at both ends of the embryo, because the Bicoid gradient becomes flat.",
+        "About half develop normally, those that inherit a working copy from the father."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Bicoid mRNA is placed in the egg by the mother's cells before fertilization. With none, there is no gradient, hunchback is not switched on at the front, and head and thorax do not form. The father's genes arrive too late to make the gradient.",
+        "options": [
+          "Correct: a maternal-effect gene; the mother's genotype decides.",
+          "The gradient comes from mRNA the mother puts into the egg, before the embryo's own genes are used.",
+          "With no Bicoid there is no high level anywhere, so no head forms at either end.",
+          "Every embryo depends on the mother's mRNA, so the father's copies do not rescue any of them."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "How do totipotent and pluripotent stem cells differ?",
+      "options": [
+        "Totipotent cells can form a whole organism, placenta included; pluripotent cells form any body cell but not placenta.",
+        "Pluripotent cells can form a whole organism, including the placenta; totipotent cells can form a few closely related cell types.",
+        "Totipotent cells are found in adult tissues, while pluripotent cells are found in the early embryo instead.",
+        "Totipotent cells divide by mitosis, while pluripotent cells divide by meiosis to make gametes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A fertilized egg and the cells of the first few divisions are totipotent. Cells of the inner cell mass of an early embryo are pluripotent: they can become any cell of the body, but not the placenta.",
+        "options": [
+          "Correct: totipotent is the broadest potential.",
+          "This reverses the two terms.",
+          "Totipotent cells exist only at the very start of development; adult stem cells are more limited.",
+          "Both divide by mitosis; meiosis is for making gametes."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-15",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A nucleus from a specialized tadpole intestine cell was put into an egg whose own nucleus had been destroyed. In some trials, the egg developed into a normal tadpole. What does this show?",
+      "options": [
+        "The specialized cell still had a full set of genes, which the egg's cytoplasm switched back on.",
+        "Intestine cells keep just the genes for intestine, and the egg turned those into the other genes.",
+        "The tadpole's genes came from the egg's destroyed nucleus, which had repaired itself.",
+        "Specialization happens by losing genes, and the egg supplied the genes that were lost."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A whole tadpole needs every kind of gene. Since a specialized cell's nucleus could direct one, specialization keeps the genome intact and works by switching genes on and off; the egg's cytoplasm reset which genes were used.",
+        "options": [
+          "Correct: differentiated cells keep their whole genome.",
+          "If intestine cells kept only intestine genes, they could not supply the genes for muscle, nerve and skin.",
+          "The egg's nucleus was destroyed; the tadpole's genes came from the transplanted nucleus.",
+          "The egg cytoplasm has no nucleus to supply genes; the result shows nothing was lost."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-16",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A drug blocks the proteasome, the protein complex that breaks down proteins tagged for destruction. Predict each quantity in dividing cells treated with the drug, compared with untreated cells.",
+      "variables": [
+        {
+          "name": "Amount of mitotic cyclin left after anaphase",
+          "answer": "up",
+          "why": "Cyclins are tagged and broken down by the proteasome to end mitosis; blocked, they stay."
+        },
+        {
+          "name": "Number of cells that complete mitosis and divide",
+          "answer": "down",
+          "why": "Cells need cyclin breakdown to exit mitosis, so they stall instead of finishing division."
+        },
+        {
+          "name": "Transcription rate of the cyclin gene",
+          "answer": "none",
+          "why": "The drug acts after translation, on protein breakdown, not on transcription of the gene."
+        }
+      ],
+      "why": {
+        "correct": "Protein breakdown is post-translational regulation: tagging proteins for the proteasome removes them on cue. Blocking it leaves proteins such as cyclins in place, which holds cells in mitosis; transcription is not the step affected."
+      }
+    },
+    {
+      "id": "bio-cell-specialization-17",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Pancreatic cells translate insulin as a single longer chain, proinsulin. Enzymes in the Golgi and secretory vesicles cut out a middle piece, leaving two chains joined by disulfide bonds; only this form is active. What kind of regulation is this?",
+      "options": [
+        "Post-translational modification: the protein is changed after it is made",
+        "Post-transcriptional regulation, because the mRNA for insulin is spliced in the Golgi",
+        "Epigenetic regulation, because the insulin gene's histones are acetylated",
+        "Transcriptional regulation, because the insulin gene's enhancer is activated"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cutting a finished polypeptide to activate it is a post-translational modification, like adding phosphate groups or sugars; it controls when and where the active protein appears.",
+        "options": [
+          "Correct: the change happens to the protein, after translation.",
+          "Splicing happens to pre-mRNA in the nucleus, not to proteins in the Golgi.",
+          "Histone marks affect transcription, not the processing of a protein.",
+          "Enhancers act on transcription; this cut happens to the finished chain."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-18",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In a fruit fly with an altered regulatory sequence, a Hox gene that normally works in the thorax is switched on in the head as well. The fly grows legs where its antennae should be. Which explanation is best?",
+      "options": [
+        "The Hox gene's product is a transcription factor that switches on the leg program wherever it is active.",
+        "The Hox gene codes for a structural protein of legs, and now the head has enough of it to build legs.",
+        "Head cells contain leg genes that thorax cells lack, and the Hox gene moved those genes to the head.",
+        "The head cells divided faster than usual, and the extra cells became legs by chance."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Hox genes are master regulatory genes: their products are transcription factors that tell a body segment what to become by switching on whole sets of genes. Switched on in the head, the thorax Hox gene sets off the leg program there.",
+        "options": [
+          "Correct: one regulatory gene controls many others, so a whole structure changes.",
+          "A single structural protein cannot build a leg; Hox proteins regulate many genes.",
+          "All cells have the same genes; the difference is which are switched on.",
+          "Division speed does not explain a structure as organized as a leg."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-19",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a frog embryo, the optic cup (an outgrowth of the developing brain) normally touches the skin above it, which then forms a lens. When an optic cup is transplanted under skin on the side of the body, a lens forms there. When a thin filter that lets molecules through but not cells is placed between them, a lens still forms. What do these results show?",
+      "options": [
+        "The optic cup releases signal molecules that induce nearby skin cells to switch on lens genes.",
+        "Lens cells are carried to the skin by the optic cup, and they divide to make the lens.",
+        "Skin cells everywhere form a lens on their own when the embryo reaches a certain age.",
+        "The optic cup has to touch the skin directly, through cell junctions, for a lens to be induced."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A lens forms wherever the optic cup is, so the cup causes it; it still forms through a filter that blocks cells, so the signal is a molecule that diffuses. This is induction: one tissue's signals change gene expression in a neighbor.",
+        "options": [
+          "Correct: induction by a diffusing signal.",
+          "The filter blocks cells, yet a lens forms, so no cells were carried over.",
+          "Side skin forms a lens only when the optic cup is placed under it.",
+          "The filter prevents contact, yet a lens forms, so contact is not required."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-20",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these regulate gene expression after transcription has already happened? Select all that apply.",
+      "options": [
+        "A microRNA pairing with an mRNA",
+        "Alternative splicing of a pre-mRNA",
+        "Acetylation of histones at a promoter",
+        "An activator binding an enhancer",
+        "Methylation of a promoter's DNA"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "MicroRNAs and splicing act on RNA that has already been made, so they are post-transcriptional. Histone acetylation, activators at enhancers and DNA methylation all affect whether transcription happens.",
+        "options": [
+          "Correct: it acts on an existing mRNA.",
+          "Correct: it acts on an existing pre-mRNA.",
+          "Histone acetylation changes access to DNA, before transcription.",
+          "Activators control whether transcription starts.",
+          "Promoter methylation silences transcription."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-specialization-21",
+      "type": "order",
+      "unit": "unit-6",
+      "topic": "cell-specialization",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put these steps in order for a cell in an embryo that becomes a muscle cell.",
+      "options": [
+        "A signal from neighboring tissue binds receptors on the cell.",
+        "The signaling pathway activates a master transcription factor in the cell.",
+        "The transcription factor binds enhancers of many muscle genes.",
+        "Muscle genes, such as myosin, are transcribed together.",
+        "The cell fills with contractile proteins and takes on a muscle cell's shape and job."
+      ],
+      "why": {
+        "correct": "Induction starts with a signal, whose pathway changes which transcription factors are active; those factors switch on a coordinated set of genes, and their products give the cell its specialized structure and function."
+      }
+    }
+  ]
+}

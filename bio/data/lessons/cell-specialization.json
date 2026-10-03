@@ -1,0 +1,79 @@
+{
+  "topic": "cell-specialization",
+  "hook": "<p>A neuron in your brain and a white blood cell in your blood look nothing alike and do completely different jobs, yet both carry the same 3 billion base pairs of DNA inherited from one fertilized egg. In 1962 John Gurdon took the nucleus of a tadpole's intestine cell, put it into a frog egg whose own nucleus had been destroyed, and sometimes got a whole new tadpole. A specialized cell had lost none of its genes. What makes cells different is which genes they use.</p>",
+  "prereq": [
+    {
+      "q": "An enhancer increases a gene's transcription when",
+      "options": ["activator proteins bind it and the DNA loops to the promoter", "it is copied into the gene's mRNA", "methyl groups are added to it"],
+      "correct": 0,
+      "why": "Activators on an enhancer contact the promoter's proteins through DNA looping.",
+      "review": "gene-regulation"
+    },
+    {
+      "q": "In alternative splicing,",
+      "options": ["one pre-mRNA is spliced in different ways, giving different mRNAs", "a gene is copied from different promoters", "introns are added to an mRNA"],
+      "correct": 0,
+      "why": "Including or skipping exons gives different mature mRNAs from one gene.",
+      "review": "transcription-rna-processing"
+    },
+    {
+      "q": "A cell responds to a signal molecule only if it",
+      "options": ["has a receptor for that signal", "makes the signal itself", "is next to a blood vessel"],
+      "correct": 0,
+      "why": "Receptors make a cell a target; the response often includes switching genes on.",
+      "review": "signal-transduction-intro"
+    }
+  ],
+  "figure": {
+    "figure": "differential-expression",
+    "caption": "Every cell has the same genes. A gene is transcribed only where the activators that match its enhancer are present, so each cell type switches on its own set."
+  },
+  "chain": [
+    {
+      "cause": "Every cell in a body inherits the same genome from the fertilized egg.",
+      "effect": "Cells cannot differ in which genes they have, only in which genes they express."
+    },
+    {
+      "cause": "Early in development, signals from neighboring cells (induction) and gradients of morphogens reach cells in different amounts.",
+      "effect": "Cells in different places switch on different transcription factors."
+    },
+    {
+      "cause": "Each transcription factor binds the enhancers of many genes, and a gene needs a particular combination of factors.",
+      "effect": "Whole sets of genes are switched on together (coordinated gene expression), and master regulators such as Hox genes set the identity of body regions."
+    },
+    {
+      "cause": "Different cells now express different genes: differential gene expression.",
+      "effect": "They make different proteins and become specialized cell types: cell differentiation."
+    },
+    {
+      "cause": "After transcription, microRNAs, splicing choices and protein modification and breakdown fine-tune which products are present.",
+      "effect": "Each cell type's proteins are set at the level of mRNA and protein as well as at the gene."
+    }
+  ],
+  "ideas": [
+    "<b>Differential gene expression</b>: the same genome, different genes expressed. It is the basis of <b>cell differentiation</b>.",
+    "Specific <b>transcription factors</b> and combinations of enhancer elements decide which genes a cell uses; one master factor can switch on a whole set (<b>coordinated gene expression</b>).",
+    "<b>Stem cells</b> divide and can become other cell types: <b>totipotent</b> (any cell, including placenta), <b>pluripotent</b> (any body cell).",
+    "In <b>embryonic development</b>, <b>induction</b> (signals between tissues), <b>morphogen gradients</b> and <b>homeotic (Hox) genes</b> give cells positions and identities.",
+    "After transcription: <b>microRNAs</b> pair with mRNAs and reduce their use (<b>post-transcriptional regulation</b>); <b>post-translational modification</b> and protein breakdown in the proteasome control proteins."
+  ],
+  "misconception": {
+    "wrong": "Different kinds of cells have different genes: muscle cells keep the muscle genes and lose the rest.",
+    "right": "Almost every cell keeps the whole genome. Cells differ because each expresses a different subset of its genes, chosen by the transcription factors and other regulators it contains."
+  },
+  "check": [
+    "bio-cell-specialization-1",
+    "bio-cell-specialization-2",
+    "bio-cell-specialization-4",
+    "bio-cell-specialization-7",
+    "bio-cell-specialization-8",
+    "bio-cell-specialization-11",
+    "bio-cell-specialization-15"
+  ],
+  "summary": "<p>All the cells of a body carry the same genome, as nuclear transfer experiments show; they become different by expressing different genes. Signals between tissues (induction) and morphogen gradients give cells in different positions different transcription factors. Each factor binds the enhancers of many genes, and genes switch on only with the right combination, so whole sets of genes are expressed together; master regulators such as Hox genes set the identity of whole body regions. This differential gene expression drives cell differentiation. Stem cells keep the ability to become other cell types: totipotent cells can form a whole organism, pluripotent cells any body cell. After transcription, microRNAs pair with target mRNAs and reduce their translation or speed their breakdown, and proteins are activated by post-translational modification or removed by the proteasome.</p>",
+  "connections": [
+    { "href": "../notes/gene-regulation.html", "label": "Back: transcription factors and enhancers (6.5)" },
+    { "href": "../notes/signal-transduction-intro.html", "label": "Back: signals change gene expression (4.2)" },
+    { "href": "../notes/mutations.html", "label": "Next: changes in DNA and their effects (6.7)" }
+  ]
+}
