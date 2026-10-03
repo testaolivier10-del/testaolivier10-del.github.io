@@ -1,0 +1,22 @@
+{
+  "matter-cycle": {
+    "file": "figures/matter-cycle.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 340,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A cycle diagram. Carbon dioxide and water from the air and soil go into photosynthesis, which uses light energy to make sugar and oxygen. Sugar and oxygen go into cellular respiration, which releases carbon dioxide and water back to the environment and captures energy as ATP; heat leaves the cycle."
+  },
+  "carbon-skeletons": {
+    "file": "figures/carbon-skeletons.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 300,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Four carbon skeletons: a straight chain of four carbons, a branched chain, a chain containing a carbon-carbon double bond, and a ring of six carbons."
+  }
+}

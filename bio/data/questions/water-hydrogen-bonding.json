@@ -3,122 +3,293 @@
     "water-hydrogen-bonding-s1": {
       "kind": "table",
       "title": "Four liquids compared",
-      "text": "<p>A class looked up two properties of four liquids at standard pressure. Water and ethanol molecules can form hydrogen bonds with each other; acetone molecules are polar but cannot; hexane molecules are nonpolar.</p>",
+      "text": "<p>A class compared published values for four liquids. Water and methanol molecules form hydrogen bonds with each other; a water molecule can form up to four, a methanol molecule (CH<sub>3</sub>OH, one O–H group) fewer. Acetone is polar but has no H attached to O or N, so its molecules cannot hydrogen-bond with each other. Hexane is nonpolar.</p>",
       "table": {
-        "caption": "Specific heat and heat of vaporization of four liquids",
+        "caption": "Properties of four liquids (specific heat and surface tension at 20 °C; heat of vaporization at the boiling point)",
         "cols": [
           "Liquid",
-          "Hydrogen bonds between molecules?",
+          "Hydrogen bonds between molecules",
           "Specific heat (J/g·°C)",
-          "Heat of vaporization (J/g)"
+          "Heat of vaporization (J/g)",
+          "Surface tension (mN/m)",
+          "Boiling point (°C)"
         ],
         "rows": [
           [
             "Water",
-            "Yes, up to four per molecule",
+            "Yes, up to 4 per molecule",
             "4.18",
-            "2,260"
+            "2,260",
+            "72.8",
+            "100"
           ],
           [
-            "Ethanol",
+            "Methanol",
             "Yes, fewer per molecule",
-            "2.44",
-            "841"
+            "2.53",
+            "1,100",
+            "22.6",
+            "65"
           ],
           [
             "Acetone",
             "No (polar)",
             "2.15",
-            "539"
+            "500",
+            "23.7",
+            "56"
           ],
           [
             "Hexane",
             "No (nonpolar)",
             "2.26",
-            "335"
+            "335",
+            "18.4",
+            "69"
           ]
         ]
       }
     },
     "water-hydrogen-bonding-s2": {
       "kind": "graph",
-      "title": "Warming two liquids",
-      "text": "<p>A student placed 100 g of water in one beaker and 100 g of ethanol in an identical beaker, both starting at 20 °C. Each beaker sat on an identical hot plate set to deliver heat at the same rate, and the student recorded the temperature every minute.</p>",
+      "title": "Cooling by evaporation",
+      "text": "<p>Four identical thermometers were wrapped in identical cotton cloths. One cloth was left dry; the others were soaked with 2.0 g of water, methanol or acetone. A fan blew room air (22 °C, 40% humidity) over all four, and each temperature was read every minute. When the cloths were weighed at 8 minutes, the acetone and methanol cloths were dry (acetone by about 3 minutes, methanol by about 5); the water cloth still held 1.1 g of water.</p>",
       "chart": {
         "type": "line",
         "x": {
           "label": "Time",
           "unit": "min",
           "min": 0,
-          "max": 5,
+          "max": 8,
           "step": 1
         },
         "y": {
-          "label": "Temperature",
+          "label": "Thermometer temperature",
           "unit": "°C",
-          "min": 15,
-          "max": 45,
+          "min": 0,
+          "max": 25,
           "step": 5
         },
         "series": [
+          {
+            "name": "Dry cloth",
+            "points": [
+              [
+                0,
+                22
+              ],
+              [
+                1,
+                22
+              ],
+              [
+                2,
+                22
+              ],
+              [
+                3,
+                22
+              ],
+              [
+                4,
+                22
+              ],
+              [
+                5,
+                22
+              ],
+              [
+                6,
+                22
+              ],
+              [
+                7,
+                22
+              ],
+              [
+                8,
+                22
+              ]
+            ]
+          },
           {
             "name": "Water",
             "points": [
               [
                 0,
-                20
+                22
               ],
               [
                 1,
-                22.4
+                19.8
               ],
               [
                 2,
-                24.8
+                18.1
               ],
               [
                 3,
-                27.2
+                17
               ],
               [
                 4,
-                29.6
+                16.4
               ],
               [
                 5,
-                32.0
+                16.1
+              ],
+              [
+                6,
+                16
+              ],
+              [
+                7,
+                16
+              ],
+              [
+                8,
+                16
               ]
             ]
           },
           {
-            "name": "Ethanol",
+            "name": "Methanol",
             "points": [
               [
                 0,
-                20
+                22
               ],
               [
                 1,
-                24.1
+                15.5
               ],
               [
                 2,
-                28.2
+                12.4
               ],
               [
                 3,
-                32.3
+                11
               ],
               [
                 4,
-                36.4
+                10.8
               ],
               [
                 5,
-                40.5
+                11.6
+              ],
+              [
+                6,
+                13.5
+              ],
+              [
+                7,
+                16.2
+              ],
+              [
+                8,
+                18.6
+              ]
+            ]
+          },
+          {
+            "name": "Acetone",
+            "points": [
+              [
+                0,
+                22
+              ],
+              [
+                1,
+                12
+              ],
+              [
+                2,
+                8.2
+              ],
+              [
+                3,
+                7.4
+              ],
+              [
+                4,
+                9.5
+              ],
+              [
+                5,
+                13.8
+              ],
+              [
+                6,
+                17.6
+              ],
+              [
+                7,
+                19.9
+              ],
+              [
+                8,
+                21
               ]
             ]
           }
+        ]
+      }
+    },
+    "water-hydrogen-bonding-s3": {
+      "kind": "table",
+      "title": "Adding acid to water and to a buffer",
+      "text": "<p>A student added 0.10 M hydrochloric acid (HCl), 1 mL at a time, to two beakers. Beaker A held 100 mL of pure water. Beaker B held 100 mL of a solution of sodium bicarbonate (NaHCO<sub>3</sub>) and carbonic acid (H<sub>2</sub>CO<sub>3</sub>) whose starting pH was 7.00. Each milliliter of the acid adds the same number of hydrogen ions to either beaker. The student recorded the pH after each addition (selected values shown).</p>",
+      "table": {
+        "caption": "pH after adding 0.10 M HCl",
+        "cols": [
+          "Total acid added (mL)",
+          "Beaker A: pure water (pH)",
+          "Beaker B: bicarbonate solution (pH)"
+        ],
+        "rows": [
+          [
+            "0",
+            "7.00",
+            "7.00"
+          ],
+          [
+            "1",
+            "3.00",
+            "6.89"
+          ],
+          [
+            "2",
+            "2.71",
+            "6.79"
+          ],
+          [
+            "5",
+            "2.32",
+            "6.55"
+          ],
+          [
+            "10",
+            "2.04",
+            "6.19"
+          ],
+          [
+            "15",
+            "1.88",
+            "5.76"
+          ],
+          [
+            "20",
+            "1.78",
+            "4.02"
+          ],
+          [
+            "25",
+            "1.70",
+            "2.40"
+          ]
         ]
       }
     }
@@ -133,98 +304,95 @@
       "level": "analyze",
       "diff": 2,
       "stimulus": "water-hydrogen-bonding-s1",
-      "q": "Which claim is best supported by the data in the table?",
+      "q": "Which statement is best supported by the data in the table?",
       "options": [
-        "Liquids whose molecules form more hydrogen bonds need more energy per gram to vaporize.",
-        "Liquids made of larger and heavier molecules need more energy per gram to turn into vapor.",
-        "Polar liquids that lack hydrogen bonds between molecules vaporize more easily than hexane.",
-        "A liquid's specific heat does not depend on how its molecules attract each other."
+        "The two hydrogen-bonding liquids have the two highest heats of vaporization.",
+        "Heat of vaporization rises steadily as boiling point rises across the four liquids.",
+        "Polar liquids have a higher specific heat than nonpolar liquids in this table.",
+        "Surface tension rises as specific heat falls across the four liquids."
       ],
       "correct": 0,
       "why": {
-        "correct": "Heat of vaporization falls in the same order as hydrogen bonding: water (most), then ethanol, then the two liquids with none.",
+        "correct": "Rank the liquids by heat of vaporization: water, methanol, acetone, hexane. The two at the top are exactly the two that hydrogen-bond, which is what you expect if escaping molecules must break hydrogen bonds. The other statements each fail on at least one pair of liquids.",
         "options": [
-          "Water, with the most hydrogen bonds per molecule, needs the most energy, and ethanol, with fewer, needs less: the pattern the data show.",
-          "Hexane has the largest molecules of the four and the lowest heat of vaporization, so size does not explain the pattern.",
-          "Acetone needs 539 J/g against hexane's 335 J/g, so acetone takes more energy to vaporize, not less.",
-          "Water, with the strongest attraction between molecules, has by far the highest specific heat, so the two are linked."
+          "Correct. Water (2,260 J/g) and methanol (1,100 J/g) are the two hydrogen-bonding liquids and the two highest values; acetone and hexane are far lower.",
+          "Hexane boils at a higher temperature than methanol (69 °C versus 65 °C) yet needs less than a third of the energy per gram to vaporize, so the two do not rise together.",
+          "Acetone is polar and hexane is nonpolar, but hexane's specific heat (2.26 J/g·°C) is higher than acetone's (2.15 J/g·°C).",
+          "Water has both the highest specific heat and the highest surface tension, the opposite of this pattern."
         ]
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-2",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "water-hydrogen-bonding-s1",
+      "q": "Neither acetone nor hexane forms hydrogen bonds, and acetone is polar while hexane is not. Yet hexane has the higher boiling point and the higher specific heat. What is the most reasonable conclusion from these two liquids?",
+      "options": [
+        "Other, weaker attractions also matter, so hydrogen bonding explains the large differences but not every small one.",
+        "Hexane molecules probably form a few hydrogen bonds with each other that the table does not report.",
+        "Nonpolar molecules attract one another more strongly than polar molecules do, in general.",
+        "The hexane values are likely measurement errors, since a nonpolar liquid would be expected to rank last on each of these properties."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Hydrogen bonds explain why water and methanol stand far above the other two. The acetone-hexane comparison is small and runs against polarity, so another, weaker attraction must also contribute. The best conclusion keeps the main explanation and admits its limit.",
+        "options": [
+          "Correct. Hydrogen bonding separates water and methanol from the other two by a wide margin, but some other attraction (one that grows with molecule size) lets hexane edge out acetone. A good claim fits the large pattern without overreaching.",
+          "Hexane has only C–H and C–C bonds, which are nonpolar; with no δ+ hydrogen on O or N, it has nothing that can form hydrogen bonds.",
+          "One pair of liquids cannot support a general rule, and the table contradicts it: polar water and methanol attract far more strongly than nonpolar hexane.",
+          "Published values for common liquids are reliable. When data disagree with a simple rule, the better move is to refine the explanation, not to throw the data out."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-3",
       "type": "numeric",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
       "practice": "5.A",
       "level": "apply",
-      "diff": 1,
-      "stimulus": "water-hydrogen-bonding-s1",
-      "q": "Using the table, how much energy, in kilojoules, is needed to evaporate 5.0 g of sweat? Treat sweat as pure water.",
-      "numeric": {
-        "answer": 11.3,
-        "tol": 0.1,
-        "unit": "kJ",
-        "decimals": 1
-      },
-      "why": {
-        "correct": "Energy = mass × heat of vaporization = 5.0 g × 2,260 J/g = 11,300 J, which is 11.3 kJ (divide joules by 1,000)."
-      }
-    },
-    {
-      "id": "bio-water-hydrogen-bonding-3",
-      "type": "single",
-      "unit": "unit-1",
-      "topic": "water-hydrogen-bonding",
-      "practice": "6.C",
-      "level": "apply",
       "diff": 2,
       "stimulus": "water-hydrogen-bonding-s1",
-      "q": "Sweat cools the skin as it evaporates. Based on the table, why would water cool the skin better than the same mass of ethanol?",
-      "options": [
-        "Each gram of water that evaporates removes about 2.7 times as much heat as a gram of ethanol.",
-        "Each gram of water that evaporates removes less heat, so more grams of it evaporate over time.",
-        "Water warms faster than ethanol, so it reaches the temperature of the skin sooner.",
-        "Ethanol has the higher specific heat, so it stores the heat instead of carrying it away."
-      ],
-      "correct": 0,
+      "q": "A runner loses 900 g of sweat in an hour, and all of it evaporates from her skin. Using the table's heat of vaporization for water, how much heat, in kilojoules, does this evaporation remove from her body? Round to the nearest whole kilojoule.",
+      "numeric": {
+        "answer": 2034,
+        "tol": 2,
+        "unit": "kJ",
+        "decimals": 0
+      },
       "why": {
-        "correct": "Evaporative cooling depends on heat of vaporization, and water's (2,260 J/g) is about 2.7 times ethanol's (841 J/g).",
-        "options": [
-          "2,260 J/g divided by 841 J/g is about 2.7, so every gram of water that evaporates carries away far more heat.",
-          "Water removes more heat per gram, not less: its heat of vaporization is the highest in the table.",
-          "Water has the higher specific heat, so it warms more slowly than ethanol, not faster.",
-          "Ethanol's specific heat (2.44) is lower than water's (4.18), and specific heat is not what evaporative cooling depends on."
-        ]
+        "correct": "heat = mass × heat of vaporization = 900 g × 2,260 J/g = 2,034,000 J = 2,034 kJ. Evaporation removes heat because each escaping molecule must break its hydrogen bonds, taking energy from the skin."
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-4",
-      "type": "multi",
+      "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "4.B",
-      "level": "analyze",
+      "practice": "6.E",
+      "level": "apply",
       "diff": 2,
       "stimulus": "water-hydrogen-bonding-s1",
-      "q": "Which statements does the table support? Select all that apply.",
+      "q": "An engineer considers replacing water with methanol in a cooling system that removes heat by evaporating the liquid. To remove the same amount of heat, how would the mass of liquid that must evaporate change?",
       "options": [
-        "Water has the highest specific heat of the four liquids.",
-        "Acetone has a higher heat of vaporization than hexane.",
-        "Hexane has the lowest specific heat of the four liquids.",
-        "Ethanol's heat of vaporization is more than half of water's."
+        "About half as much methanol would need to evaporate, since it evaporates more easily.",
+        "About the same mass, since both liquids form hydrogen bonds.",
+        "About twice as much methanol would need to evaporate.",
+        "About four times as much, since methanol's surface tension is about a third of water's."
       ],
-      "correct": [
-        0,
-        1
-      ],
+      "correct": 2,
       "why": {
-        "correct": "Read each claim against the numbers: two match the table and two do not.",
+        "correct": "Heat removed = mass × heat of vaporization. Holding heat constant, mass is inversely proportional to the heat of vaporization: 2,260 ÷ 1,100 ≈ 2.1, so about twice as much methanol.",
         "options": [
-          "4.18 J/g·°C is the largest value in the specific heat column.",
-          "539 J/g is greater than 335 J/g, so acetone needs more energy to vaporize than hexane.",
-          "Acetone's 2.15 is lower than hexane's 2.26, so hexane is not the lowest.",
-          "841 is about 37% of 2,260, which is less than half."
+          "Evaporating easily means it evaporates faster, not that each gram carries more heat. Per gram, methanol removes less than half as much heat as water.",
+          "Both hydrogen-bond, but water forms more bonds per molecule; the table shows water needs about twice the energy per gram.",
+          "Correct. Water removes 2,260 J per gram and methanol 1,100 J per gram, so methanol needs 2,260 ÷ 1,100 ≈ 2.1 times the mass for the same heat.",
+          "Surface tension measures cohesion at the surface, not the energy needed to vaporize a gram; the heat of vaporization column is the relevant one."
         ]
       }
     },
@@ -233,46 +401,53 @@
       "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "4.B",
+      "practice": "1.B",
       "level": "analyze",
-      "diff": 1,
-      "stimulus": "water-hydrogen-bonding-s2",
-      "q": "Which statement best describes the results in the graph?",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s1",
+      "q": "Water and methanol both form hydrogen bonds between molecules, yet water's surface tension is more than three times methanol's. Which explanation is most consistent with the table?",
       "options": [
-        "Both liquids warm at a steady rate, and ethanol warms about 1.7 times as fast as water.",
-        "Both liquids warm at a steady rate, and water warms about 1.7 times as fast as ethanol.",
-        "Ethanol warms quickly at first and then levels off, while water warms at a steady rate.",
-        "The two liquids warm at the same rate until the third minute, and then ethanol pulls ahead."
+        "Each methanol molecule is nonpolar except for a small charged region, so it attracts its neighbors weakly.",
+        "Water molecules are larger and heavier than methanol molecules, so each one pulls on its neighbors at the surface harder.",
+        "Each water molecule can form up to four hydrogen bonds, a denser network than methanol's single O–H group allows.",
+        "Methanol molecules form covalent bonds with each other that pull the surface molecules inward less strongly."
       ],
-      "correct": 0,
+      "correct": 2,
       "why": {
-        "correct": "Both lines are straight, and ethanol rises 4.1 °C per minute against water's 2.4 °C per minute, a ratio of about 1.7.",
+        "correct": "Surface tension comes from cohesion: how strongly surface molecules are pulled by their neighbors. Water can form up to four hydrogen bonds per molecule; methanol, with one O–H and a nonpolar end, forms fewer, so its cohesion is weaker.",
         "options": [
-          "Straight lines mean steady rates; 4.1 divided by 2.4 is about 1.7, and ethanol's line is the steeper one.",
-          "This reverses the two liquids: water's line is the less steep one.",
-          "Ethanol's line stays straight over the five minutes; it does not level off.",
-          "The lines separate from the first minute, not the third."
+          "Methanol's O–H group is polar, but the molecule carries no full charge; and polarity alone does not explain the difference, since acetone is also polar and has similar surface tension to methanol.",
+          "Water (18 mass units) is smaller and lighter than methanol (32), so size cannot explain water's stronger cohesion.",
+          "Correct. Two δ+ hydrogens and a δ− oxygen let water bond in every direction; methanol has one O–H hydrogen and a nonpolar CH<sub>3</sub> end that cannot hydrogen-bond, so cohesion at its surface is much weaker.",
+          "Molecules of a liquid are not covalently bonded to one another; the attractions between them are hydrogen bonds and weaker forces."
         ]
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-6",
-      "type": "numeric",
+      "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "5.A",
+      "practice": "4.B",
       "level": "apply",
-      "diff": 1,
+      "diff": 2,
       "stimulus": "water-hydrogen-bonding-s2",
-      "q": "What is the rate at which the water's temperature rises over the five minutes?",
-      "numeric": {
-        "answer": 2.4,
-        "tol": 0.05,
-        "unit": "°C/min",
-        "decimals": 1
-      },
+      "q": "Which description of the graph is accurate?",
+      "options": [
+        "Acetone produced the largest, fastest drop, but its thermometer was also the first to warm back up.",
+        "Water produced the largest drop in temperature, because it has the highest heat of vaporization of the three.",
+        "The three liquids cooled their thermometers by about the same amount, but at different speeds.",
+        "Methanol cooled its thermometer for longer than water did."
+      ],
+      "correct": 0,
       "why": {
-        "correct": "Rate = change in temperature ÷ time = (32.0 °C − 20.0 °C) ÷ 5 min = 2.4 °C per minute."
+        "correct": "Read each curve for its lowest point and for when it starts to rise. Acetone has the deepest minimum (7.4 °C at 3 minutes) and is the first to turn upward, as its cloth dries at about 3 minutes.",
+        "options": [
+          "Correct. Acetone fell to 7.4 °C by minute 3, below every other liquid, then rose from minute 4 as the cloth dried.",
+          "Water's lowest reading was 16.0 °C, the smallest drop of the three liquids. A high heat per gram does not guarantee the biggest drop.",
+          "The lowest readings differ a lot: about 7 °C for acetone, 11 °C for methanol and 16 °C for water.",
+          "By minute 8 the methanol thermometer was back up to 18.6 °C, while the water thermometer was still at 16.0 °C."
+        ]
       }
     },
     {
@@ -281,52 +456,45 @@
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
       "practice": "6.C",
-      "level": "apply",
-      "diff": 2,
+      "level": "analyze",
+      "diff": 3,
       "stimulus": "water-hydrogen-bonding-s2",
-      "q": "Which reasoning best explains why the water warms more slowly than the ethanol?",
+      "q": "Acetone has the lowest heat of vaporization of the three liquids, yet it produced the largest temperature drop. Which explanation best accounts for this?",
       "options": [
-        "Some of the added energy breaks the many hydrogen bonds between water molecules instead of speeding them up.",
-        "Water molecules are heavier than ethanol molecules, so each one needs more added energy before it can move any faster.",
-        "Water absorbs less of the heat from the hot plate because liquid water is a good insulator.",
-        "Ethanol molecules form more hydrogen bonds, and forming them releases extra heat into the ethanol."
+        "Acetone has a lower specific heat than water, so the cloth soaked in acetone held less heat to begin with and cooled sooner.",
+        "With no hydrogen bonds to break, acetone evaporated so fast that it removed more heat per minute, though less per gram.",
+        "Acetone molecules absorb heat as they form hydrogen bonds with the cotton of the cloth.",
+        "Acetone removed more total heat than water did over the 8 minutes."
       ],
-      "correct": 0,
+      "correct": 1,
       "why": {
-        "correct": "With the same heat going in, the liquid that spends more energy breaking attractions between molecules shows a smaller rise in temperature.",
+        "correct": "The temperature drop depends on how fast heat is removed. That equals the heat per gram times the grams evaporating each minute. Acetone's weak attractions let it evaporate many times faster, so its cooling rate was highest even though each gram carried less heat.",
         "options": [
-          "Breaking water's many hydrogen bonds uses part of the energy, so less of it raises the temperature.",
-          "A water molecule (18 units of mass) is lighter than an ethanol molecule (46), so mass cannot explain it.",
-          "Both beakers received heat at the same rate; the difference is in what the energy does once absorbed.",
-          "Ethanol has one O–H group per molecule and forms fewer hydrogen bonds than water, not more."
+          "All the cloths started at 22 °C. Specific heat affects how much a substance's temperature changes per joule; it does not explain why evaporation cooled the thermometer more.",
+          "Correct. Cooling rate = grams evaporated per minute × heat per gram. Acetone's 2.0 g was gone in about 3 minutes; water had lost only 0.9 g in 8 minutes. The much faster evaporation outweighs the smaller heat per gram.",
+          "Acetone has no H on O or N, so it does not donate hydrogen bonds, and forming bonds releases energy rather than absorbing it.",
+          "It removed less: 2.0 g × 500 J/g = 1,000 J, versus 0.9 g × 2,260 J/g ≈ 2,030 J for the water. It removed its smaller total in a much shorter time."
         ]
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-8",
-      "type": "single",
+      "type": "numeric",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "3.C",
+      "practice": "5.A",
       "level": "apply",
       "diff": 2,
       "stimulus": "water-hydrogen-bonding-s2",
-      "q": "Which variables had to be held the same for this comparison to be valid?",
-      "options": [
-        "The mass of each liquid and the rate at which heat was supplied to it",
-        "The final temperature each liquid reached after five minutes",
-        "The rate at which the temperature of each liquid went up",
-        "The kind of liquid placed in each of the two beakers"
-      ],
-      "correct": 0,
+      "q": "Use the heats of vaporization from the table of four liquids (methanol 1,100 J/g; acetone 500 J/g). By the time each cloth was dry, how many more joules had evaporation of the methanol removed than evaporation of the acetone? Round to the nearest whole joule.",
+      "numeric": {
+        "answer": 1200,
+        "tol": 0,
+        "unit": "J",
+        "decimals": 0
+      },
       "why": {
-        "correct": "To blame the difference on the liquid, everything else that affects warming, such as mass and heating rate, must be the same.",
-        "options": [
-          "A larger mass or a hotter plate would change the warming rate by itself, so both are controlled.",
-          "The final temperature is a result the student measured, so it is part of the dependent variable.",
-          "The warming rate is what the experiment measures; it is the dependent variable.",
-          "The kind of liquid is the independent variable: it is the one thing deliberately changed."
-        ]
+        "correct": "Each cloth held 2.0 g. Methanol: 2.0 g × 1,100 J/g = 2,200 J. Acetone: 2.0 g × 500 J/g = 1,000 J. Difference: 2,200 − 1,000 = 1,200 J. Acetone gave the deepest drop but removed less heat overall."
       }
     },
     {
@@ -334,154 +502,157 @@
       "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "1.A",
-      "level": "recall",
-      "diff": 1,
-      "q": "Why is a water molecule polar?",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s2",
+      "q": "Why did the student include a thermometer wrapped in a dry cloth?",
       "options": [
-        "Oxygen pulls the shared electrons closer, so it is partly negative and the hydrogens are partly positive.",
-        "Hydrogen pulls the shared electrons closer, so the hydrogens are partly negative and the oxygen partly positive.",
-        "One side of the molecule carries a full positive charge and the other side a full negative charge.",
-        "Oxygen gives one electron to each hydrogen, so the molecule is made of ions held by ionic bonds."
+        "To show that a dry cotton cloth absorbs heat from the thermometer bulb as the fan blows room air across it.",
+        "To measure how fast water vapor from the other cloths spread through the room.",
+        "To provide a fourth liquid for comparison with water, methanol and acetone.",
+        "To show the effect of the fan and cloth alone, so extra cooling of the wet thermometers can be credited to evaporation."
       ],
-      "correct": 0,
+      "correct": 3,
       "why": {
-        "correct": "Unequal sharing of electrons gives water partial charges at its two ends.",
+        "correct": "A comparison setup that matches the others in every way but one lets you credit a difference to that one factor. Here the one factor is the evaporating liquid; the dry cloth stayed at room temperature, so the drops in the other three are due to evaporation.",
         "options": [
-          "Oxygen attracts electrons more strongly than hydrogen, which leaves partial charges on the two ends.",
-          "This reverses the pull: oxygen, not hydrogen, attracts the shared electrons more strongly.",
-          "The charges are partial, not full; water is a neutral molecule, not a pair of ions.",
-          "The electrons are shared in covalent bonds, not given away, so no ions form."
+          "The dry cloth's reading stayed at 22 °C, so the cloth and fan cause no cooling; that is what the dry cloth was there to check, not something it was expected to show.",
+          "A thermometer reads temperature, not the amount of vapor in the air.",
+          "The dry cloth holds no liquid; its job is to show what happens with everything the same except evaporation.",
+          "Correct. The dry setup is identical except that nothing evaporates. Its steady 22 °C shows that the cooling of the other three comes from evaporation."
         ]
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-10",
-      "type": "single",
-      "unit": "unit-1",
-      "topic": "water-hydrogen-bonding",
-      "practice": "1.A",
-      "level": "recall",
-      "diff": 1,
-      "q": "In liquid water, a hydrogen bond forms between which two atoms?",
-      "options": [
-        "The partly positive hydrogen of one molecule and the partly negative oxygen of another",
-        "The two hydrogen atoms that belong to one water molecule",
-        "The oxygen atom and a hydrogen atom within the same water molecule",
-        "The partly negative oxygen atoms of two neighboring water molecules"
-      ],
-      "correct": 0,
-      "why": {
-        "correct": "A hydrogen bond is an attraction between molecules, from a partly positive hydrogen to a partly negative oxygen.",
-        "options": [
-          "Opposite partial charges on neighboring molecules attract: that attraction is the hydrogen bond.",
-          "The two hydrogens of one molecule both carry partial positive charges, so they repel rather than attract.",
-          "Oxygen and hydrogen in the same molecule share electrons in a covalent bond, which is a different and stronger bond.",
-          "Two partly negative oxygens repel each other."
-        ]
-      }
-    },
-    {
-      "id": "bio-water-hydrogen-bonding-11",
-      "type": "single",
-      "unit": "unit-1",
-      "topic": "water-hydrogen-bonding",
-      "practice": "1.C",
-      "level": "apply",
-      "diff": 2,
-      "q": "Water climbs higher in a narrow glass tube than in a wide one. Which explanation fits best?",
-      "options": [
-        "Water adheres to the glass walls, and cohesion pulls the rest of the column up behind it.",
-        "Water's high specific heat keeps the column at a steady temperature, so it can rise.",
-        "Hydrogen bonds form between the water and the air above it, lifting the surface up.",
-        "Evaporation from the top of the column cools the water, which makes it rise higher."
-      ],
-      "correct": 0,
-      "why": {
-        "correct": "In a narrow tube a larger share of the water touches the wall, so adhesion lifts it and cohesion drags the column along.",
-        "options": [
-          "Adhesion to the polar glass pulls water up the walls, and cohesion keeps the column together as it rises.",
-          "Specific heat is about how temperature changes, not about water moving up a tube.",
-          "The gases in air are not the partly charged atoms a hydrogen bond needs.",
-          "Cooling makes the water denser; it does not lift water up a glass tube."
-        ]
-      }
-    },
-    {
-      "id": "bio-water-hydrogen-bonding-12",
       "type": "predict",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
       "practice": "6.E",
-      "level": "apply",
-      "diff": 2,
-      "q": "A student adds a drop of dish soap, which gets between water molecules at the surface and disrupts their hydrogen bonds, to a dish of water. Predict the change in each variable.",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "water-hydrogen-bonding-s2",
+      "q": "The experiment is repeated with the same 22 °C air but at 90% humidity, so water evaporates much more slowly. Predict how each value for the water-soaked thermometer would change compared with the original run.",
       "variables": [
         {
-          "name": "Surface tension of the water",
-          "answer": "down",
-          "why": "With fewer hydrogen bonds at the surface, cohesion there is weaker, so the surface is easier to break."
+          "name": "Lowest temperature the water thermometer reaches",
+          "answer": "up",
+          "why": "Slower evaporation removes heat more slowly, so the thermometer cools less and its lowest reading is higher (closer to 22 °C)."
         },
         {
-          "name": "Number of paper clips the surface can float",
-          "answer": "down",
-          "why": "A weaker surface skin supports less weight, so fewer paper clips float before the surface breaks."
+          "name": "Time until the water cloth is dry",
+          "answer": "up",
+          "why": "Fewer grams evaporate each minute, so the 2.0 g of water lasts longer."
         },
         {
-          "name": "Number of atoms in each water molecule",
+          "name": "Heat removed per gram of water that does evaporate",
           "answer": "none",
-          "why": "Soap changes the attractions between molecules, not the covalent bonds inside each one, so every molecule still has three atoms."
+          "why": "The heat of vaporization is a property of water: each gram that evaporates still has to break the same hydrogen bonds, whatever the humidity."
         }
       ],
       "why": {
-        "correct": "Surface tension comes from cohesion, which comes from hydrogen bonds; disrupting them weakens the surface without changing the molecules themselves."
+        "correct": "Humidity slows the rate of evaporation, not the energy each gram takes. Less evaporation per minute means less cooling per minute (a higher lowest temperature) and a cloth that stays wet longer; the heat per gram is unchanged."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-11",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s3",
+      "q": "By what factor did the hydrogen ion concentration in Beaker A (pure water) increase when the first 1 mL of acid was added? Give a whole number.",
+      "numeric": {
+        "answer": 10000,
+        "tol": 0,
+        "unit": "",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "The pH fell from 7.00 to 3.00, a drop of 4 units. Each unit is a factor of 10, so [H+] rose by 10 × 10 × 10 × 10 = 10<sup>4</sup> = 10,000 times."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-12",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s3",
+      "q": "Which explanation best accounts for the difference between the beakers over the first 5 mL of acid?",
+      "options": [
+        "Bicarbonate ions in Beaker B combined with most added hydrogen ions to form carbonic acid, so few stayed free.",
+        "Beaker B received fewer hydrogen ions per milliliter than Beaker A, because its solution was already partly acidic at the start.",
+        "Beaker B's carbonic acid released hydroxide ions that neutralized the added acid.",
+        "Water molecules in Beaker B formed hydrogen bonds with the added hydrogen ions and held them in place."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A buffer pair has one member that takes up H<sup>+</sup> (bicarbonate) and one that can release it (carbonic acid). Added H<sup>+</sup> joins bicarbonate, so the free H<sup>+</sup> concentration, and so the pH, changes little.",
+        "options": [
+          "Correct. HCO<sub>3</sub><sup>−</sup> + H<sup>+</sup> → H<sub>2</sub>CO<sub>3</sub> removes free H<sup>+</sup>. Because pH depends on free H<sup>+</sup>, Beaker B's pH fell by only 0.45 units while Beaker A's fell by 4.68.",
+          "The same acid adds the same number of hydrogen ions per milliliter to each beaker, as the setup states. The difference is what happens to them after they are added.",
+          "Carbonic acid is an acid: it can release H<sup>+</sup>, not hydroxide. The H<sup>+</sup>-absorbing partner of the pair is bicarbonate.",
+          "Both beakers are full of water. If water itself absorbed the ions, Beaker A would have resisted the change too."
+        ]
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-13",
-      "type": "order",
+      "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "1.B",
-      "level": "apply",
-      "diff": 2,
-      "q": "Put the steps of cooling by sweating in order.",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "water-hydrogen-bonding-s3",
+      "q": "Between 15 mL and 25 mL of acid, the pH of Beaker B fell from 5.76 to 2.40. Which explanation is best supported by the data?",
       "options": [
-        "Heat from the skin makes the water molecules in sweat move faster.",
-        "The fastest molecules at the surface break all of their hydrogen bonds.",
-        "Those molecules escape as vapor, carrying their energy with them.",
-        "The molecules left behind move more slowly on average, so the sweat is cooler.",
-        "The cooler sweat takes more heat from the skin, and the cycle repeats."
+        "The bicarbonate ran out near 20 mL, so added hydrogen ions stayed free and the pH fell about as steeply as plain water's.",
+        "The carbonic acid that had formed began to release extra bicarbonate ions, which lowered the pH.",
+        "The later milliliters of acid were more concentrated than the earlier ones.",
+        "Beaker B was diluted by the 25 mL of added acid, so its bicarbonate and carbonic acid were too spread out to work together."
       ],
+      "correct": 0,
       "why": {
-        "correct": "Evaporation removes the most energetic molecules, so the average energy, and so the temperature, of what is left goes down."
+        "correct": "A buffer has a limited capacity. Each H<sup>+</sup> it absorbs uses up one bicarbonate. When the bicarbonate is gone, the solution behaves like unbuffered water and the pH falls quickly.",
+        "options": [
+          "Correct. Once bicarbonate is used up, nothing absorbs the added H<sup>+</sup>; by 25 mL Beaker B's pH (2.40) is about where Beaker A was after only 2 to 5 mL.",
+          "Releasing bicarbonate would mean carbonic acid gives up H<sup>+</sup>, but bicarbonate itself does not lower pH; the sharp drop comes from H<sup>+</sup> that is no longer being absorbed.",
+          "The same 0.10 M acid was used throughout. Each milliliter added the same amount of H<sup>+</sup>.",
+          "25 mL of acid only dilutes 100 mL by a fifth, and Beaker A shows that dilution alone does not cause sudden drops. A buffer stops working when one member of the pair is used up."
+        ]
       }
     },
     {
       "id": "bio-water-hydrogen-bonding-14",
-      "type": "multi",
+      "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "1.C",
-      "level": "apply",
+      "practice": "5.D",
+      "level": "analyze",
       "diff": 2,
-      "q": "Which of these depends on hydrogen bonds between water molecules? Select all that apply.",
+      "stimulus": "water-hydrogen-bonding-s3",
+      "q": "A student claims, \"Beaker B keeps its pH near 7 no matter how much acid is added.\" Which evidence from the table most directly refutes this claim?",
       "options": [
-        "The surface tension that lets a water strider stand on a pond",
-        "The bent shape of a single water molecule",
-        "The mass of a single water molecule",
-        "The bond between the oxygen and a hydrogen in one molecule"
+        "Beaker A's pH fell from 7.00 to 3.00 after just 1 mL of the acid was added.",
+        "Beaker B's pH fell from 7.00 to 6.89 after 1 mL of acid.",
+        "Beaker B's pH fell from 5.76 to 2.40 between 15 mL and 25 mL of acid.",
+        "Beaker B started at exactly the same pH as Beaker A."
       ],
-      "correct": [
-        0
-      ],
+      "correct": 2,
       "why": {
-        "correct": "Only properties that involve several molecules attracting each other depend on hydrogen bonds.",
+        "correct": "To refute a claim, look for data that contradict it directly. A buffer that held pH near 7 for any amount of acid could not fall to 2.40; the drop after 15 mL shows the bicarbonate ran out.",
         "options": [
-          "Surface tension comes from cohesion, the hydrogen bonds between molecules at the surface.",
-          "The shape belongs to one molecule and comes from how its electrons are arranged, not from its neighbors.",
-          "Mass comes from the atoms in the molecule, which hydrogen bonds do not change.",
-          "That is a covalent bond inside the molecule, not a hydrogen bond between molecules."
+          "This describes the unbuffered beaker. It contrasts with Beaker B but says nothing about Beaker B's limit.",
+          "A drop of 0.11 is small; it supports the idea that the buffer resists change rather than refuting it.",
+          "Correct. A drop of more than 3 pH units, ending far from 7, shows the buffer's resistance has a limit.",
+          "The starting pH tells you nothing about how each beaker responds to added acid."
         ]
       }
     },
@@ -490,24 +661,163 @@
       "type": "single",
       "unit": "unit-1",
       "topic": "water-hydrogen-bonding",
-      "practice": "6.C",
-      "level": "analyze",
-      "diff": 3,
-      "q": "Over a summer day the air above a large lake warms by 12 °C, but the lake's surface water warms by less than 2 °C. Which reasoning best explains the difference?",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A crystal of table salt (NaCl) dissolves in water. Which description of the water molecules closest to the ions is correct?",
       "options": [
-        "Water's high specific heat means each gram must absorb a lot of energy to warm by one degree.",
-        "Water's low specific heat means the lake absorbs very little of the sun's energy during the day.",
-        "Hydrogen bonds stop heat from entering the water, so the sun's energy barely warms the lake.",
-        "Warm water evaporates more slowly than cool water, so the lake keeps its heat at the surface."
+        "Oxygen atoms face the sodium ions, and hydrogen atoms face the chloride ions.",
+        "Hydrogen atoms face the sodium ions, and oxygen atoms face the chloride ions.",
+        "Water molecules form covalent bonds with the ions, sharing electrons with them.",
+        "Water molecules point in random directions, because the ions carry full charges rather than partial ones."
       ],
       "correct": 0,
       "why": {
-        "correct": "Much of the energy the lake absorbs goes into breaking hydrogen bonds, so water's temperature rises far less than the air's for the same energy input.",
+        "correct": "Opposite charges attract. Water's δ− oxygen end turns toward a cation such as Na<sup>+</sup>, and its δ+ hydrogen end turns toward an anion such as Cl<sup>−</sup>. These shells of water pull the ions out of the crystal.",
         "options": [
-          "About 4.18 J warms one gram of water by just one degree, so a whole lake absorbs a great deal of energy with little change in temperature.",
-          "Water's specific heat is high, not low, and the lake does absorb energy; its temperature simply rises slowly.",
-          "Energy does enter the water; breaking hydrogen bonds uses much of it, which slows the temperature rise.",
-          "Warm water evaporates faster, not more slowly, and evaporation removes heat from the surface rather than keeping it."
+          "Correct. The δ− oxygen is attracted to the positive Na<sup>+</sup>; the δ+ hydrogens are attracted to the negative Cl<sup>−</sup>.",
+          "This reverses the charges. Hydrogens carry δ+ and would be repelled by positive Na<sup>+</sup>.",
+          "The ions are surrounded and held by attractions between charges; no electrons are shared and the ions stay as ions.",
+          "Full charges attract water's partial charges even more strongly, so the nearest water molecules are lined up, not random."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-16",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "Suppose ice were denser than liquid water. What would most likely happen to a deep lake during a long, cold winter?",
+      "options": [
+        "The lake would stay liquid longer, because sinking ice would carry cold away from the surface and leave warmer water on top.",
+        "Nothing would change, because the surface of a lake is the part that reaches 0 °C.",
+        "Ice would sink as it formed, so the lake could freeze from the bottom up, leaving little liquid water for fish.",
+        "The lake would freeze more slowly, because denser ice would hold more heat."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Hydrogen bonds hold ice in an open lattice, so it floats and insulates the water below. Remove that and each new ice layer sinks, exposing more water to freezing air; lakes could freeze solid.",
+        "options": [
+          "Sinking ice would cool the bottom, not warm it, and would remove the insulating layer on top.",
+          "The surface cools first, but if new ice sank, the next layer of water would be exposed to the cold air and freeze in turn.",
+          "Correct. Floating ice insulates the water below it. Ice that sank would keep exposing new water to the cold air, so the lake could freeze from the bottom up.",
+          "Density does not make ice hold heat; the key is that sinking ice would no longer form an insulating lid."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-17",
+      "type": "predict",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "On a hot, dry afternoon a plant closes most of its stomata. Predict how each value changes over the next hour compared with when the stomata were open.",
+      "variables": [
+        {
+          "name": "Rate at which water moves up the xylem",
+          "answer": "down",
+          "why": "Transpiration provides the pull. With the stomata closed, less water evaporates from the leaves, so less water is drawn up the cohesive column."
+        },
+        {
+          "name": "Temperature of the leaves",
+          "answer": "up",
+          "why": "Less evaporation means less evaporative cooling, so the sun-warmed leaves heat up."
+        },
+        {
+          "name": "Strength of each hydrogen bond between water molecules in the xylem",
+          "answer": "none",
+          "why": "The strength of a hydrogen bond depends on water's polarity, which closing the stomata does not change; only the number of molecules being pulled up changes."
+        }
+      ],
+      "why": {
+        "correct": "Closing stomata cuts transpiration. That removes the evaporation pull that lifts water through the xylem and the evaporative cooling that keeps leaves near air temperature. Water's hydrogen bonds themselves are unchanged."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-18",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these substances would you expect to dissolve readily in water? Select all that apply.",
+      "options": [
+        "Table salt (NaCl), an ionic compound",
+        "Vegetable oil, made mostly of carbon and hydrogen",
+        "Candle wax, made of carbon and hydrogen",
+        "Methanol, CH<sub>3</sub>OH, with one O–H group",
+        "Hexane, C<sub>6</sub>H<sub>14</sub>, made of C–H and C–C bonds"
+      ],
+      "correct": [
+        0,
+        3
+      ],
+      "why": {
+        "correct": "Like dissolves like: ions and polar molecules (salt, methanol) are hydrophilic and dissolve; molecules made only of carbon and hydrogen (oil, wax, hexane) are nonpolar and hydrophobic.",
+        "options": [
+          "Dissolves. Water's partial charges surround and separate the Na<sup>+</sup> and Cl<sup>−</sup> ions.",
+          "Does not dissolve. C–H bonds are nonpolar, so oil is hydrophobic and separates into a layer.",
+          "Does not dissolve. Wax is even more nonpolar than oil, so water bonds to itself and pushes the wax aside.",
+          "Dissolves. Its polar O–H group hydrogen-bonds with water, and the molecule is small.",
+          "Does not dissolve. It has no partial charges for water to attract."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-19",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "In which bond are the shared electrons pulled most strongly toward one atom?",
+      "options": [
+        "C–H, as in candle wax",
+        "O–H, in a water molecule",
+        "C–C, as in candle wax",
+        "H–H, in a hydrogen gas molecule"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The bigger the difference in electronegativity between two bonded atoms, the more unequal the sharing. Oxygen pulls far harder than hydrogen, so O–H is the most polar of these bonds.",
+        "options": [
+          "Carbon and hydrogen have similar electronegativity, so C–H bonds are nearly nonpolar.",
+          "Correct. Oxygen is much more electronegative than hydrogen, so O–H is strongly polar.",
+          "Two identical atoms pull equally, so the sharing is even and the bond is nonpolar.",
+          "Two identical atoms share electrons equally."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-20",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A student draws a hydrogen bond as a dashed line between a hydrogen atom of one water molecule and a hydrogen atom of a neighboring water molecule. What is wrong with the drawing?",
+      "options": [
+        "Nothing; any two hydrogen atoms on neighboring molecules can form a hydrogen bond.",
+        "The line should be solid, because hydrogen bonds are as strong as covalent bonds.",
+        "Both hydrogens carry a partial positive charge and repel; a hydrogen bond links a δ+ hydrogen to a δ− oxygen.",
+        "Hydrogen bonds form inside one water molecule, so the dashed line should join each hydrogen to its own oxygen atom."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "A hydrogen bond needs opposite partial charges: a δ+ hydrogen (bonded to O or N) and a δ− atom such as oxygen on another molecule. Like charges, H to H, repel.",
+        "options": [
+          "Two δ+ hydrogens carry the same partial charge, so they repel rather than attract.",
+          "Hydrogen bonds are much weaker than covalent bonds, which is why they are drawn dashed.",
+          "Correct. The attraction is between opposite partial charges, so a hydrogen bond runs from the hydrogen of one molecule to the oxygen of another.",
+          "The bond between a hydrogen and its own oxygen is covalent. Hydrogen bonds link different molecules."
         ]
       }
     }

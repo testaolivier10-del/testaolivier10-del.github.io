@@ -1,0 +1,738 @@
+{
+  "stimuli": {
+    "elements-of-life-s1": {
+      "kind": "table",
+      "title": "Tracing four elements in algae",
+      "text": "<p>Researchers grew four cultures of the same green alga for 24 hours. Each culture received one labeled nutrient: a nitrogen source made with heavy nitrogen-15, phosphate made with radioactive phosphorus-32, sulfate made with radioactive sulfur-35, or carbon dioxide made with radioactive carbon-14. They then separated the cells into five fractions and measured how much of the label taken up ended in each one.</p>",
+      "table": {
+        "caption": "Percent of each label taken up that was found in each fraction after 24 h (values rounded)",
+        "cols": [
+          "Cell fraction",
+          "Nitrogen-15 (%)",
+          "Phosphorus-32 (%)",
+          "Sulfur-35 (%)",
+          "Carbon-14 (%)"
+        ],
+        "rows": [
+          [
+            "Proteins",
+            "74",
+            "3",
+            "93",
+            "38"
+          ],
+          [
+            "Nucleic acids",
+            "17",
+            "57",
+            "<1",
+            "9"
+          ],
+          [
+            "Carbohydrates",
+            "1",
+            "1",
+            "1",
+            "31"
+          ],
+          [
+            "Lipids",
+            "2",
+            "22",
+            "3",
+            "14"
+          ],
+          [
+            "Small molecules (including ATP and free amino acids)",
+            "6",
+            "17",
+            "2",
+            "8"
+          ]
+        ]
+      }
+    },
+    "elements-of-life-s2": {
+      "kind": "graph",
+      "title": "Carbon dioxide in sealed chambers",
+      "text": "<p>Two identical sealed glass chambers were kept at 25 °C. Chamber 1 held a potted plant; Chamber 2 held 20 crickets with no plant. A probe recorded the carbon dioxide concentration of the air in each, in parts per million (ppm). A bright lamp shone on both chambers for the first 60 minutes and was then switched off.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time (lamp off at 60 min)",
+          "unit": "min",
+          "min": 0,
+          "max": 120,
+          "step": 20
+        },
+        "y": {
+          "label": "Carbon dioxide in chamber air",
+          "unit": "ppm",
+          "min": 250,
+          "max": 600,
+          "step": 50
+        },
+        "series": [
+          {
+            "name": "Chamber 1: plant",
+            "points": [
+              [
+                0,
+                420
+              ],
+              [
+                10,
+                398
+              ],
+              [
+                20,
+                375
+              ],
+              [
+                30,
+                352
+              ],
+              [
+                40,
+                330
+              ],
+              [
+                50,
+                307
+              ],
+              [
+                60,
+                285
+              ],
+              [
+                70,
+                291
+              ],
+              [
+                80,
+                297
+              ],
+              [
+                90,
+                303
+              ],
+              [
+                100,
+                309
+              ],
+              [
+                110,
+                315
+              ],
+              [
+                120,
+                321
+              ]
+            ]
+          },
+          {
+            "name": "Chamber 2: crickets",
+            "points": [
+              [
+                0,
+                420
+              ],
+              [
+                10,
+                432
+              ],
+              [
+                20,
+                444
+              ],
+              [
+                30,
+                456
+              ],
+              [
+                40,
+                468
+              ],
+              [
+                50,
+                480
+              ],
+              [
+                60,
+                492
+              ],
+              [
+                70,
+                504
+              ],
+              [
+                80,
+                516
+              ],
+              [
+                90,
+                528
+              ],
+              [
+                100,
+                540
+              ],
+              [
+                110,
+                552
+              ],
+              [
+                120,
+                564
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "elements-of-life-s3": {
+      "kind": "model",
+      "title": "Five molecules from cells",
+      "text": "<p>The table gives the formula and a condensed structure for five small molecules found in cells. In the structures, a dash is a covalent bond; groups in parentheses are attached to the carbon just before them.</p>",
+      "table": {
+        "caption": "Formulas and structures of five molecules",
+        "cols": [
+          "Molecule",
+          "Formula",
+          "Condensed structure"
+        ],
+        "rows": [
+          [
+            "A",
+            "C<sub>3</sub>H<sub>7</sub>NO<sub>2</sub>S",
+            "HS–CH<sub>2</sub>–CH(NH<sub>2</sub>)–COOH"
+          ],
+          [
+            "B",
+            "C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>",
+            "A six-carbon chain carrying five –OH groups and one C=O group at the end of the chain"
+          ],
+          [
+            "C",
+            "C<sub>16</sub>H<sub>32</sub>O<sub>2</sub>",
+            "CH<sub>3</sub>–(CH<sub>2</sub>)<sub>14</sub>–COOH"
+          ],
+          [
+            "D",
+            "C<sub>10</sub>H<sub>16</sub>N<sub>5</sub>O<sub>13</sub>P<sub>3</sub>",
+            "A ring-shaped nitrogen-containing part, a sugar with five carbon atoms, and a chain of three phosphate groups"
+          ],
+          [
+            "E",
+            "C<sub>2</sub>H<sub>5</sub>NO<sub>2</sub>",
+            "H<sub>2</sub>N–CH<sub>2</sub>–COOH"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-elements-of-life-1",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "elements-of-life-s1",
+      "q": "Which conclusion about sulfur is best supported by the data?",
+      "options": [
+        "The algae used sulfur mainly to build proteins.",
+        "The algae used sulfur mainly to build nucleic acids and ATP.",
+        "The algae spread sulfur about evenly among the five fractions of the cell.",
+        "The algae used sulfur mainly to build carbohydrates, as they did with carbon."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Read down the sulfur-35 column: 93% in proteins. Sulfur is part of some amino acids (such as cysteine), so proteins are where most of a cell's sulfur ends up.",
+        "options": [
+          "Correct. 93% of the sulfur-35 taken up was in the protein fraction, far more than in any other.",
+          "Less than 1% of the sulfur label was in nucleic acids, and the small-molecule fraction that includes ATP held only 2%.",
+          "The distribution is very uneven: one fraction holds 93% and none of the others holds more than 3%.",
+          "Carbohydrates held 1% of the sulfur label. Carbon-14 was common in carbohydrates, but sulfur was not."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-2",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "elements-of-life-s1",
+      "q": "About 22% of the phosphorus-32 was found in the lipid fraction. Which claim does this evidence best support?",
+      "options": [
+        "Some of the algae's lipids contain phosphorus, most likely as phosphate groups.",
+        "The algae converted phosphorus atoms into carbon atoms to build the lipids they needed.",
+        "Lipids are the main place where algae store phosphorus for later use in their nucleic acids.",
+        "Most lipids in the algae contain phosphorus, since 22% is a large share of the label."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A tracer marks where its element goes. Phosphorus-32 in the lipid fraction means some lipid molecules contain phosphorus, as phosphate groups. It does not tell you how many lipids do.",
+        "options": [
+          "Correct. The label can only be in a fraction if molecules in that fraction contain phosphorus atoms; in lipids, phosphorus is carried in phosphate groups.",
+          "Cells rearrange atoms into new molecules but do not turn one element into another; a phosphorus atom stays phosphorus.",
+          "The nucleic acid fraction held 57% of the label, far more than the lipids, and these data say nothing about later use.",
+          "The data show where phosphorus went, not what share of lipid molecules contain it; many lipids, such as fats, contain no phosphorus."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-3",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "elements-of-life-s1",
+      "q": "A fifth culture gets light, carbon dioxide, phosphate and sulfate but no nitrogen source. Over the next day, which outcome is most likely?",
+      "options": [
+        "The algae keep making new proteins but stop making new nucleic acids.",
+        "The algae can still make sugars and many lipids, but making new proteins and nucleic acids slows.",
+        "The algae stop photosynthesis, since each molecule in the cell contains nitrogen.",
+        "The algae use the extra phosphorus in place of the missing nitrogen when they build new amino acids and nucleic acids."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Match each molecule family to its elements. Carbohydrates and most lipids need only C, H and O; proteins (amino acids) and nucleic acids need N. Without N, the N-containing molecules cannot be made.",
+        "options": [
+          "Every amino acid contains nitrogen, so protein building is limited just as nucleic acid building is.",
+          "Correct. Sugars and fats are built from C, H and O, available from carbon dioxide and water. Proteins and nucleic acids contain nitrogen, which is missing.",
+          "Sugars contain no nitrogen, so the algae can go on building them from carbon dioxide and water by photosynthesis.",
+          "Elements are not interchangeable; amino acids need nitrogen in their amino groups and phosphorus cannot take its place."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-4",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "elements-of-life-s1",
+      "q": "The nitrogen-15 culture took up 2.40 mmol of labeled nitrogen. How many millimoles of it ended up in nucleic acids? Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.41,
+        "tol": 0.01,
+        "unit": "mmol",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "17% of 2.40 mmol = 0.17 × 2.40 = 0.408, which rounds to 0.41 mmol."
+      }
+    },
+    {
+      "id": "bio-elements-of-life-5",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "elements-of-life-s1",
+      "q": "Why can the researchers treat the labeled atoms as a fair guide to where ordinary nitrogen, phosphorus, sulfur and carbon go in the algae?",
+      "options": [
+        "Labeled atoms are taken up faster than ordinary atoms, so they reach more of the cell's molecules in a day.",
+        "Isotopes have the same protons and electrons as ordinary atoms, so cells use them in the same chemistry.",
+        "Isotopes have extra electrons, which makes them easy to detect without changing where they go.",
+        "Radioactive atoms damage the molecules they enter, which makes those molecules easier to separate into fractions."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "An isotope has the same number of protons (and so electrons) as the ordinary atom, so its chemistry is the same. Only the neutron count differs, which is what lets researchers detect it.",
+        "options": [
+          "Isotopes are taken up at about the same rate as ordinary atoms; if they were not, they would be a biased guide.",
+          "Correct. Chemistry depends on electrons. Isotopes differ only in neutrons, so cells treat them like ordinary atoms, and the label simply marks where they go.",
+          "Isotopes differ in neutrons, not electrons; extra electrons would make them ions and change their chemistry.",
+          "Damage would distort the results, not make them fair. Labels are useful because they do not change the chemistry."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-6",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "elements-of-life-s2",
+      "q": "Which statement correctly describes the data for Chamber 1 (the plant)?",
+      "options": [
+        "Carbon dioxide fell while the lamp was on and rose more slowly after it was switched off.",
+        "Carbon dioxide fell at a steady rate for the whole 120 minutes.",
+        "Carbon dioxide rose while the lamp was on and fell after it was switched off.",
+        "Carbon dioxide rose after the lamp went off, at about the same speed it had fallen."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the light the plant's curve drops from 420 to 285 ppm; in the dark it climbs from 285 to 321 ppm, a much shallower rise.",
+        "options": [
+          "Correct. It fell by 135 ppm in the first 60 minutes and rose by 36 ppm in the next 60.",
+          "It fell only while the lamp was on; after 60 minutes it rose.",
+          "This is the reverse of the data: 420 ppm fell to 285 ppm in the light.",
+          "The rise (about 0.6 ppm per minute) was much slower than the fall (about 2.25 ppm per minute)."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-7",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "elements-of-life-s2",
+      "q": "Which explanation best accounts for the rise in carbon dioxide in Chamber 1 after the lamp was switched off?",
+      "options": [
+        "Plants switch from photosynthesis to cellular respiration at night, so the plant began releasing carbon dioxide.",
+        "Respiration continued in the plant's cells, and without light, photosynthesis stopped taking carbon dioxide up.",
+        "Carbon dioxide stored in the soil leaked into the chamber once the lamp stopped warming the soil.",
+        "Without light, the plant broke down the oxygen it had made earlier into carbon dioxide."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Two processes run in the plant in the light: photosynthesis (removes CO<sub>2</sub>) and respiration (adds CO<sub>2</sub>). The curve shows the difference. In the dark, photosynthesis stops and only respiration is left, so CO<sub>2</sub> rises.",
+        "options": [
+          "Plants respire all the time, in light and dark. Respiration did not start at 60 minutes; it was hidden by faster photosynthesis.",
+          "Correct. Respiration releases carbon dioxide continuously. In the light, photosynthesis removed it faster than respiration added it; in the dark only respiration remained.",
+          "The temperature was held at 25 °C, and soil storage would not explain the steady, sustained rise; respiration does.",
+          "Oxygen alone has no carbon, so it cannot be turned into carbon dioxide; the carbon comes from sugar broken down in respiration."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-8",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "elements-of-life-s2",
+      "q": "On average, by how many ppm per minute did the carbon dioxide in Chamber 1 fall while the lamp was on (0 to 60 minutes)? Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 2.25,
+        "tol": 0.02,
+        "unit": "ppm/min",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Change = 420 − 285 = 135 ppm over 60 minutes. 135 ÷ 60 = 2.25 ppm per minute (a fall)."
+      }
+    },
+    {
+      "id": "bio-elements-of-life-9",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "elements-of-life-s2",
+      "fixed": true,
+      "q": "Suppose the plant's cellular respiration ran at the same rate in the light as it did in the dark (60 to 120 minutes). Which value best estimates how fast photosynthesis alone removed carbon dioxide while the lamp was on?",
+      "options": [
+        "About 0.60 ppm per minute",
+        "About 1.65 ppm per minute",
+        "About 2.25 ppm per minute",
+        "About 2.85 ppm per minute"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Respiration in the dark: (321 − 285) ÷ 60 = 0.60 ppm per minute. In the light, the measured fall is the net effect: photosynthesis − respiration = 2.25. So photosynthesis = 2.25 + 0.60 = 2.85 ppm per minute.",
+        "options": [
+          "This is the dark rate of rise, the respiration rate on its own, not the photosynthesis rate.",
+          "This subtracts respiration from the net fall. But respiration was adding carbon dioxide, so photosynthesis had to remove more than the net fall, not less.",
+          "This is the net fall, which is photosynthesis minus respiration. It underestimates how fast photosynthesis worked.",
+          "Correct. Net fall (2.25) = photosynthesis − respiration (0.60), so photosynthesis ≈ 2.25 + 0.60 = 2.85 ppm per minute."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "elements-of-life-s2",
+      "q": "The plant and the 20 crickets are sealed together in one chamber under the lamp. Assuming each behaves as it did alone, what happens to carbon dioxide in the chamber air?",
+      "options": [
+        "It rises, because the crickets release carbon dioxide faster than the plant can take it up.",
+        "It stays at 420 ppm, because the crickets' output and the plant's uptake cancel out.",
+        "It falls, but more slowly than with the plant alone, as the plant takes up carbon atoms the crickets release.",
+        "It falls faster than with the plant alone, because the crickets' breathing speeds up photosynthesis."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Combine the rates: crickets +1.2 ppm/min ((564 − 420) ÷ 120), lit plant −2.25 ppm/min. The sum is about −1 ppm/min. The same carbon atoms cycle from cricket to air to plant.",
+        "options": [
+          "The crickets add about 1.2 ppm per minute, while the lit plant removes about 2.25 ppm per minute net, so the plant wins.",
+          "They do not cancel: about 2.25 ppm per minute removed versus about 1.2 added.",
+          "Correct. Net change ≈ −2.25 + 1.2 = about −1 ppm per minute: carbon atoms breathed out by the crickets are pulled back in by photosynthesis.",
+          "The crickets add carbon dioxide; they cannot make the total fall faster than the plant alone could."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "elements-of-life-s3",
+      "fixed": true,
+      "q": "Which molecule carries a sulfhydryl group?",
+      "options": [
+        "Molecule A",
+        "Molecule C",
+        "Molecule D",
+        "Molecule E"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A sulfhydryl group is –SH. Only Molecule A contains sulfur, and its structure starts HS–.",
+        "options": [
+          "Correct. HS– at the start of its structure is a sulfhydryl group, which is why its formula contains S.",
+          "Molecule C carries a carboxyl group (–COOH) on a long hydrocarbon chain; it has no sulfur.",
+          "Molecule D carries phosphate groups; its formula has P but no S.",
+          "Molecule E carries amino and carboxyl groups but no sulfur."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-12",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "1.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "elements-of-life-s3",
+      "q": "Molecule C does not dissolve in water. Which feature of its structure best explains this?",
+      "options": [
+        "Its carboxyl group releases hydrogen ions, which makes it repel water molecules.",
+        "Most of the molecule is a chain of carbons carrying hydrogens, and C–H bonds are nonpolar.",
+        "It contains oxygen, which is highly electronegative and pulls electrons away from water.",
+        "It is much larger than a water molecule, and large molecules are too big to dissolve in water."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Solubility depends on polarity. Molecule C is almost all CH<sub>2</sub> groups, a hydrocarbon chain, which is nonpolar and hydrophobic. That is the mark of a lipid.",
+        "options": [
+          "A charged –COO<sup>−</sup> group would attract water, not repel it; the group is hydrophilic, not the cause.",
+          "Correct. Fifteen carbons carrying hydrogens form a long hydrophobic chain; one polar group at the end cannot make the whole molecule dissolve.",
+          "Its two oxygens are in the polar –COOH group; electronegative atoms make a molecule more water-friendly, not less.",
+          "Many large molecules dissolve if they are polar; size alone does not decide whether something dissolves."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-13",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "elements-of-life-s3",
+      "fixed": true,
+      "q": "Which of the molecules are amino acids? Select all that apply.",
+      "options": [
+        "Molecule A",
+        "Molecule B",
+        "Molecule C",
+        "Molecule D",
+        "Molecule E"
+      ],
+      "correct": [
+        0,
+        4
+      ],
+      "why": {
+        "correct": "An amino acid has both an amino group (–NH<sub>2</sub>) and a carboxyl group (–COOH). Molecule A has both, and so does Molecule E; containing nitrogen, as ATP does, or a carboxyl group alone, as the long chain does, is not enough.",
+        "options": [
+          "Amino acid. It has an amino group (–NH<sub>2</sub>) and a carboxyl group (–COOH) on the same carbon; it is cysteine.",
+          "Not an amino acid. It has hydroxyl and carbonyl groups and no nitrogen: it is a sugar.",
+          "Not an amino acid. It has a carboxyl group but no amino group or nitrogen.",
+          "Not an amino acid. It contains nitrogen, but in a ring, with a sugar and phosphate groups: it is ATP.",
+          "Amino acid. H<sub>2</sub>N–CH<sub>2</sub>–COOH has an amino group and a carboxyl group; it is glycine."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-14",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "elements-of-life-s3",
+      "q": "Molecule F also has the formula C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, but its C=O group is in the middle of the carbon chain instead of at the end. How are Molecules B and F related?",
+      "options": [
+        "They are isotopes, because they contain the same elements in the same amounts.",
+        "They are the same molecule, because a formula fully describes a molecule.",
+        "They are isomers: the same formula with different structures, so they can have different properties.",
+        "They differ on paper alone; moving a group along the chain does not change a molecule's behavior."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Isomers share a formula but differ in how their atoms are bonded. Because structure decides function in biology, isomers can taste, react and fit other molecules differently.",
+        "options": [
+          "Isotopes are atoms of one element with different numbers of neutrons. B and F are molecules, and their atoms are ordinary.",
+          "A formula gives only the count of each atom. Moving the C=O changes the structure, so B and F are different molecules.",
+          "Correct. Same atoms, different arrangement. Different shapes can behave differently in cells.",
+          "The position of a functional group changes the molecule's shape, and shape affects how it interacts with other molecules."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which element is part of both proteins and nucleic acids but is absent from typical sugars and fats?",
+      "options": [
+        "Oxygen",
+        "Carbon",
+        "Nitrogen",
+        "Sulfur"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Proteins (through their amino groups) and nucleic acids contain nitrogen. Sugars and fats are built from C, H and O.",
+        "options": [
+          "Sugars and fats contain oxygen too.",
+          "Carbon is the skeleton of all four families of molecules, sugars and fats included.",
+          "Correct. Every amino acid has an amino group, and nucleic acids contain nitrogen too; typical sugars and fats are made of C, H and O.",
+          "Sulfur is in some amino acids but not in nucleic acids."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-16",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A farmer's soil test shows plenty of nitrogen but very little phosphorus. Which molecules will the crop have the most trouble building?",
+      "options": [
+        "Nucleic acids and ATP, which contain phosphate groups.",
+        "Proteins, because each amino acid contains phosphorus.",
+        "Sugars, because phosphorus is part of each carbon skeleton.",
+        "Water, because plants build water from phosphorus taken in by their roots."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Phosphorus goes into phosphate groups, which are part of nucleic acids, ATP and some lipids. A phosphorus-poor soil limits those molecules first.",
+        "options": [
+          "Correct. Both contain phosphorus in phosphate groups, so a phosphorus shortage limits them (and the lipids that carry phosphate).",
+          "Amino acids contain C, H, O, N and sometimes S, but not phosphorus.",
+          "Carbon skeletons are carbon atoms; sugars are built from C, H and O.",
+          "Plants take water in from the soil; they do not build it from phosphorus."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-17",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A carbon atom is part of a sugar molecule in one of your muscle cells. Where was that atom most likely a year ago?",
+      "options": [
+        "It did not exist yet; your body made it from the energy in the food you ate.",
+        "It was in carbon dioxide in the air, before a plant took it up by photosynthesis.",
+        "It was a nitrogen atom in the soil that a plant converted into carbon.",
+        "It was in your muscle a year ago too, since atoms in the body are kept and reused for life."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Matter cycles. Carbon enters living things when photosynthesis builds sugar from carbon dioxide, moves to you as food, and returns to the air as carbon dioxide from cellular respiration.",
+        "options": [
+          "Living things cannot make atoms. Energy in food is used to rearrange atoms, not to create them.",
+          "Correct. Plants pull carbon out of carbon dioxide to build sugar; you got the atom by eating the plant or an animal that ate it.",
+          "Organisms rearrange atoms into new molecules but do not change one element into another.",
+          "Your cells break down and rebuild molecules constantly, releasing carbon as carbon dioxide; most atoms in a muscle are replaced within months."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-18",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A chemist adds a carboxyl group (–COOH) to the end of a hydrocarbon chain. In water, how is that end of the molecule most likely to behave?",
+      "options": [
+        "It releases a hydrogen ion and becomes negatively charged.",
+        "It picks up a hydrogen ion and becomes positively charged.",
+        "It stays uncharged and nonpolar, like the rest of the chain.",
+        "It forms a bond with a second carboxyl group to link two chains together."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Functional groups behave consistently: carboxyl groups are acids (lose H<sup>+</sup>), amino groups are bases (gain H<sup>+</sup>), hydroxyl groups are polar, and sulfhydryl groups can bond to each other.",
+        "options": [
+          "Correct. A carboxyl group is acidic: –COOH gives up H<sup>+</sup> and becomes –COO<sup>−</sup>.",
+          "That is how an amino group (–NH<sub>2</sub>) behaves, acting as a base.",
+          "The C=O and O–H in a carboxyl group are polar, and the group gives up H<sup>+</sup> easily.",
+          "That linking behavior describes sulfhydryl (–SH) groups, which can bond to each other."
+        ]
+      }
+    },
+    {
+      "id": "bio-elements-of-life-19",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "elements-of-life",
+      "practice": "1.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Which property of carbon best explains why it forms the skeletons of biological molecules?",
+      "options": [
+        "Carbon is the most common element in the Earth's crust, so it is the easiest for cells to obtain.",
+        "Carbon is highly electronegative, so its bonds to hydrogen are strongly polar and dissolve in water.",
+        "Each carbon atom forms four covalent bonds, so carbons can link into chains, branches and rings.",
+        "Carbon forms ionic bonds with oxygen, which hold large molecules together in water."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Carbon has four electrons to share, so each carbon atom makes four covalent bonds. That allows long chains, branches, rings and double bonds: a huge variety of skeletons.",
+        "options": [
+          "Oxygen and silicon are far more common in the crust. Carbon's role comes from how it bonds, not how common it is.",
+          "Carbon and hydrogen have similar electronegativity, so C–H bonds are nonpolar.",
+          "Correct. Four bonds per atom let carbon join other carbons and H, O, N, P and S in an enormous variety of shapes.",
+          "Carbon shares electrons; its bonds in biological molecules are covalent."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,721 @@
+{
+  "stimuli": {
+    "carbohydrates-s1": {
+      "kind": "table",
+      "title": "Which enzyme breaks which polysaccharide?",
+      "text": "<p>A student added 10 mg of a polysaccharide to each of twelve tubes of water at 37 °C. Each polysaccharide got three tubes: one with no enzyme, one with Enzyme A (from human saliva) and one with Enzyme B (from a fungus that rots wood). After 60 minutes she measured the sugar units released into the water.</p>",
+      "table": {
+        "caption": "Sugar released after 60 minutes (mg)",
+        "cols": [
+          "Polysaccharide",
+          "No enzyme",
+          "Enzyme A (saliva)",
+          "Enzyme B (wood-rotting fungus)"
+        ],
+        "rows": [
+          [
+            "Starch",
+            "0.1",
+            "7.9",
+            "0.3"
+          ],
+          [
+            "Glycogen",
+            "0.1",
+            "9.2",
+            "0.2"
+          ],
+          [
+            "Cellulose (powder)",
+            "0.0",
+            "0.1",
+            "6.4"
+          ],
+          [
+            "Chitin (powder)",
+            "0.0",
+            "0.0",
+            "0.1"
+          ]
+        ]
+      }
+    },
+    "carbohydrates-s2": {
+      "kind": "model",
+      "title": "Alpha and beta glucose in polymers",
+      "text": "<p>The figure shows the two ring forms of glucose, part of a starch chain and parts of two cellulose chains. Carbon 1 is the ring carbon to the right of the ring oxygen; carbon 4 is on the opposite side of the ring.</p>",
+      "figure": "starch-cellulose"
+    },
+    "carbohydrates-s3": {
+      "kind": "graph",
+      "title": "Glucose in the blood after a drink",
+      "text": "<p>Eight healthy adults who had not eaten overnight each drank, on separate mornings, 300 mL of water containing 50 g of glucose, 50 g of sucrose, 50 g of cooked starch, 50 g of powdered cellulose, or nothing added. Glucose concentration in their blood was measured every 15 minutes. Points are the group's average.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time after drinking",
+          "unit": "min",
+          "min": 0,
+          "max": 120,
+          "step": 15
+        },
+        "y": {
+          "label": "Glucose in blood",
+          "unit": "mg/dL",
+          "min": 70,
+          "max": 160,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "Glucose",
+            "points": [
+              [
+                0,
+                88
+              ],
+              [
+                15,
+                118
+              ],
+              [
+                30,
+                142
+              ],
+              [
+                45,
+                146
+              ],
+              [
+                60,
+                134
+              ],
+              [
+                75,
+                118
+              ],
+              [
+                90,
+                104
+              ],
+              [
+                105,
+                94
+              ],
+              [
+                120,
+                89
+              ]
+            ]
+          },
+          {
+            "name": "Starch",
+            "points": [
+              [
+                0,
+                89
+              ],
+              [
+                15,
+                106
+              ],
+              [
+                30,
+                128
+              ],
+              [
+                45,
+                136
+              ],
+              [
+                60,
+                130
+              ],
+              [
+                75,
+                116
+              ],
+              [
+                90,
+                104
+              ],
+              [
+                105,
+                95
+              ],
+              [
+                120,
+                90
+              ]
+            ]
+          },
+          {
+            "name": "Sucrose",
+            "points": [
+              [
+                0,
+                88
+              ],
+              [
+                15,
+                108
+              ],
+              [
+                30,
+                120
+              ],
+              [
+                45,
+                118
+              ],
+              [
+                60,
+                109
+              ],
+              [
+                75,
+                100
+              ],
+              [
+                90,
+                94
+              ],
+              [
+                105,
+                90
+              ],
+              [
+                120,
+                88
+              ]
+            ]
+          },
+          {
+            "name": "Cellulose or water",
+            "points": [
+              [
+                0,
+                88
+              ],
+              [
+                15,
+                89
+              ],
+              [
+                30,
+                88
+              ],
+              [
+                45,
+                89
+              ],
+              [
+                60,
+                88
+              ],
+              [
+                75,
+                88
+              ],
+              [
+                90,
+                89
+              ],
+              [
+                105,
+                88
+              ],
+              [
+                120,
+                88
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-carbohydrates-1",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "carbohydrates-s1",
+      "fixed": true,
+      "q": "Which polysaccharides did Enzyme B break down substantially? Select all that apply.",
+      "options": [
+        "Starch",
+        "Glycogen",
+        "Cellulose",
+        "Chitin"
+      ],
+      "correct": [
+        2
+      ],
+      "why": {
+        "correct": "Compare each Enzyme B value with its no-enzyme tube. Only cellulose shows a large release; the wood-rotting fungus's enzyme cuts the bonds in cellulose.",
+        "options": [
+          "Enzyme B released 0.3 mg from starch, barely more than the 0.1 mg with no enzyme.",
+          "Enzyme B released 0.2 mg from glycogen, about the same as no enzyme.",
+          "Substantial: 6.4 mg with Enzyme B against 0.0 mg with no enzyme.",
+          "Enzyme B released 0.1 mg from chitin, close to nothing."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-2",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "carbohydrates-s1",
+      "q": "Starch and cellulose are both polymers of glucose, yet Enzyme A broke down starch and not cellulose. Which explanation is best?",
+      "options": [
+        "Cellulose is made of a different monosaccharide that Enzyme A does not recognize.",
+        "Starch's glucose units are joined by α bonds and cellulose's by β bonds; Enzyme A fits the α bond's shape.",
+        "Cellulose chains are much longer than starch chains, so Enzyme A ran out of time before it reached a bond it could cut.",
+        "Starch dissolves in water but cellulose does not, so Enzyme A could not reach the cellulose."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Same monomer, different glycosidic bond. Enzymes fit the shape of the bond they cut, so a starch-cutting (α) enzyme cannot hydrolyze cellulose's β bonds. Enzyme B, from a fungus that digests wood, can.",
+        "options": [
+          "Both polymers are made entirely of glucose; the difference is in how the glucose units are linked.",
+          "Correct. The α or β link holds the chain at a different angle; an enzyme that fits one bond does not fit the other.",
+          "Length is not the issue: Enzyme A released almost nothing from cellulose, not a smaller amount.",
+          "Cellulose is less soluble, but Enzyme B broke down the same cellulose powder, so the bonds were reachable."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-3",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "carbohydrates-s1",
+      "q": "A student claims, \"Glycogen is broken down faster than starch because glycogen is more branched.\" How well do these data support the claim?",
+      "options": [
+        "Strongly, because glycogen released more sugar than starch did when Enzyme A was added to both.",
+        "Weakly: the gap is small and comes from one tube each, and branching was never tested.",
+        "Not at all, since glycogen and starch are built from different monomers and so are not comparable.",
+        "Strongly, because the no-enzyme tubes show that neither polysaccharide breaks down without help."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Judge two things: is the difference real, and does the design test the proposed cause? With a single tube each and a small gap, the difference could be chance; and branching was never varied, so the data cannot show it is the cause.",
+        "options": [
+          "The difference is small (9.2 versus 7.9 mg) from one tube each; it may not be real, and the data do not test branching at all.",
+          "Correct. A claim about a cause needs a real difference and a test of that cause. One tube per treatment shows neither.",
+          "Both are made of α-glucose. The flaw is the size of the evidence, not the chemistry.",
+          "The no-enzyme tubes show the enzyme is needed; they say nothing about why glycogen gave more sugar than starch."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-4",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "carbohydrates-s1",
+      "q": "What is the main purpose of the no-enzyme tubes?",
+      "options": [
+        "To show how much sugar each polysaccharide releases without enzyme, as a baseline for the enzyme tubes.",
+        "To show that the enzyme solutions themselves contain sugar that is released into the water over time.",
+        "To give the polysaccharides time to dissolve before the enzymes were added to the other tubes.",
+        "To check whether 37 °C is the best temperature for Enzymes A and B."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A comparison that lacks only the factor being tested shows what happens without it. Here nearly nothing is released without enzyme, so the sugar in the enzyme tubes comes from enzyme action.",
+        "options": [
+          "Correct. They show the baseline: near zero for all four, so the large values with either enzyme come from the enzymes.",
+          "That would need tubes with enzyme but no polysaccharide; these tubes have polysaccharide but no enzyme.",
+          "All tubes were run for the same 60 minutes; these tubes never received an enzyme.",
+          "All tubes were at 37 °C; testing temperature would need tubes at several temperatures."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-5",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "carbohydrates-s1",
+      "q": "Termites eat wood but make little enzyme of their own like Enzyme B; microbes in their guts make it. Termites are given a treatment that kills their gut microbes and are then fed only wood. What is the most likely result?",
+      "options": [
+        "The termites digest the wood as before, because wood also contains starch they can break down.",
+        "The termites starve, because the cellulose in the wood passes through them without being hydrolyzed.",
+        "The termites switch to making Enzyme A, which takes over the job of hydrolyzing the cellulose in the wood.",
+        "The termites build chitin from the wood instead, which they can digest with their own enzymes."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Wood's energy is locked in cellulose's β-glycosidic bonds. Only enzymes that fit β bonds, made here by gut microbes, can release the glucose.",
+        "options": [
+          "Wood is mostly cellulose. Without microbial enzymes, the termites cannot release its glucose.",
+          "Correct. Like Enzyme A, the termites' own enzymes do not cut β bonds; without the microbes, the cellulose stays unusable.",
+          "The table shows Enzyme A, a starch-cutting enzyme, releases almost no sugar from cellulose.",
+          "Building chitin from wood would first require breaking the cellulose down, which is exactly what they cannot do."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-6",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "carbohydrates-s2",
+      "q": "According to the model, what distinguishes α-glucose from β-glucose?",
+      "options": [
+        "The direction of the –OH group on carbon 1: below the ring in α, above it in β.",
+        "The number of carbon atoms: α-glucose has six, and β-glucose has five.",
+        "The ring oxygen, which is present in α-glucose but replaced by carbon in β-glucose.",
+        "Their elements: β-glucose contains nitrogen, which is why cellulose is hard to digest."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "α and β glucose are isomers that differ only in whether the carbon-1 –OH points down (α) or up (β).",
+        "options": [
+          "Correct. Everything else in the ring is identical.",
+          "Both forms are C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>, with six carbons.",
+          "Both rings contain the same oxygen; the forms differ only at carbon 1.",
+          "Both forms contain only C, H and O. Nitrogen is in chitin's sugar, not in β-glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-7",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "carbohydrates-s2",
+      "q": "Based on the model, why does cellulose form strong fibers while starch does not?",
+      "options": [
+        "Cellulose chains are coiled more tightly than starch chains, which makes each one stronger.",
+        "Straight chains lie side by side, so –OH groups on neighboring chains form many hydrogen bonds.",
+        "Cellulose chains are joined to one another by covalent glycosidic bonds that run between neighboring chains.",
+        "Each cellulose monomer carries more –OH groups than a starch monomer, so cellulose dissolves faster."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "β bonds flip every other glucose, so a cellulose chain runs straight. Straight chains pack side by side and hydrogen-bond through their –OH groups into strong fibers.",
+        "options": [
+          "The model shows the reverse: starch chains coil, and cellulose chains are straight.",
+          "Correct. Many hydrogen bonds between parallel chains bind them into cables; coiled starch chains cannot line up this way.",
+          "The glycosidic bonds run along each chain. The model shows chain-to-chain links as dashed hydrogen bonds.",
+          "Both are glucose, with the same –OH groups; and dissolving would weaken fibers, not strengthen them."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-8",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "carbohydrates-s2",
+      "q": "Chitin's chains are built like the cellulose chains in the model, except each monomer has a nitrogen-containing group in place of one –OH. Which conclusion follows?",
+      "options": [
+        "Chitin is a storage polysaccharide, because nitrogen makes its chains coil like starch.",
+        "Chitin can be digested by the same enzymes that hydrolyze starch, because both are made of sugars.",
+        "Building chitin uses some of the nitrogen an insect takes in; building cellulose uses none.",
+        "Chitin contains no glycosidic bonds, since its monomers carry nitrogen."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Combine the model with what you know about elements. Chitin's straight β chains make fibers like cellulose, but its nitrogen means an insect must spend nitrogen to build it.",
+        "options": [
+          "Chitin is β-linked like cellulose, so its chains run straight and form structural fibers.",
+          "Starch enzymes fit α bonds; chitin's bonds are β, like cellulose's, so they do not fit.",
+          "Correct. Each chitin monomer contains nitrogen, while cellulose contains only C, H and O.",
+          "Chitin's sugar units are still joined by glycosidic bonds formed by dehydration synthesis."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-9",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "carbohydrates-s2",
+      "q": "In the cellulose chain, two neighboring glucose units are joined through an oxygen between carbon 1 of one unit and carbon 4 of the next. How did this bond form?",
+      "options": [
+        "By hydrolysis, which added a water molecule between the two glucose units.",
+        "By a hydrogen bond between the carbon-1 –OH of one glucose and the carbon-4 –OH of the next glucose.",
+        "By dehydration synthesis between two –OH groups, releasing water and leaving an oxygen bridge.",
+        "By an ionic bond between a positive carbon 1 and a negative carbon 4."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Every glycosidic bond, α or β, forms by dehydration synthesis: two –OH groups give up H<sub>2</sub>O, and the remaining O bridges the sugars.",
+        "options": [
+          "Hydrolysis breaks glycosidic bonds; it does not form them.",
+          "A hydrogen bond is a weak attraction; the link along the chain is a covalent glycosidic bond.",
+          "Correct. The –OH groups on carbons 1 and 4 lose the atoms of one water molecule, and the remaining oxygen links the two sugars.",
+          "Glycosidic bonds are covalent; neither carbon carries a full charge."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "carbohydrates-s3",
+      "q": "Which statement correctly describes the data?",
+      "options": [
+        "Glucose in the blood peaked highest after the glucose drink and stayed flat after the cellulose drink.",
+        "Starch raised glucose in the blood more than the glucose drink did, because starch is a larger molecule.",
+        "Sucrose raised glucose in the blood more than starch did at each time point.",
+        "Cellulose raised glucose in the blood slowly, peaking later than the other drinks."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Read the peaks: glucose 146, starch 136, sucrose 120, cellulose and water about 88 with no peak.",
+        "options": [
+          "Correct. The glucose drink peaked at 146 mg/dL at 45 minutes; cellulose matched plain water at about 88 mg/dL.",
+          "Starch peaked at 136 mg/dL, below glucose's 146, and peaked no earlier.",
+          "From 30 minutes on, the starch curve is above the sucrose curve.",
+          "Cellulose never rose above the plain-water baseline of about 88 mg/dL."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "carbohydrates-s3",
+      "q": "The sucrose and glucose drinks each contained 50 g of sugar, but sucrose raised glucose in the blood much less. Which explanation is best supported?",
+      "options": [
+        "Sucrose is not hydrolyzed by human enzymes, so most of it left the body undigested.",
+        "Hydrolyzing sucrose gives glucose and fructose, so about half of its sugar units are glucose.",
+        "Sucrose is a polysaccharide, so it takes much longer to break down than glucose.",
+        "Sucrose molecules are larger than glucose molecules, so 50 g of sucrose holds fewer carbon atoms."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Sucrose = glucose + fructose. Only the glucose half is counted as glucose in the blood, so the same mass of sucrose delivers about half as much glucose.",
+        "options": [
+          "Sucrose did raise glucose in the blood (to 120 mg/dL), so it was digested; humans do hydrolyze sucrose.",
+          "Correct. 50 g of sucrose yields roughly 26 g of glucose; the rest is fructose, which this test does not measure as glucose.",
+          "Sucrose is a disaccharide, two sugars. A slower breakdown would delay the peak, not shrink it.",
+          "Per gram, sucrose holds about as many carbon atoms as glucose; the key is that half of its units are not glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-12",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "carbohydrates-s3",
+      "q": "Sucrose (C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, mass 342) is hydrolyzed into glucose (mass 180) and fructose (mass 180). How many grams of glucose are released when the 50 g of sucrose is completely hydrolyzed? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 26.3,
+        "tol": 0.1,
+        "unit": "g",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Each 342 g of sucrose gives 180 g of glucose. Glucose released = 50 g × 180 ÷ 342 = 26.3 g. (Together with 26.3 g of fructose, that is 52.6 g, more than 50 g, because hydrolysis adds water.)"
+      }
+    },
+    {
+      "id": "bio-carbohydrates-13",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "carbohydrates-s3",
+      "q": "Starch is a polymer of α-glucose, yet its curve rose more slowly than the glucose drink's. Which explanation fits the data and the structure of starch?",
+      "options": [
+        "Starch must be hydrolyzed into glucose in the gut before the glucose can be absorbed.",
+        "Starch is made of β-glucose, which the body converts into α-glucose before absorbing it.",
+        "Starch contains fewer glucose units per gram than the glucose drink, because some of its mass is nitrogen.",
+        "Starch is absorbed whole into the blood and is broken down there more slowly."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Free glucose can be absorbed at once. Starch must be hydrolyzed into glucose first, adding a step, so its curve rises more slowly even though it is all glucose.",
+        "options": [
+          "Correct. Only monosaccharides are absorbed. Starch's glycosidic bonds must be cut first, so glucose reaches the blood a little later and less sharply.",
+          "Starch is α-glucose. β-glucose polymers (cellulose) are not digested at all.",
+          "Starch contains only C, H and O. Per gram it gives slightly more glucose than glucose itself, because hydrolysis adds water.",
+          "Polysaccharides are too large to be absorbed; they are hydrolyzed in the gut first."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-14",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student hydrolyzes one molecule of maltose and one molecule of sucrose completely. Which monosaccharides does she get?",
+      "options": [
+        "Two glucose and two fructose",
+        "Three glucose and one fructose",
+        "Two glucose, one fructose and one galactose",
+        "Four glucose"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Maltose = glucose + glucose; sucrose = glucose + fructose. Total: three glucose and one fructose.",
+        "options": [
+          "Maltose contains no fructose; it is glucose + glucose.",
+          "Correct. Maltose gives two glucose; sucrose gives one glucose and one fructose.",
+          "Galactose comes from lactose, not from sucrose or maltose.",
+          "Sucrose's second unit is fructose, not glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "Which polysaccharide would you expect to find stored in a potato, and which in a human liver?",
+      "options": [
+        "Starch in the potato; glycogen in the liver",
+        "Glycogen in the potato; starch in the liver",
+        "Cellulose in the potato; chitin in the liver",
+        "Starch in both, since both store α-glucose chains"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Energy stores: starch in plants, glycogen in animals. Both are α-glucose; glycogen is more branched.",
+        "options": [
+          "Correct. Plants store glucose as starch; animals store it as glycogen, mainly in the liver and muscles.",
+          "This reverses them: starch is the plant store, glycogen the animal store.",
+          "Cellulose and chitin are structural, not storage, and humans make neither.",
+          "Both store α-glucose chains, but animals build them as glycogen, which is more branched."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-16",
+      "type": "predict",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A person who makes very little lactase (the enzyme that hydrolyzes lactose) drinks a glass of milk. Compared with a person who makes normal lactase, predict each value.",
+      "variables": [
+        {
+          "name": "Amount of lactose reaching the large intestine",
+          "answer": "up",
+          "why": "Without enough lactase, less lactose is hydrolyzed in the small intestine, so more passes on intact."
+        },
+        {
+          "name": "Glucose absorbed into the blood from the milk",
+          "answer": "down",
+          "why": "Glucose is released from lactose only by hydrolysis; less hydrolysis means less glucose to absorb."
+        },
+        {
+          "name": "Number of glucose units in each lactose molecule",
+          "answer": "none",
+          "why": "Lactose is glucose + galactose in everyone; the enzyme level does not change the molecule's structure."
+        }
+      ],
+      "why": {
+        "correct": "Lactase cuts lactose into glucose and galactose for absorption. With little lactase, lactose stays whole, so less glucose is absorbed and more lactose reaches the large intestine. The molecule itself is unchanged."
+      }
+    },
+    {
+      "id": "bio-carbohydrates-17",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A newly discovered polysaccharide forms straight, unbranched chains that bind side by side through many hydrogen bonds and is not hydrolyzed by enzymes that digest starch. What is its most likely role in the organism?",
+      "options": [
+        "Quick-release energy storage, like glycogen in animal muscles",
+        "Structural support, like cellulose in plant cell walls",
+        "Storing the instructions in genes, like DNA",
+        "Dissolved fuel carried in the blood, like glucose"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Structure predicts function. Straight chains bonded into fibers that enzymes cannot easily break are built for strength, like cellulose and chitin.",
+        "options": [
+          "Storage polysaccharides are coiled and branched so enzymes can release glucose quickly; this one resists starch enzymes.",
+          "Correct. Straight, hydrogen-bonded chains make strong fibers, and resistance to digestion suits a long-lasting structure.",
+          "Polysaccharides of one repeating sugar carry no information in their order; that is the job of nucleic acids.",
+          "Large fibrous chains do not dissolve readily; single sugars are the form carried in blood."
+        ]
+      }
+    },
+    {
+      "id": "bio-carbohydrates-18",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "carbohydrates",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which molecule is a monosaccharide?",
+      "options": [
+        "Fructose",
+        "Sucrose",
+        "Glycogen",
+        "Lactose"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mono- means one. Glucose, fructose and galactose are monosaccharides; sucrose, lactose and maltose are disaccharides; starch, glycogen, cellulose and chitin are polysaccharides.",
+        "options": [
+          "Correct. Fructose is a single six-carbon sugar.",
+          "Sucrose is a disaccharide: glucose + fructose.",
+          "Glycogen is a polysaccharide of many glucose units.",
+          "Lactose is a disaccharide: glucose + galactose."
+        ]
+      }
+    }
+  ]
+}

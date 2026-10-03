@@ -1,0 +1,44 @@
+{
+  "r-group": {
+    "def": "The side chain that makes each of the 20 amino acids different, attached to the central carbon alongside the amino group, carboxyl group and hydrogen."
+  },
+  "side-chain-chemistry": {
+    "def": "The chemical families of R groups: nonpolar (hydrophobic), polar uncharged (hydrophilic), and charged, either acidic (negative) or basic (positive). Their interactions drive folding."
+  },
+  "peptide-bond": {
+    "def": "The covalent bond between the carboxyl group of one amino acid and the amino group of the next, formed by dehydration synthesis. A short chain of amino acids is a peptide."
+  },
+  "polypeptide": {
+    "def": "A chain of amino acids joined by peptide bonds, with a free amino group at one end (amino end, N-terminus) and a free carboxyl group at the other (carboxyl end, C-terminus)."
+  },
+  "primary-structure": {
+    "def": "The sequence of amino acids in a polypeptide, held by peptide bonds and set by the gene for that protein."
+  },
+  "secondary-structure": {
+    "def": "Local coils (alpha helix) and folds (beta pleated sheet) in a polypeptide, held by hydrogen bonds between C=O and N–H groups of the backbone."
+  },
+  "hydrophobic-interaction": {
+    "def": "The clustering of nonpolar side chains away from water in the core of a folded protein; water molecules bond to each other and push the nonpolar groups together."
+  },
+  "disulfide-bridge": {
+    "def": "A covalent S–S bond between the sulfhydryl groups of two cysteine side chains, which locks parts of a folded protein together."
+  },
+  "protein-folding": {
+    "def": "The process by which a polypeptide takes on its working 3-D shape, driven by its sequence; chaperone proteins help many chains fold correctly in cells."
+  },
+  "tertiary-structure": {
+    "def": "The overall three-dimensional shape of one polypeptide, held by hydrophobic interactions, hydrogen bonds, ionic bonds and disulfide bridges between side chains. A change in this shape is a conformational change."
+  },
+  "quaternary-structure": {
+    "def": "The arrangement of two or more folded polypeptides (subunits) in one functional protein, such as the four subunits of hemoglobin."
+  },
+  "denaturation": {
+    "def": "The loss of a protein's shape when heat, extreme pH or certain chemicals break the bonds of its secondary, tertiary and quaternary structure. Peptide bonds survive, but the protein stops working."
+  },
+  "protein-roles": {
+    "def": "Proteins' jobs follow from their shapes: enzymes speed reactions, structural proteins such as collagen support tissues, hemoglobin carries oxygen, and motor proteins produce movement."
+  },
+  "sequence-shape-function": {
+    "def": "The principle that a protein's amino acid sequence determines how it folds, and its folded shape determines its function."
+  }
+}

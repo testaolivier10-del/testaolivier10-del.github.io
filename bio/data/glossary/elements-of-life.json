@@ -1,0 +1,80 @@
+{
+  "element": {
+    "def": "A pure substance made of one kind of atom, defined by its number of protons. Carbon, oxygen and nitrogen are elements."
+  },
+  "isotope": {
+    "def": "One of two or more forms of an element whose atoms have the same number of protons but different numbers of neutrons. Radioactive isotopes, such as phosphorus-32, can be traced through cells because they behave chemically like the ordinary atoms."
+  },
+  "elements-of-life": {
+    "def": "Carbon, hydrogen, oxygen, nitrogen, phosphorus and sulfur (CHONPS), which together make up about 98% of the mass of living things."
+  },
+  "matter-recycling": {
+    "def": "Atoms are not created or destroyed by living things: organisms take them in from the environment, rearrange them into new molecules and return them, so the same atoms cycle through air, water and organisms."
+  },
+  "organic-molecule": {
+    "def": "A molecule built on a skeleton of carbon atoms, usually bonded to hydrogen. Water, carbon dioxide and salts are inorganic molecules."
+  },
+  "carbon-skeleton": {
+    "def": "The chain, branched chain or ring of carbon atoms that forms the framework of an organic molecule. A molecule of only carbon and hydrogen is a hydrocarbon."
+  },
+  "isomer": {
+    "def": "One of two or more molecules with the same chemical formula but different arrangements of atoms, and so different shapes and properties."
+  },
+  "functional-group": {
+    "def": "A small cluster of atoms attached to a carbon skeleton that gives a molecule its chemical behavior, such as hydroxyl (–OH) or carboxyl (–COOH)."
+  },
+  "hydroxyl-group": {
+    "def": "–OH: a polar group that hydrogen-bonds with water and makes molecules such as sugars more soluble."
+  },
+  "carboxyl-group": {
+    "def": "–COOH: an acidic group that releases a hydrogen ion and becomes –COO−. Every amino acid has one."
+  },
+  "amino-group": {
+    "def": "–NH2: a basic group that picks up a hydrogen ion and becomes –NH3+. Every amino acid has one."
+  },
+  "phosphate-group": {
+    "def": "A phosphorus atom bonded to four oxygens, carrying negative charge. Phosphate groups are part of nucleic acids, ATP and some lipids."
+  },
+  "sulfhydryl-group": {
+    "def": "–SH: a sulfur-containing group. Two sulfhydryl groups can bond to each other, linking parts of a protein. It is found in the amino acid cysteine."
+  },
+  "methyl-group": {
+    "def": "–CH3: a nonpolar group of one carbon and three hydrogens."
+  },
+  "carbonyl-group": {
+    "def": "C=O: a carbon double-bonded to an oxygen; a polar group found in sugars."
+  },
+  "carbohydrate": {
+    "def": "A sugar or a larger molecule built from sugars, made of carbon, hydrogen and oxygen. Carbohydrates store energy and build structures."
+  },
+  "lipid": {
+    "def": "A fat, oil or related molecule, made mostly of carbon and hydrogen, that does not dissolve in water because it is largely nonpolar."
+  },
+  "amino-acid": {
+    "def": "The building block of proteins: a small molecule with an amino group and a carboxyl group. Every amino acid contains nitrogen; a few also contain sulfur."
+  },
+  "protein": {
+    "def": "A large molecule made of one or more chains of amino acids; proteins do most of the work in cells."
+  },
+  "nucleic-acid": {
+    "def": "A large molecule that stores or helps use the information in genes, such as DNA. Nucleic acids contain carbon, hydrogen, oxygen, nitrogen and phosphorus."
+  },
+  "atp": {
+    "def": "Adenosine triphosphate: the molecule cells use to carry energy from where it is released to where it is used. It contains three phosphate groups."
+  },
+  "photosynthesis-overview": {
+    "def": "The process by which plants, algae and some bacteria use the energy of light to build sugar from carbon dioxide and water, releasing oxygen."
+  },
+  "respiration-overview": {
+    "def": "The process by which cells break down sugar, usually with oxygen, releasing carbon dioxide and water and capturing the energy as ATP."
+  },
+  "nitrogen-use": {
+    "def": "Organisms need nitrogen to build proteins (every amino acid contains it) and nucleic acids."
+  },
+  "phosphorus-use": {
+    "def": "Organisms need phosphorus to build nucleic acids, ATP and some lipids, all of which contain phosphate groups."
+  },
+  "sulfur-use": {
+    "def": "Organisms need sulfur because some amino acids, such as cysteine, contain it, so it is part of many proteins."
+  }
+}

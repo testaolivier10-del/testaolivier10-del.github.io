@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d">
+<title id="t">Dehydration synthesis and hydrolysis</title>
+<desc id="d">Top: a monomer ending in OH and a monomer ending in H combine; the OH and H leave as water and a covalent bond joins the two monomers. Bottom: water is added to the joined pair, the bond breaks, and each monomer gets back an OH or an H.</desc>
+<defs>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+  <g id="m1"><rect x="0" y="0" width="74" height="40" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/><text x="37" y="25" font-size="13" text-anchor="middle" fill="#1F2A28">monomer</text></g>
+  <g id="m2"><rect x="0" y="0" width="74" height="40" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/><text x="37" y="25" font-size="13" text-anchor="middle" fill="#1F2A28">monomer</text></g>
+</defs>
+<rect width="640" height="360" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="20" y="28" font-size="17" font-weight="700">Dehydration synthesis (building)</text>
+  <use href="#m1" x="20" y="60"/><text x="98" y="86" font-size="16" font-weight="700" fill="#D55E00">OH</text>
+  <text x="138" y="86" font-size="18">+</text>
+  <text x="158" y="86" font-size="16" font-weight="700" fill="#D55E00">H</text><use href="#m2" x="174" y="60"/>
+  <line x1="262" y1="80" x2="356" y2="80" stroke="#1F2A28" stroke-width="3" marker-end="url(#a)"/>
+  <text x="309" y="70" font-size="13" text-anchor="middle">enzyme</text>
+  <use href="#m1" x="370" y="60"/><line x1="444" y1="80" x2="466" y2="80" stroke="#1F2A28" stroke-width="5"/><use href="#m2" x="466" y="60"/>
+  <text x="560" y="86" font-size="18">+</text>
+  <text x="580" y="86" font-size="16" font-weight="700" fill="#D55E00">H₂O</text>
+  <text x="455" y="124" font-size="13" text-anchor="middle">new covalent bond</text>
+  <line x1="455" y1="112" x2="455" y2="88" stroke="#1F2A28" stroke-width="1.5"/>
+
+  <line x1="20" y1="170" x2="620" y2="170" stroke="#C9D2D0" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <text x="20" y="208" font-size="17" font-weight="700">Hydrolysis (breaking down)</text>
+  <use href="#m1" x="20" y="240"/><line x1="94" y1="260" x2="116" y2="260" stroke="#1F2A28" stroke-width="5"/><use href="#m2" x="116" y="240"/>
+  <text x="206" y="266" font-size="18">+</text>
+  <text x="224" y="266" font-size="16" font-weight="700" fill="#0072B2">H₂O</text>
+  <line x1="270" y1="260" x2="356" y2="260" stroke="#1F2A28" stroke-width="3" marker-end="url(#a)"/>
+  <text x="313" y="250" font-size="13" text-anchor="middle">enzyme</text>
+  <use href="#m1" x="370" y="240"/><text x="448" y="266" font-size="16" font-weight="700" fill="#0072B2">OH</text>
+  <text x="486" y="266" font-size="18">+</text>
+  <text x="504" y="266" font-size="16" font-weight="700" fill="#0072B2">H</text><use href="#m2" x="520" y="240"/>
+  <text x="320" y="324" font-size="14" text-anchor="middle">Water is split: its –OH goes to one monomer and its –H to the other, and the bond breaks.</text>
+  <text x="320" y="146" font-size="14" text-anchor="middle">An –OH and an –H leave together as water, and the monomers bond.</text>
+</g>
+</svg>

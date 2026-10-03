@@ -1,0 +1,12 @@
+{
+  "dna-structure": {
+    "file": "figures/dna-structure.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 400,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Left: a nucleotide, a phosphate circle joined to the 5-prime carbon of a pentagon-shaped sugar, with a base rectangle on the 1-prime carbon. Right: four base pairs between two strands. The left strand runs 5-prime at the top to 3-prime at the bottom, the right strand 3-prime at the top to 5-prime at the bottom. A-T pairs have two dashed hydrogen bonds and G-C pairs three."
+  }
+}
