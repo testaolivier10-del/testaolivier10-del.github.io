@@ -153,7 +153,7 @@ person decides; lessons follow the "meanwhile" line.
 - **aquaporin-gases** (open, 2.4, low priority). Some aquaporins (e.g. AQP1) have been reported to
   pass CO₂, a claim still disputed. `bio-membrane-permeability-18` keys CO₂ crossing as "no
   change" when aquaporins are blocked. Meanwhile: as keyed (most CO₂ crosses the bilayer).
-- **cyanide-gradient** (open, low priority; review `docs/apbio-reviews/skills.md`).
+- **cyanide-gradient-skills** (same point as cyanide-gradient below, for the skills item) (open, low priority; review `docs/apbio-reviews/skills.md`).
   `bio-design-prediction-mechanism-1` keys the H⁺ gradient "down" in cyanide-treated cells that
   can ferment. In intact cells ATP synthase can run in reverse, using glycolytic ATP to pump H⁺
   and hold much of the gradient, so the real fall can be partial. The exam's model (gradient
