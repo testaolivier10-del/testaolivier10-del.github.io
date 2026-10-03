@@ -1,0 +1,1714 @@
+{
+ "ced": {
+  "title": "AP Biology Course and Exam Description",
+  "edition": "2025 revision (replaces the fall 2019 / 2020 edition)",
+  "effective": "Fall 2025 (school year 2025-26); first exam on this framework May 2026",
+  "publishedOrRevised": "Published spring 2025 (a preview course framework appeared earlier; exact PDF date not verified because apcentral.collegeboard.org is blocked here)",
+  "officialUrls": [
+   "https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description-effective-fall-2025.pdf",
+   "https://apcentral.collegeboard.org/courses/ap-biology/updates-2025-26"
+  ],
+  "verificationMethod": "Official PDF and AP Central not reachable (proxy). Built from web-search snippets of AP Central's updates page and third-party sites aligned to the 2025 CED; most third-party hosts were blocked for direct fetch. Topic content written in our own words from general biology knowledge and the 2019 CED structure, adjusted for reported 2025 changes.",
+  "sourcesConsulted": [
+   {
+    "url": "https://apcentral.collegeboard.org/courses/ap-biology/updates-2025-26",
+    "confirmed": "(via search snippets only) Unit 1 reorganized by macromolecule; photosynthesis/respiration content reorganized across Units 2-3; body size/metabolic rate added to Topic 2.2 from Unit 8; biogeochemical cycles added to 8.2; EK language clarified; science practices updated; exam format and unit weights unchanged."
+   },
+   {
+    "url": "https://teachscienceofcuriosity.com/new-ap-biology/",
+    "confirmed": "(search snippets) water properties detail, CHONPS, old 2.2 merged into 2.1, energy detail moved to Unit 3, 4.3+4.4 merged, Unit 5 topic removed, 3.7 Fitness removed into 7.2, Extinction dropped, eutrophication/biomagnification added to 8.7, succession dropped, mutation wording change."
+   },
+   {
+    "url": "https://www.revisiondojo.com/blog/ap-biology-unit-6-review-gene-expression-and-regulation-2025-guide",
+    "confirmed": "(search snippets) Unit 6 changes: AUG only codon to know, constitutive vs inducible, lac operon no longer named, mutation types defined in 6.7."
+   },
+   {
+    "url": "https://www.revisiondojo.com/blog/ap-biology-unit-4-review-cell-communication-and-cell-cycle-2025-guide",
+    "confirmed": "(search snippets) old 4.3 and 4.4 merged into new 4.3; receptors can be on surface or inside the cell."
+   },
+   {
+    "url": "https://learn-biology.com/ap-biology-v2-0-main-menu/",
+    "confirmed": "(search snippets of unit menus, aligned to 2025 CED) Unit 2 = 2.1-2.10; Unit 5 = 5.1-5.5; Unit 6 = 6.1-6.8; Unit 7 origin of life = 7.12 (URL slug still 7-13); Unit 8 = 8.1-8.7 with eutrophication/biomagnification new for 2025-26."
+   },
+   {
+    "url": "https://fiveable.me/ap-bio/unit-1",
+    "confirmed": "(search snippets) Unit 1 = 7 topics: 1.1 water, 1.2 elements, 1.3 intro macromolecules, 1.4 carbohydrates, 1.5 lipids, 1.6 nucleic acids, 1.7 proteins; Unit 2 2.7-2.10 numbering."
+   },
+   {
+    "url": "https://research.com/student-guides/education-explainers/ap-biology-ced-complete-student-guide",
+    "confirmed": "(search snippets) unit weights; Unit 7 list ends with variations in populations and origin of life (no extinction)."
+   },
+   {
+    "url": "https://collegeprep.uworld.com/ap/ap-biology/exam-format/",
+    "confirmed": "(search snippets) 60 MCQ/90 min, 6 FRQ/90 min, 50/50, hybrid digital via Bluebook, FRQ point values."
+   },
+   {
+    "url": "https://apcentral.collegeboard.org/exam-administration-ordering-scores/administering-exams/exam-policies/calculator-policy",
+    "confirmed": "(search snippets) four-function, scientific, or graphing calculators allowed; built-in Desmos in Bluebook."
+   },
+   {
+    "url": "https://media.cobbk12.org/media/WWWCobb/medialib/ap-exam-schedule-2027.f6aca8137640.pdf",
+    "confirmed": "(search snippets, with fiveable/cognito schedule pages) 2027 AP Biology exam Monday May 3, 2027, afternoon session."
+   },
+   {
+    "url": "https://openstax.org/details/books/biology-2e",
+    "confirmed": "Fetched the Biology 2e table of contents (archive 20260604, book version 63f8b6f) to map section numbers. Biology for AP Courses uses the same chapter/section numbering for the chapters used here."
+   }
+  ]
+ },
+ "bigIdeas": [
+  {
+   "id": "EVO",
+   "name": "Evolution",
+   "summary": "Life changes over time through natural selection and other processes, and all organisms are linked by common ancestry."
+  },
+  {
+   "id": "ENE",
+   "name": "Energetics",
+   "summary": "Living systems take in and use energy and matter to grow, reproduce, and stay organized."
+  },
+  {
+   "id": "IST",
+   "name": "Information Storage and Transmission",
+   "summary": "Living systems store, pass on, and respond to information, from DNA to cell signals."
+  },
+  {
+   "id": "SYI",
+   "name": "Systems Interactions",
+   "summary": "Biological systems at every level, from molecules to ecosystems, interact, and those interactions produce complex properties."
+  }
+ ],
+ "sciencePractices": [
+  {
+   "id": 1,
+   "name": "Concept Explanation",
+   "mcqWeight": "25-33%",
+   "frqWeight": null,
+   "skills": [
+    {
+     "id": "1.A",
+     "text": "Describe biological ideas and processes."
+    },
+    {
+     "id": "1.B",
+     "text": "Explain biological ideas and processes."
+    },
+    {
+     "id": "1.C",
+     "text": "Explain biological ideas, processes, or models in a real or applied situation."
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Visual Representations",
+   "mcqWeight": "16-24%",
+   "frqWeight": null,
+   "skills": [
+    {
+     "id": "2.A",
+     "text": "Describe features of a process or model shown in a diagram or other visual."
+    },
+    {
+     "id": "2.B",
+     "text": "Explain how parts of a visual model relate to each other, in theory or in an applied case."
+    },
+    {
+     "id": "2.C",
+     "text": "Connect what a visual shows to bigger biological principles or theories."
+    },
+    {
+     "id": "2.D",
+     "text": "Show relationships in a model, for example as an equation, diagram, or flowchart."
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Questions and Methods",
+   "mcqWeight": "8-14%",
+   "frqWeight": null,
+   "skills": [
+    {
+     "id": "3.A",
+     "text": "Pose or identify a question that can be tested, based on an observation, data, or a model."
+    },
+    {
+     "id": "3.B",
+     "text": "State null and alternative hypotheses, or predict an experiment's results."
+    },
+    {
+     "id": "3.C",
+     "text": "Pick out procedures that fit the question, including independent and dependent variables and suitable controls (and say why)."
+    },
+    {
+     "id": "3.D",
+     "text": "Make observations or collect data from a lab setup or its results (lab-based skill)."
+    },
+    {
+     "id": "3.E",
+     "text": "Propose a next experiment based on the evidence or on weaknesses in the design."
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Representing and Describing Data",
+   "mcqWeight": "8-14%",
+   "frqWeight": null,
+   "skills": [
+    {
+     "id": "4.A",
+     "text": "Build a correct graph or chart: right axes, labels, units, scale, plotting, graph type, and trend line when needed."
+    },
+    {
+     "id": "4.B",
+     "text": "Describe data in a table or graph: pick out values, trends, and relationships between variables."
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "name": "Statistical Tests and Data Analysis",
+   "mcqWeight": "8-14%",
+   "frqWeight": null,
+   "skills": [
+    {
+     "id": "5.A",
+     "text": "Do calculations: course equations, means, rates, ratios, percentages."
+    },
+    {
+     "id": "5.B",
+     "text": "Use error bars or confidence intervals (based on standard error) to judge whether means differ."
+    },
+    {
+     "id": "5.C",
+     "text": "Run a chi-square test."
+    },
+    {
+     "id": "5.D",
+     "text": "Use data to judge a hypothesis: reject or fail to reject the null, support or refute the alternative."
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "name": "Argumentation",
+   "mcqWeight": "20-26%",
+   "frqWeight": null,
+   "skills": [
+    {
+     "id": "6.A",
+     "text": "Make a scientific claim."
+    },
+    {
+     "id": "6.B",
+     "text": "Back the claim with evidence from biology or from data."
+    },
+    {
+     "id": "6.C",
+     "text": "Give reasoning that links the evidence to biological theory."
+    },
+    {
+     "id": "6.D",
+     "text": "Connect experimental results to larger biological ideas."
+    },
+    {
+     "id": "6.E",
+     "text": "Predict what happens when part of a biological system changes or is disrupted, using concepts, a visual, or data."
+    }
+   ]
+  }
+ ],
+ "sciencePracticesNote": "Practice names and MCQ weights match the 2019 CED and are repeated by 2025-era sources; AP Central says the practices were 'updated' for 2025, so skill wording/numbering may differ. FRQ-section weights per practice could not be verified (null). Skill text is our paraphrase of the 2019 skills.",
+ "units": [
+  {
+   "n": 1,
+   "title": "Chemistry of Life",
+   "weight": "8-11%",
+   "topics": [
+    {
+     "id": "1.1",
+     "title": "Structure of Water and Hydrogen Bonding",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Explain how water's polarity lets it form hydrogen bonds, and link those bonds to water's special properties."
+     ],
+     "knowledge": [
+      "A water molecule is polar: oxygen pulls shared electrons harder, so it is slightly negative and the hydrogens are slightly positive.",
+      "Hydrogen bonds form between water molecules and between water and other polar or charged substances.",
+      "Cohesion (water sticking to water) gives surface tension; adhesion (water sticking to other surfaces) helps water climb narrow tubes such as xylem.",
+      "Water has a high specific heat and a high heat of vaporization, so it buffers temperature change and cools by evaporation.",
+      "Many polar and ionic substances dissolve in water, which makes it the medium for most cell chemistry."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "2.1",
+      "2.2"
+     ],
+     "note": "Specific heat and heat of vaporization are reported as newly explicit in 2025."
+    },
+    {
+     "id": "1.2",
+     "title": "Elements of Life",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe which elements living things take in to build their molecules and what each is used for."
+     ],
+     "knowledge": [
+      "Organisms must take in matter to build new molecules; atoms are recycled, not created.",
+      "Carbon forms the backbone of biological molecules and can bond in chains, branches, and rings.",
+      "Nitrogen is needed to build proteins and nucleic acids.",
+      "Phosphorus is needed to build nucleic acids, ATP, and phospholipids.",
+      "Sulfur appears in some amino acids, so it is needed to build many proteins (the core set is C, H, O, N, P, S)."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "2.1",
+      "2.3"
+     ],
+     "note": "Sulfur reported as newly listed in the 2025 edition (CHONP to CHONPS)."
+    },
+    {
+     "id": "1.3",
+     "title": "Introduction to Macromolecules",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Describe how monomers join into polymers and how polymers are broken back down."
+     ],
+     "knowledge": [
+      "Large biological molecules are polymers built from repeating smaller units (monomers).",
+      "Dehydration synthesis links monomers with a covalent bond and releases a water molecule.",
+      "Hydrolysis breaks a bond between monomers by adding a water molecule.",
+      "The four main groups are carbohydrates, lipids, nucleic acids, and proteins; lipids are not true polymers."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "3.1"
+     ]
+    },
+    {
+     "id": "1.4",
+     "title": "Carbohydrates",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Relate the structure of sugars and their polymers to their roles in energy storage and structure."
+     ],
+     "knowledge": [
+      "Monosaccharides (simple sugars such as glucose) are the monomers of carbohydrates.",
+      "Glycosidic bonds join sugars into disaccharides and polysaccharides.",
+      "Starch (plants) and glycogen (animals) store energy; cellulose (plant cell walls) and chitin give structural support.",
+      "Small differences in how sugar units are linked change shape and function, for example starch versus cellulose."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "3.2"
+     ]
+    },
+    {
+     "id": "1.5",
+     "title": "Lipids",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Relate lipid structure, especially how nonpolar it is, to the roles lipids play."
+     ],
+     "knowledge": [
+      "Lipids are mostly nonpolar, so they do not mix well with water.",
+      "Triglycerides (fats and oils) store energy; saturated fatty acids have only single carbon-carbon bonds, unsaturated ones have at least one double bond that puts a kink in the chain.",
+      "Phospholipids have a polar, water-loving head and two nonpolar, water-avoiding tails, so they form bilayers in water.",
+      "Steroids such as cholesterol have a ring structure and act in membranes and as signals."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "3.3"
+     ]
+    },
+    {
+     "id": "1.6",
+     "title": "Nucleic Acids",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe how DNA and RNA are built and how their structure lets them store and pass on information."
+     ],
+     "knowledge": [
+      "Nucleotides are the monomers: each has a five-carbon sugar, a phosphate group, and a nitrogen base.",
+      "Nucleotides join by linking the phosphate of one to the sugar of the next, giving a strand with a 5' end and a 3' end.",
+      "DNA is usually a double helix of two antiparallel strands held together by hydrogen bonds between paired bases (A with T, G with C).",
+      "RNA is usually single-stranded, uses ribose instead of deoxyribose, and uses uracil in place of thymine.",
+      "The order of bases carries the genetic information."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "3.5",
+      "14.2"
+     ],
+     "note": "One search snippet of learn-biology.com mentioned a '1.8' and a proteins-before-nucleic-acids order; Fiveable and other sources list 7 topics with 1.6 = Nucleic Acids, 1.7 = Proteins. Confirm."
+    },
+    {
+     "id": "1.7",
+     "title": "Proteins",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Relate the amino acid sequence of a protein to its final shape and function."
+     ],
+     "knowledge": [
+      "Amino acids are the monomers; each has an amino group, a carboxyl group, and a variable side chain (R group).",
+      "Peptide bonds join amino acids into a chain with a direction (amino end to carboxyl end).",
+      "Side chains differ in chemistry (nonpolar, polar, charged), and their interactions drive folding.",
+      "Primary structure is the sequence; secondary structure is local folding (helices and sheets) held by hydrogen bonds in the backbone; tertiary structure is the overall 3-D shape from side-chain interactions; quaternary structure is two or more chains together.",
+      "Changing the sequence or the environment can change shape and so change or destroy function."
+     ],
+     "exclusions": [
+      "Memorizing the structures or names of particular amino acids or nucleotides is not required."
+     ],
+     "openstax": [
+      "3.4"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Cell Structure and Function",
+   "weight": "10-13%",
+   "topics": [
+    {
+     "id": "2.1",
+     "title": "Cell Structure and Function",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Describe the parts of a cell and explain how the structure of each part fits its job."
+     ],
+     "knowledge": [
+      "Ribosomes, found in all cells, build proteins; they are made of rRNA and protein.",
+      "Rough ER carries ribosomes and makes proteins for membranes or export; smooth ER makes lipids and helps detoxify.",
+      "The Golgi complex modifies, sorts, and packages proteins for their destinations.",
+      "Lysosomes hold digestive enzymes that break down molecules and worn-out parts and help in programmed cell death.",
+      "Vacuoles store water and other materials; the plant central vacuole helps keep the cell firm.",
+      "Mitochondria and chloroplasts have double membranes and their own DNA and ribosomes; folded inner membranes give more surface area."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "4.2",
+      "4.3",
+      "4.4",
+      "4.5"
+     ],
+     "note": "Reported as merging the old 2.1 (subcellular components) and 2.2 (structure and function). Some energy-related organelle detail may now sit in Unit 3."
+    },
+    {
+     "id": "2.2",
+     "title": "Cell Size",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how surface area-to-volume ratio limits cell size and affects exchange with the surroundings, and relate body size to metabolic rate."
+     ],
+     "knowledge": [
+      "As a cell grows, volume rises faster than surface area, so the ratio of surface area to volume falls.",
+      "A smaller ratio means slower exchange of materials and heat per unit of volume, which limits how big a cell can get.",
+      "Cells and tissues that exchange a lot (root hairs, gut lining, alveoli) have folds or projections that increase surface area.",
+      "Smaller organisms lose heat faster for their mass and tend to have a higher metabolic rate per unit of body mass than larger organisms."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "4.1",
+      "33.1"
+     ],
+     "note": "Body size and metabolic rate content reported as moved here from Unit 8 in 2025."
+    },
+    {
+     "id": "2.3",
+     "title": "Plasma Membrane",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe how the membrane is put together and how its parts let it control what crosses."
+     ],
+     "knowledge": [
+      "The membrane is a phospholipid bilayer: water-loving heads face the watery inside and outside, water-avoiding tails face inward.",
+      "Embedded and attached proteins move substances, receive signals, and help cells recognize each other.",
+      "Steroids such as cholesterol help regulate fluidity; carbohydrates attached to lipids and proteins act in recognition.",
+      "The fluid mosaic model describes components that can move sideways within the layer."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "5.1"
+     ]
+    },
+    {
+     "id": "2.4",
+     "title": "Membrane Permeability",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how membrane structure makes the membrane selectively permeable, and describe the role of the cell wall."
+     ],
+     "knowledge": [
+      "Small nonpolar molecules (O2, CO2, N2) cross the bilayer directly.",
+      "Ions and large polar molecules need transport proteins to cross at useful rates; small amounts of water cross directly, but most goes through aquaporins.",
+      "Cell walls of plants, fungi, and many prokaryotes give structure and protect against bursting in watery surroundings."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "5.1",
+      "5.2"
+     ]
+    },
+    {
+     "id": "2.5",
+     "title": "Membrane Transport",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe passive and active transport and the large-scale movement of material into and out of cells."
+     ],
+     "knowledge": [
+      "Passive transport moves substances from high to low concentration and needs no energy input from the cell.",
+      "Active transport moves substances against their gradient and needs energy, often from ATP.",
+      "Endocytosis takes in large particles or fluid by folding the membrane inward; exocytosis releases material when vesicles fuse with the membrane.",
+      "Selective permeability lets cells keep internal conditions different from the outside."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "5.2",
+      "5.3",
+      "5.4"
+     ]
+    },
+    {
+     "id": "2.6",
+     "title": "Facilitated Diffusion",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how channel and carrier proteins let specific substances move down their gradients."
+     ],
+     "knowledge": [
+      "Facilitated diffusion is passive movement through specific transport proteins.",
+      "Channels (including aquaporins and ion channels) let water or particular ions through.",
+      "Carrier proteins bind a specific molecule and change shape to move it across.",
+      "Pumps such as the sodium-potassium pump use ATP to build gradients that store energy and can drive other transport."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "5.2",
+      "5.3"
+     ]
+    },
+    {
+     "id": "2.7",
+     "title": "Tonicity and Osmoregulation",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Predict and explain the direction water moves based on solute concentrations or water potential, and describe how organisms control water balance."
+     ],
+     "knowledge": [
+      "Water moves by osmosis from a hypotonic solution (fewer solutes) toward a hypertonic solution (more solutes); isotonic means no net movement.",
+      "Water potential combines pressure potential and solute potential; water moves from higher to lower water potential.",
+      "Animal cells may burst or shrink; plant cells become firm (turgid) or pull away from the wall (plasmolysis).",
+      "Organisms use mechanisms such as contractile vacuoles, kidneys, and controlled solute levels to keep water and solute balance."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "5.2",
+      "30.5",
+      "41.1"
+     ]
+    },
+    {
+     "id": "2.8",
+     "title": "Mechanisms of Transport",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe the processes cells use to move materials, including cotransport driven by gradients."
+     ],
+     "knowledge": [
+      "Cells use a mix of simple diffusion, facilitated diffusion, active transport, and bulk transport.",
+      "A gradient built by one pump can power the movement of another substance against its own gradient (cotransport).",
+      "The type of transport used depends on size, charge, polarity, and the direction of the gradient."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "5.3",
+      "5.4"
+     ]
+    },
+    {
+     "id": "2.9",
+     "title": "Cell Compartmentalization",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how membranes inside eukaryotic cells divide the cell into compartments and why that helps."
+     ],
+     "knowledge": [
+      "Internal membranes keep different chemical reactions and conditions apart, so incompatible processes can run at once.",
+      "Folded internal membranes increase the area available for reactions.",
+      "Prokaryotes lack membrane-bound organelles but still have specialized regions, such as the nucleoid."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "4.3",
+      "4.4"
+     ]
+    },
+    {
+     "id": "2.10",
+     "title": "Origins of Cell Compartmentalization",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Describe evidence for endosymbiosis and compare compartments in prokaryotic and eukaryotic cells."
+     ],
+     "knowledge": [
+      "Mitochondria and chloroplasts likely came from free-living prokaryotes taken in by an ancestral host cell.",
+      "Evidence: double membranes, their own circular DNA, ribosomes like those of bacteria, and division by a fission-like process.",
+      "Prokaryotes generally lack internal membrane-bound organelles; eukaryotes have many."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "4.3",
+      "23.1"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "Cellular Energetics",
+   "weight": "12-16%",
+   "topics": [
+    {
+     "id": "3.1",
+     "title": "Enzyme Structure",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe how an enzyme's shape, especially its active site, determines what it acts on."
+     ],
+     "knowledge": [
+      "Enzymes are biological catalysts, mostly proteins.",
+      "The active site has a shape and chemical character that fit a specific substrate.",
+      "The substrate and active site must be compatible in shape and charge for the reaction to occur."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "6.5"
+     ]
+    },
+    {
+     "id": "3.2",
+     "title": "Enzyme Catalysis",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how enzymes speed up reactions."
+     ],
+     "knowledge": [
+      "Enzymes lower the activation energy needed for a reaction.",
+      "Enzymes are not used up and can be reused.",
+      "Reaction rate can be measured as product formed or substrate used over time."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "6.2",
+      "6.5"
+     ]
+    },
+    {
+     "id": "3.3",
+     "title": "Environmental Impacts on Enzyme Function",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain and predict how temperature, pH, concentration, and inhibitors change enzyme activity."
+     ],
+     "knowledge": [
+      "Too much heat or a pH far from the optimum can change an enzyme's shape (denature it) and reduce or end its activity; some denaturing can be undone.",
+      "Raising temperature usually speeds collisions and the reaction until the enzyme starts to denature.",
+      "Increasing substrate concentration raises the rate until all enzymes are busy.",
+      "Competitive inhibitors compete for the active site; noncompetitive inhibitors bind elsewhere and change the enzyme's shape.",
+      "Cofactors and coenzymes can be required for some enzymes to work."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "6.5"
+     ]
+    },
+    {
+     "id": "3.4",
+     "title": "Cellular Energy",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe how cells capture, store, and use energy and how energy-releasing reactions drive energy-requiring ones."
+     ],
+     "knowledge": [
+      "Living things need a steady input of energy to stay organized; energy changes form but is never created or destroyed.",
+      "Energy-releasing reactions can be coupled to energy-requiring reactions, often using ATP.",
+      "Metabolic pathways are series of steps where the product of one reaction feeds the next.",
+      "Losing the energy input leads to loss of order and eventually death."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "6.1",
+      "6.2",
+      "6.3",
+      "6.4"
+     ]
+    },
+    {
+     "id": "3.5",
+     "title": "Photosynthesis",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe how photosynthesis captures light energy and stores it in carbohydrates, and explain where each stage happens."
+     ],
+     "knowledge": [
+      "Photosynthesis first arose in prokaryotes; chloroplasts of plants and algae descend from photosynthetic bacteria.",
+      "Light reactions in the thylakoid membranes use chlorophyll and photosystems I and II to capture light, split water, and release O2.",
+      "An electron transport chain pumps protons into the thylakoid space; ATP synthase uses the proton gradient to make ATP. NADPH is also made.",
+      "The Calvin cycle in the stroma uses ATP and NADPH to fix CO2 into carbohydrate."
+     ],
+     "exclusions": [
+      "Memorizing the steps of the Calvin cycle, the structures of its molecules, or enzyme names (other than ATP synthase) is not required."
+     ],
+     "openstax": [
+      "8.1",
+      "8.2",
+      "8.3"
+     ]
+    },
+    {
+     "id": "3.6",
+     "title": "Cellular Respiration",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Describe how cells break down organic molecules to make ATP, with and without oxygen, and where each stage happens."
+     ],
+     "knowledge": [
+      "Glycolysis in the cytosol splits glucose into pyruvate, making a small amount of ATP and NADH.",
+      "Pyruvate oxidation and the Krebs cycle in the mitochondrial matrix release CO2 and load electron carriers (NADH, FADH2).",
+      "The electron transport chain in the inner mitochondrial membrane passes electrons to oxygen and pumps protons; ATP synthase uses the gradient to make most of the ATP (oxidative phosphorylation).",
+      "Without oxygen, fermentation regenerates NAD+ so glycolysis can continue; it yields much less ATP.",
+      "Some energy is released as heat, which endotherms use to keep body temperature up; uncoupling proteins can increase heat production."
+     ],
+     "exclusions": [
+      "Memorizing glycolysis or Krebs cycle steps, molecule structures, or enzyme names (other than ATP synthase) is not required."
+     ],
+     "openstax": [
+      "7.1",
+      "7.2",
+      "7.3",
+      "7.4",
+      "7.5",
+      "7.6",
+      "7.7"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "Cell Communication and Cell Cycle",
+   "weight": "10-15%",
+   "topics": [
+    {
+     "id": "4.1",
+     "title": "Cell Communication",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe the ways cells communicate, by direct contact and by chemical signals over short and long distances."
+     ],
+     "knowledge": [
+      "Cells signal by direct contact (for example immune cell recognition) or by releasing chemicals.",
+      "Signals can act on nearby cells (local signaling such as neurotransmitters) or travel far through the body (hormones).",
+      "Single-celled organisms also signal, for example quorum sensing in bacteria."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "9.1",
+      "9.4"
+     ]
+    },
+    {
+     "id": "4.2",
+     "title": "Introduction to Signal Transduction",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe the parts of a signaling pathway: signal, receptor, relay, and response."
+     ],
+     "knowledge": [
+      "A signaling molecule (ligand) binds a receptor protein, changing its shape.",
+      "Receptors can be on the cell surface or inside the cell (cytoplasm or nucleus), depending on whether the signal can cross the membrane.",
+      "The signal is relayed by a chain of steps, often with second messengers and protein phosphorylation, which can amplify it.",
+      "The response can be gene expression changes, changes in cell function, or cell death."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "9.1",
+      "9.2",
+      "9.3"
+     ]
+    },
+    {
+     "id": "4.3",
+     "title": "Signal Transduction Pathways",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how a signal produces a cellular response, and predict how a change in a pathway alters the response."
+     ],
+     "knowledge": [
+      "Pathways include G protein-coupled receptor routes and receptor tyrosine kinases that use phosphorylation cascades.",
+      "Second messengers such as cAMP and calcium spread the signal inside the cell.",
+      "A mutation in any part of a pathway can switch it off or leave it stuck on.",
+      "Chemicals that block or mimic parts of a pathway (drugs, toxins) change the response."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "9.2",
+      "9.3"
+     ],
+     "note": "Reported as merging the 2019 topics 4.3 (Signal Transduction) and 4.4 (Changes in Signal Transduction Pathways)."
+    },
+    {
+     "id": "4.4",
+     "title": "Feedback",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how negative and positive feedback regulate body systems and maintain or amplify change."
+     ],
+     "knowledge": [
+      "Negative feedback counters a change and returns a variable toward its set point (for example, blood glucose control).",
+      "Positive feedback amplifies a change and drives a process to completion (for example, contractions during childbirth or fruit ripening).",
+      "Disrupting feedback can harm homeostasis."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "33.3",
+      "37.3"
+     ]
+    },
+    {
+     "id": "4.5",
+     "title": "Cell Cycle",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe the events of the cell cycle and explain how mitosis passes a full set of chromosomes to each daughter cell."
+     ],
+     "knowledge": [
+      "The cell cycle has interphase (G1, S, G2) and mitosis plus cytokinesis.",
+      "DNA is copied in S phase; mitosis separates the copies so the daughter cells are genetically identical.",
+      "Cells can leave the cycle and enter a resting state (G0).",
+      "Mitosis supports growth, repair, and asexual reproduction."
+     ],
+     "exclusions": [
+      "Naming or memorizing the individual phases of mitosis may be outside the tested scope (2019 rule; confirm for 2025)."
+     ],
+     "openstax": [
+      "10.1",
+      "10.2"
+     ]
+    },
+    {
+     "id": "4.6",
+     "title": "Regulation of Cell Cycle",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how checkpoints and signaling molecules control the cell cycle, and how losing that control can lead to cancer or cell death."
+     ],
+     "knowledge": [
+      "Checkpoints check for problems (such as DNA damage) before the cell moves on.",
+      "Cyclins and cyclin-dependent kinases work together to push the cell through stages.",
+      "Mutations in genes that control the cycle can cause uncontrolled division (cancer).",
+      "Cells with serious problems may undergo programmed cell death (apoptosis)."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "10.3",
+      "10.4"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "Heredity",
+   "weight": "8-11%",
+   "topics": [
+    {
+     "id": "5.1",
+     "title": "Meiosis",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how meiosis produces haploid gametes and compare it with mitosis."
+     ],
+     "knowledge": [
+      "Meiosis has two divisions and makes four haploid cells from one diploid cell.",
+      "Homologous chromosomes pair and separate in the first division; sister chromatids separate in the second.",
+      "Mitosis keeps chromosome number the same; meiosis halves it so fertilization restores it."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "11.1"
+     ]
+    },
+    {
+     "id": "5.2",
+     "title": "Meiosis and Genetic Diversity",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how meiosis and fertilization create genetic variety, and describe the effects of errors in chromosome separation."
+     ],
+     "knowledge": [
+      "Crossing over swaps pieces between homologous chromosomes.",
+      "Independent assortment of homologous pairs makes many combinations of chromosomes.",
+      "Random fertilization adds more variety.",
+      "Nondisjunction (chromosomes failing to separate) gives gametes with extra or missing chromosomes, leading to conditions such as trisomy 21."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "11.1",
+      "11.2",
+      "13.2"
+     ],
+     "note": "Nondisjunction reported as moved here after the 2019 topic 5.6 (Chromosomal Inheritance) was removed."
+    },
+    {
+     "id": "5.3",
+     "title": "Mendelian Genetics",
+     "bigIdeas": [
+      "IST",
+      "EVO"
+     ],
+     "objectives": [
+      "Explain inheritance patterns using Mendel's laws and use probability to predict offspring."
+     ],
+     "knowledge": [
+      "Alleles separate into different gametes (segregation); genes on different chromosomes sort independently (independent assortment).",
+      "Punnett squares and the rules of probability predict genotype and phenotype ratios for monohybrid and dihybrid crosses.",
+      "Pedigrees show patterns such as dominant, recessive, and sex-linked inheritance.",
+      "Shared genetic mechanisms across living things are evidence of common ancestry."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "12.1",
+      "12.2",
+      "12.3"
+     ]
+    },
+    {
+     "id": "5.4",
+     "title": "Non-Mendelian Genetics",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain inheritance patterns that do not follow Mendel's simple ratios."
+     ],
+     "knowledge": [
+      "Genes close together on the same chromosome tend to be inherited together (linkage); recombination frequency estimates map distance.",
+      "Sex-linked genes show different patterns in males and females.",
+      "Many traits are controlled by several genes (polygenic) and show continuous variation.",
+      "Mitochondrial and chloroplast genes are usually inherited from one parent only.",
+      "Chi-square tests check whether observed results fit expected ratios."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "12.3",
+      "13.1"
+     ]
+    },
+    {
+     "id": "5.5",
+     "title": "Environmental Effects on Phenotype",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Explain how the environment can change how a genotype shows up as a phenotype."
+     ],
+     "knowledge": [
+      "The same genotype can produce different phenotypes in different environments.",
+      "Examples: flower color in hydrangeas depending on soil pH, temperature-dependent sex or fur color, and height affected by nutrition."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "12.2",
+      "16.1"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "title": "Gene Expression and Regulation",
+   "weight": "12-16%",
+   "topics": [
+    {
+     "id": "6.1",
+     "title": "DNA and RNA Structure",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe how DNA and RNA store heritable information and how genetic material is organized in prokaryotes and eukaryotes."
+     ],
+     "knowledge": [
+      "DNA (and RNA in some viruses) is the hereditary material.",
+      "Prokaryotes usually have a circular chromosome plus small plasmids; eukaryotes have multiple linear chromosomes in the nucleus.",
+      "Base pairing (purines with pyrimidines) keeps the double helix a uniform width and makes copying possible."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "14.1",
+      "14.2"
+     ]
+    },
+    {
+     "id": "6.2",
+     "title": "Replication",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe how DNA is copied and explain why the copying is semiconservative."
+     ],
+     "knowledge": [
+      "Each new DNA molecule has one old and one new strand.",
+      "Helicase unwinds, topoisomerase relieves twisting, primase lays down an RNA primer, DNA polymerase adds nucleotides only to the 3' end, and ligase joins fragments.",
+      "The leading strand is made continuously; the lagging strand is made in short fragments."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "14.3",
+      "14.4",
+      "14.5"
+     ]
+    },
+    {
+     "id": "6.3",
+     "title": "Transcription and RNA Processing",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe how RNA is made from a DNA template and how eukaryotic RNA is processed."
+     ],
+     "knowledge": [
+      "RNA polymerase builds mRNA from the template strand, adding nucleotides in the 5' to 3' direction.",
+      "Other RNA types include tRNA and rRNA.",
+      "In eukaryotes, transcription happens in the nucleus; the mRNA gets a cap and poly-A tail and introns are removed.",
+      "Alternative splicing lets one gene produce more than one protein."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "15.1",
+      "15.2",
+      "15.3",
+      "15.4"
+     ],
+     "note": "2025 reportedly clarifies DNA in the nucleus versus ribosomes in the cytoplasm."
+    },
+    {
+     "id": "6.4",
+     "title": "Translation",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Describe how ribosomes use mRNA to build a protein and explain why the genetic code is shared across life."
+     ],
+     "knowledge": [
+      "Ribosomes read mRNA in three-base codons; tRNAs bring matching amino acids.",
+      "Translation starts at the start codon AUG and ends at a stop codon.",
+      "In prokaryotes, translation can begin while transcription is still going on.",
+      "The genetic code is nearly universal, which is evidence of common ancestry.",
+      "Retroviruses use reverse transcriptase to make DNA from their RNA."
+     ],
+     "exclusions": [
+      "Memorizing the codon table is not required; AUG as the start codon is the one codon to know (reported 2025 clarification)."
+     ],
+     "openstax": [
+      "15.1",
+      "15.5",
+      "21.2"
+     ]
+    },
+    {
+     "id": "6.5",
+     "title": "Regulation of Gene Expression",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how cells switch genes on and off."
+     ],
+     "knowledge": [
+      "Regulatory sequences and proteins (transcription factors) control whether and how much a gene is transcribed.",
+      "In prokaryotes, operons group related genes under one promoter; operons can be inducible or repressible.",
+      "Eukaryotic genes can be regulated by DNA and histone changes (epigenetics) and by transcription factors.",
+      "Some genes are always on (constitutive); others are turned on only when needed (inducible).",
+      "Gene products determine phenotype."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "16.1",
+      "16.2",
+      "16.3",
+      "16.4"
+     ]
+    },
+    {
+     "id": "6.6",
+     "title": "Gene Expression and Cell Specialization",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how differences in which genes are expressed make cells become different types."
+     ],
+     "knowledge": [
+      "All cells in a body carry the same genome, but different cell types express different genes.",
+      "Small RNAs and other factors also regulate expression after transcription.",
+      "Coordinated expression of sets of genes guides development."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "16.5",
+      "16.6",
+      "43.7"
+     ]
+    },
+    {
+     "id": "6.7",
+     "title": "Mutations",
+     "bigIdeas": [
+      "IST",
+      "EVO"
+     ],
+     "objectives": [
+      "Describe types of changes to DNA and explain their effects on phenotype and on variation in populations."
+     ],
+     "knowledge": [
+      "Mutations can be point mutations (silent, missense, nonsense) or insertions and deletions that may shift the reading frame.",
+      "Mutations can be harmful, helpful, or neutral depending on context; they arise from copying errors or environmental damage.",
+      "Mutations are not directed by the needs of the organism or by environmental pressures.",
+      "Errors in chromosome number or structure can cause disorders.",
+      "Bacteria can gain genes by transformation, transduction, and conjugation; viral replication adds variation."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "14.6",
+      "15.1",
+      "21.2",
+      "22.2"
+     ]
+    },
+    {
+     "id": "6.8",
+     "title": "Biotechnology",
+     "bigIdeas": [
+      "IST"
+     ],
+     "objectives": [
+      "Explain how common lab techniques are used to study and change DNA."
+     ],
+     "knowledge": [
+      "Gel electrophoresis separates DNA fragments by size.",
+      "PCR makes many copies of a chosen DNA segment.",
+      "Bacterial transformation inserts new DNA (often on a plasmid) into cells.",
+      "DNA sequencing reads the order of bases; these tools are used in medicine, forensics, and research."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "17.1",
+      "17.2",
+      "17.3",
+      "17.4"
+     ]
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "title": "Natural Selection",
+   "weight": "13-20%",
+   "topics": [
+    {
+     "id": "7.1",
+     "title": "Introduction to Natural Selection",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Describe natural selection as a main mechanism of evolution."
+     ],
+     "knowledge": [
+      "Natural selection acts on heritable variation; individuals with traits better suited to the environment tend to leave more offspring.",
+      "Competition for limited resources leads to differences in reproductive success.",
+      "Evolutionary fitness is measured by reproductive success."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "18.1",
+      "19.3"
+     ]
+    },
+    {
+     "id": "7.2",
+     "title": "Natural Selection",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Explain how environmental change and variation at the molecular and cellular level affect which individuals survive and reproduce."
+     ],
+     "knowledge": [
+      "Environments change, and what counts as a favorable trait depends on the environment.",
+      "Phenotypic variation shaped by molecular and cellular differences affects survival and reproduction.",
+      "Over generations, natural selection changes the makeup of a population."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "19.3"
+     ],
+     "note": "Reported to absorb the 'cellular variation affects fitness' ideas from the removed 2019 topic 3.7 (Fitness)."
+    },
+    {
+     "id": "7.3",
+     "title": "Artificial Selection",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Explain how humans selecting traits can change populations."
+     ],
+     "knowledge": [
+      "Humans choose which individuals breed, which changes trait frequencies over generations.",
+      "Examples include crop plants and dog breeds.",
+      "Human activity can also cause unintended selection, such as antibiotic resistance."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "18.1"
+     ]
+    },
+    {
+     "id": "7.4",
+     "title": "Population Genetics",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Explain how random processes and selection change allele frequencies, especially in small populations."
+     ],
+     "knowledge": [
+      "Mutation adds new alleles.",
+      "Genetic drift is random change in allele frequencies and has a larger effect in small populations (bottleneck and founder effects).",
+      "Gene flow moves alleles between populations.",
+      "Reduced genetic variation lowers a population's ability to respond to change."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "19.1",
+      "19.2"
+     ]
+    },
+    {
+     "id": "7.5",
+     "title": "Hardy-Weinberg Equilibrium",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Use the Hardy-Weinberg equations to calculate allele and genotype frequencies and explain the conditions for equilibrium."
+     ],
+     "knowledge": [
+      "p + q = 1 and p^2 + 2pq + q^2 = 1 describe a population that is not evolving.",
+      "Equilibrium requires a large population, no migration, no net mutation, random mating, and no selection.",
+      "Departure from expected frequencies shows the population is evolving."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "19.1"
+     ]
+    },
+    {
+     "id": "7.6",
+     "title": "Evidence of Evolution",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Describe the kinds of evidence for evolution and how they are used."
+     ],
+     "knowledge": [
+      "Fossils, dated by rock layers and radiometric methods, show change over time.",
+      "Similar structures (homologous anatomy) and vestigial structures point to shared ancestry.",
+      "Molecular evidence (DNA and protein sequence similarity) supports common descent."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "18.1",
+      "20.2"
+     ]
+    },
+    {
+     "id": "7.7",
+     "title": "Common Ancestry",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Describe shared features that show all life is related."
+     ],
+     "knowledge": [
+      "All living things share DNA/RNA as genetic material, a nearly universal genetic code, and core metabolic pathways such as glycolysis.",
+      "Eukaryotes share membrane-bound organelles, linear chromosomes, and genes with introns."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "20.1",
+      "20.2"
+     ]
+    },
+    {
+     "id": "7.8",
+     "title": "Continuing Evolution",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Explain how ongoing evolution can be observed today."
+     ],
+     "knowledge": [
+      "Populations keep evolving because environments keep changing.",
+      "Examples: antibiotic and pesticide resistance, changes in virus populations, and genomic changes over time."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "19.3",
+      "21.1"
+     ]
+    },
+    {
+     "id": "7.9",
+     "title": "Phylogeny",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Read and build phylogenetic trees and cladograms and explain what they show about relatedness."
+     ],
+     "knowledge": [
+      "Trees and cladograms show hypothesized evolutionary relationships based on shared derived traits and molecular data.",
+      "Branch points (nodes) represent common ancestors; out-groups are the least closely related.",
+      "Trees are hypotheses that change as new evidence appears; molecular data are often more reliable than physical traits."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "20.1",
+      "20.2",
+      "20.3"
+     ]
+    },
+    {
+     "id": "7.10",
+     "title": "Speciation",
+     "bigIdeas": [
+      "EVO"
+     ],
+     "objectives": [
+      "Describe how new species form and how reproductive barriers keep them separate."
+     ],
+     "knowledge": [
+      "The biological species concept defines a species as a group that can interbreed and produce fertile offspring.",
+      "Allopatric speciation follows geographic separation; sympatric speciation happens without it (for example, polyploidy in plants).",
+      "Prezygotic and postzygotic barriers keep species apart.",
+      "Speciation can be gradual or happen in rapid bursts (punctuated equilibrium); adaptive radiation follows new opportunities."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "18.2",
+      "18.3"
+     ]
+    },
+    {
+     "id": "7.11",
+     "title": "Variations in Populations",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Explain how genetic variation affects a population's ability to survive environmental change."
+     ],
+     "knowledge": [
+      "Populations with more genetic diversity are more likely to include individuals that can survive a new stress.",
+      "Low diversity makes a population vulnerable to disease and environmental change.",
+      "Example: a genetically uniform crop wiped out by a single disease."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "19.1",
+      "47.2"
+     ],
+     "note": "Numbered 7.12 in 2019; renumbered after Extinction (old 7.11) was dropped."
+    },
+    {
+     "id": "7.12",
+     "title": "Origin of Life on Earth",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Describe scientific hypotheses and evidence about how life began on Earth."
+     ],
+     "knowledge": [
+      "Earth formed about 4.6 billion years ago; fossil evidence of life dates to about 3.5 billion years ago.",
+      "Experiments show organic molecules can form from simple inorganic ones under early-Earth conditions.",
+      "The RNA world hypothesis proposes RNA came first because it can store information and catalyze reactions.",
+      "Models suggest monomers joined into polymers and became enclosed in membrane-like structures."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "23.1"
+     ],
+     "note": "Numbered 7.13 in 2019."
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "title": "Ecology",
+   "weight": "10-15%",
+   "topics": [
+    {
+     "id": "8.1",
+     "title": "Responses to the Environment",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how organisms respond to environmental changes through behavior and physiology, and how communication helps."
+     ],
+     "knowledge": [
+      "Organisms respond to environmental cues with behavior and physiological changes (for example, photoperiodism, hibernation, migration).",
+      "Animals communicate with visual, sound, chemical, and touch signals.",
+      "Behaviors such as cooperation and kin selection can increase fitness of the individual or its relatives."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "45.7",
+      "30.6"
+     ]
+    },
+    {
+     "id": "8.2",
+     "title": "Energy Flow Through Ecosystems",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how energy moves through and matter cycles within ecosystems."
+     ],
+     "knowledge": [
+      "Producers capture energy (by photosynthesis or chemosynthesis); consumers get energy by eating other organisms.",
+      "Energy is lost (mostly as heat) at each step, so only a fraction passes up each trophic level.",
+      "Endotherms use metabolic heat to hold body temperature; ectotherms rely mainly on outside heat.",
+      "Matter is recycled through the carbon, nitrogen, phosphorus, and water cycles, moving between living and nonliving reservoirs.",
+      "Changes to energy input or matter cycling can change population sizes and ecosystem structure."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "46.1",
+      "46.2",
+      "46.3"
+     ],
+     "note": "Biogeochemical cycles reported added in 2025; body size/metabolic rate moved to 2.2. Whether endotherm/ectotherm detail stayed here is unconfirmed."
+    },
+    {
+     "id": "8.3",
+     "title": "Population Ecology",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Describe and model how populations grow."
+     ],
+     "knowledge": [
+      "Population growth depends on births minus deaths (plus migration).",
+      "Exponential growth happens when resources are unlimited: growth rate = r_max times N.",
+      "Reproductive strategies and life history affect growth patterns."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "45.1",
+      "45.2",
+      "45.3"
+     ]
+    },
+    {
+     "id": "8.4",
+     "title": "Effect of Density of Populations",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Explain how limited resources and density-dependent factors cap population growth."
+     ],
+     "knowledge": [
+      "Logistic growth slows as the population nears carrying capacity (K).",
+      "Density-dependent factors (competition, disease, predation) grow stronger as density rises; density-independent factors (weather, disasters) do not depend on density."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "45.3",
+      "45.4"
+     ]
+    },
+    {
+     "id": "8.5",
+     "title": "Community Ecology",
+     "bigIdeas": [
+      "ENE"
+     ],
+     "objectives": [
+      "Explain how interactions between species shape community structure, and describe community diversity."
+     ],
+     "knowledge": [
+      "Interactions include competition, predation, herbivory, and symbiosis (mutualism, commensalism, parasitism).",
+      "Community structure is described by species composition and diversity; Simpson's diversity index quantifies diversity.",
+      "Niche partitioning and resource partitioning reduce competition.",
+      "Changes in one population can ripple through the community (for example, trophic cascades)."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "45.6"
+     ]
+    },
+    {
+     "id": "8.6",
+     "title": "Biodiversity",
+     "bigIdeas": [
+      "SYI"
+     ],
+     "objectives": [
+      "Explain how biodiversity affects ecosystem resilience."
+     ],
+     "knowledge": [
+      "Ecosystems with more species and genetic diversity tend to be more stable and recover faster from disruption.",
+      "Keystone species have effects far larger than their numbers suggest; removing them can collapse the community.",
+      "Producers and other key species strongly influence ecosystem structure."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "47.1",
+      "47.2"
+     ]
+    },
+    {
+     "id": "8.7",
+     "title": "Disruptions to Ecosystems",
+     "bigIdeas": [
+      "EVO",
+      "SYI"
+     ],
+     "objectives": [
+      "Explain how human activity and natural events disrupt ecosystems, and predict the effects."
+     ],
+     "knowledge": [
+      "Invasive species can outcompete natives when they escape the controls of their home range.",
+      "Habitat loss, overharvesting, pollution, and climate change reduce biodiversity.",
+      "Excess nutrients cause eutrophication: algal blooms, then oxygen loss as they decompose.",
+      "Some toxins build up to higher concentrations at higher trophic levels (biomagnification).",
+      "Geological and weather events can also cause sudden ecosystem change."
+     ],
+     "exclusions": [],
+     "openstax": [
+      "44.5",
+      "47.3",
+      "47.4"
+     ],
+     "note": "Eutrophication and biomagnification reported as new in 2025; ecological succession reported as no longer named."
+    }
+   ]
+  }
+ ],
+ "topicCount": 61,
+ "exam": {
+  "totalTime": "3 hours",
+  "delivery": "Hybrid digital in the Bluebook app: multiple choice answered on the device; free-response questions read in Bluebook and answered by hand in paper booklets.",
+  "mcq": {
+   "questions": 60,
+   "minutes": 90,
+   "weight": "50%",
+   "format": "Mix of single standalone questions and sets of questions that share one stimulus (lab setup, data table, graph, model, or diagram); sets are typically about 4-5 questions (set size from the 2019 CED; confirm)."
+  },
+  "frq": {
+   "questions": 6,
+   "minutes": 90,
+   "weight": "50%",
+   "types": [
+    {
+     "q": 1,
+     "type": "Interpreting and Evaluating Experimental Results",
+     "points": 9,
+     "length": "long",
+     "pointsNote": "Owner brief says 9 points; secondary sources say 8-10. Confirm on AP Central (needs-author ced-verify)."
+    },
+    {
+     "q": 2,
+     "type": "Interpreting and Evaluating Experimental Results with Graphing",
+     "points": 9,
+     "length": "long",
+     "pointsNote": "Owner brief says 9 points; secondary sources say 8-10. Confirm on AP Central (needs-author ced-verify)."
+    },
+    {
+     "q": 3,
+     "type": "Scientific Investigation",
+     "points": 4,
+     "length": "short"
+    },
+    {
+     "q": 4,
+     "type": "Conceptual Analysis",
+     "points": 4,
+     "length": "short"
+    },
+    {
+     "q": 5,
+     "type": "Analyze Model or Visual Representation",
+     "points": 4,
+     "length": "short"
+    },
+    {
+     "q": 6,
+     "type": "Analyze Data",
+     "points": 4,
+     "length": "short"
+    }
+   ]
+  },
+  "calculator": "Allowed on both sections: four-function (with square root), scientific, or graphing calculator; Bluebook also has a built-in Desmos graphing calculator.",
+  "formulaSheet": {
+   "name": "AP Biology Equations and Formulas (Exam Reference Information)",
+   "provided": "Both sections",
+   "contents": [
+    "Descriptive statistics: mean, median, mode, range",
+    "Standard deviation",
+    "Standard error of the mean",
+    "Chi-square formula and a chi-square critical-value table (p = 0.05 and 0.01, several degrees of freedom)",
+    "Laws of probability (both events: multiply; either of two mutually exclusive events: add)",
+    "Hardy-Weinberg equations (p + q = 1; p^2 + 2pq + q^2 = 1)",
+    "Metric prefixes",
+    "Rate (change in Y over change in time)",
+    "Population growth: dN/dt = B - D",
+    "Exponential growth: dN/dt = r_max N",
+    "Logistic growth: dN/dt = r_max N (K - N)/K",
+    "Simpson's diversity index",
+    "Water potential = pressure potential + solute potential",
+    "Solute potential = -iCRT (with the pressure constant R)",
+    "pH = -log[H+]",
+    "Surface area and volume formulas for sphere, cube, rectangular solid, and cylinder"
+   ],
+   "uncertain": "Contents recalled from the 2019+ sheet and confirmed only in part by search snippets (chi-square, Simpson's, water potential, probability, surface area). Older (pre-2019) items such as Gibbs free energy, Q10, primary-productivity conversions, and C1V1 dilution are believed to be gone; check the current PDF."
+  }
+ },
+ "changes2025": [
+  "Unit 1 reorganized: macromolecules are now separate topics (1.3 intro, 1.4 carbohydrates, 1.5 lipids, 1.6 nucleic acids, 1.7 proteins); Unit 1 goes from 6 to 7 topics.",
+  "Unit 1: water's high specific heat and heat of vaporization made explicit; sulfur added to the key elements (CHONPS).",
+  "Unit 2: old 2.1 and 2.2 combined into one Cell Structure and Function topic; Unit 2 goes from 11 to 10 topics, so later topics shift down by one (Cell Size is now 2.2, Origins of Compartmentalization is 2.10).",
+  "Topic 2.2 (Cell Size) gains the link between body size and metabolic rate, moved from Unit 8 (old 8.2).",
+  "Photosynthesis and respiration content reorganized across Units 2 and 3 (organelle energy detail moved into Unit 3).",
+  "Unit 3: Topic 3.7 Fitness removed; its ideas about cellular variation and fitness move to Topic 7.2. Unit 3 goes from 7 to 6 topics.",
+  "Unit 4: old 4.3 (Signal Transduction) and 4.4 (Changes in Signal Transduction Pathways) merged into 4.3; Unit 4 goes from 7 to 6 topics (Feedback 4.4, Cell Cycle 4.5, Regulation 4.6). Some illustrative examples dropped (e.g., plasmodesmata, SRY).",
+  "Unit 5: Topic 5.6 Chromosomal Inheritance removed; nondisjunction moved to 5.2; one learning objective from 5.3 redistributed to other units. Unit 5 goes from 6 to 5 topics.",
+  "Unit 6: AUG named as the only codon to know; constitutive vs inducible expression added to 6.5 (gene products and phenotype moved from 6.7); lac operon no longer a named example; mutation types defined in 6.7; mutation wording changed to 'not directed by specific environmental pressures'.",
+  "Unit 7: Topic 7.11 Extinction removed; Variations in Populations becomes 7.11 and Origin of Life becomes 7.12 (13 to 12 topics). Peppered moth dropped as an illustrative example in 7.2; artificial selection trimmed.",
+  "Unit 8: biogeochemical cycles (carbon, nitrogen, phosphorus, water) added to 8.2; eutrophication and biomagnification added to 8.7; ecological succession no longer named.",
+  "Every learning objective and essential knowledge statement now has a label tied to its unit and topic; EK wording clarified for depth and breadth; science practices updated.",
+  "Not changed: exam format, timing, question counts, and unit weightings."
+ ],
+ "topicCountByUnit": {
+  "1": 7,
+  "2": 10,
+  "3": 6,
+  "4": 6,
+  "5": 5,
+  "6": 8,
+  "7": 12,
+  "8": 7
+ },
+ "topicCount2019ForComparison": {
+  "1": 6,
+  "2": 11,
+  "3": 7,
+  "4": 7,
+  "5": 6,
+  "6": 8,
+  "7": 13,
+  "8": 7,
+  "total": 65
+ },
+ "examDate2027": {
+  "date": "2027-05-03",
+  "day": "Monday",
+  "session": "Afternoon (12 p.m. local)",
+  "lateTesting": "Week of May 17-21, 2027",
+  "confidence": "medium-high: multiple third-party schedules and a district PDF agree; not read on AP Central directly."
+ },
+ "about": "Topic map of the AP Biology Course and Exam Description (2025 revision, effective fall 2025), written in LevlPrep's own words from secondary sources (AP Central was blocked). No CED text. See docs/apbio-needs-author.md ced-verify."
+}

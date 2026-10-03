@@ -1,0 +1,7 @@
+{
+  "water-hbond": {
+    "file": "figures/water-hbond.svg", "ext": "svg", "w": 640, "h": 360,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three water molecules. Each oxygen has a partial negative charge and each hydrogen a partial positive charge; dashed hydrogen bonds join a hydrogen of one molecule to the oxygen of the next."
+  }
+}
