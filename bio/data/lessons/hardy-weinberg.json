@@ -1,0 +1,82 @@
+{
+  "topic": "hardy-weinberg",
+  "hook": "<p>In 1908 the geneticist Reginald Punnett asked the mathematician G. H. Hardy a puzzling question: if short fingers are caused by a dominant allele, why don't short fingers spread until nearly everyone has them? Hardy answered on one page, and the German doctor Wilhelm Weinberg reached the same answer that year. Being dominant changes what an allele looks like, not how often it is passed on. Without some force acting on it, an allele's frequency stays put, generation after generation. That stillness is the yardstick biologists use to detect evolution.</p>",
+  "prereq": [
+    {
+      "q": "A population of 100 mice has 36 AA, 48 Aa and 16 aa. What is the frequency of allele a?",
+      "options": ["0.40", "0.16", "0.64"],
+      "correct": 0,
+      "why": "Copies of a = (2 × 16) + 48 = 80, out of 200 copies: 80 ÷ 200 = 0.40.",
+      "review": "population-genetics"
+    },
+    {
+      "q": "The probability of two independent events both happening is found by",
+      "options": ["multiplying their probabilities (product rule)", "adding their probabilities", "subtracting the smaller from the larger"],
+      "correct": 0,
+      "why": "For example, the chance that a sperm and an egg both carry a is q × q = q².",
+      "review": "mendelian-genetics"
+    },
+    {
+      "q": "Which process changes allele frequencies at random, most strongly in small populations?",
+      "options": ["Genetic drift", "Natural selection", "Random mating"],
+      "correct": 0,
+      "why": "Drift is chance change in allele frequencies; its effect grows as the breeding population shrinks.",
+      "review": "population-genetics"
+    }
+  ],
+  "figure": {
+    "figure": "hw-conditions",
+    "caption": "With random union of gametes, genotype frequencies are p², 2pq and q², and the next generation's gametes carry the alleles in the same proportions. Five conditions keep it that way; each one rules out a process that causes evolution."
+  },
+  "chain": [
+    {
+      "cause": "In a large population that mates at random, the next generation forms as if gametes were drawn at random from one big pool, in which a fraction p carry A and a fraction q carry a.",
+      "effect": "The chance that a zygote gets two A gametes is p × p, two a gametes q × q, and one of each 2pq (A from the egg and a from the sperm, or the reverse)."
+    },
+    {
+      "cause": "These probabilities set the genotype frequencies.",
+      "effect": "AA = p², Aa = 2pq, aa = q², and p² + 2pq + q² = (p + q)² = 1."
+    },
+    {
+      "cause": "Those offspring make gametes: AA individuals give A, aa give a, Aa give half of each.",
+      "effect": "The new gamete pool has A at p² + pq = p and a at q: allele frequencies are unchanged, whatever the dominance. This is Hardy-Weinberg equilibrium."
+    },
+    {
+      "cause": "Drift, gene flow, mutation, selection or nonrandom mating acts on the population.",
+      "effect": "Allele frequencies, genotype frequencies or both move away from the equilibrium values."
+    },
+    {
+      "cause": "Observed genotype counts are compared with the counts expected from p², 2pq and q².",
+      "effect": "A difference too large for chance shows that at least one condition is not met, and the kind of difference hints at which one."
+    }
+  ],
+  "ideas": [
+    "<b>Hardy-Weinberg equilibrium</b>: allele and genotype frequencies stay constant across generations in a population that is not evolving. It is the null model for evolution.",
+    "<b>p + q = 1</b> for alleles; <b>p² + 2pq + q² = 1</b> for genotypes (AA, Aa, aa). Only q² can be read straight from phenotypes when a is recessive.",
+    "Five <b>Hardy-Weinberg conditions</b>: very large population, no gene flow, no net mutation, random mating, no natural selection.",
+    "A <b>deviation from Hardy-Weinberg</b> means a condition fails. Too few heterozygotes suggests inbreeding or self-fertilization; frequencies shifting over generations suggest selection, drift or gene flow.",
+    "Dominance does not make an allele more common. Selection against a rare recessive allele is slow, because most of its copies are hidden in heterozygotes."
+  ],
+  "misconception": {
+    "wrong": "A dominant allele becomes more common over generations, and recessive alleles slowly disappear.",
+    "right": "Dominance affects which phenotype a heterozygote shows, not how often each allele is passed on. Without drift, selection, gene flow or mutation, a dominant allele at 0.1 stays at 0.1. Many dominant alleles, such as the one for extra fingers, are rare."
+  },
+  "check": [
+    "bio-hardy-weinberg-1",
+    "bio-hardy-weinberg-2",
+    "bio-hardy-weinberg-4",
+    "bio-hardy-weinberg-7",
+    "bio-hardy-weinberg-8",
+    "bio-hardy-weinberg-11",
+    "bio-hardy-weinberg-13",
+    "bio-hardy-weinberg-16"
+  ],
+  "summary": "<p>Hardy-Weinberg equilibrium describes a population that is not evolving: its allele and genotype frequencies stay the same from generation to generation. For a gene with alleles at frequencies p and q, p + q = 1, and random union of gametes gives genotype frequencies p² (AA), 2pq (Aa) and q² (aa), which add to 1; the gametes those offspring make carry the alleles at p and q again, whatever the dominance. Equilibrium requires a very large population, no gene flow, no net mutation, random mating and no natural selection. Because real populations rarely meet every condition, the equations serve as a null hypothesis: when observed frequencies differ from the expected ones by more than chance, at least one condition fails, and the pattern of the difference points to the cause.</p>",
+  "connections": [
+    { "href": "../notes/population-genetics.html", "label": "Back: allele frequencies, drift and gene flow (7.4)" },
+    { "href": "../notes/mendelian-genetics.html", "label": "Back: the product rule and Punnett squares (5.3)" },
+    { "href": "stats-hardy-weinberg.html", "label": "Next: Hardy-Weinberg calculations, step by step (skills)" },
+    { "href": "../tools/hardy-weinberg.html", "label": "Try it: Hardy-Weinberg calculations practice" },
+    { "href": "../tools/hardy-weinberg-drift.html", "label": "Try it: the Hardy-Weinberg and genetic drift simulator" }
+  ]
+}

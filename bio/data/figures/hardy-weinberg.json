@@ -1,0 +1,7 @@
+{
+  "hw-conditions": {
+    "file": "figures/hw-conditions.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Center: gametes carry A with frequency p and a with frequency q, where p + q = 1; random union gives offspring genotypes AA p squared, Aa 2pq and aa q squared, adding to 1; those offspring make gametes still in proportions p and q, so the population is not evolving. Five conditions point at the center: a very large population (rules out genetic drift), no gene flow, no net mutation, random mating, and no natural selection. A note: if any condition fails, allele or genotype frequencies can depart from these values, a sign of evolution."
+  }
+}
