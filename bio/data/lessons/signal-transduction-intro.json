@@ -1,0 +1,95 @@
+{
+  "topic": "signal-transduction-intro",
+  "hook": "<p>Insulin is a protein far too large and too polar to cross a cell membrane, yet within seconds of binding a muscle cell it changes what happens deep inside that cell. Testosterone, a steroid, slips straight through the membrane and goes to work in the nucleus. Two very different hormones, and two different routes, but both follow the same three-stage plan: a receptor receives the signal, a relay inside the cell passes it on, and the cell responds.</p>",
+  "prereq": [
+    {
+      "q": "Which molecule can diffuse straight across the lipid bilayer of a membrane?",
+      "options": [
+        "A small nonpolar molecule such as a steroid",
+        "A large polar protein such as insulin",
+        "A charged ion such as Na⁺"
+      ],
+      "correct": 0,
+      "why": "The bilayer's core is nonpolar, so small nonpolar molecules dissolve through it. Large, polar or charged molecules need a protein to cross, or cannot cross at all.",
+      "review": "membrane-permeability"
+    },
+    {
+      "q": "Phosphorylating a protein means",
+      "options": [
+        "adding a phosphate group to it, which can change its shape and activity",
+        "breaking its peptide bonds with water",
+        "removing it from the cell by exocytosis"
+      ],
+      "correct": 0,
+      "why": "A phosphate group carries negative charges; adding it changes how the protein folds, which can switch the protein on or off.",
+      "review": "cellular-energy"
+    },
+    {
+      "q": "Only cells with the matching receptor respond to a hormone. Why?",
+      "options": [
+        "The hormone must bind a receptor to change the cell's activity",
+        "The hormone is carried only to the organs that need it",
+        "Cells without the receptor destroy the hormone before it arrives"
+      ],
+      "correct": 0,
+      "why": "A hormone reaches nearly every cell in the blood, but it changes a cell only by binding a receptor; cells without that receptor are not affected.",
+      "review": "cell-communication"
+    }
+  ],
+  "figure": {
+    "figure": "reception-transduction-response",
+    "caption": "The same three stages by two routes. Left: a polar ligand binds a surface receptor, and a relay of kinases switches an enzyme on within seconds. Right: a steroid crosses the membrane, binds a receptor inside the cell, and switches a gene on over hours."
+  },
+  "chain": [
+    {
+      "cause": "A ligand fits the binding site of its receptor and binds it.",
+      "effect": "The receptor protein changes shape (reception)."
+    },
+    {
+      "cause": "The receptor's new shape lets its inside part switch on a relay protein.",
+      "effect": "The signal is now inside the cell, carried by proteins rather than by the ligand."
+    },
+    {
+      "cause": "Relay proteins that are protein kinases add phosphate groups from ATP to the next proteins in the chain.",
+      "effect": "Each phosphorylated protein changes shape and switches on (transduction)."
+    },
+    {
+      "cause": "Each active enzyme in the chain switches on many molecules of the next step, and some steps release small second messenger molecules in large numbers.",
+      "effect": "The signal is amplified: one bound receptor can lead to millions of product molecules."
+    },
+    {
+      "cause": "The last proteins in the chain act on their targets.",
+      "effect": "The cell responds: an enzyme turns on or off, a channel opens, genes switch on, or the cell dies by apoptosis (response)."
+    },
+    {
+      "cause": "When the ligand leaves the receptor, phosphatases remove the phosphate groups and second messengers are broken down.",
+      "effect": "The relay proteins switch back off, so the response stops soon after the signal does."
+    }
+  ],
+  "ideas": [
+    "Every signaling pathway has three stages: <b>reception</b> (ligand binds receptor), <b>transduction</b> (a relay of shape changes inside the cell) and <b>response</b>.",
+    "Where the receptor sits depends on the ligand: polar or large ligands bind <b>cell-surface receptors</b>; small nonpolar ligands such as steroids cross the membrane and bind <b>intracellular receptors</b>, which often switch genes on.",
+    "<b>Protein kinases</b> switch proteins on (or off) by adding phosphate from ATP; <b>phosphatases</b> remove it. Phosphorylation is the most common switch in transduction.",
+    "<b>Second messengers</b> are small molecules or ions made or released in large amounts inside the cell; they spread the signal quickly through the cytoplasm.",
+    "Because each active enzyme switches on many copies of the next protein, the signal is <b>amplified</b>, so a few ligand molecules can produce a large response."
+  ],
+  "misconception": {
+    "wrong": "The ligand enters the cell and travels along the pathway, delivering the message to the nucleus.",
+    "right": "For a cell-surface receptor, the ligand never enters the cell. What travels is a series of shape changes: each protein switches the next one on. Only small nonpolar ligands, which bind intracellular receptors, go inside."
+  },
+  "check": [
+    "bio-signal-transduction-intro-1",
+    "bio-signal-transduction-intro-2",
+    "bio-signal-transduction-intro-6",
+    "bio-signal-transduction-intro-8",
+    "bio-signal-transduction-intro-16",
+    "bio-signal-transduction-intro-18",
+    "bio-signal-transduction-intro-20"
+  ],
+  "summary": "<p>Cell signaling runs in three stages. In reception, a ligand binds a receptor and changes its shape: polar and large ligands bind cell-surface receptors, while small nonpolar ones such as steroid hormones cross the membrane and bind intracellular receptors that switch genes on. In transduction, relay molecules pass the signal along, often by protein kinases adding phosphate groups and by second messengers spreading through the cytoplasm; because each step switches on many molecules of the next, the signal is amplified. The response can be a change in enzyme activity, gene expression or even cell death. Phosphatases and the breakdown of second messengers switch the pathway back off when the ligand leaves.</p>",
+  "connections": [
+    { "href": "../notes/cell-communication.html", "label": "Back: how signals reach their target cells (4.1)" },
+    { "href": "../notes/membrane-permeability.html", "label": "Back: which molecules cross the bilayer (2.4)" },
+    { "href": "../notes/signal-transduction-pathways.html", "label": "Next: real pathways, and what happens when one breaks (4.3)" }
+  ]
+}

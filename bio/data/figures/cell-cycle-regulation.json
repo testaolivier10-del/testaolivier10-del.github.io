@@ -1,0 +1,7 @@
+{
+  "cell-cycle-checkpoints": {
+    "file": "figures/cell-cycle-checkpoints.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: the cell cycle ring with stop signs at three checkpoints. The G1 checkpoint at the end of G1 asks whether the cell is big enough, whether growth signals are present and whether there is DNA damage. The G2 checkpoint between G2 and M asks whether all the DNA has been copied and whether any is damaged. The M checkpoint in metaphase asks whether every chromosome is attached to spindle fibers from both poles. Right: a sketch graph through one cycle. The CDK amount stays level; mitotic cyclin builds through S and G2, peaks in M and then drops sharply; cyclin-CDK activity (MPF) stays near zero until late G2, spikes in M and falls when cyclin is destroyed."
+  }
+}

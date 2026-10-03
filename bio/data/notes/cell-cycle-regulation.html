@@ -1,0 +1,68 @@
+<p>Topic 4.5 described what happens in the cell cycle. This page is about control: why a skin cell divides when you cut yourself and stops when the cut is closed, why a nerve cell never divides, and what goes wrong in cancer, when cells divide whether or not the body needs them. The controls come in two kinds: checkpoints that stop the cycle until conditions are right, and a molecular engine, cyclins and their kinases, that drives the cell from one stage to the next.</p>
+
+<h2>Checkpoints: stop signs in the cycle</h2>
+<figure id="fig-checkpoints" data-fig="cell-cycle-checkpoints"><figcaption>Figure 1. The three main checkpoints (left), and cyclin, CDK and cyclin-CDK activity through one cycle (right).</figcaption></figure>
+<p>A <b>checkpoint</b> is a point in the cycle where the cell checks that conditions are right before going on. If they are not, the cycle stops there until they are fixed. There are three main checkpoints (<a class="figref" href="#fig-checkpoints">Figure 1</a>, left):</p>
+<ul>
+<li><b>G1 checkpoint</b> (end of G1). Is the cell big enough? Are growth signals present? Is the DNA undamaged? This is the main decision point: a cell that passes it is committed to copying its DNA and dividing. A cell that does not pass may wait, or leave the cycle for G0.</li>
+<li><b>G2 checkpoint</b> (between G2 and M). Has all the DNA been copied, and is it undamaged? A cell with unfinished or damaged DNA waits for copying or repair before mitosis.</li>
+<li><b>M checkpoint</b> (also called the spindle checkpoint, in metaphase). Is every chromosome attached by its kinetochores to spindle fibers from both poles? Anaphase cannot be undone, so the cell waits until every chromosome is attached. This makes sure each daughter cell gets one copy of every chromosome.</li>
+</ul>
+
+<h2>Cyclins and CDKs: the engine</h2>
+<p>What actually moves a cell past a checkpoint is a pair of proteins working together:</p>
+<ul>
+<li>A <b>cyclin-dependent kinase (CDK)</b> is a protein kinase (topic 4.2) that, when active, phosphorylates target proteins that start the next stage. CDK molecules are present at a fairly steady level through the whole cycle, but a CDK on its own is inactive.</li>
+<li>A <b>cyclin</b> is a protein whose level rises and falls (it "cycles"). When enough cyclin has built up, it binds its CDK and switches it on.</li>
+</ul>
+<p>Different cyclins pair with different CDKs at different stages. The best known pair drives the cell into mitosis: the mitotic cyclin builds up through S and G2, binds its CDK, and the active complex, called <b>MPF</b> (maturation-promoting or M-phase-promoting factor), phosphorylates proteins that condense the chromosomes and break down the nuclear envelope. Partway through mitosis, enzymes destroy the cyclin. The CDK switches off, the cell finishes mitosis and divides, and the cycle starts again with low cyclin (Figure 1, right).</p>
+<div class="worked">
+<p><b>Worked example: what controls the timing?</b> In dividing frog embryo cells, researchers measure three things through two cycles: CDK protein stays at 60 units throughout; mitotic cyclin climbs from 8 to 90 units, then drops to 8 within an hour; cyclin-CDK activity stays below 6 until cyclin is high, then spikes to 95 just as the cells enter mitosis, and falls with the cyclin.</p>
+<p><b>Step 1.</b> Which changes in step with the activity? Cyclin does; CDK does not change at all.</p>
+<p><b>Step 2.</b> So the amount of cyclin, not the amount of CDK, sets when the kinase is active.</p>
+<p><b>Step 3, predict.</b> A cyclin that cannot be destroyed would keep the CDK active: cells would enter mitosis but could not finish it. (This is what happens in experiments.)</p>
+</div>
+
+<h2>Signals from outside the cell</h2>
+<p>Most body cells divide only when told to. <b>Growth factors</b> (topic 4.1) bind receptor tyrosine kinases (topic 4.3); the kinase cascade reaches the nucleus and switches on genes for G1 cyclins, pushing the cell past the G1 checkpoint. No growth factor, no division: that is how a wound heals and then stops. Platelets release growth factor at the wound, nearby cells divide, and division stops when the gap is closed.</p>
+<p>Crowding also matters. Normal animal cells grown in a dish divide until they form a single layer touching on all sides, then stop: <b>contact inhibition</b>. Most also need to be attached to a surface to divide (<b>anchorage dependence</b>). Scrape a strip of cells away and the cells at the edges divide until the gap is filled, then stop again.</p>
+
+<h2>DNA damage, p53 and apoptosis</h2>
+<p><b>DNA damage</b> happens all the time: copying errors, radiation such as X-rays and ultraviolet light from the sun, and chemicals such as those in tobacco smoke. Cells have repair systems that fix most of it. The checkpoints give them time to do so.</p>
+<p>The key protein is <b>p53</b>. When DNA is damaged, p53 builds up in the cell. It switches on a gene for a protein that blocks cyclin-CDK complexes, so the cycle halts at G1 (and at G2) while the damage is repaired. If the damage is too severe to repair, p53 switches on genes that trigger <b>apoptosis</b>, the orderly self-destruction you met in topic 2.1. Apoptosis runs on <b>caspases</b>, protein-cutting enzymes that take the cell apart from the inside; its remains are engulfed by neighboring cells or immune cells, without the inflammation a burst cell would cause.</p>
+<p>Apoptosis is not only a response to damage. It removes infected cells, immune cells that would attack the body's own tissues, and, in a fetus, the webbing between the developing fingers.</p>
+
+<h2>When control fails: cancer</h2>
+<p><b>Cancer</b> is a disease of cells that divide without control because mutations have broken the cell cycle's regulation. A mass of such cells is a <b>tumor</b>. A <b>benign</b> tumor stays where it formed; a <b>malignant</b> tumor's cells invade nearby tissue and can travel through the blood or lymph to form new tumors elsewhere, which is called <b>metastasis</b>.</p>
+<p>Two kinds of genes are involved, and it helps to think of a car:</p>
+<table class="compare">
+<caption>Proto-oncogenes and tumor suppressor genes</caption>
+<thead><tr><th></th><th>Proto-oncogene</th><th>Tumor suppressor gene</th></tr></thead>
+<tbody>
+<tr><td>Normal job of its protein</td><td>Promotes division (the accelerator): growth factor receptors, relay proteins, cyclins</td><td>Slows or stops division, or triggers apoptosis (the brakes): p53</td></tr>
+<tr><td>Cancer-causing change</td><td>Mutation makes the protein overactive or overproduced: it becomes an <b>oncogene</b></td><td>Mutation disables the protein</td></tr>
+<tr><td>Copies that must change</td><td>Often one: an overactive protein works even with a normal copy present</td><td>Usually both: one working copy can still make enough brake protein</td></tr>
+<tr><td>Effect</td><td>Accelerator stuck down: division without growth signals</td><td>Brakes lost: damaged cells keep dividing and avoid apoptosis</td></tr>
+<tr><td>Link to earlier topics</td><td>A receptor tyrosine kinase or relay protein stuck on (4.3)</td><td>A checkpoint that no longer stops the cycle</td></tr>
+</tbody>
+</table>
+<p>One mutation is rarely enough. Cancer usually needs several in the same cell line, collected over years, which is why cancer becomes more common with age. Losing p53 makes everything worse: damaged cells no longer stop or die, so further mutations pile up faster. About half of human cancers have a disabled p53.</p>
+<p>See how the checkpoints decide in the <a href="../tools/cell-cycle-checkpoints.html">cell cycle checkpoints simulator</a>.</p>
+<aside class="going-further"><p><b>Going further: drugs that target the engine.</b> Some breast cancers depend on the CDKs that work with G1 cyclins. Drugs that block those CDKs hold the cancer cells at the G1 checkpoint, and they are now used alongside other treatments. Other cancer drugs work the opposite way, damaging DNA or the spindle so badly that checkpoints trigger apoptosis in fast-dividing cells.</p></aside>
+<aside class="going-further"><p><b>For your exam:</b> textbooks name the checkpoints differently (G1 checkpoint or restriction point; G2 or G2/M checkpoint; M, metaphase or spindle checkpoint), and some describe more than three. Learn the three main ones and what each checks. You will not be asked to name individual cyclins or CDKs.</p></aside>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"CDK levels rise and fall." CDK levels stay steady; cyclin levels rise and fall, and CDK activity follows the cyclin.</li>
+<li>"p53 repairs DNA." p53 stops the cycle so repair can happen, and triggers apoptosis if it cannot.</li>
+<li>"Apoptosis is always a sign of disease." It is a normal, constant process that removes unneeded or damaged cells.</li>
+<li>"Oncogenes are viruses' genes." Oncogenes are changed versions of the cell's own proto-oncogenes.</li>
+</ul>
+
+<h2>How the exam tests this</h2>
+<ul>
+<li>Read a graph of cyclin, CDK and their activity through the cycle, and predict what happens if cyclin is not destroyed.</li>
+<li>Explain what each checkpoint checks and predict the result of a checkpoint failure (daughter cells with the wrong number of chromosomes, damaged DNA copied).</li>
+<li>Classify a gene as a proto-oncogene or a tumor suppressor from what its protein does, and predict the effect of a mutation.</li>
+<li>Interpret experiments on cell fusion, p53 and radiation, or contact inhibition.</li>
+</ul>

@@ -1,0 +1,337 @@
+{
+  "stimuli": {
+    "cell-cycle-s1": {
+      "kind": "graph",
+      "title": "DNA content per cell in a dividing population",
+      "text": "<p>Human cells growing in culture were stained with a dye whose brightness is proportional to the amount of DNA in a cell. The DNA content of 1,000 cells was measured in each of two cultures: an untreated culture, and a culture treated for 18 hours with drug Q. DNA content is given relative to a cell in G1, set at 1.0. Assume the untreated culture is growing steadily, so the fraction of cells in a phase is proportional to the time cells spend in that phase.</p>",
+      "chart": {
+        "type": "bar",
+        "x": { "label": "Relative DNA content per cell", "categories": ["1.0", "1.25", "1.5", "1.75", "2.0"] },
+        "y": { "label": "Number of cells", "unit": "", "min": 0, "max": 800, "step": 100 },
+        "series": [
+          { "name": "Untreated", "points": [["1.0", 560], ["1.25", 90], ["1.5", 80], ["1.75", 70], ["2.0", 200]] },
+          { "name": "Drug Q, 18 hours", "points": [["1.0", 120], ["1.25", 50], ["1.5", 50], ["1.75", 60], ["2.0", 720]] }
+        ]
+      }
+    },
+    "cell-cycle-s2": {
+      "kind": "table",
+      "title": "Dividing cells in onion root tips",
+      "text": "<p>Students grew onion bulbs with their roots in water (control) or in water containing a plant growth chemical. After 3 days they stained root tips and, under a microscope, classified 200 cells per group from the region just behind the tip as either in interphase or in mitosis (any stage). The mitotic index is the percentage of cells in mitosis.</p>",
+      "table": {
+        "caption": "Cells counted in onion root tips after 3 days",
+        "cols": ["Group", "Cells in interphase", "Cells in mitosis", "Total cells counted"],
+        "rows": [
+          ["Control (water)", "160", "40", "200"],
+          ["Growth chemical", "130", "70", "200"]
+        ]
+      }
+    },
+    "cell-cycle-s3": {
+      "kind": "model",
+      "title": "Following one cell through the cycle",
+      "text": "<p>A body cell of a plant species has 6 chromosomes and 12 picograms (pg) of DNA in its nucleus during G1. The table follows this cell through one cell cycle. Question marks are values you will work out. Count one chromosome for each centromere.</p>",
+      "table": {
+        "caption": "Chromosomes, sister chromatids and DNA in one cell",
+        "cols": ["Stage", "Chromosomes in the cell", "Sister chromatids in the cell", "DNA in the cell (pg)"],
+        "rows": [
+          ["G1", "6", "—", "12"],
+          ["G2", "?", "?", "?"],
+          ["Metaphase", "?", "?", "?"],
+          ["Anaphase", "?", "—", "?"],
+          ["Each daughter cell, in G1", "?", "—", "?"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cell-cycle-1", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "cell-cycle-s1",
+      "q": "In the untreated culture, which group of cells is the largest, and in which phase are those cells?",
+      "options": [
+        "Cells with DNA content 1.0, which are in G1",
+        "Cells with DNA content 2.0, which are in G2 or mitosis",
+        "Cells with DNA content 1.5, which are partway through S",
+        "Cells with DNA content 2.0, which are in G1"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "560 of 1,000 untreated cells have DNA content 1.0: they have not yet copied their DNA, so they are in G1 (or G0).",
+        "options": [
+          "The tallest untreated bar is at 1.0, and unreplicated DNA means G1.",
+          "Only 200 untreated cells have content 2.0; that peak is the largest in the drug-treated culture.",
+          "Only 80 cells are at 1.5.",
+          "G1 cells have not copied their DNA, so their content is 1.0, not 2.0."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-2", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "cell-cycle-s1",
+      "q": "What percentage of the untreated cells are partway through S phase (DNA content between 1.0 and 2.0)? Give a whole number.",
+      "numeric": { "answer": 24, "tol": 0, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Cells at 1.25, 1.5 and 1.75: 90 + 80 + 70 = 240 of 1,000 = 24%." }
+    },
+    {
+      "id": "bio-cell-cycle-3", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "5.A", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-s1",
+      "q": "The untreated cells take 22 hours to complete one cell cycle. Using the assumption in the description, estimate how long they spend in S phase. Give your answer in hours to one decimal place.",
+      "numeric": { "answer": 5.3, "tol": 0.1, "unit": "hours", "decimals": 1 },
+      "why": { "correct": "Fraction in S = 240 ÷ 1,000 = 0.24. Time in S = 0.24 × 22 hours = 5.28, about 5.3 hours." }
+    },
+    {
+      "id": "bio-cell-cycle-4", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-s1",
+      "q": "Which explanation best fits the effect of drug Q?",
+      "options": [
+        "It stops cells from completing mitosis, so cells with copied DNA do not divide.",
+        "It stops DNA from being copied, so cells build up before they have finished S phase.",
+        "It makes cells copy their DNA a second time, so they build up with extra DNA.",
+        "It speeds up G1, so cells reach S phase and copy their DNA sooner than usual."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With drug Q, 720 of 1,000 cells have DNA content 2.0: they copied their DNA and then got stuck before dividing back to 1.0, as happens when the spindle cannot form.",
+        "options": [
+          "A pile-up at 2.0 means copying finished but division did not.",
+          "Blocking copying would pile cells up at 1.0, not 2.0.",
+          "Copying twice would give cells at 4.0, and there are none.",
+          "Faster G1 would not leave cells stuck with doubled DNA; it would not change where cells finish."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-5", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "cell-cycle-s1",
+      "q": "A different untreated culture is given drug R, which blocks DNA copying, for 18 hours. Predict how its histogram compares with the untreated one.",
+      "options": [
+        "More cells at 1.0 and fewer at 2.0, as cells finish dividing but cannot copy DNA again",
+        "More cells at 2.0, and fewer at 1.0, as cells copy their DNA but are unable to divide",
+        "The same pattern, because drug R acts once the cells reach mitosis, not before",
+        "Cells spread evenly across each DNA content, because S phase takes longer"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cells already past S finish mitosis and return to 1.0; cells in G1 cannot copy their DNA. Over 18 hours the 2.0 peak drains and the 1.0 peak grows.",
+        "options": [
+          "Without copying, cells collect at or near 1.0 and the 2.0 group empties.",
+          "That pattern belongs to drug Q, which blocks division, not copying.",
+          "Blocking copying acts in S phase, well before mitosis.",
+          "Cells cannot progress through S at all, so they do not spread out across it."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-6", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "cell-cycle-s2",
+      "q": "Calculate the mitotic index of the root tips grown with the growth chemical. Give a whole-number percentage.",
+      "numeric": { "answer": 35, "tol": 0, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Mitotic index = cells in mitosis ÷ total × 100 = 70 ÷ 200 × 100 = 35%." }
+    },
+    {
+      "id": "bio-cell-cycle-7", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "5.C", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-s2",
+      "q": "Using the control group's proportions to find the expected counts for the treated group, calculate the chi-square value for the treated group. Give your answer to one decimal place.",
+      "numeric": { "answer": 28.1, "tol": 0.1, "unit": "", "decimals": 1 },
+      "why": { "correct": "Control: 20% in mitosis, 80% in interphase. Expected for 200 treated cells: 40 in mitosis, 160 in interphase. χ² = (70 − 40)² ÷ 40 + (130 − 160)² ÷ 160 = 22.5 + 5.625 = 28.1." }
+    },
+    {
+      "id": "bio-cell-cycle-8", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "6.B", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-s2",
+      "q": "The critical value for 1 degree of freedom at p = 0.05 is 3.84. Which conclusion is best supported?",
+      "options": [
+        "Reject the null hypothesis: the difference in mitotic index is unlikely to be due to chance alone.",
+        "Fail to reject the null hypothesis, because the chi-square value is larger than the critical value.",
+        "The chemical is proven to make root cells divide faster, because the chi-square value is so large.",
+        "Reject the null hypothesis, because 70 is larger than 40 in the mitosis column of the table."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "χ² = 28.1 is far above 3.84, so a difference this large would arise by chance less than 5% of the time if the chemical had no effect: reject the null hypothesis.",
+        "options": [
+          "A chi-square value above the critical value means rejecting the null hypothesis.",
+          "This reverses the rule: a value above the critical value leads to rejecting the null.",
+          "A statistical test supports a difference; it does not prove a cause, and a higher index need not mean faster division.",
+          "The decision rests on the chi-square value compared with the critical value, not on one pair of counts."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-9", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "cell-cycle-s2",
+      "q": "Each group's 200 cells all came from one root tip of one bulb. Which change would most improve the reliability of the comparison?",
+      "options": [
+        "Count cells from several root tips taken from several bulbs in each group.",
+        "Count the 200 cells again under a higher magnification for each group.",
+        "Count cells from the oldest part of the root, far from the tip, in each group.",
+        "Grow the treated bulbs for one day and the control bulbs for three days."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "One tip from one bulb may be unusual. Replicate tips and bulbs show whether the difference holds across individuals.",
+        "options": [
+          "Replication across tips and bulbs addresses the biggest weakness.",
+          "Recounting the same cells checks counting errors but not whether one bulb is typical.",
+          "Cells far from the tip divide little, which would hide any difference.",
+          "Unequal growing times would add a second difference between the groups."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-10", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "3.D", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-s2",
+      "q": "A higher mitotic index could mean that cells divide more often, or that each mitosis takes longer. Which additional measurement would best tell these apart?",
+      "options": [
+        "The increase in root length over the 3 days in each group",
+        "The number of chromosomes in cells at metaphase in each group",
+        "The color of the stain in treated and control root tips",
+        "The percentage of cells in interphase in each group"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If cells divide more often, the treated roots make more cells and grow longer. If mitosis is just slower, the index rises but cell numbers and root growth do not.",
+        "options": [
+          "Root growth reflects how many new cells are made, which separates the two ideas.",
+          "The number of chromosomes per cell is the same in both groups however often they divide.",
+          "Stain color tells nothing about how often cells divide.",
+          "The interphase percentage is just 100% minus the mitotic index, so it adds no new information."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-11", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "2.D", "level": "apply", "diff": 1, "stimulus": "cell-cycle-s3",
+      "q": "How many sister chromatids does the cell have in G2?",
+      "numeric": { "answer": 12, "tol": 0, "unit": "", "decimals": 0 },
+      "why": { "correct": "S phase copies each of the 6 chromosomes, so each has two sister chromatids: 6 × 2 = 12. The cell still has 6 chromosomes (6 centromeres)." }
+    },
+    {
+      "id": "bio-cell-cycle-12", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "2.D", "level": "apply", "diff": 2, "stimulus": "cell-cycle-s3",
+      "q": "How much DNA, in pg, does the cell contain at metaphase?",
+      "numeric": { "answer": 24, "tol": 0, "unit": "pg", "decimals": 0 },
+      "why": { "correct": "DNA doubled in S phase, from 12 to 24 pg, and nothing has been separated into new cells by metaphase." }
+    },
+    {
+      "id": "bio-cell-cycle-13", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle", "practice": "2.D", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-s3",
+      "q": "How many chromosomes are in the whole cell during anaphase?",
+      "numeric": { "answer": 12, "tol": 0, "unit": "", "decimals": 0 },
+      "why": { "correct": "In anaphase the 12 sister chromatids separate; each now has its own centromere and counts as a chromosome: 12 in the cell, 6 moving to each pole." }
+    },
+    {
+      "id": "bio-cell-cycle-14", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "2.D", "level": "apply", "diff": 2, "stimulus": "cell-cycle-s3",
+      "q": "Which row correctly describes each daughter cell in G1?",
+      "options": [
+        "6 chromosomes and 12 pg of DNA",
+        "3 chromosomes and 6 pg of DNA",
+        "6 chromosomes and 24 pg of DNA",
+        "12 chromosomes and 12 pg of DNA"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each pole received one copy of each of the 6 chromosomes, so each daughter cell is like the parent in G1: 6 chromosomes, 12 pg.",
+        "options": [
+          "Mitosis gives daughter cells the same chromosomes and DNA as the parent had in G1.",
+          "Halving the parent's G1 number would leave each daughter cell missing chromosomes; mitosis halves only the doubled amount.",
+          "24 pg is the doubled amount before division, not what each daughter gets.",
+          "Twelve chromosomes is the count in the whole cell in anaphase, split between two cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-15", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "A drug stops the ring of actin filaments from tightening in animal cells but does not affect mitosis. Predict what dividing cells look like after the drug is added.",
+      "options": [
+        "Single cells with two nuclei, because mitosis finishes but the cytoplasm is not divided",
+        "Cells stuck at metaphase, because the chromosomes fail to attach to the spindle",
+        "Two daughter cells with one nucleus each, because cytokinesis goes on using a cell plate",
+        "Cells with no nucleus, because the chromosomes are lost when the furrow fails"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The actin ring makes the cleavage furrow. Mitosis still separates the chromosomes into two nuclei, but without cytokinesis they stay in one cell.",
+        "options": [
+          "Nuclear division without cytoplasm division gives one cell with two nuclei.",
+          "Spindle attachment uses microtubules, which the drug does not affect.",
+          "Animal cells divide with a furrow; the cell plate is how plant cells divide.",
+          "The chromosomes are already enclosed in two new nuclei; a failed furrow does not remove them."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-16", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "Why do plant cells divide their cytoplasm by building a cell plate rather than pinching in with a cleavage furrow?",
+      "options": [
+        "The rigid cell wall would resist pinching, so a new wall and membrane are built from the middle outward.",
+        "Plant cells have no actin, so the cell plate is the one structure they can assemble from the cytoskeleton.",
+        "Plant cells have no spindle, so a cell plate is needed to separate the sister chromatids.",
+        "Plant chromosomes are too large to pass through a furrow, so the plate wraps around each set."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A rigid wall surrounds each plant cell, so it cannot be pinched in two. Golgi vesicles fuse in the middle to make a plate that grows outward into new membrane and wall.",
+        "options": [
+          "The wall is the reason; the plate builds a new wall between the two cells.",
+          "Plant cells do have actin; they divide by a plate because of the wall.",
+          "Plant cells do form a spindle, which separates chromatids before cytokinesis.",
+          "The chromosomes are inside new nuclei by then; a furrow divides cytoplasm, not chromosomes."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-17", "type": "single", "unit": "unit-4", "topic": "cell-cycle", "practice": "6.D", "level": "analyze", "diff": 2,
+      "q": "Most adult nerve cells are in G0. Which observation does this help explain?",
+      "options": [
+        "Nerve cells lost after a stroke are not replaced by the division of the surviving ones.",
+        "Nerve cells contain less DNA than skin cells, since they skip S phase.",
+        "Nerve cells are the fastest-dividing cells of the body after an injury.",
+        "Nerve cells have twice as many chromosomes as cells that keep on dividing."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cells in G0 are not preparing to divide, so surviving nerve cells do not divide to replace lost ones.",
+        "options": [
+          "Staying out of the cycle means no new nerve cells from division.",
+          "G0 cells left the cycle from G1 with a full, normal amount of DNA.",
+          "Cells in G0 are not dividing at all.",
+          "They left from G1, so they have the normal number of chromosomes."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-18", "type": "multi", "unit": "unit-4", "topic": "cell-cycle", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "Select the two processes that depend on mitosis.",
+      "options": [
+        "A hydra grows a bud that breaks off as a small, genetically identical hydra.",
+        "Skin cells at the edge of a cut divide and close the wound.",
+        "A bacterium copies its circular chromosome and splits into two cells.",
+        "A virus makes hundreds of copies of itself inside a host cell.",
+        "A red blood cell pushes out its nucleus as it matures."
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Budding in hydra (asexual reproduction) and wound healing (tissue repair) both make new cells by mitosis.",
+        "options": [
+          "Budding is asexual reproduction by mitosis.",
+          "Wound healing is tissue repair by mitosis.",
+          "Bacteria divide by binary fission, without a nucleus or a spindle.",
+          "Viruses are copied by the host cell's machinery, not by cell division.",
+          "Losing a nucleus is not a division at all."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-19", "type": "predict", "unit": "unit-4", "topic": "cell-cycle", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "A drug that stops DNA copying is added to a culture of dividing cells. Predict each change over the next 12 hours, compared with an untreated culture.",
+      "variables": [
+        { "name": "Number of cells completing mitosis", "answer": "down", "why": "Cells cannot finish S phase, so fewer and fewer reach mitosis once the cells already past S have divided." },
+        { "name": "DNA content of a cell that was already in G2 when the drug was added", "answer": "none", "why": "That cell copied its DNA before the drug arrived, so it still has the doubled amount." },
+        { "name": "Number of chromosomes in a cell in G1", "answer": "none", "why": "Blocking copying does not add or remove chromosomes; a G1 cell has its normal set." },
+        { "name": "Fraction of cells with doubled DNA content", "answer": "down", "why": "Cells with doubled DNA divide and are not replaced by new cells finishing S phase." }
+      ],
+      "why": { "correct": "A block in S phase stops new cells from reaching mitosis; cells past S are not affected, and the number of chromosomes per cell does not change." }
+    },
+    {
+      "id": "bio-cell-cycle-20", "type": "order", "unit": "unit-4", "topic": "cell-cycle", "practice": "2.A", "level": "apply", "diff": 1,
+      "q": "Put the events of mitosis and cytokinesis in order.",
+      "options": [
+        "Chromosomes condense and the spindle starts to form.",
+        "The nuclear envelope breaks down and spindle fibers attach to the kinetochores.",
+        "Chromosomes line up across the middle of the cell.",
+        "Sister chromatids separate and move to opposite poles.",
+        "Nuclear envelopes re-form around the two sets of chromosomes.",
+        "The cytoplasm divides into two daughter cells."
+      ],
+      "why": { "correct": "Prophase, prometaphase, metaphase, anaphase, telophase, then cytokinesis: chromosomes must condense and attach before they can line up and separate." }
+    }
+  ]
+}

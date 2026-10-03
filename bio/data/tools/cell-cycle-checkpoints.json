@@ -1,0 +1,99 @@
+{
+  "about": "Simulator: a population of cells passing the G1, G2 and M checkpoints. Model code: bio/assets/tools/bio-tool-math.js (ApBioMath.cellCycle). Validator: scripts/lib/apbio-tool-checks/cell-cycle-checkpoints.mjs recomputes every number in the stimulus tables and the numeric answer, and checks the model's behavior (growth factor dependence, each mutation, the spindle checkpoint, damage and p53).",
+  "slug": "cell-cycle-checkpoints",
+  "kind": "simulator",
+  "topic": "cell-cycle-regulation",
+  "intro": "<p>Grow a dish of 1,000 human cells for three days. Change the growth factor in the medium, damage their DNA, give them mutations found in cancer cells or block the spindle, and watch what fraction of cells sits in each phase, how much DNA each cell holds, how fast they divide and whether cells with damaged DNA get through. Then answer the questions below about the same model.</p>",
+  "howItWorks": "<p>Every cell moves through G1, S (DNA replication), G2 and M (mitosis and cytokinesis), or rests in G0. Three checkpoints decide whether it may go on:</p><ol><li><b>G1 checkpoint.</b> A growth factor binds its receptor, a signaling protein like ras passes the signal on, and the cell makes cyclin D. Cyclin D–CDK phosphorylates Rb, Rb releases the transcription factor (E2F) it was holding, and the genes needed for S phase are switched on. In the model, the fraction of cells that pass equals the growth factor level (0-100%); the rest go into G0, which they leave at 10% per hour times the growth factor level. A cell with damaged DNA and working p53 is held here: p53 makes p21, and p21 blocks cyclin–CDK.</li><li><b>G2 checkpoint.</b> A cell with damaged DNA is held before mitosis. Other checkpoint proteins detect the damage, so this hold starts with or without p53, but p53 keeps it in place.</li><li><b>M (spindle) checkpoint.</b> Anaphase waits until every chromosome is attached to spindle microtubules from both poles.</li></ol><p>The model’s rules:</p><ul><li>Phase lengths follow a 24-hour human cell cycle: G1 about 9 h, S 10 h, G2 4.5 h, M 0.5 h. G1 varies from cell to cell: at least 5 h, then cells leave at random, 4 h later on average. Ages are tracked in half-hour steps.</li><li><b>DNA damage:</b> each hour the chosen percentage of undamaged cells, in any phase, gets damaged DNA. A held cell repairs its DNA at 25% per hour and then goes on. With working p53, a held cell that is not repaired dies by apoptosis at 5% per hour. Damage that happens after the G2 checkpoint is not checked again, so a few damaged cells divide even with working p53. Daughter cells keep their parent’s damage.</li><li><b>p53 lost:</b> no hold at the G1 checkpoint, no apoptosis, and the G2 hold is not kept (50% of held cells move on into M each hour, still damaged).</li><li><b>Rb lost:</b> nothing holds the S-phase genes off, so every cell passes the G1 checkpoint with or without growth factor. (The model keeps the p53 hold of damaged cells working; in real cells losing Rb also weakens it.)</li><li><b>Cyclin D–CDK overactive:</b> Rb is phosphorylated without growth factor, and cells reach the checkpoint sooner (late G1 lasts 1 h on average instead of 4 h).</li><li><b>Ras-like protein stuck on:</b> the growth factor signal is on all the time, as if the dish always had full growth factor.</li><li><b>Spindle poison:</b> no spindle forms, so no chromosome is attached and no cell leaves M. (Real cells held this long eventually die or leave mitosis without dividing; the model does not show that.)</li><li><b>DNA content:</b> a G1 or G0 cell holds 2 units of DNA, a cell in S between 2 and 4, and a cell in G2 or M 4. A G2 cell is still diploid (2n): it has the same chromosomes, each made of two sister chromatids, so some books call these peaks 2n and 4n.</li><li>The dish starts with 1,000 cells that have been growing with full growth factor. Cell numbers are averages, so the model has no randomness: the same settings always give the same numbers, and a run records them.</li></ul>",
+  "model": { "dt": 0.5, "G1": 9, "G1min": 5, "G1fast": 6, "S": 10, "G2": 4.5, "M": 0.5, "kre": 0.1, "repair": 0.25, "apoptosis": 0.05, "escape": 0.5, "warm": 240, "N0": 1000, "tEnd": 72 },
+  "growthFactor": { "min": 0, "max": 100, "step": 5, "value": 100, "unit": "%" },
+  "damage": { "min": 0, "max": 5, "step": 0.5, "value": 0, "unit": "% per hour" },
+  "readTime": { "min": 0, "max": 72, "step": 1, "value": 48 },
+  "series": [0, 25, 50, 75, 100],
+  "mutations": [
+    { "id": "p53", "name": "p53 lost (tumor suppressor)" },
+    { "id": "rb", "name": "Rb lost (tumor suppressor)" },
+    { "id": "cycd", "name": "Cyclin D–CDK overactive (oncogene)" },
+    { "id": "ras", "name": "Ras-like protein stuck on (oncogene)" }
+  ],
+  "drugs": [{ "id": "spindle", "name": "Spindle poison (no spindle forms)" }],
+  "outputs": [
+    { "id": "pctG1", "name": "Cells in G1 or G0", "unit": "%", "d": 1 },
+    { "id": "pctS", "name": "Cells in S", "unit": "%", "d": 1 },
+    { "id": "pctG2M", "name": "Cells in G2 or M", "unit": "%", "d": 1 },
+    { "id": "N", "name": "Number of cells", "unit": "cells", "d": 0 },
+    { "id": "divRate", "name": "Divisions per 100 cells per hour", "unit": "per 100 cells per h", "d": 2 },
+    { "id": "divDam", "name": "Divisions by damaged cells per hour", "unit": "per h", "d": 1 },
+    { "id": "pctDivDam", "name": "Divisions by cells with damaged DNA", "unit": "% of divisions", "d": 1 },
+    { "id": "pctDam", "name": "Cells with damaged DNA", "unit": "%", "d": 1 },
+    { "id": "cumDied", "name": "Cells dead by apoptosis since 0 h", "unit": "cells", "d": 0 }
+  ],
+  "histBins": ["2 (G1 or G0)", "2 to 2.5 (early S)", "2.5 to 3 (S)", "3 to 3.5 (S)", "3.5 to 4 (late S)", "4 (G2 or M)"],
+  "stimuli": {
+    "cc-s1": {
+      "kind": "table",
+      "title": "Checkpoints in a dish of human cells",
+      "text": "<p>A student used the model. Each dish started with 1,000 dividing cells. Table 1 shows each dish 48 hours after the conditions were set. Damage at 2% per hour means that each hour 2% of the cells without damage got damaged DNA. Table 2 shows the percent of cells holding each amount of DNA after 24 hours (a G1 cell holds 2 units).</p>",
+      "tables": [
+        { "caption": "Table 1. Cell cycle data at 48 hours", "cols": ["Dish", "Cells in G1 or G0 (%)", "Cells in S (%)", "Cells in G2 or M (%)", "Divisions per 100 cells per hour", "Divisions by damaged cells (% of divisions)"],
+          "rows": [["A. Normal cells, full growth factor", "46.1", "38.4", "15.5", "2.85", "0.0"], ["B. Normal cells, damage 2% per hour", "46.1", "36.5", "17.4", "2.67", "1.0"], ["C. p53 lost, damage 2% per hour", "45.0", "37.7", "17.3", "2.78", "34.8"], ["D. Normal cells, no growth factor", "100.0", "0.0", "0.0", "0.00", "0.0"], ["E. Rb lost, no growth factor", "46.1", "38.4", "15.5", "2.85", "0.0"], ["F. Normal cells, spindle poison", "0.0", "0.0", "100.0", "0.00", "0.0"]],
+          "check": { "x": "cond", "t": 48, "cols": [["pctG1", 1], ["pctS", 1], ["pctG2M", 1], ["divRate", 2], ["pctDivDam", 1]],
+            "labels": ["A. Normal cells, full growth factor", "B. Normal cells, damage 2% per hour", "C. p53 lost, damage 2% per hour", "D. Normal cells, no growth factor", "E. Rb lost, no growth factor", "F. Normal cells, spindle poison"],
+            "conds": [{}, { "damage": 0.02 }, { "damage": 0.02, "p53": false }, { "gf": 0 }, { "gf": 0, "rb": true }, { "spindle": true }] } },
+        { "caption": "Table 2. Percent of cells by DNA content at 24 hours", "cols": ["DNA per cell (units)", "A. Normal, full growth factor", "D. No growth factor", "F. Spindle poison"],
+          "rows": [["2 (G1 or G0)", "46.2", "100.0", "0.2"], ["2 to 2.5 (early S)", "10.7", "0.0", "0.2"], ["2.5 to 3 (S)", "9.9", "0.0", "0.3"], ["3 to 3.5 (S)", "9.2", "0.0", "0.6"], ["3.5 to 4 (late S)", "8.6", "0.0", "1.1"], ["4 (G2 or M)", "15.5", "0.0", "97.7"]],
+          "check": { "x": "hist", "t": 24, "conds": [{}, { "gf": 0 }, { "spindle": true }] } }
+      ]
+    }
+  },
+  "questions": [
+    { "id": "cell-cycle-checkpoints:dish:1", "type": "single", "topic": "cell-cycle-regulation", "practice": "6.B", "level": "analyze", "diff": 2, "stimulus": "cc-s1",
+      "q": "In dish F almost every cell holds 4 units of DNA after 24 hours and no cell divides. Which explanation is most consistent with the data?",
+      "options": ["The cells copied their DNA and entered mitosis, but the M checkpoint stops them before anaphase because no chromosome is attached to a spindle", "The cells are held at the G1 checkpoint because the spindle poison damaged their DNA", "The cells stopped copying their DNA halfway through S phase because the spindle is needed for replication", "The cells divided, but each daughter cell kept both sets of sister chromatids"],
+      "correct": 0,
+      "why": { "correct": "Holding 4 units of DNA means replication in S phase was finished. Without a spindle, the M checkpoint never sees every chromosome attached to microtubules from both poles, so anaphase does not start and the cells pile up in mitosis.",
+        "options": ["Right: replicated DNA (4 units) plus no division places the block in mitosis, at the spindle checkpoint.", "Cells held at the G1 checkpoint have not replicated, so they would hold 2 units of DNA, not 4.", "Replication in S phase does not use the spindle; the cells finished S, which is why they hold 4 units of DNA.", "No cell divides in dish F (0.00 divisions per 100 cells per hour), so there are no daughter cells."] } },
+    { "id": "cell-cycle-checkpoints:dish:2", "type": "single", "topic": "cell-cycle-regulation", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "cc-s1",
+      "q": "Dishes B and C had the same rate of DNA damage. Which explanation best accounts for the difference in divisions by damaged cells?",
+      "options": ["Working p53 holds damaged cells at a checkpoint until the DNA is repaired or the cell dies by apoptosis, so few damaged cells reach mitosis", "Without p53 the cells divide faster, so there is less time for DNA to be damaged", "p53 repairs DNA damage by itself during mitosis, so damaged cells in dish B are repaired as they divide", "Without p53 more cells get damaged DNA, because p53 prevents damage from happening"],
+      "correct": 0,
+      "why": { "correct": "Both dishes got damage at the same rate. With working p53, damaged cells stop at the G1 checkpoint (p53 makes p21, which blocks cyclin–CDK) and the G2 hold is kept until the DNA is repaired or the cell dies, so only about 1% of divisions are by damaged cells. Without p53 those holds fail and about a third of divisions are by damaged cells.",
+        "options": ["Right: p53 stops damaged cells and sends them to repair or apoptosis, so the damage is not passed to daughter cells.", "The division rates are almost the same (2.67 and 2.78 per 100 cells per hour), and faster division would not lower damage anyway.", "p53 acts at the checkpoints before mitosis: it halts the cycle and calls in repair enzymes; it does not repair DNA during division.", "The damage rate was set the same in both dishes. p53 responds to damage; it does not stop damage from happening."] } },
+    { "id": "cell-cycle-checkpoints:dish:3", "type": "numeric", "topic": "cell-cycle-regulation", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "cc-s1",
+      "q": "Using Table 1, calculate how many times greater the percent of divisions by damaged cells is in dish C than in dish B. Round to the nearest whole number.",
+      "numeric": { "answer": 35, "tol": 1, "unit": "times", "decimals": 0 },
+      "why": { "correct": "34.8 / 1.0 = 34.8, about 35 times greater. Losing p53 lets dozens of times more damaged cells divide, passing the damage to their daughter cells." } },
+    { "id": "cell-cycle-checkpoints:dish:4", "type": "single", "topic": "cell-cycle-regulation", "practice": "6.D", "level": "analyze", "diff": 2, "stimulus": "cc-s1",
+      "q": "Which conclusion about Rb is best supported by dishes A, D and E?",
+      "options": ["Rb keeps cells from passing the G1 checkpoint until a growth signal turns it off, so cells without Rb divide whether or not growth factor is present", "Rb is needed for cells to divide, so cells without Rb stop dividing", "Rb acts at the M checkpoint, so cells without Rb pile up in mitosis", "Rb speeds up the cell cycle, so cells without Rb divide more slowly than normal cells"],
+      "correct": 0,
+      "why": { "correct": "Without growth factor, normal cells all end up in G1 or G0 and stop dividing (dish D). Cells without Rb, in the same medium, look just like normal cells with full growth factor (dish E matches dish A). So Rb is a brake that growth signals release, and losing it lets cells divide without the signal, which is why its gene is a tumor suppressor.",
+        "options": ["Right: dish E divides like dish A even with no growth factor, so Rb normally holds cells back until the signal arrives.", "Dish E divides at 2.85 per 100 cells per hour, as fast as normal cells with growth factor, so Rb is not needed for division.", "Dish E has the same share of cells in G2 or M as dish A (15.5%), so cells without Rb do not pile up in mitosis.", "Dish E divides at the same rate as dish A, and faster than dish D, so losing Rb does not slow the cycle."] } },
+    { "id": "cell-cycle-checkpoints:dish:5", "type": "single", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "cc-s1",
+      "q": "A new dish has normal cells except that a ras-like signaling protein is stuck in its active form, and it gets no growth factor. Which result at 48 hours is most likely?",
+      "options": ["About the same values as dish A, because the signal that growth factor normally sends is on all the time", "About the same values as dish D, because without growth factor the cells cannot pass the G1 checkpoint", "About the same values as dish F, because the stuck protein stops the spindle from forming", "About the same values as dish C, because a stuck signaling protein lets damaged cells divide"],
+      "correct": 0,
+      "why": { "correct": "Ras passes the growth factor’s signal from the receptor toward cyclin D–CDK. A protein stuck in its active form sends that signal with no growth factor, so Rb is phosphorylated and the cells keep cycling as in dish A. This is how a proto-oncogene becomes an oncogene.",
+        "options": ["Right: the stuck protein does the growth factor’s job, so the cells behave as if growth factor were present.", "Dish D lacks the growth factor signal, but the stuck protein sends it anyway, so these cells pass the G1 checkpoint.", "The protein carries the growth signal at the G1 checkpoint; it does not affect the spindle or the M checkpoint.", "This dish has no added DNA damage and working p53, so damaged cells are not the issue; the change is in the growth signal."] } }
+  ],
+  "frq": {
+    "id": "frq-checkpoints",
+    "topic": "cell-cycle-regulation",
+    "title": "Mini free-response question: brakes and accelerators",
+    "intro": "<p>Use Tables 1 and 2 above.</p>",
+    "parts": [
+      { "label": "a", "points": 1, "practice": "4.B", "prompt": "<b>Describe</b> how losing p53 changes the percent of divisions by cells with damaged DNA (dishes B and C), using the data.",
+        "rubric": [{ "point": "Describes an increase AND uses the data: from about 1% of divisions (dish B) to about 35% (dish C).", "accept": ["about 35 times more", "rises from 1.0% to 34.8%"] }],
+        "sample": "<p>Losing p53 raises the share of divisions by damaged cells from 1.0% in dish B to 34.8% in dish C, about 35 times more, even though both dishes got the same amount of damage.</p>" },
+      { "label": "b", "points": 2, "practice": "6.C", "prompt": "<b>Explain</b> why normal cells stop dividing without growth factor (dish D) but cells without Rb keep dividing (dish E).",
+        "rubric": [
+          { "point": "Explains that in normal cells Rb holds back (binds) the transcription factor needed for the genes of S phase, and that growth factor signaling raises cyclin–CDK activity, which phosphorylates Rb so it lets go; without growth factor Rb stays active and the cells stop at the G1 checkpoint (go into G0).", "accept": ["Rb is a brake that growth signals release", "no growth signal, so Rb is not phosphorylated"] },
+          { "point": "Explains that without Rb nothing blocks the S-phase genes, so cells pass the G1 checkpoint and keep dividing without the growth signal.", "accept": ["the brake is missing", "E2F is always free"] }
+        ],
+        "sample": "<p>In normal cells, Rb binds the transcription factor that switches on the genes needed for S phase. A growth factor triggers signaling that makes cyclin D–CDK, which phosphorylates Rb so that it lets go of the transcription factor. With no growth factor, Rb stays unphosphorylated and keeps holding it, so the cells stop at the G1 checkpoint and go into G0. Without Rb there is nothing holding the transcription factor, so the S-phase genes are on, the cells pass the G1 checkpoint without any growth signal, and they keep dividing.</p>" },
+      { "label": "c", "points": 1, "practice": "6.E", "prompt": "A dish of cells has lost both p53 and Rb. It gets no growth factor and damage at 2% per hour. <b>Predict</b> its divisions per 100 cells per hour and its percent of divisions by damaged cells at 48 hours, compared with dishes C and E. <b>Justify</b> your prediction.",
+        "rubric": [{ "point": "Predicts that the cells keep dividing at about the normal rate (like dish E) AND that about a third of divisions are by damaged cells (like dish C), and justifies it: Rb loss removes the need for growth factor and p53 loss removes the holds on damaged cells, two different brakes.", "accept": ["both brakes are gone, so the cells divide without a signal and divide with damage"] }],
+        "sample": "<p>The cells would keep dividing at close to 2.8 per 100 cells per hour, as in dish C, and about 35% of the divisions would be by damaged cells, also as in dish C, even with no growth factor. Losing Rb removes the brake that needs a growth signal to be released, as in dish E, and losing p53 removes the holds that stop damaged cells, as in dish C. The two losses remove different brakes, so the cells show both effects.</p>" }
+    ]
+  }
+}

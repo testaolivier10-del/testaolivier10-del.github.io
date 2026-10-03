@@ -1,0 +1,409 @@
+{
+  "stimuli": {
+    "feedback-s1": {
+      "kind": "graph",
+      "title": "Blood glucose, insulin and glucagon over a day",
+      "text": "<p>A healthy 17-year-old wore a sensor that recorded blood glucose, and blood samples were taken to measure insulin and glucagon. Meals rich in carbohydrate were eaten at 7:00, 12:00 and 18:00, and the volunteer ran from 15:00 to 16:00. Each hormone is plotted in its own unit, given in the key.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time of day", "unit": "hours", "min": 6, "max": 22, "step": 2 },
+        "y": { "label": "Level (unit in the key)", "unit": "", "min": 0, "max": 160, "step": 20 },
+        "series": [
+          { "name": "Glucose (mg/dL)", "points": [[6, 85], [7, 86], [7.5, 128], [8, 138], [9, 112], [10, 92], [11, 86], [12, 85], [12.5, 132], [13, 140], [14, 110], [15, 90], [15.5, 78], [16, 72], [17, 84], [18, 86], [18.5, 135], [19, 142], [20, 112], [21, 95], [22, 88]] },
+          { "name": "Insulin (µU/mL)", "points": [[6, 8], [7, 8], [7.5, 42], [8, 58], [9, 40], [10, 18], [11, 10], [12, 9], [12.5, 45], [13, 62], [14, 42], [15, 15], [15.5, 8], [16, 6], [17, 9], [18, 9], [18.5, 46], [19, 64], [20, 44], [21, 20], [22, 11]] },
+          { "name": "Glucagon (pg/mL)", "points": [[6, 90], [7, 90], [7.5, 78], [8, 70], [9, 76], [10, 85], [11, 90], [12, 90], [12.5, 78], [13, 70], [14, 74], [15, 88], [15.5, 105], [16, 118], [17, 96], [18, 90], [18.5, 78], [19, 70], [20, 75], [21, 84], [22, 89]] }
+        ]
+      }
+    },
+    "feedback-s2": {
+      "kind": "table",
+      "title": "A glucose tolerance test",
+      "text": "<p>Three adults fasted overnight, then drank a solution containing 75 g of glucose at time 0. Blood glucose and insulin were measured over the next two hours. One person is healthy, one has type 1 diabetes and has not taken insulin that morning, and one has type 2 diabetes.</p>",
+      "table": {
+        "caption": "Blood glucose (mg/dL) and insulin (µU/mL) after a 75 g glucose drink",
+        "cols": ["Person", "Measurement", "0 min", "30 min", "60 min", "120 min"],
+        "rows": [
+          ["A", "Glucose", "85", "140", "125", "100"],
+          ["A", "Insulin", "6", "50", "45", "20"],
+          ["B", "Glucose", "160", "260", "320", "310"],
+          ["B", "Insulin", "2", "3", "3", "2"],
+          ["C", "Glucose", "135", "220", "260", "230"],
+          ["C", "Insulin", "20", "75", "110", "120"]
+        ]
+      }
+    },
+    "feedback-s3": {
+      "kind": "graph",
+      "title": "Ethylene from ripening bananas",
+      "text": "<p>Green bananas from one harvest were divided into three groups of 12 and kept in ventilated boxes at 20 °C. Group 1 was left alone. Group 2 shared its box with two fully ripe bananas for the whole experiment. Group 3 was first treated with 1-MCP, a gas that binds ethylene receptors without activating them. Ethylene given off by the green bananas was measured each day.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Day", "unit": "", "min": 0, "max": 8, "step": 1 },
+        "y": { "label": "Ethylene given off", "unit": "µL per kg per hour", "min": 0, "max": 16, "step": 2 },
+        "series": [
+          { "name": "Group 1: alone", "points": [[0, 0.2], [1, 0.3], [2, 0.4], [3, 0.6], [4, 1.5], [5, 6], [6, 14], [7, 12], [8, 8]] },
+          { "name": "Group 2: with ripe bananas", "points": [[0, 0.2], [1, 1.5], [2, 7], [3, 15], [4, 12], [5, 8], [6, 5], [7, 4], [8, 3]] },
+          { "name": "Group 3: 1-MCP treated", "points": [[0, 0.2], [1, 0.2], [2, 0.2], [3, 0.3], [4, 0.3], [5, 0.3], [6, 0.4], [7, 0.4], [8, 0.5]] }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-feedback-1", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "feedback-s1",
+      "q": "Which statement best describes the hormones after each meal?",
+      "options": [
+        "Insulin rises and falls with glucose, while glucagon falls and then recovers.",
+        "Insulin and glucagon both rise with glucose and both fall as glucose falls back.",
+        "Glucagon rises with glucose, while insulin stays near its fasting level through the day.",
+        "Insulin rises an hour before glucose rises, in step with the time of each meal."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "After lunch, glucose goes 85 → 140 and insulin 9 → 62, both returning by 15:00; glucagon dips from 90 to 70 and comes back.",
+        "options": [
+          "Insulin tracks glucose, and glucagon moves the opposite way, as the meal peaks show.",
+          "Glucagon falls after meals; only insulin rises.",
+          "This reverses the two hormones.",
+          "Insulin rises with glucose after each meal; at 7:00, 12:00 and 18:00 it is still at its fasting level."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-2", "type": "numeric", "unit": "unit-4", "topic": "feedback", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "feedback-s1",
+      "q": "Calculate the percent increase in blood glucose from 12:00 to 13:00. Give a whole number.",
+      "numeric": { "answer": 65, "tol": 1, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Percent increase = (140 − 85) ÷ 85 × 100 = 64.7%, about 65%." }
+    },
+    {
+      "id": "bio-feedback-3", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "feedback-s1",
+      "q": "Which explanation best accounts for the changes between 15:00 and 17:00?",
+      "options": [
+        "Running muscles took up glucose; the fall triggered glucagon release and less insulin, so the liver released glucose.",
+        "Running used up the insulin in the blood, so glucose fell; glucagon then rose to take the place of the missing insulin.",
+        "The run raised insulin, which lowered glucose; glucagon rose afterward because glucose had become too high.",
+        "Glucagon rose first and caused glucose to fall, and glucose recovered at 17:00 because the next meal began."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glucose falls from 90 to 72 during the run; glucagon rises to 118 and insulin falls to 6; by 17:00 glucose is back to 84, before dinner at 18:00.",
+        "options": [
+          "Glucose use lowers glucose; the low level is the stimulus for glucagon, whose response restores it.",
+          "Insulin falls during the run because glucose falls; glucagon is the opposing hormone, not a replacement.",
+          "Insulin falls during the run (15 → 6), it does not rise; and glucose was low, not high, when glucagon rose.",
+          "Glucagon raises glucose; and the recovery at 17:00 comes before the 18:00 meal."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-4", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "feedback-s1",
+      "q": "Predict the glucose curve after lunch for a person with untreated type 1 diabetes, compared with this volunteer.",
+      "options": [
+        "It rises higher and stays high for hours, because little insulin is released to trigger glucose uptake.",
+        "It rises to the same peak but falls back faster, because the person's cells absorb glucose without insulin.",
+        "It stays flat, because without insulin the person's gut is unable to absorb glucose from the meal.",
+        "It rises to the same peak and falls at the same rate, because glucagon takes over insulin's job."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In type 1 diabetes the beta cells are destroyed. Without the insulin signal, muscle, fat and liver cells take up and store little glucose, so it climbs and stays high.",
+        "options": [
+          "The signal that removes glucose is missing, so the rise is bigger and lasts longer.",
+          "Without insulin, glucose uptake by muscle and fat cells is slower, not faster.",
+          "Glucose is absorbed from the gut into the blood without insulin; insulin acts afterward, on target cells.",
+          "Glucagon raises blood glucose; it cannot do insulin's job of lowering it."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-5", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.B", "level": "analyze", "diff": 2, "stimulus": "feedback-s1",
+      "q": "Which feature of the data is the best evidence that blood glucose is controlled by negative feedback?",
+      "options": [
+        "After each rise or fall, glucose returns to about 85-90 mg/dL as the opposing hormone acts.",
+        "Glucose reaches about the same peak, 138-142 mg/dL, after each of the three meals of the day.",
+        "Insulin is higher at 19:00 than at any earlier time of day.",
+        "Glucagon is about 90 pg/mL at 6:00 and about 89 pg/mL at 22:00."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Negative feedback means the response opposes the change and brings the variable back: glucose returns to its set point after meals (insulin up) and after the run (glucagon up).",
+        "options": [
+          "A return to the set point, driven by a hormone that opposes the change, is what defines negative feedback.",
+          "Similar peaks show similar meals; they do not show what brings glucose back down.",
+          "A single high value does not show a response opposing a change.",
+          "Two matching values at the start and end do not show how glucose was corrected during the day."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-6", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "4.B", "level": "apply", "diff": 2, "stimulus": "feedback-s2",
+      "q": "Which statement best describes person C compared with person A?",
+      "options": [
+        "C has higher insulin and higher glucose at every time point.",
+        "C has lower insulin but higher glucose at each of the time points.",
+        "C has higher insulin, so C's glucose returns to fasting faster.",
+        "C has the same insulin as A, but higher glucose throughout."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "C's insulin is 20-120 µU/mL against A's 6-50, and C's glucose is 135-260 against A's 85-140.",
+        "options": [
+          "Both of C's values are higher than A's at each time.",
+          "C's insulin is higher than A's, not lower; that describes person B.",
+          "C's glucose is still 230 at 120 minutes, far from fasting.",
+          "C's insulin is two to six times A's."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-7", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.A", "level": "analyze", "diff": 2, "stimulus": "feedback-s2",
+      "q": "Which person most likely has type 1 diabetes, and what is the best evidence?",
+      "options": [
+        "Person B, whose insulin stays at 2-3 µU/mL as glucose climbs to 320 mg/dL",
+        "Person C, whose glucose is still above 200 mg/dL two hours after the drink",
+        "Person B, whose fasting glucose is the highest of the three at 160 mg/dL",
+        "Person A, whose insulin falls back to 20 µU/mL by the end of the test"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Type 1 diabetes destroys the beta cells. Person B makes almost no insulin, even with glucose very high, so the signal itself is missing.",
+        "options": [
+          "No insulin despite a huge stimulus points to missing beta cells.",
+          "High glucose fits both types; C's high insulin points to type 2.",
+          "High fasting glucose fits either type; it does not show which part of the loop has failed.",
+          "Person A's values are normal: insulin rises and falls with glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-8", "type": "numeric", "unit": "unit-4", "topic": "feedback", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "feedback-s2",
+      "q": "At 60 minutes, how many times as much insulin does person C have as person A? Give your answer to one decimal place.",
+      "numeric": { "answer": 2.4, "tol": 0.1, "unit": "", "decimals": 1 },
+      "why": { "correct": "C ÷ A at 60 minutes = 110 ÷ 45 = 2.44, about 2.4 times." }
+    },
+    {
+      "id": "bio-feedback-9", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "feedback-s2",
+      "q": "Why does person C's insulin keep rising between 60 and 120 minutes?",
+      "options": [
+        "C's target cells respond weakly to insulin, so glucose stays high and keeps stimulating the beta cells.",
+        "C's beta cells release insulin at a fixed rate that does not depend on the level of glucose.",
+        "C's liver turns the glucose from the drink into insulin, so more glucose means more insulin.",
+        "C's insulin keeps rising because glucagon release has stopped and insulin replaces it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In a negative feedback loop the response should remove the stimulus. Here the response (glucose uptake) is weak, so the stimulus (high glucose) persists, and the beta cells keep releasing insulin.",
+        "options": [
+          "Weak effectors leave the stimulus in place, so the signal keeps rising.",
+          "C's insulin rises from 20 to 120 as glucose rises, so release does depend on glucose.",
+          "Insulin is a protein made by beta cells; glucose is not converted into it.",
+          "The two hormones are separate loops; insulin does not stand in for glucagon."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-10", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "feedback-s2",
+      "q": "Persons B and C are each given the same dose of insulin by injection after the test. Predict the effect on their glucose.",
+      "options": [
+        "B's glucose falls a lot, and C's falls less, because C's cells respond weakly to insulin.",
+        "C's glucose falls a lot, and B's falls less, because B's cells have lost their insulin receptors.",
+        "Neither glucose level falls, because diabetes damages the liver rather than the hormone system.",
+        "Both fall by the same amount, because injected insulin works the same way in each person."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "B's problem is the missing signal, so supplying it works well. C already has plenty of insulin; the problem is the response, so extra insulin helps less.",
+        "options": [
+          "B lacks insulin but responds to it; C has insulin resistance.",
+          "B's beta cells are destroyed, not the receptors on target cells.",
+          "Both types are failures of the insulin loop: a missing signal or a weak response.",
+          "C's high insulin with high glucose shows C's cells respond weakly, so the same dose does less."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-11", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "feedback-s3",
+      "q": "Which statement best describes ethylene from group 1?",
+      "options": [
+        "It stays low for about 3 days, rises steeply to a peak on day 6, then declines.",
+        "It rises at a steady rate from day 0 to day 8.",
+        "It peaks on day 3 and then falls steadily to day 8.",
+        "It stays below 1 µL per kg per hour throughout."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Group 1: under 1 through day 3, 1.5 on day 4, 6 on day 5, 14 on day 6, then 12 and 8.",
+        "options": [
+          "Low, then a sudden climb to 14 on day 6, then a fall.",
+          "The rise is not steady: little change for 3 days, then a jump of 8 in one day.",
+          "That describes group 2, kept with ripe bananas.",
+          "That describes group 3, treated with 1-MCP."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-12", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "feedback-s3",
+      "q": "Which explanation best accounts for the shape of the group 1 curve between days 3 and 6?",
+      "options": [
+        "Ethylene binding the fruit's receptors makes the fruit produce more ethylene, so production speeds itself up.",
+        "The bananas lose water as they age, so the ethylene in them becomes more concentrated each day.",
+        "Ethylene production is set by the day of harvest, so each banana starts producing heavily on day 4.",
+        "Ethylene breaks down cell walls, and the broken walls release ethylene that had been stored in them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A slow start followed by an accelerating rise is the shape of positive feedback: the product (ethylene) triggers more of its own production, until ripening is complete and production falls.",
+        "options": [
+          "Each increase in ethylene causes a bigger increase: positive feedback.",
+          "Ethylene is measured as gas given off per hour, not as a concentration in the fruit, and water loss could not explain a 20-fold rise in three days.",
+          "Group 2 bananas, from the same harvest, start on day 1, so timing is not fixed by harvest date.",
+          "Ethylene is made as the fruit ripens, not stored in the walls; and 1-MCP, which acts on receptors, stops the rise."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-13", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.B", "level": "analyze", "diff": 3, "stimulus": "feedback-s3",
+      "q": "Which result best supports the claim that the rise in ethylene depends on the bananas detecting ethylene?",
+      "options": [
+        "Group 3, whose ethylene receptors were blocked by 1-MCP, stays below 0.5.",
+        "Group 2, kept with ripe bananas, reaches its peak 3 days earlier than group 1.",
+        "Group 2 reaches a slightly higher peak than group 1, by about 1 µL per kg per hour.",
+        "Each of the three groups starts at the same ethylene level, 0.2, on day 0."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Blocking the receptors removes the rise entirely, so the bananas must detect ethylene for their own production to take off.",
+        "options": [
+          "Blocking detection blocks the rise, which tests the claim directly.",
+          "This shows outside ethylene speeds ripening, but not that detection is required.",
+          "The two peaks are nearly the same; a 1-unit gap says nothing about detection.",
+          "The same start shows the groups were alike at first, nothing more."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-14", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "feedback-s3",
+      "q": "A grocer finds one overripe banana in a box of green ones. Using the data, predict what happens to the rest of the box if it stays.",
+      "options": [
+        "They ripen days sooner, because ethylene from the ripe banana starts their own ethylene burst.",
+        "The green bananas ripen on the same schedule, because each fruit ripens on its own internal timer.",
+        "The green bananas ripen more slowly, because the ripe banana uses up the ethylene in the box.",
+        "Just the bananas touching the ripe one ripen sooner, because ethylene passes by direct contact."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Group 2 shows ripe fruit moves the ethylene burst from day 6 to day 3. The outside ethylene starts the positive feedback loop early.",
+        "options": [
+          "Exactly what group 2 shows.",
+          "Group 2 ripened 3 days earlier than group 1, so outside ethylene changes the timing.",
+          "Ripe fruit gives off ethylene; it does not use it up.",
+          "Ethylene is a gas that spreads through the air of the box; group 2's bananas were not described as touching."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-15", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "On a hot day, nerve endings in the skin detect rising temperature, a region of the brain compares it with 37 °C, and sweat glands release sweat. In this loop, the sweat glands are the",
+      "options": [
+        "effectors",
+        "sensors",
+        "control center",
+        "stimulus"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Effectors carry out the response that changes the variable: sweat cools the skin as it evaporates.",
+        "options": [
+          "The sweat glands carry out the response.",
+          "The sensors are the skin's nerve endings that detect temperature.",
+          "The control center is the brain region that compares with the set point.",
+          "The stimulus is the rise in temperature itself."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-16", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "During an infection, chemicals from immune cells raise the brain's temperature set point from 37 °C to 39 °C. Predict what a person feels and does while their temperature is still 37 °C.",
+      "options": [
+        "They feel cold and shiver, because the control center now reads 37 °C as below the set point.",
+        "They feel hot and sweat, because the infection itself is producing heat inside the body.",
+        "They feel nothing, because their temperature has not changed from its normal value.",
+        "They feel hot and sweat, because a higher set point makes the sensors more sensitive to heat."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The loop compares temperature with the set point. At 37 °C the body is 2 °C below the new set point, so it responds as if cold: shivering and narrowed skin vessels raise temperature.",
+        "options": [
+          "Below the new set point, the loop triggers heat-gaining responses.",
+          "Sweating is a response to being above the set point, which happens when the fever breaks.",
+          "The variable has not changed, but the set point has, so the gap triggers a response.",
+          "Raising the set point changes the target, not the sensitivity of the sensors; being below target triggers warming, not cooling."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-17", "type": "single", "unit": "unit-4", "topic": "feedback", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "When a blood vessel is cut, platelets stick at the cut and release chemicals that make more platelets stick. Which statement best explains why this positive feedback loop does not keep growing through the bloodstream?",
+      "options": [
+        "Once the clot seals the break, the exposed damaged wall that started the loop is covered, so the stimulus ends.",
+        "Platelets in the blood are used up after the first few seconds of clotting.",
+        "A negative feedback loop takes over as soon as clotting starts and reverses it.",
+        "Positive feedback loops weaken with each cycle until they stop by themselves."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Positive feedback stops when an outside event removes the stimulus. Sealing the break covers the damaged wall that started the loop.",
+        "options": [
+          "The loop ends when its trigger, the exposed damage, is gone.",
+          "Plenty of platelets remain; a clot uses a small fraction of them.",
+          "Opposing systems exist, but they do not reverse clotting the moment it starts; the clot must form first.",
+          "Positive feedback grows stronger with each cycle; it needs an outside event to stop."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-18", "type": "multi", "unit": "unit-4", "topic": "feedback", "practice": "2.B", "level": "apply", "diff": 2,
+      "q": "Select the two examples of negative feedback.",
+      "options": [
+        "Insulin release rises after a meal, and glucose falls back to its normal range.",
+        "Sweating increases as body temperature rises above 37 °C, cooling the body.",
+        "Oxytocin release rises as contractions stretch the cervix, making contractions stronger.",
+        "Ripening apples make ethylene, which makes nearby apples ripen and make more.",
+        "Platelets at a wound release chemicals that make more platelets stick there."
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "In both, the response opposes the change: glucose comes back down, temperature comes back down.",
+        "options": [
+          "The response removes the stimulus (high glucose).",
+          "The response cancels the stimulus (high temperature).",
+          "Stronger contractions stretch the cervix more, adding to the change: positive feedback.",
+          "More ethylene causes more ripening and still more ethylene: positive feedback.",
+          "More platelets attract still more: positive feedback."
+        ]
+      }
+    },
+    {
+      "id": "bio-feedback-19", "type": "predict", "unit": "unit-4", "topic": "feedback", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "A rare condition stops the alpha cells of the pancreas from releasing glucagon. Insulin release is normal. Predict each change after a 14-hour overnight fast, compared with a healthy person.",
+      "variables": [
+        { "name": "Blood glucose", "answer": "down", "why": "Without glucagon, the falling glucose during the fast does not trigger the liver to release glucose, so it drops further than normal." },
+        { "name": "Breakdown of glycogen in the liver", "answer": "down", "why": "Glucagon is the signal that makes liver cells break down glycogen; without it, less is broken down." },
+        { "name": "Number of insulin receptors on muscle cells", "answer": "none", "why": "The condition affects glucagon release, not how many insulin receptors muscle cells make." }
+      ],
+      "why": { "correct": "Removing one arm of the glucose control system leaves nothing to oppose a fall in glucose; the other parts of the system are unchanged." }
+    },
+    {
+      "id": "bio-feedback-20", "type": "order", "unit": "unit-4", "topic": "feedback", "practice": "1.B", "level": "apply", "diff": 1,
+      "q": "Put the events of the glucose feedback loop after a meal in order.",
+      "options": [
+        "Glucose from the meal raises blood glucose above its normal range.",
+        "Beta cells in the pancreas release more insulin.",
+        "Muscle and fat cells take up glucose, and the liver stores it as glycogen.",
+        "Blood glucose falls back toward its set point.",
+        "Insulin release falls as the stimulus fades."
+      ],
+      "why": { "correct": "The stimulus comes first; the beta cells respond with insulin; target cells remove glucose; the falling glucose removes the stimulus, so insulin falls: the loop switches itself off." }
+    }
+  ]
+}

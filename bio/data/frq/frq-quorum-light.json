@@ -1,0 +1,65 @@
+{
+  "id": "frq-quorum-light",
+  "title": "Quorum sensing: light output and a released signal",
+  "type": "data",
+  "points": 4,
+  "units": ["unit-4"],
+  "topics": ["cell-communication"],
+  "practices": ["4.B", "5.A", "3.C", "6.B"],
+  "stimulus": {
+    "kind": "table",
+    "title": "Spent medium and light from sparse bacteria",
+    "text": "<p>Researchers grew the bacterium <i>Vibrio fischeri</i> to a high density (8 × 10⁸ cells/mL), then filtered out the cells to obtain cell-free \"spent\" medium. They placed fresh cells at a low density (1 × 10⁷ cells/mL) in mixtures of fresh medium and spent medium and measured light per cell after 1 hour; the cells did not multiply noticeably in that time. In a last treatment they used spent medium from a strain that cannot make the autoinducer. Values are means ± standard error of 3 cultures, in relative units.</p>",
+    "table": {
+      "caption": "Light per cell of low-density Vibrio fischeri after 1 hour",
+      "cols": ["Spent medium in the mixture (%)", "Source of spent medium", "Light per cell (relative units)"],
+      "rows": [
+        ["0", "—", "1.0 ± 0.2"],
+        ["5", "Normal strain", "1.2 ± 0.2"],
+        ["10", "Normal strain", "4.5 ± 0.6"],
+        ["20", "Normal strain", "140 ± 12"],
+        ["40", "Normal strain", "410 ± 30"],
+        ["80", "Normal strain", "450 ± 35"],
+        ["80", "Strain that cannot make autoinducer", "1.1 ± 0.2"]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "<b>Describe</b> how light per cell changes as the percentage of spent medium from the normal strain increases.",
+      "points": 1,
+      "rubric": [
+        { "point": "Describes little change up to 5-10% spent medium, a steep rise between 10% and 40%, and a leveling off between 40% and 80%.", "accept": ["low until about 10%, then rises sharply, then levels off near 410-450", "a threshold between 10 and 20% followed by a plateau", "stays near 1 at low percentages, jumps by 20%, little further change above 40%"] }
+      ],
+      "sample": "Light per cell stays low (1.0-4.5) up to 10% spent medium, rises steeply to 140 at 20% and 410 at 40%, then levels off, reaching only 450 at 80%."
+    },
+    {
+      "label": "b",
+      "prompt": "<b>Calculate</b> how many times greater the light per cell is with 20% spent medium than with 10% spent medium.",
+      "points": 1,
+      "rubric": [
+        { "point": "About 31 times: 140 ÷ 4.5 = 31.1.", "accept": ["31", "31.1", "about 30 times"] }
+      ],
+      "sample": "140 ÷ 4.5 = 31.1, so light per cell is about 31 times greater with 20% spent medium."
+    },
+    {
+      "label": "c",
+      "prompt": "<b>Identify</b> what the treatment with spent medium from the strain that cannot make autoinducer rules out.",
+      "points": 1,
+      "rubric": [
+        { "point": "Rules out that some other change in spent medium (used-up nutrients, waste products, lower oxygen or anything else the dense culture left behind) causes the light; the active factor is the autoinducer.", "accept": ["it shows the light is not caused by nutrient depletion or wastes in the spent medium", "it rules out any factor in spent medium other than the autoinducer", "spent medium without autoinducer gives no light, so the autoinducer is the cause"] }
+      ],
+      "sample": "It rules out the idea that something else about spent medium, such as used-up nutrients or waste products from a dense culture, switches the light on. That medium was conditioned by an equally dense culture but contains no autoinducer, and the cells stayed dark (1.1), so the autoinducer is what triggers the light."
+    },
+    {
+      "label": "d",
+      "prompt": "A student claims that the bacteria switch on their light in response to the concentration of a signal molecule, not to the number of cells around them. <b>Support</b> the claim with evidence from the data.",
+      "points": 1,
+      "rubric": [
+        { "point": "Cites that every treatment had the same low cell density (1 × 10⁷ cells/mL), yet cells glowed brightly in 40-80% spent medium from the normal strain and stayed dark in fresh medium or autoinducer-free spent medium.", "accept": ["cell density was the same in every treatment, but light rose from 1.0 to 410-450 with more spent medium", "sparse cells glowed when given the signal, so the signal, not crowding, controls light", "same number of cells, very different light, depending on how much autoinducer-containing medium was present"] }
+      ],
+      "sample": "Every culture had the same low density, 1 × 10⁷ cells/mL, so the number of cells around each bacterium did not change. Yet light per cell rose from 1.0 in fresh medium to 410-450 in 40-80% spent medium from the normal strain, and stayed at 1.1 in spent medium lacking autoinducer. Light therefore depends on how much signal molecule is present, not on how many cells are nearby."
+    }
+  ]
+}

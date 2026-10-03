@@ -1,0 +1,412 @@
+{
+  "stimuli": {
+    "signal-transduction-intro-s1": {
+      "kind": "table",
+      "title": "Two hormones, two receptors",
+      "text": "<p>Researchers studied two hormones that act on the same kind of cultured cell. Hormone X is a small protein; hormone Y is a steroid. To find where each binds, they added radioactively labeled hormone, broke the cells open and measured how much label was bound to plasma membranes and how much to the nucleus. In other dishes they attached each hormone to plastic beads far too large to enter cells, or added a drug that stops cells from making new mRNA. Responses are given as a percentage of the response to the free hormone with no drug (means of 4 dishes).</p>",
+      "table": {
+        "caption": "Binding sites and responses of hormones X and Y",
+        "cols": ["Measurement", "Hormone X", "Hormone Y"],
+        "rows": [
+          ["Bound label found on plasma membranes (% of total bound)", "92", "6"],
+          ["Bound label found in the nucleus (% of total bound)", "2", "81"],
+          ["Time to first measurable response", "30 seconds", "45 minutes"],
+          ["Response to hormone attached to large beads (% of normal)", "95", "3"],
+          ["Response with drug that blocks mRNA synthesis (% of normal)", "90", "4"]
+        ]
+      }
+    },
+    "signal-transduction-intro-s2": {
+      "kind": "model",
+      "title": "Counting molecules down a pathway",
+      "text": "<p>A model of a pathway in a liver cell, built from measurements on purified proteins. It gives, for each step, how many molecules one active molecule of the step above switches on, and the total number active when a single receptor has bound its ligand for one minute.</p>",
+      "table": {
+        "caption": "Active molecules in one minute, per ligand-bound receptor",
+        "cols": ["Step", "Switched on by each active molecule of the step above", "Total active molecules"],
+        "rows": [
+          ["Receptor bound to ligand", "—", "1"],
+          ["Relay protein", "20", "20"],
+          ["Second messenger", "1,000", "20,000"],
+          ["Kinase 1 (needs 4 second messengers to switch on)", "0.25", "5,000"],
+          ["Kinase 2", "100", "500,000"],
+          ["Product made by the target enzyme (per minute)", "1,000", "500,000,000"]
+        ]
+      }
+    },
+    "signal-transduction-intro-s3": {
+      "kind": "graph",
+      "title": "A relay protein switched on and off",
+      "text": "<p>Cultured cells were given a ligand at time 0, and the ligand was washed away at 15 minutes. At intervals, researchers measured the percentage of relay protein K that carried a phosphate group. One set of dishes also contained a drug that blocks phosphatases; another contained a drug that blocks the kinase that phosphorylates K. Points are means of 3 dishes.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time after ligand added", "unit": "min", "min": 0, "max": 40, "step": 5 },
+        "y": { "label": "Protein K phosphorylated", "unit": "%", "min": 0, "max": 100, "step": 20 },
+        "series": [
+          { "name": "No drug", "points": [[0, 2], [2, 40], [5, 75], [10, 80], [15, 80], [17, 50], [20, 25], [25, 8], [30, 4], [40, 3]] },
+          { "name": "Phosphatase blocker", "points": [[0, 3], [2, 45], [5, 82], [10, 88], [15, 88], [17, 87], [20, 86], [25, 85], [30, 85], [40, 84]] },
+          { "name": "Kinase blocker", "points": [[0, 2], [2, 3], [5, 4], [10, 4], [15, 4], [17, 3], [20, 3], [25, 3], [30, 2], [40, 2]] }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-signal-transduction-intro-1", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "signal-transduction-intro-s1",
+      "q": "Which statement is best supported by the binding data?",
+      "options": [
+        "X binds mainly at the plasma membrane and Y mainly in the nucleus.",
+        "X and Y both bind mainly at the plasma membrane, but Y also enters the nucleus.",
+        "X binds mainly in the nucleus and Y mainly at the plasma membrane of the cell.",
+        "Neither hormone binds the cells strongly, since less than 100% of the label is found."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "92% of bound X is on membranes; 81% of bound Y is in the nucleus.",
+        "options": [
+          "The first two rows show exactly this split.",
+          "Only 6% of bound Y is on membranes, so Y does not bind mainly there.",
+          "This reverses the two hormones.",
+          "The percentages describe where the bound label is, not how much hormone bound overall."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-2", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "signal-transduction-intro-s1",
+      "q": "Which result most directly shows that hormone Y must get inside the cell to act?",
+      "options": [
+        "Y attached to beads too large to enter cells gives 3% of the normal response.",
+        "Y's first response takes 45 minutes, compared with 30 seconds for hormone X.",
+        "With the drug that blocks mRNA synthesis, Y gives just 4% of the normal response.",
+        "Hormone Y is a steroid, while hormone X is a small protein."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The bead experiment keeps Y outside the cell and nothing else changes; Y then fails to act. That tests the question directly.",
+        "options": [
+          "Trapped outside, Y does almost nothing, so it has to enter.",
+          "A slow response fits an inside receptor but could have other causes, so it is indirect evidence.",
+          "This shows Y's response needs new mRNA, which says what the response is, not where Y binds.",
+          "This predicts the result from chemistry but is not itself an experimental result."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-3", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-intro-s1",
+      "q": "Which explanation best accounts for the difference in response time between the two hormones?",
+      "options": [
+        "Y switches genes on, so new mRNA and proteins must be made; X changes the activity of existing proteins.",
+        "Y is a larger molecule than X, so it diffuses through the tissue fluid more slowly before reaching the cells.",
+        "Y is broken down inside the cell before it acts, while X acts as soon as it enters the cytoplasm.",
+        "Fewer cells have receptors for Y, so it takes longer for enough cells to respond to measure a change."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Blocking mRNA synthesis stops Y's response (4%) but hardly affects X's (90%). Making mRNA and then protein takes tens of minutes; switching on existing enzymes takes seconds.",
+        "options": [
+          "This is what the mRNA-blocker row shows, and gene expression is slow.",
+          "Steroids are small, and the bead row shows X is the one that stays outside; size in tissue fluid does not explain a 90-fold delay.",
+          "Y acts by binding a receptor, and X does not enter the cell at all (95% of its effect survives on beads).",
+          "The response is measured as a percentage of normal in the same cells; nothing suggests fewer cells have Y's receptor."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-4", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "signal-transduction-intro-s1",
+      "q": "Cells are given a drug that blocks the protein kinases they contain. Predict how the drug affects the responses to X and Y.",
+      "options": [
+        "X's response is greatly reduced; Y's is affected much less.",
+        "Y's response is greatly reduced; X's is affected much less.",
+        "Both responses are unchanged, because kinases act after reception.",
+        "Both responses rise, because the receptors stay bound for longer."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "X binds a surface receptor and works within seconds by switching on existing proteins, the job of a kinase relay. Y's receptor works in the nucleus, switching genes on, so it depends less on kinases.",
+        "options": [
+          "X's fast relay inside the cell is the kind of pathway kinases run.",
+          "Y acts through a receptor that binds DNA directly, which is the route least tied to kinases.",
+          "Kinases carry out transduction; blocking them stops the relay even though binding still happens.",
+          "Blocking a relay step cannot raise the response that the relay produces."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-5", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.A", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-intro-s1",
+      "q": "A third hormone, Z, is a small nonpolar molecule. Which prediction for Z is best supported by reasoning from these results?",
+      "options": [
+        "Like Y, it binds mainly in the nucleus and is blocked by the mRNA drug.",
+        "Like X, it binds mainly to plasma membranes and is unaffected by beads.",
+        "It binds both places equally and responds in 30 seconds whether on beads or not.",
+        "It does not bind any receptor, since nonpolar molecules pass straight through cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Small nonpolar molecules, like steroids, cross the bilayer and typically bind intracellular receptors that change gene expression, the pattern hormone Y shows.",
+        "options": [
+          "Z shares the property that lets Y cross the membrane, so it should behave like Y.",
+          "X's pattern fits a molecule that cannot cross the membrane; Z can.",
+          "Nothing in the chemistry or the data suggests an even split or a fast bead-proof response.",
+          "Crossing the membrane does not prevent binding; Y crosses and then binds a receptor inside."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-6", "type": "numeric", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "signal-transduction-intro-s2",
+      "q": "By what factor does the number of active molecules increase from the relay protein step to the kinase 2 step? Give a whole number.",
+      "numeric": { "answer": 25000, "tol": 0, "unit": "", "decimals": 0 },
+      "why": { "correct": "Kinase 2 total ÷ relay protein total = 500,000 ÷ 20 = 25,000. Equivalently 1,000 × 0.25 × 100 = 25,000." }
+    },
+    {
+      "id": "bio-signal-transduction-intro-7", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "2.B", "level": "analyze", "diff": 2, "stimulus": "signal-transduction-intro-s2",
+      "q": "At which step does the number of active molecules fall instead of rise, and why?",
+      "options": [
+        "At kinase 1, because several second messenger molecules must bind to switch on each kinase.",
+        "At the relay protein, because one receptor can switch on just one relay protein at a time.",
+        "At kinase 2, because each kinase 1 molecule is used up when it phosphorylates a protein.",
+        "At the product, because the target enzyme is a ligand that leaves the cell after it is made."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "20,000 second messengers become 5,000 active kinase 1 molecules: 4 messengers per kinase, a factor of 0.25.",
+        "options": [
+          "The model's 0.25 factor at kinase 1 comes from needing 4 messengers each.",
+          "The relay step multiplies by 20; one receptor switches on many relay proteins.",
+          "Kinase 2 rises 100-fold; enzymes are not used up by the reactions they catalyze.",
+          "The product step multiplies by 1,000; the target enzyme stays in the cell and works repeatedly."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-8", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "signal-transduction-intro-s2",
+      "q": "A drug halves the number of relay proteins each bound receptor switches on, from 20 to 10. Predict the product made per minute per receptor.",
+      "options": [
+        "250,000,000, half the original, because each later step multiplies whatever it receives",
+        "499,999,990, almost unchanged, because just 10 relay proteins out of the whole chain are lost",
+        "500,000,000, unchanged, because the later steps make up for the loss",
+        "5,000,000, a hundredth of the original, because the loss is amplified at each step"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The total is the product of the factors: 10 × 1,000 × 0.25 × 100 × 1,000 = 2.5 × 10⁸. Halving one factor halves the output.",
+        "options": [
+          "Halving any one factor halves the final product.",
+          "The 10 missing relay proteins would each have led to 25 million product molecules, so the loss is large.",
+          "Later steps do not adjust to fill a gap; they multiply what they receive.",
+          "Amplification multiplies the change by the same factors as the signal, so the output halves, it does not shrink a hundredfold."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-9", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.D", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-intro-s2",
+      "q": "The ligand for this pathway is present in the blood at about 10⁻¹⁰ mol/L, so each liver cell has only a few receptors bound at a time. How does the model explain why such a low concentration still produces a large response?",
+      "options": [
+        "Each bound receptor leads to about 5 × 10⁸ product molecules a minute, because every step multiplies the signal.",
+        "The few bound ligand molecules are copied inside the cell until there are enough to switch on each relay protein.",
+        "The liver cell stores the ligand until its concentration inside the cell reaches the level needed for a response.",
+        "At low ligand concentration each receptor binds many ligand molecules at once, which multiplies its effect."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Amplification: one receptor's signal is multiplied by 20, 1,000, 100 and 1,000 along the chain, so a few bound receptors drive a large output.",
+        "options": [
+          "The table's totals show the multiplication from one receptor.",
+          "Ligands are not copied; enzymes switch on many molecules of the next protein.",
+          "This ligand binds a receptor; nothing in the model collects it inside the cell.",
+          "A receptor binds one ligand at its binding site; the multiplication happens downstream."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-10", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "signal-transduction-intro-s2",
+      "q": "In cells given a drug that blocks the phosphatase acting on kinase 2, the ligand is washed away after one minute. Predict product formation over the next 30 minutes.",
+      "options": [
+        "It continues much longer than normal, because kinase 2 stays phosphorylated.",
+        "It stops at once, because the phosphatase is needed to switch kinase 2 on.",
+        "It stops at once, because product can be made just while the ligand remains bound.",
+        "It rises steadily for the whole 30 minutes, because second messengers keep forming."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Kinases switch kinase 2 on by adding phosphate; phosphatases switch it off by removing it. Without the phosphatase, kinase 2 stays on after the signal is gone.",
+        "options": [
+          "The off-switch for kinase 2 is blocked, so it stays on.",
+          "Phosphatases remove phosphate; switching kinase 2 on is the job of kinase 1.",
+          "Product depends on active kinase 2, which can stay active after the ligand is gone if nothing removes its phosphate.",
+          "With the ligand gone, the receptor stops switching on relay proteins, so no new second messengers are made; the drug acts only at kinase 2."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-11", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "signal-transduction-intro-s3",
+      "q": "Which statement best describes protein K in the no-drug dishes after the ligand is washed away?",
+      "options": [
+        "Phosphorylated K falls from 80% to under 10% within about 10 minutes of washing.",
+        "Phosphorylated K stays near 80% for the rest of the experiment.",
+        "Phosphorylated K falls slowly and steadily, reaching 3% at 40 minutes.",
+        "Phosphorylated K rises further, peaking at 17 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "No drug: 80% at 15 minutes, 50% at 17, 25% at 20 and 8% at 25.",
+        "options": [
+          "The points drop from 80% to 8% between 15 and 25 minutes.",
+          "That describes the phosphatase-blocker dishes.",
+          "Most of the drop happens in the first 10 minutes; it is fast, not slow and steady.",
+          "At 17 minutes the value is 50%, lower than at 15."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-12", "type": "numeric", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "signal-transduction-intro-s3",
+      "q": "Calculate the average rate at which the percentage of phosphorylated K falls between 15 and 20 minutes in the no-drug dishes. Give a whole number of percentage points per minute.",
+      "numeric": { "answer": 11, "tol": 0.5, "unit": "percentage points per minute", "decimals": 0 },
+      "why": { "correct": "Rate = change ÷ time = (80 − 25) ÷ (20 − 15) = 55 ÷ 5 = 11 percentage points per minute." }
+    },
+    {
+      "id": "bio-signal-transduction-intro-13", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-intro-s3",
+      "q": "Which explanation is best supported by comparing the no-drug and phosphatase-blocker dishes after 15 minutes?",
+      "options": [
+        "Phosphatases remove the phosphate from K, so K switches off once the kinase stops adding new phosphate.",
+        "K loses its phosphate on its own, so the phosphatase blocker damages K in a way that locks the phosphate on.",
+        "Washing removes K from the cells, so less of it is left to carry phosphate.",
+        "The ligand is still bound after washing, so K stays phosphorylated in both sets of dishes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "When phosphatases are blocked, K stays near 85% phosphorylated after the ligand is gone; when they work, it drops to 3%. So the fall depends on phosphatases.",
+        "options": [
+          "The drop happens only when phosphatases work.",
+          "If K lost phosphate by itself, blocking phosphatases would not hold it at 85%.",
+          "Washing removes the ligand outside, not proteins inside; and K stays at 85% phosphorylated with the blocker, so it is still there.",
+          "In the no-drug dishes K falls to 3%, so the pathway did switch off."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-14", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.B", "level": "analyze", "diff": 2, "stimulus": "signal-transduction-intro-s3",
+      "q": "Which result supports the claim that K is phosphorylated by a kinase in the pathway, and not by some other process?",
+      "options": [
+        "With the kinase blocker, K stays below 5% phosphorylated even though the ligand is present.",
+        "With no drug, K reaches 80% phosphorylated within 10 minutes of adding ligand.",
+        "With the phosphatase blocker, K stays above 80% after the ligand is washed away.",
+        "In each set of dishes, about 2-3% of K is phosphorylated before ligand is added."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Blocking the kinase prevents the rise even though ligand is present, so phosphorylation of K depends on that kinase.",
+        "options": [
+          "Removing the kinase's activity removes the effect.",
+          "This shows that the ligand leads to phosphorylation, not which enzyme adds the phosphate.",
+          "This is about removing phosphate, not adding it.",
+          "The starting level shows the baseline, not what causes the rise."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-15", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "What mainly decides whether a signaling molecule's receptor is on the cell surface or inside the cell?",
+      "options": [
+        "Whether the molecule can cross the lipid bilayer, given its size and polarity",
+        "Whether the molecule arrives in the blood or diffuses over from a nearby cell",
+        "How high the molecule's concentration is in the fluid outside the cell",
+        "Whether the response that the cell gives to the signal is a fast or a slow one"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A ligand can reach an inside receptor only if it crosses the membrane, which small nonpolar molecules can and polar or large ones cannot.",
+        "options": [
+          "Membrane permeability, from size and polarity, sets where the receptor can be.",
+          "Hormones in the blood include both kinds, insulin (surface) and steroids (inside).",
+          "Concentration affects how many receptors are bound, not where they are.",
+          "Speed is a consequence of the receptor type, not what decides it."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-16", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.C", "level": "analyze", "diff": 3,
+      "q": "In liver cells, one hormone causes glycogen breakdown within 20 seconds and, over the next 3 hours, an increase in the amount of an enzyme that makes glucose. The fast response is unaffected by a drug that blocks mRNA synthesis, but the slow response is prevented. Which explanation best fits?",
+      "options": [
+        "The pathway branches: one branch switches on enzymes already present, another switches genes on.",
+        "The hormone binds a surface receptor for the fast response, then enters the nucleus for the slow one.",
+        "The fast response uses up the hormone, so the slow response begins after a second dose arrives.",
+        "The drug slows the cell's metabolism, which delays the slow response but does not reach the fast one."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A response that needs no new mRNA must act on existing proteins; a response that needs new mRNA is gene expression. One signal can drive both through branches of the pathway.",
+        "options": [
+          "Two responses with different speeds and different needs for mRNA fit two branches.",
+          "A ligand that acts at the surface stays outside; the gene response can be reached through relay proteins.",
+          "Nothing suggests the hormone is used up; receptors bind and release ligands without consuming them.",
+          "The drug blocks the slow response completely, not just delays it, and it does not affect the fast one, which a general slowing would."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-17", "type": "predict", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "A cell line makes a version of a surface receptor whose binding site has a slightly different shape, so the usual ligand binds it far more weakly. The ligand is added at its normal concentration. Predict each change, compared with normal cells.",
+      "variables": [
+        { "name": "Fraction of receptors with ligand bound", "answer": "down", "why": "A poorer fit between ligand and binding site means fewer receptors are bound at the same ligand concentration." },
+        { "name": "Activity of the first relay protein", "answer": "down", "why": "Fewer bound receptors change shape, so fewer relay proteins are switched on." },
+        { "name": "Number of receptor proteins in the membrane", "answer": "none", "why": "The change is in the binding site's shape, not in how many receptors the cell makes or places in the membrane." },
+        { "name": "Response to a second hormone that uses its own, unchanged receptor and pathway", "answer": "none", "why": "A separate receptor and pathway are not affected by a change in this receptor's binding site." }
+      ],
+      "why": { "correct": "Reception depends on fit. A weaker fit lowers binding and everything downstream of this receptor, but not the receptor count or unrelated pathways." }
+    },
+    {
+      "id": "bio-signal-transduction-intro-18", "type": "multi", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Select the two statements that correctly describe second messengers.",
+      "options": [
+        "They are small non-protein molecules or ions that diffuse quickly through the cytoplasm.",
+        "They are made or released in large numbers inside the cell when a receptor is activated.",
+        "They are the ligands that bind cell-surface receptors from outside the cell.",
+        "They travel in the blood to carry the signal from one organ to another.",
+        "They are enzymes that add phosphate groups to relay proteins."
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Second messengers are small, made in bulk inside the cell after reception, and spread the signal through the cytoplasm.",
+        "options": [
+          "Their small size lets them spread through the cell in a fraction of a second.",
+          "An activated relay protein makes or releases many of them, which helps amplify the signal.",
+          "The ligand outside is the first messenger; second messengers act inside the cell.",
+          "That describes hormones; second messengers stay inside the cell.",
+          "That describes protein kinases; second messengers are not proteins."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-19", "type": "single", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Cells are engineered to make a version of a steroid's intracellular receptor that binds the steroid normally but cannot enter the nucleus. Predict the effect of adding the steroid.",
+      "options": [
+        "The steroid enters and binds the receptor, but the genes it normally switches on stay off.",
+        "The steroid is unable to get into the cells, because its receptor is stuck in the cytoplasm.",
+        "The genes are switched on as usual, because the steroid itself diffuses into the nucleus.",
+        "The steroid binds a cell-surface receptor instead and switches the genes on through kinases."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The ligand-receptor complex must bind DNA to change gene expression. Trapped in the cytoplasm, it cannot reach the genes.",
+        "options": [
+          "Entry and binding are normal; the step that fails is reaching the DNA.",
+          "The steroid crosses the membrane by diffusing through the bilayer, whatever happens to its receptor.",
+          "The steroid alone does not switch genes on; the receptor is what binds DNA.",
+          "Nothing in the description gives the cells a surface receptor for this steroid."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-intro-20", "type": "order", "unit": "unit-4", "topic": "signal-transduction-intro", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Put the steps of a steroid hormone's action in order.",
+      "options": [
+        "The hormone diffuses across the plasma membrane.",
+        "The hormone binds a receptor protein in the cytoplasm.",
+        "The hormone-receptor complex moves into the nucleus.",
+        "The complex binds DNA and switches particular genes on.",
+        "New mRNA is made and new proteins are built from it.",
+        "The cell's behavior changes."
+      ],
+      "why": { "correct": "Crossing the membrane must come first; binding the receptor changes its shape so the complex can enter the nucleus and bind DNA; gene expression then makes the proteins that change the cell." }
+    }
+  ]
+}

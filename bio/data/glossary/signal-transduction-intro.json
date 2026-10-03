@@ -1,0 +1,11 @@
+{
+  "ligand": { "def": "A molecule that binds specifically to another molecule. In cell signaling, the ligand is the signaling molecule that binds a receptor's binding site, which fits its shape and charges." },
+  "reception": { "def": "The first stage of cell signaling: a ligand binds its receptor, and the receptor protein changes shape." },
+  "signal-transduction": { "def": "The second stage of cell signaling: the shape change of a bound receptor is passed along a chain of relay molecules inside the cell, each switching the next on, until it reaches the molecules that carry out the response. The chain is a signal transduction pathway." },
+  "cell-surface-receptor": { "def": "A receptor protein that spans the plasma membrane, with its binding site facing outside the cell. It binds ligands that are polar or too large to cross the membrane, such as insulin and other protein hormones." },
+  "intracellular-receptor": { "def": "A receptor protein in the cytoplasm or nucleus. It binds small nonpolar ligands, such as steroid hormones, that diffuse across the membrane; the ligand-receptor complex usually binds DNA and switches particular genes on or off." },
+  "second-messenger": { "def": "A small, non-protein molecule or ion made or released inside a cell in large amounts when a receptor is activated. It diffuses quickly through the cytoplasm and switches on relay proteins, spreading and amplifying the signal. (The ligand is the first messenger.)" },
+  "amplification": { "def": "The growth of a signal along a transduction pathway: each activated enzyme switches on many molecules of the next step, so one ligand-bound receptor can lead to millions of product molecules." },
+  "protein-kinase": { "def": "An enzyme that transfers a phosphate group from ATP to a particular protein, changing that protein's shape and switching its activity on or off. A protein phosphatase removes the phosphate, reversing the switch." },
+  "cellular-response": { "def": "The final stage of cell signaling: the change the pathway produces, such as an enzyme switched on or off, a channel opened, genes switched on or off, or the cell's own death by apoptosis." }
+}

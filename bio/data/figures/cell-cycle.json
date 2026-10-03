@@ -1,0 +1,12 @@
+{
+  "cell-cycle-wheel": {
+    "file": "figures/cell-cycle-wheel.svg", "ext": "svg", "w": 760, "h": 380,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A ring divided into the four phases of the cell cycle in order: G1, the longest, where the cell grows; S, where DNA is copied; G2, more growth and preparation; and M, the shortest, mitosis plus cytokinesis. G1, S and G2 together are interphase. An arrow leads from G1 to G0, where cells work but do not divide; some can return. A small graph shows DNA per cell at 1 unit in G1, rising to 2 units during S, staying at 2 through G2 and M, and back to 1 unit in each daughter cell."
+  },
+  "mitosis-stages": {
+    "file": "figures/mitosis-stages.svg", "ext": "svg", "w": 760, "h": 300,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Five drawings of an animal cell with four chromosomes. Late interphase: loose, already-copied DNA in the nucleus and two centrosomes. Prophase: chromosomes condensed into X shapes, each two sister chromatids joined at a centromere; the nuclear envelope breaking down; spindle forming between centrosomes at opposite poles. Metaphase: spindle fibers from both poles attached at each centromere, chromosomes lined up across the middle. Anaphase: sister chromatids separated and pulled to opposite poles. Telophase and cytokinesis: a nucleus around each set of four chromosomes and a furrow pinching the cell in two."
+  }
+}

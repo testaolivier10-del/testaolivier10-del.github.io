@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="t d">
+<title id="t">Negative feedback loops that hold blood glucose near its set point</title>
+<desc id="d">A box on the left shows blood glucose near its set point, about 70 to 100 milligrams per deciliter when fasting. Top loop: after a meal glucose rises above the range; beta cells in the pancreas sense the rise and release insulin; muscle and fat cells take up glucose and the liver stores it as glycogen; glucose falls back to the range. Bottom loop: during fasting or exercise glucose falls below the range; alpha cells in the pancreas sense the fall and release glucagon; the liver breaks down glycogen and releases glucose; glucose rises back to the range. In each loop the response cancels the change that started it.</desc>
+<defs>
+  <marker id="gf-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <!-- center -->
+  <rect x="14" y="150" width="160" height="100" rx="12" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+  <g font-size="13" text-anchor="middle"><text x="94" y="178" font-weight="700">Blood glucose</text><text x="94" y="196">near its set point</text><text x="94" y="214">(about 70-100</text><text x="94" y="232">mg/dL fasting)</text></g>
+  <!-- top row -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="30" width="160" height="72" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/>
+    <text x="280" y="56">Glucose rises</text><text x="280" y="73">above the range</text><text x="280" y="90">(after a meal)</text>
+    <rect x="390" y="30" width="160" height="72" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/>
+    <text x="470" y="56">Beta cells in the</text><text x="470" y="73">pancreas sense it and</text><text x="470" y="90" font-weight="700">release insulin</text>
+    <rect x="580" y="30" width="170" height="72" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/>
+    <text x="665" y="56">Muscle and fat cells</text><text x="665" y="73">take up glucose; liver</text><text x="665" y="90">stores it as glycogen</text>
+  </g>
+  <g font-size="12" font-style="italic" text-anchor="middle" fill="#3D4A66"><text x="280" y="120">stimulus</text><text x="470" y="120">sensor and control center</text><text x="665" y="120">effectors (response)</text></g>
+  <!-- bottom row -->
+  <g font-size="13" text-anchor="middle">
+    <rect x="200" y="298" width="160" height="72" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+    <text x="280" y="324">Glucose falls</text><text x="280" y="341">below the range</text><text x="280" y="358">(fasting, exercise)</text>
+    <rect x="390" y="298" width="160" height="72" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+    <text x="470" y="324">Alpha cells in the</text><text x="470" y="341">pancreas sense it and</text><text x="470" y="358" font-weight="700">release glucagon</text>
+    <rect x="580" y="298" width="170" height="72" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+    <text x="665" y="324">Liver breaks down</text><text x="665" y="341">glycogen and releases</text><text x="665" y="358">glucose into the blood</text>
+  </g>
+  <g font-size="12" font-style="italic" text-anchor="middle" fill="#3D4A66"><text x="280" y="290">stimulus</text><text x="470" y="290">sensor and control center</text><text x="665" y="290">effector (response)</text></g>
+  <!-- arrows -->
+  <g stroke="#1F2A28" stroke-width="2.5" fill="none" marker-end="url(#gf-a)">
+    <path d="M94,148 L94,66 L196,66"/>
+    <path d="M94,252 L94,334 L196,334"/>
+    <line x1="362" y1="66" x2="386" y2="66"/><line x1="552" y1="66" x2="576" y2="66"/>
+    <line x1="362" y1="334" x2="386" y2="334"/><line x1="552" y1="334" x2="576" y2="334"/>
+    <path d="M738,104 C738,175 300,170 178,185"/>
+    <path d="M738,296 C738,225 300,230 178,215"/>
+  </g>
+  <g font-size="13" font-weight="700" text-anchor="middle"><text x="450" y="160" fill="#0072B2">glucose falls back</text><text x="450" y="252" fill="#B35F00">glucose rises back</text></g>
+</g>
+</svg>

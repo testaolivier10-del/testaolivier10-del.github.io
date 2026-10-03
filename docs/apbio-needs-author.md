@@ -224,6 +224,62 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   run backward, using ATP from glycolysis to hold part of the H⁺ gradient. `bio-cellular-respiration-22`
   keys the intermembrane H⁺ concentration as "down", which is right in direction. Meanwhile: as
   keyed.
+- **mitosis-phase-names** (open, 4.5; Unit 4 authoring). The 2019 framework said students would not
+  be asked to name or memorize the phases of mitosis; the 2025 wording is unconfirmed (ced-verify).
+  Meanwhile: `cell-cycle` teaches the names (with prometaphase) and the order of events, with a
+  "For your exam" box; items test events and reasoning, and only `bio-cell-cycle-20` (an ordering
+  item phrased by events) and a few options use the names.
+- **checkpoint-count** (open, 4.6). Texts differ: G1 checkpoint or restriction point (START in
+  yeast); G2 or G2/M; M, metaphase or spindle-assembly checkpoint; some add an intra-S checkpoint
+  and put the DNA-damage checks at several points. Meanwhile: three main checkpoints (G1: size,
+  growth signals, DNA damage; G2: DNA fully copied and undamaged; M: every kinetochore attached),
+  with a "For your exam" box.
+- **phase-time-from-fraction** (open, 4.5). Estimating time in a phase as (fraction of cells in
+  it) × (cycle length) assumes an even spread of cell ages; in a steadily growing population young
+  cells are over-represented, so the estimate is approximate. `bio-cell-cycle-3` states the
+  assumption in its stimulus. Confirm that this is the framing the exam uses.
+- **steroid-receptor-location** (open, 4.2). Some intracellular receptors wait in the cytoplasm
+  (glucocorticoid), others sit in the nucleus (estrogen, mostly); texts say one or the other.
+  Meanwhile: "in the cytoplasm or nucleus", with a "For your exam" box; `bio-signal-transduction-intro-19`
+  and the 4.2 figure use a cytoplasmic receptor.
+- **synaptic-classification** (open, 4.1). OpenStax lists synaptic signaling as its own category;
+  the framework groups neurotransmitters with local signaling. Meanwhile: four ranges taught, with
+  synaptic grouped under short-distance (local) signaling and a "For your exam" box. Review u4: the 2019 framework also listed quorum sensing among its local-regulator
+  examples; the notes present it as the bacterial example without assigning a range, which is compatible.
+- **amplification-numbers** (open, 4.3). The rough molecule counts in the `gpcr-camp-cascade`
+  figure (1, ~10², ~10⁴, ~10⁴, ~10⁵, ~10⁶, ~10⁸) are the orders of magnitude long used in
+  textbooks to illustrate amplification, not measurements; the figure says "rough sizes". Confirm
+  they are acceptable or replace with a qualitative column.
+- **type-2-mechanism** (open, 4.4). Type 2 diabetes is taught as target cells responding weakly to
+  insulin (insulin resistance), with beta cells later failing; items do not attribute it to
+  "fewer receptors". Real type 2 also involves raised glucagon and liver glucose output, which
+  the items leave out. Meanwhile: as taught.
+- **cholera-toxin-chemistry** (open, 4.3). Cholera toxin ADP-ribosylates the Gs alpha subunit,
+  blocking its GTPase. Lessons and items say it "changes the G protein so it cannot hydrolyze
+  GTP", which is accurate without the chemistry. Confirm the simplification.
+- **pertussis-lock** (open; Unit 4 simulator `signal-transduction-amplification`). Pertussis
+  toxin locks the *inhibitory* G protein (Gi) in its GDP-bound form, which raises cAMP; the
+  simulator's "G protein locked off" applies that kind of lock to the stimulatory G protein and its
+  box says so. Meanwhile: as written; confirm students will not read it as "pertussis lowers cAMP".
+- **cholera-mechanism** (open; same simulator). OpenStax 9.1 says cholera toxin modifies "a
+  G-protein that controls the opening of a chloride channel"; the fuller path is Gs → adenylyl
+  cyclase → cAMP → PKA → CFTR chloride channel. The simulator uses the fuller path. Meanwhile:
+  fuller path; no item depends on the difference.
+- **rb-regulation** (open; `cell-cycle-checkpoints`). OpenStax 10.3 says Rb "largely monitors cell
+  size" and is phosphorylated as the cell grows; most texts tie Rb phosphorylation to growth-factor
+  signaling through cyclin D–CDK. The simulator uses the growth-factor path (stated in its box).
+- **p53-loss-scope** (open; same simulator). OpenStax 10.4 says without functional p53 the cell
+  "proceeds directly from G1 to S regardless of internal and external conditions". The model's p53
+  loss removes only the DNA-damage holds and apoptosis; cells still need growth factor (or another
+  mutation). The model also keeps the p53 G1 hold working in Rb-null cells, though Rb loss weakens
+  it in real cells (box says so). Meanwhile: as modeled.
+- **2n-4n-labels** (open; same simulator). The DNA histogram is labeled by DNA amount (G1 = 2
+  units, G2/M = 4) because a G2 cell is still 2n; many AP® materials call the peaks "2n" and
+  "4n". The box mentions both. Confirm the labeling.
+- **sim-parameters** (open; both Unit 4 simulators). Molecule counts, rate constants, repair (25%
+  per h), apoptosis (5% per h) and G2 escape without p53 (50% per h) are illustrative, not
+  measured; phase lengths follow OpenStax 10.3 (G1 9 h, S 10 h, G2 4.5 h, M 0.5 h). Both boxes
+  say the numbers are made up in realistic proportions.
 
 ## Map content to confirm
 

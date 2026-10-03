@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 310" width="760" height="310" role="img" aria-labelledby="t d">
+<title id="t">Negative feedback and positive feedback compared</title>
+<desc id="d">Left, negative feedback: body temperature rises; sensors in the skin and brain detect it; the brain, as control center, signals effectors; sweat glands release sweat and skin blood vessels widen; temperature falls back, opposing the original change. Right, positive feedback: the baby's head presses on the cervix; stretch sensors signal the brain; the brain releases oxytocin; the uterus contracts harder, which presses the head harder still, so the change grows until birth ends the loop.</desc>
+<defs>
+  <marker id="fl-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="760" height="310" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="185" y="26" font-size="17" font-weight="700" text-anchor="middle">Negative feedback</text>
+  <text x="575" y="26" font-size="17" font-weight="700" text-anchor="middle">Positive feedback</text>
+  <line x1="380" y1="12" x2="380" y2="298" stroke="#5D6B69" stroke-dasharray="4 4"/>
+  <g font-size="13" text-anchor="middle">
+    <rect x="15" y="44" width="150" height="58" rx="10" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/><text x="90" y="69">Body temperature</text><text x="90" y="86">rises</text>
+    <rect x="205" y="44" width="150" height="58" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/><text x="280" y="69">Sensors in skin and</text><text x="280" y="86">brain detect it</text>
+    <rect x="205" y="190" width="150" height="58" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/><text x="280" y="215">Brain signals sweat</text><text x="280" y="232">glands, skin vessels</text>
+    <rect x="15" y="190" width="150" height="58" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/><text x="90" y="215">Sweating, heat loss:</text><text x="90" y="232">temperature falls</text>
+    <rect x="405" y="44" width="150" height="58" rx="10" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/><text x="480" y="69">Baby's head presses</text><text x="480" y="86">on the cervix</text>
+    <rect x="595" y="44" width="150" height="58" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/><text x="670" y="69">Stretch sensors</text><text x="670" y="86">signal the brain</text>
+    <rect x="595" y="190" width="150" height="58" rx="10" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/><text x="670" y="215">Brain releases</text><text x="670" y="232">oxytocin</text>
+    <rect x="405" y="190" width="150" height="58" rx="10" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/><text x="480" y="215">Uterus contracts</text><text x="480" y="232">harder</text>
+  </g>
+  <g stroke="#1F2A28" stroke-width="2.5" fill="none" marker-end="url(#fl-a)">
+    <line x1="167" y1="73" x2="201" y2="73"/><line x1="280" y1="104" x2="280" y2="186"/><line x1="203" y1="219" x2="169" y2="219"/>
+    <line x1="557" y1="73" x2="591" y2="73"/><line x1="670" y1="104" x2="670" y2="186"/><line x1="593" y1="219" x2="559" y2="219"/>
+  </g>
+  <path d="M90,188 L90,106" stroke="#0072B2" stroke-width="3" stroke-dasharray="7 5" fill="none" marker-end="url(#fl-a)"/>
+  <path d="M480,188 L480,106" stroke="#D55E00" stroke-width="3" stroke-dasharray="7 5" fill="none" marker-end="url(#fl-a)"/>
+  <circle cx="185" cy="146" r="18" fill="#ffffff" stroke="#0072B2" stroke-width="2.5"/><text x="185" y="153" font-size="22" font-weight="700" text-anchor="middle" fill="#0072B2">−</text>
+  <circle cx="575" cy="146" r="18" fill="#ffffff" stroke="#D55E00" stroke-width="2.5"/><text x="575" y="153" font-size="22" font-weight="700" text-anchor="middle" fill="#D55E00">+</text>
+  <g font-size="12" fill="#3D4A66">
+    <text x="98" y="136">opposes</text><text x="98" y="151">the change</text>
+    <text x="488" y="136">adds to</text><text x="488" y="151">the change</text>
+  </g>
+  <g font-size="13" text-anchor="middle" fill="#3D4A66">
+    <text x="185" y="280">Result: the variable stays near its set point</text>
+    <text x="575" y="280">Result: the change grows until birth ends it</text>
+  </g>
+</g>
+</svg>

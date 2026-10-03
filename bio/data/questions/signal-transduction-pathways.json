@@ -1,0 +1,407 @@
+{
+  "stimuli": {
+    "signal-transduction-pathways-s1": {
+      "kind": "graph",
+      "title": "cAMP after a hormone, with pathway inhibitors",
+      "text": "<p>Liver cells in culture were given hormone H, which acts through a G protein-coupled receptor, at time 0. In one set of dishes a phosphodiesterase inhibitor was added together with the hormone; in another, an adenylyl cyclase inhibitor. In a fourth set, a receptor antagonist (a drug that binds H's receptor without activating it) was added at 10 minutes, with the hormone still present. The cAMP in the cells was measured at intervals. Points are means of 4 dishes.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time after hormone H added", "unit": "min", "min": 0, "max": 20, "step": 5 },
+        "y": { "label": "cAMP", "unit": "pmol per mg protein", "min": 0, "max": 150, "step": 25 },
+        "series": [
+          { "name": "Hormone only", "points": [[0, 5], [1, 30], [2, 48], [4, 52], [6, 50], [8, 50], [10, 50], [12, 50], [15, 50], [20, 50]] },
+          { "name": "Hormone + phosphodiesterase inhibitor", "points": [[0, 6], [1, 45], [2, 80], [4, 115], [6, 130], [8, 135], [10, 136], [12, 136], [15, 136], [20, 136]] },
+          { "name": "Hormone + adenylyl cyclase inhibitor", "points": [[0, 5], [1, 6], [2, 6], [4, 5], [6, 6], [8, 5], [10, 6], [12, 5], [15, 5], [20, 5]] },
+          { "name": "Hormone, antagonist added at 10 min", "points": [[0, 5], [1, 30], [2, 48], [4, 52], [6, 50], [8, 50], [10, 50], [12, 28], [15, 12], [20, 6]] }
+        ]
+      }
+    },
+    "signal-transduction-pathways-s2": {
+      "kind": "table",
+      "title": "Finding the order of a pathway",
+      "text": "<p>Thin slices of rat liver were incubated for 30 minutes with different combinations of epinephrine, a form of cAMP that crosses cell membranes, an inhibitor of protein kinase A, and an antagonist of epinephrine's receptor. Glucose released into the medium was measured (means of 5 slices; standard error about ±2 for each).</p>",
+      "table": {
+        "caption": "Glucose released by liver slices in 30 minutes",
+        "cols": ["Treatment", "Epinephrine", "Membrane-crossing cAMP", "Protein kinase A inhibitor", "Receptor antagonist", "Glucose released (µmol per g of liver)"],
+        "rows": [
+          ["1", "—", "—", "—", "—", "4"],
+          ["2", "+", "—", "—", "—", "38"],
+          ["3", "—", "+", "—", "—", "36"],
+          ["4", "+", "—", "+", "—", "5"],
+          ["5", "—", "+", "+", "—", "5"],
+          ["6", "+", "—", "—", "+", "6"],
+          ["7", "—", "+", "—", "+", "35"]
+        ]
+      }
+    },
+    "signal-transduction-pathways-s3": {
+      "kind": "table",
+      "title": "Three versions of a growth factor receptor",
+      "text": "<p>A growth factor acts through a receptor tyrosine kinase. Researchers put one of three versions of the receptor gene into cultured cells that lack the receptor: the normal version; version D, which has a mutation that lets two receptors pair up without the growth factor; and version K, which has a mutation that destroys the receptor's kinase activity. They measured the percentage of receptors phosphorylated on tyrosine, the activity of a relay kinase further down the pathway, and the percentage of cells that divided in 24 hours, with and without growth factor (means of 3 cultures).</p>",
+      "table": {
+        "caption": "Receptor phosphorylation, relay kinase activity and cell division",
+        "cols": ["Receptor version", "Growth factor", "Receptors phosphorylated (%)", "Relay kinase activity (relative units)", "Cells that divided in 24 h (%)"],
+        "rows": [
+          ["Normal", "No", "3", "5", "4"],
+          ["Normal", "Yes", "70", "100", "38"],
+          ["D", "No", "65", "92", "35"],
+          ["D", "Yes", "72", "104", "39"],
+          ["K", "No", "2", "4", "3"],
+          ["K", "Yes", "3", "6", "5"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-signal-transduction-pathways-1", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "signal-transduction-pathways-s1",
+      "q": "Compared with hormone alone, how does the phosphodiesterase inhibitor change the cAMP curve?",
+      "options": [
+        "cAMP rises more steeply and levels off at almost three times the hormone-only level.",
+        "cAMP rises to the same level, but reaches it about twice as fast.",
+        "cAMP stays near the starting level for the whole 20 minutes.",
+        "cAMP rises to the same peak as with hormone alone, then falls back to the start."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With the inhibitor, cAMP reaches about 136 pmol/mg compared with 50 for hormone alone, and climbs faster at each early time point.",
+        "options": [
+          "The plateau is about 136 against 50: higher, as well as faster.",
+          "The plateau is much higher, not the same.",
+          "That describes the adenylyl cyclase inhibitor.",
+          "No curve with the phosphodiesterase inhibitor falls; it stays near 136."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-2", "type": "numeric", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "signal-transduction-pathways-s1",
+      "q": "At 8 minutes, by what percentage is cAMP higher with the phosphodiesterase inhibitor than with hormone only? Give a whole number.",
+      "numeric": { "answer": 170, "tol": 2, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Percent increase = (135 − 50) ÷ 50 × 100 = 170%." }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-3", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s1",
+      "q": "Which explanation best accounts for the fall in cAMP after the antagonist is added at 10 minutes?",
+      "options": [
+        "Fewer receptors are active, so adenylyl cyclase slows, while phosphodiesterase keeps breaking cAMP down.",
+        "The antagonist binds cAMP inside the cells and carries it out across the membrane into the medium.",
+        "The antagonist switches phosphodiesterase on, which speeds up the breakdown of cAMP already in the cell.",
+        "Hormone H is used up by its receptors after 10 minutes, so the antagonist just speeds a fall already starting."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Blocking the receptor stops new G protein activation, so cAMP production falls; breakdown by phosphodiesterase continues, so the level drops toward baseline.",
+        "options": [
+          "Production stops at the receptor; breakdown continues, so cAMP falls.",
+          "The antagonist acts on the receptor outside the cell; it does not bind cAMP inside.",
+          "Nothing suggests the antagonist acts on phosphodiesterase; stopping production is enough to explain the fall.",
+          "In the hormone-only dishes cAMP stays at 50 through 20 minutes, so the hormone is not running out."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-4", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.B", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s1",
+      "q": "With hormone only, cAMP stays at 50 pmol/mg from 6 to 20 minutes. Which result is the best evidence that cAMP is being made and broken down continuously during that time?",
+      "options": [
+        "After the antagonist is added, cAMP falls from 50 to 12 within 5 minutes.",
+        "With the adenylyl cyclase inhibitor, cAMP stays at about 5 throughout.",
+        "With the hormone alone, cAMP rises from 5 to 48 in the first 2 minutes of the experiment.",
+        "Each of the four curves starts from about the same cAMP level at time 0."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A quick fall as soon as production is blocked means breakdown was going on all along; a steady level despite that breakdown means production was matching it.",
+        "options": [
+          "Breakdown shows up as soon as production stops, so the plateau was a balance.",
+          "This shows adenylyl cyclase is needed to make cAMP, not that breakdown continues on the plateau.",
+          "This shows production at the start, not a balance on the plateau.",
+          "The same baseline shows the dishes started alike, nothing about the plateau."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-5", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "signal-transduction-pathways-s1",
+      "q": "Predict glucose release by the cells given hormone H plus the adenylyl cyclase inhibitor, compared with hormone only.",
+      "options": [
+        "Much lower, near untreated cells, because with no cAMP made, protein kinase A stays switched off.",
+        "About the same, because the hormone still binds its receptor and switches on G proteins.",
+        "Higher, because ATP that would have become cAMP is used to release more glucose.",
+        "About the same, because glucose release depends on glycogen stores, not on cAMP."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "cAMP stays at baseline with the inhibitor, so protein kinase A and the cascade to glycogen phosphorylase are not switched on.",
+        "options": [
+          "No cAMP, no protein kinase A, no cascade.",
+          "Binding and G protein activation happen, but the pathway is blocked at the next step, so nothing after it happens.",
+          "The pathway needs cAMP as a messenger; saving ATP does not release glucose.",
+          "Glycogen is the source, but it is broken down only when the cascade switches on glycogen phosphorylase."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-6", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.B", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s2",
+      "q": "Which comparison best shows that cAMP acts after the receptor in the pathway?",
+      "options": [
+        "Treatments 6 and 7: the antagonist blocks epinephrine's effect but not that of membrane-crossing cAMP.",
+        "Treatments 2 and 3: epinephrine and membrane-crossing cAMP release about the same amount of glucose.",
+        "Treatments 4 and 5: the protein kinase A inhibitor blocks the effects of both epinephrine and membrane-crossing cAMP.",
+        "Treatments 1 and 2: epinephrine raises glucose release from 4 to 38 µmol per gram of liver."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Blocking the receptor stops epinephrine (6 µmol/g) but cAMP still works (35), so cAMP enters the pathway after the receptor.",
+        "options": [
+          "Bypassing a blocked receptor with cAMP shows cAMP is downstream of it.",
+          "Similar effects show both can trigger the response, not which comes first.",
+          "This places protein kinase A after both, but says nothing about the receptor and cAMP.",
+          "This shows epinephrine works, nothing about where cAMP acts."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-7", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "3.C", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s2",
+      "q": "What does treatment 5 show that treatment 4 alone does not?",
+      "options": [
+        "Protein kinase A is needed after cAMP, not just somewhere after the receptor.",
+        "The protein kinase A inhibitor does not damage the liver slices in any lasting way.",
+        "Membrane-crossing cAMP gets into liver cells as fast as epinephrine binds its receptor.",
+        "The receptor antagonist and the kinase inhibitor act on the same protein in the pathway."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Treatment 4 shows protein kinase A is needed for epinephrine's effect; treatment 5 shows it is needed even when the pathway is entered at cAMP, so it acts downstream of cAMP.",
+        "options": [
+          "The inhibitor blocks the response even when cAMP is supplied directly.",
+          "Treatment 5 gives low glucose release, which fits a working inhibitor; it is not a test of lasting damage.",
+          "Treatment 5 tests protein kinase A, not the speed at which cAMP enters.",
+          "No treatment combines the two drugs, and they act at different steps."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-8", "type": "numeric", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "signal-transduction-pathways-s2",
+      "q": "How many times as much glucose do slices release with epinephrine as with no treatment? Give your answer to one decimal place.",
+      "numeric": { "answer": 9.5, "tol": 0.1, "unit": "", "decimals": 1 },
+      "why": { "correct": "Treatment 2 ÷ treatment 1 = 38 ÷ 4 = 9.5 times." }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-9", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s2",
+      "q": "Liver slices from an animal with a mutation in the G protein that stops it binding GTP are tested. Predict glucose release with epinephrine alone and with membrane-crossing cAMP alone.",
+      "options": [
+        "About 4 with epinephrine and about 36 with cAMP",
+        "About 38 with epinephrine and about 36 with cAMP",
+        "About 4 with epinephrine and about 4 with cAMP",
+        "About 38 with epinephrine and about 4 with cAMP"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A G protein that cannot bind GTP cannot be switched on, so epinephrine fails (baseline, about 4). cAMP enters after the G protein, so it still works (about 36).",
+        "options": [
+          "The block is before cAMP: epinephrine fails, added cAMP bypasses it.",
+          "Epinephrine needs the G protein to reach adenylyl cyclase, so it cannot give its normal effect.",
+          "cAMP acts after the G protein, so supplying it bypasses the defect.",
+          "This is backward: the step after the G protein still works, the route through it does not."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-10", "type": "order", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "2.D", "level": "analyze", "diff": 2, "stimulus": "signal-transduction-pathways-s2",
+      "q": "Using the data and what you know about this pathway, put the components in the order the signal passes through them.",
+      "options": [
+        "Epinephrine receptor",
+        "G protein",
+        "Adenylyl cyclase making cAMP",
+        "Protein kinase A",
+        "Glycogen breakdown and glucose release"
+      ],
+      "why": { "correct": "The antagonist result puts the receptor before cAMP, and the kinase inhibitor results put protein kinase A after cAMP. The G protein links the receptor to adenylyl cyclase, and glucose release is the response." }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-11", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "signal-transduction-pathways-s3",
+      "q": "Which statement best describes cells with receptor version D?",
+      "options": [
+        "They are about as active without growth factor as with it, at each level measured.",
+        "Their receptors are active without growth factor, but their relay kinase is not.",
+        "They divide just when growth factor is present, in the same way as cells with the normal receptor.",
+        "They are less active than normal cells, with or without growth factor."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Version D without growth factor: 65% phosphorylated, relay activity 92, 35% dividing, close to its values with growth factor (72, 104, 39).",
+        "options": [
+          "The D rows are nearly the same with and without growth factor.",
+          "The relay kinase is at 92 without growth factor, close to normal stimulated cells.",
+          "Version D cells divide (35%) without any growth factor.",
+          "Version D with growth factor matches normal stimulated cells, and without it is far above normal unstimulated cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-12", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s3",
+      "q": "Version K binds the growth factor normally. Which explanation best accounts for its results?",
+      "options": [
+        "Without kinase activity the receptors cannot phosphorylate each other, so relay proteins are not switched on.",
+        "Version K is unable to pair up when the growth factor binds, so its kinase parts do not come close enough to act.",
+        "Version K's kinase works but does not reach the cell surface, so it does not meet the growth factor in the medium.",
+        "Version K is phosphorylated normally, but the relay kinase is missing from these particular cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Phosphorylation stays at 2-3% even with growth factor. The receptors' own kinase adds those phosphates; without it, relay proteins have nothing to bind and the cascade never starts.",
+        "options": [
+          "No tyrosine phosphorylation means no docking sites for relay proteins, so nothing downstream happens.",
+          "The mutation destroys kinase activity, not pairing; and the stem says it binds the growth factor normally.",
+          "The receptor binds the growth factor, so it is at the surface; the defect is the kinase.",
+          "Phosphorylation is 3%, not normal; and the relay kinase works in cells with the normal and D receptors."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-13", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "signal-transduction-pathways-s3",
+      "q": "Cells with version D are given a drug that blocks the kinase activity of this receptor. Predict the percentage of cells that divide in 24 hours without growth factor.",
+      "options": [
+        "About 4%, because the paired receptors still need kinase activity to signal",
+        "About 35%, because version D pairs up without growth factor whatever the drug does",
+        "About 70%, because blocking the kinase traps the receptors in their paired state",
+        "About 38%, because the drug acts on normal receptors but not on the version D receptors"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Pairing alone does nothing: the signal is the receptors phosphorylating each other. Blocking the kinase makes version D behave like version K, near the unstimulated level.",
+        "options": [
+          "Version K shows what a receptor without kinase activity does: about 3-5% divide.",
+          "Version D pairs up, but pairing works only through the kinase that the drug blocks.",
+          "A paired receptor without kinase activity is like version K, which does not drive division.",
+          "Version D's change is in pairing; its kinase part is the same as the normal one, so the drug acts on it too."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-14", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.D", "level": "analyze", "diff": 2, "stimulus": "signal-transduction-pathways-s3",
+      "q": "Which receptor version, if it arose in a person's skin cells, would be most likely to contribute to cancer, and why?",
+      "options": [
+        "Version D, because it drives division even without growth factor.",
+        "Version K, because cells that do not respond to growth factor are no longer under control.",
+        "Version D, because it binds growth factor more strongly than the normal receptor does.",
+        "Neither, because a change in a receptor does not affect steps further down the pathway."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In cancer, cells divide when they should not. Version D cells divide at 35% with no growth factor, a pathway stuck on.",
+        "options": [
+          "A stuck-on growth pathway means division without the signal.",
+          "Version K cells barely divide; a switched-off growth pathway stops division rather than unleashing it.",
+          "The data show version D works without growth factor; they do not show stronger binding.",
+          "Version D's change at the receptor changes everything after it, including division."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-15", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Cells use ATP to pump Ca²⁺ out of the cytoplasm, keeping its concentration there about 10,000 times lower than in the ER. How does this make Ca²⁺ an effective second messenger?",
+      "options": [
+        "Opening a few channels lets Ca²⁺ diffuse in down its steep gradient, raising its level many-fold in milliseconds.",
+        "The pumps add a phosphate group to each Ca²⁺ ion as they move it, which switches the ion on so it can bind proteins.",
+        "Keeping Ca²⁺ inside the ER lets the ER release Ca²⁺ into the blood when a hormone signal is needed.",
+        "Low Ca²⁺ in the cytoplasm keeps most enzymes in the cell switched on until a signal raises the level."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A steep concentration gradient stores potential energy. When channels open, Ca²⁺ rushes in by diffusion, producing a large, fast change that Ca²⁺-binding proteins detect.",
+        "options": [
+          "The gradient lets a small opening make a big, fast change.",
+          "Ions are not phosphorylated; pumps move them using ATP's energy.",
+          "The ER releases Ca²⁺ into the cytoplasm, where it acts as a second messenger inside the cell.",
+          "Most enzymes are not set by Ca²⁺; rising Ca²⁺ switches particular proteins on."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-16", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Propranolol binds one of epinephrine's receptors on heart muscle cells without activating it. Predict how a person taking propranolol responds to a sudden scare.",
+      "options": [
+        "The rise in heart rate is smaller, because fewer receptors are free to bind epinephrine.",
+        "The rise in heart rate is larger, because propranolol adds to the effect of epinephrine.",
+        "The heart rate rises as usual, because propranolol binds outside the receptor's binding site.",
+        "The heart rate rises as usual, because epinephrine enters heart cells without needing a receptor."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Propranolol is an antagonist: it occupies the binding site without switching the receptor on, so epinephrine has fewer receptors to activate.",
+        "options": [
+          "An antagonist competes with the ligand, blunting the response.",
+          "An agonist would add to the effect; propranolol does not activate the receptor.",
+          "It binds the receptor; that is how it blocks epinephrine.",
+          "Epinephrine is polar and acts through a cell-surface receptor."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-17", "type": "single", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "A mutation changes a liver cell's G protein so it binds GTP normally but hydrolyzes it to GDP extremely slowly. Predict cAMP in the cells 20 minutes after epinephrine has been washed away.",
+      "options": [
+        "It stays high, because switched-on G proteins stay on and keep adenylyl cyclase active.",
+        "It returns to normal, because the receptor is no longer bound by epinephrine.",
+        "It returns to normal, because phosphodiesterase works faster in cells with this mutation.",
+        "It falls below normal, because GTP is used up by the mutant G proteins."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The G protein's own GTP hydrolysis is its off-switch. Without it, G proteins switched on during the signal stay on, so cAMP production continues after the ligand is gone.",
+        "options": [
+          "Breaking the G protein's timer leaves the steps after it running.",
+          "The receptor does go quiet, but the steps after the stuck G protein do not need it any more.",
+          "Nothing in the mutation changes phosphodiesterase, which has to keep up with continuing production.",
+          "The changed G protein binds GTP and holds it; it does not use it up faster."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-18", "type": "multi", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "Select the two changes that would keep glycogen breakdown going in a liver cell for longer than normal after epinephrine is removed.",
+      "options": [
+        "Phosphodiesterase is blocked by a drug.",
+        "The G protein cannot hydrolyze GTP.",
+        "A receptor antagonist is added.",
+        "Adenylyl cyclase is missing.",
+        "Protein kinase A is blocked by a drug."
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Both remove an off-switch: cAMP is not destroyed, or the G protein is not switched off. Each keeps protein kinase A and the cascade active.",
+        "options": [
+          "cAMP made during the signal is not broken down, so it keeps protein kinase A on.",
+          "Active G proteins stay on and keep adenylyl cyclase making cAMP.",
+          "An antagonist blocks the receptor, which can only shorten signaling.",
+          "With no adenylyl cyclase, no cAMP is made, so there is no breakdown to begin with.",
+          "Blocking protein kinase A stops the cascade, so glycogen breakdown stops sooner."
+        ]
+      }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-19", "type": "predict", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Cholera toxin enters the cells lining the intestine and changes their G protein so that it cannot hydrolyze GTP. Predict each change in an infected person's gut cells, compared with uninfected cells.",
+      "variables": [
+        { "name": "Fraction of G proteins in the active, GTP-bound form", "answer": "up", "why": "G proteins that cannot hydrolyze GTP cannot switch themselves off, so they accumulate in the active form." },
+        { "name": "cAMP concentration", "answer": "up", "why": "Active G proteins keep adenylyl cyclase on, so cAMP is made faster than phosphodiesterase can remove it." },
+        { "name": "Water moving out of the cells into the gut", "answer": "up", "why": "Protein kinase A keeps chloride channels open; chloride flows into the gut and water follows by osmosis." },
+        { "name": "Amount of adenylyl cyclase protein in the cells", "answer": "none", "why": "The toxin changes the activity of the G protein, not how much adenylyl cyclase the cells make; the same enzyme is simply kept switched on." }
+      ],
+      "why": { "correct": "Locking the G protein on raises everything after it in the pathway; it does not change the amounts of the proteins themselves." }
+    },
+    {
+      "id": "bio-signal-transduction-pathways-20", "type": "order", "unit": "unit-4", "topic": "signal-transduction-pathways", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Put the events that follow epinephrine binding to a liver cell in order.",
+      "options": [
+        "The receptor changes shape.",
+        "The G protein releases GDP and binds GTP.",
+        "The G protein switches on adenylyl cyclase.",
+        "Adenylyl cyclase converts ATP into cAMP.",
+        "cAMP switches on protein kinase A.",
+        "Protein kinase A phosphorylates the next kinase in the cascade."
+      ],
+      "why": { "correct": "Reception changes the receptor's shape; the receptor activates the G protein; the G protein activates adenylyl cyclase; its product cAMP activates protein kinase A, which starts the cascade." }
+    }
+  ]
+}
