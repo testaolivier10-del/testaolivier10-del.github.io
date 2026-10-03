@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simpson's diversity index — AP® Biology Notes | LevlPrep</title>
+<meta name="description" content="Two meadows each contain the same five wildflowers: clover, yarrow, buttercup, plantain and daisy. In meadow A there are 20 plants of each.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/stats-simpson.html">
+<meta property="og:title" content="Simpson's diversity index — AP® Biology Notes | LevlPrep">
+<meta property="og:description" content="Two meadows each contain the same five wildflowers: clover, yarrow, buttercup, plantain and daisy. In meadow A there are 20 plants of each.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/stats-simpson.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/stats-simpson.html#reading",
+      "name": "Simpson's diversity index",
+      "url": "https://levlprep.com/bio/notes/stats-simpson.html",
+      "description": "Two meadows each contain the same five wildflowers: clover, yarrow, buttercup, plantain and daisy. In meadow A there are 20 plants of each.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "simpson's diversity index biology practice",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Simpson's diversity index: notes",
+          "item": "https://levlprep.com/bio/notes/stats-simpson.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-simpson" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>9 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bio-toc-n">S</span>Mean, median, mode and range</a></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bio-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bio-toc-n">S</span>Chi-square test</a></li><li data-toc-t="stats-hardy-weinberg"><a href="stats-hardy-weinberg.html"><span class="bio-toc-n">S</span>Hardy-Weinberg calculations</a></li><li class="current" data-toc-t="stats-simpson"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>Simpson's diversity index</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Counting species is not enough</a><a href="#worked">Worked example: calculating Simpson's index</a><a href="#meaning">What the number means</a><a href="#change">Comparing a community over time</a><a href="#claims">Writing about diversity</a></div></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Simpson's diversity index: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-simpson.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">Simpson's diversity index</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">3 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-simpson">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-simpson.html&amp;title=Simpson's%20diversity%20index%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-simpson.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<h2 id="why">Counting species is not enough</h2>
+<p>Two meadows each contain the same five wildflowers: clover, yarrow, buttercup, plantain and daisy. In meadow A there are 20 plants of each. In meadow B, 80 of the 100 plants are clover and each other <a class="gl" href="../notes/speciation.html" data-c="species">species</a> has just 5. Both have a <a class="gl" href="../notes/community-ecology.html" data-c="species-richness">species richness</a> of 5, but meadow B is plainly less diverse: walk through it and nearly every plant you meet is clover. <a class="gl" href="../notes/community-ecology.html" data-c="species-diversity">Species diversity</a> combines <b>richness</b> (how many species) with <b><a class="gl" href="../notes/community-ecology.html" data-c="relative-abundance">evenness</a></b> (how equally individuals are spread among them). <a class="gl" href="../notes/community-ecology.html" data-c="simpson-index">Simpson's diversity index</a> measures both at once.</p>
+
+<h2 id="worked">Worked example: calculating Simpson's index</h2>
+<figure  id="fig-simpson" class="bio-figure"><div class="bio-figimg" data-fig="simpson-communities"><img src="../figures/simpson-communities.svg" alt="Two plots of 20 plants each, with the same four species. In plot A the species are evenly mixed, 5 of each, and Simpson's index is 0.75. In plot B one species makes up 17 of the 20 plants and each other species has 1, and Simpson's index is 0.27." width="640" height="340" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Same species, same number of plants, very different evenness. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Formula sheet:</b> D = 1 − Σ(n/N)², where n = individuals of one species and N = total individuals of all species.</p>
+<p><b>Data:</b> a pond sample has 6 snails, 3 beetles and 1 leech (N = 10).</p>
+<ol>
+<li>Fractions: 6/10 = 0.6; 3/10 = 0.3; 1/10 = 0.1.</li>
+<li>Squares: 0.36; 0.09; 0.01.</li>
+<li>Sum: Σ(n/N)² = 0.46.</li>
+<li><b>D = 1 − 0.46 = 0.54</b>.</li>
+</ol>
+<p><b>The two meadows:</b> A: Σ = 5 × 0.2² = 0.20, so D = <b>0.80</b>. B: Σ = 0.8² + 4 × 0.05² = 0.64 + 0.01 = 0.65, so D = <b>0.35</b>.</p>
+</div>
+
+<h2 id="meaning">What the number means</h2>
+<p>(n/N)² is the chance that two individuals picked at random both belong to that species. Adding over all species gives the chance that two random individuals are the same species; subtracting from 1 gives the chance that they are <b>different</b>. So:</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Reading Simpson's index"><table class="compare">
+<caption>Reading Simpson's index</caption>
+<thead><tr><th scope="col">Community</th><th scope="col">D</th></tr></thead>
+<tbody>
+<tr><td>One species only</td><td>0</td></tr>
+<tr><td>Two species, equal numbers</td><td>0.5</td></tr>
+<tr><td>Five species, one <a class="gl" href="../notes/mendelian-genetics.html" data-c="dominant">dominant</a> (80 : 5 : 5 : 5 : 5)</td><td>0.35</td></tr>
+<tr><td>Five species, equal numbers</td><td>0.80</td></tr>
+<tr><td>Many species, evenly represented</td><td>close to 1</td></tr>
+</tbody>
+</table></div>
+<p>Because the fractions are squared, common species dominate the sum. One species at 80% contributes 0.64 by itself. A single rare species barely moves D: one plant of a sixth species in meadow A raises D only from 0.800 to 0.804.</p>
+
+<h2 id="change">Comparing a community over time</h2>
+<p>A stream bank was surveyed twice, eight years apart, after a fast-growing plant from another continent (species X) began spreading there.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Plants per 100 counted"><table class="compare">
+<caption>Plants per 100 counted</caption>
+<thead><tr><th scope="col">Species</th><th scope="col">First survey</th><th scope="col">Eight years later</th></tr></thead>
+<tbody>
+<tr><td>Sedge</td><td>30</td><td>12</td></tr>
+<tr><td>Rush</td><td>25</td><td>8</td></tr>
+<tr><td>Fern</td><td>20</td><td>6</td></tr>
+<tr><td>Mint</td><td>15</td><td>4</td></tr>
+<tr><td>Violet</td><td>10</td><td>0</td></tr>
+<tr><td>Species X</td><td>0</td><td>70</td></tr>
+<tr><th scope="row">D</th><td>0.775</td><td>0.484</td></tr>
+</tbody>
+</table></div>
+<p>Richness is 5 both times (violet lost, X gained), yet D fell by about 38%: (0.484 − 0.775) ÷ 0.775 × 100 = −37.5%. The cause is evenness. X makes up 70% of the plants, so two random plants are now usually the same species. Biologically, a fast-spreading competitor took most of the limited light, water and space on the bank, and every native species declined.</p>
+
+<h2 id="claims">Writing about diversity</h2>
+<ul>
+<li>Higher D means more diverse: "Meadow A (D = 0.80) is more diverse than meadow B (D = 0.35)."</li>
+<li>Explain with richness and evenness: "Both have five species, but B is dominated by clover."</li>
+<li>Connect to stability carefully: communities with many evenly represented species tend to keep functioning when one species declines, because the loss removes a smaller share of the community. If a disease killed the clover, meadow B would lose 80% of its plants, meadow A 20%.</li>
+</ul>
+
+<aside class="going-further"><h3>Going further: the classic slip</h3>
+<p>Reporting Σ(n/N)² (0.65 for meadow B) without subtracting from 1 gives the chance two random plants are the <i>same</i> species: a measure of dominance, the opposite of diversity. If your "diversity" is higher for the clover-dominated meadow, check for the missing "1 −".</p></aside>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-simpson">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="biodiversity.html"><span>&larr; Previous</span><b>Biodiversity</b></a><a class="tb-chapter-link next" href="ecosystem-disruptions.html"><span>Next &rarr;</span><b>Disruptions to Ecosystems</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-simpson">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>

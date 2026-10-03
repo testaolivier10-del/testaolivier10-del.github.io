@@ -1116,6 +1116,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/biodiversity.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/biotechnology.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1176,6 +1181,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/community-ecology.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/compartment-origins.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1221,12 +1231,27 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/ecosystem-disruptions.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/elements-of-life.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/energy-flow-ecosystems.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/environment-phenotype.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/environment-responses.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1351,6 +1376,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/population-density.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/population-ecology.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/population-genetics.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1412,6 +1447,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/notes/stats-sd-se.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/stats-simpson.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1487,6 +1527,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/units/unit-7.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/units/unit-8.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -3021,6 +3066,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-choice-chamber-light.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-cladogram-traits.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3046,12 +3096,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-ecto-endo-oxygen.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-endosymbiosis-model.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/bio/frq/frq-enzyme-inhibitor-data.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-farm-stream-oxygen.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3087,6 +3147,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/frq/frq-hospital-resistance.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-keystone-otter.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3136,6 +3201,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-seal-logistic-growth.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-starch-cellulose-model.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3146,12 +3216,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-trophic-energy-model.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-wildflower-drift.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/bio/lessons/artificial-selection.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/biodiversity.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3216,6 +3296,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/community-ecology.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/compartment-origins.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3261,12 +3346,27 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/ecosystem-disruptions.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/elements-of-life.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/energy-flow-ecosystems.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/environment-phenotype.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/environment-responses.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3391,6 +3491,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/population-density.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/population-ecology.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/population-genetics.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3452,6 +3562,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/lessons/stats-sd-se.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/stats-simpson.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3527,6 +3642,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/unit-sheets/unit-7.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/unit-sheets/unit-8.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -4246,6 +4366,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/tools/energy-flow.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/tools/enzyme-activity.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
@@ -4281,12 +4406,22 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/tools/population-growth.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/tools/rates.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://levlprep.com/bio/tools/signal-transduction-amplification.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/tools/simpson-diversity.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
   </url>

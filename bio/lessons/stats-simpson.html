@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simpson's diversity index — AP® Biology Lesson | LevlPrep</title>
+<meta name="description" content="Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species.">
+<link rel="canonical" href="https://levlprep.com/bio/lessons/stats-simpson.html">
+<meta property="og:title" content="Simpson's diversity index — AP® Biology Lesson | LevlPrep">
+<meta property="og:description" content="Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/lessons/stats-simpson.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/lessons/stats-simpson.html#lesson",
+      "name": "Simpson's diversity index",
+      "url": "https://levlprep.com/bio/lessons/stats-simpson.html",
+      "description": "Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Simpson's index formula"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "comparing community diversity"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Simpson's diversity index",
+          "item": "https://levlprep.com/bio/lessons/stats-simpson.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-simpson" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Simpson's diversity index</span></nav></div>
+<div class="xshell bio-ls bio-stepped">
+  <aside class="bio-ls-rail bio-nav-ref" aria-label="Lesson parts">
+    <p class="bio-ls-k">Skills · Statistics and math</p>
+    <p class="bio-ls-links"><a href="../units/skills-stats.html">&larr; Back to the unit</a><a href="../notes/stats-simpson.html">Read the notes</a></p>
+    <div class="bio-ls-prog"><div class="bio-ls-track"><div class="bio-ls-fill"></div></div><span class="bio-ls-count">Step 1 / 11</span></div>
+    <ol class="bio-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="bio-ls-main bio-lesson">
+  <header class="bio-ls-hero">
+    <div class="eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></div>
+    <h1>Simpson's diversity index</h1>
+    <p class="lede">Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species.</p>
+    <p class="bio-tags bio-nav-ref"><span class="bio-tag">Practice 5: Statistical Tests and Data Analysis</span></p>
+    <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this lesson"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Flessons%2Fstats-simpson.html&amp;title=Simpson's%20diversity%20index%3A%20biology%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/lessons/stats-simpson.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    <p class="bio-small bio-nav-ref"><a href="../practice.html?topic=stats-simpson">Question set for this topic</a></p>
+  </header>
+  <div class="bio-ls-card">
+  <section class="bio-part bio-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="bio-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="bio-step-body bio-hook"><p>Two meadows each hold the same five kinds of wildflower. In one, every kind is common; in the other, clover covers almost everything. Counting <a class="gl" href="../notes/speciation.html" data-c="species">species</a> says they are equally diverse. Your eyes say they are not. <a class="gl" href="../notes/community-ecology.html" data-c="simpson-index">Simpson's index</a>, on the formula sheet, puts a number on the difference.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="bio-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Earlier topics"><ul class="bio-links"><li><a href="../notes/community-ecology.html">Community Ecology</a></li><li><a href="../notes/biodiversity.html">Biodiversity</a></li></ul></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="bio-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="bio-step-body"><div class="bio-qs" data-set="prereq"><div class="bio-q" data-qid="stats-simpson-pre-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> What two things does species diversity combine?</p><ol class="bio-opts"><li>Species richness and relative abundance (evenness)</li><li>Population size and growth rate</li><li>Number of trophic levels and energy flow</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Diversity counts how many species there are (richness) and how evenly individuals are spread among them (relative abundance).</p><ul><li><b>Correct:</b> Species richness and relative abundance (evenness): </li><li>Population size and growth rate: </li><li>Number of trophic levels and energy flow: </li></ul></details></div><div class="bio-q" data-qid="stats-simpson-pre-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Which community is more likely to keep functioning if one species declines?</p><ol class="bio-opts"><li>One with many species, evenly represented</li><li>One dominated by a single species</li><li>One with a single species</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>When individuals are spread among many species, the loss of one removes a smaller share of the community; diversity tends to support stability.</p><ul><li><b>Correct:</b> One with many species, evenly represented: </li><li>One dominated by a single species: </li><li>One with a single species: </li></ul></details></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="figure" aria-labelledby="h-figure">
+    <p class="bio-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="bio-step-body"><figure class="bio-figure bio-lesson-fig"><div class="bio-figimg" data-fig="simpson-communities"><img src="../figures/simpson-communities.svg" alt="Two plots of 20 plants each, with the same four species. In plot A the species are evenly mixed, 5 of each, and Simpson's index is 0.75. In plot B one species makes up 17 of the 20 plants and each other species has 1, and Simpson's index is 0.27." width="640" height="340" loading="lazy" decoding="async"></div><figcaption>Same four species, same 20 plants. The even plot has D = 0.75; the plot dominated by one species has D = 0.27. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="bio-part bio-step" id="chain" aria-labelledby="h-chain">
+    <p class="bio-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="bio-step-body"><ol class="bio-chain"><li><span class="bio-cause">Each species makes up a fraction n/N of the community.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">Squaring that fraction gives the chance that two individuals picked at random both belong to that species.</span></li><li><span class="bio-cause">Adding the squares over all species…</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">…gives Σ(n/N)², the chance that two random individuals are the same species.</span></li><li><span class="bio-cause">Subtracting from 1 flips it.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">D = 1 − Σ(n/N)² is the chance that two random individuals are different species: higher D, more diversity.</span></li><li><span class="bio-cause">One common species has a large n/N, and squaring makes it larger still compared with rare species.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">Dominance by one species pulls D down sharply, while adding a rare species raises D only slightly.</span></li></ol></div>
+  </section>
+  <section class="bio-part bio-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="bio-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="bio-step-body"><ul class="bio-ideas"><li><b>Worked example.</b> 6 snails, 3 beetles, 1 leech (N = 10). Σ(n/N)² = 0.6² + 0.3² + 0.1² = 0.36 + 0.09 + 0.01 = 0.46. D = 1 − 0.46 = 0.54.</li><li>D runs from 0 (one species) toward 1 (many species, evenly represented). Two equal species give 0.5.</li><li>Same richness can give very different D: five species at 20 each give 0.80; one at 80 and four at 5 give 0.35.</li><li>Forgetting the "1 −" is the classic slip: it reports similarity (0.65) instead of diversity (0.35).</li></ul></div>
+  </section>
+  <section class="bio-part bio-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="bio-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="bio-step-body bio-misconception"><p class="bio-wrong"><b>The wrong idea:</b> Two communities with the same number of species have the same diversity.</p><p class="bio-right"><b>What actually happens:</b> Simpson's index also counts <a class="gl" href="../notes/community-ecology.html" data-c="relative-abundance">evenness</a>. A community dominated by one species has a much lower index than one with the same species in equal numbers.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="check" aria-labelledby="h-check">
+    <p class="bio-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="bio-step-body"><p class="bio-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="bio-qs" data-set="check"><div class="bio-set"><section class="bio-stim" data-stim="stats-simpson-s1" aria-labelledby="stim-stats-simpson-s1"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-simpson-s1">Two meadows with the same five species</h3><div class="bio-stim-text"><p>Ecologists counted the flowering plants in 1 m² quadrats in two meadows. Both meadows contain the same five species.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Number of plants of each species"><table class="bio-data"><caption>Number of plants of each species</caption><thead><tr><th scope="col">Species</th><th scope="col">Meadow A</th><th scope="col">Meadow B</th></tr></thead><tbody><tr><th scope="row">Clover</th><td>20</td><td>80</td></tr><tr><th scope="row">Yarrow</th><td>20</td><td>5</td></tr><tr><th scope="row">Buttercup</th><td>20</td><td>5</td></tr><tr><th scope="row">Plantain</th><td>20</td><td>5</td></tr><tr><th scope="row">Daisy</th><td>20</td><td>5</td></tr><tr><th scope="row">Total</th><td>100</td><td>100</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-simpson-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> Calculate Simpson's diversity index for meadow A, to two decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Each species is 20/100 = 0.2 of the total. (0.2)² = 0.04, and five species give Σ = 0.20. D = 1 − 0.20 = 0.80.</p><ul><li>Answer: 0.80</li></ul></details></div><div class="bio-q" data-qid="bio-stats-simpson-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Calculate Simpson's diversity index for meadow B, to two decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Clover: (80/100)² = 0.64. Each other species: (5/100)² = 0.0025, × 4 = 0.01. Σ = 0.65. D = 1 − 0.65 = 0.35.</p><ul><li>Answer: 0.35</li></ul></details></div><div class="bio-q" data-qid="bio-stats-simpson-3"><p class="bio-q-stem"><span class="bio-q-n">3.</span> Both meadows have five species. Why is meadow B's index so much lower?</p><ol class="bio-opts"><li>Meadow B is dominated by clover, so its species are unevenly represented, and the index counts evenness as well as the number of species.</li><li>Meadow B has fewer individual plants in total, and Simpson's index falls whenever the total number of plants counted in the quadrats is smaller.</li><li>Meadow B has fewer species than meadow A, because four of its species have just five plants each.</li><li>Meadow B's clover plants are larger than meadow A's, and the index weighs each species by the size of its plants.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Richness (5) is the same. In B one species makes up 80% of plants, so two plants picked at random are very likely the same species, which is what a low D means.</p><ul><li><b>Correct:</b> Meadow B is dominated by clover, so its species are unevenly represented, and the index counts evenness as well as the number of species.: Correct: same richness, very different evenness.</li><li>Meadow B has fewer individual plants in total, and Simpson's index falls whenever the total number of plants counted in the quadrats is smaller.: Both totals are 100.</li><li>Meadow B has fewer species than meadow A, because four of its species have just five plants each.: Both meadows have five species; rare species still count toward richness.</li><li>Meadow B's clover plants are larger than meadow A's, and the index weighs each species by the size of its plants.: The index uses counts of individuals, not their size.</li></ul></details></div><div class="bio-q" data-qid="bio-stats-simpson-4"><p class="bio-q-stem"><span class="bio-q-n">4.</span> A disease kills most of the clover in both meadows. Which prediction is best supported?</p><ol class="bio-opts"><li>Meadow B loses far more of its plants, because clover made up most of them; meadow A's plants are spread among species.</li><li>Both meadows lose the same share of their plants, because clover is one of five species in each meadow.</li><li>Meadow A loses more plant cover, because a more diverse meadow has more species for the disease to infect.</li><li>Neither meadow changes much, because the other four species immediately take over the space that the dying clover plants leave behind.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Clover is 80% of B's plants but 20% of A's. Losing it removes most of B's plants but only a fifth of A's: more even communities tend to keep functioning when one species declines.</p><ul><li><b>Correct:</b> Meadow B loses far more of its plants, because clover made up most of them; meadow A's plants are spread among species.: Correct.</li><li>Both meadows lose the same share of their plants, because clover is one of five species in each meadow.: The share differs: 80% in B, 20% in A.</li><li>Meadow A loses more plant cover, because a more diverse meadow has more species for the disease to infect.: The disease attacks clover here, not every species.</li><li>Neither meadow changes much, because the other four species immediately take over the space that the dying clover plants leave behind.: Regrowth takes time, and B has very few plants of the other species to fill the gap.</li></ul></details></div></div><div class="bio-set"><section class="bio-stim" data-stim="stats-simpson-s2" aria-labelledby="stim-stats-simpson-s2"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-simpson-s2">A stream bank before and after a fast-spreading plant arrived</h3><div class="bio-stim-text"><p>A survey of 100 plants along a stream bank was repeated eight years after a fast-growing plant from another continent (species X) began spreading there.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Number of plants of each species"><table class="bio-data"><caption>Number of plants of each species</caption><thead><tr><th scope="col">Species</th><th scope="col">First survey</th><th scope="col">Eight years later</th></tr></thead><tbody><tr><th scope="row">Sedge</th><td>30</td><td>12</td></tr><tr><th scope="row">Rush</th><td>25</td><td>8</td></tr><tr><th scope="row">Fern</th><td>20</td><td>6</td></tr><tr><th scope="row">Mint</th><td>15</td><td>4</td></tr><tr><th scope="row">Violet</th><td>10</td><td>0</td></tr><tr><th scope="row">Species X</th><td>0</td><td>70</td></tr><tr><th scope="row">Total</th><td>100</td><td>100</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-simpson-5"><p class="bio-q-stem"><span class="bio-q-n">5.</span> Calculate Simpson's index for the first survey, to three decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Σ(n/N)² = 0.3² + 0.25² + 0.2² + 0.15² + 0.1² = 0.09 + 0.0625 + 0.04 + 0.0225 + 0.01 = 0.225. D = 1 − 0.225 = 0.775.</p><ul><li>Answer: 0.775</li></ul></details></div><div class="bio-q" data-qid="bio-stats-simpson-6"><p class="bio-q-stem"><span class="bio-q-n">6.</span> Calculate Simpson's index eight years later, to three decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Σ = 0.7² + 0.12² + 0.08² + 0.06² + 0.04² = 0.49 + 0.0144 + 0.0064 + 0.0036 + 0.0016 = 0.516 (violet, with 0 plants, adds nothing). D = 1 − 0.516 = 0.484.</p><ul><li>Answer: 0.484</li></ul></details></div><div class="bio-q" data-qid="bio-stats-simpson-8"><p class="bio-q-stem"><span class="bio-q-n">7.</span> Species richness was 5 in both surveys. Which statement best describes how the community changed?</p><ol class="bio-opts"><li>Richness stayed at 5 because species X replaced violet, but evenness fell sharply as X came to make up 70% of the plants.</li><li>Diversity did not change, because the number of species was the same in both surveys and richness is what diversity measures.</li><li>Diversity rose, because a new species arrived, and adding a species to a community raises its diversity index.</li><li>Each native species increased in number, but species X increased faster, which lowered the index.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>One species was lost and one gained, so richness is unchanged. The fall in D comes from dominance: X is 70% of plants, so evenness collapsed.</p><ul><li><b>Correct:</b> Richness stayed at 5 because species X replaced violet, but evenness fell sharply as X came to make up 70% of the plants.: Correct.</li><li>Diversity did not change, because the number of species was the same in both surveys and richness is what diversity measures.: Simpson's index measures evenness as well as richness; it fell from 0.775 to 0.484.</li><li>Diversity rose, because a new species arrived, and adding a species to a community raises its diversity index.: X's arrival came with violet's loss and with heavy dominance, so D fell.</li><li>Each native species increased in number, but species X increased faster, which lowered the index.: Every native species decreased (sedge 30 to 12, and so on).</li></ul></details></div></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="summary" aria-labelledby="h-summary">
+    <p class="bio-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="bio-step-body"><p>Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species. It runs from 0 (one species) toward 1, and it rises with both <a class="gl" href="../notes/community-ecology.html" data-c="species-richness">species richness</a> and evenness. Dominance by one species lowers it sharply; a single rare new species barely changes it. Compare communities, or one community over time, by their D values and explain the change with richness, evenness and the biology behind them.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="next" aria-labelledby="h-next">
+    <p class="bio-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="ecosystem-disruptions.html">Disruptions to Ecosystems &rarr;</a></p></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="connections" aria-labelledby="h-connections">
+    <p class="bio-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="bio-step-body"><ul class="bio-links"><li><a href="../tools/simpson-diversity.html">Tool: Simpson's diversity index calculator</a></li><li><a href="stats-rates.html">Skill: rates and percent change</a></li></ul></div>
+  </section>
+    <div class="bio-ls-actions bio-nav-ref"><button type="button" class="bio-ls-back">&larr; Previous</button><button type="button" class="bio-ls-go">Continue &rarr;</button><a class="bio-ls-go" hidden href="ecosystem-disruptions.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.bio-ls'),p=s&&s.querySelectorAll('.bio-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.bio-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apbio_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="lesson:stats-simpson">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="bio-page-data">{"topic":"stats-simpson","unit":"skills-stats","free":true,"prereq":[{"id":"stats-simpson-pre-1","type":"single","unit":"skills-stats","topic":"stats-simpson","q":"What two things does species diversity combine?","options":["Species richness and relative abundance (evenness)","Population size and growth rate","Number of trophic levels and energy flow"],"correct":0,"why":{"correct":"Diversity counts how many species there are (richness) and how evenly individuals are spread among them (relative abundance).","options":["","",""]},"reviewHref":"../notes/community-ecology.html","reviewTitle":"Community Ecology"},{"id":"stats-simpson-pre-2","type":"single","unit":"skills-stats","topic":"stats-simpson","q":"Which community is more likely to keep functioning if one species declines?","options":["One with many species, evenly represented","One dominated by a single species","One with a single species"],"correct":0,"why":{"correct":"When individuals are spread among many species, the loss of one removes a smaller share of the community; diversity tends to support stability.","options":["","",""]},"reviewHref":"../notes/biodiversity.html","reviewTitle":"Biodiversity"}],"check":[{"id":"bio-stats-simpson-1","type":"numeric","unit":"skills-stats","topic":"stats-simpson","practice":"5.A","level":"apply","diff":1,"stimulus":"stats-simpson-s1","q":"Calculate Simpson's diversity index for meadow A, to two decimal places.","numeric":{"answer":0.8,"tol":0.005,"unit":"","decimals":2},"why":{"correct":"Each species is 20/100 = 0.2 of the total. (0.2)² = 0.04, and five species give Σ = 0.20. D = 1 − 0.20 = 0.80."}},{"id":"bio-stats-simpson-2","type":"numeric","unit":"skills-stats","topic":"stats-simpson","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-simpson-s1","q":"Calculate Simpson's diversity index for meadow B, to two decimal places.","numeric":{"answer":0.35,"tol":0.005,"unit":"","decimals":2},"why":{"correct":"Clover: (80/100)² = 0.64. Each other species: (5/100)² = 0.0025, × 4 = 0.01. Σ = 0.65. D = 1 − 0.65 = 0.35."}},{"id":"bio-stats-simpson-3","type":"single","unit":"skills-stats","topic":"stats-simpson","practice":"6.C","level":"analyze","diff":2,"stimulus":"stats-simpson-s1","q":"Both meadows have five species. Why is meadow B's index so much lower?","options":["Meadow B is dominated by clover, so its species are unevenly represented, and the index counts evenness as well as the number of species.","Meadow B has fewer individual plants in total, and Simpson's index falls whenever the total number of plants counted in the quadrats is smaller.","Meadow B has fewer species than meadow A, because four of its species have just five plants each.","Meadow B's clover plants are larger than meadow A's, and the index weighs each species by the size of its plants."],"correct":0,"why":{"correct":"Richness (5) is the same. In B one species makes up 80% of plants, so two plants picked at random are very likely the same species, which is what a low D means.","options":["Correct: same richness, very different evenness.","Both totals are 100.","Both meadows have five species; rare species still count toward richness.","The index uses counts of individuals, not their size."]}},{"id":"bio-stats-simpson-4","type":"single","unit":"skills-stats","topic":"stats-simpson","practice":"6.E","level":"analyze","diff":3,"stimulus":"stats-simpson-s1","q":"A disease kills most of the clover in both meadows. Which prediction is best supported?","options":["Meadow B loses far more of its plants, because clover made up most of them; meadow A's plants are spread among species.","Both meadows lose the same share of their plants, because clover is one of five species in each meadow.","Meadow A loses more plant cover, because a more diverse meadow has more species for the disease to infect.","Neither meadow changes much, because the other four species immediately take over the space that the dying clover plants leave behind."],"correct":0,"why":{"correct":"Clover is 80% of B's plants but 20% of A's. Losing it removes most of B's plants but only a fifth of A's: more even communities tend to keep functioning when one species declines.","options":["Correct.","The share differs: 80% in B, 20% in A.","The disease attacks clover here, not every species.","Regrowth takes time, and B has very few plants of the other species to fill the gap."]}},{"id":"bio-stats-simpson-5","type":"numeric","unit":"skills-stats","topic":"stats-simpson","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-simpson-s2","q":"Calculate Simpson's index for the first survey, to three decimal places.","numeric":{"answer":0.775,"tol":0.002,"unit":"","decimals":3},"why":{"correct":"Σ(n/N)² = 0.3² + 0.25² + 0.2² + 0.15² + 0.1² = 0.09 + 0.0625 + 0.04 + 0.0225 + 0.01 = 0.225. D = 1 − 0.225 = 0.775."}},{"id":"bio-stats-simpson-6","type":"numeric","unit":"skills-stats","topic":"stats-simpson","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-simpson-s2","q":"Calculate Simpson's index eight years later, to three decimal places.","numeric":{"answer":0.484,"tol":0.002,"unit":"","decimals":3},"why":{"correct":"Σ = 0.7² + 0.12² + 0.08² + 0.06² + 0.04² = 0.49 + 0.0144 + 0.0064 + 0.0036 + 0.0016 = 0.516 (violet, with 0 plants, adds nothing). D = 1 − 0.516 = 0.484."}},{"id":"bio-stats-simpson-8","type":"single","unit":"skills-stats","topic":"stats-simpson","practice":"4.B","level":"analyze","diff":3,"stimulus":"stats-simpson-s2","q":"Species richness was 5 in both surveys. Which statement best describes how the community changed?","options":["Richness stayed at 5 because species X replaced violet, but evenness fell sharply as X came to make up 70% of the plants.","Diversity did not change, because the number of species was the same in both surveys and richness is what diversity measures.","Diversity rose, because a new species arrived, and adding a species to a community raises its diversity index.","Each native species increased in number, but species X increased faster, which lowered the index."],"correct":0,"why":{"correct":"One species was lost and one gained, so richness is unchanged. The fall in D comes from dominance: X is 70% of plants, so evenness collapsed.","options":["Correct.","Simpson's index measures evenness as well as richness; it fell from 0.775 to 0.484.","X's arrival came with violet's loss and with heavy dominance, so D fell.","Every native species decreased (sedge 30 to 12, and so on)."]}}],"stimuli":{"stats-simpson-s1":{"kind":"table","title":"Two meadows with the same five species","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>Ecologists counted the flowering plants in 1 m² quadrats in two meadows. Both meadows contain the same five species.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Number of plants of each species\">\u003ctable class=\"bio-data\">\u003ccaption>Number of plants of each species\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Species\u003c/th>\u003cth scope=\"col\">Meadow A\u003c/th>\u003cth scope=\"col\">Meadow B\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Clover\u003c/th>\u003ctd>20\u003c/td>\u003ctd>80\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Yarrow\u003c/th>\u003ctd>20\u003c/td>\u003ctd>5\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Buttercup\u003c/th>\u003ctd>20\u003c/td>\u003ctd>5\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Plantain\u003c/th>\u003ctd>20\u003c/td>\u003ctd>5\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Daisy\u003c/th>\u003ctd>20\u003c/td>\u003ctd>5\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>100\u003c/td>\u003ctd>100\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"stats-simpson-s2":{"kind":"table","title":"A stream bank before and after a fast-spreading plant arrived","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>A survey of 100 plants along a stream bank was repeated eight years after a fast-growing plant from another continent (species X) began spreading there.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Number of plants of each species\">\u003ctable class=\"bio-data\">\u003ccaption>Number of plants of each species\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Species\u003c/th>\u003cth scope=\"col\">First survey\u003c/th>\u003cth scope=\"col\">Eight years later\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Sedge\u003c/th>\u003ctd>30\u003c/td>\u003ctd>12\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Rush\u003c/th>\u003ctd>25\u003c/td>\u003ctd>8\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Fern\u003c/th>\u003ctd>20\u003c/td>\u003ctd>6\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Mint\u003c/th>\u003ctd>15\u003c/td>\u003ctd>4\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Violet\u003c/th>\u003ctd>10\u003c/td>\u003ctd>0\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Species X\u003c/th>\u003ctd>0\u003c/td>\u003ctd>70\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>100\u003c/td>\u003ctd>100\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-questions.js" defer></script>
+<script src="../assets/bio-lesson.js" defer></script>
+</body>
+</html>

@@ -37,7 +37,7 @@ export const FIX = [
   ['programmes', 'programs'], ['draughtsman', 'draftsman'],
 ];
 // Correct American words that contain one of the fragments above.
-export const SAFE = /^(?:synthesis|photosynthesis|biosynthesis|retrosynthesis|analysis|analyses|analyst\w*|analytic\w*|catalysis|catalyst\w*|paralysis|hydrolysis|organism\w*|microorganism\w*|emphasis|dialysis|greyhound|labelledby|styrene\w*|gastroesophageal|haemophilus|angioedema|programmed|programming|distill\w*|specialist\w*|characteristic\w*|fulfill\w*|reanalysis|cancelledAt|analyser|analysernode)$/i;
+export const SAFE = /^(?:synthesis|photosynthesis|chemosynthesis|biosynthesis|retrosynthesis|analysis|analyses|analyst\w*|analytic\w*|catalysis|catalyst\w*|paralysis|hydrolysis|organism\w*|microorganism\w*|emphasis|dialysis|greyhound|labelledby|styrene\w*|gastroesophageal|haemophilus|angioedema|programmed|programming|distill\w*|specialist\w*|characteristic\w*|fulfill\w*|reanalysis|cancelledAt|analyser|analysernode)$/i;
 
 
 export function findAll(text) {
