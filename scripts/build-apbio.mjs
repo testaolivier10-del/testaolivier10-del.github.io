@@ -38,7 +38,7 @@ const args = process.argv.slice(2);
 const CHECK = args.includes('--check');
 const OUT = args.includes('--out') ? args[args.indexOf('--out') + 1] : join(ROOT, 'bio');
 const map = loadMap();
-const C = loadCourse(ROOT, { map, published: process.env.APBIO_PUBLISHED ? process.env.APBIO_PUBLISHED.split(',').filter(Boolean) : undefined });
+const C = loadCourse(ROOT, { map, published: process.env.APBIO_PUBLISHED !== undefined ? process.env.APBIO_PUBLISHED.split(',').filter(Boolean) : undefined });
 const outputs = new Map();
 const LABEL = 'AP® Biology';
 const PRELAUNCH = C.published.size === 0;

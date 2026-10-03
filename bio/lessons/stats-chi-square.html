@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi-square test — AP® Biology Lesson | LevlPrep</title>
+<meta name="description" content="The chi-square test compares observed counts with the counts expected under a null hypothesis: χ² = Σ (o − e)² ÷ e. Degrees of freedom are categories − 1.">
+<link rel="canonical" href="https://levlprep.com/bio/lessons/stats-chi-square.html">
+<meta property="og:title" content="Chi-square test — AP® Biology Lesson | LevlPrep">
+<meta property="og:description" content="The chi-square test compares observed counts with the counts expected under a null hypothesis: χ² = Σ (o − e)² ÷ e. Degrees of freedom are categories − 1.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/lessons/stats-chi-square.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/lessons/stats-chi-square.html#lesson",
+      "name": "Chi-square test",
+      "url": "https://levlprep.com/bio/lessons/stats-chi-square.html",
+      "description": "The chi-square test compares observed counts with the counts expected under a null hypothesis: χ² = Σ (o − e)² ÷ e. Degrees of freedom are categories − 1.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "observed value"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "chi-square test"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "degrees of freedom"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "significance level"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "critical value"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "p-value"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Chi-square test",
+          "item": "https://levlprep.com/bio/lessons/stats-chi-square.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-chi-square" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Chi-square test</span></nav></div>
+<div class="xshell bio-ls bio-stepped">
+  <aside class="bio-ls-rail bio-nav-ref" aria-label="Lesson parts">
+    <p class="bio-ls-k">Skills · Statistics and math</p>
+    <p class="bio-ls-links"><a href="../units/skills-stats.html">&larr; Back to the unit</a><a href="../notes/stats-chi-square.html">Read the notes</a></p>
+    <div class="bio-ls-prog"><div class="bio-ls-track"><div class="bio-ls-fill"></div></div><span class="bio-ls-count">Step 1 / 11</span></div>
+    <ol class="bio-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="bio-ls-main bio-lesson">
+  <header class="bio-ls-hero">
+    <div class="eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></div>
+    <h1>Chi-square test</h1>
+    <p class="lede">The chi-square test compares observed counts with the counts expected under a null hypothesis: χ² = Σ (o − e)² ÷ e.</p>
+    <p class="bio-tags bio-nav-ref"><span class="bio-tag">Practice 5: Statistical Tests and Data Analysis</span></p>
+    <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this lesson"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Flessons%2Fstats-chi-square.html&amp;title=Chi-square%20test%3A%20biology%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/lessons/stats-chi-square.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    <p class="bio-small bio-nav-ref"><a href="../practice.html?topic=stats-chi-square">Question set for this topic</a></p>
+  </header>
+  <div class="bio-ls-card">
+  <section class="bio-part bio-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="bio-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="bio-step-body bio-hook"><p>Release 40 pill bugs into a chamber with a moist side and a dry side, and 29 end up on the moist side. A preference, or just luck? Flip 40 coins and you rarely get exactly 20 heads. The <span class="gl" tabindex="0" data-c="chi-square">chi-square test</span> measures how far your counts are from what "no preference" predicts and tells you whether that gap is too big for chance.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="bio-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Earlier topics"><ul class="bio-links"><li><a href="../notes/design-null-hypothesis.html">Null and alternative hypotheses</a></li></ul></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="bio-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="bio-step-body"><div class="bio-qs" data-set="prereq"><div class="bio-q" data-qid="stats-chi-square-pre-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> An experiment's null hypothesis says…</p><ol class="bio-opts"><li>the independent variable has no effect; differences are due to chance</li><li>the independent variable causes the predicted effect</li><li>the experiment has no control group</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>The null is the "no effect" statement that the test tries to reject.</p><ul><li><b>Correct:</b> the independent variable has no effect; differences are due to chance: </li><li>the independent variable causes the predicted effect: </li><li>the experiment has no control group: </li></ul></details></div><div class="bio-q" data-qid="stats-chi-square-pre-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Data lead you to fail to reject a null hypothesis. What does that mean?</p><ol class="bio-opts"><li>The data did not show an effect</li><li>The data proved there is no effect</li><li>The alternative hypothesis is true</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Failing to reject means the evidence is not strong enough; it never proves the null.</p><ul><li><b>Correct:</b> The data did not show an effect: </li><li>The data proved there is no effect: </li><li>The alternative hypothesis is true: </li></ul></details></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="figure" aria-labelledby="h-figure">
+    <p class="bio-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="bio-step-body"><figure class="bio-figure bio-lesson-fig"><div class="bio-figimg" data-fig="chi-square-flow"><img src="../figures/chi-square-flow.svg" alt="A worked chi-square test as a table and flowchart. Forty pill bugs in a two-sided chamber: observed 29 moist and 11 dry, expected 20 and 20. Each (o − e)² ÷ e is 4.05; χ² = 8.1. Degrees of freedom = 2 − 1 = 1; the critical value at p = 0.05 is 3.84. Since 8.1 is greater than 3.84, reject the null hypothesis." width="640" height="360" loading="lazy" decoding="async"></div><figcaption>A complete chi-square test on the pill bug data: <span class="gl" tabindex="0" data-c="observed-expected">expected counts</span>, χ² = 8.1, df = 1, <span class="gl" tabindex="0" data-c="critical-value">critical value</span> 3.84, reject the null. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="bio-part bio-step" id="chain" aria-labelledby="h-chain">
+    <p class="bio-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="bio-step-body"><ol class="bio-chain"><li><span class="bio-cause">The <a class="gl" href="../notes/design-null-hypothesis.html" data-c="null-hypothesis">null hypothesis</a> predicts how the total should split among categories (no preference: 20 and 20).</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">That prediction gives an expected count, e, for each category.</span></li><li><span class="bio-cause">Observed counts, o, differ from expected; squaring the differences and dividing by e scales each gap to the size of the category.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">Adding the terms gives χ² = Σ (o − e)² ÷ e: 4.05 + 4.05 = 8.1.</span></li><li><span class="bio-cause">More categories give more chances for chance gaps to add up.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">You look up the critical value for df = categories − 1 (here 1) at p = 0.05: 3.84.</span></li><li><span class="bio-cause">χ² (8.1) is greater than the critical value (3.84).</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">A gap this large would happen less than 5% of the time if the null were true (p < 0.05), so you <a class="gl" href="../notes/design-null-hypothesis.html" data-c="reject-null">reject the null hypothesis</a>.</span></li><li><span class="bio-cause">If χ² had been below the critical value…</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">…you would fail to reject the null: the counts would fit "no preference" well enough to be chance.</span></li></ol></div>
+  </section>
+  <section class="bio-part bio-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="bio-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="bio-step-body"><ul class="bio-ideas"><li><b>Worked example.</b> o = 29 moist, 11 dry; e = 20, 20. χ² = (29 − 20)² ÷ 20 + (11 − 20)² ÷ 20 = 4.05 + 4.05 = 8.1. df = 1; critical value (p = 0.05) = 3.84. 8.1 > 3.84: reject the null.</li><li>Formula sheet: χ² = Σ (o − e)² ÷ e, with df = number of categories − 1. Use the p = 0.05 column unless told otherwise.</li><li>Bigger χ² means a worse fit to the null. χ² greater than the critical value means p is less than 0.05: reject. Otherwise, fail to reject.</li><li>Always use counts, never percentages or means: chi-square depends on how many individuals were counted.</li></ul></div>
+  </section>
+  <section class="bio-part bio-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="bio-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="bio-step-body bio-misconception"><p class="bio-wrong"><b>The wrong idea:</b> A large chi-square value means the data support the null <a class="gl" href="../notes/design-variables.html" data-c="hypothesis">hypothesis</a>.</p><p class="bio-right"><b>What actually happens:</b> A large χ² means observed counts are far from what the null predicts. Above the critical value, you reject the null; a small χ² is what fits the null.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="check" aria-labelledby="h-check">
+    <p class="bio-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="bio-step-body"><p class="bio-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="bio-qs" data-set="check"><div class="bio-set"><section class="bio-stim" data-stim="stats-chi-square-s1" aria-labelledby="stim-stats-chi-square-s1"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-chi-square-s1">Pill bugs in a two-sided choice chamber</h3><div class="bio-stim-text"><p>A student placed 40 pill bugs in the center of a chamber with a moist side and a dry side, identical in light and temperature. After 10 minutes she counted the animals on each side.</p><p>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.82, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Pill bugs on each side after 10 minutes"><table class="bio-data"><caption>Pill bugs on each side after 10 minutes</caption><thead><tr><th scope="col">Side</th><th scope="col">Observed (pill bugs)</th></tr></thead><tbody><tr><th scope="row">Moist</th><td>29</td></tr><tr><th scope="row">Dry</th><td>11</td></tr><tr><th scope="row">Total</th><td>40</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-chi-square-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> What is the null hypothesis for this experiment?</p><ol class="bio-opts"><li>Pill bugs show no preference, so they will be split equally between the moist and dry sides.</li><li>Pill bugs prefer the moist side, so more than half of them will be found on that side of the chamber.</li><li>Pill bugs prefer the dry side, because dry conditions keep their bodies at a steady temperature.</li><li>The number of pill bugs on the moist side depends on how many are on the dry side of the chamber.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>The null hypothesis says the independent variable (moisture) has no effect, so the 40 animals should split 20 : 20, with any departure due to chance.</p><ul><li><b>Correct:</b> Pill bugs show no preference, so they will be split equally between the moist and dry sides.: Correct: no preference, equal split.</li><li>Pill bugs prefer the moist side, so more than half of them will be found on that side of the chamber.: This is a directional alternative hypothesis.</li><li>Pill bugs prefer the dry side, because dry conditions keep their bodies at a steady temperature.: This is an alternative with a proposed reason.</li><li>The number of pill bugs on the moist side depends on how many are on the dry side of the chamber.: With a fixed total this is true whatever the animals do, so it tests nothing.</li></ul></details></div><div class="bio-q" data-qid="bio-stats-chi-square-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Calculate the chi-square value. Give your answer to one decimal place.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Expected: 20 moist, 20 dry. Moist: (29 − 20)² ÷ 20 = 81 ÷ 20 = 4.05. Dry: (11 − 20)² ÷ 20 = 4.05. χ² = 4.05 + 4.05 = 8.1.</p><ul><li>Answer: 8.1</li></ul></details></div><div class="bio-q" data-qid="bio-stats-chi-square-3"><p class="bio-q-stem"><span class="bio-q-n">3.</span> Which conclusion follows from the chi-square test at p = 0.05?</p><ol class="bio-opts"><li>χ² = 8.1 is greater than 3.84 (df = 1), so reject the null hypothesis: the split is unlikely to be chance.</li><li>χ² = 8.1 is greater than 3.84 (df = 1), so fail to reject the null hypothesis: the bugs show no preference.</li><li>χ² = 8.1 is less than 9.49 (df = 4), so fail to reject the null hypothesis, because the 40 bugs are the categories.</li><li>χ² = 8.1 is greater than 0.05, so reject the null hypothesis, because any χ² above 0.05 is significant.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Two categories give df = 2 − 1 = 1; the critical value at p = 0.05 is 3.84. A χ² larger than the critical value means the deviation is too big to blame on chance (p < 0.05), so reject the null.</p><ul><li><b>Correct:</b> χ² = 8.1 is greater than 3.84 (df = 1), so reject the null hypothesis: the split is unlikely to be chance.: Correct.</li><li>χ² = 8.1 is greater than 3.84 (df = 1), so fail to reject the null hypothesis: the bugs show no preference.: A χ² above the critical value leads to rejecting the null, not failing to reject.</li><li>χ² = 8.1 is less than 9.49 (df = 4), so fail to reject the null hypothesis, because the 40 bugs are the categories.: Degrees of freedom count categories (2), not animals, so df = 1.</li><li>χ² = 8.1 is greater than 0.05, so reject the null hypothesis, because any χ² above 0.05 is significant.: χ² is compared with the critical value, not with the significance level itself.</li></ul></details></div></div><div class="bio-set"><section class="bio-stim" data-stim="stats-chi-square-s2" aria-labelledby="stim-stats-chi-square-s2"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-chi-square-s2">A four-way choice chamber</h3><div class="bio-stim-text"><p>A second class built a chamber with four equal sections: dark and moist, dark and dry, light and moist, light and dry. They released 60 pill bugs at the center and counted them after 10 minutes.</p><p>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.82, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Pill bugs in each section after 10 minutes"><table class="bio-data"><caption>Pill bugs in each section after 10 minutes</caption><thead><tr><th scope="col">Section</th><th scope="col">Observed (pill bugs)</th></tr></thead><tbody><tr><th scope="row">Dark, moist</th><td>24</td></tr><tr><th scope="row">Dark, dry</th><td>14</td></tr><tr><th scope="row">Light, moist</th><td>13</td></tr><tr><th scope="row">Light, dry</th><td>9</td></tr><tr><th scope="row">Total</th><td>60</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-chi-square-6"><p class="bio-q-stem"><span class="bio-q-n">4.</span> How many degrees of freedom does this test have?</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Four categories (sections) − 1 = 3 degrees of freedom.</p><ul><li>Answer: 3</li></ul></details></div><div class="bio-q" data-qid="bio-stats-chi-square-7"><p class="bio-q-stem"><span class="bio-q-n">5.</span> Calculate the chi-square value for the null hypothesis that the pill bugs spread equally among the four sections. Give your answer to two decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Expected = 60 ÷ 4 = 15 per section. (24 − 15)² ÷ 15 = 5.40; (14 − 15)² ÷ 15 = 0.07; (13 − 15)² ÷ 15 = 0.27; (9 − 15)² ÷ 15 = 2.40. χ² = 122 ÷ 15 = 8.13.</p><ul><li>Answer: 8.13</li></ul></details></div><div class="bio-q" data-qid="bio-stats-chi-square-8"><p class="bio-q-stem"><span class="bio-q-n">6.</span> Which statement about the test is correct?</p><ol class="bio-opts"><li>The null hypothesis is rejected at p = 0.05 (8.13 > 7.82) but not at p = 0.01 (8.13 < 11.34).</li><li>The null hypothesis is rejected at both p = 0.05 and p = 0.01, because 8.13 is larger than 3.84.</li><li>The null hypothesis is not rejected at either level, because 8.13 is less than 9.49, the value for 4 sections.</li><li>The null hypothesis is rejected at p = 0.01 but not at p = 0.05, because the stricter level is easier to pass.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>With df = 3, χ² = 8.13 exceeds 7.82 (p = 0.05) but not 11.34 (p = 0.01). So 0.01 < p < 0.05: significant at the usual 0.05 level, but not at the stricter 0.01 level.</p><ul><li><b>Correct:</b> The null hypothesis is rejected at p = 0.05 (8.13 > 7.82) but not at p = 0.01 (8.13 < 11.34).: Correct.</li><li>The null hypothesis is rejected at both p = 0.05 and p = 0.01, because 8.13 is larger than 3.84.: 3.84 is the df = 1 value; this test has df = 3.</li><li>The null hypothesis is not rejected at either level, because 8.13 is less than 9.49, the value for 4 sections.: Four sections give df = 3, not 4.</li><li>The null hypothesis is rejected at p = 0.01 but not at p = 0.05, because the stricter level is easier to pass.: A stricter level needs a larger χ², so it is harder to reach, not easier.</li></ul></details></div><div class="bio-q" data-qid="bio-stats-chi-square-9"><p class="bio-q-stem"><span class="bio-q-n">7.</span> Which section contributed most to the chi-square value, and what does that suggest?</p><ol class="bio-opts"><li>Dark and moist (5.40 of 8.13): far more bugs gathered there than chance predicts.</li><li>Light and dry (2.40 of 8.13): far fewer bugs went there than in any other section of the chamber.</li><li>Dark and dry (0.07 of 8.13): its count was closest to expected, so it drives the result.</li><li>Each section contributed equally, because the expected value was 15 in each of the sections.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Dark-moist's term, (24 − 15)² ÷ 15 = 5.40, is two thirds of the total; it is where observed and expected differ most.</p><ul><li><b>Correct:</b> Dark and moist (5.40 of 8.13): far more bugs gathered there than chance predicts.: Correct.</li><li>Light and dry (2.40 of 8.13): far fewer bugs went there than in any other section of the chamber.: Light-dry contributes 2.40, the second largest share; it is not the main driver.</li><li>Dark and dry (0.07 of 8.13): its count was closest to expected, so it drives the result.: A term near zero means a count close to expected; it adds almost nothing.</li><li>Each section contributed equally, because the expected value was 15 in each of the sections.: Equal expected values do not give equal contributions; observed counts differ.</li></ul></details></div></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="summary" aria-labelledby="h-summary">
+    <p class="bio-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="bio-step-body"><p>The chi-square test compares observed counts with the counts expected under a null hypothesis: χ² = Σ (o − e)² ÷ e. <span class="gl" tabindex="0" data-c="degrees-of-freedom">Degrees of freedom</span> are categories − 1. If χ² is greater than the critical value at p = 0.05, the deviation is unlikely to be chance and the null is rejected; otherwise you fail to reject it. Use counts, not percentages, and never "prove" or "accept" a hypothesis.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="next" aria-labelledby="h-next">
+    <p class="bio-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="enzyme-structure.html">Enzyme Structure &rarr;</a></p></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="connections" aria-labelledby="h-connections">
+    <p class="bio-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="bio-step-body"><ul class="bio-links"><li><a href="../tools/chi-square.html">Tool: chi-square calculator</a></li><li><a href="design-null-hypothesis.html">Skill: null and alternative hypotheses</a></li></ul></div>
+  </section>
+    <div class="bio-ls-actions bio-nav-ref"><button type="button" class="bio-ls-back">&larr; Previous</button><button type="button" class="bio-ls-go">Continue &rarr;</button><a class="bio-ls-go" hidden href="enzyme-structure.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.bio-ls'),p=s&&s.querySelectorAll('.bio-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.bio-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apbio_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="lesson:stats-chi-square">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="bio-page-data">{"topic":"stats-chi-square","unit":"skills-stats","free":true,"prereq":[{"id":"stats-chi-square-pre-1","type":"single","unit":"skills-stats","topic":"stats-chi-square","q":"An experiment's null hypothesis says…","options":["the independent variable has no effect; differences are due to chance","the independent variable causes the predicted effect","the experiment has no control group"],"correct":0,"why":{"correct":"The null is the \"no effect\" statement that the test tries to reject.","options":["","",""]},"reviewHref":"../notes/design-null-hypothesis.html","reviewTitle":"Null and alternative hypotheses"},{"id":"stats-chi-square-pre-2","type":"single","unit":"skills-stats","topic":"stats-chi-square","q":"Data lead you to fail to reject a null hypothesis. What does that mean?","options":["The data did not show an effect","The data proved there is no effect","The alternative hypothesis is true"],"correct":0,"why":{"correct":"Failing to reject means the evidence is not strong enough; it never proves the null.","options":["","",""]},"reviewHref":"../notes/design-null-hypothesis.html","reviewTitle":"Null and alternative hypotheses"}],"check":[{"id":"bio-stats-chi-square-1","type":"single","unit":"skills-stats","topic":"stats-chi-square","practice":"3.B","level":"apply","diff":1,"stimulus":"stats-chi-square-s1","q":"What is the null hypothesis for this experiment?","options":["Pill bugs show no preference, so they will be split equally between the moist and dry sides.","Pill bugs prefer the moist side, so more than half of them will be found on that side of the chamber.","Pill bugs prefer the dry side, because dry conditions keep their bodies at a steady temperature.","The number of pill bugs on the moist side depends on how many are on the dry side of the chamber."],"correct":0,"why":{"correct":"The null hypothesis says the independent variable (moisture) has no effect, so the 40 animals should split 20 : 20, with any departure due to chance.","options":["Correct: no preference, equal split.","This is a directional alternative hypothesis.","This is an alternative with a proposed reason.","With a fixed total this is true whatever the animals do, so it tests nothing."]}},{"id":"bio-stats-chi-square-2","type":"numeric","unit":"skills-stats","topic":"stats-chi-square","practice":"5.C","level":"apply","diff":2,"stimulus":"stats-chi-square-s1","q":"Calculate the chi-square value. Give your answer to one decimal place.","numeric":{"answer":8.1,"tol":0.05,"unit":"","decimals":1},"why":{"correct":"Expected: 20 moist, 20 dry. Moist: (29 − 20)² ÷ 20 = 81 ÷ 20 = 4.05. Dry: (11 − 20)² ÷ 20 = 4.05. χ² = 4.05 + 4.05 = 8.1."}},{"id":"bio-stats-chi-square-3","type":"single","unit":"skills-stats","topic":"stats-chi-square","practice":"5.C","level":"analyze","diff":2,"stimulus":"stats-chi-square-s1","q":"Which conclusion follows from the chi-square test at p = 0.05?","options":["χ² = 8.1 is greater than 3.84 (df = 1), so reject the null hypothesis: the split is unlikely to be chance.","χ² = 8.1 is greater than 3.84 (df = 1), so fail to reject the null hypothesis: the bugs show no preference.","χ² = 8.1 is less than 9.49 (df = 4), so fail to reject the null hypothesis, because the 40 bugs are the categories.","χ² = 8.1 is greater than 0.05, so reject the null hypothesis, because any χ² above 0.05 is significant."],"correct":0,"why":{"correct":"Two categories give df = 2 − 1 = 1; the critical value at p = 0.05 is 3.84. A χ² larger than the critical value means the deviation is too big to blame on chance (p \u003c 0.05), so reject the null.","options":["Correct.","A χ² above the critical value leads to rejecting the null, not failing to reject.","Degrees of freedom count categories (2), not animals, so df = 1.","χ² is compared with the critical value, not with the significance level itself."]}},{"id":"bio-stats-chi-square-6","type":"numeric","unit":"skills-stats","topic":"stats-chi-square","practice":"5.C","level":"apply","diff":1,"stimulus":"stats-chi-square-s2","q":"How many degrees of freedom does this test have?","numeric":{"answer":3,"tol":0,"unit":"","decimals":0},"why":{"correct":"Four categories (sections) − 1 = 3 degrees of freedom."}},{"id":"bio-stats-chi-square-7","type":"numeric","unit":"skills-stats","topic":"stats-chi-square","practice":"5.C","level":"apply","diff":2,"stimulus":"stats-chi-square-s2","q":"Calculate the chi-square value for the null hypothesis that the pill bugs spread equally among the four sections. Give your answer to two decimal places.","numeric":{"answer":8.13,"tol":0.02,"unit":"","decimals":2},"why":{"correct":"Expected = 60 ÷ 4 = 15 per section. (24 − 15)² ÷ 15 = 5.40; (14 − 15)² ÷ 15 = 0.07; (13 − 15)² ÷ 15 = 0.27; (9 − 15)² ÷ 15 = 2.40. χ² = 122 ÷ 15 = 8.13."}},{"id":"bio-stats-chi-square-8","type":"single","unit":"skills-stats","topic":"stats-chi-square","practice":"5.C","level":"analyze","diff":3,"stimulus":"stats-chi-square-s2","q":"Which statement about the test is correct?","options":["The null hypothesis is rejected at p = 0.05 (8.13 > 7.82) but not at p = 0.01 (8.13 \u003c 11.34).","The null hypothesis is rejected at both p = 0.05 and p = 0.01, because 8.13 is larger than 3.84.","The null hypothesis is not rejected at either level, because 8.13 is less than 9.49, the value for 4 sections.","The null hypothesis is rejected at p = 0.01 but not at p = 0.05, because the stricter level is easier to pass."],"correct":0,"why":{"correct":"With df = 3, χ² = 8.13 exceeds 7.82 (p = 0.05) but not 11.34 (p = 0.01). So 0.01 \u003c p \u003c 0.05: significant at the usual 0.05 level, but not at the stricter 0.01 level.","options":["Correct.","3.84 is the df = 1 value; this test has df = 3.","Four sections give df = 3, not 4.","A stricter level needs a larger χ², so it is harder to reach, not easier."]}},{"id":"bio-stats-chi-square-9","type":"single","unit":"skills-stats","topic":"stats-chi-square","practice":"4.B","level":"analyze","diff":2,"stimulus":"stats-chi-square-s2","q":"Which section contributed most to the chi-square value, and what does that suggest?","options":["Dark and moist (5.40 of 8.13): far more bugs gathered there than chance predicts.","Light and dry (2.40 of 8.13): far fewer bugs went there than in any other section of the chamber.","Dark and dry (0.07 of 8.13): its count was closest to expected, so it drives the result.","Each section contributed equally, because the expected value was 15 in each of the sections."],"correct":0,"why":{"correct":"Dark-moist's term, (24 − 15)² ÷ 15 = 5.40, is two thirds of the total; it is where observed and expected differ most.","options":["Correct.","Light-dry contributes 2.40, the second largest share; it is not the main driver.","A term near zero means a count close to expected; it adds almost nothing.","Equal expected values do not give equal contributions; observed counts differ."]}}],"stimuli":{"stats-chi-square-s1":{"kind":"table","title":"Pill bugs in a two-sided choice chamber","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>A student placed 40 pill bugs in the center of a chamber with a moist side and a dry side, identical in light and temperature. After 10 minutes she counted the animals on each side.\u003c/p>\u003cp>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.82, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Pill bugs on each side after 10 minutes\">\u003ctable class=\"bio-data\">\u003ccaption>Pill bugs on each side after 10 minutes\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Side\u003c/th>\u003cth scope=\"col\">Observed (pill bugs)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Moist\u003c/th>\u003ctd>29\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Dry\u003c/th>\u003ctd>11\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>40\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"stats-chi-square-s2":{"kind":"table","title":"A four-way choice chamber","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>A second class built a chamber with four equal sections: dark and moist, dark and dry, light and moist, light and dry. They released 60 pill bugs at the center and counted them after 10 minutes.\u003c/p>\u003cp>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.82, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Pill bugs in each section after 10 minutes\">\u003ctable class=\"bio-data\">\u003ccaption>Pill bugs in each section after 10 minutes\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Section\u003c/th>\u003cth scope=\"col\">Observed (pill bugs)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Dark, moist\u003c/th>\u003ctd>24\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Dark, dry\u003c/th>\u003ctd>14\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Light, moist\u003c/th>\u003ctd>13\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Light, dry\u003c/th>\u003ctd>9\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>60\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-questions.js" defer></script>
+<script src="../assets/bio-lesson.js" defer></script>
+</body>
+</html>

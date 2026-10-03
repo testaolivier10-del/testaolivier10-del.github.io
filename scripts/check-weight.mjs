@@ -387,7 +387,11 @@ const BUDGETS = [
   ['bio/practice.html', 3],
   ['bio/exams.html', 3],
   ['bio/frq.html', 3],
-  ['bio/glossary.html', 15],
+  /* 15 -> 40 (2026-10-03): the glossary page still carries every definition
+     (37 KB with Units 1-3). Phase 3 moves it to the A&P design (decision 69:
+     an index, definitions drawn from glossary.json), which brings it back
+     down; docs/apbio-spec.md, Phase 3. */
+  ['bio/glossary.html', 40],
   ['bio/tools.html', 3],
 
   // The privacy policy: the page that has to load well for somebody who has
@@ -721,7 +725,9 @@ function weigh(pageRel) {
   const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
   if (first) {
     const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
-    BUDGETS.push([`bio/lessons/${id}.html`, 10.6], [`bio/notes/${id}.html`, 19.5]);
+    // 10.6 -> 13: the first lesson carries three stimulus sets' check items and
+    // its prerequisite questions in the page (12.5 KB with Unit 1 published).
+    BUDGETS.push([`bio/lessons/${id}.html`, 13], [`bio/notes/${id}.html`, 19.5]);
     const sheets = join(ROOT, 'bio', 'unit-sheets');
     const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
     if (sheet) BUDGETS.push([`bio/unit-sheets/${sheet}`, 12]);

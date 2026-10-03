@@ -575,7 +575,10 @@ async function addPass(env, { userId, course, pass, days, until = null, orderId 
   const res = await sb(env, 'rpc/premium_add_pass', {
     method: 'POST',
     body: JSON.stringify({
-      p_user: userId, p_course: course, p_pass: pass, p_days: days, p_until: until,
+      // p_until only for a fixed-date pass: the function took no such
+      // parameter before migrations/2026-10b-apbio.sql, so leaving it out
+      // keeps every other course's purchases working on either schema.
+      p_user: userId, p_course: course, p_pass: pass, p_days: days, ...(until ? { p_until: until } : {}),
       p_order_id: orderId, p_amount_cents: amountCents, p_order_created_at: orderCreatedAt,
       p_customer_id: customerId, p_funded_by: fundedBy,
     }),

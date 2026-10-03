@@ -11,6 +11,12 @@ the finished course (Phases 2 and 3).
 `docs/anp-needs-author.md` holds open questions and contested science for human
 review; add to it instead of guessing.
 
+## AP® Biology course
+
+`docs/apbio-spec.md` is the source of truth (owner brief, phase status, decisions, launch checklist); read it
+before AP® Biology work and update it in the same commit. Formats: `docs/apbio-architecture.md`; writing rules:
+`docs/apbio-authoring-guide.md`; contested science: `docs/apbio-needs-author.md`; reviews: `docs/apbio-reviews/`.
+
 ## Ochem readability and diagram pass
 
 `docs/ochem-readability-audit.md` lists every notes and lesson page's findings, worst first, and

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mean, median, mode and range — AP® Biology Lesson | LevlPrep</title>
+<meta name="description" content="Repeated measurements vary, so you summarize a sample with a center and a spread.">
+<link rel="canonical" href="https://levlprep.com/bio/lessons/stats-descriptive.html">
+<meta property="og:title" content="Mean, median, mode and range — AP® Biology Lesson | LevlPrep">
+<meta property="og:description" content="Repeated measurements vary, so you summarize a sample with a center and a spread.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/lessons/stats-descriptive.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/lessons/stats-descriptive.html#lesson",
+      "name": "Mean, median, mode and range",
+      "url": "https://levlprep.com/bio/lessons/stats-descriptive.html",
+      "description": "Repeated measurements vary, so you summarize a sample with a center and a spread.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "quantitative data"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "sample (statistics)"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "mean (statistics)"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "median"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "mode (statistics)"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "range (statistics)"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "outlier"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "spread of data"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Mean, median, mode and range",
+          "item": "https://levlprep.com/bio/lessons/stats-descriptive.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-descriptive" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Mean, median, mode and range</span></nav></div>
+<div class="xshell bio-ls bio-stepped">
+  <aside class="bio-ls-rail bio-nav-ref" aria-label="Lesson parts">
+    <p class="bio-ls-k">Skills · Statistics and math</p>
+    <p class="bio-ls-links"><a href="../units/skills-stats.html">&larr; Back to the unit</a><a href="../notes/stats-descriptive.html">Read the notes</a></p>
+    <div class="bio-ls-prog"><div class="bio-ls-track"><div class="bio-ls-fill"></div></div><span class="bio-ls-count">Step 1 / 10</span></div>
+    <ol class="bio-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#prereq"><span class="n">2</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">3</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">4</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">5</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">6</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">7</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">8</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">9</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">10</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="bio-ls-main bio-lesson">
+  <header class="bio-ls-hero">
+    <div class="eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></div>
+    <h1>Mean, median, mode and range</h1>
+    <p class="lede">Repeated measurements vary, so you summarize a sample with a center and a spread.</p>
+    <p class="bio-tags bio-nav-ref"><span class="bio-tag">Practice 4: Representing and Describing Data</span><span class="bio-tag">Practice 5: Statistical Tests and Data Analysis</span></p>
+    <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this lesson"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Flessons%2Fstats-descriptive.html&amp;title=Mean%2C%20median%2C%20mode%20and%20range%3A%20biology%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/lessons/stats-descriptive.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    <p class="bio-small bio-nav-ref"><a href="../practice.html?topic=stats-descriptive">Question set for this topic</a></p>
+  </header>
+  <div class="bio-ls-card">
+  <section class="bio-part bio-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="bio-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="bio-step-body bio-hook"><p>Pile drops of water onto a coin and the water bulges into a dome before it spills. Try it eight times and you will not get the same count twice: 31, 28, 33... Which number do you report? Every experiment in this course hits this problem, and four simple numbers solve most of it.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="bio-step-k">Part 2 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="bio-step-body"><div class="bio-qs" data-set="prereq"><div class="bio-q" data-qid="stats-descriptive-pre-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> Why can a coin hold a dome of water that rises above its edge?</p><ol class="bio-opts"><li>Hydrogen bonds pull surface water molecules toward each other, giving the surface tension.</li><li>Covalent bonds form between the water and the metal, gluing the dome in place.</li><li>Air pressure pushes down on the dome harder than gravity pulls on it.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Cohesion: water molecules at the surface are pulled inward and sideways by hydrogen bonds to their neighbors, so the surface acts like a stretched skin.</p><ul><li><b>Correct:</b> Hydrogen bonds pull surface water molecules toward each other, giving the surface tension.: </li><li>Covalent bonds form between the water and the metal, gluing the dome in place.: </li><li>Air pressure pushes down on the dome harder than gravity pulls on it.: </li></ul></details></div><div class="bio-q" data-qid="stats-descriptive-pre-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Soap molecules crowd in between water molecules at the surface. What happens to the number of drops the coin can hold?</p><ol class="bio-opts"><li>It falls, because fewer hydrogen bonds hold the surface together.</li><li>It rises, because soap makes each drop smaller.</li><li>It does not change, because soap does not mix with water.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Soap at the surface interrupts hydrogen bonding between water molecules, lowering surface tension, so the dome breaks sooner.</p><ul><li><b>Correct:</b> It falls, because fewer hydrogen bonds hold the surface together.: </li><li>It rises, because soap makes each drop smaller.: </li><li>It does not change, because soap does not mix with water.: </li></ul></details></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="figure" aria-labelledby="h-figure">
+    <p class="bio-step-k">Part 3 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="bio-step-body"><figure class="bio-figure bio-lesson-fig"><div class="bio-figimg" data-fig="dot-plot-center"><img src="../figures/dot-plot-center.svg" alt="A dot plot of eight drop counts: 13, 14, 14, 15, 15, 16, 16 and 31. The median, 15, sits in the middle of the cluster; the mean, 16.75, is pulled to the right toward the single high value of 31. The range runs from 13 to 31." width="640" height="300" loading="lazy" decoding="async"></div><figcaption>Eight drop counts at 2% soap. Seven sit between 13 and 16; one is 31. The <span class="gl" tabindex="0" data-c="median">median</span> (15) stays with the cluster, while the mean (16.75) is pulled toward the high value. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="bio-part bio-step" id="chain" aria-labelledby="h-chain">
+    <p class="bio-step-k">Part 4 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="bio-step-body"><ol class="bio-chain"><li><span class="bio-cause">You measure the same thing several times (drops on a coin, eight times).</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">The values differ a little each time, so no single value is "the answer": you have a sample.</span></li><li><span class="bio-cause">You add all eight values and divide by 8.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">You get the mean, a center that uses every value, for example 248 ÷ 8 = 31.0 drops.</span></li><li><span class="bio-cause">Because every value adds to the sum, one extreme value (31 among values near 15) adds a lot.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">The mean is dragged toward that <span class="gl" tabindex="0" data-c="outlier">outlier</span> (16.75 instead of about 14.7).</span></li><li><span class="bio-cause">Sorting the values and taking the middle one (or the average of the middle two) ignores how big the end values are.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">The median stays with the cluster (15), so it is the better center when there is an outlier.</span></li><li><span class="bio-cause">Two samples can share a center but differ in how scattered they are.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">You also report spread, starting with the range (largest − smallest), to show how consistent the measurements were.</span></li></ol></div>
+  </section>
+  <section class="bio-part bio-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="bio-step-k">Part 5 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="bio-step-body"><ul class="bio-ideas"><li><b>Worked example.</b> Counts 31, 28, 33, 30, 29, 35, 30, 32. Mean = 248 ÷ 8 = 31.0. Sorted: 28, 29, 30, 30, 31, 32, 33, 35; median = (30 + 31) ÷ 2 = 30.5. Mode = 30 (it appears twice). Range = 35 − 28 = 7.</li><li>The <b>mean</b> uses the size of every value; the <b>median</b> uses only position. When a data set has an <b>outlier</b> or is lopsided, the two disagree, and the median describes a typical value better.</li><li>Always pair a center with a spread. Two groups with the same mean of 25 drops can have ranges of 2 and 13: the second is far less consistent.</li><li><b>Quantitative</b> data are numbers (counted drops are discrete; measured mass or time are continuous). <b>Qualitative</b> data are categories. You can average numbers, not categories.</li></ul></div>
+  </section>
+  <section class="bio-part bio-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="bio-step-k">Part 6 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="bio-step-body bio-misconception"><p class="bio-wrong"><b>The wrong idea:</b> An outlier is a mistake, so you should delete it before calculating the mean.</p><p class="bio-right"><b>What actually happens:</b> An outlier is first checked for a recording or procedure error. If none is found it is real data: keep it, report it, and use the median (which resists it) alongside the mean.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="check" aria-labelledby="h-check">
+    <p class="bio-step-k">Part 7 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="bio-step-body"><p class="bio-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="bio-qs" data-set="check"><div class="bio-set"><section class="bio-stim" data-stim="stats-descriptive-s1" aria-labelledby="stim-stats-descriptive-s1"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-descriptive-s1">Drops of water on a coin</h3><div class="bio-stim-text"><p>A class counted how many drops of water they could pile onto a clean coin before the dome of water spilled over. Each group used the same dropper and the same type of coin. Soap was added to the water at three concentrations, and each concentration was measured eight times.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Drops of water held on a coin before spilling, by soap concentration"><table class="bio-data"><caption>Drops of water held on a coin before spilling, by soap concentration</caption><thead><tr><th scope="col">Soap in water (%)</th><th scope="col">Drops counted, eight repeats (drops)</th></tr></thead><tbody><tr><th scope="row">0</th><td>31, 28, 33, 30, 29, 35, 30, 32</td></tr><tr><th scope="row">1</th><td>22, 19, 21, 23, 20, 21, 24, 22</td></tr><tr><th scope="row">2</th><td>14, 16, 13, 15, 31, 14, 16, 15</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-descriptive-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> Calculate the mean number of drops held on the coin with 0% soap. Give your answer to one decimal place.</p><p class="bio-small">Type a number in drops.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Sum = 31 + 28 + 33 + 30 + 29 + 35 + 30 + 32 = 248 drops. Mean = 248 ÷ 8 = 31.0 drops.</p><ul><li>Answer: 31.0 drops</li></ul></details></div><div class="bio-q" data-qid="bio-stats-descriptive-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Calculate the median number of drops for the 2% soap water. Give your answer to one decimal place.</p><p class="bio-small">Type a number in drops.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Sorted: 13, 14, 14, 15, 15, 16, 16, 31. With eight values the median is the average of the 4th and 5th values: (15 + 15) ÷ 2 = 15.0 drops. Forgetting to sort first gives the wrong middle pair.</p><ul><li>Answer: 15.0 drops</li></ul></details></div><div class="bio-q" data-qid="bio-stats-descriptive-3"><p class="bio-q-stem"><span class="bio-q-n">3.</span> The mean for the 2% soap water is 16.75 drops. Which statement best explains why the median describes a typical count for this concentration better than the mean does?</p><ol class="bio-opts"><li>One count of 31 is far above the others and pulls the mean upward, while the median stays in the middle of the cluster.</li><li>The median is calculated from more of the values than the mean is, so it carries more information about the whole sample of eight counts.</li><li>The mean is meant for data sets in which no value repeats, and this set repeats several of its values.</li><li>The counts at 2% soap are more tightly clustered than at 0% soap, so a mean exaggerates their center.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Seven of the eight counts lie between 13 and 16. The single 31 adds a large amount to the sum, so the mean (16.75) sits above every value but one. The median (15) depends only on the middle of the sorted list, so the outlier barely moves it.</p><ul><li><b>Correct:</b> One count of 31 is far above the others and pulls the mean upward, while the median stays in the middle of the cluster.: Correct. An extreme value drags the mean toward it; the median depends on position, not size, so it resists the pull.</li><li>The median is calculated from more of the values than the mean is, so it carries more information about the whole sample of eight counts.: The mean uses every value; the median uses only the middle one or two. That is exactly why the median ignores the outlier.</li><li>The mean is meant for data sets in which no value repeats, and this set repeats several of its values.: Repeated values do not stop you from averaging. A mean can always be calculated for quantitative data.</li><li>The counts at 2% soap are more tightly clustered than at 0% soap, so a mean exaggerates their center.: The range at 2% (18 drops) is the largest of the three concentrations, so these data are the least tightly clustered.</li></ul></details></div><div class="bio-q" data-qid="bio-stats-descriptive-4"><p class="bio-q-stem"><span class="bio-q-n">4.</span> Select ALL statements that are supported by the data in the table.</p><ol class="bio-opts"><li>Adding soap lowered the typical number of drops the coin could hold.</li><li>The 1% soap data have two modes, 21 and 22 drops.</li><li>Removing the 31 from the 2% data would lower the median from 15 to 14 drops.</li><li>The range of the 1% data is larger than the range of the 0% data.</li><li>The 0% and 1% data overlap: some 1% counts are higher than some 0% counts.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Medians fall from 30.5 to 21.5 to 15 drops as soap rises. At 1%, both 21 and 22 appear twice. Ranges: 0% is 35 − 28 = 7; 1% is 24 − 19 = 5. The largest 1% count (24) is below the smallest 0% count (28), so the sets do not overlap. Removing the 31 leaves seven values, and the 4th of 13, 14, 14, 15, 15, 16, 16 is still 15.</p><ul><li><b>Correct:</b> Adding soap lowered the typical number of drops the coin could hold.: Supported: mean and median both fall at each step up in soap.</li><li><b>Correct:</b> The 1% soap data have two modes, 21 and 22 drops.: Supported: 21 and 22 each appear twice and no value appears more often.</li><li>Removing the 31 from the 2% data would lower the median from 15 to 14 drops.: Not supported: with seven values left, the median is the 4th sorted value, which is still 15.</li><li>The range of the 1% data is larger than the range of the 0% data.: Not supported: the 1% range is 5 drops and the 0% range is 7 drops.</li><li>The 0% and 1% data overlap: some 1% counts are higher than some 0% counts.: Not supported: the highest 1% count, 24, is lower than the lowest 0% count, 28.</li></ul></details></div><div class="bio-q" data-qid="bio-stats-descriptive-5"><p class="bio-q-stem"><span class="bio-q-n">5.</span> A student re-checks the 2% notebook and finds the 31 was a copying mistake for 13. After the correction, which describes the change in the mean and the median?</p><ol class="bio-opts"><li>The mean drops by 2.25 drops and the median drops by 0.5 drops.</li><li>The mean drops by 2.25 drops and the median does not change.</li><li>The mean drops by 18 drops and the median drops by 0.5 drops.</li><li>The mean and the median both drop by 2.25 drops.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>The sum falls by 31 − 13 = 18 drops, shared over 8 values: 18 ÷ 8 = 2.25 drops lower (16.75 to 14.5). Re-sorted, the corrected set is 13, 13, 14, 14, 15, 15, 16, 16, so the middle pair becomes 14 and 15 and the median falls from 15 to 14.5.</p><ul><li><b>Correct:</b> The mean drops by 2.25 drops and the median drops by 0.5 drops.: Correct: the mean falls 2.25 drops and the median 0.5 drops.</li><li>The mean drops by 2.25 drops and the median does not change.: The mean change is right, but re-sort the corrected data: a new low value shifts the middle pair to 14 and 15.</li><li>The mean drops by 18 drops and the median drops by 0.5 drops.: The sum drops by 18, but that change is shared across 8 values, so the mean drops by 2.25, not 18.</li><li>The mean and the median both drop by 2.25 drops.: The mean change is right; the median depends on position in the sorted list, so it moves by a different amount.</li></ul></details></div></div><div class="bio-q" data-qid="bio-stats-descriptive-13"><p class="bio-q-stem"><span class="bio-q-n">6.</span> A data set of counts is 4, 7, 7, 9, 12. Which change would raise the mean but leave the median and the range unchanged?</p><ol class="bio-opts"><li>Changing the 9 to 11</li><li>Changing the 12 to 15</li><li>Changing the 4 to 6</li><li>Changing one 7 to 9</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Changing 9 to 11 raises the sum by 2, so the mean rises. Sorted, the set is 4, 7, 7, 11, 12: the middle value is still 7 and the range is still 12 − 4 = 8.</p><ul><li><b>Correct:</b> Changing the 9 to 11: Correct: the sum goes up, the 3rd value stays 7, and the smallest and largest stay 4 and 12.</li><li>Changing the 12 to 15: The mean rises, but the largest value changes, so the range becomes 11.</li><li>Changing the 4 to 6: The mean rises, but the smallest value changes, so the range shrinks to 6.</li><li>Changing one 7 to 9: The mean rises, but the sorted set becomes 4, 7, 9, 9, 12, so the median moves to 9.</li></ul></details></div><div class="bio-q" data-qid="bio-stats-descriptive-14"><p class="bio-q-stem"><span class="bio-q-n">7.</span> Group P measured drops on a coin and got 24, 25, 25, 26, 25 (mean 25). Group Q got 18, 31, 25, 22, 29 (mean 25). Which conclusion is best supported?</p><ol class="bio-opts"><li>The groups found the same center, but Q's values vary much more, so a single Q measurement is less dependable.</li><li>The groups found the same center and the same spread, because their means are equal.</li><li>Group Q measured more carefully, because its values cover a wider range of possible counts and so represent more of the possible outcomes.</li><li>Group P probably made an error, because real counts of drops rarely repeat so closely.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Equal means say nothing about spread. P's range is 2 drops; Q's is 13 drops. Wider spread means any single measurement from Q could land far from the center.</p><ul><li><b>Correct:</b> The groups found the same center, but Q's values vary much more, so a single Q measurement is less dependable.: Correct: same mean, very different ranges.</li><li>The groups found the same center and the same spread, because their means are equal.: The means match, but the ranges (2 and 13) show the spreads differ.</li><li>Group Q measured more carefully, because its values cover a wider range of possible counts and so represent more of the possible outcomes.: Wider spread usually means less consistent technique, not more careful work.</li><li>Group P probably made an error, because real counts of drops rarely repeat so closely.: Repeated identical counts are expected with careful technique; repetition is not evidence of error.</li></ul></details></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="summary" aria-labelledby="h-summary">
+    <p class="bio-step-k">Part 8 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="bio-step-body"><p>Repeated measurements vary, so you summarize a sample with a center and a spread. The mean (sum ÷ n) uses every value and is pulled by outliers; the median (middle of the sorted data) resists them; the mode is the most common value. The range (largest − smallest) is the simplest measure of spread. Check an outlier for errors before deciding anything about it.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="next" aria-labelledby="h-next">
+    <p class="bio-step-k">Part 9 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="design-variables.html">Independent and dependent variables &rarr;</a></p></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="connections" aria-labelledby="h-connections">
+    <p class="bio-step-k">Part 10 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="bio-step-body"><ul class="bio-links"><li><a href="../tools/descriptive-stats.html">Tool: descriptive statistics calculator</a></li><li><a href="design-variables.html">Next skill: setting up a fair experiment</a></li></ul></div>
+  </section>
+    <div class="bio-ls-actions bio-nav-ref"><button type="button" class="bio-ls-back">&larr; Previous</button><button type="button" class="bio-ls-go">Continue &rarr;</button><a class="bio-ls-go" hidden href="design-variables.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.bio-ls'),p=s&&s.querySelectorAll('.bio-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.bio-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apbio_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="lesson:stats-descriptive">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="bio-page-data">{"topic":"stats-descriptive","unit":"skills-stats","free":true,"prereq":[{"id":"stats-descriptive-pre-1","type":"single","unit":"skills-stats","topic":"stats-descriptive","q":"Why can a coin hold a dome of water that rises above its edge?","options":["Hydrogen bonds pull surface water molecules toward each other, giving the surface tension.","Covalent bonds form between the water and the metal, gluing the dome in place.","Air pressure pushes down on the dome harder than gravity pulls on it."],"correct":0,"why":{"correct":"Cohesion: water molecules at the surface are pulled inward and sideways by hydrogen bonds to their neighbors, so the surface acts like a stretched skin.","options":["","",""]},"reviewHref":"../notes/water-hydrogen-bonding.html","reviewTitle":"Structure of Water and Hydrogen Bonding"},{"id":"stats-descriptive-pre-2","type":"single","unit":"skills-stats","topic":"stats-descriptive","q":"Soap molecules crowd in between water molecules at the surface. What happens to the number of drops the coin can hold?","options":["It falls, because fewer hydrogen bonds hold the surface together.","It rises, because soap makes each drop smaller.","It does not change, because soap does not mix with water."],"correct":0,"why":{"correct":"Soap at the surface interrupts hydrogen bonding between water molecules, lowering surface tension, so the dome breaks sooner.","options":["","",""]},"reviewHref":"../notes/water-hydrogen-bonding.html","reviewTitle":"Structure of Water and Hydrogen Bonding"}],"check":[{"id":"bio-stats-descriptive-1","type":"numeric","unit":"skills-stats","topic":"stats-descriptive","practice":"5.A","level":"apply","diff":1,"stimulus":"stats-descriptive-s1","q":"Calculate the mean number of drops held on the coin with 0% soap. Give your answer to one decimal place.","numeric":{"answer":31,"tol":0.05,"unit":"drops","decimals":1},"why":{"correct":"Sum = 31 + 28 + 33 + 30 + 29 + 35 + 30 + 32 = 248 drops. Mean = 248 ÷ 8 = 31.0 drops."}},{"id":"bio-stats-descriptive-2","type":"numeric","unit":"skills-stats","topic":"stats-descriptive","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-descriptive-s1","q":"Calculate the median number of drops for the 2% soap water. Give your answer to one decimal place.","numeric":{"answer":15,"tol":0.05,"unit":"drops","decimals":1},"why":{"correct":"Sorted: 13, 14, 14, 15, 15, 16, 16, 31. With eight values the median is the average of the 4th and 5th values: (15 + 15) ÷ 2 = 15.0 drops. Forgetting to sort first gives the wrong middle pair."}},{"id":"bio-stats-descriptive-3","type":"single","unit":"skills-stats","topic":"stats-descriptive","practice":"4.B","level":"analyze","diff":2,"stimulus":"stats-descriptive-s1","q":"The mean for the 2% soap water is 16.75 drops. Which statement best explains why the median describes a typical count for this concentration better than the mean does?","options":["One count of 31 is far above the others and pulls the mean upward, while the median stays in the middle of the cluster.","The median is calculated from more of the values than the mean is, so it carries more information about the whole sample of eight counts.","The mean is meant for data sets in which no value repeats, and this set repeats several of its values.","The counts at 2% soap are more tightly clustered than at 0% soap, so a mean exaggerates their center."],"correct":0,"why":{"correct":"Seven of the eight counts lie between 13 and 16. The single 31 adds a large amount to the sum, so the mean (16.75) sits above every value but one. The median (15) depends only on the middle of the sorted list, so the outlier barely moves it.","options":["Correct. An extreme value drags the mean toward it; the median depends on position, not size, so it resists the pull.","The mean uses every value; the median uses only the middle one or two. That is exactly why the median ignores the outlier.","Repeated values do not stop you from averaging. A mean can always be calculated for quantitative data.","The range at 2% (18 drops) is the largest of the three concentrations, so these data are the least tightly clustered."]}},{"id":"bio-stats-descriptive-4","type":"multi","unit":"skills-stats","topic":"stats-descriptive","practice":"4.B","level":"analyze","diff":3,"stimulus":"stats-descriptive-s1","q":"Select ALL statements that are supported by the data in the table.","options":["Adding soap lowered the typical number of drops the coin could hold.","The 1% soap data have two modes, 21 and 22 drops.","Removing the 31 from the 2% data would lower the median from 15 to 14 drops.","The range of the 1% data is larger than the range of the 0% data.","The 0% and 1% data overlap: some 1% counts are higher than some 0% counts."],"correct":[0,1],"why":{"correct":"Medians fall from 30.5 to 21.5 to 15 drops as soap rises. At 1%, both 21 and 22 appear twice. Ranges: 0% is 35 − 28 = 7; 1% is 24 − 19 = 5. The largest 1% count (24) is below the smallest 0% count (28), so the sets do not overlap. Removing the 31 leaves seven values, and the 4th of 13, 14, 14, 15, 15, 16, 16 is still 15.","options":["Supported: mean and median both fall at each step up in soap.","Supported: 21 and 22 each appear twice and no value appears more often.","Not supported: with seven values left, the median is the 4th sorted value, which is still 15.","Not supported: the 1% range is 5 drops and the 0% range is 7 drops.","Not supported: the highest 1% count, 24, is lower than the lowest 0% count, 28."]}},{"id":"bio-stats-descriptive-5","type":"single","unit":"skills-stats","topic":"stats-descriptive","practice":"5.A","level":"analyze","diff":3,"stimulus":"stats-descriptive-s1","q":"A student re-checks the 2% notebook and finds the 31 was a copying mistake for 13. After the correction, which describes the change in the mean and the median?","options":["The mean drops by 2.25 drops and the median drops by 0.5 drops.","The mean drops by 2.25 drops and the median does not change.","The mean drops by 18 drops and the median drops by 0.5 drops.","The mean and the median both drop by 2.25 drops."],"correct":0,"why":{"correct":"The sum falls by 31 − 13 = 18 drops, shared over 8 values: 18 ÷ 8 = 2.25 drops lower (16.75 to 14.5). Re-sorted, the corrected set is 13, 13, 14, 14, 15, 15, 16, 16, so the middle pair becomes 14 and 15 and the median falls from 15 to 14.5.","options":["Correct: the mean falls 2.25 drops and the median 0.5 drops.","The mean change is right, but re-sort the corrected data: a new low value shifts the middle pair to 14 and 15.","The sum drops by 18, but that change is shared across 8 values, so the mean drops by 2.25, not 18.","The mean change is right; the median depends on position in the sorted list, so it moves by a different amount."]}},{"id":"bio-stats-descriptive-13","type":"single","unit":"skills-stats","topic":"stats-descriptive","practice":"5.A","level":"apply","diff":2,"q":"A data set of counts is 4, 7, 7, 9, 12. Which change would raise the mean but leave the median and the range unchanged?","options":["Changing the 9 to 11","Changing the 12 to 15","Changing the 4 to 6","Changing one 7 to 9"],"correct":0,"why":{"correct":"Changing 9 to 11 raises the sum by 2, so the mean rises. Sorted, the set is 4, 7, 7, 11, 12: the middle value is still 7 and the range is still 12 − 4 = 8.","options":["Correct: the sum goes up, the 3rd value stays 7, and the smallest and largest stay 4 and 12.","The mean rises, but the largest value changes, so the range becomes 11.","The mean rises, but the smallest value changes, so the range shrinks to 6.","The mean rises, but the sorted set becomes 4, 7, 9, 9, 12, so the median moves to 9."]}},{"id":"bio-stats-descriptive-14","type":"single","unit":"skills-stats","topic":"stats-descriptive","practice":"4.B","level":"analyze","diff":3,"q":"Group P measured drops on a coin and got 24, 25, 25, 26, 25 (mean 25). Group Q got 18, 31, 25, 22, 29 (mean 25). Which conclusion is best supported?","options":["The groups found the same center, but Q's values vary much more, so a single Q measurement is less dependable.","The groups found the same center and the same spread, because their means are equal.","Group Q measured more carefully, because its values cover a wider range of possible counts and so represent more of the possible outcomes.","Group P probably made an error, because real counts of drops rarely repeat so closely."],"correct":0,"why":{"correct":"Equal means say nothing about spread. P's range is 2 drops; Q's is 13 drops. Wider spread means any single measurement from Q could land far from the center.","options":["Correct: same mean, very different ranges.","The means match, but the ranges (2 and 13) show the spreads differ.","Wider spread usually means less consistent technique, not more careful work.","Repeated identical counts are expected with careful technique; repetition is not evidence of error."]}}],"stimuli":{"stats-descriptive-s1":{"kind":"table","title":"Drops of water on a coin","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>A class counted how many drops of water they could pile onto a clean coin before the dome of water spilled over. Each group used the same dropper and the same type of coin. Soap was added to the water at three concentrations, and each concentration was measured eight times.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Drops of water held on a coin before spilling, by soap concentration\">\u003ctable class=\"bio-data\">\u003ccaption>Drops of water held on a coin before spilling, by soap concentration\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Soap in water (%)\u003c/th>\u003cth scope=\"col\">Drops counted, eight repeats (drops)\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">0\u003c/th>\u003ctd>31, 28, 33, 30, 29, 35, 30, 32\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">1\u003c/th>\u003ctd>22, 19, 21, 23, 20, 21, 24, 22\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">2\u003c/th>\u003ctd>14, 16, 13, 15, 31, 14, 16, 15\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-questions.js" defer></script>
+<script src="../assets/bio-lesson.js" defer></script>
+</body>
+</html>

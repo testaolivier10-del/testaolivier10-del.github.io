@@ -321,9 +321,13 @@ results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page,
       await page.click('.bio-pr-start');
       await page.waitForSelector('.bio-pr-stage .bio-q', { timeout: 15000 });
       if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
-      const opt = page.locator('.bio-pr-stage .bio-q .bio-opt').first();
+      // Whatever kind comes first: an option, a number, a prediction table
+      // (one choice per row) or an order (checked as it stands).
+      const q = page.locator('.bio-pr-stage .bio-q').first();
+      const opt = q.locator('.bio-opt').first();
       if (await opt.count()) await opt.click();
-      else await page.locator('.bio-pr-stage .bio-q input').first().fill('1');
+      else if (await q.locator('.bio-num input, input[inputmode]').count()) await q.locator('.bio-num input, input[inputmode]').first().fill('1');
+      else for (const g of await q.locator('.bio-dir').all()) await g.locator('button, [role="radio"]').first().click();
       const check = page.locator('.bio-pr-stage .bio-q .bio-check').first();
       if (await check.count() && await check.isVisible()) await check.click();
       await page.waitForSelector('.bio-q-feedback .bio-verdict', { timeout: 15000 });

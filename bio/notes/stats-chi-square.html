@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi-square test — AP® Biology Notes | LevlPrep</title>
+<meta name="description" content="A student releases 40 pill bugs into a chamber with a moist side and a dry side, identical in light and temperature.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/stats-chi-square.html">
+<meta property="og:title" content="Chi-square test — AP® Biology Notes | LevlPrep">
+<meta property="og:description" content="A student releases 40 pill bugs into a chamber with a moist side and a dry side, identical in light and temperature.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/stats-chi-square.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/stats-chi-square.html#reading",
+      "name": "Chi-square test",
+      "url": "https://levlprep.com/bio/notes/stats-chi-square.html",
+      "description": "A student releases 40 pill bugs into a chamber with a moist side and a dry side, identical in light and temperature.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "chi-square test biology practice",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Chi-square test: notes",
+          "item": "https://levlprep.com/bio/notes/stats-chi-square.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-chi-square" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>7 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bio-toc-n">S</span>Mean, median, mode and range</a></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bio-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li class="current" data-toc-t="stats-chi-square"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>Chi-square test</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Counts that do not quite match</a><a href="#worked">Worked example: a two-category test</a><a href="#table">Reading the critical value table</a><a href="#four">A four-category example</a><a href="#expected">Expected counts from any ratio</a><a href="#slips">Common slips</a></div></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Chi-square test: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-chi-square.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">Chi-square test</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">4 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-chi-square">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-chi-square.html&amp;title=Chi-square%20test%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-chi-square.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<h2 id="why">Counts that do not quite match</h2>
+<p>A student releases 40 pill bugs into a chamber with a moist side and a dry side, identical in light and temperature. After 10 minutes, 29 are on the moist side and 11 on the dry side. If the animals had no preference, you would expect about 20 on each side, but not exactly 20: flip 40 coins and you seldom get exactly 20 heads. The <b><span class="gl" tabindex="0" data-c="chi-square">chi-square test</span></b> (χ²) tells you whether the gap between what you <b>observed</b> and what the <a class="gl" href="../notes/design-null-hypothesis.html" data-c="null-hypothesis">null hypothesis</a> leads you to <b>expect</b> is too large to blame on chance.</p>
+
+<h2 id="worked">Worked example: a two-category test</h2>
+<figure  id="fig-chi" class="bio-figure"><div class="bio-figimg" data-fig="chi-square-flow"><img src="../figures/chi-square-flow.svg" alt="A worked chi-square test as a table and flowchart. Forty pill bugs in a two-sided chamber: observed 29 moist and 11 dry, expected 20 and 20. Each (o − e)² ÷ e is 4.05; χ² = 8.1. Degrees of freedom = 2 − 1 = 1; the critical value at p = 0.05 is 3.84. Since 8.1 is greater than 3.84, reject the null hypothesis." width="640" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Every step of the pill bug test, from expected counts to the decision. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<ol>
+<li><b>Null <a class="gl" href="../notes/design-variables.html" data-c="hypothesis">hypothesis</a>:</b> pill bugs show no preference between moist and dry, so they split equally.</li>
+<li><b><span class="gl" tabindex="0" data-c="observed-expected">Expected counts</span>:</b> 40 × ½ = 20 moist, 20 dry.</li>
+<li><b>Each term (o − e)² ÷ e:</b> moist (29 − 20)² ÷ 20 = 81 ÷ 20 = 4.05; dry (11 − 20)² ÷ 20 = 4.05.</li>
+<li><b>χ²</b> = Σ (o − e)² ÷ e = 4.05 + 4.05 = <b>8.1</b>.</li>
+<li><b><span class="gl" tabindex="0" data-c="degrees-of-freedom">Degrees of freedom</span>:</b> categories − 1 = 2 − 1 = 1.</li>
+<li><b><span class="gl" tabindex="0" data-c="critical-value">Critical value</span></b> at p = 0.05, df = 1: 3.84.</li>
+<li><b>Decision:</b> 8.1 &gt; 3.84, so p &lt; 0.05. <a class="gl" href="../notes/design-null-hypothesis.html" data-c="reject-null">Reject the null hypothesis</a>: a split this uneven is unlikely to be chance.</li>
+</ol>
+</div>
+<p>The biology fits: pill bugs breathe through gill-like structures that must stay moist, so animals that end up in damp places lose less water. The test itself only says the distribution is not random; the biology suggests why.</p>
+
+<h2 id="table">Reading the critical value table</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Critical values of χ² (from the formula sheet; first rows)"><table class="compare">
+<caption>Critical values of χ² (from the formula sheet; first rows)</caption>
+<thead><tr><th scope="col">p</th><th scope="col">df 1</th><th scope="col">df 2</th><th scope="col">df 3</th><th scope="col">df 4</th><th scope="col">df 5</th></tr></thead>
+<tbody>
+<tr><th scope="row">0.05</th><td>3.84</td><td>5.99</td><td>7.82</td><td>9.49</td><td>11.07</td></tr>
+<tr><th scope="row">0.01</th><td>6.63</td><td>9.21</td><td>11.34</td><td>13.28</td><td>15.09</td></tr>
+</tbody>
+</table></div>
+<ul>
+<li><b>Degrees of freedom</b> = number of categories − 1 (not the number of individuals).</li>
+<li>The <b><span class="gl" tabindex="0" data-c="significance-level">significance level</span></b> is chosen before the test, almost always p = 0.05.</li>
+<li>If χ² &gt; critical value, the <b><span class="gl" tabindex="0" data-c="p-value">p-value</span></b> is below the significance level: reject the null. If χ² ≤ critical value, fail to reject.</li>
+</ul>
+<p>The p-value is the probability of a deviation at least this large if the null hypothesis were true. It is not the probability that either hypothesis is true.</p>
+
+<h2 id="four">A four-category example</h2>
+<p>Sixty pill bugs in a chamber with four equal sections ended up: dark-moist 24, dark-dry 14, light-moist 13, light-dry 9. The null (no preference) predicts 15 in each.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Working the chi-square for four sections"><table class="compare">
+<caption>Working the chi-square for four sections</caption>
+<thead><tr><th scope="col">Section</th><th scope="col">o</th><th scope="col">e</th><th scope="col">(o − e)² ÷ e</th></tr></thead>
+<tbody>
+<tr><td>Dark, moist</td><td>24</td><td>15</td><td>81 ÷ 15 = 5.40</td></tr>
+<tr><td>Dark, dry</td><td>14</td><td>15</td><td>1 ÷ 15 = 0.07</td></tr>
+<tr><td>Light, moist</td><td>13</td><td>15</td><td>4 ÷ 15 = 0.27</td></tr>
+<tr><td>Light, dry</td><td>9</td><td>15</td><td>36 ÷ 15 = 2.40</td></tr>
+<tr><th scope="row">Total</th><td>60</td><td>60</td><td>χ² = 8.13</td></tr>
+</tbody>
+</table></div>
+<p>df = 4 − 1 = 3. At p = 0.05 the critical value is 7.82; 8.13 is greater, so reject the null. At the stricter p = 0.01 the critical value is 11.34, and 8.13 falls short, so 0.01 &lt; p &lt; 0.05. The dark-moist section supplies two thirds of χ²: that is where the animals clustered.</p>
+
+<h2 id="expected">Expected counts from any ratio</h2>
+<p>The null hypothesis does not have to be an equal split. If birds are expected to visit three feeders in proportion to their size, 50% : 30% : 20%, then 200 visits give expected counts of 100, 60 and 40. Observed 86, 74 and 40 give χ² = 1.96 + 3.27 + 0 = 5.23; with df = 2 the critical value is 5.99, so fail to reject. Check that your expected counts add up to the same total as your observed counts.</p>
+
+<h2 id="slips">Common slips</h2>
+<ul>
+<li>Using percentages or means instead of counts. Chi-square depends on how many individuals you counted: the same 72.5 : 27.5 split gives χ² = 8.1 with 40 animals and 81 with 400.</li>
+<li>Counting individuals instead of categories for df.</li>
+<li>Reading "χ² bigger than the critical value" as support for the null. It is the opposite.</li>
+<li>Writing "accept the null" or "prove". Say "reject" or "fail to reject".</li>
+</ul>
+
+<aside class="going-further"><h3>Going further: a good fit</h3>
+<p>A seed packet claimed equal numbers of red- and white-flowered plants. Of 100 plants, 54 were red and 46 white. χ² = (4² ÷ 50) + (4² ÷ 50) = 0.64, far below 3.84. If the claim is true, a deviation at least this large happens by chance about 4 times in 10, so the data are consistent with the claim.</p></aside>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-chi-square">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="compartment-origins.html"><span>&larr; Previous</span><b>Origins of Cell Compartmentalization</b></a><a class="tb-chapter-link next" href="enzyme-structure.html"><span>Next &rarr;</span><b>Enzyme Structure</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-chi-square">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>

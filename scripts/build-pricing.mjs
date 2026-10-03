@@ -313,7 +313,9 @@ function hubLd() {
 }
 
 /* AP® Biology's hub card, once a unit is out. What it says is counted from
-   what is published (scripts/build-apbio.mjs), never typed. */
+   what is published (scripts/build-apbio.mjs), never typed. "N published
+   topics", not "N topics": check-site reads "N topics" on the hub as the
+   ochem curriculum's count. */
 function hubBioCard() {
   const topics = N.apbioTopics;
   return `        <a class="featured-card" href="bio/">
@@ -323,7 +325,7 @@ function hubBioCard() {
           </div>
           <div>
             <p class="featured-name">AP® Biology</p>
-            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${fmt(topics)} topic${topics === 1 ? '' : 's'} published so far, more every few weeks.</p>
+            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${fmt(topics)} published topic${topics === 1 ? '' : 's'} so far, more every few weeks.</p>
           </div>
           <div class="featured-tags">
             <span>Beta</span>
@@ -420,7 +422,7 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
   let out = between(src, '<!-- nf-ochem:start -->', '<!-- nf-ochem:end -->', card, rel);
   const bio = `    <a class="card nf-card" href="/bio/">
       <h2>AP® Biology (Beta) &rarr;</h2>
-      <p>${fmt(N.apbioTopics)} topic${N.apbioTopics === 1 ? '' : 's'} so far, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+      <p>${fmt(N.apbioTopics)} published topic${N.apbioTopics === 1 ? '' : 's'} so far, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
     </a>`;
   out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
   put(rel, out);

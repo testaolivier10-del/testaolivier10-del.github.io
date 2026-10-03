@@ -133,6 +133,9 @@
     apbio: {
       name: 'AP® Biology',
       dailyFree: 15,
+      // Until the owner creates the Polar product (docs/apbio-spec.md, launch
+      // checklist), the course is fully open and Premium reads "Coming soon".
+      onSale: false,
       // Units 1 and 2 are fully open. Every skills lesson is free too, per
       // topic rather than per chapter (topic.free in bio-curriculum.js, from
       // isFreeTopic in scripts/lib/apbio-build.mjs), so skills practice still
@@ -217,8 +220,15 @@
     return isNaN(t) ? null : t;
   }
 
+  /* A course can wait for its own checkout after the site has launched:
+     `onSale: false` in COURSES keeps it as before launch (nothing locked,
+     "Coming soon" cards, launch-email sign-ups) until its product exists. */
+  function live(course) {
+    return LAUNCHED && !(COURSES[course] && COURSES[course].onSale === false);
+  }
+
   function has(course) {
-    if (!LAUNCHED) return true;
+    if (!live(course)) return true;
     var t = expiry(course);
     return t !== null && t > Date.now();
   }
@@ -384,9 +394,9 @@
 
   function badge(course) {
     if (!COURSES[course]) return '';
-    if (LAUNCHED && has(course)) return '';
+    if (live(course) && has(course)) return '';
     return '<button type="button" class="premium-badge"' + openAttrs(course, 'badge') +
-      ' title="' + (LAUNCHED ? 'Part of Premium' : 'Part of Premium — free until it launches') + '">Premium</button>';
+      ' title="' + (live(course) ? 'Part of Premium' : 'Part of Premium — free until it launches') + '">Premium</button>';
   }
 
   // The lowest pass price, at the founding price while it runs, so the cards
@@ -441,20 +451,20 @@
   function card(course, source) {
     var c = COURSES[course];
     if (!c) return '';
-    if (LAUNCHED && has(course)) return '';
-    if (!LAUNCHED && joined(course)) {
+    if (live(course) && has(course)) return '';
+    if (!live(course) && joined(course)) {
       return '<div class="premium-card is-joined">' +
         '<b>You’re on the Premium list</b>' +
         '<p>We’ll email you once, when it launches.</p>' +
       '</div>';
     }
     return '<div class="premium-card">' +
-      '<span class="premium-card__tag">' + (LAUNCHED ? 'Premium' : 'Coming soon') + '</span>' +
+      '<span class="premium-card__tag">' + (live(course) ? 'Premium' : 'Coming soon') + '</span>' +
       '<b>Premium for ' + esc(c.name) + '</b>' +
       '<span class="premium-card__price">From ' + fromPrice(c) + ' for ' + passLength(c) + ', one-time</span>' +
       '<p>' + esc(c.premium.slice(0, 3).join(' · ')) + '.</p>' +
       '<button type="button" class="btn-press sm"' + openAttrs(course, source) + '>' +
-        (LAUNCHED ? 'See Premium' : 'Get notified') + '</button>' +
+        (live(course) ? 'See Premium' : 'Get notified') + '</button>' +
     '</div>';
   }
 
@@ -558,13 +568,13 @@
     setMsg('');
 
     document.getElementById('premiumTitle').textContent =
-      LAUNCHED ? 'Premium for ' + c.name : 'Premium is coming';
+      live(course) ? 'Premium for ' + c.name : 'Premium is coming';
     document.getElementById('premiumLists').innerHTML =
       listHtml('Premium', c.premium) + listHtml('Always free', c.free);
 
     var body = document.getElementById('premiumBody');
     var fine = document.getElementById('premiumFine');
-    if (LAUNCHED) {
+    if (live(course)) {
       var dated = c.passes.filter(function (p) { return p.until; })[0];
       document.getElementById('premiumSub').textContent =
         (dated
@@ -890,7 +900,8 @@
   }
 
   window.LevlPremium = {
-    launched: function () { return LAUNCHED; },
+    // launched(course): that course's passes are on sale; launched(): the site has launched.
+    launched: function (course) { return course ? live(course) : LAUNCHED; },
     COURSES: COURSES,
     FOUNDING: FOUNDING,
     GUARANTEE: GUARANTEE,

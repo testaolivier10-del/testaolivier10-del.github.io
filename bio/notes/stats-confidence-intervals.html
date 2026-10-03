@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>95% confidence intervals and error bars — AP® Biology Notes</title>
+<meta name="description" content="Beet cells keep a red, water-soluble substance behind selectively permeable membranes.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/stats-confidence-intervals.html">
+<meta property="og:title" content="95% confidence intervals and error bars — AP® Biology Notes">
+<meta property="og:description" content="Beet cells keep a red, water-soluble substance behind selectively permeable membranes.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/stats-confidence-intervals.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/stats-confidence-intervals.html#reading",
+      "name": "95% confidence intervals and error bars",
+      "url": "https://levlprep.com/bio/notes/stats-confidence-intervals.html",
+      "description": "Beet cells keep a red, water-soluble substance behind selectively permeable membranes.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "95% confidence intervals and error bars biology practice",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "95% confidence intervals and error bars: notes",
+          "item": "https://levlprep.com/bio/notes/stats-confidence-intervals.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-confidence-intervals" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>7 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bio-toc-n">S</span>Mean, median, mode and range</a></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bio-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li class="current" data-toc-t="stats-confidence-intervals"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Is the taller bar really taller?</a><a href="#worked">Worked example: building and comparing 95% confidence intervals</a><a href="#meaning">What a 95% confidence interval means</a><a href="#overlap">Reading error bars: the overlap rule</a><a href="#label">Error bars must say what they are</a><a href="#language">Writing the conclusion</a></div></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bio-toc-n">S</span>Chi-square test</a></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">95% confidence intervals and error bars: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-confidence-intervals.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">95% confidence intervals and error bars</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">4 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-confidence-intervals">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-confidence-intervals.html&amp;title=95%25%20confidence%20intervals%20and%20error%20bars%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-confidence-intervals.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<h2 id="why">Is the taller bar really taller?</h2>
+<p>Beet <a class="gl" href="../notes/cell-structure-function.html" data-c="cell">cells</a> keep a red, water-soluble substance behind <a class="gl" href="../notes/membrane-permeability.html" data-c="selective-permeability">selectively permeable</a> <a class="gl" href="../notes/lipids.html" data-c="membrane-basic">membranes</a>. Heat damages the membranes and the substance leaks out, so the water around a heated cube turns red. Eight cubes heated to 60 °C give a mean absorbance of 0.46; eight heated to 70 °C give 0.62. The second mean is higher, but another eight cubes would give slightly different means. How sure can you be that 70 °C really causes more leakage? A <b><span class="gl" tabindex="0" data-c="confidence-interval">95% confidence interval</span></b>, drawn as an <b><span class="gl" tabindex="0" data-c="error-bar">error bar</span></b>, answers that on the graph itself.</p>
+
+<h2 id="worked">Worked example: building and comparing 95% confidence intervals</h2>
+<div class="worked">
+<p><b>Data:</b> sideways movement of a labeled <a class="gl" href="../notes/elements-of-life.html" data-c="lipid">lipid</a> in artificial membranes (faster means more fluid).</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="From standard deviation to 95% confidence interval"><table class="compare">
+<caption>From standard deviation to 95% confidence interval</caption>
+<thead><tr><th scope="col">Temperature</th><th scope="col">n</th><th scope="col">x̄ (µm²/s)</th><th scope="col">s</th><th scope="col">SE = s ÷ √n</th><th scope="col">95% CI = x̄ ± 2SE</th></tr></thead>
+<tbody>
+<tr><td>15 °C</td><td>9</td><td>1.8</td><td>0.30</td><td>0.30 ÷ 3 = 0.10</td><td>1.6 to 2.0</td></tr>
+<tr><td>25 °C</td><td>9</td><td>2.5</td><td>0.36</td><td>0.36 ÷ 3 = 0.12</td><td>2.26 to 2.74</td></tr>
+<tr><td>35 °C</td><td>4</td><td>3.0</td><td>0.60</td><td>0.60 ÷ 2 = 0.30</td><td>2.4 to 3.6</td></tr>
+</tbody>
+</table></div>
+<p><b>15 vs 25 °C:</b> 1.6-2.0 and 2.26-2.74 do not overlap. The difference is likely real: <a class="gl" href="../notes/design-null-hypothesis.html" data-c="reject-null">reject the null hypothesis</a> of no difference.</p>
+<p><b>25 vs 35 °C:</b> 2.26-2.74 and 2.4-3.6 overlap. The data do not show a difference: fail to reject the null. With only four membranes at 35 °C, the interval is wide; more membranes might reveal a difference.</p>
+</div>
+
+<h2 id="meaning">What a 95% confidence interval means</h2>
+<p>The <a class="gl" href="../notes/stats-sd-se.html" data-c="standard-error">standard error</a>, SE = s ÷ √n, measures how much a <a class="gl" href="../notes/stats-descriptive.html" data-c="mean">sample mean</a> would wobble from sample to sample. Sample means are spread roughly normally around the true mean, so about 95% of them land within 2 SE of it. Turning that around: the range x̄ ± 2SE, built from your sample, very probably contains the true mean. That range is the 95% confidence interval. (Strictly, the multiplier is slightly above 2 for small samples; the exam uses 2.)</p>
+<p>Two things set its width: the spread of the data (s) and the <a class="gl" href="../notes/stats-descriptive.html" data-c="sample">sample size</a> (n). More variable data widen it; more data narrow it. Because SE falls with √n, four times as many measurements halve the width.</p>
+
+<h2 id="overlap">Reading error bars: the overlap rule</h2>
+<figure  id="fig-ci" class="bio-figure"><div class="bio-figimg" data-fig="ci-overlap"><img src="../figures/ci-overlap.svg" alt="Two panels of means with 95% confidence interval error bars. Left: bars for groups A and B do not overlap; label &quot;likely a real difference: reject the null&quot;. Right: bars for groups C and D overlap; label &quot;data do not show a difference: fail to reject the null&quot;." width="640" height="340" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Non-overlapping 95% CI error bars suggest a real difference; overlapping bars mean the data do not show one. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<ul>
+<li><b>No overlap</b> between two groups' 95% CI bars: the difference is unlikely to be due to chance. It is <b><span class="gl" tabindex="0" data-c="significance">statistically significant</span></b>, and you reject the <a class="gl" href="../notes/design-null-hypothesis.html" data-c="null-hypothesis">null hypothesis</a>.</li>
+<li><b>Overlap</b>: the data do not show a difference. You fail to reject the null <a class="gl" href="../notes/design-variables.html" data-c="hypothesis">hypothesis</a>. This is <i>not</i> evidence that the means are equal.</li>
+</ul>
+<p>In the beet graph, the 95% CIs are 20 °C, 0.05-0.11; 40 °C, 0.06-0.14; 60 °C, 0.40-0.52; and 70 °C, 0.50-0.74. Leakage at 60 °C is clearly above 40 °C (no overlap), but 60 and 70 °C overlap, so those two are not shown to differ even though the means are 0.16 apart. The jump between 40 and 60 °C fits the biology: heat loosens the <a class="gl" href="../notes/lipids.html" data-c="lipid-bilayer">bilayer</a>'s <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="hydrophobic">hydrophobic</a> core and unfolds <a class="gl" href="../notes/plasma-membrane.html" data-c="membrane-protein">membrane proteins</a>, so the membrane stops acting as a selective barrier.</p>
+
+<h2 id="label">Error bars must say what they are</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Three kinds of error bar"><table class="compare">
+<caption>Three kinds of error bar</caption>
+<thead><tr><th scope="col">Bar shows</th><th scope="col">Length</th><th scope="col">Tells you about</th><th scope="col">Overlap rule applies?</th></tr></thead>
+<tbody>
+<tr><td>± 1 <a class="gl" href="../notes/stats-sd-se.html" data-c="standard-deviation">SD</a> (or 2 SD)</td><td>Longest</td><td>Spread of individual values</td><td>No</td></tr>
+<tr><td>± 1 SE</td><td>Shortest</td><td>Precision of the mean</td><td>No (too short; non-overlap is weak evidence)</td></tr>
+<tr><td>± 2 SE (95% CI)</td><td>Twice the SE bar</td><td>Range likely to hold the true mean</td><td>Yes</td></tr>
+</tbody>
+</table></div>
+<p>When you draw error bars in a free-response answer, state in the key or caption that they show ± 2SE (95% CI).</p>
+
+<h2 id="language">Writing the conclusion</h2>
+<ul>
+<li>"The 95% confidence intervals for 40 °C and 60 °C do not overlap, so the difference is statistically significant and we reject the null hypothesis that temperature has no effect on leakage."</li>
+<li>"The intervals for 60 °C and 70 °C overlap, so the data do not show a difference between them; we fail to reject the null hypothesis."</li>
+</ul>
+<p>Avoid "proves", "accept the null" and "the means are the same".</p>
+
+<aside class="going-further"><h3>Going further: why overlap is not the last word</h3>
+<p>The overlap rule is a quick visual check, and it is cautious: two 95% intervals can overlap slightly while a formal test of the difference would still call it significant. That is one more reason to say "the data do not show a difference" rather than "there is no difference" when bars overlap.</p></aside>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-confidence-intervals">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="membrane-permeability.html"><span>&larr; Previous</span><b>Membrane Permeability</b></a><a class="tb-chapter-link next" href="membrane-transport.html"><span>Next &rarr;</span><b>Membrane Transport</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-confidence-intervals">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>

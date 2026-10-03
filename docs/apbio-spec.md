@@ -80,8 +80,8 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.4a | App pages: practice, review, exams, FRQ, dashboard, flashcards, search, teachers; share links | `claude/apbio-apps` | done against the placeholder sample (`docs/apbio-architecture.md`, "App pages") |
 | 0.4b | Simulators + skills tools: osmosis and enzyme simulators, 6 skills tools + Hardy-Weinberg and Simpson (hidden until Units 7-8), design drills (placeholder) | `claude/apbio-tools` | merged into `claude/apbio-beta` |
 | 0.5 | Site registration: registry, Premium and the fixed-date pass, Worker, SQL migration, hub/404/pricing (shown once a unit is published), search, tutor, sitemap, manifest, OG card, budgets, browser checks, exam-date default, privacy "For schools" | `claude/apbio-register` | done (decisions 9-19); owner steps in section 6 |
-| 2 | Units 1-3 + statistics skills, Beta | `claude/apbio-beta` (authors on `claude/apbio-u1`, `-u2a`, `-u2b`, `-u3`, `-skills`) | writing |
-| 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
+| 2 | Units 1-3 + statistics and design skills, Beta | `claude/apbio-beta` | published 2026-10-03: 35 topics (23 CED + 12 skills/design), 688 questions, 13 FRQs, 2 simulators, 9 tools; every unit accuracy-checked (`docs/apbio-reviews/`). Pass not on sale yet (owner checklist) |
+| 3 | Units 4-8 (one at a time, each with its accuracy check), remaining 10 simulators, full practice exams (by 2027-01-15); glossary page to the A&P index design (decision 22) | | next |
 | 4 | Cram kit (by 2027-03-01) | | not started |
 
 ## 3. Decisions log
@@ -216,6 +216,18 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    selling, no profiling; deletion in-app or by email; willingness to sign the SDPC NDPA. It
    summarizes the page and adds no new collection.
 
+21. (2026-10-03) **On sale per course.** `COURSES.apbio.onSale: false` in `assets/premium.js`
+   keeps the course as before launch (nothing locked, "Coming soon" cards, launch-email sign-ups)
+   while the rest of the site is launched: publishing Units 1-3 must not put a paywall in front of
+   students when the Polar product does not exist yet. `LevlPremium.launched(course)` answers per
+   course; `launched()` is still the site switch. Tested in `scripts/test/premium.test.mjs`.
+22. (2026-10-03) **Glossary page budget.** `bio/glossary.html` still prints every definition (37 KB
+   gzipped with Units 1-3), so its budget is 40 KB for now; Phase 3 moves it to the A&P design
+   (anp decision 69: an index, definitions drawn from `glossary.json`). The first lesson's budget
+   is 13 KB (three stimulus sets' check items).
+23. (2026-10-03) **Hub wording.** The hub and 404 cards say "N published topics": `check-site`
+   reads "N topics" on those pages as the ochem curriculum's count.
+
 ## 4. Map format (Phase 0)
 
 `docs/apbio-dependency-map.json` (validated by `scripts/lib/apbio-map.mjs`, checked by
@@ -250,8 +262,11 @@ See `docs/apbio-needs-author.md`.
 
 ## 6. AP® Biology launch: owner checklist (only you can do these)
 
-In this order: the Worker calls `premium_add_pass` with `p_until`, so **the migration must be
-applied before the Worker is deployed**, or every purchase webhook fails.
+In this order. The Worker sends `p_until` to `premium_add_pass` only for the dated AP® Biology
+pass, so other courses' purchases work before and after the migration; an AP® Biology purchase,
+or a waitlist sign-up for it, needs the migration first. Until step 3 is done, AP® Biology is
+fully open with "Premium coming soon" (`onSale: false` in `assets/premium.js`, decision 21);
+step 5 turns the sale on.
 
 - [ ] **1. Apply the migration before selling.** Supabase → project → SQL Editor → New query → paste
       `scripts/sql/migrations/2026-10b-apbio.sql` → Run (idempotent). Check:
@@ -277,6 +292,10 @@ applied before the Worker is deployed**, or every purchase webhook fails.
       `worker/dist/worker.js`). Then buy `bio-2027` once in Polar's sandbox (or with a 100% code),
       check the `premium_passes` row ends `2027-07-01 09:59:59+00` (June 30, 23:59:59 Hawaii), and
       refund it from the Account page.
-- [ ] **5. Publish Unit 1** (`bio/data/published.json`) only after its accuracy check; the hub
-      card, pricing section, sitemap and search entries appear with it.
+- [x] **5. Units 1-3 and the skills track published in Beta** (2026-10-03), each after its
+      independent accuracy check (`docs/apbio-reviews/`).
+- [ ] **6. Put the pass on sale.** After steps 1-4: in `assets/premium.js`, delete `onSale: false`
+      from `COURSES.apbio`, bump `CACHE` in `sw.js`, commit to main. Free users then meet the gates
+      (Units 3+, every simulator but osmosis, FRQ rubrics outside Units 1-2, more than one exam,
+      more than 15 questions a day).
 

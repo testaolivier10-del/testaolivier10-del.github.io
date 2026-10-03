@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mean, median, mode and range — AP® Biology Notes | LevlPrep</title>
+<meta name="description" content="The water piles up into a dome, held together by the hydrogen bonds between water molecules at the surface, until it finally spills.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/stats-descriptive.html">
+<meta property="og:title" content="Mean, median, mode and range — AP® Biology Notes | LevlPrep">
+<meta property="og:description" content="The water piles up into a dome, held together by the hydrogen bonds between water molecules at the surface, until it finally spills.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/stats-descriptive.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/stats-descriptive.html#reading",
+      "name": "Mean, median, mode and range",
+      "url": "https://levlprep.com/bio/notes/stats-descriptive.html",
+      "description": "The water piles up into a dome, held together by the hydrogen bonds between water molecules at the surface, until it finally spills.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "mean, median, mode and range biology practice",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Mean, median, mode and range: notes",
+          "item": "https://levlprep.com/bio/notes/stats-descriptive.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-descriptive" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>7 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li class="current" data-toc-t="stats-descriptive"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>Mean, median, mode and range</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Why one measurement is never enough</a><a href="#worked">Worked example: mean, median, mode and range</a><a href="#center">Mean or median? What an outlier does</a><a href="#outliers">What to do with an outlier</a><a href="#spread">Spread: the range and why it matters</a><a href="#types">Types of data</a></div></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bio-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bio-toc-n">S</span>Chi-square test</a></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Mean, median, mode and range: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-descriptive.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">Mean, median, mode and range</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">5 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-descriptive">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-descriptive.html&amp;title=Mean%2C%20median%2C%20mode%20and%20range%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-descriptive.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<h2 id="why">Why one measurement is never enough</h2>
+<p>Put a coin on a table and add water one drop at a time. The water piles up into a dome, held together by the <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="hydrogen-bond">hydrogen bonds</a> between <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="water-molecule">water molecules</a> at the surface, until it finally spills. Count the drops and you might get 31. Dry the coin and do it again: 28. Again: 33. The coin did not change; small differences in drop size, how steady your hand was and where each drop landed changed the count.</p>
+<p>This happens in every experiment. Repeated measurements of the same thing vary, so the honest result is not one number but a <b>sample</b>: the set of values you actually collected. The number of values in it is the <b><span class="gl" tabindex="0" data-c="sample">sample size</span></b>, written <i>n</i>. To report a sample you need two kinds of summary: where its values are centered, and how spread out they are.</p>
+
+<h2 id="worked">Worked example: mean, median, mode and range</h2>
+<div class="worked">
+<p><b>Data:</b> drops held on a coin with plain water, measured eight times: 31, 28, 33, 30, 29, 35, 30, 32 drops.</p>
+<p><b>Mean</b> (add, then divide by <i>n</i>): x̄ = Σx ÷ n = (31 + 28 + 33 + 30 + 29 + 35 + 30 + 32) ÷ 8 = 248 ÷ 8 = <b>31.0 drops</b>.</p>
+<p><b><span class="gl" tabindex="0" data-c="median">Median</span></b> (sort, then take the middle): 28, 29, 30, 30, 31, 32, 33, 35. With 8 values there are two middle values, the 4th (30) and the 5th (31). Median = (30 + 31) ÷ 2 = <b>30.5 drops</b>.</p>
+<p><b>Mode</b> (most frequent value): 30 appears twice, every other value once. Mode = <b>30 drops</b>.</p>
+<p><b>Range</b> (largest − smallest): 35 − 28 = <b>7 drops</b>.</p>
+</div>
+<p>On the exam's formula sheet the mean is written x̄ = (1/n) Σ x<sub>i</sub>: the symbol Σ ("sigma") means "add up all of them".</p>
+
+<h2 id="center">Mean or median? What an outlier does</h2>
+<figure  id="fig-dot-plot" class="bio-figure"><div class="bio-figimg" data-fig="dot-plot-center"><img src="../figures/dot-plot-center.svg" alt="A dot plot of eight drop counts: 13, 14, 14, 15, 15, 16, 16 and 31. The median, 15, sits in the middle of the cluster; the mean, 16.75, is pulled to the right toward the single high value of 31. The range runs from 13 to 31." width="640" height="300" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Eight drop counts with 2% soap. The median stays with the cluster; the mean is pulled toward the single high value. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>Now add soap to the water. Soap <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="molecule">molecules</a> crowd between water molecules at the surface, fewer hydrogen bonds hold the surface together, and the dome breaks sooner. One group got 14, 16, 13, 15, 31, 14, 16, 15 drops. Seven values sit between 13 and 16, and one is 31 (<a class="figref" href="#fig-dot-plot">see the dot plot</a>).</p>
+<ul>
+<li>The <b>mean</b> is 134 ÷ 8 = 16.75 drops. Every value adds to the sum, so the 31 adds far more than the others and drags the mean above seven of the eight values.</li>
+<li>The <b>median</b> is the average of the 4th and 5th sorted values: (15 + 15) ÷ 2 = 15 drops. It depends only on position, so the 31 could be 310 and the median would not move.</li>
+</ul>
+<p>A value far from the rest is an <b><span class="gl" tabindex="0" data-c="outlier">outlier</span></b>. When a data set has an outlier, or is lopsided with a long tail on one side, the median describes a typical value better than the mean. When the data are roughly symmetric, the two are close and the mean is usually reported because it uses all the information.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Comparing the summaries of center"><table class="compare">
+<caption>Comparing the summaries of center</caption>
+<thead><tr><th scope="col">Summary</th><th scope="col">How to find it</th><th scope="col">Effect of one outlier</th><th scope="col">Best used when</th></tr></thead>
+<tbody>
+<tr><th scope="row">Mean</th><td>Sum ÷ n</td><td>Pulled strongly toward it</td><td>Data roughly symmetric, no outliers</td></tr>
+<tr><th scope="row">Median</th><td>Middle of sorted data</td><td>Barely moves</td><td>Outliers or lopsided data</td></tr>
+<tr><th scope="row">Mode</th><td>Most frequent value</td><td>None (unless the outlier repeats)</td><td>Counts or categories with a clear favorite</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="outliers">What to do with an outlier</h2>
+<p>An outlier is a question, not an answer. First check for a mistake: a copying error (31 written for 13), a dirty coin, a dropper that was swapped. If you find one, correct or remove the value and say so. If you find nothing, the value is real data. Keep it, report it, and give the median as well as the mean so a reader sees its effect. Deleting a value because it is inconvenient makes your results look more consistent than they were.</p>
+
+<h2 id="spread">Spread: the range and why it matters</h2>
+<p>Two groups each report a mean of 25 drops. Group P got 24, 25, 25, 26, 25; group Q got 18, 31, 25, 22, 29. The centers match, but P's range is 26 − 24 = 2 drops and Q's is 31 − 18 = 13 drops. Q's measurements are far less consistent, so any single Q value could land well away from 25. A center without a spread hides this, so always report both.</p>
+<p>The range is quick but uses only two values, so a single outlier inflates it (the 2% soap data have a range of 31 − 13 = 18 drops, mostly because of one value). Later skills replace it with measures of spread that use every value.</p>
+
+<h2 id="types">Types of data</h2>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Kinds of data you will meet"><table class="compare">
+<caption>Kinds of data you will meet</caption>
+<thead><tr><th scope="col">Type</th><th scope="col">What it is</th><th scope="col">Examples</th><th scope="col">Can you average it?</th></tr></thead>
+<tbody>
+<tr><th scope="row">Quantitative, discrete</th><td>Counted in whole units</td><td>Drops on a coin, number of seeds</td><td>Yes</td></tr>
+<tr><th scope="row">Quantitative, continuous</th><td>Measured on a scale</td><td>Mass (g), time (s), temperature (°C)</td><td>Yes</td></tr>
+<tr><th scope="row">Qualitative (categorical)</th><td>Names or categories</td><td>Color, spilled or not</td><td>No; count each category instead</td></tr>
+</tbody>
+</table></div>
+<p>A mean of counted drops can be a decimal (31.0, 16.75) even though each count is whole: the mean describes the sample, not one measurement.</p>
+
+<aside class="going-further"><h3>Going further: working backward from a mean</h3>
+<p>Because mean = sum ÷ n, the sum is mean × n. If five cups have a mean cooling time of 9.2 min and four of them took 9.0, 9.4, 8.8 and 9.6 min, the five add to 9.2 × 5 = 46.0 min, the four add to 36.8 min, and the fifth took 46.0 − 36.8 = 9.2 min. Exam questions use this to test whether you understand the mean rather than just the button on a calculator.</p></aside>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-descriptive">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="water-hydrogen-bonding.html"><span>&larr; Previous</span><b>Structure of Water and Hydrogen Bonding</b></a><a class="tb-chapter-link next" href="design-variables.html"><span>Next &rarr;</span><b>Independent and dependent variables</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-descriptive">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>
