@@ -38,6 +38,7 @@
     { key: 'nremt', dir: 'nremt' },
     { key: 'ochem', dir: 'ochem' },
     { key: 'anp', dir: 'anatomy-physiology' },
+    { key: 'apbio', dir: 'bio' },
   ];
   // courses:end
   function courseKey(){
@@ -99,10 +100,20 @@
       .catch(function(){ return []; });
   }
 
+  // AP® Biology's published notes pages (scripts/build-apbio.mjs writes the
+  // list; it is empty until a unit is published) and its glossary page.
+  function bioPages(){
+    return fetch('/bio/assets/notes-index.json')
+      .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(list){ return list.length ? list.concat([{ file: '/bio/glossary.html', title: 'Glossary' }]) : list; })
+      .catch(function(){ return []; });
+  }
+
   function resolvePages(){
     var k = courseKey();
     if(k === 'ochem') return ochemPages();
     if(k === 'anp') return anpPages();
+    if(k === 'apbio') return bioPages();
     return Promise.resolve(NREMT_PAGES);
   }
 
@@ -111,6 +122,7 @@
     var k = courseKey();
     if(k === 'ochem') return '<a href="/ochem/learn.html">search the textbook</a>';
     if(k === 'anp') return '<a href="/anatomy-physiology/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
+    if(k === 'apbio') return '<a href="/bio/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
@@ -999,13 +1011,20 @@
       'Why does osmosis move water?',
       'Explain negative feedback with an example',
       'What sets the resting membrane potential?'
+    ],
+    apbio: [
+      'Why does water have a high specific heat?',
+      'How does a competitive inhibitor change enzyme activity?',
+      'Walk me through how a chi-square test works',
+      'Explain water potential simply'
     ]
   };
 
   var GREETING = {
     nremt: 'Ask me anything from this course — the notes, glossary, mnemonics, flow diagrams and skill sheets are all indexed. I can define a term, explain it a different way, or point you at the page it came from.',
     ochem: 'Ask me anything from this course — the textbook section for all 123 topics is indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.',
-    anp: 'Ask me anything from this course — every Anatomy & Physiology notes page is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.'
+    anp: 'Ask me anything from this course — every Anatomy & Physiology notes page is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.',
+    apbio: 'Ask me anything from this course — every published Biology notes page and the glossary are indexed. I can define a term, explain a process step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){

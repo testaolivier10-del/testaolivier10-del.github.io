@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function syncUrl(q){
     var p = new URLSearchParams();
     if(q) p.set('q', q);
-    if(scope !== 'all') p.set('course', scope);
+    if(scope !== 'all') p.set('course', A.urlKey ? A.urlKey(scope) : scope);
     var s = p.toString();
     try{ history.replaceState(null, '', s ? '?' + s : location.pathname); }catch(e){}
   }

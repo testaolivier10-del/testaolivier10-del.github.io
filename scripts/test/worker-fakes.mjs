@@ -33,7 +33,8 @@ export function premiumRpc(rows, name, args, now, counts = []) {
     const live = rows.filter((r) => r.user_id === args.p_user && r.course === args.p_course && !r.refunded_at);
     const latest = live.length ? Math.max(...live.map((r) => ms(r.expires_at))) : 0;
     const start = Math.max(now, latest || 0);
-    const end = start + args.p_days * DAY;
+    // A fixed-date pass runs at least to p_until (2026-10b-apbio.sql).
+    const end = Math.max(start + args.p_days * DAY, args.p_until ? ms(args.p_until) : 0);
     const row = {
       id: rows.reduce((m, r) => Math.max(m, r.id || 0), 0) + 1,
       user_id: args.p_user, course: args.p_course, pass: args.p_pass,

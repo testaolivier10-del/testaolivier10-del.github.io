@@ -39,6 +39,7 @@
     { key: 'nremt', dir: 'nremt' },
     { key: 'ochem', dir: 'ochem' },
     { key: 'anp', dir: 'anatomy-physiology' },
+    { key: 'apbio', dir: 'bio' },
   ];
   // courses:end
 

@@ -18,6 +18,7 @@
     { key: 'nremt', paid: true },
     { key: 'ochem', paid: true },
     { key: 'anp', paid: true },
+    { key: 'apbio', paid: true },
   ];
   // courses:end
   var COURSE_ORDER = COURSE_LIST.filter(function (c) { return c.paid; }).map(function (c) { return c.key; });
