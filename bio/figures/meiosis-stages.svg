@@ -32,11 +32,11 @@
 <circle cx="389.0" cy="103.0" r="5.0" fill="#1F2A28"/>
 <line x1="284.0" y1="125.0" x2="365.0" y2="103.0" stroke="#5D6B69" stroke-width="1.2"/>
 <line x1="476.0" y1="125.0" x2="395.0" y2="103.0" stroke="#5D6B69" stroke-width="1.2"/>
-<rect x="362.6" y="140.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
-<rect x="371.4" y="140.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<rect x="362.6" y="140.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<rect x="371.4" y="140.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
 <circle cx="371.0" cy="151.0" r="5.0" fill="#1F2A28"/>
-<rect x="380.6" y="140.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
-<rect x="389.4" y="140.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<rect x="380.6" y="140.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<rect x="389.4" y="140.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
 <circle cx="389.0" cy="151.0" r="5.0" fill="#1F2A28"/>
 <line x1="284.0" y1="125.0" x2="365.0" y2="151.0" stroke="#5D6B69" stroke-width="1.2"/>
 <line x1="476.0" y1="125.0" x2="395.0" y2="151.0" stroke="#5D6B69" stroke-width="1.2"/>

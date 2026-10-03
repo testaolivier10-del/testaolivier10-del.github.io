@@ -436,7 +436,7 @@
       "practice": "6.E",
       "level": "analyze",
       "diff": 2,
-      "q": "Huntington's disease is autosomal dominant, and symptoms usually begin between ages 30 and 50. A man develops it at 45; his mother was never affected and lived to 85. His 20-year-old daughter has no symptoms. What is the probability that she carries the Huntington's allele?",
+      "q": "Huntington's disease is autosomal dominant, and symptoms usually begin between ages 30 and 50. A man develops it at 45; his mother was never affected and lived to 85. His 20-year-old daughter has no symptoms, and her mother has no family history of the disease. What is the probability that she carries the Huntington's allele?",
       "options": [
         "1/2",
         "1/4",
