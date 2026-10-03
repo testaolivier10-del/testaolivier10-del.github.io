@@ -1116,7 +1116,22 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/cell-communication.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/cell-compartmentalization.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/cell-cycle-regulation.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/cell-cycle.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1196,6 +1211,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/feedback.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/lipids.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1232,6 +1252,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/notes/proteins.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/signal-transduction-intro.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/signal-transduction-pathways.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1311,6 +1341,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/units/unit-4.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/nremt/body-map.html</loc>
     <lastmod>2026-10-02</lastmod>
     <priority>0.7</priority>
@@ -1337,7 +1372,7 @@
   </url>
   <url>
     <loc>https://levlprep.com/nremt/scenario-sim.html</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -2831,6 +2866,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-checkpoint-tumor.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-disulfide-heat.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2842,6 +2882,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/frq/frq-enzyme-inhibitor-data.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-g-protein-block.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-glucose-meal-model.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -2861,6 +2911,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-quorum-light.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-root-potassium.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2876,7 +2931,22 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/cell-communication.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/cell-compartmentalization.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/cell-cycle-regulation.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/cell-cycle.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -2956,6 +3026,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/feedback.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/lipids.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2992,6 +3067,16 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/lessons/proteins.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/signal-transduction-intro.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/signal-transduction-pathways.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3067,6 +3152,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/unit-sheets/unit-3.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/unit-sheets/unit-4.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3761,6 +3851,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/tools/cell-cycle-checkpoints.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/tools/chi-square.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
@@ -3797,6 +3892,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/tools/rates.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/tools/signal-transduction-amplification.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
   </url>
