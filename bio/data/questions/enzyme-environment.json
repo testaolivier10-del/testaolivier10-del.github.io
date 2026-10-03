@@ -872,7 +872,7 @@
       "practice": "6.D",
       "level": "analyze",
       "diff": 3,
-      "q": "Methanol is not toxic itself, but an enzyme in the liver converts it to a toxic product. Doctors treat methanol poisoning with fomepizole, a molecule similar in shape to methanol that binds the same enzyme's active site but is converted very slowly. Which explanation best fits?",
+      "q": "Methanol is not toxic itself, but an enzyme in the liver converts it to a toxic product. Doctors treat methanol poisoning with fomepizole, a drug that binds the same enzyme's active site and is not converted to a toxic product. Which explanation best fits?",
       "options": [
         "Fomepizole competes with methanol for the active site, so less methanol is converted while the body removes it.",
         "Fomepizole binds an allosteric site and changes the enzyme's shape, so that the enzyme is no longer able to bind methanol.",
@@ -883,7 +883,7 @@
       "why": {
         "correct": "Both molecules use the same active site. With plenty of fomepizole, most active sites hold it at any moment, so methanol is converted slowly and leaves the body before much toxic product forms.",
         "options": [
-          "A look-alike molecule competing for the active site is a competitive inhibitor; flooding with it protects the patient.",
+          "A molecule that competes with the substrate for the active site is a competitive inhibitor; giving enough of it protects the patient.",
           "The stem says fomepizole binds the active site, not an allosteric site.",
           "A permanently denatured enzyme would not depend on the drug staying present; nothing suggests the drug unfolds the enzyme.",
           "The treatment acts on the enzyme, stopping the toxic product from forming, not on the product afterward."

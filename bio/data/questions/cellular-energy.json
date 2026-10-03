@@ -89,7 +89,7 @@
     "cellular-energy-s3": {
       "kind": "setup",
       "title": "Where did the energy go?",
-      "text": "<p>A yeast culture was grown for 24 hours in an insulated, sealed container that measures all heat released (a calorimeter). The yeast used 10.0 g of glucose, which holds 156 kJ of chemical energy that can be released by breaking it down to carbon dioxide and water. Researchers measured the heat released and the chemical energy in the new yeast cells built during the 24 hours.</p>",
+      "text": "<p>A yeast culture was grown for 24 hours, with a steady supply of air, in an insulated container that measures all heat released (a calorimeter). The yeast used 10.0 g of glucose, which holds 156 kJ of chemical energy that can be released by breaking it down to carbon dioxide and water. Researchers measured the heat released and the chemical energy in the new yeast cells built during the 24 hours.</p>",
       "table": {
         "caption": "Energy budget of the yeast culture over 24 hours",
         "cols": [
@@ -633,9 +633,9 @@
           "why": "The pump that keeps sodium out needs ATP; as ATP runs out, sodium leaks in and the difference shrinks."
         },
         {
-          "name": "Energy released per ATP that is still hydrolyzed",
+          "name": "Number of sodium-potassium pump proteins in the membrane",
           "answer": "none",
-          "why": "The energy released by hydrolyzing one ATP depends on the reaction, not on how fast ATP is made."
+          "why": "The pumps are still there over a few minutes; they stop working because they lack ATP, not because they are destroyed."
         }
       ],
       "why": {
