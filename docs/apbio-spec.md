@@ -81,8 +81,8 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.4b | Simulators + skills tools: osmosis and enzyme simulators, 6 skills tools + Hardy-Weinberg and Simpson (hidden until Units 7-8), design drills (placeholder) | `claude/apbio-tools` | merged into `claude/apbio-beta` |
 | 0.5 | Site registration: registry, Premium and the fixed-date pass, Worker, SQL migration, hub/404/pricing (shown once a unit is published), search, tutor, sitemap, manifest, OG card, budgets, browser checks, exam-date default, privacy "For schools" | `claude/apbio-register` | done (decisions 9-19); owner steps in section 6 |
 | 2 | Units 1-3 + statistics and design skills, Beta | `claude/apbio-beta` | published 2026-10-03: 35 topics (23 CED + 12 skills/design), 688 questions, 13 FRQs, 2 simulators, 9 tools; every unit accuracy-checked (`docs/apbio-reviews/`). Pass not on sale yet (owner checklist) |
-| 3 | Units 4-8 (one at a time, each with its accuracy check), remaining 10 simulators, full practice exams (by 2027-01-15); glossary page to the A&P index design (decision 22) | `claude/apbio-u4` … `-u7` | in progress: Unit 4 published 2026-10-03 (6 topics, 120 questions, 4 FRQs, 2 simulators; review `docs/apbio-reviews/u4.md`); Unit 5 published 2026-10-03 (5 topics, 108 questions, 5 FRQs, meiosis simulator; review `u5.md`). Unit 6 published 2026-10-03 (8 topics, 168 questions, 5 FRQs, operon simulator; review `u6.md`). Unit 7 published 2026-10-03 (12 topics, 249 questions, 6 FRQs, drift and tree-reading simulators; reviews `u7a.md`, `u7b.md`); design drills written and reviewed (`drills.md`). Unit 8 written, review next; glossary index done (decision 22) |
-| 4 | Cram kit (by 2027-03-01) | | not started |
+| 3 | Units 4-8 (one at a time, each with its accuracy check), remaining 10 simulators, full practice exams (by 2027-01-15); glossary page to the A&P index design (decision 22) | `claude/apbio-u4` … `-u8` | done: Unit 4 published 2026-10-03 (6 topics, 120 questions, 4 FRQs, 2 simulators; review `docs/apbio-reviews/u4.md`); Unit 5 published 2026-10-03 (5 topics, 108 questions, 5 FRQs, meiosis simulator; review `u5.md`). Unit 6 published 2026-10-03 (8 topics, 168 questions, 5 FRQs, operon simulator; review `u6.md`). Unit 7 published 2026-10-03 (12 topics, 249 questions, 6 FRQs, drift and tree-reading simulators; reviews `u7a.md`, `u7b.md`); design drills written and reviewed (`drills.md`). Unit 8 published 2026-10-03 (7 topics, 154 questions, 6 FRQs, population-growth and energy-flow simulators; review `u8.md`): all eight units, 10 simulators and the full practice exams are live. Done; glossary index done (decision 22) |
+| 4 | Cram kit (by 2027-03-01) | `claude/apbio-cram` | done 2026-10-03 (decision 26): `bio/cram.html`, 3-week and 2-week plans, timed mixed sets in exams.js; plan generator tests `scripts/test/apbio-cram.test.mjs` |
 
 ## 3. Decisions log
 
@@ -250,6 +250,30 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    file was 55.9 KB gzipped against the 48 KB budget, and check-weight's rule is to split a unit
    rather than raise the budget (a student practicing one topic waits on its file).
 
+26. (2026-10-03) **Cram kit.** `bio/cram.html` (an app page, noindex like dashboard and review: it
+   shows one student's plan) with `bio/assets/pages/cram.js`. The plan counts back 21 or 14 days from
+   the exam date (the shared `apbio_exam_date` setting, default 2027-05-03; the page has its own date
+   field writing the same key) with fixed day templates: 3 weeks = 5 study, practice exam 1, rest,
+   exam review, 5 study, rest, 1 study, practice exam 2, review, 3 weak-spot days, the eve; 2 weeks =
+   4 study, exam 1, review, rest, 2 study, exam 2, review, 2 weak-spot days, the eve. Each study day
+   has two sessions shared over the eight course units in course order, every unit at least one, the
+   rest by largest remainder over the midpoint of the unit's exam weight range, times (1.5 − unit
+   mastery) when the student has answered questions and the personalised plan is allowed; a unit's
+   topics are spread over its sessions in CED order. Weak-spot days take the lowest-mastery units
+   (without data, the heaviest) and list topics under 60%. Every study day links the unit sheets,
+   the topics' notes, a timed mixed set (10 questions in the first third, 20, then 30) and one FRQ
+   (matched to the day's units, no repeat until all are used); exam days link the full practice
+   exam; the last day is light review. Days done: `apbio_cram_v1` (this device only, not synced).
+   Printable (print CSS keeps the day list). **Timed mixed sets** are a third kind in `exams.js`
+   (`?mode=mixed&n=10|20|30`), not a new engine: questions over the published units by exam-weight
+   midpoint (as Section I), sets whole, 1.5 min a question (90 min / 60), the same clock, aria-live
+   warnings (5 and 1 min on a 15-min set; 10, 5, 1 on longer) and end-of-set review with
+   explanations; answers recorded at the end; they never use the free exam. **Premium:** the plan
+   outline (exam weight only) is free and printable; the personalised plan and the timed sets need
+   `ApBioCore.allowed('cram')` (`cram` joined `WHOLE`; open while `onSale: false`). Linked from the
+   course home (the apps card list) and the dashboard (under the exam-date card). premium.js now
+   lists the cram kit without "from March 2027" (needs-author cram-kit-claim resolved).
+
 ## 4. Map format (Phase 0)
 
 `docs/apbio-dependency-map.json` (validated by `scripts/lib/apbio-map.mjs`, checked by
@@ -299,7 +323,7 @@ step 5 turns the sale on.
       - Pricing: **one-time purchase, fixed price, $25.00 USD**
       - Description: "Premium for LevlPrep's AP® Biology course until June 30, 2027, whenever you
         buy it: every interactive lesson, every simulator, unlimited practice and review, all
-        free-response questions and practice exams, the cram kit (from March 2027) and the full
+        free-response questions and practice exams, the cram kit (study plans and timed sets) and the full
         dashboard. One-time, never renews. Buyers under 18 need a parent or guardian's permission.
         AP® is a trademark registered by the College Board, which is not affiliated with, and does
         not endorse, this site."

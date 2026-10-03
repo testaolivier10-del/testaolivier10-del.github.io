@@ -1,0 +1,9 @@
+{
+  "limiting-factor": { "def": "A limiting resource is a resource in short enough supply that it caps the growth of a population, such as food, water, nesting sites, light or soil nutrients. When it runs low, individuals compete for it." },
+  "carrying-capacity": { "def": "The largest population of a species that an environment can support over time with its available resources, written K. It can change when the resources change, for example in a drought year or when a habitat is damaged." },
+  "logistic": { "def": "Population growth that slows as the population nears the carrying capacity: dN/dt = r_max N (K − N)/K. Plotted against time, N makes an S-shaped curve; growth is fastest at N = K/2 and stops at N = K." },
+  "density-dependent": { "def": "A factor whose effect on per capita birth or death rates grows stronger as population density rises, such as competition for food, disease, the build-up of wastes and predators catching crowded prey. Density-dependent factors pull a population toward its carrying capacity." },
+  "density-independent": { "def": "A factor that kills about the same fraction of a population, or changes its birth rate, whatever its density, such as frost, drought, fire, floods and storms. It can cause sudden drops unrelated to crowding." },
+  "intraspecific": { "def": "Competition between individuals of the same species for the same limited resources. It increases with population density and is a major density-dependent factor." },
+  "population-cycles": { "def": "Regular rises and falls in population size over several years, as in snowshoe hares and lynx, where the predator's peaks follow the prey's. They arise from density-dependent links such as food supply and predators that respond to their prey's numbers after a delay." }
+}

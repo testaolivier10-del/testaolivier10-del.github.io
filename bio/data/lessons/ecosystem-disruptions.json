@@ -1,0 +1,79 @@
+{
+  "topic": "ecosystem-disruptions",
+  "hook": "<p>Every summer, a patch of the Gulf of Mexico, often about the size of Connecticut, holds too little oxygen for fish. Shrimp boats find nothing there; crabs and worms on the bottom suffocate. The cause starts more than a thousand kilometers away, on farms across the Mississippi River basin, where rain washes fertilizer into streams. Nothing is poisoned. The water simply gets too much of a good thing.</p>",
+  "prereq": [
+    {
+      "q": "When decomposers break down dead matter by aerobic respiration, they",
+      "options": ["use oxygen and release carbon dioxide", "release oxygen and use carbon dioxide", "use neither oxygen nor carbon dioxide"],
+      "correct": 0,
+      "why": "Aerobic respiration uses O₂ as the final electron acceptor and releases CO₂.",
+      "review": "cellular-respiration"
+    },
+    {
+      "q": "Burning fossil fuels moves carbon",
+      "options": ["from long-term storage underground into the atmosphere", "from the atmosphere into the ocean", "from living plants into rock"],
+      "correct": 0,
+      "why": "Coal, oil and gas hold carbon stored for millions of years; burning returns it to the air as CO₂.",
+      "review": "energy-flow-ecosystems"
+    },
+    {
+      "q": "Over its life, a predator eats a mass of prey far larger than its own body mass because",
+      "options": ["only about 10% of the energy in its food becomes its own tissue", "it stores all of its food as fat", "prey contain less water than predators"],
+      "correct": 0,
+      "why": "Most food energy is released as heat by respiration, so a predator must eat many times its own mass.",
+      "review": "energy-flow-ecosystems"
+    }
+  ],
+  "figure": {
+    "figure": "eutrophication-chain",
+    "caption": "Too many nutrients lead, step by step, to too little oxygen."
+  },
+  "chain": [
+    {
+      "cause": "Rain washes fertilizer, manure and sewage into rivers, carrying nitrate and phosphate to lakes and coasts.",
+      "effect": "Algae, which were limited by those nutrients, grow and multiply fast: an algal bloom."
+    },
+    {
+      "cause": "The dense bloom shades itself, and the algae die in huge numbers.",
+      "effect": "Dead algae sink into deeper water."
+    },
+    {
+      "cause": "Decomposers multiply on the dead algae and break them down by aerobic respiration.",
+      "effect": "They use dissolved oxygen faster than it can mix down from the surface."
+    },
+    {
+      "cause": "Oxygen in the deeper water falls very low (hypoxia).",
+      "effect": "Fish swim away or die, and animals that cannot leave suffocate: a dead zone."
+    },
+    {
+      "cause": "Fewer species survive, and the food web loses its larger animals.",
+      "effect": "Biodiversity falls until nutrient inputs drop and oxygen returns."
+    }
+  ],
+  "ideas": [
+    "<b>Human impact</b> lowers biodiversity through <b>habitat loss</b>, <b>invasive species</b>, <b>overharvesting</b>, <b>pollution</b> and <b>climate change</b>.",
+    "<b>Invasive species</b> spread when they escape the predators, parasites and competitors of their home range.",
+    "<b>Eutrophication</b>: extra nitrate and phosphate cause an <b>algal bloom</b>; decomposers of the dead algae use up O₂, creating a <b>dead zone</b>.",
+    "<b>Biomagnification</b>: persistent, fat-soluble toxins (mercury, DDT, PCBs) reach their highest concentrations in top predators.",
+    "Extra CO₂ warms the climate and causes <b>ocean acidification</b>, which makes shells harder to build. <b>Natural disturbances</b> (eruptions, El Niño, fires, storms) also cause sudden change."
+  ],
+  "misconception": {
+    "wrong": "Dead zones form because the living algae in a bloom use up the oxygen.",
+    "right": "Living algae add oxygen by day. Most of the oxygen in deep water is used by decomposers breaking down the masses of algae that die and sink. That is why dead zones form below the bloom and after it."
+  },
+  "check": [
+    "bio-ecosystem-disruptions-1",
+    "bio-ecosystem-disruptions-3",
+    "bio-ecosystem-disruptions-6",
+    "bio-ecosystem-disruptions-7",
+    "bio-ecosystem-disruptions-11",
+    "bio-ecosystem-disruptions-12",
+    "bio-ecosystem-disruptions-19"
+  ],
+  "summary": "<p>Ecosystems are disrupted by human activity and by natural events. Habitat loss and fragmentation leave too little space for many species. Invasive species spread when they escape the predators, parasites and competitors of their home range and can outcompete or eat native species. Overharvesting removes individuals faster than populations replace them. Pollution adds harmful substances: excess nitrate and phosphate cause eutrophication, in which algal blooms die, decomposers use up dissolved oxygen and dead zones form; persistent, fat-soluble toxins such as mercury, DDT and PCBs biomagnify, reaching their highest concentrations in top predators. CO₂ from burning fossil fuels and clearing forests drives climate change, which shifts ranges and the timing of seasonal events, and ocean acidification, which leaves less carbonate for shells and corals. Natural disturbances such as volcanic eruptions, hurricanes, fires and El Niño events also change ecosystems suddenly. Diverse ecosystems tend to resist and recover from these disruptions better.</p>",
+  "connections": [
+    { "href": "../notes/energy-flow-ecosystems.html", "label": "Back: the carbon, nitrogen and phosphorus cycles (8.2)" },
+    { "href": "../notes/biodiversity.html", "label": "Back: biodiversity and resilience (8.6)" },
+    { "href": "../notes/community-ecology.html", "label": "Back: competition and food webs (8.5)" }
+  ]
+}

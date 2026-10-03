@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-labelledby="cc-t cc-d">
+<title id="cc-t">The carbon cycle</title>
+<desc id="cc-d">Carbon dioxide in the atmosphere is taken in by producers in photosynthesis. Producers, consumers and decomposers all return carbon dioxide to the atmosphere by cellular respiration. Producers are eaten by consumers, and dead matter from both goes to decomposers. Some dead matter is buried without decaying and over millions of years becomes fossil fuels, which return carbon dioxide to the air when burned. Carbon dioxide dissolves in the ocean and is released from it; some ocean carbon is built into shells and sediments that form limestone rock.</desc>
+<defs>
+  <marker id="cc-k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+  <marker id="cc-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker>
+  <marker id="cc-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker>
+  <marker id="cc-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker>
+</defs>
+<rect width="760" height="430" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28" text-anchor="middle">
+  <rect x="270" y="14" width="220" height="56" rx="10" fill="#D2EAF8" stroke="#56B4E9" stroke-width="2.5"/>
+  <text x="380" y="38" font-size="16" font-weight="700">CO₂ in the atmosphere</text>
+  <text x="380" y="58" font-size="13">a small but fast reservoir</text>
+
+  <rect x="40" y="160" width="170" height="56" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+  <text x="125" y="186" font-size="15" font-weight="700">Producers</text>
+  <text x="125" y="205" font-size="12">plants, algae</text>
+
+  <rect x="290" y="160" width="180" height="56" rx="10" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2.5"/>
+  <text x="380" y="186" font-size="15" font-weight="700">Consumers</text>
+  <text x="380" y="205" font-size="12">animals</text>
+
+  <rect x="290" y="276" width="180" height="56" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+  <text x="380" y="302" font-size="15" font-weight="700">Decomposers</text>
+  <text x="380" y="321" font-size="12">bacteria, fungi</text>
+
+  <rect x="570" y="160" width="170" height="60" rx="10" fill="#D2EAF8" stroke="#0072B2" stroke-width="2.5"/>
+  <text x="655" y="186" font-size="15" font-weight="700">Ocean</text>
+  <text x="655" y="205" font-size="12">dissolved CO₂, carbonate</text>
+
+  <rect x="40" y="360" width="210" height="56" rx="10" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2.5"/>
+  <text x="145" y="384" font-size="15" font-weight="700">Fossil fuels</text>
+  <text x="145" y="403" font-size="12">coal, oil, natural gas</text>
+
+  <rect x="560" y="360" width="180" height="56" rx="10" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2.5"/>
+  <text x="650" y="384" font-size="15" font-weight="700">Rock and sediments</text>
+  <text x="650" y="403" font-size="12">shells, limestone</text>
+
+  <!-- photosynthesis -->
+  <path d="M268,52 C170,52 110,90 104,156" fill="none" stroke="#009E73" stroke-width="3.5" marker-end="url(#cc-g)"/>
+  <text x="196" y="46" font-size="13" font-weight="700" fill="#00704F">photosynthesis</text>
+  <!-- respiration arrows -->
+  <path d="M160,158 C170,110 230,80 280,72" fill="none" stroke="#D55E00" stroke-width="2.5" marker-end="url(#cc-r)"/>
+  <line x1="380" y1="158" x2="380" y2="74" stroke="#D55E00" stroke-width="2.5" marker-end="url(#cc-r)"/>
+  <path d="M472,296 C530,280 520,120 470,74" fill="none" stroke="#D55E00" stroke-width="2.5" marker-end="url(#cc-r)"/>
+  <text x="300" y="118" font-size="13" font-weight="700" fill="#A04500">cellular respiration</text>
+  <text x="300" y="134" font-size="12" fill="#A04500">(every living thing)</text>
+  <!-- eaten, dead matter -->
+  <line x1="212" y1="188" x2="286" y2="188" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#cc-k)"/>
+  <text x="249" y="180" font-size="12">eaten</text>
+  <path d="M150,218 C170,260 230,296 286,300" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
+  <line x1="380" y1="218" x2="380" y2="272" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
+  <text x="234" y="258" font-size="12">dead matter</text>
+  <!-- burial -->
+  <path d="M172,250 C160,290 152,320 148,356" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
+  <text x="140" y="302" font-size="12" text-anchor="end">some buried</text>
+  <text x="140" y="318" font-size="12" text-anchor="end">without decay,</text>
+  <text x="140" y="334" font-size="12" text-anchor="end">millions of years</text>
+  <!-- combustion -->
+  <path d="M44,358 C30,320 14,250 14,200 L14,120 C14,40 120,10 266,24" fill="none" stroke="#8E3B2E" stroke-width="3.5" marker-end="url(#cc-r)"/>
+  <text x="34" y="306" font-size="13" font-weight="700" fill="#8E3B2E" text-anchor="start" transform="rotate(-90 34 306)">burning (combustion)</text>
+  <!-- ocean exchange -->
+  <path d="M492,34 C580,34 640,90 646,156" fill="none" stroke="#0072B2" stroke-width="2.5" marker-end="url(#cc-b)"/>
+  <path d="M600,158 C590,110 550,70 494,62" fill="none" stroke="#0072B2" stroke-width="2.5" marker-end="url(#cc-b)"/>
+  <text x="640" y="56" font-size="12" fill="#005A8C">dissolves</text>
+  <text x="560" y="120" font-size="12" fill="#005A8C">released</text>
+  <line x1="655" y1="222" x2="655" y2="356" stroke="#5B6B8C" stroke-width="2.5" marker-end="url(#cc-k)"/>
+  <text x="664" y="290" font-size="12" text-anchor="start">shells and</text>
+  <text x="664" y="305" font-size="12" text-anchor="start">sediments</text>
+</g>
+</svg>

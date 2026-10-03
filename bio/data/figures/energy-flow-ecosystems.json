@@ -1,0 +1,17 @@
+{
+  "trophic-energy-flow": {
+    "file": "figures/trophic-energy-flow.svg", "ext": "svg", "w": 760, "h": 460,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four stacked boxes, each narrower than the one below: producers store 10,000 kilojoules per square meter per year in new biomass, primary consumers 1,000, secondary consumers 100 and tertiary consumers 10, with an arrow labeled about 10% between each level. Heat from cellular respiration leaves every level. Dashed arrows carry dead bodies and wastes from every level to decomposers, which also give off heat. A green arrow returns nutrients and carbon dioxide from the decomposers to the producers. Light energy enters at the producers."
+  },
+  "carbon-cycle": {
+    "file": "figures/carbon-cycle.svg", "ext": "svg", "w": 760, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Carbon dioxide in the atmosphere goes into producers by photosynthesis. Producers, consumers and decomposers return carbon dioxide to the atmosphere by cellular respiration. Consumers eat producers, and dead matter from both goes to decomposers. Some dead matter is buried without decay and over millions of years becomes fossil fuels, which return carbon dioxide to the atmosphere when burned. Carbon dioxide dissolves in the ocean and is released from it, and ocean carbon is built into shells and sediments that become limestone rock."
+  },
+  "nitrogen-cycle": {
+    "file": "figures/nitrogen-cycle.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Nitrogen gas in the air is fixed into ammonium by nitrogen-fixing bacteria in soil and root nodules; lightning and fertilizer factories also fix some. Nitrifying bacteria, which need oxygen, turn ammonium into nitrate. Plant roots take up ammonium and nitrate and build amino acids and nucleotides; animals eat the plants. Dead matter and wastes from plants and animals go to decomposers, which release ammonium (ammonification). Denitrifying bacteria in waterlogged, low-oxygen soil turn nitrate back into nitrogen gas."
+  }
+}

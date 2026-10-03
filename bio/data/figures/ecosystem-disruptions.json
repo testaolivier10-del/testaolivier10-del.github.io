@@ -1,0 +1,12 @@
+{
+  "eutrophication-chain": {
+    "file": "figures/eutrophication-chain.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Six steps of eutrophication. 1: fertilizer, manure and sewage wash nitrate and phosphate into water. 2: algae, no longer limited by nutrients, multiply in an algal bloom. 3: crowded algae shade one another, die and sink. 4: bacteria break down the dead algae by aerobic respiration, using dissolved oxygen. 5: oxygen is used faster than it mixes down from the surface, and deep water becomes hypoxic. 6: fish leave or die, and animals that cannot move away suffocate, leaving a dead zone. In deep water most oxygen is used by decomposers; living algae add oxygen near the surface by day but use it at night."
+  },
+  "biomagnification-mercury": {
+    "file": "figures/biomagnification-mercury.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A lake food chain drawn as stacked levels with typical mercury concentrations in parts per million: lake water 0.00001, algae 0.01, zooplankton 0.03, small fish 0.1, large fish 0.8 and loons, fish-eating birds, 4. The concentration rises about 400,000-fold from the water to the loon."
+  }
+}

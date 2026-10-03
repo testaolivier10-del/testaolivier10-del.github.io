@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-labelledby="blr-t blr-d">
+<title id="blr-t">Levels of biodiversity and species with outsized effects</title>
+<desc id="blr-d">Top row, three levels of biodiversity. Genetic diversity: five snails of one species with differently banded shells. Species diversity: several different kinds of organism in one place. Ecosystem diversity: a forest, a wetland and a grassland side by side in one region. Bottom row, three kinds of species with large effects on their communities. A keystone species, such as a predatory sea star, has an effect far larger than its numbers: it eats mussels, the strongest competitor for space, so many other species have room. A foundation species, such as kelp or reef-building coral, is abundant and builds the habitat others live in. An ecosystem engineer, such as a beaver, physically changes the environment: its dam turns a stream into a pond.</desc>
+<rect width="760" height="430" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="380" y="26" font-size="16" font-weight="700" text-anchor="middle">A. Three levels of biodiversity</text>
+  <!-- genetic -->
+  <rect x="20" y="40" width="230" height="160" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="135" y="64" font-size="14" font-weight="700" text-anchor="middle">Genetic diversity</text>
+  <g stroke-width="2">
+    <circle cx="55" cy="110" r="16" fill="#F8E3B8" stroke="#8A5A00"/><path d="M41,104 H69 M40,114 H70" stroke="#8A5A00"/>
+    <circle cx="100" cy="110" r="16" fill="#F8E3B8" stroke="#8A5A00"/>
+    <circle cx="145" cy="110" r="16" fill="#F6D2BD" stroke="#8A5A00"/><path d="M130,110 H160" stroke="#8A5A00"/>
+    <circle cx="190" cy="110" r="16" fill="#FFF7E6" stroke="#8A5A00"/><path d="M176,102 H204 M175,110 H205 M176,118 H204" stroke="#8A5A00"/>
+    <circle cx="78" cy="150" r="16" fill="#F6D2BD" stroke="#8A5A00"/><path d="M63,146 H93 M64,156 H92" stroke="#8A5A00"/>
+  </g>
+  <text x="135" y="186" font-size="12" text-anchor="middle">varied alleles within one species</text>
+  <!-- species -->
+  <rect x="265" y="40" width="230" height="160" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="380" y="64" font-size="14" font-weight="700" text-anchor="middle">Species diversity</text>
+  <circle cx="305" cy="110" r="15" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+  <path d="M350,95 L366,125 L334,125 Z" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+  <rect x="385" y="96" width="28" height="28" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+  <path d="M450,94 L455,106 L468,106 L458,114 L462,127 L450,119 L438,127 L442,114 L432,106 L445,106 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <ellipse cx="335" cy="152" rx="20" ry="10" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/>
+  <path d="M410,140 q12,-12 24,0 q-12,12 -24,0 Z" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+  <text x="380" y="186" font-size="12" text-anchor="middle">many species, evenly common</text>
+  <!-- ecosystem -->
+  <rect x="510" y="40" width="230" height="160" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="625" y="64" font-size="14" font-weight="700" text-anchor="middle">Ecosystem diversity</text>
+  <path d="M530,150 L545,110 L560,150 Z M552,150 L567,104 L582,150 Z" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+  <text x="556" y="168" font-size="11" text-anchor="middle">forest</text>
+  <path d="M595,130 q10,-8 20,0 t20,0 M595,142 q10,-8 20,0 t20,0" fill="none" stroke="#0072B2" stroke-width="2.5"/>
+  <text x="615" y="168" font-size="11" text-anchor="middle">wetland</text>
+  <path d="M665,150 l4,-22 M675,150 l0,-26 M685,150 l-4,-22 M695,150 l4,-20 M705,150 l0,-24 M715,150 l-4,-20" stroke="#8A5A00" stroke-width="2.5"/>
+  <text x="690" y="168" font-size="11" text-anchor="middle">grassland</text>
+  <text x="625" y="186" font-size="12" text-anchor="middle">many kinds of ecosystem in a region</text>
+
+  <text x="380" y="238" font-size="16" font-weight="700" text-anchor="middle">B. Species with outsized effects</text>
+  <!-- keystone -->
+  <rect x="20" y="252" width="230" height="166" rx="10" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+  <text x="135" y="276" font-size="14" font-weight="700" text-anchor="middle">Keystone species</text>
+  <path d="M135,292 L141,306 L156,306 L144,315 L149,330 L135,321 L121,330 L126,315 L114,306 L129,306 Z" fill="#E69F00" stroke="#8A5A00" stroke-width="1.5"/>
+  <text x="135" y="352" font-size="12" text-anchor="middle">e.g., a predatory sea star</text>
+  <text x="135" y="370" font-size="12" text-anchor="middle">Few in number, huge effect:</text>
+  <text x="135" y="386" font-size="12" text-anchor="middle">eats the strongest competitor,</text>
+  <text x="135" y="402" font-size="12" text-anchor="middle">leaving room for other species</text>
+  <!-- foundation -->
+  <rect x="265" y="252" width="230" height="166" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+  <text x="380" y="276" font-size="14" font-weight="700" text-anchor="middle">Foundation species</text>
+  <path d="M350,335 C345,315 360,305 352,290 M380,335 C375,312 392,302 384,288 M410,335 C405,318 420,306 412,292" fill="none" stroke="#00704F" stroke-width="4"/>
+  <text x="380" y="352" font-size="12" text-anchor="middle">e.g., kelp, reef-building coral</text>
+  <text x="380" y="370" font-size="12" text-anchor="middle">Abundant; builds the habitat</text>
+  <text x="380" y="386" font-size="12" text-anchor="middle">that many other species</text>
+  <text x="380" y="402" font-size="12" text-anchor="middle">live in and feed on</text>
+  <!-- engineer -->
+  <rect x="510" y="252" width="230" height="166" rx="10" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+  <text x="625" y="276" font-size="14" font-weight="700" text-anchor="middle">Ecosystem engineer</text>
+  <path d="M560,320 q15,-6 30,0 t30,0 t30,0" fill="none" stroke="#0072B2" stroke-width="2.5"/>
+  <path d="M600,334 L612,296 L624,334 Z M616,334 L630,300 L644,334 Z" fill="#E8D7B8" stroke="#8A5A00" stroke-width="1.5"/>
+  <text x="625" y="352" font-size="12" text-anchor="middle">e.g., beaver</text>
+  <text x="625" y="370" font-size="12" text-anchor="middle">Physically changes the place:</text>
+  <text x="625" y="386" font-size="12" text-anchor="middle">a dam turns a stream into</text>
+  <text x="625" y="402" font-size="12" text-anchor="middle">a pond and wetland</text>
+</g>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" role="img" aria-labelledby="pnl-t pnl-d">
+<title id="pnl-t">Night length controls flowering in short-day and long-day plants</title>
+<desc id="pnl-d">Four 24-hour light and dark cycles, each drawn as a bar, with the result for a short-day plant and a long-day plant. Eight hours of light and sixteen of dark: the short-day plant flowers, the long-day plant does not. Sixteen hours of light and eight of dark: the long-day plant flowers, the short-day plant does not. A long night split in half by a short flash of red light: the long-day plant flowers, the short-day plant does not. The same split night but with a far-red flash right after the red one: the short-day plant flowers again and the long-day plant does not. Both plants have a critical night length of about 11 hours.</desc>
+<defs>
+  <g id="pnl-flower">
+    <line x1="0" y1="18" x2="0" y2="-4" stroke="#009E73" stroke-width="3"/>
+    <circle cx="-6" cy="-9" r="5" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.5"/>
+    <circle cx="6" cy="-9" r="5" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.5"/>
+    <circle cx="0" cy="-15" r="5" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.5"/>
+    <circle cx="0" cy="-3" r="5" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.5"/>
+    <circle cx="0" cy="-9" r="3.5" fill="#E69F00"/>
+  </g>
+  <g id="pnl-shoot">
+    <line x1="0" y1="18" x2="0" y2="-14" stroke="#009E73" stroke-width="3"/>
+    <ellipse cx="-7" cy="2" rx="7" ry="3.5" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+    <ellipse cx="7" cy="-7" rx="7" ry="3.5" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+  </g>
+</defs>
+<rect width="760" height="420" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="350" y="30" font-size="15" font-weight="700" text-anchor="middle">One 24-hour cycle</text>
+  <text x="598" y="22" font-size="15" font-weight="700" text-anchor="middle">Short-day</text>
+  <text x="598" y="40" font-size="15" font-weight="700" text-anchor="middle">plant</text>
+  <text x="698" y="22" font-size="15" font-weight="700" text-anchor="middle">Long-day</text>
+  <text x="698" y="40" font-size="15" font-weight="700" text-anchor="middle">plant</text>
+
+  <!-- row 1: 8 h light, 16 h dark -->
+  <text x="10" y="74" font-size="15" font-weight="700">Long night</text>
+  <text x="10" y="93" font-size="13">8 h light, 16 h dark</text>
+  <rect x="200" y="60" width="100" height="36" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <text x="250" y="83" font-size="13" text-anchor="middle">8 h light</text>
+  <rect x="300" y="60" width="200" height="36" fill="#3A4A5E" stroke="#3A4A5E" stroke-width="2"/>
+  <text x="400" y="83" font-size="13" text-anchor="middle" fill="#ffffff">16 h dark</text>
+  <use href="#pnl-flower" x="562" y="78"/>
+  <text x="576" y="83" font-size="13" font-weight="700">flowers</text>
+  <use href="#pnl-shoot" x="662" y="78"/>
+  <text x="676" y="83" font-size="13">no flowers</text>
+
+  <!-- row 2: 16 h light, 8 h dark -->
+  <text x="10" y="144" font-size="15" font-weight="700">Short night</text>
+  <text x="10" y="163" font-size="13">16 h light, 8 h dark</text>
+  <rect x="200" y="130" width="200" height="36" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <text x="300" y="153" font-size="13" text-anchor="middle">16 h light</text>
+  <rect x="400" y="130" width="100" height="36" fill="#3A4A5E" stroke="#3A4A5E" stroke-width="2"/>
+  <text x="450" y="153" font-size="13" text-anchor="middle" fill="#ffffff">8 h dark</text>
+  <use href="#pnl-shoot" x="562" y="148"/>
+  <text x="576" y="153" font-size="13">no flowers</text>
+  <use href="#pnl-flower" x="662" y="148"/>
+  <text x="676" y="153" font-size="13" font-weight="700">flowers</text>
+
+  <!-- row 3: long night split by a red flash -->
+  <text x="10" y="214" font-size="15" font-weight="700">Long night, broken</text>
+  <text x="10" y="233" font-size="13">red flash halfway through</text>
+  <rect x="200" y="200" width="100" height="36" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <text x="250" y="223" font-size="13" text-anchor="middle">8 h light</text>
+  <rect x="300" y="200" width="200" height="36" fill="#3A4A5E" stroke="#3A4A5E" stroke-width="2"/>
+  <text x="350" y="223" font-size="13" text-anchor="middle" fill="#ffffff">8 h dark</text>
+  <text x="452" y="223" font-size="13" text-anchor="middle" fill="#ffffff">8 h dark</text>
+  <rect x="396" y="196" width="8" height="44" fill="#D55E00"/>
+  <use href="#pnl-shoot" x="562" y="218"/>
+  <text x="576" y="223" font-size="13">no flowers</text>
+  <use href="#pnl-flower" x="662" y="218"/>
+  <text x="676" y="223" font-size="13" font-weight="700">flowers</text>
+
+  <!-- row 4: red then far-red -->
+  <text x="10" y="284" font-size="15" font-weight="700">Broken, then reversed</text>
+  <text x="10" y="303" font-size="13">red flash, then far-red</text>
+  <rect x="200" y="270" width="100" height="36" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <text x="250" y="293" font-size="13" text-anchor="middle">8 h light</text>
+  <rect x="300" y="270" width="200" height="36" fill="#3A4A5E" stroke="#3A4A5E" stroke-width="2"/>
+  <text x="350" y="293" font-size="13" text-anchor="middle" fill="#ffffff">8 h dark</text>
+  <text x="456" y="293" font-size="13" text-anchor="middle" fill="#ffffff">8 h dark</text>
+  <rect x="391" y="266" width="8" height="44" fill="#D55E00"/>
+  <rect x="401" y="266" width="8" height="44" fill="#7A1F12"/>
+  <use href="#pnl-flower" x="562" y="288"/>
+  <text x="576" y="293" font-size="13" font-weight="700">flowers</text>
+  <use href="#pnl-shoot" x="662" y="288"/>
+  <text x="676" y="293" font-size="13">no flowers</text>
+
+  <!-- time axis -->
+  <line x1="200" y1="322" x2="500" y2="322" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="200" y1="318" x2="200" y2="326" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="275" y1="318" x2="275" y2="326" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="350" y1="318" x2="350" y2="326" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="425" y1="318" x2="425" y2="326" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="500" y1="318" x2="500" y2="326" stroke="#1F2A28" stroke-width="1.5"/>
+  <text x="200" y="341" font-size="12" text-anchor="middle">0</text>
+  <text x="275" y="341" font-size="12" text-anchor="middle">6</text>
+  <text x="350" y="341" font-size="12" text-anchor="middle">12</text>
+  <text x="425" y="341" font-size="12" text-anchor="middle">18</text>
+  <text x="500" y="341" font-size="12" text-anchor="middle">24</text>
+  <text x="350" y="358" font-size="12" text-anchor="middle">hours from the start of the light period</text>
+
+  <!-- key -->
+  <rect x="10" y="378" width="14" height="14" fill="#D55E00"/>
+  <text x="30" y="390" font-size="13">5-minute flash of red light</text>
+  <rect x="220" y="378" width="14" height="14" fill="#7A1F12"/>
+  <text x="240" y="390" font-size="13">5-minute flash of far-red light</text>
+  <text x="10" y="411" font-size="13" font-style="italic">Both plants here have a critical night length of about 11 h. What counts is the longest stretch of unbroken dark.</text>
+</g>
+</svg>

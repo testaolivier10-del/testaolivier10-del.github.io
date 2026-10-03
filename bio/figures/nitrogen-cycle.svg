@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="nc-t nc-d">
+<title id="nc-t">The nitrogen cycle</title>
+<desc id="nc-d">Nitrogen gas in the air is fixed by nitrogen-fixing bacteria, free in the soil or in root nodules, into ammonium. Nitrifying bacteria convert ammonium into nitrate. Plant roots take up ammonium and nitrate and build amino acids and nucleotides. Animals get nitrogen by eating plants. Dead bodies and wastes go to decomposers, which release ammonium (ammonification). Denitrifying bacteria in waterlogged, low-oxygen soil turn nitrate back into nitrogen gas. Lightning and fertilizer factories also fix some nitrogen.</desc>
+<defs>
+  <marker id="nc-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+  <marker id="nc-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker>
+</defs>
+<rect width="760" height="440" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28" text-anchor="middle">
+  <!-- N2 in air -->
+  <rect x="270" y="16" width="220" height="56" rx="10" fill="#D2EAF8" stroke="#56B4E9" stroke-width="2.5"/>
+  <text x="380" y="40" font-size="16" font-weight="700">N₂ gas in the air</text>
+  <text x="380" y="60" font-size="13">about 78% of the atmosphere</text>
+
+  <!-- fixation -->
+  <rect x="20" y="118" width="210" height="64" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="125" y="142" font-size="14" font-weight="700">Nitrogen-fixing bacteria</text>
+  <text x="125" y="162" font-size="13">in soil and in root nodules</text>
+  <path d="M268,50 C180,50 140,80 130,114" fill="none" stroke="#0072B2" stroke-width="3" marker-end="url(#nc-b)"/>
+  <text x="178" y="42" font-size="13" font-weight="700" fill="#005A8C">nitrogen fixation</text>
+
+  <!-- ammonium -->
+  <rect x="40" y="270" width="190" height="56" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+  <text x="135" y="294" font-size="15" font-weight="700">Ammonium (NH₄⁺)</text>
+  <text x="135" y="314" font-size="13">in soil water</text>
+  <line x1="125" y1="184" x2="130" y2="266" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#nc-a)"/>
+
+  <!-- nitrate -->
+  <rect x="520" y="270" width="200" height="56" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+  <text x="620" y="294" font-size="15" font-weight="700">Nitrate (NO₃⁻)</text>
+  <text x="620" y="314" font-size="13">in soil water</text>
+  <line x1="232" y1="306" x2="516" y2="306" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#nc-a)"/>
+  <text x="318" y="298" font-size="13" font-weight="700">nitrification</text>
+  <text x="318" y="326" font-size="12">(bacteria; need O₂)</text>
+
+  <!-- denitrification -->
+  <path d="M660,266 C690,170 620,60 494,46" fill="none" stroke="#0072B2" stroke-width="3" marker-end="url(#nc-b)"/>
+  <text x="548" y="96" font-size="13" font-weight="700" fill="#005A8C">denitrification</text>
+  <text x="548" y="114" font-size="12" fill="#005A8C">(bacteria in waterlogged,</text>
+  <text x="548" y="130" font-size="12" fill="#005A8C">low-oxygen soil)</text>
+
+  <!-- plants -->
+  <rect x="290" y="140" width="180" height="64" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+  <text x="380" y="164" font-size="15" font-weight="700">Plants</text>
+  <text x="380" y="184" font-size="12">build amino acids, nucleotides</text>
+  <line x1="200" y1="268" x2="300" y2="208" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#nc-a)"/>
+  <line x1="560" y1="268" x2="460" y2="208" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#nc-a)"/>
+  
+  <!-- animals -->
+  <rect x="500" y="148" width="120" height="48" rx="10" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2.5"/>
+  <text x="560" y="177" font-size="15" font-weight="700">Animals</text>
+  <line x1="472" y1="172" x2="496" y2="172" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#nc-a)"/>
+  <text x="486" y="140" font-size="12">eaten</text>
+
+  <!-- decomposers -->
+  <rect x="290" y="370" width="180" height="56" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+  <text x="380" y="394" font-size="15" font-weight="700">Decomposers</text>
+  <text x="380" y="414" font-size="12">break down dead matter, wastes</text>
+  <path d="M530,198 C480,240 462,320 452,366" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#nc-a)"/>
+  <path d="M400,206 L400,366" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#nc-a)"/>
+  <path d="M288,398 C200,398 150,370 140,330" fill="none" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#nc-a)"/>
+  <text x="196" y="420" font-size="13" font-weight="700">ammonification</text>
+
+  <text x="20" y="226" font-size="12" text-anchor="start">also fixed by lightning</text>
+  <text x="20" y="242" font-size="12" text-anchor="start">and fertilizer factories</text>
+</g>
+</svg>

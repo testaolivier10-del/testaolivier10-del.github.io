@@ -1,0 +1,733 @@
+{
+  "stimuli": {
+    "energy-flow-ecosystems-s1": {
+      "kind": "table",
+      "title": "Energy budget of a lake food chain",
+      "text": "<p>Ecologists built a model of energy flow in a lake from field measurements, rounded for clarity. Phytoplankton (algae) are eaten by zooplankton, zooplankton by small fish, and small fish by fish-eating birds. Small fish are ectotherms; the birds are endotherms. For each level the table gives the energy taken into the body (absorbed from food, so not counting what leaves in feces; for phytoplankton, the energy captured by photosynthesis), the part released as heat by cellular respiration, and the part stored in new biomass (growth and offspring), which is the energy available to the next level.</p>",
+      "table": {
+        "caption": "Energy flow in the lake (kJ per m² of lake surface per year)",
+        "cols": [
+          "Trophic level",
+          "Energy taken in",
+          "Released as heat by respiration",
+          "Stored in new biomass"
+        ],
+        "rows": [
+          [
+            "Phytoplankton (producers)",
+            "24,000",
+            "13,800",
+            "10,200"
+          ],
+          [
+            "Zooplankton (primary consumers)",
+            "4,100",
+            "3,080",
+            "1,020"
+          ],
+          [
+            "Small fish (secondary consumers)",
+            "410",
+            "328",
+            "82"
+          ],
+          [
+            "Fish-eating birds (tertiary consumers)",
+            "40",
+            "39.2",
+            "0.8"
+          ]
+        ]
+      }
+    },
+    "energy-flow-ecosystems-s2": {
+      "kind": "graph",
+      "title": "Carbon dioxide in the air over two years",
+      "text": "<p>Monthly mean CO₂ concentration in the air at a monitoring station on a mountain in the Northern Hemisphere, far from cities, over two years. Month 1 is January of year 1 and month 13 is January of year 2. Concentrations are in parts per million (ppm) by volume.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Month",
+          "unit": "1 = January, year 1",
+          "min": 1,
+          "max": 24,
+          "step": 1
+        },
+        "y": {
+          "label": "CO₂ concentration",
+          "unit": "ppm",
+          "min": 416,
+          "max": 428,
+          "step": 2
+        },
+        "series": [
+          {
+            "name": "Monthly mean CO₂",
+            "points": [
+              [
+                1,
+                420
+              ],
+              [
+                2,
+                420.8
+              ],
+              [
+                3,
+                421.7
+              ],
+              [
+                4,
+                423.1
+              ],
+              [
+                5,
+                423.8
+              ],
+              [
+                6,
+                423.3
+              ],
+              [
+                7,
+                422
+              ],
+              [
+                8,
+                420.1
+              ],
+              [
+                9,
+                418.6
+              ],
+              [
+                10,
+                418.6
+              ],
+              [
+                11,
+                420.1
+              ],
+              [
+                12,
+                421.4
+              ],
+              [
+                13,
+                422.4
+              ],
+              [
+                14,
+                423.2
+              ],
+              [
+                15,
+                424.1
+              ],
+              [
+                16,
+                425.5
+              ],
+              [
+                17,
+                426.2
+              ],
+              [
+                18,
+                425.7
+              ],
+              [
+                19,
+                424.4
+              ],
+              [
+                20,
+                422.5
+              ],
+              [
+                21,
+                421
+              ],
+              [
+                22,
+                421
+              ],
+              [
+                23,
+                422.5
+              ],
+              [
+                24,
+                423.8
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-energy-flow-ecosystems-1",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "energy-flow-ecosystems-s1",
+      "q": "What percentage of the energy captured by the phytoplankton is released as heat by their own respiration? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 57.5,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "13,800 ÷ 24,000 × 100 = 57.5%. The phytoplankton capture 24,000 kJ (gross primary productivity) and keep 10,200 (net primary productivity)."
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-2",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "energy-flow-ecosystems-s1",
+      "q": "Calculate the trophic efficiency from zooplankton to small fish: the energy stored in new biomass by the small fish as a percentage of the energy stored in new biomass by the zooplankton. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 8,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "82 ÷ 1,020 × 100 = 8.04%, which rounds to 8.0%. Using the energy taken in (410 ÷ 4,100) would give 10%, but trophic efficiency compares what is stored at each level."
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-3",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "energy-flow-ecosystems-s1",
+      "q": "The phytoplankton store 10,200 kJ in new biomass, but the zooplankton take in only 4,100 kJ. Which best accounts for most of the other 6,100 kJ?",
+      "options": [
+        "It is released as heat by the phytoplankton's respiration after the cells have grown.",
+        "It is destroyed by the zooplankton's digestive enzymes as they break down the algae cells.",
+        "Algae that die uneaten, and eaten algae lost in zooplankton feces, pass to decomposers.",
+        "It is stored as fat by the zooplankton, a store that the table does not include."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Energy stored in phytoplankton biomass that zooplankton do not take in either is never eaten or is eaten but not absorbed. Both end up as detritus, the food of decomposers.",
+        "options": [
+          "Phytoplankton respiration is already subtracted: 13,800 kJ was released as heat, leaving 10,200 stored.",
+          "Energy is not destroyed; digestion breaks molecules down so they can be absorbed.",
+          "Correct: uneaten algae and undigested food feed the decomposers.",
+          "Energy taken in already includes everything the zooplankton absorb, fat stores included."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-4",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "energy-flow-ecosystems-s1",
+      "q": "The small fish store 20% of the energy they take in (82 of 410 kJ), but the birds store 2% (0.8 of 40 kJ). Which best explains the difference?",
+      "options": [
+        "The birds are endotherms, so they burn much of their food to make heat that keeps the body warm, and that energy leaves the food chain.",
+        "The birds are at a higher trophic level, and the second law of thermodynamics destroys more energy at each higher level of a chain.",
+        "The birds digest fish less fully than the fish digest zooplankton, so less of the fish they eat is ever absorbed into the body.",
+        "The birds store most of their energy as fat, and the table counts the energy in fat as heat released by cellular respiration."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Endotherms spend most absorbed energy on respiration that produces body heat (39.2 of 40 kJ here), leaving little for growth. Ectotherms like the fish do not pay that cost.",
+        "options": [
+          "Correct: the cost of endothermy shows up as heat released by respiration.",
+          "Energy is never destroyed, and trophic level alone does not explain why one animal stores 20% and another 2%.",
+          "The comparison already uses energy taken in (absorbed), so differences in digestion are not part of it.",
+          "Fat is stored biomass and would be counted in the last column, not as heat."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-5",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "energy-flow-ecosystems-s1",
+      "q": "Suppose the birds were replaced by a large predatory fish (an ectotherm) that also takes in 40 kJ per m² per year. Predict the energy it would store in new biomass.",
+      "options": [
+        "About 0.8 kJ, the same as the birds, because both feed at the same trophic level",
+        "Much more than 0.8 kJ, because an ectotherm does not spend energy making body heat",
+        "Less than 0.8 kJ, because large fish need more energy to swim than birds need to fly",
+        "Zero, because a fourth trophic level has no energy left to store as new biomass in a lake"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "If it stored a share like the small fish (about 20%), it would store about 8 kJ, ten times as much. An ectotherm's body temperature follows the water, so less of its food is burned for heat.",
+        "options": [
+          "Trophic level sets how much energy is available (40 kJ), not what share an animal stores.",
+          "Correct: ectotherms store a larger share of what they take in.",
+          "The data show fish storing 20% of their intake; nothing suggests a fish's swimming costs exceed an endotherm's heat production.",
+          "The birds at this level already store 0.8 kJ, so a fourth level can store energy."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-6",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "energy-flow-ecosystems-s2",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "CO₂ rises steadily through each year and drops back to the same January level at the start of the next year.",
+        "CO₂ is highest in late summer and lowest in spring, and it shows no overall change from the first year to the second.",
+        "CO₂ rises and falls each year, peaking in May and lowest in September-October, while rising about 2 ppm overall.",
+        "CO₂ stays nearly constant for most of each year, except for a sharp drop during a single month in early autumn."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Each year CO₂ peaks in May (423.8, then 426.2 ppm) and bottoms out in September-October (418.6, then 421.0 ppm), and every month is higher in year 2 than in year 1.",
+        "options": [
+          "CO₂ falls from May to October within each year, and January of year 2 (422.4) is higher than January of year 1 (420.0).",
+          "The peak is in May and the low in September-October; and year 2 is higher than year 1.",
+          "Correct: a yearly cycle on top of a rising trend.",
+          "The concentration changes every month, falling for five months in a row, not in one sharp drop."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-7",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "energy-flow-ecosystems-s2",
+      "q": "Which best explains the fall in CO₂ from May to September each year?",
+      "options": [
+        "Warm summer air holds less CO₂, so CO₂ moves from the air into the ground.",
+        "In the northern summer, land plants take in CO₂ by photosynthesis faster than respiration releases it.",
+        "Decomposers are most active in summer warmth, and they take CO₂ out of the air as they break down detritus.",
+        "Animals hibernate in summer, so their respiration stops returning CO₂ to the air."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Most land, and so most land plants, is in the Northern Hemisphere. In the growing season, photosynthesis removes more CO₂ than all respiration returns; in winter the balance reverses.",
+        "options": [
+          "The ground is not a sink that fills with summer CO₂; the seasonal change follows plant growth.",
+          "Correct: net uptake by northern plants during the growing season.",
+          "Decomposers release CO₂ by respiration; they do not remove it.",
+          "Hibernation happens in winter, and animal respiration is small next to plant uptake."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-8",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "energy-flow-ecosystems-s2",
+      "q": "Using the May value of each year, calculate the yearly rate of increase in CO₂ concentration, in ppm per year. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 2.4,
+        "tol": 0.05,
+        "unit": "ppm per year",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "May of year 2 (month 17) is 426.2 ppm and May of year 1 (month 5) is 423.8 ppm. (426.2 − 423.8) ÷ 1 year = 2.4 ppm per year. Comparing the same month removes the seasonal cycle."
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-9",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "energy-flow-ecosystems-s2",
+      "q": "Which process best explains why the concentration is higher in every month of year 2 than in the same month of year 1?",
+      "options": [
+        "Burning fossil fuels and clearing forests add CO₂ faster than plants and oceans remove it.",
+        "The station's plants grow more slowly each year as the air at the station becomes colder.",
+        "The oceans give off more CO₂ each year as they slowly lose their dissolved carbon to the air above.",
+        "Volcanoes near the station release CO₂ in a steady stream that grows larger each year."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Burning carbon stored for millions of years, and cutting forests that held carbon, add CO₂ faster than photosynthesis and the oceans take it up, so the yearly mean climbs.",
+        "options": [
+          "Correct: people move carbon from long-term reservoirs into the air.",
+          "Nothing in the data describes the station's temperature, and a monitoring site far from cities measures air mixed over a large area.",
+          "Overall the oceans take up CO₂ from the air rather than adding it.",
+          "The station is chosen to be far from local sources, and volcanoes add far less CO₂ each year than human activity."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-10",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "energy-flow-ecosystems-s2",
+      "q": "A second station at the same latitude in the Southern Hemisphere, where there is much less land, measures CO₂ over the same two years. Predict how its yearly cycle compares with the graph.",
+      "options": [
+        "A larger yearly swing, peaking in May, because there is more ocean to release CO₂ there",
+        "The same swing at the same time of year, because the air of the two hemispheres is the same",
+        "No yearly swing and no rising trend, because the Southern Hemisphere has few people",
+        "A smaller yearly swing, with its low in the southern growing season, and the same rising trend"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Less land means fewer plants, so the seasonal uptake and release are smaller, and the southern growing season is in the other half of the year. Air mixes between hemispheres within about a year, so the long-term rise is shared.",
+        "options": [
+          "The yearly swing comes from land plants, not from the ocean, and southern seasons are reversed.",
+          "The seasons are reversed and the plant cover is smaller, so the swing differs in size and timing.",
+          "CO₂ added anywhere spreads around the globe, so the rising trend appears there too.",
+          "Correct: smaller swing, shifted by half a year, same trend."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-11",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Giant tube worms near a deep-sea hydrothermal vent, 2,500 m down where no sunlight reaches, have no mouth or gut. Bacteria living inside them oxidize hydrogen sulfide from the vent water. What is the best explanation of how energy enters this community?",
+      "options": [
+        "The worms absorb sugars that sink from sunlit surface waters and pass them to the bacteria.",
+        "The bacteria use energy from oxidizing hydrogen sulfide to build sugars from CO₂.",
+        "The heat of the vent water is captured by the worms and converted into chemical energy.",
+        "The bacteria break down dead worms and release the energy stored in their bodies."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The bacteria are chemosynthetic producers. The worms supply them with hydrogen sulfide, oxygen and CO₂ and live on the organic molecules they make.",
+        "options": [
+          "Little organic matter reaches 2,500 m, and the worms have no gut to take in food.",
+          "Correct: chemosynthesis makes these bacteria the producers.",
+          "Heat cannot be turned into chemical energy by organisms; the energy comes from a chemical reaction.",
+          "Decomposers recycle matter but cannot be the energy source for a whole community."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-12",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A tropical forest has a gross primary productivity of 3,500 g of carbon per m² per year, and the trees use 60% of it in their own cellular respiration. What is the forest's net primary productivity, in g of carbon per m² per year? Give a whole number.",
+      "numeric": {
+        "answer": 1400,
+        "tol": 1,
+        "unit": "g C per m² per year",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Respiration uses 0.60 × 3,500 = 2,100 g. NPP = GPP − respiration = 3,500 − 2,100 = 1,400 g of carbon per m² per year."
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-13",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two processes that move carbon from organic molecules or rock-like stores into the atmosphere as CO₂.",
+      "options": [
+        "Photosynthesis by algae in a pond",
+        "Cellular respiration by fungi breaking down fallen leaves",
+        "Burial of dead plants in a waterlogged swamp",
+        "Burning coal in a power plant",
+        "Formation of shells from carbonate dissolved in seawater"
+      ],
+      "correct": [
+        1,
+        3
+      ],
+      "why": {
+        "correct": "Respiration (by decomposers, here) and combustion both oxidize carbon compounds and release CO₂.",
+        "options": [
+          "Photosynthesis takes CO₂ out of the air.",
+          "Releases CO₂: decomposers respire the carbon in the leaves.",
+          "Burial stores carbon away from the air; slow decay is why peat and coal form.",
+          "Releases CO₂ from carbon stored in the coal for millions of years.",
+          "Shell building takes carbon out of the water and locks it in solid carbonate."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-14",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A farmer grows soybeans in a field one year and corn the next, adding no fertilizer. The corn grows better than corn grown after corn. Which explanation is best supported by the nitrogen cycle?",
+      "options": [
+        "Soybean leaves take N₂ directly from the air and release it as nitrate through their roots.",
+        "Soybeans use less phosphorus than corn, so more phosphate is left for the next corn crop.",
+        "Bacteria in soybean root nodules fix N₂ into ammonium, and decaying soybean roots release it.",
+        "Soybeans act as denitrifiers, removing nitrate that would otherwise poison young corn plants."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Nitrogen-fixing bacteria in the nodules convert N₂ into ammonium the soybean uses; when soybean roots and stubble decompose, ammonium (and nitrate made from it) is added to the soil for the corn.",
+        "options": [
+          "Plants cannot use N₂ themselves; fixation is done by bacteria in the nodules.",
+          "The benefit of beans in a rotation comes mainly from added nitrogen, not from saved phosphorus.",
+          "Correct: symbiotic nitrogen fixation enriches the soil.",
+          "Denitrification removes usable nitrogen, which would hurt the corn, and plants do not denitrify."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-15",
+      "type": "predict",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A forest soil is treated with a chemical that blocks nitrification (the conversion of ammonium to nitrate) and does nothing else. Predict the effect on each quantity over the next few weeks.",
+      "variables": [
+        {
+          "name": "Ammonium in the soil",
+          "answer": "up",
+          "why": "Ammonium from decomposers and fixation keeps arriving, but it is no longer converted to nitrate."
+        },
+        {
+          "name": "Nitrate in the soil",
+          "answer": "down",
+          "why": "No new nitrate is made, while roots and bacteria keep using the nitrate already there."
+        },
+        {
+          "name": "Nitrate washed from the soil into a nearby stream",
+          "answer": "down",
+          "why": "Less nitrate in the soil means less is carried away in water; ammonium binds to soil particles more than nitrate does."
+        },
+        {
+          "name": "Phosphate in the soil",
+          "answer": "none",
+          "why": "Phosphate comes from weathering and decomposition, not from nitrification, so blocking nitrification does not change it."
+        }
+      ],
+      "why": {
+        "correct": "Blocking one step of a cycle makes the substance before it pile up and the substance after it run down, while other cycles are unaffected."
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-16",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a pond, algae are eaten by snails and by mayfly larvae. Snails are eaten by crayfish. Mayfly larvae are eaten by dragonfly larvae and by sunfish. Dragonfly larvae are eaten by sunfish. Herons eat crayfish and sunfish. Which organism feeds at more than one trophic level?",
+      "options": [
+        "Snails, because they eat algae and are eaten by crayfish",
+        "Crayfish, because they eat snails and are eaten by herons in the pond",
+        "Dragonfly larvae, because they eat mayfly larvae",
+        "Sunfish, because they eat mayfly larvae and dragonfly larvae"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Eating mayfly larvae (primary consumers) makes a sunfish a secondary consumer; eating dragonfly larvae (secondary consumers) makes it a tertiary consumer.",
+        "options": [
+          "Snails eat only algae, so they are primary consumers; being eaten does not change their level.",
+          "Crayfish eat only snails, so they feed at one level (secondary consumers).",
+          "Dragonfly larvae eat only mayfly larvae, so they feed at one level.",
+          "Correct: two kinds of prey at two different levels."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-17",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a patch of open ocean at one moment, the phytoplankton weigh less (4 g per m²) than the zooplankton that eat them (21 g per m²). Over a year, which explanation allows this without breaking the rule that energy decreases at each trophic level?",
+      "options": [
+        "The phytoplankton divide many times a year and are eaten almost as fast as they grow, so their yearly production far exceeds zooplankton production.",
+        "The zooplankton also carry out photosynthesis, so they make most of their own food and do not depend on the phytoplankton for it.",
+        "The rule holds on land but not in water, where the zooplankton capture more energy from the phytoplankton than the phytoplankton stored in a year.",
+        "The zooplankton store energy far more efficiently than the phytoplankton, so they pass up more energy than the phytoplankton captured."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Biomass is a snapshot; energy flow is a rate. Small, fast-dividing producers can support a larger standing mass of consumers because they replace themselves many times a year.",
+        "options": [
+          "Correct: high turnover keeps the energy pyramid upright even when the biomass pyramid is inverted.",
+          "Zooplankton are animals that eat phytoplankton; they do not photosynthesize.",
+          "No level can get more energy than the level below stored; the rule holds in water too.",
+          "No level can pass up more energy than it received; efficiency cannot exceed 100%."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-18",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which statement correctly describes the phosphorus cycle?",
+      "options": [
+        "Phosphorus enters living things mainly when soil bacteria fix phosphorus gas taken from the air.",
+        "Phosphorus has no important gas form; it enters soil and water mainly by weathering of rock.",
+        "Phosphorus cycles mostly through the atmosphere, falling in rain as phosphate ions.",
+        "Phosphorus is released mainly by burning fossil fuels, which adds phosphate gas to the air."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Unlike carbon and nitrogen, phosphorus has no important atmospheric reservoir; phosphate is released slowly from rock and recycled by decomposers.",
+        "options": [
+          "There is no phosphorus gas for bacteria to fix; that describes nitrogen.",
+          "Correct: rock and sediments are the main reservoir.",
+          "The atmosphere holds very little phosphorus.",
+          "Burning fossil fuels mainly releases carbon dioxide, not phosphorus."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-19",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A large forest upwind of a farming region is cut down and replaced by bare ground. Which change in the water cycle best explains why rainfall over the farms decreases?",
+      "options": [
+        "Less water vapor enters the air by transpiration, so less condenses into rain downwind.",
+        "More water soaks into the bare soil, so the clouds that form above it hold more water.",
+        "Bare ground reflects less sunlight, so less water evaporates from the farms downwind of it.",
+        "Cutting trees releases water stored in their wood, which falls as rain right away."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Trees pull water from deep soil and release it as vapor through their leaves. Without them, much of the rain runs off instead of returning to the air, so less moisture is carried downwind.",
+        "options": [
+          "Correct: transpiration supplies much of the vapor for rain over land.",
+          "Bare soil usually lets more water run off, and water in the soil does not add to the clouds.",
+          "Bare ground generally reflects more sunlight than a dark forest, and evaporation from the farms is not what changed.",
+          "Water in the cut wood is a small, one-time amount and does not explain a lasting drop in rain."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-20",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A 20 g mouse and a 20 g lizard are kept at 20 °C with all the food they want. Over a week the mouse eats food containing 450 kJ and the lizard 40 kJ, and both keep the same body mass. Which claim do these data support?",
+      "options": [
+        "The lizard digests its food far better, so it needs less of it to stay the same mass.",
+        "The mouse grows faster than the lizard, so it needs extra food to build new tissue.",
+        "The mouse uses far more energy, most of it for metabolic heat that keeps it warm.",
+        "Both animals use the same energy, but the mouse stores the extra food as fat each week."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Neither animal changed mass, so nearly all the food energy was used, mostly in respiration. The endothermic mouse used over ten times as much, because it makes heat to hold its body temperature well above 20 °C.",
+        "options": [
+          "Better digestion cannot explain a ten-fold difference; the lizard simply needs less energy.",
+          "Both kept the same mass, so neither added much tissue.",
+          "Correct: the cost of endothermy.",
+          "The mouse's mass did not change, so it did not store the extra food as fat."
+        ]
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-21",
+      "type": "order",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put these steps in order to trace a nitrogen atom from the air into a protein in a rabbit, through a plant that takes up nitrate.",
+      "options": [
+        "Bacteria in the soil fix N₂ from the air into ammonium.",
+        "Nitrifying bacteria convert the ammonium into nitrate.",
+        "A clover root takes up the nitrate from soil water.",
+        "The clover builds the nitrogen into an amino acid.",
+        "A rabbit eats the clover, digests its proteins and uses the amino acids."
+      ],
+      "why": {
+        "correct": "Fixation must come first because nothing else can use N₂; nitrification makes nitrate from ammonium; the plant takes it up and builds organic molecules; only then can a consumer get the nitrogen by eating."
+      }
+    },
+    {
+      "id": "bio-energy-flow-ecosystems-22",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "energy-flow-ecosystems",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Decomposers return carbon, nitrogen and phosphorus from dead matter to the soil and air. Why can they not return energy to producers in the same way?",
+      "options": [
+        "Decomposers keep the energy of dead matter stored inside their own cells for good.",
+        "Energy is destroyed when dead matter is broken down into CO₂ and water.",
+        "Producers already have more energy than they need, so they release it unused.",
+        "Energy leaves dead matter as heat, which producers cannot use to make sugar."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Decomposers, like all organisms, release the energy of their food as heat through respiration. Producers can capture light (or chemical) energy, but not heat, so energy must keep entering from the sun.",
+        "options": [
+          "Decomposers respire most of what they absorb; that energy leaves as heat.",
+          "Energy is conserved; it changes form to heat rather than being destroyed.",
+          "Producers capture light energy and store it; they do not dump an energy surplus.",
+          "Correct: heat is a form producers cannot capture."
+        ]
+      }
+    }
+  ]
+}

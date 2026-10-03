@@ -1,0 +1,7 @@
+{
+  "dispersion-survivorship": {
+    "file": "figures/dispersion-survivorship.svg", "ext": "svg", "w": 760, "h": 380,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: three square plots of the same area, each with 16 individuals. Clumped: three tight groups, from patchy food or living in groups. Uniform: an even grid, from territories or neighbors keeping apart. Random: scattered with no pattern. Right: survivorship curves, survivors per 1,000 born on a log scale against age as a percent of the maximum life span. Type I stays near 1,000 until late in life, then drops steeply (humans, elephants). Type II is a straight line from 1,000 to 1: the same fraction dies at every age (many songbirds, lizards). Type III drops steeply at the youngest ages and then declines slowly (oysters, most fish, many plants)."
+  }
+}

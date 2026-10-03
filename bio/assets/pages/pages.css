@@ -572,3 +572,59 @@ button.bio-fc-face:hover{border-color:var(--accent);}
 .bio-hero-min .eyebrow,.bio-hero-min .lede{display:none;}
 .bio-hero-min h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0;padding:0;}
 .bio-pr-exam-t small{opacity:1;}
+
+/* Cram kit (cram.js): the plan picker, the day list, the timed sets; the
+   dashboard's link to it. Prints as the day list alone. */
+.bio-db-cram{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 20px;font-weight:700;color:var(--muted);font-size:14px;}
+.bio-cr-pick h2,.bio-cr-sets h2{margin:0 0 12px;}
+.bio-cr-form{display:grid;gap:12px;margin:0 0 20px;}
+.bio-cr-date input{padding:10px 12px;font:700 15px var(--font-ui);border:2px solid var(--line);border-radius:var(--radius-sm,10px);background:var(--white);color:var(--ink);max-width:240px;min-height:44px;}
+.bio-cr-date input:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+.bio-cr-weeks{border:0;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;min-width:0;}
+.bio-cr-weeks legend{font:900 13.5px var(--font-ui);margin:0 0 6px;padding:0;}
+.bio-cr-head{margin:0 0 14px;}
+.bio-cr-title{margin:0 0 6px;}
+.bio-cr-when{margin:0 0 8px;font-weight:800;}
+.bio-cr-note{margin:0 0 10px;font-weight:600;line-height:1.55;color:var(--ink);}
+.bio-cr-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:10px 0 0;}
+.bio-cr-progress{margin:0;font:900 14px var(--font-ui);}
+.bio-cr-clear{background:none;border:0;padding:10px 4px;min-height:44px;font:800 13px var(--font-ui);color:var(--accent);text-decoration:underline;cursor:pointer;}
+.bio-cr-split{margin:0 0 16px;}
+.bio-cr-split summary{cursor:pointer;font-weight:800;padding:10px 0;min-height:44px;box-sizing:border-box;}
+.bio-cr-split table{border-collapse:collapse;width:100%;font-size:14px;}
+.bio-cr-split th,.bio-cr-split td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:left;}
+.bio-cr-split td{font-variant-numeric:tabular-nums;}
+.bio-cr-days{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.bio-cr-day{padding:12px 14px;border-radius:var(--radius);background:var(--white);box-shadow:var(--lift-sm);border-left:5px solid var(--cink);min-width:0;}
+.bio-cr-day.is-exam{border-left-color:var(--accent);}
+.bio-cr-day.is-rest,.bio-cr-day.is-eve{border-left-color:var(--line);background:var(--surface2);}
+.bio-cr-day.is-review{border-left-color:var(--muted);}
+.bio-cr-day.is-today{outline:3px solid var(--cink);outline-offset:1px;}
+.bio-cr-day.is-done .bio-cr-todo{opacity:.75;}
+.bio-cr-dhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.bio-cr-dhead h3{margin:0;font:900 15px/1.4 var(--font-ui);}
+.bio-cr-dn{color:var(--cink);}
+.bio-cr-dd{color:var(--muted);font-weight:800;}
+.bio-cr-dk{display:block;}
+.bio-cr-today{display:inline-block;padding:1px 8px;border-radius:var(--radius-pill);background:var(--cink);color:var(--white);font-size:12px;}
+.bio-cr-check{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 4px;font:800 14px var(--font-ui);cursor:pointer;flex:none;}
+.bio-cr-check input{width:20px;height:20px;margin:0;accent-color:var(--cink);}
+.bio-cr-todo{margin:6px 0 0;padding-left:20px;line-height:1.55;font-weight:600;}
+.bio-cr-todo li{margin:4px 0;overflow-wrap:anywhere;}
+.bio-cr-todo a{color:var(--cink);font-weight:800;}
+.bio-cr-topics{margin:4px 0 0;padding-left:18px;}
+.bio-cr-weak{display:inline-block;padding:0 6px;border-radius:var(--radius-pill);background:var(--ctint);color:var(--cink);font-size:12px;font-weight:900;}
+.bio-cr-examday{margin:14px 0 24px;padding:12px 14px;border-radius:var(--radius);background:var(--ctint);font-weight:600;}
+.bio-cr-sets{margin:8px 0 0;}
+.bio-cr-sets p{line-height:1.6;}
+.bio-cr-setbtns{display:flex;flex-wrap:wrap;gap:10px;}
+.bio-cr-min{font-weight:700;opacity:.85;margin-left:4px;}
+@media print{
+  .bio-cr-noprint,.bio-cr-split,body[data-app="cram"] .bio-hero .lede,.bio-db-cram{display:none !important;}
+  .bio-cr-day{box-shadow:none;border:1px solid #999;border-left-width:4px;break-inside:avoid;padding:6px 10px;}
+  .bio-cr-day.is-today{outline:0;}
+  .bio-cr-days{gap:6px;}
+  .bio-cr-todo{font-size:10pt;}
+  .bio-cr-todo a{color:#000;text-decoration:none;}
+  .bio-cr-day.is-done .bio-cr-dn::after{content:" (done)";}
+}

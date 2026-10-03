@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="exl-t exl-d">
+<title id="exl-t">Exponential and logistic growth</title>
+<desc id="exl-d">Left: population size against time for one population with r_max 0.5 per unit time, starting at 20. The exponential curve, a J shape, keeps getting steeper and leaves the graph. The logistic curve, an S shape, rises steeply at first, is steepest at about 500, half the carrying capacity, and then levels off at the carrying capacity K of 1,000. Right: population growth rate dN/dt against population size N. For exponential growth it is a straight line rising with N. For logistic growth it is an arch that is zero at N = 0, highest (125 per unit time) at N = 500, and zero again at N = K = 1,000.</desc>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="210" y="28" font-size="16" font-weight="700" text-anchor="middle">A. Population size over time</text>
+  <text x="595" y="28" font-size="16" font-weight="700" text-anchor="middle">B. Growth rate at each size</text>
+
+  <!-- panel A axes -->
+  <line x1="60" y1="300" x2="370" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="60" y1="50" x2="60" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+  <g font-size="12" text-anchor="end"><text x="54" y="304">0</text><text x="54" y="204">500</text><text x="54" y="104">1,000</text></g>
+  <g font-size="12" text-anchor="middle"><text x="60" y="318">0</text><text x="135" y="318">5</text><text x="210" y="318">10</text><text x="285" y="318">15</text><text x="360" y="318">20</text></g>
+  <text x="215" y="340" font-size="13" text-anchor="middle">Time</text>
+  <text x="18" y="175" font-size="13" text-anchor="middle" transform="rotate(-90 18 175)">Population size, N</text>
+  <line x1="60" y1="100" x2="370" y2="100" stroke="#5D6B69" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="366" y="92" font-size="13" font-weight="700" text-anchor="end">carrying capacity, K</text>
+  <polyline points="60.0,296.0 67.5,294.9 75.0,293.4 82.5,291.5 90.0,289.1 97.5,286.0 105.0,282.1 112.5,277.0 120.0,270.4 127.5,262.0 135.0,251.3 142.5,237.4 150.0,219.7 157.5,196.8 165.0,167.5 172.5,129.9 180.0,81.6" fill="none" stroke="#D55E00" stroke-width="3.5" stroke-dasharray="10 5"/>
+  <polyline points="60.0,296.0 67.5,294.9 75.0,293.5 82.5,291.7 90.0,289.5 97.5,286.7 105.0,283.2 112.5,279.0 120.0,273.8 127.5,267.6 135.0,260.2 142.5,251.6 150.0,241.9 157.5,231.0 165.0,219.3 172.5,207.1 180.0,194.6 187.5,182.3 195.0,170.5 202.5,159.5 210.0,149.6 217.5,140.9 225.0,133.4 232.5,127.0 240.0,121.7 247.5,117.3 255.0,113.7 262.5,110.9 270.0,108.6 277.5,106.7 285.0,105.3 292.5,104.1 300.0,103.2 307.5,102.5 315.0,102.0 322.5,101.5 330.0,101.2 337.5,100.9 345.0,100.7 352.5,100.6 360.0,100.4" fill="none" stroke="#0072B2" stroke-width="3.5"/>
+  <text x="186" y="66" font-size="13" font-weight="700" fill="#A04500">exponential (J)</text>
+  <text x="238" y="160" font-size="13" font-weight="700" fill="#005A8C">logistic (S)</text>
+  <circle cx="180.0" cy="194.6" r="5" fill="#0072B2"/>
+  <text x="104" y="200" font-size="12" text-anchor="middle">steepest</text>
+  <text x="104" y="214" font-size="12" text-anchor="middle">at K/2</text>
+
+  <!-- panel B axes -->
+  <line x1="450" y1="300" x2="745" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+  <line x1="450" y1="50" x2="450" y2="300" stroke="#1F2A28" stroke-width="1.5"/>
+  <g font-size="12" text-anchor="end"><text x="444" y="304">0</text><text x="444" y="224">50</text><text x="444" y="144">100</text></g>
+  <g font-size="12" text-anchor="middle"><text x="450" y="318">0</text><text x="570.8" y="318">500</text><text x="691.7" y="318">1,000</text></g>
+  <text x="597" y="340" font-size="13" text-anchor="middle">Population size, N</text>
+  <text x="408" y="175" font-size="13" text-anchor="middle" transform="rotate(-90 408 175)">Growth rate, dN/dt</text>
+  <polyline points="450.0,300.0 517.7,76.0" fill="none" stroke="#D55E00" stroke-width="3.5" stroke-dasharray="10 5"/>
+  <polyline points="450.0,300.0 456.0,280.5 462.1,262.0 468.1,244.5 474.2,228.0 480.2,212.5 486.2,198.0 492.3,184.5 498.3,172.0 504.4,160.5 510.4,150.0 516.5,140.5 522.5,132.0 528.5,124.5 534.6,118.0 540.6,112.5 546.7,108.0 552.7,104.5 558.8,102.0 564.8,100.5 570.8,100.0 576.9,100.5 582.9,102.0 589.0,104.5 595.0,108.0 601.0,112.5 607.1,118.0 613.1,124.5 619.2,132.0 625.2,140.5 631.2,150.0 637.3,160.5 643.3,172.0 649.4,184.5 655.4,198.0 661.5,212.5 667.5,228.0 673.5,244.5 679.6,262.0 685.6,280.5 691.7,300.0" fill="none" stroke="#0072B2" stroke-width="3.5"/>
+  <line x1="570.8" y1="100" x2="570.8" y2="300" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="526" y="56" font-size="13" font-weight="700" fill="#A04500">exponential: dN/dt = r_max N</text>
+  <text x="606" y="78" font-size="13" font-weight="700" fill="#005A8C">logistic:</text>
+  <text x="606" y="94" font-size="12" fill="#005A8C">dN/dt = r_max N (K − N)/K</text>
+  <text x="702" y="290" font-size="12">K</text>
+  <text x="575" y="290" font-size="12">K/2</text>
+  <text x="30" y="368" font-size="12" font-style="italic">Same population both panels: r_max = 0.5 per unit time, K = 1,000, starting at N = 20.</text>
+</g>
+</svg>

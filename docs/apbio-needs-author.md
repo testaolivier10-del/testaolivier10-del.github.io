@@ -473,6 +473,74 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   work finds the asymmetry continuous and partly plastic, not a simple two-allele trait. For your exam: rare-form
   advantage keeps both forms near equal frequency; no key depends on the genetics.
 
+Unit 8 (Ecology), raised by its author, 2026-10-03:
+
+- **u8-illustrative-data** (open). Every Unit 8 stimulus and FRQ uses invented numbers modeled on
+  classic studies (choice chambers, photoperiod night breaks, a Mauna Loa-type CO₂ record, Paine's
+  sea stars, Connell's barnacles, Gause's *Paramecium*, hare and lynx, grassland diversity plots,
+  Great Lakes PCBs, an oxygen sag below an outfall). Values are plausible, not measurements, and no
+  item depends on matching a published figure. Confirm a label such as "model data" is not needed.
+- **trophic-efficiency-10** (open). The "10% rule" is a rule of thumb (real trophic efficiencies run
+  from under 1% to about 20%). Meanwhile: notes call it an average and a "For your exam" box says to
+  use 10% only when no data are given (`energy-flow-ecosystems`).
+- **r-k-selection** (open). Research ecology treats r/K selection as a dated simplification; the
+  exam still uses the labels. Meanwhile: taught as two ends of a range, with a "For your exam" box
+  (`population-ecology`).
+- **hare-lynx-cause** (open). How much of the snowshoe hare cycle is driven by predators and how much
+  by winter food is debated; fenced-plot experiments point to both. Meanwhile: notes give both, items
+  `bio-population-density-3` and `-5` key the predator-prey lag and food limitation, and a "For your
+  exam" box explains the choice.
+- **diversity-stability** (open). The diversity-stability link was long contested (models predicting
+  the reverse); field experiments support it for community-level production more than for single
+  populations. Meanwhile: the general rule is taught with a "For your exam" box (`biodiversity`).
+- **trophic-cascade-examples** (decided by the author, confirm). The Yellowstone wolf-elk-aspen cascade
+  is contested, so the course uses lake bass-minnow-zooplankton experiments and sea otters instead.
+- **otter-orca** (open). The 1990s Aleutian sea otter decline is usually attributed to killer whales,
+  but that explanation has critics. `frq-keystone-otter` calls it "the leading explanation"; no point
+  depends on the cause.
+- **dead-zone-oxygen** (open). Low dissolved oxygen in eutrophic water comes from decomposition of dead
+  algae (bottom water, dead zones) and from algal and microbial respiration at night (dawn lows in
+  streams). Meanwhile: the course says decomposers use most of the oxygen in deep water and teaches the
+  dawn low separately (`ecosystem-disruptions` notes, figure `eutrophication-chain`, stimulus s1).
+- **photoperiod-mechanism** (open). Lessons say plants "measure the night" with phytochrome (red light
+  to the active form, far-red back, slow reversion in the dark) and leave out the flowering signal
+  (florigen/FT protein) and the circadian clock's role. Check this simplification, and that
+  long-day plants are fairly described as flowering when the night is shorter than a critical length.
+- **kinesis-pill-bugs** (open). The pill bug stimulus (`environment-responses-s1`) builds a humidity
+  kinesis into its data (no steering at the border). Real isopods also show other responses; the
+  stimulus states its own data, and the items key only what those data show.
+- **seal-logistic** (open). `frq-seal-logistic-growth` gives r_max = 0.12 per year and K = 10,000 for a
+  gray seal colony; the counts were generated from the logistic equation with small rounding, so
+  part (b) (300 per year) matches r_max K/4 exactly. Real colonies fluctuate more.
+- **population-growth-model** (open; Unit 8 simulator `population-growth`). The tool steps the formula sheet's
+  continuous equations with Euler's method (Δt from 1 to 0.1 years), so with Δt = 1 exponential growth is
+  N₀(1 + r_max)^t, below N₀e^(r_max·t); the box says so. Events remove a fixed share at one instant and leave K
+  unchanged; N is a real number (no demographic chance). Predator-prey and competition modes were left out
+  (8.5 terms). Confirm the wording "per-capita growth rate" for (dN/dt)/N and r_max as its maximum.
+- **energy-flow-model** (open; Unit 8 simulator `energy-flow`). Illustrative choices: producer respiration 50%
+  of GPP, 10% of each level's stored energy stored by the next (trophic efficiency as a ratio of production),
+  consumers respiring 80% of what they absorb (so they absorb half of the level below), 4 kcal per gram of dry
+  mass, and turnover rates (P/B) per level that make the open-ocean biomass pyramid inverted. Real trophic
+  efficiencies range about 5-20% and endotherms respire more than 80% of assimilated energy; textbooks state the
+  "10% rule" against different quantities (energy available, production, biomass). Confirm the definitions.
+- **biomagnification-rule** (open; same simulator). The toxin's concentration rises by retained share ÷
+  (1 − respiration share) per level (×5 with the defaults), a simple mass-balance rule; real biomagnification
+  factors vary widely by toxin, species and fat content. Biomagnification is taught in 8.7, so the mode is
+  labeled "from Topic 8.7" and its item is tagged `ecosystem-disruptions`.
+- **u8-review-defaults** (review u8, 2026-10-03). The independent check found every Unit 8 default above
+  defensible for the exam: the numbers in `seal-logistic` fit the logistic curve (r_max 0.12, K 10,000)
+  to within rounding, the simulators' tables match their models, and no key depends on a contested point.
+  Still open for a person: the "model data" label (`u8-illustrative-data`) and the definitions in
+  `energy-flow-model`.
+- **hibernation-mechanism** (open, 8.1, `bio-environment-responses-17`, notes; review u8). Hibernators
+  actively suppress metabolism before and as body temperature falls; the cold then slows reactions further
+  (a temperature, Q10, effect). The notes and the item's explanation now say both; the key ("reactions run
+  slowly when cold, so it makes and uses far less ATP") is kept as the exam-level idea.
+- **migration-cue** (open, 8.1, `bio-environment-responses-19`; review u8). Caged-warbler work (Gwinner) also
+  shows a circannual clock that keeps migratory restlessness going under constant day length. The key now
+  says day-length change, with food and temperature steady, is enough for migratory behavior, and the
+  explanation notes that the design cannot separate day length from an internal yearly clock.
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer
@@ -527,9 +595,10 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   message logs, Cloudflare's request logs. privacy.html points to "How long things are kept",
   which says the providers keep short-lived logs. Look these up and add numbers if they matter
   to a school. Question reports, error reports and the page counter are never deleted by code.
-- **cram-kit-claim** (open). premium.js lists "The cram kit (study plans and timed mixed sets,
-  from March 2027)" as Premium; it does not exist yet (spec schedule: by 2027-03-01). If it
-  slips, change the line before anyone buys on it.
+- **cram-kit-claim** (resolved 2026-10-03). The cram kit exists (`bio/cram.html`, spec decision 26),
+  so premium.js now lists "The cram kit: a study plan fitted to your weakest units, and timed mixed
+  sets" as Premium (no "from March 2027"), and the free list adds "The cram-kit study plan outline,
+  printable". The proposed Polar description (spec section 6) was updated to match.
 - **free-simulator** (open). The free list says "One simulator"; `ApBioCore.allowed('tools')`
   locks every tool when locked. The tools branch (0.4b) must free exactly one simulator, or the
   line changes.

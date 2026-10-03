@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="bm-t bm-d">
+<title id="bm-t">Biomagnification of mercury in a lake food chain</title>
+<desc id="bm-d">A food chain drawn as stacked levels: water, algae, zooplankton, small fish, large fish and a fish-eating bird, the loon. Each level is labeled with a typical mercury concentration in parts per million: water 0.00001, algae 0.01, zooplankton 0.03, small fish 0.1, large fish 0.8, loon 4. The concentration in the loon is about 400,000 times that in the water. Mercury builds up because it is stored in the body and excreted slowly, and each animal eats many times its own mass of food from the level below.</desc>
+<defs>
+  <marker id="bm-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="250" y="26" font-size="16" font-weight="700" text-anchor="middle">Mercury up a lake food chain</text>
+  <g text-anchor="middle">
+    <rect x="190" y="40" width="120" height="44" rx="8" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/>
+    <text x="250" y="60" font-size="14" font-weight="700">Loon</text><text x="250" y="77" font-size="12">fish-eating bird</text>
+    <rect x="160" y="96" width="180" height="44" rx="8" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+    <text x="250" y="116" font-size="14" font-weight="700">Large fish</text><text x="250" y="133" font-size="12">pike, walleye</text>
+    <rect x="130" y="152" width="240" height="44" rx="8" fill="#D2EAF8" stroke="#56B4E9" stroke-width="2"/>
+    <text x="250" y="172" font-size="14" font-weight="700">Small fish</text><text x="250" y="189" font-size="12">minnows, perch</text>
+    <rect x="100" y="208" width="300" height="44" rx="8" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+    <text x="250" y="235" font-size="14" font-weight="700">Zooplankton</text>
+    <rect x="70" y="264" width="360" height="44" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+    <text x="250" y="291" font-size="14" font-weight="700">Algae (phytoplankton)</text>
+    <rect x="40" y="320" width="420" height="44" rx="8" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2"/>
+    <text x="250" y="347" font-size="14" font-weight="700">Lake water</text>
+  </g>
+  <!-- concentrations -->
+  <g font-size="14" font-weight="700" fill="#A04500">
+    <text x="480" y="67">4 ppm</text>
+    <text x="480" y="123">0.8 ppm</text>
+    <text x="480" y="179">0.1 ppm</text>
+    <text x="480" y="235">0.03 ppm</text>
+    <text x="480" y="291">0.01 ppm</text>
+    <text x="480" y="347">0.00001 ppm</text>
+  </g>
+  <line x1="600" y1="350" x2="600" y2="52" stroke="#D55E00" stroke-width="5" marker-end="url(#bm-a)"/>
+  <text x="615" y="190" font-size="13" font-weight="700" fill="#A04500">concentration</text>
+  <text x="615" y="207" font-size="13" font-weight="700" fill="#A04500">rises about</text>
+  <text x="615" y="224" font-size="13" font-weight="700" fill="#A04500">400,000-fold</text>
+  <text x="20" y="390" font-size="12" font-style="italic">ppm = parts per million by mass (mg per kg). Values are typical, for illustration.</text>
+</g>
+</svg>

@@ -90,6 +90,7 @@ const PAGES = [
   ['/bio/practice.html', 'the AP® Biology practice builder'],
   ['/bio/exams.html', 'the AP® Biology exams app'],
   ['/bio/frq.html', 'the AP® Biology free-response list'],
+  ['/bio/cram.html', 'the AP® Biology cram kit'],
   ...bioPages(),
 ];
 

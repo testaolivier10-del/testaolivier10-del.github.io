@@ -1,0 +1,85 @@
+{
+  "topic": "population-density",
+  "hook": "<p>In 1944, 29 reindeer were released on St. Matthew Island in the Bering Sea, an island thick with lichen and with no wolves. By 1963 there were about 6,000. Three years later there were fewer than 50. The reindeer had eaten the slow-growing lichen faster than it could regrow, and a hard winter did the rest. No population can keep growing exponentially: sooner or later, crowding catches up with it.</p>",
+  "prereq": [
+    {
+      "q": "In exponential growth (dN/dt = r_max N), what happens to dN/dt when N doubles?",
+      "options": ["It doubles", "It stays the same", "It halves"],
+      "correct": 0,
+      "why": "dN/dt is proportional to N when r_max is constant, so twice as many individuals add twice as many per unit time.",
+      "review": "population-ecology"
+    },
+    {
+      "q": "A limiting factor is",
+      "options": ["the factor in shortest supply, which sets the rate of a process", "any factor that speeds up a process", "the factor present in the largest amount"],
+      "correct": 0,
+      "why": "Adding more of anything else does not help until the limiting factor is raised.",
+      "review": "enzyme-environment"
+    },
+    {
+      "q": "Individuals compete when they",
+      "options": ["need the same resource and there is not enough for all of them", "live in the same area at different times of year", "share genes from a common ancestor"],
+      "correct": 0,
+      "why": "Competition happens when a needed resource is limited, so one individual's use leaves less for others.",
+      "review": "natural-selection-intro"
+    }
+  ],
+  "figure": {
+    "figure": "exponential-logistic",
+    "caption": "Logistic growth slows as N nears K; the growth rate is highest at K/2 and zero at K."
+  },
+  "chain": [
+    {
+      "cause": "A few individuals arrive where food, water and space are plentiful.",
+      "effect": "The per capita growth rate is close to r_max, and the population grows almost exponentially."
+    },
+    {
+      "cause": "As N rises, each individual gets a smaller share of the limiting resources.",
+      "effect": "Intraspecific competition increases: individuals that lose get less food, find no nest site or grow less."
+    },
+    {
+      "cause": "Hungrier, more crowded individuals have fewer offspring, die more often, catch diseases from each other more easily and are caught by predators more often.",
+      "effect": "The per capita birth rate falls and the per capita death rate rises: these factors are density-dependent."
+    },
+    {
+      "cause": "The per capita growth rate shrinks toward zero as N approaches the carrying capacity K.",
+      "effect": "dN/dt = r_max N (K − N)/K: growth is fastest at K/2 and stops at K, giving an S-shaped curve."
+    },
+    {
+      "cause": "If N rises above K, deaths exceed births.",
+      "effect": "N falls back toward K, or crashes if the overcrowded population damaged its food supply and lowered K."
+    },
+    {
+      "cause": "A frost, fire, flood or drought strikes.",
+      "effect": "It kills about the same fraction whatever the density (density-independent), so N drops suddenly, then regrows toward K."
+    }
+  ],
+  "ideas": [
+    "A <b>limiting resource</b> (food, water, space, light, nutrients) caps growth. The largest population an environment can support over time is its <b>carrying capacity, K</b>.",
+    "<b>Logistic growth</b>: <b>dN/dt = r_max N (K − N)/K</b>. The (K − N)/K factor is the fraction of K still unused: near 1 when N is small, 0 at K, negative above K.",
+    "Growth is fastest at <b>N = K/2</b>; the curve is S-shaped.",
+    "<b>Density-dependent</b> factors (competition, disease, wastes, predators) act harder as density rises and hold N near K. <b>Density-independent</b> factors (weather, fire, floods) kill a similar fraction at any density.",
+    "<b>Intraspecific competition</b> is competition within a species. Linked prey and predator populations can rise and fall in <b>population cycles</b>, with the predator's peaks lagging the prey's."
+  ],
+  "misconception": {
+    "wrong": "A population grows fastest when it is close to its carrying capacity, because that is when there are the most individuals.",
+    "right": "Growth is fastest at about half of K. Near K there are many individuals, but each has so few resources that births barely exceed deaths, so (K − N)/K is close to zero."
+  },
+  "check": [
+    "bio-population-density-1",
+    "bio-population-density-3",
+    "bio-population-density-6",
+    "bio-population-density-7",
+    "bio-population-density-9",
+    "bio-population-density-11",
+    "bio-population-density-12",
+    "bio-population-density-14"
+  ],
+  "summary": "<p>No population grows exponentially for long. Limiting resources such as food, water, light and space set a carrying capacity, K: the largest population the environment can support over time. As N rises, intraspecific competition for those resources grows, so per capita births fall and deaths rise. Logistic growth captures this: dN/dt = r_max N (K − N)/K. The curve is S-shaped, growth is fastest at K/2, and it stops at K; a population above K shrinks. Density-dependent factors (competition, disease, wastes, predators) act harder in crowded populations and keep numbers near K. Density-independent factors such as frost, fire, floods and drought kill a similar fraction at any density and cause sudden drops. Linked prey and predator populations can rise and fall in regular population cycles, with the predator's peaks following the prey's.</p>",
+  "connections": [
+    { "href": "../notes/population-ecology.html", "label": "Back: exponential growth and r_max (8.3)" },
+    { "href": "../notes/enzyme-environment.html", "label": "Back: limiting factors (3.3)" },
+    { "href": "../tools/population-growth.html", "label": "Try it: the population growth simulator" },
+    { "href": "../notes/community-ecology.html", "label": "Next: how species interact (8.5)" }
+  ]
+}

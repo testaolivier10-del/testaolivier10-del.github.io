@@ -18,7 +18,7 @@ bio/                                    the course, at levlprep.com/bio/
   unit-sheets/<unit>.html               one-page printable unit summary            generated
   glossary.html                         every defined term                         generated
   practice.html review.html exams.html frq.html flashcards.html tools.html
-  dashboard.html search.html                 app page shells from pages.json       generated
+  cram.html dashboard.html search.html       app page shells from pages.json       generated
   teachers.html                         for teachers (not an app; "static" in pages.json) generated
   frq/<id>.html                         one FRQ: stable, shareable, printable page generated
   dashboard.html search.html teachers.html   app page shells from pages.json       generated
@@ -97,7 +97,7 @@ and the registry key stay `apbio`; globals start `ApBio`; question ids start `bi
 
 | File | Job |
 |---|---|
-| `bio-core.js` | `window.ApBioCore`: store `apbio_progress_v1` (records carry topic, unit and practice skill); `record`; `topicMastery`, `unitMastery`, `practiceMastery` ("4" or "4.B"), `overallMastery`, `weakest`, `weakestPractice`; SM-2 `reviewQueue`, `missed`; `lessonComplete`; `toolResult`/`toolStats`; XP via `HubProgress.award('apbio', …)` (guarded); account sync namespace `apbio`; lazy bank `loadIndex` / `loadQuestions` (attaches `q.stim`) / `loadWhy`; premium hooks `locked(unit, topic)`, `allowed`, `quota`, `serve`, `freeExam`, `badge`, `gate` mirroring AnpCore, all open until premium.js knows the course `apbio` |
+| `bio-core.js` | `window.ApBioCore`: store `apbio_progress_v1` (records carry topic, unit and practice skill); `record`; `topicMastery`, `unitMastery`, `practiceMastery` ("4" or "4.B"), `overallMastery`, `weakest`, `weakestPractice`; SM-2 `reviewQueue`, `missed`; `lessonComplete`; `toolResult`/`toolStats`; XP via `HubProgress.award('apbio', …)` (guarded); account sync namespace `apbio`; lazy bank `loadIndex` / `loadQuestions` (attaches `q.stim`) / `loadWhy`; premium hooks `locked(unit, topic)`, `allowed` (whole features `tools`, `analytics`, `cram`), `quota`, `serve`, `freeExam`, `badge`, `gate` mirroring AnpCore, all open until premium.js knows the course `apbio` |
 | `bio-questions.js` | `window.ApBioQuestions`: `render`, `hydrate(container, items, opts, stimuli)` (one panel per run of items sharing a stimulus), pure `grade(q, response)`, `parseNumber`, `group`, `displayOrder`, `orderStart`. Types single, multi, numeric, order, predict; radio and checkbox roles, word marks, per-option explanations, Report via `LevlReport.button('apbio', id)` |
 | `bio-lesson.js` | lesson page: stepped view, prereq, check questions, completion, label toggle |
 | `bio-book.js`, `bio-toc.js` | Learn textbook (one unit's notes at a time); rails, ticks, mastery chips |
@@ -113,7 +113,8 @@ Pages set `window.ApBioBase` (path back to `bio/`) and `window.ApBioSection`.
 |---|---|
 | `practice.js` | set builder: unit, topic, science practice (1-6), type (standalone, stimulus sets, numeric), difficulty, count; modes weakest topics and missed (retried until right). A *step* is one standalone item or one whole set (authored order, one panel). Lazy: `loadIndex`, then only the units drawn from, `loadWhy` after each answer. `ApBioCore.serve` per item. The address bar follows the builder (`?unit= &topic= &practice= &type= &diff= &mode=`); share bar for the set and "Print as a worksheet" (answer key optional, on its own page; locked units left out). Summary ends with `LevlPremium.card('apbio','summary')`. **Skills hook:** `window.ApBioSkills.practiceItems(filters)` returns a Promise of full items (bank item format); they join as standalone steps |
 | `review.js` | SM-2 due queue, oldest first; a set item comes back alone under its stimulus; tool items (`<tool>:<content>:<item>`) link to `tools/<slug>.html` via `window.ApBioTools` |
-| `exams.js` | unit test (equal share per published topic of the unit, sets whole; 15, 25 or all) and practice exam (Section I: 60 MCQ in 90 min, per unit by the midpoint of its weight range, largest remainder, sets whole; Section II: one FRQ per type, 25 min per long and 10 per short = 90 min, no pause, printable booklet; then rubric self-scoring; results by unit and practice; readiness band 1-5 from 60% MCQ + 40% FRQ with cut-offs 75/60/45/30, labelled "Not calibrated: a rough guide, not a predicted score."). When the bank cannot fill a full exam the setup says so per unit and per FRQ type and offers a "shorter practice exam" (each built unit keeps its full-exam share, capped by what exists). Timing standard, 1.5x, 2x, untimed. Answers recorded at the end (A&P decision 42); one free exam via `ApBioCore.freeExam` |
+| `exams.js` | unit test (equal share per published topic of the unit, sets whole; 15, 25 or all) and practice exam (Section I: 60 MCQ in 90 min, per unit by the midpoint of its weight range, largest remainder, sets whole; Section II: one FRQ per type, 25 min per long and 10 per short = 90 min, no pause, printable booklet; then rubric self-scoring; results by unit and practice; readiness band 1-5 from 60% MCQ + 40% FRQ with cut-offs 75/60/45/30, labelled "Not calibrated: a rough guide, not a predicted score."). When the bank cannot fill a full exam the setup says so per unit and per FRQ type and offers a "shorter practice exam" (each built unit keeps its full-exam share, capped by what exists). Timing standard, 1.5x, 2x, untimed. Answers recorded at the end (A&P decision 42); one free exam via `ApBioCore.freeExam`. **Mixed timed set** (`?mode=mixed&n=10\|20\|30`, the cram kit's sets): n questions over the published units by weight midpoint (`mixedPlan`, `split`, `fill`, sets whole), 1.5 min a question, same clock and review; Premium via `allowed('cram')`, never the free exam; history `kind: 'mixed'` |
+| `cram.js` | the cram kit (spec decision 26). `window.ApBioCramPlan.build({ exam, weeks, units, topics, mastery, frqs })` is pure (no DOM, storage or clock; tested in `scripts/test/apbio-cram.test.mjs`): 21- or 14-day templates counted back from the exam (UTC calendar days), two sessions per study day shared over the course units by exam-weight midpoint (× 1.5 − mastery when personal), weak-spot days, FRQ per day; returns `{ start, end, exam, shares, slots, ranked, personal, days: [{ n, date, kind: study|weak|exam|review|rest|eve, units, topics, weak, set, frq, exam }] }`. The page: exam-date field (writes `apbio_exam_date`), 3/2-week picker, the share table, the day list with Done ticks and a polite progress line, Print, and links to the timed sets. Mastery is passed only when `ApBioCore.allowed('cram')`; otherwise the outline plus `Core.gate('cram')` |
 | `frq-kit.js` | `window.ApBioFrq`: load, question and rubric HTML, self-score, the printable booklet, `printOnly` (`#bio-print`, `body.bio-printing`), drafts, scores |
 | `frq.js` | `frq.html`: list by type and unit, best self-scores, the types not written yet. `frq/<id>.html`: write (a textarea per part), reveal the rubric, check points, sample answers, save; "print the rubric on a separate page" option. An FRQ in a locked unit shows the Premium card instead of the workspace |
 | `dashboard.js` | mastery by unit and topic and by science practice, weakest topics linked to their lesson and notes, FRQ self-scores, exam history, the exam-date card; Premium (`allowed('analytics')`): mastery by skill (4.B), tool accuracy |
@@ -125,7 +126,8 @@ Storage besides `apbio_progress_v1` and `apbio_flashcards_v1`: `apbio_prefs_v1` 
 `examTiming`, `examHistory` (last 30: `{ ts, kind, label, unit, mcq: {c, n}, frq: {got, of}, band,
 partial }`), `frqScores` (`{ id: { got, of, parts, best, tries, ts, title, type, units } }`),
 `flashcards` (deck prefs); `apbio_frq_drafts_v1` holds typed FRQ answers on
-this device only, never synced; `apbio_exam_date` is the shared exam-date card's key (unset, the
+this device only, never synced; `apbio_cram_v1` (`{ weeks: 3|2, done: { 'YYYY-MM-DD': 1 } }`) holds the cram plan's
+length and ticked days, this device only; `apbio_exam_date` is the shared exam-date card's key (unset, the
 card counts down to `assets/exam-date.js`'s course default, 2027-05-03; cleared, it holds "none").
 Analytics events
 added: `apbio-session-finish`, `apbio-exam-finish`, `apbio-frq-score`.
@@ -271,6 +273,15 @@ place characters, build a tree from a table, checked in any rotation; placements
 `tree-reading:<tree>:char-<id>` and `tree-reading:build-<set>:tree`), both `premium: "tools"`. Their topics
 are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other four (ETC/ATP synthase, light
 reactions/Calvin, population growth, energy flow) come with their units: add
+`premium: "tools"`; and (Unit 8, live once `unit-8` is published) `population-growth` (`ApBioMath.population`:
+exponential and logistic dN/dt in the formula sheet's forms, Euler steps of Δt, density-independent events and a
+change in K; N over time, dN/dt and per-capita rate against N) and `energy-flow` (`ApBioMath.energyFlow`: GPP,
+producer respiration, NPP, a stored fraction per level, consumer respiration heat, decomposers, biomass from
+turnover, energy/biomass pyramids, a biomagnification mode), both `premium: "tools"`, their models in a delimited
+Unit 8 block at the end of `bio-tool-math.js` and tests in `scripts/test/apbio-tools-u8.test.mjs`. Their topics
+are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other six (ETC/ATP synthase, light
+reactions/Calvin,
+Hardy-Weinberg/drift, tree reading; population growth and energy flow are built) come with their units: add
 the model to `ApBioMath` (or the script), the script, the data, the validator and the
 `pages.json` entry.
 
@@ -331,7 +342,7 @@ and open `bio/tools/<slug>.html`; afterwards remove the map and run the generato
 | `check-apbio-content.mjs --check` | the formats above; tags; per-option why with no letter/position; 15+ items, 60% apply/analyze, 40% in sets, sets of 4-5; numeric well-formed; length tells (correct option longest ≤40% per topic); test-wise balance (A&P decision 79, count rules scaled for a small bank); cross-topic duplicates (75%); ordering (later terms outside previews); figure licenses; FRQ rubrics and samples; trademark wording; no "AP" in authored meta text. Only published chapters fail; the rest print |
 | site rule `apbio-trademark` | pages with "AP" carry the disclaimer; every "AP" is "AP®" as an adjective; no "ap" token in paths under `bio/` or links into it; no "AP" in meta description/keywords/og:description |
 | site rule `apbio-beta-and-report` | Beta note and pill, Report a problem, report-question.js on every page; page reports on notes and the glossary |
-| `scripts/test/apbio-core.test.mjs`, `apbio-questions.test.mjs`, `apbio-build.test.mjs` | store, mastery, SM-2, XP guard, premium tolerance, lazy bank; grading; a stub build passing the course rules, noindex before launch |
+| `scripts/test/apbio-core.test.mjs`, `apbio-questions.test.mjs`, `apbio-build.test.mjs`, `apbio-cram.test.mjs` | store, mastery, SM-2, XP guard, premium tolerance, lazy bank; grading; a stub build passing the course rules, noindex before launch; the cram plan (shares sum to 1, dates across month and leap-day boundaries, exams and rest days placed, personalisation) |
 
 ## Placeholder sample content
 

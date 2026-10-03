@@ -422,7 +422,7 @@ ${tail({ depth, section: 'learn' })}
 ${bodyOpen()}
 <main id="main" class="xshell bio-glossary">
   ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }])}
-  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>Glossary</h1><p class="lede">${entries.length.toLocaleString('en-US')} terms${entries.length ? ' so far' : ''}. Each links to the page that teaches it; open a letter to read its definitions.</p>
+  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${BETA_PILL}</div><h1>Glossary</h1><p class="lede">${entries.length.toLocaleString('en-US')} terms${entries.length && !map.chapters.every(chapterBuilt) ? ' so far' : ''}. Each links to the page that teaches it; open a letter to read its definitions.</p>
     <label class="bio-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
     <p class="bio-small" id="gl-status" role="status" aria-live="polite"></p></header>
   ${letters.length ? `<p class="bio-letters-hint bio-small" aria-hidden="true">Swipe the letters for ${letters[letters.length - 1]} &rarr;</p>
@@ -557,7 +557,9 @@ ${tail({ depth, section: 'home' })}
   }
 
   /* --------------------------------------------------- app page shells */
-  const STATE_PAGES = new Set(['dashboard', 'review', 'search']);
+  // Pages that show one student's own state are never indexed; the cram kit
+  // is one (a plan from their exam date and mastery; docs/apbio-spec.md decision 26).
+  const STATE_PAGES = new Set(['dashboard', 'review', 'search', 'cram']);
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));
