@@ -93,11 +93,14 @@ jobs:
       # license fields; the catalog cross-check runs where authors work.)
       - name: the A&P content follows its rules
         run: node scripts/check-anp-content.mjs --check
+      # The AP Biology course keeps the A&P rule: nothing is used before it is
+      # taught. Units follow the CED order; each skills topic sits after the
+      # topic it is anchored to (docs/apbio-dependency-map.json).
+      - name: the AP Biology course uses no concept before it is taught
+        run: node scripts/check-apbio-map.mjs --check
       # The AP Biology course is generated from bio/data and its course map by
-      # build-apbio.mjs, like A&P. Until the map lands nothing is generated, so
-      # the check also fails on a generated page left behind; once it lands, a
-      # data edit without a rebuild would ship a page that disagrees with its
-      # source.
+      # build-apbio.mjs, like A&P; a data edit without a rebuild would ship a
+      # page that disagrees with its source.
       - name: the AP Biology pages match their data
         run: node scripts/build-apbio.mjs --check
       # The authored AP Biology data against its formats: unit, topic and

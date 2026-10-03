@@ -739,7 +739,7 @@ if (Array.isArray(bank)) {
     if (rel === 'changelog.html' || rel === 'premium.html') continue;
     const isOchem = rel.split(/[\\/]/)[0] === 'ochem';
     // A&P question counts come from its own bank, written by build-anp.mjs.
-    if (rel.split(/[\\/]/)[0] === 'anatomy-physiology') continue;
+    if (rel.split(/[\\/]/)[0] === 'anatomy-physiology' || rel.split(/[\\/]/)[0] === 'bio') continue;
     for (const m of body.matchAll(COUNT_RE)) {
       const n = m[1];
       // Session lengths (a 100-question exam, a 20-question drill) and badge
@@ -838,7 +838,7 @@ if (existsSync(curriculumPath)) {
     if (rel.startsWith('nremt/')) continue;
     // The A&P course's counts are written by build-anp.mjs from its own map
     // and data, and `build-anp.mjs --check` keeps them current.
-    if (rel.startsWith('anatomy-physiology/')) continue;
+    if (rel.startsWith('anatomy-physiology/') || rel.startsWith('bio/')) continue; // both generated from their own map
     // The changelog is a dated record, not a claim about now. "audited across
     // all 62 sections" under a September date was true in September, and
     // rewriting it to today's number would make the entry a lie about what
