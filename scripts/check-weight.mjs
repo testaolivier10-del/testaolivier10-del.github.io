@@ -101,7 +101,12 @@ const SHELL_BUDGETS = [
      session or the sign-in dialog. Measured the old way, the shell would be
      about 298 KB plus the SDK; it is 277.2 KB. account.js grew 0.6 KB for the
      lazy SDK and the plain-fetch page counter. */
-  ['site', 279],
+  /* 279 -> 280 for registering AP® Biology (docs/apbio-spec.md, 0.5): the
+     fourth course's entry in every generated course list, premium.js's
+     AP® Biology split with the fixed-date pass and the parent-permission
+     line in the dialog, and the URL-safe course key in site-chrome.js. Measured
+     279.6 KB. */
+  ['site', 280],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -212,6 +217,12 @@ const SHELL_BUDGETS = [
      question's image in <picture> with its AVIF copies (0.2 KB gzipped), which
      saves a phone roughly 60% of each figure's bytes. */
   ['anatomy-physiology', 46.5],
+  /* AP® Biology (bio/, a fork of the A&P runtime): bio-core, questions, nav,
+     glossary tooltips, bio.css, the generated curriculum, plus the app script
+     a page loads (exams.js, the largest, with pages.css and frq-kit.js).
+     Measured 45.5 KB on the exams page before any unit was published;
+     A&P's 46.5 is the reference. */
+  ['bio', 50],
 ];
 
 /* One entry per page whose weight is worth defending, which is not the same as
@@ -235,7 +246,10 @@ const BUDGETS = [
   /* 7.3 -> 7.8 (audit 2026-10, W8): the three-question FAQ (affiliation,
      price, is it free), shown on the page and repeated as FAQPage data, plus
      the Organization's founder and contact. Measured 7.6 KB. */
-  ['index.html', 7.8],
+  /* 7.8 -> 8.5 for AP® Biology once a unit is published: its hub card, its
+     pass in the FAQ and the structured data's offers, and the College Board
+     sentence (build-pricing.mjs). Measured 8.1 KB with Unit 1 published. */
+  ['index.html', 8.5],
   /* +0.1 each here and on ochem/index.html (audit 2026-10, W7): every page
      preloads its one text face (Nunito, latin) so it is ready at first paint
      with font-display: optional, which removed the font-swap layout shift. */
@@ -365,6 +379,16 @@ const BUDGETS = [
   ['anatomy-physiology/tools/predict.html', 3],
   ['anatomy-physiology/tools/lab-practical.html', 3],
   ['anatomy-physiology/exams.html', 3],
+  /* AP® Biology: the home, the app shells and, once a unit is published, its
+     first lesson, notes page and unit sheet (BIO_PAGES below, from what the
+     generator has written, so nothing here names a topic before it exists).
+     The A&P numbers are the reference. */
+  ['bio/index.html', 7],
+  ['bio/practice.html', 3],
+  ['bio/exams.html', 3],
+  ['bio/frq.html', 3],
+  ['bio/glossary.html', 15],
+  ['bio/tools.html', 3],
 
   // The privacy policy: the page that has to load well for somebody who has
   // not decided yet whether to trust the site.
@@ -688,6 +712,22 @@ function weigh(pageRel) {
 
 // ---- measure ---------------------------------------------------------------
 
+/* The first published AP® Biology lesson, notes page and unit sheet, when
+   there are any (bio/assets/notes-index.json, written by build-apbio.mjs).
+   Budgets as A&P's lesson and notes pages; a unit sheet is a printable
+   summary of one unit. */
+{
+  const idx = join(ROOT, 'bio', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    BUDGETS.push([`bio/lessons/${id}.html`, 10.6], [`bio/notes/${id}.html`, 19.5]);
+    const sheets = join(ROOT, 'bio', 'unit-sheets');
+    const sheet = existsSync(sheets) ? readdirSync(sheets).filter((f) => f.endsWith('.html')).sort()[0] : null;
+    if (sheet) BUDGETS.push([`bio/unit-sheets/${sheet}`, 12]);
+  }
+}
+
 const rows = [];
 const shellSizes = {};
 const shellParts = {};
@@ -727,6 +767,18 @@ if (existsSync(ANP_BANK_DIR)) {
     DATA_BUDGETS.push([`anatomy-physiology/assets/bank/${f}`, f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
   }
 }
+/* AP® Biology's bank: one pair of files per published unit (build-apbio.mjs)
+   plus the lazy index. A unit is about the size of a large A&P chapter
+   (6-12 topics of 15+ items, many with a stimulus panel), so the same
+   budgets, and the same rule: split a unit rather than raise them. The
+   glossary grows with published units, as A&P's did. */
+const BIO_BANK_DIR = join(ROOT, 'bio', 'assets', 'bank');
+if (existsSync(BIO_BANK_DIR)) {
+  for (const f of readdirSync(BIO_BANK_DIR).filter(f => f.endsWith('.json')).sort()) {
+    DATA_BUDGETS.push([`bio/assets/bank/${f}`, f === 'index.json' ? 8 : f.endsWith('-why.json') ? ANP_BANK_BUDGETS.why : ANP_BANK_BUDGETS.core]);
+  }
+}
+DATA_BUDGETS.push(['bio/assets/glossary.json', 150], ['bio/assets/notes-index.json', 4], ['bio/assets/summaries.json', 40]);
 
 const dataRows = [];
 for (const [rel, budgetKb] of DATA_BUDGETS) {

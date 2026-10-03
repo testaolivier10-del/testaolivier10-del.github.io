@@ -19,6 +19,9 @@ export const APP_STATE_PAGES = [
   'anatomy-physiology/dashboard.html',
   'anatomy-physiology/review.html',
   'anatomy-physiology/search.html',
+  'bio/dashboard.html',
+  'bio/review.html',
+  'bio/search.html',
 ];
 
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';

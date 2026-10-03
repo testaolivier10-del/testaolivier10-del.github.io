@@ -67,10 +67,10 @@ function priorityFor(path) {
   if (path === '/') return '1.0';
   if (COURSE_HOME.test(path)) return '0.9';
   if (COURSE_NAMED.test(path)) return '0.8';
-  if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters))\//.test(path)) return '0.7';
+  if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters)|bio\/(notes|units))\//.test(path)) return '0.7';
   if (/^\/nremt\/[^/]+\.html$/.test(path)) return '0.7';
-  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts))\//.test(path)) return '0.6';
-  if (/^\/(ochem|anatomy-physiology)\/tools\//.test(path)) return '0.5';
+  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts)|bio\/(lessons|unit-sheets|frq))\//.test(path)) return '0.6';
+  if (/^\/(ochem|anatomy-physiology|bio)\/tools\//.test(path)) return '0.5';
   if (/^\/(privacy|terms|changelog|sources)\.html$|credits\.html$/.test(path)) return '0.3';
   return '0.5';
 }
