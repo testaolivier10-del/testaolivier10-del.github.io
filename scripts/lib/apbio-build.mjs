@@ -264,7 +264,7 @@ export function crumbs(items) {
 }
 export const orgCrumbs = extra => [{ name: 'LevlPrep', url: `${SITE}/` }, { name: COURSE_NAME, url: `${SITE}${BASE}` }, ...extra];
 export function crumbNav(items) {
-  return `<nav class="bio-crumb" aria-label="Breadcrumb">${items.map((it, i) =>
+  return `<nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb">${items.map((it, i) =>
     i === items.length - 1 ? `<span aria-current="page">${esc(it.name)}</span>`
       : `<a href="${it.href}">${esc(it.name)}</a> <span aria-hidden="true">&rsaquo;</span>`).join(' ')}</nav>`;
 }

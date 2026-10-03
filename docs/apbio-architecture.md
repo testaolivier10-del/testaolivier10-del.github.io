@@ -250,8 +250,13 @@ problem on every scored thing.
 summary, Run one trial / Run a series / Clear, a data table of runs and of the sampled curve),
 then 3-5 stimulus questions (bank item format; `stimuli` with `tables[]`, each table carrying a
 `check` spec the validator recomputes from the model), then the mini FRQ. Built: `osmosis`
-(free) and `enzyme-activity` (`premium: "tools"`). The other ten (ETC/ATP synthase, light
-reactions/Calvin, signal amplification, cell cycle checkpoints, meiosis/nondisjunction, operons,
+(free), `enzyme-activity`, and (Unit 4, live once `unit-4` is published)
+`signal-transduction-amplification` (`ApBioMath.signal`: GPCR → G protein → adenylyl cyclase →
+cAMP → PKA → kinase cascade → glucose release, Euler ODEs, blocks and washout) and
+`cell-cycle-checkpoints` (`ApBioMath.cellCycle`: deterministic age-binned population, G1/G2/M
+checkpoints, p53/Rb/cyclin D–CDK/ras, DNA histogram), all three `premium: "tools"`. Their topics
+are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other eight (ETC/ATP synthase, light
+reactions/Calvin, meiosis/nondisjunction, operons,
 Hardy-Weinberg/drift, tree reading, population growth, energy flow) come with their units: add
 the model to `ApBioMath` (or the script), the script, the data, the validator and the
 `pages.json` entry.
