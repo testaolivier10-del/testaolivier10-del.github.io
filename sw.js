@@ -29,7 +29,7 @@
 // They are served stale-while-revalidate: the cached copy at once, and a
 // fresh fetch behind it replaces the copy, so a replaced image or figure
 // (same path, new bytes) shows up on the next view instead of never.
-const CACHE_NAME = 'levlprep-v54';
+const CACHE_NAME = 'levlprep-v55';
 const STATIC_CACHE = 'levlprep-static';
 /* Precached per course (site audit 2026-10, performance: about 110 URLs
    across all three courses were fetched on a first visit to any page). Install
@@ -52,11 +52,23 @@ const PRECACHE_URLS = [
   'assets/tutor.js',
   'assets/announce.js',
   'assets/motion.js',
+  // The end-of-session next step and the cross-course card, fetched on demand
+  // by site-chrome.js. Precached so an end screen offline still has one.
+  'assets/next-step.js',
+  'assets/next-step.css',
+  'assets/cross-course.js',
   'assets/analytics.js',
   'assets/chime.js',
   'assets/icon.svg',
   'assets/exam-date.js',
   'assets/flashcards.css',
+  // Fetched on demand (site-chrome.js, LevlLazy) at the end of an exam or a
+  // chapter, which is exactly when a student on a train has no signal.
+  'assets/share.js',
+  'assets/milestones.js',
+  'assets/milestones.css',
+  'certificate.html',
+  'assets/certificate.js',
   'search.html',
   'assets/site-search-all.js',
   'assets/site-search.js',
@@ -404,10 +416,15 @@ self.addEventListener('notificationclick', event => {
         return client.focus();
       }
     }
+    // Only a page that actually loads is tagged (?ref=push, read by
+    // assets/analytics.js). Focusing a tab that is already open does not
+    // reload it, and must not: it may be mid-exam. Those clicks go uncounted.
+    const tagged = new URL(want.href);
+    tagged.searchParams.set('ref', 'push');
     if (all.length && 'navigate' in all[0]) {
       await all[0].focus();
-      return all[0].navigate(want.href);
+      return all[0].navigate(tagged.href);
     }
-    return self.clients.openWindow(want.href);
+    return self.clients.openWindow(tagged.href);
   })());
 });

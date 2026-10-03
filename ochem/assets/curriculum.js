@@ -361,6 +361,7 @@
     t.completed = true;
     p[topicId] = t;
     writeProgress(p);
+    if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.check('ochem', topicId); });
   }
 
   // Explicit "start over" — used by the resume banner's opt-out link. Only

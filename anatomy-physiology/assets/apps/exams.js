@@ -654,9 +654,8 @@
         barTable('By core concept', byCore, function(key){ return CORE[key] ? CORE[key].name : key; }, function(key){ return BASE + 'concepts/' + key + '.html'; }) +
         barTable('By level', byLevel, function(key){ return LEVEL_NAME[key] || key; }) +
       '</div>' +
-      '<div class="anp-pr-actions">' +
-        (missedN ? '<a class="btn-press" href="' + BASE + 'practice.html?mode=missed">Practice your misses</a>' : '') +
-        '<button type="button" class="btn-outline" data-act="again">Another exam</button></div>' +
+      (window.LevlNextStep ? LevlNextStep('anp', { topics: byTopic.map(function(x){ return x.key; }), also: [missedN
+        ? { label: 'Practice your misses', href: BASE + 'practice.html?mode=missed' } : { label: 'Another exam', act: renderSetup }] }) : '') +
       '<h2 id="anp-ex-review-h">Review every question</h2>' +
       '<div class="anp-ex-filter" role="group" aria-label="Show"><button type="button" class="anp-pr-chip-b" aria-pressed="true" data-f="all">All ' + total + '</button><button type="button" class="anp-pr-chip-b" aria-pressed="false" data-f="miss"' + (missedN ? '' : ' disabled') + '>Missed ' + missedN + '</button></div>' +
       '<ol class="anp-ex-review">' + rows.map(function(x, i){ return reviewItem(x.q, x.r, i + 1); }).join('') + '</ol>' +
@@ -670,6 +669,7 @@
         app.querySelectorAll('.anp-ex-ritem').forEach(function(li){ li.hidden = miss && li.classList.contains('is-ok'); });
       });
     });
+    if(window.LevlLazy) window.LevlLazy('share', function(S){ S.result(app.querySelector('.anp-pr-score'), { course: 'anp', right: right, total: total, label: k === 'teas' ? 'a TEAS-style A&P practice set' : 'an anatomy & physiology practice exam (' + run.label + ')' }); });
     var h = app.querySelector('.anp-pr-score'); h.setAttribute('tabindex', '-1'); h.focus();
   }
 

@@ -72,6 +72,9 @@ const PAGES = [
   // in for all eight: it renders the shell, the quiz and a page of controls.
   ['/ochem/tools/reagent-roadmap.html', 'an interactive tool'],
   ['/privacy.html', 'a prose page with controls'],
+  // Opened fresh, as anyone a certificate link was shared with sees it: the
+  // course card and the "earned this yourself?" note, not the certificate.
+  ['/certificate.html?course=ochem&m=course', 'a shared certificate link'],
   ['/premium.html', 'the pricing page (free vs Premium, generated)'],
   // The A&P course: its own generator and runtime, so its own shapes.
   ['/anatomy-physiology/', 'the A&P course home'],

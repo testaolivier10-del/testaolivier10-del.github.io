@@ -35,7 +35,7 @@ test('a reminder link is always a page on this site', () => {
   }
   assert.equal(sitePath('/nremt/practice.html?mode=review#q'), '/nremt/practice.html?mode=review#q');
   const html = render({ unsub_token: 't', title: 'T', body: 'B', url: 'https://evil.example/' }, {});
-  assert.match(html, /href="https:\/\/levlprep\.com\/"/);
+  assert.match(html, /href="https:\/\/levlprep\.com\/\?ref=email"/);
   assert.ok(!html.includes('evil.example'));
 });
 

@@ -130,6 +130,8 @@
     <h1 style="margin-bottom:4px;">Mastery, not a readiness score.</h1>
     <p class="lede" style="margin-top:0;">Built from every question you've answered, not from lessons opened.</p>
   </div>
+  <div data-levl-cross="ochem"></div>
+  <script>document.addEventListener('DOMContentLoaded', function(){ var el = document.querySelector('[data-levl-cross]'); if(window.LevlLazy && /"m":\{"/.test(localStorage.getItem('levlprep_cross') || '')) window.LevlLazy('cross-course', function(X){ X.offer(el, 'ochem'); }); });</script>
 
   <div class="xsection mastery-grid" style="padding-top:0;">
     <div class="mastery-main">
@@ -168,6 +170,9 @@
       <div id="familyStats"></div>
     </div>
   </div>
+  <!-- Milestones and certificates (assets/milestones.js, fetched on demand). -->
+  <div id="levlMilestones"></div>
+  <script>document.addEventListener('DOMContentLoaded', function(){ if(window.LevlLazy) window.LevlLazy('milestones', function(M){ M.renderList(document.getElementById('levlMilestones'), 'ochem'); }); });</script>
 </div>
 
 <script src="assets/curriculum.js" defer></script>

@@ -434,6 +434,7 @@
     run = null;
     var row = function(g){ return '<li class="g' + g + '"><b>' + r.counts[g] + '</b><span>' + GRADES[g].label + '</span></li>'; };
     var q = queueFor(deckCards(r.deck), Date.now());
+    function home(){ renderHome(); var s = document.getElementById('anp-fc-deck'); if(s) s.focus(); }
     app.innerHTML =
       '<section class="anp-fc-done panel" aria-labelledby="anp-fc-done-h" tabindex="-1">' +
         '<h2 id="anp-fc-done-h">' + (quit && r.done < r.total ? 'Session ended' : 'Session complete') + '</h2>' +
@@ -441,15 +442,9 @@
                 : '<p>No cards graded this time.</p>') +
         (xp ? '<p class="anp-fc-xp">+' + xp + ' XP</p>' : (r.mode === 'ahead' && graded ? '<p class="anp-fc-note">Studying ahead earns no XP and does not push cards further out, unless you mark one Again.</p>' : '')) +
         (r.counts[1] ? '<p class="anp-fc-note">Cards you marked Again come back in about ten minutes.</p>' : '') +
-        '<div class="anp-fc-actions">' +
-          (q.due.length + q.fresh.length ? '<button type="button" class="btn-press alt" data-act="more">Keep going (' + (q.due.length + q.fresh.length) + ')</button>' : '') +
-          '<button type="button" class="btn-outline" data-act="home">Back to decks</button>' +
-          '<a class="btn-outline" href="' + esc(BASE + 'practice.html') + '">Practice questions</a>' +
-        '</div>' +
+        (window.LevlNextStep ? LevlNextStep('anp', { also: [{ label: 'Back to decks', act: home }, { label: 'Practice questions', href: BASE + 'practice.html' }],
+          due: { n: q.due.length + q.fresh.length, label: 'Keep going (' + (q.due.length + q.fresh.length) + ')', act: function(){ start(q.due.concat(q.fresh), 'scheduled'); } } }) : '') +
       '</section>';
-    var more = app.querySelector('[data-act="more"]');
-    if(more) more.addEventListener('click', function(){ start(q.due.concat(q.fresh), 'scheduled'); });
-    app.querySelector('[data-act="home"]').addEventListener('click', function(){ renderHome(); var s = document.getElementById('anp-fc-deck'); if(s) s.focus(); });
     app.querySelector('.anp-fc-done').focus({ preventScroll: true });
   }
 

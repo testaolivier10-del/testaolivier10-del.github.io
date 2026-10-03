@@ -86,6 +86,15 @@ export function createBrowser(){
     requestAnimationFrame: () => 0,
     matchMedia: window.matchMedia,
     fetch: () => Promise.reject(new Error('no network in tests')),
+    URL,
+    // replaceState rewrites location, which is all analytics.js asks of it.
+    history: {
+      state: null,
+      replaceState(state, _title, url){
+        const u = new URL(url, location.href);
+        Object.assign(location, { href: u.href, pathname: u.pathname, search: u.search });
+      },
+    },
     // Test-only internals. A module that has some (assets/premium.js) puts
     // them here rather than on window; this name exists only in this
     // sandbox, never in a browser.
