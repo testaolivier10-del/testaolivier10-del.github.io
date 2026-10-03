@@ -85,6 +85,20 @@ jobs:
       # license fields; the catalog cross-check runs where authors work.)
       - name: the A&P content follows its rules
         run: node scripts/check-anp-content.mjs --check
+      # The AP Biology course is generated from bio/data and its course map by
+      # build-apbio.mjs, like A&P. Until the map lands nothing is generated, so
+      # the check also fails on a generated page left behind; once it lands, a
+      # data edit without a rebuild would ship a page that disagrees with its
+      # source.
+      - name: the AP Biology pages match their data
+        run: node scripts/build-apbio.mjs --check
+      # The authored AP Biology data against its formats: unit, topic and
+      # science practice on every item, an explanation per option, stimulus
+      # sets of 4-5, the apply/analyze share, length tells, the test-wise
+      # balance, numeric answers, FRQ rubrics, figure licenses and the AP®
+      # trademark wording. Only published units fail the build; the rest print.
+      - name: the AP Biology content follows its rules
+        run: node scripts/check-apbio-content.mjs --check
       # The ochem homepage lists the chapters twice (the path of nodes and the
       # JSON-LD syllabus). Both are generated from curriculum.js; a stale copy
       # would show a reader, and a search engine, the wrong course.

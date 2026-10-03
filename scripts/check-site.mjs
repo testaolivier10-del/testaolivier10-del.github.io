@@ -22,9 +22,9 @@ function walk(dir, exts, out = []) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     const st = statSync(full);
-    // The A&P notes sources are HTML fragments that build-anp.mjs wraps into
-    // pages; the built pages are what get checked.
-    if (st.isDirectory()) { if (!(exts.includes('.html') && relative(ROOT, full).split(sep).join('/') === 'anatomy-physiology/data')) walk(full, exts, out); }
+    // The A&P and AP Biology notes sources are HTML fragments that build-anp.mjs
+    // and build-apbio.mjs wrap into pages; the built pages are what get checked.
+    if (st.isDirectory()) { if (!(exts.includes('.html') && ['anatomy-physiology/data', 'bio/data'].includes(relative(ROOT, full).split(sep).join('/')))) walk(full, exts, out); }
     else if (exts.includes(extname(name))) out.push(full);
   }
   return out;
