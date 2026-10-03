@@ -1,0 +1,84 @@
+{
+  "topic": "population-ecology",
+  "hook": "<p>In 1937, eight pheasants were released on a small island off the coast of Washington State, with plenty of food and no foxes. Five years later there were close to 2,000. The birds did not change; their numbers did, because every new bird soon added young of its own. The same arithmetic explains why a few rabbits can overrun a continent and why bacteria in a warm lunch box become millions by noon.</p>",
+  "prereq": [
+    {
+      "q": "A population grows from 200 to 260 individuals in 2 years. What is its average rate of change?",
+      "options": ["30 individuals per year", "60 individuals per year", "130 individuals per year"],
+      "correct": 0,
+      "why": "Rate = change ÷ time = (260 − 200) ÷ 2 years = 30 individuals per year.",
+      "review": "stats-rates"
+    },
+    {
+      "q": "An individual's fitness is measured by",
+      "options": ["how many of its offspring survive to reproduce", "how long it lives", "how large and strong it is"],
+      "correct": 0,
+      "why": "Fitness is reproductive success: offspring that themselves survive and reproduce.",
+      "review": "natural-selection-intro"
+    },
+    {
+      "q": "Five quadrats contain 2, 4, 3, 5 and 6 plants. What is the mean number per quadrat?",
+      "options": ["4", "3", "20"],
+      "correct": 0,
+      "why": "Mean = sum ÷ n = 20 ÷ 5 = 4 plants per quadrat.",
+      "review": "stats-descriptive"
+    }
+  ],
+  "figure": {
+    "figure": "dispersion-survivorship",
+    "caption": "Left: the same density spread in three ways. Right: survivorship curves on a log scale; Type III species lose most young, Type I species lose few until old age."
+  },
+  "chain": [
+    {
+      "cause": "Births and immigrants add individuals to a population; deaths and emigrants remove them.",
+      "effect": "The population size N changes at a rate dN/dt; with no migration, dN/dt = B − D."
+    },
+    {
+      "cause": "Each individual has a certain chance of giving birth and of dying in a given time.",
+      "effect": "Dividing (B − D) by N gives the per capita growth rate; under ideal conditions it reaches its highest value, r_max."
+    },
+    {
+      "cause": "While food and space are plentiful, the per capita rate stays near r_max, so dN/dt = r_max N.",
+      "effect": "The more individuals there are, the more are added each period: growth speeds up even though the per capita rate stays the same."
+    },
+    {
+      "cause": "Growth that adds a constant fraction each period keeps doubling in equal times.",
+      "effect": "N plotted against time makes a J-shaped curve: exponential growth."
+    },
+    {
+      "cause": "Species that breed young and have many offspring each time have a high r_max.",
+      "effect": "Their numbers rebound quickly after a crash; species that breed late and have few young grow and recover slowly."
+    },
+    {
+      "cause": "Survival also differs with age: some species lose most young, others lose few until old age.",
+      "effect": "Survivorship curves (Types I, II and III) show this pattern, which matches how much parents invest in each offspring."
+    }
+  ],
+  "ideas": [
+    "<b>Population density</b> is individuals per unit area; <b>dispersion</b> is how they are spaced: clumped, uniform or random.",
+    "<b>Demography</b> tracks births, deaths and migration. Formula sheet: <b>dN/dt = B − D</b>; per capita rate = (B − D) ÷ N.",
+    "<b>Exponential growth</b>: <b>dN/dt = r_max N</b>. A constant per capita rate times a growing N gives a J-shaped curve.",
+    "<b>Life history</b>: r-selected species (early, many, small offspring, little care) have a high r_max; K-selected species (late, few, large offspring, much care) a low one. <b>Semelparity</b> is breeding once; <b>iteroparity</b> is breeding many times.",
+    "<b>Survivorship curves</b>: Type I (most live to old age), Type II (same fraction dies at every age), Type III (most die young)."
+  ],
+  "misconception": {
+    "wrong": "In exponential growth a population adds the same number of individuals every year.",
+    "right": "It adds the same fraction every year. Because N keeps getting bigger, the number added each year keeps getting bigger too: 100 rabbits growing 50% a year add 50, then 75, then 112."
+  },
+  "check": [
+    "bio-population-ecology-2",
+    "bio-population-ecology-3",
+    "bio-population-ecology-6",
+    "bio-population-ecology-7",
+    "bio-population-ecology-8",
+    "bio-population-ecology-11",
+    "bio-population-ecology-15",
+    "bio-population-ecology-19"
+  ],
+  "summary": "<p>A population is described by its density (individuals per unit area) and its dispersion (clumped, uniform or random). Demography follows births, deaths and migration: with no migration, dN/dt = B − D, and dividing by N gives the per capita growth rate. Under ideal conditions the per capita rate reaches r_max, the intrinsic rate of increase, and the population grows exponentially, dN/dt = r_max N: a constant fraction is added each period, so the number added keeps rising and the curve is J-shaped. Life history traits set r_max. r-selected species mature early and produce many small offspring with little care, so they grow and recover fast; K-selected species mature late and raise few offspring with much care. Semelparous species reproduce once; iteroparous species reproduce repeatedly. Survivorship curves show how survival changes with age: Type I species lose few until old age, Type II lose a constant fraction at every age, and Type III lose most of their young.</p>",
+  "connections": [
+    { "href": "../notes/stats-rates.html", "label": "Skill: rates of change" },
+    { "href": "../notes/natural-selection-intro.html", "label": "Back: fitness and reproductive success (7.1)" },
+    { "href": "../notes/population-density.html", "label": "Next: why growth slows as populations get crowded (8.4)" }
+  ]
+}

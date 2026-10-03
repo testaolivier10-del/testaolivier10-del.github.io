@@ -1,0 +1,761 @@
+{
+  "stimuli": {
+    "population-ecology-s1": {
+      "kind": "graph",
+      "title": "Survivorship of three species",
+      "text": "<p>Ecologists followed 1,000 newborns of each of three species until all had died and recorded how many were alive at each age. Age is given as a percentage of the species' maximum life span. The y-axis shows the log₁₀ of the number of survivors, so 3 means 1,000 survivors, 2 means 100, 1 means 10 and 0 means 1.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Age",
+          "unit": "% of maximum life span",
+          "min": 0,
+          "max": 100,
+          "step": 10
+        },
+        "y": {
+          "label": "log₁₀ of survivors per 1,000 born",
+          "unit": "",
+          "min": 0,
+          "max": 3,
+          "step": 0.5
+        },
+        "series": [
+          {
+            "name": "Species P (a large mammal)",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                10,
+                2.99
+              ],
+              [
+                20,
+                2.98
+              ],
+              [
+                30,
+                2.97
+              ],
+              [
+                40,
+                2.95
+              ],
+              [
+                50,
+                2.93
+              ],
+              [
+                60,
+                2.9
+              ],
+              [
+                70,
+                2.8
+              ],
+              [
+                80,
+                2.6
+              ],
+              [
+                90,
+                2
+              ],
+              [
+                100,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Species Q (a songbird)",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                10,
+                2.7
+              ],
+              [
+                20,
+                2.4
+              ],
+              [
+                30,
+                2.1
+              ],
+              [
+                40,
+                1.8
+              ],
+              [
+                50,
+                1.5
+              ],
+              [
+                60,
+                1.2
+              ],
+              [
+                70,
+                0.9
+              ],
+              [
+                80,
+                0.6
+              ],
+              [
+                90,
+                0.3
+              ],
+              [
+                100,
+                0
+              ]
+            ]
+          },
+          {
+            "name": "Species R (a marine fish)",
+            "points": [
+              [
+                0,
+                3
+              ],
+              [
+                10,
+                1.3
+              ],
+              [
+                20,
+                1
+              ],
+              [
+                30,
+                0.9
+              ],
+              [
+                40,
+                0.8
+              ],
+              [
+                50,
+                0.7
+              ],
+              [
+                60,
+                0.6
+              ],
+              [
+                70,
+                0.5
+              ],
+              [
+                80,
+                0.4
+              ],
+              [
+                90,
+                0.2
+              ],
+              [
+                100,
+                0
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "population-ecology-s2": {
+      "kind": "table",
+      "title": "Flour beetles in a large container of fresh flour",
+      "text": "<p>A student added 200 adult flour beetles to a large container with far more flour than they could eat, kept at 30 °C. Every week the student counted the beetles and recorded the births (new adults) and deaths during the week. The flour was replaced each week, so food never ran short.</p>",
+      "table": {
+        "caption": "Flour beetle population",
+        "cols": [
+          "Week",
+          "Beetles at start of week (N)",
+          "Births during week (B)",
+          "Deaths during week (D)"
+        ],
+        "rows": [
+          [
+            "1",
+            "200",
+            "130",
+            "30"
+          ],
+          [
+            "2",
+            "300",
+            "195",
+            "45"
+          ],
+          [
+            "3",
+            "450",
+            "293",
+            "68"
+          ],
+          [
+            "4",
+            "675",
+            "439",
+            "101"
+          ],
+          [
+            "5",
+            "1,013",
+            "658",
+            "152"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-population-ecology-1",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "population-ecology-s1",
+      "q": "Which species shows a Type III survivorship curve, and what does its curve show?",
+      "options": [
+        "Species P: most individuals survive to old age and then die within a short span of time",
+        "Species Q: the same fraction of the survivors dies in each of the age intervals of its life span",
+        "Species R: most individuals die very young, and the few that survive early on live a long time",
+        "Species R: the number of individuals that die stays the same in each age interval of life"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Species R falls from 1,000 (log 3) to 20 (log 1.3) by 10% of its life span: 98% die very young. After that the curve declines slowly.",
+        "options": [
+          "That describes species P, a Type I curve.",
+          "That describes species Q, a Type II curve.",
+          "Correct: a steep early drop, then a long slow tail.",
+          "Species R is the Type III curve, but the number dying is not constant: 980 die by 10% of the life span and only 10 more by 20%."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-2",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-ecology-s1",
+      "q": "How many of the 1,000 species Q newborns are still alive at 50% of the maximum life span? Give a whole number.",
+      "numeric": {
+        "answer": 32,
+        "tol": 1,
+        "unit": "individuals",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "At 50% the value is 1.5, so survivors = 10^1.5 = 31.6, about 32 of the 1,000. A log value of 1.5 lies between 10 (log 1) and 100 (log 2), but not halfway in actual numbers."
+      }
+    },
+    {
+      "id": "bio-population-ecology-3",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-ecology-s1",
+      "q": "Species Q's curve is a straight line on this log scale, falling by 0.3 in every 10% of the life span. What does that mean about deaths in species Q?",
+      "options": [
+        "About half of those alive at the start of each interval die during it, at every age.",
+        "The same number of birds, about 100, die in each 10% of the life span.",
+        "Death is most likely in old age, because the curve reaches 0 at 100% of the life span.",
+        "Deaths are spread evenly, so as many die in the first 10% as in the last 10%."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "On a log scale, equal drops are equal fractions. A drop of 0.3 means survivors are multiplied by 10^−0.3 ≈ 0.5 each interval: about half of those still alive die, whatever their age.",
+        "options": [
+          "Correct: a constant fraction (about 50%) dies in each interval.",
+          "Numbers dying shrink as survivors shrink: about 500 in the first interval (1,000 to 501) but only about 1 in the last (2 to 1).",
+          "The chance of dying is the same at every age; a straight log line has no late steep drop.",
+          "About 500 die in the first 10% and about 1 in the last 10%, far from equal numbers."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-4",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-ecology-s1",
+      "q": "Which species most likely releases thousands of eggs per breeding and gives them no parental care, and why?",
+      "options": [
+        "Species R, because so few young survive that only very large numbers of eggs leave survivors",
+        "Species Q, because it loses a steady fraction at each age and needs to replace them steadily",
+        "Species P, because most of its young survive and each one needs large amounts of food",
+        "Species P, because its adults die over a short span late in life and can then leave many eggs"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A Type III curve fits a life history of many small, uncared-for offspring: nearly all die young, and huge numbers are needed for a few to reach adulthood.",
+        "options": [
+          "Correct: Type III survivorship goes with many small offspring and little care.",
+          "A songbird with a Type II curve typically lays a few eggs and feeds its chicks.",
+          "High survival of the young (Type I) goes with few offspring and much care, not thousands of eggs.",
+          "Late, compressed deaths (Type I) go with few, well-cared-for young."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-5",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-ecology-s1",
+      "q": "A fish hatchery raises species R eggs and larvae in protected tanks and releases the young at 20% of the life span, after which they face the same conditions as wild fish. Predict how the survivorship curve of the hatchery fish differs from the wild curve.",
+      "options": [
+        "It falls more steeply in the first 20%, because crowding in tanks kills more young fish.",
+        "It stays much higher over the first 20% and then declines slowly, like the wild curve does after 20%.",
+        "It is the same as the wild curve, because survivorship is fixed by the species' genes.",
+        "It becomes a Type I curve, staying high until 100% and then dropping sharply."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Protection removes the main early causes of death, so many more reach 20%; after release they face wild conditions, so the curve then declines slowly, as the wild one does.",
+        "options": [
+          "Hatcheries protect young fish; nothing suggests tanks kill more than the wild does.",
+          "Correct: the early steep drop is mostly removed; later mortality is unchanged.",
+          "Survival depends on conditions as well as genes; protecting young changes it.",
+          "After release the fish die at the wild rate, so survival does not stay high until old age."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-6",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "population-ecology-s2",
+      "q": "Use dN/dt = B − D to calculate the population growth rate during week 3, in beetles per week. Give a whole number.",
+      "numeric": {
+        "answer": 225,
+        "tol": 0,
+        "unit": "beetles per week",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "dN/dt = B − D = 293 − 68 = 225 beetles per week. Check: week 4 starts with 450 + 225 = 675 beetles."
+      }
+    },
+    {
+      "id": "bio-population-ecology-7",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-ecology-s2",
+      "q": "Calculate the per capita growth rate during week 3, in per week. Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.5,
+        "tol": 0.01,
+        "unit": "per week",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Per capita rate = (B − D) ÷ N = 225 ÷ 450 = 0.50 per week: each week the population adds half its size."
+      }
+    },
+    {
+      "id": "bio-population-ecology-8",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-ecology-s2",
+      "q": "Which statement about weeks 1 to 5 is supported by the data?",
+      "options": [
+        "The per capita growth rate rises each week, so the population grows faster and faster.",
+        "The number added each week stays at about 100 beetles, as in linear growth.",
+        "The number added each week rises while the per capita rate stays at 0.50: exponential growth.",
+        "Both the number added and the per capita rate fall as the container fills with beetles."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "B − D is 100, 150, 225, 338 and 506 in weeks 1 to 5, but (B − D) ÷ N is 0.50 every week. A constant per capita rate times a growing N is exponential growth.",
+        "options": [
+          "The per capita rate is 0.50 in every week; the total rate rises because N rises.",
+          "100 are added in week 1 but 506 in week 5.",
+          "Correct: constant per capita rate, rising dN/dt.",
+          "Food was replaced each week and both rates show no fall: the per capita rate stays at 0.50."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-9",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-ecology-s2",
+      "q": "Assume the population keeps growing with r_max = 0.50 per week. Use dN/dt = r_max N to predict the number of beetles at the start of week 6. Give a whole number.",
+      "numeric": {
+        "answer": 1519,
+        "tol": 1,
+        "unit": "beetles",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "During week 5, dN/dt = 0.50 × 1,013 = 506.5 beetles, so N ≈ 1,013 + 506.5 ≈ 1,519 (or 1,520). The table gives the same result: 1,013 + 658 − 152 = 1,519."
+      }
+    },
+    {
+      "id": "bio-population-ecology-10",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-ecology-s2",
+      "q": "Which condition is needed for this pattern of growth to continue for another 10 weeks?",
+      "options": [
+        "The temperature slowly rises, so that the beetles' metabolism keeps speeding up.",
+        "Food and space stay plentiful, so the per capita birth and death rates do not change.",
+        "The beetles evolve a higher r_max each generation as the population becomes larger.",
+        "The number of births each week stays at about 130, the value measured in week 1."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Exponential growth requires a constant per capita rate. That holds only while crowding, food or wastes do not raise deaths or lower births; in 10 more weeks there would be over 80,000 beetles.",
+        "options": [
+          "The growth in the table happened at a constant 30 °C; no rising temperature was needed.",
+          "Correct: unchanged per capita rates need plentiful resources.",
+          "r_max stayed at 0.50 throughout; no change in the beetles was needed for the growth seen.",
+          "Births already rose from 130 to 658 because there were more beetles; constant births would slow growth."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-11",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A student counts dandelions in ten 1 m² quadrats placed at random on a 400 m² lawn and finds 3, 5, 2, 4, 6, 3, 4, 2, 5 and 6 plants. Estimate the number of dandelions on the whole lawn. Give a whole number.",
+      "numeric": {
+        "answer": 1600,
+        "tol": 0,
+        "unit": "dandelions",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Total = 40 plants in 10 m², so the mean density is 4.0 per m². 4.0 per m² × 400 m² = 1,600 dandelions."
+      }
+    },
+    {
+      "id": "bio-population-ecology-12",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Creosote bushes in a desert are spaced almost evenly, far apart. Seedlings that sprout near an adult bush usually die within a year. Which explanation best accounts for this dispersion?",
+      "options": [
+        "Adult roots take up the scarce water from a wide area, so seedlings near them dry out and die.",
+        "Seeds fall straight down from the parent, so the young grow in tight groups around each adult.",
+        "Wind spreads the seeds at random, so the bushes end up scattered with no pattern.",
+        "Bushes grow best close together, where they shade each other's roots from the desert sun."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Competition for water spaces the survivors out: wherever a seedling is too close to an adult, it loses. Uniform dispersion comes from neighbors pushing each other apart.",
+        "options": [
+          "Correct: competition between neighbors produces uniform spacing.",
+          "Seeds falling near the parent would give a clumped pattern, but the seedlings there die.",
+          "The bushes are evenly spaced, not randomly scattered.",
+          "Seedlings close to adults die, so being close together does not help them."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-13",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select each situation that would most likely produce a clumped dispersion.",
+      "options": [
+        "Mushrooms growing on a forest floor where a buried log is rotting",
+        "Penguins nesting just out of pecking reach of their neighbors",
+        "Dandelion seeds carried by wind onto an evenly mowed lawn",
+        "Desert shrubs whose roots draw water from a wide circle"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Only the mushrooms gather around a patchy resource, the rotting log.",
+        "options": [
+          "Clumped: the food (the log) is in one patch.",
+          "Uniform: each bird keeps a fixed distance from its neighbors.",
+          "Random: seeds land with no pattern on an even surface.",
+          "Uniform: competition for water spaces the shrubs out."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-14",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "1.C",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which is an example of semelparity?",
+      "options": [
+        "An oak tree that produces acorns each autumn for 200 years",
+        "A human who has children at several different ages in adult life",
+        "A robin that raises two broods of chicks each summer for several years",
+        "A bamboo that grows for 60 years, flowers once, sets seed and dies"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Semelparity is a single, all-out reproduction followed by death.",
+        "options": [
+          "Reproducing every year is iteroparity.",
+          "Reproducing repeatedly over life is iteroparity.",
+          "Several broods over several years is iteroparity.",
+          "Correct: one reproductive event, then death."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-15",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Species X reaches adulthood in 3 weeks, lays about 500 eggs and gives no care. Species Y reaches adulthood in 4 years and raises one young every 2 years. A flood kills 95% of each population. Which prediction is best supported?",
+      "options": [
+        "Y will recover faster, because its well-cared-for young are more likely to survive the flood.",
+        "X will recover much faster, because its high r_max lets a few survivors multiply quickly.",
+        "Both will recover at the same speed, because both lost the same percentage of individuals.",
+        "Neither will recover, because a loss of 95% leaves too few individuals to reproduce."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Recovery depends on how fast survivors can reproduce. X's early maturity and huge clutches give a very high r_max; Y adds few young each year and recovers over decades.",
+        "options": [
+          "Better survival of young does not make up for producing one young every 2 years.",
+          "Correct: r-selected traits mean fast recovery after a disaster.",
+          "Equal losses do not mean equal recovery; their growth rates differ enormously.",
+          "Five percent of a population can still reproduce; X especially can rebuild quickly."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-16",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "1.B",
+      "level": "recall",
+      "diff": 1,
+      "q": "Select the two traits typical of r-selected species.",
+      "options": [
+        "Reproducing early in life",
+        "Producing many small offspring at a time",
+        "A long life span",
+        "Much care given to each offspring",
+        "Reaching maturity late"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "r-selected species put their energy into fast, plentiful reproduction, which gives a high r_max.",
+        "options": [
+          "r-selected: early breeding raises r_max.",
+          "r-selected: many small offspring.",
+          "K-selected: long lives go with slow reproduction.",
+          "K-selected: heavy investment in few young.",
+          "K-selected: late maturity lowers r_max."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-17",
+      "type": "predict",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A population of 2,000 voles has 600 births and 400 deaths per year, with no migration. A new disease raises deaths to 700 per year but does not affect births. Predict the effect on each quantity.",
+      "variables": [
+        {
+          "name": "Population growth rate, dN/dt",
+          "answer": "down",
+          "why": "It falls from 600 − 400 = +200 to 600 − 700 = −100 voles per year."
+        },
+        {
+          "name": "Number of voles one year later",
+          "answer": "down",
+          "why": "With dN/dt negative, the population shrinks, to about 1,900 instead of growing to 2,200."
+        },
+        {
+          "name": "Per capita birth rate",
+          "answer": "none",
+          "why": "Births stay at 600 per 2,000 voles, 0.30 per year; the disease changes only deaths."
+        }
+      ],
+      "why": {
+        "correct": "dN/dt = B − D. Raising D past B makes the growth rate negative, so the population declines, while the birth rate is unchanged."
+      }
+    },
+    {
+      "id": "bio-population-ecology-18",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A bacterial culture growing exponentially has r_max = 0.03 per minute and contains 4,000 cells. Use dN/dt = r_max N to calculate its growth rate, in cells per minute. Give a whole number.",
+      "numeric": {
+        "answer": 120,
+        "tol": 0,
+        "unit": "cells per minute",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "dN/dt = r_max N = 0.03 per minute × 4,000 cells = 120 cells per minute."
+      }
+    },
+    {
+      "id": "bio-population-ecology-19",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Two populations of the same insect have the same r_max and are growing exponentially. Population A has 10,000 individuals and population B has 100. Which statement is correct?",
+      "options": [
+        "B is growing faster, because a small population has more resources for each individual.",
+        "Both add the same number of insects per day, because they have the same r_max.",
+        "A adds 100 times as many insects per day, though both grow by the same fraction.",
+        "A grows more slowly per individual, because a large population has a lower r_max."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "dN/dt = r_max N. With the same r_max, dN/dt is proportional to N, so A, 100 times larger, adds 100 times as many per day. Per capita, both grow at r_max.",
+        "options": [
+          "Both are growing exponentially at the same r_max, so resources are not limiting either one yet.",
+          "The same r_max means the same per capita rate, not the same number added.",
+          "Correct: same per capita rate, numbers added proportional to N.",
+          "r_max is a property of the species under ideal conditions; both share it."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-ecology-20",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "An island population of 500 lizards has 120 births, 90 deaths and 40 emigrants in one year, and no immigrants. How many lizards are there at the end of the year? Give a whole number.",
+      "numeric": {
+        "answer": 490,
+        "tol": 0,
+        "unit": "lizards",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Change = births − deaths + immigrants − emigrants = 120 − 90 + 0 − 40 = −10, so 500 − 10 = 490 lizards. Using B − D alone (+30) would miss the emigrants."
+      }
+    },
+    {
+      "id": "bio-population-ecology-21",
+      "type": "order",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put these steps for estimating the number of plants in a field in order.",
+      "options": [
+        "Measure the area of the field.",
+        "Place quadrats of known area at random positions in the field.",
+        "Count the plants inside each quadrat.",
+        "Calculate the mean number of plants per square meter.",
+        "Multiply the mean density by the area of the field."
+      ],
+      "why": {
+        "correct": "You need the field's area to plan and scale; quadrats must be placed before plants can be counted; the counts give a mean density; the density times the area estimates the total."
+      }
+    },
+    {
+      "id": "bio-population-ecology-22",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-ecology",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "A female sea turtle buries about 100 eggs and leaves; on average only one hatchling in a thousand reaches adulthood. An adult turtle may live for decades. Which survivorship pattern and explanation fit best?",
+      "options": [
+        "Type I, because the adults live for decades once they reach full size",
+        "Type II, because turtles die at a steady rate from hatching to old age",
+        "Type I, because the mother protects her eggs by burying them deep in the sand",
+        "Type III, because most die as eggs and hatchlings but survivors live long"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "With 999 of 1,000 dying young and the survivors living for decades, the curve drops steeply early and then flattens: Type III.",
+        "options": [
+          "Long-lived adults are part of the story, but Type I also needs high survival of the young.",
+          "Survival is very low early and high later, not constant.",
+          "Burying the eggs is the only care, and most young still die.",
+          "Correct: a steep early drop, then a long tail."
+        ]
+      }
+    }
+  ]
+}
