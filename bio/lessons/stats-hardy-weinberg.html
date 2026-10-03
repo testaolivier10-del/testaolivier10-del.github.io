@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardy-Weinberg calculations — AP® Biology Lesson | LevlPrep</title>
+<meta name="description" content="For a population in Hardy-Weinberg equilibrium, the recessive phenotype frequency is q², so q = √(recessive frequency) and p = 1 − q.">
+<link rel="canonical" href="https://levlprep.com/bio/lessons/stats-hardy-weinberg.html">
+<meta property="og:title" content="Hardy-Weinberg calculations — AP® Biology Lesson | LevlPrep">
+<meta property="og:description" content="For a population in Hardy-Weinberg equilibrium, the recessive phenotype frequency is q², so q = √(recessive frequency) and p = 1 − q.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/lessons/stats-hardy-weinberg.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/lessons/stats-hardy-weinberg.html#lesson",
+      "name": "Hardy-Weinberg calculations",
+      "url": "https://levlprep.com/bio/lessons/stats-hardy-weinberg.html",
+      "description": "For a population in Hardy-Weinberg equilibrium, the recessive phenotype frequency is q², so q = √(recessive frequency) and p = 1 − q.",
+      "learningResourceType": "Lesson",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "teaches": [
+        {
+          "@type": "DefinedTerm",
+          "name": "allele frequency from phenotype counts"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "carrier frequency"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "chi-square test for Hardy-Weinberg"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "change in allele frequency"
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Hardy-Weinberg calculations",
+          "item": "https://levlprep.com/bio/lessons/stats-hardy-weinberg.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-hardy-weinberg" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="xshell"><nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hardy-Weinberg calculations</span></nav></div>
+<div class="xshell bio-ls bio-stepped">
+  <aside class="bio-ls-rail bio-nav-ref" aria-label="Lesson parts">
+    <p class="bio-ls-k">Skills · Statistics and math</p>
+    <p class="bio-ls-links"><a href="../units/skills-stats.html">&larr; Back to the unit</a><a href="../notes/stats-hardy-weinberg.html">Read the notes</a></p>
+    <div class="bio-ls-prog"><div class="bio-ls-track"><div class="bio-ls-fill"></div></div><span class="bio-ls-count">Step 1 / 11</span></div>
+    <ol class="bio-ls-steps"><li><a href="#hook"><span class="n">1</span><span class="t">Why this matters</span></a></li><li><a href="#builds-on"><span class="n">2</span><span class="t">What this builds on</span></a></li><li><a href="#prereq"><span class="n">3</span><span class="t">Quick check</span></a></li><li><a href="#figure"><span class="n">4</span><span class="t">See it</span></a></li><li><a href="#chain"><span class="n">5</span><span class="t">How it works</span></a></li><li><a href="#ideas"><span class="n">6</span><span class="t">Key ideas</span></a></li><li><a href="#misconception"><span class="n">7</span><span class="t">A common mistake</span></a></li><li><a href="#check"><span class="n">8</span><span class="t">Check yourself</span></a></li><li><a href="#summary"><span class="n">9</span><span class="t">Summary</span></a></li><li><a href="#next"><span class="n">10</span><span class="t">What comes next</span></a></li><li><a href="#connections"><span class="n">11</span><span class="t">Connections</span></a></li></ol>
+  </aside>
+  <main id="main" class="bio-ls-main bio-lesson">
+  <header class="bio-ls-hero">
+    <div class="eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></div>
+    <h1>Hardy-Weinberg calculations</h1>
+    <p class="lede">For a population in Hardy-Weinberg equilibrium, the recessive phenotype frequency is q², so q = √(recessive frequency) and p = 1 − q.</p>
+    <p class="bio-tags bio-nav-ref"><span class="bio-tag">Practice 5: Statistical Tests and Data Analysis</span></p>
+    <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this lesson"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Flessons%2Fstats-hardy-weinberg.html&amp;title=Hardy-Weinberg%20calculations%3A%20biology%20lesson" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/lessons/stats-hardy-weinberg.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    <p class="bio-small bio-nav-ref"><a href="../practice.html?topic=stats-hardy-weinberg">Question set for this topic</a></p>
+  </header>
+  <div class="bio-ls-card">
+  <section class="bio-part bio-step is-on" id="hook" aria-labelledby="h-hook">
+    <p class="bio-step-k">Part 1 · Hook</p>
+    <h2 id="h-hook" tabindex="-1">Why this matters</h2>
+    <div class="bio-step-body bio-hook"><p>A meadow has 364 purple flowers and 36 white ones. How many of the purple plants secretly carry a white <a class="gl" href="../notes/meiosis.html" data-c="allele-basic">allele</a>? You cannot tell by looking, but if the <a class="gl" href="../notes/natural-selection-intro.html" data-c="population">population</a> is in <a class="gl" href="../notes/hardy-weinberg.html" data-c="hwe">Hardy-Weinberg equilibrium</a>, two short equations on the formula sheet tell you: 168. The same arithmetic estimates how many people carry the allele for a <a class="gl" href="../notes/mendelian-genetics.html" data-c="dominant">recessive</a> disorder.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="builds-on" aria-labelledby="h-builds-on">
+    <p class="bio-step-k">Part 2 · Before you start</p>
+    <h2 id="h-builds-on" tabindex="-1">What this builds on</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Earlier topics"><ul class="bio-links"><li><a href="../notes/stats-chi-square.html">Chi-square test</a></li><li><a href="../notes/natural-selection-intro.html">Introduction to Natural Selection</a></li><li><a href="../notes/hardy-weinberg.html">Hardy-Weinberg Equilibrium</a></li></ul></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="prereq" aria-labelledby="h-prereq">
+    <p class="bio-step-k">Part 3 · Prerequisite check</p>
+    <h2 id="h-prereq" tabindex="-1">Quick check before you start</h2>
+    <div class="bio-step-body"><div class="bio-qs" data-set="prereq"><div class="bio-q" data-qid="stats-hardy-weinberg-pre-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> In p² + 2pq + q² = 1, what does 2pq stand for?</p><ol class="bio-opts"><li>The frequency of heterozygotes</li><li>The frequency of the dominant allele</li><li>The frequency of homozygous recessive individuals</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>p² is homozygous dominant, 2pq heterozygous and q² homozygous recessive.</p><ul><li><b>Correct:</b> The frequency of heterozygotes: </li><li>The frequency of the dominant allele: </li><li>The frequency of homozygous recessive individuals: </li></ul></details></div><div class="bio-q" data-qid="stats-hardy-weinberg-pre-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> Which condition is NOT required for Hardy-Weinberg equilibrium?</p><ol class="bio-opts"><li>A small population</li><li>Random mating</li><li>No natural selection</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Equilibrium needs a very large population (no drift), random mating, no selection, no mutation and no gene flow.</p><ul><li><b>Correct:</b> A small population: </li><li>Random mating: </li><li>No natural selection: </li></ul></details></div><div class="bio-q" data-qid="stats-hardy-weinberg-pre-3"><p class="bio-q-stem"><span class="bio-q-n">3.</span> A chi-square value greater than the critical value means you…</p><ol class="bio-opts"><li>reject the null hypothesis</li><li>fail to reject the null hypothesis</li><li>accept the null hypothesis</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>A large χ² means the observed counts are too far from expected for chance.</p><ul><li><b>Correct:</b> reject the null hypothesis: </li><li>fail to reject the null hypothesis: </li><li>accept the null hypothesis: </li></ul></details></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="figure" aria-labelledby="h-figure">
+    <p class="bio-step-k">Part 4 · See it</p>
+    <h2 id="h-figure" tabindex="-1">See it first</h2>
+    <div class="bio-step-body"><figure class="bio-figure bio-lesson-fig"><div class="bio-figimg" data-fig="hw-square"><img src="../figures/hw-square.svg" alt="A square divided by allele frequencies p = 0.7 and q = 0.3 along each side. The areas show genotype frequencies: AA is p² = 0.49, each Aa rectangle is pq = 0.21 for a total 2pq = 0.42, and aa is q² = 0.09. A note says to start from the aa corner: q² is the only genotype you can read from phenotypes." width="640" height="360" loading="lazy" decoding="async"></div><figcaption>With p = 0.7 and q = 0.3, the areas give <a class="gl" href="../notes/hardy-weinberg.html" data-c="genotype-frequency">genotype frequencies</a>: p² = 0.49, <a class="gl" href="../notes/hardy-weinberg.html" data-c="hw-equations">2pq</a> = 0.42, q² = 0.09. Start from q²: it is the one genotype you can read straight from <a class="gl" href="../notes/mendelian-genetics.html" data-c="phenotype">phenotypes</a>. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure></div>
+  </section>
+  <section class="bio-part bio-step" id="chain" aria-labelledby="h-chain">
+    <p class="bio-step-k">Part 5 · Step by step</p>
+    <h2 id="h-chain" tabindex="-1">How it works, step by step</h2>
+    <div class="bio-step-body"><ol class="bio-chain"><li><span class="bio-cause">Only the recessive phenotype has a single <a class="gl" href="../notes/mendelian-genetics.html" data-c="genotype">genotype</a> (aa).</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">Its frequency equals q² at equilibrium: 36 white of 400 gives q² = 0.09.</span></li><li><span class="bio-cause">Taking the square root undoes the squaring.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">q = √0.09 = 0.30, and since p + q = 1, p = 0.70.</span></li><li><span class="bio-cause">Random union of alleles gives genotypes in proportions p², 2pq and q².</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">Heterozygotes are 2pq = 0.42 of the population: 168 of 400 plants.</span></li><li><span class="bio-cause">If you know all genotype counts, you can count alleles directly and calculate <a class="gl" href="../notes/stats-chi-square.html" data-c="observed-expected">expected counts</a>.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">A <a class="gl" href="../notes/stats-chi-square.html" data-c="chi-square">chi-square test</a> compares observed and expected genotypes and shows whether the population departs from equilibrium.</span></li><li><span class="bio-cause"><a class="gl" href="../notes/population-genetics.html" data-c="allele-frequency">Allele frequencies</a> measured at two times differ.</span><span class="bio-arrow" aria-hidden="true">→</span><span class="bio-effect">The change in p or q is evidence that something (selection, <a class="gl" href="../notes/population-genetics.html" data-c="genetic-drift">drift</a>, <a class="gl" href="../notes/population-genetics.html" data-c="gene-flow">gene flow</a>) is acting on the population.</span></li></ol></div>
+  </section>
+  <section class="bio-part bio-step" id="ideas" aria-labelledby="h-ideas">
+    <p class="bio-step-k">Part 6 · Key ideas</p>
+    <h2 id="h-ideas" tabindex="-1">Key ideas</h2>
+    <div class="bio-step-body"><ul class="bio-ideas"><li><b>Worked example.</b> 36 white of 400 plants. q² = 36 ÷ 400 = 0.09; q = 0.30; p = 0.70. Expected AA = 0.49 × 400 = 196; Aa = 0.42 × 400 = 168; aa = 36.</li><li>Never take the dominant phenotype frequency as p: purple plants (0.91) are AA plus Aa. Always start from the recessive class.</li><li>With genotype counts, count alleles: p = (2 × AA + Aa) ÷ (2 × total). Then expected counts are p²N, 2pqN and q²N.</li><li>Rare recessive alleles hide in carriers: at q = 0.02, carriers (2pq ≈ 0.039) outnumber affected people (q² = 0.0004) about 98 to 1.</li></ul></div>
+  </section>
+  <section class="bio-part bio-step" id="misconception" aria-labelledby="h-misconception">
+    <p class="bio-step-k">Part 7 · Misconception</p>
+    <h2 id="h-misconception" tabindex="-1">A common mistake</h2>
+    <div class="bio-step-body bio-misconception"><p class="bio-wrong"><b>The wrong idea:</b> The frequency of the dominant allele is the fraction of the population showing the dominant phenotype.</p><p class="bio-right"><b>What actually happens:</b> Dominant-phenotype individuals include heterozygotes, so their fraction is p² + 2pq, not p. Find q from the recessive class first (q² = recessive frequency), then p = 1 − q.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="check" aria-labelledby="h-check">
+    <p class="bio-step-k">Part 8 · Check yourself</p>
+    <h2 id="h-check" tabindex="-1">Check yourself</h2>
+    <div class="bio-step-body"><p class="bio-hint">Exam-style questions. Anything you miss goes into your review queue.</p><div class="bio-qs" data-set="check"><div class="bio-set"><section class="bio-stim" data-stim="stats-hardy-weinberg-s1" aria-labelledby="stim-stats-hardy-weinberg-s1"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-hardy-weinberg-s1">Flower color in a meadow</h3><div class="bio-stim-text"><p>In a large, randomly mating population of a wildflower, purple (allele A) is completely dominant to white (allele a). A survey of 400 plants found the following. Assume the population is in Hardy-Weinberg equilibrium for this gene.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Flower color counts"><table class="bio-data"><caption>Flower color counts</caption><thead><tr><th scope="col">Phenotype</th><th scope="col">Number of plants</th></tr></thead><tbody><tr><th scope="row">Purple</th><td>364</td></tr><tr><th scope="row">White</th><td>36</td></tr><tr><th scope="row">Total</th><td>400</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-hardy-weinberg-1"><p class="bio-q-stem"><span class="bio-q-n">1.</span> Calculate q, the frequency of the white allele (a). Give your answer to two decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>White plants are aa, so q² = 36 ÷ 400 = 0.09. q = √0.09 = 0.30.</p><ul><li>Answer: 0.30</li></ul></details></div><div class="bio-q" data-qid="bio-stats-hardy-weinberg-2"><p class="bio-q-stem"><span class="bio-q-n">2.</span> How many of the 400 plants are expected to be heterozygous (Aa)? Give a whole number.</p><p class="bio-small">Type a number in plants.</p><details class="bio-q-key"><summary>Show the answer</summary><p>p = 1 − 0.30 = 0.70. 2pq = 2 × 0.70 × 0.30 = 0.42. 0.42 × 400 = 168 plants.</p><ul><li>Answer: 168 plants</li></ul></details></div><div class="bio-q" data-qid="bio-stats-hardy-weinberg-3"><p class="bio-q-stem"><span class="bio-q-n">3.</span> A student says p = 364 ÷ 400 = 0.91. What is wrong with this?</p><ol class="bio-opts"><li>364 ÷ 400 is the frequency of purple plants, which includes both AA and Aa genotypes, not the frequency of the A allele.</li><li>Nothing is wrong: the dominant allele frequency equals the fraction of plants that show the dominant phenotype.</li><li>The student should have divided by 800, because each plant carries two copies of the gene for flower color.</li><li>The student should have used 36 ÷ 364, comparing white plants with purple plants rather than with the total.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Purple plants are AA (p²) plus Aa (2pq): 0.49 + 0.42 = 0.91. The allele frequency p is 0.70. Start from the recessive class, the one phenotype with a single genotype.</p><ul><li><b>Correct:</b> 364 ÷ 400 is the frequency of purple plants, which includes both AA and Aa genotypes, not the frequency of the A allele.: Correct.</li><li>Nothing is wrong: the dominant allele frequency equals the fraction of plants that show the dominant phenotype.: Phenotype frequency (0.91) is not allele frequency (0.70) for a dominant trait.</li><li>The student should have divided by 800, because each plant carries two copies of the gene for flower color.: Counting alleles needs genotype counts; purple plants' genotypes are unknown, so dividing phenotypes by 800 does not work.</li><li>The student should have used 36 ÷ 364, comparing white plants with purple plants rather than with the total.: A ratio of white to purple is not a frequency of anything in the formula.</li></ul></details></div></div><div class="bio-set"><section class="bio-stim" data-stim="stats-hardy-weinberg-s2" aria-labelledby="stim-stats-hardy-weinberg-s2"><p class="bio-stim-k">Data table</p><h3 id="stim-stats-hardy-weinberg-s2">Genotypes in a small island population</h3><div class="bio-stim-text"><p>Researchers genotyped 100 lizards on a small island for a gene with two alleles, B and b. Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99.</p></div><div class="table-wrap" tabindex="0" role="region" aria-label="Observed genotype counts"><table class="bio-data"><caption>Observed genotype counts</caption><thead><tr><th scope="col">Genotype</th><th scope="col">BB</th><th scope="col">Bb</th><th scope="col">bb</th><th scope="col">Total</th></tr></thead><tbody><tr><th scope="row">Number of lizards</th><td>50</td><td>30</td><td>20</td><td>100</td></tr></tbody></table></div></section><div class="bio-q" data-qid="bio-stats-hardy-weinberg-5"><p class="bio-q-stem"><span class="bio-q-n">4.</span> Calculate p, the frequency of allele B, from the genotype counts. Give your answer to two decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>Count alleles: 100 lizards carry 200 alleles. B alleles = 2 × 50 (BB) + 30 (Bb) = 130. p = 130 ÷ 200 = 0.65.</p><ul><li>Answer: 0.65</li></ul></details></div><div class="bio-q" data-qid="bio-stats-hardy-weinberg-6"><p class="bio-q-stem"><span class="bio-q-n">5.</span> How many Bb lizards are expected under Hardy-Weinberg equilibrium? Give your answer to one decimal place.</p><p class="bio-small">Type a number in lizards.</p><details class="bio-q-key"><summary>Show the answer</summary><p>p = 0.65, q = 0.35. 2pq = 2 × 0.65 × 0.35 = 0.455. 0.455 × 100 = 45.5 lizards.</p><ul><li>Answer: 45.5 lizards</li></ul></details></div><div class="bio-q" data-qid="bio-stats-hardy-weinberg-7"><p class="bio-q-stem"><span class="bio-q-n">6.</span> Expected counts are BB 42.25, Bb 45.5, bb 12.25. Calculate χ² to two decimal places.</p><p class="bio-small">Type a number.</p><details class="bio-q-key"><summary>Show the answer</summary><p>BB: (50 − 42.25)² ÷ 42.25 = 1.42. Bb: (30 − 45.5)² ÷ 45.5 = 5.28. bb: (20 − 12.25)² ÷ 12.25 = 4.90. χ² = 11.60.</p><ul><li>Answer: 11.60</li></ul></details></div><div class="bio-q" data-qid="bio-stats-hardy-weinberg-8"><p class="bio-q-stem"><span class="bio-q-n">7.</span> The chi-square value exceeds the critical value. Which conclusion and explanation fit the data best?</p><ol class="bio-opts"><li>Reject Hardy-Weinberg equilibrium: there are fewer heterozygotes than expected, which fits inbreeding in a small island population.</li><li>Fail to reject equilibrium: the allele frequencies of 0.65 and 0.35 add up to 1, which shows the population is stable.</li><li>Reject equilibrium: there are more heterozygotes than expected, which fits lizards choosing mates unlike themselves.</li><li>Reject equilibrium: the population has too few individuals for any Hardy-Weinberg test to be carried out with confidence on an island.</li></ol><details class="bio-q-key"><summary>Show the answer</summary><p>Observed Bb (30) is far below expected (45.5), while both homozygotes are above expected. Mating between relatives in a small population raises homozygosity, which matches this pattern.</p><ul><li><b>Correct:</b> Reject Hardy-Weinberg equilibrium: there are fewer heterozygotes than expected, which fits inbreeding in a small island population.: Correct: reject, with a mechanism matched to the pattern.</li><li>Fail to reject equilibrium: the allele frequencies of 0.65 and 0.35 add up to 1, which shows the population is stable.: p + q = 1 by definition in any population; it says nothing about equilibrium.</li><li>Reject equilibrium: there are more heterozygotes than expected, which fits lizards choosing mates unlike themselves.: There are fewer heterozygotes than expected, not more.</li><li>Reject equilibrium: the population has too few individuals for any Hardy-Weinberg test to be carried out with confidence on an island.: A sample of 100 is enough for the test; the problem is the poor fit.</li></ul></details></div></div></div></div>
+  </section>
+  <section class="bio-part bio-step" id="summary" aria-labelledby="h-summary">
+    <p class="bio-step-k">Part 9 · Summary</p>
+    <h2 id="h-summary" tabindex="-1">Summary</h2>
+    <div class="bio-step-body"><p>For a population in Hardy-Weinberg equilibrium, the recessive phenotype frequency is q², so q = √(recessive frequency) and p = 1 − q. Genotype frequencies are p², 2pq and q², and 2pq is the <span class="gl" tabindex="0" data-c="carrier-frequency">carrier frequency</span>. With full genotype counts, count alleles to get p and use a chi-square test to check whether the population fits equilibrium. A <span class="gl" tabindex="0" data-c="allele-change">change in allele frequency</span> between generations is evidence of <a class="gl" href="../notes/compartment-origins.html" data-c="evolution-basic">evolution</a>.</p></div>
+  </section>
+  <section class="bio-part bio-step" id="next" aria-labelledby="h-next">
+    <p class="bio-step-k">Part 10 · Up next</p>
+    <h2 id="h-next" tabindex="-1">What comes next</h2>
+    <div class="bio-step-body"><nav class="bio-nav-ref" aria-label="Next topic"><p><a class="btn-press sm" href="evolution-evidence.html">Evidence of Evolution &rarr;</a></p></nav></div>
+  </section>
+  <section class="bio-part bio-step" id="connections" aria-labelledby="h-connections">
+    <p class="bio-step-k">Part 11 · Connections</p>
+    <h2 id="h-connections" tabindex="-1">Connections</h2>
+    <div class="bio-step-body"><ul class="bio-links"><li><a href="../tools/hardy-weinberg.html">Tool: Hardy-Weinberg calculator</a></li><li><a href="stats-chi-square.html">Skill: chi-square test</a></li></ul></div>
+  </section>
+    <div class="bio-ls-actions bio-nav-ref"><button type="button" class="bio-ls-back">&larr; Previous</button><button type="button" class="bio-ls-go">Continue &rarr;</button><a class="bio-ls-go" hidden href="evolution-evidence.html">Next lesson &rarr;</a></div>
+  </div>
+  </main>
+</div>
+<script>(function(){var s=document.querySelector('.bio-ls'),p=s&&s.querySelectorAll('.bio-step');if(!p||p.length<2)return;var i=0;try{var h=location.hash.slice(1),e=h&&document.getElementById(decodeURIComponent(h)),q=e&&e.closest('.bio-step');if(q)i=[].indexOf.call(p,q);else i=Math.max(0,Math.min((JSON.parse(localStorage.getItem('apbio_step_'+document.body.getAttribute('data-topic')))||{}).step|0,p.length-1));}catch(x){}for(var k=0;k<p.length;k++)p[k].classList.toggle('is-on',k===i);})();</script>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="lesson:stats-hardy-weinberg">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script type="application/json" id="bio-page-data">{"topic":"stats-hardy-weinberg","unit":"skills-stats","free":true,"prereq":[{"id":"stats-hardy-weinberg-pre-1","type":"single","unit":"skills-stats","topic":"stats-hardy-weinberg","q":"In p² + 2pq + q² = 1, what does 2pq stand for?","options":["The frequency of heterozygotes","The frequency of the dominant allele","The frequency of homozygous recessive individuals"],"correct":0,"why":{"correct":"p² is homozygous dominant, 2pq heterozygous and q² homozygous recessive.","options":["","",""]},"reviewHref":"../notes/hardy-weinberg.html","reviewTitle":"Hardy-Weinberg Equilibrium"},{"id":"stats-hardy-weinberg-pre-2","type":"single","unit":"skills-stats","topic":"stats-hardy-weinberg","q":"Which condition is NOT required for Hardy-Weinberg equilibrium?","options":["A small population","Random mating","No natural selection"],"correct":0,"why":{"correct":"Equilibrium needs a very large population (no drift), random mating, no selection, no mutation and no gene flow.","options":["","",""]},"reviewHref":"../notes/hardy-weinberg.html","reviewTitle":"Hardy-Weinberg Equilibrium"},{"id":"stats-hardy-weinberg-pre-3","type":"single","unit":"skills-stats","topic":"stats-hardy-weinberg","q":"A chi-square value greater than the critical value means you…","options":["reject the null hypothesis","fail to reject the null hypothesis","accept the null hypothesis"],"correct":0,"why":{"correct":"A large χ² means the observed counts are too far from expected for chance.","options":["","",""]},"reviewHref":"../notes/stats-chi-square.html","reviewTitle":"Chi-square test"}],"check":[{"id":"bio-stats-hardy-weinberg-1","type":"numeric","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-hardy-weinberg-s1","q":"Calculate q, the frequency of the white allele (a). Give your answer to two decimal places.","numeric":{"answer":0.3,"tol":0.005,"unit":"","decimals":2},"why":{"correct":"White plants are aa, so q² = 36 ÷ 400 = 0.09. q = √0.09 = 0.30."}},{"id":"bio-stats-hardy-weinberg-2","type":"numeric","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-hardy-weinberg-s1","q":"How many of the 400 plants are expected to be heterozygous (Aa)? Give a whole number.","numeric":{"answer":168,"tol":0.5,"unit":"plants","decimals":0},"why":{"correct":"p = 1 − 0.30 = 0.70. 2pq = 2 × 0.70 × 0.30 = 0.42. 0.42 × 400 = 168 plants."}},{"id":"bio-stats-hardy-weinberg-3","type":"single","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"5.A","level":"analyze","diff":3,"stimulus":"stats-hardy-weinberg-s1","q":"A student says p = 364 ÷ 400 = 0.91. What is wrong with this?","options":["364 ÷ 400 is the frequency of purple plants, which includes both AA and Aa genotypes, not the frequency of the A allele.","Nothing is wrong: the dominant allele frequency equals the fraction of plants that show the dominant phenotype.","The student should have divided by 800, because each plant carries two copies of the gene for flower color.","The student should have used 36 ÷ 364, comparing white plants with purple plants rather than with the total."],"correct":0,"why":{"correct":"Purple plants are AA (p²) plus Aa (2pq): 0.49 + 0.42 = 0.91. The allele frequency p is 0.70. Start from the recessive class, the one phenotype with a single genotype.","options":["Correct.","Phenotype frequency (0.91) is not allele frequency (0.70) for a dominant trait.","Counting alleles needs genotype counts; purple plants' genotypes are unknown, so dividing phenotypes by 800 does not work.","A ratio of white to purple is not a frequency of anything in the formula."]}},{"id":"bio-stats-hardy-weinberg-5","type":"numeric","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-hardy-weinberg-s2","q":"Calculate p, the frequency of allele B, from the genotype counts. Give your answer to two decimal places.","numeric":{"answer":0.65,"tol":0.005,"unit":"","decimals":2},"why":{"correct":"Count alleles: 100 lizards carry 200 alleles. B alleles = 2 × 50 (BB) + 30 (Bb) = 130. p = 130 ÷ 200 = 0.65."}},{"id":"bio-stats-hardy-weinberg-6","type":"numeric","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"5.A","level":"apply","diff":2,"stimulus":"stats-hardy-weinberg-s2","q":"How many Bb lizards are expected under Hardy-Weinberg equilibrium? Give your answer to one decimal place.","numeric":{"answer":45.5,"tol":0.05,"unit":"lizards","decimals":1},"why":{"correct":"p = 0.65, q = 0.35. 2pq = 2 × 0.65 × 0.35 = 0.455. 0.455 × 100 = 45.5 lizards."}},{"id":"bio-stats-hardy-weinberg-7","type":"numeric","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"5.C","level":"analyze","diff":3,"stimulus":"stats-hardy-weinberg-s2","q":"Expected counts are BB 42.25, Bb 45.5, bb 12.25. Calculate χ² to two decimal places.","numeric":{"answer":11.6,"tol":0.03,"unit":"","decimals":2},"why":{"correct":"BB: (50 − 42.25)² ÷ 42.25 = 1.42. Bb: (30 − 45.5)² ÷ 45.5 = 5.28. bb: (20 − 12.25)² ÷ 12.25 = 4.90. χ² = 11.60."}},{"id":"bio-stats-hardy-weinberg-8","type":"single","unit":"skills-stats","topic":"stats-hardy-weinberg","practice":"6.C","level":"analyze","diff":3,"stimulus":"stats-hardy-weinberg-s2","q":"The chi-square value exceeds the critical value. Which conclusion and explanation fit the data best?","options":["Reject Hardy-Weinberg equilibrium: there are fewer heterozygotes than expected, which fits inbreeding in a small island population.","Fail to reject equilibrium: the allele frequencies of 0.65 and 0.35 add up to 1, which shows the population is stable.","Reject equilibrium: there are more heterozygotes than expected, which fits lizards choosing mates unlike themselves.","Reject equilibrium: the population has too few individuals for any Hardy-Weinberg test to be carried out with confidence on an island."],"correct":0,"why":{"correct":"Observed Bb (30) is far below expected (45.5), while both homozygotes are above expected. Mating between relatives in a small population raises homozygosity, which matches this pattern.","options":["Correct: reject, with a mechanism matched to the pattern.","p + q = 1 by definition in any population; it says nothing about equilibrium.","There are fewer heterozygotes than expected, not more.","A sample of 100 is enough for the test; the problem is the poor fit."]}}],"stimuli":{"stats-hardy-weinberg-s1":{"kind":"table","title":"Flower color in a meadow","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>In a large, randomly mating population of a wildflower, purple (allele A) is completely dominant to white (allele a). A survey of 400 plants found the following. Assume the population is in Hardy-Weinberg equilibrium for this gene.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Flower color counts\">\u003ctable class=\"bio-data\">\u003ccaption>Flower color counts\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Phenotype\u003c/th>\u003cth scope=\"col\">Number of plants\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Purple\u003c/th>\u003ctd>364\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">White\u003c/th>\u003ctd>36\u003c/td>\u003c/tr>\u003ctr>\u003cth scope=\"row\">Total\u003c/th>\u003ctd>400\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"},"stats-hardy-weinberg-s2":{"kind":"table","title":"Genotypes in a small island population","html":"\u003cdiv class=\"bio-stim-text\">\u003cp>Researchers genotyped 100 lizards on a small island for a gene with two alleles, B and b. Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99.\u003c/p>\u003c/div>\u003cdiv class=\"table-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Observed genotype counts\">\u003ctable class=\"bio-data\">\u003ccaption>Observed genotype counts\u003c/caption>\u003cthead>\u003ctr>\u003cth scope=\"col\">Genotype\u003c/th>\u003cth scope=\"col\">BB\u003c/th>\u003cth scope=\"col\">Bb\u003c/th>\u003cth scope=\"col\">bb\u003c/th>\u003cth scope=\"col\">Total\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003cth scope=\"row\">Number of lizards\u003c/th>\u003ctd>50\u003c/td>\u003ctd>30\u003c/td>\u003ctd>20\u003c/td>\u003ctd>100\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003c/div>"}}}</script>
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-questions.js" defer></script>
+<script src="../assets/bio-lesson.js" defer></script>
+</body>
+</html>
