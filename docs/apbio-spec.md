@@ -94,10 +94,12 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    `bio-`. Storage keys, analytics names and the registry key stay `apbio` (never in a URL). The
    course key in query strings is `bio`. Build scripts and docs outside `bio/` keep the names the
    owner gave (`build-apbio.mjs`, `docs/apbio-spec.md`).
-3. (2026-10-03) **No "AP" in titles or meta tags.** The owner's rule bars "AP" from meta tags, and
-   the site copies each page's `<title>` into `og:title`, so page titles use "Biology Exam Prep"
-   (for example "Cell Membranes — Biology Exam Prep Notes | LevlPrep"). "AP® Biology" appears in
-   the visible page text with the disclaimer. Owner may relax this (needs-author).
+3. (2026-10-03, owner) **"AP® Biology" in page titles, always with the ®.** The owner allowed the
+   mark in `<title>` (and so in `og:title`, which the site copies from it) when written "AP®
+   Biology", e.g. "Cell Membranes — AP® Biology Notes | LevlPrep". Every other meta tag
+   (description, keywords, og:description), URLs and file names stay free of "AP". The site rule
+   fails a title with "AP" not followed by "®" or not used as an adjective, and any other meta tag
+   with "AP".
 4. (2026-10-03) **CED source access.** apcentral.collegeboard.org is blocked by this environment's
    network policy, so the topic map was built from secondary sources that reproduce the CED's
    structure, cross-checked against each other, and written in our own words. A person should

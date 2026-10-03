@@ -10,8 +10,8 @@ course does meanwhile.
   topic map (`docs/apbio-dependency-map.json`) was built from secondary sources describing the
   fall 2025 CED. Someone with access should compare unit and topic titles and the exam format
   with the official CED. Meanwhile the course follows the cross-checked map.
-- **title-mark** (open). Page titles and meta tags carry no "AP" (spec decision 3), which costs
-  search traffic for "AP Biology" queries. Owner to confirm, or allow "AP® Biology" in `<title>`.
+- **title-mark** (resolved 2026-10-03). Owner: use "AP® Biology", with the ®, in page titles
+  (spec decision 3).
 - **teacher-review** (open). No AP® Biology teacher has reviewed the course. Beta badge and note
   stay until one signs off.
 
