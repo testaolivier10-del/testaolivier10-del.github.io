@@ -72,6 +72,7 @@
 
   // Rank names by subject. Index is a minimum level; the last one you qualify
   // for wins. 'hub' is the neutral set the LevlPrep landing page uses.
+  // One set per course in assets/courses.js, plus hub (scripts/check-courses.mjs).
   var TITLES = {
     hub: [
       { min: 1,  title: 'Student' },
@@ -113,7 +114,15 @@
 
   // Each course names its ranks differently, so a rank shown on its own says
   // which course it belongs to ("A&P rank: Cell Scout").
-  var COURSE_RANK_LABEL = { nremt: 'NREMT rank', ochem: 'Ochem rank', anp: 'A&P rank', hub: 'LevlPrep rank' };
+  // courses:begin COURSE_LIST key,rankLabel (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', rankLabel: 'NREMT rank' },
+    { key: 'ochem', rankLabel: 'Ochem rank' },
+    { key: 'anp', rankLabel: 'A&P rank' },
+  ];
+  // courses:end
+  var COURSE_RANK_LABEL = { hub: 'LevlPrep rank' };
+  COURSE_LIST.forEach(function(c){ COURSE_RANK_LABEL[c.key] = c.rankLabel; });
 
   // Set by each subject's bootstrap (nav.js / ochem-nav.js) so the header chip
   // knows which vocabulary to use. Defaults to the neutral hub set.

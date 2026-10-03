@@ -29,7 +29,14 @@
      whatever a future feature happens to store — including, eventually,
      something that should not leave the device. Anything new has to be added
      here on purpose. */
-  var PREFIXES = ['hub_', 'nremt_', 'ochem_', 'anp_'];
+  // courses:begin COURSE_LIST storagePrefix (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { storagePrefix: 'nremt_' },
+    { storagePrefix: 'ochem_' },
+    { storagePrefix: 'anp_' },
+  ];
+  // courses:end
+  var PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }));
   var EXACT = ['levl_sound', 'levlprep_analytics_opt_out', 'levlprep_ai_met'];
   var EXCLUDE = ['hub_sync_reloaded'];
 

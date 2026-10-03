@@ -84,24 +84,27 @@ document.addEventListener('DOMContentLoaded', function(){
      guessed at. A hard-coded list would promise pages this device may never
      have opened — the worker precaches a core set but defers the rest until
      they are visited, so the true answer differs per device. */
+  // courses:begin COURSE_LIST name,short,path (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { name: 'NREMT-EMT', short: 'NREMT', path: '/nremt/' },
+    { name: 'Organic Chemistry', short: 'Ochem', path: '/ochem/' },
+    { name: 'Anatomy & Physiology', short: 'A&P', path: '/anatomy-physiology/' },
+  ];
+  // courses:end
   var TITLES = {
     '/': 'LevlPrep home',
-    '/index.html': 'LevlPrep home',
-    '/nremt/': 'NREMT-EMT home',
-    '/nremt/index.html': 'NREMT-EMT home',
-    '/ochem/': 'Organic Chemistry home',
-    '/ochem/index.html': 'Organic Chemistry home',
-    '/anatomy-physiology/': 'Anatomy & Physiology home',
-    '/anatomy-physiology/index.html': 'Anatomy & Physiology home'
+    '/index.html': 'LevlPrep home'
   };
+  COURSE_LIST.forEach(function(c){
+    TITLES[c.path] = TITLES[c.path + 'index.html'] = c.name + ' home';
+  });
 
   function label(pathname){
     if(TITLES[pathname]) return TITLES[pathname];
     var file = pathname.split('/').pop().replace(/\.html$/, '');
     var name = file.replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); });
-    var area = pathname.indexOf('/nremt/') === 0 ? 'NREMT'
-             : pathname.indexOf('/ochem/') === 0 ? 'Ochem'
-             : pathname.indexOf('/anatomy-physiology/') === 0 ? 'A&P' : '';
+    var area = '';
+    COURSE_LIST.forEach(function(c){ if(!area && pathname.indexOf(c.path) === 0) area = c.short; });
     return area ? area + ' · ' + name : name;
   }
 
@@ -147,10 +150,7 @@ document.addEventListener('DOMContentLoaded', function(){
       lede.textContent = pages.length + (pages.length === 1 ? ' page is' : ' pages are') + ' available without a connection.';
       /* Grouped by course, so 34 saved pages read as three short lists
          rather than one long one (audit 2026-10). */
-      var GROUPS = [
-        ['/nremt/', 'NREMT-EMT'], ['/ochem/', 'Organic Chemistry'],
-        ['/anatomy-physiology/', 'Anatomy & Physiology'], ['', 'LevlPrep']
-      ];
+      var GROUPS = COURSE_LIST.map(function(c){ return [c.path, c.name]; }).concat([['', 'LevlPrep']]);
       list.innerHTML = '';
       GROUPS.forEach(function(g){
         var mine = pages.filter(function(p){

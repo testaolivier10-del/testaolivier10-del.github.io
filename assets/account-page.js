@@ -12,7 +12,15 @@
   var SUPPORT = 'hello@levlprep.com';
   var WINDOW_DAYS = 7;
   var DAY_MS = 86400000;
-  var COURSE_ORDER = ['nremt', 'ochem', 'anp'];
+  // The paid courses, in registry order (assets/courses.js).
+  // courses:begin COURSE_LIST key,paid (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', paid: true },
+    { key: 'ochem', paid: true },
+    { key: 'anp', paid: true },
+  ];
+  // courses:end
+  var COURSE_ORDER = COURSE_LIST.filter(function (c) { return c.paid; }).map(function (c) { return c.key; });
 
   var A, P;
   var rows = null;

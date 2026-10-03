@@ -20,11 +20,18 @@
 (function (window) {
   'use strict';
 
-  var COURSES = [
-    { key: 'nremt', label: 'NREMT', name: 'NREMT-EMT', base: 'nremt/' },
-    { key: 'ochem', label: 'Organic Chem', name: 'Organic Chemistry', base: 'ochem/' },
-    { key: 'anp', label: 'A&P', name: 'Anatomy & Physiology', base: 'anatomy-physiology/' },
+  /* The courses search covers: every one in assets/courses.js that is not
+     hidden, in registry order. SOURCES below needs an entry for each. */
+  // courses:begin COURSE_LIST key,searchLabel,name,dir,aliases,status (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', searchLabel: 'NREMT', name: 'NREMT-EMT', dir: 'nremt', aliases: [], status: 'live' },
+    { key: 'ochem', searchLabel: 'Organic Chem', name: 'Organic Chemistry', dir: 'ochem', aliases: ['organic-chemistry'], status: 'live' },
+    { key: 'anp', searchLabel: 'A&P', name: 'Anatomy & Physiology', dir: 'anatomy-physiology', aliases: ['a&p', 'ap', 'anatomy-physiology'], status: 'beta' },
   ];
+  // courses:end
+  var COURSES = COURSE_LIST.filter(function (c) { return c.status !== 'hidden'; }).map(function (c) {
+    return { key: c.key, label: c.searchLabel, name: c.name, base: c.dir + '/' };
+  });
 
   /* Glossary data per course, relative to the course folder. NREMT's terms
      live inline in nremt/glossary.html (see inlineTerms) and A&P's in its own
@@ -38,12 +45,12 @@
     return null;
   }
 
-  /* ?course= accepts the three keys and a couple of spellings people (and
-     other pages) actually use; anything else means every course. */
+  /* ?course= accepts the course keys and the spellings people (and other
+     pages) actually use, each course's `aliases` in assets/courses.js;
+     anything else means every course. */
   function parseCourse(value) {
     var v = String(value || '').toLowerCase().trim();
-    if (v === 'a&p' || v === 'ap' || v === 'anatomy-physiology') v = 'anp';
-    if (v === 'organic-chemistry') v = 'ochem';
+    COURSE_LIST.forEach(function (c) { if (c.aliases.indexOf(v) !== -1) v = c.key; });
     return courseOf(v) ? v : 'all';
   }
 
@@ -367,6 +374,7 @@
 
   /* Each source: a label (for the status line) and a function returning a
      promise of chunks. */
+  // One entry per course in assets/courses.js (scripts/check-courses.mjs).
   var SOURCES = {
     nremt: [
       ['notes', function () { return getJson('nremt/assets/study-notes.json').then(nremtNotesChunks); }],

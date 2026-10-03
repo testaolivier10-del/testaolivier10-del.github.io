@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join, posix } from 'node:path';
 import { isNoindex } from './lib/app-pages.mjs';
+import { COURSES } from './lib/courses.mjs';
 
 const OUT = 'sitemap.xml';
 const check = process.argv.includes('--check');
@@ -57,10 +58,15 @@ function walk(dir, out = []) {
    tests, exams, the textbook, the exam guide, Premium); the notes, which are
    the pages written to be read from a search; lessons and mechanisms; tools,
    which are mostly a canvas and a few buttons; then legal and credits. */
+// Every course folder in the registry (assets/courses.js).
+const DIRS = COURSES.map((c) => c.dir.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+const COURSE_HOME = new RegExp(`^\\/(${DIRS})\\/$`);
+const COURSE_NAMED = new RegExp(`^\\/(premium|(${DIRS})\\/(practice|exams|learn|study-notes|exam-day|glossary|flashcards|how-to-study|skillsheets|tools))\\.html$`);
+
 function priorityFor(path) {
   if (path === '/') return '1.0';
-  if (/^\/(nremt|ochem|anatomy-physiology)\/$/.test(path)) return '0.9';
-  if (/^\/(premium|(nremt|ochem|anatomy-physiology)\/(practice|exams|learn|study-notes|exam-day|glossary|flashcards|how-to-study|skillsheets|tools))\.html$/.test(path)) return '0.8';
+  if (COURSE_HOME.test(path)) return '0.9';
+  if (COURSE_NAMED.test(path)) return '0.8';
   if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters))\//.test(path)) return '0.7';
   if (/^\/nremt\/[^/]+\.html$/.test(path)) return '0.7';
   if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts))\//.test(path)) return '0.6';

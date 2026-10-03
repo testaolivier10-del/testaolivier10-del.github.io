@@ -58,7 +58,9 @@
   /* The split, per course. `free` and `premium` are what the dialog lists, so
      what someone pays for is exactly what is written here. `passes` must match
      PASSES in worker/src/premium.js; `freeChapters` is the always-open part.
-     `dailyFree` is the free daily practice allowance, where a course has one. */
+     `dailyFree` is the free daily practice allowance, where a course has one.
+     One entry per paid course in assets/courses.js, and `name` is that
+     course's productName (scripts/check-courses.mjs checks both). */
   var COURSES = {
     nremt: {
       name: 'NREMT-EMT Prep',
@@ -129,6 +131,15 @@
       ],
     },
   };
+
+  // Which course a page belongs to, for returnCourse().
+  // courses:begin COURSE_LIST key,path (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', path: '/nremt/' },
+    { key: 'ochem', path: '/ochem/' },
+    { key: 'anp', path: '/anatomy-physiology/' },
+  ];
+  // courses:end
 
   var overlay = null;
   var lastFocused = null;
@@ -747,9 +758,9 @@
     var course = q.course;
     if (course && Object.prototype.hasOwnProperty.call(COURSES, course)) return course;
     var path = String(pathname || '');
-    if (path.indexOf('/nremt/') !== -1) return 'nremt';
-    if (path.indexOf('/ochem/') !== -1) return 'ochem';
-    if (path.indexOf('/anatomy-physiology/') !== -1) return 'anp';
+    for (var i = 0; i < COURSE_LIST.length; i++) {
+      if (path.indexOf(COURSE_LIST[i].path) !== -1) return COURSE_LIST[i].key;
+    }
     return '';
   }
 

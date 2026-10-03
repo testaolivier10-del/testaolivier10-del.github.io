@@ -31,13 +31,22 @@
 
   // Which course the reader is in. site-chrome.js sets this when it renders
   // the header; the path sniff is the fallback for anything that loads the
-  // tutor on its own.
+  // tutor on its own, and anything outside a course folder is the registry's
+  // first course (NREMT).
+  // courses:begin COURSE_LIST key,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', dir: 'nremt' },
+    { key: 'ochem', dir: 'ochem' },
+    { key: 'anp', dir: 'anatomy-physiology' },
+  ];
+  // courses:end
   function courseKey(){
     var declared = window.LEVLPREP_COURSE && window.LEVLPREP_COURSE.key;
     if(declared) return declared;
-    if(location.pathname.indexOf('/ochem') === 0) return 'ochem';
-    if(location.pathname.indexOf('/anatomy-physiology') === 0) return 'anp';
-    return 'nremt';
+    for(var i = 0; i < COURSE_LIST.length; i++){
+      if(location.pathname.indexOf('/' + COURSE_LIST[i].dir) === 0) return COURSE_LIST[i].key;
+    }
+    return COURSE_LIST[0].key;
   }
 
   // NREMT's reference pages. questions.json is deliberately absent: 2.3MB of
@@ -970,6 +979,8 @@
     '.lp-settings button.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}'
   ].join('');
 
+  // STARTERS and GREETING: one entry per course in assets/courses.js
+  // (scripts/check-courses.mjs).
   var STARTERS = {
     nremt: [
       'What’s the difference between a hemothorax and a pneumothorax?',

@@ -33,6 +33,14 @@
   var SCRIPT_URL = '/assets/vendor/umami-2.10.0.js';
   var HOST_URL = 'https://cloud.umami.is';
   var OPT_OUT_KEY = 'levlprep_analytics_opt_out';
+  // Which course a page is in, for the visit event (courseOf).
+  // courses:begin COURSE_LIST key,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', dir: 'nremt' },
+    { key: 'ochem', dir: 'ochem' },
+    { key: 'anp', dir: 'anatomy-physiology' },
+  ];
+  // courses:end
 
   /* Read fresh on every call rather than cached at load: the toggle on
      privacy.html flips this, and the answer has to change without a reload.
@@ -199,9 +207,9 @@
   }
 
   function courseOf(path){
-    if(path.indexOf('/nremt') > -1) return 'nremt';
-    if(path.indexOf('/ochem') > -1) return 'ochem';
-    if(path.indexOf('/anatomy-physiology') > -1) return 'anp';
+    for(var i = 0; i < COURSE_LIST.length; i++){
+      if(path.indexOf('/' + COURSE_LIST[i].dir) > -1) return COURSE_LIST[i].key;
+    }
     return 'site';
   }
 

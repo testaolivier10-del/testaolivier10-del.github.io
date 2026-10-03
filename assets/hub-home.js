@@ -9,11 +9,16 @@
   // HTML string: the URL comes from storage, and the site's link checker reads
   // any quoted href attribute in an .html file as a literal path.
   function renderContinue(card, info){
-    var COURSES = [
-      { k: 'nremt', name: 'NREMT-EMT', home: '/nremt/' },
-      { k: 'ochem', name: 'Organic Chemistry', home: '/ochem/' },
-      { k: 'anp', name: 'Anatomy & Physiology', home: '/anatomy-physiology/' }
+    // courses:begin COURSE_LIST key,name,path,status (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+    var COURSE_LIST = [
+      { key: 'nremt', name: 'NREMT-EMT', path: '/nremt/', status: 'live' },
+      { key: 'ochem', name: 'Organic Chemistry', path: '/ochem/', status: 'live' },
+      { key: 'anp', name: 'Anatomy & Physiology', path: '/anatomy-physiology/', status: 'beta' },
     ];
+    // courses:end
+    var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){
+      return { k: c.key, name: c.name, home: c.path };
+    });
     var ptr = {};
     try{ ptr = JSON.parse(localStorage.getItem('levl_resume') || '{}') || {}; }catch(e){}
     var row = document.createElement('div');

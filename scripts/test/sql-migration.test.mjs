@@ -36,13 +36,25 @@ function browserRpcs() {
   return [...names].sort();
 }
 
-test('every function in the migration is word for word the one in schema.sql', () => {
-  const mig = blocks(MIG);
+/* Later migrations (named so they sort by date, like 2026-10-audit.sql)
+   may redefine a function, e.g. to accept a new course; the live database
+   runs them in order, so the newest definition is the one schema.sql must
+   match. */
+function latestBlocks() {
+  const dir = 'scripts/sql/migrations';
+  const out = new Map();
+  for (const f of readdirSync(dir).filter((x) => x.endsWith('.sql')).sort()) {
+    for (const [name, body] of blocks(readFileSync(join(dir, f), 'utf8'))) out.set(name, body);
+  }
+  return out;
+}
+
+test('every function in the migrations is word for word the one in schema.sql', () => {
+  assert.ok(blocks(MIG).size >= 10, 'the audit migration defines too few functions to be the real one');
   const sch = blocks(SCHEMA);
-  assert.ok(mig.size >= 10, 'the migration defines too few functions to be the real one');
-  for (const [name, body] of mig) {
-    assert.ok(sch.has(name), `${name} is in the migration but not in schema.sql`);
-    assert.equal(sch.get(name), body, `${name} differs between the migration and schema.sql`);
+  for (const [name, body] of latestBlocks()) {
+    assert.ok(sch.has(name), `${name} is in a migration but not in schema.sql`);
+    assert.equal(sch.get(name), body, `${name} differs between its latest migration and schema.sql`);
   }
 });
 
