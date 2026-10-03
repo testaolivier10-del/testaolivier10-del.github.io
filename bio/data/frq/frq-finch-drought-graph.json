@@ -1,0 +1,74 @@
+{
+  "id": "frq-finch-drought-graph",
+  "type": "iee-graph",
+  "points": 9,
+  "title": "Beak depth before and after a drought",
+  "units": ["unit-7", "skills-stats", "skills-design"],
+  "topics": ["natural-selection", "stats-confidence-intervals", "stats-plots", "design-null-hypothesis"],
+  "practices": ["1.C", "3.B", "4.A", "5.B", "6.E"],
+  "stimulus": {
+    "kind": "table",
+    "title": "Finch beak depth across a drought",
+    "text": "<p>A population of seed-eating finches lives on a small island with no other finches. Before a severe drought, researchers banded and measured the beak depth of 120 adult birds. During the drought, small, soft seeds ran out first, and the seeds left were mostly large and hard. Only 28 of the banded adults survived; the researchers measured them again after the drought, and their beaks had not changed in size. Earlier breeding records showed that beak depth is heritable. When rain returned, the survivors bred, and the researchers measured 60 of their offspring once those offspring were fully grown.</p>",
+    "table": {
+      "caption": "Beak depth of the three groups of birds",
+      "cols": ["Group", "Number of birds (n)", "Mean beak depth (mm)", "Standard error of the mean, SE (mm)"],
+      "rows": [
+        ["Adults before the drought", "120", "9.30", "0.05"],
+        ["Adults that survived the drought", "28", "9.82", "0.10"],
+        ["Offspring of the survivors, fully grown", "60", "9.71", "0.07"]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "A",
+      "prompt": "<b>Describe</b> how the drought acted as a selective pressure on beak depth in this population.",
+      "points": 1,
+      "rubric": [
+        { "point": "Describes that after the soft seeds ran out, birds with deeper beaks could crack the remaining large, hard seeds, so they were more likely to survive (and later reproduce) than birds with shallower beaks.", "accept": ["deep-beaked birds could eat the hard seeds that were left, so more of them survived", "shallow-beaked birds could not open large seeds and starved", "the food left favored deeper beaks"] }
+      ],
+      "sample": "When the soft seeds ran out, the only food left was large, hard seeds. Birds with deeper beaks could crack these seeds and get enough food, so more of them survived the drought than birds with shallower beaks, which starved."
+    },
+    {
+      "label": "B",
+      "prompt": "(i) <b>State</b> the null hypothesis for comparing the adults before the drought with the fully grown offspring of the survivors. (ii) <b>Justify</b> measuring the offspring of the survivors, rather than only the survivors, to test whether the population evolved.",
+      "points": 2,
+      "rubric": [
+        { "point": "States a null hypothesis of no difference: the mean beak depth of the survivors' offspring is the same as that of the adults before the drought.", "accept": ["there is no difference in mean beak depth between the two groups", "the drought has no effect on beak depth in the next generation", "any difference is due to chance"] },
+        { "point": "Justifies that evolution is a change in inherited traits across generations: the survivors show which birds were selected within one generation, while their offspring show whether the change was inherited by the next generation.", "accept": ["the survivors only show selection; the offspring show whether the trait was passed on", "evolution requires a change in the next generation, so the offspring must be measured", "if beak depth were not inherited, the offspring would not differ from the original population"] }
+      ],
+      "sample": "(i) Null hypothesis: there is no difference between the mean beak depth of the survivors' offspring and that of the adults measured before the drought. (ii) The survivors show only that birds with deeper beaks were selected within one generation. Evolution is a change in the inherited makeup of a population, so the researchers have to show that the next generation, the offspring, also has deeper beaks than the population had before."
+    },
+    {
+      "label": "C",
+      "prompt": "<b>Construct</b> an appropriately labeled graph that shows the mean beak depth of each of the three groups, with error bars showing the 95% confidence interval (mean ± 2 SE).",
+      "points": 4,
+      "rubric": [
+        { "point": "Correct type and labels: a bar graph (or a point for each group) with the three groups on the x-axis and mean beak depth (mm) on the y-axis, each axis labeled, with units.", "accept": ["x: Group; y: Mean beak depth (mm)", "three labeled bars or points"] },
+        { "point": "Appropriate, evenly spaced y-axis scale that shows the differences (for example 9.0 to 10.2 mm in steps of 0.2, or starting at 0 if the grid allows the differences to be read).", "accept": ["even y-axis scale", "y-axis may start above zero if labeled"] },
+        { "point": "All three means plotted correctly: 9.30, 9.82 and 9.71 mm.", "accept": ["bars or points at 9.30, 9.82, 9.71"] },
+        { "point": "Error bars drawn correctly as mean ± 2 SE: 9.20-9.40 mm (before), 9.62-10.02 mm (survivors), 9.57-9.85 mm (offspring).", "accept": ["±0.10, ±0.20 and ±0.14 mm error bars"] }
+      ],
+      "sample": "A bar graph with the x-axis labeled \"Group\" (Adults before drought, Survivors, Offspring of survivors) and the y-axis labeled \"Mean beak depth (mm)\" from 9.0 to 10.2 in steps of 0.2. Bars reach 9.30, 9.82 and 9.71 mm. Error bars run from 9.20 to 9.40 mm, from 9.62 to 10.02 mm and from 9.57 to 9.85 mm. Caption: \"Error bars show 95% confidence intervals (mean ± 2 SE).\""
+    },
+    {
+      "label": "D",
+      "prompt": "(i) Based on your graph, <b>determine</b> whether the drought changed the mean beak depth of the next generation, and <b>justify</b> your answer. (ii) After the drought, several years of heavy rain produce mostly small, soft seeds, which smaller-beaked birds handle faster. <b>Predict</b> the change in mean beak depth of the population over the following generations, and <b>justify</b> your prediction.",
+      "points": 2,
+      "rubric": [
+        { "point": "Determines that the offspring's mean beak depth is greater than that of the adults before the drought, because the error bars (9.20-9.40 and 9.57-9.85 mm) do not overlap, so the difference is statistically significant (the null hypothesis can be rejected).", "accept": ["yes: the ±2 SE bars of the before group and the offspring do not overlap", "the offspring are significantly deeper-beaked than the original adults"] },
+        { "point": "Predicts that mean beak depth will decrease, because smaller-beaked birds would now get more food, survive and reproduce more, passing on alleles for smaller beaks (selection reverses with the environment).", "accept": ["beak depth goes down because the favorable trait now is a smaller beak", "selection would favor smaller beaks, so the mean decreases over generations"] }
+      ],
+      "sample": "(i) Yes. The 95% confidence interval for the adults before the drought (9.20-9.40 mm) does not overlap the interval for the survivors' offspring (9.57-9.85 mm), so the offspring's deeper mean beak depth is a significant difference: the next generation changed. (ii) Mean beak depth will decrease. With mostly small, soft seeds, birds with smaller beaks feed faster and get more food, so they survive and reproduce more. Because beak depth is heritable, their offspring have smaller beaks, and the population mean falls over generations."
+    }
+  ],
+  "graphSpec": {
+    "type": "bar",
+    "x": { "label": "Group", "categories": ["Adults before the drought", "Survivors", "Offspring of survivors"] },
+    "y": { "label": "Mean beak depth", "unit": "mm", "min": 9.0, "max": 10.2, "step": 0.2 },
+    "errorBars": "95% confidence interval (mean ± 2 SE)",
+    "series": [{ "name": "Mean beak depth", "points": [["Adults before the drought", 9.30, 0.10], ["Survivors", 9.82, 0.20], ["Offspring of survivors", 9.71, 0.14]] }],
+    "alsoAccepted": "a point for each group with the same error bars"
+  }
+}

@@ -795,7 +795,7 @@ ${tail({ depth, section: 'tools', extra, premium: true })}
   function curriculumJs() {
     const data = {
       units: map.chapters.map(c => ({ id: c.id, n: c.n ?? null, title: c.title, part: c.part, weight: c.weight || null, built: chapterBuilt(c) })),
-      topics: topics.map((t, i) => ({ id: t.id, ced: t.ced || null, title: t.title, unit: t.chapter, kind: t.kind, practices: t.practices || [], n: i + 1, built: C.built.has(t.id), free: isFreeTopic(map, t), qn: C.built.has(t.id) ? C.questions[t.id].items.length : 0 })),
+      topics: topics.map((t, i) => ({ id: t.id, ced: t.ced || null, title: t.title, unit: t.chapter, kind: t.kind, practices: t.practices || [], n: i + 1, built: C.built.has(t.id), free: isFreeTopic(map, t), qn: C.built.has(t.id) ? C.questions[t.id].items.length : 0, ...(bankFile(t) !== t.chapter ? { bank: bankFile(t) } : {}) })),
       practices: map.practices.map(p => ({ id: p.id, name: p.name })),
       parts: map.parts,
       // Built questions per practice: practice mastery is measured against min(20, this).
@@ -816,10 +816,22 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
   }
   /* The bank, one pair of files per published chapter: questions and their
      stimulus panels, then explanations (fetched after an answer). */
+  /* Which bank file a topic's questions go in: its unit, or, for a unit of
+     more than BANK_SPLIT topics (only Unit 7, with 12), <unit>-a and <unit>-b by
+     course order, so no file outgrows its weight budget (check-weight.mjs:
+     split a unit rather than raise the budget). The curriculum carries it as
+     topics[].bank for the runtime. */
+  const BANK_SPLIT = 10;
+  function bankFile(t) {
+    const same = topics.filter(x => x.chapter === t.chapter);
+    if (same.length <= BANK_SPLIT) return t.chapter;
+    return t.chapter + (same.indexOf(t) < Math.ceil(same.length / 2) ? '-a' : '-b');
+  }
   function bank() {
     const out = {};
     for (const t of built) {
-      const b = out[t.chapter] || (out[t.chapter] = { stimuli: {}, items: [], why: {} });
+      const f = bankFile(t);
+      const b = out[f] || (out[f] = { stimuli: {}, items: [], why: {} });
       const qf = C.questions[t.id];
       for (const [sid, s] of Object.entries(qf.stimuli || {})) b.stimuli[sid] = { kind: s.kind, title: s.title, html: stimulusBody(C, s, '') };
       for (const q of qf.items) {

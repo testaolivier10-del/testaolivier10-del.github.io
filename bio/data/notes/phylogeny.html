@@ -1,0 +1,87 @@
+<p>A <b>phylogeny</b> is the evolutionary history of a group: which lines split from which, and in what order. Biologists draw phylogenies as branching diagrams called <b>phylogenetic trees</b>. This page shows how to read a tree without falling into the usual traps, how to build one from a table of characters or from DNA differences, and why every tree is a hypothesis that can change.</p>
+
+<h2>What a tree shows</h2>
+<figure id="fig-anatomy" data-fig="tree-anatomy"><figcaption>Figure 1. The parts of a phylogenetic tree.</figcaption></figure>
+<p>Read a tree from the <b>root</b>, its oldest point, toward the <b>tips</b> (<a class="figref" href="#fig-anatomy">Figure 1</a>):</p>
+<ul>
+<li>Each <b>tip</b> is a <b>taxon</b> (plural <b>taxa</b>): a species or larger group, usually one living today.</li>
+<li>Each <b>branch</b> is a line of descent through time.</li>
+<li>Each <b>node</b>, or branch point, is the most recent common ancestor of everything that branches from it. At a node, one ancestral population split into two lines that then evolved separately. This build-up of differences after a split is <b>divergent evolution</b>.</li>
+<li><b>Sister taxa</b> share a node that no other taxon on the tree shares; each is the other's closest relative on the tree.</li>
+</ul>
+<p>The single rule for reading relationships: <b>two taxa are more closely related the more recent the node where their lines meet.</b> To compare, trace each taxon back toward the root until the lines join.</p>
+
+<h2>Read the nodes, not the tips</h2>
+<figure id="fig-rotation" data-fig="tree-rotation"><figcaption>Figure 2. One tree drawn three ways.</figcaption></figure>
+<p>Branches can be spun around any node like a mobile without changing the tree (<a class="figref" href="#fig-rotation">Figure 2</a>). That leads to three rules:</p>
+<ol>
+<li><b>Tip order means nothing.</b> Two tips drawn side by side may be distant relatives. Only the nodes count.</li>
+<li><b>No living tip is more evolved than another.</b> Every living taxon descends from the root through the same length of time; a frog has been evolving exactly as long as a human.</li>
+<li><b>No living taxon is the ancestor of another.</b> A taxon that branches off early is a relative of the others, not their ancestor. Ancestors sit at the nodes.</li>
+</ol>
+<p>Trees are often written in text with nested parentheses: sister taxa share a pair of parentheses. The tree in Figure 2 is (frog, (mouse, (lizard, (crocodile, sparrow)))). In ((P, (Q, R)), S), R is more closely related to P than to S, even though R and S might be drawn side by side.</p>
+
+<h2>Clades</h2>
+<p>A <b>clade</b> is an ancestor and <b>all</b> of its descendants. To test a group, find the most recent common ancestor of its members, then ask whether every descendant of that node is included. If one is left out, the group is not a clade. Birds descend from the same ancestor as crocodiles, turtles, lizards and snakes, so "reptiles" form a clade only if birds are included.</p>
+<table class="compare">
+<caption>Clade or not?</caption>
+<thead><tr><th>Group</th><th>Its common ancestor</th><th>Every descendant included?</th><th>Clade?</th></tr></thead>
+<tbody>
+<tr><th scope="row">Crocodiles and birds</th><td>Their shared node</td><td>Yes</td><td>Yes</td></tr>
+<tr><th scope="row">Turtles, lizards, snakes, crocodiles</th><td>Ancestor of all reptiles</td><td>No: birds left out</td><td>No</td></tr>
+<tr><th scope="row">Turtles, lizards, snakes, crocodiles, birds</th><td>Ancestor of all reptiles</td><td>Yes</td><td>Yes</td></tr>
+</tbody>
+</table>
+
+<h2>Building a cladogram from characters</h2>
+<figure id="fig-clado" data-fig="cladogram-traits"><figcaption>Figure 3. A cladogram of six animals, with the characters that define each clade.</figcaption></figure>
+<p>A <b>cladogram</b> is a tree built from <b>shared derived characters</b>: traits that arose in a group's most recent common ancestor and were passed to its descendants. Each one marks a clade. A <b>shared ancestral character</b> is one the group inherited from an older ancestor; it is shared by the whole group and its relatives, so it cannot sort the group. Having a backbone is a derived character for vertebrates as a whole, but an ancestral character among mammals.</p>
+<p>To tell old states from new, include an <b>outgroup</b>: a taxon known from other evidence to lie outside the group studied (the ingroup). States found in the outgroup are taken as ancestral.</p>
+<table class="compare">
+<caption>Characters of six animals (+ present, − absent)</caption>
+<thead><tr><th>Animal</th><th>Skull</th><th>Hinged jaws</th><th>Four limbs</th><th>Amniotic egg</th><th>Hair</th></tr></thead>
+<tbody>
+<tr><th scope="row">Lancelet (outgroup)</th><td>−</td><td>−</td><td>−</td><td>−</td><td>−</td></tr>
+<tr><th scope="row">Lamprey</th><td>+</td><td>−</td><td>−</td><td>−</td><td>−</td></tr>
+<tr><th scope="row">Trout</th><td>+</td><td>+</td><td>−</td><td>−</td><td>−</td></tr>
+<tr><th scope="row">Newt</th><td>+</td><td>+</td><td>+</td><td>−</td><td>−</td></tr>
+<tr><th scope="row">Crocodile</th><td>+</td><td>+</td><td>+</td><td>+</td><td>−</td></tr>
+<tr><th scope="row">Rabbit</th><td>+</td><td>+</td><td>+</td><td>+</td><td>+</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example: from table to cladogram.</b></p>
+<p><b>Step 1. Find the outgroup.</b> The lancelet lacks every character; other evidence places it outside the vertebrates, so its states (all −) are ancestral. <b>Step 2. Sort characters by how many taxa share them.</b> Skull (5), jaws (4), limbs (3), amniotic egg (2), hair (1). <b>Step 3. Nest the groups.</b> The skull group contains the jaws group, which contains the limbs group, and so on. <b>Step 4. Draw.</b> Each character becomes a mark on the branch leading to its group (<a class="figref" href="#fig-clado">Figure 3</a>): the lamprey branches off after the skull appears, the trout after jaws, the newt after limbs, and the crocodile and rabbit are sister taxa sharing the amniotic egg. Hair marks the rabbit alone. <b>Step 5. Check.</b> Every character appears exactly once: 5 changes in total.</p>
+</div>
+
+<h2>Choosing among trees: maximum parsimony</h2>
+<p>Several trees can usually be drawn for one data set. <b>Maximum parsimony</b> prefers the tree that needs the fewest evolutionary changes. Suppose a classmate puts the newt and the trout together as sister taxa. Four limbs would then have to arise twice (or arise once and be lost in the trout), so that tree needs 6 changes instead of 5. The simpler explanation wins unless other evidence says otherwise.</p>
+<p>Parsimony also reveals <b>convergent evolution</b>. Mammals, crocodiles and birds have four-chambered hearts; lizards, snakes and turtles do not. Since crocodiles and birds are closer to the other reptiles than to mammals, the fewest-change explanation is that four chambers evolved twice, once in mammals and once in the ancestor of crocodiles and birds.</p>
+
+<h2>Molecular data and the molecular clock</h2>
+<p>DNA and protein sequences supply thousands of characters, one per position, and are less fooled by similar body forms that arose separately. So molecular data often give more reliable trees than anatomy alone. The rule is the same: fewer differences, more recent common ancestor.</p>
+<p>Differences in sequences that selection barely acts on build up at a fairly steady rate. Calibrated with a split dated by fossils, the number of differences becomes a <b>molecular clock</b>.</p>
+<div class="worked">
+<p><b>Worked example: dating a split.</b> In a 1,000-base stretch of non-coding DNA, humans and chimpanzees differ at 12 bases, and both differ from the orangutan at 31. Fossils date the orangutan split to about 15 million years ago.</p>
+<p><b>Step 1. Rate.</b> 31 differences per 15 million years. <b>Step 2. Scale.</b> 12 × (15 ÷ 31) = 5.8 million years ago for the human-chimpanzee split. <b>Step 3. State the assumption.</b> The rate is about the same in every line compared. A gene where most changes are harmful shows fewer differences in every pair and needs its own calibration, but gives the same branching order.</p>
+</div>
+
+<h2>Every tree is a hypothesis</h2>
+<p>A tree is the best current explanation of the evidence, and it changes when evidence changes. Whales were long classified apart from hoofed mammals. In the 1990s DNA studies placed them inside the even-toed hoofed mammals, closest to hippos. Then fossil early whales turned up with ankle bones of the shape found only in that group, and the revised tree was confirmed. Trees can also be redrawn because of better methods or more genes.</p>
+
+<h2>Naming and classifying: taxonomy</h2>
+<p><b>Taxonomy</b> names and classifies organisms. Each species has a two-part (binomial) name, <b>genus</b> then species, in italics: the lion is <i>Panthera leo</i> and the tiger <i>Panthera tigris</i>, so they share a genus. Species are grouped in nested ranks: domain, kingdom, phylum, class, order, family, genus, species. Modern taxonomy tries to make every named group a clade, which is why classifications change as trees are revised.</p>
+<table class="compare">
+<caption>Two kinds of tree</caption>
+<thead><tr><th></th><th>Cladogram</th><th>Phylogenetic tree with scaled branches</th></tr></thead>
+<tbody>
+<tr><th scope="row">Shows</th><td>Branching order only</td><td>Branching order plus amount of change or time</td></tr>
+<tr><th scope="row">Branch lengths</th><td>Mean nothing</td><td>Proportional to change or time (with a scale bar)</td></tr>
+<tr><th scope="row">Usually built from</th><td>Shared derived characters</td><td>DNA or protein sequences</td></tr>
+</tbody>
+</table>
+<p>Practice reading nodes, testing clades and building trees from character tables in the <a href="../tools/tree-reading.html">phylogenetic tree reading simulator</a>.</p>
+
+<aside class="going-further">
+<p><b>Going further: when genes jump between branches.</b> Bacteria and archaea often pass genes sideways, by horizontal gene transfer, to organisms that are not their offspring. For these organisms, trees built from different genes can disagree, and near the base of life the history looks more like a web than a tree. Biologists therefore build such trees from genes that rarely move, such as rRNA genes.</p>
+</aside>

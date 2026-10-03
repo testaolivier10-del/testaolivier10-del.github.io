@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardy-Weinberg calculations — AP® Biology Notes | LevlPrep</title>
+<meta name="description" content="In a meadow of wildflowers, purple (A) is completely dominant to white (a). You can count white plants, because every white plant is aa.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/stats-hardy-weinberg.html">
+<meta property="og:title" content="Hardy-Weinberg calculations — AP® Biology Notes | LevlPrep">
+<meta property="og:description" content="In a meadow of wildflowers, purple (A) is completely dominant to white (a). You can count white plants, because every white plant is aa.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/stats-hardy-weinberg.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/stats-hardy-weinberg.html#reading",
+      "name": "Hardy-Weinberg calculations",
+      "url": "https://levlprep.com/bio/notes/stats-hardy-weinberg.html",
+      "description": "In a meadow of wildflowers, purple (A) is completely dominant to white (a). You can count white plants, because every white plant is aa.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "hardy-weinberg calculations biology practice",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Statistics and math",
+          "item": "https://levlprep.com/bio/units/skills-stats.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Hardy-Weinberg calculations: notes",
+          "item": "https://levlprep.com/bio/notes/stats-hardy-weinberg.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="stats-hardy-weinberg" data-unit="skills-stats">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>8 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bio-toc-n">S</span>Mean, median, mode and range</a></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bio-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bio-toc-n">S</span>Chi-square test</a></li><li class="current" data-toc-t="stats-hardy-weinberg"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>Hardy-Weinberg calculations</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Seeing the hidden alleles</a><a href="#worked">Worked example: from phenotypes to genotypes</a><a href="#carriers">Carrier frequency</a><a href="#counts">When you have genotype counts: count alleles</a><a href="#change">Measuring evolution: change in allele frequency</a></div></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hardy-Weinberg calculations: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-hardy-weinberg.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">Hardy-Weinberg calculations</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">4 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-hardy-weinberg">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-hardy-weinberg.html&amp;title=Hardy-Weinberg%20calculations%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-hardy-weinberg.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<h2 id="why">Seeing the hidden alleles</h2>
+<p>In a meadow of wildflowers, purple (A) is completely <a class="gl" href="../notes/mendelian-genetics.html" data-c="dominant">dominant</a> to white (a). You can count white plants, because every white plant is aa. You cannot see which purple plants are AA and which are Aa. The <a class="gl" href="../notes/hardy-weinberg.html" data-c="hw-equations">Hardy-Weinberg equations</a> on the formula sheet let you work out the hidden numbers, as long as the <a class="gl" href="../notes/natural-selection-intro.html" data-c="population">population</a> is assumed to be in equilibrium:</p>
+<ul>
+<li>p + q = 1 (<a class="gl" href="../notes/population-genetics.html" data-c="allele-frequency">allele frequencies</a>)</li>
+<li>p² + 2pq + q² = 1 (<a class="gl" href="../notes/hardy-weinberg.html" data-c="genotype-frequency">genotype frequencies</a>: AA, Aa, aa)</li>
+</ul>
+
+<h2 id="worked">Worked example: from phenotypes to genotypes</h2>
+<figure  id="fig-hw" class="bio-figure"><div class="bio-figimg" data-fig="hw-square"><img src="../figures/hw-square.svg" alt="A square divided by allele frequencies p = 0.7 and q = 0.3 along each side. The areas show genotype frequencies: AA is p² = 0.49, each Aa rectangle is pq = 0.21 for a total 2pq = 0.42, and aa is q² = 0.09. A note says to start from the aa corner: q² is the only genotype you can read from phenotypes." width="640" height="360" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Genotype frequencies as areas of a square with sides p and q. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="worked">
+<p><b>Data:</b> 400 plants; 364 purple, 36 white. Assume <a class="gl" href="../notes/hardy-weinberg.html" data-c="hwe">Hardy-Weinberg equilibrium</a>.</p>
+<ol>
+<li>White plants are aa, so <b>q² = 36 ÷ 400 = 0.09</b>.</li>
+<li><b>q = √0.09 = 0.30</b>.</li>
+<li><b>p = 1 − 0.30 = 0.70</b>.</li>
+<li><a class="gl" href="../notes/mendelian-genetics.html" data-c="genotype">Genotype</a> frequencies: AA = p² = 0.49; Aa = 2pq = 2(0.70)(0.30) = 0.42; aa = q² = 0.09. (Check: 0.49 + 0.42 + 0.09 = 1.)</li>
+<li>Counts: AA = 0.49 × 400 = 196; <b>Aa = 0.42 × 400 = 168</b>; aa = 36.</li>
+</ol>
+</div>
+<p>The trap: 364 ÷ 400 = 0.91 is the frequency of <i>purple plants</i>, which is p² + 2pq, not p. Always begin with the recessive class, the one <a class="gl" href="../notes/mendelian-genetics.html" data-c="phenotype">phenotype</a> that has a single genotype. And remember why equilibrium must be assumed: only then does the white-flower frequency equal q². If white plants were being eaten more, or plants mated mostly with neighbors of their own color, q² would not equal the white frequency.</p>
+
+<h2 id="carriers">Carrier frequency</h2>
+<p>A recessive disorder affects 1 in 2,500 newborns. q² = 0.0004, so q = 0.02, p = 0.98, and carriers are 2pq = 2(0.98)(0.02) = 0.0392, about 1 person in 26. Carriers outnumber affected people about 98 to 1, and about 98% of the copies of the recessive <a class="gl" href="../notes/meiosis.html" data-c="allele-basic">allele</a> sit in carriers. That explains why selection against a rare recessive condition lowers q only very slowly: selection acts on aa individuals, and almost none of the allele copies are in them.</p>
+
+<h2 id="counts">When you have genotype counts: count alleles</h2>
+<p>If every genotype is known (by <a class="gl" href="../notes/nucleic-acids.html" data-c="dna">DNA</a> testing, or with <a class="gl" href="../notes/non-mendelian-genetics.html" data-c="codominance">codominant</a> alleles), you do not need the square root. Count alleles directly. A small island population of 100 lizards has 50 BB, 30 Bb and 20 bb.</p>
+<ul>
+<li>B alleles = 2 × 50 + 30 = 130 of 200, so <b>p = 0.65</b>; q = 0.35.</li>
+<li>Expected under equilibrium: BB = p² × 100 = 42.25; Bb = 2pq × 100 = 45.5; bb = q² × 100 = 12.25.</li>
+</ul>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Chi-square test against Hardy-Weinberg expectations"><table class="compare">
+<caption>Chi-square test against Hardy-Weinberg expectations</caption>
+<thead><tr><th scope="col">Genotype</th><th scope="col">o</th><th scope="col">e</th><th scope="col">(o − e)² ÷ e</th></tr></thead>
+<tbody>
+<tr><td>BB</td><td>50</td><td>42.25</td><td>1.42</td></tr>
+<tr><td>Bb</td><td>30</td><td>45.5</td><td>5.28</td></tr>
+<tr><td>bb</td><td>20</td><td>12.25</td><td>4.90</td></tr>
+<tr><th scope="row">Total</th><td>100</td><td>100</td><td><a class="gl" href="../notes/stats-chi-square.html" data-c="chi-square">χ²</a> = 11.60</td></tr>
+</tbody>
+</table></div>
+<p>χ² = 11.60 is above the <a class="gl" href="../notes/stats-chi-square.html" data-c="critical-value">critical value</a> whether you use 1 degree of freedom (3.84) or 2 (5.99), so reject equilibrium. The pattern says why: heterozygotes are far rarer than expected and both homozygotes more common, which is what mating between relatives in a small population produces.</p>
+<aside class="going-further"><h3>For your exam: degrees of freedom</h3>
+<p>Three genotype classes give 3 − 1 = 2 <a class="gl" href="../notes/stats-chi-square.html" data-c="degrees-of-freedom">degrees of freedom</a> by the usual rule. Statisticians subtract one more because p was estimated from the same data, giving 1. Course materials differ, so exam questions are usually written so that both give the same decision, as here. If a question tells you which to use, follow it.</p></aside>
+
+<h2 id="change">Measuring evolution: change in allele frequency</h2>
+<p>A beetle population's recessive green phenotype fell from 25% to 16% over several generations. Then q fell from √0.25 = 0.50 to √0.16 = 0.40: a change of −0.10. Allele frequencies changing over generations is <a class="gl" href="../notes/compartment-origins.html" data-c="evolution-basic">evolution</a> at the population level. Hardy-Weinberg tells you what to expect if nothing is acting; departures point to selection, <a class="gl" href="../notes/population-genetics.html" data-c="genetic-drift">drift</a>, <a class="gl" href="../notes/population-genetics.html" data-c="gene-flow">gene flow</a>, <a class="gl" href="../notes/signal-transduction-pathways.html" data-c="mutation-basic">mutation</a> or <a class="gl" href="../notes/population-genetics.html" data-c="nonrandom-mating">nonrandom mating</a>.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="What changes q, and what does not"><table class="compare">
+<caption>What changes q, and what does not</caption>
+<thead><tr><th scope="col">Event</th><th scope="col">Changes q?</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><td>Migrants with a different q join</td><td>Yes</td><td><a class="gl" href="../notes/nucleic-acids.html" data-c="gene-basic">Gene</a> flow adds alleles at a different frequency</td></tr>
+<tr><td>aa individuals survive less often</td><td>Yes</td><td>Selection removes a alleles</td></tr>
+<tr><td>Random 95% of a small population dies</td><td>Yes, unpredictably</td><td>Genetic drift in the survivors</td></tr>
+<tr><td>Population grows with random mating, no selection</td><td>No</td><td>Equilibrium conditions hold</td></tr>
+</tbody>
+</table></div>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-hardy-weinberg">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="hardy-weinberg.html"><span>&larr; Previous</span><b>Hardy-Weinberg Equilibrium</b></a><a class="tb-chapter-link next" href="evolution-evidence.html"><span>Next &rarr;</span><b>Evidence of Evolution</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:stats-hardy-weinberg">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>

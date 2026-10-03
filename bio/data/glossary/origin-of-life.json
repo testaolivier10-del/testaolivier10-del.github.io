@@ -1,0 +1,10 @@
+{
+  "early-earth": { "def": "Earth in its first billion years. It formed about 4.6 billion years ago; it probably had oceans by about 4.4 billion years ago, frequent volcanoes and impacts, and an early atmosphere with almost no free oxygen, so ultraviolet light reached the surface." },
+  "earliest-life": { "def": "The oldest evidence of life. Widely accepted fossils, stromatolites (layered mounds built by microbial mats) and microfossils, date to about 3.5 billion years ago; older chemical traces are debated." },
+  "abiotic-synthesis": { "def": "The formation of organic molecules, such as amino acids and nucleotides, from simple inorganic molecules without living things, using energy such as lightning, ultraviolet light or heat (prebiotic chemistry)." },
+  "miller-urey": { "def": "The 1953 experiment by Stanley Miller and Harold Urey that passed electric sparks through water vapor, methane, ammonia and hydrogen in a closed apparatus and produced amino acids, showing that organic molecules can form without life." },
+  "hydrothermal": { "def": "A hydrothermal vent is an opening in the sea floor where hot, mineral-rich water pours out. Vents offer chemical energy and catalytic mineral surfaces, so they are one proposed setting for the origin of life." },
+  "polymer-formation": { "def": "Abiotic polymerization: the joining of monomers into polymers without enzymes, favored on mineral surfaces such as clay, which concentrate monomers, and in pools that dry out, which remove water from dehydration reactions." },
+  "protocell": { "def": "A membrane-bounded droplet or vesicle, for example of fatty acids, that encloses molecules such as RNA and can grow and divide: a model of a stage between nonliving chemistry and the first cells." },
+  "rna-world": { "def": "The hypothesis that early life used RNA both to store genetic information and to catalyze reactions (as ribozymes), before DNA took over information storage and proteins took over most catalysis." }
+}

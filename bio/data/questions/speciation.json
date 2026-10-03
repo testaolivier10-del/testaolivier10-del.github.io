@@ -1,0 +1,789 @@
+{
+  "stimuli": {
+    "speciation-s1": {
+      "kind": "table",
+      "title": "Crosses among three populations of a stream fish",
+      "text": "<p>Three populations of a small fish were sampled. Populations L and M share the same streams in one valley; population K lives in a separate river system 300 km away. In the lab, researchers placed 100 pairs (one female, one male) for each cross in tanks and recorded whether they spawned, how many eggs were fertilized and hatched, and whether the offspring grown to adulthood were fertile.</p>",
+      "table": {
+        "caption": "Results of lab crosses (100 pairs per cross)",
+        "cols": [
+          "Cross",
+          "Pairs that spawned (%)",
+          "Eggs fertilized (%)",
+          "Fertilized eggs that hatched (%)",
+          "Adult offspring that were fertile (%)"
+        ],
+        "rows": [
+          [
+            "K × K",
+            "92",
+            "95",
+            "90",
+            "98"
+          ],
+          [
+            "L × L",
+            "90",
+            "94",
+            "91",
+            "97"
+          ],
+          [
+            "M × M",
+            "89",
+            "96",
+            "89",
+            "99"
+          ],
+          [
+            "K × L",
+            "88",
+            "93",
+            "88",
+            "96"
+          ],
+          [
+            "K × M",
+            "85",
+            "91",
+            "87",
+            "3"
+          ],
+          [
+            "L × M",
+            "10",
+            "93",
+            "88",
+            "2"
+          ]
+        ]
+      }
+    },
+    "speciation-s2": {
+      "kind": "model",
+      "title": "A tetraploid wildflower",
+      "text": "<p>A wildflower species is diploid, with 2n = 14. In one plant, a failure of meiosis produced gametes with 14 chromosomes, and self-fertilization of that plant produced tetraploid offspring (4n = 28). The tetraploids grow among the diploids in the same meadow, flower at the same time and are visited by the same bees. Researchers then made the crosses below.</p>",
+      "table": {
+        "caption": "Results of crosses between diploid and tetraploid plants",
+        "cols": [
+          "Cross",
+          "Seeds formed per flower",
+          "Offspring",
+          "Offspring that produced viable seed (%)"
+        ],
+        "rows": [
+          [
+            "Diploid × diploid",
+            "22",
+            "Diploid",
+            "96"
+          ],
+          [
+            "Tetraploid × tetraploid",
+            "18",
+            "Tetraploid",
+            "91"
+          ],
+          [
+            "Diploid × tetraploid",
+            "15",
+            "Triploid",
+            "2"
+          ]
+        ]
+      }
+    },
+    "speciation-s3": {
+      "kind": "graph",
+      "title": "Shell ribs in two fossil snail lineages",
+      "text": "<p>Paleontologists measured the mean number of ribs on fossil shells from closely spaced rock layers covering 10 million years, for two separate lineages of marine snails, X and Y. Each point is the mean of 40 to 60 shells.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time from the oldest layer",
+          "unit": "million years",
+          "min": 0,
+          "max": 10,
+          "step": 1
+        },
+        "y": {
+          "label": "Mean number of ribs per shell",
+          "unit": "ribs",
+          "min": 0,
+          "max": 24,
+          "step": 4
+        },
+        "series": [
+          {
+            "name": "Lineage X",
+            "points": [
+              [
+                0,
+                10
+              ],
+              [
+                1,
+                11
+              ],
+              [
+                2,
+                12
+              ],
+              [
+                3,
+                13.1
+              ],
+              [
+                4,
+                13.9
+              ],
+              [
+                5,
+                15
+              ],
+              [
+                6,
+                16.1
+              ],
+              [
+                7,
+                17
+              ],
+              [
+                8,
+                18
+              ],
+              [
+                9,
+                19
+              ],
+              [
+                10,
+                20
+              ]
+            ]
+          },
+          {
+            "name": "Lineage Y",
+            "points": [
+              [
+                0,
+                12
+              ],
+              [
+                1,
+                12.2
+              ],
+              [
+                2,
+                11.9
+              ],
+              [
+                3,
+                12.1
+              ],
+              [
+                4,
+                12
+              ],
+              [
+                4.2,
+                17.8
+              ],
+              [
+                5,
+                18.1
+              ],
+              [
+                6,
+                17.9
+              ],
+              [
+                7,
+                18.2
+              ],
+              [
+                8,
+                18
+              ],
+              [
+                9,
+                17.9
+              ],
+              [
+                10,
+                18.1
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-speciation-1",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "speciation-s1",
+      "q": "Which kind of reproductive barrier do the data show between populations K and M?",
+      "options": [
+        "Hybrid sterility: offspring form and develop, but few adults are fertile",
+        "Behavioral isolation: few K and M pairs spawn when placed together",
+        "Gametic isolation: sperm from one population rarely fertilize eggs of the other",
+        "Hybrid inviability: most fertilized K × M eggs fail to hatch"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "K × M pairs spawn (85%), fertilize (91%) and hatch (87%) about as well as the controls, but only 3% of the adult offspring are fertile: a postzygotic barrier, hybrid sterility.",
+        "options": [
+          "Correct: the barrier appears only at the fertility stage.",
+          "85% of K × M pairs spawned, close to the 89-92% of the controls.",
+          "91% of K × M eggs were fertilized, about the same as in the controls.",
+          "87% of fertilized K × M eggs hatched, close to the controls."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-2",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "speciation-s1",
+      "q": "Using the biological species concept, how many species do populations K, L and M represent?",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Unknown, since crosses do not test species"
+      ],
+      "fixed": true,
+      "correct": 1,
+      "why": {
+        "correct": "K and L interbreed and produce fertile offspring (96%), so by the biological species concept they are one species. M produces almost no fertile offspring with either, so it is a second species.",
+        "options": [
+          "M is reproductively isolated from K and L: its hybrids are nearly all sterile.",
+          "Correct: K with L is one species; M is another.",
+          "K and L produce fertile offspring, so they are not separate species, even though they live 300 km apart.",
+          "The biological species concept is defined by interbreeding and fertile offspring, which is exactly what crosses test."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-3",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "speciation-s1",
+      "q": "L and M rarely spawn together, but K and M spawn readily. Which explanation best accounts for this difference?",
+      "options": [
+        "Where L and M meet, selection against sterile hybrids favored fish that avoid the other population",
+        "Population K lives far from M, so its fish do not yet recognize M fish as mates and avoid them",
+        "L fish are less fertile than K fish, so they spawn less with any partner, whether L or M",
+        "K and M belong to one species, while L and M belong to two different species"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the shared streams, a L fish that spawned with M left mostly sterile offspring, so fish that avoided M left more fertile offspring. Over generations this strengthened a prezygotic barrier there (reinforcement). K never met M, so no such selection acted on K.",
+        "options": [
+          "Correct: selection against hybrids where the two meet strengthens prezygotic isolation.",
+          "K fish do spawn with M readily, so not recognizing M is the opposite of what the data show.",
+          "L × L pairs spawn at 90%, so L fish are not reluctant to spawn in general.",
+          "K × M hybrids are 97% sterile, so K and M are different species too."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-4",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "speciation-s1",
+      "q": "What is the main purpose of the K × K, L × L and M × M crosses?",
+      "options": [
+        "To show what the tanks give with no barrier, so low values in mixed crosses reflect barriers",
+        "To measure how much genetic variation each population contains, so that the three can be ranked",
+        "To produce hybrid offspring whose fertility can then be compared with that of the K × M hybrids",
+        "To check whether the three populations live in the same streams, by comparing how often each spawns"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Crosses within each population are controls: they show what the lab conditions give when no barrier exists. Without them, low spawning or fertility in mixed crosses could be blamed on the tanks.",
+        "options": [
+          "Correct: the within-population crosses set the baseline.",
+          "Spawning and fertility rates do not measure genetic variation.",
+          "Within-population crosses produce no hybrids.",
+          "Where populations live is known from sampling, not from spawning rates in tanks."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-5",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "speciation-s1",
+      "q": "Of 1,000 eggs laid in K × M crosses, how many are expected to become fertile adults, if every fish that hatches survives to adulthood? Give a whole number.",
+      "numeric": {
+        "answer": 24,
+        "tol": 1,
+        "unit": "fertile adults",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "1,000 × 0.91 fertilized = 910; × 0.87 hatched = 791.7; × 0.03 fertile = 23.75, about 24 fertile adults. Barriers multiply: even modest barriers at several stages add up to strong isolation."
+      }
+    },
+    {
+      "id": "bio-speciation-6",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "speciation-s2",
+      "q": "How many chromosomes are in each cell of a triploid offspring from a diploid × tetraploid cross? Give a whole number.",
+      "numeric": {
+        "answer": 21,
+        "tol": 0,
+        "unit": "chromosomes",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "A diploid parent's gamete carries n = 7; a tetraploid parent's gamete carries 28 ÷ 2 = 14. The zygote gets 7 + 14 = 21 chromosomes, three copies of each of the 7 kinds."
+      }
+    },
+    {
+      "id": "bio-speciation-7",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "speciation-s2",
+      "q": "Why do the triploid offspring produce almost no viable seed?",
+      "options": [
+        "Three copies of each chromosome cannot separate evenly in meiosis, so gametes get unbalanced sets",
+        "Triploid cells fail to complete mitosis, so the plants stop growing before they are mature enough to flower",
+        "Triploid flowers open at a different time of year from both parents, so bees rarely bring them pollen",
+        "The extra chromosome set carries recessive alleles for sterility, which are expressed in triploids"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In meiosis I homologs pair and split two ways. With three of each, one cell gets two and the other one, at random for each of the 7 kinds, so nearly every gamete has a mixed, unbalanced set and fails.",
+        "options": [
+          "Correct: uneven pairing in meiosis gives unbalanced gametes.",
+          "Mitosis copies each chromosome and splits the copies, which works with any number of sets; triploids grow normally.",
+          "The stem gives no evidence of a timing difference; the failure is in making gametes.",
+          "Sterility comes from chromosome number, not from particular alleles."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-8",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "speciation-s2",
+      "q": "Which claim is best supported by the model?",
+      "options": [
+        "The tetraploids are a new species that arose in a single generation without geographic separation",
+        "The tetraploids are the same species as the diploids, since they share a meadow and pollinators",
+        "The tetraploids became a new species through many generations of natural selection in a separate area",
+        "The tetraploids are a new species because they look different, whether or not they interbreed"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Tetraploids breed among themselves (91% fertile offspring) but their hybrids with diploids are sterile (2%), so they are reproductively isolated: a new species by the biological species concept, formed in one step in the same place, which is sympatric speciation.",
+        "options": [
+          "Correct: instant reproductive isolation in the same meadow.",
+          "Sharing a place does not make them one species; their hybrids are nearly all sterile.",
+          "The isolation arose in one generation, from one meiosis failure, in the same meadow.",
+          "The species status here rests on reproductive isolation shown by the crosses, not on appearance."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-9",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "speciation-s2",
+      "q": "Which step in the model acts as the reproductive barrier between diploids and tetraploids?",
+      "options": [
+        "The triploid offspring of diploid × tetraploid crosses are sterile",
+        "The tetraploids flower at a different time from the diploids",
+        "Bees visit the tetraploids and the diploids in separate trips",
+        "Diploid × tetraploid crosses fail to form any seeds in the flowers"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Seeds form (15 per flower) and grow into triploids, which make almost no seed: a postzygotic barrier, hybrid sterility.",
+        "options": [
+          "Correct: hybrid sterility of the triploids.",
+          "The stem says the two flower at the same time.",
+          "The stem says they are visited by the same bees; nothing suggests separate trips.",
+          "The table shows 15 seeds per flower in this cross."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-10",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "speciation-s3",
+      "q": "Which lineage shows a pattern of punctuated equilibrium, and what is the evidence?",
+      "options": [
+        "Lineage Y: long stretches of little change, broken by a quick jump of 6 ribs",
+        "Lineage X: its rib number rises by about 1 rib per million years throughout",
+        "Lineage X: it ends with more ribs than lineage Y, so it changed more in total",
+        "Lineage Y: its rib number at 10 million years is higher than at the start"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Y stays near 12 ribs for 4 million years, rises to about 18 within roughly 0.2 million years, then stays near 18: stasis broken by rapid change.",
+        "options": [
+          "Correct: stasis, a quick change, then stasis again.",
+          "Steady change throughout is the gradual pattern, gradualism.",
+          "The total amount of change does not distinguish the two patterns; its timing does.",
+          "Ending higher is true of both lineages and says nothing about the timing of change."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-11",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "speciation-s3",
+      "q": "Calculate the mean rate of change in lineage X over the whole record, in ribs per million years. Give one decimal place.",
+      "numeric": {
+        "answer": 1,
+        "tol": 0.05,
+        "unit": "ribs per million years",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "(20 − 10) ÷ 10 million years = 1.0 rib per million years. Lineage Y changes about 6 ribs in 0.2 million years during its jump, roughly 30 ribs per million years, but almost nothing the rest of the time."
+      }
+    },
+    {
+      "id": "bio-speciation-12",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "speciation-s3",
+      "q": "Which hypothesis best explains the pattern in lineage Y?",
+      "options": [
+        "A new form arose quickly in a small isolated population, then stabilizing selection kept it steady",
+        "Mutations happened around 4 million years, and for the rest of the record the lineage gained no new mutations",
+        "Shell ribs stopped being inherited after the jump, so no further change in rib number was possible",
+        "The same small change was added each generation, but the fossils were averaged over too many shells"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Punctuated equilibrium proposes that change is concentrated around speciation, often in small populations where selection and drift act fast, and that established species then change little because stabilizing selection holds them near an optimum.",
+        "options": [
+          "Correct: rapid change around speciation, stasis after.",
+          "Mutations occur all the time; stasis reflects selection keeping a form steady, not a lack of mutation.",
+          "The trait keeps varying and being inherited; it just stays near one mean.",
+          "Steady change would give the slope seen in lineage X, not flat stretches and a jump."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-13",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "3.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "speciation-s3",
+      "q": "A skeptic says the jump in lineage Y might only look sudden because rock layers from that time are missing. Which additional evidence would best test this?",
+      "options": [
+        "Shells from a site with unbroken, closely spaced layers from 3.5 to 5 million years",
+        "More shells from each of the layers already sampled, to make each mean more precise",
+        "Shells of lineage X from the same layers, to compare its rib numbers with those of Y",
+        "Shells of living snails of lineage Y, to count the ribs on shells alive today"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If dense layers spanning the jump show intermediate rib numbers over a long time, the change was gradual but hidden by a gap; if they show a quick shift, the jump is real.",
+        "options": [
+          "Correct: fill in the possible gap where the jump happens.",
+          "More shells per layer tighten each mean but cannot show what happened between layers.",
+          "Lineage X is a separate lineage; its pattern says nothing about gaps in Y's record.",
+          "Living snails show today's form, not the timing of a change millions of years ago."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-14",
+      "type": "order",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps of allopatric speciation in order.",
+      "options": [
+        "A population is split by a geographic barrier, such as a new river channel",
+        "Gene flow between the two parts stops",
+        "Mutation, drift and different selective pressures change allele frequencies differently on each side",
+        "Differences build up that prevent interbreeding",
+        "When the barrier disappears, the two populations no longer produce fertile offspring together"
+      ],
+      "why": {
+        "correct": "Separation stops gene flow; without it, each side evolves on its own; the differences that accumulate include reproductive barriers, so the populations stay separate species even when they meet again."
+      }
+    },
+    {
+      "id": "bio-speciation-15",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Apple maggot flies mate on the fruit of the tree they grew up on. Flies whose larvae feed on apples emerge earlier in summer than flies that feed on hawthorn, matching the earlier ripening of apples, even where both trees grow side by side. Which barriers are acting between the two groups?",
+      "options": [
+        "Habitat and temporal isolation (prezygotic)",
+        "Hybrid sterility and hybrid breakdown, both postzygotic",
+        "Mechanical and gametic isolation, both prezygotic",
+        "Geographic isolation, since the trees are far apart"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Flies meet mates on their own host fruit (habitat) and are active at different times (temporal), so few matings happen between the groups, even in the same place. This is a likely case of sympatric speciation in progress.",
+        "options": [
+          "Correct: different hosts and different timing reduce mating between the groups.",
+          "Nothing in the stem describes hybrids or their fertility.",
+          "Nothing suggests reproductive parts or gametes are incompatible.",
+          "The stem says the trees grow side by side."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-16",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "In some land snails, the shell coils to the right in one population and to the left in another. Snails with opposite coiling cannot line up their reproductive openings and rarely mate. Which barrier is this?",
+      "options": [
+        "Mechanical isolation",
+        "Behavioral isolation",
+        "Gametic isolation",
+        "Hybrid inviability"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The body parts used in mating do not fit together, so mating fails before any zygote forms: mechanical isolation, a prezygotic barrier.",
+        "options": [
+          "Correct: a physical mismatch of reproductive parts.",
+          "The snails may attempt to mate; the problem is the fit of body parts, not signals.",
+          "No sperm reach the egg, so gamete compatibility is never tested.",
+          "No hybrids form, so their survival does not arise."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-17",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Sea urchins of two species release eggs and sperm into the same water. A sperm protein must bind a matching receptor on the egg's surface before fusion. Researchers mix eggs of species 1 with sperm of species 2. Predict the result and the barrier.",
+      "options": [
+        "Few eggs are fertilized, because the sperm protein binds the foreign egg receptor poorly: gametic isolation",
+        "Many eggs are fertilized but the embryos die early, because the sperm protein is foreign: hybrid inviability",
+        "Many eggs are fertilized and the hybrids grow normally, because the gametes share the same water",
+        "Few eggs are fertilized, because the two species release gametes at different times: temporal isolation"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the lab the gametes are mixed directly, so timing and habitat play no part. If the binding proteins do not match, sperm cannot fuse with eggs: gametic isolation, a prezygotic barrier.",
+        "options": [
+          "Correct: mismatched binding proteins block fertilization.",
+          "If binding fails, no zygote forms, so there are no embryos to die.",
+          "Sharing water does not overcome a mismatch between the sperm protein and the egg receptor.",
+          "Researchers mixed the gametes themselves, so release timing cannot be the barrier here."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-18",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "In some crosses between two rice varieties, the first-generation hybrids are healthy and fertile, but many of their offspring are weak or sterile. Which barrier is this?",
+      "options": [
+        "Hybrid breakdown",
+        "Hybrid sterility",
+        "Hybrid inviability",
+        "Gametic isolation"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The barrier appears only in the second hybrid generation, after the first hybrids reproduce: hybrid breakdown, a postzygotic barrier.",
+        "options": [
+          "Correct: the problem shows up in the hybrids' offspring.",
+          "The first hybrids are fertile, so this is not hybrid sterility.",
+          "The first hybrids survive and are healthy.",
+          "Fertilization works, since hybrids are produced."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-19",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "About 2 million years ago, a few finches reached a group of new volcanic islands with no other small land birds. Today there are over a dozen finch species there, with beaks suited to seeds, insects, cactus or buds. Which explanation best fits this adaptive radiation?",
+      "options": [
+        "Open niches and isolated island populations let groups adapt to different foods and become separate species",
+        "Each finch changed its beak during its life to fit the food it ate, and passed the new beak to its chicks",
+        "The founding finches already belonged to a dozen species, which spread across the islands in different directions",
+        "With no competitors, selection stopped acting on the finches, so their beaks drifted into many forms by chance"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Adaptive radiation follows an opportunity: many open niches and isolated populations. Selection on different islands and foods drove beaks apart, and reproductive barriers arose between the descendants.",
+        "options": [
+          "Correct: open niches plus isolation led to many species.",
+          "Changes acquired during an individual's life are not inherited.",
+          "The founders were few birds of one kind; the many species formed later.",
+          "Selection continued: beaks closely match each species' food, which chance alone does not explain."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-20",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "When are biologists most likely to rely on the morphological species concept instead of the biological species concept?",
+      "options": [
+        "When classifying fossils or asexual organisms, whose interbreeding is not testable",
+        "When two populations live in the same area and are known to interbreed freely",
+        "When two populations produce fertile offspring in the lab but not in the wild",
+        "When DNA sequences of the two populations are available for comparison"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The biological species concept needs interbreeding to be tested, which is impossible for fossils and meaningless for asexual organisms. Body form, the morphological species concept, is used instead.",
+        "options": [
+          "Correct: interbreeding cannot be tested in these cases.",
+          "Here interbreeding is known, so the biological species concept applies directly.",
+          "Behavior in the wild matters for the biological species concept; this is a case it handles, with care.",
+          "DNA data are usually used to support either concept; they do not force the morphological one."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-21",
+      "type": "multi",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two examples of prezygotic barriers.",
+      "options": [
+        "Two frog species call with different songs, and females approach only their own species' call",
+        "Two flowering plants open their flowers in different months",
+        "A horse and a donkey produce a mule that is sterile",
+        "Two salamander species mate, but most hybrid embryos stop developing",
+        "Hybrids of two cotton species are fertile, but their offspring are weak"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Prezygotic barriers act before a zygote forms. Different songs (behavioral) and different flowering months (temporal) keep mating from happening at all.",
+        "options": [
+          "Behavioral isolation: no mating, no zygote.",
+          "Temporal isolation: no pollination between them.",
+          "Hybrid sterility acts after a zygote forms (postzygotic).",
+          "Hybrid inviability is postzygotic.",
+          "Hybrid breakdown is postzygotic."
+        ]
+      }
+    },
+    {
+      "id": "bio-speciation-22",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "speciation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Two populations of a ground squirrel live on opposite rims of a deep canyon that they cannot cross. Over many generations their fur color and skull shape have become different. Which observation would most directly show that they have become separate species?",
+      "options": [
+        "Squirrels from both rims mate but produce no fertile offspring",
+        "The canyon is too wide and deep for squirrels from either rim to cross",
+        "The two populations differ in the frequencies of several alleles",
+        "Each rim's squirrels eat seeds of different plants"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "By the biological species concept, populations are separate species when they cannot interbreed and produce fertile offspring. A test of interbreeding shows whether reproductive isolation has evolved.",
+        "options": [
+          "Correct: it tests reproductive isolation directly.",
+          "Geographic separation stops gene flow but does not by itself make them different species.",
+          "Allele frequencies differ between many populations of one species.",
+          "Different diets do not show whether the squirrels can still interbreed."
+        ]
+      }
+    }
+  ]
+}

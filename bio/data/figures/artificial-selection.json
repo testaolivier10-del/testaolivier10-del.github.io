@@ -1,0 +1,12 @@
+{
+  "mustard-crops": {
+    "file": "figures/mustard-crops.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Wild mustard in the center with arrows to six crops bred from it, each by keeping seed from plants with a bigger version of one part: cabbage (the large end bud), Brussels sprouts (many side buds), kale (big leaves), kohlrabi (a swollen stem), broccoli (flower stalks and buds) and cauliflower (a dense flower head). All seven are one species."
+  },
+  "antibiotic-selection": {
+    "file": "figures/antibiotic-selection.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three panels of rod-shaped bacteria. Before treatment, 23 cells are susceptible and 1 is resistant, through a random mutation or a gene from another cell. When the antibiotic is given, the susceptible cells die except two, and the resistant cell survives; the drug did not create it. After treatment, survivors multiply, so 22 of 24 cells are resistant and the drug no longer works."
+  }
+}

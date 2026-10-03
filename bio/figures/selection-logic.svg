@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 370" width="760" height="370" role="img" aria-labelledby="sl-t sl-d">
+<title id="sl-t">The logic of natural selection in four steps</title>
+<desc id="sl-d">Four panels of beetles on dark soil. Panel 1, heritable variation: 10 beetles, 3 dark and 7 light; body color is inherited. Panel 2, not all survive: more beetles are born than can live, and birds find light beetles on dark soil more easily, so 5 light beetles and 1 dark beetle are eaten (marked with crosses); 2 dark and 2 light survive. Panel 3, survivors reproduce: the 4 survivors each have small offspring of their own color. Panel 4, the next generation: 5 of 10 beetles are dark, 50% instead of 30%. No beetle changed color; the proportions changed. An arrow along the bottom says that repeated over many generations, the population changes: evolution by natural selection.</desc>
+<defs>
+<marker id="sl-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+<g id="sl-bd"><ellipse cx="0" cy="3" rx="9" ry="12" fill="#2A2118" stroke="#B7A57A" stroke-width="1.2"/><circle cx="0" cy="-11" r="5" fill="#2A2118" stroke="#B7A57A" stroke-width="1.2"/></g>
+<g id="sl-bl"><ellipse cx="0" cy="3" rx="9" ry="12" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/><circle cx="0" cy="-11" r="5" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/></g>
+<g id="sl-kd"><ellipse cx="0" cy="2" rx="5" ry="7" fill="#2A2118" stroke="#B7A57A" stroke-width="1"/></g>
+<g id="sl-kl"><ellipse cx="0" cy="2" rx="5" ry="7" fill="#F8E3B8" stroke="#E69F00" stroke-width="1"/></g>
+</defs>
+<rect width="760" height="370" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="10" y="30" width="170" height="270" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="95" y="62" font-size="15" font-weight="700" text-anchor="middle">1. Heritable variation</text>
+<rect x="18" y="88" width="154" height="124" rx="6" fill="#6B5E3C"/>
+<use href="#sl-bl" x="40.6" y="124"/>
+<use href="#sl-bd" x="72.4" y="122"/>
+<use href="#sl-bl" x="104.1" y="126"/>
+<use href="#sl-bl" x="137.6" y="120"/>
+<use href="#sl-bl" x="54.2" y="160"/>
+<use href="#sl-bl" x="90.5" y="156"/>
+<use href="#sl-bd" x="126.7" y="162"/>
+<use href="#sl-bl" x="155.7" y="156"/>
+<use href="#sl-bl" x="74.2" y="194"/>
+<use href="#sl-bd" x="115.8" y="192"/>
+<text x="95" y="236" font-size="13" text-anchor="middle">Body color differs, and</text>
+<text x="95" y="256" font-size="13" text-anchor="middle">offspring inherit it.</text>
+<text x="95" y="276" font-size="13" text-anchor="middle">3 of 10 are dark (30%).</text>
+<line x1="182" y1="150" x2="198" y2="150" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#sl-a)"/>
+<rect x="200" y="30" width="170" height="270" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="285" y="62" font-size="15" font-weight="700" text-anchor="middle">2. Not all survive</text>
+<rect x="208" y="88" width="154" height="124" rx="6" fill="#6B5E3C"/>
+<use href="#sl-bl" x="230.6" y="124"/>
+<path d="M219.6,107 L241.6,139 M241.6,107 L219.6,139" stroke="#D55E00" stroke-width="3.5" stroke-linecap="round"/>
+<use href="#sl-bd" x="262.4" y="122"/>
+<use href="#sl-bl" x="294.1" y="126"/>
+<use href="#sl-bl" x="327.6" y="120"/>
+<path d="M316.6,103 L338.6,135 M338.6,103 L316.6,135" stroke="#D55E00" stroke-width="3.5" stroke-linecap="round"/>
+<use href="#sl-bl" x="244.2" y="160"/>
+<path d="M233.2,143 L255.2,175 M255.2,143 L233.2,175" stroke="#D55E00" stroke-width="3.5" stroke-linecap="round"/>
+<use href="#sl-bl" x="280.5" y="156"/>
+<use href="#sl-bd" x="316.7" y="162"/>
+<use href="#sl-bl" x="345.7" y="156"/>
+<path d="M334.7,139 L356.7,171 M356.7,139 L334.7,171" stroke="#D55E00" stroke-width="3.5" stroke-linecap="round"/>
+<use href="#sl-bl" x="264.2" y="194"/>
+<path d="M253.2,177 L275.2,209 M275.2,177 L253.2,209" stroke="#D55E00" stroke-width="3.5" stroke-linecap="round"/>
+<use href="#sl-bd" x="305.8" y="192"/>
+<path d="M294.8,175 L316.8,207 M316.8,175 L294.8,207" stroke="#D55E00" stroke-width="3.5" stroke-linecap="round"/>
+<text x="285" y="236" font-size="13" text-anchor="middle">More are born than can live.</text>
+<text x="285" y="256" font-size="13" text-anchor="middle">Birds spot light beetles on</text>
+<text x="285" y="276" font-size="13" text-anchor="middle">dark soil: 2 dark, 2 light live.</text>
+<line x1="372" y1="150" x2="388" y2="150" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#sl-a)"/>
+<rect x="390" y="30" width="170" height="270" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="475" y="62" font-size="15" font-weight="700" text-anchor="middle">3. Survivors reproduce</text>
+<rect x="398" y="88" width="154" height="124" rx="6" fill="#6B5E3C"/>
+<use href="#sl-bd" x="420.6" y="124"/>
+<use href="#sl-kd" x="438.6" y="134"/>
+<use href="#sl-kd" x="448.6" y="134"/>
+<use href="#sl-kd" x="458.6" y="134"/>
+<use href="#sl-bd" x="484.1" y="124"/>
+<use href="#sl-kd" x="502.1" y="134"/>
+<use href="#sl-kd" x="512.1" y="134"/>
+<use href="#sl-kd" x="522.1" y="134"/>
+<use href="#sl-bl" x="420.6" y="178"/>
+<use href="#sl-kl" x="438.6" y="188"/>
+<use href="#sl-kl" x="448.6" y="188"/>
+<use href="#sl-kl" x="458.6" y="188"/>
+<use href="#sl-bl" x="484.1" y="178"/>
+<use href="#sl-kl" x="502.1" y="188"/>
+<use href="#sl-kl" x="512.1" y="188"/>
+<use href="#sl-kl" x="522.1" y="188"/>
+<text x="475" y="236" font-size="13" text-anchor="middle">Survivors pass their color</text>
+<text x="475" y="256" font-size="13" text-anchor="middle">alleles to offspring: more</text>
+<text x="475" y="276" font-size="13" text-anchor="middle">dark parents than before.</text>
+<line x1="562" y1="150" x2="578" y2="150" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#sl-a)"/>
+<rect x="580" y="30" width="170" height="270" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="665" y="62" font-size="15" font-weight="700" text-anchor="middle">4. The next generation</text>
+<rect x="588" y="88" width="154" height="124" rx="6" fill="#6B5E3C"/>
+<use href="#sl-bd" x="610.6" y="124"/>
+<use href="#sl-bl" x="642.4" y="122"/>
+<use href="#sl-bd" x="674.1" y="126"/>
+<use href="#sl-bl" x="707.6" y="120"/>
+<use href="#sl-bd" x="624.2" y="160"/>
+<use href="#sl-bl" x="660.5" y="156"/>
+<use href="#sl-bd" x="696.7" y="162"/>
+<use href="#sl-bl" x="725.7" y="156"/>
+<use href="#sl-bl" x="644.2" y="194"/>
+<use href="#sl-bd" x="685.8" y="192"/>
+<text x="665" y="236" font-size="13" text-anchor="middle">5 of 10 are dark (50%).</text>
+<text x="665" y="256" font-size="13" text-anchor="middle">No beetle changed color;</text>
+<text x="665" y="276" font-size="13" text-anchor="middle">the proportions changed.</text>
+<line x1="40" y1="330" x2="720" y2="330" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#sl-a)"/>
+<rect x="110" y="318" width="540" height="24" fill="#ffffff"/>
+<text x="380" y="335" font-size="14" font-weight="700" text-anchor="middle">Repeat for many generations: the population changes (evolution)</text>
+<text x="380" y="360" font-size="12" text-anchor="middle" fill="#5D6B69">Dark beetles: 30% → 50% in one generation. Individuals are selected; the population evolves.</text>
+</g>
+</svg>

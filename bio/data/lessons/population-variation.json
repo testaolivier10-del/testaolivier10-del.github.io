@@ -1,0 +1,86 @@
+{
+  "topic": "population-variation",
+  "hook": "<p>Until the 1950s, the banana in every grocery store was a variety called the Gros Michel. Each plant was grown from a cutting of another, so every one was a clone. When a soil fungus that could infect it spread through Central America, there were no plants with alleles to resist it, and the variety was wiped out of export farming. Its replacement, the Cavendish, is also grown as clones, and a new strain of the same fungus is now spreading through Cavendish farms worldwide.</p>",
+  "prereq": [
+    {
+      "q": "In a population with q = 0.1 for a recessive allele, what fraction of individuals are heterozygous?",
+      "options": ["2pq = 0.18", "q² = 0.01", "p² = 0.81"],
+      "correct": 0,
+      "why": "p = 0.9, so heterozygotes are 2 × 0.9 × 0.1 = 0.18.",
+      "review": "hardy-weinberg"
+    },
+    {
+      "q": "Why does a small, isolated population tend to lose genetic variation?",
+      "options": [
+        "Genetic drift and inbreeding remove alleles by chance and make individuals more alike",
+        "Small populations mutate less, so no new alleles appear",
+        "Natural selection is stronger in small populations"
+      ],
+      "correct": 0,
+      "why": "Chance losses are larger in small populations, and mating among relatives raises homozygosity.",
+      "review": "population-genetics"
+    },
+    {
+      "q": "Sickle cell disease is caused by",
+      "options": [
+        "a missense mutation that puts valine in place of glutamic acid in a hemoglobin chain",
+        "an extra copy of chromosome 11",
+        "a deletion of the whole hemoglobin gene"
+      ],
+      "correct": 0,
+      "why": "One base change alters one amino acid, and the hemoglobin forms fibers when oxygen is low.",
+      "review": "mutations"
+    }
+  ],
+  "figure": {
+    "figure": "uniform-vs-mixed",
+    "caption": "In a field of clones, one fungus strain can infect every plant. In a mixed field, resistant neighbors slow the outbreak and some plants survive."
+  },
+  "chain": [
+    {
+      "cause": "A population carries many different alleles, produced by mutation and reshuffled by sexual reproduction.",
+      "effect": "Individuals differ in how they respond to stresses, including diseases and environmental changes the population has never met."
+    },
+    {
+      "cause": "A new disease or environmental change arrives.",
+      "effect": "Individuals whose alleles happen to give disease resistance or tolerance survive and reproduce, while others die."
+    },
+    {
+      "cause": "The survivors pass those alleles on.",
+      "effect": "The population persists and adapts, because natural selection had variation to act on."
+    },
+    {
+      "cause": "A population with little variation, such as a crop of clones or a small inbred population, has few different alleles.",
+      "effect": "It is unlikely to include any individuals that can survive the new stress, so it is vulnerable to being wiped out."
+    },
+    {
+      "cause": "Where heterozygotes have the highest fitness, as sickle-cell carriers do where malaria is common,",
+      "effect": "selection keeps both alleles in the population, preserving variation even though one homozygote is harmed."
+    }
+  ],
+  "ideas": [
+    "<b>Genetic variation</b> makes it more likely that some individuals survive a new disease or environmental change; selection then acts on them.",
+    "<b>Population vulnerability</b>: small, inbred or clonal populations have few alleles, so one stress can wipe them out. A <b>monoculture</b> of identical plants is the extreme case.",
+    "<b>Disease resistance</b> alleles usually exist before the disease arrives. Variation in molecules, such as enzyme forms suited to different temperatures, helps populations fit their surroundings.",
+    "<b>Heterozygote advantage</b> keeps alleles common: sickle-cell carriers resist malaria, so both alleles persist where malaria is common."
+  ],
+  "misconception": {
+    "wrong": "When a disease arrives, the population develops resistance to it because it needs to.",
+    "right": "Resistance cannot be produced on demand. A population survives only if some members already carry alleles that let them resist; the more genetic variation it has, the more likely that is."
+  },
+  "check": [
+    "bio-population-variation-1",
+    "bio-population-variation-3",
+    "bio-population-variation-5",
+    "bio-population-variation-7",
+    "bio-population-variation-9",
+    "bio-population-variation-11",
+    "bio-population-variation-14"
+  ],
+  "summary": "<p>Genetic variation lets populations survive change. When a new disease or environmental stress arrives, individuals whose alleles happen to give disease resistance or tolerance survive and reproduce, and natural selection acts through them. Populations with little variation, because they are small, inbred or reproduce as clones, are vulnerable: few or none of their members may carry useful alleles. Monocultures of genetically uniform crops show this most clearly, from the Irish potato famine to the loss of the Gros Michel banana; mixed plantings slow outbreaks because resistant neighbors block spread. Small wild populations can be restored by gene flow that brings in new alleles. Variation also exists in molecules, such as enzyme forms suited to different temperatures. Heterozygote advantage keeps variation in a population: where malaria is common, carriers of one sickle-cell allele survive best, so both alleles remain common, a form of balancing selection.</p>",
+  "connections": [
+    { "href": "../notes/hardy-weinberg.html", "label": "Back: calculating genotype frequencies (7.5)" },
+    { "href": "../notes/population-genetics.html", "label": "Back: drift, bottlenecks and gene flow (7.4)" },
+    { "href": "../notes/origin-of-life.html", "label": "Next: how life on Earth may have begun (7.12)" }
+  ]
+}

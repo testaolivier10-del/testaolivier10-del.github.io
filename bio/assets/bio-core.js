@@ -240,7 +240,8 @@
     }
   }catch(e){}
 
-  /* The bank, split per unit (scripts/build-apbio.mjs): assets/bank/<unit>.json
+  /* The bank, split per unit, or per half unit for a long unit (topics[].bank,
+     scripts/build-apbio.mjs): assets/bank/<file>.json
      holds { stimuli, items } without explanations, <unit>-why.json the
      explanations, index.json every item's tags. loadIndex -> stubs;
      loadQuestions -> full items (stimulus attached as q.stim), fetching only
@@ -277,8 +278,8 @@
     (xs || []).forEach(function(x){
       var id = typeof x === 'string' ? x : x.id;
       ids[id] = 1;
-      var u = typeof x === 'object' && x.unit;
-      if(!u){ var m = /^bio-(.+)-\d+$/.exec(id); u = m && T[m[1]] && T[m[1]].unit; }
+      var m = /^bio-(.+)-\d+$/.exec(id), t = m && T[m[1]];
+      var u = t ? (t.bank || t.unit) : (typeof x === 'object' && x.unit);
       if(u) units[u] = 1;
     });
     return Promise.all(Object.keys(units).map(function(u){ return getOnce(base, 'assets/bank/' + u + '.json'); })).then(function(parts){
@@ -289,7 +290,9 @@
   }
   function loadWhy(base, q){
     if(!q || (q.why && q.why.correct) || !q.unit) return Promise.resolve(q);
-    return getOnce(base, 'assets/bank/' + q.unit + '-why.json').then(function(why){
+    var m = /^bio-(.+)-\d+$/.exec(q.id || ''), t = null;
+    if(m) curriculum().topics.forEach(function(x){ if(x.id === m[1]) t = x; });
+    return getOnce(base, 'assets/bank/' + ((t && t.bank) || q.unit) + '-why.json').then(function(why){
       var w = why[q.id];
       if(w){ if(w.why) q.why = w.why; if(w.variables) q.variables = w.variables; }
       return q;

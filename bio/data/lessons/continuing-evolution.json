@@ -1,0 +1,90 @@
+{
+  "topic": "continuing-evolution",
+  "hook": "<p>In 2003, biologists on the Hawaiian island of Kauai noticed that the nights had gone quiet. Field crickets there are hunted by a fly that finds males by their song and lays its eggs on them. A mutation that leaves a male's wings unable to make sound had appeared, and within about 20 generations most males carried it. Evolution is not only something that happened long ago. You can watch it in crickets, mosquitoes, weeds, bacteria and viruses, often within a few years.</p>",
+  "prereq": [
+    {
+      "q": "A population of bacteria is treated with an antibiotic, and the survivors are mostly resistant. Where did the resistance come from?",
+      "options": [
+        "Resistant cells already present by chance survived and multiplied",
+        "The antibiotic caused the cells to mutate in a useful way",
+        "Each cell learned to resist after being exposed"
+      ],
+      "correct": 0,
+      "why": "Mutations arise at random. The antibiotic kills susceptible cells, so resistant ones that already existed are left to reproduce.",
+      "review": "artificial-selection"
+    },
+    {
+      "q": "In natural selection, which individuals contribute more alleles to the next generation?",
+      "options": [
+        "Those whose heritable traits help them survive and reproduce in the current environment",
+        "The largest and strongest individuals in any environment",
+        "Those that try hardest to adapt during their lives"
+      ],
+      "correct": 0,
+      "why": "Fitness depends on the environment: whichever heritable traits raise survival and reproduction there become more common.",
+      "review": "natural-selection"
+    },
+    {
+      "q": "Why do RNA viruses such as influenza change faster than most cellular organisms?",
+      "options": [
+        "They copy their genomes without proofreading and make huge numbers of copies",
+        "They avoid mutation entirely by copying themselves perfectly",
+        "Their genes are stored in chromosomes inside a nucleus"
+      ],
+      "correct": 0,
+      "why": "Error-prone copying across billions of particles produces many variants, so viral populations change quickly.",
+      "review": "mutations"
+    }
+  ],
+  "figure": {
+    "figure": "resistance-selection",
+    "caption": "An insecticide does not create resistance. A rare resistance allele already present survives spraying, and its carriers' offspring make up a larger share of each generation."
+  },
+  "chain": [
+    {
+      "cause": "Random mutations keep producing new alleles in every population, including some that happen to resist a drug, a pesticide or an immune response.",
+      "effect": "Before any chemical is used, a few individuals already carry resistance alleles."
+    },
+    {
+      "cause": "People change the environment by using antibiotics, insecticides, herbicides or vaccines.",
+      "effect": "Susceptible individuals die or reproduce less, while carriers of resistance alleles survive and reproduce."
+    },
+    {
+      "cause": "Carriers leave more offspring generation after generation.",
+      "effect": "The resistance allele's frequency rises, often within a few years, because pests and microbes have short generations and huge numbers."
+    },
+    {
+      "cause": "When two species affect each other's survival, such as a toxic newt and the snake that eats it, a change in one is a new selective pressure on the other.",
+      "effect": "Each evolves in response to the other (coevolution), so the arms race keeps going."
+    },
+    {
+      "cause": "Environments never stop changing, through new drugs, new hosts, climate change and other species evolving.",
+      "effect": "Evolution continues, and scientists can measure it directly as changes in allele frequencies and genomes over time."
+    }
+  ],
+  "ideas": [
+    "<b>Continuing evolution</b>: populations keep evolving because environments keep changing. It can be measured now, in allele frequencies and genomes.",
+    "<b>Antibiotic and pesticide resistance</b>: resistance alleles exist before the chemical is used; the chemical selects for them. Resistance often carries a cost, so it may fall slowly when the chemical stops.",
+    "<b>Viruses</b> evolve fast: error-prone copying, huge numbers and short generations. Immunity and drugs select new variants, so flu vaccines are updated yearly and HIV is treated with several drugs at once.",
+    "<b>Coevolution</b>: two species exert selective pressure on each other, as in an evolutionary arms race. <b>Genomic changes</b>, from point mutations to gene duplications, can be tracked by sequencing."
+  ],
+  "misconception": {
+    "wrong": "Insects exposed to an insecticide become resistant during their lives and pass that on.",
+    "right": "An individual's genes do not change in response to the insecticide. Resistance alleles were already present by chance; the insecticide killed the insects without them, so the population changed over generations."
+  },
+  "check": [
+    "bio-continuing-evolution-1",
+    "bio-continuing-evolution-3",
+    "bio-continuing-evolution-4",
+    "bio-continuing-evolution-12",
+    "bio-continuing-evolution-13",
+    "bio-continuing-evolution-17",
+    "bio-continuing-evolution-21"
+  ],
+  "summary": "<p>Evolution continues today because environments keep changing, and it can be observed directly as changes in allele frequencies and genomes over generations. Antibiotics, insecticides and herbicides select for resistance alleles that arose by random mutation before the chemical was used, so resistance spreads within years; when a resistance allele carries a cost, it can decline slowly once the chemical is withdrawn. Viruses evolve especially fast because they copy their genomes with many errors, in huge numbers and with short generations: immunity favors new flu variants, so vaccines are updated yearly, and HIV is treated with several drugs at once because a particle resistant to all of them is very unlikely to arise. In coevolution, two species are each other's selective pressures, as in the arms race between a toxic newt and a resistant snake. Long-term experiments and genome sequencing show mutations, duplications and other genomic changes accumulating and spreading as populations adapt.</p>",
+  "connections": [
+    { "href": "../notes/artificial-selection.html", "label": "Back: antibiotic resistance as unintended selection (7.3)" },
+    { "href": "../notes/mutations.html", "label": "Back: how mutations and viral variation arise (6.7)" },
+    { "href": "../notes/phylogeny.html", "label": "Next: reading the history of life on trees (7.9)" }
+  ]
+}

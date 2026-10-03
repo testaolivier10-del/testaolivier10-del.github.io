@@ -1,0 +1,11 @@
+{
+  "darwin": { "def": "Charles Darwin (1809-1882) and Alfred Russel Wallace (1823-1913) each worked out the idea of evolution by natural selection; their papers were presented together in 1858, and Darwin's book On the Origin of Species followed in 1859. Darwin called evolution descent with modification: living species descend from earlier ones and have changed over many generations." },
+  "population": { "def": "A group of individuals of the same species that live in the same area at the same time and can breed with one another. Populations, not individuals, are what evolve." },
+  "heritable-variation": { "def": "Differences among individuals in a trait that are at least partly caused by differences in their alleles, so offspring tend to resemble their parents. Natural selection can change a trait only if the variation is heritable." },
+  "overproduction": { "def": "Populations produce more offspring than the environment can support, so many individuals die before they reproduce." },
+  "competition": { "def": "In ecology, the struggle among individuals for the same limited resources, such as food, water, space, light or mates. Because resources are limited, not every individual survives and reproduces." },
+  "differential-reproduction": { "def": "Differences among individuals in how many surviving offspring they leave. Individuals with heritable traits better suited to the current environment tend to leave more, so their alleles become more common." },
+  "natural-selection": { "def": "The process in which individuals with certain heritable traits survive and reproduce more than others in a particular environment, so those traits become more common in the population over generations. It is a main mechanism of evolution." },
+  "fitness": { "def": "An individual's contribution of offspring to the next generation: the number of its offspring that survive to reproduce. Relative fitness compares this number with that of the most successful type in the population (set to 1)." },
+  "selective-pressure": { "def": "Any feature of the environment that makes individuals with some heritable traits survive or reproduce better than others, such as a predator, a drought, a disease or a cold winter." }
+}

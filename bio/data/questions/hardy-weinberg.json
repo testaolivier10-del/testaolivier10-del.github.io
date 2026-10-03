@@ -1,0 +1,764 @@
+{
+  "stimuli": {
+    "hardy-weinberg-s1": {
+      "kind": "table",
+      "title": "Genotype counts in three plant populations",
+      "text": "<p>A wildflower species has a gene with two codominant alleles, A and a, so every genotype can be identified from the plants' flower-pigment pattern. Researchers counted 500 flowering adults in each of three populations. Population X grows in a large meadow and is pollinated by bees. Population Y grows on a cliff where bees are rare, and most of its seeds come from flowers that pollinated themselves. Population Z grows on soil where, in seedling surveys, AA and aa seedlings were seen to die more often than Aa seedlings.</p>",
+      "table": {
+        "caption": "Observed numbers of each genotype among 500 adults per population",
+        "cols": [
+          "Population",
+          "AA",
+          "Aa",
+          "aa"
+        ],
+        "rows": [
+          [
+            "X",
+            "318",
+            "164",
+            "18"
+          ],
+          [
+            "Y",
+            "300",
+            "40",
+            "160"
+          ],
+          [
+            "Z",
+            "150",
+            "300",
+            "50"
+          ]
+        ]
+      }
+    },
+    "hardy-weinberg-s2": {
+      "kind": "graph",
+      "title": "Frequency of a recessive allele in four laboratory populations",
+      "text": "<p>Researchers founded four populations of flour beetles from one stock in which the frequency (q) of a recessive allele, <i>a</i>, was 0.50. Beetles with genotype aa have a reddish body; AA and Aa beetles look the same. Each population was treated differently for 20 generations. Population 1: 2,000 breeding adults, nothing else done. Population 2: 2,000 breeding adults, but every reddish (aa) beetle was removed before it could breed. Population 3: 2,000 breeding adults, but each generation 10% of the breeders were replaced by beetles from a stock in which q = 0.10. Population 4: 10 breeding adults chosen at random each generation.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Generation",
+          "unit": "",
+          "min": 0,
+          "max": 20,
+          "step": 2
+        },
+        "y": {
+          "label": "Frequency of allele a (q)",
+          "unit": "",
+          "min": 0,
+          "max": 1,
+          "step": 0.1
+        },
+        "series": [
+          {
+            "name": "Population 1",
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                2,
+                0.5
+              ],
+              [
+                4,
+                0.49
+              ],
+              [
+                6,
+                0.5
+              ],
+              [
+                8,
+                0.51
+              ],
+              [
+                10,
+                0.5
+              ],
+              [
+                12,
+                0.5
+              ],
+              [
+                14,
+                0.49
+              ],
+              [
+                16,
+                0.5
+              ],
+              [
+                18,
+                0.51
+              ],
+              [
+                20,
+                0.5
+              ]
+            ]
+          },
+          {
+            "name": "Population 2",
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                2,
+                0.25
+              ],
+              [
+                4,
+                0.17
+              ],
+              [
+                6,
+                0.13
+              ],
+              [
+                8,
+                0.1
+              ],
+              [
+                10,
+                0.08
+              ],
+              [
+                12,
+                0.07
+              ],
+              [
+                14,
+                0.06
+              ],
+              [
+                16,
+                0.06
+              ],
+              [
+                18,
+                0.05
+              ],
+              [
+                20,
+                0.05
+              ]
+            ]
+          },
+          {
+            "name": "Population 3",
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                2,
+                0.42
+              ],
+              [
+                4,
+                0.36
+              ],
+              [
+                6,
+                0.31
+              ],
+              [
+                8,
+                0.27
+              ],
+              [
+                10,
+                0.24
+              ],
+              [
+                12,
+                0.21
+              ],
+              [
+                14,
+                0.19
+              ],
+              [
+                16,
+                0.17
+              ],
+              [
+                18,
+                0.16
+              ],
+              [
+                20,
+                0.15
+              ]
+            ]
+          },
+          {
+            "name": "Population 4",
+            "points": [
+              [
+                0,
+                0.5
+              ],
+              [
+                2,
+                0.6
+              ],
+              [
+                4,
+                0.75
+              ],
+              [
+                6,
+                0.75
+              ],
+              [
+                8,
+                0.65
+              ],
+              [
+                10,
+                0.5
+              ],
+              [
+                12,
+                0.8
+              ],
+              [
+                14,
+                0.55
+              ],
+              [
+                16,
+                0.4
+              ],
+              [
+                18,
+                0.45
+              ],
+              [
+                20,
+                0.45
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-hardy-weinberg-1",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "hardy-weinberg-s1",
+      "q": "Calculate p, the frequency of allele A, in population Y. Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.64,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Copies of A = (2 × 300) + 40 = 640, out of 2 × 500 = 1,000 copies. p = 640 ÷ 1,000 = 0.64, so q = 0.36."
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-2",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "hardy-weinberg-s1",
+      "q": "If population Y were in Hardy-Weinberg equilibrium with the allele frequencies it has, how many of its 500 plants would be expected to be Aa? Give a whole number.",
+      "numeric": {
+        "answer": 230,
+        "tol": 1,
+        "unit": "plants",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "p = 0.64, q = 0.36. Expected Aa = 2pq × 500 = 2 × 0.64 × 0.36 × 500 = 230.4, about 230 plants. Only 40 were observed."
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-3",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "hardy-weinberg-s1",
+      "q": "Which population's genotype counts are closest to Hardy-Weinberg expectations?",
+      "options": [
+        "Population X",
+        "Population Y",
+        "Population Z",
+        "The three are equally close, since each has 500 plants"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "X: p = (636 + 164) ÷ 1,000 = 0.80. Expected 320 AA, 160 Aa, 20 aa; observed 318, 164, 18. χ² = 0.01 + 0.10 + 0.20 = 0.31, far below any critical value.",
+        "options": [
+          "Correct: observed counts are within a few plants of the expected 320, 160 and 20.",
+          "Y has 40 heterozygotes where about 230 are expected: a large deficit.",
+          "Z: p = 0.60 and q = 0.40, so 240 Aa are expected, but 300 were seen: an excess.",
+          "Sample size does not decide fit; the counts in Y and Z are far from expected."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-4",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "hardy-weinberg-s1",
+      "q": "Which explanation best accounts for the genotype counts in population Y?",
+      "options": [
+        "Selfing pairs like alleles, so homozygotes rise and heterozygotes fall while p and q stay the same.",
+        "Natural selection against heterozygotes removes Aa plants, which lowers the frequency of allele a in each generation.",
+        "Gene flow from bee-pollinated populations brings in extra AA and aa plants, so the cliff plants become homozygous.",
+        "The small cliff population has nearly lost allele a by genetic drift, so few of its plants can be heterozygous."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Self-fertilization is extreme nonrandom mating. Each selfing halves the share of heterozygotes among the offspring, so homozygotes pile up while p and q stay the same.",
+        "options": [
+          "Correct: the deficit of heterozygotes matches the mating system described.",
+          "The stimulus describes self-pollination, not selection; nothing shows that Aa plants die more often.",
+          "Bees are rare on the cliff, so pollen from bee-pollinated populations is unlikely to arrive; gene flow would not raise homozygosity anyway.",
+          "Allele a is not lost: q = 0.36, which would give about 230 heterozygotes under random mating."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-5",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "hardy-weinberg-s1",
+      "q": "In population Z, p = 0.60 and q = 0.40. Which statement best explains its genotype counts?",
+      "options": [
+        "Aa seedlings survive better than either homozygote, leaving more adult heterozygotes than 2pq predicts.",
+        "Plants in Z mate with relatives, which produces more heterozygotes than random mating would.",
+        "Allele A is dominant, so it pairs with allele a more often than chance and creates extra heterozygotes.",
+        "Population Z is in equilibrium, because its two allele frequencies add up to exactly 1 as they should."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Expected among adults: 180 AA, 240 Aa, 80 aa. Observed: 150, 300, 50. Selection among seedlings, which removes more AA and aa than Aa, leaves a surplus of heterozygotes among the adults counted.",
+        "options": [
+          "Correct: selection between seed and adult distorts the adult genotype counts.",
+          "Mating with relatives produces fewer heterozygotes, not more.",
+          "The alleles are codominant here, and dominance does not change how gametes combine anyway.",
+          "p + q always equals 1; equilibrium is judged by whether genotype counts match p², 2pq, q², and they do not."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-6",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "hardy-weinberg-s2",
+      "q": "Which population's results are consistent with Hardy-Weinberg equilibrium for this gene?",
+      "options": [
+        "Population 1",
+        "Population 2",
+        "Population 3",
+        "Population 4"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Population 1 is large, closed, not selected and mating at random, and q stays at 0.49-0.51 for 20 generations.",
+        "options": [
+          "Correct: q holds steady at about 0.50.",
+          "q falls from 0.50 to 0.05 because aa beetles are removed: selection.",
+          "q falls toward 0.10, the frequency in the stock supplying replacement beetles: gene flow.",
+          "q wanders between 0.40 and 0.80 at random: drift in a population of 10."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-7",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "hardy-weinberg-s2",
+      "q": "In population 2, q fell by 0.25 in the first two generations but by less than 0.05 in the last ten. Which explanation best accounts for the slowdown?",
+      "options": [
+        "As q falls, nearly all a alleles sit in Aa beetles, which look normal and are not removed.",
+        "The beetles adapted to the removal of aa beetles by producing fewer aa offspring each generation.",
+        "The researchers removed fewer reddish beetles in later generations because there were more beetles overall.",
+        "Mutation from A to a speeds up when q is low, adding back the a alleles removed by selection."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Only aa beetles are removed, and they make up q² of the population. At q = 0.5, a quarter of beetles are aa; at q = 0.1, only 1 in 100, while 18 in 100 are hidden Aa carriers. Selection can barely reach the allele.",
+        "options": [
+          "Correct: selection against a recessive phenotype weakens as the allele becomes rare.",
+          "The share of aa offspring falls because q falls, not because beetles adapt to the procedure.",
+          "Every reddish beetle was removed in every generation; there are simply very few of them when q is low.",
+          "Mutation rates are far too low to offset selection like this, and they do not depend on q."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-8",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "hardy-weinberg-s2",
+      "q": "In population 2 at generation 8, q = 0.10, and the newly formed offspring are in Hardy-Weinberg proportions. What percentage of the a alleles in these offspring are carried by heterozygotes? Give a whole number.",
+      "numeric": {
+        "answer": 90,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Aa = 2pq = 2 × 0.9 × 0.1 = 0.18, carrying one a each: 0.18 copies per beetle. aa = q² = 0.01, carrying two each: 0.02. Share in heterozygotes = 0.18 ÷ (0.18 + 0.02) × 100 = 90%."
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-9",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "hardy-weinberg-s2",
+      "q": "If population 3 were kept the same way for another 100 generations, q would end up closest to which value?",
+      "options": [
+        "0.10",
+        "0",
+        "0.25",
+        "0.50"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Each generation, gene flow replaces 10% of the breeders with beetles from a stock at q = 0.10, so the population's q moves a tenth of the way toward 0.10 every generation and settles there.",
+        "options": [
+          "Correct: gene flow pulls q toward the frequency in the source.",
+          "Nothing removes allele a in population 3, and the incoming beetles carry it at 0.10.",
+          "q passes 0.25 near generation 10 and keeps falling.",
+          "q left 0.50 in the first generation of gene flow."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-10",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "hardy-weinberg-s2",
+      "q": "Which Hardy-Weinberg condition is not met in population 4, and which feature of its graph supports this?",
+      "options": [
+        "A very large population; q rises and falls at random instead of trending.",
+        "No natural selection; q falls steadily because reddish beetles die more often.",
+        "No gene flow; q moves toward the frequency in another stock of beetles.",
+        "Random mating; q stays at 0.50 while the share of heterozygous beetles falls."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With only 10 breeders (20 gene copies), chance sampling moves q up and down in steps of 0.05 (one gene copy), often by 0.1 or more between the points plotted: genetic drift.",
+        "options": [
+          "Correct: random swings show drift in a small population.",
+          "q in population 4 does not fall steadily; it rises to 0.80 at one point.",
+          "No beetles were added to population 4, and q does not move toward a fixed value.",
+          "Nonrandom mating changes genotype proportions without moving q, but q in population 4 moves a lot."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-11",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a population assumed to be in Hardy-Weinberg equilibrium, 9% of individuals show a recessive trait. What percentage of the population is expected to be homozygous dominant? Give a whole number.",
+      "numeric": {
+        "answer": 49,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "q² = 0.09, so q = 0.3 and p = 0.7. Homozygous dominant = p² = 0.49, or 49%. (Heterozygotes are 2pq = 42%.)"
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-12",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A population of 800 frogs is in Hardy-Weinberg equilibrium for a gene with p = 0.7. How many frogs are expected to be heterozygous? Give a whole number.",
+      "numeric": {
+        "answer": 336,
+        "tol": 1,
+        "unit": "frogs",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "q = 1 − 0.7 = 0.3. Heterozygotes = 2pq × 800 = 2 × 0.7 × 0.3 × 800 = 0.42 × 800 = 336 frogs."
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-13",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A student predicts that because allele B for brown fur is dominant, its frequency in a large, randomly mating mouse population with no selection will rise each generation until most mice are brown. Which response is correct?",
+      "options": [
+        "Dominance sets which phenotype heterozygotes show; with no force acting, B's frequency stays constant.",
+        "The student is right, because heterozygotes look brown and so pass on the B allele more often than b.",
+        "The student is right, provided the starting frequency of B in the population is greater than 0.5.",
+        "The frequency of B will fall, because recessive alleles are hidden from selection in heterozygotes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Heterozygotes pass B and b to equal shares of their gametes, whatever they look like. Without drift, selection, gene flow, mutation or nonrandom mating, p and q stay the same in every generation.",
+        "options": [
+          "Correct: this was Hardy's point in 1908.",
+          "A heterozygote's appearance does not change which alleles go into its gametes: half carry B, half b.",
+          "The starting frequency does not matter; with no force acting, any frequency stays put.",
+          "The stem says there is no selection, so hiding from selection has no effect here; the frequency stays constant."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-14",
+      "type": "multi",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which of these are conditions for Hardy-Weinberg equilibrium? Select ALL that apply.",
+      "options": [
+        "Mating is random with respect to genotype.",
+        "The population is very large.",
+        "No alleles enter or leave the population by gene flow.",
+        "Each genotype is present in equal numbers.",
+        "The dominant allele has a frequency above 0.5.",
+        "The alleles of the gene are codominant."
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "why": {
+        "correct": "The five conditions are random mating, a very large population, no gene flow, no net mutation and no natural selection. Genotype numbers, which allele is more common and the type of dominance are not conditions.",
+        "options": [
+          "A condition: nonrandom mating changes genotype proportions.",
+          "A condition: a very large population makes drift negligible.",
+          "A condition: gene flow changes allele frequencies.",
+          "Not a condition: at equilibrium genotypes are at p², 2pq and q², which are equal only in special cases.",
+          "Not a condition: equilibrium holds at any allele frequency.",
+          "Not a condition: dominance does not affect allele or genotype frequencies."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-15",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Researchers compare observed genotype counts in a lizard population with Hardy-Weinberg expectations and get χ² = 12.4, well above the critical value at p = 0.05. Which conclusion is justified?",
+      "options": [
+        "The population departs from equilibrium, so a condition fails; these data alone do not show which.",
+        "The population is evolving by natural selection, because a large χ² shows that one genotype is fitter.",
+        "The population is in equilibrium, because a large χ² means the observed counts fit the expected counts well.",
+        "The allele frequencies were probably calculated wrongly, because real populations do not differ this much."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A large χ² means the difference is too big to blame on chance, so the null hypothesis of equilibrium is rejected. Selection, nonrandom mating, gene flow and drift can all cause departures; other evidence is needed to tell them apart.",
+        "options": [
+          "Correct: reject equilibrium; identifying the cause needs more evidence.",
+          "Selection is one possibility, but nonrandom mating or gene flow could produce the same result.",
+          "A large χ² means a poor fit, not a good one.",
+          "Real populations often depart from equilibrium; that is why the test is useful."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-16",
+      "type": "predict",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A large plant population is in Hardy-Weinberg equilibrium with q = 0.2. A change in its pollinators makes the plants start fertilizing themselves, with no selection, drift, gene flow or mutation. Predict the change in each of these over the next few generations.",
+      "variables": [
+        {
+          "name": "Frequency of allele a (q)",
+          "answer": "none",
+          "why": "Self-fertilization pairs alleles differently but each plant still passes on its own alleles in the same proportions, so q stays 0.2."
+        },
+        {
+          "name": "Proportion of heterozygous (Aa) plants",
+          "answer": "down",
+          "why": "A selfed Aa plant gives only half Aa offspring; AA and aa plants give only homozygotes, so heterozygotes fall each generation."
+        },
+        {
+          "name": "Proportion of aa plants",
+          "answer": "up",
+          "why": "Selfed Aa plants produce aa offspring a quarter of the time and aa plants produce only aa, so aa rises above q² = 0.04."
+        }
+      ],
+      "why": {
+        "correct": "Nonrandom mating changes genotype frequencies but not allele frequencies: the population departs from p², 2pq, q² without its gene pool changing."
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-17",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "No real population meets all five Hardy-Weinberg conditions. Why are the equations still useful to biologists?",
+      "options": [
+        "They predict what no evolution looks like, so a departure shows a process is acting and hints at which.",
+        "They predict the exact allele frequencies a population will have after several generations of selection.",
+        "They show that real populations do not evolve, because genotype frequencies in any population add up to 1.",
+        "They give the frequencies populations move toward over time, whatever processes act on them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Hardy-Weinberg equilibrium is a null model. Comparing data with it tests whether a population is evolving or mating nonrandomly, as a control does in an experiment.",
+        "options": [
+          "Correct: a baseline for detecting change.",
+          "The equations describe no change; predicting the effect of selection needs fitness values as well.",
+          "Genotype frequencies add up to 1 in any population, evolving or not.",
+          "Populations under selection, drift or gene flow move away from their starting frequencies, not toward a fixed set of them."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-18",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a malaria region, newborns have sickle-cell genotypes that fit Hardy-Weinberg expectations, but a sample of adults from the same population has more heterozygotes than 2pq predicts. Which conclusion best fits these two observations?",
+      "options": [
+        "Mating is random, but selection between birth and adulthood favors heterozygotes.",
+        "Mating is nonrandom, because adults choose partners with a different genotype from their own.",
+        "Drift has changed the allele frequencies between birth and adulthood, adding heterozygotes.",
+        "Gene flow brings heterozygous adults into the population, but no heterozygous newborns."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Newborns at equilibrium show that gametes combine at random. The surplus of heterozygotes appears later, so it comes from survival: heterozygotes survive malaria better, and homozygotes for the sickle-cell allele often die young.",
+        "options": [
+          "Correct: random mating at birth, selection during life.",
+          "If mating were nonrandom, newborns would already depart from expectations.",
+          "Drift does not act on individuals within one generation; it changes allele frequencies between generations by chance.",
+          "Nothing suggests migrants, and gene flow would not add only heterozygotes."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-19",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Which observation provides the best evidence that a population is NOT evolving at a particular gene?",
+      "options": [
+        "Over five generations, q stays near 0.30 and genotype counts fit p², 2pq and q².",
+        "In one year's sample, genotype counts fit p², 2pq and q² with a small χ² value.",
+        "The dominant phenotype is more common than the recessive one in each of the years sampled.",
+        "The frequencies of the three genotypes add up to 1 in each year sampled."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Evolution is change across generations. Stable allele frequencies over several generations, with genotype counts matching expectations, is the strongest evidence of equilibrium.",
+        "options": [
+          "Correct: stability over generations plus a good fit.",
+          "One sample can fit the equations even while allele frequencies are changing between generations.",
+          "A dominant phenotype is common at many allele frequencies, and says nothing about change.",
+          "Genotype frequencies add up to 1 in every population, so this is no evidence at all."
+        ]
+      }
+    },
+    {
+      "id": "bio-hardy-weinberg-20",
+      "type": "order",
+      "unit": "unit-7",
+      "topic": "hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps for finding the expected number of heterozygotes from genotype counts in order.",
+      "options": [
+        "Count the copies of allele A: 2 × (number of AA) + (number of Aa).",
+        "Divide by 2 × the total number of individuals to get p.",
+        "Find q from q = 1 − p.",
+        "Calculate the expected frequency of heterozygotes, 2pq.",
+        "Multiply 2pq by the number of individuals."
+      ],
+      "why": {
+        "correct": "Allele frequencies come from counting alleles; genotype expectations follow from p and q; multiplying by the sample size gives expected counts to compare with observed."
+      }
+    }
+  ]
+}

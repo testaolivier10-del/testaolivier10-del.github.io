@@ -1,0 +1,659 @@
+{
+  "stimuli": {
+    "natural-selection-s1": {
+      "kind": "graph",
+      "title": "Beak depth of island finches across a drought and a wet year",
+      "text": "<p>On a small island, researchers banded and measured nearly every member of a population of seed-eating finches each year. Earlier work there had shown that beak depth is heritable: chicks resemble their parents in beak depth whatever they are fed. In 1977 almost no rain fell. The small, soft seeds were eaten first, the remaining seeds were mostly large and hard, and about 85% of the finches died; no chicks were raised that year. In 1983 heavy rain produced a flood of small, soft seeds that lasted two years. Each point is the mean beak depth of the birds hatched in that year, measured once they were adults, with error bars of ± 2 SE. (Values are simplified for teaching.)</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Year hatched",
+          "unit": "",
+          "min": 1975,
+          "max": 1986,
+          "step": 1
+        },
+        "y": {
+          "label": "Mean beak depth",
+          "unit": "mm",
+          "min": 9,
+          "max": 10.2,
+          "step": 0.2
+        },
+        "series": [
+          {
+            "name": "Mean beak depth (± 2 SE)",
+            "points": [
+              [
+                1976,
+                9.4,
+                0.12
+              ],
+              [
+                1978,
+                9.92,
+                0.14
+              ],
+              [
+                1979,
+                9.88,
+                0.12
+              ],
+              [
+                1980,
+                9.85,
+                0.12
+              ],
+              [
+                1981,
+                9.83,
+                0.12
+              ],
+              [
+                1982,
+                9.8,
+                0.13
+              ],
+              [
+                1984,
+                9.58,
+                0.13
+              ],
+              [
+                1985,
+                9.52,
+                0.12
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "natural-selection-s2": {
+      "kind": "graph",
+      "title": "Tail length and mating success in a grassland bird",
+      "text": "<p>In a grassland bird, males have tails about half a meter long, several times longer than the females' tails. Researchers caught 36 males that each held a territory, and assigned 9 at random to each of four groups. Shortened: tail cut to about 15 cm. Cut and reglued: tail cut and the same feathers glued back, so length was unchanged. Unaltered: caught, measured and released. Lengthened: feathers taken from the shortened birds glued on, adding about 25 cm. The researchers then counted the new nests that females built in each male's territory over the next four weeks.</p>",
+      "chart": {
+        "type": "bar",
+        "x": {
+          "label": "Treatment group",
+          "categories": [
+            "Shortened",
+            "Cut and reglued",
+            "Unaltered",
+            "Lengthened"
+          ]
+        },
+        "y": {
+          "label": "New nests per male in 4 weeks (mean ± 2 SE)",
+          "unit": "",
+          "min": 0,
+          "max": 3.5,
+          "step": 0.5
+        },
+        "series": [
+          {
+            "name": "New nests per male",
+            "points": [
+              [
+                "Shortened",
+                0.6,
+                0.4
+              ],
+              [
+                "Cut and reglued",
+                1.1,
+                0.5
+              ],
+              [
+                "Unaltered",
+                1.2,
+                0.5
+              ],
+              [
+                "Lengthened",
+                2.3,
+                0.6
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-natural-selection-1",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "5.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-s1",
+      "q": "Which statement best describes the difference between birds hatched in 1976 and in 1978?",
+      "options": [
+        "Mean beak depth rose by about 0.5 mm, and the error bars do not overlap, so the difference is likely real.",
+        "Mean beak depth rose by about 0.5 mm, but the error bars overlap, so the data do not show a real difference.",
+        "Mean beak depth rose by about 5 mm, which is larger than the year-to-year change at any later time.",
+        "Mean beak depth stayed about the same, because the change is smaller than the size of the error bars."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "9.92 − 9.40 = 0.52 mm. The 1976 bar runs 9.28-9.52 mm and the 1978 bar 9.78-10.06 mm; they do not overlap, so the increase is unlikely to be chance alone.",
+        "options": [
+          "Correct: a 0.52 mm rise with non-overlapping ± 2 SE bars.",
+          "The bars end at 9.52 and start at 9.78 mm, so they do not overlap.",
+          "The rise is about 0.5 mm, not 5 mm; the axis is in tenths of a millimeter.",
+          "The bars are about ± 0.1 mm wide, far smaller than the 0.5 mm change."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-2",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "natural-selection-s1",
+      "q": "Calculate the percent change in mean beak depth from birds hatched in 1976 to birds hatched in 1978. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 5.5,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Percent change = (9.92 − 9.40) ÷ 9.40 × 100 = 0.52 ÷ 9.40 × 100 = 5.5%."
+      }
+    },
+    {
+      "id": "bio-natural-selection-3",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "natural-selection-s1",
+      "q": "Which explanation best accounts for the deeper beaks of birds hatched in 1978?",
+      "options": [
+        "In the drought, deep-beaked birds cracked the hard seeds left, survived and bred more, and their chicks inherited deep beaks.",
+        "Chicks hatched after the drought grew deeper beaks because their parents passed on the beak growth they gained by cracking hard seeds.",
+        "The drought caused mutations that made beaks deeper in the birds that needed to crack large, hard seeds to survive.",
+        "Birds hatched in 1978 ate harder seeds as chicks than birds hatched in 1976, and the extra work made their beaks grow deeper."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Beak depth is heritable and affected survival during the drought, because only deep beaks could open the remaining seeds. Survivors were mostly deep-beaked, so their offspring had deeper beaks: directional selection.",
+        "options": [
+          "Correct: differential survival in the drought, then inheritance by the next generation.",
+          "Changes gained during life are not inherited; the parents' alleles, not their experience, set the chicks' beaks.",
+          "Mutations arise at random, not because birds need them; the drought sorted birds that already differed.",
+          "The stimulus says chicks resemble their parents in beak depth whatever they are fed, which rules out diet as the cause."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-4",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "natural-selection-s1",
+      "q": "Mean beak depth fell for birds hatched in 1984 and 1985. What does this, together with the 1977 change, show about natural selection?",
+      "options": [
+        "The favorable beak depth depends on the food supply, so selection reversed when the seeds changed.",
+        "Selection in the drought was too weak to last, so beak depth returned to its starting value after a few years.",
+        "Wet years cause mutations for smaller beaks, which undo the mutations for deeper beaks caused by the drought.",
+        "The population has one fixed best beak depth, and the 1984-1985 values show it drifting back toward that value."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the drought, deep beaks were favored; after the wet year, abundant small, soft seeds favored smaller beaks, which handle them efficiently, and smaller birds need less food. A trait's value depends on the environment.",
+        "options": [
+          "Correct: changing food changed which beak was favorable, and selection followed.",
+          "The 1978-1982 means stayed high for years; they fell only after the food changed in 1983.",
+          "Weather does not cause specific mutations; it changes which existing beak depths survive and breed.",
+          "There is no fixed best value; the favored depth changed with the seeds available."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-5",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "natural-selection-s1",
+      "q": "Why was it important for the conclusion that the researchers had shown beak depth to be heritable?",
+      "options": [
+        "Without it, survivors' deep beaks would not pass to their chicks, so selection could not explain the 1978 rise.",
+        "Heritability shows that the drought itself made the birds' beaks deeper, which is the main claim of the study.",
+        "Heritability means each chick has exactly its parents' beak depth, so no further measurements were needed.",
+        "Heritable traits are unaffected by the environment, which rules out any effect of the wet years after 1983."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Selection changes the next generation only if offspring resemble their parents. Showing that chicks resemble their parents whatever they eat links the drought survivors' beaks to the deeper beaks of the 1978 birds.",
+        "options": [
+          "Correct: heritability is what carries selection on parents into the next generation.",
+          "The drought did not change any beak; it changed which birds survived to breed.",
+          "Heritable does not mean identical; chicks resemble their parents on average, with variation.",
+          "The wet years did change the population's beaks, by selection; heritability makes that possible rather than ruling it out."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-6",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-s2",
+      "q": "What is the purpose of the cut-and-reglued group?",
+      "options": [
+        "To test whether the handling itself affects mating success, with tail length unchanged",
+        "To provide birds with the longest possible tails for comparison with the lengthened group",
+        "To measure how much a male's tail feathers grow back in the four weeks after being cut",
+        "To give females a choice between males with natural tails and males with glued tails"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Shortened and lengthened birds were cut and glued. The cut-and-reglued birds had the same handling with no change in length, so any difference between them and the other treatments can be attributed to tail length.",
+        "options": [
+          "Correct: it controls for the procedure itself.",
+          "Their tails were the normal length; the lengthened group had the longest tails.",
+          "Regrowth was not measured; the dependent variable is the number of new nests.",
+          "Every group lived on its own territory; the reglued group was not set up as a choice test."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-7",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "natural-selection-s2",
+      "q": "Which conclusion is best supported by the error bars?",
+      "options": [
+        "Lengthened males attracted more nests than the cut-and-reglued males, but the shortened males did not clearly differ from them.",
+        "Shortened males attracted fewer nests than the cut-and-reglued males, but the lengthened males did not clearly differ from them.",
+        "Each of the four groups differed clearly from each of the others in the number of nests.",
+        "No group clearly differed from any other, because each bar carries an error bar."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Lengthened: 1.7-2.9 nests; cut and reglued: 0.6-1.6. These do not overlap. Shortened: 0.2-1.0, which overlaps the reglued range, so a difference in that comparison is not shown.",
+        "options": [
+          "Correct: only the lengthened group's interval is clear of the control's.",
+          "This reverses the two comparisons: the shortened interval overlaps the control, the lengthened one does not.",
+          "The cut-and-reglued and unaltered groups (0.6-1.6 and 0.7-1.7) overlap almost completely.",
+          "Error bars do not hide differences; the lengthened group's interval sits clear of the control's."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-8",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "natural-selection-s2",
+      "q": "A tail half a meter long makes flying harder and may make males easier for predators to catch. Which explanation best accounts for long tails in this species?",
+      "options": [
+        "Females prefer long-tailed males, and the extra matings outweigh the survival cost, so long-tail alleles spread.",
+        "Long tails help males escape predators by distracting them, so long-tailed males live longer than other males.",
+        "Females have long tails too, so the trait is favored in both sexes for the same reason.",
+        "Males grow longer tails during the breeding season because they need them to attract a female."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is sexual selection by mate choice. Fitness is offspring, not survival: a male with a long tail may die sooner but fathers more chicks, so long-tail alleles increase.",
+        "options": [
+          "Correct: mating success can outweigh a survival cost.",
+          "The stimulus gives no evidence that tails help escape; the data concern mating success.",
+          "The stimulus says males' tails are several times longer than females': a sexual dimorphism.",
+          "Need does not produce traits, and individual growth in one season does not explain why the trait evolved."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-9",
+      "type": "predict",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-s2",
+      "q": "Assume tail length in males is heritable and females keep their preference. Predict the effect on each of these.",
+      "variables": [
+        {
+          "name": "Mean tail length of males, over many generations",
+          "answer": "up",
+          "why": "Long-tailed males father more chicks, so the alleles for long tails become more common."
+        },
+        {
+          "name": "Difference in tail length between males and females, over many generations",
+          "answer": "up",
+          "why": "The preference acts on males, so male tails lengthen while female tails are not selected the same way, widening the dimorphism."
+        },
+        {
+          "name": "Natural tail length of the sons of a male whose tail was glued longer, compared with the sons of an unaltered male with the same natural tail",
+          "answer": "none",
+          "why": "Gluing raises that male's mating success but does not change his alleles, so his sons inherit the tail length his alleles code for."
+        }
+      ],
+      "why": {
+        "correct": "Female choice is a selective pressure on males. Over generations, male tails lengthen until the survival cost of an even longer tail balances the mating advantage."
+      }
+    },
+    {
+      "id": "bio-natural-selection-10",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "In an African finch, birds with small beaks feed efficiently on soft seeds and birds with large beaks crack hard seeds, but birds with mid-sized beaks handle both kinds poorly. If beak size is heritable, which pattern of selection is acting?",
+      "options": [
+        "Disruptive selection, which favors both extremes and increases variation",
+        "Stabilizing selection, which favors the average and narrows variation",
+        "Directional selection, which favors the larger beaks and shifts the mean",
+        "Sexual selection, which favors the beak sizes preferred by mates"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both extremes leave more offspring than the middle, so the distribution of beak size spreads out or splits into two peaks.",
+        "options": [
+          "Correct: the two extremes are favored over intermediates.",
+          "Stabilizing selection favors intermediates; here intermediates do worst.",
+          "Small beaks are favored too, so selection is not pushing in one direction.",
+          "Nothing in the example concerns mating; seeds are the selective pressure."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-11",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A study of more than 13,000 births in a London hospital between 1935 and 1946 found that babies of middle birth weight had the highest survival, and that survival fell for both lighter and heavier babies. If birth weight is partly heritable, which change in the distribution of birth weights would this selection tend to produce?",
+      "options": [
+        "Little change in the mean, with fewer babies at both extremes",
+        "A shift of the mean toward heavier babies, as heavy babies survive",
+        "Two separate peaks, one of light and one of heavy babies",
+        "A wider spread, with more babies at both extremes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is stabilizing selection: the middle is favored and both tails are selected against, so the curve narrows around about the same mean.",
+        "options": [
+          "Correct: stabilizing selection keeps the mean and trims both tails.",
+          "Heavy babies had lower survival than middle-weight babies, so the mean would not shift upward.",
+          "Two peaks result when both extremes are favored (disruptive), the opposite of this pattern.",
+          "Widening is the effect of disruptive selection; stabilizing selection narrows the spread."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-12",
+      "type": "multi",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which of these are abiotic selective pressures? Select ALL that apply.",
+      "options": [
+        "Water temperature that is too cold for some fish to keep their enzymes working",
+        "Salty soil near a road treated in winter, which damages roots of some plants",
+        "A fungus that infects some frogs more easily than others",
+        "Hawks that catch mice more often when the mice stand out from the ground",
+        "Other plants in a meadow that shade the shorter seedlings"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Abiotic factors are the nonliving parts of the environment: temperature and soil salt. Fungi, hawks and neighboring plants are living, so they are biotic factors.",
+        "options": [
+          "Abiotic: temperature is a nonliving factor.",
+          "Abiotic: salt in the soil is a nonliving factor.",
+          "Biotic: the fungus is a living parasite.",
+          "Biotic: the hawk is a living predator.",
+          "Biotic: the neighboring plants are living competitors, even though the shade they cast is what harms seedlings."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-13",
+      "type": "predict",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "In an industrial region where most peppered moths were black, laws cut coal smoke, and lichen slowly grew back on the trees. Predict the change in each of these over the following decades.",
+      "variables": [
+        {
+          "name": "Percentage of moths in the region that are black",
+          "answer": "down",
+          "why": "On pale, lichen-covered bark, birds find black moths more easily, so black moths leave fewer offspring."
+        },
+        {
+          "name": "How easily birds spot a black moth resting on a tree trunk",
+          "answer": "up",
+          "why": "Black moths contrast more with pale lichen than with soot-darkened bark."
+        },
+        {
+          "name": "Number of copies of the black allele in the cells of one black moth",
+          "answer": "none",
+          "why": "Selection changes which moths survive and breed, not the alleles inside a living moth."
+        },
+        {
+          "name": "Survival of pale moths compared with black moths",
+          "answer": "up",
+          "why": "Pale moths now blend in with lichen, so birds take fewer of them than black moths."
+        }
+      ],
+      "why": {
+        "correct": "Cleaner air changed the bark, which changed which phenotype was favorable. Selection then reversed, and the black form became rare, as it did in Britain after the 1950s."
+      }
+    },
+    {
+      "id": "bio-natural-selection-14",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a sooty woodland, researchers released 400 black and 400 pale marked moths and recaptured 82 black and 42 pale moths a week later. Calculate the survival of pale moths relative to black moths (proportion of pale recaptured ÷ proportion of black recaptured). Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.51,
+        "tol": 0.01,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Pale: 42 ÷ 400 = 0.105. Black: 82 ÷ 400 = 0.205. Relative survival = 0.105 ÷ 0.205 = 0.51. In sooty woods, a pale moth was about half as likely as a black moth to survive the week."
+      }
+    },
+    {
+      "id": "bio-natural-selection-15",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Deer mice living at 4,000 m carry hemoglobin variants, differing by a few amino acids, that bind oxygen more tightly than the hemoglobin of lowland deer mice. The variants are common at high altitude and rare in lowland populations. Which explanation best fits this pattern?",
+      "options": [
+        "In thin air, tighter-binding hemoglobin loads more oxygen, so mice with it stay active and leave more offspring there.",
+        "Low oxygen at altitude caused mutations in the hemoglobin genes of each mouse living there, and the mice passed the changed genes on.",
+        "The mice's hemoglobin changed shape gradually during their lives at altitude, and the changed shape was inherited by their pups.",
+        "Tighter-binding hemoglobin helps mice at any altitude, so lowland populations will soon carry the variants too."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A small difference in a protein (molecular variation) changes how well blood picks up oxygen, which affects survival and reproduction only where oxygen is scarce. So the variant is favorable at altitude, not in the lowlands.",
+        "options": [
+          "Correct: molecular variation affects fitness in one environment and not another.",
+          "Low oxygen does not cause particular mutations; the variants arose at random and were favored where they helped.",
+          "A protein made during an individual's life is not passed on; the alleles in its gametes are.",
+          "The variants are rare in the lowlands, which suggests they bring no advantage there; favorable depends on the environment."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-16",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A scale-eating fish in an African lake has a mouth twisted either to the right or to the left; right-twisted fish attack prey from one side, left-twisted fish from the other, and the trait is inherited. Prey fish become watchful on the side from which they are attacked most often. In a year when 70% of the scale-eaters are right-twisted, what is the most likely result?",
+      "options": [
+        "Left-twisted fish catch more scales and leave more offspring, so their share rises toward half.",
+        "Right-twisted fish keep the advantage of being common, so their share rises toward 100% over generations.",
+        "The two forms keep their current shares, because prey watch both sides equally.",
+        "Right-twisted fish switch the direction of their mouths so that they can attack from the less-watched side."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With most attacks from one side, prey guard that side, so the rarer form has the advantage. Its share rises until it is no longer rare: frequency-dependent selection keeps both forms near equal.",
+        "options": [
+          "Correct: the rare form is favored, so the shares swing back toward balance.",
+          "Being common is a disadvantage here, because prey guard against the common form's attacks.",
+          "Prey become watchful on the side attacked most often, so they do not guard both sides equally.",
+          "Mouth direction is inherited, not switched; selection changes the proportions of the forms."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-17",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "3.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A student hypothesizes that the green color of a caterpillar is camouflage favored by birds that hunt by sight. Which experiment would best test this?",
+      "options": [
+        "Put green and brown clay models on green leaves and on brown twigs, and count bird beak marks on each after two days.",
+        "Count how many green caterpillars live on one tree, and compare it with the number of birds that visit that tree each day.",
+        "Raise green caterpillars on green leaves and on brown leaves in the lab, and record whether their color changes as they grow.",
+        "Measure the amount of green pigment in caterpillars collected from several trees, and compare it with the number of leaves on each tree."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The models differ only in color and are placed on matching and non-matching backgrounds. If birds attack models that contrast with their background more often, color affects the risk of being eaten in the way the hypothesis predicts.",
+        "options": [
+          "Correct: it manipulates color and background, controls everything else, and measures attacks by birds.",
+          "Counting caterpillars and birds on one tree has no comparison between colors and no measure of attacks.",
+          "This tests whether color changes with diet, not whether birds favor green caterpillars.",
+          "Pigment and leaf number say nothing about whether birds find green or brown caterpillars more easily."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-18",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Alleles that keep the lactase gene active in adults are common in human populations with a long history of herding dairy animals and uncommon in populations without one. Which explanation best fits this pattern?",
+      "options": [
+        "Where milk was a major food, adults who digested it got more energy and left more children.",
+        "Drinking milk as adults switched the lactase gene back on in herders, and the switched-on gene passed to their children.",
+        "Herding dairy animals caused mutations in the lactase gene that made adults able to digest milk sugar.",
+        "The alleles are favorable in any human population, but they happened to spread first among herders by chance."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A regulatory change at the molecular level gives an adult a new ability, but it raises fitness only where milk is available to adults. That environment-dependent advantage explains why the alleles are common in herding populations.",
+        "options": [
+          "Correct: the advantage depended on the diet, so the alleles spread where milk was eaten.",
+          "Using a gene does not change the DNA in gametes; drinking milk does not make the change heritable.",
+          "Mutations arise at random; herding made existing mutations favorable rather than causing them.",
+          "If the alleles helped equally everywhere, the pattern would not track dairying; their advantage depends on the diet."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-19",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Male elephant seals weigh up to about four times as much as females, and the largest males win fights for groups of females on breeding beaches. Which statement best explains the difference in size between the sexes?",
+      "options": [
+        "Male competition for mates favors large males, who father most pups, so male size rises without the same pressure on females.",
+        "Females choose smaller partners to avoid being injured, so females stay small while males are selected to grow large.",
+        "Large size helps both sexes survive cold water equally, and males simply grow for more years than females do.",
+        "Males eat more than females during the breeding season, and the extra growth is passed on to their sons."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is sexual selection through competition within one sex. Winning fights brings many matings, so alleles for large size spread through males, producing sexual dimorphism.",
+        "options": [
+          "Correct: male-male competition favors large males.",
+          "If females chose small partners, males would not be selected to be large.",
+          "If size helped both sexes equally, it would not explain why males are so much larger than females.",
+          "Growth gained by eating is not inherited; only alleles are."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-20",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "Which statement about adaptive traits is best supported by the history of peppered moths?",
+      "options": [
+        "A trait that raises fitness in one environment can lower it in another.",
+        "Once a trait is favored, it remains favored in later generations.",
+        "A trait is adaptive when it helps an individual survive, even if it lowers reproduction.",
+        "A dark color is favorable for moths, wherever they live."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Black wings were favored on soot-darkened bark and disfavored on lichen-covered bark. Adaptive is relative to an environment.",
+        "options": [
+          "Correct: favorable depends on the environment.",
+          "Black moths were favored and then disfavored within about a century, when the bark changed.",
+          "Fitness is reproduction; a trait that lowers reproduction lowers fitness even if it helps survival.",
+          "Dark color was a disadvantage on pale, lichen-covered bark."
+        ]
+      }
+    }
+  ]
+}

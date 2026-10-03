@@ -1,0 +1,69 @@
+{
+  "id": "frq-hospital-resistance",
+  "type": "data",
+  "points": 4,
+  "title": "Antibiotic resistance rising in a hospital population",
+  "units": ["unit-7"],
+  "topics": ["continuing-evolution"],
+  "practices": ["4.B", "5.A", "6.C", "6.E"],
+  "stimulus": {
+    "kind": "table",
+    "title": "Use of an antibiotic and resistance in a hospital",
+    "text": "<p>A hospital recorded how much of antibiotic F its doctors prescribed each year, and tested samples of <i>E. coli</i> bacteria taken from patients with infections for resistance to F. In 2018 the hospital started a program that limited the use of F to infections where no other drug would work.</p>",
+    "table": {
+      "caption": "Use of antibiotic F and resistance to F in E. coli samples, 2012-2022",
+      "cols": ["Year", "Use of F (doses per 1,000 patient-days)", "Samples resistant to F (%)", "Samples tested"],
+      "rows": [
+        ["2012", "80", "12", "410"],
+        ["2013", "92", "15", "395"],
+        ["2014", "105", "19", "430"],
+        ["2015", "118", "24", "402"],
+        ["2016", "126", "29", "418"],
+        ["2017", "131", "33", "440"],
+        ["2018", "70", "34", "425"],
+        ["2019", "52", "32", "431"],
+        ["2020", "48", "30", "409"],
+        ["2021", "45", "28", "422"],
+        ["2022", "44", "27", "415"]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "a", "points": 1,
+      "prompt": "<b>Describe</b> the relationship between the use of antibiotic F and the percent of resistant samples from 2012 to 2017.",
+      "rubric": [
+        { "point": "States that as use of F increased, the percent of resistant samples also increased (both rose every year, from 80 to 131 doses and from 12% to 33%): a positive relationship.",
+          "accept": ["both increased together each year", "more use of F went with a higher percent of resistant samples", "positive relationship: use rose from 80 to 131 and resistance from 12% to 33%"] }
+      ],
+      "sample": "From 2012 to 2017, use of F rose every year, from 80 to 131 doses per 1,000 patient-days, and the percent of resistant samples also rose every year, from 12% to 33%. Higher use went with higher resistance: a positive relationship."
+    },
+    {
+      "label": "b", "points": 1,
+      "prompt": "<b>Calculate</b> the mean yearly increase in the percent of resistant samples from 2012 to 2017, in percentage points per year.",
+      "rubric": [
+        { "point": "Calculates (33 − 12) ÷ 5 = 4.2 percentage points per year (the setup and the answer both shown, or the correct value with units).",
+          "accept": ["4.2 percentage points per year", "(33 − 12)/5 = 4.2", "about 4 percentage points per year, with the calculation (33 − 12)/(2017 − 2012)"] }
+      ],
+      "sample": "(33 − 12) ÷ (2017 − 2012) = 21 ÷ 5 = 4.2 percentage points per year."
+    },
+    {
+      "label": "c", "points": 1,
+      "prompt": "<b>Explain</b> how natural selection produced the rise in resistance from 2012 to 2017.",
+      "rubric": [
+        { "point": "Explains that resistant bacteria were already present (from random mutation or gene transfer) before exposure, that F killed or stopped susceptible bacteria while resistant ones survived and reproduced, and that this differential survival, repeated with rising use, raised the share of resistant bacteria in the hospital's population.",
+          "accept": ["F killed susceptible bacteria, so the resistant ones that already existed survived, multiplied and spread, raising their percentage", "resistance alleles arose by chance; antibiotic use selected for them, and more use meant stronger selection", "differential survival of resistant cells under F increased the frequency of resistance over generations"] }
+      ],
+      "sample": "Some E. coli already carried resistance to F, from random mutations or genes picked up from other bacteria, before they met the drug. When patients took F, susceptible bacteria were killed or stopped dividing, while resistant ones survived, multiplied and spread to other patients. Because use of F kept rising, this selection got stronger each year, so resistant bacteria made up a larger share of the population, from 12% to 33%."
+    },
+    {
+      "label": "d", "points": 1,
+      "prompt": "The hospital's managers expected resistance to fall back to the 2012 level within a year of starting the program. Using the data, <b>evaluate</b> this expectation, and <b>explain</b> the observed change after 2018 in terms of natural selection.",
+      "rubric": [
+        { "point": "Uses the data to show the expectation was not met (resistance fell only slowly, from 34% in 2018 to 27% in 2022, still well above 12%) AND explains that lowering use does not remove resistant bacteria; it only weakens selection for them, so their share declines gradually over many generations (for example, because resistant cells grow slightly more slowly without the drug, or because F is still used at 44 doses).",
+          "accept": ["not supported: resistance only fell from 34% to 27% in four years; with less drug, susceptible bacteria are no longer killed off, but resistant bacteria are not killed either, so their share drops slowly", "expectation wrong; resistance fell about 2 points a year because selection for resistance weakened but did not reverse; resistant bacteria lose ground slowly if resistance has a small cost", "the drop is slow because use still continues at about 44 doses and resistant cells persist and must be outcompeted generation by generation"] }
+      ],
+      "sample": "The expectation was not supported. Resistance fell only from 34% in 2018 to 27% in 2022, still more than twice the 2012 level of 12%. Using less F weakens selection for resistance, but it does not kill the resistant bacteria already in the hospital. Their share can fall only as susceptible bacteria out-reproduce them, for example if resistance makes cells grow slightly more slowly when no drug is present. That happens gradually over many generations, and F is still used (about 44 doses per 1,000 patient-days), which keeps some selection for resistance."
+    }
+  ]
+}

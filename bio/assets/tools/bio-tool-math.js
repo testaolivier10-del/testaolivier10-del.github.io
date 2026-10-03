@@ -14,7 +14,8 @@
      rate = Δy/Δt; percent change = (final - initial) / initial × 100
 
    The simulator models (enzyme kinetics, osmosis, signal amplification,
-   cell cycle checkpoints, meiosis, operons) are described, with
+   cell cycle checkpoints, meiosis, operons, Hardy-Weinberg with drift,
+   phylogenetic trees) are described, with
    their assumptions, in the "How this model works" box of each tool's data. */
 (function(root){
   'use strict';
@@ -565,6 +566,189 @@
   function opAt(course, t){ var ps = course.points; for(var i = 0; i < ps.length; i++) if(Math.abs(ps[i].t - t) < 1e-6) return ps[i]; return ps[ps.length - 1]; }
   var operon = { state: opState, course: opCourse, at: opAt };
 
+  /* ---------------------------------- Hardy-Weinberg, drift and selection */
+  /* One gene with two alleles, A (frequency p) and a (q = 1 − p), in a
+     population of N diploid adults. N = 0 means "very large": no drift, so
+     every replicate is the same and nothing is random. A condition c:
+       { p0, N, gens, reps, seed, w: [wAA, wAa, waa], u, v, m, pm, F, event }
+     u: A → a mutations per allele per generation; v: a → A. m: the share of
+     each generation's gene pool that comes from migrants, whose p is pm.
+     F: non-random mating (the inbreeding coefficient; 0 = random mating).
+     event: null or { gen, size, len }: from generation `gen` the population
+     has only `size` adults for `len` generations (a bottleneck; a founder
+     event is the same with len 1, the new colony being the population we
+     follow), then N again.
+     Each generation, in this order (also in the tool's box):
+       1. selection: each genotype's adults leave gametes in proportion to
+          its fitness: gene-pool p = (wAA·AA + ½·wAa·Aa) / (wAA·AA + wAa·Aa + waa·aa);
+       2. mutation: p ← p(1 − u) + (1 − p)v;
+       3. migration: p ← (1 − m)p + m·pm;
+       4. mating: zygote frequencies p²(1 − F) + pF, 2pq(1 − F), q²(1 − F) + qF
+          (F = 0 gives the Hardy-Weinberg p², 2pq, q²);
+       5. drift (Wright-Fisher): the next N adults are drawn one by one at
+          random from those zygote frequencies with the seeded generator; in a
+          very large population the adults are exactly those frequencies.
+     Generation 0 is set, not drawn: round(N·AA) AA and round(N·aa) aa adults
+     from the step-4 frequencies at p0, the rest Aa; identical in every
+     replicate. Replicate r draws from its own stream rng(seed + 7919·r), so
+     adding replicates leaves the earlier ones unchanged. */
+  function pgZygotes(p, F){ var q = 1 - p; F = F || 0; return [p * p * (1 - F) + F * p, 2 * p * q * (1 - F), q * q * (1 - F) + F * q]; }
+  function pgPool(c, g){
+    var w = c.w || [1, 1, 1], tot = g[0] * w[0] + g[1] * w[1] + g[2] * w[2];
+    if(!(tot > 0)) return null;
+    var p = (g[0] * w[0] + 0.5 * g[1] * w[1]) / tot;
+    p = p * (1 - (c.u || 0)) + (1 - p) * (c.v || 0);
+    p = (1 - (c.m || 0)) * p + (c.m || 0) * (c.pm == null ? 0.5 : c.pm);
+    return Math.min(1, Math.max(0, p));
+  }
+  function pgSizeAt(c, t){ var e = c.event; return e && t >= e.gen && t < e.gen + e.len ? e.size : c.N; }
+  function pgPofG(g){ return g[0] + g[1] / 2; }
+  function pgRun(c, r){
+    var R = rng((c.seed >>> 0) + 7919 * r), z = pgZygotes(c.p0, c.F), N0 = c.N, g, n;
+    if(N0 > 0){
+      var AA = Math.round(N0 * z[0]), aa = Math.round(N0 * z[2]), Aa = N0 - AA - aa;
+      if(Aa < 0){ aa += Aa; Aa = 0; }
+      g = [AA / N0, Aa / N0, aa / N0];
+    } else g = z.slice();
+    var rec = { p: [pgPofG(g)], g: [g], n: [N0], fate: null, end: null, extinct: null };
+    for(var t = 1; t <= c.gens; t++){
+      var pool = rec.extinct == null ? pgPool(c, g) : null;
+      if(pool == null){ if(rec.extinct == null) rec.extinct = t; rec.p.push(rec.p[t - 1]); rec.g.push(g); rec.n.push(0); continue; }
+      z = pgZygotes(pool, c.F); n = pgSizeAt(c, t);
+      if(n > 0){
+        var k = [0, 0, 0], a = z[0], b = z[0] + z[1];
+        for(var i = 0; i < n; i++){ var x = R(); if(x < a) k[0]++; else if(x < b) k[1]++; else k[2]++; }
+        g = [k[0] / n, k[1] / n, k[2] / n];
+      } else g = z;
+      var p = pgPofG(g);
+      if(p < 1e-12) p = 0; if(p > 1 - 1e-12) p = 1;
+      rec.p.push(p); rec.g.push(g); rec.n.push(n);
+      if(rec.end == null && (p === 0 || p === 1)) rec.end = t;
+    }
+    var last = rec.p[c.gens];
+    rec.fate = rec.extinct != null ? 'extinct' : last === 1 ? 'fixed' : last === 0 ? 'lost' : 'poly';
+    return rec;
+  }
+  function pgSim(c){
+    var reps = [], n = Math.max(1, c.reps || 1);
+    for(var r = 0; r < n; r++) reps.push(pgRun(c, r));
+    var f = { fixed: 0, lost: 0, poly: 0, extinct: 0 };
+    reps.forEach(function(x){ f[x.fate]++; });
+    return { c: c, reps: reps, fates: f };
+  }
+  /* Genotype counts against Hardy-Weinberg for one generation of a finite
+     population: expected = n·p², n·2pq, n·q² with p from the same counts.
+     df = 2 by the goodness-of-fit rule (categories − 1), 1 if you also count
+     estimating p (needs-author hw-chi-square-df); both decisions are given. */
+  function pgChi(g, n){
+    var obs = [Math.round(g[0] * n), Math.round(g[1] * n), Math.round(g[2] * n)];
+    var N = obs[0] + obs[1] + obs[2], p = (2 * obs[0] + obs[1]) / (2 * N), q = 1 - p;
+    var exp = [N * p * p, N * 2 * p * q, N * q * q];
+    if(!(N > 0) || p === 0 || p === 1) return { obs: obs, exp: exp, p: p, n: N, chi2: null };
+    var x = chiSquare(obs, exp);
+    return { obs: obs, exp: exp, p: p, n: N, terms: x.terms, chi2: x.chi2, crit2: CHI_CRIT['0.05'][2], crit1: CHI_CRIT['0.05'][1],
+      reject2: x.chi2 > CHI_CRIT['0.05'][2], reject1: x.chi2 > CHI_CRIT['0.05'][1], small: exp.some(function(e){ return e < 5; }) };
+  }
+  var popgen = { zygotes: pgZygotes, pool: pgPool, simulate: pgSim, run: pgRun, chi: pgChi };
+
+  /* --------------------------------------------------------- phylogeny */
+  /* Trees are Newick strings of taxon ids, e.g. "(lancelet,(lamprey,(shark,frog)))",
+     with optional branch lengths "(human:0.6,chimp:0.6):0.2". parse() gives
+     nodes { id, name?, len?, kids[], parent, depth, dist, tips[] }; internal
+     nodes are numbered 1, 2, ... in the order first drawn (1 = root), and
+     keep their number when rotated. Rotating a node (reversing its
+     children) changes the drawing, never the tree: key() sorts children, so
+     two drawings show the same relationships exactly when their keys match. */
+  function phParse(src){
+    var s = String(src).replace(/\s+/g, '').replace(/;$/, ''), i = 0;
+    function word(re){ var m = re.exec(s.slice(i)); if(!m) return ''; i += m[0].length; return m[0]; }
+    function node(){
+      var n = { kids: [] };
+      if(s[i] === '('){
+        i++;
+        for(;;){ n.kids.push(node()); if(s[i] === ','){ i++; continue; } break; }
+        if(s[i] !== ')') throw new Error('unbalanced parentheses at ' + i);
+        i++;
+        var lab = word(/^[^(),:;]+/); if(lab) n.name = lab;
+      } else {
+        n.name = word(/^[^(),:;]+/);
+        if(!n.name) throw new Error('missing taxon name at ' + i);
+      }
+      if(s[i] === ':'){ i++; n.len = +word(/^[-0-9.eE]+/); }
+      return n;
+    }
+    var root = node();
+    if(i !== s.length) throw new Error('unexpected text at ' + i);
+    var k = 0;
+    (function walk(n, parent, depth, dist){
+      n.parent = parent; n.depth = depth; n.dist = dist;
+      if(n.kids.length) n.id = ++k;
+      n.kids.forEach(function(x){ walk(x, n, depth + 1, dist + (x.len || 0)); });
+      n.tips = n.kids.length ? [].concat.apply([], n.kids.map(function(x){ return x.tips; })).sort() : [n.name];
+    })(root, null, 0, 0);
+    return root;
+  }
+  function phNodes(root){ var out = []; (function w(n){ out.push(n); n.kids.forEach(w); })(root); return out; }
+  function phInternal(root){ return phNodes(root).filter(function(n){ return n.kids.length; }); }
+  function phLeaves(root){ return phNodes(root).filter(function(n){ return !n.kids.length; }); }
+  function phKey(n){ return n.kids.length ? '(' + n.kids.map(phKey).sort().join(',') + ')' : n.name; }
+  function phSame(a, b){ return phKey(a) === phKey(b); }
+  function phClades(root){ return phInternal(root).map(function(n){ return n.tips.join(','); }).sort(); }
+  function phHas(n, names){ return names.every(function(x){ return n.tips.indexOf(x) >= 0; }); }
+  function phMrca(root, names){
+    var n = root;
+    for(;;){ var down = n.kids.filter(function(k){ return phHas(k, names); })[0]; if(!down) return n; n = down; }
+  }
+  function phFind(root, names){
+    var key = names.slice().sort().join(',');
+    return phNodes(root).filter(function(n){ return n.tips.join(',') === key; })[0] || null;
+  }
+  /* A set of tips is a clade (monophyletic) when it is exactly the tips of
+     its most recent common ancestor. Otherwise the tips under that ancestor
+     that were left out decide the word: if they form one clade, the group is
+     the ancestor and all but one branch of its descendants (paraphyletic);
+     if not, it pulls together tips from separate branches (polyphyletic).
+     (needs-author tree-group-words) */
+  function phClassify(root, names){
+    var m = phMrca(root, names), missing = m.tips.filter(function(x){ return names.indexOf(x) < 0; });
+    if(!missing.length) return { kind: 'clade', mrca: m, missing: [] };
+    return { kind: phFind(root, missing) ? 'paraphyletic' : 'polyphyletic', mrca: m, missing: missing };
+  }
+  function phSisters(n){ return n.parent ? n.parent.kids.filter(function(k){ return k !== n; }) : []; }
+  function phRotate(n){ n.kids.reverse(); return n; }
+  function phDistance(root, a, b){
+    var A = phFind(root, [a]), B = phFind(root, [b]), m = phMrca(root, [a, b]);
+    return A.dist + B.dist - 2 * m.dist;
+  }
+  /* A tree from a character table: chars [{ id, has: [taxa with the derived
+     state] }]. Each shared derived character marks one clade; a character's
+     clade sits inside another's when its taxa are a subset. Two characters
+     whose taxa overlap without nesting conflict (no single tree fits both).
+     Characters held by one taxon or by none mark no clade. Returns
+     { tree (Newick), conflicts: [[id, id]] }. */
+  function phFromCharacters(taxa, chars){
+    var sets = [], conflicts = [];
+    chars.forEach(function(ch){
+      var s = ch.has.slice().sort();
+      if(s.length < 2 || s.length >= taxa.length) return;
+      if(!sets.some(function(x){ return x.join(',') === s.join(','); })) sets.push(s);
+    });
+    chars.forEach(function(a, i){ chars.slice(i + 1).forEach(function(b){
+      var both = a.has.filter(function(x){ return b.has.indexOf(x) >= 0; }).length;
+      if(both && both < a.has.length && both < b.has.length) conflicts.push([a.id, b.id]);
+    }); });
+    var all = taxa.slice().sort();
+    sets.push(all);
+    sets.sort(function(a, b){ return b.length - a.length; });
+    var kids = new Map(sets.map(function(s){ return [s, []]; }));
+    sets.forEach(function(s){ if(s !== all){ var up = sets.filter(function(o){ return o.length > s.length && s.every(function(x){ return o.indexOf(x) >= 0; }); }).sort(function(a, b){ return a.length - b.length; })[0]; kids.get(up).push(s); } });
+    all.forEach(function(t){ var up = sets.filter(function(o){ return o.indexOf(t) >= 0; }).sort(function(a, b){ return a.length - b.length; })[0]; kids.get(up).push(t); });
+    function nw(s){ return typeof s === 'string' ? s : '(' + kids.get(s).map(nw).join(',') + ')'; }
+    return { tree: nw(all), conflicts: conflicts };
+  }
+  var phylo = { parse: phParse, nodes: phNodes, internal: phInternal, leaves: phLeaves, key: phKey, same: phSame, clades: phClades,
+    mrca: phMrca, find: phFind, classify: phClassify, sisters: phSisters, rotate: phRotate, distance: phDistance, fromCharacters: phFromCharacters };
+
   /* ---------------------------------------------------- graph checks */
   /* "Nice" intervals: 1, 2, 2.5 or 5 times a power of ten. */
   function isNice(v){
@@ -626,6 +810,6 @@
     R: R_BAR, K0: K0, round: round, fixed: fixed, sum: sum, mean: mean, median: median, range: range, sorted: sorted,
     sumSq: sumSq, sd: sd, se: se, seFrom: seFrom, ci95: ci95, overlap: overlap, rate: rate, percentChange: percentChange, tol: tol,
     CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
-    simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, operon: operon, graph: graph
+    simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, operon: operon, popgen: popgen, phylo: phylo, graph: graph
   };
 })(typeof window !== 'undefined' ? window : globalThis);

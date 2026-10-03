@@ -1,0 +1,91 @@
+{
+  "topic": "speciation",
+  "hook": "<p>Before European settlers planted apple trees in North America, a small fly laid its eggs only in the fruit of hawthorn trees. In the 1800s some flies began using apples. Apples ripen weeks earlier than hawthorns, and the flies mate on the fruit they grew up in, so apple flies and hawthorn flies now meet less and less, even on trees growing side by side. Their gene pools have begun to diverge in under 200 years. Biologists are watching what may be one species becoming two.</p>",
+  "prereq": [
+    {
+      "q": "Gene flow between two populations tends to",
+      "options": [
+        "make their allele frequencies more alike",
+        "make their allele frequencies more different",
+        "have no effect on their allele frequencies"
+      ],
+      "correct": 0,
+      "why": "Moving alleles back and forth mixes the gene pools, which keeps the populations similar.",
+      "review": "population-genetics"
+    },
+    {
+      "q": "A plant with four complete sets of chromosomes (4n) is described as",
+      "options": [
+        "polyploid",
+        "haploid",
+        "trisomic"
+      ],
+      "correct": 0,
+      "why": "Polyploidy means more than two complete sets of chromosomes; trisomy is one extra chromosome.",
+      "review": "mutations"
+    },
+    {
+      "q": "On a phylogenetic tree, what does a node represent?",
+      "options": [
+        "A common ancestor whose population split into two lines",
+        "A species alive today",
+        "The most evolved species on the tree"
+      ],
+      "correct": 0,
+      "why": "At a node one ancestral population split into lines that then evolved separately; this topic is about how such splits happen.",
+      "review": "phylogeny"
+    }
+  ],
+  "figure": {
+    "figure": "speciation-modes",
+    "caption": "Two routes to new species. Allopatric: a barrier stops gene flow and the separated populations evolve apart. Sympatric: in plants, doubling the chromosomes can isolate a new tetraploid from its parents in a single generation."
+  },
+  "chain": [
+    {
+      "cause": "A geographic barrier, such as a river changing course, divides one population into two.",
+      "effect": "Gene flow between the two parts stops."
+    },
+    {
+      "cause": "Without gene flow, each part has its own new mutations, its own genetic drift and its own selective pressures.",
+      "effect": "Allele frequencies in the two gene pools change in different directions."
+    },
+    {
+      "cause": "Some of the differences that build up affect reproduction: mating songs, breeding times, the fit of reproductive parts, or how well hybrid genes work together.",
+      "effect": "Reproductive barriers arise, prezygotic ones that block mating or fertilization and postzygotic ones that make hybrids die or be sterile."
+    },
+    {
+      "cause": "When the barrier disappears and the populations meet again, they no longer produce fertile offspring together.",
+      "effect": "They are now separate species, reproductively isolated by the biological species concept: allopatric speciation."
+    },
+    {
+      "cause": "Barriers can also arise without any geographic separation, for example when a plant's chromosomes double and its offspring cannot breed with the parents' population.",
+      "effect": "A new species forms in the same place (sympatric speciation), sometimes in one generation."
+    }
+  ],
+  "ideas": [
+    "<b>Biological species concept</b>: a species is a group that can interbreed and produce fertile offspring. <b>Speciation</b> happens when populations become <b>reproductively isolated</b>.",
+    "<b>Prezygotic barriers</b> stop mating or fertilization: habitat, temporal, behavioral, mechanical, gametic. <b>Postzygotic barriers</b> act on hybrids: inviability, sterility, breakdown.",
+    "<b>Allopatric</b> speciation starts with a geographic barrier; <b>sympatric</b> speciation happens in one place, often by <b>polyploidy</b> in plants.",
+    "Speciation can be gradual or come in bursts (<b>punctuated equilibrium</b>). <b>Adaptive radiation</b>: many species from one ancestor fill open niches. These patterns are <b>macroevolution</b>."
+  ],
+  "misconception": {
+    "wrong": "Two populations that look different must be different species, and two that look alike must be one species.",
+    "right": "By the biological species concept, what matters is whether they can interbreed and produce fertile offspring. Very different-looking dogs are one species; some birds and frogs that look identical are separate species with different songs or calls."
+  },
+  "check": [
+    "bio-speciation-1",
+    "bio-speciation-2",
+    "bio-speciation-3",
+    "bio-speciation-8",
+    "bio-speciation-14",
+    "bio-speciation-17",
+    "bio-speciation-21"
+  ],
+  "summary": "<p>By the biological species concept, a species is a group of populations whose members can interbreed and produce fertile offspring; for fossils and asexual organisms, body form (the morphological species concept) is used instead. Speciation happens when populations become reproductively isolated. Prezygotic barriers prevent mating or fertilization: habitat, temporal, behavioral, mechanical and gametic isolation. Postzygotic barriers act after a hybrid zygote forms: hybrid inviability, hybrid sterility and hybrid breakdown. In allopatric speciation a geographic barrier stops gene flow, and mutation, drift and different selective pressures drive the separated gene pools apart until barriers evolve. In sympatric speciation isolation arises in one place, as when polyploidy makes a plant's offspring unable to breed with the parent population. Where related populations meet in a hybrid zone, selection against unfit hybrids can strengthen barriers (reinforcement). Speciation may be gradual or happen in bursts separated by long stasis (punctuated equilibrium), and an adaptive radiation produces many species that fill open niches.</p>",
+  "connections": [
+    { "href": "../notes/population-genetics.html", "label": "Back: gene flow, drift and the founder effect (7.4)" },
+    { "href": "../notes/mutations.html", "label": "Back: polyploidy and chromosome changes (6.7)" },
+    { "href": "../notes/phylogeny.html", "label": "Back: nodes as splits on a tree (7.9)" },
+    { "href": "../notes/population-variation.html", "label": "Next: why genetic variation matters to a population (7.11)" }
+  ]
+}

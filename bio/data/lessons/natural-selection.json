@@ -1,0 +1,80 @@
+{
+  "topic": "natural-selection",
+  "hook": "<p>Before 1850, almost every peppered moth near Manchester, England, was pale and speckled, invisible against the lichen on tree bark. Then coal smoke killed the lichen and blackened the trees. By 1895 about 98% of the moths there were black. After clean-air laws in the 1950s, the bark lightened again, and so did the moths. Nothing about the moths' alleles told them which color would win. The environment changed, and with it, which moths birds could see.</p>",
+  "prereq": [
+    {
+      "q": "Fitness is measured by",
+      "options": ["the number of offspring that survive to reproduce", "how long an individual lives", "how strong or large an individual is"],
+      "correct": 0,
+      "why": "Fitness is reproductive success; survival and strength matter only through their effect on offspring.",
+      "review": "natural-selection-intro"
+    },
+    {
+      "q": "A trait such as human height shows a smooth range of values because it is",
+      "options": ["polygenic: many genes, each with a small effect, plus the environment", "controlled by one gene with two alleles", "inherited only through mitochondria"],
+      "correct": 0,
+      "why": "Many genes adding small effects, plus environmental influence, give a continuous, bell-shaped distribution.",
+      "review": "non-mendelian-genetics"
+    },
+    {
+      "q": "A mutation changes one amino acid in an enzyme's active site. The most likely effect is",
+      "options": ["a change in the enzyme's shape or activity, which can change the phenotype", "no effect, because enzymes are not made from amino acids", "a change in every protein in the cell"],
+      "correct": 0,
+      "why": "A protein's function depends on its shape, which depends on its amino acid sequence.",
+      "review": "proteins"
+    }
+  ],
+  "figure": {
+    "figure": "selection-modes",
+    "caption": "Three patterns of selection on a trait with many values. Directional selection shifts the mean; stabilizing selection narrows the range; disruptive selection favors both ends and can split the population into two groups."
+  },
+  "chain": [
+    {
+      "cause": "Different alleles code for proteins that differ slightly, or are made in different amounts, such as more or less of a pigment-making enzyme.",
+      "effect": "Individuals differ in phenotype: dark or pale wings, deeper or shallower beaks, hemoglobin that binds oxygen more or less tightly."
+    },
+    {
+      "cause": "The environment, through biotic factors (predators, food, mates) and abiotic factors (temperature, water, soot), sets which phenotypes survive and reproduce best.",
+      "effect": "A favorable trait is favorable only in a particular environment: pale moths on lichen, dark moths on soot."
+    },
+    {
+      "cause": "Individuals with the favorable phenotype leave more surviving offspring.",
+      "effect": "The alleles behind that phenotype become more common in the next generation."
+    },
+    {
+      "cause": "Selection may favor one extreme, the middle, or both extremes of a trait.",
+      "effect": "The trait's distribution shifts (directional), narrows (stabilizing) or splits (disruptive)."
+    },
+    {
+      "cause": "The environment changes, for example when clean air lets lichen grow back.",
+      "effect": "A different phenotype becomes favorable and selection reverses: the population tracks its changing environment, generation by generation."
+    }
+  ],
+  "ideas": [
+    "Whether a trait is <b>favorable</b> depends on the environment. An <b>adaptive trait</b> raises fitness in a particular setting; the same trait can be harmful elsewhere.",
+    "<b>Phenotypic variation</b> comes from <b>molecular variation</b>: differences in proteins and how cells work, such as hemoglobin that loads oxygen better in thin mountain air.",
+    "Selective pressures can be <b>biotic</b> (predators, parasites, competitors, mates) or <b>abiotic</b> (temperature, drought, salinity). <b>Camouflage</b> is favored where predators hunt by sight.",
+    "<b>Directional</b> selection shifts the mean; <b>stabilizing</b> selection narrows variation around the middle; <b>disruptive</b> selection favors both extremes.",
+    "<b>Sexual selection</b> favors traits that win mates, even at a cost to survival. In <b>frequency-dependent selection</b>, a phenotype's fitness depends on how common it is."
+  ],
+  "misconception": {
+    "wrong": "Natural selection produces organisms that are as well adapted as possible, and once a trait is favored it stays favored.",
+    "right": "Selection favors whatever works better in the present environment, among the variants that exist. When the environment changes, the favored trait can change too, as peppered moths went dark and then pale again within about 150 years."
+  },
+  "check": [
+    "bio-natural-selection-1",
+    "bio-natural-selection-3",
+    "bio-natural-selection-4",
+    "bio-natural-selection-6",
+    "bio-natural-selection-8",
+    "bio-natural-selection-10",
+    "bio-natural-selection-13",
+    "bio-natural-selection-16"
+  ],
+  "summary": "<p>Environments change, and whether a trait is favorable depends on the environment of the moment: peppered moths went from mostly pale to mostly dark as soot darkened trees, and back as the air cleaned. The phenotypic variation that selection acts on is rooted in molecular and cellular variation, such as proteins that differ by an amino acid or are made in different amounts. Selective pressures can be biotic or abiotic. On traits with many values, selection can be directional (shifting the mean), stabilizing (favoring the middle and reducing variation) or disruptive (favoring both extremes). Sexual selection favors traits that increase mating success, and in frequency-dependent selection a phenotype's success depends on how common it is. Over generations, natural selection changes the makeup of a population.</p>",
+  "connections": [
+    { "href": "../notes/natural-selection-intro.html", "label": "Back: the logic of natural selection and fitness (7.1)" },
+    { "href": "../notes/non-mendelian-genetics.html", "label": "Back: polygenic traits with many values (5.4)" },
+    { "href": "../notes/artificial-selection.html", "label": "Next: when humans do the selecting (7.3)" }
+  ]
+}

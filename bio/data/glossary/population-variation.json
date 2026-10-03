@@ -1,0 +1,6 @@
+{
+  "pop-vulnerability": { "def": "Population vulnerability: how likely a population is to be wiped out by a new disease or environmental change. Populations with little genetic variation (small, inbred or clonal) are the most vulnerable, because few or none of their members carry alleles that let them survive." },
+  "monoculture": { "def": "A crop of a single variety, often genetically uniform or even clonal, grown over a large area. Because every plant shares the same alleles, one pathogen strain can destroy the whole crop, as in the Irish potato famine and the losses of the Gros Michel and Cavendish bananas." },
+  "heterozygote-advantage": { "def": "A situation in which heterozygotes have higher fitness than either homozygote, so selection keeps both alleles in the population (a form of balancing selection), as with the sickle-cell allele where malaria is common." },
+  "disease-resistance": { "def": "The ability of some individuals, because of the alleles they carry, to avoid infection or survive a disease that kills others. Resistance alleles often exist in a population before the disease arrives." }
+}

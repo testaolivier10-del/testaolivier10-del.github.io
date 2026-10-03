@@ -1,0 +1,489 @@
+{
+  "stimuli": {
+    "continuing-evolution-s1": {
+      "kind": "graph",
+      "title": "Mosquitoes after insecticide-treated bed nets",
+      "text": "<p>In year 0, bed nets treated with a pyrethroid insecticide were handed out across a farming district. Each year researchers raised mosquitoes from larvae collected in the district. They exposed 200 adult females to a standard pyrethroid dose for 1 hour and recorded the percent alive 24 hours later (mean ± 2 SE of 8 tubes). They also tested 200 mosquitoes for the <i>kdr</i> allele, a version of a nerve sodium-channel gene that pyrethroids bind poorly, and report its frequency among all alleles of that gene.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Years after nets were handed out", "unit": "years", "min": 0, "max": 8, "step": 1 },
+        "y": { "label": "Percent", "unit": "%", "min": 0, "max": 100, "step": 20 },
+        "series": [
+          { "name": "Mosquitoes surviving the standard dose", "points": [[0, 4, 2], [1, 6, 2], [2, 11, 3], [3, 22, 4], [4, 38, 5], [5, 55, 5], [6, 68, 5], [7, 74, 4], [8, 77, 4]] },
+          { "name": "Frequency of the kdr allele", "points": [[0, 5], [1, 7], [2, 12], [3, 21], [4, 34], [5, 48], [6, 60], [7, 68], [8, 72]] }
+        ]
+      }
+    },
+    "continuing-evolution-s2": {
+      "kind": "table",
+      "title": "Twelve bacterial populations followed for 40,000 generations",
+      "text": "<p>From a single ancestral <i>E. coli</i> cell, researchers started 12 populations in flasks of medium with a small amount of glucose at 37 °C. Each day they moved 1% of every culture into fresh medium, about 6.6 generations a day. Every 500 generations they froze a sample of each population; frozen cells can be revived later. To measure fitness, revived cells from one time point were grown in the same flask as revived ancestral cells (marked so the two can be told apart). Relative fitness is the evolved cells' growth divided by the ancestor's growth in that flask; 1.00 means no difference.</p>",
+      "table": {
+        "caption": "Mean relative fitness of the 12 populations (± 2 SE)",
+        "cols": ["Generation", "Mean relative fitness", "± 2 SE"],
+        "rows": [
+          ["0", "1.00", "0.00"],
+          ["2,000", "1.32", "0.04"],
+          ["5,000", "1.44", "0.05"],
+          ["10,000", "1.50", "0.05"],
+          ["20,000", "1.60", "0.06"],
+          ["40,000", "1.68", "0.07"]
+        ]
+      }
+    },
+    "continuing-evolution-s3": {
+      "kind": "table",
+      "title": "A rabbit-killing virus and wild rabbits, 1951-1963",
+      "text": "<p>A virus that kills European rabbits was released in Australia in 1950 to reduce the number of wild rabbits there. Mosquitoes spread the virus by biting infected rabbits and then healthy ones. In each listed year, researchers (1) collected virus samples from wild rabbits and measured how lethal each was in lab rabbits never before exposed, and (2) caught young wild rabbits and infected them with one standard virus strain kept frozen and unchanged since the 1950s. The values are simplified for teaching, following the pattern of the field surveys.</p>",
+      "table": {
+        "caption": "Lethality of wild virus samples, and death of wild rabbits given the standard strain",
+        "cols": ["Year", "Samples killing over 99% of lab rabbits (%)", "Samples killing 70-99% (%)", "Samples killing under 70% (%)", "Wild rabbits killed by the standard strain (%)"],
+        "rows": [
+          ["1951", "100", "0", "0", "90"],
+          ["1954", "19", "66", "15", "82"],
+          ["1957", "6", "74", "20", "61"],
+          ["1960", "2", "70", "28", "41"],
+          ["1963", "1", "68", "31", "30"]
+        ]
+      }
+    },
+    "continuing-evolution-s4": {
+      "kind": "model",
+      "title": "A model of resistance in HIV",
+      "text": "<p>The model uses rounded numbers. In a person with untreated HIV, about 10<sup>10</sup> new virus particles are made each day. Reverse transcriptase does not proofread, so copying errors are common. For each of three drugs (A, B and C), about 1 in every 10<sup>5</sup> new viral genomes carries a mutation that lets the virus resist that drug. The three kinds of mutation arise independently of each other.</p>",
+      "html": "<table class=\"compare\"><caption>Model values</caption><thead><tr><th>Quantity</th><th>Value</th></tr></thead><tbody><tr><th scope=\"row\">New virus particles per day (untreated)</th><td>10<sup>10</sup></td></tr><tr><th scope=\"row\">Share of new genomes resistant to drug A</th><td>1 in 10<sup>5</sup></td></tr><tr><th scope=\"row\">Share resistant to drug B</th><td>1 in 10<sup>5</sup></td></tr><tr><th scope=\"row\">Share resistant to drug C</th><td>1 in 10<sup>5</sup></td></tr></tbody></table>"
+    }
+  },
+  "items": [
+    {
+      "id": "bio-continuing-evolution-1", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "4.B", "level": "apply", "diff": 2,
+      "stimulus": "continuing-evolution-s1",
+      "q": "Between which two consecutive years did the frequency of the <i>kdr</i> allele rise the most?",
+      "options": ["Year 3 to year 4", "Year 4 to year 5", "Year 5 to year 6", "Year 7 to year 8"],
+      "fixed": true,
+      "correct": 1,
+      "why": {
+        "correct": "Year-by-year rises: 3 to 4, 21 to 34 (13 points); 4 to 5, 34 to 48 (14 points); 5 to 6, 48 to 60 (12 points); 7 to 8, 68 to 72 (4 points). The largest is from year 4 to year 5.",
+        "options": [
+          "A rise of 13 points, close but one point less than from year 4 to year 5.",
+          "Correct: 48 − 34 = 14 percentage points, the largest single-year rise.",
+          "A rise of 12 points; the climb was already slowing.",
+          "A rise of 4 points; by then the curve had nearly leveled off."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-2", "type": "numeric", "unit": "unit-7", "topic": "continuing-evolution", "practice": "5.A", "level": "apply", "diff": 1,
+      "stimulus": "continuing-evolution-s1",
+      "q": "Calculate the mean rate of increase in <i>kdr</i> allele frequency from year 2 to year 6, in percentage points per year. Give one decimal place.",
+      "numeric": { "answer": 12, "tol": 0.1, "unit": "percentage points per year", "decimals": 1 },
+      "why": { "correct": "From 12% in year 2 to 60% in year 6: (60 − 12) ÷ (6 − 2) = 48 ÷ 4 = 12.0 percentage points per year." }
+    },
+    {
+      "id": "bio-continuing-evolution-3", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.C", "level": "analyze", "diff": 2,
+      "stimulus": "continuing-evolution-s1",
+      "q": "The <i>kdr</i> allele already had a frequency of 5% in year 0, before any nets were used. Which explanation best fits the data and how evolution works?",
+      "options": [
+        "The allele arose by random mutation before the nets, and the insecticide then favored mosquitoes already carrying it",
+        "Mosquitoes that touched the nets formed the kdr mutation in response, and then passed it to their offspring",
+        "The nets made each mosquito's sodium channels change shape gradually during its life, and the change was inherited",
+        "The kdr allele was carried into the district by the nets themselves, which were made in a place with resistant mosquitoes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Variation comes first: the allele existed by chance before the insecticide arrived. The insecticide killed susceptible mosquitoes more often, so carriers left more offspring and the allele's frequency rose.",
+        "options": [
+          "Correct: random mutation supplies the allele; selection by the insecticide raises its frequency.",
+          "Mutations are not produced on demand by the environment; the allele was present in year 0, before any nets.",
+          "Changes during an individual's life are not inherited; the sodium-channel gene itself must carry the change.",
+          "Nets carry no mosquitoes or genes; the allele was in the local population before the nets arrived."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-4", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.E", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s1",
+      "q": "In year 8 the nets are replaced with nets treated with an insecticide that acts on a different target. Mosquitoes carrying <i>kdr</i> survive slightly less well than others when no pyrethroid is present. Predict the <i>kdr</i> frequency over the next several years.",
+      "options": [
+        "It falls slowly, because carriers now have slightly lower fitness than other mosquitoes",
+        "It stays at 72%, because the allele no longer affects survival once pyrethroids are gone",
+        "It drops to zero within a year, because mosquitoes stop making the resistant channel when it is not needed",
+        "It keeps rising toward 100%, because the new insecticide also kills the mosquitoes that lack kdr"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without pyrethroid the allele's benefit is gone but its small cost remains, so carriers leave slightly fewer offspring each generation and the frequency drifts down slowly, not instantly.",
+        "options": [
+          "Correct: a small cost with no benefit means slow decline.",
+          "The stem says carriers survive slightly less well without pyrethroid, so the allele is no longer neutral.",
+          "Allele frequencies change across generations through differences in reproduction; individuals cannot switch their alleles off.",
+          "The new insecticide acts on a different target, so kdr gives no extra protection against it."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-5", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "3.E", "level": "analyze", "diff": 2,
+      "stimulus": "continuing-evolution-s1",
+      "q": "A student claims the nets caused the rise in <i>kdr</i>. Which additional data would most strengthen the claim?",
+      "options": [
+        "kdr frequencies over the same years in a similar nearby district where no treated nets were used",
+        "kdr frequencies measured twice as often, at 6-month intervals, in the same district with the treated nets",
+        "The number of mosquitoes caught each year in the district with treated nets, before and after year 0",
+        "Survival of the same mosquitoes after a dose of the pyrethroid twice as strong as the standard dose"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without a comparison district, the rise could come from something else that changed, such as crop spraying with the same insecticide. A similar district without nets, where kdr stays low, would tie the rise to the nets.",
+        "options": [
+          "Correct: a comparison population without the nets controls for other causes.",
+          "More frequent sampling describes the same trend in more detail but cannot show what caused it.",
+          "Mosquito numbers can change for many reasons and do not show why kdr rose.",
+          "A stronger dose measures how resistant the mosquitoes are, not what made them resistant."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-6", "type": "numeric", "unit": "unit-7", "topic": "continuing-evolution", "practice": "5.A", "level": "apply", "diff": 2,
+      "stimulus": "continuing-evolution-s2",
+      "q": "Calculate the mean gain in relative fitness per 1,000 generations between generation 0 and generation 2,000. Give two decimal places.",
+      "numeric": { "answer": 0.16, "tol": 0.005, "unit": "per 1,000 generations", "decimals": 2 },
+      "why": { "correct": "(1.32 − 1.00) ÷ 2 thousand generations = 0.32 ÷ 2 = 0.16 per 1,000 generations. Between generations 20,000 and 40,000 the gain is (1.68 − 1.60) ÷ 20 = 0.004 per 1,000 generations, forty times slower." }
+    },
+    {
+      "id": "bio-continuing-evolution-7", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "4.B", "level": "apply", "diff": 1,
+      "stimulus": "continuing-evolution-s2",
+      "q": "Which statement best describes the change in mean relative fitness?",
+      "options": [
+        "It rose quickly at first, then kept rising more slowly through generation 40,000",
+        "It rose at a steady rate, gaining the same amount in each block of 1,000 generations",
+        "It rose until generation 10,000 and stayed exactly the same after that",
+        "It rose slowly at first and then faster and faster as mutations piled up"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Fitness gained 0.32 in the first 2,000 generations but only 0.08 in the last 20,000, and it was still rising at the end.",
+        "options": [
+          "Correct: fast early gains, then slower but continuing gains.",
+          "The gain per 1,000 generations fell from 0.16 early to 0.004 late, so the rate was not steady.",
+          "The mean kept rising after generation 10,000, from 1.50 to 1.60 to 1.68.",
+          "The pattern is the reverse: the fastest gains came first."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-8", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "3.C", "level": "apply", "diff": 2,
+      "stimulus": "continuing-evolution-s2",
+      "q": "Why does freezing samples every 500 generations make the fitness measurements more reliable?",
+      "options": [
+        "Ancestral and evolved cells can be revived and grown together in one flask under the same conditions",
+        "Freezing stops new mutations, so the evolved populations have the same genes as the ancestor when tested",
+        "Freezing kills the least fit cells, so the cells measured are mostly the ones with beneficial mutations",
+        "Frozen samples let researchers skip the daily transfers and still reach 40,000 generations sooner"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Because the ancestor is kept alive in the freezer, any later sample can compete against it head to head at the same time, in the same medium and temperature, so differences in growth reflect genetic change rather than different conditions.",
+        "options": [
+          "Correct: a living ancestor allows a direct, side-by-side comparison.",
+          "The evolved populations carry new mutations that arose before freezing; freezing does not undo them.",
+          "Freezing is used to store whole samples, not to pick out fitter cells.",
+          "Generations happen only while cells grow; frozen cells do not reproduce."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-9", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "5.B", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s2",
+      "q": "Using the ± 2 SE intervals, which conclusion is supported?",
+      "options": [
+        "Fitness at 40,000 generations differs from fitness at 5,000, but 10,000 and 20,000 are not shown to differ",
+        "Each mean in the table differs from the mean before it, because each one is higher than the last",
+        "The means at generations 20,000 and 40,000 differ from each other, because their two intervals do not overlap",
+        "The means are not shown to differ, because each interval overlaps with the one after it"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Intervals: 5,000 gives 1.39-1.49 and 40,000 gives 1.61-1.75, which do not overlap. 10,000 gives 1.45-1.55 and 20,000 gives 1.54-1.66, which overlap, so those two means are not shown to differ.",
+        "options": [
+          "Correct: non-overlapping intervals at 5,000 and 40,000; overlapping ones at 10,000 and 20,000.",
+          "A higher mean is not enough; 10,000 (1.45-1.55) and 20,000 (1.54-1.66) overlap.",
+          "20,000 (1.54-1.66) and 40,000 (1.61-1.75) do overlap.",
+          "0 and 2,000 (1.00 and 1.28-1.36) do not overlap, and neither do 5,000 and 40,000."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-10", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.D", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s2",
+      "q": "All 12 populations gained fitness, though each gained it through mostly different mutations. What does this best suggest?",
+      "options": [
+        "The shared conditions selected for faster growth, while which mutations arose differed by chance",
+        "The ancestor already carried the beneficial mutations, so the 12 flasks needed no new mutations",
+        "Genetic drift by itself raised fitness, since drift tends to move separate populations in one direction",
+        "The populations exchanged genes during the daily transfers, so the 12 ended with matching mutations"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Twelve independent populations all improving in the same conditions points to natural selection by those conditions. Which beneficial mutations arose first was a matter of chance, so the genetic routes differed.",
+        "options": [
+          "Correct: the same pressure, different chance mutations, the same outcome.",
+          "All 12 began from one cell, but they gained fitness through different new mutations that arose later.",
+          "Drift is random in direction; it would not raise fitness in all 12 populations.",
+          "Each population is transferred into its own flask, and the stem says the mutations mostly differed."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-11", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "4.B", "level": "apply", "diff": 2,
+      "stimulus": "continuing-evolution-s3",
+      "q": "Which statement best describes how the virus samples changed from 1951 to 1963?",
+      "options": [
+        "The most lethal type became rare, and samples killing 70-99% became the most common type",
+        "The least lethal samples became the most common type, so the virus stopped killing rabbits",
+        "The virus samples stayed equally lethal, and the changes came from the rabbits alone",
+        "The most lethal type became more common each year as the virus adapted to rabbits"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Samples killing over 99% fell from 100% of samples to 1%, while the 70-99% type rose to about 70%. The least lethal type grew to 31% but never became the most common.",
+        "options": [
+          "Correct: the extremely lethal type declined and the moderately lethal type took over.",
+          "Samples killing under 70% reached only 31%, and most samples still killed over 70% of lab rabbits.",
+          "The lab tests on never-exposed rabbits show the virus itself changed.",
+          "The most lethal type fell, from 100% to 1% of samples."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-12", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.C", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s3",
+      "q": "Which explanation best accounts for the change in the virus?",
+      "options": [
+        "Rabbits with less lethal virus stayed alive and infectious longer, so mosquitoes spread that virus more",
+        "The virus evolved to be less lethal so that it would not wipe out the rabbits it depends on",
+        "Less lethal viruses copied themselves faster inside each rabbit, so they outgrew the most lethal type",
+        "Lab rabbits became more resistant over the years, so the same viruses appeared less lethal in tests"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The virus spreads only from living, infected rabbits through mosquito bites. A virus that kills its host within days has less time to be picked up, so moderately lethal types were passed on more and became common.",
+        "options": [
+          "Correct: transmission favors virus that keeps its host alive and infectious longer.",
+          "Evolution has no goal; the change came from which viruses were transmitted more, not from what would benefit the virus later.",
+          "The most lethal types multiply fast within a rabbit; their problem is fewer chances to spread before the host dies.",
+          "The lab rabbits had never been exposed, so they were not selected for resistance."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-13", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.B", "level": "analyze", "diff": 2,
+      "stimulus": "continuing-evolution-s3",
+      "q": "Which data are the best evidence that the wild rabbits themselves evolved?",
+      "options": [
+        "Deaths from the unchanged standard strain fell from 90% to 30% of wild rabbits",
+        "The share of virus samples killing over 99% of lab rabbits fell from 100% to 1%",
+        "The share of virus samples killing under 70% of lab rabbits rose from 0% to 31%",
+        "The share of samples killing 70-99% of lab rabbits rose from 0% to about 70%"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The standard strain did not change, so fewer deaths in wild rabbits given it must reflect a change in the rabbits: survivors of earlier outbreaks passed on resistance alleles.",
+        "options": [
+          "Correct: the same virus kills fewer rabbits, so the rabbits changed.",
+          "This measures change in the virus, tested on never-exposed lab rabbits.",
+          "This also tracks the virus, not the wild rabbits.",
+          "This tracks the virus too; the lab rabbits did not change."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-14", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.E", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s3",
+      "q": "Wild rabbits caught in 1963 are infected with a virus sample frozen in 1951, of the type that killed over 99% of lab rabbits. Predict the outcome.",
+      "options": [
+        "Fewer die than among 1951 rabbits given the same virus, but the share killed is still high",
+        "The same share die as in 1951, because the 1951 virus is unchanged by freezing",
+        "Almost no 1963 rabbits die, because they are now resistant to the virus in its many forms",
+        "More of the 1963 rabbits die than in 1951, because the rabbits have not met this virus type in years"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "By 1963 the rabbits had evolved resistance (standard-strain deaths fell from 90% to 30%), so they should survive the old virus better than 1951 rabbits did. A very lethal virus is still expected to kill many, since resistance is partial.",
+        "options": [
+          "Correct: resistant rabbits do better, but resistance is partial.",
+          "The virus is unchanged, but the rabbits are not: they carry more resistance alleles.",
+          "Resistance is partial; 30% of 1963 rabbits still died from the milder standard strain.",
+          "Not meeting a virus does not remove resistance alleles; the 1963 rabbits descend from survivors."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-15", "type": "numeric", "unit": "unit-7", "topic": "continuing-evolution", "practice": "5.A", "level": "apply", "diff": 1,
+      "stimulus": "continuing-evolution-s4",
+      "q": "A patient takes drug A alone. According to the model, how many new virus particles resistant to drug A are made per day before the drug starts to act? Give a whole number.",
+      "numeric": { "answer": 100000, "tol": 0, "unit": "particles per day", "decimals": 0 },
+      "why": { "correct": "10<sup>10</sup> particles × 1/10<sup>5</sup> = 10<sup>5</sup> = 100,000 resistant particles every day. A single drug therefore almost certainly meets resistant virus, which survives and multiplies." }
+    },
+    {
+      "id": "bio-continuing-evolution-16", "type": "numeric", "unit": "unit-7", "topic": "continuing-evolution", "practice": "5.A", "level": "apply", "diff": 2,
+      "stimulus": "continuing-evolution-s4",
+      "q": "According to the model, how many new particles per day are expected to resist both drug A and drug B at once? Give a whole number.",
+      "numeric": { "answer": 1, "tol": 0, "unit": "particles per day", "decimals": 0 },
+      "why": { "correct": "The chance of carrying both independent mutations is 1/10<sup>5</sup> × 1/10<sup>5</sup> = 1/10<sup>10</sup>. 10<sup>10</sup> × 1/10<sup>10</sup> = 1 particle per day. Adding drug C makes it 1/10<sup>15</sup>, or about one particle every 100,000 days." }
+    },
+    {
+      "id": "bio-continuing-evolution-17", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.C", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s4",
+      "q": "Why do doctors give all three drugs at the same time rather than one drug and then another when the first stops working?",
+      "options": [
+        "One at a time, virus resistant to the first drug multiplies until a mutant resistant to the next appears",
+        "Giving the drugs one after another wears the patient's immune system down faster than giving them together",
+        "Each drug works well just when the other two are present, because they bind one enzyme together",
+        "Giving one drug at a time causes the virus to make new resistance mutations in response to each drug in turn"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With one drug, about 100,000 resistant particles arise daily and take over. That large resistant population then produces mutants resistant to the next drug. Together, a particle must carry all three mutations at once, which the model predicts almost never happens.",
+        "options": [
+          "Correct: one drug at a time lets resistance pile up mutation by mutation.",
+          "The reason is about resistance in the virus, not about the immune system.",
+          "The model treats the three drugs as working on their own; their benefit together comes from the multiplied odds.",
+          "Mutations arise at random whether or not a drug is present; the drug selects among them."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-18", "type": "predict", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.E", "level": "analyze", "diff": 3,
+      "stimulus": "continuing-evolution-s4",
+      "q": "A patient on all three drugs often skips doses, so the drugs fall to low levels for days at a time and the virus multiplies again. Predict the effect on each quantity.",
+      "variables": [
+        { "name": "Number of new virus particles made per day", "answer": "up", "why": "Low drug levels let the virus replicate, so many more particles are made." },
+        { "name": "Chance that a particle resistant to all three drugs arises over the next year", "answer": "up", "why": "More copying means more mutations overall, so rare combinations, including triple resistance, become more likely." },
+        { "name": "Share of new genomes carrying a given resistance mutation, before any selection", "answer": "none", "why": "The error rate of reverse transcriptase does not depend on the drugs; skipping doses changes how many copies are made, not how error-prone each copy is." }
+      ],
+      "why": { "correct": "Skipped doses let the virus multiply. Each copy is no more error-prone than before, but many more copies means many more chances for resistant mutants, which the drugs then select when levels rise again." }
+    },
+    {
+      "id": "bio-continuing-evolution-19", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "A new flu vaccine is made every year. Which explanation best accounts for this?",
+      "options": [
+        "Mutations change its surface proteins, and immunity in people favors variants that antibodies bind poorly",
+        "The flu virus has a fixed set of strains, and the vaccine rotates through them in a yearly cycle",
+        "Antibodies made in response to a vaccine break down within a few weeks, so a new formula is needed",
+        "Each year's vaccine causes new mutations in the virus, so next year's vaccine is changed to match them"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Influenza's RNA genome is copied with many errors, so its surface proteins keep changing. People already immune to last year's forms are infected more easily by changed forms, so those spread. The vaccine is updated to match the forms expected to circulate.",
+        "options": [
+          "Correct: mutation plus selection by population immunity keeps the virus changing.",
+          "New variants keep appearing; the strains are not a fixed set.",
+          "Immune memory from vaccination can last much longer; the virus changing is the main reason.",
+          "Vaccines do not cause mutations; mutations arise by chance during viral copying."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-20", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.B", "level": "analyze", "diff": 3,
+      "q": "Glyphosate kills plants by blocking the enzyme EPSPS. Weeds that survive glyphosate on many farms carry 40 to 100 copies of the EPSPS gene, while susceptible weeds of the same kind carry one. Which explanation is best supported?",
+      "options": [
+        "Extra copies arose by duplication and make so much enzyme that some escapes the herbicide; spraying favored them",
+        "Glyphosate entered the weeds' cells and copied the EPSPS gene, raising its copy number in each sprayed plant",
+        "Each extra copy carries a mutation that changes the enzyme's shape so that glyphosate no longer binds to its active site",
+        "The surviving weeds absorbed less glyphosate, and their extra gene copies have no effect on their survival"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Gene duplications are mutations that change the genome's structure. Plants with many EPSPS copies make much more enzyme, so some stays active despite glyphosate. Repeated spraying selected for these plants, and the genome change spread.",
+        "options": [
+          "Correct: a duplication increased enzyme amount, and spraying selected for it.",
+          "Herbicides do not copy genes; duplications arise by chance, and spraying only selects among plants.",
+          "The data show more copies, not a changed enzyme; extra amount alone can explain survival.",
+          "The stem links copy number with survival across many farms, which this option ignores."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-21", "type": "multi", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.B", "level": "apply", "diff": 2,
+      "q": "Select the two observations that show evolution happening in a population today.",
+      "options": [
+        "The frequency of an allele in a wild population is measured each year and rises over 15 years",
+        "Bacterial samples frozen in 1990 and in 2020 from one population differ by dozens of new mutations",
+        "A single insect sprayed many times during its life becomes harder to kill",
+        "A fossil shell from deep rock layers looks different from shells of the same kind alive today",
+        "A wild population's average beak size stays the same while its habitat is unchanged"
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Evolution is a change in the genetic makeup of a population over generations. Allele frequencies tracked over years and genomes compared across decades show it directly.",
+        "options": [
+          "A change in allele frequency across generations is evolution, measured as it happens.",
+          "New mutations accumulating in a population's genomes over decades are evolution observed directly.",
+          "Individuals do not evolve; an insect becoming harder to kill during its life is not a genetic change in a population.",
+          "Fossils show evolution in the past, not change happening now.",
+          "No change is reported, so this observation shows no evolution."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-22", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.C", "level": "apply", "diff": 2,
+      "q": "On the Hawaiian island of Kauai, flies that lay their eggs in crickets find male crickets by their song. Within about 20 generations, most males there carried a mutation that leaves their wings unable to make sound. Which explanation fits these observations best?",
+      "options": [
+        "Silent males were found by flies less often, so they lived to mate more and the mutation spread",
+        "Males stopped singing because they learned the song attracted flies, and this learning was inherited",
+        "The flies caused the wing mutation in the males they attacked, so it spread through the population",
+        "Silent males attracted more females, so the mutation spread even though flies ignored the song"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Singing males were found and parasitized more, so silent males lived longer and, despite having no song, mated enough to pass the mutation on. Its frequency rose fast because the pressure was strong.",
+        "options": [
+          "Correct: lower attack rates gave silent males higher fitness.",
+          "The change is a mutation in a wing gene; learned habits are not inherited through DNA.",
+          "Flies select among males; they do not cause mutations.",
+          "Silent males cannot attract females by song; their advantage came from escaping the flies."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-23", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "Where rough-skinned newts carry high levels of a nerve toxin, the garter snakes that eat them have sodium channels the toxin binds poorly; where newts carry little toxin, snakes are easily paralyzed by it. Which term and explanation fit best?",
+      "options": [
+        "Coevolution: each species is a selective pressure on the other, so toxin and resistance escalate",
+        "Artificial selection: people living near the newts have bred snakes that are resistant to the toxin",
+        "Convergent evolution: newts and snakes evolved the same toxin separately because they share a habitat",
+        "Genetic drift: resistance became common by chance in places where newts happen to be toxic"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Resistance is strongest exactly where toxin is highest, which fits reciprocal selection: toxic newts favor resistant snakes, and resistant snakes favor more toxic newts.",
+        "options": [
+          "Correct: matched levels of toxin and resistance point to reciprocal selection.",
+          "No breeding by people is involved; the selection comes from the newts and snakes themselves.",
+          "The snakes do not make the toxin; they resist it.",
+          "Chance would not match resistance to toxin levels place by place."
+        ]
+      }
+    },
+    {
+      "id": "bio-continuing-evolution-24", "type": "single", "unit": "unit-7", "topic": "continuing-evolution", "practice": "6.D", "level": "analyze", "diff": 3,
+      "q": "In one of 12 lab populations of <i>E. coli</i>, cells able to grow on citrate appeared after about 31,000 generations. When researchers revived frozen samples from that population and let them evolve again, citrate use reappeared in some replays started from samples after generation 20,000, and in none started from earlier samples. What does this most suggest?",
+      "options": [
+        "A mutation arising before generation 20,000 was needed before a later mutation could produce citrate use",
+        "Citrate use required 31,000 generations of steady exposure to citrate, so the earlier samples had too little time to evolve it",
+        "The revived samples from before generation 20,000 had lost the ability to mutate after being frozen",
+        "Citrate use was present in the ancestor and was switched on by the environment after generation 20,000"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Replays from later samples could re-evolve citrate use and replays from earlier ones could not, so something changed in the population around generation 20,000 that made the later mutation work: history matters in evolution.",
+        "options": [
+          "Correct: a first mutation made the population able to evolve citrate use later.",
+          "Replays from early samples also ran for many generations and still failed, so time alone was not the limit.",
+          "Revived cells mutate normally; they grew and evolved in the replays.",
+          "The ancestor could not use citrate in the presence of oxygen, and the flasks did not change."
+        ]
+      }
+    }
+  ]
+}

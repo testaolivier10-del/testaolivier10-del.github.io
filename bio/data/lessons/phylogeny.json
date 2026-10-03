@@ -1,0 +1,91 @@
+{
+  "topic": "phylogeny",
+  "hook": "<p>Which is a crocodile's closer relative: a lizard or a pigeon? Most people pick the lizard, since both are scaly and cold to the touch. The answer from fossils, anatomy and DNA is the pigeon. Crocodiles and birds share an ancestor that lizards do not share, and dinosaurs sit on that same branch. Trees of life let you answer questions like this at a glance, once you know how to read them, and they hold a few traps that catch almost everyone the first time.</p>",
+  "prereq": [
+    {
+      "q": "Homologous structures, such as the arm bones of a human and the wing bones of a bat, are evidence of",
+      "options": [
+        "a common ancestor that both inherited the structure from",
+        "the same structure evolving separately to do the same job",
+        "a structure that has lost its function"
+      ],
+      "correct": 0,
+      "why": "Homologous structures share an underlying plan because both organisms inherited it from a common ancestor.",
+      "review": "evolution-evidence"
+    },
+    {
+      "q": "Two species' versions of a gene differ at very few bases. This suggests they",
+      "options": [
+        "shared a common ancestor fairly recently",
+        "live in very different environments",
+        "never shared a common ancestor"
+      ],
+      "correct": 0,
+      "why": "Differences build up over time after two lines separate, so few differences suggest a recent shared ancestor.",
+      "review": "evolution-evidence"
+    },
+    {
+      "q": "Archaea share histones and a complex RNA polymerase with eukaryotes, not with bacteria. This is evidence that",
+      "options": [
+        "Archaea and eukaryotes share an ancestor that bacteria do not share",
+        "Archaea evolved from eukaryotes living today",
+        "bacteria and archaea are the same group"
+      ],
+      "correct": 0,
+      "why": "Newer features shared by two groups, and lacking in a third, point to an ancestor that only the two share.",
+      "review": "common-ancestry"
+    }
+  ],
+  "figure": {
+    "figure": "tree-anatomy",
+    "caption": "The parts of a tree. Read relationships from the nodes: two taxa are more closely related the more recent the node where their lines meet."
+  },
+  "chain": [
+    {
+      "cause": "An ancestral population splits into two lines that no longer share genes.",
+      "effect": "Each line accumulates its own mutations and adaptations, so the two diverge; on a tree, the split is a node with two branches."
+    },
+    {
+      "cause": "A new heritable trait, such as seeds or hair, arises in one line.",
+      "effect": "Every descendant of that line inherits it (unless it is later lost), so the trait becomes a shared derived character of that group."
+    },
+    {
+      "cause": "Biologists record which taxa have which derived characters, using an outgroup to tell which states are older.",
+      "effect": "Taxa that share more derived characters are grouped as having a more recent common ancestor, and the groups nest inside each other as clades."
+    },
+    {
+      "cause": "Different possible trees explain the same data with different numbers of evolutionary changes.",
+      "effect": "By maximum parsimony, biologists prefer the tree with the fewest changes, and they check it against DNA data, where differences build up roughly in proportion to time."
+    },
+    {
+      "cause": "New fossils or sequences can disagree with an existing tree.",
+      "effect": "The tree is revised: every tree is a hypothesis about evolutionary history, not a final answer."
+    }
+  ],
+  "ideas": [
+    "A <b>phylogenetic tree</b> shows hypothesized relationships. Each <b>node</b> is a common ancestor; <b>sister taxa</b> share a node no one else shares. The more recent the shared node, the closer the relationship.",
+    "A <b>clade</b> is an ancestor and <b>all</b> its descendants. <b>Shared derived characters</b> mark clades; <b>shared ancestral characters</b> do not. The <b>outgroup</b> shows which states are ancestral.",
+    "Read nodes, not tip order: branches can rotate freely, and every living tip has evolved for equally long. No living organism is the ancestor of another.",
+    "<b>Maximum parsimony</b> prefers the tree with fewest changes. A <b>molecular clock</b>, calibrated with fossils, dates splits. DNA data are often more reliable than body form, and trees are revised with new evidence."
+  ],
+  "misconception": {
+    "wrong": "Two tips drawn next to each other are the most closely related, and the tip at the end of the tree is the most evolved.",
+    "right": "Relationships come from where lines meet, not from where tips are drawn: rotating branches at a node changes tip order but not the tree. All living tips have been evolving for the same length of time."
+  },
+  "check": [
+    "bio-phylogeny-2",
+    "bio-phylogeny-4",
+    "bio-phylogeny-6",
+    "bio-phylogeny-7",
+    "bio-phylogeny-8",
+    "bio-phylogeny-12",
+    "bio-phylogeny-18"
+  ],
+  "summary": "<p>A phylogenetic tree is a hypothesis about evolutionary relationships. Tips are living or extinct taxa, branches are lines of descent, and each node is the most recent common ancestor of everything beyond it; the root is the ancestor of the whole tree. Two taxa are more closely related the more recent the node where their lines meet, so trees are read at the nodes, not by the order of the tips, which can be rotated freely. A clade is an ancestor and all of its descendants. Cladograms are built from shared derived characters, traits that arose in a group's ancestor, while shared ancestral characters, inherited from older ancestors, cannot sort a group; an outgroup shows which states are ancestral. Of the trees that fit the data, maximum parsimony prefers the one needing the fewest changes. DNA and protein differences give many more characters than body form and, calibrated with fossils, act as a molecular clock to date splits. Trees are revised when new evidence appears, and classification aims to name groups that are clades.</p>",
+  "connections": [
+    { "href": "../notes/evolution-evidence.html", "label": "Back: homologous structures and molecular evidence (7.6)" },
+    { "href": "../notes/common-ancestry.html", "label": "Back: the three domains of life (7.7)" },
+    { "href": "../tools/tree-reading.html", "label": "Try it: the phylogenetic tree reading simulator" },
+    { "href": "../notes/speciation.html", "label": "Next: how one population splits into two species (7.10)" }
+  ]
+}

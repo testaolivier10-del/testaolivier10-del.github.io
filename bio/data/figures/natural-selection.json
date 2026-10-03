@@ -1,0 +1,7 @@
+{
+  "selection-modes": {
+    "file": "figures/selection-modes.svg", "ext": "svg", "w": 760, "h": 380,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three graphs of number of individuals against a heritable trait value. A dashed bell curve shows the population before selection, a solid curve after many generations, and shaded zones the values selected against. Directional: the low end is selected against and the curve shifts right, so the mean changes (drought favors deeper beaks). Stabilizing: both extremes are selected against and the curve becomes narrow and tall around the same mean, so variation shrinks (very small and very large newborns survive less). Disruptive: the middle is selected against and the curve splits into two peaks, so variation grows (small and large beaks each suit one kind of seed)."
+  }
+}

@@ -41,11 +41,17 @@ course does meanwhile.
 - **tools-premium** (open). Spec: one simulator free, every simulator Premium. Osmosis is free and
   enzyme is Premium. The spec does not say whether the skills tools (stats practice, graph
   builder) and the design drills are Premium; they are free for now. Owner to decide.
-- **design-drills-review** (open). The 8 design and argumentation scenarios
-  (`bio/data/tools/design-drills.json`) are placeholder content: a biology teacher should review
-  the scenarios, the best control in each, and the claim/evidence/reasoning tags (graders differ
-  on whether a general-principle sentence counts as reasoning). The page shows a Draft note until
-  `status` becomes "reviewed".
+- **design-drills-review** (open). The 16 design and argumentation scenarios
+  (`bio/data/tools/design-drills.json`, two per unit, written 2026-10-03) replaced the placeholder
+  set and are live (no Draft note), but a biology teacher should still review them: the data are
+  invented but meant to be realistic (worth checking: the vestigial-wing temperature effect, the
+  Himalayan rabbit thresholds, digoxin uptake numbers, the woodlice kinesis account), the "best
+  control" in each (several are deliberately plausible), the claim/evidence/reasoning tags
+  (graders differ on whether a general-principle sentence or a statistical test counts as
+  evidence or reasoning), and the written-answer rubrics. Reviewed 2026-10-03 (docs/apbio-reviews/drills.md):
+  five fixes (desiccation design now has two shared generations; wording in antibiotic, rabbit and respirometer
+  items); still for a teacher: rabbit thresholds, the Elodea green-light rate (29% of red, low against leaf action
+  spectra), the woodlice turning-rate direction and the χ² evidence tag.
 - **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
   `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
 
@@ -366,10 +372,106 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - **operon-parameters** (open; same simulator). Rates 1 / 10 / 100, mRNA half-life 2 min, enzymes
   diluted by growth with a 40-min doubling, instant input changes and one F′ copy are illustrative
   choices, not measurements; the merodiploid mode is marked "going further" as beyond the course.
+- **popgen-model-order** (open; Unit 7 simulator `hardy-weinberg-drift`). The model's life cycle (selection on adults →
+  mutation → migration into the gene pool → mating with inbreeding F → Wright-Fisher sampling of N adults) is one
+  common textbook ordering; others apply migration to adults or drift to gametes, which changes small-N results slightly.
+  Migrants join the gene pool, so migration never makes genotypes depart from Hardy-Weinberg (a real mixing of adults
+  can). "Non-random mating" is modeled only as inbreeding (F); assortative mating is not. Meanwhile: the rules are in
+  the tool's box and the items say "in this model" where it matters; confirm.
+- **hw-drift-chi-df** (open; same simulator; see hw-chi-square-df). The tool shows the χ² decision for both df 2 and
+  df 1 and says when they differ; Table 3's data (χ² 0.48 and 16.0) give the same decision under both.
+- **tree-group-words** (open; Unit 7 simulator `tree-reading`). Paraphyletic vs polyphyletic is decided from tips
+  only: not a clade, and the left-out descendants of the MRCA form one clade → paraphyletic, otherwise polyphyletic.
+  Textbooks define polyphyly by the group not including its common ancestor (often traced to convergent traits), which
+  tips alone cannot show. Meanwhile: items key only "clade or not"; the words appear in tool feedback; confirm.
+- **tree-teaching-values** (open; same simulator). The primate DNA tree uses rounded, ultrametric teaching values
+  (human–chimp 1.2%, gorilla 1.6%, orangutan 3.1%, macaque/baboon 6.4%, macaque–baboon 2.0%), close to genome
+  comparisons but not measurements; the clock item assumes a 6-million-year human–chimp split and a constant rate
+  (answer 15.5 Myr; published orangutan split estimates run about 12-16 Myr). Characters: lampreys counted as having a
+  vertebral column (they have only small vertebral elements), "amnion" used for the mouse and kangaroo instead of
+  "amniotic egg". Confirm.
+
 - **openstax-license** (open, owner). The OpenStax *Biology 2e* page fetched on 2026-10-03 shows a
   CC BY-NC-SA notice and a no-AI-ingestion line, while the course credits OpenStax figures as CC BY 4.0.
   Check which license applies to the figures already used before launch. The operons tool uses no
   OpenStax text or figures.
+- **glycolysis-universal** (open, 7.7). The framework lists glycolysis among features shared by all life. Many archaea
+  run modified versions with different enzymes (modified Embden-Meyerhof and Entner-Doudoroff variants). Notes and
+  figure say "glycolysis or close variants of it". For your exam: glycolysis is a universal, conserved pathway.
+- **two-domain-tree** (open, 7.7, `three-domains` figure). Recent genome data (Asgard archaea) suggest eukaryotes arose
+  from within Archaea, a "two-domain" tree. The course teaches three domains with Archaea closer to Eukarya than to
+  Bacteria, as the framework does. For your exam: three domains.
+- **luca-membrane** (open, 7.7 notes going-further). Bacterial/eukaryotic ester lipids versus archaeal ether lipids
+  leave LUCA's membrane unresolved; presented as an open question.
+- **illustrative-data-u7b** (open, 7.7-7.12). These stimuli are built for teaching and are not published data sets:
+  yeast-human gene swaps (pattern after Kachroo et al. 2015), kdr mosquito curves, E. coli fitness table (shape after
+  the Lenski long-term experiment), myxoma virus and rabbit table (pattern after Fenner's surveys), HIV model numbers,
+  stream-fish crosses, tetraploid wildflower, snail rib chart, rice blast mixtures (pattern after Zhu et al. 2000),
+  wild-cat genetic rescue table (pattern after the Florida panther), sickle-cell survival bars, spark-experiment
+  curves and clay-vesicle table (pattern after Hanczyc et al. 2003, about 100-fold). Confirm the stems never present
+  them as real measurements.
+- **primate-clock** (open, 7.9, `phylogeny-s3`). Pairwise differences (12, 16, 31, 62 per 1,000 bases) approximate
+  genome-wide divergences; the orangutan calibration of 15 million years gives 5.8 (human-chimpanzee), 7.7 (gorilla)
+  and 30 (macaque) million years. Published estimates vary (human-chimpanzee 5-7, orangutan 12-16).
+- **turtle-placement** (open, 7.9, `phylogeny-s2`, `bio-phylogeny-16`). The tree puts turtles as the sister group of
+  crocodiles plus birds, the current genomic consensus. Older textbooks place turtles outside the other reptiles.
+  Items depend only on crocodile-bird sister status and on birds being inside reptiles, which both views share,
+  except `bio-phylogeny-7` (turtle equally related to crocodile and sparrow), which holds under both.
+- **lamprey-skull** (open, 7.9 `cladogram-traits`). "Skull" is used instead of "vertebrae" for the lamprey branch
+  because lamprey vertebral elements are rudimentary; the figure is otherwise the standard vertebrate cladogram.
+- **apple-maggot-sympatry** (open, 7.10). The apple maggot fly is presented as likely sympatric speciation in progress;
+  some studies find that part of the variation came from an older allopatric phase (inversions from Mexican
+  populations). For your exam: it is the standard example of sympatric divergence by host shift.
+- **early-atmosphere** (open, 7.12). Miller-Urey used a reducing atmosphere; many geologists now favor a mostly
+  CO₂-N₂ atmosphere, which gives lower yields unless buffered. Notes say so; `bio-origin-of-life-5` asks for the test.
+  For your exam: the Miller-Urey experiment shows abiotic synthesis of organic monomers from simple molecules.
+- **earliest-life-date** (open, 7.12). 3.5 billion years (stromatolites, microfossils) is used as "widely accepted";
+  3.7-billion-year Isua structures and 4.1-billion-year graphite in zircon are contested. First eukaryote fossils are
+  given as about 1.8 billion years (estimates 1.6-1.8). For your exam: Earth 4.6, life by about 3.5 billion years.
+
+- **u7a-illustrative-data** (open, Unit 7 topics 7.1-7.6). Invented data in realistic proportions, not measurements:
+  mouse enclosures and meadow-plant fitness (`natural-selection-intro-s1`, `-s2`); finch beak depth by hatch year
+  (`natural-selection-s1`, modeled on the Daphne Major drought of 1977 and wet year of 1983, not the published values)
+  and the grassland-bird tail experiment (`natural-selection-s2`, the design of Andersson's 1982 widowbird study, own
+  numbers); the corn oil lines (`artificial-selection-s1`, shaped like the Illinois long-term experiment, values rounded
+  and simplified; the notes describe the real experiment) and the antibiotic MIC flasks (`-s2`); the fruit-fly drift
+  lines (`population-genetics-s1`, simulated with binomial sampling) and the isolated grouse-like population
+  (`-s2`, modeled on Illinois greater prairie chickens, own numbers); the three plant populations and four beetle
+  lines (`hardy-weinberg-s1`, `-s2`; line 2 follows q' = q/(1 + q), line 3 q' = 0.9q + 0.01); the canyon layers with a
+  hypothetical 14-million-year half-life (`evolution-evidence-s2`); FRQs `frq-finch-drought-graph`,
+  `frq-wildflower-drift` and `frq-stickleback-armor` (stickleback *Eda* alleles are real; the counts and the trout
+  story are invented). Confirm acceptable.
+- **cytochrome-c-counts** (open, 7.6, `evolution-evidence-s1`). Differences from human cytochrome c (chimpanzee 0,
+  rhesus 1, rabbit 9, dog 11, horse 12, chicken 13, bullfrog 18, tuna 21, baker's yeast 44, kangaroo 10 in item 5's
+  why) are the classic textbook values from older protein-sequence tables; some sources give yeast 45 and differ by
+  one elsewhere. Labeled "approximate"; no key depends on a one-position difference. The notes' hemoglobin β table
+  (gorilla 1, rhesus 8, mouse 27, chicken 45, frog 67) is the same kind of classic value. Check against a sequence
+  database if a reviewer wants exact counts.
+- **vestigial-meaning** (open, 7.6). Taught as "reduced, with most or all ancestral function lost", with whale hip
+  bones anchoring reproductive muscles as the caution that vestigial does not mean useless. The human appendix is
+  deliberately not used (it has immune functions, and older materials call it vestigial). For your exam: a vestigial
+  structure is a reduced remnant of an ancestral structure; either wording earns credit.
+- **u7a-history-numbers** (open, 7.1-7.6). Figures stated from general knowledge, rounded: peppered moth dark form
+  first recorded 1848 and about 98% near Manchester by 1895, the *cortex* transposon dated to about 1819 (2016
+  study); Pingelap typhoon about 1775 with about 20 survivors and roughly 1 in 10 islanders with achromatopsia today;
+  northern elephant seals reduced to "perhaps a few dozen" in the 1890s (published estimates range from about 10 to
+  100) and over 200,000 now; Florida panthers 20-30 in the early 1990s and eight Texas females released in 1995;
+  Ellis-van Creveld syndrome about 1 in 200 Lancaster County Amish births; Gorongosa tuskless females about half of
+  war survivors against under one in five before; MRSA reported 1961; dogs domesticated at least 15,000 years ago
+  (estimates range higher); corn from teosinte about 9,000 years ago; *Tiktaalik* about 375 million years, found 2004.
+  Wallace's fever is placed only "in the islands of the Malay Archipelago" (Ternate or Gilolo is disputed).
+- **stabilizing-birth-weight** (open, 7.2, `bio-natural-selection-11`). The 1935-1946 London hospital data (Karn and
+  Penrose) are the classic stabilizing-selection example; modern medical care has weakened the pattern. The item
+  states the dates, so the key holds.
+- **fox-correlated-traits** (open, 7.3 notes, `bio-artificial-selection-15`; review u7a). The Belyaev farm-fox floppy ears
+  and piebald coats are taught as side effects of selecting tameness (pleiotropy, the usual textbook account). Lord et
+  al. (2020) argue the founding fur-farm foxes already carried some of these traits and that the "domestication
+  syndrome" link is weaker than claimed. For your exam: correlated traits change when selection acts on genes with
+  several effects; the item keys only that idea.
+- **scale-eater-handedness** (open, 7.2, `bio-natural-selection-16`, notes; review u7a). Hori's (1993) Lake Tanganyika
+  scale-eater is the classic frequency-dependent example and the item says the mouth direction is inherited. Later
+  work finds the asymmetry continuous and partly plastic, not a simple two-allele trait. For your exam: rare-form
+  advantage keeps both forms near equal frequency; no key depends on the genetics.
 
 ## Map content to confirm
 
@@ -396,8 +498,8 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - Independent accuracy review (2026-10-03) of both simulators and every skills tool: numbers,
   formulas, tables and fixed answers recomputed and correct apart from df 3 (fixed); wording
   fixes applied (red blood cell swelling, lysis threshold, potato gradient, control definitions,
-  salivary amylase, snapdragon notation, the n − 1 reason). Design drills stay placeholder until
-  a teacher reviews them (design-drills-review).
+  salivary amylase, snapdragon notation, the n − 1 reason). Design drills were replaced by the
+  real set on 2026-10-03; a teacher review is still open (design-drills-review).
 - **osmosis-model-numbers** (pending review). The osmosis simulator's potato numbers (cell sap
   0.33 osmol/L, 45% non-water mass, wall modulus 15 bar) and red blood cell lysis at 1.55× volume
   are illustrative (lysis is tested on mass, which tracks volume here), chosen to give lab-like curves (zero crossing ≈ 0.30 M sucrose at 22 °C,

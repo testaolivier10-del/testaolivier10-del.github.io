@@ -1,0 +1,7 @@
+{
+  "hwe": { "def": "The state of a population whose allele and genotype frequencies stay the same from generation to generation, because none of the processes that cause evolution is acting. Worked out independently by G. H. Hardy and Wilhelm Weinberg in 1908, it is the baseline against which evolution is measured." },
+  "hw-equations": { "def": "For a gene with two alleles at frequencies p and q: p + q = 1 (all alleles) and p² + 2pq + q² = 1 (all genotypes), where p² is the frequency of homozygous dominant individuals, 2pq of heterozygotes and q² of homozygous recessive individuals, in a population at equilibrium." },
+  "genotype-frequency": { "def": "The proportion of individuals in a population that have a particular genotype, such as AA, Aa or aa. The genotype frequencies of a gene add up to 1." },
+  "hw-conditions": { "def": "The five conditions for Hardy-Weinberg equilibrium: a very large population (no genetic drift), no gene flow, no net mutation, random mating, and no natural selection. Each rules out one process that can change allele or genotype frequencies." },
+  "hw-deviation": { "def": "A difference between observed allele or genotype frequencies and those Hardy-Weinberg predicts, too large to be due to chance (often judged with a chi-square test). It shows that at least one condition is not met: the population may be evolving, or mating nonrandomly." }
+}

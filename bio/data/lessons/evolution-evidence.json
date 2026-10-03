@@ -1,0 +1,80 @@
+{
+  "topic": "evolution-evidence",
+  "hook": "<p>In 2004, paleontologists working on an Arctic island found exactly what they had predicted: a 375-million-year-old fish with a neck, flat head and fins containing wrist-like bones. They had chosen rocks of that age because fish fossils appear in older rocks and four-legged animals in younger ones. A good theory makes predictions that could fail. Fossils, anatomy, embryos, the map of where species live and the sequences of DNA and proteins all point to the same history.</p>",
+  "prereq": [
+    {
+      "q": "Isotopes of an element differ in their number of",
+      "options": ["neutrons", "protons", "electrons in the outer shell"],
+      "correct": 0,
+      "why": "Isotopes have the same number of protons but different numbers of neutrons; some are radioactive and decay at a steady rate.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "A protein's primary structure is",
+      "options": ["its sequence of amino acids", "its folded 3-D shape", "the number of polypeptide chains it has"],
+      "correct": 0,
+      "why": "Primary structure is the amino acid sequence, which is set by the gene's base sequence.",
+      "review": "proteins"
+    },
+    {
+      "q": "Natural selection can change a population only when variation in a trait is",
+      "options": ["heritable", "acquired during life", "the same in every individual"],
+      "correct": 0,
+      "why": "Selection acts on inherited differences, so over generations populations descend with modification.",
+      "review": "natural-selection-intro"
+    }
+  ],
+  "figure": {
+    "figure": "forelimb-homology",
+    "caption": "Homologous forelimbs. Humans, cats, whales and bats use their forelimbs for different jobs, yet each is built from the same set of bones, in the same order, because all four inherited the plan from a common ancestor."
+  },
+  "chain": [
+    {
+      "cause": "Organisms are buried quickly in sediment, which hardens into rock layer by layer.",
+      "effect": "Fossils form, and lower layers hold older fossils (relative dating); radioactive isotopes in volcanic layers give ages in years (radiometric dating)."
+    },
+    {
+      "cause": "Fossils are arranged by age.",
+      "effect": "The fossil record shows life changing over time: most species that lived are extinct, and transitional fossils link older and later groups."
+    },
+    {
+      "cause": "Descendants inherit structures from a common ancestor and modify them for new uses.",
+      "effect": "Homologous structures (one bone plan in arms, legs, flippers and wings), vestigial structures and shared embryo features appear across related species."
+    },
+    {
+      "cause": "Unrelated species face similar environments.",
+      "effect": "Convergent evolution produces analogous structures that look alike but are built differently, which is why anatomy must be read with care."
+    },
+    {
+      "cause": "Once two lineages separate, mutations build up in each independently.",
+      "effect": "The more recent their common ancestor, the more similar their DNA and protein sequences: molecular evidence that matches the fossils and anatomy."
+    }
+  ],
+  "ideas": [
+    "The <b>fossil record</b>, ordered by <b>relative dating</b> (lower <b>strata</b> are older) and <b>radiometric dating</b> (decay at a known <b>half-life</b>), shows change over time, <b>extinction</b> and <b>transitional fossils</b>.",
+    "<b>Homologous structures</b> share an inherited plan despite different uses. <b>Analogous structures</b> share a function but arose separately, by <b>convergent evolution</b>.",
+    "<b>Vestigial structures</b>, such as whale hip bones, are reduced leftovers of structures that were fully developed in ancestors.",
+    "<b>Comparative embryology</b>: all vertebrate embryos form <b>pharyngeal arches</b>. <b>Biogeography</b>: island species resemble those of the nearest mainland.",
+    "<b>Molecular homology</b>: species with a more recent common ancestor have more similar DNA and amino acid sequences."
+  ],
+  "misconception": {
+    "wrong": "Animals that look alike, such as sharks and dolphins, must be closely related.",
+    "right": "Similar environments can shape unrelated animals alike (convergent evolution). A dolphin has lungs, mammary glands and the bones of a mammal's forelimb inside its flipper, and its DNA matches other mammals, not sharks. Homologous structures and sequences, not overall shape, show who is related to whom."
+  },
+  "check": [
+    "bio-evolution-evidence-1",
+    "bio-evolution-evidence-2",
+    "bio-evolution-evidence-4",
+    "bio-evolution-evidence-6",
+    "bio-evolution-evidence-8",
+    "bio-evolution-evidence-11",
+    "bio-evolution-evidence-14",
+    "bio-evolution-evidence-19"
+  ],
+  "summary": "<p>Several independent kinds of evidence show that living species descend, with modification, from earlier ones. The fossil record, put in order by relative dating (lower layers are older) and given ages by radiometric dating (isotopes decay with fixed half-lives), shows life changing over time, many extinctions, and transitional fossils. Homologous structures, such as the forelimb bones of humans, cats, whales and bats, reveal a shared plan inherited from a common ancestor; vestigial structures are reduced remnants of ancestral ones; and vertebrate embryos share features such as pharyngeal arches. Analogous structures, produced by convergent evolution, look alike without shared ancestry. Biogeography shows species resembling their nearest neighbors in space. Molecular evidence, the similarity of DNA and protein sequences, matches these patterns: the more recently two species shared an ancestor, the more alike their sequences.</p>",
+  "connections": [
+    { "href": "../notes/natural-selection-intro.html", "label": "Back: descent with modification (7.1)" },
+    { "href": "../notes/proteins.html", "label": "Back: amino acid sequences (1.7)" },
+    { "href": "../notes/common-ancestry.html", "label": "Next: what all living things share (7.7)" }
+  ]
+}

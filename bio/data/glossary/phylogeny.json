@@ -1,0 +1,16 @@
+{
+  "divergent": { "def": "Divergent evolution: the accumulation of differences between groups that descend from a common ancestor, as their lines split and adapt to different conditions. Homologous structures, such as the forelimbs of bats, whales and humans, are its signature." },
+  "phylogeny": { "def": "The evolutionary history of a group of organisms: which lines split from which, and in what order, showing their evolutionary relationships." },
+  "phylo-tree": { "def": "A phylogenetic tree: a branching diagram showing hypothesized evolutionary relationships. Tips are taxa, branches are lines of descent, and each node is a common ancestor. Some trees scale branch lengths to time or amount of change." },
+  "node": { "def": "A branch point on a phylogenetic tree, representing the most recent common ancestor of everything that branches from it. The node at the base of the whole tree is the root." },
+  "clade": { "def": "A group made of one ancestor and all of its descendants (a monophyletic group). A group that leaves out some descendants of its common ancestor, such as reptiles without birds, is not a clade." },
+  "sister-taxa": { "def": "Two taxa (groups or species) that share a common ancestor, a node, that no other taxon on the tree shares; each is the other's closest relative on the tree." },
+  "shared-derived": { "def": "A shared derived character: a trait that arose in the most recent common ancestor of a group and is shared by its descendants but not by the outgroup. Shared derived characters mark clades." },
+  "shared-ancestral": { "def": "A shared ancestral character: a trait that a group inherited from an ancestor older than the group, so its members and the outgroup share it. It cannot be used to sort members of the group." },
+  "cladogram": { "def": "A tree built from shared derived characters, showing only the order of branching. Branch lengths carry no meaning about time or amount of change." },
+  "outgroup": { "def": "A taxon known to lie outside the group being studied (the ingroup). Character states it shares with the ingroup are taken as ancestral, which shows which states are derived." },
+  "parsimony": { "def": "Maximum parsimony: the principle of preferring the tree that needs the fewest evolutionary changes (gains or losses of characters, or sequence changes) to explain the data." },
+  "molecular-clock": { "def": "A method of estimating when lines split from the number of DNA or protein differences between them, assuming differences build up at a roughly constant rate that has been calibrated with dated fossils." },
+  "tree-hypothesis": { "def": "The idea that a phylogenetic tree is a hypothesis about evolutionary relationships, tested and revised as new molecular, fossil or anatomical evidence appears." },
+  "taxonomy": { "def": "The science of naming and classifying organisms. Each species gets a two-part (binomial) name, genus then species, such as <i>Homo sapiens</i>, and is placed in nested ranks: domain, kingdom, phylum, class, order, family, genus, species." }
+}

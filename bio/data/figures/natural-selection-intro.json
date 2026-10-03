@@ -1,0 +1,7 @@
+{
+  "selection-logic": {
+    "file": "figures/selection-logic.svg", "ext": "svg", "w": 760, "h": 370,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four panels of beetles on dark soil. 1, heritable variation: 3 of 10 beetles are dark and 7 light, and body color is inherited. 2, not all survive: more are born than can live, and birds spot light beetles on dark soil more easily, so 5 light and 1 dark beetle are eaten, leaving 2 dark and 2 light. 3, survivors reproduce: each survivor has offspring of its own color. 4, the next generation: 5 of 10 beetles are dark, 50% instead of 30%. No beetle changed color; the proportions changed. Repeated over many generations, the population evolves."
+  }
+}

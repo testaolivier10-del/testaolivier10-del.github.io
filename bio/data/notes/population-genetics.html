@@ -1,0 +1,56 @@
+<p>Natural selection is one way a population's alleles change, but not the only one. Population genetics tracks alleles by counting them, and shows that chance, migration and mutation move allele frequencies too, chance most of all when a population is small. This page defines the gene pool and allele frequency, then takes each process in turn.</p>
+
+<h2>The gene pool and allele frequencies</h2>
+<p>The <b>gene pool</b> of a population is all the alleles of all its genes at one time. For a single gene, we describe the gene pool by <b>allele frequencies</b>: the share of all copies of that gene that are a particular allele. In a diploid population every individual carries two copies of each autosomal gene, so a population of N individuals holds 2N copies.</p>
+<div class="worked">
+<p><b>Worked example: allele frequencies from genotype counts.</b> A population of 200 snails has 90 BB, 60 Bb and 50 bb individuals. What is the frequency of allele b?</p>
+<p><b>Step 1.</b> Count all copies of the gene: 2 × 200 = 400. <b>Step 2.</b> Count copies of b: each bb snail has two, each Bb snail one: (2 × 50) + 60 = 160. <b>Step 3.</b> Divide: 160 ÷ 400 = 0.40. <b>Check:</b> copies of B = (2 × 90) + 60 = 240, and 240 ÷ 400 = 0.60; 0.60 + 0.40 = 1.</p>
+<p>A common mistake is to divide the number of bb snails by the total (50 ÷ 200 = 0.25). That gives the share of one genotype, not the frequency of the allele, and it leaves out the b alleles hiding in heterozygotes.</p>
+</div>
+<p>A change in allele frequencies from one generation to the next is <b>microevolution</b>, the smallest scale of evolution, and the one we can measure directly. Five processes cause or shape it:</p>
+<table class="compare">
+<caption>Mutation, drift, gene flow and selection (plus nonrandom mating)</caption>
+<thead><tr><th>Process</th><th>What happens</th><th>Effect on allele frequencies</th><th>Effect on variation within a population</th><th>Leads to adaptation?</th></tr></thead>
+<tbody>
+<tr><th scope="row">Mutation</th><td>DNA changes create new alleles</td><td>Very small per generation</td><td>Adds variation</td><td>No, it is random; it supplies the raw material</td></tr>
+<tr><th scope="row">Genetic drift</th><td>Chance decides which alleles are passed on</td><td>Random, large in small populations</td><td>Removes variation</td><td>No; can even spread harmful alleles</td></tr>
+<tr><th scope="row">Gene flow</th><td>Alleles move between populations</td><td>Moves each population toward the others</td><td>Usually adds variation</td><td>No; can work against local adaptation</td></tr>
+<tr><th scope="row">Natural selection</th><td>Alleles that raise fitness are passed on more</td><td>Consistent, in the direction of higher fitness</td><td>Often reduces it</td><td>Yes, the only process that does</td></tr>
+<tr><th scope="row">Nonrandom mating</th><td>Mates are chosen by relatedness or similarity</td><td>None by itself</td><td>More homozygotes, fewer heterozygotes</td><td>No</td></tr>
+</tbody>
+</table>
+
+<h2>Mutation: the source of new alleles</h2>
+<p>Every allele began as a mutation. Any one gene mutates rarely, on the order of once in 100,000 to 1,000,000 gametes, so mutation on its own barely moves allele frequencies. But every individual carries many new mutations across its whole genome, so a population gains <b>new alleles</b> each generation. Without mutation, selection and drift would eventually run out of variation to act on.</p>
+
+<h2>Genetic drift: evolution by chance</h2>
+<p>Not every individual reproduces, and those that do pass on a random half of their alleles. So the alleles in one generation are a sample of those in the last, and samples differ from the whole by chance. Toss a coin 10 times and getting 7 heads is common; toss it 1,000 times and getting 700 heads is almost impossible. In the same way, in a population of 10, allele frequencies can swing widely in one generation; in a population of 10,000, they barely move. This random change is <b>genetic drift</b>, and its strength depends on <b>population size</b>, strictly the number of individuals that breed.</p>
+<p>Drift has four effects that matter for the exam:</p>
+<ul>
+<li>It is random in direction: the same allele may rise in one small population and vanish from another.</li>
+<li>Given time, an allele drifts to a frequency of 0 (lost) or 1 (fixed), so drift steadily removes alleles from a small population.</li>
+<li>It ignores fitness: a slightly harmful allele can become common and a helpful one can be lost.</li>
+<li>Different small populations end up with different allele frequencies, even in identical environments.</li>
+</ul>
+<p>Watch drift happen, and compare small and large populations, in the <a href="../tools/hardy-weinberg-drift.html">genetic drift simulator</a>.</p>
+
+<h2>Bottlenecks and founders</h2>
+<figure id="fig-drift" data-fig="bottleneck-founder"><figcaption>Figure 1. The bottleneck effect and the founder effect. Each circle is one allele copy.</figcaption></figure>
+<p>Drift is most dramatic when a population becomes small, even briefly (<a class="figref" href="#fig-drift">Figure 1</a>).</p>
+<ul>
+<li>In the <b>bottleneck effect</b>, a disaster, disease or hunting kills most of a population at random with respect to its alleles. Northern elephant seals were hunted down to perhaps a few dozen animals in the 1890s. Protected, they now number over 200,000, yet they carry far less genetic variation than southern elephant seals, which were never reduced so far. Growing back restores numbers, not lost alleles. Cheetahs show the same signature of an ancient bottleneck: they are so genetically alike that skin grafts between unrelated cheetahs are often not rejected.</li>
+<li>In the <b>founder effect</b>, a few individuals start a new population, and their alleles are a chance sample of the source. The Old Order Amish of Lancaster County, Pennsylvania, descend from a few hundred founders who arrived in the 1700s. One founder couple carried an allele for Ellis-van Creveld syndrome, a recessive form of dwarfism with extra fingers. It now affects about 1 in 200 Amish births there, compared with fewer than 1 in 60,000 in most populations. Pingelap's color blindness is both: a bottleneck after a typhoon, and a new population founded by the survivors.</li>
+</ul>
+
+<h2>Gene flow</h2>
+<p><b>Gene flow</b> is the movement of alleles between populations when individuals migrate and breed (immigration into one population, emigration from another) or when gametes travel, as pollen does on the wind. Gene flow makes populations more alike, can bring in new alleles, and can rescue a small population from the effects of drift. By the early 1990s only about 20 to 30 Florida panthers remained, cut off from other pumas, and many had kinked tails, heart defects and poor sperm, signs of harmful recessive alleles made common by drift and mating among relatives. In 1995 eight female pumas from Texas were released into Florida. Kittens with Texas ancestry had fewer defects and survived better, and the population grew several-fold. Gene flow can also oppose selection: pollen blowing from ordinary grass onto the edge of a copper mine carries alleles that do not tolerate copper, slowing local adaptation there.</p>
+
+<h2>Nonrandom mating</h2>
+<p>Random mating means partners are paired without regard to genotype. In <b>nonrandom mating</b> they are not: in <b>inbreeding</b>, relatives mate (or a plant fertilizes itself); in <b>assortative mating</b>, individuals choose partners that look like themselves. Both raise the share of homozygous offspring and lower the share of heterozygotes. On its own, nonrandom mating does not change allele frequencies, but by exposing recessive alleles in homozygotes it lets selection act on them, which is why inbred populations show more recessive disorders.</p>
+
+<h2>Why losing variation matters</h2>
+<p>Small or bottlenecked populations lose alleles to drift, and the alleles that are lost could have mattered later. A population with little genetic variation has fewer individuals that happen to carry alleles for surviving a new disease, a warmer climate or a new predator, so natural selection has less to work with. This <b>loss of genetic variation</b> is why conservation biologists worry about small, isolated populations even when their numbers are stable, and why they sometimes move animals between populations to restore gene flow.</p>
+
+<aside class="going-further">
+<p><b>Going further: the breeding population is what counts.</b> Drift depends on how many individuals actually pass on alleles, not on how many are alive. In elephant seals a few dominant males father most pups each year, so the number of breeding adults, and the strength of drift, is far smaller than the head count suggests.</p>
+</aside>
