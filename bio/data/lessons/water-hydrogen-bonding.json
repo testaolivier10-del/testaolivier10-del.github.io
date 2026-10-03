@@ -1,0 +1,34 @@
+{
+  "topic": "water-hydrogen-bonding",
+  "hook": "<p>On a hot day a runner loses about a liter of sweat an hour, and her body temperature barely moves. A lake beside the track stays cool all afternoon while the pavement gets too hot to touch. Both come down to one small fact about water: its molecules stick to each other.</p>",
+  "prereq": [],
+  "figure": { "figure": "water-hbond", "caption": "Each water molecule is held together by covalent bonds (solid lines). Neighboring molecules are attracted to each other by hydrogen bonds (dashed lines), from a partially positive hydrogen to a partially negative oxygen." },
+  "chain": [
+    { "cause": "Oxygen attracts the electrons it shares with hydrogen more strongly than hydrogen does.", "effect": "The electrons spend more time near the oxygen, so the oxygen end is partly negative and the hydrogen ends are partly positive: water is a polar molecule." },
+    { "cause": "Opposite partial charges attract.", "effect": "A hydrogen of one water molecule is pulled toward the oxygen of a neighbor, forming a hydrogen bond." },
+    { "cause": "In liquid water, each molecule keeps forming and breaking hydrogen bonds with its neighbors.", "effect": "The molecules cling to each other (cohesion) and to other polar surfaces (adhesion)." },
+    { "cause": "Heating water first has to break many hydrogen bonds before the molecules can move faster.", "effect": "Water has a high specific heat: its temperature rises slowly as it absorbs energy." },
+    { "cause": "A molecule can only escape as vapor once it breaks all of its hydrogen bonds.", "effect": "Water has a high heat of vaporization, so evaporation carries a lot of heat away and cools what is left behind." }
+  ],
+  "ideas": [
+    "Inside one molecule, oxygen and hydrogen share electrons in <b>covalent bonds</b>. Between molecules, the much weaker <b>hydrogen bonds</b> hold water together.",
+    "Polar and charged substances dissolve in water because water's partial charges surround them. That is why water is called the solvent of life.",
+    "<b>Specific heat</b> is about warming up; <b>heat of vaporization</b> is about turning into a gas. Hydrogen bonds make both high for water."
+  ],
+  "misconception": {
+    "wrong": "A hydrogen bond is the bond that holds the hydrogen atoms onto the oxygen inside a water molecule.",
+    "right": "That bond is covalent. A hydrogen bond is a weaker attraction between different molecules: the hydrogen of one water molecule and the oxygen of another."
+  },
+  "check": [
+    "bio-water-hydrogen-bonding-9",
+    "bio-water-hydrogen-bonding-10",
+    "bio-water-hydrogen-bonding-11",
+    "bio-water-hydrogen-bonding-1",
+    "bio-water-hydrogen-bonding-2",
+    "bio-water-hydrogen-bonding-3",
+    "bio-water-hydrogen-bonding-4",
+    "bio-water-hydrogen-bonding-14"
+  ],
+  "summary": "<p>Water is polar: its oxygen end is partly negative and its hydrogen ends partly positive. Opposite partial charges on neighboring molecules attract, forming hydrogen bonds. Those bonds explain cohesion, adhesion and surface tension, water's high specific heat and its high heat of vaporization, and its role as the solvent for most of the chemistry in a cell.</p>",
+  "connections": []
+}

@@ -1,0 +1,33 @@
+{
+  "about": "The AP Biology app pages. scripts/build-apbio.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in bio/assets/<script>, which mounts into #app. Until that script exists the shell says the page arrives with the first published unit. premium names the Premium feature (ApBioCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apbio-spec.md decision 2), so scripts live in bio/assets/pages/, not apps/.",
+  "apps": [
+    { "slug": "practice", "premium": "question-bank", "section": "practice", "h1": "Practice", "title": "Practice questions",
+      "desc": "Biology practice by unit, topic or science practice: standalone questions and data-heavy stimulus sets, with an explanation for every option.",
+      "card": "Drill a unit, a topic or a science practice, with stimulus sets.", "script": "pages/practice.js", "css": "pages/pages.css" },
+    { "slug": "review", "premium": "review", "section": "review", "h1": "Review", "title": "Spaced review",
+      "desc": "Your biology spaced review queue: every question you missed comes back just before you would forget it.",
+      "card": "Missed questions come back when you are about to forget them.", "script": "pages/review.js", "css": "pages/pages.css" },
+    { "slug": "exams", "premium": "exams", "section": "exams", "h1": "Exams", "title": "Unit tests and practice exams",
+      "desc": "Timed biology unit tests and full practice exams in the hybrid format: 60 multiple-choice questions, then six free-response questions with rubrics.",
+      "card": "Unit tests and full timed practice exams, scored with rubrics.", "script": "pages/exams.js", "css": "pages/pages.css" },
+    { "slug": "frq", "premium": "exams", "section": "exams", "h1": "Free-response practice", "title": "Free-response practice",
+      "desc": "Biology free-response practice in all six question types, each with a point-by-point rubric, a full-credit sample answer and a printable answer sheet.",
+      "card": "All six free-response types, with rubrics and sample answers.", "script": "pages/frq.js", "css": "pages/pages.css" },
+    { "slug": "flashcards", "section": "practice", "h1": "Flashcards", "title": "Flashcards",
+      "desc": "Spaced-repetition biology flashcards built from the glossary, by unit and topic.",
+      "card": "Spaced-repetition cards from the glossary.", "script": "pages/flashcards.js", "css": "pages/pages.css" },
+    { "slug": "tools", "section": "tools", "h1": "Tools", "title": "Simulators and skills tools",
+      "desc": "Biology simulators and skills tools: enzymes, osmosis, the cell cycle, Hardy-Weinberg, chi-square, graph building and more, each followed by questions.",
+      "card": "Simulators, then the questions about what you saw.", "script": "pages/tools.js", "css": "pages/pages.css" },
+    { "slug": "dashboard", "section": "dashboard", "siteScripts": ["exam-date.js"], "h1": "Dashboard", "title": "Your dashboard",
+      "desc": "Your biology mastery by unit, topic and science practice, with every miss linked to the lesson that teaches it.",
+      "card": "Mastery by unit, topic and science practice.", "script": "pages/dashboard.js", "css": "pages/pages.css" },
+    { "slug": "search", "section": "", "h1": "Search", "title": "Search the course",
+      "desc": "Search every biology lesson, notes page, glossary term and tool in the course.", "script": "pages/search.js", "css": "pages/pages.css" },
+    { "slug": "teachers", "section": "", "h1": "For teachers", "title": "For teachers",
+      "desc": "For biology teachers: stable share links, printable notes and unit sheets, and sharing pages to Google Classroom, with no new student data collected.",
+      "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
+      "script": "pages/teachers.js", "css": "pages/pages.css" }
+  ],
+  "tools": []
+}

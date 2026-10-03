@@ -1,0 +1,32 @@
+{
+  "id": "frq-water-cooling",
+  "type": "data",
+  "points": 4,
+  "units": ["unit-1"],
+  "topics": ["water-hydrogen-bonding"],
+  "practices": ["4.B", "5.A", "6.C", "6.E"],
+  "stimulus": {
+    "kind": "table",
+    "title": "Evaporation from skin",
+    "text": "<p>Researchers placed 1.0 g of each liquid on a patch of skin and measured how far the skin temperature fell as it evaporated.</p>",
+    "table": {
+      "caption": "Drop in skin temperature as 1.0 g of liquid evaporated",
+      "cols": ["Liquid", "Heat of vaporization (J/g)", "Drop in skin temperature (°C)"],
+      "rows": [["Water", "2,260", "3.1"], ["Ethanol", "841", "1.2"], ["Acetone", "539", "0.8"]]
+    }
+  },
+  "parts": [
+    { "label": "a", "points": 1, "prompt": "<b>Describe</b> the relationship between heat of vaporization and the drop in skin temperature shown in the table.",
+      "rubric": [{ "point": "States that a higher heat of vaporization goes with a larger drop in skin temperature.", "accept": ["the larger the heat of vaporization, the more the skin cools", "positive relationship between the two"] }],
+      "sample": "Liquids with a higher heat of vaporization cooled the skin more: water, with the highest value, lowered skin temperature the most." },
+    { "label": "b", "points": 1, "prompt": "<b>Calculate</b> the heat, in joules, removed from the skin when 2.0 g of water evaporates.",
+      "rubric": [{ "point": "4,520 J (2.0 g × 2,260 J/g), with units.", "accept": ["4520 J", "4.52 kJ"] }],
+      "sample": "2.0 g × 2,260 J/g = 4,520 J." },
+    { "label": "c", "points": 1, "prompt": "<b>Explain</b> why water has a higher heat of vaporization than acetone, even though both are polar.",
+      "rubric": [{ "point": "Water molecules form hydrogen bonds with each other and acetone molecules do not, so each escaping water molecule must break more or stronger attractions.", "accept": ["hydrogen bonds must be broken for water molecules to escape"] }],
+      "sample": "Water molecules hold each other with hydrogen bonds, and a molecule must break all of them to escape as vapor. Acetone molecules cannot form hydrogen bonds with each other, so less energy frees them." },
+    { "label": "d", "points": 1, "prompt": "<b>Predict</b> how the drop in skin temperature would change if the water were applied on a humid day, when evaporation is slower, and <b>justify</b> your prediction.",
+      "rubric": [{ "point": "Predicts a smaller drop (or a slower drop) because less water evaporates in the same time, so less heat is carried away.", "accept": ["smaller temperature drop because less evaporation removes less heat"] }],
+      "sample": "The skin would cool less in the same time. With slower evaporation, fewer water molecules leave per minute, so less heat is carried away from the skin." }
+  ]
+}
