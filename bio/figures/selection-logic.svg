@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 370" width="760" height="370" role="img" aria-labelledby="sl-t sl-d">
 <title id="sl-t">The logic of natural selection in four steps</title>
-<desc id="sl-d">Four panels of beetles on dark soil. Panel 1, heritable variation: 10 beetles, 3 dark and 7 light; coat color is inherited. Panel 2, not all survive: more beetles are born than can live, and birds find light beetles on dark soil more easily, so 5 light beetles and 1 dark beetle are eaten (marked with crosses); 2 dark and 2 light survive. Panel 3, survivors reproduce: the 4 survivors each have small offspring of their own color. Panel 4, the next generation: 5 of 10 beetles are dark, 50% instead of 30%. No beetle changed color; the proportions changed. An arrow along the bottom says that repeated over many generations, the population changes: evolution by natural selection.</desc>
+<desc id="sl-d">Four panels of beetles on dark soil. Panel 1, heritable variation: 10 beetles, 3 dark and 7 light; body color is inherited. Panel 2, not all survive: more beetles are born than can live, and birds find light beetles on dark soil more easily, so 5 light beetles and 1 dark beetle are eaten (marked with crosses); 2 dark and 2 light survive. Panel 3, survivors reproduce: the 4 survivors each have small offspring of their own color. Panel 4, the next generation: 5 of 10 beetles are dark, 50% instead of 30%. No beetle changed color; the proportions changed. An arrow along the bottom says that repeated over many generations, the population changes: evolution by natural selection.</desc>
 <defs>
 <marker id="sl-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
 <g id="sl-bd"><ellipse cx="0" cy="3" rx="9" ry="12" fill="#2A2118" stroke="#B7A57A" stroke-width="1.2"/><circle cx="0" cy="-11" r="5" fill="#2A2118" stroke="#B7A57A" stroke-width="1.2"/></g>
@@ -23,7 +23,7 @@
 <use href="#sl-bl" x="155.7" y="156"/>
 <use href="#sl-bl" x="74.2" y="194"/>
 <use href="#sl-bd" x="115.8" y="192"/>
-<text x="95" y="236" font-size="13" text-anchor="middle">Coat color differs, and</text>
+<text x="95" y="236" font-size="13" text-anchor="middle">Body color differs, and</text>
 <text x="95" y="256" font-size="13" text-anchor="middle">offspring inherit it.</text>
 <text x="95" y="276" font-size="13" text-anchor="middle">3 of 10 are dark (30%).</text>
 <line x1="182" y1="150" x2="198" y2="150" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#sl-a)"/>

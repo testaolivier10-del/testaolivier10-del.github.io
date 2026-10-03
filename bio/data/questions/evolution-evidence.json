@@ -176,7 +176,7 @@
         "options": [
           "Correct: a small difference in one small protein is weak evidence.",
           "A difference of two out of 104 is too small to rely on; numbers from a single protein have random variation.",
-          "The table lists rabbits and dogs as mammals both.",
+          "The table lists both rabbits and dogs as mammals.",
           "Mitochondrial proteins and DNA are widely used to compare species; the problem is the size of the sample, not the source."
         ]
       }
@@ -313,7 +313,7 @@
       "stimulus": "evolution-evidence-s2",
       "q": "Why did the geologists date the ash layers rather than the fossil-bearing sandstone, shale and mudstone?",
       "options": [
-        "Ash crystals form when lava cools, starting the clock; sedimentary grains are older than the layer itself.",
+        "Ash crystals form as molten rock cools, starting the clock; sedimentary grains are older than the layer itself.",
         "Sedimentary rocks contain no radioactive isotopes, so no radiometric method works on them.",
         "Volcanic ash decays faster than sedimentary rock, so it gives a more precise age in fewer years.",
         "Fossils are destroyed when sedimentary rock is heated, so the rock around them is not tested."
@@ -459,7 +459,7 @@
         "correct": "Dolphins have lungs, hair at birth, mammary glands and mammal forelimb bones inside their flippers, and their DNA matches other mammals. Their shark-like shape evolved separately under similar pressures: an analogous resemblance.",
         "options": [
           "Correct: unrelated groups shaped alike by similar environments.",
-          "The last common ancestor of sharks and dolphins lived hundreds of millions of years ago and was not streamlined in this way; dolphins descend from land mammals.",
+          "The last common ancestor of sharks and dolphins lived more than 400 million years ago, long before either streamlined form evolved; dolphins descend from four-legged land mammals.",
           "Dolphins are mammals; their skeletons, DNA and fossils show descent from land mammals.",
           "Same function does not mean shared ancestry; that is the definition of an analogous structure."
         ]

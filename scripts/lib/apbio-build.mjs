@@ -404,7 +404,7 @@ export function renderFigures(C, html, depth) {
      series: [{ name, points: [[x, y, err?], ...] }] }
    err draws an error bar (±err). The SVG is role="img" with a label; the
    data table follows in a <details> for screen readers and for checking. */
-const SERIES_CLASS = ['s1', 's2', 's3', 's4'];
+const SERIES_CLASS = ['s1', 's2', 's3', 's4', 's5'];
 const fmt = v => (Math.round(v * 1000) / 1000).toString();
 export function chartSvg(spec, title = '') {
   const W = 560, H = 320, L = 64, R = 18, T = 18, B = 58;
@@ -437,14 +437,14 @@ export function chartSvg(spec, title = '') {
         const p = s.points.find(q => q[0] === c);
         if (!p) return;
         const x = L + gw * (ci + 0.5) - bw * series.length / 2 + bw * si;
-        parts.push(`<rect class="bar ${SERIES_CLASS[si % 4]}" x="${x.toFixed(1)}" y="${sy(Math.max(p[1], 0)).toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${Math.abs(sy(p[1]) - sy(0)).toFixed(1)}"/>`);
+        parts.push(`<rect class="bar ${SERIES_CLASS[si % SERIES_CLASS.length]}" x="${x.toFixed(1)}" y="${sy(Math.max(p[1], 0)).toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${Math.abs(sy(p[1]) - sy(0)).toFixed(1)}"/>`);
         if (p[2]) parts.push(errBar(x + (bw - 4) / 2, sy(p[1] + p[2]), sy(p[1] - p[2])));
       });
     });
   } else {
     for (const v of xs) parts.push(`<text class="tick" x="${sx(v).toFixed(1)}" y="${T + ph + 18}" text-anchor="middle">${fmt(v)}</text>`);
     series.forEach((s, si) => {
-      const cls = SERIES_CLASS[si % 4];
+      const cls = SERIES_CLASS[si % SERIES_CLASS.length];
       parts.push(`<polyline class="series ${cls}" points="${s.points.map(p => `${sx(p[0]).toFixed(1)},${sy(p[1]).toFixed(1)}`).join(' ')}"/>`);
       for (const p of s.points) {
         parts.push(si % 2 ? `<rect class="pt ${cls}" x="${(sx(p[0]) - 4).toFixed(1)}" y="${(sy(p[1]) - 4).toFixed(1)}" width="8" height="8"/>` : `<circle class="pt ${cls}" cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="4.5"/>`);
@@ -454,7 +454,7 @@ export function chartSvg(spec, title = '') {
   }
   parts.push(`<text class="lbl" x="${L + pw / 2}" y="${H - 12}" text-anchor="middle">${axisLabel(spec.x)}</text>`);
   parts.push(`<text class="lbl" transform="translate(16 ${T + ph / 2}) rotate(-90)" text-anchor="middle">${axisLabel(spec.y)}</text>`);
-  const legend = series.length > 1 ? `<p class="bio-legend">${series.map((s, si) => `<span class="${SERIES_CLASS[si % 4]}"><i aria-hidden="true"></i>${esc(s.name)}</span>`).join('')}</p>` : '';
+  const legend = series.length > 1 ? `<p class="bio-legend">${series.map((s, si) => `<span class="${SERIES_CLASS[si % SERIES_CLASS.length]}"><i aria-hidden="true"></i>${esc(s.name)}</span>`).join('')}</p>` : '';
   const label = `${title ? `${title}: ` : ''}${isBar ? 'bar' : 'line'} graph of ${text(spec.y.label)} against ${text(spec.x.label)}${series.length > 1 ? ` for ${series.map(s => s.name).join(', ')}` : ''}. The data table follows.`;
   const anyErr = series.some(s => s.points.some(p => p[2]));
   const xHead = axisLabel(spec.x);

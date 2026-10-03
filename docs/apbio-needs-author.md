@@ -457,6 +457,15 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - **stabilizing-birth-weight** (open, 7.2, `bio-natural-selection-11`). The 1935-1946 London hospital data (Karn and
   Penrose) are the classic stabilizing-selection example; modern medical care has weakened the pattern. The item
   states the dates, so the key holds.
+- **fox-correlated-traits** (open, 7.3 notes, `bio-artificial-selection-15`; review u7a). The Belyaev farm-fox floppy ears
+  and piebald coats are taught as side effects of selecting tameness (pleiotropy, the usual textbook account). Lord et
+  al. (2020) argue the founding fur-farm foxes already carried some of these traits and that the "domestication
+  syndrome" link is weaker than claimed. For your exam: correlated traits change when selection acts on genes with
+  several effects; the item keys only that idea.
+- **scale-eater-handedness** (open, 7.2, `bio-natural-selection-16`, notes; review u7a). Hori's (1993) Lake Tanganyika
+  scale-eater is the classic frequency-dependent example and the item says the mouth direction is inherited. Later
+  work finds the asymmetry continuous and partly plastic, not a simple two-allele trait. For your exam: rare-form
+  advantage keeps both forms near equal frequency; no key depends on the genetics.
 
 ## Map content to confirm
 

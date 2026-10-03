@@ -3,7 +3,7 @@
     "natural-selection-s1": {
       "kind": "graph",
       "title": "Beak depth of island finches across a drought and a wet year",
-      "text": "<p>On a small island, researchers banded and measured nearly every member of a population of seed-eating finches each year. Earlier work there had shown that beak depth is heritable: chicks resemble their parents in beak depth whatever they are fed. In 1977 almost no rain fell. The small, soft seeds were eaten first, the remaining seeds were mostly large and hard, and about 85% of the finches died; no chicks were raised that year. In 1983 heavy rain produced a flood of small, soft seeds that lasted two years. Each point is the mean beak depth of the birds hatched in that year, measured once they were adults, with error bars of ± 2 SE.</p>",
+      "text": "<p>On a small island, researchers banded and measured nearly every member of a population of seed-eating finches each year. Earlier work there had shown that beak depth is heritable: chicks resemble their parents in beak depth whatever they are fed. In 1977 almost no rain fell. The small, soft seeds were eaten first, the remaining seeds were mostly large and hard, and about 85% of the finches died; no chicks were raised that year. In 1983 heavy rain produced a flood of small, soft seeds that lasted two years. Each point is the mean beak depth of the birds hatched in that year, measured once they were adults, with error bars of ± 2 SE. (Values are simplified for teaching.)</p>",
       "chart": {
         "type": "line",
         "x": {
@@ -340,22 +340,22 @@
       "level": "apply",
       "diff": 2,
       "stimulus": "natural-selection-s2",
-      "q": "Assume tail length in males is heritable and females keep their preference. Predict the change in each of these over many generations.",
+      "q": "Assume tail length in males is heritable and females keep their preference. Predict the effect on each of these.",
       "variables": [
         {
-          "name": "Mean tail length of males",
+          "name": "Mean tail length of males, over many generations",
           "answer": "up",
           "why": "Long-tailed males father more chicks, so the alleles for long tails become more common."
         },
         {
-          "name": "Difference in tail length between males and females",
+          "name": "Difference in tail length between males and females, over many generations",
           "answer": "up",
           "why": "The preference acts on males, so male tails lengthen while female tails are not selected the same way, widening the dimorphism."
         },
         {
-          "name": "Number of nests a male gets from having his tail glued longer during his life",
+          "name": "Natural tail length of the sons of a male whose tail was glued longer, compared with the sons of an unaltered male with the same natural tail",
           "answer": "none",
-          "why": "Gluing changes one male's mating success but not his alleles, so it has no effect on later generations."
+          "why": "Gluing raises that male's mating success but does not change his alleles, so his sons inherit the tail length his alleles code for."
         }
       ],
       "why": {
@@ -393,7 +393,7 @@
       "type": "single",
       "unit": "unit-7",
       "topic": "natural-selection",
-      "practice": "2.B",
+      "practice": "6.E",
       "level": "analyze",
       "diff": 2,
       "q": "A study of more than 13,000 births in a London hospital between 1935 and 1946 found that babies of middle birth weight had the highest survival, and that survival fell for both lighter and heavier babies. If birth weight is partly heritable, which change in the distribution of birth weights would this selection tend to produce?",

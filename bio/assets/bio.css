@@ -437,8 +437,8 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
 
 /* Charts drawn by the generator (scripts/lib/apbio-build.mjs chartSvg).
    Series differ by colour AND marker shape, in light and dark. */
-:root{--bio-s1:#0072B2;--bio-s2:#D55E00;--bio-s3:#009E73;--bio-s4:#CC79A7;}
-:root[data-theme="dark"]{--bio-s1:#6CB8EC;--bio-s2:#FF9A5C;--bio-s3:#4FD1AA;--bio-s4:#E7A5CA;}
+:root{--bio-s1:#0072B2;--bio-s2:#D55E00;--bio-s3:#009E73;--bio-s4:#CC79A7;--bio-s5:#5E5E5E;}
+:root[data-theme="dark"]{--bio-s1:#6CB8EC;--bio-s2:#FF9A5C;--bio-s3:#4FD1AA;--bio-s4:#E7A5CA;--bio-s5:#C9C9C9;}
 .bio-chart{margin:4px 0;}
 .bio-svg{width:100%;max-width:560px;height:auto;display:block;}
 .bio-svg .axis{stroke:var(--ink);stroke-width:1.5;}
@@ -447,11 +447,11 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
 .bio-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
 .bio-svg .series{fill:none;stroke-width:2.5;}
 .bio-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
-.bio-svg .s1{stroke:var(--bio-s1);} .bio-svg .s2{stroke:var(--bio-s2);} .bio-svg .s3{stroke:var(--bio-s3);} .bio-svg .s4{stroke:var(--bio-s4);}
-.bio-svg .pt.s1,.bio-svg .bar.s1{fill:var(--bio-s1);} .bio-svg .pt.s2,.bio-svg .bar.s2{fill:var(--bio-s2);} .bio-svg .pt.s3,.bio-svg .bar.s3{fill:var(--bio-s3);} .bio-svg .pt.s4,.bio-svg .bar.s4{fill:var(--bio-s4);}
+.bio-svg .s1{stroke:var(--bio-s1);} .bio-svg .s2{stroke:var(--bio-s2);} .bio-svg .s3{stroke:var(--bio-s3);} .bio-svg .s4{stroke:var(--bio-s4);} .bio-svg .s5{stroke:var(--bio-s5);} .bio-svg .series.s5{stroke-dasharray:7 4;}
+.bio-svg .pt.s1,.bio-svg .bar.s1{fill:var(--bio-s1);} .bio-svg .pt.s2,.bio-svg .bar.s2{fill:var(--bio-s2);} .bio-svg .pt.s3,.bio-svg .bar.s3{fill:var(--bio-s3);} .bio-svg .pt.s4,.bio-svg .bar.s4{fill:var(--bio-s4);} .bio-svg .pt.s5,.bio-svg .bar.s5{fill:var(--bio-s5);}
 .bio-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
 .bio-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-.bio-legend .s1 i{background:var(--bio-s1);} .bio-legend .s2 i{background:var(--bio-s2);} .bio-legend .s3 i{background:var(--bio-s3);} .bio-legend .s4 i{background:var(--bio-s4);}
+.bio-legend .s1 i{background:var(--bio-s1);} .bio-legend .s2 i{background:var(--bio-s2);} .bio-legend .s3 i{background:var(--bio-s3);} .bio-legend .s4 i{background:var(--bio-s4);} .bio-legend .s5 i{background:var(--bio-s5);}
 .bio-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
 
 /* Numeric answers. */

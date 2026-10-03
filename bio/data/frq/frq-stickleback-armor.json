@@ -123,7 +123,7 @@
     },
     {
       "label": "d",
-      "prompt": "(i) <b>Identify</b> the Hardy-Weinberg condition most likely violated between one month and one year, and <b>justify</b> your answer using the data. (ii) <b>Explain</b> why the juveniles can fit Hardy-Weinberg expectations even though this condition is violated in the lake. (iii) <b>Predict</b> how the frequency of allele C among next year's juveniles will compare with 0.35, and <b>justify</b> your prediction.",
+      "prompt": "(i) <b>Identify</b> the Hardy-Weinberg condition most likely violated between one month and one year, and <b>justify</b> your answer using the data. (ii) <b>Explain</b> why the juveniles can fit Hardy-Weinberg expectations even though this condition is violated in the lake. (iii) <b>Predict</b> how the frequency of allele C among the juveniles this year class produces when it first breeds will compare with 0.35, and <b>justify</b> your prediction.",
       "points": 3,
       "rubric": [
         {
@@ -142,7 +142,7 @@
           ]
         },
         {
-          "point": "Predicts that the frequency of C among next year's juveniles will be higher than 0.35, because the survivors that breed carry C at a higher frequency (about 0.475 in this year class), and they pass C to their offspring.",
+          "point": "Predicts that the frequency of C among the juveniles this year class produces will be higher than 0.35, because the survivors that breed carry C at a higher frequency (about 0.475 in this year class), and they pass C to their offspring.",
           "accept": [
             "higher, because the fish that survive to breed have more C alleles",
             "C will increase toward 0.475 or beyond",
@@ -150,7 +150,7 @@
           ]
         }
       ],
-      "sample": "(i) The condition of no natural selection is violated. In samples of the same size, CC fish doubled from 20 to 40 and LL fish fell from 80 to 50 between one month and one year, so the frequency of C rose from 0.35 to (80 + 110) ÷ 400 = 0.475 in one year class. The lake is large and has no streams in or out, so drift and gene flow cannot explain such a large shift; fish with full armor were more likely to survive, as expected if trout catch less-armored fish more easily. (ii) The juveniles were formed by random mating, so their genotypes start out in Hardy-Weinberg proportions. Selection acts afterward, on which young fish survive, so it shows up in the one-year-olds but not in a sample taken at one month. (iii) The frequency of C among next year's juveniles will be higher than 0.35. The fish that survive to breed carry more C alleles than the juveniles did, and they pass those alleles to their offspring, so each new year class starts with a higher frequency of C."
+      "sample": "(i) The condition of no natural selection is violated. In samples of the same size, CC fish doubled from 20 to 40 and LL fish fell from 80 to 50 between one month and one year, so the frequency of C rose from 0.35 to (80 + 110) ÷ 400 = 0.475 in one year class. The lake is large and has no streams in or out, so drift and gene flow cannot explain such a large shift; fish with full armor were more likely to survive, as expected if trout catch less-armored fish more easily. (ii) The juveniles were formed by random mating, so their genotypes start out in Hardy-Weinberg proportions. Selection acts afterward, on which young fish survive, so it shows up in the one-year-olds but not in a sample taken at one month. (iii) The frequency of C among the juveniles this year class produces will be higher than 0.35. The fish that survive to breed at two years old carry more C alleles than they did as juveniles, and they pass those alleles to their offspring, so the new year class starts with a higher frequency of C."
     }
   ]
 }

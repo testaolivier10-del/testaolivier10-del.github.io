@@ -499,7 +499,7 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "With only 10 breeders (20 gene copies), chance sampling moves q by 0.05 or more each generation, up and down: genetic drift.",
+        "correct": "With only 10 breeders (20 gene copies), chance sampling moves q up and down in steps of 0.05 (one gene copy), often by 0.1 or more between the points plotted: genetic drift.",
         "options": [
           "Correct: random swings show drift in a small population.",
           "q in population 4 does not fall steadily; it rises to 0.80 at one point.",

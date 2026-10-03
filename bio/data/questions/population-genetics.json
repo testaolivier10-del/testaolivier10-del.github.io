@@ -22,6 +22,7 @@
         },
         "series": [
           {
+            "name": "S1 (10 adults)",
             "points": [
               [
                 0,
@@ -110,6 +111,7 @@
             ]
           },
           {
+            "name": "S2 (10 adults)",
             "points": [
               [
                 0,
@@ -198,6 +200,7 @@
             ]
           },
           {
+            "name": "S3 (10 adults)",
             "points": [
               [
                 0,
@@ -286,6 +289,7 @@
             ]
           },
           {
+            "name": "L1 (500 adults)",
             "points": [
               [
                 0,
@@ -374,6 +378,7 @@
             ]
           },
           {
+            "name": "L2 (500 adults)",
             "points": [
               [
                 0,
@@ -467,7 +472,7 @@
     "population-genetics-s2": {
       "kind": "table",
       "title": "A shrinking population of grassland birds",
-      "text": "<p>A grassland bird once lived across a whole state. As its prairie was plowed, one remaining population became cut off from all others by many kilometers of farmland. Researchers counted displaying males each spring, recorded the percentage of eggs that hatched in nests they monitored, and estimated genetic variation from the average number of alleles per gene at six genes, using DNA from feathers. Between 1992 and 1996 they released 270 birds caught in three large populations in other states.</p>",
+      "text": "<p>A grassland bird once lived across a whole state. As its prairie was plowed, one remaining population became cut off from all others by many kilometers of farmland. Researchers counted displaying males each spring, recorded the percentage of eggs that hatched in nests they monitored, and estimated genetic variation from the average number of alleles per gene at six genes, using DNA from feathers. Between 1992 and 1996 they released 270 birds caught in three large populations in other states. (Values are simplified for teaching.)</p>",
       "table": {
         "caption": "Population size, hatching and genetic variation in the isolated population",
         "cols": [
