@@ -1,0 +1,866 @@
+{
+  "stimuli": {
+    "community-ecology-s1": {
+      "kind": "table",
+      "title": "Ground beetles caught in two woodlands",
+      "text": "<p>Students set 20 pitfall traps (cups sunk level with the soil) in each of two woodlands for the same 7 days in June and identified every ground beetle caught. Woodland X is an old mixed forest; woodland Y is a young plantation of one tree species. The last row gives Simpson's diversity index, D, calculated from the counts.</p>",
+      "table": {
+        "caption": "Number of beetles of each species caught",
+        "cols": [
+          "Beetle species",
+          "Woodland X",
+          "Woodland Y"
+        ],
+        "rows": [
+          [
+            "1",
+            "40",
+            "120"
+          ],
+          [
+            "2",
+            "35",
+            "10"
+          ],
+          [
+            "3",
+            "30",
+            "8"
+          ],
+          [
+            "4",
+            "25",
+            "6"
+          ],
+          [
+            "5",
+            "20",
+            "5"
+          ],
+          [
+            "6",
+            "10",
+            "4"
+          ],
+          [
+            "7",
+            "0",
+            "4"
+          ],
+          [
+            "8",
+            "0",
+            "3"
+          ],
+          [
+            "Total",
+            "160",
+            "160"
+          ],
+          [
+            "Simpson's D",
+            "0.81",
+            "0.43"
+          ]
+        ]
+      }
+    },
+    "community-ecology-s2": {
+      "kind": "graph",
+      "title": "Two Paramecium species grown alone and together",
+      "text": "<p>Two species of the single-celled <i>Paramecium</i>, A and B, both eat the same bacteria. A student grew each species alone in tubes of culture medium with a daily ration of bacteria, and grew them together in the same kind of tubes with the same ration. Points are means of five tubes.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "days",
+          "min": 0,
+          "max": 20,
+          "step": 2
+        },
+        "y": {
+          "label": "Density",
+          "unit": "cells per mL",
+          "min": 0,
+          "max": 450,
+          "step": 50
+        },
+        "series": [
+          {
+            "name": "A alone",
+            "points": [
+              [
+                0,
+                5
+              ],
+              [
+                2,
+                25
+              ],
+              [
+                4,
+                110
+              ],
+              [
+                6,
+                280
+              ],
+              [
+                8,
+                380
+              ],
+              [
+                10,
+                400
+              ],
+              [
+                12,
+                405
+              ],
+              [
+                14,
+                398
+              ],
+              [
+                16,
+                402
+              ],
+              [
+                18,
+                400
+              ],
+              [
+                20,
+                399
+              ]
+            ]
+          },
+          {
+            "name": "B alone",
+            "points": [
+              [
+                0,
+                5
+              ],
+              [
+                2,
+                20
+              ],
+              [
+                4,
+                75
+              ],
+              [
+                6,
+                170
+              ],
+              [
+                8,
+                230
+              ],
+              [
+                10,
+                248
+              ],
+              [
+                12,
+                252
+              ],
+              [
+                14,
+                250
+              ],
+              [
+                16,
+                249
+              ],
+              [
+                18,
+                251
+              ],
+              [
+                20,
+                250
+              ]
+            ]
+          },
+          {
+            "name": "A grown with B",
+            "points": [
+              [
+                0,
+                5
+              ],
+              [
+                2,
+                22
+              ],
+              [
+                4,
+                92
+              ],
+              [
+                6,
+                220
+              ],
+              [
+                8,
+                300
+              ],
+              [
+                10,
+                335
+              ],
+              [
+                12,
+                350
+              ],
+              [
+                14,
+                360
+              ],
+              [
+                16,
+                368
+              ],
+              [
+                18,
+                372
+              ],
+              [
+                20,
+                375
+              ]
+            ]
+          },
+          {
+            "name": "B grown with A",
+            "points": [
+              [
+                0,
+                5
+              ],
+              [
+                2,
+                18
+              ],
+              [
+                4,
+                55
+              ],
+              [
+                6,
+                80
+              ],
+              [
+                8,
+                70
+              ],
+              [
+                10,
+                52
+              ],
+              [
+                12,
+                35
+              ],
+              [
+                14,
+                22
+              ],
+              [
+                16,
+                12
+              ],
+              [
+                18,
+                7
+              ],
+              [
+                20,
+                4
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-community-ecology-1",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "community-ecology-s1",
+      "q": "Which statement correctly compares the two woodlands?",
+      "options": [
+        "Woodland X has more species, and its beetles are spread more evenly among them.",
+        "Woodland Y has more species, but most of its beetles belong to a single species.",
+        "Both have the same richness, because the same total number of beetles was caught.",
+        "Woodland Y has more species and a more even spread, so it has the larger D."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Woodland Y has 8 species to X's 6, but species 1 makes up 120 of its 160 beetles; X's catch is spread fairly evenly.",
+        "options": [
+          "X has 6 species and Y has 8, so Y is richer.",
+          "Correct: higher richness, low evenness.",
+          "Richness is the number of species (6 and 8), not the number of individuals.",
+          "Y is richer but far less even, and its D (0.43) is lower than X's (0.81)."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-2",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "community-ecology-s1",
+      "q": "What is the relative abundance of beetle species 1 in woodland Y, as a percentage? Give a whole number.",
+      "numeric": {
+        "answer": 75,
+        "tol": 0,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Relative abundance = 120 ÷ 160 × 100 = 75% of the beetles caught in woodland Y."
+      }
+    },
+    {
+      "id": "bio-community-ecology-3",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "community-ecology-s1",
+      "q": "A student claims woodland Y has the more diverse beetle community because more species were found there. Which response is best supported by the data?",
+      "options": [
+        "The claim is supported: richness is the measure of diversity, and Y has two more species than X.",
+        "The claim is supported, because a D of 0.43 shows Y has about half as many rare species as X.",
+        "The claim is impossible to judge, because the two woodlands contain different species of tree.",
+        "The claim is not supported: Y's D (0.43) is lower than X's (0.81), because one species dominates Y."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Diversity combines richness and evenness. In Y, two beetles picked at random are often both species 1, so D is low; X, with fewer species spread more evenly, is more diverse.",
+        "options": [
+          "Richness is only one part of diversity; evenness matters too.",
+          "D is a probability that two random beetles differ in species; it does not count rare species.",
+          "The question asks about the beetle data, which were collected the same way in both woodlands.",
+          "Correct: the index reflects evenness as well as richness."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-4",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "community-ecology-s1",
+      "q": "Over several years, species 1 in woodland Y falls from 120 to 20 beetles while the other species keep the same counts. Predict the change in woodland Y's Simpson's D.",
+      "options": [
+        "D falls, because fewer beetles are caught in total.",
+        "D stays the same, because the number of species is unchanged.",
+        "D rises, because the beetles are spread more evenly among species.",
+        "D rises above 1, because the community becomes more diverse than X."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "With species 1 at 20 of 60 beetles instead of 120 of 160, no species dominates, so two random beetles are more likely to differ: D rises (to about 0.81).",
+        "options": [
+          "D depends on the shares of each species, not the total number caught.",
+          "Richness is unchanged, but evenness rises, and D measures both.",
+          "Correct: higher evenness, higher D.",
+          "D is a probability, so it cannot exceed 1."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-5",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "community-ecology-s1",
+      "q": "Why was it important to use the same number of traps for the same 7 days in both woodlands?",
+      "options": [
+        "Sampling more finds more of the rare species, so unequal effort would bias the richness comparison.",
+        "Equal effort guarantees that each woodland gives exactly the same total number of beetles.",
+        "Beetles are active mainly in June, so a longer study would have caught few extra beetles.",
+        "The Simpson's index requires both samples to contain the same species of beetle."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Rare species turn up as more individuals are sampled; holding effort constant makes richness and diversity comparable.",
+        "options": [
+          "Correct: equal sampling effort is a controlled variable.",
+          "The equal totals (160 each) happened in this study; equal effort does not guarantee them.",
+          "Nothing in the setup says beetles are active only in June; effort is controlled to make the samples comparable.",
+          "D can be calculated for any sample; the two woodlands here even have different species lists."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-6",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "community-ecology-s2",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "Alone, each species levels off at a steady density; together, A levels off a little lower and B rises at first, then declines toward zero.",
+        "Alone, each species levels off at a steady density; together, both species level off at about half their densities when alone.",
+        "Alone, each species keeps growing to day 20; together, B outgrows A after day 8 and A declines to a low but steady density.",
+        "Alone and together, A reaches about 400 cells per mL, while B reaches about 250 cells per mL in each of the tubes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Alone, A plateaus near 400 and B near 250 cells per mL. Together, A reaches about 375 while B peaks at 80 on day 6 and falls to 4 by day 20.",
+        "options": [
+          "Correct: A persists slightly reduced; B is excluded.",
+          "A together reaches 375, close to its 400 alone; B falls to 4, not to half of 250.",
+          "Both level off by about day 10 when alone; together it is B that declines.",
+          "B grown with A falls to 4 cells per mL, far below 250."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-7",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "community-ecology-s2",
+      "q": "By what percentage is the density of species B on day 20 lower when grown with A than when grown alone? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 98.4,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "(250 − 4) ÷ 250 × 100 = 246 ÷ 250 × 100 = 98.4% lower."
+      }
+    },
+    {
+      "id": "bio-community-ecology-8",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "community-ecology-s2",
+      "q": "Which explanation best accounts for the decline of species B when grown with A?",
+      "options": [
+        "Species A eats species B, so B is killed faster than it can divide in the shared tubes.",
+        "Both eat the same limited bacteria, and A takes them more efficiently, so B cannot keep pace.",
+        "Species B needs a different food from A, and the tubes contained less of B's food.",
+        "Species B is harmed by the wastes of A alone, since the two species use different resources."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "This is competitive exclusion: two species with the same limiting resource cannot coexist for long; the more efficient competitor, A, keeps the bacteria too scarce for B.",
+        "options": [
+          "Both species eat bacteria; nothing indicates that A eats B.",
+          "Correct: interspecific competition for one limiting resource.",
+          "The setup says both eat the same bacteria, with the same ration in every tube.",
+          "The setup states they share the same food, which explains the result without any special waste effect."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-9",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "community-ecology-s2",
+      "q": "Species B is then grown with species C, which feeds on bacteria and yeast that settle at the bottom of the tube, while B feeds on bacteria floating higher up. Predict the result.",
+      "options": [
+        "B declines to zero as it did with A, because any second species excludes it.",
+        "C declines to zero, because B now has the advantage it lacked against A.",
+        "Both persist, each at a density below its density alone, by partitioning the food.",
+        "Both reach exactly their densities when grown alone, because they do not interact."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Feeding in different parts of the tube divides the resource (resource partitioning), so competition is weaker and both coexist, though each usually somewhat below its density alone because some overlap remains.",
+        "options": [
+          "Exclusion needs the same limiting resource; the two species use partly different food.",
+          "Nothing suggests B is the better competitor here; partitioning lets both persist.",
+          "Correct: partitioning allows coexistence.",
+          "Some bacteria are shared, so competition is reduced but not zero."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-10",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "community-ecology-s2",
+      "q": "What is the purpose of growing each species alone?",
+      "options": [
+        "To double the number of tubes so the mean densities are more reliable",
+        "To show each species can grow in these conditions, so B's decline with A is due to A",
+        "To find out which species divides faster by watching just the first 2 days of growth",
+        "To keep the bacteria in the shared tubes from being eaten too quickly"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The single-species tubes are controls: B reaches 250 cells per mL alone, so its collapse with A cannot be blamed on the medium, the food ration or the temperature.",
+        "options": [
+          "Each group already had five tubes; the alone groups are controls, not extra replicates.",
+          "Correct: the alone cultures are the baseline for comparison.",
+          "Early growth is similar in both species; the purpose is a control for the whole experiment.",
+          "The alone tubes are separate tubes; they do not affect food in the shared tubes."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-11",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select each example of commensalism.",
+      "options": [
+        "Cattle egrets catch insects that grazing cattle stir up; the cattle are not affected.",
+        "A tapeworm absorbs digested food in a dog's intestine, and the dog loses weight.",
+        "Bees collect nectar from flowers and carry pollen between them.",
+        "Two warbler species feed on insects at different heights in the same tree.",
+        "A lion kills and eats a zebra."
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Only the egrets gain while their partner is neither helped nor harmed (+/0).",
+        "options": [
+          "Commensalism: egret +, cattle 0.",
+          "Parasitism: tapeworm +, dog −.",
+          "Mutualism: bee + (food), flower + (pollination).",
+          "Resource partitioning between competitors, not a +/0 symbiosis.",
+          "Predation: lion +, zebra −."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-12",
+      "type": "predict",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a lake, bass eat minnows, minnows eat zooplankton, and zooplankton eat phytoplankton. All the bass are removed. Predict each quantity a year later.",
+      "variables": [
+        {
+          "name": "Number of minnows",
+          "answer": "up",
+          "why": "Their main predator is gone, so more minnows survive and breed."
+        },
+        {
+          "name": "Number of zooplankton",
+          "answer": "down",
+          "why": "More minnows eat more zooplankton."
+        },
+        {
+          "name": "Amount of phytoplankton",
+          "answer": "up",
+          "why": "Fewer zooplankton graze on the algae, so the algae grow faster than they are eaten."
+        },
+        {
+          "name": "Phosphate carried into the lake by streams each year",
+          "answer": "none",
+          "why": "The streams' phosphate comes from the land around the lake; removing fish does not change it."
+        }
+      ],
+      "why": {
+        "correct": "Removing the top predator sets off a trophic cascade: each level below changes in the opposite direction to the level above it. Inputs from outside the food web are unaffected."
+      }
+    },
+    {
+      "id": "bio-community-ecology-13",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "Hoverflies cannot sting, but they have black and yellow stripes like stinging wasps. Birds that have been stung by a wasp tend to avoid hoverflies too. What is this an example of?",
+      "options": [
+        "Müllerian mimicry, because both insects share a warning pattern",
+        "Camouflage, because the stripes help the hoverfly blend into flowers",
+        "Batesian mimicry, because a harmless species resembles a harmful one",
+        "Warning coloration, because the hoverfly is toxic and signals it"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "In Batesian mimicry a harmless mimic gains protection by resembling a harmful model that predators have learned to avoid.",
+        "options": [
+          "Müllerian mimicry needs both species to be harmful; the hoverfly is harmless.",
+          "Bright stripes stand out rather than blend in; they work by resemblance to wasps.",
+          "Correct: harmless mimic, harmful model.",
+          "The hoverfly is harmless; its stripes are a bluff, not an honest signal."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-14",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Two butterfly species that both taste bad to birds have evolved almost the same orange-and-black wing pattern. Why does sharing the pattern benefit both species?",
+      "options": [
+        "Birds learn to avoid the pattern after fewer attacks, so fewer butterflies of each species are eaten while birds learn.",
+        "One species can stop making its bad-tasting chemicals, saving energy, because birds avoid the shared pattern.",
+        "The two species can now interbreed, which combines their toxins in hybrid offspring and makes both more toxic.",
+        "Birds confuse the two species, so they eat whichever species tastes less bad and leave the more toxic one alone."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is Müllerian mimicry. Each bird must sample some butterflies to learn the pattern; when two species share it, that cost is split between them.",
+        "options": [
+          "Correct: shared learning cost among harmful species.",
+          "A species that stopped being toxic would be a Batesian mimic; the benefit to both comes from shared learning.",
+          "Different species generally do not interbreed, and similar patterns do not require it.",
+          "Both species taste bad; the shared pattern protects both rather than steering birds to one."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-15",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "On islands where finch species F lives alone, its mean beak depth is 10 mm; species G alone also averages about 10 mm. On an island where both live, F averages 12 mm and G 8 mm, and they eat seeds of different sizes. Which explanation best fits?",
+      "options": [
+        "Each bird changes its beak during its lifetime by practicing on seeds of the size it eats most often.",
+        "Where the species meet, competition favored individuals that ate different seeds, so beaks diverged.",
+        "The shared island has mostly larger and smaller seeds, so both species changed beak size by the same amount.",
+        "The two species interbred on the shared island, and their hybrids had beaks of unusual sizes."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "This is character displacement: where both species live, natural selection favors individuals that compete less, so beak sizes, and the seeds eaten, move apart. Resource partitioning results.",
+        "options": [
+          "Beak depth is largely inherited; practice does not reshape it.",
+          "Correct: selection by competition leads to resource partitioning.",
+          "The beaks moved in opposite directions, which fits divergence driven by competition, not a shared change in seeds.",
+          "Hybrids would blur the species together, not push their averages apart."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-16",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "On a rocky shore, small barnacles of species A live only high on the rocks and large barnacles of species B live lower down. When B is scraped off the lower rocks, A settles there and survives well. Which conclusion is supported?",
+      "options": [
+        "A's realized niche is larger than its fundamental niche.",
+        "A dies when kept under water for long periods.",
+        "B's fundamental niche includes the high rocks.",
+        "Competition with B restricts A's realized niche."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "A can live lower down (its fundamental niche includes the lower rocks) but does so only when B is absent, so B's competition shrinks A's realized niche.",
+        "options": [
+          "The realized niche can only be the same as or smaller than the fundamental niche.",
+          "A survives well on the lower rocks once B is removed.",
+          "The experiment tests A on the lower rocks; it says nothing about B on the high rocks.",
+          "Correct: removing the competitor reveals more of A's fundamental niche."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-17",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Which change would increase a community's species diversity while its species richness stays the same?",
+      "options": [
+        "Individuals become more evenly spread among the species",
+        "One species becomes more common while the rest decline",
+        "A new species arrives and becomes very common",
+        "The total number of individuals doubles in each species"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With richness fixed, diversity rises only if evenness rises.",
+        "options": [
+          "Correct: higher evenness, same richness.",
+          "Dominance by one species lowers evenness and diversity.",
+          "A new species changes richness, which the question holds constant.",
+          "Doubling each species keeps every share the same, so diversity is unchanged."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-18",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A deer eats leaves and twigs from a shrub, and the shrub regrows from its roots. A tick feeds on the deer's blood for several days. How are these two interactions classified?",
+      "options": [
+        "Both are predation, because one species feeds on the other",
+        "Mutualism (+/+) and parasitism (+/−)",
+        "Herbivory (+/0) and commensalism (+/0)",
+        "Herbivory (+/−) and parasitism (+/−)"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "The deer feeds on part of the shrub without killing it (herbivory, +/−); the tick lives on the deer and feeds on it without killing it (parasitism, +/−).",
+        "options": [
+          "Predation kills the prey; neither the shrub nor the deer is killed.",
+          "The shrub gains nothing from being eaten, so the first is not a mutualism.",
+          "The shrub loses tissue it must regrow, so it is harmed, not unaffected; the tick harms the deer.",
+          "Correct: both are +/− but neither kills its partner."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-19",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Ecologists added phosphate to three ponds and left three ponds unchanged. In the fertilized ponds, algae, zooplankton and small fish all increased. Which kind of control do these results show?",
+      "options": [
+        "Top-down control, because the fish at the top increased the most",
+        "A trophic cascade, because each level changed in the opposite way",
+        "Bottom-up control, because more nutrients raised every level above",
+        "Competitive exclusion, because the algae outcompeted the fish for phosphate"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "A change at the base (more phosphate, so more algae) passed up the food web in the same direction at each level: bottom-up control.",
+        "options": [
+          "The change started at the bottom, with nutrients, not with a predator at the top.",
+          "In a cascade levels alternate; here they all rose together.",
+          "Correct: nutrient supply limits the levels above.",
+          "Algae and fish do not compete for the same resource; fish depend on them through the food web."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-20",
+      "type": "order",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Pike, a fish that eats minnows, are added to a lake. Put the events in order.",
+      "options": [
+        "Pike eat many of the minnows.",
+        "The minnow population declines.",
+        "Zooplankton, released from minnows eating them, increase.",
+        "Zooplankton graze down the phytoplankton.",
+        "The lake water becomes clearer."
+      ],
+      "why": {
+        "correct": "The cascade runs from the top down: pike reduce minnows, which frees zooplankton, which then reduce phytoplankton, and less algae means clearer water."
+      }
+    },
+    {
+      "id": "bio-community-ecology-21",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In a food web, a fox eats both rabbits and the weasels that also eat rabbits. A disease kills most of the weasels. Which prediction about rabbits, in the short term, is best supported?",
+      "options": [
+        "Rabbits increase, because one of their predators is now much rarer.",
+        "Rabbits decrease, because foxes switch to eating rabbits and catch most of them.",
+        "Rabbits do not change, because foxes eat rabbits as well as weasels.",
+        "Rabbits decrease, because weasels used to protect rabbits from foxes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Losing the weasels removes one source of deaths, so rabbits should increase in the short term, even if foxes later eat somewhat more rabbits.",
+        "options": [
+          "Correct: release from one predator.",
+          "Foxes may eat more rabbits, but they cannot make up at once for all the weasels' kills, let alone catch every rabbit.",
+          "Foxes did not change, but weasels did; fewer rabbit deaths means more rabbits.",
+          "Weasels eat rabbits; they do not protect them."
+        ]
+      }
+    },
+    {
+      "id": "bio-community-ecology-22",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "community-ecology",
+      "practice": "1.B",
+      "level": "recall",
+      "diff": 1,
+      "q": "What does a Simpson's diversity index close to 0 indicate about a community?",
+      "options": [
+        "It has many species, each about equally common.",
+        "It has many species, each very rare.",
+        "It is made up almost entirely of one species.",
+        "Its species are being lost very rapidly."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "D is the chance that two random individuals are different species. Near 0, almost every pair is the same species, so one species makes up nearly the whole community.",
+        "options": [
+          "Many evenly common species give D close to 1.",
+          "Many rare species, with none dominating, give a high D.",
+          "Correct: near 0 means one species dominates.",
+          "D describes the community at one time; it does not measure a rate of loss."
+        ]
+      }
+    }
+  ]
+}
