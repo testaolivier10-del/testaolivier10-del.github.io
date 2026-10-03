@@ -56,7 +56,7 @@
   }
 
   var MAP = [
-    { id: 'nremt-cardiac', from: ['nremt:Cardiac', 'nremt:Cardiovascular', 'nremt:s2', 'nremt:s6'], to: 'anp',
+    { id: 'nremt-cardiac', from: ['nremt:Cardiac', 'nremt:s2', 'nremt:s6'], to: 'anp',
       href: A + 'chapters/cardiovascular.html', link: 'Open A&P chapter 19',
       text: 'Cardiac calls lean on how the heart pumps and how its conduction system sets the rhythm. A&P chapter 19 teaches both from the start.' },
     { id: 'nremt-airway', from: ['nremt:Airway Management', 'nremt:Oxygenation & Ventilation', 'nremt:Respiratory Emergencies', 'nremt:s3', 'nremt:s10', 'nremt:s11'], to: 'anp',

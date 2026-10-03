@@ -60,7 +60,7 @@
   function renderElsewhere(m){
     var c = M.COURSES[course];
     var what = m ? M.heading(m, course) : c.name;
-    document.title = 'A LevlPrep milestone — LevlPrep';
+    document.title = 'A LevlPrep milestone | LevlPrep';
     app.innerHTML =
       '<div class="hero"><div class="eyebrow">Certificate of completion</div>' +
         '<h1>A LevlPrep milestone</h1><p class="lede">' + esc(what) + '</p></div>' +
@@ -85,7 +85,7 @@
     var date = M.formatDate(m.date);
     var iso = new Date(m.date).toISOString().slice(0, 10);
     var statement = M.statement(m, course);
-    document.title = 'Certificate: ' + M.heading(m, course) + ' — LevlPrep';
+    document.title = 'Certificate: ' + M.heading(m, course) + ' | LevlPrep';
 
     app.innerHTML =
       '<div class="cert-tools">' +

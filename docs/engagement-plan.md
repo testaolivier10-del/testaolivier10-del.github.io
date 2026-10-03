@@ -23,7 +23,7 @@ Branch: `claude/engagement`. Owner asked for items 1, 2, 3, 6, 7, 8 of the 2026-
   affiliated with NREMT or any school. Built in the browser from local progress; the name on one is typed by the
   student and stays in the browser.
 - No new third parties; CSP unchanged.
-- `sw.js` `CACHE_NAME` bumped to v43 at the merge. Full CI passed on the merged branch (2026-10-02). Not yet merged to `main`; the Worker needs a redeploy for `ref=email`.
+- `sw.js` `CACHE_NAME` v55 after merging main (AP Biology, course registry). Full CI passed (2026-10-03). Weight budgets raised: site 279 -> 280, nremt/practice.html 45 -> 45.2 (reasons in check-weight.mjs). The Worker needs a redeploy for `ref=email`.
 - End screens: one pressed button from `LevlNext.pick` (due review, then the next lesson, then the weakest area, then
   the course home), at most two quiet links. Styles live in `assets/next-step.css`, linked on load, for weight.
 - A cross-course suggestion counts as an ask: it never shows with `.levl-prompt` or `.levl-cele` up, and the install

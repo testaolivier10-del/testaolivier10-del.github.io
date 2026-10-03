@@ -101,7 +101,13 @@ const SHELL_BUDGETS = [
      session or the sign-in dialog. Measured the old way, the shell would be
      about 298 KB plus the SDK; it is 277.2 KB. account.js grew 0.6 KB for the
      lazy SDK and the plain-fetch page counter. */
-  ['site', 279],
+  /* 279 -> 280 for the engagement pass (2026-10, docs/engagement-plan.md):
+     the share button and streak toast in motion.js, LevlLazy/LevlNextStep in
+     site-chrome.js (share, milestones, next-step and cross-course themselves
+     load on demand, outside the shell), the ?ref= capture in analytics.js and
+     the end-screen styles in theme.css. About 2.1 KB, 0.3 KB of it won back by
+     trimming comments. Measured 279.9 KB. */
+  ['site', 280],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -263,7 +269,9 @@ const BUDGETS = [
      44 -> 45 in the W1 review: the "All domains" drill now splits its length
      by the exam weights, and the domain-tagging rule is written next to
      DOMAIN_TARGETS so later tagging stays consistent (about 0.2 KB). */
-  ['nremt/practice.html', 45],
+  /* 45 -> 45.2 for the engagement pass: the one-line share and next-step
+     hooks on the results screen. Measured 45.1 KB. */
+  ['nremt/practice.html', 45.2],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read

@@ -192,8 +192,7 @@
     v.sent = t;
     writeVisits(v);
 
-    // Its own event, and before the once-a-day guard: a student who studied this
-    // morning and came back from the evening reminder is the reminder working.
+    // Before the once-a-day guard: an evening return still counts.
     if(landedRef) event('ref-open', { ref: landedRef, course: courseOf(location.pathname) });
 
     if(alreadySentToday) return; // nine pages in one evening is still one visit
@@ -211,17 +210,9 @@
     if(v.days === 2) event('returned-second-day', { day: age });
   }
 
-  /* Where this visit came from, when the site itself sent them. Every link the
-     site hands a student to come back on carries ?ref=: the reminder push
-     (sw.js), the reminder email (worker/src/email.js) and anything shared
-     (assets/share.js). Umami's referrer cannot see any of the three — a
-     notification and most mail apps send none, and a shared link arrives from
-     whatever app it was pasted into — so without this a reminder that works and
-     one that is ignored look the same on the dashboard.
-
-     Read once per page load and taken out of the address bar straight away, so
-     a student who bookmarks or re-shares the page does not carry the tag on.
-     Only known values are reported; anything else is dropped, not echoed. */
+  /* ?ref= on the links the site sends students back on (sw.js push,
+     worker email, share.js): none of the three carries a usable referrer.
+     Read once, reported only if known, stripped from the address bar. */
   var REFS = { push: 1, email: 1, share: 1 };
   var landedRef = takeRef();
 

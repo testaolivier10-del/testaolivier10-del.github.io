@@ -17,10 +17,8 @@
                     fired by HubProgress.recordActivity() on the day a streak
                     reaches 7, 30 or 100 — the same toast and confetti.
 
-   Both toasts carry a Share button (assets/share.js, fetched only if it is
-   pressed). The toast stays up while the pointer or keyboard focus is in it,
-   so the button can actually be reached; otherwise it leaves on its usual
-   schedule.
+   Both toasts carry a Share button (share.js, fetched on press) and stay up
+   while hovered or focused.
 
    Plus one thing that is not an event: progress bars fill from zero when the
    page opens, so a reading you earned is seen being earned. Every bar the
@@ -130,9 +128,7 @@
       url: courseHome()
     });
   }
-  /* A streak mark and a level-up can land on the same answer (the first
-     answer of the day earns a show-up bonus). One after the other, then,
-     not one over the other. */
+  // A streak mark and a level-up can land on one answer: queue, don't stack.
   function celebrate(fn){
     var at = Math.max(Date.now() + (reduced() ? 0 : 900), busyUntil);
     busyUntil = at + 4600;

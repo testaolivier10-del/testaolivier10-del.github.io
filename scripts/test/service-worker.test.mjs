@@ -148,11 +148,11 @@ test('a notification opens only this site, and focuses only a tab on exactly tha
 
   const env2 = boot({ tabs: [ORIGIN + '/ochem/learn.html'] });
   await click(env2, '/');
-  assert.equal(env2.clients[0].navigatedTo, ORIGIN + '/', '"/" matched a tab that is not the home page');
+  assert.equal(env2.clients[0].navigatedTo, ORIGIN + '/?ref=push', '"/" matched a tab that is not the home page');
 
   const env3 = boot({ tabs: [] });
   await click(env3, 'https://evil.example/phish');
-  assert.deepEqual(env3.opened, [ORIGIN + '/']);
+  assert.deepEqual(env3.opened, [ORIGIN + '/?ref=push']);
 });
 
 test('network-first pages fall back to the cache after a few seconds, not never', () => {

@@ -59,17 +59,17 @@
   var COURSES = {
     nremt: {
       name: 'NREMT-EMT prep', home: '/nremt/', dash: '/nremt/dashboard.html',
-      blurb: 'Free NREMT-EMT practice: timed 100-question practice exams written to the published blueprint, study notes, skill sheets and flashcards. Unofficial, and not affiliated with the National Registry.'
+      blurb: 'NREMT-EMT practice, free to start: timed 100-question practice exams written to the published blueprint, study notes, skill sheets and flashcards. Unofficial, and not affiliated with the National Registry.'
     },
     ochem: {
       name: 'Organic Chemistry', home: '/ochem/', dash: '/ochem/dashboard.html',
       src: '/ochem/assets/curriculum.js', global: 'OchemCurriculum',
-      blurb: 'A free interactive organic chemistry course: perform each mechanism yourself, draw the arrows and predict the product, with a lesson for every topic and practice exams.'
+      blurb: 'An interactive organic chemistry course, free to start: perform each mechanism yourself, draw the arrows and predict the product, with a lesson for every topic and practice exams.'
     },
     anp: {
       name: 'Anatomy & Physiology', home: '/anatomy-physiology/', dash: '/anatomy-physiology/dashboard.html',
       src: '/anatomy-physiology/assets/anp-curriculum.js', global: 'AnpCurriculum',
-      blurb: 'A free anatomy and physiology course: lessons that build in order from cells to systems, mechanism-first physiology, a virtual lab practical and system exams.'
+      blurb: 'An anatomy and physiology course, free to start: lessons that build in order from cells to systems, mechanism-first physiology, a virtual lab practical and system exams.'
     }
   };
 
