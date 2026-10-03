@@ -1,0 +1,655 @@
+{
+  "stimuli": {
+    "translation-s1": {
+      "kind": "model",
+      "title": "An mRNA and the genetic code",
+      "text": "<p>A bacterial mRNA has the sequence below. Ribosomes start at the first AUG. Spaces are added after every third nucleotide, counting from nucleotide 1 at the 5′ end, to make it easier to read. Use the codon table to answer the questions.</p><p><b>mRNA:</b> 5′-ACG AUG CCU UGG AAG UGC UAG CAU-3′</p>",
+      "html": "<table class=\"compare\"><caption>The genetic code, by amino acid (mRNA codons, read 5′ to 3′)</caption><thead><tr><th>Amino acid</th><th>Codons</th></tr></thead><tbody><tr><th scope=\"row\">Alanine (Ala)</th><td>GCU, GCC, GCA, GCG</td></tr><tr><th scope=\"row\">Arginine (Arg)</th><td>CGU, CGC, CGA, CGG, AGA, AGG</td></tr><tr><th scope=\"row\">Asparagine (Asn)</th><td>AAU, AAC</td></tr><tr><th scope=\"row\">Aspartic acid (Asp)</th><td>GAU, GAC</td></tr><tr><th scope=\"row\">Cysteine (Cys)</th><td>UGU, UGC</td></tr><tr><th scope=\"row\">Glutamine (Gln)</th><td>CAA, CAG</td></tr><tr><th scope=\"row\">Glutamic acid (Glu)</th><td>GAA, GAG</td></tr><tr><th scope=\"row\">Glycine (Gly)</th><td>GGU, GGC, GGA, GGG</td></tr><tr><th scope=\"row\">Histidine (His)</th><td>CAU, CAC</td></tr><tr><th scope=\"row\">Isoleucine (Ile)</th><td>AUU, AUC, AUA</td></tr><tr><th scope=\"row\">Leucine (Leu)</th><td>UUA, UUG, CUU, CUC, CUA, CUG</td></tr><tr><th scope=\"row\">Lysine (Lys)</th><td>AAA, AAG</td></tr><tr><th scope=\"row\">Methionine (Met), also the start signal</th><td>AUG</td></tr><tr><th scope=\"row\">Phenylalanine (Phe)</th><td>UUU, UUC</td></tr><tr><th scope=\"row\">Proline (Pro)</th><td>CCU, CCC, CCA, CCG</td></tr><tr><th scope=\"row\">Serine (Ser)</th><td>UCU, UCC, UCA, UCG, AGU, AGC</td></tr><tr><th scope=\"row\">Threonine (Thr)</th><td>ACU, ACC, ACA, ACG</td></tr><tr><th scope=\"row\">Tryptophan (Trp)</th><td>UGG</td></tr><tr><th scope=\"row\">Tyrosine (Tyr)</th><td>UAU, UAC</td></tr><tr><th scope=\"row\">Valine (Val)</th><td>GUU, GUC, GUA, GUG</td></tr><tr><th scope=\"row\">Stop (no amino acid)</th><td>UAA, UAG, UGA</td></tr></tbody></table>"
+    },
+    "translation-s2": {
+      "kind": "table",
+      "title": "Protein made from artificial RNAs in a cell-free system",
+      "text": "<p>Researchers broke open <i>E. coli</i> cells and removed their DNA and their own mRNA, keeping ribosomes, tRNAs, enzymes, ATP and all twenty amino acids. In each test tube, one amino acid was radioactive. They added an artificial RNA of known sequence, incubated the tubes, and measured the radioactivity built into protein. Values are counts per minute (means of two tubes).</p>",
+      "table": {
+        "caption": "Radioactive amino acid built into protein (counts per minute)",
+        "cols": [
+          "RNA added",
+          "Phenylalanine",
+          "Lysine",
+          "Proline",
+          "Serine",
+          "Leucine"
+        ],
+        "rows": [
+          [
+            "None",
+            "40",
+            "35",
+            "50",
+            "30",
+            "45"
+          ],
+          [
+            "Poly-U (UUUUUU…)",
+            "13,900",
+            "45",
+            "60",
+            "35",
+            "70"
+          ],
+          [
+            "Poly-A (AAAAAA…)",
+            "50",
+            "9,200",
+            "55",
+            "40",
+            "50"
+          ],
+          [
+            "Poly-C (CCCCCC…)",
+            "45",
+            "40",
+            "3,100",
+            "35",
+            "40"
+          ],
+          [
+            "Alternating UC (UCUCUC…)",
+            "60",
+            "40",
+            "55",
+            "4,800",
+            "4,600"
+          ]
+        ]
+      }
+    },
+    "translation-s3": {
+      "kind": "setup",
+      "title": "Making a secreted protein with and without ER membranes",
+      "text": "<p>The mRNA for a protein that pancreas cells secrete was translated in a cell-free system. In some tubes, small sealed vesicles made from rough ER membrane were present. Afterward, a protease (a protein-cutting enzyme) was added: a protein inside a sealed vesicle is protected from it, and a protein outside is digested. Protein size was measured in kilodaltons (kDa).</p>",
+      "table": {
+        "caption": "Size and location of the protein made",
+        "cols": [
+          "Tube",
+          "Conditions",
+          "Protein size (kDa)",
+          "Protected from the protease?"
+        ],
+        "rows": [
+          [
+            "1",
+            "No ER vesicles",
+            "24",
+            "No"
+          ],
+          [
+            "2",
+            "ER vesicles present during translation",
+            "22",
+            "Yes"
+          ],
+          [
+            "3",
+            "ER vesicles added after translation had finished",
+            "24",
+            "No"
+          ],
+          [
+            "4",
+            "mRNA missing the 60 nucleotides just after the start codon; ER vesicles present during translation",
+            "22",
+            "No"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-translation-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "translation-s1",
+      "q": "What polypeptide does this mRNA code for?",
+      "options": [
+        "Met-Pro-Trp-Lys-Cys",
+        "Thr-Met-Pro-Trp-Lys-Cys",
+        "Met-Pro-Trp-Lys-Cys-His",
+        "Pro-Trp-Lys-Cys"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Start at the first AUG (Met) and read in threes: CCU Pro, UGG Trp, AAG Lys, UGC Cys, then UAG, a stop codon, ends the chain.",
+        "options": [
+          "Correct: AUG to the codon before UAG.",
+          "ACG lies before the start codon, so it is not read.",
+          "UAG is a stop codon; CAU after it is not read.",
+          "The start codon AUG is read too, and puts methionine first."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-2",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "translation-s1",
+      "q": "In a second strain, nucleotide 12 of this mRNA is A instead of G. Predict the polypeptide it codes for.",
+      "options": [
+        "Met-Pro, because the third codon becomes UGA, a stop codon",
+        "Met-Pro-Trp-Lys-Cys, because a single change does not alter the protein",
+        "Met-Pro-Lys-Cys, because the changed codon is skipped by the ribosome",
+        "Met-Pro-Glu-Lys-Cys, because the third codon now codes for a new amino acid"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Nucleotides 10-12 are the third codon, UGG (Trp). With A at position 12 it reads UGA, a stop codon, so the chain ends after Met-Pro.",
+        "options": [
+          "Correct: UGG → UGA turns tryptophan's codon into a stop.",
+          "Some single changes leave the amino acid the same, but UGA is a stop codon, so this one shortens the chain.",
+          "Ribosomes do not skip codons; a stop codon ends the chain there.",
+          "UGA is not a codon for glutamic acid (GAA or GAG); it is a stop codon."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-3",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "translation-s1",
+      "q": "Which tRNA anticodon pairs with the third codon read (UGG)?",
+      "options": [
+        "3′-ACC-5′",
+        "3′-UGG-5′",
+        "5′-ACC-3′",
+        "3′-TCC-5′"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The anticodon pairs with the codon antiparallel: codon 5′-UGG-3′ pairs with anticodon 3′-ACC-5′ (U with A, G with C, G with C).",
+        "options": [
+          "Correct: complementary and antiparallel.",
+          "This repeats the codon; an anticodon is complementary to it.",
+          "The bases are complementary, but written this way the anticodon would run parallel to the codon.",
+          "tRNA is RNA, so it carries U, not T; and T does not pair with U."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "2.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "translation-s1",
+      "q": "Which DNA template strand sequence was transcribed to give the second codon read (CCU)?",
+      "options": [
+        "3′-GGA-5′",
+        "5′-GGA-3′",
+        "3′-CCT-5′",
+        "3′-GGU-5′"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The mRNA is complementary and antiparallel to the template: 5′-CCU-3′ pairs with 3′-GGA-5′ in the DNA.",
+        "options": [
+          "Correct: template is complementary to the mRNA, read 3′ to 5′.",
+          "The bases are right, but written 5′ to 3′ they would pair in the wrong order with the codon.",
+          "3′-CCT-5′ matches the mRNA's letters, which is what the coding strand does (and in the other direction).",
+          "DNA has T, not U."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-5",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "translation-s1",
+      "q": "How many peptide bonds are in the finished polypeptide made from this mRNA? Give a whole number.",
+      "numeric": {
+        "answer": 4,
+        "tol": 0,
+        "unit": "bonds",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "The chain has five amino acids (Met-Pro-Trp-Lys-Cys). Each peptide bond joins two neighbors, so there are 5 − 1 = 4 peptide bonds."
+      }
+    },
+    {
+      "id": "bio-translation-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "translation-s2",
+      "q": "Which conclusion about the codon UUU is supported by the data?",
+      "options": [
+        "UUU codes for phenylalanine.",
+        "UUU codes for leucine.",
+        "UUU is a stop codon.",
+        "UUU codes for any amino acid."
+      ],
+      "fixed": false,
+      "correct": 0,
+      "why": {
+        "correct": "Poly-U contains only UUU codons, whatever frame is read, and it raised phenylalanine incorporation from 40 to 13,900 counts while the others stayed near background.",
+        "options": [
+          "Correct: only phenylalanine rose with poly-U.",
+          "Leucine stayed at 70 counts with poly-U, close to background.",
+          "A stop codon would give no long chains; poly-U gave heavy phenylalanine incorporation.",
+          "Only phenylalanine rose; the code is specific."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "translation-s2",
+      "q": "Alternating UCUCUC… RNA gave a protein containing serine and leucine in strict alternation. How does this support a code read in groups of three?",
+      "options": [
+        "Read in threes, the RNA gives UCU and CUC in turn, so two amino acids alternate.",
+        "Read in twos, the RNA gives UC and UC, so it would code for serine and leucine in turn.",
+        "Read in threes, the RNA gives one codon repeated, which is why just two amino acids appear.",
+        "Read in ones, each U and C codes for its own amino acid, so two amino acids alternate."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "UCUCUC… read in non-overlapping triplets is UCU-CUC-UCU-CUC…, two different codons in turn, matching the alternating serine and leucine. A two-letter code would read UC-UC-UC…, one codon repeated, giving one amino acid.",
+        "options": [
+          "Correct: an odd-length codon makes the two codons alternate.",
+          "Read in twos, every codon would be UC, giving one amino acid repeated, not two alternating.",
+          "Triplets from UCUC… alternate between UCU and CUC; they are not one repeated codon.",
+          "Four bases read singly could code for only four amino acids, and the poly-U, poly-A and poly-C results each give one amino acid, not a mixture."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "translation-s2",
+      "q": "What is the purpose of the tubes with no RNA added?",
+      "options": [
+        "They show how much label is built into protein when no message is present, a baseline for the other tubes.",
+        "They show that the cell extract contains no ribosomes or tRNAs that could build a protein.",
+        "They show that each amino acid is radioactive enough to be measured in the other tubes.",
+        "They provide the protein that the artificial RNAs need in order to start translation."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With no added RNA, incorporation is 30-50 counts for every amino acid. A rise far above this, such as 13,900, can then be credited to the added RNA.",
+        "options": [
+          "Correct: a negative control and baseline.",
+          "The extract does contain ribosomes and tRNAs; they are needed in every tube.",
+          "Low counts in these tubes do not show the label works; the high counts in the other tubes do.",
+          "Nothing passes from one tube to another; each tube is separate."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "translation-s2",
+      "q": "ACA codes for threonine and CAC codes for histidine. Predict the result if alternating ACACAC… RNA were added.",
+      "options": [
+        "A protein with threonine and histidine in alternation",
+        "Two separate proteins, one of threonine and one of histidine",
+        "A protein made of threonine alone, since ACA is read first",
+        "No protein, because the RNA has no start codon at its 5′ end"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Read in triplets, ACACAC… gives ACA-CAC-ACA-CAC…, so threonine and histidine alternate in one chain, just as UCUC… gave alternating serine and leucine.",
+        "options": [
+          "Correct: the same logic as the UCUC… result.",
+          "One RNA read in one frame gives one chain with both codons in turn.",
+          "The next codon after ACA is CAC, so histidine follows threonine.",
+          "Poly-U and the other artificial RNAs also lacked AUG but were translated in this system, so a start codon is not needed here."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-10",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "translation-s3",
+      "q": "Why is the protein 2 kDa smaller in tube 2 than in tube 1?",
+      "options": [
+        "Its signal peptide was cut off after the chain entered the ER vesicles.",
+        "Fewer amino acids were available, so the ribosome stopped early.",
+        "Inside the vesicles, the protease removed part of the protein.",
+        "ER membranes speed up translation, so the chain had less time to grow."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A secreted protein starts with a signal peptide that directs the ribosome to the ER. Once the chain is threaded into the ER, an enzyme there cuts the signal peptide off, so the finished protein is shorter.",
+        "options": [
+          "Correct: the first ~20 amino acids are removed inside the ER.",
+          "Every tube had all twenty amino acids; the difference depends on the ER being present.",
+          "The protease could not reach protein inside the sealed vesicles; that is why tube 2's protein was protected.",
+          "Speed does not change the length; a ribosome reads the mRNA to its stop codon."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "translation-s3",
+      "q": "In tube 3, ER vesicles were added after translation was finished, and the protein was not taken in. What does this show?",
+      "options": [
+        "The protein enters the ER while it is being made, as the ribosome builds it.",
+        "The protein enters the ER after it is finished, but just when the cell is intact.",
+        "The ER vesicles in tube 3 were broken, so they could not take up any protein.",
+        "The finished protein is too small to pass through the ER membrane."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In tube 2 the protein entered the vesicles; in tube 3 the same protein, finished first, did not. So entry happens during translation: the signal peptide emerges first and brings the ribosome to the ER, and the chain is threaded in as it grows.",
+        "options": [
+          "Correct: targeting happens as the chain is made.",
+          "Nothing in the data points to a need for an intact cell; the timing of adding the vesicles is the only difference from tube 2.",
+          "The same kind of vesicles took in the protein in tube 2; nothing suggests tube 3's were damaged.",
+          "The protein is the same size as in tube 1, and the same protein entered in tube 2, so size is not the reason."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-12",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "translation-s3",
+      "q": "Which claim is best supported by tube 4?",
+      "options": [
+        "The first part of the chain is needed to send the protein into the ER.",
+        "The last part of the chain is needed to send the protein into the ER.",
+        "The ER vesicles in tube 4 digested the protein's first 20 amino acids.",
+        "The protein in tube 4 lacks a start codon, so no protein was made from it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Removing the 60 nucleotides (20 codons) after the start codon removes the signal peptide. The protein is still made (22 kDa) but is not taken into the vesicles, so the signal at the start of the chain is what directs it to the ER.",
+        "options": [
+          "Correct: without its beginning, the protein stays outside.",
+          "Only the start of the coding sequence was removed, and that is what stopped entry.",
+          "The protein is 22 kDa because its first 20 amino acids were never coded, not because they were cut off.",
+          "The start codon was kept (the deletion is after it), and a 22 kDa protein was made."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-13",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "translation-s3",
+      "q": "An average amino acid in a protein adds about 110 daltons. About how many amino acids are in the piece removed from the protein in tube 2? Give a whole number.",
+      "numeric": {
+        "answer": 18,
+        "tol": 1,
+        "unit": "amino acids",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "24 − 22 = 2 kDa = 2,000 Da. 2,000 ÷ 110 = 18.2, about 18 amino acids, a typical signal peptide length (and close to the 20 codons deleted in tube 4)."
+      }
+    },
+    {
+      "id": "bio-translation-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What does an aminoacyl-tRNA synthetase do?",
+      "options": [
+        "Attaches the correct amino acid to a tRNA, using energy from ATP",
+        "Joins the amino acid on one tRNA to the growing chain on another",
+        "Pairs a tRNA's anticodon with the matching codon on the mRNA",
+        "Releases the finished polypeptide when a stop codon is reached"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each synthetase recognizes one amino acid and the tRNAs for it, and links them using ATP. This charging step is what actually connects the code to the amino acids.",
+        "options": [
+          "Correct: the synthetase charges tRNAs.",
+          "Peptide bonds are formed by the ribosome (its rRNA).",
+          "Codon-anticodon pairing is base pairing inside the ribosome, not an enzyme's job.",
+          "A release factor frees the chain at a stop codon."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-15",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "Bacteria given the human gene for insulin (without introns) make a protein with the same amino acid sequence as human insulin. Which broader conclusion does this support?",
+      "options": [
+        "Bacteria and humans read codons with nearly the same genetic code, evidence of common ancestry.",
+        "Bacteria and humans make the same proteins, because they share the same genes.",
+        "Bacteria can splice human genes, because their spliceosomes resemble human ones.",
+        "Insulin is a bacterial protein that humans gained from bacteria living in the gut."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The bacterial ribosomes, tRNAs and synthetases turned the human codons into the human amino acid sequence, so the two read the code the same way. A shared, nearly universal code is best explained by descent from a common ancestor.",
+        "options": [
+          "Correct: same code, shared ancestry.",
+          "Bacteria do not normally make insulin; the point is that they read the human gene correctly.",
+          "The stem says the gene was given without introns; bacteria lack spliceosomes.",
+          "Insulin is an animal hormone; the bacteria made it only because they were given the gene."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-16",
+      "type": "order",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the steps of one elongation cycle in order, starting with a growing chain on the tRNA in the P site.",
+      "options": [
+        "A charged tRNA whose anticodon matches the codon enters the A site.",
+        "The ribosome forms a peptide bond, moving the chain onto the tRNA in the A site.",
+        "The ribosome moves one codon along the mRNA toward its 3′ end.",
+        "The tRNA carrying the chain is now in the P site, and the empty tRNA is in the E site.",
+        "The empty tRNA leaves from the E site, and the A site is open for the next tRNA."
+      ],
+      "why": {
+        "correct": "A tRNA must bind the A site before its amino acid can be joined; the bond transfers the chain to it; moving the ribosome shifts that tRNA into the P site and the empty one into the E site, from which it leaves."
+      }
+    },
+    {
+      "id": "bio-translation-17",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A drug blocks HIV's reverse transcriptase. Predict each quantity in a newly infected human cell treated with the drug, compared with an untreated infected cell.",
+      "variables": [
+        {
+          "name": "Amount of viral DNA made from the viral RNA",
+          "answer": "down",
+          "why": "Reverse transcriptase is the enzyme that copies the viral RNA genome into DNA; blocking it stops that copy."
+        },
+        {
+          "name": "Amount of new viral protein made by the cell",
+          "answer": "down",
+          "why": "Viral genes are transcribed and translated from the DNA copy built into the host's DNA, so without it few viral proteins are made."
+        },
+        {
+          "name": "Base sequence of the RNA genome inside the virus particles that entered",
+          "answer": "none",
+          "why": "The drug blocks copying; it does not change the RNA already inside the particles."
+        }
+      ],
+      "why": {
+        "correct": "A retrovirus reverses part of the central dogma: reverse transcriptase copies its RNA into DNA, which joins the host's DNA and is then used like any gene. Blocking that enzyme blocks everything downstream of it."
+      }
+    },
+    {
+      "id": "bio-translation-18",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which can happen in a bacterial cell? Select all that apply.",
+      "options": [
+        "Ribosomes begin translating an mRNA while it is still being transcribed.",
+        "Several ribosomes translate the same mRNA at once.",
+        "Introns are removed from an mRNA before it is translated.",
+        "Finished mRNA is exported through a nuclear pore.",
+        "A poly-A tail of about 200 nucleotides is added to each mRNA."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Bacteria have no nucleus, so ribosomes reach the mRNA as soon as its 5′ end appears (coupled transcription and translation), and several ribosomes can follow one another along it (a polyribosome).",
+        "options": [
+          "Correct: transcription and translation are coupled.",
+          "Correct: polyribosomes form in bacteria and eukaryotes alike.",
+          "Bacterial genes rarely have spliceosome-removed introns.",
+          "Bacteria have no nucleus and so no nuclear pores.",
+          "Long poly-A tails added to every mRNA are a eukaryotic processing step."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-19",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A ribosome reaches a UAG codon in the A site. What happens next?",
+      "options": [
+        "A release factor binds the A site, the chain is freed and the ribosome comes apart.",
+        "A tRNA with the anticodon 3′-AUC-5′ brings a final amino acid to end the chain.",
+        "The ribosome skips UAG and continues to the next codon in the same frame.",
+        "The ribosome moves back to the start codon and makes a second copy of the chain."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Stop codons are not matched by any tRNA in a normal cell. A protein release factor binds the A site instead, the bond holding the chain to the last tRNA is broken, and the subunits separate from the mRNA.",
+        "options": [
+          "Correct: termination by a release factor.",
+          "Stop codons have no matching tRNA, so no amino acid is added.",
+          "UAG ends the chain; it is not skipped.",
+          "The subunits separate; a new ribosome may start again at the start codon, but the finished one does not back up."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-20",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "An mRNA reads 5′-GAUGCAUGCCAAAUGG…-3′. Ribosomes normally start at the first AUG. If a ribosome started at the second AUG, four nucleotides later, every amino acid after the first would differ. Why?",
+      "options": [
+        "Codons are read in non-overlapping threes, so starting 4 bases later shifts the reading frame.",
+        "The second AUG codes for a different amino acid, and that change is passed down the rest of the chain.",
+        "A ribosome that starts late skips each fourth nucleotide, so each codon it reads is new.",
+        "Each amino acid depends on the one before it, so changing the first changes the rest."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "From the first AUG the codons are AUG-CAU-GCC-AAA-UGG…; from the second they are AUG-CCA-AAU-GG…. Four is not a multiple of three, so every codon is grouped differently: a new reading frame.",
+        "options": [
+          "Correct: the grouping into triplets shifts.",
+          "AUG always codes for methionine; the change comes from how later bases are grouped.",
+          "The ribosome reads every nucleotide in order, three at a time; it does not skip any.",
+          "Each codon is read on its own; one amino acid does not determine the next."
+        ]
+      }
+    },
+    {
+      "id": "bio-translation-21",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "translation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A protein has 300 amino acids. How many nucleotides of its mRNA, from the first base of the start codon to the last base of the stop codon, are read by the ribosome? Give a whole number.",
+      "numeric": {
+        "answer": 903,
+        "tol": 0,
+        "unit": "nucleotides",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "300 amino acids need 300 codons (the start codon codes for the first one, methionine), and the stop codon adds one more codon with no amino acid: 301 × 3 = 903 nucleotides."
+      }
+    }
+  ]
+}

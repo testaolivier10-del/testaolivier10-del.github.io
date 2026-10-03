@@ -1,0 +1,12 @@
+{
+  "translation-ribosome": {
+    "file": "figures/translation-ribosome.svg", "ext": "svg", "w": 760, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A ribosome on an mRNA reading 5-prime AUG GCU UGG AAA CAC UAG 3-prime. The small subunit lies below the mRNA and the large subunit above. The E site over AUG holds an empty tRNA that is leaving; the P site over GCU holds the alanine tRNA, anticodon CGA, carrying the chain Met-Ala; the A site over UGG holds a newly arrived tryptophan tRNA whose anticodon 3-prime ACC 5-prime pairs with UGG. The ribosome moves one codon at a time toward the 3-prime end. UAG is a stop codon with no matching tRNA; a release factor binds there. Inset: an aminoacyl-tRNA synthetase attaches tryptophan to its tRNA, using ATP."
+  },
+  "coupled-expression": {
+    "file": "figures/coupled-expression.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: a bacterium with DNA in its cytoplasm. RNA polymerase makes an mRNA, and ribosomes have already attached to its free 5-prime end and are building polypeptides, the ribosome closest to the polymerase carrying the longest chain. Right: a eukaryotic cell, where transcription and processing happen in the nucleus; finished mRNA is exported and a polyribosome forms on it in the cytoplasm."
+  }
+}
