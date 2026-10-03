@@ -3,14 +3,14 @@
     "transport-mechanisms-s1": {
       "kind": "graph",
       "title": "Glucose build-up in intestinal cells",
-      "text": "<p>Researchers placed samples of intestinal lining cells in a solution containing 5 mM glucose and followed the glucose concentration inside the cells. The graph shows the ratio of glucose inside the cells to glucose outside. Three conditions were tested: a normal salt solution (control); the same solution with all Na⁺ replaced by an equal concentration of K⁺; and the normal solution plus ouabain, a drug that stops the sodium-potassium pump. Points are means of four samples; error bars show ±2 standard errors.</p>",
+      "text": "<p>Researchers placed samples of intestinal lining cells in a solution containing 5 mM glucose and followed the glucose concentration inside the cells. The graph shows the ratio of glucose inside the cells to glucose outside. Three conditions were tested: a normal salt solution (control); the same solution with all Na⁺ replaced by an equal concentration of choline (a positive ion that cells do not carry across the membrane); and the normal solution plus ouabain, a drug that stops the sodium-potassium pump. Points are means of four samples; error bars show ±2 standard errors.</p>",
       "chart": {
         "type": "line",
         "x": { "label": "Time", "unit": "min", "min": 0, "max": 30, "step": 5 },
         "y": { "label": "Glucose inside ÷ glucose outside", "unit": "", "min": 0, "max": 6, "step": 1 },
         "series": [
           { "name": "Control", "points": [[0, 0, 0], [5, 1.6, 0.2], [10, 2.9, 0.3], [15, 3.9, 0.3], [20, 4.5, 0.3], [30, 5.0, 0.4]] },
-          { "name": "Na⁺ replaced by K⁺", "points": [[0, 0, 0], [5, 0.4, 0.1], [10, 0.7, 0.1], [15, 0.9, 0.1], [20, 1.0, 0.1], [30, 1.0, 0.1]] },
+          { "name": "Na⁺ replaced by choline", "points": [[0, 0, 0], [5, 0.4, 0.1], [10, 0.7, 0.1], [15, 0.9, 0.1], [20, 1.0, 0.1], [30, 1.0, 0.1]] },
           { "name": "Ouabain", "points": [[0, 0, 0], [5, 1.4, 0.2], [10, 2.0, 0.2], [15, 1.8, 0.2], [20, 1.5, 0.2], [30, 1.1, 0.1]] }
         ]
       }
@@ -53,21 +53,21 @@
     },
     {
       "id": "bio-transport-mechanisms-2", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "6.C", "level": "analyze", "diff": 2, "stimulus": "transport-mechanisms-s1",
-      "q": "Which explanation best accounts for the results when Na⁺ was replaced by K⁺?",
+      "q": "Which explanation best accounts for the results when Na⁺ was replaced by choline?",
       "options": [
         "With no Na⁺ gradient to drive the cotransporter, glucose entered only passively and stopped at a ratio of 1.",
-        "K⁺ entered the cells through the cotransporter in place of Na⁺, and it carried glucose in more slowly than Na⁺ does.",
+        "Choline entered the cells through the cotransporter in place of Na⁺, and it carried glucose in more slowly than Na⁺ does.",
         "Without Na⁺ the cells could not make ATP, so the glucose cotransporter had no energy and glucose could not enter.",
-        "K⁺ made the outside solution hypertonic, so water left the cells and glucose became trapped outside them."
+        "Choline made the outside solution hypertonic, so water left the cells and glucose became trapped outside them."
       ],
       "correct": 0,
       "why": {
         "correct": "Glucose climbs its gradient only by riding along with Na⁺ flowing down Na⁺'s gradient. Remove outside Na⁺ and that energy source is gone; glucose can still move passively, but only until the inside equals the outside (ratio 1.0).",
         "options": [
           "Correct: without Na⁺ flowing in, nothing pays for uphill glucose movement, so the ratio stops at 1.",
-          "The cotransporter is specific for Na⁺; if K⁺ could drive it, glucose would still pile up above a ratio of 1, which it does not.",
+          "The cotransporter is specific for Na⁺; if choline could drive it, glucose would still pile up above a ratio of 1, which it does not.",
           "The cotransporter does not use ATP directly; and glucose did enter, reaching a ratio of 1.0.",
-          "Na⁺ was replaced by an equal concentration of K⁺, so the solution's solute level did not change."
+          "Na⁺ was replaced by an equal concentration of choline, so the solution's solute level did not change."
         ]
       }
     },
@@ -93,7 +93,7 @@
     },
     {
       "id": "bio-transport-mechanisms-4", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "3.C", "level": "analyze", "diff": 3, "stimulus": "transport-mechanisms-s1",
-      "q": "Why did the researchers replace Na⁺ with an equal concentration of K⁺, instead of simply leaving the Na⁺ out?",
+      "q": "Why did the researchers replace Na⁺ with an equal concentration of choline, instead of simply leaving the Na⁺ out?",
       "options": [
         "To keep total solute concentration the same, so water movement did not become a second variable.",
         "To give the cells another ion they could use in place of Na⁺ to drive glucose into the cells.",
@@ -102,7 +102,7 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "Simply removing Na⁺ would make the solution hypotonic to the cells, so they would swell. Then any change in glucose uptake could come from the swelling instead of the missing Na⁺. Swapping in K⁺ changes one variable only.",
+        "correct": "Simply removing Na⁺ would make the solution hypotonic to the cells, so they would swell. Then any change in glucose uptake could come from the swelling instead of the missing Na⁺. Swapping in choline, an ion the cells do not transport, changes one variable only.",
         "options": [
           "Correct: matching total solute keeps the solution isotonic, so the only difference from the control is which ion is present.",
           "The point of the condition is to remove the ion that drives glucose uphill, not to replace its job.",
