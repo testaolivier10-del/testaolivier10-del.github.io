@@ -1,0 +1,90 @@
+{
+  "topic": "origin-of-life",
+  "hook": "<p>In 1953 a graduate student, Stanley Miller, sealed water and a few simple gases in glass flasks, ran electric sparks through them for a week, and found amino acids, building blocks of proteins, in the brown water. Miller kept vials from his experiments. Decades later, researchers tested them with modern instruments and found more than 20 different amino acids in samples from one version of the setup. Chemistry alone, given energy, makes the parts of life. How those parts became a living cell is one of the great open questions in biology.</p>",
+  "prereq": [
+    {
+      "q": "Monomers are joined into polymers by",
+      "options": [
+        "dehydration synthesis, which releases a water molecule for each bond",
+        "hydrolysis, which adds a water molecule for each bond",
+        "dissolving the monomers in more water"
+      ],
+      "correct": 0,
+      "why": "Building a polymer removes water; breaking one (hydrolysis) adds water back.",
+      "review": "macromolecules-intro"
+    },
+    {
+      "q": "In water, phospholipids or fatty acids tend to",
+      "options": [
+        "assemble into membranes with their hydrophobic tails away from water",
+        "dissolve as single molecules evenly throughout the water",
+        "join into long chains like proteins"
+      ],
+      "correct": 0,
+      "why": "Hydrophobic tails cluster away from water, so bilayers and closed vesicles form on their own.",
+      "review": "lipids"
+    },
+    {
+      "q": "A catalyst speeds up a chemical reaction by",
+      "options": [
+        "lowering the activation energy, without being used up",
+        "adding energy to the reactants, and being used up",
+        "changing which products the reaction makes"
+      ],
+      "correct": 0,
+      "why": "Catalysts lower the energy barrier and are released unchanged. In this topic you meet catalysts made of RNA.",
+      "review": "enzyme-structure"
+    }
+  ],
+  "figure": {
+    "figure": "origin-steps",
+    "caption": "A hypothesis in six steps, from simple molecules to cells with DNA, RNA and proteins. Each step has experimental support, but the full sequence is still being tested."
+  },
+  "chain": [
+    {
+      "cause": "Early Earth had water, gases from volcanoes, almost no free oxygen and plenty of energy from lightning, ultraviolet light and hot vents.",
+      "effect": "Simple molecules reacted to form organic monomers such as amino acids and nucleotide parts, as spark experiments show (abiotic synthesis)."
+    },
+    {
+      "cause": "Monomers became concentrated on mineral surfaces such as clay, or in pools that dried and refilled.",
+      "effect": "Dehydration reactions joined them into polymers, including short RNA chains, without enzymes."
+    },
+    {
+      "cause": "Fatty acids in water assembled on their own into membrane vesicles, which can enclose RNA.",
+      "effect": "Protocells formed: membrane-bound packages that keep their contents together and can grow and divide."
+    },
+    {
+      "cause": "Some RNA molecules could both carry a copyable sequence and catalyze reactions, including copying RNA, with occasional errors.",
+      "effect": "RNA that copied itself better became more common: natural selection began acting on molecules (the RNA world)."
+    },
+    {
+      "cause": "DNA is more stable than RNA, and proteins are more varied and faster catalysts.",
+      "effect": "DNA took over information storage and proteins took over most catalysis, leaving RNA as the go-between, as in cells today."
+    }
+  ],
+  "ideas": [
+    "<b>Early Earth</b>: formed about 4.6 billion years ago, with almost no free oxygen. The oldest widely accepted fossils, <b>stromatolites</b>, are about 3.5 billion years old.",
+    "<b>Abiotic synthesis</b>: the <b>Miller-Urey experiment</b> showed that amino acids form from simple gases and energy. <b>Hydrothermal vents</b> are another proposed setting.",
+    "Monomers can join into polymers on <b>clay</b> or mineral surfaces. Fatty acid vesicles can enclose RNA to make <b>protocells</b>.",
+    "<b>RNA world</b>: RNA can store information and catalyze reactions (<b>ribozymes</b>), so it may have come before DNA and proteins."
+  ],
+  "misconception": {
+    "wrong": "The Miller-Urey experiment created life in a flask.",
+    "right": "It made amino acids, building blocks of proteins, not cells. It shows that one early step, abiotic synthesis of monomers, is possible; making polymers, membranes and self-copying systems are separate steps, each studied with its own experiments."
+  },
+  "check": [
+    "bio-origin-of-life-1",
+    "bio-origin-of-life-3",
+    "bio-origin-of-life-5",
+    "bio-origin-of-life-11",
+    "bio-origin-of-life-13",
+    "bio-origin-of-life-17",
+    "bio-origin-of-life-20"
+  ],
+  "summary": "<p>Earth formed about 4.6 billion years ago, and the oldest widely accepted fossils, stromatolites and microfossils, are about 3.5 billion years old, so life appeared within roughly the first billion years. Early Earth had almost no free oxygen and abundant energy from lightning, ultraviolet light and volcanic heat. Experiments such as Miller and Urey's show that organic monomers like amino acids form from simple molecules given energy (abiotic synthesis); hydrothermal vents, with chemical energy and catalytic minerals, are another proposed setting. Monomers can join into polymers on clay or other mineral surfaces, which concentrate them and favor dehydration reactions, and fatty acids assemble into vesicles that can enclose RNA, forming protocells. The RNA world hypothesis proposes that RNA came first because it can both store information and catalyze reactions as ribozymes, as rRNA still does in the ribosome; later, more stable DNA took over storage and proteins took over most catalysis. Each step is supported by experiments, but how and where they happened is still debated.</p>",
+  "connections": [
+    { "href": "../notes/nucleic-acids.html", "label": "Back: the structure of DNA and RNA (1.6)" },
+    { "href": "../notes/common-ancestry.html", "label": "Back: LUCA and the features all life shares (7.7)" },
+    { "href": "../notes/compartment-origins.html", "label": "Back: how eukaryotic cells gained organelles (2.10)" }
+  ]
+}

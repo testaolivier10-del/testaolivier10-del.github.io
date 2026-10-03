@@ -1,0 +1,12 @@
+{
+  "life-timeline": {
+    "file": "figures/life-timeline.svg", "ext": "svg", "w": 760, "h": 250,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A to-scale timeline from 4.6 billion years ago to now. Earth forms at 4.6; about 4.4, the oldest crystals hint at liquid water; about 3.5, the oldest widely accepted fossils, stromatolites, after which the bar is shaded to show fossil evidence of life for about three quarters of Earth's history; about 2.4, oxygen builds up in the air from cyanobacteria; about 1.8, the first eukaryote fossils; about 0.54, many animal groups appear in fossils."
+  },
+  "origin-steps": {
+    "file": "figures/origin-steps.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Six steps of a hypothesis for the origin of life. 1, simple molecules such as water, methane, ammonia, hydrogen, carbon dioxide and nitrogen, with energy from lightning, UV light or heat at vents; 2, monomers such as amino acids, sugars, nucleotide parts and fatty acids form without life; 3, monomers join on clay or mineral surfaces into RNA chains and peptides; 4, fatty acids form vesicles around RNA, protocells that grow and divide; 5, the RNA world, in which RNA stores information and catalyzes reactions and copying errors allow natural selection; 6, DNA and proteins take over, with RNA as the go-between. Each step has lab evidence, but how and where it happened is debated."
+  }
+}
