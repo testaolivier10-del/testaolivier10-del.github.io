@@ -180,7 +180,9 @@
     if(t && t.free) return false;
     try{ return !(unit && P.isFreeChapter(COURSE, unit)); }catch(e){ return true; }
   }
-  var WHOLE = { tools: 1, analytics: 1 };
+  /* Whole features locked for a free user. cram: the personalised cram plan
+     and the timed mixed sets (the plan outline stays free; cram.js). */
+  var WHOLE = { tools: 1, analytics: 1, cram: 1 };
   function allowed(feature){ return !(WHOLE[feature] && locked()); }
   var UNLIMITED = { limit: Infinity, used: 0, left: Infinity, take: function(){ return true; } };
   function quota(){ var P = prem(); return P && P.quota && locked() ? P.quota(COURSE) : UNLIMITED; }

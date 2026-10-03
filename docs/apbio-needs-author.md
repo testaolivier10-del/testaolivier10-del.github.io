@@ -582,9 +582,10 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
   message logs, Cloudflare's request logs. privacy.html points to "How long things are kept",
   which says the providers keep short-lived logs. Look these up and add numbers if they matter
   to a school. Question reports, error reports and the page counter are never deleted by code.
-- **cram-kit-claim** (open). premium.js lists "The cram kit (study plans and timed mixed sets,
-  from March 2027)" as Premium; it does not exist yet (spec schedule: by 2027-03-01). If it
-  slips, change the line before anyone buys on it.
+- **cram-kit-claim** (resolved 2026-10-03). The cram kit exists (`bio/cram.html`, spec decision 26),
+  so premium.js now lists "The cram kit: a study plan fitted to your weakest units, and timed mixed
+  sets" as Premium (no "from March 2027"), and the free list adds "The cram-kit study plan outline,
+  printable". The proposed Polar description (spec section 6) was updated to match.
 - **free-simulator** (open). The free list says "One simulator"; `ApBioCore.allowed('tools')`
   locks every tool when locked. The tools branch (0.4b) must free exactly one simulator, or the
   line changes.
