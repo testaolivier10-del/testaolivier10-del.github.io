@@ -47,10 +47,10 @@
       "prompt": "(i) <b>Calculate</b> how many more mice with no working copies than mice with two working copies had a tumor by 12 months.<br>(ii) Using the error bars (±2 SE), <b>determine</b> whether the percentage of X-rayed cells entering mitosis differs significantly between cells with one and two working copies of gene T. <b>Support</b> your answer.",
       "points": 2,
       "rubric": [
-        { "point": "(i) 26 more mice: 90% of 30 = 27 and 3% of 30 ≈ 1 (0.9), so 27 − 1 = 26.", "accept": ["26", "about 26 mice"] },
+        { "point": "(i) 26 more mice: 90% of 30 = 27 and 3% of 30 ≈ 1 (the percentages are rounded: 1 of 30 is 3.3%), so 27 − 1 = 26.", "accept": ["26", "about 26 mice"] },
         { "point": "(ii) Not significantly different: one copy 0.9 ± 0.4 gives 0.5-1.3, two copies 0.4 ± 0.3 gives 0.1-0.7; the intervals overlap (0.5-0.7), so the data do not show a difference.", "accept": ["the ±2 SE ranges overlap, so no significant difference", "0.5-1.3 and 0.1-0.7 overlap, so the difference may be due to chance"] }
       ],
-      "sample": "(i) No working copies: 90% of 30 = 27 mice. Two working copies: 3% of 30 = 0.9, about 1 mouse. 27 − 1 = 26 more mice. (ii) Cells with one copy: 0.9 ± 0.4, or 0.5 to 1.3%. Cells with two copies: 0.4 ± 0.3, or 0.1 to 0.7%. The intervals overlap between 0.5 and 0.7%, so the data do not show a significant difference: one working copy is enough to hold most damaged cells at the checkpoint."
+      "sample": "(i) No working copies: 90% of 30 = 27 mice. Two working copies: 3% of 30 = 0.9, which is 1 mouse (1 of 30 is 3.3%, rounded to 3%). 27 − 1 = 26 more mice. (ii) Cells with one copy: 0.9 ± 0.4, or 0.5 to 1.3%. Cells with two copies: 0.4 ± 0.3, or 0.1 to 0.7%. The intervals overlap between 0.5 and 0.7%, so the data do not show a significant difference: one working copy is enough to hold most damaged cells at the checkpoint."
     },
     {
       "label": "d",

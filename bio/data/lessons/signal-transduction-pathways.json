@@ -1,6 +1,6 @@
 {
   "topic": "signal-transduction-pathways",
-  "hook": "<p>Cholera can drain a person of 10 to 20 liters of water a day, and it kills by dehydration within hours. The bacterium does not destroy the gut. Its toxin enters the cells lining the intestine and jams one switch in a signaling pathway in the \"on\" position. The cells then pump chloride ions into the gut nonstop, and water follows by osmosis. To understand cholera, and many drugs and diseases, you need to know the pathway that toxin jams.</p>",
+  "hook": "<p>Cholera can drain a person of 10 to 20 liters of water a day, and it kills by dehydration within hours. The bacterium does not destroy the gut. Its toxin enters the cells lining the intestine and jams one switch in a signaling pathway in the \"on\" position. The cells then release chloride ions into the gut nonstop, and water follows by osmosis. To understand cholera, and many drugs and diseases, you need to know the pathway that toxin jams.</p>",
   "prereq": [
     {
       "q": "What does a protein kinase do?",

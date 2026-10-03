@@ -244,7 +244,8 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   and the 4.2 figure use a cytoplasmic receptor.
 - **synaptic-classification** (open, 4.1). OpenStax lists synaptic signaling as its own category;
   the framework groups neurotransmitters with local signaling. Meanwhile: four ranges taught, with
-  synaptic grouped under short-distance (local) signaling and a "For your exam" box.
+  synaptic grouped under short-distance (local) signaling and a "For your exam" box. Review u4: the 2019 framework also listed quorum sensing among its local-regulator
+  examples; the notes present it as the bacterial example without assigning a range, which is compatible.
 - **amplification-numbers** (open, 4.3). The rough molecule counts in the `gpcr-camp-cascade`
   figure (1, ~10², ~10⁴, ~10⁴, ~10⁵, ~10⁶, ~10⁸) are the orders of magnitude long used in
   textbooks to illustrate amplification, not measurements; the figure says "rough sizes". Confirm

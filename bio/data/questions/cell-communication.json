@@ -233,7 +233,7 @@
         "correct": "Same cells and same antigen: 68% active when mixed, 5% across a filter that passes dissolved molecules. Only touching made the difference.",
         "options": [
           "The two wells differ only in whether the cells can touch, and activation drops from 68% to 5%.",
-          "Nothing in the data shows the filter harmed the T cells, and the filter is on the other side of the well from where they sit.",
+          "Nothing in the data shows the filter harmed the T cells; the simpler reading is that it kept them from touching the presenting cells.",
           "Dissolved molecules cross the filter, yet only 5% of T cells became active, about the background level.",
           "Well 1 has antigen without presenting cells and only 2% are active, so the antigen alone does not do it."
         ]
@@ -321,21 +321,21 @@
     },
     {
       "id": "bio-cell-communication-16", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "1.B", "level": "apply", "diff": 2,
-      "q": "After a meal, insulin in the blood reaches nearly every cell in the body, yet muscle cells respond to it and red blood cells do not. Which explanation is best?",
+      "q": "In a strain of mice, the muscle cells lack one protein. After a meal these mice release insulin normally and it reaches their muscle cells, yet the muscle cells do not respond to it. Which missing protein best explains this?",
       "options": [
-        "Muscle cells make a receptor protein that insulin binds; red blood cells do not.",
-        "Insulin is broken down in the blood before it reaches red blood cells.",
-        "Red blood cells move too fast in the blood for insulin to reach them.",
-        "Insulin enters each cell it reaches, but red blood cells have no nucleus to receive it."
+        "The receptor protein on the muscle cell surface that insulin binds",
+        "An enzyme in the blood that breaks insulin down after a meal",
+        "A channel that lets insulin pass into the muscle cell's nucleus",
+        "The protein in the pancreas that releases insulin by exocytosis"
       ],
       "correct": 0,
       "why": {
-        "correct": "A cell responds to a hormone only if it makes the matching receptor. Exposure is the same; the receptor makes the difference.",
+        "correct": "Exposure is normal: insulin is released and reaches the muscle cells. A cell responds to a hormone only if it makes the matching receptor, so a missing receptor explains why these muscle cells ignore the insulin around them.",
         "options": [
-          "Responding depends on having the receptor, and muscle cells have it.",
-          "Red blood cells travel in the same blood as the insulin, so it does reach them.",
-          "Red blood cells sit in the very fluid that carries the insulin; their speed does not keep it away.",
-          "Insulin is a protein that does not enter cells; it acts by binding a receptor on the surface."
+          "Without the receptor, insulin reaches the muscle cells but has nothing to bind, so they cannot respond.",
+          "Missing this enzyme would leave more insulin in the blood, not stop the muscle cells from responding to it.",
+          "Insulin is a protein that does not need to enter the nucleus; it acts by binding a receptor on the cell surface.",
+          "The pancreas is working: the mice release insulin normally after a meal, and the missing protein is in the muscle cells."
         ]
       }
     },

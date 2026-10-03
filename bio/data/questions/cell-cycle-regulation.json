@@ -3,11 +3,11 @@
     "cell-cycle-regulation-s1": {
       "kind": "graph",
       "title": "Cyclin and CDK through two cell cycles",
-      "text": "<p>Researchers followed a population of cells that were all dividing in step (synchronized) for 48 hours. At intervals they measured the amount of mitotic cyclin protein, the amount of the CDK protein it binds, and the kinase activity of cyclin-CDK complexes. Cells were seen entering mitosis at about 20 and 42 hours. All values are relative to the highest value measured for each.</p>",
+      "text": "<p>Researchers followed a population of cells that were all dividing in step (synchronized) for 48 hours. At intervals they measured the amount of mitotic cyclin protein, the amount of the CDK protein it binds, and the kinase activity of cyclin-CDK complexes. Cells were seen entering mitosis at about 20 and 42 hours. Each quantity is given in relative units on a 0-100 scale; compare how each one changes over time, not the heights of different curves.</p>",
       "chart": {
         "type": "line",
         "x": { "label": "Time", "unit": "hours", "min": 0, "max": 48, "step": 8 },
-        "y": { "label": "Relative level", "unit": "% of maximum", "min": 0, "max": 100, "step": 20 },
+        "y": { "label": "Relative level", "unit": "relative units", "min": 0, "max": 100, "step": 20 },
         "series": [
           { "name": "Mitotic cyclin", "points": [[0, 8], [4, 12], [8, 22], [12, 38], [16, 60], [19, 82], [20, 90], [21, 15], [22, 8], [26, 12], [30, 22], [34, 38], [38, 60], [41, 82], [42, 90], [43, 15], [44, 8], [48, 12]] },
           { "name": "CDK protein", "points": [[0, 60], [4, 61], [8, 60], [12, 59], [16, 60], [19, 61], [20, 60], [21, 60], [22, 59], [26, 60], [30, 61], [34, 60], [38, 60], [41, 59], [42, 60], [43, 61], [44, 60], [48, 60]] },
@@ -59,7 +59,7 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "CDK stays at 59-61% throughout; cyclin climbs from 8% to 90% over about 20 hours, then falls to 15% within an hour, twice.",
+        "correct": "CDK stays at 59-61 units throughout; cyclin climbs from 8 to 90 units over about 20 hours, then falls to 15 within an hour, twice.",
         "options": [
           "Only cyclin cycles; CDK protein is flat.",
           "CDK protein does not change.",
@@ -89,7 +89,7 @@
         "options": [
           "Activity tracks cyclin; CDK is constant.",
           "CDK is flat, so it cannot set the timing.",
-          "Activity stays below 6% until cyclin is above about 60%, then jumps: it does not rise steadily with cyclin.",
+          "Activity stays at 6 units or less until cyclin is above about 60 units, then jumps: it does not rise steadily with cyclin.",
           "Activity of this mitotic cyclin-CDK peaks at mitosis, not in G1."
         ]
       }
@@ -282,7 +282,7 @@
     },
     {
       "id": "bio-cell-cycle-regulation-14", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.D", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-regulation-s3",
-      "q": "Some cancer drugs block the CDK that works with G1 cyclins. Based on the fusion results and what you know of the cycle, predict their effect on cancer cells that depend on this CDK.",
+      "q": "Some cancer drugs block the CDKs that work with G1 cyclins. Based on the fusion results and what you know of the cycle, predict their effect on cancer cells that depend on these CDKs.",
       "options": [
         "The cells are held at the G1 checkpoint and do not start copying their DNA.",
         "The cells are held in mitosis, because their chromosomes are unable to finish separating.",

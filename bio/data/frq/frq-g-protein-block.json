@@ -44,7 +44,7 @@
       "prompt": "The researchers give the mutant cells epinephrine together with a drug that blocks phosphodiesterase. <b>Predict</b> how glucose release compares with mutant cells given epinephrine alone. <b>Justify</b> your prediction.",
       "points": 1,
       "rubric": [
-        { "point": "Predicts little or no difference (glucose release stays low), because blocking phosphodiesterase only slows the breakdown of cAMP, and the mutant cells are making little or no cAMP for it to act on.", "accept": ["about the same, because no extra cAMP is being made so there is nothing to protect from breakdown", "still low; the block is before cAMP is made, and the drug acts after", "no rescue, since the drug works downstream of where cAMP would be produced"] }
+        { "point": "Predicts little or no difference (glucose release stays low), because blocking phosphodiesterase only slows the breakdown of cAMP, and the mutant cells are making little or no cAMP for it to act on.", "accept": ["about the same, because no extra cAMP is being made so there is nothing to protect from breakdown", "still low; the block is before cAMP is made, and the drug acts after", "no rescue, since the drug works downstream of where cAMP would be produced", "at most a small increase, because only the low resting cAMP made without the G protein is protected from breakdown, far below a normal response"] }
       ],
       "sample": "Glucose release will be about the same, still low. Phosphodiesterase inhibitors raise cAMP only by stopping its breakdown. In the mutant cells the pathway is blocked at the G protein, before cAMP is made, so almost no new cAMP is produced for the drug to protect. Protein kinase A stays off and glycogen is not broken down."
     }
