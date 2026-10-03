@@ -267,7 +267,7 @@
       "stimulus": "population-variation-s3",
       "q": "In a population where malaria is common, the frequency of the HbS allele is 0.10. Assuming Hardy-Weinberg proportions among newborns, what percent of newborns are HbA HbS carriers? Give a whole number.",
       "numeric": { "answer": 18, "tol": 0, "unit": "%", "decimals": 0 },
-      "why": { "correct": "q = 0.10, so p = 0.90. Carriers: 2pq = 2 × 0.90 × 0.10 = 0.18, or 18%. HbS HbS newborns: q² = 0.01, 1%. So about 18 times as many HbS alleles are in carriers as in affected children." }
+      "why": { "correct": "q = 0.10, so p = 0.90. Carriers: 2pq = 2 × 0.90 × 0.10 = 0.18, or 18%. HbS HbS newborns: q² = 0.01, 1%. Carriers hold one HbS allele each (0.18) and affected children two (2 × 0.01 = 0.02), so about 9 times as many HbS alleles are in carriers as in affected children." }
     },
     {
       "id": "bio-population-variation-13", "type": "predict", "unit": "unit-7", "topic": "population-variation", "practice": "6.E", "level": "analyze", "diff": 3,

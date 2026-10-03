@@ -11,7 +11,7 @@
           ["Enzyme of glycolysis", "53", "94", "0", "99"],
           ["Protein of the small ribosomal subunit", "61", "88", "0", "101"],
           ["Enzyme that makes nucleotides for DNA", "46", "81", "0", "98"],
-          ["Enzyme of the Krebs cycle", "49", "90", "0", "100"],
+          ["Enzyme that makes sterols for the cell membrane", "49", "90", "0", "100"],
           ["Part of a six-protein complex that starts DNA replication", "58", "0", "0", "100"],
           ["Protein that links chromosomes to the spindle in mitosis", "31", "0", "0", "97"]
         ]
@@ -46,7 +46,7 @@
         "The nucleotide enzyme (46%, grows) and the replication-complex protein (58%, no growth)",
         "The glycolysis enzyme (53%, grows) and the ribosomal protein (61%, grows)",
         "The replication-complex protein (58%, no growth) and the mitosis protein (31%, no growth)",
-        "The Krebs cycle enzyme (49%, grows) and the glycolysis enzyme (53%, grows)"
+        "The sterol enzyme (49%, grows) and the glycolysis enzyme (53%, grows)"
       ],
       "correct": 0,
       "why": {
@@ -225,12 +225,12 @@
     {
       "id": "bio-common-ancestry-11", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "1.A", "level": "recall", "diff": 1,
       "q": "Which feature is found in every eukaryote but in no prokaryote?",
-      "options": ["Linear chromosomes", "Ribosomes", "A plasma membrane", "DNA as genetic material"],
+      "options": ["A nucleus", "Ribosomes", "A plasma membrane", "DNA as genetic material"],
       "correct": 0,
       "why": {
-        "correct": "Linear chromosomes, held in a nucleus, are one of the features eukaryotes share with each other and not with Bacteria or Archaea.",
+        "correct": "A nucleus wrapped in a double membrane is one of the features eukaryotes share with each other and not with Bacteria or Archaea. (Linear chromosomes are a eukaryote feature too, but a few bacteria also have them.)",
         "options": [
-          "Correct: prokaryotes have a circular main chromosome.",
+          "Correct: prokaryotes keep their DNA in the cytoplasm, with no nucleus around it.",
           "Ribosomes are in every cell, prokaryote or eukaryote.",
           "Every cell is bounded by a plasma membrane.",
           "DNA is the genetic material of every cell."
@@ -268,10 +268,10 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "These variant codes differ from the standard code in one or two codons out of 64. Small changes in a code that is otherwise identical are what descent with modification predicts.",
+        "correct": "These variant codes differ from the standard code in only a few of the 64 codons (two in the ciliates, four in human mitochondria). Small changes in a code that is otherwise identical are what descent with modification predicts.",
         "options": [
           "Correct: tiny departures from one shared code point to modification after shared descent.",
-          "Separate origins would give codes unlike each other throughout, not codes identical at 62 or more of 64 codons.",
+          "Separate origins would give codes unlike each other throughout, not codes that match at nearly all 64 codons.",
           "Nearly identical codes still point to shared descent; small changes after inheritance are expected.",
           "A shared code is one of the strongest lines of evidence for common ancestry."
         ]

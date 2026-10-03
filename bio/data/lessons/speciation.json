@@ -1,6 +1,6 @@
 {
   "topic": "speciation",
-  "hook": "<p>Before European settlers planted apple trees in North America, a small fly laid its eggs only in the fruit of hawthorn trees. In the 1800s some flies began using apples. Apples ripen weeks earlier than hawthorns, and the flies mate on the fruit they grew up in, so apple flies and hawthorn flies now meet less and less, even on trees growing side by side. Their gene pools are drifting apart in under 200 years. Biologists are watching what may be one species becoming two.</p>",
+  "hook": "<p>Before European settlers planted apple trees in North America, a small fly laid its eggs only in the fruit of hawthorn trees. In the 1800s some flies began using apples. Apples ripen weeks earlier than hawthorns, and the flies mate on the fruit they grew up in, so apple flies and hawthorn flies now meet less and less, even on trees growing side by side. Their gene pools have begun to diverge in under 200 years. Biologists are watching what may be one species becoming two.</p>",
   "prereq": [
     {
       "q": "Gene flow between two populations tends to",

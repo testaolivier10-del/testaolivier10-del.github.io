@@ -34,7 +34,7 @@
     "continuing-evolution-s3": {
       "kind": "table",
       "title": "A rabbit-killing virus and wild rabbits, 1951-1963",
-      "text": "<p>A virus that kills European rabbits was released in Australia in 1950 to reduce the number of wild rabbits there. Mosquitoes spread the virus by biting infected rabbits and then healthy ones. In each listed year, researchers (1) collected virus samples from wild rabbits and measured how lethal each was in lab rabbits never before exposed, and (2) caught young wild rabbits and infected them with one standard virus strain kept frozen and unchanged since the 1950s.</p>",
+      "text": "<p>A virus that kills European rabbits was released in Australia in 1950 to reduce the number of wild rabbits there. Mosquitoes spread the virus by biting infected rabbits and then healthy ones. In each listed year, researchers (1) collected virus samples from wild rabbits and measured how lethal each was in lab rabbits never before exposed, and (2) caught young wild rabbits and infected them with one standard virus strain kept frozen and unchanged since the 1950s. The values are simplified for teaching, following the pattern of the field surveys.</p>",
       "table": {
         "caption": "Lethality of wild virus samples, and death of wild rabbits given the standard strain",
         "cols": ["Year", "Samples killing over 99% of lab rabbits (%)", "Samples killing 70-99% (%)", "Samples killing under 70% (%)", "Wild rabbits killed by the standard strain (%)"],
