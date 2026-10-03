@@ -1,0 +1,7 @@
+{
+  "biodiversity-levels-roles": {
+    "file": "figures/biodiversity-levels-roles.svg", "ext": "svg", "w": 760, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Top row: three levels of biodiversity. Genetic diversity: snails of one species with differently banded shells, showing varied alleles. Species diversity: many kinds of organism, evenly common. Ecosystem diversity: a forest, a wetland and a grassland in one region. Bottom row: species with outsized effects. A keystone species, such as a predatory sea star, is few in number but eats the strongest competitor, leaving room for other species. A foundation species, such as kelp or reef-building coral, is abundant and builds the habitat many others live in. An ecosystem engineer, such as a beaver, physically changes the place: its dam turns a stream into a pond and wetland."
+  }
+}

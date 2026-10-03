@@ -1,0 +1,724 @@
+{
+  "stimuli": {
+    "biodiversity-s1": {
+      "kind": "graph",
+      "title": "Species on rocky-shore plots after a predator is removed",
+      "text": "<p>On a rocky shore, a predatory sea star eats mussels, barnacles and snails. Researchers marked ten 4 m² plots. From five plots they removed every sea star each month for six years; five control plots were left alone. Each year they counted the species of attached animals and seaweeds in each plot. Sea stars made up less than 1% of the animals counted. Mussels covered about 20% of the rock in every plot at the start; after six years they covered 85% of the removal plots and 15-25% of the control plots. Points are means of five plots.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time since removal began",
+          "unit": "years",
+          "min": 0,
+          "max": 6,
+          "step": 1
+        },
+        "y": {
+          "label": "Number of species per plot",
+          "unit": "",
+          "min": 0,
+          "max": 18,
+          "step": 2
+        },
+        "series": [
+          {
+            "name": "Control plots",
+            "points": [
+              [
+                0,
+                15
+              ],
+              [
+                1,
+                15
+              ],
+              [
+                2,
+                16
+              ],
+              [
+                3,
+                15
+              ],
+              [
+                4,
+                15
+              ],
+              [
+                5,
+                16
+              ],
+              [
+                6,
+                15
+              ]
+            ]
+          },
+          {
+            "name": "Sea stars removed",
+            "points": [
+              [
+                0,
+                15
+              ],
+              [
+                1,
+                14
+              ],
+              [
+                2,
+                12
+              ],
+              [
+                3,
+                10
+              ],
+              [
+                4,
+                9
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                6,
+                7
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "biodiversity-s2": {
+      "kind": "table",
+      "title": "Grassland plots with different numbers of plant species in a drought",
+      "text": "<p>Ecologists sowed 1 m plots with 1, 2, 4, 8 or 16 grassland plant species, choosing the species for each plot at random from a pool of 18, with 30 plots of each kind. They measured the plant matter (biomass) above ground each summer. One summer brought a severe drought. Values are means ± 2 SE.</p>",
+      "table": {
+        "caption": "Biomass before, during and after the drought",
+        "cols": [
+          "Species sown per plot",
+          "Biomass the summer before the drought (g per m²)",
+          "Biomass lost in the drought (% of the summer before)",
+          "Biomass two years later (% of the summer before)"
+        ],
+        "rows": [
+          [
+            "1",
+            "180 ± 40",
+            "78 ± 10",
+            "62 ± 15"
+          ],
+          [
+            "2",
+            "230 ± 35",
+            "65 ± 9",
+            "74 ± 12"
+          ],
+          [
+            "4",
+            "290 ± 30",
+            "52 ± 8",
+            "85 ± 10"
+          ],
+          [
+            "8",
+            "340 ± 28",
+            "41 ± 7",
+            "96 ± 8"
+          ],
+          [
+            "16",
+            "380 ± 25",
+            "33 ± 6",
+            "101 ± 7"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-biodiversity-1",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biodiversity-s1",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "Species numbers fell in both kinds of plot, but more slowly in the control plots than in the removal plots.",
+        "The control plots stayed at 15-16 species, while removal plots fell steadily from 15 to 7 species over six years.",
+        "Removal plots lost most of their species in the first year and then held steady at about 14 species per plot after that.",
+        "Removal plots gained species as the mussels spread, rising above the control plots by year 6."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Control plots held 15-16 species throughout; removal plots dropped each year: 15, 14, 12, 10, 9, 8, 7.",
+        "options": [
+          "The control plots did not decline; they varied between 15 and 16.",
+          "Correct: a steady fall only where the sea stars were removed.",
+          "The removal plots lost 1 species in year 1 and kept declining to 7.",
+          "Removal plots lost species as mussels spread, ending at 7 against 15 in the controls."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-2",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biodiversity-s1",
+      "q": "By what percentage did the number of species in the removal plots fall from year 0 to year 6? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 53.3,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "(15 − 7) ÷ 15 × 100 = 8 ÷ 15 × 100 = 53.3% fewer species."
+      }
+    },
+    {
+      "id": "bio-biodiversity-3",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biodiversity-s1",
+      "q": "Which explanation best accounts for the loss of species from the removal plots?",
+      "options": [
+        "Without sea stars eating them, mussels spread over the rock and crowded out species that need space to attach.",
+        "Without sea stars, the snails and barnacles they ate became too numerous and starved, taking other species with them.",
+        "Removing the sea stars disturbed the rock surface each month, which killed many of the attached species.",
+        "Sea stars release nutrients in their wastes, and without them the seaweeds and animals had too little food."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The sea star keeps mussels, the strongest competitor for space, in check. Mussel cover rose from 20% to 85%, and the species that lost their space disappeared: competitive exclusion released by removing the predator.",
+        "options": [
+          "Correct: the predator held down the dominant competitor.",
+          "The data show mussels taking over the rock, not prey starving.",
+          "Removing sea stars by hand is a small disturbance; the steady rise in mussel cover explains the losses better.",
+          "Nothing in the data points to nutrients, and the loss tracks the spread of mussels."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-4",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biodiversity-s1",
+      "q": "Which claim about the sea star is best supported by the data?",
+      "options": [
+        "It is a foundation species, because the community is built on its large numbers.",
+        "It is a keystone species, because a scarce species had a large effect on the community.",
+        "It is an ecosystem engineer, because it changes the physical structure of the rock it lives on.",
+        "It is a competitor of the mussels, because both use space on the rock."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Sea stars were under 1% of the animals counted, yet removing them cut species numbers by more than half: an effect far larger than their abundance, the mark of a keystone species.",
+        "options": [
+          "Foundation species are abundant; the sea star is scarce.",
+          "Correct: a small share of the community with a large effect.",
+          "The sea star acts by eating mussels, not by building or reshaping the habitat.",
+          "The sea star eats mussels; it is their predator, not a competitor for space."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-5",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "biodiversity-s1",
+      "q": "In a second experiment, researchers instead removed one rare red seaweed from five plots for six years. Predict the result.",
+      "options": [
+        "Species numbers fall to about 7, as in the sea star removal plots.",
+        "Species numbers rise, because the seaweed was a strong competitor for space.",
+        "Mussels spread over 85% of the rock, because they lose a food source.",
+        "Species numbers stay near the control level, apart from the lost seaweed."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "A rare species without a key role leaves little gap; its loss lowers richness by about one, while the mussels are still held down by the sea stars.",
+        "options": [
+          "The steep loss came from releasing the dominant competitor; a rare seaweed does not hold mussels back.",
+          "A rare species is unlikely to be a strong competitor, so removing it frees little space.",
+          "Mussels filter food from the water; a rare seaweed is not their food, and sea stars still eat them.",
+          "Correct: losing a non-keystone species has a small effect."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-6",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biodiversity-s2",
+      "q": "Which statement best describes the relationship shown in the table?",
+      "options": [
+        "Plots with more species produced less biomass but lost a larger share in the drought.",
+        "Plots with more species lost a smaller share in the drought but were slower to return to their earlier biomass.",
+        "Plots with more species produced more biomass, lost a smaller share in the drought and recovered more fully.",
+        "Plots with different numbers of species lost similar shares of their biomass in the drought."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "From 1 to 16 species, biomass rose (180 to 380 g per m²), drought loss fell (78% to 33%) and recovery after two years rose (62% to 101%).",
+        "options": [
+          "Both trends are reversed: more species meant more biomass and a smaller loss.",
+          "Recovery was more complete with more species (101% vs 62%).",
+          "Correct: higher productivity, resistance and resilience with more species.",
+          "Losses ranged from 78% to 33%, a large difference."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-7",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "biodiversity-s2",
+      "q": "Using the means, calculate the biomass left in the 16-species plots during the drought, in g per m². Give a whole number.",
+      "numeric": {
+        "answer": 255,
+        "tol": 1,
+        "unit": "g per m²",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "They lost 33% of 380 g per m², keeping 67%: 0.67 × 380 = 254.6, about 255 g per m². (The 1-species plots kept 0.22 × 180 ≈ 40 g per m².)"
+      }
+    },
+    {
+      "id": "bio-biodiversity-8",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biodiversity-s2",
+      "q": "Using the error bars (± 2 SE), which conclusion about drought losses is best supported?",
+      "options": [
+        "8-species and 16-species plots differ clearly, because their means differ by 8 percentage points.",
+        "1-species and 16-species plots do not clearly differ, because both sets of error bars are large.",
+        "1-species and 16-species plots differ clearly, but 8-species and 16-species plots do not clearly differ.",
+        "No two kinds of plot clearly differ, because each mean has an error bar around it."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "1 species: 68-88%; 16 species: 27-39%. No overlap, so they clearly differ. 8 species: 34-48% overlaps 27-39%, so those two are not clearly different.",
+        "options": [
+          "The intervals 34-48% and 27-39% overlap, so this difference may be due to chance.",
+          "The intervals 68-88% and 27-39% are far apart.",
+          "Correct: compare the ± 2 SE intervals for overlap.",
+          "Error bars that do not overlap, such as those for 1 and 16 species, indicate a clear difference."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-9",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biodiversity-s2",
+      "q": "Which explanation best accounts for the smaller drought losses in plots with many species?",
+      "options": [
+        "Plants in diverse plots shade the soil so well that drought does not reach their roots.",
+        "Diverse plots are more likely to include drought-tolerant species that keep growing and use resources the others leave.",
+        "Each species in a diverse plot grows more slowly, so each needs less water during a drought.",
+        "Diverse plots were watered more often by the researchers to keep the many species alive."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Species differ in how they cope with drought. The more species a plot has, the more likely some are deep-rooted or drought-tolerant and can take over, so the plot as a whole loses less and recovers faster.",
+        "options": [
+          "Shading may help a little, but the plots still lost a third of their biomass, so the drought did reach them.",
+          "Correct: differences among species buffer the whole community.",
+          "Diverse plots produced more biomass, not less, so their plants were not growing more slowly.",
+          "The design gave every plot the same treatment; nothing suggests extra watering."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-10",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "biodiversity-s2",
+      "q": "Why did the researchers choose the species for each plot at random from the pool of 18?",
+      "options": [
+        "So that the effect measured is of species number, not of always including one especially hardy species",
+        "So that each plot ends up with exactly the same total number of plants after it is sown",
+        "So that the 1-species plots each contain the most drought-tolerant species in the pool",
+        "So that the plots with more species are planted in the wettest parts of the field"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If the 16-species plots always held a particular hardy species, it could be that species, not diversity, that reduced losses. Random draws spread every species across plots of every diversity level.",
+        "options": [
+          "Correct: randomization separates the number of species from the identity of particular species.",
+          "Random choice of species does not set plant numbers; that is controlled by how the seeds are sown.",
+          "Choosing the hardiest species on purpose would bias the comparison, the opposite of randomizing.",
+          "Placing diverse plots in wet spots would confound the result; the species draw does not do that."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-11",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "Beavers cut trees and build dams that flood a stream valley, creating a pond with marshy edges where frogs, ducks and water plants live. Which term best describes the beaver's role?",
+      "options": [
+        "Foundation species, because beavers are the most abundant animals there",
+        "Producer, because beavers supply the energy that the pond relies on",
+        "Keystone predator, because beavers eat the strongest competitor present",
+        "Ecosystem engineer, because beavers physically reshape the environment"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Beavers change the physical environment, turning a stream into a pond and wetland that many other species then use.",
+        "options": [
+          "Beavers are few; their effect comes from building, not from being abundant.",
+          "Beavers are consumers; the pond's energy comes from its plants and algae.",
+          "Beavers eat bark and plants; their effect is not through predation on a competitor.",
+          "Correct: a species that creates habitat by changing the physical environment."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-12",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In a meadow, removing species X (2% of the plant and animal biomass) cut the number of species by half, while removing species Y (40% of the biomass) cut it by 10%. Which conclusion is best supported?",
+      "options": [
+        "Y is a keystone species, because it makes up the most biomass in the meadow.",
+        "Neither is a keystone species, because removing either one lowered richness.",
+        "X is a keystone species, because its effect is far larger than its share of the biomass.",
+        "Both are keystone species, because removing either one of them changed the whole community."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Keystone species are identified by an effect out of proportion to abundance: X, at 2% of biomass, halved richness.",
+        "options": [
+          "A species that is abundant and has a modest effect fits a dominant species, not a keystone.",
+          "Lowering richness does not rule out a keystone role; X's effect is huge for its size.",
+          "Correct: small share, large effect.",
+          "Nearly any removal changes a community a little; Y's effect is in line with its large share."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-13",
+      "type": "predict",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "On a savanna, elephants push over and eat young trees, which keeps the land open and grassy. Zebras and wildebeest graze the grass. All elephants are removed from a large fenced reserve. Predict each quantity ten years later.",
+      "variables": [
+        {
+          "name": "Number of trees",
+          "answer": "up",
+          "why": "Young trees are no longer pushed over and eaten, so more of them grow up."
+        },
+        {
+          "name": "Area of open grassland",
+          "answer": "down",
+          "why": "Growing trees shade out grass and take over space that was open."
+        },
+        {
+          "name": "Number of grazing zebras and wildebeest",
+          "answer": "down",
+          "why": "Less grass means less food for grazers."
+        },
+        {
+          "name": "Yearly rainfall on the reserve",
+          "answer": "none",
+          "why": "Rainfall is set by regional weather, not by elephants in one reserve."
+        }
+      ],
+      "why": {
+        "correct": "Elephants act as ecosystem engineers, holding back trees. Without them, the savanna moves toward woodland, and the species that depend on open grassland decline."
+      }
+    },
+    {
+      "id": "bio-biodiversity-14",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Select the two examples of ecosystem services.",
+      "options": [
+        "Wild bees pollinating apple trees in nearby orchards",
+        "A factory producing fertilizer from nitrogen gas",
+        "A wetland filtering sediment and nutrients from river water",
+        "A farmer buying seeds of a new crop variety",
+        "A city building a concrete wall along a river"
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "why": {
+        "correct": "Ecosystem services are benefits that natural ecosystems provide to people, such as pollination and water filtration.",
+        "options": [
+          "An ecosystem service: wild pollinators raise crop yields.",
+          "A human industrial process, not a service from an ecosystem.",
+          "An ecosystem service: wetlands clean water.",
+          "A purchase, not a benefit an ecosystem provides.",
+          "Built infrastructure; a floodplain wetland doing the same job would be a service."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-15",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A banana variety grown worldwide for decades was propagated by cuttings, so every plant was a clone. A soil fungus spread through plantations and the variety was largely abandoned. Which explanation best accounts for the collapse?",
+      "options": [
+        "Clones grow more slowly than plants from seed, so the fungus overtook them.",
+        "Bananas lack an immune system, so no banana plant can resist any fungus.",
+        "Cuttings carry the fungus from parent to offspring, so each clone started life infected.",
+        "Every plant had the same alleles, so none had a defense against the fungus."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "With no genetic diversity, a pathogen that can infect one plant can infect them all; a varied population would likely include some resistant plants.",
+        "options": [
+          "Growth rate is not the issue; susceptibility was shared by every plant.",
+          "Plants do have defenses, and some banana varieties resist this fungus; this one did not.",
+          "The fungus spread through the soil between plantations, not mainly through cuttings.",
+          "Correct: no genetic variation, no resistant individuals."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-16",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "A region contains oak woods, peat bogs, meadows and streams. This variety is an example of",
+      "options": [
+        "genetic diversity",
+        "species evenness among habitats",
+        "relative abundance",
+        "ecosystem diversity"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Different kinds of ecosystem in a region are ecosystem diversity, the broadest level of biodiversity.",
+        "options": [
+          "Genetic diversity is variety of alleles within a species.",
+          "Evenness describes how equally individuals are spread among species.",
+          "Relative abundance is one species' share of the individuals in a community.",
+          "Correct: a variety of ecosystems."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-17",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Reef P has 30 coral species, and one of them makes up most of the coral cover; its Simpson's D is 0.52. Reef Q has 22 coral species, all about equally common; its D is 0.88. Which claim is best supported?",
+      "options": [
+        "Reef P is more diverse, because it has more species than reef Q.",
+        "The reefs are equally diverse, because both have over 20 coral species.",
+        "Reef Q is more diverse, because its species are much more evenly represented.",
+        "Reef Q is less stable, because a lower number of species means less diversity."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "D combines richness and evenness. Q's higher D shows that two random corals there are far more likely to be different species, so Q is more diverse despite fewer species.",
+        "options": [
+          "Richness is only part of diversity; P is dominated by one species.",
+          "Their D values (0.52 and 0.88) differ widely.",
+          "Correct: higher D, higher diversity.",
+          "Q has the higher diversity index, which, if anything, suggests greater stability."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-18",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In one forest, three bird species eat the same kinds of insects. In another, one fig species is the only food source for many fruit-eating animals during the dry season. Which loss would most likely change its community more, and why?",
+      "options": [
+        "Losing one insect-eating bird, because birds are higher on the food chain than trees",
+        "Losing the fig, because no other species fills its role and many animals rely on it",
+        "Losing one insect-eating bird, because insects would then multiply without limit",
+        "Losing either one changes its community equally, because each is one species"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "When several species do the same job, the others can take over if one is lost. The fig has no stand-in during the dry season, so its loss affects every animal that depends on it.",
+        "options": [
+          "Position in the food chain does not decide importance; having no stand-in does.",
+          "Correct: a unique role makes a species hard to replace.",
+          "The other two bird species still eat the same insects, so insects stay in check.",
+          "Species differ in how replaceable they are; losses are not equal."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-19",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A summer of unusually warm water kills most of the reef-building corals on a reef. The heat itself does not harm the reef fish. Predict what happens to the reef fish over the next few years.",
+      "options": [
+        "Fish species decline, because the coral structure they shelter and feed in breaks down.",
+        "Fish species increase, because the corals no longer compete with the fish for food.",
+        "Fish species stay the same, because the warm water did not harm the fish themselves.",
+        "Fish species decline at first and then recover fully within one year as the coral regrows."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Reef-building corals are foundation species: their structure is the habitat many fish shelter, feed and breed in. As dead coral erodes, those fish lose their habitat and decline.",
+        "options": [
+          "Correct: losing a foundation species removes the habitat others need.",
+          "Corals and reef fish largely use different food; the corals' main effect is to provide habitat.",
+          "The fish depend on the coral habitat, so they are affected even though the heat did not harm them.",
+          "Reef-building corals grow slowly; recovery takes many years, not one."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-20",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Two lakes lose most of their fish in the same severe winter. Lake A, with 12 fish species, regains its earlier fish biomass in two years; lake B, with 3 species, takes seven years. Lake A shows greater",
+      "options": [
+        "resilience, because it recovered from the disruption faster",
+        "species evenness, because its fish biomass returned to normal",
+        "carrying capacity, because it supports more species of fish",
+        "trophic efficiency, because its fish grew faster after winter"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Resilience is the speed and completeness of recovery after a disruption; lake A recovered in two years against seven.",
+        "options": [
+          "Correct: faster recovery is resilience.",
+          "Evenness describes how equally species are represented, not recovery.",
+          "Carrying capacity is for one population; the data are about recovery time.",
+          "Trophic efficiency is energy passed between levels; the data do not measure it."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-21",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "How does a keystone species differ from a foundation species?",
+      "options": [
+        "A keystone species has an effect far greater than its numbers; a foundation species matters through its abundance and habitat building.",
+        "A keystone species is a producer at the base of the food web; a foundation species is a top predator that controls the others.",
+        "A keystone species makes up most of the biomass in its community; a foundation species is rare but influential in its effects.",
+        "A keystone species changes the physical environment; a foundation species affects others mainly by being eaten by them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Keystone species are defined by an outsized effect relative to abundance, often as predators; foundation species are abundant and build the habitat.",
+        "options": [
+          "Correct: effect relative to abundance versus abundance and habitat.",
+          "Keystone species are often predators, and foundation species are often producers such as kelp or trees.",
+          "This swaps the two: foundation species are the abundant ones.",
+          "Changing the physical environment defines an ecosystem engineer; foundation species matter as habitat, not just as food."
+        ]
+      }
+    },
+    {
+      "id": "bio-biodiversity-22",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "biodiversity",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which list gives the three levels of biodiversity?",
+      "options": [
+        "Genetic, species and ecosystem diversity",
+        "Producers, consumers, decomposers and detritus",
+        "Richness, evenness and Simpson's index",
+        "Population, community and ecosystem"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Biodiversity covers the variety of alleles within species, of species in communities and of ecosystems in regions.",
+        "options": [
+          "Correct.",
+          "These are trophic roles in an ecosystem.",
+          "These describe species diversity, one level only.",
+          "These are levels of ecological organization, not of biodiversity."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "biodiversity": { "def": "The variety of life in an area, at three levels: genetic diversity (the variety of alleles within species), species diversity (the number and evenness of species) and ecosystem diversity (the variety of ecosystems)." },
+  "ecosystem-diversity": { "def": "The variety of ecosystems in a region, such as forests, wetlands, grasslands and streams, each with its own community and conditions. It is the broadest of the three levels of biodiversity." },
+  "ecosystem-stability": { "def": "An ecosystem's ability to keep functioning when conditions change: to resist a disruption (lose little) and to recover after it (resilience). More diverse communities, with more species and more genetic variation, tend to be more stable." },
+  "keystone": { "def": "A species whose effect on its community is far larger than its abundance or biomass would suggest, often a predator that holds down a strong competitor. Removing it changes community structure sharply, usually lowering diversity." },
+  "foundation-species": { "def": "A species that strongly shapes its community by being abundant or large and creating or forming the habitat, such as kelp, reef-building corals or the dominant trees of a forest. Ecosystem engineers, such as beavers, physically change the environment in ways that create habitat for others." },
+  "ecosystem-services": { "def": "Benefits people receive from ecosystems, such as pollination of crops, clean water filtered by wetlands and soils, flood control, fisheries, timber, carbon storage and recreation." }
+}
