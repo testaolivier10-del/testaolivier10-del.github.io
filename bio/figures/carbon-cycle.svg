@@ -51,11 +51,12 @@
   <text x="249" y="180" font-size="12">eaten</text>
   <path d="M150,218 C170,260 230,296 286,300" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
   <line x1="380" y1="218" x2="380" y2="272" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
-  <text x="196" y="262" font-size="12">dead matter</text>
+  <text x="234" y="258" font-size="12">dead matter</text>
   <!-- burial -->
-  <path d="M300,334 C280,350 260,360 252,370" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
-  <text x="352" y="356" font-size="12" text-anchor="start">buried without decay,</text>
-  <text x="352" y="372" font-size="12" text-anchor="start">millions of years</text>
+  <path d="M172,250 C160,290 152,320 148,356" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#cc-k)"/>
+  <text x="140" y="302" font-size="12" text-anchor="end">some buried</text>
+  <text x="140" y="318" font-size="12" text-anchor="end">without decay,</text>
+  <text x="140" y="334" font-size="12" text-anchor="end">millions of years</text>
   <!-- combustion -->
   <path d="M44,358 C30,320 14,250 14,200 L14,120 C14,40 120,10 266,24" fill="none" stroke="#8E3B2E" stroke-width="3.5" marker-end="url(#cc-r)"/>
   <text x="34" y="306" font-size="13" font-weight="700" fill="#8E3B2E" text-anchor="start" transform="rotate(-90 34 306)">burning (combustion)</text>

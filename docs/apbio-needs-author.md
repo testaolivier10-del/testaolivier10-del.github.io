@@ -527,6 +527,19 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
   (1 − respiration share) per level (×5 with the defaults), a simple mass-balance rule; real biomagnification
   factors vary widely by toxin, species and fat content. Biomagnification is taught in 8.7, so the mode is
   labeled "from Topic 8.7" and its item is tagged `ecosystem-disruptions`.
+- **u8-review-defaults** (review u8, 2026-10-03). The independent check found every Unit 8 default above
+  defensible for the exam: the numbers in `seal-logistic` fit the logistic curve (r_max 0.12, K 10,000)
+  to within rounding, the simulators' tables match their models, and no key depends on a contested point.
+  Still open for a person: the "model data" label (`u8-illustrative-data`) and the definitions in
+  `energy-flow-model`.
+- **hibernation-mechanism** (open, 8.1, `bio-environment-responses-17`, notes; review u8). Hibernators
+  actively suppress metabolism before and as body temperature falls; the cold then slows reactions further
+  (a temperature, Q10, effect). The notes and the item's explanation now say both; the key ("reactions run
+  slowly when cold, so it makes and uses far less ATP") is kept as the exam-level idea.
+- **migration-cue** (open, 8.1, `bio-environment-responses-19`; review u8). Caged-warbler work (Gwinner) also
+  shows a circannual clock that keeps migratory restlessness going under constant day length. The key now
+  says day-length change, with food and temperature steady, is enough for migratory behavior, and the
+  explanation notes that the design cannot separate day length from an internal yearly clock.
 
 ## Map content to confirm
 

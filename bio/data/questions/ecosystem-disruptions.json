@@ -573,12 +573,12 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "Cod take several years to reach breeding age (K-selected traits), and while they were scarce other species took over their role and some ate young cod, so the population has grown back slowly.",
+        "correct": "Cod take several years to reach breeding age, and although each female lays millions of eggs, almost all die young; while they were scarce other species took over their role and some ate young cod, so the population has grown back slowly.",
         "options": [
           "Correct: slow maturity plus a changed community.",
           "Fishing removes individuals; the surviving cod can still reproduce.",
           "Ending fishing does not make the population crowded; it is far below its earlier size.",
-          "r-selected species recover quickly; slow recovery fits K-selected traits."
+          "If cod recovered like an r-selected species they would rebound fast; their slow recovery comes from late maturity and the changed food web."
         ]
       }
     },

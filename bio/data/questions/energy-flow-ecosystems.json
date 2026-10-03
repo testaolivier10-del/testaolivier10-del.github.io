@@ -3,7 +3,7 @@
     "energy-flow-ecosystems-s1": {
       "kind": "table",
       "title": "Energy budget of a lake food chain",
-      "text": "<p>Ecologists built a model of energy flow in a lake from field measurements, rounded for clarity. Phytoplankton (algae) are eaten by zooplankton, zooplankton by small fish, and small fish by fish-eating birds. Small fish are ectotherms; the birds are endotherms. For each level the table gives the energy taken into the body (for phytoplankton, the energy captured by photosynthesis), the part released as heat by cellular respiration, and the part stored in new biomass (growth and offspring), which is the energy available to the next level.</p>",
+      "text": "<p>Ecologists built a model of energy flow in a lake from field measurements, rounded for clarity. Phytoplankton (algae) are eaten by zooplankton, zooplankton by small fish, and small fish by fish-eating birds. Small fish are ectotherms; the birds are endotherms. For each level the table gives the energy taken into the body (absorbed from food, so not counting what leaves in feces; for phytoplankton, the energy captured by photosynthesis), the part released as heat by cellular respiration, and the part stored in new biomass (growth and offspring), which is the energy available to the next level.</p>",
       "table": {
         "caption": "Energy flow in the lake (kJ per m² of lake surface per year)",
         "cols": [

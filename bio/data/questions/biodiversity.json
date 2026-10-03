@@ -93,7 +93,7 @@
     "biodiversity-s2": {
       "kind": "table",
       "title": "Grassland plots with different numbers of plant species in a drought",
-      "text": "<p>Ecologists sowed 1 m plots with 1, 2, 4, 8 or 16 grassland plant species, choosing the species for each plot at random from a pool of 18, with 30 plots of each kind. They measured the plant matter (biomass) above ground each summer. One summer brought a severe drought. Values are means ± 2 SE.</p>",
+      "text": "<p>Ecologists sowed 1 m² plots with 1, 2, 4, 8 or 16 grassland plant species, choosing the species for each plot at random from a pool of 18, with 30 plots of each kind. They measured the plant matter (biomass) above ground each summer. One summer brought a severe drought. Values are means ± 2 SE.</p>",
       "table": {
         "caption": "Biomass before, during and after the drought",
         "cols": [
@@ -533,7 +533,7 @@
         "options": [
           "Growth rate is not the issue; susceptibility was shared by every plant.",
           "Plants do have defenses, and some banana varieties resist this fungus; this one did not.",
-          "The fungus spread through the soil between plantations, not mainly through cuttings.",
+          "Infected cuttings can spread the fungus, but clean plants in infected soil fell ill too; no plant could resist it.",
           "Correct: no genetic variation, no resistant individuals."
         ]
       }
@@ -572,7 +572,7 @@
       "practice": "6.A",
       "level": "apply",
       "diff": 2,
-      "q": "Reef P has 30 coral species, and one of them makes up most of the coral cover; its Simpson's D is 0.52. Reef Q has 22 coral species, all about equally common; its D is 0.88. Which claim is best supported?",
+      "q": "Reef P has 30 coral species, and one of them makes up most of the coral cover; its Simpson's D is 0.52. Reef Q has 22 coral species, all about equally common; its D is 0.95. Which claim is best supported?",
       "options": [
         "Reef P is more diverse, because it has more species than reef Q.",
         "The reefs are equally diverse, because both have over 20 coral species.",
@@ -584,7 +584,7 @@
         "correct": "D combines richness and evenness. Q's higher D shows that two random corals there are far more likely to be different species, so Q is more diverse despite fewer species.",
         "options": [
           "Richness is only part of diversity; P is dominated by one species.",
-          "Their D values (0.52 and 0.88) differ widely.",
+          "Their D values (0.52 and 0.95) differ widely.",
           "Correct: higher D, higher diversity.",
           "Q has the higher diversity index, which, if anything, suggests greater stability."
         ]

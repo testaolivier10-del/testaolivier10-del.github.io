@@ -216,7 +216,7 @@
         "options": [
           "The control dishes contain no moist half, so they add no moist-dry comparisons.",
           "Every dish held 10 animals anyway; equal numbers are not what the control dishes add.",
-          "The counts in every dish add up to 50 at each time, so no animals were lost or died.",
+          "Dead animals would still be counted on one half, and dishes without a moist half cannot compare survival on moist and dry paper.",
           "Correct: the controls rule out a side preference unrelated to moisture."
         ]
       }
@@ -563,7 +563,7 @@
       ],
       "correct": 3,
       "why": {
-        "correct": "Reaction rates fall with temperature, so the hibernating squirrel needs little ATP. Low oxygen use shows that cellular respiration, and so the use of stored fat, has slowed but not stopped.",
+        "correct": "The squirrel first turns down its metabolism, and as its body cools, reaction rates fall further, so it needs little ATP. Low oxygen use shows that cellular respiration, and so the use of stored fat, has slowed but not stopped.",
         "options": [
           "Oxygen use is 3% of normal, not zero, so respiration continues slowly; 4 °C slows enzymes rather than denaturing them.",
           "The drop in oxygen use reflects lower demand, not a better supply of oxygen.",
@@ -611,11 +611,11 @@
         "The birds learned when to leave by watching wild birds of their species fly past outside.",
         "A shortage of food is the main trigger for migration in this species of warbler.",
         "The restlessness is unrelated to migration, because caged birds are unable to migrate.",
-        "Seasonal change in day length is enough to trigger migratory behavior in these birds."
+        "Changes in day length, with food and temperature held steady, are enough for migratory behavior."
       ],
       "correct": 3,
       "why": {
-        "correct": "Food and temperature never changed, yet the birds showed migratory restlessness in the right seasons and directions. Day length, the one seasonal cue they received, was enough.",
+        "correct": "Food and temperature never changed, yet the birds showed migratory restlessness in the right seasons and directions. Day length, the one seasonal cue they received, was enough. (Many birds also have an internal yearly clock that day length keeps in step; this design cannot separate the two.)",
         "options": [
           "The birds were kept indoors, and the timing followed the light schedule they were given.",
           "Food was constant all year, so food shortage cannot explain the timing.",
