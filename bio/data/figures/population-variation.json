@@ -1,0 +1,12 @@
+{
+  "uniform-vs-mixed": {
+    "file": "figures/uniform-vs-mixed.svg", "ext": "svg", "w": 760, "h": 365,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two fields of 45 plants during a fungal outbreak. In the uniform planting every plant is the same genotype, a clone, and all 45 are infected. In the mixed planting four genotypes are scattered, three of them carrying alleles that resist this fungus strain, and 5 of 45 plants are infected, all of the susceptible genotype. Caption: in the mixed field, spores often land on plants they cannot infect, so the outbreak spreads less."
+  },
+  "sickle-malaria": {
+    "file": "figures/sickle-malaria.svg", "ext": "svg", "w": 760, "h": 300,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three genotypes where malaria is common. HbA HbA: normal hemoglobin, severe malaria more likely, fitness high but reduced by malaria. HbA HbS carrier: little or no sickling, strong protection against severe malaria, highest fitness. HbS HbS: cells sickle when oxygen is low, sickle cell disease, low fitness without medical care. Selection removes each allele in one homozygote, so both stay common: heterozygote advantage, a form of balancing selection."
+  }
+}
