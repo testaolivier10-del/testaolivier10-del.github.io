@@ -1,0 +1,403 @@
+{
+  "stimuli": {
+    "origin-of-life-s1": {
+      "kind": "graph",
+      "title": "Amino acids in a spark experiment",
+      "text": "<p>Students sealed water, methane (CH<sub>4</sub>), ammonia (NH<sub>3</sub>) and hydrogen gas (H<sub>2</sub>) in sterilized glass flasks. The water was gently boiled so vapor circulated past two electrodes. In three flasks, sparks passed between the electrodes continuously; in three control flasks, the electrodes were present but no sparks were made. Each day a small sample was tested for amino acids. Values are means of three flasks.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time", "unit": "days", "min": 0, "max": 7, "step": 1 },
+        "y": { "label": "Amount of amino acid in the flask", "unit": "µmol", "min": 0, "max": 8, "step": 2 },
+        "series": [
+          { "name": "Glycine, sparks", "points": [[0, 0], [1, 2.0], [2, 3.6], [3, 4.8], [4, 5.6], [5, 6.1], [6, 6.4], [7, 6.5]] },
+          { "name": "Alanine, sparks", "points": [[0, 0], [1, 1.1], [2, 2.0], [3, 2.6], [4, 3.0], [5, 3.3], [6, 3.4], [7, 3.5]] },
+          { "name": "Glycine, no sparks", "points": [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]] }
+        ]
+      }
+    },
+    "origin-of-life-s2": {
+      "kind": "table",
+      "title": "Clay, membranes and RNA",
+      "text": "<p>In water at the right pH, fatty acids slowly assemble into vesicles: hollow spheres bounded by a membrane. Researchers mixed fatty acids with buffer under four conditions and timed how long it took for half of the fatty acid to form vesicles. In two conditions they added short RNA strands tagged with a fluorescent dye, in one case first letting the RNA stick to particles of a clay mineral. They then counted the vesicles with fluorescent RNA inside.</p>",
+      "table": {
+        "caption": "Vesicle formation with and without clay (means of 4 trials)",
+        "cols": ["Condition", "Time for half of the fatty acid to form vesicles (min)", "Vesicles containing RNA (%)"],
+        "rows": [
+          ["Fatty acids only", "85", "—"],
+          ["Fatty acids + free RNA", "84", "3"],
+          ["Fatty acids + clay", "0.9", "—"],
+          ["Fatty acids + clay carrying RNA", "1.0", "48"]
+        ]
+      }
+    },
+    "origin-of-life-s3": {
+      "kind": "model",
+      "title": "What each kind of molecule can do",
+      "text": "<p>The table compares the abilities of three kinds of biological polymer, based on modern cells and on lab experiments.</p>",
+      "html": "<table class=\"compare\"><caption>Abilities of three polymers</caption><thead><tr><th>Ability</th><th>DNA</th><th>RNA</th><th>Protein</th></tr></thead><tbody><tr><th scope=\"row\">Stores information in a sequence that can be copied by base pairing</th><td>Yes</td><td>Yes</td><td>No</td></tr><tr><th scope=\"row\">Catalyzes chemical reactions in cells</th><td>No (some lab-made DNA strands can)</td><td>Yes, as ribozymes (for example, the part of the ribosome that joins amino acids)</td><td>Yes, as enzymes</td></tr><tr><th scope=\"row\">Chemical stability in water</th><td>High</td><td>Lower: the 2′ –OH on ribose helps break the backbone</td><td>Varies</td></tr><tr><th scope=\"row\">Range of chemical shapes and side groups</th><td>Narrow (4 bases)</td><td>Narrow (4 bases), but folds into many shapes</td><td>Wide (20 amino acids)</td></tr></tbody></table>"
+    }
+  },
+  "items": [
+    {
+      "id": "bio-origin-of-life-1", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "4.B", "level": "apply", "diff": 1,
+      "stimulus": "origin-of-life-s1",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "With sparks, both rose fast at first and then slowly, glycine staying higher",
+        "With sparks, alanine built up faster than glycine and passed it after about 3 days",
+        "Amino acids appeared in both kinds of flask, but more slowly without sparks",
+        "With sparks, both amino acids rose at a steady rate for the full 7 days"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glycine rose by 2.0 µmol on day 1 but only 0.1 on day 7; alanine followed the same shape at about half the amount. Without sparks, no glycine formed at all.",
+        "options": [
+          "Correct: fast early rise, leveling off, glycine above alanine.",
+          "Alanine stayed below glycine on every day.",
+          "The no-spark flasks had no glycine at any time.",
+          "The daily increase shrank from 2.0 to 0.1 µmol, so the rate was not steady."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-2", "type": "numeric", "unit": "unit-7", "topic": "origin-of-life", "practice": "5.A", "level": "apply", "diff": 1,
+      "stimulus": "origin-of-life-s1",
+      "q": "Calculate the mean rate at which glycine formed in the sparked flasks during the first 2 days, in µmol per day. Give one decimal place.",
+      "numeric": { "answer": 1.8, "tol": 0.05, "unit": "µmol per day", "decimals": 1 },
+      "why": { "correct": "(3.6 − 0) ÷ 2 days = 1.8 µmol per day. From day 5 to day 7 the rate was (6.5 − 6.1) ÷ 2 = 0.2 µmol per day." }
+    },
+    {
+      "id": "bio-origin-of-life-3", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "3.C", "level": "apply", "diff": 2,
+      "stimulus": "origin-of-life-s1",
+      "q": "What do the no-spark control flasks allow the students to conclude?",
+      "options": [
+        "The sparks' energy made the amino acids; contamination or the gases alone did not",
+        "Amino acids break down when no energy is supplied, so they need to be made continuously",
+        "The gases in the flasks were the same as those in the air of Earth when it first formed",
+        "Living cells are needed to turn the amino acids into proteins inside the flasks"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The control flasks match the experimental ones in every way except the sparks, and no amino acids appeared in them. So the sparks' energy, not microbes or the gases left to themselves, produced the amino acids.",
+        "options": [
+          "Correct: the only difference is the sparks, and only sparked flasks made amino acids.",
+          "No amino acids formed in the controls, so nothing was there to break down.",
+          "A control in the lab cannot show what the air of the young Earth was made of.",
+          "The experiment tested amino acid formation, not protein synthesis."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-4", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.C", "level": "analyze", "diff": 2,
+      "stimulus": "origin-of-life-s1",
+      "q": "Which explanation best accounts for the slowing of amino acid formation after day 4?",
+      "options": [
+        "The sealed flasks' starting gases were being used up, so less product formed daily",
+        "The amino acids joined into living cells, which then used up the remaining gases",
+        "The electrodes stopped making sparks after day 4, so no more energy entered the flasks",
+        "Glycine was converted into alanine, which kept the total amount of amino acid the same"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The flasks were sealed, so methane, ammonia and hydrogen were not replaced. As they were converted, less was left to react and the rate of formation fell. (Sparks can also break some products down, adding to the leveling.)",
+        "options": [
+          "Correct: reactants in a closed system are used up.",
+          "Nothing in the flasks was alive, and amino acids do not assemble into cells on their own.",
+          "The stem says sparks passed continuously.",
+          "Both amino acids kept rising slowly, so neither was converted into the other."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-5", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "3.E", "level": "analyze", "diff": 3,
+      "stimulus": "origin-of-life-s1",
+      "q": "Many geologists now think the early atmosphere was mostly carbon dioxide and nitrogen, with little methane or ammonia. Which next experiment would best test whether amino acids could still have formed?",
+      "options": [
+        "Repeat it with carbon dioxide, nitrogen and water vapor instead of the original gases",
+        "Repeat the experiment with the same gases, but run the sparks for 30 days instead of 7",
+        "Repeat the experiment with the same gases, but add amino acids at the start to see if they last",
+        "Repeat the experiment with the same gases in open flasks, so that air can enter as needed"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "To test the new hypothesis about the atmosphere, change the gases to match it while keeping everything else the same, and look for amino acids. (Such experiments give lower yields, which rise when the water is buffered against acid.)",
+        "options": [
+          "Correct: test the gases that the new hypothesis proposes.",
+          "A longer run with the old gases does not test the new atmosphere.",
+          "Adding amino acids tests their stability, not whether they can form from these gases.",
+          "Letting in modern air adds oxygen, which the early atmosphere lacked."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-6", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "4.B", "level": "apply", "diff": 1,
+      "stimulus": "origin-of-life-s2",
+      "q": "Which statement best describes the effect of clay?",
+      "options": [
+        "Clay made vesicles form about 85 times faster, whether or not RNA was present",
+        "Clay made vesicles form about 85 times slower, because it took up the fatty acid",
+        "Clay sped up vesicle formation just when RNA was stuck to it",
+        "Clay had no effect on vesicle formation but raised the share holding RNA"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With clay, half the fatty acid formed vesicles in 0.9-1.0 min instead of 84-85 min, roughly 85 times faster, with or without RNA.",
+        "options": [
+          "Correct: much faster, in both clay conditions.",
+          "The times fell from 85 min to about 1 min, so formation was faster, not slower.",
+          "Clay without RNA also sped formation (0.9 min).",
+          "Clay changed the formation time from 85 min to about 1 min."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-7", "type": "numeric", "unit": "unit-7", "topic": "origin-of-life", "practice": "5.A", "level": "apply", "diff": 2,
+      "stimulus": "origin-of-life-s2",
+      "q": "How many times more vesicles contained RNA when the RNA was stuck to clay than when free RNA was added? Give a whole number.",
+      "numeric": { "answer": 16, "tol": 0, "unit": "times", "decimals": 0 },
+      "why": { "correct": "48% ÷ 3% = 16 times as many vesicles held RNA when it was bound to clay." }
+    },
+    {
+      "id": "bio-origin-of-life-8", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.C", "level": "analyze", "diff": 3,
+      "stimulus": "origin-of-life-s2",
+      "q": "Which explanation best accounts for far more vesicles containing RNA when the RNA was stuck to clay?",
+      "options": [
+        "Vesicles formed on clay surfaces, so they wrapped around the RNA stuck there",
+        "Clay broke RNA into single nucleotides, which pass through vesicle membranes more easily",
+        "RNA on clay acted as an enzyme that built the vesicle membranes out of fatty acids",
+        "Clay removed the fatty acids from the water, so the RNA filled the space left behind"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The clay speeds vesicle formation on its surface, and the RNA is stuck to that same surface, so the growing membranes enclose clay particles together with their RNA.",
+        "options": [
+          "Correct: membranes form where the RNA is, and enclose it.",
+          "The RNA was tagged and counted inside vesicles; nothing suggests the clay cut it up.",
+          "Fatty acids assemble on their own in water; no enzyme is needed.",
+          "Vesicles formed faster with clay, so fatty acids were not removed."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-9", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.D", "level": "analyze", "diff": 3,
+      "stimulus": "origin-of-life-s2",
+      "q": "The same kind of clay also helps join activated nucleotides into RNA chains. Why does this make clay interesting to scientists studying the origin of life?",
+      "options": [
+        "One surface could help both build RNA and enclose it, linking two steps toward a protocell",
+        "It shows that clay was the first living thing, because it can copy itself and form membranes",
+        "It proves that life began in clay-rich soils rather than in the oceans or at hydrothermal vents on the sea floor",
+        "It shows that membranes formed before any monomers, so RNA was not needed for the first cells"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two separate steps, making polymers and enclosing them in a membrane, can be helped by the same mineral, so a single setting might bring them together. It is support for a hypothesis, not proof of where life began.",
+        "options": [
+          "Correct: one setting could connect polymer formation and protocell formation.",
+          "Clay is not alive; it provides a surface that speeds reactions.",
+          "Lab results show what is possible, not where it happened; several settings remain possible.",
+          "Fatty acids are monomers of a kind, and the RNA here was already present."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-10", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "2.A", "level": "apply", "diff": 1,
+      "stimulus": "origin-of-life-s3",
+      "q": "According to the table, which molecule can both store information and catalyze reactions in cells?",
+      "options": ["RNA", "DNA", "Protein", "DNA and protein together"],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "RNA stores information in a base sequence that can be copied, and ribozymes catalyze reactions, as in the ribosome.",
+        "options": [
+          "Correct: RNA does both.",
+          "DNA stores information but does not catalyze reactions in cells.",
+          "Proteins catalyze reactions but cannot be copied by base pairing.",
+          "This takes two different molecules; the question asks for one that does both."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-11", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.B", "level": "analyze", "diff": 2,
+      "stimulus": "origin-of-life-s3",
+      "q": "In every ribosome, the site that joins amino acids into a chain is made of rRNA, not protein. How does this support the RNA world hypothesis?",
+      "options": [
+        "Protein synthesis relies on an RNA catalyst, as expected if RNA catalysts came first",
+        "It shows that rRNA stores the genetic information for each of the proteins the cell makes",
+        "It shows that proteins fold correctly just when rRNA holds them in shape",
+        "It shows that the ribosome evolved after DNA, so DNA came before RNA"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If the first catalysts were RNA, the machine that makes proteins should still rely on RNA at its core, a molecular fossil of a time before proteins.",
+        "options": [
+          "Correct: an RNA catalyst at the heart of protein synthesis.",
+          "Genetic information for proteins is in mRNA copied from DNA, not in rRNA.",
+          "The ribosome's rRNA joins amino acids; it does not fold finished proteins.",
+          "An RNA core in the ribosome points to RNA coming first, not DNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-12", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.C", "level": "analyze", "diff": 2,
+      "stimulus": "origin-of-life-s3",
+      "q": "If RNA came first, why would DNA later have replaced it as the main store of genetic information?",
+      "options": [
+        "DNA lacks the 2′ –OH that helps break RNA, so long sequences last and copy reliably",
+        "DNA can catalyze more kinds of reactions than RNA, so it could also take over the jobs of enzymes",
+        "DNA has 20 different building blocks, so it can store more information per unit than RNA",
+        "DNA is made without any template, so cells with DNA no longer needed to copy their genes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Ribose's 2′ –OH helps break RNA chains in water; deoxyribose lacks it, and DNA's double strand allows repair from the partner strand. So DNA keeps long sequences intact, an advantage as genomes grew.",
+        "options": [
+          "Correct: stability favors DNA for storage.",
+          "The table says DNA does not catalyze reactions in cells.",
+          "DNA has 4 bases; 20 building blocks describes proteins.",
+          "DNA is copied using a template, by base pairing."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-13", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.E", "level": "analyze", "diff": 3,
+      "stimulus": "origin-of-life-s3",
+      "q": "In the lab, researchers have made a ribozyme that copies other RNA strands, with some errors. Predict what would happen in a population of such ribozymes copying one another over many rounds, with limited nucleotides.",
+      "options": [
+        "Better-copying variants would become more common: natural selection on molecules",
+        "Each copy would match the first ribozyme exactly, because base pairing prevents change",
+        "The ribozymes would turn into DNA, because DNA is the more stable molecule",
+        "The ribozymes would stop copying, because copying with errors destroys the molecules"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Copying with errors creates heritable variation; limited nucleotides create competition; variants that copy themselves better leave more copies. That is natural selection, which could have shaped the earliest replicators.",
+        "options": [
+          "Correct: variation plus competition plus inheritance gives selection.",
+          "The stem says copying makes errors, so copies vary.",
+          "Ribozymes copy RNA; nothing in the setup makes DNA.",
+          "Most errors leave a working molecule or one slightly worse; selection sorts among them."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-14", "type": "numeric", "unit": "unit-7", "topic": "origin-of-life", "practice": "5.A", "level": "apply", "diff": 1,
+      "q": "Earth formed about 4.6 billion years ago, and the oldest widely accepted fossils are about 3.5 billion years old. For what percent of Earth's history is there fossil evidence of life? Give a whole number.",
+      "numeric": { "answer": 76, "tol": 1, "unit": "%", "decimals": 0 },
+      "why": { "correct": "3.5 ÷ 4.6 × 100 = 76%. Life left evidence within about the first billion years, so its origin was fairly quick on a geological scale." }
+    },
+    {
+      "id": "bio-origin-of-life-15", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.B", "level": "apply", "diff": 2,
+      "q": "Stromatolites are rock mounds with fine layers. Today they form in a few warm, salty bays where mats of cyanobacteria trap sediment and grow upward through it. Rocks about 3.5 billion years old contain similar layered mounds. What do the ancient mounds best support?",
+      "options": [
+        "Mats of microbes existed about 3.5 billion years ago and built layered mounds as modern mats do",
+        "Cyanobacteria filled the oceans 3.5 billion years ago and made the air rich in oxygen at that time",
+        "Life arose in warm, salty bays 3.5 billion years ago, where the mounds formed",
+        "Layers in any old rock prove that living things were present when it formed"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Comparing the ancient structures with ones forming today points to microbial mats as their builders, so life existed by then.",
+        "options": [
+          "Correct: similar structures, built by similar microbial mats.",
+          "Oxygen did not build up in the air until about 2.4 billion years ago.",
+          "Mounds show where mats lived then, not where life first arose.",
+          "Many rock layers form without life, which is why fine, mound-shaped layers are the key feature."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-16", "type": "multi", "unit": "unit-7", "topic": "origin-of-life", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "Select the two conditions that scientists think were true of early Earth when life began.",
+      "options": [
+        "Little or no free oxygen in the atmosphere",
+        "Frequent volcanic activity and impacts from space",
+        "An ozone layer blocking most ultraviolet light",
+        "Forests of land plants releasing oxygen",
+        "Oceans already full of organic molecules made by cells"
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Early Earth had almost no free oxygen and was shaped by volcanoes and impacts. Oxygen and the ozone layer came much later, from photosynthesis.",
+        "options": [
+          "True: free oxygen built up only after about 2.4 billion years ago.",
+          "True: volcanic outgassing and impacts were common.",
+          "Ozone forms from oxygen, which was scarce, so ultraviolet light reached the surface.",
+          "Land plants appeared over 4 billion years later than Earth formed, far after life began.",
+          "Before life, organic molecules had to form without cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-17", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "In water, amino acids and nucleotides tend not to join into long chains. Why might mineral surfaces such as clay, or pools that dry and refill, have helped polymers form?",
+      "options": [
+        "They concentrate monomers and remove water, favoring dehydration synthesis",
+        "They add water to the monomers, favoring the hydrolysis reactions that build chains",
+        "They provide oxygen, which the joining reactions use as an energy source",
+        "They hold the monomers far apart so that they do not react with the wrong partner"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Joining monomers is dehydration synthesis: it releases water. In open water the reverse, hydrolysis, wins. Surfaces that bind and concentrate monomers, or drying that removes water, tip the balance toward chains.",
+        "options": [
+          "Correct: concentration and drying favor dehydration synthesis.",
+          "Hydrolysis breaks chains; adding water works against polymer formation.",
+          "Free oxygen was scarce, and these joining reactions do not use it.",
+          "Monomers must come close together to join."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-18", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.C", "level": "analyze", "diff": 2,
+      "q": "Some scientists propose that life began at hydrothermal vents on the sea floor. Which feature of vents best supports this hypothesis?",
+      "options": [
+        "Hot, mineral-rich water meeting cold seawater gives chemical energy and catalytic surfaces",
+        "Vents receive strong sunlight, which drives photosynthesis in the earliest cells",
+        "Vents are rich in free oxygen, which early cells used for respiration",
+        "Vents are cold and stable, which keeps fragile RNA from ever breaking down"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At vents, hot water full of dissolved minerals and gases meets cold seawater, creating chemical gradients that supply energy and metal-rich surfaces that can catalyze reactions, while deep water shields against ultraviolet light and impacts.",
+        "options": [
+          "Correct: energy from chemical gradients and catalytic minerals.",
+          "Deep-sea vents are dark; sunlight does not reach them.",
+          "Early oceans had little free oxygen.",
+          "Vent water is hot, which can also break RNA; that is one argument against vents."
+        ]
+      }
+    },
+    {
+      "id": "bio-origin-of-life-19", "type": "order", "unit": "unit-7", "topic": "origin-of-life", "practice": "1.B", "level": "apply", "diff": 1,
+      "q": "Put these proposed steps toward the first cells in order.",
+      "options": [
+        "Simple inorganic molecules react, using energy from lightning, UV light or vents",
+        "Monomers such as amino acids and nucleotides accumulate",
+        "Monomers join into polymers such as RNA on mineral surfaces",
+        "Membranes of fatty acids enclose self-copying RNA, forming protocells",
+        "DNA takes over information storage and proteins take over most catalysis"
+      ],
+      "why": { "correct": "Each step needs the one before: monomers from simple molecules, polymers from monomers, protocells from polymers inside membranes, and finally the DNA-RNA-protein system of modern cells." }
+    },
+    {
+      "id": "bio-origin-of-life-20", "type": "single", "unit": "unit-7", "topic": "origin-of-life", "practice": "6.C", "level": "analyze", "diff": 3,
+      "q": "If simple molecules could form life on early Earth, why do new life forms not arise from nonliving chemicals today?",
+      "options": [
+        "Oxygen breaks down organic molecules today, and microbes would eat any that formed",
+        "The laws of chemistry have changed since early Earth, so the same reactions no longer happen",
+        "Lightning and volcanoes no longer occur, so there is no energy to build organic molecules",
+        "Living things today release chemicals that turn simple molecules into carbon dioxide on contact"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Early Earth had no free oxygen and no life. Today oxygen reacts with and breaks down organic molecules, and microbes everywhere would eat any new ones long before they could assemble into anything.",
+        "options": [
+          "Correct: oxygen and existing life destroy new organic molecules.",
+          "The laws of chemistry are the same; the conditions differ.",
+          "Lightning and volcanoes still occur.",
+          "Organisms do not have such chemicals; the issue is oxygen and consumption by existing life."
+        ]
+      }
+    }
+  ]
+}

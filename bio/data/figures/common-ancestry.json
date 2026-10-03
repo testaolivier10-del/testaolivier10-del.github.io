@@ -1,0 +1,12 @@
+{
+  "universal-features": {
+    "file": "figures/universal-features.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two nested boxes. The outer box, all living things in Bacteria, Archaea and Eukarya, lists DNA as genetic material, the same nearly universal genetic code, ribosomes, ATP as the energy carrier, glycolysis or close variants, and a plasma membrane. The inner box, eukaryotes only, lists a nucleus with a double membrane, membrane-bound organelles such as mitochondria, ER and Golgi, linear chromosomes, genes split by introns that are spliced out, and a cytoskeleton."
+  },
+  "three-domains": {
+    "file": "figures/three-domains.svg", "ext": "svg", "w": 760, "h": 320,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A branching diagram starting from LUCA, which had DNA, the genetic code, ribosomes, ATP and a membrane. Bacteria split off first; the other branch later splits into Archaea and Eukarya. A mark on the branch Archaea and Eukarya share reads histones and complex RNA polymerase; a mark on the Eukarya branch reads nucleus, organelles and linear chromosomes. Bacteria have no nucleus and most have peptidoglycan walls; Archaea have no nucleus and unusual membrane lipids; Eukarya are animals, plants, fungi and protists."
+  }
+}

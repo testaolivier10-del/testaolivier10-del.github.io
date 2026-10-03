@@ -1,0 +1,408 @@
+{
+  "stimuli": {
+    "common-ancestry-s1": {
+      "kind": "table",
+      "title": "Human genes in yeast cells",
+      "text": "<p>Baker's yeast cannot divide if it lacks any one of the six genes below. Researchers deleted one gene at a time and gave each deletion strain the matching human gene. As controls, some deletion strains received no gene and some received the yeast's own gene back. Every strain grew for 48 h at 30 °C. Growth is given as a percent of unaltered yeast (mean of 4 cultures).</p>",
+      "table": {
+        "caption": "Growth of yeast deletion strains given a human gene, no gene or the yeast gene",
+        "cols": ["Job of the gene's protein", "Amino acids identical in the yeast and human proteins (%)", "Growth with human gene (% of unaltered)", "Growth with no gene (% of unaltered)", "Growth with yeast gene put back (% of unaltered)"],
+        "rows": [
+          ["Enzyme of glycolysis", "53", "94", "0", "99"],
+          ["Protein of the small ribosomal subunit", "61", "88", "0", "101"],
+          ["Enzyme that makes nucleotides for DNA", "46", "81", "0", "98"],
+          ["Enzyme of the Krebs cycle", "49", "90", "0", "100"],
+          ["Part of a six-protein complex that starts DNA replication", "58", "0", "0", "100"],
+          ["Protein that links chromosomes to the spindle in mitosis", "31", "0", "0", "97"]
+        ]
+      }
+    },
+    "common-ancestry-s2": {
+      "kind": "table",
+      "title": "Four newly sampled single-celled organisms",
+      "text": "<p>Researchers grew four single-celled organisms, W, X, Y and Z, from soil and hot-spring samples and examined their cells and molecules.</p>",
+      "table": {
+        "caption": "Features of organisms W, X, Y and Z (+ present, − absent)",
+        "cols": ["Feature", "W", "X", "Y", "Z"],
+        "rows": [
+          ["Nucleus", "−", "−", "+", "−"],
+          ["Cell wall containing peptidoglycan", "+", "−", "−", "−"],
+          ["Links joining tails to glycerol in membrane lipids", "ester", "ether", "ester", "ester"],
+          ["DNA wrapped around histone proteins", "−", "+", "+", "−"],
+          ["Shape of the main chromosome", "circular", "circular", "linear", "circular"],
+          ["Introns in protein-coding genes", "−", "−", "+", "−"],
+          ["Reads mRNA with the standard genetic code", "+", "+", "+", "+"],
+          ["Makes ATP with an ATP synthase in a membrane", "+", "+", "+", "+"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-common-ancestry-1", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "4.B", "level": "analyze", "diff": 3,
+      "stimulus": "common-ancestry-s1",
+      "q": "Which comparison in the table best shows that the percent of identical amino acids does not by itself predict whether a human gene can replace the yeast gene?",
+      "options": [
+        "The nucleotide enzyme (46%, grows) and the replication-complex protein (58%, no growth)",
+        "The glycolysis enzyme (53%, grows) and the ribosomal protein (61%, grows)",
+        "The replication-complex protein (58%, no growth) and the mitosis protein (31%, no growth)",
+        "The Krebs cycle enzyme (49%, grows) and the glycolysis enzyme (53%, grows)"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The protein with lower identity (46%) restores growth while one with higher identity (58%) does not, so identity alone cannot be what decides success. Something else, such as fitting into a complex with yeast partner proteins, matters too.",
+        "options": [
+          "Correct: lower identity succeeds and higher identity fails, which identity alone cannot explain.",
+          "Both have fairly high identity and both work, which fits the idea that identity predicts success.",
+          "Both fail, so this pair cannot show that identity is a poor predictor; the 31% protein failing is what identity would predict.",
+          "Both work at similar identity, so the pair fits identity as a predictor."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-2", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.C", "level": "analyze", "diff": 2,
+      "stimulus": "common-ancestry-s1",
+      "q": "Which explanation best accounts for the human glycolysis gene restoring growth to yeast that lack their own version?",
+      "options": [
+        "Yeast and humans inherited this enzyme and the genetic code from a shared ancestor, so yeast can build a working enzyme from it",
+        "The human gene mutated inside the yeast cells until its sequence matched the missing yeast gene, so the yeast enzyme was made again",
+        "The two enzymes have the same amino acid sequence, so the yeast cell makes exactly its own enzyme from the human gene",
+        "Glycolysis arose separately in the ancestors of yeast and of humans, and the two versions happen to catalyze the same steps"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The human gene is read with the same genetic code by yeast's ribosomes, and the enzyme it codes for still does the same job because both versions descend from one ancestral enzyme. Common ancestry explains both the shared code and the shared function.",
+        "options": [
+          "Correct: a shared code lets yeast translate the gene, and shared descent keeps the enzyme's function.",
+          "Mutations are random and rare; nothing steers a gene toward the yeast sequence within 48 hours.",
+          "Only 53% of the amino acids are identical, so the proteins differ at nearly half their positions.",
+          "Separate origins would not explain why the human enzyme works inside yeast, or why the sequences match at over half their positions."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-3", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "3.C", "level": "apply", "diff": 2,
+      "stimulus": "common-ancestry-s1",
+      "q": "What does the control in which the yeast's own gene is put back allow the researchers to rule out?",
+      "options": [
+        "That the gene-transfer method itself harms growth, which would make failures with human genes meaningless",
+        "That the yeast cells could grow well without the deleted gene, so the gene was not essential for division",
+        "That the human genes were too long for the yeast's ribosomes to translate into complete proteins",
+        "That the growth medium lacked a nutrient yeast needs, so no strain could grow well at 30 °C"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Strains given their own gene back grow at 97-101% of normal, so the procedure itself does not harm growth. When a human gene fails (0%), the failure must come from the human gene, not from the method.",
+        "options": [
+          "Correct: it shows the method works, so a failure points to the gene put in.",
+          "The no-gene control (0% growth) is what shows the gene is needed; putting the yeast gene back does not test that.",
+          "This control uses yeast genes, so it says nothing about translating human genes.",
+          "Unaltered yeast and the put-back strains grow well in the same medium, but that is not the main thing this control is designed to test."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-4", "type": "numeric", "unit": "unit-7", "topic": "common-ancestry", "practice": "5.A", "level": "apply", "diff": 1,
+      "stimulus": "common-ancestry-s1",
+      "q": "When lined up, the yeast and human ribosomal proteins can be compared at 200 positions. Using the table, how many of those 200 positions carry different amino acids? Give a whole number.",
+      "numeric": { "answer": 78, "tol": 0, "unit": "positions", "decimals": 0 },
+      "why": { "correct": "61% of positions are identical, so 100% − 61% = 39% differ. 0.39 × 200 = 78 positions. The protein still works in yeast despite 78 differences, which suggests many positions can change without destroying function, while the identical ones are likely the essential ones." }
+    },
+    {
+      "id": "bio-common-ancestry-5", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.A", "level": "analyze", "diff": 2,
+      "stimulus": "common-ancestry-s1",
+      "q": "A student concludes from these results that humans evolved from yeast. Which response is best supported by the data and by evolutionary theory?",
+      "options": [
+        "The data fit humans and yeast descending from a shared ancestor; modern yeast is a distant relative, not an ancestor",
+        "The data support the conclusion, since four human genes can do the job of yeast genes and so came from yeast originally",
+        "The data contradict any relationship, because two of the six human genes failed to work in yeast",
+        "The data show that humans and yeast are close relatives, since their proteins are identical at about half of their positions"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Shared genes that still work in each other's cells show descent from a common ancestor. Both lineages have kept changing since they split, so neither modern organism is the ancestor of the other.",
+        "options": [
+          "Correct: shared ancestry, not descent of one living organism from another.",
+          "Working genes show both inherited them from a common ancestor; modern yeast has evolved for as long as the human line has.",
+          "Failures are expected where proteins have changed or must work with partners that changed; most of the genes still worked.",
+          "About half the amino acids differ, which fits a very distant relationship, not a close one."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-6", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "2.A", "level": "apply", "diff": 1,
+      "stimulus": "common-ancestry-s2",
+      "q": "Which pairing of organism and domain is supported by the table?",
+      "options": ["X: Archaea", "Z: Archaea", "W: Eukarya", "Y: Bacteria"],
+      "fixed": false,
+      "correct": 0,
+      "why": {
+        "correct": "X has no nucleus, so it is a prokaryote, and its ether-linked lipids, histones and lack of peptidoglycan mark it as an archaeon.",
+        "options": [
+          "Correct: no nucleus plus ether-linked lipids and histones fit Archaea.",
+          "Z has ester-linked lipids and no histones, like the bacterium W; its missing wall is not enough to make it an archaeon.",
+          "W has no nucleus, so it cannot be a eukaryote.",
+          "Y has a nucleus, linear chromosomes and introns, so it is a eukaryote."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-7", "type": "multi", "unit": "unit-7", "topic": "common-ancestry", "practice": "4.B", "level": "apply", "diff": 2,
+      "stimulus": "common-ancestry-s2",
+      "q": "Select the two features in the table that are evidence that W, X, Y and Z share one common ancestor.",
+      "options": ["Reading mRNA with the standard genetic code", "Making ATP with an ATP synthase in a membrane", "DNA wrapped around histone proteins", "Ether links in membrane lipids", "A circular main chromosome"],
+      "correct": [0, 1],
+      "why": {
+        "correct": "A feature can show that all four share an ancestor only if all four have it. The genetic code and membrane ATP synthase are found in all four, as in all known life.",
+        "options": [
+          "Shared by all four: the same code points to one origin.",
+          "Shared by all four: the same ATP-making machine points to one origin.",
+          "W and Z lack histones, so this feature cannot link all four.",
+          "Only X has ether-linked lipids.",
+          "Y's chromosome is linear, so this feature does not unite all four."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-8", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.B", "level": "analyze", "diff": 3,
+      "stimulus": "common-ancestry-s2",
+      "q": "Which evidence from the table best supports the claim that X shares a more recent common ancestor with Y than with W?",
+      "options": [
+        "X and Y both wrap their DNA around histones, and W does not",
+        "X and W both lack a nucleus, and Y has one",
+        "X and Y both lack peptidoglycan in a cell wall, and W has it",
+        "X and W both have a circular main chromosome, and Y does not"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A newer feature that two organisms share, and others lack, points to an ancestor they alone share. Histone-wrapped DNA is such a feature: X and Y have it, W does not.",
+        "options": [
+          "Correct: a shared newer feature unites X and Y.",
+          "Lacking a nucleus is the older state that all prokaryotes keep, so it links X to W no more than it links X to any prokaryote.",
+          "Lacking a feature is weak evidence: Z, which matches the bacterium W in its lipids and lack of histones, also lacks peptidoglycan.",
+          "A circular chromosome is the older state shared by all prokaryotes, so it does not show that X and W are close."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-9", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.E", "level": "apply", "diff": 2,
+      "stimulus": "common-ancestry-s2",
+      "q": "Penicillin stops cells from building peptidoglycan. If each organism is grown with penicillin, whose growth is expected to be slowed?",
+      "options": ["W and Z", "W, but not X, Y or Z", "X and Y", "W, X and Z, the three prokaryotes"],
+      "fixed": true,
+      "correct": 1,
+      "why": {
+        "correct": "Penicillin can only harm cells that build peptidoglycan. In the table, W is the one with a peptidoglycan wall.",
+        "options": [
+          "Z is a bacterium by its other features, but it has no peptidoglycan wall, so penicillin has nothing to block.",
+          "Correct: W is the one organism making peptidoglycan.",
+          "Neither X nor Y makes peptidoglycan.",
+          "X and Z lack peptidoglycan; being prokaryotes does not make them sensitive."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-10", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "1.B", "level": "apply", "diff": 2,
+      "stimulus": "common-ancestry-s2",
+      "q": "Which step in making a protein takes place in Y's cells but not in W's?",
+      "options": [
+        "Introns are spliced out of the RNA transcript in the nucleus",
+        "Ribosomes translate the mRNA's codons into a chain of amino acids",
+        "RNA polymerase transcribes a gene into RNA",
+        "A start codon sets the reading frame of the mRNA"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Y has a nucleus and genes with introns, so its RNA transcripts are spliced before translation. W has neither, so its mRNA can be translated as it is made.",
+        "options": [
+          "Correct: splicing needs introns, which W lacks.",
+          "Translation by ribosomes happens in every cell.",
+          "Every cell transcribes its genes with an RNA polymerase.",
+          "Every cell starts translation at a start codon; it is part of the shared genetic code."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-11", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "Which feature is found in every eukaryote but in no prokaryote?",
+      "options": ["Linear chromosomes", "Ribosomes", "A plasma membrane", "DNA as genetic material"],
+      "correct": 0,
+      "why": {
+        "correct": "Linear chromosomes, held in a nucleus, are one of the features eukaryotes share with each other and not with Bacteria or Archaea.",
+        "options": [
+          "Correct: prokaryotes have a circular main chromosome.",
+          "Ribosomes are in every cell, prokaryote or eukaryote.",
+          "Every cell is bounded by a plasma membrane.",
+          "DNA is the genetic material of every cell."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-12", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.C", "level": "analyze", "diff": 3,
+      "q": "Which reasoning best explains why a nearly universal genetic code is strong evidence that all life shares one ancestor?",
+      "options": [
+        "Many different codes would work equally well, so separate origins of life would be unlikely to arrive at the same one",
+        "The chemistry of the four bases fixes which amino acid each codon stands for, so any life anywhere would use this code",
+        "Organisms frequently trade codon tables with neighbors by gene transfer, so the code spread across life",
+        "The code changes quickly, so organisms with the same code probably shared an ancestor recently"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Which codon stands for which amino acid is largely arbitrary, and a change to the code would alter many proteins at once, so a code, once in place, is kept. The same code everywhere is best explained by inheritance from one ancestor.",
+        "options": [
+          "Correct: an arbitrary code shared by all is best explained by shared descent.",
+          "Engineered and natural variant codes work, so chemistry does not force this code; if it did, sharing it would say nothing about ancestry.",
+          "Genes move between organisms, but the code is read by a cell's own tRNAs and enzymes and is not swapped as a unit.",
+          "The code is very stable, which is why it is shared by organisms whose last common ancestor lived billions of years ago."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-13", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.B", "level": "analyze", "diff": 2,
+      "q": "In human mitochondria the codon UGA codes for tryptophan instead of stop, and some single-celled ciliates read UAA as glutamine. How do these facts affect the claim that all life shares one ancestor?",
+      "options": [
+        "They fit the claim: a few small changes in a code that is otherwise the same are expected after shared descent",
+        "They weaken the claim: mitochondria and ciliates probably arose separately from other life, each with a code of its own",
+        "They disprove the claim, since one exception shows that the genetic code is not shared",
+        "They are unrelated to the claim, because the genetic code says nothing about ancestry"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "These variant codes differ from the standard code in one or two codons out of 64. Small changes in a code that is otherwise identical are what descent with modification predicts.",
+        "options": [
+          "Correct: tiny departures from one shared code point to modification after shared descent.",
+          "Separate origins would give codes unlike each other throughout, not codes identical at 62 or more of 64 codons.",
+          "Nearly identical codes still point to shared descent; small changes after inheritance are expected.",
+          "A shared code is one of the strongest lines of evidence for common ancestry."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-14", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.B", "level": "apply", "diff": 2,
+      "q": "Which observation supports the idea that Archaea share a more recent common ancestor with eukaryotes than with Bacteria?",
+      "options": [
+        "Archaeal RNA polymerase and histones are built like those of eukaryotes",
+        "Archaea and Bacteria both lack a nucleus and membrane-bound organelles",
+        "Many archaea live in hot springs and salt flats where few eukaryotes live",
+        "Archaeal ribosomes are about the same size as bacterial ribosomes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Features that Archaea and eukaryotes share and Bacteria lack, such as a complex RNA polymerase and histones, point to an ancestor that Archaea and eukaryotes alone share.",
+        "options": [
+          "Correct: shared newer features link Archaea with eukaryotes.",
+          "Lacking a nucleus is the older condition of all prokaryotes, so it does not show that Archaea and Bacteria are close.",
+          "Where an organism lives says little about whom it shares an ancestor with.",
+          "Ribosome size is an older shared feature of prokaryotes and does not group Archaea with Bacteria more closely."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-15", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "The protein histone H4 in peas and in cows differs at only 2 of its 102 amino acids. Which explanation best accounts for so few differences?",
+      "options": [
+        "Most changes to H4 disrupt DNA packing, so carriers left fewer offspring and the changes were lost",
+        "The gene for H4 is protected from mutation, so its DNA sequence has not been copied with errors",
+        "Peas and cows share a fairly recent common ancestor, so there has been too little time for many changes",
+        "H4 is made of nucleic acid, so its sequence is copied more accurately than a protein's"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "H4 is a conserved protein: mutations arise in its gene as in any gene, but almost every amino acid change harms DNA packing, so natural selection removes it. Over a billion or so years, very few changes have survived.",
+        "options": [
+          "Correct: selection removes harmful changes, keeping the sequence nearly the same.",
+          "Mutations arise in this gene at a normal rate; what differs is that selection removes most changes to the protein.",
+          "Plants and animals last shared an ancestor over a billion years ago, which is plenty of time for change.",
+          "H4 is a protein, built from amino acids."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-16", "type": "predict", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "Researchers compare two genes between mice and humans. Gene F codes for a core ribosome protein, where most amino acid changes stop the ribosome from working. Gene P codes for a protein whose exact sequence matters little. Predict the value for gene F compared with gene P.",
+      "variables": [
+        { "name": "Number of amino acid differences between the mouse and human proteins", "answer": "down", "why": "Most amino acid changes in F harm the ribosome and are removed by selection, so fewer differences remain than in P." },
+        { "name": "Rate at which new mutations arise in the gene's DNA", "answer": "none", "why": "Mutations arise by chance at similar rates in both genes; what differs is which mutations are kept." },
+        { "name": "Share of amino acid-changing mutations that persist over many generations", "answer": "down", "why": "Carriers of most F changes have lower fitness, so those mutations are lost more often than changes in P." },
+        { "name": "Number of silent base differences that leave the amino acid unchanged", "answer": "none", "why": "Silent changes do not alter the protein, so selection does not remove them faster in F than in P; both genes collect them at similar rates." }
+      ],
+      "why": { "correct": "A conserved gene is not one that mutates less. Its mutations arise at the usual rate, but those that change the protein are removed by selection, so amino acid differences stay few while silent differences build up as in any gene." }
+    },
+    {
+      "id": "bio-common-ancestry-17", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "Which statement describes the last universal common ancestor (LUCA)?",
+      "options": [
+        "The most recent population of cells from which every living organism descends",
+        "The very first living cell to appear on Earth, before any other kind of life existed",
+        "A single bacterium alive today that is the parent of the other species on Earth",
+        "An early eukaryote whose nucleus was passed to Bacteria and Archaea"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "LUCA is the latest ancestor shared by all life today. Life had probably existed for some time before it, and LUCA already had DNA, the genetic code and ribosomes.",
+        "options": [
+          "Correct: the latest shared ancestor, not the first life.",
+          "LUCA was not necessarily the first life; other early lineages may have existed and left no descendants.",
+          "LUCA lived billions of years ago; no organism alive today is the ancestor of the others.",
+          "Bacteria and Archaea have no nucleus; the nucleus arose later, in the eukaryote line."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-18", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.C", "level": "analyze", "diff": 2,
+      "q": "Bacteria and Archaea build their membranes from different kinds of lipids. A student argues that the two groups therefore cannot share a common ancestor. Which response best counters the argument?",
+      "options": [
+        "Both share a lipid bilayer, the genetic code, ribosomes and ATP; one feature can change after two lines split",
+        "Both groups lack a nucleus, so they belong to one group, and their lipids turn out to be the same on closer study",
+        "Lipids are not coded directly by genes, so differences in lipids say nothing useful about ancestry",
+        "Archaea took their lipids from eukaryotes, which explains why they differ from bacterial lipids"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Common ancestry is judged from many features together. Bacteria and Archaea share the deep, arbitrary features of all life, and a difference in one feature is expected to arise in one line after the split.",
+        "options": [
+          "Correct: many shared core features outweigh one later change.",
+          "The lipids really do differ (ester versus ether links); lacking a nucleus is an older shared state, not proof of one group.",
+          "Lipids are made by enzymes, and enzymes are coded by genes, so lipid differences do reflect genes.",
+          "There is no evidence that Archaea got their lipids from eukaryotes."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-19", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Some antibiotics that bind bacterial ribosomes can also slow protein synthesis inside human mitochondria, causing side effects. Which explanation best accounts for this?",
+      "options": [
+        "Mitochondria descend from bacteria, and their ribosomes still resemble bacterial ribosomes",
+        "Mitochondria make most of the cell's proteins, so drugs that affect ribosomes act on them first",
+        "The antibiotics are converted into human hormones that enter the mitochondria",
+        "Human cytoplasmic ribosomes are identical to bacterial ribosomes, and mitochondria take them up"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mitochondria arose from an engulfed bacterium and kept bacteria-like ribosomes. Shared ancestry with bacteria explains why drugs aimed at bacterial ribosomes can also affect them.",
+        "options": [
+          "Correct: mitochondrial ribosomes inherited bacterial features.",
+          "Most of a cell's proteins are made on cytoplasmic ribosomes; mitochondria make a few of their own.",
+          "Nothing suggests these drugs become hormones; the effect comes from binding ribosomes.",
+          "Human cytoplasmic ribosomes are larger and differ from bacterial ones, which is why these drugs spare most human protein synthesis."
+        ]
+      }
+    },
+    {
+      "id": "bio-common-ancestry-20", "type": "multi", "unit": "unit-7", "topic": "common-ancestry", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "A new single-celled eukaryote is discovered in a lake. Select the two features you can predict it has, based on the features eukaryotes share.",
+      "options": ["Genes with introns that are spliced out of RNA", "Membrane-bound organelles", "A cell wall containing peptidoglycan", "Ether links in its membrane lipids", "A single circular chromosome with no histones"],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Eukaryotes inherited a shared set of features from their common ancestor, including introns and membrane-bound organelles, so a new eukaryote is predicted to have them.",
+        "options": [
+          "Introns and splicing are shared eukaryotic features.",
+          "Membrane-bound organelles define eukaryotic cells.",
+          "Peptidoglycan walls are a bacterial feature.",
+          "Ether-linked lipids are the archaeal kind; eukaryotes use ester links.",
+          "Eukaryotes have linear chromosomes wrapped on histones."
+        ]
+      }
+    }
+  ]
+}

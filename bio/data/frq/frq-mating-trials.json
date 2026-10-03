@@ -1,0 +1,52 @@
+{
+  "id": "frq-mating-trials",
+  "type": "investigation",
+  "points": 4,
+  "title": "Mating trials between separated populations",
+  "units": ["unit-7"],
+  "topics": ["speciation"],
+  "practices": ["3.B", "3.C", "6.E"],
+  "stimulus": {
+    "kind": "setup",
+    "title": "Fruit flies raised on two foods",
+    "text": "<p>Researchers split one laboratory population of fruit flies into four cages. Flies in cages S1 and S2 were fed a starch-based food; flies in cages M1 and M2 were fed a maltose-based food. Everything else was the same. After 40 generations, the researchers plan mating trials. In each trial they will place 12 unmated females and 12 males in a vial: 6 females and 6 males from one cage, and 6 females and 6 males from another cage, marked with colored dust so the cage of each fly is known. They will record each mating pair as same-cage or different-cage. Trials will be run for the pairs S1 with M1, S2 with M2, S1 with S2, and M1 with M2, 20 trials each.</p>"
+  },
+  "parts": [
+    {
+      "label": "a", "points": 1,
+      "prompt": "<b>State</b> the null hypothesis for the trials that pair a starch cage with a maltose cage.",
+      "rubric": [
+        { "point": "States that flies mate at random with respect to the cage (food) they came from: same-cage and different-cage matings occur equally often (about 50% each).",
+          "accept": ["the food the flies were raised on has no effect on mate choice", "same-cage and different-cage pairs are equally frequent", "any difference between same-cage and different-cage matings is due to chance"] }
+      ],
+      "sample": "The food on which the flies' cages were raised has no effect on whom they mate with: in starch × maltose trials, same-cage and different-cage pairs will be equally common, about 50% each."
+    },
+    {
+      "label": "b", "points": 1,
+      "prompt": "<b>Identify</b> the independent variable and the dependent variable in the mating trials.",
+      "rubric": [
+        { "point": "Identifies the independent variable as the food (starch or maltose) that each cage's flies were raised on, or the combination of cages in a trial, AND the dependent variable as the number or proportion of matings between flies from the same cage versus different cages.",
+          "accept": ["IV: food type of the cage (starch vs maltose); DV: proportion of same-cage matings", "IV: whether the two cages had the same or different food; DV: number of same-cage and different-cage pairs", "IV: diet history; DV: mate choice measured as same-cage vs different-cage matings"] }
+      ],
+      "sample": "The independent variable is the food each cage was raised on, starch or maltose, so trials pair cages with different or the same food. The dependent variable is the proportion of matings that are same-cage rather than different-cage."
+    },
+    {
+      "label": "c", "points": 1,
+      "prompt": "<b>Justify</b> including trials that pair S1 with S2 and M1 with M2.",
+      "rubric": [
+        { "point": "Justifies them as controls: they pair cages raised on the same food but kept apart for 40 generations, so if those flies mate at random while starch × maltose flies do not, the mating preference can be attributed to the food difference rather than to cage separation alone (drift or simply being kept apart) or to the marking method.",
+          "accept": ["controls for separation: if same-food cages mate randomly, any preference in mixed-food trials comes from the food", "they show whether 40 generations in separate cages, without a food difference, causes a preference", "they rule out the dust marking or cage history as the cause of non-random mating"] }
+      ],
+      "sample": "These trials are controls. S1 and S2 were kept apart for 40 generations just like S1 and M1, but on the same food. If S1 × S2 flies mate at random while S1 × M1 flies prefer their own cage, the preference can be blamed on the different foods, not on the cages being separated, on genetic drift alone, or on the colored dust."
+    },
+    {
+      "label": "d", "points": 1,
+      "prompt": "<b>Predict</b> the results of the starch × maltose and the same-food trials if a prezygotic barrier has begun to evolve between the starch and maltose lines, and <b>explain</b> how such a barrier could lead to speciation if these were populations in the wild.",
+      "rubric": [
+        { "point": "Predicts that starch × maltose trials show more same-cage matings than expected (well over 50%) while same-food trials show about 50% AND explains that mating mostly within each line reduces gene flow, so the two gene pools can keep changing in different directions until they are reproductively isolated, forming separate species.",
+          "accept": ["mixed-food trials: mostly same-cage pairs; same-food trials: random; reduced gene flow lets the populations diverge into species", "same-cage matings exceed 50% only when the foods differ; less interbreeding means less gene flow, so differences accumulate and isolation becomes complete", "behavioral isolation begins: if flies prefer their own line, gene flow drops and further divergence can produce two species"] }
+      ],
+      "sample": "In starch × maltose trials, more than half of the matings, perhaps 60-70%, would be same-cage pairs, while in S1 × S2 and M1 × M2 trials about 50% would be same-cage. In the wild, such a preference would mean the two populations mostly mate within themselves, so little gene flow would pass between them. Without gene flow, mutation, drift and selection would change the two gene pools in different directions, more barriers could build up, and eventually the populations would be reproductively isolated: separate species."
+    }
+  ]
+}

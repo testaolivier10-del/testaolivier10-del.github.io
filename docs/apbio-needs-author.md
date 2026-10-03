@@ -370,6 +370,39 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   CC BY-NC-SA notice and a no-AI-ingestion line, while the course credits OpenStax figures as CC BY 4.0.
   Check which license applies to the figures already used before launch. The operons tool uses no
   OpenStax text or figures.
+- **glycolysis-universal** (open, 7.7). The framework lists glycolysis among features shared by all life. Many archaea
+  run modified versions with different enzymes (modified Embden-Meyerhof and Entner-Doudoroff variants). Notes and
+  figure say "glycolysis or close variants of it". For your exam: glycolysis is a universal, conserved pathway.
+- **two-domain-tree** (open, 7.7, `three-domains` figure). Recent genome data (Asgard archaea) suggest eukaryotes arose
+  from within Archaea, a "two-domain" tree. The course teaches three domains with Archaea closer to Eukarya than to
+  Bacteria, as the framework does. For your exam: three domains.
+- **luca-membrane** (open, 7.7 notes going-further). Bacterial/eukaryotic ester lipids versus archaeal ether lipids
+  leave LUCA's membrane unresolved; presented as an open question.
+- **illustrative-data-u7b** (open, 7.7-7.12). These stimuli are built for teaching and are not published data sets:
+  yeast-human gene swaps (pattern after Kachroo et al. 2015), kdr mosquito curves, E. coli fitness table (shape after
+  the Lenski long-term experiment), myxoma virus and rabbit table (pattern after Fenner's surveys), HIV model numbers,
+  stream-fish crosses, tetraploid wildflower, snail rib chart, rice blast mixtures (pattern after Zhu et al. 2000),
+  wild-cat genetic rescue table (pattern after the Florida panther), sickle-cell survival bars, spark-experiment
+  curves and clay-vesicle table (pattern after Hanczyc et al. 2003, about 100-fold). Confirm the stems never present
+  them as real measurements.
+- **primate-clock** (open, 7.9, `phylogeny-s3`). Pairwise differences (12, 16, 31, 62 per 1,000 bases) approximate
+  genome-wide divergences; the orangutan calibration of 15 million years gives 5.8 (human-chimpanzee), 7.7 (gorilla)
+  and 30 (macaque) million years. Published estimates vary (human-chimpanzee 5-7, orangutan 12-16).
+- **turtle-placement** (open, 7.9, `phylogeny-s2`, `bio-phylogeny-16`). The tree puts turtles as the sister group of
+  crocodiles plus birds, the current genomic consensus. Older textbooks place turtles outside the other reptiles.
+  Items depend only on crocodile-bird sister status and on birds being inside reptiles, which both views share,
+  except `bio-phylogeny-7` (turtle equally related to crocodile and sparrow), which holds under both.
+- **lamprey-skull** (open, 7.9 `cladogram-traits`). "Skull" is used instead of "vertebrae" for the lamprey branch
+  because lamprey vertebral elements are rudimentary; the figure is otherwise the standard vertebrate cladogram.
+- **apple-maggot-sympatry** (open, 7.10). The apple maggot fly is presented as likely sympatric speciation in progress;
+  some studies find that part of the variation came from an older allopatric phase (inversions from Mexican
+  populations). For your exam: it is the standard example of sympatric divergence by host shift.
+- **early-atmosphere** (open, 7.12). Miller-Urey used a reducing atmosphere; many geologists now favor a mostly
+  CO₂-N₂ atmosphere, which gives lower yields unless buffered. Notes say so; `bio-origin-of-life-5` asks for the test.
+  For your exam: the Miller-Urey experiment shows abiotic synthesis of organic monomers from simple molecules.
+- **earliest-life-date** (open, 7.12). 3.5 billion years (stromatolites, microfossils) is used as "widely accepted";
+  3.7-billion-year Isua structures and 4.1-billion-year graphite in zircon are contested. First eukaryote fossils are
+  given as about 1.8 billion years (estimates 1.6-1.8). For your exam: Earth 4.6, life by about 3.5 billion years.
 
 - **u7a-illustrative-data** (open, Unit 7 topics 7.1-7.6). Invented data in realistic proportions, not measurements:
   mouse enclosures and meadow-plant fitness (`natural-selection-intro-s1`, `-s2`); finch beak depth by hatch year
