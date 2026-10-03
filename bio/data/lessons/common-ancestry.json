@@ -1,0 +1,90 @@
+{
+  "topic": "common-ancestry",
+  "hook": "<p>In 1987 researchers took yeast cells with a broken copy of a gene they need to divide, and gave them the matching gene from a human. The yeast divided normally. Years later a larger study tried the same swap for several hundred essential yeast genes, and nearly half of the human versions worked. Yeast and people last shared an ancestor more than a billion years ago, yet many of their parts are still interchangeable. That is what you would expect if all life is one family.</p>",
+  "prereq": [
+    {
+      "q": "What does it mean that the genetic code is universal?",
+      "options": [
+        "Nearly every organism reads the same codons as the same amino acids",
+        "Every organism has the same genes in the same order",
+        "Every protein is made of the same amino acid sequence"
+      ],
+      "correct": 0,
+      "why": "The code is the codon-to-amino-acid dictionary. Organisms have different genes, but almost all read codons the same way.",
+      "review": "translation"
+    },
+    {
+      "q": "Which feature separates eukaryotic cells from prokaryotic cells?",
+      "options": [
+        "A nucleus and other membrane-bound organelles",
+        "Ribosomes for making proteins",
+        "A plasma membrane around the cytoplasm"
+      ],
+      "correct": 0,
+      "why": "Every cell has ribosomes and a plasma membrane; only eukaryotes have a nucleus and membrane-bound organelles.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "Similar DNA or amino acid sequences in two organisms are evidence that",
+      "options": [
+        "they inherited the sequence from a common ancestor",
+        "they live in the same environment",
+        "one of them evolved from the other within the last few generations"
+      ],
+      "correct": 0,
+      "why": "Sequence similarity is molecular homology: the more alike the sequences, the more recently the two shared an ancestor.",
+      "review": "evolution-evidence"
+    }
+  ],
+  "figure": {
+    "figure": "universal-features",
+    "caption": "Two layers of shared features. Everything alive has the outer list; only eukaryotes also have the inner list. Each layer points to an ancestor that had those features and passed them on."
+  },
+  "chain": [
+    {
+      "cause": "All organisms alive today descend from one ancestral population of cells, the last universal common ancestor (LUCA), which lived billions of years ago.",
+      "effect": "LUCA already stored information in DNA, read it with the genetic code on ribosomes, used ATP and was wrapped in a membrane, and its descendants inherited all of these."
+    },
+    {
+      "cause": "Each of these core systems is used by thousands of other parts of the cell.",
+      "effect": "Almost any change to them, such as reassigning a codon, harms many proteins at once and lowers fitness."
+    },
+    {
+      "cause": "Natural selection removes most changes to these core systems generation after generation.",
+      "effect": "The systems stay nearly the same in Bacteria, Archaea and Eukarya, and the genes for them are conserved."
+    },
+    {
+      "cause": "Later, one lineage of cells evolved a nucleus, membrane-bound organelles, linear chromosomes and genes interrupted by introns.",
+      "effect": "All of its descendants, the eukaryotes, share these features too, which points to a more recent ancestor of all eukaryotes."
+    },
+    {
+      "cause": "Shared features are found in nested layers: some in all life, some only in eukaryotes.",
+      "effect": "The pattern is what common ancestry predicts: groups that share more features share a more recent ancestor."
+    }
+  ],
+  "ideas": [
+    "<b>Universal features</b> of life: DNA, a nearly universal <b>genetic code</b>, ribosomes, ATP, a plasma membrane, and core pathways such as <b>glycolysis</b>. They were present in <b>LUCA</b>, the last universal common ancestor.",
+    "<b>Eukaryotes</b> also share a nucleus, membrane-bound organelles, <b>linear chromosomes</b> and genes with <b>introns</b>, inherited from a later shared ancestor.",
+    "Life falls into <b>three domains</b>: Bacteria, Archaea and Eukarya. Archaea share histones and a complex RNA polymerase with eukaryotes, so they are closer to us than to Bacteria.",
+    "<b>Conserved genes</b> change slowly because selection removes most changes to essential proteins, not because they mutate less."
+  ],
+  "misconception": {
+    "wrong": "Because human genes work in yeast, humans must have evolved from yeast.",
+    "right": "Humans and yeast both descend from an ancestor they share. Modern yeast has been evolving exactly as long as the human line has, so it is a distant relative, not an ancestor."
+  },
+  "check": [
+    "bio-common-ancestry-2",
+    "bio-common-ancestry-3",
+    "bio-common-ancestry-5",
+    "bio-common-ancestry-8",
+    "bio-common-ancestry-9",
+    "bio-common-ancestry-12",
+    "bio-common-ancestry-15"
+  ],
+  "summary": "<p>Every living thing stores its genes in DNA, reads them with a nearly universal genetic code on ribosomes, powers its work with ATP, is bounded by a plasma membrane and runs core pathways such as glycolysis. These shared features were inherited from the last universal common ancestor (LUCA), the most recent population all life descends from. They stay nearly the same because almost any change to them is harmful and is removed by natural selection; genes that change this slowly are called conserved. Eukaryotes also share a nucleus, membrane-bound organelles, linear chromosomes and introns, inherited from a later ancestor of all eukaryotes. Life is grouped into three domains, Bacteria, Archaea and Eukarya, and Archaea share more features with eukaryotes than with Bacteria. Small exceptions, such as a few reassigned codons in mitochondria, are changes made after the shared start, not separate origins.</p>",
+  "connections": [
+    { "href": "../notes/evolution-evidence.html", "label": "Back: molecular and anatomical evidence (7.6)" },
+    { "href": "../notes/compartment-origins.html", "label": "Back: how mitochondria and chloroplasts began (2.10)" },
+    { "href": "../notes/continuing-evolution.html", "label": "Next: evolution happening now (7.8)" }
+  ]
+}
