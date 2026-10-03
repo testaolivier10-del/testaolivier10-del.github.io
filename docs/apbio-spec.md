@@ -77,8 +77,9 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.1 | Course registry refactor | `claude/apbio-registry` | merged (PR #33) |
 | 0.2 | CED topic map (own words) | — | done: `docs/apbio-ced-map.json` (61 topics; unverified against the official PDF, needs-author ced-verify) |
 | 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | done: map 777 concepts, 61 CED + 14 skills topics (`docs/apbio-phase0.md`); engine and generator (`docs/apbio-architecture.md`); nothing published, all pages noindex |
-| 0.4 | App pages (`claude/apbio-apps`), simulators + skills tools (`claude/apbio-tools`) | | in progress |
-| 2 | Units 1-3 + statistics skills, Beta | | not started |
+| 0.4a | App pages: practice, review, exams, FRQ, dashboard, flashcards, search, teachers; share links | `claude/apbio-apps` | done against the placeholder sample (`docs/apbio-architecture.md`, "App pages") |
+| 0.4b | Simulators + skills tools | `claude/apbio-tools` | in progress |
+| 2 | Units 1-3 + statistics skills, Beta | `claude/apbio-beta` (authors on `claude/apbio-u1`, `-u2a`, `-u2b`, `-u3`, `-skills`) | writing |
 | 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
 | 4 | Cram kit (by 2027-03-01) | | not started |
 
@@ -122,6 +123,12 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 7. (2026-10-03) **Beta, report, disclaimer on every page.** Every course page's footer carries the
    Beta note ("not yet been reviewed by an AP® Biology teacher"), the trademark disclaimer and a
    Report a problem button; site rules `apbio-trademark` and `apbio-beta-and-report`.
+8. (2026-10-03) **App pages** (`docs/apbio-architecture.md`, "App pages"). Stimulus sets are
+   served whole everywhere (practice step, unit test, Section I). The practice exam scales down
+   honestly to a "shorter practice exam" while the bank is incomplete. Readiness band from 60% MCQ
+   + 40% FRQ, labelled "Not calibrated". FRQ workspace gated like lessons, prompt and printable
+   sheet always open (needs-author frq-gating). The dashboard seeds the exam date 2027-05-03 once
+   (exam-date.js has no per-course default). teachers.html is generated, not an app.
 
 ## 4. Map format (Phase 0)
 

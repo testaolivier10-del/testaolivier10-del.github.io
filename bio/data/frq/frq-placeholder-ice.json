@@ -1,0 +1,29 @@
+{
+  "id": "frq-placeholder-ice",
+  "placeholder": true,
+  "title": "Why ice floats (placeholder)",
+  "type": "conceptual",
+  "points": 4,
+  "units": ["unit-1"],
+  "topics": ["water-hydrogen-bonding"],
+  "practices": ["1.A", "1.B", "6.B", "6.E"],
+  "stimulus": {
+    "kind": "setup",
+    "title": "A pond in winter",
+    "text": "<p>PLACEHOLDER content, written only to test the free-response pages; it has had no accuracy check. In winter a layer of ice forms on the surface of a pond, while the water at the bottom stays liquid at about 4 °C.</p>"
+  },
+  "parts": [
+    { "label": "a", "points": 1, "prompt": "<b>Describe</b> how hydrogen bonds are arranged in ice compared with liquid water.",
+      "rubric": [{ "point": "In ice, each molecule is held in a stable, open lattice by hydrogen bonds; in liquid water the bonds constantly break and re-form.", "accept": ["fixed open lattice in ice, shifting bonds in liquid"] }],
+      "sample": "In ice, hydrogen bonds hold each molecule in a fixed, open lattice. In liquid water the hydrogen bonds keep breaking and re-forming." },
+    { "label": "b", "points": 1, "prompt": "<b>Explain</b> why ice is less dense than liquid water.",
+      "rubric": [{ "point": "The open lattice spaces molecules farther apart than in the liquid, so the same mass takes up more volume.", "accept": ["molecules farther apart in the lattice"] }],
+      "sample": "The lattice holds molecules farther apart than in liquid water, so a given mass of ice takes up more space and is less dense." },
+    { "label": "c", "points": 1, "prompt": "<b>Explain</b> how the ice layer affects the temperature of the water below it.",
+      "rubric": [{ "point": "Floating ice insulates the water below, slowing heat loss to the cold air.", "accept": ["ice acts as an insulating layer"] }],
+      "sample": "The floating ice insulates the water underneath, so less heat escapes to the cold air and the deeper water stays liquid." },
+    { "label": "d", "points": 1, "prompt": "<b>Predict</b> what would happen to fish in the pond if ice were denser than liquid water, and <b>justify</b> your prediction.",
+      "rubric": [{ "point": "Ice would sink and the pond could freeze from the bottom up, leaving fish without liquid water.", "accept": ["pond freezes solid, fish die"] }],
+      "sample": "Ice would sink as it formed, so the pond could freeze from the bottom up and the fish would lose the liquid water they need." }
+  ]
+}

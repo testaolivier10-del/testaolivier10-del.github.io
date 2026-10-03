@@ -1,5 +1,6 @@
 {
   "id": "frq-water-cooling",
+  "placeholder": true,
   "type": "data",
   "points": 4,
   "units": ["unit-1"],

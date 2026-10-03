@@ -510,3 +510,12 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
   .bio-set{border-color:#999;}
 }
 @media (max-width:560px){.bio-sheet-grid{grid-template-columns:minmax(0,1fr);}.bio-set{padding:10px;}}
+
+/* Share bar: Share to Google Classroom, Copy link, Print (lessons, notes,
+   unit sheets, FRQs; scripts/build-apbio.mjs shareBar). Fixed height, so
+   nothing shifts when the copy label changes. */
+.bio-share{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.bio-share-btn{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--cink);font:800 13.5px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;min-width:7.5em;justify-content:center;}
+.bio-share-btn:hover{border-color:var(--cink);color:var(--cink);}
+.bio-share-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media print{.bio-share{display:none !important;}}

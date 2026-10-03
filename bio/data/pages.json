@@ -1,5 +1,5 @@
 {
-  "about": "The AP Biology app pages. scripts/build-apbio.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in bio/assets/<script>, which mounts into #app. Until that script exists the shell says the page arrives with the first published unit. premium names the Premium feature (ApBioCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apbio-spec.md decision 2), so scripts live in bio/assets/pages/, not apps/.",
+  "about": "The AP Biology app pages. scripts/build-apbio.mjs writes each page's shell (head, header, footer, a <div id=\"app\"> mount) from this file; the page's behavior is its script in bio/assets/<script>, which mounts into #app. Until that script exists the shell says the page arrives with the first published unit. \"static\": true marks a generated page that is not an app (teachers.html). premium names the Premium feature (ApBioCore gates it); card is the line on the course home. No path may contain the token \"ap\" (docs/apbio-spec.md decision 2), so scripts live in bio/assets/pages/, not apps/.",
   "apps": [
     { "slug": "practice", "premium": "question-bank", "section": "practice", "h1": "Practice", "title": "Practice questions",
       "desc": "Biology practice by unit, topic or science practice: standalone questions and data-heavy stimulus sets, with an explanation for every option.",
@@ -27,7 +27,7 @@
     { "slug": "teachers", "section": "", "h1": "For teachers", "title": "For teachers",
       "desc": "For biology teachers: stable share links, printable notes and unit sheets, and sharing pages to Google Classroom, with no new student data collected.",
       "lede": "Share any notes page, lesson or unit sheet with a stable link. Students need no account, and nothing they do leaves their device unless they choose to sign in.",
-      "script": "pages/teachers.js", "css": "pages/pages.css" }
+      "static": true }
   ],
   "tools": []
 }
