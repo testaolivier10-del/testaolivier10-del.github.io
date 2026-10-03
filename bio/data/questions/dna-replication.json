@@ -1,0 +1,662 @@
+{
+  "stimuli": {
+    "dna-replication-s1": {
+      "kind": "model",
+      "title": "DNA density bands after a shift from heavy to light nitrogen",
+      "text": "<p>Bacteria were grown for many generations in a medium whose only nitrogen was heavy <sup>15</sup>N, then moved to a medium with ordinary light <sup>14</sup>N. Every cell divided once each generation. DNA was extracted at each generation and spun in a salt solution that forms a density gradient, so each DNA molecule settles where its density matches the solution's. The more <sup>15</sup>N a molecule contains, the lower it settles.</p>",
+      "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 640 300\" width=\"100%\" style=\"max-width:640px;height:auto\" role=\"img\" aria-labelledby=\"ms62-t ms62-d\"><title id=\"ms62-t\">Density bands of DNA from bacteria moved from heavy to light nitrogen</title><desc id=\"ms62-d\">Five centrifuge tubes, each with the densest DNA at the bottom. Tube A, generation 0 (cells grown many generations in heavy nitrogen, 15N): one band at the heavy position. Tube B, after one generation in light nitrogen (14N): one band at the intermediate position, halfway between heavy and light. Tube C, after two generations in 14N: two bands of equal thickness, one intermediate and one light. Tube D, generation 1 DNA heated to separate the strands before centrifuging: two bands of equal thickness, the lower one where fully heavy single strands settle and the upper one where fully light single strands settle. Tube E, reference: a mix of fully heavy and fully light DNA, two bands marking those positions.</desc><defs><marker id=\"ms62-a\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs><rect width=\"640\" height=\"300\" fill=\"#ffffff\"/><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"60.0\" y=\"40.0\" width=\"36.0\" height=\"190.0\" rx=\"12\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.8\"/><rect x=\"64.0\" y=\"197.5\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"78.0\" y=\"30.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\">Tube A</text><text x=\"78.0\" y=\"252.0\" font-size=\"12\" text-anchor=\"middle\">Generation 0</text><text x=\"78.0\" y=\"268.0\" font-size=\"12\" text-anchor=\"middle\">in ¹⁵N</text><rect x=\"180.0\" y=\"40.0\" width=\"36.0\" height=\"190.0\" rx=\"12\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.8\"/><rect x=\"184.0\" y=\"140.5\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"198.0\" y=\"30.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\">Tube B</text><text x=\"198.0\" y=\"252.0\" font-size=\"12\" text-anchor=\"middle\">Generation 1</text><text x=\"198.0\" y=\"268.0\" font-size=\"12\" text-anchor=\"middle\">in ¹⁴N</text><rect x=\"300.0\" y=\"40.0\" width=\"36.0\" height=\"190.0\" rx=\"12\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.8\"/><rect x=\"304.0\" y=\"140.5\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"304.0\" y=\"83.5\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"318.0\" y=\"30.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\">Tube C</text><text x=\"318.0\" y=\"252.0\" font-size=\"12\" text-anchor=\"middle\">Generation 2</text><text x=\"318.0\" y=\"268.0\" font-size=\"12\" text-anchor=\"middle\">in ¹⁴N</text><rect x=\"420.0\" y=\"40.0\" width=\"36.0\" height=\"190.0\" rx=\"12\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.8\"/><rect x=\"424.0\" y=\"207.0\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"424.0\" y=\"98.7\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"438.0\" y=\"30.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\">Tube D</text><text x=\"438.0\" y=\"252.0\" font-size=\"12\" text-anchor=\"middle\">Generation 1,</text><text x=\"438.0\" y=\"268.0\" font-size=\"12\" text-anchor=\"middle\">strands separated</text><rect x=\"540.0\" y=\"40.0\" width=\"36.0\" height=\"190.0\" rx=\"12\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.8\"/><rect x=\"544.0\" y=\"197.5\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"544.0\" y=\"83.5\" width=\"28.0\" height=\"8.0\" rx=\"0\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"558.0\" y=\"30.0\" font-size=\"13\" text-anchor=\"middle\" font-weight=\"700\">Tube E</text><text x=\"558.0\" y=\"252.0\" font-size=\"12\" text-anchor=\"middle\">Reference:</text><text x=\"558.0\" y=\"268.0\" font-size=\"12\" text-anchor=\"middle\">heavy + light mix</text><text x=\"20.0\" y=\"52.0\" font-size=\"11\" text-anchor=\"start\">less</text><text x=\"20.0\" y=\"64.0\" font-size=\"11\" text-anchor=\"start\">dense</text><text x=\"20.0\" y=\"216.0\" font-size=\"11\" text-anchor=\"start\">more</text><text x=\"20.0\" y=\"228.0\" font-size=\"11\" text-anchor=\"start\">dense</text><line x1=\"34.0\" y1=\"74.0\" x2=\"34.0\" y2=\"200.0\" stroke=\"#1F2A28\" stroke-width=\"1.2\" marker-end=\"url(#ms62-a)\"/><text x=\"320.0\" y=\"292.0\" font-size=\"11\" text-anchor=\"middle\">Tube D: the lower band is where fully heavy single strands settle; the upper band, fully light single strands.</text></g></svg>"
+    },
+    "dna-replication-s2": {
+      "kind": "table",
+      "title": "Where newly made DNA ends up after a short pulse of label",
+      "text": "<p>Growing <i>E. coli</i> cells were given radioactive thymidine (a DNA building block) for 5 seconds, then a large excess of unlabeled thymidine. At several times after the pulse, the DNA was extracted, its strands were separated, and the label was measured in short pieces (under 2,000 nucleotides) and in long DNA. A mutant strain whose cells copy DNA normally at 30 °C but have one enzyme that stops working at 42 °C was tested the same way. Both strains were tested at 42 °C; each value is the mean of three cultures.</p>",
+      "table": {
+        "caption": "Percent of the label found in short pieces of new DNA, at 42 °C",
+        "cols": [
+          "Time after the pulse (s)",
+          "Normal strain (%)",
+          "Mutant strain (%)"
+        ],
+        "rows": [
+          [
+            "5",
+            "51",
+            "53"
+          ],
+          [
+            "15",
+            "34",
+            "52"
+          ],
+          [
+            "30",
+            "18",
+            "50"
+          ],
+          [
+            "60",
+            "7",
+            "49"
+          ],
+          [
+            "120",
+            "3",
+            "48"
+          ]
+        ]
+      }
+    },
+    "dna-replication-s3": {
+      "kind": "table",
+      "title": "How often mistakes survive DNA copying",
+      "text": "<p>The table gives approximate error rates of the kind measured in normal <i>E. coli</i> and in mutants missing one or both correction systems: how often a wrong base remains in the DNA after copying. Proofreading is done by DNA polymerase itself as it adds each nucleotide; mismatch repair is done afterward by other enzymes. The <i>E. coli</i> genome is about 4.6 × 10<sup>6</sup> base pairs. Values are rounded to the nearest power of ten.</p>",
+      "table": {
+        "caption": "Errors left per base pair copied",
+        "cols": [
+          "Strain",
+          "Proofreading",
+          "Mismatch repair",
+          "Errors per base pair copied"
+        ],
+        "rows": [
+          [
+            "Normal",
+            "Works",
+            "Works",
+            "1 × 10<sup>−10</sup>"
+          ],
+          [
+            "Mutant P",
+            "Missing",
+            "Works",
+            "1 × 10<sup>−8</sup>"
+          ],
+          [
+            "Mutant M",
+            "Works",
+            "Missing",
+            "1 × 10<sup>−7</sup>"
+          ],
+          [
+            "Mutant PM",
+            "Missing",
+            "Missing",
+            "1 × 10<sup>−5</sup>"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-dna-replication-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s1",
+      "q": "Which model of DNA copying does the result in tube B, by itself, rule out?",
+      "options": [
+        "The conservative model, which predicts a fully heavy band and a fully light band",
+        "The semiconservative model, which predicts one band at the intermediate position after one generation",
+        "The dispersive model, which predicts one band at the intermediate position after one generation",
+        "No model is ruled out, since tube B shows the intermediate band that the three models predict"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the conservative model the parent molecule stays whole (heavy) and the copy is entirely new (light), so generation 1 would show heavy and light bands. Tube B has a single intermediate band.",
+        "options": [
+          "Correct: there is no heavy band and no light band in tube B.",
+          "The semiconservative model predicts exactly tube B's single intermediate band, so tube B fits it.",
+          "The dispersive model also predicts one intermediate band after one generation, so tube B cannot rule it out.",
+          "The conservative model predicts two bands, not an intermediate one, so tube B does rule it out."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-2",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "dna-replication-s1",
+      "q": "Which tubes give evidence against the dispersive model? Select all that apply.",
+      "options": [
+        "Tube A",
+        "Tube B",
+        "Tube C",
+        "Tube D",
+        "Tube E"
+      ],
+      "correct": [
+        2,
+        3
+      ],
+      "fixed": true,
+      "why": {
+        "correct": "In the dispersive model every strand is a patchwork of old and new DNA. After two generations all molecules would be one quarter heavy (one band, between intermediate and light), and separated generation-1 strands would all be half heavy (one band). Tube C shows a fully light band, and tube D shows separate heavy and light strands.",
+        "options": [
+          "Tube A is the starting DNA; every model starts with it.",
+          "One intermediate band after one generation is predicted by the dispersive model too.",
+          "Correct: a fully light band at generation 2 means some molecules have no old DNA at all, which dispersal cannot produce.",
+          "Correct: generation-1 molecules contain one whole heavy strand and one whole light strand, not two half-heavy strands.",
+          "Tube E is a reference that marks the heavy and light positions; it tests no model."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-3",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s1",
+      "q": "The bacteria continue in <sup>14</sup>N until generation 4. What percentage of their DNA molecules will be at the intermediate position? Give one decimal place.",
+      "numeric": {
+        "answer": 12.5,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Each original molecule gives 2<sup>4</sup> = 16 molecules after four generations. Its two heavy strands survive intact, one in each of 2 hybrid molecules; the other 14 are fully light. 2 ÷ 16 = 12.5%."
+      }
+    },
+    {
+      "id": "bio-dna-replication-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "dna-replication-s1",
+      "q": "Generation 2 DNA is heated to separate its strands before it is centrifuged, as was done for tube D. Predict the result.",
+      "options": [
+        "Two bands: a fully light single-strand band holding three quarters of the strands and a fully heavy one holding a quarter",
+        "Two bands of equal size, one where fully heavy single strands settle and one where fully light single strands settle",
+        "One band halfway between the heavy and light single-strand positions, holding the whole sample",
+        "Two bands: a fully heavy single-strand band holding three quarters of the strands and a fully light one holding a quarter"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Generation 2 has 4 molecules per original: 2 hybrid (one heavy and one light strand each) and 2 fully light. That is 8 strands: 2 heavy and 6 light, so a quarter heavy and three quarters light.",
+        "options": [
+          "Correct: 2 heavy strands out of 8, the rest light.",
+          "Equal bands describe generation 1 (one heavy and one light strand per molecule), not generation 2.",
+          "Copying keeps each old strand whole, so no strand is half heavy; that would be the dispersive model.",
+          "This reverses the proportions; new strands are light, and they outnumber the two original heavy strands."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-5",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "dna-replication-s1",
+      "q": "Why were the bacteria grown in <sup>15</sup>N for many generations before the shift to <sup>14</sup>N?",
+      "options": [
+        "So that nearly all the starting DNA had heavy nitrogen in both strands",
+        "So that the bacteria would divide faster once they were moved into the medium with light nitrogen",
+        "So that heavy nitrogen would make the DNA strands come apart more easily during later copying",
+        "So that the cells would stop copying their DNA until they were placed in the light medium"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "After many generations, almost every nitrogen atom in the DNA is <sup>15</sup>N, so every molecule starts fully heavy. Any lighter DNA after the shift must then contain newly made strands.",
+        "options": [
+          "Correct: the experiment needs every starting strand to be labeled.",
+          "Growth rate is not what the density method measures; the long growth is about labeling.",
+          "Heavy nitrogen changes density, not how easily the strands separate.",
+          "The cells kept dividing in <sup>15</sup>N; the point was to label all their DNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "dna-replication-s2",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "In the normal strain the share in short pieces falls over time; in the mutant it stays near half.",
+        "In both strains the share of label in short pieces falls over time at about the same rate as each other.",
+        "In the mutant the share of label in short pieces falls faster than it does in the normal strain.",
+        "In the normal strain the share of label in short pieces rises over time, while in the mutant it falls."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The normal strain goes from 51% to 3% in two minutes, while the mutant stays between 48% and 53%.",
+        "options": [
+          "Correct: the label moves out of short pieces in the normal strain only.",
+          "The mutant hardly changes (53% to 48%) while the normal strain drops to 3%.",
+          "The mutant falls by 5 percentage points, the normal strain by 48.",
+          "The normal strain's share falls, from 51% to 3%."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "dna-replication-s2",
+      "q": "Why is about half, rather than nearly all, of the label in short pieces at 5 seconds in both strains?",
+      "options": [
+        "One template is copied continuously into long DNA, and the other is copied in short fragments.",
+        "Half the cells in each culture were copying DNA during the pulse, and the other half were not copying.",
+        "Short pieces break off long DNA when the strands are separated, so half of each long strand is lost.",
+        "DNA polymerase copies each template in short pieces, and half of them have already been joined by 5 s."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Because the strands are antiparallel and DNA polymerase adds only to a 3′ end, one new strand (leading) grows continuously toward the fork while the other (lagging) is made in short Okazaki fragments. So roughly half of the new DNA starts out in short pieces.",
+        "options": [
+          "Correct: leading strand long, lagging strand in fragments.",
+          "Cells that were not copying DNA would take up no label at all, so they would not add unlabeled long DNA to the count.",
+          "If separation broke strands, the mutant would lose label from long DNA as well, and its numbers would not stay steady.",
+          "If both strands were made in pieces, nearly all label would start in short pieces; in the mutant it stays near half, so the other half was never short."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "dna-replication-s2",
+      "q": "Which enzyme is most likely the one that stops working in the mutant at 42 °C?",
+      "options": [
+        "DNA ligase",
+        "Helicase",
+        "Primase",
+        "Topoisomerase"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The mutant still makes short pieces and long DNA, but the short pieces are never joined. Ligase seals the nicks between Okazaki fragments, so a failed ligase leaves them separate.",
+        "options": [
+          "Correct: fragments are made but not joined.",
+          "Without helicase the strands would not open, and almost no new DNA would be labeled at all.",
+          "Without primase no new fragments could start, so the mutant would have fewer short pieces, not a steady half.",
+          "Without topoisomerase twisting would stall the forks; the problem here is joining, not unwinding."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s2",
+      "q": "The researchers also ran the mutant at 30 °C, where its enzyme works. What does this added test allow them to conclude, if the mutant then matches the normal strain?",
+      "options": [
+        "That the difference at 42 °C comes from the enzyme failing at that temperature, not another strain difference",
+        "That 42 °C damages the DNA of both strains, so data from both strains at that temperature should be set aside",
+        "That the normal strain's ligase works faster at 30 °C, which explains why its short pieces disappear over time",
+        "That the mutant copies its DNA in long pieces at 30 °C but in short pieces at the higher temperature"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If the mutant behaves normally whenever its enzyme works, the strains differ in nothing else that matters here; the effect at 42 °C must come from that enzyme failing.",
+        "options": [
+          "Correct: it is a control for other differences between the two strains.",
+          "The normal strain joins its fragments at 42 °C, so the temperature itself does not damage DNA copying.",
+          "The normal strain was tested at 42 °C; this test is about the mutant.",
+          "Both strains make short pieces whenever they copy DNA; the mutant's defect is in joining them."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-10",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s2",
+      "q": "In the normal strain, by what percentage does the share of label in short pieces decrease between 5 s and 30 s? Give a whole number.",
+      "numeric": {
+        "answer": 65,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Percent change = (18 − 51) ÷ 51 × 100 = −64.7%, a decrease of about 65%. (The drop is 33 percentage points; as a percent of the starting value it is 65%.)"
+      }
+    },
+    {
+      "id": "bio-dna-replication-11",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s3",
+      "q": "How many errors would you expect to be left, on average, each time Mutant M copies its whole genome? Give two decimal places.",
+      "numeric": {
+        "answer": 0.46,
+        "tol": 0.01,
+        "unit": "errors",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Expected errors = base pairs copied × error rate = 4.6 × 10<sup>6</sup> × 1 × 10<sup>−7</sup> = 0.46 errors per genome copy, about one new mistake every two divisions (the normal strain: 0.00046, about one in 2,000 divisions)."
+      }
+    },
+    {
+      "id": "bio-dna-replication-12",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "dna-replication-s3",
+      "q": "Which conclusion about the two correction systems is best supported by the table?",
+      "options": [
+        "Each system removes most errors that reach it, so losing both is far worse than losing one.",
+        "Proofreading prevents more errors than mismatch repair, because losing proofreading raises errors the most.",
+        "The two systems fix the same errors, so losing both is no worse than losing just one of them.",
+        "Mismatch repair does not depend on proofreading happening first, so it fixes nearly any error by itself."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Losing proofreading raises errors 100-fold, losing mismatch repair 1,000-fold, and losing both 100,000-fold (100 × 1,000). Each system catches most of what is left by the step before, so their effects multiply.",
+        "options": [
+          "Correct: the double mutant is worse than either single mutant by about the other system's factor.",
+          "Losing mismatch repair (10<sup>−7</sup>) raises errors more than losing proofreading (10<sup>−8</sup>).",
+          "Losing both (10<sup>−5</sup>) is far worse than losing one, so they are not redundant.",
+          "Mutant P, with mismatch repair working, still has 100 times more errors than normal, so mismatch repair does not fix everything."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-13",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s3",
+      "q": "People who inherit a faulty copy of a mismatch repair gene develop colon cancer much more often, and younger, than other people. Which explanation connects this to the table?",
+      "options": [
+        "Without full mismatch repair, copying errors pile up faster, including in genes that control the cell cycle.",
+        "Mismatch repair enzymes directly stop cells from dividing, so without them colon cells divide without control.",
+        "Faulty mismatch repair copies DNA faster, so colon cells finish S phase too early and divide too often.",
+        "Mismatch repair removes cancer-causing viruses from the DNA, so without it the viruses stay in colon cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mutant M shows that losing mismatch repair raises the error rate about 1,000-fold. In a tissue whose cells divide often, like the colon lining, more errors reach genes such as tumor suppressors and the genes that drive the cell cycle (topic 4.6).",
+        "options": [
+          "Correct: a higher mutation rate makes the changes that cause cancer more likely.",
+          "Mismatch repair fixes base errors; it is not a checkpoint protein that holds the cycle.",
+          "The table shows accuracy, not speed; nothing suggests copying gets faster.",
+          "Mismatch repair corrects mispaired bases in new DNA; it has nothing to do with removing viruses."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-replication-s3",
+      "q": "How does proofreading differ from mismatch repair?",
+      "options": [
+        "Proofreading is done by DNA polymerase as it builds; mismatch repair fixes errors left after copying.",
+        "Proofreading fixes damage from chemicals and radiation; mismatch repair fixes errors made by DNA ligase.",
+        "Proofreading checks the old template; mismatch repair checks the RNA primers before they are removed.",
+        "Proofreading happens after the whole chromosome is copied; mismatch repair happens at the replication fork."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "DNA polymerase checks each base it adds and removes a wrong one before moving on. Mismatch repair enzymes later find mispaired bases, cut out a stretch of the new strand and fill it in again.",
+        "options": [
+          "Correct: same goal, different time and different enzymes.",
+          "Both systems fix copying mistakes (mispaired bases), and ligase does not add bases.",
+          "Both systems act on the new strand, which is the one with the copying mistake.",
+          "This reverses the timing: proofreading happens as each base is added, at the fork."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-15",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Why does DNA copying need a primer?",
+      "options": [
+        "DNA polymerase can add nucleotides to an existing 3′ end but cannot start a new chain on its own.",
+        "The primer unwinds the double helix so that DNA polymerase can reach the template.",
+        "The primer marks which of the two strands is the old one so that errors can be fixed later.",
+        "DNA polymerase can build in the 3′ to 5′ direction when a primer is attached to the template."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "DNA polymerase needs a free 3′ –OH to attach the next nucleotide to. Primase, which can start a chain, lays down a short RNA primer that provides it.",
+        "options": [
+          "Correct: the primer supplies the starting 3′ end.",
+          "Helicase unwinds the helix; the primer is a short stretch of RNA paired to the template.",
+          "The primer is removed and replaced by DNA, so it does not mark strands for repair.",
+          "DNA polymerase always builds 5′ to 3′; a primer does not change its direction."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-16",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "The template for a stretch of new DNA reads 3′-TACCGGAT-5′. Which new strand will DNA polymerase build on it?",
+      "options": [
+        "5′-ATGGCCTA-3′",
+        "3′-ATGGCCTA-5′",
+        "5′-TAGGCCAT-3′",
+        "5′-AUGGCCUA-3′"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Pair each base (T–A, A–T, C–G, G–C) and make the new strand antiparallel: the template's 3′ end lines up with the new strand's 5′ end, so the new strand reads 5′-ATGGCCTA-3′, built from 5′ to 3′.",
+        "options": [
+          "Correct: complementary bases, antiparallel, written 5′ to 3′.",
+          "The bases are right, but the ends are labeled as if the strands ran parallel; they run in opposite directions.",
+          "This is the template itself, rewritten from 5′ to 3′; the new strand is its complement.",
+          "U belongs in RNA; DNA polymerase builds DNA, which uses T."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-17",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "Some antibacterial drugs block bacterial topoisomerase. Predict the most direct effect on DNA copying in treated bacteria.",
+      "options": [
+        "Twisting builds up in the DNA ahead of each fork until the forks stall and copying stops.",
+        "The two templates rejoin behind the fork, so each new strand is lost soon after it is made.",
+        "RNA primers are left in the DNA, because no enzyme is available to replace them with DNA.",
+        "Okazaki fragments are made, but they are left as separate pieces instead of one lagging strand."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Unwinding at the fork overwinds the DNA ahead of it. Topoisomerase cuts and rejoins the DNA to relieve that strain; without it, tension builds until helicase can no longer open the helix.",
+        "options": [
+          "Correct: topoisomerase relieves the twisting that unwinding causes.",
+          "Single-strand binding proteins and the new strands keep the templates apart; topoisomerase works ahead of the fork.",
+          "Replacing primers is the job of DNA polymerase I.",
+          "Sealing fragments is the job of DNA ligase."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-18",
+      "type": "order",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the steps that make and join one Okazaki fragment on the lagging strand in order.",
+      "options": [
+        "Helicase separates the parental strands at the fork.",
+        "Primase builds a short RNA primer on the exposed template.",
+        "DNA polymerase III adds DNA nucleotides to the primer's 3′ end, away from the fork.",
+        "DNA polymerase I replaces the RNA primer of the fragment ahead with DNA.",
+        "DNA ligase seals the remaining gap, joining the two fragments."
+      ],
+      "why": {
+        "correct": "The template must be single-stranded before a primer can pair with it; DNA polymerase III needs the primer's 3′ end; the fragment grows until it reaches the previous fragment, whose RNA primer DNA polymerase I then replaces; ligase seals the last nick."
+      }
+    },
+    {
+      "id": "bio-dna-replication-19",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "Human skin cells that make no telomerase are grown in a dish for many divisions. Predict how each quantity changes over those divisions.",
+      "variables": [
+        {
+          "name": "Length of the telomeres at the ends of each chromosome",
+          "answer": "down",
+          "why": "At each end, the last RNA primer leaves a gap that cannot be filled with DNA, so the ends shorten a little at every copy unless telomerase extends them."
+        },
+        {
+          "name": "Number of genes on each chromosome, during the early divisions",
+          "answer": "none",
+          "why": "Telomeres are repeats with no genes, so early shortening removes only repeats, which is the point of having them."
+        },
+        {
+          "name": "Chance that a cell stops dividing",
+          "answer": "up",
+          "why": "When telomeres become very short, the cell treats the ends as damaged DNA and permanently stops dividing."
+        }
+      ],
+      "why": {
+        "correct": "Linear chromosomes lose a little DNA from their ends each time they are copied. Telomeres are buffers of repeated DNA with no genes, so early losses are harmless; once they run short, cells stop dividing. Telomerase, active in germ cells, some dividing body cells and many cancer cells, rebuilds them."
+      }
+    },
+    {
+      "id": "bio-dna-replication-20",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A human chromosome is about 150 million base pairs long. Human replication forks each copy about 50 base pairs per second. If the chromosome had one origin, with two forks moving apart from it, about how many hours would copying take? Give a whole number.",
+      "numeric": {
+        "answer": 417,
+        "tol": 1,
+        "unit": "h",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Two forks copy 2 × 50 = 100 base pairs per second. 150,000,000 ÷ 100 = 1,500,000 s ÷ 3,600 = 417 h, about 17 days. Real S phase takes a few hours because each chromosome has thousands of origins working at once."
+      }
+    },
+    {
+      "id": "bio-dna-replication-21",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Why do the ends of linear eukaryotic chromosomes get shorter with each round of copying, while a circular bacterial chromosome does not?",
+      "options": [
+        "When the last RNA primer at an end is removed, no DNA lies beyond it to supply a 3′ end, so the gap stays unfilled.",
+        "Helicase is unable to open the DNA at the end of a linear chromosome, so the last part is left uncopied.",
+        "DNA ligase cuts off the end of each linear chromosome to remove the leftover RNA primers after copying.",
+        "Linear chromosomes have no origins near their ends, so the forks run out of time before they arrive there."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "DNA polymerase I fills a primer's gap by extending the DNA behind it. At the very end of a lagging strand there is nothing behind the last primer, so that stretch stays single-stranded and is lost. A circle has no ends, so every primer gap has DNA behind it.",
+        "options": [
+          "Correct: the end-replication problem comes from primers plus 5′-to-3′ synthesis.",
+          "The ends are opened and mostly copied; only the last primer's stretch on the lagging strand is lost.",
+          "Ligase joins DNA; it does not cut chromosome ends.",
+          "Forks reach the ends; the problem is filling the last primer's gap, not timing."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-replication-22",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "dna-replication",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "At one replication fork, which enzymes act many times on the lagging strand for each time they act on the leading strand? Select all that apply.",
+      "options": [
+        "Primase",
+        "DNA ligase",
+        "Helicase",
+        "Topoisomerase",
+        "DNA polymerase I"
+      ],
+      "correct": [
+        0,
+        1,
+        4
+      ],
+      "fixed": true,
+      "why": {
+        "correct": "Every Okazaki fragment needs its own primer (primase), its primer later replaced with DNA (DNA polymerase I), and a nick sealed (ligase). The leading strand needs this only once, at its start.",
+        "options": [
+          "Correct: one primer per fragment.",
+          "Correct: one nick to seal per fragment.",
+          "Helicase opens the fork once for both strands; it works continuously, not once per fragment.",
+          "Topoisomerase acts on the DNA ahead of the fork, which serves both strands equally.",
+          "Correct: one primer to replace per fragment."
+        ]
+      }
+    }
+  ]
+}
