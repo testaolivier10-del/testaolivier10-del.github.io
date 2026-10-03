@@ -1,0 +1,79 @@
+{
+  "topic": "artificial-selection",
+  "hook": "<p>A Chihuahua and a Great Dane can differ in weight about thirty times over, yet both descend from wolves, and both belong to one species. In 1959 a Russian scientist began a test of how such changes start: each generation, he let only the calmest silver foxes breed. Within about ten generations some fox pups wagged their tails and ran to greet people, and later generations began to show floppy ears and patchy coats that nobody had chosen. Humans had taken the place of the environment in deciding who reproduces.</p>",
+  "prereq": [
+    {
+      "q": "For natural selection to change a trait over generations, the variation in that trait must be",
+      "options": ["at least partly heritable", "caused by the environment alone", "present in only one individual"],
+      "correct": 0,
+      "why": "If offspring do not inherit the parents' version of the trait, selection on the parents does not change the next generation.",
+      "review": "natural-selection-intro"
+    },
+    {
+      "q": "Bacteria can gain a gene from another bacterium through",
+      "options": ["conjugation, transformation or transduction", "meiosis and fertilization", "mitosis"],
+      "correct": 0,
+      "why": "These forms of horizontal gene transfer move DNA, often on plasmids, between bacterial cells.",
+      "review": "mutations"
+    },
+    {
+      "q": "Directional selection on a trait with many values",
+      "options": ["shifts the mean toward one extreme", "favors the middle and narrows variation", "splits the population into two peaks"],
+      "correct": 0,
+      "why": "Directional selection favors one end of the range, so the average moves that way over generations.",
+      "review": "natural-selection"
+    }
+  ],
+  "figure": {
+    "figure": "mustard-crops",
+    "caption": "One wild mustard, six crops. Farmers saved seed from plants with the biggest leaves, buds, stems or flower heads, and over many generations produced kale, cabbage, kohlrabi, Brussels sprouts, broccoli and cauliflower, all still one species."
+  },
+  "chain": [
+    {
+      "cause": "A population varies in a heritable trait, such as tameness in foxes or oil content in corn kernels.",
+      "effect": "Breeders can tell individuals apart and pick out those with the most of the trait they want."
+    },
+    {
+      "cause": "Breeders let only the chosen individuals reproduce.",
+      "effect": "Only the chosen individuals' alleles reach the next generation, so the trait is more common, or more extreme, in their offspring."
+    },
+    {
+      "cause": "The same choice is repeated generation after generation.",
+      "effect": "Large changes build up, as in dog breeds, corn and the cabbage family, until little heritable variation in the trait remains."
+    },
+    {
+      "cause": "People also change the environment without meaning to select, for example by using antibiotics or by removing the largest fish.",
+      "effect": "Individuals that happen to carry alleles for surviving the change, such as resistant bacteria, leave more offspring: unintended selection."
+    },
+    {
+      "cause": "An antibiotic kills susceptible bacteria and leaves resistant cells to multiply.",
+      "effect": "The infection becomes mostly resistant, and the drug stops working against it."
+    }
+  ],
+  "ideas": [
+    "In <b>artificial selection</b> (selective breeding), humans decide which individuals reproduce; in natural selection, the environment does. Both act on heritable variation and change populations over generations.",
+    "<b>Domestication</b> through artificial selection gave dogs from wolves, corn from teosinte and six crops from one wild mustard. It can only use the variation that exists, and traits can change together when the same genes affect them.",
+    "<b>Antibiotic resistance</b> is <b>unintended selection</b>: random mutations or transferred genes make a few cells resistant, the drug kills the rest, and the survivors multiply. MRSA is an example.",
+    "Other unintended selection: fishing that removes large fish favors fish that mature small and young; poaching for ivory favors elephants born without tusks."
+  ],
+  "misconception": {
+    "wrong": "Antibiotics make bacteria mutate into resistant forms.",
+    "right": "Resistance alleles arise at random, by mutation or by gene transfer, often before the drug is ever used. The antibiotic does not create them; it kills the susceptible cells, so the few resistant cells survive and multiply."
+  },
+  "check": [
+    "bio-artificial-selection-1",
+    "bio-artificial-selection-3",
+    "bio-artificial-selection-4",
+    "bio-artificial-selection-8",
+    "bio-artificial-selection-9",
+    "bio-artificial-selection-10",
+    "bio-artificial-selection-13",
+    "bio-artificial-selection-17"
+  ],
+  "summary": "<p>In artificial selection, humans choose which individuals breed according to traits they want, so those traits become more common or more extreme over generations. It needs heritable variation, just as natural selection does, and has produced domesticated animals and crops: dogs from wolves, corn from teosinte, and cabbage, kale, broccoli and other crops from one wild mustard. Selection on one trait can change others controlled by the same genes, and progress slows as heritable variation is used up. Human activity also causes unintended selection. Antibiotics kill susceptible bacteria and leave cells that carry resistance alleles, from random mutation or gene transfer, to multiply, so infections become resistant. Heavy fishing of large fish and poaching for ivory have selected for fish that mature small and elephants without tusks.</p>",
+  "connections": [
+    { "href": "../notes/natural-selection.html", "label": "Back: selection depends on the environment (7.2)" },
+    { "href": "../notes/mutations.html", "label": "Back: mutation and gene transfer in bacteria (6.7)" },
+    { "href": "../notes/population-genetics.html", "label": "Next: how alleles change in populations (7.4)" }
+  ]
+}

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="bc-t bc-d">
+<title id="bc-t">Six crops bred from one wild mustard</title>
+<desc id="bc-d">A wild mustard plant in the center, with arrows to six crops that farmers bred from it by choosing plants with an enlarged part each generation: cabbage (the large end bud), Brussels sprouts (many side buds), kale (big leaves), kohlrabi (a swollen stem), broccoli (flower stalks and buds) and cauliflower (a dense flower head). All six are still one species and can interbreed.</desc>
+<defs><marker id="bc-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<line x1="279.8" y1="168.7" x2="209.4" y2="87.9" stroke="#1F2A28" stroke-width="2" marker-end="url(#bc-a)"/>
+<rect x="35" y="40" width="170" height="60" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+<text x="120" y="64" font-size="16" font-weight="700" text-anchor="middle">Cabbage</text>
+<text x="120" y="86" font-size="13" text-anchor="middle">the large end bud</text>
+<line x1="480.2" y1="168.7" x2="550.6" y2="87.9" stroke="#1F2A28" stroke-width="2" marker-end="url(#bc-a)"/>
+<rect x="555" y="40" width="170" height="60" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+<text x="640" y="64" font-size="16" font-weight="700" text-anchor="middle">Brussels sprouts</text>
+<text x="640" y="86" font-size="13" text-anchor="middle">many side buds</text>
+<line x1="268.0" y1="200.0" x2="190.0" y2="200.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#bc-a)"/>
+<rect x="5" y="170" width="170" height="60" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+<text x="90" y="194" font-size="16" font-weight="700" text-anchor="middle">Kale</text>
+<text x="90" y="216" font-size="13" text-anchor="middle">big leaves</text>
+<line x1="492.0" y1="200.0" x2="570.0" y2="200.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#bc-a)"/>
+<rect x="585" y="170" width="170" height="60" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+<text x="670" y="194" font-size="16" font-weight="700" text-anchor="middle">Kohlrabi</text>
+<text x="670" y="216" font-size="13" text-anchor="middle">a swollen stem</text>
+<line x1="279.8" y1="231.3" x2="209.4" y2="312.1" stroke="#1F2A28" stroke-width="2" marker-end="url(#bc-a)"/>
+<rect x="35" y="300" width="170" height="60" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+<text x="120" y="324" font-size="16" font-weight="700" text-anchor="middle">Broccoli</text>
+<text x="120" y="346" font-size="13" text-anchor="middle">flower stalks and buds</text>
+<line x1="480.2" y1="231.3" x2="550.6" y2="312.1" stroke="#1F2A28" stroke-width="2" marker-end="url(#bc-a)"/>
+<rect x="555" y="300" width="170" height="60" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/>
+<text x="640" y="324" font-size="16" font-weight="700" text-anchor="middle">Cauliflower</text>
+<text x="640" y="346" font-size="13" text-anchor="middle">a dense flower head</text>
+<ellipse cx="380" cy="200" rx="112" ry="70" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+<g stroke="#009E73" stroke-width="3" fill="none"><path d="M380,240 L380,180"/><path d="M380,210 Q350,200 342,186"/><path d="M380,200 Q410,192 416,176"/></g>
+<g fill="#E69F00"><circle cx="380" cy="176" r="5"/><circle cx="372" cy="170" r="4"/><circle cx="388" cy="170" r="4"/></g>
+<text x="380" y="244" font-size="15" font-weight="700" text-anchor="middle">Wild mustard</text><text x="380" y="260" font-size="12" text-anchor="middle" fill="#5D6B69">(all seven: one species)</text>
+<text x="380" y="388" font-size="13" text-anchor="middle" fill="#5D6B69">Each generation, farmers kept seed from plants with the biggest version of the part they wanted.</text>
+</g>
+</svg>
