@@ -86,7 +86,7 @@ function walk(dir, out = []) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
     else if (extname(name) === '.html') out.push(full);
   }
   return out;

@@ -48,7 +48,7 @@ function walk(dir, out = []) {
     if (SKIP_DIRS.has(name)) continue;
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;

@@ -45,7 +45,7 @@ function walk(dir, out = []) {
     const full = join(dir, name);
     // anatomy-physiology/data holds the A&P sources (notes are HTML
     // fragments); build-anp.mjs turns them into the pages listed here.
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;
