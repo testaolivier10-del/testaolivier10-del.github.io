@@ -1,0 +1,8 @@
+{
+  "primary-active": { "def": "Active transport in which the transport protein itself spends ATP to move a substance against its gradient. The sodium-potassium pump and the proton pump are examples." },
+  "cotransport": { "def": "Transport in which a protein lets one substance flow down its gradient and uses that flow to move a second substance against its gradient. The protein spends no ATP; the energy comes from a gradient a pump built earlier. Also called secondary active transport." },
+  "symport": { "def": "Kinds of cotransport. In symport the two substances cross the membrane in the same direction (a symporter); in antiport they cross in opposite directions (an antiporter)." },
+  "proton-pump": { "def": "A pump that uses ATP to move hydrogen ions (H⁺) out of the cytoplasm, building an H⁺ gradient. Plant cells use the gradient to drive cotransport, for example of sucrose." },
+  "cotransport-examples": { "def": "A symporter in intestinal and kidney cells that lets two Na⁺ flow into the cell and carries one glucose molecule in with them, even when glucose is more concentrated inside. Plant cells use a similar H⁺-sucrose symporter." },
+  "transport-selection": { "def": "Matching a substance to the way it crosses a membrane, using its size, polarity and charge and the direction of its gradient: simple diffusion, facilitated diffusion, active transport (primary or cotransport) or bulk transport." }
+}

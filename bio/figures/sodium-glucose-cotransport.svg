@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="t d">
+<title id="t">The sodium-potassium pump powers sodium-glucose cotransport</title>
+<desc id="d">A plasma membrane runs across the middle, outside of the cell above, cytoplasm below. Step 1, on the left: the sodium-potassium pump uses ATP to move three sodium ions out and two potassium ions in, so sodium becomes crowded outside and scarce inside. Step 2, on the right: a cotransporter lets sodium ions flow back in, down their gradient, and carries a glucose molecule in with each one, even though glucose is already more concentrated inside the cell. If the pump stops, the sodium gradient runs down and glucose uptake stops too.</desc>
+<rect width="760" height="440" fill="#ffffff"/>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+</defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="16" y="30" font-size="17" font-weight="bold">Outside the cell</text>
+  <text x="16" y="52" font-size="14">Na⁺ high · glucose low</text>
+  <text x="16" y="408" font-size="17" font-weight="bold">Cytoplasm</text>
+  <text x="16" y="428" font-size="14">Na⁺ low · K⁺ high · glucose high</text>
+  <rect x="0" y="182" width="760" height="64" fill="#F3EEE0"/>
+  <g fill="#6B5E3C"><rect x="0" y="178" width="760" height="10" rx="5"/><rect x="0" y="240" width="760" height="10" rx="5"/></g>
+
+  <!-- sodium ions outside (crowded) -->
+  <g fill="#EFD5CF" stroke="#8E3B2E" stroke-width="2">
+    <circle cx="300" cy="80" r="11"/><circle cx="340" cy="104" r="11"/><circle cx="380" cy="76" r="11"/><circle cx="420" cy="110" r="11"/><circle cx="460" cy="84" r="11"/><circle cx="440" cy="140" r="11"/><circle cx="360" cy="146" r="11"/>
+  </g>
+  <g font-size="11" text-anchor="middle" fill="#8E3B2E" font-weight="bold">
+    <text x="300" y="84">Na</text><text x="340" y="108">Na</text><text x="380" y="80">Na</text><text x="420" y="114">Na</text><text x="460" y="88">Na</text><text x="440" y="144">Na</text><text x="360" y="150">Na</text>
+  </g>
+
+  <!-- PUMP (left) -->
+  <rect x="120" y="160" width="110" height="108" rx="18" fill="#EEF2F1" stroke="#5D6B69" stroke-width="3"/>
+  <text x="175" y="210" font-size="14" font-weight="bold" text-anchor="middle">Na⁺/K⁺</text>
+  <text x="175" y="228" font-size="14" font-weight="bold" text-anchor="middle">pump</text>
+  <line x1="150" y1="292" x2="150" y2="130" stroke="#8E3B2E" stroke-width="3.5" marker-end="url(#ah)"/>
+  <text x="140" y="120" font-size="15" text-anchor="end" fill="#8E3B2E">3 Na⁺ out</text>
+  <line x1="202" y1="130" x2="202" y2="292" stroke="#5B6B8C" stroke-width="3.5" marker-end="url(#ah)"/>
+  <text x="212" y="124" font-size="15" fill="#5B6B8C">2 K⁺ in</text>
+  <ellipse cx="80" cy="310" rx="44" ry="20" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2.5"/>
+  <text x="80" y="315" font-size="14" font-weight="bold" text-anchor="middle">ATP</text>
+  <line x1="104" y1="294" x2="122" y2="268" stroke="#CC79A7" stroke-width="3" marker-end="url(#ah)"/>
+  <text x="80" y="350" font-size="13" text-anchor="middle">ADP + phosphate</text>
+  <circle cx="175" cy="374" r="16" fill="#1F2A28"/>
+  <text x="175" y="380" font-size="17" font-weight="bold" text-anchor="middle" fill="#ffffff">1</text>
+
+  <!-- COTRANSPORTER (right) -->
+  <path d="M530 160 L530 268 L640 268 L640 160 L605 160 L585 196 L565 160 Z" fill="#D2EAF8" stroke="#0072B2" stroke-width="3"/>
+  <circle cx="568" cy="214" r="11" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="2"/>
+  <text x="568" y="218" font-size="11" font-weight="bold" text-anchor="middle" fill="#8E3B2E">Na</text>
+  <polygon points="604,202 616,214 604,226 592,214" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <line x1="568" y1="120" x2="568" y2="300" stroke="#8E3B2E" stroke-width="3.5" marker-end="url(#ah)"/>
+  <line x1="604" y1="120" x2="604" y2="300" stroke="#E69F00" stroke-width="3.5" marker-end="url(#ah)"/>
+  <text x="500" y="320" font-size="14" text-anchor="end" fill="#8E3B2E">Na⁺ in, down</text>
+  <text x="500" y="337" font-size="14" text-anchor="end" fill="#8E3B2E">its gradient</text>
+  <text x="616" y="320" font-size="14" fill="#B06E00">glucose in, against</text>
+  <text x="616" y="337" font-size="14" fill="#B06E00">its gradient</text>
+  <polygon points="690,120 702,132 690,144 678,132" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+  <text x="712" y="137" font-size="13">glucose</text>
+  <g fill="#F8E3B8" stroke="#E69F00" stroke-width="2">
+    <polygon points="560,358 572,370 560,382 548,370"/><polygon points="600,372 612,384 600,396 588,384"/><polygon points="640,356 652,368 640,380 628,368"/><polygon points="680,380 692,392 680,404 668,392"/><polygon points="716,360 728,372 716,384 704,372"/>
+  </g>
+  <text x="585" y="150" font-size="14" font-weight="bold" text-anchor="middle">cotransporter</text>
+  <circle cx="680" cy="214" r="16" fill="#1F2A28"/>
+  <text x="680" y="220" font-size="17" font-weight="bold" text-anchor="middle" fill="#ffffff">2</text>
+</g>
+</svg>

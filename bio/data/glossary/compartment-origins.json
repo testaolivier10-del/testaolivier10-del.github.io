@@ -1,0 +1,12 @@
+{
+  "mutualism": { "def": "A close relationship between two species in which both benefit. The full set of species relationships is taught with community ecology." },
+  "symbiosis": { "def": "Two different species living in close, long-term contact, one often inside or on the other. Whether each partner gains or loses differs from case to case." },
+  "evolution-basic": { "def": "Change in the inherited traits of populations over many generations. The causes of that change are taught in Unit 7." },
+  "common-ancestry-basic": { "def": "The idea that different groups of organisms descend from a shared ancestor. Features that groups share because they inherited them from that ancestor are evidence of common ancestry." },
+  "host-cell": { "def": "A cell that has another organism or cell living inside it. In endosymbiosis, the larger cell that took in a bacterium is the host cell." },
+  "endosymbiosis": { "def": "One organism living inside the cells of another. In the history of eukaryotes, bacteria taken in by a host cell came to live inside it permanently and became organelles." },
+  "circular-dna": { "def": "DNA whose two ends are joined in a closed loop. Bacteria, mitochondria and chloroplasts carry circular DNA; the nucleus of a eukaryotic cell holds chromosomes that are not loops." },
+  "binary-fission": { "def": "The way a prokaryote reproduces: it copies its DNA, grows, and splits into two cells. Mitochondria and chloroplasts multiply by a similar splitting process." },
+  "endosymbiotic-theory": { "def": "The well-supported explanation that mitochondria and chloroplasts descend from free-living prokaryotes taken in by ancestral host cells. Evidence: double membranes, their own circular DNA, bacteria-like ribosomes and division by fission." },
+  "membrane-infolding": { "def": "A hypothesis that the nuclear envelope and the endomembrane system began as folds of an ancestral cell's plasma membrane that pinched inward around the DNA and into the cytoplasm." }
+}

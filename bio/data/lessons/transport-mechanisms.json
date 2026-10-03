@@ -1,0 +1,62 @@
+{
+  "topic": "transport-mechanisms",
+  "hook": "<p>Cholera can drain a person of ten liters of fluid a day. A cheap packet of salt and sugar stirred into clean water has saved millions of those lives, and it works only because of one membrane protein in the gut that will not move sodium without bringing glucose along. That protein moves glucose uphill without ever touching ATP.</p>",
+  "prereq": [
+    {
+      "q": "What does the sodium-potassium pump do with each ATP it uses?",
+      "options": ["Moves 3 Na⁺ out of the cell and 2 K⁺ in.", "Moves 3 Na⁺ into the cell and 2 K⁺ out.", "Moves 2 Na⁺ out of the cell and 3 K⁺ in.", "Lets Na⁺ and K⁺ flow down their gradients."],
+      "correct": 0,
+      "why": "Three Na⁺ out, two K⁺ in, both against their gradients. That keeps Na⁺ crowded outside the cell.",
+      "review": "facilitated-diffusion"
+    },
+    {
+      "q": "Which describes active transport?",
+      "options": ["Movement of a substance against its concentration gradient, using energy.", "Movement of a substance down its gradient through a channel.", "Movement of water toward the side with more solute.", "Movement of small nonpolar molecules through the bilayer."],
+      "correct": 0,
+      "why": "Moving something from where it is scarce to where it is crowded needs an energy input; that is what makes transport active.",
+      "review": "membrane-transport"
+    },
+    {
+      "q": "A molecule is small, uncharged and nonpolar. How does it cross a membrane?",
+      "options": ["By simple diffusion straight through the bilayer.", "Only through aquaporins.", "Only by endocytosis.", "Only by a pump that uses ATP."],
+      "correct": 0,
+      "why": "Small nonpolar molecules dissolve in the hydrophobic middle of the bilayer and diffuse straight through.",
+      "review": "membrane-permeability"
+    }
+  ],
+  "figure": { "figure": "sodium-glucose-cotransport", "caption": "Step 1: the sodium-potassium pump spends ATP to keep Na⁺ crowded outside. Step 2: the cotransporter lets Na⁺ flow back in and uses that flow to carry glucose in against its own gradient." },
+  "chain": [
+    { "cause": "A pump spends ATP directly to move ions against their gradient (primary active transport): the sodium-potassium pump in animal cells, the proton pump in plant cells.", "effect": "A steep gradient builds up: Na⁺ crowded outside animal cells, H⁺ crowded outside plant cells." },
+    { "cause": "A gradient is stored energy: the ions are pushed to flow back across the membrane.", "effect": "A cotransporter can open a path for them, but only if it can bring a second substance along." },
+    { "cause": "In the sodium-glucose cotransporter, two Na⁺ flow in down their gradient for every glucose carried in.", "effect": "Glucose is moved into the cell even when it is already more concentrated inside (symport: both in the same direction)." },
+    { "cause": "Some cotransporters move the two substances in opposite directions (antiport).", "effect": "Na⁺ flowing in can push something else out, such as Ca²⁺ in heart muscle cells." },
+    { "cause": "If the pump stops, the ions that flow in are no longer pumped back out.", "effect": "The gradient runs down and cotransport fails too, even though the cotransporter never used ATP." },
+    { "cause": "Every substance has a size, a charge or polarity, and a gradient direction.", "effect": "Those three facts decide its route: simple diffusion, facilitated diffusion, a pump, cotransport or bulk transport." }
+  ],
+  "ideas": [
+    "<b>Primary active transport</b> spends ATP directly. <b>Cotransport</b> (secondary active transport) spends a gradient that a primary pump built.",
+    "<b>Symport</b>: both substances cross the same way (Na⁺ and glucose in). <b>Antiport</b>: opposite ways (Na⁺ in, Ca²⁺ out).",
+    "Stop the pump and the cotransporter fails too, after a delay while the stored gradient runs down. That delay is a clue in data questions.",
+    "Pick a route by asking three questions: Is it small and nonpolar? Is it moving down or against its gradient? Is it a single molecule or a large particle?"
+  ],
+  "misconception": {
+    "wrong": "A cotransporter does not use ATP, so it is a kind of passive transport.",
+    "right": "It moves one substance against its gradient, so it is active transport. The energy is real; it is just paid earlier, by the pump that built the gradient the cotransporter spends."
+  },
+  "check": [
+    "bio-transport-mechanisms-1",
+    "bio-transport-mechanisms-2",
+    "bio-transport-mechanisms-3",
+    "bio-transport-mechanisms-4",
+    "bio-transport-mechanisms-5",
+    "bio-transport-mechanisms-11",
+    "bio-transport-mechanisms-12",
+    "bio-transport-mechanisms-19"
+  ],
+  "summary": "<p>Cells move substances by simple diffusion, facilitated diffusion, active transport and bulk transport, chosen by size, charge or polarity and gradient direction. Primary active transport spends ATP directly (the sodium-potassium pump, the proton pump) and builds ion gradients. Cotransport spends those gradients: a symporter such as the sodium-glucose cotransporter lets Na⁺ flow in and carries glucose in against its gradient; an antiporter moves the second substance the opposite way. If the pump stops, the gradient runs down and cotransport stops with it.</p>",
+  "connections": [
+    { "href": "../notes/facilitated-diffusion.html", "label": "Notes: Facilitated Diffusion (the sodium-potassium pump)" },
+    { "href": "../notes/tonicity-osmoregulation.html", "label": "Notes: Tonicity and Osmoregulation (water follows solutes)" },
+    { "href": "../notes/cell-size.html", "label": "Notes: Cell Size (how much membrane a cell has for exchange)" }
+  ]
+}

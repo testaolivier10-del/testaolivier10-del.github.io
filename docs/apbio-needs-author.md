@@ -79,6 +79,19 @@ person decides; lessons follow the "meanwhile" line.
   teaches extinction in 7.6 (needed by fossils, trees and adaptive radiation). Confirm with the
   official CED (see ced-verify).
 
+- **membrane-potential-origin** (open, 2.6). Most of the resting membrane potential comes from K⁺
+  leaking out through open channels; the pump's 3:2 ratio adds only a few millivolts. Exam
+  materials often say the pump "creates" the potential. Meanwhile: the pump builds the gradients
+  and adds a little charge; the K⁺ leak makes most of the potential; a "For your exam" note says
+  the short version is acceptable.
+- **osmosis-mechanism** (open, 2.7). "Solutes bind water, so fewer free water molecules" is a
+  common teaching picture (OpenStax uses it) but not the full physical account. Meanwhile: the
+  free-water picture, no question hinges on the mechanism beyond direction.
+- **endosymbiosis-host** (open, 2.10). Evidence suggests the host cell was related to archaea,
+  and whether it already had a nucleus and endomembranes when it took in the mitochondrial
+  ancestor is debated. Meanwhile: lessons say "an ancestral host cell" and draw it with a
+  nucleus as a simplification; nothing is asked about the host's identity.
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer

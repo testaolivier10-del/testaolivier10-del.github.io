@@ -1,0 +1,7 @@
+{
+  "cell-compartments": {
+    "file": "figures/cell-compartments.svg", "ext": "svg", "w": 780, "h": 460,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left, an animal cell divided by membranes: a nucleus holding the DNA, the endoplasmic reticulum, the Golgi, an acidic lysosome at about pH 5 inside cytosol at about pH 7.2, and a mitochondrion whose inner membrane is deeply folded. Right, a prokaryotic cell with no membrane-bound organelles; its DNA sits in an unenclosed nucleoid region and ribosomes are scattered through the cytoplasm."
+  }
+}

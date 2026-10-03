@@ -1,0 +1,10 @@
+{
+  "facilitated-diffusion": { "def": "Passive movement of a substance across a membrane through a specific transport protein, a channel or a carrier, from where it is more concentrated to where it is less concentrated. No ATP is used." },
+  "channel-protein": { "def": "A transport protein that forms a water-filled tunnel through the membrane. Each channel lets one kind of ion, or water in the case of aquaporins, pass straight through, down its gradient and very fast." },
+  "gated-channel": { "def": "A channel protein that opens and closes. A ligand-gated channel opens when a signaling molecule binds to it; a voltage-gated channel opens when the charge difference across the membrane changes." },
+  "carrier-protein": { "def": "A transport protein that binds a specific molecule on one side of the membrane, changes shape, and releases it on the other side. Because each carrier handles a few molecules at a time, transport stops speeding up once every carrier is busy." },
+  "pump": { "def": "A transport protein that uses energy, usually from ATP, to move ions or molecules against their concentration gradient, from where they are scarce to where they are crowded. Pumps carry out active transport." },
+  "na-k-pump": { "def": "The pump in animal cell membranes that uses one ATP to move three sodium ions (Na⁺) out of the cell and two potassium ions (K⁺) in, keeping Na⁺ high outside and K⁺ high inside." },
+  "electrochemical-gradient": { "def": "The combined push on an ion from two sources: the difference in its concentration across a membrane and the difference in electrical charge. Both can point the same way (Na⁺ entering a cell) or opposite ways." },
+  "membrane-potential": { "def": "The difference in electrical charge across a cell membrane. In most animal cells the inside is negative compared with the outside, about −70 millivolts in a resting nerve cell. It stores energy, like a small battery." }
+}

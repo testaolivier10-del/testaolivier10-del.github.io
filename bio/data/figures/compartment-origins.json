@@ -1,0 +1,7 @@
+{
+  "endosymbiosis-steps": {
+    "file": "figures/endosymbiosis-steps.svg", "ext": "svg", "w": 820, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four panels. 1: a host cell with a nucleus wraps its membrane around a bacterium that uses oxygen. 2: the bacterium lives inside the host, surrounded by two membranes, its own and one from the host, with its own circular DNA. 3: the bacterium's descendants have become mitochondria that divide by splitting in two. 4: in one line of these cells a photosynthetic bacterium was later taken in and became the chloroplast."
+  }
+}
