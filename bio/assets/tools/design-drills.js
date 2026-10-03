@@ -5,11 +5,15 @@
      variables  independent and dependent variable (two rows)
      controls   choose the control, then say what it rules out (two rows,
                 scored separately: graders give the justification its own point)
-     null       assemble the null hypothesis from three slots (one item)
+     null       assemble the null hypothesis from three slots (one item),
+                then pick the alternative hypothesis (one item)
      cer        tag each sentence of a paragraph claim / evidence / reasoning
      predict    the prediction, then the mechanism (two rows, scored separately)
-   Item ids: design-drills:<scenario>:<row>. Choice options are shuffled for
-   display, so explanations never name a position. */
+   Each scenario shows its data table, and two written answers (CER, and
+   prediction plus mechanism) follow the drills, self-scored against a rubric
+   with ApBioTools.frq. Item ids: design-drills:<scenario>:<row>, and
+   design-drills:<scenario>-<cer|predict>:a for the written answers. Choice
+   options are shuffled for display, so explanations never name a position. */
 (function(){
   'use strict';
   var SLUG = 'design-drills';
@@ -42,7 +46,7 @@
        unless the drill scores as one item (the null hypothesis). */
     function section(s, d, title, rows, opts){
       opts = opts || {};
-      var sid = gid + '-' + s.id + '-' + d.id;
+      var sid = gid + '-' + s.id + '-' + d.id + (opts.sub ? '-' + opts.sub : '');
       var sec = document.createElement('div');
       sec.className = 'dr-sec';
       sec.innerHTML = '<h3 id="' + sid + '-h">' + esc(title) + '</h3>' + (opts.lead || '') + '<form class="dr-rows" novalidate aria-labelledby="' + sid + '-h">' + rows.map(function(r, i){ return rowHtml(r, sid + '-r' + i); }).join('') +
@@ -76,10 +80,12 @@
       });
     }
 
+    var WRITE_TITLE = { cer: 'Write it yourself: claim, evidence and reasoning', predict: 'Write it yourself: prediction and mechanism' };
     var TAGS = ['Claim', 'Evidence', 'Reasoning'], TAG_ID = ['claim', 'evidence', 'reasoning'], TAG_PRACTICE = { claim: '6.A', evidence: '6.B', reasoning: '6.C' };
     function draw(id, focus){
       var s = scen.filter(function(x){ return x.id === id; })[0];
-      host.innerHTML = '<h2 id="' + gid + '-sh" tabindex="-1">' + esc(s.title) + '</h2><div class="bt-context">' + s.setup + '</div>';
+      host.innerHTML = '<h2 id="' + gid + '-sh" tabindex="-1">' + esc(s.title) + '</h2><div class="bt-context">' + s.setup + '</div>' +
+        (s.data ? T.dataTable(s.data.cols, s.data.rows, s.data.caption) : '');
       drills.forEach(function(d){
         if(only && only !== d.id) return;
         if(d.id === 'variables') section(s, d, 'Name the variables', [
@@ -95,6 +101,8 @@
               var parts = sl.map(function(x, i){ var c = form.querySelectorAll('fieldset')[i].querySelector('input:checked'); return c ? x.options[+c.value] : '…'; });
               form.parentNode.querySelector('.dr-sentence').textContent = parts.join(' ') + '.';
             } });
+          if(s.alt) section(s, d, 'Now the alternative hypothesis', [
+            { key: 'alt', legend: s.alt.q, options: s.alt.options, correct: s.alt.correct, why: s.alt.why, practice: '3.B' }], { sub: 'alt' });
         }
         if(d.id === 'cer') section(s, d, 'Claim, evidence or reasoning?', s.cer.map(function(c, i){
           return { key: 'cer-' + (i + 1), topic: 'cer', legend: '“' + c.text + '”', options: TAGS, correct: TAG_ID.indexOf(c.tag), why: c.why, practice: TAG_PRACTICE[c.tag], fixed: true, level: 'analyze' };
@@ -103,11 +111,17 @@
           { key: 'predict', legend: s.predict.q, options: s.predict.options, correct: s.predict.correct, why: s.predict.why, practice: '6.E', fixed: true, level: 'analyze' },
           { key: 'mechanism', legend: s.mechanism.q, options: s.mechanism.options, correct: s.mechanism.correct, why: s.mechanism.why, practice: '6.C', level: 'analyze' }]);
       });
+      (s.write || []).forEach(function(w){
+        if(only && only !== w.drill) return;
+        T.frq(host, { id: s.id + '-' + w.drill, title: WRITE_TITLE[w.drill], topic: topicOf('write-' + w.drill),
+          parts: [{ label: 'a', prompt: w.prompt, points: w.points, practice: w.practice, rubric: w.rubric, sample: w.sample, topic: topicOf('write-' + w.drill) }] }, SLUG);
+      });
       if(focus) host.querySelector('h2').focus();
     }
     function whyVar(s, k){
       return s.variables.options.map(function(o, i){
         if(i === s.variables[k]) return s.variables.why[k];
+        if(s.variables.whyOptions && s.variables.whyOptions[i]) return s.variables.whyOptions[i];
         if(i === s.variables.iv) return 'That is the independent variable: the investigators change it on purpose.';
         if(i === s.variables.dv) return 'That is the dependent variable: it is what they measure.';
         return 'That is kept the same in every group: a controlled variable.';

@@ -281,10 +281,16 @@ labels with units, scale checked by `checkScale`, plotting by typing, −/+, cli
 keys on the SVG, ±2 SE error bars; seven criteria, each an item `graph-builder:<set>:<criterion>`;
 only the first check per load is recorded).
 
-**Drills** (`kind: drill`): `design-drills`, 8 scenarios × 5 drills (variables; control + what
-it rules out, scored separately; null hypothesis assembled from three slots; CER tagging;
-prediction + mechanism, scored separately). `status: "placeholder"` shows a Draft note until a
-teacher reviews them (needs-author `design-drills-review`).
+**Drills** (`kind: drill`): `design-drills`, 16 scenarios (two per unit, Units 1-8, each served
+once its `requires` unit is published) × 5 drills: variables (optional `whyOptions` notes for
+confounds or sample size); control + what it rules out, scored separately (several plausible
+controls, one that isolates the variable); null hypothesis assembled from three slots, then the
+alternative hypothesis (one item each); CER tagging of a paragraph about the scenario's `data`
+table (evidence sentences must quote it); prediction + mechanism, scored separately. Each scenario
+also has two `write` parts (CER, 3 points; prediction + mechanism, 2 points) shown with the mini
+FRQ component: rubric lines, model answer, self-scored, ids `design-drills:<scenario>-<cer|predict>:a`.
+A `status: "placeholder"` file shows a Draft note; the real set has no status, and a teacher review
+is still open (needs-author `design-drills-review`).
 
 **Publishing.** The generator writes every tool page whenever there is a map, and serves the
 data filtered: an array element with a `topic` is kept only when that topic is live (its chapter
