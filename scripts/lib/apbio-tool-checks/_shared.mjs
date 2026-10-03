@@ -28,6 +28,8 @@ export function runtime() {
    map renames fails here and is re-tagged (docs/apbio-architecture.md,
    "Tools: topic ids"). */
 export const PLACEHOLDER_TOPICS = {
+  // Unit 8 (population-growth, energy-flow simulators)
+  'environment-responses': 'unit-8', 'energy-flow-ecosystems': 'unit-8', 'population-ecology': 'unit-8', 'population-density': 'unit-8', 'community-ecology': 'unit-8', 'biodiversity': 'unit-8', 'ecosystem-disruptions': 'unit-8',
   'enzyme-catalysis': 'unit-3', 'enzyme-environment': 'unit-3', 'cellular-respiration': 'unit-3', 'photosynthesis': 'unit-3',
   'cell-communication': 'unit-4', 'signal-transduction-intro': 'unit-4', 'signal-transduction-pathways': 'unit-4', 'cell-cycle': 'unit-4', 'cell-cycle-regulation': 'unit-4',
   'meiosis': 'unit-5', 'meiosis-genetic-diversity': 'unit-5', 'mendelian-genetics': 'unit-5', 'non-mendelian-genetics': 'unit-5', 'environment-phenotype': 'unit-5',

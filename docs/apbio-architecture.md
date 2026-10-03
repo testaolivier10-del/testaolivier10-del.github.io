@@ -262,10 +262,15 @@ comparison; maternal solid + M, paternal striped + P), also `premium: "tools"`; 
 live once `unit-6` is published) `operons` (`ApBioMath.operon`: lac with glucose/lactose, CAP–cAMP and
 the repressor, trp with tryptophan as corepressor; lacI⁻, lacIˢ, Oᶜ, lacZ⁻, trpR⁻, trp Oᶜ; a "going
 further" chromosome + F′ merodiploid for cis/trans; mRNA and enzyme time course solved exactly),
-`premium: "tools"`. Their topics
+`premium: "tools"`; and (Unit 8, live once `unit-8` is published) `population-growth` (`ApBioMath.population`:
+exponential and logistic dN/dt in the formula sheet's forms, Euler steps of Δt, density-independent events and a
+change in K; N over time, dN/dt and per-capita rate against N) and `energy-flow` (`ApBioMath.energyFlow`: GPP,
+producer respiration, NPP, a stored fraction per level, consumer respiration heat, decomposers, biomass from
+turnover, energy/biomass pyramids, a biomagnification mode), both `premium: "tools"`, their models in a delimited
+Unit 8 block at the end of `bio-tool-math.js` and tests in `scripts/test/apbio-tools-u8.test.mjs`. Their topics
 are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other six (ETC/ATP synthase, light
 reactions/Calvin,
-Hardy-Weinberg/drift, tree reading, population growth, energy flow) come with their units: add
+Hardy-Weinberg/drift, tree reading; population growth and energy flow are built) come with their units: add
 the model to `ApBioMath` (or the script), the script, the data, the validator and the
 `pages.json` entry.
 
