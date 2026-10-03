@@ -482,14 +482,7 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
 .bio-unit-grid small{color:var(--muted);font:700 12.5px var(--font-ui);}
 .bio-unit-chip{align-self:flex-start;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);background:var(--ctint);padding:3px 9px;border-radius:999px;}
 
-/* Glossary page. */
-.bio-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;}
-.bio-letters a{min-width:32px;min-height:32px;display:inline-grid;place-items:center;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
-.bio-terms{margin:0;}
-.bio-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
-.bio-term dt{font-weight:900;}
-.bio-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
-.bio-term:target{background:var(--ctint);border-radius:8px;padding-left:8px;}
+/* Glossary page: its styles are inlined in bio/glossary.html (build-apbio.mjs, GLOSSARY_CSS). */
 
 /* The printable unit sheet: one page on screen, compact on paper. */
 .bio-sheet-head h1{margin:6px 0 10px;}

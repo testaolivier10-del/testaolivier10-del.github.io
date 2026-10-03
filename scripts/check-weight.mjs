@@ -394,11 +394,12 @@ const BUDGETS = [
   ['bio/practice.html', 3],
   ['bio/exams.html', 3],
   ['bio/frq.html', 3],
-  /* 15 -> 40 (2026-10-03): the glossary page still carries every definition
-     (37 KB with Units 1-3). Phase 3 moves it to the A&P design (decision 69:
-     an index, definitions drawn from glossary.json), which brings it back
-     down; docs/apbio-spec.md, Phase 3. */
-  ['bio/glossary.html', 40],
+  /* 40 -> 30 (2026-10-03): the glossary page is now an index, as A&P's
+     (spec decision 22, A&P decision 69): every term once, as a link, with
+     the definitions drawn from glossary.json by bio-glossary-page.js. 15 KB
+     with Units 1-4 (441 terms, about 23 bytes gzipped per term); the whole
+     course should land near 25 KB. */
+  ['bio/glossary.html', 30],
   ['bio/tools.html', 3],
 
   // The privacy policy: the page that has to load well for somebody who has

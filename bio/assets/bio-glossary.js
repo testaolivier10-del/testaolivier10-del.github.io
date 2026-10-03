@@ -57,19 +57,3 @@
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hide(); });
 })();
 
-/* The glossary page's filter: hides terms that do not match what is typed
-   (term or alias, from data-a), and the letters left empty. */
-(function(){
-  var input = document.getElementById('gl-filter');
-  if(!input) return;
-  var status = document.getElementById('gl-status');
-  input.addEventListener('input', function(){
-    var v = input.value.trim().toLowerCase(), shown = 0;
-    document.querySelectorAll('.bio-term').forEach(function(el){
-      var hit = !v || (el.getAttribute('data-a') || '').indexOf(v) > -1;
-      el.hidden = !hit; if(hit) shown++;
-    });
-    document.querySelectorAll('.bio-letter').forEach(function(sec){ sec.hidden = !sec.querySelector('.bio-term:not([hidden])'); });
-    if(status) status.textContent = v ? shown + (shown === 1 ? ' term' : ' terms') + ' found' : '';
-  });
-})();
