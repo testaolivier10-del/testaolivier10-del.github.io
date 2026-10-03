@@ -534,6 +534,64 @@ ${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth
     return head({ title: courseTitle(a.title, [LABEL]), desc: a.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || STATE_PAGES.has(a.slug) }) + body;
   }
 
+  /* ------------------------------------------------------------- tools
+     Simulators, skills tools and drills (docs/apbio-architecture.md,
+     "Tools"): pages.json tools[] gives each tool's shell at tools/<slug>.html;
+     its content (data/tools/<slug>.json) is served filtered at
+     assets/tool-data/<slug>.json. An item is live when its topic is
+     published: the topic's chapter is, and for a skill or drill topic also
+     the chapter of the topic it sits after (so Hardy-Weinberg practice waits
+     for Unit 7). A scenario that "requires" units waits for them too. */
+  const topicLive = id => { const t = map.topicById(id); if (!t || !C.published.has(t.chapter)) return false; const a = t.after && map.topicById(t.after); return !a || C.published.has(a.chapter); };
+  const releaseOf = id => { const t = map.topicById(id); if (!t) return null; const a = t.after && map.topicById(t.after); return chapterById(a ? a.chapter : t.chapter); };
+  function toolData(entry) {
+    const d = JSON.parse(readFileSync(join(C.data, 'tools', `${entry.slug}.json`), 'utf8'));
+    const live = x => (!x.topic || topicLive(x.topic)) && (!x.requires || x.requires.every(u => C.published.has(u)));
+    const used = new Set();
+    const walk = v => {
+      if (Array.isArray(v)) return v.filter(x => !(x && typeof x === 'object' && !Array.isArray(x)) || live(x)).map(walk);
+      if (v && typeof v === 'object') { if (typeof v.topic === 'string') used.add(v.topic); return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)])); }
+      return v;
+    };
+    const out = walk(d);
+    for (const t of Object.values(d.partTopics || {})) used.add(t);
+    delete out.about;
+    const rel = releaseOf(d.topic);
+    const arrives = rel ? (rel.part === 'course' ? `Unit ${rel.n}` : `the ${rel.title.toLowerCase()} chapter`) : 'its unit';
+    const content = ['questions', 'contexts', 'problems', 'datasets', 'scenarios'].reduce((n, k) => n + (out[k] ? out[k].length : 0), 0);
+    if (!topicLive(d.topic) || !content) return { slug: d.slug, live: false, arrives };
+    out.live = true;
+    out.units = Object.fromEntries([...used].filter(t => map.topicById(t)).map(t => [t, map.topicById(t).chapter]));
+    return out;
+  }
+  const toolLive = entry => existsSync(join(C.data, 'tools', `${entry.slug}.json`)) && toolData(entry).live;
+  function toolShell(t) {
+    const depth = '../', path = `tools/${t.slug}.html`, url = `${SITE}${BASE}${path}`;
+    const scriptOk = existsSync(join(ROOT, 'bio', 'assets', 'tools', `${t.slug}.js`));
+    const jsonld = { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebApplication', '@id': `${url}#tool`, name: t.name, url, description: t.desc, applicationCategory: 'EducationalApplication', operatingSystem: 'Any',
+        ...(t.premium ? lockedLd('.bio-app-mount') : { isAccessibleForFree: true }), isPartOf: { '@id': COURSE_ID } },
+      crumbs(orgCrumbs([{ name: 'Tools', url: `${SITE}${BASE}tools.html` }, { name: t.name, url }])),
+    ] };
+    const extra = ['bio-questions.js', 'tools/bio-tool-math.js', ...(t.kind === 'skill' ? ['tools/bio-skill-problems.js'] : []), 'tools/bio-tools.js', ...(scriptOk ? [`tools/${t.slug}.js`] : [])];
+    const body = `
+${bodyOpen(` data-app="tool-${t.slug}"`)}
+<main id="main" class="xshell bio-app">
+  ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: t.name }])}
+  <header class="hero bio-hero"><div class="eyebrow">${COURSE_HTML} ${t.kind === 'simulator' ? 'simulator' : t.kind === 'drill' ? 'drills' : 'skills'} ${BETA_PILL}</div><h1>${esc(t.name)}</h1><p class="lede">${esc(t.blurb)}</p></header>
+  <div id="app" class="bio-app-mount" data-slug="${t.slug}" data-src="${depth}assets/tool-data/${t.slug}.json"${t.premium ? ` data-premium="${t.premium}"` : ''}>${scriptOk
+    ? '<noscript><p>This tool needs JavaScript. Every notes page works without it.</p></noscript>'
+    : `<p class="bio-soon">This tool arrives with its unit. Meanwhile, read the <a href="../learn.html">free notes</a>.</p>`}</div>
+</main>
+${footer(depth, `tool:${t.slug}`)}
+<link rel="stylesheet" href="${depth}assets/tools/bio-tools.css">
+${tail({ depth, section: 'tools', extra, premium: true })}
+</body>
+</html>
+`;
+    return head({ title: courseTitle(t.title, [LABEL]), desc: t.desc, path, depth, ogType: 'website', jsonld, noindex: noindex || !toolLive(t) }) + body;
+  }
+
   /* ----------------------------------------------------------- runtime */
   function curriculumJs() {
     const data = {
@@ -545,8 +603,10 @@ ${cssOk ? `<link rel="stylesheet" href="assets/${a.css}">\n` : ''}${tail({ depth
       practiceCounts: Object.fromEntries(map.practices.map(p => [p.id, built.reduce((n, t) => n + C.questions[t.id].items.filter(q => String(q.practice).split('.')[0] === String(p.id)).length, 0)])),
     };
     const pages = (C.pages.apps || []).map(a => ({ slug: a.slug, h1: a.h1 }));
+    const toolList = (C.pages.tools || []).map(t => { const d = toolData(t); return { slug: t.slug, kind: t.kind, name: t.name, blurb: t.blurb, topic: JSON.parse(readFileSync(join(C.data, 'tools', `${t.slug}.json`), 'utf8')).topic, live: !!d.live, ...(d.live ? {} : { arrives: d.arrives }), ...(t.premium ? { premium: 1 } : {}) }; });
     return `/* Generated by scripts/build-apbio.mjs from the course map. Do not edit. */
 window.ApBioPages = ${JSON.stringify(pages)};
+window.ApBioToolList = ${JSON.stringify(toolList)};
 window.ApBioCurriculum = ${JSON.stringify(data)};
 `;
   }
@@ -597,6 +657,7 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
   for (const ch of map.chapters.filter(chapterBuilt)) { put(`units/${ch.id}.html`, unitPage(ch.id)); put(`unit-sheets/${ch.id}.html`, unitSheet(ch.id)); }
   for (const t of built) { put(`lessons/${t.id}.html`, lessonPage(t.id)); put(`notes/${t.id}.html`, notesPage(t.id)); }
   for (const a of C.pages.apps || []) put(`${a.slug}.html`, appShell(a));
+  for (const t of C.pages.tools || []) { put(`tools/${t.slug}.html`, toolShell(t)); put(`assets/tool-data/${t.slug}.json`, JSON.stringify(toolData(t))); }
   put('assets/bio-curriculum.js', curriculumJs());
   put('assets/glossary.json', glossaryJson());
   put('assets/notes-index.json', JSON.stringify(built.map(t => ({ file: `${BASE}notes/${t.id}.html`, title: t.title }))));
@@ -609,7 +670,7 @@ window.ApBioCurriculum = ${JSON.stringify(data)};
 
 /* Generated places hold nothing else. With no map, every generated file
    left behind is stale. */
-const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank'];
+const OWNED_DIRS = ['lessons', 'notes', 'units', 'unit-sheets', 'assets/bank', 'tools', 'assets/tool-data'];
 const OWNED_FILES = ['index.html', 'learn.html', 'glossary.html', 'assets/bio-curriculum.js', 'assets/glossary.json', 'assets/notes-index.json',
   ...(C.pages.apps || []).map(a => `${a.slug}.html`)];
 const stale = [];

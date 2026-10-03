@@ -22,6 +22,30 @@ course does meanwhile.
 - **teacher-review** (open). No AP® Biology teacher has reviewed the course. Beta badge and note
   stay until one signs off.
 
+- **tools-premium** (open). Spec: one simulator free, every simulator Premium. Osmosis is free and
+  enzyme is Premium. The spec does not say whether the skills tools (stats practice, graph
+  builder) and the design drills are Premium; they are free for now. Owner to decide.
+- **design-drills-review** (open). The 8 design and argumentation scenarios
+  (`bio/data/tools/design-drills.json`) are placeholder content: a biology teacher should review
+  the scenarios, the best control in each, and the claim/evidence/reasoning tags (graders differ
+  on whether a general-principle sentence counts as reasoning). The page shows a Draft note until
+  `status` becomes "reviewed".
+- **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
+  `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
+
 ## Contested science
 
-(none yet)
+- **ci-overlap-rule** (pending review). The confidence-interval tool teaches the course rule of
+  thumb: ±2 SE bars that do not overlap → the difference is likely significant; overlapping →
+  not shown to be significant. Strictly, slightly overlapping 95% CIs can still differ at
+  p < 0.05. The tool says so, and its problems avoid bars that nearly touch (`ciBorderline`).
+- **graph-line-vs-scatter** (pending review). The graph builder marks a line graph right for a
+  continuous independent variable set by the investigator (means at set values) and a scatter
+  plot for measured individuals. Some rubrics also accept a scatter plot with a trend line for the
+  former; the tool accepts one type per data set.
+- **osmosis-model-numbers** (pending review). The osmosis simulator's potato numbers (cell sap
+  0.33 osmol/L, 45% non-water mass, wall modulus 15 bar) and red blood cell lysis at 1.55× volume
+  are illustrative, chosen to give lab-like curves (zero crossing ≈ 0.30 M sucrose at 22 °C,
+  hemolysis near 0.46% NaCl). NaCl is treated as i = 2 (real ≈ 1.9); the page says so.
+- **enzyme-model** (pending review). Temperature and pH scale Vmax only (not Km); denaturation is
+  modeled as instant and reversible. Both simplifications are stated on the page.

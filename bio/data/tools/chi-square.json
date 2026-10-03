@@ -1,0 +1,267 @@
+{
+  "about": "Skills tool: chi-square goodness of fit. Solver and generator: ApBioProblems, kind chi. The critical value table is ApBioMath.CHI_CRIT; the validator checks it against the standard values for df 1-8 and checks every expected count is at least 5.",
+  "slug": "chi-square",
+  "kind": "chi",
+  "topic": "stats-chi-square",
+  "intro": "<p>Test whether observed counts fit what a hypothesis predicts. Work out the expected counts, the chi-square value and the degrees of freedom, find the critical value in the table, and decide about the null hypothesis.</p>",
+  "howItWorksTitle": "The formula and the steps",
+  "howItWorks": "<p class=\"bt-eq\">χ² = Σ (o − e)² / e</p><ul><li><b>o</b> is each observed count; <b>e</b> is the count expected if the null hypothesis is true: the total number counted × the expected fraction for that category.</li><li><b>Degrees of freedom</b> = number of categories − 1.</li><li>Compare χ² with the <b>critical value</b> for your degrees of freedom at p = 0.05 (the table on this page). If χ² is larger, reject the null hypothesis: a difference this large would happen by chance less than 5% of the time. If it is smaller, fail to reject the null: chance could explain the difference. Failing to reject is not proof that the null is true.</li><li>Use counts, never percentages, and every expected count should be at least 5 for the test to be reliable.</li><li>Expected counts and χ² count when within one unit of the last decimal place asked for, or within 1%. Degrees of freedom and the critical value must be exact.</li></ul>",
+  "contexts": [
+    {
+      "id": "die",
+      "topic": "stats-chi-square",
+      "text": "<p>A student rolled a six-sided die {N} times to test whether it is fair.</p>",
+      "cats": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "props": [
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666,
+        0.16666666666666666
+      ],
+      "N": [
+        60,
+        150
+      ],
+      "bias": [
+        0.3,
+        0.6
+      ],
+      "null": "the die is fair, so each face comes up one sixth of the time"
+    },
+    {
+      "id": "seed-mix",
+      "topic": "stats-chi-square",
+      "text": "<p>A seed company says its wildflower mix is 50% poppy, 30% daisy and 20% cornflower seeds. A student sorted {N} seeds from one packet.</p>",
+      "cats": [
+        "Poppy",
+        "Daisy",
+        "Cornflower"
+      ],
+      "props": [
+        0.5,
+        0.3,
+        0.2
+      ],
+      "N": [
+        80,
+        200
+      ],
+      "bias": [
+        0.2,
+        0.45
+      ],
+      "null": "the packet holds the three kinds of seed in the stated proportions"
+    },
+    {
+      "id": "feeders",
+      "topic": "stats-chi-square",
+      "text": "<p>Four identical bird feeders were placed around a garden, and {N} visits by birds were recorded.</p>",
+      "cats": [
+        "North",
+        "East",
+        "South",
+        "West"
+      ],
+      "props": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "N": [
+        40,
+        120
+      ],
+      "bias": [
+        0.3,
+        0.6
+      ],
+      "null": "the birds have no preference, so each feeder gets one quarter of the visits"
+    },
+    {
+      "id": "candies",
+      "topic": "stats-chi-square",
+      "text": "<p>A candy maker says the five colors in its bags are equally common. A student sorted {N} candies.</p>",
+      "cats": [
+        "Red",
+        "Orange",
+        "Yellow",
+        "Green",
+        "Purple"
+      ],
+      "props": [
+        0.2,
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "N": [
+        50,
+        120
+      ],
+      "bias": [
+        0.3,
+        0.6
+      ],
+      "null": "each color makes up one fifth of the candies"
+    },
+    {
+      "id": "coin",
+      "topic": "stats-chi-square",
+      "text": "<p>A student flipped a coin {N} times.</p>",
+      "cats": [
+        "Heads",
+        "Tails"
+      ],
+      "props": [
+        0.5,
+        0.5
+      ],
+      "N": [
+        40,
+        200
+      ],
+      "bias": [
+        0.15,
+        0.35
+      ],
+      "null": "the coin is fair, so heads and tails are equally likely"
+    },
+    {
+      "id": "yeast-colonies",
+      "topic": "stats-chi-square",
+      "text": "<p>A culture is sold as a 3 : 1 mix of white and red yeast cells. A student spread it on a dish and counted {N} colonies.</p>",
+      "cats": [
+        "White",
+        "Red"
+      ],
+      "props": [
+        0.75,
+        0.25
+      ],
+      "N": [
+        40,
+        160
+      ],
+      "bias": [
+        0.25,
+        0.45
+      ],
+      "null": "the culture is a 3 : 1 mix, so three quarters of the colonies are white"
+    }
+  ],
+  "problems": [
+    {
+      "id": "coin-100",
+      "topic": "stats-chi-square",
+      "input": {
+        "kind": "chi",
+        "text": "<p>A coin was flipped 100 times and landed heads 58 times.</p>",
+        "cats": [
+          "Heads",
+          "Tails"
+        ],
+        "obs": [
+          58,
+          42
+        ],
+        "props": [
+          0.5,
+          0.5
+        ],
+        "d": 2,
+        "null": "the coin is fair, so heads and tails are equally likely"
+      },
+      "expect": {
+        "exp-0": 50,
+        "exp-1": 50,
+        "chi2": 2.56,
+        "df": 1,
+        "crit": 3.84,
+        "decision": "Fail to reject the null hypothesis"
+      }
+    },
+    {
+      "id": "seed-packet",
+      "topic": "stats-chi-square",
+      "input": {
+        "kind": "chi",
+        "text": "<p>A wildflower mix is sold as 50% poppy, 30% daisy and 20% cornflower seeds. A student sorted 200 seeds.</p>",
+        "cats": [
+          "Poppy",
+          "Daisy",
+          "Cornflower"
+        ],
+        "obs": [
+          86,
+          72,
+          42
+        ],
+        "props": [
+          0.5,
+          0.3,
+          0.2
+        ],
+        "d": 2,
+        "null": "the packet holds the three kinds of seed in the stated proportions"
+      },
+      "expect": {
+        "exp-0": 100,
+        "exp-1": 60,
+        "exp-2": 40,
+        "chi2": 4.46,
+        "df": 2,
+        "crit": 5.99,
+        "decision": "Fail to reject the null hypothesis"
+      }
+    },
+    {
+      "id": "four-feeders",
+      "topic": "stats-chi-square",
+      "input": {
+        "kind": "chi",
+        "text": "<p>Over one morning, 80 bird visits were counted at four identical feeders.</p>",
+        "cats": [
+          "North",
+          "East",
+          "South",
+          "West"
+        ],
+        "obs": [
+          32,
+          18,
+          14,
+          16
+        ],
+        "props": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "d": 2,
+        "null": "the birds have no preference, so each feeder gets one quarter of the visits"
+      },
+      "expect": {
+        "exp-0": 20,
+        "exp-1": 20,
+        "exp-2": 20,
+        "exp-3": 20,
+        "chi2": 10,
+        "df": 3,
+        "crit": 7.81,
+        "decision": "Reject the null hypothesis"
+      }
+    }
+  ]
+}

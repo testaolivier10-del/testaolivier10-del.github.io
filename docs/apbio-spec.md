@@ -77,6 +77,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.1 | Course registry refactor | `claude/apbio-registry` | in progress |
 | 0.2 | CED topic map (own words) | — | in progress |
 | 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | engine and generator done (`docs/apbio-architecture.md`); map and app pages open |
+| 1.T | Tool framework, 2 simulators, 8 skills tools, design drills | `claude/apbio-tools` | built; drills placeholder until review |
 | 2 | Units 1-3 + statistics skills, Beta | | not started |
 | 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
 | 4 | Cram kit (by 2027-03-01) | | not started |
@@ -121,6 +122,14 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 7. (2026-10-03) **Beta, report, disclaimer on every page.** Every course page's footer carries the
    Beta note ("not yet been reviewed by an AP® Biology teacher"), the trademark disclaimer and a
    Report a problem button; site rules `apbio-trademark` and `apbio-beta-and-report`.
+
+8. (2026-10-03) **Tools.** One tool = a `pages.json` `tools[]` entry, a script, a data file and
+   a validator, on a shared framework (`ApBioMath`, `ApBioProblems`, `ApBioTools`); details in
+   `docs/apbio-architecture.md`, "Tools". Tool data is served per published topic, so the
+   Hardy-Weinberg and Simpson tools (built now) go live with Units 7 and 8. The osmosis simulator
+   is the free one; the enzyme simulator is Premium (`tools`). Skills tools and drills are free
+   for now (owner to confirm, needs-author `tools-premium`). Formula-sheet conventions: sample SD
+   with n − 1, 95% CI ≈ mean ± 2 SE, T = °C + 273, R = 0.0831 L·bar/(mol·K), χ² at p = 0.05.
 
 ## 4. Map format (Phase 0)
 
