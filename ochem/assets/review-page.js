@@ -186,11 +186,9 @@
     }
     if(lines.length) html += '<p>' + esc(lines.join(' ')) + '</p>';
 
-    html += '<div class="actions">' +
-      (stillDue.today.length ? '<button class="btn-press" id="moreBtn">Keep reviewing</button>' : '') +
-      '<a class="btn-press' + (stillDue.today.length ? ' alt' : '') + '" href="practice.html">Go to Practice</a>' +
-      '<button class="btn-press alt" id="backBtn">Back to the queue</button>' +
-    '</div></div>';
+    // One next step (assets/next-step.js): what is still due here comes first.
+    html += (window.LevlNextStep ? LevlNextStep('ochem', { concepts: Object.keys(S.conceptsTouched),
+      due: { n: stillDue.today.length, noun: 'concept', act: startSession }, also: [{ label: 'Back to the queue', act: render }] }) : '') + '</div>';
 
     if(touched.length){
       html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Where those concepts stand</div>' +
@@ -201,9 +199,6 @@
 
     doneEl.innerHTML = html;
     show('done');
-    var more = doneEl.querySelector('#moreBtn');
-    if(more) more.addEventListener('click', startSession);
-    doneEl.querySelector('#backBtn').addEventListener('click', render);
   }
 
   /* ---- the queue view -------------------------------------------------- */

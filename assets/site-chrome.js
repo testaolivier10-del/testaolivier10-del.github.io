@@ -616,6 +616,14 @@
     document.head.appendChild(el);
   }
 
+  // An end screen's next step: a placeholder, filled once next-step.js lands.
+  var nextSeq = 0;
+  window.LevlNextStep = function(course, ctx){
+    var id = 'levlNext' + (++nextSeq);
+    setTimeout(function(){ lazy('next-step', function(N){ N.slot(id, course, ctx); }); }, 0);
+    return '<div class="levl-next" id="' + id + '"></div>';
+  };
+
   /* Where "skip to content" should land. A real <main> if the page has one,
      otherwise the first real element after the tab row — every page on the
      site opens its content with a .xshell or .wrap right there. Script,
@@ -864,7 +872,7 @@
 
   function mayShowInstall(){
     if(isStandalone()) return false;             // already installed
-    if(document.querySelector('.levl-prompt')) return false;
+    if(document.querySelector('.levl-prompt, .levl-cross')) return false;
     if(!hasBeenBackBefore()) return false;
     var st = installState();
     if(st.shown >= INSTALL_MAX_SHOWN) return false;
@@ -985,6 +993,33 @@
     scrollToY: scrollToY,
     scrollIntoView: scrollIntoView
   };
+
+  /* Share buttons and milestone certificates are needed at the end of an exam
+     or a chapter, not on arrival, so their modules are fetched the first time
+     something asks: LevlLazy('share', function(S){ ... }). That keeps them out
+     of the shell every page pays for, and lets a results screen hook them in
+     with one line. Each module loads once; callers queue until it lands, and
+     a module that fails to load (offline, blocked) simply never calls back. */
+  var LAZY = { share: 'LevlShare', milestones: 'LevlMilestones', 'next-step': 'LevlNext', 'cross-course': 'LevlCross' };
+  var lazyWait = {};
+  function lazy(name, cb){
+    var g = LAZY[name];
+    if(!g) return;
+    if(window[g]){ cb(window[g]); return; }
+    if(lazyWait[name]){ lazyWait[name].push(cb); return; }
+    lazyWait[name] = [cb];
+    var el = document.createElement('script');
+    el.src = '/assets/' + name + '.js';
+    el.onload = function(){
+      var q = lazyWait[name] || [];
+      q.forEach(function(f){ if(window[g]) f(window[g]); });
+      lazyWait[name] = null;
+    };
+    // Forget the attempt, so the next ask (back online) tries again.
+    el.onerror = function(){ lazyWait[name] = null; el.remove(); };
+    document.head.appendChild(el);
+  }
+  window.LevlLazy = lazy;
 
   /* At module scope rather than inside render(): Chrome can fire
      beforeinstallprompt before a page has called render(), and an event with

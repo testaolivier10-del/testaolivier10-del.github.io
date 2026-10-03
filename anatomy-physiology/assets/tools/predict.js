@@ -368,17 +368,11 @@
             (r.missed.length ? '<span class="pc-sum-miss">Missed: ' + r.missed.map(function(m){ return esc(m.name) + (m.stage ? ' (' + esc(m.stage.toLowerCase()) + ')' : '') + ' ' + dirOf(m.answer).word; }).join('; ') + '.</span>' : '') + '</li>';
         }).join('') + '</ul>' +
         (missedScenarios.length ? '<p class="anp-hint">Every missed prediction is in your <a href="' + esc(base() + 'review.html') + '">review queue</a>, and comes back just before you would forget it.</p>' : '<p class="anp-hint">A clean sweep. Try a higher level next.</p>') +
-        '<div class="pc-after-btns">' +
-          (missedScenarios.length ? '<button type="button" class="btn-press sm pc-retry">Retry the ' + missedScenarios.length + ' scenario' + (missedScenarios.length === 1 ? '' : 's') + ' you missed</button>' : '') +
-          '<button type="button" class="btn-outline pc-new">Choose new scenarios</button>' +
-        '</div>' +
+        (window.LevlNextStep ? LevlNextStep('anp', { also: [missedScenarios.length ? { label: 'Retry the ' + missedScenarios.length + ' scenario' + (missedScenarios.length === 1 ? '' : 's') + ' you missed', act: function(){
+          var ids = missedScenarios.map(function(r){ return r.id; });
+          startSession(DATA.scenarios.filter(function(s){ return ids.indexOf(s.id) > -1; }));
+        } } : { label: 'Choose new scenarios', act: renderSetup }] }) : '') +
       '</section>';
-    var retry = app.querySelector('.pc-retry');
-    if(retry) retry.addEventListener('click', function(){
-      var ids = missedScenarios.map(function(r){ return r.id; });
-      startSession(DATA.scenarios.filter(function(s){ return ids.indexOf(s.id) > -1; }));
-    });
-    app.querySelector('.pc-new').addEventListener('click', renderSetup);
     focusEl(app.querySelector('#pc-sum-h'));
   }
 })();

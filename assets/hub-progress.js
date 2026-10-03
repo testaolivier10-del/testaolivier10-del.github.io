@@ -329,8 +329,13 @@
     // matter how much more gets studied today or in which subject.
     if(isNewDay) award(subject, 15);
     renderChips();
-    return streak();
+    // 7, 30 and 100 days are worth a moment (motion.js shows it, with a share).
+    // Only on the first activity of a day, so it fires once per run.
+    var now = streak();
+    if(isNewDay && STREAK_MARKS.indexOf(now.current) > -1) emit('levl:streak', { days: now.current, subject: subject });
+    return now;
   }
+  var STREAK_MARKS = [7, 30, 100];
 
   function dayTotal(days, key){
     var d = days[key];

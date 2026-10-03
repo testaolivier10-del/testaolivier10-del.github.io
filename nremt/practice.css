@@ -206,6 +206,9 @@ select:focus{outline:none;border-color:var(--accent);}
 
 .results-top-row{margin-bottom:14px;}
 .results-top-row .retry-btn{width:auto;padding:11px 20px;margin-top:0;font-size:13.5px;}
+/* The next step (#nextSlot) is the one pressed button on a results screen;
+   "Back to Start" and print are ways out, so they are drawn as outlines. */
+#resultsScreen .retry-btn{background:var(--white);color:var(--ink);border:var(--bw) solid var(--line);box-shadow:var(--lift);}
 
 /* ---- Question progress: the fat pill track from the mockup ---- */
 .progress-row{
@@ -321,7 +324,7 @@ select:focus{outline:none;border-color:var(--accent);}
    hides the chrome, every button and .print-btn. */
 @media print{
   #resultsScreen{display:block !important;}
-  #resultsScreen .filter-row,#resultsScreen .r-flag-btn,#resultsScreen .retry-btn{display:none !important;}
+  #resultsScreen .filter-row,#resultsScreen .r-flag-btn,#resultsScreen .retry-btn,#nextSlot{display:none !important;}
   #resultsScreen .review-item{break-inside:avoid;page-break-inside:avoid;box-shadow:none !important;border-bottom:1px solid #ccc;}
   #resultsScreen .score-card{box-shadow:none !important;border:1px solid #ccc;}
   #resultsScreen::before{content:"LevlPrep practice result — " attr(data-printed);display:block;font:700 12px monospace;margin-bottom:12px;}

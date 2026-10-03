@@ -193,18 +193,39 @@
     v.sent = t;
     writeVisits(v);
 
+    // Before the once-a-day guard: an evening return still counts.
+    if(landedRef) event('ref-open', { ref: landedRef, course: courseOf(location.pathname) });
+
     if(alreadySentToday) return; // nine pages in one evening is still one visit
 
     event('visit', {
       cohort: cohort(age, isFirst),
       day: age,          // days since first ever visit
       visits: v.days,    // distinct days studied, all time
-      course: courseOf(location.pathname)
+      course: courseOf(location.pathname),
+      ref: landedRef || 'none'
     });
 
     // The 1 -> 2 conversion, called out on its own because it is the number
     // worth moving and the one that gets lost inside a property filter.
     if(v.days === 2) event('returned-second-day', { day: age });
+  }
+
+  /* ?ref= on the links the site sends students back on (sw.js push,
+     worker email, share.js): none of the three carries a usable referrer.
+     Read once, reported only if known, stripped from the address bar. */
+  var REFS = { push: 1, email: 1, share: 1 };
+  var landedRef = takeRef();
+
+  function takeRef(){
+    try {
+      var url = new URL(location.href);
+      var ref = url.searchParams.get('ref');
+      if(ref === null) return null;
+      url.searchParams.delete('ref');
+      if(history.replaceState) history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+      return REFS[ref] ? ref : null;
+    } catch(e){ return null; }
   }
 
   function courseOf(path){

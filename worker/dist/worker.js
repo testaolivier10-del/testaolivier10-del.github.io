@@ -336,6 +336,18 @@ function fill({ title, body, url, cta, footer }) {
     .replace(/\{\{FOOTER\}\}/g, footer);
 }
 
+/* ?ref=email on the button, so assets/analytics.js can tell a visit the email
+   brought from any other: most mail apps send no referrer at all. */
+function withRef(url, ref) {
+  try {
+    const u = new URL(url);
+    u.searchParams.set('ref', ref);
+    return u.href;
+  } catch (e) {
+    return url;
+  }
+}
+
 /* CAN-SPAM wants a valid physical postal address in every commercial email,
    and Gmail's bulk-sender rules look for one. The owner fills this in (a PO
    box or a virtual mailbox is fine) and redeploys; until then it is empty and
@@ -358,7 +370,7 @@ function render(row, env) {
     title: row.title,
     body: row.body,
     // Only ever a page on this site, whatever the row says.
-    url: siteUrl(env) + sitePath(row.url),
+    url: withRef(siteUrl(env) + sitePath(row.url), 'email'),
     cta: 'Pick up where you left off',
     footer: 'You turned these on in your LevlPrep settings. They only arrive when you actually have work waiting, and they stop by themselves if you stop studying.' +
       `<br><br><a href="${esc(unsub)}" style="color:#526C66;">Stop sending these</a> &mdash; no sign-in needed.` +

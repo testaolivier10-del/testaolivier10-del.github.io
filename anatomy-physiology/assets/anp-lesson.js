@@ -140,7 +140,8 @@
           if(answered === total){
             var first = window.AnpCore && window.AnpCore.lessonComplete(topic);
             if(window.AnpCore) window.AnpCore.event('anp-session-finish', { mode: 'lesson', topic: topic, answered: total, correct: right });
-            chk.insertAdjacentHTML('afterend', '<p class="anp-done" role="status"><b>Lesson complete.</b> ' + right + ' of ' + total + ' right' + (first ? ', +40 XP' : '') + '.</p>');
+            chk.insertAdjacentHTML('afterend', '<p class="anp-done" role="status"><b>Lesson complete.</b> ' + right + ' of ' + total + ' right' + (first ? ', +40 XP' : '') + '.</p>' +
+              (window.LevlNextStep ? LevlNextStep('anp', { topics: [topic] }) : ''));
           }
         }
       });
