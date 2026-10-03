@@ -1,0 +1,85 @@
+{
+  "topic": "environment-responses",
+  "hook": "<p>Poinsettias in a greenhouse stay green all autumn unless the growers do something odd: every evening they pull black cloth over the plants and leave it until morning. After a few weeks of long, unbroken nights the top leaves turn red, just in time for December. One careless worker switching on the lights at midnight can ruin the whole crop. The plant is reading the length of the night, and so are many animals that decide when to breed, migrate or hibernate.</p>",
+  "prereq": [
+    {
+      "q": "A hormone causes a response in a target cell only when that cell",
+      "options": ["has a receptor protein that the hormone binds", "is next to the gland that made the hormone", "is dividing at the moment the hormone arrives"],
+      "correct": 0,
+      "why": "Hormones travel everywhere in the body, but only cells with the matching receptor respond.",
+      "review": "cell-communication"
+    },
+    {
+      "q": "In a feedback loop, the stimulus is",
+      "options": ["a change in conditions that a sensor or receptor detects", "the response that brings conditions back", "the set point the body holds"],
+      "correct": 0,
+      "why": "A stimulus is the detected change; the response follows from it.",
+      "review": "feedback"
+    },
+    {
+      "q": "An animal's metabolic rate is",
+      "options": ["how fast it uses energy, often measured as oxygen used per hour", "how fast it digests one meal", "its body temperature"],
+      "correct": 0,
+      "why": "Metabolic rate is the rate of energy use; oxygen consumption tracks it because cellular respiration uses oxygen.",
+      "review": "cell-size"
+    }
+  ],
+  "figure": {
+    "figure": "photoperiod-night-length",
+    "caption": "Plants measure the longest stretch of unbroken dark, not the length of the day. A flash of red light in the middle of the night makes a long night act like two short ones; far-red light right after cancels the red."
+  },
+  "chain": [
+    {
+      "cause": "A condition in the environment changes: the nights lengthen, the ground dries, light comes from one side.",
+      "effect": "Receptors detect the change, such as phytochrome in a leaf or moisture receptors on an animal's body."
+    },
+    {
+      "cause": "The receptor's signal reaches the cells that respond, often through a hormone or the nervous system.",
+      "effect": "Gene expression, growth or activity changes: a shoot tip makes flowers, a pill bug stops walking, a squirrel's metabolic rate drops."
+    },
+    {
+      "cause": "The response changes what the organism does or how its body works.",
+      "effect": "It ends up in better conditions or saves energy: on moist ground, flowering when pollinators fly, asleep through a winter with no food."
+    },
+    {
+      "cause": "Individuals whose responses match their surroundings survive and reproduce more.",
+      "effect": "Over generations, alleles behind well-timed responses become common, so most responses we see fit the organism's environment."
+    },
+    {
+      "cause": "An animal releases a signal: a pheromone, a call, a dance, a display.",
+      "effect": "The signal is a stimulus for other animals, so their behavior changes too: ants follow a trail, bees fly to food, a mate approaches."
+    },
+    {
+      "cause": "An animal helps a relative at a cost to itself, for example by calling out when a predator comes.",
+      "effect": "The relative, who shares many of its alleles, survives more often, so alleles for helping can spread (kin selection)."
+    }
+  ],
+  "ideas": [
+    "Organisms respond to environmental changes with <b>behavior</b> (what an animal does) and with <b>physiology</b> (how its body works), such as flowering, hibernation and migration.",
+    "<b>Taxis</b> is movement aimed toward or away from a stimulus. In a <b>kinesis</b> an animal only speeds up or slows down, yet it still gathers where it slows down.",
+    "Plants grow toward or away from light, gravity or touch (<b>tropisms</b>). In <b>photoperiodism</b> a plant measures the <b>night</b>: short-day plants flower when the night is longer than a critical length; red light switches <b>phytochrome</b> on and far-red switches it off.",
+    "<b>Circadian rhythms</b> run on an internal clock of about 24 hours that light resets each day. <b>Hibernation</b>, <b>estivation</b> and <b>migration</b> carry animals through hard seasons.",
+    "Animals communicate with visual, auditory, chemical (<b>pheromones</b>) and tactile signals. Behavior may be <b>innate</b> or <b>learned</b> (habituation, imprinting, conditioning), and helping relatives can be favored by <b>kin selection</b>."
+  ],
+  "misconception": {
+    "wrong": "Short-day plants flower when the days are short, so they measure how long the light lasts.",
+    "right": "They respond to the length of the unbroken night. A short flash of light in the middle of a long night stops a short-day plant from flowering, even though the day length has not changed."
+  },
+  "check": [
+    "bio-environment-responses-1",
+    "bio-environment-responses-2",
+    "bio-environment-responses-5",
+    "bio-environment-responses-7",
+    "bio-environment-responses-10",
+    "bio-environment-responses-11",
+    "bio-environment-responses-14",
+    "bio-environment-responses-17"
+  ],
+  "summary": "<p>Organisms detect changes in their environment and respond with behavior and with changes in how their bodies work. Animals move toward or away from a stimulus (taxis) or change their speed and turning (kinesis); plants grow toward or away from light, gravity and touch (tropisms), using the hormone auxin. Many plants time flowering by night length (photoperiodism): short-day plants flower when the unbroken night is longer than a critical length, long-day plants when it is shorter, and phytochrome, switched on by red light and off by far-red, does the measuring. Circadian rhythms follow an internal clock of about 24 hours that light resets. Hibernation, estivation, dormancy and migration carry organisms through hard seasons. Animals communicate with visual, auditory, chemical and tactile signals, such as pheromones and the honeybee waggle dance. Some behavior is innate and some is learned. Cooperation and altruism toward relatives can spread by kin selection, because relatives share alleles, and courtship displays let animals choose mates.</p>",
+  "connections": [
+    { "href": "../notes/feedback.html", "label": "Back: stimulus, sensor and response (4.4)" },
+    { "href": "../notes/environment-phenotype.html", "label": "Back: how the environment shapes phenotype (5.5)" },
+    { "href": "../notes/stats-chi-square.html", "label": "Skill: chi-square for choice-chamber counts" },
+    { "href": "../notes/energy-flow-ecosystems.html", "label": "Next: energy flow through ecosystems (8.2)" }
+  ]
+}

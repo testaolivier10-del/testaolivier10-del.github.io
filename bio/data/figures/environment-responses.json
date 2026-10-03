@@ -1,0 +1,7 @@
+{
+  "photoperiod-night-length": {
+    "file": "figures/photoperiod-night-length.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four 24-hour cycles drawn as bars of light and dark, with the result for a short-day plant and a long-day plant. With 8 hours of light and 16 of dark, the short-day plant flowers and the long-day plant does not. With 16 hours of light and 8 of dark, the long-day plant flowers and the short-day plant does not. When the 16-hour night is split in half by a 5-minute flash of red light, the long-day plant flowers and the short-day plant does not. When a far-red flash follows the red one, the short-day plant flowers again and the long-day plant does not. Both plants have a critical night length of about 11 hours; what counts is the longest stretch of unbroken dark."
+  }
+}

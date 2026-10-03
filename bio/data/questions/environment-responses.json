@@ -1,0 +1,700 @@
+{
+  "stimuli": {
+    "environment-responses-s1": {
+      "kind": "table",
+      "title": "Pill bugs in a moist-dry choice chamber",
+      "text": "<p>A student placed 10 pill bugs (small land crustaceans) in the center of each of ten round dishes and counted the animals on each half every 2 minutes. In five dishes, one half held moist filter paper and the other half dry paper. In five control dishes, both halves held dry paper. All dishes were at 22 °C under the same dim light. In a separate test, single animals were filmed for 5 minutes on all-dry paper or all-moist paper (10 animals each): on dry paper they spent a mean of 85% of the time walking, at 1.4 cm/s; on moist paper, 25% of the time, at 0.8 cm/s. Animals released exactly on the border between moist and dry paper walked into the dry half first as often as into the moist half.</p>",
+      "table": {
+        "caption": "Number of pill bugs on each half (totals of five dishes, 50 animals)",
+        "cols": [
+          "Time after release (min)",
+          "Moist half",
+          "Dry half",
+          "Control: half 1",
+          "Control: half 2"
+        ],
+        "rows": [
+          [
+            "2",
+            "29",
+            "21",
+            "26",
+            "24"
+          ],
+          [
+            "4",
+            "33",
+            "17",
+            "23",
+            "27"
+          ],
+          [
+            "6",
+            "37",
+            "13",
+            "25",
+            "25"
+          ],
+          [
+            "8",
+            "40",
+            "10",
+            "27",
+            "23"
+          ],
+          [
+            "10",
+            "41",
+            "9",
+            "24",
+            "26"
+          ]
+        ]
+      }
+    },
+    "environment-responses-s2": {
+      "kind": "table",
+      "title": "Flowering of two plant species under different light and dark cycles",
+      "text": "<p>Plants of two species were grown for six weeks in growth chambers at 22 °C under different cycles of light and dark (40 plants per treatment). In two treatments, the 16-hour dark period was interrupted after 8 hours by a 5-minute flash of red light, or by a red flash followed at once by a 5-minute flash of far-red light. The table gives the percentage of plants that formed flower buds.</p>",
+      "table": {
+        "caption": "Plants with flower buds after six weeks (%)",
+        "cols": [
+          "Row",
+          "Light / dark cycle (hours)",
+          "Night interruption",
+          "Species A (%)",
+          "Species B (%)"
+        ],
+        "rows": [
+          [
+            "1",
+            "16 / 8",
+            "none",
+            "0",
+            "95"
+          ],
+          [
+            "2",
+            "14 / 10",
+            "none",
+            "3",
+            "88"
+          ],
+          [
+            "3",
+            "12 / 12",
+            "none",
+            "80",
+            "8"
+          ],
+          [
+            "4",
+            "10 / 14",
+            "none",
+            "95",
+            "0"
+          ],
+          [
+            "5",
+            "8 / 16",
+            "none",
+            "98",
+            "0"
+          ],
+          [
+            "6",
+            "8 / 16",
+            "red flash",
+            "0",
+            "90"
+          ],
+          [
+            "7",
+            "8 / 16",
+            "red, then far-red flash",
+            "93",
+            "5"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-environment-responses-1",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "environment-responses-s1",
+      "q": "Which statement best describes the results in the table?",
+      "options": [
+        "Most animals were already on the moist half at the first count, and that share stayed about the same through the full 10 minutes of counting.",
+        "The share on the moist half rose from 58% at 2 minutes to 82% at 10 minutes, while the control dishes stayed near half and half.",
+        "The share on the moist half rose over time, and the control dishes showed a similar steady rise in the count on half 1.",
+        "The animals moved onto the moist half in the first 2 minutes and then spread back out evenly between the two halves."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "29/50 = 58% at 2 minutes and 41/50 = 82% at 10 minutes on the moist half; the control halves stayed between 23 and 27 of 50, close to 25.",
+        "options": [
+          "At 2 minutes the moist half held 29 of 50 (58%), barely more than half, and the count kept rising to 41.",
+          "Correct: a steady rise on the moist half, with no drift in the control dishes.",
+          "Control half 1 went 26, 23, 25, 27, 24: it wandered around 25 with no trend.",
+          "The moist-half count rose at every count, from 29 to 41; it never fell back toward 25."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-2",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "5.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "environment-responses-s1",
+      "q": "The null hypothesis is that the pill bugs have no preference, so equal numbers are expected on the two halves. Calculate the chi-square value for the moist-dry dishes at 10 minutes. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 20.5,
+        "tol": 0.1,
+        "unit": "",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Expected: 25 on each half. χ² = (41 − 25)²/25 + (9 − 25)²/25 = 256/25 + 256/25 = 10.24 + 10.24 = 20.48, which rounds to 20.5."
+      }
+    },
+    {
+      "id": "bio-environment-responses-3",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "environment-responses-s1",
+      "q": "For two categories (df = 1), the critical value at p = 0.05 is 3.84. Which conclusion about the 10-minute counts in the moist-dry dishes is best supported?",
+      "options": [
+        "Fail to reject the null hypothesis, because the chi-square value is larger than the critical value for one degree of freedom.",
+        "Reject the null hypothesis, which shows that pill bugs detect moisture with receptors located on their legs and antennae.",
+        "Reject the null hypothesis: the animals are not spread at random between the halves, which supports a response to moisture.",
+        "Accept the null hypothesis, because the control dishes show that the animals have no preference for either half of a dish."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "χ² ≈ 20.5 is far above 3.84, so a split as uneven as 41 to 9 would be very unlikely by chance alone. The test supports a response to moisture but says nothing about how the animals sense it.",
+        "options": [
+          "A chi-square value above the critical value means the null hypothesis is rejected, not kept.",
+          "The test shows the distribution is not random; it gives no information about which sense organs are involved.",
+          "Correct: 20.5 > 3.84, so the deviation from 25:25 is statistically significant.",
+          "A null hypothesis is never accepted, and the control dishes are a different comparison; the moist-dry counts differ strongly from 25:25."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-4",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "environment-responses-s1",
+      "q": "What is the main purpose of the control dishes with dry paper on both halves?",
+      "options": [
+        "To give a second moist-dry comparison, doubling the number of animals tested",
+        "To keep the number of animals equal in each dish so a statistical test can be used",
+        "To measure how many animals die on dry paper during the 10 minutes of counting",
+        "To check whether the dish, light or handling alone makes animals gather on one half"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "With the same paper on both halves, any gathering on one side would come from something other than moisture, such as a slope, a draft or the light. The controls stayed near 25:25, so moisture is the likely cause in the test dishes.",
+        "options": [
+          "The control dishes contain no moist half, so they add no moist-dry comparisons.",
+          "Every dish held 10 animals anyway; equal numbers are not what the control dishes add.",
+          "The counts in every dish add up to 50 at each time, so no animals were lost or died.",
+          "Correct: the controls rule out a side preference unrelated to moisture."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-5",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "environment-responses-s1",
+      "q": "Which explanation fits all of the data, including the filmed animals?",
+      "options": [
+        "On dry paper the animals keep walking and on moist paper they mostly stop, so they collect on the moist half without steering toward it.",
+        "The animals sense the direction of the moisture and walk straight toward it, which is why the count on the moist half keeps rising at each count.",
+        "The animals learn in the first minutes that the moist half is safer and then return to it from memory each time they leave.",
+        "Animals on the dry half lose water and stop moving, so they are not counted, and the dry-half number shrinks over the 10 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is a kinesis: dry conditions raise activity and speed, moist conditions lower them. Animals wander until they happen onto moist paper and then stay. The border test shows no steering toward moisture.",
+        "options": [
+          "Correct: a change in activity, not aimed movement, explains the gathering.",
+          "Steering (a taxis) is ruled out: animals released on the border walked into the dry half first as often as into the moist half.",
+          "Nothing in the data tests learning, and a simple change in activity already explains the counts.",
+          "The halves add up to 50 animals at every count, so animals on the dry half were counted; they moved over to the moist half."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-6",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "environment-responses-s2",
+      "q": "Based on rows 1 to 5, which statement correctly classifies species A and estimates its critical night length?",
+      "options": [
+        "A short-day plant whose critical night length lies between 12 and 14 hours",
+        "A long-day plant whose critical day length lies between 12 and 14 hours",
+        "A short-day plant whose critical night length lies between 10 and 12 hours",
+        "A short-day plant that needs 16 hours of darkness before it forms flowers"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Species A flowers with long nights, so it is a short-day plant. With 10 hours of dark only 3% flower; with 12 hours, 80% do. The critical length lies between those two.",
+        "options": [
+          "With 12 hours of dark, 80% of species A already flowers, so the critical night is shorter than 12 hours.",
+          "Species A flowers when nights are long and days are short, the pattern of a short-day plant.",
+          "Correct: the jump from 3% to 80% happens between 10 and 12 hours of dark.",
+          "Species A flowers well with 12 and 14 hours of dark too (80% and 95%), not just with 16."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-7",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "environment-responses-s2",
+      "q": "Which pair of rows gives the strongest evidence that species A responds to the length of the night rather than the length of the day?",
+      "options": [
+        "Rows 1 and 5, because the plants flower with 8 hours of light but not with 16 hours",
+        "Rows 5 and 6, because the day length is the same but breaking the night stops flowering",
+        "Rows 4 and 5, because species A flowers well under both of these long-night light and dark cycles",
+        "Rows 6 and 7, because far-red light given after the red flash restores flowering"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Rows 5 and 6 differ in only one way: a 5-minute flash splits the 16-hour night into two 8-hour nights. The day is still 8 hours, yet flowering falls from 98% to 0%. So the plant is measuring the unbroken night.",
+        "options": [
+          "Rows 1 and 5 change the day and the night together, so they cannot separate the two.",
+          "Correct: same day length, different unbroken night, very different result.",
+          "Both rows have long nights and both flower; they do not separate day from night.",
+          "These rows show that far-red reverses red, which is about the light detector, not about day versus night."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-8",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "environment-responses-s2",
+      "q": "Which explanation accounts for the results in rows 6 and 7 for both species?",
+      "options": [
+        "Red light switches phytochrome to its active form, as daylight does; far-red at once switches it back, so the night acts unbroken.",
+        "The two flashes add 10 minutes of light, which lengthens the day enough to switch the response of each species.",
+        "Far-red light is a stronger signal than red light, so it makes the plants of both species flower whatever light they received just before it.",
+        "Red light damages the genes for flowering and far-red light repairs them, so the second flash undoes the harm from the first."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Phytochrome is switched on by red light and off by far-red. A red flash makes the plant read the night as broken (A stops flowering, B flowers); far-red right after cancels it (A flowers, B does not). The last flash wins.",
+        "options": [
+          "Correct: a reversible pigment switch explains why the last flash decides the result.",
+          "Ten minutes of light hardly changes the day; rows 6 and 7 get the same total light but opposite results.",
+          "In row 7, species B does not flower (5%), so far-red light does not make every plant flower.",
+          "Species B flowers after the red flash, so red light does not damage flowering; the pattern fits a switch, not damage."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-9",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "environment-responses-s2",
+      "q": "In a new treatment, species A gets 8 hours of light and 16 hours of dark, but the light period is interrupted in its middle by 2 hours of darkness. Predict the percentage of species A plants that will flower.",
+      "options": [
+        "About 95% or more, because the longest unbroken dark period is still 16 hours",
+        "About 0%, because breaking the light period resets the plant's measure of day length",
+        "About 50%, because the plants now get two dark periods that add up to 18 hours",
+        "About 80%, as in row 3, because the plants receive 6 hours of light a day, less than in row 5"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Short-day plants respond to the longest unbroken dark period. A dark break during the day leaves the 16-hour night intact, so species A should flower as in row 5.",
+        "options": [
+          "Correct: the night, not the day, is measured, and the night is still unbroken.",
+          "Interrupting the day with darkness does not stop flowering; interrupting the night with light does.",
+          "The plant does not add dark periods together; it responds to the longest one, here 16 hours.",
+          "Row 3 had a 12-hour night, which is why 80% flowered; here the night is 16 hours long."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-10",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "environment-responses-s2",
+      "q": "Why was the temperature held at 22 °C in every growth chamber?",
+      "options": [
+        "Because temperature can also affect flowering, so fixing it isolates the light effect",
+        "Because a constant temperature makes the flowering percentage come out equal in each chamber",
+        "Because 22 °C is the temperature at which phytochrome changes to its active form",
+        "Because a steady temperature lets the plants sense day length from the daily cycle of warming"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Temperature is a possible confounding variable: many plants flower differently when warm or cold. Holding it constant means the differences between rows come from the light treatments.",
+        "options": [
+          "Correct: it removes temperature as an alternative explanation.",
+          "Holding temperature constant does not make results equal; the light treatments still gave 0% to 98%.",
+          "Phytochrome is switched by red and far-red light, not by a particular temperature.",
+          "With temperature constant there is no daily warming to sense; the plants measured darkness."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-11",
+      "type": "predict",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A short-day plant that flowers on a cycle of 9 hours of light and 15 hours of dark is given a 5-minute flash of red light in the middle of every night. Predict the effect on each quantity, compared with plants without the flash.",
+      "variables": [
+        {
+          "name": "Percentage of plants that form flowers",
+          "answer": "down",
+          "why": "The flash splits the 15-hour night into two 7.5-hour periods, shorter than the critical night length, so flowering is blocked."
+        },
+        {
+          "name": "Amount of active phytochrome in the leaves just after each flash",
+          "answer": "up",
+          "why": "Red light converts phytochrome to its active form, which had been slowly reverting during the dark."
+        },
+        {
+          "name": "Length of the light period at the start of each day",
+          "answer": "none",
+          "why": "The flash comes in the night; the daytime light period is still 9 hours."
+        },
+        {
+          "name": "Longest stretch of unbroken darkness the plants receive",
+          "answer": "down",
+          "why": "It falls from 15 hours to about 7.5 hours, because the flash cuts the night in half."
+        }
+      ],
+      "why": {
+        "correct": "Short-day plants measure the unbroken night with phytochrome. Red light in the night switches phytochrome on, so the plant reads two short nights and does not flower; the day itself is unchanged."
+      }
+    },
+    {
+      "id": "bio-environment-responses-12",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A hamster kept in constant darkness for three weeks started running on its wheel 18 minutes later each day than the day before. What is the period of its circadian rhythm, in hours? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 24.3,
+        "tol": 0.05,
+        "unit": "h",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Each cycle lasts 24 hours plus 18 minutes. 18 ÷ 60 = 0.3 hour, so the period is 24.3 hours. In constant conditions the internal clock runs at its own pace; daily light would normally reset it to 24 hours."
+      }
+    },
+    {
+      "id": "bio-environment-responses-13",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two behaviors that are innate.",
+      "options": [
+        "A spider raised alone from hatching spins a normal web for its species the first time it builds one.",
+        "A rat presses a lever more and more often after each press is followed by a food pellet.",
+        "A dog salivates when it hears a bell that has rung just before each meal for weeks.",
+        "A male stickleback attacks a crude wooden model with a red underside placed in its territory.",
+        "A crow scolds one particular person who trapped it a year earlier but ignores other people."
+      ],
+      "correct": [
+        0,
+        3
+      ],
+      "why": {
+        "correct": "Innate behavior appears complete without experience: the isolated spider never saw a web, and the stickleback's attack is a fixed action pattern triggered by the red cue.",
+        "options": [
+          "Innate: the spider had no chance to learn the web from others.",
+          "Learned: operant conditioning, an action linked to its reward.",
+          "Learned: classical conditioning, a neutral sound linked to food.",
+          "Innate: a fixed action pattern set off by a simple cue, even on a crude model.",
+          "Learned: the crow's response depends on one past experience with one person."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-14",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Inside a dark hive, a honeybee forager's waggle run on the vertical comb points 60° to the left of straight up. Its waggle runs last longer than those of bees returning from a patch 500 m away. Where is the food?",
+      "options": [
+        "60° to the left of north, and farther than 500 m from the hive",
+        "60° to the left of the sun's direction, and closer than 500 m",
+        "60° to the left of the sun's direction, and farther than 500 m",
+        "60° to the right of the sun's direction, and farther than 500 m"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "On the comb, straight up stands for the direction of the sun, so the angle of the run from vertical is the angle of the food from the sun. A longer waggle run means a greater distance.",
+        "options": [
+          "The dance is referenced to the sun, not to a compass direction.",
+          "Longer waggle runs code for greater distances, so this food is farther than 500 m.",
+          "Correct: angle from vertical gives the angle from the sun; run length gives distance.",
+          "A run to the left of vertical means food to the left of the sun's direction, not the right."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-15",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "Ants travel in a line between a sugar bait and their nest. A student wipes a 3 cm strip across the line with a cloth soaked in alcohol. Ants arriving at the strip stop and wander, then pick up the line again on the far side. Which best explains this?",
+      "options": [
+        "The ants follow the sight of the ants ahead of them, and the alcohol strip hides those ants from view.",
+        "The ants follow a chemical trail laid by earlier ants, and wiping removed the signal over that strip.",
+        "The alcohol smell is a warning signal that makes the ants turn back toward the nest at the strip.",
+        "The ants navigate by the sun, and the wet strip changes how the sunlight reflects off the ground."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Foraging ants lay a trail pheromone, a chemical signal, and nestmates follow it. Wiping erased the chemical over the strip only, so the trail resumes beyond it.",
+        "options": [
+          "Ants on either side of the strip are still visible, yet the ants lose the trail only on the wiped part.",
+          "Correct: a pheromone trail explains why only the wiped strip confuses them.",
+          "The ants wander and then cross the strip; they do not turn back to the nest.",
+          "Ants lose the trail only where the chemical was wiped, which a sun compass does not explain."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-16",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a ground squirrel colony, adult females with a mother, sister or daughters living nearby gave an alarm call in 68% of predator approaches. Females with no close relatives nearby called in 21%. Callers are more likely than silent squirrels to be attacked. Which explanation best fits these data?",
+      "options": [
+        "Calling helps the whole colony survive, so alleles for calling spread because they benefit the species as a whole, not just the caller.",
+        "Females with relatives nearby are older and have learned that calling scares predators away from the colony.",
+        "Females without relatives nearby see predators less often, and so they have fewer chances to give a call.",
+        "Calling saves relatives that share many of the caller's alleles, so alleles for calling near kin can spread despite the risk."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "This is kin selection. The call is risky (altruistic), but relatives carry copies of the same alleles. Calling more when kin are near is what inclusive fitness predicts.",
+        "options": [
+          "Selection does not favor alleles because they help the species; and the data show calling depends on kin nearby, not on the colony.",
+          "Calling puts the caller at risk, and nothing in the data shows age or learning; the difference tracks relatives nearby.",
+          "The percentages are per predator approach, so they already account for how many predators each female saw.",
+          "Correct: the behavior tracks the presence of relatives, as kin selection predicts."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-17",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "In winter, a hibernating ground squirrel's body temperature falls from 37 °C to about 4 °C, and its oxygen use falls to about 3% of its active level. Why does this let it survive for months without eating?",
+      "options": [
+        "Cold denatures its enzymes, so cellular respiration stops until spring and no stored fuel is used up.",
+        "Cold air holds more oxygen, so each breath supplies enough oxygen for several days of cellular respiration.",
+        "Its cells switch from burning fat to burning glucose, which releases more energy per gram of fuel.",
+        "Its cells' reactions run slowly when cold, so it makes and uses far less ATP and burns its fat slowly."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Reaction rates fall with temperature, so the hibernating squirrel needs little ATP. Low oxygen use shows that cellular respiration, and so the use of stored fat, has slowed but not stopped.",
+        "options": [
+          "Oxygen use is 3% of normal, not zero, so respiration continues slowly; 4 °C slows enzymes rather than denaturing them.",
+          "The drop in oxygen use reflects lower demand, not a better supply of oxygen.",
+          "Fat stores more energy per gram than glucose, and hibernators live mainly on fat.",
+          "Correct: a lower metabolic rate stretches the fat store over the whole winter."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-18",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Grass seedlings were lit from one side. Seedlings with an opaque cap over the top 2 mm of the shoot grew straight up. Seedlings with a clear cap over the tip, and seedlings with an opaque collar around the lower shoot but the tip uncovered, both bent toward the light. Which conclusion is supported?",
+      "options": [
+        "Bending is caused by light striking the lower shoot directly, which makes the lit cells there elongate.",
+        "The opaque cap kept water from reaching the tip, which stopped the shoot from growing.",
+        "The tip detects the direction of the light, and a signal from the tip causes bending lower down.",
+        "A cap over the tip blocks the response, so the clear cap probably let in too little light."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Only blocking light at the tip stopped bending, and covering the lower shoot did not, so the tip senses light. The bend happens lower down, so a signal (auxin) must travel from the tip.",
+        "options": [
+          "Covering the lower shoot did not stop bending, so light on the lower shoot is not needed.",
+          "The capped shoots grew straight up, so growth continued; only the bending stopped.",
+          "Correct: sensing at the tip, response below it.",
+          "Shoots with clear caps bent toward the light, so a cap as such does not stop the response."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-19",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Migratory warblers were kept indoors in cages for a year with constant food and temperature, under lights that changed day length as it changes outdoors. Each spring and autumn they hopped restlessly for weeks, facing the direction wild birds of their species fly. Which conclusion is best supported?",
+      "options": [
+        "The birds learned when to leave by watching wild birds of their species fly past outside.",
+        "A shortage of food is the main trigger for migration in this species of warbler.",
+        "The restlessness is unrelated to migration, because caged birds are unable to migrate.",
+        "Seasonal change in day length is enough to trigger migratory behavior in these birds."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Food and temperature never changed, yet the birds showed migratory restlessness in the right seasons and directions. Day length, the one seasonal cue they received, was enough.",
+        "options": [
+          "The birds were kept indoors, and the timing followed the light schedule they were given.",
+          "Food was constant all year, so food shortage cannot explain the timing.",
+          "The restlessness came in the migration seasons and faced the migration direction, so it matches migration.",
+          "Correct: the only seasonal cue was day length."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-20",
+      "type": "order",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the events of phototropism in a shoot lit from one side in order.",
+      "options": [
+        "Light from one side reaches the tip of the shoot.",
+        "Auxin moves toward the shaded side of the tip.",
+        "Auxin travels down the shaded side of the shoot.",
+        "Cells on the shaded side elongate more than cells on the lit side.",
+        "The shoot curves toward the light."
+      ],
+      "why": {
+        "correct": "The tip detects the light, auxin is moved to the shaded side and carried down, more auxin makes those cells elongate more, and the unequal growth bends the shoot toward the light."
+      }
+    },
+    {
+      "id": "bio-environment-responses-21",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "1.C",
+      "level": "recall",
+      "diff": 1,
+      "q": "Goslings raised by a scientist from the moment they hatched followed him everywhere, and as adults they tried to court people instead of geese. This is an example of",
+      "options": [
+        "habituation to a repeated stimulus that had no consequence",
+        "imprinting during a short sensitive period early in life",
+        "operant conditioning, because following was rewarded with food",
+        "a fixed action pattern set off by a red cue on the scientist"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Imprinting is learning during a brief sensitive period soon after hatching; the attachment formed then lasts and even affects later mate choice.",
+        "options": [
+          "Habituation is a fading response; here a strong, lasting attachment formed.",
+          "Correct: a lasting attachment learned in a short early window.",
+          "Nothing in the description involves a reward, and imprinting needs none.",
+          "No red cue is involved, and the goslings' attachment depended on what they saw first."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-responses-22",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "environment-responses",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Males of two firefly species fly in the same meadow on summer nights. Species X males flash once every 5 seconds; species Y males flash twice in quick succession every 6 seconds. Females answer only the flash pattern of their own species. What role do these flashes most likely play?",
+      "options": [
+        "They are chemical signals released with the light that attract the females of both species equally well.",
+        "They are learned from the mother, so the pattern differs from family to family.",
+        "They are visual courtship signals that let females find mates of their own species.",
+        "They warn predators that the fireflies taste bad, so they play no part in mating."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Flashes are visual signals, and because each species has its own pattern and females answer only theirs, the patterns keep matings within a species.",
+        "options": [
+          "Light flashes are visual, not chemical, and females answer only one pattern.",
+          "Each species has one pattern, and females respond to it; nothing suggests family-by-family learning.",
+          "Correct: species-specific courtship signals.",
+          "Females answer the flashes of their own species, so the flashes do play a part in mating."
+        ]
+      }
+    }
+  ]
+}
