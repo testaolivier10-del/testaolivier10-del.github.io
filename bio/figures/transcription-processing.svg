@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" role="img" aria-labelledby="txp-t txp-d">
+<title id="txp-t">Transcription and RNA processing in a eukaryotic cell</title>
+<desc id="txp-d">Top: a eukaryotic gene in the nucleus. The promoter, with its TATA box, sits just before the transcription start site, marked by a bent arrow. The gene has three exons (colored) separated by two introns (gray), followed by a terminator region. RNA polymerase II has bound at the promoter and moves along the template strand, reading it 3-prime to 5-prime and building RNA 5-prime to 3-prime; the coding strand has the same sequence as the RNA, with T in place of U. Middle: the primary transcript, pre-mRNA, contains all exons and introns. Processing adds a 5-prime cap and a poly-A tail, and spliceosomes cut out the introns and join the exons. Bottom: the mature mRNA, with cap, three joined exons and tail, leaves the nucleus through a nuclear pore to the cytoplasm, where ribosomes will use it.</desc>
+<defs><marker id="txp-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="470" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="10.0" y="10.0" width="740.0" height="360.0" rx="18" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="24.0" y="32.0" font-size="13" text-anchor="start" font-weight="700" fill="#5D6B69">Nucleus</text>
+<line x1="40.0" y1="86.0" x2="720.0" y2="86.0" stroke="#4A5553" stroke-width="4"/>
+<line x1="40.0" y1="104.0" x2="720.0" y2="104.0" stroke="#4A5553" stroke-width="4"/>
+<text x="34.0" y="90.0" font-size="12" text-anchor="end" font-weight="700">5′</text>
+<text x="726.0" y="90.0" font-size="12" text-anchor="start" font-weight="700">3′</text>
+<text x="34.0" y="108.0" font-size="12" text-anchor="end" font-weight="700">3′</text>
+<text x="726.0" y="108.0" font-size="12" text-anchor="start" font-weight="700">5′</text>
+<text x="380.0" y="62.0" font-size="11" text-anchor="middle">coding strand (same sequence as the RNA, T for U)</text>
+<text x="600.0" y="128.0" font-size="11" text-anchor="middle">template strand (read 3′ to 5′)</text>
+<rect x="60.0" y="78.0" width="90.0" height="34.0" rx="4" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="1.8"/>
+<text x="105.0" y="99.0" font-size="12" text-anchor="middle" font-weight="700">promoter</text>
+<text x="105.0" y="146.0" font-size="11" text-anchor="middle">TATA box</text>
+<line x1="105.0" y1="136.0" x2="105.0" y2="116.0" stroke="#1F2A28" stroke-width="1.2"/>
+<path d="M 160 78 L 160 58 L 186 58" stroke="#1F2A28" stroke-width="2" fill="none" marker-end="url(#txp-a)"/>
+<text x="160.0" y="46.0" font-size="11" text-anchor="middle">start site</text>
+<rect x="168.0" y="80.0" width="82.0" height="30.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.8"/>
+<text x="209.0" y="100.0" font-size="11" text-anchor="middle" font-weight="700">exon 1</text>
+<rect x="250.0" y="84.0" width="80.0" height="22.0" rx="3" fill="#E3E7E6" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="290.0" y="100.0" font-size="11" text-anchor="middle">intron</text>
+<rect x="330.0" y="80.0" width="90.0" height="30.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.8"/>
+<text x="375.0" y="100.0" font-size="11" text-anchor="middle" font-weight="700">exon 2</text>
+<rect x="420.0" y="84.0" width="100.0" height="22.0" rx="3" fill="#E3E7E6" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="470.0" y="100.0" font-size="11" text-anchor="middle">intron</text>
+<rect x="520.0" y="80.0" width="90.0" height="30.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.8"/>
+<text x="565.0" y="100.0" font-size="11" text-anchor="middle" font-weight="700">exon 3</text>
+<rect x="620.0" y="80.0" width="80.0" height="30.0" rx="3" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="660.0" y="100.0" font-size="11" text-anchor="middle">terminator</text>
+<ellipse cx="372.0" cy="104.0" rx="34.0" ry="20.0" fill="#56B4E9" stroke="#0072B2" stroke-width="2"/>
+<text x="372.0" y="108.0" font-size="11" text-anchor="middle" font-weight="700">RNA pol II</text>
+<path d="M 340 116 C 300 150, 250 150, 200 160" stroke="#D55E00" stroke-width="3" fill="none"/>
+<text x="196.0" y="176.0" font-size="11" text-anchor="middle" font-weight="700">5′</text>
+<text x="270.0" y="176.0" font-size="11" text-anchor="middle" fill="#D55E00">growing RNA, built 5′ to 3′</text>
+<line x1="420.0" y1="152.0" x2="480.0" y2="152.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#txp-a)"/>
+<text x="490.0" y="156.0" font-size="11" text-anchor="start">polymerase moves</text>
+<text x="24.0" y="204.0" font-size="12" text-anchor="start" font-weight="700">Primary transcript (pre-mRNA)</text>
+<rect x="60.0" y="222.0" width="82.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<rect x="142.0" y="222.0" width="80.0" height="16.0" rx="3" fill="#E3E7E6" stroke="#5D6B69" stroke-width="1.5"/>
+<rect x="222.0" y="222.0" width="90.0" height="16.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<rect x="312.0" y="222.0" width="100.0" height="16.0" rx="3" fill="#E3E7E6" stroke="#5D6B69" stroke-width="1.5"/>
+<rect x="412.0" y="222.0" width="90.0" height="16.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<text x="52.0" y="234.0" font-size="11" text-anchor="end" font-weight="700">5′</text>
+<text x="508.0" y="234.0" font-size="11" text-anchor="start" font-weight="700">3′</text>
+<line x1="560.0" y1="230.0" x2="600.0" y2="230.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#txp-a)"/>
+<text x="612.0" y="224.0" font-size="11" text-anchor="start">add cap and tail;</text>
+<text x="612.0" y="237.0" font-size="11" text-anchor="start">spliceosomes cut out</text>
+<text x="612.0" y="250.0" font-size="11" text-anchor="start">introns, join exons</text>
+<text x="24.0" y="282.0" font-size="12" text-anchor="start" font-weight="700">Processed mRNA</text>
+<circle cx="70.0" cy="308.0" r="10.0" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+<text x="70.0" y="292.0" font-size="11" text-anchor="middle">5′ cap</text>
+<rect x="80.0" y="300.0" width="82.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<rect x="162.0" y="300.0" width="90.0" height="16.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<rect x="252.0" y="300.0" width="90.0" height="16.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<text x="372.0" y="312.0" font-size="12" text-anchor="start" font-weight="700" fill="#CC79A7">AAAAAA…</text>
+<text x="402.0" y="292.0" font-size="11" text-anchor="middle">poly-A tail</text>
+<circle cx="480.0" cy="310.0" r="14.0" fill="none" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="3 3"/>
+<circle cx="540.0" cy="310.0" r="14.0" fill="none" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="510.0" y="344.0" font-size="11" text-anchor="middle" fill="#5D6B69">introns removed and broken down</text>
+<rect x="300.0" y="362.0" width="60.0" height="16.0" rx="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0"/>
+<line x1="300.0" y1="370.0" x2="300.0" y2="382.0" stroke="#5D6B69" stroke-width="2"/>
+<line x1="360.0" y1="370.0" x2="360.0" y2="382.0" stroke="#5D6B69" stroke-width="2"/>
+<text x="400.0" y="392.0" font-size="11" text-anchor="start">nuclear pore</text>
+<line x1="330.0" y1="330.0" x2="330.0" y2="418.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#txp-a)"/>
+<text x="24.0" y="404.0" font-size="13" text-anchor="start" font-weight="700" fill="#5D6B69">Cytoplasm</text>
+<circle cx="240.0" cy="438.0" r="10.0" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+<rect x="250.0" y="430.0" width="60.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<rect x="310.0" y="430.0" width="66.0" height="16.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<rect x="376.0" y="430.0" width="66.0" height="16.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<text x="450.0" y="442.0" font-size="12" text-anchor="start">AAAAAA…  mature mRNA, ready for ribosomes</text>
+</g>
+</svg>

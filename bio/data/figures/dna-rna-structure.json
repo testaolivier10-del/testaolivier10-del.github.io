@@ -1,0 +1,12 @@
+{
+  "purine-pyrimidine-width": {
+    "file": "figures/purine-pyrimidine-width.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Five DNA base pairs between two sugar-phosphate backbones, the left strand running 5-prime to 3-prime from top to bottom and the right strand the opposite way. Purines A and G are long two-ring blocks; pyrimidines T and C are short one-ring blocks. Each rung joins one purine and one pyrimidine, A-T with two hydrogen bonds and G-C with three, so every rung is the same length and the helix is about 2 nanometers wide everywhere. Beside it, test rungs: purine plus purine overlaps, too long; pyrimidine plus pyrimidine leaves a gap too wide to bond; purine plus pyrimidine fits."
+  },
+  "genome-packing": {
+    "file": "figures/genome-packing.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: a bacterium with no nucleus, holding one large circular chromosome and two small plasmids in its cytoplasm. Right: levels of eukaryotic DNA packing: the 2-nanometer double helix, DNA wrapped around histones as nucleosomes like beads on a string, a coiled fiber folded into loops, and a condensed mitotic chromosome. Below: loosely packed euchromatin, where gene-reading proteins can reach the DNA, beside tightly packed heterochromatin, whose genes are mostly silent."
+  }
+}

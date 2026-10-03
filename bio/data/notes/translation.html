@@ -1,0 +1,100 @@
+<p>An mRNA is a message written in four letters. A protein is a chain built from twenty kinds of amino acid. <b>Translation</b> is the step that turns one into the other, on ribosomes, using tRNAs as interpreters. This page covers the code itself, the machinery, the three stages, how bacteria and eukaryotes differ, and why the code tells us something about the history of life.</p>
+
+<h2>The code is read in codons</h2>
+<p>Four bases taken one at a time could name only 4 amino acids; two at a time, 16. Three at a time gives 4 × 4 × 4 = 64 combinations, enough for 20 amino acids. Each group of three mRNA nucleotides is a <b>codon</b>. The ribosome reads codons one after another, 5′ to 3′, without gaps or overlaps.</p>
+<p>The full key from codons to amino acids is the <b>genetic code</b>, usually shown as a codon table. You do not need to memorize it; the exam gives one when it is needed. Three features matter:</p>
+<ul>
+<li><b>Start codon:</b> AUG, which codes for <b>methionine</b>, marks where translation begins. So most new polypeptides start with methionine (it is often trimmed off later).</li>
+<li><b>Stop codons:</b> UAA, UAG and UGA code for no amino acid; they end the chain.</li>
+<li><b>Redundant but not ambiguous:</b> most amino acids have more than one codon (leucine has six), but each codon means only one thing. Codons for the same amino acid often differ only in the third base.</li>
+</ul>
+<table class="compare">
+<caption>Part of the genetic code, by amino acid</caption>
+<thead><tr><th>Amino acid</th><th>Codons (mRNA, 5′ to 3′)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Methionine (start)</th><td>AUG</td></tr>
+<tr><th scope="row">Tryptophan</th><td>UGG</td></tr>
+<tr><th scope="row">Phenylalanine</th><td>UUU, UUC</td></tr>
+<tr><th scope="row">Lysine</th><td>AAA, AAG</td></tr>
+<tr><th scope="row">Proline</th><td>CCU, CCC, CCA, CCG</td></tr>
+<tr><th scope="row">Leucine</th><td>UUA, UUG, CUU, CUC, CUA, CUG</td></tr>
+<tr><th scope="row">Stop</th><td>UAA, UAG, UGA</td></tr>
+</tbody>
+</table>
+
+<h2>The reading frame</h2>
+<p>Because codons are read in non-overlapping threes, the same letters can be grouped three ways. The start codon fixes the grouping, called the <b>reading frame</b>. Take 5′-GAUGCAUGCCAAAUGG…-3′. From the first AUG: AUG-CAU-GCC-AAA-UGG… (Met-His-Ala-Lys-Trp). From the second AUG, four bases later: AUG-CCA-AAU-GG… (Met-Pro-Asn…). Every codon after the start is different, because 4 is not a multiple of 3. Changes that add or remove bases have the same effect, as topic 6.7 shows.</p>
+<div class="worked">
+<p><b>Worked example: from mRNA to polypeptide.</b> 5′-ACGAUGCCUUGGAAGUGCUAGCAU-3′.</p>
+<p><b>Step 1.</b> Find the first AUG: nucleotides 4-6. <b>Step 2.</b> Read in threes from there: AUG CCU UGG AAG UGC UAG. <b>Step 3.</b> Look up each codon: Met, Pro, Trp, Lys, Cys, stop. <b>Answer:</b> Met-Pro-Trp-Lys-Cys, five amino acids joined by four peptide bonds. ACG before the start and CAU after the stop are not translated.</p>
+</div>
+
+<h2>The machinery</h2>
+<figure id="fig-ribo" data-fig="translation-ribosome"><figcaption>Figure 1. A ribosome during elongation, and a synthetase charging a tRNA.</figcaption></figure>
+<ul>
+<li><b>tRNA</b> is the adapter. One end carries an amino acid; a loop at the other end holds the <b>anticodon</b>, three bases that pair with a codon. The anticodon is complementary and antiparallel to its codon: codon 5′-UGG-3′, anticodon 3′-ACC-5′.</li>
+<li><b>Aminoacyl-tRNA synthetases</b> are the real translators. Each recognizes one amino acid and the tRNAs that carry it, and joins them using energy from ATP, giving a <b>charged tRNA</b>. If the wrong amino acid were attached, the ribosome would insert it anyway, because the ribosome checks only codon-anticodon pairing.</li>
+<li>The <b>ribosome</b> has a <b>small subunit</b>, which binds the mRNA, and a <b>large subunit</b>, which joins the amino acids. Each subunit is made of ribosomal RNA and proteins, and the RNA of the large subunit forms the peptide bonds. It has three sites for tRNAs: the <b>A site</b> (where a new charged tRNA arrives), the <b>P site</b> (which holds the tRNA carrying the growing chain) and the <b>E site</b> (where the empty tRNA exits) (<a class="figref" href="#fig-ribo">Figure 1</a>).</li>
+</ul>
+
+<h2>Three stages</h2>
+<ol>
+<li><b>Initiation.</b> The small subunit binds the mRNA (in eukaryotes at the 5′ cap) and moves to the start codon, carrying the methionine tRNA. The large subunit joins, with the methionine tRNA in the P site. Energy comes from GTP.</li>
+<li><b>Elongation.</b> A charged tRNA whose anticodon matches the codon in the A site binds there. The ribosome forms a peptide bond, transferring the chain from the P-site tRNA to the amino acid on the A-site tRNA. The ribosome then moves one codon toward the 3′ end: the empty tRNA shifts to the E site and leaves, the chain-carrying tRNA moves to the P site, and the A site is open. The chain grows from its amino end to its carboxyl end.</li>
+<li><b>Termination.</b> When a stop codon reaches the A site, no tRNA matches it. A protein <b>release factor</b> binds instead, the chain is released, and the subunits separate.</li>
+</ol>
+<p>Several ribosomes can read the same mRNA at once, each a little behind the one before. The string of ribosomes is a <b>polyribosome</b> (polysome), and it lets a cell make many copies of a protein quickly from one mRNA.</p>
+<div class="worked">
+<p><b>Worked example: counting.</b> A protein has 300 amino acids. Its coding region has 300 codons (the start codon codes for the first amino acid) plus one stop codon: 301 × 3 = 903 nucleotides. The mature mRNA is longer still, because it also has stretches before the start codon and after the stop codon, plus the cap and tail.</p>
+</div>
+
+<h2>Bacteria and eukaryotes</h2>
+<figure id="fig-coupled" data-fig="coupled-expression"><figcaption>Figure 2. In bacteria, ribosomes start on an mRNA while it is still being made; in eukaryotes, the nuclear envelope separates the two steps.</figcaption></figure>
+<p>A bacterium has no nucleus, so ribosomes can attach to the 5′ end of an mRNA while RNA polymerase is still making the rest of it: <b>coupled transcription and translation</b> (<a class="figref" href="#fig-coupled">Figure 2</a>). In eukaryotes, the RNA must be finished and processed in the nucleus first.</p>
+<table class="compare">
+<caption>Gene expression in prokaryotes and eukaryotes</caption>
+<thead><tr><th></th><th>Prokaryotes</th><th>Eukaryotes</th></tr></thead>
+<tbody>
+<tr><th scope="row">Where transcription happens</th><td>Cytoplasm</td><td>Nucleus</td></tr>
+<tr><th scope="row">RNA processing</th><td>Little: no cap, no long tail, introns rare</td><td>5′ cap, poly-A tail, splicing</td></tr>
+<tr><th scope="row">Where translation happens</th><td>Cytoplasm, on mRNA still being made</td><td>Cytoplasm (free ribosomes) and rough ER</td></tr>
+<tr><th scope="row">Timing</th><td>Coupled</td><td>Separated in space and time</td></tr>
+<tr><th scope="row">Shared</th><td colspan="2">The genetic code, tRNAs, ribosomes with A, P and E sites, the start codon AUG, polyribosomes</td></tr>
+</tbody>
+</table>
+
+<h2>Replication, transcription and translation side by side</h2>
+<table class="compare">
+<caption>The three information processes</caption>
+<thead><tr><th></th><th>Replication</th><th>Transcription</th><th>Translation</th></tr></thead>
+<tbody>
+<tr><th scope="row">Template</th><td>Both DNA strands</td><td>One DNA strand of a gene</td><td>mRNA</td></tr>
+<tr><th scope="row">Product</th><td>DNA</td><td>RNA</td><td>Polypeptide</td></tr>
+<tr><th scope="row">Main machinery</th><td>DNA polymerase (and helicase, primase, ligase)</td><td>RNA polymerase</td><td>Ribosome, tRNAs, synthetases</td></tr>
+<tr><th scope="row">Read in units of</th><td>One base</td><td>One base</td><td>Codons of three bases</td></tr>
+<tr><th scope="row">Starts at</th><td>Origin of replication</td><td>Promoter</td><td>Start codon (AUG)</td></tr>
+<tr><th scope="row">Ends at</th><td>End of the DNA, or where forks meet</td><td>Terminator or end signal</td><td>Stop codon</td></tr>
+<tr><th scope="row">Where, in eukaryotes</th><td>Nucleus</td><td>Nucleus</td><td>Cytoplasm and rough ER</td></tr>
+</tbody>
+</table>
+
+<h2>Sending proteins to the rough ER</h2>
+<p>All translation starts on free ribosomes in the cytoplasm. A protein that will be secreted, or put into a membrane or a lysosome, begins with a <b>signal peptide</b>: a stretch of about 15-30 mostly nonpolar amino acids at its amino end. As the signal peptide comes out of the ribosome, a recognition particle binds it and docks the ribosome on the rough ER. The chain is threaded into the ER as it is made, and the signal peptide is usually cut off there. This is how the secretory pathway of topic 2.1 begins. If the ER is supplied only after a chain is finished, the chain is not taken in.</p>
+
+<h2>A nearly universal code</h2>
+<p>Bacteria, plants, fungi and animals all use the same codon assignments, with a handful of small exceptions (for example in mitochondria, where UGA codes for tryptophan instead of stop). This <b>universal genetic code</b> is why a human gene put into bacteria gives the human protein. An arbitrary code that every lineage shares is best explained by inheritance from a common ancestor that already used it.</p>
+
+<h2>Retroviruses: running the dogma backward</h2>
+<p>A <b>retrovirus</b> such as <b>HIV</b> carries its genes as RNA. Inside a host cell, its enzyme <b>reverse transcriptase</b> copies that RNA into DNA (<b>reverse transcription</b>), and the DNA is inserted into the host's own DNA. From then on the host cell transcribes the viral genes and translates the viral mRNA like its own. Several HIV drugs block reverse transcriptase.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"Every codon codes for an amino acid." Three are stop codons.</li>
+<li>"Anticodons are on the mRNA." Codons are on mRNA; anticodons are on tRNA.</li>
+<li>"The ribosome attaches the amino acid to the tRNA." Synthetases do that; the ribosome joins amino acids to the chain.</li>
+<li>"Translation happens in the nucleus." In eukaryotes it happens in the cytoplasm, on free ribosomes and the rough ER.</li>
+</ul>
+
+<aside class="going-further">
+<p><b>Going further: cracking the code.</b> In 1961 Marshall Nirenberg and Heinrich Matthaei added an artificial RNA made only of U to a bacterial extract and got a chain made only of phenylalanine: the first codon, UUU, was read. Artificial RNAs with repeating patterns, such as UCUCUC…, then gave alternating amino acids, which only a code read in threes predicts. Within five years all 64 codons were assigned.</p>
+</aside>

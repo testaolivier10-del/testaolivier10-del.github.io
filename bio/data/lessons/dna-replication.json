@@ -1,0 +1,83 @@
+{
+  "topic": "dna-replication",
+  "hook": "<p>Before one of your cells divides, it copies about 6 billion base pairs of DNA in a few hours, and leaves behind roughly one uncorrected mistake per billion bases. A bacterium copies its whole chromosome in about 40 minutes, with its copying enzymes racing along at around a thousand nucleotides per second. The trick behind both is the double helix itself: each strand already holds the information needed to rebuild its partner.</p>",
+  "prereq": [
+    {
+      "q": "The two strands of a DNA double helix are antiparallel. This means that",
+      "options": ["one strand runs 5′ to 3′ and its partner runs 3′ to 5′ alongside it", "the strands are identical copies of each other", "the strands are joined by covalent bonds between bases"],
+      "correct": 0,
+      "why": "The strands run in opposite directions; they are complementary, not identical, and held by hydrogen bonds.",
+      "review": "nucleic-acids"
+    },
+    {
+      "q": "In which phase of the cell cycle is DNA copied?",
+      "options": ["S phase", "G1 phase", "Mitosis"],
+      "correct": 0,
+      "why": "DNA is copied in S (synthesis) phase, so each chromosome has two sister chromatids in G2.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "In double-stranded DNA, each base pair joins",
+      "options": ["a purine to a pyrimidine", "two purines", "two pyrimidines"],
+      "correct": 0,
+      "why": "A (purine) pairs with T (pyrimidine) and G (purine) with C (pyrimidine).",
+      "review": "dna-rna-structure"
+    }
+  ],
+  "figure": {
+    "figure": "replication-fork",
+    "caption": "A replication fork. The leading strand is built continuously toward the fork; the lagging strand is built away from it in short Okazaki fragments, each started by an RNA primer and later joined by ligase."
+  },
+  "chain": [
+    {
+      "cause": "Copying starts at an origin of replication, where proteins open the helix.",
+      "effect": "Two replication forks form and move away from each other, opening a replication bubble."
+    },
+    {
+      "cause": "At each fork, helicase breaks the hydrogen bonds between the parental strands.",
+      "effect": "The strands separate; single-strand binding proteins keep them apart, and topoisomerase relieves the twisting that builds up ahead of the fork."
+    },
+    {
+      "cause": "DNA polymerase can only add nucleotides to an existing 3′ end.",
+      "effect": "Primase first lays down a short RNA primer, and DNA polymerase III extends it, always building 5′ to 3′ and pairing each new base with the template."
+    },
+    {
+      "cause": "The two templates are antiparallel, but both new strands must grow 5′ to 3′.",
+      "effect": "One new strand (leading) grows continuously toward the fork; the other (lagging) grows away from it in Okazaki fragments, each with its own primer."
+    },
+    {
+      "cause": "DNA polymerase I replaces each RNA primer with DNA, leaving a nick.",
+      "effect": "DNA ligase seals the nicks, joining the fragments into one continuous strand."
+    },
+    {
+      "cause": "Each parent strand serves as the template for a new partner.",
+      "effect": "Each daughter molecule has one old strand and one new strand: replication is semiconservative, as Meselson and Stahl showed."
+    }
+  ],
+  "ideas": [
+    "<b>Semiconservative replication:</b> each new double helix keeps one parental strand. Meselson and Stahl's <sup>15</sup>N/<sup>14</sup>N density bands ruled out the conservative and dispersive models.",
+    "<b>Origins of replication</b> open into bubbles with two <b>replication forks</b>. Bacteria have one origin; each eukaryotic chromosome has thousands.",
+    "Enzymes at the fork: <b>helicase</b> (unwinds), <b>topoisomerase</b> (relieves twisting), <b>single-strand binding proteins</b>, <b>primase</b> (RNA primer), <b>DNA polymerase</b> (adds to the 3′ end, 5′ → 3′), <b>DNA ligase</b> (seals nicks).",
+    "The <b>leading strand</b> is continuous; the <b>lagging strand</b> is made in <b>Okazaki fragments</b> because new DNA can only grow 5′ to 3′.",
+    "<b>Proofreading</b> by DNA polymerase and later <b>mismatch repair</b> keep errors rare. <b>Telomeres</b> buffer linear chromosome ends, which shorten each round unless <b>telomerase</b> rebuilds them."
+  ],
+  "misconception": {
+    "wrong": "DNA polymerase builds the lagging strand in the 3′ to 5′ direction, since it runs the opposite way to the leading strand.",
+    "right": "DNA polymerase only builds 5′ to 3′. The lagging strand is made in short 5′-to-3′ pieces that point away from the fork, and ligase joins them; that is why it is discontinuous."
+  },
+  "check": [
+    "bio-dna-replication-1",
+    "bio-dna-replication-2",
+    "bio-dna-replication-3",
+    "bio-dna-replication-7",
+    "bio-dna-replication-8",
+    "bio-dna-replication-16",
+    "bio-dna-replication-21"
+  ],
+  "summary": "<p>DNA replication is semiconservative: each parental strand is the template for a new partner, so each daughter helix has one old and one new strand, as Meselson and Stahl's density bands showed. Copying begins at origins of replication, which open into bubbles with two forks. Helicase unwinds the helix, single-strand binding proteins hold the strands apart, and topoisomerase relieves the twisting ahead. Primase makes a short RNA primer, and DNA polymerase III adds nucleotides to its 3′ end, building 5′ to 3′. Because the strands are antiparallel, the leading strand is made continuously and the lagging strand in Okazaki fragments; DNA polymerase I replaces the primers with DNA and ligase seals the nicks. Proofreading and mismatch repair keep errors rare. Linear chromosome ends shorten each round; telomeres buffer them, and telomerase can rebuild them.</p>",
+  "connections": [
+    { "href": "../notes/dna-rna-structure.html", "label": "Back: base pairing and antiparallel strands (6.1)" },
+    { "href": "../notes/cell-cycle.html", "label": "Back: DNA is copied in S phase (4.5)" },
+    { "href": "../notes/transcription-rna-processing.html", "label": "Next: copying one gene into RNA (6.3)" }
+  ]
+}

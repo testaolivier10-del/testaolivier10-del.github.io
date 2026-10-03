@@ -1,0 +1,79 @@
+{
+  "topic": "translation",
+  "hook": "<p>Since 1982, much of the world's insulin for people with diabetes has been made by bacteria carrying a copy of the human insulin gene. A bacterium has never needed insulin, yet its ribosomes read the human instructions and build the human hormone, amino acid for amino acid. That works because bacteria and people read genes with the same code: the same three-letter words stand for the same amino acids in nearly every living thing.</p>",
+  "prereq": [
+    {
+      "q": "A mature eukaryotic mRNA leaving the nucleus carries",
+      "options": ["a 5′ cap, the joined exons and a poly-A tail", "its introns, which are removed in the cytoplasm", "both strands of the gene"],
+      "correct": 0,
+      "why": "Processing in the nucleus adds the cap and tail and splices out introns before export.",
+      "review": "transcription-rna-processing"
+    },
+    {
+      "q": "Amino acids in a polypeptide are joined by",
+      "options": ["peptide bonds, formed by dehydration synthesis", "hydrogen bonds between R groups", "phosphodiester bonds"],
+      "correct": 0,
+      "why": "A peptide bond links the carboxyl group of one amino acid to the amino group of the next, releasing water.",
+      "review": "proteins"
+    },
+    {
+      "q": "What does a tRNA do?",
+      "options": ["Carries a specific amino acid to the ribosome", "Carries a gene's message from the nucleus", "Forms the nuclear pores"],
+      "correct": 0,
+      "why": "tRNA is a working RNA that brings amino acids; mRNA carries the message.",
+      "review": "transcription-rna-processing"
+    }
+  ],
+  "figure": {
+    "figure": "translation-ribosome",
+    "caption": "A ribosome in elongation. Each tRNA's anticodon pairs with an mRNA codon; the chain passes from the tRNA in the P site to the new amino acid in the A site, and the ribosome moves one codon toward the 3′ end."
+  },
+  "chain": [
+    {
+      "cause": "Aminoacyl-tRNA synthetases attach each amino acid to the tRNAs that match it, using ATP.",
+      "effect": "Charged tRNAs carry amino acids, each tRNA with an anticodon that fits particular codons."
+    },
+    {
+      "cause": "The small ribosomal subunit binds the mRNA near its 5′ end and finds the start codon, AUG, with the methionine tRNA.",
+      "effect": "The large subunit joins, with the methionine tRNA in the P site: initiation is complete and the reading frame is set."
+    },
+    {
+      "cause": "A charged tRNA whose anticodon pairs with the next codon enters the A site.",
+      "effect": "The ribosome forms a peptide bond, moving the growing chain onto that tRNA."
+    },
+    {
+      "cause": "The ribosome moves one codon toward the mRNA's 3′ end.",
+      "effect": "The chain-carrying tRNA shifts to the P site, the empty tRNA leaves from the E site, and the A site is free: elongation repeats."
+    },
+    {
+      "cause": "A stop codon (UAA, UAG or UGA) enters the A site, where no tRNA matches it.",
+      "effect": "A release factor binds, the finished polypeptide is released, and the ribosome comes apart: termination."
+    }
+  ],
+  "ideas": [
+    "<b>Translation</b> builds a polypeptide from an mRNA's <b>codons</b>, three bases each, read 5′ to 3′ in one <b>reading frame</b> from the <b>start codon</b> AUG (methionine) to a <b>stop codon</b>.",
+    "<b>tRNAs</b> link the code to amino acids: each <b>anticodon</b> pairs with a codon, and <b>aminoacyl-tRNA synthetases</b> attach the right amino acid. Ribosomes have <b>A, P and E sites</b>.",
+    "The <b>genetic code</b> (a codon table) has 64 codons for 20 amino acids and stop; it is redundant but not ambiguous, and it is nearly <b>universal</b>, evidence of common ancestry.",
+    "Bacteria translate mRNA while it is still being made (<b>coupled transcription and translation</b>); many ribosomes can read one mRNA (<b>polyribosome</b>). A <b>signal peptide</b> sends a chain into the rough ER.",
+    "<b>Retroviruses</b> such as HIV use <b>reverse transcriptase</b> to copy their RNA into DNA."
+  ],
+  "misconception": {
+    "wrong": "tRNA anticodons are written the same way as the codons they read, so the tRNA for UGG has the anticodon UGG.",
+    "right": "An anticodon is complementary and antiparallel to its codon: the codon 5′-UGG-3′ pairs with the anticodon 3′-ACC-5′."
+  },
+  "check": [
+    "bio-translation-1",
+    "bio-translation-2",
+    "bio-translation-3",
+    "bio-translation-7",
+    "bio-translation-10",
+    "bio-translation-11",
+    "bio-translation-20"
+  ],
+  "summary": "<p>Translation turns an mRNA's message into a polypeptide. The message is read in codons, three nucleotides each, in one reading frame set by the start codon AUG (methionine) and ended by a stop codon (UAA, UAG or UGA). Aminoacyl-tRNA synthetases load each tRNA with its amino acid; a tRNA's anticodon pairs with the codon in the ribosome. In initiation the ribosome assembles at the start codon; in elongation charged tRNAs enter the A site, peptide bonds form, and the ribosome moves one codon at a time, tRNAs passing from the A to the P to the E site; at termination a release factor frees the chain. The genetic code is nearly universal, evidence of common ancestry. Bacteria couple transcription and translation; polyribosomes make many copies at once. A signal peptide directs a chain into the rough ER. Retroviruses copy RNA into DNA with reverse transcriptase.</p>",
+  "connections": [
+    { "href": "../notes/transcription-rna-processing.html", "label": "Back: making and processing mRNA (6.3)" },
+    { "href": "../notes/cell-structure-function.html", "label": "Back: ribosomes and the rough ER (2.1)" },
+    { "href": "../notes/gene-regulation.html", "label": "Next: switching genes on and off (6.5)" }
+  ]
+}

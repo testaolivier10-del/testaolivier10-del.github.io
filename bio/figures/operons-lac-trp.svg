@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" width="760" height="500" role="img" aria-labelledby="opn-t opn-d">
+<title id="opn-t">Inducible lac operon and repressible trp operon</title>
+<desc id="opn-d">Four panels. Top two: the lac operon, an inducible operon. A separate regulatory gene, lacI, makes the lac repressor all the time. The operon is a promoter, an operator and three structural genes, lacZ, lacY and lacA, copied into one mRNA. Top left, no lactose: the repressor binds the operator, blocking RNA polymerase, so the genes are off. Top right, lactose present: allolactose, the inducer, binds the repressor and changes its shape, the repressor falls off the operator, and RNA polymerase makes one mRNA for all three genes. When glucose is low, cAMP-CAP also binds next to the promoter and boosts transcription. Bottom two: the trp operon, a repressible operon. Bottom left, little tryptophan: the trp repressor is inactive and cannot bind the operator, so RNA polymerase copies the five genes for making tryptophan. Bottom right, plenty of tryptophan: tryptophan, the corepressor, binds the repressor, activating it; the active repressor binds the operator and the genes are switched off.</desc>
+<defs><marker id="opn-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="500" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="12.0" y="22.0" width="360.0" height="220.0" rx="10" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="192.0" y="42.0" font-size="13" text-anchor="middle" font-weight="700">lac operon, no lactose: OFF</text>
+<rect x="392.0" y="22.0" width="360.0" height="220.0" rx="10" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="572.0" y="42.0" font-size="13" text-anchor="middle" font-weight="700">lac operon, lactose present: ON</text>
+<rect x="12.0" y="262.0" width="360.0" height="220.0" rx="10" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="192.0" y="282.0" font-size="13" text-anchor="middle" font-weight="700">trp operon, little tryptophan: ON</text>
+<rect x="392.0" y="262.0" width="360.0" height="220.0" rx="10" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="572.0" y="282.0" font-size="13" text-anchor="middle" font-weight="700">trp operon, plenty of tryptophan: OFF</text>
+<line x1="20.0" y1="130.0" x2="360.0" y2="130.0" stroke="#4A5553" stroke-width="4"/>
+<rect x="30.0" y="118.0" width="44.0" height="24.0" rx="3" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="1.6"/>
+<text x="52.0" y="135.0" font-size="12" text-anchor="middle" font-weight="700">P</text>
+<rect x="76.0" y="118.0" width="34.0" height="24.0" rx="3" fill="#FFFFFF" stroke="#D55E00" stroke-width="1.8"/>
+<text x="93.0" y="135.0" font-size="12" text-anchor="middle" font-weight="700">O</text>
+<rect x="114.0" y="118.0" width="78.7" height="24.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.6"/>
+<text x="153.3" y="135.0" font-size="11" text-anchor="middle" font-weight="700">lacZ</text>
+<rect x="194.7" y="118.0" width="78.7" height="24.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.6"/>
+<text x="234.0" y="135.0" font-size="11" text-anchor="middle" font-weight="700">lacY</text>
+<rect x="275.3" y="118.0" width="78.7" height="24.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.6"/>
+<text x="314.7" y="135.0" font-size="11" text-anchor="middle" font-weight="700">lacA</text>
+<rect x="20.0" y="50.0" width="46.0" height="22.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="43.0" y="65.0" font-size="11" text-anchor="middle" font-weight="700">lacI</text>
+<text x="74.0" y="65.0" font-size="10" text-anchor="start">regulatory gene → repressor (always made)</text>
+<path d="M 73 94 L 113 94 L 113 110 L 101 110 L 101 122 L 85 122 L 85 110 L 73 110 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<text x="93.0" y="92.0" font-size="10" text-anchor="middle">repressor</text>
+<ellipse cx="32.0" cy="160.0" rx="24.0" ry="14.0" fill="#56B4E9" stroke="#0072B2" stroke-width="2"/>
+<text x="32.0" y="164.0" font-size="9" text-anchor="middle" font-weight="700">RNA pol</text>
+<text x="32.0" y="186.0" font-size="10" text-anchor="middle" fill="#D55E00">blocked</text>
+<text x="180.0" y="200.0" font-size="11" text-anchor="middle" fill="#5D6B69">no mRNA, no enzymes</text>
+<line x1="400.0" y1="130.0" x2="740.0" y2="130.0" stroke="#4A5553" stroke-width="4"/>
+<rect x="410.0" y="118.0" width="44.0" height="24.0" rx="3" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="1.6"/>
+<text x="432.0" y="135.0" font-size="12" text-anchor="middle" font-weight="700">P</text>
+<rect x="456.0" y="118.0" width="34.0" height="24.0" rx="3" fill="#FFFFFF" stroke="#D55E00" stroke-width="1.8"/>
+<text x="473.0" y="135.0" font-size="12" text-anchor="middle" font-weight="700">O</text>
+<rect x="494.0" y="118.0" width="78.7" height="24.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.6"/>
+<text x="533.3" y="135.0" font-size="11" text-anchor="middle" font-weight="700">lacZ</text>
+<rect x="574.7" y="118.0" width="78.7" height="24.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.6"/>
+<text x="614.0" y="135.0" font-size="11" text-anchor="middle" font-weight="700">lacY</text>
+<rect x="655.3" y="118.0" width="78.7" height="24.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.6"/>
+<text x="694.7" y="135.0" font-size="11" text-anchor="middle" font-weight="700">lacA</text>
+<rect x="400.0" y="50.0" width="46.0" height="22.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="423.0" y="65.0" font-size="11" text-anchor="middle" font-weight="700">lacI</text>
+<path d="M 480 78 L 520 78 L 520 106 L 480 106 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="2" transform="rotate(20 500 92)"/>
+<circle cx="514.0" cy="84.0" r="6.0" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.6"/>
+<text x="556.0" y="80.0" font-size="10" text-anchor="start">allolactose (inducer)</text>
+<text x="556.0" y="94.0" font-size="10" text-anchor="start">changes its shape</text>
+<ellipse cx="530.0" cy="152.0" rx="24.0" ry="14.0" fill="#56B4E9" stroke="#0072B2" stroke-width="2"/>
+<text x="530.0" y="156.0" font-size="9" text-anchor="middle" font-weight="700">RNA pol</text>
+<circle cx="430.0" cy="106.0" r="8.0" fill="#FFFFFF" stroke="#009E73" stroke-width="1.6"/>
+<text x="430.0" y="110.0" font-size="7" text-anchor="middle" font-weight="700">CAP</text>
+<text x="430.0" y="92.0" font-size="9" text-anchor="middle">cAMP-CAP</text>
+<path d="M 500 172 C 560 182, 640 180, 732 178" stroke="#D55E00" stroke-width="3" fill="none"/>
+<text x="600.0" y="200.0" font-size="11" text-anchor="middle" fill="#D55E00">one mRNA for lacZ, lacY, lacA</text>
+<line x1="20.0" y1="370.0" x2="360.0" y2="370.0" stroke="#4A5553" stroke-width="4"/>
+<rect x="30.0" y="358.0" width="44.0" height="24.0" rx="3" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="1.6"/>
+<text x="52.0" y="375.0" font-size="12" text-anchor="middle" font-weight="700">P</text>
+<rect x="76.0" y="358.0" width="34.0" height="24.0" rx="3" fill="#FFFFFF" stroke="#D55E00" stroke-width="1.8"/>
+<text x="93.0" y="375.0" font-size="12" text-anchor="middle" font-weight="700">O</text>
+<rect x="114.0" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="137.2" y="375.0" font-size="11" text-anchor="middle" font-weight="700">trpE</text>
+<rect x="162.4" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="185.6" y="375.0" font-size="11" text-anchor="middle" font-weight="700">D</text>
+<rect x="210.8" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="234.0" y="375.0" font-size="11" text-anchor="middle" font-weight="700">C</text>
+<rect x="259.2" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="282.4" y="375.0" font-size="11" text-anchor="middle" font-weight="700">B</text>
+<rect x="307.6" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="330.8" y="375.0" font-size="11" text-anchor="middle" font-weight="700">A</text>
+<path d="M 50 306 L 90 306 L 90 334 L 50 334 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="2" transform="rotate(20 70 320)"/>
+<text x="104.0" y="316.0" font-size="10" text-anchor="start">inactive repressor</text>
+<text x="104.0" y="330.0" font-size="10" text-anchor="start">(no tryptophan bound)</text>
+<ellipse cx="150.0" cy="392.0" rx="24.0" ry="14.0" fill="#56B4E9" stroke="#0072B2" stroke-width="2"/>
+<text x="150.0" y="396.0" font-size="9" text-anchor="middle" font-weight="700">RNA pol</text>
+<path d="M 130 412 C 180 422, 260 420, 352 418" stroke="#D55E00" stroke-width="3" fill="none"/>
+<text x="180.0" y="444.0" font-size="11" text-anchor="middle" fill="#D55E00">mRNA → enzymes that make tryptophan</text>
+<line x1="400.0" y1="370.0" x2="740.0" y2="370.0" stroke="#4A5553" stroke-width="4"/>
+<rect x="410.0" y="358.0" width="44.0" height="24.0" rx="3" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="1.6"/>
+<text x="432.0" y="375.0" font-size="12" text-anchor="middle" font-weight="700">P</text>
+<rect x="456.0" y="358.0" width="34.0" height="24.0" rx="3" fill="#FFFFFF" stroke="#D55E00" stroke-width="1.8"/>
+<text x="473.0" y="375.0" font-size="12" text-anchor="middle" font-weight="700">O</text>
+<rect x="494.0" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="517.2" y="375.0" font-size="11" text-anchor="middle" font-weight="700">trpE</text>
+<rect x="542.4" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="565.6" y="375.0" font-size="11" text-anchor="middle" font-weight="700">D</text>
+<rect x="590.8" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="614.0" y="375.0" font-size="11" text-anchor="middle" font-weight="700">C</text>
+<rect x="639.2" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="662.4" y="375.0" font-size="11" text-anchor="middle" font-weight="700">B</text>
+<rect x="687.6" y="358.0" width="46.4" height="24.0" rx="3" fill="#C4E8DC" stroke="#009E73" stroke-width="1.6"/>
+<text x="710.8" y="375.0" font-size="11" text-anchor="middle" font-weight="700">A</text>
+<path d="M 453 334 L 493 334 L 493 350 L 481 350 L 481 362 L 465 362 L 465 350 L 453 350 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<circle cx="486.0" cy="340.0" r="6.0" fill="#F1DAE7" stroke="#CC79A7" stroke-width="1.6"/>
+<text x="510.0" y="322.0" font-size="10" text-anchor="start">tryptophan (corepressor)</text>
+<text x="510.0" y="336.0" font-size="10" text-anchor="start">activates the repressor</text>
+<ellipse cx="412.0" cy="400.0" rx="24.0" ry="14.0" fill="#56B4E9" stroke="#0072B2" stroke-width="2"/>
+<text x="412.0" y="404.0" font-size="9" text-anchor="middle" font-weight="700">RNA pol</text>
+<text x="412.0" y="426.0" font-size="10" text-anchor="middle" fill="#D55E00">blocked</text>
+<text x="580.0" y="444.0" font-size="11" text-anchor="middle" fill="#5D6B69">no mRNA, no enzymes</text>
+<text x="20.0" y="492.0" font-size="11" text-anchor="start">P = promoter, O = operator. Structural genes in one operon share one promoter and are copied into one mRNA.</text>
+</g>
+</svg>

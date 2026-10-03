@@ -1,0 +1,16 @@
+{
+  "regulatory-sequence": { "def": "A stretch of DNA that does not code for a product but is bound by proteins that control a gene's transcription, such as a promoter, an operator, an enhancer or a silencer." },
+  "transcription-factor": { "def": "A protein that binds DNA and controls transcription. General transcription factors gather at a promoter and recruit RNA polymerase II; specific ones (activators and repressors) bind enhancers or silencers and raise or lower a gene's transcription." },
+  "enhancer": { "def": "A regulatory DNA sequence, often far from the gene it controls, where activator proteins bind; DNA looping brings them to the promoter, increasing transcription. A silencer is a similar site where repressor proteins bind and lower transcription." },
+  "operon": { "def": "In bacteria, a group of structural genes with related jobs that share one promoter and one operator and are transcribed together into a single mRNA. The operator is the short DNA sequence a repressor binds." },
+  "repressor": { "def": "A protein that binds an operator (or a silencer) and blocks transcription. Its shape, and so its grip on DNA, is changed by small molecules: an inducer inactivates it, and a corepressor activates it." },
+  "inducer": { "def": "A small molecule that turns on an inducible operon by binding the repressor and making it release the operator; for the lac operon, allolactose, formed from lactose." },
+  "inducible-operon": { "def": "An operon that is usually off and is switched on when an inducer removes its repressor, such as the lac operon, whose enzymes take up and split lactose." },
+  "repressible-operon": { "def": "An operon that is usually on and is switched off when its end product, acting as a corepressor, activates the repressor, such as the trp operon, whose enzymes make tryptophan." },
+  "constitutive": { "def": "A constitutive (housekeeping) gene is transcribed at a fairly steady level all the time, for products every cell needs. An inducible gene is transcribed only when a signal switches it on." },
+  "positive-regulation": { "def": "Positive gene regulation: a protein that binds DNA increases transcription, as the catabolite activator protein (CAP) with cAMP does at the lac operon when glucose is scarce. In negative gene regulation, a bound protein, such as a repressor, decreases transcription." },
+  "epigenetics": { "def": "Changes in gene activity that do not change the DNA sequence and can be passed on when cells divide, such as DNA methylation and histone acetylation." },
+  "dna-methylation": { "def": "Adding methyl groups to DNA, mainly to C nucleotides. Heavily methylated promoters are usually silent, because methylated DNA attracts proteins that pack chromatin tightly. The pattern is copied onto new DNA at each division." },
+  "histone-acetylation": { "def": "Adding acetyl groups to histone tails, which reduces their positive charge and loosens their hold on DNA, opening chromatin so genes are easier to transcribe. It is one kind of histone modification, part of chromatin remodeling." },
+  "gene-product": { "def": "What a gene makes: usually a protein, sometimes a working RNA. The amount and activity of gene products determine an organism's phenotype." }
+}

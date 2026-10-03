@@ -1,0 +1,12 @@
+{
+  "pcr-cycle": {
+    "file": "figures/pcr-cycle.svg", "ext": "svg", "w": 760, "h": 380,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three panels of one PCR cycle. Denaturation at about 95 degrees Celsius: heat separates the two strands of the target region. Annealing at about 55 degrees: a primer pairs with each strand at opposite ends of the target, pointing inward. Extension at about 72 degrees: Taq polymerase extends each primer from its 3-prime end, building new DNA 5-prime to 3-prime. Below, copies double each cycle: 1, 2, 4, 8; after n cycles there are 2 to the n copies, about a billion after 30 cycles."
+  },
+  "gel-electrophoresis": {
+    "file": "figures/gel-electrophoresis.svg", "ext": "svg", "w": 760, "h": 360,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "An agarose gel with wells at the top near the negative electrode and the positive electrode at the bottom. Lane 1 is a DNA ladder with bands at 10,000, 5,000, 3,000, 2,000, 1,000 and 500 base pairs, the small fragments lowest. Three sample lanes show bands at 4,500 and 1,500; at 3,500, 1,500 and 1,000; and at 6,000 base pairs. Notes: DNA is negative, so it moves toward the positive electrode, and small fragments slip through the gel fastest and travel farthest."
+  }
+}

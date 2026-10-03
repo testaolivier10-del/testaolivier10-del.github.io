@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="ppw-t ppw-d">
+<title id="ppw-t">Why each base pair is one purine and one pyrimidine</title>
+<desc id="ppw-d">Left: five base pairs between two sugar-phosphate backbones. The left strand runs 5-prime at the top to 3-prime at the bottom; the right strand runs the other way. Purines (A and G, two rings) are drawn as long orange blocks and pyrimidines (T and C, one ring) as short blue blocks. Each rung joins one purine to one pyrimidine: A to T with two dashed hydrogen bonds, G to C with three. Every rung therefore has the same total length, so the two backbones stay the same distance apart, about 2 nanometers. Right: three test rungs. Purine plus purine is too long to fit between the backbones; pyrimidine plus pyrimidine leaves a gap too wide to bond across; purine plus pyrimidine fits exactly.</desc>
+<defs><marker id="ppw-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="110.0" y="34.0" font-size="15" text-anchor="middle" font-weight="700">5′</text>
+<text x="88.0" y="362.0" font-size="15" text-anchor="middle" font-weight="700">3′</text>
+<text x="410.0" y="34.0" font-size="15" text-anchor="middle" font-weight="700">3′</text>
+<text x="432.0" y="362.0" font-size="15" text-anchor="middle" font-weight="700">5′</text>
+<line x1="110.0" y1="44.0" x2="110.0" y2="364.0" stroke="#5D6B69" stroke-width="6"/>
+<line x1="410.0" y1="44.0" x2="410.0" y2="364.0" stroke="#5D6B69" stroke-width="6"/>
+<polygon points="98.0,64.0 122.0,64.0 126.0,80.0 110.0,91.0 94.0,80.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<polygon points="398.0,64.0 422.0,64.0 426.0,80.0 410.0,91.0 394.0,80.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<rect x="126.0" y="65.0" width="134.0" height="22.0" rx="4" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<rect x="310.0" y="65.0" width="84.0" height="22.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<text x="193.0" y="81.0" font-size="15" text-anchor="middle" font-weight="700">A</text>
+<text x="352.0" y="81.0" font-size="15" text-anchor="middle" font-weight="700">T</text>
+<line x1="263.0" y1="70.0" x2="307.0" y2="70.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="263.0" y1="82.0" x2="307.0" y2="82.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<circle cx="110.0" cy="108.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="110.0" y="112.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<circle cx="410.0" cy="108.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="410.0" y="112.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<polygon points="98.0,128.0 122.0,128.0 126.0,144.0 110.0,155.0 94.0,144.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<polygon points="398.0,128.0 422.0,128.0 426.0,144.0 410.0,155.0 394.0,144.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<rect x="126.0" y="129.0" width="134.0" height="22.0" rx="4" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<rect x="310.0" y="129.0" width="84.0" height="22.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<text x="193.0" y="145.0" font-size="15" text-anchor="middle" font-weight="700">G</text>
+<text x="352.0" y="145.0" font-size="15" text-anchor="middle" font-weight="700">C</text>
+<line x1="263.0" y1="134.0" x2="307.0" y2="134.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="263.0" y1="140.0" x2="307.0" y2="140.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="263.0" y1="146.0" x2="307.0" y2="146.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<circle cx="110.0" cy="172.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="110.0" y="176.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<circle cx="410.0" cy="172.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="410.0" y="176.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<polygon points="98.0,192.0 122.0,192.0 126.0,208.0 110.0,219.0 94.0,208.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<polygon points="398.0,192.0 422.0,192.0 426.0,208.0 410.0,219.0 394.0,208.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<rect x="126.0" y="193.0" width="84.0" height="22.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<rect x="260.0" y="193.0" width="134.0" height="22.0" rx="4" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<text x="168.0" y="209.0" font-size="15" text-anchor="middle" font-weight="700">T</text>
+<text x="327.0" y="209.0" font-size="15" text-anchor="middle" font-weight="700">A</text>
+<line x1="213.0" y1="198.0" x2="257.0" y2="198.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="213.0" y1="210.0" x2="257.0" y2="210.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<circle cx="110.0" cy="236.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="110.0" y="240.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<circle cx="410.0" cy="236.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="410.0" y="240.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<polygon points="98.0,256.0 122.0,256.0 126.0,272.0 110.0,283.0 94.0,272.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<polygon points="398.0,256.0 422.0,256.0 426.0,272.0 410.0,283.0 394.0,272.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<rect x="126.0" y="257.0" width="84.0" height="22.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<rect x="260.0" y="257.0" width="134.0" height="22.0" rx="4" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<text x="168.0" y="273.0" font-size="15" text-anchor="middle" font-weight="700">C</text>
+<text x="327.0" y="273.0" font-size="15" text-anchor="middle" font-weight="700">G</text>
+<line x1="213.0" y1="262.0" x2="257.0" y2="262.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="213.0" y1="268.0" x2="257.0" y2="268.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="213.0" y1="274.0" x2="257.0" y2="274.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<circle cx="110.0" cy="300.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="110.0" y="304.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<circle cx="410.0" cy="300.0" r="8.0" fill="#FFFFFF" stroke="#D55E00" stroke-width="2"/>
+<text x="410.0" y="304.0" font-size="10" text-anchor="middle" font-weight="700">P</text>
+<polygon points="98.0,320.0 122.0,320.0 126.0,336.0 110.0,347.0 94.0,336.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<polygon points="398.0,320.0 422.0,320.0 426.0,336.0 410.0,347.0 394.0,336.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<rect x="126.0" y="321.0" width="134.0" height="22.0" rx="4" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<rect x="310.0" y="321.0" width="84.0" height="22.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<text x="193.0" y="337.0" font-size="15" text-anchor="middle" font-weight="700">A</text>
+<text x="352.0" y="337.0" font-size="15" text-anchor="middle" font-weight="700">T</text>
+<line x1="263.0" y1="326.0" x2="307.0" y2="326.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="263.0" y1="338.0" x2="307.0" y2="338.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<line x1="110.0" y1="380.0" x2="410.0" y2="380.0" stroke="#1F2A28" stroke-width="1.2"/>
+<line x1="110.0" y1="374.0" x2="110.0" y2="386.0" stroke="#1F2A28" stroke-width="1.2"/>
+<line x1="410.0" y1="374.0" x2="410.0" y2="386.0" stroke="#1F2A28" stroke-width="1.2"/>
+<text x="260.0" y="394.0" font-size="12" text-anchor="middle">same width at every rung (about 2 nm)</text>
+<rect x="480.0" y="40.0" width="26.0" height="16.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<text x="516.0" y="53.0" font-size="13" text-anchor="start">purine: A, G (two rings)</text>
+<rect x="480.0" y="66.0" width="18.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<text x="516.0" y="79.0" font-size="13" text-anchor="start">pyrimidine: T, C (one ring; U in RNA)</text>
+<line x1="480.0" y1="100.0" x2="506.0" y2="100.0" stroke="#1F2A28" stroke-width="1.6" stroke-dasharray="4 3"/>
+<text x="516.0" y="104.0" font-size="13" text-anchor="start">hydrogen bond (A–T 2, G–C 3)</text>
+<text x="480.0" y="146.0" font-size="13" text-anchor="start" font-weight="700">Test rungs between backbones 2 nm apart</text>
+<line x1="500.0" y1="164.0" x2="500.0" y2="208.0" stroke="#5D6B69" stroke-width="5"/>
+<line x1="700.0" y1="164.0" x2="700.0" y2="208.0" stroke="#5D6B69" stroke-width="5"/>
+<rect x="500.0" y="178.0" width="117.0" height="16.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<rect x="583.0" y="178.0" width="117" height="16" rx="3" fill="#F8E3B8" fill-opacity="0.6" stroke="#E69F00" stroke-width="2"/>
+<text x="600.0" y="174.0" font-size="11" text-anchor="middle" fill="#D55E00">overlap</text>
+<text x="600.0" y="222.0" font-size="12" text-anchor="middle">purine + purine: too long</text>
+<line x1="500.0" y1="230.0" x2="500.0" y2="274.0" stroke="#5D6B69" stroke-width="5"/>
+<line x1="700.0" y1="230.0" x2="700.0" y2="274.0" stroke="#5D6B69" stroke-width="5"/>
+<rect x="500.0" y="244.0" width="67.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<rect x="633.0" y="244.0" width="67.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<text x="600.0" y="240.0" font-size="11" text-anchor="middle" fill="#D55E00">gap too wide to bond</text>
+<text x="600.0" y="288.0" font-size="12" text-anchor="middle">pyrimidine + pyrimidine: too short</text>
+<line x1="500.0" y1="296.0" x2="500.0" y2="340.0" stroke="#5D6B69" stroke-width="5"/>
+<line x1="700.0" y1="296.0" x2="700.0" y2="340.0" stroke="#5D6B69" stroke-width="5"/>
+<rect x="500.0" y="310.0" width="100.0" height="16.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<rect x="633.0" y="310.0" width="67.0" height="16.0" rx="3" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+<line x1="603.0" y1="314.0" x2="630.0" y2="314.0" stroke="#1F2A28" stroke-width="1.4" stroke-dasharray="4 3"/>
+<line x1="603.0" y1="322.0" x2="630.0" y2="322.0" stroke="#1F2A28" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="600.0" y="354.0" font-size="12" text-anchor="middle" font-weight="700">purine + pyrimidine: fits</text>
+</g>
+</svg>

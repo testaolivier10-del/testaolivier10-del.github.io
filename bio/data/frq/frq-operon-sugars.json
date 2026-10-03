@@ -1,0 +1,164 @@
+{
+  "id": "frq-operon-sugars",
+  "title": "Operon expression with lactose, glucose and tryptophan",
+  "type": "iee",
+  "points": 9,
+  "units": [
+    "unit-6",
+    "skills-stats"
+  ],
+  "topics": [
+    "gene-regulation"
+  ],
+  "practices": [
+    "1.B",
+    "3.C",
+    "3.B",
+    "5.A",
+    "5.B",
+    "6.B",
+    "6.C",
+    "6.E"
+  ],
+  "stimulus": {
+    "kind": "table",
+    "title": "Enzyme activity in wild-type and mutant E. coli",
+    "text": "<p>The lac operon of <i>E. coli</i> codes for β-galactosidase, which splits lactose; the trp operon codes for enzymes that make tryptophan. <b>Experiment 1:</b> wild-type cells and two mutant strains were grown in media with glycerol (a food that does not affect the lac operon), glycerol plus lactose, or glucose plus lactose, and β-galactosidase activity was measured. <b>Experiment 2:</b> wild-type cells and a mutant strain were grown with or without tryptophan, and the activity of a trp operon enzyme was measured.</p>",
+    "table": {
+      "caption": "Experiment 1: β-galactosidase activity (units, mean ± 2 SE, n = 4 cultures)",
+      "cols": [
+        "Strain",
+        "Glycerol",
+        "Glycerol + lactose",
+        "Glucose + lactose"
+      ],
+      "rows": [
+        [
+          "Wild type",
+          "3 ± 1",
+          "980 ± 80",
+          "55 ± 12"
+        ],
+        [
+          "Mutant R (repressor cannot bind the operator)",
+          "950 ± 85",
+          "990 ± 90",
+          "60 ± 14"
+        ],
+        [
+          "Mutant C (cannot make cAMP)",
+          "2 ± 1",
+          "70 ± 15",
+          "52 ± 12"
+        ]
+      ]
+    },
+    "html": "<table class=\"compare\"><caption>Experiment 2: activity of an enzyme coded by the trp operon (units, mean ± 2 SE, n = 4 cultures)</caption><thead><tr><th>Strain</th><th>No tryptophan in medium</th><th>Tryptophan added</th></tr></thead><tbody><tr><th scope=\"row\">Wild type</th><td>400 ± 40</td><td>15 ± 5</td></tr><tr><th scope=\"row\">Mutant T (makes no trp repressor)</th><td>410 ± 45</td><td>395 ± 40</td></tr></tbody></table>"
+  },
+  "parts": [
+    {
+      "label": "a",
+      "points": 2,
+      "prompt": "(i) <b>Describe</b> what the lac repressor does when no lactose is present.<br>(ii) <b>Explain</b> how adding lactose leads to transcription of the lac operon.",
+      "rubric": [
+        {
+          "point": "(i) Describes that the repressor binds the operator and blocks RNA polymerase, so the operon's genes are not transcribed.",
+          "accept": [
+            "repressor sits on the operator and stops RNA polymerase",
+            "binds the operator so transcription of lacZ cannot happen",
+            "blocks the promoter region so no mRNA is made"
+          ]
+        },
+        {
+          "point": "(ii) Explains that lactose is converted to allolactose (the inducer), which binds the repressor (an allosteric site) and changes its shape, so it releases the operator and RNA polymerase can transcribe the genes.",
+          "accept": [
+            "allolactose binds the repressor, changing its shape so it falls off the operator",
+            "the inducer inactivates the repressor, freeing the operator for RNA polymerase",
+            "lactose (as allolactose) binds the repressor so it can no longer bind DNA"
+          ]
+        }
+      ],
+      "sample": "(i) With no lactose, the repressor binds the operator, which overlaps the promoter, and blocks RNA polymerase, so the lac genes are not transcribed. (ii) Some lactose is converted to allolactose, the inducer. Allolactose binds the repressor and changes its shape, so the repressor releases the operator. RNA polymerase can then transcribe the operon's genes into one mRNA."
+    },
+    {
+      "label": "b",
+      "points": 3,
+      "prompt": "(i) <b>Identify</b> the independent variable for the wild-type strain in experiment 1.<br>(ii) <b>Identify</b> the purpose of growing each strain in glycerol alone.<br>(iii) <b>State</b> the null hypothesis for comparing wild-type β-galactosidase activity in glycerol + lactose with that in glucose + lactose.",
+      "rubric": [
+        {
+          "point": "(i) The carbon source(s) in the medium (glycerol, lactose, glucose).",
+          "accept": [
+            "the sugars in the growth medium",
+            "type of medium",
+            "presence of lactose and glucose"
+          ]
+        },
+        {
+          "point": "(ii) A control/baseline: shows each strain's β-galactosidase activity without lactose (or without glucose), so the effect of adding lactose (and of glucose) can be measured against it.",
+          "accept": [
+            "baseline activity with no lactose",
+            "control without inducer",
+            "shows whether the operon is on without lactose (as in mutant R)"
+          ]
+        },
+        {
+          "point": "(iii) There is no difference in mean β-galactosidase activity between wild-type cells grown in glycerol + lactose and in glucose + lactose (glucose has no effect).",
+          "accept": [
+            "glucose does not change β-galactosidase activity when lactose is present",
+            "the mean activities are the same in the two media",
+            "any difference is due to chance"
+          ]
+        }
+      ],
+      "sample": "(i) The carbon sources in the growth medium (glycerol, lactose, glucose). (ii) Glycerol alone is a control that shows each strain's activity without lactose and without glucose; it is the baseline against which the effect of adding lactose is measured, and it reveals strains, like mutant R, whose operon is on even without lactose. (iii) Null hypothesis: there is no difference in mean β-galactosidase activity between wild-type cells grown in glycerol + lactose and in glucose + lactose."
+    },
+    {
+      "label": "c",
+      "points": 2,
+      "prompt": "(i) <b>Calculate</b> how many times higher wild-type β-galactosidase activity is in glycerol + lactose than in glucose + lactose.<br>(ii) Using the error bars (± 2 SE), <b>determine</b> whether mutant C's activity in glycerol + lactose differs significantly from wild-type activity in glucose + lactose.",
+      "rubric": [
+        {
+          "point": "(i) 980 ÷ 55 ≈ 18 (accept 17.8 or 18).",
+          "accept": [
+            "about 18 times",
+            "17.8",
+            "980/55 = 18"
+          ]
+        },
+        {
+          "point": "(ii) Not significantly different: mutant C's interval (55 to 85) overlaps wild type's (43 to 67).",
+          "accept": [
+            "the ranges 55-85 and 43-67 overlap, so no significant difference",
+            "error bars overlap; the difference is not significant",
+            "not different, since 70 ± 15 and 55 ± 12 overlap"
+          ]
+        }
+      ],
+      "sample": "(i) 980 ÷ 55 = 17.8, about 18 times higher. (ii) Mutant C in glycerol + lactose: 70 ± 15, so 55 to 85. Wild type in glucose + lactose: 55 ± 12, so 43 to 67. The intervals overlap, so the data do not show a significant difference: losing cAMP has about the same effect as adding glucose."
+    },
+    {
+      "label": "d",
+      "points": 2,
+      "prompt": "(i) <b>Explain</b> why the wild-type trp enzyme activity falls when tryptophan is added (experiment 2).<br>(ii) A strain makes a repressor that binds the operator but cannot bind allolactose. <b>Predict</b> its β-galactosidase activity in glycerol + lactose compared with the wild type, and <b>justify</b> your prediction.",
+      "rubric": [
+        {
+          "point": "(i) Explains that tryptophan acts as a corepressor: it binds the (inactive) trp repressor and activates it, so the repressor binds the trp operator and blocks transcription of the enzyme genes (supported by mutant T, with no repressor, staying high).",
+          "accept": [
+            "tryptophan binds and activates the repressor, which then binds the operator",
+            "corepressor turns the repressor on, switching the operon off",
+            "with tryptophan the repressor blocks transcription; mutant T without repressor stays high"
+          ]
+        },
+        {
+          "point": "(ii) Predicts far lower activity (near the glycerol-alone level, about 3) because lactose/allolactose cannot remove the repressor, which stays on the operator and blocks transcription.",
+          "accept": [
+            "very low, because the repressor stays bound when the inducer cannot bind it",
+            "about 3 units, the operon cannot be induced",
+            "lower than wild type since allolactose can't release the repressor"
+          ]
+        }
+      ],
+      "sample": "(i) Tryptophan is a corepressor. The trp repressor is made inactive; when tryptophan binds it, the repressor changes shape, binds the trp operator and blocks RNA polymerase, so less enzyme is made (400 to 15). Mutant T, which makes no repressor, stays high with tryptophan, which supports this. (ii) Far lower than the wild type's 980, close to the glycerol-alone level of about 3 units. Lactose acts only through allolactose binding the repressor; a repressor that cannot bind allolactose stays on the operator, so the operon cannot be induced."
+    }
+  ]
+}

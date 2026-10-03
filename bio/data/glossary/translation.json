@@ -1,0 +1,17 @@
+{
+  "codon": { "def": "A group of three mRNA nucleotides that stands for one amino acid or for stop. Codons are read one after another, 5′ to 3′, without gaps or overlaps." },
+  "translation": { "def": "Building a polypeptide from the message in an mRNA. Ribosomes read the codons, and tRNAs bring the matching amino acids, which are joined by peptide bonds." },
+  "anticodon": { "def": "The three bases on a tRNA that pair with an mRNA codon. It is complementary and antiparallel to the codon: codon 5′-UGG-3′ pairs with anticodon 3′-ACC-5′." },
+  "genetic-code": { "def": "The set of rules linking the 64 codons to the 20 amino acids and stop, usually shown as a codon table. It is redundant (most amino acids have several codons) but not ambiguous (each codon has one meaning)." },
+  "start-codon": { "def": "AUG, the codon where translation begins. It codes for methionine, so new polypeptides start with methionine, and it sets the reading frame." },
+  "stop-codon": { "def": "One of the three codons, UAA, UAG and UGA, that code for no amino acid. When one reaches the ribosome's A site, a release factor binds and the polypeptide is released." },
+  "reading-frame": { "def": "The way an mRNA's bases are grouped into codons, set by the start codon. Shifting the start by one or two bases puts every later codon in a different frame." },
+  "aminoacyl-trna": { "def": "Aminoacyl-tRNA synthetase: an enzyme that attaches a specific amino acid to the tRNAs for it, using energy from ATP, producing a charged tRNA." },
+  "ribosome-sites": { "def": "The three tRNA-binding sites of a ribosome: the A site, where a new charged tRNA arrives; the P site, which holds the tRNA carrying the growing chain; and the E site, from which empty tRNAs exit. The ribosome has a small subunit, which binds the mRNA, and a large subunit, which forms peptide bonds." },
+  "translation-stages": { "def": "The three stages of translation. Initiation: the ribosome assembles at the start codon with the methionine tRNA. Elongation: tRNAs enter the A site, peptide bonds form, and the ribosome moves one codon at a time. Termination: a release factor binds a stop codon and the chain is freed." },
+  "coupled-tx-tl": { "def": "In prokaryotes, which have no nucleus, ribosomes begin translating an mRNA while RNA polymerase is still making it." },
+  "polyribosome": { "def": "Several ribosomes reading the same mRNA at the same time, one behind another, each making its own copy of the polypeptide (also called a polysome)." },
+  "universal-code": { "def": "The nearly universal genetic code: almost all organisms use the same codon assignments, with a few small exceptions such as in mitochondria. It is evidence that all life shares a common ancestor." },
+  "retrovirus": { "def": "An RNA virus, such as HIV, whose enzyme reverse transcriptase copies its RNA genome into DNA (reverse transcription); the DNA is inserted into the host's DNA and its genes are then used like the host's own." },
+  "signal-peptide": { "def": "A short stretch at the start of a polypeptide that directs the ribosome making it to the rough ER, so the chain is threaded into the ER as it is made (protein targeting). It is usually cut off inside the ER." }
+}

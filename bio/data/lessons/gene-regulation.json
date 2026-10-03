@@ -1,0 +1,85 @@
+{
+  "topic": "gene-regulation",
+  "hook": "<p>An <i>E. coli</i> cell carries genes for digesting lactose, but in a gut with plenty of glucose it barely uses them. Give it lactose and no glucose, and within minutes it is making the lactose-digesting enzymes a thousand times faster. Making proteins costs a lot of energy, and a cell that makes only what its surroundings call for grows faster than one that makes everything all the time. Your cells face the same problem with far more genes, and they solve it with switches built from DNA and protein.</p>",
+  "prereq": [
+    {
+      "q": "Where does RNA polymerase bind to start copying a gene?",
+      "options": ["The promoter", "The terminator", "The first intron"],
+      "correct": 0,
+      "why": "The promoter, just before the gene, positions RNA polymerase at the start site.",
+      "review": "transcription-rna-processing"
+    },
+    {
+      "q": "An allosteric regulator changes an enzyme's activity by",
+      "options": ["binding a site other than the active site and changing the protein's shape", "becoming part of the substrate", "breaking the enzyme's peptide bonds"],
+      "correct": 0,
+      "why": "Binding at an allosteric site changes shape and activity; repressors are switched the same way.",
+      "review": "enzyme-environment"
+    },
+    {
+      "q": "Tightly packed heterochromatin",
+      "options": ["is mostly silent, because gene-reading proteins cannot reach its DNA", "has no genes at all", "is found only in prokaryotes"],
+      "correct": 0,
+      "why": "Packing controls access; heterochromatin has genes, but they are rarely read.",
+      "review": "dna-rna-structure"
+    }
+  ],
+  "figure": {
+    "figure": "operons-lac-trp",
+    "caption": "The lac operon is inducible (lactose removes the repressor); the trp operon is repressible (tryptophan activates the repressor)."
+  },
+  "chain": [
+    {
+      "cause": "In bacteria, genes for one job sit together in an operon, after one promoter and an operator.",
+      "effect": "They are copied into one mRNA and switched on or off together."
+    },
+    {
+      "cause": "With no lactose, the lac repressor binds the operator.",
+      "effect": "RNA polymerase is blocked, so the lactose-digesting enzymes are not made."
+    },
+    {
+      "cause": "When lactose arrives, allolactose (the inducer) binds the repressor and changes its shape.",
+      "effect": "The repressor leaves the operator, and the genes are transcribed; if glucose is scarce, cAMP-CAP boosts transcription further."
+    },
+    {
+      "cause": "When tryptophan is plentiful, it binds the trp repressor as a corepressor and activates it.",
+      "effect": "The active repressor binds the trp operator and switches off the genes for making tryptophan."
+    },
+    {
+      "cause": "In eukaryotes, transcription factors bind the promoter and distant enhancers, and the DNA loops to bring them together.",
+      "effect": "RNA polymerase is recruited, and the combination of factors in a cell sets how much each gene is transcribed."
+    },
+    {
+      "cause": "Acetyl groups on histones loosen chromatin, while methyl groups on DNA tighten it.",
+      "effect": "Genes become easier or harder to transcribe, and these epigenetic marks can be passed to daughter cells without changing the DNA sequence."
+    }
+  ],
+  "ideas": [
+    "<b>Regulatory sequences</b> (promoters, operators, enhancers) are DNA that proteins bind; <b>regulatory proteins</b> (repressors, activators, <b>transcription factors</b>) decide whether and how much a gene is transcribed.",
+    "An <b>operon</b>: promoter + <b>operator</b> + <b>structural genes</b>. <b>Inducible</b> (lac): usually off, an <b>inducer</b> inactivates the <b>repressor</b>. <b>Repressible</b> (trp): usually on, a <b>corepressor</b> activates it.",
+    "<b>Negative regulation</b>: a bound repressor lowers transcription. <b>Positive regulation</b>: a bound activator, such as cAMP-CAP, raises it.",
+    "<b>Constitutive</b> (housekeeping) genes are on all the time; <b>inducible</b> genes are switched on when needed.",
+    "<b>Epigenetics</b>: <b>DNA methylation</b> silences; <b>histone acetylation</b> opens chromatin. Marks can be inherited through divisions. <b>Gene products</b> (proteins and RNAs) set the phenotype."
+  ],
+  "misconception": {
+    "wrong": "Lactose turns the lac operon on by binding to the DNA and attracting RNA polymerase.",
+    "right": "The inducer binds the repressor, not the DNA. It changes the repressor's shape so the repressor lets go of the operator; RNA polymerase can then copy the genes, helped by cAMP-CAP when glucose is low."
+  },
+  "check": [
+    "bio-gene-regulation-1",
+    "bio-gene-regulation-3",
+    "bio-gene-regulation-4",
+    "bio-gene-regulation-11",
+    "bio-gene-regulation-12",
+    "bio-gene-regulation-13",
+    "bio-gene-regulation-18",
+    "bio-gene-regulation-20"
+  ],
+  "summary": "<p>Cells control which genes are transcribed and how much, using regulatory sequences in the DNA and the proteins that bind them. In bacteria, related genes are grouped in operons with one promoter and an operator. The lac operon is inducible: its repressor blocks the operator until allolactose, the inducer, binds the repressor and releases it; cAMP-CAP, an activator, boosts transcription when glucose is scarce. The trp operon is repressible: tryptophan, the corepressor, activates the repressor and switches the operon off. Repressors give negative regulation, activators positive regulation. Constitutive genes are always on; inducible genes are switched on when needed. In eukaryotes, transcription factors bind promoters and enhancers, and DNA looping brings them together. DNA methylation and histone acetylation change how open chromatin is; these epigenetic marks can be inherited without a sequence change. Gene products determine the phenotype.</p>",
+  "connections": [
+    { "href": "../notes/transcription-rna-processing.html", "label": "Back: promoters and RNA polymerase (6.3)" },
+    { "href": "../notes/signal-transduction-pathways.html", "label": "Back: cAMP as a second messenger (4.3)" },
+    { "href": "../tools/operons.html", "label": "Try it: the lac and trp operon simulator" },
+    { "href": "../notes/cell-specialization.html", "label": "Next: how different cells use different genes (6.6)" }
+  ]
+}

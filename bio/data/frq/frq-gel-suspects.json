@@ -1,0 +1,90 @@
+{
+  "id": "frq-gel-suspects",
+  "title": "Read a gel: which suspect matches",
+  "type": "model",
+  "points": 4,
+  "units": [
+    "unit-6"
+  ],
+  "topics": [
+    "biotechnology"
+  ],
+  "practices": [
+    "2.A",
+    "2.B",
+    "6.B",
+    "2.C"
+  ],
+  "stimulus": {
+    "kind": "model",
+    "title": "DNA profiles from a crime scene",
+    "text": "<p>DNA from blood found at a crime scene, from three suspects and from the victim was copied by PCR at two short tandem repeat (STR) sites, and the products were separated by gel electrophoresis beside a DNA ladder. Site 1 products are 100-200 base pairs long and site 2 products 250-350. At each site, a person carries two copies, one inherited from each parent.</p>",
+    "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 680 320\" width=\"100%\" style=\"max-width:680px;height:auto\" role=\"img\" aria-labelledby=\"frqgel-t frqgel-d\"><title id=\"frqgel-t\">DNA profiles at two STR sites</title><desc id=\"frqgel-d\">A gel with six lanes. Lane 1, a DNA ladder with bands at 350, 300, 250, 200, 150 and 100 base pairs. Lane 2, crime scene sample: bands at 300 and 270 (site 2) and at 160 and 140 (site 1). Lane 3, suspect 1: 300, 270, 170, 140. Lane 4, suspect 2: 300, 270, 160, 140. Lane 5, suspect 3: 300, 280, 160, 130. Lane 6, victim: 310, 260, and a single band at 150.</desc><defs><marker id=\"frqgel-a\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs><rect width=\"680\" height=\"320\" fill=\"#ffffff\"/><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"110.0\" y=\"30.0\" width=\"500.0\" height=\"270.0\" rx=\"6\" fill=\"#EEF4F8\" stroke=\"#0072B2\" stroke-width=\"2\"/><rect x=\"125.0\" y=\"38.0\" width=\"56.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"129.0\" y=\"75.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"129.0\" y=\"96.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"129.0\" y=\"121.2\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"129.0\" y=\"151.7\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"129.0\" y=\"191.1\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"129.0\" y=\"246.5\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"153.0\" y=\"22.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Ladder</text><rect x=\"205.0\" y=\"38.0\" width=\"56.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"209.0\" y=\"96.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"209.0\" y=\"110.7\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"209.0\" y=\"182.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"209.0\" y=\"200.5\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"233.0\" y=\"22.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Scene</text><rect x=\"285.0\" y=\"38.0\" width=\"56.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"289.0\" y=\"96.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"289.0\" y=\"110.7\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"289.0\" y=\"174.0\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"289.0\" y=\"200.5\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"313.0\" y=\"22.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Suspect 1</text><rect x=\"365.0\" y=\"38.0\" width=\"56.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"369.0\" y=\"96.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"369.0\" y=\"110.7\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"369.0\" y=\"182.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"369.0\" y=\"200.5\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"393.0\" y=\"22.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Suspect 2</text><rect x=\"445.0\" y=\"38.0\" width=\"56.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"449.0\" y=\"96.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"449.0\" y=\"105.8\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"449.0\" y=\"182.3\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"449.0\" y=\"210.6\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"473.0\" y=\"22.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Suspect 3</text><rect x=\"525.0\" y=\"38.0\" width=\"56.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"529.0\" y=\"91.8\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"529.0\" y=\"115.9\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"529.0\" y=\"191.1\" width=\"48.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"553.0\" y=\"22.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Victim</text><text x=\"104.0\" y=\"82.3\" font-size=\"10\" text-anchor=\"end\">350 bp</text><text x=\"104.0\" y=\"103.3\" font-size=\"10\" text-anchor=\"end\">300 bp</text><text x=\"104.0\" y=\"128.2\" font-size=\"10\" text-anchor=\"end\">250 bp</text><text x=\"104.0\" y=\"158.7\" font-size=\"10\" text-anchor=\"end\">200 bp</text><text x=\"104.0\" y=\"198.1\" font-size=\"10\" text-anchor=\"end\">150 bp</text><text x=\"104.0\" y=\"253.5\" font-size=\"10\" text-anchor=\"end\">100 bp</text><text x=\"620.0\" y=\"110.3\" font-size=\"11\" text-anchor=\"start\" font-weight=\"700\">site 2</text><text x=\"620.0\" y=\"198.1\" font-size=\"11\" text-anchor=\"start\" font-weight=\"700\">site 1</text></g></svg>"
+  },
+  "parts": [
+    {
+      "label": "a",
+      "points": 1,
+      "prompt": "<b>Describe</b> why the bands in each lane end up at different distances from the wells.",
+      "rubric": [
+        {
+          "point": "Describes that DNA is negatively charged and moves toward the positive electrode, and that the gel slows longer fragments more, so shorter fragments (fewer repeats) travel farther.",
+          "accept": [
+            "fragments separate by size; small ones move farther through the gel",
+            "negative DNA moves to the + end, shorter pieces faster",
+            "different numbers of repeats give different lengths, and shorter DNA travels farther"
+          ]
+        }
+      ],
+      "sample": "DNA is negatively charged, so in the electric field every fragment moves toward the positive electrode. The gel's mesh slows long fragments more than short ones, so the fragments separate by size: STR copies with fewer repeats are shorter and travel farther from the wells."
+    },
+    {
+      "label": "b",
+      "points": 1,
+      "prompt": "<b>Identify</b> the suspect whose DNA profile matches the crime scene sample, and <b>support</b> your answer with evidence from the gel.",
+      "rubric": [
+        {
+          "point": "Identifies suspect 2, whose four bands (300, 270, 160 and 140 bp) all match the scene sample, while suspect 1 differs at site 1 (170 instead of 160) and suspect 3 differs at both sites (280 and 130).",
+          "accept": [
+            "suspect 2: all four bands match",
+            "suspect 2, because 300, 270, 160 and 140 match; suspects 1 and 3 each have a band that does not",
+            "suspect 2 matches at both sites"
+          ]
+        }
+      ],
+      "sample": "Suspect 2. The scene sample has bands at 300 and 270 bp (site 2) and 160 and 140 bp (site 1), and suspect 2 has exactly these four. Suspect 1 has 170 bp in place of 160 at site 1, and suspect 3 has 280 and 130 in place of 270 and 140, so neither matches."
+    },
+    {
+      "label": "c",
+      "points": 1,
+      "prompt": "The victim's lane shows only one band at site 1. <b>Explain</b> this result.",
+      "rubric": [
+        {
+          "point": "Explains that the victim inherited the same number of repeats at site 1 from both parents (homozygous), so both copies give fragments of the same length (150 bp) and run as one band.",
+          "accept": [
+            "both of the victim's site 1 copies have the same number of repeats",
+            "homozygous at site 1, so the two fragments are the same size",
+            "two identical-length fragments overlap in one band"
+          ]
+        }
+      ],
+      "sample": "Everyone has two copies of site 1, one from each parent. The victim's two copies have the same number of repeats, so both PCR products are 150 bp long and run to the same place, forming a single band."
+    },
+    {
+      "label": "d",
+      "points": 1,
+      "prompt": "A defense lawyer says one matching site would be enough to identify the person. <b>Explain</b> why labs compare many STR sites instead.",
+      "rubric": [
+        {
+          "point": "Explains that a given band size at one site is shared by many people (here 300 bp at site 2 is found in all three suspects), so a match at one site could happen by chance; matching at many independent sites makes a chance match extremely unlikely, because the probabilities multiply.",
+          "accept": [
+            "many people share one site's sizes, as all three suspects share 300 bp; matches at many sites multiply the odds",
+            "one site matches by chance often; 13-20 independent sites rarely do",
+            "suspect 1 matches at site 2 but not site 1, showing one site is not enough"
+          ]
+        }
+      ],
+      "sample": "Each STR site has only a limited number of common lengths, so many unrelated people share a band at any one site: here all three suspects share the 300 bp band at site 2, and suspect 1 matches the scene completely at site 2 but is excluded by site 1. Because sites are inherited independently, the chance of matching at all of them multiplies down, so a match at 13-20 sites is very unlikely to happen by chance."
+    }
+  ]
+}

@@ -1,0 +1,621 @@
+{
+  "stimuli": {
+    "dna-rna-structure-s1": {
+      "kind": "setup",
+      "title": "Which part of a cell extract changes harmless bacteria?",
+      "text": "<p>Strain S of a pneumonia bacterium makes a slippery outer capsule, forms smooth colonies and kills mice. Strain R makes no capsule, forms rough colonies and is harmless. Researchers killed S cells with heat, broke them open and made a cell-free extract. Portions of the extract were treated with one enzyme each, then mixed with live R cells in broth. After 6 hours, each culture was spread on plates and the colonies were counted (mean of three plates per tube).</p>",
+      "table": {
+        "caption": "Colonies grown from R cells mixed with treated extracts of heat-killed S cells",
+        "cols": [
+          "Tube",
+          "What was added to live R cells",
+          "R-type colonies per plate",
+          "S-type colonies per plate"
+        ],
+        "rows": [
+          [
+            "1",
+            "Nothing (R cells alone)",
+            "3,040",
+            "0"
+          ],
+          [
+            "2",
+            "Untreated S extract",
+            "2,950",
+            "46"
+          ],
+          [
+            "3",
+            "S extract treated with protease (destroys protein)",
+            "3,010",
+            "44"
+          ],
+          [
+            "4",
+            "S extract treated with RNase (destroys RNA)",
+            "2,980",
+            "49"
+          ],
+          [
+            "5",
+            "S extract treated with DNase (destroys DNA)",
+            "3,060",
+            "0"
+          ],
+          [
+            "6",
+            "S extract treated with DNase that had first been boiled",
+            "2,990",
+            "45"
+          ]
+        ]
+      }
+    },
+    "dna-rna-structure-s2": {
+      "kind": "table",
+      "title": "Where the radioactive label goes when phages infect bacteria",
+      "text": "<p>A bacteriophage (phage) is a virus that infects bacteria. It is a protein coat with DNA inside. Researchers grew one batch of phages with radioactive sulfur (<sup>35</sup>S) and another with radioactive phosphorus (<sup>32</sup>P). Each batch infected <i>E. coli</i> cells for 10 minutes. The mixture was then spun in a blender to shake loose anything stuck to the outside of the cells, or left unblended, and centrifuged: the heavier cells formed a pellet at the bottom and free phage coats stayed in the liquid. Later, the new phages released from the infected cells were collected.</p>",
+      "table": {
+        "caption": "Percent of each label found in each fraction",
+        "cols": [
+          "Phage batch",
+          "Blended?",
+          "Label in pellet of cells (%)",
+          "Label in liquid (%)",
+          "Label recovered in new phages (% of what was added)"
+        ],
+        "rows": [
+          [
+            "<sup>35</sup>S",
+            "Yes",
+            "18",
+            "82",
+            "under 1"
+          ],
+          [
+            "<sup>32</sup>P",
+            "Yes",
+            "79",
+            "21",
+            "31"
+          ],
+          [
+            "<sup>35</sup>S",
+            "No",
+            "92",
+            "8",
+            "not measured"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-dna-rna-structure-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "dna-rna-structure-s1",
+      "q": "Which claim is best supported by the colony counts?",
+      "options": [
+        "A molecule destroyed by DNase is needed to turn R cells into S cells.",
+        "A protein in the extract turns R cells into S cells, with some help from the RNA.",
+        "Heat-killed S cells came back to life in the tubes that grew S colonies.",
+        "The capsule itself, passed to R cells, makes them form S colonies."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "S colonies appear with untreated extract (46), protease-treated (44) and RNase-treated (49) extract, but not when DNA was destroyed (0). Only DNase removes the transforming activity, so DNA is the molecule required.",
+        "options": [
+          "Correct: only the DNase treatment dropped S colonies to zero, matching the R-alone control.",
+          "Destroying protein left 44 S colonies, about the same as untreated extract, so protein is not required; RNase also left activity.",
+          "The extract was cell-free, and tube 5 had the same dead-cell material yet grew no S colonies; the change depends on DNA, not revival.",
+          "A capsule handed over would not be copied by dividing cells; colonies arise from many divisions, so the cells must have gained the ability to make capsules."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-2",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-rna-structure-s1",
+      "q": "Why did the researchers include tube 6, with DNase that had been boiled before use?",
+      "options": [
+        "To show that tube 5's result comes from the enzyme's activity, not from something else added with it",
+        "To show that boiling destroys the DNA in the S extract, so that no S colonies can form",
+        "To provide a second group of R cells alone so that the R colony counts can be averaged",
+        "To test whether boiled protein from the DNase preparation can itself turn R cells into S cells"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Boiling denatures the DNase but leaves everything else in the preparation. Tube 6 kept its S colonies (45), so tube 5's result was due to active DNase digesting DNA, not to a contaminant or the added protein.",
+        "options": [
+          "Correct: it is a control that keeps every ingredient of tube 5 except the enzyme's activity.",
+          "The DNase, not the extract, was boiled; and tube 6 grew 45 S colonies, so the DNA in the extract still worked.",
+          "Tube 1 is the R-alone control; tube 6 contains S extract and DNase.",
+          "Boiled DNase is not a candidate transforming agent; it is there so the only difference from tube 5 is whether the enzyme works."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-3",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "dna-rna-structure-s1",
+      "q": "What percentage of all colonies on tube 2's plates are S-type? Give one decimal place.",
+      "numeric": {
+        "answer": 1.5,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Total colonies = 2,950 + 46 = 2,996. S-type share = 46 ÷ 2,996 × 100 = 1.54%, which rounds to 1.5%. Transformation changes only a small fraction of the R cells."
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-rna-structure-s1",
+      "q": "Cells from one S-type colony in tube 2 are grown for 50 more generations in broth with no extract. Predict what their descendants will be like.",
+      "options": [
+        "Nearly all make capsules: the capsule gene they took in is copied at every division",
+        "About half make capsules, because each division gives the new gene to one daughter cell",
+        "They lose their capsules within a few generations, because no extract is present to keep changing them",
+        "They make capsules for a while, then switch back to R as the original DNA takes over again"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Transformation is a heritable change: the DNA taken in becomes part of the cell's own genetic material and is copied before each division, so the descendants keep the S trait without more extract.",
+        "options": [
+          "Correct: the gained DNA is passed on like the rest of the chromosome.",
+          "DNA is copied before division, so both daughter cells receive the gene; it is not split between them.",
+          "Once the DNA is part of the cell's genome, the trait does not depend on the extract still being present; this is the evidence that heredity changed.",
+          "Nothing removes the new DNA; S cells recovered from Griffith's mice stayed S when grown and injected again."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-5",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "dna-rna-structure-s1",
+      "q": "A critic argues that a little protein survived the protease in tube 3 and is the true transforming agent. Which further result would most weaken the critic's argument?",
+      "options": [
+        "DNA purified until no protein can be detected transforms R cells as well, per microgram, as crude extract.",
+        "Tube 3 grew slightly fewer S colonies than tube 2, so protein might contribute a small part of the effect.",
+        "Mice injected with heat-killed S cells by themselves survive, so the dead cells do no harm without help.",
+        "Adding twice as much protease to the extract makes tube 3 grow the same number of R colonies as before."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If protein were the agent, removing it should remove the activity. Highly purified DNA, with protein below detection, keeps full activity per microgram, so protein is not needed.",
+        "options": [
+          "Correct: activity tracks the DNA, not the protein.",
+          "44 against 46 is within the plate-to-plate spread, and in any case it would not separate DNA from protein as the cause.",
+          "This is Griffith's control showing the dead cells alone are harmless; it says nothing about which molecule transforms.",
+          "R colony counts measure the R cells that grew, not transformation, and the critic's leftover protein could still be present."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "dna-rna-structure-s2",
+      "q": "Which statement correctly describes the results for the blended samples?",
+      "options": [
+        "Most of the <sup>32</sup>P stayed with the cells, while most of the <sup>35</sup>S came off into the liquid.",
+        "Most of the <sup>35</sup>S stayed with the cells, while most of the <sup>32</sup>P came off into the liquid.",
+        "Both labels split about evenly between the pellet and the liquid.",
+        "Both labels were found mostly in the new phages released from the cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "After blending, 79% of the <sup>32</sup>P was in the cell pellet, but 82% of the <sup>35</sup>S was in the liquid with the shaken-off coats.",
+        "options": [
+          "Correct: phosphorus-labeled DNA went in; sulfur-labeled protein stayed outside.",
+          "This reverses the table: <sup>35</sup>S was 18% in the pellet and 82% in the liquid.",
+          "The splits are 18/82 and 79/21, far from even.",
+          "Only 31% of the <sup>32</sup>P and under 1% of the <sup>35</sup>S were recovered in new phages."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-rna-structure-s2",
+      "q": "Why were sulfur and phosphorus chosen as the two labels?",
+      "options": [
+        "Proteins contain sulfur but almost no phosphorus; DNA contains phosphorus but no sulfur.",
+        "Sulfur labels the outside of a phage and phosphorus the inside, whatever molecules happen to be there.",
+        "Radioactive sulfur and phosphorus give off different colors, so the two can be told apart in one tube.",
+        "Both elements are found in DNA and in protein, so either label shows where the whole phage goes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two of the twenty amino acids carry sulfur, and DNA has none; every DNA nucleotide carries a phosphate, and phage protein has essentially none. So <sup>35</sup>S tracks protein and <sup>32</sup>P tracks DNA.",
+        "options": [
+          "Correct: the labels distinguish the two candidate molecules.",
+          "A label marks the molecules that contain the element, not a location; that is why the element had to differ between DNA and protein.",
+          "The batches were labeled and run separately; the choice of elements was about which molecules carry them.",
+          "If both molecules carried both elements, neither label could tell DNA from protein."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "dna-rna-structure-s2",
+      "q": "Even after blending, 18% of the <sup>35</sup>S was in the cell pellet. Which explanation is best supported by all the data?",
+      "options": [
+        "Some empty coats stayed stuck to the cells; unblended samples show that coats stay on unless shaken off.",
+        "About a fifth of the phage protein entered the cells and then directed the making of the new phages.",
+        "Inside the cells, some <sup>35</sup>S was moved into DNA, so it stayed with the cell pellet.",
+        "Blending broke open some cells, releasing <sup>32</sup>P into the liquid and leaving <sup>35</sup>S behind."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without blending, 92% of the <sup>35</sup>S spun down with the cells, so attached coats pellet with them; blending removes most but not all. Protein that entered and acted would show up in new phages, but under 1% did.",
+        "options": [
+          "Correct: incomplete removal of attached coats explains the pellet <sup>35</sup>S.",
+          "Protein that directed new phages would be found in them, but under 1% of the <sup>35</sup>S was recovered there.",
+          "DNA contains no sulfur, so <sup>35</sup>S cannot become part of DNA.",
+          "Broken cells would explain <sup>32</sup>P in the liquid, not <sup>35</sup>S in the pellet."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "dna-rna-structure-s2",
+      "q": "Suppose the researchers had labeled phages with radioactive carbon (<sup>14</sup>C) instead. Why could that experiment not tell which molecule carries the phage's genes?",
+      "options": [
+        "Both DNA and protein contain carbon, so label would sit in both the coats and the injected material.",
+        "Bacteria do not take up carbon from the broth, so the phages grown in them would not become labeled.",
+        "Radioactive carbon kills the bacteria, so no new phages would be released.",
+        "Carbon atoms move from protein into DNA during infection, so the label would end up in DNA."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A useful label must be in one candidate molecule and not the other. Every organic molecule contains carbon, so <sup>14</sup>C would be found in both the pellet and the liquid whatever entered the cell.",
+        "options": [
+          "Correct: a label common to both molecules cannot separate them.",
+          "Bacteria build their molecules from the carbon in their food, so phages grown in them would be labeled; the problem is that every molecule would be.",
+          "Nothing suggests radioactive carbon would kill the cells; the design flaw is that it marks both molecules.",
+          "Even if some carbon were reused later, the label would start in both molecules, so it could not tell them apart."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-10",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "dna-rna-structure-s2",
+      "q": "Which conclusion does the last column (label recovered in new phages) best support?",
+      "options": [
+        "The material the parent phage passes to its offspring is its DNA, not its protein coat.",
+        "New phages are built from the parent's coat protein, which is reused after infection.",
+        "The parent phage's DNA is broken down as soon as the cell starts to make new phages.",
+        "Phosphorus is used to build the coat proteins of the new phages."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Almost a third of the parent's <sup>32</sup>P was passed on to the offspring phages, but under 1% of its <sup>35</sup>S. What passes from parent to offspring is DNA, as expected of hereditary material.",
+        "options": [
+          "Correct: the parental DNA appears in the next generation.",
+          "Under 1% of the coat label reached the new phages, so the old coat is not reused.",
+          "31% of the parental <sup>32</sup>P turned up in the new phages, so the DNA was not all destroyed.",
+          "Protein contains almost no phosphorus; the <sup>32</sup>P in the new phages is in their DNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "In double-stranded DNA, each base pair is made of",
+      "options": [
+        "one purine and one pyrimidine",
+        "two purines, joined by hydrogen bonds",
+        "two pyrimidines, joined by hydrogen bonds",
+        "a purine or pyrimidine and a phosphate group"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A (a purine) pairs with T (a pyrimidine), and G (a purine) pairs with C (a pyrimidine).",
+        "options": [
+          "Correct: every rung combines a two-ring base and a one-ring base.",
+          "Two two-ring bases would be too long to fit between the backbones.",
+          "Two one-ring bases would be too short to reach each other and bond.",
+          "Phosphates are in the backbone; a base pair is two bases."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-12",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "Imagine a form of DNA in which adenine paired with guanine and cytosine paired with thymine, with the same backbones. Predict how its double helix would differ from real DNA.",
+      "options": [
+        "Its width would change along its length, wide at A–G pairs and narrow at C–T pairs.",
+        "Its width would stay the same everywhere, but it would be held by fewer hydrogen bonds.",
+        "Its two strands would run in the same direction instead of opposite directions.",
+        "It would contain more purines than pyrimidines in each of its two strands."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A and G are both purines (two rings), C and T both pyrimidines (one ring). Purine–purine rungs would be long and pyrimidine–pyrimidine rungs short, so the helix would bulge and pinch instead of keeping a uniform width.",
+        "options": [
+          "Correct: uniform width depends on every pair being one purine plus one pyrimidine.",
+          "The width would not stay the same, because the rungs would have two different lengths.",
+          "Strand direction is set by the backbone chemistry, which the question keeps the same.",
+          "A strand can have any mix of bases; pairing rules constrain the two strands together, so this does not follow."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-13",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A double-stranded DNA molecule is 5,000 base pairs long and contains 1,400 cytosine bases. How many adenine bases does it contain? Give a whole number.",
+      "numeric": {
+        "answer": 3600,
+        "tol": 0,
+        "unit": "bases",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "5,000 base pairs = 10,000 bases. C = G = 1,400, so G + C = 2,800. A + T = 10,000 − 2,800 = 7,200, and A = T, so A = 3,600."
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-14",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "fixed": false,
+      "q": "Which features describe the DNA of a typical bacterium such as <i>E. coli</i>? Select all that apply.",
+      "options": [
+        "A single circular chromosome in the cytoplasm",
+        "Small extra circles of DNA (plasmids) that can carry a few genes",
+        "Several linear chromosomes inside a nuclear envelope",
+        "DNA wound around histones into nucleosomes",
+        "A separate chromosome for each of its genes"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "A bacterium has no nucleus. Its main DNA is one circular chromosome in the nucleoid region of the cytoplasm, and many carry plasmids as well.",
+        "options": [
+          "Correct: one circular chromosome, with no nuclear envelope around it.",
+          "Correct: plasmids are common, and their genes (for example for surviving a drug) can be useful.",
+          "Several linear chromosomes in a nucleus describe a eukaryote.",
+          "Histones and nucleosomes package eukaryotic DNA; bacteria fold their DNA with other proteins.",
+          "One chromosome carries thousands of genes; a cell does not hold one chromosome per gene."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-15",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In fruit flies, a chromosome rearrangement moved a normally active eye-color gene next to a block of tightly packed chromatin. In many eye cells the gene's protein was no longer made, though its base sequence was unchanged. Which explanation is best?",
+      "options": [
+        "Tight packing spread into the moved gene, so the proteins that read genes could no longer reach its DNA.",
+        "The move cut the gene's DNA into pieces, so no complete copy of it was left in those cells.",
+        "The tightly packed region changed the gene's base sequence to one that codes for a different protein.",
+        "The gene was moved out of the nucleus, so it now sits in the cytoplasm of those cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In heterochromatin the DNA is wound so tightly that the proteins that read genes mostly cannot bind. When that packing spreads into a neighboring gene, the gene is silenced in the cells where it spreads, with no change in sequence.",
+        "options": [
+          "Correct: packing controls access, so the same gene can be on or off.",
+          "The stem says the sequence is unchanged, and a gene in pieces would not be fully restored in other cells.",
+          "Packing changes how accessible DNA is, not its base sequence; the stem rules out a sequence change.",
+          "Chromosomes stay in the nucleus; the gene moved along the chromosomes, not out of the nucleus."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-16",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Histone proteins carry many amino acids with positively charged side chains, such as lysine and arginine. How does this help histones package DNA?",
+      "options": [
+        "The positive charges attract DNA's negatively charged phosphate groups along the backbone.",
+        "The positive charges pair with the bases in the middle of the helix, holding the strands together.",
+        "The positive charges repel the DNA, pushing it into a tightly folded shape.",
+        "The positive charges form covalent bonds with the sugars in DNA's backbone."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each nucleotide's phosphate carries a negative charge, so DNA's outside is strongly negative. Positively charged side chains attract it, letting the DNA wrap tightly around the histone core.",
+        "options": [
+          "Correct: opposite charges attract (ionic interactions).",
+          "The bases pair with each other inside the helix; histones contact the backbone on the outside.",
+          "Repulsion would push DNA away from histones, not wrap it around them.",
+          "The attraction is ionic and can loosen when charges change; histones do not bond covalently to the sugars."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-17",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In Griffith's 1928 experiments with mice, which observation is the evidence that something passed from dead S cells to live R cells?",
+      "options": [
+        "Live S bacteria were recovered from mice given heat-killed S cells plus live R cells.",
+        "Mice injected with live S cells died, while mice injected with live R cells survived.",
+        "Mice injected with heat-killed S cells by themselves survived the injection.",
+        "Mice injected with a mix of heat-killed S cells and live R cells showed signs of pneumonia."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Only live R cells were injected alive, yet live S cells came out. R cells must have gained the S trait from the dead cells, and kept it as they multiplied.",
+        "options": [
+          "Correct: live S cells appeared where only dead S cells had gone in.",
+          "This only shows that S is deadly and R is not; it is the starting point, not evidence of transfer.",
+          "This control shows the dead S cells alone are harmless, but nothing passes anywhere in it.",
+          "Sickness alone could mean the dead cells harmed the mice with help from R; recovering live S cells is what shows the R cells changed."
+        ]
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-18",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A drug causes the chromatin in a cell's nucleus to loosen into a more open form. Compared with an untreated cell, predict each quantity.",
+      "variables": [
+        {
+          "name": "Number of genes whose DNA the gene-reading proteins can reach",
+          "answer": "up",
+          "why": "Looser chromatin (more like euchromatin) exposes more DNA to the proteins that read genes."
+        },
+        {
+          "name": "Total amount of DNA in the nucleus",
+          "answer": "none",
+          "why": "Loosening changes how the DNA is packed, not how much DNA there is."
+        },
+        {
+          "name": "Share of the chromatin that is tightly packed heterochromatin",
+          "answer": "down",
+          "why": "The drug opens chromatin, so less of it stays in the tightly packed form."
+        },
+        {
+          "name": "Base sequence of each gene",
+          "answer": "none",
+          "why": "Packing affects access to DNA, not the order of its bases."
+        }
+      ],
+      "why": {
+        "correct": "Packing controls access. Opening the chromatin lets the proteins that read genes reach more DNA and shrinks the heterochromatin, but the amount of DNA and its sequence stay the same."
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-19",
+      "type": "order",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "2.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Put the levels of DNA packing in a eukaryotic cell in order, from least to most compact.",
+      "options": [
+        "The double helix by itself, 2 nm wide",
+        "DNA wrapped around histones as nucleosomes, like beads on a string",
+        "The string of nucleosomes coiled into a thicker fiber",
+        "The fiber folded into loops attached to a protein scaffold",
+        "A fully condensed chromosome during mitosis"
+      ],
+      "why": {
+        "correct": "Each level folds the one before it: the helix wraps histones, nucleosomes coil into a fiber, the fiber folds into loops, and in mitosis the loops condense into the compact chromosome you can see under a light microscope."
+      }
+    },
+    {
+      "id": "bio-dna-rna-structure-20",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "dna-rna-structure",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Which result would best support the claim that RNA, not protein, is the hereditary material of a plant virus?",
+      "options": [
+        "RNA purified from the virus, free of protein, infects leaves, and complete new viruses form.",
+        "The virus particles are made of an RNA molecule wrapped in a coat of protein subunits.",
+        "Infected leaves contain more RNA than healthy leaves of the same size and age from the same plant.",
+        "The virus's RNA is a single strand, while the plant's own DNA is a double strand."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If RNA by itself can start an infection that produces whole new viruses, coat and all, then the RNA carries the instructions; this was shown for tobacco mosaic virus in the 1950s.",
+        "options": [
+          "Correct: the RNA alone is sufficient to make complete offspring viruses.",
+          "This describes what the particle contains, not which part carries the instructions.",
+          "More RNA in sick leaves could come from the plant's own response; it does not test which molecule is hereditary.",
+          "Being single-stranded says nothing about whether the molecule carries the hereditary instructions."
+        ]
+      }
+    }
+  ]
+}
