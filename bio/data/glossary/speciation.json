@@ -1,0 +1,14 @@
+{
+  "niche": { "def": "A species' niche is its role and way of life: the conditions it tolerates, the resources it uses and how it gets them. Open niches, such as unused foods on new islands, give room for new species to form." },
+  "species": { "def": "By the biological species concept, a group of populations whose members can interbreed in nature and produce viable, fertile offspring, and that cannot do so with other groups. The morphological species concept, based on body form, is used for fossils and asexual organisms." },
+  "reproductive-isolation": { "def": "The condition in which barriers prevent two populations from interbreeding and producing fertile offspring, so no gene flow passes between them and their gene pools stay separate." },
+  "speciation": { "def": "The formation of new species: one population splits into two (or more) that become reproductively isolated from each other." },
+  "prezygotic": { "def": "A reproductive barrier that acts before a zygote forms, by preventing mating or fertilization: habitat, temporal, behavioral, mechanical or gametic isolation." },
+  "postzygotic": { "def": "A reproductive barrier that acts after a hybrid zygote forms: hybrid inviability (the hybrid dies young), hybrid sterility (the hybrid adult is sterile, like a mule) or hybrid breakdown (later hybrid generations are weak or sterile)." },
+  "allopatric": { "def": "Allopatric speciation: speciation that begins when a geographic barrier, such as a river, mountain range or stretch of sea, divides a population, stopping gene flow so the parts evolve separately." },
+  "sympatric": { "def": "Sympatric speciation: speciation without geographic separation, within one area. In plants it often happens by polyploidy; in animals it can follow a shift to a new food source or habitat in the same place." },
+  "punctuated": { "def": "Punctuated equilibrium: the pattern in which species change little for long periods (stasis) and change rapidly over short periods, often around speciation. The contrasting pattern of slow, steady change is called gradualism." },
+  "adaptive-radiation": { "def": "The rapid evolution of many species from one ancestor as its descendants adapt to many different niches, often after reaching new habitats with few competitors or after a mass extinction." },
+  "hybrid-zone": { "def": "A region where two closely related populations or species meet and interbreed, producing hybrids. If hybrids are less fit, selection can strengthen prezygotic barriers there (reinforcement); otherwise the two may merge or the zone may stay stable." },
+  "macroevolution": { "def": "Evolution at or above the level of species, such as the origin of new species and larger groups, adaptive radiations and extinctions, seen over long spans of time." }
+}

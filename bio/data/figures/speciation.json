@@ -1,0 +1,12 @@
+{
+  "speciation-modes": {
+    "file": "figures/speciation-modes.svg", "ext": "svg", "w": 760, "h": 450,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Top row, allopatric speciation: one population shares genes freely; a river changes course and splits it in two; with no gene flow, each side evolves separately; when the barrier is gone, the two live together but no longer interbreed. Bottom row, sympatric speciation by polyploidy: a diploid plant (2n = 14) has a meiosis failure giving gametes with 14 chromosomes; self-fertilization gives a tetraploid (4n = 28) with gametes of 14. A tetraploid crossed with a diploid gives a triploid with 21 chromosomes, which is sterile because three copies of each chromosome cannot pair evenly in meiosis."
+  },
+  "reproductive-barriers": {
+    "file": "figures/reproductive-barriers.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Prezygotic barriers, before a zygote forms: habitat, temporal, behavioral, mechanical and gametic isolation, each with a short description. An arrow leads to a zygote, then to postzygotic barriers: hybrid inviability, hybrid sterility (as in a mule) and hybrid breakdown. Either kind blocks gene flow, keeping gene pools separate."
+  }
+}
