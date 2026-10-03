@@ -1,0 +1,739 @@
+{
+  "stimuli": {
+    "membrane-permeability-s1": {
+      "kind": "table",
+      "title": "How fast substances cross a pure phospholipid bilayer",
+      "text": "<p>Researchers made artificial membranes of phospholipids only, with no proteins, and measured how fast each substance crossed them. The permeability is given to the nearest power of ten: each step up in the exponent means about ten times faster crossing.</p>",
+      "table": {
+        "caption": "Approximate permeability of a protein-free phospholipid bilayer",
+        "cols": [
+          "Substance",
+          "Molar mass (g/mol)",
+          "Polarity or charge",
+          "Approximate permeability (cm/s)"
+        ],
+        "rows": [
+          [
+            "Carbon dioxide (CO₂)",
+            "44",
+            "Nonpolar",
+            "10⁻¹"
+          ],
+          [
+            "Water (H₂O)",
+            "18",
+            "Polar, uncharged",
+            "10⁻³"
+          ],
+          [
+            "Urea",
+            "60",
+            "Polar, uncharged",
+            "10⁻⁶"
+          ],
+          [
+            "Glycerol",
+            "92",
+            "Polar, uncharged",
+            "10⁻⁶"
+          ],
+          [
+            "Glucose",
+            "180",
+            "Polar, uncharged",
+            "10⁻¹⁰"
+          ],
+          [
+            "Chloride ion (Cl⁻)",
+            "35.5",
+            "Charged",
+            "10⁻¹¹"
+          ],
+          [
+            "Sodium ion (Na⁺)",
+            "23",
+            "Charged",
+            "10⁻¹²"
+          ]
+        ]
+      }
+    },
+    "membrane-permeability-s2": {
+      "kind": "graph",
+      "title": "Frog oocytes with and without aquaporin",
+      "text": "<p>Frog oocytes are large cells whose plasma membranes let water through only slowly. Researchers injected some oocytes with mRNA coding for an aquaporin and others with the same volume of plain water. Three days later they moved each oocyte from a medium as concentrated as its own contents into a medium one-third as concentrated, so water tends to move into the cell, and measured its volume relative to the start. A third group got aquaporin mRNA and was then soaked in mercury chloride, which binds aquaporin. Oocytes with aquaporin and no mercury burst at about 3.5 minutes. Each point is the mean of 8 oocytes.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time in dilute medium",
+          "unit": "min",
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        "y": {
+          "label": "Volume relative to start",
+          "unit": "",
+          "min": 0.9,
+          "max": 1.5,
+          "step": 0.1
+        },
+        "series": [
+          {
+            "name": "Water injected (control)",
+            "points": [
+              [
+                0,
+                1.0
+              ],
+              [
+                1,
+                1.01
+              ],
+              [
+                2,
+                1.02
+              ],
+              [
+                3,
+                1.03
+              ],
+              [
+                4,
+                1.04
+              ],
+              [
+                5,
+                1.05
+              ]
+            ]
+          },
+          {
+            "name": "Aquaporin mRNA",
+            "points": [
+              [
+                0,
+                1.0
+              ],
+              [
+                1,
+                1.12
+              ],
+              [
+                2,
+                1.24
+              ],
+              [
+                3,
+                1.36
+              ]
+            ]
+          },
+          {
+            "name": "Aquaporin mRNA + mercury",
+            "points": [
+              [
+                0,
+                1.0
+              ],
+              [
+                1,
+                1.03
+              ],
+              [
+                2,
+                1.06
+              ],
+              [
+                3,
+                1.09
+              ],
+              [
+                4,
+                1.12
+              ],
+              [
+                5,
+                1.15
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "membrane-permeability-s3": {
+      "kind": "table",
+      "title": "Bacteria, penicillin and the cell wall",
+      "text": "<p>Penicillin stops bacteria from linking new peptidoglycan into their cell walls, so growing cells end up with weak walls. Students grew one species of bacterium for 2 hours in four conditions: a dilute medium (much less concentrated than the cells' contents) or the same medium with 0.5 M sucrose added (about as concentrated as the cells' contents), each with or without penicillin. They then counted intact cells as a percentage of those present at the start (mean ± SD, three cultures).</p>",
+      "table": {
+        "caption": "Intact cells after 2 hours",
+        "cols": [
+          "Medium",
+          "Penicillin",
+          "Intact cells (% of starting number)",
+          "Shape of intact cells"
+        ],
+        "rows": [
+          [
+            "Dilute",
+            "No",
+            "99 ± 1",
+            "Rod-shaped"
+          ],
+          [
+            "Dilute",
+            "Yes",
+            "12 ± 4",
+            "Rod-shaped"
+          ],
+          [
+            "Dilute + 0.5 M sucrose",
+            "No",
+            "98 ± 2",
+            "Rod-shaped"
+          ],
+          [
+            "Dilute + 0.5 M sucrose",
+            "Yes",
+            "91 ± 3",
+            "Round"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-membrane-permeability-1",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-permeability-s1",
+      "q": "Which statement best describes the pattern in the table?",
+      "options": [
+        "The smallest substances cross fastest, whatever their charge or polarity, and the largest cross slowest.",
+        "Nonpolar CO₂ crosses fastest, uncharged polar molecules slower, ions slowest.",
+        "Charged ions cross faster than uncharged polar molecules of a similar size.",
+        "Molecules with a molar mass above 50 g/mol barely cross a bilayer, whatever their polarity."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Permeability falls from nonpolar (CO₂, 10⁻¹) through uncharged polar molecules (10⁻³ to 10⁻¹⁰, slower as they get bigger) to ions (10⁻¹¹ and 10⁻¹²).",
+        "options": [
+          "Sodium (23 g/mol) and chloride (35.5 g/mol) are small but the slowest of all, so charge matters more than size.",
+          "This ordering follows polarity and charge, with size mattering within the polar group.",
+          "The ions (10⁻¹¹ and 10⁻¹²) are slower than water (10⁻³), a polar molecule of similar size.",
+          "Urea and glycerol (60 and 92 g/mol) cross at 10⁻⁶ cm/s, a million times faster than the ions."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-2",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s1",
+      "q": "Water crosses the bilayer about 10 to the power of what number times faster than glucose? (For example, 100 times faster would be 10², so the answer would be 2.)",
+      "numeric": {
+        "answer": 7,
+        "tol": 0,
+        "unit": "",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Divide the two values: 10⁻³ ÷ 10⁻¹⁰ = 10⁻³⁻⁽⁻¹⁰⁾ = 10⁷. Water crosses about ten million times faster than glucose."
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-3",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s1",
+      "q": "A student claims that a molecule's size alone decides how fast it crosses a phospholipid bilayer. Which comparison from the table best refutes this claim?",
+      "options": [
+        "Glucose (180 g/mol) crosses about ten thousand times more slowly than glycerol (92 g/mol).",
+        "Na⁺ (23 g/mol) crosses about 100 times slower than glucose (180 g/mol).",
+        "Glycerol (92 g/mol) crosses about a thousand times more slowly than water (18 g/mol).",
+        "Water crosses faster than urea, which is three times heavier."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Sodium is far smaller than glucose yet crosses about a hundred times more slowly (10⁻¹² against 10⁻¹⁰), so something besides size, its charge, controls crossing.",
+        "options": [
+          "Here too the larger molecule is slower, which fits the claim instead of refuting it.",
+          "A tiny ion crossing slower than a large sugar shows that size is not the only factor.",
+          "Here the larger molecule is slower, which fits the size claim rather than refuting it.",
+          "The smaller molecule is faster here, which fits the claim."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-4",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s1",
+      "q": "Why do sodium and chloride ions cross the bilayer so slowly even though they are very small?",
+      "options": [
+        "Their charge keeps them out of the bilayer's hydrophobic core.",
+        "They are too heavy to slip between the closely packed phospholipid heads on each surface.",
+        "They bind tightly to the phospholipid tails and get stuck partway through the bilayer.",
+        "They react with the phosphate heads and are turned into other molecules."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Ions carry a full charge and are surrounded by a shell of attracted water molecules. Leaving that water to enter the hydrophobic middle of the bilayer takes a lot of energy, so they almost never do.",
+        "options": [
+          "Charge, not mass, is what keeps ions out of the hydrophobic core.",
+          "Sodium (23 g/mol) is lighter than water's neighbors urea and glycerol, which cross a million times faster, so mass is not the reason.",
+          "Charged ions are repelled by the nonpolar tails; they do not bind to them.",
+          "Ions are not chemically changed by the heads; they simply stay out of the core."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-5",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s1",
+      "q": "Intestinal cells take up large amounts of glucose every few minutes after a meal. Based on the table, what must these cells have?",
+      "options": [
+        "Thicker plasma membranes, so more glucose can dissolve in the bilayer.",
+        "Transport proteins in the plasma membrane that let glucose cross.",
+        "Membranes with fewer phospholipids, so glucose has a shorter path to cross.",
+        "A higher share of cholesterol, which attracts glucose into the bilayer."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Glucose crosses a bare bilayer about 10 billion times more slowly than CO₂. Fast uptake needs a transport protein that gives glucose a hydrophilic route across.",
+        "options": [
+          "A thicker hydrophobic layer would slow glucose further, not help it cross.",
+          "A transport protein gives a polar molecule like glucose a route that avoids the hydrophobic core.",
+          "Every plasma membrane is a full bilayer; removing phospholipids would break it, not speed glucose.",
+          "Cholesterol is part of the hydrophobic region and does not attract polar glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-6",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-permeability-s2",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "The three groups swelled at about the same pace for the first 3 minutes, then the aquaporin group burst.",
+        "Aquaporin oocytes swelled far faster than controls; mercury slowed them.",
+        "Mercury made oocytes with aquaporin swell faster than those without it.",
+        "Control oocytes swelled fastest, because they had extra water injected."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "In 3 minutes the aquaporin oocytes grew by 36%, the controls by 3%, and the mercury-treated aquaporin oocytes by 9%.",
+        "options": [
+          "At 3 minutes the volumes are 1.36, 1.09 and 1.03, so the paces clearly differ.",
+          "This matches the three curves.",
+          "Mercury-treated aquaporin oocytes swelled more slowly (1.09 at 3 minutes) than untreated ones (1.36).",
+          "The controls swelled slowest; the injected water was a tiny volume added three days earlier."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-7",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-permeability-s2",
+      "q": "Calculate the rate at which the relative volume of the aquaporin oocytes rose between 0 and 3 minutes, in relative units per minute. Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.12,
+        "tol": 0.005,
+        "unit": "per min",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Rate = change in volume ÷ change in time = (1.36 − 1.00) ÷ 3 min = 0.12 per minute, twelve times the control's 0.01 per minute."
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-8",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s2",
+      "q": "Why did the researchers inject the control oocytes with plain water instead of leaving them uninjected?",
+      "options": [
+        "So that the mRNA is the only difference between the two groups.",
+        "So that the control oocytes would swell about as fast as the oocytes that were given aquaporin mRNA.",
+        "So that the control oocytes would make a small amount of aquaporin too.",
+        "So that the control oocytes would start the experiment at a larger volume."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The injection could damage the membrane or add water. Giving the control the same injection, minus the mRNA, leaves the mRNA as the only difference between the groups.",
+        "options": [
+          "Matching the injection isolates the mRNA as the one variable that differs.",
+          "The control is meant to show the normal, slow swelling, not to match the aquaporin group.",
+          "Plain water carries no mRNA, so the controls make no added aquaporin.",
+          "The injected volume is tiny; starting sizes are matched, and volumes are given relative to the start."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-9",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s2",
+      "q": "Which explanation best accounts for the fast swelling of the aquaporin oocytes?",
+      "options": [
+        "The injected mRNA made the oocytes' contents much more concentrated, so much more water rushed in after the move.",
+        "Ribosomes used the mRNA to make aquaporin, which entered the plasma membrane and let water in faster.",
+        "The mRNA itself sat in the plasma membrane and formed holes for water.",
+        "The mRNA broke down the phospholipids, so the bilayer let everything through."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "mRNA is read by ribosomes to build a protein. The aquaporin made this way was sent to the plasma membrane, where it gave water a fast route through the bilayer.",
+        "options": [
+          "A small amount of mRNA barely changes how concentrated the contents are; the controls got the same volume of liquid and swelled slowly.",
+          "This links the mRNA to a protein, the protein to the membrane, and the membrane to faster water entry.",
+          "mRNA is read by ribosomes in the cytoplasm; it is not built into the membrane.",
+          "mRNA does not digest lipids, and mercury, which binds aquaporin, slowed the swelling, pointing to the protein."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-10",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "membrane-permeability-s2",
+      "q": "The null hypothesis was that aquaporin has no effect on how fast water enters an oocyte. Which conclusion do the data support?",
+      "options": [
+        "Fail to reject the null hypothesis, because the control oocytes also swelled during the five minutes.",
+        "Reject it: aquaporin oocytes swelled far faster, and mercury slowed them.",
+        "Reject the null hypothesis, because the mercury-treated oocytes swelled slightly faster than the controls did.",
+        "Fail to reject the null hypothesis, because the aquaporin oocytes burst before 5 minutes."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The aquaporin group swelled twelve times as fast as the controls, a difference far beyond the small spread expected among 8 oocytes, and mercury reduced it. The data are inconsistent with \"no effect\".",
+        "options": [
+          "Some slow swelling in controls is expected; the question is whether aquaporin changes the pace, and it clearly does.",
+          "Both the large difference and the mercury result point to an effect of aquaporin.",
+          "The mercury group is a little faster than the controls, but that alone is weak evidence; the main evidence is the much faster swelling with working aquaporin.",
+          "Bursting early is itself a result of very fast water entry, which argues against the null hypothesis."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-11",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "membrane-permeability-s3",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "Penicillin killed most of the cells in both media, with or without the added sucrose.",
+        "Penicillin cut intact cells sharply in dilute medium but not with sucrose.",
+        "Sucrose killed most cells, whether or not penicillin was present.",
+        "Neither penicillin nor sucrose changed the number of intact cells."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "With penicillin, 12% of cells stayed intact in dilute medium but 91% in sucrose medium. Without penicillin, about 98 to 99% stayed intact in both.",
+        "options": [
+          "In sucrose medium 91% of penicillin-treated cells were intact, so most survived there.",
+          "This matches the table: penicillin's effect depends on the medium.",
+          "Without penicillin, 98% of cells in sucrose medium were intact, so sucrose itself did little harm.",
+          "Penicillin in dilute medium cut intact cells from 99% to 12%."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-12",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "membrane-permeability-s3",
+      "q": "Which explanation best accounts for the penicillin results?",
+      "options": [
+        "Water enters cells in dilute medium; weak walls fail to hold, so cells burst. Sucrose outside keeps water out.",
+        "Penicillin dissolves the plasma membrane of the bacteria, and the sucrose in the medium repairs the damaged membrane.",
+        "The sucrose feeds the cells, giving them the energy they need to break down the penicillin before it can act.",
+        "In dilute medium penicillin enters cells faster and poisons their ribosomes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A bacterium's contents are more concentrated than a dilute medium, so water moves in and the cell presses outward. The cell wall resists that push. With the wall weakened, cells in dilute medium burst; in a medium as concentrated as their contents, little water enters, so they survive but lose their rod shape.",
+        "options": [
+          "This links the wall's job, resisting the outward push of entering water, to the four results.",
+          "Penicillin acts on the wall, not the membrane; the round, intact cells in sucrose show the membrane is fine.",
+          "If sucrose let cells destroy penicillin, they would keep their rod shape; instead they turned round, showing the wall was still weakened.",
+          "Penicillin targets wall building; the difference between media is about water entering, not about penicillin entering."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-13",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s3",
+      "q": "Why was it important to include the group grown in sucrose medium without penicillin?",
+      "options": [
+        "To show that sucrose by itself does not harm the cells.",
+        "To make the penicillin work faster in the sucrose medium.",
+        "To give the experiment a larger sample size.",
+        "To show that penicillin is needed before any of the cells can lose their rod shape and turn round."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without this group, you could not tell whether sucrose itself changes survival. It shows that sucrose alone leaves 98% of cells intact, so the comparison with penicillin is fair.",
+        "options": [
+          "This control separates the effect of sucrose from the effect of penicillin.",
+          "Without penicillin in it, this group cannot change how penicillin works.",
+          "Each condition already has three cultures; the group's purpose is comparison, not numbers.",
+          "Roundness is seen in the penicillin-plus-sucrose group; the no-penicillin group stays rod-shaped, but its main job is to test sucrose alone."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-14",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "membrane-permeability-s3",
+      "q": "Penicillin is used to treat bacterial infections in people. Why does it harm the bacteria but not the patient's own cells?",
+      "options": [
+        "Human cells have no peptidoglycan wall for it to act on.",
+        "Human cells have thick cell walls made of cellulose, which penicillin is unable to weaken.",
+        "Human blood is about as concentrated as the sucrose medium, so human cells take in no water.",
+        "Human cells break penicillin down immediately with their lysosomes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Penicillin blocks the building of peptidoglycan, a wall material found in bacteria. Animal cells have no wall at all, so the drug's target is missing.",
+        "options": [
+          "No peptidoglycan in human cells means penicillin's target is absent.",
+          "Animal cells have no cell wall of any kind; cellulose walls belong to plants.",
+          "Body fluids are close in concentration to cells' contents, but that is not why penicillin spares human cells; they simply lack its target.",
+          "Penicillin circulates in the body for hours; it spares human cells because they lack its target, not because they destroy it."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-15",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these need a transport protein to cross a plasma membrane at a useful rate? Select all that apply.",
+      "options": [
+        "Potassium ions (K⁺)",
+        "Oxygen (O₂)",
+        "Glucose",
+        "Carbon dioxide (CO₂)",
+        "A steroid hormone such as estrogen",
+        "Nitrogen gas (N₂)"
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "why": {
+        "correct": "Ions and large polar molecules such as glucose are kept out by the hydrophobic core. Small nonpolar molecules and lipid-soluble ones such as steroids dissolve through the bilayer by simple diffusion.",
+        "options": [
+          "As an ion, K⁺ is repelled by the hydrophobic core and needs a transport protein.",
+          "O₂ is small and nonpolar, so it crosses the bilayer directly.",
+          "Glucose is large and polar, so it needs a transport protein to cross quickly.",
+          "CO₂ is small and nonpolar and crosses the bilayer directly.",
+          "Steroids are lipids, so they dissolve through the hydrophobic core without help.",
+          "N₂ is small and nonpolar and crosses the bilayer directly."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-16",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Estrogen, a steroid hormone, acts on cells by binding a receptor inside the cell, while insulin, a protein hormone, binds a receptor on the cell surface. Which explanation fits these facts?",
+      "options": [
+        "Estrogen is a large, charged molecule that is pulled into the cell, while insulin is too small to be held inside.",
+        "Estrogen is a lipid that diffuses through the bilayer; insulin is large and polar.",
+        "Estrogen enters through aquaporins, while insulin is too large for them.",
+        "Estrogen is made inside the same cell it acts on, so it does not have to cross any membrane to reach its receptor."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Steroids are lipids with fused carbon rings, so they dissolve through the hydrophobic core. Insulin is a large, polar protein that the bilayer keeps out, so its receptor must face outside.",
+        "options": [
+          "Steroids are uncharged and lipid-like; charged molecules are the ones the bilayer keeps out.",
+          "Being a lipid lets estrogen cross; being large and polar keeps insulin outside.",
+          "Aquaporins let water through, not hormones.",
+          "Hormones like estrogen are made in one organ and carried in the blood to cells elsewhere, so they must cross membranes."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-17",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A plant cell and an animal cell are both placed in pure water, and water moves into each. What happens next?",
+      "options": [
+        "Both cells burst within a few minutes, because nothing stops the water from continuing to enter.",
+        "The plant cell's wall stops its swelling; the animal cell may burst.",
+        "The animal cell swells until its cholesterol stops it; the plant cell bursts.",
+        "Neither cell changes, because water is unable to cross a plasma membrane made of phospholipids."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The plant cell's wall is strong and resists stretching, so as the cell swells the wall presses back until water stops entering. An animal cell has no wall to stop the swelling.",
+        "options": [
+          "The plant cell's wall resists the swelling, so it does not burst.",
+          "The wall protects the plant cell from bursting; the animal cell has no such protection.",
+          "Cholesterol affects membrane fluidity, not resistance to swelling; and it is the plant cell that has the wall.",
+          "Water does cross membranes, a little through the bilayer and much more through aquaporins."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-18",
+      "type": "predict",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A drug blocks the aquaporins in a kidney cell's plasma membrane. Predict how each quantity changes.",
+      "variables": [
+        {
+          "name": "Rate at which water crosses the plasma membrane",
+          "answer": "down",
+          "why": "Most water crosses through aquaporins; with them blocked, water can cross only slowly through the bilayer itself."
+        },
+        {
+          "name": "Rate at which oxygen crosses the plasma membrane",
+          "answer": "none",
+          "why": "Oxygen is small and nonpolar and crosses directly through the bilayer, not through aquaporins, so blocking them does not change it."
+        },
+        {
+          "name": "Rate at which carbon dioxide crosses the plasma membrane",
+          "answer": "none",
+          "why": "Carbon dioxide is also small and nonpolar and diffuses straight through the bilayer, so it is unaffected."
+        }
+      ],
+      "why": {
+        "correct": "Aquaporins speed up water only. Small nonpolar gases cross through the bilayer itself, so blocking aquaporins slows water but leaves the gases unchanged."
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-19",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "A cell keeps a high concentration of proteins and glucose inside while oxygen moves freely in and out. Which property of the plasma membrane makes this possible?",
+      "options": [
+        "It is selectively permeable: some substances cross easily, others hardly.",
+        "It is impermeable to each substance except water, which passes through freely in both directions.",
+        "It is fully permeable, but proteins and glucose are too heavy to move across it.",
+        "It is permeable to everything at first and then closes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Selective permeability means the bilayer and its proteins let some substances through and hold others back, so the cell can keep its contents different from its surroundings.",
+        "options": [
+          "Selective permeability explains both parts: oxygen passes, proteins and glucose stay in.",
+          "Oxygen crosses freely, so the membrane is not shut to everything but water.",
+          "Molecules in solution move constantly whatever their mass; they stay in because the membrane holds them back.",
+          "The membrane's permeability does not switch from open to shut in this way."
+        ]
+      }
+    },
+    {
+      "id": "bio-membrane-permeability-20",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "membrane-permeability",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which list correctly matches each group with the main material of its cell wall?",
+      "options": [
+        "Plants: cellulose. Fungi: chitin. Bacteria: peptidoglycan.",
+        "Plants: chitin. Fungi: cellulose. Bacteria: peptidoglycan.",
+        "Plants: peptidoglycan. Fungi: chitin. Bacteria: cellulose.",
+        "Plants: cellulose. Fungi: peptidoglycan. Bacteria: chitin."
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Plant walls are mostly cellulose, fungal walls chitin, and bacterial walls peptidoglycan (a mesh of sugars cross-linked by short chains of amino acids).",
+        "options": [
+          "Each group is matched with its wall material.",
+          "Chitin is the fungal wall material (and insects' outer skeleton); cellulose is the plant one.",
+          "Peptidoglycan is found in bacteria, not plants.",
+          "Fungi use chitin, and peptidoglycan belongs to bacteria."
+        ]
+      }
+    }
+  ]
+}

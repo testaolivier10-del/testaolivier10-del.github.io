@@ -1,0 +1,60 @@
+{
+  "topic": "cell-structure-function",
+  "hook": "<p>Cells in your pancreas spend most of their lives making one product: digestive enzymes that they ship out into your gut. In the 1960s, researchers fed these cells a short pulse of radioactive amino acids and took electron micrographs to see where the new protein went. Within minutes it sat in the rough ER, a few minutes later in the Golgi complex, and within about two hours in small sacs near the cell's edge, ready to be released. A cell is not a bag of chemicals. It is a factory with departments, and each department's shape fits its job.</p>",
+  "prereq": [
+    {
+      "q": "In a membrane made of phospholipids, which part of each phospholipid faces the watery surroundings?",
+      "options": ["The hydrophilic head", "The hydrophobic tails", "The cholesterol rings"],
+      "correct": 0,
+      "why": "The heads are hydrophilic (water-loving), so they face the water on each side; the hydrophobic tails point inward, away from water.",
+      "review": "lipids"
+    },
+    {
+      "q": "What mostly decides what job a protein can do?",
+      "options": ["How many copies of it the cell makes", "Its three-dimensional shape, set by its amino acid sequence", "Whether it contains any sugar"],
+      "correct": 1,
+      "why": "A protein's amino acid sequence decides how it folds, and its folded shape decides what it can bind and do.",
+      "review": "proteins"
+    },
+    {
+      "q": "In hydrolysis, what happens to a large molecule?",
+      "options": ["Water is removed to join two monomers", "Water is added to break it into smaller pieces", "It is joined to a phosphate group"],
+      "correct": 1,
+      "why": "Hydrolysis adds water to break the bond between monomers. Joining monomers by removing water is dehydration synthesis.",
+      "review": "macromolecules-intro"
+    }
+  ],
+  "figure": { "figure": "cell-secretory-path", "caption": "A simplified animal cell. The numbered arrows trace a protein made for export: built on the rough ER (1), carried in a vesicle to the Golgi complex (2), modified and packaged (3), and released at the cell membrane (4)." },
+  "chain": [
+    { "cause": "A gene in the DNA inside the nucleus carries the instructions for a protein the cell will export.", "effect": "The instructions are copied into mRNA, which leaves the nucleus through a nuclear pore." },
+    { "cause": "A ribosome starts reading the mRNA and attaches to the rough ER, because the new protein is bound for export.", "effect": "The ribosome threads the growing protein into the ER, where it folds and may have sugars added." },
+    { "cause": "A patch of ER membrane holding the finished protein pinches off.", "effect": "A vesicle carries the protein to the Golgi complex and merges with it." },
+    { "cause": "Enzymes in the Golgi trim and add sugars and sort proteins by their destination.", "effect": "The protein is packaged into a new vesicle bound for the cell membrane." },
+    { "cause": "Motor proteins carry the vesicle along microtubules, using ATP made mostly in mitochondria.", "effect": "The vesicle reaches the cell membrane, merges with it, and releases the protein outside the cell." }
+  ],
+  "ideas": [
+    "<b>Prokaryotes</b> (bacteria and archaea) have DNA in the cytoplasm, ribosomes and a cell membrane, but no nucleus and no membrane-bound organelles. <b>Eukaryotes</b> keep their DNA in a nucleus and divide the cytoplasm into membrane-bound organelles.",
+    "<b>Ribosomes</b> are in every cell. They are made of rRNA and protein, and they build proteins. Free ribosomes make proteins for the cytosol; ribosomes on the <b>rough ER</b> make proteins for membranes, lysosomes and export.",
+    "The <b>smooth ER</b> makes lipids and, in liver cells, breaks down drugs and toxins. The <b>Golgi complex</b> modifies, sorts and packages proteins. <b>Lysosomes</b> digest worn-out parts and engulfed material with enzymes that work best in acid.",
+    "<b>Mitochondria</b> and <b>chloroplasts</b> each have a double membrane and their own DNA and ribosomes. Their folded inner membranes (cristae, thylakoids) pack in more membrane for the proteins that capture energy.",
+    "A plant cell's <b>central vacuole</b> stores water and presses the cytoplasm against the cell wall, keeping the cell firm. The <b>cytoskeleton</b> gives shape and carries vesicles along microtubule tracks."
+  ],
+  "misconception": {
+    "wrong": "Plant cells have chloroplasts instead of mitochondria, because they make their own food.",
+    "right": "Plant cells have both. Chloroplasts capture the energy of sunlight to build sugar; mitochondria break sugar down by cellular respiration to make ATP, day and night."
+  },
+  "check": [
+    "bio-cell-structure-function-1",
+    "bio-cell-structure-function-3",
+    "bio-cell-structure-function-5",
+    "bio-cell-structure-function-6",
+    "bio-cell-structure-function-9",
+    "bio-cell-structure-function-15",
+    "bio-cell-structure-function-17",
+    "bio-cell-structure-function-18"
+  ],
+  "summary": "<p>Every cell has a membrane, cytoplasm, DNA and ribosomes. Eukaryotic cells add a nucleus and membrane-bound organelles that split the work: the rough ER builds proteins for export, the smooth ER makes lipids and detoxifies, the Golgi modifies and packages, lysosomes digest, vacuoles store, mitochondria make ATP and chloroplasts capture the energy of sunlight. Each structure's shape fits its job, from the folded inner membranes of mitochondria to the ribosome-studded surface of the rough ER.</p>",
+  "connections": [
+    { "href": "/anatomy-physiology/notes/organelles.html", "label": "A&P notes: Organelles" }
+  ]
+}

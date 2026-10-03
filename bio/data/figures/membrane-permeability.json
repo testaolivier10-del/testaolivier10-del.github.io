@@ -1,0 +1,7 @@
+{
+  "membrane-crossing": {
+    "file": "figures/membrane-crossing.svg", "ext": "svg", "w": 680, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A phospholipid bilayer seen edge on. Oxygen and carbon dioxide arrows pass straight through it. A dashed arrow shows a little water crossing the bilayer directly, and a solid arrow shows much more water crossing through an aquaporin. Sodium and chloride ions bounce off. Glucose crosses through a transport protein. A large protein does not cross."
+  }
+}

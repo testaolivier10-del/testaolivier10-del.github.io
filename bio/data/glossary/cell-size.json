@@ -1,0 +1,13 @@
+{
+  "adaptation": { "def": "An inherited feature that helps organisms survive and reproduce where they live, such as the root hairs of plants or the thin ears of a desert fox. How adaptations arise is taught in Unit 7." },
+  "endotherm": { "def": "An animal, such as a bird or mammal, that keeps its body warm mainly with heat released by its own cellular respiration. An ectotherm, such as a lizard or fish, gets most of its body heat from its surroundings, so its body temperature follows theirs." },
+  "diffusion": { "def": "The net spreading of particles from where they are more concentrated to where they are less concentrated, driven by their own random motion, with no energy input from the cell. It is fast over short distances and slow over long ones." },
+  "concentration-gradient": { "def": "A difference in the concentration of a substance between two places. Particles diffusing from high to low concentration are said to move down their gradient." },
+  "surface-area": { "def": "The total area of the outside of an object. For a cell, it is the area of the cell membrane, through which every material enters or leaves." },
+  "sa-v-ratio": { "def": "Surface area divided by volume. It falls as an object gets bigger, because surface area grows with the square of its size and volume with the cube. A high ratio means more surface for exchange per unit of volume." },
+  "sa-v-formulas": { "def": "Cube with side s: surface area 6s², volume s³. Sphere with radius r: surface area 4πr², volume 4/3 πr³. Cylinder with radius r and height h: volume πr²h, surface area 2πrh + 2πr²." },
+  "cell-size-limit": { "def": "The upper limit on how big a cell can get: as it grows, its volume (which uses materials and makes wastes) outgrows the surface through which they are exchanged, and its center gets too far from the surface for diffusion to keep up." },
+  "exchange-surface": { "def": "A surface specialized for moving materials in or out, usually thin and folded to give a large area: root hairs in roots, villi and microvilli in the small intestine, alveoli in the lungs." },
+  "heat-exchange": { "def": "Heat leaves a body through its surface. Smaller animals have more surface per unit of volume, so they lose heat faster for their size than larger animals do." },
+  "metabolic-rate": { "def": "How fast an organism uses energy, often measured as oxygen used or heat given off per unit of time. Per gram of body mass, small endotherms have much higher metabolic rates than large ones." }
+}

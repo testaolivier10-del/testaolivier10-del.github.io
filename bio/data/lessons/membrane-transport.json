@@ -1,0 +1,59 @@
+{
+  "topic": "membrane-transport",
+  "hook": "<p>Seawater holds about 40 times as much sodium as the inside of a typical animal cell, and your own blood about 10 times as much. Meanwhile the cell holds 30 times as much potassium as the fluid around it. Left alone, diffusion would wipe out those differences. A cell spends a large share of its ATP, around a fifth to a third in many animal cells, just pushing ions back where they came from. Staying different from your surroundings is work.</p>",
+  "prereq": [
+    {
+      "q": "Which molecule crosses a phospholipid bilayer most easily by simple diffusion?",
+      "options": ["Glucose", "A sodium ion", "Oxygen"],
+      "correct": 2,
+      "why": "Oxygen is small and nonpolar, so it dissolves in the hydrophobic core and diffuses straight through. Glucose and ions need transport proteins.",
+      "review": "membrane-permeability"
+    },
+    {
+      "q": "What is a vesicle?",
+      "options": ["A small sac of membrane that carries material inside a cell", "A protein that makes ATP", "A pore through the nuclear envelope"],
+      "correct": 0,
+      "why": "Vesicles are small membrane sacs that carry material between the ER, the Golgi and the plasma membrane.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "A receptor on the cell surface:",
+      "options": ["Digests molecules that touch the cell", "Binds a particular signaling molecule", "Lets water through the membrane"],
+      "correct": 1,
+      "why": "A receptor is a protein that binds one particular signaling molecule, which changes the cell's activity.",
+      "review": "plasma-membrane"
+    }
+  ],
+  "figure": { "figure": "transport-modes", "caption": "Passive transport moves particles down their gradient with no ATP. Active transport moves them against their gradient using ATP. Bulk transport moves large amounts in vesicles: endocytosis brings material in, exocytosis sends it out." },
+  "chain": [
+    { "cause": "A substance is more concentrated on one side of a membrane, and the membrane lets it cross.", "effect": "It moves down its gradient by passive transport, driven by its own motion, with no energy from the cell." },
+    { "cause": "Passive movement continues until the concentrations on the two sides are equal.", "effect": "Molecules still cross both ways, but at equal rates: a dynamic equilibrium with no net change." },
+    { "cause": "A cell needs a substance at a higher concentration than its surroundings.", "effect": "A transport protein uses energy from ATP to move it against its gradient: active transport." },
+    { "cause": "Substances keep leaking slowly across the selectively permeable membrane, and active transport keeps moving them back.", "effect": "The cell holds an internal environment different from the outside, part of homeostasis." },
+    { "cause": "A particle or package is too large for any transport protein.", "effect": "The cell moves it in vesicles: the membrane folds in to take it (endocytosis) or a vesicle fuses with the membrane to release it (exocytosis)." }
+  ],
+  "ideas": [
+    "<b>Passive transport</b>: down the gradient (high to low), no ATP. The energy comes from the particles' own motion. It stops having a net effect at <b>dynamic equilibrium</b>, when crossings in each direction balance.",
+    "<b>Active transport</b>: against the gradient (low to high), using energy, usually from ATP, and a transport protein. Only active transport can build up or keep a substance at a higher concentration inside than outside.",
+    "<b>Bulk transport</b> moves large particles or large amounts in vesicles. <b>Endocytosis</b> takes material in: phagocytosis (particles), pinocytosis (fluid), receptor-mediated endocytosis (particular molecules bound to receptors). <b>Exocytosis</b> releases material, adding the vesicle's membrane to the cell surface.",
+    "Selective permeability plus active transport let a cell keep an <b>internal environment</b> different from its surroundings. Keeping internal conditions within a working range is called <b>homeostasis</b>."
+  ],
+  "misconception": {
+    "wrong": "When concentrations become equal on both sides of a membrane, the molecules stop moving across.",
+    "right": "They keep moving and crossing in both directions. At equilibrium the numbers crossing each way are equal, so the concentrations stop changing even though the movement continues."
+  },
+  "check": [
+    "bio-membrane-transport-2",
+    "bio-membrane-transport-3",
+    "bio-membrane-transport-5",
+    "bio-membrane-transport-6",
+    "bio-membrane-transport-7",
+    "bio-membrane-transport-11",
+    "bio-membrane-transport-14",
+    "bio-membrane-transport-18"
+  ],
+  "summary": "<p>Substances cross membranes in three ways. Passive transport moves them down their concentration gradient using only their own motion, until a dynamic equilibrium is reached. Active transport uses ATP and transport proteins to move them against their gradient, which is the only way a cell can build up a substance inside. Bulk transport moves large particles and packages in vesicles: endocytosis brings them in and exocytosis sends them out. Selective permeability and active transport together let a cell keep its internal environment different from the outside.</p>",
+  "connections": [
+    { "href": "/anatomy-physiology/notes/active-transport.html", "label": "A&P notes: Active transport" }
+  ]
+}

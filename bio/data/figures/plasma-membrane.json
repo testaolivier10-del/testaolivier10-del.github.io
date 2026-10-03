@@ -1,0 +1,7 @@
+{
+  "fluid-mosaic": {
+    "file": "figures/fluid-mosaic.svg", "ext": "svg", "w": 680, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A slice through a plasma membrane: two layers of phospholipids with heads facing the watery outside and cytoplasm and tails in the middle. A transmembrane protein and a glycoprotein span the bilayer, a receptor protein holds a signaling molecule, a peripheral protein sits on the inner surface, cholesterol sits among the tails and a glycolipid carries a carbohydrate chain on the outer face."
+  }
+}
