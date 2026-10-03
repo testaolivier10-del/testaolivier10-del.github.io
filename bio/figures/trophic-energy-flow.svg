@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 460" width="760" height="460" role="img" aria-labelledby="tef-t tef-d">
+<title id="tef-t">Energy flows up the trophic levels and leaves as heat; matter cycles through decomposers</title>
+<desc id="tef-d">Four stacked boxes, each narrower than the one below. Producers store 10,000 kilojoules per square meter per year in new biomass; primary consumers 1,000; secondary consumers 100; tertiary consumers 10. An arrow labeled about 10 percent leads from each level to the next. Heat from cellular respiration leaves every level on the left. Dashed arrows carry dead bodies and wastes from every level to a decomposers box on the right, which also gives off heat. A green arrow returns nutrients from the decomposers to the soil, where producers take them up again. Light energy enters at the producers.</desc>
+<defs>
+  <marker id="tef-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+  <marker id="tef-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#D55E00"/></marker>
+  <marker id="tef-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#009E73"/></marker>
+  <marker id="tef-l" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#E69F00"/></marker>
+</defs>
+<rect width="760" height="460" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="380" y="28" font-size="17" font-weight="700" text-anchor="middle">Energy flows one way and leaves as heat; matter cycles</text>
+
+  <!-- trophic levels -->
+  <rect x="230" y="66" width="140" height="56" rx="8" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2.5"/>
+  <text x="300" y="89" font-size="14" font-weight="700" text-anchor="middle">Tertiary consumers</text>
+  <text x="300" y="109" font-size="14" text-anchor="middle">10</text>
+
+  <rect x="200" y="156" width="200" height="56" rx="8" fill="#D2EAF8" stroke="#56B4E9" stroke-width="2.5"/>
+  <text x="300" y="179" font-size="14" font-weight="700" text-anchor="middle">Secondary consumers</text>
+  <text x="300" y="199" font-size="14" text-anchor="middle">100</text>
+
+  <rect x="160" y="246" width="280" height="56" rx="8" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+  <text x="300" y="269" font-size="14" font-weight="700" text-anchor="middle">Primary consumers (herbivores)</text>
+  <text x="300" y="289" font-size="14" text-anchor="middle">1,000</text>
+
+  <rect x="120" y="336" width="360" height="56" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+  <text x="300" y="359" font-size="14" font-weight="700" text-anchor="middle">Producers (plants, algae)</text>
+  <text x="300" y="379" font-size="14" text-anchor="middle">10,000 kJ per m² per year stored in new biomass</text>
+
+  <!-- about 10% up -->
+  <line x1="300" y1="336" x2="300" y2="304" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#tef-a)"/>
+  <line x1="300" y1="246" x2="300" y2="214" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#tef-a)"/>
+  <line x1="300" y1="156" x2="300" y2="124" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#tef-a)"/>
+  <text x="310" y="325" font-size="12">about 10%</text>
+  <text x="310" y="235" font-size="12">about 10%</text>
+  <text x="310" y="145" font-size="12">about 10%</text>
+
+  <!-- heat out on the left -->
+  <line x1="228" y1="94" x2="150" y2="94" stroke="#D55E00" stroke-width="3" marker-end="url(#tef-h)"/>
+  <line x1="198" y1="184" x2="120" y2="184" stroke="#D55E00" stroke-width="3" marker-end="url(#tef-h)"/>
+  <line x1="158" y1="274" x2="80" y2="274" stroke="#D55E00" stroke-width="3" marker-end="url(#tef-h)"/>
+  <line x1="118" y1="350" x2="40" y2="350" stroke="#D55E00" stroke-width="3" marker-end="url(#tef-h)"/>
+  <text x="140" y="86" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
+  <text x="110" y="176" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
+  <text x="70" y="266" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
+  <text x="34" y="342" font-size="13" font-weight="700" fill="#A04500" text-anchor="start">heat</text>
+  <text x="20" y="130" font-size="12" fill="#A04500">from cellular</text>
+  <text x="20" y="146" font-size="12" fill="#A04500">respiration at</text>
+  <text x="20" y="162" font-size="12" fill="#A04500">every level</text>
+
+  <!-- decomposers -->
+  <rect x="566" y="186" width="176" height="80" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+  <text x="654" y="216" font-size="15" font-weight="700" text-anchor="middle">Decomposers</text>
+  <text x="654" y="238" font-size="13" text-anchor="middle">bacteria, fungi,</text>
+  <text x="654" y="255" font-size="13" text-anchor="middle">detritivores</text>
+  <path d="M372,94 C470,94 520,170 562,200" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
+  <path d="M402,184 C480,184 520,205 562,214" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
+  <path d="M442,274 C500,274 530,250 562,240" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
+  <path d="M482,358 C530,358 550,290 584,270" fill="none" stroke="#5D6B69" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#tef-a)"/>
+  <text x="470" y="132" font-size="12" text-anchor="middle">dead bodies</text>
+  <text x="470" y="147" font-size="12" text-anchor="middle">and wastes</text>
+  <line x1="700" y1="184" x2="700" y2="120" stroke="#D55E00" stroke-width="3" marker-end="url(#tef-h)"/>
+  <text x="692" y="140" font-size="13" font-weight="700" fill="#A04500" text-anchor="end">heat</text>
+
+  <!-- nutrients back to producers -->
+  <path d="M640,268 L640,428 L300,428 L300,398" fill="none" stroke="#009E73" stroke-width="3" marker-end="url(#tef-g)"/>
+  <text x="470" y="448" font-size="13" font-weight="700" fill="#00704F" text-anchor="middle">nutrients (N, P) and CO₂ returned for producers to use again</text>
+
+  <!-- light in -->
+  <circle cx="70" cy="420" r="16" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+  <line x1="88" y1="410" x2="140" y2="390" stroke="#E69F00" stroke-width="3" marker-end="url(#tef-l)"/>
+  <text x="100" y="446" font-size="13" font-weight="700" fill="#8A5A00">light energy in</text>
+</g>
+</svg>
