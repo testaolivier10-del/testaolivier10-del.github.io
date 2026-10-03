@@ -21,6 +21,8 @@ bio/                                    the course, at levlprep.com/bio/
   dashboard.html search.html                 app page shells from pages.json       generated
   teachers.html                         for teachers (not an app; "static" in pages.json) generated
   frq/<id>.html                         one FRQ: stable, shareable, printable page generated
+  dashboard.html search.html teachers.html   app page shells from pages.json       generated
+  tools/<slug>.html                     simulators, skills tools, drills           generated
   figures/<id>.svg|jpg                  OpenStax Biology 2e (CC BY 4.0), public domain, our SVGs
   assets/                               runtime JS and CSS (hand-written) + generated JSON
     bio-curriculum.js                   window.ApBioCurriculum, window.ApBioPages  generated
@@ -28,6 +30,9 @@ bio/                                    the course, at levlprep.com/bio/
     bank/<unit>.json  bank/<unit>-why.json  bank/index.json                        generated
     frq/index.json  frq/<id>.json  summaries.json                                  generated
     pages/<page>.js, pages/pages.css    app page scripts (see "App pages" below)
+    pages/<page>.js, pages/pages.css    app page scripts (not written yet)
+    tools/                              tool framework + one script per tool (see Tools)
+    tool-data/<slug>.json               served tool content, published topics only     generated
   data/                                 THE SOURCE: everything authored lives here
     lessons/<topic>.json   notes/<topic>.html   glossary/<topic>.json
     figures/<topic>.json   labels/<figure>.json questions/<topic>.json
@@ -199,7 +204,99 @@ whose prompt says graph, plot or construct gets the blank grid on paper.
   arrives with the first published unit.
 - `published.json`: `{ chapters: [] }`. `descriptions.json`: `{ lessons, notes, units }` overrides.
 - `tools/<slug>.json`: each needs `scripts/lib/apbio-tool-checks/<slug>.mjs` exporting
-  `check(data, map)` (as A&P's tool contract).
+  `check(data, map)` (as A&P's tool contract). See "Tools" below.
+
+## Tools (simulators, skills tools, drills)
+
+Every tool meets `docs/anp-tools-contract.md`: real buttons and form controls, keyboard and
+screen reader, no drag-only step, 44 px targets, dark mode, content in a data file with a
+validator, item ids `<tool>:<content>:<item>`, records through `ApBioCore.toolResult`, Report a
+problem on every scored thing.
+
+**One tool = one entry in `pages.json` `tools[]` + one script + one data file + one validator.**
+
+| Piece | Path |
+|---|---|
+| entry | `bio/data/pages.json` `tools[]`: `{ slug, kind: simulator, skill or drill, name, title, desc, blurb, premium? }` |
+| page (generated) | `bio/tools/<slug>.html` (shell, `#app[data-src]`) |
+| script | `bio/assets/tools/<slug>.js` (mounts with `ApBioTools.mount`) |
+| content | `bio/data/tools/<slug>.json` (`slug`, `kind`, `topic`, `intro`, `howItWorks`, ...) |
+| served content (generated) | `bio/assets/tool-data/<slug>.json` |
+| validator | `scripts/lib/apbio-tool-checks/<slug>.mjs` (`check(data, map)`), run by `check-apbio-content` |
+
+**Framework files** (`bio/assets/tools/`, hand-written):
+- `bio-tool-math.js` → `window.ApBioMath`: pure math, no DOM. Statistics (sample SD with
+  n − 1, SE, 95% CI = mean ± 2 SE, overlap), chi-square with the critical value table
+  (`CHI_CRIT`, df 1-8, p 0.05 and 0.01), ψs = −iCRT (R = 0.0831, T = °C + 273), Hardy-Weinberg,
+  Simpson's D = 1 − Σ(n/N)², rates, percent change, the seeded RNG (`rng(seed)`), the enzyme
+  model (`enzyme`), the osmosis model (`osmosis`), graph scale checks (`graph.checkScale`).
+- `bio-skill-problems.js` → `window.ApBioProblems`: per skill kind, `solve[kind](input)` →
+  `{ parts, steps, table?, chart? }` and `generate[kind](rng, context)` → input. Kinds:
+  descriptive, ci, chi, rates, wp, hw, simpson.
+- `bio-tools.js` → `window.ApBioTools`: `mount`, `slider` (range input + visible value + −/+),
+  `choiceSelect`, `announcer` (polite live summary), `plot` (accessible SVG), `dataTable`, `box`
+  ("How this model works"), `questions` (stimulus questions via `ApBioQuestions.hydrate`,
+  recorded as tool items), `frq` (the **mini FRQ component**: 2-3 parts in the `data/frq` part
+  format; the student writes, opens the rubric, ticks the points earned, sees the sample answer,
+  saves; one item per part, right when every point is ticked; drafts kept in localStorage
+  `apbio_frqdraft_*`; the FRQ page may reuse it), `skillTool` (the skills runner), `record`.
+- `bio-tools.css`: every tool's styles.
+- The validators load `bio-tool-math.js` and `bio-skill-problems.js` in a Node `vm` sandbox
+  (`scripts/lib/apbio-tool-checks/_shared.mjs` `runtime()`), so authored numbers are recomputed
+  by the code students run.
+
+**Simulators** (`kind: simulator`): the model card (controls, figure, plot, readout, live
+summary, Run one trial / Run a series / Clear, a data table of runs and of the sampled curve),
+then 3-5 stimulus questions (bank item format; `stimuli` with `tables[]`, each table carrying a
+`check` spec the validator recomputes from the model), then the mini FRQ. Built: `osmosis`
+(free) and `enzyme-activity` (`premium: "tools"`). The other ten (ETC/ATP synthase, light
+reactions/Calvin, signal amplification, cell cycle checkpoints, meiosis/nondisjunction, operons,
+Hardy-Weinberg/drift, tree reading, population growth, energy flow) come with their units: add
+the model to `ApBioMath` (or the script), the script, the data, the validator and the
+`pages.json` entry.
+
+**Skills tools** (`kind: skill`): `contexts[]` (templates for seeded practice, with `{n}`, `{N}`
+placeholders) and fixed `problems[]` with `input` and `expect` (the answers, for reviewers; the
+validator requires them to equal the solver's). Practice problems show a problem code and a
+`?seed=` link. Parts are checked with a tolerance (one unit in the last decimal asked for, or a
+stated %), then the worked solution appears. Item ids `<slug>:<context or problem id>:<part>`;
+`partTopics` sends a part to another topic (SD and SE → `stats-sd-se`). Built:
+`descriptive-stats`, `confidence-intervals`, `chi-square`, `rates`, `water-potential`,
+`hardy-weinberg`, `simpson-diversity`, and `graph-builder` (own script: type + reason, axes,
+labels with units, scale checked by `checkScale`, plotting by typing, −/+, click or tap, or arrow
+keys on the SVG, ±2 SE error bars; seven criteria, each an item `graph-builder:<set>:<criterion>`;
+only the first check per load is recorded).
+
+**Drills** (`kind: drill`): `design-drills`, 8 scenarios × 5 drills (variables; control + what
+it rules out, scored separately; null hypothesis assembled from three slots; CER tagging;
+prediction + mechanism, scored separately). `status: "placeholder"` shows a Draft note until a
+teacher reviews them (needs-author `design-drills-review`).
+
+**Publishing.** The generator writes every tool page whenever there is a map, and serves the
+data filtered: an array element with a `topic` is kept only when that topic is live (its chapter
+is published and, for a skill or drill topic, so is the chapter of its `after` topic); one with
+`requires: [units]` only when those units are published. A tool whose home `topic` is not live
+(or has no live content) is served as `{ slug, live: false, arrives }` and its page is noindex.
+So Hardy-Weinberg (`stats-hardy-weinberg`, after Unit 7's `hardy-weinberg`) and Simpson
+(`stats-simpson`, after Unit 8's `biodiversity`) are built now and go live with Units 7 and 8.
+The served file also carries `units` (topic → chapter) for records. `window.ApBioToolList` (in
+`bio-curriculum.js`) lists every tool with `live`, for the tools hub page.
+
+**Topic ids.** The tools use the ids of the draft map (branch `claude/apbio-map`). Until
+`docs/apbio-dependency-map.json` is on this branch (and in stub-map tests), validators accept the
+ids in `_shared.mjs` `PLACEHOLDER_TOPICS`; once the real map is present every tool topic must
+exist in it, so a renamed topic fails the content check and is re-tagged there.
+
+**Analytics events:** `apbio-sim-run { tool, n }`, `apbio-tool-question { tool, correct }`,
+`apbio-tool-frq { tool, score, total }`, `apbio-skill-check { tool, correct, total }`,
+`apbio-graph-check { tool, set, correct, total }`, `apbio-drill-check { tool, scenario, drill,
+correct, total }`.
+
+**Testing.** `scripts/test/apbio-tools.test.mjs` (math, models, validators on the data and on
+planted mistakes, publishing). Browser: copy the map in, build with
+`APBIO_PUBLISHED=unit-1,unit-2,unit-3,unit-7,unit-8,skills-stats,skills-design`, serve the repo
+and open `bio/tools/<slug>.html`; afterwards remove the map and run the generator again
+(published.json stays `[]`).
 
 ## Checks
 

@@ -1,0 +1,243 @@
+{
+  "about": "Skills tool: 95% confidence intervals and error bars. Solver and generator: ApBioProblems, kind ci. Generated problems avoid intervals that nearly touch (ApBioProblems.ciBorderline), and the validator rejects fixed problems that do.",
+  "slug": "confidence-intervals",
+  "kind": "ci",
+  "topic": "stats-confidence-intervals",
+  "intro": "<p>Turn a mean, a standard deviation and a sample size into a 95% confidence interval, draw it as an error bar, and decide what overlapping or separate error bars tell you.</p>",
+  "howItWorksTitle": "The formulas, and the rule for reading error bars",
+  "howItWorks": "<p class=\"bt-eq\">SE = s / √n</p><p class=\"bt-eq\">95% CI ≈ x̄ ± 2 SE</p><ul><li>The 95% confidence interval is the range that very likely contains the true mean of the population the sample came from. On a graph it is drawn as an error bar of ±2 SE around each mean.</li><li><b>Bars that do not overlap:</b> the difference between the means is likely statistically significant; chance alone would rarely produce samples that far apart.</li><li><b>Bars that overlap:</b> the data do not show a significant difference. That is not proof that the means are equal: a bigger sample might still find a difference.</li><li>This is the rule of thumb used in this course. A formal test can still find a significant difference when ±2 SE bars overlap slightly; problems here avoid bars that nearly touch.</li><li>Numbers count when they are within one unit of the last decimal place asked for, or within 1%.</li></ul>",
+  "contexts": [
+    {
+      "id": "yeast-sugars",
+      "topic": "stats-confidence-intervals",
+      "text": "<p>Yeast was given either glucose or sucrose, and the carbon dioxide made in 20 minutes was measured in several tubes of each. The table gives the mean, the standard deviation and the number of tubes.</p>",
+      "groups": [
+        "Glucose",
+        "Sucrose"
+      ],
+      "unit": "mL",
+      "yLabel": "Mean CO₂ volume",
+      "mean": [
+        6,
+        12
+      ],
+      "sd": [
+        0.8,
+        2.2
+      ],
+      "n": [
+        5,
+        10
+      ],
+      "dp": 1,
+      "d": 2
+    },
+    {
+      "id": "catalase-tissues",
+      "topic": "stats-confidence-intervals",
+      "text": "<p>Students compared catalase activity in extracts of potato and of apple: the volume of oxygen given off from hydrogen peroxide in 1 minute.</p>",
+      "groups": [
+        "Potato",
+        "Apple"
+      ],
+      "unit": "mL",
+      "yLabel": "Mean O₂ volume",
+      "mean": [
+        3,
+        9
+      ],
+      "sd": [
+        0.5,
+        1.5
+      ],
+      "n": [
+        5,
+        9
+      ],
+      "dp": 1,
+      "d": 2
+    },
+    {
+      "id": "reaction-hand",
+      "topic": "stats-confidence-intervals",
+      "text": "<p>Students measured their reaction time catching a dropped ruler with their dominant and their non-dominant hand.</p>",
+      "groups": [
+        "Dominant hand",
+        "Other hand"
+      ],
+      "unit": "s",
+      "yLabel": "Mean reaction time",
+      "mean": [
+        0.18,
+        0.26
+      ],
+      "sd": [
+        0.02,
+        0.05
+      ],
+      "n": [
+        10,
+        20
+      ],
+      "dp": 3,
+      "d": 3
+    },
+    {
+      "id": "cell-length",
+      "topic": "stats-confidence-intervals",
+      "text": "<p>Using a microscope, a student measured the length of <i>Elodea</i> leaf cells near the leaf tip and near the leaf base.</p>",
+      "groups": [
+        "Tip",
+        "Base"
+      ],
+      "unit": "µm",
+      "yLabel": "Mean cell length",
+      "mean": [
+        40,
+        80
+      ],
+      "sd": [
+        5,
+        12
+      ],
+      "n": [
+        10,
+        20
+      ],
+      "dp": 1,
+      "d": 2
+    },
+    {
+      "id": "bean-light",
+      "topic": "stats-confidence-intervals",
+      "text": "<p>Bean plants were grown under two lamps of different brightness, and each plant’s dry mass was measured after three weeks.</p>",
+      "groups": [
+        "Bright lamp",
+        "Dim lamp"
+      ],
+      "unit": "g",
+      "yLabel": "Mean dry mass",
+      "mean": [
+        2,
+        6
+      ],
+      "sd": [
+        0.3,
+        0.9
+      ],
+      "n": [
+        6,
+        12
+      ],
+      "dp": 2,
+      "d": 2
+    }
+  ],
+  "problems": [
+    {
+      "id": "temperature-enzyme",
+      "topic": "stats-confidence-intervals",
+      "input": {
+        "kind": "ci",
+        "text": "<p>The rate of an enzyme reaction was measured in several tubes at 25 °C and at 35 °C.</p>",
+        "unit": "µmol/min",
+        "yLabel": "Mean rate",
+        "d": 2,
+        "groups": [
+          {
+            "name": "25 °C",
+            "mean": 4.2,
+            "sd": 0.6,
+            "n": 8
+          },
+          {
+            "name": "35 °C",
+            "mean": 6.1,
+            "sd": 0.7,
+            "n": 8
+          }
+        ]
+      },
+      "expect": {
+        "se-0": 0.21,
+        "lo-0": 3.78,
+        "hi-0": 4.62,
+        "se-1": 0.25,
+        "lo-1": 5.61,
+        "hi-1": 6.59,
+        "overlap": "No: there is a gap between the two intervals",
+        "conclusion": "The difference between the means is likely statistically significant: chance alone is unlikely to explain it"
+      }
+    },
+    {
+      "id": "fertilizer",
+      "topic": "stats-confidence-intervals",
+      "input": {
+        "kind": "ci",
+        "text": "<p>Radish plants were grown with and without a fertilizer, and the mass of each root was measured.</p>",
+        "unit": "g",
+        "yLabel": "Mean root mass",
+        "d": 2,
+        "groups": [
+          {
+            "name": "No fertilizer",
+            "mean": 12.4,
+            "sd": 3.1,
+            "n": 6
+          },
+          {
+            "name": "Fertilizer",
+            "mean": 14.2,
+            "sd": 2.8,
+            "n": 6
+          }
+        ]
+      },
+      "expect": {
+        "se-0": 1.27,
+        "lo-0": 9.87,
+        "hi-0": 14.93,
+        "se-1": 1.14,
+        "lo-1": 11.91,
+        "hi-1": 16.49,
+        "overlap": "Yes: the two intervals overlap",
+        "conclusion": "The data do not show a statistically significant difference: chance could explain the gap between the means"
+      }
+    },
+    {
+      "id": "germination-time",
+      "topic": "stats-confidence-intervals",
+      "input": {
+        "kind": "ci",
+        "text": "<p>Seeds were soaked in water or left dry before planting, and the days until each seedling appeared were recorded.</p>",
+        "unit": "days",
+        "yLabel": "Mean days to emerge",
+        "d": 2,
+        "groups": [
+          {
+            "name": "Soaked",
+            "mean": 5.8,
+            "sd": 1.4,
+            "n": 25
+          },
+          {
+            "name": "Dry",
+            "mean": 6.4,
+            "sd": 1.6,
+            "n": 25
+          }
+        ]
+      },
+      "expect": {
+        "se-0": 0.28,
+        "lo-0": 5.24,
+        "hi-0": 6.36,
+        "se-1": 0.32,
+        "lo-1": 5.76,
+        "hi-1": 7.04,
+        "overlap": "Yes: the two intervals overlap",
+        "conclusion": "The data do not show a statistically significant difference: chance could explain the gap between the means"
+      }
+    }
+  ]
+}

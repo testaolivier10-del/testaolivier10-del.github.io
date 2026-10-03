@@ -78,7 +78,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.2 | CED topic map (own words) | — | done: `docs/apbio-ced-map.json` (61 topics; unverified against the official PDF, needs-author ced-verify) |
 | 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | done: map 777 concepts, 61 CED + 14 skills topics (`docs/apbio-phase0.md`); engine and generator (`docs/apbio-architecture.md`); nothing published, all pages noindex |
 | 0.4a | App pages: practice, review, exams, FRQ, dashboard, flashcards, search, teachers; share links | `claude/apbio-apps` | done against the placeholder sample (`docs/apbio-architecture.md`, "App pages") |
-| 0.4b | Simulators + skills tools | `claude/apbio-tools` | in progress |
+| 0.4b | Simulators + skills tools: osmosis and enzyme simulators, 6 skills tools + Hardy-Weinberg and Simpson (hidden until Units 7-8), design drills (placeholder) | `claude/apbio-tools` | merged into `claude/apbio-beta` |
 | 2 | Units 1-3 + statistics skills, Beta | `claude/apbio-beta` (authors on `claude/apbio-u1`, `-u2a`, `-u2b`, `-u3`, `-skills`) | writing |
 | 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
 | 4 | Cram kit (by 2027-03-01) | | not started |
@@ -129,6 +129,14 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    + 40% FRQ, labelled "Not calibrated". FRQ workspace gated like lessons, prompt and printable
    sheet always open (needs-author frq-gating). The dashboard seeds the exam date 2027-05-03 once
    (exam-date.js has no per-course default). teachers.html is generated, not an app.
+
+9. (2026-10-03) **Tools.** One tool = a `pages.json` `tools[]` entry, a script, a data file and
+   a validator, on a shared framework (`ApBioMath`, `ApBioProblems`, `ApBioTools`); details in
+   `docs/apbio-architecture.md`, "Tools". Tool data is served per published topic, so the
+   Hardy-Weinberg and Simpson tools (built now) go live with Units 7 and 8. The osmosis simulator
+   is the free one; the enzyme simulator is Premium (`tools`). Skills tools and drills are free
+   for now (owner to confirm, needs-author `tools-premium`). Formula-sheet conventions: sample SD
+   with n − 1, 95% CI ≈ mean ± 2 SE, T = °C + 273, R = 0.0831 L·bar/(mol·K), χ² at p = 0.05.
 
 ## 4. Map format (Phase 0)
 

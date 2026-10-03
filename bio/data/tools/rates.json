@@ -1,0 +1,251 @@
+{
+  "about": "Skills tool: rates of change and percent change. Solver and generator: ApBioProblems, kind rates (mode rate or pct). early and late are pairs of INDEXES into times (the two readings a rate is taken between).",
+  "slug": "rates",
+  "kind": "rates",
+  "topic": "stats-rates",
+  "intro": "<p>Work out how fast something changes from a table of measurements, and compare samples fairly with percent change.</p>",
+  "howItWorksTitle": "The formulas, and how answers are checked",
+  "howItWorks": "<p class=\"bt-eq\">rate = Δy / Δt = (y₂ − y₁) / (t₂ − t₁)</p><p class=\"bt-eq\">percent change = (final − initial) / initial × 100</p><ul><li>A rate always has a unit made of two units: the amount per unit of time (for example mL/min).</li><li>Percent change compares each sample with its own starting value. A loss gives a negative percent change: keep the sign.</li><li>An answer counts when it is within one unit of the last decimal place asked for, or within 1%.</li></ul>",
+  "contexts": [
+    {
+      "id": "catalase",
+      "topic": "stats-rates",
+      "mode": "rate",
+      "text": "<p>Catalase from potato extract was mixed with hydrogen peroxide, and the total oxygen collected was recorded every minute.</p>",
+      "label": "Total oxygen",
+      "unitY": "mL",
+      "unitT": "min",
+      "times": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "r0": [
+        4,
+        8
+      ],
+      "k": [
+        0.3,
+        0.55
+      ],
+      "early": [
+        0,
+        1
+      ],
+      "late": [
+        3,
+        5
+      ],
+      "dp": 1,
+      "d": 2,
+      "why": "The reaction slows as the hydrogen peroxide (the substrate) is used up."
+    },
+    {
+      "id": "amylase",
+      "topic": "stats-rates",
+      "mode": "rate",
+      "text": "<p>Amylase was added to starch, and the total sugar released was measured every 2 minutes.</p>",
+      "label": "Total sugar",
+      "unitY": "mg",
+      "unitT": "min",
+      "times": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "r0": [
+        3,
+        6
+      ],
+      "k": [
+        0.12,
+        0.25
+      ],
+      "early": [
+        0,
+        1
+      ],
+      "late": [
+        3,
+        5
+      ],
+      "dp": 1,
+      "d": 2,
+      "why": "The reaction slows as the starch (the substrate) runs low."
+    },
+    {
+      "id": "elodea",
+      "topic": "stats-rates",
+      "mode": "rate",
+      "text": "<p>An <i>Elodea</i> sprig under a bright lamp gave off oxygen bubbles, and the total number of bubbles was recorded every 2 minutes.</p>",
+      "label": "Total bubbles",
+      "unitY": "bubbles",
+      "unitT": "min",
+      "times": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "r0": [
+        10,
+        20
+      ],
+      "k": [
+        0.0005,
+        0.003
+      ],
+      "early": [
+        0,
+        2
+      ],
+      "late": [
+        3,
+        5
+      ],
+      "dp": 0,
+      "d": 2,
+      "why": "Light, temperature and carbon dioxide stayed the same, so photosynthesis ran at a steady rate."
+    },
+    {
+      "id": "osmosis-mass",
+      "topic": "stats-rates",
+      "mode": "pct",
+      "text": "<p>Potato cores were weighed, left in solutions for a day, and weighed again.</p>",
+      "label": "Core",
+      "unit": "g",
+      "gainItems": [
+        "Core in distilled water",
+        "Core in 0.1 M sucrose"
+      ],
+      "lossItems": [
+        "Core in 0.6 M sucrose",
+        "Core in 1.0 M sucrose"
+      ],
+      "initial": [
+        2.5,
+        4.5
+      ],
+      "gain": [
+        4,
+        20
+      ],
+      "loss": [
+        10,
+        30
+      ],
+      "dp": 2
+    },
+    {
+      "id": "bags",
+      "topic": "stats-rates",
+      "mode": "pct",
+      "text": "<p>Dialysis tubing bags were filled, weighed, left in beakers for 30 minutes and weighed again.</p>",
+      "label": "Bag",
+      "unit": "g",
+      "gainItems": [
+        "Bag of 0.6 M sucrose in water",
+        "Bag of 0.4 M sucrose in water"
+      ],
+      "lossItems": [
+        "Bag of water in 0.6 M sucrose",
+        "Bag of water in 0.8 M sucrose"
+      ],
+      "initial": [
+        10,
+        25
+      ],
+      "gain": [
+        3,
+        15
+      ],
+      "loss": [
+        3,
+        15
+      ],
+      "dp": 1
+    }
+  ],
+  "problems": [
+    {
+      "id": "catalase-fixed",
+      "topic": "stats-rates",
+      "input": {
+        "kind": "rates",
+        "mode": "rate",
+        "text": "<p>Catalase was mixed with hydrogen peroxide, and the total oxygen collected was recorded every minute.</p>",
+        "label": "Total oxygen",
+        "unitY": "mL",
+        "unitT": "min",
+        "times": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "values": [
+          0,
+          6.2,
+          10.8,
+          14,
+          16.2,
+          17.6
+        ],
+        "early": [
+          0,
+          1
+        ],
+        "late": [
+          3,
+          5
+        ],
+        "dp": 1,
+        "d": 2,
+        "why": "The reaction slows as the hydrogen peroxide is used up."
+      },
+      "expect": {
+        "rate-early": 6.2,
+        "rate-late": 1.8,
+        "trend": "It is slowing down"
+      }
+    },
+    {
+      "id": "cores-fixed",
+      "topic": "stats-rates",
+      "input": {
+        "kind": "rates",
+        "mode": "pct",
+        "text": "<p>Two potato cores were weighed, left in solutions for a day, and weighed again.</p>",
+        "label": "Core",
+        "unit": "g",
+        "items": [
+          {
+            "name": "Core in distilled water",
+            "initial": 3.4,
+            "final": 3.92
+          },
+          {
+            "name": "Core in 0.8 M sucrose",
+            "initial": 3.6,
+            "final": 2.61
+          }
+        ],
+        "dp": 2
+      },
+      "expect": {
+        "pct-0": 15.3,
+        "pct-1": -27.5
+      }
+    }
+  ]
+}
