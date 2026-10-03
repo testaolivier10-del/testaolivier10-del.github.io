@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="gpk-t gpk-d">
+<title id="gpk-t">How prokaryotes and eukaryotes organize their DNA</title>
+<desc id="gpk-d">Left: a bacterial cell with no nucleus. Its main DNA is one large circular chromosome in a region of the cytoplasm called the nucleoid, and the cell also holds two small circles of DNA, plasmids, which can carry a few extra genes. Right: a eukaryotic cell&#x27;s DNA packing, in four levels from left to right: the 2-nanometer double helix; the helix wrapped around clusters of histone proteins, forming nucleosomes like beads on a string; the string of nucleosomes coiled into a thicker fiber and folded into loops; and, during mitosis, a fully condensed linear chromosome of two sister chromatids. Below, a stretch of a chromosome in a cell that is not dividing: loosely packed euchromatin, where the proteins that read genes can reach the DNA, next to tightly packed heterochromatin, where they mostly cannot.</desc>
+<defs><marker id="gpk-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="130.0" y="28.0" font-size="14" text-anchor="middle" font-weight="700">Prokaryote (bacterium)</text>
+<rect x="20.0" y="44.0" width="220.0" height="170.0" rx="60" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<path d="M 70 128 C 70 80, 190 80, 190 128 C 190 176, 70 176, 70 128 Z" stroke="#0072B2" stroke-width="3" fill="none"/>
+<circle cx="205.0" cy="72.0" r="11.0" fill="none" stroke="#D55E00" stroke-width="2.5"/>
+<circle cx="60.0" cy="186.0" r="9.0" fill="none" stroke="#D55E00" stroke-width="2.5"/>
+<text x="130.0" y="124.0" font-size="12" text-anchor="middle">one circular</text>
+<text x="130.0" y="139.6" font-size="12" text-anchor="middle">chromosome</text>
+<text x="20.0" y="238.0" font-size="12" text-anchor="start">No nucleus: the chromosome lies in</text>
+<text x="20.0" y="253.6" font-size="12" text-anchor="start">the nucleoid. Plasmids (red) are small</text>
+<text x="20.0" y="269.2" font-size="12" text-anchor="start">extra circles of DNA.</text>
+<text x="500.0" y="28.0" font-size="14" text-anchor="middle" font-weight="700">Eukaryote: packing a linear chromosome</text>
+<polyline points="280.0,110.0 282.0,112.8 284.0,115.4 286.0,117.6 288.0,119.1 290.0,119.9 292.0,119.9 294.0,119.1 296.0,117.6 298.0,115.4 300.0,112.8 302.0,110.0 304.0,107.2 306.0,104.6 308.0,102.4 310.0,100.9 312.0,100.1 314.0,100.1 316.0,100.9 318.0,102.5 320.0,104.6 322.0,107.2 324.0,110.0 326.0,112.8 328.0,115.4 330.0,117.6 332.0,119.1 334.0,119.9 336.0,119.9 338.0,119.1 340.0,117.5 342.0,115.4 344.0,112.8 346.0,110.0 348.0,107.1 350.0,104.6 352.0,102.4 354.0,100.9 356.0,100.1 358.0,100.1" fill="none" stroke="#0072B2" stroke-width="2.5"/>
+<polyline points="280.0,110.0 282.0,107.2 284.0,104.6 286.0,102.4 288.0,100.9 290.0,100.1 292.0,100.1 294.0,100.9 296.0,102.4 298.0,104.6 300.0,107.2 302.0,110.0 304.0,112.8 306.0,115.4 308.0,117.6 310.0,119.1 312.0,119.9 314.0,119.9 316.0,119.1 318.0,117.5 320.0,115.4 322.0,112.8 324.0,110.0 326.0,107.2 328.0,104.6 330.0,102.4 332.0,100.9 334.0,100.1 336.0,100.1 338.0,100.9 340.0,102.5 342.0,104.6 344.0,107.2 346.0,110.0 348.0,112.9 350.0,115.4 352.0,117.6 354.0,119.1 356.0,119.9 358.0,119.9" fill="none" stroke="#0072B2" stroke-width="2.5"/>
+<text x="320.0" y="148.0" font-size="12" text-anchor="middle">DNA double</text>
+<text x="320.0" y="163.6" font-size="12" text-anchor="middle">helix, 2 nm</text>
+<line x1="368.0" y1="110.0" x2="392.0" y2="110.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#gpk-a)"/>
+<circle cx="410.0" cy="110.0" r="10.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<path d="M 397 104 C 404 96, 416 96, 423 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<path d="M 423 104 C 426 114, 424 118, 427 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<circle cx="440.0" cy="110.0" r="10.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<path d="M 427 104 C 434 96, 446 96, 453 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<path d="M 453 104 C 456 114, 454 118, 457 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<circle cx="470.0" cy="110.0" r="10.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<path d="M 457 104 C 464 96, 476 96, 483 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<path d="M 483 104 C 486 114, 484 118, 487 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<circle cx="500.0" cy="110.0" r="10.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<path d="M 487 104 C 494 96, 506 96, 513 104" stroke="#0072B2" stroke-width="2.5" fill="none"/>
+<text x="455.0" y="148.0" font-size="12" text-anchor="middle">nucleosomes: DNA</text>
+<text x="455.0" y="163.6" font-size="12" text-anchor="middle">around histones</text>
+<line x1="512.0" y1="110.0" x2="536.0" y2="110.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#gpk-a)"/>
+<ellipse cx="570.0" cy="80.0" rx="22.0" ry="13.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<ellipse cx="570.0" cy="110.0" rx="22.0" ry="13.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<ellipse cx="570.0" cy="140.0" rx="22.0" ry="13.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<text x="570.0" y="172.0" font-size="12" text-anchor="middle">coiled fiber</text>
+<text x="570.0" y="187.6" font-size="12" text-anchor="middle">folded in loops</text>
+<line x1="602.0" y1="110.0" x2="626.0" y2="110.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#gpk-a)"/>
+<rect x="648.0" y="56.0" width="20.0" height="110.0" rx="10" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<rect x="672.0" y="56.0" width="20.0" height="110.0" rx="10" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="670.0" cy="104.0" r="6.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<text x="670.0" y="188.0" font-size="12" text-anchor="middle">condensed</text>
+<text x="670.0" y="203.6" font-size="12" text-anchor="middle">chromosome</text>
+<text x="670.0" y="219.2" font-size="12" text-anchor="middle">(mitosis)</text>
+<text x="500.0" y="262.0" font-size="13" text-anchor="middle" font-weight="700">A chromosome in a cell that is not dividing</text>
+<circle cx="300.0" cy="300.0" r="9.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<line x1="309.0" y1="300.0" x2="331.0" y2="300.0" stroke="#0072B2" stroke-width="2.5"/>
+<circle cx="340.0" cy="300.0" r="9.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<line x1="349.0" y1="300.0" x2="371.0" y2="300.0" stroke="#0072B2" stroke-width="2.5"/>
+<circle cx="380.0" cy="300.0" r="9.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<line x1="389.0" y1="300.0" x2="411.0" y2="300.0" stroke="#0072B2" stroke-width="2.5"/>
+<circle cx="420.0" cy="300.0" r="9.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<line x1="429.0" y1="300.0" x2="451.0" y2="300.0" stroke="#0072B2" stroke-width="2.5"/>
+<circle cx="460.0" cy="300.0" r="9.0" fill="#E4D9F0" stroke="#6A3D9A" stroke-width="2"/>
+<line x1="469.0" y1="300.0" x2="491.0" y2="300.0" stroke="#0072B2" stroke-width="2.5"/>
+<circle cx="510.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="528.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="546.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="564.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="582.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="600.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="618.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="636.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<circle cx="654.0" cy="300.0" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="2"/>
+<text x="380.0" y="336.0" font-size="12" text-anchor="middle">euchromatin: loosely packed;</text>
+<text x="380.0" y="351.6" font-size="12" text-anchor="middle">gene-reading proteins can reach the DNA</text>
+<text x="582.0" y="336.0" font-size="12" text-anchor="middle">heterochromatin: tightly packed;</text>
+<text x="582.0" y="351.6" font-size="12" text-anchor="middle">genes here are mostly silent</text>
+</g>
+</svg>

@@ -1,0 +1,83 @@
+{
+  "topic": "dna-rna-structure",
+  "hook": "<p>Stretch out the DNA from just one of your cells and it would reach about 2 meters, yet it fits inside a nucleus a few micrometers across. Until the 1940s, most biologists did not even think this molecule carried genes: proteins, built from twenty different amino acids, looked far better suited to hold complex instructions than a chain of only four kinds of nucleotide. Three experiments with bacteria and viruses changed their minds, and the structure of the double helix showed how a simple chain can store and copy information.</p>",
+  "prereq": [
+    {
+      "q": "In DNA, adenine pairs with",
+      "options": ["thymine, held by two hydrogen bonds", "guanine, held by three hydrogen bonds", "uracil, held by two hydrogen bonds"],
+      "correct": 0,
+      "why": "A pairs with T (two hydrogen bonds) and G with C (three). Uracil replaces thymine in RNA.",
+      "review": "nucleic-acids"
+    },
+    {
+      "q": "Which element is found in DNA but not in most proteins?",
+      "options": ["Phosphorus, in every nucleotide's phosphate group", "Sulfur, in two of the amino acids", "Carbon, in every organic molecule"],
+      "correct": 0,
+      "why": "Each nucleotide carries a phosphate. Sulfur is in some amino acids (proteins), and carbon is in both.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "Where is the DNA of a prokaryotic cell?",
+      "options": ["In the cytoplasm, in a region with no membrane around it", "Inside a nucleus surrounded by a double membrane", "Inside the ribosomes"],
+      "correct": 0,
+      "why": "Prokaryotes have no nucleus; their DNA sits in a region of the cytoplasm called the nucleoid.",
+      "review": "cell-structure-function"
+    }
+  ],
+  "figure": {
+    "figure": "purine-pyrimidine-width",
+    "caption": "Every base pair in the double helix is one two-ring purine (A or G) plus one one-ring pyrimidine (T or C), so the helix is the same width all along its length."
+  },
+  "chain": [
+    {
+      "cause": "Harmless R bacteria are mixed with heat-killed cells of the deadly S strain.",
+      "effect": "Some R cells become S cells and pass the change to their offspring: a molecule from the dead cells changed their heredity. This is bacterial transformation."
+    },
+    {
+      "cause": "Before mixing, the dead-cell extract is treated with enzymes that destroy protein, RNA or DNA.",
+      "effect": "Only destroying DNA stops transformation, so DNA is the transforming molecule."
+    },
+    {
+      "cause": "Phages labeled with <sup>35</sup>S (in protein) or <sup>32</sup>P (in DNA) infect bacteria, and the coats are shaken off.",
+      "effect": "The <sup>32</sup>P goes into the cells and into the next phages, but the <sup>35</sup>S stays outside: the phage's genes are DNA."
+    },
+    {
+      "cause": "DNA holds information in its base sequence, and each base pairs with one partner (A with T, G with C).",
+      "effect": "Each strand sets the sequence of the other, which is what makes copying possible; and because every pair is a purine plus a pyrimidine, the helix has a uniform width."
+    },
+    {
+      "cause": "A eukaryotic cell must fit meters of DNA into a tiny nucleus.",
+      "effect": "Its linear chromosomes are wrapped around histones as nucleosomes, then coiled and folded into chromatin; a bacterium keeps one circular chromosome, often with plasmids."
+    },
+    {
+      "cause": "Chromatin is packed loosely in some regions (euchromatin) and tightly in others (heterochromatin).",
+      "effect": "Proteins that read genes can reach DNA in euchromatin but mostly not in heterochromatin, so packing helps decide which genes can be used."
+    }
+  ],
+  "ideas": [
+    "<b>Hereditary material</b> is DNA in every cell and in many viruses; some viruses (<b>RNA viruses</b>, such as influenza) carry their genes in RNA.",
+    "<b>Evidence:</b> Griffith found <b>transformation</b> (1928); Avery, MacLeod and McCarty showed only DNase destroys the transforming principle (1944); Hershey and Chase showed phage DNA, not protein, enters the cell (1952).",
+    "<b>Purines</b> (A, G) have two rings; <b>pyrimidines</b> (T, C, and U in RNA) have one. Each pair is purine + pyrimidine, so the helix has a <b>uniform width</b>, and <b>Chargaff's rules</b> hold: A = T and G = C in double-stranded DNA.",
+    "Prokaryotes: one circular chromosome plus <b>plasmids</b>, no nucleus. Eukaryotes: several <b>linear chromosomes</b> in a nucleus, wound on <b>histones</b> as <b>nucleosomes</b>.",
+    "<b>Euchromatin</b> is loose and its genes can be read; <b>heterochromatin</b> is tight and mostly silent. A cell's full set of DNA is its <b>genome</b>."
+  ],
+  "misconception": {
+    "wrong": "Hershey and Chase showed that the phage's protein coat goes into the bacterium and makes the new phages.",
+    "right": "The coat stays outside: the <sup>35</sup>S label on protein came off with blending, while the <sup>32</sup>P label on DNA went into the cells and turned up in the new phages. DNA is what enters and carries the instructions."
+  },
+  "check": [
+    "bio-dna-rna-structure-1",
+    "bio-dna-rna-structure-2",
+    "bio-dna-rna-structure-6",
+    "bio-dna-rna-structure-8",
+    "bio-dna-rna-structure-12",
+    "bio-dna-rna-structure-13",
+    "bio-dna-rna-structure-15"
+  ],
+  "summary": "<p>DNA is the hereditary material of all cells and many viruses; some viruses use RNA. Griffith's mice showed that something from dead S bacteria could transform live R bacteria; Avery, MacLeod and McCarty found that only destroying DNA stopped transformation; Hershey and Chase showed that a phage's DNA, not its protein, enters the cell and reaches the next generation. In the double helix, each base pair joins a two-ring purine to a one-ring pyrimidine, which keeps the width uniform and gives Chargaff's rules (A = T, G = C). Prokaryotes have one circular chromosome, often with plasmids, in the cytoplasm; eukaryotes have linear chromosomes in a nucleus, wound around histones into nucleosomes. Loose euchromatin can be read; tight heterochromatin is mostly silent.</p>",
+  "connections": [
+    { "href": "../notes/nucleic-acids.html", "label": "Back: nucleotides, base pairing and strand direction (1.6)" },
+    { "href": "../notes/cell-structure-function.html", "label": "Back: where DNA sits in prokaryotic and eukaryotic cells (2.1)" },
+    { "href": "../notes/dna-replication.html", "label": "Next: how base pairing lets DNA be copied (6.2)" }
+  ]
+}
