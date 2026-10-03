@@ -1,0 +1,80 @@
+{
+  "topic": "natural-selection-intro",
+  "hook": "<p>On the white sand dunes of Florida's Gulf coast, beach mice have pale coats. A few miles inland, mice of the same species living on dark soil are brown. No mouse ever chose its color or changed it. Owls hunting at night catch mice that stand out from the ground more often, and over many generations that difference in who survives, and who has pups, has made each population match its ground. This is natural selection, the idea Charles Darwin and Alfred Russel Wallace worked out in the 1850s.</p>",
+  "prereq": [
+    {
+      "q": "Where do alleles that never existed before come from?",
+      "options": ["Random mutations in DNA", "The environment directing which genes change", "Meiosis creating new genes in each gamete"],
+      "correct": 0,
+      "why": "A mutation is a random change in the base sequence; it is how alleles that never existed before arise. Meiosis reshuffles existing alleles but does not invent new ones.",
+      "review": "mutations"
+    },
+    {
+      "q": "How does meiosis make offspring of the same parents differ from one another?",
+      "options": ["Crossing over and independent assortment give each gamete a new combination of alleles", "Each gamete receives a complete copy of both parents' chromosomes", "Mitosis after fertilization shuffles the alleles"],
+      "correct": 0,
+      "why": "Crossing over swaps segments between homologs, and each homologous pair lines up independently, so every gamete carries a different mix.",
+      "review": "meiosis-genetic-diversity"
+    },
+    {
+      "q": "An organism's phenotype is",
+      "options": ["its observable traits, produced by its genotype and its environment", "the set of alleles it carries", "the traits it will pass on, whatever its genes"],
+      "correct": 0,
+      "why": "The genotype is the alleles; the phenotype is what those alleles, together with the environment, produce.",
+      "review": "mendelian-genetics"
+    }
+  ],
+  "figure": {
+    "figure": "selection-logic",
+    "caption": "The logic of natural selection. Beetles differ in an inherited trait; more are born than survive; birds catch more of the beetles that stand out; survivors pass on their alleles. Dark beetles go from 30% to 50% in one generation, though no beetle changed color."
+  },
+  "chain": [
+    {
+      "cause": "Mutations and the shuffling of alleles in meiosis make individuals in a population differ, and some of those differences are inherited.",
+      "effect": "The population carries heritable variation: offspring tend to resemble their parents in these traits."
+    },
+    {
+      "cause": "Populations produce more offspring than food, space and other resources can support.",
+      "effect": "Individuals compete for limited resources and face predators, disease and harsh weather, so many die before they reproduce."
+    },
+    {
+      "cause": "Some heritable traits make survival or reproduction more likely in the current environment, such as a coat that matches the ground where owls hunt.",
+      "effect": "Individuals with those traits leave more surviving offspring than others: differential reproductive success."
+    },
+    {
+      "cause": "Parents pass their alleles to their offspring.",
+      "effect": "The next generation has a higher proportion of individuals with the helpful trait than the last one."
+    },
+    {
+      "cause": "The same pressure acts generation after generation.",
+      "effect": "The population's makeup changes over time: evolution by natural selection. Individuals do not change their inherited traits; the proportions in the population do."
+    }
+  ],
+  "ideas": [
+    "<b>Natural selection</b> needs three things: <b>heritable variation</b> in a trait, <b>more offspring than can survive</b>, and differences in survival or reproduction linked to that trait.",
+    "<b>Charles Darwin</b> and <b>Alfred Russel Wallace</b> proposed it independently (1858); Darwin called evolution <b>descent with modification</b>.",
+    "<b>Fitness</b> is reproductive success: the number of offspring that survive to reproduce, not strength or lifespan. <b>Relative fitness</b> = a type's offspring ÷ the best type's offspring.",
+    "A <b>selective pressure</b> is a feature of the environment, such as a predator, drought or disease, that makes some heritable traits leave more offspring than others.",
+    "Selection acts on individuals, but a <b>population</b> is what evolves, and it can only act on variation that already exists."
+  ],
+  "misconception": {
+    "wrong": "Animals develop the traits they need, and those changes are passed to their offspring, so a population of mice on light sand turns pale because pale coats help them hide.",
+    "right": "No mouse changes its inherited coat because it would help. Pale and dark alleles already exist in the population, owls catch more of the mice that stand out, and the survivors' alleles fill the next generation. Changes an individual makes during its life do not alter the DNA in its gametes."
+  },
+  "check": [
+    "bio-natural-selection-intro-1",
+    "bio-natural-selection-intro-3",
+    "bio-natural-selection-intro-5",
+    "bio-natural-selection-intro-11",
+    "bio-natural-selection-intro-12",
+    "bio-natural-selection-intro-13",
+    "bio-natural-selection-intro-15",
+    "bio-natural-selection-intro-20"
+  ],
+  "summary": "<p>Natural selection is a main mechanism of evolution, proposed independently by Charles Darwin and Alfred Russel Wallace. Individuals in a population differ, and some of the differences are heritable. Populations produce more offspring than resources can support, so individuals compete and many die before reproducing. Those whose heritable traits suit the current environment survive and reproduce more, so their alleles become more common in the next generation; repeated over many generations, the population changes. Fitness is measured by reproductive success, the number of offspring that survive to reproduce, and relative fitness compares types with the most successful one. A selective pressure is the feature of the environment that causes these differences. Selection acts on individuals and on variation that already exists; populations, not individuals, evolve.</p>",
+  "connections": [
+    { "href": "../notes/mutations.html", "label": "Back: mutations, where alleles come from (6.7)" },
+    { "href": "../notes/meiosis-genetic-diversity.html", "label": "Back: how meiosis shuffles alleles (5.2)" },
+    { "href": "../notes/natural-selection.html", "label": "Next: how a changing environment shapes selection (7.2)" }
+  ]
+}

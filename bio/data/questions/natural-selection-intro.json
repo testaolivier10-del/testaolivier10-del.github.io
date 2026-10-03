@@ -1,0 +1,639 @@
+{
+  "stimuli": {
+    "natural-selection-intro-s1": {
+      "kind": "setup",
+      "title": "Coat color and survival in outdoor enclosures",
+      "text": "<p>In a species of mouse, coat color is either light or dark. Researchers built eight identical outdoor enclosures, four with light sandy soil and four with dark soil. Into each enclosure they released 10 light-coated and 10 dark-coated adult mice of the same age and size. In six enclosures, owls that hunt at night could fly in; two enclosures (one of each soil) were covered with netting that kept owls out. After four weeks the researchers trapped every surviving mouse. Results for the enclosures of each kind were combined.</p>",
+      "table": {
+        "caption": "Mice released and alive after four weeks",
+        "cols": [
+          "Soil",
+          "Owls",
+          "Coat",
+          "Released",
+          "Alive after 4 weeks"
+        ],
+        "rows": [
+          [
+            "Light sand",
+            "Present",
+            "Light",
+            "30",
+            "23"
+          ],
+          [
+            "Light sand",
+            "Present",
+            "Dark",
+            "30",
+            "10"
+          ],
+          [
+            "Dark soil",
+            "Present",
+            "Light",
+            "30",
+            "9"
+          ],
+          [
+            "Dark soil",
+            "Present",
+            "Dark",
+            "30",
+            "21"
+          ],
+          [
+            "Light sand",
+            "Kept out",
+            "Light",
+            "10",
+            "9"
+          ],
+          [
+            "Light sand",
+            "Kept out",
+            "Dark",
+            "10",
+            "9"
+          ],
+          [
+            "Dark soil",
+            "Kept out",
+            "Light",
+            "10",
+            "9"
+          ],
+          [
+            "Dark soil",
+            "Kept out",
+            "Dark",
+            "10",
+            "8"
+          ]
+        ]
+      }
+    },
+    "natural-selection-intro-s2": {
+      "kind": "table",
+      "title": "Lifetime reproduction of a meadow plant with three flower colors",
+      "text": "<p>A meadow plant has white, pink or purple flowers, and flower color is inherited. Researchers marked 50 plants of each color in one meadow and counted the seeds each plant made. They then followed every seed to see whether it grew into a plant that flowered the next year. Purple plants made the largest seeds and pink plants the smallest.</p>",
+      "table": {
+        "caption": "Seeds and surviving offspring per plant (means of 50 plants per color)",
+        "cols": [
+          "Flower color",
+          "Seeds per plant",
+          "Seeds that grew into flowering plants (%)",
+          "Flowering offspring per plant"
+        ],
+        "rows": [
+          [
+            "White",
+            "120",
+            "5.0",
+            "6.0"
+          ],
+          [
+            "Pink",
+            "200",
+            "2.5",
+            "5.0"
+          ],
+          [
+            "Purple",
+            "80",
+            "10.0",
+            "8.0"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-natural-selection-intro-1",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s1",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "With owls, mice matching the soil survived at about twice the rate of mismatched mice; without owls, both coats survived well.",
+        "Light-coated mice survived better than dark-coated mice on both soils, whether or not the owls could reach them to hunt.",
+        "With owls present, survival was similar for both coats, but it differed between coats once the owls were kept out.",
+        "Dark soil lowered the survival of both coat colors compared with light sand, with or without owls."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "On light sand with owls, 23 of 30 light mice (77%) survived against 10 of 30 dark mice (33%); on dark soil the pattern reversed, 21 of 30 dark (70%) against 9 of 30 light (30%). Without owls, 8 or 9 of 10 survived in every group.",
+        "options": [
+          "Correct: matched mice survived at roughly twice the rate of mismatched mice when owls could hunt, and the difference disappeared without owls.",
+          "On dark soil the dark mice survived better (21 of 30 against 9 of 30), so light coats were not better on both soils.",
+          "This reverses the data: the large difference between coats appears with owls, and survival is similar without them.",
+          "Dark-coated mice survived well on dark soil; survival depended on the match between coat and soil, not on the soil alone."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-2",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s1",
+      "q": "For the light-sand enclosures with owls, calculate the survival of dark-coated mice relative to light-coated mice (proportion of dark mice surviving ÷ proportion of light mice surviving). Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.43,
+        "tol": 0.01,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Dark: 10 ÷ 30 = 0.333. Light: 23 ÷ 30 = 0.767. Relative survival = 0.333 ÷ 0.767 = 0.43. On light sand, a dark mouse was less than half as likely as a light mouse to survive the four weeks."
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-3",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s1",
+      "q": "Why did the researchers include enclosures covered with netting?",
+      "options": [
+        "To test whether owls cause the survival differences, with everything else kept the same",
+        "To find out which coat color owls prefer to eat when they are offered both colors at once",
+        "To let the mice breed undisturbed so that the coat colors of their offspring could be counted",
+        "To measure how much the coats of the protected mice changed color during the four weeks"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The netted enclosures are a control: same soils, same mice, same time, but no owls. Survival there was high and similar for both coats, so the differences in the open enclosures can be attributed to owls.",
+        "options": [
+          "Correct: removing only the owls tests whether they are the cause of the difference.",
+          "No owls could reach the netted enclosures, so they cannot show what owls choose.",
+          "The study lasted four weeks and counted adults that survived; it did not count offspring.",
+          "Coat color in adult mice is inherited and does not change to match the soil; the netting was not there to measure color change."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-4",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s1",
+      "q": "Which explanation best accounts for why survival depended on the match between coat and soil?",
+      "options": [
+        "Owls hunt by sight, so they find mice that contrast with the ground more often and catch more of them.",
+        "Mice on soil that matched their coat found more food, so they were stronger and escaped owls more often.",
+        "Mice that sensed they did not match the soil stayed hidden, so the owls caught the matching mice instead.",
+        "The soil color changed how fast each mouse's coat grew, and slow coat growth made mice easier to catch."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mismatched mice died at higher rates only when owls could hunt, which fits owls finding visible mice more easily. The owls are the selective pressure; coat color is the heritable trait it acts on.",
+        "options": [
+          "Correct: the difference appears only with owls, and a visual predator explains why contrast matters.",
+          "Nothing in the data concerns food, and without owls both coat colors survived equally well on both soils.",
+          "This predicts the reverse of the data: mismatched mice died more, not less.",
+          "Coat color is inherited and fixed in adults; the data show differences only when owls were present."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-5",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s1",
+      "q": "Coat color in this species is inherited. A wild population of these mice on light sand starts with 50% dark-coated mice, and owls keep killing mice at the rates in the table. Which prediction is best supported?",
+      "options": [
+        "Over generations the percentage of dark mice falls, because dark mice leave fewer surviving offspring.",
+        "Dark mice gradually grow lighter coats as they spend more of their lives on light sand.",
+        "The percentage of dark mice stays at 50%, because coat color is set by alleles, not by owls.",
+        "Dark mice vanish from the population in a single generation, because 67% of them die."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Dark mice survive at less than half the rate of light mice on light sand, so fewer dark parents breed, and the dark allele makes up a smaller share of each new generation.",
+        "options": [
+          "Correct: differential survival, repeated each generation, shifts the proportions.",
+          "Adult mice do not change their inherited coat color in response to the soil.",
+          "Owls do not change any mouse's alleles, but they change which mice survive to pass their alleles on, so the proportions change.",
+          "A third of dark mice survive and breed, so dark mice decline over several generations rather than disappearing at once."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-6",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "natural-selection-intro-s2",
+      "q": "Using flowering offspring per plant as the measure of fitness, calculate the relative fitness of white-flowered plants. Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.75,
+        "tol": 0.01,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "The most successful type is purple, with 8.0 flowering offspring per plant, so its relative fitness is 1. White: 6.0 ÷ 8.0 = 0.75."
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-7",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s2",
+      "q": "A student claims that pink-flowered plants have the highest fitness because they make the most seeds. Which response is best supported by the data?",
+      "options": [
+        "Fitness counts offspring that survive to reproduce, and pink plants leave the fewest: 5.0 each.",
+        "The claim is right, because seed number is the standard way biologists measure the fitness of a plant.",
+        "The claim is right for this year, because the seeds of pink plants will have more chances to grow next year.",
+        "Pink plants have the lowest fitness because their seeds are small, and small seeds rarely sprout."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Pink plants make 200 seeds, but only 2.5% become flowering plants: 200 × 0.025 = 5.0. Purple plants make 80 seeds, 10% of which flower: 8.0. Surviving, reproducing offspring are what pass alleles on.",
+        "options": [
+          "Correct: reproductive success is measured in offspring that survive to reproduce.",
+          "Seed number alone ignores survival; most of the pink plants' seeds never become flowering plants.",
+          "The table already follows the seeds to flowering the next year, and pink plants leave the fewest.",
+          "Small seeds lower the chance of growing (2.5%), but 5 offspring per pink plant still flowered. The key point is the count of flowering offspring, which is lowest for pink."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-8",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "natural-selection-intro-s2",
+      "q": "If conditions in the meadow stay the same for many generations, which change in the population is most likely?",
+      "options": [
+        "Purple-flowered plants become a larger share of the population.",
+        "Pink-flowered plants become a larger share, because they make the most seeds.",
+        "The shares of the three colors stay the same, because the plants grow side by side in one meadow.",
+        "White-flowered plants become the largest share, because they are intermediate in both seed number and survival."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Flower color is inherited and purple plants leave the most flowering offspring (8.0 per plant), so each generation has a larger share of purple plants than the one before.",
+        "options": [
+          "Correct: the type with the highest fitness increases in frequency.",
+          "Seed number is not fitness; pink plants leave the fewest flowering offspring.",
+          "Sharing a meadow does not stop selection; the colors leave different numbers of offspring in that meadow.",
+          "Being intermediate does not help here: white plants leave 6.0 offspring, fewer than purple's 8.0."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-9",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "natural-selection-intro-s2",
+      "q": "In a dry year, the percentage of seeds that grow into flowering plants is cut in half for all three colors equally. How does this affect the relative fitness of white-flowered plants?",
+      "options": [
+        "It stays at 0.75, because every color's offspring number falls by the same factor.",
+        "It falls to about 0.38, because white plants leave half as many offspring.",
+        "It rises toward 1, because a harsh year makes the colors more alike.",
+        "It can no longer be calculated, because no color reaches its usual number of offspring."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "White: 120 × 2.5% = 3.0; purple: 80 × 5.0% = 4.0. Relative fitness = 3.0 ÷ 4.0 = 0.75, the same as before. Relative fitness compares types, so a change that affects all types equally does not change it.",
+        "options": [
+          "Correct: halving every color's survival leaves the ratios unchanged.",
+          "White plants' offspring halve, but so do purple plants', so the ratio stays 0.75.",
+          "Survival falls by the same factor for every color, so the gap between them in relative terms does not shrink.",
+          "Relative fitness can always be calculated by dividing by the most successful type, even in a bad year."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-10",
+      "type": "multi",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which conditions are needed for natural selection to change a trait in a population? Select ALL that apply.",
+      "options": [
+        "Individuals differ in the trait.",
+        "The differences are at least partly inherited.",
+        "The differences affect survival or reproduction.",
+        "Individuals sense which version of the trait would help them.",
+        "The environment directs mutations toward the helpful trait.",
+        "Each offspring born survives to reproduce."
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "why": {
+        "correct": "Selection needs variation, inheritance of that variation, and differences in survival or reproduction linked to it. With all three, the helpful version becomes more common over generations.",
+        "options": [
+          "Needed: with no variation there is nothing to select among.",
+          "Needed: if the differences are not inherited, the survivors' offspring will not resemble them.",
+          "Needed: if the trait makes no difference to survival or reproduction, its frequency does not change by selection.",
+          "Not needed: selection involves no awareness or choice by individuals.",
+          "Not needed, and not true: mutations arise at random with respect to what would help.",
+          "This would remove selection: if every offspring survived and reproduced, no trait would leave more offspring than another."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-11",
+      "type": "order",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps of natural selection in a population of beetles on dark soil in order.",
+      "options": [
+        "Beetles differ in color, and color is inherited.",
+        "More beetles hatch than the soil can feed, and birds hunt them.",
+        "Birds catch more light beetles, which stand out on dark soil.",
+        "Dark survivors leave more offspring than light survivors.",
+        "The next generation has a higher proportion of dark beetles."
+      ],
+      "why": {
+        "correct": "Heritable variation comes first; overproduction and a selective pressure mean not all survive; the trait affects who survives; survivors reproduce; the population's makeup shifts."
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-12",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "An old explanation for giraffes' long necks says that each giraffe stretched its neck to reach high leaves, its neck grew a little longer, and its offspring inherited the longer neck. What is the main flaw in this explanation?",
+      "options": [
+        "Changes made to the body during life do not alter the DNA in gametes, so they are not inherited.",
+        "Giraffes could not have stretched their necks, because the length of a neck is fixed at birth.",
+        "It leaves out mutation, which on its own would lengthen the necks of a whole herd within one generation.",
+        "Acquired traits can be inherited, but neck length is too complex a trait to be passed to offspring."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Inheritance runs through the alleles in gametes. Stretching does not change those alleles, so a stretched neck is not passed on. Selection explains long necks through inherited differences in neck length that already existed.",
+        "options": [
+          "Correct: traits acquired during life are not inherited.",
+          "Necks grow after birth; the flaw is not about stretching but about inheritance.",
+          "A mutation changes one individual's alleles at random; it does not lengthen necks across a population in one generation.",
+          "Neck length is heritable; what is not inherited is a change acquired by stretching."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-13",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which deer has the highest fitness?",
+      "options": [
+        "A small male that lives 4 years and fathers 7 fawns that survive to breed",
+        "A large male that lives 15 years and fathers 3 fawns that survive to breed",
+        "A female that lives 12 years and gives birth to 10 fawns, 2 of which survive to breed",
+        "A male that wins the most fights in the herd and fathers 1 fawn that survives to breed"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Fitness is the number of offspring that survive to reproduce. The small male leaves 7, more than any other deer listed, whatever its size or lifespan.",
+        "options": [
+          "Correct: 7 offspring that breed is the highest reproductive success here.",
+          "Size and a long life matter only through offspring; 3 breeding fawns is fewer than 7.",
+          "Ten fawns born, but only 2 reach breeding age, so this female's fitness is 2.",
+          "Winning fights is not fitness unless it leads to offspring; this male leaves 1."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-14",
+      "type": "predict",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a mountain hare population, fur thickness is heritable. Thick fur helped hares survive cold winters, but a long run of warm winters begins, and thick-furred hares now overheat and leave fewer young. Predict the effect of many warm winters on each of these.",
+      "variables": [
+        {
+          "name": "Proportion of newborn hares with thick fur, many generations later",
+          "answer": "down",
+          "why": "Thick-furred hares leave fewer young, so their alleles make up a smaller share of each generation."
+        },
+        {
+          "name": "Number of surviving young left by a thick-furred hare compared with a thin-furred hare",
+          "answer": "down",
+          "why": "Overheating lowers the survival and breeding of thick-furred hares, which is what makes the trait less fit."
+        },
+        {
+          "name": "Number of copies of the thick-fur allele in each cell of a thick-furred adult that survives",
+          "answer": "none",
+          "why": "Selection changes who survives and breeds, not the alleles inside a living individual."
+        },
+        {
+          "name": "Average fur thickness of the population, many generations later",
+          "answer": "down",
+          "why": "As thin-furred hares leave more offspring, the population average shifts toward thinner fur."
+        }
+      ],
+      "why": {
+        "correct": "The selective pressure has changed, so the favored trait has changed. The population's makeup shifts over generations; no individual's alleles change."
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-15",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "After a hurricane swept over a small island, the lizards that survived had larger toe pads, on average, than lizards measured on the island just before the storm. Which additional finding would best support the claim that the population evolved?",
+      "options": [
+        "The survivors' offspring, raised in the same conditions as earlier lizards' offspring, also have larger toe pads.",
+        "The survivors' toe pads grew larger in the months after the storm, as they climbed in damaged trees.",
+        "Lizards with large toe pads were seen clinging to branches during the storm while others were blown away.",
+        "The survivors were older, and so had larger bodies and feet, on average, than the lizards measured before the storm."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Evolution is a change in the inherited makeup of a population across generations. If the survivors' offspring, raised in the same conditions, also have larger toe pads, the difference is heritable and the next generation has shifted.",
+        "options": [
+          "Correct: it shows the change is inherited and appears in the next generation.",
+          "Growth during an individual's life is not inherited, so this would weaken the claim.",
+          "This shows how survivors were selected within one generation, but not that the trait is inherited by the next.",
+          "Age differences would offer another explanation for larger pads, weakening the claim rather than supporting it."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-16",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What did Charles Darwin mean by \"descent with modification\"?",
+      "options": [
+        "Species living today descend from earlier species and have changed over many generations.",
+        "Each individual modifies its traits during life and passes the changes to its offspring.",
+        "Species were formed separately and have stayed the same since they first appeared.",
+        "Individuals change over their lifetimes, while species themselves stay unchanged."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Darwin's phrase means that living species are the modified descendants of earlier ones; natural selection was his and Wallace's explanation of how the modification happens.",
+        "options": [
+          "Correct: descent from earlier species, with change across generations.",
+          "This is inheritance of acquired traits, which Darwin's theory does not need and which does not happen.",
+          "This is the opposite of descent with modification.",
+          "Darwin's point is that species change over generations; individual lifetime changes are not inherited."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-17",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A female cod can release millions of eggs a year, yet a cod population can stay roughly the same size for decades. Which conclusion follows?",
+      "options": [
+        "Almost all offspring die before reproducing, as young fish compete for limited resources or are eaten.",
+        "Cod release more eggs in years when the population is small and fewer when it is large.",
+        "Most eggs go unfertilized, so the number of young that hatch matches the number of adults that die each year.",
+        "The high egg number shows that cod have higher fitness than fish that release fewer eggs."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If each pair's millions of eggs gave even a few dozen breeding adults, the population would explode. A steady size means that on average about two offspring per pair survive to breed: overproduction plus heavy losses, the conditions for selection.",
+        "options": [
+          "Correct: overproduction with a steady population means most offspring die before reproducing.",
+          "Nothing in the observation suggests egg number tracks how many cod there are; the point is that most young die.",
+          "Even if many eggs go unfertilized, the number that hatch far exceeds the number that live to breed.",
+          "Fitness counts surviving offspring that reproduce, not eggs; comparing egg numbers alone says nothing about fitness."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-18",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "No beetle in a population can digest a plant that contains a certain toxin. A fire destroys the beetles' other food plants, leaving the toxic plant. What is the most likely result?",
+      "options": [
+        "Unless heritable variation for tolerance exists or arises by mutation, selection cannot favor it, and the population may crash.",
+        "The beetles develop toxin tolerance within a generation or two, because they need the plant to survive.",
+        "Natural selection produces a new tolerance allele in the beetles that try hardest to eat the toxic plant.",
+        "Beetles that eat the plant adjust their digestion over their lives and pass that adjustment on to their offspring."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Selection sorts existing heritable variation; it does not create it. Tolerance can spread only if an allele for it is present or arises by a random mutation. If none does, most beetles may starve.",
+        "options": [
+          "Correct: with no heritable variation in tolerance, there is nothing for selection to favor.",
+          "Need does not produce alleles; mutations arise at random.",
+          "Selection does not make alleles; mutation does, and effort does not cause mutations.",
+          "Changes made during an individual's life do not alter its gametes' DNA and are not inherited."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-19",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "In lakes with trout, small fish called sticklebacks with more armor plates survive better than those with fewer plates; in lakes without trout, they do not. What is the selective pressure in this example?",
+      "options": [
+        "Trout catching and eating sticklebacks",
+        "The alleles that control the number of plates",
+        "The armor plates on the sticklebacks' sides",
+        "The number of offspring each stickleback produces"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A selective pressure is the feature of the environment that makes some heritable traits survive or reproduce better. Here, being caught by trout is what favors fish with more plates.",
+        "options": [
+          "Correct: the trout are the environmental factor that sorts the fish.",
+          "The alleles are the source of the heritable variation that selection acts on, not the pressure.",
+          "The plates are the trait being selected, not the cause of selection.",
+          "Offspring number measures the outcome (fitness); it is not the environmental cause."
+        ]
+      }
+    },
+    {
+      "id": "bio-natural-selection-intro-20",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "natural-selection-intro",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which statement about natural selection is correct?",
+      "options": [
+        "It acts on individuals, but its effect is a change in the population's traits over generations.",
+        "It changes the inherited traits of individuals so that each one fits its environment better.",
+        "It acts on whole populations by making the individuals more similar within a single generation.",
+        "It works toward a goal: the best possible version of each trait for the environment a population lives in."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Individuals survive and reproduce or do not; that is where selection acts. The result, a shift in which traits are common, appears in the population across generations.",
+        "options": [
+          "Correct: individuals are selected, populations evolve.",
+          "An individual's inherited traits do not change; which individuals reproduce changes.",
+          "Selection's effect accumulates over generations; it does not reshape a population's individuals within one.",
+          "Selection has no goal; it favors whatever works better now, and that changes when the environment changes."
+        ]
+      }
+    }
+  ]
+}
