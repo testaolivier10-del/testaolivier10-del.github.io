@@ -41,11 +41,17 @@ course does meanwhile.
 - **tools-premium** (open). Spec: one simulator free, every simulator Premium. Osmosis is free and
   enzyme is Premium. The spec does not say whether the skills tools (stats practice, graph
   builder) and the design drills are Premium; they are free for now. Owner to decide.
-- **design-drills-review** (open). The 8 design and argumentation scenarios
-  (`bio/data/tools/design-drills.json`) are placeholder content: a biology teacher should review
-  the scenarios, the best control in each, and the claim/evidence/reasoning tags (graders differ
-  on whether a general-principle sentence counts as reasoning). The page shows a Draft note until
-  `status` becomes "reviewed".
+- **design-drills-review** (open). The 16 design and argumentation scenarios
+  (`bio/data/tools/design-drills.json`, two per unit, written 2026-10-03) replaced the placeholder
+  set and are live (no Draft note), but a biology teacher should still review them: the data are
+  invented but meant to be realistic (worth checking: the vestigial-wing temperature effect, the
+  Himalayan rabbit thresholds, digoxin uptake numbers, the woodlice kinesis account), the "best
+  control" in each (several are deliberately plausible), the claim/evidence/reasoning tags
+  (graders differ on whether a general-principle sentence or a statistical test counts as
+  evidence or reasoning), and the written-answer rubrics. Reviewed 2026-10-03 (docs/apbio-reviews/drills.md):
+  five fixes (desiccation design now has two shared generations; wording in antibiotic, rabbit and respirometer
+  items); still for a teacher: rabbit thresholds, the Elodea green-light rate (29% of red, low against leaf action
+  spectra), the woodlice turning-rate direction and the χ² evidence tag.
 - **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
   `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
 
@@ -492,8 +498,8 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - Independent accuracy review (2026-10-03) of both simulators and every skills tool: numbers,
   formulas, tables and fixed answers recomputed and correct apart from df 3 (fixed); wording
   fixes applied (red blood cell swelling, lysis threshold, potato gradient, control definitions,
-  salivary amylase, snapdragon notation, the n − 1 reason). Design drills stay placeholder until
-  a teacher reviews them (design-drills-review).
+  salivary amylase, snapdragon notation, the n − 1 reason). Design drills were replaced by the
+  real set on 2026-10-03; a teacher review is still open (design-drills-review).
 - **osmosis-model-numbers** (pending review). The osmosis simulator's potato numbers (cell sap
   0.33 osmol/L, 45% non-water mass, wall modulus 15 bar) and red blood cell lysis at 1.55× volume
   are illustrative (lysis is tested on mass, which tracks volume here), chosen to give lab-like curves (zero crossing ≈ 0.30 M sucrose at 22 °C,
