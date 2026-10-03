@@ -453,12 +453,12 @@
       "q": "Put the steps for finding the median of an even-sized data set in order.",
       "options": [
         "Sort the values from smallest to largest.",
-        "Count the values to find n.",
+        "Number the sorted values from 1 to n.",
         "Find the two values in the middle positions (n/2 and n/2 + 1).",
         "Average those two middle values."
       ],
       "why": {
-        "correct": "Sort first (the middle of an unsorted list means nothing), count, locate the middle pair, then average them."
+        "correct": "Sort first (the middle of an unsorted list means nothing), number the sorted values, locate the middle pair at positions n/2 and n/2 + 1, then average them."
       }
     }
   ]

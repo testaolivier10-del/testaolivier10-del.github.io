@@ -325,7 +325,7 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "The maximum possible product is set by the polymer available: 50 mg of polymer can release at most about 50 mg of monomers. As the polymer runs out, each interval releases less.",
+        "correct": "The maximum possible product is set by the polymer available: 50 mg of polymer can release at most about 50 mg of monomers (a little more, because each hydrolysis adds the mass of a water molecule). As the polymer runs out, each interval releases less.",
         "options": [
           "Correct: the curve approaches the total amount available.",
           "Each enzyme molecule comes out of the reaction unchanged and can act again and again.",

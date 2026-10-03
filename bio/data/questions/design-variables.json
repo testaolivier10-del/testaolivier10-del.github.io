@@ -441,7 +441,7 @@
       "options": [
         "Write a testable question: does temperature affect evaporation?",
         "Choose the independent variable and its values (20, 30 and 40 °C).",
-        "Choose the dependent variable and how to measure it (mass lost in 24 h).",
+        "Decide how to measure the response at each of those temperatures (mass lost in 24 h).",
         "List the controlled variables (dish, starting mass, air movement, time).",
         "Run several dishes at each temperature and record every value."
       ],

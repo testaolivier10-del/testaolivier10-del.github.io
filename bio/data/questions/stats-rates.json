@@ -144,7 +144,7 @@
       "stimulus": "stats-rates-s1",
       "q": "Which statement best describes how the rate of color movement changed during the experiment?",
       "options": [
-        "The rate was highest in the first 2 minutes (0.8 mm/min) and fell in each later interval, to 0.2 mm/min.",
+        "The rate was highest in the first 2 minutes (0.8 mm/min) and then fell, to 0.2 mm/min in each of the last two intervals.",
         "The rate stayed at 0.36 mm/min throughout, because that is the average rate for the whole run of the experiment.",
         "The rate increased over time, because the depth of color was greatest at 10 minutes, the end of the run.",
         "The rate fell to zero after 8 minutes, because the curve flattened out and the color stopped moving into the agar."

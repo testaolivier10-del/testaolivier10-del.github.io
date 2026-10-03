@@ -471,14 +471,14 @@
       "diff": 3,
       "q": "In a new run of the grease-spot test, the water leaves a lasting see-through spot and so does every food. Which explanation, if true, would account for both results?",
       "options": [
-        "The water bottle had a film of oil from an unwashed funnel, so every sample carried some lipid.",
+        "Students rubbed on every sample with fingers still greasy from the oil, so each spot got some lipid.",
         "The foods contained more fat than usual, because they were bought from a different store this time.",
         "The paper was too thin, so it could not show spots from any sample, including the oil.",
         "Water is a lipid in small amounts, which is why water spots can last on brown paper."
       ],
       "correct": 0,
       "why": {
-        "correct": "A failed negative control means something other than the sample is making the response. An oil film in the water would put lipid on every spot, including the water control.",
+        "correct": "A failed negative control means something other than the sample is making the response. Oil carried on the students' fingers would put lipid on every spot, including the water control and the apple, which otherwise leaves no lasting spot.",
         "options": [
           "Correct: contamination explains the failed negative control and the universal positives.",
           "Fattier foods would not explain the water spot.",
