@@ -1,0 +1,91 @@
+{
+  "topic": "feedback",
+  "hook": "<p>Before 1922, a child found to have type 1 diabetes usually lived only months, or a year or two. Their blood was full of sugar, yet their cells were starving. In January of that year, a dying 14-year-old in Toronto was given an injection of insulin extracted from animal pancreases, and his blood sugar fell. Insulin restored one half of a control loop the body uses every minute of every day. This topic is about those loops: how your body notices a change and pushes back.</p>",
+  "prereq": [
+    {
+      "q": "Homeostasis is",
+      "options": [
+        "keeping internal conditions within a narrow range while outside conditions change",
+        "the growth of an organism by adding more cells",
+        "the movement of water from high to low water potential"
+      ],
+      "correct": 0,
+      "why": "Homeostasis means holding the internal environment steady, such as temperature, water and glucose.",
+      "review": "membrane-transport"
+    },
+    {
+      "q": "In feedback inhibition of a metabolic pathway, what does the end product do?",
+      "options": [
+        "It binds the first enzyme of the pathway and slows it, so less end product is made",
+        "It speeds up the last enzyme of the pathway so it is used up faster",
+        "It is converted back into the starting molecule"
+      ],
+      "correct": 0,
+      "why": "The end product binds an allosteric site on an early enzyme, switching the pathway down when product builds up.",
+      "review": "cellular-energy"
+    },
+    {
+      "q": "Why do only some cells respond to insulin in the blood?",
+      "options": [
+        "Only cells with insulin receptors bind it",
+        "Insulin can reach only the cells next to the pancreas",
+        "Insulin is broken down before it reaches most cells"
+      ],
+      "correct": 0,
+      "why": "A hormone acts only on target cells, those with a receptor that binds it.",
+      "review": "cell-communication"
+    }
+  ],
+  "figure": {
+    "figure": "glucose-feedback-loop",
+    "caption": "Two negative feedback loops hold blood glucose near its set point: insulin brings a rise back down, glucagon brings a fall back up."
+  },
+  "chain": [
+    {
+      "cause": "After a meal, glucose from digested food is absorbed into the blood.",
+      "effect": "Blood glucose rises above its normal range: this is the stimulus."
+    },
+    {
+      "cause": "Beta cells in the pancreas detect the higher glucose (they are both sensor and control center).",
+      "effect": "They release more insulin into the blood."
+    },
+    {
+      "cause": "Insulin binds receptors on muscle and fat cells, and on liver cells.",
+      "effect": "Muscle and fat cells take up more glucose; the liver stores glucose as glycogen (the effectors respond)."
+    },
+    {
+      "cause": "Glucose leaves the blood faster than it enters.",
+      "effect": "Blood glucose falls back toward the set point, and the stimulus for insulin release fades."
+    },
+    {
+      "cause": "If glucose falls below the range during fasting or exercise, alpha cells in the pancreas release glucagon.",
+      "effect": "The liver breaks down glycogen and releases glucose, so glucose rises back: the response always opposes the change."
+    }
+  ],
+  "ideas": [
+    "A feedback loop has a <b>stimulus</b> (a change), a <b>sensor</b>, a <b>control center</b> that compares with a <b>set point</b>, and <b>effectors</b> that respond.",
+    "<b>Negative feedback</b> opposes the change and returns the variable to its set point, then switches itself off. It keeps conditions stable: blood glucose, body temperature.",
+    "<b>Positive feedback</b> amplifies the change until an outside event ends it: <b>oxytocin</b> in childbirth, <b>blood clotting</b>, <b>ethylene</b> ripening fruit such as apples and bananas.",
+    "Blood glucose is held by two opposing hormones: <b>insulin</b> lowers it, <b>glucagon</b> raises it.",
+    "When a loop fails, homeostasis fails. In <b>diabetes</b>, too little insulin (type 1) or a weak response to it (type 2) leaves blood glucose high."
+  ],
+  "misconception": {
+    "wrong": "Negative feedback is harmful and positive feedback is helpful, as their names suggest.",
+    "right": "\"Negative\" means the response opposes the change; \"positive\" means it adds to the change. Both are normal. Negative feedback keeps conditions steady; positive feedback finishes a process quickly, such as giving birth or sealing a wound."
+  },
+  "check": [
+    "bio-feedback-1",
+    "bio-feedback-3",
+    "bio-feedback-5",
+    "bio-feedback-10",
+    "bio-feedback-12",
+    "bio-feedback-16",
+    "bio-feedback-18"
+  ],
+  "summary": "<p>Feedback loops link a stimulus, a sensor, a control center with a set point, and effectors. Negative feedback opposes a change and returns the variable to its set point: insulin from beta cells lowers blood glucose after a meal, glucagon from alpha cells raises it when it falls, and sweating or shivering hold body temperature near 37 °C. Positive feedback amplifies a change until an outside event ends it: oxytocin and contractions in childbirth, platelets in blood clotting, ethylene in ripening fruit. When a loop fails, as in type 1 diabetes (little insulin) or type 2 (a weak response to insulin), blood glucose is no longer held in range.</p>",
+  "connections": [
+    { "href": "../notes/cellular-energy.html", "label": "Back: feedback inhibition of enzymes (3.4)" },
+    { "href": "../notes/cell-communication.html", "label": "Back: hormones and target cells (4.1)" },
+    { "href": "../notes/cell-cycle.html", "label": "Next: how cells divide (4.5)" }
+  ]
+}

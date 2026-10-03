@@ -1,0 +1,91 @@
+{
+  "topic": "cell-communication",
+  "hook": "<p>Off the coast of Hawaii, a small squid hunts at night with a glowing belly that hides its shadow from predators below. The light is made by bacteria living in a pouch on the squid. A single one of those bacteria floating in the ocean makes no light at all. Packed together in the pouch, they all switch their light on at once. They can do that because cells talk to each other, and this topic is about how.</p>",
+  "prereq": [
+    {
+      "q": "What does a receptor protein do?",
+      "options": [
+        "It binds a particular signaling molecule, which changes the cell's activity",
+        "It pumps any molecule the cell needs across the membrane using ATP",
+        "It stores signaling molecules until the cell needs them"
+      ],
+      "correct": 0,
+      "why": "A receptor has a binding site that fits one kind of signaling molecule. Binding changes the receptor, and that changes what the cell does.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "A cell packages a protein in vesicles and releases it outside. What is this process called?",
+      "options": [
+        "Endocytosis",
+        "Exocytosis",
+        "Facilitated diffusion"
+      ],
+      "correct": 1,
+      "why": "In exocytosis, vesicles fuse with the plasma membrane and empty their contents outside the cell. Many signaling molecules leave cells this way.",
+      "review": "membrane-transport"
+    },
+    {
+      "q": "Why can ions pass through a channel protein but not straight through the lipid bilayer?",
+      "options": [
+        "Ions are too large for the bilayer but small enough for any channel",
+        "The charged ions are repelled by the bilayer's nonpolar core, while the channel gives them a water-filled path",
+        "Channels use ATP to push ions, and the bilayer has no ATP"
+      ],
+      "correct": 1,
+      "why": "The fatty acid tails in the middle of the bilayer are nonpolar, so charged ions cannot cross them. A channel protein lines a water-filled pore that ions can diffuse through.",
+      "review": "facilitated-diffusion"
+    }
+  ],
+  "figure": {
+    "figure": "signal-ranges",
+    "caption": "Four ranges of signaling: through channels between touching cells, to nearby cells, across a synapse to one cell, and through the blood to target cells anywhere in the body."
+  },
+  "chain": [
+    {
+      "cause": "A signaling cell releases a chemical signal, often by exocytosis of vesicles.",
+      "effect": "The signaling molecules spread out into the fluid around the cell."
+    },
+    {
+      "cause": "As they spread, the molecules are diluted and many are broken down or taken up by nearby cells.",
+      "effect": "Only cells close to the source meet a high concentration, so most signals act locally."
+    },
+    {
+      "cause": "If the signal is released into the blood instead, the circulation carries it through the whole body within about a minute.",
+      "effect": "Cells far from the source are exposed: this is long-distance (endocrine) signaling by a hormone."
+    },
+    {
+      "cause": "Every exposed cell meets the signal, but only some cells make the matching receptor protein.",
+      "effect": "Only those target cells bind the signal; the rest are unaffected."
+    },
+    {
+      "cause": "Binding changes the shape of the receptor protein.",
+      "effect": "The target cell's behavior changes: a channel opens, an enzyme switches on, or genes are switched on."
+    }
+  ],
+  "ideas": [
+    "Cells signal over four ranges: <b>direct contact</b> (touching cells, gap junctions, plasmodesmata), <b>local signaling</b> (local regulators to nearby cells), <b>synaptic signaling</b> (a neuron to one target cell across a synaptic cleft) and <b>endocrine signaling</b> (hormones in the blood).",
+    "Distance trades speed and precision for reach: a neurotransmitter acts within a millisecond on one cell, while a hormone takes minutes to arrive but reaches every tissue.",
+    "Being exposed to a signal is not the same as responding: only <b>target cells</b>, which have the matching receptor, respond.",
+    "Immune cells use contact: a helper T cell is activated by touching an <b>antigen-presenting cell</b> that displays a fragment of a pathogen.",
+    "Bacteria signal too. In <b>quorum sensing</b>, each cell releases an autoinducer; when cell density is high, its concentration crosses a threshold and the whole group switches the same genes on together."
+  ],
+  "misconception": {
+    "wrong": "A hormone in the blood acts on every cell it reaches, because it reaches every cell.",
+    "right": "A hormone reaches nearly every cell, but a cell responds only if it makes a receptor that the hormone binds. Different cells can also respond differently to the same hormone, depending on what their receptors are connected to."
+  },
+  "check": [
+    "bio-cell-communication-1",
+    "bio-cell-communication-3",
+    "bio-cell-communication-4",
+    "bio-cell-communication-11",
+    "bio-cell-communication-12",
+    "bio-cell-communication-16",
+    "bio-cell-communication-18"
+  ],
+  "summary": "<p>Cells pass information by direct contact, through gap junctions or plasmodesmata or by touching surface molecules, as when a helper T cell recognizes an antigen-presenting cell; by local regulators such as growth factors that reach nearby cells; by neurotransmitters released across a synaptic cleft onto a single target; and by hormones carried in the blood to distant target cells. Only cells with the matching receptor respond. Bacteria use quorum sensing: an autoinducer builds up as cell density rises until it switches the same genes on in every cell.</p>",
+  "connections": [
+    { "href": "../notes/plasma-membrane.html", "label": "Back: receptors and other membrane proteins (2.3)" },
+    { "href": "../notes/membrane-transport.html", "label": "Back: exocytosis releases signals (2.5)" },
+    { "href": "../notes/signal-transduction-intro.html", "label": "Next: what happens after a signal binds its receptor (4.2)" }
+  ]
+}

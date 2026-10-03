@@ -1,0 +1,95 @@
+{
+  "topic": "cell-cycle",
+  "hook": "<p>By one recent estimate, your body makes roughly 300 billion new cells every day, most of them blood cells and cells lining your gut. Each new cell needs a complete copy of your DNA: about 2 meters of it, cut into 46 chromosomes and packed into a nucleus a hundredth of a millimeter across. Copying all that, then sharing it out perfectly between two cells, happens billions of times a day, and it almost never goes wrong. This topic shows how.</p>",
+  "prereq": [
+    {
+      "q": "Where is most of a eukaryotic cell's DNA, and in what form?",
+      "options": [
+        "In the nucleus, packed into chromosomes",
+        "In the ribosomes, as messenger RNA",
+        "In the cell membrane, attached to receptor proteins"
+      ],
+      "correct": 0,
+      "why": "Eukaryotic DNA is in the nucleus, packed with proteins into chromosomes.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "In DNA, A pairs with T and G pairs with C. A strand reads ATGC. What is its partner strand?",
+      "options": [
+        "TACG",
+        "ATGC",
+        "GCAT"
+      ],
+      "correct": 0,
+      "why": "Complementary base pairing: A with T, T with A, G with C, C with G gives TACG.",
+      "review": "nucleic-acids"
+    },
+    {
+      "q": "Microtubules are part of the",
+      "options": [
+        "cytoskeleton, and can move structures inside the cell",
+        "plasma membrane, where they form channels",
+        "cell wall, where they give plant cells their strength"
+      ],
+      "correct": 0,
+      "why": "Microtubules are hollow protein tubes of the cytoskeleton; they can grow, shrink and move things along them.",
+      "review": "cell-structure-function"
+    }
+  ],
+  "figure": {
+    "figure": "cell-cycle-wheel",
+    "caption": "The cell cycle: interphase (G1, S, G2) takes most of the time; M phase (mitosis and cytokinesis) is short. DNA per cell doubles in S and halves again when the cell divides."
+  },
+  "chain": [
+    {
+      "cause": "In G1, the cell grows and makes proteins and organelles.",
+      "effect": "It reaches the size and supplies it needs to copy its DNA."
+    },
+    {
+      "cause": "In S phase, the two strands of each DNA molecule separate and each serves as a pattern for a new partner strand.",
+      "effect": "Every chromosome now consists of two identical sister chromatids joined at the centromere, and the cell's DNA content has doubled."
+    },
+    {
+      "cause": "In G2 and prophase, the cell makes the proteins for division, and each chromosome coils into a compact shape while the spindle grows from two centrosomes.",
+      "effect": "The chromosomes can be moved without tangling, and the spindle reaches across the cell."
+    },
+    {
+      "cause": "Spindle fibers from opposite poles attach to the kinetochores of each pair of sister chromatids.",
+      "effect": "The chromosomes line up across the middle of the cell (metaphase), each sister facing a different pole."
+    },
+    {
+      "cause": "The sister chromatids separate and are pulled to opposite poles (anaphase).",
+      "effect": "Each pole receives one copy of every chromosome."
+    },
+    {
+      "cause": "Nuclear envelopes re-form around each set (telophase), and cytokinesis divides the cytoplasm.",
+      "effect": "Two daughter cells form, each genetically identical to the parent cell."
+    }
+  ],
+  "ideas": [
+    "The <b>cell cycle</b> is <b>interphase</b> (G1 growth, S DNA copying, G2 preparation) followed by mitosis and cytokinesis. Interphase is busy, not resting.",
+    "DNA is copied only in S phase. After S, each chromosome is two <b>sister chromatids</b> joined at a <b>centromere</b>; the DNA content is doubled but the number of chromosomes is the same.",
+    "<b>Mitosis</b> separates the sister chromatids so each new nucleus gets one copy of every chromosome; <b>cytokinesis</b> splits the cytoplasm (a cleavage furrow in animal cells, a cell plate in plant cells).",
+    "Cells can leave the cycle for <b>G0</b>, working but not dividing; most nerve cells stay there for life.",
+    "Mitosis makes genetically identical <b>daughter cells</b>, used for growth, <b>tissue repair</b> and <b>asexual reproduction</b>."
+  ],
+  "misconception": {
+    "wrong": "DNA is copied during mitosis, as the chromosomes divide.",
+    "right": "DNA is copied earlier, in S phase of interphase. By the time mitosis starts, every chromosome already has two identical sister chromatids; mitosis only separates them."
+  },
+  "check": [
+    "bio-cell-cycle-1",
+    "bio-cell-cycle-2",
+    "bio-cell-cycle-4",
+    "bio-cell-cycle-11",
+    "bio-cell-cycle-13",
+    "bio-cell-cycle-17",
+    "bio-cell-cycle-20"
+  ],
+  "summary": "<p>A dividing eukaryotic cell cycles through interphase and M phase. In G1 it grows; in S it copies its DNA by base pairing, so each chromosome becomes two sister chromatids joined at a centromere; in G2 it prepares to divide. In mitosis the chromosomes condense, spindle fibers from two centrosomes attach to their kinetochores, the chromosomes line up at the middle, and the sister chromatids separate to opposite poles; nuclei re-form and cytokinesis divides the cytoplasm. The two daughter cells are genetically identical to the parent. Cells may leave the cycle for G0. Mitosis supports growth, tissue repair and asexual reproduction.</p>",
+  "connections": [
+    { "href": "../notes/cell-structure-function.html", "label": "Back: the nucleus, chromosomes and the cytoskeleton (2.1)" },
+    { "href": "../notes/compartment-origins.html", "label": "Back: binary fission in bacteria (2.10)" },
+    { "href": "../notes/cell-cycle-regulation.html", "label": "Next: what controls when a cell divides (4.6)" }
+  ]
+}

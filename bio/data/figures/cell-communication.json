@@ -1,0 +1,7 @@
+{
+  "signal-ranges": {
+    "file": "figures/signal-ranges.svg", "ext": "svg", "w": 760, "h": 360,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four panels. Direct contact: two touching cells joined by gap junction channels that small molecules pass through. Local: a signaling cell releases a local regulator that reaches nearby cells with receptors. Synaptic: a neuron releases neurotransmitter across a tiny synaptic cleft onto one target cell. Endocrine: a gland releases a hormone into a blood vessel, which carries it to a distant target cell with receptors, while a cell without the receptor does not respond."
+  }
+}

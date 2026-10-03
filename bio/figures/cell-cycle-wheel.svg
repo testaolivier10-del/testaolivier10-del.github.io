@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="t d">
+<title id="t">The cell cycle and the DNA content of a cell through it</title>
+<desc id="d">A ring divided into four phases in order: G1, the longest, where the cell grows; S, where its DNA is copied; G2, more growth and preparation; and M, the shortest, mitosis followed by cytokinesis. G1, S and G2 together are interphase. A cell can leave G1 for G0, a non-dividing state, and some cells can return. A small graph on the right shows DNA per cell: one unit through G1, rising to two units during S, staying at two through G2 and mitosis, and falling back to one unit in each daughter cell after cytokinesis.</desc>
+<defs>
+  <marker id="cc-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+  <marker id="cc-b" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,0 L0,5 L10,10 Z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <path d="M190.0,50.0 A150,150 0 0 1 278.2,321.4 L241.7,271.2 A88,88 0 0 0 190.0,112.0 Z" fill="#C3DDF0" stroke="#ffffff" stroke-width="3"/>
+  <path d="M278.2,321.4 A150,150 0 0 1 47.3,246.4 L106.3,227.2 A88,88 0 0 0 241.7,271.2 Z" fill="#F8E3B8" stroke="#ffffff" stroke-width="3"/>
+  <path d="M47.3,246.4 A150,150 0 0 1 87.3,90.7 L129.8,135.9 A88,88 0 0 0 106.3,227.2 Z" fill="#C4E8DC" stroke="#ffffff" stroke-width="3"/>
+  <path d="M87.3,90.7 A150,150 0 0 1 190.0,50.0 L190.0,112.0 A88,88 0 0 0 129.8,135.9 Z" fill="#F6D2BD" stroke="#ffffff" stroke-width="3"/>
+  <text x="303" y="161" font-size="18" font-weight="700" text-anchor="middle">G1</text><text x="303" y="178" font-size="12" text-anchor="middle">growth</text>
+  <text x="153" y="311" font-size="18" font-weight="700" text-anchor="middle">S</text><text x="153" y="328" font-size="12" text-anchor="middle">DNA copied</text>
+  <text x="75" y="168" font-size="18" font-weight="700" text-anchor="middle">G2</text><text x="75" y="185" font-size="12" text-anchor="middle">growth, prep</text>
+  <text x="146" y="95" font-size="18" font-weight="700" text-anchor="middle">M</text>
+  <text x="190" y="194" font-size="15" font-weight="700" text-anchor="middle">Interphase</text>
+  <text x="190" y="212" font-size="12" text-anchor="middle">G1 + S + G2</text>
+  <text x="190" y="228" font-size="12" text-anchor="middle" fill="#3D4A66">(most of the time)</text>
+  <text x="62" y="78" font-size="12" text-anchor="end" fill="#8E3B2E">mitosis +</text>
+  <text x="62" y="93" font-size="12" text-anchor="end" fill="#8E3B2E">cytokinesis</text>
+  <line x1="66" y1="88" x2="118" y2="104" stroke="#8E3B2E" stroke-width="1.5"/>
+  <path d="M220,34 A166,166 0 0 1 273,56" fill="none" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#cc-a)"/>
+  <line x1="336" y1="152" x2="440" y2="96" stroke="#1F2A28" stroke-width="2.5" marker-start="url(#cc-b)" marker-end="url(#cc-a)"/>
+  <rect x="444" y="40" width="300" height="74" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="458" y="64" font-size="15" font-weight="700">G0: out of the cycle</text>
+  <text x="458" y="84" font-size="12">cells working but not dividing (most nerve</text>
+  <text x="458" y="100" font-size="12">and heart muscle cells); some can return</text>
+  <text x="440" y="198" font-size="14" font-weight="700">DNA per cell</text>
+  <line x1="440" y1="330" x2="730" y2="330" stroke="#1F2A28" stroke-width="2"/>
+  <line x1="440" y1="330" x2="440" y2="210" stroke="#1F2A28" stroke-width="2"/>
+  <g font-size="12" text-anchor="end"><text x="434" y="292">1×</text><text x="434" y="232">2×</text></g>
+  <g stroke="#5D6B69" stroke-dasharray="3 3"><line x1="556" y1="330" x2="556" y2="210"/><line x1="643" y1="330" x2="643" y2="210"/><line x1="695" y1="330" x2="695" y2="210"/></g>
+  <path d="M440,288 L556,288 L643,228 L730,228 L730,288" fill="none" stroke="#0072B2" stroke-width="3.5"/>
+  <g font-size="12" text-anchor="middle"><text x="498" y="348">G1</text><text x="600" y="348">S</text><text x="669" y="348">G2</text><text x="713" y="348">M</text></g>
+  <text x="730" y="370" font-size="12" text-anchor="end" fill="#3D4A66">back to 1× in each daughter cell</text>
+</g>
+</svg>

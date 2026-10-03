@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="t d">
+<title id="t">Epinephrine pathway in a liver cell: G protein-coupled receptor, cAMP and a kinase cascade</title>
+<desc id="d">Epinephrine binds a G protein-coupled receptor in the plasma membrane. The receptor makes a G protein swap GDP for GTP. The active G protein switches on adenylyl cyclase, which turns ATP into cAMP. Phosphodiesterase turns cAMP into inactive AMP. cAMP activates protein kinase A, which activates phosphorylase kinase, which activates glycogen phosphorylase, which breaks glycogen into glucose units. A column on the right gives rough numbers of active molecules at each step for one epinephrine molecule: 1, about 100 G proteins, about 10 thousand cAMP, about 10 thousand protein kinase A, about 100 thousand phosphorylase kinase, about a million glycogen phosphorylase, about 100 million glucose units.</desc>
+<defs>
+  <marker id="gc-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="760" height="440" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <text x="20" y="24" font-size="13" fill="#3D4A66">outside the cell</text>
+  <rect x="0" y="86" width="600" height="16" fill="#F8E3B8"/>
+  <g stroke="#E69F00" stroke-width="2"><line x1="0" y1="86" x2="600" y2="86"/><line x1="0" y1="102" x2="600" y2="102"/></g>
+  <text x="590" y="124" font-size="13" text-anchor="end" fill="#3D4A66">cytoplasm</text>
+  <!-- receptor + epinephrine -->
+  <path d="M70,72 v44 h8 v-44 h8 v44 h8 v-44 h8 v44 h8 v-44 h8 v44" fill="none" stroke="#009E73" stroke-width="4"/>
+  <circle cx="98" cy="56" r="13" fill="#F1DAE7" stroke="#CC79A7" stroke-width="3"/>
+  <text x="118" y="46" font-size="13">epinephrine</text>
+  <text x="62" y="150" font-size="12">G protein-coupled</text>
+  <text x="62" y="164" font-size="12">receptor</text>
+  <!-- G protein -->
+  <line x1="122" y1="114" x2="168" y2="122" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#gc-a)"/>
+  <ellipse cx="212" cy="124" rx="40" ry="17" fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5"/>
+  <text x="212" y="129" font-size="13" text-anchor="middle">G protein</text>
+  <text x="212" y="160" font-size="12" text-anchor="middle" fill="#3D4A66">GDP out, GTP in</text>
+  <line x1="254" y1="120" x2="300" y2="114" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#gc-a)"/>
+  <!-- adenylyl cyclase -->
+  <rect x="302" y="74" width="56" height="58" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+  <text x="330" y="66" font-size="12" text-anchor="middle">adenylyl cyclase</text>
+  <text x="270" y="200" font-size="14" text-anchor="middle">ATP</text>
+  <line x1="290" y1="196" x2="345" y2="196" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#gc-a)"/>
+  <line x1="330" y1="134" x2="320" y2="190" stroke="#009E73" stroke-width="2" stroke-dasharray="5 4"/>
+  <text x="372" y="201" font-size="15" font-weight="700" text-anchor="middle">cAMP</text>
+  <g fill="#E69F00"><circle cx="352" cy="180" r="4"/><circle cx="395" cy="180" r="4"/><circle cx="405" cy="200" r="4"/><circle cx="390" cy="216" r="4"/></g>
+  <!-- phosphodiesterase -->
+  <line x1="412" y1="196" x2="500" y2="196" stroke="#8E3B2E" stroke-width="2.5" marker-end="url(#gc-a)"/>
+  <text x="456" y="186" font-size="12" text-anchor="middle" fill="#8E3B2E">phosphodiesterase</text>
+  <text x="508" y="201" font-size="13" fill="#8E3B2E">AMP</text><text x="508" y="216" font-size="12" fill="#8E3B2E">(inactive)</text>
+  <!-- cascade -->
+  <g stroke="#1F2A28" stroke-width="2.5" marker-end="url(#gc-a)">
+    <line x1="372" y1="222" x2="372" y2="240"/><line x1="372" y1="272" x2="372" y2="294"/><line x1="372" y1="326" x2="372" y2="348"/>
+  </g>
+  <g font-size="13" text-anchor="middle">
+    <rect x="282" y="242" width="180" height="30" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/><text x="372" y="262">protein kinase A</text>
+    <rect x="282" y="296" width="180" height="30" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/><text x="372" y="316">phosphorylase kinase</text>
+    <rect x="282" y="350" width="180" height="30" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/><text x="372" y="370">glycogen phosphorylase</text>
+  </g>
+  <line x1="372" y1="380" x2="372" y2="398" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#gc-a)"/>
+  <rect x="262" y="400" width="220" height="30" rx="8" fill="#F6D2BD" stroke="#D55E00" stroke-width="2"/>
+  <text x="372" y="420" font-size="13" text-anchor="middle">glycogen broken into glucose</text>
+  <g font-size="12" fill="#3D4A66">
+    <text x="40" y="262">each kinase adds</text><text x="40" y="277">phosphate to many</text><text x="40" y="292">copies of the next</text><text x="40" y="307">protein, switching</text><text x="40" y="322">them on</text>
+  </g>
+  <!-- amplification column -->
+  <rect x="612" y="34" width="140" height="398" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="1.5"/>
+  <text x="682" y="56" font-size="12" font-weight="700" text-anchor="middle">active molecules</text>
+  <text x="682" y="71" font-size="11" text-anchor="middle" fill="#3D4A66">rough sizes, per</text>
+  <text x="682" y="84" font-size="11" text-anchor="middle" fill="#3D4A66">1 epinephrine</text>
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <text x="682" y="110">1</text><text x="682" y="135">~10²</text><text x="682" y="205">~10⁴</text><text x="682" y="262">~10⁴</text><text x="682" y="316">~10⁵</text><text x="682" y="370">~10⁶</text><text x="682" y="420">~10⁸</text>
+  </g>
+</g>
+</svg>

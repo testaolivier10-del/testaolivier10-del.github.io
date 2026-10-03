@@ -1,0 +1,7 @@
+{
+  "gpcr-camp-cascade": {
+    "file": "figures/gpcr-camp-cascade.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Epinephrine binds a G protein-coupled receptor that crosses the membrane seven times. The receptor makes a G protein release GDP and bind GTP; the active G protein switches on adenylyl cyclase in the membrane, which turns ATP into cAMP. Phosphodiesterase turns cAMP into inactive AMP. cAMP switches on protein kinase A, which switches on phosphorylase kinase, which switches on glycogen phosphorylase, which breaks glycogen into glucose. A side column gives rough numbers of active molecules per epinephrine molecule: 1, about 100, 10 thousand, 10 thousand, 100 thousand, a million and 100 million."
+  }
+}

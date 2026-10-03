@@ -1,0 +1,95 @@
+{
+  "topic": "cell-cycle-regulation",
+  "hook": "<p>An elephant has about 100 times as many cells as you and lives about as long, so every day far more of its cells divide, and each division is a chance for a mistake that leads to cancer. Yet elephants die of cancer less often than people do. Part of the reason is a single protein, p53, that stops damaged cells from dividing: elephants carry about 20 copies of its gene in each set of chromosomes, while humans carry one. This topic is about the brakes and accelerators of the cell cycle, and what happens when they fail.</p>",
+  "prereq": [
+    {
+      "q": "In which phase of the cell cycle is DNA copied?",
+      "options": [
+        "S phase",
+        "Mitosis",
+        "G2"
+      ],
+      "correct": 0,
+      "why": "DNA is copied in S (synthesis) phase of interphase; mitosis separates the copies.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "A growth factor binds a receptor tyrosine kinase. What happens next?",
+      "options": [
+        "Two receptors pair up and phosphorylate each other, starting a kinase cascade",
+        "The growth factor enters the nucleus and binds DNA directly",
+        "The receptor makes cAMP, which diffuses to the nucleus"
+      ],
+      "correct": 0,
+      "why": "RTKs pair up and phosphorylate each other's tyrosines; relay proteins then start a kinase cascade that often leads to division.",
+      "review": "signal-transduction-pathways"
+    },
+    {
+      "q": "A mutation leaves a growth pathway's relay protein stuck in its \"on\" state. What happens to the steps after it?",
+      "options": [
+        "They stay active even without the growth factor",
+        "They stop working, because the pathway is jammed",
+        "They are unaffected, because only the receptor sets the pathway's activity"
+      ],
+      "correct": 0,
+      "why": "A stuck-on protein keeps every later step running as if the signal were always present.",
+      "review": "signal-transduction-pathways"
+    }
+  ],
+  "figure": {
+    "figure": "cell-cycle-checkpoints",
+    "caption": "Three checkpoints hold the cycle until conditions are right. On the right: CDK is always present, but it is active only when its cyclin builds up."
+  },
+  "chain": [
+    {
+      "cause": "A growth factor binds its receptor, and the signaling pathway reaches the nucleus.",
+      "effect": "The cell makes more G1 cyclin."
+    },
+    {
+      "cause": "Cyclin binds a cyclin-dependent kinase (CDK), which is present all the time but inactive on its own.",
+      "effect": "The active cyclin-CDK complex phosphorylates target proteins that carry the cell past the G1 checkpoint into S phase."
+    },
+    {
+      "cause": "If the DNA is damaged, the protein p53 builds up in the cell.",
+      "effect": "p53 switches on a gene for a protein that blocks cyclin-CDK, so the cycle halts in G1 while the DNA is repaired."
+    },
+    {
+      "cause": "If the damage cannot be repaired, p53 switches on genes that trigger apoptosis.",
+      "effect": "Caspases take the cell apart, so a cell with damaged DNA does not divide."
+    },
+    {
+      "cause": "At the M checkpoint, a chromosome not yet attached to the spindle from both poles sends a stop signal.",
+      "effect": "Anaphase waits until every chromosome is attached, so each daughter cell gets a full set."
+    },
+    {
+      "cause": "Mutations that make a proto-oncogene overactive (accelerator stuck) and disable tumor suppressors such as p53 (brakes lost) build up in one cell line.",
+      "effect": "The cells divide without growth signals, ignore checkpoints and avoid apoptosis: cancer."
+    }
+  ],
+  "ideas": [
+    "<b>Checkpoints</b> hold the cycle until conditions are right: G1 (size, growth signals, DNA damage), G2 (DNA fully copied and undamaged), M (every chromosome attached to the spindle).",
+    "<b>Cyclins</b> rise and fall; <b>CDKs</b> are always present but active only when bound to a cyclin. Destroying the cyclin switches the CDK off and resets the cycle.",
+    "Outside signals matter: <b>growth factors</b> push cells past G1, and <b>contact inhibition</b> stops normal cells dividing when they are crowded.",
+    "<b>p53</b> is a <b>tumor suppressor</b>: it halts the cycle when DNA is damaged and triggers <b>apoptosis</b> (through caspases) if repair fails.",
+    "<b>Cancer</b> comes from several mutations in one cell line: <b>proto-oncogenes</b> turned into overactive oncogenes, and tumor suppressors lost. Malignant tumors invade and spread (<b>metastasis</b>)."
+  ],
+  "misconception": {
+    "wrong": "Cancer is caused by one mutation that makes cells divide faster.",
+    "right": "Most cancers need several mutations in the same cell line: typically at least one accelerator stuck on (an oncogene) and one or more brakes lost (tumor suppressors), plus changes that let cells avoid apoptosis and spread. That is why cancer risk rises with age."
+  },
+  "check": [
+    "bio-cell-cycle-regulation-1",
+    "bio-cell-cycle-regulation-3",
+    "bio-cell-cycle-regulation-4",
+    "bio-cell-cycle-regulation-7",
+    "bio-cell-cycle-regulation-9",
+    "bio-cell-cycle-regulation-15",
+    "bio-cell-cycle-regulation-18"
+  ],
+  "summary": "<p>The cell cycle is controlled at checkpoints: G1 (size, growth signals, DNA damage), G2 (DNA fully copied and undamaged) and M (every chromosome attached to the spindle). Cyclin-dependent kinases are present throughout but active only when bound to cyclins, whose levels rise and fall; active cyclin-CDK complexes, such as MPF, phosphorylate proteins that push the cell into the next stage, and destroying the cyclin resets the cycle. Growth factors push cells forward and contact inhibition holds them back. The tumor suppressor p53 halts the cycle when DNA is damaged and triggers apoptosis through caspases if repair fails. Cancer arises when mutations turn proto-oncogenes into oncogenes and disable tumor suppressors, so cells divide without control and may spread.</p>",
+  "connections": [
+    { "href": "../notes/cell-cycle.html", "label": "Back: the phases of the cell cycle (4.5)" },
+    { "href": "../notes/signal-transduction-pathways.html", "label": "Back: growth factor pathways and stuck-on mutations (4.3)" },
+    { "href": "../tools/cell-cycle-checkpoints.html", "label": "Try it: the cell cycle checkpoints simulator" }
+  ]
+}

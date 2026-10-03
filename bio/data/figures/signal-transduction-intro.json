@@ -1,0 +1,7 @@
+{
+  "reception-transduction-response": {
+    "file": "figures/reception-transduction-response.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: a polar ligand binds a receptor protein in the plasma membrane (reception); the receptor activates a relay protein, which activates kinase 1, which adds a phosphate to kinase 2 (transduction); kinase 2 switches on an enzyme within seconds (response). Right: a nonpolar steroid ligand crosses the membrane, binds a receptor in the cytoplasm, and the complex enters the nucleus and binds DNA, switching a gene on so new proteins are made over hours."
+  }
+}

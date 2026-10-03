@@ -1,0 +1,417 @@
+{
+  "stimuli": {
+    "cell-communication-s1": {
+      "kind": "graph",
+      "title": "Light from bacteria at increasing cell density",
+      "text": "<p>The marine bacterium <i>Vibrio fischeri</i> makes light with an enzyme called luciferase. Researchers grew three strains in flasks of seawater medium at 25 °C and measured cell density and light output as each culture grew. Strain W is the wild type. Strain N lacks the enzyme that makes the bacterium's autoinducer. Strain N+A is strain N grown with 5 µM synthetic autoinducer added to the medium at the start. Light per cell is given relative to strain W at the lowest density (set to 1). Points are means of 3 flasks.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Cell density", "unit": "× 10⁸ cells/mL", "min": 0, "max": 10, "step": 2 },
+        "y": { "label": "Light per cell", "unit": "relative units", "min": 0, "max": 700, "step": 100 },
+        "series": [
+          { "name": "Strain W", "points": [[0.5, 1], [1, 1], [2, 2], [3, 8], [4, 60], [5, 210], [6, 430], [7, 580], [8, 630], [10, 650]] },
+          { "name": "Strain N", "points": [[0.5, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 2], [6, 1], [7, 2], [8, 2], [10, 2]] },
+          { "name": "Strain N+A", "points": [[0.5, 540], [1, 560], [2, 580], [3, 600], [4, 610], [5, 620], [6, 630], [7, 640], [8, 640], [10, 650]] }
+        ]
+      }
+    },
+    "cell-communication-s2": {
+      "kind": "table",
+      "title": "How far does an injected dye spread?",
+      "text": "<p>Researchers grew a single flat layer of liver cells in a dish. They injected one cell with a fluorescent dye and, 5 minutes later, counted how many neighboring cells had become fluorescent. They tested four dyes of different sizes, in untreated cells and in cells given a drug that closes gap junctions 10 minutes before the injection. Each value is the mean for 10 injected cells.</p>",
+      "table": {
+        "caption": "Number of neighboring cells fluorescent 5 minutes after one cell was injected",
+        "cols": ["Dye", "Molecular mass (daltons)", "Untreated cells", "Cells given gap-junction blocker"],
+        "rows": [
+          ["P", "376", "24", "1"],
+          ["Q", "457", "22", "1"],
+          ["R", "3,000", "0", "0"],
+          ["S", "10,000", "0", "0"]
+        ]
+      }
+    },
+    "cell-communication-s3": {
+      "kind": "setup",
+      "title": "Does a T cell need to touch?",
+      "text": "<p>Helper T cells are white blood cells that become active when their receptor binds an antigen, a fragment of a pathogen's protein, displayed on the surface of an antigen-presenting cell. Researchers set up culture wells containing helper T cells that recognize one antigen. In some wells antigen-presenting cells were mixed in with the T cells. In others the two cell types were separated by a filter with pores 0.4 µm wide, which lets dissolved molecules through but not cells. After 24 hours they measured the percentage of T cells that had become active.</p>",
+      "table": {
+        "caption": "Helper T cells active after 24 hours",
+        "cols": ["Well", "Antigen-presenting cells", "Antigen added", "Arrangement", "T cells active (%)"],
+        "rows": [
+          ["1", "No", "Yes", "T cells alone", "2"],
+          ["2", "Yes", "No", "Mixed", "4"],
+          ["3", "Yes", "Yes", "Mixed", "68"],
+          ["4", "Yes", "Yes", "Separated by filter", "5"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cell-communication-1", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "4.B", "level": "apply", "diff": 2, "stimulus": "cell-communication-s1",
+      "q": "Which statement best describes how light per cell in strain W changes as cell density increases?",
+      "options": [
+        "It stays near 1 up to 3 × 10⁸ cells/mL, rises steeply from about 4 to 7 × 10⁸, then levels off.",
+        "It rises in proportion to density, so each doubling of density roughly doubles the light made by each cell.",
+        "It rises steeply at the lowest densities and then falls as the culture becomes more crowded.",
+        "It stays close to 1 at each density, because the light made by a cell depends on its own luciferase."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Strain W reads 1-8 units up to 3 × 10⁸ cells/mL, climbs to 580 by 7 × 10⁸, and changes little after that (630, 650): low, then a steep switch, then a plateau.",
+        "options": [
+          "This matches the points: a flat start, a steep rise from about 4 to 7 × 10⁸ cells/mL, and a plateau near 650.",
+          "From 3 to 6 × 10⁸ cells/mL density doubles but light per cell rises about 54-fold, far more than proportional.",
+          "The lowest densities give the lowest light per cell, and the curve never falls.",
+          "That describes strain N. Strain W's light per cell rises several hundred-fold."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-2", "type": "numeric", "unit": "unit-4", "topic": "cell-communication", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "cell-communication-s1",
+      "q": "By what factor does light per cell in strain W increase between 3 × 10⁸ and 6 × 10⁸ cells/mL? Give a whole number.",
+      "numeric": { "answer": 54, "tol": 1, "unit": "", "decimals": 0 },
+      "why": { "correct": "Light per cell at 6 × 10⁸ ÷ light per cell at 3 × 10⁸ = 430 ÷ 8 = 53.75, about 54 times, while density only doubled." }
+    },
+    {
+      "id": "bio-cell-communication-3", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.B", "level": "analyze", "diff": 3, "stimulus": "cell-communication-s1",
+      "q": "Which comparison gives the strongest evidence that strain N can still detect the autoinducer and make light?",
+      "options": [
+        "Strain N+A with strain N at the same low density",
+        "Strain N with strain W at 10 × 10⁸ cells/mL",
+        "Strain W at 1 × 10⁸ with strain W at 8 × 10⁸ cells/mL",
+        "Strain N at 1 × 10⁸ with strain N at 8 × 10⁸ cells/mL"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Adding autoinducer is the only difference between N and N+A. N+A glows brightly (about 560 units) at 1 × 10⁸ cells/mL where N makes 1, so N's receptor and light-making enzymes work; what N lacks is the signal itself.",
+        "options": [
+          "The two differ only in added autoinducer, and N+A glows strongly, so detection and light-making must be intact.",
+          "This shows strain N is dark when dense, but not why: a broken receptor or broken luciferase would also make it dark.",
+          "This shows the density switch in the normal strain; it says nothing about what strain N can do.",
+          "Strain N stays dark at both densities, which fits a missing signal, a missing receptor or missing luciferase equally well."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-4", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "cell-communication-s1",
+      "q": "Which explanation best accounts for strain W's dim light at low density and bright light at high density?",
+      "options": [
+        "Each cell releases autoinducer slowly; only when many cells share the volume does its concentration bind enough receptors to switch the light genes on.",
+        "Crowded cells run short of nutrients, and starving cells make light as a stress response that well-fed cells at low density do not show.",
+        "Light from neighboring cells is absorbed and released again by each cell, so each cell appears brighter when many cells surround it.",
+        "Cells that have divided many times have built up luciferase over each division, so older, denser cultures glow more per cell."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Strain N, which cannot make autoinducer, stays dark when dense, and strain N+A glows when sparse. The signal's concentration, which rises with density, is what switches the light on.",
+        "options": [
+          "This fits all three strains: no autoinducer means no light, added autoinducer means light at any density.",
+          "Strain N is just as crowded as strain W yet stays dark, and N+A glows at low density with plenty of nutrients, so starvation is not the trigger.",
+          "Strain N is dense with neighbors yet makes almost no light per cell, so neighbors' light is not what raises it.",
+          "Strain N goes through the same divisions and stays dark, so division alone does not build up light."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-5", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "cell-communication-s1",
+      "q": "A fourth strain, R, makes autoinducer normally but lacks the receptor protein for it. Predict the light per cell of strain R grown with 5 µM added autoinducer.",
+      "options": [
+        "Close to 1 at each density, because the autoinducer has nothing to bind in strain R",
+        "About 600 at each density, like strain N+A, because the autoinducer is present from the start",
+        "Close to 1 at low density, rising to about 650 at high density, like strain W",
+        "Higher than strain W at each density, because strain R gets autoinducer from two sources"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A signal acts only through its receptor. With no receptor, no amount of autoinducer can switch the light genes on, so strain R stays dark like strain N.",
+        "options": [
+          "Without a receptor the signal cannot be detected, however much is present.",
+          "Strain N+A glows because its receptor works; strain R has no receptor to bind the added autoinducer.",
+          "Strain W's rise needs a working receptor; strain R makes signal it cannot detect.",
+          "Extra signal does nothing for a cell that cannot bind it."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-6", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "cell-communication-s2",
+      "q": "Which statement best describes the results in untreated cells?",
+      "options": [
+        "Dyes P and Q (457 daltons or less) reached over 20 neighbors; dyes R and S reached none.",
+        "Each dye reached about the same number of neighbors, whatever its size.",
+        "The larger the dye, the more neighboring cells it reached in 5 minutes.",
+        "Dye P reached fewer neighbors than dye S, because small dyes leak out of cells before they can spread."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Untreated cells: dye P reached 24 neighbors and dye Q 22, while dyes R and S reached 0. There is a sharp cut-off between 457 and 3,000 daltons.",
+        "options": [
+          "These are the untreated values: about 22-24 cells for the two small dyes and zero for the two large ones.",
+          "The counts range from 0 to 24, so size clearly matters.",
+          "The trend runs the other way: the two largest dyes reached no neighbors.",
+          "Dye P reached 24 cells and dye S reached none."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-7", "type": "numeric", "unit": "unit-4", "topic": "cell-communication", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "cell-communication-s2",
+      "q": "Calculate the percent decrease in the number of neighbors reached by dye P when the gap-junction blocker is added. Give a whole number.",
+      "numeric": { "answer": 96, "tol": 1, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Percent decrease = (untreated − blocked) ÷ untreated × 100 = (24 − 1) ÷ 24 × 100 = 95.8%, about 96%." }
+    },
+    {
+      "id": "bio-cell-communication-8", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.A", "level": "analyze", "diff": 3, "stimulus": "cell-communication-s2",
+      "q": "Which claim is best supported by the data?",
+      "options": [
+        "Molecules below a size limit between about 460 and 3,000 daltons pass from cell to cell through gap junctions within minutes.",
+        "Gap junctions pump small dyes into neighboring cells using ATP, and the blocker works by stopping ATP production.",
+        "The dyes leak out of the injected cell and are taken up from the medium by its neighbors.",
+        "Large dyes do reach the neighbors through gap junctions, but more slowly than small dyes do."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Small dyes spread to about 22-24 neighbors and the blocker cuts that to 1, so they travel through gap junctions; dyes of 3,000 daltons or more do not spread at all.",
+        "options": [
+          "Both parts are supported: spread depends on open gap junctions, and only the small dyes spread.",
+          "Gap junctions are channels: molecules diffuse through them. Nothing in the data points to ATP or pumping.",
+          "Leaking and uptake from the medium would not be stopped by closing gap junctions, yet the blocker stopped nearly all spread.",
+          "The large dyes reached zero cells in 5 minutes; the data give no sign that they pass at all."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-9", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "cell-communication-s2",
+      "q": "What is the main reason for including the cells given the gap-junction blocker?",
+      "options": [
+        "To test whether the dye spreads through gap junctions rather than by some other route",
+        "To make sure the injected cell was still alive and healthy after the injection was made",
+        "To keep the size of the dye the same from one trial to the next",
+        "To measure how quickly each dye diffuses through the cytoplasm"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If closing gap junctions stops the spread, the dye must travel through them. Without this comparison, leaking out and re-entering would be just as possible.",
+        "options": [
+          "The blocker condition isolates one route: if spread stops when gap junctions close, they were the route.",
+          "The blocker says nothing about whether the cell survived; a living cell with closed junctions also stops spread.",
+          "Dye size is the variable the researchers changed on purpose, set by which dye they chose, not by the blocker.",
+          "The experiment counts neighbors reached, not the speed of movement inside one cell."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-10", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "cell-communication-s2",
+      "q": "Heart muscle cells are joined by gap junctions that let ions flow between them. Predict the effect of the same blocker on a sheet of beating heart muscle cells.",
+      "options": [
+        "Their contractions would fall out of step, because the electrical change could not pass from cell to cell.",
+        "Each cell would contract faster, because ions could no longer escape into neighboring cells.",
+        "The cells would stop making ATP, because glucose could no longer enter them.",
+        "There would be no change in the beat, because hormones carried in the blood set the timing of each contraction."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Ions are small, like dyes P and Q, so they pass through gap junctions. The ion flow carries the electrical change from one heart cell to the next; blocking it leaves cells contracting out of step.",
+        "options": [
+          "Ions are small enough to pass, so closing the junctions breaks the cell-to-cell spread of the electrical signal.",
+          "Ion flow to neighbors is what spreads the beat; blocking it does not make any one cell contract faster.",
+          "Glucose enters heart cells through membrane transporters from the tissue fluid, not through gap junctions.",
+          "Hormones can change the heart rate, but each beat spreads from cell to cell through gap junctions within a fraction of a second."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-11", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.B", "level": "analyze", "diff": 2, "stimulus": "cell-communication-s3",
+      "q": "Which conclusion is best supported by wells 3 and 4?",
+      "options": [
+        "Activation needs contact with the presenting cells; molecules they release into the medium are not enough.",
+        "The filter killed most of the T cells, so they could not become active.",
+        "Antigen-presenting cells release a dissolved signal into the medium that activates T cells across the filter.",
+        "The antigen alone activates T cells, and the antigen-presenting cells play no part."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Same cells and same antigen: 68% active when mixed, 5% across a filter that passes dissolved molecules. Only touching made the difference.",
+        "options": [
+          "The two wells differ only in whether the cells can touch, and activation drops from 68% to 5%.",
+          "Nothing in the data shows the filter harmed the T cells, and the filter is on the other side of the well from where they sit.",
+          "Dissolved molecules cross the filter, yet only 5% of T cells became active, about the background level.",
+          "Well 1 has antigen without presenting cells and only 2% are active, so the antigen alone does not do it."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-12", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "3.C", "level": "analyze", "diff": 3, "stimulus": "cell-communication-s3",
+      "q": "What possibility does well 2 rule out?",
+      "options": [
+        "That touching an antigen-presenting cell activates T cells even when no antigen is displayed",
+        "That T cells become active on their own during 24 hours in culture",
+        "That the antigen is toxic to T cells at the concentration used",
+        "That the filter holds back dissolved molecules from the medium as well as the cells themselves"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In well 2 the cells touch but there is no antigen, and only 4% become active. So contact alone does not activate them: they need contact with a cell displaying the antigen they recognize.",
+        "options": [
+          "Contact without antigen gives 4%, close to background, so the displayed antigen is required.",
+          "Well 1, T cells with antigen but no presenting cells, shows the background level; well 2 tests something else.",
+          "Well 3 has antigen and 68% active, so the antigen does not harm them; well 2 has no antigen at all.",
+          "There is no filter in well 2."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-13", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "cell-communication-s3",
+      "q": "In a fifth well, cells are mixed and antigen is added, but the antigen-presenting cells were first given a drug that stops them displaying antigen fragments on their surface. They still take in the antigen. Predict the percentage of active T cells.",
+      "options": [
+        "Low, close to well 2, because the T cells touch presenting cells but find no antigen displayed",
+        "High, close to well 3, because the antigen is still inside the presenting cells",
+        "High, close to well 3, because the presenting cells can still release signals into the medium",
+        "Intermediate, between wells 3 and 4, because half of the signal is still delivered"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The T cell's receptor must bind antigen on the presenting cell's surface. Antigen hidden inside the cell cannot be touched, so the result should look like contact without antigen (well 2).",
+        "options": [
+          "Contact with a cell displaying no antigen is the situation in well 2, about 4% active.",
+          "The T cell cannot reach antigen inside another cell; it reads only what is displayed on the surface.",
+          "Well 4 already showed that released molecules activate few T cells.",
+          "Display is all or nothing here: without displayed antigen there is no match for the T cell receptor."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-14", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.D", "level": "analyze", "diff": 3, "stimulus": "cell-communication-s3",
+      "q": "The body has helper T cells with millions of different receptors, each fitting a different antigen. How does requiring contact with a presenting cell make the immune response specific to the pathogen that is actually present?",
+      "options": [
+        "Only T cells whose receptor fits the displayed antigen bind and become active, so the response is built from cells that recognize this pathogen.",
+        "Contact lets the presenting cell hand its own receptors to each T cell it touches, giving them the right shape.",
+        "Contact lets the antigen-presenting cell destroy T cells whose receptors do not fit the antigen.",
+        "A released signal would travel too slowly through the blood to reach T cells in time, so contact is faster."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Activation needs a physical match between the T cell's receptor and the antigen on the surface it touches, so only matching T cells are switched on.",
+        "options": [
+          "The match between receptor and displayed antigen selects which T cells respond.",
+          "Receptors are made by each T cell from its own genes; they are not handed over by contact.",
+          "Non-matching T cells are simply not activated; the data give no sign of their being destroyed.",
+          "Speed is not the issue: a released signal, as in well 4, would reach T cells whatever their receptor, which would make the response unspecific."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-15", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "Which is an example of endocrine signaling?",
+      "options": [
+        "The pancreas releases insulin into the blood, and it acts on muscle cells in the legs.",
+        "A neuron releases a neurotransmitter that binds receptors on the muscle cell next to it.",
+        "Two neighboring plant cells exchange sugar through plasmodesmata in their cell walls.",
+        "Platelets at a cut release a growth factor that makes nearby skin cells divide."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Endocrine signaling is long-distance: a hormone travels in the blood to target cells far from where it was released.",
+        "options": [
+          "Insulin travels in the blood from the pancreas to distant target cells: long-distance, endocrine signaling.",
+          "This is synaptic signaling: a neurotransmitter crossing a synaptic cleft to one target cell.",
+          "This is direct contact through channels joining the cytoplasms.",
+          "This is local signaling: a growth factor acting on nearby cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-16", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "After a meal, insulin in the blood reaches nearly every cell in the body, yet muscle cells respond to it and red blood cells do not. Which explanation is best?",
+      "options": [
+        "Muscle cells make a receptor protein that insulin binds; red blood cells do not.",
+        "Insulin is broken down in the blood before it reaches red blood cells.",
+        "Red blood cells move too fast in the blood for insulin to reach them.",
+        "Insulin enters each cell it reaches, but red blood cells have no nucleus to receive it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A cell responds to a hormone only if it makes the matching receptor. Exposure is the same; the receptor makes the difference.",
+        "options": [
+          "Responding depends on having the receptor, and muscle cells have it.",
+          "Red blood cells travel in the same blood as the insulin, so it does reach them.",
+          "Red blood cells sit in the very fluid that carries the insulin; their speed does not keep it away.",
+          "Insulin is a protein that does not enter cells; it acts by binding a receptor on the surface."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-17", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "At a wound, platelets release a growth factor that is normally broken down by enzymes in the tissue fluid within minutes. Predict the effect of a drug that slows this breakdown.",
+      "options": [
+        "Cells farther from the wound would bind the growth factor and start to divide.",
+        "Cells near the wound would stop dividing, because the growth factor would stay outside them.",
+        "The growth factor would enter the blood and act as a hormone on target cells in organs throughout the body.",
+        "No change, because the platelets themselves are the cells with receptors for the growth factor."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A local signal stays local because it is diluted and destroyed as it spreads. Slower breakdown lets it reach a high enough concentration farther away, so more distant cells respond.",
+        "options": [
+          "Lasting longer, the signal spreads farther before it falls too low to bind receptors.",
+          "The growth factor acts from outside by binding receptors; staying outside longer means more binding, not less.",
+          "Spreading somewhat farther through tissue is not the same as being carried around the body in the blood.",
+          "The growth factor acts on nearby skin and connective tissue cells, which have the receptors."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-18", "type": "multi", "unit": "unit-4", "topic": "cell-communication", "practice": "1.C", "level": "analyze", "diff": 2,
+      "q": "Select the two features that make synaptic signaling faster and more precisely aimed than endocrine signaling.",
+      "options": [
+        "The neurotransmitter crosses a gap of a few tens of nanometers instead of traveling through the blood.",
+        "The neurotransmitter is released right next to a single target cell.",
+        "Neurotransmitters are much larger molecules than hormones.",
+        "Neurotransmitters act without binding to receptors.",
+        "The neurotransmitter enters the blood, which carries it quickly to its target."
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Speed comes from the tiny distance; precision comes from releasing the signal onto one cell. A hormone must travel through the blood and reaches target cells everywhere.",
+        "options": [
+          "Diffusing across a tiny gap takes about a millisecond.",
+          "Release at one synapse limits the signal to one target cell.",
+          "Size is not what sets the speed; many neurotransmitters are small molecules.",
+          "Neurotransmitters work by binding receptors on the target cell, just as hormones do.",
+          "Traveling in the blood is endocrine signaling, the slower and broader route."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-19", "type": "single", "unit": "unit-4", "topic": "cell-communication", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "A small fluorescent sugar injected into one leaf cell appears in the neighboring cells within minutes, even though every plant cell is surrounded by a cell wall. Which structure best explains this?",
+      "options": [
+        "Plasmodesmata, channels through the cell walls that join the cytoplasms of neighboring cells",
+        "Aquaporins, membrane channels that let water and dissolved sugars cross into the cell wall",
+        "Vesicles that release the sugar into the cell wall by exocytosis, followed by uptake into the next cell",
+        "A hormone that carries the sugar through the plant to cells with receptors"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Plasmodesmata connect the cytoplasms of plant cells through their walls, the plant counterpart of gap junctions, so small molecules pass straight from cell to cell.",
+        "options": [
+          "Plasmodesmata provide a direct cytoplasm-to-cytoplasm path through the wall.",
+          "Aquaporins pass water, not sugars, and they open into the wall rather than into the neighbor.",
+          "Exocytosis of a small dye followed by uptake would be slow and would scatter it into the wall, not deliver it straight to neighbors.",
+          "A hormone is a signal that binds receptors; it does not carry other molecules from cell to cell."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-communication-20", "type": "order", "unit": "unit-4", "topic": "cell-communication", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Put the events of synaptic signaling from a neuron to a muscle cell in order.",
+      "options": [
+        "An electrical signal reaches the end of the neuron.",
+        "Vesicles fuse with the neuron's membrane and release neurotransmitter by exocytosis.",
+        "The neurotransmitter diffuses across the synaptic cleft.",
+        "The neurotransmitter binds receptor proteins on the muscle cell.",
+        "The muscle cell's behavior changes and it contracts."
+      ],
+      "why": { "correct": "The electrical signal triggers release; the neurotransmitter must cross the cleft before it can bind; binding the receptor is what changes the target cell." }
+    }
+  ]
+}

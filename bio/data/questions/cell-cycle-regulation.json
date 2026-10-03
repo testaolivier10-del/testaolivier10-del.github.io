@@ -1,0 +1,410 @@
+{
+  "stimuli": {
+    "cell-cycle-regulation-s1": {
+      "kind": "graph",
+      "title": "Cyclin and CDK through two cell cycles",
+      "text": "<p>Researchers followed a population of cells that were all dividing in step (synchronized) for 48 hours. At intervals they measured the amount of mitotic cyclin protein, the amount of the CDK protein it binds, and the kinase activity of cyclin-CDK complexes. Cells were seen entering mitosis at about 20 and 42 hours. All values are relative to the highest value measured for each.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time", "unit": "hours", "min": 0, "max": 48, "step": 8 },
+        "y": { "label": "Relative level", "unit": "% of maximum", "min": 0, "max": 100, "step": 20 },
+        "series": [
+          { "name": "Mitotic cyclin", "points": [[0, 8], [4, 12], [8, 22], [12, 38], [16, 60], [19, 82], [20, 90], [21, 15], [22, 8], [26, 12], [30, 22], [34, 38], [38, 60], [41, 82], [42, 90], [43, 15], [44, 8], [48, 12]] },
+          { "name": "CDK protein", "points": [[0, 60], [4, 61], [8, 60], [12, 59], [16, 60], [19, 61], [20, 60], [21, 60], [22, 59], [26, 60], [30, 61], [34, 60], [38, 60], [41, 59], [42, 60], [43, 61], [44, 60], [48, 60]] },
+          { "name": "Cyclin-CDK activity", "points": [[0, 2], [4, 2], [8, 3], [12, 4], [16, 6], [19, 40], [20, 95], [21, 10], [22, 2], [26, 2], [30, 3], [34, 4], [38, 6], [41, 40], [42, 95], [43, 10], [44, 2], [48, 2]] }
+        ]
+      }
+    },
+    "cell-cycle-regulation-s2": {
+      "kind": "table",
+      "title": "X-rays, p53 and the cell cycle",
+      "text": "<p>Researchers exposed two lines of human cells to a dose of X-rays that breaks DNA. Line N makes normal p53 protein; line P makes no working p53. At several times after exposure they measured the percentage of cells in G1 and the percentage dying by apoptosis. A third set of dishes of each line was not exposed. Values are means of 3 dishes.</p>",
+      "table": {
+        "caption": "Cells in G1 and cells in apoptosis (% of all cells)",
+        "cols": ["Time after X-rays", "Line N: in G1", "Line N: apoptotic", "Line P: in G1", "Line P: apoptotic"],
+        "rows": [
+          ["0 h", "45", "1", "44", "1"],
+          ["6 h", "68", "3", "40", "1"],
+          ["12 h", "74", "9", "38", "2"],
+          ["24 h", "70", "18", "41", "3"],
+          ["Not exposed, 24 h", "46", "1", "45", "1"]
+        ]
+      }
+    },
+    "cell-cycle-regulation-s3": {
+      "kind": "setup",
+      "title": "Fusing cells in different phases",
+      "text": "<p>In the 1970s, researchers fused pairs of mammalian cells that were in different phases of the cell cycle. Each fused cell had two nuclei sharing one cytoplasm. They then watched what the second nucleus did.</p>",
+      "table": {
+        "caption": "Results of fusing a cell in one phase with a cell in another",
+        "cols": ["Cells fused", "What the second nucleus did"],
+        "rows": [
+          ["S-phase cell + G1 cell", "The G1 nucleus began copying its DNA at once, hours earlier than it would have alone."],
+          ["S-phase cell + G2 cell", "The G2 nucleus did not copy its DNA again; it waited until the S nucleus finished, then both entered mitosis."],
+          ["M-phase cell + G1 cell", "The G1 nucleus's envelope broke down and its uncopied chromosomes condensed at once, as single chromatids."],
+          ["M-phase cell + G2 cell", "The G2 nucleus's envelope broke down and its chromosomes condensed at once, each as two sister chromatids."]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cell-cycle-regulation-1", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "cell-cycle-regulation-s1",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "CDK protein stays level, while cyclin builds slowly and drops sharply at each mitosis.",
+        "CDK protein and cyclin rise and fall together, both peaking at each mitosis.",
+        "Cyclin stays level, while CDK protein builds up slowly over time and drops at each mitosis.",
+        "Cyclin and cyclin-CDK activity both stay low except during S phase."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "CDK stays at 59-61% throughout; cyclin climbs from 8% to 90% over about 20 hours, then falls to 15% within an hour, twice.",
+        "options": [
+          "Only cyclin cycles; CDK protein is flat.",
+          "CDK protein does not change.",
+          "This reverses the two proteins.",
+          "Both peak at mitosis, around 20 and 42 hours, not in S phase."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-2", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "cell-cycle-regulation-s1",
+      "q": "Using the peaks in cyclin-CDK activity, how long is one cell cycle? Give a whole number of hours.",
+      "numeric": { "answer": 22, "tol": 0, "unit": "hours", "decimals": 0 },
+      "why": { "correct": "Activity peaks at 20 and 42 hours, once per mitosis: 42 − 20 = 22 hours per cycle." }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-3", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.A", "level": "analyze", "diff": 2, "stimulus": "cell-cycle-regulation-s1",
+      "q": "Which claim is best supported by the data?",
+      "options": [
+        "The timing of cyclin-CDK activity is set by the amount of cyclin, not the amount of CDK.",
+        "The timing of cyclin-CDK activity is set by the amount of CDK, not the amount of cyclin.",
+        "Cyclin-CDK activity rises steadily with cyclin through interphase, matching its level at each time.",
+        "Cyclin-CDK activity is highest in G1, when the cell decides whether to divide."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "CDK never changes, so it cannot explain when activity rises; activity rises and falls with cyclin.",
+        "options": [
+          "Activity tracks cyclin; CDK is constant.",
+          "CDK is flat, so it cannot set the timing.",
+          "Activity stays below 6% until cyclin is above about 60%, then jumps: it does not rise steadily with cyclin.",
+          "Activity of this mitotic cyclin-CDK peaks at mitosis, not in G1."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-4", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-regulation-s1",
+      "q": "The cells are given a form of mitotic cyclin that binds CDK normally but cannot be destroyed. Predict what happens at about 20 hours.",
+      "options": [
+        "The cells enter mitosis, but cyclin-CDK activity stays high and they cannot finish dividing.",
+        "The cells skip mitosis and start copying their DNA again, because cyclin is already high.",
+        "The cells do not enter mitosis, because a cyclin that resists destruction is unable to bind CDK.",
+        "The cells divide normally, because CDK protein, which sets the timing, is not changed."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Destroying cyclin is what switches CDK off so the cell can leave mitosis. With cyclin that stays, the complex stays active and the cells remain stuck in mitosis.",
+        "options": [
+          "Entry needs high activity, which happens; exit needs cyclin destroyed, which cannot happen.",
+          "High mitotic cyclin-CDK drives mitosis, not a new round of copying.",
+          "The stem says this cyclin binds CDK normally.",
+          "The data show the timing follows cyclin, not CDK."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-5", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "3.D", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-regulation-s1",
+      "q": "The graph shows that high cyclin-CDK activity happens at the same time as entry into mitosis. Which experiment would best test whether that activity causes entry into mitosis?",
+      "options": [
+        "Inject active cyclin-CDK into G2 cells and see whether they enter mitosis early.",
+        "Measure cyclin-CDK activity in a second population of synchronized cells over 48 hours.",
+        "Count the number of chromosomes in cells at 20 hours and at 42 hours of the experiment.",
+        "Measure the amount of CDK protein in nondividing nerve cells kept in G0 for the same time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Adding the activity and seeing whether mitosis follows tests cause, not just timing.",
+        "options": [
+          "Changing the proposed cause and watching for the effect is a direct test.",
+          "Repeating the measurement would confirm the timing, not the cause.",
+          "The number of chromosomes is not changed by mitosis and says nothing about what triggers it.",
+          "Cells in G0 do not divide, so they cannot show what triggers mitosis."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-6", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "4.B", "level": "apply", "diff": 2, "stimulus": "cell-cycle-regulation-s2",
+      "q": "Which statement best describes the response of the two lines to X-rays?",
+      "options": [
+        "Line N cells build up in G1 and increasingly die by apoptosis; line P cells change little in either.",
+        "Both lines build up in G1, but just the line P cells go on to die by apoptosis.",
+        "Line P cells build up in G1 and die by apoptosis; line N changes little.",
+        "Neither line changes after X-rays compared with the cells that were not exposed."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Line N: G1 rises from 45% to 74% and apoptosis from 1% to 18%. Line P stays at 38-44% in G1 and 1-3% apoptotic, like unexposed cells.",
+        "options": [
+          "Only line N, with working p53, halts in G1 and dies by apoptosis.",
+          "Line P does not build up in G1, and its apoptosis stays near 1-3%.",
+          "This reverses the two lines.",
+          "Line N changes a great deal compared with its unexposed dishes (46% and 1%)."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-7", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-regulation-s2",
+      "q": "Which explanation best accounts for the results in line N?",
+      "options": [
+        "Damaged DNA raises p53, which holds cells at the G1 checkpoint and triggers apoptosis if repair fails.",
+        "X-rays destroy cyclins directly, so cells in line N stop wherever they are in the cycle and then they die.",
+        "p53 repairs the broken DNA itself, and cells wait in G1 until p53 has finished each repair.",
+        "X-rays speed up S phase in line N, so more cells reach G1 sooner and wear out by apoptosis."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Working p53 is the only difference between the lines. p53 halts the cycle at G1 (more cells in G1) and triggers apoptosis in cells it cannot save (rising apoptosis).",
+        "options": [
+          "Both effects appear only where p53 works.",
+          "Line P received the same X-rays and did not stop, so X-rays do not halt cells directly.",
+          "p53 halts the cycle and switches on genes; it does not repair DNA itself.",
+          "Cells build up in G1 because they are held there, not because they move through S faster."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-8", "type": "numeric", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "cell-cycle-regulation-s2",
+      "q": "By what percentage did the fraction of line N cells in G1 increase from 0 h to 12 h? Give a whole number.",
+      "numeric": { "answer": 64, "tol": 1, "unit": "%", "decimals": 0 },
+      "why": { "correct": "Percent change = (74 − 45) ÷ 45 × 100 = 64.4%, about 64%." }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-9", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "cell-cycle-regulation-s2",
+      "q": "Line P cells that survive the X-rays keep dividing. Predict how their descendants compare with line N's survivors.",
+      "options": [
+        "They carry more mutations, because damaged DNA was copied, not repaired or removed.",
+        "They carry fewer mutations, because without p53 the damaged cells die faster.",
+        "They carry the same mutations, because both lines received the same dose of X-rays.",
+        "They stop dividing within a day, because damaged DNA is impossible to copy."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without p53, cells with damaged DNA neither stop for repair nor die; their damage is copied into daughter cells as mutations, which is how losing p53 raises cancer risk.",
+        "options": [
+          "Skipping the halt and apoptosis lets damage become permanent mutations.",
+          "Line P shows almost no apoptosis, so damaged cells survive rather than die.",
+          "The dose was the same, but line N halted and removed damaged cells, so fewer mutations were passed on.",
+          "Line P cells keep cycling (38-44% in G1, like unexposed cells), so damaged DNA is copied."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-10", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "3.C", "level": "analyze", "diff": 2, "stimulus": "cell-cycle-regulation-s2",
+      "q": "What is the main purpose of the dishes that were not exposed to X-rays?",
+      "options": [
+        "To show that the changes in line N are caused by the X-rays, not by time in culture",
+        "To show that line N and line P grow at the same rate when they are not exposed",
+        "To give the X-rayed cells somewhere to move when they leave the cycle",
+        "To measure how much DNA damage each line can repair without p53"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "After 24 hours unexposed line N is still at 46% G1 and 1% apoptotic, so the rise in exposed dishes comes from the X-rays.",
+        "options": [
+          "Same time, no X-rays, no change: the X-rays caused the effect.",
+          "The data give the fraction in G1, not growth rates; and that is not the comparison the control is for.",
+          "Cells do not move between dishes.",
+          "Unexposed cells have little damage to repair, and line N has p53."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-11", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.A", "level": "analyze", "diff": 2, "stimulus": "cell-cycle-regulation-s3",
+      "q": "Which conclusion is best supported by the four results?",
+      "options": [
+        "S-phase and M-phase cytoplasm contains factors that push another nucleus into that phase.",
+        "Each nucleus controls its own timing, and the cytoplasm it shares has no effect on it.",
+        "The G1 nucleus is the one that controls the timing of both nuclei in a fused cell.",
+        "Fusing any two cells makes both nuclei enter mitosis together, in whatever phase each one was in."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Sharing cytoplasm with an S cell starts DNA copying in a G1 nucleus, and sharing with an M cell makes another nucleus condense its chromosomes: something in the cytoplasm drives each phase.",
+        "options": [
+          "The second nucleus changes according to the other cell's phase, through the shared cytoplasm.",
+          "The G1 nuclei change their timing immediately after fusion, so the shared cytoplasm matters.",
+          "The G1 nuclei follow the other cell's lead, not the reverse.",
+          "S + G1 fusions lead to DNA copying, not to mitosis."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-12", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.C", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-regulation-s3",
+      "q": "In the S + G2 fusion, the G2 nucleus did not copy its DNA again even though it shared cytoplasm with an S-phase nucleus. Which explanation best fits?",
+      "options": [
+        "Something in a nucleus that has already copied its DNA blocks a second round of copying in the same cycle.",
+        "The G2 nucleus had too little cyclin of its own to respond to any signal coming from the S-phase cytoplasm.",
+        "The S-phase factor does not reach a G2 nucleus, because G2 nuclei have no pores in their nuclear envelope.",
+        "The G2 nucleus was damaged by the fusion, so it waited for repair at the G2 checkpoint before mitosis."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The same S-phase cytoplasm starts copying in a G1 nucleus but not in a G2 nucleus, so the difference lies in the nucleus itself: once copied, DNA is not copied again until after mitosis.",
+        "options": [
+          "The difference between the G1 and G2 nuclei shows a block in the already-copied nucleus.",
+          "The G1 nucleus responded to the S signal without its own S-phase cyclin, so the G2 nucleus's cyclin level is not what decided this.",
+          "Nuclei in every phase of interphase have pores; G2 nuclei exchange molecules with the cytoplasm.",
+          "Nothing suggests damage, and the G2 nucleus entered mitosis on schedule."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-13", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "apply", "diff": 2, "stimulus": "cell-cycle-regulation-s3",
+      "q": "The M-phase factor is now known to be MPF, an active cyclin-CDK complex. Before fusion with a G2 cell, the M-phase cell is treated with a drug that blocks CDK kinase activity. Predict the result.",
+      "options": [
+        "The G2 nucleus does not condense its chromosomes, because the factor that drives mitosis is inactive.",
+        "The G2 nucleus condenses its chromosomes as before, because the M-phase cell's cyclin is still present.",
+        "The G2 nucleus copies its DNA again, because blocking CDK sends the cell back to S phase.",
+        "The G2 nucleus condenses even faster, because the drug frees cyclin to act on the nucleus itself."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "MPF acts by phosphorylating target proteins. With its kinase activity blocked, the M-phase signal is gone, so the G2 nucleus is not pushed into mitosis.",
+        "options": [
+          "No kinase activity, no phosphorylated targets, no condensation.",
+          "Cyclin works only by switching on the CDK's kinase activity, which is blocked.",
+          "Blocking CDK does not reset a nucleus that has already copied its DNA.",
+          "Cyclin acts through its CDK; on its own it does not condense chromosomes."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-14", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.D", "level": "analyze", "diff": 3, "stimulus": "cell-cycle-regulation-s3",
+      "q": "Some cancer drugs block the CDK that works with G1 cyclins. Based on the fusion results and what you know of the cycle, predict their effect on cancer cells that depend on this CDK.",
+      "options": [
+        "The cells are held at the G1 checkpoint and do not start copying their DNA.",
+        "The cells are held in mitosis, because their chromosomes are unable to finish separating.",
+        "The cells copy their DNA twice before dividing, because G1 is skipped.",
+        "The cells divide faster, because they spend less time waiting in G1."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "G1 cyclin-CDK carries the cell past the G1 checkpoint into S phase. Blocked, the cancer cells stay in G1.",
+        "options": [
+          "The G1 cyclin-CDK acts at the G1 checkpoint, so the block holds cells there.",
+          "That would follow from keeping mitotic cyclin-CDK active, a different complex.",
+          "Blocking the G1 complex stops entry into S, so no copying happens at all.",
+          "Without the G1 push, cells do not leave G1, so they divide less."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-15", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Why can a mutation in one copy of a proto-oncogene promote cancer, while a tumor suppressor gene usually must lose both copies?",
+      "options": [
+        "An overactive accelerator works despite a normal copy; one working brake copy still makes enough brake protein.",
+        "Proto-oncogenes are found on one chromosome of each pair, while tumor suppressor genes are found on both of them.",
+        "Tumor suppressor genes are copied twice in S phase, while proto-oncogenes are copied once each cycle.",
+        "Mutations in proto-oncogenes are passed to daughter cells, while those in tumor suppressor genes are not."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "One overactive copy pushes division by itself. A brake fails only when no working copy is left to make the brake protein.",
+        "options": [
+          "Gain of an accelerator takes one copy; loss of a brake takes two.",
+          "Body cells carry two copies of nearly every gene, proto-oncogenes included.",
+          "Every gene is copied once in S phase.",
+          "Both kinds of mutation are copied into daughter cells by mitosis."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-16", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Normal skin cells in a dish have stopped dividing in a single layer. A strip of cells is scraped away. Predict what happens.",
+      "options": [
+        "Cells at the edges divide and fill the strip, then stop when they touch neighbors on all sides.",
+        "Cells across the whole dish start dividing and pile up in layers, because the contact signal is lost.",
+        "No cells divide, because cells that have stopped once by contact inhibition remain in G0 for good.",
+        "Cells at the edges die by apoptosis, because losing their neighbors damages their DNA."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Contact inhibition stops division where cells touch on all sides. Cells at the new edge lose that contact, divide into the gap and stop once it is filled.",
+        "options": [
+          "Division happens where contact is lost and stops when it returns.",
+          "Cells away from the strip still touch neighbors, and normal cells do not pile up.",
+          "Normal cells resume dividing when contact is lost, as in wound healing.",
+          "Losing neighbors does not damage DNA; it removes a stop signal."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-17", "type": "single", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "1.C", "level": "apply", "diff": 2,
+      "q": "A tumor removed from a patient's colon is described as malignant. Which finding would best support that description?",
+      "options": [
+        "Cells from the tumor are found invading the colon wall and growing in the liver.",
+        "The tumor is made of cells that are dividing faster than normal colon cells.",
+        "The tumor is surrounded by a capsule and has stayed the same size for a year.",
+        "The tumor's cells have a nucleus and copy their DNA before they divide."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Malignant tumors invade nearby tissue and spread (metastasis); cells growing in the liver show that spread has begun.",
+        "options": [
+          "Invasion and spread define a malignant tumor.",
+          "Benign tumors also grow by extra division; fast division alone does not show spread.",
+          "A contained, stable tumor fits the description of a benign one.",
+          "Every dividing body cell has a nucleus and copies its DNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-18", "type": "multi", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "Select the two changes that would make uncontrolled cell division more likely.",
+      "options": [
+        "A mutation that makes a growth factor receptor active without its growth factor",
+        "Loss of both working copies of the p53 gene",
+        "A mutation that makes a G1 cyclin get destroyed faster",
+        "An extra working copy of a tumor suppressor gene",
+        "A drug that switches on caspases in the cell"
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "A stuck-on receptor is an oncogene (accelerator on); losing p53 removes a brake and the apoptosis that removes damaged cells.",
+        "options": [
+          "A receptor stuck on drives division without the signal.",
+          "Without p53, damaged cells neither halt nor die.",
+          "Less G1 cyclin means less CDK activity, so fewer cells pass the G1 checkpoint.",
+          "More brake protein slows division.",
+          "Caspases carry out apoptosis, which removes cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-19", "type": "predict", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "6.E", "level": "analyze", "diff": 3,
+      "q": "In a line of cells, the M checkpoint no longer works: anaphase starts on schedule whether or not every chromosome is attached to the spindle. Predict each change, compared with normal cells.",
+      "variables": [
+        { "name": "Chance that a daughter cell gets the wrong number of chromosomes", "answer": "up", "why": "A chromosome whose sisters are not attached to both poles can be pulled to one pole, so one daughter gets an extra copy and the other is missing one." },
+        { "name": "Time a cell spends in metaphase when one chromosome is slow to attach", "answer": "down", "why": "Normally the cell waits for the late chromosome; without the checkpoint it does not wait." },
+        { "name": "Amount of DNA copied in S phase", "answer": "none", "why": "The M checkpoint acts in mitosis; copying in S phase is unchanged." },
+        { "name": "Number of centrosomes formed before mitosis", "answer": "none", "why": "Centrosomes are copied before mitosis, independently of the checkpoint that checks attachment." }
+      ],
+      "why": { "correct": "The M checkpoint guards chromosome sharing. Without it, mitosis is faster but mistakes in sharing get through; earlier events are unaffected." }
+    },
+    {
+      "id": "bio-cell-cycle-regulation-20", "type": "order", "unit": "unit-4", "topic": "cell-cycle-regulation", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Put the events of a cell's response to severe DNA damage in G1 in order.",
+      "options": [
+        "Radiation breaks the cell's DNA.",
+        "p53 protein builds up in the cell.",
+        "p53 switches on a gene for a protein that blocks cyclin-CDK.",
+        "The cycle halts at the G1 checkpoint while repair is attempted.",
+        "Repair fails, and p53 switches on genes that trigger apoptosis.",
+        "Caspases take the cell apart."
+      ],
+      "why": { "correct": "Damage raises p53; p53 first halts the cycle by blocking cyclin-CDK; only if repair fails does it trigger apoptosis, which caspases carry out." }
+    }
+  ]
+}

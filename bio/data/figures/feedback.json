@@ -1,0 +1,12 @@
+{
+  "glucose-feedback-loop": {
+    "file": "figures/glucose-feedback-loop.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two negative feedback loops around a box for blood glucose near its set point, about 70 to 100 milligrams per deciliter when fasting. Top loop: glucose rises after a meal; beta cells in the pancreas sense it and release insulin; muscle and fat cells take up glucose and the liver stores it as glycogen; glucose falls back. Bottom loop: glucose falls during fasting or exercise; alpha cells sense it and release glucagon; the liver breaks down glycogen and releases glucose; glucose rises back."
+  },
+  "feedback-loop-types": {
+    "file": "figures/feedback-loop-types.svg", "ext": "svg", "w": 760, "h": 310,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two loops side by side. Negative feedback: body temperature rises, sensors in skin and brain detect it, the brain signals sweat glands and skin blood vessels, sweating and heat loss bring the temperature back down, opposing the change. Positive feedback: the baby's head presses on the cervix, stretch sensors signal the brain, the brain releases oxytocin, the uterus contracts harder, which presses the head harder still, adding to the change until birth ends the loop."
+  }
+}

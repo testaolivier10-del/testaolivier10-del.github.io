@@ -1,0 +1,52 @@
+{
+  "id": "frq-g-protein-block",
+  "title": "A blocked step in a G protein pathway",
+  "type": "conceptual",
+  "points": 4,
+  "units": ["unit-4"],
+  "topics": ["signal-transduction-pathways"],
+  "practices": ["1.B", "6.C", "6.E"],
+  "stimulus": {
+    "kind": "setup",
+    "title": "Epinephrine and a broken G protein",
+    "text": "<p>In liver cells, epinephrine binds a G protein-coupled receptor. The activated receptor makes a G protein release GDP and bind GTP. The active G protein switches on adenylyl cyclase, which converts ATP into cAMP. cAMP switches on protein kinase A, which starts a cascade of kinases ending with glycogen phosphorylase, the enzyme that breaks glycogen down to glucose. Phosphodiesterase converts cAMP into inactive AMP.</p><p>Researchers studied liver cells from a mouse with a mutation in the G protein. The mutant G protein binds GDP normally but cannot release it, so it cannot bind GTP.</p>"
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "<b>Describe</b> the role of the G protein in the normal pathway.",
+      "points": 1,
+      "rubric": [
+        { "point": "Describes the G protein as the link between the activated receptor and adenylyl cyclase: when the receptor activates it (GTP bound), it switches on adenylyl cyclase.", "accept": ["it relays the signal from the receptor to adenylyl cyclase", "the activated receptor switches it on by GDP-for-GTP exchange and it then activates adenylyl cyclase", "it is a switch that turns on adenylyl cyclase when epinephrine binds the receptor"] }
+      ],
+      "sample": "The G protein carries the signal from the receptor to adenylyl cyclase. When epinephrine binds, the receptor makes the G protein swap GDP for GTP; the active, GTP-bound G protein then switches on adenylyl cyclase, which makes cAMP."
+    },
+    {
+      "label": "b",
+      "prompt": "<b>Explain</b> how the binding of a small number of epinephrine molecules can lead to the release of a large amount of glucose.",
+      "points": 1,
+      "rubric": [
+        { "point": "Explains amplification: each activated molecule (receptor, adenylyl cyclase, each kinase in the cascade) activates or produces many molecules of the next step, so the effect multiplies down the pathway.", "accept": ["each enzyme activates many copies of the next protein, so the signal is amplified", "one adenylyl cyclase makes many cAMP and each kinase phosphorylates many targets", "the phosphorylation cascade multiplies the signal at each step"] }
+      ],
+      "sample": "The signal is amplified at each step. One active receptor switches on many G proteins, each adenylyl cyclase makes many cAMP molecules, and each kinase in the cascade phosphorylates many copies of the next kinase. Because each step multiplies the one before, a few bound epinephrine molecules lead to millions of active glycogen phosphorylase molecules and a large release of glucose."
+    },
+    {
+      "label": "c",
+      "prompt": "<b>Predict</b> the effect of the G protein mutation on the cAMP level and on glucose release when epinephrine is added to the mutant cells. <b>Justify</b> your prediction.",
+      "points": 1,
+      "rubric": [
+        { "point": "Predicts that cAMP stays near its resting level and little or no glucose is released, because the G protein cannot bind GTP and so cannot be switched on to activate adenylyl cyclase, even though epinephrine binds the receptor.", "accept": ["no rise in cAMP and no glucose release because the G protein never becomes active", "the pathway is blocked at the G protein so adenylyl cyclase is not switched on", "cAMP and glucose release stay at baseline because the signal cannot pass the G protein"] }
+      ],
+      "sample": "cAMP will stay at its resting level and the cells will release little or no extra glucose. Epinephrine still binds the receptor, but the mutant G protein cannot release GDP and bind GTP, so it never becomes active. Without an active G protein, adenylyl cyclase is not switched on, no extra cAMP is made, and the kinase cascade that activates glycogen phosphorylase does not start."
+    },
+    {
+      "label": "d",
+      "prompt": "The researchers give the mutant cells epinephrine together with a drug that blocks phosphodiesterase. <b>Predict</b> how glucose release compares with mutant cells given epinephrine alone. <b>Justify</b> your prediction.",
+      "points": 1,
+      "rubric": [
+        { "point": "Predicts little or no difference (glucose release stays low), because blocking phosphodiesterase only slows the breakdown of cAMP, and the mutant cells are making little or no cAMP for it to act on.", "accept": ["about the same, because no extra cAMP is being made so there is nothing to protect from breakdown", "still low; the block is before cAMP is made, and the drug acts after", "no rescue, since the drug works downstream of where cAMP would be produced"] }
+      ],
+      "sample": "Glucose release will be about the same, still low. Phosphodiesterase inhibitors raise cAMP only by stopping its breakdown. In the mutant cells the pathway is blocked at the G protein, before cAMP is made, so almost no new cAMP is produced for the drug to protect. Protein kinase A stays off and glycogen is not broken down."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "topic": "signal-transduction-pathways",
+  "hook": "<p>Cholera can drain a person of 10 to 20 liters of water a day, and it kills by dehydration within hours. The bacterium does not destroy the gut. Its toxin enters the cells lining the intestine and jams one switch in a signaling pathway in the \"on\" position. The cells then pump chloride ions into the gut nonstop, and water follows by osmosis. To understand cholera, and many drugs and diseases, you need to know the pathway that toxin jams.</p>",
+  "prereq": [
+    {
+      "q": "What does a protein kinase do?",
+      "options": [
+        "It transfers a phosphate group from ATP to a protein, switching that protein on or off",
+        "It removes phosphate groups from proteins, switching them back to their resting shape",
+        "It makes ATP from ADP using the energy of a proton gradient"
+      ],
+      "correct": 0,
+      "why": "Kinases add phosphate from ATP; phosphatases remove it; ATP synthase makes ATP.",
+      "review": "signal-transduction-intro"
+    },
+    {
+      "q": "Why does one ligand-bound receptor lead to many product molecules?",
+      "options": [
+        "Each activated enzyme in the pathway switches on many molecules of the next step",
+        "The ligand is copied inside the cell at each step of the pathway",
+        "Each receptor binds thousands of ligand molecules at the same time"
+      ],
+      "correct": 0,
+      "why": "Amplification comes from enzymes acting over and over; the ligand is neither copied nor bound in bulk.",
+      "review": "signal-transduction-intro"
+    },
+    {
+      "q": "Glycogen is",
+      "options": [
+        "a branched polysaccharide that animals use to store glucose, mainly in liver and muscle",
+        "a steroid hormone made from cholesterol",
+        "an enzyme that breaks glucose down in glycolysis"
+      ],
+      "correct": 0,
+      "why": "Glycogen is the animal storage polysaccharide; breaking it down releases glucose.",
+      "review": "carbohydrates"
+    }
+  ],
+  "figure": {
+    "figure": "gpcr-camp-cascade",
+    "caption": "Epinephrine's pathway in a liver cell: a G protein-coupled receptor, a G protein, adenylyl cyclase making cAMP, and a cascade of kinases ending in glycogen breakdown. The column on the right shows the rough number of active molecules at each step."
+  },
+  "chain": [
+    {
+      "cause": "Epinephrine binds a G protein-coupled receptor (GPCR) on a liver cell.",
+      "effect": "The receptor changes shape and makes a G protein on the inside of the membrane release GDP and bind GTP, switching it on."
+    },
+    {
+      "cause": "The active G protein moves along the membrane and binds adenylyl cyclase.",
+      "effect": "Adenylyl cyclase switches on and converts ATP into many molecules of cAMP, the second messenger."
+    },
+    {
+      "cause": "cAMP diffuses through the cytoplasm and binds protein kinase A.",
+      "effect": "Protein kinase A switches on and phosphorylates many molecules of the next kinase, starting a phosphorylation cascade."
+    },
+    {
+      "cause": "At the end of the cascade, glycogen phosphorylase is switched on.",
+      "effect": "It breaks glycogen into glucose units; the cell releases glucose into the blood, fuel for fight or flight."
+    },
+    {
+      "cause": "When epinephrine leaves the receptor, the G protein hydrolyzes its GTP to GDP and phosphodiesterase converts cAMP to AMP.",
+      "effect": "cAMP falls, phosphatases switch the kinases off, and glycogen breakdown stops."
+    },
+    {
+      "cause": "A mutation or toxin that locks any one protein in its \"on\" state (for example, a G protein unable to hydrolyze GTP)",
+      "effect": "keeps every step after it running with no signal; one locked in \"off\" blocks the response even with the signal present."
+    }
+  ],
+  "ideas": [
+    "A <b>G protein</b> is a switch: off with GDP, on with GTP. An activated <b>GPCR</b> flips it on; the G protein flips itself off by hydrolyzing GTP.",
+    "<b>Adenylyl cyclase</b> makes <b>cAMP</b> from ATP; cAMP switches on protein kinase A; <b>phosphodiesterase</b> breaks cAMP down. The cAMP level reflects a balance between making and breaking.",
+    "<b>Ca²⁺</b> is the other common second messenger: kept very low in the cytoplasm, it floods in when channels open.",
+    "<b>Receptor tyrosine kinases</b> pair up when a growth factor binds, phosphorylate each other, and start a kinase cascade that often switches on genes for growth and division.",
+    "A <b>mutation</b> or a drug can leave a pathway stuck on or switched off. Steps after the change follow it; steps before it do not. An <b>antagonist</b> blocks a receptor, an <b>agonist</b> activates it."
+  ],
+  "misconception": {
+    "wrong": "If a cell keeps responding with no signal present, the receptor must be the broken part.",
+    "right": "A protein stuck \"on\" anywhere in the pathway keeps every later step running: a G protein that cannot hydrolyze GTP, a blocked phosphodiesterase, or a kinase that cannot be dephosphorylated all give the same symptom. Find the broken step by testing which treatments still change the response."
+  },
+  "check": [
+    "bio-signal-transduction-pathways-1",
+    "bio-signal-transduction-pathways-3",
+    "bio-signal-transduction-pathways-4",
+    "bio-signal-transduction-pathways-6",
+    "bio-signal-transduction-pathways-9",
+    "bio-signal-transduction-pathways-17",
+    "bio-signal-transduction-pathways-20"
+  ],
+  "summary": "<p>In a G protein-coupled pathway, a ligand such as epinephrine activates a GPCR, which switches a G protein on (GDP swapped for GTP); the G protein activates adenylyl cyclase, which makes the second messenger cAMP; cAMP activates protein kinase A and a phosphorylation cascade that, in liver cells, breaks down glycogen. Calcium ions are a second messenger released through channels. Receptor tyrosine kinases pair up and phosphorylate each other when a growth factor binds, starting a kinase cascade toward growth and division. Pathways switch off through GTP hydrolysis, phosphodiesterase and phosphatases. A mutation, toxin or drug that locks a step on or off changes every step after it: cholera toxin locks a G protein on, antagonists block receptors.</p>",
+  "connections": [
+    { "href": "../notes/signal-transduction-intro.html", "label": "Back: reception, transduction and response (4.2)" },
+    { "href": "../tools/signal-transduction-amplification.html", "label": "Try it: the signal transduction and amplification simulator" },
+    { "href": "../notes/enzyme-environment.html", "label": "Back: competitive inhibitors, like receptor antagonists (3.3)" },
+    { "href": "../notes/feedback.html", "label": "Next: signals that keep the body in balance (4.4)" }
+  ]
+}
