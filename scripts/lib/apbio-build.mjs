@@ -27,8 +27,9 @@ export const COURSE_HTML = 'AP&reg; Biology';
 export const COURSE_ID = `${SITE}${BASE}#course`;
 export const DISCLAIMER = 'AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.';
 export const BETA_NOTE = 'This course has not yet been reviewed by an AP® Biology teacher.';
-// Units 1 and 2 are free, and the first lesson of each skills chapter
-// (docs/apbio-spec.md section 1, "Free").
+// Units 1 and 2 are free, and every skills lesson: "the first lesson of each
+// skills topic", and a skills topic has one lesson (docs/apbio-spec.md
+// section 1, "Free", and decision 9).
 export const FREE_UNITS = ['unit-1', 'unit-2'];
 export const MAP_PATH = join(ROOT, 'docs', 'apbio-dependency-map.json');
 export const STUB_PATH = join(ROOT, 'scripts', 'test', 'fixtures', 'apbio-map-stub.json');
@@ -169,8 +170,7 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
 export function isFreeTopic(map, t) {
   const ch = map.chapterById(t.chapter);
   if (FREE_UNITS.includes(t.chapter)) return true;
-  if (ch && ch.part !== 'course') return map.topics.find(x => x.chapter === t.chapter) === t;
-  return false;
+  return !!(ch && ch.part !== 'course');
 }
 
 /* ------------------------------------------------------------- the head */
@@ -211,6 +211,7 @@ export function head({ title, desc, path, depth, ogType = 'article', jsonld, met
 <link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${up}assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="${up}assets/icon-180.png">
+<link rel="manifest" href="${depth}manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="${CSP}">
@@ -223,7 +224,7 @@ ${noindex ? `${NOINDEX}\n` : ''}<link rel="canonical" href="${url}">
 <meta property="og:type" content="${ogType}">
 <meta property="og:url" content="${url}">
 <meta property="og:site_name" content="LevlPrep">
-<meta property="og:image" content="${SITE}/assets/og-image.png">
+<meta property="og:image" content="${SITE}${BASE}assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">

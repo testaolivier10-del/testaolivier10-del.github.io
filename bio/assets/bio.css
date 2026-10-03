@@ -476,7 +476,9 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
 .bio-pos b{display:block;color:var(--ink);font:900 15px/1.35 var(--font-ui);margin-bottom:4px;}
 .bio-unit-grid{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
 .bio-unit-grid li>a,.bio-unit-grid li>div{display:flex;flex-direction:column;gap:4px;height:100%;box-sizing:border-box;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
-.bio-unit-grid li>div{opacity:.75;}
+/* A unit not yet published: a dashed outline and no lift, never opacity,
+   which took its text below 4.5:1 (check-a11y with Unit 1 published). */
+.bio-unit-grid li>div{box-shadow:none;border:2px dashed var(--line);background:transparent;}
 .bio-unit-grid small{color:var(--muted);font:700 12.5px var(--font-ui);}
 .bio-unit-chip{align-self:flex-start;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);background:var(--ctint);padding:3px 9px;border-radius:999px;}
 
