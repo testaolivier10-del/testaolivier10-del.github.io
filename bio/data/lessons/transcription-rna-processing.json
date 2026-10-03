@@ -1,0 +1,83 @@
+{
+  "topic": "transcription-rna-processing",
+  "hook": "<p>The death cap mushroom kills more people than any other mushroom, and a single cap can be enough. Its main poison, α-amanitin, does one thing: it jams RNA polymerase II, the enzyme that copies genes into messenger RNA. Liver cells, which take up the toxin first, stop making new mRNA, their proteins run out over the following days, and the cells die. Copying genes into RNA is so central that blocking one enzyme is lethal.</p>",
+  "prereq": [
+    {
+      "q": "How does RNA differ from DNA?",
+      "options": ["RNA has ribose and uracil and is usually single-stranded", "RNA has deoxyribose and thymine and is double-stranded", "RNA has no phosphate groups in its backbone"],
+      "correct": 0,
+      "why": "RNA uses ribose and U (in place of T) and is usually one strand; both have sugar-phosphate backbones.",
+      "review": "nucleic-acids"
+    },
+    {
+      "q": "In a eukaryotic cell, where is DNA kept and where are proteins built?",
+      "options": ["DNA in the nucleus; proteins on ribosomes in the cytoplasm and on the rough ER", "Both in the nucleus", "DNA in the cytoplasm; proteins in the nucleus"],
+      "correct": 0,
+      "why": "DNA stays in the nucleus, so a messenger (mRNA) must carry each gene's instructions out to the ribosomes.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "DNA polymerase builds new DNA",
+      "options": ["5′ to 3′, adding nucleotides to the 3′ end", "3′ to 5′, adding nucleotides to the 5′ end", "in either direction"],
+      "correct": 0,
+      "why": "New nucleic acid chains grow at their 3′ end; RNA polymerase follows the same rule.",
+      "review": "dna-replication"
+    }
+  ],
+  "figure": {
+    "figure": "transcription-processing",
+    "caption": "RNA polymerase II copies a gene's template strand into pre-mRNA; the cap, tail and splicing turn it into mature mRNA, which leaves the nucleus."
+  },
+  "chain": [
+    {
+      "cause": "Proteins recognize a gene's promoter (in many eukaryotic genes, a TATA box) and place RNA polymerase at the start site.",
+      "effect": "RNA polymerase opens a short stretch of the double helix and begins copying."
+    },
+    {
+      "cause": "RNA polymerase reads the template strand 3′ to 5′ and adds matching RNA nucleotides (U opposite A) to the RNA's 3′ end.",
+      "effect": "The RNA grows 5′ to 3′ with the same sequence as the coding strand, except U for T."
+    },
+    {
+      "cause": "The polymerase copies a terminator (in bacteria) or a signal near the gene's end (in eukaryotes).",
+      "effect": "The RNA is released; in eukaryotes this primary transcript is pre-mRNA."
+    },
+    {
+      "cause": "In the nucleus, the pre-mRNA gets a 5′ cap and a poly-A tail.",
+      "effect": "The cap and tail protect the mRNA from breakdown, help it leave the nucleus, and help ribosomes bind it."
+    },
+    {
+      "cause": "Spliceosomes cut out the introns and join the exons.",
+      "effect": "Mature mRNA holds one continuous coded message; joining different sets of exons (alternative splicing) gives different mRNAs from one gene."
+    },
+    {
+      "cause": "Mature mRNA passes through nuclear pores into the cytoplasm.",
+      "effect": "Ribosomes there can use it to build a protein (topic 6.4)."
+    }
+  ],
+  "ideas": [
+    "The <b>central dogma</b>: information flows DNA → RNA → protein. <b>Transcription</b> is the DNA → RNA step.",
+    "<b>RNA polymerase</b> starts at a <b>promoter</b>, needs no primer, reads the <b>template strand</b> 3′ to 5′ and builds RNA 5′ to 3′. The RNA matches the <b>coding strand</b> with U for T. A <b>terminator</b> ends it in bacteria.",
+    "Eukaryotic <b>pre-mRNA</b> is processed in the nucleus: <b>5′ cap</b>, <b>poly-A tail</b>, and <b>splicing</b> by spliceosomes, which remove <b>introns</b> and join <b>exons</b>.",
+    "<b>Alternative splicing</b> joins different exons in different cells, so one gene can give several proteins.",
+    "Not every RNA is mRNA: <b>tRNA</b> carries amino acids and ribosomal RNA (rRNA) forms much of the ribosome; both work as RNA."
+  ],
+  "misconception": {
+    "wrong": "The mRNA has the same sequence as the template strand, since it is copied from it.",
+    "right": "The mRNA is complementary to the template strand. It has the same sequence as the other strand, the coding strand, with U in place of T."
+  },
+  "check": [
+    "bio-transcription-rna-processing-1",
+    "bio-transcription-rna-processing-2",
+    "bio-transcription-rna-processing-6",
+    "bio-transcription-rna-processing-7",
+    "bio-transcription-rna-processing-10",
+    "bio-transcription-rna-processing-11",
+    "bio-transcription-rna-processing-16"
+  ],
+  "summary": "<p>Transcription copies a gene into RNA, the first step of the central dogma (DNA → RNA → protein). RNA polymerase binds at the promoter, needs no primer, reads the template strand 3′ to 5′ and builds RNA 5′ to 3′, so the RNA matches the coding strand with U for T. In bacteria a terminator ends transcription. In eukaryotes, RNA polymerase II makes pre-mRNA, which is processed in the nucleus: a 5′ cap and a poly-A tail are added, and spliceosomes remove introns and join exons. Alternative splicing joins different exons in different cells, so one gene can make several proteins. The mature mRNA leaves through nuclear pores to the ribosomes. Other genes make RNAs that work as RNA, such as tRNA and ribosomal RNA.</p>",
+  "connections": [
+    { "href": "../notes/dna-replication.html", "label": "Back: polymerases build 5′ to 3′ on a template (6.2)" },
+    { "href": "../notes/cell-structure-function.html", "label": "Back: nucleus, nuclear pores and ribosomes (2.1)" },
+    { "href": "../notes/translation.html", "label": "Next: how ribosomes read mRNA (6.4)" }
+  ]
+}

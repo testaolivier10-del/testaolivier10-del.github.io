@@ -1,0 +1,13 @@
+{
+  "central-dogma": { "def": "The usual flow of genetic information in cells: DNA is copied into RNA (transcription), and RNA's message is used to build a protein. Some viruses also copy RNA into DNA." },
+  "transcription": { "def": "Making an RNA copy of a gene, using one DNA strand as the template. RNA polymerase builds the RNA 5′ to 3′, starting at the gene's promoter." },
+  "rna-polymerase": { "def": "The enzyme that makes RNA from a DNA template. It binds at a promoter, unwinds a short stretch of DNA, needs no primer and adds nucleotides to the RNA's 3′ end. In eukaryotes, RNA polymerase II copies the genes for proteins." },
+  "promoter": { "def": "A DNA sequence just before a gene where RNA polymerase (with helper proteins) binds; it sets where copying starts and which strand is read. Many eukaryotic promoters contain a TATA box a short distance before the transcription start site." },
+  "template-strand": { "def": "The DNA strand that RNA polymerase reads (3′ to 5′) to build a gene's RNA. The other strand, the coding strand, has the same sequence as the RNA, with T in place of U." },
+  "terminator": { "def": "A DNA sequence at the end of a bacterial gene that, once copied, makes RNA polymerase release the RNA and leave the DNA." },
+  "pre-mrna": { "def": "The first RNA copy of a eukaryotic gene (primary transcript), which still contains introns and has not yet received its cap and tail." },
+  "mrna-processing": { "def": "The changes that turn eukaryotic pre-mRNA into mature mRNA in the nucleus: a modified G nucleotide (5′ cap) is added to the 5′ end, a poly-A tail of about 200 A nucleotides is added to the 3′ end, and introns are spliced out." },
+  "splicing": { "def": "RNA splicing: spliceosomes (complexes of proteins and short RNA molecules) cut the introns out of a pre-mRNA and join its exons. Exons are the parts kept in the mature mRNA; introns are the parts removed." },
+  "alternative-splicing": { "def": "Splicing the same pre-mRNA in different ways, including or leaving out particular exons, so that one gene gives several different mRNAs and proteins, often in different cell types." },
+  "trna": { "def": "Transfer RNA: a short RNA, about 80 nucleotides long, that folds into a compact L shape and carries a specific amino acid to the ribosome. It is made by transcription but is never used as instructions for a protein." }
+}

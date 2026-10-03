@@ -1,0 +1,615 @@
+{
+  "stimuli": {
+    "transcription-rna-processing-s1": {
+      "kind": "model",
+      "title": "A stretch of a gene and the RNA made from it",
+      "text": "<p>The model shows twelve base pairs at the start of a bacterial gene, just after its promoter (which lies to the left), and the RNA that RNA polymerase made from this stretch.</p>",
+      "html": "<table class=\"compare\"><caption>DNA strands and the RNA made from them</caption><tbody><tr><th scope=\"row\">DNA strand A</th><td>5′</td><td>A</td><td>T</td><td>G</td><td>C</td><td>C</td><td>G</td><td>T</td><td>T</td><td>A</td><td>G</td><td>C</td><td>A</td><td>3′</td></tr><tr><th scope=\"row\">DNA strand B</th><td>3′</td><td>T</td><td>A</td><td>C</td><td>G</td><td>G</td><td>C</td><td>A</td><td>A</td><td>T</td><td>C</td><td>G</td><td>T</td><td>5′</td></tr><tr><th scope=\"row\">RNA made</th><td>5′</td><td>A</td><td>U</td><td>G</td><td>C</td><td>C</td><td>G</td><td>U</td><td>U</td><td>A</td><td>G</td><td>C</td><td>A</td><td>3′</td></tr></tbody></table>"
+    },
+    "transcription-rna-processing-s2": {
+      "kind": "table",
+      "title": "Exons and introns of gene K",
+      "text": "<p>A human gene, gene K, was compared with the mature mRNA made from it. The table lists the parts of the gene in order, from the transcription start site to the end of the last exon. In the cell, the mRNA also gets a 5′ cap and a poly-A tail of about 200 nucleotides, which are not counted in the table.</p>",
+      "table": {
+        "caption": "Lengths of the parts of gene K",
+        "cols": [
+          "Part of the gene",
+          "Length (nucleotides)"
+        ],
+        "rows": [
+          [
+            "Exon 1",
+            "210"
+          ],
+          [
+            "Intron 1",
+            "1,450"
+          ],
+          [
+            "Exon 2",
+            "135"
+          ],
+          [
+            "Intron 2",
+            "3,820"
+          ],
+          [
+            "Exon 3",
+            "96"
+          ],
+          [
+            "Intron 3",
+            "870"
+          ],
+          [
+            "Exon 4",
+            "489"
+          ]
+        ]
+      }
+    },
+    "transcription-rna-processing-s3": {
+      "kind": "table",
+      "title": "Following newly made RNA in human cells",
+      "text": "<p>Cultured human cells were given radioactive uridine, an RNA building block, for 10 minutes, then a large excess of unlabeled uridine. At each time, cells were split into nucleus and cytoplasm and the radioactivity in RNA was measured. A second set of cells was treated with α-amanitin, a mushroom toxin that at this dose blocks RNA polymerase II, before the label was added. Values are thousands of counts per minute per million cells (means of three dishes).</p>",
+      "table": {
+        "caption": "Labeled RNA in each part of the cell (thousands of counts per minute)",
+        "cols": [
+          "Time after label added (min)",
+          "Untreated: nucleus",
+          "Untreated: cytoplasm",
+          "α-amanitin: nucleus",
+          "α-amanitin: cytoplasm"
+        ],
+        "rows": [
+          [
+            "10",
+            "48",
+            "1",
+            "26",
+            "0"
+          ],
+          [
+            "30",
+            "40",
+            "9",
+            "24",
+            "2"
+          ],
+          [
+            "60",
+            "31",
+            "15",
+            "20",
+            "5"
+          ],
+          [
+            "120",
+            "24",
+            "18",
+            "16",
+            "7"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-transcription-rna-processing-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "transcription-rna-processing-s1",
+      "q": "Which DNA strand was the template strand for this RNA, and why?",
+      "options": [
+        "Strand B, because the RNA pairs with B and runs antiparallel to it",
+        "Strand A, because the RNA has the same sequence as A, with U in place of T",
+        "Strand A, because the RNA and strand A both start at their 5′ ends on the left",
+        "Strand B, because RNA polymerase copies whichever strand is drawn below"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The RNA is built by pairing with the template, so it is complementary and antiparallel to it: RNA 5′-AUG… pairs with B 3′-TAC…. That makes B the template and A the coding strand.",
+        "options": [
+          "Correct: complementary and antiparallel to the RNA means template.",
+          "Matching the RNA's sequence is the mark of the coding strand, not the template.",
+          "Running in the same direction as the RNA is another sign of the coding strand.",
+          "Which strand is drawn below is a drawing choice; the template is identified by pairing."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-2",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "transcription-rna-processing-s1",
+      "q": "In which direction did RNA polymerase move along strand B to make this RNA?",
+      "options": [
+        "From B's 3′ end toward its 5′ end, left to right in the model, away from the promoter",
+        "From B's 5′ end toward its 3′ end, right to left in the model, toward the promoter",
+        "From B's 3′ end toward its 5′ end, right to left in the model, toward the promoter",
+        "In both directions at once, so that the RNA is built from its two ends toward the middle"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "RNA grows 5′ to 3′, so the polymerase reads its template 3′ to 5′. Strand B's 3′ end is on the left, beside the promoter, so the enzyme moves left to right, away from the promoter.",
+        "options": [
+          "Correct: template read 3′ to 5′, RNA built 5′ to 3′.",
+          "Reading the template 5′ to 3′ would build RNA 3′ to 5′, which RNA polymerase cannot do.",
+          "B's 3′ end is on the left in the model, so moving 3′ to 5′ means moving right.",
+          "One enzyme builds the RNA from its 5′ end onward, starting at the promoter."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-3",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "transcription-rna-processing-s1",
+      "q": "Suppose strand A had been used as the template for this stretch instead. What RNA would be made?",
+      "options": [
+        "5′-UGCUAACGGCAU-3′",
+        "5′-AUGCCGUUAGCA-3′",
+        "5′-UACGGCAAUCGU-3′",
+        "5′-TGCTAACGGCAT-3′"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Pair each base of strand A (A→U, T→A, G→C, C→G) and make the RNA antiparallel. Strand A's 3′ end is on the right, so the RNA's 5′ end is opposite it: reading strand B's bases from right to left gives 5′-UGCUAACGGCAU-3′.",
+        "options": [
+          "Correct: complementary to A, antiparallel, written 5′ to 3′.",
+          "This is the RNA made from strand B, the real template.",
+          "This is the complement of A written left to right, which lists it 3′ to 5′ with the ends mislabeled.",
+          "RNA uses U, not T; this is strand B written backward."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "transcription-rna-processing-s1",
+      "q": "Which nucleotide of this RNA was added first?",
+      "options": [
+        "The A at the RNA's 5′ end, on the left",
+        "The A at the RNA's 3′ end, on the right",
+        "The U in the second position from the left",
+        "The G in the middle, where the enzyme first binds"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "RNA polymerase starts at the start site next to the promoter and adds each nucleotide to the 3′ end of the chain, so the 5′ end is made first.",
+        "options": [
+          "Correct: the 5′ end is the start of the chain.",
+          "The 3′ end is the last part added; the chain grows at its 3′ end.",
+          "The second nucleotide was added just after the first, at the 5′ end.",
+          "The enzyme binds the promoter, to the left of this stretch, not the middle of the RNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-5",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "transcription-rna-processing-s2",
+      "q": "How many nucleotides of gene K's pre-mRNA remain in the mature mRNA, not counting the cap and tail? Give a whole number.",
+      "numeric": {
+        "answer": 930,
+        "tol": 0,
+        "unit": "nucleotides",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Only the exons remain after splicing: 210 + 135 + 96 + 489 = 930 nucleotides."
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-6",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "transcription-rna-processing-s2",
+      "q": "What percentage of gene K's pre-mRNA (from the start site to the end of exon 4) is removed by splicing? Give one decimal place.",
+      "numeric": {
+        "answer": 86.8,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Introns: 1,450 + 3,820 + 870 = 6,140. Whole pre-mRNA: 6,140 + 930 = 7,070. Removed: 6,140 ÷ 7,070 × 100 = 86.8%."
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "transcription-rna-processing-s2",
+      "q": "Liver cells make a gene K mRNA of 930 nucleotides (without cap and tail), but muscle cells make one of 834 nucleotides. The gene's DNA is the same in both. Which explanation is best supported?",
+      "options": [
+        "Muscle cells splice the pre-mRNA so that exon 3 is left out, joining exon 2 directly to exon 4.",
+        "Muscle cells keep intron 3 in the mRNA but remove exons 3 and 4 along with the other introns.",
+        "Muscle cells copy part of the gene, because RNA polymerase stops early inside intron 3.",
+        "Muscle cells have lost 96 base pairs from their copy of gene K as they became muscle cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "930 − 834 = 96, exactly the length of exon 3. Joining exons 1, 2 and 4 is alternative splicing: the same pre-mRNA, spliced in two ways in two tissues.",
+        "options": [
+          "Correct: the difference matches exon 3, and the DNA is unchanged.",
+          "Keeping intron 3 (870) and dropping exons 3 and 4 (585) would give 345 + 870 = 1,215, not 834.",
+          "Stopping inside intron 3 would leave out exon 4 (489 nucleotides), not 96.",
+          "The stem says the DNA is the same in both cell types; the difference arises after copying."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "transcription-rna-processing-s2",
+      "q": "Researchers put the whole gene K DNA, introns included, into bacteria. The bacteria make a gene K RNA about 7,070 nucleotides long, and no working gene K protein. Which explanation is best?",
+      "options": [
+        "Bacteria have no spliceosomes, so the introns stay in the RNA and its message is disrupted.",
+        "Bacteria are unable to copy human DNA into RNA, so the long RNA comes from their own genes.",
+        "Bacteria remove the exons instead of the introns, leaving an RNA made of intron sequence.",
+        "Bacteria add a poly-A tail that is far too long, which blocks the RNA from leaving the nucleus."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "7,070 nucleotides is the full pre-mRNA. Bacterial genes rarely have introns of this kind, and bacteria lack spliceosomes, so the introns are never removed and the RNA no longer carries the protein's instructions in one continuous stretch.",
+        "options": [
+          "Correct: transcription works, but there is no splicing.",
+          "An RNA exactly as long as gene K's pre-mRNA shows the bacteria did copy the human gene.",
+          "Bacteria do not splice at all; they neither remove introns nor exons.",
+          "Bacteria have no nucleus, and the RNA's length matches the unspliced gene, not an extra tail."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "transcription-rna-processing-s3",
+      "q": "Why did the researchers label the cells with uridine rather than thymidine?",
+      "options": [
+        "Uracil is found in RNA but not in DNA, so the label marks newly made RNA.",
+        "Uridine enters cells faster than thymidine, so less of it is needed for a pulse.",
+        "Thymidine labels proteins as well as DNA, so its counts would be mixed.",
+        "Uridine is broken down quickly, so the label disappears soon after the pulse."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "RNA uses U where DNA uses T. Labeled uridine goes into RNA, so the counts follow RNA made during the pulse; thymidine would label new DNA instead.",
+        "options": [
+          "Correct: the label is specific to RNA.",
+          "Speed of uptake is not the reason; the base decides which molecule is labeled.",
+          "Thymidine goes into DNA, not protein; the issue is that it would not label RNA.",
+          "The excess unlabeled uridine ends the pulse; the label stays in the RNA already made."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-10",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "transcription-rna-processing-s3",
+      "q": "Which claim is best supported by the untreated cells' data?",
+      "options": [
+        "RNA is made in the nucleus, and some of it later moves to the cytoplasm.",
+        "RNA is made in the cytoplasm, and some of it later moves into the nucleus.",
+        "RNA is made in both places at once, at about the same rate in each.",
+        "RNA stays where it is made, and the label simply fades over time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 10 minutes almost all label (48 of 49) is in the nucleus. Over two hours the nuclear label falls while the cytoplasmic label rises to 18, so labeled RNA made in the nucleus is moving out.",
+        "options": [
+          "Correct: label appears in the nucleus first, then in the cytoplasm.",
+          "The cytoplasm starts with almost no label (1), so RNA is not made there first.",
+          "If both made RNA, the cytoplasm would be labeled from the start; it was not.",
+          "The cytoplasm's label rises from 1 to 18, so RNA does move."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "transcription-rna-processing-s3",
+      "q": "In untreated cells, the nucleus loses 24 thousand counts between 10 and 120 minutes, but the cytoplasm gains only 17 thousand. Which explanation fits what you know about RNA processing?",
+      "options": [
+        "Introns cut out of pre-mRNA in the nucleus are broken down and never leave it.",
+        "Some labeled RNA is turned back into DNA in the nucleus and stays there as DNA.",
+        "The cap and tail are removed from mRNA as it moves out, taking their label with them.",
+        "Labeled RNA in the cytoplasm is copied into new RNA that carries no label."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Much of each pre-mRNA is intron, which spliceosomes remove in the nucleus; the cut-out introns are broken down, so their label is lost instead of reaching the cytoplasm.",
+        "options": [
+          "Correct: label in introns never leaves the nucleus.",
+          "Cells do not turn their RNA back into DNA as part of making mRNA.",
+          "The cap and tail stay on the mRNA when it is exported.",
+          "Copying labeled RNA would not remove its label; RNA is made from DNA templates."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-12",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "transcription-rna-processing-s3",
+      "q": "With α-amanitin, cells still make about half as much labeled RNA. What does that remaining RNA most likely include?",
+      "options": [
+        "tRNA and ribosomal RNA, made by the cell's other RNA polymerases",
+        "pre-mRNA made by RNA polymerase II that escaped the toxin's effect",
+        "New DNA strands made from the labeled uridine during S phase",
+        "mRNA made in the cytoplasm by ribosomes, out of the toxin's reach"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Eukaryotes have three RNA polymerases. At this dose α-amanitin blocks only RNA polymerase II, which makes pre-mRNA; RNA polymerases I and III, which make ribosomal RNA and tRNA, keep working.",
+        "options": [
+          "Correct: the label that remains is in RNAs that RNA polymerase II does not make.",
+          "The stem says the dose blocks RNA polymerase II; a different source is the better explanation.",
+          "Uridine goes into RNA, not DNA.",
+          "Ribosomes build proteins; they do not make mRNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-13",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "transcription-rna-processing-s3",
+      "q": "At 120 minutes, what percentage of the untreated cells' labeled RNA is in the cytoplasm? Give a whole number.",
+      "numeric": {
+        "answer": 43,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Total at 120 min = 24 + 18 = 42 thousand counts. Cytoplasm share = 18 ÷ 42 × 100 = 42.9%, about 43%."
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "In the central dogma, transcription is the step in which",
+      "options": [
+        "an RNA copy of a gene is made, using one DNA strand as the template",
+        "a DNA copy of the whole chromosome is made before the cell divides",
+        "a protein is built by joining amino acids in the order the DNA gives",
+        "introns are cut out of an RNA molecule and its exons are joined"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Transcription copies a gene's information from DNA into RNA. Copying the whole chromosome is replication; building the protein is the next step (topic 6.4); cutting out introns is RNA processing.",
+        "options": [
+          "Correct: DNA → RNA.",
+          "Copying the whole chromosome is DNA replication.",
+          "Building the protein is the step after transcription, taught in 6.4.",
+          "Removing introns is splicing, part of RNA processing after transcription."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-15",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which statements correctly describe how RNA polymerase differs from DNA polymerase? Select all that apply.",
+      "options": [
+        "It can start a new chain without a primer.",
+        "It copies one strand of a gene rather than both strands of the whole chromosome.",
+        "It builds its new chain in the 3′ to 5′ direction.",
+        "It needs helicase and primase to begin copying a gene.",
+        "It puts thymine opposite each adenine in the template."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "RNA polymerase starts chains on its own at a promoter, unwinds a short stretch of DNA itself, and copies only the template strand of the genes it reads, adding U opposite A.",
+        "options": [
+          "Correct: no primer is needed to start RNA.",
+          "Correct: only a gene's template strand is copied, and only when the gene is used.",
+          "Both polymerases build 5′ to 3′.",
+          "RNA polymerase opens the DNA itself and needs no primer.",
+          "RNA uses uracil, so U is placed opposite A."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-16",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A change in the DNA alters the TATA box of a gene's promoter so that the proteins that recognize it no longer bind. Predict the effect.",
+      "options": [
+        "Far less mRNA from that gene is made, because RNA polymerase II is not positioned to start.",
+        "The gene's mRNA is made at the usual rate but is missing its first exon.",
+        "The gene's mRNA is made, but its introns are no longer removed by spliceosomes.",
+        "More mRNA from that gene is made, because RNA polymerase can now bind anywhere."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The promoter, including the TATA box, is where proteins gather and place RNA polymerase II at the start site. Without that binding, the gene is rarely transcribed.",
+        "options": [
+          "Correct: the promoter controls where and whether copying starts.",
+          "The promoter lies before the start site and is not part of the mRNA; damaging it reduces starting, not the first exon.",
+          "Splicing depends on sequences at the exon-intron boundaries, not the promoter.",
+          "Without a recognizable promoter, RNA polymerase is not positioned at the gene at all."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-17",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A drug stops cells from adding poly-A tails to their pre-mRNAs. Predict each quantity, compared with untreated cells.",
+      "variables": [
+        {
+          "name": "Amount of mature mRNA reaching the cytoplasm",
+          "answer": "down",
+          "why": "The tail helps mRNA leave the nucleus and protects it from being broken down, so less mRNA reaches the cytoplasm intact."
+        },
+        {
+          "name": "Rate at which RNA polymerase II starts copying genes",
+          "answer": "none",
+          "why": "Starting depends on the promoter and the proteins that bind it, which come before the tail is added."
+        },
+        {
+          "name": "Length of the introns in each pre-mRNA",
+          "answer": "none",
+          "why": "Introns are encoded in the DNA; the drug changes what is added to the RNA's 3′ end, not the gene."
+        }
+      ],
+      "why": {
+        "correct": "The poly-A tail is added after copying and helps export and protect the mRNA. Blocking it reduces the mRNA that reaches the cytoplasm, without changing how often genes are copied or what the gene contains."
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-18",
+      "type": "order",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the events of transcribing one bacterial gene in order.",
+      "options": [
+        "RNA polymerase binds to the gene's promoter.",
+        "RNA polymerase opens a short stretch of DNA at the start site.",
+        "RNA polymerase adds nucleotides to the RNA's 3′ end, matching the template strand.",
+        "RNA polymerase reaches the terminator sequence.",
+        "The RNA is released and the polymerase leaves the DNA."
+      ],
+      "why": {
+        "correct": "Binding the promoter positions the enzyme; it must open the DNA before it can read the template; it builds the RNA until it copies the terminator, which signals release."
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-19",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A gene is transcribed in a human cell, but its RNA product is never used as instructions for building a protein. Which kind of RNA could the product be?",
+      "options": [
+        "tRNA, which folds up and carries amino acids to ribosomes",
+        "mRNA, which leaves the nucleus after its introns are removed",
+        "pre-mRNA from a gene such as the one for insulin",
+        "The exons joined together after splicing of a pre-mRNA"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Some genes make RNAs that work as RNA. tRNA folds into a compact shape and brings amino acids to the ribosome; ribosomal RNA forms much of the ribosome itself.",
+        "options": [
+          "Correct: tRNA is a working RNA, not a set of instructions.",
+          "mRNA is by definition the RNA that carries a protein's instructions.",
+          "Pre-mRNA is processed into mRNA, which is then used to build a protein.",
+          "Joined exons are mature mRNA, used to build a protein."
+        ]
+      }
+    },
+    {
+      "id": "bio-transcription-rna-processing-20",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "transcription-rna-processing",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Two genes lie next to each other on a chromosome. Gene 1 is transcribed from left to right, and gene 2 from right to left. Which statement must be true?",
+      "options": [
+        "The two genes use different DNA strands as their template strands.",
+        "The two genes use the same DNA strand as their template strand.",
+        "One of the two genes is built from RNA nucleotides read 5′ to 3′.",
+        "The two genes share one promoter, which lies at the right-hand end."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "RNA polymerase reads its template 3′ to 5′. Moving left to right on one strand means its 3′ end is on the left; moving right to left means the 3′ end is on the right, which is the other strand. So the genes have templates on opposite strands.",
+        "options": [
+          "Correct: opposite directions require opposite template strands.",
+          "One strand has a single 3′ to 5′ direction, so the two genes could not both be read along it in opposite directions.",
+          "Every template is read 3′ to 5′ and every RNA is built 5′ to 3′.",
+          "Each gene has its own promoter at its start; for gene 1 that is the left end."
+        ]
+      }
+    }
+  ]
+}
