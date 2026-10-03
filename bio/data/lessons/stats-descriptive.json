@@ -1,0 +1,84 @@
+{
+  "topic": "stats-descriptive",
+  "hook": "<p>Pile drops of water onto a coin and the water bulges into a dome before it spills. Try it eight times and you will not get the same count twice: 31, 28, 33... Which number do you report? Every experiment in this course hits this problem, and four simple numbers solve most of it.</p>",
+  "prereq": [
+    {
+      "q": "Why can a coin hold a dome of water that rises above its edge?",
+      "options": [
+        "Hydrogen bonds pull surface water molecules toward each other, giving the surface tension.",
+        "Covalent bonds form between the water and the metal, gluing the dome in place.",
+        "Air pressure pushes down on the dome harder than gravity pulls on it."
+      ],
+      "correct": 0,
+      "why": "Cohesion: water molecules at the surface are pulled inward and sideways by hydrogen bonds to their neighbors, so the surface acts like a stretched skin.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "Soap molecules crowd in between water molecules at the surface. What happens to the number of drops the coin can hold?",
+      "options": [
+        "It falls, because fewer hydrogen bonds hold the surface together.",
+        "It rises, because soap makes each drop smaller.",
+        "It does not change, because soap does not mix with water."
+      ],
+      "correct": 0,
+      "why": "Soap at the surface interrupts hydrogen bonding between water molecules, lowering surface tension, so the dome breaks sooner.",
+      "review": "water-hydrogen-bonding"
+    }
+  ],
+  "figure": {
+    "figure": "dot-plot-center",
+    "caption": "Eight drop counts at 2% soap. Seven sit between 13 and 16; one is 31. The median (15) stays with the cluster, while the mean (16.75) is pulled toward the high value."
+  },
+  "chain": [
+    {
+      "cause": "You measure the same thing several times (drops on a coin, eight times).",
+      "effect": "The values differ a little each time, so no single value is \"the answer\": you have a sample."
+    },
+    {
+      "cause": "You add all eight values and divide by 8.",
+      "effect": "You get the mean, a center that uses every value, for example 248 ÷ 8 = 31.0 drops."
+    },
+    {
+      "cause": "Because every value adds to the sum, one extreme value (31 among values near 15) adds a lot.",
+      "effect": "The mean is dragged toward that outlier (16.75 instead of about 14.7)."
+    },
+    {
+      "cause": "Sorting the values and taking the middle one (or the average of the middle two) ignores how big the end values are.",
+      "effect": "The median stays with the cluster (15), so it is the better center when there is an outlier."
+    },
+    {
+      "cause": "Two samples can share a center but differ in how scattered they are.",
+      "effect": "You also report spread, starting with the range (largest − smallest), to show how consistent the measurements were."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> Counts 31, 28, 33, 30, 29, 35, 30, 32. Mean = 248 ÷ 8 = 31.0. Sorted: 28, 29, 30, 30, 31, 32, 33, 35; median = (30 + 31) ÷ 2 = 30.5. Mode = 30 (it appears twice). Range = 35 − 28 = 7.",
+    "The <b>mean</b> uses the size of every value; the <b>median</b> uses only position. When a data set has an <b>outlier</b> or is lopsided, the two disagree, and the median describes a typical value better.",
+    "Always pair a center with a spread. Two groups with the same mean of 25 drops can have ranges of 2 and 13: the second is far less consistent.",
+    "<b>Quantitative</b> data are numbers (counted drops are discrete; measured mass or time are continuous). <b>Qualitative</b> data are categories. You can average numbers, not categories."
+  ],
+  "misconception": {
+    "wrong": "An outlier is a mistake, so you should delete it before calculating the mean.",
+    "right": "An outlier is first checked for a recording or procedure error. If none is found it is real data: keep it, report it, and use the median (which resists it) alongside the mean."
+  },
+  "check": [
+    "bio-stats-descriptive-1",
+    "bio-stats-descriptive-2",
+    "bio-stats-descriptive-3",
+    "bio-stats-descriptive-4",
+    "bio-stats-descriptive-5",
+    "bio-stats-descriptive-13",
+    "bio-stats-descriptive-14"
+  ],
+  "summary": "<p>Repeated measurements vary, so you summarize a sample with a center and a spread. The mean (sum ÷ n) uses every value and is pulled by outliers; the median (middle of the sorted data) resists them; the mode is the most common value. The range (largest − smallest) is the simplest measure of spread. Check an outlier for errors before deciding anything about it.</p>",
+  "connections": [
+    {
+      "href": "../tools/stats-descriptive.html",
+      "label": "Tool: descriptive statistics calculator"
+    },
+    {
+      "href": "design-variables.html",
+      "label": "Next skill: independent and dependent variables"
+    }
+  ]
+}

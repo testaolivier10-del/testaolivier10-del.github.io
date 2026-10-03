@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d">
+<title id="t">The parts of a controlled experiment</title>
+<desc id="d">Four identical dishes of 50.0 g water: an unwarmed control dish and dishes at 20, 30 and 40 °C. An arrow labeled "you change" points from temperature to the dishes; an arrow labeled "you measure" points from the dishes to the mass of water lost. A box lists what stays the same: volume of water, dish shape, time, air movement.</desc>
+<rect width="640" height="340" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F2A28"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" font-size="16" text-anchor="middle" fill="#1F2A28">
+  <rect x="20" y="40" width="150" height="70" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+  <text x="95" y="68" font-weight="700">Independent</text><text x="95" y="90">temperature</text>
+  <text x="95" y="28" font-size="14" fill="#5D6B69">you change</text>
+  <rect x="470" y="40" width="150" height="70" rx="10" fill="#D2EAF8" stroke="#56B4E9" stroke-width="2.5"/>
+  <text x="545" y="68" font-weight="700">Dependent</text><text x="545" y="90">mass lost (g)</text>
+  <text x="545" y="28" font-size="14" fill="#5D6B69">you measure</text>
+  <line x1="172" y1="75" x2="205" y2="140" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a)"/>
+  <line x1="435" y1="140" x2="468" y2="80" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a)"/>
+  <g fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5">
+    <path d="M215 150h40l-5 40h-30z"/><path d="M270 150h40l-5 40h-30z"/><path d="M325 150h40l-5 40h-30z"/><path d="M380 150h40l-5 40h-30z"/>
+  </g>
+  <text x="235" y="215">room</text><text x="290" y="215">20 °C</text><text x="345" y="215">30 °C</text><text x="400" y="215">40 °C</text>
+  <text x="235" y="235" font-size="13" fill="#5D6B69">control</text>
+  <text x="345" y="235" font-size="13" fill="#5D6B69">experimental groups</text>
+  <rect x="120" y="255" width="400" height="70" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="320" y="280" font-weight="700">Controlled variables (same in every dish)</text>
+  <text x="320" y="305">50.0 g water · dish shape · 24 h · air movement</text>
+</g>
+</svg>
