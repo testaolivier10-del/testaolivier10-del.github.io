@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hemostasis and clotting: Notes | Anatomy &amp; Physiology</title>
+<title>Hemostasis and clotting — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Within that time, three overlapping processes have closed the leak: the vessel narrowed, platelets plugged the hole, and a mesh of fibrin set around them.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/hemostasis.html">
-<meta property="og:title" content="Hemostasis and clotting: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Hemostasis and clotting — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Within that time, three overlapping processes have closed the leak: the vessel narrowed, platelets plugged the hole, and a mesh of fibrin set around them.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/hemostasis.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="hemostasis">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 18 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/blood.html">Blood</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hemostasis and clotting: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/hemostasis.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 18 &middot; Topic 93 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 18 &middot; Topic 93 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Hemostasis and clotting</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="hemostasis">Not practiced</span></p>
     </header>
@@ -167,7 +168,7 @@
 <h3>Clotting factors</h3>
 <p>The <em>clotting factors</em> are the plasma proteins and <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="ion">ions</a> that coagulation needs. Most are made by the <a class="gl" href="../notes/body-organization.html" data-c="major-organs">liver</a>. Many circulate as inactive enzymes. When one is activated, it cuts the next one in line and activates it: a cascade (the <em>clotting cascade</em>). Because each activated enzyme activates many molecules of the next, the signal is amplified at every step, just as you saw with second messengers.</p>
 <p>The factors are numbered with Roman numerals in the order they were discovered, not the order in which they act. An activated factor gets an "a": factor X becomes Xa. The ones to know:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Factor</th><th>Name</th><th>What it does</th></tr></thead>
 <tbody>
 <tr><th>I</th><td>Fibrinogen</td><td>Cut by thrombin into fibrin, the threads of the clot</td></tr>
@@ -276,7 +277,7 @@
 <p>The plasma for both tests is collected in a tube containing citrate, which binds calcium and so stops the sample from clotting until calcium is added back.</p>
 <h3>Where the lab model breaks down</h3>
 <p>People who lack factor XII have a very long aPTT, yet they do not bleed. In the body, factor XII is not needed to stop bleeding. And people with <span class="gl" tabindex="0" data-c="clotting-disorders">hemophilia</span> lack a factor of the intrinsic pathway, yet their extrinsic pathway, which the lab model says should be enough, cannot stop their bleeding. The cell-based model explains both: tissue factor starts clotting in the body, and the IXa–VIIIa pair on platelets does the heavy lifting.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Extrinsic pathway (lab model)</th><th>Intrinsic pathway (lab model)</th><th>Cell-based model (the body)</th></tr></thead>
 <tbody>
 <tr><th>Where it happens</th><td>A test tube with tissue factor added</td><td>A test tube with a contact surface added</td><td>On tissue factor cells, then on activated platelets</td></tr>
@@ -315,7 +316,7 @@
 <h2 id="anticoagulants">Anticoagulants</h2>
 <p><em>Anticoagulants</em> (anti- = against) are substances that slow or stop coagulation. Your body makes its own: <em>antithrombin</em>, protein C, the tissue factor inhibitor, and heparin-like molecules on the vessel lining that speed antithrombin. <em>Heparin</em> itself is stored in the granules of <a class="gl" href="../notes/tissue-membranes-repair.html" data-c="inflammation-basic">mast cells</a> and <a class="gl" href="../notes/leukocytes-platelets.html" data-c="granulocytes">basophils</a>, where it helps pack their contents. It is not normally found in plasma. The heparin drug is extracted from animal tissue. Several drugs work by boosting or copying the body's anticoagulants.</p>
 <aside class="for-your-exam"><p>For your exam: many textbooks list heparin released by mast cells and basophils as one of the body's natural anticoagulants. If an exam asks, give that answer. Current evidence puts heparin's natural role inside those granules, and gives the anticoagulant job to the heparin-like molecules on the vessel lining.</p></aside>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Heparin</th><th>Warfarin</th></tr></thead>
 <tbody>
 <tr><th>How it works</th><td>Binds antithrombin and makes it inactivate thrombin and Xa about a thousand times faster</td><td>Blocks the liver enzyme that recycles vitamin K, so II, VII, IX and X are made in a non-working form</td></tr>
@@ -348,13 +349,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:hemostasis">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="leukocytes-platelets.html"><span>&larr; Topic 92</span><b>White blood cells and platelets</b></a><a class="tb-chapter-link next" href="blood-typing.html"><span>Topic 94 &rarr;</span><b>Blood types and transfusion</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

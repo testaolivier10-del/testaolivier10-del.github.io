@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cell division and differentiation: Notes | A&amp;P</title>
+<title>Cell division and differentiation — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="The lining of your intestine is replaced every few days. Your body makes about two million new red blood cells every second.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/cell-cycle.html">
-<meta property="og:title" content="Cell division and differentiation: Notes | A&amp;P">
+<meta property="og:title" content="Cell division and differentiation — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="The lining of your intestine is replaced every few days. Your body makes about two million new red blood cells every second.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/cell-cycle.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="cell-cycle">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 3 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cells.html">Cells</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cell division and differentiation: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cell-cycle.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 22 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 22 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Cell division and differentiation</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="cell-cycle">Not practiced</span></p>
     </header>
@@ -121,7 +122,7 @@
 </ul>
 <p>The <em>mitotic phase</em> (M phase) is the division itself, about an hour. It has two overlapping parts: mitosis divides the nucleus, and <span class="gl" tabindex="0" data-c="cytokinesis">cytokinesis</span> divides the <a class="gl" href="../notes/plasma-membrane.html" data-c="cell-parts">cytoplasm</a>.</p>
 <p>Many cells leave the cycle. <em>G0 phase</em> is a resting state, entered from G1, in which the cell carries out its normal work but does not prepare to divide. Some cells stay in G0 for life. Others can return: your <a class="gl" href="../notes/body-organization.html" data-c="major-organs">liver</a> cells sit in G0 for years, but if part of the liver is removed, many re-enter G1 and divide until the lost mass is restored.</p>
-<figure id="fig-os-3-30"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-30"><img src="../figures/os-3-30.jpg" alt="The cell cycle drawn as a circle. Most of the circle is interphase, split into G1, S and G2. A smaller wedge, labeled M, is the mitotic phase. Arrows lead from G1 out to G0, labeled as cells not actively dividing, and back." width="531" height="433" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The cell cycle: interphase (G1, S and G2) and the mitotic phase, with the exit to G0. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.30, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-30"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-30"><picture><source type="image/avif" srcset="../figures/avif/os-3-30-480.avif 480w, ../figures/avif/os-3-30.avif 531w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-30.jpg" alt="The cell cycle drawn as a circle. Most of the circle is interphase, split into G1, S and G2. A smaller wedge, labeled M, is the mitotic phase. Arrows lead from G1 out to G0, labeled as cells not actively dividing, and back." width="531" height="433" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The cell cycle: interphase (G1, S and G2) and the mitotic phase, with the exit to G0. <span class="anp-credit">Figure 3.30 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h2 id="control-of-the-cell-cycle-cyclins">Control of the cell cycle: cyclins and checkpoints</h2>
 <p>A car needs an accelerator to go and brakes to stop. The cell cycle has both.</p>
@@ -140,7 +141,7 @@
 </ul>
 <p>A protein called p53 links DNA damage to these brakes. When DNA is damaged, p53 builds up. It turns on <a class="gl" href="../notes/dna-genes.html" data-c="gene">genes</a> that halt the cycle, giving repair enzymes time to work. If the damage cannot be fixed, p53 turns on the cell's self-destruct program, described below.</p>
 <p>Two groups of genes set the balance, and <a class="gl" href="../notes/protein-synthesis.html" data-c="mutation">mutations</a> in them drive cancer.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Oncogene</th><th>Tumor suppressor gene</th></tr></thead>
 <tbody>
 <tr><th>Normal job of the gene</th><td>Codes for a protein that promotes division (an accelerator)</td><td>Codes for a protein that halts division, repairs DNA or triggers self-destruction (a brake)</td></tr>
@@ -150,7 +151,7 @@
 </tbody>
 </table></div>
 <p>An <em>oncogene</em> (onco- = <span class="gl" tabindex="0" data-c="cancer-basic">tumor</span>) is the mutated, overactive form of a normal division-promoting gene. A <em>tumor suppressor gene</em> is a gene whose normal product restrains division. One working copy of a tumor suppressor gene usually gives enough brake, which is why both copies must usually be lost.</p>
-<figure id="fig-os-3-33"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-33"><img src="../figures/os-3-33.jpg" alt="The cell cycle circle with its checkpoints marked: one late in G1, one at the end of G2, and one during mitosis. Around the circle, four cyclin and cyclin-dependent kinase pairs are placed where each acts: two in G1, one in S and one at the step from G2 into mitosis." width="666" height="583" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Control of the cell cycle: checkpoints in G1, at the end of G2 and during mitosis, each passed with the help of a cyclin and its CDK. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.33, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-33"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-33"><picture><source type="image/avif" srcset="../figures/avif/os-3-33-480.avif 480w, ../figures/avif/os-3-33.avif 666w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-33.jpg" alt="The cell cycle circle with its checkpoints marked: one late in G1, one at the end of G2, and one during mitosis. Around the circle, four cyclin and cyclin-dependent kinase pairs are placed where each acts: two in G1, one in S and one at the step from G2 into mitosis." width="666" height="583" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Control of the cell cycle: checkpoints in G1, at the end of G2 and during mitosis, each passed with the help of a cyclin and its CDK. <span class="anp-credit">Figure 3.33 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h2 id="mitosis-dividing-the-nucleus">Mitosis: dividing the nucleus</h2>
 <p><em>Mitosis</em> (mit- = thread, -osis = process: named for the threadlike chromosomes) divides one nucleus into two nuclei with identical sets of chromosomes. It is how <em>somatic cells</em> (somat- = body) divide. Somatic cells are all your body cells except the line of cells that becomes eggs and sperm. Eggs and sperm come from a different kind of division, covered in the reproductive chapter.</p>
@@ -161,7 +162,7 @@
 <li><strong><em>Anaphase</em></strong> (ana- = apart). The proteins holding each pair of sister chromatids together are cut. The kinetochore microtubules shorten and pull the chromatids to opposite ends of the cell. Each separated chromatid now counts as a chromosome in its own right.</li>
 <li><strong><em>Telophase</em></strong> (telo- = end). A set of chromosomes arrives at each end. A nuclear envelope forms around each set, the chromosomes loosen back into chromatin, nucleoli reappear, and the spindle comes apart.</li>
 </ol>
-<figure id="fig-os-3-32"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-32"><img src="../figures/os-3-32.jpg" alt="A row of drawings, each with a short list of events underneath and a fluorescence micrograph below, showing a cell passing through the stages of mitosis and then cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two new nuclei form as the cell pinches in two." width="1100" height="847" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> The stages of mitosis and cytokinesis. The figure shows late prophase as its own stage, prometaphase, when the nuclear envelope breaks apart and spindle microtubules attach to the kinetochores. This page counts it as part of prophase. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.32, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-32"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-32"><picture><source type="image/avif" srcset="../figures/avif/os-3-32-480.avif 480w, ../figures/avif/os-3-32-800.avif 800w, ../figures/avif/os-3-32.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-32.jpg" alt="A row of drawings, each with a short list of events underneath and a fluorescence micrograph below, showing a cell passing through the stages of mitosis and then cytokinesis: chromosomes condense, line up across the middle, separate to opposite ends, and two new nuclei form as the cell pinches in two." width="1100" height="847" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> The stages of mitosis and cytokinesis. The figure shows late prophase as its own stage, prometaphase, when the nuclear envelope breaks apart and spindle microtubules attach to the kinetochores. This page counts it as part of prophase. <span class="anp-credit">Figure 3.32 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <div class="worked">
 <p><strong>Worked example: counting chromosomes and DNA through the cycle.</strong> Call the DNA in one of your body cells in G1 "1 unit". Track it through one cycle.</p>
 <ol>
@@ -197,7 +198,7 @@
 <li><em>Unipotent</em> (uni- = one): can form only one cell type, but can still renew itself. The stem cells in the testis that produce only sperm are an example.</li>
 </ul>
 <p>As you move down the ladder, cells lose options. Most stem cells in your adult body are multipotent or less.</p>
-<figure id="fig-os-3-36"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-36"><img src="../figures/os-3-36.jpg" alt="A branching chart of stem cells. At the top a totipotent cell gives rise to pluripotent cells, which give rise to multipotent cells, each of which produces a few related kinds of specialized cell." width="1100" height="1254" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:8.55%;top:38.60%;width:13.09%;height:1.67%"></span><span class="anp-cover" aria-hidden="true" style="left:30.82%;top:38.60%;width:13.27%;height:1.67%"></span><span class="anp-cover" aria-hidden="true" style="left:52.55%;top:38.60%;width:12.45%;height:1.67%"></span><span class="anp-cover" aria-hidden="true" style="left:27.45%;top:96.41%;width:7.09%;height:3.59%"></span><span class="anp-cover" aria-hidden="true" style="left:65.64%;top:96.41%;width:7.18%;height:1.67%"></span></div><figcaption><b>Figure 4.</b> Stem cell potency: totipotent cells give rise to pluripotent cells, which give rise to multipotent cells, which produce specialized cells. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.36, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-6-cellular-differentiation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-36"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-36"><picture><source type="image/avif" srcset="../figures/avif/os-3-36-480.avif 480w, ../figures/avif/os-3-36-800.avif 800w, ../figures/avif/os-3-36.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-36.jpg" alt="A branching chart of stem cells. At the top a totipotent cell gives rise to pluripotent cells, which give rise to multipotent cells, each of which produces a few related kinds of specialized cell." width="1100" height="1254" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:8.55%;top:38.60%;width:13.09%;height:1.67%"></span><span class="anp-cover" aria-hidden="true" style="left:30.82%;top:38.60%;width:13.27%;height:1.67%"></span><span class="anp-cover" aria-hidden="true" style="left:52.55%;top:38.60%;width:12.45%;height:1.67%"></span><span class="anp-cover" aria-hidden="true" style="left:27.45%;top:96.41%;width:7.09%;height:3.59%"></span><span class="anp-cover" aria-hidden="true" style="left:65.64%;top:96.41%;width:7.18%;height:1.67%"></span></div><figcaption><b>Figure 4.</b> Stem cell potency: totipotent cells give rise to pluripotent cells, which give rise to multipotent cells, which produce specialized cells. <span class="anp-credit">Figure 3.36 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-6-cellular-differentiation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 
 <h2 id="cell-differentiation-becoming-specialized">Cell differentiation: becoming specialized</h2>
 <p>A stem cell in your intestinal lining can give rise to an absorptive cell covered in <a class="gl" href="../notes/organelles.html" data-c="microvilli">microvilli</a> or to a cell that secretes digestive enzymes. Both carry the same genome. What makes them different?</p>
@@ -234,13 +235,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:cell-cycle">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="protein-synthesis.html"><span>&larr; Topic 21</span><b>From gene to protein</b></a><a class="tb-chapter-link next" href="cellular-respiration.html"><span>Topic 23 &rarr;</span><b>How cells make ATP</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

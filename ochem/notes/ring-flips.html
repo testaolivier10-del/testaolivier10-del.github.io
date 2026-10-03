@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ring flips — Organic Chemistry Notes</title>
+<title>Ring flips — Organic Chemistry Notes | LevlPrep</title>
 <meta name="description" content="Picture one molecule of methylcyclohexane in a chair with its methyl group axial.">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/ring-flips.html">
-<meta property="og:title" content="Ring flips — Organic Chemistry Notes">
+<meta property="og:title" content="Ring flips — Organic Chemistry Notes | LevlPrep">
 <meta property="og:description" content="Picture one molecule of methylcyclohexane in a chair with its methyl group axial.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/ring-flips.html">
@@ -46,7 +47,7 @@
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Alkanes &amp; Conformations &middot; Section 26 of 121</p>
+    <p class="notes-eyebrow">Alkanes &amp; Conformations &middot; Section 26 of 123</p>
     <h1>Ring flips</h1>
     <a class="notes-onward-cta" href="../lessons/ring-flips.html">Practice this — interactive lesson</a>
   </header>
@@ -111,7 +112,7 @@
 <h3>How fast the ring flips</h3>
 <p class="step-body">The climb to the half-chair, about 10.8 kcal/mol, is the barrier to a flip. <a class="chapter-ref" href="/ochem/notes/newman.html">Newman projections</a> showed that turning ethane's C–C bond costs only 2.9 kcal/mol.</p>
 <p class="step-body">A process slows down steeply as its barrier rises. At room temperature, every extra 1.4 kcal/mol of barrier makes it about ten times slower. The flip's barrier is about 8 kcal/mol higher than ethane's, and 8 ÷ 1.4 is nearly 6, so the flip is slower by nearly six factors of ten. The C–C bond of ethane turns some 10¹⁰ to 10¹¹ times a second, while a cyclohexane ring flips about 10⁵ times a second. The flip is roughly a million times slower, and still far too fast to watch.</p>
-<div class="notes-fact"><b>Looking ahead:</b> cooling slows the flip down, and that gives direct evidence for it. <b>NMR</b> is a technique that shows hydrogens in different surroundings as separate signals; <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a> covers it. At room temperature, cyclohexane gives one signal for all twelve hydrogens, because each hydrogen changes between axial and equatorial too fast to be told apart. Cooled to about −90 °C, the ring flips slowly enough for NMR to show the axial and equatorial hydrogens as two separate signals.</div>
+<div class="notes-fact"><b>Looking ahead:</b> cooling slows the flip down, and that gives direct evidence for it. <b>NMR</b> is a technique that shows hydrogens in different surroundings as separate signals; <a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">NMR Spectroscopy</a> covers it. At room temperature, cyclohexane gives one signal for all twelve hydrogens, because each hydrogen changes between axial and equatorial too fast to be told apart. Cooled to about −90 °C, the ring flips slowly enough for NMR to show the axial and equatorial hydrogens as two separate signals.</div>
 
 <h3>Two chairs in equilibrium</h3>
 <p class="step-body">Back to methylcyclohexane. Its two chairs are not equal in energy. In one, the methyl is axial and is crowded by the two axial hydrogens on its own face, the 1,3-diaxial interactions of <a class="chapter-ref" href="/ochem/notes/axial-equatorial.html">Axial/equatorial</a>. In the other, the methyl is equatorial and nothing crowds it. The methyl's A-value, 1.7 kcal/mol, is the energy difference between these two chairs, as Axial/equatorial measured.</p>
@@ -140,8 +141,8 @@
   <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="axial-equatorial.html"><span>Previous</span>Axial/equatorial</a><a class="notes-prevnext notes-next" href="conformational-analysis.html"><span>Next</span>Conformational analysis</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 121 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

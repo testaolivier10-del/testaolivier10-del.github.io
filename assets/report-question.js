@@ -4,7 +4,7 @@
    was written. It explained the correction policy, said where corrections get
    listed, and then never said how to report one: the only address anywhere on
    the site was at the bottom of the privacy policy. So the promise was kept by
-   nobody, which for a bank of 2,084 NREMT questions and 1,860 ochem ones is
+   nobody, which for banks of 2,033 NREMT, 3,675 ochem and 3,321 A&P questions is
    the most expensive gap on the site. No script can check whether an answer is
    clinically right. A student who has just answered a question and thinks the
    key is wrong is the only reviewer who can, and they are on the one screen
@@ -54,6 +54,17 @@
     ['outdated', 'It disagrees with current guidance'],
     ['other', 'Something else'],
   ];
+
+  /* A button with data-report-kind="page" reports a page (A&P notes and
+     glossary, audit 2026-10) rather than a question: same five reason codes
+     (the server accepts only these), worded for prose. */
+  var PAGE_LABELS = {
+    'wrong-answer': 'A fact is wrong',
+    'unclear': 'Something is unclear or confusing',
+    'typo': 'A typo or formatting problem',
+    'outdated': 'It disagrees with current sources',
+    'other': 'Something else',
+  };
 
   var overlay = null;
   var lastFocused = null;
@@ -174,6 +185,13 @@
     submitBtn.textContent = 'Send report';
     var first = overlay.querySelector('input[name="reportReason"]');
     if (first) first.checked = true;
+    var page = !!(button && button.getAttribute && button.getAttribute('data-report-kind') === 'page');
+    document.getElementById('reportTitle').textContent = page ? 'Report a problem on this page' : 'Report this question';
+    var labels = overlay.querySelectorAll('.report-reason');
+    for (var i = 0; i < labels.length; i++) {
+      var span = labels[i].querySelector('span');
+      if (span) span.textContent = page ? PAGE_LABELS[REASONS[i][0]] : REASONS[i][1];
+    }
 
     overlay.classList.add('open');
     document.documentElement.classList.add('auth-modal-open');

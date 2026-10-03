@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ether chemistry — Organic Chemistry Notes</title>
+<title>Ether chemistry — Organic Chemistry Notes | LevlPrep</title>
 <meta name="description" content="Diethyl ether, CH₃CH₂–O–CH₂CH₃, has an oxygen bonded to two carbons and nothing else.">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/ether-chemistry.html">
-<meta property="og:title" content="Ether chemistry — Organic Chemistry Notes">
+<meta property="og:title" content="Ether chemistry — Organic Chemistry Notes | LevlPrep">
 <meta property="og:description" content="Diethyl ether, CH₃CH₂–O–CH₂CH₃, has an oxygen bonded to two carbons and nothing else.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/ether-chemistry.html">
@@ -33,7 +34,7 @@
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/ether-chemistry.html#notes","name":"Ether chemistry","url":"https://levlprep.com/ochem/notes/ether-chemistry.html","description":"Diethyl ether, CH₃CH₂–O–CH₂CH₃, has an oxygen bonded to two carbons and nothing else.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Ether chemistry"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":61,"relatedLink":"https://levlprep.com/ochem/lessons/ether-chemistry.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Alcohols, Ethers & Related Chemistry","item":"https://levlprep.com/ochem/learn.html#m-alcohols-ethers"},{"@type":"ListItem","position":4,"name":"Ether chemistry","item":"https://levlprep.com/ochem/notes/ether-chemistry.html"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/ether-chemistry.html#notes","name":"Ether chemistry","url":"https://levlprep.com/ochem/notes/ether-chemistry.html","description":"Diethyl ether, CH₃CH₂–O–CH₂CH₃, has an oxygen bonded to two carbons and nothing else.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"Ether chemistry"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":68,"relatedLink":"https://levlprep.com/ochem/lessons/ether-chemistry.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Alcohols, Ethers & Related Chemistry","item":"https://levlprep.com/ochem/learn.html#m-alcohols-ethers"},{"@type":"ListItem","position":4,"name":"Ether chemistry","item":"https://levlprep.com/ochem/notes/ether-chemistry.html"}]}]}
 </script>
 </head>
 <body>
@@ -46,7 +47,7 @@
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Alcohols, Ethers &amp; Related Chemistry &middot; Section 61 of 121</p>
+    <p class="notes-eyebrow">Alcohols, Ethers &amp; Related Chemistry &middot; Section 68 of 123</p>
     <h1>Ether chemistry</h1>
     <a class="notes-onward-cta" href="../lessons/ether-chemistry.html">Practice this — interactive lesson</a>
   </header>
@@ -73,7 +74,7 @@
 <h3>Why ethers are so unreactive</h3>
 <p class="step-body">Compare ethanol with diethyl ether. A strong base such as NaH pulls the O–H proton off ethanol, as <a class="chapter-ref" href="/ochem/notes/alcohol-reactions.html">Alcohol reactions</a> showed. Diethyl ether has no O–H, so a base finds no acidic proton to remove.</p>
 <p class="step-body">A nucleophile fares no better. To replace the oxygen at a carbon, it would have to push out an alkoxide ion, RO⁻. An alkoxide is the conjugate base of an alcohol (pKa about 16), so it is a strong base, and it is as poor a leaving group as hydroxide, the conjugate base of water (pKa 15.7). An ether therefore has nothing to give a base and nothing to give a nucleophile.</p>
-<p class="step-body">So ethers stand up to bases, nucleophiles, reducing agents and mild oxidizing agents. That is why diethyl ether and THF (tetrahydrofuran, the ring ether drawn above) are the usual solvents for very reactive reagents such as Grignard reagents and LiAlH₄, which would attack almost any other functional group in the flask. A <b>Grignard reagent</b>, RMgX, is a carbon nucleophile made from an alkyl halide and magnesium (<a class="chapter-ref" href="/ochem/learn.html#m-organometallics">Organometallics</a> covers it). <b>LiAlH₄</b> is a powerful source of hydride, H⁻, taught in <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>. Here, all that matters is that both are violently reactive and need a solvent that will not react back.</p>
+<p class="step-body">So ethers stand up to bases, nucleophiles, reducing agents and mild oxidizing agents. That is why diethyl ether and THF (tetrahydrofuran, the ring ether drawn above) are the usual solvents for very reactive reagents such as Grignard reagents and LiAlH₄, which would attack almost any other functional group in the flask. A <b>Grignard reagent</b>, RMgX, is a carbon nucleophile made from an alkyl halide and magnesium (<a class="chapter-ref" href="/ochem/learn.html#m-grignard">Organometallic Bonding &amp; Grignard Reagents</a>, after this chapter, covers it). <b>LiAlH₄</b> is a powerful source of hydride, H⁻, taught in <a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>. Here, all that matters is that both are violently reactive and need a solvent that will not react back.</p>
 
 <div class="notes-fact">The solvent does more than sit there. Each ether oxygen gives one lone pair to the magnesium of a Grignard reagent, and two ether molecules usually bind each magnesium. That coordination keeps the reagent dissolved and reactive. THF binds more strongly than diethyl ether: its ring ties the carbons back, which leaves the oxygen less crowded, and it is the stronger Lewis base. So THF is the solvent of choice when a Grignard reagent is hard to form.</div>
 
@@ -180,8 +181,8 @@
   <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="alcohol-reactions.html"><span>Previous</span>Alcohol reactions</a><a class="notes-prevnext notes-next" href="epoxides.html"><span>Next</span>Epoxides</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 121 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

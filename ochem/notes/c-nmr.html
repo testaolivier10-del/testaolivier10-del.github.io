@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>¹³C NMR — Spectroscopy Notes | Organic Chemistry</title>
+<title>¹³C NMR — Organic Chemistry Notes | LevlPrep</title>
 <meta name="description" content="Ethanol, CH₃CH₂OH, has two carbon atoms, and its ¹³C NMR (carbon-13 NMR) spectrum shows two sharp lines, one for each.">
 <link rel="canonical" href="https://levlprep.com/ochem/notes/c-nmr.html">
-<meta property="og:title" content="¹³C NMR — Spectroscopy Notes | Organic Chemistry">
+<meta property="og:title" content="¹³C NMR — Organic Chemistry Notes | LevlPrep">
 <meta property="og:description" content="Ethanol, CH₃CH₂OH, has two carbon atoms, and its ¹³C NMR (carbon-13 NMR) spectrum shows two sharp lines, one for each.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/notes/c-nmr.html">
@@ -33,7 +34,7 @@
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/c-nmr.html#notes","name":"¹³C NMR","url":"https://levlprep.com/ochem/notes/c-nmr.html","description":"Ethanol, CH₃CH₂OH, has two carbon atoms, and its ¹³C NMR (carbon-13 NMR) spectrum shows two sharp lines, one for each.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"¹³C NMR"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":105,"relatedLink":"https://levlprep.com/ochem/lessons/c-nmr.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"Spectroscopy","item":"https://levlprep.com/ochem/learn.html#m-spectroscopy"},{"@type":"ListItem","position":4,"name":"¹³C NMR","item":"https://levlprep.com/ochem/notes/c-nmr.html"}]}]}
+{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","@id":"https://levlprep.com/ochem/notes/c-nmr.html#notes","name":"¹³C NMR","url":"https://levlprep.com/ochem/notes/c-nmr.html","description":"Ethanol, CH₃CH₂OH, has two carbon atoms, and its ¹³C NMR (carbon-13 NMR) spectrum shows two sharp lines, one for each.","learningResourceType":"Reading","educationalLevel":"Undergraduate","inLanguage":"en","isAccessibleForFree":true,"teaches":{"@type":"DefinedTerm","name":"¹³C NMR"},"isPartOf":{"@id":"https://levlprep.com/ochem/#course"},"provider":{"@id":"https://levlprep.com/#org"},"position":108,"relatedLink":"https://levlprep.com/ochem/lessons/c-nmr.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"LevlPrep","item":"https://levlprep.com/"},{"@type":"ListItem","position":2,"name":"Organic Chemistry","item":"https://levlprep.com/ochem/"},{"@type":"ListItem","position":3,"name":"NMR Spectroscopy","item":"https://levlprep.com/ochem/learn.html#m-spectroscopy"},{"@type":"ListItem","position":4,"name":"¹³C NMR","item":"https://levlprep.com/ochem/notes/c-nmr.html"}]}]}
 </script>
 </head>
 <body>
@@ -42,11 +43,11 @@
     <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
     <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
     <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Spectroscopy</span>
+    <span>NMR Spectroscopy</span>
   </nav>
 
   <header class="notes-head">
-    <p class="notes-eyebrow">Spectroscopy &middot; Section 105 of 121</p>
+    <p class="notes-eyebrow">NMR Spectroscopy &middot; Section 108 of 123</p>
     <h1>¹³C NMR</h1>
     <a class="notes-onward-cta" href="../lessons/c-nmr.html">Practice this — interactive lesson</a>
   </header>
@@ -143,15 +144,15 @@
 <h3>How the techniques fit together</h3>
 <p class="step-body">Each technique answers a different question, and a structure problem usually needs several of them. IR names the functional groups. ¹³C counts the carbon environments and so reveals symmetry, and DEPT adds the hydrogen count on each carbon. ¹H maps how the pieces connect, through shift, integration and splitting. Work in that order, groups then symmetry then connections, and structure determination becomes a procedure instead of a puzzle.</p>
 <p class="step-body">¹³C is also the quickest check on a proposed structure. Count the carbon environments your structure predicts and compare that with the spectrum. If the numbers differ, the structure is wrong.</p>
-<p class="step-body"><i>Preview.</i> Every problem above starts from a molecular formula. The next section, <a class="chapter-ref" href="/ochem/notes/mass-spec.html">Mass spectrometry</a>, covers the technique that measures a molecule&rsquo;s mass, which is where that formula usually comes from.</p>
+<p class="step-body">Every problem above starts from a molecular formula. That formula usually comes from <a class="chapter-ref" href="/ochem/notes/mass-spec.html">Mass spectrometry</a>, the technique that measures a molecule&rsquo;s mass.</p>
 <!-- notes:end -->
   </article>
 
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="h-nmr.html"><span>Previous</span>¹H NMR</a><a class="notes-prevnext notes-next" href="mass-spec.html"><span>Next</span>Mass spectrometry</a></nav>
+  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="h-nmr.html"><span>Previous</span>¹H NMR</a><a class="notes-prevnext notes-next" href="retrosynthesis.html"><span>Next</span>Thinking backwards</a></nav>
 
   <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 121 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

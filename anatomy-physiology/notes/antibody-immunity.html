@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B cells and antibodies: Notes | Anatomy &amp; Physiology</title>
+<title>B cells and antibodies — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="An antibody is a Y-shaped protein whose two arm tips grip one antigen, and whose stem tells the rest of the immune system what to do next.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/antibody-immunity.html">
-<meta property="og:title" content="B cells and antibodies: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="B cells and antibodies — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="An antibody is a Y-shaped protein whose two arm tips grip one antigen, and whose stem tells the rest of the immune system what to do next.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/antibody-immunity.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="antibody-immunity">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 20 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/lymph-immune.html">Lymphatic and immune systems</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">B cells and antibodies: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/antibody-immunity.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 20 &middot; Topic 115 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 20 &middot; Topic 115 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">B cells and antibodies</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="antibody-immunity">Not practiced</span></p>
     </header>
@@ -113,7 +114,7 @@
 <h2 id="humoral-immunity-antibodies-in-the-body">Humoral immunity: antibodies in the body fluids</h2>
 <p><a class="gl" href="../notes/muscle-tension.html" data-c="summation-tetanus">Tetanus</a> toxin, made by bacteria in a dirty wound, drifts through <a class="gl" href="../notes/body-organization.html" data-c="tissue">tissue</a> fluid to your <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerve</a> endings. A virus particle floats in the <a class="gl" href="../notes/epithelium.html" data-c="simple-columnar">mucus</a> of your nose, looking for a <a class="gl" href="../notes/body-organization.html" data-c="cell">cell</a> to enter. Neither is inside a cell yet, so neither can be found by <a class="gl" href="../notes/cell-mediated-immunity.html" data-c="cytotoxic-t">cytotoxic T cells</a>. What stops them is antibody.</p>
 <p><em>Humoral immunity</em> (humor = body fluid, in the old medical sense) is the arm of <a class="gl" href="../notes/innate-immunity.html" data-c="innate-vs-adaptive">adaptive immunity</a> carried out by antibodies, which B cells and their descendants release into blood, tissue fluid and secretions. You met the other arm, cell-mediated immunity, in the last topic. The two work together, with <a class="gl" href="../notes/cell-mediated-immunity.html" data-c="helper-t">helper T cells</a> linking them.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Humoral immunity</th><th>Cell-mediated immunity</th></tr></thead>
 <tbody>
 <tr><th>Main cells</th><td>B cells and plasma cells</td><td><a class="gl" href="../notes/adaptive-immunity.html" data-c="t-cell">T cells</a> (cytotoxic T cells and helper T cells)</td></tr>
@@ -129,7 +130,7 @@
 <p>Every naïve B cell carries about 100,000 copies of one antibody in its <a class="gl" href="../notes/plasma-membrane.html" data-c="plasma-membrane">plasma membrane</a>, its B cell receptor. Unlike a T cell receptor, a B cell receptor binds an antigen in its natural, folded shape, floating free or sitting on a microbe's surface. No MHC is needed. How the B cell is then activated depends on the antigen.</p>
 <h3>T cell-dependent antigens</h3>
 <p>Most protein antigens are <em>T cell-dependent antigens</em>: a B cell that binds one cannot respond fully without help from a helper T cell. <a class="figref" href="#fig-os-21-25">Figure 1</a> shows the meeting.</p>
-<figure id="fig-os-21-25"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-25"><img src="../figures/os-21-25.jpg" alt="Left: a resting B cell whose surface B cell receptors, Y-shaped, have bound antigen, which the cell takes inside. A thick arrow points right. Right: the now activated B cell shows pieces of the antigen in an MHC II protein on its surface. A helper T cell binds that complex with its T cell receptor and its CD4 protein, and releases dots labeled cytokine onto the B cell." width="796" height="294" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A B cell gets help. The B cell binds antigen with its B cell receptors and takes it inside. It then displays peptides from that antigen in MHC II. A helper T cell that recognizes the same antigen binds the complex with its T cell receptor and CD4, and releases cytokines onto the B cell. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 21.25, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-21-25"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-25"><picture><source type="image/avif" srcset="../figures/avif/os-21-25-480.avif 480w, ../figures/avif/os-21-25.avif 796w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-21-25.jpg" alt="Left: a resting B cell whose surface B cell receptors, Y-shaped, have bound antigen, which the cell takes inside. A thick arrow points right. Right: the now activated B cell shows pieces of the antigen in an MHC II protein on its surface. A helper T cell binds that complex with its T cell receptor and its CD4 protein, and releases dots labeled cytokine onto the B cell." width="796" height="294" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> A B cell gets help. The B cell binds antigen with its B cell receptors and takes it inside. It then displays peptides from that antigen in MHC II. A helper T cell that recognizes the same antigen binds the complex with its T cell receptor and CD4, and releases cytokines onto the B cell. <span class="anp-credit">Figure 21.25 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <ol>
 <li><strong>Binding and uptake.</strong> In a <a class="gl" href="../notes/body-organization.html" data-c="major-organs">lymph node</a>, antigen binds the B cell receptors, and the B cell takes it inside.</li>
 <li><strong>Presentation.</strong> The B cell cuts the protein into peptides and displays them in MHC class II. For this job, the B cell is acting as an <a class="gl" href="../notes/adaptive-immunity.html" data-c="apc">antigen-presenting cell</a>.</li>
@@ -143,7 +144,7 @@
 <p>Some antigens, mainly the long, repeating <a class="gl" href="../notes/biomolecules.html" data-c="carbohydrate">sugar</a> chains of bacterial capsules, can switch B cells on without T cell help. These <em>T cell-independent antigens</em> carry the same epitope over and over, so one particle binds and cross-links many B cell receptors at once, which is a strong enough signal on its own. The response is quick but limited: the antibody is mostly IgM, there is little class switching or improvement of fit, and few memory cells form. Children under about 2 years respond poorly to these sugar antigens. That is why vaccines against capsule bacteria are made as conjugate vaccines: the capsule sugar is chemically attached to a protein, so helper T cells that recognize the protein help the B cells that recognize the sugar.</p>
 <h3>Plasma cells</h3>
 <p>A <em>plasma cell</em> is a fully differentiated B cell that makes and releases antibody. It is larger than a B cell, and its <a class="gl" href="../notes/plasma-membrane.html" data-c="cell-parts">cytoplasm</a> is packed with <a class="gl" href="../notes/organelles.html" data-c="endoplasmic-reticulum">rough endoplasmic reticulum</a>, the protein-making machinery for export. A single plasma cell releases about 2,000 antibody molecules per second. Plasma cells no longer divide and carry few B cell receptors. Most live only a few days, but some move to the <a class="gl" href="../notes/bone-structure.html" data-c="bone-marrow">red bone marrow</a> and keep releasing antibody for years or decades, which is why antibody levels can stay up long after an infection or vaccine.</p>
-<figure id="fig-os-21-23"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-23"><img src="../figures/os-21-23.jpg" alt="A branching diagram in two parts. Left, primary response: three B cells with differently shaped receptors sit among small triangles of antigen; only the middle one has antigen bound to its receptors. It divides into a clone of activated B cells, which become one memory B cell and many larger plasma cells with layered cytoplasm, each releasing Y-shaped antibody molecules. Right, secondary response: the memory B cell meets the same antigen again and quickly gives rise to more memory B cells and many more antibody-releasing plasma cells." width="1100" height="1007" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Clonal selection of B cells. In the primary response (left), antigen binds the one B cell whose B cell receptors fit it; that cell forms a clone of plasma cells, which release antibody, and memory B cells. In the secondary response (right), memory B cells meet the same antigen and quickly produce many more plasma cells. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 21.23, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-21-23"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-23"><picture><source type="image/avif" srcset="../figures/avif/os-21-23-480.avif 480w, ../figures/avif/os-21-23-800.avif 800w, ../figures/avif/os-21-23.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-21-23.jpg" alt="A branching diagram in two parts. Left, primary response: three B cells with differently shaped receptors sit among small triangles of antigen; only the middle one has antigen bound to its receptors. It divides into a clone of activated B cells, which become one memory B cell and many larger plasma cells with layered cytoplasm, each releasing Y-shaped antibody molecules. Right, secondary response: the memory B cell meets the same antigen again and quickly gives rise to more memory B cells and many more antibody-releasing plasma cells." width="1100" height="1007" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Clonal selection of B cells. In the primary response (left), antigen binds the one B cell whose B cell receptors fit it; that cell forms a clone of plasma cells, which release antibody, and memory B cells. In the secondary response (right), memory B cells meet the same antigen and quickly produce many more plasma cells. <span class="anp-credit">Figure 21.23 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p><a class="figref" href="#fig-os-21-23">Figure 2</a> puts the steps together: selection of the matching B cell, expansion, and two kinds of daughter cell.</p>
 
 <h2 id="antibody-structure">Antibody structure</h2>
@@ -162,7 +163,7 @@
 
 <h2 id="the-five-antibody-classes">The five antibody classes</h2>
 <p>Every antibody belongs to one of five <em>classes</em>, set by its heavy chain: IgG, IgA, IgM, IgE and IgD. The memory aid <strong>GAMED</strong> lists them. The first three, IgG, IgA and IgM, are also the three most abundant in <a class="gl" href="../notes/blood-composition.html" data-c="serum">serum</a>, in that order. IgD and IgE are both scarce, and IgE is the scarcest.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>IgG</th><th>IgA</th><th>IgM</th><th>IgE</th><th>IgD</th></tr></thead>
 <tbody>
 <tr><th>Shape</th><td><a class="gl" href="../notes/biomolecules.html" data-c="monomer-polymer">Monomer</a> (one Y)</td><td>Monomer in blood; dimer (two Ys) in secretions</td><td>Pentamer (five Ys) when released; monomer on B cells</td><td>Monomer</td><td>Monomer</td></tr>
@@ -196,8 +197,8 @@
 
 <h2 id="primary-and-secondary-immune-responses">Primary and secondary immune responses</h2>
 <p>Consider two tetanus vaccinations ten years apart. After the first, it takes about a week before any antibody appears in the blood. After the second, antibody climbs within a few days to a much higher level. <a class="figref" href="#fig-os-21-24">Figure 4</a> shows this.</p>
-<figure id="fig-os-21-24"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-24"><img src="../figures/os-21-24.jpg" alt="A graph of antibody concentration in the blood against time in weeks. An arrow marks the initial exposure, after which the curve stays low briefly, then rises to a small, low peak labeled primary immune response and falls back. A second arrow marks the secondary exposure to the same antigen. The curve then climbs quickly and steeply to a peak several times higher than the first, labeled secondary immune response, and falls slowly, staying well above the starting level." width="1088" height="756" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> Primary and secondary antibody responses. After the first exposure to an antigen, antibody appears after a lag and reaches a modest peak. A later exposure to the same antigen brings a faster, steeper rise to a much higher peak, and the level falls more slowly. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 21.24, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<figure id="fig-os-21-24"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-24"><picture><source type="image/avif" srcset="../figures/avif/os-21-24-480.avif 480w, ../figures/avif/os-21-24-800.avif 800w, ../figures/avif/os-21-24.avif 1088w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-21-24.jpg" alt="A graph of antibody concentration in the blood against time in weeks. An arrow marks the initial exposure, after which the curve stays low briefly, then rises to a small, low peak labeled primary immune response and falls back. A second arrow marks the secondary exposure to the same antigen. The curve then climbs quickly and steeply to a peak several times higher than the first, labeled secondary immune response, and falls slowly, staying well above the starting level." width="1088" height="756" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> Primary and secondary antibody responses. After the first exposure to an antigen, antibody appears after a lag and reaches a modest peak. A later exposure to the same antigen brings a faster, steeper rise to a much higher peak, and the level falls more slowly. <span class="anp-credit">Figure 21.24 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-4-the-adaptive-immune-response-b-lymphocytes-and-antibodies">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Primary response</th><th>Secondary response</th></tr></thead>
 <tbody>
 <tr><th>When</th><td>First exposure to an antigen</td><td>Any later exposure to the same antigen</td></tr>
@@ -219,7 +220,7 @@
 <li><em>Passive immunity</em> is protection by antibodies made by someone else and transferred to you. It works at once, leaves no memory cells, and fades as the borrowed antibodies are broken down, over days to months.</li>
 </ul>
 <p>Each can happen naturally or be produced by medicine:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Active immunity</th><th>Passive immunity</th></tr></thead>
 <tbody>
 <tr><th>Who makes the antibodies</th><td>You</td><td>Another person or an animal, or a lab</td></tr>
@@ -237,7 +238,7 @@
 
 <h2 id="defenses-against-each-type-of-pathogen">Defenses against each type of pathogen</h2>
 <p>A <em>pathogen</em> (path/o = disease, -gen = producing) is a microbe or parasite that can cause disease. Different pathogens live in different places, and your immune system meets each with the tools that can reach it.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Pathogen type</th><th>Where it lives</th><th>Main defenses</th></tr></thead>
 <tbody>
 <tr><td>Bacteria outside cells</td><td>Tissue fluid, blood, body surfaces</td><td>Antibodies that neutralize toxins and coat bacteria; complement; neutrophils and <a class="gl" href="../notes/connective-tissue.html" data-c="macrophage-basic">macrophages</a></td></tr>
@@ -262,13 +263,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:antibody-immunity">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="cell-mediated-immunity.html"><span>&larr; Topic 114</span><b>T cells and cell-mediated immunity</b></a><a class="tb-chapter-link next" href="immune-disorders.html"><span>Topic 116 &rarr;</span><b>Immune disorders</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

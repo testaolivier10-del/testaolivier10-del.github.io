@@ -86,7 +86,7 @@
       "gradients"
     ],
     "misconception": "the potassium inside cells is what changes in hyperkalemia",
-    "q": "Mr. Okafor, 62, with kidney failure, has a blood potassium of 7.1 mmol/L (normal 3.5–5.0). What happens to the resting membrane potential of his heart muscle cells?",
+    "q": "Mr. Mensah, 62, with kidney failure, has a blood potassium of 7.1 mmol/L (normal 3.5–5.0). What happens to the resting membrane potential of his heart muscle cells?",
     "options": [
       "It becomes more negative (hyperpolarized)",
       "It does not change",
@@ -142,21 +142,20 @@
     "options": [
       "Potassium diffusing out through leak channels",
       "Negatively charged proteins that cannot leave the cell",
-      "The pump moving 3 Na+ out for every 2 K+ in",
+      "Calcium entering the cell through open channels",
       "Sodium diffusing in through leak channels",
       "Water entering the cell by osmosis"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
       "correct": "Potassium leaving carries positive charge out, and the trapped negative proteins it leaves behind cannot follow. The pump adds a small extra negativity because it exports one more positive charge than it imports each cycle.",
       "options": [
         "Correct. This is the main source of the resting potential.",
         "Correct. These trapped anions are the negative charge left unbalanced when potassium leaves.",
-        "Correct, but small. Its direct contribution is only a few millivolts.",
+        "Calcium entering would add positive charge inside, and at rest calcium channels are mostly closed.",
         "Sodium entering brings positive charge in. It pulls the voltage toward sodium's +60 mV, making the inside less negative.",
         "Water carries no net charge, so osmosis does not directly change the membrane potential."
       ]
@@ -249,7 +248,7 @@
     "core": [
       "gradients"
     ],
-    "q": "Level 1. Extracellular potassium around a neuron rises from 4 to 8 mmol/L. Nothing else changes. Predict each variable.",
+    "q": "Extracellular potassium around a neuron rises from 4 to 8 mmol/L. Nothing else changes. Predict each variable.",
     "variables": [
       {
         "name": "Potassium concentration gradient across the membrane",
@@ -286,7 +285,7 @@
       "energy"
     ],
     "misconception": "the pump creates the resting potential",
-    "q": "Level 4. A toxin completely blocks every sodium–potassium pump in a neuron. Predict each variable first in the first few seconds, then after several hours.",
+    "q": "A toxin completely blocks every sodium–potassium pump in a neuron. Predict each variable first in the first few seconds, then after several hours.",
     "variables": [
       {
         "name": "How negative the resting potential is, in the first few seconds",

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Molecule Viewer — Organic Chemistry Tools</title>
+<title>3D Molecule Viewer — Organic Chemistry Tool | LevlPrep</title>
 <meta name="description" content="Rotate molecules in 3D with real VSEPR geometry. Click any atom to see its electron groups, hybridization, shape and measured bond angles.">
 <link rel="canonical" href="https://levlprep.com/ochem/tools/viewer-3d.html">
-<meta property="og:title" content="3D Molecule Viewer — Organic Chemistry Tools">
+<meta property="og:title" content="3D Molecule Viewer — Organic Chemistry Tool | LevlPrep">
 <meta property="og:description" content="Rotate molecules in 3D with real VSEPR geometry. Click any atom to see its electron groups, hybridization, shape and measured bond angles.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/ochem/tools/viewer-3d.html">
@@ -135,6 +136,9 @@
     touch-action:none;cursor:grab;user-select:none;
   }
   .v3-stage.is-dragging{cursor:grabbing;}
+  .v3-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:16px;align-items:start;}
+  .v3-pick{max-height:calc(100vh - 140px);overflow-y:auto;}
+  @media(max-width:900px){ .v3-layout{grid-template-columns:1fr;} .v3-pick{max-height:none;overflow:visible;} }
   .v3-stage:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
   .v3-stage svg{width:100%;height:auto;display:block;max-width:460px;margin:0 auto;}
   .m3d-atom{cursor:pointer;}
@@ -143,15 +147,18 @@
 </style>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">3D Molecule Viewer</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell">
   <div class="tool-top" id="tool-top">
 <!-- tool-top:start -->
 <a class="tool-back" href="../tools.html">&larr; All tools</a><div class="tool-title"><span class="tool-tile__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 7.5v9L12 21 4 16.5v-9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 12 20 7.5M12 12v9M12 12 4 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span><h1>3D Molecule Viewer</h1></div><p class="tool-lede">Type a formula or draw a structure and see its real shape, angles measured.</p><div class="tool-share" id="tool-share"></div><nav class="tool-switch" aria-label="Other tools"><a href="arrow-pusher.html">Arrow Pusher</a><a href="resonance.html">Resonance Explorer</a><a href="viewer-3d.html" class="on" aria-current="page">3D Molecule Viewer</a><a href="conformations.html">Conformation Lab</a><a href="reaction-predictor.html">Reaction Predictor</a><a href="acid-base.html">Acid/Base Comparator</a><a href="spectroscopy.html">Spectroscopy Lab</a><a href="reagent-roadmap.html">Reagent Roadmap</a></nav>
 <!-- tool-top:end --></div>
-  <div id="v3Root"></div>
+  <div id="v3Root" class="tool-root"></div>
 
   <div id="tool-quiz"></div>
 
@@ -180,7 +187,7 @@
 <script src="../assets/tools/viewer-3d.js" defer></script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

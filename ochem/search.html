@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Search — Organic Chemistry — LevlPrep</title>
-<meta name="description" content="Search the whole Organic Chemistry course at once: the textbook, all 117 lessons, the mechanism walkthroughs, the eight tools, and every practice question.">
+<title>Search — Organic Chemistry | LevlPrep</title>
+<meta name="description" content="Search the whole Organic Chemistry course at once: the textbook, all 119 lessons, the mechanism walkthroughs, the eight tools, and every practice question.">
+<meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/ochem/search.html">
-<meta property="og:title" content="Search — Organic Chemistry — LevlPrep">
-<meta property="og:description" content="Search the whole Organic Chemistry course at once: the textbook, all 117 lessons, the mechanism walkthroughs, the eight tools, and every practice question.">
+<meta property="og:title" content="Search — Organic Chemistry | LevlPrep">
+<meta property="og:description" content="Search the whole Organic Chemistry course at once: the textbook, all 119 lessons, the mechanism walkthroughs, the eight tools, and every practice question.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/ochem/search.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -114,8 +116,11 @@
 </script>
 </head>
 <body data-course="ochem">
-  <div id="site-header"></div>
+  <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Search</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="learn.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
   <div class="page-head">
@@ -133,7 +138,7 @@
 
   <footer>
     <p>Runs in your browser. Nothing is sent anywhere.</p>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
 
@@ -146,7 +151,7 @@ window.OCHEM_BASE = '';
 
    learn.html's rail already searches the textbook, but only the textbook, and
    only the sections that happen to have been fetched already. That leaves the
-   117 lessons, the 10 mechanism walkthroughs, the 7 tools and 3,635 questions in the practice bank with no way in at all: someone who cannot remember whether
+   119 lessons, the 10 mechanism walkthroughs, the 7 tools and 3,675 questions in the practice bank with no way in at all: someone who cannot remember whether
    anti-periplanar is explained in a lesson, in a mechanism walkthrough or in
    the textbook had to guess. NREMT has had this page for a long time; this is
    the same page for the other course.
@@ -159,7 +164,7 @@ window.OCHEM_BASE = '';
                      textbook, the mastery dashboard and check-site all follow.
      notes/<id>.html the written course, one fragment per topic.
      tools-registry  the eight tools, same registry tools.html renders from.
-     practice-bank   3,635 questions, stems and explanations.
+     practice-bank   3,675 questions, stems and explanations.
 
    Everything is fetched in parallel and every source is allowed to fail on its
    own: offline, a reader should get whatever is in the cache rather than an

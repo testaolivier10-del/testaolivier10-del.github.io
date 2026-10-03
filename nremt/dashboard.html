@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NREMT Study Dashboard — LevlPrep</title>
-<meta name="description" content="Your NREMT-EMT study dashboard: study streak, readiness estimate, accuracy by domain and your review queue, all in one place.">
+<title>Study Dashboard — NREMT-EMT | LevlPrep</title>
+<meta name="description" content="Your NREMT-EMT study dashboard: study streak, readiness estimate, accuracy by exam domain and by topic, and your review queue, all in one place.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://levlprep.com/nremt/dashboard.html">
-<meta property="og:title" content="NREMT Study Dashboard — LevlPrep">
-<meta property="og:description" content="Your NREMT-EMT study dashboard: study streak, readiness estimate, accuracy by domain and your review queue, all in one place.">
+<meta property="og:title" content="Study Dashboard — NREMT-EMT | LevlPrep">
+<meta property="og:description" content="Your NREMT-EMT study dashboard: study streak, readiness estimate, accuracy by exam domain and by topic, and your review queue, all in one place.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/nremt/dashboard.html">
 <meta property="og:site_name" content="LevlPrep">
@@ -40,6 +41,11 @@
   /* Dashboard layout. Panels, stat cards, tracks, calendar and badges all come
      from the shared system in assets/theme.css; this only sets the page grid
      and the few dashboard-specific bits (level card, readiness card, charts). */
+  /* Space held for the stat cards the script draws, so the page below does
+     not jump when they land (audit 2026-10, layout shift: CLS 0.77 on a phone). */
+  #statCards:empty{min-height:167px;}
+  #topicBox:empty{min-height:430px;}
+  @media (max-width:640px){ #statCards:empty{min-height:334px;} #topicBox:empty{min-height:513px;} }
   .dash-grid{display:grid;grid-template-columns:1.35fr 0.65fr;gap:28px;padding:26px 0 56px;align-items:start;}
   .dash-col > .panel{margin-bottom:20px;}
   .dash-col > .panel:last-child{margin-bottom:0;}
@@ -56,7 +62,8 @@
     display:flex;align-items:center;justify-content:center;font:900 15px var(--font-ui);
   }
   .lvl-title{font:900 13px var(--font-ui);color:#F4D28C;display:block;}
-  .lvl-titlesub{font:700 12px var(--font-mono);color:#9FB5AE;display:block;margin-top:2px;}
+  .lvl-titlesub{font:700 12px var(--font-mono);color:var(--muted-on-dark);display:block;margin-top:2px;}
+  :root[data-theme="dark"] .lvl-ring{background:rgba(0,0,0,0.24);}
   .lvl-track{height:12px;border-radius:var(--radius-pill);background:rgba(255,255,255,0.15);margin:0 0 8px;overflow:hidden;}
   .lvl-fill{height:100%;background:#F4D28C;border-radius:var(--radius-pill);transition:width .4s ease;}
   .lvl-sub{font:700 11.5px var(--font-mono);color:#DCEFEA;}
@@ -65,7 +72,7 @@
 
   /* Readiness — dark card, big number. */
   .readiness-card{background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);padding:24px;}
-  .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.06em;}
+  .r-tag{font:900 11px var(--font-ui);color:var(--muted-on-dark);text-transform:uppercase;letter-spacing:0.06em;}
   .r-head{display:flex;align-items:baseline;gap:14px;margin:8px 0 10px;flex-wrap:wrap;}
   .r-num{font:900 clamp(34px,5vw,44px) var(--font-ui);letter-spacing:-.03em;color:var(--on-accent);}
   .r-label{font:900 13px var(--font-ui);padding:5px 13px;border-radius:var(--radius-pill);}
@@ -100,7 +107,7 @@
   .score-map{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:14px;}
   .score-map>summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--accent);list-style:none;}
   .score-map>summary::-webkit-details-marker{display:none;}
-  .score-map>summary::before{content:"\203A";display:inline-block;margin-right:8px;transition:transform .2s ease;}
+  .score-map>summary::before{content:var(--disclose);display:inline-block;margin-right:8px;transition:transform .2s ease;}
   .score-map[open]>summary::before{transform:rotate(90deg);}
   .score-map p{font-size:13px;color:var(--muted);margin:12px 0;}
   .score-map-note{border-left:3px solid var(--line);padding-left:12px;}
@@ -130,6 +137,9 @@
   .mastery-bar span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font:800 10.5px var(--font-ui);color:var(--muted);}
 
   .cta-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .panel-note{font-size:13px;color:var(--muted);margin:-4px 0 12px;}
+  .dm-sub{font:700 11px var(--font-mono);color:var(--muted);margin-left:6px;}
+  .r-num small{font-size:.5em;font-weight:800;color:var(--muted);margin-left:2px;}
 
   @media(max-width:900px){
     .dash-grid{grid-template-columns:1fr;}
@@ -168,8 +178,11 @@
 </script>
 </head>
 <body>
-  <div id="site-header"></div>
+  <header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Dashboard</span></nav></div>
+<!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="xshell">
 
@@ -185,14 +198,15 @@
   <div class="dash-grid">
     <div class="dash-col">
       <div class="panel">
-        <h2>Domain mastery <span id="domainBadge"></span></h2>
+        <h2>Weak topics</h2>
+        <p class="panel-note">Your accuracy by topic area across every mode, weakest first. Always free.</p>
+        <div id="topicBox"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Exam domains <span id="domainBadge"></span></h2>
+        <p class="panel-note">The five domains of the National Registry&rsquo;s EMT exam launched 7 April 2025, with each one&rsquo;s share of the exam. Practice exams here draw questions in the same proportions.</p>
         <div id="domainBox"></div>
-        <details class="score-map">
-          <summary>How these map to your score report</summary>
-          <p>If you fail, the National Registry sends you a breakdown by its <strong>five</strong> official content areas. This site uses six domains, because assessment runs through all of them and is worth drilling on its own. Here is how to translate one into the other.</p>
-          <div id="scoreMapBox"></div>
-          <p class="score-map-note">Assessment has no content area of its own on the report. If your weakest domain here is Assessment, the report will show it spread across the other five &mdash; most often as Trauma and Medical.</p>
-        </details>
       </div>
 
       <div class="panel">
@@ -241,7 +255,7 @@
 
   <footer>
     <p>Computed from data in your browser only. Clearing browser data resets it.</p>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 
 </div>
@@ -251,19 +265,19 @@
 // page is deferred so the page can paint before they arrive, and deferred
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
+  // Topic areas: the body-system labels the bank carries, which the
+  // cross-mode accuracy record (nremt_domain_stats_all) has always been kept by.
   const DOMAINS = ["Assessment","Airway & Respiratory","Cardiac & Medical","Trauma","OB/Peds & Special Populations","EMS Operations"];
-
-  // The National Registry reports a failed attempt against five content areas.
-  // This site drills six. The difference is not cosmetic: a candidate reading
-  // "below passing in Airway, Respiration & Ventilation" needs to know which
-  // button to press here, and two of the five do not map one-to-one.
-  const SCORE_REPORT_MAP = [
-    { area: 'Airway, Respiration & Ventilation', domains: ['Airway & Respiratory'] },
-    { area: 'Cardiology & Resuscitation',        domains: ['Cardiac & Medical'] },
-    { area: 'Trauma',                            domains: ['Trauma'] },
-    { area: 'Medical; Obstetrics & Gynecology',  domains: ['Cardiac & Medical', 'OB/Peds & Special Populations'] },
-    { area: 'EMS Operations',                    domains: ['EMS Operations'] },
+  // The 2025 exam domains and their bands (EMT examination specifications);
+  // the same list as DOMAIN_TARGETS in practice-engine.js.
+  const EXAM_DOMAINS = [
+    { d: 'Scene Size-Up & Safety',        band: '15–19%' },
+    { d: 'Primary Assessment',            band: '39–43%' },
+    { d: 'Secondary Assessment',          band: '5–9%' },
+    { d: 'Patient Treatment & Transport', band: '20–24%' },
+    { d: 'Operations',                    band: '10–14%' },
   ];
+  const EXAM_DOMAIN_STATS_KEY = 'nremt_exam_domain_stats';
 
   const HISTORY_KEY = 'nremt_exam100_history';
   const MASTERY_KEY = 'nremt_mastery';
@@ -280,7 +294,8 @@ document.addEventListener('DOMContentLoaded', function(){
   const history = readJSON(HISTORY_KEY, []);
   const mastery = readJSON(MASTERY_KEY, {});
   const domainStats = readJSON(DOMAIN_STATS_KEY, {});
-  const streak = readJSON(STREAK_KEY, {currentStreak:0, longestStreak:0, lastActiveDate:null, dailyCounts:{}, dailyGoal:20});
+  const examDomainStats = readJSON(EXAM_DOMAIN_STATS_KEY, {});
+  const streak = readJSON(STREAK_KEY, {currentStreak:0, longestStreak:0, lastActiveDate:null, dailyCounts:{}, dailyGoal:15});
   const missed = readJSON(MISSED_KEY, []);
   const flagged = readJSON(FLAGGED_KEY, []);
 
@@ -302,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function(){
       current: broken ? 0 : (streak.currentStreak || 0),
       longest: streak.longestStreak || 0,
       todayCount: counts[today] || 0,
-      goal: streak.dailyGoal || 20,
+      goal: streak.dailyGoal || 15,
       days: Object.keys(counts).reduce((a, k) => (a[k] = { nremt: counts[k] }, a), {}),
     };
   }
@@ -383,20 +398,28 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     const longest = hubStreak().longest;
     const best = history.length ? Math.max(...history.map(h2 => Math.round(h2.score/h2.total*100))) : 0;
+    // Each badge shows its own icon, greyed until earned, and how far along it
+    // is (audit 2026-10: six identical locks said nothing about any of them).
+    const lvl = badgeLevel();
     const defs = [
-      { icon: '🎖️', label: '7-day streak',  earned: longest >= 7 },
-      { icon: '🔥', label: '30-day streak', earned: longest >= 30 },
-      { icon: '🚑', label: 'First exam',    earned: history.length >= 1 },
-      { icon: '💯', label: '90%+ exam',     earned: best >= 90 },
-      { icon: '📚', label: '500 questions', earned: allTotal >= 500 },
-      { icon: '🏅', label: 'Level 10',      earned: badgeLevel() >= 10 },
+      { icon: '🎖️', label: '7-day streak',  have: longest, need: 7, unit: 'days' },
+      { icon: '🔥', label: '30-day streak', have: longest, need: 30, unit: 'days' },
+      { icon: '🚑', label: 'First exam',    have: history.length, need: 1, unit: 'exam' },
+      { icon: '💯', label: '90%+ exam',     have: best, need: 90, unit: '% best' },
+      { icon: '📚', label: '500 questions', have: allTotal, need: 500, unit: 'answered' },
+      { icon: '🏅', label: 'Level 10',      have: lvl, need: 10, unit: 'level' },
     ];
-    document.getElementById('badgeGrid').innerHTML = defs.map(b => `
-      <div class="badge">
-        <div class="badge-circle${b.earned ? '' : ' locked'}">${b.earned ? b.icon : '🔒'}</div>
-        <span>${b.label}</span>
-      </div>
-    `).join('');
+    document.getElementById('badgeGrid').innerHTML = defs.map(b => {
+      const earned = b.have >= b.need;
+      const shown = Math.min(b.have, b.need);
+      const prog = earned ? 'Earned' : `${shown}/${b.need}`;
+      return `
+      <div class="badge${earned ? '' : ' is-locked'}" role="img" aria-label="${b.label}: ${earned ? 'earned' : `not yet, ${shown} of ${b.need} ${b.unit}`}">
+        <div class="badge-circle${earned ? '' : ' locked'}" aria-hidden="true">${b.icon}</div>
+        <span aria-hidden="true">${b.label}</span>
+        <small class="badge-prog" aria-hidden="true">${prog}</small>
+      </div>`;
+    }).join('');
   })();
 
   // ---- Recent activity: the last few full exams, newest first ----
@@ -473,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function(){
       <div class="lvl-track"><div class="lvl-fill" style="width:${fillPct}%"></div></div>
       <div class="lvl-sub">${info.into} / ${info.span} XP to Level ${info.level + 1}</div>
       ${splitLine}
-      ${badgeChips ? `<div class="lvl-badges">${badgeChips}</div>` : `<div class="lvl-sub" style="margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);">Answer 20+ questions in a domain and hit 70% accuracy to earn your first domain badge.</div>`}
+      ${badgeChips ? `<div class="lvl-badges">${badgeChips}</div>` : `<div class="lvl-sub" style="margin-top:14px;padding-top:14px;border-top:2px solid rgba(255,255,255,0.15);">Answer 20+ questions in a topic area and hit 70% accuracy to earn your first topic badge.</div>`}
     </div>
   `;
 
@@ -521,23 +544,26 @@ document.addEventListener('DOMContentLoaded', function(){
   const G = window.NremtGates || { canUse: () => true, gate: () => '', badge: () => '', onChange(fn){ fn(); } };
   function renderReadinessBox(){
   const readinessBox = document.getElementById('readinessBox');
+  // One upsell per screen: the Exam domains panel carries the Premium card,
+  // so this one only says where the estimate went.
   if(!G.canUse('readiness')){
-    readinessBox.innerHTML = G.gate('readiness', 'dashboard-readiness');
+    readinessBox.innerHTML = `<div class="empty-note">The readiness estimate comes with Premium, along with the exam-domain breakdown.</div>`;
     return;
   }
   const r = computeReadiness();
   if(!r.available){
-    readinessBox.innerHTML = `<div class="empty-note">Take a full <a href="exams.html">timed exam</a> to unlock your readiness score.</div>`;
+    readinessBox.innerHTML = `<div class="empty-note">Take a full <a href="exams.html">timed exam</a> to see your readiness estimate.</div>`;
   } else {
     const subParts = [`Recent average ${r.weightedAvg}% across ${r.attempts} full exam${r.attempts===1?'':'s'}`];
     if(r.weakestDomain) subParts.push(`weakest area: ${r.weakestDomain} (${r.weakestPct}%)`);
-    const note = r.lowConfidence
-      ? 'Based on very few attempts — take a few more full exams for a more reliable estimate.'
-      : 'A rough estimate from your practice history, not an official prediction of NREMT results.';
+    // Same wording as practice-engine.js: a readiness scale, not odds.
+    const note = (r.lowConfidence
+      ? 'Based on very few attempts — take a few more full exams for a steadier number. '
+      : '') + 'A 0–100 readiness scale from your own practice scores. It is not calibrated against real NREMT results and is not a chance of passing.';
     readinessBox.innerHTML = `
       <div class="readiness-card">
-        <span class="r-tag">Estimated pass probability ${G.badge()}</span>
-        <div class="r-head"><span class="r-num">${r.probabilityPct}%</span><span class="r-label tier-${r.tier}">${r.label}</span></div>
+        <span class="r-tag">Readiness estimate ${G.badge()}</span>
+        <div class="r-head"><span class="r-num">${r.probabilityPct}<small>/100</small></span><span class="r-label tier-${r.tier}">${r.label}</span></div>
         <div class="r-sub">${subParts.join(' · ')}</div>
         <div class="r-note">${note}</div>
       </div>
@@ -582,49 +608,42 @@ document.addEventListener('DOMContentLoaded', function(){
     domainBox.innerHTML = G.gate('readiness', 'dashboard-domains');
     return;
   }
-  const attemptedDomains = DOMAINS.filter(d => domainStats[d] && domainStats[d].total > 0);
-  if(attemptedDomains.length === 0){
-    domainBox.innerHTML = `<div class="empty-note">Answer questions in any mode to see domain accuracy.</div>`;
-  } else {
-    domainBox.innerHTML = DOMAINS.map(d => {
-      const st = domainStats[d];
-      const pct = st && st.total ? Math.round(st.correct/st.total*100) : null;
-      const barColor = pct === null ? 'var(--line)' : pct >= 75 ? 'var(--good)' : pct >= 55 ? 'var(--accent)' : 'var(--coral)';
-      const label = pct === null ? 'Not started' : `${pct}% (${st.correct}/${st.total})`;
-      return `
-        <div class="domain-row">
-          <div class="dm-top">
-            <span>${d}</span>
-            <span style="display:flex;align-items:center;gap:10px">
-              <span class="pct">${label}</span>
-              <a class="practice-link" href="practice.html?domain=${encodeURIComponent(d)}">Practice</a>
-            </span>
-          </div>
-          <div class="dm-track"><div class="dm-fill" style="width:${pct||0}%;background:${barColor}"></div></div>
+  const attempted = EXAM_DOMAINS.filter(x => examDomainStats[x.d] && examDomainStats[x.d].total > 0);
+  domainBox.innerHTML = (attempted.length ? '' : `<div class="empty-note">Answer questions in any mode to see your accuracy by exam domain.</div>`) +
+    EXAM_DOMAINS.map(({d, band}) => domainRow(d, examDomainStats[d], `${band} of the exam`, 'domain')).join('');
+  }
+  function domainRow(d, st, sub, param){
+    const pct = st && st.total ? Math.round(st.correct/st.total*100) : null;
+    const barColor = pct === null ? 'var(--line)' : pct >= 75 ? 'var(--good)' : pct >= 55 ? 'var(--accent)' : 'var(--coral)';
+    const label = pct === null ? 'Not started' : `${pct}% (${st.correct}/${st.total})`;
+    return `
+      <div class="domain-row">
+        <div class="dm-top">
+          <span>${d}${sub ? ` <span class="dm-sub">${sub}</span>` : ''}</span>
+          <span style="display:flex;align-items:center;gap:10px">
+            <span class="pct">${label}</span>
+            <a class="practice-link" href="practice.html?${param}=${encodeURIComponent(d)}" aria-label="Practice ${d}">Practice</a>
+          </span>
         </div>
-      `;
-    }).join('');
+        <div class="dm-track"><div class="dm-fill" style="width:${pct||0}%;background:${barColor}"></div></div>
+      </div>
+    `;
   }
-  }
+  // ---- Weak topics: free, always. The premium dialog lists "weak topics"
+  // among the free features, so this panel never carries a gate.
+  (function renderTopicBox(){
+    const box = document.getElementById('topicBox');
+    const rows = DOMAINS.map(d => ({ d, st: domainStats[d] }))
+      .sort((a, b) => {
+        const pa = a.st && a.st.total ? a.st.correct / a.st.total : 2;
+        const pb = b.st && b.st.total ? b.st.correct / b.st.total : 2;
+        return pa - pb;
+      });
+    const any = rows.some(r => r.st && r.st.total > 0);
+    box.innerHTML = (any ? '' : `<div class="empty-note">Answer questions in any mode to see which topics need work.</div>`) +
+      rows.map(r => domainRow(r.d, r.st, '', 'system')).join('');
+  })();
   G.onChange(function(){ renderReadinessBox(); renderDomainBox(); });
-
-  // ---- Score-report mapping ----
-  // Rendered from SCORE_REPORT_MAP rather than written out, so the five areas,
-  // the six domains and the practice links cannot drift apart. It renders even
-  // with no attempts recorded: a candidate who has just failed and is holding
-  // the report needs the translation before they have answered anything here.
-  const scoreMapBox = document.getElementById('scoreMapBox');
-  if(scoreMapBox){
-    scoreMapBox.innerHTML = SCORE_REPORT_MAP.map(row => {
-      const chips = row.domains.map(d => {
-        const st = domainStats[d];
-        const pct = st && st.total ? Math.round(st.correct/st.total*100) : null;
-        const score = pct === null || !G.canUse('readiness') ? '' : ` <span class="sm-pct">${pct}%</span>`;
-        return `<a class="sm-chip" href="practice.html?domain=${encodeURIComponent(d)}">${d}${score}</a>`;
-      }).join('');
-      return `<div class="sm-row"><div class="sm-area">${row.area}</div><div class="sm-domains">${chips}</div></div>`;
-    }).join('');
-  }
 
   // ---- Mastery distribution + due-for-review ----
   const masteryBox = document.getElementById('masteryBox');
@@ -668,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function(){
         let bank = 0;
         try{ bank = parseInt(localStorage.getItem('nremt_bank_size'), 10) || 0; }catch(e){}
         const left = Math.max(0, bank - Object.keys(mastery).length);
-        if(!bank) return { n: hubStreak().goal || 20, unit: 'questions', why: 'is your daily goal' };
+        if(!bank) return { n: hubStreak().goal || 15, unit: 'questions', why: 'is your daily goal' };
         if(!left) return { done: 'You have answered every question in the bank. Days from here are for Review and timed exams.' };
         return { n: Math.ceil(left / days), unit: 'new questions', why: 'covers the ' + left.toLocaleString() + ' you have not answered yet, plus whatever Review has due' };
       }

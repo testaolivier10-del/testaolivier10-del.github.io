@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meiosis and gametes: Notes | Anatomy &amp; Physiology</title>
+<title>Meiosis and gametes — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="Meiosis explained in full: homologous chromosomes, meiosis I and II, crossing over, mitosis vs meiosis, gametes and nondisjunction, with figures.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/meiosis.html">
-<meta property="og:title" content="Meiosis and gametes: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Meiosis and gametes — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="Meiosis explained in full: homologous chromosomes, meiosis I and II, crossing over, mitosis vs meiosis, gametes and nondisjunction, with figures.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/meiosis.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="meiosis">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 26 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/reproductive.html">The reproductive system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Meiosis and gametes: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/meiosis.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 26 &middot; Topic 148 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 26 &middot; Topic 148 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Meiosis and gametes</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="meiosis">Not practiced</span></p>
     </header>
@@ -116,9 +117,9 @@
 
 <h2 id="homologous-chromosomes-diploid-and-haploid">Homologous chromosomes, diploid and haploid</h2>
 <p>Your 46 chromosomes are really 23 pairs. You got one chromosome of each pair from your mother's egg and the other from your father's sperm. The two members of a pair are <em>homologous chromosomes</em> (homo- = same, log- = relation, word): they are the same length, have the centromere in the same place, and carry the same <a class="gl" href="../notes/dna-genes.html" data-c="gene">genes</a> in the same order (<a class="figref" href="#fig-os-3-31">Figure 1</a>).</p>
-<figure id="fig-os-3-31"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-31"><img src="../figures/os-3-31.jpg" alt="Two matching chromosomes, one drawn blue and one red, each with a round centromere. An arrow labeled DNA replication leads to the same pair after copying: each chromosome is now an X shape made of two identical sister chromatids joined at the centromere." width="1100" height="684" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A homologous pair. One chromosome came from each parent. After DNA replication, each is made of two identical sister chromatids joined at the centromere. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.31, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-31"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-31"><picture><source type="image/avif" srcset="../figures/avif/os-3-31-480.avif 480w, ../figures/avif/os-3-31-800.avif 800w, ../figures/avif/os-3-31.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-31.jpg" alt="Two matching chromosomes, one drawn blue and one red, each with a round centromere. An arrow labeled DNA replication leads to the same pair after copying: each chromosome is now an X shape made of two identical sister chromatids joined at the centromere." width="1100" height="684" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> A homologous pair. One chromosome came from each parent. After DNA replication, each is made of two identical sister chromatids joined at the centromere. <span class="anp-credit">Figure 3.31 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-5-cell-growth-and-division">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Homologous chromosomes are not identical. They carry the same genes, but often different versions of them. A version of a gene is an <em>allele</em> (allel- = one another). For example, the gene for the ABO blood group comes in A, B and O alleles; you might carry an A allele on the chromosome from your mother and an O allele on the one from your father. Sister chromatids, in contrast, are identical copies made by <a class="gl" href="../notes/dna-genes.html" data-c="dna-replication">DNA replication</a>. Keep the two straight:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Homologous chromosomes</th><th>Sister chromatids</th></tr></thead>
 <tbody>
 <tr><th>What they are</th><td>Two separate chromosomes, one from each parent</td><td>Two copies of one chromosome, made in S phase</td></tr>
@@ -281,7 +282,7 @@
 
 <h2 id="mitosis-vs-meiosis">Mitosis vs meiosis</h2>
 <p>The two divisions use the same machinery, the spindle, kinetochores and cytokinesis, for different results.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Mitosis</th><th>Meiosis</th></tr></thead>
 <tbody>
 <tr><th>Which cells</th><td>Somatic cells, and <a class="gl" href="../notes/cell-cycle.html" data-c="stem-cell">stem cells</a> of the gamete line</td><td>Only cells in the gonads that are becoming gametes</td></tr>
@@ -365,13 +366,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:meiosis">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="acid-base-disorders.html"><span>&larr; Topic 147</span><b>Acid–base disorders and compensation</b></a><a class="tb-chapter-link next" href="male-anatomy.html"><span>Topic 149 &rarr;</span><b>Male reproductive anatomy</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

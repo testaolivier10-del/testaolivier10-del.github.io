@@ -143,6 +143,8 @@ a.anp-tag:hover{text-decoration:underline;}
 .anp-foot{padding:26px 0 40px;}
 .anp-gate{margin:0 0 18px;}.anp-gate .premium-card{margin:0;}.anp-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
 .anp-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.anp-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.anp-q-credit{margin:4px 0 0;color:var(--muted);}
 
 /* ============================================================ Lesson layout (redesign)
    A rail with the lesson's parts, a coral title card joined to a white card
@@ -165,7 +167,15 @@ a.anp-tag:hover{text-decoration:underline;}
 .anp-ls-steps a:hover{background:var(--hover-tint);}
 .anp-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
 .anp-ls-steps .done a{color:var(--ink);}
-.anp-ls-steps .done .n,.anp-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.anp-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.anp-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.anp-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.anp-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.anp-ls-hint:empty{display:none;}
+.anp-ls-hint + .anp-ls-go{margin-left:0;}
+.anp-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.anp-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.anp-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
 .anp-ls-steps .current a{background:var(--ctint);color:var(--cink);}
 .anp-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
 .anp-ls-hero .eyebrow{color:var(--cink);}
@@ -209,6 +219,9 @@ a.anp-tag:hover{text-decoration:underline;}
   .anp-stepped .anp-ls-steps .current .t{display:inline;}
 }
 @media (max-width:560px){.anp-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.anp-stepped .anp-step{display:block;margin:0 0 28px;}.anp-ls-prog,.anp-ls-actions{display:none;}.anp-stepped .anp-ls-steps .t{display:inline;}}
 @media print{.anp-ls{display:block;}.anp-ls-rail,.anp-ls-actions{display:none !important;}.anp-stepped .anp-step{display:block;}}
 
 /* Glossary terms in running text: underlined, with a definition on hover,
@@ -230,7 +243,7 @@ a.gl{cursor:pointer;}
 .anp-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
 .anp-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
 .anp-opt[aria-disabled="true"]{cursor:default;}
-.anp-opt[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.anp-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
 .anp-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
 .anp-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
 .anp-opt .anp-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
@@ -333,7 +346,7 @@ a.anp-chap-title:hover{color:var(--cink);}
 .anp-chap-tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
 .anp-chap-toolset{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 16px;}
 .anp-chap-toolset h3{font:900 14px var(--font-ui);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;}
-.anp-chap-toolset h3 small{font:800 11px var(--font-mono);color:var(--muted);}
+.anp-chap-toolset h3 small{font:800 11px var(--font-ui);color:var(--muted);}
 .anp-chap-toolset ul{margin:0;padding-left:18px;font:600 13.5px/1.5 var(--font-ui);}
 /* Learn page: the course as one textbook (anp-book.js). */
 .anp-book .tb-main{max-width:760px;}
@@ -391,4 +404,10 @@ a.anp-chap-title:hover{color:var(--cink);}
 }
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
 .anp-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.anp-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .anp-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.anp-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (anp-book.js), so nothing on screen moves. */
+.anp-book #anp-book{min-height:100vh;}

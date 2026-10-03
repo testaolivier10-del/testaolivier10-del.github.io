@@ -260,7 +260,7 @@
     "q": "Select every job done by the bacteria of the colon.",
     "options": [
       "Fermenting fiber into short-chain fatty acids and gas",
-      "Turning bilirubin into stercobilin",
+      "Digesting most of the protein in the diet",
       "Making some vitamins, including vitamin K",
       "Secreting bile salts",
       "Crowding out harmful microbes",
@@ -268,15 +268,14 @@
     ],
     "correct": [
       0,
-      1,
       2,
       4
     ],
     "why": {
-      "correct": "Colon bacteria ferment fiber, change bilirubin into the brown pigment stercobilin, make some vitamins, and crowd out invaders. Bile salts come from the liver, and water is absorbed by the colon's own epithelial cells.",
+      "correct": "Colon bacteria ferment fiber, make some vitamins, and crowd out invaders. Protein is digested earlier in the tract, bile salts come from the liver, and water is absorbed by the colon's own epithelial cells.",
       "options": [
         "Correct. Saccharolytic fermentation makes acetate, propionate, butyrate and gas.",
-        "Correct. Bacteria turn bilirubin into urobilinogen and then stercobilin.",
+        "Protein is digested in the stomach and small intestine. Little of it reaches the colon.",
         "Correct. Some gut bacteria make vitamin K, though how much you absorb is uncertain.",
         "Bile salts are made by hepatocytes. Bacteria only alter the few that escape reabsorption.",
         "Correct. A settled community takes up space and nutrients that invaders would need.",

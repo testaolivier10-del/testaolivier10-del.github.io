@@ -63,6 +63,7 @@
 .anp-feature{background:var(--navy);border-radius:22px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;color:#fff;}
 .anp-feature h2{font-weight:900;font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;color:#fff;}
 .anp-feature p{color:var(--muted-on-dark);font-size:15px;font-weight:600;margin:0 0 20px;max-width:42ch;}
+:root[data-theme="dark"] .anp-feature p{color:#D0DED9;} /* 5.3:1 on the dark theme navy; --muted-on-dark was 3.7:1 */
 .anp-feature .icon-circle{width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10);display:flex;align-items:center;justify-content:center;margin:0 auto;}
 .anp-feature .icon-circle svg{width:170px;height:170px;}
 .anp-tool-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}

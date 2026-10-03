@@ -91,9 +91,9 @@
     ],
     "q": "How many CO2 molecules does the citric acid cycle itself release from one glucose, and how many does the whole of aerobic respiration release?",
     "options": [
-      "2 from the cycle; 6 in all",
-      "4 from the cycle; 4 in all",
-      "6 from the cycle; 6 in all",
+      "2 from the cycle; 6 in total",
+      "4 from the cycle; 4 in total",
+      "6 from the cycle; 6 in total",
       "4 from the cycle; 6 in all"
     ],
     "correct": 3,
@@ -163,6 +163,11 @@
         "name": "Oxygen left in venous blood",
         "answer": "up",
         "why": "Oxygen is still delivered but the tissues cannot use it, so more of it stays in the blood returning to the heart."
+      },
+      {
+        "name": "Oxygen carried in arterial blood",
+        "answer": "none",
+        "why": "Cyanide stops cells using oxygen; it does not stop the lungs loading it. Arterial oxygen is normal, and venous oxygen rises."
       }
     ],
     "why": {
@@ -179,7 +184,7 @@
     ],
     "q": "Ms. Brandt was pulled from a house fire. Her oxygen saturation is 99%, her venous blood is bright red, and her blood lactate is very high. Which explanation fits all three findings?",
     "options": [
-      "Her lungs cannot load oxygen onto hemoglobin",
+      "Her lungs load too little oxygen onto hemoglobin",
       "Her working muscles make more lactate than her liver can clear",
       "Her red blood cells have lost their mitochondria",
       "Her tissues get oxygen but cannot pass electrons to it"
@@ -259,7 +264,7 @@
     ],
     "q": "Why does one FADH2 yield less ATP than one NADH?",
     "options": [
-      "FADH2 carries only one electron",
+      "FADH2 carries one electron, NADH two",
       "It is made in the cytosol and shuttled in",
       "Its electrons skip the H+ pump in complex I",
       "Its electrons bypass complexes III and IV"
@@ -315,7 +320,7 @@
     ],
     "q": "Skeletal muscle stores about four times as much glycogen as the liver. Why can't a person's muscle glycogen keep the glucose in their blood up between meals?",
     "options": [
-      "Muscle glycogen is broken down only during sleep",
+      "Muscle glycogen is broken down mainly during sleep",
       "Muscle cells lack glycogen phosphorylase",
       "Insulin blocks glucose from leaving muscle cells between meals",
       "Muscle has no glucose-6-phosphatase to free glucose"
@@ -370,21 +375,20 @@
     "options": [
       "Lactate",
       "Alanine",
-      "Glycerol",
+      "Cholesterol",
       "Fatty acids",
       "Acetyl CoA"
     ],
     "correct": [
       0,
-      1,
-      2
+      1
     ],
     "why": {
-      "correct": "Lactate and alanine become pyruvate, and glycerol enters as a three-carbon sugar phosphate; all three can be built into glucose. Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward, so neither can become glucose.",
+      "correct": "Lactate and alanine become pyruvate, which the liver can build into glucose. Fatty acids are broken down to acetyl CoA, and the step from pyruvate to acetyl CoA cannot run backward, so neither can become glucose; cholesterol is not a fuel source for it either.",
       "options": [
         "Correct. Lactate is turned back into pyruvate.",
         "Correct. Alanine, from muscle protein, becomes pyruvate once its nitrogen is removed.",
-        "Correct. Glycerol from stored fat enters as a three-carbon sugar phosphate.",
+        "Cholesterol cannot be built into glucose. Its carbon ring is not broken down for fuel.",
         "Fatty acids are broken down to acetyl CoA, which cannot become pyruvate.",
         "The step that makes acetyl CoA from pyruvate is one way only, so acetyl CoA cannot become glucose."
       ]
@@ -413,32 +417,6 @@
         "Pyruvate is a three-carbon molecule made by glycolysis, before the cycle.",
         "Correct. The first product is citrate.",
         "Succinate is a four-carbon molecule made later in the cycle."
-      ]
-    }
-  },
-  {
-    "id": "anp-carbohydrate-metabolism-16",
-    "type": "single",
-    "level": "recall",
-    "diff": 1,
-    "core": [
-      "energy"
-    ],
-    "q": "What is the terminal electron acceptor of the electron transport chain?",
-    "options": [
-      "NAD+",
-      "Carbon dioxide",
-      "Oxygen",
-      "ATP synthase"
-    ],
-    "correct": 2,
-    "why": {
-      "correct": "At complex IV, each O2 accepts 4 electrons and 4 H+ and becomes 2 water molecules. Removing electrons from the end of the chain keeps them moving.",
-      "options": [
-        "NAD+ accepts electrons earlier, from fuel molecules, and delivers them to the chain as NADH.",
-        "CO2 is a waste product of the citric acid cycle; it does not accept electrons from the chain.",
-        "Correct. Oxygen accepts the electrons at the end of the chain.",
-        "ATP synthase uses the H+ gradient; it does not accept electrons."
       ]
     }
   },

@@ -1,0 +1,512 @@
+/* AP® Biology course styles, on top of assets/theme.css. Forked from the A&P
+   stylesheet (docs/apbio-spec.md decision 1): the same visual language
+   tokens (Okabe–Ito based, colorblind-safe, light and dark), page shell,
+   stepped lesson, textbook frame and question styles, renamed bio-*, plus
+   what this course adds: stimulus panels and sets, numeric answers, charts,
+   unit pages, the printable unit sheet and the course home.
+
+   The course color: a biology green on every page (body.bio), dark-mode tint
+   kept low (A&P decision 81: 7%). */
+body.bio{--ctint:#E4F1DD;--cink:#2D6A1F;}
+:root[data-theme="dark"] body.bio{--ctint:rgba(140,200,110,0.08);--cink:#B6E2A2;}
+
+/* ============================================================ 1. Visual language */
+:root{
+  --bio-o2:#D55E00;        /* oxygenated blood: vermillion */
+  --bio-o2-fill:#F6D2BD;
+  --bio-deo2:#0072B2;      /* deoxygenated blood: blue */
+  --bio-deo2-fill:#C3DDF0;
+  --bio-symp:#CC79A7;      /* sympathetic: reddish purple */
+  --bio-symp-fill:#F1DAE7;
+  --bio-para:#009E73;      /* parasympathetic: bluish green */
+  --bio-para-fill:#C4E8DC;
+  --bio-aff:#E69F00;       /* afferent (toward the control center): orange */
+  --bio-aff-fill:#F8E3B8;
+  --bio-eff:#56B4E9;       /* efferent (away from it): sky blue */
+  --bio-eff-fill:#D2EAF8;
+  --bio-hi:#8E3B2E;        /* the high side of a gradient */
+  --bio-hi-fill:#EFD5CF;
+  --bio-lo:#5B6B8C;        /* the low side */
+  --bio-lo-fill:#E1E6F0;
+  --bio-memb:#6B5E3C;      /* membranes */
+  --bio-shape:#5D6B69;     /* neutral structure */
+  --bio-shape-fill:#EEF2F1;
+  --bio-causes:#1F2A28;    /* "causes" arrows */
+  --bio-flows:#1F2A28;     /* "flows to" arrows */
+  --bio-mask:#FFF7E6;
+}
+:root[data-theme="dark"]{
+  --bio-o2:#FF9A5C;  --bio-o2-fill:rgba(213,94,0,0.28);
+  --bio-deo2:#6CB8EC; --bio-deo2-fill:rgba(0,114,178,0.30);
+  --bio-symp:#E7A5CA; --bio-symp-fill:rgba(204,121,167,0.26);
+  --bio-para:#4FD1AA; --bio-para-fill:rgba(0,158,115,0.26);
+  --bio-aff:#F3C04F;  --bio-aff-fill:rgba(230,159,0,0.26);
+  --bio-eff:#8FD0F5;  --bio-eff-fill:rgba(86,180,233,0.24);
+  --bio-hi:#F0A08F;   --bio-hi-fill:rgba(142,59,46,0.34);
+  --bio-lo:#AEBBD6;   --bio-lo-fill:rgba(91,107,140,0.30);
+  --bio-memb:#D8C58F;
+  --bio-shape:#B7C4C1; --bio-shape-fill:rgba(183,196,193,0.10);
+  --bio-causes:#E6EEEC; --bio-flows:#E6EEEC;
+  --bio-mask:#2B3432;
+}
+
+/* SVG vocabulary. Fill classes color a shape; add .line for a stroke only. */
+.bio-fig svg, svg.bio-svg{max-width:100%;height:auto;overflow:visible;}
+.bio-fig .shape{fill:var(--bio-shape-fill);stroke:var(--bio-shape);stroke-width:2;}
+.bio-fig .o2{fill:var(--bio-o2-fill);stroke:var(--bio-o2);stroke-width:2;}
+.bio-fig .deo2{fill:var(--bio-deo2-fill);stroke:var(--bio-deo2);stroke-width:2;}
+.bio-fig .symp{fill:var(--bio-symp-fill);stroke:var(--bio-symp);stroke-width:2;}
+.bio-fig .para{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
+.bio-fig .aff{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:2;}
+.bio-fig .eff{fill:var(--bio-eff-fill);stroke:var(--bio-eff);stroke-width:2;}
+.bio-fig .hi{fill:var(--bio-hi-fill);stroke:var(--bio-hi);stroke-width:2;}
+.bio-fig .lo{fill:var(--bio-lo-fill);stroke:var(--bio-lo);stroke-width:2;}
+.bio-fig .memb{fill:none;stroke:var(--bio-memb);stroke-width:3;}
+.bio-fig .accent{fill:var(--ctint);stroke:var(--cink);stroke-width:2;}
+.bio-fig .line{fill:none !important;}
+.bio-fig .o2.line{stroke:var(--bio-o2);} .bio-fig .deo2.line{stroke:var(--bio-deo2);}
+/* The two arrow kinds (spec section 6). "causes": solid, filled head.
+   "flows": dashed, open head. The heads are markers defined once per page by
+   bio-core.js, so an author only writes class="causes" or class="flows". */
+.bio-fig .causes{fill:none;stroke:var(--bio-causes);stroke-width:2.5;marker-end:url(#bio-head-causes);}
+.bio-fig .flows{fill:none;stroke:var(--bio-flows);stroke-width:2.2;stroke-dasharray:7 5;marker-end:url(#bio-head-flows);}
+.bio-fig .o2.flows{stroke:var(--bio-o2);} .bio-fig .deo2.flows{stroke:var(--bio-deo2);}
+.bio-fig .lbl{fill:var(--ink);font:800 15px var(--font-ui);}
+.bio-fig .lbl-sm{fill:var(--muted);font:700 12.5px var(--font-ui);}
+.bio-fig text{fill:var(--ink);font-family:var(--font-ui);}
+#bio-defs{position:absolute;width:0;height:0;overflow:hidden;}
+
+/* ============================================================ 2. Page shell */
+.bio-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.bio-crumb a{color:var(--muted);text-decoration:none;}
+.bio-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.bio-hero{padding-top:22px;}
+.bio-hero h1{max-width:24ch;}
+.bio-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.bio-tag{display:inline-block;padding:4px 11px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 12.5px var(--font-ui);text-decoration:none;}
+a.bio-tag:hover{text-decoration:underline;}
+.bio-part{margin:0 0 30px;max-width:760px;}
+.bio-part h2{display:flex;align-items:baseline;gap:10px;font-size:21px;margin:0 0 12px;}
+.bio-part p,.bio-prose p,.bio-prose li{font-weight:600;line-height:1.7;}
+.bio-hint{color:var(--muted);font-size:14px;}
+.bio-small{color:var(--muted);font:700 13px var(--font-ui);}
+.bio-unbuilt{color:var(--muted);}
+.bio-links{margin:0;padding-left:20px;}
+.bio-links li{margin:4px 0;}
+.bio-plain{margin:6px 0 14px;padding-left:20px;}
+.bio-hook{background:var(--ctint);border-radius:var(--radius, 18px);padding:18px 22px;}
+
+/* The causal chain: numbered cause -> effect steps. */
+.bio-chain{list-style:none;counter-reset:step;margin:0;padding:0;}
+.bio-chain li{counter-increment:step;display:grid;grid-template-columns:32px 1fr;column-gap:12px;row-gap:4px;padding:12px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.bio-chain li::before{content:counter(step);grid-row:1 / span 3;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.bio-chain .bio-arrow{color:var(--cink);font-weight:900;}
+.bio-chain .bio-cause{font-weight:700;}
+.bio-ideas{margin:0;padding-left:20px;}.bio-ideas li{margin:0 0 10px;}
+.bio-core-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.bio-core{display:inline-block;padding:6px 13px;border-radius:12px;background:var(--white);box-shadow:var(--lift-sm);font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.bio-misconception{border-left:4px solid var(--warn, #C98A1A);padding-left:16px;}
+.bio-wrong b{color:var(--bad-text, #B3261E);}
+.bio-right b{color:var(--good-text, #1B7B5B);}
+
+/* Figures and the lesson figure panel. */
+.bio-figure{margin:18px 0 24px;}
+.bio-figure figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.bio-credit{display:block;font-size:12px;margin-top:3px;}
+.bio-figimg{position:relative;display:inline-block;max-width:100%;}
+.bio-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+.bio-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
+.bio-mask span{position:absolute;left:-9999px;}
+.bio-labels-hidden .bio-mask{background:var(--bio-mask);outline:2px solid var(--cink);cursor:pointer;}
+.bio-labels-hidden .bio-mask:focus-visible{outline:3px solid var(--accent);}
+.bio-labels-hidden .bio-mask.revealed{background:transparent;outline:2px dashed var(--good, #1B7B5B);}
+.bio-toggle-labels{margin-top:4px;}
+
+/* Prose (notes pages). */
+.bio-prose{max-width:760px;}
+.bio-prose h2{font-size:23px;margin:34px 0 10px;}
+.bio-prose h3{font-size:18px;margin:24px 0 8px;}
+.bio-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.bio-prose table.compare th,.bio-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+.bio-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.bio-prose table.compare tbody th{font-weight:800;}
+.bio-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.bio-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.going-further,.bio-preview,.for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.going-further{background:var(--paper-2, rgba(0,0,0,0.035));}
+.going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.bio-preview{border:2px dashed var(--cink);}
+.bio-preview::before{content:'Preview';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:4px;}
+.for-your-exam{background:var(--ctint);}
+.bio-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;}
+.bio-foot{padding:26px 0 40px;}
+.bio-gate{margin:0 0 18px;}.bio-gate .premium-card{margin:0;}.bio-gate-notes{margin:8px 0 0;font:700 14px/1.5 var(--font-ui);}
+.bio-accuracy-note{color:var(--muted);font:600 13px/1.5 var(--font-ui);max-width:760px;}
+.bio-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
+.bio-q-credit{margin:4px 0 0;color:var(--muted);}
+
+/* ============================================================ Lesson layout (redesign)
+   A rail with the lesson's parts, a coral title card joined to a white card
+   and chip rows under it. Without JS every part shows in one scroll and the
+   rail links jump to them; bio-lesson.js adds .bio-stepped (one part a step). */
+.bio-ls{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0 clamp(24px,4vw,54px);align-items:start;}
+.bio-ls-rail{position:sticky;top:calc(var(--site-header-h,112px) + 18px);display:flex;flex-direction:column;gap:14px;padding:22px 0 26px;max-height:calc(100vh - var(--site-header-h,112px) - 36px);overflow-y:auto;}
+.bio-ls-main{min-width:0;}
+.bio-ls-k{font:900 12px/1.5 var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0;}
+.bio-ls-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0;}
+.bio-ls-links a{display:inline-flex;align-items:center;gap:6px;font:800 13.5px var(--font-ui);color:var(--ink);text-decoration:none;}
+.bio-ls-links a:hover,.bio-ls-chips a:hover{color:var(--cink);}
+.bio-ls-prog{display:flex;align-items:center;gap:12px;}
+.bio-ls-prog[hidden]{display:none;}
+.bio-ls-track{flex:1;height:8px;border-radius:999px;background:var(--track);overflow:hidden;}
+.bio-ls-fill{width:0;height:100%;background:var(--cink);border-radius:999px;transition:width .25s ease;}
+.bio-ls-count{font:900 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.bio-ls-steps{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px;}
+.bio-ls-steps a{display:flex;align-items:flex-start;gap:10px;padding:7px 8px;border-radius:9px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.bio-ls-steps a:hover{background:var(--hover-tint);}
+.bio-ls-steps .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:900 11px var(--font-mono);margin-top:-2px;}
+.bio-ls-steps .done a{color:var(--ink);}
+.bio-ls-steps .current .n{background:var(--cink);color:var(--paper);}
+.bio-ls-steps .done:not(.current) .n{background:var(--good-text);color:var(--white);font-size:0;}
+.bio-ls-steps .done:not(.current) .n::after{content:"\2713";font:900 12px var(--font-ui);}
+.bio-ls-hint{font:700 13px var(--font-ui);color:var(--muted);margin-left:auto;text-align:right;}
+.bio-ls-hint:empty{display:none;}
+.bio-ls-hint + .bio-ls-go{margin-left:0;}
+.bio-ls-go:disabled{opacity:.5;cursor:not-allowed;filter:none;}
+.bio-free-first{margin:16px 0;padding:18px 20px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);}
+.bio-free-first p{margin:0 0 12px;font-weight:700;color:var(--muted);}
+.bio-ls-steps .current a{background:var(--ctint);color:var(--cink);}
+.bio-ls-hero{margin-top:16px;padding:clamp(24px,4vw,44px) clamp(24px,4vw,44px) 26px;background:var(--ctint);border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.bio-ls-hero .eyebrow{color:var(--cink);}
+.bio-ls-hero .bio-tag{background:var(--white);}
+.bio-ls-hero h1{margin:0 0 6px;max-width:20ch;}
+.bio-ls-hero .lede{margin:0 0 14px;max-width:52ch;color:var(--muted);font-weight:700;}
+.bio-ls-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-lg);margin-top:-2px;padding:clamp(20px,4vw,32px);box-shadow:var(--lift-lg);}
+.bio-ls [id]{scroll-margin-top:calc(var(--site-header-h,112px) + 12px);}
+.bio-stepped .bio-ls-card{min-height:360px;display:flex;flex-direction:column;}
+.bio-ls-card .bio-part{max-width:72ch;}
+.bio-ls-card #figure{max-width:none;}
+.bio-stepped .bio-step{display:none;flex:1;margin:0;}
+.bio-stepped .bio-step.is-on{display:block;}
+.bio-step .bio-step-k{font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.bio-step h2{font:900 clamp(19px,3vw,24px) var(--font-ui);margin:0 0 14px;}
+.bio-step h2:focus{outline:none;}
+.bio-step-body > :first-child{margin-top:0;}
+.bio-step-body > :last-child{margin-bottom:0;}
+.bio-ls-actions{display:flex;align-items:center;gap:12px;margin-top:26px;}
+.bio-ls-actions[hidden],.bio-ls-actions [hidden]{display:none;}
+.bio-ls-back{font:800 14.5px var(--font-ui);color:var(--muted);background:none;border:0;padding:10px 6px;cursor:pointer;}
+.bio-ls-back:hover{color:var(--ink);}
+.bio-ls-go{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font:900 15px var(--font-ui);color:var(--paper);background:var(--cink);padding:13px 24px;border-radius:var(--radius);border:0;cursor:pointer;text-decoration:none;box-shadow:var(--lift-sm);}
+.bio-ls-go:hover{filter:brightness(1.07);color:var(--paper);}
+.bio-ls-related{margin:22px 0 30px;display:flex;flex-direction:column;gap:10px;}
+.bio-ls-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;}
+.bio-ls-label{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:74px;}
+.bio-ls-chips{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0;}
+.bio-ls-chips a,.bio-ls-chips .bio-unbuilt,.bio-ls-chips summary{display:inline-block;color:var(--ink);background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:var(--radius-sm);padding:6px 11px;font:700 12.5px var(--font-ui);text-decoration:none;}
+.bio-ls-chips details{display:contents;}
+.bio-ls-chips summary{cursor:pointer;color:var(--cink);list-style:none;}
+@media (prefers-reduced-motion:no-preference){.bio-stepped .bio-step.is-on{animation:bio-step-in .25s ease both;}}
+@keyframes bio-step-in{from{opacity:0;transform:translateY(6px);}}
+@media (max-width:900px){
+  .bio-ls{display:block;}
+  .bio-ls-rail{position:static;max-height:none;overflow:visible;padding:14px 0 0;gap:10px;}
+  .bio-ls-links{flex-direction:row;flex-wrap:wrap;gap:6px 18px;}
+  .bio-ls-steps{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .bio-ls-steps a{padding:5px 9px 5px 5px;background:var(--white);box-shadow:var(--lift-sm);}
+  .bio-stepped .bio-ls-steps .t{display:none;}
+  .bio-stepped .bio-ls-steps .current .t{display:inline;}
+}
+@media (max-width:560px){.bio-ls-label{min-width:0;flex-basis:100%;}}
+/* No JavaScript: the lesson reads as one scroll, every part shown, no step
+   controls (the stepped classes are in the markup for the first paint). */
+@media (scripting: none){.bio-stepped .bio-step{display:block;margin:0 0 28px;}.bio-ls-prog,.bio-ls-actions{display:none;}.bio-stepped .bio-ls-steps .t{display:inline;}}
+@media print{.bio-ls{display:block;}.bio-ls-rail,.bio-ls-actions{display:none !important;}.bio-stepped .bio-step{display:block;}}
+
+/* Glossary terms in running text: underlined, with a definition on hover,
+   focus or tap (bio-glossary.js). */
+.gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
+a.gl{cursor:pointer;}
+.bio-tip{position:absolute;z-index:60;max-width:320px;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
+.bio-tip b{display:block;font-weight:900;margin-bottom:2px;}
+.bio-tip .bio-tip-roots{display:block;opacity:.8;font-size:12.5px;margin-top:4px;}
+.bio-tip a{color:inherit;}
+
+/* Questions. */
+.bio-qs{display:grid;gap:14px;}
+.bio-q{background:var(--white);box-shadow:var(--lift-sm);border-radius:16px;padding:16px 18px;}
+.bio-q-stem{margin:0 0 10px;font-weight:700;}
+.bio-q-n{color:var(--cink);font-weight:900;}
+.bio-opts{margin:0;padding-left:20px;}
+.bio-opt-btns{display:grid;gap:8px;}
+.bio-opt{display:block;width:100%;text-align:left;padding:11px 14px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 15px/1.45 var(--font-ui);cursor:pointer;}
+.bio-opt:hover:not(:disabled):not([aria-disabled="true"]){border-color:var(--cink);}
+.bio-opt[aria-disabled="true"]{cursor:default;}
+.bio-opt[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.bio-opt.is-right{border-color:var(--good, #1B7B5B);background:var(--good-tint, rgba(27,123,91,0.1));}
+.bio-opt.is-wrong{border-color:var(--bad, #B3261E);background:var(--bad-tint, rgba(179,38,30,0.08));}
+.bio-opt .bio-opt-why{display:block;font-weight:600;font-size:13.5px;color:var(--muted);margin-top:4px;}
+.bio-q-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px;}
+.bio-q-feedback{margin-top:12px;font-weight:600;line-height:1.6;}
+.bio-q-feedback .bio-verdict{font-weight:900;}
+.bio-q-feedback .ok{color:var(--good-text, #1B7B5B);} .bio-q-feedback .no{color:var(--bad-text, #B3261E);}
+.bio-order{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.bio-order li{display:flex;align-items:center;gap:8px;padding:9px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);}
+.bio-order li.pos-ok{border-color:var(--good, #1B7B5B);} .bio-order li.pos-no{border-color:var(--bad, #B3261E);}
+.bio-order .bio-order-text{flex:1;font-weight:700;}
+.bio-order button{min-width:34px;min-height:34px;border-radius:9px;border:0;background:var(--ctint);color:var(--cink);font:900 15px var(--font-ui);cursor:pointer;}
+.bio-predict{width:100%;border-collapse:collapse;}
+.bio-predict th,.bio-predict td{padding:8px 6px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;}
+.bio-predict .bio-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.bio-predict .bio-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+.bio-predict .bio-dir button[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+.bio-predict tr.var-ok th{color:var(--good-text, #1B7B5B);} .bio-predict tr.var-no th{color:var(--bad-text, #B3261E);}
+.bio-predict .bio-var-why{font-weight:600;font-size:13.5px;color:var(--muted);}
+.bio-q-key summary{cursor:pointer;font-weight:800;color:var(--cink);margin-top:8px;}
+.js .bio-q-key{display:none;}
+
+/* Mastery text, study cards and filters. */
+.bio-mastery{font:900 12.5px var(--font-ui);color:var(--cink);}
+.bio-cards{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.bio-cards li a{display:flex;flex-direction:column;gap:4px;height:100%;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.bio-cards li a span{color:var(--muted);font:600 13.5px/1.45 var(--font-ui);}
+.bio-filter{display:inline-flex;align-items:center;gap:8px;font:800 13.5px var(--font-ui);margin-top:6px;}
+.bio-filter input,.bio-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
+
+
+/* ============ Chapter and notes textbook frame (redesign)
+   The ochem textbook shell (theme.css tb-*) in the course's coral, a contents
+   rail beside the page; bio-toc.js paints progress and chips. */
+.bio-tb{--accent:var(--cink);--tint-accent:var(--ctint);}
+.bio-tb .bio-crumb{margin:0 0 14px;}
+.bio-tb .tb-toc-btn{justify-self:start;}
+.bio-tb .tb-toc-topic{align-items:flex-start;line-height:1.35;}
+.bio-tb .tb-toc-topic .tb-toc-tick{margin-top:2px;}
+.bio-tb .tb-toc-topic.read .tb-toc-tick::after{border-color:var(--paper);}
+.bio-tb a.tb-toc-modhead{text-decoration:none;}
+.bio-tb .tb-toc-modhead[aria-current]{background:var(--ctint);}
+.bio-tb .tb-toc-modhead.bio-unbuilt{cursor:default;color:var(--muted);}
+.bio-toc-group{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 6px 4px;}
+.bio-toc-group:first-child{margin-top:2px;}
+/* Notes rail: this chapter, the current topic open to its sections. */
+.bio-notes-rail{gap:12px;}
+.bio-toc-chap{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--ctint);color:var(--cink);text-decoration:none;}
+.bio-toc-chap-n{flex-shrink:0;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.bio-toc-chap b{display:block;font:900 14px/1.25 var(--font-ui);}
+.bio-toc-chap small{display:block;font:800 11.5px var(--font-ui);}
+.bio-toc-other{display:flex;gap:9px;align-items:center;padding:6px;border-radius:8px;font:800 12.5px var(--font-ui);color:var(--muted);text-decoration:none;}
+.bio-toc-other:hover{background:var(--hover-tint);color:var(--ink);}
+.bio-toc-other .bio-toc-n{background:var(--line);color:var(--muted);}
+.bio-toc-list{list-style:none;margin:0;padding:0;}
+.bio-toc-list>li>a{display:flex;gap:9px;align-items:flex-start;padding:6px;border-radius:8px;font:700 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.bio-toc-list>li>a:hover{background:var(--hover-tint);color:var(--ink);}
+.bio-toc-n{flex-shrink:0;min-width:28px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:6px;display:grid;place-items:center;background:var(--ctint);color:var(--cink);font:900 10.5px var(--font-mono);}
+.bio-toc-list .read .bio-toc-n,.bio-toc-list .current .bio-toc-n{background:var(--cink);color:var(--paper);}
+.bio-toc-list .current>a{background:var(--ctint);color:var(--cink);font-weight:900;}
+.bio-toc-onpage{margin:4px 0 8px 43px;border-left:2px solid var(--ctint);padding-left:10px;}
+.bio-toc-onpage p{margin:4px 0;font:900 10px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.bio-toc-onpage a{display:block;padding:4px 0;font:700 12px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.bio-toc-onpage a:hover{color:var(--cink);}
+/* Mastery chip (chapter rows, notes header). */
+.bio-tb-chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
+.bio-tb-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
+.bio-tb-chip.mastered{background:var(--tint-good);color:var(--good-text);}
+.bio-tb-chip.learning{background:var(--tint-amber);color:var(--amber-text);}
+.bio-tb-chip.started{background:var(--ctint);color:var(--cink);}
+.bio-tb-chip:is(.mastered,.learning,.started)::before{opacity:1;}
+.bio-tb-btn{display:inline-flex;align-items:center;font:900 13px var(--font-ui);text-decoration:none;padding:8px 14px;border-radius:11px;white-space:nowrap;}
+.bio-tb-btn.solid{background:var(--navy);color:var(--on-accent);}
+.bio-tb-btn.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
+.bio-tb-btn.ghost{background:var(--surface2);color:var(--ink);}
+.bio-tb-btn.ghost:hover{background:var(--hover-tint);color:var(--ink);}
+/* Chapter page. */
+.bio-unit .tb-main{max-width:none;}
+.bio-unit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px 20px;flex-wrap:wrap;}
+.bio-unit-acts{display:flex;gap:8px;margin:0;}
+.bio-unit-h{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px;}
+.bio-unit-h#h-topics{margin-top:22px;}
+.bio-unit-list{list-style:none;margin:0;padding:0;}
+.bio-unit-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line-soft,var(--line));}
+.bio-unit-n{width:30px;height:30px;border-radius:9px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);}
+.bio-unit-title{font:900 16px/1.35 var(--font-ui);color:var(--ink);text-decoration:none;}
+a.bio-unit-title:hover{color:var(--cink);}
+.bio-unit-row .bio-tb-chip{min-width:96px;justify-content:center;}
+.bio-unit-btns{display:flex;gap:6px;}
+.bio-unit-practice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.bio-unit-card{display:block;background:var(--white);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--lift);text-decoration:none;color:var(--ink);}
+.bio-unit-card:hover{box-shadow:var(--lift-lg);color:var(--ink);}
+.bio-unit-card b{display:block;font:900 15.5px var(--font-ui);margin-bottom:4px;}
+.bio-unit-card span{font:700 13px/1.45 var(--font-ui);color:var(--muted);}
+/* Learn page: the course as one textbook (bio-book.js). */
+.bio-book .tb-main{max-width:760px;}
+.bio-book .bio-filter{margin:0;color:var(--muted);}
+.bio-book .tb-chapter-title:focus{outline:none;}
+.bio-book .tb-toc-mod[hidden]{display:none;}
+.bio-book-sec{padding:30px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.bio-book-sec:last-of-type{border-bottom:0;}
+.bio-book-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px;}
+.bio-book-head h2{display:flex;gap:10px;align-items:baseline;font:900 clamp(19px,2.4vw,23px)/1.25 var(--font-ui);letter-spacing:-.01em;margin:0;}
+.bio-book-head h2 .bio-toc-n{position:relative;top:-2px;}
+.bio-book-acts{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.bio-book .bio-prose{max-width:none;font-size:15.5px;}
+.bio-book .bio-prose h3{font-size:18px;margin:26px 0 10px;scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.bio-book-wait{font:700 13px var(--font-ui);color:var(--muted);}
+.bio-book-err{color:var(--bad-text,#b3261e);}
+.tb-static-toc h1{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);margin:0 0 8px;}
+.tb-static-chapter h2{font-size:18px;margin:22px 0 6px;}
+@media (max-width:700px){.bio-book-acts .bio-tb-chip{display:none;}}
+/* Notes page. */
+.bio-notes .tb-main{max-width:720px;}
+.bio-notes-head{margin-bottom:24px;}
+.bio-notes-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.bio-notes-title{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;max-width:none;}
+.bio-notes-meta{align-items:center;}
+.bio-notes-meta .bio-tag{font-size:11.5px;padding:3px 10px;}
+.bio-pillbar{position:sticky;top:calc(var(--site-header-h,112px) + 10px);z-index:5;height:0;display:flex;justify-content:flex-end;align-items:flex-start;}
+.bio-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 12px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 12.5px var(--font-ui);text-decoration:none;box-shadow:var(--lift-sm);}
+.bio-pill:hover{color:var(--paper);filter:brightness(1.08);}
+.bio-pill i{font-style:normal;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--paper);color:var(--cink);font-size:9px;}
+.bio-notes .bio-notes-head{padding-right:170px;}
+.bio-notes .bio-prose{max-width:none;font-size:15.5px;}
+.bio-notes .bio-prose h2{margin:36px 0 12px;padding-top:22px;border-top:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+.bio-notes .bio-prose h2:first-child{margin-top:0;border-top:0;padding-top:0;}
+@media (max-width:900px){
+  .bio-pillbar{position:fixed;top:auto;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:auto;z-index:20;}
+  .bio-pill{box-shadow:var(--lift);}
+  .bio-notes .bio-notes-head{padding-right:0;}
+}
+@media (max-width:700px){
+  .bio-unit-row{grid-template-columns:30px minmax(0,1fr);gap:8px 12px;}
+  .bio-unit-n{grid-row:1 / span 3;align-self:start;}
+  .bio-unit-row .bio-tb-chip,.bio-unit-btns,.bio-unit-row .bio-small{grid-column:2;justify-self:start;}
+  .bio-unit-practice{grid-template-columns:minmax(0,1fr);}
+  .bio-tb .tb-chapter-nav{flex-direction:column;}
+  .bio-tb .tb-chapter-link{max-width:100%;}
+}
+
+@media (max-width:560px){
+  .bio-part h2{font-size:19px;}
+}
+@media print{
+  .bio-toggle-labels,.bio-q-actions,#site-header,.course-nav{display:none !important;}
+  .js .bio-q-key{display:block;}
+}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;}
+.bio-cover{position:absolute;background:#fff;border-radius:3px;pointer-events:none;}
+.bio-fix{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+.bio-pin{position:absolute;background:#fff;border:3px solid var(--accent,#A33B26);border-radius:4px;box-shadow:0 0 0 3px rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;font:800 14px var(--font-ui,system-ui);color:var(--accent,#A33B26);pointer-events:none;}
+.bio-report-page{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* Learn: the book column keeps the footer below the fold while the chosen
+   chapter's topics load in order (bio-book.js), so nothing on screen moves. */
+.bio-book #bio-book{min-height:100vh;}
+
+/* ============================================================ AP Biology additions */
+/* 44 px touch targets on every control a student answers with. */
+.bio-opt,.bio-ls-go,.bio-ls-back,.bio-tb-btn,.bio-check,.bio-dir button,.bio-order button,.bio-num input{min-height:44px;}
+.bio-order button{min-width:44px;}
+.bio-foot .report-btn,.bio-report-page .report-btn{min-height:44px;}
+.bio-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
+.bio-review-note{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);margin:14px 0 0;}
+.bio-soon{padding:18px 20px;border-radius:var(--radius-lg,18px);background:var(--white);border:var(--bw,2px) solid var(--line);font-weight:700;}
+.bio-hero{padding-top:22px;}
+
+/* Answer marks: a word as well as a colour (A&P decision 81). */
+.bio-mark{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font:900 11.5px var(--font-ui);vertical-align:middle;}
+.bio-mark.ok{background:var(--good-text,#1B7B5B);color:var(--white,#fff);}
+.bio-mark.no{background:var(--bad-text,#B3261E);color:var(--white,#fff);}
+.bio-mark.miss{background:var(--amber-text,#8A5A00);color:var(--white,#fff);}
+.bio-mark.ok::before{content:"\2713  ";}.bio-mark.no::before{content:"\2715  ";}
+.bio-dir button[aria-checked="true"]{border-color:var(--cink);background:var(--ctint);}
+.bio-predict .bio-dir{display:flex;gap:6px;flex-wrap:wrap;}
+.bio-predict .bio-dir button{padding:6px 12px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);font:800 13.5px var(--font-ui);color:var(--ink);cursor:pointer;}
+
+/* Stimulus sets: one panel, then its 4-5 questions, held together. */
+.bio-set{border:var(--bw,2px) solid var(--line);border-radius:18px;padding:14px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px;background:var(--paper);}
+.bio-set>*,.bio-qs>*{min-width:0;}
+.bio-qs{grid-template-columns:minmax(0,1fr);}
+.bio-stim{background:var(--white);border-radius:14px;padding:16px 18px;box-shadow:var(--lift-sm);}
+.bio-stim-k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--cink);margin:0 0 4px;}
+.bio-stim h3{font:900 17px var(--font-ui);margin:0 0 8px;}
+.bio-stim-text p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+table.bio-data{width:100%;border-collapse:collapse;font:600 14px/1.45 var(--font-ui);}
+table.bio-data caption{text-align:left;font:800 13px var(--font-ui);color:var(--muted);padding:0 0 6px;}
+table.bio-data th,table.bio-data td{padding:8px 10px;border-bottom:1px solid var(--line, rgba(0,0,0,0.1));text-align:left;vertical-align:top;}
+table.bio-data thead th{background:var(--ctint);color:var(--cink);}
+table.bio-data td{font-variant-numeric:tabular-nums;}
+
+/* Charts drawn by the generator (scripts/lib/apbio-build.mjs chartSvg).
+   Series differ by colour AND marker shape, in light and dark. */
+:root{--bio-s1:#0072B2;--bio-s2:#D55E00;--bio-s3:#009E73;--bio-s4:#CC79A7;}
+:root[data-theme="dark"]{--bio-s1:#6CB8EC;--bio-s2:#FF9A5C;--bio-s3:#4FD1AA;--bio-s4:#E7A5CA;}
+.bio-chart{margin:4px 0;}
+.bio-svg{width:100%;max-width:560px;height:auto;display:block;}
+.bio-svg .axis{stroke:var(--ink);stroke-width:1.5;}
+.bio-svg .grid{stroke:var(--line, rgba(0,0,0,0.1));stroke-width:1;}
+.bio-svg .tick{fill:var(--muted);font:700 12px var(--font-ui);}
+.bio-svg .lbl{fill:var(--ink);font:800 13px var(--font-ui);}
+.bio-svg .series{fill:none;stroke-width:2.5;}
+.bio-svg .err{stroke:var(--ink);stroke-width:1.5;fill:none;}
+.bio-svg .s1{stroke:var(--bio-s1);} .bio-svg .s2{stroke:var(--bio-s2);} .bio-svg .s3{stroke:var(--bio-s3);} .bio-svg .s4{stroke:var(--bio-s4);}
+.bio-svg .pt.s1,.bio-svg .bar.s1{fill:var(--bio-s1);} .bio-svg .pt.s2,.bio-svg .bar.s2{fill:var(--bio-s2);} .bio-svg .pt.s3,.bio-svg .bar.s3{fill:var(--bio-s3);} .bio-svg .pt.s4,.bio-svg .bar.s4{fill:var(--bio-s4);}
+.bio-legend{display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0;font:800 13px var(--font-ui);}
+.bio-legend i{display:inline-block;width:18px;height:4px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+.bio-legend .s1 i{background:var(--bio-s1);} .bio-legend .s2 i{background:var(--bio-s2);} .bio-legend .s3 i{background:var(--bio-s3);} .bio-legend .s4 i{background:var(--bio-s4);}
+.bio-chart-data summary{cursor:pointer;font:800 13px var(--font-ui);color:var(--cink);margin-top:6px;min-height:32px;}
+
+/* Numeric answers. */
+.bio-num{display:flex;flex-direction:column;gap:6px;}
+.bio-num label{font:800 14px var(--font-ui);}
+.bio-num-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.bio-num input{width:12ch;padding:8px 12px;border-radius:12px;border:2px solid var(--line, rgba(0,0,0,0.2));background:var(--paper);color:var(--ink);font:800 17px var(--font-mono, monospace);}
+.bio-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bio-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
+
+/* Unit page. */
+.bio-unit .tb-main{max-width:none;}
+.bio-unit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px 20px;flex-wrap:wrap;}
+.bio-unit-acts{display:flex;gap:8px;margin:0;flex-wrap:wrap;}
+.bio-unit-n{min-width:34px;width:auto;padding:0 4px;}
+
+/* Course home. */
+.bio-home-hero h1{max-width:22ch;}
+.bio-pos{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;}
+@media (max-width:640px){.bio-pos{grid-template-columns:minmax(0,1fr);}}
+.bio-pos li{background:var(--white);border-radius:16px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 14px/1.5 var(--font-ui);color:var(--muted);}
+.bio-pos b{display:block;color:var(--ink);font:900 15px/1.35 var(--font-ui);margin-bottom:4px;}
+.bio-unit-grid{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+.bio-unit-grid li>a,.bio-unit-grid li>div{display:flex;flex-direction:column;gap:4px;height:100%;box-sizing:border-box;padding:15px 17px;border-radius:16px;background:var(--white);box-shadow:var(--lift-sm);text-decoration:none;color:var(--ink);}
+.bio-unit-grid li>div{opacity:.75;}
+.bio-unit-grid small{color:var(--muted);font:700 12.5px var(--font-ui);}
+.bio-unit-chip{align-self:flex-start;font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--cink);background:var(--ctint);padding:3px 9px;border-radius:999px;}
+
+/* Glossary page. */
+.bio-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;}
+.bio-letters a{min-width:32px;min-height:32px;display:inline-grid;place-items:center;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
+.bio-terms{margin:0;}
+.bio-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
+.bio-term dt{font-weight:900;}
+.bio-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
+.bio-term:target{background:var(--ctint);border-radius:8px;padding-left:8px;}
+
+/* The printable unit sheet: one page on screen, compact on paper. */
+.bio-sheet-head h1{margin:6px 0 10px;}
+.bio-sheet-grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));margin:10px 0 24px;}
+.bio-sheet-topic{background:var(--white);border-radius:14px;padding:14px 16px;box-shadow:var(--lift-sm);font:600 13.5px/1.5 var(--font-ui);}
+.bio-sheet-topic h2{font:900 16px var(--font-ui);margin:0 0 6px;}
+.bio-sheet-topic h2 span{color:var(--cink);}
+.bio-sheet-topic ul{margin:6px 0;padding-left:18px;}
+.bio-sheet-chain{color:var(--muted);}
+.bio-sheet-terms{margin:6px 0 0;display:grid;gap:4px;}
+.bio-sheet-terms dt{display:inline;font-weight:900;}
+.bio-sheet-terms dt::after{content:": ";}
+.bio-sheet-terms dd{display:inline;margin:0;}
+@media print{
+  body.bio{background:#fff;color:#000;}
+  .bio-foot .privacy-link,.bio-crumb,.bio-nav-ref .btn-press,.report-btn{display:none !important;}
+  .bio-sheet-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .bio-sheet-topic{box-shadow:none;border:1px solid #999;padding:8px 10px;font-size:10.5pt;break-inside:avoid;}
+  .bio-sheet-head h1{font-size:16pt;}
+  .bio-set{border-color:#999;}
+}
+@media (max-width:560px){.bio-sheet-grid{grid-template-columns:minmax(0,1fr);}.bio-set{padding:10px;}}

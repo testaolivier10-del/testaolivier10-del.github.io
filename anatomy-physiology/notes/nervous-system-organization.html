@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organization of the nervous system: Notes | A&amp;P</title>
+<title>Organization of the nervous system — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Your nervous system is one connected network, but it is easier to learn when you divide it up.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/nervous-system-organization.html">
-<meta property="og:title" content="Organization of the nervous system: Notes | A&amp;P">
+<meta property="og:title" content="Organization of the nervous system — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Your nervous system is one connected network, but it is easier to learn when you divide it up.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/nervous-system-organization.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="nervous-system-organization">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 12 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/nervous-tissue.html">Nervous tissue and neural signaling</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Organization of the nervous system: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/nervous-system-organization.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 12 &middot; Topic 64 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 12 &middot; Topic 64 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Organization of the nervous system</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="nervous-system-organization">Not practiced</span></p>
     </header>
@@ -127,13 +128,13 @@
 
 <h2 id="two-parts-by-location-the-cns">Two parts by location: the CNS and the PNS</h2>
 <p>The first way to divide the nervous system is purely by where things are. <a class="figref" href="#fig-os-12-2">Figure 1</a> shows the split.</p>
-<figure id="fig-os-12-2"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-2"><img src="../figures/os-12-2.jpg" alt="Outline of a standing human body from the front showing the nervous system in yellow. The brain sits in the head and the spinal cord runs down from it through the neck and trunk. Nerves branch from the spinal cord between the ribs, through the trunk and down both arms to the fingers and into the thighs. A small swelling on a nerve beside the spinal cord is marked. Labels group the brain and spinal cord together and the nerves and swelling together." width="841" height="760" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The central nervous system is the brain and spinal cord. Everything else, the nerves that branch through your trunk and limbs and the small swellings along them, is the peripheral nervous system. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 12.2, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-1-basic-structure-and-function-of-the-nervous-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-12-2"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-2"><picture><source type="image/avif" srcset="../figures/avif/os-12-2-480.avif 480w, ../figures/avif/os-12-2-800.avif 800w, ../figures/avif/os-12-2.avif 841w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-12-2.jpg" alt="Outline of a standing human body from the front showing the nervous system in yellow. The brain sits in the head and the spinal cord runs down from it through the neck and trunk. Nerves branch from the spinal cord between the ribs, through the trunk and down both arms to the fingers and into the thighs. A small swelling on a nerve beside the spinal cord is marked. Labels group the brain and spinal cord together and the nerves and swelling together." width="841" height="760" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The central nervous system is the brain and spinal cord. Everything else, the nerves that branch through your trunk and limbs and the small swellings along them, is the peripheral nervous system. <span class="anp-credit">Figure 12.2 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-1-basic-structure-and-function-of-the-nervous-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <ul>
 <li>The <strong>central nervous system</strong> (CNS; centr- = center) is your brain and spinal cord. Both sit inside bone: the brain in the <a class="gl" href="../notes/anatomical-position.html" data-c="superior-inferior">cranial</a> cavity and the spinal cord in the <a class="gl" href="../notes/body-cavities.html" data-c="dorsal-cavity">vertebral canal</a>. The CNS is where integration happens.</li>
 <li>The <strong>peripheral nervous system</strong> (PNS; peri- = around, pher- = carry: the outer edge) is everything else: the nerves that run between the CNS and every part of your body, the clusters of neuron cell bodies that sit along those nerves, and the sensory receptors at their ends.</li>
 </ul>
 <p>The PNS is the wiring and the CNS is the processor. A signal from your toe cannot be felt or acted on until PNS axons deliver it to the CNS, and a command from the CNS goes nowhere until PNS axons carry it out.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Central nervous system (CNS)</th><th>Peripheral nervous system (PNS)</th></tr></thead>
 <tbody>
 <tr><th>What it includes</th><td>Brain and spinal cord</td><td>Nerves, clusters of cell bodies along them, sensory receptors</td></tr>
@@ -154,7 +155,7 @@
 </ul>
 <p>These are the same afferent and efferent pathways you met in the feedback loop, now given names as divisions. A memory aid: <strong>a</strong>fferent signals <strong>a</strong>rrive at the CNS; <strong>e</strong>fferent signals <strong>e</strong>xit it.</p>
 <p>Both divisions run mostly through the PNS, and they share the same nerves. A single nerve in your forearm holds afferent axons carrying touch and pain toward your spinal cord and efferent axons carrying commands to your hand muscles, side by side. That is why one <a class="gl" href="../notes/anatomical-position.html" data-c="superficial-deep">deep</a> cut can cause both numbness and weakness.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Sensory (afferent) division</th><th>Motor (efferent) division</th></tr></thead>
 <tbody>
 <tr><th>Direction of signals</th><td>Toward the CNS</td><td>Away from the CNS</td></tr>
@@ -173,7 +174,7 @@
 <li>The <strong><span class="gl" tabindex="0" data-c="autonomic-ns-basic">autonomic nervous system</span></strong> (ANS; auto- = self, nom- = law: self-governing) controls <strong>cardiac muscle, smooth muscle and glands</strong>. It sets your heart rate, the width of your blood vessels, the movements of your gut, your <a class="gl" href="../notes/skin-functions.html" data-c="skin-thermoregulation">sweating</a> and much more. You usually cannot control it by deciding to, and you are usually unaware of it.</li>
 </ul>
 <p>"Voluntary" and "involuntary" are useful shorthand, but the real dividing line is the effector. Shivering and the steady rhythm of breathing both use skeletal muscle, so they are somatic output even though you do not decide to do them.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Somatic nervous system</th><th>Autonomic nervous system</th></tr></thead>
 <tbody>
 <tr><th>Effectors</th><td>Skeletal muscle</td><td>Cardiac muscle, smooth muscle, glands</td></tr>
@@ -262,7 +263,7 @@
 </svg>
 
 <figcaption><b>Figure 3.</b> Gray matter (shaded) holds cell bodies and is where neurons connect; white matter holds bundles of insulated axons. The brain has gray matter outside; the spinal cord has it inside.</figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Gray matter</th><th>White matter</th></tr></thead>
 <tbody>
 <tr><th>Main contents</th><td>Cell bodies, dendrites, axon terminals, glial cells</td><td>Bundles of axons, most wrapped in fatty glial layers</td></tr>
@@ -308,7 +309,7 @@
 </svg>
 
 <figcaption><b>Figure 4.</b> One sensory axon, three structures. In the PNS it runs in a nerve and its cell body sits in a ganglion; in the CNS the same axon runs on in a tract. A cluster of cell bodies inside the CNS is a nucleus.</figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>In the CNS</th><th>In the PNS</th></tr></thead>
 <tbody>
 <tr><th>A cluster of neuron cell bodies</th><td>Nucleus</td><td>Ganglion</td></tr>
@@ -329,13 +330,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:nervous-system-organization">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="lower-limb-muscles.html"><span>&larr; Topic 63</span><b>Muscles of the hip and lower limb</b></a><a class="tb-chapter-link next" href="neurons-glia.html"><span>Topic 65 &rarr;</span><b>Neurons and glial cells</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motor pathways and movement control: Notes | A&amp;P</title>
+<title>Motor pathways and movement control — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Decide to point your right index finger. The command starts in the finger area of your left primary motor cortex, in the precentral gyrus.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/motor-pathways.html">
-<meta property="og:title" content="Motor pathways and movement control: Notes | A&amp;P">
+<meta property="og:title" content="Motor pathways and movement control — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Decide to point your right index finger. The command starts in the finger area of your left primary motor cortex, in the precentral gyrus.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/motor-pathways.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="motor-pathways">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 14 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/pns.html">Nerves, reflexes and pathways</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Motor pathways and movement control: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/motor-pathways.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 14 &middot; Topic 75 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 14 &middot; Topic 75 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Motor pathways and movement control</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">18 min read</span><span class="anp-tb-chip" data-chip-topic="motor-pathways">Not practiced</span></p>
     </header>
@@ -118,7 +119,7 @@
 <li>A <strong>lower motor neuron</strong> (LMN) has its cell body in the <a class="gl" href="../notes/anatomical-position.html" data-c="anterior-posterior">ventral</a> horn of the spinal cord or in a motor nucleus of a <a class="gl" href="../notes/cranial-nerves.html" data-c="cranial-nerve-list">cranial nerve</a> in the brainstem. Its axon leaves the CNS and ends on <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="skeletal-muscle-tissue">skeletal muscle</a> fibers. It is the motor neuron you met at the neuromuscular junction, and each one, with the fibers it supplies, makes a <a class="gl" href="../notes/muscle-tension.html" data-c="motor-unit">motor unit</a>.</li>
 </ul>
 <p>The lower motor neuron is the <em>only</em> way out to a skeletal muscle. Every signal that moves a muscle, whether it starts in the cortex, the brainstem or a local circuit in the spinal cord, has to pass through it. For that reason it is called the <strong>final common path</strong>.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Upper motor neuron</th><th>Lower motor neuron</th></tr></thead>
 <tbody>
 <tr><th>Cell body</th><td>Motor cortex or a brainstem motor nucleus</td><td>Ventral horn of the spinal cord, or a <a class="gl" href="../notes/anatomical-position.html" data-c="superior-inferior">cranial</a> <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerve</a> motor nucleus</td></tr>
@@ -142,7 +143,7 @@
 <li><strong>Spinal cord.</strong> The crossed axons descend in the <strong><a class="gl" href="../notes/anatomical-position.html" data-c="medial-lateral">lateral</a> corticospinal tract</strong> in the lateral white column. The 10 to 15% that did not cross descend in the <strong>anterior corticospinal tract</strong> in the anterior white column; most of these cross in the spinal cord near the segment where they end.</li>
 <li><strong>Synapse.</strong> At its target segment each axon enters the <a class="gl" href="../notes/nervous-system-organization.html" data-c="gray-white-matter">gray matter</a> and synapses on lower motor neurons in the ventral horn, or on interneurons beside them.</li>
 </ol>
-<figure id="fig-os-14-28"  class="anp-figure"><div class="anp-figimg" data-fig="os-14-28"><img src="../figures/os-14-28.jpg" alt="A tall drawing following motor axons from the brain to the spinal cord. At the top, a quarter of a cerebral hemisphere cut vertically shows yellow neurons in the precentral gyrus. Their axons run down as a bundle through a slice of the midbrain, in the cerebral peduncle, then down the front of the medulla in a purple column, the pyramid. Near the bottom of the medulla most of the axons swing across the midline at the decussation of the pyramids and descend in the lateral corticospinal tract at the side of a spinal cord slice; a few continue uncrossed in the anterior corticospinal tract. In the cord, a yellow upper motor neuron ending meets a teal lower motor neuron, whose axon leaves the cord toward skeletal muscles. A key marks upper motor neurons yellow and lower motor neurons teal." width="1100" height="2408" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The corticospinal tract. Upper motor neurons in the precentral gyrus send axons through the cerebral peduncle and the pyramids of the medulla; most cross in the decussation of the pyramids and descend in the lateral corticospinal tract to synapse on a lower motor neuron, whose axon leaves for skeletal muscle. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 14.28, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/14-3-motor-responses">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-14-28"  class="anp-figure"><div class="anp-figimg" data-fig="os-14-28"><picture><source type="image/avif" srcset="../figures/avif/os-14-28-480.avif 480w, ../figures/avif/os-14-28-800.avif 800w, ../figures/avif/os-14-28.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-14-28.jpg" alt="A tall drawing following motor axons from the brain to the spinal cord. At the top, a quarter of a cerebral hemisphere cut vertically shows yellow neurons in the precentral gyrus. Their axons run down as a bundle through a slice of the midbrain, in the cerebral peduncle, then down the front of the medulla in a purple column, the pyramid. Near the bottom of the medulla most of the axons swing across the midline at the decussation of the pyramids and descend in the lateral corticospinal tract at the side of a spinal cord slice; a few continue uncrossed in the anterior corticospinal tract. In the cord, a yellow upper motor neuron ending meets a teal lower motor neuron, whose axon leaves the cord toward skeletal muscles. A key marks upper motor neurons yellow and lower motor neurons teal." width="1100" height="2408" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The corticospinal tract. Upper motor neurons in the precentral gyrus send axons through the cerebral peduncle and the pyramids of the medulla; most cross in the decussation of the pyramids and descend in the lateral corticospinal tract to synapse on a lower motor neuron, whose axon leaves for skeletal muscle. <span class="anp-credit">Figure 14.28 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/14-3-motor-responses">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>The two spinal parts do different jobs. The lateral tract ends mostly in the cervical and lumbar enlargements, on lower motor neurons for the limbs, especially the hand and fingers. Some of its axons synapse straight onto those motor neurons, which gives you the fine, individual finger movements used to write or play an instrument. The anterior tract ends on both sides of the cord at cervical and upper thoracic levels, on lower motor neurons for the neck and trunk.</p>
 <h3>What the crossing means</h3>
 <p>Because the main crossing is in the lower medulla, the rule for motor damage is:</p>
@@ -150,7 +151,7 @@
 <li><strong>Above the pyramidal decussation</strong> (cortex, internal capsule, midbrain, pons, upper medulla), damage weakens the <em>opposite</em> side of the body.</li>
 <li><strong>Below it</strong> (in the spinal cord), damage weakens the <em>same</em> side of the body, from that level down.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Lateral corticospinal tract</th><th>Anterior corticospinal tract</th></tr></thead>
 <tbody>
 <tr><th>Share of the axons</th><td>About 85–90%</td><td>About 10–15%</td></tr>
@@ -236,9 +237,9 @@
 <li>Each <strong>cerebellar hemisphere</strong> is the large lateral part on either side of it.</li>
 <li>The <strong>flocculonodular lobe</strong> (flocculus = small tuft of wool; nodulus = small knot) is a small lobe on the underside, made of a midline nodule and a flocculus on each side.</li>
 </ul>
-<figure id="fig-os-16-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-16-15"><img src="../figures/os-16-15.jpg" alt="Two drawings of the cerebellum colored by region. On the left, the cerebellum is cut down the midline beside the brainstem, showing its branching folds: the front part purple, the large back part green and a small orange lobe tucked underneath next to the brainstem. On the right, the cerebellum is drawn spread flat and seen from above, with the same colors: a bracket marks the narrow middle strip as the vermis and the broad side part as a hemisphere, and the orange flocculonodular lobe at the bottom is labeled as a central nodulus with a flocculus at each end." width="1100" height="571" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> Regions of the cerebellum, cut down the midline (left) and spread flat and seen from above (right). The vermis runs down the middle between the two hemispheres, and the flocculonodular lobe (the nodulus and the two flocculi) lies underneath. (The figure's heading spells midsagittal with a double g.) <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 16.15, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/16-5-the-coordination-and-gait-exams">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-16-15"  class="anp-figure"><div class="anp-figimg" data-fig="os-16-15"><picture><source type="image/avif" srcset="../figures/avif/os-16-15-480.avif 480w, ../figures/avif/os-16-15-800.avif 800w, ../figures/avif/os-16-15.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-16-15.jpg" alt="Two drawings of the cerebellum colored by region. On the left, the cerebellum is cut down the midline beside the brainstem, showing its branching folds: the front part purple, the large back part green and a small orange lobe tucked underneath next to the brainstem. On the right, the cerebellum is drawn spread flat and seen from above, with the same colors: a bracket marks the narrow middle strip as the vermis and the broad side part as a hemisphere, and the orange flocculonodular lobe at the bottom is labeled as a central nodulus with a flocculus at each end." width="1100" height="571" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> Regions of the cerebellum, cut down the midline (left) and spread flat and seen from above (right). The vermis runs down the middle between the two hemispheres, and the flocculonodular lobe (the nodulus and the two flocculi) lies underneath. (The figure's heading spells midsagittal with a double g.) <span class="anp-credit">Figure 16.15 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/16-5-the-coordination-and-gait-exams">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>Three functional divisions</h3>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Vestibulocerebellum</th><th>Spinocerebellum</th><th>Cerebrocerebellum</th></tr></thead>
 <tbody>
 <tr><th>Region</th><td>Flocculonodular lobe</td><td>Vermis and the strip of each hemisphere next to it</td><td>Lateral parts of the hemispheres</td></tr>
@@ -295,7 +296,7 @@
 </ul>
 <p>In infants the upward big toe is normal, because their corticospinal axons are not yet fully <a class="gl" href="../notes/neurons-glia.html" data-c="myelin">myelinated</a>. It usually changes to the adult downward response by 1 to 2 years of age, as walking develops.</p>
 <h3>UMN vs LMN signs side by side</h3>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Upper motor neuron damage</th><th>Lower motor neuron damage</th></tr></thead>
 <tbody>
 <tr><th>Where the damage is</th><td>Motor cortex, internal capsule, brainstem or descending tracts in the cord</td><td>Ventral horn, cranial nerve motor nucleus, ventral root or peripheral nerve</td></tr>
@@ -330,13 +331,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:motor-pathways">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="sensory-pathways.html"><span>&larr; Topic 74</span><b>Sensory receptors and ascending pathways</b></a><a class="tb-chapter-link next" href="reflexes.html"><span>Topic 76 &rarr;</span><b>Reflexes</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

@@ -238,7 +238,7 @@
       "The neighbors fire sooner, at a lower threshold voltage than usual",
       "The neighbors fire, but their plateau is missing",
       "The neighbors do not fire, because charge cannot pass to them",
-      "The first cell stays depolarized and cannot repolarize"
+      "The first cell stays depolarized and fails to repolarize"
     ],
     "correct": 2,
     "why": {
@@ -387,6 +387,11 @@
         "name": "Fastest possible rate of action potentials",
         "answer": "down",
         "why": "A new action potential cannot start until the refractory period ends, so a longer refractory period lowers the ceiling on the rate."
+      },
+      {
+        "name": "Resting membrane potential",
+        "answer": "none",
+        "why": "The resting potential is held by a different set of potassium channels that stay open at rest, which this drug does not block."
       }
     ],
     "why": {
@@ -406,7 +411,7 @@
       "Heart muscle has no sarcoplasmic reticulum, so it depends on calcium from outside",
       "Heart muscle cells need entering calcium to trigger release from their SR",
       "The leg muscle stores calcium in its mitochondria for contraction",
-      "Without calcium the ventricle's sodium channels cannot open for the upstroke"
+      "Without calcium the ventricle's sodium channels stay shut during the upstroke"
     ],
     "correct": 1,
     "why": {
@@ -511,7 +516,7 @@
       "They depend on aerobic respiration by their many mitochondria",
       "They rely on a large store of glycogen, which runs out within seconds",
       "Their gap junctions close as soon as blood flow falls",
-      "Their sarcoplasmic reticulum leaks all its calcium at once"
+      "Their sarcoplasmic reticulum leaks its calcium at once"
     ],
     "correct": 0,
     "why": {
@@ -535,9 +540,9 @@
     "q": "A classmate says: \"Cardiac muscle doesn't use its sarcoplasmic reticulum; it just contracts with calcium from the blood.\" Which correction is accurate?",
     "options": [
       "Most calcium comes from the SR; entering calcium is the trigger",
-      "All calcium comes from the SR; outside calcium plays no part",
+      "The calcium comes from the SR; outside calcium plays no part",
       "Half comes from the blood and half from the mitochondria",
-      "Most comes from the blood, and the SR adds more only during fast heart rates"
+      "Most comes from the blood, and the SR adds more during fast heart rates"
     ],
     "correct": 0,
     "why": {

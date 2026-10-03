@@ -123,11 +123,17 @@
   --bw:0px;              /* outlines are gone; kept so page-local rules resolve */
 
   /* Soft layered shadows — the signature of this system. */
-  --lift-sm:0 1px 2px rgba(20,40,35,0.04),0 6px 16px rgba(20,40,35,0.06);
-  --lift:0 1px 2px rgba(20,40,35,0.05),0 12px 28px rgba(20,40,35,0.08);
-  --lift-lg:0 2px 4px rgba(20,40,35,0.05),0 18px 40px rgba(20,40,35,0.10);
+  /* Two elevations (audit 2026-10, visual system): elev-1 for anything that
+     rests on the page (cards, chips, controls), elev-2 for anything raised
+     above it (featured cards, menus, dialogs). The older names stay as
+     aliases so no rule had to change. */
+  --elev-1:0 1px 2px rgba(20,40,35,0.04),0 6px 16px rgba(20,40,35,0.06);
+  --elev-2:0 2px 4px rgba(20,40,35,0.05),0 18px 40px rgba(20,40,35,0.10);
+  --lift-sm:var(--elev-1);
+  --lift:var(--elev-1);
+  --lift-lg:var(--elev-2);
   --shadow-card:var(--lift);
-  --shadow-pop:0 2px 4px rgba(20,40,35,0.06),0 24px 48px rgba(20,40,35,0.14);
+  --shadow-pop:var(--elev-2);
   --btn-shadow:0 8px 20px rgba(31,74,66,0.28);
   --btn-shadow-accent:0 8px 20px rgba(28,140,123,0.30);
 
@@ -157,7 +163,7 @@
   --ctint:rgba(63,194,169,0.14);
   --cink:#9FE6D6;
   --on-accent-fill:#0C1F1A;  /* 6.9:1 on the mint; white would be 2.37:1 */
-  --muted-on-dark:#A8BDB6;
+  --muted-on-dark:#C9D8D3;   /* 5.0:1 on the dark-mode navy panel (#A8BDB6 was 3.7) */
   --amber:#D9A54B;
   --amber-press:#A67A28;
   --coral:#E8776A;
@@ -192,10 +198,12 @@
   --tint-warn:rgba(229,184,90,0.16);
   --tint-lilac:rgba(156,143,224,0.18);
 
-  --lift-sm:0 1px 2px rgba(0,0,0,0.3),0 6px 16px rgba(0,0,0,0.3);
-  --lift:0 1px 2px rgba(0,0,0,0.3),0 12px 28px rgba(0,0,0,0.35);
-  --lift-lg:0 2px 4px rgba(0,0,0,0.3),0 18px 40px rgba(0,0,0,0.42);
-  --shadow-pop:0 2px 4px rgba(0,0,0,0.3),0 24px 48px rgba(0,0,0,0.5);
+  --elev-1:0 1px 2px rgba(0,0,0,0.3),0 6px 16px rgba(0,0,0,0.3);
+  --elev-2:0 2px 4px rgba(0,0,0,0.3),0 18px 40px rgba(0,0,0,0.42);
+  --lift-sm:var(--elev-1);
+  --lift:var(--elev-1);
+  --lift-lg:var(--elev-2);
+  --shadow-pop:var(--elev-2);
   --btn-shadow:0 8px 20px rgba(0,0,0,0.35);
   --btn-shadow-accent:0 8px 20px rgba(63,194,169,0.22);
 
@@ -209,7 +217,8 @@ body[data-course="ochem"]{--ctint:#ECE8FB;--cink:#4B3BA8;}
 :root[data-theme="dark"] body[data-course="ochem"]{--ctint:rgba(156,143,224,0.18);--cink:#C9C0F2;}
 /* Anatomy & Physiology: a warm coral, the one hue neither other course uses. */
 body[data-course="anp"]{--ctint:#FBE9E4;--cink:#A33B26;}
-:root[data-theme="dark"] body[data-course="anp"]{--ctint:rgba(236,132,108,0.18);--cink:#F2B9A9;}
+/* 7%: at 18% the coral over the dark page read as muddy brown (audit 2026-10). */
+:root[data-theme="dark"] body[data-course="anp"]{--ctint:rgba(236,132,108,0.07);--cink:#F2B9A9;}
 
 /* ==========================================================================
    2. Base
@@ -437,7 +446,8 @@ strong,b{font-weight:900;}
 }
 .xrow:last-child,.kv-row:last-child{border-bottom:0;}
 .xnum{font:700 13px var(--font-mono);color:var(--accent);}
-.xmeta,.kv-row .v{font:700 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
+.xmeta{font:700 12.5px var(--font-ui);font-variant-numeric:tabular-nums;color:var(--muted);white-space:nowrap;}
+.kv-row .v{font:700 12.5px var(--font-mono);color:var(--muted);white-space:nowrap;}
 
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4.5vw,52px);align-items:start;}
 .split-divider{border-left:1px solid var(--line-soft);padding-left:clamp(20px,3vw,30px);}
@@ -468,7 +478,7 @@ strong,b{font-weight:900;}
   background-image:repeating-linear-gradient(135deg,var(--hover-tint) 0 8px,var(--paper) 8px 16px);
   display:flex;align-items:flex-end;padding:14px;box-shadow:var(--lift);
 }
-.screenshot-slot span{font:700 11px var(--font-mono);color:var(--muted);background:var(--paper);padding:4px 8px;border-radius:6px;}
+.screenshot-slot span{font:700 11px var(--font-ui);color:var(--muted);background:var(--paper);padding:4px 8px;border-radius:6px;}
 
 /* ==========================================================================
    5. Gamification components
@@ -553,7 +563,8 @@ strong,b{font-weight:900;}
   border:3px solid var(--accent);display:flex;align-items:center;justify-content:center;
   font-size:22px;margin:0 auto 6px;
 }
-.badge-circle.locked{background:var(--track);border-color:var(--line);opacity:.5;}
+.badge-circle.locked{background:var(--track);border-color:var(--line);filter:grayscale(1);opacity:.45;}
+.badge .badge-prog{display:block;margin-top:2px;font:800 10px var(--font-mono);color:var(--muted);}
 .badge span{font-size:10.5px;font-weight:800;color:var(--muted);line-height:1.3;display:block;}
 
 /* Streak calendar. */
@@ -641,15 +652,6 @@ strong,b{font-weight:900;}
   gap:8px 14px;font-family:var(--font-ui);
 }
 .site-header__brand-row{display:inline-flex;align-items:center;gap:10px;min-width:0;}
-.hub-back{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
-  border:0;background:var(--white);box-shadow:var(--lift-sm);
-  font-size:14px;font-weight:900;color:var(--muted);
-  text-decoration:none;flex-shrink:0;line-height:1;
-}
-.hub-back:hover{border-color:var(--accent);color:var(--accent);}
-
 .site-header__brand{
   display:inline-flex;align-items:center;gap:10px;
   font-weight:900;font-size:17px;color:var(--ink);text-decoration:none;
@@ -677,7 +679,18 @@ strong,b{font-weight:900;}
 .site-header__course:hover{color:var(--ink);}
 .site-header__course-short{display:none;}
 
-.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;}
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0;margin-left:auto;position:relative;}
+/* Account, answer sounds and theme: in the row from 641px up (the wrapper is
+   display:contents), folded behind one menu button on a phone (below). */
+.nav-right .chrome-more{display:none;}
+.chrome-menu{display:contents;}
+.chrome-menu__lbl{display:none;}
+/* Every header control is a 44px target (WCAG 2.5.5) while staying a 34px
+   circle to look at: the hit area is a transparent ring around it. */
+.nav-right .theme-toggle,.nav-right .level-badge{position:relative;}
+.nav-right .theme-toggle::after,.nav-right .level-badge::after{content:"";position:absolute;inset:-5px;border-radius:50%;}
+.account-btn{position:relative;}
+.account-btn::after{content:"";position:absolute;left:0;right:0;top:-5px;bottom:-5px;}
 
 /* Header streak chip. Hidden at 0 so a new user doesn't see an empty flame. */
 .nav-streak{
@@ -726,6 +739,8 @@ strong,b{font-weight:900;}
   cursor:pointer;white-space:nowrap;flex-shrink:0;max-width:130px;overflow:hidden;text-overflow:ellipsis;
 }
 .account-btn:hover{color:var(--accent);}
+/* Set by account.js after three failed syncs in a row; the menu says why. */
+.account-btn[data-sync="error"]{box-shadow:var(--lift-sm),inset 0 0 0 2px var(--bad);}
 
 /* Row 2 — section tabs for the course you're in. Underlined tabs rather than
    pills: they read as "where am I in this course", which is exactly what a
@@ -810,6 +825,9 @@ strong,b{font-weight:900;}
   .bottom-sheet a:hover{background:var(--hover-tint);}
   .bottom-scrim{position:fixed;inset:0;z-index:44;background:rgba(15,25,23,0.35);opacity:0;pointer-events:none;transition:opacity .2s;}
   .bottom-scrim.open{opacity:1;pointer-events:auto;}
+  /* A focused control near the bottom would sit under the 64px tab bar
+     (audit 2026-10); the browser keeps it this far clear when it scrolls. */
+  html{scroll-padding-bottom:80px;}
 }
 
 footer .privacy-link{margin-top:10px;}
@@ -852,6 +870,13 @@ footer .privacy-link a:hover{color:var(--ink);}
   overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 
+/* Breadcrumbs: one component on every course (audit 2026-10). A&P's
+   generator writes .anp-crumb, the ochem notes .notes-crumb, and
+   scripts/build-crumbs.mjs .site-crumb on NREMT and the ochem pages. */
+.site-crumb,.anp-crumb{font:800 12.5px var(--font-ui);color:var(--muted);margin:18px 0 0;}
+.site-crumb a,.anp-crumb a{color:var(--muted);text-decoration:none;}
+.site-crumb a:hover,.anp-crumb a:hover{color:var(--ink);text-decoration:underline;}
+.site-crumb [aria-current]{color:var(--ink);}
 .site-nav-fallback{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:24px;font-family:var(--font-ui);}
 .site-nav-fallback a{color:var(--accent);text-decoration:none;}
 .site-nav-fallback a:hover{text-decoration:underline;}
@@ -874,8 +899,23 @@ footer .privacy-link a:hover{color:var(--ink);}
   }
   .course-nav__inner.at-end{-webkit-mask-image:none;mask-image:none;}
   .course-nav__link{scroll-snap-align:start;}
-  .hub-back{display:none;} /* the wordmark goes to the hub too, and 360px of
-                              width is better spent on the course name */
+  /* The phone menu: one button in the row, a panel of 44px rows under it. */
+  .nav-right .chrome-more{display:inline-flex;}
+  .chrome-menu{
+    display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:50;
+    flex-direction:column;align-items:stretch;gap:2px;min-width:230px;padding:8px;
+    background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-pop);
+  }
+  .chrome-menu.open{display:flex;}
+  .chrome-menu #accountSlot{display:block;}
+  .chrome-menu .theme-toggle,.chrome-menu .account-btn{
+    width:100%;height:44px;max-width:none;border-radius:10px;box-shadow:none;background:none;
+    justify-content:flex-start;gap:12px;padding:0 12px;
+    font:800 14.5px var(--font-ui);color:var(--ink);
+  }
+  .chrome-menu .theme-toggle::after{display:none;}
+  .chrome-menu .theme-toggle:hover,.chrome-menu .account-btn:hover{background:var(--hover-tint);color:var(--ink);}
+  .chrome-menu__lbl{display:inline;}
   /* The course name stays, in its short form: the bottom tabs say which
      section you are in, but not which course, and the three share most tab
      names. */
@@ -892,8 +932,7 @@ footer .privacy-link a:hover{color:var(--ink);}
   .site-header__brand .brand-text{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
   .site-header__brand-row{gap:8px;}
   .nav-right{gap:6px;}
-  .theme-toggle,.level-badge{width:32px;height:32px;}
-  .account-btn{height:32px;padding:0 11px;max-width:96px;}
+  .nav-right .theme-toggle::after,.nav-right .level-badge::after{inset:-6px;}
 }
 @media (max-width:400px){
   .nav-streak{display:none;}
@@ -932,6 +971,10 @@ html{scrollbar-color:var(--muted) transparent;}
   overflow-y:auto;
 }
 .auth-modal-overlay.open{opacity:1;pointer-events:auto;}
+/* The light theme's teal wash disappears on a dark page; dark mode dims the
+   page behind every dialog to 60% black instead (audit 2026-10). */
+:root[data-theme="dark"] .auth-modal-overlay,:root[data-theme="dark"] .bottom-scrim{background:rgba(0,0,0,.6);}
+:root[data-theme="dark"] dialog::backdrop{background:rgba(0,0,0,.6);}
 /* Set on <html> while the dialog is open, so the page behind cannot scroll
    out from under it — most noticeable on iOS, where dragging the backdrop
    otherwise moves the page and not the modal. */
@@ -952,8 +995,9 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .auth-modal-close:hover{background:var(--hover-tint);color:var(--ink);}
 .auth-modal form{display:flex;flex-direction:column;gap:12px;}
 .auth-modal form[hidden]{display:none;}
-.auth-modal label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
-.auth-modal label[hidden]{display:none;}
+.auth-modal label,.auth-modal .auth-field{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.auth-modal .auth-label-row label{display:inline;}
+.auth-modal label[hidden],.auth-modal .auth-field[hidden]{display:none;}
 .auth-modal input{
   font-family:inherit;font-size:16px;font-weight:700;padding:12px 13px;
   border:0;border-radius:var(--radius-sm);
@@ -1143,6 +1187,7 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .premium-lists h3{margin:0 0 6px;font-size:12px;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
 .premium-lists ul{margin:0;padding-left:18px;font-size:13px;font-weight:700;line-height:1.5;}
 .premium-fine{margin:12px 0 0;font-size:12px;font-weight:700;color:var(--muted);text-align:center;}
+.premium-guarantee{margin:4px 0 0;padding:10px 12px;border:var(--bw) solid var(--line);border-radius:var(--radius);font-size:13px;font-weight:700;line-height:1.5;color:var(--ink);}
 @media (max-width:520px){.premium-lists{grid-template-columns:1fr;}}
 /* The pill that marks a Premium feature, and the pass list in the dialog. */
 .premium-badge{
@@ -1151,6 +1196,8 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
   text-transform:uppercase;letter-spacing:.05em;cursor:pointer;vertical-align:middle;
 }
 .premium-badge:focus-visible{outline:2px solid var(--accent-text);outline-offset:2px;}
+/* In an eyebrow line the pill must not make the line taller once it lands. */
+.eyebrow .premium-badge{margin-block:-4px;}
 .premium-passes{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-direction:column;gap:8px;}
 .premium-pass{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:10px 12px;border-radius:var(--radius);background:var(--tint-accent);font-size:14px;}
@@ -1322,6 +1369,9 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 
 /* --- the chapter frame --- */
 .tb-main{padding:26px 0 60px;min-width:0;max-width:74ch;}
+/* The textbook column fills in by script; a screen of height keeps the
+   footer from being on screen and then thrown down (audit 2026-10). */
+#tbChapter{min-height:100vh;}
 .tb-chapter-head{border-bottom:var(--bw) solid var(--line);padding-bottom:18px;margin-bottom:8px;}
 .tb-chapter-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;}
 .tb-chapter-title{font:900 clamp(27px,4vw,36px) var(--font-ui);letter-spacing:-.02em;margin:0 0 8px;}
@@ -1380,9 +1430,10 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 @keyframes levl-floatup{0%{transform:translate(0,0) scale(1);opacity:1}70%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.6);opacity:0}}
 .levl-pulse{animation:levl-pulse .6s cubic-bezier(.2,.8,.3,1.4);}
 @keyframes levl-pulse{0%{transform:scale(1)}40%{transform:scale(1.18)}100%{transform:scale(1)}}
-/* Level-up toast, bottom centre. */
+/* Level-up toast, anchored just under the header so it never lands on the
+   answer or explanation the student is reading (audit 2026-10). */
 .levl-toast{
-  position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));z-index:85;transform:translate(-50%,20px);
+  position:fixed;left:50%;top:calc(var(--site-header-h, 64px) + 8px);z-index:85;transform:translate(-50%,-12px);
   background:var(--navy);color:#fff;font:900 14.5px var(--font-ui);padding:14px 20px;border-radius:var(--radius);
   box-shadow:var(--shadow-pop);display:flex;align-items:center;gap:12px;opacity:0;
   transition:transform .35s cubic-bezier(.2,.8,.3,1.3),opacity .3s ease;max-width:calc(100vw - 32px);
@@ -1390,7 +1441,7 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .levl-toast.show{opacity:1;transform:translate(-50%,0);}
 .levl-toast .ring{width:34px;height:34px;border-radius:50%;border:2.5px solid var(--accent-bright);color:var(--accent-bright);display:grid;place-items:center;font-size:12px;flex-shrink:0;}
 .levl-toast small{display:block;font-weight:700;font-size:12.5px;opacity:.8;}
-@media (max-width:640px){.levl-toast{bottom:calc(84px + env(safe-area-inset-bottom));}}
+
 #levlConfetti{position:fixed;inset:0;pointer-events:none;z-index:90;}
 /* The site's two nudges — "save your progress" and "install this" — share
    one shape. Bottom centre like the level-up toast, but never at the same
@@ -1637,3 +1688,53 @@ html.auth-modal-open,html.auth-modal-open body{overflow:hidden;}
 .notes-figure .fg-fill-mut{fill:var(--muted);}
 .notes-figure .fg-fill-warn{fill:var(--coral);}
 .notes-figure .fg-fill-good{fill:var(--good);}
+
+/* The "/" search overlay (site-chrome.js): search.html?embed=1 in a modal. */
+.lso{position:fixed;inset:0;z-index:1100;}
+.lso-scrim{position:absolute;inset:0;background:rgba(0,0,0,.6);}
+.lso-panel{
+  position:absolute;left:50%;top:max(16px,6vh);transform:translateX(-50%);
+  width:min(760px,calc(100vw - 24px));height:min(720px,calc(100vh - 32px));height:min(720px,calc(100dvh - 32px));
+  display:flex;flex-direction:column;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-pop);overflow:hidden;
+}
+.lso-bar{display:flex;align-items:center;gap:14px;padding:10px 12px 10px 18px;border-bottom:var(--bw) solid var(--line);font:800 14px var(--font-ui);}
+.lso-bar b{margin-right:auto;font-weight:900;}
+.lso-bar a{color:var(--accent-text);}
+.lso-close{min-width:44px;min-height:44px;border:0;border-radius:10px;background:var(--paper);color:var(--ink);font:800 13px var(--font-ui);cursor:pointer;}
+.lso iframe{flex:1;width:100%;border:0;background:var(--white);}
+html.lso-open{overflow:hidden;}
+
+/* Right and wrong are never colour alone (audit 2026-10, WCAG 1.4.1): a
+   graded option carries a check or a cross and a word. One rule for the ochem
+   choice buttons and the A&P options, so the courses mark answers alike.
+   The second content value gives an empty alt where browsers support it,
+   because each option already says the same to a screen reader. */
+.choice-btn.correct::before,.choice-btn.wrong::before,.anp-opt.is-right::before,.anp-opt.is-wrong::before{
+  display:inline-block;margin-right:8px;padding:1px 8px;border-radius:var(--radius-pill);
+  font:800 12px/1.6 var(--font-ui);vertical-align:1px;white-space:nowrap;
+}
+.choice-btn.correct::before,.anp-opt.is-right::before{content:"\2713  Correct";content:"\2713  Correct" / "";background:var(--good-text);color:var(--white);}
+.choice-btn.wrong::before,.anp-opt.is-wrong::before{content:"\2715  Your answer";content:"\2715  Your answer" / "";background:var(--bad-text);color:var(--white);}
+.anp-opt.is-right[aria-checked="true"]::before{content:"\2713  Your answer, correct";content:"\2713  Your answer, correct" / "";}
+.anp-opt[role="checkbox"].is-right[aria-checked="false"]::before{content:"\2713  Missed";content:"\2713  Missed" / "";}
+
+/* The tutor and periodic-table buttons float over the right edge of a phone.
+   Answer options keep their text clear of that column (audit 2026-10). */
+@media (max-width:640px){
+  body.lp-has-fab .choice-btn,body.lp-has-fab .anp-opt,body.lp-has-fab .option{padding-right:56px;}
+}
+
+/* Type and arrows: the rules (audit 2026-10, visual system).
+   Monospace (--font-mono) is for three things only:
+     1. figures that count or compare: scores, percentages, counts, timers,
+        "Step 3 / 10", XP readouts (they line up as they change);
+     2. keyboard keys (kbd);
+     3. chemistry written as text: formulas and atom labels in figures.
+   Everything else, labels, hints and sentences that happen to hold a number
+   included, is --font-ui; where numbers in it change, add
+   font-variant-numeric: tabular-nums instead of switching face.
+   Arrows: the text arrows "→" and "←" (&rarr; / &larr;) for going somewhere
+   and coming back, set in the surrounding face; one disclosure marker,
+   var(--disclose), turned 90° when its <details> is open. Reaction arrows in
+   chemistry content are notation, not UI, and are not covered here. */
+:root{--disclose:"\203A";}

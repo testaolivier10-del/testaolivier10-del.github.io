@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Immune disorders: Notes | Anatomy &amp; Physiology</title>
+<title>Immune disorders — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="Immune disorders come in three kinds: the immune system can overreact to something harmless, attack your own tissues, or fail to act at all.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/immune-disorders.html">
-<meta property="og:title" content="Immune disorders: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Immune disorders — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="Immune disorders come in three kinds: the immune system can overreact to something harmless, attack your own tissues, or fail to act at all.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/immune-disorders.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="immune-disorders">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 20 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/lymph-immune.html">Lymphatic and immune systems</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Immune disorders: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/immune-disorders.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 20 &middot; Topic 116 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 20 &middot; Topic 116 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Immune disorders</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/interdependence.html">Interdependence of systems</a><span class="anp-small">19 min read</span><span class="anp-tb-chip" data-chip-topic="immune-disorders">Not practiced</span></p>
     </header>
@@ -143,7 +144,7 @@
 <h3>Type IV: delayed, T cell-mediated</h3>
 <p>Poison ivy oil on the skin causes nothing for a day, then an itchy, blistering rash that peaks at 2 to 3 days. <em>Delayed hypersensitivity</em> is caused by memory T cells, not antibodies. Th1 cells recognize the antigen, release cytokines that call in and switch on <a class="gl" href="../notes/connective-tissue.html" data-c="macrophage-basic">macrophages</a>, and <a class="gl" href="../notes/cell-mediated-immunity.html" data-c="cytotoxic-t">cytotoxic T cells</a> kill cells displaying it. The delay is the time it takes T cells to gather at the site. Examples are contact dermatitis (poison ivy, nickel in jewelry), the tuberculin skin test for past exposure to mycobacteria, and the destruction of beta cells in <a class="gl" href="../notes/pancreas-glucose.html" data-c="diabetes-mellitus">type 1 diabetes</a>.</p>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Type I</th><th>Type II</th><th>Type III</th><th>Type IV</th></tr></thead>
 <tbody>
 <tr><th>Other name</th><td>Immediate; allergy</td><td>Antibody against cells</td><td>Immune complex</td><td>Delayed</td></tr>
@@ -229,7 +230,7 @@
 </ul>
 <h3>Rheumatoid arthritis</h3>
 <p><em>Rheumatoid arthritis</em> (RA; rheum- = flow, from an old idea of fluid flowing into joints; arthr- = joint, -itis = inflammation) is a systemic autoimmune disease centered on the synovial membranes of joints. T cells and B cells gather in the <a class="gl" href="../notes/tissue-membranes-repair.html" data-c="synovial-membrane">synovial membrane</a>, which thickens into a mass of inflamed tissue. Cytokines, especially <a class="gl" href="../notes/cell-cycle.html" data-c="cancer-basic">tumor</a> <a class="gl" href="../notes/tissue-membranes-repair.html" data-c="necrosis">necrosis</a> factor (TNF), drive it to erode <a class="gl" href="../notes/connective-tissue.html" data-c="cartilage">cartilage</a> and bone. It typically affects small joints of the hands and feet on both sides at once, with morning stiffness lasting more than an hour. Most patients make autoantibodies, such as rheumatoid factor (an antibody against the Fc region of IgG) and antibodies against modified self proteins; immune complexes add to the joint damage. <a class="figref" href="#fig-os-21-29">Figure 2</a> shows the result of long-standing disease. Drugs that block TNF or suppress <a class="gl" href="../notes/leukocytes-platelets.html" data-c="agranulocytes">lymphocytes</a> now prevent most of this damage.</p>
-<figure id="fig-os-21-29"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-29"><img src="../figures/os-21-29.jpg" alt="Two panels. Left: an X-ray of both hands of a person with rheumatoid arthritis; the fingers are bent sideways at the knuckles and several finger joints look narrowed and eroded. Right: a drawing of a woman's body with labels for the possible effects of lupus: a butterfly rash on the face, ulcers in the mouth and nose, inflamed pleura and pericardium, aching muscles, arthritis in the joints, poor circulation in the fingers and toes, low-grade fever and sensitivity to sunlight, and tiredness and loss of appetite." width="1100" height="488" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Two systemic autoimmune diseases. Left: an X-ray of the hands in long-standing rheumatoid arthritis, with fingers bent sideways and damaged joints. Right: the many organs lupus can affect, from a rash across the cheeks to inflamed joints, pleura and pericardium. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 21.29, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-6-diseases-associated-with-depressed-or-overactive-immune-responses">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-21-29"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-29"><picture><source type="image/avif" srcset="../figures/avif/os-21-29-480.avif 480w, ../figures/avif/os-21-29-800.avif 800w, ../figures/avif/os-21-29.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-21-29.jpg" alt="Two panels. Left: an X-ray of both hands of a person with rheumatoid arthritis; the fingers are bent sideways at the knuckles and several finger joints look narrowed and eroded. Right: a drawing of a woman's body with labels for the possible effects of lupus: a butterfly rash on the face, ulcers in the mouth and nose, inflamed pleura and pericardium, aching muscles, arthritis in the joints, poor circulation in the fingers and toes, low-grade fever and sensitivity to sunlight, and tiredness and loss of appetite." width="1100" height="488" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Two systemic autoimmune diseases. Left: an X-ray of the hands in long-standing rheumatoid arthritis, with fingers bent sideways and damaged joints. Right: the many organs lupus can affect, from a rash across the cheeks to inflamed joints, pleura and pericardium. <span class="anp-credit">Figure 21.29 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-6-diseases-associated-with-depressed-or-overactive-immune-responses">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>Lupus</h3>
 <p><em>Systemic lupus erythematosus</em> (SLE, usually just <em>lupus</em>: Latin for wolf, from old descriptions of the facial rash; erythemat- = red) is a systemic autoimmune disease in which B cells make antibodies against the contents of cell nuclei, including <a class="gl" href="../notes/dna-genes.html" data-c="dna">DNA</a>. Dying cells release these nuclear antigens, antibodies bind them, and the immune complexes lodge in small vessels, joints, the kidneys' filters, the skin and the serous membranes (type III). Symptoms come and go in flares: a red rash across the cheeks and nose (the butterfly rash) that worsens in sunlight, joint pain, tiredness, fever, inflamed pleura and pericardium, and kidney damage, the most dangerous part. Nine in ten patients are women, most diagnosed between 15 and 45.</p>
 
@@ -283,13 +284,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:immune-disorders">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="antibody-immunity.html"><span>&larr; Topic 115</span><b>B cells and antibodies</b></a><a class="tb-chapter-link next" href="upper-airway.html"><span>Topic 117 &rarr;</span><b>Nose, pharynx and larynx</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

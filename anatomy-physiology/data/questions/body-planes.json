@@ -142,21 +142,20 @@
       "Horizontal plane",
       "Coronal plane",
       "Cross section",
-      "Axial plane",
+      "Sagittal plane",
       "Median plane"
     ],
     "correct": [
       0,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "The transverse plane is also called the horizontal plane, imaging staff call it the axial plane, and the section it produces is a cross section.",
+      "correct": "The transverse plane is also called the horizontal plane, and the section it produces is a cross section. Coronal, sagittal and median planes are vertical.",
       "options": [
         "Correct. Horizontal is another name for transverse.",
         "Coronal is another name for the frontal plane.",
         "Correct. A cut along the transverse plane is a cross section.",
-        "Correct. Axial is the imaging name for the transverse plane.",
+        "A sagittal plane divides the body into left and right parts.",
         "Median is another name for the midsagittal plane."
       ]
     }
@@ -174,7 +173,7 @@
       "A plane is horizontal; a section is vertical",
       "A plane is an imaginary surface; a section is the cut it produces",
       "A plane is used for single organs; a section is used for the whole body",
-      "A plane is seen on a scan; a section is seen only in dissection"
+      "A plane is seen on a scan; a section is seen in dissection"
     ],
     "correct": 1,
     "why": {
@@ -270,8 +269,8 @@
     "q": "On a chest radiograph, a coin in the patient's shirt pocket appears on top of the heart shadow. Why can't the radiograph alone tell whether the coin is in front of or behind the heart?",
     "options": [
       "A coin is too small and too faint to show clearly on a radiograph",
-      "Radiographs show only soft tissue",
-      "The heart stops all X-rays",
+      "Radiographs show soft tissue best",
+      "The heart absorbs X-rays as strongly as bone does",
       "Radiographs flatten everything on a beam's path into one image"
     ],
     "correct": 3,
@@ -297,7 +296,7 @@
     "q": "A radiologist reads a transverse CT slice of a patient's abdomen. The liver appears on the left side of the screen. On which side of the patient is the liver?",
     "options": [
       "The patient's left",
-      "It cannot be known from a CT slice",
+      "It depends on which side the scanner started from",
       "The patient's right",
       "It depends on whether the patient was prone"
     ],

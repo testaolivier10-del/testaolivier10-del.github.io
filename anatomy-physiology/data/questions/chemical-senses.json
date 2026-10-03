@@ -395,7 +395,7 @@
     ],
     "q": "Humans have only about 400 kinds of odorant receptor protein, yet can tell apart far more odors than that. How?",
     "options": [
-      "Each olfactory sensory neuron makes all 400 kinds, so every neuron responds to every odor",
+      "Each olfactory sensory neuron makes many kinds, so each neuron responds to many odors",
       "Each odor has its own dedicated receptor protein, and new kinds are made as new odors are met",
       "Each odorant binds several kinds of receptor protein, and the brain reads the pattern",
       "The olfactory bulb makes up for the small number by adding extra kinds of synapse"
@@ -451,7 +451,7 @@
       "Chloride in olfactory neurons carries a positive charge",
       "These neurons hold so much chloride inside that Cl− flows out",
       "Chloride channels in olfactory neurons let Na+ through as well",
-      "cAMP reverses the direction of every ion gradient in the cilia"
+      "cAMP reverses the direction of the ion gradients in the cilia"
     ],
     "correct": 1,
     "why": {
@@ -503,7 +503,7 @@
       "Taste cells release more neurotransmitter, so the sensory neurons fire faster",
       "Each action potential in the taste nerve becomes larger and lasts longer",
       "Sugar molecules travel along the facial nerve to the medulla",
-      "The taste cells send their own axons to the brain, but only when a stimulus is strong"
+      "The taste cells send their own axons to the brain when a stimulus is strong"
     ],
     "correct": 0,
     "why": {

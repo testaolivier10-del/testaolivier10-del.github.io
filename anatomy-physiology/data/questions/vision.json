@@ -188,6 +188,11 @@
         "name": "Sharpness of distant objects",
         "answer": "none",
         "why": "Distant objects are focused with the lens flat and the ciliary muscle relaxed, which a stiff lens still manages."
+      },
+      {
+        "name": "Number of photoreceptors in the retina",
+        "answer": "none",
+        "why": "Presbyopia is a change in the lens. The retina's photoreceptors are unaffected."
       }
     ],
     "why": {
@@ -492,6 +497,11 @@
         "name": "Glutamate release onto bipolar cells",
         "answer": "down",
         "why": "A hyperpolarized rod releases less neurotransmitter; the fall in glutamate is the light signal."
+      },
+      {
+        "name": "Number of rods in the retina",
+        "answer": "none",
+        "why": "A flash changes what happens inside each rod, not how many rods there are."
       }
     ],
     "why": {

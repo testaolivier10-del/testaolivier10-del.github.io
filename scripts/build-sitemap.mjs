@@ -16,6 +16,8 @@
 import { readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join, posix } from 'node:path';
+import { isNoindex } from './lib/app-pages.mjs';
+import { COURSES } from './lib/courses.mjs';
 
 const OUT = 'sitemap.xml';
 const check = process.argv.includes('--check');
@@ -43,38 +45,45 @@ function walk(dir, out = []) {
     const full = join(dir, name);
     // anatomy-physiology/data holds the A&P sources (notes are HTML
     // fragments); build-anp.mjs turns them into the pages listed here.
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
     else if (name.endsWith('.html') && !SKIP_FILES.test(name)) out.push(full);
   }
   return out;
 }
 
-/* The priority scheme the hand-written file used, preserved rather than
-   reinvented — search engines largely ignore the field, and changing it would
-   have made this rewrite look like a ranking decision when it is a
-   maintenance one.
+/* Priorities say which pages matter most to a searcher (site audit 2026-10:
+   529 of 671 entries shared 0.8, which says nothing). Search engines weigh the
+   field lightly, but it should at least rank the site's own pages honestly:
+   the hub and course homes; the pages people search for by name (practice
+   tests, exams, the textbook, the exam guide, Premium); the notes, which are
+   the pages written to be read from a search; lessons and mechanisms; tools,
+   which are mostly a canvas and a few buttons; then legal and credits. */
+// Every course folder in the registry (assets/courses.js).
+const DIRS = COURSES.map((c) => c.dir.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+const COURSE_HOME = new RegExp(`^\\/(${DIRS})\\/$`);
+const COURSE_NAMED = new RegExp(`^\\/(premium|(${DIRS})\\/(practice|exams|learn|study-notes|exam-day|glossary|flashcards|how-to-study|skillsheets|tools))\\.html$`);
 
-   The shape of it: the hub, then the two course homepages, then anything that
-   is a section someone navigates to, then the written lessons, then the
-   interactive apps and tools — which are a canvas and a few buttons, with
-   almost nothing on them for a crawler to read. */
 function priorityFor(path) {
   if (path === '/') return '1.0';
-  if (path === '/nremt/' || path === '/ochem/') return '0.9';
-  if (/^\/ochem\/(lessons|mechanisms)\//.test(path)) return '0.7';
-  if (/^\/ochem\/tools\//.test(path)) return '0.6';
-  if (/^\/ochem\/(practice|review|flashcards|mastery)\.html$/.test(path)) return '0.6';
-  if (path === '/nremt/flashcards.html') return '0.6';
-  return '0.8';
+  if (COURSE_HOME.test(path)) return '0.9';
+  if (COURSE_NAMED.test(path)) return '0.8';
+  if (/^\/(ochem\/notes|anatomy-physiology\/(notes|chapters))\//.test(path)) return '0.7';
+  if (/^\/nremt\/[^/]+\.html$/.test(path)) return '0.7';
+  if (/^\/(ochem\/(lessons|mechanisms)|anatomy-physiology\/(lessons|concepts))\//.test(path)) return '0.6';
+  if (/^\/(ochem|anatomy-physiology)\/tools\//.test(path)) return '0.5';
+  if (/^\/(privacy|terms|changelog|sources)\.html$|credits\.html$/.test(path)) return '0.3';
+  return '0.5';
 }
 
 /* The date of the commit that last touched the file. Falls back to today for
    a page that is new and not yet committed, which is the honest answer for a
-   file whose history is "now". */
+   file whose history is "now". The author date (%as), not the committer date:
+   a rebase or cherry-pick rewrites the committer date of every commit it
+   moves, which would stamp untouched pages with the day of the merge. */
 const today = new Date().toISOString().slice(0, 10);
 function lastModified(file) {
   try {
-    const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', file], {
+    const out = execFileSync('git', ['log', '-1', '--format=%as', '--', file], {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
     }).trim();
@@ -92,6 +101,9 @@ for (const raw of walk('.')) {
   const html = readFileSync(file, 'utf8');
 
   if (/<meta\s+http-equiv=["']refresh["']/i.test(html)) continue;
+  // A noindex page (dashboards, account, search, review: scripts/lib/app-pages.mjs)
+  // asks not to be indexed, so submitting it would contradict itself.
+  if (isNoindex(html)) continue;
 
   const m = html.match(/<link\s+rel="canonical"\s+href="([^"]*)"/i);
   if (!m) {

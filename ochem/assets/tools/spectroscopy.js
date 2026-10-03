@@ -403,7 +403,7 @@
     return NM_L + (NM_MAX - ppm) / (NM_MAX - NM_MIN) * (NM_W - NM_L - 14);
   }
 
-  var MULT_LINES = { s:1, d:2, t:3, q:4, quint:5, sext:6, m:5 };
+  var MULT_LINES = { s:1, d:2, t:3, q:4, quint:5, sext:6, sept:7, oct:8, non:9, m:5 };
 
   function nmrSpectrum(c, highlight){
     var base = NM_H - NM_B;
@@ -458,7 +458,7 @@
     return r;
   }
 
-  var MULT_NAME = { s:'singlet', d:'doublet', t:'triplet', q:'quartet', quint:'quintet', sext:'sextet', m:'multiplet' };
+  var MULT_NAME = { s:'singlet', d:'doublet', t:'triplet', q:'quartet', quint:'quintet', sext:'sextet', sept:'septet', oct:'octet', non:'nonet', m:'multiplet' };
 
   /* ====================================================================== */
   /* Page                                                                    */

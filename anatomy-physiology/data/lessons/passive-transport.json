@@ -1,6 +1,6 @@
 {
   "topic": "passive-transport",
-  "hook": "<p>A new nurse reaches for a 1-liter bag labeled \"sterile water\" to run into Mr. Okafor's vein. The pharmacist stops her. Pure water has almost no solutes, so red blood cells bathed in it take on water, swell and burst. Infused straight into a vein, it can burst enough red cells to spill their contents, including potassium, into the plasma. The bag she needed was 0.9% saline, which leaves red cells at their normal size.</p>",
+  "hook": "<p>A new nurse reaches for a 1-liter bag labeled \"sterile water\" to run into Mr. Haddad's vein. The pharmacist stops her. Pure water has almost no solutes, so red blood cells bathed in it take on water, swell and burst. Infused straight into a vein, it can burst enough red cells to spill their contents, including potassium, into the plasma. The bag she needed was 0.9% saline, which leaves red cells at their normal size.</p>",
   "prereq": [
     {
       "q": "Water and solute are separated by a membrane that lets water through but not the solute. Which way does water move by osmosis?",

@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NREMT-EMT Practice Exam — Timed, 100 Questions</title>
-<meta name="description" content="A free timed NREMT-EMT practice exam: 100 questions in the real domain mix, a two-hour clock, scored by domain, resumable if you leave.">
+<title>NREMT-EMT Practice Exam — Timed, 100 Questions | LevlPrep</title>
+<meta name="description" content="A timed NREMT-EMT practice exam, one free: 100 questions in the 2025 exam's five-domain proportions, a two-hour clock, scored by domain, resumable.">
 <link rel="canonical" href="https://levlprep.com/nremt/exams.html">
 <meta property="og:site_name" content="LevlPrep">
 <meta property="og:image" content="https://levlprep.com/nremt/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="og:title" content="NREMT-EMT Practice Exam — Timed, 100 Questions">
-<meta property="og:description" content="A free timed NREMT-EMT practice exam: 100 questions in the real domain mix, a two-hour clock, scored by domain, resumable if you leave.">
+<meta property="og:title" content="NREMT-EMT Practice Exam — Timed, 100 Questions | LevlPrep">
+<meta property="og:description" content="A timed NREMT-EMT practice exam, one free: 100 questions in the 2025 exam's five-domain proportions, a two-hour clock, scored by domain, resumable.">
 <meta property="og:url" content="https://levlprep.com/nremt/exams.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -47,7 +48,7 @@
       "@id": "https://levlprep.com/nremt/exams.html#resource",
       "name": "NREMT-EMT timed practice exam",
       "url": "https://levlprep.com/nremt/exams.html",
-      "description": "A free timed NREMT-EMT practice exam: 100 questions in the real domain mix, a two-hour clock and a score by domain. No account needed.",
+      "description": "A timed NREMT-EMT practice exam, one free: 100 questions drawn in the proportions of the 2025 exam's five domains, a two-hour clock and a score by domain.",
       "learningResourceType": "Practice test",
       "educationalLevel": "Professional certification",
       "inLanguage": "en",
@@ -87,8 +88,11 @@
 </script>
 </head>
 <body data-runner="exams">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT timed practice exam</span></nav></div>
+<!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
 <div class="wrap">
 
@@ -96,7 +100,7 @@
     <div class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
       <h1>Exams</h1>
-      <p class="lede">A full 100-question exam in the real test&rsquo;s domain mix, against a two-hour clock, scored by domain. Leave mid-way and it waits here for you.</p>
+      <p class="lede">A full 100-question exam drawn in the proportions of the National Registry&rsquo;s five EMT exam domains (April 2025 outline): 17 Scene Size-Up &amp; Safety, 41 Primary Assessment, 7 Secondary Assessment, 22 Patient Treatment &amp; Transport and 13 Operations. Two-hour clock, scored by domain. Leave mid-way and it waits here for you.</p>
     </div>
 
     <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
@@ -111,9 +115,9 @@
       <div class="mode-card mode-card--primary">
         <div class="k">Full length <span data-premium-badge></span></div>
         <h2>Timed exam</h2>
-        <p>100 questions in the exam&rsquo;s domain mix, scored by domain.</p>
+        <p>100 questions drawn in the 2025 exam&rsquo;s domain proportions, scored by domain.</p>
         <div class="spacer"></div>
-        <div class="meta">100 q &middot; 2:00:00 &middot; ~72 s/q<br>pool of <span id="poolCount">2,106</span></div>
+        <div class="meta">100 q &middot; 2:00:00 &middot; ~72 s/q<br>pool of <span id="poolCount">2,033</span></div>
         <div class="controls">
           <select id="difficultySelect" aria-label="Difficulty">
             <option value="all">All levels</option>
@@ -123,8 +127,11 @@
             <option value="expert">Expert only</option>
           </select>
         </div>
+        <!-- Off by default (audit 2026-10): a free student gets one exam, and
+             locking answers and hiding Flag on that one attempt costs them the
+             review they came for. Switch it on to rehearse the real rules. -->
         <label class="realistic-toggle" for="realisticMode">
-          <input type="checkbox" id="realisticMode" checked>
+          <input type="checkbox" id="realisticMode">
           <span><strong>Exam-realistic</strong> &mdash; no flagging, no going back, like the real thing</span>
         </label>
         <button class="start-btn" id="startBtn">Start timed exam</button>
@@ -152,9 +159,9 @@
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
-      <p>Original, unofficial practice questions written to the NREMT-EMT blueprint; not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. Scores and history stay in your browser.</p>
+      <p>Original, unofficial practice questions, each tagged to one of the five domains of the National Registry&rsquo;s EMT exam outline (April 2025); not affiliated with the National Registry. The real exam is computer-adaptive (70–120 questions); this fixed 100-question format trains pacing, not the algorithm. It includes select-N and build-list items, but not the exam&rsquo;s drag-and-drop or options-table items. Scores and history stay in your browser.</p>
     </details>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
 

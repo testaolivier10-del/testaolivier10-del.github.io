@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Urine, clearance and kidney hormones: Notes | A&amp;P</title>
+<title>Urine, clearance and kidney hormones — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Renal clearance, urine composition and urinalysis are how you check what the kidneys are doing from the outside.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/renal-function-urine.html">
-<meta property="og:title" content="Urine, clearance and kidney hormones: Notes | A&amp;P">
+<meta property="og:title" content="Urine, clearance and kidney hormones — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Renal clearance, urine composition and urinalysis are how you check what the kidneys are doing from the outside.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/renal-function-urine.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="renal-function-urine">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 24 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/urinary.html">The urinary system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Urine, clearance and kidney hormones: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/renal-function-urine.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 24 &middot; Topic 143 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 24 &middot; Topic 143 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Urine, clearance and kidney hormones</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/mass-balance.html">Mass balance</a><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/interdependence.html">Interdependence of systems</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="renal-function-urine">Not practiced</span></p>
     </header>
@@ -117,7 +118,7 @@
 <li><strong><a class="gl" href="../notes/atoms-ions-bonds.html" data-c="ion">Ions</a></strong>, mainly sodium, chloride and potassium, in amounts that roughly match what you ate that day.</li>
 <li><strong>Urochrome</strong> (uro- = urine, chrom- = color), the yellow pigment, made from the breakdown of the <a class="gl" href="../notes/erythrocytes.html" data-c="hemoglobin">heme</a> in old <a class="gl" href="../notes/plasma-membrane.html" data-c="blood-cells-basic">red blood cells</a>. The more water you excrete, the paler your urine, because the same pigment is spread through more water.</li>
 </ul>
-<figure id="fig-os-25-22"  class="anp-figure"><div class="anp-figimg" data-fig="os-25-22"><img src="../figures/os-25-22.jpg" alt="Ball-and-stick models of three molecules, with nitrogen atoms in blue, carbon in black, oxygen in red and hydrogen in white. Left, labeled ammonia: one nitrogen bonded to three hydrogens. Middle, labeled urea: a central carbon double-bonded to an oxygen and bonded to two nitrogens, each carrying two hydrogens. Right, labeled uric acid, much larger: two fused rings of carbon and nitrogen atoms, a six-membered ring and a five-membered ring, with three oxygens and four hydrogens attached around the edge." width="1100" height="458" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> The three main nitrogen wastes: ammonia, urea and uric acid. Your liver converts toxic ammonia to urea, which is what the kidneys excrete most of; uric acid comes from purine breakdown. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 25.22, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/25-9-regulation-of-fluid-volume-and-composition">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-25-22"  class="anp-figure"><div class="anp-figimg" data-fig="os-25-22"><picture><source type="image/avif" srcset="../figures/avif/os-25-22-480.avif 480w, ../figures/avif/os-25-22-800.avif 800w, ../figures/avif/os-25-22.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-25-22.jpg" alt="Ball-and-stick models of three molecules, with nitrogen atoms in blue, carbon in black, oxygen in red and hydrogen in white. Left, labeled ammonia: one nitrogen bonded to three hydrogens. Middle, labeled urea: a central carbon double-bonded to an oxygen and bonded to two nitrogens, each carrying two hydrogens. Right, labeled uric acid, much larger: two fused rings of carbon and nitrogen atoms, a six-membered ring and a five-membered ring, with three oxygens and four hydrogens attached around the edge." width="1100" height="458" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> The three main nitrogen wastes: ammonia, urea and uric acid. Your liver converts toxic ammonia to urea, which is what the kidneys excrete most of; uric acid comes from purine breakdown. <span class="anp-credit">Figure 25.22 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/25-9-regulation-of-fluid-volume-and-composition">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Normal urine contains no <a class="gl" href="../notes/biomolecules.html" data-c="glucose">glucose</a>, almost no <a class="gl" href="../notes/biomolecules.html" data-c="protein">protein</a>, no blood and no bacteria. The normal <strong><a class="gl" href="../notes/acids-bases-ph.html" data-c="ph">pH</a></strong> of urine ranges widely, from about 4.5 to 8, and is usually near 6, depending mainly on diet. Its <a class="gl" href="../notes/water-solutions.html" data-c="osmolarity">osmolarity</a> ranges from about 50 to 1,200 mOsm/L, as you saw in the last topic.</p>
 
 <h3>Specific gravity</h3>
@@ -130,7 +131,7 @@
 <li><strong>A dipstick.</strong> A strip of reagent pads dipped in the sample changes color for specific gravity, pH, protein, glucose, ketones, blood, <a class="gl" href="../notes/erythrocytes.html" data-c="rbc-lifecycle">bilirubin</a>, nitrite and <a class="gl" href="../notes/leukocytes-platelets.html" data-c="leukocyte">leukocyte</a> esterase, an <a class="gl" href="../notes/enzymes-energy.html" data-c="enzyme">enzyme</a> released by white blood cells.</li>
 <li><strong>A microscope.</strong> A spun-down sample is checked for red and white blood cells, bacteria, crystals and casts, which are cylinders of protein molded in the tubules.</li>
 </ol>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Finding</th><th>What it usually means</th><th>Why it gets into urine</th></tr></thead>
 <tbody>
 <tr><th>Glucose</th><td><a class="gl" href="../notes/pancreas-glucose.html" data-c="glucose-loop">Blood glucose</a> above about 180 mg/dL, as in uncontrolled <a class="gl" href="../notes/pancreas-glucose.html" data-c="diabetes-mellitus">diabetes mellitus</a></td><td>The filtered load exceeds what the <a class="gl" href="../notes/anatomical-position.html" data-c="proximal-distal">proximal</a> tubule's carriers can reabsorb</td></tr>
@@ -228,7 +229,7 @@
 
 <h2 id="hormones-that-act-on-the-kidney">Hormones that act on the kidney</h2>
 <p>Four hormones from other <a class="gl" href="../notes/body-organization.html" data-c="organ">organs</a> direct most of the kidney's day-to-day adjustments. You have met each one; the table below puts them side by side.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>ADH</th><th>Aldosterone</th><th>ANP</th><th>PTH</th></tr></thead>
 <tbody>
 <tr><th>Made by</th><td><a class="gl" href="../notes/brain-regions.html" data-c="hypothalamus">Hypothalamus</a>, released from the <a class="gl" href="../notes/hypothalamus-pituitary.html" data-c="pituitary-gland">posterior pituitary</a></td><td><a class="gl" href="../notes/adrenal-glands.html" data-c="adrenal-cortex">Zona glomerulosa</a> of the adrenal cortex</td><td>Atrial muscle cells</td><td><a class="gl" href="../notes/thyroid-parathyroid.html" data-c="parathyroid-glands">Parathyroid glands</a></td></tr>
@@ -266,7 +267,7 @@
 <p>AKI often recovers if the cause is fixed quickly.</p>
 <h3>Chronic kidney disease</h3>
 <p><strong>Chronic kidney disease</strong> (CKD) is kidney damage, or a GFR below 60 mL/min per 1.73 m² of body surface, lasting more than 3 months. Damage is often first seen as <a class="gl" href="../notes/blood-composition.html" data-c="plasma-proteins">albumin</a> in the urine. The two leading causes are diabetes mellitus and high blood pressure. CKD is graded by GFR from stage 1 to 5; stage 5, a GFR below 15, is kidney failure. <a class="gl" href="../notes/nephron.html" data-c="nephron-def">Nephrons</a> lost in CKD do not regrow, and the survivors enlarge and work harder, which can speed their own damage.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Acute kidney injury</th><th>Chronic kidney disease</th></tr></thead>
 <tbody>
 <tr><th>Speed</th><td>Hours to days</td><td>Months to years (defined as more than 3 months)</td></tr>
@@ -306,7 +307,7 @@
 <p><strong>Kidney stones</strong> (<strong>renal calculi</strong>; calculus = pebble) form when a solute in urine becomes so concentrated that it crystallizes. About three quarters are calcium stones, mostly calcium oxalate; others are uric acid or form after certain infections. The biggest risk is simply a small volume of concentrated urine. A stone that moves into a ureter blocks it: the ureter's <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="smooth-muscle-tissue">smooth muscle</a> contracts hard against it, causing severe, wave-like pain in the flank that spreads toward the groin, often with blood in the urine. Most small stones pass on their own. Drinking enough to pass more than about 2.5 L of urine a day is the main prevention, and a <a class="gl" href="../notes/urine-concentration.html" data-c="diuretics">thiazide diuretic</a> lowers urine calcium.</p>
 <h3>Incontinence</h3>
 <p><strong>Incontinence</strong> (in- = not, contin- = hold together) is involuntary leakage of urine. It is common, especially in older adults and after childbirth, and it has different mechanisms:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Stress incontinence</th><th>Urge incontinence</th></tr></thead>
 <tbody>
 <tr><th>When it happens</th><td>Coughing, sneezing, laughing, lifting</td><td>A sudden, strong urge that can't be held</td></tr>
@@ -320,13 +321,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:renal-function-urine">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="urine-concentration.html"><span>&larr; Topic 142</span><b>Concentrating the urine</b></a><a class="tb-chapter-link next" href="fluid-compartments-water.html"><span>Topic 144 &rarr;</span><b>Body fluid compartments and water balance</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

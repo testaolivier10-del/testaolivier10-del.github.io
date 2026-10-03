@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutrients, vitamins and minerals: Notes | A&amp;P</title>
+<title>Nutrients, vitamins and minerals — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Everything your body builds and every ATP it makes starts as something you ate.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/nutrition.html">
-<meta property="og:title" content="Nutrients, vitamins and minerals: Notes | A&amp;P">
+<meta property="og:title" content="Nutrients, vitamins and minerals — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Everything your body builds and every ATP it makes starts as something you ate.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/nutrition.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="nutrition">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 23 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/metabolism.html">Metabolism and nutrition</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Nutrients, vitamins and minerals: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/nutrition.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 23 &middot; Topic 133 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 23 &middot; Topic 133 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Nutrients, vitamins and minerals</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/energy.html">Energy and ATP</a><a class="anp-tag" href="../concepts/mass-balance.html">Mass balance</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="nutrition">Not practiced</span></p>
     </header>
@@ -128,7 +129,7 @@
 </ul>
 <p>Dietary fiber is carbohydrate your own enzymes cannot digest, such as cellulose. It adds bulk to the contents of your <a class="gl" href="../notes/large-intestine.html" data-c="large-intestine-regions">colon</a>, and colon bacteria ferment some of it into short fatty acids that the colon cells use as fuel.</p>
 <p><a class="figref" href="#fig-os-24-3">Figure 1</a> follows the three energy-supplying macronutrients from your plate. Digestion breaks each into its building blocks: amino acids, <a class="gl" href="../notes/biomolecules.html" data-c="glucose">glucose</a>, and glycerol with fatty acids. Your cells then either break those down further to make ATP (<a class="gl" href="../notes/enzymes-energy.html" data-c="metabolism">catabolism</a>) or build them into your own proteins, <a class="gl" href="../notes/biomolecules.html" data-c="glycogen">glycogen</a> and stored fat (anabolism).</p>
-<figure id="fig-os-24-3"  class="anp-figure"><div class="anp-figimg" data-fig="os-24-3"><img src="../figures/os-24-3.jpg" alt="A flow chart that starts with a drawing of foods at the top: fruit, eggs, milk and meat. Arrows split the food into three columns: proteins, complex carbohydrates and triglycerides. Each is broken down, by arrows marked as catabolic, into its building blocks: amino acids, glucose, and glycerol and fatty acids. All three building blocks feed arrows into a central box, energy production, where ADP becomes ATP. Side arrows marked as anabolic show amino acids built into protein in muscle, glycerol and fatty acids built into stored fat in adipose tissue, and glucose stored as glycogen in the liver and muscle. Return arrows show muscle protein and stored fat being broken back down." width="1100" height="1011" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:64.09%;width:14.91%;height:9.79%"></span><span class="anp-cover" aria-hidden="true" style="left:88.36%;top:65.28%;width:11.64%;height:7.42%"></span><span class="anp-cover" aria-hidden="true" style="left:68.73%;top:69.14%;width:14.00%;height:4.95%"></span></div><figcaption><b>Figure 1.</b> From food to fuel and building blocks. Proteins, carbohydrates and triglycerides are broken into amino acids, glucose, and glycerol with fatty acids. These can be broken down further to make ATP, or built into muscle protein, glycogen and stored fat. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 24.3, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/24-1-overview-of-metabolic-reactions">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-24-3"  class="anp-figure"><div class="anp-figimg" data-fig="os-24-3"><picture><source type="image/avif" srcset="../figures/avif/os-24-3-480.avif 480w, ../figures/avif/os-24-3-800.avif 800w, ../figures/avif/os-24-3.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-24-3.jpg" alt="A flow chart that starts with a drawing of foods at the top: fruit, eggs, milk and meat. Arrows split the food into three columns: proteins, complex carbohydrates and triglycerides. Each is broken down, by arrows marked as catabolic, into its building blocks: amino acids, glucose, and glycerol and fatty acids. All three building blocks feed arrows into a central box, energy production, where ADP becomes ATP. Side arrows marked as anabolic show amino acids built into protein in muscle, glycerol and fatty acids built into stored fat in adipose tissue, and glucose stored as glycogen in the liver and muscle. Return arrows show muscle protein and stored fat being broken back down." width="1100" height="1011" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:0.00%;top:64.09%;width:14.91%;height:9.79%"></span><span class="anp-cover" aria-hidden="true" style="left:88.36%;top:65.28%;width:11.64%;height:7.42%"></span><span class="anp-cover" aria-hidden="true" style="left:68.73%;top:69.14%;width:14.00%;height:4.95%"></span></div><figcaption><b>Figure 1.</b> From food to fuel and building blocks. Proteins, carbohydrates and triglycerides are broken into amino acids, glucose, and glycerol with fatty acids. These can be broken down further to make ATP, or built into muscle protein, glycogen and stored fat. <span class="anp-credit">Figure 24.3 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/24-1-overview-of-metabolic-reactions">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 
 <h2 id="essential-nutrients">Essential nutrients</h2>
 <p>Your <a class="gl" href="../notes/body-organization.html" data-c="major-organs">liver</a> can make glucose from amino acids, so you would survive a diet with no carbohydrate at all. You would not survive a diet with no lysine, an amino acid, however much else you ate. The difference is whether your cells can make the substance themselves.</p>
@@ -152,7 +153,7 @@
 <p>A bag of peanuts says 170 Calories per serving. That number is heat: the energy released when the food is broken down fully.</p>
 <p>A <em>calorie</em> (calor- = heat) is the heat needed to raise the temperature of 1 gram of water by 1 °C. It is tiny, so food energy is given in <em>kilocalories</em> (kilo- = thousand): 1 <span class="gl" tabindex="0" data-c="calories">kilocalorie</span> (kcal) = 1,000 calories, the heat that raises 1 kg of water by 1 °C. On food labels in the United States, "Calorie" with a capital C means kilocalorie. Most other countries label food in kilojoules as well: 1 kcal = 4.184 kJ.</p>
 <p>The energy content of food depends on which macronutrients it holds:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Carbohydrate</th><th>Protein</th><th>Fat</th><th>Alcohol</th></tr></thead>
 <tbody>
 <tr><th>Energy your body gets (kcal per gram)</th><td>About 4</td><td>About 4</td><td>About 9</td><td>About 7</td></tr>
@@ -209,7 +210,7 @@
 <li>The <em>fat-soluble vitamins</em> are <strong>A, D, E and K</strong>.</li>
 <li>The <em>water-soluble vitamins</em> are the eight <strong>B vitamins</strong> and <strong>vitamin C</strong>.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Fat-soluble vitamins</th><th>Water-soluble vitamins</th></tr></thead>
 <tbody>
 <tr><th>Which ones</th><td>A, D, E, K</td><td>The B vitamins and C</td></tr>
@@ -224,7 +225,7 @@
 <p>A mnemonic: the fat-soluble vitamins spell "ADEK", and they travel with fat everywhere: into the body, in the blood and in storage.</p>
 
 <h2 id="the-fat-soluble-vitamins">The fat-soluble vitamins</h2>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Vitamin</th><th>Main jobs</th><th>Good sources</th><th>Too little</th><th>Too much</th></tr></thead>
 <tbody>
 <tr><th>A (retinol)</th><td>Retinal, the light-absorbing part of <a class="gl" href="../notes/vision.html" data-c="phototransduction">rhodopsin</a> in <a class="gl" href="../notes/vision.html" data-c="photoreceptors">rods</a> and of the cone pigments; keeps epithelia such as the cornea and airway lining moist and healthy; immune function</td><td>Liver, dairy, eggs; beta-carotene in orange and dark green vegetables, which your gut converts to vitamin A</td><td>Night blindness first, then a dry, damaged cornea; the leading preventable cause of childhood blindness worldwide; more severe infections</td><td>Liver damage, headache, bone loss; birth defects if taken in high doses in early pregnancy</td></tr>
@@ -238,7 +239,7 @@
 
 <h2 id="the-water-soluble-vitamins">The water-soluble vitamins</h2>
 <p>Most B vitamins are parts of coenzymes in the reactions that release energy from food. Two of them, folate and B12, are needed to make DNA, so a lack of either shows first in cells that divide fast, such as those in the <a class="gl" href="../notes/bone-structure.html" data-c="bone-marrow">bone marrow</a>.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Vitamin</th><th>Coenzyme role or main job</th><th>Good sources</th><th>Too little</th></tr></thead>
 <tbody>
 <tr><th>B1 (thiamine)</th><td>Coenzyme for the enzyme that removes CO2 from <a class="gl" href="../notes/cellular-respiration.html" data-c="glycolysis-basic">pyruvate</a> as it enters the <a class="gl" href="../notes/organelles.html" data-c="mitochondrion">mitochondrion</a>, and for a similar step in the <a class="gl" href="../notes/cellular-respiration.html" data-c="aerobic-respiration">citric acid cycle</a></td><td>Whole and enriched grains, pork, legumes</td><td>Beriberi (nerve damage, <a class="gl" href="../notes/circulatory-disorders.html" data-c="heart-failure">heart failure</a>); in alcohol use disorder, Wernicke encephalopathy: confusion, unsteady <a class="gl" href="../notes/neuro-exam.html" data-c="neuro-exam-parts">gait</a> and eye movement problems</td></tr>
@@ -263,7 +264,7 @@
 <li><strong>Major minerals</strong>, needed at more than 100 mg a day: calcium, phosphorus, potassium, sodium, chloride, magnesium and sulfur.</li>
 <li><em><span class="gl" tabindex="0" data-c="minerals">Trace minerals</span></em>, needed at less than 100 mg a day: iron, zinc, copper, iodine, selenium, fluoride, manganese and molybdenum.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Mineral</th><th>Main jobs</th><th>Good sources</th><th>Too little</th></tr></thead>
 <tbody>
 <tr><th>Calcium</th><td>Bone and teeth; muscle contraction, neurotransmitter release, clotting, signaling inside cells</td><td>Dairy, fortified plant milks, leafy greens</td><td>Low bone mass, <a class="gl" href="../notes/bone-remodeling-repair.html" data-c="osteoporosis">osteoporosis</a></td></tr>
@@ -295,13 +296,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:nutrition">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="digestion-absorption.html"><span>&larr; Topic 132</span><b>Chemical digestion and absorption</b></a><a class="tb-chapter-link next" href="carbohydrate-metabolism.html"><span>Topic 134 &rarr;</span><b>Carbohydrate metabolism in detail</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

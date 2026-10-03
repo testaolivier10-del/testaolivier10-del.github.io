@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tubular reabsorption and secretion: Notes | A&amp;P</title>
+<title>Tubular reabsorption and secretion — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Your glomeruli filter about 180 liters of plasma a day, and the renal tubule hands almost all of it back.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/tubular-transport.html">
-<meta property="og:title" content="Tubular reabsorption and secretion: Notes | A&amp;P">
+<meta property="og:title" content="Tubular reabsorption and secretion — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Your glomeruli filter about 180 liters of plasma a day, and the renal tubule hands almost all of it back.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/tubular-transport.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="tubular-transport">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 24 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/urinary.html">The urinary system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Tubular reabsorption and secretion: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/tubular-transport.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 24 &middot; Topic 141 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 24 &middot; Topic 141 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Tubular reabsorption and secretion</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/gradients.html">Flow down gradients</a><a class="anp-tag" href="../concepts/mass-balance.html">Mass balance</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="tubular-transport">Not practiced</span></p>
     </header>
@@ -152,7 +153,7 @@
 <li>The <strong>paracellular route</strong> (para- = beside) goes between cells, through the <a class="gl" href="../notes/cell-junctions.html" data-c="tight-junction">tight junctions</a> that join neighboring cells near their apical ends. No membrane is crossed, so no carrier is needed, and movement is always passive, down a <a class="gl" href="../notes/gradients-flow.html" data-c="gradient">gradient</a>.</li>
 </ul>
 <p>How much the paracellular route carries depends on how tight the tight junctions are. In the proximal tubule they are <strong>leaky tight junctions</strong>: water and small <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="ion">ions</a> such as chloride, calcium and potassium slip between cells. Further along, the junctions get tighter, and the collecting duct's are tight enough that almost everything must go through cells, where hormones can control it.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Transcellular route</th><th>Paracellular route</th></tr></thead>
 <tbody>
 <tr><th>Path</th><td>Through the cell: apical membrane, cytoplasm, basolateral membrane</td><td>Between cells, through the tight junctions</td></tr>
@@ -175,7 +176,7 @@
 
 <h2 id="reabsorption-in-the-proximal-tubule">Reabsorption in the proximal tubule</h2>
 <p><span class="gl" tabindex="0" data-c="pct-reabsorption">Reabsorption in the proximal tubule</span> is the bulk step. The proximal convoluted tubule (PCT) returns about two thirds of the filtered sodium and water, and nearly all the <a class="gl" href="../notes/body-organization.html" data-c="characteristics-of-life">nutrients</a>. Its cells are built for volume: a dense <a class="gl" href="../notes/organelles.html" data-c="microvilli">brush border</a> of microvilli on the apical surface multiplies the membrane area, and the cells are packed with <a class="gl" href="../notes/organelles.html" data-c="mitochondrion">mitochondria</a> that make ATP for the pumps (<a class="figref" href="#fig-os-25-18">Figure 1</a>).</p>
-<figure id="fig-os-25-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-25-18"><img src="../figures/os-25-18.jpg" alt="A strip across the wall of the proximal tubule. On the left is the pale lumen of the tubule, bordered by a wavy brush border; in the middle is one large tubule cell; to the right is a narrow blue band of interstitial space, then a red blood vessel labeled bloodstream. Arrows show H+ leaving the cell into the lumen in exchange for Na+ entering, and Na+ entering the cell together with Cl−, Ca2+, amino acids, glucose and phosphate; these then continue across the cell and interstitial space into the blood. Mg2+ enters the cell, and water crosses all the way to the blood. At the top right, an ATP-driven pump moves Na+ out of the cell into the interstitial space and K+ into the cell." width="1100" height="789" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A proximal tubule cell between the lumen (left) and the blood (right). Sodium enters from the lumen with glucose, amino acids, phosphate and other solutes, or in exchange for H<sup>+</sup>; the sodium–potassium pump on the far side keeps cell sodium low. The drawing repeats the sodium–hydrogen exchanger between rows, but each carrier works on its own. It also draws chloride and calcium entering together with sodium; in fact most chloride and calcium here cross passively between the cells, as the text explains. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 25.18, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/25-6-tubular-reabsorption">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-25-18"  class="anp-figure"><div class="anp-figimg" data-fig="os-25-18"><picture><source type="image/avif" srcset="../figures/avif/os-25-18-480.avif 480w, ../figures/avif/os-25-18-800.avif 800w, ../figures/avif/os-25-18.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-25-18.jpg" alt="A strip across the wall of the proximal tubule. On the left is the pale lumen of the tubule, bordered by a wavy brush border; in the middle is one large tubule cell; to the right is a narrow blue band of interstitial space, then a red blood vessel labeled bloodstream. Arrows show H+ leaving the cell into the lumen in exchange for Na+ entering, and Na+ entering the cell together with Cl−, Ca2+, amino acids, glucose and phosphate; these then continue across the cell and interstitial space into the blood. Mg2+ enters the cell, and water crosses all the way to the blood. At the top right, an ATP-driven pump moves Na+ out of the cell into the interstitial space and K+ into the cell." width="1100" height="789" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> A proximal tubule cell between the lumen (left) and the blood (right). Sodium enters from the lumen with glucose, amino acids, phosphate and other solutes, or in exchange for H<sup>+</sup>; the sodium–potassium pump on the far side keeps cell sodium low. The drawing repeats the sodium–hydrogen exchanger between rows, but each carrier works on its own. It also draws chloride and calcium entering together with sodium; in fact most chloride and calcium here cross passively between the cells, as the text explains. <span class="anp-credit">Figure 25.18 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/25-6-tubular-reabsorption">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>What the proximal tubule returns</h3>
 <ul>
 <li><strong>Sodium, about 65%.</strong> It enters mostly in exchange for H<sup>+</sup> (the sodium–hydrogen exchanger, an antiporter) and with nutrients (symporters).</li>
@@ -220,7 +221,7 @@
 <p><strong>Answer.</strong> 250 mg of glucose leaves in the urine every minute, about 360 g a day if it lasted.</p>
 </div>
 <p><a class="figref" href="#fig-glucose-transport-maximum">Figure 2</a> plots all three amounts against plasma glucose.</p>
-<figure id="fig-glucose-transport-maximum"  class="anp-figure"><div class="anp-figimg" data-fig="glucose-transport-maximum"><img src="../figures/glucose-transport-maximum.svg" alt="A graph of glucose handling by both kidneys against plasma glucose concentration from 0 to 800 mg/dL. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed amount follows the filtered load exactly up to about 180 mg/dL, then bends over and levels off at the transport maximum of about 375 mg/min from about 350 mg/dL upward. The excreted amount is zero up to about 180 mg/dL, the renal threshold, then rises, running parallel to the filtered load once reabsorption has leveled off. A marker at 90 mg/dL shows a normal fasting glucose, where all filtered glucose is reabsorbed." width="640" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Glucose filtered, reabsorbed and excreted by both kidneys as plasma glucose rises. Glucose first appears in urine at the renal threshold, about 180 mg/dL; reabsorption levels off at the transport maximum, about 375 mg/min. <span class="anp-credit">LevlPrep (LevlPrep original).</span></figcaption></figure>
+<figure id="fig-glucose-transport-maximum"  class="anp-figure"><div class="anp-figimg" data-fig="glucose-transport-maximum"><img src="../figures/glucose-transport-maximum.svg" alt="A graph of glucose handling by both kidneys against plasma glucose concentration from 0 to 800 mg/dL. The filtered load rises in a straight line from 0 to 1,000 mg/min. The reabsorbed amount follows the filtered load exactly up to about 180 mg/dL, then bends over and levels off at the transport maximum of about 375 mg/min from about 380 mg/dL upward. The excreted amount is zero up to about 180 mg/dL, the renal threshold, then rises, running parallel to the filtered load once reabsorption has leveled off. A marker at 90 mg/dL shows a normal fasting glucose, where all filtered glucose is reabsorbed." width="640" height="460" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Glucose filtered, reabsorbed and excreted by both kidneys as plasma glucose rises. Glucose first appears in urine at the renal threshold, about 180 mg/dL; reabsorption levels off at the transport maximum, about 375 mg/min. <span class="anp-credit">LevlPrep (LevlPrep original).</span></figcaption></figure>
 <p>The <strong><span class="gl" tabindex="0" data-c="transport-maximum">renal threshold</span></strong> is the plasma concentration at which a substance first appears in urine. For glucose it is about 180 mg/dL. You might expect it to be T<sub>m</sub> ÷ GFR = 375 ÷ 125 = 3 mg/mL, which is 300 mg/dL. It is lower because nephrons differ: some have fewer carriers for the glucose they filter and saturate early, so glucose starts to leak through them before the kidney as a whole reaches its maximum. That early leak is the curved "splay" on the graph between about 180 and 350 mg/dL.</p>
 <p>Glucose in the urine is <em>glucosuria</em> (also called glycosuria; glyc- = <a class="gl" href="../notes/biomolecules.html" data-c="carbohydrate">sugar</a>, -uria = urine condition). The glucose left in the tubule holds water with it, which is why untreated diabetes mellitus causes polyuria and <a class="gl" href="../notes/hypothalamus-pituitary.html" data-c="thirst">thirst</a>.</p>
 <aside class="going-further"><p>Going further: a class of diabetes drugs blocks the main sodium–glucose symporter of the proximal tubule (SGLT2, for sodium–glucose linked transporter 2). Glucose then spills into the urine at normal blood levels, which lowers blood glucose. The same drugs protect the kidneys and the failing heart, through effects still being worked out.</p></aside>
@@ -240,7 +241,7 @@
 <li>No water follows, because this segment is nearly impermeable to it.</li>
 </ol>
 <p>The loop reabsorbs about 25% of the filtered sodium, most of it here. Because it removes salt but not water, the fluid leaving the thick ascending limb is more dilute than plasma, about 100 mOsm/L. That is why it is called the diluting segment. The salt it pumps out stays in the medulla and makes the fluid around the loop saltier; the next topic shows how that lets you make concentrated urine.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Descending limb</th><th>Thick ascending limb</th></tr></thead>
 <tbody>
 <tr><th>Permeability to water</th><td>High (aquaporins)</td><td>Very low</td></tr>
@@ -269,7 +270,7 @@
 </ul>
 <h3>Intercalated cells</h3>
 <p><strong>Intercalated cells</strong> (inter- = between, calated = inserted) are scattered among the principal cells. They secrete acid (H<sup>+</sup>) or bicarbonate into the urine, depending on your blood <a class="gl" href="../notes/acids-bases-ph.html" data-c="ph">pH</a>; you will see how in acid–base balance. When your body is short of potassium, some of them also reabsorb potassium.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Principal cells</th><th>Intercalated cells</th></tr></thead>
 <tbody>
 <tr><th>How common</th><td>Most of the cells lining the duct</td><td>A minority, scattered among the principal cells</td></tr>
@@ -343,7 +344,7 @@
 </svg>
 
 <figcaption><b>Figure 3.</b> Where each part of the renal tubule does its main work. Dashed arrows show substances flowing out of or into the tubule; percentages are shares of the filtered load.</figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Proximal tubule</th><th>Nephron loop</th><th>Distal tubule</th><th>Collecting duct</th></tr></thead>
 <tbody>
 <tr><th>Share of filtered sodium reabsorbed</th><td>About 65%</td><td>About 25% (thick ascending limb)</td><td>About 5%</td><td>2 to 5%, adjustable</td></tr>
@@ -359,13 +360,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:tubular-transport">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="glomerular-filtration.html"><span>&larr; Topic 140</span><b>Glomerular filtration</b></a><a class="tb-chapter-link next" href="urine-concentration.html"><span>Topic 142 &rarr;</span><b>Concentrating the urine</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

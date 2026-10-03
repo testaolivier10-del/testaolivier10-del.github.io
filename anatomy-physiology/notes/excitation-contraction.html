@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Excitation–contraction coupling: Notes | A&amp;P</title>
+<title>Excitation–contraction coupling — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="An action potential is an electrical event on a membrane. Contraction is a mechanical event among protein filaments deep inside the cell.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/excitation-contraction.html">
-<meta property="og:title" content="Excitation–contraction coupling: Notes | A&amp;P">
+<meta property="og:title" content="Excitation–contraction coupling — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="An action potential is an electrical event on a membrane. Contraction is a mechanical event among protein filaments deep inside the cell.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/excitation-contraction.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="excitation-contraction">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 10 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/muscle-tissue.html">Muscle tissue</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Excitation–contraction coupling: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/excitation-contraction.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 53 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 53 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Excitation–contraction coupling</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">10 min read</span><span class="anp-tb-chip" data-chip-topic="excitation-contraction">Not practiced</span></p>
     </header>
@@ -130,7 +131,7 @@
 <li><strong>Repolarization.</strong> The sodium channels close on their own, voltage-gated potassium channels open, and potassium flowing out returns the membrane to rest.</li>
 </ol>
 <p>The whole event lasts only about 2 to 5 milliseconds. It starts at the end plate, near the middle of the fiber, and propagates toward both ends at about 3 to 5 meters per second. It is all-or-none, so every action potential in a fiber is the same size, and each one is followed by a brief <a class="gl" href="../notes/action-potential-basics.html" data-c="refractory-period-basic">refractory period</a>.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Neuron action potential</th><th>Skeletal muscle fiber action potential</th></tr></thead>
 <tbody>
 <tr><th>Resting potential</th><td>About −70 mV</td><td>About −85 to −90 mV</td></tr>
@@ -204,7 +205,7 @@
 
 <h2 id="the-whole-sequence-and-how-long">The whole sequence, and how long it takes</h2>
 <p><a class="figref" href="#fig-os-10-8">Figure 2</a> puts the neuromuscular junction and E-C coupling together, from the <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerve</a> ending to the shortened muscle.</p>
-<figure id="fig-os-10-8"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-8"><img src="../figures/os-10-8.jpg" alt="A sequence from top to bottom. A nerve ending on a muscle fiber releases dots from its vesicles into the gap below it, where they bind channels in the folded fiber membrane. A red arrow shows the electrical signal spreading along the membrane and down a tube into the fiber. The tube touches a long sac full of small circles, and red arrows show the circles pouring out of the sac. Below, the circles attach to small round proteins on a beaded filament, and a myosin head carrying ADP and phosphate swings against it. At the bottom, the fiber and then the whole muscle are drawn shorter and thicker, with arrows pressing in from both ends." width="838" height="1105" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> From nerve impulse to contraction. Acetylcholine triggers an action potential in the sarcolemma, the action potential travels down the T tubules, calcium leaves the sarcoplasmic reticulum and binds troponin, and myosin pulls on actin. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 10.8, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-10-8"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-8"><picture><source type="image/avif" srcset="../figures/avif/os-10-8-480.avif 480w, ../figures/avif/os-10-8-800.avif 800w, ../figures/avif/os-10-8.avif 838w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-10-8.jpg" alt="A sequence from top to bottom. A nerve ending on a muscle fiber releases dots from its vesicles into the gap below it, where they bind channels in the folded fiber membrane. A red arrow shows the electrical signal spreading along the membrane and down a tube into the fiber. The tube touches a long sac full of small circles, and red arrows show the circles pouring out of the sac. Below, the circles attach to small round proteins on a beaded filament, and a myosin head carrying ADP and phosphate swings against it. At the bottom, the fiber and then the whole muscle are drawn shorter and thicker, with arrows pressing in from both ends." width="838" height="1105" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> From nerve impulse to contraction. Acetylcholine triggers an action potential in the sarcolemma, the action potential travels down the T tubules, calcium leaves the sarcoplasmic reticulum and binds troponin, and myosin pulls on actin. <span class="anp-credit">Figure 10.8 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>The steps do not all take the same time. <a class="figref" href="#fig-ec-coupling-timing">Figure 3</a> shows one fiber's response to a single stimulus:</p>
 <ul>
 <li>The <strong>action potential</strong> is over within about 5 ms.</li>
@@ -225,9 +226,9 @@
 <li><strong>Tropomyosin covers the binding sites again.</strong> The myosin heads can no longer bind actin, and the filaments stop pulling.</li>
 <li><strong>The fiber returns to its resting length.</strong> Its own elastic proteins, the pull of opposing muscles and gravity lengthen it. A muscle fiber cannot push itself longer.</li>
 </ol>
-<figure id="fig-os-10-9"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-9"><img src="../figures/os-10-9.jpg" alt="The same nerve ending, tube and sac as in the contraction drawing, but now red arrows point up, carrying the small circles back into the sac. Below, the beaded filament has its round proteins free of circles, and the myosin head lies back against its filament, not touching the beads. At the bottom, the fiber and then the whole muscle are drawn longer and thinner, with arrows pulling out at both ends." width="750" height="914" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> Relaxation. Calcium is pumped back into the sarcoplasmic reticulum, using ATP, tropomyosin covers actin again, and the muscle is pulled back to its resting length. (The figure's word "resorbed" means pumped back.) <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 10.9, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-10-9"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-9"><picture><source type="image/avif" srcset="../figures/avif/os-10-9-480.avif 480w, ../figures/avif/os-10-9.avif 750w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-10-9.jpg" alt="The same nerve ending, tube and sac as in the contraction drawing, but now red arrows point up, carrying the small circles back into the sac. Below, the beaded filament has its round proteins free of circles, and the myosin head lies back against its filament, not touching the beads. At the bottom, the fiber and then the whole muscle are drawn longer and thinner, with arrows pulling out at both ends." width="750" height="914" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> Relaxation. Calcium is pumped back into the sarcoplasmic reticulum, using ATP, tropomyosin covers actin again, and the muscle is pulled back to its resting length. (The figure's word "resorbed" means pumped back.) <span class="anp-credit">Figure 10.9 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Relaxation needs ATP twice over: the calcium pumps use it, and, as the next topic shows, myosin heads need a fresh ATP to let go of actin. A fiber that runs out of ATP cannot relax.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>During contraction</th><th>During relaxation</th></tr></thead>
 <tbody>
 <tr><th>Motor neuron</th><td>Firing</td><td>Silent</td></tr>
@@ -249,13 +250,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:excitation-contraction">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="neuromuscular-junction.html"><span>&larr; Topic 52</span><b>The neuromuscular junction</b></a><a class="tb-chapter-link next" href="cross-bridge-cycle.html"><span>Topic 54 &rarr;</span><b>The sliding filament model and cross-bridge cycle</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

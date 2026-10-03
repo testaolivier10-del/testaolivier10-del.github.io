@@ -112,17 +112,17 @@
       "Three half-moon, pocket-shaped cusps",
       "Cusps held by chordae tendineae",
       "Located at the exits from the ventricles",
-      "Include the pulmonary and aortic valves",
+      "They open when the ventricles relax",
       "Located between each atrium and its ventricle"
     ],
-    "correct": [0, 2, 3],
+    "correct": [0, 2],
     "why": {
-      "correct": "The semilunar valves are the pulmonary and aortic valves. Each has three pocket-shaped cusps and guards the exit from a ventricle into its artery. They have no cords or muscles.",
+      "correct": "Each semilunar valve has three pocket-shaped cusps and guards the exit from a ventricle into its artery. They have no cords or muscles, and they close, not open, when the ventricles relax.",
       "options": [
         "Yes. Each semilunar valve has three half-moon cusps shaped like pockets.",
         "No. Chordae tendineae hold the atrioventricular valves. Semilunar cusps have no cords.",
         "Yes. The semilunar valves sit where each ventricle empties into its artery.",
-        "Yes. The pulmonary valve and the aortic valve are the two semilunar valves.",
+        "The semilunar valves close when the ventricles relax and arterial pressure pushes blood back against their cusps.",
         "No. That location belongs to the atrioventricular valves, the tricuspid and the mitral."
       ]
     }
@@ -134,7 +134,7 @@
     "diff": 2,
     "core": ["structure-function"],
     "misconception": "papillary muscles open the valves",
-    "q": "Mrs. Okafor, 71, tears one of the papillary muscles in her left ventricle. What happens each time her left ventricle contracts?",
+    "q": "Mrs. Yilmaz, 71, tears one of the papillary muscles in her left ventricle. What happens each time her left ventricle contracts?",
     "options": [
       "The mitral valve cannot open, so blood cannot enter the ventricle",
       "Mitral cusps flip into the left atrium and blood leaks backward",
@@ -148,7 +148,7 @@
         "Papillary muscles do not open the valve. Blood pushes the cusps open. Their job is to keep the closed cusps from flipping up, so losing one causes backward leak, not a stuck valve.",
         "Correct. Without the anchor, the cusps flip into the left atrium and blood flows backward with every contraction.",
         "The aortic valve is a semilunar valve with no papillary muscles, so a torn papillary muscle does not affect it directly.",
-        "The tricuspid valve is on the right side of the heart. Mrs. Okafor's torn muscle is in the left ventricle."
+        "The tricuspid valve is on the right side of the heart. Mrs. Yilmaz's torn muscle is in the left ventricle."
       ]
     }
   },
@@ -397,17 +397,17 @@
       "The interventricular septum is thick and mostly muscle",
       "The interatrial septum separates the two atria",
       "The atrioventricular septum separates the right and left ventricles",
-      "The fossa ovalis lies in the interatrial septum",
+      "A healthy adult's interventricular septum has an opening between the ventricles",
       "The interatrial septum is thicker than the interventricular septum"
     ],
-    "correct": [0, 1, 3],
+    "correct": [0, 1],
     "why": {
-      "correct": "The interatrial septum is a thin wall between the atria and carries the fossa ovalis. The interventricular septum is a thick, mostly muscular wall between the ventricles. The atrioventricular septum is the region between the atria above and the ventricles below.",
+      "correct": "The interatrial septum is a thin wall between the atria. The interventricular septum is a thick, mostly muscular wall between the ventricles, complete in a healthy adult. The atrioventricular septum is the region between the atria above and the ventricles below.",
       "options": [
         "Correct. The interventricular septum is thick and mostly muscle, with a small, thin fibrous part near the top.",
         "Correct. The interatrial septum is the wall between the right and left atria.",
         "Incorrect. The atrioventricular septum lies between the atria and the ventricles. The wall between the two ventricles is the interventricular septum.",
-        "Correct. The fossa ovalis is a shallow dip on the right atrial side of the interatrial septum.",
+        "An opening between the ventricles is a defect. A healthy septum is complete.",
         "Incorrect. The interatrial septum is thin; the interventricular septum is much thicker, because it is part of the pumping ventricle wall."
       ]
     }

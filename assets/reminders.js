@@ -57,7 +57,7 @@
 
      Filled in, but reminders are still inert: configured() needs BOTH this and
      a VAPID key, and the key above is still blank. */
-  var ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+  var ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
 
   var ENABLED_KEY = 'levlprep_reminders';        // { hour, subscribed }
   var STATE_KEY = 'levlprep_reminder_state';     // what is waiting, per course

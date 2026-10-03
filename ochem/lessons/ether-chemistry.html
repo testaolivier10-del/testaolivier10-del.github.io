@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ether chemistry — Organic Chemistry Lesson</title>
+<title>Ether chemistry — Organic Chemistry Lesson | LevlPrep</title>
 <meta name="description" content="Learn why ethers are so unreactive compared to alcohols, how the Williamson ether synthesis makes them, and how strong acid can cleave an ether apart.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/ether-chemistry.html">
-<meta property="og:title" content="Ether chemistry — Organic Chemistry Lesson">
+<meta property="og:title" content="Ether chemistry — Organic Chemistry Lesson | LevlPrep">
 <meta property="og:description" content="Learn why ethers are so unreactive compared to alcohols, how the Williamson ether synthesis makes them, and how strong acid can cleave an ether apart.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/ether-chemistry.html">
@@ -50,7 +51,7 @@
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
         "name": "Ether chemistry"
@@ -72,7 +73,12 @@
           "name": "Alcohol reactions",
           "url": "https://levlprep.com/ochem/lessons/alcohol-reactions.html"
         }
-      ]
+      ],
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -108,8 +114,11 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Ether chemistry</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
@@ -127,7 +136,7 @@
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/ether-chemistry.html">Ether chemistry &mdash; the written section</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../mechanisms/sn2.html">SN2</a><a href="../lessons/alcohol-reactions.html">Alcohol reactions</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/epoxides.html">Epoxides</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/epoxides.html">Epoxides</a><a href="../lessons/grignard-reagents.html">Grignard reagents</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
@@ -162,7 +171,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'No O–H and no leaving group: ethers are built to be unreactive.',
-        bodyHtml: '<p class="step-body">An ether has an oxygen bonded to two carbons, R–O–R′. Methyl propyl ether, drawn below, is one. Unlike an alcohol, it has no O–H bond, so a base finds no acidic proton to remove.</p><p class="step-body">A nucleophile cannot push the oxygen off a carbon either. The group that would have to leave is an alkoxide, RO⁻, the conjugate base of an alcohol (pKa about 16). That makes it a strong base, and as poor a leaving group as hydroxide.</p><p class="step-body" style="margin-bottom:0;">So ethers stand up to bases, nucleophiles and most other reagents; hot, concentrated strong acid such as HI is what breaks them. This inertness is why diethyl ether and THF, a ring ether, are the standard solvents for very reactive reagents. Two such reagents come later in the course. Grignard reagents, RMgX, are carbon nucleophiles made from an alkyl halide and magnesium (<a class="chapter-ref" href="/ochem/learn.html#m-organometallics">Organometallics</a>). LiAlH₄ is a source of hydride, H⁻ (<a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>).</p>'
+        bodyHtml: '<p class="step-body">An ether has an oxygen bonded to two carbons, R–O–R′. Methyl propyl ether, drawn below, is one. Unlike an alcohol, it has no O–H bond, so a base finds no acidic proton to remove.</p><p class="step-body">A nucleophile cannot push the oxygen off a carbon either. The group that would have to leave is an alkoxide, RO⁻, the conjugate base of an alcohol (pKa about 16). That makes it a strong base, and as poor a leaving group as hydroxide.</p><p class="step-body" style="margin-bottom:0;">So ethers stand up to bases, nucleophiles and most other reagents; hot, concentrated strong acid such as HI is what breaks them. This inertness is why diethyl ether and THF, a ring ether, are the standard solvents for very reactive reagents. Two such reagents come later in the course. Grignard reagents, RMgX, are carbon nucleophiles made from an alkyl halide and magnesium (<a class="chapter-ref" href="/ochem/learn.html#m-grignard">Organometallic Bonding &amp; Grignard Reagents</a>). LiAlH₄ is a source of hydride, H⁻ (<a class="chapter-ref" href="/ochem/learn.html#m-redox">Oxidation &amp; Reduction</a>).</p>'
       },
       {
         render: function(api){
@@ -280,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

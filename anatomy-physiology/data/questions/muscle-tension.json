@@ -232,21 +232,20 @@
       "Recruiting more motor units",
       "Firing each active motor neuron at a higher rate",
       "Making each fiber's action potential larger",
-      "Bringing in larger motor units",
+      "Making each motor neuron supply more fibers",
       "Making each fiber's twitch stronger than all-or-none allows"
     ],
     "correct": [
       0,
-      1,
-      3
+      1
     ],
     "why": {
-      "correct": "Force is graded by recruitment (more units, with larger ones joining as force rises) and by firing rate (moving units from summation toward tetanus). A single fiber's action potential and twitch are all-or-none, so the nervous system cannot make an individual fiber contract harder by a stronger signal.",
+      "correct": "Force is graded by recruitment (more units) and by firing rate (moving units from summation toward tetanus). A single fiber's action potential and twitch are all-or-none, and each motor unit keeps the fibers it has.",
       "options": [
         "Correct. More motor units means more fibers pulling.",
         "Correct. Faster firing makes twitches sum toward tetanus.",
         "Action potentials are all-or-none; a fiber's action potential is the same size whenever it fires.",
-        "Correct. By the size principle, larger units join as the required force grows.",
+        "Each motor unit's size is fixed by how many fibers its neuron supplies. Force rises by recruiting more units, not by enlarging them.",
         "A fiber's response to one action potential is fixed; extra force comes from more fibers and faster firing, not a bigger twitch."
       ]
     }

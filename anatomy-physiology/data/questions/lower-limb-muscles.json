@@ -219,8 +219,8 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Which muscles belong to the quadriceps femoris? Select all that apply.",
-    "options": ["Rectus femoris", "Vastus lateralis", "Sartorius", "Vastus medialis", "Vastus intermedius", "Biceps femoris"],
-    "correct": [0, 1, 3, 4],
+    "options": ["Rectus femoris", "Vastus lateralis", "Sartorius", "Vastus medialis", "Gracilis", "Biceps femoris"],
+    "correct": [0, 1, 3],
     "why": {
       "correct": "The quadriceps femoris is four muscles: the rectus femoris and the vastus lateralis, medialis and intermedius. All four insert through the quadriceps tendon, patella and patellar ligament on the tibial tuberosity.",
       "options": [
@@ -228,7 +228,7 @@
         "Yes. The vastus lateralis is on the outer thigh.",
         "No. The sartorius is also in the front of the thigh, but it inserts on the medial tibia and is not part of the quadriceps.",
         "Yes. The vastus medialis is on the inner thigh above the knee.",
-        "Yes. The vastus intermedius lies deep under the rectus femoris.",
+        "The gracilis is a long, thin adductor on the medial thigh, not part of the quadriceps.",
         "No. The biceps femoris is a hamstring, on the back of the thigh."
       ]
     }
@@ -317,6 +317,11 @@
         "name": "Strength of lifting the right toes toward the shin (dorsiflexion)",
         "answer": "none",
         "why": "Dorsiflexion is done by the tibialis anterior and extensor digitorum longus on the front of the leg, which are unaffected."
+      },
+      {
+        "name": "Strength of pointing the left foot down",
+        "answer": "none",
+        "why": "Only the right calcaneal tendon is ruptured. The left calf and tendon are intact."
       }
     ],
     "why": {
@@ -467,7 +472,7 @@
     "q": "Why is the dorsogluteal site, in the upper outer buttock, avoided for intramuscular injections?",
     "options": [
       "The gluteus maximus there is too thin to hold an injection of any useful volume",
-      "The site has no bony landmarks at all",
+      "The site has no bony landmarks",
       "Muscle there absorbs drugs faster than any other site",
       "A large nerve runs nearby, and thick fat often keeps the needle out of muscle"
     ],

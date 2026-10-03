@@ -45,7 +45,7 @@
     "core": ["structure-function", "energy"],
     "misconception": "all carbohydrates reach the blood equally fast",
     "q": "Jordan, 19, is shaky and sweaty during a run because the glucose level in his blood has fallen. Glucose gel steadies him within minutes, faster than a starchy granola bar would. Why does the gel act faster?",
-    "options": ["Starch is a lipid, which cannot be absorbed", "Glucose is already a monosaccharide and needs no hydrolysis", "Glucose is hydrophobic, so it slips into the blood more easily", "Starch must be denatured by heat before it can be absorbed"],
+    "options": ["Starch is a lipid, which is absorbed slowly", "Glucose is already a monosaccharide and needs no hydrolysis", "Glucose is hydrophobic, so it slips into the blood more easily", "Starch is absorbed whole once heat has denatured it"],
     "correct": 1,
     "why": {
       "correct": "Only monosaccharides are absorbed. Starch is a polysaccharide, so digestion must first hydrolyze its many bonds to free glucose. Gel supplies free glucose that can be absorbed right away.",
@@ -102,12 +102,12 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Which of these are lipids? Select all that apply.",
-    "options": ["Cholesterol", "Glycogen", "A triglyceride", "An amino acid", "A phospholipid"],
-    "correct": [0, 2, 4],
+    "options": ["Starch", "Glycogen", "A triglyceride", "An amino acid", "A phospholipid"],
+    "correct": [2, 4],
     "why": {
-      "correct": "Lipids are grouped by their behavior: they are made mostly of carbon and hydrogen and are largely hydrophobic. Cholesterol (a steroid), triglycerides and phospholipids all qualify. Glycogen is a carbohydrate and an amino acid is the monomer of proteins.",
+      "correct": "Lipids are grouped by their behavior: they are made mostly of carbon and hydrogen and are largely hydrophobic. Triglycerides and phospholipids qualify. Starch and glycogen are carbohydrates, and an amino acid is the monomer of proteins.",
       "options": [
-        "A lipid. Cholesterol is a steroid, built on four fused rings of carbon atoms, with hydrogens around them.",
+        "Starch is a carbohydrate, a polymer of glucose.",
         "Not a lipid. Glycogen is a polysaccharide, a carbohydrate made of glucose units rich in polar –OH groups.",
         "A lipid. A triglyceride is glycerol plus three long, nonpolar fatty acid chains.",
         "Not a lipid. An amino acid, with its amino and carboxyl groups, is the monomer of proteins.",
@@ -314,7 +314,7 @@
     "diff": 3,
     "core": ["energy", "structure-function"],
     "q": "Your body stores much more energy as triglycerides than as glycogen. Which feature of triglycerides makes them the more compact long-term store?",
-    "options": ["They dissolve easily in blood, so they are always ready to use", "They are polymers of glucose with extra branches", "They contain nitrogen, which holds extra energy", "About 9 kcal per gram, stored with almost no water"],
+    "options": ["They dissolve easily in blood, so they are ready to use at once", "They are polymers of glucose with extra branches", "They contain nitrogen, which holds extra energy", "About 9 kcal per gram, stored with almost no water"],
     "correct": 3,
     "why": {
       "correct": "Triglycerides are packed with carbon–hydrogen bonds, so they hold about 9 kcal per gram against about 4 for carbohydrate. Being hydrophobic, they are stored with almost no water, while glycogen holds a lot of water with it. Both facts pack more energy into each gram of stored tissue.",

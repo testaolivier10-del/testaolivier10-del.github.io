@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A&amp;P notes: The sliding filament model and cross-bridge cycle</title>
+<title>The sliding filament model and cross-bridge… — A&amp;P Notes</title>
 <meta name="description" content="When the muscle at the front of your upper arm shortens by a few centimeters, not a single protein filament inside it gets any shorter. The filaments slide.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/cross-bridge-cycle.html">
-<meta property="og:title" content="A&amp;P notes: The sliding filament model and cross-bridge cycle">
+<meta property="og:title" content="The sliding filament model and cross-bridge… — A&amp;P Notes">
 <meta property="og:description" content="When the muscle at the front of your upper arm shortens by a few centimeters, not a single protein filament inside it gets any shorter. The filaments slide.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/cross-bridge-cycle.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="cross-bridge-cycle">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 10 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/muscle-tissue.html">Muscle tissue</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The sliding filament model and cross-bridge cycle: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cross-bridge-cycle.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 54 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 54 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">The sliding filament model and cross-bridge cycle</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/energy.html">Energy and ATP</a><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">10 min read</span><span class="anp-tb-chip" data-chip-topic="cross-bridge-cycle">Not practiced</span></p>
     </header>
@@ -114,7 +115,7 @@
 <p>In the 1950s, two research teams watched the bands of contracting muscle under the microscope and saw something surprising. As a muscle shortened, the dark A bands kept exactly the same width. Only the light I bands and the pale H zones narrowed. If the filaments themselves were shrinking, the A band, which is the length of the thick filaments, would have shrunk too.</p>
 <p>Their explanation is the <strong>sliding filament model</strong> (also called the sliding filament theory): <strong>during contraction, the thin filaments slide past the thick filaments toward the center of the sarcomere. Neither kind of filament changes length; they overlap more.</strong></p>
 <p>Because the thin filaments are anchored to the Z discs, pulling them toward the M line pulls the Z discs closer together, and the sarcomere shortens (<a class="figref" href="#fig-os-10-10">Figure 1</a>). The bands change in a predictable way:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Part of the sarcomere</th><th>What it contains</th><th>During contraction</th></tr></thead>
 <tbody>
 <tr><th>Sarcomere (Z disc to Z disc)</th><td>Everything</td><td>Shorter</td></tr>
@@ -124,7 +125,7 @@
 <tr><th>Thick and thin filaments</th><td><a class="gl" href="../notes/organelles.html" data-c="cytoskeleton">Myosin</a>; actin, troponin and <a class="gl" href="../notes/skeletal-muscle-structure.html" data-c="thin-filament">tropomyosin</a></td><td>Same length; more overlap</td></tr>
 </tbody>
 </table></div>
-<figure id="fig-os-10-10"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-10"><img src="../figures/os-10-10.jpg" alt="Two drawings of the same sarcomere, one above the other, with brackets under each marking the zigzag discs at the ends, the light bands, the dark band and the zone at its center. Above, relaxed: green thin filaments reach in from the discs but leave a wide gap in the middle, where the purple thick filaments show bare shafts. Below, contracted, with arrows pressing in from both ends: the discs are closer together, the thin filaments overlap the thick filaments almost to the center, myosin heads are attached to them, the light bands and the central zone are much narrower, and the dark band is the same width as before." width="1100" height="1007" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> One sarcomere relaxed (top) and contracted (bottom). The thin filaments have slid toward the center: the Z discs are closer, the I bands and H zone have narrowed, and the A band is unchanged. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 10.10, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-10-10"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-10"><picture><source type="image/avif" srcset="../figures/avif/os-10-10-480.avif 480w, ../figures/avif/os-10-10-800.avif 800w, ../figures/avif/os-10-10.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-10-10.jpg" alt="Two drawings of the same sarcomere, one above the other, with brackets under each marking the zigzag discs at the ends, the light bands, the dark band and the zone at its center. Above, relaxed: green thin filaments reach in from the discs but leave a wide gap in the middle, where the purple thick filaments show bare shafts. Below, contracted, with arrows pressing in from both ends: the discs are closer together, the thin filaments overlap the thick filaments almost to the center, myosin heads are attached to them, the light bands and the central zone are much narrower, and the dark band is the same width as before." width="1100" height="1007" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> One sarcomere relaxed (top) and contracted (bottom). The thin filaments have slid toward the center: the Z discs are closer, the I bands and H zone have narrowed, and the A band is unchanged. <span class="anp-credit">Figure 10.10 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>A rule of thumb: the bands that shrink are the ones defined by a <em>gap</em> between filaments of the other kind. The I band is where no thick filament reaches; the H zone is where no thin filament reaches. As overlap increases, both gaps close. The A band is defined by the thick filaments themselves, so it cannot change.</p>
 <div class="worked">
 <h3>Worked example 1: the bands of a shortening sarcomere</h3>
@@ -195,13 +196,13 @@
 </svg>
 
 <figcaption><b>Figure 2.</b> The cross-bridge cycle. Each arrow means "causes the next step". Without ATP, the cycle stops after the power stroke with the head still attached.</figcaption></figure>
-<figure id="fig-os-10-11"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-11"><img src="../figures/os-10-11.jpg" alt="Four panels in sequence, each showing a beaded thin filament above a purple thick filament, with small calcium circles around. First, a myosin head carrying ADP and phosphate attaches to the thin filament. Second, the head swings, arrows show the thin filament pulled along, and ADP and phosphate leave. Third, an ATP attaches to the head and the head comes free of the thin filament. Fourth, the head, now carrying ADP and phosphate again, is shown cocked back and ready, beside calcium bound to the thin filament." width="811" height="1259" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> The cross-bridge cycle drawn on the filaments: attachment, power stroke, detachment when ATP binds, and recocking. The figure shows ADP and phosphate leaving together; phosphate is released as the stroke begins and ADP at its end. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 10.11, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-10-11"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-11"><picture><source type="image/avif" srcset="../figures/avif/os-10-11-480.avif 480w, ../figures/avif/os-10-11-800.avif 800w, ../figures/avif/os-10-11.avif 811w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-10-11.jpg" alt="Four panels in sequence, each showing a beaded thin filament above a purple thick filament, with small calcium circles around. First, a myosin head carrying ADP and phosphate attaches to the thin filament. Second, the head swings, arrows show the thin filament pulled along, and ADP and phosphate leave. Third, an ATP attaches to the head and the head comes free of the thin filament. Fourth, the head, now carrying ADP and phosphate again, is shown cocked back and ready, beside calcium bound to the thin filament." width="811" height="1259" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> The cross-bridge cycle drawn on the filaments: attachment, power stroke, detachment when ATP binds, and recocking. The figure shows ADP and phosphate leaving together; phosphate is released as the stroke begins and ADP at its end. <span class="anp-credit">Figure 10.11 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <h3>Why the thin filaments move toward the center</h3>
 <p>The heads on each half of a thick filament point away from the M line, in opposite directions on the two halves. Every power stroke therefore pulls a thin filament toward the M line: the thin filaments on the left are pulled right, those on the right are pulled left, and the Z discs close in from both ends. The hundreds of heads on each thick filament (about 600) cycle independently, each at its own stage, so some are always attached. A single stroke moves a thin filament only a few nanometers, and a sarcomere shortening by half a micrometer needs many strokes in a row.</p>
 
 <h2 id="what-atp-does-and-what-it">What ATP does, and what it doesn't</h2>
 <p>ATP is easy to misplace in the cycle. It does two separate jobs on the myosin head, plus a third job elsewhere in the fiber:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Step</th><th>What ATP does</th><th>What happens without it</th></tr></thead>
 <tbody>
 <tr><th>Detachment</th><td>Binding of ATP releases the head from actin</td><td>The head stays locked to actin</td></tr>
@@ -210,7 +211,7 @@
 </tbody>
 </table></div>
 <p>Notice where the energy goes. The energy of ATP is stored in the cocked head <em>before</em> it binds actin, as <a class="gl" href="../notes/enzymes-energy.html" data-c="energy-forms">potential energy</a> in its bent shape. The power stroke releases that stored energy as movement. So the power stroke happens after ATP has been split, not at the moment ATP arrives. When ATP next binds, the head lets go.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>No calcium, ATP present</th><th>Calcium present, no ATP</th></tr></thead>
 <tbody>
 <tr><th>Binding sites on actin</th><td>Covered by tropomyosin</td><td>Uncovered</td></tr>
@@ -237,13 +238,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:cross-bridge-cycle">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="excitation-contraction.html"><span>&larr; Topic 53</span><b>Excitation–contraction coupling</b></a><a class="tb-chapter-link next" href="muscle-tension.html"><span>Topic 55 &rarr;</span><b>Motor units and muscle tension</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

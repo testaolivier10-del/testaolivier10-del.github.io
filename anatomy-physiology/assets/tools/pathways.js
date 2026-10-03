@@ -89,6 +89,9 @@
     var chips = '<div class="pw-chips" role="group" aria-label="Filter by chapter">' +
       '<button type="button" class="pw-chip" data-f="all" aria-pressed="' + (listFilter === 'all') + '">All</button>' +
       chapters.map(function(c){ var ch = chapterInfo(c); return '<button type="button" class="pw-chip" data-f="' + esc(c) + '" aria-pressed="' + (listFilter === c) + '">' + esc(ch ? ch.title : c) + '</button>'; }).join('') + '</div>';
+    // On a phone the chips are one select (audit 2026-10: up to 25 chips came before any content).
+    chips += '<label class="pw-chsel">Chapter <select id="pw-chsel"><option value="all">All chapters</option>' +
+      chapters.map(function(c){ var ch = chapterInfo(c); return '<option value="' + esc(c) + '"' + (listFilter === c ? ' selected' : '') + '>' + esc(ch ? ch.title : c) + '</option>'; }).join('') + '</select></label>';
 
     var groups = chapters.filter(function(c){ return listFilter === 'all' || listFilter === c; }).map(function(c){
       var ch = chapterInfo(c);
@@ -115,6 +118,8 @@
     app.querySelectorAll('.pw-chip').forEach(function(b){
       b.addEventListener('click', function(){ listFilter = b.getAttribute('data-f'); showList(); var again = app.querySelector('.pw-chip[data-f="' + listFilter + '"]'); if(again) again.focus(); });
     });
+    var sel = app.querySelector('#pw-chsel');
+    if(sel) sel.addEventListener('change', function(){ listFilter = sel.value; showList(); var ns = app.querySelector('#pw-chsel'); if(ns) ns.focus(); });
   }
 
   /* ----------------------------------------------------------- pathway view */

@@ -118,12 +118,15 @@
        decides which drills serve it and which review queue it lands in.
        Inference alone got the topic default 39% of the time, which meant a
        third of the bank was filed under whatever that topic's headline
-       concept happened to be. Rules cover 95% of it. */
+       concept happened to be. The October 2026 audit measured what the rules
+       actually reached: 54% of non-recall questions still fell back to the
+       topic default (the comment here used to claim 95% coverage). Rules for
+       every topic that had none brought that to 6%; the check-site rule
+       ochem-concept-fallback.mjs keeps it there. */
     var LG = window.OchemLegacyDiagnosis;
     var recall = LG ? LG.isRecall(topicId, raw.q) : false;
-    var concept = (LG && LG.conceptFor(topicId, raw.q)) ||
-                  C().inferConcept(raw.q, topicId) ||
-                  C().defaultConceptFor(topicId);
+    var matched = (LG && LG.conceptFor(topicId, raw.q)) || C().inferConcept(raw.q, topicId);
+    var concept = matched || C().defaultConceptFor(topicId);
     var q = {
       id: 'lb:' + topicId + ':' + index,
       kind: raw.type === 'tf' ? 'tf' : 'mcq',
@@ -144,7 +147,13 @@
       /* Vocabulary and trivia. Still worth asking — knowing that saponification
          is base-promoted ester hydrolysis is useful — but it is not evidence
          about any concept, so nothing is recorded for it. */
-      recall: recall
+      recall: recall,
+      /* True when nothing matched and the concept is only the topic default.
+         The question is still filed under it (drills and review need a home
+         for it), but no page names it to the student as "the idea this
+         question turns on": the audit found that line wrong about half the
+         time when it came from the default. */
+      conceptFallback: !matched || recall
     };
 
     /* `why` reads through to the explanations file instead of being copied in.
@@ -539,7 +548,7 @@
 
   function planLabel(plan){
     switch(plan.mode){
-      case 'adaptive': return 'Adaptive practice';
+      case 'adaptive': return window.OchemMastery && window.OchemMastery.overall && !window.OchemMastery.overall() ? 'Diagnostic' : 'Adaptive practice';
       case 'weak':     return 'Targeted: ' + (plan.conceptTitle || 'your weak spots');
       case 'mistakes': return 'Review your mistakes';
       case 'flagged':  return 'Flagged questions';

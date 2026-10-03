@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Energy balance and body temperature: Notes | A&amp;P</title>
+<title>Energy balance and body temperature — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Every ATP your cells spend ends as heat, and every calorie you eat is either spent or stored.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/energy-balance-thermoregulation.html">
-<meta property="og:title" content="Energy balance and body temperature: Notes | A&amp;P">
+<meta property="og:title" content="Energy balance and body temperature — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Every ATP your cells spend ends as heat, and every calorie you eat is either spent or stored.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/energy-balance-thermoregulation.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="energy-balance-thermoregulation">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 23 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/metabolism.html">Metabolism and nutrition</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Energy balance and body temperature: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/energy-balance-thermoregulation.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 23 &middot; Topic 137 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 23 &middot; Topic 137 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Energy balance and body temperature</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/energy.html">Energy and ATP</a><span class="anp-small">20 min read</span><span class="anp-tb-chip" data-chip-topic="energy-balance-thermoregulation">Not practiced</span></p>
     </header>
@@ -171,7 +172,7 @@
 </ol>
 <p><strong>Answer.</strong> BMI about 27.8: overweight.</p>
 </div>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>BMI (kg/m²)</th><th>Category (adults)</th></tr></thead>
 <tbody>
 <tr><th>Below 18.5</th><td>Underweight</td></tr>
@@ -183,7 +184,7 @@
 <p>BMI does not measure fat. A muscular athlete can have a BMI over 30 with little fat, and an older adult who has lost muscle can have a normal BMI with a lot of fat. Where fat sits matters too: fat inside the abdomen, suggested by a large waist, carries more risk of <a class="gl" href="../notes/pancreas-glucose.html" data-c="diabetes-mellitus">type 2 diabetes</a> and heart disease than fat under the skin of the hips. People of South Asian and East Asian ancestry develop these risks at lower BMIs, so lower cutoffs are often used for them. BMI is a screening tool, not a diagnosis.</p>
 <h3>Dietary guidelines</h3>
 <p><em>Dietary guidelines</em> are official advice on what to eat, drawn from studies of which eating patterns go with the best health. In the United States they are revised every five years. Several core messages have been steady for decades: eat mostly vegetables, fruits, whole grains, legumes, nuts and unprocessed <a class="gl" href="../notes/biomolecules.html" data-c="protein">protein</a> foods; limit added sugars, <a class="gl" href="../notes/biomolecules.html" data-c="triglyceride">saturated fat</a> and sodium; and match total energy intake to energy spending. The plate in <a class="figref" href="#fig-os-24-24">Figure 1</a>, the U.S. picture from 2011, turns this into one meal. The 2025–2030 edition, released in January 2026, went back to a food pyramid, so check which picture your course uses.</p>
-<figure id="fig-os-24-24"  class="anp-figure"><div class="anp-figimg" data-fig="os-24-24"><img src="../figures/os-24-24.jpg" alt="A dinner plate divided into four sections with a fork to its left and a small circle, like a cup, to its upper right. Vegetables fill the largest section at the lower left, fruits the upper left, grains the upper right and protein the lower right. The cup is labeled dairy. Below the plate is the web address ChooseMyPlate.gov." width="1092" height="871" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A plate model of a healthy meal: about half the plate vegetables and fruit, a quarter grains and a quarter protein, with a serving of dairy on the side. This plate was the U.S. model from 2011 until the 2025–2030 guidelines went back to a pyramid; check which version your course expects. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 24.24, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/24-7-nutrition-and-diet">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-24-24"  class="anp-figure"><div class="anp-figimg" data-fig="os-24-24"><picture><source type="image/avif" srcset="../figures/avif/os-24-24-480.avif 480w, ../figures/avif/os-24-24-800.avif 800w, ../figures/avif/os-24-24.avif 1092w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-24-24.jpg" alt="A dinner plate divided into four sections with a fork to its left and a small circle, like a cup, to its upper right. Vegetables fill the largest section at the lower left, fruits the upper left, grains the upper right and protein the lower right. The cup is labeled dairy. Below the plate is the web address ChooseMyPlate.gov." width="1092" height="871" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> A plate model of a healthy meal: about half the plate vegetables and fruit, a quarter grains and a quarter protein, with a serving of dairy on the side. This plate was the U.S. model from 2011 until the 2025–2030 guidelines went back to a pyramid; check which version your course expects. <span class="anp-credit">Figure 24.24 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/24-7-nutrition-and-diet">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 
 <h2 id="appetite-regulation">Appetite regulation</h2>
 <p>You rarely count calories, yet most adults' weight changes by only a few kilograms over years, even though they eat nearly a million kilocalories a year. Something is matching intake to spending without your help.</p>
@@ -202,7 +203,7 @@
 </ul>
 <p>Appetite is not only these signals. Habit, stress, the smell and taste of food, and the reward circuits of the brain can all override them, which is part of why highly palatable food is easy to overeat. In most people with obesity, leptin levels are high, but the hypothalamus responds to it weakly (leptin resistance), so it does not bring intake down.</p>
 <aside class="going-further"><p>Going further: drugs that mimic GLP-1, first used for type 2 diabetes, slow stomach emptying and act on the brain to increase satiety. In trials, people taking them for obesity lost about 15% of their body weight on average. Weight tends to return when the drug is stopped, which fits the idea that appetite regulation defends stored energy.</p></aside>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Ghrelin</th><th>Leptin</th></tr></thead>
 <tbody>
 <tr><th>Made by</th><td>Stomach</td><td>Adipose tissue</td></tr>
@@ -226,7 +227,7 @@
 
 <h2 id="how-heat-moves">How heat moves</h2>
 <p>You met the four ways heat is exchanged with the environment in the skin chapter. Every one of them depends on a <a class="gl" href="../notes/gradients-flow.html" data-c="gradient">gradient</a>: heat flows from warmer to cooler, and water evaporates faster into dry air than humid air.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Radiation</th><th>Conduction</th><th>Convection</th><th>Evaporation</th></tr></thead>
 <tbody>
 <tr><th>How heat moves</th><td>As infrared rays between surfaces that are not touching</td><td>Directly to an object your skin touches</td><td>Carried off by air or water flowing past your skin</td><td>As water on your skin or in your airways turns to vapor</td></tr>
@@ -257,7 +258,7 @@
 <li><strong>Central sensors:</strong> temperature-sensitive neurons in the hypothalamus itself, and others in the spinal cord and abdomen, report the core.</li>
 <li><strong><a class="gl" href="../notes/homeostasis-feedback.html" data-c="control-center">Control center</a>:</strong> the preoptic area at the front of the hypothalamus. It compares the combined input with its <a class="gl" href="../notes/homeostasis-feedback.html" data-c="set-point">set point</a> and drives heat-loss or heat-gain responses. Because it receives skin input, you start to shiver in cold wind before your core temperature has fallen at all.</li>
 </ul>
-<figure id="fig-os-24-23"  class="anp-figure"><div class="anp-figimg" data-fig="os-24-23"><img src="../figures/os-24-23.jpg" alt="A loop diagram of temperature control around a central label reading temperature homeostasis, 36.5 to 37.5 degrees Celsius. Upper half: body temperature is low (a snowflake picture); temperature-sensing neurons in the hypothalamus (drawn as a section of the brain) stimulate heat-producing mechanisms; a box shows narrowed surface arteries in the skin reducing heat loss, a shivering muscle, and the thyroid gland stimulating cells to make more heat; body temperature then rises. Lower half: body temperature is high (a sun picture); the hypothalamus starts heat-releasing mechanisms; a box shows widened surface arteries flushing the skin, a sweat gland in the skin starting to sweat, and the thyroid gland reducing heat production; body temperature then falls." width="1100" height="1853" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:41.18%;top:87.97%;width:19.27%;height:11.17%"></span></div><figcaption><b>Figure 2.</b> The hypothalamus controls body temperature. When temperature is low, it narrows skin vessels and triggers shivering; when it is high, it widens skin vessels and starts sweating. The figure also shows the thyroid raising or lowering heat production: that effect is slow and small in adults, so the fast responses come from the nervous system. The figure also says blood flow to the digestive system is kept up in the heat. In fact, heat stress narrows the vessels of the gut and kidneys, which shifts blood to the skin. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 24.23, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/24-6-energy-and-heat-balance">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-24-23"  class="anp-figure"><div class="anp-figimg" data-fig="os-24-23"><picture><source type="image/avif" srcset="../figures/avif/os-24-23-480.avif 480w, ../figures/avif/os-24-23-800.avif 800w, ../figures/avif/os-24-23.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-24-23.jpg" alt="A loop diagram of temperature control around a central label reading temperature homeostasis, 36.5 to 37.5 degrees Celsius. Upper half: body temperature is low (a snowflake picture); temperature-sensing neurons in the hypothalamus (drawn as a section of the brain) stimulate heat-producing mechanisms; a box shows narrowed surface arteries in the skin reducing heat loss, a shivering muscle, and the thyroid gland stimulating cells to make more heat; body temperature then rises. Lower half: body temperature is high (a sun picture); the hypothalamus starts heat-releasing mechanisms; a box shows widened surface arteries flushing the skin, a sweat gland in the skin starting to sweat, and the thyroid gland reducing heat production; body temperature then falls." width="1100" height="1853" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:41.18%;top:87.97%;width:19.27%;height:11.17%"></span></div><figcaption><b>Figure 2.</b> The hypothalamus controls body temperature. When temperature is low, it narrows skin vessels and triggers shivering; when it is high, it widens skin vessels and starts sweating. The figure also shows the thyroid raising or lowering heat production: that effect is slow and small in adults, so the fast responses come from the nervous system. The figure also says blood flow to the digestive system is kept up in the heat. In fact, heat stress narrows the vessels of the gut and kidneys, which shifts blood to the skin. <span class="anp-credit">Figure 24.23 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/24-6-energy-and-heat-balance">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <h3>When the body is too warm</h3>
 <ol>
 <li><strong>Skin vessels widen.</strong> Warm blood from the core flows to the skin, which loses heat to cooler surroundings and warms the sweat to speed evaporation. Skin blood flow can rise from about 0.3 L/min to 6 to 8 L/min in severe heat stress, taking a large share of <a class="gl" href="../notes/cardiac-output.html" data-c="cardiac-output">cardiac output</a>. In most of your skin, this widening comes mainly from active dilation by sympathetic <a class="gl" href="../notes/ans-signaling.html" data-c="cholinergic-adrenergic">cholinergic</a> <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerves</a>; in the palms, soles and lips it comes from withdrawal of sympathetic constrictor tone.</li>
@@ -275,7 +276,7 @@
 <li><strong>Thyroid hormones.</strong> Long exposure to cold raises thyroid hormone activity a little, and with it heat production; in adults this is slow and minor.</li>
 </ol>
 <h3>The whole loop</h3>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th>Loop part</th><th>Core too warm</th><th>Core too cold</th></tr></thead>
 <tbody>
 <tr><th>Stimulus</th><td>Rise in core or skin temperature</td><td>Fall in core or skin temperature</td></tr>
@@ -304,7 +305,7 @@
 <li>Survival depends on how long the core stays that hot.</li>
 </ol>
 <p>It comes in two forms. Exertional heat stroke strikes a fit person exercising hard, often still sweating. Classic heat stroke strikes older or ill people during heat waves, often with hot, dry skin. Treatment is to cool the core as fast as possible, best by immersing the body in cold water, before transport if that can be done safely. Fever-reducing drugs do not help, because the set point is not raised.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Heat exhaustion</th><th>Heat stroke</th></tr></thead>
 <tbody>
 <tr><th>Core temperature</th><td>Normal to about 40 °C</td><td>Above about 40 °C</td></tr>
@@ -330,13 +331,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:energy-balance-thermoregulation">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="absorptive-postabsorptive.html"><span>&larr; Topic 136</span><b>Fed and fasting states</b></a><a class="tb-chapter-link next" href="kidney-anatomy.html"><span>Topic 138 &rarr;</span><b>Kidneys and the urinary tract</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

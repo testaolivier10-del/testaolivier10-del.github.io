@@ -36,9 +36,11 @@
      node scripts/build-ochem-glossary.mjs --check    fail if stale or invalid (CI)
 */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { applyCrumbs } from './lib/crumbs.mjs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { CSP } from './lib/site-config.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -139,7 +141,7 @@ for (const e of entries) {
   groups.get(L).push(e);
 }
 const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-const title = 'Organic Chemistry Glossary — Key Terms Defined';
+const title = 'Glossary of Key Terms — Organic Chemistry | LevlPrep';
 const desc = `${entries.length} organic chemistry terms in plain words, from atomic structure to polymers, each linked to the textbook section that teaches it.`;
 const url = `${ORIGIN}/ochem/glossary.html`;
 const ld = {
@@ -163,13 +165,14 @@ const termHtml = (e) => `<li><a href="notes/${e.topic}.html">${esc(e.term)}</a><
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="${CSP}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
@@ -206,6 +209,11 @@ const html = `<!DOCTYPE html>
 .ogl-count{font:700 13px var(--font-ui);color:var(--muted);margin:8px 0 0;}
 .ogl-letter{scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
 .ogl-letter h2{font-size:22px;margin:22px 0 4px;}
+.ogl-toggle{all:unset;box-sizing:border-box;display:flex;align-items:baseline;gap:10px;width:100%;min-height:44px;cursor:pointer;font:900 22px var(--font-ui);color:var(--ink);border-bottom:2px solid var(--line);}
+.ogl-toggle::after{content:"+";margin-left:auto;font-size:20px;color:var(--muted);}
+.ogl-toggle[aria-expanded="true"]::after{content:"−";}
+.ogl-toggle:focus-visible{outline:3px solid var(--focus,#2C9C8B);outline-offset:2px;}
+.ogl-n{font:700 13px var(--font-ui);color:var(--muted);}
 .ogl-letter dl{margin:0;}
 .ogl-t{padding:11px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
 .ogl-t:target{background:var(--tint-accent);border-radius:8px;padding-left:8px;padding-right:8px;}
@@ -222,7 +230,7 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 </script>
 </head>
 <body data-course="ochem">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell narrow">
   <div class="page-head">
@@ -249,7 +257,7 @@ ${letters.map((L) => `  <section class="ogl-letter" id="l-${L}"><h2>${L}</h2><ul
 <script src="assets/glossary-page.js" defer></script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>
@@ -258,7 +266,7 @@ ${letters.map((L) => `  <section class="ogl-letter" id="l-${L}"><h2>${L}</h2><ul
 
 /* ---- write or check ------------------------------------------------------ */
 const stale = [];
-for (const [file, body] of [[OUT_JSON, jsonOut], [OUT_HTML, html]]) {
+for (const [file, body] of [[OUT_JSON, jsonOut], [OUT_HTML, applyCrumbs(html)]]) {
   const current = existsSync(file) ? readFileSync(file, 'utf8') : null;
   if (current === body) continue;
   if (check) { stale.push(file.slice(ROOT.length + 1)); continue; }

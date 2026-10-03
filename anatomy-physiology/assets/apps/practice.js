@@ -1,8 +1,11 @@
 /* A&P Practice (docs/anp-spec.md section 10).
 
    One question at a time with immediate feedback and the full explanation,
-   drawn from the course question bank (assets/bank/<chapter>.json, with the
-   explanations merged in from <chapter>-why.json, via AnpCore.loadBank). Every answer records
+   drawn from the course question bank. The page fetches the bank's index
+   first (AnpCore.loadIndex: ids, topics and tags, enough to build a set),
+   then only the chapters the chosen set draws from (loadQuestions), and each
+   explanation after its question is answered (loadWhy, inside AnpQuestions).
+   Every answer records
    through AnpQuestions -> AnpCore, so XP, mastery and the review queue move
    the same way they do inside a lesson.
 
@@ -41,14 +44,14 @@
   var MODE = byId(MODES);
   var COUNTS = [5, 10, 20, 0];   // 0 = all
 
-  var bank = null;               // merged questions, built topics only
+  var bank = null;               // question stubs from the index, built topics only
   var state = { mode: 'topic', topic: '', chapter: '', core: '', count: 10 };
   var session = null;
 
   /* ------------------------------------------------------------ data */
 
   function loadBank(){
-    return window.AnpCore.loadBank(BASE).then(function(all){
+    return window.AnpCore.loadIndex(BASE).then(function(all){
       return all.filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; });
     });
   }
@@ -312,8 +315,22 @@
     var pool = fixed || poolFor(mode);
     if(!pool.length) return;
     var mixed = mode !== 'topic';
-    var qs = fixed ? shuffle(fixed) : pickOrder(pool, mixed);
-    if(count) qs = qs.slice(0, count);
+    var picked = fixed ? shuffle(fixed) : pickOrder(pool, mixed);
+    if(count) picked = picked.slice(0, count);
+    var btn = app.querySelector('.anp-pr-start');
+    if(btn){ btn.disabled = true; btn.textContent = 'Loading questions…'; }
+    // Only the chapters this set draws from are fetched.
+    Core.loadQuestions(BASE, picked).then(function(qs){
+      if(!qs.length) throw new Error('empty');
+      begin(mode, qs);
+    }).catch(function(){
+      if(btn){ btn.disabled = false; btn.textContent = 'Start practice'; }
+      var sum = app.querySelector('.anp-pr-sum-main');
+      if(sum) sum.textContent = 'Those questions did not load. Check your connection and try again.';
+    });
+  }
+
+  function begin(mode, qs){
     session = {
       mode: mode, label: modeLabel(mode), queue: qs, i: 0, results: [], firstTry: {},
       tries: {}, retryUntilRight: mode === 'missed' || mode === 'retry', finished: false

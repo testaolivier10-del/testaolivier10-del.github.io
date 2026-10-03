@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sources &amp; How the Questions Are Written — LevlPrep</title>
 <meta name="description" content="Who makes LevlPrep, what its NREMT, organic chemistry and A&amp;P material is written against, how it is checked, and how to report a mistake.">
@@ -38,21 +39,18 @@
 <!-- Like the hub, this page draws its own header instead of calling
      LevlChrome.render, so it carries its own skip link too. -->
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header">
+<header id="site-header" data-site-header>
   <div class="site-header__inner">
-    <a class="site-header__brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
-    </a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
   </div>
-</div>
+</header>
 
 <div class="xshell narrow" id="main" role="main" data-skip-target tabindex="-1">
   <div class="hero">
     <div class="eyebrow">Sources</div>
     <h1>Where this material comes from.</h1>
     <p class="lede">Who makes LevlPrep, what the questions and lessons are written against, what checks they go through, and how to tell us when one is wrong.</p>
-    <p class="updated">Last updated 13 September 2026</p>
+    <p class="updated">Last updated 1 October 2026</p>
   </div>
 
   <div class="xsection">
@@ -62,10 +60,10 @@
 
         <h2>Who makes this</h2>
         <p>LevlPrep is an <strong>independent project</strong>, not a company and not a training program. It is not affiliated with, endorsed by, or in any way connected to the National Registry of Emergency Medical Technicians, any state EMS office, any EMS training program, or any university. Nothing here is an official practice exam, and no score on this site predicts a score on the real one.</p>
-        <p>The teaching material is free, permanently, and every course has a free daily practice allowance and a free exam; an optional one-time Premium pass adds unlimited practice, exams and analytics. There are no ads. Its <a href="privacy.html">privacy policy</a> lists everything it records.</p>
+        <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics. Every course also has a free daily practice allowance and one free exam, and Premium is a one-time pass (<a href="premium.html">Free vs Premium</a>). There are no ads. Its <a href="privacy.html">privacy policy</a> lists everything it records.</p>
 
         <h2>The NREMT-EMT question bank</h2>
-        <p>Every question is <strong>original</strong>. None is copied from the National Registry, from a textbook's test bank, or from another prep product. They are written to the structure of the National Registry's EMT content outline: the five official content areas, with assessment split out as a sixth domain here because it runs through all of them.</p>
+        <p>Every question is <strong>original</strong>. None is copied from the National Registry, from a textbook's test bank, or from another prep product. Each is tagged to one of the five domains of the National Registry&rsquo;s EMT exam outline launched on 7 April 2025 (Scene Size-Up &amp; Safety, Primary Assessment, Secondary Assessment, Patient Treatment &amp; Transport, Operations), by the step of the call it tests, and the timed exam draws them in the outline&rsquo;s proportions. The bank has multiple-response and build-list items; it does not simulate the exam&rsquo;s drag-and-drop or options-table items.</p>
         <p>The clinical content is written against the material every accredited EMT course teaches, which is set by the <strong>National EMS Education Standards</strong> and the EMT instructional guidelines. Where a question turns on a specific figure or sequence, the reference points are:</p>
         <ul>
           <li><strong>CPR, AED and resuscitation:</strong> the <strong>2025 American Heart Association Guidelines for CPR and Emergency Cardiovascular Care</strong>, including the BLS algorithms for adults, children and infants.</li>
@@ -83,13 +81,13 @@
         <ul>
           <li>The keyed answer sits in no one option position more than 40% of the time, and select-all-that-apply keys don't cluster on one set. Options are also shuffled per browser, so the letter you see is yours alone.</li>
           <li>The <strong>longest option is the correct one no more than 32% of the time</strong>, against roughly 25% by chance, and that ceiling only ever goes down. A bank that rewards "pick the long one" teaches test-taking, not medicine.</li>
-          <li>Every question has an explanation, and the explanation is what the tutor and the review screen show, so a thin one is visible immediately.</li>
+          <li>Every question has an explanation, and the explanation is what the study assistant and the review screen show, so a thin one is visible immediately.</li>
           <li>Every count the site advertises is compared against the bank itself, so the number you read is the number that exists.</li>
         </ul>
         <p>What no script can check is whether an answer is clinically right. That is editorial work, and it is never finished.</p>
 
         <h2>The Organic Chemistry course</h2>
-        <p>The course follows a standard two-semester organic chemistry sequence. The Organic Chemistry I material is structure and bonding, acids and bases, IUPAC nomenclature, conformations, stereochemistry, substitution and elimination, alkenes and alkynes, conjugation and pericyclic reactions, alcohols and ethers, and spectroscopy. The Organic Chemistry II material is carbonyl chemistry, oxidation and reduction, carboxylic acids and their derivatives, enolates, amines, aromatic chemistry, organometallics, biomolecules, polymers, and synthesis and retrosynthesis. This paragraph has now been wrong twice in the same way: it called the course one-semester after the back five modules were written, and it listed thirteen chapters after there were twenty-three. Both times the description was the last thing to catch up, which is worth saying here rather than quietly fixing, because a statement of scope is a promise and this one has been slow to keep pace with the course behind it. It is written to be a <strong>learning product</strong>, not an exam-prep product: the lessons make you perform each mechanism, and the mastery score is built from what you got right, not what you opened.</p>
+        <p>The course follows a standard two-semester organic chemistry sequence. The Organic Chemistry I material is structure and bonding, acids and bases, IUPAC nomenclature, conformations, stereochemistry, substitution and elimination, alkenes and alkynes, conjugation and pericyclic reactions, alcohols and ethers, and spectroscopy. The Organic Chemistry II material is carbonyl chemistry, oxidation and reduction, carboxylic acids and their derivatives, enolates, amines, aromatic chemistry, organometallics, biomolecules, polymers, and synthesis and retrosynthesis. It is written to be a <strong>learning product</strong>, not an exam-prep product: the lessons make you perform each mechanism, and the mastery score is built from what you got right, not what you opened.</p>
         <ul>
           <li><strong>pKa values</strong> in the acid/base tool and the lessons are the widely tabulated values used in undergraduate teaching (water-scale for common acids, DMSO-scale where that is the standard reference), rounded to the precision an introductory course uses.</li>
           <li><strong>Conformational energies</strong> (A-values, torsional and eclipsing costs) are the standard textbook figures.</li>
@@ -98,33 +96,33 @@
         </ul>
 
         <h2 id="anatomy-physiology">The Anatomy &amp; Physiology course</h2>
-        <p>The course covers a standard two-semester college anatomy and physiology sequence. Its scope is matched to the chapters of the free <i>Anatomy and Physiology 2e</i> textbook from OpenStax, to the learning outcomes that college A&amp;P courses commonly use, and to the A&amp;P content areas of the TEAS&nbsp;7. It is being built chapter by chapter; the Beta has the foundations (body orientation, chemistry, cells, tissues, signals and homeostasis) and the whole cardiovascular system.</p>
+        <p>The course covers a standard two-semester college anatomy and physiology sequence. Its scope is matched to the chapters of the free <i>Anatomy and Physiology 2e</i> textbook by J. Gordon Betts et al. (OpenStax), to the learning outcomes that college A&amp;P courses commonly use, and to the A&amp;P content areas of the TEAS&nbsp;7. The course is complete: all 27 chapters are published, from orientation to the body through development and inheritance. It carries a Beta label for one reason only, below: it has not yet been reviewed by a licensed A&amp;P instructor.</p>
         <ul>
           <li><strong>Written originally.</strong> Every lesson, notes page, question and explanation is written for this course. None of it is copied or paraphrased from a textbook, and a script compares the course's text against the OpenStax book to catch any borrowed wording.</li>
           <li><strong>Strict order.</strong> A script checks that no page uses a term before the lesson that teaches it, unless the page marks it as a short preview.</li>
           <li><strong>Current science.</strong> Where the science has moved on (for example, how fluid moves across capillary walls), the course teaches the explanation best supported by current evidence, and adds a short &ldquo;For your exam&rdquo; note where a course exam or the TEAS may still expect the older answer.</li>
           <li><strong>Not yet reviewed by an instructor.</strong> The material follows current published sources but has not yet been reviewed by a licensed A&amp;P instructor. Every question has a &ldquo;Report a problem&rdquo; link, and corrections are listed in the changelog.</li>
         </ul>
-        <p><strong>Figures.</strong> Many figures come from <a href="https://openstax.org/details/books/anatomy-and-physiology-2e" rel="noopener">OpenStax <i>Anatomy and Physiology 2e</i></a>, &copy; Rice University, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Each figure is credited under the figure itself, with a link to the page it comes from, and every one is listed on the <a href="anatomy-physiology/credits.html">figure credits page</a>. Figures are resized, and on some the printed labels are covered so you can quiz yourself. The license of each figure was checked one by one: figures that credit a third party (many microscope photos do) are not used. OpenStax and Rice University do not endorse LevlPrep. All other diagrams are drawn for this course.</p>
+        <p><strong>Figures.</strong> Many figures come from <a href="https://openstax.org/details/books/anatomy-and-physiology-2e" rel="noopener"><i>Anatomy and Physiology 2e</i></a> by J. Gordon Betts et al., OpenStax, &copy; Rice University, licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>. Each figure is credited under the figure itself, with a link to the page it comes from, and every one is listed on the <a href="anatomy-physiology/credits.html">figure credits page</a>. Figures are resized, and on some the printed labels are covered so you can quiz yourself. The license of each figure was checked one by one: figures that credit a third party (many microscope photos do) are not used. OpenStax and Rice University do not endorse LevlPrep. All other diagrams are drawn for this course.</p>
         <p><strong>TEAS.</strong> The TEAS A&amp;P practice mode spreads its questions across the twelve A&amp;P areas ATI lists for the TEAS&nbsp;7. ATI does not publish how many questions each area gets, so the split is an estimate. LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for.</p>
 
         <h2>The study assistant</h2>
-        <p>The assistant in the corner of each page answers first by <strong>quoting the site's own material</strong>: the reference pages and explanations for NREMT, the textbook fragments for Organic Chemistry. When it is set up to call an AI model, that model is given the same passages and asked to write from them. It can still be wrong. Treat it as a fast way to find the passage, and read the passage.</p>
+        <p>The study assistant in the corner of each course page answers first by <strong>quoting the site's own material</strong>: the reference pages and explanations for NREMT, the textbook sections for Organic Chemistry, and the notes pages and glossary for Anatomy &amp; Physiology. For signed-in students it also asks an AI model, which is given the same passages and asked to write from them; the <a href="privacy.html#assistant">privacy page</a> says exactly what is sent. It can still be wrong. Treat it as a fast way to find the passage, and read the passage.</p>
 
         <h2 id="mistakes">When something is wrong</h2>
         <p>No bank of two thousand questions is free of mistakes, and no script can check whether an answer is clinically right. When a key or an explanation is corrected, the change is listed on <a href="changelog.html">What&rsquo;s new</a> with the date, so you can see what moved since you last studied. Where a question and your program's material disagree, <strong>your program's material wins</strong> on your state's exam.</p>
         <h3>Telling us</h3>
-        <p>Under every explanation &mdash; in the results list after an exam, on the back of a flashcard, and after each Organic Chemistry question &mdash; there is a <strong>Report a problem</strong> link. It takes one tap: pick what&rsquo;s wrong from four options, add a sentence if you want to, send. You do not need an account and nothing about you is recorded with it.</p>
+        <p>Under every explanation &mdash; in the results list after an exam, on the back of a flashcard, and after each Organic Chemistry question &mdash; there is a <strong>Report a problem</strong> link. It takes one tap: pick what&rsquo;s wrong from five options, add a sentence if you want to, send. You do not need an account and nothing about you is recorded with it.</p>
         <p>That is the fastest route and the one worth using, because it arrives already knowing which question you meant. If you would rather write, or the problem is with something that isn&rsquo;t a question, the address is at the bottom of the <a href="privacy.html#contact">privacy page</a>.</p>
-        <p>This page promised a way to report a mistake for a long time before there was one. There is now.</p>
 
       </div>
     </div>
   </div>
-
+</div>
+<div class="xshell">
   <div class="xsection">
     <footer style="margin-top:0">
-      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
   </div>
 </div>
@@ -132,17 +130,10 @@
 <script src="assets/account.js" defer></script>
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
+<script src="assets/site-chrome.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   if(window.HubProgress) window.HubProgress.mount('hub');
-  var THEME_KEY = 'nremt_theme';
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
-  });
 });
 </script>
 </body>

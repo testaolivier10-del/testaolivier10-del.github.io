@@ -83,10 +83,10 @@ const MIME = {
 
 function walk(dir, out = []) {
   for (const name of readdirSync(dir)) {
-    if (name === '.git' || name === 'node_modules' || name === 'scripts') continue;
+    if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     // anatomy-physiology/data holds A&P sources (notes are HTML fragments).
-    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data'))) walk(full, out); }
+    if (statSync(full).isDirectory()) { if (!full.endsWith(join('anatomy-physiology', 'data')) && !full.endsWith(join('bio', 'data'))) walk(full, out); }
     else if (extname(name) === '.html') out.push(full);
   }
   return out;
@@ -120,7 +120,7 @@ try {
   process.exit(0);
 }
 
-const PORT = 8732;
+const PORT = Number(process.env.CHECK_CONSOLE_PORT || process.env.CONSOLE_PORT) || 8732;
 const ORIGIN = `http://localhost:${PORT}`;
 /* The thirteen redirect stubs at the site root are a <meta http-equiv="refresh">
    and one link, no script at all, and each one's target is itself in this
@@ -211,6 +211,100 @@ await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
   for (let next = queue.shift(); next !== undefined; next = queue.shift()) {
     results.push(await visit(next));
   }
+}));
+
+/* Flows: a page that loads clean can still fail at the one thing it is for.
+   A&P course search once caught its own error and only printed "The search
+   engine did not load" (a name collision with site-chrome.js, audit 2026-10
+   fix 6), which no listener above sees. So this types a query into the search
+   box on the A&P Learn page, follows the form to the course search page and
+   requires results there. */
+async function flowAnpSearch() {
+  const path = '/anatomy-physiology/learn.html → search';
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  const problems = [];
+  await page.route((url) => !url.href.startsWith(ORIGIN), (route) => route.abort('blockedbyclient'));
+  page.on('pageerror', (e) => problems.push(`uncaught exception: ${e.message.split('\n')[0]}`));
+  try {
+    await page.goto(ORIGIN + '/anatomy-physiology/learn.html', { waitUntil: 'load', timeout: 30000 });
+    const box = page.locator('form.anp-toc-search input[name="q"]').first();
+    await box.fill('sodium', { force: true });
+    await Promise.all([page.waitForURL(/search\.html\?q=sodium/, { timeout: 15000 }), box.press('Enter')]);
+    await page.waitForSelector('#anp-sr-results .anp-sr-hit', { timeout: 15000 });
+    const status = await page.textContent('#anp-sr-status');
+    if (/did not load/i.test(status || '')) problems.push(`search status: ${status}`);
+  } catch (e) {
+    problems.push(`A&P search returned no results: ${e.message.split('\n')[0]}`);
+  }
+  await ctx.close();
+  return { path, problems };
+}
+results.push(await flowAnpSearch());
+
+/* A&P Practice, Review and Exams load the bank's index, then only the
+   chapters a set draws from, and explanations after an answer (audit 2026-10:
+   they fetched 54 files first). Each flow runs the page for real and checks
+   both that it works and what it fetched. */
+async function anpFlow(name, fn) {
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  const problems = [], bank = [];
+  await page.route((url) => !url.href.startsWith(ORIGIN), (route) => route.abort('blockedbyclient'));
+  page.on('pageerror', (e) => problems.push(`uncaught exception: ${e.message.split('\n')[0]}`));
+  page.on('request', (r) => { const m = r.url().match(/assets\/bank\/([\w-]+\.json)/); if (m) bank.push(m[1]); });
+  try { await fn(page, bank, problems); } catch (e) { problems.push(`${name}: ${e.message.split('\n')[0]}`); }
+  await ctx.close();
+  return { path: name, problems };
+}
+// Answers whatever the question is (first option, or Check as it stands).
+async function answerOne(page) {
+  const opt = page.locator('.anp-q .anp-opt').first();
+  if (await opt.count()) await opt.click();
+  const check = page.locator('.anp-q .anp-check');
+  if (await check.count() && await check.isVisible()) await check.click();
+}
+results.push(await anpFlow('/anatomy-physiology/practice.html (flow)', async (page, bank, problems) => {
+  await page.goto(ORIGIN + '/anatomy-physiology/practice.html?topic=blood-composition', { waitUntil: 'load', timeout: 30000 });
+  await page.waitForSelector('.anp-pr-start:not([disabled])', { timeout: 15000 });
+  await page.click('.anp-pr-start');
+  await page.waitForSelector('.anp-pr-stage .anp-q', { timeout: 15000 });
+  if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched before an answer: ${bank.join(', ')}`);
+  await answerOne(page);
+  await page.waitForSelector('.anp-q-feedback .anp-verdict', { timeout: 15000 });
+  const fb = await page.textContent('.anp-q-feedback');
+  if (!fb || fb.replace(/\s+/g, ' ').trim().length < 40) problems.push('no explanation after answering');
+  const want = ['blood-why.json', 'blood.json', 'index.json'];
+  if (bank.slice().sort().join() !== want.join()) problems.push(`fetched ${bank.join(', ')}; expected only ${want.join(', ')}`);
+}));
+results.push(await anpFlow('/anatomy-physiology/review.html (flow)', async (page, bank, problems) => {
+  // One due miss from the urinary chapter, written the way AnpCore stores it.
+  await page.addInitScript(() => {
+    const t = Date.now() - 60000;
+    localStorage.setItem('anp_progress_v1', JSON.stringify({ v: 1, q: { 'anp-nephron-1': { t: 'nephron', k: [], l: 'r', d: 1, n: 1, c: 0, right: 0, seen: t, due: t, ivl: 0, ease: 2.3, lapses: 1, src: 'q' } }, lessons: {} }));
+  });
+  await page.goto(ORIGIN + '/anatomy-physiology/review.html', { waitUntil: 'load', timeout: 30000 });
+  await page.waitForSelector('#app button[data-n]', { timeout: 15000 });
+  await page.click('#app button[data-n]');
+  await page.waitForSelector('.anp-pr-stage .anp-q', { timeout: 15000 });
+  await answerOne(page);
+  await page.waitForSelector('.anp-q-feedback .anp-verdict', { timeout: 15000 });
+  const want = ['index.json', 'urinary-why.json', 'urinary.json'];
+  if (bank.slice().sort().join() !== want.join()) problems.push(`fetched ${bank.join(', ')}; expected only ${want.join(', ')}`);
+}));
+results.push(await anpFlow('/anatomy-physiology/exams.html (flow)', async (page, bank, problems) => {
+  await page.goto(ORIGIN + '/anatomy-physiology/exams.html', { waitUntil: 'load', timeout: 30000 });
+  await page.waitForSelector('.anp-ex-setup .anp-pr-start:not([disabled])', { timeout: 15000 });
+  await page.click('.anp-ex-setup .anp-pr-start');
+  await page.waitForSelector('.anp-ex-run .anp-q', { timeout: 15000 });
+  if (bank.some((f) => f.endsWith('-why.json'))) problems.push(`explanations fetched during the exam: ${bank.join(', ')}`);
+  if (bank.length > 3) problems.push(`a unit quiz fetched ${bank.length} bank files: ${bank.join(', ')}`);
+  await answerOne(page);
+  await page.click('.anp-ex-finish');
+  const yes = page.locator('.anp-ex-yes');
+  if (await yes.isVisible()) await yes.click();
+  await page.waitForSelector('.anp-ex-results', { timeout: 15000 });
+  if (!/Why:/.test(await page.textContent('.anp-ex-results'))) problems.push('the exam review shows no explanations');
 }));
 results.sort((a, b) => a.path.localeCompare(b.path));
 

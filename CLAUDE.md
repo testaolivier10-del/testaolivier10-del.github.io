@@ -18,6 +18,12 @@ review; add to it instead of guessing.
 `docs/ochem-needs-author.md`. Figures for a rewritten topic live in `scripts/ochem-figures/<topic>.mjs`
 and can also appear in its lesson (see the header of `scripts/build-ochem-figures.mjs`).
 
+## Site audit follow-up (2026-10)
+
+`docs/site-audit-followup.md` is the status file for fixing `docs/site-audit-2026-10.md`: owner checklist, decisions,
+open items. Per-finding notes are in `docs/site-audit-notes/w1.md`–`w9.md`. `scripts/ci-local.sh` runs every CI job
+locally (`BROWSER=1` adds the browser checks). New check-site rules go in `scripts/site-rules/`.
+
 ## Usage rules (save tokens, keep quality)
 
 Quality wins: if a rule would hurt quality on a task, follow quality and say why in one line.

@@ -9,7 +9,7 @@
     ],
     "q": "What is a ligand?",
     "options": [
-      "A protein channel that is always open",
+      "A protein channel that stays open at rest",
       "A cell that responds to a hormone",
       "An enzyme that breaks down chemical messengers after they are released",
       "A molecule that binds specifically to a site on a protein"
@@ -39,7 +39,7 @@
       "The hormone is broken down before reaching the skin and fat tissue",
       "Liver cells have more ATP than skin and fat cells",
       "Only the liver cells carry receptor proteins that bind this hormone",
-      "The hormone enters every cell equally but produces an effect only in the liver"
+      "The hormone enters the three tissues equally but produces an effect in the liver alone"
     ],
     "correct": 2,
     "why": {
@@ -65,7 +65,7 @@
       "It reaches the heart in a smaller amount",
       "Heart cells and gut cells carry different receptor proteins for it",
       "It is converted into a different molecule in the gut",
-      "Heart muscle has no receptor proteins for it, so it responds only indirectly"
+      "Heart muscle has no receptor proteins for it, so it responds indirectly"
     ],
     "correct": 1,
     "why": {
@@ -141,7 +141,7 @@
     "q": "Leo, 30, takes ibuprofen for a sprained ankle for two weeks. The pain and swelling ease, but he develops stomach pain. Which explanation fits both effects?",
     "options": [
       "Ibuprofen blocks the receptor proteins for neurotransmitters in both the injured ankle and the lining of the stomach",
-      "Ibuprofen raises cAMP in every cell",
+      "Ibuprofen raises cAMP throughout the body",
       "Less prostaglandin is made, so fewer pain endings are sensitized and the stomach lining is less protected",
       "Ibuprofen kills white blood cells in the ankle and stomach"
     ],
@@ -293,7 +293,7 @@
     "core": [
       "communication"
     ],
-    "q": "Level 2. A drug blocks the enzyme that breaks down cAMP in heart muscle cells. A messenger that raises cAMP in these cells then binds its receptor protein as usual. Predict each variable compared with no drug.",
+    "q": "A drug blocks the enzyme that breaks down cAMP in heart muscle cells. A messenger that raises cAMP in these cells then binds its receptor protein as usual. Predict each variable compared with no drug.",
     "variables": [
       {
         "name": "Number of receptor proteins occupied by the messenger",
@@ -413,22 +413,21 @@
       "They bind intracellular receptors",
       "They mostly change gene expression",
       "They usually act within milliseconds",
-      "They travel in blood mostly bound to proteins that carry them"
+      "They bind receptor proteins on the outer surface of the plasma membrane"
     ],
     "correct": [
       0,
       1,
-      2,
-      4
+      2
     ],
     "why": {
-      "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Being hydrophobic, they ride in the blood bound to carrier proteins. Making new proteins takes hours, so they are slow.",
+      "correct": "Lipid-soluble messengers cross the bilayer, bind receptor proteins inside the cell, and change transcription. Making new proteins takes hours, so they are slow, and their receptor proteins are not on the cell surface.",
       "options": [
         "True. Their hydrophobic structure lets them dissolve through the bilayer.",
         "True. Their receptor proteins are in the cytosol or nucleus.",
         "True. The messenger–receptor pair acts as a transcription factor.",
         "False. Changing gene expression takes hours. Millisecond responses belong to neurotransmitters acting on ion channels.",
-        "True. Hydrophobic molecules dissolve poorly in plasma, so most are carried bound to proteins."
+        "False. Their receptor proteins are inside the cell. Surface receptor proteins serve water-soluble messengers, which cannot cross the bilayer."
       ]
     }
   },
@@ -442,8 +441,8 @@
     ],
     "q": "You touch a hot pan and pull your hand away in a fraction of a second. Why is this response carried by the nervous system rather than by a hormone?",
     "options": [
-      "Hormones cannot reach the arm",
-      "Hormones only affect organs, not muscles",
+      "Hormones reach the arm poorly",
+      "Hormones affect organs, not muscles",
       "Neurotransmitters travel through the blood to the arm muscles much faster than hormones do",
       "Nerve signals reach specific muscles in milliseconds; hormones take seconds or more"
     ],

@@ -321,7 +321,7 @@
       "It is suspended in the peritoneal cavity by a mesentery",
       "It sits below the level of the iliac crest",
       "It lies behind the peritoneum, against the muscles of the back wall",
-      "It is enclosed by the ribs on all sides"
+      "It is enclosed by the ribs front and back"
     ],
     "correct": 2,
     "why": {
@@ -417,6 +417,11 @@
         "name": "Volume left in the bladder after emptying",
         "answer": "up",
         "why": "A weaker detrusor contraction may not empty the bladder fully, so more urine can be left behind."
+      },
+      {
+        "name": "Urine made by the kidneys each hour",
+        "answer": "none",
+        "why": "The drug acts on the bladder wall. The kidneys keep making urine at the same rate."
       }
     ],
     "why": {
@@ -492,14 +497,13 @@
       "Its smooth muscle is called the detrusor",
       "It is lined by transitional epithelium that folds into rugae when empty",
       "The trigone lies between the two ureter openings and the urethral opening",
-      "It lies in the pelvic cavity, behind the pubic bone",
+      "Its lining is simple columnar epithelium",
       "The trigone is where the lining folds most as the bladder empties"
     ],
     "correct": [
       0,
       1,
-      2,
-      3
+      2
     ],
     "why": {
       "correct": "The bladder is a stretchy muscular bag behind the pubic bone. Its wall is the detrusor muscle, its lining is transitional epithelium that folds into rugae when empty, and the smooth triangle of the trigone joins the ureter openings to the urethral opening.",
@@ -507,7 +511,7 @@
         "Correct. The detrusor is the smooth muscle of the bladder wall.",
         "Correct. Transitional epithelium lines it and folds into rugae when the bladder is empty.",
         "Correct. These three openings are the corners of the trigone.",
-        "Correct. The bladder sits in the pelvic cavity just behind the pubic bone.",
+        "The bladder is lined by transitional epithelium, which can stretch. Simple columnar epithelium lines much of the gut.",
         "The trigone is the one part of the lining that stays smooth. It has no rugae."
       ]
     }

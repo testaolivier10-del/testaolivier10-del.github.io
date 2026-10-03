@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hormones and how they act: Notes | Anatomy &amp; Physiology</title>
+<title>Hormones and how they act — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="How do hormones work? Every hormone is a chemical messenger carried in your blood, but hormones do not all act the same way.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/hormone-action.html">
-<meta property="og:title" content="Hormones and how they act: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Hormones and how they act — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="How do hormones work? Every hormone is a chemical messenger carried in your blood, but hormones do not all act the same way.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/hormone-action.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="hormone-action">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 17 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/endocrine.html">The endocrine system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hormones and how they act: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/hormone-action.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 17 &middot; Topic 84 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 17 &middot; Topic 84 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Hormones and how they act</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="hormone-action">Not practiced</span></p>
     </header>
@@ -122,7 +123,7 @@
 <li><strong><a class="gl" href="../notes/body-organization.html" data-c="organ">Organs</a> with a hormone-making part.</strong> The pancreas mostly makes digestive juice but contains clusters of hormone-secreting cells. The ovaries and testes make eggs and sperm and also make hormones. The thymus, behind the breastbone, releases hormones that act on developing <a class="gl" href="../notes/plasma-membrane.html" data-c="blood-cells-basic">white blood cells</a>.</li>
 <li><strong>Scattered hormone-secreting cells in organs you would not call glands.</strong> Cells in the wall of the stomach and intestine, in the heart's upper chambers, in the kidneys, in the liver, and in fat tissue all release hormones.</li>
 </ul>
-<figure id="fig-os-17-2"  class="anp-figure"><div class="anp-figimg" data-fig="os-17-2"><img src="../figures/os-17-2.jpg" alt="An outline of a human body with the endocrine glands drawn in place. In the head, a small gland hangs below the hypothalamus and another sits deep in the middle of the brain, shown enlarged in an inset. In the neck, a butterfly-shaped gland wraps the front of the trachea below the larynx; an enlarged inset shows four small glands on its back surface. A gland sits behind the breastbone above the heart. In the abdomen, a gland caps the top of each kidney and a long gland lies across the middle behind the stomach. In the pelvis, the uterus is drawn with a small oval organ at each side; below the pelvis, two oval organs hang outside the body wall." width="1100" height="1026" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:37.18%;top:0.00%;width:12.09%;height:2.63%"></span><span class="anp-cover" aria-hidden="true" style="left:82.45%;top:25.93%;width:16.18%;height:5.26%"></span><span class="anp-cover" aria-hidden="true" style="left:82.55%;top:36.94%;width:17.45%;height:7.80%"></span></div><figcaption><b>Figure 1.</b> The endocrine glands and hormone-secreting organs. The insets enlarge the brain, where the pituitary gland hangs below the hypothalamus, and the neck, where four small glands sit on the back of the thyroid gland. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 17.2, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/17-1-an-overview-of-the-endocrine-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-17-2"  class="anp-figure"><div class="anp-figimg" data-fig="os-17-2"><picture><source type="image/avif" srcset="../figures/avif/os-17-2-480.avif 480w, ../figures/avif/os-17-2-800.avif 800w, ../figures/avif/os-17-2.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-17-2.jpg" alt="An outline of a human body with the endocrine glands drawn in place. In the head, a small gland hangs below the hypothalamus and another sits deep in the middle of the brain, shown enlarged in an inset. In the neck, a butterfly-shaped gland wraps the front of the trachea below the larynx; an enlarged inset shows four small glands on its back surface. A gland sits behind the breastbone above the heart. In the abdomen, a gland caps the top of each kidney and a long gland lies across the middle behind the stomach. In the pelvis, the uterus is drawn with a small oval organ at each side; below the pelvis, two oval organs hang outside the body wall." width="1100" height="1026" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:37.18%;top:0.00%;width:12.09%;height:2.63%"></span><span class="anp-cover" aria-hidden="true" style="left:82.45%;top:25.93%;width:16.18%;height:5.26%"></span><span class="anp-cover" aria-hidden="true" style="left:82.55%;top:36.94%;width:17.45%;height:7.80%"></span></div><figcaption><b>Figure 1.</b> The endocrine glands and hormone-secreting organs. The insets enlarge the brain, where the pituitary gland hangs below the hypothalamus, and the neck, where four small glands sit on the back of the thyroid gland. <span class="anp-credit">Figure 17.2 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/17-1-an-overview-of-the-endocrine-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p>The <a class="gl" href="../notes/brain-regions.html" data-c="hypothalamus">hypothalamus</a>, which you met with the brain, links the two control systems. Its <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="neuron">neurons</a> receive <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerve</a> signals like any other neurons, and some of them release hormones into the blood. The next topic follows those neurons into the pituitary gland.</p>
 <p>Hormones regulate slow, widespread, lasting processes: <a class="gl" href="../notes/body-organization.html" data-c="characteristics-of-life">growth</a> and development, how your cells use fuel, the balance of water and <a class="gl" href="../notes/acids-bases-ph.html" data-c="salt">salts</a>, calcium in the blood, reproduction, and your response to stress. You compared nervous and endocrine signaling in Chemical signaling; this chapter adds the details.</p>
 
@@ -169,7 +170,7 @@
 <li><strong>Water-soluble hormones:</strong> all peptide and protein hormones, and epinephrine and norepinephrine.</li>
 <li><strong>Lipid-soluble hormones:</strong> all steroid hormones, and one group of amines, the hormones of the thyroid gland, which are unusually <a class="gl" href="../notes/water-solutions.html" data-c="hydrophilic-hydrophobic">hydrophobic</a> for amines because they carry several large iodine-containing groups.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Steroid vs peptide hormones"><table class="compare">
 <caption>Steroid vs peptide hormones</caption>
 <thead><tr><th></th><th>Peptide and protein hormones</th><th>Steroid hormones</th></tr></thead>
 <tbody>
@@ -234,7 +235,7 @@
 <li>cAMP binds and switches on <strong>protein kinase A</strong>. A <strong>protein kinase</strong> (kin- = to move) is an enzyme that moves a phosphate group from ATP onto another protein, which is <a class="gl" href="../notes/enzymes-energy.html" data-c="atp-hydrolysis">phosphorylation</a>.</li>
 <li>Protein kinase A phosphorylates target proteins. Some of these are other kinases, which phosphorylate still more proteins: a <strong>phosphorylation cascade</strong>. Each phosphorylated enzyme or channel becomes more or less active, and the cell's behavior changes.</li>
 </ol>
-<figure id="fig-os-17-5"  class="anp-figure"><div class="anp-figimg" data-fig="os-17-5"><img src="../figures/os-17-5.jpg" alt="A water-soluble messenger stays outside the cell and binds a protein in the plasma membrane. That protein switches on a G protein on the inner face, which switches on a membrane enzyme that turns ATP into cyclic AMP. Cyclic AMP then switches on enzymes that attach phosphate groups to other proteins in the cytoplasm, changing what the cell does." width="965" height="731" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> The cAMP pathway. A water-soluble hormone binds a receptor protein in the membrane; a G protein switches on adenylyl cyclase, which turns ATP into cAMP; cAMP switches on a protein kinase, which phosphorylates proteins in the cytoplasm. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 17.5, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/17-2-hormones">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-17-5"  class="anp-figure"><div class="anp-figimg" data-fig="os-17-5"><picture><source type="image/avif" srcset="../figures/avif/os-17-5-480.avif 480w, ../figures/avif/os-17-5-800.avif 800w, ../figures/avif/os-17-5.avif 965w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-17-5.jpg" alt="A water-soluble messenger stays outside the cell and binds a protein in the plasma membrane. That protein switches on a G protein on the inner face, which switches on a membrane enzyme that turns ATP into cyclic AMP. Cyclic AMP then switches on enzymes that attach phosphate groups to other proteins in the cytoplasm, changing what the cell does." width="965" height="731" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 3.</b> The cAMP pathway. A water-soluble hormone binds a receptor protein in the membrane; a G protein switches on adenylyl cyclase, which turns ATP into cAMP; cAMP switches on a protein kinase, which phosphorylates proteins in the cytoplasm. <span class="anp-credit">Figure 17.5 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/17-2-hormones">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Every step multiplies the signal, which is the <a class="gl" href="../notes/chemical-signaling.html" data-c="signal-amplification">signal amplification</a> you met in Chemical signaling. That is why a hormone at a billionth of a mole per liter can change a whole organ's behavior.</p>
 <h3>Switching the signal off</h3>
 <p>A signal that could not be stopped would be useless. Three things end it:</p>
@@ -262,10 +263,10 @@
 <li>The new <a class="gl" href="../notes/protein-synthesis.html" data-c="rna">mRNA</a> is translated into new proteins, often enzymes, channels or transporters.</li>
 <li>The new proteins change the cell's activity.</li>
 </ol>
-<figure id="fig-os-17-4"  class="anp-figure"><div class="anp-figimg" data-fig="os-17-4"><img src="../figures/os-17-4.jpg" alt="A fat-soluble messenger slips straight through the plasma membrane, binds a protein in the cytosol, and the pair moves into the nucleus. There it binds DNA at a gene, the gene is transcribed into messenger RNA, and the RNA is translated into a new protein in the cytoplasm." width="1100" height="735" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> A lipid-soluble hormone crosses the membrane and binds its receptor protein inside the cell. The complex binds DNA and changes transcription, and translation of the new mRNA makes new proteins. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 17.4, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/17-2-hormones">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-17-4"  class="anp-figure"><div class="anp-figimg" data-fig="os-17-4"><picture><source type="image/avif" srcset="../figures/avif/os-17-4-480.avif 480w, ../figures/avif/os-17-4-800.avif 800w, ../figures/avif/os-17-4.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-17-4.jpg" alt="A fat-soluble messenger slips straight through the plasma membrane, binds a protein in the cytosol, and the pair moves into the nucleus. There it binds DNA at a gene, the gene is transcribed into messenger RNA, and the RNA is translated into a new protein in the cytoplasm." width="1100" height="735" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> A lipid-soluble hormone crosses the membrane and binds its receptor protein inside the cell. The complex binds DNA and changes transcription, and translation of the new mRNA makes new proteins. <span class="anp-credit">Figure 17.4 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/17-2-hormones">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>This explains the steroid tablet from the start of the page. Nothing happens for hours, because <a class="gl" href="../notes/protein-synthesis.html" data-c="transcription">transcription</a> and <a class="gl" href="../notes/protein-synthesis.html" data-c="translation">translation</a> take time; and the effect lasts for days, because the new proteins last. It also explains why one steroid affects many tissues differently: each cell type has a different set of genes open to the hormone–receptor complex.</p>
 <aside class="going-further"><p>Going further: steroid hormones also have some effects that start in seconds or minutes, too fast to come from new proteins. They appear to act through receptor proteins in or near the plasma membrane. These fast effects are real but still being mapped; the slow effect through the hormone response element is the main one for every hormone in this chapter.</p></aside>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Water-soluble vs lipid-soluble hormones"><table class="compare">
 <caption>Water-soluble vs lipid-soluble hormones</caption>
 <thead><tr><th></th><th>Water-soluble hormone</th><th>Lipid-soluble hormone</th></tr></thead>
 <tbody>
@@ -332,7 +333,7 @@
 <li><strong>Synergistic</strong> (syn- = together, erg- = work): two hormones with the same effect produce more together than the sum of each alone. Epinephrine and a glucose-raising hormone from the pancreas both make the liver release glucose; together they raise glucose far more than either one's effect added up.</li>
 <li><strong>Antagonistic</strong> (anti- = against, agon- = contest): two hormones have opposite effects on the same variable. One pancreatic hormone lowers the glucose in your blood and another raises it; a hormone from the four small glands on the thyroid gland raises blood calcium and one from the thyroid gland itself lowers it.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Three kinds of hormone interaction"><table class="compare">
 <caption>Three kinds of hormone interaction</caption>
 <thead><tr><th></th><th>Permissive</th><th>Synergistic</th><th>Antagonistic</th></tr></thead>
 <tbody>
@@ -345,13 +346,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:hormone-action">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="ans-control.html"><span>&larr; Topic 83</span><b>Autonomic control and visceral reflexes</b></a><a class="tb-chapter-link next" href="hypothalamus-pituitary.html"><span>Topic 85 &rarr;</span><b>Hypothalamus and pituitary gland</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

@@ -50611,8 +50611,8 @@
       {
        "id": "proximal-convoluted-tubule",
        "name": "Proximal convoluted tubule",
+       "fix": "Proximal convoluted tubule",
        "accept": [
-        "proximal conboluted tubule",
         "pct",
         "proximal tubule",
         "proximal convoluted tubules"

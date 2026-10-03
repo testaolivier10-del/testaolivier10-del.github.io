@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grignard reagents — Organometallics | Organic Chemistry</title>
+<title>Grignard reagents — Organic Chemistry Lesson | LevlPrep</title>
 <meta name="description" content="Learn how Grignard reagents are made, what each electrophile gives, why esters add twice, and why an acidic proton anywhere in the substrate ends the reaction.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/grignard-reagents.html">
-<meta property="og:title" content="Grignard reagents — Organometallics | Organic Chemistry">
+<meta property="og:title" content="Grignard reagents — Organic Chemistry Lesson | LevlPrep">
 <meta property="og:description" content="Learn how Grignard reagents are made, what each electrophile gives, why esters add twice, and why an acidic proton anywhere in the substrate ends the reaction.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/grignard-reagents.html">
@@ -50,7 +51,7 @@
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
         "name": "Grignard reagents"
@@ -60,6 +61,11 @@
       },
       "provider": {
         "@id": "https://levlprep.com/#org"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
       }
     },
     {
@@ -80,8 +86,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Organometallics",
-          "item": "https://levlprep.com/ochem/learn.html#m-organometallics"
+          "name": "Organometallic Bonding & Grignard Reagents",
+          "item": "https://levlprep.com/ochem/learn.html#m-grignard"
         },
         {
           "@type": "ListItem",
@@ -96,12 +102,15 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-grignard">Organometallic Bonding &amp; Grignard Reagents</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Grignard reagents</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
-    <div class="eyebrow" data-chapter="organometallics">Organometallics</div>
+    <div class="eyebrow" data-chapter="grignard">Organometallic Bonding &amp; Grignard Reagents</div>
     <h1 style="margin-bottom:4px;">Grignard reagents.</h1>
     <p class="lede" style="margin-top:0;">The reagent that makes carbon skeletons buildable — and the acidic hydrogen that quietly stops it.</p>
   </div>
@@ -114,8 +123,8 @@
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/grignard-reagents.html">Grignard reagents &mdash; the written section</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/organometallic-bonding.html">Why C–metal means nucleophilic carbon</a><a href="../lessons/nucleophilic-addition.html">Nucleophilic addition</a><a href="../lessons/acyl-substitution.html">Nucleophilic acyl substitution</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/organolithium-reagents.html">Organolithiums and acetylides</a><a href="../lessons/gilman-reagents.html">Cuprates and conjugate addition</a><a href="../lessons/retrosynthesis.html">Thinking backwards</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/organometallic-bonding.html">Why C–metal means nucleophilic carbon</a><a href="../lessons/ether-chemistry.html">Ether chemistry</a><a href="../lessons/epoxides.html">Epoxides</a><a href="../lessons/electrophiles.html">Electrophiles</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/nucleophilic-addition.html">Nucleophilic addition</a><a href="../lessons/organolithium-reagents.html">Organolithiums and acetylides</a><a href="../lessons/gilman-reagents.html">Cuprates and conjugate addition</a><a href="../lessons/retrosynthesis.html">Thinking backwards</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
@@ -173,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'One mechanism, and the electrophile picks the product.',
-        bodyHtml: '<p class="step-body">Every reaction here follows one pattern. The nucleophilic carbon attacks an electrophilic carbon, and H<sub>3</sub>O<sup>+</sup>, added afterward, protonates the anion that is left. What changes is the electrophile, and with it the product and the number of carbons the chain gains.</p>' +
+        bodyHtml: '<p class="step-body">Every reaction here follows one pattern. The nucleophilic carbon attacks an electrophilic carbon. With a C=O, the &delta;+ carbonyl carbon is the target, and the C=O &pi; bond moves onto oxygen as the new bond forms. H<sub>3</sub>O<sup>+</sup>, added afterward in a separate step called the <b>workup</b>, protonates the anion that is left. What changes is the electrophile, and with it the product and the number of carbons the chain gains.</p>' +
           '<ul class="step-body">' +
           '<li><b>Formaldehyde</b> gives a primary alcohol, <b>any other aldehyde</b> a secondary one and a <b>ketone</b> a tertiary one. Count the carbon groups on the carbinol carbon, the carbon that carries the OH.</li>' +
           '<li><b>CO₂</b> gives a carboxylic acid.</li>' +
@@ -187,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'An ester takes two.',
-        bodyHtml: '<p class="step-body">Ethyl propanoate looks like a route to a ketone, but it is not. The Grignard reagent adds once, and the tetrahedral intermediate collapses by expelling ethoxide. What is left is a <b>ketone that is more electrophilic than the ester was</b>. The ester&rsquo;s OEt group donated electron density into its C=O, and that group has now left. So the next molecule of Grignard reagent attacks the ketone at once.</p>' +
+        bodyHtml: '<p class="step-body">Ethyl propanoate looks like a route to a ketone, but it is not. The Grignard reagent adds to the C=O once. The alkoxide that forms, called a tetrahedral intermediate because its carbon now carries four groups, re-forms the C=O and pushes out ethoxide. What is left is a <b>ketone that is more electrophilic than the ester was</b>. The ester&rsquo;s OEt group donated electron density into its C=O, and that group has now left. So the next molecule of Grignard reagent attacks the ketone at once.</p>' +
           '<p class="step-body">The reaction therefore takes two equivalents of Grignard reagent, and the product is a tertiary alcohol carrying <b>two identical R groups</b> from the reagent. Using only one equivalent does not stop it at the ketone, because the ketone is consumed faster than it forms.</p>',
         diagramHtml: '<!-- fig:ester-adds-twice:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 696" role="img" aria-label="Four stacked panels. 1: CH3MgBr adds to ethyl propanoate; one curved arrow runs from the C–Mg bond to the carbonyl carbon and a second from the C=O double bond onto oxygen. 2: the tetrahedral intermediate, with O minus, the new CH3, an ethyl and an ethoxy group on one carbon; an arrow from an oxygen lone pair re-forms the C=O and a second arrow sends the C–OEt bond electrons onto the ethoxy oxygen, which leaves as ethoxide. 3: the ketone butan-2-one meets a second CH3MgBr, with the same two arrows. 4: after H3O+ workup, 2-methylbutan-2-ol, with both CH3 groups from the reagent highlighted."><rect class="fg-panel" x="16" y="8" width="308" height="160" rx="10"></rect><text class="fg-tag" x="28" y="28" text-anchor="start" font-size="11">1 · the first CH₃ adds to the ester</text><line class="fg-bond" x1="218" y1="104" x2="218" y2="91"></line><line class="fg-bond" x1="226" y1="104" x2="226" y2="91"></line><line class="fg-bond" x1="208.89" y1="129.18" x2="196.61" y2="137.78"></line><line class="fg-bond" x1="235.11" y1="129.18" x2="245.76" y2="136.63"></line><circle class="fg-atom" cx="222" cy="76" r="15"></circle><text class="fg-lbl" x="222" y="80.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="184.32" cy="146.38" r="15"></circle><text class="fg-lbl" x="184.32" y="150.27" text-anchor="middle" font-size="10.5">Et</text><circle class="fg-atom" cx="259.68" cy="146.38" r="17"></circle><text class="fg-lbl" x="259.68" y="149.9" text-anchor="middle" font-size="9.5">OEt</text><circle class="fg-atom" cx="222" cy="120" r="16"></circle><circle class="fg-atom-hi" cx="222" cy="120" r="16"></circle><text class="fg-lbl" x="222" y="124.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="205.2" cy="61.1" r="2.4"></circle><circle class="fg-lp" cx="200.7" cy="68.9" r="2.4"></circle><circle class="fg-lp" cx="243.3" cy="68.9" r="2.4"></circle><circle class="fg-lp" cx="238.8" cy="61.1" r="2.4"></circle><line class="fg-bond" x1="101" y1="84" x2="82" y2="84"></line><circle class="fg-atom" cx="60" cy="84" r="22"></circle><text class="fg-lbl" x="60" y="87.52" text-anchor="middle" font-size="9.5">MgBr</text><circle class="fg-atom" cx="118" cy="84" r="17"></circle><circle class="fg-atom-hi" cx="118" cy="84" r="17"></circle><text class="fg-lbl" x="118" y="87.52" text-anchor="middle" font-size="9.5">H₃C</text><path class="fg-arrow" d="M91.9 93 Q142.93 128.47 196.14 118.48"></path><path class="fg-head" d="M204 117 L196.91 122.56 L195.37 114.39 Z"></path><path class="fg-arrow" d="M230 96 Q241.9 94.62 240.69 89.79"></path><path class="fg-head" d="M239 83 L244.23 88.91 L237.16 90.67 Z"></path><rect class="fg-panel" x="16" y="178" width="308" height="176" rx="10"></rect><text class="fg-tag" x="28" y="198" text-anchor="start" font-size="11">2 · ethoxide leaves: now a ketone</text><line class="fg-bond" x1="170" y1="272" x2="170" y2="258"></line><line class="fg-bond-hi" x1="154" y1="288" x2="139" y2="288"></line><line class="fg-bond" x1="170" y1="304" x2="170" y2="317"></line><line class="fg-bond" x1="186" y1="288" x2="205" y2="288"></line><circle class="fg-atom" cx="170" cy="242" r="16"></circle><text class="fg-lbl" x="170" y="246.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="122" cy="288" r="17"></circle><circle class="fg-atom-hi" cx="122" cy="288" r="17"></circle><text class="fg-lbl" x="122" y="291.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="170" cy="332" r="15"></circle><text class="fg-lbl" x="170" y="335.89" text-anchor="middle" font-size="10.5">Et</text><circle class="fg-atom" cx="222" cy="288" r="17"></circle><circle class="fg-atom-warn" cx="222" cy="288" r="17"></circle><text class="fg-lbl" x="222" y="291.52" text-anchor="middle" font-size="9.5">OEt</text><circle class="fg-atom" cx="170" cy="288" r="16"></circle><circle class="fg-atom-hi" cx="170" cy="288" r="16"></circle><text class="fg-lbl" x="170" y="292.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="174.5" cy="220" r="2.4"></circle><circle class="fg-lp" cx="165.5" cy="220" r="2.4"></circle><circle class="fg-lp" cx="148" cy="237.5" r="2.4"></circle><circle class="fg-lp" cx="148" cy="246.5" r="2.4"></circle><circle class="fg-lp" cx="192" cy="246.5" r="2.4"></circle><circle class="fg-lp" cx="192" cy="237.5" r="2.4"></circle><text class="fg-warn" x="189.8" y="227.2" text-anchor="middle" font-size="15">−</text><text class="fg-tag" x="212" y="246" text-anchor="start" font-size="11">⁺MgBr</text><path class="fg-arrow" d="M145 249 Q145.76 266.22 156 266.09"></path><path class="fg-head" d="M163 266 L156.05 269.73 L155.95 262.45 Z"></path><path class="fg-arrow" d="M196 295 Q200.9 311.83 211.17 309.53"></path><path class="fg-head" d="M218 308 L211.96 313.08 L210.37 305.98 Z"></path><text class="fg-tag-warn" x="232" y="332" text-anchor="middle" font-size="11">EtO⁻ leaves</text><rect class="fg-panel" x="16" y="364" width="308" height="160" rx="10"></rect><text class="fg-tag" x="28" y="384" text-anchor="start" font-size="11">3 · a second CH₃ adds to the ketone</text><line class="fg-bond" x1="218" y1="460" x2="218" y2="447"></line><line class="fg-bond" x1="226" y1="460" x2="226" y2="447"></line><line class="fg-bond" x1="208.89" y1="485.18" x2="196.61" y2="493.78"></line><line class="fg-bond-hi" x1="235.11" y1="485.18" x2="245.76" y2="492.63"></line><circle class="fg-atom" cx="222" cy="432" r="15"></circle><text class="fg-lbl" x="222" y="436.44" text-anchor="middle" font-size="12">O</text><circle class="fg-atom" cx="184.32" cy="502.38" r="15"></circle><text class="fg-lbl" x="184.32" y="506.27" text-anchor="middle" font-size="10.5">Et</text><circle class="fg-atom" cx="259.68" cy="502.38" r="17"></circle><circle class="fg-atom-hi" cx="259.68" cy="502.38" r="17"></circle><text class="fg-lbl" x="259.68" y="505.9" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="222" cy="476" r="16"></circle><circle class="fg-atom-hi" cx="222" cy="476" r="16"></circle><text class="fg-lbl" x="222" y="480.44" text-anchor="middle" font-size="12">C</text><circle class="fg-lp" cx="205.2" cy="417.1" r="2.4"></circle><circle class="fg-lp" cx="200.7" cy="424.9" r="2.4"></circle><circle class="fg-lp" cx="243.3" cy="424.9" r="2.4"></circle><circle class="fg-lp" cx="238.8" cy="417.1" r="2.4"></circle><line class="fg-bond" x1="101" y1="440" x2="82" y2="440"></line><circle class="fg-atom" cx="60" cy="440" r="22"></circle><text class="fg-lbl" x="60" y="443.52" text-anchor="middle" font-size="9.5">MgBr</text><circle class="fg-atom" cx="118" cy="440" r="17"></circle><circle class="fg-atom-hi" cx="118" cy="440" r="17"></circle><text class="fg-lbl" x="118" y="443.52" text-anchor="middle" font-size="9.5">H₃C</text><path class="fg-arrow" d="M91.9 449 Q142.93 484.47 196.14 474.48"></path><path class="fg-head" d="M204 473 L196.91 478.56 L195.37 470.39 Z"></path><path class="fg-arrow" d="M230 452 Q241.9 450.62 240.69 445.79"></path><path class="fg-head" d="M239 439 L244.23 444.91 L237.16 446.67 Z"></path><rect class="fg-panel" x="16" y="534" width="308" height="154" rx="10"></rect><text class="fg-tag" x="28" y="554" text-anchor="start" font-size="11">4 · then H₃O⁺</text><line class="fg-bond" x1="204" y1="608" x2="204" y2="596"></line><line class="fg-bond-hi" x1="188" y1="624" x2="173" y2="624"></line><line class="fg-bond" x1="204" y1="640" x2="204" y2="653"></line><line class="fg-bond-hi" x1="220" y1="624" x2="235" y2="624"></line><circle class="fg-atom" cx="204" cy="580" r="16"></circle><text class="fg-lbl" x="204" y="583.89" text-anchor="middle" font-size="10.5">OH</text><circle class="fg-atom" cx="156" cy="624" r="17"></circle><circle class="fg-atom-hi" cx="156" cy="624" r="17"></circle><text class="fg-lbl" x="156" y="627.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="204" cy="668" r="15"></circle><text class="fg-lbl" x="204" y="671.89" text-anchor="middle" font-size="10.5">Et</text><circle class="fg-atom" cx="252" cy="624" r="17"></circle><circle class="fg-atom-hi" cx="252" cy="624" r="17"></circle><text class="fg-lbl" x="252" y="627.52" text-anchor="middle" font-size="9.5">CH₃</text><circle class="fg-atom" cx="204" cy="624" r="15"></circle><text class="fg-lbl" x="204" y="628.44" text-anchor="middle" font-size="12">C</text><text class="fg-tag" x="28" y="656" text-anchor="start" font-size="11">both CH₃ groups</text><text class="fg-tag" x="28" y="670" text-anchor="start" font-size="11">came from the reagent</text></svg><figcaption>Ethyl propanoate and two CH₃MgBr give 2-methylbutan-2-ol. Panel 2 shows the C–OEt bond that breaks. Follow the two highlighted CH₃ groups into the product.</figcaption></figure><!-- fig:ester-adds-twice:end -->'
       },
@@ -325,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

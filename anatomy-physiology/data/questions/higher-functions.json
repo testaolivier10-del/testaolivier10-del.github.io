@@ -177,7 +177,7 @@
     "core": [
       "communication"
     ],
-    "q": "Late in the evening, after 16 hours awake, you drink a strong coffee. Predict the change in each over the next hour.",
+    "q": "Late in the evening, after 16 hours awake, you drink a strong coffee. Predict the change in each over the next hour, compared with the same hour without the coffee.",
     "variables": [
       {
         "name": "Binding of adenosine to its receptor proteins in the brain",
@@ -193,6 +193,11 @@
         "name": "Time it takes to fall asleep once in bed",
         "answer": "up",
         "why": "With the sleep pressure signal blocked, the arousal systems stay active longer, so falling asleep takes longer."
+      },
+      {
+        "name": "Adenosine in the brain",
+        "answer": "none",
+        "why": "Caffeine blocks the receptor proteins adenosine binds. It does not remove adenosine, so the amount is about the same as without the coffee, which is why sleepiness returns as the caffeine wears off."
       }
     ],
     "why": {
@@ -370,21 +375,20 @@
       "The EEG shows fast, small waves like the awake brain",
       "Most skeletal muscles are paralyzed, but the diaphragm keeps working",
       "Slow, large delta waves dominate the EEG",
-      "Most vivid, story-like dreams happen",
+      "It fills most of the first hour of sleep",
       "REM periods are longest in the first cycle of the night"
     ],
     "correct": [
       0,
-      1,
-      3
+      1
     ],
     "why": {
-      "correct": "In REM sleep the EEG looks awake, the eyes dart, dreams are vivid, and brainstem neurons block the motor neurons to almost all skeletal muscles except the eye muscles and diaphragm. REM periods lengthen toward morning.",
+      "correct": "In REM sleep the EEG looks awake, and brainstem neurons block the motor neurons to almost all skeletal muscles except the eye muscles and diaphragm. The first hour is mostly deep slow-wave sleep, and REM periods lengthen toward morning.",
       "options": [
         "Yes. The REM EEG is fast and small, like being awake.",
         "Yes. The body is limp except the eye muscles and the diaphragm, so breathing continues.",
         "No. Slow, large delta waves are the sign of N3, deep non-REM sleep.",
-        "Yes. Most vivid, story-like dreams happen in REM sleep.",
+        "The first hour is mostly deep, slow-wave sleep. REM periods start short and lengthen through the night.",
         "No. REM periods are shortest early in the night and grow longer toward morning."
       ]
     }

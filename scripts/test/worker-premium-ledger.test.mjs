@@ -3,8 +3,10 @@
 import { test, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  premiumRefund, premiumGuarantee, guaranteeRefusal, examHistory, emailKey, GUARANTEE,
+  premiumRefund, premiumGuarantee, guaranteeRefusal, examHistory, emailKey, normalizeEmail, countableExams,
+  GUARANTEE, EXAM_LOG_SINCE,
 } from '../../worker/src/premium.js';
+import { premiumRpc } from './worker-fakes.mjs';
 
 const realFetch = globalThis.fetch;
 afterEach(() => { globalThis.fetch = realFetch; });
@@ -17,7 +19,7 @@ const ENV = { SUPABASE_URL: 'https://db.test', SUPABASE_SERVICE_KEY: 'svc', POLA
 /* Just enough PostgREST, Supabase auth and Polar for these two routes. The
    ledger and the passes outlive a "deleted account" because the test keeps
    them while swapping the token's user. */
-function world({ users, passes = [], progress = {}, polarOk = true }) {
+function world({ users, passes = [], progress = {}, completions = [], polarOk = true, polarStatus = null }) {
   const ledger = [];
   const claims = [];
   const refundsAsked = [];
@@ -27,6 +29,7 @@ function world({ users, passes = [], progress = {}, polarOk = true }) {
     if (c === 'is.null') return v == null;
     if (c === 'not.is.null') return v != null;
     if (c.startsWith('eq.')) return String(v) === c.slice(3);
+    if (c.startsWith('in.(')) return c.slice(4, -1).split(',').includes(String(v));
     throw new Error('filter ' + c);
   });
   globalThis.fetch = async (url, init = {}) => {
@@ -38,10 +41,14 @@ function world({ users, passes = [], progress = {}, polarOk = true }) {
     }
     if (u.hostname === 'api.polar.sh') {
       refundsAsked.push(JSON.parse(init.body));
-      return new Response('{}', { status: polarOk ? 201 : 422 });
+      if (polarStatus === 'timeout') throw new Error('The operation was aborted due to timeout');
+      return new Response('{}', { status: polarStatus || (polarOk ? 201 : 422) });
+    }
+    if (u.pathname.startsWith('/rest/v1/rpc/')) {
+      return premiumRpc(passes, u.pathname.split('/').pop(), JSON.parse(init.body || '{}'), NOW) || new Response('{}', { status: 404 });
     }
     const table = u.pathname.replace('/rest/v1/', '');
-    const rows = { premium_passes: passes, premium_ledger: ledger, premium_guarantee_claims: claims }[table];
+    const rows = { premium_passes: passes, premium_ledger: ledger, premium_guarantee_claims: claims, exam_completions: completions }[table];
     if (table === 'user_progress') {
       const id = u.searchParams.get('id').slice(3);
       return new Response(JSON.stringify(progress[id] ? [{ data: progress[id] }] : []), { status: 200 });
@@ -50,11 +57,13 @@ function world({ users, passes = [], progress = {}, polarOk = true }) {
     if (method === 'GET') {
       const out = rows.filter((r) => eq(r, u));
       if (u.searchParams.get('order') === 'expires_at.desc') out.sort((a, b) => b.expires_at.localeCompare(a.expires_at));
+      if (u.searchParams.get('limit') === '1') out.splice(1);
       return new Response(JSON.stringify(out), { status: 200 });
     }
     if (method === 'POST') {
       const row = JSON.parse(init.body);
       if (table === 'premium_ledger' && ledger.some((r) => r.email_key === row.email_key && r.kind === row.kind)) {
+        if (/ignore-duplicates/.test(init.headers?.Prefer || '')) return new Response(null, { status: 201 });
         return new Response('{"code":"23505"}', { status: 409 });
       }
       rows.push(row);
@@ -90,8 +99,7 @@ test('refund: once per email, even after the account is deleted and made again',
   });
   const first = await premiumRefund(req('a', { order_id: ORDER }), ENV, NOW);
   assert.equal(first.status, 200);
-  assert.equal(w.ledger.length, 1);
-  assert.equal(w.ledger[0].email_key, await emailKey('sam@example.com'));
+  assert.equal(w.ledger[0].email_key, await emailKey('sam@example.com'), 'the address is the lock');
   assert.ok(!JSON.stringify(w.ledger).includes('example'), 'the address itself is never stored');
   // u1 deleted; u2 is the same person with a new account.
   w.passes.splice(0, 1);
@@ -111,6 +119,53 @@ test('refund: a refund Polar refuses does not use up the one refund', async () =
   assert.equal(r.status, 502);
   assert.equal(w.ledger.length, 0);
   assert.equal(w.passes[0].refunded_at, undefined);
+});
+
+test('refund: a timeout or a 5xx keeps the lock (it may have gone through)', async () => {
+  for (const polarStatus of [503, 'timeout']) {
+    const w = world({
+      users: { a: { id: 'u1', email: 'a@b.co' } },
+      passes: [{ user_id: 'u1', course: 'ochem', order_id: ORDER, amount_cents: 2030, created_at: iso(NOW - DAY), expires_at: iso(NOW + 80 * DAY) }],
+      polarStatus,
+    });
+    const r = await premiumRefund(req('a', { order_id: ORDER }), ENV, NOW);
+    assert.equal(r.status, 502, String(polarStatus));
+    assert.ok(w.ledger.length > 0, `${polarStatus}: the lock was released`);
+    const again = await premiumRefund(req('a', { order_id: ORDER }), ENV, NOW);
+    assert.equal(again.status, 409, `${polarStatus}: a second click could refund twice`);
+    assert.equal(w.refundsAsked.length, 1);
+  }
+});
+
+test('refund: aliases of one address, and one Polar customer, share the one refund', async () => {
+  assert.equal(normalizeEmail(' Sam.Lee+prep@GoogleMail.com '), 'samlee@gmail.com');
+  assert.equal(normalizeEmail('sam.lee+x@school.edu'), 'sam.lee@school.edu');
+  assert.equal(await emailKey('s.am+1@gmail.com'), await emailKey('sam@gmail.com'));
+  const w = world({
+    users: { a: { id: 'u1', email: 'sam@gmail.com' }, b: { id: 'u2', email: 's.a.m+again@gmail.com' }, c: { id: 'u3', email: 'other@x.org' } },
+    passes: [
+      { user_id: 'u1', course: 'nremt', order_id: ORDER, amount_cents: 2030, created_at: iso(NOW - DAY), expires_at: iso(NOW + 80 * DAY), customer_id: 'cus_1' },
+      { user_id: 'u2', course: 'nremt', order_id: ORDER2, amount_cents: 2030, created_at: iso(NOW - DAY), expires_at: iso(NOW + 80 * DAY) },
+      { user_id: 'u3', course: 'nremt', order_id: '77777777-2222-3333-4444-555555555555', amount_cents: 2030, created_at: iso(NOW - DAY), expires_at: iso(NOW + 80 * DAY), customer_id: 'cus_1' },
+    ],
+  });
+  assert.equal((await premiumRefund(req('a', { order_id: ORDER }), ENV, NOW)).status, 200);
+  assert.equal((await premiumRefund(req('b', { order_id: ORDER2 }), ENV, NOW)).status, 409, 'a Gmail alias got a second refund');
+  assert.equal((await premiumRefund(req('c', { order_id: '77777777-2222-3333-4444-555555555555' }), ENV, NOW)).status, 409, 'the same card got a second refund');
+  assert.equal(w.refundsAsked.length, 1);
+});
+
+test('refund: the 7 days run from Polar\'s order time, not from when the row was written', async () => {
+  const w = world({
+    users: { a: { id: 'u1', email: 'a@b.co' } },
+    // Written by the reconcile two days late; bought eight days ago.
+    passes: [{ user_id: 'u1', course: 'ochem', order_id: ORDER, amount_cents: 2030, created_at: iso(NOW - 6 * DAY),
+      order_created_at: iso(NOW - 8 * DAY), expires_at: iso(NOW + 80 * DAY) }],
+  });
+  const r = await premiumRefund(req('a', { order_id: ORDER }), ENV, NOW);
+  assert.equal(r.status, 409);
+  assert.match(r.body.error, /7 days/);
+  assert.equal(w.refundsAsked.length, 0);
 });
 
 const paid = { order_id: 'o1', amount_cents: 2030, refunded_at: null, starts_at: iso(NOW - 60 * DAY), expires_at: iso(NOW + 30 * DAY) };
@@ -144,11 +199,32 @@ test('exam history is read from both synced row shapes', () => {
   assert.deepEqual(examHistory(null), []);
 });
 
+const stamped = (n, at = NOW - 20 * DAY) => Array.from({ length: n }, (_, i) => ({ user_id: 'u1', course: 'nremt', questions: 100, finished_at: iso(at + i * 3600000) }));
+
+test('exams count from the server log; synced history only from before it existed', () => {
+  assert.equal(countableExams(stamped(2), []).length, 2);
+  assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE + DAY)).length, 0, 'history the browser wrote after the log started');
+  assert.equal(countableExams([], exams(2, EXAM_LOG_SINCE - 10 * DAY)).length, 2);
+  assert.equal(countableExams([{ questions: 10, finished_at: iso(NOW) }], []).length, 0, 'a short quiz is not a full exam');
+});
+
+test('guarantee: synced history alone (after the log started) does not qualify', async () => {
+  const w = world({
+    users: { a: { id: 'u1', email: 'cand@x.org' } },
+    passes: [{ user_id: 'u1', course: 'nremt', pass: 'nremt-90', ...paid }],
+    progress: { u1: { v: 2, ns: { nremt: { nremt_exam100_history: JSON.stringify(exams(5)) } } } },
+  });
+  const r = await premiumGuarantee(req('a', { legal_name: 'Sam Lee', state: 'MN', exam_date: day(NOW - 5 * DAY) }), ENV, NOW);
+  assert.equal(r.status, 409);
+  assert.match(r.body.error, /has 0/);
+  assert.equal(w.ledger.length, 0);
+});
+
 test('guarantee: adds 90 days after the current pass, once, and records the claim', async () => {
   const w = world({
     users: { a: { id: 'u1', email: 'cand@x.org' }, b: { id: 'u2', email: 'CAND@x.org' } },
     passes: [{ user_id: 'u1', course: 'nremt', pass: 'nremt-90', ...paid }],
-    progress: { u1: { v: 2, ns: { nremt: { nremt_exam100_history: JSON.stringify(exams(2)) } } } },
+    completions: stamped(2),
   });
   const body = { legal_name: '  Sam   Lee ', state: 'Minnesota', exam_date: day(NOW - 5 * DAY) };
   const r = await premiumGuarantee(req('a', body), ENV, NOW);
@@ -157,6 +233,7 @@ test('guarantee: adds 90 days after the current pass, once, and records the clai
   assert.equal(ext.starts_at, paid.expires_at);
   assert.equal(Date.parse(ext.expires_at) - Date.parse(ext.starts_at), 90 * DAY);
   assert.equal(ext.order_id, undefined);
+  assert.equal(ext.funded_by, 'o1', 'the extension records the bought pass it extends');
   assert.deepEqual(w.claims[0], { user_id: 'u1', legal_name: 'Sam Lee', state: 'Minnesota', exam_date: body.exam_date });
 
   const twice = await premiumGuarantee(req('a', body), ENV, NOW);

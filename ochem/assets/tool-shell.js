@@ -50,7 +50,7 @@
       after: top,
       notes: '../learn.html', notesText: 'Read the free textbook',
       locked: function(){ return G.locked(); },
-      badgeIn: top.querySelector('h1'),
+      badgeIn: top.querySelector('.eyebrow') || top.querySelector('h1'),
       badge: G.badge()
     });
   }

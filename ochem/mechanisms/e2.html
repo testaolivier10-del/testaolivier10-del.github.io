@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>E2 Elimination — Interactive Mechanism | Organic Chemistry</title>
+<title>E2 Elimination — Organic Chemistry Mechanism | LevlPrep</title>
 <meta name="description" content="Perform the E2 mechanism yourself: push all three arrows in one concerted step, predict the Zaitsev alkene, and see how a bulky base changes it.">
 <link rel="canonical" href="https://levlprep.com/ochem/mechanisms/e2.html">
-<meta property="og:title" content="E2 Elimination — Interactive Mechanism | Organic Chemistry">
+<meta property="og:title" content="E2 Elimination — Organic Chemistry Mechanism | LevlPrep">
 <meta property="og:description" content="Perform the E2 mechanism yourself: push all three arrows in one concerted step, predict the Zaitsev alkene, and see how a bulky base changes it.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/mechanisms/e2.html">
@@ -104,7 +105,7 @@
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
         "name": "E2"
@@ -136,7 +137,12 @@
           "name": "SN2",
           "url": "https://levlprep.com/ochem/mechanisms/sn2.html"
         }
-      ]
+      ],
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -172,8 +178,11 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">E2</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
@@ -192,7 +201,7 @@
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/e2.html">E2 &mdash; the written section</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/conformational-analysis.html">Conformational analysis</a><a href="../lessons/leaving-groups.html">Leaving groups</a><a href="../lessons/bronsted.html">Brønsted acids/bases</a><a href="../mechanisms/sn2.html">SN2</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/newman.html">Newman projections</a><a href="../lessons/leaving-groups.html">Leaving groups</a><a href="../lessons/bronsted.html">Brønsted acids/bases</a><a href="../mechanisms/sn2.html">SN2</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../mechanisms/e1.html">E1</a><a href="../lessons/substrate-effects.html">Substrate &amp; solvent effects</a><a href="../lessons/hofmann-elimination.html">Hofmann elimination</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
@@ -399,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function(){
     card.innerHTML =
       '<div class="step-eyebrow">Explain</div>' +
       '<h2 class="step-title">One step, three things moving together.</h2>' +
-      '<div class="prereq-note">Builds on: conformational analysis (anti-periplanar geometry) · leaving groups · base strength</div>' +
+      '<div class="prereq-note">Builds on: Newman projections (the anti conformer) · leaving groups · base strength</div>' +
       '<p class="step-body">E2 is concerted, like SN2 — but it takes <b>three</b> arrows rather than two: a base removes a hydrogen on the carbon <i>next to</i> the leaving group (the "beta" carbon), those electrons become a new π bond, and the leaving group departs, all in one step.</p>' +
       '<p class="step-body" style="margin-bottom:0;">This only works when that beta-hydrogen and the leaving group are lined up <b>anti-periplanar</b> (opposite sides, 180° apart) — which is why E2 depends so heavily on conformation.</p>' +
       nextButton('Continue', true);
@@ -627,7 +636,7 @@ document.addEventListener('DOMContentLoaded', function(){
     shell.insertBefore(toggleBar, progressBarEl || card);
     // Old ?notes=1 links now resolve to this topic's section of the textbook.
     if(notesMode){ location.replace(NOTES_HREF); return; }
-    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet">&#128221; Read this section</a>';
+    toggleBar.innerHTML = '<a href="../learn.html" class="link-quiet lesson-back-link">&larr; Back to the textbook</a><a href="' + NOTES_HREF + '" class="link-quiet"><svg class="ico-notes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h6"/></svg>Read this section</a>';
     if(begin.resumed){
       var resumeNote = document.createElement('div');
       resumeNote.className = 'lesson-resume-note';
@@ -647,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

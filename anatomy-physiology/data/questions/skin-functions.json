@@ -75,6 +75,11 @@
         "name": "Eccrine sweat output",
         "answer": "down",
         "why": "With the body cooling, the control center stops the signals that make eccrine glands secrete."
+      },
+      {
+        "name": "Number of sweat glands in his skin",
+        "answer": "none",
+        "why": "Cold changes how much each gland secretes, not how many glands there are."
       }
     ],
     "why": {
@@ -111,36 +116,15 @@
         "name": "Internal body temperature",
         "answer": "up",
         "why": "At 36 °C the air is hotter than the skin, so evaporation is the only route of heat loss; with it reduced, heat builds up."
+      },
+      {
+        "name": "Heat produced by the worker's muscles",
+        "answer": "none",
+        "why": "The job and the work rate are the same on both days, so the muscles make the same heat. Only the heat lost by evaporation changes."
       }
     ],
     "why": {
       "correct": "When the air is hotter than the skin, radiation and convection add heat, and evaporation is the only way to lose it. Humidity slows evaporation, so more sweat drips off uselessly, less heat is lost, and body temperature climbs even though the worker is sweating hard."
-    }
-  },
-  {
-    "id": "anp-skin-functions-4",
-    "type": "single",
-    "level": "apply",
-    "diff": 2,
-    "core": [
-      "homeostasis"
-    ],
-    "q": "The air around a resting person is 40 °C, hotter than her skin. By which route can she still lose heat?",
-    "options": [
-      "Radiation",
-      "Conduction to the air",
-      "Convection",
-      "Evaporation"
-    ],
-    "correct": 3,
-    "why": {
-      "correct": "Heat moves from warmer to cooler. When the surroundings are hotter than the skin, radiation, conduction and convection all carry heat into the body. Evaporation only ever removes heat, so it is the one route left.",
-      "options": [
-        "With surroundings hotter than her skin, radiation carries heat toward her, not away.",
-        "Air hotter than her skin conducts heat into her.",
-        "Moving air hotter than her skin adds heat as it flows past.",
-        "Correct. Evaporation removes heat whatever the air temperature, as long as the air is not saturated."
-      ]
     }
   },
   {
@@ -443,23 +427,22 @@
       "Constant shedding of surface cells",
       "Dermal blood flow",
       "Lipid sheets between the cells of the stratum corneum",
-      "Langerhans cells in the epidermis",
+      "Melanin in the keratinocytes",
       "Tactile cells"
     ],
     "correct": [
       0,
       1,
-      3,
-      4
+      3
     ],
     "why": {
-      "correct": "The acidic surface slows many microbes, shedding removes those stuck to surface cells, the lipid sheets seal the gaps between dead cells, and Langerhans cells take up microbes that get into the epidermis. Dermal blood flow and tactile cells serve heat exchange and touch.",
+      "correct": "The acidic surface slows many microbes, shedding removes those stuck to surface cells, and the lipid sheets seal the gaps between dead cells. Melanin, dermal blood flow and tactile cells serve light protection, heat exchange and touch.",
       "options": [
         "Yes. Many harmful microbes grow poorly at the skin's acidic pH.",
         "Yes. Microbes stuck to surface cells are shed with them.",
         "No. Dermal blood flow mainly sets heat loss; it lies below the epidermis and does not keep microbes out of it.",
         "Yes. The lipid sheets close the gaps between dead cells.",
-        "Yes. They take up microbes that get past the surface.",
+        "Melanin shields DNA from ultraviolet light. It does not stop microbes.",
         "No. Tactile cells signal light touch."
       ]
     }

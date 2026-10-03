@@ -122,7 +122,7 @@
     "diff": 3,
     "core": ["homeostasis"],
     "q": "Mr. Farouk, 35, has vomited stomach fluid (about pH 2) many times over two days. His tingling fingers and muscle cramps suggest a change in his blood pH. Which change is most likely?",
-    "options": ["His blood pH has risen, because he has lost hydrogen ions", "His blood pH has fallen, because he has lost a strong acid", "His blood pH is unchanged, because stomach fluid never mixes with blood", "His blood pH has fallen, because he has gained hydroxide ions"],
+    "options": ["His blood pH has risen, because he has lost hydrogen ions", "His blood pH has fallen, because he has lost a strong acid", "His blood pH is unchanged, because stomach fluid is kept apart from the blood", "His blood pH has fallen, because he has gained hydroxide ions"],
     "correct": 0,
     "why": {
       "correct": "Stomach fluid is rich in hydrogen ions. Losing it repeatedly removes acid from the body, so hydrogen ions in the blood fall and pH rises toward alkalemia. Tingling and cramps are typical of alkalemia, which makes nerves and muscles fire too easily.",
@@ -141,7 +141,7 @@
     "diff": 3,
     "core": ["homeostasis", "structure-function"],
     "q": "Why can a blood pH outside 7.35 to 7.45 disturb so many body functions at once?",
-    "options": ["Hydrogen ions break the peptide bonds of every protein", "Extra hydrogen ions dissolve the fats around each cell", "Hydrogen ions change side-chain charges, altering the shape of proteins", "Acidic blood cannot carry water to the cells"],
+    "options": ["Hydrogen ions break the peptide bonds of the body's proteins", "Extra hydrogen ions dissolve the fats around each cell", "Hydrogen ions change side-chain charges, altering the shape of proteins", "Acidic blood carries less water to the cells"],
     "correct": 2,
     "why": {
       "correct": "Many amino acid side chains gain or lose a hydrogen ion as [H+] changes, which changes their charge. That disturbs the ionic bonds holding each protein's fold. Shape sets function, and proteins do almost every job in a cell, so many functions change together.",
@@ -165,7 +165,8 @@
       { "name": "Free hydrogen ions in the unbuffered water", "answer": "up", "why": "Nothing in plain water takes up the added H+, so every hydrogen ion the strong acid releases stays free." },
       { "name": "Bicarbonate in the buffered beaker", "answer": "down", "why": "Bicarbonate takes up the added hydrogen ions, and each one it takes up turns one bicarbonate into carbonic acid." },
       { "name": "Carbonic acid in the buffered beaker", "answer": "up", "why": "Each bicarbonate that takes up a hydrogen ion becomes a carbonic acid molecule, so carbonic acid rises." },
-      { "name": "pH of the unbuffered water", "answer": "down", "why": "Added H+ stays free, so [H+] rises steeply and the pH plunges, in this case by several whole units." }
+      { "name": "pH of the unbuffered water", "answer": "down", "why": "Added H+ stays free, so [H+] rises steeply and the pH plunges, in this case by several whole units." },
+      { "name": "Volume of liquid in each beaker", "answer": "none", "why": "A small amount of acid does not measurably change the volume. What changes is what happens to the added hydrogen ions." }
     ],
     "why": {
       "correct": "In plain water, every added hydrogen ion stays free, so pH falls steeply. In the buffered beaker, bicarbonate takes up the hydrogen ions and becomes carbonic acid, so bicarbonate falls and carbonic acid rises."
@@ -296,14 +297,14 @@
     "diff": 2,
     "core": ["homeostasis"],
     "q": "Which of these act as bases in water, taking up hydrogen ions directly or by releasing hydroxide? Select all that apply.",
-    "options": ["Bicarbonate ion (HCO<sub>3</sub><sup>−</sup>)", "Sodium chloride (NaCl)", "Sodium hydroxide (NaOH)", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
-    "correct": [0, 2, 4],
+    "options": ["Bicarbonate ion (HCO<sub>3</sub><sup>−</sup>)", "Sodium chloride (NaCl)", "Glucose", "Hydrogen chloride (HCl)", "Hydroxide ion (OH−)"],
+    "correct": [0, 4],
     "why": {
-      "correct": "Bicarbonate takes up H+ directly to become carbonic acid. Sodium hydroxide releases OH−, and OH− joins H+ to form water. Sodium chloride is a salt and hydrogen chloride is an acid.",
+      "correct": "Bicarbonate takes up H+ directly to become carbonic acid, and OH− joins H+ to form water. Sodium chloride is a salt, hydrogen chloride is an acid, and glucose is neither acid nor base.",
       "options": [
         "A base. Bicarbonate takes up a hydrogen ion and becomes carbonic acid.",
         "Not a base. Sodium chloride is a salt: it separates into Na+ and Cl−, neither of which takes up or releases H+.",
-        "A base. It separates into Na+ and OH−, and each OH− takes up a hydrogen ion.",
+        "Glucose dissolves as whole molecules. It neither takes up nor releases hydrogen ions.",
         "Not a base. Hydrogen chloride releases H+ in water, which makes it a strong acid.",
         "A base. Hydroxide joins a hydrogen ion to form water."
       ]

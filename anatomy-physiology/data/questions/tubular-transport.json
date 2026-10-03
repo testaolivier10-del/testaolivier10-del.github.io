@@ -520,6 +520,11 @@
         "name": "Phosphate in the urine",
         "answer": "up",
         "why": "Less phosphate is reabsorbed, so more is excreted."
+      },
+      {
+        "name": "Glucose reabsorbed in the proximal tubule",
+        "answer": "none",
+        "why": "PTH does not act on the glucose carriers. Filtered glucose is still all reabsorbed at a normal blood glucose."
       }
     ],
     "why": {

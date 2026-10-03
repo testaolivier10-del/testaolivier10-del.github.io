@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reflexes: Notes | Anatomy &amp; Physiology</title>
+<title>Reflexes — Anatomy &amp; Physiology Notes | LevlPrep</title>
 <meta name="description" content="A doctor taps just below your kneecap and your lower leg kicks forward.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/reflexes.html">
-<meta property="og:title" content="Reflexes: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Reflexes — Anatomy &amp; Physiology Notes | LevlPrep">
 <meta property="og:description" content="A doctor taps just below your kneecap and your lower leg kicks forward.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/reflexes.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="reflexes">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 14 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/pns.html">Nerves, reflexes and pathways</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Reflexes: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/reflexes.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 14 &middot; Topic 76 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 14 &middot; Topic 76 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Reflexes</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="reflexes">Not practiced</span></p>
     </header>
@@ -170,8 +171,8 @@
 <li>A <strong>visceral reflex</strong> (viscer- = internal <a class="gl" href="../notes/body-organization.html" data-c="organ">organs</a>), also called an <strong>autonomic reflex</strong>, acts on <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="smooth-muscle-tissue">smooth muscle</a>, <a class="gl" href="../notes/muscle-tissue-overview.html" data-c="cardiac-muscle-tissue">cardiac muscle</a> or glands, through the <a class="gl" href="../notes/nervous-system-organization.html" data-c="autonomic-ns-basic">autonomic nervous system</a>. Your pupils narrowing in bright light, <a class="gl" href="../notes/mouth-esophagus.html" data-c="salivary-glands">saliva</a> flowing when food touches your tongue, and your heart slowing when the pressure in your large <a class="gl" href="../notes/body-organization.html" data-c="blood-vessel-basics">arteries</a> rises are visceral reflexes.</li>
 </ul>
 <p>The sensory half of the two kinds is alike. The motor half differs, as <a class="figref" href="#fig-os-15-6">Figure 2</a> shows: a somatic reflex uses one motor neuron that runs all the way from the CNS to the muscle, while a visceral reflex uses a chain of two, which synapse in a <a class="gl" href="../notes/nervous-system-organization.html" data-c="ganglion-nucleus-tract">ganglion</a> outside the CNS.</p>
-<figure id="fig-os-15-6"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-6"><img src="../figures/os-15-6.jpg" alt="Two pathways from a spinal cord cross section. Top, the autonomic efferent pathway: a myelinated axon runs from the lateral horn to a ganglion, where it synapses on a second neuron whose unmyelinated axon runs on to a curved strip of smooth muscle; an enlarged inset shows a swelling along that axon releasing transmitter onto the muscle surface. Bottom, the somatic efferent pathway: one myelinated axon runs from the ventral horn directly to a bundle of skeletal muscle fibers, and an inset shows it ending in a single synaptic terminal." width="1100" height="1507" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:36.82%;top:22.56%;width:11.45%;height:6.37%"></span><span class="anp-cover" aria-hidden="true" style="left:62.45%;top:22.56%;width:13.55%;height:6.37%"></span><span class="anp-cover" aria-hidden="true" style="left:67.91%;top:1.00%;width:30.27%;height:3.32%"></span></div><figcaption><b>Figure 2.</b> The motor half of a visceral reflex (top) and a somatic reflex (bottom). In the visceral reflex, a neuron in the spinal cord sends a myelinated axon to a ganglion, and a second neuron carries the signal on through an unmyelinated axon to smooth muscle. In the somatic reflex, one myelinated motor neuron runs from the cord straight to skeletal muscle. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 15.6, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-2-autonomic-reflexes-and-homeostasis">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<figure id="fig-os-15-6"  class="anp-figure"><div class="anp-figimg" data-fig="os-15-6"><picture><source type="image/avif" srcset="../figures/avif/os-15-6-480.avif 480w, ../figures/avif/os-15-6-800.avif 800w, ../figures/avif/os-15-6.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-15-6.jpg" alt="Two pathways from a spinal cord cross section. Top, the autonomic efferent pathway: a myelinated axon runs from the lateral horn to a ganglion, where it synapses on a second neuron whose unmyelinated axon runs on to a curved strip of smooth muscle; an enlarged inset shows a swelling along that axon releasing transmitter onto the muscle surface. Bottom, the somatic efferent pathway: one myelinated axon runs from the ventral horn directly to a bundle of skeletal muscle fibers, and an inset shows it ending in a single synaptic terminal." width="1100" height="1507" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:36.82%;top:22.56%;width:11.45%;height:6.37%"></span><span class="anp-cover" aria-hidden="true" style="left:62.45%;top:22.56%;width:13.55%;height:6.37%"></span><span class="anp-cover" aria-hidden="true" style="left:67.91%;top:1.00%;width:30.27%;height:3.32%"></span></div><figcaption><b>Figure 2.</b> The motor half of a visceral reflex (top) and a somatic reflex (bottom). In the visceral reflex, a neuron in the spinal cord sends a myelinated axon to a ganglion, and a second neuron carries the signal on through an unmyelinated axon to smooth muscle. In the somatic reflex, one myelinated motor neuron runs from the cord straight to skeletal muscle. <span class="anp-credit">Figure 15.6 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/15-2-autonomic-reflexes-and-homeostasis">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Somatic reflex</th><th>Visceral (autonomic) reflex</th></tr></thead>
 <tbody>
 <tr><th>Effector</th><td>Skeletal muscle</td><td>Smooth muscle, cardiac muscle or glands</td></tr>
@@ -204,7 +205,7 @@
 
 <h2 id="deep-tendon-reflexes-and-how-they">Deep tendon reflexes and how they are graded</h2>
 <p>When a clinician taps a tendon with a reflex hammer, the test is called a <strong><a class="gl" href="../notes/anatomical-position.html" data-c="superficial-deep">deep</a> <span class="gl" tabindex="0" data-c="tendon-reflex">tendon reflex</span></strong>. The name is misleading: the <a class="gl" href="../notes/homeostasis-feedback.html" data-c="sensory-receptor">sensor</a> is not in the tendon. The tap stretches the muscle through its tendon, and the muscle spindles respond. Every deep tendon reflex is a stretch reflex. Each one checks a particular set of spinal cord segments:</p>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
 <thead><tr><th>Reflex</th><th>Where you tap</th><th>What happens</th><th>Main segments</th></tr></thead>
 <tbody>
 <tr><td>Biceps</td><td><a class="gl" href="../notes/upper-limb-muscles.html" data-c="arm-muscles">Biceps brachii</a> tendon at the front of the elbow</td><td>Elbow bends</td><td>C5–C6</td></tr>
@@ -217,7 +218,7 @@
 <p>A rhyme many students use counts up from the ankle: "one, two, buckle my shoe" (S1–S2, ankle), "three, four, kick the door" (L3–L4, knee), "five, six, pick up sticks" (C5–C6, biceps), "seven, eight, lay them straight" (C7–C8, triceps). The table lists the main segment of each pair.</p>
 <h3>The grading scale</h3>
 <p>The briskness of each response is graded on a scale of 0 to 4+ and always compared with the same reflex on the other side:</p>
-<div class="table-wrap"><table>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table>
 <thead><tr><th>Grade</th><th>Meaning</th></tr></thead>
 <tbody>
 <tr><td>0</td><td>Absent, even with reinforcement</td></tr>
@@ -249,7 +250,7 @@
 <h2 id="the-tendon-reflex">The tendon reflex</h2>
 <p>Muscles have a second kind of <a class="gl" href="../notes/sensory-pathways.html" data-c="receptor-types-location">proprioceptor</a>. The <strong><a class="gl" href="../notes/organelles.html" data-c="golgi">Golgi</a> tendon organ</strong> sits where muscle fibers join their tendon. It is a capsule of <a class="gl" href="../notes/connective-tissue.html" data-c="ct-fibers">collagen</a> strands woven through with sensory nerve endings. Because it lies <em>in series</em> with the muscle fibers, it is squeezed when the muscle pulls on its tendon, so it reports muscle <em>tension</em> (force), mostly from active contraction.</p>
 <p>The <strong>tendon reflex</strong> runs from it: rising tension fires the tendon organ's sensory neuron, which excites inhibitory interneurons in the cord. These inhibit the motor neurons of the same muscle, and other interneurons excite the motor neurons of the antagonist. The contracting muscle's force is damped. Because interneurons are involved, the tendon reflex is polysynaptic.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Muscle spindle</th><th>Golgi tendon organ</th></tr></thead>
 <tbody>
 <tr><th>Location</th><td>Among the muscle fibers, parallel to them</td><td>At the junction of muscle and tendon, in series with the fibers</td></tr>
@@ -307,7 +308,7 @@
 <li><strong>Delay.</strong> With several synapses and slower pain axons, the withdrawal reflex takes longer than a stretch reflex, but it is still faster than a decision.</li>
 </ul>
 <p>Meanwhile, the same nociceptor signals also climb the <a class="gl" href="../notes/sensory-pathways.html" data-c="ascending-pathways">spinothalamic tract</a> to the <a class="gl" href="../notes/brain-regions.html" data-c="diencephalon">thalamus</a> and cortex. Only when they arrive do you feel the pain, which is why you often find your foot already lifted by the time it hurts.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Stretch reflex</th><th>Withdrawal reflex</th></tr></thead>
 <tbody>
 <tr><th>Stimulus</th><td>Stretch of a muscle</td><td>A harmful stimulus to the skin</td></tr>
@@ -333,13 +334,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:reflexes">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="motor-pathways.html"><span>&larr; Topic 75</span><b>Motor pathways and movement control</b></a><a class="tb-chapter-link next" href="neuro-exam.html"><span>Topic 77 &rarr;</span><b>The neurological exam</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

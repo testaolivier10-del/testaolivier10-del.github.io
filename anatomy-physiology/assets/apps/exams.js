@@ -89,11 +89,13 @@
   function prefs(){ try{ return JSON.parse(localStorage.getItem('anp_prefs_v1') || '{}') || {}; }catch(e){ return {}; } }
   function setPref(k, v){ try{ var p = prefs(); p[k] = v; localStorage.setItem('anp_prefs_v1', JSON.stringify(p)); }catch(e){} }
 
-  var bank = null;
+  var bank = null;   // question stubs (AnpCore.loadIndex): enough to plan an exam
   var run = null;
 
+  /* The index first; an exam then fetches only its questions' chapters, and
+     the explanations once it ends, for the review (audit 2026-10). */
   function loadBank(){
-    return window.AnpCore.loadBank(BASE).then(function(all){
+    return window.AnpCore.loadIndex(BASE).then(function(all){
       return all.filter(function(q){ return TOPIC[q.topic] && TOPIC[q.topic].built; });
     });
   }
@@ -412,11 +414,20 @@
       label = 'TEAS A&P practice (estimate)';
     }
     if(!qs.length) return;
-    // The free exam is used as it starts; already used, the setup shows the card.
-    if(Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
-    var t = TIMINGS.filter(function(x){ return x.id === cfg.timing; })[0];
-    var limit = perQ && t.k ? Math.round(qs.length * perQ * t.k * 1000) : 0;
-    start(qs, label, limit, meta);
+    var startBtn = app.querySelector('.anp-ex-start, button[type="submit"]');
+    if(startBtn){ startBtn.disabled = true; startBtn.setAttribute('data-label', startBtn.textContent); startBtn.textContent = 'Loading questions…'; }
+    Core.loadQuestions(BASE, qs).then(function(full){
+      if(full.length !== qs.length) throw new Error('missing questions');
+      // The free exam is used as it starts; already used, the setup shows the card.
+      if(Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
+      var t = TIMINGS.filter(function(x){ return x.id === cfg.timing; })[0];
+      var limit = perQ && t.k ? Math.round(full.length * perQ * t.k * 1000) : 0;
+      start(full, label, limit, meta);
+    }).catch(function(){
+      if(startBtn){ startBtn.disabled = false; startBtn.textContent = startBtn.getAttribute('data-label') || 'Start'; }
+      var msg = app.querySelector('.anp-pr-avail');
+      if(msg) msg.textContent = 'The exam questions did not load. Check your connection and try again.';
+    });
   }
 
   /* ------------------------------------------------------ running */
@@ -540,7 +551,7 @@
       var norm = q.options.map(function(o){ var s = document.createElement('span'); s.innerHTML = o; return s.innerHTML; });
       return [].map.call(body.querySelectorAll('.anp-order-text'), function(el){ return norm.indexOf(el.innerHTML); });
     }
-    var picked = [].map.call(body.querySelectorAll('.anp-opt[aria-pressed="true"]'), function(b){ return +b.getAttribute('data-i'); });
+    var picked = [].map.call(body.querySelectorAll('.anp-opt[aria-checked="true"]'), function(b){ return +b.getAttribute('data-i'); });
     return q.type === 'multi' ? picked : (picked.length ? picked[0] : null);
   }
 
@@ -589,7 +600,10 @@
     Core.event('anp-session-finish', { mode: k === 'final' ? 'final' : k, answered: answered, correct: right });
     if(k === 'system') Core.event('anp-system-exam-finish', { chapter: run.meta.chapter, correct: right, total: total });
     if(k === 'teas') Core.event('anp-teas-finish', { correct: right, total: total });
-    renderResults(rows, right, timeUp);
+    // The review shows every explanation: fetched now, one file per chapter.
+    var stage = app.querySelector('.anp-ex-stage');
+    if(stage) stage.innerHTML = '<p class="anp-small">Marking your exam and loading the explanations…</p>';
+    Promise.all(rows.map(function(x){ return Core.loadWhy(BASE, x.q); })).then(function(){ renderResults(rows, right, timeUp); }, function(){ renderResults(rows, right, timeUp); });
   }
 
   function tally(rows, keyFn){

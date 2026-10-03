@@ -1,6 +1,6 @@
 {
   "topic": "skin-injury",
-  "hook": "<p>Mr. Okafor, 45, is pulled from a kitchen fire with burns over the front of his chest and abdomen and both arms. He has not lost a drop of blood, yet four hours later his blood pressure is falling, his heart is racing and he has made almost no urine. The paramedic estimated the burned area in seconds and started fluids through a vein on scene. To see why a burn drains the blood, and how that estimate was made, you need to know how deep burns go and what burned skin can no longer do.</p>",
+  "hook": "<p>Mr. Tanaka, 45, is pulled from a kitchen fire with burns over the front of his chest and abdomen and both arms. He has not lost a drop of blood, yet four hours later his blood pressure is falling, his heart is racing and he has made almost no urine. The paramedic estimated the burned area in seconds and started fluids through a vein on scene. To see why a burn drains the blood, and how that estimate was made, you need to know how deep burns go and what burned skin can no longer do.</p>",
   "prereq": [
     {
       "q": "Which layer of the skin has no blood vessels?",

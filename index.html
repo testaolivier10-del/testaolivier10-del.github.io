@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LevlPrep — NREMT, Organic Chem &amp; A&amp;P Prep, Free to Start</title>
-<meta name="description" content="Free exam prep and interactive courses: NREMT-EMT practice tests, a full organic chemistry course and an anatomy and physiology course. No account needed.">
+<title>NREMT, Organic Chemistry &amp; A&amp;P — Free to Start | LevlPrep</title>
+<meta name="description" content="Exam prep and interactive courses, free to start: NREMT-EMT practice tests, organic chemistry and anatomy &amp; physiology courses. All notes free forever.">
 <link rel="canonical" href="https://levlprep.com/">
-<meta property="og:title" content="LevlPrep — NREMT, Organic Chem &amp; A&amp;P Prep, Free to Start">
-<meta property="og:description" content="Free practice tools for certification exams and interactive courses for hard subjects.">
+<meta property="og:title" content="NREMT, Organic Chemistry &amp; A&amp;P — Free to Start | LevlPrep">
+<meta property="og:description" content="Practice tools for certification exams and interactive courses for hard subjects, free to start.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://levlprep.com/">
 <meta property="og:site_name" content="LevlPrep">
@@ -27,12 +28,23 @@
 <script src="assets/account.js" defer></script>
 <script src="assets/reminders.js" defer></script>
 <script src="assets/hub-progress.js" defer></script>
+<script src="assets/site-chrome.js" defer></script>
 <script src="assets/hub-home.js" defer></script>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
   /* Hub-only components. The shared system in assets/theme.css — the same file
      the NREMT app loads — carries the palette, typography, cards and buttons. */
   .hero .lede{max-width:62ch;}
+  /* A returning student's way back in, drawn in the hero. */
+  .hero-continue{
+    display:flex;flex-direction:column;gap:2px;margin-top:20px;max-width:440px;text-decoration:none;
+    background:var(--navy);color:var(--on-accent);border-radius:var(--radius);padding:14px 18px;box-shadow:var(--lift);
+  }
+  .hero-continue small{font:800 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;opacity:.8;}
+  .hero-continue b{font:900 15.5px var(--font-ui);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .hero-continue:hover{background:var(--navy2);}
+  /* On a phone the facts would push the courses below the fold. */
+  @media (max-width:640px){ .hero .fact-row{display:none;} }
   /* Two lines rather than four at desktop width, so the three subjects are on
      screen without scrolling. */
   .hero h1{max-width:32ch;}
@@ -127,60 +139,16 @@
   .about-card .k{font:800 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
   .about-card p{margin:0;font-size:14px;font-weight:600;color:var(--muted);line-height:1.6;text-wrap:pretty;}
   .about-card a{color:var(--ink);}
-    font:900 11px var(--font-ui);letter-spacing:0.05em;text-transform:uppercase;
-    color:var(--amber);background:var(--tint-amber);border-radius:var(--radius-pill);
-    padding:5px 12px;white-space:nowrap;flex-shrink:0;
-  }
+  /* The three questions (generated by scripts/build-pricing.mjs). */
+  .hub-faq{max-width:68ch;}
+  .hub-faq h2{font:900 16px/1.3 var(--font-ui);color:var(--ink);margin:0 0 6px;}
+  .hub-faq p{margin:0 0 18px;font-size:14.5px;font-weight:600;color:var(--muted);line-height:1.6;}
+  .hub-faq p:last-child{margin-bottom:0;}
+  .hub-faq a{color:var(--ink);}
 </style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://levlprep.com/#org",
-      "name": "LevlPrep",
-      "url": "https://levlprep.com/",
-      "logo": "https://levlprep.com/assets/icon.svg",
-      "description": "Exam prep tools and interactive courses. The teaching material is free, permanently, with daily practice and a free exam in every course; a one-time Premium pass adds unlimited practice. No ads, no signup required."
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://levlprep.com/#website",
-      "name": "LevlPrep",
-      "url": "https://levlprep.com/",
-      "publisher": {
-        "@id": "https://levlprep.com/#org"
-      },
-      "inLanguage": "en"
-    },
-    {
-      "@type": "ItemList",
-      "name": "Courses and exam prep on LevlPrep",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "NREMT-EMT Prep",
-          "url": "https://levlprep.com/nremt/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Organic Chemistry",
-          "url": "https://levlprep.com/ochem/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Anatomy & Physiology",
-          "url": "https://levlprep.com/anatomy-physiology/"
-        }
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://levlprep.com/#org","name":"LevlPrep","url":"https://levlprep.com/","logo":{"@type":"ImageObject","url":"https://levlprep.com/assets/icon-512.png","width":512,"height":512},"description":"Exam prep tools and interactive courses. All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics. No ads.","founder":{"@type":"Person","name":"Olivier Testa"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"hello@levlprep.com","url":"https://levlprep.com/terms.html"}},{"@type":"WebSite","@id":"https://levlprep.com/#website","name":"LevlPrep","url":"https://levlprep.com/","publisher":{"@id":"https://levlprep.com/#org"},"inLanguage":"en"},{"@type":"FAQPage","@id":"https://levlprep.com/#faq","mainEntity":[{"@type":"Question","name":"Is LevlPrep free?","acceptedAnswer":{"@type":"Answer","text":"All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics."}},{"@type":"Question","name":"How much does Premium cost?","acceptedAnswer":{"@type":"Answer","text":"Premium is a one-time pass per course, with no subscription: NREMT-EMT Prep, $29 for 90 days; Organic Chemistry, $29 a semester (5 months) or $49 a full year; Anatomy & Physiology, $29 a semester (5 months) or $49 a full year (A&P I and II). Prices are in US dollars."}},{"@type":"Question","name":"Is LevlPrep affiliated with the NREMT, ATI or OpenStax?","acceptedAnswer":{"@type":"Answer","text":"No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax or any university."}}]},{"@type":"ItemList","name":"Courses and exam prep on LevlPrep","itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"Course","@id":"https://levlprep.com/nremt/#course","name":"NREMT-EMT Prep","url":"https://levlprep.com/nremt/","description":"NREMT-EMT Prep, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, 90 days","category":"Partially Free","price":"29","priceCurrency":"USD","url":"https://levlprep.com/premium.html#nremt"}]}},{"@type":"ListItem","position":2,"item":{"@type":"Course","@id":"https://levlprep.com/ochem/#course","name":"Organic Chemistry","url":"https://levlprep.com/ochem/","description":"Organic Chemistry, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Semester (5 months)","category":"Partially Free","price":"29","priceCurrency":"USD","url":"https://levlprep.com/premium.html#ochem"},{"@type":"Offer","name":"Premium, Full year","category":"Partially Free","price":"49","priceCurrency":"USD","url":"https://levlprep.com/premium.html#ochem"}]}},{"@type":"ListItem","position":3,"item":{"@type":"Course","@id":"https://levlprep.com/anatomy-physiology/#course","name":"Anatomy & Physiology","url":"https://levlprep.com/anatomy-physiology/","description":"Anatomy & Physiology, free to start.","provider":{"@id":"https://levlprep.com/#org"},"offers":[{"@type":"Offer","name":"Premium, Semester (5 months)","category":"Partially Free","price":"29","priceCurrency":"USD","url":"https://levlprep.com/premium.html#anp"},{"@type":"Offer","name":"Premium, Full year (A&P I and II)","category":"Partially Free","price":"49","priceCurrency":"USD","url":"https://levlprep.com/premium.html#anp"}]}}]}]}
 </script>
 </head>
 <body>
@@ -188,44 +156,74 @@
      has no course to name and no section tabs — so it also carries its own
      skip link, which the chrome injects for every other page on the site. -->
 <a class="skip-link" href="#main">Skip to content</a>
-<div id="site-header">
+<header id="site-header" data-site-header>
   <div class="site-header__inner">
-    <a class="site-header__brand" href="index.html">
-      <span class="brand-mark" aria-hidden="true">+</span> LevlPrep
-    </a>
-    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="ti-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg><svg class="ti-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <span class="site-header__brand-row"><a class="site-header__brand" href="/" aria-label="LevlPrep home"><span class="brand-mark" aria-hidden="true">+</span><span class="brand-text">LevlPrep</span></a></span>
   </div>
-</div>
+</header>
 
 <div class="xshell" id="main" data-skip-target tabindex="-1" role="main">
 
   <div class="hero">
-    <div class="eyebrow">LevlPrep</div>
+    <div class="eyebrow">Three courses &middot; free to start</div>
     <h1>Free question banks and interactive courses for hard subjects.</h1>
-    <p class="lede">An NREMT-EMT exam bank with explanations on every question, an Organic Chemistry course where you perform the mechanisms yourself, and an Anatomy &amp; Physiology course taught in the order it builds. The teaching material is free, permanently, with daily practice and a free exam in every course; a one-time Premium pass (from $20.30 at the founding price) adds unlimited practice, exams and analytics. No subscription, no ads, no account needed.</p>
+    <p class="lede">NREMT-EMT practice tests, organic chemistry and anatomy &amp; physiology, free to start with no account.</p>
+    <div class="hero-ctas">
+      <a class="btn-press" href="nremt/practice.html">Start a free practice test</a>
+      <a class="link-quiet" href="#subjects">See all three courses</a>
+    </div>
+    <div id="heroContinue"></div>
+    <script>
+    /* Returning students get a "Continue" card here, drawn before first paint
+       so it does not push the page down: the most recent place any course
+       home saved in levl_resume (site-chrome.js, LevlResume). */
+    (function(){
+      try{
+        var r = JSON.parse(localStorage.getItem('levl_resume') || '{}') || {}, best = null, k;
+        // courses:begin COURSE_LIST key,name (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+        var COURSE_LIST = [
+          { key: 'nremt', name: 'NREMT-EMT' },
+          { key: 'ochem', name: 'Organic Chemistry' },
+          { key: 'anp', name: 'Anatomy & Physiology' },
+        ];
+        // courses:end
+        var NAMES = {};
+        COURSE_LIST.forEach(function(c){ NAMES[c.key] = c.name; });
+        for(k in r){ var e = r[k]; if(NAMES[k] && e && typeof e.url === 'string' && /^\/[^\/]/.test(e.url) && (!best || e.t > best.t)) best = { k: k, url: e.url, label: e.label, t: e.t || 0 }; }
+        if(!best) return;
+        var a = document.createElement('a'), sm = document.createElement('small'), b = document.createElement('b');
+        a.className = 'hero-continue'; a.href = best.url;
+        sm.textContent = 'Continue \u00b7 ' + NAMES[best.k];
+        b.textContent = (best.label || 'Pick up where you left off') + ' \u2192';
+        a.appendChild(sm); a.appendChild(b);
+        document.getElementById('heroContinue').appendChild(a);
+        window.__levlHeroContinue = best.k;
+      }catch(e){}
+    })();
+    </script>
     <div class="fact-row">
-      <span><span class="dot"></span>2,106 exam questions</span>
-      <span><span class="dot"></span>121 chemistry topics and 8 tools</span>
+      <span><span class="dot"></span>2,033 exam questions</span>
+      <span><span class="dot"></span>123 chemistry topics and 8 tools</span>
       <span><span class="dot"></span>27 anatomy &amp; physiology chapters</span>
-      <span><span class="dot"></span>Works offline, no account required</span>
+      <span><span class="dot"></span>Works offline, free to start</span>
     </div>
   </div>
 
   <div class="xsection" id="hubProgress" hidden></div>
 
-  <div class="xsection">
+  <div class="xsection" id="subjects">
     <div class="xgrid">
       <div class="xlabel">Subjects</div>
       <div class="xcontent">
         <div class="subject-grid">
         <a class="featured-card" href="nremt/">
           <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true">+</div>
-            <span class="status-badge"><span class="dot"></span>Live</span>
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></div>
+            <span class="status-badge">Free to start</span>
           </div>
           <div>
             <p class="featured-name">NREMT-EMT Prep</p>
-            <p class="featured-desc">2,106 questions, timed exams, forty chapters of notes, a 3D body map, a sound trainer and branching scenarios.</p>
+            <p class="featured-desc">2,033 questions, timed exams, forty chapters of notes, a 3D body map, a sound trainer and branching scenarios.</p>
           </div>
           <div class="featured-tags">
             <span>Timed exams</span>
@@ -238,15 +236,15 @@
         </a>
         <a class="featured-card" href="ochem/">
           <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true">+</div>
-            <span class="status-badge"><span class="dot"></span>Live</span>
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/><circle cx="12" cy="12" r="3.6"/></svg></div>
+            <span class="status-badge">Free to start</span>
           </div>
           <div>
             <p class="featured-name">Organic Chemistry</p>
-            <p class="featured-desc">121 topics and 10 mechanisms you perform yourself, plus eight tools that compute their answers.</p>
+            <p class="featured-desc">123 topics and 10 mechanisms you perform yourself, plus eight tools that compute their answers.</p>
           </div>
           <div class="featured-tags">
-            <span>121 topics</span>
+            <span>123 topics</span>
             <span>10 mechanisms</span>
             <span>8 tools</span>
             <span>Mastery tracking</span>
@@ -255,8 +253,8 @@
         </a>
         <a class="featured-card" href="anatomy-physiology/">
           <div class="featured-top">
-            <div class="featured-icon" aria-hidden="true">&hearts;</div>
-            <span class="status-badge"><span class="dot"></span>Live</span>
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.3-9.4C1.4 8.2 3.5 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.7 0 5.8 3.7 4.5 7.1C19.5 16.4 12 21 12 21z"/></svg></div>
+            <span class="status-badge">Free to start</span>
           </div>
           <div>
             <p class="featured-name">Anatomy &amp; Physiology</p>
@@ -276,6 +274,36 @@
     </div>
   </div>
 
+<!-- pricing:start -->
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Free and Premium</div>
+      <div class="xcontent">
+        <p class="section-lede">All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics. Premium passes start at $29, one-time<span data-founding-until="2027-01-31"> ($20.30 at the founding-member price until 31 January 2027)</span>. No subscription. <a href="premium.html">What&rsquo;s free in each course, and the prices</a>.</p>
+      </div>
+    </div>
+  </div>
+<script>(function(){var n=Date.now();[].forEach.call(document.querySelectorAll('[data-founding-until]'),function(e){if(n>Date.parse(e.getAttribute('data-founding-until')+'T23:59:59Z'))e.hidden=true;});})();</script>
+<!-- pricing:end -->
+
+<!-- faq:start -->
+  <div class="xsection">
+    <div class="xgrid">
+      <div class="xlabel">Questions</div>
+      <div class="xcontent">
+        <div class="hub-faq">
+          <h2>Is LevlPrep free?</h2>
+          <p>All notes and textbook pages are free forever; interactive lessons are free in the early chapters; Premium adds unlimited practice, exams, every lesson and analytics.</p>
+          <h2>How much does Premium cost?</h2>
+          <p>Premium is a one-time pass per course, with no subscription: NREMT-EMT Prep, $29 for 90 days; Organic Chemistry, $29 a semester (5 months) or $49 a full year; Anatomy &amp; Physiology, $29 a semester (5 months) or $49 a full year (A&amp;P I and II). Prices are in US dollars. <a href="premium.html">Free vs Premium, course by course</a>.</p>
+          <h2>Is LevlPrep affiliated with the NREMT, ATI or OpenStax?</h2>
+          <p>No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax or any university.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- faq:end -->
+
   <div class="xsection">
     <div class="xgrid">
       <div class="xlabel">About</div>
@@ -283,11 +311,11 @@
         <div class="about-row">
           <div class="about-card">
             <div class="k">Who makes this</div>
-            <p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. The teaching material is free, permanently; Premium is an optional one-time pass. No ads.</p>
+            <p>An independent project: not a company, not a training program, and not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT is its registered trademark), ATI, OpenStax or any university. Premium is an optional one-time pass, and <a href="premium.html">what is free</a> is listed course by course. No ads.</p>
           </div>
           <div class="about-card">
             <div class="k">How the questions are written</div>
-            <p>Every question is original, written to the NREMT-EMT content outline and current national guidelines, with an explanation on each one. Automated checks keep the answer key free of position and length tells. <a href="sources.html">Sources and checks</a>.</p>
+            <p>Every question in all three courses is original, written for LevlPrep with an explanation on each one: NREMT questions to current national guidelines and the five domains of the Registry&rsquo;s 2025 EMT exam, Organic Chemistry and A&amp;P questions to the topic that teaches them. Automated checks look for answer-position and length tells. <a href="sources.html">Sources and checks</a>.</p>
           </div>
           <div class="about-card">
             <div class="k">What changes</div>
@@ -297,13 +325,14 @@
       </div>
     </div>
   </div>
+</div>
+<div class="xshell">
   <div class="xsection">
     <footer style="margin-top:0">
       <p>Progress is stored on your device. Sign in to sync it across devices.</p>
-      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a></p>
+      <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
   </div>
-
 </div>
 <script>
 // Runs after the deferred scripts above it: every external script on this
@@ -324,7 +353,15 @@ document.addEventListener('DOMContentLoaded', function(){
     var subjects = Object.keys(info.subjects || {}).filter(function(k){ return info.subjects[k] > 0; });
     if(!info.total && !streak.current) return;   // nothing to show a first-time visitor
 
-    var LABELS = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
+    // courses:begin COURSE_LIST key,name (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+    var COURSE_LIST = [
+      { key: 'nremt', name: 'NREMT-EMT' },
+      { key: 'ochem', name: 'Organic Chemistry' },
+      { key: 'anp', name: 'Anatomy & Physiology' },
+    ];
+    // courses:end
+    var LABELS = {};
+    COURSE_LIST.forEach(function(c){ LABELS[c.key] = c.name; });
     var pct = Math.round(info.into / info.span * 100);
     box.innerHTML =
       '<div class="hub-progress-card">' +
@@ -345,16 +382,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if(window.LevlHubContinue) window.LevlHubContinue(box.firstChild, info);
     box.hidden = false;
   })();
-
-
-  var THEME_KEY = 'nremt_theme';
-  var toggle = document.getElementById('themeToggle');
-  toggle.addEventListener('click', function(){
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    if(isDark){ document.documentElement.removeAttribute('data-theme'); }
-    else{ document.documentElement.setAttribute('data-theme', 'dark'); }
-    try{ localStorage.setItem(THEME_KEY, isDark ? 'light' : 'dark'); }catch(e){}
-  });
 });
 </script>
 </body>

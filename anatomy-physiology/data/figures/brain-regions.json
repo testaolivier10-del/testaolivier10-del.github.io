@@ -116,7 +116,9 @@
     "labels": [],
     "w": 875,
     "h": 1080,
-    "ext": "jpg"
+    "ext": "jpg",
+    "kind": "drawing with an MRI scan",
+    "provenance": "OpenStax gives this figure no third-party credit (live 2e and 1e captions checked 2026-10-02), so it is used under the book's CC BY 4.0."
   },
   "os-15-12": {
     "source": "openstax",

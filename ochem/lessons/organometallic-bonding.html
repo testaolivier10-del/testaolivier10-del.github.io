@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Why C–metal means nucleophilic carbon — Organic Chemistry</title>
+<title>Why C–metal means nucleophilic carbon — OChem Lesson</title>
 <meta name="description" content="Why a carbon bonded to a metal is nucleophilic, how reactivity trades against selectivity across Grignard and other organometallics, and what destroys them.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/organometallic-bonding.html">
-<meta property="og:title" content="Why C–metal means nucleophilic carbon — Organic Chemistry">
+<meta property="og:title" content="Why C–metal means nucleophilic carbon — OChem Lesson">
 <meta property="og:description" content="Why a carbon bonded to a metal is nucleophilic, how reactivity trades against selectivity across Grignard and other organometallics, and what destroys them.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/organometallic-bonding.html">
@@ -44,22 +45,27 @@
     {
       "@type": "LearningResource",
       "@id": "https://levlprep.com/ochem/lessons/organometallic-bonding.html#lesson",
-      "name": "Why C\u2013metal means nucleophilic carbon",
+      "name": "Why C–metal means nucleophilic carbon",
       "url": "https://levlprep.com/ochem/lessons/organometallic-bonding.html",
       "description": "Learn why a carbon bonded to a metal is nucleophilic, how reactivity trades against selectivity across the organometallic family, and what destroys every one of them.",
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
-        "name": "Why C\u2013metal means nucleophilic carbon"
+        "name": "Why C–metal means nucleophilic carbon"
       },
       "isPartOf": {
         "@id": "https://levlprep.com/ochem/#course"
       },
       "provider": {
         "@id": "https://levlprep.com/#org"
+      },
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
       }
     },
     {
@@ -80,13 +86,13 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Organometallics",
-          "item": "https://levlprep.com/ochem/learn.html#m-organometallics"
+          "name": "Organometallic Bonding & Grignard Reagents",
+          "item": "https://levlprep.com/ochem/learn.html#m-grignard"
         },
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "Why C\u2013metal means nucleophilic carbon",
+          "name": "Why C–metal means nucleophilic carbon",
           "item": "https://levlprep.com/ochem/lessons/organometallic-bonding.html"
         }
       ]
@@ -96,12 +102,15 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-grignard">Organometallic Bonding &amp; Grignard Reagents</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Why C–metal means nucleophilic carbon</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
-    <div class="eyebrow" data-chapter="organometallics">Organometallics</div>
+    <div class="eyebrow" data-chapter="grignard">Organometallic Bonding &amp; Grignard Reagents</div>
     <h1 style="margin-bottom:4px;">Why C–metal means nucleophilic carbon.</h1>
     <p class="lede" style="margin-top:0;">One electronegativity comparison turns the most attacked atom in the course into the attacker.</p>
   </div>
@@ -114,7 +123,7 @@
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/organometallic-bonding.html">Why C–metal means nucleophilic carbon &mdash; the written section</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/electronegativity.html">Electronegativity</a><a href="../lessons/bond-polarity.html">Bond polarity</a><a href="../lessons/nucleophiles.html">Nucleophiles</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/electronegativity.html">Electronegativity</a><a href="../lessons/bond-polarity.html">Bond polarity</a><a href="../lessons/nucleophiles.html">Nucleophiles</a><a href="../lessons/pka.html">pKa</a></span></div>
   <div class="lesson-links-row"><span class="lesson-links-label">Leads to</span><span class="lesson-links-list"><a href="../lessons/grignard-reagents.html">Grignard reagents</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
@@ -167,8 +176,8 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body">Start with bromomethane, CH&#8323;Br. Its carbon is an electrophile: in an S<sub>N</sub>2 reaction, hydroxide attacks that carbon and bromide leaves.</p>' +
           '<p class="step-body">Now stir bromomethane with magnesium metal in dry ether. The magnesium slips in between the carbon and the bromine:</p>' +
           '<p class="step-body" style="text-align:center;font-size:16px;"><b>CH&#8323;&ndash;Br + Mg &rarr; CH&#8323;&ndash;MgBr</b></p>' +
-          '<p class="step-body">That same carbon now does the attacking. It adds to the carbonyl carbon of a ketone, as you saw in Nucleophilic addition. A compound with a carbon&ndash;metal bond is an <b>organometallic</b> compound, and CH&#8323;MgBr belongs to the most widely used family, the <b>Grignard reagents</b>, R&ndash;MgX.</p>' +
-          '<div class="explain-box">Why it matters: a nucleophile supplies the atom that forms the new bond, so joining two carbon pieces needs a carbon nucleophile. Before the Grignard reagent, the carbon nucleophiles you met were narrow. <b>Cyanide</b> brings exactly one carbon, as a nitrile; an <b>acetylide</b> has to come from a terminal alkyne; and a <b>Wittig ylide</b> only makes a C=C. An organometallic reagent can bring almost any carbon group.</div>'
+          '<p class="step-body">That same carbon now does the attacking. It adds to the carbonyl carbon of a ketone, as the next lesson, Grignard reagents, shows. A compound with a carbon&ndash;metal bond is an <b>organometallic</b> compound, and CH&#8323;MgBr belongs to the most widely used family, the <b>Grignard reagents</b>, R&ndash;MgX.</p>' +
+          '<div class="explain-box">Why it matters: a nucleophile supplies the atom that forms the new bond, so joining two carbon pieces needs a carbon nucleophile. Before the Grignard reagent, the carbon nucleophiles you met were narrow. <b>Cyanide</b> brings exactly one carbon, as a nitrile, and an <b>acetylide</b> has to come from a terminal alkyne. An organometallic reagent can bring almost any carbon group.</div>'
       },
       {
         type: 'explain',
@@ -245,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function(){
           '<li><b>R&ndash;Li</b>, Li 0.98: organolithium, more reactive and more basic than a Grignard reagent.</li>' +
           '<li><b>R&ndash;MgX</b>, Mg 1.31: Grignard reagent, strongly nucleophilic and strongly basic.</li>' +
           '<li><b>R&ndash;ZnX</b>, Zn 1.65: organozinc, mild enough to leave an ester in the same molecule alone.</li>' +
-          '<li><b>R&#8322;CuLi</b>, Cu 1.90: Gilman reagent (a cuprate), much milder; it comes later in this chapter.</li>' +
+          '<li><b>R&#8322;CuLi</b>, Cu 1.90: Gilman reagent (a cuprate), much milder; it comes later in the course.</li>' +
           '<li><b>R&ndash;B(OH)&#8322;</b>, B 2.04: boronic acid, barely nucleophilic on its own, so it needs a palladium catalyst.</li>' +
           '</ul>' +
           '<p class="step-body">The farther the metal sits below carbon, the more negative charge the carbon carries and the more it acts like a carbanion. That makes the reagent more reactive and less <b>selective</b>, that is, less able to pick out one group in a molecule and leave the others alone.</p>' +
@@ -328,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

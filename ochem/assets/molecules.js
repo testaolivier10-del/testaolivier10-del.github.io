@@ -1283,6 +1283,9 @@
       (a.lp ? ', ' + a.lp + ' lone pair' + (a.lp === 1 ? '' : 's') : '');
     return '<g class="' + cls + '" data-key="' + esc(key) + '"' +
       (clickable ? ' tabindex="0" role="button" aria-label="' + esc(name) + '"' : '') + '>' +
+      // A clickable atom is drawn at 11-17 units; an invisible ring around it
+      // gives a finger about 44 px to land on (audit 2026-10).
+      (clickable ? '<circle class="atom-hit" cx="' + a.x + '" cy="' + a.y + '" r="' + Math.max(a.r + 6, 21) + '"/>' : '') +
       lonePairDots(a) +
       '<circle cx="' + a.x + '" cy="' + a.y + '" r="' + a.r + '" fill="var(--white)" stroke="var(--line)" stroke-width="2"/>' +
       '<text x="' + a.x + '" y="' + (a.y + fontSize*0.35) + '" text-anchor="middle" font-size="' + fontSize + '">' +

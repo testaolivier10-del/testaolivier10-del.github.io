@@ -138,6 +138,16 @@
         "name": "ATP concentration in the fibers",
         "answer": "down",
         "why": "It falls only modestly, to roughly three quarters of its resting level, far less than creatine phosphate, because the energy systems remake ATP almost as fast as it is spent."
+      },
+      {
+        "name": "Number of muscle fibers",
+        "answer": "none",
+        "why": "A single run changes the fibers' fuel, not how many fibers there are."
+      },
+      {
+        "name": "Number of mitochondria in the fibers",
+        "answer": "none",
+        "why": "Building mitochondria takes weeks of training. A one-minute run does not change their number."
       }
     ],
     "why": {
@@ -341,22 +351,21 @@
     "q": "After a hard 5-minute run, you keep breathing heavily while you stand still. Select everything this excess post-exercise oxygen consumption pays for.",
     "options": [
       "Rebuilding creatine phosphate and ATP",
-      "Reloading myoglobin with oxygen",
+      "Making extra red blood cells for the next run",
       "Storing extra oxygen for the next run",
       "Clearing lactate by burning it or turning it into glucose",
       "The higher costs of a warmer body and raised hormone levels"
     ],
     "correct": [
       0,
-      1,
       3,
       4
     ],
     "why": {
-      "correct": "EPOC pays for restoring creatine phosphate and ATP, reloading oxygen onto myoglobin and in the blood, clearing lactate, and the raised costs of recovery: a warmer body, hormones released in exercise, breathing and circulation and tissue repair. It is not a reserve banked for later.",
+      "correct": "EPOC pays for restoring creatine phosphate and ATP, clearing lactate, and the raised costs of recovery: a warmer body, hormones released in exercise, breathing and circulation. It is not a reserve banked for later, and new red blood cells take days.",
       "options": [
         "Correct. Aerobic respiration rebuilds the phosphate stores within minutes.",
-        "Correct. Myoglobin gave up its oxygen during the run.",
+        "New red blood cells take days to make in the marrow. EPOC lasts minutes to hours and pays for recovery, not for new cells.",
         "The body does not bank extra oxygen beyond its normal stores; EPOC restores those stores and pays recovery costs.",
         "Correct. Lactate is burned or converted to glucose in the liver.",
         "Correct. Warmth speeds every reaction, and hormones raise metabolism for a while."
@@ -544,6 +553,11 @@
         "name": "Lactate in her leg muscles",
         "answer": "down",
         "why": "Lactate leaves the fibers into the blood, and heart, resting muscle and liver burn it or turn it into glucose; it is gone within about an hour."
+      },
+      {
+        "name": "Number of muscle fibers in her legs",
+        "answer": "none",
+        "why": "Recovery restores the fibers' fuel stores, not how many fibers there are."
       }
     ],
     "why": {

@@ -16,7 +16,7 @@
 
    Both are positionally aligned with questions.json and with each other, so
    explanations.json can stay a bare array of strings rather than repeating a
-   key 2,084 times. Nothing here reorders anything, and the check below fails
+   key 2,033 times. Nothing here reorders anything, and the check below fails
    if it ever does.
 
    IDS
@@ -78,7 +78,15 @@ for (const [at, q] of questions.entries()) {
 }
 
 const missing = questions.filter((q) => !('id' in q)).length;
-let next = questions.length ? Math.max(-1, ...seen.keys()) + 1 : 0;
+// The high-water mark. max(existing) + 1 alone would hand a deleted
+// question's id straight back out whenever the deleted one was the highest in
+// the bank (2107 and 2108 were removed as duplicates in the 2026-10 audit), so
+// the highest id ever issued is kept in a file and new ids start above it.
+const HIGH_WATER = 'scripts/lib/nremt-question-id-high-water.json';
+let highWater = -1;
+try { highWater = JSON.parse(readFileSync(HIGH_WATER, 'utf8')).highest; } catch { /* first run */ }
+const maxId = questions.length ? Math.max(-1, ...seen.keys()) : -1;
+let next = Math.max(highWater, maxId) + 1;
 const assigned = [];
 for (const q of questions) {
   if ('id' in q) continue;
@@ -95,7 +103,7 @@ const srcWanted = '[\n' + ordered.map((q) => JSON.stringify(q)).join(',\n') + '\
 
 const core = ordered.map(({ explain, ...rest }) => rest);
 // Kept as a positional array rather than an object keyed by index: the keys
-// would be the indices, written out as strings, for 2,084 entries — the same
+// would be the indices, written out as strings, for 2,033 entries — the same
 // information at a cost, and one more thing that could disagree with the
 // order it is supposed to mirror.
 const explanations = ordered.map((q) => (typeof q.explain === 'string' ? q.explain : ''));
@@ -114,6 +122,10 @@ const explainText = JSON.stringify(explanations);
 
 if (check) {
   let stale = false;
+  if (highWater < maxId) {
+    console.error(`${HIGH_WATER} records ${highWater}, below the highest id in the bank (${maxId})`);
+    stale = true;
+  }
   if (missing) {
     // In --check this is a failure rather than something to fix silently: CI
     // has no business writing to the file it is checking, and a question with
@@ -136,6 +148,8 @@ if (check) {
   console.log(`${CORE} and ${EXPLAIN} are in step with ${SRC} (${questions.length} questions, ids 0-${next - 1}).`);
 } else {
   if (srcText !== srcWanted) writeFileSync(SRC, srcWanted);
+  const highest = Math.max(highWater, next - 1);
+  if (highest !== highWater) writeFileSync(HIGH_WATER, JSON.stringify({ highest, note: 'Highest NREMT question id ever issued. Never lower it: ids are never reused.' }, null, 2) + '\n');
   writeFileSync(CORE, coreText);
   writeFileSync(EXPLAIN, explainText);
   const kb = (s) => (Buffer.byteLength(s) / 1024).toFixed(0);

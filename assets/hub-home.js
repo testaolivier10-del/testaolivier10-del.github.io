@@ -2,24 +2,30 @@
    hub page stays inside its weight budget (scripts/check-weight.mjs).
 
    LevlHubContinue(card, info) adds one "Continue" link per started course to
-   the progress card the hub's inline script draws. The search link and "/"
-   shortcut go into the hub's own header, which does not come from
-   site-chrome.js. */
+   the progress card the hub's inline script draws. The header, its search
+   link and the "/" shortcut come from site-chrome.js like every page's. */
 (function(){
   // One "Continue" link per started course. Built with the DOM rather than an
   // HTML string: the URL comes from storage, and the site's link checker reads
   // any quoted href attribute in an .html file as a literal path.
   function renderContinue(card, info){
-    var COURSES = [
-      { k: 'nremt', name: 'NREMT-EMT', home: '/nremt/' },
-      { k: 'ochem', name: 'Organic Chemistry', home: '/ochem/' },
-      { k: 'anp', name: 'Anatomy & Physiology', home: '/anatomy-physiology/' }
+    // courses:begin COURSE_LIST key,name,path,status (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+    var COURSE_LIST = [
+      { key: 'nremt', name: 'NREMT-EMT', path: '/nremt/', status: 'live' },
+      { key: 'ochem', name: 'Organic Chemistry', path: '/ochem/', status: 'live' },
+      { key: 'anp', name: 'Anatomy & Physiology', path: '/anatomy-physiology/', status: 'beta' },
     ];
+    // courses:end
+    var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){
+      return { k: c.key, name: c.name, home: c.path };
+    });
     var ptr = {};
     try{ ptr = JSON.parse(localStorage.getItem('levl_resume') || '{}') || {}; }catch(e){}
     var row = document.createElement('div');
     row.className = 'hub-continue';
     COURSES.forEach(function(c){
+      // The hero already offers the most recent course (index.html).
+      if(c.k === window.__levlHeroContinue) return;
       var p = ptr[c.k];
       var url = p && typeof p.url === 'string' && p.url.charAt(0) === '/' && p.url.charAt(1) !== '/' ? p.url : null;
       if(!url && !((info.subjects || {})[c.k] > 0)) return;
@@ -35,32 +41,5 @@
     if(row.firstChild && card) card.appendChild(row);
   }
 
-  // Search: the hub draws its own header, so it adds the same search link and
-  // "/" shortcut the course pages get from site-chrome.js (site-wide, so no
-  // course filter here).
-  function addSearch(){
-    var toggle = document.getElementById('themeToggle');
-    if(!toggle) return;
-    var a = document.createElement('a');
-    a.className = 'theme-toggle search-toggle';
-    a.href = '/search.html';
-    a.setAttribute('aria-label', 'Search all courses');
-    a.title = 'Search (press /)';
-    a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
-    var right = toggle.closest('.nav-right');
-    if(right) right.insertBefore(a, right.firstChild);
-    else toggle.parentNode.insertBefore(a, toggle);
-    document.addEventListener('keydown', function(e){
-      if(e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || e.defaultPrevented) return;
-      var t = e.target, tag = t && t.tagName;
-      if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
-      e.preventDefault();
-      location.href = '/search.html';
-    });
-  }
-
   window.LevlHubContinue = renderContinue;
-  // Runs after hub-progress.js has built the header's right-hand cluster
-  // (index.html calls HubProgress.mount on DOMContentLoaded, before this).
-  document.addEventListener('DOMContentLoaded', function(){ setTimeout(addSearch, 0); });
 })();

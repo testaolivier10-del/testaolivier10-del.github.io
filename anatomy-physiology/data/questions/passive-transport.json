@@ -77,6 +77,11 @@
         "name": "Number of potassium ions inside the cell",
         "answer": "none",
         "why": "Osmosis moves water, not the trapped solutes. The cell keeps the same potassium ions, now in a smaller volume."
+      },
+      {
+        "name": "Number of protein channels in the membrane",
+        "answer": "none",
+        "why": "Shrinking changes the cell's water and solute concentration, not how many channel proteins sit in its membrane."
       }
     ],
     "why": {
@@ -150,22 +155,21 @@
       "Oxygen crossing the bilayer",
       "Water entering a cell through aquaporins",
       "Glucose entering a cell on a carrier, down its gradient",
-      "Fluid pushed out of a capillary by blood pressure",
+      "A white blood cell engulfing a bacterium",
       "A cell spending ATP to move calcium from low to high concentration"
     ],
     "correct": [
       0,
       1,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "Passive transport moves a substance down its gradient with no ATP spent by the cell. Simple diffusion, osmosis, facilitated diffusion and filtration all qualify.",
+      "correct": "Passive transport moves a substance down its gradient with no ATP spent by the cell. Simple diffusion, osmosis and facilitated diffusion qualify (and so does filtration). Engulfing particles and pumping against a gradient spend ATP.",
       "options": [
         "Correct. This is simple diffusion.",
         "Correct. This is osmosis through water channels.",
         "Correct. This is facilitated diffusion by a carrier.",
-        "Correct. This is filtration. The pressure came from the heart, not from ATP spent by the capillary cells.",
+        "Engulfing a bacterium means wrapping it in membrane and pulling it in as a vesicle. Forming the vesicle uses ATP, so it is active.",
         "Moving a substance from low to high concentration is against its gradient and needs ATP, so it is not passive transport."
       ]
     },

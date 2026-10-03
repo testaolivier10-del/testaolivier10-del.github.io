@@ -39,7 +39,7 @@ function boot({ launched = false, pass = false, withPremium = true } = {}) {
   window.window = window;
   const sandbox = {
     window, document, localStorage, location: window.location, console, setTimeout, clearTimeout,
-    URLSearchParams,
+    URLSearchParams, __levlTestHooks: {},
     fetch: (u) => { fetched.push(u); return Promise.resolve({ ok: true, json: () => Promise.resolve([]) }); },
   };
   sandbox.globalThis = sandbox;
@@ -48,7 +48,9 @@ function boot({ launched = false, pass = false, withPremium = true } = {}) {
   if (withPremium) {
     load('assets/premium.js');
     window.LevlPremium.COURSES.anp.freeChapters = FOUNDATIONS.slice();
-    window.LevlPremium._setLaunched(launched);
+    sandbox.__levlTestHooks.premium.setLaunched(launched);
+    // A pass counts only for the signed-in user it was read for.
+    if (pass) window.StudyHubAccount = { user: () => ({ id: 'u1' }), registerNamespace: noop, onAuthChange: noop };
     if (pass) localStorage.setItem('levlprep_premium_v1', JSON.stringify({ userId: 'u1', courses: { anp: '2099-01-01T00:00:00Z' } }));
   }
   load('anatomy-physiology/assets/anp-curriculum.js');

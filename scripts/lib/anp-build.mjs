@@ -5,14 +5,16 @@
    the same head, the same 11-part lesson order (docs/anp-spec.md section 4) and
    the same glossary markup. docs/anp-phase1-architecture.md describes the data. */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadMap, indexMap, scanTerms, termRegex, scanPage, ASCII } from './anp-map.mjs';
 
 export const SITE = 'https://levlprep.com';
 export const BASE = '/anatomy-physiology/';
 export const COURSE_NAME = 'Anatomy & Physiology';
 export const COURSE_ID = `${SITE}${BASE}#course`;
-export const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh";
+import { CSP } from './site-config.mjs';
+export { CSP };
 export const TEAS_DISCLAIMER = 'LevlPrep is not affiliated with, endorsed by, or connected to Assessment Technologies Institute (ATI). TEAS and ATI TEAS are trademarks of ATI, used here only to say what the material is for.';
 
 export const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -105,7 +107,8 @@ export function head({ title, desc, path, depth, ogType = 'article', jsonld, scr
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="${up}assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="${up}assets/icon-180.png">
 <link rel="manifest" href="${depth}manifest.json">
@@ -144,9 +147,10 @@ ${JSON.stringify(jsonld, null, 2)}
    premium loads the site's Premium module (assets/premium.js) ahead of the
    course scripts, on the pages with a Premium surface; AnpCore reads it and
    does without it when it is absent. */
-export function tail({ depth, section, extra = [], premium = false }) {
+export function tail({ depth, section, extra = [], premium = false, site = [] }) {
   const s = src => `<script src="${depth}assets/${src}" defer></script>`;
   return [
+    ...site.map(f => `<script src="${depth}../assets/${f}" defer></script>`),
     ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
     `<script>window.ANP_SECTION = '${section}'; window.ANP_BASE = '${depth}';</script>`,
     s('anp-curriculum.js'), s('anp-core.js'), s('anp-glossary.js'), s('anp-nav.js'),
@@ -171,10 +175,18 @@ export function crumbNav(items, depth) {
       : `<a href="${it.href}">${esc(it.name)}</a> <span aria-hidden="true">&rsaquo;</span>`).join(' ')}</nav>`;
 }
 
+/* Beta label (audit 2026-10, fix 11; spec decision 74): the course has had no
+   review by a licensed A&P instructor and docs/anp-needs-author.md holds open
+   items, so every page says so. Remove only after that review. */
+// anp-nav-ref: a label, not teaching, so the page check skips it ("Beta" next
+// to a title like "Cell cycle" read as "beta cell").
+export const BETA_PILL = '<span class="anp-beta anp-nav-ref">Beta</span>';
+export const BETA_NOTE = 'This course has not yet been reviewed by a licensed A&amp;P instructor.';
+
 export function footer(depth) {
   return `<footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note">${BETA_PILL} ${BETA_NOTE} It follows current published sources, listed on the <a href="${depth}../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="${depth}../privacy.html">Privacy</a> &middot; <a href="${depth}../terms.html">Terms</a> &middot; <a href="${depth}../sources.html">Sources</a> &middot; <a href="${depth}credits.html">Figure credits</a> &middot; <a href="${depth}../premium.html">Premium</a> &middot; <a href="${depth}../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>`;
 }
 
@@ -320,6 +332,47 @@ function laterLabelUncached(C, l, topicId) {
   return scanPage(C.map, `<p>${esc(l.name || '')}</p>`, topicId).length > 0;
 }
 
+/* Labels printed with a typo carry "fix", the right spelling. It is drawn over
+   the printed label as an SVG in the image's own pixel space, so it scales
+   with the figure on any screen (audit 2026-10: Figure 25.10 "conboluted").
+   Wrapped onto as many lines as the printed label has. */
+export function fixSvg(f, labels) {
+  const fx = (labels || []).filter(l => l.fix && l.box);
+  if (!fx.length) return '';
+  const W = f.w || 1000, H = f.h || 1000;
+  const parts = fx.map(l => {
+    const [x, y, w, h] = l.box;
+    const n = Math.max(1, (l.lines || []).length);
+    const words = l.fix.split(' ');
+    const lines = [];
+    // Balance by characters: fill each line up to its share of the text.
+    let cur = [], target = l.fix.length / n;
+    for (const word of words) {
+      if (cur.length && lines.length < n - 1 && (cur.join(' ') + ' ' + word).length > target + 2) { lines.push(cur.join(' ')); cur = []; }
+      cur.push(word);
+    }
+    lines.push(cur.join(' '));
+    const fs = Math.min(h / lines.length * 0.78, 26).toFixed(1);
+    const lh = h / lines.length;
+    return `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#fff"/><text font-family="Arial,Helvetica,sans-serif" font-size="${fs}" font-weight="600" fill="#231F20">${lines.map((t, i) => `<tspan x="${x + 2}" y="${(y + lh * (i + 0.72)).toFixed(1)}">${esc(t)} </tspan>`).join('')}</text>`;
+  });
+  return `<svg class="anp-fix" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true" focusable="false">${parts.join('')}</svg>`;
+}
+
+/* AVIF copies at 480 px, 800 px and full width, written by
+   scripts/build-figure-variants.py (site audit 2026-10, performance: phones got
+   the 1,100 px JPG for a 360 px slot). Empty when a figure has none, so the
+   page falls back to the plain <img>. The JPG stays the fallback inside
+   <picture>. anp-questions.js derives the same names for figure questions. */
+const AVIF_DIR = join(dirname(dirname(dirname(fileURLToPath(import.meta.url)))), 'anatomy-physiology', 'figures', 'avif');
+export const AVIF_WIDTHS = [480, 800];
+// The figure column is at most about 720 px wide; on a phone it is the screen.
+export const FIG_SIZES = '(max-width: 760px) 100vw, 720px';
+export function avifSrcset(figId, W, depth) {
+  if (!existsSync(join(AVIF_DIR, `${figId}.avif`))) return '';
+  return [...AVIF_WIDTHS.filter(w => w < W).map(w => `${depth}figures/avif/${figId}-${w}.avif ${w}w`), `${depth}figures/avif/${figId}.avif ${W}w`].join(', ');
+}
+
 export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) {
   const f = C.figures[figId];
   if (!f) return '';
@@ -335,18 +388,69 @@ export function figureImg(C, figId, depth, { masks = true, topic = null } = {}) 
   const maskHtml = masks && labels.length ? labels.map(l =>
     `<button type="button" class="anp-mask" data-label="${esc(l.id)}" aria-label="Hidden label: ${esc(l.name)}. Select to reveal." style="${at(l.box)}"><span>${esc(l.name)}</span></button>`).join('') : '';
   const coverHtml = covered.map(l => `<span class="anp-cover" aria-hidden="true" style="${at(l.box)}"></span>`).join('');
-  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}"><img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">${coverHtml}${maskHtml}</div>`;
+  // A label printed with a typo carries "fix": the right spelling is drawn
+  // over it (audit 2026-10: OpenStax Figure 25.10's "conboluted").
+  const fixHtml = fixSvg(f, labels);
+  const img = `<img src="${src}" alt="${esc(f.alt)}" width="${W}" height="${H}" loading="lazy" decoding="async">`;
+  const avif = (f.ext || 'jpg') === 'jpg' ? avifSrcset(figId, W, depth) : '';
+  const pic = avif ? `<picture><source type="image/avif" srcset="${avif}" sizes="${FIG_SIZES}">${img}</picture>` : img;
+  return `<div class="anp-figimg${masks && labels.length ? ' has-masks' : ''}" data-fig="${esc(figId)}">${pic}${coverHtml}${fixHtml}${maskHtml}</div>`;
 }
 
-export function credit(f) {
-  if (!f) return '';
+/* Figure attribution, built from the figure's data (audit 2026-10, fix 11).
+   OpenStax figures name the book's authors, publisher and rights holder and
+   its license; a figure OpenStax credits to someone else also carries that
+   party's own credit line and license (data: "thirdParty"), with share-alike
+   noted for a CC BY-SA source; a figure shown with any printed label hidden
+   or covered says "Adapted: labels hidden." */
+export const OPENSTAX_BOOK_TEXT = 'J. Gordon Betts et al., Anatomy and Physiology 2e, OpenStax, © Rice University';
+const OPENSTAX_BOOK_HTML = 'J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University';
+export const LICENSE_URL = {
+  'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
+  'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/',
+  'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
+  'CC BY-SA 3.0': 'https://creativecommons.org/licenses/by-sa/3.0/',
+  'CC BY-SA 2.0': 'https://creativecommons.org/licenses/by-sa/2.0/',
+  'Public domain': 'https://creativecommons.org/publicdomain/mark/1.0/',
+};
+export const isShareAlike = (license) => /\bBY-SA\b/.test(license || '');
+export function openstaxPage(f) {
+  return f.openstax && f.openstax.page
+    ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}`
+    : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
+}
+
+/* { text, html } for one figure as shown. adapted: some printed label is
+   hidden (masked or covered) where it is shown. */
+export function attribution(f, { adapted = false } = {}) {
+  if (!f) return { text: '', html: '' };
+  const lic = (name) => LICENSE_URL[name] ? `<a href="${LICENSE_URL[name]}" rel="license">${esc(name)}</a>` : esc(name);
+  const tp = f.thirdParty;
+  const sa = tp && isShareAlike(tp.license) ? '; this adaptation is shared under the same license' : '';
+  const tpText = tp ? ` Original: ${tp.credit}, ${tp.license}${sa}.` : '';
+  const tpHtml = tp ? ` Original: ${esc(tp.credit)}, ${lic(tp.license)}${sa}.` : '';
+  const ad = (adapted ? ' Adapted: labels hidden.' : '') + ((f.labels || []).some(l => l.fix) ? ' A misspelled printed label is corrected.' : '');
   if (f.source === 'openstax') {
-    const page = f.openstax && f.openstax.page
-      ? `https://openstax.org/books/anatomy-and-physiology-2e/pages/${f.openstax.page}`
-      : 'https://openstax.org/details/books/anatomy-and-physiology-2e';
-    return `<span class="anp-credit">${esc(f.credit)}, <a href="${page}">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>${f.modified ? ', modified' : ''}.</span>`;
+    const n = f.openstax && f.openstax.figure;
+    return {
+      text: `Figure ${n} from ${OPENSTAX_BOOK_TEXT}, ${f.license}.${tpText}${ad}`,
+      html: `Figure ${esc(n)} from ${OPENSTAX_BOOK_HTML}, <a href="${openstaxPage(f)}">openstax.org</a>, ${lic(f.license)}.${tpHtml}${ad}`,
+    };
   }
-  return f.credit ? `<span class="anp-credit">${esc(f.credit)} (${esc(f.license)}).</span>` : '';
+  if (!f.credit) return { text: '', html: '' };
+  return { text: `${f.credit} (${f.license}).${ad}`, html: `${esc(f.credit)} (${esc(f.license)}).${ad}` };
+}
+
+export function credit(f, opts = {}) {
+  const a = attribution(f, opts);
+  return a.html ? `<span class="anp-credit">${a.html}</span>` : '';
+}
+
+/* The printed labels a page for this topic paints over for good. */
+export function coveredLabels(C, figId, topic) {
+  const f = C.figures[figId];
+  return f ? (f.labels || []).filter(l => l.box && laterLabel(C, l, topic)) : [];
 }
 
 /* Numbers every figure on a page and rewrites <a class="figref"> to match,
@@ -365,7 +469,7 @@ export function renderFigures(C, html, depth, topic = null) {
     cap = cap.replace(/^\s*(<b>|<strong>)?\s*Figure\s+\d+[.:]?\s*(<\/b>|<\/strong>)?\s*/i, '');
     if (fig) body = figureImg(C, fig, depth, { masks: false, topic });
     else body = inner.replace(/<figcaption>[\s\S]*?<\/figcaption>/, '');
-    const cr = fig ? ' ' + credit(C.figures[fig]) : '';
+    const cr = fig ? ' ' + credit(C.figures[fig], { adapted: coveredLabels(C, fig, topic).length > 0 }) : '';
     const cls = (attrs.match(/\bclass="([^"]+)"/) || [])[1];
     const attrsOut = attrs.replace(/\bclass="[^"]*"/, '').replace(/\bdata-fig="[^"]*"/, '');
     return `<figure${attrsOut} class="anp-figure${cls ? ' ' + cls : ''}">${body}<figcaption><b>Figure ${n}.</b> ${cap}${cr}</figcaption></figure>`;
@@ -401,8 +505,11 @@ function figForQuestion(C, id, topicId, pin) {
   // could be read off the figure, and marks the pinned label's box as the
   // target. Any other figure question covers only labels taught later.
   const target = pin ? labels.find(l => l.id === pin) : null;
-  const covers = labels.filter(l => target ? l !== target : laterLabel(C, l, topicId)).map(l => pct(l.box));
-  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}) };
+  const coveredL = labels.filter(l => target ? l !== target : laterLabel(C, l, topicId));
+  const covers = coveredL.map(l => pct(l.box));
+  const fixes = fixSvg(f, labels.filter(l => l.fix && l !== target && !coveredL.includes(l)));
+  const credit = attribution(f, { adapted: covers.length > 0 || !!target }).text;
+  return { src: `figures/${id}.${f.ext || 'jpg'}`, alt: f.alt, w: W, h: H, ...(covers.length ? { covers } : {}), ...(target ? { pin: pct(target.box) } : {}), ...(fixes ? { fixes } : {}), credit };
 }
 
 /* The question as static HTML (readable without JavaScript; anp-questions.js

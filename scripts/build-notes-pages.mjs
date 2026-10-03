@@ -42,6 +42,8 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { CSP } from './lib/site-config.mjs';
+import { courseTitle } from './lib/page-title.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 // Hand-written meta descriptions, for sections whose opening paragraph has no
@@ -158,16 +160,10 @@ function describe(prose, fallback) {
    the subject fall off the end. */
 const TITLE_MAX = 60;
 
-function fit(candidates) {
-  return candidates.find((c) => decodeEntities(c).length <= TITLE_MAX) ?? candidates[candidates.length - 1];
-}
 
 function page({ topic, module: mod, prose, prev, next, index, total }) {
-  const title = fit([
-    `${topic.title} — ${mod.title} Notes | Organic Chemistry`,
-    `${topic.title} — Organic Chemistry Notes`,
-    `${topic.title} — Study Notes`,
-  ]);
+  // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs).
+  const title = courseTitle(decodeEntities(topic.title), ['Organic Chemistry', 'Organic Chem', 'OChem'].map((c) => `${c} Notes`));
   const desc = DESCRIPTIONS[topic.id] || describe(prose, `${topic.title} explained step by step: free organic chemistry notes from the ${mod.title} chapter.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
   /* A notes-only topic's href is this very page, so it gets the shared label
@@ -239,13 +235,14 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="${CSP}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
@@ -302,7 +299,7 @@ ${END}
 
   <footer class="notes-foot">
     <p><a href="../learn.html">&larr; All ${total} sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>
@@ -382,7 +379,7 @@ if (existsSync(learnPath)) {
 
   const block = `${TOC_START}\n` +
     `      <div class="tb-static-toc">\n` +
-    `        <h1>The Organic Chemistry Textbook</h1>\n` +
+    `        <h1>The Organic Chemistry textbook</h1>\n` +
     `        <p class="step-body">${modules.length} chapters, ${n} sections. Every section below is a page you can read on its own.${notesOnlyNote}</p>\n` +
     `${toc}\n` +
     `      </div>\n` +

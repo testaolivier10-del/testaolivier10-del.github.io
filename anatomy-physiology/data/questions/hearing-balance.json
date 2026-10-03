@@ -188,6 +188,11 @@
         "name": "Loudness in the left ear of a tuning fork placed on the forehead",
         "answer": "up",
         "why": "In the Weber test, a conductive loss makes the fork sound louder in the affected ear, because room noise no longer masks it there."
+      },
+      {
+        "name": "Hearing in the right ear",
+        "answer": "none",
+        "why": "The fluid is in the left middle ear. The right ear works normally."
       }
     ],
     "why": {

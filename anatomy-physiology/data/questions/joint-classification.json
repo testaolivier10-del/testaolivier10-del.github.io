@@ -173,21 +173,20 @@
   "options": [
    "Coronal suture",
    "Tooth in its socket",
-   "Radius and ulna joined by an interosseous membrane",
+   "The joint between two vertebral bodies",
    "Pubic symphysis",
    "Epiphyseal plate"
   ],
   "correct": [
    0,
-   1,
-   2
-  ],
+   1
+ ],
   "why": {
    "correct": "Sutures, gomphoses and syndesmoses are the three fibrous joints. The pubic symphysis and the epiphyseal plate are cartilaginous.",
    "options": [
     "Yes. A suture is a fibrous joint between skull bones.",
     "Yes. A tooth in its socket is a gomphosis, a fibrous joint.",
-    "Yes. Bones joined by an interosseous membrane form a syndesmosis, a fibrous joint.",
+    "Vertebral bodies are joined by a disc of fibrocartilage, so that joint is cartilaginous.",
     "No. The pubic symphysis joins bones with fibrocartilage, so it is cartilaginous.",
     "No. The epiphyseal plate is hyaline cartilage, a synchondrosis."
    ]
@@ -424,6 +423,16 @@
     "name": "How far the lower back can bend forward in total",
     "answer": "down",
     "why": "Bending of the whole spine is the sum of small movements at many discs. Each fused level adds nothing, so the total falls."
+   },
+   {
+    "name": "Movement at the knees",
+    "answer": "none",
+    "why": "The knees are separate joints. Fusing the lumbar discs does not change them."
+   },
+   {
+    "name": "Movement of the neck",
+    "answer": "none",
+    "why": "The disease is in the lower back. The cervical joints are unaffected."
    }
   ],
   "why": {

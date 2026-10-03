@@ -58,9 +58,19 @@
     return (r.q ? 1 : 0) + (r.o ? 2 : 0) + (r.soft ? 0 : 8);
   }
 
+  /* The rules are written with plain digits and signs (H2SO4, NH4+), and the
+     bank writes formulas with subscripts and superscript charges (H₂SO₄,
+     NH₄⁺, see scripts/normalize-ochem-notation.mjs). Matching against a
+     plain copy keeps every rule working whichever way a formula is typed. */
+  var PLAIN = { '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9',
+                '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁺':'+','⁻':'-' };
+  function plain(s){
+    return String(s || '').replace(/[₀-₉⁰¹²³⁴-⁹⁺⁻]/g, function(c){ return PLAIN[c] || c; });
+  }
+
   function matches(r, qText, oText){
-    if(r.q && !r.q.test(qText)) return false;
-    if(r.o && !r.o.test(oText)) return false;
+    if(r.q && !r.q.test(qText) && !r.q.test(plain(qText))) return false;
+    if(r.o && !r.o.test(oText) && !r.o.test(plain(oText))) return false;
     return true;
   }
 
@@ -110,7 +120,7 @@
     var list = candidates(topicId), best = null, bestS = -1;
     for(var i = 0; i < list.length; i++){
       var r = list[i];
-      if(!r.q || !r.q.test(qText)) continue;
+      if(!r.q || !(r.q.test(qText) || r.q.test(plain(qText)))) continue;
       if(r.o) continue;                       // option rules do not classify the question
       if(!r.recall && !allowedConcept(topicId, r.c)) continue;
       var sc = ruleScore(r);
@@ -158,7 +168,7 @@
 
   window.OchemLegacyDiagnosis = {
     define: define, shared: shared,
-    conceptFor: conceptFor, forOption: forOption, isRecall: isRecall,
+    conceptFor: conceptFor, forOption: forOption, isRecall: isRecall, plain: plain,
     _rules: RULES, _shared: function(){ return SHARED; }
   };
 })();

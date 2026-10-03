@@ -206,18 +206,24 @@ test('a student who has not earned a freeze still loses the streak', () => {
 
 test('the goal eases off after a bad stretch and comes back on return', () => {
   const { b, HP } = fresh();
-  HP.recordActivity('nremt', 20);     // default goal of 20, met
-  assert.equal(HP.streak().goal, 20);
+  HP.recordActivity('nremt', 15);     // default goal of 15 (the free daily allowance), met
+  assert.equal(HP.streak().goal, 15);
 
   b.advanceDays(3);                   // three days missed
   const eased = HP.streak();
-  assert.equal(eased.goal, 10, 'half, so coming back is possible rather than hopeless');
+  assert.equal(eased.goal, 8, 'half, so coming back is possible rather than hopeless');
   assert.equal(eased.eased, true);
-  assert.equal(eased.goalBase, 20, 'their real goal is remembered, not overwritten');
+  assert.equal(eased.goalBase, 15, 'their real goal is remembered, not overwritten');
 
   // Study across the next few days and the window of misses clears.
-  for(let i = 0; i < 3; i++){ HP.recordActivity('nremt', 20); b.advanceDays(1); }
-  assert.equal(HP.streak().goal, 20, 'back to their own number, on its own');
+  for(let i = 0; i < 3; i++){ HP.recordActivity('nremt', 15); b.advanceDays(1); }
+  assert.equal(HP.streak().goal, 15, 'back to their own number, on its own');
+});
+
+test('the old default goal of 20, never picked by hand, becomes 15', () => {
+  const { b, HP } = fresh();
+  b.window.localStorage.setItem('hub_activity_v1', JSON.stringify({ v: 1, days: {}, goal: 20, goalBase: 20, goalAuto: true }));
+  assert.equal(HP.streak().goal, 15, 'a free student could never reach 20');
 });
 
 test('a goal the student picked by hand is never moved for them', () => {

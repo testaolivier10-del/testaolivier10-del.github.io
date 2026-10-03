@@ -221,7 +221,7 @@ order by c.course;
 -- select u.id, c.course, 'grant', now() + interval '30 days'
 -- from auth.users u cross join (values ('nremt'), ('ochem'), ('anp')) as c(course);
 
--- The NREMT pass guarantee: extend a student who failed until they pass.
+-- Pass-or-extend (NREMT): extend a student who failed until they pass.
 -- insert into public.premium_passes (user_id, course, pass, expires_at)
 -- values ('<user id>', 'nremt', 'guarantee', now() + interval '90 days');
 

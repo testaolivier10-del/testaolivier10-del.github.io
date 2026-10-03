@@ -229,21 +229,20 @@
     "options": [
       "Making the tube longer",
       "Raising the pressure at the inlet",
-      "Replacing the fluid with a more viscous one",
+      "Widening the tube's radius",
       "Narrowing the tube's radius",
       "Lowering the pressure at the outlet"
     ],
     "correct": [
       0,
-      2,
       3
     ],
     "why": {
-      "correct": "Resistance is set by the tube and the fluid: length, viscosity and radius. Pressures change the gradient, not the resistance.",
+      "correct": "Resistance is set by the tube and the fluid: length, viscosity and radius. A longer or narrower tube resists more; a wider one resists less. Pressures change the gradient, not the resistance.",
       "options": [
         "Increases resistance. Resistance is proportional to length.",
         "Does not change resistance. It raises the pressure gradient, which increases flow through the same resistance.",
-        "Increases resistance. Resistance is proportional to viscosity.",
+        "A wider tube offers less resistance, very steeply so, because resistance depends on the radius to the fourth power.",
         "Increases resistance, steeply, because resistance depends on 1 ÷ radius to the fourth power.",
         "Does not change resistance. A lower outlet pressure widens the pressure gradient and increases flow."
       ]
@@ -469,21 +468,20 @@
       "Blood moving along an artery",
       "A drop of dye slowly spreading through a still glass of water",
       "Air moving into your lungs as you breathe in",
-      "Fluid running from an IV bag into a vein",
+      "Sugar spreading through a cup of still tea",
       "Heat spreading from your warm hand into a cold metal rail"
     ],
     "correct": [
       0,
-      2,
-      3
+      2
     ],
     "why": {
-      "correct": "Bulk flow is a whole fluid moving together, pushed by a pressure difference. Blood, inhaled air and IV fluid all qualify. Dye particles spreading through still water and heat passing into metal are driven by concentration and temperature gradients, with no pressure-driven flow of the fluid.",
+      "correct": "Bulk flow is a whole fluid moving together, pushed by a pressure difference, as with blood in an artery and inhaled air. Dye or sugar spreading through still liquid and heat passing into metal are driven by concentration and temperature gradients, with no pressure-driven flow of the fluid.",
       "options": [
         "Bulk flow. The heart creates a pressure difference that moves the blood as a whole, with everything in it.",
         "Not bulk flow. The water is still; individual dye particles spread down their own concentration gradient.",
         "Bulk flow. The pressure in your lungs drops below atmospheric, and air moves in as a whole.",
-        "Bulk flow. The pressure at the bag end is higher than in the vein, so the fluid moves as a whole.",
+        "Sugar spreading through still tea is particles moving down their own concentration gradient, not the whole fluid moving.",
         "Not bulk flow. Heat moves down a temperature gradient; no fluid moves at all."
       ]
     }

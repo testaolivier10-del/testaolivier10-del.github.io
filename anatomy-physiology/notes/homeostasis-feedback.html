@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Homeostasis and feedback loops: Notes | Anatomy &amp; Physiology</title>
+<title>Homeostasis and feedback loops — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Homeostasis, negative feedback and positive feedback, explained with one loop you will use in every chapter of this course.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/homeostasis-feedback.html">
-<meta property="og:title" content="Homeostasis and feedback loops: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Homeostasis and feedback loops — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Homeostasis, negative feedback and positive feedback, explained with one loop you will use in every chapter of this course.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/homeostasis-feedback.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="homeostasis-feedback">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 5 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cell-communication.html">Signals, repair and control</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Homeostasis and feedback loops: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/homeostasis-feedback.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 5 &middot; Topic 33 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 5 &middot; Topic 33 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Homeostasis and feedback loops</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">14 min read</span><span class="anp-tb-chip" data-chip-topic="homeostasis-feedback">Not practiced</span></p>
     </header>
@@ -192,7 +193,7 @@
 <p>In <strong>negative feedback</strong>, the response moves the regulated variable in the opposite direction to the stimulus. A rise causes a response that lowers it. A fall causes a response that raises it. Either way, the variable is pushed back toward the set point. "Negative" means "opposing", not "harmful" and not "lowering".</p>
 <p>Almost every homeostatic loop in your body is a negative feedback loop. Here is your body temperature on that cold morning, part by part:</p>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Body temperature: the same loop in both directions"><table class="compare">
   <caption>Body temperature: the same loop in both directions</caption>
   <thead><tr><th>Loop part</th><th>Body temperature falls</th><th>Body temperature rises</th></tr></thead>
   <tbody>
@@ -265,7 +266,7 @@
 <h3>Blood clotting</h3>
 <p>When a blood vessel breaks, <a class="gl" href="../notes/plasma-membrane.html" data-c="blood-cells-basic">platelets</a> stick to the damaged wall. Once stuck, they release chemicals that make more passing platelets stick, and those release more of the same chemicals. The pile of platelets grows faster and faster. The loop ends when the break is sealed and no damaged wall is left exposed. This pile of platelets is only the first stage of <a class="gl" href="../notes/connective-tissue.html" data-c="clot-basic">clotting</a>. The next stage, in which a mesh of <a class="gl" href="../notes/biomolecules.html" data-c="protein">protein</a> fibers forms around the platelets, also runs on positive feedback. The blood chapter follows both in detail.</p>
 
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Negative vs positive feedback"><table class="compare">
   <caption>Negative vs positive feedback</caption>
   <thead><tr><th></th><th>Negative feedback</th><th>Positive feedback</th></tr></thead>
   <tbody>
@@ -329,13 +330,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:homeostasis-feedback">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="tissue-membranes-repair.html"><span>&larr; Topic 32</span><b>Body membranes and tissue repair</b></a><a class="tb-chapter-link next" href="skin-layers.html"><span>Topic 34 &rarr;</span><b>Layers of the skin</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

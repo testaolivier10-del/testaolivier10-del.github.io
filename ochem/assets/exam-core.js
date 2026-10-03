@@ -232,7 +232,30 @@
     return out.slice(-HISTORY_MAX);
   }
 
+  /* A saved midterm range. It used to be chapter NUMBERS, which go stale
+     when chapters move (October 2026 reorder), so it is saved as ids now; an
+     old numeric save is read against LEGACY_ORDER, the order it was saved
+     under. Returns { fromId, toId } in course order. */
+  var LEGACY_ORDER = ['foundations', 'electron-movement', 'nomenclature', 'acids-bases',
+    'alkanes-conformations', 'stereochemistry', 'reactivity', 'substitution-elimination',
+    'alkenes-alkynes', 'conjugation', 'alcohols-ethers', 'carbonyl-chemistry', 'redox',
+    'carboxylic-acids', 'organometallics', 'enolate-chemistry', 'aromatic-chemistry', 'amines',
+    'aromatic-breadth', 'spectroscopy', 'synthesis', 'biomolecules', 'polymers'];
+  function midtermRange(prefs, chapterIds, dflt){
+    var p = prefs || {}, has = function(id){ return chapterIds.indexOf(id) !== -1; };
+    var from = has(p.fromId) ? p.fromId : null, to = has(p.toId) ? p.toId : null;
+    function legacy(n){ var id = LEGACY_ORDER[(+n) - 1]; return has(id) ? id : null; }
+    if(!from && p.from != null) from = legacy(p.from);
+    if(!to && p.to != null) to = legacy(p.to);
+    from = from || (dflt && has(dflt.fromId) ? dflt.fromId : chapterIds[0]);
+    to = to || (dflt && has(dflt.toId) ? dflt.toId : chapterIds[chapterIds.length - 1]);
+    if(chapterIds.indexOf(from) > chapterIds.indexOf(to)){ var t = from; from = to; to = t; }
+    return { fromId: from, toId: to };
+  }
+
   window.OchemExamCore = {
+    LEGACY_ORDER: LEGACY_ORDER,
+    midtermRange: midtermRange,
     MIX: MIX,
     HISTORY_MAX: HISTORY_MAX,
     shuffle: shuffle,

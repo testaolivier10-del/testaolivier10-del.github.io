@@ -98,11 +98,12 @@
   }
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw 0; return r.json(); }); }
   function loadEngine(){
-    if(window.LevlSearch) return Promise.resolve(window.LevlSearch);
+    function ok(){ var S = window.LevlSearch; return S && typeof S.rank === 'function' && typeof S.tokenize === 'function'; }
+    if(ok()) return Promise.resolve(window.LevlSearch);
     return new Promise(function(res, rej){
       var s = document.createElement('script');
       s.src = BASE + '../assets/site-search.js';
-      s.onload = function(){ window.LevlSearch ? res(window.LevlSearch) : rej(); };
+      s.onload = function(){ ok() ? res(window.LevlSearch) : rej(); };
       s.onerror = rej;
       document.head.appendChild(s);
     });

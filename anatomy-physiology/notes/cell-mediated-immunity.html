@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T cells and cell-mediated immunity: Notes | A&amp;P</title>
+<title>T cells and cell-mediated immunity — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Helper T cells and cytotoxic T cells are both T lymphocytes, and under a microscope they look the same, yet one kind gives orders and the other kills.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/cell-mediated-immunity.html">
-<meta property="og:title" content="T cells and cell-mediated immunity: Notes | A&amp;P">
+<meta property="og:title" content="T cells and cell-mediated immunity — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Helper T cells and cytotoxic T cells are both T lymphocytes, and under a microscope they look the same, yet one kind gives orders and the other kills.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/cell-mediated-immunity.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="cell-mediated-immunity">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 20 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/lymph-immune.html">Lymphatic and immune systems</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">T cells and cell-mediated immunity: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cell-mediated-immunity.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 20 &middot; Topic 114 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 20 &middot; Topic 114 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">T cells and cell-mediated immunity</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">15 min read</span><span class="anp-tb-chip" data-chip-topic="cell-mediated-immunity">Not practiced</span></p>
     </header>
@@ -184,7 +185,7 @@
 <li>it recruits <a class="gl" href="../notes/leukocytes-platelets.html" data-c="granulocytes">neutrophils</a> and eosinophils to the right place.</li>
 </ul>
 <p>Activated helper T cells split into subsets, each with its own cytokine mix and each suited to a different kind of threat. The cytokines around the helper T cell at activation (signal 3) decide which subset it becomes.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Th1 cells</th><th>Th2 cells</th></tr></thead>
 <tbody>
 <tr><th>Switched on by</th><td>IL-12 from dendritic cells and macrophages that have met bacteria or viruses</td><td>IL-4 and signals from tissues damaged by worms</td></tr>
@@ -201,7 +202,7 @@
 
 <h2 id="cytotoxic-t-cells-the-killers">Cytotoxic T cells: the killers</h2>
 <p>A <em>cytotoxic T cell</em> (cyt/o = cell, tox- = poison) is a CD8 T cell that kills cells displaying its antigen on MHC class I. Its targets are cells infected with a virus or with bacteria that live in the <a class="gl" href="../notes/plasma-membrane.html" data-c="cell-parts">cytoplasm</a>, and some cancer cells. <a class="figref" href="#fig-os-21-20">Figure 2</a> contrasts it with the helper T cell.</p>
-<figure id="fig-os-21-20"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-20"><img src="../figures/os-21-20.jpg" alt="Two panels. Top: a dendritic cell with many long branching arms; a close-up shows one arm holding an antigen in an MHC II protein, bound by a T cell receptor and a CD4 protein on an activated helper T cell. An arrow leads to the helper T cell releasing a cloud of dots labeled cytokines. Bottom: an infected cell holds antigens in an MHC I protein, bound by a T cell receptor and a CD8 protein on an activated cytotoxic T cell. An arrow leads to the infected cell broken into fragments, with dots labeled perforins and granzymes scattered around it." width="732" height="760" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:19.95%;top:63.16%;width:70.49%;height:5.79%"></span></div><figcaption><b>Figure 2.</b> Helper and cytotoxic T cells. Top: a helper T cell recognizes antigen in MHC II on a dendritic cell, using its T cell receptor and CD4, and responds by releasing cytokines. Bottom: a cytotoxic T cell recognizes antigen in MHC I on an infected cell, using its T cell receptor and CD8, and kills it with perforins and granzymes. The printed heading says the enzymes "rupture cell membranes", and the dead cell is drawn shattered. In fact perforin makes small pores, and the target dies by apoptosis, breaking into tidy membrane-wrapped fragments. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 21.20, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-3-the-adaptive-immune-response-t-lymphocytes-and-their-functional-types">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-21-20"  class="anp-figure"><div class="anp-figimg" data-fig="os-21-20"><picture><source type="image/avif" srcset="../figures/avif/os-21-20-480.avif 480w, ../figures/avif/os-21-20.avif 732w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-21-20.jpg" alt="Two panels. Top: a dendritic cell with many long branching arms; a close-up shows one arm holding an antigen in an MHC II protein, bound by a T cell receptor and a CD4 protein on an activated helper T cell. An arrow leads to the helper T cell releasing a cloud of dots labeled cytokines. Bottom: an infected cell holds antigens in an MHC I protein, bound by a T cell receptor and a CD8 protein on an activated cytotoxic T cell. An arrow leads to the infected cell broken into fragments, with dots labeled perforins and granzymes scattered around it." width="732" height="760" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:19.95%;top:63.16%;width:70.49%;height:5.79%"></span></div><figcaption><b>Figure 2.</b> Helper and cytotoxic T cells. Top: a helper T cell recognizes antigen in MHC II on a dendritic cell, using its T cell receptor and CD4, and responds by releasing cytokines. Bottom: a cytotoxic T cell recognizes antigen in MHC I on an infected cell, using its T cell receptor and CD8, and kills it with perforins and granzymes. The printed heading says the enzymes "rupture cell membranes", and the dead cell is drawn shattered. In fact perforin makes small pores, and the target dies by apoptosis, breaking into tidy membrane-wrapped fragments. <span class="anp-credit">Figure 21.20 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/21-3-the-adaptive-immune-response-t-lymphocytes-and-their-functional-types">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p>Here is how one killing happens:</p>
 <ol>
 <li><strong>Recognition.</strong> The cytotoxic T cell crawls over cells in the infected tissue. When its T cell receptor and CD8 bind a viral peptide in MHC class I, it grips that cell tightly.</li>
@@ -213,7 +214,7 @@
 </ol>
 <p>Why apoptosis rather than bursting the cell open? A cell that dies by apoptosis breaks up into tidy fragments that macrophages engulf. Viral particles still being assembled inside it are destroyed with it instead of being spilled into the tissue, and there is little inflammation.</p>
 <p>Notice what cytotoxic T cells cannot see. A cell that makes no MHC class I cannot show them its peptides. Mature red blood cells have no nucleus and carry almost no MHC class I, so a parasite hiding inside them escapes cytotoxic T cells. Some viruses shut down MHC class I in the cells they infect; those cells are then targets for natural killer cells, which attack cells that are missing MHC class I.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Cytotoxic T cell</th><th>Natural killer cell</th></tr></thead>
 <tbody>
 <tr><th>Immunity type</th><td>Adaptive</td><td>Innate</td></tr>
@@ -232,7 +233,7 @@
 <li>they strip B7 from dendritic cells, so other T cells cannot get costimulation.</li>
 </ul>
 <p>Regulatory T cells are part of peripheral tolerance: they stop self-reactive T cells that slipped through negative selection, and they shut a response down after an infection clears. What happens without them is shown by a rare inherited disease, IPEX, caused by a broken FOXP3 <a class="gl" href="../notes/dna-genes.html" data-c="gene">gene</a>. Affected baby boys make no working regulatory T cells, and their T cells attack their own gut, skin and pancreatic beta cells. Many develop <a class="gl" href="../notes/pancreas-glucose.html" data-c="diabetes-mellitus">type 1 diabetes</a> in the first months of life.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Helper T cell</th><th>Cytotoxic T cell</th><th>Regulatory T cell</th></tr></thead>
 <tbody>
 <tr><th>Surface marker</th><td>CD4</td><td>CD8</td><td>CD4 (with FOXP3 inside)</td></tr>
@@ -255,7 +256,7 @@
 <p><em>Tissue typing</em> identifies the HLA types of donor and recipient so the closest match can be chosen. An identical twin is a perfect match and needs no drugs against rejection; siblings have a one-in-four chance of an HLA-identical match. Before an organ transplant, the lab also checks ABO compatibility and performs a <a class="gl" href="../notes/blood-typing.html" data-c="transfusion-reaction">crossmatch</a>, as for a transfusion: it mixes the recipient's <a class="gl" href="../notes/blood-composition.html" data-c="serum">serum</a> with the donor's white blood cells and looks for antibodies that bind them.</p>
 <p>A red cell transfusion is different. Mature red blood cells carry almost no HLA, so blood is matched only for ABO, Rh and other red cell antigens, not tissue typed.</p>
 <h3>The three tempos of rejection</h3>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Hyperacute rejection</th><th>Acute rejection</th><th>Chronic rejection</th></tr></thead>
 <tbody>
 <tr><th>When</th><td>Minutes to hours</td><td>Days to months</td><td>Months to years</td></tr>
@@ -274,13 +275,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:cell-mediated-immunity">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="adaptive-immunity.html"><span>&larr; Topic 113</span><b>Antigens, lymphocytes and antigen presentation</b></a><a class="tb-chapter-link next" href="antibody-immunity.html"><span>Topic 115 &rarr;</span><b>B cells and antibodies</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

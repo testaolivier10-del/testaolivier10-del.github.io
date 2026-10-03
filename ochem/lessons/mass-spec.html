@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mass spectrometry — Spectroscopy | Organic Chemistry</title>
+<title>Mass spectrometry — Organic Chemistry Lesson | LevlPrep</title>
 <meta name="description" content="Learn how mass spectrometry ionizes and fragments a molecule, how alpha cleavage predicts fragmentation, and how isotope patterns reveal chlorine and bromine.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/mass-spec.html">
-<meta property="og:title" content="Mass spectrometry — Spectroscopy | Organic Chemistry">
+<meta property="og:title" content="Mass spectrometry — Organic Chemistry Lesson | LevlPrep">
 <meta property="og:description" content="Learn how mass spectrometry ionizes and fragments a molecule, how alpha cleavage predicts fragmentation, and how isotope patterns reveal chlorine and bromine.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/mass-spec.html">
@@ -50,7 +51,7 @@
       "learningResourceType": "Lesson",
       "educationalLevel": "Undergraduate",
       "inLanguage": "en",
-      "isAccessibleForFree": true,
+      "isAccessibleForFree": false,
       "teaches": {
         "@type": "DefinedTerm",
         "name": "Mass spectrometry"
@@ -77,7 +78,12 @@
           "name": "Electrophilic aromatic substitution",
           "url": "https://levlprep.com/ochem/lessons/eas.html"
         }
-      ]
+      ],
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".lesson-card"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -97,8 +103,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Spectroscopy",
-          "item": "https://levlprep.com/ochem/learn.html#m-spectroscopy"
+          "name": "IR & Mass Spectrometry",
+          "item": "https://levlprep.com/ochem/learn.html#m-ir-mass-spec"
         },
         {
           "@type": "ListItem",
@@ -113,12 +119,15 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-ir-mass-spec">IR &amp; Mass Spectrometry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Mass spectrometry</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
-    <div class="eyebrow" data-chapter="spectroscopy">Spectroscopy</div>
+    <div class="eyebrow" data-chapter="ir-mass-spec">IR &amp; Mass Spectrometry</div>
     <h1 style="margin-bottom:4px;">Mass spectrometry.</h1>
     <p class="lede" style="margin-top:0;">Blast a molecule apart, weigh every piece — the molecular weight, the fragments, and even the presence of chlorine or bromine all show up directly in the numbers.</p>
   </div>
@@ -131,8 +140,8 @@
 
 <nav class="lesson-links xshell" aria-label="Related lessons">
   <div class="lesson-links-row"><span class="lesson-links-label">Read</span><span class="lesson-links-list"><a href="../notes/mass-spec.html">Mass spectrometry &mdash; the written section</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../mechanisms/sn1.html">SN1</a><a href="../lessons/markovnikov.html">Markovnikov / anti-Markovnikov</a><a href="../lessons/eas.html">Electrophilic aromatic substitution</a></span></div>
-  <div class="lesson-links-row"><span class="lesson-links-label">Next</span><span class="lesson-links-list"><a href="../lessons/retrosynthesis.html">Thinking backwards</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Builds on</span><span class="lesson-links-list"><a href="../lessons/carbocations.html">Carbocations</a><a href="../lessons/markovnikov.html">Markovnikov / anti-Markovnikov</a><a href="../lessons/ir.html">IR</a></span></div>
+  <div class="lesson-links-row"><span class="lesson-links-label">Next</span><span class="lesson-links-list"><a href="../lessons/conjugated-systems.html">Conjugated systems</a></span></div>
 </nav>
 <script src="../assets/shuffle-options.js" defer></script>
 <script src="../assets/step-back.js" defer></script>
@@ -267,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Why it matters',
         title: 'Fragmentation follows cation stability.',
-        bodyHtml: '<p class="step-body">Most fragmentation comes back to one question: which break leaves the most stable cation? It is the same question behind SN1, Markovnikov addition and Friedel&ndash;Crafts alkylation. When two breaks give equally stable cations, as in butan-2-one, the more stable radical decides.</p><ul class="step-body"><li><b>Alpha cleavage:</b> a lone pair on the neighboring O or N shares the charge.</li><li><b>Branching:</b> a break that leaves a more substituted carbocation wins over one that leaves a less substituted one.</li><li><b>Benzylic and allylic breaks:</b> a benzene ring or a C=C beside the cation shares its charge by resonance.</li></ul><p class="step-body">Toluene shows the benzylic case. Its molecular ion (M = 92) loses a hydrogen atom from the CH₃, giving the benzyl cation at m/z 91. The ion at 91 is largely the <b>tropylium ion</b>, an aromatic seven-membered ring with the same formula, C₇H₇⁺. The ring can expand before or after the hydrogen is lost. Either way, the charge ends up spread over seven carbons.</p><p class="step-body" style="margin-bottom:0;">Any otherwise unsubstituted benzene ring carrying a CH₃ or CH₂ group can give this ion. That carbon, joined directly to the ring, is the benzylic carbon. So a strong peak at m/z 91 is a sign of a benzylic CH₃ or CH₂.</p>',
+        bodyHtml: '<p class="step-body">Most fragmentation comes back to one question: which break leaves the most stable cation? It is the same question behind SN1, E1 and Markovnikov addition. When two breaks give equally stable cations, as in butan-2-one, the more stable radical decides.</p><ul class="step-body"><li><b>Alpha cleavage:</b> a lone pair on the neighboring O or N shares the charge.</li><li><b>Branching:</b> a break that leaves a more substituted carbocation wins over one that leaves a less substituted one.</li><li><b>Benzylic and allylic breaks:</b> a benzene ring or a C=C beside the cation shares its charge by resonance.</li></ul><p class="step-body">Toluene shows the benzylic case. Its molecular ion (M = 92) loses a hydrogen atom from the CH₃, giving the benzyl cation at m/z 91. The ion at 91 is largely the <b>tropylium ion</b>, a seven-membered ring cation with the same formula, C₇H₇⁺, made unusually stable by aromaticity (Aromatic Chemistry, two chapters on). The ring can expand before or after the hydrogen is lost. Either way, the charge ends up spread over seven carbons.</p><p class="step-body" style="margin-bottom:0;">Any otherwise unsubstituted benzene ring carrying a CH₃ or CH₂ group can give this ion. That carbon, joined directly to the ring, is the benzylic carbon. So a strong peak at m/z 91 is a sign of a benzylic CH₃ or CH₂.</p>',
         diagramHtml: '<!-- fig:l-ms-tropylium:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 326" role="img" aria-label="Top: toluene, a benzene ring with a CH3, mass 92. A downward arrow labeled: the molecular ion loses H•. Bottom left: the benzyl cation, a benzene ring with a CH2+ group, m/z 91. An arrow labeled ring expands leads to the bottom right: the tropylium ion, a seven-membered ring with a dashed circle and a plus sign, m/z 91."><line class="fg-bond" x1="170" y1="70" x2="144.02" y2="85"></line><line class="fg-bond" x1="166.24" y1="77.48" x2="152.38" y2="85.48"></line><line class="fg-bond" x1="144.02" y1="85" x2="144.02" y2="115"></line><line class="fg-bond" x1="144.02" y1="115" x2="170" y2="130"></line><line class="fg-bond" x1="152.38" y1="114.52" x2="166.24" y2="122.52"></line><line class="fg-bond" x1="170" y1="130" x2="195.98" y2="115"></line><line class="fg-bond" x1="195.98" y1="115" x2="195.98" y2="85"></line><line class="fg-bond" x1="191.38" y1="108" x2="191.38" y2="92"></line><line class="fg-bond" x1="195.98" y1="85" x2="170" y2="70"></line><line class="fg-bond" x1="170" y1="70" x2="170" y2="45"></line><circle class="fg-atom" cx="170" cy="26" r="19"></circle><text class="fg-lbl" x="170" y="29.52" text-anchor="middle" font-size="9.5">CH₃</text><line class="fg-bond" x1="76" y1="224" x2="50.02" y2="239"></line><line class="fg-bond" x1="72.24" y1="231.48" x2="58.38" y2="239.48"></line><line class="fg-bond" x1="50.02" y1="239" x2="50.02" y2="269"></line><line class="fg-bond" x1="50.02" y1="269" x2="76" y2="284"></line><line class="fg-bond" x1="58.38" y1="268.52" x2="72.24" y2="276.52"></line><line class="fg-bond" x1="76" y1="284" x2="101.98" y2="269"></line><line class="fg-bond" x1="101.98" y1="269" x2="101.98" y2="239"></line><line class="fg-bond" x1="97.38" y1="262" x2="97.38" y2="246"></line><line class="fg-bond" x1="101.98" y1="239" x2="76" y2="224"></line><line class="fg-bond" x1="76" y1="224" x2="76" y2="199"></line><circle class="fg-atom-warn" cx="76" cy="180" r="19"></circle><text class="fg-lbl" x="76" y="183.52" text-anchor="middle" font-size="9.5">CH₂</text><text class="fg-lbl" x="102" y="172" text-anchor="middle" font-size="13">+</text><line class="fg-bond" x1="266" y1="212" x2="237.85" y2="225.55"></line><line class="fg-bond" x1="237.85" y1="225.55" x2="230.9" y2="256.01"></line><line class="fg-bond" x1="230.9" y1="256.01" x2="250.38" y2="280.43"></line><line class="fg-bond" x1="250.38" y1="280.43" x2="281.62" y2="280.43"></line><line class="fg-bond" x1="281.62" y1="280.43" x2="301.1" y2="256.01"></line><line class="fg-bond" x1="301.1" y1="256.01" x2="294.15" y2="225.55"></line><line class="fg-bond" x1="294.15" y1="225.55" x2="266" y2="212"></line><circle class="fg-dash" cx="266" cy="248" r="21" fill="none"></circle><text class="fg-lbl" x="266" y="253" text-anchor="middle" font-size="13">+</text><text class="fg-lbl" x="170" y="150" text-anchor="middle" font-size="13">toluene, M = 92</text><line class="fg-arrow" x1="168" y1="160" x2="126.66" y2="187.56"></line><path class="fg-head" d="M120 192 L124.35 184.1 L128.96 191.02 Z"></path><text class="fg-tag" x="150" y="194" text-anchor="start" font-size="11">M⁺• loses H•</text><line class="fg-arrow" x1="122" y1="252" x2="204" y2="252"></line><path class="fg-head" d="M212 252 L204 256.16 L204 247.84 Z"></path><text class="fg-tag" x="167" y="242" text-anchor="middle" font-size="11">expands</text><text class="fg-lbl" x="76" y="312" text-anchor="middle" font-size="13">benzyl, m/z 91</text><text class="fg-lbl" x="266" y="312" text-anchor="middle" font-size="13">tropylium, m/z 91</text></svg><figcaption>One route, simplified. Both cations are C₇H₇⁺ and appear at 91; in tropylium the charge is shared by all seven carbons.</figcaption></figure><!-- fig:l-ms-tropylium:end -->'
       },
       {
@@ -295,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

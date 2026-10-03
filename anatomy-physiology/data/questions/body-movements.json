@@ -334,21 +334,20 @@
    "Abduction of the arm at the shoulder",
    "Lateral flexion of the trunk",
    "Flexion of the elbow",
-   "Adduction of the thigh at the hip",
+   "Plantar flexion of the foot",
    "Medial rotation of the thigh"
   ],
   "correct": [
    0,
-   1,
-   3
-  ],
+   1
+ ],
   "why": {
-   "correct": "The frontal plane divides front from back, so movements in it carry parts out to the side or back to the midline: abduction, adduction and lateral flexion.",
+   "correct": "The frontal plane divides front from back, so movements in it carry parts out to the side or back toward the midline: abduction and lateral flexion. Elbow flexion and plantar flexion are sagittal, and rotation is transverse.",
    "options": [
     "Yes. Lifting the arm out to the side is a frontal-plane movement.",
     "Yes. Bending the trunk to the side is a frontal-plane movement.",
     "No. Elbow flexion happens in the sagittal plane.",
-    "Yes. Bringing the thigh toward the midline is a frontal-plane movement.",
+    "Pointing the foot moves it forward and back, in the sagittal plane.",
     "No. Rotation turns a bone around its long axis in the transverse plane."
    ]
   },

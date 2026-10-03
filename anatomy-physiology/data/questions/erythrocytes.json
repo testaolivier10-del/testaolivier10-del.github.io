@@ -9,7 +9,7 @@
     "options": [
       "By glycolysis, without using oxygen",
       "By burning some of the oxygen it carries",
-      "It makes none; it lives on ATP made in the marrow",
+      "It lives on ATP made in the marrow before it was released",
       "By breaking down its own hemoglobin"
     ],
     "correct": 0,
@@ -55,7 +55,8 @@
       {"name": "Red blood cell count", "answer": "up", "why": "Weeks of faster production add more red cells than are destroyed."},
       {"name": "Hematocrit", "answer": "up", "why": "The red cell volume has grown, so red cells are a larger share of the blood's volume."},
       {"name": "Hemoglobin per liter of blood", "answer": "up", "why": "More red cells in each liter means more hemoglobin in each liter."},
-      {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."}
+      {"name": "Blood viscosity", "answer": "up", "why": "Viscosity depends mostly on the hematocrit, which has risen."},
+      { "name": "Oxygen each gram of hemoglobin carries when fully loaded", "answer": "none", "why": "A fully loaded gram of hemoglobin carries the same oxygen as before. Altitude changes how much hemoglobin there is, not what each gram can hold." }
     ],
     "why": {
       "correct": "Thin air lowers the oxygen reaching the kidneys. Through the erythropoiesis feedback loop, EPO rises within hours and the marrow speeds up. EPO eases back from its early peak over the following days, but the extra red cells keep coming for weeks. Her red cell count, hematocrit and hemoglobin climb, and the cost is thicker blood."
@@ -74,7 +75,8 @@
       {"name": "Reticulocyte count", "answer": "down", "why": "With little EPO, fewer erythroid precursors survive and mature, so fewer young red cells reach the blood."},
       {"name": "Hematocrit", "answer": "down", "why": "Red cells are still destroyed at the usual rate but replaced more slowly, so their share of the blood falls."},
       {"name": "Oxygen carried per liter of blood", "answer": "down", "why": "Fewer red cells means less hemoglobin in each liter, so less oxygen is carried."},
-      {"name": "Resting heart rate", "answer": "up", "why": "With thinner blood and less oxygen in each liter, his heart pumps more blood each minute, partly by beating faster."}
+      {"name": "Resting heart rate", "answer": "up", "why": "With thinner blood and less oxygen in each liter, his heart pumps more blood each minute, partly by beating faster."},
+      { "name": "How fully his lungs load each red cell with oxygen", "answer": "none", "why": "His lungs are healthy, so each red cell leaves them as fully loaded as before. What falls is how many red cells there are to carry oxygen." }
     ],
     "why": {
       "correct": "The feedback loop's sensor and signal both sit in the kidney. When the kidneys fail, the stimulus (low oxygen) is present but the signal (EPO) stays inappropriately low for how anemic he is, so the marrow is never told to speed up. The result is anemia with a low reticulocyte count, which is treated by injecting EPO."
@@ -225,7 +227,7 @@
     "q": "A woman has yellow skin and eyes, dark brown urine and pale, clay-colored feces. Where on bilirubin's route is the problem most likely to be?",
     "options": [
       "Red cells are breaking down too fast",
-      "Her liver cells cannot take up bilirubin",
+      "Her liver cells take up too little bilirubin",
       "Bile cannot drain from the liver into the intestine",
       "Her kidneys are excreting too little urobilin"
     ],
@@ -295,12 +297,12 @@
     "diff": 2,
     "core": ["structure-function"],
     "q": "Both parents have sickle cell trait: one sickle gene and one normal gene each. What is the chance that their child has sickle cell disease?",
-    "options": ["None", "1 in 4", "1 in 2", "Every child"],
+    "options": ["3 in 4", "1 in 4", "1 in 2", "Every child"],
     "correct": 1,
     "why": {
       "correct": "Each parent passes on either the sickle gene or the normal gene, with equal chance. The child has the disease only with two sickle genes: 1/2 × 1/2 = 1/4.",
       "options": [
-        "Each parent carries a sickle gene, so a child can inherit one from each.",
+        "Three in four is the chance that a child inherits at least one sickle gene, which includes children with only the trait.",
         "Correct. One in four children would inherit two sickle genes.",
         "One in two is the chance that a child has the trait (one sickle gene), not the disease.",
         "A child gets the disease only with a sickle gene from both parents, which happens in about a quarter of children."
@@ -342,18 +344,18 @@
       "Living at high altitude",
       "Severe dehydration",
       "Long-standing lung disease",
-      "A tumor that secretes erythropoietin",
+      "Long-standing kidney failure",
       "A mutation that makes marrow stem cells ignore erythropoietin's absence",
       "Injecting erythropoietin to improve race times"
     ],
-    "correct": [0, 2, 3, 5],
+    "correct": [0, 2, 5],
     "why": {
-      "correct": "Altitude and lung disease lower the oxygen reaching the kidneys, which release more EPO. A tumor or doping adds EPO directly. Dehydration and a marrow mutation raise the red cell count or hematocrit without raising EPO.",
+      "correct": "Altitude and lung disease lower the oxygen reaching the kidneys, which release more EPO, and doping adds EPO directly. Dehydration and a marrow mutation raise the red cell count or hematocrit without raising EPO, and failing kidneys make less EPO.",
       "options": [
         "Correct. Thin air lowers oxygen delivery to the kidneys.",
-        "Dehydration raises the hematocrit by shrinking the plasma. The red cell count is unchanged and EPO does not rise.",
+        "Dehydration shrinks the plasma, so the red cell count and hematocrit rise (relative polycythemia), but total red cell mass does not grow and EPO does not rise.",
         "Correct. Poorly working lungs load less oxygen into the blood.",
-        "Correct. The tumor bypasses the feedback loop.",
+        "Failing kidneys make less erythropoietin, so the red cell count falls.",
         "This is polycythemia vera: red cells rise without EPO, and EPO falls.",
         "Correct. Injected EPO acts on the marrow like the body's own."
       ]
@@ -433,7 +435,7 @@
     "misconception": "hematocrit falls at once after bleeding",
     "q": "A cyclist is brought in ten minutes after a crash in which he lost about a liter of blood. His hematocrit is 44%, in the normal range. What is the best interpretation?",
     "options": [
-      "He cannot have lost much blood, or his hematocrit would be low",
+      "He has lost little blood, or his hematocrit would be low",
       "His marrow has already replaced the lost red cells",
       "The test is wrong: bleeding lowers the hematocrit at once",
       "He lost cells and plasma together, so the ratio has not changed yet"

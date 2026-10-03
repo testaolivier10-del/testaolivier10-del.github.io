@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atomic structure — Foundations | Organic Chemistry</title>
+<title>Atomic structure — Organic Chemistry Lesson | LevlPrep</title>
 <meta name="description" content="Build a neutral atom shell by shell and learn why valence electrons — not the whole atom — are what organic chemistry cares about.">
 <link rel="canonical" href="https://levlprep.com/ochem/lessons/atomic-structure.html">
-<meta property="og:title" content="Atomic structure — Foundations | Organic Chemistry">
+<meta property="og:title" content="Atomic structure — Organic Chemistry Lesson | LevlPrep">
 <meta property="og:description" content="Build a neutral atom shell by shell and learn why valence electrons — not the whole atom — are what organic chemistry cares about.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/ochem/lessons/atomic-structure.html">
@@ -95,8 +96,11 @@
 </script>
 </head>
 <body>
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
+<!-- crumb:start -->
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/learn.html#m-foundations">Foundations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Atomic structure</span></nav></div>
+<!-- crumb:end -->
 
 <div class="xshell lesson-shell">
   <div class="hero">
@@ -151,15 +155,26 @@ document.addEventListener('DOMContentLoaded', function(){
       var rad = a * Math.PI/180;
       return [cx + lRadius*Math.cos(rad), cy + lRadius*Math.sin(rad)];
     });
+    /* Each slot is a real button for a keyboard or screen reader (role,
+       tabindex, a name that says its shell and whether it is filled; the
+       lesson's keydown handler takes Enter and Space), with an invisible hit
+       circle around the small visible dot so a finger has room
+       (audit 2026-10, fix-first 12). */
     function slot(pos, i, filled, key){
       var isFilled = !!filled[i];
-      return '<g class="atom' + (isFilled ? ' chosen' : '') + '" data-key="' + key + i + '">' +
+      var shell = key === 'k' ? 'K shell' : 'L shell';
+      // An L slot while K still has room is not a legal move, so it does not
+      // light up teal on hover (audit 2026-10: wrong slots turned teal).
+      var blocked = key === 'l' && !(kFilled[0] && kFilled[1]);
+      return '<g class="atom shell-slot' + (isFilled ? ' chosen' : '') + (blocked && !isFilled ? ' blocked' : '') + '" data-key="' + key + i + '" role="button" tabindex="0"' +
+        ' aria-label="' + shell + ', slot ' + (i + 1) + ', ' + (isFilled ? 'filled' : 'empty') + '"' + (isFilled ? ' aria-disabled="true"' : '') + '>' +
+        '<circle class="slot-hit" cx="' + pos[0] + '" cy="' + pos[1] + '" r="17" fill="transparent" stroke="none"/>' +
         '<circle cx="' + pos[0] + '" cy="' + pos[1] + '" r="10" fill="' + (isFilled ? 'var(--accent)' : 'var(--white)') + '" stroke="' + (isFilled ? 'var(--accent)' : 'var(--line)') + '" stroke-width="2"/>' +
       '</g>';
     }
     /* The notes-figure class on the group gives the labels the theme-aware
        fg- text colors, so they read in light and dark. */
-    return '<div class="scene"><svg viewBox="0 0 300 205"><g class="notes-figure">' +
+    return '<div class="scene"><svg viewBox="0 0 300 205" role="group" aria-label="Nitrogen nucleus with an inner K shell of 2 slots and an outer L shell of 8 slots"><g class="notes-figure">' +
       '<circle cx="150" cy="95" r="' + kRadius + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
       '<circle cx="150" cy="95" r="' + lRadius + '" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>' +
       '<text class="fg-tag-mut" x="150" y="64" text-anchor="middle" pointer-events="none">K</text>' +
@@ -167,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function(){
       '<circle cx="150" cy="95" r="18" fill="var(--white)" stroke="var(--line)" stroke-width="2"/><text class="fg-lbl" x="150" y="100" text-anchor="middle" pointer-events="none">N</text>' +
       kSlots.map(function(p,i){ return slot(p, i, kFilled, 'k'); }).join('') +
       lSlots.map(function(p,i){ return slot(p, i, lFilled, 'l'); }).join('') +
-      '<text class="fg-tag-mut" x="150" y="197" text-anchor="middle" pointer-events="none">click empty slots; fill the inner shell first</text>' +
+      '<text class="fg-tag-mut" x="150" y="197" text-anchor="middle" pointer-events="none" aria-hidden="true">click empty slots; fill the inner shell first</text>' +
     '</g></svg></div>';
   }
 
@@ -187,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function(){
         type: 'explain',
         eyebrow: 'Explain',
         title: 'Same element, different mass: isotopes.',
-        bodyHtml: '<p class="step-body">Most carbon atoms have 6 neutrons. About one in a hundred has 7. Both are carbon, because both have 6 protons. Atoms of the same element with different numbers of neutrons are <b>isotopes</b>.</p><p class="step-body">The <b>mass number</b> (A) is protons plus neutrons, written as a superscript before the symbol. Carbon-12 (¹²C) has 6 protons and 6 neutrons. Carbon-13 (¹³C) has 6 protons and 7 neutrons. The extra neutron changes the mass, not the electrons, so the two form the same bonds.</p><p class="step-body" style="margin-bottom:0;">The extra neutron is still useful. ¹H and ¹³C are the two isotopes that NMR spectroscopy detects in this course (<a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">Spectroscopy</a>). Mass spectrometry weighs molecules, which helps work out a molecule\'s formula, and it tells ¹³C from ¹²C by mass.</p>',
+        bodyHtml: '<p class="step-body">Most carbon atoms have 6 neutrons. About one in a hundred has 7. Both are carbon, because both have 6 protons. Atoms of the same element with different numbers of neutrons are <b>isotopes</b>.</p><p class="step-body">The <b>mass number</b> (A) is protons plus neutrons, written as a superscript before the symbol. Carbon-12 (¹²C) has 6 protons and 6 neutrons. Carbon-13 (¹³C) has 6 protons and 7 neutrons. The extra neutron changes the mass, not the electrons, so the two form the same bonds.</p><p class="step-body" style="margin-bottom:0;">The extra neutron is still useful. ¹H and ¹³C are the two isotopes that NMR spectroscopy detects in this course (<a class="chapter-ref" href="/ochem/learn.html#m-spectroscopy">NMR Spectroscopy</a>). Mass spectrometry weighs molecules, which helps work out a molecule\'s formula, and it tells ¹³C from ¹²C by mass.</p>',
         diagramHtml: '<!-- fig:carbon-isotopes:start --><figure class="notes-figure notes-figure--wide" style="--vb:340"><svg viewBox="0 0 340 236" role="img" aria-label="Shell diagrams of carbon-12 and carbon-13 side by side. Each has a nucleus labeled C with two gray inner electrons and four teal outer electrons. Under carbon-12 the nucleus holds 6 protons and 6 neutrons, mass number 12; under carbon-13 it holds 6 protons and 7 neutrons, mass number 13."><text class="fg-tag" x="85" y="20" text-anchor="middle" font-size="11">carbon-12 (¹²C)</text><circle class="fg-orb-node" cx="85" cy="92" r="26"></circle><circle class="fg-lp-mut" cx="85" cy="66" r="3.6"></circle><circle class="fg-lp-mut" cx="85" cy="118" r="3.6"></circle><circle class="fg-orb-node" cx="85" cy="92" r="41"></circle><circle class="fg-lp" cx="85" cy="51" r="3.6"></circle><circle class="fg-lp" cx="126" cy="92" r="3.6"></circle><circle class="fg-lp" cx="85" cy="133" r="3.6"></circle><circle class="fg-lp" cx="44" cy="92" r="3.6"></circle><circle class="fg-atom-hi" cx="85" cy="92" r="15"></circle><text class="fg-lbl" x="85" y="97.18" text-anchor="middle" font-size="14">C</text><text class="fg-lbl" x="85" y="162" text-anchor="middle" font-size="13">6 p + 6 n</text><text class="fg-tag" x="85" y="182" text-anchor="middle" font-size="11">mass number 12</text><text class="fg-tag-mut" x="85" y="200" text-anchor="middle" font-size="11">98.9% of carbon</text><text class="fg-tag" x="255" y="20" text-anchor="middle" font-size="11">carbon-13 (¹³C)</text><circle class="fg-orb-node" cx="255" cy="92" r="26"></circle><circle class="fg-lp-mut" cx="255" cy="66" r="3.6"></circle><circle class="fg-lp-mut" cx="255" cy="118" r="3.6"></circle><circle class="fg-orb-node" cx="255" cy="92" r="41"></circle><circle class="fg-lp" cx="255" cy="51" r="3.6"></circle><circle class="fg-lp" cx="296" cy="92" r="3.6"></circle><circle class="fg-lp" cx="255" cy="133" r="3.6"></circle><circle class="fg-lp" cx="214" cy="92" r="3.6"></circle><circle class="fg-atom-hi" cx="255" cy="92" r="15"></circle><text class="fg-lbl" x="255" y="97.18" text-anchor="middle" font-size="14">C</text><text class="fg-lbl" x="255" y="162" text-anchor="middle" font-size="13">6 p + 7 n</text><text class="fg-tag" x="255" y="182" text-anchor="middle" font-size="11">mass number 13</text><text class="fg-tag-mut" x="255" y="200" text-anchor="middle" font-size="11">1.1% of carbon</text><line class="fg-rule" x1="170" y1="30" x2="170" y2="204"></line><text class="fg-tag-good" x="170" y="228" text-anchor="middle" font-size="11">same 6 electrons in both</text></svg><figcaption>Compare the nucleus labels under each atom: only the neutron count differs. The rings of electrons are identical, including the four outer ones in teal that form bonds.</figcaption></figure><!-- fig:carbon-isotopes:end -->'
       },
       {
@@ -197,45 +212,73 @@ document.addEventListener('DOMContentLoaded', function(){
         bodyHtml: '<p class="step-body">Electrons sit in <b>shells</b>, layers at increasing distance from the nucleus. The inner (K) shell holds at most <b>2</b>. The next (L) shell holds at most <b>8</b>. The inner shell fills first, so carbon\'s 6 electrons go 2 into K, then 4 into L. Chemists write that as 2, 4. Atoms in the third row of the periodic table, such as sodium and magnesium, go on to fill a third shell, M.</p><p class="step-body">A neutral atom has exactly as many electrons as protons: its atomic number.</p><p class="step-body" style="margin-bottom:0;">The electrons in the <b>outermost</b> shell are the <b>valence electrons</b>. They are the only ones that take part in bonding, and carbon has 4. The electrons in the filled inner shells are <b>core electrons</b>, held too tightly by the nucleus to react.</p>'
       },
       {
+        railLabel: 'Build a nitrogen atom',
         render: function(api){
           var kSlots = [false, false];
           var lSlots = [false, false, false, false, false, false, false, false];
           var count = function(a){ var n = 0; for(var i=0;i<a.length;i++) if(a[i]) n++; return n; };
           var done = false;
+          /* The diagram is one way in; the two buttons under it are the
+             other, for anyone who cannot point at a 20 px dot or see it: each
+             adds one electron to that shell, and the status line says the
+             count. Both routes run through place(). */
+          function place(isK, idx){
+            if(done) return;
+            var fb = api.card.querySelector('#fb');
+            if(isK){
+              if(idx === -1) idx = kSlots.indexOf(false);
+              if(idx === -1){ api.showFeedback(fb, false, 'The K shell is full at 2. Add the rest to the L shell.'); return; }
+              if(kSlots[idx]) return;
+              kSlots[idx] = true;
+            } else {
+              if(count(kSlots) < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell. The inner shell is lower in energy.'); return; }
+              if(idx === -1) idx = lSlots.indexOf(false);
+              if(idx === -1 || lSlots[idx]) return;
+              lSlots[idx] = true;
+            }
+            var total = count(kSlots) + count(lSlots);
+            var focusKey = document.activeElement && document.activeElement.getAttribute && (document.activeElement.getAttribute('data-key') || document.activeElement.id);
+            if(total === 7){
+              done = true;
+              api.record(true);
+              paint();
+              api.showFeedback(api.card.querySelector('#fb'), true, 'Correct. The K shell is full with 2; the rest went into L.');
+              api.card.querySelector('#nextBtn').focus();
+            } else {
+              paint();
+              // The card is redrawn, so put focus back where it was.
+              var back = focusKey && (api.card.querySelector('[data-key="' + focusKey + '"]') || api.card.querySelector('#' + focusKey));
+              if(back) back.focus();
+              var st = api.card.querySelector('#shellStatus');
+              if(st && window.LevlAnnounce) window.LevlAnnounce.say(st.textContent);
+            }
+          }
           function paint(){
+            var k = count(kSlots), l = count(lSlots);
             api.card.innerHTML =
               '<div class="step-eyebrow">Visualize &amp; Interact</div>' +
               '<h2 class="step-title">Build a neutral nitrogen atom (atomic number 7).</h2>' +
-              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click empty slots to add them; a filled slot gets a thick teal ring. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy. <i>Within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
+              '<p class="step-body">Nitrogen has 7 protons, so a neutral atom has 7 electrons. Click empty slots, or use the two buttons below, to add them; a filled slot turns solid teal. The K shell (2 slots) fills before the L shell, because the inner shell is lower in energy. <i>Within</i> a shell the slots are all equivalent, so any empty one will do.</p>' +
               shellSvg(kSlots, lSlots) +
+              '<div class="shell-controls">' +
+                '<button type="button" class="btn-press sm" id="addK"' + (done ? ' disabled' : '') + '>Add an electron to K</button>' +
+                '<button type="button" class="btn-press sm" id="addL"' + (done ? ' disabled' : '') + '>Add an electron to L</button>' +
+              '</div>' +
+              '<p class="shell-status" id="shellStatus">Placed ' + (k + l) + ' of 7: K shell ' + k + ' of 2, L shell ' + l + ' of 8.</p>' +
               api.feedbackHtml('fb') +
               api.nextButtonHtml('Continue', done);
-            var fb = api.card.querySelector('#fb');
             api.card.querySelectorAll('.atom').forEach(function(g){
-              g.addEventListener('click', function(){
-                if(done) return;
+              function go(){
                 var key = g.getAttribute('data-key');
-                var isK = key.charAt(0) === 'k';
-                var idx = parseInt(key.slice(1), 10);
-                if(isK){
-                  if(kSlots[idx]){ return; }
-                  kSlots[idx] = true;
-                } else {
-                  if(count(kSlots) < 2){ api.showFeedback(fb, false, 'Fill the K shell (2 electrons) before adding to the L shell. The inner shell is lower in energy.'); return; }
-                  if(lSlots[idx]){ return; }
-                  lSlots[idx] = true;
-                }
-                var total = count(kSlots) + count(lSlots);
-                if(total === 7){
-                  done = true;
-                  api.record(true);
-                  paint();
-                  api.showFeedback(api.card.querySelector('#fb'), true, 'Correct. The K shell is full with 2; the rest went into L.');
-                } else {
-                  paint();
-                }
+                place(key.charAt(0) === 'k', parseInt(key.slice(1), 10));
+              }
+              g.addEventListener('click', go);
+              g.addEventListener('keydown', function(e){
+                if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); }
               });
             });
+            api.card.querySelector('#addK').addEventListener('click', function(){ place(true, -1); });
+            api.card.querySelector('#addL').addEventListener('click', function(){ place(false, -1); });
             api.card.querySelector('#nextBtn').addEventListener('click', api.advance);
           }
           paint();
@@ -342,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 <div class="xshell">
   <footer>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a></p>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 </body>

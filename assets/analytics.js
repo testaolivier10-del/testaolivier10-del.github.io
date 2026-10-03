@@ -28,8 +28,19 @@
 (function(){
   // From the Umami dashboard: Settings -> Websites -> the site -> "Website ID".
   var WEBSITE_ID = 'cc421df1-3f32-40f1-bd08-d7f6666de3ac';
-  var SCRIPT_URL = 'https://cloud.umami.is/script.js';
+  // A pinned copy served from this site, not a third-party script on pages
+  // that hold the session; events still go to HOST_URL/api/send.
+  var SCRIPT_URL = '/assets/vendor/umami-2.10.0.js';
+  var HOST_URL = 'https://cloud.umami.is';
   var OPT_OUT_KEY = 'levlprep_analytics_opt_out';
+  // Which course a page is in, for the visit event (courseOf).
+  // courses:begin COURSE_LIST key,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', dir: 'nremt' },
+    { key: 'ochem', dir: 'ochem' },
+    { key: 'anp', dir: 'anatomy-physiology' },
+  ];
+  // courses:end
 
   /* Read fresh on every call rather than cached at load: the toggle on
      privacy.html flips this, and the answer has to change without a reload.
@@ -226,9 +237,9 @@
   }
 
   function courseOf(path){
-    if(path.indexOf('/nremt') > -1) return 'nremt';
-    if(path.indexOf('/ochem') > -1) return 'ochem';
-    if(path.indexOf('/anatomy-physiology') > -1) return 'anp';
+    for(var i = 0; i < COURSE_LIST.length; i++){
+      if(path.indexOf('/' + COURSE_LIST[i].dir) > -1) return COURSE_LIST[i].key;
+    }
     return 'site';
   }
 
@@ -255,17 +266,22 @@
     return null;
   }
 
+  // Honor Do Not Track (this tracker version has no option for it).
+  function doNotTrack(){
+    try {
+      var v = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack || '') + '';
+      return v === '1' || v === 'yes';
+    } catch(e){ return false; }
+  }
+
   function mount(){
-    if(!enabled || optedOut() || window.__levlAnalyticsMounted) return;
+    if(!enabled || optedOut() || doNotTrack() || window.__levlAnalyticsMounted) return;
     window.__levlAnalyticsMounted = true;
     var s = document.createElement('script');
     s.src = SCRIPT_URL;
     s.defer = true;
     s.setAttribute('data-website-id', WEBSITE_ID);
-    // Honor the browser's Do Not Track setting. The site's whole posture is
-    // that the student's preference wins, and a visitor who has asked not to
-    // be measured has asked clearly enough.
-    s.setAttribute('data-do-not-track', 'true');
+    s.setAttribute('data-host-url', HOST_URL);
     s.addEventListener('load', flush);
     document.head.appendChild(s);
 

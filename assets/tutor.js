@@ -31,13 +31,22 @@
 
   // Which course the reader is in. site-chrome.js sets this when it renders
   // the header; the path sniff is the fallback for anything that loads the
-  // tutor on its own.
+  // tutor on its own, and anything outside a course folder is the registry's
+  // first course (NREMT).
+  // courses:begin COURSE_LIST key,dir (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', dir: 'nremt' },
+    { key: 'ochem', dir: 'ochem' },
+    { key: 'anp', dir: 'anatomy-physiology' },
+  ];
+  // courses:end
   function courseKey(){
     var declared = window.LEVLPREP_COURSE && window.LEVLPREP_COURSE.key;
     if(declared) return declared;
-    if(location.pathname.indexOf('/ochem') === 0) return 'ochem';
-    if(location.pathname.indexOf('/anatomy-physiology') === 0) return 'anp';
-    return 'nremt';
+    for(var i = 0; i < COURSE_LIST.length; i++){
+      if(location.pathname.indexOf('/' + COURSE_LIST[i].dir) === 0) return COURSE_LIST[i].key;
+    }
+    return COURSE_LIST[0].key;
   }
 
   // NREMT's reference pages. questions.json is deliberately absent: 2.3MB of
@@ -105,7 +114,8 @@
     return '<a href="/nremt/search.html?q=' + encodeURIComponent(q) + '">full search</a>';
   }
 
-  // NREMT's six exam domains, for deep-linking into the question bank.
+  // NREMT's six topic areas (the bank's system labels), for deep-linking a
+  // drill: practice.html reads ?domain=Trauma as the Trauma topic area.
   var DOMAINS = [
     { domain: 'Assessment', words: ['assessment','scene size-up','size up','primary survey','secondary survey','vital','opqrst','sample','reassess'] },
     { domain: 'Airway & Respiratory', words: ['airway','respiratory','breathing','ventilat','oxygen','copd','asthma','pneumothorax','suction','bvm','opa','npa','capnograph'] },
@@ -138,7 +148,9 @@
     'ntg':['nitroglycerin'], 'epi':['epinephrine'], 'narcan':['naloxone'],
     'kids':['pediatric','child','infant'], 'child':['pediatric'],
     'heart':['cardiac'], 'lungs':['respiratory','pulmonary'], 'breathing':['respiratory','ventilation'],
-    'attack':['infarction'], 'bleeding':['hemorrhage'], 'pregnant':['obstetric','pregnancy']
+    'attack':['infarction'], 'bleeding':['hemorrhage'], 'pregnant':['obstetric','pregnancy'],
+    // The vital-signs tables say "respirations"; people ask about the "respiratory rate".
+    'respiratory':['respirations']
   };
 
   var STOP = new Set(('a an the is are was were be been being of for to in on at by with from as it its this that these those and or but if then than so what whats when where which who whom how why do does did doing can could should would will shall may might must i you he she they we me my your their there here about into over under again further once all any both each few more most other some such no nor not only own same too very just also get got have has had').split(' '));
@@ -206,7 +218,7 @@
   // Set this to a deployed Worker URL (see worker/README.md) and every visitor
   // gets AI answers with nothing to configure. Left empty, the assistant stays
   // in local-search mode unless someone sets an endpoint by hand in settings.
-  var DEFAULT_ENDPOINT = 'https://levlprep-ask.testaolivier10.workers.dev';
+  var DEFAULT_ENDPOINT = 'https://api.levlprep.com'; // site-config:API_URL
 
   function readEndpoint(){
     try {
@@ -576,8 +588,21 @@
     return Math.log(1 + (N - df + 0.5) / (df + 0.5));
   }
 
+  var CHILD_RE = /\b(newborns?|neonat\w*|infants?|toddlers?|child(ren)?|pediatric\w*|preschool\w*|school-age|adolescen\w*|babies|baby)\b/gi;
+  var ADULT_RE = /\b(adults?|elderly|geriatric)\b/gi;
+  // Which age group a question or passage is mostly about, when it says. A
+  // passage on toddlers usually mentions adults once, for comparison, so this
+  // counts mentions rather than asking whether either appears.
+  function ageGroupOf(text){
+    var child = (text.match(CHILD_RE) || []).length, adult = (text.match(ADULT_RE) || []).length;
+    if(child > adult) return 'child';
+    if(adult > child) return 'adult';
+    return null;
+  }
+
   function search(q, limit){
     if(!INDEX || !INDEX.length) return [];
+    var ageGroup = ageGroupOf(q);
     var concepts = queryConcepts(q);
     if(!concepts.length) return [];
     var phrase = q.toLowerCase().trim();
@@ -634,6 +659,10 @@
       if(!matchedIdf) continue;
       score *= (0.35 + 0.65 * (matchedIdf / totalIdf));
       if(!hasKey) score *= 0.45;
+      // Age group. "Normal adult respiratory rate" once came back with the
+      // toddler passage (22 to 34 a minute): the numbers matched, the patient
+      // did not. A passage about the other age group is pushed well down.
+      if(ageGroup && ageGroupOf(c.text + ' ' + c.heading) === (ageGroup === 'adult' ? 'child' : 'adult')) score *= 0.3;
       if(usePhrase && c.text.toLowerCase().indexOf(phrase) !== -1) score += 3.5;
       if(usePhrase && c.heading.toLowerCase().indexOf(phrase) !== -1) score += 5;
       scored.push({ chunk: c, score: score });
@@ -702,9 +731,21 @@
       };
     }
     var top = hits[0].chunk;
-    var lead = hits[0].score >= CONFIDENT
-      ? 'Here’s what your <b>' + esc(top.page) + '</b> says about that:'
-      : 'I’m not certain this is what you meant, but the closest material in your course is:';
+    // Below the confidence line, quoting a passage presents a guess as the
+    // answer. Offer the pages instead, labeled as related rather than as an
+    // answer, and let the student read them in context.
+    if(hits[0].score < CONFIDENT){
+      var related = hits.slice(0, 4).filter(function(h){ return h.score >= Math.max(1.2, hits[0].score * 0.5); });
+      return {
+        html: '<p>I couldn’t find a passage that answers that directly. These pages in your course are related and may help:</p>'
+          + '<ul class="lp-more-list">' + related.map(function(h){
+              return '<li><a href="' + esc(sourceHref(h.chunk, q)) + '">' + esc(h.chunk.heading) + '</a> <span>— ' + esc(h.chunk.page) + '</span></li>';
+            }).join('') + '</ul>'
+          + '<p>Or try rewording it, or use the ' + fallbackLink(q) + '.</p>',
+        sources: [], domain: matchDomain(q)
+      };
+    }
+    var lead = 'Here’s what your <b>' + esc(top.page) + '</b> says about that:';
 
     var html = '<p>' + lead + '</p>'
       + '<blockquote class="lp-quote"><b>' + esc(top.heading) + '</b>'
@@ -773,11 +814,16 @@
     var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
     var timer = setTimeout(function(){ ctrl && ctrl.abort(); }, 30000);
 
-    return fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question: q, context: context, history: (history || []).slice(-4), course: courseKey() }),
-      signal: ctrl ? ctrl.signal : undefined
+    return sessionHeader(endpoint).then(function(auth){
+      if(auth === false) throw new Error('sign in to get AI answers');
+      var headers = { 'Content-Type': 'application/json' };
+      if(auth) headers.Authorization = auth;
+      return fetch(endpoint, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ question: q, context: context, history: (history || []).slice(-4), course: courseKey() }),
+        signal: ctrl ? ctrl.signal : undefined
+      });
     }).then(function(r){
       if(!r.ok){
         // The endpoint explains itself in the body — rate limited, model
@@ -795,6 +841,18 @@
       if(!answer) throw new Error('empty');
       return answer;
     }).catch(function(err){ clearTimeout(timer); throw err; });
+  }
+
+  /* The site's own Worker answers signed-in students only (worker/src/index.js),
+     so it gets the Supabase session token. Resolves to the header value, to
+     false when the default endpoint is set but nobody is signed in (no request
+     is made; the course's own material answers), or to null for an endpoint
+     someone set by hand, which is never handed a session token. */
+  function sessionHeader(endpoint){
+    if(String(endpoint).replace(/\/+$/, '') !== DEFAULT_ENDPOINT) return Promise.resolve(null);
+    var A = window.StudyHubAccount;
+    if(!A || !A.user || !A.user() || !A.accessToken) return Promise.resolve(false);
+    return A.accessToken().then(function(t){ return t ? 'Bearer ' + t : false; }, function(){ return false; });
   }
 
   // Model output is plain text; render the handful of shapes it actually uses
@@ -836,7 +894,7 @@
   }
 
   var CSS = [
-    '.lp-launch{position:fixed;right:20px;bottom:20px;z-index:900;width:58px;height:58px;padding:0;',
+    '.lp-launch{position:fixed;right:20px;bottom:20px;z-index:42;width:58px;height:58px;padding:0;',
       'border:none;background:transparent;cursor:pointer;line-height:0;',
       'filter:drop-shadow(0 4px 10px rgba(0,0,0,.26));transition:transform .16s ease;}',
     '.lp-launch svg{width:100%;height:100%;display:block;border-radius:18px;}',
@@ -845,7 +903,7 @@
     '.lp-launch:hover .lp-eye{r:5.6;}',
     // A mascot with no label is a mystery button on first visit, so it says
     // what it is until someone has actually opened it once.
-    '.lp-tip{position:fixed;right:86px;bottom:34px;z-index:900;background:var(--navy);color:#fff;',
+    '.lp-tip{position:fixed;right:86px;bottom:34px;z-index:42;background:var(--navy);color:#fff;',
       'font:800 12.5px var(--font-ui);padding:7px 12px;border-radius:10px;white-space:nowrap;',
       'pointer-events:none;opacity:0;transform:translateX(6px);transition:opacity .18s ease, transform .18s ease;}',
     '.lp-tip.show{opacity:1;transform:translateX(0);}',
@@ -921,6 +979,8 @@
     '.lp-settings button.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}'
   ].join('');
 
+  // STARTERS and GREETING: one entry per course in assets/courses.js
+  // (scripts/check-courses.mjs).
   var STARTERS = {
     nremt: [
       'What’s the difference between a hemothorax and a pneumothorax?',
@@ -944,8 +1004,8 @@
 
   var GREETING = {
     nremt: 'Ask me anything from this course — the notes, glossary, mnemonics, flow diagrams and skill sheets are all indexed. I can define a term, explain it a different way, or point you at the page it came from.',
-    ochem: 'Ask me anything from this course — all 121 textbook sections are indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.',
-    anp: 'Ask me anything from this course: every Anatomy & Physiology notes page built so far is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.'
+    ochem: 'Ask me anything from this course — the textbook section for all 123 topics is indexed. I can define a term, explain a mechanism another way, or point you at the section it came from.',
+    anp: 'Ask me anything from this course — every Anatomy & Physiology notes page is indexed. I can define a term, explain a mechanism step by step, or point you at the page it came from.'
   };
 
   function Tutor(mount, opts){
@@ -956,14 +1016,19 @@
 
     var root = document.createElement('div');
     root.className = 'lp-panel';
+    // A floating panel is a non-modal dialog: named, Esc closes it and focus
+    // goes back to the button that opened it. Answers land in a polite live
+    // log so a screen reader hears them (audit 2026-10, fix-first 12).
+    root.setAttribute('role', opts.inline ? 'region' : 'dialog');
+    root.setAttribute('aria-labelledby', 'lpTitle');
     root.innerHTML =
       '<div class="lp-head">'
       +  '<span class="lp-avatar">' + mascotSvg() + '</span>'
-      +  '<b>Ask LevlPrep<span class="lp-sub" data-role="mode"></span></b>'
+      +  '<b id="lpTitle">Ask LevlPrep<span class="lp-sub" data-role="mode"></span></b>'
       +  '<button class="lp-icon" data-act="settings" title="Settings" aria-label="Tutor settings">⚙</button>'
       +  (opts.inline ? '' : '<button class="lp-icon" data-act="close" title="Close" aria-label="Close">✕</button>')
       + '</div>'
-      + '<div class="lp-log" data-role="log"></div>'
+      + '<div class="lp-log" data-role="log" role="log" aria-live="polite" aria-label="Conversation"></div>'
       + '<div class="lp-settings" data-role="settings" hidden></div>'
       + '<form class="lp-form" data-role="form">'
       +  '<input type="text" placeholder="Ask me anything…" aria-label="Your question" autocomplete="off">'
@@ -993,7 +1058,12 @@
   }
 
   Tutor.prototype.refreshMode = function(){
-    this.modeEl.textContent = readEndpoint() ? 'AI answers · grounded in your course' : 'Answers from this course’s material';
+    var ep = readEndpoint();
+    var A = window.StudyHubAccount;
+    var ai = ep && (String(ep).replace(/\/+$/, '') !== DEFAULT_ENDPOINT || (A && A.user && A.user()));
+    this.modeEl.textContent = ai ? 'AI answers · grounded in your course'
+      : ep ? 'Answers from this course’s material · sign in for AI answers'
+      : 'Answers from this course’s material';
   };
 
   Tutor.prototype.scroll = function(){ this.log.scrollTop = this.log.scrollHeight; };
@@ -1176,23 +1246,31 @@
 
   function initFloating(){
     injectCss();
-    var btn = document.createElement('button');
-    btn.className = 'lp-launch';
-    btn.type = 'button';
-    btn.setAttribute('aria-label', 'Ask the study assistant');
-    btn.innerHTML = mascotSvg();
-    document.body.appendChild(btn);
-    document.body.classList.add('lp-has-fab');
-    tuckOnScroll();
-
-    var tip = document.createElement('div');
-    tip.className = 'lp-tip';
-    tip.textContent = 'Ask me anything';
-    document.body.appendChild(tip);
+    /* Normally assets/tutor-launcher.js has already drawn the button, tip and
+       scroll tucking, and loaded this file on the first reach for it (site
+       audit 2026-10: the assistant is no longer downloaded on every page).
+       A page that loads tutor.js directly still gets its own. */
+    var btn = document.querySelector('.lp-launch');
+    var tip = document.querySelector('.lp-tip');
+    if(!btn){
+      btn = document.createElement('button');
+      btn.className = 'lp-launch';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Ask the study assistant');
+      btn.innerHTML = mascotSvg();
+      document.body.appendChild(btn);
+      document.body.classList.add('lp-has-fab');
+      tuckOnScroll();
+      tip = document.createElement('div');
+      tip.className = 'lp-tip';
+      tip.textContent = 'Ask me anything';
+      document.body.appendChild(tip);
+    }
+    btn.removeAttribute('aria-busy');
 
     var met = false;
     try { met = localStorage.getItem(MET_KEY) === '1'; } catch(e){}
-    if(!met) setTimeout(function(){ tip.classList.add('show'); }, 1200);
+    if(!met && !tip.classList.contains('show')) setTimeout(function(){ tip.classList.add('show'); }, 1200);
     btn.addEventListener('mouseenter', function(){
       tip.classList.add('show');
       // Reaching for the button is the earliest honest signal that someone is
@@ -1203,7 +1281,15 @@
     btn.addEventListener('mouseleave', function(){ if(met) tip.classList.remove('show'); });
 
     var host = null, tutor = null;
-    function close(){ if(host) host.style.display = 'none'; btn.style.display = ''; }
+    // z-index 42: above the phone tab bar (40), below the More sheet's scrim
+    // (44) and sheet (45), so an open sheet is never covered by a FAB.
+    function close(){
+      if(!host || host.style.display === 'none') return;
+      var inside = host.contains(document.activeElement);
+      host.style.display = 'none';
+      btn.style.display = '';
+      if(inside || document.activeElement === document.body) btn.focus();
+    }
     function meet(){
       met = true;
       tip.classList.remove('show');
@@ -1221,6 +1307,10 @@
       meet();
       setTimeout(function(){ tutor.input.focus(); }, 50);
     });
+    // Pressed before this file had arrived: open now, and start reading the
+    // course so the first answer is not waiting on it.
+    ensureIndex();
+    if(window.__levlTutorOpenOnLoad){ window.__levlTutorOpenOnLoad = false; btn.click(); }
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && host && host.style.display !== 'none') close();
     });

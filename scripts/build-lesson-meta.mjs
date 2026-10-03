@@ -42,6 +42,31 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { readdirSync } from 'node:fs';
+import { premiumData, lockedLd } from './lib/premium-data.mjs';
+import { courseTitle } from './lib/page-title.mjs';
+
+/* Also owns whether each lesson and mechanism page says it is free (audit
+   2026-10, W2). Outside premium.js's free chapters the interactive part
+   (.lesson-card) is Premium, so the structured data says so with Google's
+   paywalled-content markup instead of claiming the page is free. */
+const FREE_CHAPTERS = premiumData().COURSES.ochem.freeChapters;
+function withAccess(html, chapter) {
+  const open = '<script type="application/ld+json">';
+  const i = html.indexOf(open);
+  if (i === -1) return html;
+  const j = html.indexOf('</script>', i);
+  const ld = JSON.parse(html.slice(i + open.length, j));
+  const node = (ld['@graph'] || [ld]).find((n) => n['@type'] === 'LearningResource');
+  if (!node) return html;
+  if (FREE_CHAPTERS.includes(chapter)) {
+    node.isAccessibleForFree = true;
+    delete node.hasPart;
+  } else {
+    Object.assign(node, lockedLd('.lesson-card'));
+  }
+  return html.slice(0, i + open.length) + '\n' + JSON.stringify(ld, null, 2).replace(/<\//g, '<\\/') + '\n' + html.slice(j);
+}
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -67,19 +92,11 @@ function loadModules() {
   return sandbox.M;
 }
 
-function titleFor(topic, mod) {
-  /* The last candidate is the topic's name on its own. Two topics are named
-     at a length where even " — Organic Chemistry" pushes them over, and for
-     those the subject is better carried by the breadcrumb, the URL and the
-     structured data than by three words a reader never sees because the
-     result list cut them off. */
-  const candidates = [
-    `${topic.title} — ${mod.title} | Organic Chemistry`,
-    `${topic.title} — Organic Chemistry Lesson`,
-    `${topic.title} — Organic Chemistry`,
-    topic.title,
-  ];
-  return candidates.find((c) => decode(c).length <= TITLE_MAX) ?? candidates[candidates.length - 1];
+/* "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs, site audit
+   2026-10). The kind stays in the label so a lesson and its notes page never
+   share a title; the course name shortens before the topic does. */
+function titleFor(topic) {
+  return courseTitle(decode(topic.title), ['Organic Chemistry', 'Organic Chem', 'OChem'].map((c) => `${c} Lesson`));
 }
 
 const modules = loadModules();
@@ -102,12 +119,25 @@ for (const mod of modules) {
 
     let next = current.replace(/<title>[\s\S]*?<\/title>/, `<title>${title}</title>`);
     next = next.replace(/(<meta property="og:title" content=")[^"]*(">)/, `$1${title}$2`);
+    next = withAccess(next, mod.id);
 
     if (next === current) continue;
     if (check) { stale.push(topic.id); continue; }
     writeFileSync(file, next);
     written++;
   }
+}
+
+// Mechanism walkthroughs: same rule, chapter from the page's data-chapter.
+for (const f of readdirSync(join(ROOT, 'ochem', 'mechanisms')).filter((x) => x.endsWith('.html'))) {
+  const file = join(ROOT, 'ochem', 'mechanisms', f);
+  const current = readFileSync(file, 'utf8');
+  const ch = (/data-chapter="([^"]+)"/.exec(current) || [])[1] || '';
+  const next = withAccess(current, ch);
+  if (next === current) continue;
+  if (check) { stale.push(`mechanisms/${f}`); continue; }
+  writeFileSync(file, next);
+  written++;
 }
 
 /* A title the generator itself cannot bring under the ceiling is a topic name

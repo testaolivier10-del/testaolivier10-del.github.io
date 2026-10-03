@@ -132,7 +132,9 @@
       '.ogl-term:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px;}' +
       '.ogl-tip{position:absolute;z-index:60;max-width:min(340px,calc(100vw - 16px));padding:11px 14px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 14px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}' +
       '.ogl-tip b{display:block;font-weight:900;margin-bottom:2px;}' +
-      '.ogl-tip a{color:inherit;display:inline-block;margin-top:6px;font-weight:800;font-size:13px;}';
+      '.ogl-tip a{color:inherit;display:inline-block;margin-top:6px;font-weight:800;font-size:13px;}' +
+      // Dark theme: --ink turns light, so the card would glow white on a dark page.
+      ':root[data-theme="dark"] .ogl-tip{background:var(--surface2);color:var(--ink);box-shadow:0 0 0 1px var(--line),var(--shadow-pop);}';
     document.head.appendChild(style);
     tip = document.createElement('div');
     tip.className = 'ogl-tip'; tip.id = 'ogl-tip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;

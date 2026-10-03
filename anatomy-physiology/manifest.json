@@ -1,7 +1,7 @@
 {
   "name": "LevlPrep — Anatomy & Physiology",
-  "short_name": "A&P",
-  "description": "A complete Anatomy & Physiology course that builds in strict order: lessons, notes, practice, lab practical and prediction tools. Free, works offline, no account needed.",
+  "short_name": "LevlPrep A&P",
+  "description": "Anatomy & Physiology in 27 chapters that build in strict order. Every notes page is free forever and the 5 Foundations chapters are fully interactive; Premium adds unlimited practice, exams, every lesson and analytics.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

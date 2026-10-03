@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Passive transport across membranes: Notes | A&amp;P</title>
+<title>Passive transport across membranes — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Every second, oxygen moves from your blood into your cells, glucose follows it, and water flows in and out of every cell you own.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/passive-transport.html">
-<meta property="og:title" content="Passive transport across membranes: Notes | A&amp;P">
+<meta property="og:title" content="Passive transport across membranes — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Every second, oxygen moves from your blood into your cells, glucose follows it, and water flows in and out of every cell you own.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/passive-transport.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="passive-transport">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 3 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cells.html">Cells</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Passive transport across membranes: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/passive-transport.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 18 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 18 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Passive transport across membranes</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/gradients.html">Flow down gradients</a><a class="anp-tag" href="../concepts/compartments.html">Membranes and compartments</a><span class="anp-small">17 min read</span><span class="anp-tb-chip" data-chip-topic="passive-transport">Not practiced</span></p>
     </header>
@@ -124,7 +125,7 @@
 
 <h2 id="simple-diffusion-across-the-membrane">Simple diffusion across the membrane</h2>
 <p><strong><span class="gl" tabindex="0" data-c="simple-diffusion">Simple diffusion across the membrane</span></strong> is the movement of a substance straight through the <a class="gl" href="../notes/plasma-membrane.html" data-c="phospholipid-bilayer">phospholipid bilayer</a>, down its concentration gradient, with no protein involved. It works only for molecules that can dissolve in the oily core: small <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="polarity">nonpolar</a> molecules such as oxygen and carbon dioxide, and lipid-like molecules such as <a class="gl" href="../notes/biomolecules.html" data-c="steroid">steroids</a> and <a class="gl" href="../notes/biomolecules.html" data-c="triglyceride">fatty acids</a> (<a class="figref" href="#fig-os-3-5">Figure 1</a>).</p>
-<figure id="fig-os-3-5"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-5"><img src="../figures/os-3-5.jpg" alt="A stretch of plasma membrane seen at three moments in time. At first, small nonpolar molecules are crowded in the fluid outside the cell and scarce in the cytoplasm. As time passes, more of them have passed straight through the bilayer, so the numbers on the two sides become closer." width="810" height="339" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Simple diffusion. Small nonpolar molecules pass straight through the bilayer from the side where they are crowded to the side where they are scarce, until the two sides even out. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.5, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-5"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-5"><picture><source type="image/avif" srcset="../figures/avif/os-3-5-480.avif 480w, ../figures/avif/os-3-5-800.avif 800w, ../figures/avif/os-3-5.avif 810w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-5.jpg" alt="A stretch of plasma membrane seen at three moments in time. At first, small nonpolar molecules are crowded in the fluid outside the cell and scarce in the cytoplasm. As time passes, more of them have passed straight through the bilayer, so the numbers on the two sides become closer." width="810" height="339" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> Simple diffusion. Small nonpolar molecules pass straight through the bilayer from the side where they are crowded to the side where they are scarce, until the two sides even out. <span class="anp-credit">Figure 3.5 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Here is a concrete case. In your <a class="gl" href="../notes/body-organization.html" data-c="major-organs">lungs</a>, oxygen's pressure in the air sacs is higher than in the blood arriving from your body. (For a gas moving between air and blood, pressure, not total amount, sets the direction.) Oxygen diffuses across the cells between air and blood, through each plasma membrane in turn. Carbon dioxide diffuses the other way, because its gradient points the other way. No protein is needed for either.</p>
 <p>The rate of simple diffusion depends on the same factors you met in the diffusion topic, plus one that belongs to the membrane:</p>
 <ul>
@@ -143,7 +144,7 @@
 <li><strong>It is fast.</strong> An open channel can pass millions of ions per second. Nothing binds tightly inside it; ions stream through in single file.</li>
 <li><strong>It does not choose the direction.</strong> Ions move through an open channel down their <a class="gl" href="../notes/electricity-basics.html" data-c="electrochemical-gradient">electrochemical gradient</a>: the combined push of their concentration gradient and the electrical charge difference across the membrane. Open a sodium channel in a typical cell and sodium flows in, because sodium is more concentrated outside and the inside of the cell is negative.</li>
 </ul>
-<figure id="fig-os-3-6"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-6"><img src="../figures/os-3-6.jpg" alt="Two ways a solute crosses the plasma membrane with the help of a protein. In one, the solute passes through an open channel protein that spans the bilayer. In the other, the solute binds to a carrier protein, which changes shape and releases it on the other side." width="781" height="987" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Facilitated diffusion. A solute crosses through an open channel protein, or it binds to a carrier protein that changes shape and releases it on the other side. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.6, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-6"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-6"><picture><source type="image/avif" srcset="../figures/avif/os-3-6-480.avif 480w, ../figures/avif/os-3-6.avif 781w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-6.jpg" alt="Two ways a solute crosses the plasma membrane with the help of a protein. In one, the solute passes through an open channel protein that spans the bilayer. In the other, the solute binds to a carrier protein, which changes shape and releases it on the other side." width="781" height="987" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Facilitated diffusion. A solute crosses through an open channel protein, or it binds to a carrier protein that changes shape and releases it on the other side. <span class="anp-credit">Figure 3.6 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Channels come in two broad kinds. A <strong>leak channel</strong> (also called a leakage channel) is open most of the time, so it lets its ion trickle across steadily. A <strong>gated channel</strong> has a part that swings or twists to open and close the tunnel, like a gate. It is closed most of the time and opens only when something triggers it.</p>
 
 <h2 id="what-opens-a-gated-channel">What opens a gated channel</h2>
@@ -153,7 +154,7 @@
 <li><strong>Ligand-gated channels</strong> (ligare = to bind) open when a specific molecule binds to a site on the channel. For example, the <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="nerve">nerve</a> that controls one of your muscles releases a small molecule onto it; the molecule binds to channels in the muscle cells' membranes, and they open.</li>
 <li><strong>Mechanically gated channels</strong> open when the membrane is physically stretched or pressed. The touch-sensing nerve endings in your skin use them, and so do cells in the wall of your bladder that sense how full it is.</li>
 </ul>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Voltage-gated channel</th><th>Ligand-gated channel</th><th>Mechanically gated channel</th></tr></thead>
 <tbody>
 <tr><td>What opens it</td><td>A change in voltage across the membrane</td><td>A specific molecule binding to it</td><td>Stretch or pressure on the membrane</td></tr>
@@ -216,7 +217,7 @@
 </ul>
 
 <h2 id="comparing-the-three-routes">Comparing the three routes</h2>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Simple diffusion</th><th>Facilitated diffusion through a channel</th><th>Facilitated diffusion by a carrier</th></tr></thead>
 <tbody>
 <tr><td>Path across</td><td>Straight through the bilayer</td><td>A water-filled tunnel through a protein</td><td>A protein that binds the <a class="gl" href="../notes/water-solutions.html" data-c="solution">solute</a> and changes shape</td></tr>
@@ -238,7 +239,7 @@
 <li><strong>Hypotonic</strong> (hypo- = under): the solution has fewer nonpenetrating solutes than the cell. Water moves into the cell, which swells. A red blood cell swollen far enough tears open and spills its contents. That is <strong>osmotic hemolysis</strong> (hemo- = blood, -lysis = breaking apart).</li>
 <li><strong>Hypertonic</strong> (hyper- = over): the solution has more nonpenetrating solutes than the cell. Water moves out of the cell, which shrinks. A shrunken red blood cell puckers into a spiky shape; this is <strong>crenation</strong> (crena = notch).</li>
 </ul>
-<figure id="fig-os-3-8"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-8"><img src="../figures/os-3-8.jpg" alt="Red blood cells in three solutions. In a hypertonic solution, water leaves the cells and they shrivel into spiky shapes. In an isotonic solution, water movement is balanced and the cells keep their normal disc shape. In a hypotonic solution, water enters the cells, which swell and can burst." width="460" height="238" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> Red blood cells in hypertonic, isotonic and hypotonic solutions. Water leaves, balances or enters, and the cells shrink, keep their shape or swell. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 3.8, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-3-8"  class="anp-figure"><div class="anp-figimg" data-fig="os-3-8"><picture><source type="image/avif" srcset="../figures/avif/os-3-8.avif 460w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-3-8.jpg" alt="Red blood cells in three solutions. In a hypertonic solution, water leaves the cells and they shrivel into spiky shapes. In an isotonic solution, water movement is balanced and the cells keep their normal disc shape. In a hypotonic solution, water enters the cells, which swell and can burst." width="460" height="238" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> Red blood cells in hypertonic, isotonic and hypotonic solutions. Water leaves, balances or enters, and the cells shrink, keep their shape or swell. <span class="anp-credit">Figure 3.8 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/3-1-the-cell-membrane">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <div class="worked">
 <p><strong>Worked example: predicting what happens to a red blood cell.</strong></p>
 <p>Step 1. Find the cell's starting point. The fluid inside a red blood cell is about 300 mOsm/L, and almost all of those solutes (potassium, proteins, phosphates) cannot cross its membrane.</p>
@@ -249,7 +250,7 @@
 <p>Conclusion: compare nonpenetrating solutes on the two sides; water moves toward the side with more; the cell's volume follows the water.</p>
 </div>
 <aside class="for-your-exam"><p>For your exam: many exams describe osmosis as water diffusing down its own concentration gradient, so they may say water is "more concentrated" in a hypotonic solution than in the cell. Know that wording. It gives the same direction as water follows solute, which is the rule to reason with: the held-back solute drives the water, as the osmosis topic explains.</p></aside>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Isotonic</th><th>Hypotonic</th><th>Hypertonic</th></tr></thead>
 <tbody>
 <tr><td>Nonpenetrating solutes outside, compared with inside</td><td>Equal</td><td>Fewer</td><td>More</td></tr>
@@ -288,13 +289,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:passive-transport">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="cell-junctions.html"><span>&larr; Topic 17</span><b>Cell junctions</b></a><a class="tb-chapter-link next" href="active-transport.html"><span>Topic 19 &rarr;</span><b>Active transport and vesicles</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

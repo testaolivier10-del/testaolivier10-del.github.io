@@ -88,23 +88,22 @@
       "The liver switches on glycogenolysis",
       "The liver switches on glycogenesis",
       "Fat cells break down their stored triglycerides",
-      "Potassium moves from the plasma into cells",
+      "The kidneys excrete more glucose",
       "The liver switches off gluconeogenesis"
     ],
     "correct": [
       0,
       2,
-      4,
       5
     ],
     "why": {
-      "correct": "Insulin moves GLUT4 into muscle and fat cell membranes, drives glycogen building, stops the liver making and releasing glucose, stores fat, and moves potassium into cells.",
+      "correct": "Insulin moves GLUT4 into muscle and fat cell membranes, drives glycogen building and stops the liver making and releasing glucose. It does not switch on glycogenolysis or fat breakdown, and with blood glucose lowered no glucose spills into the urine.",
       "options": [
         "Correct. This is how insulin lets glucose into muscle and fat.",
         "Glycogenolysis releases glucose from storage, which is glucagon's action. Insulin switches it off.",
         "Correct. Insulin drives glucose into glycogen in the liver and muscle.",
         "Insulin does the reverse: it builds triglycerides and blocks their breakdown.",
-        "Correct. Insulin speeds the sodium–potassium pump, which is why it is used to lower a high blood potassium.",
+        "Insulin lowers blood glucose, so less is filtered and none spills into the urine.",
         "Correct. Insulin stops the liver making new glucose."
       ]
     }
@@ -324,7 +323,7 @@
     "core": [
       "homeostasis"
     ],
-    "q": "Mr. Okafor takes insulin for type 1 diabetes. His wife finds him sweaty and unresponsive an hour after he injected his dose and skipped lunch. His meter reads 38 mg/dL. What should be given, and why?",
+    "q": "Mr. Novak takes insulin for type 1 diabetes. His wife finds him sweaty and unresponsive an hour after he injected his dose and skipped lunch. His meter reads 38 mg/dL. What should be given, and why?",
     "options": [
       "Glucagon by injection or nasal spray",
       "Orange juice poured into his mouth",

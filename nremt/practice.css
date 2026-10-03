@@ -149,7 +149,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .timer-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-weight:700;font-size:13px;}
 .timer-row .time-remaining{font-size:20px;font-weight:700;color:var(--ink);}
 .timer-row .time-remaining.warn{color:var(--bad-text);}
-.pace-line{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--font-mono);}
+.pace-line{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:4px;font-family:var(--font-ui);font-variant-numeric:tabular-nums;}
 .pace-line.ahead{color:var(--good-text);}
 .pace-line.behind{color:var(--bad-text);}
 .practice-banner{
@@ -219,7 +219,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .progress-fill{height:100%;background:var(--accent);border-radius:var(--radius-pill);transition:width 0.25s ease;}
 
 .q-head-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:14px;}
-.q-domain{font:900 11.5px var(--font-ui);color:var(--coral);background:var(--tint-coral);padding:6px 13px;border-radius:var(--radius-pill);display:inline-block;}
+.q-domain{font:900 11.5px var(--font-ui);color:var(--coral-text);background:var(--tint-coral);padding:6px 13px;border-radius:var(--radius-pill);display:inline-block;}
 .diff-badge{
   display:inline-block;font:900 11px var(--font-ui);
   padding:6px 12px;border-radius:var(--radius-pill);margin-left:6px;text-transform:none;letter-spacing:0;
@@ -329,7 +329,7 @@ select:focus{outline:none;border-color:var(--accent);}
   #resultsScreen .score-card{box-shadow:none !important;border:1px solid #ccc;}
   #resultsScreen::before{content:"LevlPrep practice result — " attr(data-printed);display:block;font:700 12px monospace;margin-bottom:12px;}
 }
-.fc-hint{text-align:center;font:700 11.5px var(--font-mono);color:var(--muted);margin-top:16px;}
+.fc-hint{text-align:center;font:700 11.5px var(--font-ui);color:var(--muted);margin-top:16px;}
 
 /* ---- Results ---- */
 #resultsScreen{display:none;}
@@ -341,7 +341,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .domain-breakdown .topic-row{padding-left:16px;font-size:11.5px;font-weight:700;color:#9FB5AE;}
 
 .readiness-card{background:var(--navy);color:var(--on-accent);border-radius:22px;padding:24px 26px;margin:22px 0;}
-.readiness-card .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:6px;}
+.readiness-card .r-tag{font:900 11px var(--font-ui);color:var(--muted-on-dark);text-transform:uppercase;letter-spacing:0.05em;display:block;margin-bottom:6px;}
 .readiness-card .r-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
 .readiness-card .r-num{font-size:40px;font-weight:900;font-family:var(--font-ui);letter-spacing:-0.03em;}
 .readiness-card .r-label{font:900 14px var(--font-ui);padding:4px 12px;border-radius:var(--radius-pill);}
@@ -366,7 +366,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .readiness-update .r-sub{color:#DCEFEA;font-size:12.5px;font-weight:600;margin-top:6px;line-height:1.5;}
 .readiness-update .r-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
 .readiness-update .r-num{font-size:24px;font-weight:900;font-family:var(--font-ui);}
-.readiness-update .r-tag{font:900 11px var(--font-ui);color:#9FB5AE;text-transform:uppercase;letter-spacing:0.05em;}
+.readiness-update .r-tag{font:900 11px var(--font-ui);color:var(--muted-on-dark);text-transform:uppercase;letter-spacing:0.05em;}
 .readiness-update .r-label{font:900 12.5px var(--font-ui);padding:3px 10px;border-radius:var(--radius-pill);}
 .readiness-update .r-label.tier-good{background:rgba(47,158,91,0.25);color:#8FE3AE;}
 .readiness-update .r-label.tier-mid{background:rgba(232,119,106,0.22);color:#F7B8AC;}
@@ -430,6 +430,10 @@ select:focus{outline:none;border-color:var(--accent);}
 }
 
 /* ---- Daily streak card ---- */
+/* Space held for the streak card the engine draws, so the modes below it do
+   not jump when it lands (audit 2026-10, layout shift). */
+#streakWidget:empty{min-height:125px;}
+@media (max-width:640px){ #streakWidget:empty{min-height:167px;} }
 .streak-card{
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);
   box-shadow:var(--lift);padding:18px 20px;margin-bottom:22px;
@@ -450,7 +454,7 @@ select:focus{outline:none;border-color:var(--accent);}
 .streak-track{background:var(--track);border-radius:var(--radius-pill);height:10px;overflow:hidden;}
 .streak-fill{background:var(--accent);height:100%;border-radius:var(--radius-pill);transition:width .3s ease;}
 .streak-fill.met{background:var(--good);}
-.streak-best{font:700 11.5px var(--font-mono);color:var(--muted);margin-top:9px;}
+.streak-best{font:700 11.5px var(--font-ui);font-variant-numeric:tabular-nums;color:var(--muted);margin-top:9px;}
 .streak-settings{margin-top:14px;padding-top:14px;border-top:1px solid var(--line-soft);}
 .streak-settings-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--muted);flex-wrap:wrap;}
 .streak-settings-row select{padding:7px 10px;font-size:12.5px;}
@@ -464,7 +468,7 @@ select:focus{outline:none;border-color:var(--accent);}
   list-style:none;display:inline-flex;align-items:center;gap:7px;
 }
 .fine-print summary::-webkit-details-marker{display:none;}
-.fine-print summary::before{content:'\25B8';font-size:11px;transition:transform .12s ease;}
+.fine-print summary::before{content:var(--disclose);font-size:15px;line-height:1;transition:transform .12s ease;}
 .fine-print[open] summary::before{transform:rotate(90deg);}
 .fine-print summary:hover{color:var(--accent);}
 .fine-print p{margin-top:12px;}
@@ -510,6 +514,36 @@ a.mode-card .go{font:900 14px var(--font-ui);color:var(--accent-ink, var(--accen
    card stands in, and the pill beside the review buttons. */
 .premium-quota{margin:10px 0 0;font-size:13px;font-weight:700;color:var(--muted);}
 .premium-slot:empty{display:none;}
+/* A reserved slot keeps one quota line of height from the first paint
+   (review.html), so filling it moves nothing. */
+.premium-slot--reserved{display:block;min-height:30px;padding-top:10px;box-sizing:border-box;}
+.premium-slot--reserved:empty{display:block;}
+.premium-slot--reserved .premium-quota{margin-top:0;}
+@media (max-width:640px){ .premium-slot--reserved{min-height:44px;} }
 /* A gate card inside a mode card or panel would inherit their muted text,
    which is too faint on the card's tint. */
 #introScreen .premium-card p{color:var(--ink);}
+
+/* ---- Per-question check in untimed practice ---- */
+.option.correct,.order-item.correct{background:var(--tint-good);box-shadow:inset 0 0 0 2px var(--good-text);}
+.option.correct .letter{background:var(--good-text);color:var(--on-accent);}
+.option.incorrect,.order-item.incorrect{background:var(--tint-bad);box-shadow:inset 0 0 0 2px var(--bad-text);}
+.option.incorrect .letter{background:var(--bad-text);color:var(--on-accent);}
+.option[aria-disabled="true"]:hover{transform:none;}
+.q-feedback{margin:-12px 0 24px;padding:14px 16px;border-radius:14px;background:var(--surface2);font-size:14.5px;line-height:1.55;}
+.q-feedback.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.q-feedback.is-wrong{box-shadow:inset 4px 0 0 var(--bad-text);}
+.q-feedback-head{font:900 15px var(--font-ui);margin:0 0 6px;}
+.q-feedback.is-right .q-feedback-head{color:var(--good-text);}
+.q-feedback.is-wrong .q-feedback-head{color:var(--bad-text);}
+.q-feedback-key{font-weight:800;margin:0 0 8px;}
+.q-prompt:focus{outline:none;}
+.q-prompt:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px;}
+
+/* ---- Results: the next step ---- */
+.next-step{margin-top:14px;}
+.next-step:empty{display:none;}
+.next-step .next-step-btn{width:100%;padding:14px;border-radius:14px;font:900 14.5px var(--font-ui);cursor:pointer;border:none;background:var(--navy);color:var(--on-accent);box-shadow:var(--btn-shadow);}
+.next-step .next-note{font-size:13px;color:var(--muted);margin:8px 0 0;}
+.next-step .next-xp{font:900 14px var(--font-ui);color:var(--accent);margin:0 0 8px;}
+.r-num small{font-size:.5em;font-weight:800;color:var(--muted);margin-left:2px;}

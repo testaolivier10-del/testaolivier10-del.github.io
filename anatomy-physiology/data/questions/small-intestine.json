@@ -195,23 +195,22 @@
       "Pepsin",
       "Maltase",
       "Salivary amylase",
-      "Peptidases"
+      "Hydrochloric acid"
     ],
     "correct": [
       0,
       1,
-      3,
-      5
+      3
     ],
     "why": {
-      "correct": "Lactase, sucrase, maltase and the peptidases are brush border enzymes, anchored in the membrane of the microvilli. Pepsin comes from the stomach's chief cells, and salivary amylase from the salivary glands.",
+      "correct": "Lactase, sucrase and maltase are brush border enzymes, anchored in the membrane of the microvilli. Pepsin comes from the stomach's chief cells, salivary amylase from the salivary glands, and hydrochloric acid is not an enzyme.",
       "options": [
         "Correct. Lactase splits lactose at the brush border.",
         "Correct. Sucrase splits sucrose at the brush border.",
         "Pepsin is secreted by chief cells in the stomach and stops working at the higher pH of the small intestine.",
         "Correct. Maltase splits maltose into two glucose.",
         "Salivary amylase is made in the salivary glands and works in the mouth and inside the swallowed bolus.",
-        "Correct. Peptidases split short peptides into amino acids."
+        "Hydrochloric acid comes from the stomach's parietal cells, and it is not an enzyme."
       ]
     }
   },
@@ -271,6 +270,11 @@
         "name": "Opening of the ileocecal sphincter",
         "answer": "up",
         "why": "The gastroileal reflex relaxes the sphincter, so leftover contents move into the large intestine."
+      },
+      {
+        "name": "Number of villi lining the small intestine",
+        "answer": "none",
+        "why": "A meal changes how the wall moves and secretes, not how many villi there are."
       }
     ],
     "why": {

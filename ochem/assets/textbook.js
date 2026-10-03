@@ -383,7 +383,11 @@
     var sections = mod.topics.map(function(t){
       var pct = topicPct(t.id);
       var done = !!read[t.id];
-      return '<section class="tb-section" id="' + t.id + '" data-topic="' + t.id + '">' +
+      // One section at a time (site audit 2026-10, performance: chapter 1 was
+      // 134,000 px tall on a phone). Every section's shell is here so the
+      // jump menu and search can name it; showSection() reveals one and
+      // fetches only its notes (and the next one's, ahead of the tap).
+      return '<section class="tb-section" id="' + t.id + '" data-topic="' + t.id + '" hidden>' +
         '<div class="tb-section-head">' +
           '<h2 class="tb-section-title">' + escapeHtml(t.title) + '</h2>' +
           '<div class="tb-section-meta">' +
@@ -403,8 +407,6 @@
       '</section>';
     }).join('');
 
-    var prev = C.MODULES[index - 1];
-    var next = C.MODULES[index + 1];
 
     chapterEl.innerHTML =
       '<header class="tb-chapter-head">' +
@@ -417,23 +419,7 @@
       '</header>' +
       jumpMenuHtml(mod) +
       sections +
-      '<nav class="tb-chapter-nav">' +
-        (prev ? '<a class="tb-chapter-link prev" href="#m-' + prev.id + '"><span>&larr; Previous chapter</span><b>' + escapeHtml(prev.title) + '</b></a>' : '<span></span>') +
-        (next ? '<a class="tb-chapter-link next" href="#m-' + next.id + '"><span>Next chapter &rarr;</span><b>' + escapeHtml(next.title) + '</b></a>' : '<span></span>') +
-      '</nav>';
-
-    mod.topics.forEach(function(t){
-      loadNotes(t.id).then(function(html){
-        var slot = mainEl.querySelector('[data-notes="' + t.id + '"]');
-        if(slot){
-          slot.innerHTML = html; makeFiguresReachable(slot);
-          // Glossary popups on the first use of each term (glossary-tip.js).
-          if(window.OchemGlossary) window.OchemGlossary.mark(slot, t.id);
-        }
-        observeEnds();
-        applyPendingHit();
-      });
-    });
+      '<nav class="tb-chapter-nav tb-section-pager" aria-label="Sections"></nav>';
 
     mainEl.querySelectorAll('.tb-readtoggle').forEach(function(btn){
       btn.addEventListener('click', function(){
@@ -443,6 +429,75 @@
     });
 
     observeEnds();
+  }
+
+  /* The section a chapter opens on when the link names no section: the
+     first one not yet read, so coming back resumes where you left off. */
+  function defaultTopic(index){
+    var mod = C.MODULES[index];
+    var read = readRead();
+    for(var i = 0; i < mod.topics.length; i++) if(!read[mod.topics[i].id]) return mod.topics[i].id;
+    return mod.topics[0].id;
+  }
+
+  var filled = {};
+  function fillSection(id){
+    if(filled[id]) return;
+    filled[id] = true;
+    loadNotes(id).then(function(html){
+      var slot = mainEl.querySelector('[data-notes="' + id + '"]');
+      if(!slot){ filled[id] = false; return; }
+      slot.innerHTML = html;
+      var sec = document.getElementById(id);
+      // Overflow can only be measured once the section is laid out.
+      if(sec && !sec.hidden) makeFiguresReachable(sec);
+      // Glossary popups on the first use of each term (glossary-tip.js).
+      if(window.OchemGlossary) window.OchemGlossary.mark(slot, id);
+      observeEnds();
+      applyPendingHit();
+    });
+  }
+
+  function showSection(index, id){
+    var mod = C.MODULES[index];
+    var at = 0;
+    mod.topics.forEach(function(t, i){
+      var sec = document.getElementById(t.id);
+      if(!sec) return;
+      var on = t.id === id;
+      if(on) at = i;
+      if(sec.hidden === on){ sec.hidden = !on; if(on) makeFiguresReachable(sec); }
+    });
+    // A fresh chapter render replaces the slots, so what was filled is gone.
+    var slot = mainEl.querySelector('[data-notes="' + id + '"]');
+    if(slot && slot.querySelector('.tb-loading')) filled[id] = false;
+    fillSection(id);
+    // The next section's notes are fetched now, so the tap to it is instant.
+    if(mod.topics[at + 1]) loadNotes(mod.topics[at + 1].id);
+
+    var prevT = mod.topics[at - 1], nextT = mod.topics[at + 1];
+    var prevM = C.MODULES[index - 1], nextM = C.MODULES[index + 1];
+    function link(cls, href, label, title){
+      return '<a class="tb-chapter-link ' + cls + '" href="' + href + '"><span>' + label + '</span><b>' + escapeHtml(title) + '</b></a>';
+    }
+    var pager = chapterEl.querySelector('.tb-section-pager');
+    if(pager){
+      pager.innerHTML =
+        (prevT ? link('prev', '#' + prevT.id, '&larr; Previous section', prevT.title)
+          : prevM ? link('prev', '#m-' + prevM.id, '&larr; Previous chapter', prevM.title) : '<span></span>') +
+        (nextT ? link('next', '#' + nextT.id, 'Next section &rarr;', nextT.title)
+          : nextM ? link('next', '#m-' + nextM.id, 'Next chapter &rarr;', nextM.title) : '<span></span>');
+    }
+    var jump = document.getElementById('tbJump');
+    if(jump){
+      jump.querySelectorAll('.tb-jump-list a').forEach(function(a){
+        if(a.getAttribute('data-topic') === id) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+      var n = jump.querySelector('.tb-jump-n');
+      if(n) n.textContent = 'Section ' + (at + 1) + ' of ' + mod.topics.length;
+    }
+    return at;
   }
 
   // ---- "you've been through this" --------------------------------------
@@ -746,17 +801,20 @@
     var r = routeFromHash();
     if(r.index !== currentIndex){
       currentIndex = r.index;
+      filled = {};
       renderChapter(currentIndex);
       renderContents(currentIndex, filterEl ? filterEl.value : '', lastMatched);
     }
-    if(r.topic){
+    var topic = r.topic || defaultTopic(currentIndex);
+    var at = showSection(currentIndex, topic);
+    if(r.topic && at > 0){
       var el = document.getElementById(r.topic);
       if(el) el.scrollIntoView({ block: 'start' });
     } else {
       window.scrollTo(0, 0);
     }
     contentsEl.querySelectorAll('.tb-toc-topic').forEach(function(a){
-      a.classList.toggle('current', a.getAttribute('data-topic') === r.topic);
+      a.classList.toggle('current', a.getAttribute('data-topic') === topic);
     });
     applyPendingHit();
   }

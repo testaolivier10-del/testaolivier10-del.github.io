@@ -1,0 +1,515 @@
+{
+  "stimuli": {
+    "water-hydrogen-bonding-s1": {
+      "kind": "table",
+      "title": "Four liquids compared",
+      "text": "<p>A class looked up two properties of four liquids at standard pressure. Water and ethanol molecules can form hydrogen bonds with each other; acetone molecules are polar but cannot; hexane molecules are nonpolar.</p>",
+      "table": {
+        "caption": "Specific heat and heat of vaporization of four liquids",
+        "cols": [
+          "Liquid",
+          "Hydrogen bonds between molecules?",
+          "Specific heat (J/g·°C)",
+          "Heat of vaporization (J/g)"
+        ],
+        "rows": [
+          [
+            "Water",
+            "Yes, up to four per molecule",
+            "4.18",
+            "2,260"
+          ],
+          [
+            "Ethanol",
+            "Yes, fewer per molecule",
+            "2.44",
+            "841"
+          ],
+          [
+            "Acetone",
+            "No (polar)",
+            "2.15",
+            "539"
+          ],
+          [
+            "Hexane",
+            "No (nonpolar)",
+            "2.26",
+            "335"
+          ]
+        ]
+      }
+    },
+    "water-hydrogen-bonding-s2": {
+      "kind": "graph",
+      "title": "Warming two liquids",
+      "text": "<p>A student placed 100 g of water in one beaker and 100 g of ethanol in an identical beaker, both starting at 20 °C. Each beaker sat on an identical hot plate set to deliver heat at the same rate, and the student recorded the temperature every minute.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "min",
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        "y": {
+          "label": "Temperature",
+          "unit": "°C",
+          "min": 15,
+          "max": 45,
+          "step": 5
+        },
+        "series": [
+          {
+            "name": "Water",
+            "points": [
+              [
+                0,
+                20
+              ],
+              [
+                1,
+                22.4
+              ],
+              [
+                2,
+                24.8
+              ],
+              [
+                3,
+                27.2
+              ],
+              [
+                4,
+                29.6
+              ],
+              [
+                5,
+                32.0
+              ]
+            ]
+          },
+          {
+            "name": "Ethanol",
+            "points": [
+              [
+                0,
+                20
+              ],
+              [
+                1,
+                24.1
+              ],
+              [
+                2,
+                28.2
+              ],
+              [
+                3,
+                32.3
+              ],
+              [
+                4,
+                36.4
+              ],
+              [
+                5,
+                40.5
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-water-hydrogen-bonding-1",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s1",
+      "q": "Which claim is best supported by the data in the table?",
+      "options": [
+        "Liquids whose molecules form more hydrogen bonds need more energy per gram to vaporize.",
+        "Liquids made of larger and heavier molecules need more energy per gram to turn into vapor.",
+        "Polar liquids that lack hydrogen bonds between molecules vaporize more easily than hexane.",
+        "A liquid's specific heat does not depend on how its molecules attract each other."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Heat of vaporization falls in the same order as hydrogen bonding: water (most), then ethanol, then the two liquids with none.",
+        "options": [
+          "Water, with the most hydrogen bonds per molecule, needs the most energy, and ethanol, with fewer, needs less: the pattern the data show.",
+          "Hexane has the largest molecules of the four and the lowest heat of vaporization, so size does not explain the pattern.",
+          "Acetone needs 539 J/g against hexane's 335 J/g, so acetone takes more energy to vaporize, not less.",
+          "Water, with the strongest attraction between molecules, has by far the highest specific heat, so the two are linked."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-2",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "water-hydrogen-bonding-s1",
+      "q": "Using the table, how much energy, in kilojoules, is needed to evaporate 5.0 g of sweat? Treat sweat as pure water.",
+      "numeric": {
+        "answer": 11.3,
+        "tol": 0.1,
+        "unit": "kJ",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Energy = mass × heat of vaporization = 5.0 g × 2,260 J/g = 11,300 J, which is 11.3 kJ (divide joules by 1,000)."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-3",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s1",
+      "q": "Sweat cools the skin as it evaporates. Based on the table, why would water cool the skin better than the same mass of ethanol?",
+      "options": [
+        "Each gram of water that evaporates removes about 2.7 times as much heat as a gram of ethanol.",
+        "Each gram of water that evaporates removes less heat, so more grams of it evaporate over time.",
+        "Water warms faster than ethanol, so it reaches the temperature of the skin sooner.",
+        "Ethanol has the higher specific heat, so it stores the heat instead of carrying it away."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Evaporative cooling depends on heat of vaporization, and water's (2,260 J/g) is about 2.7 times ethanol's (841 J/g).",
+        "options": [
+          "2,260 J/g divided by 841 J/g is about 2.7, so every gram of water that evaporates carries away far more heat.",
+          "Water removes more heat per gram, not less: its heat of vaporization is the highest in the table.",
+          "Water has the higher specific heat, so it warms more slowly than ethanol, not faster.",
+          "Ethanol's specific heat (2.44) is lower than water's (4.18), and specific heat is not what evaporative cooling depends on."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-4",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s1",
+      "q": "Which statements does the table support? Select all that apply.",
+      "options": [
+        "Water has the highest specific heat of the four liquids.",
+        "Acetone has a higher heat of vaporization than hexane.",
+        "Hexane has the lowest specific heat of the four liquids.",
+        "Ethanol's heat of vaporization is more than half of water's."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Read each claim against the numbers: two match the table and two do not.",
+        "options": [
+          "4.18 J/g·°C is the largest value in the specific heat column.",
+          "539 J/g is greater than 335 J/g, so acetone needs more energy to vaporize than hexane.",
+          "Acetone's 2.15 is lower than hexane's 2.26, so hexane is not the lowest.",
+          "841 is about 37% of 2,260, which is less than half."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-5",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 1,
+      "stimulus": "water-hydrogen-bonding-s2",
+      "q": "Which statement best describes the results in the graph?",
+      "options": [
+        "Both liquids warm at a steady rate, and ethanol warms about 1.7 times as fast as water.",
+        "Both liquids warm at a steady rate, and water warms about 1.7 times as fast as ethanol.",
+        "Ethanol warms quickly at first and then levels off, while water warms at a steady rate.",
+        "The two liquids warm at the same rate until the third minute, and then ethanol pulls ahead."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both lines are straight, and ethanol rises 4.1 °C per minute against water's 2.4 °C per minute, a ratio of about 1.7.",
+        "options": [
+          "Straight lines mean steady rates; 4.1 divided by 2.4 is about 1.7, and ethanol's line is the steeper one.",
+          "This reverses the two liquids: water's line is the less steep one.",
+          "Ethanol's line stays straight over the five minutes; it does not level off.",
+          "The lines separate from the first minute, not the third."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-6",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "water-hydrogen-bonding-s2",
+      "q": "What is the rate at which the water's temperature rises over the five minutes?",
+      "numeric": {
+        "answer": 2.4,
+        "tol": 0.05,
+        "unit": "°C/min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Rate = change in temperature ÷ time = (32.0 °C − 20.0 °C) ÷ 5 min = 2.4 °C per minute."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-7",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s2",
+      "q": "Which reasoning best explains why the water warms more slowly than the ethanol?",
+      "options": [
+        "Some of the added energy breaks the many hydrogen bonds between water molecules instead of speeding them up.",
+        "Water molecules are heavier than ethanol molecules, so each one needs more added energy before it can move any faster.",
+        "Water absorbs less of the heat from the hot plate because liquid water is a good insulator.",
+        "Ethanol molecules form more hydrogen bonds, and forming them releases extra heat into the ethanol."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With the same heat going in, the liquid that spends more energy breaking attractions between molecules shows a smaller rise in temperature.",
+        "options": [
+          "Breaking water's many hydrogen bonds uses part of the energy, so less of it raises the temperature.",
+          "A water molecule (18 units of mass) is lighter than an ethanol molecule (46), so mass cannot explain it.",
+          "Both beakers received heat at the same rate; the difference is in what the energy does once absorbed.",
+          "Ethanol has one O–H group per molecule and forms fewer hydrogen bonds than water, not more."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-8",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "water-hydrogen-bonding-s2",
+      "q": "Which variables had to be held the same for this comparison to be valid?",
+      "options": [
+        "The mass of each liquid and the rate at which heat was supplied to it",
+        "The final temperature each liquid reached after five minutes",
+        "The rate at which the temperature of each liquid went up",
+        "The kind of liquid placed in each of the two beakers"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "To blame the difference on the liquid, everything else that affects warming, such as mass and heating rate, must be the same.",
+        "options": [
+          "A larger mass or a hotter plate would change the warming rate by itself, so both are controlled.",
+          "The final temperature is a result the student measured, so it is part of the dependent variable.",
+          "The warming rate is what the experiment measures; it is the dependent variable.",
+          "The kind of liquid is the independent variable: it is the one thing deliberately changed."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-9",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Why is a water molecule polar?",
+      "options": [
+        "Oxygen pulls the shared electrons closer, so it is partly negative and the hydrogens are partly positive.",
+        "Hydrogen pulls the shared electrons closer, so the hydrogens are partly negative and the oxygen partly positive.",
+        "One side of the molecule carries a full positive charge and the other side a full negative charge.",
+        "Oxygen gives one electron to each hydrogen, so the molecule is made of ions held by ionic bonds."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Unequal sharing of electrons gives water partial charges at its two ends.",
+        "options": [
+          "Oxygen attracts electrons more strongly than hydrogen, which leaves partial charges on the two ends.",
+          "This reverses the pull: oxygen, not hydrogen, attracts the shared electrons more strongly.",
+          "The charges are partial, not full; water is a neutral molecule, not a pair of ions.",
+          "The electrons are shared in covalent bonds, not given away, so no ions form."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "In liquid water, a hydrogen bond forms between which two atoms?",
+      "options": [
+        "The partly positive hydrogen of one molecule and the partly negative oxygen of another",
+        "The two hydrogen atoms that belong to one water molecule",
+        "The oxygen atom and a hydrogen atom within the same water molecule",
+        "The partly negative oxygen atoms of two neighboring water molecules"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A hydrogen bond is an attraction between molecules, from a partly positive hydrogen to a partly negative oxygen.",
+        "options": [
+          "Opposite partial charges on neighboring molecules attract: that attraction is the hydrogen bond.",
+          "The two hydrogens of one molecule both carry partial positive charges, so they repel rather than attract.",
+          "Oxygen and hydrogen in the same molecule share electrons in a covalent bond, which is a different and stronger bond.",
+          "Two partly negative oxygens repel each other."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Water climbs higher in a narrow glass tube than in a wide one. Which explanation fits best?",
+      "options": [
+        "Water adheres to the glass walls, and cohesion pulls the rest of the column up behind it.",
+        "Water's high specific heat keeps the column at a steady temperature, so it can rise.",
+        "Hydrogen bonds form between the water and the air above it, lifting the surface up.",
+        "Evaporation from the top of the column cools the water, which makes it rise higher."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In a narrow tube a larger share of the water touches the wall, so adhesion lifts it and cohesion drags the column along.",
+        "options": [
+          "Adhesion to the polar glass pulls water up the walls, and cohesion keeps the column together as it rises.",
+          "Specific heat is about how temperature changes, not about water moving up a tube.",
+          "The gases in air are not the partly charged atoms a hydrogen bond needs.",
+          "Cooling makes the water denser; it does not lift water up a glass tube."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-12",
+      "type": "predict",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student adds a drop of dish soap, which gets between water molecules at the surface and disrupts their hydrogen bonds, to a dish of water. Predict the change in each variable.",
+      "variables": [
+        {
+          "name": "Surface tension of the water",
+          "answer": "down",
+          "why": "With fewer hydrogen bonds at the surface, cohesion there is weaker, so the surface is easier to break."
+        },
+        {
+          "name": "Number of paper clips the surface can float",
+          "answer": "down",
+          "why": "A weaker surface skin supports less weight, so fewer paper clips float before the surface breaks."
+        },
+        {
+          "name": "Number of atoms in each water molecule",
+          "answer": "none",
+          "why": "Soap changes the attractions between molecules, not the covalent bonds inside each one, so every molecule still has three atoms."
+        }
+      ],
+      "why": {
+        "correct": "Surface tension comes from cohesion, which comes from hydrogen bonds; disrupting them weakens the surface without changing the molecules themselves."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-13",
+      "type": "order",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the steps of cooling by sweating in order.",
+      "options": [
+        "Heat from the skin makes the water molecules in sweat move faster.",
+        "The fastest molecules at the surface break all of their hydrogen bonds.",
+        "Those molecules escape as vapor, carrying their energy with them.",
+        "The molecules left behind move more slowly on average, so the sweat is cooler.",
+        "The cooler sweat takes more heat from the skin, and the cycle repeats."
+      ],
+      "why": {
+        "correct": "Evaporation removes the most energetic molecules, so the average energy, and so the temperature, of what is left goes down."
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-14",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these depends on hydrogen bonds between water molecules? Select all that apply.",
+      "options": [
+        "The surface tension that lets a water strider stand on a pond",
+        "The bent shape of a single water molecule",
+        "The mass of a single water molecule",
+        "The bond between the oxygen and a hydrogen in one molecule"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Only properties that involve several molecules attracting each other depend on hydrogen bonds.",
+        "options": [
+          "Surface tension comes from cohesion, the hydrogen bonds between molecules at the surface.",
+          "The shape belongs to one molecule and comes from how its electrons are arranged, not from its neighbors.",
+          "Mass comes from the atoms in the molecule, which hydrogen bonds do not change.",
+          "That is a covalent bond inside the molecule, not a hydrogen bond between molecules."
+        ]
+      }
+    },
+    {
+      "id": "bio-water-hydrogen-bonding-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "water-hydrogen-bonding",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Over a summer day the air above a large lake warms by 12 °C, but the lake's surface water warms by less than 2 °C. Which reasoning best explains the difference?",
+      "options": [
+        "Water's high specific heat means each gram must absorb a lot of energy to warm by one degree.",
+        "Water's low specific heat means the lake absorbs very little of the sun's energy during the day.",
+        "Hydrogen bonds stop heat from entering the water, so the sun's energy barely warms the lake.",
+        "Warm water evaporates more slowly than cool water, so the lake keeps its heat at the surface."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Much of the energy the lake absorbs goes into breaking hydrogen bonds, so water's temperature rises far less than the air's for the same energy input.",
+        "options": [
+          "About 4.18 J warms one gram of water by just one degree, so a whole lake absorbs a great deal of energy with little change in temperature.",
+          "Water's specific heat is high, not low, and the lake does absorb energy; its temperature simply rises slowly.",
+          "Energy does enter the water; breaking hydrogen bonds uses much of it, which slows the temperature rise.",
+          "Warm water evaporates faster, not more slowly, and evaporation removes heat from the surface rather than keeping it."
+        ]
+      }
+    }
+  ]
+}

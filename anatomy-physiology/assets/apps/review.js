@@ -29,12 +29,13 @@
   var TOPIC = {}; CUR.topics.forEach(function(t){ TOPIC[t.id] = t; });
   var TOOL = {}; (window.AnpTools || []).forEach(function(t){ TOOL[t.slug] = t; });
 
-  var bank = null;     // id -> merged question
+  var bank = null;     // id -> question stub (AnpCore.loadIndex); a session
+                       // fetches only its questions' chapters (loadQuestions)
   var session = null;
   var refreshTimer = null;
 
   function loadBank(){
-    return window.AnpCore.loadBank(BASE).then(function(all){
+    return window.AnpCore.loadIndex(BASE).then(function(all){
       var out = {};
       all.forEach(function(q){ out[q.id] = q; });
       return out;
@@ -135,6 +136,19 @@
     // stays "oldest first"; they only count toward the cap when served.
     var items = dueItems(), list = [], qn = 0;
     for(var i = 0; i < items.length && qn < n; i++){ list.push(items[i]); if(items[i].kind === 'q') qn++; }
+    var qs = list.filter(function(it){ return it.kind === 'q'; });
+    var btn = app.querySelector('[data-n="' + n + '"]');
+    if(btn){ btn.disabled = true; btn.textContent = 'Loading…'; }
+    Core.loadQuestions(BASE, qs.map(function(it){ return it.q; })).then(function(full){
+      var by = {}; full.forEach(function(q){ by[q.id] = q; });
+      list = list.filter(function(it){ if(it.kind !== 'q') return true; it.q = by[it.id]; return !!it.q; });
+      begin(list);
+    }).catch(function(){
+      if(btn){ btn.disabled = false; btn.textContent = 'Try again'; }
+    });
+  }
+
+  function begin(list){
     session = { list: list, i: 0, answered: 0, right: 0, missed: [], done: false };
     view('session');
     app.innerHTML = '<div class="anp-rv-session">' +

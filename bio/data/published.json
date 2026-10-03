@@ -1,0 +1,4 @@
+{
+  "about": "Chapters (units and skills chapters) live on the site. A topic is built only when its lesson, notes and question file exist AND its chapter is listed here. Starts empty: nothing ships until a unit passes its accuracy check (docs/apbio-spec.md). While it is empty every generated page is noindex.",
+  "chapters": []
+}

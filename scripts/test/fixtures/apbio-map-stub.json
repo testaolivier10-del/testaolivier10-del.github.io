@@ -1,0 +1,52 @@
+{
+  "about": "Test fixture only: a tiny AP Biology map in the docs/apbio-spec.md section 4 format (unit-1 with two topics, one skills chapter with one topic). scripts/build-apbio.mjs and scripts/check-apbio-content.mjs read it only when docs/apbio-dependency-map.json is absent and APBIO_MAP_STUB=1 is set (tests, the Phase 0 proof run). Never published.",
+  "version": 0,
+  "ced": { "edition": "2025", "effective": "Fall 2025", "note": "Stub." },
+  "bigIdeas": [
+    { "id": "EVO", "name": "Evolution", "summary": "Life changes over time." },
+    { "id": "ENE", "name": "Energetics", "summary": "Living systems capture, store and use energy." },
+    { "id": "IST", "name": "Information Storage and Transmission", "summary": "Living systems store and pass on information." },
+    { "id": "SYI", "name": "Systems Interactions", "summary": "Parts of living systems interact." }
+  ],
+  "practices": [
+    { "id": 1, "name": "Concept Explanation", "mcqWeight": [25, 33] },
+    { "id": 2, "name": "Visual Representations", "mcqWeight": [16, 24] },
+    { "id": 3, "name": "Questions and Methods", "mcqWeight": [8, 14] },
+    { "id": 4, "name": "Representing and Describing Data", "mcqWeight": [8, 14] },
+    { "id": 5, "name": "Statistical Tests and Data Analysis", "mcqWeight": [8, 14] },
+    { "id": 6, "name": "Argumentation", "mcqWeight": [20, 26] }
+  ],
+  "parts": [
+    { "id": "course", "title": "Units" },
+    { "id": "skills", "title": "Skills" }
+  ],
+  "chapters": [
+    { "id": "unit-1", "n": 1, "part": "course", "title": "Chemistry of Life", "weight": [8, 11],
+      "tools": { "simulators": [], "frqThemes": [], "stimulusThemes": [], "comparisonTables": [], "pathways": [] } },
+    { "id": "skills-stats", "part": "skills", "title": "Statistics skills",
+      "tools": { "simulators": [], "frqThemes": [], "stimulusThemes": [], "comparisonTables": [], "pathways": [] } }
+  ],
+  "topics": [
+    { "id": "water-hydrogen-bonding", "ced": "1.1", "title": "Structure of Water and Hydrogen Bonding", "chapter": "unit-1", "kind": "concept",
+      "bigIdeas": ["SYI"], "practices": [1, 2, 6], "searchPhrase": "water polarity and hydrogen bonds" },
+    { "id": "elements-of-life", "ced": "1.2", "title": "Elements of Life", "chapter": "unit-1", "kind": "concept",
+      "bigIdeas": ["ENE"], "practices": [1, 6], "searchPhrase": "elements living things need" },
+    { "id": "mean-sd-se", "ced": null, "title": "Mean, Standard Deviation and Standard Error", "chapter": "skills-stats", "kind": "skill",
+      "bigIdeas": [], "practices": [5], "after": "water-hydrogen-bonding", "searchPhrase": "standard deviation and standard error" }
+  ],
+  "concepts": [
+    { "id": "polarity", "term": "polar molecule", "aliases": ["polar molecules", "polarity"], "taughtIn": "water-hydrogen-bonding", "dependsOn": [] },
+    { "id": "hydrogen-bond", "term": "hydrogen bond", "aliases": ["hydrogen bonds", "hydrogen bonding"], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["polarity"] },
+    { "id": "cohesion", "term": "cohesion", "aliases": [], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["hydrogen-bond"] },
+    { "id": "adhesion", "term": "adhesion", "aliases": [], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["hydrogen-bond"] },
+    { "id": "surface-tension", "term": "surface tension", "aliases": [], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["cohesion"] },
+    { "id": "specific-heat", "term": "specific heat", "aliases": [], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["hydrogen-bond"] },
+    { "id": "heat-of-vaporization", "term": "heat of vaporization", "aliases": [], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["hydrogen-bond"] },
+    { "id": "solvent", "term": "solvent", "aliases": ["solvents"], "taughtIn": "water-hydrogen-bonding", "dependsOn": ["polarity"] },
+    { "id": "macromolecule", "term": "macromolecule", "aliases": ["macromolecules"], "taughtIn": "elements-of-life", "dependsOn": [] },
+    { "id": "standard-deviation", "term": "standard deviation", "aliases": ["SD"], "taughtIn": "mean-sd-se", "dependsOn": [] },
+    { "id": "standard-error", "term": "standard error", "aliases": ["SE", "SEM"], "taughtIn": "mean-sd-se", "dependsOn": ["standard-deviation"] }
+  ],
+  "everydayWords": { "about": "Words a high-school student already knows.", "words": ["water", "heat", "temperature", "molecule", "atom", "electron", "oxygen", "hydrogen", "mean", "average"] },
+  "circularDependencies": []
+}

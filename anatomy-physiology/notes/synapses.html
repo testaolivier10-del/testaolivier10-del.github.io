@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Synapses and neurotransmitters: Notes | Anatomy &amp; Physiology</title>
+<title>Synapses and neurotransmitters — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="Synapses and neurotransmitters explained: electrical and chemical synapses, EPSPs and IPSPs, summation, major neurotransmitters, drugs and toxins.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/synapses.html">
-<meta property="og:title" content="Synapses and neurotransmitters: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Synapses and neurotransmitters — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="Synapses and neurotransmitters explained: electrical and chemical synapses, EPSPs and IPSPs, summation, major neurotransmitters, drugs and toxins.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/synapses.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="synapses">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 12 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/nervous-tissue.html">Nervous tissue and neural signaling</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Synapses and neurotransmitters: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/synapses.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 12 &middot; Topic 67 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 12 &middot; Topic 67 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Synapses and neurotransmitters</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">16 min read</span><span class="anp-tb-chip" data-chip-topic="synapses">Not practiced</span></p>
     </header>
@@ -126,7 +127,7 @@
 
 <h2 id="chemical-synapses">Chemical synapses</h2>
 <p>Most synapses in your body are chemical. At a <strong><span class="gl" tabindex="0" data-c="chemical-synapse-steps">chemical synapse</span></strong>, the two cells are separated by a synaptic cleft about 20 nm wide, far too wide for current to jump. The signal crosses as a neurotransmitter. That extra step costs about half a millisecond, the synaptic delay, but it gives the synapse a great deal of control: the same arriving action potential can excite one cell and inhibit another, be amplified, or be changed by drugs.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Electrical vs chemical synapses"><table class="compare">
 <caption>Electrical vs chemical synapses</caption>
 <thead><tr><th></th><th>Electrical synapse</th><th>Chemical synapse</th></tr></thead>
 <tbody>
@@ -151,7 +152,7 @@
 <li><strong>Ion channels open or close, and the postsynaptic <a class="gl" href="../notes/membrane-potential.html" data-c="membrane-potential">membrane potential</a> changes.</strong> Some receptor proteins are channels themselves; others act through a <a class="gl" href="../notes/chemical-signaling.html" data-c="second-messenger">G protein</a>. The result is a <a class="gl" href="../notes/action-potential-basics.html" data-c="graded-potential">graded potential</a> in the postsynaptic cell.</li>
 <li><strong>The neurotransmitter is removed and the signal ends,</strong> within milliseconds for most fast synapses. (The ways it is removed have their own section below.)</li>
 </ol>
-<figure id="fig-os-12-27"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-27"><img src="../figures/os-12-27.jpg" alt="A small drawing of a neuron has a box around one point on its surface, and an arrow leads to an enlarged view of that point. In the enlarged view, the swollen end of an axon from another neuron sits close to the receiving neuron's membrane without touching it: a narrow gap separates them. Small membrane sacs inside the axon ending fuse with its membrane and release molecules that cross the gap and bind channel proteins in the receiving neuron's membrane." width="1005" height="930" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> A chemical synapse. The axon terminal of the presynaptic neuron releases neurotransmitter from its synaptic vesicles into the synaptic cleft, and it binds ligand-gated channels on the postsynaptic neuron. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 12.27, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-12-27"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-27"><picture><source type="image/avif" srcset="../figures/avif/os-12-27-480.avif 480w, ../figures/avif/os-12-27-800.avif 800w, ../figures/avif/os-12-27.avif 1005w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-12-27.jpg" alt="A small drawing of a neuron has a box around one point on its surface, and an arrow leads to an enlarged view of that point. In the enlarged view, the swollen end of an axon from another neuron sits close to the receiving neuron's membrane without touching it: a narrow gap separates them. Small membrane sacs inside the axon ending fuse with its membrane and release molecules that cross the gap and bind channel proteins in the receiving neuron's membrane." width="1005" height="930" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> A chemical synapse. The axon terminal of the presynaptic neuron releases neurotransmitter from its synaptic vesicles into the synaptic cleft, and it binds ligand-gated channels on the postsynaptic neuron. <span class="anp-credit">Figure 12.27 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Notice what sets the amount released: calcium. More action potentials per second let more calcium in, and more <a class="gl" href="../notes/organelles.html" data-c="vesicle">vesicles</a> fuse. Remove calcium from the fluid around a synapse and the action potential still arrives, but nothing is released.</p>
 
 <h2 id="two-classes-of-receptor-protein">Two classes of receptor protein</h2>
@@ -160,8 +161,8 @@
 <li>An <strong><span class="gl" tabindex="0" data-c="receptor-classes-neural">ionotropic receptor</span></strong> protein is itself a ligand-gated <a class="gl" href="../notes/passive-transport.html" data-c="ion-channel">ion channel</a> (<em>iono-</em> = ion, <em>trop-</em> = turning or acting on). Binding opens the pore at once. The effect starts within a millisecond and ends as soon as the neurotransmitter leaves. The <a class="gl" href="../notes/neuromuscular-junction.html" data-c="nicotinic-nmj">nicotinic receptor</a> proteins at the neuromuscular junction are ionotropic.</li>
 <li>A <strong>metabotropic receptor</strong> protein is a G-protein-coupled receptor (<em>metabo-</em> = change, as in <a class="gl" href="../notes/body-organization.html" data-c="characteristics-of-life">metabolism</a>). It has no pore. Binding switches on a G protein inside the cell, which either acts on a nearby ion channel directly or switches on an enzyme that makes a second messenger. The effect starts after tens of milliseconds or more, lasts from hundreds of milliseconds to minutes, and is amplified, because each step activates many copies of the next. It can also change <a class="gl" href="../notes/enzymes-energy.html" data-c="enzyme">enzymes</a> and even which <a class="gl" href="../notes/dna-genes.html" data-c="gene">genes</a> the cell uses.</li>
 </ul>
-<figure id="fig-os-12-28"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-28"><img src="../figures/os-12-28.jpg" alt="Two views of a postsynaptic membrane. Top: neurotransmitter molecules released into the synaptic cleft bind directly to channel proteins in the membrane, and each channel opens at once, letting ions flow through into the cytosol; the caption calls this direct activation with an immediate response. Bottom: neurotransmitter binds a different membrane protein that is not a channel; inside the cell, an activated G protein binds an effector enzyme, which turns ATP into many second messenger molecules, and these act on a separate channel protein, which opens and lets ions in; the caption calls this indirect activation, a prolonged response amplified over time." width="985" height="1210" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Ionotropic (top) and metabotropic (bottom) receptor proteins. Top: binding opens the channel directly. Bottom: binding activates a G protein and an enzyme that makes a second messenger, which then opens a separate channel. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 12.28, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<figure id="fig-os-12-28"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-28"><picture><source type="image/avif" srcset="../figures/avif/os-12-28-480.avif 480w, ../figures/avif/os-12-28-800.avif 800w, ../figures/avif/os-12-28.avif 985w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-12-28.jpg" alt="Two views of a postsynaptic membrane. Top: neurotransmitter molecules released into the synaptic cleft bind directly to channel proteins in the membrane, and each channel opens at once, letting ions flow through into the cytosol; the caption calls this direct activation with an immediate response. Bottom: neurotransmitter binds a different membrane protein that is not a channel; inside the cell, an activated G protein binds an effector enzyme, which turns ATP into many second messenger molecules, and these act on a separate channel protein, which opens and lets ions in; the caption calls this indirect activation, a prolonged response amplified over time." width="985" height="1210" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 2.</b> Ionotropic (top) and metabotropic (bottom) receptor proteins. Top: binding opens the channel directly. Bottom: binding activates a G protein and an enzyme that makes a second messenger, which then opens a separate channel. <span class="anp-credit">Figure 12.28 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Ionotropic vs metabotropic receptor proteins"><table class="compare">
 <caption>Ionotropic vs metabotropic receptor proteins</caption>
 <thead><tr><th></th><th>Ionotropic receptor protein</th><th>Metabotropic receptor protein</th></tr></thead>
 <tbody>
@@ -180,7 +181,7 @@
 <p>The graded potential a neurotransmitter causes in a postsynaptic neuron is a <strong>postsynaptic potential</strong> (PSP). It comes in two kinds.</p>
 <p>An <strong>excitatory postsynaptic potential</strong> (EPSP) is a small <a class="gl" href="../notes/membrane-potential.html" data-c="polarization-terms">depolarization</a> that moves the membrane toward <a class="gl" href="../notes/action-potential-basics.html" data-c="threshold">threshold</a>. Example: glutamate binds ionotropic receptor proteins that are channels for sodium and potassium. Sodium's inward push is far stronger at −70 mV than potassium's outward push, so the net effect is <a class="gl" href="../notes/atoms-ions-bonds.html" data-c="electric-charge">positive charge</a> in, and the membrane depolarizes.</p>
 <p>An <strong>inhibitory postsynaptic potential</strong> (IPSP) is a change that moves the membrane away from threshold or holds it there. Example: GABA binds ionotropic receptor proteins that are chloride channels. Chloride's <a class="gl" href="../notes/membrane-potential.html" data-c="equilibrium-potential">equilibrium potential</a> in most adult neurons lies at or slightly below the <a class="gl" href="../notes/membrane-potential.html" data-c="resting-membrane-potential">resting potential</a>, so chloride flowing in hyperpolarizes the membrane a little, or at least holds it near rest while other inputs try to depolarize it. Opening potassium channels, as some metabotropic receptor proteins do, also inhibits: potassium leaves and the membrane heads toward −90 mV.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="EPSP vs IPSP"><table class="compare">
 <caption>EPSP vs IPSP</caption>
 <thead><tr><th></th><th>EPSP</th><th>IPSP</th></tr></thead>
 <tbody>
@@ -202,7 +203,7 @@
 </ul>
 <figure id="fig-summation"  class="anp-figure"><div class="anp-figimg" data-fig="synaptic-summation"><img src="../figures/synaptic-summation.svg" alt="Four small graphs of membrane potential at a neuron trigger zone against time, 0 to 40 milliseconds, each with dashed lines at rest, minus 70, and threshold, minus 55. A, one EPSP: excitatory input E1 fires once, and the membrane rises about 6 millivolts, then fades back to rest without reaching threshold. B, temporal summation: E1 fires three times, 3 milliseconds apart; each small depolarization starts before the last has faded, so they stack up to threshold and an action potential fires. C, spatial summation: inputs E1, E2 and E3 fire at the same moment; their depolarizations add into one large one that reaches threshold, and an action potential fires. D, EPSP plus IPSP: E1 and inhibitory input I1 fire together; the depolarization and hyperpolarization nearly cancel, and the membrane barely moves from rest." width="680" height="520" loading="lazy" decoding="async"></div><figcaption><b>Figure 3.</b> Summation at the trigger zone. One EPSP stays below threshold (A). Repeated firing of one input (B, temporal) or simultaneous firing of several inputs (C, spatial) reaches threshold. An IPSP cancels an EPSP (D). The PSPs are drawn larger than real ones so they can be seen. <span class="anp-credit">LevlPrep (LevlPrep original).</span></figcaption></figure>
 <p>EPSPs and IPSPs add algebraically: an IPSP subtracts from whatever depolarization the EPSPs build. <a class="figref" href="#fig-os-12-26">Figure 4</a> shows a real sequence: EPSPs climb toward threshold, IPSPs knock the potential back, and only when enough EPSPs arrive together does the trigger zone fire.</p>
-<figure id="fig-os-12-26"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-26"><img src="../figures/os-12-26.jpg" alt="A drawing of a multipolar neuron with green and magenta axon endings touching its dendrites and cell body; a box at the start of its axon leads by an arrow to a graph below. The graph plots membrane potential against time, with lines at minus 70, minus 55 and plus 30 millivolts. From rest, green upward steps (EPSPs) climb in stages to point A, still below minus 55. Magenta downward curves (IPSPs) then pull the trace back down, green steps push it up again, another magenta curve pulls it down, and a final green rise reaches minus 55. There the trace shoots up above plus 30 to a peak marked B, labeled summation at axon hillock. It then falls steeply below minus 70, and recovers to rest." width="1100" height="707" loading="lazy" decoding="async"></div><figcaption><b>Figure 4.</b> Summation of EPSPs (upward) and IPSPs (downward) at the trigger zone (the figure labels it the axon hillock; the action potential actually starts in the initial segment just beyond it). At A the EPSPs have added up but stay below threshold; IPSPs pull the potential back down; at B enough depolarization arrives to reach threshold, and an action potential fires. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 12.26, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-12-26"  class="anp-figure"><div class="anp-figimg" data-fig="os-12-26"><picture><source type="image/avif" srcset="../figures/avif/os-12-26-480.avif 480w, ../figures/avif/os-12-26-800.avif 800w, ../figures/avif/os-12-26.avif 1100w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-12-26.jpg" alt="A drawing of a multipolar neuron with green and magenta axon endings touching its dendrites and cell body; a box at the start of its axon leads by an arrow to a graph below. The graph plots membrane potential against time, with lines at minus 70, minus 55 and plus 30 millivolts. From rest, green upward steps (EPSPs) climb in stages to point A, still below minus 55. Magenta downward curves (IPSPs) then pull the trace back down, green steps push it up again, another magenta curve pulls it down, and a final green rise reaches minus 55. There the trace shoots up above plus 30 to a peak marked B, labeled summation at axon hillock. It then falls steeply below minus 70, and recovers to rest." width="1100" height="707" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 4.</b> Summation of EPSPs (upward) and IPSPs (downward) at the trigger zone (the figure labels it the axon hillock; the action potential actually starts in the initial segment just beyond it). At A the EPSPs have added up but stay below threshold; IPSPs pull the potential back down; at B enough depolarization arrives to reach threshold, and an action potential fires. <span class="anp-credit">Figure 12.26 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/12-5-communication-between-neurons">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <aside class="for-your-exam"><p>For your exam: many textbooks and exams say summation happens at the axon hillock, the trigger zone. Recordings show the action potential starts in the initial segment just beyond the hillock, where voltage-gated sodium channels are densest. If a question offers only "axon hillock," choose it.</p></aside>
 <div class="worked">
 <h3>Worked example: will the neuron fire?</h3>
@@ -219,7 +220,7 @@
 
 <h2 id="the-major-neurotransmitters">The major neurotransmitters</h2>
 <p>More than a hundred substances act as neurotransmitters. A handful do most of the work. They fall into a few chemical groups:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Major neurotransmitters"><table class="compare">
 <caption>Major neurotransmitters</caption>
 <thead><tr><th>Group</th><th>Neurotransmitter</th><th>Where and what it does</th><th>Main way it is removed</th></tr></thead>
 <tbody>
@@ -255,7 +256,7 @@
 
 <h2 id="drugs-and-toxins-at-the-synapse">Drugs and toxins at the synapse</h2>
 <p>Each step of synaptic transmission is a target. Working out a drug's effect is a matter of finding its step and following the chain.</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Drugs and toxins by the step they change"><table class="compare">
 <caption>Drugs and toxins by the step they change</caption>
 <thead><tr><th>Step</th><th>Example</th><th>What it does</th><th>Result</th></tr></thead>
 <tbody>
@@ -315,13 +316,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:synapses">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="action-potential.html"><span>&larr; Topic 66</span><b>The action potential in detail</b></a><a class="tb-chapter-link next" href="brain-regions.html"><span>Topic 68 &rarr;</span><b>Regions of the brain</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

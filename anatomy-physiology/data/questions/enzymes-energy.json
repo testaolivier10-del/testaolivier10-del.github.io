@@ -268,7 +268,8 @@
       { "name": "Carbon dioxide in the blood", "answer": "down", "why": "Faster, deeper breathing carries carbon dioxide out of the blood and out of the body faster than cells add it." },
       { "name": "Carbonic acid in the blood", "answer": "down", "why": "Removing carbon dioxide pulls the reversible reaction to the left: carbonic acid breaks down into carbon dioxide and water to replace what was lost." },
       { "name": "H+ concentration in the blood", "answer": "down", "why": "As carbonic acid is used up, H+ combines with bicarbonate to re-form it, so free H+ falls." },
-      { "name": "Blood pH", "answer": "up", "why": "pH rises as H+ concentration falls." }
+      { "name": "Blood pH", "answer": "up", "why": "pH rises as H+ concentration falls." },
+      { "name": "Amount of the enzyme that speeds this reaction in red blood cells", "answer": "none", "why": "Breathing faster changes the amounts of reactants and products, not how much enzyme there is." }
     ],
     "why": {
       "correct": "Removing a product of a reversible reaction makes the reaction run toward it. Here carbon dioxide is removed, so the whole chain shifts left and H+ is used up."

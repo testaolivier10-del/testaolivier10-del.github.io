@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oogenesis and the ovarian cycle: Notes | A&amp;P</title>
+<title>Oogenesis and the ovarian cycle — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="The hormones that time these events each month are the subject of the next topic; here the focus is on the cells.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/ovarian-cycle.html">
-<meta property="og:title" content="Oogenesis and the ovarian cycle: Notes | A&amp;P">
+<meta property="og:title" content="Oogenesis and the ovarian cycle — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="The hormones that time these events each month are the subject of the next topic; here the focus is on the cells.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/ovarian-cycle.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="ovarian-cycle">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 26 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/reproductive.html">The reproductive system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Oogenesis and the ovarian cycle: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/ovarian-cycle.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 26 &middot; Topic 152 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 26 &middot; Topic 152 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Oogenesis and the ovarian cycle</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">11 min read</span><span class="anp-tb-chip" data-chip-topic="ovarian-cycle">Not practiced</span></p>
     </header>
@@ -127,13 +128,13 @@
 <li><strong>Meiosis II finishes only if a sperm enters.</strong> Sperm entry, taught later in this chapter, triggers the second division. Again it is lopsided: one large ovum and a second polar body. If no sperm arrives, the secondary oocyte dies within a day and never completes meiosis.</li>
 </ol>
 <p><a class="figref" href="#fig-oogenesis">Figure 1</a> lays out this sequence, with the before-birth steps above the line and the after-puberty steps below it.</p>
-<figure id="fig-oogenesis"  class="anp-figure"><div class="anp-figimg" data-fig="os-27-11"><img src="../figures/os-27-11.jpg" alt="A flowchart of circles, each marked 2n or n. At the top, an oogonium (2n) divides by mitosis, one daughter looping back to renew it and the other becoming a primary oocyte (2n), beside a signal light and the note that meiosis I begins, then that meiosis arrests in prophase I. A line separates before birth from after puberty. Below it, meiosis I resumes and the cell splits unequally into a large secondary oocyte (n) and a small first polar body (n), which may split into two second polar bodies. A boxed panel shows the secondary oocyte arrested at metaphase II before sperm penetration and, after a sperm enters, completing meiosis to give a large mature ovum (n) and a small polar body." width="690" height="578" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Oogenesis. Oogonia divide by mitosis before birth and become primary oocytes, which arrest in prophase I. After puberty, one primary oocyte a month completes meiosis I, giving a secondary oocyte and a first polar body; the secondary oocyte arrests at metaphase II and completes meiosis II only after a sperm enters it. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 27.11, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-oogenesis"  class="anp-figure"><div class="anp-figimg" data-fig="os-27-11"><picture><source type="image/avif" srcset="../figures/avif/os-27-11-480.avif 480w, ../figures/avif/os-27-11.avif 690w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-27-11.jpg" alt="A flowchart of circles, each marked 2n or n. At the top, an oogonium (2n) divides by mitosis, one daughter looping back to renew it and the other becoming a primary oocyte (2n), beside a signal light and the note that meiosis I begins, then that meiosis arrests in prophase I. A line separates before birth from after puberty. Below it, meiosis I resumes and the cell splits unequally into a large secondary oocyte (n) and a small first polar body (n), which may split into two second polar bodies. A boxed panel shows the secondary oocyte arrested at metaphase II before sperm penetration and, after a sperm enters, completing meiosis to give a large mature ovum (n) and a small polar body." width="690" height="578" loading="lazy" decoding="async"></picture></div><figcaption><b>Figure 1.</b> Oogenesis. Oogonia divide by mitosis before birth and become primary oocytes, which arrest in prophase I. After puberty, one primary oocyte a month completes meiosis I, giving a secondary oocyte and a first polar body; the secondary oocyte arrests at metaphase II and completes meiosis II only after a sperm enters it. <span class="anp-credit">Figure 27.11 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/27-2-anatomy-and-physiology-of-the-ovarian-reproductive-system">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.</span></figcaption></figure>
 <p>Why the unequal divisions? Each division pinches the cytoplasm off to one side instead of through the middle, because the spindle sits at the edge of the cell. The result is one large cell stocked with the <a class="gl" href="../notes/body-organization.html" data-c="characteristics-of-life">nutrients</a>, <a class="gl" href="../notes/organelles.html" data-c="organelle">organelles</a> and stored <a class="gl" href="../notes/protein-synthesis.html" data-c="rna">RNA</a> an early embryo will run on for its first days, plus polar bodies that are little more than packets of discarded chromosomes.</p>
 <aside class="going-further"><p>Going further: the long pause in meiosis I has a cost. The <a class="gl" href="../notes/biomolecules.html" data-c="protein">protein</a> links that hold paired chromosomes together have to last for decades, and they weaken with age. Weak links make nondisjunction more likely, so an oocyte from a 40-year-old is far more likely to carry an extra or missing chromosome than one from a 25-year-old. That is thought to be the main reason the risk of chromosome disorders in a pregnancy rises with the mother's age.</p></aside>
 
 <h2 id="oogenesis-vs-spermatogenesis">Oogenesis vs spermatogenesis</h2>
 <p>Both are meiosis, but they differ in almost every practical detail:</p>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Oogenesis</th><th>Spermatogenesis</th></tr></thead>
 <tbody>
 <tr><th>Where</th><td>Ovary, inside follicles</td><td><a class="gl" href="../notes/male-anatomy.html" data-c="scrotum-testes">Seminiferous tubules</a> of the testis</td></tr>
@@ -212,13 +213,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:ovarian-cycle">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="female-anatomy.html"><span>&larr; Topic 151</span><b>Female reproductive anatomy</b></a><a class="tb-chapter-link next" href="female-hormones-cycle.html"><span>Topic 153 &rarr;</span><b>Hormonal control of the ovarian and uterine cycles</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

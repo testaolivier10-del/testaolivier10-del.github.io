@@ -1,6 +1,6 @@
 {
   "topic": "nutrition",
-  "hook": "<p>Mr. Okafor, 74, has lived alone since his wife died. For four months he has eaten little but tea, toast and canned soup. Now his gums bleed when he brushes, purple spots have appeared on his shins, and a cut on his hand from six weeks ago has not closed. He is eating enough calories. What he is missing weighs less than a tenth of a gram a day.</p>",
+  "hook": "<p>Mr. Petrov, 74, has lived alone since his wife died. For four months he has eaten little but tea, toast and canned soup. Now his gums bleed when he brushes, purple spots have appeared on his shins, and a cut on his hand from six weeks ago has not closed. He is eating enough calories. What he is missing weighs less than a tenth of a gram a day.</p>",
   "prereq": [
     {
       "q": "Gram for gram, how does the energy stored in triglycerides compare with carbohydrate?",

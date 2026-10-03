@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>try{if(localStorage.getItem("nremt_theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../../assets/icon-180.png">
 <link rel="manifest" href="../manifest.json">
 <meta name="theme-color" content="#16332E">
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cloud.umami.is; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://cdn.jsdelivr.net https://*.workers.dev https://cloud.umami.is https://gateway.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; frame-src https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muscle energy and fatigue: Notes | Anatomy &amp; Physiology</title>
+<title>Muscle energy and fatigue — A&amp;P Notes | LevlPrep</title>
 <meta name="description" content="A muscle fiber holds only enough ATP for a couple of seconds of hard work, yet you can sprint for ten seconds, run hard for a minute, or walk all day.">
 <link rel="canonical" href="https://levlprep.com/anatomy-physiology/notes/muscle-metabolism.html">
-<meta property="og:title" content="Muscle energy and fatigue: Notes | Anatomy &amp; Physiology">
+<meta property="og:title" content="Muscle energy and fatigue — A&amp;P Notes | LevlPrep">
 <meta property="og:description" content="A muscle fiber holds only enough ATP for a couple of seconds of hard work, yet you can sprint for ten seconds, run hard for a minute, or walk all day.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://levlprep.com/anatomy-physiology/notes/muscle-metabolism.html">
@@ -87,7 +88,7 @@
 </script>
 </head>
 <body data-topic="muscle-metabolism">
-<div id="site-header"></div>
+<header id="site-header"></header>
 <div class="course-nav"></div>
 <div class="tb-shell anp-tb anp-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 10 contents</button>
@@ -103,7 +104,7 @@
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/muscle-tissue.html">Muscle tissue</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Muscle energy and fatigue: notes</span></nav>
     <div class="anp-pillbar"><a class="anp-pill" href="../lessons/muscle-metabolism.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
     <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 56 of 162</p>
+      <p class="anp-notes-eyebrow">Chapter 10 &middot; Topic 56 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
       <h1 class="anp-notes-title">Muscle energy and fatigue</h1>
       <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/energy.html">Energy and ATP</a><span class="anp-small">13 min read</span><span class="anp-tb-chip" data-chip-topic="muscle-metabolism">Not practiced</span></p>
     </header>
@@ -118,7 +119,7 @@
 <li><strong>The sodium–potassium pump.</strong> Each <a class="gl" href="../notes/action-potential-basics.html" data-c="action-potential-basic">action potential</a> lets some sodium in and potassium out, and the pump restores them.</li>
 </ul>
 <p>During an all-out sprint, a muscle can use ATP a hundred times faster than at rest. Yet the ATP stored in a fiber is small: at a sprint, it would last about 2 seconds. And ATP in a working muscle barely falls, even during hard exercise, because the fiber remakes ATP as fast as it spends it. It has three ways to do this, and they differ in speed and in how long they last.</p>
-<figure id="fig-os-10-12"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-12"><img src="../figures/os-10-12.jpg" alt="A three-panel diagram of how muscle remakes ATP. Top panel: in resting muscle, ATP and creatine combine to form creatine phosphate and ADP; in active muscle, the enzyme creatine kinase moves the phosphate from creatine phosphate back to ADP, giving creatine and ATP for contraction. Middle panel: glucose from the blood and from muscle glycogen enters glycolysis, which yields 2 ATP and 2 pyruvate; with oxygen, pyruvate goes on to aerobic respiration, and without it, it leaves as lactic acid to the blood. Bottom panel: glucose from the blood, pyruvic acid and fatty acids enter a mitochondrion, which uses oxygen to make many ATP, heat, carbon dioxide and water." width="902" height="1014" loading="lazy" decoding="async"><span class="anp-cover" aria-hidden="true" style="left:1.77%;top:43.20%;width:7.65%;height:4.44%"></span><span class="anp-cover" aria-hidden="true" style="left:1.77%;top:76.23%;width:7.65%;height:4.44%"></span></div><figcaption><b>Figure 1.</b> The three ways a muscle fiber remakes ATP. Top: creatine phosphate hands its phosphate to ADP. Middle: glycolysis splits glucose, from muscle glycogen or from the blood, into pyruvate; with enough oxygen, pyruvate goes on to aerobic respiration, and when glycolysis outpaces the mitochondria it becomes lactate. The figure prints "lactic acid"; at the pH of your body it exists as lactate. Its "no oxygen" label is a simplification: lactate forms whenever glycolysis outpaces the mitochondria, even with oxygen present. Bottom: aerobic respiration in mitochondria burns glucose, pyruvate and fatty acids with oxygen. <span class="anp-credit">OpenStax Anatomy and Physiology 2e, Figure 10.12, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</span></figcaption></figure>
+<figure id="fig-os-10-12"  class="anp-figure"><div class="anp-figimg" data-fig="os-10-12"><picture><source type="image/avif" srcset="../figures/avif/os-10-12-480.avif 480w, ../figures/avif/os-10-12-800.avif 800w, ../figures/avif/os-10-12.avif 902w" sizes="(max-width: 760px) 100vw, 720px"><img src="../figures/os-10-12.jpg" alt="A three-panel diagram of how muscle remakes ATP. Top panel: in resting muscle, ATP and creatine combine to form creatine phosphate and ADP; in active muscle, the enzyme creatine kinase moves the phosphate from creatine phosphate back to ADP, giving creatine and ATP for contraction. Middle panel: glucose from the blood and from muscle glycogen enters glycolysis, which yields 2 ATP and 2 pyruvate; with oxygen, pyruvate goes on to aerobic respiration, and without it, it leaves as lactic acid to the blood. Bottom panel: glucose from the blood, pyruvic acid and fatty acids enter a mitochondrion, which uses oxygen to make many ATP, heat, carbon dioxide and water." width="902" height="1014" loading="lazy" decoding="async"></picture><span class="anp-cover" aria-hidden="true" style="left:1.77%;top:43.20%;width:7.65%;height:4.44%"></span><span class="anp-cover" aria-hidden="true" style="left:1.77%;top:76.23%;width:7.65%;height:4.44%"></span></div><figcaption><b>Figure 1.</b> The three ways a muscle fiber remakes ATP. Top: creatine phosphate hands its phosphate to ADP. Middle: glycolysis splits glucose, from muscle glycogen or from the blood, into pyruvate; with enough oxygen, pyruvate goes on to aerobic respiration, and when glycolysis outpaces the mitochondria it becomes lactate. The figure prints "lactic acid"; at the pH of your body it exists as lactate. Its "no oxygen" label is a simplification: lactate forms whenever glycolysis outpaces the mitochondria, even with oxygen present. Bottom: aerobic respiration in mitochondria burns glucose, pyruvate and fatty acids with oxygen. <span class="anp-credit">Figure 10.12 from J. Gordon Betts et al., <i>Anatomy and Physiology 2e</i>, OpenStax, &copy; Rice University, <a href="https://openstax.org/books/anatomy-and-physiology-2e/pages/10-3-muscle-fiber-contraction-and-relaxation">openstax.org</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>. Adapted: labels hidden.</span></figcaption></figure>
 <p><a class="figref" href="#fig-os-10-12">Figure 1</a> sets the three side by side. Each is taken in turn below.</p>
 
 <h2 id="creatine-phosphate-the-first-seconds">Creatine phosphate: the first seconds</h2>
@@ -211,7 +212,7 @@
 </svg>
 
 <figcaption><b>Figure 2.</b> Share of ATP from each energy system during an all-out effort. All three run from the first second; creatine phosphate dominates the first seconds, glycolysis peaks within the first half-minute, and aerobic respiration overtakes it at roughly a minute and a quarter. Values are typical and vary with the person and the task.</figcaption></figure>
-<div class="table-wrap"><table class="compare">
+<div class="table-wrap" tabindex="0" role="region" aria-label="Table"><table class="compare">
 <thead><tr><th></th><th>Creatine phosphate</th><th>Anaerobic glycolysis</th><th>Aerobic respiration</th></tr></thead>
 <tbody>
 <tr><th>Fuel</th><td>Creatine phosphate</td><td>Glucose, mostly from muscle glycogen</td><td>Glucose, fatty <a class="gl" href="../notes/acids-bases-ph.html" data-c="acid">acids</a>, lactate, some amino acids</td></tr>
@@ -272,13 +273,15 @@
 
     </article>
     
+    <p class="anp-report-page anp-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="anp" data-report-question="notes:muscle-metabolism">Report a problem</button></p>
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="muscle-tension.html"><span>&larr; Topic 55</span><b>Motor units and muscle tension</b></a><a class="tb-chapter-link next" href="fiber-types.html"><span>Topic 57 &rarr;</span><b>Muscle fiber types and exercise</b></a></nav>
   </main>
 </div>
 <footer class="anp-foot xshell">
-  <p class="anp-accuracy-note">Independent study aid. This course follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Every question has a “Report a problem” link.</p>
-  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a></p>
+  <p class="anp-accuracy-note"><span class="anp-beta anp-nav-ref">Beta</span> This course has not yet been reviewed by a licensed A&amp;P instructor. It follows current published sources, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? Use a “Report a problem” link: every question, notes page and the glossary has one.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
+<script src="../../assets/report-question.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

@@ -9,8 +9,10 @@
                     wherever the viewer last clicked up to the level badge in
                     the header, and the badge pulses as the number lands.
      levl:levelup   { level, title }
-                    fired once per level crossed — a toast at the bottom of
-                    the screen and a short burst of confetti.
+                    fired once per level crossed — a toast just under the
+                    header (never over the answer just given) and a short
+                    burst of confetti. Confetti is kept for this moment only
+                    (audit 2026-10): a burst per answer covered explanations.
      levl:streak    { days }
                     fired by HubProgress.recordActivity() on the day a streak
                     reaches 7, 30 or 100 — the same toast and confetti.
@@ -18,7 +20,7 @@
    Both toasts carry a Share button (assets/share.js, fetched only if it is
    pressed). The toast stays up while the pointer or keyboard focus is in it,
    so the button can actually be reached; otherwise it leaves on its usual
-   schedule, before account.js's save prompt takes the same spot.
+   schedule.
 
    Plus one thing that is not an event: progress bars fill from zero when the
    page opens, so a reading you earned is seen being earned. Every bar the
@@ -53,9 +55,12 @@
   function floatXp(gained){
     if(!gained) return;
     var to = badge();
-    var from = lastPoint || { x: window.innerWidth / 2, y: window.innerHeight * 0.6 };
-    if(reduced() || !to){ pulseBadge(); return; }
+    if(reduced() || !to || to.hidden || !to.offsetWidth){ pulseBadge(); return; }
     var b = to.getBoundingClientRect();
+    // Starts just under the badge rather than where the answer was clicked:
+    // flying up from the option it crossed the explanation the student was
+    // about to read (audit 2026-10, gamification row).
+    var from = { x: b.left + b.width / 2 - 20, y: b.bottom + 52 };
     var chip = document.createElement('span');
     chip.className = 'levl-xp-float';
     chip.textContent = '+' + gained + ' XP';
@@ -109,8 +114,10 @@
     return p.indexOf('/nremt') > -1 ? '/nremt/' : p.indexOf('/ochem') > -1 ? '/ochem/'
          : p.indexOf('/anatomy-physiology') > -1 ? '/anatomy-physiology/' : '/';
   }
-  function toast(level, title){
-    show('L' + level, 'Level ' + level + ' \u00b7 ' + (title || ''), 'New rank unlocked.', {
+  function toast(level, title, rankChanged, course){
+    // "Level 4 · A&P rank: Cell Scout", and "New A&P rank: Tissue Tracker"
+    // only on the level where the name actually changes.
+    show('L' + level, 'Level ' + level, (rankChanged ? 'New ' : '') + (course || 'Rank') + ': ' + (title || ''), {
       what: 'level', title: 'LevlPrep',
       text: 'I reached Level ' + level + (title ? ' (' + title + ')' : '') + ' studying on LevlPrep.',
       url: courseHome()
@@ -215,7 +222,7 @@
   });
   document.addEventListener('levl:levelup', function(e){
     var d = e.detail || {};
-    celebrate(function(){ toast(d.level, d.title); });
+    celebrate(function(){ toast(d.level, d.title, d.rankChanged !== false, d.course); });
   });
   document.addEventListener('levl:streak', function(e){
     var d = e.detail || {};

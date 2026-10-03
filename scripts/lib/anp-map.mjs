@@ -269,12 +269,19 @@ export function scanPage(map, html, topicId) {
   if (here === undefined) return [`declares unknown topic "${topicId}"`];
   const text = maskAllowed(map, stripForScan(html), here, topicIndex);
   const problems = [];
+  // A concept this topic declares as a preview may be named on the page once
+  // the page carries its preview box (<… class="anp-preview" data-concept="id">):
+  // the box has taught the name, so the rest of the page, its questions
+  // included, can use it (audit 2026-10: "PTH" in Bone and blood calcium).
+  const previewed = new Set();
+  const decl = map.topics[here].previews || [];
+  for (const p of decl) if (new RegExp(`class="[^"]*\\banp-preview\\b[^"]*"[^>]*\\bdata-concept="${p.concept}"`).test(html)) previewed.add(p.concept);
   // A term can only match where its letters occur, so a plain substring test
   // on the lowercased text rules most terms out before any regex runs. Only
   // for ASCII terms, where lowercasing agrees with the regex's own folding.
   const lower = text.toLowerCase();
   for (const { c, there, terms } of scanList(map)) {
-    if (there <= here) continue;
+    if (there <= here || previewed.has(c.id)) continue;
     for (const { t, low } of terms) {
       if (low !== null && !lower.includes(low)) continue;
       const m = text.match(termRegex(t));

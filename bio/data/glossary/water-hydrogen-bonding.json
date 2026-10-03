@@ -1,0 +1,10 @@
+{
+  "polarity": { "def": "A molecule whose electrons are shared unevenly, so one end carries a partial negative charge and the other a partial positive charge. Water is the classic example." },
+  "hydrogen-bond": { "def": "A weak attraction between a partially positive hydrogen atom in one molecule and a partially negative atom, such as oxygen or nitrogen, in another molecule or another part of the same large molecule." },
+  "cohesion": { "def": "Water molecules sticking to each other through hydrogen bonds." },
+  "adhesion": { "def": "Water molecules sticking to other polar or charged surfaces, such as glass or the walls of plant tubes." },
+  "surface-tension": { "def": "The resistance of a liquid's surface to being stretched or broken, caused by cohesion among the molecules at the surface." },
+  "specific-heat": { "def": "The energy needed to raise the temperature of one gram of a substance by one degree Celsius. Water's is high, so its temperature changes slowly." },
+  "heat-of-vaporization": { "def": "The energy needed to turn one gram of a liquid into a gas. Water's is high, so evaporating water carries a lot of heat away." },
+  "solvent": { "def": "The substance that other substances dissolve in. Water dissolves many polar and charged substances, so it is the solvent of most cell chemistry." }
+}

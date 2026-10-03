@@ -22,9 +22,9 @@ function walk(dir, exts, out = []) {
     if (name.startsWith('.') || name === 'node_modules' || name === 'scripts') continue; // .git, .claude (agent worktrees)
     const full = join(dir, name);
     const st = statSync(full);
-    // The A&P notes sources are HTML fragments that build-anp.mjs wraps into
-    // pages; the built pages are what get checked.
-    if (st.isDirectory()) { if (!(exts.includes('.html') && relative(ROOT, full).split(sep).join('/') === 'anatomy-physiology/data')) walk(full, exts, out); }
+    // The A&P and AP Biology notes sources are HTML fragments that build-anp.mjs
+    // and build-apbio.mjs wrap into pages; the built pages are what get checked.
+    if (st.isDirectory()) { if (!(exts.includes('.html') && ['anatomy-physiology/data', 'bio/data'].includes(relative(ROOT, full).split(sep).join('/')))) walk(full, exts, out); }
     else if (exts.includes(extname(name))) out.push(full);
   }
   return out;
@@ -732,9 +732,14 @@ if (Array.isArray(bank)) {
     // The README describes both courses in the same file, so a figure in it is
     // correct if it matches either bank. Everything else belongs to one course.
     const isReadme = rel === 'README.md';
+    // The changelog is a dated record (it quotes old, wrong figures on
+    // purpose), and premium.html quotes all three banks, generated from them
+    // by build-pricing.mjs, whose --check and site rule advertised-counts
+    // keep it current.
+    if (rel === 'changelog.html' || rel === 'premium.html') continue;
     const isOchem = rel.split(/[\\/]/)[0] === 'ochem';
     // A&P question counts come from its own bank, written by build-anp.mjs.
-    if (rel.split(/[\\/]/)[0] === 'anatomy-physiology') continue;
+    if (rel.split(/[\\/]/)[0] === 'anatomy-physiology' || rel.split(/[\\/]/)[0] === 'bio') continue;
     for (const m of body.matchAll(COUNT_RE)) {
       const n = m[1];
       // Session lengths (a 100-question exam, a 20-question drill) and badge
@@ -766,6 +771,9 @@ if (existsSync(sitemapForCoverage)) {
     // Redirect stubs, and Google's site-verification file, are not pages.
     if (/http-equiv="refresh"/.test(body)) continue;
     if (/^google[0-9a-f]+\.html$/.test(relative(ROOT, file))) continue;
+    // Nor a noindex page (dashboards, account, search, review): it asks not
+    // to be indexed (scripts/lib/app-pages.mjs, site rule sitemap-noindex).
+    if (/<meta\s+name=["']robots["']\s+content=["'][^"']*noindex/i.test(body)) continue;
     // Nor 404.html and offline.html: each is served in place of some other
     // URL — the first by GitHub Pages for anything it cannot resolve, the
     // second by sw.js for anything it cannot fetch — so neither has an
@@ -830,7 +838,7 @@ if (existsSync(curriculumPath)) {
     if (rel.startsWith('nremt/')) continue;
     // The A&P course's counts are written by build-anp.mjs from its own map
     // and data, and `build-anp.mjs --check` keeps them current.
-    if (rel.startsWith('anatomy-physiology/')) continue;
+    if (rel.startsWith('anatomy-physiology/') || rel.startsWith('bio/')) continue; // both generated from their own map
     // The changelog is a dated record, not a claim about now. "audited across
     // all 62 sections" under a September date was true in September, and
     // rewriting it to today's number would make the entry a lie about what
@@ -1368,7 +1376,7 @@ if (existsSync(notesDir)) {
 // root-level redirect stubs are a meta-refresh and nothing else, and the ochem
 // lessons and mechanisms have never had a footer. That second gap is real but
 // it is a layout gap rather than a missing link, and it is recorded in
-// TRACKER.md instead of being papered over by a check that would pass.
+// docs/TRACKER.md instead of being papered over by a check that would pass.
 for (const file of htmlFiles) {
   const rel = relative(ROOT, file).split(sep).join('/');
   const html = readFileSync(file, 'utf8');
@@ -2188,6 +2196,21 @@ for (const file of walk(join(ROOT, 'ochem', 'mechanisms'), ['.html'])) {
     if (desc.length < DESC_MIN) {
       fail(`${rel}: the meta description is only ${desc.length} characters — too little for a ` +
            'search engine to prefer it over text it picks off the page itself.');
+    }
+  }
+}
+
+// ---- 34+. Rules added by the 2026-10 audit follow-up, one file per workstream ----
+// Each file in scripts/site-rules/ exports a default function that receives the
+// shared helpers and calls fail() for every problem it finds. Kept as separate
+// files so parallel workstreams can each add rules without editing this one.
+{
+  const { pathToFileURL } = await import('node:url');
+  const rulesDir = join(ROOT, 'scripts', 'site-rules');
+  if (existsSync(rulesDir)) {
+    for (const name of readdirSync(rulesDir).filter((n) => n.endsWith('.mjs')).sort()) {
+      const mod = await import(pathToFileURL(join(rulesDir, name)).href);
+      await mod.default({ ROOT, fail, walk, htmlFiles, jsonFiles });
     }
   }
 }
