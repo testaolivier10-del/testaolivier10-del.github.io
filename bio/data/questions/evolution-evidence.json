@@ -1,0 +1,618 @@
+{
+  "stimuli": {
+    "evolution-evidence-s1": {
+      "kind": "table",
+      "title": "Amino acid differences in cytochrome c",
+      "text": "<p>Cytochrome c is a protein of the electron transport chain in mitochondria, found in nearly every eukaryote. In humans it is 104 amino acids long. The table gives the number of positions at which each species' cytochrome c differs from the human protein (approximate counts from published sequence comparisons).</p>",
+      "table": {
+        "caption": "Positions differing from human cytochrome c (out of 104)",
+        "cols": [
+          "Species",
+          "Group",
+          "Amino acid differences from human"
+        ],
+        "rows": [
+          [
+            "Chimpanzee",
+            "Mammal (primate)",
+            "0"
+          ],
+          [
+            "Rhesus monkey",
+            "Mammal (primate)",
+            "1"
+          ],
+          [
+            "Rabbit",
+            "Mammal",
+            "9"
+          ],
+          [
+            "Dog",
+            "Mammal",
+            "11"
+          ],
+          [
+            "Horse",
+            "Mammal",
+            "12"
+          ],
+          [
+            "Chicken",
+            "Bird",
+            "13"
+          ],
+          [
+            "Bullfrog",
+            "Amphibian",
+            "18"
+          ],
+          [
+            "Tuna",
+            "Fish",
+            "21"
+          ],
+          [
+            "Baker's yeast",
+            "Fungus",
+            "44"
+          ]
+        ]
+      }
+    },
+    "evolution-evidence-s2": {
+      "kind": "setup",
+      "title": "Rock layers in a canyon wall",
+      "text": "<p>Geologists described six undisturbed layers exposed in a canyon wall, numbered from the top. Three layers are volcanic ash, whose crystals were dated by the decay of a radioactive isotope. The other layers are sedimentary rock containing fossils of horse-like mammals.</p>",
+      "table": {
+        "caption": "Layers from the top of the canyon wall (layer 1) to the bottom (layer 6)",
+        "cols": [
+          "Layer",
+          "Rock type",
+          "Fossils or date"
+        ],
+        "rows": [
+          [
+            "1 (top)",
+            "Sandstone",
+            "Horse-like mammal with one large toe on each foot, about 1.5 m tall"
+          ],
+          [
+            "2",
+            "Volcanic ash",
+            "Dated to 5.3 million years ago"
+          ],
+          [
+            "3",
+            "Shale",
+            "Horse-like mammal with three toes on each foot, the middle one largest, about 1 m tall"
+          ],
+          [
+            "4",
+            "Volcanic ash",
+            "Dated to 23 million years ago"
+          ],
+          [
+            "5",
+            "Mudstone",
+            "Dog-sized mammal with four toes on each front foot and three on each hind foot"
+          ],
+          [
+            "6 (bottom)",
+            "Volcanic ash",
+            "Dated to 56 million years ago"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-evolution-evidence-1",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "evolution-evidence-s1",
+      "q": "Which conclusion is best supported by the data?",
+      "options": [
+        "Humans share a more recent common ancestor with rhesus monkeys than with dogs.",
+        "Humans share a more recent common ancestor with chickens than with horses.",
+        "Tuna are more closely related to yeast than to humans.",
+        "Rabbits and dogs share a more recent common ancestor with each other than either does with humans."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Rhesus monkey cytochrome c differs from human at 1 position, dog at 11. Fewer differences means less time for mutations to build up since the lineages separated.",
+        "options": [
+          "Correct: 1 difference against 11.",
+          "Chickens differ from humans at 13 positions and horses at 12, so the data do not place chickens closer.",
+          "The table compares each species only with humans, so it says nothing directly about tuna and yeast; it does show tuna sharing far more of the sequence with humans than yeast do.",
+          "The table gives only differences from human, so it cannot show how rabbits and dogs compare with each other."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-2",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "evolution-evidence-s1",
+      "q": "What percentage of the 104 amino acid positions are identical in human and tuna cytochrome c? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 79.8,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Identical positions = 104 − 21 = 83. 83 ÷ 104 × 100 = 79.8%. Humans and tuna last shared an ancestor hundreds of millions of years ago, yet four-fifths of the protein is the same."
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-3",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "evolution-evidence-s1",
+      "q": "A student concludes from the table that rabbits are more closely related to humans than dogs are. Which is the best evaluation of this claim?",
+      "options": [
+        "It is weak: 9 and 11 differences are close, and one protein is a small sample, so more genes are needed.",
+        "It is strong: any difference in the number of amino acid changes reliably shows which species is more related.",
+        "It is strong, because rabbits and humans are both mammals, while dogs belong to a different group.",
+        "It is weak, because cytochrome c works in mitochondria, and mitochondrial proteins are not useful for comparing species."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mutations build up somewhat irregularly, so a difference of two positions in one 104-amino-acid protein could arise by chance. Comparing many genes gives a far more reliable measure.",
+        "options": [
+          "Correct: a small difference in one small protein is weak evidence.",
+          "A difference of two out of 104 is too small to rely on; numbers from a single protein have random variation.",
+          "The table lists rabbits and dogs as mammals both.",
+          "Mitochondrial proteins and DNA are widely used to compare species; the problem is the size of the sample, not the source."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-4",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "evolution-evidence-s1",
+      "q": "Why do these data count as evidence of common ancestry?",
+      "options": [
+        "Many sequences could do this job, yet species share one, with differences graded by relatedness.",
+        "Each species needs cytochrome c, so its sequence has to be identical across species for respiration to work.",
+        "The differences show that each species made its own version of the protein in response to its environment.",
+        "Species with more amino acid differences are better adapted than species with fewer differences."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If each species had its own origin, there would be no reason for yeast and humans to share most of a protein's sequence, or for the differences to follow the same order as anatomy and fossils. Inheritance from shared ancestors, with mutations added over time, explains both.",
+        "options": [
+          "Correct: shared sequence plus graded differences match descent with modification.",
+          "The sequences are not identical; up to 44 positions differ, and the protein still works.",
+          "Mutations arise at random, not in response to the environment, and the differences track relatedness, not habitat.",
+          "The number of differences measures time since a shared ancestor, not how well adapted a species is."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-5",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "evolution-evidence-s1",
+      "q": "A kangaroo is a mammal, more distantly related to humans than rabbits, dogs and horses are, but more closely related than birds. About how many differences from human cytochrome c would you predict for a kangaroo?",
+      "options": [
+        "About 10",
+        "About 1",
+        "About 20",
+        "About 45"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Other non-primate mammals differ at 9 to 12 positions and the chicken at 13, so a kangaroo should fall in about that range. (Published sequences give 10.)",
+        "options": [
+          "Correct: in the range of the other mammals.",
+          "One difference is typical of other primates, which share a far more recent ancestor with humans.",
+          "Twenty is typical of fish, which are much more distantly related to humans than any mammal.",
+          "Forty-five is typical of fungi such as yeast."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-6",
+      "type": "order",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "evolution-evidence-s2",
+      "q": "Put the horse-like fossils in order from oldest to youngest.",
+      "options": [
+        "The dog-sized mammal with four front toes (layer 5)",
+        "The three-toed mammal (layer 3)",
+        "The one-toed mammal (layer 1)"
+      ],
+      "why": {
+        "correct": "In undisturbed layers, lower layers formed first (superposition): layer 5 is below layer 3, which is below layer 1."
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-7",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "evolution-evidence-s2",
+      "q": "What is the best estimate of the age of the three-toed fossils in layer 3?",
+      "options": [
+        "Between 5.3 and 23 million years old",
+        "Exactly 14 million years, halfway between the ash layers",
+        "Older than 23 million years",
+        "Younger than 5.3 million years"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Layer 3 lies above the ash dated to 23 million years (layer 4) and below the ash dated to 5.3 million years (layer 2), so it formed between those times.",
+        "options": [
+          "Correct: the ash layers bracket the fossil.",
+          "Sediment does not build up at a steady rate, so the midpoint is not a reliable estimate.",
+          "Layer 3 lies above the 23-million-year ash, so it is younger.",
+          "Layer 3 lies below the 5.3-million-year ash, so it is older."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-8",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "evolution-evidence-s2",
+      "q": "The isotope used to date the ash has a half-life of 14 million years. What percentage of the original isotope should remain in the crystals of layer 6? Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 6.25,
+        "tol": 0.01,
+        "unit": "%",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "56 ÷ 14 = 4 half-lives. 100% → 50% → 25% → 12.5% → 6.25%, or 100% × (1/2)⁴ = 6.25%."
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-9",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "evolution-evidence-s2",
+      "q": "Why did the geologists date the ash layers rather than the fossil-bearing sandstone, shale and mudstone?",
+      "options": [
+        "Ash crystals form when lava cools, starting the clock; sedimentary grains are older than the layer itself.",
+        "Sedimentary rocks contain no radioactive isotopes, so no radiometric method works on them.",
+        "Volcanic ash decays faster than sedimentary rock, so it gives a more precise age in fewer years.",
+        "Fossils are destroyed when sedimentary rock is heated, so the rock around them is not tested."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The radiometric clock measures time since a mineral crystallized. In ash, that is the eruption, so the date is the age of the layer. Sandstone grains were worn from older rocks, so their isotopes record the age of those older rocks.",
+        "options": [
+          "Correct: the clock must start when the layer forms.",
+          "Sedimentary grains do contain radioactive isotopes; they give the age of the grains' source rocks, not of the layer.",
+          "Decay rates depend on the isotope, not on the rock type.",
+          "Dating does not require heating the rock; the problem is when its minerals formed."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-10",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "evolution-evidence-s2",
+      "q": "Which claim about the three fossils is best supported by these layers?",
+      "options": [
+        "Horse-like mammals changed over time toward larger bodies and fewer toes: descent with modification.",
+        "Each fossil is the direct parent species of the fossil in the layer above it.",
+        "The one-toed mammal lived at the same time as the dog-sized mammal, but its fossils were buried higher.",
+        "The animals lost toes during their lives as they ran on harder ground, and passed the change on."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Ordered by age, the fossils show bodies getting larger and side toes becoming smaller and fewer: change over time in one group, as descent with modification predicts. The record cannot show which fossil, if any, was a direct ancestor of another.",
+        "options": [
+          "Correct: a trend over time, without overclaiming direct parentage.",
+          "Fossils show related forms in order, but not that one was the direct ancestor of the next; they may be side branches.",
+          "Superposition places layer 1 above the 5.3-million-year ash and layer 5 below the 23-million-year ash, so they did not live together.",
+          "Changes during life are not inherited; the trend comes from selection on heritable variation."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-11",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which pair of structures is analogous rather than homologous?",
+      "options": [
+        "The wing of a butterfly and the wing of a sparrow",
+        "The flipper of a whale and the arm of a human",
+        "The wing of a bat and the front leg of a cat",
+        "The pharyngeal arches of a fish embryo and of a human embryo"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Butterfly wings are thin sheets of cuticle on an insect; sparrow wings are feathered forelimbs with bones. They do the same job but were not inherited from a common ancestor with wings: convergent evolution.",
+        "options": [
+          "Correct: same function, different origins.",
+          "Homologous: both contain the same set of forelimb bones inherited from a common ancestor.",
+          "Homologous: a bat's wing is a modified mammal forelimb with the same bones as a cat's leg.",
+          "Homologous: all vertebrate embryos inherit pharyngeal arches from a common ancestor."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-12",
+      "type": "multi",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which pairs are homologous structures? Select ALL that apply.",
+      "options": [
+        "The flipper of a sea lion and the wing of a bat",
+        "The tailbone of a human and the tail of a monkey",
+        "The spines of a cactus and the thorns of a rose",
+        "The streamlined body of a shark and that of a dolphin",
+        "The wings of a bird and the wings of a housefly"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Homologous structures are inherited from a common ancestor: both forelimbs come from an ancestral mammal limb, and both tailbones from the tail vertebrae of an ancestral primate. The other pairs are similar because of similar functions, not shared inheritance.",
+        "options": [
+          "Homologous: both are mammal forelimbs with the same bones.",
+          "Homologous: the human tailbone is a reduced version of the tail vertebrae monkeys still have.",
+          "Analogous: cactus spines are modified leaves, while rose thorns grow from the stem's outer layer.",
+          "Analogous: sharks are fish and dolphins are mammals; the shape evolved separately in each.",
+          "Analogous: insect wings are not modified limbs, while bird wings are."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-13",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Whales have small hip bones embedded in muscle and not attached to the spine. Which explanation best accounts for them?",
+      "options": [
+        "Whales descend from four-legged land mammals, and these are reduced remnants of their hips.",
+        "The hip bones grew in each whale because it swam using its tail, which put stress on the lower body.",
+        "The hip bones are early stages of new legs that whales are evolving so they can return to land.",
+        "Whale hip bones formed separately in whales by convergent evolution with the hips of land animals."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "These are vestigial structures. Fossils of early whales with working hind legs and hips, and the bones' match with mammal hip bones, show they are leftovers of a land ancestor's hips (now anchoring some muscles).",
+        "options": [
+          "Correct: a reduced inherited structure.",
+          "Bone growth from use during one life is not inherited and does not explain why every whale has them.",
+          "Evolution has no goal; the bones are shrinking remnants, not developing legs.",
+          "The bones match mammal hip bones in position and origin, which points to inheritance, not convergence."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-14",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Sharks and dolphins both have streamlined bodies, a dorsal fin and flippers or fins. Which explanation fits all the evidence best?",
+      "options": [
+        "Similar selection for fast swimming shaped two unrelated groups alike: convergent evolution.",
+        "Sharks and dolphins inherited their body shapes from a recent common ancestor that was a streamlined fish.",
+        "Dolphins are fish that evolved lungs, so their shape shows their close relationship to sharks.",
+        "The body shapes are homologous, because structures with the same function are inherited."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Dolphins have lungs, hair at birth, mammary glands and mammal forelimb bones inside their flippers, and their DNA matches other mammals. Their shark-like shape evolved separately under similar pressures: an analogous resemblance.",
+        "options": [
+          "Correct: unrelated groups shaped alike by similar environments.",
+          "The last common ancestor of sharks and dolphins lived hundreds of millions of years ago and was not streamlined in this way; dolphins descend from land mammals.",
+          "Dolphins are mammals; their skeletons, DNA and fossils show descent from land mammals.",
+          "Same function does not mean shared ancestry; that is the definition of an analogous structure."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-15",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Darwin noted that the animals of the Galápagos Islands resemble those of South America, about 1,000 km away, more than those of islands off Africa that have a similar climate. Which explanation best fits this pattern?",
+      "options": [
+        "Galápagos species descend from colonists from nearby South America, modified over time on the islands.",
+        "Species are created to suit the climate where they live, so similar islands get similar species.",
+        "Animals that reach islands change their traits during their lives to match the island's climate.",
+        "South American species were carried to the Galápagos from Africa by people in historical times."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Biogeography: island species resemble their nearest mainland source because they descend from it. If climate alone set the species, the Galápagos and African islands would have similar animals.",
+        "options": [
+          "Correct: descent from the nearest source explains the resemblance.",
+          "This predicts that islands with similar climates have similar species, which is the opposite of what Darwin observed.",
+          "Changes during life are not inherited, and climate does not explain the resemblance to South America.",
+          "The species are unique to the islands and older than human visits; nothing suggests they came from Africa."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-16",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Human embryos, like fish embryos, develop a series of pharyngeal arches in the neck region. In fish these become supports for gills. What do they become in humans, and what does this indicate?",
+      "options": [
+        "Parts of the jaw, middle ear and throat; a structure inherited from a common ancestor and modified in development",
+        "Working gills that the embryo uses before birth; humans pass through a fish stage of evolution in the womb",
+        "Nothing; they disappear before birth, which shows they are analogous to the gill arches of fish",
+        "Lungs; the arches turn into lungs, showing that lungs evolved from gills in a single step"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The same embryonic structures are present in all vertebrates and develop into different adult parts: homology at the embryo stage, pointing to a shared ancestor.",
+        "options": [
+          "Correct: shared embryonic structures, different adult fates.",
+          "Human embryos never have working gills; they share an early structure with fish embryos, not a fish stage.",
+          "The arches do not vanish; they form jaw, ear and throat structures. Shared embryonic origin makes them homologous.",
+          "Lungs develop from a different part of the gut, not from the pharyngeal arches."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-17",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Lobe-finned fish fossils are found in rocks about 385 million years old, and the earliest four-limbed animals in rocks about 365 million years old. Researchers want to find an animal with features of both. Which search plan is best supported by the evidence?",
+      "options": [
+        "Search sedimentary rocks about 375 million years old that formed in shallow streams or coasts.",
+        "Search volcanic rocks about 375 million years old, which preserve fossils best.",
+        "Search rocks younger than 365 million years, where four-limbed animals are most common.",
+        "Search rocks of any age, because fossils of transitional forms are spread evenly through time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A form intermediate between the two groups should be found in rocks of intermediate age, and fossils form in sedimentary rock laid down in water. This prediction led to the discovery of <i>Tiktaalik</i> in 2004.",
+        "options": [
+          "Correct: the right age and the right kind of rock.",
+          "Volcanic rock forms from molten rock and rarely contains fossils; it is used to date layers, not to find fossils.",
+          "By then, four-limbed animals were already present; the transition would be earlier.",
+          "Fossils of a transition are expected near the time of the transition, not evenly spread."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-18",
+      "type": "numeric",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A piece of charcoal from an ancient campfire contains 12.5% of the carbon-14 found in living wood. The half-life of carbon-14 is 5,730 years. How old is the charcoal? Give a whole number of years.",
+      "numeric": {
+        "answer": 17190,
+        "tol": 10,
+        "unit": "years",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "100% → 50% → 25% → 12.5% is three half-lives. 3 × 5,730 = 17,190 years."
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-19",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Why are transitional fossils, showing features of both an older and a later group, relatively rare?",
+      "options": [
+        "Fossils form only under special conditions, such as quick burial, and most remains decay first.",
+        "Transitional forms did not exist, because new groups appear fully formed.",
+        "Transitional forms were too weak to survive for long, so very few individuals lived.",
+        "Fossils of transitional forms are destroyed faster than other fossils, because they are mixtures."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Only a tiny fraction of organisms are buried quickly in sediment, and many fossils are later destroyed or never exposed. The record is incomplete for every group, transitional or not.",
+        "options": [
+          "Correct: fossilization is rare.",
+          "Many transitional fossils have been found, such as early whales with legs and fish with limb-like fins.",
+          "Transitional forms were successful populations in their time, not weak ones.",
+          "Preservation depends on burial and rock, not on whether a fossil is transitional."
+        ]
+      }
+    },
+    {
+      "id": "bio-evolution-evidence-20",
+      "type": "single",
+      "unit": "unit-7",
+      "topic": "evolution-evidence",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "In rock layers around the world, many types of marine and land fossils that are common below a certain thin layer are absent from every layer above it. What does this pattern best indicate?",
+      "options": [
+        "A mass extinction: many groups died out worldwide in a geologically short time.",
+        "A period of rapid fossil formation, when many new groups first appeared at once.",
+        "An error in relative dating, because fossil groups do not disappear from the record.",
+        "A time when the animals moved to places where rocks do not form."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Many groups vanishing at the same level worldwide marks a mass extinction, such as the one about 66 million years ago.",
+        "options": [
+          "Correct: worldwide disappearance at one level.",
+          "Groups disappear above the layer; they do not appear.",
+          "Disappearances are expected: most species that ever lived are extinct.",
+          "Rocks form on land and in the sea everywhere; worldwide absence above one layer is not explained by moving."
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "forelimb-homology": {
+    "file": "figures/forelimb-homology.svg", "ext": "svg", "w": 760, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Simplified forelimb skeletons of a human arm, a cat's front leg, a whale's flipper and a bat's wing, with matching bones in matching colors: one humerus, a radius and an ulna, a group of wrist bones (carpals) and five sets of hand and finger bones. The bones differ in length and shape: short and flat inside the whale's paddle, with extra finger bones, and very long in the bat, where they hold up the skin of the wing. The same bones serve grasping, walking, swimming and flying."
+  }
+}

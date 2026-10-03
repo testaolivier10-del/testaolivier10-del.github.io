@@ -371,6 +371,41 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   Check which license applies to the figures already used before launch. The operons tool uses no
   OpenStax text or figures.
 
+- **u7a-illustrative-data** (open, Unit 7 topics 7.1-7.6). Invented data in realistic proportions, not measurements:
+  mouse enclosures and meadow-plant fitness (`natural-selection-intro-s1`, `-s2`); finch beak depth by hatch year
+  (`natural-selection-s1`, modeled on the Daphne Major drought of 1977 and wet year of 1983, not the published values)
+  and the grassland-bird tail experiment (`natural-selection-s2`, the design of Andersson's 1982 widowbird study, own
+  numbers); the corn oil lines (`artificial-selection-s1`, shaped like the Illinois long-term experiment, values rounded
+  and simplified; the notes describe the real experiment) and the antibiotic MIC flasks (`-s2`); the fruit-fly drift
+  lines (`population-genetics-s1`, simulated with binomial sampling) and the isolated grouse-like population
+  (`-s2`, modeled on Illinois greater prairie chickens, own numbers); the three plant populations and four beetle
+  lines (`hardy-weinberg-s1`, `-s2`; line 2 follows q' = q/(1 + q), line 3 q' = 0.9q + 0.01); the canyon layers with a
+  hypothetical 14-million-year half-life (`evolution-evidence-s2`); FRQs `frq-finch-drought-graph`,
+  `frq-wildflower-drift` and `frq-stickleback-armor` (stickleback *Eda* alleles are real; the counts and the trout
+  story are invented). Confirm acceptable.
+- **cytochrome-c-counts** (open, 7.6, `evolution-evidence-s1`). Differences from human cytochrome c (chimpanzee 0,
+  rhesus 1, rabbit 9, dog 11, horse 12, chicken 13, bullfrog 18, tuna 21, baker's yeast 44, kangaroo 10 in item 5's
+  why) are the classic textbook values from older protein-sequence tables; some sources give yeast 45 and differ by
+  one elsewhere. Labeled "approximate"; no key depends on a one-position difference. The notes' hemoglobin β table
+  (gorilla 1, rhesus 8, mouse 27, chicken 45, frog 67) is the same kind of classic value. Check against a sequence
+  database if a reviewer wants exact counts.
+- **vestigial-meaning** (open, 7.6). Taught as "reduced, with most or all ancestral function lost", with whale hip
+  bones anchoring reproductive muscles as the caution that vestigial does not mean useless. The human appendix is
+  deliberately not used (it has immune functions, and older materials call it vestigial). For your exam: a vestigial
+  structure is a reduced remnant of an ancestral structure; either wording earns credit.
+- **u7a-history-numbers** (open, 7.1-7.6). Figures stated from general knowledge, rounded: peppered moth dark form
+  first recorded 1848 and about 98% near Manchester by 1895, the *cortex* transposon dated to about 1819 (2016
+  study); Pingelap typhoon about 1775 with about 20 survivors and roughly 1 in 10 islanders with achromatopsia today;
+  northern elephant seals reduced to "perhaps a few dozen" in the 1890s (published estimates range from about 10 to
+  100) and over 200,000 now; Florida panthers 20-30 in the early 1990s and eight Texas females released in 1995;
+  Ellis-van Creveld syndrome about 1 in 200 Lancaster County Amish births; Gorongosa tuskless females about half of
+  war survivors against under one in five before; MRSA reported 1961; dogs domesticated at least 15,000 years ago
+  (estimates range higher); corn from teosinte about 9,000 years ago; *Tiktaalik* about 375 million years, found 2004.
+  Wallace's fever is placed only "in the islands of the Malay Archipelago" (Ternate or Gilolo is disputed).
+- **stabilizing-birth-weight** (open, 7.2, `bio-natural-selection-11`). The 1935-1946 London hospital data (Karn and
+  Penrose) are the classic stabilizing-selection example; modern medical care has weakened the pattern. The item
+  states the dates, so the key holds.
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer

@@ -1,0 +1,6 @@
+{
+  "artificial-selection": { "def": "Selective breeding: humans choose which individuals reproduce, based on traits they want, so those traits become more common or more extreme over generations. It works on heritable variation, like natural selection, but people rather than the environment decide who breeds." },
+  "domestication": { "def": "The change of a wild population into one adapted to living with and being used by people, through generations of artificial selection, as dogs came from wolves and corn from a wild grass called teosinte." },
+  "antibiotic-resistance": { "def": "The ability of bacteria to survive an antibiotic that kills or stops the growth of most cells of their kind. It comes from random mutations or genes received from other bacteria, and spreads because the antibiotic kills susceptible cells and leaves resistant ones to multiply. MRSA (methicillin-resistant Staphylococcus aureus) is an example." },
+  "unintended-selection": { "def": "Selection caused by human activity that nobody intended, such as antibiotic use favoring resistant bacteria, fishing that removes the largest fish favoring fish that mature young and small, or poaching for ivory favoring elephants without tusks." }
+}

@@ -1,0 +1,81 @@
+{
+  "topic": "population-genetics",
+  "hook": "<p>Around 1775 a typhoon swept over Pingelap, a tiny Pacific atoll, and only about 20 people survived the storm and the famine after it. One survivor happened to carry a rare recessive allele that causes complete color blindness. Today roughly 1 in 10 Pingelapese people is born with it, compared with about 1 in 30,000 in most populations. The allele did not help anyone survive. It became common by chance, because so few people passed on their alleles. This is genetic drift.</p>",
+  "prereq": [
+    {
+      "q": "An individual who is heterozygous for a gene carries",
+      "options": ["two different alleles of that gene", "two copies of the dominant allele", "one copy of the gene instead of two"],
+      "correct": 0,
+      "why": "Heterozygous means the two copies of the gene, one from each parent, are different alleles.",
+      "review": "mendelian-genetics"
+    },
+    {
+      "q": "In natural selection, the alleles that become more common are those that",
+      "options": ["raise survival or reproduction in the current environment", "arise most often by mutation", "individuals need most"],
+      "correct": 0,
+      "why": "Selection is not random: it favors alleles whose carriers leave more surviving offspring.",
+      "review": "natural-selection"
+    },
+    {
+      "q": "Why do resistant bacteria become common after an antibiotic is used?",
+      "options": ["The drug kills susceptible cells, so cells that already carried resistance multiply", "The drug causes resistance mutations", "Bacteria learn to avoid the drug"],
+      "correct": 0,
+      "why": "The antibiotic is a selective pressure acting on variation that already existed.",
+      "review": "artificial-selection"
+    }
+  ],
+  "figure": {
+    "figure": "bottleneck-founder",
+    "caption": "Two kinds of genetic drift. In a bottleneck, a disaster leaves a few survivors; in a founder event, a few individuals start a new population. Either way, a small sample of alleles, chosen by chance, becomes the whole gene pool."
+  },
+  "chain": [
+    {
+      "cause": "Every population has a gene pool, and each allele in it has a frequency, the share of all copies of that gene that are that allele.",
+      "effect": "Evolution can be measured as a change in allele frequencies from one generation to the next: microevolution."
+    },
+    {
+      "cause": "Mutation creates new alleles, rarely, in every generation.",
+      "effect": "The gene pool gains variation that other processes can act on."
+    },
+    {
+      "cause": "Only some individuals reproduce, and each passes on a random half of its alleles.",
+      "effect": "Allele frequencies change by chance from generation to generation: genetic drift."
+    },
+    {
+      "cause": "The fewer individuals that breed, the less closely their alleles match the whole population, as in a bottleneck or a founder event.",
+      "effect": "Drift is strongest in small populations, where alleles can be lost or fixed within a few generations, whatever their effect on fitness."
+    },
+    {
+      "cause": "Alleles are lost from small populations, and individuals or pollen move between populations (gene flow).",
+      "effect": "Small, isolated populations lose genetic variation and become less able to respond to change; gene flow restores variation and makes populations more alike."
+    }
+  ],
+  "ideas": [
+    "A <b>gene pool</b> is all the alleles in a population. <b>Allele frequency</b> = copies of that allele ÷ all copies of the gene; for diploids, (2 × AA + Aa) ÷ (2 × N). <b>Microevolution</b> is a change in allele frequencies.",
+    "<b>Mutation</b> is the source of <b>new alleles</b>; it is slow but supplies all variation.",
+    "<b>Genetic drift</b> is random change in allele frequencies, strongest when <b>population size</b> is small. The <b>bottleneck effect</b> and <b>founder effect</b> are drift after a crash or a new start.",
+    "<b>Gene flow</b> (immigration and emigration of alleles) makes populations more alike and can add alleles. <b>Nonrandom mating</b> such as <b>inbreeding</b> raises homozygosity without, by itself, changing allele frequencies.",
+    "Drift in small populations causes <b>loss of genetic variation</b>, which leaves a population less able to adapt when its environment changes."
+  ],
+  "misconception": {
+    "wrong": "If an allele becomes more common in a population, it must have helped its carriers survive.",
+    "right": "Allele frequencies also change by chance. In a small population, genetic drift can make a harmful allele common, as on Pingelap, or wipe out a helpful one. Only natural selection changes frequencies because of an allele's effect on fitness."
+  },
+  "check": [
+    "bio-population-genetics-1",
+    "bio-population-genetics-2",
+    "bio-population-genetics-3",
+    "bio-population-genetics-7",
+    "bio-population-genetics-8",
+    "bio-population-genetics-11",
+    "bio-population-genetics-15",
+    "bio-population-genetics-17"
+  ],
+  "summary": "<p>A population's gene pool is all its alleles, and an allele's frequency is its share of all copies of that gene; a change in allele frequencies over generations is microevolution. Mutation supplies new alleles. Genetic drift changes allele frequencies at random, because which individuals breed and which alleles they pass on is partly chance; it is strongest in small populations, where alleles can be lost or fixed quickly whatever their effect on fitness. The bottleneck effect (after a population crashes) and the founder effect (when a few individuals start a new population) are drift in action. Gene flow moves alleles between populations, making them more alike. Nonrandom mating, such as inbreeding, raises the share of homozygotes without changing allele frequencies by itself. Small populations lose genetic variation, which makes them less able to respond to environmental change.</p>",
+  "connections": [
+    { "href": "../notes/natural-selection.html", "label": "Back: natural selection and its patterns (7.2)" },
+    { "href": "../notes/mendelian-genetics.html", "label": "Back: alleles, genotypes and homozygotes (5.3)" },
+    { "href": "../tools/hardy-weinberg-drift.html", "label": "Try it: the genetic drift simulator" },
+    { "href": "../notes/hardy-weinberg.html", "label": "Next: a population that is not evolving (7.5)" }
+  ]
+}

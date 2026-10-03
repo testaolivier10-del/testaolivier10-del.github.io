@@ -1,0 +1,156 @@
+{
+  "id": "frq-stickleback-armor",
+  "type": "iee",
+  "points": 9,
+  "title": "Allele frequencies against Hardy-Weinberg expectations",
+  "units": [
+    "unit-7",
+    "skills-stats",
+    "skills-design"
+  ],
+  "topics": [
+    "hardy-weinberg",
+    "population-genetics",
+    "stats-chi-square",
+    "design-null-hypothesis"
+  ],
+  "practices": [
+    "3.B",
+    "3.C",
+    "5.A",
+    "5.C",
+    "6.E"
+  ],
+  "stimulus": {
+    "kind": "table",
+    "title": "Armor genotypes of young and adult sticklebacks",
+    "text": "<p>Threespine sticklebacks are small fish. A gene called <i>Eda</i> has two codominant alleles: C, which gives a full row of bony armor plates along the side, and L, which gives only a few plates. A DNA test of a tiny fin clip shows each fish's genotype. In a large lake with no inflow or outflow streams, trout that eat sticklebacks were introduced ten years ago. In June, researchers caught 200 one-month-old juveniles at random from all parts of the lake, took fin clips and released them. The following June they caught 200 one-year-old fish of the same year class, also at random, and genotyped them. Sticklebacks in this lake first breed at two years old.</p>",
+    "table": {
+      "caption": "Number of fish of each Eda genotype (n = 200 per sample). Critical values of χ² at p = 0.05: 3.84 (1 degree of freedom), 5.99 (2 degrees of freedom).",
+      "cols": [
+        "Sample",
+        "CC (full armor)",
+        "CL (partial armor)",
+        "LL (low armor)"
+      ],
+      "rows": [
+        [
+          "Juveniles, age 1 month",
+          "20",
+          "100",
+          "80"
+        ],
+        [
+          "Same year class, age 1 year",
+          "40",
+          "110",
+          "50"
+        ]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "(i) <b>Calculate</b> the frequency of allele C among the juveniles. (ii) <b>Calculate</b> the number of CL juveniles expected if the juveniles are in Hardy-Weinberg equilibrium.",
+      "points": 2,
+      "rubric": [
+        {
+          "point": "Calculates p (frequency of C) = [(2 × 20) + 100] ÷ 400 = 0.35.",
+          "accept": [
+            "0.35",
+            "p = 140/400 = 0.35"
+          ]
+        },
+        {
+          "point": "Calculates expected CL = 2pq × 200 = 2 × 0.35 × 0.65 × 200 = 91 (q = 0.65).",
+          "accept": [
+            "91",
+            "91 fish",
+            "2(0.35)(0.65)(200) = 91"
+          ]
+        }
+      ],
+      "sample": "(i) Copies of C = (2 × 20) + 100 = 140 out of 2 × 200 = 400 copies, so p = 140 ÷ 400 = 0.35 (and q = 0.65). (ii) Expected CL = 2pq × 200 = 2 × 0.35 × 0.65 × 200 = 91 juveniles. (91 were expected and 100 observed; the expected CC and LL are 24.5 and 84.5, close to the 20 and 80 observed.)"
+    },
+    {
+      "label": "b",
+      "prompt": "The researchers compare the one-year-olds with the genotype counts expected if every genotype survived equally well from one month to one year. (i) <b>State</b> the null hypothesis for this comparison. (ii) <b>Justify</b> the decision to sample the same year class twice, rather than comparing juveniles and adults from different years.",
+      "points": 2,
+      "rubric": [
+        {
+          "point": "States a null hypothesis of no difference in survival among genotypes: the one-year-olds have the same genotype frequencies as the juveniles (any difference is due to chance in sampling).",
+          "accept": [
+            "genotype does not affect survival from 1 month to 1 year",
+            "the genotype frequencies of the one-year-olds equal those of the juveniles",
+            "expected one-year-old counts are 20 CC, 100 CL and 80 LL"
+          ]
+        },
+        {
+          "point": "Justifies that sampling one year class means the same group of fish (same parents, same starting genotype frequencies) is followed, so a change can be attributed to differential survival during that year rather than to differences between year classes.",
+          "accept": [
+            "different year classes could start with different allele frequencies",
+            "it controls for differences between generations, so only survival differs",
+            "it isolates the effect of the first year of life"
+          ]
+        }
+      ],
+      "sample": "(i) Null hypothesis: survival from one month to one year does not depend on Eda genotype, so the one-year-olds have the same genotype frequencies as the juveniles, and any difference is due to chance. (ii) Fish hatched in different years come from different parents and could start with different allele frequencies. Following one year class means the only thing that happened between the two samples is a year of survival, so a change can be attributed to which genotypes survived."
+    },
+    {
+      "label": "c",
+      "prompt": "Using the juveniles' observed genotype frequencies to calculate the expected counts among the 200 one-year-olds, <b>calculate</b> the chi-square value, and <b>determine</b> whether the null hypothesis should be rejected at p = 0.05.",
+      "points": 2,
+      "rubric": [
+        {
+          "point": "Calculates χ² ≈ 32.3 using expected counts of 20 CC, 100 CL and 80 LL (juvenile frequencies 0.10, 0.50 and 0.40 × 200): (40 − 20)²/20 + (110 − 100)²/100 + (50 − 80)²/80 = 20 + 1 + 11.25.",
+          "accept": [
+            "32.3",
+            "32.25",
+            "about 32"
+          ]
+        },
+        {
+          "point": "Rejects the null hypothesis because χ² (32.3) is greater than the critical value 5.99 (2 degrees of freedom: 3 genotypes − 1), so survival differed among genotypes.",
+          "accept": [
+            "32.3 > 5.99, reject the null",
+            "reject, since χ² exceeds the critical value",
+            "also accept a comparison with 3.84, which leads to the same decision"
+          ]
+        }
+      ],
+      "sample": "The juveniles were 20 ÷ 200 = 0.10 CC, 0.50 CL and 0.40 LL, so 200 one-year-olds are expected to include 20 CC, 100 CL and 80 LL. χ² = (40 − 20)² ÷ 20 + (110 − 100)² ÷ 100 + (50 − 80)² ÷ 80 = 20 + 1 + 11.25 = 32.3. With 3 − 1 = 2 degrees of freedom the critical value is 5.99. Because 32.3 > 5.99, I reject the null hypothesis: the genotypes did not survive equally."
+    },
+    {
+      "label": "d",
+      "prompt": "(i) <b>Identify</b> the Hardy-Weinberg condition most likely violated between one month and one year, and <b>justify</b> your answer using the data. (ii) <b>Explain</b> why the juveniles can fit Hardy-Weinberg expectations even though this condition is violated in the lake. (iii) <b>Predict</b> how the frequency of allele C among next year's juveniles will compare with 0.35, and <b>justify</b> your prediction.",
+      "points": 3,
+      "rubric": [
+        {
+          "point": "Identifies natural selection (differential survival among genotypes), justified by the data: CC rose from 20 to 40 and LL fell from 80 to 50, so fish with more armor survived better, consistent with trout eating less-armored fish; the lake is large and closed, which makes drift and gene flow unlikely explanations.",
+          "accept": [
+            "no natural selection is violated: more armored fish survived",
+            "selection by trout favored C",
+            "allele C rose from 0.35 to 0.475 in one year in a large, closed lake"
+          ]
+        },
+        {
+          "point": "Explains that the juveniles were produced by random mating of the parents (gametes combining at random), and the selection on armor acts after the fish hatch, so a sample taken before much selection has occurred still shows p², 2pq, q² proportions.",
+          "accept": [
+            "selection acts on survival after hatching, so newly formed offspring are still in Hardy-Weinberg proportions",
+            "mating is random, so offspring start at equilibrium; selection changes them later"
+          ]
+        },
+        {
+          "point": "Predicts that the frequency of C among next year's juveniles will be higher than 0.35, because the survivors that breed carry C at a higher frequency (about 0.475 in this year class), and they pass C to their offspring.",
+          "accept": [
+            "higher, because the fish that survive to breed have more C alleles",
+            "C will increase toward 0.475 or beyond",
+            "C increases because selection favors armored fish"
+          ]
+        }
+      ],
+      "sample": "(i) The condition of no natural selection is violated. In samples of the same size, CC fish doubled from 20 to 40 and LL fish fell from 80 to 50 between one month and one year, so the frequency of C rose from 0.35 to (80 + 110) ÷ 400 = 0.475 in one year class. The lake is large and has no streams in or out, so drift and gene flow cannot explain such a large shift; fish with full armor were more likely to survive, as expected if trout catch less-armored fish more easily. (ii) The juveniles were formed by random mating, so their genotypes start out in Hardy-Weinberg proportions. Selection acts afterward, on which young fish survive, so it shows up in the one-year-olds but not in a sample taken at one month. (iii) The frequency of C among next year's juveniles will be higher than 0.35. The fish that survive to breed carry more C alleles than the juveniles did, and they pass those alleles to their offspring, so each new year class starts with a higher frequency of C."
+    }
+  ]
+}
