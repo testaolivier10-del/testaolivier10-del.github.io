@@ -1,0 +1,17 @@
+{
+  "tree-anatomy": {
+    "file": "figures/tree-anatomy.svg", "ext": "svg", "w": 760, "h": 390,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A tree with five tips, A to E, with time running from the root on the left to the present on the right. A branches off first and is labeled the outgroup; B is labeled a tip, a taxon living today. D and E are labeled sister taxa, and the point where their lines join is labeled a node, the common ancestor of D and E. C, D and E are shaded together as a clade. The leftmost point is labeled the root, the ancestor of all taxa on the tree; a line segment is labeled a branch."
+  },
+  "cladogram-traits": {
+    "file": "figures/cladogram-traits.svg", "ext": "svg", "w": 760, "h": 345,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A cladogram of six animals: the lancelet branches first, then the lamprey, the trout and the newt, with the crocodile and rabbit as sister taxa. Marks show where characters appeared: skull on the branch to all but the lancelet, hinged jaws on the branch to trout, newt, crocodile and rabbit, four limbs on the branch to newt, crocodile and rabbit, amniotic egg on the branch to crocodile and rabbit, and hair on the rabbit's branch."
+  },
+  "tree-rotation": {
+    "file": "figures/tree-rotation.svg", "ext": "svg", "w": 760, "h": 250,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three drawings of one tree of five animals. In each, crocodile and sparrow are sister taxa, the lizard joins them next, then the mouse, and the frog branches off first. The tips are listed in different orders (frog, mouse, lizard, crocodile, sparrow; frog, lizard, sparrow, crocodile, mouse; crocodile, sparrow, lizard, mouse, frog) because branches were rotated around nodes. The relationships are identical."
+  }
+}

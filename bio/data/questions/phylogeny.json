@@ -1,0 +1,466 @@
+{
+  "stimuli": {
+    "phylogeny-s1": {
+      "kind": "table",
+      "title": "A trait matrix for five photosynthetic organisms",
+      "text": "<p>Researchers scored four characters in a freshwater green alga and four land plants. Other evidence places the alga outside the group formed by the land plants.</p>",
+      "table": {
+        "caption": "Characters of five organisms (+ present, − absent)",
+        "cols": ["Organism", "Embryo develops inside the parent plant's tissue", "Vascular tissue (xylem and phloem)", "Seeds", "Flowers"],
+        "rows": [
+          ["Green alga", "−", "−", "−", "−"],
+          ["Moss", "+", "−", "−", "−"],
+          ["Fern", "+", "+", "−", "−"],
+          ["Pine", "+", "+", "+", "−"],
+          ["Oak", "+", "+", "+", "+"]
+        ]
+      }
+    },
+    "phylogeny-s2": {
+      "kind": "model",
+      "title": "A tree of seven animals",
+      "text": "<p>The tree shows hypothesized relationships among seven living animals, based on many DNA sequences and anatomical characters. Nodes are numbered 1 to 6.</p>",
+      "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 268\" width=\"560\" height=\"268\" role=\"img\" aria-labelledby=\"phs2-t phs2-d\"><title id=\"phs2-t\">A tree of seven animals</title><desc id=\"phs2-d\">A tree with seven tips, top to bottom: frog, mouse, lizard, snake, turtle, crocodile, sparrow. Node 1, at the root, joins the frog with all the others. Node 2 joins the mouse with the remaining five. Node 3 joins the lizard and snake group with the turtle, crocodile and sparrow group. Node 4 joins the lizard and snake. Node 5 joins the turtle with the crocodile and sparrow. Node 6 joins the crocodile and sparrow.</desc><rect width=\"560\" height=\"268\" fill=\"#ffffff\"/><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><g stroke=\"#1F2A28\" stroke-width=\"2.5\" stroke-linecap=\"square\"><line x1=\"280\" y1=\"102\" x2=\"280\" y2=\"138\"/><line x1=\"280\" y1=\"102\" x2=\"440\" y2=\"102\"/><line x1=\"280\" y1=\"138\" x2=\"440\" y2=\"138\"/><line x1=\"360\" y1=\"210\" x2=\"360\" y2=\"246\"/><line x1=\"360\" y1=\"210\" x2=\"440\" y2=\"210\"/><line x1=\"360\" y1=\"246\" x2=\"440\" y2=\"246\"/><line x1=\"280\" y1=\"174\" x2=\"280\" y2=\"228\"/><line x1=\"280\" y1=\"174\" x2=\"440\" y2=\"174\"/><line x1=\"280\" y1=\"228\" x2=\"360\" y2=\"228\"/><line x1=\"200\" y1=\"120\" x2=\"200\" y2=\"201\"/><line x1=\"200\" y1=\"120\" x2=\"280\" y2=\"120\"/><line x1=\"200\" y1=\"201\" x2=\"280\" y2=\"201\"/><line x1=\"120\" y1=\"66\" x2=\"120\" y2=\"160.5\"/><line x1=\"120\" y1=\"66\" x2=\"440\" y2=\"66\"/><line x1=\"120\" y1=\"160.5\" x2=\"200\" y2=\"160.5\"/><line x1=\"40\" y1=\"30\" x2=\"40\" y2=\"113.25\"/><line x1=\"40\" y1=\"30\" x2=\"440\" y2=\"30\"/><line x1=\"40\" y1=\"113.25\" x2=\"120\" y2=\"113.25\"/><line x1=\"20\" y1=\"71.625\" x2=\"40\" y2=\"71.625\"/></g><circle cx=\"40\" cy=\"71.625\" r=\"11\" fill=\"#ffffff\" stroke=\"#0072B2\" stroke-width=\"2\"/><circle cx=\"120\" cy=\"113.25\" r=\"11\" fill=\"#ffffff\" stroke=\"#0072B2\" stroke-width=\"2\"/><circle cx=\"200\" cy=\"160.5\" r=\"11\" fill=\"#ffffff\" stroke=\"#0072B2\" stroke-width=\"2\"/><circle cx=\"280\" cy=\"120\" r=\"11\" fill=\"#ffffff\" stroke=\"#0072B2\" stroke-width=\"2\"/><circle cx=\"280\" cy=\"201\" r=\"11\" fill=\"#ffffff\" stroke=\"#0072B2\" stroke-width=\"2\"/><circle cx=\"360\" cy=\"228\" r=\"11\" fill=\"#ffffff\" stroke=\"#0072B2\" stroke-width=\"2\"/><text x=\"448\" y=\"35\" font-size=\"16\">frog</text><text x=\"448\" y=\"71\" font-size=\"16\">mouse</text><text x=\"448\" y=\"107\" font-size=\"16\">lizard</text><text x=\"448\" y=\"143\" font-size=\"16\">snake</text><text x=\"448\" y=\"179\" font-size=\"16\">turtle</text><text x=\"448\" y=\"215\" font-size=\"16\">crocodile</text><text x=\"448\" y=\"251\" font-size=\"16\">sparrow</text><text x=\"40\" y=\"76.125\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#0072B2\">1</text><text x=\"120\" y=\"117.75\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#0072B2\">2</text><text x=\"200\" y=\"165\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#0072B2\">3</text><text x=\"280\" y=\"124.5\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#0072B2\">4</text><text x=\"280\" y=\"205.5\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#0072B2\">5</text><text x=\"360\" y=\"232.5\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#0072B2\">6</text></g></svg>"
+    },
+    "phylogeny-s3": {
+      "kind": "table",
+      "title": "DNA differences among five primates",
+      "text": "<p>Researchers sequenced the same 1,000-base stretch of DNA, a region that codes for no protein, in five primates and counted the positions at which each pair differs. Fossils and other evidence date the split between the orangutan line and the line leading to gorillas, chimpanzees and humans to about 15 million years ago.</p>",
+      "table": {
+        "caption": "Number of differing bases out of 1,000, for each pair",
+        "cols": ["", "Human", "Chimpanzee", "Gorilla", "Orangutan", "Macaque"],
+        "rows": [
+          ["Human", "—", "12", "16", "31", "62"],
+          ["Chimpanzee", "12", "—", "16", "31", "62"],
+          ["Gorilla", "16", "16", "—", "31", "62"],
+          ["Orangutan", "31", "31", "31", "—", "62"],
+          ["Macaque", "62", "62", "62", "62", "—"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-phylogeny-1", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.A", "level": "apply", "diff": 1,
+      "stimulus": "phylogeny-s1",
+      "q": "Which organism should be used as the outgroup, and why?",
+      "options": [
+        "The green alga, because other evidence places it outside the land-plant group",
+        "The oak, because it has the most characters and so has changed the most from the ancestor",
+        "The moss, because among the land plants it has the fewest of the characters scored",
+        "The fern, because it falls in the middle of the table and can be compared with both ends"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "An outgroup is a taxon known from other evidence to lie outside the group being studied. Comparing with it shows which character states are older (present in the outgroup) and which are newer.",
+        "options": [
+          "Correct: the outgroup is chosen because it lies outside the group studied.",
+          "Having many characters makes the oak a member of the group, not a reference outside it.",
+          "The moss shares the embryo character with the other land plants, so it belongs inside the group.",
+          "The fern is a member of the land-plant group; its place in the table does not make it a reference."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-2", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.D", "level": "analyze", "diff": 2,
+      "stimulus": "phylogeny-s1",
+      "q": "Which cladogram is best supported by the table?",
+      "options": [
+        "Pine and oak are sister taxa, the fern joins them next, and the moss joins that group next",
+        "Moss and fern are sister taxa, and pine and oak are sister taxa, joined to them at one node",
+        "Fern and pine are sister taxa, oak joins them next, and the moss joins that group next",
+        "Oak branches off first among the land plants, then the pine, the fern and finally the moss"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each character marks one clade: embryo (moss, fern, pine, oak), vascular tissue (fern, pine, oak), seeds (pine, oak). Nesting these groups gives moss branching first, then fern, with pine and oak as sister taxa; flowers then mark the oak branch alone.",
+        "options": [
+          "Correct: the groups marked by the characters nest inside each other in this order.",
+          "Moss and fern share no character that pine and oak lack, so nothing groups them together.",
+          "Pine shares seeds with oak, not with the fern, so pine and fern are not sister taxa.",
+          "This reverses the nesting: the oak has every derived character, so it sits inside the most nested group."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-3", "type": "numeric", "unit": "unit-7", "topic": "phylogeny", "practice": "5.A", "level": "analyze", "diff": 3,
+      "stimulus": "phylogeny-s1",
+      "q": "A classmate proposes a tree in which the fern branches off first among the land plants, then the moss, with pine and oak as sister taxa. Counting each gain or loss of a character as one change, what is the smallest number of changes this tree needs to account for the four characters? Give a whole number.",
+      "numeric": { "answer": 5, "tol": 0, "unit": "changes", "decimals": 0 },
+      "why": { "correct": "Embryo, seeds and flowers each need one change. Vascular tissue now needs two: no group on this tree contains exactly the fern, pine and oak, so vascular tissue must either arise twice (in the fern line and in the pine-oak line) or arise once in the ancestor of the four land plants and be lost in the moss. Total 1 + 2 + 1 + 1 = 5, versus 4 for the tree in which the moss branches first. By maximum parsimony, the 4-change tree is preferred." }
+    },
+    {
+      "id": "bio-phylogeny-4", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.B", "level": "apply", "diff": 2,
+      "stimulus": "phylogeny-s1",
+      "q": "Which character is a shared derived character that groups the pine with the oak but not with the fern?",
+      "options": ["Seeds", "Vascular tissue", "Embryo develops inside the parent plant", "Flowers"],
+      "correct": 0,
+      "why": {
+        "correct": "Seeds are found in pine and oak and in no other organism in the table, so they mark the ancestor that pine and oak alone share.",
+        "options": [
+          "Correct: seeds are shared by pine and oak and lacking in the rest.",
+          "The fern has vascular tissue too, so it cannot separate pine and oak from the fern; within that group it is a shared ancestral character.",
+          "Every land plant in the table has it, so it does not group pine and oak apart from the fern.",
+          "Only the oak has flowers, so they do not unite the oak with the pine."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-5", "type": "multi", "unit": "unit-7", "topic": "phylogeny", "practice": "2.A", "level": "apply", "diff": 2,
+      "stimulus": "phylogeny-s1",
+      "q": "On the cladogram best supported by the table, select the two groups that are clades.",
+      "options": ["Fern, pine and oak", "Pine and oak", "Moss and fern", "Green alga and moss", "Moss, pine and oak"],
+      "correct": [0, 1],
+      "why": {
+        "correct": "A clade is an ancestor and all of its descendants. Fern-pine-oak (marked by vascular tissue) and pine-oak (marked by seeds) each include a common ancestor and every descendant of it.",
+        "options": [
+          "A clade: the ancestor with vascular tissue and all of its descendants.",
+          "A clade: the seed plants descend from one ancestor that only they share.",
+          "Not a clade: the most recent ancestor of moss and fern is also the ancestor of pine and oak, which are left out.",
+          "Not a clade: their shared ancestor is the root, whose descendants include the other three plants.",
+          "Not a clade: it leaves out the fern, which descends from the same ancestor as pine and oak."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-6", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.A", "level": "apply", "diff": 1,
+      "stimulus": "phylogeny-s2",
+      "q": "Which node represents the most recent common ancestor of the mouse and the turtle?",
+      "options": ["Node 1", "Node 2", "Node 3", "Node 5"],
+      "fixed": true,
+      "correct": 1,
+      "why": {
+        "correct": "Trace the mouse and the turtle back toward the root: the first node where their lines meet is node 2.",
+        "options": [
+          "Node 1 is an ancestor of both, but not the most recent one; it also gave rise to the frog.",
+          "Correct: the lines from the mouse and the turtle first meet at node 2.",
+          "Node 3 is an ancestor of the turtle but not of the mouse.",
+          "Node 5 is the ancestor of the turtle, crocodile and sparrow only."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-7", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.B", "level": "analyze", "diff": 3,
+      "stimulus": "phylogeny-s2",
+      "q": "Which statement is supported by the tree?",
+      "options": [
+        "The turtle is equally related to the crocodile and to the sparrow",
+        "The crocodile is more closely related to the lizard than to the sparrow",
+        "The lizard is more closely related to the turtle than the sparrow is",
+        "The frog is the ancestor from which the other six animals evolved"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The turtle's most recent common ancestor with the crocodile and with the sparrow is the same node, node 5, so it is equally related to both.",
+        "options": [
+          "Correct: both pairs meet at node 5.",
+          "The crocodile meets the sparrow at node 6 but the lizard only at node 3, so it is closer to the sparrow.",
+          "The lizard meets the turtle at node 3, while the sparrow meets the turtle at node 5, a more recent ancestor, so the sparrow is the closer relative.",
+          "The frog is a living tip; it shares an ancestor (node 1) with the others but is not their ancestor."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-8", "type": "multi", "unit": "unit-7", "topic": "phylogeny", "practice": "2.A", "level": "apply", "diff": 3,
+      "stimulus": "phylogeny-s2",
+      "q": "Select the two groups that are clades on this tree.",
+      "options": ["Crocodile and sparrow", "Turtle, crocodile and sparrow", "Lizard, snake, turtle and crocodile", "Mouse, lizard and snake", "Frog and mouse"],
+      "correct": [0, 1],
+      "why": {
+        "correct": "A clade contains a node and every tip descended from it. Node 6 gives crocodile and sparrow; node 5 gives turtle, crocodile and sparrow.",
+        "options": [
+          "Node 6 and all of its descendants.",
+          "Node 5 and all of its descendants.",
+          "Not a clade: their shared ancestor, node 3, also gave rise to the sparrow, which is left out. The traditional group of reptiles is not a clade unless birds are included.",
+          "Not a clade: node 2 also gave rise to the turtle, crocodile and sparrow.",
+          "Not a clade: node 1 is their shared ancestor, and it gave rise to every animal on the tree."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-9", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.E", "level": "analyze", "diff": 3,
+      "stimulus": "phylogeny-s2",
+      "q": "A newly described fossil animal has a bony skull feature found in crocodiles and birds but not in turtles, lizards or snakes. Where on the tree does the fossil most likely belong?",
+      "options": [
+        "On the line between node 5 and node 6, or within the crocodile-sparrow group",
+        "On a branch joining the line between node 3 and node 4, near the lizard and snake",
+        "On a branch joining the turtle's line, because the turtle is closest to the crocodile",
+        "Below node 1, because a fossil is older than the living animals on the tree"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The skull feature is a shared derived character of crocodiles and birds, so it arose on the line between node 5 and node 6. A fossil that has it belongs on that line or within the group descended from node 6.",
+        "options": [
+          "Correct: it shares the derived character that marks the crocodile-bird line.",
+          "Lizards and snakes lack the feature, so nothing links the fossil to them.",
+          "Turtles lack the feature; the turtle is no closer to the crocodile than to the sparrow.",
+          "Age alone does not place a fossil at the root; its characters show which line it belongs to."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-10", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.C", "level": "analyze", "diff": 2,
+      "stimulus": "phylogeny-s2",
+      "q": "A student says lizards, snakes, turtles and crocodiles form a natural group, separate from birds, because they all have scales and do not keep a constant body temperature. Which response is best supported by the tree?",
+      "options": [
+        "It leaves out the sparrow, which also descends from node 3, so it is not a clade",
+        "The group is a clade, because scales are a shared derived character that birds have lost",
+        "The group is a clade, because node 3 is the common ancestor of these four animals",
+        "The group would be a clade if the mouse were added, because the mouse is also outside the birds"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A clade must include every descendant of its common ancestor. Node 3 gave rise to the sparrow as well, so a group of its descendants without the sparrow is not a clade; the features named are older ones kept by some descendants and changed in birds.",
+        "options": [
+          "Correct: leaving out a descendant of node 3 means the group is not a clade.",
+          "Birds do have scales on their legs; in any case, a clade must include every descendant of its ancestor.",
+          "Node 3 is their common ancestor, but it is also the ancestor of the sparrow, which the group leaves out.",
+          "Adding the mouse does not help: node 2 would then be the ancestor, and the sparrow would still be missing."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-11", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.D", "level": "apply", "diff": 2,
+      "stimulus": "phylogeny-s3",
+      "q": "Which tree is best supported by the DNA differences?",
+      "options": [
+        "Human and chimpanzee are sister taxa; the gorilla joins them next, then the orangutan, with the macaque branching off first",
+        "Chimpanzee and gorilla are sister taxa; the human joins them next, then the orangutan, with the macaque branching off first",
+        "Human branches off first, then the macaque; chimpanzee, gorilla and orangutan form a group of three",
+        "Orangutan and gorilla are sister taxa; human and chimpanzee join them, with the macaque branching off first"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Fewer differences mean a more recent common ancestor. Human-chimpanzee differ least (12), gorilla is 16 from both, orangutan 31 from all three, and macaque 62 from all four, so the groups nest in that order.",
+        "options": [
+          "Correct: the smallest differences pair human and chimpanzee, then the others join in order.",
+          "Chimpanzee is 16 from gorilla but only 12 from human, so it pairs with human.",
+          "Human differs least from chimpanzee; the macaque differs most from every other primate.",
+          "Orangutan is 31 from gorilla but gorilla is only 16 from human and chimpanzee."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-12", "type": "numeric", "unit": "unit-7", "topic": "phylogeny", "practice": "5.A", "level": "apply", "diff": 2,
+      "stimulus": "phylogeny-s3",
+      "q": "Assume differences build up at a constant rate. Using the orangutan split as a calibration, estimate how many million years ago the human and chimpanzee lines split. Give one decimal place.",
+      "numeric": { "answer": 5.8, "tol": 0.1, "unit": "million years", "decimals": 1 },
+      "why": { "correct": "Rate = 31 differences per 15 million years. Human-chimpanzee: 12 differences × (15 ÷ 31) = 5.8 million years ago. The same calibration gives about 7.7 million years for the gorilla split (16 × 15 ÷ 31)." }
+    },
+    {
+      "id": "bio-phylogeny-13", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "5.A", "level": "analyze", "diff": 2,
+      "stimulus": "phylogeny-s3",
+      "q": "Using the same molecular clock, about when did the macaque line split from the line leading to the apes?",
+      "options": ["About 30 million years ago", "About 62 million years ago", "About 15 million years ago", "About 7.5 million years ago"],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The macaque differs from each ape at 62 positions. 62 × 15 ÷ 31 = 30 million years.",
+        "options": [
+          "Correct: twice the orangutan's 31 differences means twice the time.",
+          "62 is the number of differences, not the time; it must be scaled by 15 ÷ 31.",
+          "15 million years is the orangutan split, which has only half as many differences.",
+          "This divides the time by two instead of doubling it."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-14", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.C", "level": "analyze", "diff": 2,
+      "stimulus": "phylogeny-s3",
+      "q": "Which assumption must hold for these time estimates to be reliable?",
+      "options": [
+        "Differences in this DNA region build up at about the same rate in each of these primate lines",
+        "This DNA region codes for an important protein, so changes in it are removed by selection",
+        "The five primates have the same body size and live in the same kind of habitat",
+        "Each primate line has gained the same number of new characters since it split off"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A molecular clock converts differences to time only if the rate of change is roughly constant across the lines compared; a line that changed faster would look older than it is.",
+        "options": [
+          "Correct: a clock needs a roughly constant rate.",
+          "The region codes for no protein, which is useful: changes are mostly neutral and build up at a steadier rate.",
+          "Body size and habitat are not what the clock measures; only the rate of DNA change matters.",
+          "Visible characters can change at very different rates; the clock depends on the DNA changes."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-15", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.E", "level": "analyze", "diff": 3,
+      "stimulus": "phylogeny-s3",
+      "q": "The researchers repeat the study with a 1,000-base stretch of a gene coding for an essential enzyme, in which most changes harm the enzyme. Predict the results.",
+      "options": [
+        "Fewer differences in each pair but the same branching pattern; dating needs this gene's own calibration",
+        "The same numbers of differences, because each stretch of DNA mutates at the same rate in a given line",
+        "More differences in each pair, because essential genes are copied less accurately than the rest of the genome",
+        "A different branching pattern, with the macaque now closest to the human, because the enzyme is more important"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Selection removes most changes in a conserved gene, so fewer differences remain, but they still build up in proportion to time since each split. The branching order should match; the rate, and so the calibration, differs.",
+        "options": [
+          "Correct: a slower clock, the same tree.",
+          "Mutations arise at similar rates, but in an essential gene most are removed by selection, so fewer differences remain.",
+          "Essential genes are copied just as accurately; they show fewer differences, not more.",
+          "Shared ancestry is the same whichever gene is read; a slower gene changes the counts, not the order."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-16", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.C", "level": "analyze", "diff": 3,
+      "q": "Four-chambered hearts are found in mammals, crocodiles and birds, while lizards, snakes and turtles have three-chambered hearts. Crocodiles and birds are each other's closest living relatives, and lizards, snakes and turtles share a more recent ancestor with crocodiles and birds than any of them shares with mammals. Which explanation is most parsimonious?",
+      "options": [
+        "Four chambers arose twice: once in the mammal line and once in the ancestor of crocodiles and birds",
+        "Four chambers arose once, in the ancestor of mammals and reptiles, and were lost in lizards, snakes and turtles",
+        "Four chambers arose three separate times, once each in mammals, crocodiles and birds",
+        "Four chambers arose once in mammals and were passed to crocodiles and birds by interbreeding"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Two independent gains need 2 changes. One gain at the shared ancestor of mammals and reptiles needs that gain plus losses in the turtle line and in the lizard-snake line, 3 changes. Three separate gains need 3. The fewest changes means the trait evolved twice: convergent evolution, so the hearts are analogous in their four chambers.",
+        "options": [
+          "Correct: 2 changes, the fewest possible.",
+          "One gain and two losses (turtle line and lizard-snake line) make 3 changes, more than needed.",
+          "Crocodiles and birds share an ancestor without the other groups, so one gain there explains both; three gains is 3 changes.",
+          "Mammals and reptiles last shared an ancestor over 300 million years ago and cannot interbreed."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-17", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.C", "level": "apply", "diff": 2,
+      "q": "On a tree of mammals, humans are drawn at the top tip. A student concludes that humans are the most evolved mammal on the tree. Which response is correct?",
+      "options": [
+        "All living tips have evolved for equally long since the root, and tip order can be rotated freely",
+        "The student is right, because a tree lists organisms from the least to the most evolved",
+        "The student is right if humans are also the tip farthest from the root",
+        "The order of the tips shows the order in which each organism appeared on Earth, so humans appeared last"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "All living tips descend from the root through the same length of time. Branches can be rotated around any node, so which tip is drawn at the top carries no meaning.",
+        "options": [
+          "Correct: tip order is arbitrary and all living taxa have evolved for the same time.",
+          "Trees show branching relationships, not a ladder from lower to higher.",
+          "Living tips sit at the present, the same distance in time from the root.",
+          "Tip order can be changed by rotating branches, so it says nothing about when lines appeared."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-18", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "2.B", "level": "analyze", "diff": 3,
+      "q": "A tree has the nested grouping ((P, (Q, R)), S), drawn with the tips in the order P, Q, R, S from top to bottom. Which statement is correct?",
+      "options": [
+        "R is more closely related to P than to S",
+        "R is more closely related to S, since their tips are drawn side by side",
+        "P is equally closely related to Q and to S",
+        "S is the ancestor of P, Q and R, since it branches off first"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "R and P meet at the node joining P with (Q, R); R and S meet only at the root. A more recent common ancestor means a closer relationship.",
+        "options": [
+          "Correct: R shares a more recent ancestor with P than with S.",
+          "Tips drawn next to each other are not necessarily close; R and S meet only at the root.",
+          "P meets Q at the node above (Q, R) but meets S only at the root, so P is closer to Q.",
+          "S is a living tip, not an ancestor; it shares the root with the others."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-19", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "6.D", "level": "analyze", "diff": 2,
+      "q": "Whales were long classified apart from hoofed mammals. DNA studies then placed whales inside the even-toed hoofed mammals, closest to hippos, and fossil early whales were later found with ankle bones of the shape found only in that group. What does this history best show?",
+      "options": [
+        "A tree is a hypothesis that is revised when new molecular and fossil evidence is found",
+        "DNA data are usually wrong when they disagree with body features, so the old grouping stands",
+        "Whales evolved from hippos living today, which explains why the two are so similar",
+        "Classification depends on where an animal lives, so whales belong with other sea animals"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Independent lines of evidence, DNA and fossil ankle bones, agreed on a new hypothesis, and the tree was revised. Phylogenies are tested and changed as evidence accumulates.",
+        "options": [
+          "Correct: trees are hypotheses, revised by new evidence.",
+          "Here the fossils supported the DNA; molecular data include thousands of characters and often resolve conflicts.",
+          "Whales and hippos share a common ancestor; neither descends from the other's living species.",
+          "Shared habitat can produce similar body forms by convergence, which is why it is not used to group organisms."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-20", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "1.A", "level": "recall", "diff": 1,
+      "q": "The lion is <i>Panthera leo</i>, the tiger is <i>Panthera tigris</i> and the house cat is <i>Felis catus</i>. Based on their names, which pair is most closely related?",
+      "options": ["Lion and tiger", "Lion and house cat", "Tiger and house cat", "The three are equally related"],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The first word of a scientific name is the genus. Lion and tiger share the genus <i>Panthera</i>; the house cat is in another genus of the same family.",
+        "options": [
+          "Correct: same genus, <i>Panthera</i>.",
+          "Different genera: <i>Panthera</i> and <i>Felis</i>.",
+          "Different genera: <i>Panthera</i> and <i>Felis</i>.",
+          "Two of the three share a genus, so they are not equally related."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-21", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "The forelimbs of a bat, a whale and a human contain the same set of bones, arranged and shaped differently for flying, swimming and grasping. Which process best explains this?",
+      "options": [
+        "Divergent evolution: descendants of one ancestor adapted to different ways of life",
+        "Convergent evolution: unrelated animals evolved the same bones separately because they faced the same needs",
+        "Coevolution: the three species evolved their forelimbs in response to one another",
+        "Genetic drift: the three forelimbs became different by chance, with no role for selection"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The same bones in different forms are homologous: inherited from a common ancestor and modified as its descendants diverged into different ways of life.",
+        "options": [
+          "Correct: shared bones modified in different directions.",
+          "The bones are the same set, inherited, not separately evolved; and the uses differ rather than match.",
+          "Bats, whales and humans do not exert selective pressure on each other.",
+          "The forms match their uses closely, which points to natural selection rather than chance."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-22", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "In a study of relationships among mammals only, why is \"has a backbone\" of no help in grouping the mammals?",
+      "options": [
+        "All mammals inherited it from an older ancestor, so it is a shared ancestral character here",
+        "A backbone is a derived character that some mammals lack, so it splits them unevenly",
+        "Backbones develop anew in each animal rather than being inherited, so they reveal nothing about ancestry",
+        "A backbone evolved separately in each mammal, so it shows convergence rather than shared ancestry"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A character shared by every member of the group, and by its outgroup, is ancestral for that group; it cannot separate subgroups. Only characters that arose within the group can.",
+        "options": [
+          "Correct: a shared ancestral character cannot sort members of the group.",
+          "Every mammal has a backbone, so it does not split them at all.",
+          "Backbones are inherited; they mark the larger group of vertebrates.",
+          "The backbone arose once, in an ancestor of all vertebrates."
+        ]
+      }
+    },
+    {
+      "id": "bio-phylogeny-23", "type": "single", "unit": "unit-7", "topic": "phylogeny", "practice": "3.C", "level": "apply", "diff": 2,
+      "q": "Why do researchers include an outgroup when building a cladogram from character data?",
+      "options": [
+        "To show which character states are ancestral, so that derived ones can be identified",
+        "To add more taxa to the tree, since a cladogram needs at least six to be reliable",
+        "To provide the ancestor from which the members of the group descend",
+        "To measure the rate of DNA change in the group so that each node on the tree can be dated"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A state found in the outgroup is presumed ancestral; states found in some members of the group and not in the outgroup are derived and can mark clades.",
+        "options": [
+          "Correct: the outgroup sets which states are old and which are new.",
+          "There is no minimum of six taxa; the outgroup's job is to tell old states from new.",
+          "The outgroup is a relative outside the group, not its ancestor.",
+          "Dating uses a calibrated molecular clock, not the outgroup's role in a cladogram."
+        ]
+      }
+    }
+  ]
+}
