@@ -1,0 +1,894 @@
+{
+  "stimuli": {
+    "population-density-s1": {
+      "kind": "graph",
+      "title": "Hares and lynx over 20 years",
+      "text": "<p>Trappers' records and field counts were used to estimate the numbers of snowshoe hares and of lynx, a cat that eats mainly hares, in one region of northern Canada over 20 years. Hares are plotted in hundreds per 100 km² and lynx in individuals per 100 km², so both fit on one axis.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Year",
+          "unit": "",
+          "min": 0,
+          "max": 20,
+          "step": 2
+        },
+        "y": {
+          "label": "Animals per 100 km² (unit in the key)",
+          "unit": "",
+          "min": 0,
+          "max": 70,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "Hares (hundreds per 100 km²)",
+            "points": [
+              [
+                0,
+                5
+              ],
+              [
+                1,
+                12
+              ],
+              [
+                2,
+                28
+              ],
+              [
+                3,
+                52
+              ],
+              [
+                4,
+                60
+              ],
+              [
+                5,
+                35
+              ],
+              [
+                6,
+                12
+              ],
+              [
+                7,
+                5
+              ],
+              [
+                8,
+                3
+              ],
+              [
+                9,
+                4
+              ],
+              [
+                10,
+                8
+              ],
+              [
+                11,
+                18
+              ],
+              [
+                12,
+                40
+              ],
+              [
+                13,
+                58
+              ],
+              [
+                14,
+                55
+              ],
+              [
+                15,
+                28
+              ],
+              [
+                16,
+                10
+              ],
+              [
+                17,
+                4
+              ],
+              [
+                18,
+                3
+              ],
+              [
+                19,
+                5
+              ],
+              [
+                20,
+                10
+              ]
+            ]
+          },
+          {
+            "name": "Lynx (individuals per 100 km²)",
+            "points": [
+              [
+                0,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                3,
+                8
+              ],
+              [
+                4,
+                15
+              ],
+              [
+                5,
+                22
+              ],
+              [
+                6,
+                20
+              ],
+              [
+                7,
+                12
+              ],
+              [
+                8,
+                6
+              ],
+              [
+                9,
+                3
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                11,
+                3
+              ],
+              [
+                12,
+                6
+              ],
+              [
+                13,
+                12
+              ],
+              [
+                14,
+                20
+              ],
+              [
+                15,
+                24
+              ],
+              [
+                16,
+                16
+              ],
+              [
+                17,
+                8
+              ],
+              [
+                18,
+                4
+              ],
+              [
+                19,
+                2
+              ],
+              [
+                20,
+                2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "population-density-s2": {
+      "kind": "graph",
+      "title": "Paramecium cultures with two amounts of food",
+      "text": "<p>A student started eight cultures of the single-celled <i>Paramecium</i>, each with 5 cells per mL in 50 mL of medium at 22 °C. Four cultures got the standard amount of food (bacteria added daily); four got twice as much. Every 2 days the student counted cells in samples. Points are means of four cultures; error bars show ± 2 SE.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "days",
+          "min": 0,
+          "max": 16,
+          "step": 2
+        },
+        "y": {
+          "label": "Paramecium density",
+          "unit": "cells per mL",
+          "min": 0,
+          "max": 1100,
+          "step": 100
+        },
+        "series": [
+          {
+            "name": "Standard food",
+            "points": [
+              [
+                0,
+                5,
+                1
+              ],
+              [
+                2,
+                22,
+                4
+              ],
+              [
+                4,
+                101,
+                12
+              ],
+              [
+                6,
+                270,
+                25
+              ],
+              [
+                8,
+                434,
+                30
+              ],
+              [
+                10,
+                480,
+                28
+              ],
+              [
+                12,
+                503,
+                26
+              ],
+              [
+                14,
+                494,
+                24
+              ],
+              [
+                16,
+                498,
+                25
+              ]
+            ]
+          },
+          {
+            "name": "Double food",
+            "points": [
+              [
+                0,
+                5,
+                1
+              ],
+              [
+                2,
+                25,
+                4
+              ],
+              [
+                4,
+                108,
+                14
+              ],
+              [
+                6,
+                384,
+                30
+              ],
+              [
+                8,
+                745,
+                40
+              ],
+              [
+                10,
+                930,
+                45
+              ],
+              [
+                12,
+                982,
+                38
+              ],
+              [
+                14,
+                1003,
+                40
+              ],
+              [
+                16,
+                991,
+                42
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-population-density-1",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "population-density-s1",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "Both populations rise and fall in cycles of about 9 to 10 years, and the lynx peaks come 1 to 2 years after the hare peaks.",
+        "Both populations rise and fall in cycles of about 9 to 10 years, and the hare peaks come 1 to 2 years after the lynx peaks.",
+        "The hare population cycles over about 9 to 10 years, but the lynx population stays nearly constant throughout.",
+        "Both populations peak in the same years, so the two cycles move up and down together with no delay between them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Hares peak in years 4 and 13; lynx peak in years 5 and 15. Both cycle with a period of about 9-10 years, and the lynx lag the hares.",
+        "options": [
+          "Correct: same period, lynx lagging hares.",
+          "This reverses the order: each lynx peak follows a hare peak.",
+          "Lynx range from 2 to 24 per 100 km², a twelve-fold change.",
+          "The peaks are offset: hares in year 4, lynx in year 5; hares in year 13, lynx in year 15."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-2",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-density-s1",
+      "q": "In year 4, what is the ratio of hares to lynx? Give your answer as hares per lynx, to the nearest whole number. (Remember that hares are plotted in hundreds.)",
+      "numeric": {
+        "answer": 400,
+        "tol": 1,
+        "unit": "hares per lynx",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "In year 4 there are 60 hundred = 6,000 hares and 15 lynx per 100 km². 6,000 ÷ 15 = 400 hares per lynx. Forgetting the hundreds gives 60 ÷ 15 = 4."
+      }
+    },
+    {
+      "id": "bio-population-density-3",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-density-s1",
+      "q": "Which explanation best accounts for the lynx peaks coming after the hare peaks?",
+      "options": [
+        "Lynx numbers rise only after hares become plentiful, because well-fed lynx raise more kits, and kits take time to be born and grow.",
+        "Lynx numbers rise first and frighten the hares into breeding faster, which then brings the hare peak one or two years later.",
+        "Lynx and hares both respond to the same weather, but lynx take longer to notice the change, so their numbers rise later.",
+        "Lynx eat the hares' food plants, so lynx numbers rise after the hares have finished eating the plants back."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Lynx depend on hares for food. When hares are abundant, more lynx survive and breed, but adding new lynx takes a breeding season or two, so lynx numbers peak after hares. Then many lynx and scarce winter food drive hares down, and lynx follow.",
+        "options": [
+          "Correct: the predator responds to its food with a breeding delay.",
+          "The graph shows lynx peaks after hare peaks, not before.",
+          "Nothing in the data points to weather, and the lynx depend on hares, which explains the lag directly.",
+          "Lynx are meat-eaters; they eat hares, not the hares' plants."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-4",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "3.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "population-density-s1",
+      "q": "A student claims the hare cycle is caused by lynx alone and that hare food plays no part. Which new study would best test this claim?",
+      "options": [
+        "Count lynx for another 20 years and check that their peaks still follow the hare peaks.",
+        "Compare hare numbers in large fenced areas that keep lynx out, with and without extra food, to open areas.",
+        "Measure the body mass of hares caught by trappers in peak years and in low years.",
+        "Count the hares in one area each month instead of once a year to get more data points."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Removing lynx (fencing) and adding food, alone and together, separates the two causes. If the claim were true, fenced areas would not crash even without extra food.",
+        "options": [
+          "More of the same records shows the pattern again but cannot separate lynx from food as the cause.",
+          "Correct: a manipulative experiment that changes one factor at a time.",
+          "Body mass could hint at food shortage but does not test the role of lynx directly.",
+          "More frequent counts describe the cycle in more detail without changing either cause."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-5",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-density-s1",
+      "q": "Starting in year 20, trappers remove nearly every lynx from the region and keep them out. Predict what happens to the hare population over the next several years.",
+      "options": [
+        "Hares rise and stay at their year-4 peak of about 6,000 per 100 km² indefinitely.",
+        "Hares fall to near zero, because they depend on lynx to keep their food plants healthy.",
+        "Hares rise, then decline as they eat down their winter food, settling near what the plants support.",
+        "Hares stay at about 1,000 per 100 km², because removing lynx has no effect on them."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Without lynx, hares grow until food becomes the limiting resource. Crowded hares eat their winter food faster than it regrows, so numbers fall back and fluctuate around what the food supply can carry.",
+        "options": [
+          "A population cannot stay above what its food supports; food becomes limiting.",
+          "Hares are food for lynx; lynx do not support the hares' plants.",
+          "Correct: food, a density-dependent factor, still limits the hares.",
+          "Lynx catch many hares, so removing them lets the hare population grow at first."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-6",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "population-density-s2",
+      "q": "What is the best estimate of the carrying capacity of the standard-food cultures, and the evidence for it?",
+      "options": [
+        "About 270 cells per mL, the density reached on day 6, when growth was fastest",
+        "About 1,000 cells per mL, the density the double-food cultures reached by day 14",
+        "About 500 cells per mL, where the density levels off from day 10 to day 16",
+        "About 250 cells per mL, half of the highest density reached by the cultures"
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "From day 10 the standard cultures stay between 480 and 503 cells per mL, overlapping error bars: growth has stopped, so K ≈ 500 cells per mL.",
+        "options": [
+          "Growth was fast around day 6, which is near K/2, not K.",
+          "That is the double-food cultures' level, a different environment with a different K.",
+          "Correct: the plateau gives K.",
+          "Half the plateau is K/2, where growth is fastest; K is the plateau itself."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-7",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "population-density-s2",
+      "q": "For the standard-food cultures, r_max = 0.8 per day and K = 500 cells per mL. Use dN/dt = r_max N (K − N)/K to calculate the growth rate when N = 250 cells per mL, in cells per mL per day. Give a whole number.",
+      "numeric": {
+        "answer": 100,
+        "tol": 0,
+        "unit": "cells per mL per day",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "dN/dt = 0.8 × 250 × (500 − 250)/500 = 0.8 × 250 × 0.5 = 100 cells per mL per day. N = 250 is K/2, where logistic growth is fastest."
+      }
+    },
+    {
+      "id": "bio-population-density-8",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-density-s2",
+      "q": "During which interval were the standard-food cultures adding cells fastest, and why?",
+      "options": [
+        "Day 0 to 2, because each cell then had the most food and the per capita rate was highest",
+        "Day 4 to 6, when the density passed about half of K and many cells still had enough food",
+        "Day 10 to 12, because the number of cells, and so the number dividing, was largest then",
+        "Day 14 to 16, because the cultures had adjusted to their medium after two weeks of growth"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The increase was 17 cells per mL from day 0 to 2, 79 from day 2 to 4, 169 from day 4 to 6, 164 from day 6 to 8, then 46 and 23. The fastest change comes as density passes about 250, K/2: a balance of many cells and enough food.",
+        "options": [
+          "The per capita rate is highest early, but with only 5-22 cells per mL few cells are added.",
+          "Correct: growth is fastest near K/2.",
+          "Near K each cell has little food, so births barely exceed deaths; only 23 cells per mL were added.",
+          "From day 14 to 16 the density hardly changed (494 to 498)."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-9",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "population-density-s2",
+      "q": "Which conclusion about the double-food cultures is best supported by the data?",
+      "options": [
+        "Doubling the food doubled r_max, so the cultures grew twice as fast from day 0 and leveled off at the same density.",
+        "Doubling the food made no difference, because the error bars overlap at each point on the graph.",
+        "Doubling the food removed the carrying capacity, so these cultures kept growing exponentially to day 16.",
+        "Doubling the food raised the carrying capacity to about 1,000 cells per mL, while early growth was about the same."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Food is the limiting resource: twice the food supports about twice as many cells (plateau about 980-1,000 cells per mL). The first days are nearly identical (22 vs 25 on day 2, 101 vs 108 on day 4), so r_max did not change.",
+        "options": [
+          "Early densities are almost the same, so r_max is about the same; the two plateaus differ.",
+          "From day 6 the error bars are far apart (for example 434 ± 30 vs 745 ± 40 on day 8).",
+          "The double-food cultures level off from day 12 (982, 1,003, 991).",
+          "Correct: more of the limiting resource means a higher K."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-10",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "population-density-s2",
+      "q": "For the comparison of the two food levels to be valid, which conditions should be the same in both sets of cultures?",
+      "options": [
+        "The amount of food and the volume of medium in each culture",
+        "The starting density, the volume of medium and the temperature",
+        "The final density and the number of days the cultures were grown",
+        "The starting density and the number of cells counted on day 16"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Food amount is the independent variable; everything else that could affect growth, such as starting density, volume and temperature, must be held constant.",
+        "options": [
+          "Food is the variable being tested, so it must differ.",
+          "Correct: controlled variables.",
+          "The final density is the result (a dependent variable), not something to hold constant.",
+          "The day-16 count is a result the experiment measures, not a condition to control."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-11",
+      "type": "multi",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two factors that are density-dependent.",
+      "options": [
+        "A virus that spreads faster when caterpillars are packed closely on leaves",
+        "A hard frost that kills 30% of the caterpillars on a tree",
+        "Competition among songbirds for a limited number of nest holes",
+        "A forest fire that burns 60% of a lizard population's habitat",
+        "A hurricane that floods a marsh and drowns many of its voles"
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "why": {
+        "correct": "Disease spread and competition for nest holes both act more strongly, on a larger fraction, as the population becomes denser.",
+        "options": [
+          "Density-dependent: crowding speeds transmission.",
+          "Density-independent: the frost kills a similar fraction at any density.",
+          "Density-dependent: more birds per hole means a larger share go without.",
+          "Density-independent: fire burns habitat whatever the density.",
+          "Density-independent: flooding kills regardless of crowding."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-12",
+      "type": "predict",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A deer herd of 800 lives in a reserve with a carrying capacity of 1,000. A summer drought kills 40% of the deer, and the plants recover fully the next spring. Predict each quantity the next spring, compared with before the drought.",
+      "variables": [
+        {
+          "name": "Number of deer",
+          "answer": "down",
+          "why": "40% of 800 died, leaving 480."
+        },
+        {
+          "name": "Food available per deer",
+          "answer": "up",
+          "why": "The same plant supply is shared by fewer deer."
+        },
+        {
+          "name": "Population growth rate, dN/dt",
+          "answer": "up",
+          "why": "At 480 deer, (K − N)/K = 0.52 instead of 0.2: with r_max = 0.4, dN/dt rises from 64 to about 100 deer per year."
+        },
+        {
+          "name": "Carrying capacity of the reserve",
+          "answer": "none",
+          "why": "The plants recovered fully, so the reserve can still support about 1,000 deer."
+        }
+      ],
+      "why": {
+        "correct": "A density-independent loss pushes the herd further below K, where each deer has more food, so the herd grows faster back toward an unchanged K."
+      }
+    },
+    {
+      "id": "bio-population-density-13",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A population of rabbits has r_max = 0.4 per year and a carrying capacity of 1,000. Use dN/dt = r_max N (K − N)/K to calculate its growth rate when N = 900, in rabbits per year. Give a whole number.",
+      "numeric": {
+        "answer": 36,
+        "tol": 0,
+        "unit": "rabbits per year",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "dN/dt = 0.4 × 900 × (1,000 − 900)/1,000 = 0.4 × 900 × 0.1 = 36 rabbits per year. Near K the growth rate is small even though N is large."
+      }
+    },
+    {
+      "id": "bio-population-density-14",
+      "type": "numeric",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 2,
+      "q": "After a very wet year, the same rabbit population (r_max = 0.4 per year) has grown to 1,200, but the habitat can still support only 1,000. Use dN/dt = r_max N (K − N)/K to calculate the growth rate, in rabbits per year. Include the sign and give a whole number.",
+      "numeric": {
+        "answer": -96,
+        "tol": 0,
+        "unit": "rabbits per year",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "dN/dt = 0.4 × 1,200 × (1,000 − 1,200)/1,000 = 0.4 × 1,200 × (−0.2) = −96 rabbits per year. Above K the factor (K − N)/K is negative, so the population shrinks."
+      }
+    },
+    {
+      "id": "bio-population-density-15",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Radish seeds were sown at 4, 16 or 64 seeds per pot (same pot size, soil and light). After 5 weeks, the mean mass per plant was 12.0 g, 4.1 g and 1.2 g, and the total plant mass per pot was 48 g, 66 g and 77 g. Which explanation best fits these results?",
+      "options": [
+        "Crowded plants share the same light, water and nutrients, so each gets less, and total mass levels off near what the pot can supply.",
+        "Crowded plants grow taller to reach the light and so put less mass into their roots, which were not weighed in this study.",
+        "Each pot can support a fixed number of plants, so most seeds in the crowded pots did not sprout.",
+        "Plants in crowded pots release chemicals that kill their neighbors, so the total mass per pot decreases as density rises."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Intraspecific competition: mass per plant falls steeply with density, while total mass rises only from 48 to 77 g as it approaches the limit set by the pot's resources.",
+        "options": [
+          "Correct: competition for limited resources, a density-dependent effect.",
+          "Nothing in the data supports this, and the result is explained by shared resources.",
+          "Mean mass per plant fell, which shows the plants grew less, not just that fewer sprouted.",
+          "Total mass per pot rose with density (48, 66, 77 g), so crowding did not reduce it."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-16",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Twenty goats are released on an island with dense, slow-growing shrubs and no predators. Twelve years later there are 3,000 goats, the shrubs are mostly gone, and the following year the herd falls to 300. Which explanation best accounts for the crash?",
+      "options": [
+        "The herd grew past what the island could support and ate the shrubs faster than they regrew, lowering K.",
+        "The herd reached exactly its carrying capacity, and populations at K usually fall by about 90%.",
+        "A density-independent event is the likely cause, because density-dependent factors do not cause crashes.",
+        "The goats' r_max fell to zero after twelve years, because the herd became too old to breed."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is overshoot: births responded to past plenty, the herd rose above K, and overgrazing destroyed the slow-growing food, so K itself fell and the population crashed far below its peak.",
+        "options": [
+          "Correct: overshoot plus damage to the food supply.",
+          "A population at K stops growing; it does not crash by itself.",
+          "Food shortage is density-dependent and can cause a crash, especially when the food itself is destroyed.",
+          "A herd that grew from 20 to 3,000 has many young adults; age is not the explanation."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-17",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What is the carrying capacity of an environment for a population?",
+      "options": [
+        "The largest population the environment can support over time with its resources",
+        "The highest per capita growth rate the population reaches under ideal conditions",
+        "The population size at which the growth rate of the population is the highest",
+        "The total number of individuals of the different species living in the environment"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "K is the population size that the available resources can sustain.",
+        "options": [
+          "Correct: the definition of K.",
+          "That is r_max, the intrinsic rate of increase.",
+          "Logistic growth is fastest at K/2, not at K.",
+          "K is for one population, not the whole community."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-18",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Why does the growth of a population slow as it approaches its carrying capacity?",
+      "options": [
+        "Individuals grow older, so the per capita birth rate falls with age regardless of food supply.",
+        "Individuals stop reproducing on purpose to avoid using up the resources around them.",
+        "The environment produces fewer resources as more individuals arrive and settle in it.",
+        "Each individual gets fewer resources, so per capita births fall and per capita deaths rise."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Shared resources mean less for each individual, raising competition, so the per capita growth rate falls toward zero.",
+        "options": [
+          "A growing population is mostly young; the slowdown comes from crowding, not age.",
+          "Organisms do not limit reproduction to save resources; crowding lowers births through hunger and stress.",
+          "Resource production need not fall; the same resources are split among more individuals.",
+          "Correct: density-dependent changes in births and deaths."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-19",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In a moose population, the per capita death rate from wolves was 4% per year at 0.5 moose per km², 9% at 1.0 per km² and 15% at 2.0 per km². In the same years, deep snow killed 6%, 5% and 6% of moose. Which claim do these data support?",
+      "options": [
+        "Wolves are a density-independent factor, because they killed moose at each density studied.",
+        "Snow is a density-dependent factor, because more moose died of it in the densest years.",
+        "Wolves act as a density-dependent factor and snow as a density-independent one.",
+        "Both act as density-independent factors, because both killed less than 20% of moose."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "The fraction killed by wolves rises with moose density (4%, 9%, 15%), while snow kills a similar fraction (5-6%) at every density.",
+        "options": [
+          "What matters is whether the fraction killed changes with density; for wolves it rises.",
+          "Snow killed a steady fraction, about 6%; more individuals died only because there were more moose.",
+          "Correct: compare fractions across densities.",
+          "Size of the effect does not decide the category; the trend with density does."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-20",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "A late spring frost kills about 40% of the aphids on a rose bush whether there are 100 aphids or 10,000. How is the frost classified, and why?",
+      "options": [
+        "Density-dependent, because the frost killed many more aphids on the crowded bush",
+        "Density-independent, because it killed about the same fraction at both densities",
+        "Density-dependent, because aphids compete for warm spots during a frost",
+        "Density-independent, because a frost is unlikely to kill a large share of a population"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Density dependence is about the fraction affected. The frost kills about 40% at either density, so it is density-independent.",
+        "options": [
+          "More aphids died in number, but the same fraction; that is density-independent.",
+          "Correct: the fraction killed does not change with density.",
+          "The stem gives the same fraction at both densities, so competition is not what decided who died.",
+          "A frost can kill a large share; it is classified by whether the share depends on density."
+        ]
+      }
+    },
+    {
+      "id": "bio-population-density-21",
+      "type": "order",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A few deer reach an island with plenty of food. Put the events in order.",
+      "options": [
+        "The herd grows almost exponentially.",
+        "Food available per deer starts to fall.",
+        "Per capita births fall and per capita deaths rise.",
+        "The herd's growth rate slows.",
+        "The herd levels off near the island's carrying capacity."
+      ],
+      "why": {
+        "correct": "Plenty of food allows near-exponential growth; more deer mean less food each; hunger lowers births and raises deaths; the per capita growth rate shrinks; growth stops near K."
+      }
+    },
+    {
+      "id": "bio-population-density-22",
+      "type": "single",
+      "unit": "unit-8",
+      "topic": "population-density",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Owls hunt voles in a grassland. When voles are scarce, owls catch about 2% of them each month; when voles are abundant, owls switch from other prey and catch about 10% each month. How does this owl behavior affect the vole population?",
+      "options": [
+        "It acts as a density-independent factor, adding the same small loss at each vole density.",
+        "It has no effect on vole numbers, because owls also eat other prey when voles are scarce.",
+        "It raises the vole carrying capacity, because owls remove the weakest voles from the grassland.",
+        "It removes a larger fraction when voles are dense, helping hold vole numbers down toward K."
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "Owls take a larger fraction of voles at high density, a density-dependent effect that slows vole growth when voles are crowded and eases off when they are scarce.",
+        "options": [
+          "The fraction changes from 2% to 10%, so it depends on density.",
+          "Owls kill up to 10% of voles a month, which certainly affects vole numbers.",
+          "Removing voles does not increase the food or space the grassland provides.",
+          "Correct: a density-dependent factor pulling numbers down when they are high."
+        ]
+      }
+    }
+  ]
+}

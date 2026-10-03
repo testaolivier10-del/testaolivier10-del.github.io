@@ -1,0 +1,89 @@
+<p>Exponential growth (topic 8.3) cannot last. Bacteria in a dish run out of sugar, deer on an island run out of plants, and fish in a pond run short of oxygen. This page explains how crowding slows a population's growth, how ecologists model it with the logistic equation from the formula sheet, which factors depend on density and which do not, and why some populations rise and fall in regular cycles.</p>
+
+<h2>Limiting resources and carrying capacity</h2>
+<p>Every population needs resources: food, water, space, light, nesting sites, soil nutrients. A <b>limiting resource</b> is one in short enough supply to cap growth. You met limiting factors with enzymes (topic 3.3): adding more substrate does nothing when the enzyme is the bottleneck. Here, adding more nest boxes does nothing for a bird population limited by food.</p>
+<p>The <b>carrying capacity</b>, written <b>K</b>, is the largest population an environment can support over time with its resources. K is a property of the environment and the species together, and it changes: a wet year raises K for grazing animals; a drought lowers it. A population can briefly rise above K, but then deaths exceed births and it falls.</p>
+
+<h2>Logistic growth</h2>
+<figure id="fig-exl" data-fig="exponential-logistic"><figcaption>Figure 1. Exponential and logistic growth of the same population. Logistic growth slows as N nears K; the growth rate is highest at K/2.</figcaption></figure>
+<p>The formula sheet models growth that slows with crowding as <b>logistic growth</b>:</p>
+<p><b>dN/dt = r_max N (K − N)/K</b></p>
+<p>Compare it with exponential growth, dN/dt = r_max N. The extra factor, (K − N)/K, is the fraction of the carrying capacity still unused:</p>
+<ul>
+<li>When N is small, (K − N)/K is close to 1, and growth is nearly exponential.</li>
+<li>When N = K/2, the factor is 0.5. Here dN/dt is at its <b>largest</b>: there are enough individuals to add many offspring, and enough resources left for them.</li>
+<li>When N = K, the factor is 0, and growth stops.</li>
+<li>When N is above K, the factor is negative, and the population shrinks.</li>
+</ul>
+<p>Plotted against time, N makes an <b>S-shaped curve</b> (<a class="figref" href="#fig-exl">Figure 1</a>, left). Plotted against N, the growth rate makes an arch that peaks at K/2 (Figure 1, right).</p>
+<div class="worked">
+<p><b>Worked example: a logistic deer herd.</b> A deer herd has r_max = 0.6 per year in a reserve with K = 2,000.</p>
+<p><b>N = 200:</b> dN/dt = 0.6 × 200 × (2,000 − 200)/2,000 = 0.6 × 200 × 0.9 = 108 deer per year.</p>
+<p><b>N = 1,000 (K/2):</b> dN/dt = 0.6 × 1,000 × 0.5 = 300 deer per year, the fastest possible.</p>
+<p><b>N = 1,800:</b> dN/dt = 0.6 × 1,800 × 0.1 = 108 deer per year. The same as at 200: many deer, but each has very little room to add more.</p>
+<p><b>N = 2,400:</b> dN/dt = 0.6 × 2,400 × (−400/2,000) = −288 deer per year. Above K, the herd shrinks.</p>
+<p><b>Check the units:</b> r_max is per year; N and K are numbers of deer; dN/dt is deer per year.</p>
+</div>
+<table class="compare">
+<caption>Exponential and logistic growth</caption>
+<thead><tr><th scope="col"></th><th scope="col">Exponential</th><th scope="col">Logistic</th></tr></thead>
+<tbody>
+<tr><th scope="row">Formula (formula sheet)</th><td>dN/dt = r_max N</td><td>dN/dt = r_max N (K − N)/K</td></tr>
+<tr><th scope="row">Resources</th><td>Effectively unlimited</td><td>Limited; set K</td></tr>
+<tr><th scope="row">Per capita growth rate</th><td>Constant, r_max</td><td>Falls as N rises, reaching 0 at K</td></tr>
+<tr><th scope="row">Shape of N against time</th><td>J-shaped, keeps getting steeper</td><td>S-shaped, levels off at K</td></tr>
+<tr><th scope="row">Fastest growth</th><td>At the largest N</td><td>At N = K/2</td></tr>
+<tr><th scope="row">When seen</th><td>New habitat, recovery after a crash, early in a culture</td><td>Populations that have filled their habitat</td></tr>
+</tbody>
+</table>
+<p>Real populations rarely follow the S-curve smoothly. Many overshoot K and then fall back, because births respond to crowding with a delay. If an overcrowded population damages its own resources, as the reindeer of St. Matthew Island did with their lichen, K itself drops and the population can crash far below the old K. You can explore all of this in the <a href="../tools/population-growth.html">population growth simulator</a>.</p>
+
+<h2>Density-dependent factors</h2>
+<p>Why do births fall and deaths rise as a population gets crowded? Because of factors whose effects grow with density. These <b>density-dependent factors</b> include:</p>
+<ul>
+<li><b>Intraspecific competition</b>: individuals of the same species compete for the same food, water, light and space. Plants sown densely grow smaller each; birds without a territory do not breed.</li>
+<li><b>Disease</b>: pathogens spread faster from host to host when hosts are close together.</li>
+<li><b>Wastes</b>: in a culture, yeast's own ethanol builds up faster when there are more cells.</li>
+<li><b>Stress and behavior</b>: in some crowded mammals, fighting rises and reproduction falls.</li>
+<li><b>Predators</b>: predators often catch a larger share of prey when prey are crowded.</li>
+</ul>
+<aside class="bio-preview"><p><b>Preview (topic 8.5): predation.</b> Predation is one species killing and eating another. Predators often switch to whatever prey is most common and catch more when prey are crowded, so they take a larger share of a dense prey population. That makes predation a density-dependent factor; topic 8.5 covers it in full.</p></aside>
+<p>Density-dependent factors are the reason populations are pulled back toward K: they push the per capita growth rate down when N is high and ease off when N is low.</p>
+
+<h2>Density-independent factors</h2>
+<p><b>Density-independent factors</b> change birth or death rates by about the same fraction whatever the density. They are usually physical events: a hard frost, a drought, a flood, a fire, a hurricane. A late frost might kill 40% of the aphids on a tree whether there are a hundred or ten thousand. These factors cause sudden drops that have nothing to do with crowding, and populations of small, short-lived species are often driven up and down by weather more than by density.</p>
+<table class="compare">
+<caption>Density-dependent and density-independent factors</caption>
+<thead><tr><th scope="col"></th><th scope="col">Density-dependent</th><th scope="col">Density-independent</th></tr></thead>
+<tbody>
+<tr><th scope="row">Effect as density rises</th><td>Gets stronger (larger fraction affected)</td><td>Stays about the same fraction</td></tr>
+<tr><th scope="row">Usual kind</th><td>Biological: competition, disease, wastes, predators</td><td>Physical: weather, fire, floods</td></tr>
+<tr><th scope="row">Effect on N</th><td>Holds N near K</td><td>Sudden drops at any N</td></tr>
+<tr><th scope="row">Example</th><td>Tuberculosis spreading in a crowded herd</td><td>A cold snap killing a share of songbirds</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example: telling the two apart from data.</b> In three years, aphids reached 10, 50 and 200 per leaf. A cold night killed 38%, 41% and 40% of them; a fungus disease killed 5%, 18% and 46%. The cold killed about the same fraction at every density: density-independent. The fungus killed a larger fraction as density rose: density-dependent. Notice that the cold still killed far more aphids in the crowded year (80 per leaf against 4); what matters is the fraction.</p>
+</div>
+
+<h2>Population cycles</h2>
+<p>Some populations rise and fall in regular <b>population cycles</b>. The classic case is the snowshoe hare and the lynx in northern Canada, which peak about every 10 years, the lynx a year or two after the hares. One explanation, supported by field experiments with fenced plots and added food:</p>
+<ol>
+<li>Hares multiply while food is plentiful and lynx are few.</li>
+<li>With many hares to eat, more lynx kits survive, and the lynx population rises, after a delay for breeding.</li>
+<li>Crowded hares eat down their winter food, and the many lynx catch more of them, so the hare population falls.</li>
+<li>With few hares, lynx starve and have few kits; the lynx population falls a year or two later.</li>
+<li>With few lynx and regrown plants, the hares recover, and the cycle repeats.</li>
+</ol>
+<p>Both the hare's food and its predators are density-dependent factors, and the delays in their responses turn steady pressure into a cycle.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"Growth is fastest at K." It is fastest at K/2; at K it stops.</li>
+<li>"K is a fixed number for a species." It depends on the environment and changes with it.</li>
+<li>"Weather is density-dependent because it kills more animals in a big population." It kills more <i>individuals</i> but the same <i>fraction</i>; density dependence is about the fraction.</li>
+<li>"The predator causes the prey cycle alone." Food supply matters too; most cycles involve both.</li>
+<li>Forgetting the sign: if N is above K, (K − N)/K is negative, so dN/dt is negative.</li>
+</ul>
+
+<aside class="going-further"><p><b>Going further: fishing at K/2.</b> Fisheries managers use the logistic curve: a fish stock replaces itself fastest at about half its carrying capacity, so in theory the largest catch that can be taken year after year is r_max K/4, taken from a stock held near K/2. In practice K and r_max are uncertain and change, which is one reason many fisheries that aimed for this "maximum sustainable yield" were overfished.</p></aside>
