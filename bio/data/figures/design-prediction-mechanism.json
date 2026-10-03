@@ -1,0 +1,12 @@
+{
+  "perturbation-chain": {
+    "file": "figures/perturbation-chain.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 340,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A chain of boxes tracing a poison through a mitochondrion. Cyanide blocks the last electron carrier, so electrons cannot pass to oxygen; the chain stops pumping protons; the proton gradient runs down; ATP synthase makes little ATP; the measurable prediction is that oxygen use falls and ATP falls. A side branch shows NADH building up, so the cell relies on glycolysis and fermentation, and lactate rises."
+  }
+}
