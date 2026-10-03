@@ -123,7 +123,15 @@
       '<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
   /* What the header calls each course where there is no room for its full
      name: beside the wordmark on a phone. */
-  var COURSE_SHORT = { nremt: 'NREMT', ochem: 'Ochem', anp: 'A&P' };
+  // courses:begin COURSE_LIST key,short (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { key: 'nremt', short: 'NREMT' },
+    { key: 'ochem', short: 'Ochem' },
+    { key: 'anp', short: 'A&P' },
+  ];
+  // courses:end
+  var COURSE_SHORT = {};
+  COURSE_LIST.forEach(function(c){ COURSE_SHORT[c.key] = c.short; });
 
   /* "/" opens site search from anywhere that is not a text field — the
      convention GitHub, YouTube and MDN all share. On the search page itself it
@@ -408,10 +416,10 @@
     });
   }
 
-  // The three courses' own keys; anything else is treated as NREMT, the
-  // original course, exactly as before A&P existed.
+  // A course's own key; anything else is treated as the registry's first
+  // course, NREMT, the original one, exactly as before A&P existed.
   function courseKeyOf(subject){
-    return subject === 'ochem' || subject === 'anp' ? subject : 'nremt';
+    return Object.prototype.hasOwnProperty.call(COURSE_SHORT, subject) ? subject : COURSE_LIST[0].key;
   }
 
   var MENU_ICON =

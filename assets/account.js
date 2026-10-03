@@ -1036,7 +1036,15 @@
      would turn "delete my account" into "and start tracking me again", which
      is the exact opposite of what was asked for. It is the one key that
      outlives the account on purpose. */
-  var CLEAR_PREFIXES = ['hub_', 'nremt_', 'ochem_', 'anp_', 'levlprep_'];
+  // Every course's storagePrefix (assets/courses.js), between hub_ and levlprep_.
+  // courses:begin COURSE_LIST storagePrefix (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+  var COURSE_LIST = [
+    { storagePrefix: 'nremt_' },
+    { storagePrefix: 'ochem_' },
+    { storagePrefix: 'anp_' },
+  ];
+  // courses:end
+  var CLEAR_PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }), ['levlprep_']);
   var CLEAR_EXACT = ['levl_sound'];
   var CLEAR_KEEP = ['levlprep_analytics_opt_out'];
 

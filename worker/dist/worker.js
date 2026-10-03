@@ -775,7 +775,8 @@ async function runReminders(env, now = Date.now()) {
 
 
 
-/* Must match `passes[].id` in assets/premium.js (scripts/test checks it).
+/* Must match `passes[].id` in assets/premium.js (scripts/test checks it), and
+   sell every paid course in assets/courses.js (scripts/check-courses.mjs).
    `days` is what one purchase adds. Semester is five months, so a pass bought
    in late August covers finals in January. */
 const PASSES = {
@@ -1408,6 +1409,7 @@ async function premiumWebhook(request, env, now = Date.now()) {
 
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
+// Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
 const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
 
 const ENDING_NOTICE_DAYS = 3;
@@ -1705,7 +1707,9 @@ const SHARED_RULES = [
   '5. Answer in 2-5 short sentences, or a short bullet list for steps and criteria. Plain text; **bold** for emphasis is fine. Write to a student, not to a colleague.',
 ].join('\n');
 
-// Where the two courses differ: a wrong ochem explanation costs an exercise.
+// One entry per course in assets/courses.js (scripts/check-courses.mjs checks);
+// the assistant accepts exactly these course keys.
+// Where the courses differ: a wrong ochem explanation costs an exercise.
 // A wrong EMT protocol detail can cost someone their certification, or worse
 // if they believe it on a real call.
 const COURSE_RULES = {
@@ -1911,7 +1915,9 @@ export default {
     const question = String(payload?.question || '').trim().slice(0, 500);
     const context = Array.isArray(payload?.context) ? payload.context.slice(0, 6) : [];
     const history = Array.isArray(payload?.history) ? payload.history.slice(-4) : [];
-    const course = payload?.course === 'ochem' || payload?.course === 'anp' ? payload.course : 'nremt';
+    // Any course with its own rules; anything else is NREMT, the original.
+    const course = typeof payload?.course === 'string' && Object.prototype.hasOwnProperty.call(COURSE_RULES, payload.course)
+      ? payload.course : 'nremt';
 
     if (!question) return reply({ error: 'Missing question' }, 400);
 

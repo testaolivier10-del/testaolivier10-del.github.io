@@ -24,7 +24,8 @@
 import { sb, sha256Hex, timedFetch, EMAIL_BATCH } from './store.js';
 import { sendPassEndingEmail } from './email.js';
 
-/* Must match `passes[].id` in assets/premium.js (scripts/test checks it).
+/* Must match `passes[].id` in assets/premium.js (scripts/test checks it), and
+   sell every paid course in assets/courses.js (scripts/check-courses.mjs).
    `days` is what one purchase adds. Semester is five months, so a pass bought
    in late August covers finals in January. */
 export const PASSES = {
@@ -657,6 +658,7 @@ export async function premiumWebhook(request, env, now = Date.now()) {
 
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
+// Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
 export const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
 
 export const ENDING_NOTICE_DAYS = 3;

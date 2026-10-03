@@ -180,7 +180,15 @@
     (function(){
       try{
         var r = JSON.parse(localStorage.getItem('levl_resume') || '{}') || {}, best = null, k;
-        var NAMES = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
+        // courses:begin COURSE_LIST key,name (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+        var COURSE_LIST = [
+          { key: 'nremt', name: 'NREMT-EMT' },
+          { key: 'ochem', name: 'Organic Chemistry' },
+          { key: 'anp', name: 'Anatomy & Physiology' },
+        ];
+        // courses:end
+        var NAMES = {};
+        COURSE_LIST.forEach(function(c){ NAMES[c.key] = c.name; });
         for(k in r){ var e = r[k]; if(NAMES[k] && e && typeof e.url === 'string' && /^\/[^\/]/.test(e.url) && (!best || e.t > best.t)) best = { k: k, url: e.url, label: e.label, t: e.t || 0 }; }
         if(!best) return;
         var a = document.createElement('a'), sm = document.createElement('small'), b = document.createElement('b');
@@ -345,7 +353,15 @@ document.addEventListener('DOMContentLoaded', function(){
     var subjects = Object.keys(info.subjects || {}).filter(function(k){ return info.subjects[k] > 0; });
     if(!info.total && !streak.current) return;   // nothing to show a first-time visitor
 
-    var LABELS = { nremt: 'NREMT-EMT', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
+    // courses:begin COURSE_LIST key,name (generated from assets/courses.js by scripts/build-courses.mjs; edit there)
+    var COURSE_LIST = [
+      { key: 'nremt', name: 'NREMT-EMT' },
+      { key: 'ochem', name: 'Organic Chemistry' },
+      { key: 'anp', name: 'Anatomy & Physiology' },
+    ];
+    // courses:end
+    var LABELS = {};
+    COURSE_LIST.forEach(function(c){ LABELS[c.key] = c.name; });
     var pct = Math.round(info.into / info.span * 100);
     box.innerHTML =
       '<div class="hub-progress-card">' +
