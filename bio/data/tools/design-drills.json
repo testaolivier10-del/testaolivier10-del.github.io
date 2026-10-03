@@ -1248,7 +1248,7 @@
     ],
     "correct": 1,
     "why": [
-     "More gas would have to disappear; without KOH the carbon dioxide stays in the tube as gas.",
+     "For the drop to move farther, more gas would have to disappear; without KOH the carbon dioxide stays in the tube as gas, so less disappears.",
      "Right: the carbon dioxide released stays in the tube and takes up about as much space as the oxygen used, so the gas volume barely changes.",
      "The peas use the same oxygen, but the drop measures the change in total gas volume, and the released carbon dioxide now fills most of the space."
     ]
@@ -2130,7 +2130,7 @@
     "why": [
      "Right: if their hair is black at every temperature, cold darkens hair only when the enzyme is heat-sensitive.",
      "With no working enzyme there is no pigment at any temperature, so this group cannot show whether temperature acts through the enzyme's heat sensitivity.",
-     "This shows regrowth at normal skin temperature, much like the 37 °C group; it does not involve a different enzyme.",
+     "These rabbits have the same heat-sensitive enzyme, and the skin temperature of a bare patch is not controlled (shaved skin is cooler than furred skin), so this group cannot separate a general effect of temperature from an effect on this enzyme.",
      "Without shaving, no new hairs grow in the patch to score."
     ]
    },
@@ -2717,7 +2717,7 @@
      "why": "This is evidence: values from the table."
     },
     {
-     "text": "The RNA values at 0, 1 and 10 µg/mL (100%, 97% and 96%) differ by less than their SEs.",
+     "text": "The RNA values at 0, 1 and 10 µg/mL (100%, 97% and 96%) differ by no more than their SEs (4 to 6 percentage points).",
      "tag": "evidence",
      "why": "This is evidence: it compares the data with their spread."
     },
@@ -2758,7 +2758,7 @@
     "why": [
      "Right: the block is at translation, after transcription.",
      "The data show RNA synthesis continues normally, so transcription is not blocked.",
-     "Nothing in the data links the antibiotic to the repressor; the lac genes can still be transcribed.",
+     "Glucose lowers lac expression mainly through low cAMP (CAP is not activated) and by keeping lactose out, not by holding the repressor on; in any case nothing in the data links the antibiotic to the repressor, and RNA synthesis continued.",
      "The data show protein synthesis itself stops; there is no evidence of breakdown."
     ]
    },
@@ -3073,7 +3073,7 @@
    "requires": [
     "unit-7"
    ],
-   "setup": "<p>Starting from one large, genetically varied population of fruit flies, a team sets up eight lines. Four \"dry\" lines spend 6 hours in very dry air each generation, and only survivors breed. Four \"humid\" lines are handled the same way in humid air. After 30 generations the team raises one generation of every line in the same humid conditions, then measures how long females survive in dry air with no food or water.</p>",
+   "setup": "<p>Starting from one large, genetically varied population of fruit flies, a team sets up eight lines. Four \"dry\" lines spend 6 hours in very dry air each generation, and only survivors breed. Four \"humid\" lines are handled the same way in humid air. After 30 generations the team raises every line for two generations in the same humid conditions, then measures how long females of the second generation survive in dry air with no food or water.</p>",
    "data": {
     "caption": "Survival in dry air after 30 generations (mean ± SE, 50 females per line)",
     "cols": [
@@ -3120,7 +3120,7 @@
      "Humidity the lines are kept in each generation",
      "Hours females survive in dry air",
      "Number of generations of selection",
-     "Conditions in the final generation before testing",
+     "Conditions in the final two generations before testing",
      "Food given to every line"
     ],
     "iv": 0,
@@ -3133,21 +3133,21 @@
    "control": {
     "q": "Flies that grew up in dry air, or whose mothers did, might survive longer without any change in their alleles. Which part of the design rules this out?",
     "options": [
-     "Raising every line for one generation in the same humid conditions before testing",
+     "Raising every line for two generations in the same humid conditions before testing",
      "Keeping four humid lines for the same 30 generations",
      "Starting all eight lines from the same population",
      "Testing only females"
     ],
     "correct": 0,
     "why": [
-     "Right: after a shared generation, a difference that remains must be inherited.",
+     "Right: the tested flies and their mothers all grew up in the same conditions, so a difference that remains reflects inherited (genetic) change.",
      "The humid lines show what happens without dry selection, but on their own they cannot separate inherited change from effects of how the tested flies grew up.",
      "This makes the lines start alike; it does not remove effects of the conditions the tested flies grew up in.",
      "This removes differences between the sexes; it does not separate inherited change from growing conditions."
     ]
    },
    "controlWhy": {
-    "q": "What does the shared humid generation rule out?",
+    "q": "What do the two shared humid generations rule out?",
     "options": [
      "That the dry lines survive longer only because of the conditions they or their mothers lived in",
      "That the lines started with different allele frequencies",
@@ -3156,8 +3156,8 @@
     ],
     "correct": 0,
     "why": [
-     "Right: those effects would fade after a generation in shared conditions, while changed allele frequencies remain.",
-     "Starting from one population handles that, not the final shared generation.",
+     "Right: such effects fade after two generations in shared conditions, while changed allele frequencies remain.",
+     "Starting from one population handles that, not the final shared generations.",
      "Having four lines of each kind handles chance; one line could drift, but all four would not drift the same way.",
      "Dry air does kill flies; that is why survival is measured."
     ]
@@ -3246,7 +3246,7 @@
      "why": "This is reasoning: it gives the mechanism of natural selection."
     },
     {
-     "text": "Because every line spent a generation in the same conditions before testing, the difference reflects changed allele frequencies, not how the flies grew up.",
+     "text": "Because every line spent two generations in the same conditions before testing, the difference reflects changed allele frequencies, not how the flies or their mothers grew up.",
      "tag": "reasoning",
      "why": "This is reasoning: it explains why the result counts as an inherited change."
     }
@@ -3301,13 +3301,13 @@
        ]
       },
       {
-       "point": "Reasoning: individuals with alleles for better water retention survived and reproduced more, so those alleles increased in frequency; the shared generation shows the difference is inherited.",
+       "point": "Reasoning: individuals with alleles for better water retention survived and reproduced more, so those alleles increased in frequency; the shared generations show the difference is inherited.",
        "accept": [
         "Differential survival and reproduction changed allele frequencies"
        ]
       }
      ],
-     "sample": "<p>Selection in dry air increased the flies' inherited survival in dry air. After 30 generations, dry lines survived 38 to 44 hours, while humid lines survived 18 to 21 hours, even after all lines spent one generation in the same humid conditions. In each generation, flies with alleles that reduced water loss survived the dry treatment and reproduced, so those alleles became more common; because the test followed a shared generation, the difference reflects changed allele frequencies.</p>"
+     "sample": "<p>Selection in dry air increased the flies' inherited survival in dry air. After 30 generations, dry lines survived 38 to 44 hours, while humid lines survived 18 to 21 hours, even after all lines spent two generations in the same humid conditions. In each generation, flies with alleles that reduced water loss survived the dry treatment and reproduced, so those alleles became more common; because the test followed shared generations, the difference reflects changed allele frequencies.</p>"
     },
     {
      "drill": "predict",

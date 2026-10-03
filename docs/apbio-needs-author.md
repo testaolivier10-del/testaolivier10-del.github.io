@@ -48,7 +48,10 @@ course does meanwhile.
   Himalayan rabbit thresholds, digoxin uptake numbers, the woodlice kinesis account), the "best
   control" in each (several are deliberately plausible), the claim/evidence/reasoning tags
   (graders differ on whether a general-principle sentence or a statistical test counts as
-  evidence or reasoning), and the written-answer rubrics.
+  evidence or reasoning), and the written-answer rubrics. Reviewed 2026-10-03 (docs/apbio-reviews/drills.md):
+  five fixes (desiccation design now has two shared generations; wording in antibiotic, rabbit and respirometer
+  items); still for a teacher: rabbit thresholds, the Elodea green-light rate (29% of red, low against leaf action
+  spectra), the woodlice turning-rate direction and the χ² evidence tag.
 - **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
   `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
 
