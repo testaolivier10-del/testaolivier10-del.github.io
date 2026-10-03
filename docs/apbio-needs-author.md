@@ -512,6 +512,21 @@ Unit 8 (Ecology), raised by its author, 2026-10-03:
 - **seal-logistic** (open). `frq-seal-logistic-growth` gives r_max = 0.12 per year and K = 10,000 for a
   gray seal colony; the counts were generated from the logistic equation with small rounding, so
   part (b) (300 per year) matches r_max K/4 exactly. Real colonies fluctuate more.
+- **population-growth-model** (open; Unit 8 simulator `population-growth`). The tool steps the formula sheet's
+  continuous equations with Euler's method (Δt from 1 to 0.1 years), so with Δt = 1 exponential growth is
+  N₀(1 + r_max)^t, below N₀e^(r_max·t); the box says so. Events remove a fixed share at one instant and leave K
+  unchanged; N is a real number (no demographic chance). Predator-prey and competition modes were left out
+  (8.5 terms). Confirm the wording "per-capita growth rate" for (dN/dt)/N and r_max as its maximum.
+- **energy-flow-model** (open; Unit 8 simulator `energy-flow`). Illustrative choices: producer respiration 50%
+  of GPP, 10% of each level's stored energy stored by the next (trophic efficiency as a ratio of production),
+  consumers respiring 80% of what they absorb (so they absorb half of the level below), 4 kcal per gram of dry
+  mass, and turnover rates (P/B) per level that make the open-ocean biomass pyramid inverted. Real trophic
+  efficiencies range about 5-20% and endotherms respire more than 80% of assimilated energy; textbooks state the
+  "10% rule" against different quantities (energy available, production, biomass). Confirm the definitions.
+- **biomagnification-rule** (open; same simulator). The toxin's concentration rises by retained share ÷
+  (1 − respiration share) per level (×5 with the defaults), a simple mass-balance rule; real biomagnification
+  factors vary widely by toxin, species and fat content. Biomagnification is taught in 8.7, so the mode is
+  labeled "from Topic 8.7" and its item is tagged `ecosystem-disruptions`.
 
 ## Map content to confirm
 

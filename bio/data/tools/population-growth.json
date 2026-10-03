@@ -1,0 +1,486 @@
+{
+  "about": "Simulator: exponential and logistic population growth with the formula sheet's forms (dN/dt = r_max·N and dN/dt = r_max·N·(K − N)/K), stepped with Euler's method; density-independent events and a change in K. Model code: bio/assets/tools/bio-tool-math.js (ApBioMath.population). Validator: scripts/lib/apbio-tool-checks/population-growth.mjs checks each rule through the model (constant per-capita rate in exponential growth, leveling at K, the dN/dt peak at K/2, events that remove a fixed share, shrinking after K drops) and recomputes every number in the stimulus tables and the numeric answer.",
+  "slug": "population-growth",
+  "kind": "simulator",
+  "topic": "population-density",
+  "intro": "<p>Grow a population and watch what limits it. Choose exponential growth (unlimited resources) or logistic growth (a carrying capacity, K), set the starting size and r<sub>max</sub>, then add a flood or a drought at the time you choose. Read the size, the growth rate and the growth rate per individual at any moment. The questions below use the same model.</p>",
+  "howItWorks": "<p>A population's <b>growth rate</b>, dN/dt, is how many individuals it gains per unit of time: births minus deaths (this model has no migration). N is the population size and t is time, here in years.</p><ol><li><b>Exponential growth</b>, dN/dt = r<sub>max</sub>N. r<sub>max</sub> is the <b>maximum per-capita growth rate</b>: what each individual adds per year when nothing is in short supply. Because each individual adds the same amount, the more individuals there are, the faster the population grows, and the curve of N over time curves upward more and more steeply (a J shape).</li><li><b>Logistic growth</b>, dN/dt = r<sub>max</sub>N(K − N)/K. K, the <b>carrying capacity</b>, is the largest population the environment can support. As N rises toward K, individuals compete for food, space and other limited resources, so births per individual fall and deaths per individual rise. The factor (K − N)/K is the share of K still unused: close to 1 when N is small, 0 when N = K, negative above K. N over time makes an S shape.</li><li>The <b>per-capita growth rate</b> is dN/dt divided by N, the growth per individual. In exponential growth it stays at r<sub>max</sub>. In logistic growth it falls in a straight line, from r<sub>max</sub> when N is near 0 to 0 at K.</li><li>So in logistic growth dN/dt is largest when N = K/2, at r<sub>max</sub>K/4: below that there are few individuals adding young; above it each individual adds few. The graph of dN/dt against N is a hump.</li></ol><p>The model's rules:</p><ul><li><b>Steps (Euler's method).</b> Time moves in steps of Δt. At the start of each step the model works out dN/dt from the current N, then sets N(t + Δt) = N(t) + (dN/dt) × Δt. A smaller Δt follows the smooth curve of the equation more closely; with Δt = 1 year, exponential growth gives N = N<sub>0</sub>(1 + r<sub>max</sub>)<sup>t</sup>, a little below the smooth curve.</li><li><b>N is a real number</b>, the expected size, so tables round it to whole individuals. There is no chance: the same settings always give the same numbers.</li><li><b>Density-independent events</b> (a flood, a fire, a hard frost) remove the same share of the population whatever its size: N becomes N × (1 − share), at the first step at or after the time you set. The model treats K as unchanged by them.</li><li><b>A change in K</b> (a drought, a new food source) applies from the time you set. Above the new K, dN/dt is negative and the population shrinks toward it.</li><li>An exponential run stops once N passes 1,000,000, where the graph would no longer be readable.</li></ul>",
+  "model": {
+    "nMax": 1000000
+  },
+  "defaults": {
+    "model": "log",
+    "N0": 10,
+    "r": 0.5,
+    "K": 500,
+    "dt": 0.1,
+    "tEnd": 30,
+    "readT": 10
+  },
+  "ranges": {
+    "N0": {
+      "min": 2,
+      "max": 200,
+      "step": 1
+    },
+    "r": {
+      "min": 0.05,
+      "max": 1,
+      "step": 0.05
+    },
+    "K": {
+      "min": 100,
+      "max": 2000,
+      "step": 50
+    },
+    "tEnd": {
+      "min": 10,
+      "max": 80,
+      "step": 5
+    },
+    "dt": [
+      1,
+      0.5,
+      0.25,
+      0.1
+    ]
+  },
+  "fractions": [
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "events": [
+    {
+      "id": "e1",
+      "label": "Flood",
+      "t": 15,
+      "f": 0.5
+    },
+    {
+      "id": "e2",
+      "label": "Hard frost",
+      "t": 22,
+      "f": 0.25
+    }
+  ],
+  "kChange": {
+    "label": "Change in carrying capacity",
+    "t": 20,
+    "K": 250
+  },
+  "stimuli": {
+    "pg-s1": {
+      "kind": "table",
+      "title": "A rabbit population on a new island",
+      "text": "<p>A student used the model for 20 rabbits released on an island with a carrying capacity of 1,000 rabbits, with r<sub>max</sub> = 0.4 per year and steps of 1 year (logistic growth). Table 1 shows the run. In a second run with the same settings, a flood at year 14 drowned half of the rabbits, whatever their number; the flood did not change the carrying capacity (Table 2). Population sizes are rounded to whole rabbits.</p>",
+      "tables": [
+        {
+          "id": "t1",
+          "caption": "Table 1. Logistic growth of the rabbit population",
+          "cols": [
+            "Time (years)",
+            "Population size, N (rabbits)",
+            "Growth rate, dN/dt (rabbits per year)",
+            "Per-capita growth rate (per year)"
+          ],
+          "rows": [
+            [
+              "0",
+              "20",
+              "7.8",
+              "0.392"
+            ],
+            [
+              "2",
+              "39",
+              "14.9",
+              "0.385"
+            ],
+            [
+              "4",
+              "74",
+              "27.3",
+              "0.370"
+            ],
+            [
+              "6",
+              "138",
+              "47.4",
+              "0.345"
+            ],
+            [
+              "8",
+              "245",
+              "74.0",
+              "0.302"
+            ],
+            [
+              "10",
+              "406",
+              "96.5",
+              "0.238"
+            ],
+            [
+              "11",
+              "503",
+              "100.0",
+              "0.199"
+            ],
+            [
+              "12",
+              "603",
+              "95.8",
+              "0.159"
+            ],
+            [
+              "14",
+              "783",
+              "68.0",
+              "0.087"
+            ],
+            [
+              "16",
+              "902",
+              "35.5",
+              "0.039"
+            ],
+            [
+              "20",
+              "985",
+              "5.8",
+              "0.006"
+            ],
+            [
+              "24",
+              "998",
+              "0.8",
+              "0.001"
+            ]
+          ],
+          "check": {
+            "x": "series",
+            "c": {
+              "model": "log",
+              "N0": 20,
+              "r": 0.4,
+              "K": 1000,
+              "dt": 1,
+              "tEnd": 30
+            },
+            "times": [
+              0,
+              2,
+              4,
+              6,
+              8,
+              10,
+              11,
+              12,
+              14,
+              16,
+              20,
+              24
+            ],
+            "cols": [
+              {
+                "f": "N",
+                "d": 0
+              },
+              {
+                "f": "dNdt",
+                "d": 1
+              },
+              {
+                "f": "perCap",
+                "d": 3
+              }
+            ]
+          }
+        },
+        {
+          "id": "t2",
+          "caption": "Table 2. The same population with a flood at year 14 (the year-14 row is just after the flood)",
+          "cols": [
+            "Time (years)",
+            "Population size, N (rabbits)",
+            "Per-capita growth rate (per year)"
+          ],
+          "rows": [
+            [
+              "12",
+              "603",
+              "0.159"
+            ],
+            [
+              "13",
+              "698",
+              "0.121"
+            ],
+            [
+              "14",
+              "391",
+              "0.243"
+            ],
+            [
+              "15",
+              "487",
+              "0.205"
+            ],
+            [
+              "16",
+              "587",
+              "0.165"
+            ],
+            [
+              "18",
+              "770",
+              "0.092"
+            ],
+            [
+              "20",
+              "894",
+              "0.042"
+            ],
+            [
+              "24",
+              "984",
+              "0.006"
+            ]
+          ],
+          "check": {
+            "x": "series",
+            "c": {
+              "model": "log",
+              "N0": 20,
+              "r": 0.4,
+              "K": 1000,
+              "dt": 1,
+              "tEnd": 30,
+              "disasters": [
+                {
+                  "t": 14,
+                  "f": 0.5
+                }
+              ]
+            },
+            "times": [
+              12,
+              13,
+              14,
+              15,
+              16,
+              18,
+              20,
+              24
+            ],
+            "cols": [
+              {
+                "f": "N",
+                "d": 0
+              },
+              {
+                "f": "perCap",
+                "d": 3
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "population-growth:growth:1",
+      "type": "numeric",
+      "topic": "population-density",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "pg-s1",
+      "args": {
+        "N": 250,
+        "r": 0.4,
+        "K": 1000
+      },
+      "q": "Using the logistic growth equation, calculate dN/dt for the rabbit population (r<sub>max</sub> = 0.4 per year, K = 1,000 rabbits) at a moment when N = 250 rabbits. Give your answer in rabbits per year, to the nearest whole number.",
+      "numeric": {
+        "answer": 75,
+        "tol": 0.5,
+        "unit": "rabbits per year",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "dN/dt = r<sub>max</sub>N(K − N)/K = 0.4 × 250 × (1,000 − 250)/1,000 = 100 × 0.75 = 75 rabbits per year. The factor 0.75 says three quarters of the carrying capacity is still unused, so growth is 75% of the exponential rate for the same N."
+      }
+    },
+    {
+      "id": "population-growth:growth:2",
+      "type": "single",
+      "topic": "population-density",
+      "practice": "5.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "pg-s1",
+      "q": "In Table 1, the per-capita growth rate is highest at year 0, but dN/dt is highest at about year 11, when N is close to 500. Which explanation is most consistent with the data?",
+      "options": [
+        "dN/dt equals the per-capita rate times N, so it is low early because there are few rabbits and low late because each rabbit adds few; the product peaks near half of K",
+        "Food is most plentiful per rabbit at year 11, so each rabbit reproduces fastest at that time",
+        "r<sub>max</sub> rises as the population grows and reaches its highest value when N is half of K",
+        "Competition among rabbits is weakest when N is close to 500, so fewer rabbits die at that size"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Growth of the whole population is growth per individual times the number of individuals. At year 0 each rabbit adds 0.392 rabbits per year, but there are only 20 rabbits; by year 20 there are 985 rabbits, but each adds almost nothing. In between, at N ≈ 500 = K/2, the product is largest (about 100 rabbits per year).",
+        "options": [
+          "Right: a high rate per rabbit times few rabbits and a low rate times many rabbits both give a small total; the peak comes in between, at K/2.",
+          "Table 1 shows the per-capita rate falling steadily (0.392 at year 0, 0.199 at year 11), so each rabbit is not reproducing fastest at year 11; food per rabbit is highest at the start.",
+          "r<sub>max</sub> is fixed at 0.4 per year in the model; what falls as N rises is the factor (K − N)/K.",
+          "Competition grows stronger as N rises, which is why the per-capita rate keeps falling; it is not weakest at 500 rabbits."
+        ]
+      }
+    },
+    {
+      "id": "population-growth:growth:3",
+      "type": "single",
+      "topic": "population-density",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "pg-s1",
+      "q": "In Table 2, the per-capita growth rate rose from 0.121 per year at year 13 to 0.243 per year just after the flood at year 14. Which explanation best accounts for the rise?",
+      "options": [
+        "With half as many rabbits sharing the same food and space, competition is weaker, so each rabbit's births outnumber its deaths by more",
+        "The flood is a density-dependent factor, and density-dependent factors raise the per-capita rate",
+        "The flood raised the island's carrying capacity by clearing space, so the population was further below K",
+        "The flood killed the slowest-breeding rabbits, so the survivors have a higher r<sub>max</sub>"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The flood removed half of the rabbits whatever their number, so it acted as a density-independent factor. Afterward the resources that 783 rabbits had shared were shared by 391, so intraspecific competition, a density-dependent factor, eased: N fell further below K and the per-capita rate roughly doubled.",
+        "options": [
+          "Right: fewer rabbits for the same resources means weaker competition, so the per-capita rate rises toward r<sub>max</sub>.",
+          "A flood that kills the same share at any population size is density-independent; the rise comes afterward, from weaker competition among the survivors.",
+          "The model keeps K at 1,000 rabbits through the flood; the population fell further below an unchanged K.",
+          "r<sub>max</sub> stays at 0.4 per year in the model; the per-capita rate rose because N fell, not because the rabbits changed."
+        ]
+      }
+    },
+    {
+      "id": "population-growth:growth:4",
+      "type": "single",
+      "topic": "population-density",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "pg-s1",
+      "q": "By year 30 the rabbit population in Table 1 has reached 1,000. A long drought then lowers the island's carrying capacity to 600 rabbits and keeps it there. Which prediction is most consistent with the logistic model?",
+      "options": [
+        "dN/dt becomes negative, so N falls quickly at first and then more slowly, leveling off near 600",
+        "N stays at 1,000, because dN/dt is zero once a population has reached its carrying capacity",
+        "N drops to 600 at once and stays there, because K sets the population size directly",
+        "N keeps falling until the population dies out, because dN/dt stays negative once it turns negative"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With N = 1,000 and K = 600, (K − N)/K = −400/600, so dN/dt is negative: more rabbits die than are born. As N falls toward 600, K − N shrinks, so the decline slows, and it stops at N = 600 where dN/dt = 0.",
+        "options": [
+          "Right: above K the factor (K − N)/K is negative, and it shrinks to zero as N approaches the new K.",
+          "dN/dt is zero only when N equals the current K; after the drought, K is 600, so a population of 1,000 is above it.",
+          "K sets where the population levels off, not its size at each moment; the rabbits die over time as food runs short.",
+          "dN/dt depends on K − N, which shrinks to zero as N approaches 600, so the decline stops there rather than continuing."
+        ]
+      }
+    },
+    {
+      "id": "population-growth:growth:5",
+      "type": "single",
+      "topic": "population-ecology",
+      "practice": "5.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "pg-s1",
+      "q": "The student switches the model to exponential growth, dN/dt = r<sub>max</sub>N, keeping 20 rabbits and r<sub>max</sub> = 0.4 per year. As N grows, how do dN/dt and the per-capita growth rate change?",
+      "options": [
+        "dN/dt rises in proportion to N, while the per-capita growth rate stays at 0.4 per year",
+        "dN/dt stays at 8 rabbits per year, while the per-capita growth rate falls as N rises",
+        "Both dN/dt and the per-capita growth rate rise as N rises",
+        "dN/dt rises in proportion to N, while the per-capita growth rate falls toward 0"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In exponential growth each rabbit adds r<sub>max</sub> = 0.4 rabbits per year no matter how many there are, so the per-capita rate is constant. dN/dt = 0.4 × N, so doubling N doubles dN/dt: 8 rabbits per year at N = 20, 80 at N = 200.",
+        "options": [
+          "Right: a constant rate per rabbit times a growing number of rabbits gives a growth rate that rises with N.",
+          "A constant dN/dt would add the same number of rabbits each year (a straight line); here each new rabbit also reproduces, so dN/dt grows.",
+          "The per-capita rate is r<sub>max</sub>, which does not change in exponential growth; only dN/dt rises.",
+          "A per-capita rate that falls toward 0 is logistic growth near K; exponential growth assumes nothing becomes scarce."
+        ]
+      }
+    }
+  ],
+  "frq": {
+    "id": "frq-population-growth",
+    "topic": "population-density",
+    "title": "Mini free-response question: what slows a growing population",
+    "intro": "<p>Use Tables 1 and 2 above.</p>",
+    "parts": [
+      {
+        "label": "a",
+        "points": 1,
+        "practice": "4.B",
+        "prompt": "Using Table 1, <b>describe</b> how dN/dt changes from year 0 to year 24.",
+        "rubric": [
+          {
+            "point": "Describes that dN/dt rises from about 8 rabbits per year to a peak of about 100 rabbits per year near year 11 (N ≈ 500), then falls toward 0 by year 24 as N nears 1,000.",
+            "accept": [
+              "rises, peaks near year 11 at about 100 per year, then falls to nearly 0",
+              "increases until N is about half of K, then decreases"
+            ]
+          }
+        ],
+        "sample": "<p>dN/dt rises from 7.8 rabbits per year at year 0 to a peak of 100 rabbits per year at year 11, when N is about 500. After that it falls, to 35.5 at year 16 and only 0.8 rabbits per year at year 24, as N approaches 1,000.</p>"
+      },
+      {
+        "label": "b",
+        "points": 2,
+        "practice": "6.C",
+        "prompt": "The per-capita growth rate in Table 1 falls from 0.392 to 0.001 per year as the population grows. <b>Explain</b> why it falls as N approaches the carrying capacity.",
+        "rubric": [
+          {
+            "point": "Explains that as N rises, more rabbits compete for the same limited resources (food, space, shelter): competition within the species, a density-dependent factor.",
+            "accept": [
+              "intraspecific competition increases with density",
+              "less food per rabbit as the population grows"
+            ]
+          },
+          {
+            "point": "Explains that this lowers the birth rate and/or raises the death rate per rabbit, until births and deaths balance at K.",
+            "accept": [
+              "fewer births and more deaths per individual",
+              "at K births equal deaths so the per-capita rate is 0"
+            ]
+          }
+        ],
+        "sample": "<p>As the population grows, more rabbits share the same amount of food and space on the island, so competition among rabbits increases; this is a density-dependent factor. With less food per rabbit, each rabbit raises fewer young and more rabbits starve or fall ill, so births per rabbit fall and deaths per rabbit rise. The difference between them, the per-capita rate, shrinks to 0 when the population reaches the carrying capacity, where births equal deaths.</p>"
+      },
+      {
+        "label": "c",
+        "points": 1,
+        "practice": "6.E",
+        "prompt": "At year 30 (N = 1,000), a new food plant spreads on the island and raises the carrying capacity to 1,500 rabbits. <b>Predict</b> how N changes after year 30. <b>Justify</b> your prediction using the logistic equation.",
+        "rubric": [
+          {
+            "point": "Predicts that N rises again and levels off near 1,500 (an S-shaped rise, slowing as N nears 1,500), and justifies it: with K = 1,500, (K − N)/K is positive (1/3 at N = 1,000), so dN/dt is positive until N reaches the new K.",
+            "accept": [
+              "grows again until about 1,500 because K − N is now positive",
+              "dN/dt = 0.4 × 1,000 × 500/1,500 ≈ 133 per year, so the population grows toward 1,500"
+            ]
+          }
+        ],
+        "sample": "<p>N will rise again and level off near 1,500. Right after the change, dN/dt = 0.4 × 1,000 × (1,500 − 1,000)/1,500 ≈ 133 rabbits per year, which is positive because the population is now below its carrying capacity. As N approaches 1,500, K − N shrinks, so growth slows and stops at the new K.</p>"
+      }
+    ]
+  }
+}

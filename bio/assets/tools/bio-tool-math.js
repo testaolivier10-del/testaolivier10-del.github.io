@@ -812,4 +812,87 @@
     CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
     simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, operon: operon, popgen: popgen, phylo: phylo, graph: graph
   };
+
+  /* ===== Unit 8 models (population growth, energy flow): begin =====
+     Kept in one block, exported below, so other units' additions merge
+     cleanly. */
+
+  /* ------------------------------------------------ population growth */
+  /* The formula sheet's forms: exponential dN/dt = r_max·N; logistic
+     dN/dt = r_max·N·(K − N)/K. Time runs in steps of Δt (Euler's method):
+     dN/dt is worked out from N at the start of a step and
+     N(t + Δt) = N(t) + (dN/dt)·Δt. N is a real number (the expected size).
+     A density-independent event at time t removes the same fraction f of
+     the population whatever its size (N → N·(1 − f)), applied at the first
+     step at or after t; a change in K applies from its time on. Stops at
+     tEnd, or once N passes nMax. No randomness. */
+  function popRate(model, r, K, N){ return model === 'exp' ? r * N : r * N * (K - N) / K; }
+  function popPerCap(model, r, K, N){ return model === 'exp' ? r : r * (K - N) / K; }
+  function popSim(c){
+    var dt = c.dt, steps = Math.round(c.tEnd / dt), N = c.N0, K = c.K, out = [], nMax = c.nMax || 1e6, stopped = null;
+    var evs = (c.disasters || []).map(function(e){ return { t: e.t, f: e.f, done: false }; });
+    var kc = c.kChange ? { t: c.kChange.t, K: c.kChange.K, done: false } : null;
+    for(var i = 0; i <= steps; i++){
+      var t = round(i * dt, 6), pre = null, hit = [];
+      if(kc && !kc.done && t >= kc.t - 1e-9){ K = kc.K; kc.done = true; }
+      evs.forEach(function(e){ if(!e.done && t >= e.t - 1e-9){ if(pre === null) pre = N; N = N * (1 - e.f); e.done = true; hit.push(e.f); } });
+      var g = popRate(c.model, c.r, K, N);
+      out.push({ t: t, N: N, K: K, dNdt: g, perCap: popPerCap(c.model, c.r, K, N), pre: pre, hit: hit });
+      if(N > nMax){ stopped = t; break; }
+      N = Math.max(0, N + g * dt);
+    }
+    return { points: out, stopped: stopped };
+  }
+  function popAt(sim, t){
+    var ps = sim.points, best = ps[0];
+    for(var i = 0; i < ps.length; i++){ if(ps[i].t <= t + 1e-9) best = ps[i]; else break; }
+    return best;
+  }
+  var population = { simulate: popSim, at: popAt, rate: popRate, perCap: popPerCap,
+    peak: function(r, K){ return { N: K / 2, dNdt: r * K / 4 }; } };
+
+  /* ------------------------------------------------------- energy flow */
+  /* Energy in kcal/m²/yr through a food chain of c.levels trophic levels
+     (producers = level 0). Producers: GPP; their respiration (heat) is
+     prodResp·GPP; NPP = GPP − respiration is the energy stored in new
+     producer tissue, the base of the energy pyramid. Each consumer level
+     stores eff × the level below's stored energy (eff = the fraction passed
+     on, the "10% rule"). To store P a consumer level must take in (eat and
+     absorb) A = P / (1 − resp), because a share resp of what it absorbs is
+     used in cellular respiration and leaves as heat. The rest of the level
+     below's stored energy (not eaten, or eaten but not absorbed) goes to
+     decomposers, and so does all of the top level's. So
+     GPP = Σ heat + Σ to decomposers. Biomass (g/m², dry) = stored energy /
+     kcalPerG / pb, where pb is the level's production-to-biomass ratio
+     (how many times a year its biomass is replaced). A persistent toxin:
+     a consumer keeps a share retain of the toxin in the food it absorbs and
+     builds P / kcalPerG grams of tissue from A / kcalPerG grams of food, so
+     its concentration is retain × A / P = retain / (1 − resp) times its
+     food's. No randomness. */
+  function energySim(c){
+    var n = c.levels, lv = [], kg = c.kcalPerG || 4;
+    if(c.resp > 1 - c.eff + 1e-9) throw new Error('resp must be at most 1 − eff (a level cannot absorb more than the level below stores)');
+    for(var i = 0; i < n; i++){
+      var L = { i: i };
+      if(i === 0){ L.inE = c.gpp; L.heat = c.gpp * c.prodResp; L.stored = c.gpp - L.heat; L.conc = c.c0 == null ? 0 : c.c0; }
+      else {
+        var below = lv[i - 1];
+        L.stored = c.eff * below.stored; L.inE = L.stored / (1 - c.resp); L.heat = L.inE - L.stored;
+        below.passed = L.inE; below.decomp = below.stored - L.inE; below.onward = L.stored;
+        L.conc = below.conc * (c.retain == null ? 1 : c.retain) * L.inE / L.stored;
+      }
+      L.biomass = L.stored / kg / c.pb[i];
+      lv.push(L);
+    }
+    var top = lv[n - 1]; top.passed = 0; top.decomp = top.stored; top.onward = 0;
+    var heat = 0, decomp = 0;
+    lv.forEach(function(L){ heat += L.heat; decomp += L.decomp; });
+    return { levels: lv, gpp: c.gpp, npp: lv[0].stored, heat: heat, decomp: decomp, topShare: top.stored / lv[0].stored,
+      factor: (c.retain == null ? 1 : c.retain) / (1 - c.resp) };
+  }
+  var energyFlow = { simulate: energySim };
+
+  root.ApBioMath.population = population;
+  root.ApBioMath.energyFlow = energyFlow;
+  /* ===== Unit 8 models: end ===== */
 })(typeof window !== 'undefined' ? window : globalThis);
