@@ -1,0 +1,17 @@
+{
+  "gamete": { "def": "A sex cell: a sperm cell or an egg cell. Gametes are haploid, carrying one chromosome of each kind, and two of them join at fertilization to start a new individual." },
+  "haploid": { "def": "Having one set of chromosomes: one of each kind, written n. Human gametes are haploid, with n = 23." },
+  "diploid": { "def": "Having two sets of chromosomes, one set from each parent, so every kind of chromosome is present as a homologous pair; written 2n. Human body cells are diploid, with 2n = 46." },
+  "chromosome-number": { "def": "The number of chromosomes in a cell, counted by centromeres. A species' diploid number (2n) is in its body cells and its haploid number (n) in its gametes; humans have 2n = 46 and n = 23." },
+  "allele-basic": { "def": "One of the different versions of the same gene. The two chromosomes of a homologous pair carry the same genes in the same order, but may carry different alleles of them. (Topic 5.3 covers how alleles act.)" },
+  "homologous-chromosomes": { "def": "The two chromosomes of a pair in a diploid cell, one inherited from each parent. They have the same length, centromere position and genes in the same order, but may carry different alleles. Not to be confused with sister chromatids, which are identical copies." },
+  "sex-chromosome": { "def": "A chromosome that differs between the sexes and helps set an individual's sex; in humans the X and Y chromosomes (females XX, males XY). All other chromosomes are autosomes: humans have 22 pairs of autosomes and one pair of sex chromosomes." },
+  "karyotype": { "def": "A picture of all the chromosomes of one cell, photographed during division and arranged in homologous pairs by size and centromere position, with the sex chromosomes last. Used to count chromosomes and spot large changes." },
+  "meiosis": { "def": "The two-step cell division that makes haploid gametes (or spores) from a diploid cell: DNA is copied once, then the cell divides twice, giving four haploid cells that differ from one another." },
+  "meiosis-i": { "def": "The first division of meiosis. Homologous chromosomes pair, line up side by side at the middle of the cell and are pulled to opposite poles, so each of the two new cells is haploid, with every chromosome still made of two sister chromatids." },
+  "synapsis": { "def": "The pairing of homologous chromosomes, gene by gene along their length, early in meiosis I. The paired homologs (four chromatids in all) are called a tetrad or bivalent." },
+  "meiosis-ii": { "def": "The second division of meiosis, with no DNA copying before it. In each haploid cell the chromosomes line up singly and their sister chromatids separate, as in mitosis, giving four haploid cells in all." },
+  "fertilization": { "def": "The joining of a haploid sperm and a haploid egg to form a diploid zygote, the first cell of a new individual, with one set of chromosomes from each parent." },
+  "sexual-reproduction": { "def": "Reproduction in which two parents each give a haploid gamete, made by meiosis, and the gametes join at fertilization. The offspring differ from each parent and from one another." },
+  "mitosis-vs-meiosis": { "def": "The comparison between the two divisions: mitosis is one division making two diploid cells identical to the parent (growth, repair, asexual reproduction); meiosis is two divisions making four haploid cells that differ from the parent and from each other (gametes)." }
+}

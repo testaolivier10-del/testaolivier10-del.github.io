@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" role="img" aria-labelledby="ndj-t ndj-d">
+<title id="ndj-t">Nondisjunction in meiosis I compared with meiosis II</title>
+<desc id="ndj-d">Two columns follow one homologous pair (one blue and one orange chromosome) through meiosis; the other chromosomes are left out. Left column, nondisjunction in meiosis I: the two homologs fail to separate and both go to the same cell, so one cell after meiosis I has two copies of the chromosome and the other has none. After a normal meiosis II, the four gametes carry 2, 2, 0 and 0 copies: all four are abnormal (n + 1, n + 1, n − 1, n − 1). Right column, nondisjunction in meiosis II: meiosis I is normal and each cell gets one homolog, but in one cell the sister chromatids fail to separate. The four gametes carry 2, 0, 1 and 1 copies: two abnormal (n + 1 and n − 1) and two normal. The n + 1 gamete from meiosis I carries one blue and one orange copy; the n + 1 gamete from meiosis II carries two identical copies. Bottom: fertilization by a normal gamete with one copy gives a zygote with three copies (trisomy) from an n + 1 gamete, or one copy (monosomy) from an n − 1 gamete.</desc>
+<defs><marker id="ndj-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="470" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="190.0" y="26.0" font-size="15" text-anchor="middle" font-weight="700">Nondisjunction in meiosis I</text>
+<text x="570.0" y="26.0" font-size="15" text-anchor="middle" font-weight="700">Nondisjunction in meiosis II</text>
+<line x1="380.0" y1="40.0" x2="380.0" y2="400.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<ellipse cx="190.0" cy="92.0" rx="52.0" ry="40.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="171.6" y="75.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<rect x="180.4" y="75.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<circle cx="180.0" cy="92.0" r="5.0" fill="#1F2A28"/>
+<rect x="191.6" y="75.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<rect x="200.4" y="75.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<circle cx="200.0" cy="92.0" r="5.0" fill="#1F2A28"/>
+<text x="190.0" y="150.0" font-size="12" text-anchor="middle" font-weight="700">meiosis I</text>
+<text x="190.0" y="266.0" font-size="12" text-anchor="middle" font-weight="700">meiosis II</text>
+<line x1="156.2" y1="130.0" x2="115.0" y2="170.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#ndj-a)"/>
+<line x1="223.8" y1="130.0" x2="265.0" y2="170.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#ndj-a)"/>
+<ellipse cx="115.0" cy="206.0" rx="38.0" ry="34.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<ellipse cx="265.0" cy="206.0" rx="38.0" ry="34.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="96.6" y="191.0" width="8" height="30.0" rx="4.0" fill="#0072B2"/>
+<rect x="105.4" y="191.0" width="8" height="30.0" rx="4.0" fill="#0072B2"/>
+<circle cx="105.0" cy="206.0" r="5.0" fill="#1F2A28"/>
+<rect x="116.6" y="191.0" width="8" height="30.0" rx="4.0" fill="#E69F00"/>
+<rect x="125.4" y="191.0" width="8" height="30.0" rx="4.0" fill="#E69F00"/>
+<circle cx="125.0" cy="206.0" r="5.0" fill="#1F2A28"/>
+<text x="190.0" y="46.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">the two homologs of a pair go to the same pole</text>
+<line x1="100.6" y1="240.0" x2="79.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="79.0" cy="322.0" rx="26.0" ry="26.0" fill="#F8E3B8" stroke="#D55E00" stroke-width="2.5"/>
+<rect x="69.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#0072B2"/>
+<circle cx="73.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<rect x="81.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#E69F00"/>
+<circle cx="85.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<text x="79.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">n + 1</text>
+<line x1="129.4" y1="240.0" x2="151.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="151.0" cy="322.0" rx="26.0" ry="26.0" fill="#F8E3B8" stroke="#D55E00" stroke-width="2.5"/>
+<rect x="141.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#0072B2"/>
+<circle cx="145.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<rect x="153.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#E69F00"/>
+<circle cx="157.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<text x="151.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">n + 1</text>
+<line x1="250.6" y1="240.0" x2="229.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="229.0" cy="322.0" rx="26.0" ry="26.0" fill="#F8E3B8" stroke="#D55E00" stroke-width="2.5"/>
+<text x="229.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">n − 1</text>
+<line x1="279.4" y1="240.0" x2="301.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="301.0" cy="322.0" rx="26.0" ry="26.0" fill="#F8E3B8" stroke="#D55E00" stroke-width="2.5"/>
+<text x="301.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">n − 1</text>
+<text x="190.0" y="390.0" font-size="13" text-anchor="middle" font-weight="700">4 of 4 gametes abnormal</text>
+<ellipse cx="570.0" cy="92.0" rx="52.0" ry="40.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="551.6" y="75.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<rect x="560.4" y="75.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<circle cx="560.0" cy="92.0" r="5.0" fill="#1F2A28"/>
+<rect x="571.6" y="75.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<rect x="580.4" y="75.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<circle cx="580.0" cy="92.0" r="5.0" fill="#1F2A28"/>
+<text x="570.0" y="150.0" font-size="12" text-anchor="middle" font-weight="700">meiosis I</text>
+<text x="570.0" y="266.0" font-size="12" text-anchor="middle" font-weight="700">meiosis II</text>
+<line x1="536.2" y1="130.0" x2="495.0" y2="170.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#ndj-a)"/>
+<line x1="603.8" y1="130.0" x2="645.0" y2="170.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#ndj-a)"/>
+<ellipse cx="495.0" cy="206.0" rx="38.0" ry="34.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<ellipse cx="645.0" cy="206.0" rx="38.0" ry="34.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="486.6" y="191.0" width="8" height="30.0" rx="4.0" fill="#0072B2"/>
+<rect x="495.4" y="191.0" width="8" height="30.0" rx="4.0" fill="#0072B2"/>
+<circle cx="495.0" cy="206.0" r="5.0" fill="#1F2A28"/>
+<rect x="636.6" y="191.0" width="8" height="30.0" rx="4.0" fill="#E69F00"/>
+<rect x="645.4" y="191.0" width="8" height="30.0" rx="4.0" fill="#E69F00"/>
+<circle cx="645.0" cy="206.0" r="5.0" fill="#1F2A28"/>
+<text x="570.0" y="46.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">two sister chromatids go to the same pole</text>
+<line x1="480.6" y1="240.0" x2="459.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="459.0" cy="322.0" rx="26.0" ry="26.0" fill="#F8E3B8" stroke="#D55E00" stroke-width="2.5"/>
+<rect x="449.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#0072B2"/>
+<circle cx="453.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<rect x="461.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#0072B2"/>
+<circle cx="465.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<text x="459.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">n + 1</text>
+<line x1="509.4" y1="240.0" x2="531.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="531.0" cy="322.0" rx="26.0" ry="26.0" fill="#F8E3B8" stroke="#D55E00" stroke-width="2.5"/>
+<text x="531.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">n − 1</text>
+<line x1="630.6" y1="240.0" x2="609.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="609.0" cy="322.0" rx="26.0" ry="26.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="605.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#E69F00"/>
+<circle cx="609.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<text x="609.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#1F2A28">n</text>
+<line x1="659.4" y1="240.0" x2="681.0" y2="294.0" stroke="#1F2A28" stroke-width="1.5" marker-end="url(#ndj-a)"/>
+<ellipse cx="681.0" cy="322.0" rx="26.0" ry="26.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="677.5" y="309.0" width="7" height="26.0" rx="3.5" fill="#E69F00"/>
+<circle cx="681.0" cy="322.0" r="3.1" fill="#1F2A28"/>
+<text x="681.0" y="368.0" font-size="13" text-anchor="middle" font-weight="700" fill="#1F2A28">n</text>
+<text x="570.0" y="390.0" font-size="13" text-anchor="middle" font-weight="700">2 of 4 gametes abnormal</text>
+<rect x="30.0" y="412.0" width="700.0" height="48.0" rx="10" fill="#F1DAE7" stroke="#CC79A7" stroke-width="2"/>
+<text x="380.0" y="432.0" font-size="13" text-anchor="middle">Fertilized by a normal gamete (1 copy):  n + 1 gamete → 3 copies (trisomy, 2n + 1);</text>
+<text x="380.0" y="450.0" font-size="13" text-anchor="middle">n − 1 gamete → 1 copy (monosomy, 2n − 1).</text>
+</g>
+</svg>

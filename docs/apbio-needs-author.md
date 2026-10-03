@@ -280,6 +280,27 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   measured; phase lengths follow OpenStax 10.3 (G1 9 h, S 10 h, G2 4.5 h, M 0.5 h). Both boxes
   say the numbers are made up in realistic proportions.
 
+- **trisomy21-origin-numbers** (open, 5.2; Unit 5 authoring). `meiosis-genetic-diversity-s1` uses approximate
+  rates of trisomy 21 births by maternal age (6, 8, 11, 26, 91, 333 per 10,000 at 20-45, rounded from the
+  widely cited Hook-type tables) and "about 90% of extra copies from the egg, mostly meiosis I". Values vary by
+  survey and era; confirm they are acceptable as "approximate".
+- **centromere-marker-method** (open, 5.2; FRQ `frq-nondisjunction-meiosis`). Items infer meiosis I vs II from
+  DNA types near the centromere (different maternal types = MI, identical = MII), stating that crossing over
+  "almost never" happens there. Real studies add caveats (crossovers can occur near some centromeres; mitotic
+  errors after fertilization). Meanwhile: as stated in the stimuli.
+- **tsd-values** (open, 5.5). The turtle sex-ratio curve (0% female at 26 °C to 100% at 32 °C, pivotal about
+  29 °C) is typical of species such as red-eared sliders, not one data set; crocodilians and some turtles show
+  other patterns (females at both extremes). The figure credit and stimulus say so.
+- **hydrangea-mechanism** (open, 5.5). Blue = aluminum taken up from acidic soil binding the anthocyanin
+  pigment (with co-pigments, in cultivars that respond); pink in neutral soil. Simplified, and the pH ranges
+  in `environment-phenotype-s1` are illustrative. Meanwhile: as taught, matching the framework's example.
+- **fast-plant-linkage** (open; FRQ `frq-dihybrid-chi-square`). The mustard (Fast Plants-style) stem-color and
+  leaf-color genes are presented as unlinked and the hairs gene as linked about 14 map units from stem color;
+  the experiment 2 data are invented to fit that distance and are not claims about real Brassica rapa
+  chromosomes. The stimulus does not name real loci.
+- **mito-paternal** (open, 5.4). "An affected father, as a rule, passes a mitochondrial condition to none of his
+  children" (notes, `bio-non-mendelian-genetics-14`); rare paternal leakage exists (see organelle-inheritance).
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer

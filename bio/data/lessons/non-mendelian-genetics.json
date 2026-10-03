@@ -1,0 +1,97 @@
+{
+  "topic": "non-mendelian-genetics",
+  "hook": "<p>In 1910 Thomas Hunt Morgan's lab was breeding fruit flies to test Mendel's rules. Some pairs of traits refused to give 9:3:3:1: offspring kept the same combinations as their grandparents far more often than chance allowed. Elsewhere, red and white snapdragons gave pink flowers, people turned out to have blood types A, B, AB and O, and some plant traits were passed on only by the mother. None of this overturns Mendel. It shows what his simple ratios assumed, and what happens when those assumptions fail.</p>",
+  "prereq": [
+    {
+      "q": "In a dihybrid cross AaBb × AaBb with genes on different chromosome pairs, the phenotype ratio is",
+      "options": [
+        "9:3:3:1",
+        "3:1",
+        "1:2:1"
+      ],
+      "correct": 0,
+      "why": "Independent assortment gives four gamete types in equal numbers, and 16 equally likely combinations give 9:3:3:1.",
+      "review": "mendelian-genetics"
+    },
+    {
+      "q": "Crossing over between homologs in prophase I produces",
+      "options": [
+        "recombinant chromosomes carrying new combinations of alleles",
+        "extra copies of a chromosome",
+        "alleles that neither parent had"
+      ],
+      "correct": 0,
+      "why": "Crossing over swaps matching pieces between homologs, mixing their alleles onto one chromosome.",
+      "review": "meiosis-genetic-diversity"
+    },
+    {
+      "q": "In a chi-square test with 3 degrees of freedom, χ² = 9.4 and the critical value at p = 0.05 is 7.82. The conclusion is",
+      "options": [
+        "reject the null hypothesis",
+        "fail to reject the null hypothesis",
+        "accept the null hypothesis as proven"
+      ],
+      "correct": 0,
+      "why": "χ² is larger than the critical value, so a difference this large would be unlikely by chance if the null hypothesis were true: reject it.",
+      "review": "stats-chi-square"
+    }
+  ],
+  "figure": {
+    "figure": "linked-genes-testcross",
+    "caption": "Linked genes in a testcross. Parental combinations dominate; the few recombinants come from crossing over between the genes, and their percentage measures the distance between them."
+  },
+  "chain": [
+    {
+      "cause": "Mendel's 9:3:3:1 assumes the two genes are on different chromosome pairs, so they assort independently.",
+      "effect": "When two genes sit close together on one chromosome (linked genes), their alleles go into gametes together and that assumption fails."
+    },
+    {
+      "cause": "In a testcross of a fly with B P on one homolog and b p on the other, most eggs carry one of those two chromosomes unchanged.",
+      "effect": "Parental-type offspring far outnumber the other classes, instead of the 1:1:1:1 that independent assortment predicts."
+    },
+    {
+      "cause": "In some meioses, crossing over happens in the stretch between the two genes.",
+      "effect": "A few gametes carry recombinant combinations (B p, b P), and their share, the recombination frequency, rises with the distance between the genes: 1% = 1 map unit."
+    },
+    {
+      "cause": "Alleles do not always act as simply dominant and recessive, and many genes can act on one trait or one gene on many.",
+      "effect": "Crosses give other ratios: 1:2:1 phenotypes with incomplete dominance or codominance, continuous variation for polygenic traits, 9:3:4 with epistasis."
+    },
+    {
+      "cause": "Mitochondria and chloroplasts carry their own genes and are passed on in the egg's cytoplasm.",
+      "effect": "Their traits are inherited from the mother, so reciprocal crosses give different results."
+    },
+    {
+      "cause": "A chi-square test compares observed counts with the counts expected from a hypothesis.",
+      "effect": "A large χ² (above the critical value) rejects the hypothesis, for example independent assortment for linked genes."
+    }
+  ],
+  "ideas": [
+    "<b>Linked genes</b> are close together on one chromosome and tend to be inherited together. <b>Recombination frequency</b> = recombinants ÷ total × 100; 1% = 1 <b>map unit</b>. Values near 50% look like unlinked genes. Frequencies give gene order on a <b>linkage map</b>.",
+    "<b>Incomplete dominance</b>: the heterozygote is in between (pink snapdragons). <b>Codominance</b>: both alleles show fully (AB blood type, roan cattle). The ABO gene has <b>multiple alleles</b>.",
+    "<b>Polygenic</b> traits (height, skin color) depend on many genes and show <b>continuous variation</b>. <b>Pleiotropy</b>: one gene, many traits. <b>Epistasis</b>: one gene masks another.",
+    "<b>Nonnuclear inheritance</b>: mitochondrial and chloroplast genes come from one parent, usually the mother. Sex-linked and cytoplasmic traits give different results in a <b>reciprocal cross</b>.",
+    "Compare the <b>observed ratio</b> with the <b>expected ratio</b> using a chi-square test before claiming a cross does or does not fit Mendel."
+  ],
+  "misconception": {
+    "wrong": "Genes on the same chromosome are always inherited together, so they never form recombinant offspring.",
+    "right": "Crossing over between them makes recombinants in some meioses. The closer the genes, the rarer the recombinants; genes far apart on one chromosome cross over so often that they can give nearly 50% recombinants, like genes on different chromosomes."
+  },
+  "check": [
+    "bio-non-mendelian-genetics-1",
+    "bio-non-mendelian-genetics-2",
+    "bio-non-mendelian-genetics-4",
+    "bio-non-mendelian-genetics-7",
+    "bio-non-mendelian-genetics-8",
+    "bio-non-mendelian-genetics-12",
+    "bio-non-mendelian-genetics-16",
+    "bio-non-mendelian-genetics-19"
+  ],
+  "summary": "<p>Mendel's ratios assume genes on different chromosome pairs, one dominant and one recessive allele, one gene per trait and nuclear genes. When genes are linked, close on one chromosome, parental combinations outnumber recombinants; the recombination frequency (recombinants ÷ total × 100) measures their distance in map units and gives gene order. Incomplete dominance gives an in-between heterozygote and codominance shows both alleles, as in ABO blood types, a gene with multiple alleles. Polygenic traits vary continuously, pleiotropic genes affect several traits, and epistasis lets one gene mask another. Mitochondrial and chloroplast genes are usually inherited from the mother, so reciprocal crosses differ. A chi-square test compares observed counts with those expected under a hypothesis.</p>",
+  "connections": [
+    { "href": "../notes/mendelian-genetics.html", "label": "Back: Mendel's laws, Punnett squares and X-linked genes (5.3)" },
+    { "href": "../notes/stats-chi-square.html", "label": "Back: running a chi-square test" },
+    { "href": "../tools/chi-square.html", "label": "Practice: the chi-square tool" },
+    { "href": "../notes/environment-phenotype.html", "label": "Next: how the environment changes what a genotype produces (5.5)" }
+  ]
+}

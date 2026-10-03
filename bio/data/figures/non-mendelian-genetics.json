@@ -1,0 +1,12 @@
+{
+  "linked-genes-testcross": {
+    "file": "figures/linked-genes-testcross.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: an F1 female fruit fly's homologous pair; one homolog carries B (gray body) and P (red eyes) close together, the other b (black body) and p (purple eyes). Middle: most of her eggs carry B P or b p (parental), a few carry B p or b P (recombinant), made by crossing over between the two genes. Right: crossed with a black, purple-eyed male (b p / b p), the offspring are 470 gray red and 466 black purple (parental), 31 gray purple and 33 black red (recombinant), 1,000 in total. Bottom: recombination frequency = recombinant offspring ÷ total × 100 = 64 ÷ 1,000 × 100 = 6.4%; 1% recombination is 1 map unit, so the genes are about 6.4 map units apart. A scale runs from 0% (always inherited together) to 50% (behaving like unlinked genes)."
+  },
+  "dominance-patterns": {
+    "file": "figures/dominance-patterns.svg", "ext": "svg", "w": 760, "h": 310,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three rows comparing a heterozygote with its homozygous parents. Complete dominance in pea flowers: purple PP × white pp gives purple Pp, which looks like PP. Incomplete dominance in snapdragons: red × white gives pink, in between. Codominance in cattle coats: red × white gives a roan calf whose coat has red hairs and white hairs mixed, both alleles fully shown."
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "topic": "meiosis-genetic-diversity",
+  "hook": "<p>Brothers and sisters share both parents, yet unless they are identical twins they can look and act very differently. Each of your parents can make millions of different kinds of sperm or eggs, so the chance that two of their children inherit exactly the same chromosomes is effectively zero. The same divisions that create this variety can also go wrong: when a chromosome pair fails to separate, a gamete carries one chromosome too many or too few, as in most cases of Down syndrome. This topic shows where the variety comes from, and what happens when separation fails.</p>",
+  "prereq": [
+    {
+      "q": "In metaphase I of meiosis, the chromosomes line up",
+      "options": [
+        "as homologous pairs, side by side across the middle",
+        "singly across the middle, as in mitosis",
+        "as sister chromatids already separated at the poles"
+      ],
+      "correct": 0,
+      "why": "In meiosis I each homolog pairs with its partner, and the pairs line up across the middle; one homolog of each pair faces each pole.",
+      "review": "meiosis"
+    },
+    {
+      "q": "Homologous chromosomes carry",
+      "options": [
+        "the same genes, but possibly different alleles, one homolog from each parent",
+        "identical DNA, copied in S phase",
+        "different genes, one set from each parent"
+      ],
+      "correct": 0,
+      "why": "Homologs carry the same genes in the same order; the version (allele) at each gene may differ. Identical DNA describes sister chromatids.",
+      "review": "meiosis"
+    },
+    {
+      "q": "A human sperm cell normally has how many chromosomes?",
+      "options": [
+        "23",
+        "46",
+        "92"
+      ],
+      "correct": 0,
+      "why": "Gametes are haploid: n = 23, one chromosome of each kind.",
+      "review": "meiosis"
+    }
+  ],
+  "figure": {
+    "figure": "variation-sources",
+    "caption": "Two sources of variety in meiosis I. Left: crossing over makes recombinant chromatids. Right: each homologous pair lines up independently, so the chromosomes from each parent are shuffled into different combinations."
+  },
+  "chain": [
+    {
+      "cause": "In prophase I, paired homologs swap matching pieces between their chromatids (crossing over).",
+      "effect": "Some chromatids now carry recombinant combinations of alleles, mixing the mother's and the father's versions on one chromosome."
+    },
+    {
+      "cause": "At metaphase I, each homologous pair lines up independently of the others, either way round.",
+      "effect": "Each gamete receives a random mix of maternal and paternal chromosomes: 2ⁿ possible combinations, about 8.4 million in humans."
+    },
+    {
+      "cause": "Any one of a father's millions of different sperm can fuse with any one of a mother's different eggs (random fertilization).",
+      "effect": "Each zygote is a new combination, about 70 trillion possibilities per couple before crossing over is counted, so siblings differ."
+    },
+    {
+      "cause": "Sometimes a homologous pair (meiosis I) or two sister chromatids (meiosis II) fail to separate: nondisjunction.",
+      "effect": "Some gametes get an extra copy of that chromosome (n + 1) and some get none (n − 1)."
+    },
+    {
+      "cause": "An n + 1 or n − 1 gamete is fertilized by a normal gamete.",
+      "effect": "The zygote has three copies (trisomy) or one copy (monosomy) of that chromosome in every cell, which changes development; trisomy 21 causes Down syndrome."
+    }
+  ],
+  "ideas": [
+    "<b>Crossing over</b> in prophase I swaps pieces between homologs, making <b>recombinant</b> chromosomes with new combinations of alleles.",
+    "<b>Independent assortment</b>: each homologous pair lines up at metaphase I independently, giving 2ⁿ chromosome combinations (2²³ ≈ 8.4 million in humans).",
+    "<b>Random fertilization</b> multiplies the mother's and father's possibilities, so every offspring is new. Together these three make the <b>genetic variation</b> of sexual reproduction.",
+    "<b>Nondisjunction</b> in meiosis I makes all four gametes abnormal (two n + 1, two n − 1); in meiosis II, two of the four (one n + 1, one n − 1).",
+    "Fertilization of an abnormal gamete gives <b>aneuploidy</b>: <b>trisomy</b> (2n + 1) or <b>monosomy</b> (2n − 1). Examples: <b>Down syndrome</b> (trisomy 21), <b>Turner syndrome</b> (45,X), <b>Klinefelter syndrome</b> (47,XXY)."
+  ],
+  "misconception": {
+    "wrong": "Gametes differ only because of crossing over; without it, every sperm from one man would be the same.",
+    "right": "Independent assortment alone gives about 8.4 million chromosome combinations per person, because each of the 23 pairs lines up either way round at metaphase I. Crossing over adds even more by mixing alleles within chromosomes, and random fertilization multiplies the two parents' possibilities."
+  },
+  "check": [
+    "bio-meiosis-genetic-diversity-1",
+    "bio-meiosis-genetic-diversity-3",
+    "bio-meiosis-genetic-diversity-7",
+    "bio-meiosis-genetic-diversity-8",
+    "bio-meiosis-genetic-diversity-11",
+    "bio-meiosis-genetic-diversity-13",
+    "bio-meiosis-genetic-diversity-19",
+    "bio-meiosis-genetic-diversity-20"
+  ],
+  "summary": "<p>Meiosis and fertilization make every offspring genetically new. In prophase I, crossing over swaps pieces between homologs and makes recombinant chromosomes. At metaphase I, each homologous pair lines up independently, so gametes get random mixes of maternal and paternal chromosomes (2ⁿ combinations). Random fertilization then joins any sperm with any egg. When chromosomes fail to separate (nondisjunction), gametes carry an extra or a missing chromosome: an error in meiosis I affects all four gametes, an error in meiosis II two of them. Fertilization of such a gamete gives trisomy or monosomy, as in Down syndrome (trisomy 21), Turner syndrome (45,X) and Klinefelter syndrome (47,XXY).</p>",
+  "connections": [
+    { "href": "../notes/meiosis.html", "label": "Back: the steps of meiosis I and II (5.1)" },
+    { "href": "../tools/meiosis-nondisjunction.html", "label": "Try it: the meiosis and nondisjunction simulator" },
+    { "href": "../notes/mendelian-genetics.html", "label": "Next: how separating homologs explains inheritance patterns (5.3)" }
+  ]
+}

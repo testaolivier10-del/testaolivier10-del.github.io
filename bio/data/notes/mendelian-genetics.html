@@ -1,0 +1,117 @@
+<p>Why do children resemble their parents, and why can a trait skip a generation? Gregor Mendel answered both questions with pea plants in the 1860s, decades before anyone had seen a chromosome move. His two laws turn out to be exactly what meiosis does to alleles. This page builds them from the chromosomes up, then shows how to use them: Punnett squares, probability rules, testcrosses and pedigrees.</p>
+
+<h2>The words you need</h2>
+<p>A diploid organism has two copies of each gene, one on each homolog. The two copies may be the same allele or different alleles. The pair of alleles an individual has is its <b>genotype</b>, written with letters: PP, Pp or pp. The trait you can see or measure, such as purple or white flowers, is its <b>phenotype</b>.</p>
+<ul>
+<li><b>Homozygous</b> (a homozygote): two identical alleles, PP or pp.</li>
+<li><b>Heterozygous</b> (a heterozygote): two different alleles, Pp.</li>
+<li>A <b>dominant</b> allele sets the phenotype even in a heterozygote; it gets a capital letter (P). A <b>recessive</b> allele shows only in a homozygote (pp); it gets the lowercase letter.</li>
+</ul>
+<p>"Dominant" says nothing about how common or how useful an allele is. It only describes what a heterozygote looks like.</p>
+
+<h2>Mendel's monohybrid crosses</h2>
+<figure id="fig-mono" data-fig="monohybrid-cross"><figcaption>Figure 1. Purple and white pea flowers through the P, F1 and F2 generations.</figcaption></figure>
+<p><b>Gregor Mendel</b> began with <b>true-breeding</b> plants: plants that, when self-pollinated, always give offspring like themselves. He crossed a true-breeding purple-flowered plant with a true-breeding white one. This is the <b>P generation</b> (parental). Every offspring, the <b>F1 generation</b>, had purple flowers: these <b>hybrids</b> showed no trace of white. He then let the F1 plants self-pollinate. In the <b>F2 generation</b>, white reappeared, in about one plant in four (<a class="figref" href="#fig-mono">Figure 1</a>). Across seven different traits he found the same pattern, close to 3 dominant : 1 recessive.</p>
+<p>Mendel explained this with "factors" (alleles) that come in pairs and separate when gametes form. A cross that follows one gene, like this one, is a <b>monohybrid cross</b>.</p>
+
+<h2>The law of segregation and the Punnett square</h2>
+<p>The <b>law of segregation</b>: the two alleles of a gene separate when gametes form, so each gamete carries one. The reason is meiosis I. The two alleles sit on the two homologs, and the homologs go to opposite poles, so half of a heterozygote's gametes carry P and half carry p.</p>
+<p>A <b>Punnett square</b> shows what happens at fertilization. Write one parent's gametes across the top and the other's down the side; each box is one equally likely combination.</p>
+<table class="compare">
+<caption>Punnett square for Pp × Pp</caption>
+<thead><tr><th></th><th>P (½)</th><th>p (½)</th></tr></thead>
+<tbody>
+<tr><th scope="row">P (½)</th><td>PP: purple</td><td>Pp: purple</td></tr>
+<tr><th scope="row">p (½)</th><td>Pp: purple</td><td>pp: white</td></tr>
+</tbody>
+</table>
+<p>Genotypes: 1 PP : 2 Pp : 1 pp (the <b>1:2:1 ratio</b>). Phenotypes: 3 purple : 1 white (the <b>3:1 ratio</b>). These are proportions expected on average; real counts wander around them by chance, which is what a chi-square test checks (topic 5.4).</p>
+
+<h2>Probability: the product and sum rules</h2>
+<p>A Punnett square is a picture of two probability rules. You can use them directly, which is much faster for several genes.</p>
+<ul>
+<li><b>Product rule</b> (multiplication rule): the chance that two <b>independent events</b> both happen is the product of their chances. The chance a Pp parent passes p is ½; the chance both Pp parents pass p is ½ × ½ = ¼, so pp is ¼.</li>
+<li><b>Sum rule</b> (addition rule): the chance that one or another of two <b>mutually exclusive</b> outcomes happens is the sum of their chances. A heterozygote can form from p (egg) and P (sperm), or P (egg) and p (sperm): ¼ + ¼ = ½.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example: AaBbCc × AaBbCc, three genes on different chromosome pairs.</b></p>
+<p><b>What fraction of offspring are aabbcc?</b> Each gene separately: aa is ¼. All three: ¼ × ¼ × ¼ = 1/64.</p>
+<p><b>What fraction show all three dominant traits?</b> Each gene: A_ (AA or Aa) is ¾. All three: ¾ × ¾ × ¾ = 27/64.</p>
+<p><b>Trap:</b> "Given that a child of two carriers is unaffected, what is the chance it is a carrier?" is 2/3, not ½: of the three unaffected outcomes (AA, Aa, Aa), two are carriers.</p>
+</div>
+
+<h2>Two genes: the dihybrid cross and independent assortment</h2>
+<p>Mendel also followed two traits at once, such as seed color (yellow Y dominant to green y) and seed shape (round R dominant to wrinkled r). True-breeding YYRR × yyrr gave an F1 of YyRr, all yellow and round. Selfing the F1 gave four phenotypes in about a <b>9:3:3:1 ratio</b>. This is a <b>dihybrid cross</b>.</p>
+<p>The ratio follows from the <b>law of independent assortment</b>: alleles of genes on different chromosome pairs go into gametes independently. Because the two homologous pairs line up independently at metaphase I (topic 5.2), a YyRr plant makes YR, Yr, yR and yr gametes in equal numbers, ¼ each. Then 4 × 4 equally likely combinations give 16 boxes:</p>
+<table class="compare">
+<caption>Phenotypes from YyRr × YyRr (16 equally likely combinations)</caption>
+<thead><tr><th>Phenotype</th><th>Genotypes</th><th>Fraction</th><th>Product rule</th></tr></thead>
+<tbody>
+<tr><td>Yellow, round</td><td>Y_R_</td><td>9/16</td><td>¾ × ¾</td></tr>
+<tr><td>Yellow, wrinkled</td><td>Y_rr</td><td>3/16</td><td>¾ × ¼</td></tr>
+<tr><td>Green, round</td><td>yyR_</td><td>3/16</td><td>¼ × ¾</td></tr>
+<tr><td>Green, wrinkled</td><td>yyrr</td><td>1/16</td><td>¼ × ¼</td></tr>
+</tbody>
+</table>
+<p>Independent assortment holds for genes on different chromosome pairs. Genes close together on the same chromosome tend to travel together; topic 5.4 covers that.</p>
+
+<h2>The testcross</h2>
+<p>A plant with the dominant phenotype could be homozygous or heterozygous. To find out, cross it with a homozygous recessive individual: a <b>testcross</b>. The recessive parent contributes only recessive alleles, so the offspring's phenotypes show exactly which alleles the tested parent's gametes carried.</p>
+<ul>
+<li>PP × pp: every offspring is Pp, dominant phenotype.</li>
+<li>Pp × pp: 1 Pp : 1 pp, so half show the recessive phenotype. A single recessive offspring proves the parent is heterozygous.</li>
+<li>For two genes, YyRr × yyrr gives four phenotypes in a 1:1:1:1 ratio.</li>
+</ul>
+
+<h2>Sex-linked genes</h2>
+<p>Genes on a sex chromosome are <b>sex-linked</b>. Most are <b>X-linked</b>: on the X, with no matching gene on the much smaller Y. A male (XY) has one copy of each X-linked gene; he is <b>hemizygous</b>, and whatever allele his X carries shows in his phenotype. A female (XX) has two copies, so a recessive allele is masked in a heterozygous female, a <b>carrier</b>.</p>
+<p>X-linked alleles are written on the X: X<sup>B</sup> (normal vision) and X<sup>b</sup> (red-green color blindness).</p>
+<table class="compare">
+<caption>Punnett square for a carrier woman (X<sup>B</sup>X<sup>b</sup>) × a man with normal vision (X<sup>B</sup>Y)</caption>
+<thead><tr><th></th><th>X<sup>B</sup> (from mother)</th><th>X<sup>b</sup> (from mother)</th></tr></thead>
+<tbody>
+<tr><th scope="row">X<sup>B</sup> (from father)</th><td>X<sup>B</sup>X<sup>B</sup>: daughter, normal</td><td>X<sup>B</sup>X<sup>b</sup>: daughter, carrier</td></tr>
+<tr><th scope="row">Y (from father)</th><td>X<sup>B</sup>Y: son, normal</td><td>X<sup>b</sup>Y: son, color-blind</td></tr>
+</tbody>
+</table>
+<p>Half the sons are color-blind; no daughters are, but half are carriers. Two rules follow: a son gets his X from his mother, never his father; and an affected man passes his X to every daughter. That is why X-linked recessive conditions such as hemophilia and red-green color blindness are much more common in males, and why they pass from an affected man through his daughters to his grandsons. <b>Y-linked</b> genes, the few on the Y, pass from father to son.</p>
+
+<h2>Reading pedigrees</h2>
+<figure id="fig-ped" data-fig="pedigree-patterns"><figcaption>Figure 2. Pedigree symbols, and the typical look of autosomal recessive and X-linked recessive inheritance.</figcaption></figure>
+<p>For people we cannot set up crosses, so geneticists use a <b>pedigree</b>, a family tree of who has a trait (<a class="figref" href="#fig-ped">Figure 2</a>). Squares are males, circles females, filled symbols affected people; a horizontal line joins parents and a vertical line leads to their children; generations get Roman numerals.</p>
+<table class="compare">
+<caption>Clues to the pattern of inheritance in a pedigree</caption>
+<thead><tr><th>Pattern</th><th>Clues</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td><b>Autosomal recessive</b></td><td>Affected children of unaffected parents (both carriers); can skip generations; both sexes about equally</td><td>Cystic fibrosis, Tay-Sachs disease</td></tr>
+<tr><td><b>Autosomal dominant</b></td><td>Every affected person has an affected parent; does not skip generations; both sexes; two affected parents can have an unaffected child</td><td>Huntington's disease</td></tr>
+<tr><td><b>X-linked recessive</b></td><td>Mostly males; affected sons of unaffected (carrier) mothers; an affected daughter must have an affected father; never father to son</td><td>Hemophilia, red-green color blindness</td></tr>
+</tbody>
+</table>
+<div class="worked">
+<p><b>Worked example: deciding the pattern.</b> Two unaffected parents have an affected daughter.</p>
+<p><b>Dominant?</b> No: an affected child of a dominant trait needs an affected parent.</p>
+<p><b>X-linked recessive?</b> No: the daughter would need X<sup>a</sup> from her father, who would then be affected.</p>
+<p><b>So:</b> autosomal recessive, and both parents are carriers (Aa). Each further child has a ¼ chance of being affected.</p>
+</div>
+<aside class="going-further"><p><b>Going further: late onset.</b> Huntington's disease is caused by a dominant allele, yet it persists in families because symptoms usually begin between ages 30 and 50, often after the affected person has had children. A child of an affected heterozygous parent has a ½ chance of carrying the allele, whatever their current health.</p></aside>
+
+<h2>The same rules in every eukaryote</h2>
+<p>Segregation and independent assortment work the same way in peas, fruit flies, yeast, corn and people, because all of them store their genes in chromosomes and share them out by meiosis. These <b>shared genetic mechanisms</b> are evidence that eukaryotes descend from a common ancestor that already had them.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"Dominant means common" or "dominant means better." It describes only the heterozygote's phenotype.</li>
+<li>"A 3:1 ratio means a family with four children will have exactly one affected child." Each child is an independent ¼ chance; real families vary.</li>
+<li>Using ½ for "the chance an unaffected sibling of an affected person is a carrier." Once aa is ruled out, it is 2/3.</li>
+<li>Giving a son his father's X. Sons get the Y from their father and the X from their mother.</li>
+<li>Applying 9:3:3:1 to any two genes. It needs independent assortment: genes on different chromosome pairs.</li>
+</ul>
+
+<h2>How the exam tests this</h2>
+<ul>
+<li>Predict genotype and phenotype ratios with Punnett squares and the product and sum rules, including three-gene crosses.</li>
+<li>Design or interpret a testcross.</li>
+<li>Read a pedigree: decide the mode of inheritance, assign genotypes, and calculate the chance that a future child is affected.</li>
+<li>Connect segregation and independent assortment to the separation of homologs and their independent alignment in meiosis I.</li>
+</ul>

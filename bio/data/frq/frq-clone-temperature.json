@@ -1,0 +1,88 @@
+{
+  "id": "frq-clone-temperature",
+  "title": "Same genotype, different environments",
+  "type": "investigation",
+  "points": 4,
+  "units": [
+    "unit-5"
+  ],
+  "topics": [
+    "environment-phenotype"
+  ],
+  "practices": [
+    "3.B",
+    "3.C",
+    "6.E"
+  ],
+  "stimulus": {
+    "kind": "setup",
+    "title": "Yarrow cuttings at three temperatures",
+    "text": "<p>Yarrow is a flowering plant that grows from sea level to high mountains. A student has one yarrow plant collected near the coast. She plans to take 36 cuttings from it, root them, and grow 12 cuttings in each of three growth chambers set to 10 °C, 18 °C and 26 °C. After 10 weeks she will measure the height of each plant, in centimeters.</p>"
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "<b>State</b> the null hypothesis for this investigation.",
+      "points": 1,
+      "rubric": [
+        {
+          "point": "States that growth temperature has no effect on the height of the yarrow plants (mean height is the same at 10, 18 and 26 °C).",
+          "accept": [
+            "there is no difference in mean height among the three temperatures",
+            "temperature does not affect plant height",
+            "any difference in height between the groups is due to chance"
+          ]
+        }
+      ],
+      "sample": "Growth temperature has no effect on the height of the yarrow plants: the mean heights at 10 °C, 18 °C and 26 °C will not differ, apart from chance."
+    },
+    {
+      "label": "b",
+      "prompt": "<b>Identify</b> the independent variable and one variable that should be held constant across the growth chambers, and <b>justify</b> holding that variable constant.",
+      "points": 1,
+      "rubric": [
+        {
+          "point": "Identifies temperature as the independent variable and names a controlled variable (light intensity or duration, water, soil or nutrients, pot size, humidity, cutting size or age) with a justification that it also affects growth, so letting it vary would confound the effect of temperature.",
+          "accept": [
+            "IV temperature; keep light the same because light affects photosynthesis and growth",
+            "IV temperature; same water and soil so only temperature differs",
+            "temperature; hold nutrients constant, since fertilizer changes height too"
+          ]
+        }
+      ],
+      "sample": "The independent variable is the growth temperature. The amount of light (intensity and hours per day) should be the same in every chamber, because light drives photosynthesis and affects how tall plants grow; if one chamber were brighter, a difference in height could be caused by light instead of temperature."
+    },
+    {
+      "label": "c",
+      "prompt": "<b>Explain</b> why the student uses cuttings from one plant rather than seeds collected from many plants.",
+      "points": 1,
+      "rubric": [
+        {
+          "point": "Explains that cuttings from one plant are clones with the same genotype, so genetic differences are removed and any difference in height between groups can be attributed to the environment (temperature); seeds from many plants would differ genetically.",
+          "accept": [
+            "the cuttings are genetically identical, so differences come from temperature, not alleles",
+            "holds genotype constant; seedlings would add genetic variation that could explain height differences",
+            "clones isolate the effect of the environment"
+          ]
+        }
+      ],
+      "sample": "Cuttings from one plant are clones: they all have the same genotype. Any differences in height between the groups must then come from the environment, here temperature. Seeds from many plants come from sexual reproduction and differ in their alleles, so a height difference between groups could be partly genetic."
+    },
+    {
+      "label": "d",
+      "prompt": "The student finds that the plants are tallest at 18 °C and shortest at 10 °C. <b>Predict</b> the heights of plants grown from cuttings of the 10 °C plants if they were then moved to 18 °C for another 10 weeks of new growth, and <b>justify</b> your prediction.",
+      "points": 1,
+      "rubric": [
+        {
+          "point": "Predicts that the new growth would be like that of the 18 °C group (taller growth), because the short height at 10 °C was an environmental effect on the phenotype (phenotypic plasticity); the cuttings' genotype is unchanged, so in the 18 °C environment they grow as the 18 °C plants did.",
+          "accept": [
+            "they would grow as tall as the 18 °C plants because the genotype is the same and only the environment changed",
+            "taller; the 10 °C shortness was not genetic, so it is not carried into the new cuttings",
+            "similar to the 18 °C group, showing plasticity: same genotype, different phenotype in a different environment"
+          ]
+        }
+      ],
+      "sample": "Cuttings taken from the short 10 °C plants and grown at 18 °C should grow like the original 18 °C group, reaching about the same height. The 10 °C plants were short because of their environment, not their alleles: all the cuttings share one genotype. Moving them to 18 °C changes the environment, so their new growth follows the norm of reaction at 18 °C."
+    }
+  ]
+}

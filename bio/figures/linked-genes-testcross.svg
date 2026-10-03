@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="lnk-t lnk-d">
+<title id="lnk-t">Linked genes in a testcross: parental and recombinant offspring</title>
+<desc id="lnk-d">Left: the F1 female's homologous pair. One homolog carries the alleles B (gray body) and P (red eyes) close together; the other carries b (black body) and p (purple eyes). Middle: her gametes. Most carry one of her two original chromosomes, B P or b p (parental types), because the genes are close and usually travel together. A few carry B p or b P (recombinant types), made when crossing over happened in the short stretch between the two genes. Right: crossed with a black, purple-eyed male (b p / b p), the offspring show the egg's alleles directly: many gray red and black purple flies, few gray purple and black red flies. Bottom: the recombination frequency is recombinant offspring divided by total offspring times 100; 1% recombination is defined as 1 map unit. Genes far apart on a chromosome cross over between them more often and approach 50% recombination, the value for unlinked genes.</desc>
+<defs><marker id="lnk-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="440" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="110.0" y="26.0" font-size="14" text-anchor="middle" font-weight="700">F1 female: B P / b p</text>
+<rect x="79.0" y="55.0" width="12" height="150.0" rx="6.0" fill="#0072B2"/>
+<line x1="79.0" y1="107.5" x2="91.0" y2="107.5" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="67.0" y="112.5" font-size="15" text-anchor="middle" font-weight="700">B</text>
+<line x1="79.0" y1="137.5" x2="91.0" y2="137.5" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="67.0" y="142.5" font-size="15" text-anchor="middle" font-weight="700">P</text>
+<rect x="129.0" y="55.0" width="12" height="150.0" rx="6.0" fill="#E69F00"/>
+<line x1="129.0" y1="107.5" x2="141.0" y2="107.5" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="153.0" y="112.5" font-size="15" text-anchor="middle" font-weight="700">b</text>
+<line x1="129.0" y1="137.5" x2="141.0" y2="137.5" stroke="#FFFFFF" stroke-width="2.5"/>
+<text x="153.0" y="142.5" font-size="15" text-anchor="middle" font-weight="700">p</text>
+<text x="110.0" y="228.0" font-size="12" text-anchor="middle">gray body B, red eyes P</text>
+<text x="110.0" y="243.0" font-size="12" text-anchor="middle">on one homolog;</text>
+<text x="110.0" y="258.0" font-size="12" text-anchor="middle">black b, purple p</text>
+<text x="110.0" y="273.0" font-size="12" text-anchor="middle">on the other</text>
+<line x1="170.0" y1="130.0" x2="214.0" y2="130.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#lnk-a)"/>
+<text x="330.0" y="26.0" font-size="14" text-anchor="middle" font-weight="700">Her eggs</text>
+<rect x="244" y="75.0" width="12" height="42.5" rx="6" fill="#0072B2"/>
+<rect x="244" y="115.5" width="12" height="49.5" rx="6" fill="#0072B2"/>
+<text x="250.0" y="185.0" font-size="14" text-anchor="middle" font-weight="700" fill="#1F2A28">B P</text>
+<rect x="294" y="75.0" width="12" height="42.5" rx="6" fill="#E69F00"/>
+<rect x="294" y="115.5" width="12" height="49.5" rx="6" fill="#E69F00"/>
+<text x="300.0" y="185.0" font-size="14" text-anchor="middle" font-weight="700" fill="#1F2A28">b p</text>
+<rect x="364" y="75.0" width="12" height="42.5" rx="6" fill="#0072B2"/>
+<rect x="364" y="115.5" width="12" height="49.5" rx="6" fill="#E69F00"/>
+<text x="370.0" y="185.0" font-size="14" text-anchor="middle" font-weight="700" fill="#D55E00">B p</text>
+<rect x="414" y="75.0" width="12" height="42.5" rx="6" fill="#E69F00"/>
+<rect x="414" y="115.5" width="12" height="49.5" rx="6" fill="#0072B2"/>
+<text x="420.0" y="185.0" font-size="14" text-anchor="middle" font-weight="700" fill="#D55E00">b P</text>
+<text x="275.0" y="205.0" font-size="13" text-anchor="middle" font-weight="700">many: parental</text>
+<text x="395.0" y="205.0" font-size="13" text-anchor="middle" font-weight="700" fill="#D55E00">few: recombinant</text>
+<text x="395.0" y="222.0" font-size="12" text-anchor="middle" fill="#D55E00">(crossover between B and P)</text>
+<line x1="450.0" y1="130.0" x2="494.0" y2="130.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#lnk-a)"/>
+<text x="625.0" y="26.0" font-size="14" text-anchor="middle" font-weight="700">× black, purple male (b p / b p)</text>
+<text x="560.0" y="56.0" font-size="12" text-anchor="middle" font-weight="700">Offspring</text>
+<text x="660.0" y="56.0" font-size="12" text-anchor="middle" font-weight="700">Genotype</text>
+<text x="735.0" y="56.0" font-size="12" text-anchor="end" font-weight="700">Count</text>
+<text x="560.0" y="84.0" font-size="13" text-anchor="middle" fill="#1F2A28">gray, red</text>
+<text x="660.0" y="84.0" font-size="13" text-anchor="middle" fill="#1F2A28">B P / b p</text>
+<text x="735.0" y="84.0" font-size="13" text-anchor="end" font-weight="700" fill="#1F2A28">470</text>
+<text x="560.0" y="112.0" font-size="13" text-anchor="middle" fill="#1F2A28">black, purple</text>
+<text x="660.0" y="112.0" font-size="13" text-anchor="middle" fill="#1F2A28">b p / b p</text>
+<text x="735.0" y="112.0" font-size="13" text-anchor="end" font-weight="700" fill="#1F2A28">466</text>
+<text x="560.0" y="140.0" font-size="13" text-anchor="middle" fill="#D55E00">gray, purple</text>
+<text x="660.0" y="140.0" font-size="13" text-anchor="middle" fill="#D55E00">B p / b p</text>
+<text x="735.0" y="140.0" font-size="13" text-anchor="end" font-weight="700" fill="#D55E00">31</text>
+<text x="560.0" y="168.0" font-size="13" text-anchor="middle" fill="#D55E00">black, red</text>
+<text x="660.0" y="168.0" font-size="13" text-anchor="middle" fill="#D55E00">b P / b p</text>
+<text x="735.0" y="168.0" font-size="13" text-anchor="end" font-weight="700" fill="#D55E00">33</text>
+<line x1="510.0" y1="190.0" x2="740.0" y2="190.0" stroke="#5D6B69" stroke-width="1"/>
+<text x="625.0" y="210.0" font-size="13" text-anchor="middle" font-weight="700">Total 1,000</text>
+<rect x="30.0" y="300.0" width="700.0" height="120.0" rx="12" fill="#F8E3B8" stroke="#E69F00" stroke-width="2"/>
+<text x="380.0" y="328.0" font-size="14" text-anchor="middle" font-weight="700">Recombination frequency = recombinant offspring ÷ total × 100 = (31 + 33) ÷ 1,000 × 100 = 6.4%</text>
+<text x="380.0" y="352.0" font-size="13" text-anchor="middle">1% recombination = 1 map unit (centimorgan), so B and P are about 6.4 map units apart.</text>
+<line x1="120.0" y1="392.0" x2="640.0" y2="392.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="120.0" y1="386.0" x2="120.0" y2="398.0" stroke="#1F2A28" stroke-width="2"/>
+<text x="120.0" y="413.0" font-size="12" text-anchor="middle">0%: always together</text>
+<line x1="380.0" y1="386.0" x2="380.0" y2="398.0" stroke="#1F2A28" stroke-width="2"/>
+<text x="380.0" y="413.0" font-size="12" text-anchor="middle">25%</text>
+<line x1="640.0" y1="386.0" x2="640.0" y2="398.0" stroke="#1F2A28" stroke-width="2"/>
+<text x="640.0" y="413.0" font-size="12" text-anchor="middle">50%: like unlinked genes</text>
+<circle cx="186.6" cy="392" r="6" fill="#D55E00"/>
+</g>
+</svg>

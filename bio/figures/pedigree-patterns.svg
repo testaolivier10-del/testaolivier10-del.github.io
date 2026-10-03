@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" width="760" height="440" role="img" aria-labelledby="ped-t ped-d">
+<title id="ped-t">Pedigree symbols and two inheritance patterns</title>
+<desc id="ped-d">Top: the symbol key. A square is a male and a circle is a female; a filled symbol is a person who shows the trait, an open symbol one who does not; a dot inside marks a known carrier. A horizontal line joining a male and a female is a mating; a vertical line down from it leads to their children, drawn in birth order from left to right. Generations are numbered with Roman numerals. Bottom left, an autosomal recessive pattern: two unaffected parents in generation I have an affected daughter and two unaffected children in generation II; the trait skips a generation and appears in both sexes. Bottom right, an X-linked recessive pattern: an affected grandfather in generation I and an unaffected grandmother have unaffected children, including a carrier daughter; in generation III that daughter's son is affected. Mostly males are affected, and the trait passes from an affected man through his daughters to their sons.</desc>
+<defs><marker id="ped-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="440" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="380.0" y="24.0" font-size="15" text-anchor="middle" font-weight="700">Symbols</text>
+<rect x="47.0" y="39.0" width="26" height="26" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="60.0" y="84.0" font-size="12" text-anchor="middle">male</text>
+<circle cx="140" cy="52" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="140.0" y="84.0" font-size="12" text-anchor="middle">female</text>
+<rect x="217.0" y="39.0" width="26" height="26" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<text x="230.0" y="84.0" font-size="12" text-anchor="middle">affected male</text>
+<circle cx="340" cy="52" r="13.0" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<text x="340.0" y="84.0" font-size="12" text-anchor="middle">affected female</text>
+<circle cx="455" cy="52" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="455" cy="52" r="4.5" fill="#1F2A28"/>
+<text x="455.0" y="84.0" font-size="12" text-anchor="middle">carrier (if shown)</text>
+<line x1="560.0" y1="52.0" x2="610.0" y2="52.0" stroke="#1F2A28" stroke-width="2"/>
+<text x="585.0" y="84.0" font-size="12" text-anchor="middle">mating</text>
+<line x1="680.0" y1="40.0" x2="680.0" y2="68.0" stroke="#1F2A28" stroke-width="2"/>
+<text x="680.0" y="84.0" font-size="12" text-anchor="middle">children</text>
+<line x1="20.0" y1="104.0" x2="740.0" y2="104.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="190.0" y="132.0" font-size="15" text-anchor="middle" font-weight="700">Autosomal recessive</text>
+<text x="26.0" y="175.0" font-size="14" text-anchor="middle" font-weight="700">I</text>
+<text x="26.0" y="265.0" font-size="14" text-anchor="middle" font-weight="700">II</text>
+<rect x="127.0" y="157.0" width="26" height="26" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="140" cy="170" r="4.5" fill="#1F2A28"/>
+<circle cx="240" cy="170" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="240" cy="170" r="4.5" fill="#1F2A28"/>
+<line x1="153.0" y1="170.0" x2="227.0" y2="170.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="190.0" y1="170.0" x2="190.0" y2="213.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="120.0" y1="213.0" x2="260.0" y2="213.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="120.0" y1="213.0" x2="120.0" y2="247.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="190.0" y1="213.0" x2="190.0" y2="247.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="260.0" y1="213.0" x2="260.0" y2="247.0" stroke="#1F2A28" stroke-width="2"/>
+<rect x="107.0" y="247.0" width="26" height="26" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="190" cy="260" r="13.0" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="260" cy="260" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="190.0" y="312.0" font-size="13" text-anchor="middle">Unaffected parents (both carriers) have an</text>
+<text x="190.0" y="328.0" font-size="13" text-anchor="middle">affected child; appears in either sex;</text>
+<text x="190.0" y="344.0" font-size="13" text-anchor="middle">can skip generations.</text>
+<line x1="380.0" y1="120.0" x2="380.0" y2="430.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="570.0" y="132.0" font-size="15" text-anchor="middle" font-weight="700">X-linked recessive</text>
+<text x="406.0" y="175.0" font-size="14" text-anchor="middle" font-weight="700">I</text>
+<text x="406.0" y="245.0" font-size="14" text-anchor="middle" font-weight="700">II</text>
+<text x="406.0" y="315.0" font-size="14" text-anchor="middle" font-weight="700">III</text>
+<rect x="467.0" y="157.0" width="26" height="26" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="560" cy="170" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<line x1="493.0" y1="170.0" x2="547.0" y2="170.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="520.0" y1="170.0" x2="520.0" y2="203.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="480.0" y1="203.0" x2="560.0" y2="203.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="480.0" y1="203.0" x2="480.0" y2="227.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="560.0" y1="203.0" x2="560.0" y2="227.0" stroke="#1F2A28" stroke-width="2"/>
+<rect x="467.0" y="227.0" width="26" height="26" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="560" cy="240" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="560" cy="240" r="4.5" fill="#1F2A28"/>
+<rect x="637.0" y="227.0" width="26" height="26" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<line x1="573.0" y1="240.0" x2="637.0" y2="240.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="605.0" y1="240.0" x2="605.0" y2="273.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="575.0" y1="273.0" x2="695.0" y2="273.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="575.0" y1="273.0" x2="575.0" y2="297.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="635.0" y1="273.0" x2="635.0" y2="297.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="695.0" y1="273.0" x2="695.0" y2="297.0" stroke="#1F2A28" stroke-width="2"/>
+<rect x="562.0" y="297.0" width="26" height="26" fill="#1F2A28" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="635" cy="310" r="13.0" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<rect x="682.0" y="297.0" width="26" height="26" fill="#FFFFFF" stroke="#1F2A28" stroke-width="2"/>
+<text x="570.0" y="360.0" font-size="13" text-anchor="middle">Mostly males affected; an affected man</text>
+<text x="570.0" y="376.0" font-size="13" text-anchor="middle">passes the allele to all his daughters,</text>
+<text x="570.0" y="392.0" font-size="13" text-anchor="middle">who may pass it to their sons.</text>
+</g>
+</svg>

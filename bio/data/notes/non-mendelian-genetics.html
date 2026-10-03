@@ -1,0 +1,91 @@
+<p>Mendel's ratios rest on four quiet assumptions: each gene is on its own chromosome pair, each has one dominant and one recessive allele, each trait is set by one gene, and every gene is in the nucleus. Real inheritance breaks each assumption somewhere. This page goes through the main cases: linked genes, incomplete dominance and codominance, many genes per trait and many traits per gene, and genes outside the nucleus. It ends with how to tell, using a chi-square test, whether a cross fits a predicted ratio at all.</p>
+
+<h2>Linked genes</h2>
+<p>A chromosome carries hundreds or thousands of genes. Genes close together on the same chromosome are <b>linked genes</b>: they go into gametes together, on the same chromosome, so they do not assort independently. A cross of double heterozygotes then gives too many offspring with the parents' combinations of traits and too few with new combinations.</p>
+<figure id="fig-link" data-fig="linked-genes-testcross"><figcaption>Figure 1. A testcross with linked genes in fruit flies. Most offspring are parental types; the few recombinants come from crossing over between the genes.</figcaption></figure>
+<p>Linkage is not total. In some meioses, crossing over (topic 5.2) happens in the stretch between the two genes, and the gamete gets a recombinant chromosome (<a class="figref" href="#fig-link">Figure 1</a>). The <b>recombination frequency</b> is the percentage of offspring with recombinant combinations:</p>
+<p><b>recombination frequency = recombinant offspring ÷ total offspring × 100</b></p>
+<p>The farther apart two genes are, the more likely a crossover falls between them, so the recombination frequency rises with distance. Geneticists define <b>1% recombination as 1 map unit</b> (1 centimorgan) and use the values to build a <b>linkage map</b>, a map of gene order along a chromosome.</p>
+<div class="worked">
+<p><b>Worked example: recombination frequency and gene order.</b></p>
+<p>A testcross of an F1 female fly (B P on one homolog, b p on the other) gives 470 gray red, 466 black purple, 31 gray purple and 33 black red flies.</p>
+<p><b>Step 1, find the recombinants:</b> the parents' combinations were B P and b p, so gray purple (B p) and black red (b P) are recombinant: 31 + 33 = 64.</p>
+<p><b>Step 2:</b> 64 ÷ 1,000 × 100 = 6.4%, so the genes are about 6.4 map units apart.</p>
+<p><b>Gene order from three distances:</b> if A–B = 12, B–C = 4 and A–C = 8 map units, the biggest distance joins the two end genes, so C is in the middle: A–C (8) + C–B (4) = A–B (12). The order is A – C – B.</p>
+<p><b>Trap:</b> the recombinant classes are the small ones. Always check against the parents' combinations, not against "dominant with dominant".</p>
+</div>
+<table class="compare">
+<caption>Unlinked and linked genes in a testcross (AaBb × aabb)</caption>
+<thead><tr><th></th><th>Genes on different chromosome pairs</th><th>Linked genes, close together</th><th>Genes far apart on one chromosome</th></tr></thead>
+<tbody>
+<tr><td>Gametes of the double heterozygote</td><td>Four types, 25% each</td><td>Two parental types common, two recombinant types rare</td><td>Close to four equal types</td></tr>
+<tr><td>Testcross offspring</td><td>1:1:1:1</td><td>Two large classes, two small classes</td><td>Close to 1:1:1:1</td></tr>
+<tr><td>Recombination frequency</td><td>50%</td><td>Well under 50%</td><td>Approaching 50%</td></tr>
+<tr><td>Why</td><td>Independent assortment at metaphase I</td><td>Alleles travel on one chromosome; crossovers between them are rare</td><td>A crossover between them happens in most meioses</td></tr>
+</tbody>
+</table>
+<p>The two recombinant classes are about equal in size, because each crossover is a two-way swap: it makes one chromatid of each recombinant kind.</p>
+
+<h2>When alleles are not simply dominant and recessive</h2>
+<figure id="fig-dom" data-fig="dominance-patterns"><figcaption>Figure 2. Complete dominance, incomplete dominance and codominance.</figcaption></figure>
+<table class="compare">
+<caption>Complete dominance, incomplete dominance and codominance</caption>
+<thead><tr><th></th><th>Complete dominance</th><th>Incomplete dominance</th><th>Codominance</th></tr></thead>
+<tbody>
+<tr><td>Heterozygote's phenotype</td><td>Same as the dominant homozygote</td><td>In between the two homozygotes</td><td>Shows both alleles' effects fully</td></tr>
+<tr><td>Example</td><td>Purple Pp pea flowers</td><td>Pink C<sup>R</sup>C<sup>W</sup> snapdragons</td><td>AB blood type; roan cattle with red and white hairs</td></tr>
+<tr><td>F2 of two heterozygotes</td><td>3:1 phenotypes</td><td>1:2:1 phenotypes</td><td>1:2:1 phenotypes</td></tr>
+</tbody>
+</table>
+<p><b>Incomplete dominance</b> is not blending. Cross two pink snapdragons and you get red, pink and white again in a 1:2:1 ratio: the alleles themselves stay separate and unchanged (<a class="figref" href="#fig-dom">Figure 2</a>).</p>
+<p><b>Codominance</b> is clearest in human ABO blood types. The ABO gene has <b>multiple alleles</b> in the population: I<sup>A</sup> and I<sup>B</sup> each put a different sugar marker on red blood cells, and i puts none. I<sup>A</sup> and I<sup>B</sup> are codominant; both are dominant to i. Any one person still carries just two alleles.</p>
+<table class="compare">
+<caption>ABO blood types</caption>
+<thead><tr><th>Blood type (phenotype)</th><th>Possible genotypes</th><th>Markers on red cells</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>I<sup>A</sup>I<sup>A</sup> or I<sup>A</sup>i</td><td>A</td></tr>
+<tr><td>B</td><td>I<sup>B</sup>I<sup>B</sup> or I<sup>B</sup>i</td><td>B</td></tr>
+<tr><td>AB</td><td>I<sup>A</sup>I<sup>B</sup></td><td>A and B (codominance)</td></tr>
+<tr><td>O</td><td>ii</td><td>Neither</td></tr>
+</tbody>
+</table>
+<p>So a type A parent and a type B parent can have a type O child if both are heterozygous (I<sup>A</sup>i × I<sup>B</sup>i gives A, B, AB and O, ¼ each). A type AB parent can never have a type O child, because he or she has no i to pass on.</p>
+
+<h2>Many genes, one trait; one gene, many traits</h2>
+<p><b>Polygenic inheritance.</b> Traits such as human height and skin color are affected by many genes, each adding a small amount. With more genes, the number of possible phenotypes grows and the steps between them shrink, so the trait shows <b>continuous variation</b>: a smooth range, usually bell-shaped, instead of a few clear classes. With three genes whose capital-letter alleles each add the same amount, AaBbCc × AaBbCc already gives 7 classes (0 to 6 capital-letter alleles); with dozens of genes the distribution looks smooth. The environment often adds to the spread (topic 5.5).</p>
+<p><b>Pleiotropy.</b> One gene can affect several traits, because its product is used in several places. The gene altered in cystic fibrosis makes a channel protein used in the lungs, pancreas, sweat glands and reproductive tract, so one gene change causes lung, digestive, sweat and fertility effects.</p>
+<p><b>Epistasis.</b> One gene can mask or change the effect of another. In Labrador retrievers, gene B sets the pigment (B black, b chocolate) and gene E decides whether pigment reaches the hair at all; ee dogs are yellow whatever their B alleles. BbEe × BbEe gives 9 black : 3 chocolate : 4 yellow, because the B_ee and bbee classes (3 + 1 of 16) look the same.</p>
+
+<h2>Genes outside the nucleus</h2>
+<p>Mitochondria and chloroplasts carry small circles of their own DNA (topic 2.10). They are passed on in the cytoplasm, and an egg has plenty of cytoplasm while a sperm or pollen cell brings almost none. So mitochondrial and chloroplast genes usually come from the mother: <b>maternal</b> or <b>nonnuclear inheritance</b>. A woman with a mitochondrial disorder can pass it to all her children; an affected man, as a rule, passes it to none of them.</p>
+<p>The way to spot it is a <b>reciprocal cross</b>: do the cross both ways, swapping which parent shows the trait. For an autosomal gene the results match, because each parent gives one allele. For an X-linked gene they differ, because sons get their X from their mother. For a cytoplasmic gene they differ too, and the offspring follow the mother in both directions. In four o'clock plants, seeds from flowers on white branches give white seedlings and seeds from green branches give green ones, whatever the pollen.</p>
+<aside class="going-further"><p><b>Going further: "usually" the mother.</b> In humans and most animals, sperm mitochondria are destroyed after fertilization, so mitochondrial DNA is inherited from the mother. Plants vary: chloroplasts come from the pollen parent in many conifers and from both parents in some flowering plants. The rule is "from one parent, usually the mother", not a law.</p></aside>
+
+<h2>Testing a ratio with chi-square</h2>
+<p>Real counts never match a predicted ratio exactly. A <b>chi-square test</b> (see <a href="stats-chi-square.html">the chi-square skills topic</a>) asks whether the gap between the <b>observed ratio</b> and the <b>expected ratio</b> is small enough to be chance. The null hypothesis is that the cross follows the predicted ratio (for example, that the genes assort independently).</p>
+<div class="worked">
+<p><b>Worked example: is this F2 a 9:3:3:1?</b> Tomato plants heterozygous for two genes are crossed and give 520 offspring: 290 tall red, 105 tall yellow, 98 short red and 27 short yellow.</p>
+<p><b>Expected (9:3:3:1 of 520):</b> 292.5, 97.5, 97.5 and 32.5.</p>
+<p><b>χ² = Σ (o − e)² ÷ e</b> = 2.5²/292.5 + 7.5²/97.5 + 0.5²/97.5 + 5.5²/32.5 = 0.02 + 0.58 + 0.00 + 0.93 = 1.53.</p>
+<p><b>Degrees of freedom:</b> 4 classes − 1 = 3. <b>Critical value</b> at p = 0.05: 7.82.</p>
+<p><b>Decision:</b> 1.53 &lt; 7.82, so fail to reject the null hypothesis. The data are consistent with independent assortment. If χ² had been larger than 7.82, as it is for strongly linked genes, you would reject it.</p>
+<p><b>Trap:</b> failing to reject does not prove the genes assort independently; it means the data give no reason to doubt it.</p>
+</div>
+<p>Practice the steps with new numbers in the <a href="../tools/chi-square.html">chi-square tool</a>.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"Incomplete dominance is blending." The alleles stay separate; pink × pink gives red and white again.</li>
+<li>"Codominance and incomplete dominance are the same." Codominance shows both alleles fully (A and B markers, red and white hairs); incomplete dominance gives one in-between phenotype.</li>
+<li>Counting "dominant-dominant" offspring as parental in every linkage problem. Parental types are the combinations the heterozygote received from its own parents.</li>
+<li>"A recombination frequency above 50% means the genes are far apart." Testcross recombination tops out at about 50%, the value for unlinked genes.</li>
+<li>Using df = number of classes. It is number of classes − 1.</li>
+</ul>
+
+<h2>How the exam tests this</h2>
+<ul>
+<li>Calculate recombination frequencies from testcross counts and order genes on a map.</li>
+<li>Use chi-square to decide whether counts fit 3:1, 9:3:3:1, 1:1:1:1 or another ratio, and say what rejecting means (for example, linkage).</li>
+<li>Predict ratios for incomplete dominance, codominance, multiple alleles (ABO) and epistasis.</li>
+<li>Identify nonnuclear inheritance from reciprocal crosses or pedigrees in which only mothers pass on a trait.</li>
+</ul>

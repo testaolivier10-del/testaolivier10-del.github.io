@@ -1,0 +1,17 @@
+{
+  "monohybrid-cross": {
+    "file": "figures/monohybrid-cross.svg", "ext": "svg", "w": 760, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left: a true-breeding purple-flowered pea plant (PP), whose gametes all carry P, is crossed with a true-breeding white-flowered plant (pp), whose gametes all carry p. Every F1 plant is purple, Pp: the purple allele is dominant and the white allele recessive. The F1 plants are self-pollinated; each makes P and p gametes in equal numbers. Right: a Punnett square for Pp × Pp, with P and p along the top (pollen) and side (eggs). The boxes are PP purple, Pp purple, Pp purple and pp white. F2 phenotypes: 3 purple to 1 white; genotypes: 1 PP to 2 Pp to 1 pp."
+  },
+  "pedigree-patterns": {
+    "file": "figures/pedigree-patterns.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Top, a key: square male, circle female, filled symbol affected, open symbol unaffected, dot inside a known carrier, a horizontal line for a mating and a vertical line down to the children. Bottom left, autosomal recessive: two unaffected carrier parents in generation I have an affected daughter and two unaffected children; the trait appears in either sex and can skip generations. Bottom right, X-linked recessive: an affected grandfather and an unaffected grandmother have an unaffected son and a carrier daughter; the daughter and her unaffected husband have an affected son, an unaffected daughter and an unaffected son. Mostly males are affected, and the allele passes from an affected man through his daughters to their sons."
+  },
+  "pedigree-family-r": {
+    "file": "figures/pedigree-family-r.svg", "ext": "svg", "w": 580, "h": 300,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A three-generation pedigree. Generation I: I-1, an unaffected man, and I-2, an unaffected woman. Their children: II-1, an affected man; II-2, an unaffected man; II-3, an unaffected woman. II-3 and II-4, an unaffected man from outside the family, have three children: III-1, an affected woman; III-2, an unaffected man; III-3, an unaffected woman."
+  }
+}

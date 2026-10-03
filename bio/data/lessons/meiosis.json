@@ -1,0 +1,96 @@
+{
+  "topic": "meiosis",
+  "hook": "<p>Every cell in your body has 46 chromosomes, and so did every cell in each of your parents. You began as one cell, made when a sperm joined an egg. If each of those had carried 46 chromosomes, you would have started with 92, your children with 184, and within a few generations no cell could hold them. That does not happen, because the cells that make sperm and eggs use a special division that cuts the chromosome number exactly in half. This topic shows how that division works and how it differs from mitosis.</p>",
+  "prereq": [
+    {
+      "q": "After S phase, one chromosome consists of",
+      "options": [
+        "two identical sister chromatids joined at a centromere",
+        "two different chromosomes, one from each parent",
+        "a single DNA molecule with twice the usual length"
+      ],
+      "correct": 0,
+      "why": "S phase copies each DNA molecule; the two identical copies stay joined at the centromere as sister chromatids.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "A cell with 8 chromosomes in G1 finishes mitosis and cytokinesis. How many chromosomes does each daughter cell have?",
+      "options": [
+        "8",
+        "4",
+        "16"
+      ],
+      "correct": 0,
+      "why": "Mitosis gives each daughter cell one copy of every chromosome, so the number stays at 8.",
+      "review": "cell-cycle"
+    },
+    {
+      "q": "A gene is",
+      "options": [
+        "a stretch of DNA that carries the information for a product such as a protein",
+        "a whole chromosome",
+        "a protein that copies DNA"
+      ],
+      "correct": 0,
+      "why": "A gene is a segment of DNA; one chromosome carries many genes.",
+      "review": "nucleic-acids"
+    }
+  ],
+  "figure": {
+    "figure": "meiosis-stages",
+    "caption": "Meiosis in a cell with 2n = 4. Meiosis I separates the homologous chromosomes of each pair; meiosis II separates sister chromatids. Here the chromosomes are drawn unchanged; topic 5.2 adds how they swap pieces and why the cells end up so different."
+  },
+  "chain": [
+    {
+      "cause": "Before meiosis, the cell copies its DNA in S phase, as before mitosis.",
+      "effect": "Every chromosome is two identical sister chromatids, and the cell is still diploid: each kind of chromosome is present twice, one homolog from each parent."
+    },
+    {
+      "cause": "Early in meiosis I, each chromosome finds its homolog and pairs with it along its whole length (synapsis).",
+      "effect": "The cell now holds its chromosomes as pairs, each pair four chromatids thick."
+    },
+    {
+      "cause": "Spindle fibers from opposite poles attach to the two homologs of each pair, and the pairs line up side by side across the middle.",
+      "effect": "One homolog of every pair faces each pole."
+    },
+    {
+      "cause": "The homologs of each pair are pulled to opposite poles while their sister chromatids stay joined, and the cell divides.",
+      "effect": "Two cells form, each haploid: one chromosome of each kind, each still made of two sister chromatids."
+    },
+    {
+      "cause": "Without copying DNA again, each cell starts meiosis II: chromosomes line up singly and their sister chromatids separate, as in mitosis.",
+      "effect": "Four haploid cells form from the one diploid cell, each with half the parent's chromosome number."
+    },
+    {
+      "cause": "At fertilization a haploid sperm and a haploid egg join.",
+      "effect": "The zygote is diploid again, with one set of chromosomes from each parent, so the chromosome number stays the same from one generation to the next."
+    }
+  ],
+  "ideas": [
+    "<b>Diploid</b> cells (2n) hold two sets of chromosomes, one from each parent; <b>haploid</b> cells (n) hold one set. In humans 2n = 46 and n = 23.",
+    "<b>Homologous chromosomes</b> carry the same genes in the same order but may carry different <b>alleles</b> (versions of a gene). Sister chromatids are identical copies; homologs are not.",
+    "<b>Meiosis</b> is one round of DNA copying followed by two divisions. <b>Meiosis I</b> separates homologs and halves the chromosome number; <b>meiosis II</b> separates sister chromatids.",
+    "Meiosis makes four haploid <b>gametes</b> (or spores) that differ from each other; mitosis makes two diploid cells identical to the parent.",
+    "<b>Fertilization</b> restores the diploid number, so in <b>sexual reproduction</b> meiosis and fertilization alternate every generation."
+  ],
+  "misconception": {
+    "wrong": "Meiosis I separates sister chromatids, just like mitosis, and meiosis II then halves the chromosome number.",
+    "right": "Meiosis I separates homologous chromosomes, and that is what halves the number: each cell gets one of each pair. Sister chromatids stay together until meiosis II, which works like mitosis in a haploid cell."
+  },
+  "check": [
+    "bio-meiosis-1",
+    "bio-meiosis-2",
+    "bio-meiosis-4",
+    "bio-meiosis-6",
+    "bio-meiosis-7",
+    "bio-meiosis-13",
+    "bio-meiosis-15",
+    "bio-meiosis-18"
+  ],
+  "summary": "<p>Meiosis makes haploid gametes from a diploid cell. The DNA is copied once, in S phase, and then the cell divides twice. In meiosis I, homologous chromosomes pair, line up side by side across the middle and separate to opposite poles, so each of the two cells is haploid but its chromosomes still have two sister chromatids. In meiosis II, with no further copying, the chromosomes line up singly and their sister chromatids separate, giving four haploid cells. Fertilization of a haploid egg by a haploid sperm restores the diploid number. Mitosis keeps the chromosome number and makes identical cells; meiosis halves it and makes cells that differ.</p>",
+  "connections": [
+    { "href": "../notes/cell-cycle.html", "label": "Back: mitosis, sister chromatids and counting chromosomes (4.5)" },
+    { "href": "../notes/cell-cycle-regulation.html", "label": "Back: checkpoints that police each division (4.6)" },
+    { "href": "../notes/meiosis-genetic-diversity.html", "label": "Next: why the gametes differ, and what happens when chromosomes fail to separate (5.2)" }
+  ]
+}

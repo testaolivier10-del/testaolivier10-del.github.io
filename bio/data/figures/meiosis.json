@@ -1,0 +1,12 @@
+{
+  "meiosis-stages": {
+    "file": "figures/meiosis-stages.svg", "ext": "svg", "w": 760, "h": 520,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Six numbered panels following a cell with four chromosomes (2n = 4), one long and one short from each parent, colored blue for one parent and orange for the other. 1: the DNA has already been copied, so each chromosome is two sister chromatids joined at a centromere. 2: in meiosis I the homologous chromosomes pair, long with long and short with short, and the pairs line up side by side across the middle. 3: the partners of each pair go to opposite poles, giving two cells with two chromosomes each (n = 2), each still made of two sister chromatids. 4: in meiosis II the chromosomes in each cell line up singly. 5: the sister chromatids separate to opposite poles. 6: four haploid cells, each with one long and one short chromosome. No DNA is copied between meiosis I and II."
+  },
+  "life-cycle-ploidy": {
+    "file": "figures/life-cycle-ploidy.svg", "ext": "svg", "w": 760, "h": 360,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A cycle of four boxes. Adults, whose body cells are diploid with 2n = 46, make sperm and egg cells by meiosis (46 to 23); the gametes are haploid, n = 23. Fertilization joins a sperm and an egg (23 + 23 = 46) into a diploid zygote with 23 chromosomes from each parent. Mitosis copies the 46-chromosome set into every cell of the growing body (46 to 46), which grows into an adult. Without meiosis, the chromosome number would double every generation."
+  }
+}

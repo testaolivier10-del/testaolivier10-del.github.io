@@ -1,0 +1,169 @@
+{
+  "id": "frq-dihybrid-chi-square",
+  "title": "Two dihybrid crosses tested with chi-square",
+  "type": "iee",
+  "points": 9,
+  "units": [
+    "unit-5",
+    "skills-stats"
+  ],
+  "topics": [
+    "non-mendelian-genetics",
+    "mendelian-genetics"
+  ],
+  "practices": [
+    "1.B",
+    "3.B",
+    "5.C",
+    "5.D",
+    "6.B",
+    "6.C",
+    "3.C"
+  ],
+  "stimulus": {
+    "kind": "table",
+    "title": "F2 plants from two dihybrid crosses in a fast-growing mustard",
+    "text": "<p>Researchers studied three genes in a fast-growing mustard plant. Allele A gives a purple stem and is dominant to a (green stem). Allele Y gives dark green leaves and is dominant to y (yellow-green leaves). Allele H gives hairy stems and is dominant to h (hairless). Seedlings were grown under the same bright lights and scored at 7 days.</p><p><b>Experiment 1:</b> true-breeding purple, dark green plants (AAYY) were crossed with true-breeding green-stemmed, yellow-green plants (aayy). The F1 plants (AaYy) were crossed with each other to give an F2.</p><p><b>Experiment 2:</b> true-breeding purple, hairy plants (AAHH) were crossed with true-breeding green-stemmed, hairless plants (aahh), and the F1 plants (AaHh) were crossed with each other to give an F2.</p>",
+    "table": {
+      "caption": "F2 phenotypes in experiments 1 and 2 (number of plants)",
+      "cols": [
+        "Phenotype class",
+        "Experiment 1 (stem color, leaf color)",
+        "Experiment 2 (stem color, hairs)"
+      ],
+      "rows": [
+        [
+          "Both dominant traits",
+          "412 purple, dark green",
+          "498 purple, hairy"
+        ],
+        [
+          "Purple stem, recessive second trait",
+          "129 purple, yellow-green",
+          "42 purple, hairless"
+        ],
+        [
+          "Green stem, dominant second trait",
+          "145 green stem, dark green",
+          "46 green stem, hairy"
+        ],
+        [
+          "Both recessive traits",
+          "34 green stem, yellow-green",
+          "134 green stem, hairless"
+        ],
+        [
+          "Total",
+          "720",
+          "720"
+        ]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "(i) <b>Describe</b> the ratio of F2 phenotypes expected in experiment 1 if genes A and Y assort independently.<br>(ii) <b>Explain</b> how events in meiosis in the F1 plants would produce that ratio.",
+      "points": 2,
+      "rubric": [
+        {
+          "point": "(i) Describes a 9:3:3:1 ratio: 9 purple dark green : 3 purple yellow-green : 3 green-stemmed dark green : 1 green-stemmed yellow-green.",
+          "accept": [
+            "9:3:3:1, with 9/16 showing both dominant traits and 1/16 neither",
+            "405 : 135 : 135 : 45 out of 720",
+            "9/16, 3/16, 3/16, 1/16"
+          ]
+        },
+        {
+          "point": "(ii) Explains that the homologous pairs carrying A/a and Y/y line up independently at metaphase I (and the alleles of each gene segregate into different gametes), so AY, Ay, aY and ay gametes form in equal proportions (1/4 each), and random fertilization of these gives 9:3:3:1.",
+          "accept": [
+            "the two chromosome pairs orient independently in meiosis I, giving four gamete types equally, which combine at random",
+            "segregation of each gene plus independent assortment of the two pairs make 1/4 AY, Ay, aY, ay; 4 × 4 combinations give 9:3:3:1",
+            "each gamete gets one allele of each gene, and which allele of A goes with which of Y is random"
+          ]
+        }
+      ],
+      "sample": "(i) If the genes assort independently, the F2 should be 9 purple dark green : 3 purple yellow-green : 3 green-stemmed dark green : 1 green-stemmed yellow-green. (ii) In each F1 plant (AaYy), the homologs of each pair separate in meiosis I, so each gamete gets one allele of each gene. If the genes are on different chromosome pairs, each pair lines up at metaphase I independently of the other, so AY, Ay, aY and ay gametes are made in equal numbers. Random fertilization of four equally common gamete types from each parent gives 16 equally likely combinations: 9 with both dominant traits, 3 and 3 with one, and 1 with neither."
+    },
+    {
+      "label": "b",
+      "prompt": "(i) <b>State</b> the null hypothesis for a chi-square test of the experiment 1 data.<br>(ii) <b>Calculate</b> the chi-square value for experiment 1. Show your work.<br>(iii) The critical value for 3 degrees of freedom at p = 0.05 is 7.82. <b>Determine</b> whether the null hypothesis should be rejected, and state what this means for genes A and Y.",
+      "points": 3,
+      "rubric": [
+        {
+          "point": "(i) States that the F2 phenotypes occur in a 9:3:3:1 ratio (the genes assort independently), and that any differences from the expected counts are due to chance.",
+          "accept": [
+            "there is no significant difference between the observed counts and a 9:3:3:1 ratio",
+            "the genes are unlinked and the deviations are due to chance",
+            "observed = expected for 9:3:3:1 apart from random error"
+          ]
+        },
+        {
+          "point": "(ii) Calculates χ² ≈ 3.8 using expected counts 405, 135, 135 and 45: 49/405 + 36/135 + 100/135 + 121/45 = 0.12 + 0.27 + 0.74 + 2.69 = 3.82 (accept 3.8 to 3.9 with correct work).",
+          "accept": [
+            "χ² = 3.82",
+            "3.8, with (o − e)²/e summed over the four classes",
+            "0.121 + 0.267 + 0.741 + 2.689 = 3.82"
+          ]
+        },
+        {
+          "point": "(iii) Fails to reject the null hypothesis because 3.82 < 7.82; the data are consistent with independent assortment of A and Y (genes on different chromosome pairs, or far apart).",
+          "accept": [
+            "fail to reject; χ² is below the critical value, so the deviations can be explained by chance",
+            "do not reject: the results fit 9:3:3:1, so A and Y assort independently",
+            "the null hypothesis is not rejected (3.8 < 7.82)"
+          ]
+        }
+      ],
+      "sample": "(i) Null hypothesis: the F2 phenotypes occur in a 9:3:3:1 ratio, and any difference between observed and expected counts is due to chance. (ii) Expected: 720 × 9/16 = 405, 720 × 3/16 = 135, 135, and 720 × 1/16 = 45. χ² = (412 − 405)²/405 + (129 − 135)²/135 + (145 − 135)²/135 + (34 − 45)²/45 = 0.12 + 0.27 + 0.74 + 2.69 = 3.82. (iii) 3.82 is less than 7.82, so I fail to reject the null hypothesis. The data are consistent with genes A and Y assorting independently."
+    },
+    {
+      "label": "c",
+      "prompt": "The chi-square value for experiment 2, against a 9:3:3:1 ratio, is about 320.<br>(i) <b>Identify</b> the two phenotype classes that are larger than a 9:3:3:1 ratio predicts, and <b>explain</b> what this indicates about the locations of genes A and H.<br>(ii) <b>Explain</b> why the purple hairless and green-stemmed hairy plants appear at all.",
+      "points": 2,
+      "rubric": [
+        {
+          "point": "(i) Identifies purple hairy (498 vs 405) and green-stemmed hairless (134 vs 45), the parental combinations, and explains that A and H are linked: close together on the same chromosome, so A and H (and a and h) tend to stay together in gametes.",
+          "accept": [
+            "the parental types purple hairy and green hairless are in excess, so the genes are linked on one chromosome",
+            "too many offspring keep the grandparents' combinations, so A and H travel together on one chromosome",
+            "linked genes: A with H and a with h were on the same chromosomes in the F1"
+          ]
+        },
+        {
+          "point": "(ii) Explains that crossing over between the two genes in prophase I of some F1 meioses makes recombinant chromosomes (A h and a H), which produce these recombinant offspring.",
+          "accept": [
+            "crossing over between A and H in some meioses gives recombinant gametes",
+            "recombination in prophase I swaps alleles between homologs, giving Ah and aH chromosomes",
+            "the genes are linked but not completely; a crossover between them sometimes separates them"
+          ]
+        }
+      ],
+      "sample": "(i) Purple hairy plants (498, expected 405) and green-stemmed hairless plants (134, expected 45) are larger than predicted. These are the combinations in the original parents, so A and H tend to stay together, and so do a and h. This means genes A and H are linked: they are close together on the same chromosome, so they do not assort independently. (ii) In some F1 meioses, crossing over happens between genes A and H during prophase I. This swaps pieces between the A H and a h homologs, making recombinant chromosomes carrying A with h and a with H. Gametes with these chromosomes give the purple hairless and green-stemmed hairy plants."
+    },
+    {
+      "label": "d",
+      "prompt": "(i) Genes A and H are about 14 map units apart. An F1 plant from experiment 2 (AaHh) is crossed with a green-stemmed, hairless plant (aahh). <b>Predict</b> the percentage of offspring in each of the four phenotype classes.<br>(ii) Stem color depends on a purple pigment that plants make more of in bright light. <b>Justify</b> growing every plant under the same bright light before stem color is scored.",
+      "points": 2,
+      "rubric": [
+        {
+          "point": "(i) Predicts about 43% purple hairy, 43% green-stemmed hairless, 7% purple hairless and 7% green-stemmed hairy (14% recombinants split equally between the two recombinant classes).",
+          "accept": [
+            "43%, 43%, 7%, 7% with the parental classes largest",
+            "86% parental (43% each) and 14% recombinant (7% each)",
+            "about 43 : 43 : 7 : 7"
+          ]
+        },
+        {
+          "point": "(ii) Justifies that light affects the phenotype (pigment made) independently of genotype; dim or uneven light could make some purple-genotype (A_) plants look green and be scored wrongly, so equal bright light ensures stem color reflects genotype and the comparison is fair.",
+          "accept": [
+            "in dim light A_ plants might not show purple and would be misclassified as aa",
+            "keeps the environment from changing the phenotype, so differences reflect alleles",
+            "a controlled variable: uneven light would add an environmental effect on stem color"
+          ]
+        }
+      ],
+      "sample": "(i) The testcross offspring show the F1's gametes directly. 14% are recombinant, split equally: about 7% purple hairless and 7% green-stemmed hairy. The other 86% are parental: about 43% purple hairy and 43% green-stemmed hairless. (ii) How much purple pigment a plant makes depends on light as well as on its alleles. In dim light, some plants with an A allele might make little pigment, look green and be counted as aa, which would distort the ratios. Growing every plant under the same bright light lets the genotype show reliably in the stem color, so differences between classes are due to alleles, not to light."
+    }
+  ]
+}

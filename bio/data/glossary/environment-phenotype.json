@@ -1,0 +1,9 @@
+{
+  "phenotypic-plasticity": { "def": "The ability of one genotype to produce different phenotypes in different environments. The range of phenotypes a genotype produces across a range of environments is its norm of reaction." },
+  "hydrangea": { "def": "A textbook case of the environment changing phenotype: in many hydrangeas, acidic soil (low soil pH) makes aluminum available, the plant takes it up and it binds the flower pigment, giving blue flowers; in neutral or alkaline soil the same plant has pink flowers." },
+  "tsd": { "def": "A system in which the temperature of the eggs during a sensitive period of incubation, not sex chromosomes, decides whether an embryo becomes male or female. In many turtles, warm nests give mostly females and cool nests mostly males." },
+  "fur-color": { "def": "Coat color in Himalayan rabbits and Siamese cats: their pigment-making enzyme works only at cooler temperatures, so dark fur grows on the cooler ears, nose, paws and tail, and light fur on the warmer body." },
+  "nutrition-height": { "def": "The effect of diet on height, a polygenic trait: people with the same genes for height grow taller with better nutrition in childhood, which is why average height in many countries rose over the past century." },
+  "pku": { "def": "Phenylketonuria (PKU), an autosomal recessive condition in which an enzyme that breaks down the amino acid phenylalanine does not work. Phenylalanine builds up and harms the developing brain unless the child eats a low-phenylalanine diet from birth; with the diet, development is typically normal." },
+  "multifactorial": { "def": "A trait shaped by several genes together with environmental factors, such as height, many heart conditions or type 2 diabetes. Such gene-environment interaction means the genotype sets a range of possible phenotypes and the environment decides where in the range an individual falls." }
+}

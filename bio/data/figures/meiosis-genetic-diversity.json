@@ -1,0 +1,17 @@
+{
+  "variation-sources": {
+    "file": "figures/variation-sources.svg", "ext": "svg", "w": 760, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Left, crossing over: a pair of homologous chromosomes in prophase I, the blue one carrying alleles A and B, the orange one a and b, each made of two sister chromatids. One blue and one orange chromatid swap matching pieces at a chiasma between the two genes. Afterwards the four chromatids carry A B and a b (parental, the outer two) and A b and a B (recombinant, the inner two, new mixes). Right, independent assortment: a cell with a long pair and a short pair at metaphase I, shown in two equally likely arrangements. In one, both blue chromosomes face the same pole; in the other, the short pair is flipped. The two arrangements give four kinds of gamete in equal numbers: 2 squared for two pairs. For humans, with 23 pairs, 2 to the 23rd is about 8.4 million combinations, before counting crossing over."
+  },
+  "nondisjunction-mi-mii": {
+    "file": "figures/nondisjunction-mi-mii.svg", "ext": "svg", "w": 760, "h": 470,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "One homologous pair, one blue and one orange chromosome, followed through meiosis; other chromosomes left out. Left, nondisjunction in meiosis I: both homologs go to the same pole, so after meiosis I one cell has both and the other has none; after a normal meiosis II the four gametes carry 2, 2, 0 and 0 copies (n + 1, n + 1, n − 1, n − 1): all four abnormal, and each n + 1 gamete has one blue and one orange copy. Right, nondisjunction in meiosis II: meiosis I is normal, but in one cell the two sister chromatids go to the same pole, giving gametes with 2, 0, 1 and 1 copies (n + 1, n − 1, n, n): two abnormal, and the n + 1 gamete has two identical copies. Bottom: fertilization by a normal gamete gives 3 copies (trisomy, 2n + 1) from an n + 1 gamete or 1 copy (monosomy, 2n − 1) from an n − 1 gamete."
+  },
+  "karyotype-trisomy-21": {
+    "file": "figures/karyotype-trisomy-21.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram (simplified karyotype, not a photograph)",
+    "alt": "A simplified karyotype: the condensed chromosomes of one cell arranged in numbered pairs from 1, the largest, down to 22, then the sex chromosomes. Every autosome is present as a pair except chromosome 21, which is present three times and outlined. The sex chromosomes are one X and one Y. In total, 47 chromosomes."
+  }
+}
