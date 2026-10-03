@@ -359,6 +359,25 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - **operon-parameters** (open; same simulator). Rates 1 / 10 / 100, mRNA half-life 2 min, enzymes
   diluted by growth with a 40-min doubling, instant input changes and one F′ copy are illustrative
   choices, not measurements; the merodiploid mode is marked "going further" as beyond the course.
+- **popgen-model-order** (open; Unit 7 simulator `hardy-weinberg-drift`). The model's life cycle (selection on adults →
+  mutation → migration into the gene pool → mating with inbreeding F → Wright-Fisher sampling of N adults) is one
+  common textbook ordering; others apply migration to adults or drift to gametes, which changes small-N results slightly.
+  Migrants join the gene pool, so migration never makes genotypes depart from Hardy-Weinberg (a real mixing of adults
+  can). "Non-random mating" is modeled only as inbreeding (F); assortative mating is not. Meanwhile: the rules are in
+  the tool's box and the items say "in this model" where it matters; confirm.
+- **hw-drift-chi-df** (open; same simulator; see hw-chi-square-df). The tool shows the χ² decision for both df 2 and
+  df 1 and says when they differ; Table 3's data (χ² 0.48 and 16.0) give the same decision under both.
+- **tree-group-words** (open; Unit 7 simulator `tree-reading`). Paraphyletic vs polyphyletic is decided from tips
+  only: not a clade, and the left-out descendants of the MRCA form one clade → paraphyletic, otherwise polyphyletic.
+  Textbooks define polyphyly by the group not including its common ancestor (often traced to convergent traits), which
+  tips alone cannot show. Meanwhile: items key only "clade or not"; the words appear in tool feedback; confirm.
+- **tree-teaching-values** (open; same simulator). The primate DNA tree uses rounded, ultrametric teaching values
+  (human–chimp 1.2%, gorilla 1.6%, orangutan 3.1%, macaque/baboon 6.4%, macaque–baboon 2.0%), close to genome
+  comparisons but not measurements; the clock item assumes a 6-million-year human–chimp split and a constant rate
+  (answer 15.5 Myr; published orangutan split estimates run about 12-16 Myr). Characters: lampreys counted as having a
+  vertebral column (they have only small vertebral elements), "amnion" used for the mouse and kangaroo instead of
+  "amniotic egg". Confirm.
+
 - **openstax-license** (open, owner). The OpenStax *Biology 2e* page fetched on 2026-10-03 shows a
   CC BY-NC-SA notice and a no-AI-ingestion line, while the course credits OpenStax figures as CC BY 4.0.
   Check which license applies to the figures already used before launch. The operons tool uses no

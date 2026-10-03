@@ -117,6 +117,40 @@ test('graph scale checks', () => {
   assert.ok(ok(M.graph.checkScale({ min: 6, max: 10, interval: 0.5 }, [6.1, 9.6])), 'far from zero may start above 0');
 });
 
+test('popgen model: Hardy-Weinberg, selection, drift from a seed, bottleneck, chi-square', () => {
+  const G = M.popgen, c = { ...data('hardy-weinberg-drift').defaults, N: 0, reps: 1, gens: 20 };
+  const hw = G.simulate({ ...c, p0: 0.3 }).reps[0];
+  near(hw.p[20], 0.3); near(hw.g[20][1], 0.42);
+  const sel = G.simulate({ ...c, w: [1, 1, 0] }).reps[0];
+  near(1 - sel.p[10], 0.5 / 6);
+  near(G.simulate({ ...c, F: 0.5 }).reps[0].g[5][1], 0.25);
+  const d = { ...c, N: 20, gens: 100, reps: 10, seed: 2026 };
+  assert.deepEqual(G.simulate(d).fates, G.simulate(d).fates);
+  assert.deepEqual({ ...G.simulate(d).fates }, { fixed: 5, lost: 4, poly: 1, extinct: 0 }, 'the documented seeded run');
+  const b = G.simulate({ ...d, N: 1000, reps: 1, event: { gen: 10, size: 5, len: 2 } }).reps[0];
+  assert.deepEqual([b.n[9], b.n[10], b.n[11], b.n[12]], [1000, 5, 5, 1000]);
+  const x = G.chi([0.425, 0.345, 0.23], 200);
+  assert.deepEqual(Array.from(x.obs), [85, 69, 46]); near(x.chi2, 15.987, 1e-3); assert.equal(x.reject2, true);
+  assert.equal(G.chi([1, 0, 0], 50).chi2, null, 'nothing to test when an allele is fixed');
+});
+
+test('phylo model: parse, rotation, MRCA, clades, sisters, distances, trees from characters', () => {
+  const Ph = M.phylo, t = Ph.parse('(alga,(moss,(fern,(pine,(rose,grass)))))');
+  const key = Ph.key(t);
+  Ph.internal(t).forEach(n => Ph.rotate(n));
+  assert.equal(Ph.key(t), key, 'rotation keeps the tree');
+  assert.deepEqual([...Ph.leaves(t)].map(n => n.name), ['grass', 'rose', 'pine', 'fern', 'moss', 'alga']);
+  assert.equal(Ph.mrca(t, ['rose', 'pine']).id, 4);
+  assert.equal(Ph.classify(t, ['pine', 'rose', 'grass']).kind, 'clade');
+  assert.equal(Ph.classify(t, ['moss', 'fern']).kind, 'paraphyletic');
+  assert.equal(Ph.classify(t, ['moss', 'pine']).kind, 'polyphyletic');
+  assert.deepEqual([...Ph.sisters(Ph.find(t, ['pine']))].map(n => n.tips.join()), ['grass,rose']);
+  near(Ph.distance(Ph.parse('((a:1,b:2):0.5,c:3)'), 'a', 'c'), 4.5);
+  const built = Ph.fromCharacters(['P', 'Q', 'R', 'S'], [{ id: 1, has: ['Q', 'R', 'S'] }, { id: 2, has: ['R', 'S'] }]);
+  assert.equal(Ph.key(Ph.parse(built.tree)), '(((R,S),Q),P)'); assert.equal(built.conflicts.length, 0);
+  assert.equal(Ph.fromCharacters(['P', 'Q', 'R', 'S'], [{ id: 1, has: ['Q', 'R'] }, { id: 2, has: ['R', 'S'] }]).conflicts.length, 1);
+});
+
 test('seeded problems repeat exactly', () => {
   const c = data('chi-square').contexts[0];
   assert.equal(JSON.stringify(P.generate.chi(M.rng(99), c)), JSON.stringify(P.generate.chi(M.rng(99), c)));
@@ -158,6 +192,16 @@ test('validators catch planted mistakes', async () => {
   assert.ok((await import('../lib/apbio-tool-checks/operons.mjs')).check(op2, null).some(e => /lac:3/.test(e)));
   const op3 = data('operons'); op3.model.noCap = 100;
   assert.ok((await import('../lib/apbio-tool-checks/operons.mjs')).check(op3, null).length > 0, 'CAP must matter');
+  const hw = data('hardy-weinberg-drift'); hw.stimuli['hw-s1'].tables[0].rows[1][2] = '6';
+  assert.ok((await import('../lib/apbio-tool-checks/hardy-weinberg-drift.mjs')).check(hw, null).some(e => /the model gives/.test(e)));
+  const hw2 = data('hardy-weinberg-drift'); hw2.questions[3].numeric.answer = 15.0;
+  assert.ok((await import('../lib/apbio-tool-checks/hardy-weinberg-drift.mjs')).check(hw2, null).some(e => /hwe:4/.test(e)));
+  const tr = data('tree-reading'); tr.trees[1].characters[2].has = ['fern', 'pine'];
+  assert.ok((await import('../lib/apbio-tool-checks/tree-reading.mjs')).check(tr, null).some(e => /plants/.test(e)));
+  const tr2 = data('tree-reading'); tr2.stimuli['tr-s1'].tables[1].rows[0][2] = '1.4';
+  assert.ok((await import('../lib/apbio-tool-checks/tree-reading.mjs')).check(tr2, null).some(e => /the trees give/.test(e)));
+  const tr3 = data('tree-reading'); tr3.stimuli['tr-s1'].drawings.order2 = ['alga', 'moss', 'grass', 'fern', 'rose', 'pine'];
+  assert.ok((await import('../lib/apbio-tool-checks/tree-reading.mjs')).check(tr3, null).some(e => /drawings/.test(e)));
   const ds = data('descriptive-stats'); ds.intro = 'Ready for AP tests';
   assert.ok((await import('../lib/apbio-tool-checks/descriptive-stats.mjs')).check(ds, null).some(e => /AP/.test(e)));
 });
