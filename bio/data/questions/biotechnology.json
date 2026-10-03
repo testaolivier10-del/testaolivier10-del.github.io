@@ -1,0 +1,823 @@
+{
+  "stimuli": {
+    "biotechnology-s1": {
+      "kind": "model",
+      "title": "Cutting a plasmid with two restriction enzymes",
+      "text": "<p>A circular plasmid was cut with restriction enzyme E, with restriction enzyme B, or with both, and the fragments were separated by gel electrophoresis next to a DNA ladder of known fragment sizes. The cuts were complete.</p>",
+      "html": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 330\" width=\"100%\" style=\"max-width:520px;height:auto\" role=\"img\" aria-labelledby=\"gl68-t gl68-d\"><title id=\"gl68-t\">Plasmid cut with restriction enzymes</title><desc id=\"gl68-d\">An agarose gel with four lanes. Lane 1, a DNA ladder with bands at 10,000, 5,000, 3,000, 2,000, 1,000 and 500 base pairs. Lane 2, plasmid cut with enzyme E: one band at 6,000 base pairs. Lane 3, plasmid cut with enzyme B: two bands, at 4,500 and 1,500 base pairs. Lane 4, plasmid cut with both enzymes: three bands, at 3,500, 1,500 and 1,000 base pairs.</desc><defs><marker id=\"gl68-a\" viewBox=\"0 0 10 10\" refX=\"8\" refY=\"5\" markerWidth=\"7\" markerHeight=\"7\" orient=\"auto-start-reverse\"><path d=\"M0,0 L10,5 L0,10 Z\" fill=\"#1F2A28\"/></marker></defs><rect width=\"520\" height=\"330\" fill=\"#ffffff\"/><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"120.0\" y=\"24.0\" width=\"320.0\" height=\"290.0\" rx=\"6\" fill=\"#EEF4F8\" stroke=\"#0072B2\" stroke-width=\"2\"/><rect x=\"140.0\" y=\"32.0\" width=\"50.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"143.0\" y=\"47.0\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"143.0\" y=\"98.7\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"143.0\" y=\"136.8\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"143.0\" y=\"167.0\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"143.0\" y=\"218.7\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"143.0\" y=\"270.4\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"165.0\" y=\"18.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">Ladder</text><rect x=\"215.0\" y=\"32.0\" width=\"50.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"218.0\" y=\"85.1\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"240.0\" y=\"18.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">E</text><rect x=\"290.0\" y=\"32.0\" width=\"50.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"293.0\" y=\"106.5\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"293.0\" y=\"188.4\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"315.0\" y=\"18.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">B</text><rect x=\"365.0\" y=\"32.0\" width=\"50.0\" height=\"8.0\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#5D6B69\" stroke-width=\"1.2\"/><rect x=\"368.0\" y=\"125.3\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"368.0\" y=\"188.4\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><rect x=\"368.0\" y=\"218.7\" width=\"44.0\" height=\"6.0\" rx=\"1\" fill=\"#1F2A28\" stroke=\"#1F2A28\" stroke-width=\"0.5\"/><text x=\"390.0\" y=\"18.0\" font-size=\"12\" text-anchor=\"middle\" font-weight=\"700\">E + B</text><text x=\"112.0\" y=\"54.0\" font-size=\"10\" text-anchor=\"end\">10,000 bp</text><text x=\"112.0\" y=\"105.7\" font-size=\"10\" text-anchor=\"end\">5,000 bp</text><text x=\"112.0\" y=\"143.8\" font-size=\"10\" text-anchor=\"end\">3,000 bp</text><text x=\"112.0\" y=\"174.0\" font-size=\"10\" text-anchor=\"end\">2,000 bp</text><text x=\"112.0\" y=\"225.7\" font-size=\"10\" text-anchor=\"end\">1,000 bp</text><text x=\"112.0\" y=\"277.4\" font-size=\"10\" text-anchor=\"end\">500 bp</text><text x=\"470.0\" y=\"40.0\" font-size=\"16\" text-anchor=\"middle\" font-weight=\"700\">−</text><text x=\"470.0\" y=\"306.0\" font-size=\"16\" text-anchor=\"middle\" font-weight=\"700\">+</text></g></svg>"
+    },
+    "biotechnology-s2": {
+      "kind": "graph",
+      "title": "Watching PCR as it runs",
+      "text": "<p>The same stretch of a virus's DNA was copied by PCR from two patient samples, A and B, in tubes containing a dye that glows only when bound to double-stranded DNA. Glow was measured after every cycle. A third tube had everything except template DNA. The researchers record the cycle at which each curve first crosses a glow of 20 units.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "PCR cycle",
+          "unit": "cycle number",
+          "min": 0,
+          "max": 36,
+          "step": 4
+        },
+        "y": {
+          "label": "Glow",
+          "unit": "relative units",
+          "min": 0,
+          "max": 100,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "Sample A",
+            "points": [
+              [
+                0,
+                1.0
+              ],
+              [
+                2,
+                1.0
+              ],
+              [
+                4,
+                1.0
+              ],
+              [
+                6,
+                1.0
+              ],
+              [
+                8,
+                1.0
+              ],
+              [
+                10,
+                1.0
+              ],
+              [
+                12,
+                1.2
+              ],
+              [
+                14,
+                1.9
+              ],
+              [
+                16,
+                5.5
+              ],
+              [
+                18,
+                20.8
+              ],
+              [
+                20,
+                57.5
+              ],
+              [
+                22,
+                87.7
+              ],
+              [
+                24,
+                97.4
+              ],
+              [
+                26,
+                99.5
+              ],
+              [
+                28,
+                99.9
+              ],
+              [
+                30,
+                100.0
+              ],
+              [
+                32,
+                100.0
+              ],
+              [
+                34,
+                100.0
+              ],
+              [
+                36,
+                100.0
+              ]
+            ]
+          },
+          {
+            "name": "Sample B",
+            "points": [
+              [
+                0,
+                1.0
+              ],
+              [
+                2,
+                1.0
+              ],
+              [
+                4,
+                1.0
+              ],
+              [
+                6,
+                1.0
+              ],
+              [
+                8,
+                1.0
+              ],
+              [
+                10,
+                1.0
+              ],
+              [
+                12,
+                1.0
+              ],
+              [
+                14,
+                1.0
+              ],
+              [
+                16,
+                1.0
+              ],
+              [
+                18,
+                1.2
+              ],
+              [
+                20,
+                1.9
+              ],
+              [
+                22,
+                5.5
+              ],
+              [
+                24,
+                20.8
+              ],
+              [
+                26,
+                57.5
+              ],
+              [
+                28,
+                87.7
+              ],
+              [
+                30,
+                97.4
+              ],
+              [
+                32,
+                99.5
+              ],
+              [
+                34,
+                99.9
+              ],
+              [
+                36,
+                100.0
+              ]
+            ]
+          },
+          {
+            "name": "No template",
+            "points": [
+              [
+                0,
+                1.0
+              ],
+              [
+                4,
+                1.0
+              ],
+              [
+                8,
+                1.0
+              ],
+              [
+                12,
+                1.0
+              ],
+              [
+                16,
+                1.0
+              ],
+              [
+                20,
+                1.0
+              ],
+              [
+                24,
+                1.1
+              ],
+              [
+                28,
+                1.1
+              ],
+              [
+                32,
+                1.2
+              ],
+              [
+                36,
+                1.2
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "biotechnology-s3": {
+      "kind": "setup",
+      "title": "Putting a plasmid into bacteria",
+      "text": "<p>A plasmid carries two added genes: one that lets cells survive the drug ampicillin, and one for a protein that glows green. Students mixed 0.10 µg of the plasmid with 1.0 mL of <i>E. coli</i> cells treated to take up DNA (+ plasmid), and set up the same cells without plasmid (− plasmid). After a brief heat shock, 0.10 mL of each mixture was spread on each plate. Colonies were counted after 24 hours.</p>",
+      "table": {
+        "caption": "Growth on each plate",
+        "cols": [
+          "Plate",
+          "Cells",
+          "Plate contains",
+          "Result"
+        ],
+        "rows": [
+          [
+            "1",
+            "− plasmid",
+            "Nutrients only",
+            "Cells cover the plate (a lawn)"
+          ],
+          [
+            "2",
+            "− plasmid",
+            "Nutrients + ampicillin",
+            "No colonies"
+          ],
+          [
+            "3",
+            "+ plasmid",
+            "Nutrients only",
+            "A lawn; it does not glow"
+          ],
+          [
+            "4",
+            "+ plasmid",
+            "Nutrients + ampicillin",
+            "84 colonies, all glowing green"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-biotechnology-1",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biotechnology-s1",
+      "q": "How long is the plasmid, in base pairs? Give a whole number.",
+      "numeric": {
+        "answer": 6000,
+        "tol": 0,
+        "unit": "bp",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Enzyme E gives one band at 6,000 bp: one cut opens the circle into a single linear piece as long as the plasmid. The other lanes agree: 4,500 + 1,500 = 6,000 and 3,500 + 1,500 + 1,000 = 6,000."
+      }
+    },
+    {
+      "id": "bio-biotechnology-2",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biotechnology-s1",
+      "q": "How many sites does enzyme B cut in the plasmid?",
+      "options": [
+        "Two",
+        "One",
+        "Three",
+        "Four"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Cutting a circle at n sites gives n pieces. Enzyme B gives two fragments (4,500 and 1,500 bp), so it cuts twice.",
+        "options": [
+          "Correct: two cuts in a circle give two pieces.",
+          "One cut in a circle gives a single linear piece, as enzyme E shows.",
+          "Three cuts would give three fragments; lane B has two bands.",
+          "Four cuts would give four fragments."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-3",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "2.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "biotechnology-s1",
+      "q": "Taking enzyme E's site as position 0 on the 6,000 bp circle, which map fits all three lanes?",
+      "options": [
+        "B sites at 1,000 and 2,500",
+        "B sites at 1,500 and 3,000",
+        "B sites at 500 and 2,000",
+        "B sites at 2,000 and 3,500"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "B sites at 1,000 and 2,500 give B fragments of 1,500 (1,000 to 2,500) and 4,500 (the rest). Adding E's cut at 0 splits the 4,500 piece into 1,000 (0 to 1,000) and 3,500 (2,500 to 6,000): the 3,500, 1,500 and 1,000 bands of the double digest. (The mirror-image map, B sites at 3,500 and 5,000, fits equally well; the gel cannot tell the two directions around the circle apart.)",
+        "options": [
+          "Correct: it reproduces the enzyme B lane and the double digest.",
+          "B fragments would be 1,500 and 4,500, but the double digest would give 1,500, 1,500 and 3,000.",
+          "B fragments would be 1,500 and 4,500, but the double digest would give 500, 1,500 and 4,000.",
+          "B fragments would be 1,500 and 4,500, but the double digest would give 2,000, 1,500 and 2,500."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biotechnology-s1",
+      "q": "Why does the 1,000 bp fragment in the last lane lie farther from the wells than the 3,500 bp fragment?",
+      "options": [
+        "Smaller fragments slip through the gel's mesh more easily, so they move farther.",
+        "Smaller fragments carry more negative charge, so the positive electrode pulls them harder.",
+        "Smaller fragments are loaded into the wells later, so they start out lower in the gel.",
+        "Smaller fragments are heavier for each base pair, so they sink farther down into the gel."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "All DNA has about the same charge per base pair, so the pull per unit length is the same. The gel slows long molecules more, so fragments separate by size, small ones farthest.",
+        "options": [
+          "Correct: the gel acts as a sieve.",
+          "Charge is proportional to length, so larger fragments carry more charge, not less; the charge per base pair is the same.",
+          "All fragments in a lane are loaded together, in one well.",
+          "Every base pair has about the same mass, and DNA moves because of charge, not by sinking."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-5",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "biotechnology-s1",
+      "q": "A 900 bp gene, cut out with enzyme E, is inserted into the plasmid's E site. Predict the bands when the new plasmid is cut with enzyme E alone.",
+      "options": [
+        "Two bands, at 6,000 bp and 900 bp",
+        "One band, at 6,900 bp",
+        "One band, at 6,000 bp",
+        "Three bands, at 6,000, 900 and 450 bp"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The insert is joined into the E site, so the new plasmid has two E sites, one at each end of the insert. Cutting them releases the 900 bp insert and the 6,000 bp plasmid backbone.",
+        "options": [
+          "Correct: cutting at both ends of the insert gives back both pieces.",
+          "6,900 bp would be the result of cutting at a single site; this plasmid has two E sites.",
+          "The insert would also appear, as a 900 bp band.",
+          "Nothing cuts the insert in half unless it has its own E site, which the stem does not say."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "biotechnology-s2",
+      "q": "At about which cycles do samples A and B first cross a glow of 20 units?",
+      "options": [
+        "A at about cycle 18, B at about cycle 24",
+        "A at about cycle 24, B at about cycle 18",
+        "Both at about cycle 20, where the curves rise most steeply",
+        "A at about cycle 18, B at no cycle shown on the graph"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Sample A's glow is 20.8 at cycle 18 and sample B's is 20.8 at cycle 24.",
+        "options": [
+          "Correct: A crosses six cycles before B.",
+          "This swaps the samples; A rises first.",
+          "At cycle 20, A is at 57.5 and B at 1.9.",
+          "B crosses 20 at about cycle 24 and reaches 100 by cycle 36."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-7",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "biotechnology-s2",
+      "q": "Assume the target doubles every cycle. How many times more target DNA did sample A start with than sample B? Give a whole number.",
+      "numeric": {
+        "answer": 64,
+        "tol": 0,
+        "unit": "times",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "A reaches the same glow 24 − 18 = 6 cycles sooner. Each cycle doubles the DNA, so A started with 2<sup>6</sup> = 64 times as much target."
+      }
+    },
+    {
+      "id": "bio-biotechnology-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "biotechnology-s2",
+      "q": "Why do both curves level off near 100 units instead of doubling forever?",
+      "options": [
+        "Primers and nucleotides run low and products pair with each other, so copying slows.",
+        "After about 20 cycles the polymerase denatures at 95 °C and stops working for good.",
+        "The target region is copied until it is longer than the dye can bind.",
+        "The dye starts glowing less once the DNA strands become double-stranded."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each cycle uses up primers and nucleotides. Once they run low, and product strands pair with each other instead of with primers, each cycle adds less, and the amount plateaus.",
+        "options": [
+          "Correct: ingredients run out.",
+          "The polymerase used in PCR (Taq) is heat-stable, which is why it is used.",
+          "Copies have the same length every cycle, set by the two primers.",
+          "The dye glows more with double-stranded DNA, which is how the glow tracks product."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biotechnology-s2",
+      "q": "What does the no-template tube show?",
+      "options": [
+        "The glow in A and B comes from copying target DNA, not from the reagents.",
+        "The primers are able to copy themselves into long DNA without any template present.",
+        "The virus is present in both patient samples, at the same starting amount.",
+        "The dye glows strongly in the absence of any DNA, so the readings need correcting."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With every ingredient except template DNA, the glow stays near 1 for 36 cycles. So the rise in the two patient samples needs target DNA from the samples, and the reagents are not contaminated with it.",
+        "options": [
+          "Correct: a negative control.",
+          "The flat line shows primers alone do not produce product.",
+          "The control contains no patient sample, so it says nothing about the virus in them.",
+          "The dye stays near 1 without DNA, so it does not glow on its own."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-10",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biotechnology-s3",
+      "q": "Which conclusion is best supported by plates 2 and 4?",
+      "options": [
+        "Some cells took up the plasmid, whose gene let them survive ampicillin.",
+        "Ampicillin causes the cells to take up plasmids that are in the medium around them.",
+        "Each cell exposed to the plasmid took it up, and each of them began to glow green.",
+        "The glow gene is needed for the cells to survive the ampicillin in the plate."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cells without plasmid cannot grow on ampicillin (plate 2), but 84 colonies grow from the plasmid mixture (plate 4): those cells were transformed, and the plasmid's gene protects them.",
+        "options": [
+          "Correct: transformation plus the protective gene.",
+          "The plasmid and cells were mixed before plating; ampicillin only kills cells without the plasmid.",
+          "Plate 3 shows most cells did not take it up: the lawn there does not glow.",
+          "The drug-survival gene does that; glowing is a separate trait carried on the same plasmid."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "biotechnology-s3",
+      "q": "Plate 3 has a lawn that does not glow, though those cells were mixed with plasmid. Why?",
+      "options": [
+        "Few cells took up the plasmid; without ampicillin, untransformed cells grew over them.",
+        "Cells do not express the glow gene unless ampicillin is present to switch the gene on.",
+        "The plasmid was destroyed by the nutrients on the plates that lacked ampicillin.",
+        "The lawn glows, but just after it has been exposed to ampicillin for a whole day."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Transformation is rare. On a plate without ampicillin every cell grows, so the few transformed cells are lost in a lawn of untransformed ones. Ampicillin removes the untransformed cells, which is why the drug-survival gene acts as a selectable marker.",
+        "options": [
+          "Correct: without selection, transformants are a tiny minority.",
+          "The glowing colonies on plate 4 show the gene is expressed; nothing suggests ampicillin is needed to switch it on.",
+          "Nutrients do not destroy DNA inside cells.",
+          "The lawn does not glow because almost none of its cells have the plasmid."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-12",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "biotechnology-s3",
+      "q": "Transformation efficiency is the number of transformed colonies per µg of plasmid spread on the plate. Calculate it for plate 4. Give a whole number.",
+      "numeric": {
+        "answer": 8400,
+        "tol": 0,
+        "unit": "colonies per µg",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "0.10 µg of plasmid was in 1.0 mL; 0.10 mL was spread, so 0.10 × (0.10 ÷ 1.0) = 0.010 µg reached the plate. Efficiency = 84 ÷ 0.010 = 8,400 colonies per µg."
+      }
+    },
+    {
+      "id": "bio-biotechnology-13",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "biotechnology-s3",
+      "q": "What is the purpose of plate 1?",
+      "options": [
+        "To show that the cells were alive and able to grow",
+        "To show that the plasmid on its own makes cells glow green on plain plates",
+        "To count how many cells took up the plasmid in the mixture",
+        "To show that ampicillin kills the cells that lack the plasmid"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A lawn of untreated cells on plain nutrients confirms the cells survived the treatment and heat shock. Without it, no colonies on plate 2 could mean the cells were dead rather than killed by ampicillin.",
+        "options": [
+          "Correct: a control for cell survival.",
+          "Plate 1's cells have no plasmid.",
+          "Plate 1 has no plasmid-treated cells; transformants are counted on plate 4.",
+          "That is shown by plate 2, compared with plate 1."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A gene and a plasmid are each cut with the same restriction enzyme, which leaves single-stranded sticky ends. Why can they then be joined into recombinant DNA?",
+      "options": [
+        "Their sticky ends are complementary and pair; ligase then seals the backbones.",
+        "The enzyme recognizes the plasmid and attaches the gene to it once both are cut.",
+        "Cut DNA ends tend to join each other on their own, whichever enzymes made the cuts.",
+        "The gene's bases bond covalently to the plasmid's bases at the sticky ends without any help."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A restriction enzyme cuts a specific sequence the same way every time, leaving matching single-stranded overhangs. Overhangs from the same enzyme pair with each other, and DNA ligase forms the backbone bonds that make the joint permanent.",
+        "options": [
+          "Correct: complementary overhangs plus ligase.",
+          "Restriction enzymes cut; ligase joins.",
+          "Ends from different enzymes usually do not match; the same enzyme makes matching ends.",
+          "Base pairing between sticky ends is by hydrogen bonds; ligase makes the covalent backbone bonds."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-15",
+      "type": "order",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the steps of one PCR cycle in order, starting from double-stranded target DNA.",
+      "options": [
+        "Heat to about 95 °C so the two strands separate.",
+        "Cool to about 55 °C so the primers pair with the ends of the target on each strand.",
+        "Warm to about 72 °C so Taq polymerase adds nucleotides to each primer's 3′ end.",
+        "Each original target molecule has become two double-stranded copies."
+      ],
+      "why": {
+        "correct": "Primers can pair only with single strands, so denaturation comes first; the polymerase needs the primers' 3′ ends, so annealing comes before extension; the doubling is the result of the cycle."
+      }
+    },
+    {
+      "id": "bio-biotechnology-16",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In Sanger sequencing of a short template, the new fragments that end in each base have these lengths: ending in A: 2 and 6; ending in C: 1 and 5; ending in G: 4 and 8; ending in T: 3 and 7. What is the sequence of the new strand, from its 5′ end?",
+      "options": [
+        "5′-CATGCATG-3′",
+        "5′-GTACGTAC-3′",
+        "5′-ACGTACGT-3′",
+        "5′-CTAGCTAG-3′"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Each fragment ends with a chain-stopping nucleotide at the position equal to its length. Reading from length 1 to 8: C (1), A (2), T (3), G (4), C (5), A (6), T (7), G (8): 5′-CATGCATG-3′.",
+        "options": [
+          "Correct: list the bases in order of fragment length.",
+          "This is the new strand read from its 3′ end, longest fragment first.",
+          "This lists the bases in alphabetical order, not by fragment length.",
+          "This swaps the A and T positions."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-17",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Researchers use CRISPR-Cas9 to switch off one gene in mouse cells. Which description of how it works is correct?",
+      "options": [
+        "A guide RNA pairs with the target DNA, Cas9 cuts both strands, and faulty repair disrupts the gene.",
+        "Cas9 reads the codon table and removes the gene's start codon from its mRNA out in the cytoplasm.",
+        "The guide RNA is translated into a protein that blocks RNA polymerase at the gene's promoter.",
+        "Cas9 adds methyl groups along the whole length of the gene, so it is packed into heterochromatin."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The guide RNA's sequence is complementary to the chosen DNA site, so it leads Cas9 there; Cas9 makes a double-strand break. The cell's quick repair often adds or removes a few bases, which can shift the reading frame and knock out the gene. Supplying a template lets the repair write in a chosen change instead.",
+        "options": [
+          "Correct: base pairing finds the site; Cas9 cuts; repair changes the DNA.",
+          "Cas9 cuts DNA, not mRNA, and it finds its target by base pairing, not by reading codons.",
+          "The guide RNA is not translated; it works by pairing with DNA.",
+          "Standard Cas9 cuts DNA; it does not methylate it."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-18",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "To make human growth hormone in bacteria, researchers insert a DNA copy made from the hormone's mature mRNA, not the gene cut from a human chromosome. Predict what would happen if they used the chromosomal gene instead.",
+      "options": [
+        "The introns would be transcribed too and, with no spliceosomes, no working hormone would be made.",
+        "The bacteria would make the hormone normally, since humans and bacteria share the genetic code.",
+        "The bacteria would splice out the introns but be unable to add a 5′ cap, so no hormone would form.",
+        "The bacteria would refuse to take up a plasmid containing human DNA, so no colonies would grow."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Human genes contain introns. Bacteria have no spliceosomes, so the introns would stay in the mRNA and the protein made from it would be wrong. A DNA copy of the mature mRNA (made with reverse transcriptase) has no introns.",
+        "options": [
+          "Correct: the code is shared, but splicing is not.",
+          "The code is shared, but the introns would still be read into the protein.",
+          "Bacteria cannot splice; the problem is the introns, not the cap.",
+          "Bacteria take up plasmids whatever genes they carry."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-19",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which uses depend on PCR? Select all that apply.",
+      "options": [
+        "Copying enough DNA from a single hair root to make a DNA profile",
+        "Testing a swab for a small amount of a virus's genetic material",
+        "Separating DNA fragments by size in an electric field",
+        "Cutting a plasmid open at a specific sequence",
+        "Joining a gene into a plasmid with ligase"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "PCR makes millions of copies of a chosen stretch from a tiny amount of starting DNA, which forensic profiles and virus tests both need.",
+        "options": [
+          "Correct: a few cells' DNA is enough after amplification.",
+          "Correct: the viral stretch is copied until it can be detected.",
+          "That is gel electrophoresis.",
+          "That is done by a restriction enzyme.",
+          "That is done by DNA ligase."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-20",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "DNA profiles compare the number of repeats at short tandem repeat (STR) sites. Why are STRs useful for telling people apart?",
+      "options": [
+        "Repeat numbers at each site vary widely among people, so a match at many sites by chance is unlikely.",
+        "STRs lie inside the genes for proteins, so they differ between people as much as their appearance does.",
+        "STRs are found in some people but not in others, so their presence identifies a person.",
+        "STRs change in each of a person's cells as the person ages, so a profile shows both identity and age."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each STR site has many possible repeat numbers, and every person carries two (one from each parent). With 13-20 independent sites, the chance two unrelated people match at all of them is tiny.",
+        "options": [
+          "Correct: high variation at many independent sites.",
+          "Most STRs used in profiles lie between genes, not in protein-coding sequences.",
+          "Everyone has the STR sites; people differ in the number of repeats.",
+          "STR lengths are inherited and stay the same in a person's cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-biotechnology-21",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "biotechnology",
+      "practice": "6.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "A patient with an inherited blood disorder receives gene therapy: some of her bone marrow stem cells are given a working copy of the gene and returned to her body. Will her future children inherit the working copy?",
+      "options": [
+        "No: the change was made in body cells, not in the cells that make eggs.",
+        "Yes: a new gene placed in a person's body passes to each of her children.",
+        "Yes: blood cells carry genes to the ovaries, where they enter the eggs.",
+        "No: the working copy is lost from her treated cells within a few weeks."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Only changes in germ-line cells, which make gametes, are inherited. Treating bone marrow changes her blood cells, so the benefit is hers alone.",
+        "options": [
+          "Correct: somatic gene therapy is not inherited.",
+          "Changes in body (somatic) cells are not passed to offspring.",
+          "Blood cells do not transfer their genes into eggs.",
+          "Bone marrow stem cells keep dividing, so the change can last for years."
+        ]
+      }
+    }
+  ]
+}

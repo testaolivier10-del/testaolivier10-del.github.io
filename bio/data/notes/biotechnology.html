@@ -1,0 +1,73 @@
+<p><b>Biotechnology</b> means using living things, or the molecules they make, to make products or solve problems. Modern DNA technology borrows the enzymes you met in this unit (DNA polymerase, ligase, enzymes that cut DNA) and uses them in test tubes. This page covers the four core tools, copying (PCR), sorting by size (gel electrophoresis), cutting and pasting (restriction enzymes, recombinant DNA and transformation) and reading (sequencing), then what they are used for.</p>
+
+<h2>PCR: copying a chosen stretch of DNA</h2>
+<figure id="fig-pcr" data-fig="pcr-cycle"><figcaption>Figure 1. One cycle of PCR, and the doubling it produces.</figcaption></figure>
+<p>The <b>polymerase chain reaction (PCR)</b> makes millions or billions of copies of one chosen stretch of DNA, the target, from a tiny starting sample. The tube holds the sample DNA, two short DNA primers that match the two ends of the target (one for each strand), the four DNA nucleotides and a heat-stable DNA polymerase. A machine called a <b>thermal cycler</b> repeats three temperature steps (<a class="figref" href="#fig-pcr">Figure 1</a>):</p>
+<ol>
+<li><b>Denaturation, about 95 °C:</b> heat breaks the hydrogen bonds between base pairs, and the strands separate.</li>
+<li><b>Annealing, about 55 °C:</b> as the mix cools, the primers pair with their matching sequences on the single strands.</li>
+<li><b>Extension, about 72 °C:</b> the polymerase adds nucleotides to each primer's 3′ end, copying the target.</li>
+</ol>
+<p>Ordinary DNA polymerases are destroyed at 95 °C. PCR uses <b>Taq polymerase</b>, from <i>Thermus aquaticus</i>, a bacterium of hot springs, which survives the heating step. Because the primers mark both ends, after a few cycles nearly all the copies run exactly from one primer to the other.</p>
+<div class="worked">
+<p><b>Worked example: how many copies?</b> Each cycle doubles the target, so n cycles turn one molecule into 2<sup>n</sup>. Starting from 10 molecules, 20 cycles give 10 × 2<sup>20</sup> ≈ 10 × 1,000,000 = 10<sup>7</sup> copies. Comparing samples: if sample A reaches a set amount of product 6 cycles before sample B, A started with 2<sup>6</sup> = 64 times as much target. In practice copying slows after 25-35 cycles as primers and nucleotides run low.</p>
+</div>
+
+<h2>Gel electrophoresis: sorting DNA by size</h2>
+<figure id="fig-gel" data-fig="gel-electrophoresis"><figcaption>Figure 2. DNA fragments separate by size in an agarose gel.</figcaption></figure>
+<p>In <b>gel electrophoresis</b>, DNA samples are loaded into wells at one end of a slab of <b>agarose gel</b>, a jelly with a fine mesh, and an electric current is applied. DNA's phosphate groups give it a negative charge all along its backbone, so every fragment moves toward the positive electrode. The charge per base pair is the same for all fragments, so what separates them is the gel: long fragments are slowed most by the mesh, and short fragments travel farthest (<a class="figref" href="#fig-gel">Figure 2</a>).</p>
+<p>A <b>DNA ladder</b>, a mix of fragments of known sizes, is run in one lane. Comparing a band's position with the ladder gives its size. Distance traveled is roughly proportional to the logarithm of size, so the ladder's bands crowd together at the top.</p>
+<div class="worked">
+<p><b>Worked example: mapping a plasmid.</b> A circular plasmid cut with enzyme E gives one band at 6,000 bp; with enzyme B, bands at 4,500 and 1,500; with both, 3,500, 1,500 and 1,000.</p>
+<p><b>Step 1.</b> One band from a circle means one cut: the plasmid is 6,000 bp. <b>Step 2.</b> Two bands means B cuts twice, 1,500 bp apart. <b>Step 3.</b> The double digest keeps the 1,500 piece but splits the 4,500 piece into 3,500 + 1,000, so E's site lies inside the 4,500 piece, 1,000 bp from one B site. With E at 0, the B sites are at 1,000 and 2,500 (or the mirror image, 3,500 and 5,000).</p>
+</div>
+
+<h2>Cutting and pasting: restriction enzymes and recombinant DNA</h2>
+<p>Bacteria make <b>restriction enzymes</b> to cut up the DNA of invading phages. Each one cuts DNA at a specific short sequence, its <b>restriction site</b>, often a palindrome such as 5′-GAATTC-3′ (which reads the same on the other strand, also 5′ to 3′). Many cut the two strands a few bases apart, leaving single-stranded overhangs called <b>sticky ends</b>. The pieces produced are <b>restriction fragments</b>.</p>
+<p>Any two pieces of DNA cut with the same enzyme have matching sticky ends. Mixed together, the ends pair by hydrogen bonds, and DNA ligase seals the backbones. DNA joined from different sources this way is <b>recombinant DNA</b>.</p>
+<p><b>Gene cloning</b> uses this to make many copies of a gene, or its protein, in bacteria:</p>
+<ol>
+<li>Cut the gene and a plasmid (the <b>cloning vector</b>) with the same restriction enzyme, and join them with ligase.</li>
+<li>Put the recombinant plasmid into bacteria by <b>transformation</b>: cells treated with calcium salts and a brief heat shock take up DNA.</li>
+<li>Grow the cells on plates with an antibiotic. The plasmid carries a <b>selectable marker</b>, a gene that lets its host survive the drug, so only transformed cells form colonies.</li>
+<li>Each colony is a clone: millions of cells descended from one, all carrying the gene. With the right promoter, they make the gene's protein.</li>
+</ol>
+<p>For a eukaryotic protein, the gene used is usually a DNA copy of the mature mRNA, made with reverse transcriptase (topic 6.4), because bacteria cannot remove introns. Human insulin, growth hormone and clotting factors are made this way.</p>
+<div class="worked">
+<p><b>Worked example: transformation efficiency.</b> 0.10 µg of plasmid in 1.0 mL of cells; 0.10 mL spread on an ampicillin plate gives 84 colonies. Plasmid on the plate = 0.10 µg × (0.10 mL ÷ 1.0 mL) = 0.010 µg. Efficiency = 84 ÷ 0.010 µg = 8,400 transformants per µg.</p>
+</div>
+
+<h2>Reading DNA: sequencing</h2>
+<p><b>DNA sequencing</b> determines the order of bases. In <b>Sanger sequencing</b>, DNA polymerase copies a template in tubes that also contain a small amount of chain-stopping nucleotides, each labeled for one base. Whenever one is added, that copy stops, so the reaction yields fragments ending at every position, each tagged with its last base. Sorting the fragments by length (shortest first) reads off the new strand's sequence 5′ to 3′. Newer methods sequence millions of fragments at once, so a whole human genome can now be read in about a day.</p>
+
+<h2>The toolkit side by side</h2>
+<table class="compare">
+<caption>PCR, gel electrophoresis, transformation and sequencing</caption>
+<thead><tr><th>Tool</th><th>What it does</th><th>Key ingredient</th><th>Typical use</th></tr></thead>
+<tbody>
+<tr><th scope="row">PCR</th><td>Copies a chosen DNA stretch millions of times</td><td>Primers, heat-stable polymerase</td><td>Virus tests, forensic samples, getting a gene to work with</td></tr>
+<tr><th scope="row">Gel electrophoresis</th><td>Separates DNA fragments by size</td><td>Agarose gel, electric current, DNA ladder</td><td>Checking PCR products, comparing DNA profiles, mapping</td></tr>
+<tr><th scope="row">Transformation</th><td>Puts new DNA (often a plasmid) into cells</td><td>Treated cells, selectable marker</td><td>Making proteins in bacteria, gene cloning</td></tr>
+<tr><th scope="row">Sequencing</th><td>Reads the order of bases</td><td>DNA polymerase, chain-stopping nucleotides</td><td>Diagnosing inherited diseases, identifying pathogens, research</td></tr>
+</tbody>
+</table>
+
+<h2>What the tools are used for</h2>
+<ul>
+<li><b>DNA fingerprinting (DNA profiling).</b> Forensic labs use PCR to copy 13-20 <b>short tandem repeat</b> (STR) sites, places where a short sequence is repeated a variable number of times, then measure fragment sizes. Each person has two repeat numbers at each site, one from each parent, so a full profile matches two unrelated people with tiny odds. Profiles also test family relationships.</li>
+<li><b>Medicine.</b> Recombinant proteins (insulin, vaccines), tests for pathogens and inherited diseases, and <b>gene therapy</b>, which adds a working copy of a gene to a patient's cells, usually body cells such as blood stem cells, so the change is not passed to children.</li>
+<li><b>Genetically modified organisms (GMOs).</b> <b>Transgenic</b> organisms carry genes from another species: insect-protected corn with a bacterial toxin gene, rice with genes for making a vitamin A precursor.</li>
+<li><b>Gene editing with CRISPR-Cas9.</b> A <b>guide RNA</b> with a chosen sequence pairs with matching DNA and leads the Cas9 enzyme there, where it cuts both strands. The cell's repair often adds or removes a few bases, knocking out the gene; if a template is supplied, the repair can copy a chosen change in. Bacteria use the same system to cut up the DNA of phages that infected their ancestors.</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"Big fragments go farthest." Small fragments travel farthest.</li>
+<li>"PCR copies the whole genome." It copies only the stretch between the two primers.</li>
+<li>"Any enzymes' sticky ends will join." Ends match when they were made by the same enzyme (or enzymes leaving the same overhang).</li>
+<li>"Gene therapy changes a patient's children." Treating body cells does not change eggs or sperm.</li>
+</ul>
+
+<aside class="going-further">
+<p><b>Going further: a glowing time course.</b> Real-time PCR adds a dye or probe that glows when product forms, and records the glow every cycle. The cycle at which glow crosses a set line moves one cycle earlier for every doubling of starting DNA, so the method measures how much target a sample held at the start. That is how viral load and gene expression levels are measured.</p>
+</aside>

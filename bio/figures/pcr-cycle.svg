@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="pcr-t pcr-d">
+<title id="pcr-t">One cycle of the polymerase chain reaction</title>
+<desc id="pcr-d">One cycle of PCR, left to right, and the doubling it produces. Step 1, denaturation at about 95 degrees Celsius: heat separates the two strands of the target DNA. Step 2, annealing at about 55 degrees: two short DNA primers, one for each strand, pair with the ends of the target region. Step 3, extension at about 72 degrees: a heat-stable DNA polymerase (Taq) adds nucleotides to each primer&#x27;s 3-prime end, copying the target. One double-stranded molecule has become two. Below, the number of copies doubles every cycle: 1, 2, 4, 8, and after 30 cycles about a billion.</desc>
+<defs><marker id="pcr-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="20.0" y="20.0" width="230.0" height="230.0" rx="12" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="135.0" y="44.0" font-size="14" text-anchor="middle" font-weight="700">Denaturation</text>
+<text x="135.0" y="62.0" font-size="12" text-anchor="middle" fill="#D55E00">~95 °C</text>
+<text x="135.0" y="238.0" font-size="11" text-anchor="middle">heat separates the strands</text>
+<rect x="270.0" y="20.0" width="230.0" height="230.0" rx="12" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="385.0" y="44.0" font-size="14" text-anchor="middle" font-weight="700">Annealing</text>
+<text x="385.0" y="62.0" font-size="12" text-anchor="middle" fill="#D55E00">~55 °C</text>
+<text x="385.0" y="238.0" font-size="11" text-anchor="middle">primers pair with the ends of the target</text>
+<rect x="520.0" y="20.0" width="230.0" height="230.0" rx="12" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5"/>
+<text x="635.0" y="44.0" font-size="14" text-anchor="middle" font-weight="700">Extension</text>
+<text x="635.0" y="62.0" font-size="12" text-anchor="middle" fill="#D55E00">~72 °C</text>
+<text x="635.0" y="238.0" font-size="11" text-anchor="middle">Taq polymerase extends each primer</text>
+<line x1="40.0" y1="110.0" x2="230.0" y2="110.0" stroke="#4A5553" stroke-width="4"/>
+<line x1="40.0" y1="170.0" x2="230.0" y2="170.0" stroke="#4A5553" stroke-width="4"/>
+<text x="36.0" y="114.0" font-size="11" text-anchor="end" font-weight="700">5′</text>
+<text x="234.0" y="114.0" font-size="11" text-anchor="start" font-weight="700">3′</text>
+<text x="36.0" y="174.0" font-size="11" text-anchor="end" font-weight="700">3′</text>
+<text x="234.0" y="174.0" font-size="11" text-anchor="start" font-weight="700">5′</text>
+<rect x="90.0" y="98.0" width="100.0" height="84.0" rx="4" fill="none" stroke="#D55E00" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="140.0" y="200.0" font-size="11" text-anchor="middle" fill="#D55E00">target region</text>
+<line x1="290.0" y1="110.0" x2="480.0" y2="110.0" stroke="#4A5553" stroke-width="4"/>
+<line x1="290.0" y1="170.0" x2="480.0" y2="170.0" stroke="#4A5553" stroke-width="4"/>
+<rect x="410.0" y="116.0" width="30.0" height="8.0" rx="0" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<text x="425.0" y="140.0" font-size="10" text-anchor="middle">primer</text>
+<rect x="330.0" y="156.0" width="30.0" height="8.0" rx="0" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<text x="345.0" y="150.0" font-size="10" text-anchor="middle">primer</text>
+<line x1="540.0" y1="110.0" x2="730.0" y2="110.0" stroke="#4A5553" stroke-width="4"/>
+<line x1="540.0" y1="170.0" x2="730.0" y2="170.0" stroke="#4A5553" stroke-width="4"/>
+<rect x="660.0" y="116.0" width="30.0" height="8.0" rx="0" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<line x1="660.0" y1="120.0" x2="590.0" y2="120.0" stroke="#0072B2" stroke-width="4"/>
+<line x1="590.0" y1="120.0" x2="600.0" y2="120.0" stroke="#0072B2" stroke-width="4"/>
+<polygon points="586,120 596,114 596,126" fill="#0072B2"/>
+<rect x="580.0" y="156.0" width="30.0" height="8.0" rx="0" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.5"/>
+<line x1="610.0" y1="160.0" x2="680.0" y2="160.0" stroke="#0072B2" stroke-width="4"/>
+<polygon points="686,160 676,154 676,166" fill="#0072B2"/>
+<ellipse cx="596.0" cy="138.0" rx="14.0" ry="9.0" fill="#56B4E9" stroke="#0072B2" stroke-width="1.5"/>
+<ellipse cx="676.0" cy="142.0" rx="14.0" ry="9.0" fill="#56B4E9" stroke="#0072B2" stroke-width="1.5"/>
+<text x="635.0" y="200.0" font-size="11" text-anchor="middle" fill="#0072B2">new DNA (blue) grows 5′ → 3′</text>
+<text x="20.0" y="284.0" font-size="13" text-anchor="start" font-weight="700">Each cycle doubles the target:</text>
+<line x1="250.0" y1="274.0" x2="284.0" y2="274.0" stroke="#4A5553" stroke-width="3"/>
+<text x="280.0" y="330.0" font-size="11" text-anchor="middle">cycle 0: 1</text>
+<line x1="360.0" y1="274.0" x2="394.0" y2="274.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="360.0" y1="284.0" x2="394.0" y2="284.0" stroke="#0072B2" stroke-width="3"/>
+<text x="390.0" y="330.0" font-size="11" text-anchor="middle">cycle 1: 2</text>
+<line x1="470.0" y1="274.0" x2="504.0" y2="274.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="470.0" y1="284.0" x2="504.0" y2="284.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="470.0" y1="294.0" x2="504.0" y2="294.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="470.0" y1="304.0" x2="504.0" y2="304.0" stroke="#0072B2" stroke-width="3"/>
+<text x="500.0" y="330.0" font-size="11" text-anchor="middle">cycle 2: 4</text>
+<line x1="580.0" y1="274.0" x2="614.0" y2="274.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="580.0" y1="284.0" x2="614.0" y2="284.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="580.0" y1="294.0" x2="614.0" y2="294.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="580.0" y1="304.0" x2="614.0" y2="304.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="620.0" y1="274.0" x2="654.0" y2="274.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="620.0" y1="284.0" x2="654.0" y2="284.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="620.0" y1="294.0" x2="654.0" y2="294.0" stroke="#0072B2" stroke-width="3"/>
+<line x1="620.0" y1="304.0" x2="654.0" y2="304.0" stroke="#0072B2" stroke-width="3"/>
+<text x="610.0" y="330.0" font-size="11" text-anchor="middle">cycle 3: 8</text>
+<text x="380.0" y="360.0" font-size="12" text-anchor="middle" font-weight="700">after n cycles: 2ⁿ copies of each starting molecule (30 cycles: about 10⁹)</text>
+</g>
+</svg>
