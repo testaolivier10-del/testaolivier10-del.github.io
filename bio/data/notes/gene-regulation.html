@@ -1,0 +1,77 @@
+<p>Every cell carries far more genes than it uses at any one moment. A bacterium switches its genes for digesting a sugar on when that sugar appears; your liver cells and skin cells carry the same genes but use different ones. This page explains the switches: the DNA sequences that proteins bind, the proteins that turn genes down or up, and the chemical marks on chromatin that make genes easier or harder to read.</p>
+
+<h2>Why regulate genes?</h2>
+<p>Making an mRNA and then hundreds of protein copies from it costs energy and building blocks. A cell that makes enzymes only when there is a job for them saves both. Most regulation acts on transcription, the first step: a gene that is not copied makes no product at all.</p>
+<p>Two kinds of DNA are involved. <b>Regulatory sequences</b> do not code for a product; they are binding sites, such as promoters, operators and enhancers. Coding sequences are copied into RNA. Proteins that bind regulatory sequences decide whether, and how much, the coding sequences are transcribed.</p>
+
+<h2>Constitutive and inducible genes</h2>
+<p>Some genes are transcribed at a fairly steady level all the time. These <b>constitutive genes</b>, or housekeeping genes, code for things every cell always needs, such as the enzymes of glycolysis and ribosomal proteins. Other genes are <b>inducible</b>: they are off or low until a signal switches them on, such as a food that appears or a hormone that arrives (topic 4.2). Both kinds can be found side by side: in the data on this page, a glycolysis enzyme stays at about 500 units in every medium while a lactose-digesting enzyme ranges from 2 to 1,020.</p>
+
+<h2>Operons in bacteria</h2>
+<figure id="fig-opn" data-fig="operons-lac-trp"><figcaption>Figure 1. The lac operon (inducible) and the trp operon (repressible), each shown off and on.</figcaption></figure>
+<p>In bacteria, genes that work together are often grouped in an <b>operon</b>: one promoter, an <b>operator</b> (a short sequence a repressor can bind, overlapping or next to the promoter) and the <b>structural genes</b> that code for the enzymes. All the structural genes are copied into one mRNA, so they are switched together. A <b>repressor</b> is a protein that binds the operator and blocks RNA polymerase. It is made from a separate regulatory gene, and like many regulatory proteins it is allosteric: a small molecule binding it changes its shape and its grip on DNA.</p>
+
+<h3>The lac operon: inducible</h3>
+<p>The lac operon of <i>E. coli</i> codes for enzymes that take up lactose and split it. Its repressor is made all the time and, on its own, binds the operator, so the genes are off (<a class="figref" href="#fig-opn">Figure 1</a>). When lactose enters, some of it is converted to allolactose, the <b>inducer</b>. Allolactose binds the repressor, changes its shape, and the repressor falls off the operator. RNA polymerase can now copy the genes. When the lactose is used up, the repressor binds again and the operon shuts off.</p>
+<p>There is a second control. RNA polymerase binds the lac promoter weakly unless an activator, <b>CAP</b> (catabolite activator protein), binds next to it. CAP binds DNA only when it carries cAMP, and cAMP is high when glucose is scarce. So the operon is strongly on only when lactose is present <i>and</i> glucose is absent: the cell uses its preferred sugar first.</p>
+<table class="compare">
+<caption>The lac operon in four media</caption>
+<thead><tr><th>Glucose</th><th>Lactose</th><th>Repressor</th><th>cAMP-CAP</th><th>Transcription</th></tr></thead>
+<tbody>
+<tr><th scope="row">Present</th><td>Absent</td><td>On the operator</td><td>Not bound</td><td>Off</td></tr>
+<tr><th scope="row">Absent</th><td>Absent</td><td>On the operator</td><td>Bound</td><td>Off</td></tr>
+<tr><th scope="row">Present</th><td>Present</td><td>Off the operator</td><td>Not bound</td><td>Low</td></tr>
+<tr><th scope="row">Absent</th><td>Present</td><td>Off the operator</td><td>Bound</td><td>High</td></tr>
+</tbody>
+</table>
+<p>The repressor is <b>negative regulation</b>: a bound protein lowers transcription. CAP is <b>positive regulation</b>: a bound protein raises it.</p>
+
+<h3>The trp operon: repressible</h3>
+<p>The trp operon codes for five enzymes that build the amino acid tryptophan. Its repressor is made in an inactive form that cannot bind the operator, so the operon is normally on. When tryptophan builds up, it binds the repressor as a <b>corepressor</b>, activating it; the active repressor binds the operator and switches the operon off. The cell stops making tryptophan when it already has plenty, a form of negative feedback (topic 4.4).</p>
+<table class="compare">
+<caption>Inducible and repressible operons</caption>
+<thead><tr><th></th><th>Inducible (lac)</th><th>Repressible (trp)</th></tr></thead>
+<tbody>
+<tr><th scope="row">Usual state</th><td>Off</td><td>On</td></tr>
+<tr><th scope="row">Repressor as made</th><td>Active (binds the operator)</td><td>Inactive (cannot bind)</td></tr>
+<tr><th scope="row">Small molecule</th><td>Inducer (allolactose) inactivates the repressor</td><td>Corepressor (tryptophan) activates the repressor</td></tr>
+<tr><th scope="row">Typical job</th><td>Breaking down a food that is sometimes present</td><td>Building a product the cell needs</td></tr>
+<tr><th scope="row">Switched by</th><td>The food appearing</td><td>The product building up</td></tr>
+</tbody>
+</table>
+<p>Explore both operons, and what goes wrong in mutant strains, in the <a href="../tools/operons.html">lac and trp operon simulator</a>.</p>
+<div class="worked">
+<p><b>Worked example: predicting a mutant.</b> A strain's lac repressor cannot bind allolactose. What happens with lactose and no glucose?</p>
+<p><b>Step 1.</b> What does lactose normally do? It works only through the repressor: allolactose binds it and pulls it off. <b>Step 2.</b> In this strain, allolactose cannot bind, so the repressor stays on the operator. <b>Step 3.</b> cAMP-CAP is bound, but CAP cannot overcome a bound repressor. <b>Answer:</b> the operon stays off; the cells cannot use lactose. (Compare a repressor that cannot bind the <i>operator</i>: then the operon is on even with no lactose.)</p>
+</div>
+
+<h2>Regulation in eukaryotes: transcription factors and enhancers</h2>
+<p>Eukaryotic genes are not grouped in operons; each gene has its own promoter. RNA polymerase II cannot bind a promoter by itself. General <b>transcription factors</b>, proteins that bind the promoter (many at the TATA box), must assemble first and then bring in the polymerase. That gives a low, basic level of transcription.</p>
+<p>Most of the control comes from <b>enhancers</b>: regulatory sequences that can lie thousands of base pairs before, after or even inside a gene. Specific transcription factors called <b>activators</b> bind enhancers, and the DNA bends into a loop so that the activators touch the proteins at the promoter and help RNA polymerase start. Because of looping, an enhancer works in either orientation and at a distance. Some sequences, called <b>silencers</b>, bind repressor proteins that lower transcription instead. A gene is active in a cell only when the right activators are present, which is the starting point for topic 6.6.</p>
+
+<h2>Epigenetics: marks on chromatin</h2>
+<p>How tightly DNA is packed controls whether transcription factors can reach it (topic 6.1). Cells change packing with chemical marks. <b>Epigenetics</b> is the study of changes in gene activity that do not change the DNA sequence and can be passed on when cells divide.</p>
+<ul>
+<li><b>Histone acetylation.</b> Enzymes add acetyl groups to the tails of histones. This neutralizes some of their positive charges, so they hold the negatively charged DNA less tightly; the chromatin opens and genes become easier to transcribe. Other enzymes (deacetylases) remove the acetyl groups, closing the chromatin again. Adding and removing such marks is part of chromatin remodeling.</li>
+<li><b>DNA methylation.</b> Enzymes add methyl groups to C nucleotides, especially in promoters. Proteins that recognize methylated DNA pack the chromatin tightly, and some transcription factors cannot bind, so heavily methylated genes are usually silent. When DNA is copied, enzymes copy the methylation pattern onto the new strand, so the pattern is inherited by daughter cells.</li>
+</ul>
+<div class="worked">
+<p><b>Worked example: reading epigenetic data.</b> A silent gene has 85% of its promoter C's methylated. A drug that blocks methylation lowers this to 21% and raises the gene's mRNA 14-fold; adding a deacetylase blocker as well raises it 40-fold. <b>Claim:</b> both marks help keep the gene silent. <b>Evidence:</b> removing methylation alone, or keeping acetyl groups on alone, raises mRNA, and both together raise it most (40 ÷ 14 ≈ 2.9 times the single-drug effect). <b>Reasoning:</b> unmethylated, acetylated chromatin is open, so transcription factors can reach the promoter. The sequence was unchanged, so the effect is epigenetic.</p>
+</div>
+<p>Environmental factors such as diet, stress and chemicals can change epigenetic marks, which is one way the environment affects phenotype (topic 5.5).</p>
+
+<h2>Gene products and phenotype</h2>
+<p>A gene affects an organism through its <b>gene product</b>: usually a protein, sometimes a working RNA. Regulation decides how much of the product is made, where and when, and the product's activity shapes the phenotype. Many human adults can digest milk because of a change in an enhancer far before the lactase gene: the enzyme is the same, but the gene stays switched on after childhood. A change in regulation, not in the protein, changes the trait.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>"The inducer binds the operator." It binds the repressor.</li>
+<li>"A repressible operon is usually off." It is usually on, and is switched off when its product builds up.</li>
+<li>"Glucose turns the lac repressor on." Glucose lowers cAMP, so CAP does not activate; the repressor responds to allolactose.</li>
+<li>"Epigenetic changes are mutations." They change marks on DNA and histones, not the base sequence.</li>
+<li>"Enhancers must be right next to the gene." They can be far away; DNA looping brings them close.</li>
+</ul>
+
+<aside class="going-further">
+<p><b>Going further: Jacob and Monod.</b> François Jacob and Jacques Monod worked out the lac operon in the late 1950s and early 1960s by studying mutant strains: some made the enzymes all the time, some never. By putting two copies of the region into one cell, they showed that a broken repressor gene could be fixed by a working copy elsewhere (its product, a protein, diffuses), but a broken operator could not (it acts only on the genes next to it). Their model of regulatory genes and binding sites earned a Nobel Prize in 1965.</p>
+</aside>

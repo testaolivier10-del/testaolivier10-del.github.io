@@ -1,0 +1,7 @@
+{
+  "operons-lac-trp": {
+    "file": "figures/operons-lac-trp.svg", "ext": "svg", "w": 760, "h": 500,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four panels, each showing a promoter P, an operator O and structural genes. Lac operon with no lactose: the repressor made by the separate lacI gene sits on the operator and RNA polymerase is blocked, so the genes lacZ, lacY and lacA are off. Lac operon with lactose: allolactose binds the repressor, which changes shape and leaves the operator; RNA polymerase, helped by cAMP-CAP bound beside the promoter, makes one mRNA for all three genes. Trp operon with little tryptophan: the repressor is inactive and RNA polymerase copies the five genes for making tryptophan. Trp operon with plenty of tryptophan: tryptophan binds and activates the repressor, which binds the operator and blocks transcription."
+  }
+}
