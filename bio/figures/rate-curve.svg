@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="t d">
+<title id="t">Average and instantaneous rate on a curve</title>
+<desc id="d">A curve of dye depth in an agar cube against time, rising steeply at first and flattening. A straight line from 0 to 10 minutes shows the average rate, 3.6 mm in 10 min or 0.36 mm/min. A short steep tangent near 1 minute and a shallow one near 9 minutes show that the instantaneous rate falls over time.</desc>
+<rect width="640" height="360" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#1F2A28">
+  <g stroke="#D5DDDB" stroke-width="1"><line x1="80" y1="60" x2="480" y2="60"/><line x1="80" y1="125" x2="480" y2="125"/><line x1="80" y1="190" x2="480" y2="190"/><line x1="80" y1="255" x2="480" y2="255"/></g>
+  <line x1="80" y1="320" x2="480" y2="320" stroke="#1F2A28" stroke-width="2"/>
+  <line x1="80" y1="40" x2="80" y2="320" stroke="#1F2A28" stroke-width="2"/>
+  <g text-anchor="middle"><text x="80" y="340">0</text><text x="160" y="340">2</text><text x="240" y="340">4</text><text x="320" y="340">6</text><text x="400" y="340">8</text><text x="480" y="340">10</text></g>
+  <text x="280" y="358" text-anchor="middle" font-weight="700">Time (min)</text>
+  <g text-anchor="end"><text x="72" y="325">0</text><text x="72" y="260">1</text><text x="72" y="195">2</text><text x="72" y="130">3</text><text x="72" y="65">4</text></g>
+  <text x="26" y="180" text-anchor="middle" font-weight="700" transform="rotate(-90 26 180)">Depth of color (mm)</text>
+  <path d="M80 320 C110 250 135 230 160 216 C190 198 215 184 240 170.5 C270 156 295 146 320 138 C350 128 375 120 400 112 C430 104 455 97 480 86" fill="none" stroke="#0072B2" stroke-width="3"/>
+  <g fill="#0072B2"><circle cx="80" cy="320" r="4.5"/><circle cx="160" cy="216" r="4.5"/><circle cx="240" cy="170.5" r="4.5"/><circle cx="320" cy="138" r="4.5"/><circle cx="400" cy="112" r="4.5"/><circle cx="480" cy="86" r="4.5"/></g>
+  <line x1="80" y1="320" x2="480" y2="86" stroke="#D55E00" stroke-width="2.5" stroke-dasharray="9 6"/>
+  <line x1="84" y1="300" x2="150" y2="200" stroke="#009E73" stroke-width="3"/>
+  <line x1="410" y1="112" x2="490" y2="84" stroke="#009E73" stroke-width="3"/>
+  <rect x="495" y="40" width="140" height="92" rx="8" fill="#F6D2BD" stroke="#D55E00"/>
+  <text x="565" y="62" text-anchor="middle" font-weight="700" fill="#8E3B2E">average rate</text>
+  <text x="565" y="84" text-anchor="middle">3.6 mm ÷ 10 min</text>
+  <text x="565" y="106" text-anchor="middle">= 0.36 mm/min</text>
+  <text x="565" y="124" text-anchor="middle" font-size="12" fill="#5D6B69">(dashed line)</text>
+  <rect x="495" y="150" width="140" height="110" rx="8" fill="#C4E8DC" stroke="#009E73"/>
+  <text x="565" y="172" text-anchor="middle" font-weight="700" fill="#00684C">instantaneous</text>
+  <text x="565" y="192" text-anchor="middle">steep near start:</text>
+  <text x="565" y="210" text-anchor="middle">fast</text>
+  <text x="565" y="232" text-anchor="middle">shallow near end:</text>
+  <text x="565" y="250" text-anchor="middle">slow</text>
+</g>
+</svg>

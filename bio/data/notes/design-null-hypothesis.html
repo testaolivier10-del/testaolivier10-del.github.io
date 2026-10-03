@@ -1,0 +1,56 @@
+<h2 id="problem">The problem: chance makes groups differ</h2>
+<p>Beet cells keep a red, water-soluble substance behind a membrane. Heat a beet cube, put it in water, and the membrane's damage shows up as red water. A student heats four cubes at 20 °C and four at 40 °C and gets mean absorbances of 0.08 and 0.09. The 40 °C mean is higher. Did the extra heat do it?</p>
+<p>Not necessarily. Measurements vary by chance even when nothing changes: four cubes at the same temperature gave 0.05, 0.09, 0.07 and 0.11. Two groups will almost never have exactly equal means, so "the means are different" is not evidence on its own. Hypothesis testing is the method for deciding when a difference is big enough to take seriously.</p>
+
+<h2 id="worked">Worked example: stating and testing hypotheses</h2>
+<figure data-fig="null-decision" id="fig-null"><figcaption>The decision is always about the null hypothesis: reject it, or fail to reject it.</figcaption></figure>
+<div class="worked">
+<p><b>Question:</b> does heating temperature affect how much red color leaks from beet cubes?</p>
+<p><b>Null hypothesis (H₀):</b> heating temperature has no effect on the amount of red color that leaks.</p>
+<p><b>Alternative hypothesis (H₁):</b> heating temperature affects the amount that leaks. Directional version: higher heating temperatures increase the amount that leaks.</p>
+<table class="compare">
+<caption>Absorbance of the water (four cubes per temperature)</caption>
+<thead><tr><th scope="col">Temperature (°C)</th><th scope="col">Values</th><th scope="col">Mean</th><th scope="col">Range</th></tr></thead>
+<tbody>
+<tr><td>20</td><td>0.05, 0.09, 0.07, 0.11</td><td>0.08</td><td>0.06</td></tr>
+<tr><td>40</td><td>0.06, 0.12, 0.08, 0.10</td><td>0.09</td><td>0.06</td></tr>
+<tr><td>80</td><td>0.88, 0.95, 0.81, 0.92</td><td>0.89</td><td>0.14</td></tr>
+</tbody>
+</table>
+<p><b>20 vs 40 °C:</b> the means differ by 0.01, but each group spreads over 0.06 and the values overlap almost completely. Chance could easily produce this gap. <b>Fail to reject H₀.</b></p>
+<p><b>20 vs 80 °C:</b> the lowest 80 °C value (0.81) is about seven times the highest 20 °C value (0.11). A gap this large is very unlikely if temperature had no effect. <b>Reject H₀</b>; the data support H₁.</p>
+</div>
+
+<h2 id="why-null">Why test "no effect"?</h2>
+<p>The null hypothesis makes a sharp prediction: groups should differ only by about as much as chance variation. That gives you something to measure the data against. The alternative ("there is some effect") is too open-ended to check directly. So you assume the null and ask whether the data are too extreme for it to be believable. Later skills turn "too extreme" into numbers; here you judge by comparing the gap between groups with the spread within them.</p>
+
+<h2 id="language">The language: what you can and cannot say</h2>
+<table class="compare">
+<caption>Correct and incorrect conclusions</caption>
+<thead><tr><th scope="col">Say this</th><th scope="col">Not this</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><td>Reject the null hypothesis</td><td>Prove the alternative</td><td>Data make a hypothesis more or less believable; they never prove it.</td></tr>
+<tr><td>Fail to reject the null hypothesis</td><td>Accept the null hypothesis</td><td>Not finding an effect is not the same as showing there is none.</td></tr>
+<tr><td>The data support the alternative</td><td>The alternative is true</td><td>A later experiment could still disagree.</td></tr>
+<tr><td>The data do not show an effect</td><td>There is no effect</td><td>A small effect, too few repeats or noisy data can hide a real one.</td></tr>
+</tbody>
+</table>
+
+<h2 id="second">A second example: cholesterol and fluidity</h2>
+<p>Membranes stiffen in the cold as phospholipid tails pack tightly. A team made artificial membranes with and without cholesterol and measured, at 10 °C, how fast a labeled lipid moved sideways (faster means more fluid). Six membranes of each type: without cholesterol, values 1.9 to 2.3 µm²/s (mean 2.1); with cholesterol, 2.7 to 3.1 µm²/s (mean 2.9).</p>
+<ul>
+<li>H₀: cholesterol has no effect on membrane fluidity at 10 °C.</li>
+<li>H₁: cholesterol changes membrane fluidity at 10 °C.</li>
+<li>Decision: the groups do not overlap and the gap (0.8) is twice the range of either group: reject H₀.</li>
+<li>Mechanism: cholesterol's rigid rings wedge between phospholipids and stop their tails from packing tightly in the cold, so the membrane stays more fluid.</li>
+</ul>
+
+<h2 id="writing">Writing hypotheses that score</h2>
+<ul>
+<li>Name both variables: "<i>[independent variable]</i> has no effect on <i>[dependent variable]</i>."</li>
+<li>Keep the null free of direction and explanation. "Heat damages membranes" is an explanation, not a null.</li>
+<li>Write the alternative as the opposite of the null, adding a direction if the question asks for one.</li>
+</ul>
+
+<aside class="going-further"><h3>Going further: why "fail to reject" matters</h3>
+<p>If heating to 40 °C really raised leakage by a tiny amount, four cubes might never reveal it; forty might. Failing to reject the null tells you the experiment was not able to detect an effect of that size, which is a statement about the experiment as much as about the beets.</p></aside>

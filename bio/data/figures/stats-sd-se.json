@@ -1,0 +1,12 @@
+{
+  "sd-bell-curves": {
+    "file": "figures/sd-bell-curves.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 330,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Two bell-shaped curves with the same mean of 10 g. The narrow curve has a standard deviation of 0.3 g; the wide one, 1.8 g. Shading on the wide curve marks mean ± 1 standard deviation, holding about 68% of values, and mean ± 2 standard deviations, about 95%."
+  }
+}
