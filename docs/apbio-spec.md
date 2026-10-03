@@ -76,7 +76,8 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 |---|---|---|---|
 | 0.1 | Course registry refactor | `claude/apbio-registry` | merged (PR #33) |
 | 0.2 | CED topic map (own words) | — | done: `docs/apbio-ced-map.json` (61 topics; unverified against the official PDF, needs-author ced-verify) |
-| 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | engine and generator done (`docs/apbio-architecture.md`); map and app pages open |
+| 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | done: map 777 concepts, 61 CED + 14 skills topics (`docs/apbio-phase0.md`); engine and generator (`docs/apbio-architecture.md`); nothing published, all pages noindex |
+| 0.4 | App pages (`claude/apbio-apps`), simulators + skills tools (`claude/apbio-tools`) | | in progress |
 | 2 | Units 1-3 + statistics skills, Beta | | not started |
 | 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
 | 4 | Cram kit (by 2027-03-01) | | not started |
