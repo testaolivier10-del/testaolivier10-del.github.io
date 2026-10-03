@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" role="img" aria-labelledby="eut-t eut-d">
+<title id="eut-t">Eutrophication: from nutrient runoff to a dead zone</title>
+<desc id="eut-d">Six steps in two rows. 1: fertilizer and sewage wash nitrate and phosphate into the water. 2: algae, no longer limited by nutrients, grow fast in an algal bloom. 3: the algae shade each other and die, and dead algae sink. 4: decomposers break down the dead algae by aerobic respiration, using dissolved oxygen. 5: dissolved oxygen in the deeper water falls very low. 6: fish and other animals that cannot leave die, leaving a dead zone.</desc>
+<defs>
+  <marker id="eut-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="760" height="330" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <g text-anchor="middle">
+    <rect x="20" y="30" width="210" height="110" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+    <text x="125" y="58" font-size="15" font-weight="700">1. Nutrient runoff</text>
+    <text x="125" y="82" font-size="13">Fertilizer, manure and sewage</text>
+    <text x="125" y="100" font-size="13">wash nitrate and phosphate</text>
+    <text x="125" y="118" font-size="13">into rivers, lakes and seas</text>
+
+    <rect x="275" y="30" width="210" height="110" rx="10" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+    <text x="380" y="58" font-size="15" font-weight="700">2. Algal bloom</text>
+    <text x="380" y="82" font-size="13">Algae are no longer limited</text>
+    <text x="380" y="100" font-size="13">by nutrients and multiply;</text>
+    <text x="380" y="118" font-size="13">the water turns green</text>
+
+    <rect x="530" y="30" width="210" height="110" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+    <text x="635" y="58" font-size="15" font-weight="700">3. Algae die and sink</text>
+    <text x="635" y="82" font-size="13">Crowded algae shade one</text>
+    <text x="635" y="100" font-size="13">another and die; dead cells</text>
+    <text x="635" y="118" font-size="13">sink to deeper water</text>
+
+    <rect x="530" y="190" width="210" height="110" rx="10" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+    <text x="635" y="218" font-size="15" font-weight="700">4. Decomposers feast</text>
+    <text x="635" y="242" font-size="13">Bacteria break down the dead</text>
+    <text x="635" y="260" font-size="13">algae by aerobic respiration,</text>
+    <text x="635" y="278" font-size="13">using dissolved O₂</text>
+
+    <rect x="275" y="190" width="210" height="110" rx="10" fill="#E1E6F0" stroke="#5B6B8C" stroke-width="2.5"/>
+    <text x="380" y="218" font-size="15" font-weight="700">5. Oxygen crashes</text>
+    <text x="380" y="242" font-size="13">O₂ used faster than it can</text>
+    <text x="380" y="260" font-size="13">mix down from the surface;</text>
+    <text x="380" y="278" font-size="13">deep water becomes hypoxic</text>
+
+    <rect x="20" y="190" width="210" height="110" rx="10" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/>
+    <text x="125" y="218" font-size="15" font-weight="700">6. Dead zone</text>
+    <text x="125" y="242" font-size="13">Fish leave or die; clams,</text>
+    <text x="125" y="260" font-size="13">crabs and worms that cannot</text>
+    <text x="125" y="278" font-size="13">move away suffocate</text>
+  </g>
+  <line x1="232" y1="85" x2="271" y2="85" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#eut-a)"/>
+  <line x1="487" y1="85" x2="526" y2="85" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#eut-a)"/>
+  <line x1="635" y1="142" x2="635" y2="186" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#eut-a)"/>
+  <line x1="528" y1="245" x2="489" y2="245" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#eut-a)"/>
+  <line x1="273" y1="245" x2="234" y2="245" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#eut-a)"/>
+  <text x="380" y="322" font-size="12" font-style="italic" text-anchor="middle">In deep water most O₂ is used by decomposers; living algae add O₂ near the surface by day but use it at night.</text>
+</g>
+</svg>
