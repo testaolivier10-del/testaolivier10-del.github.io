@@ -1,0 +1,686 @@
+{
+  "stimuli": {
+    "mutations-s1": {
+      "kind": "model",
+      "title": "Normal and mutant mRNAs with a codon table",
+      "text": "<p>The normal mRNA, from its 5′ end, is shown with a space after every third base from the start codon. Each mutant strain's mRNA differs by the change listed.</p><table class=\"compare\"><caption>Normal and mutant mRNAs (5′ to 3′)</caption><thead><tr><th>Strain</th><th>mRNA</th><th>Change from normal</th></tr></thead><tbody><tr><th scope=\"row\">Normal</th><td>AUG GCA UGG GAA CUA AAU GGC UAA GC</td><td>—</td></tr><tr><th scope=\"row\">A</th><td>AUGGCAGGGAACUAAAUGGCUAAGC</td><td>G at position 7 deleted</td></tr><tr><th scope=\"row\">B</th><td>AUGGCAUGGGAGCUAAAUGGCUAAGC</td><td>A at position 12 replaced by G</td></tr><tr><th scope=\"row\">C</th><td>AUGGCAUGAGAACUAAAUGGCUAAGC</td><td>G at position 9 replaced by A</td></tr><tr><th scope=\"row\">D</th><td>AUGGCAUGGGUACUAAAUGGCUAAGC</td><td>A at position 11 replaced by U</td></tr><tr><th scope=\"row\">E</th><td>AUGGCAUGGGAAAAGCUAAAUGGCUAAGC</td><td>AAG inserted after position 12</td></tr></tbody></table>",
+      "html": "<table class=\"compare\"><caption>The genetic code, by amino acid (mRNA codons, read 5′ to 3′)</caption><thead><tr><th>Amino acid</th><th>Codons</th></tr></thead><tbody><tr><th scope=\"row\">Alanine (Ala)</th><td>GCU, GCC, GCA, GCG</td></tr><tr><th scope=\"row\">Arginine (Arg)</th><td>CGU, CGC, CGA, CGG, AGA, AGG</td></tr><tr><th scope=\"row\">Asparagine (Asn)</th><td>AAU, AAC</td></tr><tr><th scope=\"row\">Aspartic acid (Asp)</th><td>GAU, GAC</td></tr><tr><th scope=\"row\">Cysteine (Cys)</th><td>UGU, UGC</td></tr><tr><th scope=\"row\">Glutamine (Gln)</th><td>CAA, CAG</td></tr><tr><th scope=\"row\">Glutamic acid (Glu)</th><td>GAA, GAG</td></tr><tr><th scope=\"row\">Glycine (Gly)</th><td>GGU, GGC, GGA, GGG</td></tr><tr><th scope=\"row\">Histidine (His)</th><td>CAU, CAC</td></tr><tr><th scope=\"row\">Isoleucine (Ile)</th><td>AUU, AUC, AUA</td></tr><tr><th scope=\"row\">Leucine (Leu)</th><td>UUA, UUG, CUU, CUC, CUA, CUG</td></tr><tr><th scope=\"row\">Lysine (Lys)</th><td>AAA, AAG</td></tr><tr><th scope=\"row\">Methionine (Met), also the start signal</th><td>AUG</td></tr><tr><th scope=\"row\">Phenylalanine (Phe)</th><td>UUU, UUC</td></tr><tr><th scope=\"row\">Proline (Pro)</th><td>CCU, CCC, CCA, CCG</td></tr><tr><th scope=\"row\">Serine (Ser)</th><td>UCU, UCC, UCA, UCG, AGU, AGC</td></tr><tr><th scope=\"row\">Threonine (Thr)</th><td>ACU, ACC, ACA, ACG</td></tr><tr><th scope=\"row\">Tryptophan (Trp)</th><td>UGG</td></tr><tr><th scope=\"row\">Tyrosine (Tyr)</th><td>UAU, UAC</td></tr><tr><th scope=\"row\">Valine (Val)</th><td>GUU, GUC, GUA, GUG</td></tr><tr><th scope=\"row\">Stop (no amino acid)</th><td>UAA, UAG, UGA</td></tr></tbody></table>"
+    },
+    "mutations-s2": {
+      "kind": "setup",
+      "title": "Testing chemicals for their ability to cause mutations",
+      "text": "<p>A strain of <i>Salmonella</i> bacteria has a mutation in a gene needed to make the amino acid histidine, so it cannot grow without histidine. On plates with no histidine, only cells in which a new mutation has restored the gene can grow into colonies (revertants). Equal numbers of cells were spread on each plate with a test substance. Some plates also got an extract of liver enzymes, which chemically change many substances the way a person's liver does. Values are means of three plates.</p>",
+      "table": {
+        "caption": "Revertant colonies per plate after 48 hours",
+        "cols": [
+          "Added to the plate",
+          "Revertant colonies per plate"
+        ],
+        "rows": [
+          [
+            "Solvent only",
+            "22"
+          ],
+          [
+            "Liver extract only",
+            "25"
+          ],
+          [
+            "Chemical P",
+            "24"
+          ],
+          [
+            "Chemical P + liver extract",
+            "410"
+          ],
+          [
+            "Chemical Q",
+            "380"
+          ],
+          [
+            "Chemical Q + liver extract",
+            "395"
+          ]
+        ]
+      }
+    },
+    "mutations-s3": {
+      "kind": "table",
+      "title": "Counting phage-resistant cells in many cultures",
+      "text": "<p>Some <i>E. coli</i> cells carry a mutation that makes them resistant to a phage that kills normal cells. Researchers compared two hypotheses. Hypothesis 1: contact with the phage causes a few cells to become resistant. Hypothesis 2: resistance mutations arise at random while the cells grow, before any phage is present. Set 1: ten separate small cultures, each started from about 1,000 normal cells and grown to about 2 × 10<sup>8</sup> cells, were each spread on a plate covered with phage. Set 2: ten samples of the same size were taken from one large culture grown the same way and spread on phage plates. Only resistant cells form colonies.</p>",
+      "table": {
+        "caption": "Resistant colonies per plate",
+        "cols": [
+          "Plate",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "rows": [
+          [
+            "Set 1 (separate cultures)",
+            "1",
+            "0",
+            "3",
+            "0",
+            "0",
+            "107",
+            "0",
+            "5",
+            "0",
+            "64"
+          ],
+          [
+            "Set 2 (samples of one culture)",
+            "14",
+            "15",
+            "13",
+            "21",
+            "15",
+            "14",
+            "26",
+            "16",
+            "20",
+            "13"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-mutations-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "mutations-s1",
+      "q": "Which strain makes a polypeptide identical to the normal one?",
+      "options": [
+        "Strain B",
+        "Strain C",
+        "Strain D",
+        "Strain E"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "In strain B the fourth codon changes from GAA to GAG. Both code for glutamic acid, so the amino acid sequence is unchanged: a silent mutation.",
+        "options": [
+          "Correct: GAA and GAG both code for glutamic acid.",
+          "Strain C's third codon becomes UGA, a stop codon, so the chain ends after two amino acids.",
+          "Strain D's fourth codon becomes GUA, valine instead of glutamic acid.",
+          "Strain E gains a codon, AAG, so its polypeptide has an extra lysine."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-2",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "mutations-s1",
+      "q": "What polypeptide does strain D make, and what kind of mutation is it?",
+      "options": [
+        "Met-Ala-Trp-Val-Leu-Asn-Gly: a missense mutation",
+        "Met-Ala-Trp-Glu-Leu-Asn-Gly: a silent mutation",
+        "Met-Ala-Trp: a nonsense mutation",
+        "Met-Ala-Trp-Val-Ser-Lys-Trp: a frameshift mutation"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The fourth codon changes from GAA (Glu) to GUA (Val); every other codon is the same. One amino acid replaced by another is a missense mutation, the same kind of change (Glu to Val) as in sickle cell disease.",
+        "options": [
+          "Correct: one codon, one amino acid changed.",
+          "GUA codes for valine, not glutamic acid, so the protein does change.",
+          "GUA is not a stop codon, so the chain continues.",
+          "A base was replaced, not added or removed, so the reading frame is unchanged after it."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-3",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "mutations-s1",
+      "q": "What polypeptide does strain A make?",
+      "options": [
+        "Met-Ala-Gly-Asn",
+        "Met-Ala-Trp-Glu-Leu-Asn-Gly",
+        "Met-Ala-Glu-Leu-Asn-Gly",
+        "Met-Ala"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "Deleting G7 shifts the reading frame: AUG GCA GGG AAC UAA… gives Met-Ala-Gly-Asn, then UAA, a stop codon that was not in frame before.",
+        "options": [
+          "Correct: a frameshift changes every codon after it and here reaches a stop early.",
+          "This is the normal polypeptide; one deleted base changes the codons after it.",
+          "Removing one base does not remove one whole codon; it regroups the rest.",
+          "The frame shifts at codon 3, but the stop codon comes two codons later, not at once."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "mutations-s1",
+      "q": "Strain E gained three bases and strain A lost only one, yet strain E's polypeptide is far closer to normal. Why?",
+      "options": [
+        "Three added bases add a codon and keep the frame; one lost base shifts each later codon.",
+        "Added bases are cut out of the mRNA by spliceosomes, but lost bases are not put back by the cell.",
+        "Insertions change just the DNA, while deletions also change the mRNA and the protein made from it.",
+        "A change near the start of an mRNA has a larger effect than one farther along, whatever its size."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Codons are read in threes. Inserting AAG adds one lysine and leaves every later codon in its original frame. Deleting one base regroups all later bases into new codons, which here also creates an early stop.",
+        "options": [
+          "Correct: a multiple of three keeps the frame.",
+          "Spliceosomes remove introns, recognized by sequences at their ends; they do not remove inserted bases.",
+          "Both insertions and deletions in DNA are copied into the mRNA.",
+          "The two changes are close together (positions 7 and 12); position does not explain the difference."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-5",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "mutations-s1",
+      "q": "How many amino acids are in the polypeptide made by strain C? Give a whole number.",
+      "numeric": {
+        "answer": 2,
+        "tol": 0,
+        "unit": "amino acids",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Strain C reads AUG (Met), GCA (Ala), then UGA, a stop codon: a nonsense mutation leaves a two-amino-acid chain."
+      }
+    },
+    {
+      "id": "bio-mutations-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "mutations-s2",
+      "q": "Which claim is best supported by the colony counts?",
+      "options": [
+        "Chemical Q causes mutations by itself; chemical P causes them after liver enzymes change it.",
+        "Chemical P causes mutations by itself; chemical Q causes them after liver enzymes change it.",
+        "Neither chemical causes mutations, because some revertant colonies appear on each plate.",
+        "The liver extract causes the mutations, and the chemicals simply help the cells to grow."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Chemical Q raises revertants from 22 to 380 with or without the extract. Chemical P has no effect alone (24) but raises them to 410 with liver extract, so a product the liver enzymes make from P is the mutagen.",
+        "options": [
+          "Correct: Q acts directly; P must be converted first.",
+          "This reverses the two chemicals.",
+          "The background of about 22 is the spontaneous rate; the treated plates are 17-19 times higher.",
+          "The extract alone gives 25, the same as solvent alone."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "mutations-s2",
+      "q": "Why do the plates with solvent only still have about 22 revertant colonies?",
+      "options": [
+        "Mutations also arise with no mutagen, from rare copying errors and everyday DNA damage.",
+        "The solvent itself is a weak mutagen, which caused a few of the spread cells to mutate.",
+        "Some cells sensed the lack of histidine and changed their gene so they could grow.",
+        "Some cells were contaminants from the air, carrying a working histidine gene."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Spontaneous mutations happen at a low rate in every population: errors that escape proofreading and mismatch repair, and damage from normal chemistry. Among millions of cells, a few happen to restore the gene.",
+        "options": [
+          "Correct: the background is the spontaneous mutation rate.",
+          "Nothing suggests the solvent is mutagenic; a spontaneous background is expected.",
+          "Mutations are not directed by need; cells cannot choose to change a gene.",
+          "The plates are kept sterile and lack histidine for exactly this reason; the counts are steady across plates."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-8",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "mutations-s2",
+      "q": "What is the purpose of the plates with liver extract only?",
+      "options": [
+        "To show that the extract by itself does not raise the mutation rate",
+        "To give the bacteria the histidine they need to form colonies",
+        "To show that chemical P needs liver enzymes to become a mutagen",
+        "To measure how many cells were spread on each of the plates"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The extract alone gives 25 colonies, close to solvent alone (22), so the high counts with chemical P plus extract come from P's product, not from the extract.",
+        "options": [
+          "Correct: a control for the extract.",
+          "The plates have no histidine; revertants make their own.",
+          "That conclusion needs the chemical P plates; this row only rules out the extract.",
+          "Cell numbers were made equal when the plates were spread."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "mutations-s2",
+      "q": "Chemicals that cause mutations in this bacterial test are treated as possible causes of cancer in people. Which reasoning supports this?",
+      "options": [
+        "DNA is the same molecule in bacteria and people, and cancer starts from mutations in cell-cycle genes.",
+        "Bacteria and people share the histidine gene, so damage to that gene causes cancer in both of them.",
+        "Bacteria that mutate in the test have become cancer cells, so the chemical has already caused cancer.",
+        "The liver extract is human, so each chemical tested with it acts just as it would inside a person."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A chemical that changes bacterial DNA can change human DNA, and mutations in genes such as tumor suppressors and the genes that drive division can let cells divide out of control (topic 4.6). Such chemicals are carcinogens.",
+        "options": [
+          "Correct: mutagens are likely carcinogens because cancer is caused by mutations.",
+          "The histidine gene is just a convenient marker; cancer involves cell-cycle genes.",
+          "Bacteria are single cells; they do not get cancer.",
+          "The extract only imitates liver chemistry; the link to cancer is through DNA damage."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-10",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "mutations-s3",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "Set 1's counts vary enormously, from 0 to 107, while set 2's stay from 13 to 26.",
+        "Set 1's counts are steady, while set 2's vary enormously from one plate to another.",
+        "Both sets give similar counts on each plate, close to the overall average of 17 colonies.",
+        "Set 1 has far more resistant colonies in total than set 2 has in total."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Five of set 1's plates have 0 colonies and two have 64 and 107; set 2's plates all fall in a narrow range around 17.",
+        "options": [
+          "Correct: wide spread in set 1, narrow spread in set 2.",
+          "This reverses the two sets.",
+          "Set 1 ranges from 0 to 107, far from similar.",
+          "Totals are close: 180 in set 1 and 167 in set 2."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "mutations-s3",
+      "q": "Which hypothesis do the data support, and why?",
+      "options": [
+        "Hypothesis 2: an early mutation in one culture leaves many resistant descendants, spreading set 1's counts.",
+        "Hypothesis 1: each plate's phage turned a similar share of cells resistant, which explains the even counts of set 2.",
+        "Hypothesis 1: the cultures in set 1 met different amounts of phage, so their counts differed widely from one another.",
+        "Hypothesis 2: the cells in set 2 grew in one culture, so they could share their resistance with each other."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If contact with phage caused resistance, every plate would show a similar small share, as in set 2. Separate cultures vary hugely because mutations happen at random times during growth: an early one gives a jackpot of resistant offspring, a late one a few, and often none happens at all. Set 2's samples share one history, so they are similar.",
+        "options": [
+          "Correct: random mutations before exposure predict jackpots between independent cultures.",
+          "Set 2's steady counts are expected under both hypotheses; set 1's spread is what tells them apart.",
+          "Each plate was covered with phage in the same way; only the cultures' separate histories differ.",
+          "Resistance came from mutations inside cells; the spread in set 1, not sharing in set 2, is the evidence."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-12",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "mutations-s3",
+      "q": "What is the mean number of resistant colonies per plate in set 1? Give one decimal place.",
+      "numeric": {
+        "answer": 18.0,
+        "tol": 0.1,
+        "unit": "colonies",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "1 + 0 + 3 + 0 + 0 + 107 + 0 + 5 + 0 + 64 = 180; 180 ÷ 10 = 18.0. The means of the two sets are similar (18.0 and 16.7); it is the spread that differs."
+      }
+    },
+    {
+      "id": "bio-mutations-13",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "mutations-s3",
+      "q": "Why was set 2 needed?",
+      "options": [
+        "It shows how much counts vary from sampling and plating alone, so technique cannot explain set 1.",
+        "It shows that cells grown in one large culture mutate more often than cells grown in small separate ones.",
+        "It provides the cells that are spread on the phage plates in set 1 of the experiment.",
+        "It shows that the phage on each plate was able to kill the normal, nonresistant cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Samples from one culture differ only by chance in sampling and plating. Their narrow spread shows that technique cannot explain the huge spread among separate cultures.",
+        "options": [
+          "Correct: it is the control for sampling and plating error.",
+          "Total resistant cells are similar in both sets, so mutation rate does not differ.",
+          "Set 1's cells came from their own separate cultures.",
+          "The phage's killing is shown by the few colonies on any plate, not by set 2 specifically."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "In sickle cell disease, one base change replaces glutamic acid (charged) with valine (nonpolar) at position 6 of the β chain of hemoglobin. Which chain of effects explains the disease?",
+      "options": [
+        "Nonpolar valine on the surface makes hemoglobin stick into fibers at low oxygen, bending red blood cells.",
+        "Valine changes the code for each later amino acid, so the β chain is shortened and hemoglobin fails to form.",
+        "Valine stops the hemoglobin gene from being transcribed, so red blood cells contain little hemoglobin.",
+        "Valine makes hemoglobin hold oxygen so tightly that little of it is released to the body's tissues."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A missense mutation changes one amino acid. The new nonpolar side chain on the outside of the protein makes deoxygenated hemoglobin clump into fibers, which deform red blood cells into sickles that block small vessels and break down early.",
+        "options": [
+          "Correct: one changed side chain, a changed protein shape and interactions, a changed cell.",
+          "A base replacement does not shift the reading frame; the chain is full length.",
+          "The change is in the coding sequence, and the gene is transcribed normally.",
+          "The problem is clumping into fibers at low oxygen, not oxygen being held too tightly."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-15",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A chromosome's genes are normally in the order A-B-C-D-E-F-G. In a mutant chromosome the order is A-B-E-D-C-F-G. What kind of change is this?",
+      "options": [
+        "Inversion",
+        "Duplication",
+        "Deletion",
+        "Translocation"
+      ],
+      "fixed": true,
+      "correct": 0,
+      "why": {
+        "correct": "The segment C-D-E has been flipped end to end into E-D-C, with no genes gained or lost: an inversion.",
+        "options": [
+          "Correct: a reversed segment.",
+          "A duplication would repeat a segment, such as A-B-C-D-C-D-E-F-G.",
+          "A deletion would lose genes, such as A-B-E-F-G.",
+          "A translocation moves a segment to a different, nonhomologous chromosome."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-16",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which processes can move genes from one bacterium into another living bacterium? Select all that apply.",
+      "options": [
+        "Transformation: taking up DNA from the surroundings",
+        "Transduction: a phage carrying bacterial DNA into a new host",
+        "Conjugation: passing DNA through a pilus between two cells",
+        "Binary fission: one cell dividing into two",
+        "Mitosis: dividing a nucleus into two",
+        "Spore formation: a cell walling itself off to survive"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "why": {
+        "correct": "Transformation, transduction and conjugation are forms of horizontal gene transfer: genes move between cells, not just from parent to offspring.",
+        "options": [
+          "Correct: DNA released by dead cells can be taken up.",
+          "Correct: a phage may package host DNA by mistake and deliver it.",
+          "Correct: often the DNA moved is a plasmid.",
+          "Binary fission passes genes from parent to daughter cells, not between unrelated cells.",
+          "Bacteria have no nucleus and do not divide by mitosis.",
+          "A spore is the same cell in a resting form; no genes move to another cell."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-17",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Most seedless watermelons are triploid (3n). Why are they nearly sterile?",
+      "options": [
+        "Three homologs of each chromosome cannot split evenly in meiosis I, so most gametes are unbalanced.",
+        "Triploid plants make no meiotic cells, because the extra chromosomes block cell division in their flowers.",
+        "The extra set of chromosomes contains a mutation that destroys the genes for making seeds.",
+        "Triploid cells hold so much DNA that they fail to finish copying it during S phase, and so they stop dividing."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In meiosis I, three homologs cannot split two-and-two; one side gets two and the other one, at random for each chromosome. Almost every gamete ends up with an unbalanced mix and fails, so few seeds form.",
+        "options": [
+          "Correct: odd numbers of sets pair and separate unevenly.",
+          "Triploid plants do begin meiosis; the problem is the uneven separation.",
+          "The genes are ordinary copies; the problem is the number of sets, not a broken gene.",
+          "Many polyploid plants copy their DNA and grow normally; only meiosis fails."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-18",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student writes: \"When bacteria are exposed to a drug, they mutate so that they can survive it.\" Which correction is best?",
+      "options": [
+        "Mutations are random; the drug kills cells that lack a useful one, leaving cells that already had it.",
+        "The student is right, because the drug signals the cells to change the gene that the drug works on.",
+        "Bacteria are unable to mutate, because they have no nucleus to shield their DNA from the drug.",
+        "Mutations happen after exposure, but each cell mutates a different gene at random."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mutations are not directed by need or by the environment. A drug does not create the useful mutation; it removes the cells without one, and the few that already had it multiply.",
+        "options": [
+          "Correct: random mutation, then survival of the cells that happened to carry one.",
+          "No signaling system aims mutations at a particular gene; the fluctuation test shows they arise before exposure.",
+          "Bacteria mutate; their DNA is copied with errors like any other.",
+          "Mutations arise before exposure too, which is what the fluctuation test showed."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-19",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A pig cell is infected at the same time by a bird influenza virus and a human influenza virus. Influenza genomes are made of eight separate RNA segments. Which outcome is possible, and why?",
+      "options": [
+        "New viruses with some bird and some human segments, because segments from both are packaged at random",
+        "New viruses that are exact copies of one parent, because just one virus can multiply in a cell",
+        "New viruses whose RNA is a single blend of the two genomes, because the segments are joined end to end",
+        "New viruses carrying pig genes, because the virus packages the host cell's chromosomes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "When two influenza viruses copy their segments in one cell, new particles can package a mix of segments: reassortment. A virus with new combinations of surface proteins can spread in people who have no immunity to it.",
+        "options": [
+          "Correct: reassortment of segments.",
+          "Both viruses can copy their segments in the same cell.",
+          "Segments stay separate; they are mixed, not fused.",
+          "Influenza packages its own RNA segments, not host chromosomes."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-20",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A transposon (a DNA segment that can move within the genome) inserts itself into the middle of the coding sequence of a bacterial gene for an enzyme. Predict each quantity, compared with the cell before the insertion.",
+      "variables": [
+        {
+          "name": "Activity of the enzyme the gene codes for",
+          "answer": "down",
+          "why": "Hundreds of extra bases in the coding sequence usually shift the frame or add stop codons, so a working enzyme is rarely made."
+        },
+        {
+          "name": "Length of the DNA of that gene",
+          "answer": "up",
+          "why": "The transposon's DNA is added to the gene."
+        },
+        {
+          "name": "Base sequence of a gene on the other side of the chromosome",
+          "answer": "none",
+          "why": "This insertion changes the gene it lands in, not distant genes."
+        }
+      ],
+      "why": {
+        "correct": "Transposons are a source of mutations: inserting into a gene usually disrupts it, and the insertion lengthens the DNA where it lands without changing genes elsewhere."
+      }
+    },
+    {
+      "id": "bio-mutations-21",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "The most common cystic fibrosis allele lacks three bases, so the CFTR channel protein is missing one amino acid out of 1,480 and the rest of its sequence is normal. Most of the protein never reaches the cell membrane. Which explanation is best?",
+      "options": [
+        "The missing amino acid makes the protein fold wrongly, so quality control breaks it down.",
+        "Losing three bases shifts the reading frame, so each amino acid after the deletion is wrong.",
+        "The deletion removes the start codon, so the protein is made from a different starting point.",
+        "One amino acid out of 1,480 is too few to affect a protein, so the disease comes from another gene."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Deleting three bases removes one codon and keeps the frame, so only one amino acid is lost. But that one change disturbs folding; misfolded CFTR is held in the ER and destroyed by the proteasome, so little reaches the membrane.",
+        "options": [
+          "Correct: one missing amino acid, wrong shape, protein destroyed.",
+          "Three bases are one codon, so the frame is kept; the stem says the rest of the sequence is normal.",
+          "The stem says one amino acid is missing and the rest is normal, so the start is intact.",
+          "Protein shape depends on its sequence; one change in a key place can wreck folding."
+        ]
+      }
+    },
+    {
+      "id": "bio-mutations-22",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "mutations",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "People who carry one sickle-cell allele are less likely to die of malaria. In regions where malaria is common, the allele is frequent; elsewhere it is rare. Which conclusion is best supported?",
+      "options": [
+        "Whether a mutation helps or harms depends on the environment the organism lives in.",
+        "The sickle-cell mutation was caused by malaria parasites, which changed the gene.",
+        "The sickle-cell mutation is harmful in each environment, so it should be rare everywhere.",
+        "People in malaria regions mutate more often, so the allele arises there more often."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The same allele harms people with two copies, helps carriers survive where malaria is common, and gives no such benefit where malaria is absent. A mutation's effect on survival depends on its environment.",
+        "options": [
+          "Correct: harmful, neutral or helpful depends on context.",
+          "Mutations are not directed by the environment; malaria affects who survives, not which mutations occur.",
+          "It is common in malaria regions, so it is not harmful in each environment.",
+          "Nothing suggests different mutation rates; survival differs, not the rate of mutation."
+        ]
+      }
+    }
+  ]
+}

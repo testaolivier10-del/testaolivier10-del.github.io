@@ -1,0 +1,80 @@
+{
+  "topic": "mutations",
+  "hook": "<p>Sickle cell disease, which affects millions of people, comes down to one letter. In the gene for one hemoglobin chain, a single A in the DNA has been replaced by a T, so one codon now calls for valine instead of glutamic acid. One amino acid out of 146 changes, and red blood cells bend into stiff sickles when oxygen runs low. Yet the same allele also protects carriers against malaria. Mutations are where new versions of genes come from, and whether one helps or harms depends on where its carrier lives.</p>",
+  "prereq": [
+    {
+      "q": "The start codon AUG also sets",
+      "options": ["the reading frame for every later codon", "which strand of DNA is the template", "where the poly-A tail is added"],
+      "correct": 0,
+      "why": "Codons are read in threes from the start codon, so it fixes how later bases are grouped.",
+      "review": "translation"
+    },
+    {
+      "q": "Nondisjunction in meiosis produces",
+      "options": ["gametes with an extra or a missing chromosome", "gametes with an extra set of genes on one chromosome", "gametes with no DNA"],
+      "correct": 0,
+      "why": "When homologs or sister chromatids fail to separate, gametes get one chromosome too many or too few.",
+      "review": "meiosis-genetic-diversity"
+    },
+    {
+      "q": "How do proofreading and mismatch repair affect mutations?",
+      "options": ["They catch most copying errors, so few become permanent", "They cause most mutations", "They have no effect on copying errors"],
+      "correct": 0,
+      "why": "Errors that escape both systems become permanent changes in the sequence.",
+      "review": "dna-replication"
+    }
+  ],
+  "figure": {
+    "figure": "mutation-types",
+    "caption": "One short mRNA, changed in five ways. A silent change keeps the amino acid; missense swaps one; nonsense creates an early stop; deleting one base shifts the frame; adding three bases adds one amino acid and keeps the frame."
+  },
+  "chain": [
+    {
+      "cause": "A copying error escapes proofreading and repair, or a mutagen such as UV radiation or a chemical damages DNA.",
+      "effect": "The base sequence changes permanently: a mutation, passed to every cell that descends from this one."
+    },
+    {
+      "cause": "A single base is replaced in a gene's coding sequence (a point mutation).",
+      "effect": "The codon may still mean the same amino acid (silent), a different one (missense) or stop (nonsense)."
+    },
+    {
+      "cause": "Bases are inserted or deleted in a number that is not a multiple of three.",
+      "effect": "The reading frame shifts, so every codon after the change is different and a stop codon often appears early (frameshift)."
+    },
+    {
+      "cause": "The protein's amino acid sequence changes.",
+      "effect": "Its folding and function may change, which can change the phenotype, as in sickle cell disease."
+    },
+    {
+      "cause": "Mutations arise at random, not in response to what the organism needs.",
+      "effect": "A mutation can be harmful, neutral or helpful depending on the environment, and mutations in gametes add to the variety in a population."
+    }
+  ],
+  "ideas": [
+    "<b>Point mutations</b>: <b>silent</b> (same amino acid), <b>missense</b> (different amino acid), <b>nonsense</b> (stop codon). <b>Insertions</b> and <b>deletions</b> not in multiples of three cause <b>frameshifts</b>.",
+    "Causes: copying errors, and <b>mutagens</b> such as <b>UV radiation</b> and some chemicals (many are <b>carcinogens</b>). Mutations are <b>random</b>: not directed by need or by the environment.",
+    "Effects depend on context: <b>neutral</b>, <b>harmful</b> or <b>beneficial</b>. The same sickle-cell allele harms in two copies but protects carriers against malaria.",
+    "<b>Chromosomal mutations</b>: <b>deletion</b>, <b>duplication</b>, <b>inversion</b>, <b>translocation</b>; errors in number include nondisjunction and <b>polyploidy</b>.",
+    "Bacteria gain genes by <b>horizontal gene transfer</b>: transformation, <b>transduction</b>, <b>conjugation</b>. <b>Transposons</b> move within genomes; viruses vary through high mutation rates and <b>reassortment</b>."
+  ],
+  "misconception": {
+    "wrong": "Bacteria exposed to a drug mutate in order to survive it.",
+    "right": "Mutations arise at random, before and regardless of exposure. The drug does not create useful mutations; it kills the cells without one, so the few that already had one survive and multiply."
+  },
+  "check": [
+    "bio-mutations-1",
+    "bio-mutations-3",
+    "bio-mutations-4",
+    "bio-mutations-6",
+    "bio-mutations-7",
+    "bio-mutations-11",
+    "bio-mutations-14",
+    "bio-mutations-21"
+  ],
+  "summary": "<p>A mutation is a permanent change in DNA's base sequence. It arises from copying errors that escape repair or from damage by mutagens such as UV radiation and some chemicals, many of which are carcinogens, and it arises at random rather than in response to need. Point mutations replace one base and can be silent, missense or nonsense. Insertions and deletions that are not multiples of three shift the reading frame, changing every later codon. Changes to the amino acid sequence can change a protein's shape and function and so the phenotype, as in sickle cell disease. Whether a mutation is harmful, neutral or beneficial depends on the environment. Chromosomes can lose, repeat, flip or move segments, and whole sets can be added (polyploidy). Bacteria also gain genes by transformation, transduction and conjugation; transposons move within genomes; and viruses vary quickly through mutation and reassortment.</p>",
+  "connections": [
+    { "href": "../notes/translation.html", "label": "Back: codons and the reading frame (6.4)" },
+    { "href": "../notes/meiosis-genetic-diversity.html", "label": "Back: nondisjunction and chromosome number (5.2)" },
+    { "href": "../notes/biotechnology.html", "label": "Next: tools for reading and changing DNA (6.8)" }
+  ]
+}

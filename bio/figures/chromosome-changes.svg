@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-labelledby="chm-t chm-d">
+<title id="chm-t">Changes in chromosome structure</title>
+<desc id="chm-d">Four changes in chromosome structure, each shown as a normal chromosome with segments A to G and the result. Deletion: segment C is lost, giving A B D E F G. Duplication: segment C D is repeated, giving A B C D C D E F G. Inversion: segment C D E is flipped, giving A B E D C F G. Translocation: segment F G moves to a different, nonhomologous chromosome, and a piece of that chromosome may move in exchange.</desc>
+<defs><marker id="chm-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="300" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="16.0" y="47.0" font-size="13" text-anchor="start" font-weight="700">Deletion</text>
+<rect x="130.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="145.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="160.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="175.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="190.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="205.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="220.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="235.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="250.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="265.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="280.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="295.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="310.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="325.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<line x1="350.0" y1="42.0" x2="390.0" y2="42.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#chm-a)"/>
+<rect x="400.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="415.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="430.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="445.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="460.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="475.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="490.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="505.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="520.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="535.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="550.0" y="30.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="565.0" y="47.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<text x="16.0" y="111.0" font-size="13" text-anchor="start" font-weight="700">Duplication</text>
+<rect x="130.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="145.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="160.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="175.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="190.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="205.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="220.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="235.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="250.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="265.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="280.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="295.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="310.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="325.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<line x1="350.0" y1="106.0" x2="390.0" y2="106.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#chm-a)"/>
+<rect x="400.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="415.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="430.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="445.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="460.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="475.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="490.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="505.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="520.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="535.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="550.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="565.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="580.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="595.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="610.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="625.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="640.0" y="94.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="655.0" y="111.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<text x="16.0" y="175.0" font-size="13" text-anchor="start" font-weight="700">Inversion</text>
+<rect x="130.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="145.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="160.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="175.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="190.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="205.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="220.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="235.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="250.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="265.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="280.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="295.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="310.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="325.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<line x1="350.0" y1="170.0" x2="390.0" y2="170.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#chm-a)"/>
+<rect x="400.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="415.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="430.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="445.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="460.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="475.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="490.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="505.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="520.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="535.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="550.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="565.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="580.0" y="158.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="595.0" y="175.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<text x="16.0" y="239.0" font-size="13" text-anchor="start" font-weight="700">Translocation</text>
+<rect x="130.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="145.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="160.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="175.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="190.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="205.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="220.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="235.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="250.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="265.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="280.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="295.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="310.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="325.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<rect x="130.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="145.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">M</text>
+<rect x="160.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="175.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">N</text>
+<rect x="190.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="205.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">O</text>
+<rect x="220.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="235.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">P</text>
+<rect x="250.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="265.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">Q</text>
+<line x1="350.0" y1="234.0" x2="390.0" y2="234.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#chm-a)"/>
+<rect x="400.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="415.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">A</text>
+<rect x="430.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="445.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">B</text>
+<rect x="460.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="475.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">C</text>
+<rect x="490.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="505.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">D</text>
+<rect x="520.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="535.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">E</text>
+<rect x="550.0" y="208.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="565.0" y="225.0" font-size="12" text-anchor="middle" font-weight="700">Q</text>
+<rect x="400.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="415.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">M</text>
+<rect x="430.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="445.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">N</text>
+<rect x="460.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="475.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">O</text>
+<rect x="490.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#C4E8DC" stroke="#009E73" stroke-width="1.5"/>
+<text x="505.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">P</text>
+<rect x="520.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="535.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">F</text>
+<rect x="550.0" y="238.0" width="30.0" height="24.0" rx="4" fill="#D2EAF8" stroke="#0072B2" stroke-width="1.5"/>
+<text x="565.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700">G</text>
+<text x="600.0" y="282.0" font-size="11" text-anchor="middle">segments swapped between nonhomologous chromosomes</text>
+</g>
+</svg>
