@@ -232,7 +232,7 @@
         "options": [
           "Both are at the same position, so this pair tests how different the new side chain is, not where the change is.",
           "Both are at the same surface position; again only the side chain differs.",
-          "Correct. Similar chemical changes (a new negative charge) gave 3% in the core and 91% at the surface, so position made the difference.",
+          "Correct. Both put a negative side chain in place, and V4's change (positive to negative) is if anything the bigger one, yet it kept 91% at the surface while V2 kept 3% in the core. Position made the difference.",
           "These differ in both position and kind of change, and their similar activities do not separate the two factors."
         ]
       }

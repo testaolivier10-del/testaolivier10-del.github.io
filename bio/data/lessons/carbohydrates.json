@@ -69,7 +69,7 @@
   ],
   "misconception": {
     "wrong": "Cellulose passes through us undigested because it is made of a different, indigestible sugar.",
-    "right": "Cellulose is made entirely of glucose, the same monomer as starch. What differs is the glycosidic bond: β instead of α. Our starch-digesting enzymes fit α bonds and cannot grip β bonds. Cows and termites digest cellulose only with the help of microbes in their guts that make enzymes for β bonds."
+    "right": "Cellulose is made entirely of glucose, the same monomer as starch. What differs is the glycosidic bond: β instead of α. Our starch-digesting enzymes fit α bonds and cannot grip β bonds. Cows and termites digest cellulose mainly with the help of microbes in their guts that make enzymes for β bonds."
   },
   "check": [
     "bio-carbohydrates-14",

@@ -1,6 +1,6 @@
 {
   "topic": "lipids",
-  "hook": "<p>Butter is solid on the counter; olive oil pours. Both are fats made of the same three kinds of atoms, in the same basic shape. The difference is a few bends in their carbon chains. The same bends decide whether the thin oily film around every one of your cells stays flexible in the cold, which is why fish in icy water build their cell boundaries from oils rather than from fats like butter.</p>",
+  "hook": "<p>Butter is solid on the counter; olive oil pours. Both are fats made of the same three kinds of atoms, in the same basic shape. The difference is a few bends in their carbon chains. The same bends decide whether the thin oily film around every one of your cells stays flexible in the cold, which is why fish in icy water build their cell boundaries from the bent chains found in oils rather than the straight chains of butter.</p>",
   "prereq": [
     {
       "q": "Why do nonpolar molecules not dissolve in water?",

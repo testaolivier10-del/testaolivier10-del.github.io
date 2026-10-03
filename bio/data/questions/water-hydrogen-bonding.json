@@ -623,7 +623,7 @@
         "correct": "A buffer has a limited capacity. Each H<sup>+</sup> it absorbs uses up one bicarbonate. When the bicarbonate is gone, the solution behaves like unbuffered water and the pH falls quickly.",
         "options": [
           "Correct. Once bicarbonate is used up, nothing absorbs the added H<sup>+</sup>; by 25 mL Beaker B's pH (2.40) is about where Beaker A was after only 2 to 5 mL.",
-          "Releasing bicarbonate would mean carbonic acid gives up H<sup>+</sup>, but bicarbonate itself does not lower pH; the sharp drop comes from H<sup>+</sup> that is no longer being absorbed.",
+          "Added acid pushes the pair the other way, turning bicarbonate into carbonic acid, not back. The sharp drop comes from added H<sup>+</sup> that no bicarbonate is left to absorb.",
           "The same 0.10 M acid was used throughout. Each milliliter added the same amount of H<sup>+</sup>.",
           "25 mL of acid only dilutes 100 mL by a fifth, and Beaker A shows that dilution alone does not cause sudden drops. A buffer stops working when one member of the pair is used up."
         ]

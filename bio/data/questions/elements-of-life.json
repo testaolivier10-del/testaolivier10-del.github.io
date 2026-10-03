@@ -664,12 +664,12 @@
       "practice": "6.C",
       "level": "analyze",
       "diff": 2,
-      "q": "A carbon atom is part of a sugar molecule in one of your muscle cells. Where was that atom most likely a year ago?",
+      "q": "A carbon atom is part of a sugar molecule in one of your muscle cells. Trace it back through what you ate. Where was it most likely before it entered any living thing?",
       "options": [
         "It did not exist yet; your body made it from the energy in the food you ate.",
         "It was in carbon dioxide in the air, before a plant took it up by photosynthesis.",
         "It was a nitrogen atom in the soil that a plant converted into carbon.",
-        "It was in your muscle a year ago too, since atoms in the body are kept and reused for life."
+        "It has been in your body since birth, since atoms in the body are kept and reused for life."
       ],
       "correct": 1,
       "why": {
