@@ -84,7 +84,7 @@
   "summary": "<p>A 95% confidence interval, about x̄ ± 2SE, is a range that very probably contains the true mean; drawn on a graph it becomes an error bar. If two groups' 95% CI bars do not overlap, the difference is statistically significant and the null hypothesis is rejected. If they overlap, the data do not show a difference, which is not the same as showing there is none. Larger samples narrow the intervals. Always label what error bars represent.</p>",
   "connections": [
     {
-      "href": "../tools/stats-ci.html",
+      "href": "../tools/confidence-intervals.html",
       "label": "Tool: confidence interval and error bar calculator"
     },
     {

@@ -73,7 +73,7 @@
   "summary": "<p>The standard deviation, s = √[Σ(x − x̄)² ÷ (n − 1)], is the typical distance of a value from the mean, in the data's units. In a normal distribution about 68% of values lie within 1 SD and about 95% within 2 SD. The standard error, SE = s ÷ √n, measures how precisely the sample mean is known; it shrinks as n grows, while the SD does not.</p>",
   "connections": [
     {
-      "href": "../tools/stats-descriptive.html",
+      "href": "../tools/descriptive-stats.html",
       "label": "Tool: descriptive statistics calculator (mean, SD, SE)"
     },
     {

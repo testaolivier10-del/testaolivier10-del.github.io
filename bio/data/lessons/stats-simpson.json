@@ -69,7 +69,7 @@
   "summary": "<p>Simpson's diversity index, D = 1 − Σ(n/N)², is the probability that two individuals chosen at random belong to different species. It runs from 0 (one species) toward 1, and it rises with both species richness and evenness. Dominance by one species lowers it sharply; a single rare new species barely changes it. Compare communities, or one community over time, by their D values and explain the change with richness, evenness and the biology behind them.</p>",
   "connections": [
     {
-      "href": "../tools/simpson.html",
+      "href": "../tools/simpson-diversity.html",
       "label": "Tool: Simpson's diversity index calculator"
     },
     {

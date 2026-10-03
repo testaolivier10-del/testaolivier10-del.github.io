@@ -73,7 +73,7 @@
   "summary": "<p>Repeated measurements vary, so you summarize a sample with a center and a spread. The mean (sum ÷ n) uses every value and is pulled by outliers; the median (middle of the sorted data) resists them; the mode is the most common value. The range (largest − smallest) is the simplest measure of spread. Check an outlier for errors before deciding anything about it.</p>",
   "connections": [
     {
-      "href": "../tools/stats-descriptive.html",
+      "href": "../tools/descriptive-stats.html",
       "label": "Tool: descriptive statistics calculator"
     },
     {

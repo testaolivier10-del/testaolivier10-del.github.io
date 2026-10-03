@@ -156,7 +156,10 @@ export function loadCourse(root = ROOT, { map = loadMap(), published: pubOverrid
   const pubPath = join(data, 'published.json');
   const published = new Set(pubOverride || (existsSync(pubPath) ? readJson(pubPath).chapters || [] : []));
   const readOpt = (f, d) => existsSync(join(data, f)) ? readJson(join(data, f)) : d;
-  const built = new Set(topics.filter(t => lessons[t.id] && notes[t.id] && questions[t.id] && published.has(t.chapter)).map(t => t.id));
+  // A skills topic also waits for the chapter of the topic it sits after
+  // (Hardy-Weinberg math publishes with Unit 7, Simpson's index with Unit 8).
+  const anchorLive = t => { const a = t.after && topics.find(x => x.id === t.after); return !a || published.has(a.chapter); };
+  const built = new Set(topics.filter(t => lessons[t.id] && notes[t.id] && questions[t.id] && published.has(t.chapter) && anchorLive(t)).map(t => t.id));
   return {
     map, data, lessons, notes, questions, glossary, figures, frq, published, built,
     pages: readOpt('pages.json', { apps: [], tools: [] }),
