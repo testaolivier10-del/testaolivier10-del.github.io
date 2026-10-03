@@ -1,0 +1,533 @@
+{
+  "stimuli": {
+    "macromolecules-intro-s1": {
+      "kind": "table",
+      "title": "Breaking down a sugar polymer",
+      "text": "<p>A student set up three tubes at 37 °C and pH 7. Tube 1 held a sugar polymer extracted from potatoes (enough to give 60 mmol/L of sugar monomers if every bond were broken) plus an enzyme solution made from saliva. Tube 2 held the same polymer plus water instead of the enzyme solution. Tube 3 held the enzyme solution plus water instead of the polymer. Every few minutes she measured the concentration of free sugar monomers in each tube.</p>",
+      "table": {
+        "caption": "Free sugar monomers (mmol/L) in each tube over time",
+        "cols": [
+          "Time (min)",
+          "Tube 1: polymer + enzyme",
+          "Tube 2: polymer + water",
+          "Tube 3: enzyme + water"
+        ],
+        "rows": [
+          [
+            "0",
+            "0.0",
+            "0.0",
+            "0.0"
+          ],
+          [
+            "2",
+            "4.2",
+            "0.0",
+            "0.0"
+          ],
+          [
+            "5",
+            "10.1",
+            "0.1",
+            "0.0"
+          ],
+          [
+            "10",
+            "18.8",
+            "0.1",
+            "0.0"
+          ],
+          [
+            "20",
+            "31.5",
+            "0.2",
+            "0.0"
+          ],
+          [
+            "40",
+            "44.0",
+            "0.3",
+            "0.0"
+          ],
+          [
+            "60",
+            "52.0",
+            "0.4",
+            "0.0"
+          ]
+        ]
+      }
+    },
+    "macromolecules-intro-s2": {
+      "kind": "model",
+      "title": "Counting monomers, bonds and water",
+      "text": "<p>Use the model in the figure. Each monomer in the questions below is a six-carbon sugar with the formula C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> and a mass of 180 daltons; a water molecule has a mass of 18 daltons. Every link between two monomers forms by dehydration synthesis.</p>",
+      "figure": "dehydration-hydrolysis"
+    }
+  },
+  "items": [
+    {
+      "id": "bio-macromolecules-intro-1",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "macromolecules-intro-s1",
+      "q": "Which statement best describes the release of sugar monomers in Tube 1?",
+      "options": [
+        "Monomers were released fastest at the start, and release slowed as time went on.",
+        "Monomers were released at a steady speed from the start to the end of the hour.",
+        "Monomers were released slowly at first and then faster and faster as the hour went on.",
+        "Release stopped at 40 minutes because the bonds in the polymer had been broken by then."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Compare the gain per minute over different intervals: about 1.9 mmol/L per minute early on, about 0.4 near the end. Release slowed but had not stopped by 60 minutes.",
+        "options": [
+          "Correct. In the first 10 minutes about 1.9 mmol/L were released per minute; between 40 and 60 minutes, only about 0.4 mmol/L per minute.",
+          "Equal time intervals gave unequal gains: 18.8 mmol/L in the first 10 minutes, but 8.0 in the last 20.",
+          "The gains shrink, not grow: 10.1 in the first 5 minutes, 8.0 in the last 20.",
+          "The level kept rising after 40 minutes (44.0 to 52.0), and it was still below the 60 mmol/L that full breakdown would give."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-2",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "macromolecules-intro-s1",
+      "q": "On average, how many mmol/L of sugar monomers were released per minute in Tube 1 during the first 10 minutes? Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 1.88,
+        "tol": 0.01,
+        "unit": "mmol/L per min",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Change in concentration ÷ time = (18.8 − 0.0) mmol/L ÷ 10 min = 1.88 mmol/L per minute."
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-3",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "macromolecules-intro-s1",
+      "q": "Which explanation best accounts for the slowing release of monomers in Tube 1 after about 20 minutes?",
+      "options": [
+        "Fewer unbroken bonds between monomers were left, so there were fewer places where hydrolysis could happen.",
+        "The water in the tube was being used up by hydrolysis, so there was too little water left for more reactions.",
+        "The freed monomers began joining back together by dehydration synthesis at the same speed they were released.",
+        "The enzyme was turned into sugar monomers as it worked, so less enzyme remained over time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Hydrolysis can only happen at a bond that still exists. As more links are broken, fewer remain, so release slows. Water is in huge excess and is not the limit.",
+        "options": [
+          "Correct. As the polymer is cut up, the number of remaining links falls, so each minute fewer bonds are broken.",
+          "Each bond broken uses one water molecule, but the tube contains vastly more water than bonds; water does not run out.",
+          "If rebuilding matched breaking, the concentration would stop changing, but it was still rising at 60 minutes.",
+          "Tube 3 shows the enzyme solution releases no sugar monomers; enzymes are proteins, not sugar polymers."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-4",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "macromolecules-intro-s1",
+      "q": "What does Tube 3 allow the student to rule out?",
+      "options": [
+        "That the polymer breaks down by itself in water at 37 °C without help.",
+        "That the monomers in Tube 1 came from the enzyme solution itself, not from the polymer.",
+        "That temperature affected how fast the enzyme broke down the polymer during the hour.",
+        "That the enzyme from saliva can also break down proteins in the same tube."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Each comparison tube removes one ingredient. Tube 3 removes the polymer; if monomers had appeared there, some of Tube 1's monomers might have come from the enzyme solution. None did.",
+        "options": [
+          "That question is answered by Tube 2, which has the polymer but no enzyme.",
+          "Correct. Tube 3 has the enzyme solution without the polymer and shows 0.0 mmol/L throughout, so the enzyme solution contributes no monomers.",
+          "All three tubes were at 37 °C. Testing temperature would need tubes kept at different temperatures.",
+          "No tube contains protein as the thing being broken down, so the experiment says nothing about proteins."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-5",
+      "type": "predict",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "macromolecules-intro-s1",
+      "q": "Predict how each quantity in Tube 1 changes between 0 and 60 minutes.",
+      "variables": [
+        {
+          "name": "Number of covalent bonds linking sugar monomers together",
+          "answer": "down",
+          "why": "Each hydrolysis breaks one bond between monomers, so the number of links falls as monomers are released."
+        },
+        {
+          "name": "Number of water molecules in the tube",
+          "answer": "down",
+          "why": "Each bond broken uses one water molecule, so water decreases (by a tiny fraction of the total)."
+        },
+        {
+          "name": "Total number of carbon atoms in the tube",
+          "answer": "none",
+          "why": "Hydrolysis rearranges atoms; it does not create or destroy them. The carbon atoms move from the polymer into free monomers."
+        }
+      ],
+      "why": {
+        "correct": "Hydrolysis: polymer + water → shorter pieces. Bonds between monomers and water molecules are used up, monomers are released, and the atoms themselves are conserved."
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-6",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "macromolecules-intro-s2",
+      "q": "How many water molecules are released when 25 monomers are joined into one straight, unbranched chain?",
+      "numeric": {
+        "answer": 24,
+        "tol": 0,
+        "unit": "water molecules",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "A straight chain of 25 monomers has 24 links, and each link releases one water molecule: 25 − 1 = 24."
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-7",
+      "type": "numeric",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "macromolecules-intro-s2",
+      "q": "What is the mass, in daltons, of that straight chain of 25 monomers?",
+      "numeric": {
+        "answer": 4068,
+        "tol": 0,
+        "unit": "daltons",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Start with 25 × 180 = 4,500 daltons of monomers, then subtract the 24 waters released: 24 × 18 = 432. 4,500 − 432 = 4,068 daltons."
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-8",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "2.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "macromolecules-intro-s2",
+      "fixed": true,
+      "q": "Some cells make a ring of 8 sugar monomers, in which the last monomer is also linked to the first. How many water molecules are released in making the ring from 8 free monomers?",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "16"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Count links, not monomers. A straight chain of n has n − 1 links; joining its two ends adds one more, so a ring of n has n links and releases n waters.",
+        "options": [
+          "7 is the count for a straight chain of 8. Closing the ring adds one more link.",
+          "Correct. A ring of 8 monomers has 8 links (the chain's 7 plus the one closing the ring), and each link releases one water.",
+          "A ring of 8 monomers has 8 links, one per monomer, not 9.",
+          "Each link releases one water molecule, not one per monomer per side."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-9",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "macromolecules-intro-s2",
+      "fixed": true,
+      "q": "A branched polymer of 40 sugar monomers has three side branches, and every monomer is part of one molecule with no rings. How many links between monomers does it have?",
+      "options": [
+        "36",
+        "39",
+        "40",
+        "42"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Build the molecule one monomer at a time: each new monomer, wherever it attaches, adds exactly one link. So a molecule of n monomers with no rings always has n − 1 links, branched or not.",
+        "options": [
+          "Branches do not remove links; every monomer still needs to be attached to the molecule.",
+          "Correct. Each monomer after the first joins the molecule by one new link, whether on the main chain or a branch: 40 − 1 = 39.",
+          "40 links would close a ring somewhere, and the polymer has no rings.",
+          "Where a branch starts, one monomer carries an extra bond, but it also starts the branch's first link; the total is still one per added monomer."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-10",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "macromolecules-intro-s2",
+      "fixed": true,
+      "q": "Two C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> monomers are joined by dehydration synthesis. What is the formula of the two-monomer product?",
+      "options": [
+        "C<sub>12</sub>H<sub>24</sub>O<sub>12</sub>",
+        "C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>",
+        "C<sub>12</sub>H<sub>20</sub>O<sub>10</sub>",
+        "C<sub>12</sub>H<sub>24</sub>O<sub>11</sub>"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Atoms are conserved: 2 × C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> = C<sub>12</sub>H<sub>24</sub>O<sub>12</sub>. The reaction releases one H<sub>2</sub>O, leaving C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>, the formula of table sugar.",
+        "options": [
+          "This is just the two monomers added together. One water molecule (H<sub>2</sub>O) leaves when the bond forms.",
+          "Correct. C<sub>12</sub>H<sub>24</sub>O<sub>12</sub> minus H<sub>2</sub>O gives C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>.",
+          "This removes two water molecules, but joining two monomers makes one bond and releases one water.",
+          "Water leaving takes two hydrogens and one oxygen, not just one oxygen."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-11",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "fixed": true,
+      "q": "Which group of biological macromolecules is usually not classed as a polymer?",
+      "options": [
+        "Carbohydrates",
+        "Proteins",
+        "Nucleic acids",
+        "Lipids"
+      ],
+      "correct": 3,
+      "why": {
+        "correct": "A polymer is a chain of repeating monomers. Carbohydrates, proteins and nucleic acids fit; lipids do not.",
+        "options": [
+          "Large carbohydrates are chains of sugar monomers, so they are polymers.",
+          "Proteins are chains of amino acid monomers.",
+          "Nucleic acids are chains of repeating monomers.",
+          "Correct. Lipids are built from smaller molecules, but not as long chains of repeating units."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-12",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "When two monomers are joined by dehydration synthesis, where do the atoms of the released water molecule come from?",
+      "options": [
+        "Both hydrogens and the oxygen come from one monomer, which loses a small piece of itself.",
+        "An –OH group from one monomer and an –H atom from the other monomer.",
+        "From the surrounding water, which is split so that the monomers can attach to each other.",
+        "From an enzyme, which donates an –OH and an –H each time it joins two monomers together."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "In dehydration synthesis one monomer loses –OH and the other loses –H. They combine as H<sub>2</sub>O, and a covalent bond forms between the monomers.",
+        "options": [
+          "The atoms come from both monomers: an –OH from one and an –H from the other.",
+          "Correct. Together they make H<sub>2</sub>O, and the two monomers bond where those atoms were.",
+          "Splitting water is hydrolysis, which breaks bonds. Dehydration synthesis releases a water molecule.",
+          "Enzymes speed up the reaction but do not give their own atoms to the water."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-13",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A medicine blocks the gut enzyme that hydrolyzes a sugar polymer in food. A person takes it with a meal containing that polymer. Which result is most likely?",
+      "options": [
+        "More of the polymer stays intact, so fewer sugar monomers are absorbed into the blood after the meal.",
+        "The polymer is absorbed into the blood whole, raising the sugar level in the blood faster than usual.",
+        "The polymer is broken down by dehydration synthesis instead, giving the same amount of monomers.",
+        "The body makes more water, which breaks the polymer down without the enzyme."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Digestion is hydrolysis speeded up by enzymes. Block the enzyme and the polymer stays too big to absorb, so less sugar reaches the blood. (Some real medicines work this way.)",
+        "options": [
+          "Correct. Without hydrolysis the polymer is not cut into monomers, and only small monomers are absorbed.",
+          "Large polymers are not absorbed whole; that is why they must be hydrolyzed first.",
+          "Dehydration synthesis builds polymers; it does not break them down.",
+          "Plenty of water is already present. Without the enzyme, hydrolysis is far too slow to matter."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-14",
+      "type": "order",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "2.D",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put these events in order, from a protein in food to a new protein in a muscle cell.",
+      "options": [
+        "Hydrolysis cuts the food protein into separate amino acids in the gut.",
+        "The amino acids are absorbed into the blood.",
+        "Muscle cells take up amino acids from the blood.",
+        "Dehydration synthesis joins the amino acids into a new protein chain, releasing water."
+      ],
+      "why": {
+        "correct": "Food proteins are too large to absorb, so they are hydrolyzed into amino acids first. The amino acids travel in the blood to cells, which link them into new proteins by dehydration synthesis."
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-15",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Two polymers are each made only of the same six-carbon sugar monomer. One dissolves easily and is quickly broken down by animals; the other forms tough fibers that most animals cannot break down. Which explanation is best?",
+      "options": [
+        "One polymer contains a second kind of monomer that the other lacks, which changes its properties.",
+        "The monomers are linked in different ways, so the two chains have different shapes and properties.",
+        "The fibrous polymer has many more monomers, and long chains of a polymer are hard to break.",
+        "The fibrous polymer formed by hydrolysis and the soluble one formed by dehydration synthesis."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "When monomers are the same, the difference must lie in how they are put together. A different link between monomers changes the chain's shape, and shape decides properties and which enzymes fit.",
+        "options": [
+          "The question states that both are made only of the same monomer.",
+          "Correct. Structure determines function: a different link between the same monomers changes the chain's shape, how it packs and which enzymes can cut it.",
+          "Chain length alone does not decide this; some very long sugar polymers are digested easily.",
+          "Both are polymers, so both were built by dehydration synthesis; hydrolysis breaks polymers down."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-16",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "1.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A two-monomer molecule is broken in half by hydrolysis. Which are the reactants of this reaction?",
+      "options": [
+        "The two separate monomers.",
+        "The two-monomer molecule and a water molecule.",
+        "The two-monomer molecule by itself.",
+        "The two monomers and a water molecule."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Reactants are what a reaction starts with; products are what it makes. Hydrolysis: two-monomer molecule + H<sub>2</sub>O → monomer + monomer.",
+        "options": [
+          "The separate monomers are what the reaction produces, the products.",
+          "Correct. Hydrolysis uses a water molecule to break the bond, so both are reactants.",
+          "Hydrolysis also uses up a water molecule, which is a reactant too.",
+          "These are what you get from dehydration synthesis run backwards, but here the monomers are products."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-17",
+      "type": "multi",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which of these are polymers? Select all that apply.",
+      "options": [
+        "A protein chain of 300 amino acids",
+        "One six-carbon sugar molecule",
+        "A fat molecule from butter",
+        "A chain of 1,000 sugar units from a potato",
+        "A molecule of ATP"
+      ],
+      "correct": [
+        0,
+        3
+      ],
+      "why": {
+        "correct": "A polymer is a chain of many monomers. The protein and the sugar chain qualify; a single sugar, a fat and ATP do not.",
+        "options": [
+          "Polymer: a chain of amino acid monomers joined by covalent bonds.",
+          "Not a polymer. A single sugar is a monomer.",
+          "Not a polymer. Fats are lipids, built from a few smaller molecules but not as a chain of repeating units.",
+          "Polymer: many sugar monomers joined in a chain.",
+          "Not a polymer. ATP is one small molecule (with a chain of three phosphate groups, which are not monomers of a polymer)."
+        ]
+      }
+    },
+    {
+      "id": "bio-macromolecules-intro-18",
+      "type": "single",
+      "unit": "unit-1",
+      "topic": "macromolecules-intro",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A 10.0 g sample of a long sugar polymer is completely hydrolyzed in water, and the monomers are dried and weighed. How does their total mass compare with 10.0 g?",
+      "options": [
+        "Less than 10.0 g, because water is released as each bond in the polymer breaks.",
+        "Exactly 10.0 g, because hydrolysis rearranges the atoms of the polymer without adding any.",
+        "More than 10.0 g, because the atoms of one water molecule join the monomers at each bond broken.",
+        "It depends on how fast the enzyme worked, since a faster hydrolysis loses less mass."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Mass is conserved across the whole reaction, polymer + water → monomers. Because water is a reactant, the monomers contain the water's atoms and weigh more than the polymer alone (about 11.1 g here).",
+        "options": [
+          "That describes dehydration synthesis. In hydrolysis, water is used up and its atoms are added to the monomers.",
+          "Hydrolysis rearranges atoms, but it also brings in new atoms from water, so the monomers gain mass.",
+          "Correct. Each break adds an –H to one monomer and an –OH to the other, so the monomers outweigh the polymer.",
+          "Speed does not change the final atom count: full hydrolysis adds one water per bond however long it takes."
+        ]
+      }
+    }
+  ]
+}

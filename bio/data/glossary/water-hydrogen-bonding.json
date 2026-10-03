@@ -1,10 +1,95 @@
 {
-  "polarity": { "def": "A molecule whose electrons are shared unevenly, so one end carries a partial negative charge and the other a partial positive charge. Water is the classic example." },
-  "hydrogen-bond": { "def": "A weak attraction between a partially positive hydrogen atom in one molecule and a partially negative atom, such as oxygen or nitrogen, in another molecule or another part of the same large molecule." },
-  "cohesion": { "def": "Water molecules sticking to each other through hydrogen bonds." },
-  "adhesion": { "def": "Water molecules sticking to other polar or charged surfaces, such as glass or the walls of plant tubes." },
-  "surface-tension": { "def": "The resistance of a liquid's surface to being stretched or broken, caused by cohesion among the molecules at the surface." },
-  "specific-heat": { "def": "The energy needed to raise the temperature of one gram of a substance by one degree Celsius. Water's is high, so its temperature changes slowly." },
-  "heat-of-vaporization": { "def": "The energy needed to turn one gram of a liquid into a gas. Water's is high, so evaporating water carries a lot of heat away." },
-  "solvent": { "def": "The substance that other substances dissolve in. Water dissolves many polar and charged substances, so it is the solvent of most cell chemistry." }
+  "energy-forms": {
+    "def": "Kinetic energy is energy of motion (temperature measures how fast molecules move). Potential energy is stored energy, such as the energy in the arrangement of attracting particles; chemical energy is potential energy stored in the bonds of molecules."
+  },
+  "atom": {
+    "def": "The smallest unit of a chemical substance: a dense center of positively charged protons and uncharged neutrons, surrounded by negatively charged electrons. Atoms bond to each other through their electrons."
+  },
+  "molecule": {
+    "def": "Two or more atoms held together by covalent bonds, such as H2O (one oxygen and two hydrogens)."
+  },
+  "covalent-bond": {
+    "def": "A bond in which two atoms share a pair of electrons. Sharing two pairs makes a double bond, three pairs a triple bond. Covalent bonds hold the atoms of a molecule together."
+  },
+  "electronegativity": {
+    "def": "How strongly an atom pulls on the electrons it shares in a covalent bond. Oxygen and nitrogen are highly electronegative; carbon and hydrogen are not."
+  },
+  "polar-covalent-bond": {
+    "def": "A covalent bond in which electrons are shared unequally, because one atom is more electronegative (O–H, N–H). In a nonpolar covalent bond (C–H, C–C) they are shared about equally."
+  },
+  "polarity": {
+    "def": "Uneven distribution of charge in a molecule: one end carries a partial negative charge (δ−) and another a partial positive charge (δ+). Water is polar; oil is nonpolar."
+  },
+  "ion": {
+    "def": "An atom or group of atoms with an electric charge because it has gained electrons (a negative anion, such as Cl−) or lost electrons (a positive cation, such as Na+)."
+  },
+  "ionic-bond": {
+    "def": "The attraction between oppositely charged ions, as between Na+ and Cl− in table salt. A solid held together this way is an ionic compound, or salt."
+  },
+  "hydrogen-bond": {
+    "def": "A weak attraction between a partially positive hydrogen atom (bonded to O or N) and a partially negative atom, such as oxygen or nitrogen, in another molecule or another part of the same large molecule."
+  },
+  "water-molecule": {
+    "def": "H2O: one oxygen covalently bonded to two hydrogens in a bent shape. The oxygen end is partly negative and the hydrogen ends partly positive, so each molecule can hydrogen-bond with up to four neighbors."
+  },
+  "cohesion": {
+    "def": "Water molecules attracting each other through hydrogen bonds. It produces surface tension and holds the water column together in plants."
+  },
+  "surface-tension": {
+    "def": "The resistance of a liquid's surface to being stretched or broken, caused by cohesion among the molecules at the surface. Water's is very high."
+  },
+  "adhesion": {
+    "def": "Water molecules attracting a different polar or charged surface, such as glass, paper or the walls of xylem."
+  },
+  "capillary-action": {
+    "def": "The rise of water in a narrow tube or porous material: adhesion pulls water up the walls and cohesion pulls the rest of the water along."
+  },
+  "specific-heat": {
+    "def": "The energy needed to raise the temperature of 1 gram of a substance by 1 °C. Water's is high (4.18 J/g·°C) because heat must break hydrogen bonds before molecules move faster."
+  },
+  "heat-of-vaporization": {
+    "def": "The energy needed to turn 1 gram of a liquid into a gas. Water's is high (about 2,260 J/g at 100 °C) because an escaping molecule must break all its hydrogen bonds."
+  },
+  "evaporative-cooling": {
+    "def": "The cooling of a surface as a liquid evaporates from it: the fastest molecules escape and carry energy away, leaving slower, cooler molecules behind. Sweating and transpiration cool this way."
+  },
+  "ice-density": {
+    "def": "Ice is about 9% less dense than liquid water because hydrogen bonds lock its molecules into an open lattice, so ice floats and lakes freeze from the top down."
+  },
+  "xylem": {
+    "def": "The plant tissue of narrow, hollow tubes that carries water and dissolved minerals from the roots up to the leaves."
+  },
+  "stomata": {
+    "def": "Tiny pores, mostly on the undersides of leaves (one is a stoma), each opened and closed by a pair of guard cells. Water vapor leaves and carbon dioxide enters through them."
+  },
+  "transpiration": {
+    "def": "The loss of water vapor from a plant, mostly through open stomata. Evaporation at the leaf pulls a cohesive column of water up the xylem."
+  },
+  "solvent": {
+    "def": "The substance in which other substances dissolve. Water dissolves ions and polar molecules, so it is the solvent for most of the chemistry in cells."
+  },
+  "solute": {
+    "def": "A substance dissolved in a solvent. A solute spread evenly through a solvent makes a solution; with water as the solvent it is an aqueous solution."
+  },
+  "hydrophilic": {
+    "def": "\"Water-loving\": polar or charged, so it attracts water and usually dissolves in it. Salt and sugar are hydrophilic."
+  },
+  "hydrophobic": {
+    "def": "\"Water-avoiding\": nonpolar, so it does not attract water and does not dissolve in it. Water molecules bond to each other and push hydrophobic molecules together, as with oil drops."
+  },
+  "hydrogen-ion": {
+    "def": "H+, a hydrogen atom without its electron (a bare proton). Water splits into a few H+ and hydroxide ions (OH−); the H+ concentration sets the pH."
+  },
+  "ph": {
+    "def": "A measure of hydrogen ion concentration: pH = −log[H+]. pH 7 is neutral, below 7 is acidic, above 7 is alkaline (basic), and each whole unit is a tenfold change in [H+]."
+  },
+  "acid": {
+    "def": "A substance that adds hydrogen ions (H+) to a solution and lowers its pH, such as hydrochloric acid."
+  },
+  "base-chem": {
+    "def": "A substance that lowers the hydrogen ion concentration of a solution, by taking up H+ or adding hydroxide ions (OH−), and raises its pH."
+  },
+  "buffer": {
+    "def": "A pair of substances that takes up hydrogen ions when they are added and releases them when they are removed, so pH changes little. Blood's main buffer is carbonic acid and bicarbonate."
+  }
 }

@@ -1,0 +1,99 @@
+{
+  "topic": "nucleic-acids",
+  "hook": "<p>If you could unwind the DNA from one of your cells and stretch it out, it would be about two meters long, yet it fits inside a cell too small to see. Every time that cell divides it makes a near-perfect copy of all of it, about six billion letters, and passes one copy to each new cell. The trick behind both feats is a molecule built like a twisted ladder whose rungs only fit together one way.</p>",
+  "prereq": [
+    {
+      "q": "Which bond holds two water molecules to each other?",
+      "options": [
+        "A covalent bond",
+        "A hydrogen bond",
+        "An ionic bond"
+      ],
+      "correct": 1,
+      "why": "A hydrogen bond attracts the δ+ hydrogen of one molecule to a δ− atom, such as O or N, of another. Covalent bonds hold atoms together inside a molecule.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "Which element do nucleic acids contain that typical sugars and fats do not?",
+      "options": [
+        "Phosphorus",
+        "Carbon",
+        "Oxygen"
+      ],
+      "correct": 0,
+      "why": "Nucleic acids contain C, H, O, N and P; the phosphorus is in phosphate groups. Sugars and fats are C, H and O.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "What is released each time dehydration synthesis adds a monomer to a polymer?",
+      "options": [
+        "A carbon dioxide molecule",
+        "A hydrogen ion",
+        "A water molecule"
+      ],
+      "correct": 2,
+      "why": "Each new link releases one H2O: an –OH from one monomer and an –H from the other.",
+      "review": "macromolecules-intro"
+    }
+  ],
+  "figure": {
+    "figure": "dna-structure",
+    "caption": "Left: one nucleotide, a phosphate, a five-carbon sugar and a nitrogenous base. Right: a short stretch of DNA. Each strand's backbone alternates sugar and phosphate; the strands run in opposite directions (5′ to 3′ and 3′ to 5′), and their bases pair A with T (two hydrogen bonds) and G with C (three)."
+  },
+  "chain": [
+    {
+      "cause": "A nucleotide has three parts: a phosphate group, a five-carbon sugar and a nitrogen-containing base.",
+      "effect": "It is the monomer of DNA and RNA; DNA nucleotides carry deoxyribose and one of A, T, G or C, RNA nucleotides carry ribose and one of A, U, G or C."
+    },
+    {
+      "cause": "Dehydration synthesis links the phosphate of one nucleotide to the 3′ carbon of the sugar of the last nucleotide in a chain.",
+      "effect": "The nucleotides form a strand with a sugar-phosphate backbone and bases sticking out to one side; the strand has two different ends, 5′ and 3′."
+    },
+    {
+      "cause": "A and T, and G and C, have shapes and partial charges that line up to form hydrogen bonds (two for A–T, three for G–C).",
+      "effect": "Two strands can join base to base only where their sequences are complementary: every A opposite a T, every G opposite a C."
+    },
+    {
+      "cause": "The bases pair up only when the two strands run in opposite directions.",
+      "effect": "DNA is two antiparallel strands twisted into a double helix, with the backbones outside and the paired bases inside."
+    },
+    {
+      "cause": "The backbone is the same all along the molecule, but the order of bases can be anything.",
+      "effect": "The base sequence carries information; a gene is a stretch of DNA whose sequence the cell uses, and complementary pairing lets each strand be copied."
+    }
+  ],
+  "ideas": [
+    "<b>DNA vs RNA</b>: DNA has deoxyribose, thymine (T) and is usually double-stranded; RNA has ribose (one more –OH), uracil (U) instead of T, and is usually single-stranded.",
+    "<b>Complementary base pairing</b>: A pairs with T (or U in RNA) through two hydrogen bonds; G pairs with C through three. In double-stranded DNA, %A = %T and %G = %C.",
+    "<b>Antiparallel</b>: one strand runs 5′→3′, its partner 3′→5′. Always write a sequence from its 5′ end; the partner of 5′-ATG-3′ is 5′-CAT-3′.",
+    "The strands are held together by hydrogen bonds (weak, easy to separate by heating) but each strand is held together by covalent bonds in its backbone (strong, intact when strands separate)."
+  ],
+  "misconception": {
+    "wrong": "To write the complementary strand, you just swap each base for its partner and read it in the same direction.",
+    "right": "Swapping bases is half the job. Because the strands are antiparallel, the partner strand runs the other way. Swap each base, then reverse the order so the new strand is written from its own 5′ end. The partner of 5′-AGGT-3′ is 3′-TCCA-5′, which is written 5′-ACCT-3′."
+  },
+  "check": [
+    "bio-nucleic-acids-16",
+    "bio-nucleic-acids-18",
+    "bio-nucleic-acids-11",
+    "bio-nucleic-acids-12",
+    "bio-nucleic-acids-13",
+    "bio-nucleic-acids-14",
+    "bio-nucleic-acids-2"
+  ],
+  "summary": "<p>Nucleic acids are polymers of nucleotides, each a phosphate, a five-carbon sugar and a nitrogenous base. Phosphates link the sugars into a backbone with a 5′ end and a 3′ end. DNA (deoxyribose; A, T, G, C) is usually a double helix of two antiparallel strands held together by hydrogen bonds between complementary bases, A with T and G with C. RNA (ribose; A, U, G, C) is usually single-stranded. The order of bases carries genetic information, and genes are stretches of that sequence.</p>",
+  "connections": [
+    {
+      "href": "../notes/water-hydrogen-bonding.html",
+      "label": "Hydrogen bonds, the force that zips the strands together (Structure of Water and Hydrogen Bonding)"
+    },
+    {
+      "href": "../notes/proteins.html",
+      "label": "What the information in genes is used to build (Proteins)"
+    },
+    {
+      "href": "../notes/elements-of-life.html",
+      "label": "Why cells need nitrogen and phosphorus (Elements of Life)"
+    }
+  ]
+}

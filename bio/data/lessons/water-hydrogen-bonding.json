@@ -1,34 +1,71 @@
 {
   "topic": "water-hydrogen-bonding",
-  "hook": "<p>On a hot day a runner loses about a liter of sweat an hour, and her body temperature barely moves. A lake beside the track stays cool all afternoon while the pavement gets too hot to touch. Both come down to one small fact about water: its molecules stick to each other.</p>",
+  "hook": "<p>A marathon runner on a hot afternoon can lose close to a liter of sweat an hour, yet her body temperature climbs only a degree or two. A pond beside the course stays cool while the asphalt gets too hot to touch, and a 30-meter tree lifts water from its roots to its top leaves with no moving parts. All three come from one small fact: water molecules are sticky. They pull on each other, and on anything else with an electric charge.</p>",
   "prereq": [],
-  "figure": { "figure": "water-hbond", "caption": "Each water molecule is held together by covalent bonds (solid lines). Neighboring molecules are attracted to each other by hydrogen bonds (dashed lines), from a partially positive hydrogen to a partially negative oxygen." },
+  "figure": {
+    "figure": "water-hbond",
+    "caption": "Inside each water molecule, oxygen and hydrogen are joined by covalent bonds (solid lines). Between molecules, a partly positive hydrogen is attracted to a partly negative oxygen of a neighbor: a hydrogen bond (dashed lines). Find the δ+ and δ− on each molecule before you read on."
+  },
   "chain": [
-    { "cause": "Oxygen attracts the electrons it shares with hydrogen more strongly than hydrogen does.", "effect": "The electrons spend more time near the oxygen, so the oxygen end is partly negative and the hydrogen ends are partly positive: water is a polar molecule." },
-    { "cause": "Opposite partial charges attract.", "effect": "A hydrogen of one water molecule is pulled toward the oxygen of a neighbor, forming a hydrogen bond." },
-    { "cause": "In liquid water, each molecule keeps forming and breaking hydrogen bonds with its neighbors.", "effect": "The molecules cling to each other (cohesion) and to other polar surfaces (adhesion)." },
-    { "cause": "Heating water first has to break many hydrogen bonds before the molecules can move faster.", "effect": "Water has a high specific heat: its temperature rises slowly as it absorbs energy." },
-    { "cause": "A molecule can only escape as vapor once it breaks all of its hydrogen bonds.", "effect": "Water has a high heat of vaporization, so evaporation carries a lot of heat away and cools what is left behind." }
+    {
+      "cause": "Oxygen is more electronegative than hydrogen: it pulls the electrons they share toward itself.",
+      "effect": "The shared electrons spend more time near oxygen, so the oxygen end of a water molecule carries a partial negative charge (δ−) and each hydrogen a partial positive charge (δ+)."
+    },
+    {
+      "cause": "The molecule is bent, so both δ+ hydrogens sit on one side and the δ− oxygen on the other.",
+      "effect": "The charges do not cancel out: water is a polar molecule with a negative end and a positive end."
+    },
+    {
+      "cause": "Opposite partial charges on neighboring molecules attract each other.",
+      "effect": "The δ+ hydrogen of one molecule is drawn to the δ− oxygen of another, forming a hydrogen bond; each water molecule can hold up to four."
+    },
+    {
+      "cause": "Hydrogen bonds keep breaking and re-forming between millions of neighboring molecules.",
+      "effect": "Water clings to itself (cohesion, surface tension) and to charged or polar surfaces (adhesion), and it takes extra energy to speed its molecules up or pull them into the air."
+    },
+    {
+      "cause": "Absorbed heat first goes into breaking hydrogen bonds, and a molecule must break all of its hydrogen bonds to escape as vapor.",
+      "effect": "Water warms slowly (high specific heat) and evaporating water carries away a large amount of heat (high heat of vaporization), which steadies temperatures in bodies, lakes and coasts."
+    },
+    {
+      "cause": "The same partial charges surround ions and other polar molecules.",
+      "effect": "Salts and polar substances dissolve in water, which is why most of the chemistry of a cell takes place in water."
+    }
   ],
   "ideas": [
-    "Inside one molecule, oxygen and hydrogen share electrons in <b>covalent bonds</b>. Between molecules, the much weaker <b>hydrogen bonds</b> hold water together.",
-    "Polar and charged substances dissolve in water because water's partial charges surround them. That is why water is called the solvent of life.",
-    "<b>Specific heat</b> is about warming up; <b>heat of vaporization</b> is about turning into a gas. Hydrogen bonds make both high for water."
+    "A <b>covalent bond</b> joins atoms <i>inside</i> one molecule by sharing electrons. A <b>hydrogen bond</b> is a weaker attraction <i>between</i> a δ+ hydrogen and a δ− atom such as oxygen or nitrogen, usually on a different molecule.",
+    "<b>Cohesion</b> is water attracting water; <b>adhesion</b> is water attracting a different polar or charged surface. Water climbs a narrow tube when adhesion pulls it up the walls and cohesion drags the rest of the column along.",
+    "<b>Specific heat</b> is about changing temperature; <b>heat of vaporization</b> is about changing from liquid to gas. Hydrogen bonds make both unusually high for water, so water warms slowly and evaporation cools strongly.",
+    "A <b>polar</b> or charged substance is <b>hydrophilic</b> and dissolves in water. A <b>nonpolar</b> one, such as oil, is <b>hydrophobic</b>: water molecules bond to each other instead and push it aside.",
+    "<b>pH</b> measures hydrogen ion concentration on a scale where each whole step is a tenfold change. A <b>buffer</b> takes up or releases hydrogen ions, so the pH of a solution changes much less when acid or base is added."
   ],
   "misconception": {
-    "wrong": "A hydrogen bond is the bond that holds the hydrogen atoms onto the oxygen inside a water molecule.",
-    "right": "That bond is covalent. A hydrogen bond is a weaker attraction between different molecules: the hydrogen of one water molecule and the oxygen of another."
+    "wrong": "A hydrogen bond is the bond that holds the two hydrogen atoms onto the oxygen inside a water molecule.",
+    "right": "Those are covalent bonds, made by sharing electrons, and they are about twenty times stronger. A hydrogen bond is the weaker attraction between the δ+ hydrogen of one molecule and the δ− oxygen of a different molecule. When water boils, hydrogen bonds break but the covalent bonds do not: steam is still H<sub>2</sub>O."
   },
   "check": [
+    "bio-water-hydrogen-bonding-15",
+    "bio-water-hydrogen-bonding-20",
+    "bio-water-hydrogen-bonding-17",
+    "bio-water-hydrogen-bonding-6",
+    "bio-water-hydrogen-bonding-7",
+    "bio-water-hydrogen-bonding-8",
     "bio-water-hydrogen-bonding-9",
-    "bio-water-hydrogen-bonding-10",
-    "bio-water-hydrogen-bonding-11",
-    "bio-water-hydrogen-bonding-1",
-    "bio-water-hydrogen-bonding-2",
-    "bio-water-hydrogen-bonding-3",
-    "bio-water-hydrogen-bonding-4",
-    "bio-water-hydrogen-bonding-14"
+    "bio-water-hydrogen-bonding-10"
   ],
-  "summary": "<p>Water is polar: its oxygen end is partly negative and its hydrogen ends partly positive. Opposite partial charges on neighboring molecules attract, forming hydrogen bonds. Those bonds explain cohesion, adhesion and surface tension, water's high specific heat and its high heat of vaporization, and its role as the solvent for most of the chemistry in a cell.</p>",
-  "connections": []
+  "summary": "<p>Oxygen pulls shared electrons harder than hydrogen, and the water molecule is bent, so water is polar: a δ− oxygen end and δ+ hydrogen ends. Opposite partial charges on neighboring molecules attract, forming hydrogen bonds. Those bonds explain cohesion and surface tension, adhesion and capillary action, water's high specific heat and high heat of vaporization, why ice floats, and why water dissolves ions and polar molecules but not oil. Water also splits into a few hydrogen and hydroxide ions; pH measures the hydrogen ions, and buffers keep pH steady.</p>",
+  "connections": [
+    {
+      "href": "../notes/nucleic-acids.html",
+      "label": "Hydrogen bonds hold the two strands of DNA together"
+    },
+    {
+      "href": "../notes/proteins.html",
+      "label": "Hydrogen bonds help proteins fold into working shapes"
+    },
+    {
+      "href": "../notes/lipids.html",
+      "label": "Why oil and water separate: hydrophobic molecules in living things"
+    }
+  ]
 }

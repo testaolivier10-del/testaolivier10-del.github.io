@@ -1,0 +1,100 @@
+{
+  "topic": "macromolecules-intro",
+  "hook": "<p>A slice of bread, a steak and a spoonful of peanut butter are made of large molecules, thousands of atoms long, that your body cannot absorb whole. Within hours your digestive system has cut them into small pieces, and within days your cells have stitched many of those same pieces into new large molecules of your own: muscle, hair, enzymes. Cutting and stitching both use one small molecule as their tool: water.</p>",
+  "prereq": [
+    {
+      "q": "What is a hydroxyl group?",
+      "options": [
+        "–OH, a polar group attached to a carbon skeleton",
+        "–COOH, an acidic group",
+        "–NH2, a basic group"
+      ],
+      "correct": 0,
+      "why": "A hydroxyl group is –OH. It is polar and is found on sugars; carboxyl is –COOH and amino is –NH2.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "Which family of molecules is built from amino acids?",
+      "options": [
+        "Carbohydrates",
+        "Proteins",
+        "Lipids"
+      ],
+      "correct": 1,
+      "why": "Amino acids are the building blocks of proteins; carbohydrates are built from sugars.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "What do the atoms in a covalent bond share?",
+      "options": [
+        "Protons",
+        "Neutrons",
+        "A pair of electrons"
+      ],
+      "correct": 2,
+      "why": "A covalent bond is a shared pair of electrons between two atoms.",
+      "review": "water-hydrogen-bonding"
+    }
+  ],
+  "figure": {
+    "figure": "dehydration-hydrolysis",
+    "caption": "Top: dehydration synthesis. An –OH from one monomer and an –H from the next leave as a water molecule, and a covalent bond joins the monomers. Bottom: hydrolysis. Adding a water molecule breaks that bond, giving back an –OH and an –H."
+  },
+  "chain": [
+    {
+      "cause": "Cells need large molecules for storage, structure and information, but can take in and move only small ones.",
+      "effect": "They build large molecules (polymers) by linking small, similar units (monomers) into chains."
+    },
+    {
+      "cause": "To join two monomers, one gives up an –OH and the other an –H.",
+      "effect": "The –OH and –H leave together as a water molecule, and a new covalent bond links the two monomers: dehydration synthesis."
+    },
+    {
+      "cause": "Each new link in a chain releases one water molecule.",
+      "effect": "A straight chain of n monomers is held together by n − 1 bonds and its synthesis releases n − 1 water molecules."
+    },
+    {
+      "cause": "To take a polymer apart, a water molecule is added across a bond between monomers.",
+      "effect": "The –H goes to one monomer and the –OH to the other, the bond breaks, and the monomers are freed: hydrolysis."
+    },
+    {
+      "cause": "Both reactions are slow on their own.",
+      "effect": "Enzymes, proteins that speed up reactions, carry out dehydration synthesis and hydrolysis fast enough for life."
+    }
+  ],
+  "ideas": [
+    "A <b>monomer</b> is one building block; a <b>polymer</b> is a long chain of monomers joined by covalent bonds. Carbohydrates, proteins and nucleic acids are polymers; lipids are large molecules but not chains of repeating units.",
+    "<b>Dehydration synthesis</b> builds: monomer + monomer → longer chain + water. <b>Hydrolysis</b> breaks: polymer + water → shorter pieces. \"Dehydration\" means water is removed; \"hydro-lysis\" means splitting with water.",
+    "Counting rule: a straight chain of <i>n</i> monomers has <i>n</i> − 1 links, so making it releases <i>n</i> − 1 water molecules and breaking it down completely uses <i>n</i> − 1.",
+    "<b>Structure determines function</b>: the same monomers, linked in a different order or a different way, give molecules with different shapes, and shape decides what a molecule can do."
+  ],
+  "misconception": {
+    "wrong": "Dehydration synthesis means a polymer is dried out, and hydrolysis means it dissolves in water.",
+    "right": "Both names describe what happens to a water molecule in the reaction. In dehydration synthesis, the atoms of one water molecule (an –H from one monomer and an –OH from the other) are removed as each bond forms. In hydrolysis, a water molecule is split and its atoms are added to the two pieces as the bond breaks. Neither has to do with how wet or dry the molecule is."
+  },
+  "check": [
+    "bio-macromolecules-intro-12",
+    "bio-macromolecules-intro-13",
+    "bio-macromolecules-intro-15",
+    "bio-macromolecules-intro-6",
+    "bio-macromolecules-intro-7",
+    "bio-macromolecules-intro-8",
+    "bio-macromolecules-intro-9",
+    "bio-macromolecules-intro-10"
+  ],
+  "summary": "<p>Macromolecules are large molecules; most are polymers, chains of monomers joined by covalent bonds. Dehydration synthesis joins two monomers by removing an –OH from one and an –H from the other as water; hydrolysis breaks the bond by adding water back. A chain of n monomers needs n − 1 bonds. Enzymes speed up both reactions. Carbohydrates, proteins and nucleic acids are polymers; lipids are not. How the monomers are arranged sets a molecule's shape, and its shape sets its function.</p>",
+  "connections": [
+    {
+      "href": "../notes/carbohydrates.html",
+      "label": "Sugar polymers for storage and structure (Carbohydrates)"
+    },
+    {
+      "href": "../notes/proteins.html",
+      "label": "Amino acid polymers that fold into working shapes (Proteins)"
+    },
+    {
+      "href": "../notes/lipids.html",
+      "label": "Why fats are large but not polymers (Lipids)"
+    }
+  ]
+}

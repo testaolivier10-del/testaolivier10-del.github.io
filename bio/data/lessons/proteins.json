@@ -1,0 +1,98 @@
+{
+  "topic": "proteins",
+  "hook": "<p>Hemoglobin, the protein that carries oxygen in your red blood cells, is built from four chains of amino acids; two of them are 146 amino acids long. In people with the inherited disorder that bends red blood cells into sickle shapes, one amino acid in each of those chains, the sixth, is valine instead of glutamic acid. That single swap, on the outside of the molecule, makes hemoglobin molecules stick to each other in long, stiff fibers that bend red blood cells into sickles and block small blood vessels. One amino acid out of 146 changes a life, because a protein's sequence sets its shape, and its shape sets what it does.</p>",
+  "prereq": [
+    {
+      "q": "Which two functional groups does every amino acid carry?",
+      "options": [
+        "An amino group and a carboxyl group",
+        "A hydroxyl group and a phosphate group",
+        "A methyl group and a carbonyl group"
+      ],
+      "correct": 0,
+      "why": "Every amino acid has an amino group (–NH2) and a carboxyl group (–COOH); that is where its name comes from.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "How do nonpolar molecules behave in water?",
+      "options": [
+        "They dissolve evenly",
+        "They cluster together, away from water",
+        "They form hydrogen bonds with water"
+      ],
+      "correct": 1,
+      "why": "Nonpolar (hydrophobic) molecules cannot hydrogen-bond with water, so water pushes them together.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "How many water molecules are released when a chain of 10 monomers is built by dehydration synthesis?",
+      "options": [
+        "9",
+        "10",
+        "11"
+      ],
+      "correct": 0,
+      "why": "A straight chain of n monomers has n − 1 links, each releasing one water: 10 − 1 = 9.",
+      "review": "macromolecules-intro"
+    }
+  ],
+  "figure": {
+    "figure": "protein-levels",
+    "caption": "The four levels of protein structure. Primary: the sequence of amino acids. Secondary: local coils (α helix) and folds (β pleated sheet) held by hydrogen bonds in the backbone. Tertiary: the whole chain's 3-D shape, held by interactions between side chains. Quaternary: two or more folded chains (subunits) working as one."
+  },
+  "chain": [
+    {
+      "cause": "Every amino acid has the same backbone (amino group, central carbon, carboxyl group) plus one of 20 different side chains, its R group.",
+      "effect": "Amino acids differ only in their R groups, which may be nonpolar, polar, or charged (acidic or basic)."
+    },
+    {
+      "cause": "Dehydration synthesis joins the carboxyl group of one amino acid to the amino group of the next by a peptide bond.",
+      "effect": "A polypeptide forms, with an amino end (N-terminus) and a carboxyl end (C-terminus); its order of amino acids is its primary structure."
+    },
+    {
+      "cause": "C=O and N–H groups along the backbone hydrogen-bond with each other a few amino acids apart.",
+      "effect": "Parts of the chain coil into α helices or fold into β pleated sheets: secondary structure."
+    },
+    {
+      "cause": "Nonpolar R groups are pushed together away from water, while polar and charged R groups face the water and form hydrogen bonds, ionic bonds and disulfide bridges with each other.",
+      "effect": "The whole chain folds into one specific 3-D shape: tertiary structure. Some proteins join two or more folded chains: quaternary structure."
+    },
+    {
+      "cause": "A protein's function depends on its exact shape, and its shape depends on its sequence and its surroundings.",
+      "effect": "Changing one amino acid, or changing temperature or pH enough to break the weak bonds (denaturation), can change the shape and stop the protein from working."
+    }
+  ],
+  "ideas": [
+    "<b>Primary</b> = sequence (peptide bonds). <b>Secondary</b> = helices and sheets (backbone hydrogen bonds). <b>Tertiary</b> = overall 3-D fold (R-group interactions). <b>Quaternary</b> = several chains together (as in hemoglobin's four subunits).",
+    "R-group chemistry drives folding: <b>nonpolar</b> side chains cluster inside (hydrophobic interactions), <b>polar</b> and <b>charged</b> ones face the water, opposite charges form ionic bonds, and two cysteines can form a covalent <b>disulfide bridge</b>.",
+    "<b>Denaturation</b> unfolds a protein by breaking the weak bonds of its higher levels of structure. The peptide bonds survive, so the primary structure is unchanged, but the shape, and the function, are lost."
+  ],
+  "misconception": {
+    "wrong": "Denaturing a protein by heat breaks it down into its amino acids, like digestion.",
+    "right": "Denaturation breaks the hydrogen bonds, ionic bonds and hydrophobic interactions that hold the shape, so the chain unfolds. The peptide bonds, and so the sequence of amino acids, stay intact. Breaking peptide bonds is hydrolysis, which needs enzymes in the gut (or strong acid and long heating). A cooked egg white is unfolded, tangled protein, not free amino acids."
+  },
+  "check": [
+    "bio-proteins-15",
+    "bio-proteins-16",
+    "bio-proteins-1",
+    "bio-proteins-2",
+    "bio-proteins-3",
+    "bio-proteins-4",
+    "bio-proteins-5"
+  ],
+  "summary": "<p>Proteins are polymers of amino acids joined by peptide bonds. The sequence (primary structure) determines how the chain folds: backbone hydrogen bonds make α helices and β pleated sheets (secondary structure); interactions among R groups, especially nonpolar side chains clustering away from water, fold the whole chain into its 3-D shape (tertiary structure); and some proteins combine several chains (quaternary structure). A protein's shape determines its function, so changing a single amino acid or denaturing the protein can stop it from working.</p>",
+  "connections": [
+    {
+      "href": "../notes/nucleic-acids.html",
+      "label": "Where the sequence of amino acids comes from: genes (Nucleic Acids)"
+    },
+    {
+      "href": "../notes/water-hydrogen-bonding.html",
+      "label": "Hydrogen bonds and the hydrophobic effect (Structure of Water and Hydrogen Bonding)"
+    },
+    {
+      "href": "../notes/macromolecules-intro.html",
+      "label": "Structure determines function (Introduction to Macromolecules)"
+    }
+  ]
+}

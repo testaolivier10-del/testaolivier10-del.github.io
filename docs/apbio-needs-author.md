@@ -63,6 +63,28 @@ person decides; lessons follow the "meanwhile" line.
   teaches extinction in 7.6 (needed by fossils, trees and adaptive radiation). Confirm with the
   official CED (see ced-verify).
 
+Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
+
+- **gc-stability** (open). Exam materials explain why G–C-rich DNA separates at higher
+  temperature by "three hydrogen bonds versus two"; biophysics finds base stacking contributes at
+  least as much. Meanwhile: the hydrogen-bond answer is keyed, with a going-further box and a
+  "For your exam" line in the Nucleic Acids notes (`complementary-base-pairing`).
+- **xylem-capillarity** (open). Many AP-style sources say adhesion/capillary action lifts water
+  up xylem; capillarity alone lifts it only centimeters, and the cohesion-tension pull from
+  transpiration does the work in tall plants. Meanwhile: Water notes teach the transpiration pull
+  through a cohesive column, adhesion as helping hold the column; no item keys capillarity as
+  the main mechanism (`capillary-action`, `transpiration`).
+- **activated-monomers** (open). Dehydration synthesis is the exam's model for building every
+  polymer, but in cells nucleotides arrive as triphosphates (releasing pyrophosphate) and amino
+  acids are attached to carriers first. Meanwhile: the dehydration model throughout, with a
+  going-further note in Introduction to Macromolecules (`dehydration-synthesis`).
+- **glycogen-branching** (open). "More branches give more ends for fast glucose release" is the
+  textbook advantage of glycogen; the carbohydrate stimulus deliberately does not claim branching
+  explains its (invented) amylase data. The Unit 1 model FRQ (frq-starch-cellulose-model, part d)
+  accepts the textbook answer. Confirm this is what the exam expects.
+- **lipid-macromolecule** (open). The CED says lipids are not polymers; some texts still call
+  large lipids macromolecules. Meanwhile: "large molecules but not polymers".
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer

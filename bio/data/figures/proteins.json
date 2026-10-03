@@ -1,0 +1,22 @@
+{
+  "protein-levels": {
+    "file": "figures/protein-levels.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 300,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Four panels. Primary: a chain of beads, each an amino acid. Secondary: a coiled alpha helix and a zigzag beta pleated sheet with dashed hydrogen bonds. Tertiary: one chain folded into a compact shape, with nonpolar side chains inside, an ionic bond and a disulfide bridge labeled. Quaternary: four folded chains packed together."
+  },
+  "amino-acid-peptide": {
+    "file": "figures/amino-acid-peptide.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 260,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Left: an amino acid, a central carbon bonded to an amino group, a carboxyl group, a hydrogen and an R group. Right: two amino acids joined by a peptide bond between the carbon of one carboxyl group and the nitrogen of the next amino group, with a water molecule released."
+  }
+}

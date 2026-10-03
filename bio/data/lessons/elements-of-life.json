@@ -1,0 +1,100 @@
+{
+  "topic": "elements-of-life",
+  "hook": "<p>A 25-meter oak tree weighs many tonnes, yet the soil around it barely sinks as it grows. In the 1600s Jan van Helmont grew a willow in a weighed tub of soil for five years: the tree gained about 74 kg while the soil lost only about 60 grams. Most of the tree's mass came from something invisible: carbon dioxide from the air, plus water. Every atom in a living thing was taken in from outside, and every one will eventually be passed on.</p>",
+  "prereq": [
+    {
+      "q": "What holds the atoms of a single molecule together?",
+      "options": [
+        "Hydrogen bonds between partly charged atoms",
+        "Covalent bonds, in which atoms share electrons",
+        "Ionic attractions between neighboring molecules"
+      ],
+      "correct": 1,
+      "why": "Atoms within a molecule share electrons in covalent bonds. Hydrogen bonds and ionic attractions act between molecules or ions.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "Why does oil not dissolve in water?",
+      "options": [
+        "Oil is nonpolar, so water molecules hydrogen-bond with each other instead of with it",
+        "Oil molecules are too large to fit between water molecules",
+        "Oil is more polar than water, so it repels water"
+      ],
+      "correct": 0,
+      "why": "Oil's C–H bonds are nonpolar. Water molecules attract each other and push the oil aside, so oil is hydrophobic.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "A solution's pH falls from 7 to 5. What happened to its hydrogen ion concentration?",
+      "options": [
+        "It doubled",
+        "It rose 100-fold",
+        "It fell 100-fold"
+      ],
+      "correct": 1,
+      "why": "Each pH unit is a tenfold change, and a lower pH means more H+. Two units down is 10 × 10 = 100 times more H+.",
+      "review": "water-hydrogen-bonding"
+    }
+  ],
+  "figure": {
+    "figure": "matter-cycle",
+    "caption": "Carbon, hydrogen and oxygen atoms cycle between the air, water and living things. Photosynthesis builds sugar from carbon dioxide and water; cellular respiration breaks sugar back down, releasing energy as ATP and returning carbon dioxide and water."
+  },
+  "chain": [
+    {
+      "cause": "Living things grow, repair themselves and reproduce by building new molecules.",
+      "effect": "They must take in atoms from their surroundings, because atoms are not created or destroyed in living things; they are only rearranged."
+    },
+    {
+      "cause": "A carbon atom can form four covalent bonds, to other carbons and to H, O, N, P or S.",
+      "effect": "Carbon atoms link into chains, branches and rings: the carbon skeletons of every large biological molecule."
+    },
+    {
+      "cause": "Proteins and nucleic acids contain nitrogen, and nucleic acids and ATP contain phosphorus.",
+      "effect": "Organisms must take in nitrogen and phosphorus (plants from the soil, animals from food) or they cannot build these molecules or grow."
+    },
+    {
+      "cause": "Some amino acids contain sulfur.",
+      "effect": "Sulfur is needed to build many proteins; together the core elements of life are C, H, O, N, P and S."
+    },
+    {
+      "cause": "Photosynthesis builds sugar from carbon dioxide and water, and cellular respiration breaks sugar back down to carbon dioxide and water.",
+      "effect": "The same atoms cycle between air, water and organisms again and again: matter is recycled, while energy flows through."
+    }
+  ],
+  "ideas": [
+    "An <b>element</b> is a substance made of one kind of atom. Six of them, carbon, hydrogen, oxygen, nitrogen, phosphorus and sulfur (<b>CHONPS</b>), make up about 98% of the mass of a living thing.",
+    "<b>Isotopes</b> are atoms of one element with different numbers of neutrons. They behave the same in chemistry, so a radioactive or heavy isotope can be fed to cells and traced into the molecules that use that element.",
+    "<b>Organic molecules</b> are built on carbon skeletons. Small attached groups of atoms, the <b>functional groups</b>, give each molecule its chemistry: –OH is polar, –COOH acts as an acid, –NH<sub>2</sub> as a base.",
+    "Which element is in which molecule: <b>N</b> in proteins and nucleic acids; <b>P</b> in nucleic acids, ATP and some lipids; <b>S</b> in some amino acids, so in many proteins. Sugars and fats are mostly C, H and O."
+  ],
+  "misconception": {
+    "wrong": "A growing plant gets most of its mass from the soil, and the food you eat is turned into energy and used up.",
+    "right": "Most of a plant's dry mass is carbon, taken from carbon dioxide in the air; the soil supplies small amounts of N, P, S and other minerals. Food is not turned into energy: its atoms are rearranged into new molecules or released (mostly as carbon dioxide and water), while the energy in its bonds is captured as ATP or lost as heat."
+  },
+  "check": [
+    "bio-elements-of-life-15",
+    "bio-elements-of-life-17",
+    "bio-elements-of-life-11",
+    "bio-elements-of-life-12",
+    "bio-elements-of-life-13",
+    "bio-elements-of-life-14",
+    "bio-elements-of-life-6",
+    "bio-elements-of-life-7"
+  ],
+  "summary": "<p>Organisms build their molecules from atoms they take in; atoms are recycled, never made new. Carbon's four bonds make chains, branches and rings, and functional groups such as hydroxyl, carboxyl, amino, phosphate and sulfhydryl give each molecule its chemistry. Nitrogen goes into proteins and nucleic acids; phosphorus into nucleic acids, ATP and some lipids; sulfur into some amino acids. Photosynthesis and cellular respiration cycle carbon, hydrogen and oxygen between the air, water and living things.</p>",
+  "connections": [
+    {
+      "href": "../notes/macromolecules-intro.html",
+      "label": "How small molecules are joined into large ones"
+    },
+    {
+      "href": "../notes/carbohydrates.html",
+      "label": "Sugars: the C, H and O molecules that store energy"
+    },
+    {
+      "href": "../notes/nucleic-acids.html",
+      "label": "Where the nitrogen and phosphorus go: DNA"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "monosaccharide": {
+    "def": "A single sugar unit, the monomer of carbohydrates, such as glucose, fructose or galactose. Also called a simple sugar."
+  },
+  "glucose": {
+    "def": "C6H12O6, the six-carbon sugar that cells break down for energy, that photosynthesis makes, and that forms starch, glycogen and cellulose."
+  },
+  "other-hexoses": {
+    "def": "Fructose and galactose: six-carbon sugars with the same formula as glucose (C6H12O6) but different structures (isomers of glucose)."
+  },
+  "alpha-beta-glucose": {
+    "def": "The two ring forms of glucose. In alpha glucose the –OH on carbon 1 points below the ring; in beta glucose it points above. Starch and glycogen are built from alpha glucose, cellulose from beta glucose."
+  },
+  "glycosidic-bond": {
+    "def": "The covalent bond, an oxygen bridge, that joins two sugar units. It forms by dehydration synthesis and is broken by hydrolysis."
+  },
+  "disaccharide": {
+    "def": "Two monosaccharides joined by a glycosidic bond: sucrose (glucose + fructose), lactose (glucose + galactose) or maltose (glucose + glucose)."
+  },
+  "polysaccharide": {
+    "def": "A carbohydrate polymer of many monosaccharides joined by glycosidic bonds, such as starch, glycogen, cellulose or chitin."
+  },
+  "starch": {
+    "def": "The energy-storage polysaccharide of plants: chains of alpha glucose that coil (amylose) or coil and branch (amylopectin)."
+  },
+  "glycogen": {
+    "def": "The energy-storage polysaccharide of animals and fungi: highly branched chains of alpha glucose, stored mainly in the liver and muscles."
+  },
+  "cell-wall": {
+    "def": "A stiff layer outside the cell of plants (and of fungi and many bacteria) that supports the cell. Plant cell walls are made mostly of cellulose fibers."
+  },
+  "cellulose": {
+    "def": "A structural polysaccharide of beta glucose. Its straight chains hydrogen-bond side by side into strong fibers that make up plant cell walls; humans cannot digest it (dietary fiber)."
+  },
+  "chitin": {
+    "def": "A structural polysaccharide of beta-linked, nitrogen-containing sugars that forms the exoskeletons of insects and crabs and the walls of fungi."
+  },
+  "carb-energy-storage": {
+    "def": "Storage polysaccharides (starch, glycogen) are coiled, branched chains of alpha glucose that enzymes break down quickly; structural polysaccharides (cellulose, chitin) are straight beta-linked chains bonded into fibers."
+  }
+}
