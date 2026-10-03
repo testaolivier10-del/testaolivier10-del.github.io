@@ -1,6 +1,6 @@
 {
   "topic": "membrane-permeability",
-  "hook": "<p>In 1992 a team studying red blood cells found a protein whose job nobody knew. They made frog oocytes, cells that let water in only slowly, build the protein, then moved them into a dilute solution. The ordinary oocytes barely swelled. The ones carrying the new protein swelled like balloons and burst within minutes. The protein was a dedicated doorway for water, now called an aquaporin, and its discovery won a Nobel Prize. It shows the central idea of this topic: what crosses a membrane, and how fast, depends on the bilayer and on the proteins in it.</p>",
+  "hook": "<p>In the late 1980s a team studying red blood cells found a protein whose job nobody knew. In 1992 they made frog oocytes, cells that let water in only slowly, build the protein, then moved them into a dilute solution. The ordinary oocytes barely swelled. The ones carrying the new protein swelled like balloons and burst within minutes. The protein was a dedicated doorway for water, now called an aquaporin, and its discovery won a Nobel Prize. It shows the central idea of this topic: what crosses a membrane, and how fast, depends on the bilayer and on the proteins in it.</p>",
   "prereq": [
     {
       "q": "Which part of the plasma membrane forms its water-avoiding middle?",

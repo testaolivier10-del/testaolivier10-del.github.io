@@ -34,7 +34,7 @@
     "membrane-transport-s2": {
       "kind": "graph",
       "title": "Amino acid uptake with and without ATP",
-      "text": "<p>Yeast cells were placed in a medium containing a radioactively labeled amino acid. One batch was first treated with cyanide, which stops mitochondria from making ATP. Researchers measured the concentration of labeled amino acid inside the cells and divided it by the concentration outside. A value of 1.0 means the concentrations are equal. Points are means of 5 samples; error bars show ±2 SE.</p>",
+      "text": "<p>Yeast cells growing not on sugar but on a fuel they can break down only by respiration in their mitochondria were placed in a medium containing a radioactively labeled amino acid. One batch was first treated with cyanide, which stops mitochondria from making ATP, so these cells made almost no ATP. Researchers measured the concentration of labeled amino acid inside the cells and divided it by the concentration outside. A value of 1.0 means the concentrations are equal. Points are means of 5 samples; error bars show ±2 SE.</p>",
       "chart": {
         "type": "line",
         "x": {

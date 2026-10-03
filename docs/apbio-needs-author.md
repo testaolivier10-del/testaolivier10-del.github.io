@@ -102,6 +102,23 @@ person decides; lessons follow the "meanwhile" line.
   vary between studies by up to an order of magnitude (Na⁺ is reported from about 10⁻¹² to 10⁻¹⁴
   cm/s). Meanwhile: values are labelled approximate, and items use only the ordering and
   powers-of-ten differences (`simple-diffusion`, `selective-permeability`).
+- **ion-accumulation-active** (open, 2.5; raised by the Unit 2 review, `docs/apbio-reviews/u2a.md`).
+  Topic 2.5 and `frq-root-potassium` infer active transport from K⁺ held at a higher
+  concentration inside than outside ("diffusion alone could never do that"). For ions this is
+  only strictly true for the electrochemical gradient: a root cell's membrane potential (about
+  −120 to −200 mV) can pull K⁺ in passively through channels to 100-fold or more (Nernst), and real
+  roots in millimolar K⁺ do take much of it up that way. The exam frames uptake against a
+  concentration gradient as active. Meanwhile: the concentration-gradient framing; the FRQ sample
+  also cites the ATP (nitrogen) result as evidence (`bio-membrane-transport-14`, `-15`, notes,
+  `frq-root-potassium` part d). Decide whether to add a "For your exam" note or raise the ratios.
+- **cholesterol-cold** (open, 2.3). `bio-plasma-membrane-5` keys "extra cholesterol gives somewhat
+  more mixing at 15 °C" from the textbook fluidity-buffer model. In real mammalian membranes,
+  which already hold 30-40% cholesterol, loading more cholesterol usually slows protein
+  diffusion at any temperature; the buffer effect is clearest against a cholesterol-free bilayer.
+  Meanwhile: keyed to the textbook model, which the exam uses.
+- **aquaporin-gases** (open, 2.4, low priority). Some aquaporins (e.g. AQP1) have been reported to
+  pass CO₂, a claim still disputed. `bio-membrane-permeability-18` keys CO₂ crossing as "no
+  change" when aquaporins are blocked. Meanwhile: as keyed (most CO₂ crosses the bilayer).
 
 ## Map content to confirm
 
