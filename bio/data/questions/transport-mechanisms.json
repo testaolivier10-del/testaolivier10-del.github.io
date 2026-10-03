@@ -216,7 +216,7 @@
       }
     },
     {
-      "id": "bio-transport-mechanisms-12", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "2.A", "level": "apply", "diff": 2,
+      "id": "bio-transport-mechanisms-12", "type": "single", "unit": "unit-2", "topic": "transport-mechanisms", "practice": "1.B", "level": "apply", "diff": 2,
       "q": "Heart muscle cells remove calcium using an exchanger that lets three Na⁺ flow into the cell while it carries one Ca²⁺ out. How is this transporter best described?",
       "options": [
         "An antiporter: the two ions cross in opposite directions, and Na⁺ flowing in powers Ca²⁺ moving out.",
@@ -287,7 +287,7 @@
       "variables": [
         { "name": "Na⁺ moved out by the sodium-potassium pump", "answer": "down", "why": "The pump spends ATP directly, so it slows as ATP runs out." },
         { "name": "Glucose built up inside the cell by sodium-glucose cotransport", "answer": "down", "why": "As pumping fails, Na⁺ accumulates inside and the Na⁺ gradient that drives the cotransporter runs down." },
-        { "name": "O₂ diffusing across the cell membrane", "answer": "none", "why": "O₂ crosses the bilayer by simple diffusion, which depends on its own gradient, not on ATP or on the Na⁺ gradient." }
+        { "name": "Entry of a small nonpolar test molecule that the cell does not use, held at a fixed concentration outside", "answer": "none", "why": "A small nonpolar molecule crosses the bilayer by simple diffusion, which depends only on its own gradient. The cell does not use it, so stopping ATP production leaves its gradient, and its entry, unchanged." }
       ],
       "why": { "correct": "Primary active transport fails first, because it uses ATP directly; cotransport fails soon after, because it spends the gradient the pump built; simple diffusion carries on." }
     },

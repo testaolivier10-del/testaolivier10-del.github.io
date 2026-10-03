@@ -178,7 +178,7 @@
           "Circular DNA matches bacteria and differs from the host's chromosomes in the nucleus.",
           "Ribosomes near 70 S match bacterial ribosomes, not the host's 80 S ones.",
           "Splitting of existing chloroplasts resembles binary fission; the cell cannot build them from scratch.",
-          "Two membranes fit engulfing: the inner from the bacterium, the outer from the host membrane that wrapped around it.",
+          "Two membranes fit a bacterial origin: in the engulfing model, the inner comes from the bacterium and the outer from the host membrane that wrapped around it.",
           "This tells you which organisms have chloroplasts, which bears on when they were gained, not on whether they came from bacteria.",
           "The green substance explains what chloroplasts do; any photosynthetic structure would need something like it, whatever its origin."
         ]
@@ -213,7 +213,7 @@
       "level": "apply",
       "diff": 1,
       "stimulus": "compartment-origins-s2",
-      "q": "In step 2 of the model, the bacterium is surrounded by two membranes. Where does the outer membrane come from?",
+      "q": "In step 2 of the model, the bacterium is surrounded by two membranes. According to the model, where does the outer membrane come from?",
       "options": [
         "The host cell's plasma membrane, which wrapped around the bacterium as it was taken in",
         "The bacterium's cell wall, which turned into a membrane once it was inside",
@@ -222,7 +222,7 @@
       ],
       "correct": 0,
       "why": {
-        "correct": "The host engulfed the bacterium the way a cell takes in a particle by endocytosis: its plasma membrane closed around it. The inner membrane is the bacterium's own; the outer comes from the host.",
+        "correct": "The host engulfed the bacterium the way a cell takes in a particle by endocytosis: its plasma membrane closed around it. In this model the inner membrane is the bacterium's own and the outer comes from the host.",
         "options": [
           "Correct: the engulfing membrane becomes the outer layer around the bacterium.",
           "A cell wall is not a membrane, and it does not turn into one; the model shows the host's membrane wrapping around.",

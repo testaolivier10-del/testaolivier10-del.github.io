@@ -284,7 +284,7 @@
       "why": { "correct": "Each cycle moves 3 Na⁺ out and 2 K⁺ in, a net of 1 positive charge out. 100 cycles × 1 = 100 more positive charges out than in each second, which adds a little to the negative charge inside." }
     },
     {
-      "id": "bio-facilitated-diffusion-16", "type": "order", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "2.A", "level": "recall", "diff": 2,
+      "id": "bio-facilitated-diffusion-16", "type": "order", "unit": "unit-2", "topic": "facilitated-diffusion", "practice": "1.A", "level": "recall", "diff": 2,
       "q": "Put the steps of one cycle of the sodium-potassium pump in order, starting with the pump open to the inside of the cell.",
       "options": [
         "Three Na⁺ ions from the cytoplasm bind to the pump.",
@@ -371,7 +371,7 @@
           "Correct: the gate turns the flow on only when the signaling molecule binds.",
           "Gated channels are still passive: Na⁺ flows in down its gradient. No energy is added.",
           "A gate does not add channels; it closes the existing ones most of the time.",
-          "A closed channel lets nothing through, and the channel stays specific to its own ion."
+          "A closed channel lets nothing through, and a gate does not change which ions the channel admits when it opens."
         ]
       }
     }
