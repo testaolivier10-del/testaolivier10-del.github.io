@@ -49,6 +49,17 @@ course does meanwhile.
 - **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
   `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
 
+- **openstax-licence** (open, owner, before Premium launch). openstax.org now shows *Biology 2e*
+  and *Anatomy and Physiology 2e* under CC BY-NC-SA 4.0 (non-commercial, share-alike) with "may not
+  be used in the training of large language models or otherwise be ingested into large language
+  models or generative AI offerings without OpenStax's prior written permission". (1) The AP®
+  Biology course reproduces no OpenStax text or figure (spec decision 24). Its build helpers did
+  fetch OpenStax sections into an AI model to fact-check Units 1-5; decide whether to ask OpenStax
+  about that, and no helper does it any more. (2) The A&P course uses OpenStax figures credited as
+  CC BY 4.0 on a site that sells Premium. CC licences cannot be revoked for copies obtained while
+  CC BY applied, so check when the figures were downloaded (and keep evidence of the licence then),
+  or replace them / ask OpenStax. Meanwhile nothing changes in the A&P course.
+
 ## Contested science
 
 Raised by the Phase 0 map review (2026-10-03, `docs/apbio-phase0.md`). Each is open until a

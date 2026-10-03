@@ -52,7 +52,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
   no "AP" in URLs, file names, meta tags or ad copy. Disclaimer on the course home, the site home
   and every page using the mark. Site rule enforces disclaimer, ®, and no "ap" in course URLs.
   Everything original; never reproduce released questions, AP Classroom items or CED text.
-- **Figures:** OpenStax Biology 2e (CC BY 4.0) via the A&P pipeline (own credit line, CC BY or PD
+- **Figures:** (superseded by decision 24: own SVGs only) OpenStax Biology 2e (CC BY 4.0) via the A&P pipeline (own credit line, CC BY or PD
   only, "Adapted: labels hidden") plus generated SVGs.
 - **Free:** every notes page, glossary, unit sheets, all Unit 1 and 2 lessons, the first lesson of
   each skills topic, one simulator, 15 practice questions a day, one full practice exam.
@@ -81,7 +81,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.4b | Simulators + skills tools: osmosis and enzyme simulators, 6 skills tools + Hardy-Weinberg and Simpson (hidden until Units 7-8), design drills (placeholder) | `claude/apbio-tools` | merged into `claude/apbio-beta` |
 | 0.5 | Site registration: registry, Premium and the fixed-date pass, Worker, SQL migration, hub/404/pricing (shown once a unit is published), search, tutor, sitemap, manifest, OG card, budgets, browser checks, exam-date default, privacy "For schools" | `claude/apbio-register` | done (decisions 9-19); owner steps in section 6 |
 | 2 | Units 1-3 + statistics and design skills, Beta | `claude/apbio-beta` | published 2026-10-03: 35 topics (23 CED + 12 skills/design), 688 questions, 13 FRQs, 2 simulators, 9 tools; every unit accuracy-checked (`docs/apbio-reviews/`). Pass not on sale yet (owner checklist) |
-| 3 | Units 4-8 (one at a time, each with its accuracy check), remaining 10 simulators, full practice exams (by 2027-01-15); glossary page to the A&P index design (decision 22) | `claude/apbio-u4` | in progress: Unit 4 published 2026-10-03 (6 topics, 120 questions, 4 FRQs, signal-transduction and cell-cycle simulators; review `docs/apbio-reviews/u4.md`). Unit 5 and the meiosis simulator written, review next |
+| 3 | Units 4-8 (one at a time, each with its accuracy check), remaining 10 simulators, full practice exams (by 2027-01-15); glossary page to the A&P index design (decision 22) | `claude/apbio-u4`, `claude/apbio-u5` | in progress: Unit 4 published 2026-10-03 (6 topics, 120 questions, 4 FRQs, 2 simulators; review `docs/apbio-reviews/u4.md`); Unit 5 published 2026-10-03 (5 topics, 108 questions, 5 FRQs, meiosis simulator; review `u5.md`). Unit 6 and the operon simulator written next; glossary index done (decision 22) |
 | 4 | Cram kit (by 2027-03-01) | | not started |
 
 ## 3. Decisions log
@@ -232,6 +232,16 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    is 13 KB (three stimulus sets' check items).
 23. (2026-10-03) **Hub wording.** The hub and 404 cards say "N published topics": `check-site`
    reads "N topics" on those pages as the ochem curriculum's count.
+
+24. (2026-10-03) **No OpenStax material in this course, and none fed to AI tools.** OpenStax
+   *Biology 2e* (and *Anatomy and Physiology 2e*) now show CC BY-NC-SA 4.0 and say the books may not
+   be ingested into large language models or generative AI offerings without OpenStax's written
+   permission. The AP® Biology course uses no OpenStax figure (all 64+ figures are our own SVGs) or
+   text, so it needs no OpenStax licence; `sources.html` and the course footer no longer claim one.
+   From now on no helper fetches openstax.org or pastes its text into a generation or review step;
+   facts are checked from the model's own knowledge and sources whose terms allow it. Earlier
+   helpers did fetch OpenStax sections to check facts (Units 1-5, 2026-10-03); owner question in
+   `docs/apbio-needs-author.md` (openstax-licence), which also covers the A&P course's OpenStax figures.
 
 ## 4. Map format (Phase 0)
 
