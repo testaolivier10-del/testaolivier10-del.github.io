@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="t d">
+<title id="t">An enzyme binds its substrate at the active site</title>
+<desc id="d">Three panels. In the first, a substrate approaches a groove on the enzyme called the active site; the groove carries a positive charge and the substrate a matching negative charge. In the second, the substrate sits in the active site and the enzyme's shape shifts slightly to grip it: the enzyme-substrate complex. In the third, two product molecules leave and the enzyme has its original shape, ready for another substrate.</desc>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="720" height="360" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <!-- panel 1 -->
+  <g>
+    <path d="M25,300 L25,175 Q25,135 65,135 L95,135 L95,168 Q120,192 145,168 L145,135 L175,135 Q215,135 215,175 L215,300 Z" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+    <path d="M98,55 L142,55 L142,82 Q120,104 98,82 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+    <text x="120" y="88" font-size="20" font-weight="700" text-anchor="middle">−</text>
+    <text x="120" y="176" font-size="20" font-weight="700" text-anchor="middle">+</text>
+    <line x1="120" y1="112" x2="120" y2="140" stroke="#1F2A28" stroke-width="2" marker-end="url(#ah)"/>
+    <text x="120" y="250" font-size="17" font-weight="700" text-anchor="middle">enzyme</text>
+    <text x="150" y="48" font-size="15" text-anchor="start">substrate</text>
+    <text x="52" y="112" font-size="15" text-anchor="middle">active site</text>
+    <line x1="62" y1="118" x2="100" y2="160" stroke="#1F2A28" stroke-width="1.5"/>
+  </g>
+  <path d="M232,215 L252,215" stroke="#1F2A28" stroke-width="3" marker-end="url(#ah)"/>
+  <!-- panel 2 -->
+  <g transform="translate(240,0)">
+    <path d="M25,300 L25,175 Q25,135 65,135 L99,128 L98,168 Q120,190 142,168 L141,128 L175,135 Q215,135 215,175 L215,300 Z" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+    <path d="M100,132 L140,132 L140,162 Q120,182 100,162 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+    <text x="120" y="163" font-size="20" font-weight="700" text-anchor="middle">−</text>
+    <path d="M70,112 Q82,104 94,118" fill="none" stroke="#1F2A28" stroke-width="2" marker-end="url(#ah)"/>
+    <path d="M170,112 Q158,104 146,118" fill="none" stroke="#1F2A28" stroke-width="2" marker-end="url(#ah)"/>
+    <text x="120" y="84" font-size="15" text-anchor="middle">shape shifts to grip</text>
+    <text x="120" y="102" font-size="15" text-anchor="middle">the substrate</text>
+    <text x="120" y="240" font-size="16" font-weight="700" text-anchor="middle">enzyme-substrate</text>
+    <text x="120" y="260" font-size="16" font-weight="700" text-anchor="middle">complex</text>
+  </g>
+  <path d="M472,215 L492,215" stroke="#1F2A28" stroke-width="3" marker-end="url(#ah)"/>
+  <!-- panel 3 -->
+  <g transform="translate(480,0)">
+    <path d="M25,300 L25,175 Q25,135 65,135 L95,135 L95,168 Q120,192 145,168 L145,135 L175,135 Q215,135 215,175 L215,300 Z" fill="#C4E8DC" stroke="#009E73" stroke-width="3"/>
+    <path d="M62,52 L92,52 L92,80 Q80,92 62,80 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+    <path d="M150,52 L180,52 L180,80 Q168,92 150,80 Z" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+    <line x1="104" y1="118" x2="86" y2="96" stroke="#1F2A28" stroke-width="2" marker-end="url(#ah)"/>
+    <line x1="136" y1="118" x2="154" y2="96" stroke="#1F2A28" stroke-width="2" marker-end="url(#ah)"/>
+    <text x="120" y="38" font-size="15" text-anchor="middle">products</text>
+    <text x="120" y="176" font-size="20" font-weight="700" text-anchor="middle">+</text>
+    <text x="120" y="240" font-size="16" font-weight="700" text-anchor="middle">same enzyme,</text>
+    <text x="120" y="260" font-size="16" font-weight="700" text-anchor="middle">ready again</text>
+  </g>
+  <g font-size="15" text-anchor="middle" fill="#3D4A66">
+    <text x="120" y="330">1. Shape and charge match</text>
+    <text x="360" y="330">2. Substrate held in place</text>
+    <text x="600" y="330">3. Products leave</text>
+  </g>
+</g>
+</svg>

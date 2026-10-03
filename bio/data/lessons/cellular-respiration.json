@@ -1,0 +1,76 @@
+{
+  "topic": "cellular-respiration",
+  "hook": "<p>Cyanide kills in minutes, yet it does not touch your lungs, your blood or your heart directly. It jams one protein at the very end of a chain inside your mitochondria. Oxygen keeps arriving, but your cells can no longer hand electrons to it, and ATP production collapses. To see why one jammed protein is fatal, you need to follow glucose all the way to oxygen.</p>",
+  "prereq": [
+    {
+      "q": "In the light reactions, how does the H⁺ gradient across the thylakoid membrane make ATP?",
+      "options": [
+        "H⁺ flows down its gradient through ATP synthase, which uses the flow to join ADP and Pi",
+        "H⁺ is pumped up its gradient by ATP synthase, which uses the energy of light to do it",
+        "H⁺ combines with ADP directly in the thylakoid space to form ATP"
+      ],
+      "correct": 0,
+      "why": "This is chemiosmosis: an electron transport chain builds the gradient, and H⁺ flowing back through ATP synthase drives ATP synthesis. Mitochondria use the same machinery.",
+      "review": "photosynthesis"
+    },
+    {
+      "q": "When glucose is broken down to CO₂ and water, glucose is",
+      "options": [
+        "reduced, because it gains electrons from oxygen",
+        "oxidized, because it loses electrons, which end up on oxygen",
+        "neither, because no electrons move in the reaction"
+      ],
+      "correct": 1,
+      "why": "Glucose loses hydrogen atoms and their electrons, which end up on oxygen in water. Losing electrons is oxidation.",
+      "review": "cellular-energy"
+    },
+    {
+      "q": "Where in a mitochondrion are the cristae?",
+      "options": [
+        "They are folds of the inner membrane",
+        "They are the fluid inside the inner membrane",
+        "They are pores in the outer membrane"
+      ],
+      "correct": 0,
+      "why": "The cristae are folds of the inner membrane, which give it a huge surface for electron transport chains and ATP synthase. The fluid inside is the matrix.",
+      "review": "cell-structure-function"
+    }
+  ],
+  "figure": {
+    "figure": "mito-electron-transport",
+    "caption": "In the inner mitochondrial membrane, electrons from NADH and FADH₂ pass along the electron transport chain to oxygen, which becomes water. The chain pumps H⁺ into the intermembrane space; H⁺ flowing back through ATP synthase makes most of the cell's ATP."
+  },
+  "chain": [
+    { "cause": "In the cytosol, glycolysis splits each glucose into two pyruvate.", "effect": "A net 2 ATP are made by substrate-level phosphorylation, and electrons are loaded onto 2 NAD⁺, making 2 NADH." },
+    { "cause": "With oxygen present, pyruvate enters the mitochondrial matrix and is oxidized.", "effect": "Each pyruvate loses a carbon as CO₂ and gives electrons to NAD⁺; the rest enters the Krebs cycle as acetyl CoA." },
+    { "cause": "The Krebs cycle oxidizes acetyl CoA completely.", "effect": "Its carbons leave as CO₂, a little ATP is made, and most of the energy is loaded onto NADH and FADH₂." },
+    { "cause": "NADH and FADH₂ hand their electrons to the electron transport chain in the inner membrane, and oxygen accepts them at the end, forming water.", "effect": "As electrons move toward oxygen, the chain pumps H⁺ from the matrix into the intermembrane space, building a proton gradient." },
+    { "cause": "H⁺ flows back into the matrix through ATP synthase.", "effect": "ATP synthase makes most of the ATP: about 26-28 of the 30-32 ATP per glucose (oxidative phosphorylation)." },
+    { "cause": "Without oxygen, the chain stops and NADH cannot be recycled to NAD⁺.", "effect": "Cells that ferment pass NADH's electrons to pyruvate (making lactate, or ethanol and CO₂), regenerating NAD⁺ so glycolysis can keep making its 2 ATP." }
+  ],
+  "ideas": [
+    "Overall: C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + energy. The <b>CO₂ comes from the carbons of glucose</b> (pyruvate oxidation and Krebs cycle); the <b>water forms when O₂ accepts electrons</b> at the end of the chain.",
+    "Most ATP is made by <b>chemiosmosis</b>, exactly as in chloroplasts, but here the energy comes from electrons moving to oxygen, and H⁺ is pumped into the intermembrane space.",
+    "<b>Fermentation</b> makes no extra ATP. Its only job is to regenerate NAD⁺ so glycolysis can continue without oxygen.",
+    "Energy not captured as ATP is released as heat. <b>Uncoupling proteins</b> in brown fat let H⁺ leak back without making ATP, turning the gradient's energy into heat."
+  ],
+  "misconception": {
+    "wrong": "The oxygen we breathe in becomes the carbon dioxide we breathe out.",
+    "right": "The oxygen accepts electrons at the end of the electron transport chain and becomes water. The carbon dioxide is made from the carbon atoms of glucose during pyruvate oxidation and the Krebs cycle."
+  },
+  "check": [
+    "bio-cellular-respiration-6",
+    "bio-cellular-respiration-7",
+    "bio-cellular-respiration-8",
+    "bio-cellular-respiration-9",
+    "bio-cellular-respiration-10",
+    "bio-cellular-respiration-22",
+    "bio-cellular-respiration-25"
+  ],
+  "summary": "<p>Cellular respiration releases the energy in glucose in stages. Glycolysis in the cytosol makes pyruvate, 2 ATP and 2 NADH. In the mitochondrial matrix, pyruvate oxidation and the Krebs cycle release the carbons as CO₂ and load electrons onto NADH and FADH₂. In the inner membrane, the electron transport chain passes those electrons to oxygen, forming water, and pumps H⁺ into the intermembrane space; ATP synthase uses the gradient to make most of the 30-32 ATP. Without oxygen, fermentation regenerates NAD⁺ so glycolysis continues, for only 2 ATP. Energy not captured as ATP is released as heat, which uncoupling proteins increase.</p>",
+  "connections": [
+    { "href": "../notes/photosynthesis.html", "label": "Back: the same chemiosmosis in chloroplasts (3.5)" },
+    { "href": "../notes/cellular-energy.html", "label": "ATP, redox and the laws of energy (3.4)" },
+    { "href": "../notes/enzyme-environment.html", "label": "How poisons block enzymes (3.3)" }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "id": "frq-mitochondria-poisons",
+  "type": "conceptual",
+  "points": 4,
+  "units": ["unit-3"],
+  "topics": ["cellular-respiration"],
+  "practices": ["1.B", "6.C", "6.E"],
+  "stimulus": {
+    "kind": "setup",
+    "title": "Three chemicals that act on mitochondria",
+    "text": "<p>In the inner mitochondrial membrane, an electron transport chain passes electrons from NADH and FADH₂ to O₂ and pumps H⁺ into the intermembrane space; ATP synthase uses the H⁺ gradient to make ATP. Three chemicals affect this system. Rotenone, a pesticide, blocks the first protein of the chain, which accepts electrons from NADH. Oligomycin blocks the H⁺ channel of ATP synthase. 2,4-Dinitrophenol (DNP) carries H⁺ across membranes; in the 1930s it was sold as a diet pill, and some people who took it died of dangerously high body temperature.</p>"
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "<b>Describe</b> the role of O₂ in the electron transport chain.",
+      "points": 1,
+      "rubric": [
+        { "point": "O₂ is the final electron acceptor: it accepts electrons at the end of the chain and combines with H⁺ to form water, which keeps electrons flowing.", "accept": ["oxygen is the final electron acceptor and is reduced to water", "O₂ takes the electrons from the last protein of the chain"] }
+      ],
+      "sample": "O₂ is the final electron acceptor. At the end of the chain it accepts electrons and combines with H⁺ to form water, which clears the chain so electrons can keep flowing from NADH and FADH₂."
+    },
+    {
+      "label": "b",
+      "prompt": "<b>Explain</b> why adding oligomycin to isolated mitochondria reduces their O₂ consumption, even though oligomycin does not act on the electron transport chain.",
+      "points": 1,
+      "rubric": [
+        { "point": "With ATP synthase blocked, H⁺ cannot flow back into the matrix, so the gradient builds up until the chain can no longer pump H⁺ against it; electron flow to O₂ then slows.", "accept": ["the H⁺ gradient becomes too steep for the chain to keep pumping, so electron transport and O₂ use slow", "pumping and ATP synthesis are coupled through the gradient"] }
+      ],
+      "sample": "Oligomycin stops H⁺ from flowing back through ATP synthase. H⁺ keeps being pumped into the intermembrane space until the gradient is so steep that the chain cannot pump against it. Because electron flow is tied to pumping, electrons move more slowly to O₂, and O₂ use falls."
+    },
+    {
+      "label": "c",
+      "prompt": "<b>Predict</b> the effect of DNP on the amount of ATP a cell makes and on body temperature. <b>Justify</b> your prediction.",
+      "points": 1,
+      "rubric": [
+        { "point": "Predicts that ATP made falls while body temperature rises, because DNP lets H⁺ return to the matrix without passing through ATP synthase, so the gradient's energy is released as heat instead of being used to make ATP (and the chain speeds up).", "accept": ["less ATP and more heat because H⁺ bypasses ATP synthase", "DNP uncouples electron transport from ATP synthesis, so energy becomes heat"] }
+      ],
+      "sample": "ATP production falls and body temperature rises. DNP carries H⁺ back into the matrix without going through ATP synthase, so the gradient is used up without making ATP. The chain runs faster to try to keep up, burning more fuel and O₂, and the energy that would have made ATP is released as heat."
+    },
+    {
+      "label": "d",
+      "prompt": "Cells treated with rotenone produce much more lactate than untreated cells. <b>Explain</b> this observation.",
+      "points": 1,
+      "rubric": [
+        { "point": "With the first protein blocked, NADH cannot give up its electrons to the chain, so NAD⁺ is not regenerated there; cells turn pyruvate into lactate (fermentation) to regenerate NAD⁺ so glycolysis can continue making ATP.", "accept": ["NADH cannot be oxidized by the chain, so fermentation regenerates NAD⁺ for glycolysis", "cells rely on glycolysis plus lactic acid fermentation, which makes lactate"] }
+      ],
+      "sample": "Rotenone stops NADH from unloading its electrons at the start of the chain, so NAD⁺ is not regenerated and oxidative phosphorylation drops. To keep glycolysis running, which needs NAD⁺, the cells pass NADH's electrons to pyruvate, making lactate. This regenerates NAD⁺ and lets glycolysis keep making a little ATP."
+    }
+  ]
+}

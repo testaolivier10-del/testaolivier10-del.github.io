@@ -1,0 +1,931 @@
+{
+  "stimuli": {
+    "cellular-respiration-s1": {
+      "kind": "setup",
+      "title": "Peas in a respirometer",
+      "text": "<p>A respirometer is a sealed vial with a thin, graduated glass tube. Each vial held a small pad soaked in potassium hydroxide (KOH), which absorbs CO₂, under a cotton plug, and was held in a water bath. As organisms in the vial take in O₂, the gas volume shrinks and a drop of colored water moves along the tube, showing the volume of gas used. Each vial held the same total volume of material: germinating peas, dry (dormant) peas plus glass beads, or glass beads alone. Values are means of 3 vials.</p>",
+      "table": {
+        "caption": "Volume of gas taken up (mL) since time 0",
+        "cols": [
+          "Vial",
+          "Water bath",
+          "0 min",
+          "5 min",
+          "10 min",
+          "15 min",
+          "20 min"
+        ],
+        "rows": [
+          [
+            "Germinating peas",
+            "25 °C",
+            "0.00",
+            "0.20",
+            "0.42",
+            "0.63",
+            "0.84"
+          ],
+          [
+            "Dry peas + beads",
+            "25 °C",
+            "0.00",
+            "0.02",
+            "0.03",
+            "0.05",
+            "0.06"
+          ],
+          [
+            "Beads only",
+            "25 °C",
+            "0.00",
+            "0.01",
+            "0.01",
+            "0.02",
+            "0.02"
+          ],
+          [
+            "Germinating peas",
+            "10 °C",
+            "0.00",
+            "0.08",
+            "0.17",
+            "0.25",
+            "0.33"
+          ],
+          [
+            "Beads only",
+            "10 °C",
+            "0.00",
+            "0.00",
+            "0.01",
+            "0.01",
+            "0.01"
+          ]
+        ]
+      }
+    },
+    "cellular-respiration-s2": {
+      "kind": "graph",
+      "title": "Oxygen use by isolated mitochondria",
+      "text": "<p>Mitochondria isolated from liver were placed in a sealed chamber with pyruvate as fuel, and an electrode recorded the O₂ concentration. Additions: at 2 min, ADP and Pi; at 6 min, oligomycin, a drug that blocks the H⁺ channel of ATP synthase; at 10 min, DNP, a chemical that carries H⁺ across membranes; at 14 min, cyanide, which blocks the last protein of the electron transport chain.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "min",
+          "min": 0,
+          "max": 18,
+          "step": 2
+        },
+        "y": {
+          "label": "O₂ in the chamber",
+          "unit": "nmol/mL",
+          "min": 0,
+          "max": 250,
+          "step": 50
+        },
+        "series": [
+          {
+            "name": "O₂ concentration",
+            "points": [
+              [
+                0,
+                240
+              ],
+              [
+                1,
+                236
+              ],
+              [
+                2,
+                232
+              ],
+              [
+                3,
+                212
+              ],
+              [
+                4,
+                192
+              ],
+              [
+                5,
+                172
+              ],
+              [
+                6,
+                152
+              ],
+              [
+                7,
+                149
+              ],
+              [
+                8,
+                146
+              ],
+              [
+                9,
+                143
+              ],
+              [
+                10,
+                140
+              ],
+              [
+                11,
+                110
+              ],
+              [
+                12,
+                80
+              ],
+              [
+                13,
+                50
+              ],
+              [
+                14,
+                20
+              ],
+              [
+                15,
+                20
+              ],
+              [
+                16,
+                20
+              ],
+              [
+                17,
+                20
+              ],
+              [
+                18,
+                20
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "cellular-respiration-s3": {
+      "kind": "table",
+      "title": "Yeast with and without oxygen",
+      "text": "<p>Two flasks held equal amounts of yeast in glucose solution at 30 °C for one hour. One was bubbled with air; the other was sealed after the air was replaced with nitrogen gas, so it had no O₂. The table shows what the yeast used and made.</p>",
+      "table": {
+        "caption": "Totals after one hour (mmol)",
+        "cols": [
+          "Flask",
+          "Glucose used",
+          "CO₂ released",
+          "Ethanol made"
+        ],
+        "rows": [
+          [
+            "With O₂",
+            "0.45",
+            "2.70",
+            "0.02"
+          ],
+          [
+            "Without O₂",
+            "1.90",
+            "3.80",
+            "3.78"
+          ]
+        ]
+      }
+    },
+    "cellular-respiration-s4": {
+      "kind": "table",
+      "title": "Mice without the uncoupling protein",
+      "text": "<p>Brown fat cells contain an uncoupling protein, UCP1, in their inner mitochondrial membrane. Researchers compared normal mice with mice that cannot make UCP1. Each mouse was moved from 22 °C to 4 °C for 6 hours. Mitochondria were then isolated from their brown fat and given fuel but no ADP, and their O₂ use and heat output were measured. Values are mean ± SD, 8 mice per group.</p>",
+      "table": {
+        "caption": "Normal mice and mice lacking UCP1 after 6 hours at 4 °C",
+        "cols": [
+          "Measurement",
+          "Normal mice",
+          "Mice lacking UCP1"
+        ],
+        "rows": [
+          [
+            "Body temperature (°C)",
+            "36.4 ± 0.4",
+            "31.0 ± 1.2"
+          ],
+          [
+            "O₂ use by brown-fat mitochondria (nmol/min per mg protein)",
+            "118 ± 9",
+            "38 ± 5"
+          ],
+          [
+            "Heat output of brown-fat mitochondria (% of normal mean)",
+            "100 ± 8",
+            "28 ± 6"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cellular-respiration-1",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s1",
+      "q": "Correct the germinating peas at 25 °C using the beads-only vial at 25 °C. What is their average rate of O₂ use over the 20 minutes, in mL per minute? Give three decimal places.",
+      "numeric": {
+        "answer": 0.041,
+        "tol": 0.001,
+        "unit": "mL/min",
+        "decimals": 3
+      },
+      "why": {
+        "correct": "Corrected volume = 0.84 − 0.02 = 0.82 mL. Rate = 0.82 mL ÷ 20 min = 0.041 mL/min."
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-2",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s1",
+      "q": "Why does each vial contain KOH?",
+      "options": [
+        "It removes the CO₂ the peas release, so the change in gas volume shows O₂ taken up alone.",
+        "It supplies O₂ to the peas, so that they can keep respiring for the full 20 minutes.",
+        "It keeps the temperature inside each vial steady, so that the water bath does not warm the gas.",
+        "It kills bacteria on the peas, so that just the peas' own respiration is measured in the vial."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Respiring peas take in O₂ and give out CO₂. If the CO₂ stayed as gas the two would nearly cancel; KOH absorbs the CO₂, so the shrinking volume measures O₂ used.",
+        "options": [
+          "Removing CO₂ lets the volume change track O₂ uptake.",
+          "KOH absorbs CO₂; it does not produce O₂.",
+          "The water bath holds the temperature; KOH has a chemical job.",
+          "KOH is there to absorb CO₂; nothing in the setup is aimed at bacteria."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-3",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s1",
+      "q": "What is the purpose of the vials containing beads only?",
+      "options": [
+        "They show volume changes not caused by respiration, such as shifts in temperature or pressure.",
+        "They show how much O₂ the glass beads themselves use, so that the beads can be subtracted from the dry-pea vial.",
+        "They give the peas in the other vials extra space, so that the peas do not run out of O₂.",
+        "They show the O₂ use of germinating peas at a lower rate, for comparison with the dry peas."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Beads do not respire, so any movement in their tube comes from physical changes. Subtracting it corrects every vial at that temperature.",
+        "options": [
+          "Beads-only vials are a control for physical changes in gas volume.",
+          "Glass beads are not alive and use no O₂; any reading is a physical change.",
+          "Each vial is separate; beads in one vial do nothing for peas in another.",
+          "The beads-only vials contain no peas at all."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-4",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s1",
+      "q": "Why do germinating peas use O₂ much faster than dry peas at the same temperature?",
+      "options": [
+        "Germinating peas break down stored starch for ATP to grow; dry peas are dormant, with little metabolism.",
+        "Dry peas carry out photosynthesis inside the vial, which releases O₂ and hides their uptake of O₂.",
+        "Germinating peas are larger than dry peas, so more of their surface absorbs KOH and makes the drop move.",
+        "Dry peas lack mitochondria until they absorb water, so they are unable to carry out cellular respiration in the vial."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A germinating seed is growing: it needs ATP, so it oxidizes its stored food quickly, using O₂. A dry seed's cells are nearly inactive.",
+        "options": [
+          "Active growth needs ATP, which comes from respiration using O₂.",
+          "The vials are sealed and the peas are seeds; dry peas have no green leaves to photosynthesize, and the dry-pea vial shows a little uptake, not a release.",
+          "The vials hold the same total volume, and peas do not absorb KOH; the drop moves because O₂ is used.",
+          "Dry seeds do have mitochondria; their respiration is very slow, not absent (0.06 mL in 20 minutes)."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-5",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-respiration-s1",
+      "q": "Corrected O₂ use by germinating peas is 0.82 mL at 25 °C and 0.32 mL at 10 °C over 20 minutes. Which explanation and prediction are best supported?",
+      "options": [
+        "Respiration's enzymes run slower at 10 °C, so at 30 °C the peas would likely use O₂ faster than at 25 °C.",
+        "Cold denatures the enzymes of respiration, so the peas at 10 °C would not recover if they were warmed again.",
+        "Peas at 10 °C need less ATP because they are colder, so they switch from respiration to photosynthesis.",
+        "The KOH absorbs CO₂ more slowly at 10 °C, so the cold vials show less gas taken up than was really used."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Lower temperature means slower molecules and fewer energetic collisions, so enzyme-catalyzed respiration slows (to about 39%). Below the enzymes' optimum, warming speeds it up.",
+        "options": [
+          "Enzyme rates rise with temperature up to their optimum, so 30 °C would likely be faster.",
+          "Cold slows enzymes but does not denature them; warming restores the rate.",
+          "Seeds in a dark sealed vial do not photosynthesize; they simply respire more slowly.",
+          "KOH works well at both temperatures; the beads-only correction already accounts for physical effects."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-6",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-respiration-s2",
+      "q": "During which interval did the mitochondria use O₂ fastest?",
+      "options": [
+        "10-14 min",
+        "2-6 min",
+        "6-10 min",
+        "14-18 min"
+      ],
+      "correct": 0,
+      "fixed": true,
+      "why": {
+        "correct": "From 10 to 14 min, O₂ fell from 140 to 20 nmol/mL: 30 per minute, the steepest slope.",
+        "options": [
+          "After DNP, the slope is steepest: 120 nmol/mL in 4 minutes.",
+          "With ADP, O₂ fell 80 nmol/mL in 4 minutes (20 per minute), fast but not fastest.",
+          "After oligomycin, O₂ fell only 12 nmol/mL in 4 minutes.",
+          "After cyanide, O₂ stayed at 20: no use at all."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-7",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-respiration-s2",
+      "q": "What was the rate of O₂ use between 2 and 6 minutes, in nmol/mL per minute? Give a whole number.",
+      "numeric": {
+        "answer": 20,
+        "tol": 0.5,
+        "unit": "nmol/mL per min",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Rate = (232 − 152) ÷ (6 − 2) = 80 ÷ 4 = 20 nmol/mL per minute."
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-8",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-respiration-s2",
+      "q": "After oligomycin blocks ATP synthase at 6 minutes, O₂ use falls sharply even though the electron transport chain itself is not blocked. Why?",
+      "options": [
+        "H⁺ is no longer able to flow back through ATP synthase, so the gradient grows until the chain stalls.",
+        "Oligomycin also blocks the last protein of the chain, so O₂ is unable to accept electrons from it.",
+        "Without ATP synthase working, the matrix runs out of the O₂ that ATP synthase normally releases.",
+        "The ADP added at 2 minutes has been used up by then, and ADP is the molecule that the chain hands its electrons to."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Pumping and H⁺ return are linked. With the return route blocked, H⁺ piles up in the intermembrane space until pumping becomes too hard, and electron flow to O₂ slows almost to a stop.",
+        "options": [
+          "A too-steep gradient holds back the chain: respiration is tied to ATP synthesis.",
+          "The stem says oligomycin blocks ATP synthase; and adding DNP later restores fast O₂ use, so the chain still works.",
+          "ATP synthase makes ATP; it does not release O₂.",
+          "Electrons go to O₂, not to ADP; and the drop happens right when oligomycin is added."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-9",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-respiration-s2",
+      "q": "DNP, added at 10 minutes, carries H⁺ across membranes. Which statement about the period from 10 to 14 minutes is best supported?",
+      "options": [
+        "O₂ use is fast because H⁺ leaks back through DNP, so the chain runs freely, but the energy becomes heat, not ATP.",
+        "O₂ use is fast because DNP unblocks ATP synthase, so the mitochondria are now making more ATP than at any earlier time.",
+        "O₂ use is fast because DNP is itself broken down using O₂, and the mitochondria use it as a fuel.",
+        "O₂ use is fast because DNP is an electron carrier that delivers extra electrons from pyruvate to the chain."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "DNP is an uncoupler: it lets H⁺ back into the matrix without ATP synthase. The gradient stays low, so the chain pumps and uses O₂ at full speed, while ATP synthase stays blocked by oligomycin.",
+        "options": [
+          "Uncoupling separates electron flow from ATP synthesis; the energy is released as heat.",
+          "Oligomycin is still present, so ATP synthase stays blocked; DNP gives H⁺ another way back.",
+          "DNP's effect is to move H⁺, and O₂ use stops at once when cyanide is added, showing the chain, not DNP breakdown, uses the O₂.",
+          "The stem says DNP carries H⁺, not electrons."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-10",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s2",
+      "q": "Why did O₂ use stop completely after cyanide was added, even though DNP was still present?",
+      "options": [
+        "Cyanide stops electrons from reaching O₂, so no O₂ is reduced to water.",
+        "Cyanide blocks the H⁺ leak through DNP, so the gradient rebuilds and stops the pumping.",
+        "Cyanide uses up the O₂ left in the chamber by reacting with it directly.",
+        "Cyanide blocks ATP synthase, which had started making ATP again once DNP was added."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cyanide blocks the last protein of the chain, the one that hands electrons to O₂. With no electrons reaching O₂, O₂ use stops, whatever happens to the gradient.",
+        "options": [
+          "Blocking the final transfer to O₂ stops O₂ use directly.",
+          "The stem says cyanide blocks the last protein of the chain, not DNP.",
+          "O₂ stays flat at 20 nmol/mL after cyanide, so nothing is using it up.",
+          "ATP synthase was already blocked by oligomycin; cyanide acts on the chain."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-11",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-respiration-s3",
+      "q": "In the flask without O₂, how many molecules of CO₂ were released per molecule of glucose used? Give one decimal place.",
+      "numeric": {
+        "answer": 2,
+        "tol": 0.05,
+        "unit": "",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "3.80 mmol CO₂ ÷ 1.90 mmol glucose = 2.0, matching alcohol fermentation: glucose → 2 ethanol + 2 CO₂."
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-12",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-respiration-s3",
+      "q": "Assume about 30 ATP per glucose with O₂ and 2 per glucose without. Which claim do the data support?",
+      "options": [
+        "With O₂ the yeast made about 3.5 times more ATP while using under a quarter as much glucose.",
+        "Without O₂ the yeast made more ATP, because they used over four times as much glucose.",
+        "The two flasks made about the same amount of ATP, because both released a similar amount of CO₂.",
+        "Without O₂ the yeast made no ATP, because ethanol and CO₂ were the sole products they made."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With O₂: 0.45 × 30 ≈ 13.5 mmol ATP. Without: 1.90 × 2 = 3.8 mmol ATP. 13.5 ÷ 3.8 ≈ 3.5, while glucose use was 0.45 against 1.90.",
+        "options": [
+          "Respiration with O₂ gets far more ATP from each glucose.",
+          "1.90 × 2 = 3.8 mmol is less than 0.45 × 30 ≈ 13.5 mmol.",
+          "CO₂ is not a measure of ATP; the two pathways release different CO₂ per ATP.",
+          "Glycolysis still makes 2 ATP per glucose during fermentation."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-13",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s3",
+      "q": "Why do yeast without O₂ turn pyruvate into ethanol instead of simply stopping after glycolysis?",
+      "options": [
+        "Making ethanol passes NADH's electrons on, regenerating NAD⁺ so glycolysis can keep running.",
+        "Making ethanol releases more ATP than glycolysis, which is the main energy source without O₂.",
+        "Ethanol is the final electron acceptor of the electron transport chain when no O₂ is available.",
+        "Ethanol is needed to build new yeast cells, so the yeast make it in large amounts whether O₂ is present or not."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glycolysis needs NAD⁺ to accept electrons. Without O₂, NADH cannot unload at the chain, so it gives its electrons to a molecule made from pyruvate, which becomes ethanol. The NAD⁺ released keeps glycolysis going.",
+        "options": [
+          "Fermentation's job is to recycle NAD⁺, not to make extra ATP.",
+          "Fermentation makes no ATP beyond glycolysis's 2.",
+          "Fermentation does not use the electron transport chain at all.",
+          "The flask with O₂ made almost no ethanol (0.02 mmol), so ethanol is not made regardless."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-14",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s3",
+      "q": "In the flask with O₂, the yeast released 2.70 mmol CO₂ from 0.45 mmol glucose. What does this ratio show?",
+      "options": [
+        "About 6 CO₂ per glucose: all six carbons were oxidized, as in aerobic respiration.",
+        "About 2 CO₂ per glucose, so the yeast fermented glucose to ethanol even when O₂ was present.",
+        "About 0.17 CO₂ per glucose, so most of the glucose's carbon was kept as ethanol.",
+        "About 6 CO₂ per glucose, which shows the CO₂ came from the O₂ that was bubbled into the flask."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "2.70 ÷ 0.45 = 6.0: all six carbons of each glucose left as CO₂, the result of glycolysis, pyruvate oxidation and the Krebs cycle.",
+        "options": [
+          "Six CO₂ per glucose is complete oxidation of all six carbons.",
+          "The ratio is 6, not 2, and almost no ethanol was made.",
+          "This divides glucose by CO₂ instead of CO₂ by glucose.",
+          "The carbon in CO₂ comes from glucose; O₂ accepts electrons and becomes water."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-15",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s4",
+      "q": "Which claim is best supported by the data?",
+      "options": [
+        "UCP1 is needed for brown fat to produce enough heat to keep a mouse warm in the cold.",
+        "UCP1 is needed for brown-fat mitochondria to make ATP, which the mice burn to stay warm.",
+        "Mice lacking UCP1 have no brown fat, so their mitochondria use less O₂ in each tissue of the body.",
+        "Mice lacking UCP1 keep their body temperature as well as normal mice by shivering instead."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without UCP1, brown-fat mitochondria made 28% of the normal heat, and the mice cooled to 31.0 °C against 36.4 °C; the error bars do not come close.",
+        "options": [
+          "Lower heat output and lower body temperature both point to UCP1's role in heat production.",
+          "UCP1 lets H⁺ bypass ATP synthase, so it reduces ATP made per O₂; its job is heat.",
+          "Brown-fat mitochondria were isolated from both groups, so these mice do have brown fat; other tissues were not measured.",
+          "Their body temperature was 5.4 °C lower, so they did not keep it as well."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-16",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-respiration-s4",
+      "q": "Normal brown-fat mitochondria used O₂ rapidly even with no ADP added. Which explanation fits?",
+      "options": [
+        "H⁺ leaks back into the matrix through UCP1, so the gradient stays low and the chain keeps going.",
+        "UCP1 makes ATP from AMP instead of ADP, so the mitochondria do not need any ADP added to run.",
+        "UCP1 carries electrons straight to O₂, so the electron transport chain in brown fat is bypassed.",
+        "Brown-fat mitochondria store large amounts of ADP, so adding more ADP had no effect on their use of O₂."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without ADP, ATP synthase cannot run and the gradient would normally build and slow the chain. UCP1 gives H⁺ another way back, so the chain keeps running and its energy is released as heat.",
+        "options": [
+          "An H⁺ leak frees the chain from waiting on ATP synthesis.",
+          "UCP1 is a channel for H⁺; it makes no ATP.",
+          "UCP1 moves H⁺, not electrons; the chain still passes electrons to O₂.",
+          "Mice lacking UCP1 used far less O₂ under the same conditions, which points to UCP1, not stored ADP."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-17",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cellular-respiration-s4",
+      "q": "Compared with muscle mitochondria, how much ATP would you expect normal brown-fat mitochondria to make for each O₂ molecule they use?",
+      "options": [
+        "Less, because many H⁺ return through UCP1 instead of ATP synthase.",
+        "More, because they use O₂ faster, and faster O₂ use means more ATP.",
+        "The same, because each mitochondrion makes a fixed amount of ATP per O₂.",
+        "More, because their extra heat speeds up ATP synthase."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each H⁺ that leaks through UCP1 is an H⁺ that does not turn ATP synthase. More O₂ is used per ATP, and the difference is released as heat.",
+        "options": [
+          "Uncoupling lowers ATP made per O₂ used.",
+          "Fast O₂ use here is driven by the leak, not by ATP synthesis.",
+          "The ratio depends on how much H⁺ goes through ATP synthase, which UCP1 reduces.",
+          "Heat comes from the leak; it does not make ATP synthase produce more ATP."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-26",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-respiration-s4",
+      "q": "Why were the isolated brown-fat mitochondria given fuel but no ADP when their O₂ use was measured?",
+      "options": [
+        "With ATP synthase idle, any O₂ use reflects H⁺ returning by another route, such as UCP1.",
+        "ADP would have reacted with the fuel and used it up before the mitochondria could take any in.",
+        "Without ADP the mitochondria make extra ATP, which makes the difference between the two groups larger.",
+        "ADP is toxic to isolated mitochondria from mice that lack UCP1, so it had to be left out of both groups."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without ADP, ATP synthase cannot make ATP, so H⁺ cannot return through it. Normally the gradient would then stall the chain. Fast O₂ use in that condition shows a leak; comparing the two groups ties the leak to UCP1.",
+        "options": [
+          "Removing ADP takes ATP synthase out of the picture, isolating the leak.",
+          "ADP does not react with the fuel; it is a substrate of ATP synthase.",
+          "ATP synthase needs ADP; without it, no ATP is made.",
+          "Nothing suggests ADP is toxic; it is a normal substrate in every mitochondrion."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-18",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Where in a eukaryotic cell does the Krebs cycle take place?",
+      "options": [
+        "In the mitochondrial matrix",
+        "In the cytosol",
+        "In the inner mitochondrial membrane",
+        "In the intermembrane space"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The Krebs cycle's enzymes are dissolved in the matrix, inside the inner membrane, as are those of pyruvate oxidation.",
+        "options": [
+          "The matrix holds the Krebs cycle enzymes.",
+          "Glycolysis happens in the cytosol.",
+          "The electron transport chain and ATP synthase are in the inner membrane.",
+          "The intermembrane space is where H⁺ accumulates."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-19",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A rat is fed glucose in which every carbon atom is radioactive, and it breathes normal air. Where will most of the radioactive carbon appear first outside the body?",
+      "options": [
+        "In the CO₂ the rat breathes out",
+        "In the water the rat breathes out",
+        "In the O₂ the rat breathes out",
+        "In the urea in the rat's urine"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The carbons of glucose leave as CO₂ in pyruvate oxidation and the Krebs cycle, and the CO₂ is breathed out.",
+        "options": [
+          "Glucose's carbons become CO₂, which is exhaled.",
+          "Water forms from O₂, electrons and H⁺; it contains no carbon.",
+          "O₂ contains no carbon, and the rat takes it in rather than giving it out.",
+          "Urea carries nitrogen from amino acids; glucose has no nitrogen."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-20",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a human muscle cell, select the two stages that release CO₂.",
+      "options": [
+        "Pyruvate oxidation",
+        "Krebs cycle",
+        "Glycolysis",
+        "Electron transport chain",
+        "Lactic acid fermentation"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "fixed": true,
+      "why": {
+        "correct": "Each pyruvate loses one carbon as CO₂ in pyruvate oxidation, and the Krebs cycle releases the remaining two per acetyl CoA: 6 CO₂ per glucose in all.",
+        "options": [
+          "One CO₂ per pyruvate, 2 per glucose.",
+          "Two CO₂ per acetyl CoA, 4 per glucose.",
+          "Glycolysis splits a six-carbon sugar into two three-carbon pyruvates; no carbon is lost.",
+          "The chain moves electrons and H⁺; it releases no carbon.",
+          "Lactic acid fermentation turns pyruvate into lactate, keeping all three carbons; alcohol fermentation in yeast does release CO₂."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-21",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the statement that is true of fermentation in human muscle cells.",
+      "options": [
+        "It regenerates NAD⁺ by passing electrons from NADH to pyruvate.",
+        "It makes about 30 ATP per glucose when O₂ runs low.",
+        "It uses the electron transport chain with lactate as the final electron acceptor.",
+        "It takes place in the mitochondrial matrix.",
+        "It releases CO₂ from each pyruvate."
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Muscle fermentation turns pyruvate into lactate using NADH's electrons, freeing NAD⁺ so glycolysis can continue. It happens in the cytosol and makes no extra ATP.",
+        "options": [
+          "Regenerating NAD⁺ is the whole point of fermentation.",
+          "Fermentation gives only glycolysis's 2 ATP per glucose.",
+          "Fermentation does not use the electron transport chain.",
+          "Fermentation happens in the cytosol, next to glycolysis.",
+          "Lactate keeps all three carbons of pyruvate; no CO₂ is released."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-22",
+      "type": "predict",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "Cyanide is added to cultured human cells, blocking the last protein of the electron transport chain. Predict the change in each variable over the next few minutes.",
+      "variables": [
+        {
+          "name": "O₂ used by the cells",
+          "answer": "down",
+          "why": "Electrons can no longer be passed to O₂, so O₂ is not reduced to water."
+        },
+        {
+          "name": "H⁺ concentration in the intermembrane space",
+          "answer": "down",
+          "why": "With electrons stuck, the chain stops pumping H⁺, while H⁺ keeps flowing back through ATP synthase, so the gradient runs down."
+        },
+        {
+          "name": "ATP made by oxidative phosphorylation",
+          "answer": "down",
+          "why": "ATP synthase needs the H⁺ gradient, which is fading."
+        },
+        {
+          "name": "Lactate made by the cells",
+          "answer": "up",
+          "why": "NADH can no longer unload at the chain, so cells turn to fermentation to regenerate NAD⁺ for glycolysis, making lactate."
+        },
+        {
+          "name": "Number of mitochondria in each cell",
+          "answer": "none",
+          "why": "Cyanide blocks a protein; it does not destroy mitochondria or make new ones within minutes."
+        }
+      ],
+      "why": {
+        "correct": "Blocking the final transfer to O₂ stops the chain, the gradient and most ATP synthesis; cells fall back on glycolysis and fermentation."
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-23",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A gram of fat yields more than twice as much ATP as a gram of glucose when oxidized. Which explanation is best?",
+      "options": [
+        "Fatty acids have far more hydrogen and less oxygen per carbon, so they supply more electrons to the chain.",
+        "Fats are broken down by glycolysis twice, because each fat molecule contains two glucose units joined by an ester bond.",
+        "Fats are oxidized in the cytosol, where ATP synthase works faster than it does inside the mitochondria.",
+        "Fats skip the electron transport chain and make their ATP by substrate-level phosphorylation instead."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Fatty acids are long chains of –CH₂– groups: highly reduced, with lots of electron-rich hydrogen. Cut into acetyl CoA, they load many NADH and FADH₂, which drive more oxidative phosphorylation.",
+        "options": [
+          "More electrons per gram means more NADH and FADH₂, so more ATP.",
+          "Fats are made of glycerol and fatty acids, not glucose.",
+          "Fatty acids are broken down in the mitochondria, and ATP synthase sits in the inner membrane.",
+          "Most ATP from fat comes from the electron transport chain and ATP synthase."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-24",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Which comparison of chemiosmosis in chloroplasts and in mitochondria is correct?",
+      "options": [
+        "Chloroplasts pump H⁺ into the thylakoid space and make ATP in the stroma; mitochondria pump into the intermembrane space and make ATP in the matrix.",
+        "In both, H⁺ is pumped into the same compartment where ATP is made, and then flows back out through ATP synthase.",
+        "In chloroplasts the electrons come from glucose; in mitochondria they come from splitting water.",
+        "In chloroplasts O₂ is the final electron acceptor; in mitochondria NADP⁺ is the final electron acceptor."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both pump H⁺ into a compartment separate from where ATP is made (thylakoid space, intermembrane space), and ATP synthase makes ATP as H⁺ flows back into the stroma or matrix.",
+        "options": [
+          "The two systems mirror each other; the H⁺ store and the ATP-making side are on opposite sides of the membrane.",
+          "H⁺ is pumped away from the ATP-making side and flows back to it through ATP synthase.",
+          "This reverses the electron sources: water in chloroplasts, food molecules in mitochondria.",
+          "This reverses the acceptors: NADP⁺ in chloroplasts, O₂ in mitochondria."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-respiration-25",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-respiration",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a cell that cannot ferment, removing O₂ soon stops glycolysis too, although glycolysis itself uses no O₂. Why?",
+      "options": [
+        "With the chain stopped, NADH has nowhere to unload and NAD⁺ runs out, so glycolysis stalls.",
+        "Glycolysis needs the ATP made by the chain as its starting energy, and the chain makes no ATP when O₂ is missing.",
+        "Without O₂ the cytosol becomes too acidic for the enzymes of glycolysis, which denature within seconds.",
+        "Pyruvate turns into O₂ when O₂ is absent, and this O₂ blocks the first enzyme of glycolysis by feedback."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glycolysis needs a steady supply of NAD⁺. Without O₂ to accept electrons, NADH piles up and NAD⁺ is used up; with no fermentation to recycle it, glycolysis stops.",
+        "options": [
+          "The NAD⁺ supply links glycolysis to O₂ indirectly.",
+          "Glycolysis does use 2 ATP to start, but it makes 4, so it does not depend on the chain for ATP.",
+          "Nothing suggests a fast pH crash; the immediate problem is the missing NAD⁺.",
+          "Pyruvate cannot turn into O₂; this is not a real reaction."
+        ]
+      }
+    }
+  ]
+}

@@ -131,6 +131,29 @@ person decides; lessons follow the "meanwhile" line.
 - **aquaporin-gases** (open, 2.4, low priority). Some aquaporins (e.g. AQP1) have been reported to
   pass CO₂, a claim still disputed. `bio-membrane-permeability-18` keys CO₂ crossing as "no
   change" when aquaporins are blocked. Meanwhile: as keyed (most CO₂ crosses the bilayer).
+Raised while writing Unit 3 (2026-10-03, branch `claude/apbio-u3`):
+
+- **induced-fit-models** (open). Biochemistry now often describes binding as conformational
+  selection (the enzyme already samples the closed shape) as well as induced fit. The exam and
+  OpenStax 6.5 use induced fit refining lock-and-key. Meanwhile: induced fit only
+  (`enzyme-structure`).
+- **optimum-depends-on-assay** (open). A measured optimal temperature depends on how long the
+  assay runs, because denaturation takes time. The course mentions this in a going-further box
+  and in one data item (`bio-enzyme-environment-24`); exam items treat the optimum as a fixed
+  property. Meanwhile: questions give the data and never ask for a "true" optimum.
+- **atp-turnover** (open). "About 50 g of ATP in the body, about 50 kg (roughly body mass)
+  hydrolyzed per day" is a widely quoted order-of-magnitude estimate; published figures vary.
+  Used in the 3.4 hook, notes and `bio-cellular-energy-18` (which asks only for the ratio).
+- **calvin-dark** (open). "Light-independent reactions" is kept as an alias of the Calvin cycle,
+  and the course stresses that it stops in the dark (several Calvin enzymes are also
+  light-activated, which the course does not teach). "Dark reactions" is not used.
+- **oxygenic-origin-date** (open). The notes say oxygenic photosynthesis arose in cyanobacteria
+  "more than 2.4 billion years ago" (the Great Oxidation Event); when it first evolved is
+  debated (estimates run to 3 billion years or more). No question asks for a date.
+- **dcmu-water-splitting** (open). `bio-photosynthesis-8` keys "O₂ release stops" when DCMU
+  blocks electrons leaving photosystem II. Strictly, PSII can turn over a few times before
+  water oxidation halts; over minutes the statement holds. A reviewer should confirm the
+  wording.
 
 ## Map content to confirm
 

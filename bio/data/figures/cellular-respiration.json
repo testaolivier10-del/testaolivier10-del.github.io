@@ -1,0 +1,12 @@
+{
+  "respiration-stages": {
+    "file": "figures/respiration-stages.svg", "ext": "svg", "w": 780, "h": 420,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Glucose is split by glycolysis in the cytosol into 2 pyruvate, with a net 2 ATP and 2 NADH. Inside the mitochondrion's matrix, pyruvate oxidation gives 2 carbon dioxide, 2 NADH and 2 acetyl CoA, and the Krebs cycle gives 4 carbon dioxide, 2 ATP, 6 NADH and 2 FADH2. NADH and FADH2 carry electrons to the electron transport chain and ATP synthase in the inner membrane, where oxygen becomes water and about 26 to 28 ATP are made. Total: about 30 to 32 ATP per glucose."
+  },
+  "mito-electron-transport": {
+    "file": "figures/mito-electron-transport.svg", "ext": "svg", "w": 780, "h": 430,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A strip of inner mitochondrial membrane, intermembrane space above and matrix below. NADH gives electrons to protein complex I and FADH2 to complex II. Electrons pass to complexes III and IV; complexes I, III and IV each pump hydrogen ions up into the intermembrane space. At complex IV, oxygen accepts the electrons and hydrogen ions and becomes water. Hydrogen ions flow back down into the matrix through ATP synthase, which makes ATP from ADP and phosphate."
+  }
+}

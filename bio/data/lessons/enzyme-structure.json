@@ -1,0 +1,75 @@
+{
+  "topic": "enzyme-structure",
+  "hook": "<p>A glass of milk holds a sugar called lactose. Most adults on Earth digest it poorly, yet they digest the sugar in table sugar and bread without trouble. The difference is one protein in the small intestine, lactase. It breaks lactose apart and ignores sucrose and maltose, even though all three are two-sugar molecules of almost the same size. How can a protein tell molecules apart that well? The answer is its shape.</p>",
+  "prereq": [
+    {
+      "q": "What mainly holds a folded protein in its three-dimensional (tertiary) shape?",
+      "options": [
+        "Interactions between the side chains of its amino acids, such as hydrogen bonds, ionic attractions and nonpolar clustering",
+        "Peptide bonds between the side chains of amino acids that sit next to each other in the chain",
+        "Phosphate groups that link one amino acid to the next along the backbone of the chain"
+      ],
+      "correct": 0,
+      "why": "Peptide bonds join amino acids into a chain (primary structure). The 3-D folding comes from side chains attracting or repelling each other: polar with polar, charged with opposite charges, nonpolar ones clustering away from water.",
+      "review": "proteins"
+    },
+    {
+      "q": "A protein is heated to 80 °C. It unfolds, but its chain of amino acids is still connected in the same order. What has happened?",
+      "options": [
+        "It has been hydrolyzed into separate amino acids",
+        "It has been denatured: its shape changed but its sequence did not",
+        "It has gained new amino acids from the solution around it"
+      ],
+      "correct": 1,
+      "why": "Denaturation breaks the weak interactions that hold the shape; the peptide bonds of the chain stay intact. Hydrolysis would break the chain itself.",
+      "review": "proteins"
+    },
+    {
+      "q": "Enzymes speed up hydrolysis. In a hydrolysis reaction, what happens?",
+      "options": [
+        "Two monomers are joined and a water molecule is released",
+        "A polymer is built by adding monomers one at a time without water",
+        "A bond between monomers is broken by adding a water molecule"
+      ],
+      "correct": 2,
+      "why": "Hydro (water) + lysis (splitting): water is added across a bond, splitting a polymer or a dimer into smaller pieces. Joining monomers and releasing water is dehydration synthesis.",
+      "review": "macromolecules-intro"
+    }
+  ],
+  "figure": {
+    "figure": "enzyme-active-site",
+    "caption": "The substrate fits the active site in both shape and charge. As it binds, the enzyme's shape shifts slightly to grip it (induced fit). The products leave and the enzyme, unchanged, can bind another substrate."
+  },
+  "chain": [
+    { "cause": "An enzyme's chain of amino acids folds as its side chains attract and repel each other.", "effect": "The folded protein has a pocket or groove on its surface, the active site, lined by a particular set of side chains." },
+    { "cause": "The side chains lining the active site give it a specific shape and a specific pattern of charged, polar and nonpolar spots.", "effect": "A molecule binds well only if its shape and charges are complementary to that pattern. That molecule is the enzyme's substrate, and the match is called enzyme specificity." },
+    { "cause": "The substrate settles into the active site, held by weak attractions such as hydrogen bonds and ionic attractions.", "effect": "An enzyme-substrate complex forms, and the active site shifts slightly to grip the substrate more tightly: induced fit." },
+    { "cause": "The tight grip holds particular bonds of the substrate close to particular side chains of the enzyme.", "effect": "Those bonds break or form, the substrate becomes product, and the product no longer fits as well, so it is released." },
+    { "cause": "The enzyme comes out of the reaction with the same shape it started with.", "effect": "Its active site is free to bind another substrate molecule, over and over: the enzyme is a catalyst." },
+    { "cause": "Anything that changes the folding, such as high heat, an extreme pH or a swapped amino acid in the active site, changes the active site's shape or charges.", "effect": "The substrate no longer fits or is no longer attracted, so little or no product is made." }
+  ],
+  "ideas": [
+    "An enzyme is a <b>catalyst</b>: it speeds up a reaction and comes out unchanged. Almost all enzymes are proteins; a few are RNA molecules.",
+    "The <b>active site</b> is a small part of a large protein, but the whole protein's folding creates it. A change far from the active site can still matter if it changes how the protein folds.",
+    "<b>Specificity</b> needs two matches: shape (the substrate fits) and chemistry (charges and polarity attract rather than repel). Data that change one but not the other let you tell them apart.",
+    "<b>Induced fit</b>: the active site is flexible. Binding the right substrate changes the enzyme's shape slightly; the old lock-and-key picture treated it as rigid."
+  ],
+  "misconception": {
+    "wrong": "An enzyme acts on its substrate because the substrate is the right size, so any molecule of the same size will be acted on.",
+    "right": "Size is not enough. The substrate must match the active site's shape in detail and its pattern of charges and polar groups. Lactose and maltose are the same size, but lactase acts only on lactose."
+  },
+  "check": [
+    "bio-enzyme-structure-6",
+    "bio-enzyme-structure-7",
+    "bio-enzyme-structure-8",
+    "bio-enzyme-structure-9",
+    "bio-enzyme-structure-15",
+    "bio-enzyme-structure-17",
+    "bio-enzyme-structure-22"
+  ],
+  "summary": "<p>Enzymes are biological catalysts, almost all of them proteins. Folding gives each enzyme an active site whose shape and pattern of charged, polar and nonpolar side chains match one substrate, or a few similar ones: that is specificity. The substrate binds by weak attractions to form the enzyme-substrate complex, and the active site shifts to grip it (induced fit). The products are released and the unchanged enzyme can act again. Anything that changes the active site's shape or charges, from heat to a single swapped amino acid, changes what the enzyme can bind.</p>",
+  "connections": [
+    { "href": "../notes/enzyme-catalysis.html", "label": "Next: how enzymes speed up reactions (3.2)" },
+    { "href": "../notes/enzyme-environment.html", "label": "How temperature, pH and other molecules change enzymes (3.3)" }
+  ]
+}

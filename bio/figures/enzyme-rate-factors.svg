@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" role="img" aria-labelledby="t d">
+<title id="t">How temperature, pH and substrate concentration change the rate of an enzyme reaction</title>
+<desc id="d">Three graphs of reaction rate. Temperature: the rate rises with temperature to a peak near 37 degrees Celsius for a human enzyme, then falls steeply as the enzyme denatures. pH: pepsin, a stomach enzyme, peaks near pH 2 and trypsin, an intestinal enzyme, near pH 8. Substrate concentration: with no inhibitor the rate rises and levels off at a maximum; with a competitive inhibitor it rises more slowly but approaches the same maximum at high substrate; with a noncompetitive inhibitor it levels off at a lower maximum.</desc>
+<rect width="760" height="330" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28" font-size="14">
+  <!-- A temperature -->
+  <g transform="translate(30,20)">
+    <text x="110" y="14" font-size="16" font-weight="700" text-anchor="middle">A. Temperature</text>
+    <path d="M30,240 L30,30 M30,240 L220,240" stroke="#1F2A28" stroke-width="2" fill="none"/>
+    <path d="M32,228 C80,215 110,170 135,80 C142,60 150,58 156,80 C165,120 172,200 182,236" fill="none" stroke="#0072B2" stroke-width="3.5"/>
+    <line x1="147" y1="62" x2="147" y2="240" stroke="#5D6B69" stroke-dasharray="4 4"/>
+    <text x="147" y="256" text-anchor="middle">37 °C</text>
+    <text x="70" y="140" text-anchor="middle">faster</text>
+    <text x="70" y="156" text-anchor="middle">collisions</text>
+    <text x="200" y="110" text-anchor="middle">enzyme</text>
+    <text x="200" y="126" text-anchor="middle">denatures</text>
+    <text x="125" y="282" text-anchor="middle">Temperature (°C) →</text>
+    <text transform="translate(16,135) rotate(-90)" text-anchor="middle">Reaction rate →</text>
+  </g>
+  <!-- B pH -->
+  <g transform="translate(270,20)">
+    <text x="110" y="14" font-size="16" font-weight="700" text-anchor="middle">B. pH</text>
+    <path d="M30,240 L30,30 M30,240 L220,240" stroke="#1F2A28" stroke-width="2" fill="none"/>
+    <path d="M32,236 C43,236 48,70 62,70 C76,70 82,236 98,238" fill="none" stroke="#D55E00" stroke-width="3.5"/>
+    <path d="M107,238 C127,238 137,60 157,60 C177,60 187,238 207,238" fill="none" stroke="#009E73" stroke-width="3.5"/>
+    <text x="62" y="58" text-anchor="middle" fill="#8E3B2E">pepsin</text>
+    <text x="157" y="48" text-anchor="middle" fill="#006B4F">trypsin</text>
+    <g text-anchor="middle"><text x="46" y="256">1</text><text x="62" y="256">2</text><text x="109" y="256">5</text><text x="157" y="256">8</text><text x="204" y="256">11</text></g>
+    <text x="125" y="282" text-anchor="middle">pH →</text>
+    <text transform="translate(16,135) rotate(-90)" text-anchor="middle">Reaction rate →</text>
+  </g>
+  <!-- C substrate -->
+  <g transform="translate(510,20)">
+    <text x="110" y="14" font-size="16" font-weight="700" text-anchor="middle">C. Substrate, inhibitors</text>
+    <path d="M30,240 L30,30 M30,240 L220,240" stroke="#1F2A28" stroke-width="2" fill="none"/>
+    <path d="M30,240 C45,120 80,72 220,64" fill="none" stroke="#0072B2" stroke-width="3.5"/>
+    <path d="M30,240 C70,170 120,100 220,78" fill="none" stroke="#CC79A7" stroke-width="3.5" stroke-dasharray="9 5"/>
+    <path d="M30,240 C45,175 80,150 220,146" fill="none" stroke="#E69F00" stroke-width="3.5"/>
+    <text x="125" y="282" text-anchor="middle">Substrate concentration →</text>
+    <text x="218" y="52" text-anchor="end" fill="#005A8C">no inhibitor</text>
+    <text x="218" y="114" text-anchor="end" fill="#8C3F6B">competitive</text>
+    <text x="218" y="172" text-anchor="end" fill="#8A5A00">noncompetitive</text>
+    <text transform="translate(16,135) rotate(-90)" text-anchor="middle">Reaction rate →</text>
+  </g>
+</g>
+</svg>

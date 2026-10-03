@@ -1,0 +1,75 @@
+{
+  "topic": "photosynthesis",
+  "hook": "<p>A tree that weighs two tonnes grew from a seed lighter than a paperclip. Where did all that mass come from? Not mainly from the soil. Most of it came out of the air, as carbon dioxide, built into sugar using the energy of sunlight. And the oxygen you just breathed in was split out of water molecules inside a leaf. This page follows the energy from sunlight to sugar, one step at a time.</p>",
+  "prereq": [
+    {
+      "q": "Inside a chloroplast, which space surrounds the stacks of thylakoids?",
+      "options": [
+        "The stroma",
+        "The thylakoid space",
+        "The cytosol"
+      ],
+      "correct": 0,
+      "why": "The stroma is the fluid inside the chloroplast's inner membrane, around the thylakoids. The thylakoid space is inside each thylakoid; the cytosol is outside the chloroplast.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "In a redox reaction, the molecule that gains electrons is",
+      "options": [
+        "oxidized",
+        "reduced",
+        "hydrolyzed"
+      ],
+      "correct": 1,
+      "why": "Gaining electrons is reduction; losing them is oxidation. Photosynthesis reduces carbon dioxide to sugar and oxidizes water to oxygen.",
+      "review": "cellular-energy"
+    },
+    {
+      "q": "Hydrogen ions are much more concentrated on one side of a membrane than the other. If a channel protein opens, the ions will",
+      "options": [
+        "stay where they are, because ions cannot cross membranes",
+        "move toward the side where they are more concentrated",
+        "flow to the side where they are less concentrated, releasing energy that can do work"
+      ],
+      "correct": 2,
+      "why": "Ions move down their electrochemical gradient through a channel. A gradient is stored energy; chloroplasts use exactly this to make ATP.",
+      "review": "facilitated-diffusion"
+    }
+  ],
+  "figure": {
+    "figure": "thylakoid-light-reactions",
+    "caption": "The light reactions. Light energizes electrons at photosystem II, which replaces them by splitting water. The electrons flow through an electron transport chain that pumps H⁺ into the thylakoid space, then through photosystem I to make NADPH. H⁺ flowing back through ATP synthase makes ATP."
+  },
+  "chain": [
+    { "cause": "Pigments in the thylakoid membrane absorb light, mostly blue and red, and pass the energy to the reaction center of photosystem II.", "effect": "An electron in a special chlorophyll a is raised to high energy and handed to an acceptor molecule." },
+    { "cause": "Photosystem II has lost an electron and pulls strongly on electrons.", "effect": "It takes replacement electrons from water, splitting it: 2 H₂O → 4 H⁺ + 4 e⁻ + O₂. The O₂ is released and the H⁺ stay in the thylakoid space." },
+    { "cause": "The excited electrons pass along an electron transport chain, releasing energy at each step.", "effect": "The cytochrome complex uses that energy to pump H⁺ from the stroma into the thylakoid space, building a proton gradient." },
+    { "cause": "At photosystem I, light energizes the electrons again.", "effect": "They are passed to NADP⁺, which is reduced to NADPH in the stroma." },
+    { "cause": "H⁺ crowded in the thylakoid space can leave only through ATP synthase.", "effect": "Their flow turns ATP synthase, which joins ADP and Pi into ATP in the stroma (chemiosmosis)." },
+    { "cause": "In the stroma, the Calvin cycle attaches CO₂ to an organic molecule (carbon fixation) and spends ATP and NADPH.", "effect": "CO₂ is reduced to sugar, and ADP, Pi and NADP⁺ go back to the light reactions to be recharged." }
+  ],
+  "ideas": [
+    "Overall: 6 CO₂ + 6 H₂O + light energy → C₆H₁₂O₆ + 6 O₂. The <b>O₂ comes from water</b>; the carbon in sugar comes from CO₂.",
+    "Two stages, two places: the <b>light reactions</b> in the thylakoid membranes make ATP, NADPH and O₂; the <b>Calvin cycle</b> in the stroma uses ATP and NADPH to fix CO₂. Each needs the other's products.",
+    "Pigments absorb some wavelengths: chlorophylls absorb blue and red and reflect green. An <b>action spectrum</b> that is high where accessory pigments absorb shows they pass energy on.",
+    "Photosynthesis that releases O₂ first arose in <b>cyanobacteria</b>. Chloroplasts descend from cyanobacteria taken in by an ancestral eukaryote, and their oxygen built up the atmosphere."
+  ],
+  "misconception": {
+    "wrong": "The oxygen a plant releases comes from the carbon dioxide it takes in: the plant removes the carbon and lets the oxygen go.",
+    "right": "The O₂ comes from splitting water at photosystem II. Experiments with water labeled with heavy oxygen (¹⁸O) give labeled O₂; labeling the CO₂ instead puts the heavy oxygen into sugar, not into the O₂."
+  },
+  "check": [
+    "bio-photosynthesis-6",
+    "bio-photosynthesis-7",
+    "bio-photosynthesis-8",
+    "bio-photosynthesis-9",
+    "bio-photosynthesis-22",
+    "bio-photosynthesis-24",
+    "bio-photosynthesis-25"
+  ],
+  "summary": "<p>Photosynthesis stores light energy in sugar. In the thylakoid membranes, pigments in photosystems II and I absorb light and energize electrons. Photosystem II replaces its electrons by splitting water, releasing O₂. The electrons flow down an electron transport chain that pumps H⁺ into the thylakoid space, then end up in NADPH. The H⁺ gradient drives ATP synthase to make ATP. In the stroma, the Calvin cycle uses that ATP and NADPH to fix CO₂ into sugar. This process began in cyanobacteria, the ancestors of chloroplasts, and filled the atmosphere with oxygen.</p>",
+  "connections": [
+    { "href": "../notes/cellular-energy.html", "label": "Back: ATP, coupling and redox (3.4)" },
+    { "href": "../notes/cellular-respiration.html", "label": "Next: breaking sugar down to make ATP (3.6)" }
+  ]
+}
