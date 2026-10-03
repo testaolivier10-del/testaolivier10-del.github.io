@@ -27,16 +27,41 @@ import { sendPassEndingEmail } from './email.js';
 /* Must match `passes[].id` in assets/premium.js (scripts/test checks it), and
    sell every paid course in assets/courses.js (scripts/check-courses.mjs).
    `days` is what one purchase adds. Semester is five months, so a pass bought
-   in late August covers finals in January. */
+   in late August covers finals in January.
+
+   `until` instead makes a fixed-date pass: it runs to that moment whenever it
+   is bought (never shorter; premium_add_pass's p_until), and is off sale after
+   it. AP® Biology's ends with June 30, 2027 in Hawaii, the last US time zone
+   to finish the day the site promises. Pass ids may reach a URL, so none
+   carries the token "ap" (docs/apbio-spec.md decision 2). */
 export const PASSES = {
   'nremt-90':       { course: 'nremt', days: 90 },
   'ochem-semester': { course: 'ochem', days: 150 },
   'ochem-year':     { course: 'ochem', days: 365 },
   'anp-semester':   { course: 'anp',   days: 150 },
   'anp-year':       { course: 'anp',   days: 365 },
+  'bio-2027':       { course: 'apbio', until: '2027-06-30T23:59:59-10:00' },
 };
 
 const isPass = (id) => typeof id === 'string' && Object.prototype.hasOwnProperty.call(PASSES, id);
+
+/* A fixed-date pass is on sale until its end. */
+export function passOnSale(pass, now = Date.now()) {
+  return !pass.until || now < Date.parse(pass.until);
+}
+
+/* What premium_add_pass is given for a pass: a fixed-date pass sends its
+   end as p_until and one day as the floor (a purchase that only starts after
+   the date, behind another pass, still gets a day rather than nothing). */
+export function passTerms(pass) {
+  return pass.until ? { days: 1, until: new Date(Date.parse(pass.until)).toISOString() } : { days: pass.days, until: null };
+}
+
+/* The course as a URL may name it. A key with the token "ap" in it never
+   goes into a URL (docs/apbio-spec.md decision 2), so apbio travels as its
+   folder, "bio"; assets/premium.js returnCourse() reads either. */
+const URL_COURSE = { apbio: 'bio' };
+export const urlCourse = (course) => URL_COURSE[course] || course;
 
 const SITE = 'https://levlprep.com';
 const DAY_MS = 86400000;
@@ -67,7 +92,7 @@ export function successUrl(returnTo, course) {
   u.hash = '';
   u.searchParams.delete('checkout_id');
   u.searchParams.set('premium', 'success');
-  u.searchParams.set('course', course);
+  u.searchParams.set('course', urlCourse(course));
   return u.href + '&checkout_id={CHECKOUT_ID}';
 }
 
@@ -125,6 +150,7 @@ export async function premiumCheckout(request, env) {
   const passId = String(payload?.pass || '');
   const pass = isPass(passId) ? PASSES[passId] : null;
   if (!pass) return { status: 400, body: { error: 'Unknown pass' } };
+  if (!passOnSale(pass)) return { status: 410, body: { error: 'This pass is no longer on sale. Nothing was charged.' } };
 
   const products = productMap(env);
   const productId = Object.prototype.hasOwnProperty.call(products, passId) ? products[passId] : null;
@@ -545,11 +571,11 @@ export async function verifyWebhook(rawBody, headers, secret, nowSeconds = Math.
    reconcile racing on one order cannot stack two passes on the same days.
    It answers { inserted, starts_at, expires_at }; inserted is false for an
    order it already has. */
-async function addPass(env, { userId, course, pass, days, orderId = null, amountCents = null, orderCreatedAt = null, customerId = null, fundedBy = null }) {
+async function addPass(env, { userId, course, pass, days, until = null, orderId = null, amountCents = null, orderCreatedAt = null, customerId = null, fundedBy = null }) {
   const res = await sb(env, 'rpc/premium_add_pass', {
     method: 'POST',
     body: JSON.stringify({
-      p_user: userId, p_course: course, p_pass: pass, p_days: days,
+      p_user: userId, p_course: course, p_pass: pass, p_days: days, p_until: until,
       p_order_id: orderId, p_amount_cents: amountCents, p_order_created_at: orderCreatedAt,
       p_customer_id: customerId, p_funded_by: fundedBy,
     }),
@@ -587,7 +613,7 @@ async function recordPaid(env, order, now) {
   }
 
   const added = await addPass(env, {
-    userId, course: pass.course, pass: passId, days: pass.days,
+    userId, course: pass.course, pass: passId, ...passTerms(pass),
     orderId: order.id,
     amountCents: Number.isInteger(order.net_amount) ? order.net_amount : null,
     orderCreatedAt: isoOrNull(order.created_at),
@@ -659,7 +685,7 @@ export async function premiumWebhook(request, env, now = Date.now()) {
 /* For the email. Must match COURSES[].name in assets/premium.js (scripts/test
    checks it). */
 // Each paid course in assets/courses.js, by its productName (scripts/check-courses.mjs).
-export const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology' };
+export const COURSE_NAMES = { nremt: 'NREMT-EMT Prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'AP® Biology' };
 
 export const ENDING_NOTICE_DAYS = 3;
 

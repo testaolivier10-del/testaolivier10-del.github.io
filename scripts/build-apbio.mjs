@@ -654,10 +654,10 @@ ${bodyOpen(' data-app="teachers"')}
   <section class="xsection" aria-labelledby="h-assign">
     <h2 id="h-assign">How to assign it</h2>
     <ul class="bio-tc-list">
-      <li><b>Stable links.</b> Every lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com/bio/notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
+      <li><b>Stable links.</b> Each lesson, notes page, unit sheet and free-response question has a permanent address, such as <code>levlprep.com/bio/notes/&lt;topic&gt;.html</code>. Links do not expire and need no account.</li>
       <li><b>Question sets.</b> <code>practice.html?topic=&lt;topic&gt;</code> opens practice on one topic, <code>practice.html?unit=unit-1</code> on a whole unit. Students get feedback and an explanation for every option. The practice page can also print a set as a worksheet.</li>
       <li><b>Free-response questions.</b> Each has its own page with the prompt, the data and a printable answer sheet with lined space. Students write, then reveal the rubric and score themselves point by point. Nothing is graded by AI.</li>
-      <li><b>Printing.</b> Every lesson, notes page, unit sheet and free-response question has a Print button. A lesson prints all its parts in one run; a free-response question prints with lined answer space, and its rubric can print on a separate page.</li>
+      <li><b>Printing.</b> Each lesson, notes page, unit sheet and free-response question has a Print button. A lesson prints all its parts in one run; a free-response question prints with lined answer space, and its rubric can print on a separate page.</li>
       <li><b>Google Classroom.</b> The "Share to Google Classroom" button on each of those pages posts the link to your class.</li>
     </ul>
   </section>

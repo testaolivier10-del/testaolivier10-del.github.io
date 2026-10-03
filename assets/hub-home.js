@@ -14,6 +14,7 @@
       { key: 'nremt', name: 'NREMT-EMT', path: '/nremt/', status: 'live' },
       { key: 'ochem', name: 'Organic Chemistry', path: '/ochem/', status: 'live' },
       { key: 'anp', name: 'Anatomy & Physiology', path: '/anatomy-physiology/', status: 'beta' },
+      { key: 'apbio', name: 'AP® Biology', path: '/bio/', status: 'beta' },
     ];
     // courses:end
     var COURSES = COURSE_LIST.filter(function(c){ return c.status !== 'hidden'; }).map(function(c){

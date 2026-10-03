@@ -157,6 +157,7 @@ course until this date."
 | Ochem | Full year | **$49** | Most students take Orgo I and II |
 | A&P | Semester (150 days) | **$29** | Visible Body $34.99 / yr; Ninja Nerd $50 / 3 months; Kenhub $180 / yr |
 | A&P | Full year | **$49** | A&P I and II |
+| AP® Biology | Through June 30, 2027 (fixed date, `bio-2027`) | **$25** | One school year, ends after the May exam; owner brief 2026-10-03 (docs/apbio-spec.md decision 13) |
 
 All with a **founding-member code, 30% off, until 2027-01-31**. A 30-day
 ochem finals pass ($15) is an option for later. Polar's fee (5% + $0.50) is

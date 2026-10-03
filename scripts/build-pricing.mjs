@@ -18,12 +18,17 @@
    3. The bank counts in premium.js's Premium lists (lines marked
       `// count:<course>`).
    4. The four web app manifests' name, short_name and description.
-   5. The Organic Chemistry card on 404.html (between <!-- nf-ochem:start/end -->). */
+   5. The Organic Chemistry card on 404.html (between <!-- nf-ochem:start/end -->).
+   6. AP® Biology's hub and 404 cards (<!-- hub-bio:start/end -->,
+      <!-- nf-bio:start/end -->) and its pricing section, only once a unit is
+      published (OPEN in scripts/lib/courses.mjs; empty until then), and its
+      manifest, bio/manifest.json, which never carries the mark. */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
 import { CSP } from './lib/site-config.mjs';
-import { PAID } from './lib/courses.mjs';
+import { PAID, isOpen } from './lib/courses.mjs';
+import { DISCLAIMER } from './lib/apbio-build.mjs';
 
 const check = process.argv.includes('--check');
 const { COURSES, FOUNDING } = premiumData();
@@ -46,9 +51,13 @@ function between(src, start, end, inner, rel) {
 }
 
 // The paid courses in registry order (assets/courses.js); hidden ones are not
-// on sale yet, so not on the pricing page either.
+// on sale yet, so not on the pricing page either, and nor is a course that
+// publishes by chapter (AP® Biology) before its first chapter is out.
 const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
-const ORDER = PAID.filter((c) => c.status !== 'hidden').map((c) => c.key);
+const ORDER = PAID.filter((c) => isOpen(c)).map((c) => c.key);
+const BIO = ORDER.includes('apbio');
+// The College Board sentence, on every page that uses the mark (docs/apbio-spec.md).
+const TM_HTML = `<p class="tm-note">${esc(DISCLAIMER)}</p>`;
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
 /* The address terms.html and privacy.html publish. When hello@levlprep.com
    is set up (owner checklist), change it here and on those two pages. */
@@ -76,7 +85,8 @@ function courseSection(key) {
           </div>
           <ul class="pp-passes">${c.passes.map(passRow).join('')}</ul>
           <p class="pp-actions"><button type="button" class="btn-press sm" data-premium-open="${key}" data-premium-source="pricing-page">Get Premium for ${esc(c.name)}</button> <a href="${COURSE_URL[key]}">Start free</a></p>
-          ${c.guarantee ? `<p class="pp-guarantee" id="pass-or-extend">${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p>` : ''}
+          ${c.guarantee ? `<p class="pp-guarantee" id="pass-or-extend">${esc(guaranteeText())} <a href="terms.html#pass-or-extend">The full terms</a>.</p>` : ''}${c.passes.some((p) => p.until) ? `
+          <p>One pass, whenever you buy it: it lasts through ${esc(longDate(c.passes.find((p) => p.until).until))}, the end of the 2027 exam season.</p>` : ''}
         </section>`;
 }
 
@@ -180,9 +190,10 @@ ${ORDER.map(courseSection).join('\n')}
           <li><strong>One-time, never a subscription.</strong> Prices are in US dollars; sales tax or VAT is added at checkout and shown before you pay. Polar, our merchant of record, sells the pass and sends the receipt.</li>
           <li><strong>Buying needs a free account</strong>, so the pass follows you to every device. Everything free works without one.</li>
           <li><strong>Refunds:</strong> refund a pass yourself, in full, from your <a href="account.html">Account</a> page within 7 days of buying it. Once per account and email address.</li>
-          <li><strong>When a pass ends</strong>, your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.</li>
+          <li><strong>When a pass ends</strong>, your progress, XP and streaks stay; only the Premium parts lock again. Buying another pass adds its days after the current one.${ORDER.some((k) => COURSES[k].passes.some((p) => p.until)) ? ' A pass with an end date (AP® Biology) runs through that date <a href="terms.html#fixed-date">whenever it is bought</a>.' : ''}</li>
         </ul>
         <p>The details are in the <a href="terms.html#premium">terms</a>.</p>
+        <p><strong>Under 18?</strong> You need a parent or guardian&rsquo;s permission, and they accept the <a href="terms.html#premium">terms</a> for you; under 16, they should make the purchase.</p>
       </div>
     </div>
   </div>
@@ -190,7 +201,8 @@ ${ORDER.map(courseSection).join('\n')}
 </div>
 <div class="xshell narrow">
   <footer>
-    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+${BIO ? `    ${TM_HTML}
+` : ''}    <p class="privacy-link"><a href="privacy.html">Privacy</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="sources.html">Sources</a> &middot; <a href="changelog.html">What&rsquo;s new</a> &middot; <a href="premium.html">Premium</a> &middot; <a href="account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
 
@@ -242,14 +254,17 @@ function hubPricing() {
    data; both come from here, the prices from premium.js. The founding price
    is left out: it expires on a date, and the block above states it and hides
    it once it has. */
-const AFFILIATION = 'No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax or any university.';
-const passWords = (p) => (/^(semester|full year)/i.test(p.label) ? `a ${p.label[0].toLowerCase()}${p.label.slice(1)}` : `for ${p.label}`);
+const AFFILIATION = BIO
+  ? `No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax, the College Board or any university. ${DISCLAIMER}`
+  : 'No. LevlPrep is an independent study aid. It is not affiliated with or endorsed by the National Registry of Emergency Medical Technicians (NREMT), ATI, OpenStax or any university.';
+const passWords = (p) => (p.until ? `for a pass valid through ${longDate(p.until)}`
+  : /^(semester|full year)/i.test(p.label) ? `a ${p.label[0].toLowerCase()}${p.label.slice(1)}` : `for ${p.label}`);
 const passList = (k) => COURSES[k].passes.map((p) => `${money(p.price)} ${passWords(p)}`).join(' or ');
 const PRICE = `Premium is a one-time pass per course, with no subscription: ${ORDER.map((k) => `${COURSES[k].name}, ${passList(k)}`).join('; ')}. Prices are in US dollars.`;
 const FAQ = [
   ['Is LevlPrep free?', FREE_SENTENCE],
   ['How much does Premium cost?', PRICE],
-  ['Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
+  [BIO ? 'Is LevlPrep affiliated with the NREMT, ATI, OpenStax or the College Board?' : 'Is LevlPrep affiliated with the NREMT, ATI or OpenStax?', AFFILIATION],
 ];
 
 function hubFaq() {
@@ -297,11 +312,35 @@ function hubLd() {
   return `<script type="application/ld+json">\n${JSON.stringify(ld).replace(/<\//g, '<\\/')}\n</script>`;
 }
 
+/* AP® Biology's hub card, once a unit is out. What it says is counted from
+   what is published (scripts/build-apbio.mjs), never typed. */
+function hubBioCard() {
+  const topics = N.apbioTopics;
+  return `        <a class="featured-card" href="bio/">
+          <div class="featured-top">
+            <div class="featured-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12"/><path d="M8.5 7h7M8.5 17h7"/></svg></div>
+            <span class="status-badge">Beta</span>
+          </div>
+          <div>
+            <p class="featured-name">AP® Biology</p>
+            <p class="featured-desc">Built on the 2025 course framework, in its order: lessons from scratch, data-heavy practice like the real exam, and the statistics skills. ${fmt(topics)} topic${topics === 1 ? '' : 's'} published so far, more every few weeks.</p>
+          </div>
+          <div class="featured-tags">
+            <span>Beta</span>
+            <span>Free notes</span>
+            <span>Stimulus sets</span>
+            <span>Statistics skills</span>
+          </div>
+          <span class="featured-cta">Start learning &rarr;</span>
+        </a>`;
+}
+
 {
   const rel = 'index.html';
   let src = readFileSync(join(ROOT, rel), 'utf8');
   src = between(src, '<!-- pricing:start -->', '<!-- pricing:end -->', hubPricing(), rel);
   src = between(src, '<!-- faq:start -->', '<!-- faq:end -->', hubFaq(), rel);
+  src = between(src, '<!-- hub-bio:start -->', '<!-- hub-bio:end -->', BIO ? hubBioCard() : '', rel);
   const m = src.indexOf('<!-- levlprep-structured-data -->');
   if (m === -1) throw new Error('index.html: no <!-- levlprep-structured-data --> marker');
   const s0 = src.indexOf('<script type="application/ld+json">', m);
@@ -317,17 +356,29 @@ function hubLd() {
   const src = readFileSync(join(ROOT, rel), 'utf8');
   const out = src.replace(/(The full )[\d,]+(-question bank[^\n]*\/\/ count:)(nremt|ochem|anp)/g,
     (_, a, b, k) => `${a}${fmt(N[k])}${b}${k}`);
-  for (const k of ORDER) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
+  // AP® Biology states no count while its bank grows unit by unit.
+  for (const k of ORDER.filter((x) => x !== 'apbio')) if (!out.includes(`// count:${k}`)) throw new Error(`${rel}: no line marked // count:${k}`);
   put(rel, out);
 }
 
 /* ---- 4. manifests ------------------------------------------------------------ */
 
+/* Manifests never carry the AP® mark (docs/apbio-spec.md, "Trademark": no
+   "AP" in meta tags or ad copy, and an install name is both): AP® Biology's
+   app is "Biology". */
+const MANIFEST_NAMES = { nremt: 'NREMT-EMT exam prep', ochem: 'Organic Chemistry', anp: 'Anatomy & Physiology', apbio: 'Biology' };
+const listWords = (a) => (a.length < 2 ? a.join('') : `${a.slice(0, -1).join(', ')} and ${a[a.length - 1]}`);
+const NUMBER_WORDS = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'];
 const MANIFESTS = {
   'manifest.json': {
     name: 'LevlPrep — NREMT-EMT, Organic Chemistry and A&P study tools',
     short_name: 'LevlPrep',
-    description: `Three courses, one login: NREMT-EMT exam prep, Organic Chemistry and Anatomy & Physiology. ${FREE_SENTENCE} Works offline.`,
+    description: `${NUMBER_WORDS[ORDER.length] || ORDER.length} courses, one login: ${listWords(ORDER.map((k) => MANIFEST_NAMES[k]))}. ${FREE_SENTENCE} Works offline.`,
+  },
+  'bio/manifest.json': {
+    name: 'LevlPrep — Biology',
+    short_name: 'LevlPrep Bio',
+    description: `Biology on the 2025 course framework, in its order, for the May exam: every notes page is free forever and Units 1 and 2 are fully interactive, with every skills lesson; Premium adds unlimited practice, the FRQs, practice exams, every simulator and every lesson.`,
   },
   'nremt/manifest.json': {
     name: 'LevlPrep — NREMT-EMT Practice Exam & Study Tools',
@@ -366,7 +417,13 @@ for (const [rel, fields] of Object.entries(MANIFESTS)) {
       <h2>Organic Chemistry &rarr;</h2>
       <p>${N.ochemChapters} chapters and ${N.ochemTopics} topics, ${N.ochemMechanisms} mechanisms you perform yourself, and ${N.ochemTools} tools.</p>
     </a>`;
-  put(rel, between(src, '<!-- nf-ochem:start -->', '<!-- nf-ochem:end -->', card, rel));
+  let out = between(src, '<!-- nf-ochem:start -->', '<!-- nf-ochem:end -->', card, rel);
+  const bio = `    <a class="card nf-card" href="/bio/">
+      <h2>AP® Biology (Beta) &rarr;</h2>
+      <p>${fmt(N.apbioTopics)} topic${N.apbioTopics === 1 ? '' : 's'} so far, in the order of the 2025 course framework, with free notes for every one. ${esc(DISCLAIMER)}</p>
+    </a>`;
+  out = between(out, '<!-- nf-bio:start -->', '<!-- nf-bio:end -->', BIO ? bio : '', rel);
+  put(rel, out);
 }
 
 if (check) {

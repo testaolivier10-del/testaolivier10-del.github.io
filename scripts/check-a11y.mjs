@@ -33,7 +33,7 @@
    via `npx playwright install chromium`). CI does exactly that.
 */
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync } from 'node:fs';
 import { join, dirname, extname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -79,7 +79,37 @@ const PAGES = [
   ['/anatomy-physiology/notes/cardiac-cycle.html', 'an A&P notes page with SVG diagrams'],
   ['/anatomy-physiology/exams.html', 'the A&P exams app'],
   ['/anatomy-physiology/tools/predict.html', 'an A&P reasoning tool'],
+  // AP® Biology: its own generator and runtime too. The shells exist before
+  // anything is published; the lesson, notes page, unit sheet and tool join
+  // below once build-apbio.mjs has written them (bioPages()).
+  ['/bio/', 'the AP® Biology course home'],
+  ['/bio/glossary.html', 'the AP® Biology glossary'],
+  ['/bio/practice.html', 'the AP® Biology practice builder'],
+  ['/bio/exams.html', 'the AP® Biology exams app'],
+  ['/bio/frq.html', 'the AP® Biology free-response list'],
+  ...bioPages(),
 ];
+
+/* The first published AP® Biology topic's lesson and notes page, the first
+   unit sheet and the first tool page, when they exist: data-driven, so the
+   list never names a page before the generator has written it. */
+function bioPages() {
+  const out = [];
+  const idx = join(ROOT, 'bio', 'assets', 'notes-index.json');
+  const first = existsSync(idx) ? JSON.parse(readFileSync(idx, 'utf8'))[0] : null;
+  if (first) {
+    const id = String(first.file).replace(/^.*[/]notes[/]/, '').replace(/\.html$/, '');
+    out.push([`/bio/lessons/${id}.html`, 'an AP® Biology lesson with stimulus sets'], [`/bio/notes/${id}.html`, 'an AP® Biology notes page']);
+  }
+  const firstIn = (dir) => (existsSync(join(ROOT, 'bio', dir)) ? readdirSync(join(ROOT, 'bio', dir)).filter((f) => f.endsWith('.html')).sort()[0] : null);
+  const sheet = firstIn('unit-sheets');
+  if (sheet) out.push([`/bio/unit-sheets/${sheet}`, 'an AP® Biology unit sheet']);
+  const frq = firstIn('frq');
+  if (frq) out.push([`/bio/frq/${frq}`, 'an AP® Biology free-response question']);
+  const tool = firstIn('tools');
+  if (tool) out.push([`/bio/tools/${tool}`, 'an AP® Biology simulator or skills tool']);
+  return out;
+}
 
 /* Rules that fail the build regardless of how axe rates them, because this
    site has already decided they matter. Everything else fails only at serious

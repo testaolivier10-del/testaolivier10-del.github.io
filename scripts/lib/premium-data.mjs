@@ -103,10 +103,23 @@ export function counts() {
   const toolsSrc = readFileSync(join(ROOT, 'ochem', 'assets', 'tools-registry.js'), 'utf8');
   const ochemTools = (toolsSrc.match(/\bslug:\s*'/g) || []).length;
   const anpMap = read('docs/anp-dependency-map.json');
+  // AP® Biology: what scripts/build-apbio.mjs has published, all zero until
+  // a unit is out (bio/data/published.json).
+  const bioBank = join(ROOT, 'bio', 'assets', 'bank');
+  let apbio = 0;
+  if (existsSync(bioBank)) {
+    for (const f of readdirSync(bioBank)) {
+      if (!f.endsWith('.json') || f.endsWith('-why.json') || f === 'index.json') continue;
+      const d = read(join('bio', 'assets', 'bank', f));
+      apbio += Array.isArray(d.items) ? d.items.length : 0;
+    }
+  }
+  const bioNotes = join(ROOT, 'bio', 'assets', 'notes-index.json');
   countsCache = {
     nremt, ochem, anp,
     ochemChapters: modules.length, ochemTopics: topics, ochemMechanisms: mechanisms, ochemTools,
     anpChapters: anpMap.chapters.length, anpTopics: anpMap.topics.length,
+    apbio, apbioTopics: existsSync(bioNotes) ? read('bio/assets/notes-index.json').length : 0,
   };
   return countsCache;
 }

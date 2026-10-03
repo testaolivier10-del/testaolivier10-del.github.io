@@ -27,8 +27,8 @@ course does meanwhile.
   founding-member offer, 30% off for everyone until 2027-01-31, and `docs/premium.md` lists no
   other). The teachers page says "Ask about discounts for classes" at hello@levlprep.com. Decide
   whether there is one.
-- **privacy-schools** (open). The teachers page links `privacy.html#schools`; that section does not
-  exist yet (spec section 1 plans it). Until it does, the link lands at the top of the privacy page.
+- **privacy-schools** (resolved 2026-10-03). `privacy.html#schools` exists (spec decision 20);
+  its legal follow-ups are under "Legal and launch" below.
 - **frq-gating** (open). The spec puts "all FRQs" in Premium. The FRQ pages gate the workspace
   (rubric, self-scoring) the way lessons are gated: free in Units 1 and 2, Premium elsewhere; the
   prompt and the printable sheet stay open everywhere so teachers can assign them. Confirm.
@@ -258,3 +258,33 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   hemolysis near 0.46% NaCl). NaCl is treated as i = 2 (real ≈ 1.9); the page says so.
 - **enzyme-model** (pending review). Temperature and pH scale Vmax only (not Km); denaturation is
   modeled as instant and reversible. Both simplifications are stated on the page.
+
+## Legal and launch (site registration, 2026-10-03)
+
+- **minor-buyers** (open). terms.html lets someone under 18 buy with a parent or guardian's
+  permission (the parent accepts the terms; under 16 the parent should buy, Polar's rule), and the
+  dialog and premium.html now say so. A lawyer should confirm that this is enough for a course
+  sold to high-school students (contract capacity, Polar's buyer terms, refunds to a parent).
+  Meanwhile the existing terms stand, unweakened.
+- **student-privacy-laws** (open). A site marketed to teachers for a high-school course may be an
+  "operator" under student-privacy laws such as California's SOPIPA and similar state laws. The
+  site already does what those require as far as we know (no targeted ads, no profiling, no
+  selling, deletion on request), and privacy.html#schools says so. A lawyer should confirm, and
+  confirm the 30-day deletion promise to schools.
+- **ndpa** (open). privacy.html#schools says LevlPrep is willing to sign the SDPC National Data
+  Privacy Agreement (the brief asked for it). The owner should confirm before a district asks;
+  the NDPA has security and breach-notice terms to check.
+- **retention-unknowns** (open). Not knowable from the code: Umami Cloud's retention of
+  analytics, Supabase backups (how long a deleted account survives in a backup), Resend's
+  message logs, Cloudflare's request logs. privacy.html points to "How long things are kept",
+  which says the providers keep short-lived logs. Look these up and add numbers if they matter
+  to a school. Question reports, error reports and the page counter are never deleted by code.
+- **cram-kit-claim** (open). premium.js lists "The cram kit (study plans and timed mixed sets,
+  from March 2027)" as Premium; it does not exist yet (spec schedule: by 2027-03-01). If it
+  slips, change the line before anyone buys on it.
+- **free-simulator** (open). The free list says "One simulator"; `ApBioCore.allowed('tools')`
+  locks every tool when locked. The tools branch (0.4b) must free exactly one simulator, or the
+  line changes.
+- **polar-product-name** (open). The product name proposed in the launch checklist (spec section
+  6) uses the mark as an adjective with the ®; receipts and Polar's pages then carry it. Confirm,
+  or name it "LevlPrep Biology Premium (through June 30, 2027)" instead.

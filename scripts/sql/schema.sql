@@ -79,7 +79,7 @@ begin
   -- Validated here rather than trusted from the browser. This function is
   -- reachable by anyone who can open the site, so the only things that stop it
   -- becoming a free text-storage service are these bounds.
-  if p_course not in ('nremt', 'ochem', 'anp') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio') then
     raise exception 'unknown course';
   end if;
   if p_reason not in ('wrong-answer', 'unclear', 'typo', 'outdated', 'other') then
@@ -576,7 +576,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course not in ('nremt', 'ochem', 'anp') then
+  if p_course not in ('nremt', 'ochem', 'anp', 'apbio') then
     raise exception 'unknown course';
   end if;
   if p_email is null or length(p_email) > 254
@@ -612,7 +612,7 @@ create table if not exists public.premium_passes (
   id          bigint generated always as identity primary key,
   created_at  timestamptz not null default now(),
   user_id     uuid not null references auth.users (id) on delete cascade,
-  course      text not null check (course in ('nremt', 'ochem', 'anp')),
+  course      text not null check (course in ('nremt', 'ochem', 'anp', 'apbio')),
   pass        text not null,          -- 'nremt-90', 'ochem-semester', 'grant', …
   starts_at   timestamptz not null default now(),
   expires_at  timestamptz not null,
@@ -741,7 +741,7 @@ alter table public.premium_guarantee_claims enable row level security;
 -- ---------------------------------------------------------------------------
 create table if not exists public.premium_funnel (
   day    date not null default current_date,
-  course text not null check (course in ('nremt', 'ochem', 'anp')),
+  course text not null check (course in ('nremt', 'ochem', 'anp', 'apbio')),
   step   text not null check (step in ('gate-shown', 'interest', 'checkout-start', 'checkout-paid')),
   n      integer not null default 0,
   primary key (day, course, step)
@@ -756,7 +756,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp')
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio')
      or p_step is null or p_step not in ('gate-shown', 'interest', 'checkout-start') then
     return;
   end if;
@@ -825,6 +825,10 @@ begin
 end;
 $$;
 
+-- p_until was added for fixed-date passes (2026-10b-apbio.sql); the old
+-- nine-argument version is dropped so the two cannot coexist as overloads.
+drop function if exists public.premium_add_pass(uuid, text, text, integer, text, integer, timestamptz, text, text);
+
 -- The one way a pass is created (worker/src/premium.js: purchases from the
 -- webhook and the reconcile, and guarantee extensions). Under a per-user
 -- advisory lock, so the webhook and the reconcile landing on the same order,
@@ -840,7 +844,8 @@ create or replace function public.premium_add_pass(
   p_amount_cents integer default null,
   p_order_created_at timestamptz default null,
   p_customer_id text default null,
-  p_funded_by text default null
+  p_funded_by text default null,
+  p_until timestamptz default null
 ) returns jsonb
 language plpgsql
 security definer
@@ -851,8 +856,9 @@ declare
   v_start timestamptz;
   v_end timestamptz;
 begin
-  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp')
-     or p_pass is null or p_days is null or p_days < 1 or p_days > 400 then
+  if p_user is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio')
+     or p_pass is null or p_days is null or p_days < 1 or p_days > 400
+     or (p_until is not null and p_until > now() + interval '400 days') then
     raise exception 'bad pass';
   end if;
   perform pg_advisory_xact_lock(hashtextextended('premium_passes:' || p_user::text, 0));
@@ -865,6 +871,11 @@ begin
    where p.user_id = p_user and p.course = p_course and p.refunded_at is null;
   v_start := greatest(now(), coalesce(v_latest, now()));
   v_end := v_start + make_interval(days => p_days);
+  -- A fixed-date pass (p_until, e.g. AP® Biology's "through June 30, 2027")
+  -- runs at least to its date, whenever it was bought.
+  if p_until is not null and p_until > v_end then
+    v_end := p_until;
+  end if;
   insert into public.premium_passes
     (user_id, course, pass, starts_at, expires_at, order_id, amount_cents,
      order_created_at, customer_id, funded_by)
@@ -936,7 +947,7 @@ $$;
 create table if not exists public.exam_completions (
   id          bigint generated always as identity primary key,
   user_id     uuid not null references auth.users (id) on delete cascade,
-  course      text not null check (course in ('nremt', 'ochem', 'anp')),
+  course      text not null check (course in ('nremt', 'ochem', 'anp', 'apbio')),
   questions   integer not null check (questions between 1 and 300),
   finished_at timestamptz not null default now()
 );
@@ -955,7 +966,7 @@ as $$
 declare
   v_uid uuid := auth.uid();
 begin
-  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp')
+  if v_uid is null or p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio')
      or p_questions is null or p_questions < 1 or p_questions > 300 then
     return false;
   end if;
@@ -993,7 +1004,7 @@ security definer
 set search_path = public
 as $$
 begin
-  if p_course is null or p_course not in ('nremt', 'ochem', 'anp') then
+  if p_course is null or p_course not in ('nremt', 'ochem', 'anp', 'apbio') then
     return;
   end if;
   insert into public.premium_funnel (course, step, n)

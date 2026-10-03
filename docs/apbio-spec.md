@@ -79,6 +79,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 | 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | done: map 777 concepts, 61 CED + 14 skills topics (`docs/apbio-phase0.md`); engine and generator (`docs/apbio-architecture.md`); nothing published, all pages noindex |
 | 0.4a | App pages: practice, review, exams, FRQ, dashboard, flashcards, search, teachers; share links | `claude/apbio-apps` | done against the placeholder sample (`docs/apbio-architecture.md`, "App pages") |
 | 0.4b | Simulators + skills tools: osmosis and enzyme simulators, 6 skills tools + Hardy-Weinberg and Simpson (hidden until Units 7-8), design drills (placeholder) | `claude/apbio-tools` | merged into `claude/apbio-beta` |
+| 0.5 | Site registration: registry, Premium and the fixed-date pass, Worker, SQL migration, hub/404/pricing (shown once a unit is published), search, tutor, sitemap, manifest, OG card, budgets, browser checks, exam-date default, privacy "For schools" | `claude/apbio-register` | done (decisions 9-19); owner steps in section 6 |
 | 2 | Units 1-3 + statistics skills, Beta | `claude/apbio-beta` (authors on `claude/apbio-u1`, `-u2a`, `-u2b`, `-u3`, `-skills`) | writing |
 | 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
 | 4 | Cram kit (by 2027-03-01) | | not started |
@@ -137,6 +138,83 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    is the free one; the enzyme simulator is Premium (`tools`). Skills tools and drills are free
    for now (owner to confirm, needs-author `tools-premium`). Formula-sheet conventions: sample SD
    with n − 1, 95% CI ≈ mean ± 2 SE, T = °C + 273, R = 0.0831 L·bar/(mol·K), χ² at p = 0.05.
+10. (2026-10-03) **Free lessons: Units 1 and 2 and every skills lesson.** The brief's "the first
+   lesson of each skills topic" is every skills lesson, because a skills topic has one lesson.
+   `isFreeTopic` (`scripts/lib/apbio-build.mjs`) marks every topic outside the course units free;
+   `topic.free` in the curriculum carries it to `ApBioCore.locked`, the lesson gate and the
+   structured data. `freeChapters` in `assets/premium.js` stays `['unit-1', 'unit-2']`, so skills
+   *practice* still counts against the 15 a day. One free simulator is the tools branch's to mark
+   (`ApBioCore.allowed('tools')` still locks every tool when locked; 0.4b must free one).
+11. (2026-10-03) **Registered now, listed once a unit is published.** `apbio` is in
+   `assets/courses.js` (status `beta`) and every per-course table, the Worker and the SQL, so the
+   course is a full site citizen the moment `bio/data/published.json` lists a chapter. Until then
+   `isOpen()` in `scripts/lib/courses.mjs` keeps it off what build scripts write: the hub card,
+   the 404 card, its premium.html section, the hub FAQ and structured data
+   (`scripts/build-pricing.mjs`), and the sitemap (every page is noindex before launch). Runtime
+   lists read the registry directly and show nothing because the generated data is empty (site
+   search, the tutor, hub Continue links). Nothing anywhere states a count that is not counted
+   from the generated data; premium.js names no bank size for this course.
+   `APBIO_PUBLISHED=unit-1` shows the launched state: run `build-apbio`, `build-pricing`,
+   `build-sitemap` with it, then again without.
+12. (2026-10-03) **Names and the mark.** `name` and `productName` "AP® Biology" (receipts, dialog,
+   hub, account); `short` "Biology" (phone header), `rankLabel` "Biology rank", `searchLabel`
+   "Biology": a label shown on every page should not need the disclaimer. Aliases `bio`,
+   `biology` (A&P keeps `ap`). Manifest `bio/manifest.json` is "LevlPrep — Biology" and the
+   OG card says "Biology for the May exam, from scratch": neither carries the mark (an install name
+   and a preview card are ad copy; an image cannot carry the disclaimer). The disclaimer is on the
+   site home, account, offline, search, privacy, terms and, when the course is open, premium.html
+   and the 404 card. Site rule `apbio-trademark` now also checks pages outside `bio/` that show
+   "AP®" (disclaimer, adjective, no mark in meta descriptions) and every manifest.
+13. (2026-10-03) **The course key never goes into a URL.** `apbio` contains the token "ap"
+   (decision 2), so URLs name the course by its folder, `bio`: site search's `?course=`
+   (`LevlSearchAll.urlKey`), the header's search link and overlay (`site-chrome.js`), and the
+   Polar success URL (`urlCourse` in `worker/src/premium.js`; `returnCourse` in premium.js accepts
+   a folder name). The pass id is `bio-2027`.
+14. (2026-10-03) **A fixed-date pass.** `{ id: 'bio-2027', label: 'Through June 30, 2027', price:
+   25, until: '2027-06-30' }`. The dialog says "One pass, valid through June 30, 2027" and hides
+   it after the date. The Worker's PASSES entry has `until: '2027-06-30T23:59:59-10:00'` (end of the
+   day in Hawaii, the last US time zone): checkout refuses it after that (410), and the webhook and
+   reconcile call `premium_add_pass` with `p_until` and one day as the floor, so a pass runs at
+   least to the date whenever it is bought (a purchase behind a running pass or grant starts when
+   that ends and still runs to the date; inside the last day it gets one day). The founding
+   discount applies exactly as for other passes (the same `FOUNDING_DISCOUNT_ID` at checkout).
+15. (2026-10-03) **Under-18 buyers.** terms.html already required a parent or guardian's
+   permission (and the parent making the purchase under 16, as Polar's rule); nothing was
+   weakened. The purchase dialog now says so for every course, premium.html too, and terms gained
+   the fixed-date pass rule (`#fixed-date`) and the College Board in "Not affiliated". Legal
+   questions for a person: `docs/apbio-needs-author.md`, "Legal".
+16. (2026-10-03) **SQL.** `scripts/sql/migrations/2026-10b-apbio.sql` (named so it sorts after
+   `2026-10-audit.sql`: migrations run and are tested in file-name order) re-adds the course check on
+   `premium_passes`, `premium_funnel`, `exam_completions` and replaces every function with a
+   course list (`report_question`, `join_waitlist`, `count_premium_step`, `premium_add_pass`,
+   `record_exam_completion`, `count_premium_paid`), adding `apbio`; `premium_add_pass` gains
+   `p_until` (old nine-argument version dropped). Same edits in `schema.sql` and `reports.sql`.
+   Run twice against PGlite on the old schema plus the audit migration and on a fresh schema: one
+   `premium_add_pass`, checks include `apbio`, a dated pass ends at the date. Not applied anywhere.
+17. (2026-10-03) **Exam date default.** `assets/exam-date.js` has `DEFAULTS.apbio` (2027-05-03,
+   "AP® Biology exam (Mon, May 3, 2027)"): the card counts down to it, named, until the student
+   sets a date; Clear stores "none" so it does not come back. The dashboard's one-time seeding
+   (decision 8) is gone.
+18. (2026-10-03) **Tutor, search, offline.** The tutor indexes the published notes
+   (`bio/assets/notes-index.json`) and the glossary page, falls back to `bio/search.html`, and has
+   AP® Biology rules in the Worker (`COURSE_RULES.apbio`: high-school level, mechanism, no released
+   exam content, coach FRQs rather than write them). No tutor bank (as A&P). Site search indexes
+   published lessons, glossary and notes. `sw.js` precaches the bio shell (`COURSE_URLS.bio`).
+19. (2026-10-03) **Checks are data-driven.** `check-weight` budgets the bio shell (50 KB, measured
+   45.5), the home and app shells, and, from `notes-index.json`, the first published lesson,
+   notes page and unit sheet, plus every bank file (A&P's per-chapter budgets), glossary,
+   notes index and summaries. `check-a11y` adds the bio home, glossary, practice, exams and FRQ
+   pages and, when they exist, the first lesson, notes page, unit sheet, FRQ and tool;
+   `check-console` loads every bio page and runs a practice flow once a topic is published. With
+   Unit 1 published both passed after one fix: an unpublished unit's card used opacity, which
+   took its text below 4.5:1, and now uses a dashed outline.
+20. (2026-10-03) **Privacy "For schools"** (`privacy.html#schools`): no login for student
+   content; what a student who never signs in leaves (nothing with a name: device storage, the
+   anonymous counter, Umami's cookieless analytics, error and problem reports); what signing in
+   adds; Polar for purchases; processors Supabase, Cloudflare, Polar, Umami Cloud, Resend (and
+   GitHub Pages, Google Classroom on press); retention as the existing section; no ads, no
+   selling, no profiling; deletion in-app or by email; willingness to sign the SDPC NDPA. It
+   summarizes the page and adds no new collection.
 
 ## 4. Map format (Phase 0)
 
@@ -169,3 +247,36 @@ used before the topic that teaches it, except everyday words and declared previe
 ## 5. Open items
 
 See `docs/apbio-needs-author.md`.
+
+## 6. AP® Biology launch: owner checklist (only you can do these)
+
+In this order: the Worker calls `premium_add_pass` with `p_until`, so **the migration must be
+applied before the Worker is deployed**, or every purchase webhook fails.
+
+- [ ] **1. Apply the migration before selling.** Supabase → project → SQL Editor → New query → paste
+      `scripts/sql/migrations/2026-10b-apbio.sql` → Run (idempotent). Check:
+      `select pg_get_constraintdef(oid) from pg_constraint where conname = 'premium_passes_course_check';`
+      lists `apbio`, and `select count(*) from pg_proc where proname = 'premium_add_pass';` is 1.
+- [ ] **2. Create the Polar product.** Polar → Products → New product:
+      - Name: **AP® Biology Premium (through June 30, 2027)**
+      - Pricing: **one-time purchase, fixed price, $25.00 USD**
+      - Description: "Premium for LevlPrep's AP® Biology course until June 30, 2027, whenever you
+        buy it: every interactive lesson, every simulator, unlimited practice and review, all
+        free-response questions and practice exams, the cram kit (from March 2027) and the full
+        dashboard. One-time, never renews. Buyers under 18 need a parent or guardian's permission.
+        AP® is a trademark registered by the College Board, which is not affiliated with, and does
+        not endorse, this site."
+      - If the founding-member discount (Polar → Discounts) is limited to products, add this one.
+      Copy the product id.
+- [ ] **3. Add it to `POLAR_PRODUCTS`.** Cloudflare → Workers → levlprep-ask → Settings →
+      Variables and Secrets → `POLAR_PRODUCTS` (plaintext JSON, pass id → Polar product id). Add one
+      entry to the existing object, keeping the five there:
+      `"bio-2027": "<the product id from step 2>"`, e.g.
+      `{"nremt-90":"…","ochem-semester":"…","ochem-year":"…","anp-semester":"…","anp-year":"…","bio-2027":"<id>"}`.
+- [ ] **4. Deploy the Worker** after merging to main (the "Deploy Worker" Action, or paste
+      `worker/dist/worker.js`). Then buy `bio-2027` once in Polar's sandbox (or with a 100% code),
+      check the `premium_passes` row ends `2027-07-01 09:59:59+00` (June 30, 23:59:59 Hawaii), and
+      refund it from the Account page.
+- [ ] **5. Publish Unit 1** (`bio/data/published.json`) only after its accuracy check; the hub
+      card, pricing section, sitemap and search entries appear with it.
+

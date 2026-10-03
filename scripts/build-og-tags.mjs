@@ -69,6 +69,8 @@ const pick = (html, re) => {
 function imageFor(file) {
   if (file.startsWith('nremt/')) return `${ORIGIN}/nremt/assets/og-image.png`;
   if (file.startsWith('ochem/')) return `${ORIGIN}/ochem/assets/og-image.png`;
+  if (file.startsWith('anatomy-physiology/')) return `${ORIGIN}/anatomy-physiology/assets/og-image.png`;
+  if (file.startsWith('bio/')) return `${ORIGIN}/bio/assets/og-image.png`;
   return `${ORIGIN}/assets/og-image.png`;
 }
 

@@ -3,24 +3,22 @@
    answer records in apbio_progress_v1, plus the site's shared XP and streak
    (HubProgress), the flashcard schedule (apbio_flashcards_v1) and the
    free-response self-scores and exam history in apbio_prefs_v1. Nothing is
-   stored here except the exam-date default below.
+   stored here.
 
    Free: overall, mastery by unit and topic, by science practice (the six),
    weakest topics with links to the exact lesson, FRQ self-scores, exam
    history, the exam-date card. Premium (ApBioCore.allowed('analytics')):
    the deeper analytics, mastery by skill (1.A, 4.B...), tool accuracy.
 
-   Exam date: assets/exam-date.js has no per-course default, so on the first
-   visit this page writes the exam date, Monday 3 May 2027, to
-   apbio_exam_date (the key exam-date.js reads) and remembers in
-   apbio_prefs_v1.examDateSeeded that it did, so a date the student clears
-   or changes stays theirs. Every bar carries its number as text. */
+   Exam date: assets/exam-date.js counts down to the course default, the
+   AP® Biology exam on Monday 3 May 2027, until the student sets their own
+   date (apbio_exam_date). Every bar carries its number as text. */
 (function(){
   var app = document.getElementById('app');
   var A = window.ApBioCore, CU = window.ApBioCurriculum;
   if(!app || !A || !CU) return;
   var BASE = window.ApBioBase || '';
-  var PREFS = 'apbio_prefs_v1', EXAM_DATE = '2027-05-03';
+  var PREFS = 'apbio_prefs_v1';
   var FRQ_TYPES = { iee: 'Experimental results (long)', 'iee-graph': 'Experimental results, graphing (long)', investigation: 'Scientific investigation', conceptual: 'Conceptual analysis', model: 'Analyze a model', data: 'Analyze data' };
 
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -33,16 +31,6 @@
   CU.units.forEach(function(u){ UNIT[u.id] = u; });
   var built = CU.topics.filter(function(t){ return t.built; });
   function unitName(u){ var c = UNIT[u]; return c ? (c.part === 'course' ? 'Unit ' + c.n + ': ' : '') + c.title : u; }
-
-  (function seedExamDate(){
-    try{
-      var p = prefs();
-      if(p.examDateSeeded) return;
-      if(!localStorage.getItem('apbio_exam_date') && new Date(EXAM_DATE + 'T12:00:00') > new Date()) localStorage.setItem('apbio_exam_date', EXAM_DATE);
-      p.examDateSeeded = true;
-      localStorage.setItem(PREFS, JSON.stringify(p));
-    }catch(e){}
-  })();
 
   function bar(o){
     var p = pct(o.value);

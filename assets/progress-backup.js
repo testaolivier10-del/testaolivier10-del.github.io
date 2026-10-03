@@ -34,6 +34,7 @@
     { storagePrefix: 'nremt_' },
     { storagePrefix: 'ochem_' },
     { storagePrefix: 'anp_' },
+    { storagePrefix: 'apbio_' },
   ];
   // courses:end
   var PREFIXES = ['hub_'].concat(COURSE_LIST.map(function(c){ return c.storagePrefix; }));

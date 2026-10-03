@@ -67,8 +67,8 @@ and the registry key stay `apbio`; globals start `ApBio`; question ids start `bi
   College Board, which is not affiliated with, and does not endorse, this site." and a Report a
   problem button (`data-report-course="apbio"`, page ids `notes:<topic>`, `lesson:<topic>`,
   `unit:<unit>`, `glossary`, ...). Tables sit in keyboard-scrollable regions.
-- **Structured data** (A&P decision 80): lessons in Units 1 and 2 and the first lesson of each
-  skills chapter say `isAccessibleForFree: true`; others say false with
+- **Structured data** (A&P decision 80): lessons in Units 1 and 2 and every skills lesson (one
+  lesson per skills topic) say `isAccessibleForFree: true`; others say false with
   `hasPart.cssSelector: ".bio-ls-card"`. Notes, unit sheets and the glossary are free. The home
   page's Course lists the passes from `premium-data.mjs` once `apbio` is registered there.
 - **Lesson** parts, in order (empty ones are left out): Why this matters (hook), What this
@@ -124,9 +124,10 @@ Pages set `window.ApBioBase` (path back to `bio/`) and `window.ApBioSection`.
 Storage besides `apbio_progress_v1` and `apbio_flashcards_v1`: `apbio_prefs_v1` (synced) holds
 `examTiming`, `examHistory` (last 30: `{ ts, kind, label, unit, mcq: {c, n}, frq: {got, of}, band,
 partial }`), `frqScores` (`{ id: { got, of, parts, best, tries, ts, title, type, units } }`),
-`flashcards` (deck prefs) and `examDateSeeded`; `apbio_frq_drafts_v1` holds typed FRQ answers on
-this device only, never synced; `apbio_exam_date` is the shared exam-date card's key (the dashboard
-seeds 2027-05-03 once, because `assets/exam-date.js` has no per-course default). Analytics events
+`flashcards` (deck prefs); `apbio_frq_drafts_v1` holds typed FRQ answers on
+this device only, never synced; `apbio_exam_date` is the shared exam-date card's key (unset, the
+card counts down to `assets/exam-date.js`'s course default, 2027-05-03; cleared, it holds "none").
+Analytics events
 added: `apbio-session-finish`, `apbio-exam-finish`, `apbio-frq-score`.
 
 ## Content formats
