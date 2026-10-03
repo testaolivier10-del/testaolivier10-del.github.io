@@ -1,0 +1,7 @@
+{
+  "continuing-evolution": { "def": "Continuing (ongoing) evolution: populations keep evolving because their environments keep changing. It can be measured directly today, as changes in allele frequencies or genomes over generations, in pathogens, pests, crops and wild populations." },
+  "pesticide-resistance": { "def": "The evolution of pests that survive a chemical meant to kill them, such as insects resistant to an insecticide (DDT, pyrethroids) or weeds resistant to a herbicide. Resistance alleles arise by chance before use; the chemical selects for them, so they rise in frequency." },
+  "viral-evolution": { "def": "Change in virus populations over time. Fast copying with many errors and huge numbers of particles produce new variants quickly; immunity and drugs select among them, giving new flu strains each year, drug resistance in HIV and emerging viruses that spread to new hosts." },
+  "coevolution": { "def": "Evolution in two species in which each acts as a selective pressure on the other, so a change in one favors a change in the other, as in a toxic newt and the resistant snake that eats it (an evolutionary arms race) or a flower and its pollinator." },
+  "genome-change": { "def": "Change in a population's DNA that can be measured directly over time by sequencing: new point mutations, gene duplications, deletions and rearrangements that accumulate and spread across generations." }
+}

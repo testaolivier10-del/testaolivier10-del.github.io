@@ -1,0 +1,12 @@
+{
+  "resistance-selection": {
+    "file": "figures/resistance-selection.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Four panels of 16 insects. Generation 0, before spraying: 1 of 16 carries a resistance allele. Spraying: 14 are killed and 2 survive, the resistant insect and one susceptible insect. Generation 1, offspring of the survivors: 7 of 16 are resistant. Generation 6, after years of spraying: 15 of 16 are resistant. The key notes that the resistance allele was present before any spraying."
+  },
+  "arms-race": {
+    "file": "figures/arms-race.svg", "ext": "svg", "w": 760, "h": 360,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A cycle of four steps. 1: Newts carry a nerve toxin; snakes without resistance that eat one are paralyzed or die. 2: Snakes with resistant sodium channels survive and leave more offspring. 3: Resistance becomes common in the snake population, and low-toxin newts get eaten. 4: Newts with more toxin survive attacks and leave more offspring, leading back to step 1. Center text: each side is the other side's selective pressure."
+  }
+}
