@@ -1,0 +1,12 @@
+{
+  "wp-calc": {
+    "file": "figures/wp-calc.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 360,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A plant cell in a beaker of sucrose solution. The beaker: 0.3 M sucrose at 22 °C, open, so pressure potential 0 and water potential −7.4 bars. The cell: solute potential −9.0 bars and pressure potential +3.0 bars, so water potential −6.0 bars. An arrow shows net water moving out of the cell, from −6.0 toward −7.4 bars."
+  }
+}

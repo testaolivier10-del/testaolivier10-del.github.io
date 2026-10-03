@@ -1,0 +1,20 @@
+{
+  "observed-expected": {
+    "def": "Observed values (o) are the counts actually recorded in each category. Expected values (e) are the counts the null hypothesis predicts for the same total."
+  },
+  "chi-square": {
+    "def": "A test of whether observed counts differ from expected counts by more than chance would explain: χ² = Σ (o − e)² ÷ e. The bigger χ², the worse the fit to the null hypothesis."
+  },
+  "degrees-of-freedom": {
+    "def": "For a chi-square goodness-of-fit test, the number of categories minus 1. It tells you which row of the critical value table to use."
+  },
+  "significance-level": {
+    "def": "The cutoff probability chosen before the test, usually p = 0.05: the risk you accept of rejecting a null hypothesis that is actually true."
+  },
+  "critical-value": {
+    "def": "The χ² value from the table for your degrees of freedom and significance level. If the calculated χ² is greater than it, reject the null hypothesis."
+  },
+  "p-value": {
+    "def": "The probability of getting a deviation from expected at least as large as the one observed if the null hypothesis were true. A p-value below 0.05 leads to rejecting the null."
+  }
+}

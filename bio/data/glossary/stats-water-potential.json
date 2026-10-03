@@ -1,0 +1,23 @@
+{
+  "solute-potential-formula": {
+    "def": "The formula-sheet equation for solute potential: Ψs = −iCRT, where i is the ionization constant, C the molar concentration, R the pressure constant and T the temperature in kelvin."
+  },
+  "ionization-constant": {
+    "def": "In Ψs = −iCRT, i is the number of particles each formula unit makes when it dissolves: 1 for sucrose or glucose (they do not ionize), about 2 for NaCl (Na⁺ + Cl⁻), about 3 for CaCl₂."
+  },
+  "molar-concentration": {
+    "def": "Moles of solute per liter of solution (mol/L, written M). A 0.2 M sucrose solution has 0.2 mol of sucrose in each liter."
+  },
+  "pressure-constant": {
+    "def": "In Ψs = −iCRT, R = 0.0831 L·bar/(mol·K). It converts concentration and temperature into a pressure in bars."
+  },
+  "kelvin": {
+    "def": "The absolute temperature scale used in Ψs = −iCRT: kelvin = °C + 273. Room temperature, 22 °C, is 295 K."
+  },
+  "bar-unit": {
+    "def": "A unit of pressure used for water potential; 1 bar is about atmospheric pressure at sea level. 10 bars = 1 megapascal (MPa), the unit many textbooks use."
+  },
+  "wp-calculation": {
+    "def": "Finding water potential with Ψ = ΨP + Ψs: calculate Ψs = −iCRT, add the pressure potential (0 in an open container), and compare values; water moves from higher (less negative) to lower (more negative) Ψ."
+  }
+}

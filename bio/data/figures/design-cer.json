@@ -1,0 +1,12 @@
+{
+  "cer-blocks": {
+    "file": "figures/cer-blocks.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 340,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Three stacked blocks. Claim: catalase works fastest near pH 7. Evidence: 4.8 mL O₂ per minute at pH 7, compared with 2.1 at pH 5 and 3.0 at pH 9, with non-overlapping error bars. Reasoning: pH changes the charges on R groups in the active site, changing its shape and how well it binds substrate. Arrows show evidence supporting the claim and reasoning linking them."
+  }
+}
