@@ -330,21 +330,21 @@
       "level": "analyze",
       "diff": 3,
       "stimulus": "plasma-membrane-s2",
-      "q": "A laboratory strain of this bacterium cannot make unsaturated fatty acids and is grown at 37 °C. Predict what happens when it is moved to 15 °C.",
+      "q": "A laboratory strain of this bacterium has lost the ability to change its fatty acid mix: its membranes stay at about 45% unsaturated fatty acids, the 37 °C value, at any growth temperature. Predict what happens when it is moved from 37 °C to 15 °C.",
       "options": [
-        "Its membrane stays as fluid as the normal strain's, because temperature has little effect on saturated tails.",
+        "Its membrane stays as fluid as the normal strain's, because temperature has little effect on fatty acid tails.",
         "Its membrane becomes much more fluid, because saturated tails spread apart in the cold.",
         "Its membrane stiffens, so its membrane proteins work poorly and growth slows.",
         "Its membrane gains unsaturated fatty acids from the cold, so nothing changes."
       ],
       "correct": 2,
       "why": {
-        "correct": "Normal cells keep their membranes fluid in the cold by raising their share of kinked, unsaturated tails. This strain cannot, so its straight tails pack tightly at 15 °C, the membrane stiffens, and the proteins that do the membrane's jobs cannot work properly.",
+        "correct": "Normal cells keep their membranes fluid in the cold by raising their share of kinked, unsaturated tails (68% at 15 °C in the table). This strain stays at 45%, so its tails pack more tightly at 15 °C, the membrane stiffens, and the proteins that do the membrane's jobs cannot work properly.",
         "options": [
-          "Saturated tails are the ones most affected by cold: they pack tightly and the membrane stiffens.",
+          "Cold slows all tails and lets them pack closer; the normal strain makes up for this by adding unsaturated tails, which this strain cannot do.",
           "Cold makes all tails move less; straight saturated tails pack closer, not farther apart.",
           "Without the option of adding unsaturated tails, the membrane stiffens and its proteins suffer.",
-          "Cold does not convert fatty acids; the strain cannot make unsaturated ones at any temperature."
+          "Cold does not convert fatty acids, and this strain cannot change its fatty acid mix at any temperature."
         ]
       }
     },

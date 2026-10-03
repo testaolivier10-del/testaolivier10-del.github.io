@@ -298,7 +298,7 @@
         "correct": "Ions carry a full charge and are surrounded by a shell of attracted water molecules. Leaving that water to enter the hydrophobic middle of the bilayer takes a lot of energy, so they almost never do.",
         "options": [
           "Charge, not mass, is what keeps ions out of the hydrophobic core.",
-          "Sodium (23 g/mol) is lighter than water's neighbors urea and glycerol, which cross a million times faster, so mass is not the reason.",
+          "Sodium (23 g/mol) is lighter than urea (60 g/mol) and glycerol (92 g/mol), which cross about a million times faster, so mass is not the reason.",
           "Charged ions are repelled by the nonpolar tails; they do not bind to them.",
           "Ions are not chemically changed by the heads; they simply stay out of the core."
         ]
@@ -322,7 +322,7 @@
       ],
       "correct": 1,
       "why": {
-        "correct": "Glucose crosses a bare bilayer about 10 billion times more slowly than CO₂. Fast uptake needs a transport protein that gives glucose a hydrophilic route across.",
+        "correct": "Glucose crosses a bare bilayer about a billion times (10⁹) more slowly than CO₂. Fast uptake needs a transport protein that gives glucose a hydrophilic route across.",
         "options": [
           "A thicker hydrophobic layer would slow glucose further, not help it cross.",
           "A transport protein gives a polar molecule like glucose a route that avoids the hydrophobic core.",

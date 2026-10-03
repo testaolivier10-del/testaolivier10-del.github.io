@@ -8,7 +8,7 @@
   "stimulus": {
     "kind": "table",
     "title": "Potassium uptake by root tissue with and without oxygen",
-    "text": "<p>Researchers cut equal masses of young barley root tips and placed them in flasks of a solution containing 1.0 mM potassium ions (K⁺) at 25 °C. Air was bubbled through half of the flasks. Nitrogen gas was bubbled through the other half, which removes oxygen; without oxygen, the root cells make very little ATP. At each time, root samples were rinsed and the K⁺ they had taken up was measured. Values are means of 6 flasks ± 2 SE.</p>",
+    "text": "<p>Researchers grew barley seedlings in a solution without potassium, so their roots started with very little K⁺. They cut equal masses of young root tips and placed them in flasks of a solution containing 1.0 mM potassium ions (K⁺) at 25 °C. Air was bubbled through half of the flasks. Nitrogen gas was bubbled through the other half, which removes oxygen; without oxygen, the root cells make very little ATP. At each time, root samples were rinsed and the K⁺ they had taken up was measured. Values are means of 6 flasks ± 2 SE.</p>",
     "table": {
       "caption": "K⁺ taken up by root tissue (µmol per g of root)",
       "cols": ["Time (min)", "Air bubbled (mean ± 2 SE)", "Nitrogen bubbled (mean ± 2 SE)"],
@@ -71,7 +71,7 @@
       "rubric": [
         { "point": "Calculates about 10 mM (9.0 ÷ 0.9) and explains that because this is about ten times the 1.0 mM outside, K⁺ moved against its gradient, so the transport was active transport using energy (ATP).", "accept": ["10 mM inside versus 1 mM outside, so active transport", "uptake against the concentration gradient requires ATP"] }
       ],
-      "sample": "9.0 µmol ÷ 0.9 mL = 10 µmol per mL = 10 mM. The roots hold ten times as much K⁺ as the 1.0 mM solution, so K⁺ was moved from low to high concentration, against its gradient. That can only be active transport, powered by ATP."
+      "sample": "9.0 µmol ÷ 0.9 mL = 10 µmol per mL = 10 mM. The roots hold ten times as much K⁺ as the 1.0 mM solution, so K⁺ was moved from low to high concentration, against its concentration gradient. Moving a substance against its gradient takes energy, so this is active transport powered by ATP, which fits the nitrogen result: with little ATP, uptake nearly stopped."
     },
     {
       "label": "e",
