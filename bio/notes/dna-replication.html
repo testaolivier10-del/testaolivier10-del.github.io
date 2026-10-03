@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Replication — AP® Biology Notes | LevlPrep</title>
+<meta name="description" content="Every time a cell divides, each daughter cell needs a complete, accurate copy of the DNA.">
+<link rel="canonical" href="https://levlprep.com/bio/notes/dna-replication.html">
+<meta property="og:title" content="Replication — AP® Biology Notes | LevlPrep">
+<meta property="og:description" content="Every time a cell divides, each daughter cell needs a complete, accurate copy of the DNA.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://levlprep.com/bio/notes/dna-replication.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "@id": "https://levlprep.com/bio/notes/dna-replication.html#reading",
+      "name": "Replication",
+      "url": "https://levlprep.com/bio/notes/dna-replication.html",
+      "description": "Every time a cell divides, each daughter cell needs a complete, accurate copy of the DNA.",
+      "learningResourceType": "Reading",
+      "educationalLevel": "High school",
+      "inLanguage": "en",
+      "isAccessibleForFree": true,
+      "keywords": "replication explained",
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      },
+      "provider": {
+        "@id": "https://levlprep.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Gene Expression and Regulation",
+          "item": "https://levlprep.com/bio/units/unit-6.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Replication: notes",
+          "item": "https://levlprep.com/bio/notes/dna-replication.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-topic="dna-replication" data-unit="unit-6">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bio-tb bio-notes">
+  <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Unit 6 contents</button>
+  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bio-toc-chap" href="../units/unit-6.html"><span class="bio-toc-chap-n">6</span><span><b>Gene Expression and Regulation</b><small>8 topics</small></span></a>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="dna-rna-structure"><a href="dna-rna-structure.html"><span class="bio-toc-n">6.1</span>DNA and RNA Structure</a></li><li class="current" data-toc-t="dna-replication"><a href="#main" aria-current="page"><span class="bio-toc-n">6.2</span>Replication</a><div class="bio-toc-onpage"><p>On this page</p><a href="#the-idea-each-strand-is-a">The idea: each strand is a template</a><a href="#testing-it-meselson-and-stahl">Testing it: Meselson and Stahl</a><a href="#where-copying-starts-origins-and-forks">Where copying starts: origins and forks</a><a href="#the-team-at-the-fork">The team at the fork</a><a href="#leading-and-lagging-strands">Leading and lagging strands</a><a href="#keeping-the-copy-accurate">Keeping the copy accurate</a><a href="#the-end-problem-and-telomeres">The end problem and telomeres</a><a href="#common-mistakes">Common mistakes</a></div></li><li data-toc-t="transcription-rna-processing"><a href="transcription-rna-processing.html"><span class="bio-toc-n">6.3</span>Transcription and RNA Processing</a></li><li data-toc-t="translation"><a href="translation.html"><span class="bio-toc-n">6.4</span>Translation</a></li><li data-toc-t="gene-regulation"><a href="gene-regulation.html"><span class="bio-toc-n">6.5</span>Regulation of Gene Expression</a></li><li data-toc-t="cell-specialization"><a href="cell-specialization.html"><span class="bio-toc-n">6.6</span>Gene Expression and Cell Specialization</a></li><li data-toc-t="mutations"><a href="mutations.html"><span class="bio-toc-n">6.7</span>Mutations</a></li><li data-toc-t="biotechnology"><a href="biotechnology.html"><span class="bio-toc-n">6.8</span>Biotechnology</a></li></ol></nav>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/unit-6.html">Gene Expression and Regulation</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Replication: notes</span></nav>
+    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/dna-replication.html">Practice this lesson</a></div>
+    <header class="bio-notes-head">
+      <p class="bio-notes-eyebrow">Unit 6 &middot; Topic 6.2 <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bio-notes-title">Replication</h1>
+      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">7 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="dna-replication">Not practiced</span></p>
+      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fdna-replication.html&amp;title=Replication%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/dna-replication.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    </header>
+    <article class="bio-prose">
+<p>Every time a <a class="gl" href="../notes/cell-structure-function.html" data-c="cell">cell</a> divides, each <a class="gl" href="../notes/cell-cycle.html" data-c="daughter-cell">daughter cell</a> needs a complete, accurate copy of the <a class="gl" href="../notes/nucleic-acids.html" data-c="dna">DNA</a>. Topic 4.5 told you that this copying happens in <a class="gl" href="../notes/cell-cycle.html" data-c="interphase">S phase</a> and that <a class="gl" href="../notes/nucleic-acids.html" data-c="complementary-base-pairing">base pairing</a> makes it possible. This page shows how it actually works: what the two new <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="molecule">molecules</a> look like, which <a class="gl" href="../notes/macromolecules-intro.html" data-c="enzyme">enzymes</a> do the work, why one new strand is made in pieces, and how mistakes are caught.</p>
+
+<h2 id="the-idea-each-strand-is-a">The idea: each strand is a template</h2>
+<p>Because A pairs only with T and G only with C, each strand of a <a class="gl" href="../notes/nucleic-acids.html" data-c="double-helix">double helix</a> fixes the sequence of its partner. If the two strands are pulled apart, each can serve as a <b>template</b>: a pattern on which a new partner strand is built, base by base. Watson and Crick pointed this out in 1953, and it suggests a specific outcome: each new double helix should contain one old strand and one new strand. This is called <b><span class="gl" tabindex="0" data-c="semiconservative">semiconservative replication</span></b>.</p>
+
+<h2 id="testing-it-meselson-and-stahl">Testing it: Meselson and Stahl</h2>
+<figure id="fig-models"  class="bio-figure"><div class="bio-figimg" data-fig="replication-models"><img src="../figures/replication-models.svg" alt="Three models of DNA copying, starting from one fully heavy molecule, with new strands light. Semiconservative: round 1 gives two hybrid molecules; round 2 gives two hybrid and two light molecules, so the tubes show one intermediate band, then an intermediate and a light band. Conservative: round 1 gives one heavy and one light molecule; round 2 one heavy and three light, so the tubes show heavy and light bands both times. Dispersive: every strand is a patchwork; round 1 gives one intermediate band and round 2 one band one quarter of the way from light to heavy." width="760" height="400" loading="lazy" decoding="async"></div><figcaption><b>Figure 1.</b> Three possible models of DNA copying and the density bands each predicts after one and two rounds. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<p>In the 1950s there were three candidate models (<a class="figref" href="#fig-models">Figure 1</a>):</p>
+<ul>
+<li><b>Semiconservative:</b> each daughter molecule has one parental strand and one new strand.</li>
+<li><b>Conservative model:</b> the parental double helix stays intact, and the copy is made of two entirely new strands.</li>
+<li><b>Dispersive model:</b> every strand of every daughter molecule is a patchwork of old and new pieces.</li>
+</ul>
+<p>In 1958 Matthew Meselson and Franklin Stahl grew <i>E. coli</i> for many generations with only heavy nitrogen (<sup>15</sup>N), so every DNA molecule was heavy. They then moved the cells to ordinary light nitrogen (<sup>14</sup>N) and took samples after each round of division. Spun in a dense salt solution, DNA settles at the level that matches its own density, so heavy, light and half-heavy (<a class="gl" href="../notes/mendelian-genetics.html" data-c="mendel">hybrid</a>) DNA form separate bands.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="What each model predicts, and what Meselson and Stahl saw"><table class="compare">
+<caption>What each model predicts, and what Meselson and Stahl saw</caption>
+<thead><tr><th>Generation in <sup>14</sup>N</th><th>Semiconservative</th><th>Conservative</th><th>Dispersive</th><th>Observed</th></tr></thead>
+<tbody>
+<tr><th scope="row">0</th><td>heavy</td><td>heavy</td><td>heavy</td><td>heavy</td></tr>
+<tr><th scope="row">1</th><td>hybrid</td><td>heavy + light</td><td>hybrid</td><td>hybrid</td></tr>
+<tr><th scope="row">2</th><td>hybrid + light (1 : 1)</td><td>heavy + light (1 : 3)</td><td>one band, ¼ heavy</td><td>hybrid + light (1 : 1)</td></tr>
+</tbody>
+</table></div>
+<p>Generation 1 rules out the conservative model (no heavy band). Generation 2 rules out the dispersive model (a fully light band appears). Heating generation-1 DNA to separate its strands gave whole heavy strands and whole light strands, not half-heavy ones, which also rules out dispersal.</p>
+<div class="worked">
+<p><b>Worked example: predicting bands after more rounds.</b> What fraction of DNA molecules is hybrid after 3 generations in <sup>14</sup>N?</p>
+<p>One heavy molecule becomes 2<sup>3</sup> = 8 molecules. Its two heavy strands are never broken up, so they sit in exactly 2 of the 8 molecules, each paired with a light strand. Answer: 2 ÷ 8 = ¼ hybrid, ¾ light. In general, after n generations the hybrid fraction is 2 ÷ 2<sup>n</sup>.</p>
+</div>
+
+<h2 id="where-copying-starts-origins-and-forks">Where copying starts: origins and forks</h2>
+<p>Copying begins at specific sequences called <b><span class="gl" tabindex="0" data-c="origin-of-replication">origins of replication</span></b>. <a class="gl" href="../notes/elements-of-life.html" data-c="protein">Proteins</a> open the helix there, making a <b>replication bubble</b> with a <b>replication fork</b> at each side, where the parental strands come apart. The two forks move away from each other, copying as they go. A <a class="gl" href="../notes/cell-structure-function.html" data-c="bacteria">bacterium</a>'s <a class="gl" href="../notes/compartment-origins.html" data-c="circular-dna">circular chromosome</a> has one origin. A <a class="gl" href="../notes/cell-structure-function.html" data-c="eukaryote">eukaryotic</a> chromosome is much longer and forks move more slowly, so each chromosome has thousands of origins; the bubbles grow and merge until the whole chromosome is copied.</p>
+
+<h2 id="the-team-at-the-fork">The team at the fork</h2>
+<figure id="fig-fork"  class="bio-figure"><div class="bio-figimg" data-fig="replication-fork"><img src="../figures/replication-fork.svg" alt="A replication fork moving to the right. Topoisomerase sits on the unopened double helix ahead of the fork and helicase opens the strands at the fork; single-strand binding proteins coat the bare template. On the top template, which runs 3-prime to 5-prime toward the fork, DNA polymerase III extends the leading strand continuously from one RNA primer toward the fork. On the bottom template the lagging strand is built away from the fork in Okazaki fragments: primase lays a new RNA primer near the fork, DNA polymerase III extends it, DNA polymerase I swaps an older fragment's primer for DNA, and DNA ligase seals the remaining nick." width="760" height="440" loading="lazy" decoding="async"></div><figcaption><b>Figure 2.</b> Events at a replication fork. <span class="bio-credit">LevlPrep original diagram.</span></figcaption></figure>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Proteins at the replication fork ( Figure 2 )"><table class="compare">
+<caption>Proteins at the replication fork (<a class="figref" href="#fig-fork">Figure 2</a>)</caption>
+<thead><tr><th>Protein</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><th scope="row">Helicase</th><td>Breaks the <a class="gl" href="../notes/water-hydrogen-bonding.html" data-c="hydrogen-bond">hydrogen bonds</a> between base pairs, separating the parental strands at the fork</td></tr>
+<tr><th scope="row">Single-strand binding proteins</th><td>Coat the separated strands so they do not pair up again</td></tr>
+<tr><th scope="row">Topoisomerase</th><td>Cuts and rejoins the DNA ahead of the fork to relieve the overwinding that unwinding causes (in bacteria, the one called <span class="gl" tabindex="0" data-c="topoisomerase">gyrase</span>)</td></tr>
+<tr><th scope="row">Primase</th><td>Builds a short <b><span class="gl" tabindex="0" data-c="primase">RNA primer</span></b> paired to the template</td></tr>
+<tr><th scope="row">DNA polymerase III (bacteria)</th><td>Adds DNA <a class="gl" href="../notes/nucleic-acids.html" data-c="nucleotide">nucleotides</a> to the 3′ end of the <span class="gl" tabindex="0" data-c="primer">primer</span> or growing strand, matching each to the template</td></tr>
+<tr><th scope="row">DNA polymerase I (bacteria)</th><td>Removes <a class="gl" href="../notes/nucleic-acids.html" data-c="rna">RNA</a> primers and replaces them with DNA</td></tr>
+<tr><th scope="row">DNA ligase</th><td>Seals the nick left between neighboring stretches of DNA</td></tr>
+</tbody>
+</table></div>
+<p>Two rules explain everything else. First, <b><span class="gl" tabindex="0" data-c="dna-polymerase">DNA polymerase</span></b> can only add a nucleotide to the free 3′ –OH of an existing strand, so it cannot start a strand from nothing; a <b>primer</b> supplies the first 3′ end. Second, it builds only in the 5′ to 3′ direction, reading the template 3′ to 5′. Eukaryotes use different polymerases for the same jobs, but the rules are the same.</p>
+
+<h2 id="leading-and-lagging-strands">Leading and lagging strands</h2>
+<p>The two templates run in opposite directions, but both new strands must grow 5′ to 3′. At one fork:</p>
+<ul>
+<li>On one template, 5′-to-3′ growth points toward the fork. DNA polymerase follows the fork continuously from a single primer. This new strand is the <b><span class="gl" tabindex="0" data-c="leading-strand">leading strand</span></b>.</li>
+<li>On the other template, 5′-to-3′ growth points away from the fork. As the fork opens more template, primase starts a new primer near the fork, and DNA polymerase builds a short piece back toward the previous one. These pieces are <b><span class="gl" tabindex="0" data-c="lagging-strand">Okazaki fragments</span></b> (about 1,000-2,000 nucleotides in bacteria, 100-200 in eukaryotes), and the strand they form is the <b>lagging strand</b>.</li>
+</ul>
+<p>Each fragment then needs finishing: DNA polymerase I removes its RNA primer and fills the gap with DNA, and <b><span class="gl" tabindex="0" data-c="ligase">DNA ligase</span></b> joins the fragments. In a bacterium with a ligase that fails, short pieces of new DNA pile up and are never joined.</p>
+<div class="worked">
+<p><b>Worked example: writing a new strand.</b> The template reads 3′-TACCGGAT-5′. What is the new strand?</p>
+<p><b>Step 1.</b> Pair each base: T→A, A→T, C→G, C→G, G→C, G→C, A→T, T→A. <b>Step 2.</b> The new strand is <a class="gl" href="../notes/nucleic-acids.html" data-c="antiparallel">antiparallel</a>, so its 5′ end lies opposite the template's 3′ end: 5′-ATGGCCTA-3′. <b>Step 3.</b> Check: it was built 5′ to 3′, reading the template 3′ to 5′.</p>
+</div>
+
+<h2 id="keeping-the-copy-accurate">Keeping the copy accurate</h2>
+<p>DNA polymerase pairs bases with about one mistake per 100,000 nucleotides. Two systems bring that down to roughly one in a billion or better:</p>
+<ul>
+<li><b><span class="gl" tabindex="0" data-c="proofreading">Proofreading</span>:</b> as it works, DNA polymerase checks each newly added base. If it is mispaired, the enzyme backs up, removes it and tries again.</li>
+<li><b>Mismatch repair:</b> after copying, other enzymes scan the new DNA, recognize a mispaired base, cut out a stretch of the new strand containing it and refill it, using the old strand as the template.</li>
+</ul>
+<p>Mistakes that survive both become permanent changes in the sequence, passed on at the next division. People who inherit a faulty mismatch repair <a class="gl" href="../notes/nucleic-acids.html" data-c="gene-basic">gene</a> accumulate such changes faster and have a high risk of some cancers, including colon <a class="gl" href="../notes/cell-cycle-regulation.html" data-c="cancer">cancer</a>. Other repair systems fix DNA damaged by chemicals or radiation, the damage that <a class="gl" href="../notes/cell-cycle-regulation.html" data-c="checkpoint">checkpoints</a> detect (topic 4.6).</p>
+
+<h2 id="the-end-problem-and-telomeres">The end problem and telomeres</h2>
+<p><a class="gl" href="../notes/dna-rna-structure.html" data-c="linear-chromosome">Linear chromosomes</a> have a problem a circle does not. At the very end of a lagging strand, the last RNA primer is removed, but there is no DNA beyond it whose 3′ end DNA polymerase could extend into the gap. So each round of copying leaves the <a class="gl" href="../notes/cell-structure-function.html" data-c="chromosome-basic">chromosome</a> a little shorter. The ends are capped by <b><span class="gl" tabindex="0" data-c="telomere">telomeres</span></b>: long runs of a short repeated sequence with no genes, so the losses cost nothing at first. In cells that divide many times, such as the dividing cells of bone marrow and the cells that make sperm, the enzyme <b>telomerase</b> adds repeats back. Most <a class="gl" href="../notes/cell-cycle.html" data-c="somatic-cell">body cells</a> make little telomerase, so their telomeres shorten until the cell stops dividing. Many cancer cells switch telomerase back on, which is one reason they can keep dividing.</p>
+
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li>"The lagging strand is built 3′ to 5′." Every strand is built 5′ to 3′; the lagging strand is built in pieces.</li>
+<li>"<span class="gl" tabindex="0" data-c="helicase">Helicase</span> makes the new strand." Helicase only separates the strands; DNA polymerase builds.</li>
+<li>"Primers are DNA." They are short pieces of RNA, later replaced with DNA.</li>
+<li>"Conservative means each new molecule keeps an old strand." That is semiconservative; conservative means the whole parent molecule stays together.</li>
+</ul>
+
+<aside class="going-further">
+<p><b>Going further: why RNA primers?</b> A primer is the least accurate part of new DNA, because it is started without a 3′ end to check against. Making it out of RNA marks it as temporary: it is removed and rebuilt by DNA polymerase, which can proofread, so the final strand has no unchecked stretches.</p>
+</aside>
+
+    </article>
+    <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? <button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:dna-replication">Report a problem</button></p>
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Topic navigation"><a class="tb-chapter-link" href="dna-rna-structure.html"><span>&larr; Previous</span><b>DNA and RNA Structure</b></a><a class="tb-chapter-link next" href="transcription-rna-processing.html"><span>Next &rarr;</span><b>Transcription and RNA Processing</b></a></nav>
+  </main>
+</div>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="notes:dna-replication">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<script src="../../assets/report-question.js" defer></script>
+<script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-toc.js" defer></script>
+</body>
+</html>
