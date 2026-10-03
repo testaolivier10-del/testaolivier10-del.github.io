@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" width="780" height="420" role="img" aria-labelledby="t d">
+<title id="t">The stages of cellular respiration and where they happen</title>
+<desc id="d">Glucose is split by glycolysis in the cytosol into two pyruvate, making a net 2 ATP and 2 NADH. Pyruvate enters the mitochondrion, where pyruvate oxidation in the matrix releases 2 carbon dioxide and makes 2 NADH, and the Krebs cycle releases 4 carbon dioxide and makes 2 ATP, 6 NADH and 2 FADH2. NADH and FADH2 deliver electrons to the electron transport chain in the inner membrane, where oxygen accepts them and becomes water; ATP synthase makes about 26 to 28 ATP. The total is about 30 to 32 ATP per glucose.</desc>
+<defs><marker id="a7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="780" height="420" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <rect x="6" y="6" width="768" height="408" rx="18" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="20" y="30" font-size="14" font-weight="700" fill="#3D4A66">CYTOSOL</text>
+  <!-- glycolysis -->
+  <text x="80" y="70" font-size="16" font-weight="700" text-anchor="middle">glucose</text>
+  <path d="M80,78 L80,108" stroke="#1F2A28" stroke-width="3" marker-end="url(#a7)"/>
+  <rect x="20" y="112" width="120" height="50" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+  <text x="80" y="142" font-size="16" font-weight="700" text-anchor="middle">Glycolysis</text>
+  <text x="80" y="184" font-size="13" text-anchor="middle">net 2 ATP</text>
+  <text x="80" y="201" font-size="13" text-anchor="middle">2 NADH</text>
+  <path d="M80,210 L80,250" stroke="#1F2A28" stroke-width="3" marker-end="url(#a7)"/>
+  <text x="80" y="272" font-size="16" font-weight="700" text-anchor="middle">2 pyruvate</text>
+  <path d="M130,266 L218,266" stroke="#1F2A28" stroke-width="3" marker-end="url(#a7)"/>
+  <!-- mitochondrion -->
+  <rect x="222" y="40" width="540" height="360" rx="80" fill="#F7E6E2" stroke="#8E3B2E" stroke-width="3"/>
+  <rect x="246" y="64" width="492" height="312" rx="66" fill="#FCF3EE" stroke="#8E3B2E" stroke-width="3"/>
+  <text x="492" y="58" font-size="13" text-anchor="middle" fill="#8E3B2E">mitochondrion: outer membrane, intermembrane space, inner membrane</text>
+  <text x="300" y="96" font-size="14" font-weight="700" fill="#3D4A66">MATRIX</text>
+  <rect x="262" y="236" width="150" height="58" rx="10" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+  <text x="337" y="261" font-size="15" font-weight="700" text-anchor="middle">Pyruvate</text>
+  <text x="337" y="279" font-size="15" font-weight="700" text-anchor="middle">oxidation</text>
+  <text x="337" y="318" font-size="13" text-anchor="middle">2 CO<tspan font-size="10" baseline-shift="sub">2</tspan>, 2 NADH</text>
+  <path d="M337,232 L337,196" stroke="#1F2A28" stroke-width="3" marker-end="url(#a7)"/>
+  <text x="350" y="216" font-size="13">2 acetyl CoA</text>
+  <circle cx="337" cy="150" r="44" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/>
+  <text x="337" y="146" font-size="15" font-weight="700" text-anchor="middle">Krebs</text>
+  <text x="337" y="164" font-size="15" font-weight="700" text-anchor="middle">cycle</text>
+  <text x="400" y="118" font-size="13">4 CO<tspan font-size="10" baseline-shift="sub">2</tspan>, 2 ATP</text>
+  <text x="400" y="136" font-size="13">6 NADH, 2 FADH<tspan font-size="10" baseline-shift="sub">2</tspan></text>
+  <!-- ETC on inner membrane -->
+  <rect x="560" y="90" width="150" height="200" rx="14" fill="#D2EAF8" stroke="#0072B2" stroke-width="3"/>
+  <text x="635" y="122" font-size="14" font-weight="700" text-anchor="middle">Electron</text>
+  <text x="635" y="140" font-size="14" font-weight="700" text-anchor="middle">transport chain</text>
+  <text x="635" y="158" font-size="14" font-weight="700" text-anchor="middle">+ ATP synthase</text>
+  <text x="635" y="180" font-size="12" text-anchor="middle">(inner membrane)</text>
+  <text x="635" y="214" font-size="13" text-anchor="middle">O<tspan font-size="10" baseline-shift="sub">2</tspan> → H<tspan font-size="10" baseline-shift="sub">2</tspan>O</text>
+  <text x="635" y="246" font-size="14" font-weight="700" text-anchor="middle">about 26-28 ATP</text>
+  <path d="M470,150 L554,170" stroke="#0072B2" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#a7)"/>
+  <text x="420" y="196" font-size="13" fill="#005A8C">electrons carried</text>
+  <text x="420" y="212" font-size="13" fill="#005A8C">by NADH, FADH<tspan font-size="10" baseline-shift="sub">2</tspan></text>
+  <text x="492" y="352" font-size="15" font-weight="700" text-anchor="middle">Total: about 30-32 ATP per glucose</text>
+</g>
+</svg>

@@ -481,7 +481,9 @@ export function scanPages(map, root, dir = 'bio') {
       if (statSync(p).isDirectory()) walk(p);
       else if (f.endsWith('.html')) {
         const html = readFileSync(p, 'utf8');
-        const m = html.match(/<meta\s+name="bio-topic"\s+content="([^"]+)"/i);
+        // The generator marks a topic's lesson and notes pages on <body data-topic>;
+        // <meta name="bio-topic"> is accepted too.
+        const m = html.match(/<meta\s+name="bio-topic"\s+content="([^"]+)"/i) || html.match(/<body\b[^>]*\bdata-topic="([^"]+)"/i);
         if (!m) continue;
         results.push({ file: relative(root, p), topic: m[1], problems: scanPage(map, html, m[1]) });
       }
@@ -512,8 +514,27 @@ export function questionText(q) {
    can be a stimulus set ({ stimulus, questions: [...] }) whose stimulus is
    shared by its questions. Each yields { id, topic, text }. */
 export function bankQuestions(bank, fileTopic) {
-  const list = Array.isArray(bank) ? bank : (bank && Array.isArray(bank.questions) ? bank.questions : []);
   const out = [];
+  // The authored format (docs/apbio-architecture.md): { stimuli: { id: {...} }, items: [...] }.
+  // A shared stimulus is scanned once, against the topic of the first item that uses it.
+  if (bank && !Array.isArray(bank) && Array.isArray(bank.items)) {
+    const stimuli = bank.stimuli || {};
+    const seen = new Set();
+    for (const item of bank.items) {
+      if (!item) continue;
+      const sid = item.stimulus;
+      if (typeof sid === 'string' && stimuli[sid] && !seen.has(sid)) {
+        seen.add(sid);
+        const st = stimuli[sid];
+        const text = [st.title, st.text, st.html, st.table && JSON.stringify(st.table), st.chart && JSON.stringify(st.chart)]
+          .filter(Boolean).join('\n');
+        out.push({ id: `${sid} (stimulus)`, topic: item.topic || fileTopic, text });
+      }
+      out.push({ id: item.id, topic: item.topic || fileTopic, text: questionText({ ...item, stimulus: undefined }) });
+    }
+    return out;
+  }
+  const list = Array.isArray(bank) ? bank : (bank && Array.isArray(bank.questions) ? bank.questions : []);
   for (const item of list) {
     if (item && Array.isArray(item.questions)) {
       const shared = questionText({ stimulus: item.stimulus });

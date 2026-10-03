@@ -1,0 +1,67 @@
+{
+  "id": "frq-leaf-disk-light",
+  "type": "iee",
+  "points": 9,
+  "units": ["unit-3"],
+  "topics": ["photosynthesis"],
+  "practices": ["1.B", "3.C", "5.A", "5.B", "6.E"],
+  "stimulus": {
+    "kind": "setup",
+    "title": "Floating leaf disks",
+    "text": "<p>Students punched small disks from spinach leaves and used a syringe to pull the air out of the spaces inside them and replace it with a solution, so the disks sank. Each cup held 10 disks in 0.2% sodium bicarbonate solution, which releases CO₂ into the water. Cups were placed under a lamp at five light intensities in a 25 °C room. For each cup the students recorded ET50, the time until 5 of the 10 disks floated. Each light intensity was tested with 5 cups. Two extra cups were also set up: one at the highest light intensity with water instead of bicarbonate solution, and one with bicarbonate solution kept in the dark. In both extra cups, no disks floated within 30 minutes.</p>",
+    "table": {
+      "caption": "Time for half the disks to float (ET50), mean ± standard deviation, n = 5 cups",
+      "cols": ["Light intensity (µmol photons per m² per s)", "ET50 (min)"],
+      "rows": [
+        ["50", "24.5 ± 2.1"],
+        ["100", "15.2 ± 1.6"],
+        ["200", "9.8 ± 1.0"],
+        ["400", "7.6 ± 0.9"],
+        ["800", "7.4 ± 1.1"]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "a",
+      "prompt": "<b>Describe</b> the process in the leaf cells that makes the disks float. <b>Explain</b> why disks in water without bicarbonate do not float, even in bright light.",
+      "points": 2,
+      "rubric": [
+        { "point": "Describes that photosynthesis (the light reactions, splitting water) produces O₂, which collects in the air spaces of the disk and makes it buoyant.", "accept": ["O₂ from water splitting fills the spaces in the leaf", "oxygen produced by photosynthesis makes the disks float", "the light reactions release oxygen gas that builds up in the disk"] },
+        { "point": "Explains that without bicarbonate there is no CO₂ source, so the Calvin cycle stops; NADP⁺ (and ADP) are not regenerated, so the light reactions stop and little O₂ is produced.", "accept": ["no CO₂ means no Calvin cycle, so NADPH is not used and NADP⁺ runs out, stopping electron flow and O₂ release", "without CO₂ photosynthesis cannot continue, so no oxygen accumulates"] }
+      ],
+      "sample": "In the light, photosystem II splits water and releases O₂. The O₂ gas collects in the spaces inside the leaf disk, which makes it float. Without bicarbonate there is no CO₂, so the Calvin cycle cannot fix carbon and stops using NADPH and ATP. NADP⁺ is then not regenerated, electrons have nowhere to go, and the light reactions, including water splitting, stop. So almost no O₂ is made and the disks stay down."
+    },
+    {
+      "label": "b",
+      "prompt": "<b>Identify</b> the independent variable in this experiment. <b>Identify</b> what the cup kept in the dark controls for. <b>Justify</b> the students' decision to test 5 cups at each light intensity.",
+      "points": 3,
+      "rubric": [
+        { "point": "Identifies light intensity as the independent variable.", "accept": ["light intensity", "the brightness of the light", "µmol photons per m² per s"] },
+        { "point": "States that the dark cup shows that light is required for the disks to float, so floating is due to photosynthesis rather than something else (such as gas from the bicarbonate solution or cellular respiration).", "accept": ["shows the disks do not float without light", "rules out that the bicarbonate solution alone makes disks float", "shows floating depends on light-driven photosynthesis"] },
+        { "point": "Justifies replication: individual cups vary (disk size, leaf age, handling), so using 5 cups lets the students calculate a mean and a measure of variability and makes the results more reliable.", "accept": ["to reduce the effect of variation between cups", "so a mean and standard deviation can be calculated", "repeated trials make the conclusion more reliable"] }
+      ],
+      "sample": "The independent variable is light intensity. The cup kept in the dark has bicarbonate but no light; because its disks do not float, it shows that floating needs light, so it comes from photosynthesis and not from the solution or from respiration. Disks and cups differ from one another, so testing 5 cups lets the students average out that variation, calculate a mean and standard deviation, and judge whether differences are real."
+    },
+    {
+      "label": "c",
+      "prompt": "<b>Calculate</b> the percent change in mean ET50 when light intensity increases from 50 to 200 µmol photons per m² per s. Using the data, <b>determine</b> whether the mean ET50 at 400 and at 800 µmol photons per m² per s are significantly different, using ± 2 standard errors of the mean (SE = SD ÷ √n).",
+      "points": 2,
+      "rubric": [
+        { "point": "Calculates about −60% (a 60% decrease): (9.8 − 24.5) ÷ 24.5 × 100 = −60%.", "accept": ["−60%", "60% decrease", "decreased by 60%", "−60.0%"] },
+        { "point": "Calculates SE ≈ 0.40 (400) and ≈ 0.49 (800), giving intervals of about 6.8-8.4 and 6.4-8.4 min; the intervals overlap, so the difference is not significant.", "accept": ["the ±2 SE ranges overlap, so not significantly different", "7.6 ± 0.8 and 7.4 ± 1.0 overlap"] }
+      ],
+      "sample": "Percent change = (9.8 − 24.5) ÷ 24.5 × 100 = −60%, a 60% decrease. At 400: SE = 0.9 ÷ √5 ≈ 0.40, so mean ± 2 SE ≈ 6.8 to 8.4 min. At 800: SE = 1.1 ÷ √5 ≈ 0.49, so ≈ 6.4 to 8.4 min. The ranges overlap, so the data do not show a significant difference between 400 and 800."
+    },
+    {
+      "label": "d",
+      "prompt": "The students repeat the 800 µmol photons per m² per s trial with 0.4% bicarbonate instead of 0.2%. <b>Predict</b> the effect on ET50. <b>Justify</b> your prediction using the data.",
+      "points": 2,
+      "rubric": [
+        { "point": "Predicts that ET50 will decrease (disks float sooner).", "accept": ["ET50 gets shorter", "the disks float faster", "ET50 below 7.4 min"] },
+        { "point": "Justifies with the leveling off: ET50 barely changes between 400 and 800, so light is no longer the limiting factor; CO₂ (or another factor) limits the rate, and more bicarbonate supplies more CO₂ to the Calvin cycle.", "accept": ["between 400 and 800 the rate levels off, so CO₂ is limiting at high light", "more CO₂ lets the Calvin cycle use NADPH and ATP faster, so the light reactions release O₂ faster"] }
+      ],
+      "sample": "ET50 will decrease. Going from 400 to 800 changed ET50 only from 7.6 to 7.4 min, a difference that is not significant, so at high light, light is no longer limiting. CO₂ is the likely limiting factor. Doubling the bicarbonate supplies more CO₂, so the Calvin cycle runs faster, regenerates NADP⁺ faster, and the light reactions release O₂ faster, so the disks float sooner."
+    }
+  ]
+}

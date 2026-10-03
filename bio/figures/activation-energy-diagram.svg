@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" width="680" height="400" role="img" aria-labelledby="t d">
+<title id="t">Energy diagram of a reaction with and without an enzyme</title>
+<desc id="d">Energy of the molecules on the vertical axis, progress of the reaction on the horizontal axis. Reactants start at a higher energy than products. Without an enzyme, the molecules must climb a tall hill to reach the transition state; with an enzyme the hill is much lower. The reactants and products sit at the same levels in both cases, so the energy released by the reaction is the same.</desc>
+<defs>
+  <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+</defs>
+<rect width="680" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <line x1="80" y1="350" x2="640" y2="350" stroke="#1F2A28" stroke-width="2"/>
+  <line x1="80" y1="350" x2="80" y2="30" stroke="#1F2A28" stroke-width="2"/>
+  <text x="360" y="382" font-size="16" text-anchor="middle">Progress of the reaction →</text>
+  <text transform="translate(40,200) rotate(-90)" font-size="16" text-anchor="middle">Energy of the molecules →</text>
+  <g stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="5 5" fill="none">
+    <line x1="190" y1="250" x2="618" y2="250"/>
+    <line x1="220" y1="80" x2="330" y2="80"/>
+    <line x1="290" y1="170" x2="330" y2="170"/>
+  </g>
+  <path d="M90,250 L190,250 C250,250 280,80 320,80 C360,80 390,310 450,310 L620,310" fill="none" stroke="#D55E00" stroke-width="4"/>
+  <path d="M190,250 C250,250 280,170 320,170 C360,170 390,310 450,310" fill="none" stroke="#0072B2" stroke-width="4"/>
+  <line x1="228" y1="246" x2="228" y2="84" stroke="#D55E00" stroke-width="2.5" marker-start="url(#a2)" marker-end="url(#a2)"/>
+  <line x1="300" y1="246" x2="300" y2="174" stroke="#0072B2" stroke-width="2.5" marker-start="url(#a2)" marker-end="url(#a2)"/>
+  <text x="220" y="150" font-size="15" text-anchor="end" fill="#8E3B2E">activation</text>
+  <text x="220" y="168" font-size="15" text-anchor="end" fill="#8E3B2E">energy without</text>
+  <text x="220" y="186" font-size="15" text-anchor="end" fill="#8E3B2E">an enzyme</text>
+  <text x="300" y="272" font-size="15" text-anchor="middle" fill="#005A8C">activation energy</text>
+  <text x="300" y="290" font-size="15" text-anchor="middle" fill="#005A8C">with an enzyme</text>
+  <text x="320" y="66" font-size="15" text-anchor="middle">transition state</text>
+  <text x="130" y="240" font-size="16" font-weight="700" text-anchor="middle">reactants</text>
+  <text x="530" y="335" font-size="16" font-weight="700" text-anchor="middle">products</text>
+  <line x1="612" y1="254" x2="612" y2="306" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a2)"/>
+  <text x="602" y="276" font-size="14" text-anchor="end">energy released:</text>
+  <text x="602" y="294" font-size="14" text-anchor="end">same either way</text>
+  <g font-size="15">
+    <line x1="430" y1="60" x2="470" y2="60" stroke="#D55E00" stroke-width="4"/><text x="478" y="65">no enzyme</text>
+    <line x1="430" y1="88" x2="470" y2="88" stroke="#0072B2" stroke-width="4"/><text x="478" y="93">with an enzyme</text>
+  </g>
+</g>
+</svg>

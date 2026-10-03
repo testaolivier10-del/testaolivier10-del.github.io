@@ -1,0 +1,9 @@
+{
+  "figure": "thylakoid-light-reactions",
+  "labels": [
+    { "id": "psii", "name": "Photosystem II", "box": [92, 174, 56, 24], "concept": "photosystem" },
+    { "id": "cyt", "name": "Cytochrome complex (electron transport chain)", "box": [252, 168, 72, 34], "concept": "etc" },
+    { "id": "psi", "name": "Photosystem I", "box": [428, 174, 44, 24], "concept": "photosystem" },
+    { "id": "atpsyn", "name": "ATP synthase", "box": [664, 100, 52, 32], "concept": "atp-synthase" }
+  ]
+}

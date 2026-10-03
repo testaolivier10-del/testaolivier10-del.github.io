@@ -1,0 +1,672 @@
+{
+  "stimuli": {
+    "cellular-energy-s1": {
+      "kind": "table",
+      "title": "Energy changes of five reactions",
+      "text": "<p>The table gives the standard free-energy change (ΔG) of five reactions that occur in cells. A negative ΔG means the reaction releases energy; a positive ΔG means it needs energy. When two reactions are coupled, their ΔG values add.</p>",
+      "table": {
+        "caption": "Standard free-energy change of five cell reactions",
+        "cols": [
+          "Reaction",
+          "Equation",
+          "ΔG (kJ/mol)"
+        ],
+        "rows": [
+          [
+            "1",
+            "ATP + H₂O → ADP + Pi",
+            "−30.5"
+          ],
+          [
+            "2",
+            "glutamate + NH₃ → glutamine + H₂O",
+            "+14.2"
+          ],
+          [
+            "3",
+            "glucose + Pi → glucose 6-phosphate + H₂O",
+            "+13.8"
+          ],
+          [
+            "4",
+            "creatine phosphate + H₂O → creatine + Pi",
+            "−43.0"
+          ],
+          [
+            "5",
+            "glucose 6-phosphate + H₂O → glucose + Pi",
+            "−13.8"
+          ]
+        ]
+      }
+    },
+    "cellular-energy-s2": {
+      "kind": "setup",
+      "title": "Controlling the isoleucine pathway",
+      "text": "<p>Bacteria make the amino acid isoleucine from threonine in a pathway of five enzyme-catalyzed steps. Researchers purified enzyme 1, which catalyzes the first step, and measured its rate with plenty of threonine as different amounts of isoleucine, or of valine (a similar amino acid), were added. They also tested enzyme 1 from a bacterial strain whose enzyme 1 has one amino acid changed at its allosteric site.</p>",
+      "table": {
+        "caption": "Rate of enzyme 1 (% of its rate with nothing added)",
+        "cols": [
+          "Amino acid added (mM)",
+          "Normal enzyme 1 + isoleucine",
+          "Normal enzyme 1 + valine",
+          "Changed enzyme 1 + isoleucine"
+        ],
+        "rows": [
+          [
+            "0",
+            "100",
+            "100",
+            "100"
+          ],
+          [
+            "0.1",
+            "82",
+            "100",
+            "99"
+          ],
+          [
+            "0.5",
+            "45",
+            "98",
+            "97"
+          ],
+          [
+            "1.0",
+            "22",
+            "99",
+            "95"
+          ],
+          [
+            "5.0",
+            "4",
+            "97",
+            "93"
+          ]
+        ]
+      }
+    },
+    "cellular-energy-s3": {
+      "kind": "setup",
+      "title": "Where did the energy go?",
+      "text": "<p>A yeast culture was grown for 24 hours in an insulated, sealed container that measures all heat released (a calorimeter). The yeast used 10.0 g of glucose, which holds 156 kJ of chemical energy that can be released by breaking it down to carbon dioxide and water. Researchers measured the heat released and the chemical energy in the new yeast cells built during the 24 hours.</p>",
+      "table": {
+        "caption": "Energy budget of the yeast culture over 24 hours",
+        "cols": [
+          "Quantity",
+          "Energy (kJ)"
+        ],
+        "rows": [
+          [
+            "Chemical energy in the 10.0 g of glucose used",
+            "156"
+          ],
+          [
+            "Heat released to the calorimeter",
+            "109"
+          ],
+          [
+            "Chemical energy in the new yeast cells built",
+            "47"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-cellular-energy-1",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-energy-s1",
+      "q": "Which reactions in the table are exergonic?",
+      "options": [
+        "1, 4 and 5",
+        "2 and 3",
+        "1 and 4",
+        "2, 3 and 5"
+      ],
+      "correct": 0,
+      "fixed": true,
+      "why": {
+        "correct": "Exergonic reactions release energy and have a negative ΔG: reactions 1 (−30.5), 4 (−43.0) and 5 (−13.8).",
+        "options": [
+          "All three have a negative ΔG, so they release energy.",
+          "Reactions 2 and 3 have a positive ΔG: they are endergonic.",
+          "Reaction 5 also has a negative ΔG (−13.8), so it is exergonic too.",
+          "Reactions 2 and 3 are endergonic; only reaction 5 of these three releases energy."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-2",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cellular-energy-s1",
+      "q": "Cells make glutamine by coupling reaction 2 to reaction 1. What is the ΔG of the coupled process, in kJ/mol? Include the sign and give one decimal place.",
+      "numeric": {
+        "answer": -16.3,
+        "tol": 0.05,
+        "unit": "kJ/mol",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Coupled ΔG = ΔG of reaction 1 + ΔG of reaction 2 = −30.5 + 14.2 = −16.3 kJ/mol. The negative total means the coupled process releases energy and can go."
+      }
+    },
+    {
+      "id": "bio-cellular-energy-3",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-energy-s1",
+      "q": "Making ATP from ADP and Pi is the reverse of reaction 1, so its ΔG is +30.5 kJ/mol. Which claim is supported by the table?",
+      "options": [
+        "Breaking down creatine phosphate can drive ATP synthesis, but breaking down glucose 6-phosphate cannot.",
+        "Breaking down glucose 6-phosphate can drive ATP synthesis, because its ΔG is negative.",
+        "Neither creatine phosphate nor glucose 6-phosphate can drive ATP synthesis, because ATP synthesis is endergonic.",
+        "Both can drive ATP synthesis, because any exergonic reaction can be coupled to any endergonic one."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Coupled with creatine phosphate: −43.0 + 30.5 = −12.5 kJ/mol, negative, so it goes. With glucose 6-phosphate: −13.8 + 30.5 = +16.7 kJ/mol, positive, so it does not.",
+        "options": [
+          "Creatine phosphate releases more than 30.5 kJ/mol; glucose 6-phosphate releases less. Muscles use creatine phosphate to remake ATP quickly.",
+          "A negative ΔG is not enough: it must outweigh the +30.5 needed. −13.8 + 30.5 is still positive.",
+          "Endergonic reactions go when coupled to a larger exergonic one; creatine phosphate is large enough.",
+          "The total must be negative; coupling glucose 6-phosphate breakdown with ATP synthesis gives +16.7 kJ/mol."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-4",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-energy-s1",
+      "q": "In the cell, coupling reaction 1 with reaction 2 happens in two steps on one enzyme. Which description of how the energy is passed on is most accurate?",
+      "options": [
+        "ATP's last phosphate moves onto glutamate, making a less stable intermediate that reacts with NH₃.",
+        "ATP is hydrolyzed first, and the heat released warms the glutamate and NH₃ so they react faster.",
+        "ATP binds the enzyme's allosteric site, lowering the ΔG of reaction 2 to below zero on its own.",
+        "ATP gives its energy to the enzyme, which stores the energy in its structure and later passes it on to glutamate."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Coupling works through a shared intermediate. Phosphorylating glutamate makes a high-energy, unstable molecule; its reaction with NH₃ releases the phosphate and is exergonic.",
+        "options": [
+          "Phosphate transfer to a reactant (phosphorylation) is the usual way ATP drives a reaction.",
+          "Heat spreads out and cannot drive a specific reaction; the energy is passed on through the phosphate.",
+          "An allosteric effect changes the enzyme's rate, not the ΔG of the reaction it catalyzes.",
+          "Enzymes come out of reactions unchanged and do not store energy."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-5",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-energy-s1",
+      "q": "A student claims that a cell can drive a reaction with ΔG = +45.0 kJ/mol by coupling it to the hydrolysis of one ATP. Which response is best?",
+      "options": [
+        "It fails: the total would be +14.5 kJ/mol, so the cell needs two ATP or a larger exergonic partner.",
+        "The claim holds: any reaction coupled to ATP hydrolysis goes, because ATP is the cell's energy carrier.",
+        "The claim holds: an enzyme lowers the activation energy enough to make the +45.0 reaction go with one ATP.",
+        "It fails: endergonic reactions do not occur in cells, whatever exergonic reaction they are coupled to."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "−30.5 + 45.0 = +14.5 kJ/mol, still positive. Coupling to two ATP (−61.0 + 45.0 = −16.0) or to creatine phosphate plus ATP would make the total negative.",
+        "options": [
+          "The coupled total must be negative; one ATP leaves it positive.",
+          "ATP hydrolysis supplies about 30.5 kJ/mol, which is not enough for a +45.0 reaction.",
+          "Enzymes change the rate, not the ΔG; a positive total stays positive.",
+          "Endergonic reactions go all the time in cells when coupled to enough energy release."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-6",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-energy-s2",
+      "q": "Which statement best describes the data for the normal enzyme 1?",
+      "options": [
+        "Its rate falls steeply as isoleucine rises; the same amounts of valine barely change it.",
+        "Its rate falls by about the same amount whether isoleucine or valine is added.",
+        "Its rate rises as isoleucine rises and falls as valine rises.",
+        "Its rate falls just at 5.0 mM isoleucine, and at lower amounts isoleucine has no clear effect on it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Isoleucine lowers the rate from 100% to 4% across the range; valine leaves it at 97-100%.",
+        "options": [
+          "Steep fall with isoleucine, almost none with valine.",
+          "Valine leaves the rate at 97-100%, while isoleucine cuts it to 4%.",
+          "Isoleucine lowers the rate; it does not raise it.",
+          "The rate already falls to 82% at 0.1 mM and 45% at 0.5 mM."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-7",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-energy-s2",
+      "q": "Which explanation of the isoleucine results is most consistent with all three columns?",
+      "options": [
+        "Isoleucine binds enzyme 1's allosteric site and changes its shape; the changed site does not bind it.",
+        "Isoleucine competes with threonine for enzyme 1's active site, since both are amino acids of a similar size and shape.",
+        "Isoleucine denatures enzyme 1, since the rate drops close to zero at the highest amount added.",
+        "Isoleucine is broken down by enzyme 1 instead of threonine, so less threonine is converted."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Changing one amino acid at the allosteric site makes enzyme 1 ignore isoleucine (93-99%), so isoleucine must act at that site. Valine, though similar, does not fit it.",
+        "options": [
+          "The changed-enzyme column ties isoleucine's effect to the allosteric site.",
+          "The changed enzyme differs only at the allosteric site, yet isoleucine stops working on it, so the active site is not where isoleucine acts.",
+          "Denaturation would not be undone by a change at the allosteric site, and a substance that denatures proteins would affect the changed enzyme too.",
+          "The experiments had plenty of threonine, and the allosteric-site result points to regulation, not a new substrate."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-8",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "cellular-energy-s2",
+      "q": "The strain with the changed enzyme 1 is grown on a medium that already contains plenty of isoleucine. Compared with the normal strain, what is most likely?",
+      "options": [
+        "It keeps making isoleucine it does not need, spending threonine and ATP the normal strain saves.",
+        "It stops making isoleucine sooner, because its enzyme 1 is more sensitive to isoleucine.",
+        "It makes the same amount of isoleucine, because the medium supplies the isoleucine it needs.",
+        "It makes no isoleucine, because a change at the allosteric site also destroys the shape of the active site."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The normal strain's pathway shuts down when isoleucine is plentiful. The changed enzyme 1 ignores isoleucine, so the pathway keeps running and wastes raw materials and energy.",
+        "options": [
+          "Without feedback inhibition, the pathway runs whether or not the product is needed.",
+          "The data show the changed enzyme is far less sensitive (93% at 5.0 mM against 4%).",
+          "The normal strain switches its pathway off; the changed strain cannot, so the two differ.",
+          "The changed enzyme works at full rate with nothing added (100%), so its active site is intact."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-9",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-energy-s2",
+      "q": "Why is it an advantage that isoleucine inhibits the first enzyme of the pathway rather than the last?",
+      "options": [
+        "Stopping step 1 keeps threonine and energy from being spent on intermediates that are not needed.",
+        "The first enzyme is the one enzyme of the pathway that has an active site, so it is the one that can be inhibited.",
+        "The last enzyme makes isoleucine, so inhibiting it would raise the amount of isoleucine in the cell.",
+        "Inhibiting the first enzyme lowers the ΔG of each later step, so the pathway runs faster."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If the last step were blocked, the first four would keep running and intermediates would pile up. Blocking the first step saves the starting material and the energy spent on every step.",
+        "options": [
+          "Shutting the entrance saves material and energy along the whole pathway.",
+          "Every enzyme in the pathway has an active site.",
+          "Inhibiting the last enzyme would lower isoleucine production, not raise it, but would still waste the earlier steps.",
+          "Inhibition slows a pathway; it does not change ΔG or speed anything up."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-10",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-energy-s2",
+      "q": "By what percentage does 1.0 mM isoleucine lower the rate of the normal enzyme 1? Give a whole number.",
+      "numeric": {
+        "answer": 78,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Percent decrease = (100 − 22) ÷ 100 × 100 = 78%."
+      }
+    },
+    {
+      "id": "bio-cellular-energy-11",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "cellular-energy-s3",
+      "q": "What percentage of the glucose's chemical energy ended up in the new yeast cells? Give a whole number.",
+      "numeric": {
+        "answer": 30,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "47 ÷ 156 × 100 = 30.1%, which rounds to 30%."
+      }
+    },
+    {
+      "id": "bio-cellular-energy-12",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-energy-s3",
+      "q": "Which principle do the data most directly support?",
+      "options": [
+        "The first law: the heat released plus the energy in new cells (109 + 47 kJ) equals the energy in the glucose.",
+        "The second law: the heat released (109 kJ) is more than the energy in the new cells (47 kJ).",
+        "Energy coupling: the 47 kJ in the new cells came from ATP that the yeast made using the 109 kJ of heat.",
+        "Feedback inhibition: the yeast stopped using glucose once its new cells held 47 kJ."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "109 + 47 = 156 kJ, exactly the energy in the glucose. No energy appeared or disappeared; it changed form.",
+        "options": [
+          "The budget balances, which is what conservation of energy predicts.",
+          "Losing energy as heat fits the second law, but comparing the two numbers does not test it; the sum is what these data show.",
+          "Heat cannot be used to make ATP; the energy for building cells came from breaking down glucose, and the heat is what was lost.",
+          "The data show energy amounts, not whether glucose use stopped or what stopped it."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-13",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "cellular-energy-s3",
+      "q": "Why can't the yeast use the 109 kJ of heat to build more cells?",
+      "options": [
+        "Heat is energy spread out as random molecular motion, which cells are unable to capture for work.",
+        "The heat was destroyed when it left the yeast cells and entered the calorimeter.",
+        "Heat is a form of matter rather than a form of energy, so it does not count toward building new cells.",
+        "The heat had already been used once to make ATP, and energy can be used just once."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "By the second law, every conversion releases some energy as heat. That spread-out energy raises disorder and cannot be gathered back to do a cell's work.",
+        "options": [
+          "Heat is the disordered, unusable end form of energy in cells.",
+          "Energy is never destroyed; the calorimeter measured it.",
+          "Heat is energy (molecular motion), which is why it is counted in kJ.",
+          "Heat is not used to make ATP; ATP is made with energy from breaking down glucose."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-14",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "cellular-energy-s3",
+      "q": "The container is opened, the glucose is removed, and the yeast are kept sealed for several days with no food. What is most likely to happen?",
+      "options": [
+        "Without an energy input, the yeast lose their order over time, and their cells break down and die.",
+        "The yeast keep their order without food, because their cells already contain the molecules they need for life.",
+        "The yeast make new energy from the heat stored in the container, so they keep growing.",
+        "The yeast stop releasing any heat, because no energy conversions happen in a cell without food."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Staying ordered (repairing molecules, keeping gradients) takes a steady energy input. After stored fuel runs out, order is lost and the cells die.",
+        "options": [
+          "Order needs constant energy input; without it the second law wins.",
+          "Molecules wear out and gradients leak; keeping them takes energy, which needs food.",
+          "Energy cannot be created, and heat cannot be used to drive cell reactions.",
+          "Cells first break down their own stored fuel, releasing heat, before they die."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-15",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which statement is the second law of thermodynamics as it applies to cells?",
+      "options": [
+        "Each energy conversion turns some energy into heat, increasing the disorder of the universe.",
+        "Energy can be changed from one form to another, but it is not created or destroyed in the process.",
+        "Reactions that release energy run faster than reactions that need energy.",
+        "Living things create order, so the disorder of the universe decreases over time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "No conversion is 100% efficient: some energy always ends up as heat, and entropy (disorder) increases.",
+        "options": [
+          "This is the second law: conversions release heat and raise disorder.",
+          "This is the first law, conservation of energy.",
+          "Whether a reaction releases energy says nothing about its speed; that depends on activation energy.",
+          "Cells build local order only by releasing heat that raises disorder elsewhere even more."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-16",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Joining amino acids into a protein is",
+      "options": [
+        "anabolic and endergonic, so it is coupled to ATP hydrolysis",
+        "catabolic and exergonic, so it releases energy the cell can use",
+        "anabolic and exergonic, so it goes without any energy input",
+        "catabolic and endergonic, so it is coupled to ATP synthesis"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Building a large molecule from small ones is anabolic, and it needs energy (endergonic); cells drive it with ATP and other phosphate-carrying molecules.",
+        "options": [
+          "Building molecules uses energy, supplied by coupling to ATP hydrolysis.",
+          "Breaking proteins down is catabolic; building them is not.",
+          "Building a protein needs energy; it does not happen on its own.",
+          "Building is anabolic, and it is driven by ATP being used up, not made."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-17",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "In the overall reaction C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O, which statement about electrons is correct?",
+      "options": [
+        "Glucose is oxidized as it loses electrons; oxygen is reduced as it gains them, releasing energy.",
+        "Glucose is reduced as it gains electrons from oxygen, which stores energy in the carbon dioxide made.",
+        "Oxygen is oxidized as it loses electrons to glucose, and the water formed holds most of the energy.",
+        "No electrons move, because each atom on the left side of the equation also appears in the products on the right."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glucose's hydrogen atoms, with their electrons, end up on oxygen in water. Glucose loses electrons (oxidized), oxygen gains them (reduced), and electrons moving toward oxygen release energy.",
+        "options": [
+          "Glucose gives up electrons; oxygen, which pulls electrons strongly, accepts them.",
+          "This reverses the direction: glucose loses electrons, it does not gain them.",
+          "Oxygen gains electrons, so it is reduced; and the products hold less energy than the reactants.",
+          "Atoms are conserved, but electrons shift between them, which is what a redox reaction is."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-18",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A resting adult holds about 50 g of ATP in the body but hydrolyzes about 50 kg of ATP per day. Which claim do these numbers best support?",
+      "options": [
+        "Each ATP molecule is remade from ADP and Pi about a thousand times a day, so ATP carries energy rather than storing it.",
+        "The body stores most of its energy in the form of ATP, which is why it holds as much as 50 g at any moment.",
+        "The body makes 50 kg of new adenine, ribose and phosphate each day to build fresh ATP.",
+        "ATP hydrolysis releases so much energy that a person needs just 50 g of food per day to supply it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "50 kg ÷ 50 g = 1,000. A small pool is recycled about a thousand times a day: ATP is a short-term carrier. Long-term stores are fat and glycogen.",
+        "options": [
+          "The ratio shows rapid recycling of a small pool.",
+          "50 g is a tiny store; it would last about a minute at that rate of use.",
+          "ADP and Pi are recycled into ATP; the parts are reused, not made new.",
+          "The energy to remake ATP comes from food; 50 kg of ATP per day needs far more than 50 g of food."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-19",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the two examples of energy coupling.",
+      "options": [
+        "A membrane pump uses ATP hydrolysis to move sodium ions against their concentration gradient.",
+        "A muscle protein uses ATP hydrolysis to change shape and pull on a fiber.",
+        "Sweat evaporating from skin carries heat away from the body.",
+        "Glucose diffusing into a cell through a channel protein down its gradient.",
+        "A hot plate warming a beaker of water."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "In coupling, an exergonic reaction (ATP hydrolysis) drives an endergonic process (moving ions uphill, doing mechanical work).",
+        "options": [
+          "Pumping against a gradient needs energy, supplied by ATP hydrolysis.",
+          "Muscle movement is work driven by ATP hydrolysis.",
+          "Evaporation is a physical change with no reaction driving another.",
+          "Diffusion down a gradient needs no energy input, so nothing is coupled.",
+          "Heating is energy transfer, not one reaction driving another."
+        ]
+      }
+    },
+    {
+      "id": "bio-cellular-energy-20",
+      "type": "predict",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A poison stops a cell from making ATP. Predict the change in each variable over the next few minutes.",
+      "variables": [
+        {
+          "name": "ATP concentration in the cell",
+          "answer": "down",
+          "why": "ATP keeps being hydrolyzed for work but is no longer remade, so its level falls."
+        },
+        {
+          "name": "ADP concentration in the cell",
+          "answer": "up",
+          "why": "Each ATP hydrolyzed leaves an ADP, and ADP is no longer turned back into ATP, so it builds up."
+        },
+        {
+          "name": "Concentration difference of sodium ions across the membrane",
+          "answer": "down",
+          "why": "The pump that keeps sodium out needs ATP; as ATP runs out, sodium leaks in and the difference shrinks."
+        },
+        {
+          "name": "Energy released per ATP that is still hydrolyzed",
+          "answer": "none",
+          "why": "The energy released by hydrolyzing one ATP depends on the reaction, not on how fast ATP is made."
+        }
+      ],
+      "why": {
+        "correct": "With no way to remake ATP, the ATP-ADP cycle stops: ATP falls, ADP rises, and the processes coupled to ATP hydrolysis, such as pumping ions, fail."
+      }
+    },
+    {
+      "id": "bio-cellular-energy-21",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "cellular-energy",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "In the ATP cycle, which process supplies the energy to turn ADP and Pi back into ATP?",
+      "options": [
+        "Exergonic reactions that break down food molecules",
+        "Endergonic reactions that build proteins from amino acids",
+        "Heat released by other reactions in the cell",
+        "Hydrolysis of other ATP molecules in the same cell"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Making ATP is endergonic (+30.5 kJ/mol), so it is coupled to energy-releasing breakdown of fuel molecules.",
+        "options": [
+          "Breaking down food releases the energy that recharges ADP to ATP.",
+          "Building proteins uses energy; it cannot supply it.",
+          "Heat cannot drive cell reactions; it is energy that is no longer usable.",
+          "Using one ATP to make another gains nothing: the energies cancel, and some is lost as heat."
+        ]
+      }
+    }
+  ]
+}

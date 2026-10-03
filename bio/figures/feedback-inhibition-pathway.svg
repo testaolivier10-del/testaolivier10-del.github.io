@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="720" height="270" role="img" aria-labelledby="t d">
+<title id="t">Feedback inhibition of a metabolic pathway</title>
+<desc id="d">A pathway of four molecules, A to B to C to D, each step run by its own enzyme, numbered 1 to 3. The end product D curves back and binds the allosteric site of enzyme 1, the first enzyme, switching the pathway down when D builds up.</desc>
+<defs>
+  <marker id="a4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker>
+  <marker id="bar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M5,0 L5,10" stroke="#8E3B2E" stroke-width="3"/></marker>
+</defs>
+<rect width="720" height="270" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+  <g font-size="22" font-weight="700" text-anchor="middle">
+    <circle cx="70" cy="170" r="32" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/><text x="70" y="178">A</text>
+    <circle cx="260" cy="170" r="32" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/><text x="260" y="178">B</text>
+    <circle cx="450" cy="170" r="32" fill="#F8E3B8" stroke="#E69F00" stroke-width="3"/><text x="450" y="178">C</text>
+    <circle cx="640" cy="170" r="32" fill="#EFD5CF" stroke="#8E3B2E" stroke-width="3"/><text x="640" y="178">D</text>
+  </g>
+  <g stroke="#1F2A28" stroke-width="3" marker-end="url(#a4)">
+    <line x1="106" y1="170" x2="222" y2="170"/><line x1="296" y1="170" x2="412" y2="170"/><line x1="486" y1="170" x2="602" y2="170"/>
+  </g>
+  <g font-size="14" text-anchor="middle">
+    <rect x="128" y="190" width="74" height="34" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/><text x="165" y="212">enzyme 1</text>
+    <rect x="318" y="190" width="74" height="34" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/><text x="355" y="212">enzyme 2</text>
+    <rect x="508" y="190" width="74" height="34" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2"/><text x="545" y="212">enzyme 3</text>
+  </g>
+  <path d="M640,134 C640,40 165,30 165,150" fill="none" stroke="#8E3B2E" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#bar)"/>
+  <text x="400" y="100" font-size="15" text-anchor="middle" fill="#8E3B2E">D binds the allosteric site of enzyme 1</text>
+  <text x="400" y="120" font-size="15" text-anchor="middle" fill="#8E3B2E">and slows step 1 when D builds up</text>
+  <text x="70" y="250" font-size="14" text-anchor="middle">starting molecule</text>
+  <text x="640" y="250" font-size="14" text-anchor="middle">end product</text>
+</g>
+</svg>

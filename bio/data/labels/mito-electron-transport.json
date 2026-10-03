@@ -1,0 +1,9 @@
+{
+  "figure": "mito-electron-transport",
+  "labels": [
+    { "id": "matrix", "name": "Matrix", "box": [6, 394, 70, 34], "concept": "mito-matrix" },
+    { "id": "ims", "name": "Intermembrane space", "box": [6, 8, 200, 38], "concept": "proton-gradient" },
+    { "id": "o2", "name": "Oxygen, the final electron acceptor", "box": [372, 312, 200, 20], "concept": "final-electron-acceptor" },
+    { "id": "atpsyn", "name": "ATP synthase", "box": [622, 238, 56, 30], "concept": "atp-synthase" }
+  ]
+}

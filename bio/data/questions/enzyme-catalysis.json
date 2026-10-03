@@ -1,0 +1,771 @@
+{
+  "stimuli": {
+    "enzyme-catalysis-s1": {
+      "kind": "table",
+      "title": "Oxygen from hydrogen peroxide",
+      "text": "<p>Catalase speeds the reaction 2 H₂O₂ → 2 H₂O + O₂. A student put 5 mL of 1.5% hydrogen peroxide in each of four flasks at 22 °C, added a different test material, and collected the oxygen gas in an upside-down graduated cylinder filled with water. If every hydrogen peroxide molecule in a flask broke down, about 27 mL of oxygen would be collected.</p>",
+      "table": {
+        "caption": "Total oxygen collected (mL) after each time",
+        "cols": [
+          "Time (s)",
+          "1 mL fresh liver extract",
+          "1 mL boiled liver extract",
+          "1 mL water",
+          "0.1 g manganese dioxide powder (a non-living catalyst)"
+        ],
+        "rows": [
+          [
+            "0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+          ],
+          [
+            "30",
+            "9.0",
+            "0.2",
+            "0.2",
+            "3.0"
+          ],
+          [
+            "60",
+            "16.0",
+            "0.3",
+            "0.4",
+            "6.0"
+          ],
+          [
+            "90",
+            "21.0",
+            "0.5",
+            "0.5",
+            "9.0"
+          ],
+          [
+            "120",
+            "24.0",
+            "0.6",
+            "0.6",
+            "11.5"
+          ],
+          [
+            "150",
+            "25.5",
+            "0.7",
+            "0.8",
+            "14.0"
+          ],
+          [
+            "180",
+            "26.0",
+            "0.8",
+            "0.9",
+            "16.0"
+          ]
+        ]
+      }
+    },
+    "enzyme-catalysis-s2": {
+      "kind": "graph",
+      "title": "Energy diagram for one reaction",
+      "text": "<p>The graph shows the energy of the reacting molecules as a reaction proceeds from reactants (left) to products (right), with and without the enzyme that catalyzes it. Reaction progress has no units.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Reaction progress",
+          "min": 0,
+          "max": 10,
+          "step": 1
+        },
+        "y": {
+          "label": "Energy of the molecules",
+          "unit": "kJ/mol",
+          "min": 0,
+          "max": 120,
+          "step": 20
+        },
+        "series": [
+          {
+            "name": "Without enzyme",
+            "points": [
+              [
+                0,
+                40
+              ],
+              [
+                1,
+                40
+              ],
+              [
+                2,
+                42
+              ],
+              [
+                3,
+                70
+              ],
+              [
+                4,
+                102
+              ],
+              [
+                5,
+                115
+              ],
+              [
+                6,
+                102
+              ],
+              [
+                7,
+                60
+              ],
+              [
+                8,
+                18
+              ],
+              [
+                9,
+                15
+              ],
+              [
+                10,
+                15
+              ]
+            ]
+          },
+          {
+            "name": "With enzyme",
+            "points": [
+              [
+                0,
+                40
+              ],
+              [
+                1,
+                40
+              ],
+              [
+                2,
+                41
+              ],
+              [
+                3,
+                52
+              ],
+              [
+                4,
+                65
+              ],
+              [
+                5,
+                70
+              ],
+              [
+                6,
+                65
+              ],
+              [
+                7,
+                42
+              ],
+              [
+                8,
+                17
+              ],
+              [
+                9,
+                15
+              ],
+              [
+                10,
+                15
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "enzyme-catalysis-s3": {
+      "kind": "setup",
+      "title": "Using the same enzyme six times",
+      "text": "<p>Invertase splits sucrose into glucose and fructose. A company attached 2.0 mg of invertase to tiny plastic beads packed in a column. A fresh 100 mL batch of sucrose solution was poured through the column six times in a row, and the glucose leaving the column was measured each time. Afterward, the protein still attached to the beads was measured: 2.0 mg. 2.0 mg of invertase is about 7.4 × 10⁻⁹ mol of enzyme.</p>",
+      "table": {
+        "caption": "Glucose produced by the column in each batch",
+        "cols": [
+          "Batch",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "rows": [
+          [
+            "Glucose leaving the column (mmol)",
+            "4.8",
+            "4.8",
+            "4.7",
+            "4.8",
+            "4.6",
+            "4.7"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-enzyme-catalysis-1",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-catalysis-s1",
+      "q": "What is the rate of oxygen production with fresh liver extract during the first 30 seconds, in mL per second? Give two decimal places.",
+      "numeric": {
+        "answer": 0.3,
+        "tol": 0.005,
+        "unit": "mL/s",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Rate = change in amount ÷ change in time = (9.0 mL − 0.0 mL) ÷ (30 s − 0 s) = 0.30 mL/s."
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-2",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-catalysis-s1",
+      "q": "With fresh liver extract, oxygen production slows after 90 seconds and nearly stops by 180 seconds. Which explanation is best supported by the data?",
+      "options": [
+        "Nearly all the hydrogen peroxide has been broken down, since the total is close to the 27 mL possible.",
+        "The catalase has been used up by the reaction, since each enzyme molecule can break down one hydrogen peroxide.",
+        "The oxygen produced has denatured the catalase, since the rate falls as more oxygen builds up in the flask.",
+        "The liver extract has run out of energy to give the reactants, since the rate drops steadily over time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "26.0 mL of a possible 27 mL has been collected, so the reactant is almost gone. With little hydrogen peroxide left, fewer molecules reach an active site each second.",
+        "options": [
+          "The total collected nearly equals the maximum, which shows the reactant, not the enzyme, has run out.",
+          "Enzymes are not used up; each catalase molecule breaks down huge numbers of hydrogen peroxide molecules.",
+          "Nothing in the data tests oxygen's effect on the enzyme; the slowdown is explained by the reactant running out.",
+          "Enzymes do not supply energy to reactants; they lower the activation energy."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-3",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-catalysis-s1",
+      "q": "What is the main purpose of the flask with water instead of a catalyst?",
+      "options": [
+        "It shows how much oxygen forms with no catalyst, the baseline the other flasks are compared with.",
+        "It shows that hydrogen peroxide breaks down quickly on its own, so a catalyst is not needed.",
+        "It replaces the boiled extract, so the experiment needs just one flask without a working catalyst.",
+        "It measures how much oxygen dissolves in water, which is then added to the other flasks' totals."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With no catalyst, hydrogen peroxide still breaks down very slowly (0.9 mL in 180 s). That baseline shows how much each catalyst adds.",
+        "options": [
+          "This flask gives the uncatalyzed rate, the reference point for every comparison.",
+          "Only 0.9 mL formed in 3 minutes, so breakdown on its own is very slow.",
+          "The boiled extract tests something different: whether the extract's effect needs a folded enzyme.",
+          "The water flask measures oxygen produced from hydrogen peroxide, not oxygen dissolving."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-4",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-catalysis-s1",
+      "q": "Which claim is best supported by comparing the manganese dioxide flask with the other flasks?",
+      "options": [
+        "It speeds the reaction compared with water, though with these amounts more slowly at first than fresh extract.",
+        "Manganese dioxide is not a catalyst, because it is not a protein and has no active site to bind hydrogen peroxide.",
+        "Manganese dioxide and boiled extract work the same way, because both raised oxygen output above the water flask.",
+        "Manganese dioxide releases more energy from each hydrogen peroxide molecule than catalase does, so its rate keeps on rising longer."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Manganese dioxide made 16.0 mL in 180 s, against 0.9 mL with water, so it catalyzes the reaction. Its first-30-s rate (0.10 mL/s) is a third of fresh extract's (0.30 mL/s) with the amounts used.",
+        "options": [
+          "Both catalysts beat the water flask; fresh extract was faster at first with these amounts.",
+          "A catalyst is anything that speeds a reaction and is unchanged; non-living catalysts exist, and this one clearly sped the reaction.",
+          "Boiled extract (0.8 mL) did no better than water (0.9 mL), so it did not speed the reaction at all.",
+          "A catalyst does not change the energy a reaction releases; it changes only how fast the reaction goes."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-5",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-catalysis-s1",
+      "q": "At 180 seconds the student adds another 5 mL of 1.5% hydrogen peroxide to the fresh-extract flask. What is the most likely result?",
+      "options": [
+        "Oxygen production speeds up again, close to the starting rate, because the catalase was not used up.",
+        "Oxygen production stays near zero, because the catalase was used up breaking the first 5 mL.",
+        "Oxygen production speeds up but stops after 0.2 mL, because each catalase molecule can act a few more times.",
+        "Oxygen production slows further, because adding more reactant dilutes the catalase in the flask."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Catalase comes out of each reaction unchanged, so it can break down the new hydrogen peroxide. The rate returns to near the starting value.",
+        "options": [
+          "The enzyme is reused; fresh reactant restarts the reaction at a similar rate.",
+          "Enzymes are not consumed, so the catalase still works after the first batch is gone.",
+          "Each catalase molecule can act millions of times; there is no small limit on uses.",
+          "The volume roughly doubles, but the new reactant gives the enzyme plenty to act on, so the rate rises rather than falls."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-6",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-catalysis-s2",
+      "q": "What is the activation energy of the reaction without the enzyme, in kJ/mol?",
+      "numeric": {
+        "answer": 75,
+        "tol": 2,
+        "unit": "kJ/mol",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Activation energy = peak energy − energy of the reactants = 115 − 40 = 75 kJ/mol."
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-7",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "enzyme-catalysis-s2",
+      "q": "By what percentage does the enzyme lower the activation energy? Give a whole number.",
+      "numeric": {
+        "answer": 60,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Without the enzyme: 115 − 40 = 75 kJ/mol. With it: 70 − 40 = 30 kJ/mol. Percent decrease = (75 − 30) ÷ 75 × 100 = 60%."
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-8",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-catalysis-s2",
+      "q": "Based on the graph, how does the enzyme change the reaction?",
+      "options": [
+        "It lowers the peak but leaves the reactant and product levels alone, so 25 kJ/mol is released either way.",
+        "It lowers the energy of the products, so the reaction releases more energy when the enzyme is present.",
+        "It raises the energy of the reactants so they start closer to the peak and need less energy to react.",
+        "It lowers both the energy peak and the product level by the same amount, so the energy released by the reaction is unchanged."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both curves start at 40 and end at 15 kJ/mol; only the peak differs (115 against 70). The energy released, 40 − 15 = 25 kJ/mol, is the same.",
+        "options": [
+          "Same start, same end, lower peak: that is what an enzyme does.",
+          "Both curves end at 15 kJ/mol, so the products have the same energy with or without the enzyme.",
+          "Both curves start at 40 kJ/mol; the enzyme does not change the reactants' energy.",
+          "The product level is 15 kJ/mol on both curves; only the peak moves."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-9",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-catalysis-s2",
+      "q": "The same reaction can also run backward, from products to reactants. Using the graph, how does the enzyme affect the backward reaction?",
+      "options": [
+        "It lowers its activation energy from 100 to 55 kJ/mol, so the enzyme speeds the backward reaction too.",
+        "It has no effect on it, because an enzyme's active site binds just the reactants of the forward reaction and not the products.",
+        "It lowers its activation energy from 75 to 30 kJ/mol, the same values as for the forward reaction.",
+        "It raises its activation energy, which is why the enzyme makes the reaction run in the forward direction."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Going backward, the molecules start at the product level (15) and climb to the same peak: 115 − 15 = 100 kJ/mol without the enzyme, 70 − 15 = 55 with it. The enzyme lowers both barriers by 45 kJ/mol, so it speeds both directions.",
+        "options": [
+          "The peak is shared by both directions, so lowering it lowers both barriers by the same 45 kJ/mol.",
+          "The backward reaction passes through the same transition state, which the enzyme stabilizes; the graph shows the lower peak serves both directions.",
+          "Those values are measured from the reactant level (40); the backward reaction starts at the product level (15).",
+          "The peak is lower with the enzyme, so the climb from the products is smaller, not larger."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-10",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "2.A",
+      "level": "recall",
+      "diff": 1,
+      "stimulus": "enzyme-catalysis-s2",
+      "q": "What does the highest point on each curve represent?",
+      "options": [
+        "The transition state, the least stable arrangement on the path",
+        "The moment the products are released from the enzyme's active site",
+        "The energy the enzyme adds to the reactants to start the reaction",
+        "The total energy stored in the products once the reaction is finished"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The peak is the transition state: bonds partly broken and partly formed, the highest-energy, least stable point on the path.",
+        "options": [
+          "The top of the hill is the transition state, between reactants and products.",
+          "Products appear on the right side of the graph, after the peak, at 15 kJ/mol.",
+          "The enzyme adds no energy; the curve with the enzyme is lower, not higher.",
+          "The products' energy is the flat level on the right (15 kJ/mol), not the peak."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-11",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-catalysis-s3",
+      "q": "Which statement best describes the data?",
+      "options": [
+        "Output stayed between 4.6 and 4.8 mmol per batch, with no steady decline.",
+        "Glucose output fell by about half between the first batch and the sixth batch.",
+        "Output rose with each batch as the enzyme got better at binding sucrose.",
+        "Glucose output was highest in the last batch and lowest in the first batch."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "All six batches gave 4.6-4.8 mmol, and the values move up and down rather than falling steadily.",
+        "options": [
+          "The range is narrow (4.6-4.8 mmol) with no downward trend.",
+          "Batch 6 (4.7 mmol) is almost the same as batch 1 (4.8 mmol), not half.",
+          "Output did not rise, and enzymes do not learn; each binding is a separate event.",
+          "Batch 1 (4.8) was among the highest and batch 6 (4.7) was not the highest."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-12",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "enzyme-catalysis-s3",
+      "q": "Which conclusion do the data most directly support?",
+      "options": [
+        "Invertase is not used up: the same enzyme molecules kept making glucose batch after batch.",
+        "Invertase lowers the activation energy of sucrose breakdown by about 4.8 kJ/mol in each batch.",
+        "Invertase becomes part of the glucose it makes, so the beads lose some enzyme with each batch.",
+        "Invertase acts on sucrose but not on other sugars, since glucose came out of each of the six batches."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Output stayed steady over six batches, and the beads still held 2.0 mg of enzyme at the end. The enzyme was reused, not consumed.",
+        "options": [
+          "Steady output and unchanged enzyme mass both show the enzyme was reused.",
+          "The 4.8 values are amounts of glucose in mmol, not energies; the setup measures no energy.",
+          "The beads held 2.0 mg before and after, so no enzyme was lost into the product.",
+          "Only sucrose was tested, so the data say nothing about other sugars."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-13",
+      "type": "numeric",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "enzyme-catalysis-s3",
+      "q": "How much glucose, in mmol, did the column produce over all six batches? Give one decimal place.",
+      "numeric": {
+        "answer": 28.4,
+        "tol": 0.05,
+        "unit": "mmol",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "4.8 + 4.8 + 4.7 + 4.8 + 4.6 + 4.7 = 28.4 mmol."
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-14",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "enzyme-catalysis-s3",
+      "q": "About how many glucose molecules did each invertase molecule produce over the six batches? (28.4 mmol = 2.84 × 10⁻² mol.)",
+      "options": [
+        "About 4 million (4 × 10⁶)",
+        "About 4 thousand (4 × 10³)",
+        "About 1",
+        "About 4 billion (4 × 10⁹)"
+      ],
+      "correct": 0,
+      "fixed": true,
+      "why": {
+        "correct": "Glucose per enzyme = moles of glucose ÷ moles of enzyme = (2.84 × 10⁻² mol) ÷ (7.4 × 10⁻⁹ mol) ≈ 3.8 × 10⁶, about 4 million.",
+        "options": [
+          "2.84 × 10⁻² ÷ 7.4 × 10⁻⁹ ≈ 3.8 × 10⁶: millions of reactions per enzyme molecule.",
+          "This uses millimoles of glucose (28.4) against micromoles of enzyme; convert both to moles first.",
+          "One product per enzyme would mean the enzyme is used up; the steady output shows it is not.",
+          "This is a thousand times too high; check the powers of ten when dividing."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-15",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What is activation energy?",
+      "options": [
+        "The energy reactants need to reach the transition state before becoming products",
+        "The energy a reaction releases as its reactants are turned into products",
+        "The energy that an enzyme adds to its substrate so that the substrate is able to react",
+        "The energy stored in the bonds of the products once the reaction is complete"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Activation energy is the climb from the reactants up to the transition state, the energy barrier every reaction must clear.",
+        "options": [
+          "This is the definition: the barrier between reactants and the transition state.",
+          "That is the difference between reactants and products, which an enzyme does not change.",
+          "Enzymes add no energy; they lower the barrier.",
+          "The products' energy is the end level of the diagram, not the barrier."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-16",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Breaking sucrose into glucose and fructose releases energy, yet a bowl of table sugar stays sucrose for years. Which explanation is best?",
+      "options": [
+        "Its activation energy is high, so at room temperature almost no sucrose reaches the transition state.",
+        "The reaction absorbs energy overall, so it happens just when energy is supplied from outside.",
+        "Sucrose is a product of this reaction, not a reactant, so the reaction is unable to start.",
+        "The glucose and fructose re-form sucrose as fast as it breaks, so the amount of sucrose looks constant."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Whether a reaction releases energy and how fast it runs are different questions. A high activation energy keeps this reaction extremely slow, even though it releases energy, without a catalyst.",
+        "options": [
+          "A high barrier makes the reaction slow even though it releases energy overall.",
+          "The stem says the reaction releases energy; what stops it is the barrier, not the overall energy change.",
+          "Sucrose is the reactant here; it is broken into glucose and fructose.",
+          "No glucose or fructose is forming in the bowl in measurable amounts, so there is nothing to re-form sucrose."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-17",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Both heating a reaction and adding an enzyme make it go faster. How do the two differ?",
+      "options": [
+        "Heating gives more molecules enough energy to clear the same barrier; an enzyme lowers the barrier.",
+        "Heating lowers the activation energy, while an enzyme gives the substrate the extra energy it needs to react.",
+        "Heating changes which products the reaction makes, while an enzyme keeps the products the same.",
+        "Heating works for reactions that release energy overall, while an enzyme works for reactions that absorb it."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Higher temperature means faster molecules, so a bigger share has enough energy to reach the transition state. An enzyme changes the path so less energy is needed.",
+        "options": [
+          "Heat changes the molecules' energy; the enzyme changes the height of the hill.",
+          "This reverses the two: heating supplies energy; enzymes lower the barrier and supply none.",
+          "Neither heating nor an enzyme changes which products a given reaction makes.",
+          "Both can speed either kind of reaction; neither choice depends on whether energy is released."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-18",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student measures the product of an enzyme reaction every minute: 0, 12, 22, 29, 33 and 35 µmol at 0, 1, 2, 3, 4 and 5 minutes. Which statement best describes the reaction rate?",
+      "options": [
+        "It is highest in the first minute (12 µmol/min) and falls as substrate is used up.",
+        "It is constant at 7 µmol/min, the total product divided by the total time.",
+        "It rises each minute, because the amount of product goes up each minute.",
+        "It is highest in the last minute, when the most product is present in the tube."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Product added per minute: 12, 10, 7, 4, 2 µmol. The rate, the slope, is steepest at the start and falls as the remaining substrate drops.",
+        "options": [
+          "The per-minute gains fall from 12 to 2 µmol, so the rate is highest at first.",
+          "35 ÷ 5 = 7 is the average rate; the actual rate changes from 12 down to 2 µmol/min.",
+          "The amount of product rises, but the amount added each minute (the rate) falls.",
+          "The last minute added only 2 µmol, the smallest gain; rate is the change per minute, not the total."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-19",
+      "type": "multi",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 3,
+      "q": "Select the three ways an active site can lower the activation energy of a reaction.",
+      "options": [
+        "Holding two reactants close together in the orientation in which they react",
+        "Bending or straining bonds of the substrate toward the shape of the transition state",
+        "Placing charged or polar side chains next to the bonds that change",
+        "Transferring heat from the enzyme to the substrate so it moves faster",
+        "Lowering the energy of the products so more energy is released",
+        "Adding energy from the enzyme's own bonds, which break as the reaction runs"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "why": {
+        "correct": "Active sites bring reactants together in the right orientation, strain the substrate toward the transition state, and provide side chains whose charges or polar groups help bonds break and form.",
+        "options": [
+          "Correct orientation means fewer chance meetings are wasted.",
+          "Strain pushes the substrate partway toward the transition state.",
+          "Charged and polar side chains can give or take hydrogen ions or stabilize charges as bonds change.",
+          "Enzymes do not heat their substrates; they change the path, not the temperature.",
+          "The products' energy is the same with or without the enzyme.",
+          "The enzyme comes out unchanged, so it cannot be spending its own bonds."
+        ]
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-20",
+      "type": "predict",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "An enzyme is added to a tube in which a slow reaction that releases energy is running at 25 °C. Predict the change in each variable.",
+      "variables": [
+        {
+          "name": "Activation energy of the reaction",
+          "answer": "down",
+          "why": "The enzyme's active site makes the transition state easier to reach, lowering the barrier."
+        },
+        {
+          "name": "Energy released per mole of reactant that reacts",
+          "answer": "none",
+          "why": "The reactants and products have the same energy with or without the enzyme, so the energy released is unchanged."
+        },
+        {
+          "name": "Time needed to make 1 mmol of product",
+          "answer": "down",
+          "why": "A lower barrier means more molecules react per second, so the same amount of product forms sooner."
+        },
+        {
+          "name": "Amount of enzyme in the tube after 1 hour",
+          "answer": "none",
+          "why": "Enzymes are not used up; after releasing the products each enzyme molecule has its original structure."
+        }
+      ],
+      "why": {
+        "correct": "An enzyme lowers the activation energy and so raises the rate. It changes neither the energy released nor its own amount."
+      }
+    },
+    {
+      "id": "bio-enzyme-catalysis-21",
+      "type": "single",
+      "unit": "unit-3",
+      "topic": "enzyme-catalysis",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A student claims that enzymes make reactions happen that would never occur without them. Which reasoning best evaluates the claim?",
+      "options": [
+        "Wrong: an enzyme speeds a reaction that can already occur and does not change whether it releases energy.",
+        "Right: without an enzyme the activation energy of a reaction is infinite, so the reaction has no way to start.",
+        "Right: an enzyme provides the energy that an energy-absorbing reaction lacks, so the reaction can go.",
+        "Wrong: enzymes change which products form, so they create new reactions instead of speeding old ones."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Enzymes change the path, not the start and end points. A reaction that does not happen on its own because it would need an energy input still needs that input with an enzyme; one that can happen just happens faster.",
+        "options": [
+          "Enzymes change speed only; the reactants, products and overall energy change are fixed.",
+          "Uncatalyzed reactions have a finite barrier; the water flask in a catalase experiment still makes a little oxygen.",
+          "Enzymes supply no energy; reactions that need energy get it by being linked to other reactions, a topic for 3.4.",
+          "The products of a reaction are the same with or without the enzyme."
+        ]
+      }
+    }
+  ]
+}

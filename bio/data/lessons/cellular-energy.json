@@ -1,0 +1,76 @@
+{
+  "topic": "cellular-energy",
+  "hook": "<p>You are made of about 30 trillion cells, and every one of them is constantly rebuilding itself: pumping ions, repairing proteins, copying molecules. Stop feeding the cells and the order falls apart within minutes in the brain, and within hours in most tissues. Yet your body holds only about 50 grams of ATP at any moment, while you use roughly your own body mass of it every day. The same molecules are spent and remade, over and over.</p>",
+  "prereq": [
+    {
+      "q": "What is ATP's main job in a cell?",
+      "options": [
+        "It carries energy from reactions that release it to processes that need it",
+        "It stores the cell's genetic instructions",
+        "It forms the main structural fibers of the cell"
+      ],
+      "correct": 0,
+      "why": "ATP (adenosine triphosphate) is the cell's energy carrier. Its phosphate groups are the key to how it hands energy on.",
+      "review": "elements-of-life"
+    },
+    {
+      "q": "Which statement about an enzyme-catalyzed reaction is true?",
+      "options": [
+        "The enzyme raises the amount of energy the reaction releases",
+        "The enzyme lowers the activation energy but not the energy released",
+        "The enzyme provides the energy for reactions that need an input"
+      ],
+      "correct": 1,
+      "why": "Enzymes lower the hill, not the start or end levels. Whether a reaction releases or needs energy is set by its reactants and products.",
+      "review": "enzyme-catalysis"
+    },
+    {
+      "q": "A molecule binds an enzyme away from its active site and changes the enzyme's shape, slowing it. This molecule is",
+      "options": [
+        "a competitive inhibitor",
+        "a substrate",
+        "a noncompetitive (allosteric) inhibitor"
+      ],
+      "correct": 2,
+      "why": "Binding at an allosteric site and changing the active site's shape is noncompetitive inhibition. Cells use this to control pathways, as this topic shows.",
+      "review": "enzyme-environment"
+    }
+  ],
+  "figure": {
+    "figure": "atp-cycle",
+    "caption": "Energy from breaking down food molecules is used to make ATP from ADP and phosphate. ATP hydrolysis releases that energy where work must be done. A small pool of ATP is recycled thousands of times a day."
+  },
+  "chain": [
+    { "cause": "Energy cannot be created or destroyed, only converted (first law of thermodynamics).", "effect": "A cell cannot make its own energy; it must take in energy, as food or sunlight, and convert it." },
+    { "cause": "Every conversion turns some energy into heat that cannot do work, increasing disorder (second law).", "effect": "Building and keeping the cell's order uses energy up, so living things need a constant energy input." },
+    { "cause": "Breaking down food molecules is exergonic: the products hold less energy than the reactants.", "effect": "Part of the released energy is captured by adding a phosphate to ADP, making ATP." },
+    { "cause": "ATP hydrolysis (ATP + H₂O → ADP + Pi) is strongly exergonic.", "effect": "Its energy can drive an endergonic process if the two are coupled, usually by transferring ATP's phosphate to a reactant or a protein (phosphorylation)." },
+    { "cause": "The phosphorylated molecule is less stable, or changes shape.", "effect": "The coupled process releases energy overall, so it goes: building molecules, pumping ions, moving muscle." },
+    { "cause": "In a metabolic pathway, the end product builds up when the cell has enough of it.", "effect": "It binds an allosteric site on the first enzyme and slows the whole pathway (feedback inhibition), so raw materials and energy are not wasted." }
+  ],
+  "ideas": [
+    "<b>Exergonic</b> reactions release energy (ΔG negative); <b>endergonic</b> reactions need energy (ΔG positive). An endergonic reaction goes only if it is coupled to an exergonic one so the total ΔG is negative.",
+    "ATP is an energy <b>carrier</b>, not a long-term store. Fats and starch store energy; ATP moves it from where it is released to where it is used, minutes later.",
+    "In a <b>redox</b> reaction, one molecule loses electrons (oxidized) and another gains them (reduced). Breaking food down moves electrons from fuel molecules toward oxygen, releasing energy.",
+    "<b>Metabolic pathways</b> are chains of enzymes. Catabolic pathways break molecules down and release energy; anabolic pathways build them and use it."
+  ],
+  "misconception": {
+    "wrong": "Cells make energy when they break down food, and ATP is where they store it.",
+    "right": "Cells convert energy; they never make it. Breaking down food releases energy already stored in its bonds, and ATP carries part of it for a short time to where work is done. Most of the energy ends up as heat."
+  },
+  "check": [
+    "bio-cellular-energy-1",
+    "bio-cellular-energy-2",
+    "bio-cellular-energy-3",
+    "bio-cellular-energy-4",
+    "bio-cellular-energy-17",
+    "bio-cellular-energy-20",
+    "bio-cellular-energy-21"
+  ],
+  "summary": "<p>Energy is never created or destroyed (first law), and each conversion releases some as unusable heat, raising disorder (second law). So living things need a constant energy input to stay ordered; without it they die. Cells organize their reactions into enzyme-run metabolic pathways. Exergonic reactions, such as breaking down food, release energy that is used to make ATP. ATP hydrolysis is then coupled to endergonic processes, usually by phosphorylating a reactant or protein, so the combined process releases energy and can go. Electrons moving in redox reactions carry much of this energy, and feedback inhibition shuts a pathway down when its product is plentiful.</p>",
+  "connections": [
+    { "href": "../notes/enzyme-environment.html", "label": "Back: allosteric sites and inhibitors (3.3)" },
+    { "href": "../notes/photosynthesis.html", "label": "Next: capturing energy from sunlight (3.5)" },
+    { "href": "../notes/cellular-respiration.html", "label": "Making ATP from food (3.6)" }
+  ]
+}

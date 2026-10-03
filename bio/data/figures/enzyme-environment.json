@@ -1,0 +1,12 @@
+{
+  "enzyme-rate-factors": {
+    "file": "figures/enzyme-rate-factors.svg", "ext": "svg", "w": 760, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three sketch graphs of reaction rate. Against temperature, the rate rises to a peak near 37 degrees Celsius for a human enzyme and then falls steeply as the enzyme denatures. Against pH, pepsin peaks near pH 2 and trypsin near pH 8. Against substrate concentration, the rate rises and levels off; a competitive inhibitor slows the rise but approaches the same maximum, while a noncompetitive inhibitor levels off at a lower maximum."
+  },
+  "enzyme-inhibition": {
+    "file": "figures/enzyme-inhibition.svg", "ext": "svg", "w": 680, "h": 330,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Two enzymes side by side. On the left, a competitive inhibitor shaped like the substrate sits in the active site and the substrate is blocked. On the right, a noncompetitive inhibitor binds a separate allosteric site at the bottom of the enzyme, the active site at the top is bent out of shape, and the substrate no longer fits."
+  }
+}
