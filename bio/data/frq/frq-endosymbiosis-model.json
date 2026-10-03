@@ -14,7 +14,7 @@
   "parts": [
     {
       "label": "a", "points": 1,
-      "prompt": "<b>Describe</b> where membrane 2 in the model came from.",
+      "prompt": "According to the model, <b>describe</b> where membrane 2 came from.",
       "rubric": [
         { "point": "Membrane 2 is part of the host cell's plasma membrane, which wrapped around the bacterium and pinched off as the bacterium was taken in.",
           "accept": ["from the host cell's plasma membrane during engulfing", "the host's membrane that surrounded the bacterium when it was taken in by endocytosis"] }
@@ -28,7 +28,7 @@
         { "point": "Names two features shown (the loop of circular DNA, the 70 S ribosomes, or the double membrane) and explains that mitochondria today share them with bacteria but not with the host's nucleus and cytoplasm, which points to a bacterial ancestor.",
           "accept": ["mitochondria have circular DNA and 70 S ribosomes like bacteria, unlike the host's chromosomes in the nucleus and 80 S ribosomes", "mitochondria have a double membrane, as engulfing would leave, and circular DNA like bacteria"] }
       ],
-      "sample": "Mitochondria today carry their own circular DNA, like the loop of DNA in the bacterium, while the host's DNA is in chromosomes in the nucleus. Mitochondria also have small 70 S ribosomes like the bacterium's, not the 80 S ribosomes of the host cytoplasm. Sharing these features with bacteria rather than with the host is what we would expect if mitochondria descend from a bacterium like the one in the model."
+      "sample": "Mitochondria today carry their own circular DNA, like the loop of DNA in the bacterium, while the host's DNA is in chromosomes in the nucleus. Mitochondria also have small ribosomes built like the bacterium's 70 S ribosomes, not like the 80 S ribosomes of the host cytoplasm. Sharing these features with bacteria rather than with the host is what we would expect if mitochondria descend from a bacterium like the one in the model."
     },
     {
       "label": "c", "points": 1,

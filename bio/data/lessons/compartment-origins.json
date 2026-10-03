@@ -26,11 +26,11 @@
   ],
   "figure": { "figure": "endosymbiosis-steps", "caption": "The endosymbiotic theory in four steps: a host cell takes in a bacterium; the bacterium lives inside, wrapped in two membranes; its descendants become mitochondria; later, in one line of cells, a photosynthetic bacterium becomes the chloroplast." },
   "chain": [
-    { "cause": "An ancestral host cell, with a nucleus and internal membranes, wrapped its membrane around a free-living, oxygen-using bacterium.", "effect": "The bacterium ended up inside the host, enclosed by its own plasma membrane plus a second membrane from the host: a double membrane." },
+    { "cause": "An ancestral host cell wrapped its membrane around a free-living, oxygen-using bacterium.", "effect": "The bacterium ended up inside the host, enclosed by its own plasma membrane plus a second membrane from the host: a double membrane." },
     { "cause": "The bacterium was not digested; it kept living and dividing inside the host.", "effect": "The two lived in endosymbiosis: the host gained ATP, and the bacterium gained shelter and food (mutualism)." },
     { "cause": "Over many generations, most of the bacterium's genes were lost or moved into the host's nucleus.", "effect": "It could no longer live on its own and became an organelle, the mitochondrion, still with circular DNA, bacteria-like ribosomes and division by splitting." },
     { "cause": "Later, in one line of these cells that already had mitochondria, a photosynthetic bacterium was taken in the same way.", "effect": "It became the chloroplast, which is why plants and algae have both organelles while animals and fungi have only mitochondria." },
-    { "cause": "Living mitochondria and chloroplasts still carry the marks of that history.", "effect": "Double membranes, circular DNA, 70 S ribosomes, fission and close DNA matches to living bacteria are the evidence for the endosymbiotic theory." }
+    { "cause": "Living mitochondria and chloroplasts still carry the marks of that history.", "effect": "Double membranes, circular DNA, bacteria-like ribosomes, fission and close DNA matches to living bacteria are the evidence for the endosymbiotic theory." }
   ],
   "ideas": [
     "<b>Endosymbiosis</b>: one organism living inside the cells of another. The <b>endosymbiotic theory</b> says mitochondria and chloroplasts began as free-living prokaryotes taken in by host cells.",

@@ -102,6 +102,18 @@ person decides; lessons follow the "meanwhile" line.
   vary between studies by up to an order of magnitude (Na⁺ is reported from about 10⁻¹² to 10⁻¹⁴
   cm/s). Meanwhile: values are labelled approximate, and items use only the ordering and
   powers-of-ten differences (`simple-diffusion`, `selective-permeability`).
+- **organelle-outer-membrane** (open, 2.10; review u2b). OpenStax 23.1 and most AP materials say
+  the outer membrane of mitochondria and chloroplasts came from the host membrane that engulfed
+  the bacterium. Alphaproteobacteria and cyanobacteria have two membranes of their own, and the
+  organelles' outer-membrane import proteins (Tom40/Sam50, Toc75) are related to bacterial
+  outer-membrane proteins, so many researchers now trace the outer membrane to the bacterium.
+  Meanwhile: the engulfing model is taught and asked "according to the model"; the notes add one
+  hedging sentence and no longer list "two membranes because the bacterium had two" as a mistake.
+- **mitoribosome-size** (open, 2.10; review u2b). Bacterial and chloroplast ribosomes are 70 S;
+  mitochondrial ribosomes vary (about 55 S in mammals, about 78 S in plants). Exams usually say
+  "70 S". Meanwhile: notes say "built like bacterial 70 S ribosomes" with the variation noted;
+  the stimulus table (plant mitochondria, "70 to 78") and the FRQ model (the bacterium's 70 S
+  ribosomes) are left as they are.
 
 ## Map content to confirm
 
