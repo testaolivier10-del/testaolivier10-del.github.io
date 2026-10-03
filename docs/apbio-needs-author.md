@@ -224,6 +224,29 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   run backward, using ATP from glycolysis to hold part of the H⁺ gradient. `bio-cellular-respiration-22`
   keys the intermembrane H⁺ concentration as "down", which is right in direction. Meanwhile: as
   keyed.
+- **pertussis-lock** (open; Unit 4 simulator `signal-transduction-amplification`). Pertussis
+  toxin locks the *inhibitory* G protein (Gi) in its GDP-bound form, which raises cAMP; the
+  simulator's "G protein locked off" applies that kind of lock to the stimulatory G protein and its
+  box says so. Meanwhile: as written; confirm students will not read it as "pertussis lowers cAMP".
+- **cholera-mechanism** (open; same simulator). OpenStax 9.1 says cholera toxin modifies "a
+  G-protein that controls the opening of a chloride channel"; the fuller path is Gs → adenylyl
+  cyclase → cAMP → PKA → CFTR chloride channel. The simulator uses the fuller path. Meanwhile:
+  fuller path; no item depends on the difference.
+- **rb-regulation** (open; `cell-cycle-checkpoints`). OpenStax 10.3 says Rb "largely monitors cell
+  size" and is phosphorylated as the cell grows; most texts tie Rb phosphorylation to growth-factor
+  signaling through cyclin D–CDK. The simulator uses the growth-factor path (stated in its box).
+- **p53-loss-scope** (open; same simulator). OpenStax 10.4 says without functional p53 the cell
+  "proceeds directly from G1 to S regardless of internal and external conditions". The model's p53
+  loss removes only the DNA-damage holds and apoptosis; cells still need growth factor (or another
+  mutation). The model also keeps the p53 G1 hold working in Rb-null cells, though Rb loss weakens
+  it in real cells (box says so). Meanwhile: as modeled.
+- **2n-4n-labels** (open; same simulator). The DNA histogram is labeled by DNA amount (G1 = 2
+  units, G2/M = 4) because a G2 cell is still 2n; many AP® materials call the peaks "2n" and
+  "4n". The box mentions both. Confirm the labeling.
+- **sim-parameters** (open; both Unit 4 simulators). Molecule counts, rate constants, repair (25%
+  per h), apoptosis (5% per h) and G2 escape without p53 (50% per h) are illustrative, not
+  measured; phase lengths follow OpenStax 10.3 (G1 9 h, S 10 h, G2 4.5 h, M 0.5 h). Both boxes
+  say the numbers are made up in realistic proportions.
 
 ## Map content to confirm
 

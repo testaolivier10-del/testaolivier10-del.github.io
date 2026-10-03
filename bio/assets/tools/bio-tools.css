@@ -175,3 +175,18 @@
 @media print{.bt-controls,.bt-buttons,.bt-actions,.bt-next{display:none;}}
 .gb-axisset .gb-row{grid-template-columns:repeat(3,minmax(0,1fr));}
 .gb-axisset .gb-num input{width:100%;box-sizing:border-box;}
+
+/* Signal amplification and cell cycle figures */
+.bt-checks{border:0;margin:0;padding:0;min-width:0;}
+.bt-checks legend{font:800 14px var(--font-ui);padding:0;margin-bottom:2px;}
+.bt-fig .stp{fill:var(--bio-shape-fill);stroke:var(--bio-shape);stroke-width:1.5;}
+.bt-fig .stp.blocked{stroke:var(--bio-symp);stroke-width:2.5;stroke-dasharray:6 4;}
+.bt-fig .cnt{fill:var(--bio-aff);}
+.bt-fig .arr{fill:none;stroke:var(--bio-causes);stroke-width:2;}
+.bt-fig .arrh{fill:var(--bio-causes);}
+.bt-fig .ph{fill:none;stroke-width:22;}
+.bt-fig .ph.g1{stroke:var(--bio-eff-fill);} .bt-fig .ph.s{stroke:var(--bio-aff-fill);} .bt-fig .ph.g2{stroke:var(--bio-para-fill);} .bt-fig .ph.m{stroke:var(--bio-symp-fill);}
+.bt-fig .ckp{stroke:var(--bio-causes);stroke-width:3;}
+.bt-fig .ckp.hold{stroke:var(--bio-hi);stroke-width:5;}
+.bt-fig .g0{fill:var(--bio-lo-fill);stroke:var(--bio-lo);stroke-width:1.5;}
+.bt-fig svg.sg-fig,.bt-fig svg.cc-fig{max-height:none;max-width:460px;margin:0 auto;}

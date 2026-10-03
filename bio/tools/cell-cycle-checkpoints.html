@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("nremt_theme");if(t==="dark"||(!t&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="preload" href="/assets/fonts/nunito-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../assets/icon-180.png">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#16332E">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.4.1/dist/embed.global.js; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://bsfcqrczehbcctwhxmrj.supabase.co https://api.levlprep.com https://cloud.umami.is; media-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; frame-src 'self' https://polar.sh https://sandbox.polar.sh https://buy.polar.sh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cell cycle checkpoints simulator — AP® Biology | LevlPrep</title>
+<meta name="description" content="Grow cells with growth factor, DNA damage, cancer mutations or a spindle poison, and watch the phases, DNA content and which damaged cells divide.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://levlprep.com/bio/tools/cell-cycle-checkpoints.html">
+<meta property="og:title" content="Cell cycle checkpoints simulator — AP® Biology | LevlPrep">
+<meta property="og:description" content="Grow cells with growth factor, DNA damage, cancer mutations or a spindle poison, and watch the phases, DNA content and which damaged cells divide.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://levlprep.com/bio/tools/cell-cycle-checkpoints.html">
+<meta property="og:site_name" content="LevlPrep">
+<meta property="og:image" content="https://levlprep.com/bio/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../../assets/theme.css">
+<script src="../../assets/errors.js" defer></script>
+<script src="../../assets/account.js" defer></script>
+<script src="../../assets/hub-progress.js" defer></script>
+<script src="../../assets/chime.js" defer></script>
+<script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../assets/bio.css">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<!-- levlprep-structured-data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://levlprep.com/bio/tools/cell-cycle-checkpoints.html#tool",
+      "name": "Cell cycle checkpoints",
+      "url": "https://levlprep.com/bio/tools/cell-cycle-checkpoints.html",
+      "description": "Grow cells with growth factor, DNA damage, cancer mutations or a spindle poison, and watch the phases, DNA content and which damaged cells divide.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "isAccessibleForFree": false,
+      "hasPart": {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector": ".bio-app-mount"
+      },
+      "isPartOf": {
+        "@id": "https://levlprep.com/bio/#course"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "LevlPrep",
+          "item": "https://levlprep.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AP® Biology",
+          "item": "https://levlprep.com/bio/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Tools",
+          "item": "https://levlprep.com/bio/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Cell cycle checkpoints",
+          "item": "https://levlprep.com/bio/tools/cell-cycle-checkpoints.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="bio" data-app="tool-cell-cycle-checkpoints">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<main id="main" class="xshell bio-app">
+  <nav class="bio-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../tools.html">Tools</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cell cycle checkpoints</span></nav>
+  <header class="hero bio-hero"><div class="eyebrow">AP&reg; Biology simulator <span class="bio-beta bio-nav-ref">Beta</span></div><h1>Cell cycle checkpoints</h1><p class="lede">G1, G2 and M checkpoints, p53, Rb and oncogenes, with a DNA content histogram.</p></header>
+  <div id="app" class="bio-app-mount" data-slug="cell-cycle-checkpoints" data-src="../assets/tool-data/cell-cycle-checkpoints.json" data-premium="tools"><noscript><p>This tool needs JavaScript. Every notes page works without it.</p></noscript></div>
+</main>
+<footer class="bio-foot xshell">
+  <p class="bio-accuracy-note"><span class="bio-beta bio-nav-ref">Beta</span> This course has not yet been reviewed by an AP® Biology teacher. It follows the published course framework and open textbooks, listed on the <a href="../../sources.html">Sources</a> page. Spot a mistake? <span class="bio-nav-ref"><button type="button" class="report-btn" data-report-kind="page" data-report-course="apbio" data-report-question="tool:cell-cycle-checkpoints">Report a problem</button></span></p>
+  <p class="bio-disclaimer">AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site.</p>
+  <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+</footer>
+<link rel="stylesheet" href="../assets/tools/bio-tools.css">
+<script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/premium.js" defer></script>
+<script>window.ApBioSection = 'tools'; window.ApBioBase = '../';</script>
+<script src="../assets/bio-curriculum.js" defer></script>
+<script src="../assets/bio-core.js" defer></script>
+<script src="../assets/bio-glossary.js" defer></script>
+<script src="../assets/bio-nav.js" defer></script>
+<script src="../assets/bio-questions.js" defer></script>
+<script src="../assets/tools/bio-tool-math.js" defer></script>
+<script src="../assets/tools/bio-tools.js" defer></script>
+<script src="../assets/tools/cell-cycle-checkpoints.js" defer></script>
+</body>
+</html>

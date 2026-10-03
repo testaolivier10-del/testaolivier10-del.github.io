@@ -49,6 +49,31 @@ test('osmosis model: direction, turgor, plasmolysis, lysis', () => {
   assert.ok(run(s.bag, { inC: 1, outC: 0 }).pct > 0 && run(s.bag, { inC: 0, outC: 1 }).pct < 0);
 });
 
+test('signal model: amplification at enzyme steps, termination, blocks', () => {
+  const d = data('signal-transduction-amplification'), p = d.model, S = M.signal;
+  const at = (c, t) => S.at(S.simulate(p, { L: 10, tOff: 120, gprotein: 'normal', ...c }), t);
+  const a = at({}, 60);
+  near(a.R, 500, 1);                                   // half the receptors bound at L = Kd
+  assert.ok(a.G / a.R > 10 && a.AC < a.G && a.cAMP / a.AC > 100, 'receptor and cyclase amplify, G to cyclase does not');
+  assert.ok(at({}, 240).rate < 0.01 * a.rate, 'the signal ends after washout');
+  assert.ok(at({ pde: true }, 240).rate > 0.5 * a.rate, 'a PDE inhibitor prolongs it');
+  assert.ok(at({ gprotein: 'on', L: 0 }, 120).G > 10 * at({ L: 0 }, 120).G, 'a locked-on G protein needs no ligand');
+  assert.equal(at({ pka: true }, 60).cAMP, a.cAMP);
+  assert.equal(S.fmt(2079824), '2,080,000'); assert.equal(S.fmt(0.2), '0');
+});
+
+test('cell cycle model: growth factor, Rb, p53 and the spindle checkpoint', () => {
+  const p = data('cell-cycle-checkpoints').model, C = M.cellCycle, N = { gf: 1, damage: 0, p53: true };
+  const at = (c, t = 48) => C.at(C.simulate(p, { ...N, ...c }), t);
+  near(at({}, 0).N, 1000, 1e-6);
+  near(at({}, 24).N / 1000, 2, 0.1);
+  assert.equal(at({ gf: 0 }).divRate, 0);
+  near(at({ gf: 0, rb: true }).divRate, at({}).divRate, 1e-9);
+  assert.ok(at({ damage: 0.02, p53: false }).pctDivDam > 10 * at({ damage: 0.02 }).pctDivDam);
+  const sp = at({ spindle: true }, 24); assert.ok(sp.hist[5] / sp.N > 0.95 && sp.div === 0);
+  assert.equal(JSON.stringify(C.simulate(p, N)), JSON.stringify(C.simulate(p, N)), 'deterministic');
+});
+
 test('graph scale checks', () => {
   const ok = r => r.every(x => x.ok);
   assert.ok(ok(M.graph.checkScale({ min: 0, max: 8, interval: 1 }, [2.1, 7.5])));
@@ -82,6 +107,14 @@ test('validators catch planted mistakes', async () => {
   assert.ok((await import('../lib/apbio-tool-checks/graph-builder.mjs')).check(gb, null).some(e => /reference scale/.test(e)));
   const dr = data('design-drills'); dr.scenarios[0].cer = dr.scenarios[0].cer.filter(c => c.tag !== 'reasoning');
   assert.ok((await import('../lib/apbio-tool-checks/design-drills.mjs')).check(dr, null).some(e => /reasoning/.test(e)));
+  const sg = data('signal-transduction-amplification'); sg.stimuli['sig-s1'].tables[1].rows[2][1] = '3.99';
+  assert.ok((await import('../lib/apbio-tool-checks/signal-transduction-amplification.mjs')).check(sg, null).some(e => /the model gives/.test(e)));
+  const sg2 = data('signal-transduction-amplification'); sg2.stages[2].amplifies = true;
+  assert.ok((await import('../lib/apbio-tool-checks/signal-transduction-amplification.mjs')).check(sg2, null).some(e => /marked as amplifying/.test(e)));
+  const cc = data('cell-cycle-checkpoints'); cc.stimuli['cc-s1'].tables[0].rows[2][5] = '20.0';
+  assert.ok((await import('../lib/apbio-tool-checks/cell-cycle-checkpoints.mjs')).check(cc, null).some(e => /the model gives/.test(e)));
+  const cc2 = data('cell-cycle-checkpoints'); cc2.model.repair = 0;
+  assert.ok((await import('../lib/apbio-tool-checks/cell-cycle-checkpoints.mjs')).check(cc2, null).length > 0, 'a changed model parameter breaks the tables');
   const ds = data('descriptive-stats'); ds.intro = 'Ready for AP tests';
   assert.ok((await import('../lib/apbio-tool-checks/descriptive-stats.mjs')).check(ds, null).some(e => /AP/.test(e)));
 });
