@@ -49,6 +49,17 @@ course does meanwhile.
 - **tool-topic-ids** (open). The tools are tagged with the draft map's topic ids (`_shared.mjs`
   `PLACEHOLDER_TOPICS`); when the final map lands, re-tag any id it renames.
 
+- **openstax-licence** (open, owner, before Premium launch). openstax.org now shows *Biology 2e*
+  and *Anatomy and Physiology 2e* under CC BY-NC-SA 4.0 (non-commercial, share-alike) with "may not
+  be used in the training of large language models or otherwise be ingested into large language
+  models or generative AI offerings without OpenStax's prior written permission". (1) The AP®
+  Biology course reproduces no OpenStax text or figure (spec decision 24). Its build helpers did
+  fetch OpenStax sections into an AI model to fact-check Units 1-5; decide whether to ask OpenStax
+  about that, and no helper does it any more. (2) The A&P course uses OpenStax figures credited as
+  CC BY 4.0 on a site that sells Premium. CC licences cannot be revoked for copies obtained while
+  CC BY applied, so check when the figures were downloaded (and keep evidence of the licence then),
+  or replace them / ask OpenStax. Meanwhile nothing changes in the A&P course.
+
 ## Contested science
 
 Raised by the Phase 0 map review (2026-10-03, `docs/apbio-phase0.md`). Each is open until a
@@ -280,6 +291,38 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   per h), apoptosis (5% per h) and G2 escape without p53 (50% per h) are illustrative, not
   measured; phase lengths follow OpenStax 10.3 (G1 9 h, S 10 h, G2 4.5 h, M 0.5 h). Both boxes
   say the numbers are made up in realistic proportions.
+- **meiosis-2n-lineups** (open; Unit 5 simulator `meiosis-nondisjunction`). OpenStax 11.1 says the
+  number of possible metaphase I alignments is 2<sup>n</sup>. Strictly, mirror-image line-ups give
+  the same pair of gamete sets, so there are 2<sup>n−1</sup> distinct line-ups and 2<sup>n</sup>
+  distinct gametes. Meanwhile: the tool counts 2<sup>n</sup> *gametes* (and its box notes the
+  mirror line-ups); confirm the wording for lessons.
+- **meiosis-model-simplifications** (open; same simulator). One crossover per pair at a fixed
+  point between the two inner nonsister chromatids; meiosis I nondisjunction always sends both
+  homologs to cell 1; meiosis II sends sister chromatid 1 to the first gamete (Try every line-up
+  also tries the other arrangements); one nondisjunction at a time; no sex chromosomes; every
+  chromatid counts as equal DNA. So with crossing over the model's gamete count (4<sup>n</sup>
+  over all line-ups) is far below real meiosis. The box states each rule. Confirm acceptable.
+
+- **trisomy21-origin-numbers** (open, 5.2; Unit 5 authoring). `meiosis-genetic-diversity-s1` uses approximate
+  rates of trisomy 21 births by maternal age (6, 8, 11, 26, 91, 333 per 10,000 at 20-45, rounded from the
+  widely cited Hook-type tables) and "about 90% of extra copies from the egg, mostly meiosis I". Values vary by
+  survey and era; confirm they are acceptable as "approximate".
+- **centromere-marker-method** (open, 5.2; FRQ `frq-nondisjunction-meiosis`). Items infer meiosis I vs II from
+  DNA types near the centromere (different maternal types = MI, identical = MII), stating that crossing over
+  "almost never" happens there. Real studies add caveats (crossovers can occur near some centromeres; mitotic
+  errors after fertilization). Meanwhile: as stated in the stimuli.
+- **tsd-values** (open, 5.5). The turtle sex-ratio curve (0% female at 26 °C to 100% at 32 °C, pivotal about
+  29 °C) is typical of species such as red-eared sliders, not one data set; crocodilians and some turtles show
+  other patterns (females at both extremes). The figure credit and stimulus say so.
+- **hydrangea-mechanism** (open, 5.5). Blue = aluminum taken up from acidic soil binding the anthocyanin
+  pigment (with co-pigments, in cultivars that respond); pink in neutral soil. Simplified, and the pH ranges
+  in `environment-phenotype-s1` are illustrative. Meanwhile: as taught, matching the framework's example.
+- **fast-plant-linkage** (open; FRQ `frq-dihybrid-chi-square`). The mustard (Fast Plants-style) stem-color and
+  leaf-color genes are presented as unlinked and the hairs gene as linked about 14 map units from stem color;
+  the experiment 2 data are invented to fit that distance and are not claims about real Brassica rapa
+  chromosomes. The stimulus does not name real loci.
+- **mito-paternal** (open, 5.4). "An affected father, as a rule, passes a mitochondrial condition to none of his
+  children" (notes, `bio-non-mendelian-genetics-14`); rare paternal leakage exists (see organelle-inheritance).
 
 ## Map content to confirm
 

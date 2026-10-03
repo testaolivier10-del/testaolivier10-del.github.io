@@ -1,0 +1,636 @@
+{
+  "stimuli": {
+    "meiosis-genetic-diversity-s1": {
+      "kind": "table",
+      "title": "Mother's age and births with trisomy 21",
+      "text": "<p>The table gives approximate rates of births with trisomy 21 (Down syndrome) by the mother's age at delivery, pooled from large population surveys. Family studies of DNA show that in about 90% of cases the extra chromosome 21 came from the egg, and that most of those egg errors happened in meiosis I. Human egg cells begin meiosis I before the mother herself is born and stay paused partway through prophase I, with homologs paired, until shortly before that egg is released, which can be 12 to 50 years later.</p>",
+      "table": {
+        "caption": "Births with trisomy 21 by mother's age (approximate)",
+        "cols": [
+          "Mother's age at delivery (years)",
+          "Births with trisomy 21 (per 10,000 births)"
+        ],
+        "rows": [
+          [
+            "20",
+            "6"
+          ],
+          [
+            "25",
+            "8"
+          ],
+          [
+            "30",
+            "11"
+          ],
+          [
+            "35",
+            "26"
+          ],
+          [
+            "40",
+            "91"
+          ],
+          [
+            "45",
+            "333"
+          ]
+        ]
+      }
+    },
+    "meiosis-genetic-diversity-s2": {
+      "kind": "model",
+      "title": "Tracing an extra chromosome 21",
+      "text": "<p>The karyotype is from child A. To find where the extra chromosome came from, researchers read a stretch of DNA close to the centromere of chromosome 21. This stretch comes in many slightly different types, numbered here; each copy of chromosome 21 carries one type. Crossing over almost never happens this close to the centromere. They tested child A and the parents, and also a child with the same karyotype from another family, child B.</p>",
+      "figure": "karyotype-trisomy-21",
+      "table": {
+        "caption": "Types of the DNA stretch found on chromosome 21 in each person",
+        "cols": [
+          "Person",
+          "Types found"
+        ],
+        "rows": [
+          [
+            "Child A's father",
+            "1 and 2"
+          ],
+          [
+            "Child A's mother",
+            "3 and 4"
+          ],
+          [
+            "Child A",
+            "1, 3 and 4"
+          ],
+          [
+            "Child B's father",
+            "5 and 6"
+          ],
+          [
+            "Child B's mother",
+            "7 and 8"
+          ],
+          [
+            "Child B",
+            "5, 6 and 8"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-meiosis-genetic-diversity-1",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "meiosis-genetic-diversity-s1",
+      "q": "How many times higher is the rate of births with trisomy 21 for mothers aged 45 than for mothers aged 25? Give a whole number.",
+      "numeric": {
+        "answer": 42,
+        "tol": 1,
+        "unit": "times",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "333 ÷ 8 = 41.6, about 42 times higher."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-2",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "meiosis-genetic-diversity-s1",
+      "q": "Which statement best describes the pattern in the table?",
+      "options": [
+        "The rate rises slowly from 20 to 30 years and much more steeply after 35.",
+        "The rate rises by about the same number of births per 10,000 in each five-year step.",
+        "The rate doubles in each five-year step from 20 to 45 years.",
+        "The rate is nearly flat until 40 and then rises in one sudden step."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "From 20 to 30 the rate climbs by 5 per 10,000 (6 to 11); from 35 to 45 it climbs by over 300 (26 to 333). The increase speeds up with age.",
+        "options": [
+          "Small rises at first (6, 8, 11), then large ones (26, 91, 333).",
+          "The steps are 2, 3, 15, 65 and 242 per 10,000: far from equal.",
+          "6 to 8 and 8 to 11 are much less than doubling; 26 to 91 and 91 to 333 are more than tripling.",
+          "The rate already more than doubles between 30 and 35 (11 to 26), so it is not flat until 40."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-3",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "meiosis-genetic-diversity-s1",
+      "q": "Which hypothesis best explains both the age pattern and the finding that most extra chromosomes come from meiosis I in the egg?",
+      "options": [
+        "Links holding each paused homolog pair together weaken with time, so a pair more often goes to one pole.",
+        "Eggs of older women copy chromosome 21 twice in S phase, so the egg enters meiosis I with an extra copy of it.",
+        "Older mothers usually have older partners, whose sperm more often carry two copies of chromosome 21 after meiosis.",
+        "In older mothers the embryo's body cells divide less accurately by mitosis, adding a chromosome 21 after fertilization."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Paired homologs are held together until anaphase I. An egg released at 45 has been paused with its homologs paired for about 45 years, so there is more time for those links to fail and for a pair to separate wrongly in meiosis I, which fits both observations.",
+        "options": [
+          "A long pause in prophase I gives more time for the pair's links to fail, explaining both the age effect and the meiosis I origin.",
+          "A copying error would not explain why the error appears in meiosis I separation, and copying happens only once before meiosis in eggs of any age.",
+          "The family studies show about 90% of extra chromosomes come from the egg, so a sperm explanation does not fit most cases.",
+          "An error after fertilization would not put the extra chromosome in the egg's meiosis I, which is where the DNA evidence places most cases."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-4",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "meiosis-genetic-diversity-s1",
+      "q": "A large hospital records 4,000 births to mothers aged 40. Using the table, how many of these births would you expect to have trisomy 21? Give a whole number.",
+      "numeric": {
+        "answer": 36,
+        "tol": 1,
+        "unit": "births",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "91 per 10,000 births = 0.0091. 0.0091 × 4,000 = 36.4, about 36 births."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-5",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "meiosis-genetic-diversity-s1",
+      "q": "A student concludes from the table that the father's age is the main cause of the rise in trisomy 21. Which response is best supported by the information given?",
+      "options": [
+        "The data group births by the mother's age, and most extra copies come from eggs, so they point to her age.",
+        "The conclusion is supported, because sperm are made throughout a man's life, so older men's sperm carry more errors.",
+        "The conclusion is supported, because the rate rises with age in the table, and both parents grow older together.",
+        "The table says nothing about either parent's age, because trisomy 21 is caused by crossing over in meiosis."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Nothing in the table measures fathers' ages, and the DNA studies place about 90% of extra chromosomes in eggs. The evidence supports a maternal-age effect, not a paternal one.",
+        "options": [
+          "The grouping variable is the mother's age, and the DNA evidence points to eggs.",
+          "Continuous sperm production is a reason sperm might not carry long-paused errors; the data say nothing about fathers.",
+          "Partners' ages may be related, but the DNA studies show the extra copy usually comes from the egg.",
+          "Trisomy comes from chromosomes failing to separate (nondisjunction), not from crossing over."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-6",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "2.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "meiosis-genetic-diversity-s2",
+      "q": "How many chromosomes are in each body cell of child A? Give a whole number.",
+      "numeric": {
+        "answer": 47,
+        "tol": 0,
+        "unit": "chromosomes",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "22 pairs of autosomes would be 44; chromosome 21 has three copies instead of two, giving 45 autosomes, plus X and Y: 47."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-7",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "meiosis-genetic-diversity-s2",
+      "q": "Which gamete that formed child A was abnormal, and how many chromosomes did it carry?",
+      "options": [
+        "The egg, with 24 chromosomes",
+        "The sperm, with 24 chromosomes",
+        "The egg, with 22 chromosomes",
+        "Neither; both carried 23, and a chromosome 21 was copied after fertilization"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Child A has one type from the father (1) and two from the mother (3 and 4). So the sperm carried one chromosome 21 (23 in all) and the egg carried two (24 in all).",
+        "options": [
+          "Two of child A's three chromosome 21s match the mother's types, so the egg carried the extra one: 23 + 1 = 24.",
+          "Only one type from the father (1) is present, so the sperm carried a normal single chromosome 21.",
+          "An egg with 22 chromosomes would give 45 in the child, not 47.",
+          "An extra copy made after fertilization would duplicate one of the child's two types, not add the mother's second type."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-8",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "meiosis-genetic-diversity-s2",
+      "q": "In which division did the error that produced child A most likely occur?",
+      "options": [
+        "Meiosis I in the mother, because the egg carried both of her different chromosome 21s",
+        "Meiosis II in the mother, because the egg carried both of her different chromosome 21s",
+        "Meiosis I in the father, because the child carries one of his two types",
+        "Mitosis in the early embryo, because the child has three copies in each cell"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The egg carried types 3 and 4: one copy of each of the mother's two homologs. Homologs separate in meiosis I, so they ended up together because that division failed. An error in meiosis II would put two identical sister chromatids (3 and 3, or 4 and 4) in the egg.",
+        "options": [
+          "Two different maternal types in one egg means the homologs did not separate: a meiosis I error.",
+          "Sister chromatids are identical near the centromere, so a meiosis II error gives two copies of one type, not 3 and 4.",
+          "One paternal type is the normal contribution of a sperm; the extra copy is maternal.",
+          "A mitosis error in the embryo would duplicate one of the child's existing copies and usually affect only some cells; it would not add the mother's second type."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-9",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "meiosis-genetic-diversity-s2",
+      "q": "Child B's types (5, 6 and 8) show that the extra chromosome came from a meiosis I error in the father. What else was true of the other three sperm cells made from that same cell's meiosis?",
+      "options": [
+        "One more carried two chromosome 21s, and two carried no chromosome 21.",
+        "The other three were normal, with one chromosome 21 each.",
+        "One carried no chromosome 21, and the other two were normal.",
+        "The other three each carried two copies of chromosome 21."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "After a meiosis I error, one cell holds both homologs and the other holds none. Meiosis II then splits each into two gametes: two with two copies (n + 1) and two with none (n − 1).",
+        "options": [
+          "A meiosis I error makes all four products abnormal: two n + 1 and two n − 1.",
+          "Normal gametes alongside an n + 1 gamete come from a meiosis II error, not meiosis I.",
+          "One n − 1 and two normal gametes, with one n + 1, is the meiosis II pattern.",
+          "The four products share four copies of chromosome 21 in total (two homologs, two chromatids each), so they cannot all carry two."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-10",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "1.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "meiosis-genetic-diversity-s2",
+      "q": "Why did the researchers read a DNA stretch close to the centromere rather than one near the tip of chromosome 21?",
+      "options": [
+        "Crossing over rarely reaches there, so the type shows which parental homolog each copy came from.",
+        "DNA near the centromere is copied in S phase, while the DNA near the tips is left uncopied.",
+        "Sister chromatids differ near the centromere, which lets the two kinds of error be told apart.",
+        "The region near the centromere is passed on to children, while the tips of the chromosome stay in the parent."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Crossing over swaps pieces between homologs, so a type near the tip may have moved onto the other homolog. Near the centromere the type stays with its original homolog, so two different types in one gamete mean two homologs (meiosis I), two identical types mean two sister chromatids (meiosis II).",
+        "options": [
+          "Without crossing over in that region, the type is a reliable label for each homolog.",
+          "The whole chromosome is copied in S phase, tips included.",
+          "Sister chromatids are identical copies; that sameness is what makes a meiosis II error show up as two copies of one type.",
+          "Whole chromosomes are passed on; recombinant chromosomes carry pieces of both homologs."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-11",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A fruit fly has 2n = 8. Ignoring crossing over, how many different combinations of chromosomes can its gametes receive by independent assortment? Give a whole number.",
+      "numeric": {
+        "answer": 16,
+        "tol": 0,
+        "unit": "combinations",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "2n = 8 means n = 4 homologous pairs. Each pair can line up two ways, independently: 2⁴ = 16 combinations."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-12",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A species has 2n = 6, and each parent's two homologs of every pair differ. Ignoring crossing over, how many different chromosome combinations could one pair of parents produce in their offspring? Give a whole number.",
+      "numeric": {
+        "answer": 64,
+        "tol": 0,
+        "unit": "combinations",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "n = 3, so each parent makes 2³ = 8 kinds of gamete. Random fertilization pairs any of the 8 eggs with any of the 8 sperm: 8 × 8 = 64."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-13",
+      "type": "multi",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the process that can put alleles from both of a parent's homologs onto one chromosome in a gamete.",
+      "options": [
+        "Crossing over in prophase I",
+        "Independent assortment at metaphase I",
+        "Random fertilization",
+        "Separation of sister chromatids in anaphase II",
+        "Copying of DNA in S phase"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Only crossing over moves pieces between homologs, making a recombinant chromosome that carries some alleles from each.",
+        "options": [
+          "Crossing over swaps matching pieces between a maternal and a paternal chromatid.",
+          "Independent assortment shuffles whole chromosomes; each chromosome stays maternal or paternal.",
+          "Fertilization combines two gametes' chromosomes but does not change any one chromosome.",
+          "Sister chromatids separate without exchanging anything.",
+          "Copying makes identical sister chromatids; it does not mix the homologs."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-14",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A plant has identical alleles on the two homologs of every pair, at every gene. Its pollen fertilizes its own eggs. Predict how the offspring compare with the parent and with each other.",
+      "options": [
+        "Identical to the parent and to each other, since meiosis just reshuffles alleles that are the same.",
+        "They differ from one another, because crossing over makes new combinations of alleles in each meiosis.",
+        "They differ, because independent assortment gives 2ⁿ different gametes in any plant.",
+        "They have half the parent's chromosome number, because just one parent was involved."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Crossing over and independent assortment create variety only by mixing different alleles. If both homologs of every pair are the same, every gamete carries the same alleles, and so does every zygote.",
+        "options": [
+          "With nothing different to shuffle, every gamete, and so every offspring, is the same.",
+          "Swapping matching pieces between identical homologs produces nothing new.",
+          "2ⁿ arrangements are possible, but if the homologs are identical every arrangement gives the same gamete.",
+          "Egg and pollen are each haploid; their fusion restores the diploid number, even from one parent."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-15",
+      "type": "order",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Put these sources of variety in the order in which they happen in one generation.",
+      "options": [
+        "Paired homologs swap pieces of chromatid (crossing over).",
+        "Homologous pairs line up at the middle, each either way round (independent assortment).",
+        "Sister chromatids separate into four haploid cells.",
+        "A sperm fuses with an egg (random fertilization)."
+      ],
+      "why": {
+        "correct": "Crossing over happens in prophase I, while homologs are paired; they then line up independently at metaphase I; sister chromatids separate in meiosis II; fertilization comes last."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-16",
+      "type": "predict",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A diploid yeast cell divides by meiosis to make four haploid spores. A mutant strain pairs its homologs normally but makes no crossovers; assume its chromosomes still separate correctly. Compared with normal yeast, predict each value for the mutant.",
+      "variables": [
+        {
+          "name": "Number of chromosomes in each spore",
+          "answer": "none",
+          "why": "Separation is normal, so each spore still gets one chromosome of each kind."
+        },
+        {
+          "name": "Number of different allele combinations among spores from many cells",
+          "answer": "down",
+          "why": "Without crossing over, alleles on one chromosome always travel together, so fewer combinations can arise."
+        },
+        {
+          "name": "Fraction of spores with a chromosome carrying alleles from both homologs",
+          "answer": "down",
+          "why": "Such recombinant chromosomes are made only by crossing over, so they disappear."
+        },
+        {
+          "name": "Number of whole-chromosome combinations possible from independent assortment",
+          "answer": "none",
+          "why": "Homologous pairs still line up independently at metaphase I, giving the same 2ⁿ combinations."
+        }
+      ],
+      "why": {
+        "correct": "Removing crossing over removes recombinant chromosomes and so reduces variety, but it does not change the chromosome number or the shuffling of whole chromosomes by independent assortment."
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-17",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A girl's karyotype shows 45 chromosomes, with a single X and no other sex chromosome (Turner syndrome). Which pair of gametes could have produced her?",
+      "options": [
+        "A normal egg with an X, and a sperm with no sex chromosome",
+        "An egg with two X chromosomes, and a normal sperm with a Y",
+        "A normal egg with an X, and a normal sperm with an X",
+        "An egg with no sex chromosome, and a normal sperm with a Y"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "X from the egg plus nothing from the sperm gives 45,X. A sperm with no sex chromosome results from nondisjunction of the X and Y in the father's meiosis I, or of sister chromatids in meiosis II.",
+        "options": [
+          "22 autosomes + X from the egg and 22 autosomes from the sperm give 45 chromosomes with one X.",
+          "This gives XXY, 47 chromosomes (Klinefelter syndrome).",
+          "This gives a typical XX girl with 46 chromosomes.",
+          "This gives 45,Y, which has no X; an embryo without any X does not survive."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-18",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Most cases of Down syndrome are caused by",
+      "options": [
+        "three copies of chromosome 21 in each cell",
+        "a single copy of chromosome 21 in each body cell",
+        "a missing X chromosome in each body cell",
+        "an extra Y chromosome in each cell"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Down syndrome is usually trisomy 21: 47 chromosomes, with three copies of chromosome 21.",
+        "options": [
+          "Trisomy 21, after a gamete with two chromosome 21s is fertilized.",
+          "Monosomy of an autosome such as 21 is almost never seen at birth; such embryos rarely survive.",
+          "A single X with no second sex chromosome is Turner syndrome.",
+          "Extra sex chromosomes cause other conditions, not Down syndrome."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-19",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a cell with 2n = 8, one homologous pair fails to separate in meiosis I; meiosis II is normal. How many chromosomes do the four gametes have?",
+      "options": [
+        "5, 5, 3 and 3",
+        "5, 3, 4 and 4",
+        "4, 4, 4 and 4",
+        "5, 5, 4 and 4"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Normally each gamete gets 4. After meiosis I, one cell has 5 chromosomes (both homologs of the faulty pair) and the other 3. Meiosis II splits each normally: 5, 5, 3, 3.",
+        "options": [
+          "Both cells after meiosis I are abnormal (5 and 3), and meiosis II passes that to all four gametes.",
+          "One n + 1, one n − 1 and two normal gametes is the result of an error in meiosis II.",
+          "Four normal gametes would mean no nondisjunction at all.",
+          "Chromosomes are not created: the four gametes share 16 in total (5 + 5 + 3 + 3), while 5, 5, 4, 4 adds up to 18."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-20",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A boy has 47 chromosomes with XXY (Klinefelter syndrome). DNA tests show one X came from his mother and the other X and the Y came from his father. In which division did the error happen?",
+      "options": [
+        "Meiosis I in the father: the X and Y, which pair in meiosis I, went into the same sperm.",
+        "Meiosis II in the father: the two X chromatids failed to separate, giving an XX sperm.",
+        "Meiosis I in the mother: her two X chromosomes failed to separate and went into one egg.",
+        "Meiosis II in the mother: her X chromatids went into the same egg."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The sperm carried both an X and a Y. In a man, X and Y pair through their short matching region and separate in meiosis I; if they fail to separate, one sperm gets both. A meiosis II error would give XX or YY sperm, never XY.",
+        "options": [
+          "X plus Y in one sperm means the X-Y pair stayed together: a meiosis I error.",
+          "A meiosis II error in the father gives a sperm with two identical X or two Y chromosomes, not X with Y.",
+          "Only one X came from the mother, so her egg was normal.",
+          "The mother contributed a single X, so her meiosis worked normally."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-21",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Ignoring crossing over, what is the chance that two children of the same mother receive exactly the same set of chromosomes from her?",
+      "options": [
+        "About 1 in 8.4 million",
+        "About 1 in 23 (one chance per pair)",
+        "About 1 in 46 (one per chromosome)",
+        "About 1 in 2, the chance for one pair"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each of her 23 pairs sends one homolog or the other, independently. The second child matches the first for every pair with a chance of (1/2)²³ = 1 in 2²³, about 1 in 8.4 million.",
+        "options": [
+          "Each of 23 independent pairs must match, each with a chance of 1/2: (1/2)²³ ≈ 1 in 8.4 million.",
+          "23 is the number of pairs; each pair is a separate 1-in-2 chance, and the chances multiply.",
+          "46 is the number of chromosomes; it is not the number of combinations.",
+          "1 in 2 is the chance of matching for one pair, not for all 23."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-genetic-diversity-22",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A new fungus kills a crop plant unless the plant has a rare combination of alleles at several genes. Farm 1 grows plants all made from cuttings of one plant (by mitosis); farm 2 grows plants from seeds made by sexual reproduction. Which farm is more likely to have surviving plants, and why?",
+      "options": [
+        "Farm 2, because meiosis and fertilization give each seedling a different allele combination.",
+        "Farm 1, because plants made by mitosis keep both full chromosome sets of a single healthy parent.",
+        "Farm 2, because sexual reproduction invents alleles in response to the fungus.",
+        "Both equally, because plants of one species carry the same genes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The cuttings are genetically identical: if the parent lacks the rare combination, every plant dies. Seedlings each carry a new combination, so some may happen to have the one that survives.",
+        "options": [
+          "Variety among seedlings raises the chance that some carry the surviving combination.",
+          "Identical plants share the same weakness; if one dies, they all do.",
+          "Meiosis and fertilization shuffle alleles that already exist; they do not invent alleles to order.",
+          "Plants of a species share genes but differ in alleles, and on farm 2 they differ in allele combinations."
+        ]
+      }
+    }
+  ]
+}

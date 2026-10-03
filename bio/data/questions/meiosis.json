@@ -1,0 +1,354 @@
+{
+  "stimuli": {
+    "meiosis-s1": {
+      "kind": "graph",
+      "title": "DNA content of one cell through meiosis",
+      "text": "<p>In a lily flower, cells inside the anther (the part that makes pollen) divide by meiosis. Lily body cells have 2n = 24. Researchers measured the DNA content of one such cell every 2 hours, starting in G1, using a dye whose brightness is proportional to DNA. After each division they followed one of the new cells. DNA content is in relative units, with the cell in G1 set at 2.</p>",
+      "chart": {
+        "type": "line",
+        "x": { "label": "Time", "unit": "h", "min": 0, "max": 32, "step": 4 },
+        "y": { "label": "DNA per cell", "unit": "relative units", "min": 0, "max": 5, "step": 1 },
+        "series": [
+          { "name": "DNA per cell", "points": [[0, 2], [2, 2], [4, 2], [6, 2.6], [8, 3.4], [10, 4], [12, 4], [14, 4], [16, 4], [18, 4], [20, 4], [22, 2], [24, 2], [26, 2], [28, 1], [30, 1], [32, 1]] }
+        ]
+      }
+    },
+    "meiosis-s2": {
+      "kind": "model",
+      "title": "Four dividing cells from one plant",
+      "text": "<p>A student looked at stained cells from a plant whose body cells have 2n = 6: two long, two medium and two short chromosomes. She described four cells, W to Z, from different parts of the plant. All four were stopped while their chromosomes were condensed.</p>",
+      "table": {
+        "caption": "Chromosomes in four cells from a plant with 2n = 6",
+        "cols": ["Cell", "Chromosomes in the cell", "Sister chromatids per chromosome", "How the chromosomes are arranged"],
+        "rows": [
+          ["W", "6", "2", "Lined up singly in one row across the middle; two of each length"],
+          ["X", "6", "2", "Lined up as three side-by-side pairs across the middle; the two in each pair have the same length"],
+          ["Y", "3", "2", "Lined up singly in one row across the middle; one of each length"],
+          ["Z", "3", "1", "Loose inside a nucleus; one of each length"]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-meiosis-1", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "4.B", "level": "apply", "diff": 1, "stimulus": "meiosis-s1",
+      "q": "During which interval is the cell copying its DNA?",
+      "options": ["From 4 to 10 hours", "From 20 to 22 hours", "From 26 to 28 hours", "From 10 to 20 hours"],
+      "correct": 0,
+      "why": {
+        "correct": "DNA content rises from 2 to 4 between 4 and 10 hours: that is S phase, when each DNA molecule is copied.",
+        "options": [
+          "The only rise in the graph is from 2 to 4 units between 4 and 10 hours, which is DNA copying.",
+          "DNA content falls here, from 4 to 2: the cell divided at the end of meiosis I.",
+          "DNA content falls here, from 2 to 1: the cell divided at the end of meiosis II.",
+          "DNA content stays at 4 here: copying is finished and the cell is preparing for and starting meiosis I."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-2", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "2.B", "level": "analyze", "diff": 2, "stimulus": "meiosis-s1",
+      "q": "A cell at 2 hours and a cell at 24 hours both have a DNA content of 2. How do their chromosomes differ?",
+      "options": [
+        "At 24 hours: 12 chromosomes of two chromatids each. At 2 hours: 24 chromosomes of one chromatid each.",
+        "At 24 hours: 24 chromosomes of two chromatids each. At 2 hours: 12 chromosomes of one chromatid each.",
+        "They do not differ: cells with the same DNA content have the same number and kind of chromosomes.",
+        "At 24 hours: 12 chromosomes of one chromatid each. At 2 hours: 24 chromosomes of two chromatids each."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 2 hours the cell is in G1: 24 chromosomes, each one DNA molecule. At 24 hours meiosis I is over: homologs have separated, so the cell has 12 chromosomes, but each still has two sister chromatids. 12 × 2 = 24 DNA molecules either way, so the DNA content matches.",
+        "options": [
+          "Meiosis I halves the number of chromosomes but leaves each one with two chromatids, so the DNA content equals that of a G1 cell.",
+          "This has the numbers reversed: the G1 cell is the diploid one, and meiosis I halves the chromosome count.",
+          "DNA content counts DNA molecules, not chromosomes. 24 single-chromatid chromosomes and 12 two-chromatid chromosomes hold the same amount.",
+          "Sister chromatids do not separate until meiosis II, so a cell between the two divisions still has two chromatids per chromosome; a G1 cell has one."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-3", "type": "numeric", "unit": "unit-5", "topic": "meiosis", "practice": "5.A", "level": "apply", "diff": 2, "stimulus": "meiosis-s1",
+      "q": "How many sister chromatids does the cell contain at 16 hours? Give a whole number.",
+      "numeric": { "answer": 48, "tol": 0, "unit": "chromatids", "decimals": 0 },
+      "why": { "correct": "At 16 hours the DNA has been copied (content 4) but the cell has not divided, so it still has 2n = 24 chromosomes, each made of 2 sister chromatids: 24 × 2 = 48." }
+    },
+    {
+      "id": "bio-meiosis-4", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "6.E", "level": "analyze", "diff": 3, "stimulus": "meiosis-s1",
+      "q": "In a second experiment, a drug that stops spindle fibers from forming was added at 12 hours. The cells stayed alive, did not divide and did not copy their DNA again. Predict the DNA content of a cell at 30 hours.",
+      "options": ["4 units", "2 units", "1 unit", "8 units"],
+      "correct": 0,
+      "why": {
+        "correct": "The DNA was already copied by 10 hours. Without a spindle, chromosomes are not pulled to the poles, so neither division happens and the cell keeps its doubled DNA content of 4.",
+        "options": [
+          "Copying finished before the drug was added, and the blocked cell does not divide, so it keeps 4 units.",
+          "Falling to 2 units needs the first division, which needs the spindle to pull homologs apart.",
+          "Falling to 1 unit needs both divisions; the drug blocks the spindle that drives each of them.",
+          "Reaching 8 units would need a second round of copying, which the question rules out."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-5", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "1.B", "level": "apply", "diff": 2, "stimulus": "meiosis-s1",
+      "q": "Between 26 and 28 hours the DNA content per cell halves, from 2 to 1, yet the number of chromosomes per cell does not change. Which explanation fits?",
+      "options": [
+        "Sister chromatids separate into different cells, and no S phase came between the two divisions.",
+        "Homologous chromosomes separate into different cells for a second time.",
+        "Half of the DNA in each chromosome is broken down after the first division.",
+        "The cell copies its DNA again and then divides into four cells at once."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In meiosis II each of the 12 chromosomes splits into its two chromatids, one going to each new cell. Each new cell still has 12 chromosomes, but each is one DNA molecule, so the DNA halves. Because there was no S phase after meiosis I, nothing restores it.",
+        "options": [
+          "Meiosis II splits sister chromatids; each new cell keeps 12 chromosomes, each now a single DNA molecule.",
+          "Homologs separated in meiosis I; after that the cell holds one chromosome of each kind, so there are no pairs left to separate.",
+          "DNA is not broken down; it is shared between the two new cells.",
+          "The graph shows no rise in DNA between the divisions, so no copying took place."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-6", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "2.A", "level": "apply", "diff": 1, "stimulus": "meiosis-s2",
+      "q": "Which cell is in metaphase of meiosis I?",
+      "options": ["Cell X", "Cell W", "Cell Y", "Cell Z"],
+      "correct": 0,
+      "why": {
+        "correct": "Only in meiosis I do homologous chromosomes line up as side-by-side pairs, as in cell X.",
+        "options": [
+          "Paired homologs lined up across the middle are the mark of metaphase I.",
+          "Six chromosomes lined up singly, two of each length, is metaphase of mitosis in a diploid cell.",
+          "Three chromosomes lined up singly, one of each length, is metaphase II in a haploid cell.",
+          "Single-chromatid chromosomes inside a nucleus: this cell has finished meiosis."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-7", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "2.B", "level": "analyze", "diff": 2, "stimulus": "meiosis-s2",
+      "q": "Cells W and Y both have chromosomes lined up singly across the middle. Which observation shows that Y is in meiosis II rather than mitosis?",
+      "options": [
+        "Y holds one chromosome of each length, so the homologs have already been separated.",
+        "Each of Y's chromosomes is made of two sister chromatids.",
+        "Y's chromosomes are lined up in one row across the middle of the cell.",
+        "Y has fewer chromosomes because three were broken down during meiosis I."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A diploid cell in mitosis (W) has two of each kind. Y has one of each kind: it is haploid, which a cell becomes only after meiosis I has separated the homologs.",
+        "options": [
+          "Being haploid, one of each kind, is the evidence that meiosis I has already happened.",
+          "W's chromosomes also have two sister chromatids, so this does not tell the two apart.",
+          "W's chromosomes are lined up the same way, so the arrangement alone does not tell them apart.",
+          "Chromosomes are not broken down in meiosis I; homologs are shared between the two new cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-8", "type": "numeric", "unit": "unit-5", "topic": "meiosis", "practice": "5.A", "level": "apply", "diff": 1, "stimulus": "meiosis-s2",
+      "q": "How many chromatids are in cell X in total? Give a whole number.",
+      "numeric": { "answer": 12, "tol": 0, "unit": "chromatids", "decimals": 0 },
+      "why": { "correct": "Cell X has 6 chromosomes, each made of 2 sister chromatids: 6 × 2 = 12." }
+    },
+    {
+      "id": "bio-meiosis-9", "type": "multi", "unit": "unit-5", "topic": "meiosis", "practice": "2.A", "level": "apply", "diff": 2, "stimulus": "meiosis-s2",
+      "q": "Select the cells that are haploid.",
+      "options": ["Cell W", "Cell X", "Cell Y", "Cell Z"],
+      "correct": [2, 3],
+      "why": {
+        "correct": "A haploid cell has one chromosome of each kind (n = 3 here), whatever the number of chromatids. Y and Z each have one long, one medium and one short chromosome.",
+        "options": [
+          "W has two of each length: it is diploid (in mitosis).",
+          "X has two of each length, paired: it is diploid, in meiosis I, before the homologs separate.",
+          "Y has one chromosome of each length. Two chromatids per chromosome does not make it diploid.",
+          "Z has one chromosome of each length, each a single chromatid: a haploid cell at the end of meiosis."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-10", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "6.E", "level": "analyze", "diff": 2, "stimulus": "meiosis-s2",
+      "q": "Cell Y completes its division. Predict what each of the resulting cells contains.",
+      "options": [
+        "3 chromosomes, each a single chromatid",
+        "3 chromosomes, each with two chromatids",
+        "6 chromosomes, each a single chromatid",
+        "1 or 2 chromosomes, as an odd number does not split evenly"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In meiosis II each of Y's three chromosomes splits into its two sister chromatids, one going to each pole. Each new cell gets one copy of each of the three: 3 chromosomes, each one chromatid.",
+        "options": [
+          "Each pole gets one chromatid of every chromosome, so each new cell has 3 single-chromatid chromosomes.",
+          "The two chromatids of each chromosome separate in this division, so they no longer stay together.",
+          "Six chromatids are shared between two cells: three each, not six.",
+          "Meiosis II divides each chromosome's chromatids, not the set of chromosomes, so an odd number is no problem."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-11", "type": "numeric", "unit": "unit-5", "topic": "meiosis", "practice": "5.A", "level": "apply", "diff": 1,
+      "q": "A dog's skin cells have 78 chromosomes. How many chromosomes does a dog sperm cell have? Give a whole number.",
+      "numeric": { "answer": 39, "tol": 0, "unit": "chromosomes", "decimals": 0 },
+      "why": { "correct": "Skin cells are diploid (2n = 78). Sperm are made by meiosis and are haploid: n = 78 ÷ 2 = 39." }
+    },
+    {
+      "id": "bio-meiosis-12", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "1.C", "level": "analyze", "diff": 2,
+      "q": "In a man's liver cell in G2, a biologist compares the two copies of chromosome 7 with each other, and the two sister chromatids of one copy with each other. Which statement is correct?",
+      "options": [
+        "The sister chromatids carry identical DNA; the two chromosome 7s have the same genes but may carry different alleles.",
+        "The two chromosome 7s carry identical DNA, because they are copies of the same chromosome.",
+        "The two sister chromatids came from different parents, one from his mother and one from his father.",
+        "The two chromosome 7s carry different genes, one set inherited from each of his parents."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Sister chromatids are made by copying one DNA molecule in S phase, so they are identical. The two chromosome 7s are homologs, one from each parent: same genes in the same order, but possibly different alleles.",
+        "options": [
+          "Sister chromatids are copies; homologs come from different parents and may differ in alleles.",
+          "Homologs are not copies of each other: one came from the mother and one from the father.",
+          "Both sister chromatids were copied from the same chromosome, so they come from the same parent.",
+          "Homologs carry the same genes in the same order; what can differ is the version (allele) of each gene."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-13", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Suppose a plant with 2n = 14 made its sperm and egg cells by mitosis instead of meiosis. What would its offspring's chromosome number be, and why?",
+      "options": [
+        "28, because two gametes with 14 chromosomes each would join",
+        "14, because mitosis keeps the chromosome number the same",
+        "7, because each gamete would carry half of the 14",
+        "14, because fertilization would halve the number again"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Mitosis would give gametes the full 14 chromosomes. Fertilization adds the egg's and the sperm's chromosomes together: 14 + 14 = 28, double the parent's number.",
+        "options": [
+          "Fertilization adds two gametes' chromosomes, so 14 + 14 = 28.",
+          "Mitosis keeps 14 in the gametes, but the offspring gets two gametes' worth.",
+          "Halving is what meiosis does; gametes made by mitosis would keep all 14.",
+          "Fertilization combines chromosomes; it never halves them."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-14", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "2.A", "level": "recall", "diff": 1,
+      "q": "In the human life cycle, which event turns haploid cells into a diploid cell?",
+      "options": ["Fertilization", "Meiosis I", "Meiosis II", "Mitosis in the zygote"],
+      "correct": 0,
+      "why": {
+        "correct": "Fertilization joins a haploid sperm (n = 23) and a haploid egg (n = 23) into a diploid zygote (2n = 46).",
+        "options": [
+          "A sperm and an egg, each with 23 chromosomes, join into a zygote with 46.",
+          "Meiosis I goes the other way: it turns a diploid cell into haploid cells.",
+          "Meiosis II starts and ends with haploid cells.",
+          "The zygote is already diploid; mitosis copies its set into new cells without changing the number."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-15", "type": "predict", "unit": "unit-5", "topic": "meiosis", "practice": "6.E", "level": "apply", "diff": 2,
+      "q": "Compare a sperm cell made by a man's meiosis with one of his skin cells in G1. For the sperm cell, predict whether each value is higher (up), lower (down) or the same (no change).",
+      "variables": [
+        { "name": "Number of chromosomes", "answer": "down", "why": "Meiosis halves the number: 23 in the sperm cell, 46 in the skin cell." },
+        { "name": "Amount of DNA in the nucleus", "answer": "down", "why": "Half as many chromosomes, each a single chromatid, means half the DNA of a G1 skin cell." },
+        { "name": "Number of different kinds of autosome (each kind counted once)", "answer": "none", "why": "Meiosis gives each gamete one of every pair, so the sperm cell still has all 22 kinds of autosome, just one copy of each." },
+        { "name": "Number of copies of chromosome 1", "answer": "down", "why": "The skin cell has a homologous pair (two copies); the sperm cell received one of them." }
+      ],
+      "why": { "correct": "Meiosis halves the chromosome number by sending one homolog of each pair to each gamete, so the gamete keeps every kind of chromosome but only one copy of each." }
+    },
+    {
+      "id": "bio-meiosis-16", "type": "order", "unit": "unit-5", "topic": "meiosis", "practice": "2.A", "level": "apply", "diff": 1,
+      "q": "Put the events of meiosis in order, starting before meiosis begins.",
+      "options": [
+        "DNA is copied, so each chromosome has two sister chromatids.",
+        "Homologous chromosomes pair along their length.",
+        "Pairs of homologs line up side by side across the middle of the cell.",
+        "The homologs of each pair move to opposite poles and the cell divides in two.",
+        "In each new cell, chromosomes line up singly across the middle.",
+        "Sister chromatids separate, giving four haploid cells."
+      ],
+      "why": { "correct": "Copying (S phase) comes first; homologs then pair and line up as pairs, and separate in meiosis I. Meiosis II follows with no copying: chromosomes line up singly and sister chromatids separate." }
+    },
+    {
+      "id": "bio-meiosis-17", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "1.C", "level": "apply", "diff": 1,
+      "q": "A karyotype shows 22 pairs of autosomes plus one X and one Y chromosome. Which cell could it have come from?",
+      "options": ["A skin cell of a male", "A sperm cell of a male", "A skin cell of a female", "An egg cell of a female"],
+      "correct": 0,
+      "why": {
+        "correct": "Pairs of autosomes mean the cell is diploid, and X plus Y means it came from a male: a male body cell.",
+        "options": [
+          "Diploid (pairs of every autosome) with XY: a male body cell.",
+          "A sperm cell is haploid: 22 single autosomes and either an X or a Y, not both.",
+          "Females have two X chromosomes and no Y.",
+          "An egg is haploid, with 22 single autosomes and one X."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-18", "type": "multi", "unit": "unit-5", "topic": "meiosis", "practice": "1.B", "level": "apply", "diff": 2,
+      "q": "Select the statements that are true of both meiosis II and mitosis.",
+      "options": [
+        "Sister chromatids separate and move to opposite poles.",
+        "Chromosomes line up singly across the middle of the cell.",
+        "Homologous chromosomes pair before lining up.",
+        "The division begins straight after an S phase.",
+        "The division turns a diploid cell into haploid cells."
+      ],
+      "correct": [0, 1],
+      "why": {
+        "correct": "Meiosis II works like mitosis: chromosomes line up singly and their sister chromatids separate. What differs is that meiosis II happens in haploid cells with no S phase before it.",
+        "options": [
+          "Both divisions end by separating sister chromatids.",
+          "In both, chromosomes line up one by one, not in pairs.",
+          "Homolog pairing happens in meiosis I, not in meiosis II or mitosis.",
+          "Mitosis follows an S phase, but meiosis II follows meiosis I with no copying in between.",
+          "Meiosis II starts with haploid cells, and mitosis keeps the number the same; meiosis I is the step that halves it."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-19", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "1.C", "level": "analyze", "diff": 3,
+      "q": "A mule has 63 chromosomes: 32 from its horse mother and 31 from its donkey father. Mules grow normally but almost never make working gametes. Which explanation is best supported?",
+      "options": [
+        "Horse and donkey chromosomes differ, so many fail to pair as homologs in meiosis I and are shared out unevenly.",
+        "An odd number of chromosomes is not copied properly in S phase, so the mule's cells stop dividing.",
+        "Mule body cells divide by meiosis instead of mitosis, so they become haploid before the mule matures.",
+        "Mule body cells fail to divide by mitosis, because 63 chromosomes do not split equally into two cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Meiosis I depends on each chromosome pairing with a matching homolog. Many horse and donkey chromosomes do not match, so they cannot pair properly and are not shared out one per gamete; the gametes get wrong sets and fail.",
+        "options": [
+          "Meiosis needs matched homologous pairs, which a mix of horse and donkey chromosomes does not provide.",
+          "Copying works chromosome by chromosome; the total number does not matter, and the mule's body grows normally.",
+          "Body cells divide by mitosis; the mule grows normally, which shows mitosis works.",
+          "Mitosis separates sister chromatids, so any number of chromosomes, odd or even, is shared equally."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-20", "type": "single", "unit": "unit-5", "topic": "meiosis", "practice": "1.C", "level": "analyze", "diff": 3,
+      "q": "Male honeybees develop from unfertilized eggs and have 16 chromosomes; females develop from fertilized eggs and have 32. Males make sperm by a division that does not halve the chromosome number. How many chromosomes does a male's sperm carry, and why does the female number stay at 32?",
+      "options": [
+        "16; the male is already haploid, so a 16-chromosome sperm and a 16-chromosome egg give 32.",
+        "8; sperm are made by halving, so a 16-chromosome egg and an 8-chromosome sperm give 24.",
+        "32; the sperm doubles the male's number, so it matches the female number by itself.",
+        "16; the sperm carries the queen's chromosomes, which it received when the male was fertilized."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A male bee has one set (n = 16). Dividing without halving keeps 16 in each sperm. The queen's eggs are made by meiosis (32 → 16). A fertilized egg gets 16 + 16 = 32, the female number.",
+        "options": [
+          "Males are haploid, so gametes made without halving are still haploid, and 16 + 16 = 32.",
+          "The question says the male's division does not halve the number, and 24 is not the female number.",
+          "Nothing in the division doubles the chromosomes; the sperm keeps the male's 16.",
+          "Males come from unfertilized eggs; their 16 chromosomes came from the queen's egg, not from fertilization."
+        ]
+      }
+    },
+    {
+      "id": "bio-meiosis-21", "type": "numeric", "unit": "unit-5", "topic": "meiosis", "practice": "5.A", "level": "apply", "diff": 2,
+      "q": "Corn has 2n = 20. How many tetrads (pairs of homologous chromosomes) line up across the middle of a corn cell in metaphase of meiosis I? Give a whole number.",
+      "numeric": { "answer": 10, "tol": 0, "unit": "tetrads", "decimals": 0 },
+      "why": { "correct": "Each tetrad is one homologous pair. 2n = 20 means 10 pairs, so 10 tetrads line up." }
+    }
+  ]
+}

@@ -545,7 +545,7 @@ ${skills.length ? `
       <div class="trust-pill">Unit sheets free to print</div>
       <div class="trust-pill">Progress saved on your device</div>
     </div>
-    <p class="bio-disclaimer">${esc(DISCLAIMER)} Figures adapted from OpenStax <i>Biology 2e</i> are credited where they appear; OpenStax does not endorse LevlPrep.</p>
+    <p class="bio-disclaimer">${esc(DISCLAIMER)}</p>
   </section>
 </main>
 ${footer(depth, 'home')}

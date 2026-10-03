@@ -1,0 +1,11 @@
+{
+  "crossing-over": { "def": "The exchange of matching pieces between a chromatid of one homolog and a chromatid of the other, while homologous chromosomes are paired in prophase I. The places where the chromatids cross and swap are visible as chiasmata (singular chiasma)." },
+  "recombinant": { "def": "A chromosome (or chromatid, or gamete) that carries a new combination of alleles, made by crossing over, that was not on either of the parent's homologs. Genetic recombination is the making of such new combinations." },
+  "independent-assortment": { "def": "The random, independent way each homologous pair lines up at metaphase I: which homolog of one pair goes to a given pole does not affect which homolog of another pair goes there. With n pairs, it gives 2ⁿ possible chromosome combinations in gametes (about 8.4 million for humans)." },
+  "random-fertilization": { "def": "The chance joining of any one of a father's genetically different sperm with any one of a mother's genetically different eggs, which multiplies the number of possible offspring combinations (about 70 trillion for one human couple, before counting crossing over)." },
+  "genetic-variation": { "def": "Differences in DNA, and so in alleles and their combinations, among individuals. In sexual reproduction, crossing over, independent assortment and random fertilization make each offspring's combination new." },
+  "nondisjunction": { "def": "The failure of chromosomes to separate correctly in meiosis: a homologous pair in meiosis I, or two sister chromatids in meiosis II. It gives gametes with an extra chromosome (n + 1) or a missing one (n − 1)." },
+  "aneuploidy": { "def": "Having an abnormal number of one or more chromosomes, usually after nondisjunction: trisomy is three copies of a chromosome (2n + 1), monosomy one copy (2n − 1)." },
+  "down-syndrome": { "def": "A condition caused, in most cases, by trisomy 21: three copies of chromosome 21 in every cell, usually from nondisjunction in the egg. Its likelihood rises with the mother's age. It affects development, including learning and heart formation." },
+  "sex-aneuploidy": { "def": "Aneuploidy of the sex chromosomes, such as Turner syndrome (45,X: a single X and no second sex chromosome, in a female) and Klinefelter syndrome (47,XXY, in a male). Effects are milder than for most autosome changes." }
+}

@@ -34,7 +34,7 @@ are in `docs/apbio-architecture.md` ("Content formats").
   topics. Short sentences, active voice, "you".
 - **Slower:** one idea per section; concrete example first, then the rule; define each term the
   first time you use it, in plain words.
-- **Visual:** every lesson has a figure (OpenStax *Biology 2e*, CC BY 4.0, or our own SVG), and
+- **Visual:** every lesson has a figure (our own SVG; no OpenStax figures, spec decision 24), and
   every process is a numbered cause-and-effect chain where each effect is the next cause. "See the
   process, then answer questions about it": the chain comes before the check questions.
 - **Mechanisms, not purposes:** "low water potential outside the cell draws water out", never
@@ -77,4 +77,4 @@ part; task verbs in bold (Describe, Explain, Calculate, Predict, Justify).
 ## Contested or uncertain science
 
 Add it to `docs/apbio-needs-author.md` instead of guessing. Every unit gets an independent
-accuracy check against OpenStax *Biology 2e* and the CED before it is published.
+accuracy check before it is published. Do not fetch or paste OpenStax text into any AI tool (spec decision 24).

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" width="760" height="380" role="img" aria-labelledby="env-t env-d">
+<title id="env-t">One genotype, different phenotypes: hydrangea color and turtle sex</title>
+<desc id="env-d">Left: three hydrangea plants grown from cuttings of one plant, so with the same genotype, in soils of pH 5, 6 and 7. In acidic soil (pH 5) aluminum dissolves, the roots take it up, and it binds the flower pigment, giving blue flowers; at pH 6 the flowers are purple; in neutral soil (pH 7) aluminum stays locked in the soil and the flowers are pink. Right: a graph of the percentage of turtle hatchlings that are female against the temperature at which the eggs were incubated, from 26 to 32 degrees Celsius. Below about 27 degrees almost all hatch as males; above about 31 degrees almost all hatch as females; the switch is steep around 29 degrees. Each curve shows a norm of reaction: the range of phenotypes one genotype produces across environments.</desc>
+<defs><marker id="env-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="380" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="190.0" y="26.0" font-size="15" text-anchor="middle" font-weight="700">Hydrangea clones in different soils</text>
+<line x1="80.0" y1="230.0" x2="80.0" y2="150.0" stroke="#2E7D32" stroke-width="4"/>
+<ellipse cx="60" cy="200" rx="20" ry="9" fill="#5FA05F" transform="rotate(-25 60 200)"/>
+<ellipse cx="100" cy="190" rx="20" ry="9" fill="#5FA05F" transform="rotate(25 100 190)"/>
+<circle cx="106.0" cy="118.0" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="99.9" cy="132.1" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="84.5" cy="139.7" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="67.0" cy="137.1" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="55.6" cy="125.5" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="55.6" cy="110.5" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="67.0" cy="98.9" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="84.5" cy="96.3" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="99.9" cy="103.9" r="11" fill="#3B6FD4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="80" cy="118" r="11" fill="#3B6FD4"/>
+<rect x="40.0" y="230.0" width="80.0" height="40.0" rx="4" fill="#C8A27A" stroke="#6B5E3C" stroke-width="2"/>
+<text x="80.0" y="255.0" font-size="13" text-anchor="middle" font-weight="700">pH 5</text>
+<text x="80.0" y="290.0" font-size="13" text-anchor="middle" font-weight="700">blue</text>
+<line x1="190.0" y1="230.0" x2="190.0" y2="150.0" stroke="#2E7D32" stroke-width="4"/>
+<ellipse cx="170" cy="200" rx="20" ry="9" fill="#5FA05F" transform="rotate(-25 170 200)"/>
+<ellipse cx="210" cy="190" rx="20" ry="9" fill="#5FA05F" transform="rotate(25 210 190)"/>
+<circle cx="216.0" cy="118.0" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="209.9" cy="132.1" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="194.5" cy="139.7" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="177.0" cy="137.1" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="165.6" cy="125.5" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="165.6" cy="110.5" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="177.0" cy="98.9" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="194.5" cy="96.3" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="209.9" cy="103.9" r="11" fill="#8E5BB8" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="190" cy="118" r="11" fill="#8E5BB8"/>
+<rect x="150.0" y="230.0" width="80.0" height="40.0" rx="4" fill="#C8A27A" stroke="#6B5E3C" stroke-width="2"/>
+<text x="190.0" y="255.0" font-size="13" text-anchor="middle" font-weight="700">pH 6</text>
+<text x="190.0" y="290.0" font-size="13" text-anchor="middle" font-weight="700">purple</text>
+<line x1="300.0" y1="230.0" x2="300.0" y2="150.0" stroke="#2E7D32" stroke-width="4"/>
+<ellipse cx="280" cy="200" rx="20" ry="9" fill="#5FA05F" transform="rotate(-25 280 200)"/>
+<ellipse cx="320" cy="190" rx="20" ry="9" fill="#5FA05F" transform="rotate(25 320 190)"/>
+<circle cx="326.0" cy="118.0" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="319.9" cy="132.1" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="304.5" cy="139.7" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="287.0" cy="137.1" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="275.6" cy="125.5" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="275.6" cy="110.5" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="287.0" cy="98.9" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="304.5" cy="96.3" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="319.9" cy="103.9" r="11" fill="#E58CB4" stroke="#ffffff" stroke-width="1.5"/>
+<circle cx="300" cy="118" r="11" fill="#E58CB4"/>
+<rect x="260.0" y="230.0" width="80.0" height="40.0" rx="4" fill="#C8A27A" stroke="#6B5E3C" stroke-width="2"/>
+<text x="300.0" y="255.0" font-size="13" text-anchor="middle" font-weight="700">pH 7</text>
+<text x="300.0" y="290.0" font-size="13" text-anchor="middle" font-weight="700">pink</text>
+<text x="190.0" y="318.0" font-size="12" text-anchor="middle">Acidic soil: aluminum dissolves, is taken up</text>
+<text x="190.0" y="333.0" font-size="12" text-anchor="middle">and binds the pigment → blue.</text>
+<text x="190.0" y="348.0" font-size="12" text-anchor="middle">Neutral soil: little aluminum taken up → pink.</text>
+<line x1="380.0" y1="40.0" x2="380.0" y2="360.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="575.0" y="26.0" font-size="15" text-anchor="middle" font-weight="700">Turtle eggs at different temperatures</text>
+<line x1="440.0" y1="300.0" x2="730.0" y2="300.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="440.0" y1="300.0" x2="440.0" y2="80.0" stroke="#1F2A28" stroke-width="2"/>
+<line x1="440.0" y1="300.0" x2="440.0" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="440.0" y="320.0" font-size="12" text-anchor="middle">26</text>
+<line x1="488.3" y1="300.0" x2="488.3" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="488.3" y="320.0" font-size="12" text-anchor="middle">27</text>
+<line x1="536.7" y1="300.0" x2="536.7" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="536.7" y="320.0" font-size="12" text-anchor="middle">28</text>
+<line x1="585.0" y1="300.0" x2="585.0" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="585.0" y="320.0" font-size="12" text-anchor="middle">29</text>
+<line x1="633.3" y1="300.0" x2="633.3" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="633.3" y="320.0" font-size="12" text-anchor="middle">30</text>
+<line x1="681.7" y1="300.0" x2="681.7" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="681.7" y="320.0" font-size="12" text-anchor="middle">31</text>
+<line x1="730.0" y1="300.0" x2="730.0" y2="305.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="730.0" y="320.0" font-size="12" text-anchor="middle">32</text>
+<line x1="435.0" y1="300.0" x2="440.0" y2="300.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="431.0" y="304.0" font-size="12" text-anchor="end">0</text>
+<line x1="435.0" y1="245.0" x2="440.0" y2="245.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="431.0" y="249.0" font-size="12" text-anchor="end">25</text>
+<line x1="440.0" y1="245.0" x2="730.0" y2="245.0" stroke="#DDE3E2" stroke-width="1"/>
+<line x1="435.0" y1="190.0" x2="440.0" y2="190.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="431.0" y="194.0" font-size="12" text-anchor="end">50</text>
+<line x1="440.0" y1="190.0" x2="730.0" y2="190.0" stroke="#DDE3E2" stroke-width="1"/>
+<line x1="435.0" y1="135.0" x2="440.0" y2="135.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="431.0" y="139.0" font-size="12" text-anchor="end">75</text>
+<line x1="440.0" y1="135.0" x2="730.0" y2="135.0" stroke="#DDE3E2" stroke-width="1"/>
+<line x1="435.0" y1="80.0" x2="440.0" y2="80.0" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="431.0" y="84.0" font-size="12" text-anchor="end">100</text>
+<line x1="440.0" y1="80.0" x2="730.0" y2="80.0" stroke="#DDE3E2" stroke-width="1"/>
+<text x="585.0" y="342.0" font-size="13" text-anchor="middle">Incubation temperature (°C)</text>
+<text x="402" y="190.0" font-size="13" text-anchor="middle" transform="rotate(-90 402 190.0)">Hatchlings female (%)</text>
+<path d="M440.0,300.0 L488.3,291.2 L536.7,260.4 L585.0,185.6 L633.3,110.8 L681.7,86.6 L730.0,80.0" fill="none" stroke="#D55E00" stroke-width="3"/>
+<circle cx="440.0" cy="300.0" r="4.5" fill="#D55E00"/>
+<circle cx="488.3" cy="291.2" r="4.5" fill="#D55E00"/>
+<circle cx="536.7" cy="260.4" r="4.5" fill="#D55E00"/>
+<circle cx="585.0" cy="185.6" r="4.5" fill="#D55E00"/>
+<circle cx="633.3" cy="110.8" r="4.5" fill="#D55E00"/>
+<circle cx="681.7" cy="86.6" r="4.5" fill="#D55E00"/>
+<circle cx="730.0" cy="80.0" r="4.5" fill="#D55E00"/>
+<text x="448.0" y="96.0" font-size="12" text-anchor="start">cool (left): mostly males</text>
+<text x="726.0" y="250.0" font-size="12" text-anchor="end">warm (right): mostly females</text>
+<text x="575.0" y="368.0" font-size="12" text-anchor="middle" font-weight="700">Same kind of eggs; temperature sets the sex</text>
+</g>
+</svg>

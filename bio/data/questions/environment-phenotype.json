@@ -1,0 +1,646 @@
+{
+  "stimuli": {
+    "environment-phenotype-s1": {
+      "kind": "table",
+      "title": "Hydrangea clones in soils of different pH",
+      "text": "<p>A grower took 48 cuttings from one hydrangea plant and rooted them in pots. Groups of 8 were grown in the same potting mix adjusted to six different pH values, with the same light, water and temperature. When the plants flowered, she recorded each plant's flower color and measured aluminum in the colored flower parts (4 plants per group).</p>",
+      "table": {
+        "caption": "Flower color and aluminum in hydrangea clones by soil pH (aluminum: mean ± 2 SE)",
+        "cols": [
+          "Soil pH",
+          "Plants with blue flowers",
+          "Plants with purple flowers",
+          "Plants with pink flowers",
+          "Aluminum in flowers (µg/g)"
+        ],
+        "rows": [
+          [
+            "4.5",
+            "8",
+            "0",
+            "0",
+            "210 ± 20"
+          ],
+          [
+            "5.0",
+            "8",
+            "0",
+            "0",
+            "180 ± 18"
+          ],
+          [
+            "5.5",
+            "5",
+            "3",
+            "0",
+            "120 ± 15"
+          ],
+          [
+            "6.0",
+            "1",
+            "4",
+            "3",
+            "60 ± 12"
+          ],
+          [
+            "6.5",
+            "0",
+            "1",
+            "7",
+            "25 ± 8"
+          ],
+          [
+            "7.0",
+            "0",
+            "0",
+            "8",
+            "15 ± 6"
+          ]
+        ]
+      }
+    },
+    "environment-phenotype-s2": {
+      "kind": "graph",
+      "title": "Turtle hatchling sex and incubation temperature",
+      "text": "<p>Eggs from 10 nests of one turtle species were collected, and the eggs of each nest were divided among seven incubators held at 26 to 32 °C, so every incubator received eggs from every nest. After hatching, each turtle's sex was identified. Each point is the mean percentage of female hatchlings across the 10 nests, with error bars of ± 2 SE.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Incubation temperature",
+          "unit": "°C",
+          "min": 26,
+          "max": 32,
+          "step": 1
+        },
+        "y": {
+          "label": "Hatchlings that are female",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 20
+        },
+        "series": [
+          {
+            "name": "Female hatchlings (mean ± 2 SE)",
+            "points": [
+              [
+                26,
+                0,
+                0
+              ],
+              [
+                27,
+                4,
+                3
+              ],
+              [
+                28,
+                18,
+                6
+              ],
+              [
+                29,
+                52,
+                8
+              ],
+              [
+                30,
+                86,
+                6
+              ],
+              [
+                31,
+                97,
+                3
+              ],
+              [
+                32,
+                100,
+                0
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-environment-phenotype-1",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "environment-phenotype-s1",
+      "q": "Which statement best describes the relationship in the table?",
+      "options": [
+        "As soil pH rises, flowers shift from blue to pink and aluminum in the flowers falls.",
+        "As soil pH rises, flowers shift from pink to blue and aluminum in the flowers rises.",
+        "Flower color changes with pH, but aluminum in the flowers stays about the same.",
+        "Aluminum in the flowers falls as pH rises, but flower color does not change."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "From pH 4.5 to 7.0, blue plants go from 8 to 0 and pink plants from 0 to 8, while aluminum falls from 210 to 15 µg/g.",
+        "options": [
+          "Blue at low pH, pink at high pH, and aluminum drops as pH rises.",
+          "This reverses the trend: blue flowers are at the acidic, low-pH end, where aluminum is highest.",
+          "Aluminum falls more than tenfold across the range, so it does not stay the same.",
+          "Color changes clearly, from 8 blue plants at pH 4.5 to 8 pink plants at pH 7.0."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-2",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "environment-phenotype-s1",
+      "q": "Why did the grower use cuttings from one plant instead of seedlings?",
+      "options": [
+        "Cuttings share one genotype, so group differences come from the soil, not genes.",
+        "Cuttings grow faster than seedlings, so the plants flower within a single season.",
+        "Seedlings rarely flower in pots, so cuttings were the one way to see a flower color.",
+        "Cuttings take up more aluminum from soil than seedlings, making the color change larger."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cuttings are clones: genetically identical. Seedlings come from sexual reproduction and differ in their alleles, so a color difference between seedling groups could be genetic. Holding genotype constant isolates the environmental variable, soil pH.",
+        "options": [
+          "Identical genotypes mean any difference between groups comes from the environment.",
+          "Speed may be convenient, but it is not the reason that matters for the conclusion.",
+          "Hydrangea seedlings can flower; the issue is that each seedling has a different genotype.",
+          "Nothing suggests cuttings and seedlings differ in aluminum uptake; the key point is a shared genotype."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-3",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "environment-phenotype-s1",
+      "q": "A student claims that aluminum, not acidity itself, turns the flowers blue. Which additional experiment would best test the claim?",
+      "options": [
+        "At pH 5.0, grow cuttings in soil with aluminum removed or bound and in soil with it, all else equal.",
+        "Grow more cuttings at each of the six pH values and measure aluminum in their leaves and roots as well as their flowers.",
+        "Grow seedlings instead of cuttings at pH 4.5 and at pH 7.0, then compare the flower colors of the two groups.",
+        "Measure the soil pH again at the end of the experiment to check that it stayed steady during the season."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In the table, pH and aluminum change together, so either could cause the color. Holding pH constant and changing only aluminum separates them: if the low-aluminum plants turn pink in acidic soil, aluminum is the cause.",
+        "options": [
+          "This changes aluminum while holding pH fixed, so it separates the two possible causes.",
+          "More measurements across the same pH values would still have aluminum and pH changing together.",
+          "Seedlings add genetic differences and still change pH and aluminum together.",
+          "Checking pH improves the existing data but does not separate aluminum from acidity."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-4",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "environment-phenotype-s1",
+      "q": "What percentage of the plants grown at pH 6.0 had blue or purple flowers? Give one decimal place.",
+      "numeric": {
+        "answer": 62.5,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Blue or purple at pH 6.0: 1 + 4 = 5 of 8 plants. 5 ÷ 8 × 100 = 62.5%."
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-5",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "environment-phenotype-s1",
+      "q": "Using the ± 2 SE values, which comparison of aluminum in the flowers shows a difference that is likely to be real?",
+      "options": [
+        "pH 5.5 compared with pH 6.0",
+        "pH 4.5 compared with pH 5.0",
+        "pH 6.5 compared with pH 7.0",
+        "Not one of these pairs shows a likely difference"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "pH 5.5: 105 to 135 µg/g; pH 6.0: 48 to 72 µg/g. The intervals do not overlap, so the difference is likely real.",
+        "options": [
+          "105-135 and 48-72 do not overlap.",
+          "190-230 and 162-198 overlap, so this difference is not shown to be real.",
+          "17-33 and 9-21 overlap, so this difference is not shown to be real.",
+          "The pH 5.5 and 6.0 intervals are well separated."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-6",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "environment-phenotype-s2",
+      "q": "From the graph, at what incubation temperature do about half of the hatchlings develop as females? Give a whole number of degrees Celsius.",
+      "numeric": {
+        "answer": 29,
+        "tol": 0,
+        "unit": "°C",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "At 29 °C the mean is 52% female, the closest point to 50%. This is the pivotal temperature for this species."
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-7",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "environment-phenotype-s2",
+      "q": "On one beach, nests have been incubating at about 28 °C. If warmer summers raise nest temperatures to about 30 °C, predict the effect on the hatchlings.",
+      "options": [
+        "The share of females rises from about 18% to about 86%.",
+        "The share of females falls from about 86% to about 18%.",
+        "The sex ratio stays the same, because sex is set by the hatchlings' genes.",
+        "Each hatchling becomes female, because warming above 28 °C gives females."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Reading the graph: 18% female at 28 °C, 86% at 30 °C. A 2 °C rise near the pivotal temperature shifts the sex ratio strongly toward females.",
+        "options": [
+          "28 °C gives about 18% females and 30 °C about 86%: a large shift toward females.",
+          "This reverses the direction: warmer eggs give more females in this species.",
+          "In this species sex is set by temperature, so the ratio changes with warming.",
+          "At 30 °C the mean is 86% female, not 100%; some males still hatch."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-8",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "environment-phenotype-s2",
+      "q": "Why did the researchers divide the eggs of each nest among all seven incubators?",
+      "options": [
+        "So nest-to-nest genetic differences were spread across temperatures, leaving temperature as the one difference.",
+        "So that each incubator held the same number of eggs, which made the incubators warm up evenly.",
+        "So that eggs from the same mother would hatch as the same sex in each incubator they were placed in.",
+        "So that the researchers could later tell which of the ten nests each hatchling came from just by looking at its sex."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If each nest went to one incubator, a nest whose eggs were, for genetic reasons, more likely to become female would be confused with the effect of its temperature. Splitting every nest across all temperatures controls for that.",
+        "options": [
+          "Spreading each nest's eggs across every temperature stops nest differences from being mistaken for temperature effects.",
+          "Equal numbers help, but the purpose of splitting nests is to control for differences between nests.",
+          "Sex is expected to differ with temperature, even among eggs from one mother.",
+          "Sex cannot identify a nest; the nests' eggs would be labeled directly."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-9",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "5.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "environment-phenotype-s2",
+      "q": "Do the error bars support a real difference in the percentage of females between 31 °C and 32 °C?",
+      "options": [
+        "No; 97 ± 3 reaches 100, so the two intervals overlap.",
+        "Yes; 100% is higher than 97%, so the difference is real.",
+        "Yes; the error bars at 32 °C are zero, so any difference is real.",
+        "No; percentages are not compared using error bars."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 31 °C the interval is 94% to 100%, which includes the 100% seen at 32 °C. The difference is not shown to be real.",
+        "options": [
+          "The 31 °C interval reaches 100%, so it overlaps the 32 °C value.",
+          "Means can differ by chance; overlapping ± 2 SE intervals mean the difference is not shown to be real.",
+          "A zero-width bar at 32 °C does not stop it overlapping the 31 °C interval.",
+          "Means of percentages from several nests can be compared with ± 2 SE intervals like any other mean."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-10",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "environment-phenotype-s2",
+      "q": "A conservation group incubates 40 eggs at 30 °C. Using the mean in the graph, about how many of the hatchlings should be female? Give a whole number.",
+      "numeric": {
+        "answer": 34,
+        "tol": 1,
+        "unit": "females",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "86% of 40 = 0.86 × 40 = 34.4, about 34 females."
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-11",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A patch of white fur is shaved from the warm back of a Himalayan rabbit, and an ice pack is kept on the patch while the fur grows back. Predict the color of the new fur and the reason.",
+      "options": [
+        "Dark, because the pigment enzyme works in the cooled skin.",
+        "White, because the rabbit's genotype for that patch codes for white fur.",
+        "White, because shaving damages the hair follicles in that patch.",
+        "Dark, because the cold changes the rabbit's alleles in that patch."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The rabbit's enzyme for dark pigment is active only at cooler temperatures. Cooled skin lets it work, so the regrowing hair is dark, as on the ears and paws.",
+        "options": [
+          "Cold lets the temperature-sensitive enzyme work, so dark pigment is made.",
+          "Every cell has the same genotype; the back is white only because it is warm.",
+          "The fur regrows; its color depends on the skin temperature while it grows.",
+          "Temperature changes how the enzyme works, not the alleles in the DNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-12",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Siamese cats have dark ears, face, paws and tail. Which explanation of this pattern is best?",
+      "options": [
+        "Their pigment enzyme loses its working shape at body-core temperature but works in the cooler extremities.",
+        "Cells in the ears and paws carry different alleles for coat color from the cells in the rest of the body.",
+        "Dark pigment made in the warm body moves outward through the blood and collects in the extremities.",
+        "Cats inherit dark extremities by a second gene, as a separate trait from the color of the body fur."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Their allele codes for a temperature-sensitive enzyme: like a protein above its optimum, it is denatured at core body temperature, but holds its shape in cooler skin, where dark pigment is made.",
+        "options": [
+          "A temperature-sensitive enzyme explains why only cool parts are dark.",
+          "Body cells share one genotype; the difference is temperature.",
+          "Pigment is made in the hair-growing cells of each patch of skin, not moved there.",
+          "Kittens are born pale and darken as their extremities cool, which fits temperature, not a second gene."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-13",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A child with PKU (genotype pp) eats a low-phenylalanine diet from birth and develops normally. Which statement is correct?",
+      "options": [
+        "Her genotype is still pp, but the diet changed her phenotype by keeping phenylalanine low.",
+        "The diet changed her genotype from pp to Pp, which is why she developed normally.",
+        "She does not really have PKU, because PKU by definition causes harm to the brain.",
+        "Her children will not inherit PKU alleles from her, because the diet has treated the condition."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Diet cannot change alleles. It changes the environment her enzyme-less cells work in: little phenylalanine, so none builds up to harm the brain. Same genotype, different phenotype.",
+        "options": [
+          "Genotype pp is unchanged; the environment (diet) changes the outcome.",
+          "Food does not change DNA; she is still pp.",
+          "She has the genotype for PKU; the diet prevents its effects.",
+          "She will pass a p allele to every child, as she carries no P."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-14",
+      "type": "predict",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "Compare a child with PKU who eats a low-phenylalanine diet from birth with a child with PKU who eats a normal diet. For the child on the low-phenylalanine diet, predict each value.",
+      "variables": [
+        {
+          "name": "Phenylalanine level in the blood",
+          "answer": "down",
+          "why": "Less phenylalanine is eaten, so less builds up when the enzyme to break it down is missing."
+        },
+        {
+          "name": "Number of copies of the PKU allele in each cell",
+          "answer": "none",
+          "why": "Diet does not change alleles: both children are pp."
+        },
+        {
+          "name": "Risk of harm to brain development",
+          "answer": "down",
+          "why": "The harm comes from phenylalanine building up; keeping it low prevents it."
+        },
+        {
+          "name": "Chance of passing a PKU allele to each future child",
+          "answer": "none",
+          "why": "Each child is pp and passes p in every gamete, whatever the diet."
+        }
+      ],
+      "why": {
+        "correct": "The diet changes the environment, and so the phenotype, but not the genotype or what is passed to the next generation."
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-15",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Identical twins have the same genotype, yet one twin, raised with poor nutrition, is 8 cm shorter as an adult than the other. What does this show about height?",
+      "options": [
+        "Height is multifactorial: genes set a range, and the environment decides where in it a person lands.",
+        "Height is controlled by one gene with two alleles, and the shorter twin received a recessive allele for it.",
+        "Height is not affected by genes, because twins with exactly the same genes can still differ in it.",
+        "The twins have different genotypes for height, since their adult heights differ by a full 8 cm."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With identical genotypes, the 8 cm difference must come from the environment, here nutrition. Height is polygenic and multifactorial.",
+        "options": [
+          "Same genes, different heights: the environment acts within a genetic range.",
+          "Identical twins have the same alleles; neither received a different one.",
+          "Genes still matter: heights of identical twins are much more alike than those of unrelated people.",
+          "Identical twins come from one zygote, so their genotypes match."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-16",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Clones of two corn varieties were grown in low-nitrogen and high-nitrogen soil. Variety 1 was taller in low-nitrogen soil; variety 2 was taller in high-nitrogen soil. What does this show?",
+      "options": [
+        "Which genotype grows taller depends on the environment: their norms of reaction cross.",
+        "Variety 1 has better alleles for height overall, because it is the taller one in poor soil.",
+        "Soil nitrogen changes the alleles of each variety, so the two varieties swap genotypes.",
+        "Height in corn is set by the environment alone, so the genotype of the plant has no effect."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Plotting height against nitrogen gives a line for each genotype (a norm of reaction). The lines cross, so neither genotype is taller everywhere: the effect of genotype depends on the environment, an interaction of genes and environment.",
+        "options": [
+          "Crossing norms of reaction mean the ranking of genotypes changes with the environment.",
+          "Variety 2 is taller in rich soil, so neither variety is taller in both environments.",
+          "Soil nitrogen changes growth, not DNA; each clone keeps its own genotype.",
+          "Genotype clearly matters, since the two varieties respond differently to the same soils."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-17",
+      "type": "multi",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Select the examples of phenotypic plasticity.",
+      "options": [
+        "An arrowhead plant grows ribbon-like leaves under water and arrow-shaped leaves in air.",
+        "Water fleas grow longer spines when they detect chemicals released by predatory insects.",
+        "Two pink snapdragons produce red, pink and white offspring in a 1:2:1 ratio.",
+        "A four o'clock plant's seedlings have the leaf color of the branch that gave the eggs.",
+        "A testcross of a double heterozygote gives four classes of offspring in equal numbers."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Plasticity is one genotype giving different phenotypes in different environments: the same arrowhead plant makes two leaf shapes, and the same water flea grows spines when predators are around.",
+        "options": [
+          "The same plant, so the same genotype, makes different leaves under water and in air.",
+          "The same genotype grows different spines depending on a chemical cue in its environment.",
+          "This shows how alleles are inherited (incomplete dominance), not the environment changing a genotype's phenotype.",
+          "This is inheritance of chloroplasts through the egg, not an environmental effect.",
+          "This shows independent assortment of alleles, not an environmental effect."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-18",
+      "type": "order",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps that turn a hydrangea's flowers blue in order.",
+      "options": [
+        "The soil is acidic (low pH).",
+        "Aluminum in the soil dissolves.",
+        "The roots take up the dissolved aluminum.",
+        "Aluminum reaches the flowers and binds the pigment.",
+        "The flowers look blue."
+      ],
+      "why": {
+        "correct": "Acidity dissolves aluminum; dissolved aluminum can be taken up by the roots and carried to the flowers, where it binds the pigment and changes its color to blue."
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-19",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Yarrow plants from the coast are taller than yarrow plants from the mountains. Which result would best show that the difference is at least partly genetic?",
+      "options": [
+        "Clones of both kinds grown together in one garden still differ in height.",
+        "Coastal plants are taller in each coastal population that researchers have measured.",
+        "Mountain plants grown in the mountains stay short for several years in a row.",
+        "Coastal soil contains more nitrogen than the soil in the mountain habitats."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A common-garden experiment puts both kinds in one environment. If the difference remains, it cannot be caused by their different home environments, so genes must contribute.",
+        "options": [
+          "In the same environment, a remaining difference must come from genotype.",
+          "Measuring more plants in their own habitats still mixes genes with environment.",
+          "Staying short at home is what both a genetic and an environmental explanation predict.",
+          "A soil difference suggests an environmental cause; it does not test for a genetic one."
+        ]
+      }
+    },
+    {
+      "id": "bio-environment-phenotype-20",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "environment-phenotype",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A gardener's hydrangea had blue flowers in acidic soil. After she adds lime, which raises the soil pH, it blooms pink. She plants its seeds in acidic soil. Predict the flower color of the seedlings, assuming they inherited alleles for colored flowers.",
+      "options": [
+        "Blue, because the lime changed the parent's phenotype but not the alleles in its seeds.",
+        "Pink, because the parent plant was blooming pink at the time its seeds were made.",
+        "A 3:1 ratio of pink to blue, because pink has now become the dominant color.",
+        "White, because the change in soil pH damaged the parent's alleles for flower color."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Soil pH changes how the pigment looks, not the DNA. The seedlings carry the same kinds of alleles; in acidic soil they take up aluminum and bloom blue.",
+        "options": [
+          "The environment of the seedlings, acidic soil, sets their color, as it did for the parent.",
+          "The parent's pink color was an environmental effect that is not passed on in its alleles.",
+          "Dominance is a property of alleles in a heterozygote; liming soil does not change it.",
+          "Changing the soil pH does not damage DNA."
+        ]
+      }
+    }
+  ]
+}

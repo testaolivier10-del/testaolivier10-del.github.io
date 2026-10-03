@@ -1191,6 +1191,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/environment-phenotype.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/enzyme-catalysis.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1226,12 +1231,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/meiosis-genetic-diversity.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/meiosis.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/membrane-permeability.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://levlprep.com/bio/notes/membrane-transport.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/mendelian-genetics.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/non-mendelian-genetics.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1342,6 +1367,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/units/unit-4.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/units/unit-5.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -2871,6 +2901,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-clone-temperature.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-dihybrid-chi-square.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-disulfide-heat.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2891,6 +2931,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-gene-map-data.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-glucose-meal-model.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2906,7 +2951,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-nondisjunction-meiosis.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-onion-plasmolysis.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-pedigree-bleeding.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3006,6 +3061,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/environment-phenotype.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/enzyme-catalysis.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3041,12 +3101,32 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/meiosis-genetic-diversity.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/meiosis.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/membrane-permeability.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://levlprep.com/bio/lessons/membrane-transport.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/mendelian-genetics.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/non-mendelian-genetics.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3157,6 +3237,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/unit-sheets/unit-4.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/unit-sheets/unit-5.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3882,6 +3967,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/tools/graph-builder.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/tools/meiosis-nondisjunction.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
   </url>

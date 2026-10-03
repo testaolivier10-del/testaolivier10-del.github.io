@@ -1,0 +1,91 @@
+{
+  "topic": "environment-phenotype",
+  "hook": "<p>Buy two hydrangea bushes cut from the same parent plant and plant one by the sea in sandy, slightly alkaline soil and the other in acidic woodland soil. A summer later one blooms pink and the other bright blue. Their DNA is identical. Turtle eggs from the same nest can hatch as all males or all females depending on how warm the sand is. Genes do not fix a phenotype on their own: the same genotype can produce different results in different surroundings.</p>",
+  "prereq": [
+    {
+      "q": "An organism's phenotype is",
+      "options": [
+        "its observable traits, such as color or height",
+        "the pair of alleles it carries for a gene",
+        "the number of chromosomes in its cells"
+      ],
+      "correct": 0,
+      "why": "Phenotype is what you can see or measure; genotype is the alleles.",
+      "review": "mendelian-genetics"
+    },
+    {
+      "q": "Raising the temperature well above an enzyme's optimum usually",
+      "options": [
+        "denatures it, changing the active site so the rate falls",
+        "speeds it up without limit",
+        "has no effect on its shape"
+      ],
+      "correct": 0,
+      "why": "Heat breaks the weak bonds that hold the enzyme's shape, so the active site changes and activity falls.",
+      "review": "enzyme-environment"
+    },
+    {
+      "q": "A trait controlled by many genes, such as human height, usually shows",
+      "options": [
+        "continuous variation, a smooth range of values",
+        "a 3:1 ratio of tall to short",
+        "two clear classes with nothing in between"
+      ],
+      "correct": 0,
+      "why": "Many genes each adding a small effect give a smooth, bell-shaped range: polygenic inheritance.",
+      "review": "non-mendelian-genetics"
+    }
+  ],
+  "figure": {
+    "figure": "reaction-norms",
+    "caption": "One genotype, different phenotypes. Hydrangea clones bloom blue in acidic soil and pink in neutral soil; turtle eggs incubated warm hatch mostly female."
+  },
+  "chain": [
+    {
+      "cause": "A genotype carries the information for proteins, but each protein works inside conditions set by the environment: temperature, pH, available chemicals, food.",
+      "effect": "The same genotype can give a different phenotype when those conditions change (phenotypic plasticity)."
+    },
+    {
+      "cause": "In acidic soil, aluminum dissolves and a hydrangea's roots take it up.",
+      "effect": "Aluminum binds the flower pigment and turns it blue; in neutral soil, with little aluminum taken up, the same plant blooms pink."
+    },
+    {
+      "cause": "In Himalayan rabbits and Siamese cats, the pigment-making enzyme loses its shape and stops working at normal body temperature.",
+      "effect": "Dark fur grows only where the skin is cooler: ears, nose, paws and tail."
+    },
+    {
+      "cause": "In many turtles, the temperature of the eggs during a sensitive window switches on a male or a female pathway.",
+      "effect": "Warm nests give mostly females and cool nests mostly males, with no sex chromosomes involved."
+    },
+    {
+      "cause": "A child with PKU cannot break down phenylalanine, but a low-phenylalanine diet keeps it from building up.",
+      "effect": "With the diet from birth, the brain develops normally: the genotype is unchanged, but the phenotype is not the one the genotype alone predicts."
+    }
+  ],
+  "ideas": [
+    "<b>Phenotypic plasticity</b>: one genotype can produce different phenotypes in different environments. The range it produces across environments is its <b>norm of reaction</b>.",
+    "Examples: <b>hydrangea</b> flower color set by <b>soil pH</b> (via aluminum), <b>temperature-dependent sex determination</b> in turtles, <b>temperature-sensitive fur color</b> in Himalayan rabbits and Siamese cats.",
+    "In humans, <b>nutrition</b> affects <b>height</b>, and diet controls the effects of <b>phenylketonuria</b> (PKU).",
+    "Most traits are <b>multifactorial</b>: many genes plus environment. The genotype sets the possible range; the environment decides where in it an individual lands.",
+    "Environmentally caused changes are not passed on through the genes: a blue hydrangea's seeds carry the same alleles as a pink one's."
+  ],
+  "misconception": {
+    "wrong": "If a trait changes with the environment, it is not genetic.",
+    "right": "Genes and environment act together. A Himalayan rabbit's dark ears need both its allele for a temperature-sensitive enzyme and cold skin: a rabbit without that allele stays white in the cold, and one with it has a light body where it is warm."
+  },
+  "check": [
+    "bio-environment-phenotype-1",
+    "bio-environment-phenotype-2",
+    "bio-environment-phenotype-3",
+    "bio-environment-phenotype-7",
+    "bio-environment-phenotype-11",
+    "bio-environment-phenotype-13",
+    "bio-environment-phenotype-17"
+  ],
+  "summary": "<p>A phenotype comes from the genotype acting in an environment. Phenotypic plasticity is the ability of one genotype to give different phenotypes in different conditions; its norm of reaction is the range across environments. Hydrangeas bloom blue in acidic soil, where aluminum is taken up and binds the pigment, and pink in neutral soil. Many turtles' sex depends on incubation temperature. Himalayan rabbits and Siamese cats grow dark fur only on cool body parts, because their pigment enzyme works only when cool. Nutrition affects height, and a low-phenylalanine diet prevents the effects of PKU. Most traits are multifactorial. Such environmental changes alter the phenotype, not the alleles passed to offspring.</p>",
+  "connections": [
+    { "href": "../notes/enzyme-environment.html", "label": "Back: temperature and pH change enzyme shape (3.3)" },
+    { "href": "../notes/non-mendelian-genetics.html", "label": "Back: polygenic traits and continuous variation (5.4)" },
+    { "href": "../notes/mendelian-genetics.html", "label": "Back: autosomal recessive inheritance (5.3)" }
+  ]
+}

@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 520" width="760" height="520" role="img" aria-labelledby="mei-t mei-d">
+<title id="mei-t">Meiosis: one diploid cell becomes four haploid cells</title>
+<desc id="mei-d">Six numbered panels following a cell with four chromosomes (2n = 4): one long and one short chromosome from each parent, drawn blue for one parent and orange for the other. Panel 1: before meiosis the DNA has been copied, so each of the four chromosomes is two sister chromatids joined at a centromere. Panel 2, meiosis I: homologous chromosomes pair up (long with long, short with short) and the pairs line up across the middle of the cell, one partner facing each pole. Panel 3, end of meiosis I: the partners of each pair have gone to opposite poles and the cell has split into two cells, each with two chromosomes (one long, one short), still made of two sister chromatids; n = 2. Panel 4, meiosis II: in each cell the chromosomes line up singly across the middle. Panel 5: the sister chromatids separate and move to opposite poles. Panel 6: four haploid cells, each with one long and one short chromosome. No DNA is copied between meiosis I and meiosis II.</desc>
+<defs><marker id="mei-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="520" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="380.0" y="24.0" font-size="15" text-anchor="middle" font-weight="700">Meiosis I: homologous chromosomes separate</text>
+<text x="380.0" y="262.0" font-size="15" text-anchor="middle" font-weight="700">Meiosis II: sister chromatids separate</text>
+<ellipse cx="130.0" cy="125.0" rx="92.0" ry="70.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<ellipse cx="130.0" cy="125.0" rx="58.0" ry="46.0" fill="none" stroke="#5B6B8C" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="91.6" y="99.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<rect x="100.4" y="99.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<circle cx="100.0" cy="119.0" r="5.0" fill="#1F2A28"/>
+<rect x="149.6" y="109.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<rect x="158.4" y="109.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<circle cx="158.0" cy="129.0" r="5.0" fill="#1F2A28"/>
+<rect x="115.6" y="128.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<rect x="124.4" y="128.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<circle cx="124.0" cy="139.0" r="5.0" fill="#1F2A28"/>
+<rect x="127.6" y="92.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<rect x="136.4" y="92.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<circle cx="136.0" cy="103.0" r="5.0" fill="#1F2A28"/>
+<text x="130.0" y="217.0" font-size="13" text-anchor="middle">1. DNA already copied:</text>
+<text x="130.0" y="233.0" font-size="13" text-anchor="middle">4 chromosomes (2n = 4)</text>
+<ellipse cx="380.0" cy="125.0" rx="100.0" ry="70.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<line x1="380.0" y1="63.0" x2="380.0" y2="187.0" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="4 4"/>
+<rect x="362.6" y="83.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<rect x="371.4" y="83.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<circle cx="371.0" cy="103.0" r="5.0" fill="#1F2A28"/>
+<rect x="380.6" y="83.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<rect x="389.4" y="83.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<circle cx="389.0" cy="103.0" r="5.0" fill="#1F2A28"/>
+<line x1="284.0" y1="125.0" x2="365.0" y2="103.0" stroke="#5D6B69" stroke-width="1.2"/>
+<line x1="476.0" y1="125.0" x2="395.0" y2="103.0" stroke="#5D6B69" stroke-width="1.2"/>
+<rect x="362.6" y="140.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<rect x="371.4" y="140.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<circle cx="371.0" cy="151.0" r="5.0" fill="#1F2A28"/>
+<rect x="380.6" y="140.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<rect x="389.4" y="140.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<circle cx="389.0" cy="151.0" r="5.0" fill="#1F2A28"/>
+<line x1="284.0" y1="125.0" x2="365.0" y2="151.0" stroke="#5D6B69" stroke-width="1.2"/>
+<line x1="476.0" y1="125.0" x2="395.0" y2="151.0" stroke="#5D6B69" stroke-width="1.2"/>
+<text x="380.0" y="217.0" font-size="13" text-anchor="middle">2. Homologous pairs line up</text>
+<text x="380.0" y="233.0" font-size="13" text-anchor="middle">side by side at the middle</text>
+<ellipse cx="578.0" cy="125.0" rx="48.0" ry="58.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="557.6" y="101.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<rect x="566.4" y="101.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<circle cx="566.0" cy="121.0" r="5.0" fill="#1F2A28"/>
+<rect x="583.6" y="120.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<rect x="592.4" y="120.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<circle cx="592.0" cy="131.0" r="5.0" fill="#1F2A28"/>
+<ellipse cx="682.0" cy="125.0" rx="48.0" ry="58.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="661.6" y="101.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<rect x="670.4" y="101.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<circle cx="670.0" cy="121.0" r="5.0" fill="#1F2A28"/>
+<rect x="687.6" y="120.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<rect x="696.4" y="120.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<circle cx="696.0" cy="131.0" r="5.0" fill="#1F2A28"/>
+<text x="630.0" y="217.0" font-size="13" text-anchor="middle">3. Two cells, n = 2; each chromosome</text>
+<text x="630.0" y="233.0" font-size="13" text-anchor="middle">still has two sister chromatids</text>
+<line x1="226.0" y1="125.0" x2="276.0" y2="125.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mei-a)"/>
+<line x1="484.0" y1="125.0" x2="526.0" y2="125.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mei-a)"/>
+<path d="M630,253 L630,285" fill="none" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mei-a)"/>
+<ellipse cx="582.0" cy="365.0" rx="44.0" ry="62.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<line x1="582.0" y1="309.0" x2="582.0" y2="421.0" stroke="#5D6B69" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="573.6" y="325.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<rect x="582.4" y="325.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<circle cx="582.0" cy="345.0" r="5.0" fill="#1F2A28"/>
+<rect x="573.6" y="378.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<rect x="582.4" y="378.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<circle cx="582.0" cy="389.0" r="5.0" fill="#1F2A28"/>
+<ellipse cx="678.0" cy="365.0" rx="44.0" ry="62.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<line x1="678.0" y1="309.0" x2="678.0" y2="421.0" stroke="#5D6B69" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="669.6" y="325.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<rect x="678.4" y="325.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<circle cx="678.0" cy="345.0" r="5.0" fill="#1F2A28"/>
+<rect x="669.6" y="378.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<rect x="678.4" y="378.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<circle cx="678.0" cy="389.0" r="5.0" fill="#1F2A28"/>
+<text x="630.0" y="461.0" font-size="13" text-anchor="middle">4. In each cell the chromosomes</text>
+<text x="630.0" y="477.0" font-size="13" text-anchor="middle">line up singly at the middle</text>
+<ellipse cx="332.0" cy="365.0" rx="44.0" ry="62.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="306.0" y="325.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<circle cx="310.0" cy="345.0" r="3.6" fill="#1F2A28"/>
+<rect x="306.0" y="378.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<circle cx="310.0" cy="389.0" r="3.6" fill="#1F2A28"/>
+<rect x="350.0" y="325.0" width="8" height="40.0" rx="4.0" fill="#0072B2"/>
+<circle cx="354.0" cy="345.0" r="3.6" fill="#1F2A28"/>
+<rect x="350.0" y="378.0" width="8" height="22.0" rx="4.0" fill="#E69F00"/>
+<circle cx="354.0" cy="389.0" r="3.6" fill="#1F2A28"/>
+<ellipse cx="428.0" cy="365.0" rx="44.0" ry="62.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="402.0" y="325.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<circle cx="406.0" cy="345.0" r="3.6" fill="#1F2A28"/>
+<rect x="402.0" y="378.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<circle cx="406.0" cy="389.0" r="3.6" fill="#1F2A28"/>
+<rect x="446.0" y="325.0" width="8" height="40.0" rx="4.0" fill="#E69F00"/>
+<circle cx="450.0" cy="345.0" r="3.6" fill="#1F2A28"/>
+<rect x="446.0" y="378.0" width="8" height="22.0" rx="4.0" fill="#0072B2"/>
+<circle cx="450.0" cy="389.0" r="3.6" fill="#1F2A28"/>
+<text x="380.0" y="461.0" font-size="13" text-anchor="middle">5. Sister chromatids separate</text>
+<text x="380.0" y="477.0" font-size="13" text-anchor="middle">and move to opposite poles</text>
+<ellipse cx="64.0" cy="365.0" rx="20.0" ry="40.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="55.5" y="342.0" width="7" height="34.0" rx="3.5" fill="#0072B2"/>
+<circle cx="59.0" cy="359.0" r="3.1" fill="#1F2A28"/>
+<rect x="66.5" y="365.6" width="7" height="18.7" rx="3.5" fill="#E69F00"/>
+<circle cx="70.0" cy="375.0" r="3.1" fill="#1F2A28"/>
+<ellipse cx="108.0" cy="365.0" rx="20.0" ry="40.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="99.5" y="342.0" width="7" height="34.0" rx="3.5" fill="#0072B2"/>
+<circle cx="103.0" cy="359.0" r="3.1" fill="#1F2A28"/>
+<rect x="110.5" y="365.6" width="7" height="18.7" rx="3.5" fill="#E69F00"/>
+<circle cx="114.0" cy="375.0" r="3.1" fill="#1F2A28"/>
+<ellipse cx="152.0" cy="365.0" rx="20.0" ry="40.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="143.5" y="342.0" width="7" height="34.0" rx="3.5" fill="#E69F00"/>
+<circle cx="147.0" cy="359.0" r="3.1" fill="#1F2A28"/>
+<rect x="154.5" y="365.6" width="7" height="18.7" rx="3.5" fill="#0072B2"/>
+<circle cx="158.0" cy="375.0" r="3.1" fill="#1F2A28"/>
+<ellipse cx="196.0" cy="365.0" rx="20.0" ry="40.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="187.5" y="342.0" width="7" height="34.0" rx="3.5" fill="#E69F00"/>
+<circle cx="191.0" cy="359.0" r="3.1" fill="#1F2A28"/>
+<rect x="198.5" y="365.6" width="7" height="18.7" rx="3.5" fill="#0072B2"/>
+<circle cx="202.0" cy="375.0" r="3.1" fill="#1F2A28"/>
+<text x="130.0" y="461.0" font-size="13" text-anchor="middle">6. Four haploid cells (n = 2),</text>
+<text x="130.0" y="477.0" font-size="13" text-anchor="middle">one chromosome of each kind</text>
+<line x1="534.0" y1="365.0" x2="476.0" y2="365.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mei-a)"/>
+<line x1="284.0" y1="365.0" x2="222.0" y2="365.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mei-a)"/>
+<rect x="31.0" y="506.0" width="18.0" height="8" rx="4.0" fill="#0072B2"/>
+<text x="56.0" y="514.0" font-size="12" text-anchor="start">from one parent</text>
+<rect x="181.0" y="506.0" width="18.0" height="8" rx="4.0" fill="#E69F00"/>
+<text x="206.0" y="514.0" font-size="12" text-anchor="start">from the other parent</text>
+<circle cx="380" cy="510" r="5" fill="#1F2A28"/>
+<text x="392.0" y="514.0" font-size="12" text-anchor="start">centromere</text>
+<text x="740.0" y="514.0" font-size="12" text-anchor="end" font-weight="700">No DNA copying between meiosis I and II</text>
+</g>
+</svg>

@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-labelledby="var-t var-d">
+<title id="var-t">Two sources of new allele combinations in meiosis I: crossing over and independent assortment</title>
+<desc id="var-d">Left, crossing over: a pair of homologous chromosomes, one blue and one orange, each made of two sister chromatids. The blue homolog carries alleles A and B, the orange one a and b. In prophase I, one blue and one orange chromatid break and swap matching pieces at a chiasma between the two genes. The four chromatids that result carry A B and a b (parental combinations, as in the parent's chromosomes) and A b and a B (recombinant combinations, new mixes). Right, independent assortment: a cell with two homologous pairs, a long pair and a short pair, at metaphase I. Each pair lines up independently, so two arrangements are equally likely. In one, both blue chromosomes face the same pole, giving gametes with blue long plus blue short or orange long plus orange short. In the other, the short pair is flipped, giving blue long plus orange short or orange long plus blue short. With n pairs there are 2 to the power n combinations; for humans, 2 to the 23rd, about 8.4 million.</desc>
+<defs><marker id="var-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="430" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="190.0" y="26.0" font-size="15" text-anchor="middle" font-weight="700">Crossing over (prophase I)</text>
+<text x="570.0" y="26.0" font-size="15" text-anchor="middle" font-weight="700">Independent assortment (metaphase I)</text>
+<line x1="380.0" y1="40.0" x2="380.0" y2="410.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<rect x="57.5" y="85.0" width="9" height="110.0" rx="4.5" fill="#0072B2"/>
+<rect x="71.5" y="85.0" width="9" height="110.0" rx="4.5" fill="#0072B2"/>
+<rect x="95.5" y="85.0" width="9" height="110.0" rx="4.5" fill="#E69F00"/>
+<rect x="109.5" y="85.0" width="9" height="110.0" rx="4.5" fill="#E69F00"/>
+<circle cx="69" cy="140" r="6" fill="#1F2A28"/><circle cx="107" cy="140" r="6" fill="#1F2A28"/>
+<text x="48.0" y="110.0" font-size="16" text-anchor="middle" font-weight="700">A</text>
+<text x="48.0" y="180.0" font-size="16" text-anchor="middle" font-weight="700">B</text>
+<text x="128.0" y="110.0" font-size="16" text-anchor="middle" font-weight="700">a</text>
+<text x="128.0" y="180.0" font-size="16" text-anchor="middle" font-weight="700">b</text>
+<path d="M76,148 L100,162 M100,148 L76,162" fill="none" stroke="#D55E00" stroke-width="3"/>
+<text x="88.0" y="219.0" font-size="12" text-anchor="middle" font-weight="700" fill="#D55E00">chiasma: matching pieces</text>
+<text x="88.0" y="234.0" font-size="12" text-anchor="middle" font-weight="700" fill="#D55E00">swap between A and B</text>
+<line x1="150.0" y1="140.0" x2="196.0" y2="140.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#var-a)"/>
+<rect x="222.5" y="85.0" width="9" height="70.2" rx="4.5" fill="#0072B2"/>
+<rect x="222.5" y="151.2" width="9" height="43.8" rx="4.5" fill="#0072B2"/>
+<text x="227.0" y="75.0" font-size="15" text-anchor="middle" font-weight="700" fill="#1F2A28">A</text>
+<text x="227.0" y="215.0" font-size="15" text-anchor="middle" font-weight="700" fill="#1F2A28">B</text>
+<rect x="252.5" y="85.0" width="9" height="70.2" rx="4.5" fill="#0072B2"/>
+<rect x="252.5" y="151.2" width="9" height="43.8" rx="4.5" fill="#E69F00"/>
+<text x="257.0" y="75.0" font-size="15" text-anchor="middle" font-weight="700" fill="#D55E00">A</text>
+<text x="257.0" y="215.0" font-size="15" text-anchor="middle" font-weight="700" fill="#D55E00">b</text>
+<rect x="282.5" y="85.0" width="9" height="70.2" rx="4.5" fill="#E69F00"/>
+<rect x="282.5" y="151.2" width="9" height="43.8" rx="4.5" fill="#0072B2"/>
+<text x="287.0" y="75.0" font-size="15" text-anchor="middle" font-weight="700" fill="#D55E00">a</text>
+<text x="287.0" y="215.0" font-size="15" text-anchor="middle" font-weight="700" fill="#D55E00">B</text>
+<rect x="312.5" y="85.0" width="9" height="70.2" rx="4.5" fill="#E69F00"/>
+<rect x="312.5" y="151.2" width="9" height="43.8" rx="4.5" fill="#E69F00"/>
+<text x="317.0" y="75.0" font-size="15" text-anchor="middle" font-weight="700" fill="#1F2A28">a</text>
+<text x="317.0" y="215.0" font-size="15" text-anchor="middle" font-weight="700" fill="#1F2A28">b</text>
+<text x="267.0" y="239.0" font-size="12" text-anchor="middle">outer two: parental (A B, a b)</text>
+<text x="267.0" y="255.0" font-size="12" text-anchor="middle" font-weight="700" fill="#D55E00">inner two: recombinant (A b, a B)</text>
+<text x="190.0" y="330.0" font-size="13" text-anchor="middle">Each chromatid ends up in a different gamete.</text>
+<text x="190.0" y="346.0" font-size="13" text-anchor="middle">Two of the four now carry a new mix of alleles</text>
+<text x="190.0" y="362.0" font-size="13" text-anchor="middle">that neither parent's chromosome had.</text>
+<ellipse cx="475.0" cy="130.0" rx="80.0" ry="62.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<line x1="475.0" y1="74.0" x2="475.0" y2="186.0" stroke="#5D6B69" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="456.6" y="95.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<rect x="465.4" y="95.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<circle cx="465.0" cy="112.0" r="5.0" fill="#1F2A28"/>
+<rect x="476.6" y="95.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<rect x="485.4" y="95.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<circle cx="485.0" cy="112.0" r="5.0" fill="#1F2A28"/>
+<rect x="456.6" y="145.0" width="8" height="18.0" rx="4.0" fill="#0072B2"/>
+<rect x="465.4" y="145.0" width="8" height="18.0" rx="4.0" fill="#0072B2"/>
+<circle cx="465.0" cy="154.0" r="5.0" fill="#1F2A28"/>
+<rect x="476.6" y="145.0" width="8" height="18.0" rx="4.0" fill="#E69F00"/>
+<rect x="485.4" y="145.0" width="8" height="18.0" rx="4.0" fill="#E69F00"/>
+<circle cx="485.0" cy="154.0" r="5.0" fill="#1F2A28"/>
+<text x="475.0" y="58.0" font-size="13" text-anchor="middle" font-weight="700">Arrangement 1</text>
+<line x1="444.8" y1="180.0" x2="420.0" y2="212.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#var-a)"/>
+<ellipse cx="420.0" cy="242.0" rx="24.0" ry="26.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="410.5" y="226.0" width="7" height="26.0" rx="3.5" fill="#0072B2"/>
+<circle cx="414.0" cy="239.0" r="3.1" fill="#1F2A28"/>
+<rect x="423.5" y="241.0" width="7" height="14.0" rx="3.5" fill="#0072B2"/>
+<circle cx="427.0" cy="248.0" r="3.1" fill="#1F2A28"/>
+<line x1="505.2" y1="180.0" x2="530.0" y2="212.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#var-a)"/>
+<ellipse cx="530.0" cy="242.0" rx="24.0" ry="26.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="520.5" y="226.0" width="7" height="26.0" rx="3.5" fill="#E69F00"/>
+<circle cx="524.0" cy="239.0" r="3.1" fill="#1F2A28"/>
+<rect x="533.5" y="241.0" width="7" height="14.0" rx="3.5" fill="#E69F00"/>
+<circle cx="537.0" cy="248.0" r="3.1" fill="#1F2A28"/>
+<ellipse cx="665.0" cy="130.0" rx="80.0" ry="62.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<line x1="665.0" y1="74.0" x2="665.0" y2="186.0" stroke="#5D6B69" stroke-width="1.2" stroke-dasharray="4 4"/>
+<rect x="646.6" y="95.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<rect x="655.4" y="95.0" width="8" height="34.0" rx="4.0" fill="#0072B2"/>
+<circle cx="655.0" cy="112.0" r="5.0" fill="#1F2A28"/>
+<rect x="666.6" y="95.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<rect x="675.4" y="95.0" width="8" height="34.0" rx="4.0" fill="#E69F00"/>
+<circle cx="675.0" cy="112.0" r="5.0" fill="#1F2A28"/>
+<rect x="646.6" y="145.0" width="8" height="18.0" rx="4.0" fill="#E69F00"/>
+<rect x="655.4" y="145.0" width="8" height="18.0" rx="4.0" fill="#E69F00"/>
+<circle cx="655.0" cy="154.0" r="5.0" fill="#1F2A28"/>
+<rect x="666.6" y="145.0" width="8" height="18.0" rx="4.0" fill="#0072B2"/>
+<rect x="675.4" y="145.0" width="8" height="18.0" rx="4.0" fill="#0072B2"/>
+<circle cx="675.0" cy="154.0" r="5.0" fill="#1F2A28"/>
+<text x="665.0" y="58.0" font-size="13" text-anchor="middle" font-weight="700">Arrangement 2</text>
+<line x1="634.8" y1="180.0" x2="610.0" y2="212.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#var-a)"/>
+<ellipse cx="610.0" cy="242.0" rx="24.0" ry="26.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="600.5" y="226.0" width="7" height="26.0" rx="3.5" fill="#0072B2"/>
+<circle cx="604.0" cy="239.0" r="3.1" fill="#1F2A28"/>
+<rect x="613.5" y="241.0" width="7" height="14.0" rx="3.5" fill="#E69F00"/>
+<circle cx="617.0" cy="248.0" r="3.1" fill="#1F2A28"/>
+<line x1="695.2" y1="180.0" x2="720.0" y2="212.0" stroke="#1F2A28" stroke-width="1.8" marker-end="url(#var-a)"/>
+<ellipse cx="720.0" cy="242.0" rx="24.0" ry="26.0" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2.5"/>
+<rect x="710.5" y="226.0" width="7" height="26.0" rx="3.5" fill="#E69F00"/>
+<circle cx="714.0" cy="239.0" r="3.1" fill="#1F2A28"/>
+<rect x="723.5" y="241.0" width="7" height="14.0" rx="3.5" fill="#0072B2"/>
+<circle cx="727.0" cy="248.0" r="3.1" fill="#1F2A28"/>
+<text x="570.0" y="300.0" font-size="13" text-anchor="middle" font-weight="700">Equally likely, so four kinds of gamete</text>
+<text x="570.0" y="318.0" font-size="13" text-anchor="middle">in equal numbers (2 pairs: 2² = 4).</text>
+<text x="570.0" y="346.0" font-size="13" text-anchor="middle" font-weight="700">Humans, 23 pairs: 2²³ ≈ 8.4 million</text>
+<text x="570.0" y="364.0" font-size="13" text-anchor="middle">combinations per parent, before</text>
+<text x="570.0" y="382.0" font-size="13" text-anchor="middle">counting crossing over.</text>
+<rect x="31.0" y="414.0" width="18.0" height="8" rx="4.0" fill="#0072B2"/>
+<text x="56.0" y="422.0" font-size="12" text-anchor="start">from one parent</text>
+<rect x="181.0" y="414.0" width="18.0" height="8" rx="4.0" fill="#E69F00"/>
+<text x="206.0" y="422.0" font-size="12" text-anchor="start">from the other parent</text>
+</g>
+</svg>

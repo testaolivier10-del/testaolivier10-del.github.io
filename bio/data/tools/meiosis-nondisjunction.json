@@ -1,0 +1,418 @@
+{
+  "about": "Simulator: one diploid cell with 2 or 3 homologous pairs goes through meiosis I and II, with crossing over, metaphase I orientations and nondisjunction in meiosis I or II, compared with mitosis. Model code: bio/assets/tools/bio-tool-math.js (ApBioMath.meiosis). Validator: scripts/lib/apbio-tool-checks/meiosis-nondisjunction.mjs checks the model's behavior (n, n+1 and n−1 gametes, 2^n, DNA per cell, mitosis) and recomputes every number in the stimulus tables.",
+  "slug": "meiosis-nondisjunction",
+  "kind": "simulator",
+  "topic": "meiosis-genetic-diversity",
+  "intro": "<p>Take one cell through meiosis, one step at a time. Choose how many homologous pairs it has, switch crossing over on or off, decide which way each pair lines up in metaphase I, and make one pair fail to separate in meiosis I or in meiosis II. Then read the four gametes: how many chromosomes each one carries, and what a zygote would get if that gamete met a normal one. Compare the result with mitosis of the same cell, then answer the questions below about the same model.</p>",
+  "howItWorks": "<p>The cell is diploid (2n): every chromosome has a homolog. One homolog of each pair came from the organism’s mother (<b>maternal</b>: solid orange-red, label M) and one from its father (<b>paternal</b>: blue with stripes, label P). Pair 1 is the longest, pair 3 the shortest. The steps (each effect is the cause of the next):</p><ol><li><b>Interphase, G1.</b> Each chromosome is one DNA molecule (one chromatid).</li><li><b>S phase.</b> DNA is copied, so each chromosome is two identical sister chromatids joined at the centromere. The chromosome number stays 2n; the DNA doubles.</li><li><b>Prophase I.</b> Homologs pair up along their length (synapsis). With crossing over on, two nonsister chromatids of each pair swap matching tips.</li><li><b>Metaphase I.</b> The pairs line up at the middle of the cell. For each pair, one homolog faces the cell 1 side and the other the cell 2 side; you choose which. Each pair’s choice does not depend on the others (independent assortment).</li><li><b>Anaphase I.</b> Homologs separate; sister chromatids stay together.</li><li><b>End of meiosis I.</b> Two cells, each with n chromosomes (one of each pair), each still made of two chromatids.</li><li><b>Metaphase II</b> and <b>anaphase II.</b> In each cell the chromosomes line up again and the sister chromatids separate.</li><li><b>Gametes.</b> Four haploid cells, each with one chromatid of each pair.</li></ol><p>The model’s rules:</p><ul><li><b>Crossing over:</b> one crossover per pair, always between the same two nonsister chromatids (maternal chromatid 2 and paternal chromatid 1) and at the same point, so the swapped tip is the far end of each arm. Real cells place crossovers at different points in different cells, and a pair can have more than one, so real meiosis makes far more kinds of gametes than the model.</li><li><b>Meiosis II:</b> sister chromatid 1 of each chromosome goes to the first gamete of its cell. Without crossing over the sisters are identical, so this choice does not matter; Try every line-up also tries the other arrangements.</li><li><b>Nondisjunction in meiosis I:</b> both homologs of the chosen pair go to cell 1. <b>In meiosis II:</b> in the chosen cell, both sister chromatids of the chosen pair go to that cell’s first gamete. The model allows one nondisjunction at a time.</li><li><b>Gamete labels:</b> n is the normal number (one of each pair), n+1 has an extra copy of one pair, n−1 lacks one. A zygote gets the gamete’s chromosomes plus those of a normal gamete (n), so 2n, 2n+1 (three copies of one chromosome: trisomy) or 2n−1 (one copy: monosomy).</li><li><b>Combinations:</b> with n pairs, independent assortment alone can give 2<sup>n</sup> different gametes (2 choices for each pair). One cell lines up only one way, so without crossing over it makes just 2 kinds; it takes many cells to make all 2<sup>n</sup>. Two line-ups that are mirror images give the same gametes in swapped cells. For humans, n = 23, so 2<sup>23</sup> = 8,388,608.</li><li><b>DNA per cell:</b> every chromatid counts as the same amount of DNA, scaled so a G1 cell holds 2 units: 4 after S phase, 2 in each cell after meiosis I, 1 in each gamete. (Real chromosomes differ in size.)</li><li><b>Mitosis</b> of the same cell, for comparison: after S phase the sister chromatids of every chromosome separate, homologs never pair and there is no crossing over in the model, so two daughter cells each get 2n chromosomes, identical to the parent cell.</li><li>Sex chromosomes are not shown. The model has no randomness: the same settings always give the same gametes.</li></ul>",
+  "pairs": {
+    "value": 3,
+    "options": [
+      {
+        "value": 2,
+        "label": "2n = 4 (2 homologous pairs)"
+      },
+      {
+        "value": 3,
+        "label": "2n = 6 (3 homologous pairs)"
+      }
+    ]
+  },
+  "humanN": 23,
+  "stages": [
+    {
+      "id": "g1",
+      "name": "Interphase (G1)",
+      "text": "Each chromosome is a single chromatid. The cell is diploid: two of each kind of chromosome, one maternal and one paternal."
+    },
+    {
+      "id": "s",
+      "name": "After S phase",
+      "text": "Every chromosome has been copied into two identical sister chromatids. Same chromosome number, twice the DNA."
+    },
+    {
+      "id": "pro1",
+      "name": "Prophase I",
+      "text": "Homologous chromosomes pair up. With crossing over on, two nonsister chromatids in each pair swap matching tips."
+    },
+    {
+      "id": "meta1",
+      "name": "Metaphase I",
+      "text": "The homologous pairs line up at the middle. Which homolog faces which side is set separately for each pair."
+    },
+    {
+      "id": "ana1",
+      "name": "Anaphase I",
+      "text": "Homologs move to opposite poles while sister chromatids stay together, unless a pair fails to separate."
+    },
+    {
+      "id": "mei1",
+      "name": "End of meiosis I",
+      "text": "Two cells. Each should hold one chromosome of every pair, each still two chromatids."
+    },
+    {
+      "id": "meta2",
+      "name": "Metaphase II",
+      "text": "In each cell the chromosomes line up at the middle, sister chromatids facing opposite poles."
+    },
+    {
+      "id": "ana2",
+      "name": "Anaphase II",
+      "text": "Sister chromatids separate and move to opposite poles, unless a pair’s sisters fail to separate."
+    },
+    {
+      "id": "gametes",
+      "name": "Four gametes",
+      "text": "Four haploid cells. Count each one’s chromosomes: n is one of each pair."
+    }
+  ],
+  "stimuli": {
+    "mei-s1": {
+      "kind": "table",
+      "title": "Gametes from one cell, with and without errors",
+      "text": "<p>A student used the model with a cell of 2n = 6 (three homologous pairs). In every run the maternal homolog of each pair faced cell 1 at metaphase I. Table 1 shows the chromosome number of each of the four gametes and how many different kinds of gametes the cell made. Table 2 shows the chromosome number of the zygote formed when each gamete from cells B and C meets a normal gamete (n = 3). Table 3 shows how many different gametes independent assortment alone can give.</p>",
+      "tables": [
+        {
+          "caption": "Table 1. The four gametes from each cell (chromosomes per gamete)",
+          "cols": [
+            "Cell",
+            "Gamete 1",
+            "Gamete 2",
+            "Gamete 3",
+            "Gamete 4",
+            "Kinds of gametes"
+          ],
+          "rows": [
+            [
+              "A. No crossing over, no nondisjunction",
+              "3 (n)",
+              "3 (n)",
+              "3 (n)",
+              "3 (n)",
+              "2"
+            ],
+            [
+              "B. Nondisjunction of pair 1 in meiosis I",
+              "4 (n+1)",
+              "4 (n+1)",
+              "2 (n−1)",
+              "2 (n−1)",
+              "2"
+            ],
+            [
+              "C. Nondisjunction of pair 1 in meiosis II (cell 1)",
+              "4 (n+1)",
+              "2 (n−1)",
+              "3 (n)",
+              "3 (n)",
+              "3"
+            ],
+            [
+              "D. Crossing over, no nondisjunction",
+              "3 (n)",
+              "3 (n)",
+              "3 (n)",
+              "3 (n)",
+              "4"
+            ]
+          ],
+          "check": {
+            "x": "gametes",
+            "labels": [
+              "A. No crossing over, no nondisjunction",
+              "B. Nondisjunction of pair 1 in meiosis I",
+              "C. Nondisjunction of pair 1 in meiosis II (cell 1)",
+              "D. Crossing over, no nondisjunction"
+            ],
+            "conds": [
+              {
+                "pairs": 3
+              },
+              {
+                "pairs": 3,
+                "nd": "I",
+                "ndPair": 0
+              },
+              {
+                "pairs": 3,
+                "nd": "II",
+                "ndPair": 0,
+                "ndCell": 0
+              },
+              {
+                "pairs": 3,
+                "cross": true
+              }
+            ]
+          }
+        },
+        {
+          "caption": "Table 2. Zygote chromosome number with a normal gamete",
+          "cols": [
+            "Cell",
+            "Gamete 1",
+            "Gamete 2",
+            "Gamete 3",
+            "Gamete 4"
+          ],
+          "rows": [
+            [
+              "B. Nondisjunction of pair 1 in meiosis I",
+              "7 (2n+1)",
+              "7 (2n+1)",
+              "5 (2n−1)",
+              "5 (2n−1)"
+            ],
+            [
+              "C. Nondisjunction of pair 1 in meiosis II (cell 1)",
+              "7 (2n+1)",
+              "5 (2n−1)",
+              "6 (2n)",
+              "6 (2n)"
+            ]
+          ],
+          "check": {
+            "x": "zygotes",
+            "labels": [
+              "B. Nondisjunction of pair 1 in meiosis I",
+              "C. Nondisjunction of pair 1 in meiosis II (cell 1)"
+            ],
+            "conds": [
+              {
+                "pairs": 3,
+                "nd": "I",
+                "ndPair": 0
+              },
+              {
+                "pairs": 3,
+                "nd": "II",
+                "ndPair": 0,
+                "ndCell": 0
+              }
+            ]
+          }
+        },
+        {
+          "caption": "Table 3. Gametes possible from independent assortment alone",
+          "cols": [
+            "Homologous pairs (n)",
+            "Diploid number (2n)",
+            "Different gametes possible (2<sup>n</sup>)"
+          ],
+          "rows": [
+            [
+              "2",
+              "4",
+              "4"
+            ],
+            [
+              "3",
+              "6",
+              "8"
+            ],
+            [
+              "23",
+              "46",
+              "8,388,608"
+            ]
+          ],
+          "check": {
+            "x": "combos",
+            "ns": [
+              2,
+              3,
+              23
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "meiosis-nondisjunction:cells:1",
+      "type": "single",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "mei-s1",
+      "q": "Cell B made two gametes with 4 chromosomes and two with 2. Which explanation is most consistent with the data?",
+      "options": [
+        "The homologs of pair 1 moved to the same pole in anaphase I, so one cell from meiosis I had both and the other had neither, and meiosis II passed this to all four gametes",
+        "The sister chromatids of pair 1 stayed together in anaphase II, so one gamete got both copies and its partner gamete got none",
+        "Crossing over moved part of pair 1 onto another chromosome, so some gametes counted an extra chromosome",
+        "The cell copied pair 1 twice during S phase, so the extra copies were shared among two of the gametes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Every gamete of cell B is abnormal: two are n+1 and two are n−1. That pattern comes from an error in meiosis I, when homologs separate. Cell 1 received both homologs of pair 1 and cell 2 received none; in meiosis II the sister chromatids of each chromosome separated normally, so both gametes of cell 1 carry an extra pair 1 and both gametes of cell 2 lack it.",
+        "options": [
+          "Right: a failure of homologs to separate in meiosis I affects both cells of meiosis II, so all four gametes are abnormal.",
+          "An error in meiosis II affects only one of the two cells, so two gametes would be normal, as in cell C, not none.",
+          "Crossing over swaps matching segments between homologs; it does not change how many chromosomes a gamete gets, as cell D shows.",
+          "S phase copies each chromosome once into two sister chromatids; the model copies every pair the same way, so the extra chromosome comes from separation, not copying."
+        ]
+      }
+    },
+    {
+      "id": "meiosis-nondisjunction:cells:2",
+      "type": "numeric",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "mei-s1",
+      "q": "A fruit fly species has 2n = 8. Using the pattern in Table 3, calculate how many genetically different gametes independent assortment alone can produce in this species (ignore crossing over).",
+      "numeric": {
+        "answer": 16,
+        "tol": 0,
+        "unit": "gametes",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "2n = 8 means n = 4 homologous pairs. Each pair can send either homolog to a given gamete, independently of the others, so 2 × 2 × 2 × 2 = 2<sup>4</sup> = 16 different gametes."
+      }
+    },
+    {
+      "id": "meiosis-nondisjunction:cells:3",
+      "type": "single",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "mei-s1",
+      "q": "In a person (2n = 46), the sister chromatids of chromosome 21 fail to separate in one of the two cells of meiosis II, as for pair 1 in cell C. Each of the four gametes then meets a normal gamete. Which prediction about the four zygotes is best supported?",
+      "options": [
+        "One zygote with 47 chromosomes (three copies of chromosome 21), one with 45 and two with 46",
+        "Two zygotes with 47 chromosomes and two with 45, because every gamete carries the error",
+        "One zygote with 47 chromosomes and three with 46, because only one gamete received an extra chromosome",
+        "Four zygotes with 47 chromosomes, because the extra chromatid is copied into every gamete"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "As in cell C, an error in meiosis II gives one n+1 gamete (24 chromosomes), one n−1 gamete (22) and two normal gametes (23). Adding a normal gamete of 23 gives zygotes of 47 (trisomy 21), 45 (monosomy 21) and two of 46, the pattern in Table 2 for cell C.",
+        "options": [
+          "Right: one n+1, one n−1 and two n gametes give one 2n+1, one 2n−1 and two 2n zygotes.",
+          "Two n+1 and two n−1 gametes is the result of an error in meiosis I (cell B); in meiosis II the other cell divides normally.",
+          "The gamete that received both sister chromatids has a partner gamete from the same cell that received none, so one zygote has 45 chromosomes.",
+          "The error happens in only one cell of meiosis II and nothing is copied after S phase, so only one gamete has the extra chromosome."
+        ]
+      }
+    },
+    {
+      "id": "meiosis-nondisjunction:cells:4",
+      "type": "single",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "mei-s1",
+      "q": "Cells A and D differ only in crossing over. Which statement best explains why cell D made four kinds of gametes but cell A made only two?",
+      "options": [
+        "In cell D nonsister chromatids swapped segments in prophase I, so the two sister chromatids of each chromosome were no longer identical and each meiosis II cell gave two different gametes",
+        "In cell D crossing over changed which homolog faced each side at metaphase I, so the chromosomes were sorted into new combinations",
+        "In cell D crossing over added chromosome segments to some gametes, so the gametes carried different numbers of chromosomes",
+        "In cell D sister chromatids swapped segments with each other, so each chromosome gained a new combination of alleles"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Without crossing over, the two sister chromatids of a chromosome are identical copies, so the two gametes made from one meiosis II cell are identical and the cell makes only two kinds. Crossing over exchanges segments between nonsister chromatids of a homologous pair, giving recombinant chromatids. The sisters then differ, so all four gametes differ.",
+        "options": [
+          "Right: crossing over makes sister chromatids differ, so the gametes from the same meiosis II cell differ too.",
+          "The orientation at metaphase I was the same in every run (maternal homologs toward cell 1), so the line-up does not explain the difference.",
+          "Table 1 shows 3 chromosomes in every gamete of cell D; crossing over exchanges matching segments without changing the number.",
+          "Sister chromatids are identical copies, so swapping segments between them would change nothing; the exchange is between nonsister chromatids."
+        ]
+      }
+    },
+    {
+      "id": "meiosis-nondisjunction:cells:5",
+      "type": "single",
+      "topic": "meiosis-genetic-diversity",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "mei-s1",
+      "q": "A body cell of the same organism as cell A divides by mitosis. Which comparison with the meiosis of cell A is correct?",
+      "options": [
+        "Mitosis gives two cells with 6 chromosomes each, identical to the parent, because only sister chromatids separate; meiosis gives four cells with 3 because homologs separate first",
+        "Mitosis gives four cells with 3 chromosomes each, the same as meiosis, because the sister chromatids separate in two rounds",
+        "Mitosis gives two cells with 3 chromosomes each, because homologs separate in mitosis but sister chromatids do not",
+        "Mitosis gives two cells with 6 chromosomes each that differ from each other, because crossing over happens in every division"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In mitosis homologs do not pair and the cell divides once: the sister chromatids of every chromosome separate, so each of two daughter cells gets all 6 chromosomes and is identical to the parent. Meiosis divides twice: homologs separate in meiosis I and sister chromatids in meiosis II, so four cells each get n = 3.",
+        "options": [
+          "Right: one division separating sisters keeps 2n; two divisions, homologs then sisters, halve it to n.",
+          "Mitosis is a single division, so it makes two cells, and they keep the full 2n.",
+          "Separating homologs is what halves the number in meiosis I; mitosis separates sister chromatids, so its cells keep 6.",
+          "Homologs pair and cross over in prophase I of meiosis, not in mitosis, so the two cells from mitosis are identical."
+        ]
+      }
+    }
+  ],
+  "frq": {
+    "id": "frq-nondisjunction",
+    "topic": "meiosis-genetic-diversity",
+    "title": "Mini free-response question: when chromosomes fail to separate",
+    "intro": "<p>Use Tables 1 and 2 above.</p>",
+    "parts": [
+      {
+        "label": "a",
+        "points": 1,
+        "practice": "4.B",
+        "prompt": "<b>Describe</b> the chromosome numbers of the four gametes from cell B and from cell C, using Table 1.",
+        "rubric": [
+          {
+            "point": "Describes both: cell B gives two gametes with 4 (n+1) and two with 2 (n−1); cell C gives one with 4 (n+1), one with 2 (n−1) and two with 3 (n).",
+            "accept": [
+              "cell B: all four abnormal; cell C: two normal, one extra, one missing"
+            ]
+          }
+        ],
+        "sample": "<p>Cell B made two gametes with 4 chromosomes (n+1) and two with 2 (n−1), so none was normal. Cell C made one gamete with 4 (n+1), one with 2 (n−1) and two with the normal 3 (n).</p>"
+      },
+      {
+        "label": "b",
+        "points": 2,
+        "practice": "6.C",
+        "prompt": "<b>Explain</b> why nondisjunction in meiosis I makes every gamete abnormal, while nondisjunction in meiosis II leaves two gametes normal.",
+        "rubric": [
+          {
+            "point": "Explains that homologs separate in meiosis I, so when a pair fails to separate one cell gets both homologs and the other none, and meiosis II then passes the extra or missing chromosome to both gametes of each cell.",
+            "accept": [
+              "the error is in both cells going into meiosis II",
+              "both daughter cells of meiosis I are abnormal"
+            ]
+          },
+          {
+            "point": "Explains that sister chromatids separate in meiosis II, so an error there happens in only one of the two cells (one gamete gets both chromatids and its partner none) while the other cell divides normally and gives two n gametes.",
+            "accept": [
+              "only one cell of meiosis II is affected",
+              "the other cell is normal"
+            ]
+          }
+        ],
+        "sample": "<p>In meiosis I the homologs of each pair should go to opposite cells. If a pair stays together, one cell gets both homologs and the other gets none. In meiosis II the sister chromatids of every chromosome separate normally, so both gametes from the first cell have an extra chromosome and both gametes from the second cell lack one. In meiosis II, the sister chromatids of a chromosome should separate. If they fail to, the error happens in only one of the two cells: one of its gametes gets both chromatids and the other none. The second cell divides normally, so its two gametes have the normal number.</p>"
+      },
+      {
+        "label": "c",
+        "points": 1,
+        "practice": "6.E",
+        "prompt": "An egg cell formed after the chromosome 21 pair failed to separate in meiosis I carries two copies of chromosome 21. It is fertilized by a normal sperm cell. <b>Predict</b> the chromosome number of the zygote and how many copies of chromosome 21 it has. <b>Justify</b> your prediction.",
+        "rubric": [
+          {
+            "point": "Predicts 47 chromosomes with three copies of chromosome 21 (trisomy 21, as in Down syndrome) AND justifies it: the egg has 24 (n+1) and the sperm 23 (n).",
+            "accept": [
+              "2n+1 = 47",
+              "24 + 23 = 47"
+            ]
+          }
+        ],
+        "sample": "<p>The zygote would have 47 chromosomes, with three copies of chromosome 21 (trisomy 21, which causes Down syndrome). The egg carries 23 + 1 = 24 chromosomes, including two copies of chromosome 21, and the normal sperm adds 23, including one more copy of chromosome 21.</p>"
+      }
+    ]
+  }
+}

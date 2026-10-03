@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" role="img" aria-labelledby="lcy-t lcy-d">
+<title id="lcy-t">The human life cycle: meiosis halves the chromosome number and fertilization restores it</title>
+<desc id="lcy-d">A cycle of four boxes joined by arrows. Top left: an adult man and an adult woman, whose body cells are diploid, 2n = 46. Arrow labeled meiosis to the top right: sperm and egg cells, haploid, n = 23. Arrow labeled fertilization to the bottom right: the zygote, diploid, 2n = 46, with one set of 23 chromosomes from each parent. Arrow labeled mitosis to the bottom left: a multicellular body, every body cell 2n = 46, which grows into the adult. The top half of the cycle is haploid only for the gametes; everything else is diploid.</desc>
+<defs><marker id="lcy-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="360" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="40.0" y="40.0" width="240.0" height="110.0" rx="12" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+<text x="160.0" y="70.0" font-size="15" text-anchor="middle" font-weight="700">Adults</text>
+<text x="160.0" y="94.0" font-size="13" text-anchor="middle">body cells diploid</text>
+<text x="160.0" y="110.0" font-size="13" text-anchor="middle">2n = 46</text>
+<rect x="480.0" y="40.0" width="240.0" height="110.0" rx="12" fill="#F8E3B8" stroke="#E69F00" stroke-width="2.5"/>
+<text x="600.0" y="70.0" font-size="15" text-anchor="middle" font-weight="700">Gametes: sperm and egg</text>
+<text x="600.0" y="94.0" font-size="13" text-anchor="middle">haploid</text>
+<text x="600.0" y="110.0" font-size="13" text-anchor="middle">n = 23</text>
+<rect x="480.0" y="210.0" width="240.0" height="110.0" rx="12" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+<text x="600.0" y="240.0" font-size="15" text-anchor="middle" font-weight="700">Zygote</text>
+<text x="600.0" y="264.0" font-size="13" text-anchor="middle">diploid, 2n = 46:</text>
+<text x="600.0" y="280.0" font-size="13" text-anchor="middle">23 from each parent</text>
+<rect x="40.0" y="210.0" width="240.0" height="110.0" rx="12" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+<text x="160.0" y="240.0" font-size="15" text-anchor="middle" font-weight="700">Growing body</text>
+<text x="160.0" y="264.0" font-size="13" text-anchor="middle">mitosis copies the</text>
+<text x="160.0" y="280.0" font-size="13" text-anchor="middle">2n = 46 set into every cell</text>
+<line x1="284.0" y1="95.0" x2="474.0" y2="95.0" stroke="#1F2A28" stroke-width="3" marker-end="url(#lcy-a)"/>
+<text x="380.0" y="84.0" font-size="15" text-anchor="middle" font-weight="700" fill="#D55E00">meiosis</text>
+<text x="380.0" y="118.0" font-size="13" text-anchor="middle">46 → 23</text>
+<line x1="600.0" y1="154.0" x2="600.0" y2="204.0" stroke="#1F2A28" stroke-width="3" marker-end="url(#lcy-a)"/>
+<text x="612.0" y="176.0" font-size="14" text-anchor="start" font-weight="700" fill="#D55E00">fertilization</text>
+<text x="612.0" y="194.0" font-size="13" text-anchor="start">23 + 23 → 46</text>
+<line x1="476.0" y1="265.0" x2="286.0" y2="265.0" stroke="#1F2A28" stroke-width="3" marker-end="url(#lcy-a)"/>
+<text x="380.0" y="254.0" font-size="15" text-anchor="middle" font-weight="700">mitosis</text>
+<text x="380.0" y="288.0" font-size="13" text-anchor="middle">46 → 46</text>
+<line x1="160.0" y1="206.0" x2="160.0" y2="156.0" stroke="#1F2A28" stroke-width="3" marker-end="url(#lcy-a)"/>
+<text x="148.0" y="186.0" font-size="13" text-anchor="end">growth</text>
+<text x="380.0" y="348.0" font-size="13" text-anchor="middle" font-weight="700">Without meiosis, the chromosome number would double every generation.</text>
+</g>
+</svg>
