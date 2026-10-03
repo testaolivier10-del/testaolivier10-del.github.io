@@ -287,7 +287,7 @@
       "practice": "6.E",
       "level": "analyze",
       "diff": 3,
-      "q": "In the population from the previous question, carriers are about 98 times more common than affected individuals. Which prediction about selection against affected individuals follows?",
+      "q": "A recessive disorder affects 1 in 2,500 newborns (q = 0.02), so carriers are about 98 times more common than affected individuals. Which prediction about selection against affected individuals follows?",
       "options": [
         "Selection against affected individuals lowers q slowly, because most copies of the recessive allele sit in carriers, who are not selected against.",
         "Selection against affected individuals removes the allele within a generation, because affected people are unable to pass it on to children.",

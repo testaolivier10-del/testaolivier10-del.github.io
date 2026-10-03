@@ -3,7 +3,7 @@
     "stats-chi-square-s1": {
       "kind": "table",
       "title": "Pill bugs in a two-sided choice chamber",
-      "text": "<p>A student placed 40 pill bugs in the center of a chamber with a moist side and a dry side, identical in light and temperature. After 10 minutes she counted the animals on each side.</p><p>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.81, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.</p>",
+      "text": "<p>A student placed 40 pill bugs in the center of a chamber with a moist side and a dry side, identical in light and temperature. After 10 minutes she counted the animals on each side.</p><p>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.82, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.</p>",
       "table": {
         "caption": "Pill bugs on each side after 10 minutes",
         "cols": [
@@ -29,7 +29,7 @@
     "stats-chi-square-s2": {
       "kind": "table",
       "title": "A four-way choice chamber",
-      "text": "<p>A second class built a chamber with four equal sections: dark and moist, dark and dry, light and moist, light and dry. They released 60 pill bugs at the center and counted them after 10 minutes.</p><p>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.81, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.</p>",
+      "text": "<p>A second class built a chamber with four equal sections: dark and moist, dark and dry, light and moist, light and dry. They released 60 pill bugs at the center and counted them after 10 minutes.</p><p>Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99, df 3 = 7.82, df 4 = 9.49; at p = 0.01, df 1 = 6.63, df 2 = 9.21, df 3 = 11.34, df 4 = 13.28.</p>",
       "table": {
         "caption": "Pill bugs in each section after 10 minutes",
         "cols": [
@@ -241,14 +241,14 @@
       "stimulus": "stats-chi-square-s2",
       "q": "Which statement about the test is correct?",
       "options": [
-        "The null hypothesis is rejected at p = 0.05 (8.13 > 7.81) but not at p = 0.01 (8.13 < 11.34).",
+        "The null hypothesis is rejected at p = 0.05 (8.13 > 7.82) but not at p = 0.01 (8.13 < 11.34).",
         "The null hypothesis is rejected at both p = 0.05 and p = 0.01, because 8.13 is larger than 3.84.",
         "The null hypothesis is not rejected at either level, because 8.13 is less than 9.49, the value for 4 sections.",
         "The null hypothesis is rejected at p = 0.01 but not at p = 0.05, because the stricter level is easier to pass."
       ],
       "correct": 0,
       "why": {
-        "correct": "With df = 3, χ² = 8.13 exceeds 7.81 (p = 0.05) but not 11.34 (p = 0.01). So 0.01 < p < 0.05: significant at the usual 0.05 level, but not at the stricter 0.01 level.",
+        "correct": "With df = 3, χ² = 8.13 exceeds 7.82 (p = 0.05) but not 11.34 (p = 0.01). So 0.01 < p < 0.05: significant at the usual 0.05 level, but not at the stricter 0.01 level.",
         "options": [
           "Correct.",
           "3.84 is the df = 1 value; this test has df = 3.",

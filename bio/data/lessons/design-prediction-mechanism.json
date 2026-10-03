@@ -66,7 +66,7 @@
     "<b>Worked example.</b> Prediction: ATP in cyanide-treated cells will fall. Mechanism: cyanide blocks the last carrier, so electrons cannot reach O₂; the chain stops pumping H⁺; the gradient runs down; ATP synthase, driven by H⁺ flow, makes less ATP.",
     "Three parts score: <b>direction</b> (up, down, no change), <b>mechanism</b> (each cause leads to the next) and a <b>measurable variable</b> at the end.",
     "Use the model you are given. Trace the change along its arrows: a compound that takes electrons before a block restores flow upstream of the block, not downstream.",
-    "Some variables do not change. Saying \"no change\" with a reason (cyanide does not alter how much light a leaf gets) is part of a good prediction."
+    "Some variables do not change. Saying \"no change\" with a reason (DCMU does not change how much light reaches the leaf) is part of a good prediction."
   ],
   "misconception": {
     "wrong": "\"Cyanide kills cells because they cannot get oxygen.\"",
