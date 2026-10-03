@@ -1,0 +1,465 @@
+{
+  "stimuli": {
+    "stats-descriptive-s1": {
+      "kind": "table",
+      "title": "Drops of water on a coin",
+      "text": "<p>A class counted how many drops of water they could pile onto a clean coin before the dome of water spilled over. Each group used the same dropper and the same type of coin. Soap was added to the water at three concentrations, and each concentration was measured eight times.</p>",
+      "table": {
+        "caption": "Drops of water held on a coin before spilling, by soap concentration",
+        "cols": [
+          "Soap in water (%)",
+          "Drops counted, eight repeats (drops)"
+        ],
+        "rows": [
+          [
+            "0",
+            "31, 28, 33, 30, 29, 35, 30, 32"
+          ],
+          [
+            "1",
+            "22, 19, 21, 23, 20, 21, 24, 22"
+          ],
+          [
+            "2",
+            "14, 16, 13, 15, 31, 14, 16, 15"
+          ]
+        ]
+      }
+    },
+    "stats-descriptive-s2": {
+      "kind": "table",
+      "title": "Cooling time of two water volumes",
+      "text": "<p>A student heated water to 80 °C in identical insulated cups, then timed how long it took to cool to 40 °C in the same room. She tested cups holding 100 g of water and cups holding 200 g, six cups of each.</p>",
+      "table": {
+        "caption": "Time for water to cool from 80 °C to 40 °C",
+        "cols": [
+          "Mass of water (g)",
+          "Cup 1 (min)",
+          "Cup 2 (min)",
+          "Cup 3 (min)",
+          "Cup 4 (min)",
+          "Cup 5 (min)",
+          "Cup 6 (min)"
+        ],
+        "rows": [
+          [
+            "100",
+            "11.2",
+            "10.8",
+            "11.5",
+            "11.0",
+            "10.9",
+            "11.4"
+          ],
+          [
+            "200",
+            "21.6",
+            "23.9",
+            "22.1",
+            "20.8",
+            "22.4",
+            "22.0"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-descriptive-1",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "stats-descriptive-s1",
+      "q": "Calculate the mean number of drops held on the coin with 0% soap. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 31,
+        "tol": 0.05,
+        "unit": "drops",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Sum = 31 + 28 + 33 + 30 + 29 + 35 + 30 + 32 = 248 drops. Mean = 248 ÷ 8 = 31.0 drops."
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-2",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-descriptive-s1",
+      "q": "Calculate the median number of drops for the 2% soap water. Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 15,
+        "tol": 0.05,
+        "unit": "drops",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Sorted: 13, 14, 14, 15, 15, 16, 16, 31. With eight values the median is the average of the 4th and 5th values: (15 + 15) ÷ 2 = 15.0 drops. Forgetting to sort first gives the wrong middle pair."
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-3",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-descriptive-s1",
+      "q": "The mean for the 2% soap water is 16.75 drops. Which statement best explains why the median describes a typical count for this concentration better than the mean does?",
+      "options": [
+        "One count of 31 is far above the others and pulls the mean upward, while the median stays in the middle of the cluster.",
+        "The median is calculated from more of the values than the mean is, so it carries more information about the whole sample of eight counts.",
+        "The mean is meant for data sets in which no value repeats, and this set repeats several of its values.",
+        "The counts at 2% soap are more tightly clustered than at 0% soap, so a mean exaggerates their center."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Seven of the eight counts lie between 13 and 16. The single 31 adds a large amount to the sum, so the mean (16.75) sits above every value but one. The median (15) depends only on the middle of the sorted list, so the outlier barely moves it.",
+        "options": [
+          "Correct. An extreme value drags the mean toward it; the median depends on position, not size, so it resists the pull.",
+          "The mean uses every value; the median uses only the middle one or two. That is exactly why the median ignores the outlier.",
+          "Repeated values do not stop you from averaging. A mean can always be calculated for quantitative data.",
+          "The range at 2% (18 drops) is the largest of the three concentrations, so these data are the least tightly clustered."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-4",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-descriptive-s1",
+      "q": "Select ALL statements that are supported by the data in the table.",
+      "options": [
+        "Adding soap lowered the typical number of drops the coin could hold.",
+        "The 1% soap data have two modes, 21 and 22 drops.",
+        "Removing the 31 from the 2% data would lower the median from 15 to 14 drops.",
+        "The range of the 1% data is larger than the range of the 0% data.",
+        "The 0% and 1% data overlap: some 1% counts are higher than some 0% counts."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Medians fall from 30.5 to 21.5 to 15 drops as soap rises. At 1%, both 21 and 22 appear twice. Ranges: 0% is 35 − 28 = 7; 1% is 24 − 19 = 5. The largest 1% count (24) is below the smallest 0% count (28), so the sets do not overlap. Removing the 31 leaves seven values, and the 4th of 13, 14, 14, 15, 15, 16, 16 is still 15.",
+        "options": [
+          "Supported: mean and median both fall at each step up in soap.",
+          "Supported: 21 and 22 each appear twice and no value appears more often.",
+          "Not supported: with seven values left, the median is the 4th sorted value, which is still 15.",
+          "Not supported: the 1% range is 5 drops and the 0% range is 7 drops.",
+          "Not supported: the highest 1% count, 24, is lower than the lowest 0% count, 28."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-5",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-descriptive-s1",
+      "q": "A student re-checks the 2% notebook and finds the 31 was a copying mistake for 13. After the correction, which describes the change in the mean and the median?",
+      "options": [
+        "The mean drops by 2.25 drops and the median drops by 0.5 drops.",
+        "The mean drops by 2.25 drops and the median does not change.",
+        "The mean drops by 18 drops and the median drops by 0.5 drops.",
+        "The mean and the median both drop by 2.25 drops."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The sum falls by 31 − 13 = 18 drops, shared over 8 values: 18 ÷ 8 = 2.25 drops lower (16.75 to 14.5). Re-sorted, the corrected set is 13, 13, 14, 14, 15, 15, 16, 16, so the middle pair becomes 14 and 15 and the median falls from 15 to 14.5.",
+        "options": [
+          "Correct: the mean falls 2.25 drops and the median 0.5 drops.",
+          "The mean change is right, but re-sort the corrected data: a new low value shifts the middle pair to 14 and 15.",
+          "The sum drops by 18, but that change is shared across 8 values, so the mean drops by 2.25, not 18.",
+          "The mean change is right; the median depends on position in the sorted list, so it moves by a different amount."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "stats-descriptive-s2",
+      "q": "Calculate the mean cooling time for the 200 g cups. Give your answer in minutes to one decimal place.",
+      "numeric": {
+        "answer": 22.1,
+        "tol": 0.05,
+        "unit": "min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Sum = 21.6 + 23.9 + 22.1 + 20.8 + 22.4 + 22.0 = 132.8 min. Mean = 132.8 ÷ 6 = 22.13, which rounds to 22.1 min."
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-7",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-descriptive-s2",
+      "q": "Calculate the range of the cooling times for the 200 g cups, in minutes, to one decimal place.",
+      "numeric": {
+        "answer": 3.1,
+        "tol": 0.05,
+        "unit": "min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Range = largest − smallest = 23.9 − 20.8 = 3.1 min."
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-descriptive-s2",
+      "q": "Which statement best describes the data in the table?",
+      "options": [
+        "Doubling the mass of water roughly doubled the typical cooling time, and the 200 g times were more spread out.",
+        "Doubling the mass of water roughly doubled the typical cooling time, and the two masses had the same spread.",
+        "The 200 g cups cooled faster on average, because their times were more spread out than the 100 g times.",
+        "The cooling times are not comparable because each mass was tested in a different set of six cups."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The means are 11.1 min and 22.1 min, close to a 1 : 2 ratio. The 100 g range is 11.5 − 10.8 = 0.7 min; the 200 g range is 3.1 min, so the 200 g values are more spread out.",
+        "options": [
+          "Correct: center doubles, and the range grows from 0.7 to 3.1 min.",
+          "The centers fit, but the ranges (0.7 versus 3.1 min) show different spreads.",
+          "Longer times mean slower cooling, and spread says nothing about which group cooled faster.",
+          "Separate cups are expected: each mass has its own sample of six, and their centers and spreads can be compared."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-9",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-descriptive-s2",
+      "q": "Which explanation best accounts for the difference in the mean cooling times?",
+      "options": [
+        "Twice the water holds twice the heat at 80 °C, and water releases a lot of heat for each degree it cools, so 200 g takes longer to lose enough heat.",
+        "Heavier water molecules form stronger covalent bonds with each other, so the 200 g samples lose heat to the air more slowly.",
+        "A larger volume of water has a higher specific heat per gram than a small volume, so each gram of the 200 g sample gives off its heat more slowly.",
+        "The 200 g cups evaporate less water, because evaporation happens mainly when water is close to boiling."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Specific heat is a property per gram, so 200 g must give off twice the heat of 100 g to drop the same 40 °C. Water's high specific heat (from hydrogen bonds between molecules) means that heat is large, so cooling takes about twice as long when heat leaves the cup at a similar pace.",
+        "options": [
+          "Correct: same per-gram heat, twice the grams, about twice the heat to lose.",
+          "The molecules are the same in both cups; bonds between water molecules are hydrogen bonds, not covalent bonds.",
+          "Specific heat is per gram and does not change with the amount of water.",
+          "Evaporation happens at any temperature; it is not limited to near boiling."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-10",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student records four things about each water sample. Select ALL that are quantitative, continuous data.",
+      "options": [
+        "Temperature of the sample (°C)",
+        "Number of drops added (drops)",
+        "Color of the dye used (blue, red, green)",
+        "Mass of the sample (g)",
+        "Whether the sample spilled (yes or no)",
+        "Time taken to cool (s)"
+      ],
+      "correct": [
+        0,
+        3,
+        5
+      ],
+      "why": {
+        "correct": "Continuous quantitative data are measured on a scale that can take any value between two numbers: temperature, mass and time. Counted drops are quantitative but discrete. Color and yes/no are qualitative (categorical).",
+        "options": [
+          "Continuous: temperature can be 21.3 °C, 21.35 °C and so on.",
+          "Quantitative but discrete: you count whole drops, never 21.5 drops.",
+          "Qualitative: color is a category, not a number.",
+          "Continuous: mass is measured on a scale.",
+          "Qualitative: a yes/no outcome is a category.",
+          "Continuous: time is measured on a scale."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-11",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Five cups were timed. Four of them took 9.0, 9.4, 8.8 and 9.6 min to cool, and the student's notebook gives the mean of all five as 9.2 min. Calculate the time for the fifth cup, in minutes, to one decimal place.",
+      "numeric": {
+        "answer": 9.2,
+        "tol": 0.05,
+        "unit": "min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Mean × n = sum, so the five values add to 9.2 × 5 = 46.0 min. The four known values add to 9.0 + 9.4 + 8.8 + 9.6 = 36.8 min. The fifth is 46.0 − 36.8 = 9.2 min."
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-12",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "3.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "One of 10 repeat measurements of drops on a coin is 58, while the other nine lie between 27 and 34. What should the student do first?",
+      "options": [
+        "Check the notebook and procedure for a mistake; if none is found, keep the value and report both the mean and the median.",
+        "Delete the 58 at once, because a value that does not match the other nine is unlikely to be real data and would distort the summaries of the sample.",
+        "Replace the 58 with the mean of the other nine values, so the sample size stays at 10.",
+        "Report just the mode, because one unusual value has no effect on the mode."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "An outlier is first checked for a recording or procedure error. If it is a mistake, it is corrected or removed with a note; if not, it is real data, so it is kept and its effect is shown by giving a summary (the median) that resists it.",
+        "options": [
+          "Correct: investigate, then keep and report honestly.",
+          "Deleting data because it is inconvenient hides real results; it is removed only with a documented reason.",
+          "Inventing a value is not data; it makes the sample look more consistent than it was.",
+          "The mode is often unhelpful with measured data, and choosing a summary to hide a value is not a fix."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-13",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A data set of counts is 4, 7, 7, 9, 12. Which change would raise the mean but leave the median and the range unchanged?",
+      "options": [
+        "Changing the 9 to 11",
+        "Changing the 12 to 15",
+        "Changing the 4 to 6",
+        "Changing one 7 to 9"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Changing 9 to 11 raises the sum by 2, so the mean rises. Sorted, the set is 4, 7, 7, 11, 12: the middle value is still 7 and the range is still 12 − 4 = 8.",
+        "options": [
+          "Correct: the sum goes up, the 3rd value stays 7, and the smallest and largest stay 4 and 12.",
+          "The mean rises, but the largest value changes, so the range becomes 11.",
+          "The mean rises, but the smallest value changes, so the range shrinks to 6.",
+          "The mean rises, but the sorted set becomes 4, 7, 9, 9, 12, so the median moves to 9."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-14",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Group P measured drops on a coin and got 24, 25, 25, 26, 25 (mean 25). Group Q got 18, 31, 25, 22, 29 (mean 25). Which conclusion is best supported?",
+      "options": [
+        "The groups found the same center, but Q's values vary much more, so a single Q measurement is less dependable.",
+        "The groups found the same center and the same spread, because their means are equal.",
+        "Group Q measured more carefully, because its values cover a wider range of possible counts and so represent more of the possible outcomes.",
+        "Group P probably made an error, because real counts of drops rarely repeat so closely."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Equal means say nothing about spread. P's range is 2 drops; Q's is 13 drops. Wider spread means any single measurement from Q could land far from the center.",
+        "options": [
+          "Correct: same mean, very different ranges.",
+          "The means match, but the ranges (2 and 13) show the spreads differ.",
+          "Wider spread usually means less consistent technique, not more careful work.",
+          "Repeated identical counts are expected with careful technique; repetition is not evidence of error."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-15",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which summary of a data set is found by sorting the values and taking the middle one?",
+      "options": [
+        "Median",
+        "Mean",
+        "Mode",
+        "Midrange"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The median is the middle value of the sorted data (the average of the two middle values when n is even).",
+        "options": [
+          "Correct.",
+          "The mean is the sum divided by the number of values.",
+          "The mode is the most frequent value.",
+          "The midrange is the average of the largest and smallest values; it needs no middle position."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-descriptive-16",
+      "type": "order",
+      "unit": "skills-stats",
+      "topic": "stats-descriptive",
+      "practice": "5.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Put the steps for finding the median of an even-sized data set in order.",
+      "options": [
+        "Sort the values from smallest to largest.",
+        "Count the values to find n.",
+        "Find the two values in the middle positions (n/2 and n/2 + 1).",
+        "Average those two middle values."
+      ],
+      "why": {
+        "correct": "Sort first (the middle of an unsorted list means nothing), count, locate the middle pair, then average them."
+      }
+    }
+  ]
+}

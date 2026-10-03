@@ -1,0 +1,95 @@
+{
+  "topic": "design-prediction-mechanism",
+  "hook": "<p>\"Predict what happens if…\" is one of the most common free-response prompts, and the one most often answered with half the points: a correct direction (\"ATP goes down\") with no mechanism, or a mechanism that never reaches a measurable result. A full answer walks from the disruption, step by step, to something you could measure.</p>",
+  "prereq": [
+    {
+      "q": "What directly drives ATP synthase in mitochondria?",
+      "options": [
+        "H⁺ flowing down its gradient across the inner membrane",
+        "Electrons passing straight from NADH to ATP synthase",
+        "Oxygen binding to ATP synthase"
+      ],
+      "correct": 0,
+      "why": "The electron transport chain pumps H⁺; H⁺ flowing back through ATP synthase powers ATP synthesis (chemiosmosis).",
+      "review": "cellular-respiration"
+    },
+    {
+      "q": "Where does the O₂ released in photosynthesis come from?",
+      "options": [
+        "Water split at photosystem II",
+        "CO₂ fixed in the Calvin cycle",
+        "Glucose broken down in the stroma"
+      ],
+      "correct": 0,
+      "why": "Photosystem II replaces its lost electrons by splitting water, releasing O₂.",
+      "review": "photosynthesis"
+    },
+    {
+      "q": "In a scientific argument, what does reasoning do?",
+      "options": [
+        "Explains with biology why the evidence supports the claim",
+        "Repeats the data with more decimal places",
+        "States the claim a second time"
+      ],
+      "correct": 0,
+      "why": "Reasoning is the mechanism that connects evidence to claim.",
+      "review": "design-cer"
+    }
+  ],
+  "figure": {
+    "figure": "perturbation-chain",
+    "caption": "Trace a disruption step by step: what is blocked, what stops, what builds up or runs down, and what you would measure."
+  },
+  "chain": [
+    {
+      "cause": "A poison (cyanide) binds the last protein of the electron transport chain.",
+      "effect": "Electrons can no longer be passed to O₂, so O₂ use falls."
+    },
+    {
+      "cause": "Electrons back up along the chain.",
+      "effect": "The chain stops pumping H⁺, and the H⁺ gradient across the inner membrane runs down."
+    },
+    {
+      "cause": "ATP synthase is driven by H⁺ flowing down that gradient.",
+      "effect": "ATP production by oxidative phosphorylation falls sharply."
+    },
+    {
+      "cause": "NADH can no longer hand its electrons to the chain, so NAD⁺ runs short.",
+      "effect": "The Krebs cycle stalls, and cells that can ferment make more lactate to regenerate NAD⁺ for glycolysis."
+    },
+    {
+      "cause": "Each step has a measurable result.",
+      "effect": "You can predict: less O₂ used, less ATP, more lactate, and no change in parts the poison does not touch."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> Prediction: ATP in cyanide-treated cells will fall. Mechanism: cyanide blocks the last carrier, so electrons cannot reach O₂; the chain stops pumping H⁺; the gradient runs down; ATP synthase, driven by H⁺ flow, makes less ATP.",
+    "Three parts score: <b>direction</b> (up, down, no change), <b>mechanism</b> (each cause leads to the next) and a <b>measurable variable</b> at the end.",
+    "Use the model you are given. Trace the change along its arrows: a compound that takes electrons before a block restores flow upstream of the block, not downstream.",
+    "Some variables do not change. Saying \"no change\" with a reason (cyanide does not alter how much light a leaf gets) is part of a good prediction."
+  ],
+  "misconception": {
+    "wrong": "\"Cyanide kills cells because they cannot get oxygen.\"",
+    "right": "Oxygen still reaches the cells. Cyanide stops electrons being passed to oxygen, which stops proton pumping, collapses the gradient and starves ATP synthase. The mechanism is the electron transport chain, not oxygen supply."
+  },
+  "check": [
+    "bio-design-prediction-mechanism-1",
+    "bio-design-prediction-mechanism-2",
+    "bio-design-prediction-mechanism-3",
+    "bio-design-prediction-mechanism-5",
+    "bio-design-prediction-mechanism-6",
+    "bio-design-prediction-mechanism-8",
+    "bio-design-prediction-mechanism-14"
+  ],
+  "summary": "<p>A prediction with mechanism names the variable that will change, the direction, and the chain of causes from the disruption to that result. Trace perturbations through the model you are given, step by step; say \"no change\" where a part is unaffected; and propose next experiments that isolate where a disruption acts, for example by using isolated mitochondria to bypass glycolysis.</p>",
+  "connections": [
+    {
+      "href": "../tools/design-drills.html",
+      "label": "Tool: experimental design and argument drills"
+    },
+    {
+      "href": "design-cer.html",
+      "label": "Skill: claim, evidence and reasoning"
+    }
+  ]
+}

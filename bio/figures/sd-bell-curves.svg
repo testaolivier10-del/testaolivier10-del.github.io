@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 330" width="640" height="330" role="img" aria-labelledby="t d">
+<title id="t">Standard deviation and the normal distribution</title>
+<desc id="d">Two bell-shaped curves with the same mean of 10 g. The narrow curve has a standard deviation of 0.3 g; the wide one, 1.8 g. Shading on the wide curve marks mean ± 1 standard deviation, holding about 68% of values, and mean ± 2 standard deviations, about 95%.</desc>
+<rect width="640" height="330" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" font-size="15" text-anchor="middle" fill="#1F2A28">
+  <path d="M104 260 L104 256 C150 250 175 225 202 190 C230 150 260 112 320 112 C380 112 410 150 438 190 C465 225 490 250 536 256 L536 260 Z" fill="#D2EAF8"/>
+  <path d="M212 260 L212 178 C240 140 270 112 320 112 C370 112 400 140 428 178 L428 260 Z" fill="#8FC6EA" opacity="0.6"/>
+  <path d="M30 259 C110 258 150 250 202 190 C230 150 260 112 320 112 C380 112 410 150 438 190 C490 250 530 258 610 259" fill="none" stroke="#0072B2" stroke-width="3"/>
+  <path d="M260 259 C290 258 296 240 304 170 C310 80 314 40 320 40 C326 40 330 80 336 170 C344 240 350 258 380 259" fill="none" stroke="#D55E00" stroke-width="3"/>
+  <line x1="30" y1="260" x2="610" y2="260" stroke="#1F2A28" stroke-width="2"/>
+  <line x1="320" y1="30" x2="320" y2="268" stroke="#1F2A28" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g font-size="14"><text x="104" y="280">x̄ − 2s</text><text x="212" y="280">x̄ − s</text><text x="320" y="280">x̄ = 10 g</text><text x="428" y="280">x̄ + s</text><text x="536" y="280">x̄ + 2s</text></g>
+  <g stroke="#1F2A28" stroke-width="2"><line x1="104" y1="260" x2="104" y2="266"/><line x1="212" y1="260" x2="212" y2="266"/><line x1="428" y1="260" x2="428" y2="266"/><line x1="536" y1="260" x2="536" y2="266"/></g>
+  <text x="320" y="215" font-weight="700">about 68%</text>
+  <text x="320" y="306">about 95% between x̄ − 2s and x̄ + 2s</text>
+  <text x="400" y="56" fill="#D55E00" font-weight="700" text-anchor="start">s = 0.3 g (consistent)</text>
+  <text x="470" y="150" fill="#0072B2" font-weight="700" text-anchor="start">s = 1.8 g (variable)</text>
+  <text x="320" y="20" font-size="13" fill="#5D6B69">Same mean, different standard deviations (shading on the wide curve)</text>
+</g>
+</svg>

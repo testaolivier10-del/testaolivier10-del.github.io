@@ -1,0 +1,12 @@
+{
+  "simpson-communities": {
+    "file": "figures/simpson-communities.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 340,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Two plots of 20 plants each, with the same four species. In plot A the species are evenly mixed, 5 of each, and Simpson's index is 0.75. In plot B one species makes up 17 of the 20 plants and each other species has 1, and Simpson's index is 0.27."
+  }
+}

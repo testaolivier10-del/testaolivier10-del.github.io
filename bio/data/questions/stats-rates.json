@@ -1,0 +1,485 @@
+{
+  "stimuli": {
+    "stats-rates-s1": {
+      "kind": "graph",
+      "title": "Dye moving into an agar cube",
+      "text": "<p>A 3 cm cube of clear agar was placed in a colored solution. Every 2 minutes a student cut a matching cube in half and measured how far the color had moved in from the surface.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "min",
+          "min": 0,
+          "max": 10,
+          "step": 2
+        },
+        "y": {
+          "label": "Depth of color",
+          "unit": "mm",
+          "min": 0,
+          "max": 4,
+          "step": 1
+        },
+        "series": [
+          {
+            "name": "Depth from surface",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                1.6
+              ],
+              [
+                4,
+                2.3
+              ],
+              [
+                6,
+                2.8
+              ],
+              [
+                8,
+                3.2
+              ],
+              [
+                10,
+                3.6
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "stats-rates-s2": {
+      "kind": "table",
+      "title": "How much of each cube colored in 10 minutes",
+      "text": "<p>Cubes of three sizes sat in the same colored solution for 10 minutes. The color moved in about 3.6 mm from every face in each cube. The student then calculated how much of each cube's volume had colored.</p>",
+      "table": {
+        "caption": "Agar cubes after 10 minutes in colored solution",
+        "cols": [
+          "Side (cm)",
+          "Surface area (cm²)",
+          "Volume (cm³)",
+          "Surface area : volume (cm⁻¹)",
+          "Volume colored (%)"
+        ],
+        "rows": [
+          [
+            "1",
+            "6",
+            "1",
+            "6.0",
+            "97.8"
+          ],
+          [
+            "2",
+            "24",
+            "8",
+            "3.0",
+            "73.8"
+          ],
+          [
+            "3",
+            "54",
+            "27",
+            "?",
+            "56.1"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-rates-1",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "stats-rates-s1",
+      "q": "Calculate the average rate at which the color moved into the cube over the whole 10 minutes, in mm per minute, to two decimal places.",
+      "numeric": {
+        "answer": 0.36,
+        "tol": 0.005,
+        "unit": "mm/min",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Average rate = total change ÷ total time = (3.6 − 0) mm ÷ (10 − 0) min = 0.36 mm/min."
+      }
+    },
+    {
+      "id": "bio-stats-rates-2",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-rates-s1",
+      "q": "Calculate the average rate between 8 and 10 minutes, in mm per minute, to two decimal places.",
+      "numeric": {
+        "answer": 0.2,
+        "tol": 0.005,
+        "unit": "mm/min",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "(3.6 − 3.2) mm ÷ (10 − 8) min = 0.4 ÷ 2 = 0.20 mm/min."
+      }
+    },
+    {
+      "id": "bio-stats-rates-3",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-rates-s1",
+      "q": "Which statement best describes how the rate of color movement changed during the experiment?",
+      "options": [
+        "The rate was highest in the first 2 minutes (0.8 mm/min) and fell in each later interval, to 0.2 mm/min.",
+        "The rate stayed at 0.36 mm/min throughout, because that is the average rate for the whole run of the experiment.",
+        "The rate increased over time, because the depth of color was greatest at 10 minutes, the end of the run.",
+        "The rate fell to zero after 8 minutes, because the curve flattened out and the color stopped moving into the agar."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Interval rates: 0-2 min, 1.6 ÷ 2 = 0.8; 2-4 min, 0.35; 4-6 min, 0.25; 6-8 min, 0.2; 8-10 min, 0.2 mm/min. The curve gets less steep, so the rate falls.",
+        "options": [
+          "Correct: the slope is steepest at the start.",
+          "An average over the whole run hides how the rate changed within it.",
+          "A large depth at 10 min shows the total distance moved, not the rate at that time.",
+          "The depth still rose from 3.2 to 3.6 mm between 8 and 10 minutes, so the rate was 0.2 mm/min, not zero."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-4",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-rates-s1",
+      "q": "Which explanation best accounts for the falling rate?",
+      "options": [
+        "As the color moves deeper, the concentration difference is spread over a longer distance, so the gradient driving diffusion is less steep.",
+        "The colored molecules get larger as they move into the agar, so each one moves more slowly than it did when it first entered at the surface.",
+        "The agar cube grows larger as it absorbs the solution, so the color has a bigger volume to fill as time goes on.",
+        "The solution outside the cube runs out of colored molecules after 2 minutes, so diffusion slows to a steady trickle."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Diffusion is net movement down a concentration gradient. Near the surface early on, high concentration outside sits right next to zero inside: a steep gradient. As the colored zone thickens, the same drop in concentration is spread over more distance, so net movement at the front slows.",
+        "options": [
+          "Correct: a shallower gradient gives slower net diffusion.",
+          "Molecules do not change size as they diffuse.",
+          "The cube's size is fixed in this setup; the data describe depth, not swelling.",
+          "A large volume of solution holds far more dye than a small cube absorbs; the outside concentration stays about the same."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-5",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-rates-s1",
+      "q": "Calculate the percent change in the rate of color movement from the 0-2 minute interval to the 8-10 minute interval. Give your answer to the nearest whole percent (use a minus sign for a decrease).",
+      "numeric": {
+        "answer": -75,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Rates: 0-2 min, 1.6 ÷ 2 = 0.8 mm/min; 8-10 min, 0.2 mm/min. Percent change = (0.2 − 0.8) ÷ 0.8 × 100 = −75%."
+      }
+    },
+    {
+      "id": "bio-stats-rates-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "stats-rates-s2",
+      "q": "Calculate the surface area : volume ratio of the 3 cm cube, in cm⁻¹, to one decimal place.",
+      "numeric": {
+        "answer": 2,
+        "tol": 0.05,
+        "unit": "cm⁻¹",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "SA = 6 × 3² = 54 cm². V = 3³ = 27 cm³. SA : V = 54 ÷ 27 = 2.0 cm⁻¹."
+      }
+    },
+    {
+      "id": "bio-stats-rates-7",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-rates-s2",
+      "q": "From the 1 cm cube to the 3 cm cube, the volume colored fell from 97.8% to 56.1%. Which description is correct?",
+      "options": [
+        "A fall of 41.7 percentage points, which is a 42.6% decrease relative to the 1 cm cube.",
+        "A fall of 41.7 percentage points, which is the same thing as a 41.7% decrease.",
+        "A 42.6% decrease, which is the same thing as a fall of 42.6 percentage points.",
+        "A 74.3% decrease, because 41.7 is 74.3% of the 3 cm cube's value of 56.1."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The difference between two percentages is 97.8 − 56.1 = 41.7 percentage points. The percent change divides by the starting value: (56.1 − 97.8) ÷ 97.8 × 100 = −42.6%.",
+        "options": [
+          "Correct: points for the difference, percent change relative to the start.",
+          "Percentage points and percent change differ unless the starting value is 100.",
+          "The difference between the two values is 41.7 points, not 42.6.",
+          "Percent change divides by the starting value (97.8), not the final one."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-rates-s2",
+      "q": "Which claim do these data best support?",
+      "options": [
+        "As a cube gets larger its SA : V ratio falls, so a smaller share of its volume is reached by diffusion in a given time.",
+        "Larger cubes take up color faster, because their larger surface area lets more color in per minute in total across their six faces.",
+        "The color moved deeper into the larger cubes, which is why their percentage of colored volume came out lower.",
+        "Cube size does not affect diffusion, because the color reached the same depth of 3.6 mm in each cube."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Depth reached is the same, but the 3 cm cube has only 2.0 cm² of surface per cm³ of volume, against 6.0 for the 1 cm cube, so less of its interior lies within 3.6 mm of a face.",
+        "options": [
+          "Correct: falling SA : V means a smaller fraction is supplied.",
+          "More total color may enter a big cube, but the claim about rate per cube ignores how much volume must be reached.",
+          "The depth was the same, 3.6 mm, in every cube.",
+          "Equal depth is the point: equal depth reaches a smaller share of a larger cube."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-9",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-rates-s2",
+      "q": "A single cell depends on diffusion across its surface for supplies. Based on the cube data, what would doubling the cell's side length (keeping its shape) do?",
+      "options": [
+        "Halve its surface area : volume ratio, so each unit of volume would get about half as much surface for exchange.",
+        "Double its surface area : volume ratio, because both the surface area and the volume would increase.",
+        "Leave its surface area : volume ratio unchanged, because the cell would keep exactly the same shape.",
+        "Quarter its surface area : volume ratio, because volume grows with the square of the side length while area stays the same."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Surface area grows with the side squared (×4) and volume with the side cubed (×8), so SA : V changes by 4 ÷ 8 = ½. The table shows it: 1 cm cube 6.0, 2 cm cube 3.0 cm⁻¹.",
+        "options": [
+          "Correct: SA ×4, V ×8, ratio ×½.",
+          "Volume grows faster than surface area, so the ratio falls.",
+          "Same shape does not mean same ratio; the ratio depends on size.",
+          "Volume grows with the cube of the side; surface area with the square."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-10",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Root hairs raise the surface area of a seedling's root from 40 cm² to 130 cm². Calculate the percent increase, to the nearest whole percent.",
+      "numeric": {
+        "answer": 225,
+        "tol": 0.5,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Percent change = (130 − 40) ÷ 40 × 100 = 90 ÷ 40 × 100 = 225%."
+      }
+    },
+    {
+      "id": "bio-stats-rates-11",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A bacterium is 2 µm long. What is its length in millimeters?",
+      "options": [
+        "2 × 10⁻³ mm",
+        "2 × 10⁻⁶ mm",
+        "2 × 10³ mm",
+        "2 × 10⁻² mm"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "1 µm = 10⁻⁶ m and 1 mm = 10⁻³ m, so 1 µm = 10⁻³ mm. 2 µm = 2 × 10⁻³ mm = 0.002 mm.",
+        "options": [
+          "Correct.",
+          "This converts micrometers to meters, not millimeters.",
+          "A bacterium is far smaller than a millimeter, not thousands of them.",
+          "This would be 20 µm; there are 1,000 µm in a millimeter, not 100."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-12",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A cube-shaped cell is 10 µm on each side. What is its volume in cubic millimeters?",
+      "options": [
+        "1 × 10⁻⁶ mm³",
+        "1 × 10⁻³ mm³",
+        "1 × 10⁻² mm³",
+        "1 × 10³ mm³"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Volume = (10 µm)³ = 1,000 µm³. Since 1 mm = 1,000 µm, 1 mm³ = (1,000)³ = 10⁹ µm³. So 10³ µm³ = 10³ ÷ 10⁹ = 10⁻⁶ mm³. Converting first also works: 10 µm = 0.01 mm, and 0.01³ = 10⁻⁶ mm³.",
+        "options": [
+          "Correct.",
+          "This converts the units as if they were lengths (÷ 1,000) rather than volumes (÷ 1,000³).",
+          "This is the side length in millimeters (0.01 mm), not the volume.",
+          "This is the volume in µm³ with the unit changed but not the number."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-13",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "A 1-liter flask of water cooled from 80 °C to 52 °C in 14 minutes. Calculate the average rate of cooling, in °C per minute, to one decimal place.",
+      "numeric": {
+        "answer": 2,
+        "tol": 0.05,
+        "unit": "°C/min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Average rate = (80 − 52) °C ÷ 14 min = 28 ÷ 14 = 2.0 °C/min (a decrease in temperature)."
+      }
+    },
+    {
+      "id": "bio-stats-rates-14",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A 100 mL flask and a 1,000 mL flask of the same shape, both at 80 °C, are left in the same room. Which prediction about their average cooling rates over the first 10 minutes is best supported?",
+      "options": [
+        "The 100 mL flask cools faster, because it has more surface per unit volume through which heat can leave.",
+        "The 1,000 mL flask cools faster, because its larger surface area loses more heat in total each minute.",
+        "Both cool at the same rate, because water has the same specific heat whatever the amount.",
+        "The 1,000 mL flask cools faster, because a larger mass of water holds its heat for less time."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Heat leaves through the surface but is stored in the volume. The smaller flask has a higher surface area : volume ratio, so its temperature falls faster, just as small animals lose body heat faster than large ones.",
+        "options": [
+          "Correct: higher SA : V, faster temperature drop.",
+          "The big flask loses more heat in total, but it has much more heat to lose, so its temperature falls more slowly.",
+          "Specific heat is per gram; it does not make different amounts cool at the same rate.",
+          "A larger mass holds its heat longer, which slows cooling."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-15",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A culture of 400 bacteria falls by 50% after an antibiotic is added, then rises by 50% after the antibiotic is removed. How many bacteria are there at the end?",
+      "options": [
+        "300",
+        "400",
+        "200",
+        "450"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "400 − 50% of 400 = 200. Then 200 + 50% of 200 = 300. Each percent change is calculated on the value at the start of that step.",
+        "options": [
+          "Correct.",
+          "A 50% fall and a 50% rise do not cancel, because the second 50% is taken of a smaller number.",
+          "200 is the count after the fall, before the rise.",
+          "This adds 50% of 300 to 300; the rise is applied to 200."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-rates-16",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-rates",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "On a curved graph of product made against time, the curve is steep at first and then flattens. Select ALL statements that are true.",
+      "options": [
+        "The instantaneous rate is highest near the start.",
+        "The average rate over the whole run equals the rate at the start.",
+        "The average rate over the run is the slope of a straight line joining the first and last points.",
+        "The instantaneous rate rises as the curve flattens.",
+        "The rate in any interval is the amount made multiplied by the time it took."
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "why": {
+        "correct": "Steepest slope means highest rate (the start). The average rate is the slope of the chord from the first to the last point. Any interval's average rate is change ÷ time, never change × time.",
+        "options": [
+          "True: the steepest part of the curve.",
+          "False: the start is steeper than the average, so the rate there is higher than the average.",
+          "True: total change ÷ total time.",
+          "False: flattening means the slope, and so the rate, falls.",
+          "False: a rate divides the amount made by the time; multiplying gives units of mg × min, not mg per min."
+        ]
+      }
+    }
+  ]
+}

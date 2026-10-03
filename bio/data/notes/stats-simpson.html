@@ -1,0 +1,58 @@
+<h2 id="why">Counting species is not enough</h2>
+<p>Two meadows each contain the same five wildflowers: clover, yarrow, buttercup, plantain and daisy. In meadow A there are 20 plants of each. In meadow B, 80 of the 100 plants are clover and each other species has just 5. Both have a species richness of 5, but meadow B is plainly less diverse: walk through it and nearly every plant you meet is clover. Species diversity combines <b>richness</b> (how many species) with <b>evenness</b> (how equally individuals are spread among them). Simpson's diversity index measures both at once.</p>
+
+<h2 id="worked">Worked example: calculating Simpson's index</h2>
+<figure data-fig="simpson-communities" id="fig-simpson"><figcaption>Same species, same number of plants, very different evenness.</figcaption></figure>
+<div class="worked">
+<p><b>Formula sheet:</b> D = 1 − Σ(n/N)², where n = individuals of one species and N = total individuals of all species.</p>
+<p><b>Data:</b> a pond sample has 6 snails, 3 beetles and 1 leech (N = 10).</p>
+<ol>
+<li>Fractions: 6/10 = 0.6; 3/10 = 0.3; 1/10 = 0.1.</li>
+<li>Squares: 0.36; 0.09; 0.01.</li>
+<li>Sum: Σ(n/N)² = 0.46.</li>
+<li><b>D = 1 − 0.46 = 0.54</b>.</li>
+</ol>
+<p><b>The two meadows:</b> A: Σ = 5 × 0.2² = 0.20, so D = <b>0.80</b>. B: Σ = 0.8² + 4 × 0.05² = 0.64 + 0.01 = 0.65, so D = <b>0.35</b>.</p>
+</div>
+
+<h2 id="meaning">What the number means</h2>
+<p>(n/N)² is the chance that two individuals picked at random both belong to that species. Adding over all species gives the chance that two random individuals are the same species; subtracting from 1 gives the chance that they are <b>different</b>. So:</p>
+<table class="compare">
+<caption>Reading Simpson's index</caption>
+<thead><tr><th scope="col">Community</th><th scope="col">D</th></tr></thead>
+<tbody>
+<tr><td>One species only</td><td>0</td></tr>
+<tr><td>Two species, equal numbers</td><td>0.5</td></tr>
+<tr><td>Five species, one dominant (80 : 5 : 5 : 5 : 5)</td><td>0.35</td></tr>
+<tr><td>Five species, equal numbers</td><td>0.80</td></tr>
+<tr><td>Many species, evenly represented</td><td>close to 1</td></tr>
+</tbody>
+</table>
+<p>Because the fractions are squared, common species dominate the sum. One species at 80% contributes 0.64 by itself. A single rare species barely moves D: one plant of a sixth species in meadow A raises D only from 0.800 to 0.804.</p>
+
+<h2 id="change">Comparing a community over time</h2>
+<p>A stream bank was surveyed twice, eight years apart, after a fast-growing plant from another continent (species X) began spreading there.</p>
+<table class="compare">
+<caption>Plants per 100 counted</caption>
+<thead><tr><th scope="col">Species</th><th scope="col">First survey</th><th scope="col">Eight years later</th></tr></thead>
+<tbody>
+<tr><td>Sedge</td><td>30</td><td>12</td></tr>
+<tr><td>Rush</td><td>25</td><td>8</td></tr>
+<tr><td>Fern</td><td>20</td><td>6</td></tr>
+<tr><td>Mint</td><td>15</td><td>4</td></tr>
+<tr><td>Violet</td><td>10</td><td>0</td></tr>
+<tr><td>Species X</td><td>0</td><td>70</td></tr>
+<tr><th scope="row">D</th><td>0.775</td><td>0.484</td></tr>
+</tbody>
+</table>
+<p>Richness is 5 both times (violet lost, X gained), yet D fell by about 38%: (0.484 − 0.775) ÷ 0.775 × 100 = −37.5%. The cause is evenness. X makes up 70% of the plants, so two random plants are now usually the same species. Biologically, a fast-spreading competitor took most of the limited light, water and space on the bank, and every native species declined.</p>
+
+<h2 id="claims">Writing about diversity</h2>
+<ul>
+<li>Higher D means more diverse: "Meadow A (D = 0.80) is more diverse than meadow B (D = 0.35)."</li>
+<li>Explain with richness and evenness: "Both have five species, but B is dominated by clover."</li>
+<li>Connect to stability carefully: communities with many evenly represented species tend to keep functioning when one species declines, because the loss removes a smaller share of the community. If a disease killed the clover, meadow B would lose 80% of its plants, meadow A 20%.</li>
+</ul>
+
+<aside class="going-further"><h3>Going further: the classic slip</h3>
+<p>Reporting Σ(n/N)² (0.65 for meadow B) without subtracting from 1 gives the chance two random plants are the <i>same</i> species: a measure of dominance, the opposite of diversity. If your "diversity" is higher for the clover-dominated meadow, check for the missing "1 −".</p></aside>

@@ -1,0 +1,56 @@
+<h2 id="why">Seeing the hidden alleles</h2>
+<p>In a meadow of wildflowers, purple (A) is completely dominant to white (a). You can count white plants, because every white plant is aa. You cannot see which purple plants are AA and which are Aa. The Hardy-Weinberg equations on the formula sheet let you work out the hidden numbers, as long as the population is assumed to be in equilibrium:</p>
+<ul>
+<li>p + q = 1 (allele frequencies)</li>
+<li>p² + 2pq + q² = 1 (genotype frequencies: AA, Aa, aa)</li>
+</ul>
+
+<h2 id="worked">Worked example: from phenotypes to genotypes</h2>
+<figure data-fig="hw-square" id="fig-hw"><figcaption>Genotype frequencies as areas of a square with sides p and q.</figcaption></figure>
+<div class="worked">
+<p><b>Data:</b> 400 plants; 364 purple, 36 white. Assume Hardy-Weinberg equilibrium.</p>
+<ol>
+<li>White plants are aa, so <b>q² = 36 ÷ 400 = 0.09</b>.</li>
+<li><b>q = √0.09 = 0.30</b>.</li>
+<li><b>p = 1 − 0.30 = 0.70</b>.</li>
+<li>Genotype frequencies: AA = p² = 0.49; Aa = 2pq = 2(0.70)(0.30) = 0.42; aa = q² = 0.09. (Check: 0.49 + 0.42 + 0.09 = 1.)</li>
+<li>Counts: AA = 0.49 × 400 = 196; <b>Aa = 0.42 × 400 = 168</b>; aa = 36.</li>
+</ol>
+</div>
+<p>The trap: 364 ÷ 400 = 0.91 is the frequency of <i>purple plants</i>, which is p² + 2pq, not p. Always begin with the recessive class, the one phenotype that has a single genotype. And remember why equilibrium must be assumed: only then does the white-flower frequency equal q². If white plants were being eaten more, or plants mated mostly with neighbors of their own color, q² would not equal the white frequency.</p>
+
+<h2 id="carriers">Carrier frequency</h2>
+<p>A recessive disorder affects 1 in 2,500 newborns. q² = 0.0004, so q = 0.02, p = 0.98, and carriers are 2pq = 2(0.98)(0.02) = 0.0392, about 1 person in 26. Carriers outnumber affected people about 98 to 1, and about 98% of the copies of the recessive allele sit in carriers. That explains why selection against a rare recessive condition lowers q only very slowly: selection acts on aa individuals, and almost none of the allele copies are in them.</p>
+
+<h2 id="counts">When you have genotype counts: count alleles</h2>
+<p>If every genotype is known (by DNA testing, or with codominant alleles), you do not need the square root. Count alleles directly. A small island population of 100 lizards has 50 BB, 30 Bb and 20 bb.</p>
+<ul>
+<li>B alleles = 2 × 50 + 30 = 130 of 200, so <b>p = 0.65</b>; q = 0.35.</li>
+<li>Expected under equilibrium: BB = p² × 100 = 42.25; Bb = 2pq × 100 = 45.5; bb = q² × 100 = 12.25.</li>
+</ul>
+<table class="compare">
+<caption>Chi-square test against Hardy-Weinberg expectations</caption>
+<thead><tr><th scope="col">Genotype</th><th scope="col">o</th><th scope="col">e</th><th scope="col">(o − e)² ÷ e</th></tr></thead>
+<tbody>
+<tr><td>BB</td><td>50</td><td>42.25</td><td>1.42</td></tr>
+<tr><td>Bb</td><td>30</td><td>45.5</td><td>5.28</td></tr>
+<tr><td>bb</td><td>20</td><td>12.25</td><td>4.90</td></tr>
+<tr><th scope="row">Total</th><td>100</td><td>100</td><td>χ² = 11.60</td></tr>
+</tbody>
+</table>
+<p>χ² = 11.60 is above the critical value whether you use 1 degree of freedom (3.84) or 2 (5.99), so reject equilibrium. The pattern says why: heterozygotes are far rarer than expected and both homozygotes more common, which is what mating between relatives in a small population produces.</p>
+<aside class="going-further"><h3>For your exam: degrees of freedom</h3>
+<p>Three genotype classes give 3 − 1 = 2 degrees of freedom by the usual rule. Statisticians subtract one more because p was estimated from the same data, giving 1. Course materials differ, so exam questions are usually written so that both give the same decision, as here. If a question tells you which to use, follow it.</p></aside>
+
+<h2 id="change">Measuring evolution: change in allele frequency</h2>
+<p>A beetle population's recessive green phenotype fell from 25% to 16% over several generations. Then q fell from √0.25 = 0.50 to √0.16 = 0.40: a change of −0.10. Allele frequencies changing over generations is evolution at the population level. Hardy-Weinberg tells you what to expect if nothing is acting; departures point to selection, drift, gene flow, mutation or nonrandom mating.</p>
+<table class="compare">
+<caption>What changes q, and what does not</caption>
+<thead><tr><th scope="col">Event</th><th scope="col">Changes q?</th><th scope="col">Why</th></tr></thead>
+<tbody>
+<tr><td>Migrants with a different q join</td><td>Yes</td><td>Gene flow adds alleles at a different frequency</td></tr>
+<tr><td>aa individuals survive less often</td><td>Yes</td><td>Selection removes a alleles</td></tr>
+<tr><td>Random 95% of a small population dies</td><td>Yes, unpredictably</td><td>Genetic drift in the survivors</td></tr>
+<tr><td>Population grows with random mating, no selection</td><td>No</td><td>Equilibrium conditions hold</td></tr>
+</tbody>
+</table>

@@ -1,0 +1,12 @@
+{
+  "hw-square": {
+    "file": "figures/hw-square.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 360,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A square divided by allele frequencies p = 0.7 and q = 0.3 along each side. The areas show genotype frequencies: AA is p² = 0.49, each Aa rectangle is pq = 0.21 for a total 2pq = 0.42, and aa is q² = 0.09. A note says to start from the aa corner: q² is the only genotype you can read from phenotypes."
+  }
+}

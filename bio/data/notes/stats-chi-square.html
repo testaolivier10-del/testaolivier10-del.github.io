@@ -1,0 +1,62 @@
+<h2 id="why">Counts that do not quite match</h2>
+<p>A student releases 40 pill bugs into a chamber with a moist side and a dry side, identical in light and temperature. After 10 minutes, 29 are on the moist side and 11 on the dry side. If the animals had no preference, you would expect about 20 on each side, but not exactly 20: flip 40 coins and you seldom get exactly 20 heads. The <b>chi-square test</b> (χ²) tells you whether the gap between what you <b>observed</b> and what the null hypothesis leads you to <b>expect</b> is too large to blame on chance.</p>
+
+<h2 id="worked">Worked example: a two-category test</h2>
+<figure data-fig="chi-square-flow" id="fig-chi"><figcaption>Every step of the pill bug test, from expected counts to the decision.</figcaption></figure>
+<div class="worked">
+<ol>
+<li><b>Null hypothesis:</b> pill bugs show no preference between moist and dry, so they split equally.</li>
+<li><b>Expected counts:</b> 40 × ½ = 20 moist, 20 dry.</li>
+<li><b>Each term (o − e)² ÷ e:</b> moist (29 − 20)² ÷ 20 = 81 ÷ 20 = 4.05; dry (11 − 20)² ÷ 20 = 4.05.</li>
+<li><b>χ²</b> = Σ (o − e)² ÷ e = 4.05 + 4.05 = <b>8.1</b>.</li>
+<li><b>Degrees of freedom:</b> categories − 1 = 2 − 1 = 1.</li>
+<li><b>Critical value</b> at p = 0.05, df = 1: 3.84.</li>
+<li><b>Decision:</b> 8.1 &gt; 3.84, so p &lt; 0.05. Reject the null hypothesis: a split this uneven is unlikely to be chance.</li>
+</ol>
+</div>
+<p>The biology fits: pill bugs breathe through gill-like structures that must stay moist, so animals that end up in damp places lose less water. The test itself only says the distribution is not random; the biology suggests why.</p>
+
+<h2 id="table">Reading the critical value table</h2>
+<table class="compare">
+<caption>Critical values of χ² (from the formula sheet; first rows)</caption>
+<thead><tr><th scope="col">p</th><th scope="col">df 1</th><th scope="col">df 2</th><th scope="col">df 3</th><th scope="col">df 4</th><th scope="col">df 5</th></tr></thead>
+<tbody>
+<tr><th scope="row">0.05</th><td>3.84</td><td>5.99</td><td>7.81</td><td>9.49</td><td>11.07</td></tr>
+<tr><th scope="row">0.01</th><td>6.63</td><td>9.21</td><td>11.34</td><td>13.28</td><td>15.09</td></tr>
+</tbody>
+</table>
+<ul>
+<li><b>Degrees of freedom</b> = number of categories − 1 (not the number of individuals).</li>
+<li>The <b>significance level</b> is chosen before the test, almost always p = 0.05.</li>
+<li>If χ² &gt; critical value, the <b>p-value</b> is below the significance level: reject the null. If χ² ≤ critical value, fail to reject.</li>
+</ul>
+<p>The p-value is the probability of a deviation at least this large if the null hypothesis were true. It is not the probability that either hypothesis is true.</p>
+
+<h2 id="four">A four-category example</h2>
+<p>Sixty pill bugs in a chamber with four equal sections ended up: dark-moist 24, dark-dry 14, light-moist 13, light-dry 9. The null (no preference) predicts 15 in each.</p>
+<table class="compare">
+<caption>Working the chi-square for four sections</caption>
+<thead><tr><th scope="col">Section</th><th scope="col">o</th><th scope="col">e</th><th scope="col">(o − e)² ÷ e</th></tr></thead>
+<tbody>
+<tr><td>Dark, moist</td><td>24</td><td>15</td><td>81 ÷ 15 = 5.40</td></tr>
+<tr><td>Dark, dry</td><td>14</td><td>15</td><td>1 ÷ 15 = 0.07</td></tr>
+<tr><td>Light, moist</td><td>13</td><td>15</td><td>4 ÷ 15 = 0.27</td></tr>
+<tr><td>Light, dry</td><td>9</td><td>15</td><td>36 ÷ 15 = 2.40</td></tr>
+<tr><th scope="row">Total</th><td>60</td><td>60</td><td>χ² = 8.13</td></tr>
+</tbody>
+</table>
+<p>df = 4 − 1 = 3. At p = 0.05 the critical value is 7.81; 8.13 is greater, so reject the null. At the stricter p = 0.01 the critical value is 11.34, and 8.13 falls short, so 0.01 &lt; p &lt; 0.05. The dark-moist section supplies two thirds of χ²: that is where the animals clustered.</p>
+
+<h2 id="expected">Expected counts from any ratio</h2>
+<p>The null hypothesis does not have to be an equal split. If birds are expected to visit three feeders in proportion to their size, 50% : 30% : 20%, then 200 visits give expected counts of 100, 60 and 40. Observed 86, 74 and 40 give χ² = 1.96 + 3.27 + 0 = 5.23; with df = 2 the critical value is 5.99, so fail to reject. Check that your expected counts add up to the same total as your observed counts.</p>
+
+<h2 id="slips">Common slips</h2>
+<ul>
+<li>Using percentages or means instead of counts. Chi-square depends on how many individuals you counted: the same 72.5 : 27.5 split gives χ² = 8.1 with 40 animals and 81 with 400.</li>
+<li>Counting individuals instead of categories for df.</li>
+<li>Reading "χ² bigger than the critical value" as support for the null. It is the opposite.</li>
+<li>Writing "accept the null" or "prove". Say "reject" or "fail to reject".</li>
+</ul>
+
+<aside class="going-further"><h3>Going further: a good fit</h3>
+<p>A seed packet claimed equal numbers of red- and white-flowered plants. Of 100 plants, 54 were red and 46 white. χ² = (4² ÷ 50) + (4² ÷ 50) = 0.64, far below 3.84. Deviations this small happen most of the time by chance alone, so the data are consistent with the claim.</p></aside>

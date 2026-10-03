@@ -1,0 +1,53 @@
+<h2 id="why">Putting a number on "which way will water move?"</h2>
+<p>Water moves by osmosis from where its water potential (Ψ) is higher to where it is lower. Water potential has two parts: <b>solute potential</b> (Ψs), which dissolved particles make negative, and <b>pressure potential</b> (ΨP), which a cell wall pushing back on a swollen cell makes positive. The formula sheet gives you both equations:</p>
+<ul>
+<li>Ψ = ΨP + Ψs</li>
+<li>Ψs = −iCRT</li>
+</ul>
+<p>where <b>i</b> is the ionization constant, <b>C</b> the molar concentration (mol/L), <b>R</b> the pressure constant, 0.0831 L·bar/(mol·K), and <b>T</b> the temperature in kelvin (°C + 273). The answer comes out in bars.</p>
+
+<h2 id="worked">Worked example: a sucrose solution</h2>
+<div class="worked">
+<p><b>Problem:</b> find the water potential of 0.30 mol/L sucrose in an open beaker at 22 °C.</p>
+<ol>
+<li><b>i:</b> sucrose does not break apart in water, so i = 1.</li>
+<li><b>C:</b> 0.30 mol/L.</li>
+<li><b>T:</b> 22 + 273 = 295 K.</li>
+<li><b>Ψs</b> = −iCRT = −(1)(0.30 mol/L)(0.0831 L·bar/(mol·K))(295 K) = <b>−7.35 bars</b>.</li>
+<li><b>ΨP</b>: an open beaker adds no pressure, so ΨP = 0.</li>
+<li><b>Ψ</b> = ΨP + Ψs = 0 + (−7.35) = <b>−7.35 bars</b>, or −0.735 MPa (10 bars = 1 MPa).</li>
+</ol>
+</div>
+<p>Check the units: mol/L × L·bar/(mol·K) × K leaves bars. If your answer is positive, you dropped the minus sign; if it is near −0.5 bars, you probably used °C instead of kelvin.</p>
+
+<h2 id="i">The ionization constant: count the particles</h2>
+<table class="compare">
+<caption>Solute potential of three 0.1 mol/L solutions at 25 °C (298 K)</caption>
+<thead><tr><th scope="col">Solute</th><th scope="col">Particles per unit</th><th scope="col">i</th><th scope="col">Ψs = −iCRT</th></tr></thead>
+<tbody>
+<tr><td>Sucrose</td><td>1 (does not ionize)</td><td>1</td><td>−(1)(0.1)(0.0831)(298) = −2.48 bars</td></tr>
+<tr><td>NaCl</td><td>2 (Na⁺, Cl⁻)</td><td>2</td><td>−4.95 bars</td></tr>
+<tr><td>CaCl₂</td><td>3 (Ca²⁺, Cl⁻, Cl⁻)</td><td>3</td><td>−7.43 bars</td></tr>
+</tbody>
+</table>
+<p>Solute potential depends on how many particles are dissolved, not on how heavy or how charged they are. So equal molarity does not mean equal water potential. A bag that lets water but not solutes through, filled with 0.1 M sucrose and set in 0.1 M NaCl, loses water: the salt solution has twice the particles and the lower Ψ. And 0.2 M sucrose has the same Ψ as 0.1 M NaCl, because i × C is 0.2 for both. (Real salts ionize slightly less than completely, so the exam's i = 2 for NaCl is a convenient approximation.)</p>
+
+<h2 id="cells">Adding pressure potential: plant cells</h2>
+<figure data-fig="wp-calc" id="fig-wp"><figcaption>A turgid plant cell in an open beaker of sucrose solution. Water moves toward the more negative water potential.</figcaption></figure>
+<p>A plant cell has Ψs = −9.0 bars and, because its wall pushes back, ΨP = +3.0 bars. Its water potential is 3.0 + (−9.0) = −6.0 bars. Put it in 0.3 M sucrose at 22 °C (Ψ ≈ −7.4 bars) and water leaves the cell, moving from −6.0 toward −7.4 bars (<a class="figref" href="#fig-wp">see the diagram</a>). As water leaves, the cell pushes less on its wall, so ΨP falls, until the cell's Ψ matches the solution's. In pure water (Ψ = 0) the same cell would take in water, and its ΨP would rise as it became more turgid.</p>
+
+<h2 id="graph">Reading a potato-core experiment</h2>
+<p>Students soak potato cores in sucrose solutions of different molarities and record the percent change in mass. Percent change, not grams, because cores start at different masses. In one class the cores gained 5% in 0.2 M and lost 5% in 0.4 M, so the line crosses zero at about 0.30 M. At that concentration there is no net water movement: the solution's water potential equals the cells'. So the potato cells' Ψ is about the Ψ of 0.30 M sucrose at 22 °C, −7.35 bars.</p>
+<p>In more concentrated solutions (0.8 M has Ψ ≈ −19.6 bars) water leaves the cells and the cores lose mass; in pure water (Ψ = 0) they gain it.</p>
+
+<h2 id="slips">Checklist before you submit</h2>
+<ul>
+<li>Is T in kelvin (°C + 273)?</li>
+<li>Did you use the right i (1 for sucrose or glucose, about 2 for NaCl, about 3 for CaCl₂)?</li>
+<li>Is Ψs negative?</li>
+<li>Did you add ΨP (0 in an open container)?</li>
+<li>Does water move toward the more negative Ψ in your answer?</li>
+</ul>
+
+<aside class="going-further"><h3>Going further: temperature matters too</h3>
+<p>Because T is in the equation, the same solution has a more negative solute potential when warmer: 0.5 M sucrose is −12.2 bars at 20 °C (293 K) and −12.5 bars at 27 °C (300 K). The effect is small over everyday temperatures, which is why many problems simply give room temperature.</p></aside>

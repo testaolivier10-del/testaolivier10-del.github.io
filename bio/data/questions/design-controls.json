@@ -1,0 +1,491 @@
+{
+  "stimuli": {
+    "design-controls-s1": {
+      "kind": "setup",
+      "title": "The grease-spot test",
+      "text": "<p>Fats and oils (lipids) are hydrophobic: they soak into paper and do not evaporate, leaving a see-through (translucent) spot. Water also makes paper see-through, but only until it evaporates. A class rubbed each sample onto brown paper, waited 30 minutes, then held the paper up to a light.</p>",
+      "table": {
+        "caption": "Grease-spot results after 30 minutes of drying",
+        "cols": [
+          "Sample",
+          "Translucent spot after 30 min?"
+        ],
+        "rows": [
+          [
+            "Distilled water",
+            "No"
+          ],
+          [
+            "Vegetable oil",
+            "Yes, large"
+          ],
+          [
+            "Crushed potato chip",
+            "Yes"
+          ],
+          [
+            "Apple slice",
+            "No"
+          ],
+          [
+            "Crushed peanut",
+            "Yes, large"
+          ],
+          [
+            "Unknown white powder",
+            "Faint"
+          ]
+        ]
+      }
+    },
+    "design-controls-s2": {
+      "kind": "table",
+      "title": "A starch test that went wrong",
+      "text": "<p>Iodine solution turns blue-black when it meets starch and stays orange-brown otherwise. A student added three drops of iodine to each test tube below. All tubes were rinsed in the same tub of wash water before use.</p>",
+      "table": {
+        "caption": "Color of each tube after adding iodine",
+        "cols": [
+          "Tube",
+          "Contents",
+          "Color after iodine"
+        ],
+        "rows": [
+          [
+            "1",
+            "Starch solution",
+            "Blue-black"
+          ],
+          [
+            "2",
+            "Distilled water",
+            "Blue-black"
+          ],
+          [
+            "3",
+            "Potato extract",
+            "Blue-black"
+          ],
+          [
+            "4",
+            "Table sugar dissolved in water",
+            "Blue-black"
+          ],
+          [
+            "5",
+            "Vegetable oil",
+            "Pale blue-black film"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-design-controls-1",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "design-controls-s1",
+      "q": "Which sample is the negative control, and what possibility does it rule out?",
+      "options": [
+        "Distilled water; it rules out that the paper or the procedure makes a lasting spot without any fat.",
+        "Vegetable oil; it rules out that the test fails to detect fat on this paper on this day.",
+        "Apple slice; it rules out that foods from plants contain fat, since apples come from plants.",
+        "Distilled water; it rules out that the foods were contaminated with extra water before the test began on the paper."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A negative control should give no response. Water is treated exactly like the foods. Because it leaves no spot after 30 minutes, any lasting spot from a food cannot be blamed on wetness, the paper or the handling.",
+        "options": [
+          "Correct: expected negative, treated identically, rules out a false positive from the method.",
+          "Oil is the positive control; it rules out a false negative.",
+          "The apple is a test sample, not a control, and its result says nothing about other plant foods.",
+          "Water is the right sample, but it rules out a spot made by the method, not water in the foods."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-2",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "design-controls-s1",
+      "q": "Suppose the vegetable oil had left no spot. What could the class conclude about the apple's \"No\" result?",
+      "options": [
+        "Nothing reliable: the test failed to detect a known fat, so the apple could contain fat that was missed.",
+        "The apple contains no fat, because its result matches the result for the vegetable oil.",
+        "The apple contains more fat than the oil, because neither of them left a spot on the paper.",
+        "The apple contains no fat, because the water also left no spot, which shows that the negative control worked properly."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The positive control checks that the test can give a \"yes\". If a known fat gives \"no\", the test is not working today (wrong paper, too little sample, wiped off), so other \"no\" results cannot be trusted.",
+        "options": [
+          "Correct: a failed positive control makes negatives untrustworthy.",
+          "Matching a failed positive control shows the test is broken, not that the apple lacks fat.",
+          "Two blank results give no basis for ranking fat content.",
+          "A working negative control rules out false positives; it does nothing to rule out false negatives."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-3",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "design-controls-s1",
+      "q": "A student checks the paper after 2 minutes instead of 30 and records \"Yes\" for the apple slice. What most likely explains this result?",
+      "options": [
+        "The apple's juice, which is mostly water, had not yet evaporated, so wetness made a spot that would have faded.",
+        "The apple contains a large amount of fat, which slowly evaporates from the paper over the 30 minutes.",
+        "Water is hydrophobic, so the apple's water soaked into the paper and stayed there like an oil would.",
+        "Checking early made the test more sensitive, so the \"Yes\" at 2 minutes is the correct reading for the apple."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Water also makes paper translucent until it evaporates. Wetness is a factor that differs between juicy and dry foods, so reading early lets it produce a false positive. The 30-minute wait, checked by the water control, removes it.",
+        "options": [
+          "Correct: a temporary water spot, a false positive.",
+          "Fats do not evaporate at room temperature; that is why their spot lasts.",
+          "Water is polar and evaporates; lipids are the hydrophobic ones that stay.",
+          "Reading early adds false positives from water; the water control shows spots must last 30 minutes to count."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-4",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "design-controls-s1",
+      "q": "Which claim about the unknown powder is best supported, given both controls behaved as expected?",
+      "options": [
+        "The powder probably contains some fat, but less than the peanut, because its spot was faint rather than large.",
+        "The powder contains no fat, because a faint spot is closer to the water result than it is to the large spot made by the oil.",
+        "The powder is pure fat, because a lasting spot means the sample is made of lipid alone.",
+        "Nothing can be said, because the powder was not tested alongside a positive control."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With water blank and oil positive, a lasting faint spot points to a small amount of fat. The test is rough, so \"less than the peanut\" is as far as it goes.",
+        "options": [
+          "Correct: a cautious claim matched to a cautious test.",
+          "A lasting spot, however faint, is a positive result once the water control shows the method makes none.",
+          "A faint spot suggests a little fat, not a sample that is all fat.",
+          "The oil positive control was run in the same session, so it covers the powder too."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-5",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "design-controls-s2",
+      "q": "Which result shows that the experiment has a problem?",
+      "options": [
+        "Tube 2, because distilled water should stay orange-brown with iodine.",
+        "Tube 1, because starch solution should stay orange-brown with iodine.",
+        "Tube 3, because potato extract is expected to be free of starch.",
+        "Tube 5, because vegetable oil should turn fully blue-black."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Distilled water is the negative control. It has no starch, so it should stay orange-brown. A blue-black result means starch got in from somewhere.",
+        "options": [
+          "Correct: the negative control failed.",
+          "Starch solution is the positive control; blue-black is the expected result.",
+          "Potatoes store a lot of starch; blue-black is expected.",
+          "Oil is a lipid, not starch; it is not expected to turn blue-black."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-6",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "design-controls-s2",
+      "q": "What is the most likely cause of the blue-black color in the tubes of distilled water and sugar water?",
+      "options": [
+        "Starch carried over in the shared wash water coated every tube, contaminating them before the samples went in.",
+        "Table sugar is a polysaccharide made of glucose, so it reacts with iodine just as starch does.",
+        "Iodine turns blue-black on its own after several minutes in a tube, whether or not starch is present in the solution.",
+        "Distilled water breaks down into starch when iodine is added, by dehydration synthesis of water molecules."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Every tube was rinsed in the same tub. Starch from the starch-solution tube or potato extract in that water would coat each tube, so even water and sugar test positive. The failed negative control reveals the contamination.",
+        "options": [
+          "Correct: a shared source of starch explains positives in tubes that should be negative.",
+          "Table sugar is sucrose, a disaccharide (glucose + fructose), not a polysaccharide; it does not give the starch color.",
+          "If iodine alone turned blue-black, it would be useless as a starch test; the positive and negative colors differ.",
+          "Water does not turn into starch; dehydration synthesis joins monomers such as glucose and needs them to be present."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-7",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "design-controls-s2",
+      "q": "What should the student do next?",
+      "options": [
+        "Repeat the whole test with new, separately rinsed tubes, including both controls.",
+        "Keep the results for tubes 3 and 5, since those are the foods of real interest here.",
+        "Drop tube 2 from the report, since a control is not part of the actual results.",
+        "Report that sugar contains starch, since tube 4 turned the same color as tube 1."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A failed negative control means every result may be a false positive. The fix is to remove the cause (shared wash water) and rerun everything with both controls.",
+        "options": [
+          "Correct: remove the cause, repeat with controls.",
+          "If the tubes were contaminated, the food results are untrustworthy too.",
+          "Hiding a failed control hides the problem; the control is what reveals it.",
+          "Tube 4 is explained by contamination, so it is not evidence that sugar contains starch."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-8",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "design-controls-s2",
+      "q": "In this experiment, what role does tube 1 (starch solution) play?",
+      "options": [
+        "Positive control: it shows the iodine can detect starch.",
+        "Negative control: it shows what a starch-free tube looks like.",
+        "Independent variable: it is the factor the student changed.",
+        "Test sample: it is one of the foods being identified."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A sample known to contain starch should turn blue-black; it confirms the iodine is working.",
+        "options": [
+          "Correct.",
+          "The negative control is distilled water, which lacks starch.",
+          "The independent variable is the type of sample, not one tube.",
+          "Starch solution is a known reference, not an unknown food."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-9",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A student tests whether saturated fats melt at higher temperatures than unsaturated fats. She buys butter from one store and olive oil from another, and heats each in a different pan on a different stove. Which factor is most likely to be confounding?",
+      "options": [
+        "The pans and stoves heat at different speeds, which could change the measured melting point.",
+        "The type of fat, because saturated and unsaturated fats differ in their structure.",
+        "The temperature at which each fat melts, which the student reads off a thermometer.",
+        "The stores where the fats were bought, because one of them sells more expensive brands."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A confounding factor differs between groups and could affect the dependent variable. Different pans and stoves change how heat reaches each fat and how the temperature is read, so a difference could come from them rather than from the type of fat.",
+        "options": [
+          "Correct: it differs between groups and plausibly affects the result.",
+          "Type of fat is the independent variable, the factor being tested.",
+          "Melting temperature is the dependent variable, the measured result.",
+          "Price differs, but price has no plausible effect on melting point; a confounding factor must also be able to change the result."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-10",
+      "type": "multi",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A test for fat uses a red dye that dissolves into lipids and colors them. Select ALL samples that would make a good positive control.",
+      "options": [
+        "Vegetable oil",
+        "Distilled water",
+        "The red dye dissolved in water",
+        "Table sugar dissolved in water",
+        "The unknown food being tested"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "A positive control is a sample known to contain what the test detects. Of these, only vegetable oil is a known fat.",
+        "options": [
+          "Correct: a known fat.",
+          "Water has no lipid; it is a negative control.",
+          "Dye in water contains no lipid, so it shows nothing about whether the dye can color fat.",
+          "Sugar water is a carbohydrate solution with no fat; another negative.",
+          "An unknown cannot be a control, because its result is what you are trying to find out."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-11",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "An exam answer says: \"The control is the tube of water, because it is the control.\" Which addition would best earn the point for justifying the control?",
+      "options": [
+        "\"…because water contains no starch, so if it stays orange-brown, color changes in the food tubes are not caused by the tubes or the iodine.\"",
+        "\"…because water is the standard control in most biology experiments, so the teacher will expect to see a water tube listed in the data table.\"",
+        "\"…because water is a clear liquid, so it is easy to see whether the color of the iodine changes.\"",
+        "\"…because the control has to be kept the same as the other tubes, so it should contain nothing of its own.\""
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Justifying a control means saying what it rules out: water lacks starch, so a negative result there shows the materials and method do not create a positive by themselves.",
+        "options": [
+          "Correct: names what the control rules out.",
+          "Habit is not a reason, and water is not the right control for every test.",
+          "Easy visibility is convenient, but it says nothing about what the control rules out.",
+          "The control differs from the test tubes in exactly one respect (no sample), and this answer does not say what that shows."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-12",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "To test whether a new paper detects fat more reliably than ordinary brown paper, a student uses peanut on both papers. What is the best negative control?",
+      "options": [
+        "Distilled water rubbed onto both kinds of paper in the same way",
+        "Vegetable oil rubbed onto both kinds of paper in the same way",
+        "Peanut rubbed onto the new paper and read after 2 minutes",
+        "A blank sheet of each paper that is left untouched on the bench"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Water treated the same way checks that neither paper produces a lasting spot from the handling or from moisture.",
+        "options": [
+          "Correct: same handling, no fat, both papers.",
+          "Oil is a known fat: a positive control.",
+          "Changing the reading time adds a second difference; it is not a control.",
+          "An untouched sheet skips the rubbing and wetting, so it would not reveal a spot made by the procedure."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-13",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "recall",
+      "diff": 1,
+      "q": "What does a positive control rule out?",
+      "options": [
+        "That a negative result happened because the test was not working",
+        "That a positive result happened because of contamination",
+        "That the independent variable was changed between groups",
+        "That repeated trials gave different results by chance"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A positive control is known to give the response, so it shows the test can detect it under the conditions used.",
+        "options": [
+          "Correct: it rules out false negatives.",
+          "That is the job of a negative control (false positives).",
+          "Changing the independent variable is the point of the experiment.",
+          "Repeats deal with chance variation, not a control."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-14",
+      "type": "multi",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Two groups compared how much fat is in two brands of chips by weighing the grease spot each made. Group 1 used 5.0 g of brand X; group 2 used 2.0 g of brand Y and read the paper an hour later. Select ALL factors that are confounding.",
+      "options": [
+        "Mass of chips used",
+        "Time before the paper was read",
+        "Brand of chips",
+        "Mass of the grease spot",
+        "Type of brown paper used by both groups"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Both mass of sample and reading time differ between the groups and could change the grease spot, so a difference cannot be credited to brand alone.",
+        "options": [
+          "Confounding: more chips make a bigger spot regardless of brand.",
+          "Confounding: reading later lets water spots fade, changing what counts.",
+          "Brand is the independent variable, the factor being compared.",
+          "Spot mass is the dependent variable, the measured result.",
+          "The paper is the same for both groups, so it is controlled."
+        ]
+      }
+    },
+    {
+      "id": "bio-design-controls-15",
+      "type": "single",
+      "unit": "skills-design",
+      "topic": "design-controls",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a new run of the grease-spot test, the water leaves a lasting see-through spot and so does every food. Which explanation, if true, would account for both results?",
+      "options": [
+        "The water bottle had a film of oil from an unwashed funnel, so every sample carried some lipid.",
+        "The foods contained more fat than usual, because they were bought from a different store this time.",
+        "The paper was too thin, so it could not show spots from any sample, including the oil.",
+        "Water is a lipid in small amounts, which is why water spots can last on brown paper."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A failed negative control means something other than the sample is making the response. An oil film in the water would put lipid on every spot, including the water control.",
+        "options": [
+          "Correct: contamination explains the failed negative control and the universal positives.",
+          "Fattier foods would not explain the water spot.",
+          "This predicts no spots at all, the opposite of what was seen.",
+          "Water is not a lipid; it evaporates from paper."
+        ]
+      }
+    }
+  ]
+}

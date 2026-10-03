@@ -1,0 +1,566 @@
+{
+  "stimuli": {
+    "stats-plots-s1": {
+      "kind": "graph",
+      "title": "Heating two masses of water",
+      "text": "<p>Students heated 100 g and 200 g of water, each starting at 20 °C, on identical hot plates set to the same power, and recorded the temperature every minute.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "min",
+          "min": 0,
+          "max": 5,
+          "step": 1
+        },
+        "y": {
+          "label": "Temperature",
+          "unit": "°C",
+          "min": 0,
+          "max": 60,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "100 g water",
+            "points": [
+              [
+                0,
+                20
+              ],
+              [
+                1,
+                26
+              ],
+              [
+                2,
+                32.1
+              ],
+              [
+                3,
+                37.9
+              ],
+              [
+                4,
+                44
+              ],
+              [
+                5,
+                50.1
+              ]
+            ]
+          },
+          {
+            "name": "200 g water",
+            "points": [
+              [
+                0,
+                20
+              ],
+              [
+                1,
+                23
+              ],
+              [
+                2,
+                26.1
+              ],
+              [
+                3,
+                28.9
+              ],
+              [
+                4,
+                32
+              ],
+              [
+                5,
+                35
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "stats-plots-s2": {
+      "kind": "graph",
+      "title": "Breaking a polymer apart",
+      "text": "<p>Two tubes each held 50 mg of the same polymer dissolved in water at 37 °C. An enzyme that speeds up hydrolysis of the polymer was added to one tube; the other got the same volume of water. Every 2 minutes a sample was tested for the mass of free monomers released.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time",
+          "unit": "min",
+          "min": 0,
+          "max": 10,
+          "step": 2
+        },
+        "y": {
+          "label": "Monomer released",
+          "unit": "mg",
+          "min": 0,
+          "max": 60,
+          "step": 10
+        },
+        "series": [
+          {
+            "name": "Enzyme added",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                18
+              ],
+              [
+                4,
+                34
+              ],
+              [
+                6,
+                44
+              ],
+              [
+                8,
+                49
+              ],
+              [
+                10,
+                50
+              ]
+            ]
+          },
+          {
+            "name": "Water added",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0.5
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                6,
+                1.4
+              ],
+              [
+                8,
+                2
+              ],
+              [
+                10,
+                2.5
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-plots-1",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-plots-s1",
+      "q": "Calculate the slope of the 100 g line between 0 and 5 minutes. Give your answer in °C per minute to one decimal place.",
+      "numeric": {
+        "answer": 6,
+        "tol": 0.05,
+        "unit": "°C/min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Slope = change in y ÷ change in x = (50.1 − 20.0) °C ÷ (5 − 0) min = 30.1 ÷ 5 = 6.02, which rounds to 6.0 °C/min."
+      }
+    },
+    {
+      "id": "bio-stats-plots-2",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-plots-s1",
+      "q": "Estimate the temperature of the 100 g sample at 2.5 minutes by reading between the measured points. Give your answer in °C to the nearest whole degree.",
+      "numeric": {
+        "answer": 35,
+        "tol": 1,
+        "unit": "°C",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "This is interpolation. At 2 min the 100 g sample was 32.1 °C and at 3 min 37.9 °C; halfway between is (32.1 + 37.9) ÷ 2 = 35.0 °C."
+      }
+    },
+    {
+      "id": "bio-stats-plots-3",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-plots-s1",
+      "q": "A student extends the 100 g line and predicts the water will be at 110 °C after 15 minutes. What is the best evaluation of this prediction?",
+      "options": [
+        "It is unreliable: it extrapolates far past the data, and at normal air pressure liquid water stops warming near 100 °C as heat goes into boiling.",
+        "It is reliable, because the points lie on a straight line, and a straight line drawn through data continues at the same slope however far it is extended.",
+        "It is unreliable, because the slope should be measured from the 200 g line, which is the larger and more representative sample.",
+        "It is reliable, as long as the student uses the slope from the first minute alone, when the hot plate is coldest."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Extrapolation assumes the pattern continues outside the measured range. Here it cannot: once water reaches its boiling point, added heat breaks hydrogen bonds to turn liquid into vapor, and the temperature levels off near 100 °C.",
+        "options": [
+          "Correct: extrapolation beyond the data, and a physical limit at the boiling point.",
+          "Data only show the pattern over the measured range; nothing guarantees a line keeps going.",
+          "The 200 g line has its own slope; it does not describe the 100 g sample.",
+          "Picking one minute does not fix the problem of predicting far beyond the measured range."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-4",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-plots-s1",
+      "q": "The slope of the 200 g line is about half the slope of the 100 g line. Which explanation fits?",
+      "options": [
+        "Both hot plates supply heat at the same pace, and twice the mass of water needs twice the heat to rise by each degree.",
+        "The 200 g water has a lower specific heat than the 100 g water, so each gram of it warms more slowly when the same heat is supplied.",
+        "The 200 g water has fewer hydrogen bonds per gram, so less of the heat it receives is used to warm it up.",
+        "The slope of a line depends on how many points are plotted, and both lines were given six points each."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Specific heat is per gram. With equal heat input per minute, doubling the mass halves the temperature rise per minute: 6 °C/min becomes about 3 °C/min.",
+        "options": [
+          "Correct: same heat in, twice the grams to warm.",
+          "Specific heat is a property of water per gram; it is the same in both beakers.",
+          "Water has the same hydrogen bonding per gram whatever the amount.",
+          "Slope depends on rise and run, not on the number of points."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-5",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-plots-s2",
+      "q": "Which statement best describes the data for the tube with enzyme?",
+      "options": [
+        "Monomer mass rose quickly at first, then rose more and more slowly and leveled off near 50 mg.",
+        "Monomer mass rose by the same amount in each 2-minute interval until the end of the run.",
+        "Monomer mass rose slowly at first, then rose faster and faster as the run went on.",
+        "Monomer mass rose to a peak at 8 minutes and then began to fall as monomers were joined again."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Increases per 2 minutes: 18, 16, 10, 5, 1 mg. The curve is steep at first and flattens as it approaches 50 mg.",
+        "options": [
+          "Correct: the increments shrink and the curve plateaus.",
+          "The increments shrink from 18 mg to 1 mg; they are not equal.",
+          "This is the reverse of the pattern: the biggest increases come first.",
+          "The mass never falls: 49 mg at 8 min, 50 mg at 10 min."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-plots-s2",
+      "q": "Calculate the slope of the enzyme curve between 0 and 4 minutes, in mg of monomer per minute, to one decimal place.",
+      "numeric": {
+        "answer": 8.5,
+        "tol": 0.05,
+        "unit": "mg/min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Slope = (34 − 0) mg ÷ (4 − 0) min = 8.5 mg/min."
+      }
+    },
+    {
+      "id": "bio-stats-plots-7",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-plots-s2",
+      "q": "Which is the best explanation for why the enzyme curve levels off near 50 mg?",
+      "options": [
+        "The tube started with 50 mg of polymer, so once nearly all of it is broken into monomers there is little left to release.",
+        "The enzyme is used up after each reaction it speeds up, so by 10 minutes there is no enzyme left in the tube to break bonds.",
+        "Water molecules are used up after 6 minutes, so hydrolysis stops because nothing is left to add across bonds.",
+        "The monomers start joining back together by hydrolysis, which balances the breakdown after about 8 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The maximum possible product is set by the polymer available: 50 mg of polymer can release at most about 50 mg of monomers. As the polymer runs out, each interval releases less.",
+        "options": [
+          "Correct: the curve approaches the total amount available.",
+          "Each enzyme molecule comes out of the reaction unchanged and can act again and again.",
+          "The polymer is dissolved in water, so water is in huge excess and does not run out.",
+          "Joining monomers removes water (dehydration synthesis); hydrolysis is the breaking reaction."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "3.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-plots-s2",
+      "q": "What is the purpose of the tube that received water instead of enzyme?",
+      "options": [
+        "It shows how much monomer is released without the enzyme, so the enzyme's effect can be measured against it.",
+        "It keeps the volume in both tubes the same, which is its main role in the experiment that was run.",
+        "It shows how fast water by itself breaks the enzyme down, so the enzyme dose can be corrected.",
+        "It provides extra monomers that the enzyme in the other tube can use to build the polymer again."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "It is the control group: everything matches except the enzyme. The small slow rise (2.5 mg in 10 min) is the baseline the enzyme curve is compared with.",
+        "options": [
+          "Correct: a baseline for comparison.",
+          "Matching volume is part of good design, but the tube's main job is to show the result with no enzyme.",
+          "The water tube has no enzyme in it, so it cannot show the enzyme breaking down.",
+          "The tubes are separate; nothing passes from one to the other."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-9",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student measured how much monomer four different enzymes (A, B, C and D) each released from the same polymer in 10 minutes. Which graph type best displays the results?",
+      "options": [
+        "Bar graph, one bar per enzyme",
+        "Line graph, joining the four enzymes in order",
+        "Histogram of the four masses of monomer released",
+        "Scatterplot of enzyme letter against mass released"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The independent variable (enzyme type) is categorical: there is nothing \"between\" enzyme A and enzyme B. Separate bars compare categories.",
+        "options": [
+          "Correct: categories become separate bars.",
+          "A line implies values between the points, which do not exist for categories.",
+          "A histogram shows how often values fall in ranges of one variable; it does not compare named groups.",
+          "A scatterplot needs two measured numbers; enzyme identity is a category, not a number."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-10",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A student plans a graph of water temperature (°C) every 30 seconds while a beaker is heated. Select ALL the choices that are correct for this graph.",
+      "options": [
+        "Temperature on the x-axis and time on the y-axis",
+        "A line graph, because time is continuous",
+        "A bar for each reading, because each reading is a separate category",
+        "Axis scales that start at the first and last values recorded, spaced by the readings",
+        "Each axis labeled with the quantity and its unit, for example \"Time (s)\""
+      ],
+      "correct": [
+        1,
+        4
+      ],
+      "why": {
+        "correct": "Time is the independent variable (x-axis), it is continuous (line graph), and each axis needs a label with units. Scales must be evenly spaced numbers, not just the recorded values.",
+        "options": [
+          "Reversed: time is set by the student (independent, x-axis) and temperature is measured (dependent, y-axis).",
+          "Correct: a continuous independent variable suits a line graph.",
+          "Readings at different times are points along a continuous scale, not categories.",
+          "A scale must be even (for example every 30 s); marking only recorded values can make the spacing uneven.",
+          "Correct: a label and a unit on each axis."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-11",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Across 40 lakes, lakes with more plant growth along the shore also had warmer surface water. A student concludes that plant growth warms lakes. What is the best response?",
+      "options": [
+        "The data show a correlation; a third factor, such as more sunlight on shallow lakes, could raise both, so an experiment is needed.",
+        "The conclusion is correct, because a strong positive correlation between two measured variables shows that the first variable causes the second one.",
+        "The conclusion is backward: the data prove that warm water causes plant growth, since temperature is measured in °C.",
+        "The data are useless, because a study of lakes has no independent variable and so it is unable to show a relationship of any kind."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A correlation means two variables change together. It does not show which (if either) causes the other; another factor can drive both. Testing causation needs a controlled experiment in which one factor is changed and others are held constant.",
+        "options": [
+          "Correct: correlation, possible third factor, test with an experiment.",
+          "Correlation does not establish causation.",
+          "The data do not prove either direction; the units of a variable say nothing about cause.",
+          "Observational data can show a relationship (a correlation); they just cannot by themselves show cause."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-12",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "On a scatterplot of mass of water (g) against time to boil (min) for 12 beakers, the points rise from lower left to upper right and lie close to a straight trend line. What does this show?",
+      "options": [
+        "A strong positive correlation: beakers with more water tended to take longer to boil.",
+        "A strong negative correlation: beakers with more water tended to boil sooner.",
+        "No correlation, because the points do not touch the trend line exactly.",
+        "Each beaker took the same time to boil, because the points form a straight line."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Points rising left to right show a positive correlation; points close to the trend line show a strong one.",
+        "options": [
+          "Correct.",
+          "A negative correlation would slope down from upper left to lower right.",
+          "A trend line summarizes the pattern; points cluster around it without touching it exactly.",
+          "A rising line means boiling time increases with mass, not that it is constant."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-13",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.A",
+      "level": "analyze",
+      "diff": 3,
+      "fixed": true,
+      "q": "A student's y-axis for temperature is marked 20, 25, 35, 40, 60 °C at equal spacing, one mark for each reading she took. What is wrong, and what does it do to the graph?",
+      "options": [
+        "The scale is uneven, so equal distances stand for different temperature changes and the shape of the curve is distorted.",
+        "Nothing is wrong, because each recorded value appears on the axis, so a reader can find the exact temperature of each point.",
+        "The scale should start at 0 °C; any axis that starts above zero is an error.",
+        "The temperatures should be on the x-axis, because they are the numbers that were recorded."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Equal spacing must mean equal steps (for example every 10 °C). Here one gap is 5 °C and another 20 °C, so a steady warming would look bumpy and slopes cannot be compared.",
+        "options": [
+          "Correct: an uneven scale distorts the curve.",
+          "Showing the recorded values does not make up for a scale whose steps are unequal.",
+          "An axis may start above zero if it is labeled clearly and the scale is even.",
+          "Temperature is the measured response here, so it belongs on the y-axis."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-14",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "A student measures the mass of 60 seeds and wants to show how many seeds fall in each 0.1 g range. Which graph type is this?",
+      "options": [
+        "Histogram",
+        "Line graph",
+        "Scatterplot",
+        "Pie chart of seed masses"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A histogram shows how often values of one variable fall into each range (bin).",
+        "options": [
+          "Correct.",
+          "A line graph shows change along a continuous independent variable.",
+          "A scatterplot pairs two measured variables for each individual.",
+          "A pie chart shows parts of a whole and does not show a distribution over ranges."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-plots-15",
+      "type": "order",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "4.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "Put the steps for building a graph from a data table in order.",
+      "options": [
+        "Decide which variable is independent and which is dependent.",
+        "Choose the graph type from the kind of independent variable.",
+        "Draw and label the axes with quantities and units, using even scales that fit the data.",
+        "Plot the points or bars for each group.",
+        "Add a key for the groups and a title, and draw a trend line if one is needed."
+      ],
+      "why": {
+        "correct": "Variables decide the axes and the graph type; axes and scales come before plotting; the key, title and trend line finish the graph."
+      }
+    },
+    {
+      "id": "bio-stats-plots-16",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-plots",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A trend line on a graph of monomer released (mg) against time (min) passes through (3, 14) and (9, 41). Calculate its slope in mg per minute, to one decimal place.",
+      "numeric": {
+        "answer": 4.5,
+        "tol": 0.05,
+        "unit": "mg/min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Slope = (41 − 14) mg ÷ (9 − 3) min = 27 ÷ 6 = 4.5 mg/min. Use two points on the line, not data points off it."
+      }
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "topic": "stats-plots",
+  "hook": "<p>A table of 12 numbers hides its story; the same numbers on a graph show it at a glance: a steady climb, a curve that flattens, two groups that pull apart. On the exam you will both read graphs and build one by hand, and points are lost for missing units and uneven scales far more often than for the biology.</p>",
+  "prereq": [
+    {
+      "q": "In an experiment on how temperature affects evaporation, which is the dependent variable?",
+      "options": [
+        "Mass of water lost",
+        "Temperature of the cabinet",
+        "Size of the dish"
+      ],
+      "correct": 0,
+      "why": "The dependent variable is the measured result: mass lost. Temperature is set (independent); dish size is held constant.",
+      "review": "design-variables"
+    },
+    {
+      "q": "Which reaction breaks a polymer into monomers by adding water?",
+      "options": [
+        "Hydrolysis",
+        "Dehydration synthesis",
+        "Evaporation"
+      ],
+      "correct": 0,
+      "why": "Hydrolysis adds a water molecule across a bond, splitting it. Dehydration synthesis does the reverse, removing water to join monomers.",
+      "review": "macromolecules-intro"
+    }
+  ],
+  "figure": {
+    "figure": "graph-anatomy",
+    "caption": "Every graph needs a title, labeled axes with units, even scales and a key. The triangle shows the slope of the 100 g line: rise ÷ run = 30 °C ÷ 5 min = 6 °C/min."
+  },
+  "chain": [
+    {
+      "cause": "You identify the independent variable (time) and the dependent variable (temperature).",
+      "effect": "Time goes on the x-axis and temperature on the y-axis."
+    },
+    {
+      "cause": "Time is continuous: there are values between every pair of readings.",
+      "effect": "A line graph fits; categories such as \"enzyme A, B, C\" would need a bar graph instead."
+    },
+    {
+      "cause": "Equal distances on an axis must stand for equal amounts.",
+      "effect": "You choose an even scale (every 10 °C, every 1 min) that fills most of the grid and label each axis with its unit."
+    },
+    {
+      "cause": "Two groups are plotted on one set of axes.",
+      "effect": "A key is needed so a reader knows which line is 100 g and which is 200 g."
+    },
+    {
+      "cause": "The points form a pattern you want to describe numerically.",
+      "effect": "You draw a trend line and find its slope (rise ÷ run, here 6 °C/min) to compare how steeply the groups change."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> 100 g of water: 20.0 °C at 0 min, 50.1 °C at 5 min. Slope = (50.1 − 20.0) ÷ (5 − 0) = 6.0 °C/min. The 200 g line rises 15 °C in 5 min: 3.0 °C/min, half as steep.",
+    "Graph choice: <b>line graph</b> for a continuous independent variable, <b>bar graph</b> for categories, <b>scatterplot</b> for two measured variables, <b>histogram</b> for how one variable is distributed.",
+    "Reading between points is <b>interpolation</b> (usually safe); reading beyond them is <b>extrapolation</b> (risky: water heated past 100 °C boils instead of getting hotter).",
+    "A <b>correlation</b> shows two variables change together. It does not show that one causes the other; a controlled experiment tests that."
+  ],
+  "misconception": {
+    "wrong": "Each axis should be marked with the exact values you recorded.",
+    "right": "Each axis needs an even scale, where equal distances mean equal amounts. Recorded values are plotted as points on that scale; marking them as the scale distorts the shape of the graph."
+  },
+  "check": [
+    "bio-stats-plots-1",
+    "bio-stats-plots-2",
+    "bio-stats-plots-3",
+    "bio-stats-plots-4",
+    "bio-stats-plots-9",
+    "bio-stats-plots-11",
+    "bio-stats-plots-13"
+  ],
+  "summary": "<p>Put the independent variable on the x-axis and the dependent variable on the y-axis, each labeled with units on an even scale. Choose a line graph for a continuous independent variable, a bar graph for categories, a scatterplot for two measured variables and a histogram for a distribution. Add a key for groups. The slope (rise ÷ run, with units) describes how steeply a line changes; interpolate with care and extrapolate rarely; and remember that correlation is not causation.</p>",
+  "connections": [
+    {
+      "href": "../tools/graph-builder.html",
+      "label": "Tool: graph builder"
+    },
+    {
+      "href": "design-variables.html",
+      "label": "Skill: independent and dependent variables"
+    }
+  ]
+}

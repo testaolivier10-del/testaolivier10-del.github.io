@@ -89,6 +89,17 @@ person decides; lessons follow the "meanwhile" line.
 - **extinction-placement** (open). The 2025 CED reportedly dropped the Extinction topic; the map
   teaches extinction in 7.6 (needed by fossils, trees and adaptive radiation). Confirm with the
   official CED (see ced-verify).
+- **hw-chi-square-df** (open). A chi-square test of genotype counts against Hardy-Weinberg
+  expectations has 3 − 1 = 2 df by the usual goodness-of-fit rule, but 1 df when p is estimated
+  from the same sample (statistics texts). Course materials differ. Meanwhile:
+  `stats-hardy-weinberg` explains both and its data are chosen so both give the same decision
+  (χ² = 11.6), with a "For your exam" box; no item hinges on the choice.
+- **ci-two-se** (open). The skills topics use 95% CI ≈ x̄ ± 2SE, as exam materials do; for small
+  samples (n = 4-9 in our items) the exact t multiplier is 2.3-3.2, so true intervals are wider.
+  Meanwhile: the notes say "the exam uses 2" once (`stats-confidence-intervals`); items use 2SE.
+- **nacl-ionization** (open). Items use i = 2 for NaCl and i = 3 for CaCl₂ (formula-sheet
+  convention); real solutions ionize slightly less than completely. Meanwhile: the notes call it a
+  convenient approximation (`stats-water-potential`).
 
 - **membrane-potential-origin** (open, 2.6). Most of the resting membrane potential comes from K⁺
   leaking out through open channels; the pump's 3:2 ratio adds only a few millivolts. Exam

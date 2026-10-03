@@ -1,0 +1,405 @@
+{
+  "stimuli": {
+    "stats-hardy-weinberg-s1": {
+      "kind": "table",
+      "title": "Flower color in a meadow",
+      "text": "<p>In a large, randomly mating population of a wildflower, purple (allele A) is completely dominant to white (allele a). A survey of 400 plants found the following. Assume the population is in Hardy-Weinberg equilibrium for this gene.</p>",
+      "table": {
+        "caption": "Flower color counts",
+        "cols": [
+          "Phenotype",
+          "Number of plants"
+        ],
+        "rows": [
+          [
+            "Purple",
+            "364"
+          ],
+          [
+            "White",
+            "36"
+          ],
+          [
+            "Total",
+            "400"
+          ]
+        ]
+      }
+    },
+    "stats-hardy-weinberg-s2": {
+      "kind": "table",
+      "title": "Genotypes in a small island population",
+      "text": "<p>Researchers genotyped 100 lizards on a small island for a gene with two alleles, B and b. Critical values of χ²: at p = 0.05, df 1 = 3.84, df 2 = 5.99.</p>",
+      "table": {
+        "caption": "Observed genotype counts",
+        "cols": [
+          "Genotype",
+          "BB",
+          "Bb",
+          "bb",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Number of lizards",
+            "50",
+            "30",
+            "20",
+            "100"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-stats-hardy-weinberg-1",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-hardy-weinberg-s1",
+      "q": "Calculate q, the frequency of the white allele (a). Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.3,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "White plants are aa, so q² = 36 ÷ 400 = 0.09. q = √0.09 = 0.30."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-2",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-hardy-weinberg-s1",
+      "q": "How many of the 400 plants are expected to be heterozygous (Aa)? Give a whole number.",
+      "numeric": {
+        "answer": 168,
+        "tol": 0.5,
+        "unit": "plants",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "p = 1 − 0.30 = 0.70. 2pq = 2 × 0.70 × 0.30 = 0.42. 0.42 × 400 = 168 plants."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-3",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-hardy-weinberg-s1",
+      "q": "A student says p = 364 ÷ 400 = 0.91. What is wrong with this?",
+      "options": [
+        "364 ÷ 400 is the frequency of purple plants, which includes both AA and Aa genotypes, not the frequency of the A allele.",
+        "Nothing is wrong: the dominant allele frequency equals the fraction of plants that show the dominant phenotype.",
+        "The student should have divided by 800, because each plant carries two copies of the gene for flower color.",
+        "The student should have used 36 ÷ 364, comparing white plants with purple plants rather than with the total."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Purple plants are AA (p²) plus Aa (2pq): 0.49 + 0.42 = 0.91. The allele frequency p is 0.70. Start from the recessive class, the one phenotype with a single genotype.",
+        "options": [
+          "Correct.",
+          "Phenotype frequency (0.91) is not allele frequency (0.70) for a dominant trait.",
+          "Counting alleles needs genotype counts; purple plants' genotypes are unknown, so dividing phenotypes by 800 does not work.",
+          "A ratio of white to purple is not a frequency of anything in the formula."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-4",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "3.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "stats-hardy-weinberg-s1",
+      "q": "Why must the population be assumed to be in Hardy-Weinberg equilibrium for these calculations?",
+      "options": [
+        "Only in equilibrium does the white-flower frequency equal q², so q can be found from it.",
+        "Equilibrium guarantees that the population contains exactly 400 plants each generation.",
+        "Equilibrium makes the purple allele dominant, which is needed to tell the phenotypes apart.",
+        "Equilibrium means the population has no heterozygotes, so the genotypes can be counted."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "q² = frequency of aa holds when genotypes are in Hardy-Weinberg proportions. If, say, white plants were selected against or mating were not random, q² would not equal the white frequency.",
+        "options": [
+          "Correct.",
+          "Equilibrium concerns allele and genotype frequencies, not population size.",
+          "Dominance is a property of the alleles, not of equilibrium.",
+          "At equilibrium heterozygotes are expected at frequency 2pq."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-5",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-hardy-weinberg-s2",
+      "q": "Calculate p, the frequency of allele B, from the genotype counts. Give your answer to two decimal places.",
+      "numeric": {
+        "answer": 0.65,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Count alleles: 100 lizards carry 200 alleles. B alleles = 2 × 50 (BB) + 30 (Bb) = 130. p = 130 ÷ 200 = 0.65."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-6",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "stats-hardy-weinberg-s2",
+      "q": "How many Bb lizards are expected under Hardy-Weinberg equilibrium? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 45.5,
+        "tol": 0.05,
+        "unit": "lizards",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "p = 0.65, q = 0.35. 2pq = 2 × 0.65 × 0.35 = 0.455. 0.455 × 100 = 45.5 lizards."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-7",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-hardy-weinberg-s2",
+      "q": "Expected counts are BB 42.25, Bb 45.5, bb 12.25. Calculate χ² to two decimal places.",
+      "numeric": {
+        "answer": 11.6,
+        "tol": 0.03,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "BB: (50 − 42.25)² ÷ 42.25 = 1.42. Bb: (30 − 45.5)² ÷ 45.5 = 5.28. bb: (20 − 12.25)² ÷ 12.25 = 4.90. χ² = 11.60."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-8",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-hardy-weinberg-s2",
+      "q": "The chi-square value exceeds the critical value. Which conclusion and explanation fit the data best?",
+      "options": [
+        "Reject Hardy-Weinberg equilibrium: there are fewer heterozygotes than expected, which fits inbreeding in a small island population.",
+        "Fail to reject equilibrium: the allele frequencies of 0.65 and 0.35 add up to 1, which shows the population is stable.",
+        "Reject equilibrium: there are more heterozygotes than expected, which fits lizards choosing mates unlike themselves.",
+        "Reject equilibrium: the population has too few individuals for any Hardy-Weinberg test to be carried out with confidence on an island."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Observed Bb (30) is far below expected (45.5), while both homozygotes are above expected. Mating between relatives in a small population raises homozygosity, which matches this pattern.",
+        "options": [
+          "Correct: reject, with a mechanism matched to the pattern.",
+          "p + q = 1 by definition in any population; it says nothing about equilibrium.",
+          "There are fewer heterozygotes than expected, not more.",
+          "A sample of 100 is enough for the test; the problem is the poor fit."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-9",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "stats-hardy-weinberg-s2",
+      "q": "Teachers disagree whether this test has 1 or 2 degrees of freedom. Why does it not change the decision here?",
+      "options": [
+        "χ² = 11.60 is larger than both 3.84 (df 1) and 5.99 (df 2), so equilibrium is rejected either way.",
+        "Degrees of freedom are not used in Hardy-Weinberg tests, which compare genotype counts directly.",
+        "With 100 lizards the two critical values are equal, so the choice of df makes no difference.",
+        "The decision depends just on whether p + q = 1, which is true with either number of degrees of freedom."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Three genotype classes give 3 − 1 = 2 df; estimating p from the same data removes one more, giving 1. Here χ² exceeds both critical values, so the decision is the same.",
+        "options": [
+          "Correct.",
+          "Chi-square tests always use df to find the critical value.",
+          "Critical values depend on df, not on sample size.",
+          "p + q = 1 is always true; the test is about genotype counts."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-10",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 3,
+      "q": "A recessive disorder affects 1 in 2,500 newborns in a population assumed to be in Hardy-Weinberg equilibrium. Calculate the expected frequency of carriers (heterozygotes), to three decimal places.",
+      "numeric": {
+        "answer": 0.039,
+        "tol": 0.001,
+        "unit": "",
+        "decimals": 3
+      },
+      "why": {
+        "correct": "q² = 1 ÷ 2,500 = 0.0004, so q = 0.02 and p = 0.98. 2pq = 2 × 0.98 × 0.02 = 0.0392, about 0.039 (roughly 1 person in 26)."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-11",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In the population from the previous question, carriers are about 98 times more common than affected individuals. Which prediction about selection against affected individuals follows?",
+      "options": [
+        "Selection against affected individuals lowers q slowly, because most copies of the recessive allele sit in carriers, who are not selected against.",
+        "Selection against affected individuals removes the allele within a generation, because affected people are unable to pass it on to children.",
+        "Selection against affected individuals raises q, because carriers then have more offspring than people with two dominant alleles.",
+        "Selection has no effect on q, because a recessive allele hidden in heterozygotes is shielded from selection and so stays at the same frequency."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With q = 0.02, about 98% of a alleles are in Aa carriers (2pq = 0.0392 holds 0.0196 of the a alleles; aa holds 0.0004). Selection that acts on aa reaches only a tiny share of the alleles, so q falls very slowly.",
+        "options": [
+          "Correct.",
+          "Most copies are in carriers, so they persist.",
+          "Carriers are not favored in this scenario; selection against aa lowers q, not raises it.",
+          "Selection against aa does lower q, just slowly."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-12",
+      "type": "numeric",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "In a beetle population, the recessive green phenotype fell from 25% to 16% over several generations. Calculate the change in q, the green allele frequency (use a minus sign for a decrease), to two decimal places.",
+      "numeric": {
+        "answer": -0.1,
+        "tol": 0.005,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Before: q = √0.25 = 0.50. After: q = √0.16 = 0.40. Change = 0.40 − 0.50 = −0.10 (assuming each generation was in Hardy-Weinberg proportions when counted)."
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-13",
+      "type": "multi",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a population at Hardy-Weinberg equilibrium with q = 0.3, which events would be expected to change q in the next generation? Select ALL that apply.",
+      "options": [
+        "Many individuals from a nearby population with q = 0.8 join it",
+        "Individuals with the aa genotype survive less often to breed",
+        "The population doubles in size by random mating with no selection",
+        "Individuals keep choosing mates at random with respect to this gene",
+        "Each individual is counted twice in the next survey"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Gene flow (migrants with a different q) and selection against aa change q. Random mating and growth with no selection keep q constant; counting errors change the estimate, not the population.",
+        "options": [
+          "Changes q: gene flow brings in alleles at a different frequency.",
+          "Changes q: selection removes a alleles.",
+          "No change: random mating and growth alone do not alter allele frequencies.",
+          "No change: random mating is one of the conditions that keeps a population in equilibrium.",
+          "No change in the population: this is a measurement mistake."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-14",
+      "type": "single",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "If q = 0.4 in a population at equilibrium, what is the frequency of homozygous dominant individuals?",
+      "options": [
+        "0.36",
+        "0.16",
+        "0.48",
+        "0.60"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "p = 1 − 0.4 = 0.6, and p² = 0.36.",
+        "options": [
+          "Correct.",
+          "0.16 is q², the homozygous recessive frequency.",
+          "0.48 is 2pq, the heterozygote frequency.",
+          "0.60 is p, an allele frequency, not a genotype frequency."
+        ]
+      }
+    },
+    {
+      "id": "bio-stats-hardy-weinberg-15",
+      "type": "order",
+      "unit": "skills-stats",
+      "topic": "stats-hardy-weinberg",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "Put the steps for finding the number of heterozygotes from phenotype counts in order.",
+      "options": [
+        "Divide the number of recessive-phenotype individuals by the total to get q².",
+        "Take the square root to get q.",
+        "Calculate p = 1 − q.",
+        "Calculate 2pq.",
+        "Multiply 2pq by the population size."
+      ],
+      "why": {
+        "correct": "Recessive frequency gives q², then q, then p, then 2pq, then the count."
+      }
+    }
+  ]
+}

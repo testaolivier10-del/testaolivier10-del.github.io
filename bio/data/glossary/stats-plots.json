@@ -1,0 +1,38 @@
+{
+  "axes": {
+    "def": "The two number lines of a graph. The x-axis (horizontal) normally carries the independent variable and the y-axis (vertical) the dependent variable; each needs a label with units and an even scale."
+  },
+  "line-graph": {
+    "def": "A graph of points joined in order along a continuous independent variable such as time or temperature, used to show how the dependent variable changes across it."
+  },
+  "bar-graph": {
+    "def": "A graph of separate bars, one per category (for example, four different enzymes), used when the independent variable is categorical rather than continuous."
+  },
+  "histogram": {
+    "def": "A graph of how often values fall into each range (bin) of one measured variable, with touching bars; it shows the shape and spread of a distribution."
+  },
+  "scatterplot": {
+    "def": "A graph of unjoined points, each pairing two measured values from one individual or sample, used to look for a relationship between the two variables."
+  },
+  "trend-line": {
+    "def": "A single straight or smooth line drawn through the overall pattern of the points (a line of best fit), not joining each point."
+  },
+  "correlation": {
+    "def": "A pattern in which two variables tend to change together: positive if both rise together, negative if one rises as the other falls."
+  },
+  "causation": {
+    "def": "A change in one variable producing a change in another. A correlation alone does not show causation; a controlled experiment is needed to test it."
+  },
+  "graph-choice": {
+    "def": "Choosing the graph type from the data: line graph for a continuous independent variable, bar graph for categories, scatterplot for two measured variables, histogram for the distribution of one variable."
+  },
+  "graph-key": {
+    "def": "The key (legend) on a graph that tells which line, symbol or bar color stands for which group or condition."
+  },
+  "interpolation": {
+    "def": "Reading a value between measured points (interpolation) or beyond the measured range (extrapolation). Extrapolation is risky because the pattern may not continue."
+  },
+  "slope": {
+    "def": "How steep a line is: the change in y divided by the change in x between two points (rise over run), with units of the y-unit per x-unit."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "ci-overlap": {
+    "file": "figures/ci-overlap.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 340,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "Two panels of means with 95% confidence interval error bars. Left: bars for groups A and B do not overlap; label \"likely a real difference: reject the null\". Right: bars for groups C and D overlap; label \"data do not show a difference: fail to reject the null\"."
+  }
+}

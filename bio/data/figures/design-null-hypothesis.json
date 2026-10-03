@@ -1,0 +1,12 @@
+{
+  "null-decision": {
+    "file": "figures/null-decision.svg",
+    "ext": "svg",
+    "w": 640,
+    "h": 340,
+    "source": "levlprep",
+    "license": "LevlPrep original",
+    "credit": "LevlPrep original diagram",
+    "alt": "A flowchart. Before the experiment: null hypothesis, temperature has no effect on leakage; alternative, it does. Collect data. Is the difference between groups much larger than the spread within groups? Yes: reject the null, the data support the alternative. No: fail to reject the null, the data do not show an effect. Neither branch proves a hypothesis."
+  }
+}

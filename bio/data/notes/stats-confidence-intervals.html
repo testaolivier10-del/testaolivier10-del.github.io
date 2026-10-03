@@ -1,0 +1,52 @@
+<h2 id="why">Is the taller bar really taller?</h2>
+<p>Beet cells keep a red, water-soluble substance behind selectively permeable membranes. Heat damages the membranes and the substance leaks out, so the water around a heated cube turns red. Eight cubes heated to 60 °C give a mean absorbance of 0.46; eight heated to 70 °C give 0.62. The second mean is higher, but another eight cubes would give slightly different means. How sure can you be that 70 °C really causes more leakage? A <b>95% confidence interval</b>, drawn as an <b>error bar</b>, answers that on the graph itself.</p>
+
+<h2 id="worked">Worked example: building and comparing 95% confidence intervals</h2>
+<div class="worked">
+<p><b>Data:</b> sideways movement of a labeled lipid in artificial membranes (faster means more fluid).</p>
+<table class="compare">
+<caption>From standard deviation to 95% confidence interval</caption>
+<thead><tr><th scope="col">Temperature</th><th scope="col">n</th><th scope="col">x̄ (µm²/s)</th><th scope="col">s</th><th scope="col">SE = s ÷ √n</th><th scope="col">95% CI = x̄ ± 2SE</th></tr></thead>
+<tbody>
+<tr><td>15 °C</td><td>9</td><td>1.8</td><td>0.30</td><td>0.30 ÷ 3 = 0.10</td><td>1.6 to 2.0</td></tr>
+<tr><td>25 °C</td><td>9</td><td>2.5</td><td>0.36</td><td>0.36 ÷ 3 = 0.12</td><td>2.26 to 2.74</td></tr>
+<tr><td>35 °C</td><td>4</td><td>3.0</td><td>0.60</td><td>0.60 ÷ 2 = 0.30</td><td>2.4 to 3.6</td></tr>
+</tbody>
+</table>
+<p><b>15 vs 25 °C:</b> 1.6-2.0 and 2.26-2.74 do not overlap. The difference is likely real: reject the null hypothesis of no difference.</p>
+<p><b>25 vs 35 °C:</b> 2.26-2.74 and 2.4-3.6 overlap. The data do not show a difference: fail to reject the null. With only four membranes at 35 °C, the interval is wide; more membranes might reveal a difference.</p>
+</div>
+
+<h2 id="meaning">What a 95% confidence interval means</h2>
+<p>The standard error, SE = s ÷ √n, measures how much a sample mean would wobble from sample to sample. Sample means are spread roughly normally around the true mean, so about 95% of them land within 2 SE of it. Turning that around: the range x̄ ± 2SE, built from your sample, very probably contains the true mean. That range is the 95% confidence interval. (Strictly, the multiplier is slightly above 2 for small samples; the exam uses 2.)</p>
+<p>Two things set its width: the spread of the data (s) and the sample size (n). More variable data widen it; more data narrow it. Because SE falls with √n, four times as many measurements halve the width.</p>
+
+<h2 id="overlap">Reading error bars: the overlap rule</h2>
+<figure data-fig="ci-overlap" id="fig-ci"><figcaption>Non-overlapping 95% CI error bars suggest a real difference; overlapping bars mean the data do not show one.</figcaption></figure>
+<ul>
+<li><b>No overlap</b> between two groups' 95% CI bars: the difference is unlikely to be due to chance. It is <b>statistically significant</b>, and you reject the null hypothesis.</li>
+<li><b>Overlap</b>: the data do not show a difference. You fail to reject the null hypothesis. This is <i>not</i> evidence that the means are equal.</li>
+</ul>
+<p>In the beet graph, the 95% CIs are 20 °C, 0.05-0.11; 40 °C, 0.06-0.14; 60 °C, 0.40-0.52; and 70 °C, 0.50-0.74. Leakage at 60 °C is clearly above 40 °C (no overlap), but 60 and 70 °C overlap, so those two are not shown to differ even though the means are 0.16 apart. The jump between 40 and 60 °C fits the biology: heat loosens the bilayer's hydrophobic core and unfolds membrane proteins, so the membrane stops acting as a selective barrier.</p>
+
+<h2 id="label">Error bars must say what they are</h2>
+<table class="compare">
+<caption>Three kinds of error bar</caption>
+<thead><tr><th scope="col">Bar shows</th><th scope="col">Length</th><th scope="col">Tells you about</th><th scope="col">Overlap rule applies?</th></tr></thead>
+<tbody>
+<tr><td>± 1 SD (or 2 SD)</td><td>Longest</td><td>Spread of individual values</td><td>No</td></tr>
+<tr><td>± 1 SE</td><td>Shortest</td><td>Precision of the mean</td><td>No (too short; non-overlap is weak evidence)</td></tr>
+<tr><td>± 2 SE (95% CI)</td><td>Twice the SE bar</td><td>Range likely to hold the true mean</td><td>Yes</td></tr>
+</tbody>
+</table>
+<p>When you draw error bars in a free-response answer, state in the key or caption that they show ± 2SE (95% CI).</p>
+
+<h2 id="language">Writing the conclusion</h2>
+<ul>
+<li>"The 95% confidence intervals for 40 °C and 60 °C do not overlap, so the difference is statistically significant and we reject the null hypothesis that temperature has no effect on leakage."</li>
+<li>"The intervals for 60 °C and 70 °C overlap, so the data do not show a difference between them; we fail to reject the null hypothesis."</li>
+</ul>
+<p>Avoid "proves", "accept the null" and "the means are the same".</p>
+
+<aside class="going-further"><h3>Going further: why overlap is not the last word</h3>
+<p>The overlap rule is a quick visual check, and it is cautious: two 95% intervals can overlap slightly while a formal test of the difference would still call it significant. That is one more reason to say "the data do not show a difference" rather than "there is no difference" when bars overlap.</p></aside>

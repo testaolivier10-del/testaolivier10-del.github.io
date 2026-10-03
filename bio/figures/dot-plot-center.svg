@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" width="640" height="300" role="img" aria-labelledby="t d">
+<title id="t">Mean and median of a data set with an outlier</title>
+<desc id="d">A dot plot of eight drop counts: 13, 14, 14, 15, 15, 16, 16 and 31. The median, 15, sits in the middle of the cluster; the mean, 16.75, is pulled to the right toward the single high value of 31. The range runs from 13 to 31.</desc>
+<rect width="640" height="300" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#D55E00"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" font-size="16" text-anchor="middle" fill="#1F2A28">
+  <line x1="40" y1="200" x2="610" y2="200" stroke="#1F2A28" stroke-width="2"/>
+  <g stroke="#1F2A28" stroke-width="2">
+    <line x1="60" y1="200" x2="60" y2="208"/><line x1="135" y1="200" x2="135" y2="208"/><line x1="210" y1="200" x2="210" y2="208"/><line x1="285" y1="200" x2="285" y2="208"/><line x1="360" y1="200" x2="360" y2="208"/><line x1="435" y1="200" x2="435" y2="208"/><line x1="510" y1="200" x2="510" y2="208"/><line x1="585" y1="200" x2="585" y2="208"/>
+  </g>
+  <text x="60" y="228">12</text><text x="135" y="228">15</text><text x="210" y="228">18</text><text x="285" y="228">21</text><text x="360" y="228">24</text><text x="435" y="228">27</text><text x="510" y="228">30</text><text x="585" y="228">33</text>
+  <text x="325" y="256">Drops held on the coin (2% soap, eight repeats)</text>
+  <g fill="#C3DDF0" stroke="#0072B2" stroke-width="2.5">
+    <circle cx="85" cy="187" r="10"/>
+    <circle cx="110" cy="187" r="10"/><circle cx="110" cy="165" r="10"/>
+    <circle cx="135" cy="187" r="10"/><circle cx="135" cy="165" r="10"/>
+    <circle cx="160" cy="187" r="10"/><circle cx="160" cy="165" r="10"/>
+  </g>
+  <circle cx="535" cy="187" r="10" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/>
+  <text x="535" y="160" font-weight="700" fill="#8E3B2E">31</text>
+  <text x="535" y="140" fill="#8E3B2E">outlier</text>
+  <line x1="135" y1="62" x2="135" y2="150" stroke="#0072B2" stroke-width="3"/>
+  <text x="120" y="52" font-weight="700" fill="#0072B2">median 15</text>
+  <line x1="179" y1="96" x2="179" y2="196" stroke="#D55E00" stroke-width="3" stroke-dasharray="8 5"/>
+  <text x="225" y="88" font-weight="700" fill="#D55E00">mean 16.75</text>
+  <path d="M190 118 L330 118" stroke="#D55E00" stroke-width="2" fill="none" marker-end="url(#a)"/>
+  <text x="410" y="123" fill="#D55E00">pulled toward 31</text>
+  <text x="325" y="286" font-size="15" fill="#5D6B69">Range = 31 − 13 = 18 drops</text>
+</g>
+</svg>

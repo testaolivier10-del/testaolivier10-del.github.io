@@ -1,0 +1,80 @@
+{
+  "topic": "design-cer",
+  "hook": "<p>On free-response questions, students who understand the biology still lose points by writing \"the data show the enzyme works best at pH 7 because it was highest at pH 7.\" That sentence has a claim and a vague nod to evidence, but no reasoning. Claim, evidence, reasoning is the shape of almost every \"justify\" and \"support\" question on the exam.</p>",
+  "prereq": [
+    {
+      "q": "Why does an enzyme slow down at a pH far from its optimum?",
+      "options": [
+        "Changed charges on R groups alter the active site's shape, so substrate binds poorly.",
+        "The enzyme is used up faster at extreme pH.",
+        "The substrate gains activation energy at extreme pH."
+      ],
+      "correct": 0,
+      "why": "pH changes ionization of R groups, disrupting the bonds that shape the active site.",
+      "review": "enzyme-environment"
+    },
+    {
+      "q": "A competitive inhibitor…",
+      "options": [
+        "binds the active site, so extra substrate can outcompete it",
+        "binds elsewhere and lowers the maximum rate whatever the substrate level",
+        "denatures the enzyme permanently"
+      ],
+      "correct": 0,
+      "why": "It competes with the substrate for the active site; at high substrate its effect shrinks.",
+      "review": "enzyme-environment"
+    }
+  ],
+  "figure": {
+    "figure": "cer-blocks",
+    "caption": "Claim answers the question; evidence quotes the data; reasoning explains, with biology, why that evidence supports the claim."
+  },
+  "chain": [
+    {
+      "cause": "A question asks you to support or justify a conclusion from data.",
+      "effect": "You write a claim: one sentence that answers it (\"catalase works fastest near pH 7\")."
+    },
+    {
+      "cause": "A grader needs to see that the data back your claim.",
+      "effect": "You quote evidence: values with units and the comparison that matters (4.8 mL/min at pH 7 against 2.1 at pH 5 and 3.0 at pH 9, with non-overlapping error bars)."
+    },
+    {
+      "cause": "Numbers alone do not say why the pattern exists.",
+      "effect": "You give reasoning: pH changes the charges on R groups in the active site, altering its shape and substrate binding."
+    },
+    {
+      "cause": "Every study has gaps (pH tested only every 2 units).",
+      "effect": "You name a limitation, which keeps your claim from going further than the data allow."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> Claim: potato catalase works fastest near pH 7. Evidence: 4.8 mL O₂/min at pH 7, versus 2.1 at pH 5 and 3.0 at pH 9; the 95% CIs do not overlap. Reasoning: pH alters R-group charges in the active site, changing its shape and substrate binding. Limitation: pH was tested every 2 units, so the optimum lies between about 6 and 8.",
+    "Evidence = data (numbers, units, a comparison). Reasoning = biology (a mechanism). Restating the data as the \"reason\" earns no reasoning point.",
+    "Fit the claim to the evidence: overlapping error bars support \"no difference shown\", not \"faster\".",
+    "A <b>source of error</b> is a measurement problem (inconsistent timing). A <b>limitation</b> is a boundary on the conclusion (only one species, wide spacing of values)."
+  ],
+  "misconception": {
+    "wrong": "Reasoning means explaining the data again in more detail: \"the rate was highest at pH 7 because 4.8 is the largest number.\"",
+    "right": "Reasoning brings in biology the data do not contain: a mechanism (here, how pH changes the active site) that explains why the evidence supports the claim."
+  },
+  "check": [
+    "bio-design-cer-1",
+    "bio-design-cer-2",
+    "bio-design-cer-3",
+    "bio-design-cer-5",
+    "bio-design-cer-6",
+    "bio-design-cer-7",
+    "bio-design-cer-10"
+  ],
+  "summary": "<p>A scientific argument has three parts. The claim answers the question in one sentence. The evidence quotes the specific data, with units and the comparison that matters. The reasoning explains with a biological mechanism why that evidence supports the claim. Keep the claim within what the data show, and name limitations and sources of error honestly.</p>",
+  "connections": [
+    {
+      "href": "../tools/design-drills.html",
+      "label": "Tool: experimental design and argument drills"
+    },
+    {
+      "href": "stats-confidence-intervals.html",
+      "label": "Skill: 95% confidence intervals and error bars"
+    }
+  ]
+}

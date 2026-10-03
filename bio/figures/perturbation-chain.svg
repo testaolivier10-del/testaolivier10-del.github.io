@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340" width="640" height="340" role="img" aria-labelledby="t d">
+<title id="t">Tracing a perturbation to a prediction</title>
+<desc id="d">A chain of boxes tracing a poison through a mitochondrion. Cyanide blocks the last electron carrier, so electrons cannot pass to oxygen; the chain stops pumping protons; the proton gradient runs down; ATP synthase makes little ATP; the measurable prediction is that oxygen use falls and ATP falls. A side branch shows NADH building up, so the cell relies on glycolysis and fermentation, and lactate rises.</desc>
+<rect width="640" height="340" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1F2A28"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" font-size="14" text-anchor="middle" fill="#1F2A28">
+  <rect x="10" y="30" width="140" height="70" rx="8" fill="#F6D2BD" stroke="#D55E00" stroke-width="2.5"/>
+  <text x="80" y="58" font-weight="700" fill="#8E3B2E">Cyanide blocks</text><text x="80" y="78">last carrier</text>
+  <rect x="170" y="30" width="140" height="70" rx="8" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="240" y="58">no electrons</text><text x="240" y="78">passed to O₂</text>
+  <rect x="330" y="30" width="140" height="70" rx="8" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="400" y="58">chain stops</text><text x="400" y="78">pumping H⁺</text>
+  <rect x="490" y="30" width="140" height="70" rx="8" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="560" y="58">H⁺ gradient</text><text x="560" y="78">runs down</text>
+  <g stroke="#1F2A28" stroke-width="2.5"><line x1="152" y1="65" x2="166" y2="65" marker-end="url(#a)"/><line x1="312" y1="65" x2="326" y2="65" marker-end="url(#a)"/><line x1="472" y1="65" x2="486" y2="65" marker-end="url(#a)"/><line x1="560" y1="102" x2="560" y2="136" marker-end="url(#a)"/></g>
+  <rect x="490" y="140" width="140" height="70" rx="8" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="560" y="168">ATP synthase</text><text x="560" y="188">slows</text>
+  <line x1="240" y1="102" x2="240" y2="136" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a)"/>
+  <rect x="170" y="140" width="140" height="70" rx="8" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="240" y="168">NADH builds up,</text><text x="240" y="188">NAD⁺ runs short</text>
+  <line x1="240" y1="212" x2="240" y2="246" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a)"/>
+  <rect x="150" y="250" width="180" height="70" rx="8" fill="#EEF2F1" stroke="#5D6B69" stroke-width="2"/>
+  <text x="240" y="278">fermentation regenerates</text><text x="240" y="298">NAD⁺ for glycolysis</text>
+  <line x1="560" y1="212" x2="560" y2="246" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a)"/>
+  <line x1="332" y1="285" x2="376" y2="285" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#a)"/>
+  <rect x="380" y="250" width="250" height="70" rx="8" fill="#C4E8DC" stroke="#009E73" stroke-width="2.5"/>
+  <text x="505" y="272" font-weight="700" fill="#00684C">Measurable prediction</text>
+  <text x="505" y="292">O₂ use ↓   ATP ↓   lactate ↑</text>
+  <text x="505" y="310" font-size="12">mitochondria per cell: no change</text>
+</g>
+</svg>

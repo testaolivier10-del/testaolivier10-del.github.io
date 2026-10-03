@@ -1,0 +1,53 @@
+<h2 id="why">Why one measurement is never enough</h2>
+<p>Put a coin on a table and add water one drop at a time. The water piles up into a dome, held together by the hydrogen bonds between water molecules at the surface, until it finally spills. Count the drops and you might get 31. Dry the coin and do it again: 28. Again: 33. The coin did not change; small differences in drop size, how steady your hand was and where each drop landed changed the count.</p>
+<p>This happens in every experiment. Repeated measurements of the same thing vary, so the honest result is not one number but a <b>sample</b>: the set of values you actually collected. The number of values in it is the <b>sample size</b>, written <i>n</i>. To report a sample you need two kinds of summary: where its values are centered, and how spread out they are.</p>
+
+<h2 id="worked">Worked example: mean, median, mode and range</h2>
+<div class="worked">
+<p><b>Data:</b> drops held on a coin with plain water, measured eight times: 31, 28, 33, 30, 29, 35, 30, 32 drops.</p>
+<p><b>Mean</b> (add, then divide by <i>n</i>): x̄ = Σx ÷ n = (31 + 28 + 33 + 30 + 29 + 35 + 30 + 32) ÷ 8 = 248 ÷ 8 = <b>31.0 drops</b>.</p>
+<p><b>Median</b> (sort, then take the middle): 28, 29, 30, 30, 31, 32, 33, 35. With 8 values there are two middle values, the 4th (30) and the 5th (31). Median = (30 + 31) ÷ 2 = <b>30.5 drops</b>.</p>
+<p><b>Mode</b> (most frequent value): 30 appears twice, every other value once. Mode = <b>30 drops</b>.</p>
+<p><b>Range</b> (largest − smallest): 35 − 28 = <b>7 drops</b>.</p>
+</div>
+<p>On the exam's formula sheet the mean is written x̄ = (1/n) Σ x<sub>i</sub>: the symbol Σ ("sigma") means "add up all of them".</p>
+
+<h2 id="center">Mean or median? What an outlier does</h2>
+<figure data-fig="dot-plot-center" id="fig-dot-plot"><figcaption>Eight drop counts with 2% soap. The median stays with the cluster; the mean is pulled toward the single high value.</figcaption></figure>
+<p>Now add soap to the water. Soap molecules crowd between water molecules at the surface, fewer hydrogen bonds hold the surface together, and the dome breaks sooner. One group got 14, 16, 13, 15, 31, 14, 16, 15 drops. Seven values sit between 13 and 16, and one is 31 (<a class="figref" href="#fig-dot-plot">see the dot plot</a>).</p>
+<ul>
+<li>The <b>mean</b> is 134 ÷ 8 = 16.75 drops. Every value adds to the sum, so the 31 adds far more than the others and drags the mean above seven of the eight values.</li>
+<li>The <b>median</b> is the average of the 4th and 5th sorted values: (15 + 15) ÷ 2 = 15 drops. It depends only on position, so the 31 could be 310 and the median would not move.</li>
+</ul>
+<p>A value far from the rest is an <b>outlier</b>. When a data set has an outlier, or is lopsided with a long tail on one side, the median describes a typical value better than the mean. When the data are roughly symmetric, the two are close and the mean is usually reported because it uses all the information.</p>
+<table class="compare">
+<caption>Comparing the summaries of center</caption>
+<thead><tr><th scope="col">Summary</th><th scope="col">How to find it</th><th scope="col">Effect of one outlier</th><th scope="col">Best used when</th></tr></thead>
+<tbody>
+<tr><th scope="row">Mean</th><td>Sum ÷ n</td><td>Pulled strongly toward it</td><td>Data roughly symmetric, no outliers</td></tr>
+<tr><th scope="row">Median</th><td>Middle of sorted data</td><td>Barely moves</td><td>Outliers or lopsided data</td></tr>
+<tr><th scope="row">Mode</th><td>Most frequent value</td><td>None (unless the outlier repeats)</td><td>Counts or categories with a clear favorite</td></tr>
+</tbody>
+</table>
+
+<h2 id="outliers">What to do with an outlier</h2>
+<p>An outlier is a question, not an answer. First check for a mistake: a copying error (31 written for 13), a dirty coin, a dropper that was swapped. If you find one, correct or remove the value and say so. If you find nothing, the value is real data. Keep it, report it, and give the median as well as the mean so a reader sees its effect. Deleting a value because it is inconvenient makes your results look more consistent than they were.</p>
+
+<h2 id="spread">Spread: the range and why it matters</h2>
+<p>Two groups each report a mean of 25 drops. Group P got 24, 25, 25, 26, 25; group Q got 18, 31, 25, 22, 29. The centers match, but P's range is 26 − 24 = 2 drops and Q's is 31 − 18 = 13 drops. Q's measurements are far less consistent, so any single Q value could land well away from 25. A center without a spread hides this, so always report both.</p>
+<p>The range is quick but uses only two values, so a single outlier inflates it (the 2% soap data have a range of 31 − 13 = 18 drops, mostly because of one value). Later skills replace it with measures of spread that use every value.</p>
+
+<h2 id="types">Types of data</h2>
+<table class="compare">
+<caption>Kinds of data you will meet</caption>
+<thead><tr><th scope="col">Type</th><th scope="col">What it is</th><th scope="col">Examples</th><th scope="col">Can you average it?</th></tr></thead>
+<tbody>
+<tr><th scope="row">Quantitative, discrete</th><td>Counted in whole units</td><td>Drops on a coin, number of seeds</td><td>Yes</td></tr>
+<tr><th scope="row">Quantitative, continuous</th><td>Measured on a scale</td><td>Mass (g), time (s), temperature (°C)</td><td>Yes</td></tr>
+<tr><th scope="row">Qualitative (categorical)</th><td>Names or categories</td><td>Color, spilled or not</td><td>No; count each category instead</td></tr>
+</tbody>
+</table>
+<p>A mean of counted drops can be a decimal (31.0, 16.75) even though each count is whole: the mean describes the sample, not one measurement.</p>
+
+<aside class="going-further"><h3>Going further: working backward from a mean</h3>
+<p>Because mean = sum ÷ n, the sum is mean × n. If five cups have a mean cooling time of 9.2 min and four of them took 9.0, 9.4, 8.8 and 9.6 min, the five add to 9.2 × 5 = 46.0 min, the four add to 36.8 min, and the fifth took 46.0 − 36.8 = 9.2 min. Exam questions use this to test whether you understand the mean rather than just the button on a calculator.</p></aside>

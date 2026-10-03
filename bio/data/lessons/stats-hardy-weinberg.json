@@ -1,0 +1,95 @@
+{
+  "topic": "stats-hardy-weinberg",
+  "hook": "<p>A meadow has 364 purple flowers and 36 white ones. How many of the purple plants secretly carry a white allele? You cannot tell by looking, but if the population is in Hardy-Weinberg equilibrium, two short equations on the formula sheet tell you: 168. The same arithmetic estimates how many people carry the allele for a recessive disorder.</p>",
+  "prereq": [
+    {
+      "q": "In p² + 2pq + q² = 1, what does 2pq stand for?",
+      "options": [
+        "The frequency of heterozygotes",
+        "The frequency of the dominant allele",
+        "The frequency of homozygous recessive individuals"
+      ],
+      "correct": 0,
+      "why": "p² is homozygous dominant, 2pq heterozygous and q² homozygous recessive.",
+      "review": "hardy-weinberg"
+    },
+    {
+      "q": "Which condition is NOT required for Hardy-Weinberg equilibrium?",
+      "options": [
+        "A small population",
+        "Random mating",
+        "No natural selection"
+      ],
+      "correct": 0,
+      "why": "Equilibrium needs a very large population (no drift), random mating, no selection, no mutation and no gene flow.",
+      "review": "hardy-weinberg"
+    },
+    {
+      "q": "A chi-square value greater than the critical value means you…",
+      "options": [
+        "reject the null hypothesis",
+        "fail to reject the null hypothesis",
+        "accept the null hypothesis"
+      ],
+      "correct": 0,
+      "why": "A large χ² means the observed counts are too far from expected for chance.",
+      "review": "stats-chi-square"
+    }
+  ],
+  "figure": {
+    "figure": "hw-square",
+    "caption": "With p = 0.7 and q = 0.3, the areas give genotype frequencies: p² = 0.49, 2pq = 0.42, q² = 0.09. Start from q²: it is the one genotype you can read straight from phenotypes."
+  },
+  "chain": [
+    {
+      "cause": "Only the recessive phenotype has a single genotype (aa).",
+      "effect": "Its frequency equals q² at equilibrium: 36 white of 400 gives q² = 0.09."
+    },
+    {
+      "cause": "Taking the square root undoes the squaring.",
+      "effect": "q = √0.09 = 0.30, and since p + q = 1, p = 0.70."
+    },
+    {
+      "cause": "Random union of alleles gives genotypes in proportions p², 2pq and q².",
+      "effect": "Heterozygotes are 2pq = 0.42 of the population: 168 of 400 plants."
+    },
+    {
+      "cause": "If you know all genotype counts, you can count alleles directly and calculate expected counts.",
+      "effect": "A chi-square test compares observed and expected genotypes and shows whether the population departs from equilibrium."
+    },
+    {
+      "cause": "Allele frequencies measured at two times differ.",
+      "effect": "The change in p or q is evidence that something (selection, drift, gene flow) is acting on the population."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> 36 white of 400 plants. q² = 36 ÷ 400 = 0.09; q = 0.30; p = 0.70. Expected AA = 0.49 × 400 = 196; Aa = 0.42 × 400 = 168; aa = 36.",
+    "Never take the dominant phenotype frequency as p: purple plants (0.91) are AA plus Aa. Always start from the recessive class.",
+    "With genotype counts, count alleles: p = (2 × AA + Aa) ÷ (2 × total). Then expected counts are p²N, 2pqN and q²N.",
+    "Rare recessive alleles hide in carriers: at q = 0.02, carriers (2pq ≈ 0.039) outnumber affected people (q² = 0.0004) about 98 to 1."
+  ],
+  "misconception": {
+    "wrong": "The frequency of the dominant allele is the fraction of the population showing the dominant phenotype.",
+    "right": "Dominant-phenotype individuals include heterozygotes, so their fraction is p² + 2pq, not p. Find q from the recessive class first (q² = recessive frequency), then p = 1 − q."
+  },
+  "check": [
+    "bio-stats-hardy-weinberg-1",
+    "bio-stats-hardy-weinberg-2",
+    "bio-stats-hardy-weinberg-3",
+    "bio-stats-hardy-weinberg-5",
+    "bio-stats-hardy-weinberg-6",
+    "bio-stats-hardy-weinberg-7",
+    "bio-stats-hardy-weinberg-8"
+  ],
+  "summary": "<p>For a population in Hardy-Weinberg equilibrium, the recessive phenotype frequency is q², so q = √(recessive frequency) and p = 1 − q. Genotype frequencies are p², 2pq and q², and 2pq is the carrier frequency. With full genotype counts, count alleles to get p and use a chi-square test to check whether the population fits equilibrium. A change in allele frequency between generations is evidence of evolution.</p>",
+  "connections": [
+    {
+      "href": "../tools/hardy-weinberg.html",
+      "label": "Tool: Hardy-Weinberg calculator"
+    },
+    {
+      "href": "stats-chi-square.html",
+      "label": "Skill: chi-square test"
+    }
+  ]
+}

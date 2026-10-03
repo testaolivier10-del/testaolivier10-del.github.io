@@ -1,0 +1,29 @@
+{
+  "controlled-experiment": {
+    "def": "An experiment in which the investigator deliberately changes one factor and keeps everything else the same, so a difference in the result can be traced to that one factor."
+  },
+  "independent-variable": {
+    "def": "The factor the investigator deliberately changes or sets to different values (for example, water temperature). Also called the manipulated variable."
+  },
+  "dependent-variable": {
+    "def": "The result the investigator measures to see whether it responds to the independent variable (for example, mass of water lost). Also called the responding or measured variable."
+  },
+  "controlled-variable": {
+    "def": "A factor kept the same in every group so it cannot be the reason the results differ (for example, the volume of water and the shape of the dish)."
+  },
+  "control-group": {
+    "def": "The group that does not receive the treatment being tested (or gets the normal, baseline condition), used as the comparison for the experimental (treatment) groups."
+  },
+  "repeated-trials": {
+    "def": "Running each condition several times (replicates). Repeats show how much results vary by chance and make the average more reliable."
+  },
+  "testable-question": {
+    "def": "A question that can be answered by changing one factor and measuring a result, such as \"Does water temperature affect how much water evaporates in 24 hours?\""
+  },
+  "hypothesis": {
+    "def": "A proposed, testable explanation for an observation, which leads to predictions an experiment can check."
+  },
+  "if-then": {
+    "def": "A prediction that links the two variables: \"If [independent variable is changed this way], then [dependent variable will change this way]\", usually followed by \"because\" and the proposed explanation."
+  }
+}

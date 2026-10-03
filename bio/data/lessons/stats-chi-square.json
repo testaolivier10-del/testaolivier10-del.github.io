@@ -1,0 +1,84 @@
+{
+  "topic": "stats-chi-square",
+  "hook": "<p>Release 40 pill bugs into a chamber with a moist side and a dry side, and 29 end up on the moist side. A preference, or just luck? Flip 40 coins and you rarely get exactly 20 heads. The chi-square test measures how far your counts are from what \"no preference\" predicts and tells you whether that gap is too big for chance.</p>",
+  "prereq": [
+    {
+      "q": "An experiment's null hypothesis says…",
+      "options": [
+        "the independent variable has no effect; differences are due to chance",
+        "the independent variable causes the predicted effect",
+        "the experiment has no control group"
+      ],
+      "correct": 0,
+      "why": "The null is the \"no effect\" statement that the test tries to reject.",
+      "review": "design-null-hypothesis"
+    },
+    {
+      "q": "Data lead you to fail to reject a null hypothesis. What does that mean?",
+      "options": [
+        "The data did not show an effect",
+        "The data proved there is no effect",
+        "The alternative hypothesis is true"
+      ],
+      "correct": 0,
+      "why": "Failing to reject means the evidence is not strong enough; it never proves the null.",
+      "review": "design-null-hypothesis"
+    }
+  ],
+  "figure": {
+    "figure": "chi-square-flow",
+    "caption": "A complete chi-square test on the pill bug data: expected counts, χ² = 8.1, df = 1, critical value 3.84, reject the null."
+  },
+  "chain": [
+    {
+      "cause": "The null hypothesis predicts how the total should split among categories (no preference: 20 and 20).",
+      "effect": "That prediction gives an expected count, e, for each category."
+    },
+    {
+      "cause": "Observed counts, o, differ from expected; squaring the differences and dividing by e scales each gap to the size of the category.",
+      "effect": "Adding the terms gives χ² = Σ (o − e)² ÷ e: 4.05 + 4.05 = 8.1."
+    },
+    {
+      "cause": "More categories give more chances for chance gaps to add up.",
+      "effect": "You look up the critical value for df = categories − 1 (here 1) at p = 0.05: 3.84."
+    },
+    {
+      "cause": "χ² (8.1) is greater than the critical value (3.84).",
+      "effect": "A gap this large would happen less than 5% of the time if the null were true (p < 0.05), so you reject the null hypothesis."
+    },
+    {
+      "cause": "If χ² had been below the critical value…",
+      "effect": "…you would fail to reject the null: the counts would fit \"no preference\" well enough to be chance."
+    }
+  ],
+  "ideas": [
+    "<b>Worked example.</b> o = 29 moist, 11 dry; e = 20, 20. χ² = (29 − 20)² ÷ 20 + (11 − 20)² ÷ 20 = 4.05 + 4.05 = 8.1. df = 1; critical value (p = 0.05) = 3.84. 8.1 > 3.84: reject the null.",
+    "Formula sheet: χ² = Σ (o − e)² ÷ e, with df = number of categories − 1. Use the p = 0.05 column unless told otherwise.",
+    "Bigger χ² means a worse fit to the null. χ² greater than the critical value means p is less than 0.05: reject. Otherwise, fail to reject.",
+    "Always use counts, never percentages or means: chi-square depends on how many individuals were counted."
+  ],
+  "misconception": {
+    "wrong": "A large chi-square value means the data support the null hypothesis.",
+    "right": "A large χ² means observed counts are far from what the null predicts. Above the critical value, you reject the null; a small χ² is what fits the null."
+  },
+  "check": [
+    "bio-stats-chi-square-1",
+    "bio-stats-chi-square-2",
+    "bio-stats-chi-square-3",
+    "bio-stats-chi-square-6",
+    "bio-stats-chi-square-7",
+    "bio-stats-chi-square-8",
+    "bio-stats-chi-square-9"
+  ],
+  "summary": "<p>The chi-square test compares observed counts with the counts expected under a null hypothesis: χ² = Σ (o − e)² ÷ e. Degrees of freedom are categories − 1. If χ² is greater than the critical value at p = 0.05, the deviation is unlikely to be chance and the null is rejected; otherwise you fail to reject it. Use counts, not percentages, and never \"prove\" or \"accept\" a hypothesis.</p>",
+  "connections": [
+    {
+      "href": "../tools/chi-square.html",
+      "label": "Tool: chi-square calculator"
+    },
+    {
+      "href": "design-null-hypothesis.html",
+      "label": "Skill: null and alternative hypotheses"
+    }
+  ]
+}
