@@ -557,7 +557,9 @@ ${tail({ depth, section: 'home' })}
   }
 
   /* --------------------------------------------------- app page shells */
-  const STATE_PAGES = new Set(['dashboard', 'review', 'search']);
+  // Pages that show one student's own state are never indexed; the cram kit
+  // is one (a plan from their exam date and mastery; docs/apbio-spec.md decision 26).
+  const STATE_PAGES = new Set(['dashboard', 'review', 'search', 'cram']);
   function appShell(a) {
     const depth = '', path = `${a.slug}.html`, url = `${SITE}${BASE}${path}`;
     const scriptOk = a.script && existsSync(join(ROOT, 'bio', 'assets', a.script));

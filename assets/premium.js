@@ -148,6 +148,7 @@
       ],
       free: [
         'Every notes page, the glossary, the flashcards and the printable unit sheets',
+        'The cram-kit study plan outline, printable',
         'Every lesson in Units 1 and 2, and every skills lesson',
         'One simulator',
         '15 practice or review questions a day from any unit',
@@ -159,7 +160,7 @@
         'Unlimited practice and review from the whole question bank',
         'Every simulator',
         'All free-response questions, unit tests and practice exams',
-        'The cram kit (study plans and timed mixed sets, from March 2027)',
+        'The cram kit: a study plan fitted to your weakest units, and timed mixed sets',
         'The full dashboard: mastery by unit, topic and science practice',
       ],
     },

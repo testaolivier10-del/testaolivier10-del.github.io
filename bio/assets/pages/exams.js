@@ -28,8 +28,17 @@
    (1-5) labelled "Not calibrated". History goes to apbio_prefs_v1
    .examHistory (the dashboard reads it).
 
+     Mixed timed set the cram kit's timed sets (spec decision 26): 10, 20 or
+                     30 questions from every published unit by the midpoint
+                     of its exam weight (as Section I), sets whole, at the
+                     exam's pace of 1.5 min a question; then the same review
+                     with explanations. Opened from cram.html as
+                     ?mode=mixed&n=10|20|30.
+
    Free tier: one exam of any kind (ApBioCore.freeExam), used when it starts;
-   an exam in progress can always be finished. */
+   an exam in progress can always be finished. Mixed timed sets are part of
+   the cram kit instead: Premium (ApBioCore.allowed('cram')), and they never
+   use the free exam. */
 (function(){
   var BASE = window.ApBioBase || '';
   var app = document.getElementById('app');
@@ -63,7 +72,9 @@
   function setPref(k, v){ try{ var p = prefs(); p[k] = v; localStorage.setItem(PREFS, JSON.stringify(p)); }catch(e){} }
 
   var bank = null, blocks = null, frqList = [], K = null, run = null;
-  var cfg = { kind: 'full', unit: '', len: 25, timing: 'std' };
+  var cfg = { kind: 'full', unit: '', len: 25, n: 20, timing: 'std' };
+  var MIXED = [10, 20, 30];
+  function cramOk(){ return !Core.allowed || Core.allowed('cram'); }
 
   function kit(){
     if(window.ApBioFrq) return Promise.resolve(window.ApBioFrq);
@@ -128,6 +139,14 @@
     return { topics: ts, alloc: split(n, w, have), n: n, total: total };
   }
   function mid(u){ return Array.isArray(u.weight) ? (u.weight[0] + u.weight[1]) / 2 : 0; }
+  /* Mixed timed set: n questions over the published units by exam weight. */
+  function mixedPlan(n){
+    var w = {}, have = {};
+    builtUnits().forEach(function(u){ w[u.id] = mid(u) || 1; have[u.id] = size(unitBlocks(u.id)); });
+    var total = Object.keys(have).reduce(function(s, k){ return s + have[k]; }, 0);
+    n = Math.min(n, total);
+    return { alloc: split(n, w, have), n: n, units: builtUnits() };
+  }
 
   /* The full exam: what it needs, what exists, and the exam we can give. */
   function examPlan(){
@@ -168,6 +187,15 @@
   function frqSec(types){ return types.reduce(function(s, t){ return s + (LONG[t] ? FRQ_SEC.long : FRQ_SEC.short); }, 0); }
 
   function panelHtml(){
+    if(cfg.kind === 'mixed'){
+      if(!cramOk()) return Core.gate('cram', 'cram-sets');
+      var mp = mixedPlan(cfg.n);
+      return '<fieldset class="bio-ex-group bio-ex-inline"><legend>Questions</legend>' + MIXED.map(function(v){
+          return '<label class="bio-pr-chip"><input type="radio" name="n" value="' + v + '"' + (cfg.n === v ? ' checked' : '') + '><span>' + v + '</span></label>';
+        }).join('') + '</fieldset>' + timingField() +
+        '<div class="bio-ex-note"><p><b>How this set is drawn.</b> From every published unit by the middle of its exam weight range, with stimulus sets kept whole (so a set can run a question or two long). Timed at the exam\'s pace: ' + minutes(MCQ_SEC) + ' a question.</p><ul class="bio-ex-alloc">' +
+          mp.units.map(function(u){ return '<li><span>' + esc(unitName(u.id)) + '</span><b>' + (mp.alloc[u.id] || 0) + '</b></li>'; }).join('') + '</ul></div>';
+    }
     if(cfg.kind === 'unit'){
       var us = builtUnits(), p = unitPlan(cfg.unit, cfg.len);
       return '<label class="bio-pr-field"><span>Unit</span><select name="unit">' + us.map(function(u){ return '<option value="' + u.id + '"' + (u.id === cfg.unit ? ' selected' : '') + '>' + esc(unitName(u.id)) + '</option>'; }).join('') + '</select></label>' +
@@ -196,6 +224,7 @@
       '<p class="bio-small">' + (t.k ? 'Section I: ' + minutes(plan.mcqN * MCQ_SEC * t.k) + (plan.frqs.length ? '. Section II: ' + minutes(frqSec(plan.frqs) * t.k) : '') + (t.k > 1 ? ', with extra time' : '') + '.' : 'Untimed: the clock counts up instead of down.') + '</p>';
   }
   function summary(){
+    if(cfg.kind === 'mixed'){ if(!cramOk()) return 'Mixed timed sets are part of Premium.'; var m = mixedPlan(cfg.n); return m.n ? 'Mixed timed set: about ' + plural(m.n, 'question') + (timing().k ? ', ' + minutes(m.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published yet.'; }
     if(cfg.kind === 'unit'){ var p = unitPlan(cfg.unit, cfg.len); return p.n ? plural(p.n, 'question') + (timing().k ? ', ' + minutes(p.n * MCQ_SEC * timing().k) : ', untimed') + '.' : 'No questions are published for this unit yet.'; }
     var plan = examPlan();
     if(!plan.mcqN) return 'No questions are published yet.';
@@ -210,6 +239,7 @@
       '<fieldset class="bio-pr-modes"><legend>Choose an exam</legend>' +
         '<label class="bio-pr-mode"><input type="radio" name="kind" value="full"' + (cfg.kind === 'full' ? ' checked' : '') + '><span class="bio-pr-mode-t">Practice exam</span><span class="bio-pr-mode-d">The hybrid format: multiple choice, then free response, scored with rubrics.</span></label>' +
         '<label class="bio-pr-mode"><input type="radio" name="kind" value="unit"' + (cfg.kind === 'unit' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span class="bio-pr-mode-t">Unit test</span><span class="bio-pr-mode-d">One unit, weighted by topic.</span></label>' +
+        '<label class="bio-pr-mode"><input type="radio" name="kind" value="mixed"' + (cfg.kind === 'mixed' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span class="bio-pr-mode-t">Mixed timed set</span><span class="bio-pr-mode-d">10, 20 or 30 questions from every unit at exam pace (part of the cram kit).</span></label>' +
       '</fieldset><div class="bio-ex-panel">' + panelHtml() + '</div>' +
       '<p class="bio-pr-avail" aria-live="polite"></p>' +
       '<p class="bio-small bio-ex-how">Exam mode shows no feedback until the end. Your first tap on an answer locks it in; you can skip a question and come back. At the end you review every question with its explanation, and anything you missed goes to your review queue.</p>' +
@@ -220,16 +250,17 @@
       var s = summary(), el = app.querySelector('.bio-pr-avail');
       el.textContent = s;
       var btn = app.querySelector('.bio-pr-start');
-      btn.disabled = !fe.available || /^No /.test(s);
-      btn.textContent = cfg.kind === 'unit' ? 'Start the unit test' : (examPlan().full ? 'Start the practice exam' : 'Start the shorter exam');
+      btn.disabled = (cfg.kind === 'mixed' ? !cramOk() : !fe.available) || /^No /.test(s);
+      btn.textContent = cfg.kind === 'mixed' ? 'Start the timed set' : cfg.kind === 'unit' ? 'Start the unit test' : (examPlan().full ? 'Start the practice exam' : 'Start the shorter exam');
     }
     form.addEventListener('change', function(e){
       var n = e.target.name, v = e.target.value;
       if(n === 'kind') cfg.kind = v;
       if(n === 'unit') cfg.unit = v;
       if(n === 'len') cfg.len = +v;
+      if(n === 'n') cfg.n = +v;
       if(n === 'timing'){ cfg.timing = v; setPref('examTiming', v); }
-      if(n === 'kind' || n === 'unit' || n === 'len' || n === 'timing'){
+      if(n === 'kind' || n === 'unit' || n === 'len' || n === 'n' || n === 'timing'){
         app.querySelector('.bio-ex-panel').innerHTML = panelHtml();
         var again = form.querySelector('[name="' + n + '"]' + (e.target.type === 'radio' ? '[value="' + v + '"]' : '')); if(again) again.focus();
       }
@@ -255,6 +286,11 @@
       var up = unitPlan(cfg.unit, cfg.len);
       up.topics.forEach(function(t){ picked = picked.concat(fill(blocks.filter(function(b){ return b.topic === t.id; }), up.alloc[t.id] || 0)); });
       label = 'Unit test: ' + unitName(cfg.unit); meta.unit = cfg.unit;
+    } else if(cfg.kind === 'mixed'){
+      if(!cramOk()) return;
+      var mp = mixedPlan(cfg.n);
+      Object.keys(mp.alloc).forEach(function(u){ picked = picked.concat(fill(unitBlocks(u), mp.alloc[u])); });
+      label = 'Mixed timed set';
     } else {
       var plan = examPlan();
       Object.keys(plan.alloc).forEach(function(u){ picked = picked.concat(fill(unitBlocks(u), plan.alloc[u])); });
@@ -271,7 +307,7 @@
     Promise.all([Core.loadQuestions(BASE, stubsList), Promise.all(frqPick.map(function(f){ return K.load(BASE, f.id); }))]).then(function(r){
       var full = r[0];
       if(full.length !== stubsList.length) throw new Error('missing questions');
-      if(Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
+      if(cfg.kind !== 'mixed' && Core.freeExam && !Core.freeExam().use()){ renderSetup(); return; }
       var t = timing();
       startSectionOne(full, r[1], label, meta, t.k);
     }).catch(function(){
@@ -621,7 +657,8 @@
       var p = new URLSearchParams(location.search), saved = prefs().examTiming;
       if(TIMINGS.some(function(t){ return t.id === saved; })) cfg.timing = saved;
       if(builtUnits().some(function(u){ return u.id === p.get('unit'); })){ cfg.unit = p.get('unit'); cfg.kind = 'unit'; }
-      if(p.get('mode') === 'unit' || p.get('mode') === 'full') cfg.kind = p.get('mode');
+      if(p.get('mode') === 'unit' || p.get('mode') === 'full' || p.get('mode') === 'mixed') cfg.kind = p.get('mode');
+      if(MIXED.indexOf(+p.get('n')) > -1) cfg.n = +p.get('n');
       renderSetup();
       if(p.toString()){ var s = app.querySelector('.bio-pr-start'); if(s && !s.disabled) s.focus(); }
     }).catch(function(){ app.innerHTML = '<p>The question bank did not load. Check your connection and reload.</p>'; });

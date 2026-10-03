@@ -12,7 +12,9 @@
 
    Exam date: assets/exam-date.js counts down to the course default, the
    AP® Biology exam on Monday 3 May 2027, until the student sets their own
-   date (apbio_exam_date). Every bar carries its number as text. */
+   date (apbio_exam_date). The cram kit (cram.html) is linked under the
+   card: its plan counts back from the same date. Every bar carries its
+   number as text. */
 (function(){
   var app = document.getElementById('app');
   var A = window.ApBioCore, CU = window.ApBioCurriculum;
@@ -91,7 +93,9 @@
     if(wp && wp.value < 0.6) steps.push('<li><a href="' + esc(BASE + 'practice.html?practice=' + wp.id) + '"><b>Practice ' + wp.id + ': ' + esc(wp.name) + '</b></a><span>Your weakest science practice, at ' + pct(wp.value) + '%.</span></li>');
     if(steps.length && !isNew) html += '<section class="panel bio-db-next" aria-labelledby="bio-db-next-h"><h2 id="bio-db-next-h">Study next</h2><ul class="bio-db-nextlist">' + steps.slice(0, 4).join('') + '</ul></section>';
 
-    html += '<div id="bioExamDate" class="bio-db-examdate"></div><div class="bio-db-grid"><div class="bio-db-col">';
+    html += '<div id="bioExamDate" class="bio-db-examdate"></div>' +
+      '<p class="bio-db-cram"><a class="btn-outline" href="' + esc(BASE + 'cram.html') + '">Open the cram kit</a> <span>A 3-week or 2-week plan counted back from your exam date, with timed mixed sets.</span></p>' +
+      '<div class="bio-db-grid"><div class="bio-db-col">';
 
     if(!isNew) html += '<section class="panel" aria-labelledby="bio-db-weak-h"><h2 id="bio-db-weak-h">Weakest topics</h2>' + (weak.length ? weak.map(function(w){
         return bar({ label: w.title, href: BASE + 'lessons/' + w.id + '.html', value: w.value, tier: tier(w.value, w.answered), note: plural(w.answered, 'item') + ' answered &middot; <a href="' + esc(BASE + 'notes/' + w.id + '.html') + '">notes</a>', action: action(BASE + 'practice.html?topic=' + encodeURIComponent(w.id), 'Practice') });
