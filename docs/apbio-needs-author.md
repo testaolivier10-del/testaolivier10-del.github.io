@@ -342,6 +342,27 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   species. Kept as a simplified example of induction by a diffusing signal.
 - **trp-attenuation** (open, 6.5). Attenuation of the trp operon is not taught; the operon is presented as controlled by
   the repressor alone. Outside the framework; flag if a teacher wants it as going-further.
+- **lac-catabolite-mechanism** (open; Unit 6 simulator `operons`). OpenStax 16.2 explains the glucose
+  effect only through cAMP and CAP (its Table 16.2: glucose + lactose gives "some" transcription). In
+  *E. coli* much of the glucose effect is inducer exclusion (glucose transport inhibits the lactose
+  permease, so less allolactose forms), and the cAMP story is debated. Meanwhile: the tool follows the
+  CAP–cAMP account and sets "repressor off, no CAP" at 10% of full; confirm.
+- **lacz-allolactose** (open; same simulator). Lactose becomes allolactose only through β-galactosidase,
+  so a cell with no working *lacZ* cannot be induced by lactose (labs use IPTG). Many AP-style items
+  treat *lacZ*⁻ + lactose as "mRNA made, no enzyme". Meanwhile: the model treats lactose as giving
+  allolactose in every cell, and the box says so; no question depends on it. Also ignored: the
+  permease (*lacY*), polar effects of *lacZ* mutations, and trp attenuation.
+- **repressor-blocks-polymerase** (open; same simulator). OpenStax says the bound repressor keeps RNA
+  polymerase from binding the promoter; for lac, the repressor and polymerase can bind together and
+  the repressor mainly blocks initiation. Meanwhile: the tool says the repressor "blocks RNA
+  polymerase" and draws the polymerase off the DNA; confirm the wording.
+- **operon-parameters** (open; same simulator). Rates 1 / 10 / 100, mRNA half-life 2 min, enzymes
+  diluted by growth with a 40-min doubling, instant input changes and one F′ copy are illustrative
+  choices, not measurements; the merodiploid mode is marked "going further" as beyond the course.
+- **openstax-license** (open, owner). The OpenStax *Biology 2e* page fetched on 2026-10-03 shows a
+  CC BY-NC-SA notice and a no-AI-ingestion line, while the course credits OpenStax figures as CC BY 4.0.
+  Check which license applies to the figures already used before launch. The operons tool uses no
+  OpenStax text or figures.
 
 ## Map content to confirm
 

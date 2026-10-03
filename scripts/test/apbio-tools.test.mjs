@@ -87,6 +87,26 @@ test('meiosis model: n, nondisjunction in meiosis I and II, 2^n, crossing over, 
   const mi = Me.mitosis({ pairs: 3 }); assert.ok(mi.identical); assert.deepEqual(Array.from(mi.counts), [6, 6]);
 });
 
+test('operon model: inducible lac with CAP, repressible trp, mutations, cis and trans, the mRNA–enzyme lag', () => {
+  const p = data('operons').model, O = M.operon, W = { I: '+', O: '+', Z: '+' };
+  const lac = (k, glucose, lactose) => O.state(p, { mode: 'lac', glucose, lactose, copies: k });
+  const levels = k => [[true, false], [true, true], [false, false], [false, true]].map(([g, l]) => lac(k, g, l).m);
+  assert.deepEqual(levels([W]), [1, 10, 1, 100]);
+  assert.deepEqual(levels([{ ...W, I: '-' }]), [10, 10, 100, 100]);
+  assert.deepEqual(levels([{ ...W, O: 'c' }]), [10, 10, 100, 100]);
+  assert.deepEqual(levels([{ ...W, I: 's' }]), [1, 1, 1, 1]);
+  const z = lac([{ ...W, Z: '-' }], false, true); assert.equal(z.m, 100); assert.equal(z.e, 0);
+  assert.equal(lac([{ ...W, I: '-' }, W], false, false).m, 2, 'lacI⁺ on F′ acts in trans');
+  assert.equal(lac([{ ...W, I: 's' }, W], false, true).m, 2, 'lacIˢ is dominant');
+  const cis = lac([{ ...W, O: 'c', Z: '-' }, W], false, false); assert.equal(cis.m, 101); assert.equal(cis.e, 1, 'Oᶜ acts in cis');
+  const trp = (k, t) => O.state(p, { mode: 'trp', trp: t, copies: [{ R: '+', O: '+', ...k }] }).m;
+  assert.deepEqual([trp({}, false), trp({}, true), trp({ R: '-' }, true), trp({ O: 'c' }, true)], [100, 1, 100, 100]);
+  const co = O.course(p, { mode: 'lac', glucose: true, lactose: false, copies: [W] }, { mode: 'lac', glucose: false, lactose: true, copies: [W] });
+  assert.equal(O.at(co, -5).m, 1);
+  assert.ok(O.at(co, 10).m > 95 && O.at(co, 10).e < 15 && O.at(co, 90).e > 75 && O.at(co, 90).e < 100);
+  assert.equal(JSON.stringify(co), JSON.stringify(O.course(p, { mode: 'lac', glucose: true, lactose: false, copies: [W] }, { mode: 'lac', glucose: false, lactose: true, copies: [W] })), 'deterministic');
+});
+
 test('graph scale checks', () => {
   const ok = r => r.every(x => x.ok);
   assert.ok(ok(M.graph.checkScale({ min: 0, max: 8, interval: 1 }, [2.1, 7.5])));
@@ -132,6 +152,12 @@ test('validators catch planted mistakes', async () => {
   assert.ok((await import('../lib/apbio-tool-checks/meiosis-nondisjunction.mjs')).check(me, null).some(e => /the model gives/.test(e)));
   const me2 = data('meiosis-nondisjunction'); me2.questions[1].numeric.answer = 8;
   assert.ok((await import('../lib/apbio-tool-checks/meiosis-nondisjunction.mjs')).check(me2, null).some(e => /cells:2/.test(e)));
+  const op = data('operons'); op.stimuli['op-s1'].tables[0].rows[1][4] = '10';
+  assert.ok((await import('../lib/apbio-tool-checks/operons.mjs')).check(op, null).some(e => /the model gives/.test(e)));
+  const op2 = data('operons'); op2.questions[2].numeric.answer = 2.2;
+  assert.ok((await import('../lib/apbio-tool-checks/operons.mjs')).check(op2, null).some(e => /lac:3/.test(e)));
+  const op3 = data('operons'); op3.model.noCap = 100;
+  assert.ok((await import('../lib/apbio-tool-checks/operons.mjs')).check(op3, null).length > 0, 'CAP must matter');
   const ds = data('descriptive-stats'); ds.intro = 'Ready for AP tests';
   assert.ok((await import('../lib/apbio-tool-checks/descriptive-stats.mjs')).check(ds, null).some(e => /AP/.test(e)));
 });

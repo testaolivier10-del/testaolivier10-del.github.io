@@ -214,3 +214,33 @@
 .mei-orient .bt-btn{justify-self:start;}
 .mei-results{display:grid;gap:10px;}
 .mei-combos{margin:0;font:600 15px/1.5 var(--font-ui);}
+
+/* Lac and trp operons: mutated parts get a dashed outline and a ⁻, ᶜ or ˢ
+   in their label, so no state depends on colour alone. */
+.bt-fig svg.op-fig{max-height:none;max-width:600px;margin:0 auto;}
+.op-fig text{font:800 12px var(--font-ui);}
+.op-fig .op-ttl{font:900 13px var(--font-ui);}
+.op-fig .op-note{fill:var(--muted);font:700 11px var(--font-ui);}
+.op-fig .op-dna{stroke:var(--ink);stroke-width:3;}
+.op-fig .op-box{fill:var(--bio-shape-fill);stroke:var(--bio-shape);stroke-width:1.5;}
+.op-fig .op-box.prom{fill:var(--bio-aff-fill);stroke:var(--bio-aff);}
+.op-fig .op-box.oper{fill:var(--bio-lo-fill);stroke:var(--bio-lo);}
+.op-fig .op-box.cap{fill:var(--bio-para-fill);stroke:var(--bio-para);}
+.op-fig .op-box.reg{fill:var(--paper);}
+.op-fig .op-box.mut{stroke:var(--bio-symp);stroke-width:2.5;stroke-dasharray:5 3;}
+.op-fig .op-cap{fill:var(--bio-para-fill);stroke:var(--bio-para);stroke-width:2;}
+.op-fig .op-pol{fill:var(--bio-aff-fill);stroke:var(--bio-aff);stroke-width:2;}
+.op-fig .op-pol.weak{stroke-dasharray:4 3;}
+.op-fig .op-rep{fill:var(--bio-symp-fill);stroke:var(--bio-symp);stroke-width:2;}
+.op-fig .op-small{fill:var(--bio-eff-fill);stroke:var(--bio-eff);stroke-width:1.5;}
+.op-fig .op-mrna{fill:none;stroke:var(--bio-causes);stroke-width:2;}
+.op-fig .op-mrna.hi{stroke-width:3.5;}
+.op-fig .op-mrna.trickle{stroke-dasharray:3 4;}
+.op-further{background:var(--ctint);border-radius:12px;padding:10px 14px;}
+.op-further p{margin:0;font:600 14.5px/1.55 var(--font-ui);}
+.op-genes{border:0;margin:0;padding:0;min-width:0;display:grid;gap:8px;}
+.op-genes legend{font:800 14px var(--font-ui);padding:0;margin-bottom:2px;}
+.op-explain h3{font:900 16px var(--font-ui);margin:0 0 6px;}
+.op-explain ol{margin:0;padding-left:22px;display:grid;gap:6px;font:600 15px/1.5 var(--font-ui);}
+.op-fig text.op-tight{font:800 10px var(--font-ui);}
+.op-read dd{font:800 14.5px/1.4 var(--font-ui);}
