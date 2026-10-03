@@ -1,0 +1,14 @@
+{
+  "hw-from-phenotype": {
+    "def": "Estimating allele frequencies from phenotype counts: the recessive phenotype frequency equals q², so q = √(recessive frequency) and p = 1 − q. This works only if the population is assumed to be in Hardy-Weinberg equilibrium."
+  },
+  "carrier-frequency": {
+    "def": "The expected frequency of heterozygotes, 2pq, who carry one copy of a recessive allele without showing its phenotype."
+  },
+  "hw-chi-square": {
+    "def": "A chi-square test comparing observed genotype counts with the counts p²N, 2pqN and q²N expected under Hardy-Weinberg equilibrium, using allele frequencies calculated from the same sample."
+  },
+  "allele-change": {
+    "def": "A change in p or q between generations, the signature of evolution in a population; calculated from genotype or phenotype counts at each time point."
+  }
+}
