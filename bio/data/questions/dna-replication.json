@@ -492,7 +492,7 @@
         "5′-TAGGCCAT-3′",
         "5′-AUGGCCUA-3′"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "Pair each base (T–A, A–T, C–G, G–C) and make the new strand antiparallel: the template's 3′ end lines up with the new strand's 5′ end, so the new strand reads 5′-ATGGCCTA-3′, built from 5′ to 3′.",

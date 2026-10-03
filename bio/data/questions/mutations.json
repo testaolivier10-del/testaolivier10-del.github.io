@@ -106,16 +106,18 @@
       "stimulus": "mutations-s1",
       "q": "Which strain makes a polypeptide identical to the normal one?",
       "options": [
+        "Strain A",
         "Strain B",
         "Strain C",
         "Strain D",
         "Strain E"
       ],
       "fixed": true,
-      "correct": 0,
+      "correct": 1,
       "why": {
         "correct": "In strain B the fourth codon changes from GAA to GAG. Both code for glutamic acid, so the amino acid sequence is unchanged: a silent mutation.",
         "options": [
+          "Strain A's deleted base shifts the reading frame, so the chain changes after alanine and stops early.",
           "Correct: GAA and GAG both code for glutamic acid.",
           "Strain C's third codon becomes UGA, a stop codon, so the chain ends after two amino acids.",
           "Strain D's fourth codon becomes GUA, valine instead of glutamic acid.",
@@ -139,7 +141,7 @@
         "Met-Ala-Trp: a nonsense mutation",
         "Met-Ala-Trp-Val-Ser-Lys-Trp: a frameshift mutation"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "The fourth codon changes from GAA (Glu) to GUA (Val); every other codon is the same. One amino acid replaced by another is a missense mutation, the same kind of change (Glu to Val) as in sickle cell disease.",
@@ -167,7 +169,7 @@
         "Met-Ala-Glu-Leu-Asn-Gly",
         "Met-Ala"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "Deleting G7 shifts the reading frame: AUG GCA GGG AAC UAA… gives Met-Ala-Gly-Asn, then UAA, a stop codon that was not in frame before.",
@@ -476,7 +478,7 @@
         "Deletion",
         "Translocation"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "The segment C-D-E has been flipped end to end into E-D-C, with no genes gained or lost: an inversion.",

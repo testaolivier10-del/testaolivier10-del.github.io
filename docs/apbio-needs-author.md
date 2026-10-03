@@ -313,6 +313,25 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - **mito-paternal** (open, 5.4). "An affected father, as a rule, passes a mitochondrial condition to none of his
   children" (notes, `bio-non-mendelian-genetics-14`); rare paternal leakage exists (see organelle-inheritance).
 
+- **u6-illustrative-data** (open, Unit 6 authoring). Several stimuli use invented data in realistic proportions,
+  stated as such or as "approximate": the error rates in `dna-replication-s3` (10⁻¹⁰ normal, 10⁻⁸ without proofreading,
+  10⁻⁷ without mismatch repair, 10⁻⁵ without both; real mutator strains vary by about an order of magnitude), the
+  Okazaki pulse data in `dna-replication-s2` (about half the label in short pieces at 5 s; in Okazaki's real experiments
+  most early label was in short pieces, partly because of uracil excision repair), the α-amanitin fractions in
+  `transcription-rna-processing-s3`, and the Bicoid gradient in `cell-specialization-s3` (an exponential model, length
+  constant 25% of the egg; real embryos shift the hunchback boundary less, roughly 5-10% of egg length per doubling of
+  bicoid dose). Confirm acceptable.
+- **lac-glucose-mechanism** (open, 6.5 and `frq-operon-sugars`). The glucose effect on the lac operon is taught through
+  cAMP-CAP only (low cAMP, no activation). Inducer exclusion (glucose transport blocking lactose uptake) also contributes
+  and is the larger effect in some studies. For your exam: the cAMP-CAP explanation is the one expected; items avoid
+  keying anything that inducer exclusion would contradict. The lac and trp operons are used by name although the 2025
+  framework reportedly no longer names them (see map-enrichment); every item describes the operon in its stimulus.
+- **lens-induction** (open, 6.6, `bio-cell-specialization-19`). The optic-cup transplant and filter result are the
+  classic textbook account; lens induction actually involves several earlier signals, and transplant results differ by
+  species. Kept as a simplified example of induction by a diffusing signal.
+- **trp-attenuation** (open, 6.5). Attenuation of the trp operon is not taught; the operon is presented as controlled by
+  the repressor alone. Outside the framework; flag if a teacher wants it as going-further.
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer

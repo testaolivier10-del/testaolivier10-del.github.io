@@ -310,18 +310,18 @@
       "stimulus": "biotechnology-s1",
       "q": "How many sites does enzyme B cut in the plasmid?",
       "options": [
-        "Two",
         "One",
+        "Two",
         "Three",
         "Four"
       ],
       "fixed": true,
-      "correct": 0,
+      "correct": 1,
       "why": {
         "correct": "Cutting a circle at n sites gives n pieces. Enzyme B gives two fragments (4,500 and 1,500 bp), so it cuts twice.",
         "options": [
-          "Correct: two cuts in a circle give two pieces.",
           "One cut in a circle gives a single linear piece, as enzyme E shows.",
+          "Correct: two cuts in a circle give two pieces.",
           "Three cuts would give three fragments; lane B has two bands.",
           "Four cuts would give four fragments."
         ]
@@ -338,19 +338,19 @@
       "stimulus": "biotechnology-s1",
       "q": "Taking enzyme E's site as position 0 on the 6,000 bp circle, which map fits all three lanes?",
       "options": [
+        "B sites at 500 and 2,000",
         "B sites at 1,000 and 2,500",
         "B sites at 1,500 and 3,000",
-        "B sites at 500 and 2,000",
         "B sites at 2,000 and 3,500"
       ],
       "fixed": true,
-      "correct": 0,
+      "correct": 1,
       "why": {
         "correct": "B sites at 1,000 and 2,500 give B fragments of 1,500 (1,000 to 2,500) and 4,500 (the rest). Adding E's cut at 0 splits the 4,500 piece into 1,000 (0 to 1,000) and 3,500 (2,500 to 6,000): the 3,500, 1,500 and 1,000 bands of the double digest. (The mirror-image map, B sites at 3,500 and 5,000, fits equally well; the gel cannot tell the two directions around the circle apart.)",
         "options": [
+          "B fragments would be 1,500 and 4,500, but the double digest would give 500, 1,500 and 4,000.",
           "Correct: it reproduces the enzyme B lane and the double digest.",
           "B fragments would be 1,500 and 4,500, but the double digest would give 1,500, 1,500 and 3,000.",
-          "B fragments would be 1,500 and 4,500, but the double digest would give 500, 1,500 and 4,000.",
           "B fragments would be 1,500 and 4,500, but the double digest would give 2,000, 1,500 and 2,500."
         ]
       }
@@ -398,7 +398,7 @@
         "One band, at 6,000 bp",
         "Three bands, at 6,000, 900 and 450 bp"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "The insert is joined into the E site, so the new plasmid has two E sites, one at each end of the insert. Cutting them releases the 900 bp insert and the 6,000 bp plasmid backbone.",
@@ -672,7 +672,7 @@
         "5′-ACGTACGT-3′",
         "5′-CTAGCTAG-3′"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "Each fragment ends with a chain-stopping nucleotide at the position equal to its length. Reading from length 1 to 8: C (1), A (2), T (3), G (4), C (5), A (6), T (7), G (8): 5′-CATGCATG-3′.",

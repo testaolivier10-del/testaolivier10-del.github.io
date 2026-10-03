@@ -1,0 +1,90 @@
+{
+  "id": "frq-frameshift-protein",
+  "title": "Substitution versus frameshift: predict the protein",
+  "type": "conceptual",
+  "points": 4,
+  "units": [
+    "unit-6"
+  ],
+  "topics": [
+    "mutations",
+    "translation"
+  ],
+  "practices": [
+    "1.B",
+    "6.E",
+    "6.C"
+  ],
+  "stimulus": {
+    "kind": "model",
+    "title": "A short coding sequence and three mutations",
+    "text": "<p>The table shows the first part of a normal mRNA and three mutant versions, each with one change. A codon table, grouped by amino acid, follows.</p>",
+    "html": "<table class=\"compare\"><caption>Normal and mutant mRNAs (5′ to 3′; positions counted from the A of the start codon)</caption><thead><tr><th>mRNA</th><th>Sequence</th><th>Change</th></tr></thead><tbody><tr><th scope=\"row\">Normal</th><td>AUG UUC GGA CAU UGG AAA CCG UAG GC</td><td>—</td></tr><tr><th scope=\"row\">Mutation 1</th><td>AUGUUUGGACAUUGGAAACCGUAGGC</td><td>C at position 6 replaced by U</td></tr><tr><th scope=\"row\">Mutation 2</th><td>AUGUAUCGGACAUUGGAAACCGUAGGC</td><td>A inserted after position 4</td></tr><tr><th scope=\"row\">Mutation 3</th><td>AUGUUCAGACAUUGGAAACCGUAGGC</td><td>G at position 7 replaced by A</td></tr></tbody></table><table class=\"compare\"><caption>The genetic code, by amino acid (mRNA codons, read 5′ to 3′)</caption><thead><tr><th>Amino acid</th><th>Codons</th></tr></thead><tbody><tr><th scope=\"row\">Alanine (Ala)</th><td>GCU, GCC, GCA, GCG</td></tr><tr><th scope=\"row\">Arginine (Arg)</th><td>CGU, CGC, CGA, CGG, AGA, AGG</td></tr><tr><th scope=\"row\">Asparagine (Asn)</th><td>AAU, AAC</td></tr><tr><th scope=\"row\">Aspartic acid (Asp)</th><td>GAU, GAC</td></tr><tr><th scope=\"row\">Cysteine (Cys)</th><td>UGU, UGC</td></tr><tr><th scope=\"row\">Glutamine (Gln)</th><td>CAA, CAG</td></tr><tr><th scope=\"row\">Glutamic acid (Glu)</th><td>GAA, GAG</td></tr><tr><th scope=\"row\">Glycine (Gly)</th><td>GGU, GGC, GGA, GGG</td></tr><tr><th scope=\"row\">Histidine (His)</th><td>CAU, CAC</td></tr><tr><th scope=\"row\">Isoleucine (Ile)</th><td>AUU, AUC, AUA</td></tr><tr><th scope=\"row\">Leucine (Leu)</th><td>UUA, UUG, CUU, CUC, CUA, CUG</td></tr><tr><th scope=\"row\">Lysine (Lys)</th><td>AAA, AAG</td></tr><tr><th scope=\"row\">Methionine (Met), also the start signal</th><td>AUG</td></tr><tr><th scope=\"row\">Phenylalanine (Phe)</th><td>UUU, UUC</td></tr><tr><th scope=\"row\">Proline (Pro)</th><td>CCU, CCC, CCA, CCG</td></tr><tr><th scope=\"row\">Serine (Ser)</th><td>UCU, UCC, UCA, UCG, AGU, AGC</td></tr><tr><th scope=\"row\">Threonine (Thr)</th><td>ACU, ACC, ACA, ACG</td></tr><tr><th scope=\"row\">Tryptophan (Trp)</th><td>UGG</td></tr><tr><th scope=\"row\">Tyrosine (Tyr)</th><td>UAU, UAC</td></tr><tr><th scope=\"row\">Valine (Val)</th><td>GUU, GUC, GUA, GUG</td></tr><tr><th scope=\"row\">Stop (no amino acid)</th><td>UAA, UAG, UGA</td></tr></tbody></table>"
+  },
+  "parts": [
+    {
+      "label": "a",
+      "points": 1,
+      "prompt": "<b>Describe</b> the effect of mutation 1 on the polypeptide, and <b>explain</b> why it has that effect.",
+      "rubric": [
+        {
+          "point": "Describes no change in the polypeptide (Met-Phe-Gly-His-Trp-Lys-Pro) and explains that the changed codon UUU still codes for phenylalanine, as UUC did (a silent mutation; the code is redundant).",
+          "accept": [
+            "no change, because UUC and UUU both code for Phe",
+            "silent: the second codon becomes UUU, still phenylalanine",
+            "same protein since more than one codon codes for phenylalanine"
+          ]
+        }
+      ],
+      "sample": "Mutation 1 has no effect on the polypeptide: it is still Met-Phe-Gly-His-Trp-Lys-Pro. The change turns the second codon from UUC into UUU, and both codons code for phenylalanine, because the genetic code has more than one codon for most amino acids. This is a silent mutation."
+    },
+    {
+      "label": "b",
+      "points": 1,
+      "prompt": "<b>Predict</b> the first five amino acids of the polypeptide made from mutation 2.",
+      "rubric": [
+        {
+          "point": "Predicts Met-Tyr-Arg-Thr-Leu (reading AUG UAU CGG ACA UUG).",
+          "accept": [
+            "Met-Tyr-Arg-Thr-Leu",
+            "Met Tyr Arg Thr Leu",
+            "methionine, tyrosine, arginine, threonine, leucine"
+          ]
+        }
+      ],
+      "sample": "Regrouping the mutant mRNA in threes from the start codon gives AUG UAU CGG ACA UUG, so the first five amino acids are Met-Tyr-Arg-Thr-Leu."
+    },
+    {
+      "label": "c",
+      "points": 1,
+      "prompt": "<b>Explain</b> why mutation 2 is more likely than mutation 3 to destroy the protein's function.",
+      "rubric": [
+        {
+          "point": "Explains that mutation 3 changes one codon/one amino acid (Gly to Arg) and leaves the rest normal, while mutation 2 adds one base and shifts the reading frame, changing every amino acid after it (and removing the normal stop codon from the frame or creating new stops).",
+          "accept": [
+            "mutation 3 changes one amino acid but mutation 2 shifts the frame so all later amino acids change",
+            "frameshift alters every codon after the insertion; the substitution alters only one",
+            "mutation 2 is a frameshift; mutation 3 is missense, one amino acid replaced"
+          ]
+        }
+      ],
+      "sample": "Mutation 3 replaces one base, so only one codon changes (GGA, glycine, becomes AGA, arginine) and every other amino acid is normal. Mutation 2 inserts one base, which shifts the reading frame: every codon after the insertion is regrouped, so every amino acid after methionine changes and the normal stop codon is no longer read. A protein with almost its whole sequence changed is very unlikely to fold and work."
+    },
+    {
+      "label": "d",
+      "points": 1,
+      "prompt": "A different mutation inserts one A after position 18 instead of after position 4. <b>Predict</b> whether its effect on the protein would be larger or smaller than that of mutation 2, and <b>justify</b> your prediction.",
+      "rubric": [
+        {
+          "point": "Predicts a smaller effect and justifies it: the frame shifts only after codon 6, so the first six amino acids (Met-Phe-Gly-His-Trp-Lys) are normal and only the amino acids after the insertion change (Pro becomes Thr-Val-Gly…).",
+          "accept": [
+            "smaller, because only the codons after position 18 are shifted; the first six amino acids are unchanged",
+            "smaller effect: a frameshift near the end changes fewer amino acids",
+            "less severe since Met-Phe-Gly-His-Trp-Lys stay the same"
+          ]
+        }
+      ],
+      "sample": "Smaller. An insertion after position 18 shifts the reading frame only from the seventh codon on, so the first six amino acids, Met-Phe-Gly-His-Trp-Lys, are the same as normal; only the amino acids after the insertion change (Thr-Val-Gly… instead of Pro and stop). Mutation 2 changes nearly every amino acid, so a late frameshift leaves much more of the protein intact."
+    }
+  ]
+}

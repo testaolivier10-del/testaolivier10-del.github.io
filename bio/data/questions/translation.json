@@ -122,7 +122,7 @@
         "Met-Pro-Trp-Lys-Cys-His",
         "Pro-Trp-Lys-Cys"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "Start at the first AUG (Met) and read in threes: CCU Pro, UGG Trp, AAG Lys, UGC Cys, then UAG, a stop codon, ends the chain.",
@@ -177,7 +177,7 @@
         "5′-ACC-3′",
         "3′-TCC-5′"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "The anticodon pairs with the codon antiparallel: codon 5′-UGG-3′ pairs with anticodon 3′-ACC-5′ (U with A, G with C, G with C).",
@@ -205,7 +205,7 @@
         "3′-CCT-5′",
         "3′-GGU-5′"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "The mRNA is complementary and antiparallel to the template: 5′-CCU-3′ pairs with 3′-GGA-5′ in the DNA.",

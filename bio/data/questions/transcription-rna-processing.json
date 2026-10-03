@@ -165,7 +165,7 @@
         "5′-UACGGCAAUCGU-3′",
         "5′-TGCTAACGGCAT-3′"
       ],
-      "fixed": true,
+      "fixed": false,
       "correct": 0,
       "why": {
         "correct": "Pair each base of strand A (A→U, T→A, G→C, C→G) and make the RNA antiparallel. Strand A's 3′ end is on the right, so the RNA's 5′ end is opposite it: reading strand B's bases from right to left gives 5′-UGCUAACGGCAU-3′.",

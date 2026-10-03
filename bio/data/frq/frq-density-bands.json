@@ -1,0 +1,124 @@
+{
+  "id": "frq-density-bands",
+  "title": "Density bands after rounds of replication",
+  "type": "data",
+  "points": 4,
+  "units": [
+    "unit-6"
+  ],
+  "topics": [
+    "dna-replication"
+  ],
+  "practices": [
+    "5.A",
+    "4.B",
+    "6.E",
+    "6.B"
+  ],
+  "stimulus": {
+    "kind": "table",
+    "title": "DNA density in bacteria moved from light to heavy nitrogen",
+    "text": "<p>Bacteria were grown for many generations in a medium containing only light nitrogen (<sup>14</sup>N), then moved to a medium containing only heavy nitrogen (<sup>15</sup>N). All the cells divided once per generation. At each generation, DNA was extracted and spun in a density gradient, and the share of the DNA at each density was measured. The values for generation 3 were not recorded.</p>",
+    "table": {
+      "caption": "Percent of DNA at each density",
+      "cols": [
+        "Generations in <sup>15</sup>N",
+        "Light (%)",
+        "Intermediate (%)",
+        "Heavy (%)"
+      ],
+      "rows": [
+        [
+          "0",
+          "100",
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "2",
+          "96",
+          "2"
+        ],
+        [
+          "2",
+          "1",
+          "51",
+          "48"
+        ],
+        [
+          "3",
+          "?",
+          "?",
+          "?"
+        ]
+      ]
+    }
+  },
+  "parts": [
+    {
+      "label": "a",
+      "points": 1,
+      "prompt": "<b>Calculate</b> the expected percentages of light, intermediate and heavy DNA at generation 3 if replication is semiconservative.",
+      "rubric": [
+        {
+          "point": "Light 0%, intermediate 25%, heavy 75% (2 of 8 molecules keep an old light strand paired with a heavy one; 6 are fully heavy).",
+          "accept": [
+            "0, 25, 75",
+            "25% intermediate and 75% heavy",
+            "2/8 hybrid, 6/8 heavy, none light"
+          ]
+        }
+      ],
+      "sample": "Each original molecule becomes 2³ = 8 molecules. Its two light strands stay intact, each paired with a new heavy strand, in 2 of the 8 molecules; the other 6 are fully heavy. So light 0%, intermediate 2 ÷ 8 = 25%, heavy 6 ÷ 8 = 75%."
+    },
+    {
+      "label": "b",
+      "points": 1,
+      "prompt": "<b>Describe</b> how the data for generation 1 rule out the conservative model.",
+      "rubric": [
+        {
+          "point": "Describes that the conservative model predicts half light (the intact old molecule) and half heavy (the all-new copy) at generation 1, with no intermediate DNA, but 96% of the DNA is intermediate.",
+          "accept": [
+            "conservative predicts light and heavy bands at generation 1, but almost all DNA is intermediate",
+            "no 50% light band appears; instead 96% is hybrid",
+            "the old molecule would stay light in the conservative model, but only 2% is light"
+          ]
+        }
+      ],
+      "sample": "In the conservative model the parent molecule stays whole, so at generation 1 half the DNA would still be fully light and half would be fully heavy, with none intermediate. Instead, 96% of the DNA is intermediate and only 2% is light, so the conservative model is ruled out."
+    },
+    {
+      "label": "c",
+      "points": 1,
+      "prompt": "<b>Predict</b> the percentages of light, intermediate and heavy DNA at generation 2 under the dispersive model, and <b>describe</b> how the data differ from that prediction.",
+      "rubric": [
+        {
+          "point": "Predicts a single band of DNA about one quarter light and three quarters heavy (between intermediate and heavy), so 0% at the light, intermediate and heavy positions, and notes that the data instead show two bands: about half intermediate (51%) and half fully heavy (48%).",
+          "accept": [
+            "dispersive gives one band ¾ heavy, not separate intermediate and heavy bands",
+            "dispersive: all molecules a quarter light; data show 51% intermediate and 48% heavy",
+            "the data have a fully heavy band, which dispersal cannot make"
+          ]
+        }
+      ],
+      "sample": "In the dispersive model every strand is a patchwork, so at generation 2 every molecule would be about one quarter light and three quarters heavy, forming one band between the intermediate and heavy positions; none would be exactly light, intermediate or heavy. The data instead show two bands, 51% intermediate and 48% fully heavy."
+    },
+    {
+      "label": "d",
+      "points": 1,
+      "prompt": "The measured values at generation 2 are 51% and 48%, not exactly 50% and 50%. <b>Explain</b> one reason the measured values could differ slightly from the predicted values.",
+      "rubric": [
+        {
+          "point": "Gives a valid reason: measurement error in estimating band amounts, cells not all dividing exactly once per generation (some divided twice or not at all), or a little old light nitrogen left in the cells or medium after the transfer.",
+          "accept": [
+            "not all cells divided exactly once in each generation",
+            "small errors in measuring the amount of DNA in each band",
+            "some 14N remained in the cells after the move, so a little new DNA was slightly lighter"
+          ]
+        }
+      ],
+      "sample": "The cells do not all divide in perfect step: if a few cells divided twice and others not yet, a little more DNA would be fully heavy or still intermediate than the model predicts. Small errors in measuring how much DNA is in each band would also shift the values by a percent or two."
+    }
+  ]
+}
