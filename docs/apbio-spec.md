@@ -76,7 +76,7 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
 |---|---|---|---|
 | 0.1 | Course registry refactor | `claude/apbio-registry` | in progress |
 | 0.2 | CED topic map (own words) | — | in progress |
-| 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | not started |
+| 0.3 | Dependency map, build-apbio, check-apbio-map, check-apbio-content, CI | `claude/apbio-phase0` | engine and generator done (`docs/apbio-architecture.md`); map and app pages open |
 | 2 | Units 1-3 + statistics skills, Beta | | not started |
 | 3 | Units 4-8, practice exams (by 2027-01-15) | | not started |
 | 4 | Cram kit (by 2027-03-01) | | not started |
@@ -104,6 +104,23 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    network policy, so the topic map was built from secondary sources that reproduce the CED's
    structure, cross-checked against each other, and written in our own words. A person should
    confirm it against the official CED (needs-author).
+
+5. (2026-10-03) **Phase 0 engine.** Data layout, formats, generator, runtime and checks are in
+   `docs/apbio-architecture.md`; authoring rules in `docs/apbio-authoring-guide.md`. The
+   generator's own small map loader (`scripts/lib/apbio-build.mjs`) stands in for
+   `scripts/lib/apbio-map.mjs` until the map lands; without `docs/apbio-dependency-map.json`
+   nothing is generated, and tests use `scripts/test/fixtures/apbio-map-stub.json` under
+   `APBIO_MAP_STUB=1`. `bio/data/published.json` starts empty, and while it is empty every
+   generated page is noindex. The sample topic `water-hydrogen-bonding` is placeholder content.
+6. (2026-10-03) **Item formats.** Every item carries `unit`, `topic` and `practice` (skill id,
+   e.g. "4.B"); types single, multi, numeric (absolute tolerance, unit, decimals), order (graded
+   against authored order), predict; stimulus sets are 4-5 consecutive items sharing a stimulus
+   (table, graph drawn from data at build time, setup, model); a concept topic needs 15+ items,
+   60% apply/analyze and 40% in sets; the key may be the longest option at most 40% of the time.
+   The bank is split per unit with a lazy index (A&P decision 76).
+7. (2026-10-03) **Beta, report, disclaimer on every page.** Every course page's footer carries the
+   Beta note ("not yet been reviewed by an AP® Biology teacher"), the trademark disclaimer and a
+   Report a problem button; site rules `apbio-trademark` and `apbio-beta-and-report`.
 
 ## 4. Map format (Phase 0)
 
