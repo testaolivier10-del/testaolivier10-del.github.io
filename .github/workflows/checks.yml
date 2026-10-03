@@ -42,6 +42,14 @@ jobs:
       # scripts/lib/site-config.mjs.
       - name: Worker address and CSP match scripts/lib/site-config.mjs
         run: node scripts/build-site-config.mjs --check
+      # The course list lives in assets/courses.js. The browser scripts carry
+      # generated copies of it; the Worker, the SQL and the per-course content
+      # tables cannot, so they are compared with it instead. Adding a course
+      # to the registry fails here, naming every place still to do.
+      - name: course lists match the registry (assets/courses.js)
+        run: |
+          node scripts/build-courses.mjs --check
+          node scripts/check-courses.mjs --check
       # Prices, the free/Premium wording, bank counts in the purchase dialog,
       # the manifests and premium.html come from assets/premium.js and the data.
       - name: prices, counts and free/Premium copy match premium.js and the data

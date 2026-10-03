@@ -23,6 +23,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { ROOT, ORIGIN, FREE_SENTENCE, premiumData, counts, fmt, money, foundingPrice, longDate, courseOffers, guaranteeText } from './lib/premium-data.mjs';
 import { CSP } from './lib/site-config.mjs';
+import { PAID } from './lib/courses.mjs';
 
 const check = process.argv.includes('--check');
 const { COURSES, FOUNDING } = premiumData();
@@ -44,8 +45,10 @@ function between(src, start, end, inner, rel) {
   return src.slice(0, a + start.length) + '\n' + inner + '\n' + src.slice(b);
 }
 
-const COURSE_URL = { nremt: '/nremt/', ochem: '/ochem/', anp: '/anatomy-physiology/' };
-const ORDER = ['nremt', 'ochem', 'anp'];
+// The paid courses in registry order (assets/courses.js); hidden ones are not
+// on sale yet, so not on the pricing page either.
+const COURSE_URL = Object.fromEntries(PAID.map((c) => [c.key, c.path]));
+const ORDER = PAID.filter((c) => c.status !== 'hidden').map((c) => c.key);
 const founding = FOUNDING && FOUNDING.until ? FOUNDING : null;
 /* The address terms.html and privacy.html publish. When hello@levlprep.com
    is set up (owner checklist), change it here and on those two pages. */

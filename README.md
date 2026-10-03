@@ -41,6 +41,9 @@ assets/                Shared across every course
                          "/" key open /search.html?course=<key>. Also holds LevlResume:
                          each course home stores where its "Continue" button points in
                          localStorage['levl_resume'], and the hub links to it
+  courses.js           The course registry: the one list of courses and their
+                         basic facts. Copied into the scripts that need it by
+                         scripts/build-courses.mjs — see Adding a course
   hub-home.js          The hub's per-course Continue links and its header search
   chime.js             The correct-answer sound, shared by both courses
   motion.js            The moments that make progress visible: the "+N XP" chip
@@ -735,6 +738,21 @@ python3 -m http.server 8000
 ```
 
 then open `http://localhost:8000/`.
+
+## Adding a course
+
+`assets/courses.js` is the one list of courses: key, short and full names, the name on a receipt (`productName`), path and folder, localStorage prefix, rank label, search label and aliases, whether it is paid, its status (`live`, `beta`, or `hidden`, which keeps it off the hub's Continue links, site search and premium.html) and its order. NREMT stays first: it is the fallback for a page outside every course.
+
+- **Browser scripts get it from a generator.** No page loads `courses.js`. `node scripts/build-courses.mjs` writes the fields each consumer names into a `// courses:begin … // courses:end` block in it (site-chrome, hub-progress, premium, site-search-all, tutor, analytics, account, progress-backup, account-page, hub-home, `index.html`, `offline.html`; the list is `TARGETS` in the script). Its `--check` runs in CI. Build scripts read the registry through `scripts/lib/courses.mjs` (sitemap priorities, premium.html's course order).
+- **The drift check covers what cannot read it.** `node scripts/check-courses.mjs --check` fails when the Worker (`PASSES`, `COURSE_NAMES`, `COURSE_RULES`, which also validates the assistant's course) or the course lists in `scripts/sql/schema.sql` and `reports.sql` disagree with the registry's paid courses, or when a per-course content table lacks an entry: `premium.js` `COURSES`, hub-progress `TITLES`, tutor `STARTERS` and `GREETING`, site-search-all `SOURCES`, `sw.js` `COURSE_URLS`. Its output is the to-do list.
+
+To add a course: add its entry to `assets/courses.js`, run `node scripts/build-courses.mjs`, then work through `node scripts/check-courses.mjs --check` until it passes. Then the spots no check can know about:
+
+- The course itself: its folder, its nav module (like `nremt/assets/nav.js`), its manifest, its storage keys under its `storagePrefix`, and a `registerNamespace()` call for sync.
+- Database: a new migration in `scripts/sql/migrations/` (named by date so it sorts last) that recreates every `check (course in …)` constraint and redefines every function with a course list, plus the same edits in `schema.sql`; `sql-migration.test.mjs` requires each function's latest migration to match `schema.sql` word for word. Then run the migration, rebuild the Worker (`node scripts/build-worker.mjs`) and deploy it, and add the passes to `POLAR_PRODUCTS`.
+- Pricing copy in `scripts/build-pricing.mjs` (each manifest's description, the 404 card) and the `// count:<key>` line in `premium.js`; the bank count in `scripts/lib/premium-data.mjs`.
+- Content keyed by course that no table holds: the hub's course cards in `index.html` and `404.html`, the noscript links in `search.html`, `scripts/lib/app-pages.mjs` (noindex app pages), `scripts/build-og-tags.mjs` (card image), page budgets in `scripts/check-weight.mjs`, sample pages in `check-a11y.mjs`, the tutor's question bank (`BANKS` in `tutor.js`), and `scripts/sql/pageviews.sql`.
+- Bump `CACHE_NAME` in `sw.js`.
 
 ## CI
 
