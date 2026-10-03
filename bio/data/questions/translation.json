@@ -145,14 +145,14 @@
       "stimulus": "translation-s1",
       "q": "In a second strain, nucleotide 12 of this mRNA is A instead of G. Predict the polypeptide it codes for.",
       "options": [
-        "Met-Pro, because the third codon becomes UGA, a stop codon",
+        "Met-Pro, because the third codon read becomes UGA, a stop codon",
         "Met-Pro-Trp-Lys-Cys, because a single change does not alter the protein",
         "Met-Pro-Lys-Cys, because the changed codon is skipped by the ribosome",
-        "Met-Pro-Glu-Lys-Cys, because the third codon now codes for a new amino acid"
+        "Met-Pro-Glu-Lys-Cys, because the third codon read now codes for a new amino acid"
       ],
       "correct": 0,
       "why": {
-        "correct": "Nucleotides 10-12 are the third codon, UGG (Trp). With A at position 12 it reads UGA, a stop codon, so the chain ends after Met-Pro.",
+        "correct": "Nucleotides 10-12 are the third codon read from AUG, UGG (Trp). With A at position 12 it reads UGA, a stop codon, so the chain ends after Met-Pro.",
         "options": [
           "Correct: UGG → UGA turns tryptophan's codon into a stop.",
           "Some single changes leave the amino acid the same, but UGA is a stop codon, so this one shortens the chain.",

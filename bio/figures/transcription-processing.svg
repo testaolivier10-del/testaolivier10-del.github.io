@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" role="img" aria-labelledby="txp-t txp-d">
 <title id="txp-t">Transcription and RNA processing in a eukaryotic cell</title>
-<desc id="txp-d">Top: a eukaryotic gene in the nucleus. The promoter, with its TATA box, sits just before the transcription start site, marked by a bent arrow. The gene has three exons (colored) separated by two introns (gray), followed by a terminator region. RNA polymerase II has bound at the promoter and moves along the template strand, reading it 3-prime to 5-prime and building RNA 5-prime to 3-prime; the coding strand has the same sequence as the RNA, with T in place of U. Middle: the primary transcript, pre-mRNA, contains all exons and introns. Processing adds a 5-prime cap and a poly-A tail, and spliceosomes cut out the introns and join the exons. Bottom: the mature mRNA, with cap, three joined exons and tail, leaves the nucleus through a nuclear pore to the cytoplasm, where ribosomes will use it.</desc>
+<desc id="txp-d">Top: a eukaryotic gene in the nucleus. The promoter, with its TATA box, sits just before the transcription start site, marked by a bent arrow. The gene has three exons (colored) separated by two introns (gray), followed by the signal that ends transcription. RNA polymerase II has bound at the promoter and moves along the template strand, reading it 3-prime to 5-prime and building RNA 5-prime to 3-prime; the coding strand has the same sequence as the RNA, with T in place of U. Middle: the primary transcript, pre-mRNA, contains all exons and introns. Processing adds a 5-prime cap and a poly-A tail, and spliceosomes cut out the introns and join the exons. Bottom: the mature mRNA, with cap, three joined exons and tail, leaves the nucleus through a nuclear pore to the cytoplasm, where ribosomes will use it.</desc>
 <defs><marker id="txp-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
 <rect width="760" height="470" fill="#ffffff"/>
 <g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
@@ -31,7 +31,7 @@
 <rect x="520.0" y="80.0" width="90.0" height="30.0" rx="3" fill="#F8E3B8" stroke="#E69F00" stroke-width="1.8"/>
 <text x="565.0" y="100.0" font-size="11" text-anchor="middle" font-weight="700">exon 3</text>
 <rect x="620.0" y="80.0" width="80.0" height="30.0" rx="3" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.5" stroke-dasharray="4 3"/>
-<text x="660.0" y="100.0" font-size="11" text-anchor="middle">terminator</text>
+<text x="660.0" y="100.0" font-size="11" text-anchor="middle">end signal</text>
 <ellipse cx="372.0" cy="104.0" rx="34.0" ry="20.0" fill="#56B4E9" stroke="#0072B2" stroke-width="2"/>
 <text x="372.0" y="108.0" font-size="11" text-anchor="middle" font-weight="700">RNA pol II</text>
 <path d="M 340 116 C 300 150, 250 150, 200 160" stroke="#D55E00" stroke-width="3" fill="none"/>

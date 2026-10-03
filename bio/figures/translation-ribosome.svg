@@ -6,7 +6,7 @@
 <g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
 <rect x="150.0" y="90.0" width="330.0" height="150.0" rx="40" fill="#DCE6E4" stroke="#5D6B69" stroke-width="2"/>
 <rect x="150.0" y="262.0" width="330.0" height="70.0" rx="28" fill="#DCE6E4" stroke="#5D6B69" stroke-width="2"/>
-<text x="488.0" y="170.0" font-size="12" text-anchor="start" font-weight="700" fill="#5D6B69">large subunit</text>
+<text x="488.0" y="215.0" font-size="12" text-anchor="start" font-weight="700" fill="#5D6B69">large subunit</text>
 <text x="488.0" y="300.0" font-size="12" text-anchor="start" font-weight="700" fill="#5D6B69">small subunit</text>
 <line x1="80.0" y1="250.0" x2="720.0" y2="250.0" stroke="#D55E00" stroke-width="3"/>
 <text x="70.0" y="255.0" font-size="13" text-anchor="end" font-weight="700">5′</text>

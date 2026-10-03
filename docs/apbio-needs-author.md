@@ -340,6 +340,13 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - **lens-induction** (open, 6.6, `bio-cell-specialization-19`). The optic-cup transplant and filter result are the
   classic textbook account; lens induction actually involves several earlier signals, and transplant results differ by
   species. Kept as a simplified example of induction by a diffusing signal.
+- **trpR-autoregulation** (open, 6.5; review u6). The trp repressor also represses its own gene, *trpR*, so
+  tryptophan lowers repressor synthesis a few-fold. The course says the repressor is "made" and activated by
+  tryptophan without mentioning this; the predict item `bio-gene-regulation-16` no longer keys "repressor made:
+  no change" (that variable was replaced). Outside the framework; no item depends on it now.
+- **lens-induction-species** (open, 6.6; review u6). The flank-transplant result comes from some frog species
+  (not all), and the filter (transfilter) result from chick and mouse work, so `bio-cell-specialization-19` now
+  says "some vertebrate embryos" instead of "a frog embryo". Keep or simplify further.
 - **trp-attenuation** (open, 6.5). Attenuation of the trp operon is not taught; the operon is presented as controlled by
   the repressor alone. Outside the framework; flag if a teacher wants it as going-further.
 - **lac-catabolite-mechanism** (open; Unit 6 simulator `operons`). OpenStax 16.2 explains the glucose

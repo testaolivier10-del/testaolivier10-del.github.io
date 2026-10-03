@@ -545,13 +545,13 @@
           "why": "The active repressor on the operator blocks RNA polymerase, so the operon is switched off."
         },
         {
-          "name": "Amount of trp repressor protein made",
+          "name": "Amount of lac operon mRNA made (no lactose in either medium)",
           "answer": "none",
-          "why": "The repressor's own gene is expressed at a steady level; tryptophan changes the repressor's shape, not how much is made."
+          "why": "Tryptophan does not act on the lac repressor or on CAP; with no lactose, the lac operon stays off before and after the move."
         }
       ],
       "why": {
-        "correct": "The trp operon is repressible: its end product, tryptophan, activates the repressor. When tryptophan is plentiful, the cell stops making the enzymes that build it; the amount of repressor protein stays the same."
+        "correct": "The trp operon is repressible: its end product, tryptophan, activates the repressor. When tryptophan is plentiful, the cell stops making the enzymes that build it. Other operons, such as lac, do not respond to tryptophan."
       }
     },
     {

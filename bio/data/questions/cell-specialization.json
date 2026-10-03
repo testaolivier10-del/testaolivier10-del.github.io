@@ -665,9 +665,9 @@
       "q": "A drug blocks the proteasome, the protein complex that breaks down proteins tagged for destruction. Predict each quantity in dividing cells treated with the drug, compared with untreated cells.",
       "variables": [
         {
-          "name": "Amount of mitotic cyclin left after anaphase",
+          "name": "Amount of mitotic cyclin in cells an hour after they reach metaphase",
           "answer": "up",
-          "why": "Cyclins are tagged and broken down by the proteasome to end mitosis; blocked, they stay."
+          "why": "Cyclins are tagged and broken down by the proteasome to end mitosis; with the proteasome blocked, they stay."
         },
         {
           "name": "Number of cells that complete mitosis and divide",
@@ -744,7 +744,7 @@
       "practice": "6.B",
       "level": "analyze",
       "diff": 3,
-      "q": "In a frog embryo, the optic cup (an outgrowth of the developing brain) normally touches the skin above it, which then forms a lens. When an optic cup is transplanted under skin on the side of the body, a lens forms there. When a thin filter that lets molecules through but not cells is placed between them, a lens still forms. What do these results show?",
+      "q": "In some vertebrate embryos, the optic cup (an outgrowth of the developing brain) normally touches the skin above it, which then forms a lens. When an optic cup is transplanted under skin on the side of the body, a lens forms there. When a thin filter that lets molecules through but not cells is placed between them, a lens still forms. What do these results show?",
       "options": [
         "The optic cup releases signal molecules that induce nearby skin cells to switch on lens genes.",
         "Lens cells are carried to the skin by the optic cup, and they divide to make the lens.",
