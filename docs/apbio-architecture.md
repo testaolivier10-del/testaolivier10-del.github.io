@@ -262,10 +262,15 @@ comparison; maternal solid + M, paternal striped + P), also `premium: "tools"`; 
 live once `unit-6` is published) `operons` (`ApBioMath.operon`: lac with glucose/lactose, CAP–cAMP and
 the repressor, trp with tryptophan as corepressor; lacI⁻, lacIˢ, Oᶜ, lacZ⁻, trpR⁻, trp Oᶜ; a "going
 further" chromosome + F′ merodiploid for cis/trans; mRNA and enzyme time course solved exactly),
-`premium: "tools"`. Their topics
-are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other six (ETC/ATP synthase, light
-reactions/Calvin,
-Hardy-Weinberg/drift, tree reading, population growth, energy flow) come with their units: add
+`premium: "tools"`; and (Unit 7, live once `unit-7` is published) `hardy-weinberg-drift` (`ApBioMath.popgen`: one
+locus, N adults or very large; selection → mutation → migration → mating with inbreeding F → Wright-Fisher sampling,
+replicate r seeded `rng(seed + 7919·r)`; bottleneck/founder event; χ² against Hardy-Weinberg with df 2 and df 1 shown;
+stimulus tables are seeded runs recomputed by the validator) and `tree-reading` (`ApBioMath.phylo`: Newick trees,
+rotation, MRCA, clade/paraphyletic/polyphyletic, sisters, path distances, `fromCharacters`; read three prepared trees,
+place characters, build a tree from a table, checked in any rotation; placements and builds recorded as
+`tree-reading:<tree>:char-<id>` and `tree-reading:build-<set>:tree`), both `premium: "tools"`. Their topics
+are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other four (ETC/ATP synthase, light
+reactions/Calvin, population growth, energy flow) come with their units: add
 the model to `ApBioMath` (or the script), the script, the data, the validator and the
 `pages.json` entry.
 
