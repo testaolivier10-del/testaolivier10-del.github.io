@@ -254,9 +254,13 @@ then 3-5 stimulus questions (bank item format; `stimuli` with `tables[]`, each t
 `signal-transduction-amplification` (`ApBioMath.signal`: GPCR → G protein → adenylyl cyclase →
 cAMP → PKA → kinase cascade → glucose release, Euler ODEs, blocks and washout) and
 `cell-cycle-checkpoints` (`ApBioMath.cellCycle`: deterministic age-binned population, G1/G2/M
-checkpoints, p53/Rb/cyclin D–CDK/ras, DNA histogram), all three `premium: "tools"`. Their topics
-are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other eight (ETC/ATP synthase, light
-reactions/Calvin, meiosis/nondisjunction, operons,
+checkpoints, p53/Rb/cyclin D–CDK/ras, DNA histogram), all three `premium: "tools"`; and (Unit 5,
+live once `unit-5` is published) `meiosis-nondisjunction` (`ApBioMath.meiosis`: 2n = 4 or 6 stepped
+from G1 to four gametes, crossing over, metaphase I orientations, nondisjunction in meiosis I or II
+for a chosen pair, gamete and zygote counts, 2^n and `series` over every line-up, `mitosis` for the
+comparison; maternal solid + M, paternal striped + P), also `premium: "tools"`. Their topics
+are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other seven (ETC/ATP synthase, light
+reactions/Calvin, operons,
 Hardy-Weinberg/drift, tree reading, population growth, energy flow) come with their units: add
 the model to `ApBioMath` (or the script), the script, the data, the validator and the
 `pages.json` entry.

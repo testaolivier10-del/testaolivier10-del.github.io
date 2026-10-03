@@ -279,6 +279,17 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   per h), apoptosis (5% per h) and G2 escape without p53 (50% per h) are illustrative, not
   measured; phase lengths follow OpenStax 10.3 (G1 9 h, S 10 h, G2 4.5 h, M 0.5 h). Both boxes
   say the numbers are made up in realistic proportions.
+- **meiosis-2n-lineups** (open; Unit 5 simulator `meiosis-nondisjunction`). OpenStax 11.1 says the
+  number of possible metaphase I alignments is 2<sup>n</sup>. Strictly, mirror-image line-ups give
+  the same pair of gamete sets, so there are 2<sup>n−1</sup> distinct line-ups and 2<sup>n</sup>
+  distinct gametes. Meanwhile: the tool counts 2<sup>n</sup> *gametes* (and its box notes the
+  mirror line-ups); confirm the wording for lessons.
+- **meiosis-model-simplifications** (open; same simulator). One crossover per pair at a fixed
+  point between the two inner nonsister chromatids; meiosis I nondisjunction always sends both
+  homologs to cell 1; meiosis II sends sister chromatid 1 to the first gamete (Try every line-up
+  also tries the other arrangements); one nondisjunction at a time; no sex chromosomes; every
+  chromatid counts as equal DNA. So with crossing over the model's gamete count (4<sup>n</sup>
+  over all line-ups) is far below real meiosis. The box states each rule. Confirm acceptable.
 
 ## Map content to confirm
 

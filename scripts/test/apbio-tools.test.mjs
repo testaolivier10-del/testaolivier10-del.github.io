@@ -74,6 +74,19 @@ test('cell cycle model: growth factor, Rb, p53 and the spindle checkpoint', () =
   assert.equal(JSON.stringify(C.simulate(p, N)), JSON.stringify(C.simulate(p, N)), 'deterministic');
 });
 
+test('meiosis model: n, nondisjunction in meiosis I and II, 2^n, crossing over, mitosis', () => {
+  const Me = M.meiosis, labels = c => Me.simulate(c).gametes.map(g => g.label).join(',');
+  assert.equal(labels({ pairs: 3 }), 'n,n,n,n');
+  assert.equal(labels({ pairs: 3, nd: 'I', ndPair: 1 }), 'n+1,n+1,n−1,n−1');
+  assert.equal(labels({ pairs: 3, nd: 'II', ndPair: 1, ndCell: 1 }), 'n,n,n+1,n−1');
+  assert.deepEqual(Array.from(Me.simulate({ pairs: 2, nd: 'I' }).gametes, g => g.zygote), [5, 5, 3, 3]);
+  assert.equal(Me.series({ pairs: 3 }).kinds, 8);
+  assert.equal(Me.series({ pairs: 3, cross: true }).kinds, 64);
+  assert.equal(Me.simulate({ pairs: 3, cross: true }).kinds, 4);
+  assert.deepEqual(Array.from(Me.simulate({ pairs: 3, nd: 'I' }).stages.find(s => s.id === 'gametes').dna).map(x => +x.toFixed(2)), [1.33, 1.33, 0.67, 0.67]);
+  const mi = Me.mitosis({ pairs: 3 }); assert.ok(mi.identical); assert.deepEqual(Array.from(mi.counts), [6, 6]);
+});
+
 test('graph scale checks', () => {
   const ok = r => r.every(x => x.ok);
   assert.ok(ok(M.graph.checkScale({ min: 0, max: 8, interval: 1 }, [2.1, 7.5])));
@@ -115,6 +128,10 @@ test('validators catch planted mistakes', async () => {
   assert.ok((await import('../lib/apbio-tool-checks/cell-cycle-checkpoints.mjs')).check(cc, null).some(e => /the model gives/.test(e)));
   const cc2 = data('cell-cycle-checkpoints'); cc2.model.repair = 0;
   assert.ok((await import('../lib/apbio-tool-checks/cell-cycle-checkpoints.mjs')).check(cc2, null).length > 0, 'a changed model parameter breaks the tables');
+  const me = data('meiosis-nondisjunction'); me.stimuli['mei-s1'].tables[0].rows[1][3] = '3 (n)';
+  assert.ok((await import('../lib/apbio-tool-checks/meiosis-nondisjunction.mjs')).check(me, null).some(e => /the model gives/.test(e)));
+  const me2 = data('meiosis-nondisjunction'); me2.questions[1].numeric.answer = 8;
+  assert.ok((await import('../lib/apbio-tool-checks/meiosis-nondisjunction.mjs')).check(me2, null).some(e => /cells:2/.test(e)));
   const ds = data('descriptive-stats'); ds.intro = 'Ready for AP tests';
   assert.ok((await import('../lib/apbio-tool-checks/descriptive-stats.mjs')).check(ds, null).some(e => /AP/.test(e)));
 });

@@ -14,7 +14,7 @@
      rate = Δy/Δt; percent change = (final - initial) / initial × 100
 
    The simulator models (enzyme kinetics, osmosis, signal amplification,
-   cell cycle checkpoints) are described, with
+   cell cycle checkpoints, meiosis) are described, with
    their assumptions, in the "How this model works" box of each tool's data. */
 (function(root){
   'use strict';
@@ -379,6 +379,113 @@
   }
   var cellCycle = { simulate: cycleSim, at: function(sim, t){ for(var i = 0; i < sim.length; i++) if(Math.abs(sim[i].t - t) < 1e-6) return sim[i]; return sim[sim.length - 1]; } };
 
+  /* ------------------------------------------- meiosis and nondisjunction */
+  /* A diploid cell with k homologous pairs (2n = 2k) goes through meiosis.
+     A chromatid is { pair, from, tip }: "from" is the parent its body
+     (centromere side) came from, 'M' maternal or 'P' paternal, and "tip" is
+     where its far end came from (different after crossing over). A
+     chromosome is { pair, from, c: [chromatids] }: one chromatid before S
+     phase and in gametes, two (sister chromatids) from S to anaphase II.
+     c: { pairs: k, cross: bool, orient: [0|1 per pair] (0: the maternal
+     homolog faces cell 1 at metaphase I), orient2: [[0|1 per pair] per cell]
+     (0: chromatid 1 goes to the first gamete of that cell), nd: 'none', 'I'
+     or 'II', ndPair: pair index, ndCell: 0 or 1 (the cell in meiosis II)}.
+     Rules (also in the tool's "How this model works" box): one crossover
+     per pair when crossing over is on, between the two inner nonsister
+     chromatids (maternal chromatid 2 and paternal chromatid 1), which swap
+     their tips; nondisjunction in meiosis I sends both homologs of the pair
+     to cell 1; in meiosis II both sister chromatids of the pair go to the
+     first gamete of the chosen cell. Every chromatid counts as the same
+     amount of DNA, scaled so a G1 cell holds 2 units. */
+  var MEIO_STAGES = ['g1', 's', 'pro1', 'meta1', 'ana1', 'mei1', 'meta2', 'ana2', 'gametes'];
+  function mcopy(x){ return JSON.parse(JSON.stringify(x)); }
+  function meioCount(cell){ return cell.length; }
+  function meioChromatids(cell){ var n = 0; cell.forEach(function(ch){ n += ch.c.length; }); return n; }
+  function meioOpts(c){
+    var k = c.pairs || 3, o = { pairs: k, cross: !!c.cross, nd: c.nd || 'none', ndPair: c.ndPair || 0, ndCell: c.ndCell || 0, orient: [], orient2: [[], []] };
+    for(var i = 0; i < k; i++){ o.orient.push((c.orient && c.orient[i]) ? 1 : 0); o.orient2[0].push(c.orient2 && c.orient2[0] && c.orient2[0][i] ? 1 : 0); o.orient2[1].push(c.orient2 && c.orient2[1] && c.orient2[1][i] ? 1 : 0); }
+    return o;
+  }
+  function byPair(a, b){ return a.pair - b.pair || (a.from < b.from ? -1 : a.from > b.from ? 1 : 0); }
+  function meiosisSim(c){
+    var o = meioOpts(c), k = o.pairs, st = [], i;
+    var g1 = [];
+    for(i = 0; i < k; i++){ g1.push({ pair: i, from: 'M', c: [{ pair: i, from: 'M', tip: 'M' }] }); g1.push({ pair: i, from: 'P', c: [{ pair: i, from: 'P', tip: 'P' }] }); }
+    st.push({ id: 'g1', cells: [g1] });
+    var s = g1.map(function(ch){ return { pair: ch.pair, from: ch.from, c: [mcopy(ch.c[0]), mcopy(ch.c[0])] }; });
+    st.push({ id: 's', cells: [mcopy(s)] });
+    var pro = mcopy(s);
+    if(o.cross) for(i = 0; i < k; i++){
+      var m = pro[2 * i], p = pro[2 * i + 1];
+      m.c[1].tip = 'P'; p.c[0].tip = 'M';
+    }
+    st.push({ id: 'pro1', cells: [mcopy(pro)], paired: true, crossed: o.cross });
+    // metaphase I: each pair's homologs face the two poles (cell 1 side, cell 2 side)
+    var left = [], right = [];
+    for(i = 0; i < k; i++){
+      var mm = pro[2 * i], pp = pro[2 * i + 1], a = o.orient[i] ? pp : mm, b = o.orient[i] ? mm : pp;
+      left.push(a); right.push(b);
+    }
+    st.push({ id: 'meta1', cells: [mcopy(pro)], sides: [mcopy(left), mcopy(right)], orient: o.orient.slice() });
+    var c1 = [], c2 = [];
+    for(i = 0; i < k; i++){
+      if(o.nd === 'I' && o.ndPair === i){ c1.push(mcopy(left[i])); c1.push(mcopy(right[i])); }
+      else { c1.push(mcopy(left[i])); c2.push(mcopy(right[i])); }
+    }
+    c1.sort(byPair); c2.sort(byPair);
+    st.push({ id: 'ana1', cells: [mcopy(c1), mcopy(c2)], moving: true });
+    st.push({ id: 'mei1', cells: [mcopy(c1), mcopy(c2)] });
+    st.push({ id: 'meta2', cells: [mcopy(c1), mcopy(c2)] });
+    var gam = [[], [], [], []];
+    [c1, c2].forEach(function(cell, ci){
+      cell.forEach(function(ch){
+        var sw = o.orient2[ci][ch.pair], first = ch.c[sw ? 1 : 0], second = ch.c[sw ? 0 : 1];
+        if(o.nd === 'II' && o.ndCell === ci && o.ndPair === ch.pair){ gam[2 * ci].push({ pair: ch.pair, from: first.from, c: [first] }); gam[2 * ci].push({ pair: ch.pair, from: second.from, c: [second] }); }
+        else { gam[2 * ci].push({ pair: ch.pair, from: first.from, c: [first] }); gam[2 * ci + 1].push({ pair: ch.pair, from: second.from, c: [second] }); }
+      });
+    });
+    st.push({ id: 'ana2', cells: mcopy(gam), moving: true });
+    st.push({ id: 'gametes', cells: mcopy(gam) });
+    st.forEach(function(x){
+      x.counts = x.cells.map(meioCount);
+      x.dna = x.cells.map(function(cell){ return meioChromatids(cell) * 2 / (2 * k); });
+    });
+    var gametes = gam.map(function(cell){
+      var n = cell.length, d = n - k;
+      var per = []; for(i = 0; i < k; i++) per.push(cell.filter(function(ch){ return ch.pair === i; }).length);
+      var extra = per.indexOf(2), miss = per.indexOf(0);
+      return { chromosomes: cell, n: n, label: d === 0 ? 'n' : d > 0 ? 'n+' + d : 'n−' + (-d), perPair: per, key: meioKey(cell),
+        zygote: n + k, zlabel: d === 0 ? '2n' : d > 0 ? '2n+' + d : '2n−' + (-d), trisomy: extra, monosomy: miss };
+    });
+    var keys = {}; gametes.forEach(function(g){ keys[g.key] = 1; });
+    return { opts: o, stages: st, gametes: gametes, kinds: Object.keys(keys).length, combos: Math.pow(2, k), k: k };
+  }
+  /* A gamete's chromosome set as text, e.g. "1M 2P(tip M) 3P". */
+  function meioName(ch){ var t = ch.c.length === 1 ? ch.c[0] : null; return (ch.pair + 1) + ch.from + (t && t.tip !== t.from ? '(tip ' + t.tip + ')' : ''); }
+  function meioKey(cell){ return cell.slice().sort(function(a, b){ return a.pair - b.pair || (meioName(a) < meioName(b) ? -1 : 1); }).map(meioName).join(' '); }
+  /* Every way the chromosomes can line up: 2^k in meiosis I and, for each,
+     4^k sister arrangements in meiosis II (they matter only after crossing
+     over, when sisters differ). Returns how many different gametes appear. */
+  function meiosisSeries(c){
+    var o = meioOpts(c), k = o.pairs, kinds = {}, n1 = Math.pow(2, k), n2 = o.cross ? Math.pow(4, k) : 1;
+    for(var a = 0; a < n1; a++) for(var b = 0; b < n2; b++){
+      var or = [], o2 = [[], []];
+      for(var i = 0; i < k; i++){ or.push((a >> i) & 1); o2[0].push((b >> i) & 1); o2[1].push((b >> (k + i)) & 1); }
+      var r = meiosisSim({ pairs: k, cross: o.cross, orient: or, orient2: o2, nd: o.nd, ndPair: o.ndPair, ndCell: o.ndCell });
+      r.gametes.forEach(function(g){ kinds[g.key] = (kinds[g.key] || 0) + 1; });
+    }
+    return { lineups: n1 * n2, meiosisI: n1, kinds: Object.keys(kinds).length, list: Object.keys(kinds).sort() };
+  }
+  /* Mitosis of the same G1 cell: S phase, then sister chromatids separate,
+     so each of the two daughter cells gets one copy of every chromosome. */
+  function mitosisSim(c){
+    var k = (c && c.pairs) || 3, cell = [];
+    for(var i = 0; i < k; i++){ cell.push({ pair: i, from: 'M', c: [{ pair: i, from: 'M', tip: 'M' }] }); cell.push({ pair: i, from: 'P', c: [{ pair: i, from: 'P', tip: 'P' }] }); }
+    var d = [mcopy(cell), mcopy(cell)];
+    return { parent: cell, daughters: d, counts: [d[0].length, d[1].length], identical: meioKey(d[0]) === meioKey(d[1]) && meioKey(d[0]) === meioKey(cell), dna: [2, 4, 2] };
+  }
+  var meiosis = { STAGES: MEIO_STAGES, simulate: meiosisSim, series: meiosisSeries, mitosis: mitosisSim, name: meioName, key: meioKey };
+
   /* ---------------------------------------------------- graph checks */
   /* "Nice" intervals: 1, 2, 2.5 or 5 times a power of ten. */
   function isNice(v){
@@ -440,6 +547,6 @@
     R: R_BAR, K0: K0, round: round, fixed: fixed, sum: sum, mean: mean, median: median, range: range, sorted: sorted,
     sumSq: sumSq, sd: sd, se: se, seFrom: seFrom, ci95: ci95, overlap: overlap, rate: rate, percentChange: percentChange, tol: tol,
     CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
-    simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, graph: graph
+    simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, graph: graph
   };
 })(typeof window !== 'undefined' ? window : globalThis);
