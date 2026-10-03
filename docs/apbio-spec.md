@@ -105,6 +105,34 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    structure, cross-checked against each other, and written in our own words. A person should
    confirm it against the official CED (needs-author).
 
-## 4. Open items
+## 4. Map format (Phase 0)
+
+`docs/apbio-dependency-map.json` (validated by `scripts/lib/apbio-map.mjs`, checked by
+`scripts/check-apbio-map.mjs`). Source for unit/topic facts: `docs/apbio-ced-map.json`.
+
+```
+{ "about", "version", "ced": { "edition", "effective", "note" },
+  "bigIdeas":  [{ "id": "EVO|ENE|IST|SYI", "name", "summary" }],
+  "practices": [{ "id": 1..6, "name", "mcqWeight": [min, max] }],
+  "parts":     [{ "id": "course", "title" }, { "id": "skills", "title": "Skills" }],
+  "chapters":  [{ "id": "unit-1", "n": 1, "part": "course", "title", "weight": [8, 11],
+                  "tools": { "simulators": [], "frqThemes": [], "stimulusThemes": [],
+                             "comparisonTables": [], "pathways": [] } },
+                { "id": "skills-stats", "part": "skills", "title", ... }],
+  "topics":    [{ "id": "<slug>", "ced": "1.1" | null, "title", "chapter", "kind": "concept|skill|drill",
+                  "bigIdeas": [], "practices": [focus practice ids], "after": "<topic id>" (skills
+                  and drills only: placed right after that topic in the course order),
+                  "searchPhrase" }],
+  "concepts":  [{ "id", "term", "aliases": [], "taughtIn": "<topic id>", "dependsOn": [] }],
+  "everydayWords": { "about", "words": [] },
+  "circularDependencies": [{ "id", "problem", "resolution": "pull-forward|preview", "into": [],
+                  "fullIn": [], "detail" }] }
+```
+
+Course order: unit topics in CED order; each skill/drill topic sits right after its `after`
+topic. Slugs and ids never contain the token "ap" (decision 2). Ordering rule as A&P: no concept
+used before the topic that teaches it, except everyday words and declared preview boxes.
+
+## 5. Open items
 
 See `docs/apbio-needs-author.md`.
