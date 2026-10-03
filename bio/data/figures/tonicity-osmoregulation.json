@@ -1,0 +1,7 @@
+{
+  "cells-in-solutions": {
+    "file": "figures/cells-in-solutions.svg", "ext": "svg", "w": 760, "h": 470,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Six cells in a grid. In a hypotonic solution a red blood cell swells and may burst, while a plant cell becomes firm with its membrane pressed against the wall. In an isotonic solution the red blood cell keeps its normal shape and the plant cell is limp. In a hypertonic solution the red blood cell shrivels and the plant cell's membrane pulls away from the wall."
+  }
+}

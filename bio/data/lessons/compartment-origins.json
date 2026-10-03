@@ -1,0 +1,61 @@
+{
+  "topic": "compartment-origins",
+  "hook": "<p>Every mitochondrion in your body carries its own small loop of DNA, separate from the DNA in your nucleus, and builds some of its own proteins on its own ribosomes. Those ribosomes are so like bacterial ones that some antibiotics meant for bacteria can slow them down. The best explanation is startling: your mitochondria are the descendants of bacteria that moved into another cell long ago and never left.</p>",
+  "prereq": [
+    {
+      "q": "Which describes the mitochondrion?",
+      "options": ["An organelle with a double membrane, its own DNA and its own ribosomes.", "An organelle with a single membrane and no DNA.", "A region of a prokaryote where its DNA is concentrated.", "A stack of flattened sacs that packages proteins."],
+      "correct": 0,
+      "why": "Mitochondria have an outer membrane and a folded inner membrane, and they carry their own DNA and ribosomes, facts that matter a great deal in this topic.",
+      "review": "cell-structure-function"
+    },
+    {
+      "q": "How does a cell take in a large particle, such as a bacterium?",
+      "options": ["By endocytosis: its membrane wraps around the particle and pinches off as a vesicle.", "Through a channel protein sized for the particle.", "By simple diffusion through the bilayer.", "By cotransport with sodium ions."],
+      "correct": 0,
+      "why": "Large particles are brought in by bulk transport. The membrane surrounds the particle and pinches off, so the particle ends up inside a membrane sac.",
+      "review": "membrane-transport"
+    },
+    {
+      "q": "What is the nucleoid?",
+      "options": ["The region of a prokaryote where its DNA gathers, with no membrane around it.", "The membrane around a eukaryotic nucleus.", "A cluster of ribosomes in a eukaryotic cell.", "The inner membrane of a mitochondrion."],
+      "correct": 0,
+      "why": "Prokaryotes have no nucleus; their DNA is concentrated in an unenclosed region, the nucleoid.",
+      "review": "cell-compartmentalization"
+    }
+  ],
+  "figure": { "figure": "endosymbiosis-steps", "caption": "The endosymbiotic theory in four steps: a host cell takes in a bacterium; the bacterium lives inside, wrapped in two membranes; its descendants become mitochondria; later, in one line of cells, a photosynthetic bacterium becomes the chloroplast." },
+  "chain": [
+    { "cause": "An ancestral host cell, with a nucleus and internal membranes, wrapped its membrane around a free-living, oxygen-using bacterium.", "effect": "The bacterium ended up inside the host, enclosed by its own plasma membrane plus a second membrane from the host: a double membrane." },
+    { "cause": "The bacterium was not digested; it kept living and dividing inside the host.", "effect": "The two lived in endosymbiosis: the host gained ATP, and the bacterium gained shelter and food (mutualism)." },
+    { "cause": "Over many generations, most of the bacterium's genes were lost or moved into the host's nucleus.", "effect": "It could no longer live on its own and became an organelle, the mitochondrion, still with circular DNA, bacteria-like ribosomes and division by splitting." },
+    { "cause": "Later, in one line of these cells that already had mitochondria, a photosynthetic bacterium was taken in the same way.", "effect": "It became the chloroplast, which is why plants and algae have both organelles while animals and fungi have only mitochondria." },
+    { "cause": "Living mitochondria and chloroplasts still carry the marks of that history.", "effect": "Double membranes, circular DNA, 70 S ribosomes, fission and close DNA matches to living bacteria are the evidence for the endosymbiotic theory." }
+  ],
+  "ideas": [
+    "<b>Endosymbiosis</b>: one organism living inside the cells of another. The <b>endosymbiotic theory</b> says mitochondria and chloroplasts began as free-living prokaryotes taken in by host cells.",
+    "Four pieces of evidence to know: a <b>double membrane</b>, their own <b>circular DNA</b>, <b>ribosomes like bacterial ones</b>, and new ones forming only by splitting, like <b>binary fission</b>.",
+    "Mitochondria came first (nearly all eukaryotes have them); chloroplasts came later in one branch (plants and algae).",
+    "Prokaryotes generally have no membrane-bound organelles; eukaryotes have many. The nucleus and endomembrane system may have begun as <b>infoldings</b> of the plasma membrane, a hypothesis that is less settled than endosymbiosis.",
+    "<b>Evolution</b> is change in the inherited traits of populations over generations; features shared because they were inherited from one ancestor are evidence of <b>common ancestry</b>."
+  ],
+  "misconception": {
+    "wrong": "Mitochondria and chloroplasts are bacteria that live inside our cells today.",
+    "right": "They descend from bacteria, but they are now organelles. Most of their original genes have been lost or moved to the nucleus, they depend on the host for most of their proteins, and they cannot survive on their own."
+  },
+  "check": [
+    "bio-compartment-origins-1",
+    "bio-compartment-origins-2",
+    "bio-compartment-origins-3",
+    "bio-compartment-origins-4",
+    "bio-compartment-origins-5",
+    "bio-compartment-origins-11",
+    "bio-compartment-origins-14"
+  ],
+  "summary": "<p>Eukaryotic cells have membrane-bound organelles and prokaryotes generally do not. Two of those organelles have an unusual history: by the endosymbiotic theory, mitochondria and chloroplasts descend from free-living prokaryotes taken in by ancestral host cells, first an oxygen-using bacterium and later, in one line, a photosynthetic one. Evidence: double membranes, their own circular DNA, bacteria-like ribosomes, division by a fission-like process and DNA that matches living bacteria. The nucleus and endomembrane system may have formed by infolding of the plasma membrane, a less settled hypothesis.</p>",
+  "connections": [
+    { "href": "../notes/cell-structure-function.html", "label": "Notes: Cell Structure and Function (mitochondria and chloroplasts)" },
+    { "href": "../notes/cell-compartmentalization.html", "label": "Notes: Cell Compartmentalization (what organelles do for a cell)" },
+    { "href": "../notes/membrane-transport.html", "label": "Notes: Membrane Transport (endocytosis)" }
+  ]
+}

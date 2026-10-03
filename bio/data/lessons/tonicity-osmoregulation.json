@@ -1,0 +1,95 @@
+{
+  "topic": "tonicity-osmoregulation",
+  "hook": "<p>Leave a bunch of limp celery in a glass of cold water overnight and by morning the stalks snap crisply. Sprinkle salt on a slug and it shrivels. Give a hospital patient pure water straight into a vein and their red blood cells start to burst. All three are the same event: water crossing membranes toward the side with more dissolved stuff.</p>",
+  "prereq": [
+    {
+      "q": "Which describes diffusion?",
+      "options": [
+        "Net movement of particles from where they are more concentrated to where they are less concentrated.",
+        "Net movement of particles from where they are less concentrated to where they are more concentrated.",
+        "Movement of particles that requires ATP from the cell.",
+        "Movement of particles that happens only in living cells."
+      ],
+      "correct": 0,
+      "why": "Random motion spreads particles out, so more of them move from crowded regions to scarce ones than the reverse, until they are evenly spread.",
+      "review": "cell-size"
+    },
+    {
+      "q": "What do aquaporins do?",
+      "options": [
+        "They are channel proteins that let water cross the membrane quickly.",
+        "They pump water into the cell using ATP.",
+        "They block water from crossing the membrane.",
+        "They carry sugars across the membrane in exchange for water."
+      ],
+      "correct": 0,
+      "why": "Aquaporins are water channels. Some water slips through the bilayer, but aquaporins let it cross far faster, with no energy spent.",
+      "review": "membrane-permeability"
+    }
+  ],
+  "figure": {
+    "figure": "cells-in-solutions",
+    "caption": "The same three solutions do different things to an animal cell, which has no wall, and a plant cell, which does. Arrows show the net movement of water."
+  },
+  "chain": [
+    {
+      "cause": "Dissolved solutes hold water molecules around them, so a solution with more solute has fewer water molecules free to move.",
+      "effect": "That solution has a lower water potential: a lower tendency for water to leave it."
+    },
+    {
+      "cause": "A membrane lets water through but holds back many solutes.",
+      "effect": "Water moves by osmosis from the side with higher water potential (fewer solutes, hypotonic) to the side with lower water potential (more solutes, hypertonic)."
+    },
+    {
+      "cause": "An animal cell in a hypotonic solution keeps gaining water, and nothing resists its swelling.",
+      "effect": "It swells and may burst; in a hypertonic solution it loses water and shrivels; in an isotonic solution it stays the same."
+    },
+    {
+      "cause": "A plant cell gaining water swells against its cell wall, and the wall pushes back.",
+      "effect": "Pressure builds inside (turgor), raising the cell's water potential until net water entry stops: the cell is firm, not burst."
+    },
+    {
+      "cause": "A plant cell in a hypertonic solution loses water.",
+      "effect": "Turgor drops (the cell goes flaccid), and with more loss the membrane pulls away from the wall: plasmolysis."
+    },
+    {
+      "cause": "Organisms whose surroundings differ from their cells keep gaining or losing water.",
+      "effect": "They osmoregulate: contractile vacuoles bail water out, kidneys adjust how much water leaves, and cells control their solute levels."
+    }
+  ],
+  "ideas": [
+    "Hypotonic, isotonic and hypertonic are <b>comparisons</b>. A solution is hypertonic <i>to</i> something. Always say what you are comparing.",
+    "Water moves <b>toward more solute</b>, which is the same as saying from <b>higher to lower water potential</b>.",
+    "<b>Water potential</b>: Ψ = Ψs + Ψp. Pure water in an open container is 0. Solutes make Ψs negative; pressure from a cell wall makes Ψp positive.",
+    "Only solutes that <b>cannot cross</b> the membrane set tonicity. A solute that crosses spreads out evenly and stops mattering.",
+    "Count particles, not molecules: salt (NaCl) splits into two ions, so it lowers water potential about twice as much as the same amount of sugar."
+  ],
+  "misconception": {
+    "wrong": "In osmosis, the solute moves from the concentrated side to the dilute side until the two sides are equal.",
+    "right": "In osmosis it is water that moves, toward the side with more solute, because the membrane holds the solute back. Solutes that can cross simply diffuse; that is not osmosis."
+  },
+  "check": [
+    "bio-tonicity-osmoregulation-1",
+    "bio-tonicity-osmoregulation-2",
+    "bio-tonicity-osmoregulation-3",
+    "bio-tonicity-osmoregulation-4",
+    "bio-tonicity-osmoregulation-5",
+    "bio-tonicity-osmoregulation-12",
+    "bio-tonicity-osmoregulation-15"
+  ],
+  "summary": "<p>Osmosis is the net movement of water across a membrane toward the side with more non-crossing solute, from higher to lower water potential (Ψ = Ψs + Ψp; pure water in an open container is 0). Compared with a cell, a hypotonic solution makes it gain water, a hypertonic one makes it lose water, and an isotonic one causes no net change. Animal cells burst or shrivel; plant cells become turgid against their walls or plasmolyze. Organisms osmoregulate with contractile vacuoles, kidneys and control of their own solute levels.</p>",
+  "connections": [
+    {
+      "href": "../notes/facilitated-diffusion.html",
+      "label": "Notes: Facilitated Diffusion (aquaporins and channels)"
+    },
+    {
+      "href": "../notes/membrane-transport.html",
+      "label": "Notes: Membrane Transport (homeostasis and the internal environment)"
+    },
+    {
+      "href": "../notes/water-hydrogen-bonding.html",
+      "label": "Notes: Structure of Water and Hydrogen Bonding (solutes and solvents)"
+    }
+  ]
+}

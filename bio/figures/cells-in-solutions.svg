@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" role="img" aria-labelledby="t d">
+<title id="t">Animal and plant cells in three kinds of solution</title>
+<desc id="d">A grid of six cells. Columns: a hypotonic solution outside (fewer solutes than the cell), an isotonic solution (equal), and a hypertonic solution (more solutes). Top row, a red blood cell: in the hypotonic solution water moves in and the cell swells and may burst; in the isotonic solution water moves in and out equally and the cell keeps its normal shape; in the hypertonic solution water moves out and the cell shrivels. Bottom row, a plant cell with a cell wall: in the hypotonic solution water moves in and the cell is firm, or turgid, with its membrane pressed against the wall; in the isotonic solution the cell is limp, or flaccid; in the hypertonic solution water leaves and the membrane pulls away from the wall, which is plasmolysis.</desc>
+<rect width="760" height="470" fill="#ffffff"/>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#0072B2"/></marker>
+</defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28" text-anchor="middle">
+  <text x="200" y="30" font-size="17" font-weight="bold">Hypotonic outside</text>
+  <text x="200" y="50" font-size="14">fewer solutes than the cell</text>
+  <text x="430" y="30" font-size="17" font-weight="bold">Isotonic</text>
+  <text x="430" y="50" font-size="14">equal solutes</text>
+  <text x="660" y="30" font-size="17" font-weight="bold">Hypertonic outside</text>
+  <text x="660" y="50" font-size="14">more solutes than the cell</text>
+  <text x="50" y="160" font-size="16" font-weight="bold">Animal</text>
+  <text x="50" y="178" font-size="14">(red blood</text>
+  <text x="50" y="194" font-size="14">cell)</text>
+  <text x="50" y="350" font-size="16" font-weight="bold">Plant</text>
+  <text x="50" y="368" font-size="14">(with a wall)</text>
+  <line x1="100" y1="250" x2="760" y2="250" stroke="#D9DEDD" stroke-width="2"/>
+
+  <!-- animal, hypotonic: swollen round -->
+  <circle cx="200" cy="160" r="62" fill="#F6D2BD" stroke="#D55E00" stroke-width="3"/>
+  <g stroke="#0072B2" stroke-width="3" marker-end="url(#ah)">
+    <line x1="110" y1="110" x2="146" y2="128"/><line x1="290" y1="110" x2="254" y2="128"/><line x1="200" y1="72" x2="200" y2="92"/>
+  </g>
+  <text x="200" y="164" font-size="15">swells,</text>
+  <text x="200" y="182" font-size="15">may burst</text>
+  <!-- animal, isotonic: biconcave disc -->
+  <ellipse cx="430" cy="160" rx="70" ry="44" fill="#F6D2BD" stroke="#D55E00" stroke-width="3"/>
+  <ellipse cx="430" cy="160" rx="30" ry="16" fill="#FBE6DA" stroke="none"/>
+  <g stroke="#0072B2" stroke-width="3">
+    <line x1="340" y1="104" x2="372" y2="122" marker-end="url(#ah)" marker-start="url(#ah)"/>
+    <line x1="520" y1="104" x2="488" y2="122" marker-end="url(#ah)" marker-start="url(#ah)"/>
+  </g>
+  <text x="430" y="226" font-size="15">normal shape</text>
+  <!-- animal, hypertonic: crenated -->
+  <path d="M660 112 l12 10 l14 -4 l4 14 l14 6 l-6 14 l8 12 l-12 8 l2 14 l-14 2 l-6 14 l-14 -6 l-12 8 l-8 -12 l-14 -2 l2 -14 l-10 -10 l10 -10 l-4 -14 l14 -4 l6 -12 l12 6 z" fill="#F6D2BD" stroke="#D55E00" stroke-width="3"/>
+  <g stroke="#0072B2" stroke-width="3" marker-end="url(#ah)">
+    <line x1="610" y1="140" x2="574" y2="122"/><line x1="712" y1="140" x2="748" y2="122"/><line x1="660" y1="208" x2="660" y2="232"/>
+  </g>
+  <text x="660" y="100" font-size="15">shrivels</text>
+
+  <!-- plant, hypotonic: turgid -->
+  <rect x="130" y="290" width="140" height="120" rx="6" fill="#C4E8DC" stroke="#009E73" stroke-width="7"/>
+  <rect x="140" y="300" width="120" height="100" rx="4" fill="#E9F6F1" stroke="#6B5E3C" stroke-width="2.5"/>
+  <rect x="160" y="316" width="80" height="66" rx="20" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+  <g stroke="#0072B2" stroke-width="3" marker-end="url(#ah)">
+    <line x1="106" y1="350" x2="128" y2="350"/><line x1="294" y1="350" x2="272" y2="350"/>
+  </g>
+  <text x="200" y="440" font-size="15">turgid (firm)</text>
+  <!-- plant, isotonic: flaccid -->
+  <rect x="360" y="290" width="140" height="120" rx="6" fill="#ffffff" stroke="#009E73" stroke-width="7"/>
+  <path d="M374 306 Q430 296 486 308 Q492 350 484 396 Q430 404 376 394 Q366 350 374 306 z" fill="#E9F6F1" stroke="#6B5E3C" stroke-width="2.5"/>
+  <rect x="400" y="326" width="60" height="50" rx="18" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+  <text x="430" y="440" font-size="15">flaccid (limp)</text>
+  <!-- plant, hypertonic: plasmolyzed -->
+  <rect x="590" y="290" width="140" height="120" rx="6" fill="#ffffff" stroke="#009E73" stroke-width="7"/>
+  <path d="M624 322 Q660 306 698 324 Q712 350 696 380 Q660 394 626 378 Q610 350 624 322 z" fill="#E9F6F1" stroke="#6B5E3C" stroke-width="2.5"/>
+  <rect x="646" y="336" width="28" height="26" rx="10" fill="#D2EAF8" stroke="#0072B2" stroke-width="2"/>
+  <g stroke="#0072B2" stroke-width="3" marker-end="url(#ah)">
+    <line x1="612" y1="350" x2="566" y2="350"/>
+  </g>
+  <text x="660" y="440" font-size="15">plasmolyzed</text>
+  <text x="200" y="462" font-size="13" fill="#0072B2">blue arrows: net water movement</text>
+  <text x="600" y="462" font-size="13" fill="#009E73">green: cell wall</text>
+  <text x="700" y="462" font-size="13" fill="#0072B2">blue: vacuole</text>
+</g>
+</svg>

@@ -1,0 +1,663 @@
+{
+  "stimuli": {
+    "tonicity-osmoregulation-s1": {
+      "kind": "graph",
+      "title": "Potato and sweet potato cores in sucrose",
+      "text": "<p>Students cut cylinders (cores) of potato and sweet potato with the same borer, blotted and weighed them, and placed five cores of each in each of six sucrose solutions in open beakers at room temperature. After 24 hours they blotted and reweighed the cores and calculated the percent change in mass. Points are means of the five cores; error bars show ±2 standard errors of the mean.</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Sucrose concentration",
+          "unit": "mol/L",
+          "min": 0,
+          "max": 1,
+          "step": 0.2
+        },
+        "y": {
+          "label": "Change in mass",
+          "unit": "%",
+          "min": -25,
+          "max": 25,
+          "step": 5
+        },
+        "series": [
+          {
+            "name": "Potato",
+            "points": [
+              [
+                0,
+                18.5,
+                1.4
+              ],
+              [
+                0.2,
+                7.6,
+                1.1
+              ],
+              [
+                0.4,
+                -2.4,
+                0.9
+              ],
+              [
+                0.6,
+                -11.8,
+                1.2
+              ],
+              [
+                0.8,
+                -18.6,
+                1.3
+              ],
+              [
+                1.0,
+                -22.1,
+                1.5
+              ]
+            ]
+          },
+          {
+            "name": "Sweet potato",
+            "points": [
+              [
+                0,
+                21.0,
+                1.6
+              ],
+              [
+                0.2,
+                12.4,
+                1.2
+              ],
+              [
+                0.4,
+                4.1,
+                1.0
+              ],
+              [
+                0.6,
+                -4.0,
+                1.1
+              ],
+              [
+                0.8,
+                -11.2,
+                1.4
+              ],
+              [
+                1.0,
+                -16.3,
+                1.6
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "tonicity-osmoregulation-s2": {
+      "kind": "table",
+      "title": "Water potential in three neighboring plant cells",
+      "text": "<p>A model of three living cells, A, B and C, that touch each other in a leaf. Each value is in bars. Water potential (Ψ) is the sum of solute potential (Ψs) and pressure potential (Ψp): Ψ = Ψs + Ψp.</p>",
+      "table": {
+        "caption": "Solute and pressure potential of three plant cells (bars)",
+        "cols": [
+          "Cell",
+          "Solute potential, Ψs (bars)",
+          "Pressure potential, Ψp (bars)"
+        ],
+        "rows": [
+          [
+            "A",
+            "−7",
+            "+2"
+          ],
+          [
+            "B",
+            "−9",
+            "+3"
+          ],
+          [
+            "C",
+            "−6",
+            "+4"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-tonicity-osmoregulation-1",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "tonicity-osmoregulation-s1",
+      "q": "Based on the graph, at about what sucrose concentration would potato cores show no net change in mass?",
+      "options": [
+        "About 0.20 mol/L",
+        "About 0.35 mol/L",
+        "About 0.50 mol/L",
+        "About 0.75 mol/L"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The potato line crosses 0% between 0.2 mol/L (+7.6%) and 0.4 mol/L (−2.4%). It falls 10 points over that 0.2 mol/L step, so it reaches zero about three-quarters of the way along, near 0.35 mol/L.",
+        "options": [
+          "At 0.2 mol/L the potato cores still gained 7.6% in mass, so water was still moving in.",
+          "Correct: interpolating between +7.6% at 0.2 mol/L and −2.4% at 0.4 mol/L puts the zero crossing near 0.35 mol/L.",
+          "That is where the sweet potato line crosses zero, not the potato line.",
+          "By 0.75 mol/L the potato cores were losing well over 15% of their mass."
+        ]
+      },
+      "fixed": true
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-2",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "tonicity-osmoregulation-s1",
+      "q": "Which explanation best accounts for the potato cores gaining mass in 0 mol/L sucrose (plain water)?",
+      "options": [
+        "The water potential of the cells was lower than that of the water, so water moved into them by osmosis.",
+        "The water potential of the cells was higher than that of the water, so water was drawn in to balance them.",
+        "Sucrose diffused out of the cells into the water, and the cores took up water to replace the lost sugar.",
+        "The cells used ATP to pump water inward until their cell walls stopped them from swelling any further."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Plain water in an open beaker has a water potential of 0. The cells hold dissolved solutes, so their water potential is negative. Water moves from higher to lower water potential, into the cells.",
+        "options": [
+          "Correct: solutes inside make the cells' water potential negative, below the 0 of pure water, so water moves in.",
+          "Water moves from higher to lower water potential. If the cells' water potential were higher, water would leave them.",
+          "Mass rose, so water came in; losing sugar would lower mass. The mass change is driven by osmosis, not sugar loss.",
+          "Cells have no pumps for water. Water crosses passively, following water potential."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-3",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "tonicity-osmoregulation-s1",
+      "q": "A potato core weighed 3.20 g before it was placed in 0.8 mol/L sucrose. Using the mean change from the graph, what would you expect it to weigh after 24 hours? Give your answer in grams to two decimal places.",
+      "numeric": {
+        "answer": 2.6,
+        "tol": 0.01,
+        "unit": "g",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "The mean change at 0.8 mol/L is −18.6%, so the core keeps 100 − 18.6 = 81.4% of its mass: 3.20 g × 0.814 = 2.60 g."
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-4",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "tonicity-osmoregulation-s1",
+      "q": "Which claim about the two tissues do the data best support?",
+      "options": [
+        "Sweet potato cells have a lower water potential than potato cells, because they hold more dissolved solute.",
+        "Sweet potato cells have a higher water potential than potato cells, because they gain more mass in water.",
+        "The two tissues have the same water potential, because their error bars overlap at each concentration tested.",
+        "Potato cells hold more dissolved solute, because they lose more mass in the strongest sucrose solutions."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Each tissue shows no change where the outside solution matches its own water potential. Sweet potato balances at about 0.50 mol/L, potato at about 0.35 mol/L. A stronger balancing solution means more solute inside the cells and a lower (more negative) water potential.",
+        "options": [
+          "Correct: sweet potato's zero point is at a higher sucrose concentration, so its cells hold more solute and have the lower water potential.",
+          "Gaining more mass in water means water was drawn in more strongly, which points to a lower water potential inside, not a higher one.",
+          "The error bars do not overlap at 0.2, 0.4 or 0.6 mol/L, where the means differ by 4.8 to 7.8 points.",
+          "Potato loses more mass because its cells have less solute, so a given sucrose solution is more strongly hypertonic to them."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-5",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "tonicity-osmoregulation-s1",
+      "q": "Why did the students report percent change in mass instead of the change in grams?",
+      "options": [
+        "Cores did not start at identical masses, and percent change lets cores of different sizes be compared fairly.",
+        "Percent change removes the need for repeated trials, because it already corrects for random error.",
+        "A mass in grams does not go below zero, while a percent change can show both water gained and water lost by a core.",
+        "Percent change measures water potential directly, while change in grams measures sucrose uptake."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A large core gains or loses more grams than a small one in the same solution. Dividing by the starting mass puts every core on the same scale.",
+        "options": [
+          "Correct: dividing by starting mass corrects for small differences in core size.",
+          "Random error is reduced by repeating trials (here, five cores), not by how the result is expressed.",
+          "A change in grams can be negative too: a core that loses 0.4 g has a change of −0.4 g.",
+          "Both measures track the same thing, water gained or lost; neither measures water potential or sucrose directly."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-6",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "tonicity-osmoregulation-s2",
+      "q": "What is the water potential of cell B, in bars?",
+      "numeric": {
+        "answer": -6,
+        "tol": 0,
+        "unit": "bars",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Ψ = Ψs + Ψp = (−9) + (+3) = −6 bars. The solutes pull the value down; the pressure inside the wall pushes it back up."
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-7",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "tonicity-osmoregulation-s2",
+      "q": "In which direction does water move by osmosis among the three cells?",
+      "options": [
+        "From C to A, and from A to B",
+        "From B to A, and from A to C",
+        "From A to C, and from C to B",
+        "From C to B, and from B to A"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Water potentials: A = −5, B = −6, C = −2 bars. Water moves from higher to lower: C (−2) to A (−5) to B (−6).",
+        "options": [
+          "Correct: C has the highest water potential (−2 bars) and B the lowest (−6 bars), with A in between.",
+          "This follows solute potential alone. Cell B's Ψs is the most negative, but water moves toward lower total Ψ, so it moves into B, not out of it.",
+          "A (−5 bars) is lower than C (−2 bars), so water moves from C into A, not the reverse.",
+          "B has the lowest water potential, so water moves into B; it cannot move from B to A."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-8",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "tonicity-osmoregulation-s2",
+      "q": "Cell A is removed and placed in an open beaker of solution with a water potential of −10 bars. Which outcome is expected?",
+      "options": [
+        "Water leaves the cell, its pressure potential falls to zero, and its membrane may pull away from the wall.",
+        "Water enters the cell, its pressure potential rises, and the wall keeps the cell from bursting.",
+        "No water moves, because the cell's solute potential of −7 bars is close to the solution's value.",
+        "Solutes leave the cell until its solute potential equals −10 bars, with no change in its pressure potential."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Cell A's water potential is −5 bars, higher than the solution's −10 bars, so water leaves. As the cell shrinks, the push on the wall drops to zero; with more water loss, the contents pull away from the wall (plasmolysis).",
+        "options": [
+          "Correct: water flows from the cell (−5 bars) to the solution (−10 bars); turgor is lost and plasmolysis can follow.",
+          "Water enters only when the outside water potential is higher than the cell's. Here it is lower.",
+          "Compare total water potentials (−5 against −10 bars), not solute potential alone; a 5-bar difference drives water out.",
+          "The membrane holds the cell's solutes in; it is water that crosses. Losing water actually makes the remaining solutes more concentrated."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-9",
+      "type": "predict",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "tonicity-osmoregulation-s2",
+      "q": "Cell C is instead placed in an open beaker of pure water until no more net water moves. Predict how each quantity changes from its value in the table.",
+      "variables": [
+        {
+          "name": "Pressure potential of cell C",
+          "answer": "up",
+          "why": "Water enters (pure water is at 0 bars, the cell at −2), the contents swell against the wall, and the wall pushes back harder, raising Ψp."
+        },
+        {
+          "name": "Water potential of cell C",
+          "answer": "up",
+          "why": "Water keeps entering until the cell's water potential matches the beaker's, 0 bars, up from −2 bars."
+        },
+        {
+          "name": "Amount of solute inside cell C",
+          "answer": "none",
+          "why": "The membrane keeps the cell's solutes in and only water crosses, so the amount of solute stays the same (its concentration falls a little as water dilutes it)."
+        },
+        {
+          "name": "Volume of cell C",
+          "answer": "up",
+          "why": "Water moves in, so the cell swells slightly until the wall stops it."
+        }
+      ],
+      "why": {
+        "correct": "Pure water (Ψ = 0) is higher than the cell (Ψ = −2 bars), so water enters until rising pressure inside the wall brings the cell's water potential up to 0."
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-10",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "tonicity-osmoregulation-s2",
+      "q": "Which statements does the model support? Select all that apply.",
+      "options": [
+        "Cell C has the highest water potential of the three cells.",
+        "A solution in an open beaker with Ψ = −4 bars is hypotonic to cell B.",
+        "Cell A is plasmolyzed, because its solute potential is negative.",
+        "Water moves from cell B into cell C because B holds more solute.",
+        "Cell B has the lowest pressure potential of the three cells."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Work out each cell's Ψ (A −5, B −6, C −2 bars), then test each statement against those numbers.",
+        "options": [
+          "C is −2 bars, higher than A (−5) and B (−6).",
+          "−4 bars is higher than cell B's −6 bars, so water would enter B from this solution: the solution is hypotonic to B.",
+          "A's pressure potential is +2 bars, so its contents still press on the wall: it is turgid, not plasmolyzed. Every living cell has a negative solute potential.",
+          "More solute lowers B's water potential, so water moves into B, not out of it.",
+          "B's pressure potential is +3 bars; A's, at +2 bars, is the lowest."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-11",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "q": "A drop of blood is mixed into distilled water and viewed under a microscope a few minutes later. What is expected?",
+      "options": [
+        "Many red blood cells have swollen and burst, because water entered them by osmosis.",
+        "Many red blood cells have shriveled, because water left them by osmosis.",
+        "The cells keep their normal shape, because their membranes do not let water through.",
+        "The cells swell until their cell walls press back and stop the water from entering."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Distilled water has no solutes, so it is hypotonic to the cells. Water enters, and with no wall to resist the swelling, many cells burst (lysis).",
+        "options": [
+          "Correct: hypotonic surroundings drive water in, and an animal cell has no wall to stop it bursting.",
+          "Shriveling (crenation) happens in a hypertonic solution, where water leaves the cell.",
+          "Red blood cell membranes are full of aquaporins; water crosses them quickly.",
+          "Animal cells have no cell wall; that is why they burst instead of becoming turgid."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-12",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A U-shaped tube is divided at the bottom by a membrane that lets water through but not sucrose. Side 1 is filled with 0.1 mol/L sucrose and side 2 with 0.5 mol/L sucrose, to the same height. What happens over the next hour?",
+      "options": [
+        "The liquid level rises on side 2, because water moves toward the side with more solute.",
+        "The liquid level rises on side 1, because water moves toward the side with less solute.",
+        "Sucrose moves from side 2 to side 1 until both sides hold 0.3 mol/L, and the levels stay equal.",
+        "The levels stay equal, because sucrose does not cross the membrane and so neither side can change."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Side 2 has more solute, so its water potential is lower. Water moves from side 1 into side 2, and the side 2 level rises until the extra weight of the taller column balances the pull.",
+        "options": [
+          "Correct: water moves toward lower water potential, the more concentrated side, raising its level.",
+          "Water moves toward the side with more solute, not less.",
+          "The membrane does not let sucrose through, so only water can move.",
+          "Water still crosses, even though sucrose cannot; that net flow of water is osmosis."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-13",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In another U-tube, the membrane lets water and glucose through but not sucrose. Side 1 starts with 0.4 mol/L glucose and side 2 with 0.4 mol/L sucrose, at equal heights. What is the state of the tube once it stops changing?",
+      "options": [
+        "The level is higher on side 2, because glucose spreads to both sides while sucrose stays on side 2.",
+        "The levels are equal, because both sides began with the same concentration of dissolved solute.",
+        "The level is higher on side 1, because glucose molecules are smaller and attract more water.",
+        "The levels are equal, because glucose crosses to side 2 and balances the sucrose exactly."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Glucose crosses and spreads until it is equal on both sides, so it stops mattering. Sucrose cannot cross, so side 2 ends up with extra solute: its water potential is lower, and water moves into it. Only solutes that cannot cross the membrane set tonicity.",
+        "options": [
+          "Correct: the crossing solute evens out, and the trapped sucrose leaves side 2 with more total solute, so water follows it there.",
+          "Equal at the start, but glucose leaves side 1 while sucrose stays put, so side 2 ends up with more solute.",
+          "Size does not make a solute attract more water; what matters is how many dissolved particles cannot cross.",
+          "Once glucose has spread evenly, side 2 still has all the sucrose on top of its glucose, so the two sides do not balance."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-14",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "q": "Paramecium, a single-celled pond organism, was placed in water with added salt. Its contractile vacuole emptied about 12 times per minute in pond water, 6 times in 50 mM salt and 2 times in 100 mM salt. Which explanation fits these data?",
+      "options": [
+        "Saltier water is less hypotonic to the cell, so less water enters and less has to be expelled.",
+        "Saltier water is more hypotonic to the cell, so the vacuole has less time to fill between contractions.",
+        "Salt enters the cell and blocks the vacuole, so the cell pumps out salt instead of water.",
+        "Salt slows the cell's use of ATP, so the vacuole fills with water just as fast but empties more slowly."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Pond water is strongly hypotonic to the cell, so water floods in and the vacuole must bail it out often. Adding salt narrows the difference, less water enters, and the vacuole empties less often.",
+        "options": [
+          "Correct: the closer the outside is to the cell's own solute level, the slower water enters, and the less bailing is needed.",
+          "Adding salt makes the outside less hypotonic, not more; a more hypotonic outside would make the vacuole work harder.",
+          "The contractile vacuole removes water; the data fit a simple drop in water entry without any change in its job.",
+          "If water still entered as fast and the vacuole emptied more slowly, the cell would swell and burst; the data show reduced water entry."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-15",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A trout lives in fresh water, which has far fewer solutes than its blood. Which set of responses helps it keep its water balance?",
+      "options": [
+        "It makes large volumes of dilute urine and takes up salts across its gills.",
+        "It drinks large volumes of water and gets rid of extra salts through its gills.",
+        "It produces small volumes of concentrated urine to keep water in its body.",
+        "It keeps the solute concentration of its blood equal to that of the fresh water."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Fresh water is hypotonic to the fish, so water keeps entering by osmosis and salts keep leaking out. Its kidneys get rid of the extra water as dilute urine, and gill cells take salts back in, spending ATP.",
+        "options": [
+          "Correct: dump extra water, recover lost salts.",
+          "That is how a saltwater fish copes: it loses water to the sea, so it drinks and gets rid of salt.",
+          "Saving water would make its problem worse; water is already pouring in.",
+          "Blood that dilute could not keep the fish's cells working; osmoregulation keeps the blood far saltier than the surrounding water."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-16",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A patient needs fluid through a drip into a vein. Which fluid would keep the patient's red blood cells at their normal volume? Select all that apply.",
+      "options": [
+        "A salt solution isotonic to blood plasma",
+        "Distilled water",
+        "A salt solution three times as concentrated as plasma",
+        "A glucose solution half as concentrated as plasma"
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Only a solution isotonic to the cells leaves their volume unchanged. Hypotonic fluids swell them and can burst them; hypertonic fluids shrink them.",
+        "options": [
+          "Isotonic: water moves in and out at equal rates, so the cells keep their size.",
+          "Distilled water is strongly hypotonic and would burst red blood cells.",
+          "A hypertonic fluid would draw water out and make the cells shrivel.",
+          "Half as concentrated is hypotonic, so the cells would take in water and swell."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-17",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "Grass along a road that was heavily salted in winter often wilts in spring, even when the soil is moist. Which explanation fits?",
+      "options": [
+        "Salt lowers the water potential of the soil water, so less water moves into the roots and some may leave them.",
+        "Salt raises the water potential of the soil water, so water moves out of the soil too quickly to reach the roots.",
+        "Salt enters the root cells and makes them hypotonic to the soil, so water flows into the roots too fast.",
+        "Salt dissolves the cell walls of the roots, so the cells can no longer hold turgor pressure."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Dissolved salt makes the soil water's solute potential more negative. Once soil water potential falls close to or below that of the root cells, water stops flowing in, the cells lose turgor, and the plant wilts.",
+        "options": [
+          "Correct: salty soil water has a low water potential, so the gradient that draws water into roots shrinks or reverses.",
+          "Adding solute lowers water potential; it never raises it.",
+          "Salt entering root cells would lower their water potential and draw water in, which would not cause wilting.",
+          "Salt does not dissolve cellulose walls; wilting comes from water loss and the drop in turgor."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-18",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which of these has the highest water potential?",
+      "options": [
+        "Pure water in an open beaker",
+        "A 0.2 mol/L sucrose solution in an open beaker",
+        "The cytoplasm of a firm plant cell",
+        "A 0.2 mol/L salt solution in an open beaker"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Pure water at normal air pressure is the reference point, Ψ = 0. Any dissolved solute lowers water potential below zero.",
+        "options": [
+          "Correct: with no solutes and no extra pressure, pure water in an open beaker has Ψ = 0, the highest of these.",
+          "Sucrose lowers the solute potential below zero, and an open beaker adds no pressure, so its Ψ is negative.",
+          "Turgor raises a plant cell's water potential, but at most it brings it up to 0, never above pure water's.",
+          "Salt lowers water potential even more than the same concentration of sucrose, because each unit splits into two ions."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-19",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Two solutions are separated by a membrane that lets water through but not glucose, sodium or chloride. Side 1 holds 0.1 mol/L glucose; side 2 holds 0.1 mol/L sodium chloride (NaCl). Which way does water move, and why?",
+      "options": [
+        "Into side 2, because each NaCl unit splits into two ions, so side 2 holds more dissolved particles.",
+        "Into side 1, because a glucose molecule is larger than a sodium ion and holds onto more water.",
+        "Neither way, because both sides hold the same amount of dissolved substance per liter.",
+        "Into side 1, because sodium and chloride ions carry charges that push water molecules away."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Osmosis depends on the number of dissolved particles. NaCl splits into Na⁺ and Cl⁻, so 0.1 mol/L NaCl gives about 0.2 mol/L of particles, twice the glucose side. Side 2 has the lower water potential, so water moves into it.",
+        "options": [
+          "Correct: side 2 has the higher osmolarity (about 0.2 against 0.1), so it is hypertonic and draws water.",
+          "Particle number, not particle size, sets water potential.",
+          "Same amount of substance, but not the same number of particles: NaCl doubles because it splits into two ions.",
+          "Ions attract water molecules (they are surrounded by water's partial charges); they do not repel it."
+        ]
+      }
+    },
+    {
+      "id": "bio-tonicity-osmoregulation-20",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "tonicity-osmoregulation",
+      "practice": "1.B",
+      "level": "recall",
+      "diff": 1,
+      "q": "Why can a plant cell take in water from a hypotonic solution without bursting?",
+      "options": [
+        "Its cell wall resists the swelling, and the pressure that builds up stops further net water entry.",
+        "Its membrane closes its aquaporins once the cell is full, so no more water can enter it.",
+        "Its central vacuole pumps the extra water back out of the cell as fast as it comes in.",
+        "Its cytoplasm has a higher water potential than the solution, so water stays outside."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "As water enters, the contents press on the wall and the wall presses back. That pressure raises the cell's water potential until it matches the outside, and net entry stops. The cell is turgid instead of burst.",
+        "options": [
+          "Correct: the wall turns swelling into pressure (turgor), and pressure raises water potential until water stops entering.",
+          "Water entry stops because pressure balances it, not because channels close.",
+          "Contractile vacuoles do this in some single-celled organisms; a plant's central vacuole stores water rather than pumping it out.",
+          "If the cell's water potential were higher, water would leave it; in a hypotonic solution water enters."
+        ]
+      }
+    }
+  ]
+}
