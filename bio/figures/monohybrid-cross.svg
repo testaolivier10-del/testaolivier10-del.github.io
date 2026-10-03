@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" role="img" aria-labelledby="mono-t mono-d">
+<title id="mono-t">A monohybrid cross: purple and white pea flowers through three generations</title>
+<desc id="mono-d">Left: the P generation, a true-breeding purple-flowered plant (PP) crossed with a true-breeding white-flowered plant (pp). Every F1 plant has purple flowers and the genotype Pp. The F1 plants are self-pollinated. Right: a Punnett square for the F1 cross Pp times Pp. Each parent makes gametes P and p in equal numbers, written along the top and side. The four boxes are PP (purple), Pp (purple), Pp (purple) and pp (white). The F2 phenotype ratio is 3 purple to 1 white; the genotype ratio is 1 PP to 2 Pp to 1 pp.</desc>
+<defs><marker id="mono-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="420" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="160.0" y="28.0" font-size="14" text-anchor="middle" font-weight="700">P generation (true-breeding)</text>
+<circle cx="90.0" cy="58.3" r="7.8" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="78.9" cy="66.4" r="7.8" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="83.1" cy="79.5" r="7.8" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="96.9" cy="79.5" r="7.8" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="101.1" cy="66.4" r="7.8" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="90" cy="70" r="4.9" fill="#E69F00"/>
+<circle cx="230.0" cy="58.3" r="7.8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="218.9" cy="66.4" r="7.8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="223.1" cy="79.5" r="7.8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="236.9" cy="79.5" r="7.8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="241.1" cy="66.4" r="7.8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="230" cy="70" r="4.9" fill="#E69F00"/>
+<text x="90.0" y="104.0" font-size="13" text-anchor="middle">purple, PP</text>
+<text x="230.0" y="104.0" font-size="13" text-anchor="middle">white, pp</text>
+<text x="160.0" y="76.0" font-size="22" text-anchor="middle" font-weight="700">×</text>
+<text x="90.0" y="122.0" font-size="12" text-anchor="middle">gametes: all P</text>
+<text x="230.0" y="122.0" font-size="12" text-anchor="middle">gametes: all p</text>
+<line x1="160.0" y1="132.0" x2="160.0" y2="170.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mono-a)"/>
+<text x="160.0" y="194.0" font-size="14" text-anchor="middle" font-weight="700">F1 generation: all purple, Pp</text>
+<circle cx="100.0" cy="216.1" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="90.6" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="94.2" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="105.8" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="109.4" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="100" cy="226" r="4.2" fill="#E69F00"/>
+<circle cx="140.0" cy="216.1" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="130.6" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="134.2" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="145.8" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="149.4" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="140" cy="226" r="4.2" fill="#E69F00"/>
+<circle cx="180.0" cy="216.1" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="170.6" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="174.2" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="185.8" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="189.4" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="180" cy="226" r="4.2" fill="#E69F00"/>
+<circle cx="220.0" cy="216.1" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="210.6" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="214.2" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="225.8" cy="234.0" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="229.4" cy="222.9" r="6.6" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="220" cy="226" r="4.2" fill="#E69F00"/>
+<text x="160.0" y="264.0" font-size="13" text-anchor="middle">purple allele P is dominant;</text>
+<text x="160.0" y="281.0" font-size="13" text-anchor="middle">white allele p is recessive (hidden in F1)</text>
+<line x1="160.0" y1="292.0" x2="160.0" y2="324.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mono-a)"/>
+<text x="160.0" y="346.0" font-size="14" text-anchor="middle" font-weight="700">F1 self-pollinated: Pp × Pp</text>
+<text x="160.0" y="372.0" font-size="13" text-anchor="middle">each F1 plant makes P and p</text>
+<text x="160.0" y="388.0" font-size="13" text-anchor="middle">gametes in equal numbers (segregation)</text>
+<line x1="320.0" y1="346.0" x2="400.0" y2="346.0" stroke="#1F2A28" stroke-width="2.5" marker-end="url(#mono-a)"/>
+<text x="580.0" y="40.0" font-size="14" text-anchor="middle" font-weight="700">F2 generation: Punnett square</text>
+<text x="580.0" y="62.0" font-size="12" text-anchor="middle">sperm (pollen) from Pp</text>
+<text x="424.0" y="220.0" font-size="12" text-anchor="middle">eggs from Pp</text>
+<text x="525.0" y="96.0" font-size="18" text-anchor="middle" font-weight="700">P</text>
+<text x="454.0" y="171.0" font-size="18" text-anchor="middle" font-weight="700">P</text>
+<text x="635.0" y="96.0" font-size="18" text-anchor="middle" font-weight="700">p</text>
+<text x="454.0" y="281.0" font-size="18" text-anchor="middle" font-weight="700">p</text>
+<rect x="470.0" y="110.0" width="110.0" height="110.0" rx="0" fill="#D9C9EC" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="525.0" cy="139.5" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="512.2" cy="148.8" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="517.1" cy="163.9" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="532.9" cy="163.9" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="537.8" cy="148.8" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="525.0" cy="153.0" r="5.7" fill="#E69F00"/>
+<text x="525.0" y="195.0" font-size="16" text-anchor="middle" font-weight="700">PP</text>
+<rect x="580.0" y="110.0" width="110.0" height="110.0" rx="0" fill="#D9C9EC" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="635.0" cy="139.5" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="622.2" cy="148.8" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="627.1" cy="163.9" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="642.9" cy="163.9" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="647.8" cy="148.8" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="635.0" cy="153.0" r="5.7" fill="#E69F00"/>
+<text x="635.0" y="195.0" font-size="16" text-anchor="middle" font-weight="700">Pp</text>
+<rect x="470.0" y="220.0" width="110.0" height="110.0" rx="0" fill="#D9C9EC" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="525.0" cy="249.5" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="512.2" cy="258.8" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="517.1" cy="273.9" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="532.9" cy="273.9" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="537.8" cy="258.8" r="9.0" fill="#6A3D9A" stroke="#6A3D9A" stroke-width="1.8"/>
+<circle cx="525.0" cy="263.0" r="5.7" fill="#E69F00"/>
+<text x="525.0" y="305.0" font-size="16" text-anchor="middle" font-weight="700">Pp</text>
+<rect x="580.0" y="220.0" width="110.0" height="110.0" rx="0" fill="#F4F4F4" stroke="#1F2A28" stroke-width="2"/>
+<circle cx="635.0" cy="249.5" r="9.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="622.2" cy="258.8" r="9.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="627.1" cy="273.9" r="9.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="642.9" cy="273.9" r="9.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="647.8" cy="258.8" r="9.0" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.8"/>
+<circle cx="635.0" cy="263.0" r="5.7" fill="#E69F00"/>
+<text x="635.0" y="305.0" font-size="16" text-anchor="middle" font-weight="700">pp</text>
+<text x="580.0" y="360.0" font-size="14" text-anchor="middle" font-weight="700">Phenotypes: 3 purple : 1 white</text>
+<text x="580.0" y="380.0" font-size="14" text-anchor="middle">Genotypes: 1 PP : 2 Pp : 1 pp</text>
+</g>
+</svg>

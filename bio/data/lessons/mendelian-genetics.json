@@ -1,0 +1,96 @@
+{
+  "topic": "mendelian-genetics",
+  "hook": "<p>Two parents with no sign of cystic fibrosis can have a child with it. A trait can vanish for a generation and reappear, and for most of history nobody could say why. In the 1860s, Gregor Mendel, a monk in what is now the Czech Republic, crossed pea plants by hand for eight years and counted thousands of offspring. His counts fell into simple ratios, like 3 to 1, that he explained with two rules about hidden \"factors\". We now call them alleles, and we know the rules follow straight from how chromosomes move in meiosis.</p>",
+  "prereq": [
+    {
+      "q": "In meiosis I, the two homologous chromosomes of a pair",
+      "options": [
+        "separate, so each gamete gets one of them",
+        "both go into every gamete",
+        "join into a single chromosome"
+      ],
+      "correct": 0,
+      "why": "Homologs separate in anaphase I, so each gamete receives one homolog of each pair.",
+      "review": "meiosis"
+    },
+    {
+      "q": "Ignoring crossing over, how many kinds of gamete can a cell with two homologous pairs make by independent assortment?",
+      "options": [
+        "4",
+        "2",
+        "8"
+      ],
+      "correct": 0,
+      "why": "Each pair lines up either way, independently: 2 × 2 = 4 combinations.",
+      "review": "meiosis-genetic-diversity"
+    },
+    {
+      "q": "Alleles are",
+      "options": [
+        "different versions of the same gene, found at the same place on homologous chromosomes",
+        "two identical copies of a gene made in S phase",
+        "genes found on different chromosomes"
+      ],
+      "correct": 0,
+      "why": "Alleles are versions of one gene; homologs carry the same genes but possibly different alleles.",
+      "review": "meiosis"
+    }
+  ],
+  "figure": {
+    "figure": "monohybrid-cross",
+    "caption": "A monohybrid cross. The white allele is hidden in the F1 but reappears in a quarter of the F2, because each F1 plant passes on either allele with equal chance."
+  },
+  "chain": [
+    {
+      "cause": "A diploid organism carries two alleles of each gene, one on each homolog, inherited one from each parent.",
+      "effect": "Its genotype can be homozygous (two identical alleles) or heterozygous (two different ones)."
+    },
+    {
+      "cause": "In a heterozygote, a dominant allele sets the phenotype by itself.",
+      "effect": "A Pp plant looks like a PP plant, and the recessive allele is hidden."
+    },
+    {
+      "cause": "In meiosis I, the homologs of each pair separate into different cells.",
+      "effect": "Each gamete carries one allele of each gene, and a heterozygote makes P and p gametes in equal numbers: the law of segregation."
+    },
+    {
+      "cause": "At fertilization, gametes combine at random.",
+      "effect": "Pp × Pp gives PP, Pp and pp offspring in a 1:2:1 ratio, so 3 show the dominant phenotype for every 1 recessive."
+    },
+    {
+      "cause": "Homologous pairs line up independently at metaphase I, so genes on different chromosome pairs sort into gametes independently.",
+      "effect": "AaBb makes AB, Ab, aB and ab gametes equally (independent assortment), and AaBb × AaBb gives a 9:3:3:1 phenotype ratio."
+    },
+    {
+      "cause": "A gene on the X chromosome has no partner on the Y.",
+      "effect": "A male shows whatever allele his one X carries, so X-linked recessive traits are far more common in males."
+    }
+  ],
+  "ideas": [
+    "<b>Genotype</b> is the pair of alleles (PP, Pp, pp); <b>phenotype</b> is the trait you see. A <b>dominant</b> allele shows in a heterozygote; a <b>recessive</b> one shows only when there are two copies.",
+    "<b>Law of segregation:</b> the two alleles of a gene separate into different gametes, because homologs separate in meiosis I. <b>Law of independent assortment:</b> genes on different chromosome pairs sort independently.",
+    "<b>Punnett squares</b> and the <b>product rule</b> (multiply chances of independent events) and <b>sum rule</b> (add chances of mutually exclusive outcomes) predict ratios: 3:1 and 1:2:1 for a <b>monohybrid cross</b>, 9:3:3:1 for a <b>dihybrid cross</b>.",
+    "A <b>testcross</b> to a homozygous recessive reveals an unknown genotype: any recessive offspring means the parent is heterozygous.",
+    "<b>Pedigrees</b> show the pattern: <b>autosomal recessive</b> (skips generations, carriers), <b>autosomal dominant</b> (every generation), <b>X-linked recessive</b> (mostly males, passed through carrier daughters). The same rules in peas, flies and people point to common ancestry."
+  ],
+  "misconception": {
+    "wrong": "A dominant allele is the more common one in a population, or the one that is better for the organism.",
+    "right": "\"Dominant\" only describes what a heterozygote looks like: the dominant allele's effect shows when one copy is present. Huntington's disease is caused by a dominant allele that is rare and harmful; many recessive alleles are common."
+  },
+  "check": [
+    "bio-mendelian-genetics-1",
+    "bio-mendelian-genetics-2",
+    "bio-mendelian-genetics-7",
+    "bio-mendelian-genetics-8",
+    "bio-mendelian-genetics-11",
+    "bio-mendelian-genetics-15",
+    "bio-mendelian-genetics-18",
+    "bio-mendelian-genetics-22"
+  ],
+  "summary": "<p>Each diploid organism carries two alleles of every gene, one on each homolog. Its genotype may be homozygous or heterozygous; a dominant allele sets the phenotype of a heterozygote, and a recessive allele shows only in a homozygote. Because homologs separate in meiosis I, each gamete gets one allele of each gene (segregation), and genes on different chromosome pairs sort independently (independent assortment). Punnett squares and the product and sum rules predict 3:1 and 1:2:1 monohybrid ratios, 9:3:3:1 dihybrid ratios and the 1:1 result of a testcross on a heterozygote. Pedigrees reveal autosomal recessive, autosomal dominant and X-linked patterns; X-linked recessive traits are more common in males, who have one X. The same rules apply across eukaryotes, which is evidence of common ancestry.</p>",
+  "connections": [
+    { "href": "../notes/meiosis.html", "label": "Back: homologs separate in meiosis I (5.1)" },
+    { "href": "../notes/meiosis-genetic-diversity.html", "label": "Back: independent assortment of chromosome pairs (5.2)" },
+    { "href": "../notes/non-mendelian-genetics.html", "label": "Next: inheritance that does not follow these ratios (5.4)" }
+  ]
+}

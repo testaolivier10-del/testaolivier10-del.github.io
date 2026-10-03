@@ -1,0 +1,700 @@
+{
+  "stimuli": {
+    "non-mendelian-genetics-s1": {
+      "kind": "table",
+      "title": "Offspring counts from a fruit fly testcross",
+      "text": "<p>A true-breeding gray-bodied, red-eyed fly was crossed with a true-breeding black-bodied, purple-eyed fly. Gray (B) is dominant to black (b) and red (P) to purple (p). An F1 female (BbPp) was then crossed with a black, purple-eyed male (bbpp), and the offspring were counted.</p>",
+      "table": {
+        "caption": "Offspring of the testcross BbPp (female) × bbpp (male)",
+        "cols": [
+          "Offspring phenotype",
+          "Number of flies"
+        ],
+        "rows": [
+          [
+            "Gray body, red eyes",
+            "470"
+          ],
+          [
+            "Black body, purple eyes",
+            "466"
+          ],
+          [
+            "Gray body, purple eyes",
+            "31"
+          ],
+          [
+            "Black body, red eyes",
+            "33"
+          ],
+          [
+            "Total",
+            "1,000"
+          ]
+        ]
+      }
+    },
+    "non-mendelian-genetics-s2": {
+      "kind": "table",
+      "title": "Coat colors of Labrador retriever puppies",
+      "text": "<p>In Labrador retrievers, gene B controls the dark pigment made in hair: B (black) is dominant to b (brown, called chocolate). A second gene, E, on another chromosome, controls whether that pigment is put into the hair at all: dogs with genotype ee cannot deposit it and are yellow. A breeder pooled the litters of several matings between dogs that were all BbEe.</p>",
+      "table": {
+        "caption": "Puppies from BbEe × BbEe matings",
+        "cols": [
+          "Coat color",
+          "Number of puppies"
+        ],
+        "rows": [
+          [
+            "Black",
+            "92"
+          ],
+          [
+            "Chocolate",
+            "29"
+          ],
+          [
+            "Yellow",
+            "39"
+          ],
+          [
+            "Total",
+            "160"
+          ]
+        ]
+      }
+    },
+    "non-mendelian-genetics-s3": {
+      "kind": "setup",
+      "title": "Leaf color in four o'clock plants",
+      "text": "<p>Some four o'clock plants have branches of three kinds: green, white (no working chloroplasts), and variegated (patches of green and white). Each flower makes both eggs and pollen, and the plant has no sex chromosomes. A botanist moved pollen from flowers on one kind of branch onto flowers on another kind, then grew the seeds.</p>",
+      "table": {
+        "caption": "Seedlings from crosses between flowers on different branches",
+        "cols": [
+          "Flower giving the eggs was on a",
+          "Flower giving the pollen was on a",
+          "Seedlings"
+        ],
+        "rows": [
+          [
+            "Green branch",
+            "Green branch",
+            "Green"
+          ],
+          [
+            "Green branch",
+            "Variegated branch",
+            "Green"
+          ],
+          [
+            "Green branch",
+            "White branch",
+            "Green"
+          ],
+          [
+            "Variegated branch",
+            "Green branch",
+            "A mix of green, variegated and white"
+          ],
+          [
+            "White branch",
+            "Green branch",
+            "White (die after using up the seed's food)"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-non-mendelian-genetics-1",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "non-mendelian-genetics-s1",
+      "q": "Which offspring classes are recombinant?",
+      "options": [
+        "Gray with purple eyes, and black with red eyes",
+        "Gray with red eyes, and black with purple eyes",
+        "Gray with red eyes, and gray with purple eyes",
+        "Black with purple eyes, and black with red eyes"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The F1 female got B P from one parent and b p from the other. Offspring showing B with p, or b with P, carry combinations neither of her parents had: recombinants.",
+        "options": [
+          "Gray-purple and black-red mix the grandparents' combinations, and they are the two small classes.",
+          "These match the original true-breeding parents' combinations: parental types.",
+          "These share a body color; one class is parental, the other recombinant.",
+          "These share a body color; one class is parental, the other recombinant."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-2",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "non-mendelian-genetics-s1",
+      "q": "Calculate the recombination frequency between the body-color and eye-color genes, in percent. Give one decimal place.",
+      "numeric": {
+        "answer": 6.4,
+        "tol": 0.1,
+        "unit": "%",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Recombinants: 31 + 33 = 64. 64 ÷ 1,000 × 100 = 6.4%, so the genes are about 6.4 map units apart."
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-3",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "non-mendelian-genetics-s1",
+      "q": "If the two genes assorted independently, how many flies would be expected in each of the four classes? Give a whole number.",
+      "numeric": {
+        "answer": 250,
+        "tol": 0,
+        "unit": "flies",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Independent assortment predicts a 1:1:1:1 testcross ratio: 1,000 ÷ 4 = 250 flies per class."
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-4",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "non-mendelian-genetics-s1",
+      "q": "A chi-square test of the counts against the 1:1:1:1 ratio gives χ² ≈ 760. Which conclusion is correct?",
+      "options": [
+        "With 3 degrees of freedom the critical value is 7.82, so reject independent assortment; the genes are likely linked.",
+        "With 4 degrees of freedom the critical value is 9.49, so reject independent assortment; the genes are likely linked.",
+        "With 3 degrees of freedom the critical value is 7.82, so fail to reject independent assortment.",
+        "χ² is far above the critical value, which shows that the genes are on different chromosomes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Four classes give df = 4 − 1 = 3, critical value 7.82 at p = 0.05. 760 is far larger, so the deviation from 1:1:1:1 is very unlikely to be chance. Too many parental types fits linkage.",
+        "options": [
+          "df = 3, and 760 > 7.82: reject; excess parental types point to linkage.",
+          "Degrees of freedom are the number of classes minus one: 4 − 1 = 3, not 4.",
+          "A χ² larger than the critical value means reject, not fail to reject.",
+          "Rejecting independent assortment points the other way: the genes are close on the same chromosome."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-5",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "non-mendelian-genetics-s1",
+      "q": "The two recombinant classes are about equal in size (31 and 33), and so are the two parental classes. Which explanation fits?",
+      "options": [
+        "Each crossover between the genes swaps pieces between two chromatids, making one B p and one b P chromatid together.",
+        "Gray and black flies survive equally well, so any two classes end up with similar numbers.",
+        "Recombinant offspring are made by the male parent, who passes on b p and B P equally.",
+        "Crossing over happens in about half of the meioses, so each recombinant class is about half of the total."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A crossover is a reciprocal exchange: when a B P chromatid and a b p chromatid swap their p/P ends, the result is one B p and one b P. So the two recombinant types are made in equal numbers, as are the two parental types.",
+        "options": [
+          "Reciprocal exchange makes the two recombinant types in pairs, so they come out about equal.",
+          "Equal survival does not explain why the parental classes are about 15 times larger than the recombinant classes.",
+          "The male is bbpp, so every sperm carries b p; the variety comes from the female's eggs.",
+          "Recombinants are only 6.4% here; crossovers between these two close genes are rare."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-6",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "non-mendelian-genetics-s2",
+      "q": "Which genotypes give a yellow coat?",
+      "options": [
+        "Any genotype with ee, whatever the B gene alleles",
+        "bbee, the double recessive genotype, and no other",
+        "Any genotype with bb, whatever the E gene alleles",
+        "Any genotype with Ee, because one E is not enough"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "ee dogs cannot put pigment into hair, so they are yellow whether they make black (B_) or brown (bb) pigment: BBee, Bbee and bbee are yellow.",
+        "options": [
+          "ee blocks pigment in the hair, so the B gene's alleles do not show.",
+          "BBee and Bbee are also yellow; ee alone is enough.",
+          "bb with E_ is chocolate, not yellow: brown pigment is made and deposited.",
+          "E is dominant: one copy lets pigment into the hair."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-7",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "non-mendelian-genetics-s2",
+      "q": "Calculate χ² for the puppy counts against an expected ratio of 9 black : 3 chocolate : 4 yellow. Give two decimal places.",
+      "numeric": {
+        "answer": 0.1,
+        "tol": 0.01,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "Expected: 160 × 9/16 = 90 black, 160 × 3/16 = 30 chocolate, 160 × 4/16 = 40 yellow. χ² = (92 − 90)²/90 + (29 − 30)²/30 + (39 − 40)²/40 = 0.044 + 0.033 + 0.025 = 0.10."
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-8",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "non-mendelian-genetics-s2",
+      "q": "Using χ² ≈ 0.10 for the 9:3:4 hypothesis, which conclusion is correct at p = 0.05?",
+      "options": [
+        "df = 2, critical value 5.99; fail to reject, so the counts are consistent with 9:3:4.",
+        "df = 3, critical value 7.82; fail to reject, so the counts are consistent with 9:3:4.",
+        "df = 2, critical value 5.99; reject, so the counts do not fit 9:3:4.",
+        "df = 2, critical value 5.99; this proves the 9:3:4 hypothesis is true."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Three classes give df = 3 − 1 = 2, critical value 5.99. 0.10 is far below it, so the small deviations are consistent with chance: fail to reject 9:3:4.",
+        "options": [
+          "df = 2 and 0.10 < 5.99: the data fit the hypothesis.",
+          "There are three color classes, so df = 2, not 3.",
+          "A χ² below the critical value means fail to reject, not reject.",
+          "A test can fail to reject a hypothesis but never proves it true."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-9",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "non-mendelian-genetics-s2",
+      "q": "A yellow Labrador with genotype BBee is mated with a chocolate Labrador with genotype bbEE. Predict the coat color of their puppies.",
+      "options": [
+        "Black",
+        "Yellow",
+        "Chocolate",
+        "Half yellow and half chocolate"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Every puppy gets B and e from the yellow parent and b and E from the chocolate parent: BbEe. B makes black pigment and E lets it into the hair, so the puppies are black, a color neither parent shows.",
+        "options": [
+          "BbEe: the B allele means black pigment is made, and the E allele lets it into the hair.",
+          "Puppies get one E from the chocolate parent, so they can deposit pigment.",
+          "Puppies get one B from the yellow parent, and B (black) is dominant to b.",
+          "Each parent is homozygous at both genes, so every puppy has the same genotype, BbEe."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-10",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "2.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "non-mendelian-genetics-s2",
+      "q": "Why do these matings give a 9:3:4 ratio instead of the 9:3:3:1 of a typical dihybrid cross?",
+      "options": [
+        "The B_ee (3/16) and bbee (1/16) classes are both yellow, so they merge into 4/16.",
+        "The two genes are linked, so just three of the four classes appear.",
+        "One of the four expected classes, bbee, dies before birth.",
+        "Chocolate is incompletely dominant, so B_E_ and bbE_ blend into one class."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "This is epistasis: ee masks the B gene. The 16 combinations still form 9:3:3:1 by genotype class (B_E_, B_ee, bbE_, bbee), but B_ee and bbee look the same, giving 9 black : 3 chocolate : 4 yellow.",
+        "options": [
+          "Epistasis makes two genotype classes share one phenotype: 3 + 1 = 4 yellow.",
+          "The genes are on different chromosomes; linkage would change the class sizes, not merge two classes.",
+          "A lethal class would leave 15 parts, not 16; the yellow count fits 4/16 of all puppies.",
+          "Black and chocolate are distinct classes here, with 92 and 29 puppies; nothing blends."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-11",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "non-mendelian-genetics-s3",
+      "q": "Which pattern do the results show?",
+      "options": [
+        "The seedlings resemble the branch that gave the eggs.",
+        "The seedlings resemble the branch that gave the pollen.",
+        "Green is dominant, so green seedlings appear in each cross.",
+        "The seedlings show a 3:1 ratio of green to white."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Eggs from a green branch give green seedlings whatever the pollen; eggs from a white branch give white seedlings; eggs from a variegated branch give a mix. The pollen source makes no difference.",
+        "options": [
+          "The seedlings' color follows the egg-giving branch in every row.",
+          "Pollen from variegated or white branches still gives green seedlings when the eggs come from a green branch.",
+          "Eggs from a white branch fertilized by green pollen give white seedlings, so green does not appear in every cross.",
+          "No cross gives a 3:1 ratio; the result depends on the egg's branch."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-12",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "non-mendelian-genetics-s3",
+      "q": "Which explanation best accounts for the results?",
+      "options": [
+        "The trait depends on chloroplasts, which pass to the seedling in the egg's cytoplasm, not in the pollen.",
+        "The trait is caused by a recessive allele in the nucleus, which is hidden when pollen brings a dominant allele.",
+        "The trait is X-linked, so it passes from the plant giving the eggs to its offspring.",
+        "The pollen's chloroplasts are destroyed by the egg's nucleus at fertilization."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Chloroplasts carry their own DNA and are passed on in the cytoplasm. An egg brings plenty of cytoplasm; the pollen's sperm brings almost none. So the seedling inherits the chloroplasts of the egg's branch: green, white or a mix.",
+        "options": [
+          "Chloroplasts travel with the egg's cytoplasm, so seedlings match the egg-giving branch.",
+          "A nuclear allele would give the same result whichever plant gave the eggs, and these crosses differ by direction.",
+          "Four o'clocks have no sex chromosomes; each flower makes both eggs and pollen.",
+          "The nucleus does not destroy chloroplasts; the sperm cell brings little or no chloroplast DNA to begin with."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-13",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "non-mendelian-genetics-s3",
+      "q": "Rows 2 and 4 are a reciprocal cross. Why does their difference rule out an ordinary nuclear gene?",
+      "options": [
+        "For a nuclear gene, each parent gives one allele, so swapping which branch gives eggs would not change the seedlings.",
+        "For a nuclear gene, swapping the parents doubles the number of white seedlings.",
+        "Nuclear genes are carried in pollen but not in eggs, so the eggs could not pass them on.",
+        "A nuclear gene would give a 9:3:3:1 ratio in both crosses."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Egg and sperm each carry one set of nuclear chromosomes, so for an autosomal gene it does not matter which parent is the mother. A difference between reciprocal crosses points to a sex chromosome (which this plant lacks) or to the cytoplasm.",
+        "options": [
+          "Nuclear alleles come equally from both parents, so reciprocal crosses agree.",
+          "Swapping parents does not change the result for a nuclear gene on a non-sex chromosome.",
+          "Eggs and sperm both carry a full haploid set of nuclear chromosomes.",
+          "9:3:3:1 needs two genes and double heterozygotes; it does not describe these crosses."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-14",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "non-mendelian-genetics-s3",
+      "q": "A condition in humans is caused by a change in mitochondrial DNA. Predict the children of family 1 (affected mother, unaffected father) and family 2 (unaffected mother, affected father).",
+      "options": [
+        "Children in family 1 can inherit it; in family 2 the children are very unlikely to.",
+        "Children in family 2 can inherit it; in family 1 the children are very unlikely to.",
+        "Half the children in each family inherit it, as for a dominant nuclear allele.",
+        "Sons in family 1 and daughters in family 2 inherit it, as for an X-linked allele."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Like chloroplasts in plants, mitochondria are passed on in the egg's cytoplasm. Children get their mother's mitochondria, so an affected mother can pass the condition to sons and daughters, and an affected father, as a rule, cannot.",
+        "options": [
+          "Mitochondria come from the egg, so the mother's mitochondrial DNA is the one inherited.",
+          "The father's mitochondria are not passed on in the sperm, as a rule.",
+          "A 1:1 pattern is for nuclear genes; mitochondrial genes follow the mother.",
+          "Mitochondrial DNA is not on the X; an affected mother can pass it to children of either sex."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-15",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "q": "In snapdragons, red (C<sup>R</sup>C<sup>R</sup>) × white (C<sup>W</sup>C<sup>W</sup>) gives pink offspring. What ratio of flower colors is expected when two pink plants are crossed?",
+      "options": [
+        "1 red : 2 pink : 1 white",
+        "3 pink : 1 white",
+        "3 red : 1 white",
+        "1 red : 1 white"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "C<sup>R</sup>C<sup>W</sup> × C<sup>R</sup>C<sup>W</sup> gives 1 C<sup>R</sup>C<sup>R</sup> : 2 C<sup>R</sup>C<sup>W</sup> : 1 C<sup>W</sup>C<sup>W</sup>. With incomplete dominance each genotype has its own color, so the phenotype ratio equals the genotype ratio.",
+        "options": [
+          "Each genotype looks different, so 1:2:1 genotypes give 1:2:1 colors.",
+          "Pink is the heterozygote, so it cannot breed true or be a dominant class.",
+          "3:1 would need red to be dominant, but the heterozygote is pink, not red.",
+          "Pink plants are heterozygous, so they produce pink offspring as well as red and white."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-16",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A mother has blood type A and her child has type O. Which man can be ruled out as the child's father on blood type alone?",
+      "options": [
+        "A man with type AB",
+        "A man with type A",
+        "A man with type B",
+        "A man with type O"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A type O child is ii and got an i from each parent. A type AB man is I<sup>A</sup>I<sup>B</sup> and has no i to give, so he cannot be the father. Men with type A, B or O can all carry i.",
+        "options": [
+          "I<sup>A</sup>I<sup>B</sup> carries no i allele, so he cannot give the child one.",
+          "A type A man can be I<sup>A</sup>i and pass i.",
+          "A type B man can be I<sup>B</sup>i and pass i.",
+          "A type O man is ii and passes i to every child."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-17",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "q": "A man with genotype I<sup>A</sup>i and a woman with genotype I<sup>B</sup>i have a child. What is the probability that the child has blood type AB? Give a decimal to two places.",
+      "numeric": {
+        "answer": 0.25,
+        "tol": 0,
+        "unit": "",
+        "decimals": 2
+      },
+      "why": {
+        "correct": "The child needs I<sup>A</sup> from the father (½) and I<sup>B</sup> from the mother (½): ½ × ½ = ¼ = 0.25. Each of A, B, AB and O is ¼ in this cross."
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-18",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A red bull and a white cow have a calf whose coat is a mixture of red hairs and white hairs (roan). Which pattern of inheritance does this show, and why?",
+      "options": [
+        "Codominance, because each allele's color appears fully, in separate hairs.",
+        "Incomplete dominance, because the calf's coat is a blend of its parents' colors.",
+        "Complete dominance, because the calf shows red, which is the dominant color.",
+        "Epistasis, because one gene for coat color masks another."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both alleles show their full effect side by side: some hairs red, some white. That is codominance. Incomplete dominance would give one in-between color in every hair, such as pink.",
+        "options": [
+          "Both colors appear unchanged in the same animal: codominance.",
+          "A blend would make each hair an in-between color; here each hair is fully red or fully white.",
+          "With complete dominance the calf would be one color, like a homozygous parent.",
+          "One gene with two alleles is enough to explain this; no second gene is masking another."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-19",
+      "type": "numeric",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.A",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A plant's height is controlled by three genes (A, B, C) on different chromosomes. Each capital-letter allele adds 2 cm to a base height, and the effects simply add up. How many different heights are possible among the offspring of AaBbCc × AaBbCc? Give a whole number.",
+      "numeric": {
+        "answer": 7,
+        "tol": 0,
+        "unit": "heights",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "An offspring can have 0, 1, 2, 3, 4, 5 or 6 capital-letter alleles, and height depends only on that number: 7 classes. With more genes the classes multiply and the distribution looks continuous, as for polygenic traits such as human height."
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-20",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "1.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "The gene that is altered in cystic fibrosis makes a channel protein used in the lungs, pancreas, sweat glands and reproductive tract. People with two altered copies have thick mucus in the lungs, digestive problems, salty sweat and often reduced fertility. This is an example of",
+      "options": [
+        "pleiotropy",
+        "epistasis",
+        "polygenic inheritance",
+        "codominance"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "One gene affects several different traits because its protein works in several tissues: pleiotropy.",
+        "options": [
+          "One gene with many effects is the definition of pleiotropy.",
+          "Epistasis is one gene masking another gene; here a single gene acts in many places.",
+          "Polygenic inheritance is many genes affecting one trait, the reverse situation.",
+          "Codominance describes how two alleles show in a heterozygote; carriers here are unaffected."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-21",
+      "type": "single",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "2.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Three genes are on one chromosome. Recombination frequencies are: A–B 12%, B–C 4%, A–C 8%. What is the gene order?",
+      "options": [
+        "A – C – B",
+        "A – B – C",
+        "B – A – C",
+        "C – A – B"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The largest distance (A–B, 12) spans the two outer genes, so C lies between them. A–C (8) + C–B (4) = 12 = A–B, which fits A – C – B.",
+        "options": [
+          "A–B is the longest distance, so the A gene and the B gene are at the ends and C is in the middle: 8 + 4 = 12.",
+          "B in the middle would need A–B + B–C = A–C, but 12 + 4 is not 8.",
+          "A in the middle would need B–A + A–C = B–C, but 12 + 8 is not 4.",
+          "This puts A in the middle (C–A 8, A–B 12), which would make C–B 20, not 4."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-22",
+      "type": "multi",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "5.D",
+      "level": "analyze",
+      "diff": 2,
+      "q": "A testcross of AaBb × aabb gives four phenotype classes. Select the result that is evidence that genes A and B are linked.",
+      "options": [
+        "Two classes make up about 90% of the offspring, and the other two about 10%.",
+        "The four classes appear in about equal numbers.",
+        "The dominant phenotype for each gene appears in about half of the offspring.",
+        "About three quarters of the offspring show the dominant phenotype for both genes.",
+        "Each offspring shows the dominant phenotype for gene A."
+      ],
+      "correct": [
+        0
+      ],
+      "why": {
+        "correct": "Independent assortment predicts four equal classes in a testcross. Two large (parental) and two small (recombinant) classes show the alleles travel together on one chromosome.",
+        "options": [
+          "A big excess of two classes is the signature of linkage: parental combinations kept together.",
+          "Equal classes are what independent assortment predicts, so they are evidence against linkage.",
+          "Each gene alone gives 1:1 in a testcross whether or not the genes are linked.",
+          "Three quarters dominant for both is not expected in a testcross of AaBb, linked or not.",
+          "In a testcross Aa × aa gives half aa offspring, so this result would mean the parent was AA."
+        ]
+      }
+    },
+    {
+      "id": "bio-non-mendelian-genetics-23",
+      "type": "predict",
+      "unit": "unit-5",
+      "topic": "non-mendelian-genetics",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Gene pair 1 is 5 map units apart on a chromosome; gene pair 2 is 30 map units apart on the same chromosome. In matching testcrosses of double heterozygotes, predict each value for gene pair 2 compared with gene pair 1.",
+      "variables": [
+        {
+          "name": "Recombination frequency",
+          "answer": "up",
+          "why": "More distance between the genes gives more room for a crossover between them, so more recombinant gametes: about 30% instead of 5%."
+        },
+        {
+          "name": "Percentage of parental-type offspring",
+          "answer": "down",
+          "why": "Parental and recombinant offspring add to 100%; more recombinants means fewer parental types (about 70% instead of 95%)."
+        },
+        {
+          "name": "Number of phenotype classes among the offspring",
+          "answer": "none",
+          "why": "Both testcrosses give the same four classes (two parental, two recombinant); only their sizes differ."
+        },
+        {
+          "name": "Number of chromosomes in each gamete",
+          "answer": "none",
+          "why": "Crossing over swaps pieces between homologs; it does not change how many chromosomes a gamete gets."
+        }
+      ],
+      "why": {
+        "correct": "Recombination frequency rises with the distance between linked genes, so the farther pair gives more recombinants and fewer parental types; the classes and the chromosome number stay the same."
+      }
+    }
+  ]
+}

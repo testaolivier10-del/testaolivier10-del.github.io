@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 310" width="760" height="310" role="img" aria-labelledby="dom-t dom-d">
+<title id="dom-t">Complete dominance, incomplete dominance and codominance compared</title>
+<desc id="dom-d">Three rows, each showing two homozygous parents and their heterozygous offspring. Complete dominance, pea flowers: purple PP and white pp parents give purple Pp offspring, indistinguishable from PP. Incomplete dominance, snapdragon flowers: red and white parents give pink offspring, an in-between phenotype. Codominance, cattle coat: a red-haired and a white-haired parent give a roan calf whose coat has both red hairs and white hairs mixed, each allele's product fully shown.</desc>
+<defs><marker id="dom-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="310" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="250.0" y="26.0" font-size="14" text-anchor="middle" font-weight="700">Parent 1</text>
+<text x="400.0" y="26.0" font-size="14" text-anchor="middle" font-weight="700">Parent 2</text>
+<text x="600.0" y="26.0" font-size="14" text-anchor="middle" font-weight="700">Heterozygous offspring</text>
+<text x="20.0" y="76.0" font-size="14" text-anchor="start" font-weight="700">Complete dominance</text>
+<text x="20.0" y="94.0" font-size="12" text-anchor="start">pea flower</text>
+<circle cx="250" cy="80" r="20" fill="#6A3D9A"/>
+<text x="250.0" y="118.0" font-size="12" text-anchor="middle">PP</text>
+<text x="325.0" y="86.0" font-size="20" text-anchor="middle" font-weight="700">×</text>
+<circle cx="400" cy="80" r="20" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<text x="400.0" y="118.0" font-size="12" text-anchor="middle">pp</text>
+<line x1="440.0" y1="80.0" x2="545.0" y2="80.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#dom-a)"/>
+<circle cx="600" cy="80" r="20" fill="#6A3D9A"/>
+<text x="600.0" y="118.0" font-size="12" text-anchor="middle" font-weight="700">Pp: looks like PP</text>
+<line x1="20.0" y1="132.0" x2="740.0" y2="132.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="20.0" y="166.0" font-size="14" text-anchor="start" font-weight="700">Incomplete dominance</text>
+<text x="20.0" y="184.0" font-size="12" text-anchor="start">snapdragon</text>
+<circle cx="250" cy="170" r="20" fill="#C0392B"/>
+<text x="250.0" y="208.0" font-size="12" text-anchor="middle">CᴿCᴿ</text>
+<text x="325.0" y="176.0" font-size="20" text-anchor="middle" font-weight="700">×</text>
+<circle cx="400" cy="170" r="20" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<text x="400.0" y="208.0" font-size="12" text-anchor="middle">CᵂCᵂ</text>
+<line x1="440.0" y1="170.0" x2="545.0" y2="170.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#dom-a)"/>
+<circle cx="600" cy="170" r="20" fill="#F2A7B5"/>
+<text x="600.0" y="208.0" font-size="12" text-anchor="middle" font-weight="700">CᴿCᵂ: in between</text>
+<line x1="20.0" y1="222.0" x2="740.0" y2="222.0" stroke="#5D6B69" stroke-width="1" stroke-dasharray="3 5"/>
+<text x="20.0" y="256.0" font-size="14" text-anchor="start" font-weight="700">Codominance</text>
+<text x="20.0" y="274.0" font-size="12" text-anchor="start">cattle coat</text>
+<rect x="226" y="240" width="48" height="40" rx="8" fill="#8B2E1F" stroke="#5D6B69" stroke-width="2"/>
+<text x="250.0" y="298.0" font-size="12" text-anchor="middle">red</text>
+<text x="325.0" y="266.0" font-size="20" text-anchor="middle" font-weight="700">×</text>
+<rect x="376" y="240" width="48" height="40" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<text x="400.0" y="298.0" font-size="12" text-anchor="middle">white</text>
+<line x1="440.0" y1="260.0" x2="545.0" y2="260.0" stroke="#1F2A28" stroke-width="2" marker-end="url(#dom-a)"/>
+<rect x="576" y="240" width="48" height="40" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="2"/>
+<line x1="589.4" y1="247.1" x2="591.4" y2="254.1" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="595.8" y1="248.6" x2="597.8" y2="255.6" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="582.7" y1="256.0" x2="584.7" y2="263.0" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="616.7" y1="268.0" x2="618.7" y2="275.0" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="610.6" y1="250.7" x2="612.6" y2="257.7" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="601.5" y1="252.3" x2="603.5" y2="259.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="586.9" y1="247.2" x2="588.9" y2="254.2" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="588.6" y1="271.8" x2="590.6" y2="278.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="613.2" y1="268.2" x2="615.2" y2="275.2" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="612.0" y1="249.8" x2="614.0" y2="256.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="592.4" y1="262.8" x2="594.4" y2="269.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="609.3" y1="269.6" x2="611.3" y2="276.6" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="615.2" y1="246.6" x2="617.2" y2="253.6" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="604.2" y1="264.2" x2="606.2" y2="271.2" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="600.2" y1="249.3" x2="602.2" y2="256.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="598.9" y1="246.7" x2="600.9" y2="253.7" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="617.4" y1="270.0" x2="619.4" y2="277.0" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="601.9" y1="253.0" x2="603.9" y2="260.0" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="616.4" y1="261.2" x2="618.4" y2="268.2" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="615.3" y1="269.4" x2="617.3" y2="276.4" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="600.3" y1="256.4" x2="602.3" y2="263.4" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="604.0" y1="256.9" x2="606.0" y2="263.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="586.5" y1="253.2" x2="588.5" y2="260.2" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="612.5" y1="245.3" x2="614.5" y2="252.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="581.9" y1="262.8" x2="583.9" y2="269.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="591.2" y1="260.0" x2="593.2" y2="267.0" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="598.8" y1="254.3" x2="600.8" y2="261.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="619.9" y1="249.9" x2="621.9" y2="256.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="596.5" y1="250.1" x2="598.5" y2="257.1" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="605.3" y1="252.3" x2="607.3" y2="259.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="594.2" y1="266.4" x2="596.2" y2="273.4" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="592.8" y1="260.8" x2="594.8" y2="267.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="616.2" y1="247.0" x2="618.2" y2="254.0" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="582.5" y1="250.9" x2="584.5" y2="257.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="610.6" y1="262.5" x2="612.6" y2="269.5" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="589.5" y1="253.9" x2="591.5" y2="260.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="587.1" y1="257.8" x2="589.1" y2="264.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="581.7" y1="264.9" x2="583.7" y2="271.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="615.8" y1="272.6" x2="617.8" y2="279.6" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="609.4" y1="272.8" x2="611.4" y2="279.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="580.7" y1="252.7" x2="582.7" y2="259.7" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="618.6" y1="267.3" x2="620.6" y2="274.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="596.4" y1="272.3" x2="598.4" y2="279.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="604.8" y1="268.5" x2="606.8" y2="275.5" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="591.7" y1="249.7" x2="593.7" y2="256.7" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="597.8" y1="248.1" x2="599.8" y2="255.1" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="595.3" y1="272.9" x2="597.3" y2="279.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="593.3" y1="244.3" x2="595.3" y2="251.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="581.8" y1="249.1" x2="583.8" y2="256.1" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="611.3" y1="254.9" x2="613.3" y2="261.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="591.6" y1="246.9" x2="593.6" y2="253.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="619.3" y1="256.7" x2="621.3" y2="263.7" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="588.3" y1="245.8" x2="590.3" y2="252.8" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="582.2" y1="249.1" x2="584.2" y2="256.1" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="607.1" y1="248.5" x2="609.1" y2="255.5" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="581.6" y1="258.7" x2="583.6" y2="265.7" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="590.0" y1="273.9" x2="592.0" y2="280.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="584.9" y1="259.9" x2="586.9" y2="266.9" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="611.0" y1="256.3" x2="613.0" y2="263.3" stroke="#8B2E1F" stroke-width="2"/>
+<line x1="619.5" y1="258.3" x2="621.5" y2="265.3" stroke="#8B2E1F" stroke-width="2"/>
+<text x="600.0" y="298.0" font-size="12" text-anchor="middle" font-weight="700">roan: red AND white hairs</text>
+</g>
+</svg>
