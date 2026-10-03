@@ -197,6 +197,11 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
   accepts the textbook answer. Confirm this is what the exam expects.
 - **lipid-macromolecule** (open). The CED says lipids are not polymers; some texts still call
   large lipids macromolecules. Meanwhile: "large molecules but not polymers".
+- **termite-cellulase** (open; Unit 1 review, 2026-10-03). Textbooks (OpenStax 3.2 included)
+  credit termites' cellulose digestion to gut microbes, but termites also secrete some cellulase
+  of their own, and the share varies between termite groups. Meanwhile: "mainly because of gut
+  microbes" (Carbohydrates notes, lesson misconception, `bio-carbohydrates-5`, whose stem already
+  says termites make a little enzyme themselves). Confirm the wording.
 
 ## Map content to confirm
 

@@ -7,7 +7,7 @@
     "source": "levlprep",
     "license": "LevlPrep original",
     "credit": "LevlPrep original diagram",
-    "alt": "Four panels. Primary: a chain of beads, each an amino acid. Secondary: a coiled alpha helix and a zigzag beta pleated sheet with dashed hydrogen bonds. Tertiary: one chain folded into a compact shape, with nonpolar side chains inside, an ionic bond and a disulfide bridge labeled. Quaternary: four folded chains packed together."
+    "alt": "Four panels. Primary: a chain of beads, each an amino acid. Secondary: a coiled alpha helix and a zigzag beta pleated sheet with dashed hydrogen bonds. Tertiary: one chain folded into a compact shape, with nonpolar side chains inside and a disulfide bridge labeled. Quaternary: four folded chains packed together."
   },
   "amino-acid-peptide": {
     "file": "figures/amino-acid-peptide.svg",

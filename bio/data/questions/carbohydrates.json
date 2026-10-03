@@ -359,7 +359,7 @@
       "q": "Termites eat wood but make little enzyme of their own like Enzyme B; microbes in their guts make it. Termites are given a treatment that kills their gut microbes and are then fed only wood. What is the most likely result?",
       "options": [
         "The termites digest the wood as before, because wood also contains starch they can break down.",
-        "The termites starve, because the cellulose in the wood passes through them without being hydrolyzed.",
+        "The termites starve, because most of the cellulose in the wood passes through them without being hydrolyzed.",
         "The termites switch to making Enzyme A, which takes over the job of hydrolyzing the cellulose in the wood.",
         "The termites build chitin from the wood instead, which they can digest with their own enzymes."
       ],
@@ -368,7 +368,7 @@
         "correct": "Wood's energy is locked in cellulose's β-glycosidic bonds. Only enzymes that fit β bonds, made here by gut microbes, can release the glucose.",
         "options": [
           "Wood is mostly cellulose. Without microbial enzymes, the termites cannot release its glucose.",
-          "Correct. Like Enzyme A, the termites' own enzymes do not cut β bonds; without the microbes, the cellulose stays unusable.",
+          "Correct. The termites' own small supply of β-cutting enzyme cannot release enough glucose; without the microbes, most of the cellulose stays unusable.",
           "The table shows Enzyme A, a starch-cutting enzyme, releases almost no sugar from cellulose.",
           "Building chitin from wood would first require breaking the cellulose down, which is exactly what they cannot do."
         ]

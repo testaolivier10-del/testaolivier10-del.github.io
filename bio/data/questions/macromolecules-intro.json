@@ -3,7 +3,7 @@
     "macromolecules-intro-s1": {
       "kind": "table",
       "title": "Breaking down a sugar polymer",
-      "text": "<p>A student set up three tubes at 37 °C and pH 7. Tube 1 held a sugar polymer extracted from potatoes (enough to give 60 mmol/L of sugar monomers if every bond were broken) plus an enzyme solution made from saliva. Tube 2 held the same polymer plus water instead of the enzyme solution. Tube 3 held the enzyme solution plus water instead of the polymer. Every few minutes she measured the concentration of free sugar monomers in each tube.</p>",
+      "text": "<p>A student set up three tubes at 37 °C and pH 7. Tube 1 held a sugar polymer extracted from potatoes (enough to give 60 mmol/L of sugar monomers if every bond were broken) plus a purified enzyme that cuts single sugar units off the ends of the polymer chains. Tube 2 held the same polymer plus water instead of the enzyme solution. Tube 3 held the enzyme solution plus water instead of the polymer. Every few minutes she measured the concentration of free sugar monomers in each tube.</p>",
       "table": {
         "caption": "Free sugar monomers (mmol/L) in each tube over time",
         "cols": [
@@ -154,7 +154,7 @@
         "That the polymer breaks down by itself in water at 37 °C without help.",
         "That the monomers in Tube 1 came from the enzyme solution itself, not from the polymer.",
         "That temperature affected how fast the enzyme broke down the polymer during the hour.",
-        "That the enzyme from saliva can also break down proteins in the same tube."
+        "That this enzyme can also break down proteins in the same tube."
       ],
       "correct": 1,
       "why": {
