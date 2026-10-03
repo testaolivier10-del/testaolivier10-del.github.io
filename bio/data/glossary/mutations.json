@@ -1,0 +1,17 @@
+{
+  "point-mutation": { "def": "A mutation that changes a single base. The most common kind is a base substitution, in which one base pair is replaced by another." },
+  "substitution-types": { "def": "The effects of a base substitution in a coding sequence. Silent mutation: the codon still codes for the same amino acid. Missense mutation: it codes for a different amino acid. Nonsense mutation: it becomes a stop codon, ending the chain early." },
+  "indel": { "def": "An insertion mutation adds one or more bases to DNA; a deletion mutation removes them. Together they are called indels. If the number is not a multiple of three, they shift the reading frame." },
+  "frameshift": { "def": "A mutation that adds or removes a number of bases that is not a multiple of three, so every codon after it is regrouped; the amino acids change and a stop codon usually appears early." },
+  "mutagen": { "def": "Something that raises the rate of mutation, such as UV radiation, X-rays or certain chemicals. Mutagens that can cause cancer are called carcinogens." },
+  "random-mutation": { "def": "The principle that mutations arise by chance, not in response to an organism's needs or to particular pressures in its environment; the environment affects which mutations persist, not which ones occur." },
+  "mutation-effects": { "def": "A mutation can be neutral (no effect on survival or reproduction), harmful (deleterious) or beneficial, and which it is depends on the environment: one copy of the sickle-cell allele helps where malaria is common and has little effect elsewhere." },
+  "sickle-cell": { "def": "Sickle cell disease: an inherited disease caused by a missense mutation in the β-globin gene that puts valine in place of glutamic acid; the hemoglobin forms fibers at low oxygen, bending red blood cells into sickles that block small vessels. Carriers of one sickle-cell allele are protected against severe malaria." },
+  "chromosomal-mutation": { "def": "A change in the structure of a chromosome: a deletion (segment lost), a duplication (segment repeated), an inversion (segment flipped) or a translocation (segment moved to a nonhomologous chromosome)." },
+  "polyploidy": { "def": "Having more than two complete sets of chromosomes, such as triploid (3n) or tetraploid (4n). Common in plants; triploids are nearly sterile because their homologs cannot separate evenly in meiosis." },
+  "horizontal-transfer": { "def": "Horizontal (lateral) gene transfer: the movement of genes between organisms that are not parent and offspring, as when bacteria gain genes by transformation, transduction or conjugation." },
+  "transduction-bact": { "def": "Transfer of bacterial DNA from one bacterium to another by a phage that packaged some of its previous host's DNA by mistake." },
+  "conjugation": { "def": "Direct transfer of DNA, often a plasmid, from one bacterium to another through a connecting bridge formed with a pilus." },
+  "transposon": { "def": "A transposable element: a DNA segment that can move or copy itself to new places in a genome. Inserting into a gene usually disrupts it." },
+  "viral-variation": { "def": "The fast genetic change of viruses: RNA viruses copy their genomes without proofreading, giving a high viral mutation rate, and viruses with segmented genomes such as influenza can swap segments when two infect one cell (reassortment); others recombine parts of their genomes (viral recombination)." }
+}

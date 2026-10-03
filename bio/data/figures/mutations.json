@@ -1,0 +1,12 @@
+{
+  "mutation-types": {
+    "file": "figures/mutation-types.svg", "ext": "svg", "w": 760, "h": 470,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Six versions of a short mRNA split into codons, with amino acids below. Normal: AUG GCA UGG GAA CUA AAU GGC UAA, Met-Ala-Trp-Glu-Leu-Asn-Gly then stop. Silent: GAA becomes GAG, still glutamic acid. Missense: GAA becomes GUA, valine. Nonsense: UGG becomes UGA, stop after Met-Ala. Frameshift, one base deleted: AUG GCA GGG AAC UAA, Met-Ala-Gly-Asn then stop. In-frame insertion of three bases: AAG added, one extra lysine, the rest unchanged. Changed codons are highlighted."
+  },
+  "chromosome-changes": {
+    "file": "figures/chromosome-changes.svg", "ext": "svg", "w": 760, "h": 300,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A chromosome with segments A to G and four kinds of change. Deletion: A B D E F G, segment C lost. Duplication: A B C D C D E F G, segment C D repeated. Inversion: A B E D C F G, segment C D E flipped. Translocation: segments F G and Q are swapped between this chromosome and a nonhomologous chromosome M N O P Q, giving A B C D E Q and M N O P F G."
+  }
+}

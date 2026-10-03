@@ -1,0 +1,16 @@
+{
+  "transformation": { "def": "Bacterial transformation: a bacterium takes in DNA from its surroundings and gains new, inherited traits, as when harmless R cells became deadly S cells in Griffith's experiment." },
+  "virus": { "def": "A small particle of nucleic acid (DNA or RNA) inside a protein coat, sometimes with an outer envelope. A virus is not a cell and can multiply only inside a host cell, using the host's machinery." },
+  "bacteriophage": { "def": "A virus that infects bacteria (phage for short). Many phages attach to a cell's surface and inject their DNA, leaving the protein coat outside." },
+  "hereditary-evidence": { "def": "The experiments showing DNA is the hereditary material: Griffith's transformation of R bacteria by heat-killed S bacteria (1928); Avery, MacLeod and McCarty's finding that only DNase destroys the transforming principle (1944); and Hershey and Chase's phage labeling, in which DNA (³²P) entered the cells and protein (³⁵S) did not (1952)." },
+  "hereditary-material": { "def": "The molecule that carries genetic instructions from one generation to the next: DNA in all cells and many viruses, RNA in some viruses." },
+  "rna-virus": { "def": "A virus whose genes are carried in RNA instead of DNA, such as influenza, measles and the coronavirus that causes COVID-19." },
+  "plasmid": { "def": "A small circle of DNA, separate from the main chromosome, that is copied on its own and can pass between bacteria. Plasmid genes are often useful but not essential, such as genes for surviving a drug." },
+  "linear-chromosome": { "def": "A chromosome with two ends, the kind found in the nucleus of eukaryotic cells (prokaryotes usually have one circular chromosome)." },
+  "histone": { "def": "A small, positively charged protein around which eukaryotic DNA winds. About two turns of DNA around a core of eight histones form a nucleosome, the first level of chromatin packing." },
+  "euchromatin": { "def": "Loosely packed chromatin, whose genes can be reached and read. Its opposite, heterochromatin, is tightly packed chromatin whose genes are mostly silent." },
+  "purine": { "def": "A nitrogenous base with two fused rings: adenine (A) and guanine (G). Pyrimidines have one ring: thymine (T), cytosine (C) and uracil (U). Each DNA base pair joins one purine to one pyrimidine." },
+  "uniform-width": { "def": "The constant diameter of the DNA double helix (about 2 nm), which results from every base pair being one purine plus one pyrimidine." },
+  "chargaff": { "def": "In double-stranded DNA, the amount of adenine equals the amount of thymine and the amount of guanine equals the amount of cytosine (A = T, G = C), because of base pairing. The share of A + T differs between species." },
+  "genome": { "def": "One complete set of an organism's DNA: all of its genes plus the DNA between them. Human body cells carry two copies, one from each parent." }
+}

@@ -258,9 +258,13 @@ checkpoints, p53/Rb/cyclin D–CDK/ras, DNA histogram), all three `premium: "too
 live once `unit-5` is published) `meiosis-nondisjunction` (`ApBioMath.meiosis`: 2n = 4 or 6 stepped
 from G1 to four gametes, crossing over, metaphase I orientations, nondisjunction in meiosis I or II
 for a chosen pair, gamete and zygote counts, 2^n and `series` over every line-up, `mitosis` for the
-comparison; maternal solid + M, paternal striped + P), also `premium: "tools"`. Their topics
-are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other seven (ETC/ATP synthase, light
-reactions/Calvin, operons,
+comparison; maternal solid + M, paternal striped + P), also `premium: "tools"`; and (Unit 6,
+live once `unit-6` is published) `operons` (`ApBioMath.operon`: lac with glucose/lactose, CAP–cAMP and
+the repressor, trp with tryptophan as corepressor; lacI⁻, lacIˢ, Oᶜ, lacZ⁻, trpR⁻, trp Oᶜ; a "going
+further" chromosome + F′ merodiploid for cis/trans; mRNA and enzyme time course solved exactly),
+`premium: "tools"`. Their topics
+are also in `_shared.mjs` `PLACEHOLDER_TOPICS`. The other six (ETC/ATP synthase, light
+reactions/Calvin,
 Hardy-Weinberg/drift, tree reading, population growth, energy flow) come with their units: add
 the model to `ApBioMath` (or the script), the script, the data, the validator and the
 `pages.json` entry.

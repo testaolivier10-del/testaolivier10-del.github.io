@@ -1,0 +1,588 @@
+{
+  "about": "Simulator: the lac operon (inducible; lactose/allolactose, glucose, CAP–cAMP) and the trp operon (repressible; tryptophan as corepressor), with mutations, a merodiploid 'going further' mode and a time course after the inputs change. Model code: bio/assets/tools/bio-tool-math.js (ApBioMath.operon). Validator: scripts/lib/apbio-tool-checks/operons.mjs checks each rule through the model (inducible and repressible behavior, every mutation, cis and trans in the merodiploid, the mRNA–enzyme lag) and recomputes every number in the stimulus tables and the numeric answer.",
+  "slug": "operons",
+  "kind": "simulator",
+  "topic": "gene-regulation",
+  "intro": "<p>Switch a bacterium's genes on and off. Choose the sugars or the amino acid in the medium, break a gene or a DNA site, and see where the repressor sits, whether RNA polymerase can bind, and how much mRNA and enzyme the cell makes. Then change the medium and follow the mRNA and the enzyme minute by minute. The questions below use the same model.</p>",
+  "howItWorks": "<p>An <b>operon</b> is a group of bacterial genes read from one promoter into one mRNA. Between the promoter and the genes sits the <b>operator</b>, a short DNA site where a <b>repressor</b> protein can bind. A bound repressor keeps RNA polymerase from transcribing the genes.</p><p><b>The lac operon is inducible</b> (off unless something turns it on):</p><ol><li>The <i>lacI</i> gene, outside the operon, makes the lac repressor all the time. On its own, the repressor binds the operator, so the genes for using lactose (<i>lacZ</i>, β-galactosidase; <i>lacY</i>; <i>lacA</i>) are barely transcribed.</li><li>When lactose is present, some of it is turned into <b>allolactose</b>, the inducer. Allolactose binds the repressor at a site away from its DNA-binding part, the repressor changes shape and lets go of the operator.</li><li>When glucose is scarce, the cell's cAMP level rises. cAMP binds <b>CAP</b> (catabolite activator protein); CAP–cAMP binds a site next to the promoter and helps RNA polymerase bind, so transcription becomes much faster. With glucose present, cAMP stays low and CAP does not bind.</li></ol><p><b>The trp operon is repressible</b> (on unless something turns it off): its five genes make the enzymes that build the amino acid tryptophan. The trp repressor, made by <i>trpR</i>, cannot bind the operator by itself. When tryptophan is plentiful, tryptophan binds the repressor (it is the <b>corepressor</b>), the repressor changes shape, binds the operator and blocks transcription.</p><p>The model's rules:</p><ul><li><b>Rates</b> (relative, a fully on wild-type operon = 100): repressor on the operator 1 (a trickle still gets through); repressor off and CAP–cAMP bound 100; repressor off but no CAP (glucose present) 10. The trp operon: repressor bound 1, not bound 100.</li><li><b>Inputs</b> act at once at 0 min: lactose gives allolactose and glucose lowers cAMP immediately. The model treats lactose as giving allolactose in every cell. (Real cells need a little β-galactosidase to make allolactose, so a cell with no working <i>lacZ</i> cannot make it; experiments on such cells use a lab-made inducer instead. The model skips this.) Tryptophan in the medium is the corepressor; the model ignores the tryptophan the cell makes itself.</li><li><b>Mutations:</b> <i>lacI</i>⁻ makes no working repressor. <i>lacI</i>ˢ makes a super-repressor that cannot bind allolactose, so it stays on the operator. Oᶜ is an operator with a changed DNA sequence that no repressor can bind. <i>lacZ</i>⁻ still makes mRNA but no working β-galactosidase. <i>trpR</i>⁻ makes no trp repressor. A trp Oᶜ operator binds no trp repressor.</li><li><b>Time course:</b> the cells grow in the starting medium long enough for every level to settle, then move to the new medium at 0 min. mRNA is broken down quickly (half-life 2 min), so its level settles within about 10 min. The enzymes are stable and are only diluted as the cells grow and divide (one doubling every 40 min), so the enzyme level changes slowly. Both are relative: steady state in a fully on wild-type cell = 100.</li><li>The model has no randomness: the same settings always give the same numbers.</li></ul>",
+  "goingFurther": "<p><b>Going further (beyond the course).</b> Geneticists tested how the lac parts act by giving a cell a second copy of the operon and <i>lacI</i> on a small DNA circle, a plasmid called F′ (F-prime). A part that acts on both copies, like the repressor protein, which moves through the cell, acts <b>in trans</b>. A part that acts only on the DNA it sits on, like the operator, acts <b>in cis</b>. In this mode the readings add up the two copies, so a fully on cell can reach 200.</p>",
+  "model": {
+    "basal": 1,
+    "full": 100,
+    "noCap": 10,
+    "trpOn": 100,
+    "mHalf": 2,
+    "eDouble": 40,
+    "tStart": -15,
+    "tEnd": 90,
+    "dt": 1
+  },
+  "readTime": {
+    "min": -15,
+    "max": 90,
+    "step": 1,
+    "value": 20
+  },
+  "lacGenes": [
+    {
+      "id": "I",
+      "label": "lacI gene (repressor)",
+      "options": [
+        {
+          "value": "+",
+          "label": "lacI⁺: normal repressor"
+        },
+        {
+          "value": "-",
+          "label": "lacI⁻: no working repressor"
+        },
+        {
+          "value": "s",
+          "label": "lacIˢ: super-repressor (cannot bind allolactose)"
+        }
+      ]
+    },
+    {
+      "id": "O",
+      "label": "lac operator",
+      "options": [
+        {
+          "value": "+",
+          "label": "O⁺: normal operator"
+        },
+        {
+          "value": "c",
+          "label": "Oᶜ: no repressor can bind"
+        }
+      ]
+    },
+    {
+      "id": "Z",
+      "label": "lacZ gene (β-galactosidase)",
+      "options": [
+        {
+          "value": "+",
+          "label": "lacZ⁺: working enzyme"
+        },
+        {
+          "value": "-",
+          "label": "lacZ⁻: no working enzyme"
+        }
+      ]
+    }
+  ],
+  "trpGenes": [
+    {
+      "id": "R",
+      "label": "trpR gene (repressor)",
+      "options": [
+        {
+          "value": "+",
+          "label": "trpR⁺: normal repressor"
+        },
+        {
+          "value": "-",
+          "label": "trpR⁻: no repressor"
+        }
+      ]
+    },
+    {
+      "id": "O",
+      "label": "trp operator",
+      "options": [
+        {
+          "value": "+",
+          "label": "O⁺: normal operator"
+        },
+        {
+          "value": "c",
+          "label": "Oᶜ: no repressor can bind"
+        }
+      ]
+    }
+  ],
+  "lacStarts": [
+    {
+      "id": "gl",
+      "label": "Glucose, no lactose",
+      "glucose": true,
+      "lactose": false,
+      "short": "Glucose only"
+    },
+    {
+      "id": "both",
+      "label": "Glucose and lactose",
+      "glucose": true,
+      "lactose": true,
+      "short": "Both"
+    },
+    {
+      "id": "none",
+      "label": "Neither sugar",
+      "glucose": false,
+      "lactose": false,
+      "short": "Neither"
+    },
+    {
+      "id": "lac",
+      "label": "Lactose, no glucose",
+      "glucose": false,
+      "lactose": true,
+      "short": "Lactose only"
+    }
+  ],
+  "trpStarts": [
+    {
+      "id": "trp",
+      "label": "Tryptophan",
+      "trp": true,
+      "short": "Trp"
+    },
+    {
+      "id": "notrp",
+      "label": "No tryptophan",
+      "trp": false,
+      "short": "No Trp"
+    }
+  ],
+  "stimuli": {
+    "op-s1": {
+      "kind": "table",
+      "title": "Switching the lac and trp operons",
+      "text": "<p>A student used the model. In Table 1, each strain of <i>E. coli</i> was kept in each medium until its enzyme level stopped changing; β-galactosidase is the enzyme made from <i>lacZ</i>. Strains P and Q each carry one mutation affecting the lac operon. In Table 2, wild-type cells grown with glucose and no lactose were moved at 0 minutes into a medium with lactose and no glucose. Table 3 shows trp operon mRNA in three strains with and without tryptophan in the medium. All values are relative: a fully on wild-type operon gives 100.</p>",
+      "tables": [
+        {
+          "caption": "Table 1. β-galactosidase level in each medium (relative units)",
+          "cols": [
+            "Strain",
+            "Glucose, no lactose",
+            "Glucose and lactose",
+            "Neither sugar",
+            "Lactose, no glucose"
+          ],
+          "rows": [
+            [
+              "Wild type",
+              "1",
+              "10",
+              "1",
+              "100"
+            ],
+            [
+              "Strain P",
+              "10",
+              "10",
+              "100",
+              "100"
+            ],
+            [
+              "Strain Q",
+              "1",
+              "1",
+              "1",
+              "1"
+            ]
+          ],
+          "check": {
+            "x": "steady",
+            "mode": "lac",
+            "field": "e",
+            "d": 0,
+            "conds": [
+              {
+                "glucose": true,
+                "lactose": false
+              },
+              {
+                "glucose": true,
+                "lactose": true
+              },
+              {
+                "glucose": false,
+                "lactose": false
+              },
+              {
+                "glucose": false,
+                "lactose": true
+              }
+            ],
+            "strains": [
+              {
+                "label": "Wild type",
+                "copies": [
+                  {
+                    "I": "+",
+                    "O": "+",
+                    "Z": "+"
+                  }
+                ]
+              },
+              {
+                "label": "Strain P",
+                "copies": [
+                  {
+                    "I": "-",
+                    "O": "+",
+                    "Z": "+"
+                  }
+                ]
+              },
+              {
+                "label": "Strain Q",
+                "copies": [
+                  {
+                    "I": "s",
+                    "O": "+",
+                    "Z": "+"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "caption": "Table 2. Wild-type cells moved from glucose to lactose at 0 minutes (relative units)",
+          "cols": [
+            "Time (min)",
+            "lac mRNA",
+            "β-galactosidase"
+          ],
+          "rows": [
+            [
+              "0",
+              "1.0",
+              "1.0"
+            ],
+            [
+              "2",
+              "50.5",
+              "1.9"
+            ],
+            [
+              "4",
+              "75.3",
+              "4.1"
+            ],
+            [
+              "6",
+              "87.6",
+              "6.7"
+            ],
+            [
+              "10",
+              "96.9",
+              "12.5"
+            ],
+            [
+              "20",
+              "99.9",
+              "26.3"
+            ],
+            [
+              "40",
+              "100.0",
+              "47.9"
+            ],
+            [
+              "60",
+              "100.0",
+              "63.2"
+            ],
+            [
+              "90",
+              "100.0",
+              "78.1"
+            ]
+          ],
+          "check": {
+            "x": "course",
+            "mode": "lac",
+            "d": 1,
+            "copies": [
+              {
+                "I": "+",
+                "O": "+",
+                "Z": "+"
+              }
+            ],
+            "before": {
+              "glucose": true,
+              "lactose": false
+            },
+            "after": {
+              "glucose": false,
+              "lactose": true
+            },
+            "times": [
+              0,
+              2,
+              4,
+              6,
+              10,
+              20,
+              40,
+              60,
+              90
+            ]
+          }
+        },
+        {
+          "caption": "Table 3. trp operon mRNA (relative units)",
+          "cols": [
+            "Strain",
+            "No tryptophan",
+            "Tryptophan"
+          ],
+          "rows": [
+            [
+              "Wild type",
+              "100",
+              "1"
+            ],
+            [
+              "trpR⁻ (no repressor made)",
+              "100",
+              "100"
+            ],
+            [
+              "Oᶜ (operator no repressor can bind)",
+              "100",
+              "100"
+            ]
+          ],
+          "check": {
+            "x": "steady",
+            "mode": "trp",
+            "field": "m",
+            "d": 0,
+            "conds": [
+              {
+                "trp": false
+              },
+              {
+                "trp": true
+              }
+            ],
+            "strains": [
+              {
+                "label": "Wild type",
+                "copies": [
+                  {
+                    "R": "+",
+                    "O": "+"
+                  }
+                ]
+              },
+              {
+                "label": "trpR⁻ (no repressor made)",
+                "copies": [
+                  {
+                    "R": "-",
+                    "O": "+"
+                  }
+                ]
+              },
+              {
+                "label": "Oᶜ (operator no repressor can bind)",
+                "copies": [
+                  {
+                    "R": "+",
+                    "O": "c"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "operons:lac:1",
+      "type": "single",
+      "topic": "gene-regulation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "op-s1",
+      "q": "Strain P makes β-galactosidase in every medium, at a level set only by whether glucose is present. Which change in strain P is most consistent with Table 1?",
+      "options": [
+        "Its lacI gene makes no working repressor, so nothing blocks the operator whether or not lactose is present",
+        "Its lacI gene makes a repressor that cannot bind allolactose, so the repressor stays on the operator",
+        "Its CAP site no longer binds CAP–cAMP, so RNA polymerase binds the promoter weakly",
+        "Its lacZ gene no longer codes for a working β-galactosidase"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Strain P makes the enzyme even without lactose (10 with glucose, 100 without), so the operator is never blocked. With no working repressor, lactose no longer matters, but glucose still does because CAP–cAMP still controls how strongly RNA polymerase binds.",
+        "options": [
+          "Right: with no repressor the operon is always transcribed, and glucose alone sets the level through CAP–cAMP.",
+          "A repressor that ignores allolactose would keep the operon off in every medium, which is the pattern of strain Q, not strain P.",
+          "Without CAP the level with lactose and no glucose would stay low, and the operon would still be off without lactose; strain P reaches 100 with neither sugar.",
+          "A cell with no working β-galactosidase would show no enzyme in any medium, but strain P shows up to 100."
+        ]
+      }
+    },
+    {
+      "id": "operons:lac:2",
+      "type": "single",
+      "topic": "gene-regulation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "op-s1",
+      "q": "Wild-type cells with lactose make ten times more β-galactosidase when glucose is absent than when it is present. Which explanation best accounts for this?",
+      "options": [
+        "Without glucose, cAMP rises and CAP–cAMP binds next to the promoter, helping RNA polymerase bind and transcribe the operon faster",
+        "Glucose binds the repressor and holds it on the operator, so less allolactose can release it",
+        "Without glucose the cell breaks down β-galactosidase more slowly, so more of the enzyme builds up",
+        "Glucose blocks translation of the lac mRNA, so less enzyme is made from the same amount of mRNA"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Lactose is present in both media, so allolactose has released the repressor either way. The difference is CAP: low glucose raises cAMP, CAP–cAMP binds near the promoter and makes RNA polymerase bind much better, so transcription, and with it the enzyme level, is about ten times higher.",
+        "options": [
+          "Right: glucose acts through cAMP and CAP, which set how fast a released operon is transcribed.",
+          "Glucose does not bind the lac repressor; with lactose in both media, allolactose has already released the repressor in each.",
+          "The enzyme is stable in both media; the difference comes from how fast the genes are transcribed, not how fast the enzyme is broken down.",
+          "Glucose lowers how much lac mRNA is made, through cAMP and CAP; it does not block the translation of mRNA that is already there."
+        ]
+      }
+    },
+    {
+      "id": "operons:lac:3",
+      "type": "numeric",
+      "topic": "gene-regulation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "op-s1",
+      "q": "Using Table 2, calculate the average rate of increase in β-galactosidase between 20 and 40 minutes, in relative units per minute. Round to one decimal place.",
+      "numeric": {
+        "answer": 1.1,
+        "tol": 0.05,
+        "unit": "relative units per min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "(47.9 − 26.3) / (40 − 20) = 21.6 / 20 = 1.08, about 1.1 relative units per minute. The enzyme keeps rising long after the mRNA has leveled off, because a stable protein builds up slowly."
+      }
+    },
+    {
+      "id": "operons:lac:4",
+      "type": "single",
+      "topic": "gene-regulation",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "op-s1",
+      "q": "In Table 2, lac mRNA is close to its final level by 10 minutes, but β-galactosidase is still below its final level at 90 minutes. Which explanation is most consistent with these data?",
+      "options": [
+        "mRNA is broken down within minutes, so its level quickly matches the new rate of transcription, while the enzyme is stable and builds up as new protein is translated and the cells grow",
+        "Translation of the lac mRNA does not begin until transcription of the operon is complete, about 90 minutes later",
+        "The enzyme is made from a different mRNA that is transcribed only after the lac mRNA reaches its final level",
+        "Allolactose must first be broken down before β-galactosidase can be translated"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A molecule that is broken down quickly reaches its new steady level quickly: lac mRNA lasts only minutes, so within about 10 minutes the amount being made and the amount being destroyed balance. β-galactosidase lasts much longer; it accumulates as ribosomes translate the mRNA and is only diluted as the cells divide, so its level climbs over more than an hour.",
+        "options": [
+          "Right: a short-lived mRNA tracks transcription closely, while a stable protein accumulates slowly.",
+          "In bacteria, ribosomes start translating an mRNA while it is still being transcribed, so translation does not wait for 90 minutes.",
+          "β-galactosidase is translated from the lac mRNA itself; the operon's genes share one mRNA.",
+          "Allolactose releases the repressor; the enzyme is translated from the mRNA without allolactose being broken down first."
+        ]
+      }
+    },
+    {
+      "id": "operons:trp:5",
+      "type": "single",
+      "topic": "gene-regulation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "op-s1",
+      "q": "A new strain makes a trp repressor that can no longer bind tryptophan. Which result for its trp operon mRNA is most likely?",
+      "options": [
+        "About 100 with and without tryptophan, like the trpR⁻ strain, because the repressor cannot reach its operator-binding shape without tryptophan bound",
+        "About 1 with and without tryptophan, because the repressor stays on the operator all the time",
+        "About 100 without tryptophan and about 1 with it, like the wild type, because the operator is unchanged",
+        "About 1 without tryptophan and about 100 with it, because the repressor now works the opposite way"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The trp repressor binds the operator only after tryptophan, the corepressor, binds it and changes its shape. A repressor that cannot bind tryptophan never takes that shape, so it never blocks RNA polymerase: the operon stays on in both media, as in the strain that makes no repressor.",
+        "options": [
+          "Right: without tryptophan bound, the repressor cannot bind the operator, so the operon is always on.",
+          "The repressor alone does not bind the operator (wild type without tryptophan gives 100), so a repressor that cannot bind tryptophan would not stay on it.",
+          "The operator is normal, but the repressor needs tryptophan to bind it, so this strain loses the response to tryptophan.",
+          "Nothing in the change makes the repressor bind when tryptophan is absent; it loses the tryptophan response rather than reversing it."
+        ]
+      }
+    }
+  ],
+  "frq": {
+    "id": "frq-operons",
+    "topic": "gene-regulation",
+    "title": "Mini free-response question: reading the lac operon's switches",
+    "intro": "<p>Use Tables 1 and 2 above.</p>",
+    "parts": [
+      {
+        "label": "a",
+        "points": 1,
+        "practice": "4.B",
+        "prompt": "Using Table 2, <b>describe</b> how lac mRNA and β-galactosidase change in the first 10 minutes after the cells are moved to lactose.",
+        "rubric": [
+          {
+            "point": "Describes that mRNA rises quickly to near its final level (from 1.0 to 96.9) while the enzyme rises much less (from 1.0 to 12.5) in the same time.",
+            "accept": [
+              "mRNA nearly reaches its maximum by 10 minutes but the enzyme is only about an eighth of its final level",
+              "mRNA rises fast, the enzyme lags behind"
+            ]
+          }
+        ],
+        "sample": "<p>In the first 10 minutes lac mRNA rises fast, from 1.0 to 96.9, almost its final level of 100. β-galactosidase rises much less in the same time, from 1.0 to only 12.5, so the enzyme lags well behind the mRNA.</p>"
+      },
+      {
+        "label": "b",
+        "points": 2,
+        "practice": "6.C",
+        "prompt": "Strain Q makes almost no β-galactosidase in any medium (Table 1), even with lactose and no glucose. Strain Q has a mutation in its <i>lacI</i> gene. <b>Explain</b> how a change in the repressor can cause this result.",
+        "rubric": [
+          {
+            "point": "Explains that the repressor cannot bind allolactose (the inducer), so it does not change shape and stays bound to the operator even when lactose is present.",
+            "accept": [
+              "the repressor ignores allolactose",
+              "a super-repressor that the inducer cannot release"
+            ]
+          },
+          {
+            "point": "Explains that the bound repressor blocks RNA polymerase, so the genes are not transcribed (only a trickle) even though CAP–cAMP is bound when glucose is absent.",
+            "accept": [
+              "RNA polymerase cannot transcribe lacZ, so no mRNA and no enzyme",
+              "CAP cannot overcome the bound repressor"
+            ]
+          }
+        ],
+        "sample": "<p>The mutated <i>lacI</i> gene makes a repressor that can no longer bind allolactose. Normally allolactose binds the repressor and changes its shape so it lets go of the operator. This repressor never changes shape, so it stays on the operator in every medium. A repressor on the operator blocks RNA polymerase from transcribing <i>lacZ</i>, so only a trickle of mRNA and almost no β-galactosidase is made, even without glucose when CAP–cAMP is bound to the promoter.</p>"
+      },
+      {
+        "label": "c",
+        "points": 1,
+        "practice": "6.E",
+        "prompt": "A different strain has a changed CAP site that CAP–cAMP can no longer bind; its <i>lacI</i>, operator and <i>lacZ</i> are normal. <b>Predict</b> its β-galactosidase level with lactose and no glucose, compared with the wild type in Table 1. <b>Justify</b> your prediction.",
+        "rubric": [
+          {
+            "point": "Predicts a low level, about the wild type's level with glucose and lactose (about 10, not 100), and justifies it: allolactose still releases the repressor, but without CAP–cAMP bound RNA polymerase binds the promoter weakly.",
+            "accept": [
+              "about one tenth of the wild type",
+              "like having glucose present all the time"
+            ]
+          }
+        ],
+        "sample": "<p>The level would be low, about 10 instead of the wild type's 100, the same as wild-type cells given both glucose and lactose. Lactose still gives allolactose, which releases the repressor, so the operon is not blocked. But without CAP–cAMP bound next to the promoter, RNA polymerase binds weakly and the operon is transcribed slowly, as if glucose were always present.</p>"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "transcription-processing": {
+    "file": "figures/transcription-processing.svg", "ext": "svg", "w": 760, "h": 470,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Inside the nucleus, a gene: a promoter with a TATA box, a bent arrow at the start site, three exons separated by two introns, and the signal that ends transcription. RNA polymerase II moves along the template strand, reading it 3-prime to 5-prime, while the growing RNA trails out from its 5-prime end; the coding strand has the same sequence as the RNA with T for U. Below, the pre-mRNA with all exons and introns; processing adds a 5-prime cap and a poly-A tail, and spliceosomes cut out the introns, which are broken down. The mature mRNA, cap, three joined exons and tail, passes through a nuclear pore into the cytoplasm, ready for ribosomes."
+  }
+}

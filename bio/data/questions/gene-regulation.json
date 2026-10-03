@@ -1,0 +1,693 @@
+{
+  "stimuli": {
+    "gene-regulation-s1": {
+      "kind": "table",
+      "title": "Enzyme activity in bacteria grown with different sugars",
+      "text": "<p>β-galactosidase is the enzyme that splits lactose into glucose and galactose. Its gene sits in an operon whose repressor is released from the DNA when lactose is present. Wild-type <i>E. coli</i> were grown in media with different carbon sources (glycerol is a food that does not affect this operon). The researchers measured β-galactosidase activity, the activity of an enzyme of glycolysis, and the cAMP level inside the cells. In the last medium, cAMP was added to the broth. Values are means of four cultures.</p>",
+      "table": {
+        "caption": "Enzyme activities (units per mg of cell protein) and cAMP (% of the level in glycerol medium)",
+        "cols": [
+          "Medium",
+          "β-galactosidase activity",
+          "Glycolysis enzyme activity",
+          "cAMP inside cells (%)"
+        ],
+        "rows": [
+          [
+            "Glycerol",
+            "3",
+            "510",
+            "100"
+          ],
+          [
+            "Glycerol + lactose",
+            "1,020",
+            "495",
+            "100"
+          ],
+          [
+            "Glucose",
+            "2",
+            "530",
+            "18"
+          ],
+          [
+            "Glucose + lactose",
+            "55",
+            "505",
+            "18"
+          ],
+          [
+            "Glucose + lactose + added cAMP",
+            "780",
+            "515",
+            "92"
+          ]
+        ]
+      }
+    },
+    "gene-regulation-s2": {
+      "kind": "table",
+      "title": "Chemical marks and the activity of a silenced gene",
+      "text": "<p>Gene T is silent in a line of cultured human cells. Researchers grew the cells for 5 days with drug M, which blocks the enzyme that adds methyl groups to new DNA, with drug H, which blocks the enzymes that remove acetyl groups from histones, with both, or with neither. They then measured the percentage of C nucleotides in gene T's promoter that carry a methyl group, the acetylation of histones at the promoter, and the amount of gene T's mRNA. The DNA sequence of gene T was checked and was the same in every group.</p>",
+      "table": {
+        "caption": "Marks at gene T's promoter and gene T mRNA (relative values: untreated = 1)",
+        "cols": [
+          "Treatment",
+          "Promoter C's methylated (%)",
+          "Histone acetylation at promoter (relative)",
+          "Gene T mRNA (relative)"
+        ],
+        "rows": [
+          [
+            "None",
+            "85",
+            "1.0",
+            "1"
+          ],
+          [
+            "Drug M",
+            "21",
+            "2.1",
+            "14"
+          ],
+          [
+            "Drug H",
+            "83",
+            "4.6",
+            "6"
+          ],
+          [
+            "Drugs M and H",
+            "18",
+            "5.0",
+            "40"
+          ]
+        ]
+      }
+    },
+    "gene-regulation-s3": {
+      "kind": "table",
+      "title": "Testing a DNA region that controls a liver gene",
+      "text": "<p>The DNA in front of a liver gene was joined to a reporter gene whose protein glows, so glow measures how actively the reporter is transcribed. Researchers made five versions (constructs) and put each into cultured liver cells and kidney cells. Region E lies about 2,000 base pairs before the promoter in the normal gene. Activity is the mean of three dishes, as a percentage of construct 1 in liver cells.</p>",
+      "table": {
+        "caption": "Reporter activity (% of construct 1 in liver cells)",
+        "cols": [
+          "Construct",
+          "DNA in front of the reporter",
+          "Liver cells",
+          "Kidney cells"
+        ],
+        "rows": [
+          [
+            "1",
+            "Region E, 2,000 bp of spacer, promoter",
+            "100",
+            "3"
+          ],
+          [
+            "2",
+            "Promoter only (region E removed)",
+            "4",
+            "3"
+          ],
+          [
+            "3",
+            "Region E turned end to end, spacer, promoter",
+            "96",
+            "3"
+          ],
+          [
+            "4",
+            "Promoter; region E placed 3,000 bp after the reporter instead",
+            "88",
+            "2"
+          ],
+          [
+            "5",
+            "Region E and spacer, no promoter",
+            "0.5",
+            "0.4"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-gene-regulation-1",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "gene-regulation-s1",
+      "q": "Which statement best describes the effect of lactose on β-galactosidase activity?",
+      "options": [
+        "Lactose raises it several hundredfold with glycerol, but far less when glucose is present.",
+        "Lactose raises it by the same amount whether or not glucose is present in the medium.",
+        "Lactose raises it a little with glycerol, but several hundredfold when glucose is present.",
+        "Lactose has little effect on it; the type of sugar the cells grow on matters more."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With glycerol, adding lactose takes activity from 3 to 1,020 units. With glucose, it goes only from 2 to 55.",
+        "options": [
+          "Correct: strong induction without glucose, weak with it.",
+          "The increase is about 1,000 units without glucose but about 50 with it.",
+          "This reverses the two media.",
+          "Activity rises from 3 to 1,020 when lactose is added to glycerol medium, a large effect."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-2",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "gene-regulation-s1",
+      "q": "How many times higher is β-galactosidase activity in glycerol + lactose than in glycerol alone? Give a whole number.",
+      "numeric": {
+        "answer": 340,
+        "tol": 1,
+        "unit": "times",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "1,020 ÷ 3 = 340. The operon is induced about 340-fold when lactose is present and glucose is absent."
+      }
+    },
+    {
+      "id": "bio-gene-regulation-3",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "gene-regulation-s1",
+      "q": "Which explanation for the low activity in glucose + lactose is best supported by all the data, including the last row?",
+      "options": [
+        "Glucose keeps cAMP low, so CAP does not boost transcription even with the repressor off.",
+        "Glucose binds the repressor in place of lactose and holds it tightly on the operator.",
+        "Glucose denatures β-galactosidase after it is made, so less of the enzyme is active.",
+        "Glucose lowers the number of copies of the β-galactosidase gene in each bacterial cell."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "cAMP is 18% with glucose, and adding cAMP restores activity to 780 units in the presence of glucose. cAMP-CAP is an activator that helps RNA polymerase bind the promoter; without it, removing the repressor gives only weak transcription.",
+        "options": [
+          "Correct: low cAMP explains the glucose effect, and adding cAMP reverses it.",
+          "If glucose held the repressor on, adding cAMP would not restore activity to 780.",
+          "The glycolysis enzyme is unaffected, and adding cAMP restores activity, so the enzyme is not being destroyed.",
+          "Gene copies do not change with the food; adding cAMP restores activity with the same cells."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-4",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "gene-regulation-s1",
+      "q": "Which claim about the glycolysis enzyme's gene is best supported?",
+      "options": [
+        "It is expressed at a steady level in every medium, as a constitutive gene is.",
+        "It is induced by lactose, but more weakly than the β-galactosidase gene is.",
+        "It is switched off by glucose, the way the β-galactosidase gene is.",
+        "It belongs to the same operon as β-galactosidase and shares its promoter."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Its activity stays between 495 and 530 units in all five media. Genes whose products every cell needs all the time, like this glycolysis enzyme, are constitutive (housekeeping) genes.",
+        "options": [
+          "Correct: no change with any sugar or with cAMP.",
+          "Its activity does not rise with lactose (510 vs 495).",
+          "Its activity does not fall with glucose (530).",
+          "Genes in one operon rise and fall together; this enzyme does not follow β-galactosidase."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-5",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "gene-regulation-s1",
+      "q": "A mutant strain cannot make cAMP. Predict its β-galactosidase activity in glycerol + lactose.",
+      "options": [
+        "Low, near the glucose + lactose level, since CAP needs cAMP to activate transcription",
+        "About 1,020 units, because lactose still removes the repressor from the operator",
+        "Near zero, because without cAMP the repressor stays on the operator",
+        "Higher than 1,020 units, because without cAMP the cells grow faster when fed on glycerol"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Lactose still removes the repressor, but without cAMP the activator CAP cannot bind and boost transcription, so the operon behaves as it does when glucose keeps cAMP low: weakly on.",
+        "options": [
+          "Correct: induction needs both the repressor off and cAMP-CAP on.",
+          "Removing the repressor is not enough for full activity; the data with glucose show that low cAMP limits it.",
+          "cAMP acts through CAP, not the repressor; lactose still releases the repressor.",
+          "Nothing in the data links cAMP to growth rate, and the gene would be activated less, not more."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-6",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "gene-regulation-s2",
+      "q": "Which pattern do the data show?",
+      "options": [
+        "Less promoter methylation and more histone acetylation go with more gene T mRNA.",
+        "More promoter methylation and more histone acetylation go with more gene T mRNA.",
+        "Promoter methylation changes with drug H, and acetylation changes with drug M alone.",
+        "Gene T mRNA rises with drug M but falls with drug H compared with no treatment."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "mRNA is lowest (1) with 85% methylation and acetylation 1.0, and highest (40) with 18% methylation and acetylation 5.0.",
+        "options": [
+          "Correct: unmarked DNA and acetylated histones go with an active gene.",
+          "The highest mRNA comes with the lowest methylation.",
+          "Drug H barely changes methylation (83%); drug M lowers it. Drug M also raises acetylation a little.",
+          "Drug H raises mRNA six-fold."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-7",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "gene-regulation-s2",
+      "q": "How does blocking histone deacetylases (drug H) most likely raise gene T's mRNA?",
+      "options": [
+        "Acetyl groups stay on histones and loosen their grip on DNA, so the promoter becomes reachable.",
+        "Acetyl groups added to the DNA bases change gene T's sequence to a more active form.",
+        "Acetyl groups stop the methyl groups from being copied, so the DNA loses its marks.",
+        "Acetylated histones carry RNA polymerase directly to the start of each gene in the cell."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Histones bind DNA through positive charges. Acetyl groups neutralize some of those charges, so the histones grip DNA less tightly, chromatin opens, and transcription factors and RNA polymerase can reach the promoter.",
+        "options": [
+          "Correct: acetylation opens chromatin.",
+          "Acetylation here is on histone proteins, and the stem says the DNA sequence did not change.",
+          "Drug H left methylation almost unchanged (83%), so it did not remove the methyl marks.",
+          "Opening chromatin makes genes accessible; it does not deliver the polymerase or act on every gene equally."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-8",
+      "type": "numeric",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "gene-regulation-s2",
+      "q": "The effect of both drugs together (40-fold) is how many times larger than the effect of drug M alone? Give one decimal place.",
+      "numeric": {
+        "answer": 2.9,
+        "tol": 0.1,
+        "unit": "times",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "40 ÷ 14 = 2.86, about 2.9. Adding drug H to drug M nearly triples the mRNA, more than either drug alone, so the two marks act together."
+      }
+    },
+    {
+      "id": "bio-gene-regulation-9",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "gene-regulation-s2",
+      "q": "After treatment with drug M, the cells were grown for 20 more divisions without drugs. Gene T stayed active and its promoter stayed mostly unmethylated. Which conclusion does this support?",
+      "options": [
+        "The change is epigenetic: heritable gene activity with no change in DNA sequence.",
+        "Drug M changed gene T's sequence, and the new sequence was copied at each division.",
+        "Drug M stayed inside the cells and kept blocking methylation for 20 divisions.",
+        "Gene T is a constitutive gene, active in each cell whatever marks it carries."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The pattern of marks, and with it the gene's activity, was passed to daughter cells, while the stem says the sequence is unchanged. That is epigenetic inheritance: cells copy methylation patterns onto new DNA by marking the new strand to match the old one.",
+        "options": [
+          "Correct: inherited marks, same sequence.",
+          "The DNA sequence was checked and unchanged.",
+          "The drug was removed and diluted out over 20 divisions; once the marks are gone, cells copy the unmethylated pattern.",
+          "Gene T was silent before treatment, so it is not on in every cell regardless of marks."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-10",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "gene-regulation-s2",
+      "q": "Why does heavy methylation of a promoter tend to silence a gene?",
+      "options": [
+        "Methylated C's attract proteins that pack chromatin and block transcription factors.",
+        "Methyl groups break the sugar-phosphate backbone, so the promoter falls out of the chromosome.",
+        "Methylated C's pair with A instead of G, so the promoter's sequence is copied wrongly.",
+        "Methyl groups are taken up by RNA polymerase, which uses them up and then stops working."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Methyl groups on C's in a promoter are recognized by proteins that bring in histone-modifying enzymes and compact the chromatin, and they can also prevent some transcription factors from binding.",
+        "options": [
+          "Correct: methylation leads to closed chromatin and blocked binding.",
+          "Methylation adds a small group to a base; it does not break the DNA.",
+          "Methylated C still pairs with G; methylation does not change base pairing.",
+          "RNA polymerase does not consume methyl groups."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-11",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "2.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "gene-regulation-s3",
+      "q": "What does comparing constructs 1 and 2 in liver cells show?",
+      "options": [
+        "Region E is needed for high transcription of the reporter in liver cells.",
+        "Region E is the promoter, where RNA polymerase binds to start transcription.",
+        "Region E lowers transcription, acting as a silencer in liver cells.",
+        "The reporter gene is transcribed equally well with or without region E."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Removing region E drops activity from 100% to 4%: region E greatly increases transcription, as an enhancer does.",
+        "options": [
+          "Correct: without region E, activity is 4%.",
+          "Construct 5 has region E but no promoter and is almost silent, so region E is not the promoter.",
+          "A silencer would raise activity when removed; activity fell instead.",
+          "Activity drops 25-fold without region E."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-12",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "gene-regulation-s3",
+      "q": "Region E works when turned end to end (construct 3) and when placed after the gene (construct 4). Which explanation fits?",
+      "options": [
+        "Proteins bound to region E reach the promoter because the DNA between them bends into a loop.",
+        "RNA polymerase starts copying at region E and continues through the spacer into the reporter.",
+        "Region E codes for an activator protein, so its position on the DNA does not matter.",
+        "Region E is copied into the reporter mRNA, where it makes the mRNA more stable."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Activator transcription factors bind the enhancer; the DNA loops so they contact the proteins at the promoter and help RNA polymerase start. Looping works from either side and in either orientation.",
+        "options": [
+          "Correct: looping brings distant enhancers to the promoter.",
+          "Construct 4 places region E after the gene, where copying from it could not pass through the reporter's start.",
+          "If region E made a protein, turning it end to end would wreck its coding sequence; it is a binding site, not a gene.",
+          "In construct 1, region E lies 2,000 bp before the promoter and is not transcribed into the reporter mRNA."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-13",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "gene-regulation-s3",
+      "q": "Construct 1 gives 100% in liver cells but 3% in kidney cells. Which explanation is best?",
+      "options": [
+        "Liver cells contain a transcription factor that binds region E; kidney cells lack it.",
+        "Kidney cells do not contain region E in the DNA of their own chromosomes.",
+        "Kidney cells are unable to make the reporter's glowing protein, whatever DNA it is joined to.",
+        "Region E is methylated in the construct when it enters kidney cells but not liver cells."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The same DNA was put into both cell types. An enhancer works only where the activator that binds it is present, so the difference lies in which transcription factors each cell type makes.",
+        "options": [
+          "Correct: same DNA, different proteins available to read it.",
+          "The construct carries its own region E, so the kidney cells had it.",
+          "Kidney cells give 2-3% with every construct with a promoter, so they can make some reporter; what they lack is the boost from region E.",
+          "Nothing in the data points to methylation; the simplest difference is the activator."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-14",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "3.C",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "gene-regulation-s3",
+      "q": "What does construct 5 test?",
+      "options": [
+        "Whether region E can start transcription by itself, without a promoter",
+        "Whether the spacer DNA between region E and the promoter has an effect",
+        "Whether region E works when it is turned to face the other direction",
+        "Whether the reporter protein glows in kidney cells as well as in liver cells"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "With region E but no promoter, activity is 0.5%. An enhancer increases transcription from a promoter but cannot replace it.",
+        "options": [
+          "Correct: it is a control for the promoter.",
+          "Construct 5 keeps the spacer; it removes the promoter.",
+          "Construct 3 tests orientation.",
+          "Every construct was tested in both cell types; construct 5 is about the promoter."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-15",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "An operon is",
+      "options": [
+        "a group of bacterial genes under one promoter and operator, copied as one mRNA",
+        "a protein that binds DNA and blocks RNA polymerase from copying a gene",
+        "a eukaryotic gene with several exons that can be spliced in different ways",
+        "a DNA region far from a gene where activator proteins bind to increase transcription"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "In an operon, structural genes for one job sit together after a shared promoter and operator, so they are switched on and off together and copied as one mRNA.",
+        "options": [
+          "Correct: promoter + operator + structural genes.",
+          "That is a repressor.",
+          "That describes alternative splicing (topic 6.3).",
+          "That is an enhancer."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-16",
+      "type": "predict",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "<i>E. coli</i> growing in a medium without tryptophan are moved to a medium rich in tryptophan. Predict each quantity after the move.",
+      "variables": [
+        {
+          "name": "Amount of trp repressor bound to the trp operator",
+          "answer": "up",
+          "why": "Tryptophan acts as a corepressor: it binds the repressor, activating it so it binds the operator."
+        },
+        {
+          "name": "Amount of trp operon mRNA made",
+          "answer": "down",
+          "why": "The active repressor on the operator blocks RNA polymerase, so the operon is switched off."
+        },
+        {
+          "name": "Amount of lac operon mRNA made (no lactose in either medium)",
+          "answer": "none",
+          "why": "Tryptophan does not act on the lac repressor or on CAP; with no lactose, the lac operon stays off before and after the move."
+        }
+      ],
+      "why": {
+        "correct": "The trp operon is repressible: its end product, tryptophan, activates the repressor. When tryptophan is plentiful, the cell stops making the enzymes that build it. Other operons, such as lac, do not respond to tryptophan."
+      }
+    },
+    {
+      "id": "bio-gene-regulation-17",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A mutation changes the lac repressor so that it can no longer bind the operator. Predict β-galactosidase levels in this strain grown on glycerol with no lactose.",
+      "options": [
+        "High, because nothing blocks RNA polymerase, so the operon is copied without lactose",
+        "Near zero, because the repressor is needed to help RNA polymerase bind the promoter",
+        "Near zero, because allolactose is still needed to start the operon",
+        "Normal for glycerol medium, because the repressor gene is not part of the operon"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Lactose normally works only by pulling the repressor off the operator. If the repressor cannot bind, the operon is on whether or not lactose is present (and cAMP is high on glycerol).",
+        "options": [
+          "Correct: a repressor that cannot bind leaves the operon always on.",
+          "The repressor blocks RNA polymerase; it does not help it bind.",
+          "The inducer's only job is to remove the repressor, which is already off the DNA.",
+          "The repressor gene is outside the operon, but its protein controls the operon, so a broken repressor matters."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-18",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "A different mutation changes the lac repressor so that it binds the operator normally but can no longer bind allolactose. Predict the strain's β-galactosidase when it is grown with lactose and no glucose.",
+      "options": [
+        "Very low, because the inducer cannot remove the repressor from the operator",
+        "High, because the repressor is no longer affected by any sugar in the medium",
+        "High, because cAMP-CAP can override a repressor that is bound to the operator",
+        "Very low, because the mutant repressor now binds the promoter instead of the operator"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Induction depends on allolactose binding the repressor and changing its shape. A repressor that ignores the inducer stays on the operator, so the operon stays off even with lactose.",
+        "options": [
+          "Correct: the operon cannot be induced.",
+          "Ignoring the inducer means it stays bound, so the operon stays off, not on.",
+          "CAP increases transcription only when the operator is free; it cannot push past a bound repressor.",
+          "The stem says the repressor binds the operator normally."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-19",
+      "type": "multi",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which statements describe a repressible operon such as the trp operon? Select all that apply.",
+      "options": [
+        "It is usually on and is switched off when its end product builds up.",
+        "Its repressor becomes active when a corepressor binds it.",
+        "Its repressor is made inactive when an inducer binds it.",
+        "It usually codes for enzymes that break down a food.",
+        "Its genes are copied when the repressor is bound to the operator."
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "why": {
+        "correct": "Repressible operons usually code for enzymes that build something (here tryptophan). They are on until the product accumulates; the product (corepressor) activates the repressor, which then binds the operator.",
+        "options": [
+          "Correct: on by default, off with plenty of product.",
+          "Correct: the corepressor turns the repressor on.",
+          "An inducer inactivating a repressor describes an inducible operon such as lac.",
+          "Breaking down a food is typical of inducible operons; repressible ones usually build a product.",
+          "A bound repressor blocks transcription."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-20",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "6.D",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In most mammals, the lactase gene is switched off after weaning. Many adult humans keep making lactase and can digest milk. In one common form, the lactase protein is identical, and the DNA difference lies about 14,000 base pairs before the gene. Which explanation is best?",
+      "options": [
+        "A change in a regulatory sequence keeps the gene transcribed in adults; more lactase sets the phenotype.",
+        "A change in the lactase gene's exons makes a more active enzyme, one that digests milk faster in adults.",
+        "Drinking milk as a child induces the lactase gene permanently, the way lactose induces an operon.",
+        "The extra DNA is a second copy of the lactase gene, one that adults transcribe but children do not."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The protein is unchanged, and the difference lies far from the gene, in a regulatory region (an enhancer). It changes when and how much the gene is transcribed, and the amount of gene product decides whether the person can digest lactose.",
+        "options": [
+          "Correct: regulation, not the protein, differs.",
+          "The stem says the protein is identical, so the coding sequence is not the difference.",
+          "Lactase persistence is inherited through a DNA difference; it is not caused by childhood milk drinking.",
+          "The difference is a change in a regulatory sequence, not an extra copy of the gene."
+        ]
+      }
+    },
+    {
+      "id": "bio-gene-regulation-21",
+      "type": "single",
+      "unit": "unit-6",
+      "topic": "gene-regulation",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "Which pair correctly classifies the two controls on the lac operon?",
+      "options": [
+        "Repressor: negative regulation. cAMP-CAP: positive regulation.",
+        "Repressor: positive regulation. cAMP-CAP: negative regulation.",
+        "Both are negative regulation, because both respond to sugars.",
+        "Both are positive regulation, because both switch the operon on."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Negative regulation means a bound protein reduces transcription (the repressor on the operator). Positive regulation means a bound protein increases it (cAMP-CAP near the promoter).",
+        "options": [
+          "Correct: the repressor turns off; CAP turns up.",
+          "This swaps them: binding of the repressor lowers transcription.",
+          "CAP binding raises transcription, which makes it positive regulation.",
+          "Repressor binding lowers transcription, which makes it negative regulation."
+        ]
+      }
+    }
+  ]
+}

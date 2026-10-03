@@ -14,7 +14,7 @@
      rate = Δy/Δt; percent change = (final - initial) / initial × 100
 
    The simulator models (enzyme kinetics, osmosis, signal amplification,
-   cell cycle checkpoints, meiosis) are described, with
+   cell cycle checkpoints, meiosis, operons) are described, with
    their assumptions, in the "How this model works" box of each tool's data. */
 (function(root){
   'use strict';
@@ -486,6 +486,85 @@
   }
   var meiosis = { STAGES: MEIO_STAGES, simulate: meiosisSim, series: meiosisSeries, mitosis: mitosisSim, name: meioName, key: meioKey };
 
+  /* ------------------------------------------------ lac and trp operons */
+  /* A rule-based model of two bacterial operons, with a time course after
+     the inputs change. p (the tool data's "model"): { basal, full, noCap,
+     trpOn, mHalf, eDouble, tStart, tEnd, dt }. A condition c:
+       lac: { mode: 'lac', glucose, lactose, copies: [{ I: '+'|'-'|'s', O: '+'|'c', Z: '+'|'-' }] }
+       trp: { mode: 'trp', trp, copies: [{ R: '+'|'-', O: '+'|'c' }] }
+     One copy is a normal (haploid) cell; two copies (chromosome + F′) is the
+     "going further" merodiploid. Rules (also in the tool's "How this model
+     works" box):
+     - lac: no glucose → cAMP high → CAP–cAMP binds the CAP site of every
+       lac promoter in the cell. Lactose → allolactose (the inducer).
+       Repressor protein from any lacI copy acts on every operator (trans).
+       A lacIˢ super-repressor cannot bind allolactose, so it stays on every
+       normal operator. A normal repressor leaves the operator when
+       allolactose binds it. lacI⁻ makes no working repressor. An Oᶜ
+       operator binds no repressor, so only its own copy is freed (cis).
+     - A blocked copy is transcribed at `basal`; a free copy at `full` with
+       CAP bound and `noCap` without. lacZ⁻ copies still make mRNA, but
+       no working β-galactosidase.
+     - trp: tryptophan is the corepressor: the trp repressor binds the
+       operator only with tryptophan bound. trpR⁻ makes no repressor; an
+       Oᶜ trp operator binds none. Blocked → basal, free → trpOn.
+     - mRNA and enzyme are relative: a fully induced wild-type copy makes
+       100 at steady state. mRNA decays with half-life mHalf (min); the
+       enzyme is stable and is diluted by growth (doubling time eDouble),
+       so dm/dt = a(rate − m), de/dt = b(mZ − e), solved exactly. */
+  function opState(p, c){
+    var copies = c.copies || [], lac = c.mode !== 'trp', res = { mode: lac ? 'lac' : 'trp', copies: [], m: 0, e: 0 };
+    if(lac){
+      var cap = !c.glucose, ind = !!c.lactose;
+      var hasS = copies.some(function(k){ return k.I === 's'; }), hasWT = copies.some(function(k){ return k.I === '+'; });
+      res.cAMP = cap ? 'high' : 'low'; res.cap = cap; res.inducer = ind; res.repressor = hasS ? 'super' : hasWT ? 'normal' : 'none';
+      copies.forEach(function(k){
+        var rep;
+        if(!hasS && !hasWT) rep = 'none';
+        else if(k.O === 'c') rep = 'cantbind';
+        else if(hasS) rep = 'super';
+        else rep = ind ? 'released' : 'bound';
+        var blocked = rep === 'bound' || rep === 'super';
+        var rnap = blocked ? 'blocked' : cap ? 'strong' : 'weak';
+        var rate = blocked ? p.basal : cap ? p.full : p.noCap;
+        var enz = k.Z === '-' ? 0 : rate;
+        res.copies.push({ rep: rep, cap: cap, rnap: rnap, rate: rate, enz: enz });
+        res.m += rate; res.e += enz;
+      });
+    } else {
+      var trp = !!c.trp, made = copies.some(function(k){ return k.R !== '-'; });
+      res.corepressor = trp; res.repressor = made ? 'normal' : 'none';
+      copies.forEach(function(k){
+        var rep = !made ? 'none' : k.O === 'c' ? 'cantbind' : trp ? 'bound' : 'inactive';
+        var blocked = rep === 'bound', rate = blocked ? p.basal : p.trpOn;
+        res.copies.push({ rep: rep, rnap: blocked ? 'blocked' : 'binds', rate: rate, enz: rate });
+        res.m += rate; res.e += rate;
+      });
+    }
+    return res;
+  }
+  /* The time course: steady state under `before` until 0 min, then `after`. */
+  function opCourse(p, before, after){
+    var s0 = opState(p, before), s1 = opState(p, after), a = Math.LN2 / p.mHalf, b = Math.LN2 / p.eDouble;
+    var m0 = s0.m, e0 = s0.e, mz0 = s0.e, m1 = s1.m, mz1 = s1.e, out = [];
+    // the enzyme follows the lacZ⁺ mRNA (mz), which decays like all the mRNA
+    var D = mz0 - mz1, K = b * D / (b - a);
+    var n = Math.round((p.tEnd - p.tStart) / p.dt);
+    for(var i = 0; i <= n; i++){
+      var t = round(p.tStart + i * p.dt, 6), m, e;
+      if(t <= 0){ m = m0; e = e0; }
+      else {
+        var ea = Math.exp(-a * t), eb = Math.exp(-b * t);
+        m = m1 + (m0 - m1) * ea;
+        e = mz1 + K * ea + (e0 - mz1 - K) * eb;
+      }
+      out.push({ t: t, m: m, e: e });
+    }
+    return { before: s0, after: s1, points: out };
+  }
+  function opAt(course, t){ var ps = course.points; for(var i = 0; i < ps.length; i++) if(Math.abs(ps[i].t - t) < 1e-6) return ps[i]; return ps[ps.length - 1]; }
+  var operon = { state: opState, course: opCourse, at: opAt };
+
   /* ---------------------------------------------------- graph checks */
   /* "Nice" intervals: 1, 2, 2.5 or 5 times a power of ten. */
   function isNice(v){
@@ -547,6 +626,6 @@
     R: R_BAR, K0: K0, round: round, fixed: fixed, sum: sum, mean: mean, median: median, range: range, sorted: sorted,
     sumSq: sumSq, sd: sd, se: se, seFrom: seFrom, ci95: ci95, overlap: overlap, rate: rate, percentChange: percentChange, tol: tol,
     CHI_CRIT: CHI_CRIT, chiSquare: chiSquare, kelvin: kelvin, psiS: psiS, hwCounts: hwCounts, hwRecessive: hwRecessive,
-    simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, graph: graph
+    simpson: simpson, rng: rng, enzyme: enzyme, osmosis: osmosis, signal: signal, cellCycle: cellCycle, meiosis: meiosis, operon: operon, graph: graph
   };
 })(typeof window !== 'undefined' ? window : globalThis);

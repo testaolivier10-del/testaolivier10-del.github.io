@@ -1,0 +1,15 @@
+{
+  "semiconservative": { "def": "The way DNA is copied: each new double helix contains one strand from the parent molecule and one newly made strand. Meselson and Stahl's heavy-nitrogen experiment confirmed it and ruled out the conservative model (the parent helix stays whole) and the dispersive model (old and new DNA mixed along each strand)." },
+  "origin-of-replication": { "def": "A DNA sequence where copying begins. The helix opens there into a replication bubble with a replication fork at each side, and the forks move apart. Bacteria have one origin; each eukaryotic chromosome has many." },
+  "helicase": { "def": "The enzyme that unwinds DNA at a replication fork by breaking the hydrogen bonds between base pairs, separating the two strands." },
+  "topoisomerase": { "def": "An enzyme that cuts and rejoins DNA ahead of a replication fork to relieve the twisting strain caused by unwinding (in bacteria, gyrase)." },
+  "ssb": { "def": "Single-strand binding proteins coat separated DNA strands at a replication fork and keep them from pairing up again before they are copied." },
+  "primer": { "def": "A short nucleic acid strand paired to a template, whose 3′ end gives DNA polymerase a place to start adding nucleotides." },
+  "primase": { "def": "The enzyme that builds the short RNA primers that start each new DNA strand and each Okazaki fragment." },
+  "dna-polymerase": { "def": "The enzyme that builds new DNA by adding nucleotides, matched to the template, to the 3′ end of a growing strand, so new DNA grows 5′ to 3′. In bacteria, DNA polymerase III does most of the building and DNA polymerase I replaces RNA primers with DNA." },
+  "leading-strand": { "def": "The new DNA strand built continuously toward the replication fork, from a single primer." },
+  "lagging-strand": { "def": "The new DNA strand built away from the replication fork in short pieces, Okazaki fragments, each started by its own RNA primer and later joined together." },
+  "ligase": { "def": "DNA ligase: the enzyme that seals nicks in a DNA backbone, joining Okazaki fragments into one continuous strand (and joining DNA pieces in the lab)." },
+  "proofreading": { "def": "DNA polymerase's checking of each base it adds; a mispaired base is removed and replaced at once. Mismatch repair is a second system that fixes mispaired bases in the new strand after copying." },
+  "telomere": { "def": "A long run of short repeated DNA at each end of a linear chromosome. Telomeres hold no genes, so they buffer the small loss at the ends in each round of copying. Telomerase is the enzyme that adds repeats back, in cells that divide throughout life, germ cells and many cancer cells." }
+}

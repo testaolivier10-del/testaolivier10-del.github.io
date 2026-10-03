@@ -1,0 +1,100 @@
+{
+  "topic": "biotechnology",
+  "hook": "<p>In 2020, labs around the world tested hundreds of millions of nose swabs for a new coronavirus. Each test found a few copies of the virus's genes among millions of human cells by copying one short stretch of genetic material over and over until a machine could see it glow. The same copying trick lets a detective build a DNA profile from a single hair, and it rests on an enzyme you already know: DNA polymerase, borrowed from a bacterium that lives in hot springs.</p>",
+  "prereq": [
+    {
+      "q": "DNA polymerase needs a primer because it",
+      "options": [
+        "can only add nucleotides to an existing 3′ end",
+        "cannot read the template strand",
+        "builds DNA in the 3′ to 5′ direction"
+      ],
+      "correct": 0,
+      "why": "A primer supplies the 3′ end; PCR uses short DNA primers for the same reason.",
+      "review": "dna-replication"
+    },
+    {
+      "q": "DNA ligase",
+      "options": [
+        "seals nicks in the DNA backbone",
+        "unwinds the double helix",
+        "adds RNA primers"
+      ],
+      "correct": 0,
+      "why": "Ligase joins Okazaki fragments, and in the lab it joins pieces of DNA.",
+      "review": "dna-replication"
+    },
+    {
+      "q": "In bacterial transformation, a cell",
+      "options": [
+        "takes up DNA from its surroundings and gains new traits",
+        "divides into two identical cells",
+        "is infected by a phage"
+      ],
+      "correct": 0,
+      "why": "Griffith's R cells took up DNA from dead S cells; labs use the same process with plasmids.",
+      "review": "dna-rna-structure"
+    }
+  ],
+  "figure": {
+    "figure": "pcr-cycle",
+    "caption": "One PCR cycle: heat separates the strands, primers pair with the ends of the target, and a heat-stable polymerase copies it. Every cycle doubles the target."
+  },
+  "chain": [
+    {
+      "cause": "DNA is heated to about 95 °C.",
+      "effect": "The hydrogen bonds between bases break and the two strands separate (denaturation)."
+    },
+    {
+      "cause": "The mixture is cooled to about 55 °C with an excess of two primers that match the ends of the target.",
+      "effect": "The primers pair with their matching sequences on the single strands (annealing)."
+    },
+    {
+      "cause": "At about 72 °C, heat-stable Taq polymerase adds nucleotides to each primer's 3′ end.",
+      "effect": "Each strand gets a new partner, so every target molecule becomes two; 30 cycles make about a billion copies."
+    },
+    {
+      "cause": "The copies, or DNA cut by restriction enzymes, are loaded into an agarose gel and an electric current is applied.",
+      "effect": "Negatively charged DNA moves toward the positive electrode, small fragments fastest, so fragments separate by size and can be compared with a DNA ladder."
+    },
+    {
+      "cause": "A gene is cut and joined into a plasmid with the same restriction enzyme and ligase, and bacteria take up the plasmid.",
+      "effect": "Bacteria that grow on a selective plate carry the recombinant plasmid and make the gene's product, such as human insulin."
+    }
+  ],
+  "ideas": [
+    "<b>PCR</b> copies a chosen stretch of DNA: denature, anneal primers, extend with <b>Taq polymerase</b>; copies double each cycle (2<sup>n</sup>).",
+    "<b>Gel electrophoresis</b> separates DNA by size: DNA is negative and runs toward +, small fragments farthest; a <b>DNA ladder</b> gives the sizes.",
+    "<b>Restriction enzymes</b> cut specific sequences, often leaving <b>sticky ends</b>; with ligase they make <b>recombinant DNA</b>. A plasmid carrying a gene and a <b>selectable marker</b> is put into bacteria by <b>transformation</b> (<b>gene cloning</b>).",
+    "<b>DNA sequencing</b> reads the order of bases. <b>DNA fingerprinting</b> compares <b>short tandem repeats</b>.",
+    "<b>CRISPR-Cas9</b> cuts DNA where a <b>guide RNA</b> pairs, for <b>gene editing</b>. <b>Gene therapy</b> adds working genes to a patient's cells. These tools make <b>genetically modified organisms</b>."
+  ],
+  "misconception": {
+    "wrong": "In gel electrophoresis, the biggest DNA fragments travel farthest because they are pulled hardest.",
+    "right": "Every fragment has about the same charge per base pair, so the pull per unit length is the same; the gel's mesh slows big fragments most. Small fragments travel farthest."
+  },
+  "check": [
+    "bio-biotechnology-1",
+    "bio-biotechnology-2",
+    "bio-biotechnology-3",
+    "bio-biotechnology-6",
+    "bio-biotechnology-7",
+    "bio-biotechnology-14",
+    "bio-biotechnology-18"
+  ],
+  "summary": "<p>Biotechnology uses the cell's own enzymes as tools. PCR copies a chosen stretch of DNA by repeating denaturation, primer annealing and extension with heat-stable Taq polymerase, doubling the target each cycle. Gel electrophoresis separates DNA fragments by size: DNA is negatively charged and moves toward the positive electrode, small fragments farthest, and a DNA ladder gives the sizes. Restriction enzymes cut specific sequences, often leaving sticky ends; joined with ligase, a gene and a plasmid make recombinant DNA, which bacteria take up by transformation and keep when a selectable marker lets only them grow. DNA sequencing reads the order of bases; DNA profiles compare short tandem repeats. CRISPR-Cas9 cuts DNA where its guide RNA pairs, allowing gene editing, and gene therapy adds working genes to a patient's cells. These tools are used in medicine, forensics, farming and research.</p>",
+  "connections": [
+    {
+      "href": "../notes/dna-replication.html",
+      "label": "Back: DNA polymerase, primers and ligase (6.2)"
+    },
+    {
+      "href": "../notes/mutations.html",
+      "label": "Back: transformation, plasmids and gene changes (6.7)"
+    },
+    {
+      "href": "../notes/gene-regulation.html",
+      "label": "Back: how bacterial genes are switched on (6.5)"
+    }
+  ]
+}

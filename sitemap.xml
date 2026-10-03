@@ -1111,6 +1111,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/biotechnology.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/carbohydrates.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1137,6 +1142,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/notes/cell-size.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/cell-specialization.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1186,6 +1196,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/dna-replication.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/dna-rna-structure.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/elements-of-life.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1221,6 +1241,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/gene-regulation.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/lipids.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1252,6 +1277,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/notes/mendelian-genetics.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/mutations.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -1331,6 +1361,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/notes/transcription-rna-processing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/notes/translation.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/notes/transport-mechanisms.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
@@ -1372,6 +1412,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/units/unit-5.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/units/unit-6.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -2886,6 +2931,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-alternative-splicing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-beet-membrane-heat.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2902,6 +2952,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/frq/frq-clone-temperature.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-density-bands.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -2926,7 +2981,17 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-frameshift-protein.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-g-protein-block.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/frq/frq-gel-suspects.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -2961,6 +3026,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/frq/frq-operon-sugars.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/frq/frq-pedigree-bleeding.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -2977,6 +3047,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/frq/frq-starch-cellulose-model.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/biotechnology.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3007,6 +3082,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/lessons/cell-size.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/cell-specialization.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3056,6 +3136,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/dna-replication.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/dna-rna-structure.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/elements-of-life.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3091,6 +3181,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/gene-regulation.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/lipids.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3122,6 +3217,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/lessons/mendelian-genetics.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/mutations.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3201,6 +3301,16 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://levlprep.com/bio/lessons/transcription-rna-processing.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/lessons/translation.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://levlprep.com/bio/lessons/transport-mechanisms.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
@@ -3242,6 +3352,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/unit-sheets/unit-5.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/unit-sheets/unit-6.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -3972,6 +4087,11 @@
   </url>
   <url>
     <loc>https://levlprep.com/bio/tools/meiosis-nondisjunction.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://levlprep.com/bio/tools/operons.html</loc>
     <lastmod>2026-10-03</lastmod>
     <priority>0.5</priority>
   </url>

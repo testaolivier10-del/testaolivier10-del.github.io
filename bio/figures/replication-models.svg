@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" role="img" aria-labelledby="msm-t msm-d">
+<title id="msm-t">Three models of DNA copying and the bands they predict</title>
+<desc id="msm-d">Three models of DNA copying, followed for two rounds starting from a molecule whose two strands are both heavy (dark). New strands are light (pale). Semiconservative: after round 1, each molecule has one heavy and one light strand (hybrid); after round 2, half the molecules are hybrid and half are fully light. Conservative: after round 1, one molecule is fully heavy and one fully light; after round 2, one heavy and three light. Dispersive: every strand is a patchwork of old and new pieces, so after round 1 all molecules are half heavy, and after round 2 all are one quarter heavy. Beside each model, the predicted band positions in a density gradient tube, heavy at the bottom.</desc>
+<defs><marker id="msm-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker></defs>
+<rect width="760" height="400" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<text x="205.0" y="28.0" font-size="13" text-anchor="middle" font-weight="700">Start</text>
+<text x="325.0" y="28.0" font-size="13" text-anchor="middle" font-weight="700">After round 1</text>
+<text x="530.0" y="28.0" font-size="13" text-anchor="middle" font-weight="700">After round 2</text>
+<text x="700.0" y="28.0" font-size="13" text-anchor="middle" font-weight="700">Bands</text>
+<text x="20.0" y="100.0" font-size="14" text-anchor="start" font-weight="700">Semiconservative</text>
+<rect x="175.0" y="86.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="175.0" y="97.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="68.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="79.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="295.0" y="104.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="295.0" y="115.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="440.0" y="68.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="440.0" y="79.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="68.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="79.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="104.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="115.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="530.0" y="104.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="115.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="668.0" y="62.0" width="26.0" height="86.0" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.6"/>
+<rect x="671.0" y="107.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<text x="681.0" y="162.0" font-size="10" text-anchor="middle">round 1</text>
+<rect x="718.0" y="62.0" width="26.0" height="86.0" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.6"/>
+<rect x="721.0" y="107.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<rect x="721.0" y="82.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<text x="731.0" y="162.0" font-size="10" text-anchor="middle">round 2</text>
+<text x="20.0" y="215.0" font-size="14" text-anchor="start" font-weight="700">Conservative</text>
+<rect x="175.0" y="201.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="175.0" y="212.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="183.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="194.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="219.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="295.0" y="230.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="183.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="440.0" y="194.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="530.0" y="183.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="194.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="219.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="230.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="219.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="230.0" width="60.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="668.0" y="177.0" width="26.0" height="86.0" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.6"/>
+<rect x="671.0" y="247.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<rect x="671.0" y="197.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<text x="681.0" y="277.0" font-size="10" text-anchor="middle">round 1</text>
+<rect x="718.0" y="177.0" width="26.0" height="86.0" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.6"/>
+<rect x="721.0" y="247.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<rect x="721.0" y="197.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<text x="731.0" y="277.0" font-size="10" text-anchor="middle">round 2</text>
+<text x="20.0" y="330.0" font-size="14" text-anchor="start" font-weight="700">Dispersive</text>
+<rect x="175.0" y="316.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="175.0" y="327.0" width="60.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="310.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="325.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="340.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="295.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="310.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="325.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="340.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="310.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="325.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="340.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="295.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="310.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="325.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="340.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="455.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="470.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="485.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="455.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="470.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="485.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="545.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="560.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="575.0" y="298.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="545.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="560.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="575.0" y="309.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="440.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="455.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="470.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="485.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="440.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="455.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="470.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="485.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="530.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="545.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="560.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="575.0" y="334.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="530.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="545.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#33413F" stroke="#33413F" stroke-width="0.8"/>
+<rect x="560.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="575.0" y="345.0" width="15.0" height="7.0" rx="0" fill="#9FD3F2" stroke="#0072B2" stroke-width="0.8"/>
+<rect x="668.0" y="292.0" width="26.0" height="86.0" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.6"/>
+<rect x="671.0" y="337.0" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<text x="681.0" y="392.0" font-size="10" text-anchor="middle">round 1</text>
+<rect x="718.0" y="292.0" width="26.0" height="86.0" rx="8" fill="#FFFFFF" stroke="#5D6B69" stroke-width="1.6"/>
+<rect x="721.0" y="324.5" width="20.0" height="5.0" rx="0" fill="#1F2A28" stroke="#1F2A28" stroke-width="0.5"/>
+<text x="731.0" y="392.0" font-size="10" text-anchor="middle">round 2</text>
+<text x="652.0" y="84.0" font-size="11" text-anchor="end">light</text>
+<text x="652.0" y="140.0" font-size="11" text-anchor="end">heavy</text>
+<line x1="640.0" y1="90.0" x2="640.0" y2="126.0" stroke="#1F2A28" stroke-width="1.2" marker-end="url(#msm-a)"/>
+</g>
+</svg>

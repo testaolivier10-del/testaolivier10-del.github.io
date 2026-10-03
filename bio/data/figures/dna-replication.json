@@ -1,0 +1,12 @@
+{
+  "replication-fork": {
+    "file": "figures/replication-fork.svg", "ext": "svg", "w": 760, "h": 440,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "A replication fork moving to the right. Topoisomerase sits on the unopened double helix ahead of the fork and helicase opens the strands at the fork; single-strand binding proteins coat the bare template. On the top template, which runs 3-prime to 5-prime toward the fork, DNA polymerase III extends the leading strand continuously from one RNA primer toward the fork. On the bottom template the lagging strand is built away from the fork in Okazaki fragments: primase lays a new RNA primer near the fork, DNA polymerase III extends it, DNA polymerase I swaps an older fragment's primer for DNA, and DNA ligase seals the remaining nick."
+  },
+  "replication-models": {
+    "file": "figures/replication-models.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three models of DNA copying, starting from one fully heavy molecule, with new strands light. Semiconservative: round 1 gives two hybrid molecules; round 2 gives two hybrid and two light molecules, so the tubes show one intermediate band, then an intermediate and a light band. Conservative: round 1 gives one heavy and one light molecule; round 2 one heavy and three light, so the tubes show heavy and light bands both times. Dispersive: every strand is a patchwork; round 1 gives one intermediate band and round 2 one band one quarter of the way from light to heavy."
+  }
+}

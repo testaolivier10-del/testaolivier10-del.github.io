@@ -1,0 +1,7 @@
+{
+  "differential-expression": {
+    "file": "figures/differential-expression.svg", "ext": "svg", "w": 760, "h": 400,
+    "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+    "alt": "Three cells, liver, lens and muscle, each with the same four genes: albumin, crystallin, myosin and a glycolysis enzyme. Each gene's enhancer has colored control elements, and a gene is on only when the cell has activators matching all of them. The liver cell has red, blue and gray activators and transcribes albumin and the glycolysis enzyme; the lens cell has green, purple and gray and transcribes crystallin and the glycolysis enzyme; the muscle cell has orange, blue and gray and transcribes myosin and the glycolysis enzyme."
+  }
+}

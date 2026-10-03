@@ -324,6 +324,53 @@ Raised while writing Unit 1 (2026-10-03, branch `claude/apbio-u1`):
 - **mito-paternal** (open, 5.4). "An affected father, as a rule, passes a mitochondrial condition to none of his
   children" (notes, `bio-non-mendelian-genetics-14`); rare paternal leakage exists (see organelle-inheritance).
 
+- **u6-illustrative-data** (open, Unit 6 authoring). Several stimuli use invented data in realistic proportions,
+  stated as such or as "approximate": the error rates in `dna-replication-s3` (10⁻¹⁰ normal, 10⁻⁸ without proofreading,
+  10⁻⁷ without mismatch repair, 10⁻⁵ without both; real mutator strains vary by about an order of magnitude), the
+  Okazaki pulse data in `dna-replication-s2` (about half the label in short pieces at 5 s; in Okazaki's real experiments
+  most early label was in short pieces, partly because of uracil excision repair), the α-amanitin fractions in
+  `transcription-rna-processing-s3`, and the Bicoid gradient in `cell-specialization-s3` (an exponential model, length
+  constant 25% of the egg; real embryos shift the hunchback boundary less, roughly 5-10% of egg length per doubling of
+  bicoid dose). Confirm acceptable.
+- **lac-glucose-mechanism** (open, 6.5 and `frq-operon-sugars`). The glucose effect on the lac operon is taught through
+  cAMP-CAP only (low cAMP, no activation). Inducer exclusion (glucose transport blocking lactose uptake) also contributes
+  and is the larger effect in some studies. For your exam: the cAMP-CAP explanation is the one expected; items avoid
+  keying anything that inducer exclusion would contradict. The lac and trp operons are used by name although the 2025
+  framework reportedly no longer names them (see map-enrichment); every item describes the operon in its stimulus.
+- **lens-induction** (open, 6.6, `bio-cell-specialization-19`). The optic-cup transplant and filter result are the
+  classic textbook account; lens induction actually involves several earlier signals, and transplant results differ by
+  species. Kept as a simplified example of induction by a diffusing signal.
+- **trpR-autoregulation** (open, 6.5; review u6). The trp repressor also represses its own gene, *trpR*, so
+  tryptophan lowers repressor synthesis a few-fold. The course says the repressor is "made" and activated by
+  tryptophan without mentioning this; the predict item `bio-gene-regulation-16` no longer keys "repressor made:
+  no change" (that variable was replaced). Outside the framework; no item depends on it now.
+- **lens-induction-species** (open, 6.6; review u6). The flank-transplant result comes from some frog species
+  (not all), and the filter (transfilter) result from chick and mouse work, so `bio-cell-specialization-19` now
+  says "some vertebrate embryos" instead of "a frog embryo". Keep or simplify further.
+- **trp-attenuation** (open, 6.5). Attenuation of the trp operon is not taught; the operon is presented as controlled by
+  the repressor alone. Outside the framework; flag if a teacher wants it as going-further.
+- **lac-catabolite-mechanism** (open; Unit 6 simulator `operons`). OpenStax 16.2 explains the glucose
+  effect only through cAMP and CAP (its Table 16.2: glucose + lactose gives "some" transcription). In
+  *E. coli* much of the glucose effect is inducer exclusion (glucose transport inhibits the lactose
+  permease, so less allolactose forms), and the cAMP story is debated. Meanwhile: the tool follows the
+  CAP–cAMP account and sets "repressor off, no CAP" at 10% of full; confirm.
+- **lacz-allolactose** (open; same simulator). Lactose becomes allolactose only through β-galactosidase,
+  so a cell with no working *lacZ* cannot be induced by lactose (labs use IPTG). Many AP-style items
+  treat *lacZ*⁻ + lactose as "mRNA made, no enzyme". Meanwhile: the model treats lactose as giving
+  allolactose in every cell, and the box says so; no question depends on it. Also ignored: the
+  permease (*lacY*), polar effects of *lacZ* mutations, and trp attenuation.
+- **repressor-blocks-polymerase** (open; same simulator). OpenStax says the bound repressor keeps RNA
+  polymerase from binding the promoter; for lac, the repressor and polymerase can bind together and
+  the repressor mainly blocks initiation. Meanwhile: the tool says the repressor "blocks RNA
+  polymerase" and draws the polymerase off the DNA; confirm the wording.
+- **operon-parameters** (open; same simulator). Rates 1 / 10 / 100, mRNA half-life 2 min, enzymes
+  diluted by growth with a 40-min doubling, instant input changes and one F′ copy are illustrative
+  choices, not measurements; the merodiploid mode is marked "going further" as beyond the course.
+- **openstax-license** (open, owner). The OpenStax *Biology 2e* page fetched on 2026-10-03 shows a
+  CC BY-NC-SA notice and a no-AI-ingestion line, while the course credits OpenStax figures as CC BY 4.0.
+  Check which license applies to the figures already used before launch. The operons tool uses no
+  OpenStax text or figures.
+
 ## Map content to confirm
 
 - **map-enrichment** (open). Some examples the 2025 changes reportedly dropped or no longer
