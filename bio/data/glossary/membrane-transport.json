@@ -1,0 +1,10 @@
+{
+  "homeostasis": { "def": "Keeping internal conditions, such as the concentrations of ions and water, within a range that lets the cell or body work, even when outside conditions change. How the body senses and corrects changes is taught in Unit 4." },
+  "passive-transport": { "def": "Movement of a substance across a membrane down its concentration gradient, from higher to lower concentration, with no energy input from the cell. Simple diffusion through the bilayer and diffusion through transport proteins are both passive." },
+  "active-transport": { "def": "Movement of a substance across a membrane against its concentration gradient, from lower to higher concentration, using energy, usually from ATP, and a transport protein. It lets a cell build up or keep substances at concentrations different from its surroundings." },
+  "endocytosis": { "def": "Taking material into a cell by folding the plasma membrane inward around it and pinching off a vesicle. Phagocytosis engulfs large particles such as bacteria; pinocytosis takes in droplets of fluid; receptor-mediated endocytosis takes in particular molecules after they bind surface receptors." },
+  "exocytosis": { "def": "Releasing material from a cell: a vesicle fuses with the plasma membrane and empties its contents outside, and its membrane becomes part of the plasma membrane. Cells secrete proteins such as insulin and digestive enzymes this way." },
+  "bulk-transport": { "def": "Moving large particles or large amounts of material across the plasma membrane inside vesicles, by endocytosis (in) or exocytosis (out). It uses energy." },
+  "dynamic-equilibrium": { "def": "The state reached when a substance's concentration is the same on both sides of a membrane: its molecules keep crossing in both directions, but at equal rates, so there is no net change." },
+  "internal-environment": { "def": "The conditions inside a cell, which differ from the outside. Selective permeability slows leaks, and active transport keeps moving substances back, so a cell can keep, for example, far more K⁺ inside than outside." }
+}

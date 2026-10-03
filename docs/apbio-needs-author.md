@@ -91,6 +91,17 @@ person decides; lessons follow the "meanwhile" line.
   and whether it already had a nucleus and endomembranes when it took in the mitochondrial
   ancestor is debated. Meanwhile: lessons say "an ancestral host cell" and draw it with a
   nucleus as a simplification; nothing is asked about the host's identity.
+- **metabolic-scaling** (open). Topic 2.2 explains the higher metabolic rate per gram of small
+  endotherms by heat loss through a larger surface area-to-volume ratio, the framing the CED uses.
+  Physiologists still debate why metabolic rate scales with body mass to about the 3/4 power
+  (Kleiber's law) rather than the 2/3 the surface rule predicts, and ectotherms show a similar
+  pattern. Meanwhile: the surface-area explanation as the main reason, with no claim that it is
+  the whole story; no question asks for a scaling exponent (`metabolic-rate`, `heat-exchange`).
+- **permeability-values** (open). The 2.4 bilayer permeability table (stimulus and notes) gives
+  values rounded to the nearest power of ten from published synthetic-bilayer measurements, which
+  vary between studies by up to an order of magnitude (Na⁺ is reported from about 10⁻¹² to 10⁻¹⁴
+  cm/s). Meanwhile: values are labelled approximate, and items use only the ordering and
+  powers-of-ten differences (`simple-diffusion`, `selective-permeability`).
 
 ## Map content to confirm
 

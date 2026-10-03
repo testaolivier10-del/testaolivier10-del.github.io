@@ -1,0 +1,59 @@
+{
+  "topic": "plasma-membrane",
+  "hook": "<p>Fish that live in icy Antarctic water and bacteria that live in hot springs both have cell membranes that work. If you moved the fish's membrane into the hot spring, it would turn floppy and leaky; the hot-spring bacterium's membrane in ice water would stiffen like cold butter. A membrane is not a solid wall. It is a thin film of oily molecules that must stay just fluid enough, studded with proteins that do almost everything the membrane does.</p>",
+  "prereq": [
+    {
+      "q": "What makes a phospholipid amphipathic?",
+      "options": ["It has a hydrophilic head and hydrophobic tails", "It dissolves completely in water", "It is made only of carbon and hydrogen"],
+      "correct": 0,
+      "why": "A phospholipid has a charged, water-loving head and two water-avoiding fatty acid tails, so it has both a hydrophilic and a hydrophobic part.",
+      "review": "lipids"
+    },
+    {
+      "q": "How do unsaturated fatty acids differ from saturated ones?",
+      "options": ["They have no carbon-carbon double bonds", "They have one or more double bonds that put kinks in the tail", "They are hydrophilic instead of hydrophobic"],
+      "correct": 1,
+      "why": "Unsaturated fatty acids have one or more carbon-carbon double bonds, which bend the tail, so the tails cannot pack tightly.",
+      "review": "lipids"
+    },
+    {
+      "q": "Where are proteins that end up in the plasma membrane made?",
+      "options": ["On free ribosomes in the cytosol", "On ribosomes bound to the rough ER", "In the nucleolus"],
+      "correct": 1,
+      "why": "Proteins for membranes, lysosomes and export are built on ribosomes attached to the rough ER, then sent on through the Golgi in vesicles.",
+      "review": "cell-structure-function"
+    }
+  ],
+  "figure": { "figure": "fluid-mosaic", "caption": "The fluid mosaic model. Phospholipid heads face the water on both sides and tails meet in the middle. Proteins float in the bilayer like boats; carbohydrate chains on glycoproteins and glycolipids face outward; cholesterol sits among the tails." },
+  "chain": [
+    { "cause": "Phospholipids have hydrophilic heads and hydrophobic tails, and both sides of the membrane are watery.", "effect": "They form a bilayer, heads facing the water on each side and tails hidden in the middle." },
+    { "cause": "The molecules in the bilayer are held together by hydrophobic interactions, not covalent bonds.", "effect": "Lipids and many proteins can slide sideways, so the membrane behaves like a fluid." },
+    { "cause": "Integral proteins have nonpolar stretches that sit among the tails and polar parts that face the water.", "effect": "They stay embedded in the bilayer, and many cross it to touch both sides." },
+    { "cause": "Carbohydrate chains are attached to proteins and lipids inside the ER and Golgi, on the side that will face out.", "effect": "Glycoproteins and glycolipids carry them on the outer surface, where other cells can recognize them." },
+    { "cause": "Temperature, the share of kinked unsaturated tails and cholesterol all change how tightly the tails pack.", "effect": "The membrane's fluidity changes, and with it how well its proteins can move and work." }
+  ],
+  "ideas": [
+    "The <b>fluid mosaic model</b>: a fluid phospholipid bilayer with a patchwork of proteins in it. \"Fluid\" because lipids and proteins slide sideways; \"mosaic\" because many kinds of proteins are scattered through it.",
+    "<b>Membrane proteins</b> are integral (embedded, often crossing the whole bilayer) or peripheral (loosely attached to one surface). They move substances across, act as <b>receptors</b> for <b>signaling molecules</b>, join cells, and act as enzymes.",
+    "<b>Glycoproteins</b> and <b>glycolipids</b> carry carbohydrate chains on the outside of the cell. These chains are identity tags used in cell recognition.",
+    "<b>Fluidity</b> rises with temperature and with the share of unsaturated (kinked) tails. <b>Cholesterol</b> buffers it: it restrains movement when warm and prevents tight packing when cold."
+  ],
+  "misconception": {
+    "wrong": "The plasma membrane is a rigid wall with fixed holes in it, like a sieve.",
+    "right": "It is a fluid film only two molecules thick. Its lipids and many of its proteins move sideways constantly, and which substances cross depends mostly on the chemistry of the bilayer and its proteins, not on fixed holes."
+  },
+  "check": [
+    "bio-plasma-membrane-1",
+    "bio-plasma-membrane-3",
+    "bio-plasma-membrane-5",
+    "bio-plasma-membrane-8",
+    "bio-plasma-membrane-9",
+    "bio-plasma-membrane-12",
+    "bio-plasma-membrane-15",
+    "bio-plasma-membrane-18"
+  ],
+  "summary": "<p>The plasma membrane is a phospholipid bilayer: hydrophilic heads face the water on each side and hydrophobic tails meet in the middle. Proteins sit in or on it and do most of its jobs: moving substances, receiving signals as receptors, and, with carbohydrate chains attached, letting cells recognize each other. Its lipids and proteins slide sideways, which is why it is called a fluid mosaic. Temperature, unsaturated fatty acids and cholesterol together keep it fluid enough to work.</p>",
+  "connections": [
+    { "href": "/anatomy-physiology/notes/plasma-membrane.html", "label": "A&P notes: The plasma membrane" }
+  ]
+}

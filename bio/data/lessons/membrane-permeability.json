@@ -1,0 +1,57 @@
+{
+  "topic": "membrane-permeability",
+  "hook": "<p>In 1992 a team studying red blood cells found a protein whose job nobody knew. They made frog oocytes, cells that let water in only slowly, build the protein, then moved them into a dilute solution. The ordinary oocytes barely swelled. The ones carrying the new protein swelled like balloons and burst within minutes. The protein was a dedicated doorway for water, now called an aquaporin, and its discovery won a Nobel Prize. It shows the central idea of this topic: what crosses a membrane, and how fast, depends on the bilayer and on the proteins in it.</p>",
+  "prereq": [
+    {
+      "q": "Which part of the plasma membrane forms its water-avoiding middle?",
+      "options": ["The phospholipid heads", "The phospholipid tails", "The carbohydrate chains"],
+      "correct": 1,
+      "why": "The bilayer's two layers of hydrophobic fatty acid tails meet in the middle, where water is kept out.",
+      "review": "plasma-membrane"
+    },
+    {
+      "q": "Which kind of molecule is a sodium ion (Na⁺)?",
+      "options": ["Nonpolar", "Charged", "A lipid"],
+      "correct": 1,
+      "why": "An ion carries a full electric charge, which makes it strongly attracted to water.",
+      "review": "water-hydrogen-bonding"
+    },
+    {
+      "q": "In diffusion, particles move:",
+      "options": ["From lower to higher concentration, using ATP", "From higher to lower concentration, by their own motion", "Only when a membrane is present"],
+      "correct": 1,
+      "why": "Diffusion is the net spreading of particles down their concentration gradient, powered by their own random motion.",
+      "review": "cell-size"
+    }
+  ],
+  "figure": { "figure": "membrane-crossing", "caption": "Small nonpolar molecules diffuse straight through the bilayer. A little water does too, but most passes through aquaporins. Ions and large polar molecules such as glucose need transport proteins, and very large molecules do not cross at all." },
+  "chain": [
+    { "cause": "The middle of the bilayer is a layer of hydrophobic tails.", "effect": "Small nonpolar molecules such as O₂ and CO₂ dissolve in it and diffuse straight across: simple diffusion." },
+    { "cause": "Polar molecules are attracted to water and must leave it to enter the hydrophobic core.", "effect": "Small polar molecules such as water cross slowly, and large polar ones such as glucose hardly at all." },
+    { "cause": "Ions carry a full charge and hold a shell of water around them.", "effect": "The hydrophobic core keeps ions out almost entirely, even very small ones like Na⁺." },
+    { "cause": "The membrane carries transport proteins, such as aquaporins, that give particular substances a hydrophilic route across.", "effect": "Those substances cross far faster, so which proteins a cell makes decides much of what it lets in and out." },
+    { "cause": "When water moves into a plant, fungal or bacterial cell and it swells, its cell wall resists stretching.", "effect": "The wall pushes back on the cell and keeps it from bursting." }
+  ],
+  "ideas": [
+    "A membrane is <b>selectively permeable</b>: it lets some substances through easily and holds others back. That lets a cell keep its insides different from its surroundings.",
+    "<b>Simple diffusion</b> through the bilayer works for small nonpolar molecules (O₂, CO₂, N₂) and lipid-soluble ones such as steroid hormones. Charge matters more than size: tiny ions cross a bare bilayer more slowly than large uncharged sugars.",
+    "Ions and large polar molecules cross at useful rates only through <b>transport proteins</b>. Water can slip through the bilayer slowly, but most water crosses through <b>aquaporins</b>.",
+    "The <b>cell wall</b> (cellulose in plants, chitin in fungi, <b>peptidoglycan</b> in bacteria) lies outside the plasma membrane. It gives shape and protects the cell from bursting when water moves in, but it does not control which molecules enter."
+  ],
+  "misconception": {
+    "wrong": "The smaller a particle is, the more easily it crosses a membrane.",
+    "right": "Charge and polarity matter more than size. A sodium ion (23 g/mol) is far lighter than glycerol (92 g/mol), yet it crosses a bare bilayer about a million times more slowly, because its charge keeps it out of the hydrophobic core."
+  },
+  "check": [
+    "bio-membrane-permeability-1",
+    "bio-membrane-permeability-3",
+    "bio-membrane-permeability-4",
+    "bio-membrane-permeability-8",
+    "bio-membrane-permeability-9",
+    "bio-membrane-permeability-12",
+    "bio-membrane-permeability-15",
+    "bio-membrane-permeability-18"
+  ],
+  "summary": "<p>The plasma membrane is selectively permeable. Small nonpolar molecules diffuse straight through the hydrophobic core of the bilayer (simple diffusion). Polar molecules cross slowly, and ions hardly at all, unless the membrane carries transport proteins that give them a route; most water crosses through aquaporins. Outside the membrane, the cell walls of plants, fungi and bacteria give support and protect the cell from bursting when water moves in.</p>",
+  "connections": []
+}

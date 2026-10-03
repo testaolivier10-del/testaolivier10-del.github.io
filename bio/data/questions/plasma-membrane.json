@@ -1,0 +1,651 @@
+{
+  "stimuli": {
+    "plasma-membrane-s1": {
+      "kind": "graph",
+      "title": "Membrane proteins mixing in fused cells",
+      "text": "<p>Researchers labeled a membrane protein of mouse cells with a green fluorescent tag and the matching protein of human cells with a red tag. They fused one mouse cell with one human cell to make a single cell whose plasma membrane is green on one half and red on the other. They kept the fused cells at 37 °C or at 15 °C and, at each time, counted the percentage of fused cells in which green and red were fully intermixed over the whole surface (200 fused cells per point).</p>",
+      "chart": {
+        "type": "line",
+        "x": {
+          "label": "Time after fusion",
+          "unit": "min",
+          "min": 0,
+          "max": 40,
+          "step": 10
+        },
+        "y": {
+          "label": "Fused cells with fully mixed labels",
+          "unit": "%",
+          "min": 0,
+          "max": 100,
+          "step": 20
+        },
+        "series": [
+          {
+            "name": "37 °C",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                8
+              ],
+              [
+                10,
+                24
+              ],
+              [
+                20,
+                52
+              ],
+              [
+                30,
+                78
+              ],
+              [
+                40,
+                92
+              ]
+            ]
+          },
+          {
+            "name": "15 °C",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                10,
+                1
+              ],
+              [
+                20,
+                2
+              ],
+              [
+                30,
+                3
+              ],
+              [
+                40,
+                4
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "plasma-membrane-s2": {
+      "kind": "table",
+      "title": "Membrane lipids of bacteria grown at different temperatures",
+      "text": "<p>A species of bacterium was grown at four temperatures. For each culture, researchers measured the percentage of unsaturated fatty acids in the membrane phospholipids, and the fluidity of the membrane measured at that same growth temperature (a fluidity index: higher means more fluid). Values are mean ± SD of three cultures.</p>",
+      "table": {
+        "caption": "Membrane composition and fluidity at each growth temperature",
+        "cols": [
+          "Growth temperature (°C)",
+          "Unsaturated fatty acids (% of total)",
+          "Fluidity index at growth temperature"
+        ],
+        "rows": [
+          [
+            "15",
+            "68 ± 2",
+            "0.52 ± 0.03"
+          ],
+          [
+            "25",
+            "58 ± 3",
+            "0.51 ± 0.02"
+          ],
+          [
+            "37",
+            "45 ± 2",
+            "0.53 ± 0.03"
+          ],
+          [
+            "43",
+            "38 ± 3",
+            "0.50 ± 0.04"
+          ]
+        ]
+      }
+    }
+  },
+  "items": [
+    {
+      "id": "bio-plasma-membrane-1",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "plasma-membrane-s1",
+      "q": "Which statement best describes the results?",
+      "options": [
+        "Mixing reached 92% of cells by 40 minutes at 37 °C but stayed near zero at 15 °C.",
+        "Labels mixed at about the same pace at both temperatures, each reaching roughly 50% of cells by 20 minutes.",
+        "Labels mixed faster at 15 °C than at 37 °C over the first 10 minutes.",
+        "Labels mixed in about half of the fused cells at each temperature by 40 minutes."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At 37 °C the share of mixed cells climbs to 92% by 40 minutes; at 15 °C it never passes 4%.",
+        "options": [
+          "This matches both curves: a steep rise at 37 °C and almost none at 15 °C.",
+          "Only the 37 °C curve reaches about 50% at 20 minutes; at 15 °C the value is 2%.",
+          "At 10 minutes, 24% of cells are mixed at 37 °C and 1% at 15 °C, so mixing is slower in the cold.",
+          "By 40 minutes, 92% are mixed at 37 °C and 4% at 15 °C, nowhere near half in either case."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-2",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "plasma-membrane-s1",
+      "q": "At 37 °C, by how many percentage points per minute did the share of fully mixed cells rise between 10 and 30 minutes? Give your answer to one decimal place.",
+      "numeric": {
+        "answer": 2.7,
+        "tol": 0.05,
+        "unit": "percentage points per min",
+        "decimals": 1
+      },
+      "why": {
+        "correct": "Rate = change in value ÷ change in time = (78 − 24) ÷ (30 − 10) = 54 ÷ 20 = 2.7 percentage points per minute."
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-3",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "plasma-membrane-s1",
+      "q": "Which explanation best accounts for the difference between the two temperatures?",
+      "options": [
+        "At 15 °C the cold denatures the labeled proteins, so their fluorescent tags fade and are no longer counted as mixed.",
+        "At 37 °C the bilayer is fluid and proteins slide sideways; at 15 °C tightly packed lipids hold them.",
+        "At 37 °C the fused cell builds new copies of each protein over its whole surface, and this looks like mixing.",
+        "At 15 °C the two halves of the fused membrane fail to join, so the two labels stay on separate sides."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Phospholipids and many proteins move sideways within a fluid bilayer. Cooling slows the molecules and lets the tails pack closer, so the membrane becomes less fluid and proteins barely move.",
+        "options": [
+          "Moderate cold slows molecules but does not denature proteins, and the labels are still visible at 15 °C.",
+          "This links temperature to fluidity and fluidity to sideways movement of proteins.",
+          "Making new protein is not needed to explain the mixing, and newly made protein would not carry the labels added before fusion.",
+          "The cells were already fused before they were cooled; the halves form one continuous membrane at both temperatures."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-4",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "3.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "plasma-membrane-s1",
+      "q": "A skeptic argues that the colors mix because the fused cell keeps making new labeled proteins and inserting them everywhere, not because existing proteins move. Which follow-up test would best address this?",
+      "options": [
+        "Repeat at 37 °C with a drug that stops ribosomes making protein.",
+        "Repeat the 15 °C experiment for a much longer time, up to two hours, and count again.",
+        "Repeat the experiment with two mouse cells that both carry the green label.",
+        "Repeat the experiment at 25 °C to see whether the curve lies between the others."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "If mixing still happens when no new protein can be made, the labels must be spreading by movement of proteins already in the membrane. (In the original experiments, blocking protein synthesis did not stop the mixing.)",
+        "options": [
+          "Blocking new protein synthesis tests the skeptic's idea directly: mixing that continues must come from movement.",
+          "A longer cold run tests how slow movement is in the cold, not whether new protein causes mixing.",
+          "With one color only, mixing could not be seen at all, so the test gives no information.",
+          "A middle temperature tests the effect of temperature, which both explanations could account for."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-5",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "plasma-membrane-s1",
+      "q": "The 15 °C experiment is repeated with cells whose membranes have been loaded with extra cholesterol. Predict the result compared with the original 15 °C curve.",
+      "options": [
+        "Less mixing, because cholesterol makes membranes stiffer whatever the temperature is.",
+        "Somewhat more, because cholesterol keeps the tails from packing tightly in the cold.",
+        "Hardly any mixing, because the extra cholesterol binds to the labeled proteins and holds them still.",
+        "Mixing at the 37 °C pace, because cholesterol warms the membrane."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Cholesterol is a buffer for fluidity. In the cold, its rigid rings wedge between the phospholipid tails and stop them packing tightly, so the membrane stays more fluid than it would otherwise. (In the heat, it does the opposite, restraining movement.)",
+        "options": [
+          "Cholesterol stiffens the membrane at high temperatures but keeps it more fluid at low temperatures.",
+          "In the cold, cholesterol prevents tight packing, so proteins can move a little more.",
+          "Cholesterol sits among the tails; it does not bind or block the labeled proteins.",
+          "Cholesterol does not produce heat; it changes how tightly the lipids pack."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-6",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "4.B",
+      "level": "apply",
+      "diff": 1,
+      "stimulus": "plasma-membrane-s2",
+      "q": "Which statement best describes the data in the table?",
+      "options": [
+        "As growth temperature rises, both the share of unsaturated fatty acids and the fluidity rise.",
+        "Unsaturated fatty acids fall as temperature rises, while fluidity stays about the same.",
+        "As growth temperature rises, fluidity falls steadily from 0.52 to 0.38.",
+        "The share of unsaturated fatty acids is about the same at each of the four temperatures tested."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "Unsaturated fatty acids fall from 68% to 38% as temperature rises from 15 to 43 °C, but the fluidity index stays between 0.50 and 0.53, with SDs that overlap.",
+        "options": [
+          "The share of unsaturated fatty acids falls, not rises, and fluidity barely changes.",
+          "This matches both columns.",
+          "Fluidity stays between 0.50 and 0.53; 38 is a percentage of unsaturated fatty acids, not a fluidity value.",
+          "The share drops by 30 percentage points, far more than the SDs of 2 to 3."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-7",
+      "type": "numeric",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "5.A",
+      "level": "apply",
+      "diff": 2,
+      "stimulus": "plasma-membrane-s2",
+      "q": "Calculate the percent change in the share of unsaturated fatty acids from 15 °C to 43 °C. Give a whole number, with a minus sign if it is a decrease.",
+      "numeric": {
+        "answer": -44,
+        "tol": 1,
+        "unit": "%",
+        "decimals": 0
+      },
+      "why": {
+        "correct": "Percent change = (new − original) ÷ original × 100 = (38 − 68) ÷ 68 × 100 = −44.1%, which rounds to −44%."
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-8",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.C",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "plasma-membrane-s2",
+      "q": "Why does a membrane with more unsaturated fatty acids stay fluid at 15 °C?",
+      "options": [
+        "Unsaturated tails are more hydrophilic, so they attract water into the bilayer and loosen it.",
+        "Double bonds put kinks in the tails, so the tails do not pack tightly.",
+        "Unsaturated tails are longer than saturated ones, so they wave about more and push the heads apart.",
+        "Unsaturated tails form hydrogen bonds with each other, which hold the bilayer loosely."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "A double bond puts a bend in a fatty acid tail. Bent tails cannot line up as closely as straight saturated tails, so they stay loosely packed and free to move even in the cold.",
+        "options": [
+          "Unsaturated tails are still hydrocarbon chains and still hydrophobic; water stays out of the bilayer's core.",
+          "Kinked tails pack loosely, which keeps the membrane fluid at low temperature.",
+          "The difference is the kinks, not the length; longer tails would actually pack more tightly.",
+          "Hydrocarbon tails are nonpolar and do not form hydrogen bonds with each other."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-9",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "stimulus": "plasma-membrane-s2",
+      "q": "A laboratory strain of this bacterium cannot make unsaturated fatty acids and is grown at 37 °C. Predict what happens when it is moved to 15 °C.",
+      "options": [
+        "Its membrane stays as fluid as the normal strain's, because temperature has little effect on saturated tails.",
+        "Its membrane becomes much more fluid, because saturated tails spread apart in the cold.",
+        "Its membrane stiffens, so its membrane proteins work poorly and growth slows.",
+        "Its membrane gains unsaturated fatty acids from the cold, so nothing changes."
+      ],
+      "correct": 2,
+      "why": {
+        "correct": "Normal cells keep their membranes fluid in the cold by raising their share of kinked, unsaturated tails. This strain cannot, so its straight tails pack tightly at 15 °C, the membrane stiffens, and the proteins that do the membrane's jobs cannot work properly.",
+        "options": [
+          "Saturated tails are the ones most affected by cold: they pack tightly and the membrane stiffens.",
+          "Cold makes all tails move less; straight saturated tails pack closer, not farther apart.",
+          "Without the option of adding unsaturated tails, the membrane stiffens and its proteins suffer.",
+          "Cold does not convert fatty acids; the strain cannot make unsaturated ones at any temperature."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-10",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.B",
+      "level": "analyze",
+      "diff": 2,
+      "stimulus": "plasma-membrane-s2",
+      "q": "A student claims that these bacteria change their membrane lipids in a way that keeps membrane fluidity within a narrow range. Which evidence best supports the claim?",
+      "options": [
+        "Fluidity stays at 0.50 to 0.53 while the lipid mix changes from 68% to 38% unsaturated.",
+        "The bacteria grew well at each of the four temperatures in the table, from 15 °C up to 43 °C.",
+        "The share of unsaturated fatty acids at 15 °C is 68%, the highest in the table.",
+        "Each value in the table is the mean of three cultures."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "The claim has two parts, a change in lipids and a steady fluidity. The fluidity column stays nearly constant while the lipid column swings from 68% to 38%, so both parts are supported.",
+        "options": [
+          "This shows both parts of the claim: lipids change while fluidity stays put.",
+          "Growing at four temperatures does not show what happened to fluidity.",
+          "One value shows the lipid mix at one temperature but says nothing about fluidity staying steady.",
+          "Replicates make the data more reliable but are not themselves evidence for the claim."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-11",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "2.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "In a plasma membrane, how are the phospholipids arranged?",
+      "options": [
+        "Two layers: tails meet in the middle, heads face the water on each side",
+        "Two layers: hydrophilic heads face each other in the middle, and the tails face the water on each side",
+        "In one layer, with heads facing the cytoplasm and tails facing the outside",
+        "In a single sheet, with heads and tails alternating side by side"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Both sides of the membrane are watery, so the hydrophilic heads face outward on each side and the hydrophobic tails hide from water in the middle.",
+        "options": [
+          "This is the bilayer: tails inside, heads facing water on both faces.",
+          "Tails facing water would be pushed together by water, which is exactly why they end up in the middle.",
+          "A single layer would leave tails exposed to the watery outside, which is unstable.",
+          "Alternating heads and tails would expose tails to water on both faces."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-12",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "A transmembrane protein crosses the bilayer once. Which amino acids are most likely in the stretch of the protein that lies inside the bilayer?",
+      "options": [
+        "Amino acids with charged side chains, which attract the phosphate heads",
+        "Nonpolar amino acids, which sit well among the hydrophobic tails",
+        "Amino acids with polar side chains, which form hydrogen bonds with the tails",
+        "Any mix of amino acids, because the inside of the bilayer has little effect on which side chains fit there"
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The middle of the bilayer is made of hydrophobic tails. A stretch of protein there is stable only if its side chains are nonpolar, too; polar or charged side chains would be pushed toward water.",
+        "options": [
+          "The heads are at the surfaces, not in the middle; charged side chains in the core would be unstable.",
+          "Nonpolar side chains match the hydrophobic core, holding the protein in place.",
+          "Hydrocarbon tails cannot form hydrogen bonds, and polar side chains are unstable among them.",
+          "The hydrophobic core strongly favors nonpolar side chains, so the mix is far from random."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-13",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.E",
+      "level": "analyze",
+      "diff": 3,
+      "q": "In a membrane protein, one nonpolar amino acid in the stretch that crosses the bilayer is replaced by a charged amino acid. Which result is most likely?",
+      "options": [
+        "The protein sits more firmly in the bilayer, because charges attract the tails.",
+        "The protein sits less stably in the bilayer and may not insert properly.",
+        "The protein moves to the nucleus, because charged proteins bind DNA.",
+        "The protein is unchanged, because one amino acid is too small to matter."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "A charged side chain is strongly hydrophilic. Buried among hydrophobic tails it is unstable, so the protein tends to fold or insert wrongly, and its job may suffer.",
+        "options": [
+          "Charged side chains are repelled by the nonpolar tails, so the fit gets worse, not better.",
+          "A charged group in the hydrophobic core destabilizes the protein's position.",
+          "One change in a membrane-crossing stretch does not send a protein to the nucleus.",
+          "A single amino acid in the wrong environment can change a protein's shape and position, as with sickle-shaped red blood cells caused by one change in hemoglobin."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-14",
+      "type": "multi",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "1.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "Which jobs are done by proteins in the plasma membrane? Select all that apply.",
+      "options": [
+        "Moving particular substances across the membrane",
+        "Binding a signaling molecule and changing the cell's activity",
+        "Letting cells recognize each other",
+        "Storing the instructions for building other proteins",
+        "Making the phospholipid tails hydrophilic",
+        "Holding the two layers of heads together with covalent bonds"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ],
+      "why": {
+        "correct": "Membrane proteins move substances across, act as receptors for signals, and (with attached carbohydrates) let cells recognize each other. Instructions are stored in DNA, and the bilayer holds together by hydrophobic interactions, not proteins.",
+        "options": [
+          "Many membrane proteins provide routes for particular substances to cross.",
+          "Receptor proteins bind signaling molecules and change what the cell does.",
+          "Glycoproteins on the surface act as identity tags that other cells recognize.",
+          "Instructions for proteins are stored in DNA in the nucleus, not in membrane proteins.",
+          "The tails stay hydrophobic; proteins do not change the chemistry of the lipids.",
+          "The two layers are held together by hydrophobic interactions among the tails, not by protein bonds."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-15",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 3,
+      "q": "Sugar chains are added to a glycoprotein inside the ER and Golgi. Which side of the plasma membrane do those chains end up on, and why?",
+      "options": [
+        "The cytoplasm side, because the sugars are added in the cytoplasm.",
+        "Outside, because a vesicle's inner face becomes the cell's outer face when it fuses.",
+        "Both sides equally, because glycoproteins flip over freely in the bilayer.",
+        "The outside, because sugar chains are hydrophobic, so the watery cytoplasm pushes them out of the cell."
+      ],
+      "correct": 1,
+      "why": {
+        "correct": "The sugars are attached on the inner (lumen) side of the ER and Golgi membranes. When a vesicle fuses with the plasma membrane, its inner face turns outward, so the chains face outside the cell, where they act in recognition.",
+        "options": [
+          "The sugars are added inside the ER and Golgi, not in the cytosol.",
+          "Vesicle fusion turns the lumen-facing side of the membrane into the cell's outer surface.",
+          "Proteins move sideways freely but almost never flip from one face to the other.",
+          "Sugar chains are hydrophilic; they face the watery outside because of where they were added."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-16",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.C",
+      "level": "apply",
+      "diff": 2,
+      "q": "A signaling molecule that is too large and too polar to cross the membrane changes the activity of liver cells but has no effect on skin cells. Which explanation is best?",
+      "options": [
+        "Liver cells have surface receptors that bind it; skin cells lack them.",
+        "Skin cells have a much thicker plasma membrane, which the molecule is unable to get through.",
+        "The molecule is broken down in the blood by enzymes before it can travel as far as the skin.",
+        "Liver cells are larger, so the molecule is more likely to hit them."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "A molecule that cannot cross the membrane acts by binding a receptor on the cell surface. Only cells with that receptor respond.",
+        "options": [
+          "Receptors make cells responsive; cells without the receptor ignore the signal.",
+          "Plasma membranes are about the same thickness in all cells; that is not the difference.",
+          "The blood reaches skin and liver alike, so this would not explain a cell-type difference.",
+          "Size does not decide a response; the receptor does."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-17",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "1.B",
+      "level": "apply",
+      "diff": 2,
+      "q": "How does cholesterol affect an animal cell's membrane at body temperature and above?",
+      "options": [
+        "It restrains phospholipid movement, so the membrane is not too fluid.",
+        "It speeds up the movement of phospholipids, making the membrane more fluid.",
+        "It replaces proteins in the membrane, so the membrane carries fewer of them.",
+        "It forms a separate third layer between the two layers of phospholipids, stiffening the whole membrane."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "At warmer temperatures cholesterol's rigid rings hold neighboring phospholipids back and limit their movement; at low temperatures the same molecules stop the tails from packing tightly. Either way it keeps fluidity within a working range.",
+        "options": [
+          "When warm, cholesterol damps phospholipid movement, so the membrane is not too fluid.",
+          "That is cholesterol's effect in the cold relative to a cholesterol-free membrane; in the warm it restrains movement.",
+          "Cholesterol sits among the phospholipids; it does not take the place of proteins.",
+          "Cholesterol molecules sit within each layer, among the tails, not as a separate layer."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-18",
+      "type": "predict",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "6.E",
+      "level": "apply",
+      "diff": 2,
+      "q": "A culture of animal cells is warmed from 20 °C to 35 °C. Predict how each quantity changes.",
+      "variables": [
+        {
+          "name": "Fluidity of the plasma membrane",
+          "answer": "up",
+          "why": "Warmer phospholipids move faster and pack less tightly, so the bilayer becomes more fluid."
+        },
+        {
+          "name": "Speed at which membrane proteins slide sideways",
+          "answer": "up",
+          "why": "In a more fluid bilayer, proteins meet less resistance and slide sideways faster."
+        },
+        {
+          "name": "Number of phospholipid layers in the membrane",
+          "answer": "none",
+          "why": "The membrane stays a bilayer; warming changes how freely its molecules move, not how many layers there are."
+        }
+      ],
+      "why": {
+        "correct": "Warming makes the lipids move faster, so the bilayer becomes more fluid and proteins slide faster, but it remains a bilayer."
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-19",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "2.B",
+      "level": "analyze",
+      "diff": 2,
+      "q": "One membrane protein can be washed off a membrane with a mild salt solution. Another comes off only when a detergent breaks up the bilayer. What do these results suggest?",
+      "options": [
+        "The first is peripheral, at the surface; the second is integral, embedded in the bilayer.",
+        "The first is an integral protein; the second is a peripheral protein.",
+        "Both are peripheral proteins held at the surface, but the second is much larger and heavier than the first.",
+        "Both are integral proteins, but the first is made of fewer amino acids."
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "Peripheral proteins are attached loosely to the surface, often by ionic bonds that salt can break. Integral proteins are embedded in the hydrophobic core, so the bilayer itself must be broken up to free them.",
+        "options": [
+          "A salt wash frees surface-held proteins; only a detergent frees those buried in the bilayer.",
+          "This reverses the two: embedded proteins need the bilayer disrupted.",
+          "Size does not explain needing a detergent; being embedded in the bilayer does.",
+          "Length does not decide this; a protein freed by salt alone is not embedded."
+        ]
+      }
+    },
+    {
+      "id": "bio-plasma-membrane-20",
+      "type": "single",
+      "unit": "unit-2",
+      "topic": "plasma-membrane",
+      "practice": "2.A",
+      "level": "recall",
+      "diff": 1,
+      "q": "What does the name \"fluid mosaic model\" describe?",
+      "options": [
+        "Lipids and proteins that move sideways, with many kinds of proteins scattered through",
+        "A membrane made of a liquid layer of water between two protein sheets",
+        "A membrane whose proteins are fixed in a regular pattern, like tiles",
+        "A membrane that keeps flowing away from the cell and is rebuilt from scratch within a few seconds"
+      ],
+      "correct": 0,
+      "why": {
+        "correct": "\"Fluid\" means the phospholipids and many proteins slide sideways within the layer; \"mosaic\" means the membrane is a patchwork of many kinds of proteins set in the lipids.",
+        "options": [
+          "This is the model: a fluid lipid bilayer with a patchwork of proteins.",
+          "Older models put protein sheets on a lipid layer; the fluid mosaic model has proteins set in the bilayer, and no water layer in the middle.",
+          "Mosaic means a patchwork, but the pieces are not fixed; they move.",
+          "The membrane is not flowing away; its molecules move within it while it stays in place."
+        ]
+      }
+    }
+  ]
+}
