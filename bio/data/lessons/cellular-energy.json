@@ -38,7 +38,7 @@
   ],
   "figure": {
     "figure": "atp-cycle",
-    "caption": "Energy from breaking down food molecules is used to make ATP from ADP and phosphate. ATP hydrolysis releases that energy where work must be done. A small pool of ATP is recycled thousands of times a day."
+    "caption": "Energy from breaking down food molecules is used to make ATP from ADP and phosphate. ATP hydrolysis releases that energy where work must be done. A small pool of ATP is recycled about a thousand times a day."
   },
   "chain": [
     { "cause": "Energy cannot be created or destroyed, only converted (first law of thermodynamics).", "effect": "A cell cannot make its own energy; it must take in energy, as food or sunlight, and convert it." },

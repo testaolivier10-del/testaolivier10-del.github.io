@@ -338,7 +338,7 @@
       "why": {
         "correct": "Catalase comes out of each reaction unchanged, so it can break down the new hydrogen peroxide and oxygen production jumps from almost nothing. It will not quite match the first 30 seconds, because the new peroxide is mixed into liquid already in the flask, so its concentration is lower than at the start.",
         "options": [
-          "The enzyme is reused; fresh reactant restarts the reaction at a similar rate.",
+          "The enzyme is reused; fresh reactant makes the rate jump from almost zero, though not quite back to the starting rate.",
           "Enzymes are not consumed, so the catalase still works after the first batch is gone.",
           "Each catalase molecule can act millions of times; there is no small limit on uses.",
           "The volume roughly doubles, which dilutes both catalase and peroxide somewhat, but the flask goes from almost no reactant to plenty, so the rate rises rather than falls."
