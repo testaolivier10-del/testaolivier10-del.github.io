@@ -79,7 +79,11 @@
    shows the definition (assets/course/glossary-tip.js). Same in every course. */
 .gl{text-decoration:underline dotted;text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:help;color:inherit;}
 a.gl{cursor:pointer;}
-.cx-tip{position:absolute;z-index:60;max-width:320px;padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
+.gl:focus-visible{outline:2px solid var(--cink);outline-offset:2px;border-radius:3px;}
+.cx-tip{position:absolute;z-index:60;max-width:min(340px,calc(100vw - 16px));padding:10px 13px;border-radius:12px;background:var(--ink);color:var(--paper);font:600 13.5px/1.5 var(--font-ui);box-shadow:var(--shadow-pop);}
 .cx-tip b{display:block;font-weight:900;margin-bottom:2px;}
 .cx-tip .cx-tip-roots{display:block;opacity:.8;font-size:12.5px;margin-top:4px;}
 .cx-tip .cx-tip-link{display:block;margin-top:6px;font-weight:800;color:inherit;}
+.cx-tip .cx-tip-say{font-weight:700;opacity:.8;}
+/* Dark theme: --ink turns light, so an inverted card would glow on a dark page. */
+:root[data-theme="dark"] .cx-tip{background:var(--surface2);color:var(--ink);box-shadow:0 0 0 1px var(--line),var(--shadow-pop);}
