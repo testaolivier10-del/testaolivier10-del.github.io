@@ -161,21 +161,58 @@ function describe(prose, fallback) {
 const TITLE_MAX = 60;
 
 
-function page({ topic, module: mod, prose, prev, next, index, total }) {
+/* "On this page": the prose's h3 headings, with an id for each. The ids are
+   not written into the prose (it stays exactly as authored, between the
+   markers); the article carries them in data-bk-ids and assets/course/book.js
+   sets them on the headings in order, so the rail's links land. */
+function sectionHeads(prose) {
+  const used = new Set();
+  return [...prose.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/g)].map((m) => {
+    const title = decodeEntities(m[1].replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+    const base = title.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+      .split('-').slice(0, 6).join('-') || 'section';
+    let id = base;
+    for (let i = 2; used.has(id); i++) id = `${base}-${i}`;
+    used.add(id);
+    return { id, title };
+  });
+}
+
+function page({ topic, module: mod, modIndex, modules, numbers, prose, prev, next, index, total }) {
   // "{Topic} — {Course} | LevlPrep" (scripts/lib/page-title.mjs).
   const title = courseTitle(decodeEntities(topic.title), ['Organic Chemistry', 'Organic Chem', 'OChem'].map((c) => `${c} Notes`));
   const desc = DESCRIPTIONS[topic.id] || describe(prose, `${topic.title} explained step by step: free organic chemistry notes from the ${mod.title} chapter.`);
   const url = `${ORIGIN}/ochem/notes/${topic.id}.html`;
+  const chN = modIndex + 1; // the rail badge is a number, not prose
+  const heads = sectionHeads(prose);
+  const words = decodeEntities(prose.replace(/<svg[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ')).split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.round(words / 200));
   /* A notes-only topic's href is this very page, so it gets the shared label
-     instead of a link back to itself. hasLesson is the test for "is there a
+     instead of a link to a lesson. hasLesson is the test for "is there a
      lesson", not href — see the header comment in curriculum.js. */
   const lessonLink = hasLesson(topic)
-    ? `<a class="notes-onward-cta" href="../${topic.href}">Practice this — interactive lesson</a>`
-    : `<p class="notes-onward-soon">${esc(NOTES_ONLY_LABEL)}</p>`;
-  const nav = [
-    prev ? `<a class="notes-prevnext notes-prev" href="${prev.id}.html"><span>Previous</span>${esc(prev.title)}</a>` : '<span></span>',
-    next ? `<a class="notes-prevnext notes-next" href="${next.id}.html"><span>Next</span>${esc(next.title)}</a>` : '<span></span>',
-  ].join('');
+    ? `<div class="bk-pillbar"><a class="bk-pill" href="../${topic.href}"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>`
+    : '';
+  const soon = hasLesson(topic) ? '' : `\n      <p class="bk-soon">${esc(NOTES_ONLY_LABEL)}</p>`;
+  const link = (t, dir) => t
+    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${t.id}.html"><span>${dir === 'next' ? `Section ${index + 1} &rarr;` : `&larr; Section ${index - 1}`}</span><b>${esc(t.title)}</b></a>`
+    : '';
+  /* The contents rail, as on A&P and Bio notes pages (assets/course/book.css):
+     the neighbouring chapters, this chapter with its sections, the current
+     section open to its headings. Chapters open in the textbook (learn.html). */
+  const other = (m, i) => m ? `<a class="bk-toc-other" href="../learn.html#m-${m.id}"><span class="bk-toc-n">${i + 1}</span>${esc(m.title)}</a>` : '';
+  const onPage = heads.length ? `<div class="bk-toc-onpage"><p>On this page</p>${heads.map((h) => `<a href="#${h.id}">${esc(h.title)}</a>`).join('')}</div>` : '';
+  const items = mod.topics.map((t) => t.id === topic.id
+    ? `<li class="current" data-toc-t="${t.id}"><a href="#main" aria-current="page"><span class="bk-toc-n">${numbers[t.id]}</span>${esc(t.title)}</a>${onPage}</li>`
+    : `<li data-toc-t="${t.id}"><a href="${t.id}.html"><span class="bk-toc-n">${numbers[t.id]}</span>${esc(t.title)}</a></li>`).join('');
+  const rail = `<aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    ${other(modules[modIndex - 1], modIndex - 1)}
+    <a class="bk-toc-chap" href="../learn.html#m-${mod.id}"><span class="bk-toc-chap-n">${chN}</span><span><b>${esc(mod.title)}</b><small>${mod.topics.length} section${mod.topics.length === 1 ? '' : 's'}</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of ${mod.topics.length} sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list">${items}</ol></nav>
+    ${other(modules[modIndex + 1], modIndex + 1)}
+  </aside>`;
 
   /* Every other page on the site carries structured data; these 121 did not,
      which made the written half of the course the one part a search engine had
@@ -264,6 +301,8 @@ function page({ topic, module: mod, prose, prev, next, index, total }) {
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -272,36 +311,43 @@ ${ldJson}
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>${esc(mod.title)}</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">${esc(mod.title)} &middot; Section ${index} of ${total}</p>
-    <h1>${esc(topic.title)}</h1>
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  ${rail}
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-${mod.id}">${esc(mod.title)}</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">${esc(topic.title)}: notes</span></nav>
     ${lessonLink}
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="${topic.id}">
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="${mod.id}">${esc(mod.title)}</span> &middot; Section ${index} of ${total}</p>
+      <h1 class="bk-title">${esc(topic.title)}</h1>
+      <p class="bk-meta"><span class="bk-small">${minutes} min read &middot; free</span>${topic.mechanism ? `<a class="bk-tag" href="../${topic.mechanism}">Draw the mechanism</a>` : ''}</p>${soon}
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="${url}">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="${topic.id}" data-bk-ids="${heads.map((h) => h.id).join(' ')}">
 ${START}
 ${prose}
 ${END}
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation">${nav}</nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All ${total} sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation">${link(prev, 'prev')}${link(next, 'next')}</nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>
 `;
@@ -309,7 +355,8 @@ ${END}
 
 const modules = loadModules();
 const ordered = [];
-for (const mod of modules) for (const topic of mod.topics) ordered.push({ topic, module: mod });
+const numbers = {};
+modules.forEach((mod, modIndex) => mod.topics.forEach((topic) => { ordered.push({ topic, module: mod, modIndex }); numbers[topic.id] = ordered.length; }));
 
 let written = 0;
 const stale = [];
@@ -331,6 +378,9 @@ ordered.forEach((entry, i) => {
   const next = page({
     topic: entry.topic,
     module: entry.module,
+    modIndex: entry.modIndex,
+    modules,
+    numbers,
     prose,
     prev: i > 0 ? ordered[i - 1].topic : null,
     next: i + 1 < ordered.length ? ordered[i + 1].topic : null,

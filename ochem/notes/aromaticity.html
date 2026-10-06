@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Aromatic Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Aromatic Chemistry &middot; Section 64 of 123</p>
-    <h1>Aromaticity</h1>
-    <a class="notes-onward-cta" href="../lessons/aromaticity.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="aromaticity">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-conjugation"><span class="bk-toc-n">11</span>Conjugation &amp; Pericyclic Reactions</a>
+    <a class="bk-toc-chap" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-chap-n">12</span><span><b>Aromatic Chemistry</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="aromaticity"><a href="#main" aria-current="page"><span class="bk-toc-n">64</span>Aromaticity</a><div class="bk-toc-onpage"><p>On this page</p><a href="#benzene-s-real-structure">Benzene's real structure</a><a href="#measuring-the-extra-stability">Measuring the extra stability</a><a href="#the-four-requirements">The four requirements</a><a href="#why-the-count-must-be-4n">Why the count must be 4n + 2</a><a href="#counting-electrons">Counting π electrons</a><a href="#aromatic-ions">Aromatic ions</a><a href="#antiaromatic-the-right-shape-the-wrong">Antiaromatic: the right shape, the wrong count</a><a href="#nonaromatic-a-requirement-missing">Nonaromatic: a requirement missing</a><a href="#fused-rings">Fused rings</a><a href="#large-single-rings">Large single rings</a><a href="#why-it-matters-beyond-the-exam">Why it matters beyond the exam</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="eas"><a href="eas.html"><span class="bk-toc-n">65</span>Electrophilic aromatic substitution</a></li><li data-toc-t="directing-effects"><a href="directing-effects.html"><span class="bk-toc-n">66</span>Ortho/meta/para directing effects</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alcohols-ethers"><span class="bk-toc-n">13</span>Alcohols, Ethers &amp; Related Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-aromatic-chemistry">Aromatic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Aromaticity: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/aromaticity.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="aromatic-chemistry">Aromatic Chemistry</span> &middot; Section 64 of 123</p>
+      <h1 class="bk-title">Aromaticity</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/aromaticity.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="aromaticity" data-bk-ids="benzene-s-real-structure measuring-the-extra-stability the-four-requirements why-the-count-must-be-4n counting-electrons aromatic-ions antiaromatic-the-right-shape-the-wrong nonaromatic-a-requirement-missing fused-rings large-single-rings why-it-matters-beyond-the-exam what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Shake cyclohexene with bromine, and the red-brown color of the bromine vanishes at once as Br₂ adds across the C=C. Shake benzene with bromine, and nothing happens. On paper benzene has three C=C bonds, so it ought to be even more reactive than cyclohexene. It is far less.</p>
 
@@ -229,14 +238,21 @@
 
 <p class="step-body">The general rule is simple. Any equilibrium that <i>creates</i> an aromatic ring is pulled strongly forward, and any equilibrium that <i>destroys</i> one is pushed strongly back. Cyclopentadiene's acidity and pyrrole's non-basic nitrogen both show it. Whenever a step in a later chapter looks surprisingly easy or surprisingly hard, check whether an aromatic ring is being made or broken.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="electrocyclic-sigmatropic.html"><span>Previous</span>Electrocyclic &amp; sigmatropic reactions</a><a class="notes-prevnext notes-next" href="eas.html"><span>Next</span>Electrophilic aromatic substitution</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="electrocyclic-sigmatropic.html"><span>&larr; Section 63</span><b>Electrocyclic &amp; sigmatropic reactions</b></a><a class="tb-chapter-link next" href="eas.html"><span>Section 65 &rarr;</span><b>Electrophilic aromatic substitution</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

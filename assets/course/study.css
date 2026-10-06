@@ -17,8 +17,6 @@
      6. In-session chrome and the question/answer card */
 
 /* ---- 1. Tokens and the page body --------------------------------------- */
-/* base.css draws cards on --surface, which theme.css does not define yet. */
-:root{--surface:var(--white);}
 .page-head[hidden]{display:none;}
 .cx-study{min-height:max(420px,calc(100vh - 200px));}
 .cx-study .cx-body{margin-top:22px;}
@@ -45,7 +43,7 @@
 .cx-link:hover{background:var(--navy-press);color:var(--on-accent);}
 .cx-link:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
 .cx-link b{flex:1;font:900 14.5px var(--font-ui);}
-.cx-link small{display:block;font:700 12px var(--font-ui);opacity:.86;margin-top:2px;}
+.cx-link small{display:block;font:700 12px var(--font-ui);margin-top:2px;}
 .cx-link span[aria-hidden]{font:900 18px var(--font-ui);}
 @media (min-width:960px){ .cx-rail{position:sticky;top:calc(var(--site-header-h, 112px) + 14px);} }
 

@@ -17,6 +17,8 @@
    name (plus the Beta pill), h1 = the plain page name, one lede line.
    Slogan headlines belong on the course home only. */
 .page-head .cx-beta,.hero .cx-beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:var(--cink);color:var(--ctint);font:900 10px var(--font-ui);letter-spacing:.06em;vertical-align:1px;}
+/* --ctint is a translucent wash in dark mode, so it cannot be the text colour. */
+:root[data-theme="dark"] .cx-beta{color:var(--white);}
 .page-head + .cx-body{margin-top:22px;}
 
 /* ---- Two-column body: work on the left, "Your numbers" on the right ---- */
@@ -25,7 +27,8 @@
 .cx-rail{display:grid;gap:14px;align-content:start;}
 
 /* ---- Cards ------------------------------------------------------------ */
-.cx-card{background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);padding:22px 24px;min-width:0;}
+/* Same panel as theme.css .card (2px outline + lift), so every area matches. */
+.cx-card{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);padding:22px 24px;min-width:0;}
 .cx-card + .cx-card{margin-top:0;}
 .cx-card h2,.cx-card h3{margin:0 0 6px;font-size:18px;}
 .cx-card > p{color:var(--muted);font-weight:700;font-size:14.5px;margin:0 0 14px;max-width:62ch;}
@@ -43,8 +46,8 @@
 /* Stat tiles ("Your numbers", dashboard top row). */
 .cx-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;}
 .cx-rail .cx-stats{grid-template-columns:1fr 1fr;}
-.cx-stat{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-card);padding:14px 16px;min-width:0;}
-.cx-rail .cx-stat{box-shadow:none;background:var(--surface2);}
+.cx-stat{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);box-shadow:var(--lift);padding:14px 16px;min-width:0;}
+.cx-rail .cx-stat{box-shadow:none;border-color:transparent;background:var(--surface2);}
 .cx-stat-label{font:900 10.5px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
 .cx-stat-num{font:900 26px/1.15 var(--font-ui);color:var(--ink);margin-top:4px;}
 .cx-stat-sub{font:700 12px var(--font-ui);color:var(--muted);margin-top:2px;}

@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Synthesis &amp; Retrosynthesis</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Synthesis &amp; Retrosynthesis &middot; Section 112 of 123</p>
-    <h1>Protecting groups</h1>
-    <a class="notes-onward-cta" href="../lessons/protecting-groups.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="protecting-groups">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-spectroscopy"><span class="bk-toc-n">22</span>NMR Spectroscopy</a>
+    <a class="bk-toc-chap" href="../learn.html#m-synthesis"><span class="bk-toc-chap-n">23</span><span><b>Synthesis &amp; Retrosynthesis</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="retrosynthesis"><a href="retrosynthesis.html"><span class="bk-toc-n">109</span>Thinking backwards</a></li><li data-toc-t="carbon-carbon-bonds"><a href="carbon-carbon-bonds.html"><span class="bk-toc-n">110</span>Making carbon–carbon bonds</a></li><li data-toc-t="functional-group-interconversion"><a href="functional-group-interconversion.html"><span class="bk-toc-n">111</span>Functional group interconversion</a></li><li class="current" data-toc-t="protecting-groups"><a href="#main" aria-current="page"><span class="bk-toc-n">112</span>Protecting groups</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-classic-problem-a-grignard-and">The classic problem: a Grignard and an alcohol in one molecule</a><a href="#protecting-an-alcohol-a-silyl-ether">Protecting an alcohol: a silyl ether</a><a href="#protecting-a-ketone-or-aldehyde-an">Protecting a ketone or aldehyde: an acetal</a><a href="#protecting-an-amine-a-carbamate">Protecting an amine: a carbamate</a><a href="#protecting-a-carboxylic-acid-a-methyl">Protecting a carboxylic acid: a methyl ester</a><a href="#the-four-masks-at-a-glance">The four masks at a glance</a><a href="#orthogonality">Orthogonality</a><a href="#when-not-to-use-one">When not to use one</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="multistep-synthesis"><a href="multistep-synthesis.html"><span class="bk-toc-n">113</span>Planning a multistep route</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-biomolecules"><span class="bk-toc-n">24</span>Biomolecules</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-synthesis">Synthesis &amp; Retrosynthesis</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Protecting groups: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/protecting-groups.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="synthesis">Synthesis &amp; Retrosynthesis</span> &middot; Section 112 of 123</p>
+      <h1 class="bk-title">Protecting groups</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/protecting-groups.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="protecting-groups" data-bk-ids="the-classic-problem-a-grignard-and protecting-an-alcohol-a-silyl-ether protecting-a-ketone-or-aldehyde-an protecting-an-amine-a-carbamate protecting-a-carboxylic-acid-a-methyl the-four-masks-at-a-glance orthogonality when-not-to-use-one what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Take 4-hydroxybutan-2-one, HOCH₂CH₂COCH₃. It has a ketone at one end and an alcohol at the other. Suppose you want CH₃MgBr to add a methyl group to the ketone. The Grignard reagent never gets there. It reacts with the alcohol&rsquo;s O–H first and is used up. Other carbon nucleophiles that add to ketones, such as CH₃Li, are at least as basic, so switching reagents does not help.</p>
 
@@ -193,14 +202,21 @@
 
 <p class="step-body">Protecting groups are where synthesis stops being a list of reactions and becomes planning. The question is no longer which reaction to use, but in what order, and what has to be hidden while it happens. That is the subject of <a class="chapter-ref" href="/ochem/notes/multistep-synthesis.html">Planning a multistep route</a>, the last section of this chapter.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="functional-group-interconversion.html"><span>Previous</span>Functional group interconversion</a><a class="notes-prevnext notes-next" href="multistep-synthesis.html"><span>Next</span>Planning a multistep route</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="functional-group-interconversion.html"><span>&larr; Section 111</span><b>Functional group interconversion</b></a><a class="tb-chapter-link next" href="multistep-synthesis.html"><span>Section 113 &rarr;</span><b>Planning a multistep route</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

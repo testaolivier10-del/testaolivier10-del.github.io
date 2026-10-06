@@ -65,7 +65,7 @@
       return art.innerHTML;
     }).catch(function(){
       delete cache[id];
-      return '<p class="anp-book-err">These notes could not be loaded. Check your connection and reload.</p>';
+      return '<p class="bk-err">These notes could not be loaded. Check your connection and reload.</p>';
     });
     return cache[id];
   }
@@ -106,20 +106,20 @@
           (dir === 'next' ? 'Chapter ' + c.n + ' &rarr;' : '&larr; Chapter ' + c.n) + '</span><b>' + esc(c.title) + '</b></a>';
       };
       book.innerHTML =
-        '<header class="tb-chapter-head anp-chap-head"><div>' +
+        '<header class="tb-chapter-head bk-chap-head"><div>' +
           '<p class="tb-chapter-eyebrow">Chapter ' + ch.n + ' of ' + chapters.length + ' &middot; ' + esc(partTitle[ch.part] || '') + '</p>' +
           '<h1 class="tb-chapter-title" tabindex="-1">' + esc(ch.title) + '</h1>' +
           '<p class="tb-chapter-meta">' + ts.length + ' topics &middot; A&amp;P ' + esc(ch.course) + ' &middot; <span data-chap-meta="' + ch.id + '">not practiced yet</span></p>' +
-        '</div><p class="anp-chap-acts"><a class="anp-tb-btn solid" href="practice.html?chapter=' + ch.id + '">Chapter quiz</a><a class="anp-tb-btn ghost" href="chapters/' + ch.id + '.html">Chapter page</a></p></header>' +
+        '</div><p class="bk-chap-acts"><a class="bk-btn solid" href="practice.html?chapter=' + ch.id + '">Chapter quiz</a><a class="bk-btn ghost" href="chapters/' + ch.id + '.html">Chapter page</a></p></header>' +
         ts.map(function(t){
           // Hidden until its prose and every earlier topic's has arrived, so
           // a topic landing never pushes the ones below it down the screen
           // (audit 2026-10, layout shift: CLS 0.57 on a phone).
-          return '<section class="anp-book-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '" hidden>' +
-            '<div class="anp-book-head"><h2 id="h-' + t.id + '"><span class="anp-toc-n">' + t.n + '</span>' + esc(t.title) + '</h2>' +
-            '<div class="anp-book-acts"><span class="anp-tb-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
-            '<a class="anp-tb-btn solid" href="lessons/' + t.id + '.html" aria-label="Lesson: ' + esc(t.title) + '">Lesson</a></div></div>' +
-            '<div class="anp-prose" data-book-t="' + t.id + '"><p class="anp-book-wait">Loading&hellip;</p></div></section>';
+          return '<section class="bk-sec" id="' + t.id + '" aria-labelledby="h-' + t.id + '" hidden>' +
+            '<div class="bk-sec-head"><h2 id="h-' + t.id + '"><span class="bk-toc-n">' + t.n + '</span>' + esc(t.title) + '</h2>' +
+            '<div class="bk-sec-acts"><span class="bk-chip" data-chip-topic="' + t.id + '">Not practiced</span>' +
+            '<a class="bk-btn solid" href="lessons/' + t.id + '.html" aria-label="Lesson: ' + esc(t.title) + '">Lesson</a></div></div>' +
+            '<div class="anp-prose bk-prose" data-book-t="' + t.id + '"><p class="bk-wait">Loading&hellip;</p></div></section>';
         }).join('') +
         '<nav class="tb-chapter-nav anp-nav-ref" aria-label="Chapter navigation" hidden>' + link(prev, 'prev') + link(next, 'next') + '</nav>';
       if(window.AnpToc) window.AnpToc.paint();

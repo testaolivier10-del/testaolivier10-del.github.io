@@ -1,0 +1,180 @@
+/* The textbook layout every course reads in (docs/course-shell.md, W-B).
+   Notes pages, Learn pages and chapter/unit overview pages in NREMT, Ochem,
+   A&P and AP Bio all draw from here: the contents rail on the left (chapters,
+   the current one open to its topics, "On this page"), the crumb, an eyebrow,
+   the h1, a meta row, the action row (Print, Copy link), a prose column with
+   figures, and underlined glossary terms (base.css .gl).
+
+   The frame and rail mechanics are theme.css .tb-* (shared since ochem's
+   textbook); this file is the look on top of them. Add .bk to the .tb-shell
+   and the shell takes the course tint (--ctint/--cink, set from
+   body[data-course]); nothing here names a course.
+
+   Load order: theme.css, assets/course/base.css, this file, then the
+   course's own CSS (which keeps only course specifics: its figure colours,
+   lesson styles and the like). */
+
+/* ---- Shell: the tb-* frame in the course tint --------------------------- */
+.bk{--accent:var(--cink);--tint-accent:var(--ctint);--accent-text:var(--cink);}
+.bk .tb-main > .cx-crumb,.bk .tb-main > .anp-crumb,.bk .tb-main > .bio-crumb{margin:0 0 14px;}
+.bk .tb-toc-btn{justify-self:start;}
+.bk .tb-toc-topic{align-items:flex-start;line-height:1.35;}
+.bk .tb-toc-topic .tb-toc-tick{margin-top:2px;}
+.bk .tb-toc-topic.read .tb-toc-tick::after{border-color:var(--paper);}
+.bk a.tb-toc-modhead{text-decoration:none;}
+.bk .tb-toc-modhead[aria-current]{background:var(--ctint);}
+.bk .tb-toc-modhead.bk-unbuilt{cursor:default;color:var(--muted);}
+.bk .tb-toc-num{min-width:20px;width:auto;padding:0 3px;}
+.bk .tb-toc-topic .bk-toc-n{margin-right:2px;}
+
+/* ---- The rail ----------------------------------------------------------- */
+.bk-toc-group{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 6px 4px;}
+.bk-toc-group:first-child{margin-top:2px;}
+.bk-toc-search{margin:0;}
+.bk-filter{display:flex;align-items:center;gap:8px;margin:0;font:800 13px var(--font-ui);color:var(--muted);}
+/* Notes rail: this chapter, the current topic open to its sections. */
+.bk-rail{gap:12px;}
+.bk-toc-chap{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--ctint);color:var(--cink);text-decoration:none;}
+.bk-toc-chap:hover{color:var(--cink);filter:brightness(.98);}
+.bk-toc-chap-n{flex-shrink:0;min-width:30px;height:30px;padding:0 4px;box-sizing:border-box;border-radius:9px;display:grid;place-items:center;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
+.bk-toc-chap b{display:block;font:900 14px/1.25 var(--font-ui);}
+.bk-toc-chap small{display:block;font:800 11.5px var(--font-ui);}
+.bk-toc-other{display:flex;gap:9px;align-items:center;padding:6px;border-radius:8px;font:800 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.bk-toc-other:hover{background:var(--hover-tint);color:var(--ink);}
+.bk-toc-other .bk-toc-n{background:var(--line);color:var(--muted);}
+.bk-toc-list{list-style:none;margin:0;padding:0;}
+.bk-toc-list>li>a{display:flex;gap:9px;align-items:flex-start;padding:6px;border-radius:8px;font:700 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.bk-toc-list>li>a:hover{background:var(--hover-tint);color:var(--ink);}
+.bk-toc-n{flex-shrink:0;min-width:28px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:6px;display:grid;place-items:center;background:var(--ctint);color:var(--cink);font:900 10.5px var(--font-mono);}
+.bk-toc-list .read .bk-toc-n,.bk-toc-list .current .bk-toc-n{background:var(--cink);color:var(--paper);}
+.bk-toc-list .current>a{background:var(--ctint);color:var(--cink);font-weight:900;}
+.bk-toc-onpage{margin:4px 0 8px 43px;border-left:2px solid var(--ctint);padding-left:10px;}
+.bk-toc-onpage p{margin:4px 0;font:900 10px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.bk-toc-onpage a{display:block;padding:4px 0;font:700 12px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
+.bk-toc-onpage a:hover{color:var(--cink);}
+
+/* ---- Status chip and buttons (chapter rows, notes header, Learn) -------- */
+.bk-chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
+.bk-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
+.bk-chip.mastered{background:var(--tint-good);color:var(--good-text);}
+.bk-chip.learning{background:var(--tint-amber);color:var(--amber-text);}
+.bk-chip.started{background:var(--ctint);color:var(--cink);}
+.bk-chip:is(.mastered,.learning,.started)::before{opacity:1;}
+.bk-btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;font:900 13px var(--font-ui);text-decoration:none;padding:8px 14px;border-radius:11px;white-space:nowrap;border:0;cursor:pointer;}
+.bk-btn.solid{background:var(--navy);color:var(--on-accent);}
+.bk-btn.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
+.bk-btn.ghost{background:var(--surface2);color:var(--ink);}
+.bk-btn.ghost:hover{background:var(--hover-tint);color:var(--ink);}
+.bk-small{color:var(--muted);font:700 13px var(--font-ui);}
+.bk-tag{display:inline-block;padding:3px 10px;border-radius:999px;background:var(--ctint);color:var(--cink);font:800 11.5px var(--font-ui);text-decoration:none;}
+a.bk-tag:hover{text-decoration:underline;}
+.bk-unbuilt{color:var(--muted);}
+
+/* ---- Notes page header: eyebrow, h1, meta row, action row --------------- */
+.bk-notes .tb-main{max-width:720px;}
+.bk-head{margin-bottom:24px;}
+.bk-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
+.bk-title{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;max-width:none;color:var(--ink);}
+.bk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;}
+/* The one action row: Print and Copy link on every course's notes pages
+   (AP Bio adds Share to Google Classroom, its teacher feature). Fixed
+   height and min width, so a "Link copied" label does not shift anything. */
+.bk-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;}
+.bk-action{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;min-width:7.5em;padding:0 14px;border-radius:999px;border:2px solid var(--line);background:var(--white);color:var(--cink);font:800 13px var(--font-ui);text-decoration:none;cursor:pointer;white-space:nowrap;}
+.bk-action:hover{border-color:var(--cink);color:var(--cink);}
+.bk-action:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bk-action svg{width:14px;height:14px;flex-shrink:0;}
+/* "Practice this lesson": sticky beside the header on a wide screen, a
+   floating pill above the tab bar on a phone. */
+.bk-pillbar{position:sticky;top:calc(var(--site-header-h,112px) + 10px);z-index:5;height:0;display:flex;justify-content:flex-end;align-items:flex-start;}
+.bk-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 12px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 12.5px var(--font-ui);text-decoration:none;box-shadow:var(--lift-sm);}
+.bk-pill:hover{color:var(--paper);filter:brightness(1.08);}
+.bk-pill i{font-style:normal;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--paper);color:var(--cink);font-size:9px;}
+.bk-notes .bk-head{padding-right:180px;}
+/* A topic with no interactive lesson yet says so where the pill would be. */
+.bk-soon{display:inline-block;margin:10px 0 0;border:1px dashed var(--line);border-radius:10px;padding:7px 12px;font:800 12.5px var(--font-ui);color:var(--muted);}
+
+/* ---- Prose -------------------------------------------------------------- */
+.bk-prose{max-width:none;font-size:15.5px;}
+.bk-prose p,.bk-prose li{font-weight:600;line-height:1.7;}
+.bk-prose h2{font-size:23px;margin:34px 0 10px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+.bk-prose h3{font-size:18px;margin:24px 0 8px;scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
+.bk-notes .bk-prose > h2{margin:36px 0 12px;padding-top:22px;border-top:1px solid var(--line);}
+.bk-notes .bk-prose > h2:first-child{margin-top:0;border-top:0;padding-top:0;}
+.bk-prose figure{margin:18px 0 24px;}
+.bk-prose figcaption{font:600 13.5px/1.5 var(--font-ui);color:var(--muted);margin-top:8px;}
+.bk-prose table.compare{width:100%;border-collapse:collapse;margin:18px 0;font:600 14.5px/1.5 var(--font-ui);display:block;overflow-x:auto;}
+.bk-prose table.compare th,.bk-prose table.compare td{padding:9px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
+.bk-prose table.compare thead th{background:var(--ctint);color:var(--cink);}
+.bk-prose table.compare tbody th{font-weight:800;}
+.bk-prose .worked{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 18px;margin:18px 0;}
+.bk-prose .worked::before{content:'Worked example';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--cink);margin-bottom:6px;}
+.bk-prose .going-further,.bk-prose .for-your-exam{border-radius:14px;padding:12px 16px;margin:18px 0;}
+.bk-prose .going-further{background:var(--surface2);}
+.bk-prose .going-further::before{content:'Going further';display:block;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.bk-prose .for-your-exam{background:var(--ctint);}
+.bk-report{margin:18px 0 0;color:var(--muted);font:600 13px/1.5 var(--font-ui);}
+
+/* ---- Chapter / unit overview page --------------------------------------- */
+.bk-chapter .tb-main{max-width:none;}
+.bk-chap-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px 20px;flex-wrap:wrap;}
+.bk-chap-acts{display:flex;flex-wrap:wrap;gap:8px;margin:0;}
+.bk-h{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px;}
+.bk-h:first-of-type{margin-top:22px;}
+.bk-list{list-style:none;margin:0;padding:0;}
+.bk-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line-soft,var(--line));}
+.bk-row-n{min-width:30px;height:30px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);}
+.bk-row-title{font:900 16px/1.35 var(--font-ui);color:var(--ink);text-decoration:none;}
+a.bk-row-title:hover{color:var(--cink);}
+.bk-row .bk-chip{min-width:96px;justify-content:center;}
+.bk-row-btns{display:flex;gap:6px;}
+.bk-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.bk-card{display:block;background:var(--white);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--lift);text-decoration:none;color:var(--ink);}
+.bk-card:hover{box-shadow:var(--lift-lg);color:var(--ink);}
+.bk-card b{display:block;font:900 15.5px var(--font-ui);margin-bottom:4px;}
+.bk-card span{font:700 13px/1.45 var(--font-ui);color:var(--muted);}
+.bk-tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
+.bk-toolset{background:var(--white);box-shadow:var(--lift-sm);border-radius:14px;padding:14px 16px;}
+.bk-toolset h3{font:900 14px var(--font-ui);margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;}
+.bk-toolset h3 small{font:800 11px var(--font-ui);color:var(--muted);}
+.bk-toolset ul{margin:0;padding-left:18px;font:600 13.5px/1.5 var(--font-ui);}
+.bk-toolset li{margin:2px 0;}
+.bk-toolset a{color:var(--ink);}
+.bk-toolset a:hover{color:var(--cink);}
+
+/* ---- Learn: the course as one textbook, a chapter at a time ------------ */
+.bk-book .tb-main{max-width:760px;}
+.bk-book .tb-chapter-title:focus{outline:none;}
+.bk-book .tb-toc-mod[hidden]{display:none;}
+.bk-sec{padding:30px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
+.bk-sec:last-of-type{border-bottom:0;}
+.bk-sec-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px;}
+.bk-sec-head h2{display:flex;gap:10px;align-items:baseline;font:900 clamp(19px,2.4vw,23px)/1.25 var(--font-ui);letter-spacing:-.01em;margin:0;}
+.bk-sec-head h2 .bk-toc-n{position:relative;top:-2px;}
+.bk-sec-acts{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.bk-book .bk-prose h3{margin:26px 0 10px;}
+.bk-wait{font:700 13px var(--font-ui);color:var(--muted);}
+.bk-err{color:var(--bad-text);}
+.bk-book .tb-static-toc h1{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);margin:0 0 8px;}
+.bk-book .tb-static-chapter h2{font-size:18px;margin:22px 0 6px;}
+
+@media (max-width:900px){
+  .bk-pillbar{position:fixed;top:auto;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:auto;z-index:20;}
+  .bk-pill{box-shadow:var(--lift);}
+  .bk-notes .bk-head{padding-right:0;}
+}
+@media (max-width:700px){
+  .bk-sec-acts .bk-chip{display:none;}
+  .bk-row{grid-template-columns:30px minmax(0,1fr);gap:8px 12px;}
+  .bk-row-n{grid-row:1 / span 3;align-self:start;}
+  .bk-row .bk-chip,.bk-row-btns,.bk-row .bk-small{grid-column:2;justify-self:start;}
+  .bk-cards{grid-template-columns:minmax(0,1fr);}
+  .bk .tb-chapter-nav{flex-direction:column;}
+  .bk .tb-chapter-link{max-width:100%;}
+}
+@media print{
+  .bk .tb-rail,.bk .tb-toc-btn,.bk-actions,.bk-pillbar,.bk .tb-chapter-nav,.bk-report{display:none !important;}
+  .bk.tb-shell{display:block;}
+  .bk .tb-main{max-width:none;padding-top:0;}
+  .bk-notes .bk-head{padding-right:0;}
+}

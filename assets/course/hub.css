@@ -6,9 +6,7 @@
 
    Load after theme.css and assets/course/base.css. */
 
-/* ---- shared card surface (base.css .cx-card/.cx-stat read --surface,
-   which theme.css does not define yet) ---------------------------------- */
-.cx-hub .cx-stat,.cx-db .cx-stat{background:var(--white);border:var(--bw) solid var(--line);box-shadow:var(--lift);}
+/* ---- panels ------------------------------------------------------------ */
 .cx-panel{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);padding:22px;min-width:0;}
 .cx-panel + .cx-panel{margin-top:18px;}
 .cx-panel > h2{font:900 17px var(--font-ui);margin:0 0 14px;letter-spacing:-.01em;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
@@ -211,4 +209,3 @@ body[data-course="anp"] .cx-feat{--feat-hi:#F2B9A9;}
 
 /* Dark mode: base.css writes the Beta pill in --ctint, which is translucent
    in the dark theme, so the word vanished. Solid text on the hub pages. */
-:root[data-theme="dark"] .page-head .cx-beta{color:var(--white);}

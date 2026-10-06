@@ -94,7 +94,7 @@
         // On the study pages, the shared feedback box (assets/course/study.css):
         // the verdict as its own line with an icon, then the explanation.
         fb.innerHTML = studyPage()
-          ? '<p class="cx-fb-head">' + verdict + '</p>' + (q.why && q.why.correct ? '<p class="cx-explain">' + html(q.why.correct) + '</p>' : '') + (detailHtml || '') +
+          ? '<p class="cx-fb-head"><span class="anp-verdict ' + (correct ? 'ok' : 'no') + '">' + verdict + '</span></p>' + (q.why && q.why.correct ? '<p class="cx-explain">' + html(q.why.correct) + '</p>' : '') + (detailHtml || '') +
             (!correct && opts.record !== false ? '<p class="anp-small">Added to your review queue.</p>' : '')
           : '<p><span class="anp-verdict ' + (correct ? 'ok' : 'no') + '">' + verdict + '</span> ' +
           (q.why && q.why.correct ? html(q.why.correct) : '') + '</p>' + (detailHtml || '') +

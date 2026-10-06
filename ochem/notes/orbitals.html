@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Foundations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Foundations &middot; Section 2 of 123</p>
-    <h1>Orbitals</h1>
-    <a class="notes-onward-cta" href="../lessons/orbitals.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="orbitals">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../learn.html#m-foundations"><span class="bk-toc-chap-n">1</span><span><b>Foundations</b><small>10 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 10 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="atomic-structure"><a href="atomic-structure.html"><span class="bk-toc-n">1</span>Atomic structure</a></li><li class="current" data-toc-t="orbitals"><a href="#main" aria-current="page"><span class="bk-toc-n">2</span>Orbitals</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-an-orbital-is">What an orbital is</a><a href="#two-electrons-per-orbital-the-pauli">Two electrons per orbital: the Pauli principle</a><a href="#s-orbitals-spheres">s orbitals: spheres</a><a href="#p-orbitals-two-lobes-and-a">p orbitals: two lobes and a nodal plane</a><a href="#three-p-orbitals-at-right-angles">Three p orbitals, at right angles</a><a href="#d-and-f-orbitals-and-what">d and f orbitals, and what a shell holds</a><a href="#phase-what-the-two-shades-mean">Phase: what the two shades mean</a><a href="#filling-order-lowest-energy-first">Filling order: lowest energy first</a><a href="#why-s-fills-before-p-shielding">Why s fills before p: shielding and penetration</a><a href="#when-4s-fills-before-3d">When 4s fills before 3d</a><a href="#hund-s-rule-spread-out-then">Hund's rule: spread out, then pair</a><a href="#reading-the-periodic-table-by-blocks">Reading the periodic table by blocks</a><a href="#the-problem-this-leaves-behind">The problem this leaves behind</a></div></li><li data-toc-t="hybridization"><a href="hybridization.html"><span class="bk-toc-n">3</span>Hybridization</a></li><li data-toc-t="bonding"><a href="bonding.html"><span class="bk-toc-n">4</span>Bonding</a></li><li data-toc-t="electronegativity"><a href="electronegativity.html"><span class="bk-toc-n">5</span>Electronegativity</a></li><li data-toc-t="formal-charge"><a href="formal-charge.html"><span class="bk-toc-n">6</span>Formal charge</a></li><li data-toc-t="lewis-structures"><a href="lewis-structures.html"><span class="bk-toc-n">7</span>Lewis structures</a></li><li data-toc-t="molecular-geometry"><a href="molecular-geometry.html"><span class="bk-toc-n">8</span>Molecular geometry</a></li><li data-toc-t="bond-polarity"><a href="bond-polarity.html"><span class="bk-toc-n">9</span>Bond polarity</a></li><li data-toc-t="functional-groups"><a href="functional-groups.html"><span class="bk-toc-n">10</span>Functional groups</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-electron-movement"><span class="bk-toc-n">2</span>Drawing Molecules &amp; Moving Electrons</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-foundations">Foundations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Orbitals: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/orbitals.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="foundations">Foundations</span> &middot; Section 2 of 123</p>
+      <h1 class="bk-title">Orbitals</h1>
+      <p class="bk-meta"><span class="bk-small">13 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/orbitals.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="orbitals" data-bk-ids="what-an-orbital-is two-electrons-per-orbital-the-pauli s-orbitals-spheres p-orbitals-two-lobes-and-a three-p-orbitals-at-right-angles d-and-f-orbitals-and-what phase-what-the-two-shades-mean filling-order-lowest-energy-first why-s-fills-before-p-shielding when-4s-fills-before-3d hund-s-rule-spread-out-then reading-the-periodic-table-by-blocks the-problem-this-leaves-behind">
 <!-- notes:start -->
 <p class="step-body">Carbon has 6 electrons: 2 in the K shell and 4 in the L shell, as <a class="chapter-ref" href="/ochem/notes/atomic-structure.html">Atomic structure</a> counted them. Shells get those counts right. They say nothing about where the electrons are, or what shape of space they fill.</p>
 <p class="step-body">Shape is what a chemist needs. It explains why methane, CH₄, is a <b>tetrahedron</b> (a pyramid with four triangular faces, the carbon at its center), why a C=C double bond refuses to twist, and why benzene, a ring of six carbons, is flat. This page replaces shells with <b>orbitals</b>, the shapes electrons actually occupy. Everything later in the course builds on them.</p>
@@ -185,14 +194,21 @@
 <p class="step-body">Carbon's <b>ground-state</b> configuration (its lowest-energy arrangement), 1s² 2s² 2p², has only <b>two</b> unpaired electrons. Taken at face value, that predicts two bonds, giving something like CH₂. But carbon forms four bonds in essentially every stable organic compound you will draw. Methane is CH₄, with four identical bonds at identical angles.</p>
 <p class="step-body">So something must happen to carbon's orbitals before it bonds. That is the subject of the next page, <a class="chapter-ref" href="/ochem/notes/hybridization.html">Hybridization</a>, and its answer is the single most useful idea in structural organic chemistry.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="atomic-structure.html"><span>Previous</span>Atomic structure</a><a class="notes-prevnext notes-next" href="hybridization.html"><span>Next</span>Hybridization</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="atomic-structure.html"><span>&larr; Section 1</span><b>Atomic structure</b></a><a class="tb-chapter-link next" href="hybridization.html"><span>Section 3 &rarr;</span><b>Hybridization</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

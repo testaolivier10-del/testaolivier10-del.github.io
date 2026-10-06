@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Oxidation &amp; Reduction</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Oxidation &amp; Reduction &middot; Section 81 of 123</p>
-    <h1>Reducing carbonyls</h1>
-    <a class="notes-onward-cta" href="../lessons/carbonyl-reduction.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="carbonyl-reduction">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-carbonyl-chemistry"><span class="bk-toc-n">15</span>Carbonyl Chemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-redox"><span class="bk-toc-chap-n">16</span><span><b>Oxidation &amp; Reduction</b><small>3 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 3 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="oxidation-states"><a href="oxidation-states.html"><span class="bk-toc-n">79</span>Oxidation levels in organic chemistry</a></li><li data-toc-t="alcohol-oxidation"><a href="alcohol-oxidation.html"><span class="bk-toc-n">80</span>Oxidizing alcohols</a></li><li class="current" data-toc-t="carbonyl-reduction"><a href="#main" aria-current="page"><span class="bk-toc-n">81</span>Reducing carbonyls</a><div class="bk-toc-onpage"><p>On this page</p><a href="#hydride-in-proton-on">Hydride in, proton on</a><a href="#reducing-a-ketone-usually-makes-a">Reducing a ketone usually makes a racemic mixture</a><a href="#why-lialh-is-so-much-stronger">Why LiAlH₄ is so much stronger</a><a href="#what-each-reagent-reduces">What each reagent reduces</a><a href="#esters-take-two-hydrides">Esters take two hydrides</a><a href="#stopping-at-the-aldehyde-dibal-h">Stopping at the aldehyde: DIBAL-H</a><a href="#carboxylic-acids-the-proton-goes-first">Carboxylic acids: the proton goes first</a><a href="#amides-give-amines">Amides give amines</a><a href="#hydrogen-gas-and-a-metal-catalyst">Hydrogen gas and a metal catalyst</a><a href="#choosing-the-weaker-reagent">Choosing the weaker reagent</a><a href="#all-the-way-to-ch-clemmensen">All the way to CH₂: Clemmensen and Wolff–Kishner</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-carboxylic-acids"><span class="bk-toc-n">17</span>Carboxylic Acids &amp; Derivatives</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-redox">Oxidation &amp; Reduction</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Reducing carbonyls: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/carbonyl-reduction.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="redox">Oxidation &amp; Reduction</span> &middot; Section 81 of 123</p>
+      <h1 class="bk-title">Reducing carbonyls</h1>
+      <p class="bk-meta"><span class="bk-small">16 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/carbonyl-reduction.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="carbonyl-reduction" data-bk-ids="hydride-in-proton-on reducing-a-ketone-usually-makes-a why-lialh-is-so-much-stronger what-each-reagent-reduces esters-take-two-hydrides stopping-at-the-aldehyde-dibal-h carboxylic-acids-the-proton-goes-first amides-give-amines hydrogen-gas-and-a-metal-catalyst choosing-the-weaker-reagent all-the-way-to-ch-clemmensen what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Stir butan-2-one with sodium borohydride, NaBH₄, in methanol, and the ketone becomes butan-2-ol. The C=O has turned into a CH–OH: one hydrogen has joined the carbon and one has joined the oxygen.</p>
 
@@ -257,14 +266,21 @@
 
 <p class="step-body">Hydride reduction is the nucleophilic addition of <a class="chapter-ref" href="/ochem/notes/nucleophilic-addition.html">Nucleophilic addition</a>, with H⁻ as the nucleophile. The reagent table is the part to keep at hand. Most "which reagent" questions in synthesis come from it, and the amide-to-amine row is the one most often missed. <a class="chapter-ref" href="/ochem/learn.html#m-amines">Amines</a> uses that row to make amines, and <a class="chapter-ref" href="/ochem/learn.html#m-synthesis">Synthesis &amp; Retrosynthesis</a> draws on every reduction on this page.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="alcohol-oxidation.html"><span>Previous</span>Oxidizing alcohols</a><a class="notes-prevnext notes-next" href="carboxylic-acids.html"><span>Next</span>Carboxylic acids</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="alcohol-oxidation.html"><span>&larr; Section 80</span><b>Oxidizing alcohols</b></a><a class="tb-chapter-link next" href="carboxylic-acids.html"><span>Section 82 &rarr;</span><b>Carboxylic acids</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

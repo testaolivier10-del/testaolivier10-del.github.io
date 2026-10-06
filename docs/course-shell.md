@@ -69,7 +69,7 @@ Each workstream: before/after screenshots at 1280 and 390, light and dark, of ev
 ## Status
 
 - [x] Audit, decisions, base.css, Bio tint tokens moved to theme.css
-- [x] W-A  - [ ] W-B  - [x] W-C  - [x] W-D
+- [x] W-A  - [x] W-B  - [x] W-C  - [x] W-D
 - [ ] Merge, regenerate, bump sw.js CACHE, full CI, before/after screenshots, PR
 
 ## W-D notes
@@ -139,3 +139,31 @@ Each workstream: before/after screenshots at 1280 and 390, light and dark, of ev
   used to; the page fell from 43 to 16 KB), `site-rules/ochem-long-pages.mjs` (now guards content-visibility).
 - `base.css` `.cx-card` uses `var(--surface)`, which theme.css does not define; glossary.css sets the card
   background itself. Worth a fix in base.css at merge.
+
+## W-B notes
+
+- `assets/course/book.css` (`.bk-*`) is the one reading layout: add `bk` plus `bk-notes`, `bk-book` (Learn) or
+  `bk-chapter` (chapter/unit page) to the `.tb-shell`. Rail: `.bk-rail`, `.bk-toc-chap/-other/-list/-n/-onpage`.
+  Header: `.bk-head/.bk-eyebrow/.bk-title/.bk-meta`, action row `.bk-actions > .bk-action` (Copy link, Print;
+  Bio adds Share to Google Classroom first). Prose `.bk-prose`. Chapter page: `.bk-chap-head/-acts`, `.bk-h`,
+  `.bk-list/.bk-row`, `.bk-cards/.bk-card`, `.bk-tools/.bk-toolset`. anp.css/bio.css lost their `.anp-tb`/`.bio-tb`
+  copies; generators load base.css + book.css through `head({ book: true })`.
+- `assets/course/book.js`: `[data-print]`, `[data-copy]` (empty = canonical URL), drawer toggle
+  `.tb-toc-btn[data-bk-toggle]`, `article[data-bk-ids]` heading ids, `[data-bk-read]` read progress,
+  `[data-bk-chapter]` chapter number from curriculum (ochem's no-typed-chapter-numbers rule). Bio pages use
+  bio-nav.js for print/copy instead.
+- Ochem notes (`build-notes-pages.mjs`) now have site header, tabs, bottom bar, footer, rail with "On this page"
+  (ids applied at runtime, the prose between the markers is untouched) and the shared header/action row.
+  `<article data-glossary-topic>` kept; they still load `ochem/assets/glossary-tip.js` until W-A swaps it.
+- NREMT study notes: serif, drop cap, chapter-number display, running head and "In this chapter" box gone;
+  sections render as `.bk-sec` with `.bk-prose`; crumb moved into main (build-crumbs skips `IN_PAGE` pages).
+  `build-nremt-notes-toc.mjs` writes the glossary-tip tag between `<!-- glossary-tip:* -->` markers only once
+  `assets/course/glossary-tip.js` and `nremt/assets/glossary.json` exist: rerun it after W-A merges.
+  `markTerms()` calls `LevlGlossary.mark(el, {})` per section after render.
+- Bio unit pages: "Practice this unit" cards (question set, unit test or unit sheet, tools) and the unit's tools
+  (simulators, skills tools, drills by topic, plus FRQs), prev/next unit; Bio rails gained progress, search and
+  neighbouring units like A&P.
+- Bio figures in dark mode: CSS filter on `.bio-figimg img` (the SVGs are external `<img>` files, so tokens can't
+  reach them; inlining would add 2-4 KB per page). Hues stay put; check new figures by eye in dark.
+- Ochem has no chapter deep link for practice, so its Learn chapter head offers "Chapter flashcards".
+

@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Foundations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Foundations &middot; Section 4 of 123</p>
-    <h1>Bonding</h1>
-    <a class="notes-onward-cta" href="../lessons/bonding.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="bonding">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../learn.html#m-foundations"><span class="bk-toc-chap-n">1</span><span><b>Foundations</b><small>10 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 10 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="atomic-structure"><a href="atomic-structure.html"><span class="bk-toc-n">1</span>Atomic structure</a></li><li data-toc-t="orbitals"><a href="orbitals.html"><span class="bk-toc-n">2</span>Orbitals</a></li><li data-toc-t="hybridization"><a href="hybridization.html"><span class="bk-toc-n">3</span>Hybridization</a></li><li class="current" data-toc-t="bonding"><a href="#main" aria-current="page"><span class="bk-toc-n">4</span>Bonding</a><div class="bk-toc-onpage"><p>On this page</p><a href="#sigma-bonds">Sigma bonds</a><a href="#pi-bonds">Pi bonds</a><a href="#a-triple-bond-one-sigma-and">A triple bond: one sigma and two pi</a><a href="#counting-sigma-and-pi-bonds">Counting sigma and pi bonds</a><a href="#bond-length-and-strength">Bond length and strength</a><a href="#what-strength-measures-breaking-a-bond">What &quot;strength&quot; measures: breaking a bond</a><a href="#locked-rotation-makes-cis-and-trans">Locked rotation makes cis and trans</a><a href="#bond-strength-is-not-the-same">Bond strength is not the same as reactivity</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="electronegativity"><a href="electronegativity.html"><span class="bk-toc-n">5</span>Electronegativity</a></li><li data-toc-t="formal-charge"><a href="formal-charge.html"><span class="bk-toc-n">6</span>Formal charge</a></li><li data-toc-t="lewis-structures"><a href="lewis-structures.html"><span class="bk-toc-n">7</span>Lewis structures</a></li><li data-toc-t="molecular-geometry"><a href="molecular-geometry.html"><span class="bk-toc-n">8</span>Molecular geometry</a></li><li data-toc-t="bond-polarity"><a href="bond-polarity.html"><span class="bk-toc-n">9</span>Bond polarity</a></li><li data-toc-t="functional-groups"><a href="functional-groups.html"><span class="bk-toc-n">10</span>Functional groups</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-electron-movement"><span class="bk-toc-n">2</span>Drawing Molecules &amp; Moving Electrons</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-foundations">Foundations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Bonding: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/bonding.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="foundations">Foundations</span> &middot; Section 4 of 123</p>
+      <h1 class="bk-title">Bonding</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/bonding.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="bonding" data-bk-ids="sigma-bonds pi-bonds a-triple-bond-one-sigma-and counting-sigma-and-pi-bonds bond-length-and-strength what-strength-measures-breaking-a-bond locked-rotation-makes-cis-and-trans bond-strength-is-not-the-same what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Ethane, CH₃–CH₃, and ethene, CH₂=CH₂, both hold two carbons together by sharing electrons. A shared pair of electrons held between two nuclei is a <b>covalent bond</b>. The other way to fill an octet, handing electrons over to make ions, is the route <a class="chapter-ref" href="/ochem/notes/atomic-structure.html">Atomic structure</a> ruled out for carbon.</p>
 <p class="step-body">The two molecules still behave differently. The two ends of ethane spin freely around the bond between them. The two ends of ethene cannot turn at all.</p>
@@ -182,14 +191,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">Three habits start here. Count sigma and pi correctly, because hybridization depends on the count of sigma bonds plus lone pairs, not on the total number of lines. Remember that pi electrons are the reachable ones: most mechanisms in <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>, <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a> and <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a> begin with a pi bond attacking something or being attacked. And remember that pi bonds lock geometry, which is the door into stereochemistry.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="hybridization.html"><span>Previous</span>Hybridization</a><a class="notes-prevnext notes-next" href="electronegativity.html"><span>Next</span>Electronegativity</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="hybridization.html"><span>&larr; Section 3</span><b>Hybridization</b></a><a class="tb-chapter-link next" href="electronegativity.html"><span>Section 5 &rarr;</span><b>Electronegativity</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

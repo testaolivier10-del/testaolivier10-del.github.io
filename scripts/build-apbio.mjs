@@ -102,10 +102,14 @@ function build() {
      lesson, notes page, unit sheet and FRQ (spec section 1, "Teachers"). The
      shared title never carries the mark (it travels in a URL). Copy link and
      Print are wired by bio-nav.js. */
-  const shareBar = (path, title, what) => {
+  /* On notes pages (book) the bar is the shared notes action row
+     (assets/course/book.css .bk-actions): Copy link and Print as in every
+     course, with Share to Google Classroom first, AP Bio's teacher feature. */
+  const shareBar = (path, title, what, book = false) => {
     const url = `${SITE}${BASE}${path}`;
     const gc = `https://classroom.google.com/share?url=${encodeURIComponent(url)}&title=${encodeURIComponent(stripMark(title))}`;
-    return `<div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this ${what}"><a class="bio-share-btn" href="${esc(gc)}" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="${esc(url)}">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>`;
+    const [wrap, btn] = book ? ['bk-actions bio-share', 'bk-action'] : ['bio-share', 'bio-share-btn'];
+    return `<div class="${wrap} bio-nav-ref" role="group" aria-label="Share or print this ${what}"><a class="${btn}" href="${esc(gc)}" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="${btn}" data-copy="${esc(url)}">Copy link</button><button type="button" class="${btn}" data-print>Print</button></div>`;
   };
 
   /* Stimuli used by a list of questions, with paths from bio/ (the runtime
@@ -220,7 +224,12 @@ ${tail({ depth, section: 'learn', extra: ['bio-questions.js', 'bio-lesson.js'], 
     return { html: out, sections };
   }
   const tocBtn = label => `<button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; ${label}</button>`;
-  const chip = id => `<span class="bio-tb-chip" data-chip-topic="${id}">Not practiced</span>`;
+  const chip = id => `<span class="bk-chip" data-chip-topic="${id}">Not practiced</span>`;
+  /* Lessons-done progress and the course search box, as on A&P's rail
+     (assets/course/book.css); bio-toc.js paints the numbers. */
+  const tocProg = (total, label, chId = '') =>
+    `<div class="bio-toc-prog" data-toc-prog="${chId}"><div class="tb-progress-row"><span><b>0</b> of ${total} ${label}</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>`;
+  const tocSearch = depth => `<form class="bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search ${COURSE_HTML}&hellip;" aria-label="Search ${COURSE_HTML}"></form>`;
 
   /* The whole course in the rail: units, then the Skills section. */
   function courseRail(curId, depth, book = false) {
@@ -228,26 +237,36 @@ ${tail({ depth, section: 'learn', extra: ['bio-questions.js', 'bio-lesson.js'], 
     const groups = map.parts.map(p => {
       const chs = map.chapters.filter(c => c.part === p.id);
       if (!chs.length) return '';
-      return `<p class="bio-toc-group">${esc(p.title)}</p>` + chs.map(ch => {
+      return `<p class="bk-toc-group">${esc(p.title)}</p>` + chs.map(ch => {
         const ts = topicsOf(ch.id), cur = ch.id === curId, has = chapterBuilt(ch);
         const inner = `<span class="tb-toc-num">${ch.part === 'course' ? ch.n : 'S'}</span><span class="tb-toc-modtitle">${esc(ch.title)}</span><span class="tb-toc-count" data-toc-ch="${ch.id}">0/${ts.filter(t => C.built.has(t.id)).length}</span>`;
-        const headEl = !has ? `<span class="tb-toc-modhead bio-unbuilt">${inner}</span>` : `<a class="tb-toc-modhead" href="${cur ? '#main' : `${chDir}${ch.id}.html`}"${cur ? ' aria-current="page"' : ''}${book ? ` data-book-ch="${ch.id}"` : ''}>${inner}</a>`;
+        const headEl = !has ? `<span class="tb-toc-modhead bk-unbuilt">${inner}</span>` : `<a class="tb-toc-modhead" href="${cur ? '#main' : `${chDir}${ch.id}.html`}"${cur ? ' aria-current="page"' : ''}${book ? ` data-book-ch="${ch.id}"` : ''}>${inner}</a>`;
         const tl = (cur || (book && has)) ? `<div class="tb-toc-topics">${ts.filter(t => C.built.has(t.id)).map(t => `<a class="tb-toc-topic" href="${depth}${book ? 'notes' : 'lessons'}/${t.id}.html" data-toc-t="${t.id}"><span class="tb-toc-tick"></span>${esc(t.title)}</a>`).join('')}</div>` : '';
         return `<div class="tb-toc-mod${cur ? ' open' : ''}">${headEl}${tl}</div>`;
       }).join('');
     }).join('');
-    return `<aside class="tb-rail bio-nav-ref" id="bio-rail"><p class="tb-rail-title">Contents</p><nav class="tb-contents" aria-label="Course contents">${groups}</nav></aside>`;
+    return `<aside class="tb-rail bio-nav-ref" id="bio-rail">
+    <p class="tb-rail-title">Contents</p>
+    ${tocProg(topics.filter(t => C.built.has(t.id)).length, 'lessons done')}
+    ${tocSearch(depth)}
+    <nav class="tb-contents" aria-label="Course contents">${groups}</nav>
+  </aside>`;
   }
   function notesRail(id, sections) {
     const t = map.topicById(id), ch = chapterById(t.chapter);
     const ts = topicsOf(ch.id).filter(x => C.built.has(x.id));
-    const onPage = sections.length ? `<div class="bio-toc-onpage"><p>On this page</p>${sections.map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join('')}</div>` : '';
-    return `<aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+    const onPage = sections.length ? `<div class="bk-toc-onpage"><p>On this page</p>${sections.map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join('')}</div>` : '';
+    const ci = map.chapters.indexOf(ch);
+    const other = c => c && chapterBuilt(c) ? `<a class="bk-toc-other" href="../units/${c.id}.html"><span class="bk-toc-n">${c.part === 'course' ? c.n : 'S'}</span>${esc(c.title)}</a>` : '';
+    return `<aside class="tb-rail bio-nav-ref bk-rail" id="bio-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="bio-toc-chap" href="../units/${ch.id}.html"><span class="bio-toc-chap-n">${ch.part === 'course' ? ch.n : 'S'}</span><span><b>${esc(ch.title)}</b><small>${ts.length} topic${ts.length === 1 ? '' : 's'}</small></span></a>
-    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list">${ts.map(x => x.id === id
-      ? `<li class="current" data-toc-t="${x.id}"><a href="#main" aria-current="page"><span class="bio-toc-n">${esc(x.ced || 'S')}</span>${esc(x.title)}</a>${onPage}</li>`
-      : `<li data-toc-t="${x.id}"><a href="${x.id}.html"><span class="bio-toc-n">${esc(x.ced || 'S')}</span>${esc(x.title)}</a></li>`).join('')}</ol></nav>
+    ${other(map.chapters[ci - 1])}
+    <a class="bk-toc-chap" href="../units/${ch.id}.html"><span class="bk-toc-chap-n">${ch.part === 'course' ? ch.n : 'S'}</span><span><b>${esc(ch.title)}</b><small>${ts.length} topic${ts.length === 1 ? '' : 's'}</small></span></a>
+    ${tocProg(ts.length, 'lessons done', ch.id)}
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list">${ts.map(x => x.id === id
+      ? `<li class="current" data-toc-t="${x.id}"><a href="#main" aria-current="page"><span class="bk-toc-n">${esc(x.ced || 'S')}</span>${esc(x.title)}</a>${onPage}</li>`
+      : `<li data-toc-t="${x.id}"><a href="${x.id}.html"><span class="bk-toc-n">${esc(x.ced || 'S')}</span>${esc(x.title)}</a></li>`).join('')}</ol></nav>
+    ${other(map.chapters[ci + 1])}
   </aside>`;
   }
 
@@ -269,19 +288,19 @@ ${tail({ depth, section: 'learn', extra: ['bio-questions.js', 'bio-lesson.js'], 
     ] };
     const body = `
 ${bodyOpen(` data-topic="${id}" data-unit="${ch.id}"`)}
-<div class="tb-shell bio-tb bio-notes">
+<div class="tb-shell bk bk-notes">
   ${tocBtn(`${unitLabel(ch)} contents`)}
   ${notesRail(id, sections)}
   <main class="tb-main" id="main">
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../units/${ch.id}.html` }, { name: `${t.title}: notes` }])}
-    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/${id}.html">Practice this lesson</a></div>
-    <header class="bio-notes-head">
-      <p class="bio-notes-eyebrow">${unitLabel(ch)}${t.ced ? ` &middot; Topic ${esc(t.ced)}` : ''} ${BETA_PILL}</p>
-      <h1 class="bio-notes-title">${esc(t.title)}</h1>
-      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">${minutes} min read &middot; free</span>${chip(id)}</p>
-      ${shareBar(`notes/${id}.html`, `${t.title}: biology notes`, 'notes page')}
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/${id}.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">${unitLabel(ch)}${t.ced ? ` &middot; Topic ${esc(t.ced)}` : ''} ${BETA_PILL}</p>
+      <h1 class="bk-title">${esc(t.title)}</h1>
+      <p class="bk-meta bio-nav-ref"><span class="bk-small">${minutes} min read &middot; free</span>${chip(id)}</p>
+      ${shareBar(`notes/${id}.html`, `${t.title}: biology notes`, 'notes page', true)}
     </header>
-    <article class="bio-prose">
+    <article class="bio-prose bk-prose">
 ${html}
     </article>
     <p class="bio-report-page bio-nav-ref">Spot a mistake on this page? ${reportButton(`notes:${id}`)}</p>
@@ -293,7 +312,7 @@ ${tail({ depth, section: 'learn', extra: ['bio-toc.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, noindex }) + body;
+    return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, noindex, book: true }) + body;
   }
 
   /* ------------------------------------------------------------- unit */
@@ -310,23 +329,25 @@ ${tail({ depth, section: 'learn', extra: ['bio-toc.js'] })}
     const weight = Array.isArray(ch.weight) ? ` &middot; ${ch.weight[0]}&ndash;${ch.weight[1]}% of the exam` : '';
     const body = `
 ${bodyOpen(` data-unit="${chId}"`)}
-<div class="tb-shell bio-tb bio-unit">
+<div class="tb-shell bk bk-chapter">
   ${tocBtn('Contents')}
   ${courseRail(chId, depth)}
   <main class="tb-main" id="main">
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title }])}
-    <header class="tb-chapter-head bio-unit-head">
+    <header class="tb-chapter-head bk-chap-head">
       <div>
         <p class="tb-chapter-eyebrow">${unitLabel(ch)}${weight} ${BETA_PILL}</p>
         <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
         <p class="tb-chapter-meta">${ts.length} topics &middot; <span data-unit-meta="${chId}">not practiced yet</span></p>
       </div>
-      <p class="bio-unit-acts"><a class="bio-tb-btn solid" href="../practice.html?unit=${chId}">Practice this unit</a><a class="bio-tb-btn ghost" href="../unit-sheets/${chId}.html">Unit sheet</a></p>
+      <p class="bk-chap-acts"><a class="bk-btn solid" href="../practice.html?unit=${chId}">Practice this unit</a><a class="bk-btn ghost" href="../unit-sheets/${chId}.html">Unit sheet</a></p>
     </header>
-    <h2 class="bio-unit-h" id="h-topics">Topics, in course order</h2>
-    <ol class="bio-unit-list" aria-labelledby="h-topics">${ts.map(t => `<li class="bio-unit-row" data-topic="${t.id}"><span class="bio-unit-n">${esc(t.ced || 'S')}</span>${C.built.has(t.id)
-      ? `<a class="bio-unit-title" href="../lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<span class="bio-unit-btns"><a class="bio-tb-btn solid" href="../lessons/${t.id}.html" aria-label="Lesson: ${esc(t.title)}">Lesson</a><a class="bio-tb-btn ghost" href="../notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a></span>`
-      : `<span class="bio-unit-title bio-unbuilt">${esc(t.title)}</span><span class="bio-small">Coming soon</span>`}</li>`).join('')}</ol>
+    <h2 class="bk-h" id="h-topics">Topics, in course order</h2>
+    <ol class="bk-list" aria-labelledby="h-topics">${ts.map(t => `<li class="bk-row" data-topic="${t.id}"><span class="bk-row-n">${esc(t.ced || 'S')}</span>${C.built.has(t.id)
+      ? `<a class="bk-row-title" href="../lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/${t.id}.html" aria-label="Lesson: ${esc(t.title)}">Lesson</a><a class="bk-btn ghost" href="../notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a></span>`
+      : `<span class="bk-row-title bk-unbuilt">${esc(t.title)}</span><span class="bk-small">Coming soon</span>`}</li>`).join('')}</ol>
+    ${chapterBuilt(ch) ? unitPractice(ch) : ''}
+    <nav class="tb-chapter-nav bio-nav-ref" aria-label="Unit navigation">${unitLink(map.chapters[map.chapters.indexOf(ch) - 1], 'prev')}${unitLink(map.chapters[map.chapters.indexOf(ch) + 1], 'next')}</nav>
   </main>
 </div>
 ${footer(depth, `unit:${chId}`)}
@@ -334,8 +355,43 @@ ${tail({ depth, section: 'learn', extra: ['bio-toc.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: `units/${chId}.html`, depth, ogType: 'website', jsonld, noindex }) + body;
+    return head({ title, desc, path: `units/${chId}.html`, depth, ogType: 'website', jsonld, noindex, book: true }) + body;
   }
+
+  /* The unit page's lower half, laid out like an A&P chapter page
+     (assets/course/book.css): three "Practice this unit" cards, then the
+     unit's tools grouped by kind. A tool belongs to the unit of the topic it
+     teaches; a free-response question to every unit it lists. */
+  const TOOL_KIND_NAME = { simulator: 'Simulators', skill: 'Skills tools', drill: 'Drills' };
+  function unitTools(chId) {
+    const live = (C.pages.tools || []).filter(t => toolLive(t) && (map.topicById(toolData(t).topic) || {}).chapter === chId);
+    const groups = Object.entries(TOOL_KIND_NAME).map(([k, name]) => [name, live.filter(t => t.kind === k).map(t => ({ href: `../tools/${t.slug}.html`, title: t.name }))]);
+    groups.push(['Free-response questions', frqs.filter(f => f.units.includes(chId)).map(f => ({ href: `../frq/${f.id}.html`, title: frqTitle(f) }))]);
+    return groups.filter(([, items]) => items.length);
+  }
+  function unitPractice(ch) {
+    const groups = unitTools(ch.id);
+    const tools = groups.filter(([name]) => name !== 'Free-response questions');
+    const n = tools.reduce((a, [, items]) => a + items.length, 0);
+    const summary = tools.map(([name, items]) => `${items.length} ${(items.length === 1 ? name.replace(/s$/, '') : name).toLowerCase()}`).join(', ');
+    const built = topicsOf(ch.id).filter(t => C.built.has(t.id)).length;
+    const cards = [
+      `<a class="bk-card" href="../practice.html?unit=${ch.id}"><b>Question set</b><span>Exam-style questions from this ${ch.part === 'course' ? 'unit' : 'chapter'}'s ${built} topic${built === 1 ? '' : 's'}, with an explanation for every option.</span></a>`,
+      ch.part === 'course'
+        ? `<a class="bk-card" href="../exams.html?unit=${ch.id}"><b>Unit test</b><span>A timed test on the whole unit, every topic weighted equally.</span></a>`
+        : `<a class="bk-card" href="../unit-sheets/${ch.id}.html"><b>Unit sheet</b><span>Every topic on one printable page: key ideas, chains and terms.</span></a>`,
+      `<a class="bk-card" href="../tools.html"><b>Tools for this ${ch.part === 'course' ? 'unit' : 'chapter'}</b><span>${n ? `${summary}.` : 'Simulators, skills tools and drills for the course.'}</span></a>`,
+    ];
+    const sets = groups.map(([name, items]) => `<section class="bk-toolset"><h3>${name} <small>${items.length}</small></h3><ul>${items.map(it => `<li><a href="${it.href}">${esc(it.title)}</a></li>`).join('')}</ul></section>`).join('');
+    return `<h2 class="bk-h" id="h-practice">Practice this ${ch.part === 'course' ? 'unit' : 'chapter'}</h2>
+    <div class="bk-cards">
+      ${cards.join('\n      ')}
+    </div>
+    ${sets ? `<h2 class="bk-h" id="h-tools">In this ${ch.part === 'course' ? 'unit' : 'chapter'}'s tools</h2>
+    <div class="bk-tools">${sets}</div>` : ''}`;
+  }
+  const unitLink = (c, dir) => c && chapterBuilt(c)
+    ? `<a class="tb-chapter-link${dir === 'next' ? ' next' : ''}" href="${c.id}.html"><span>${dir === 'next' ? `${unitLabel(c)} &rarr;` : `&larr; ${unitLabel(c)}`}</span><b>${esc(c.title)}</b></a>` : '';
 
   /* One printable page per unit (spec section 1): each built topic's
      summary, key ideas, the chain in brief and the terms it defines. */
@@ -436,11 +492,11 @@ ${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', 
     ] };
     const section = (chs, h) => `<section class="tb-static-part"><h2>${h}</h2>${chs.map(ch => {
       const ts = topicsOf(ch.id);
-      return `<section class="tb-static-chapter"><h3>${ch.part === 'course' ? `Unit ${ch.n}: ` : ''}${esc(ch.title)}</h3><ol>${ts.map(t => `<li>${C.built.has(t.id) ? `<a href="notes/${t.id}.html">${esc(t.title)}</a>` : `<span class="bio-unbuilt">${esc(t.title)}</span>`}${t.ced ? ` <span class="bio-small">${esc(t.ced)}</span>` : ''}</li>`).join('')}</ol>${chapterBuilt(ch) ? '' : '<p class="bio-small">Coming soon.</p>'}</section>`;
+      return `<section class="tb-static-chapter"><h3>${ch.part === 'course' ? `Unit ${ch.n}: ` : ''}${esc(ch.title)}</h3><ol>${ts.map(t => `<li>${C.built.has(t.id) ? `<a href="notes/${t.id}.html">${esc(t.title)}</a>` : `<span class="bk-unbuilt">${esc(t.title)}</span>`}${t.ced ? ` <span class="bk-small">${esc(t.ced)}</span>` : ''}</li>`).join('')}</ol>${chapterBuilt(ch) ? '' : '<p class="bk-small">Coming soon.</p>'}</section>`;
     }).join('')}</section>`;
     const body = `
 ${bodyOpen()}
-<div class="tb-shell bio-tb bio-book">
+<div class="tb-shell bk bk-book">
   ${tocBtn('Contents')}
   ${courseRail(null, depth, true)}
   <main class="tb-main" id="main">
@@ -460,7 +516,7 @@ ${tail({ depth, section: 'learn', extra: ['bio-toc.js', 'bio-book.js'] })}
 </body>
 </html>
 `;
-    return head({ title, desc, path: 'learn.html', depth, ogType: 'website', jsonld, noindex }) + body;
+    return head({ title, desc, path: 'learn.html', depth, ogType: 'website', jsonld, noindex, book: true }) + body;
   }
 
   /* -------------------------------------------------------------- home

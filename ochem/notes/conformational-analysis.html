@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Alkanes &amp; Conformations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Alkanes &amp; Conformations &middot; Section 27 of 123</p>
-    <h1>Conformational analysis</h1>
-    <a class="notes-onward-cta" href="../lessons/conformational-analysis.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="conformational-analysis">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-acids-bases"><span class="bk-toc-n">4</span>Acids &amp; Bases</a>
+    <a class="bk-toc-chap" href="../learn.html#m-alkanes-conformations"><span class="bk-toc-chap-n">5</span><span><b>Alkanes &amp; Conformations</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="newman"><a href="newman.html"><span class="bk-toc-n">23</span>Newman projections</a></li><li data-toc-t="cyclohexanes"><a href="cyclohexanes.html"><span class="bk-toc-n">24</span>Cyclohexanes</a></li><li data-toc-t="axial-equatorial"><a href="axial-equatorial.html"><span class="bk-toc-n">25</span>Axial/equatorial</a></li><li data-toc-t="ring-flips"><a href="ring-flips.html"><span class="bk-toc-n">26</span>Ring flips</a></li><li class="current" data-toc-t="conformational-analysis"><a href="#main" aria-current="page"><span class="bk-toc-n">27</span>Conformational analysis</a><div class="bk-toc-onpage"><p>On this page</p><a href="#one-substituent-equatorial-wins">One substituent: equatorial wins</a><a href="#two-substituents-first-find-out-which">Two substituents: first find out which chairs are possible</a><a href="#add-up-the-axial-penalties">Add up the axial penalties</a><a href="#when-the-two-groups-touch-each">When the two groups touch each other</a><a href="#comparing-a-cis-isomer-with-its">Comparing a cis isomer with its trans isomer</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-stereochemistry"><span class="bk-toc-n">6</span>Stereochemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-alkanes-conformations">Alkanes &amp; Conformations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Conformational analysis: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/conformational-analysis.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="alkanes-conformations">Alkanes &amp; Conformations</span> &middot; Section 27 of 123</p>
+      <h1 class="bk-title">Conformational analysis</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/conformational-analysis.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="conformational-analysis" data-bk-ids="one-substituent-equatorial-wins two-substituents-first-find-out-which add-up-the-axial-penalties when-the-two-groups-touch-each comparing-a-cis-isomer-with-its what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Methylcyclohexane flips between two chairs. In one chair its methyl group is equatorial, and in the other it is axial. At room temperature about 95% of the molecules are in the equatorial chair at any moment. Working out a split like this for any substituted cyclohexane is called <b>conformational analysis</b>: you decide which chair the molecule prefers, and by how much. This page turns that into a procedure you can run on rings you have never seen.</p>
 
@@ -156,14 +165,21 @@
 <p class="step-body"><b>Looking ahead</b> (nothing on this page depends on this section): which chair a molecule sits in also decides what it can do, because a reaction can only happen if the molecule can reach the shape its mechanism needs. The E2 reaction in <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> makes a C=C double bond by removing an H and a second group from neighboring carbons. It needs those two to be anti-periplanar, the 180° arrangement from <a class="chapter-ref" href="/ochem/notes/newman.html">Newman projections</a>. On a cyclohexane ring that means both must be axial. So the chair analysis on this page decides how fast an elimination on a ring goes and which alkene it gives.</p>
 <p class="step-body">The same question returns later, wherever geometry controls a reaction: the one-step substitution in <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a>, where the incoming group must arrive on the side opposite the departing one, and the opening of three-membered rings fused to a cyclohexane in <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a> and <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a>, which puts the two new groups trans and diaxial. When a reaction's outcome seems arbitrary, check whether the molecule can physically reach the geometry its mechanism requires.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="ring-flips.html"><span>Previous</span>Ring flips</a><a class="notes-prevnext notes-next" href="chirality.html"><span>Next</span>Chirality</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="ring-flips.html"><span>&larr; Section 26</span><b>Ring flips</b></a><a class="tb-chapter-link next" href="chirality.html"><span>Section 28 &rarr;</span><b>Chirality</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

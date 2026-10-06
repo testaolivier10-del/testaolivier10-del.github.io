@@ -29,6 +29,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/anp.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -90,25 +92,26 @@
 <body data-topic="cell-junctions">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 3 contents</button>
-  <aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  <aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="anp-toc-other" href="../chapters/chem-physics.html"><span class="anp-toc-n">2</span>Chemistry and physics for physiology</a>
-    <a class="anp-toc-chap" href="../chapters/cells.html"><span class="anp-toc-chap-n">3</span><span><b>Cells</b><small>9 topics &middot; A&amp;P I</small></span></a>
-    <div class="anp-toc-prog" data-toc-prog="cells"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list"><li data-toc-t="plasma-membrane"><a href="plasma-membrane.html"><span class="anp-toc-n">15</span>The cell and its plasma membrane</a></li><li data-toc-t="organelles"><a href="organelles.html"><span class="anp-toc-n">16</span>Organelles and the cytoskeleton</a></li><li class="current" data-toc-t="cell-junctions"><a href="#main" aria-current="page"><span class="anp-toc-n">17</span>Cell junctions</a><div class="anp-toc-onpage"><p>On this page</p><a href="#why-cells-need-to-be-joined">Why cells need to be joined</a><a href="#what-a-cell-junction-is">What a cell junction is</a><a href="#tight-junctions-the-seal">Tight junctions: the seal</a><a href="#desmosomes-the-rivets">Desmosomes: the rivets</a><a href="#gap-junctions-the-tunnels">Gap junctions: the tunnels</a><a href="#where-each-junction-sits">Where each junction sits</a><a href="#comparing-the-three">Comparing the three</a><a href="#when-junctions-fail">When junctions fail</a><a href="#summary">Summary</a></div></li><li data-toc-t="passive-transport"><a href="passive-transport.html"><span class="anp-toc-n">18</span>Passive transport across membranes</a></li><li data-toc-t="active-transport"><a href="active-transport.html"><span class="anp-toc-n">19</span>Active transport and vesicles</a></li><li data-toc-t="dna-genes"><a href="dna-genes.html"><span class="anp-toc-n">20</span>The nucleus, DNA and genes</a></li><li data-toc-t="protein-synthesis"><a href="protein-synthesis.html"><span class="anp-toc-n">21</span>From gene to protein</a></li><li data-toc-t="cell-cycle"><a href="cell-cycle.html"><span class="anp-toc-n">22</span>Cell division and differentiation</a></li><li data-toc-t="cellular-respiration"><a href="cellular-respiration.html"><span class="anp-toc-n">23</span>How cells make ATP</a></li></ol></nav>
-    <a class="anp-toc-other" href="../chapters/tissues.html"><span class="anp-toc-n">4</span>Tissues</a>
+    <a class="bk-toc-other" href="../chapters/chem-physics.html"><span class="bk-toc-n">2</span>Chemistry and physics for physiology</a>
+    <a class="bk-toc-chap" href="../chapters/cells.html"><span class="bk-toc-chap-n">3</span><span><b>Cells</b><small>9 topics &middot; A&amp;P I</small></span></a>
+    <div class="anp-toc-prog" data-toc-prog="cells"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="plasma-membrane"><a href="plasma-membrane.html"><span class="bk-toc-n">15</span>The cell and its plasma membrane</a></li><li data-toc-t="organelles"><a href="organelles.html"><span class="bk-toc-n">16</span>Organelles and the cytoskeleton</a></li><li class="current" data-toc-t="cell-junctions"><a href="#main" aria-current="page"><span class="bk-toc-n">17</span>Cell junctions</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why-cells-need-to-be-joined">Why cells need to be joined</a><a href="#what-a-cell-junction-is">What a cell junction is</a><a href="#tight-junctions-the-seal">Tight junctions: the seal</a><a href="#desmosomes-the-rivets">Desmosomes: the rivets</a><a href="#gap-junctions-the-tunnels">Gap junctions: the tunnels</a><a href="#where-each-junction-sits">Where each junction sits</a><a href="#comparing-the-three">Comparing the three</a><a href="#when-junctions-fail">When junctions fail</a><a href="#summary">Summary</a></div></li><li data-toc-t="passive-transport"><a href="passive-transport.html"><span class="bk-toc-n">18</span>Passive transport across membranes</a></li><li data-toc-t="active-transport"><a href="active-transport.html"><span class="bk-toc-n">19</span>Active transport and vesicles</a></li><li data-toc-t="dna-genes"><a href="dna-genes.html"><span class="bk-toc-n">20</span>The nucleus, DNA and genes</a></li><li data-toc-t="protein-synthesis"><a href="protein-synthesis.html"><span class="bk-toc-n">21</span>From gene to protein</a></li><li data-toc-t="cell-cycle"><a href="cell-cycle.html"><span class="bk-toc-n">22</span>Cell division and differentiation</a></li><li data-toc-t="cellular-respiration"><a href="cellular-respiration.html"><span class="bk-toc-n">23</span>How cells make ATP</a></li></ol></nav>
+    <a class="bk-toc-other" href="../chapters/tissues.html"><span class="bk-toc-n">4</span>Tissues</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cells.html">Cells</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cell junctions: notes</span></nav>
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cell-junctions.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 17 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
-      <h1 class="anp-notes-title">Cell junctions</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">8 min read</span><span class="anp-tb-chip" data-chip-topic="cell-junctions">Not practiced</span></p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/cell-junctions.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter 3 &middot; Topic 17 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Cell junctions</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P I</span><a class="bk-tag" href="../concepts/structure-function.html">Structure and function</a><a class="bk-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="bk-small">8 min read</span><span class="bk-chip" data-chip-topic="cell-junctions">Not practiced</span></p>
+      <div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/anatomy-physiology/notes/cell-junctions.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 <h2 id="why-cells-need-to-be-joined">Why cells need to be joined</h2>
 <p>Rub the back of your hand hard. The skin <a class="gl" href="../notes/body-organization.html" data-c="cell">cells</a> there are pushed and pulled, yet they do not slide apart. Now think of the lining of your <a class="gl" href="../notes/body-organization.html" data-c="major-organs">urinary bladder</a>. It holds urine for hours, but the urine does not seep between the lining cells into the <a class="gl" href="../notes/body-organization.html" data-c="tissue">tissue</a> beneath. And in your heart, millions of cells contract almost together, beat after beat. Three different kinds of connection make these three things possible. This page explains <span class="gl" tabindex="0" data-c="tight-junction">tight junctions</span>, <span class="gl" tabindex="0" data-c="desmosome">desmosomes</span> and <span class="gl" tabindex="0" data-c="gap-junction">gap junctions</span>: what each is built from and what each does.</p>
 
@@ -227,6 +230,7 @@
   <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
 <script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>

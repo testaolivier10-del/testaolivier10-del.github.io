@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Carbonyl Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Carbonyl Chemistry &middot; Section 77 of 123</p>
-    <h1>The Wittig reaction</h1>
-    <a class="notes-onward-cta" href="../lessons/wittig-reaction.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="wittig-reaction">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-grignard"><span class="bk-toc-n">14</span>Organometallic Bonding &amp; Grignard Reagents</a>
+    <a class="bk-toc-chap" href="../learn.html#m-carbonyl-chemistry"><span class="bk-toc-chap-n">15</span><span><b>Carbonyl Chemistry</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="aldehydes-ketones"><a href="aldehydes-ketones.html"><span class="bk-toc-n">72</span>Aldehydes &amp; ketones</a></li><li data-toc-t="nucleophilic-addition"><a href="nucleophilic-addition.html"><span class="bk-toc-n">73</span>Nucleophilic addition</a></li><li data-toc-t="hydrates-cyanohydrins"><a href="hydrates-cyanohydrins.html"><span class="bk-toc-n">74</span>Hydrates &amp; cyanohydrins</a></li><li data-toc-t="acetals"><a href="acetals.html"><span class="bk-toc-n">75</span>Acetals &amp; hemiacetals</a></li><li data-toc-t="imines-enamines"><a href="imines-enamines.html"><span class="bk-toc-n">76</span>Imines and enamines</a></li><li class="current" data-toc-t="wittig-reaction"><a href="#main" aria-current="page"><span class="bk-toc-n">77</span>The Wittig reaction</a><div class="bk-toc-onpage"><p>On this page</p><a href="#making-the-ylide">Making the ylide</a><a href="#the-reaction-itself">The reaction itself</a><a href="#why-it-beats-an-elimination">Why it beats an elimination</a><a href="#geometry-which-is-the-one-thing">Geometry, which is the one thing it does not fully control</a><a href="#planning-a-wittig-backward">Planning a Wittig backward</a><a href="#the-phosphonate-variant">The phosphonate variant</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="aldehyde-oxidation"><a href="aldehyde-oxidation.html"><span class="bk-toc-n">78</span>Oxidizing an aldehyde</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-redox"><span class="bk-toc-n">16</span>Oxidation &amp; Reduction</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">The Wittig reaction: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/wittig-reaction.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="carbonyl-chemistry">Carbonyl Chemistry</span> &middot; Section 77 of 123</p>
+      <h1 class="bk-title">The Wittig reaction</h1>
+      <p class="bk-meta"><span class="bk-small">13 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/wittig-reaction.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="wittig-reaction" data-bk-ids="making-the-ylide the-reaction-itself why-it-beats-an-elimination geometry-which-is-the-one-thing planning-a-wittig-backward the-phosphonate-variant what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Cyclohexanone and the reagent Ph<sub>3</sub>P=CH<sub>2</sub> give methylenecyclohexane: the ring&rsquo;s C=O becomes C=CH<sub>2</sub>. The oxygen leaves on the phosphorus, as triphenylphosphine oxide, Ph<sub>3</sub>P=O. This is the <b>Wittig reaction</b>: a carbonyl compound and a phosphorus reagent join to make an alkene.</p>
 
@@ -195,14 +204,21 @@
 
 <p class="step-body">A Wittig turns C=O into C=C with no doubt about where the double bond lands. The cost is a full equivalent of phosphine and an S<sub>N</sub>2 limit on the halide. When the alkene you need is the &ldquo;wrong&rdquo; one by Zaitsev, this is normally the answer. And when a question gives you an aldehyde and a phosphonium salt, the product is simply the two halves joined by a double bond at the old carbonyl carbon.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="imines-enamines.html"><span>Previous</span>Imines and enamines</a><a class="notes-prevnext notes-next" href="aldehyde-oxidation.html"><span>Next</span>Oxidizing an aldehyde</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="imines-enamines.html"><span>&larr; Section 76</span><b>Imines and enamines</b></a><a class="tb-chapter-link next" href="aldehyde-oxidation.html"><span>Section 78 &rarr;</span><b>Oxidizing an aldehyde</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

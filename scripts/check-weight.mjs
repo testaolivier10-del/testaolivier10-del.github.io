@@ -111,21 +111,15 @@ const SHELL_BUDGETS = [
      fourth course in every generated course list, premium.js's fixed-date
      pass and per-course on-sale switch, and the URL-safe course key.
      Measured 281.4 KB with the engagement pass. */
-  /* 282 -> 300 for the course shell (docs/course-shell.md): assets/course/
-     base.css, study.css + study.js (W-C, the one copy of the pickers, rail,
-     empty states and question card; absorbed assets/flashcards.css) and
-     hub.css + hub.js (W-D, the one dashboard, search page, tools hub and home
-     row). Each course dropped its own copy in return, which sits in the
-     course and page budgets. This ruler counts all of /assets, though each
-     page loads only the area files it uses. Set after the merge measurement. */
-  ['site', 300],
+  ['site', 282],
   /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
      on every course page, plus the glossary popups (glossary-tip.js) on every
      reading page and the glossary page's script and styles there. Counted on
      its own because only course pages load it. Measured 10.5 KB with the
-     glossary work (W-A); the other workstreams add book.css, study.css and
-     hub.css. */
-  ['assets/course', 14],
+     glossary work (W-A). 14 -> 17 once book.css, study.css/js and hub.css/js
+     joined it (W-B, W-C, W-D), each replacing four per-course copies; the
+     /assets every-page ruler stayed under its old 282. Measured 16.0 KB. */
+  ['assets/course', 17],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —

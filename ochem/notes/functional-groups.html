@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Foundations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Foundations &middot; Section 10 of 123</p>
-    <h1>Functional groups</h1>
-    <a class="notes-onward-cta" href="../lessons/functional-groups.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="functional-groups">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    
+    <a class="bk-toc-chap" href="../learn.html#m-foundations"><span class="bk-toc-chap-n">1</span><span><b>Foundations</b><small>10 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 10 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="atomic-structure"><a href="atomic-structure.html"><span class="bk-toc-n">1</span>Atomic structure</a></li><li data-toc-t="orbitals"><a href="orbitals.html"><span class="bk-toc-n">2</span>Orbitals</a></li><li data-toc-t="hybridization"><a href="hybridization.html"><span class="bk-toc-n">3</span>Hybridization</a></li><li data-toc-t="bonding"><a href="bonding.html"><span class="bk-toc-n">4</span>Bonding</a></li><li data-toc-t="electronegativity"><a href="electronegativity.html"><span class="bk-toc-n">5</span>Electronegativity</a></li><li data-toc-t="formal-charge"><a href="formal-charge.html"><span class="bk-toc-n">6</span>Formal charge</a></li><li data-toc-t="lewis-structures"><a href="lewis-structures.html"><span class="bk-toc-n">7</span>Lewis structures</a></li><li data-toc-t="molecular-geometry"><a href="molecular-geometry.html"><span class="bk-toc-n">8</span>Molecular geometry</a></li><li data-toc-t="bond-polarity"><a href="bond-polarity.html"><span class="bk-toc-n">9</span>Bond polarity</a></li><li class="current" data-toc-t="functional-groups"><a href="#main" aria-current="page"><span class="bk-toc-n">10</span>Functional groups</a><div class="bk-toc-onpage"><p>On this page</p><a href="#first-reading-the-notation">First: reading the notation</a><a href="#the-groups-this-course-uses">The groups this course uses</a><a href="#the-carbonyl-family-what-is-attached">The carbonyl family: what is attached to the C=O</a><a href="#primary-secondary-tertiary">Primary, secondary, tertiary</a><a href="#why-polarity-tells-you-where-a">Why polarity tells you where a group will react</a><a href="#common-mistakes">Common mistakes</a><a href="#worked-examples-real-molecules-every-group">Worked examples: real molecules, every group named</a><a href="#what-carries-forward">What carries forward</a></div></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-electron-movement"><span class="bk-toc-n">2</span>Drawing Molecules &amp; Moving Electrons</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-foundations">Foundations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Functional groups: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/functional-groups.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="foundations">Foundations</span> &middot; Section 10 of 123</p>
+      <h1 class="bk-title">Functional groups</h1>
+      <p class="bk-meta"><span class="bk-small">21 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/functional-groups.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="functional-groups" data-bk-ids="first-reading-the-notation the-groups-this-course-uses the-carbonyl-family-what-is-attached primary-secondary-tertiary why-polarity-tells-you-where-a common-mistakes worked-examples-real-molecules-every-group what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Start with two molecules. Ethanol has an O&ndash;H on a two-carbon chain. Cholesterol has an O&ndash;H on a steroid of twenty-seven carbons. Both O&ndash;H groups do the same kinds of reaction with the same reagents.</p>
 
@@ -258,14 +267,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">All of it, in three directions. <a class="chapter-ref" href="/ochem/learn.html#m-electron-movement">Drawing Molecules &amp; Moving Electrons</a> redraws these groups in skeletal notation, which hides the spectator carbons so the groups stand out even more, and then names the electron-rich and electron-poor sites you have just located. <a class="chapter-ref" href="/ochem/learn.html#m-nomenclature">IUPAC Nomenclature</a> turns the preview column of the table into a system, including what to do when one molecule has several groups. And several later chapters are named after these rows: <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>, <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a>, <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a>, <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a>, <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a> and <a class="chapter-ref" href="/ochem/learn.html#m-amines">Amines</a>.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="bond-polarity.html"><span>Previous</span>Bond polarity</a><a class="notes-prevnext notes-next" href="skeletal-structures.html"><span>Next</span>Skeletal structures</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="bond-polarity.html"><span>&larr; Section 9</span><b>Bond polarity</b></a><a class="tb-chapter-link next" href="skeletal-structures.html"><span>Section 11 &rarr;</span><b>Skeletal structures</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

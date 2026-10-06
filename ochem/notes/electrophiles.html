@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>How Reactions Happen</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">How Reactions Happen &middot; Section 38 of 123</p>
-    <h1>Electrophiles</h1>
-    <a class="notes-onward-cta" href="../lessons/electrophiles.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="electrophiles">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-stereochemistry"><span class="bk-toc-n">6</span>Stereochemistry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-reactivity"><span class="bk-toc-chap-n">7</span><span><b>How Reactions Happen</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nucleophiles"><a href="nucleophiles.html"><span class="bk-toc-n">37</span>Nucleophiles</a></li><li class="current" data-toc-t="electrophiles"><a href="#main" aria-current="page"><span class="bk-toc-n">38</span>Electrophiles</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-it-is">What it is</a><a href="#the-main-families">The main families</a><a href="#making-an-electrophile-stronger">Making an electrophile stronger</a><a href="#ranking-electrophiles">Ranking electrophiles</a><a href="#finding-every-site-in-one-molecule">Finding every site in one molecule</a><a href="#electrophilicity-is-relative">Electrophilicity is relative</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="electron-rich-poor"><a href="electron-rich-poor.html"><span class="bk-toc-n">39</span>Electron-rich vs. electron-poor atoms</a></li><li data-toc-t="leaving-groups"><a href="leaving-groups.html"><span class="bk-toc-n">40</span>Leaving groups</a></li><li data-toc-t="energy-diagrams"><a href="energy-diagrams.html"><span class="bk-toc-n">41</span>Energy diagrams &amp; the Hammond postulate</a></li><li data-toc-t="carbocations"><a href="carbocations.html"><span class="bk-toc-n">42</span>Carbocations</a></li><li data-toc-t="radical-halogenation"><a href="radical-halogenation.html"><span class="bk-toc-n">43</span>Radical halogenation</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-substitution-elimination"><span class="bk-toc-n">8</span>Substitution &amp; Elimination</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-reactivity">How Reactions Happen</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Electrophiles: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/electrophiles.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="reactivity">How Reactions Happen</span> &middot; Section 38 of 123</p>
+      <h1 class="bk-title">Electrophiles</h1>
+      <p class="bk-meta"><span class="bk-small">13 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/electrophiles.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="electrophiles" data-bk-ids="what-it-is the-main-families making-an-electrophile-stronger ranking-electrophiles finding-every-site-in-one-molecule electrophilicity-is-relative what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Mix bromomethane, CH₃Br, with hydroxide ion and you get methanol, CH₃OH. Hydroxide uses one of its lone pairs to make a new bond to the carbon, and bromide ion leaves. Hydroxide brought the electron pair, so it is the nucleophile (<a class="chapter-ref" href="/ochem/learn.html#m-reactivity">Nucleophiles</a>). The carbon received the pair, so it is the <b>electrophile</b>.</p>
 <p class="step-body">Every reaction step in this course that moves an electron pair brings together a nucleophile and an electrophile. The curved arrow starts at the nucleophile's electrons and points at the electrophile's electron-poor atom. Once you have found both, you know where the new bond will form. Almost every mechanism in the course repeats that one move with different molecules, which is why reading a molecule for its electron density is worth more than memorizing reactions.</p>
@@ -157,14 +166,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">The δ+ carbon that carries a leaving group drives all of <a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a>. The electrophilic carbonyl carbon drives <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a>, <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a> and <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>. Electrophilic aromatic substitution in <a class="chapter-ref" href="/ochem/learn.html#m-aromatic-chemistry">Aromatic Chemistry</a> is named for this idea outright. Making an unusually strong electrophile comes up every time a reaction needs a push. Protonated carbonyls are one example from this page. Others come later: acylium ions, R–C≡O⁺, and bromonium ions, in which one positive bromine bridges both carbons of a former alkene.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="nucleophiles.html"><span>Previous</span>Nucleophiles</a><a class="notes-prevnext notes-next" href="electron-rich-poor.html"><span>Next</span>Electron-rich vs. electron-poor atoms</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="nucleophiles.html"><span>&larr; Section 37</span><b>Nucleophiles</b></a><a class="tb-chapter-link next" href="electron-rich-poor.html"><span>Section 39 &rarr;</span><b>Electron-rich vs. electron-poor atoms</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

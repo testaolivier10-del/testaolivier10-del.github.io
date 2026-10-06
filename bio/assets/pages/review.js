@@ -9,7 +9,7 @@
    A question from a stimulus set comes back alone, under its own stimulus
    panel, so it can be answered without the rest of the set. Tool items (ids
    "<tool>:<content>:<item>", A&P tools contract) cannot be rebuilt here, so
-   they link to their tool (window.ApBioTools, when the tools branch adds
+   they link to their tool (window.ApBioToolList, when the tools branch adds
    it) and stay due until answered there.
 
    Free tier: a Unit 1 or 2 question is always served; any other takes one
@@ -26,7 +26,7 @@
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function plural(n, w, ws){ return n + ' ' + (n === 1 ? w : (ws || w + 's')); }
   var TOPIC = {}; CUR.topics.forEach(function(t){ TOPIC[t.id] = t; });
-  var TOOL = {}; (window.ApBioTools || []).forEach(function(t){ if(t && t.slug) TOOL[t.slug] = t; });
+  var TOOL = {}; (window.ApBioToolList || []).forEach(function(t){ if(t && t.slug) TOOL[t.slug] = t; });
 
   var bank = null, session = null, refreshTimer = null;
 

@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Carbonyl Chemistry</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Carbonyl Chemistry &middot; Section 76 of 123</p>
-    <h1>Imines and enamines</h1>
-    <a class="notes-onward-cta" href="../lessons/imines-enamines.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="imines-enamines">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-grignard"><span class="bk-toc-n">14</span>Organometallic Bonding &amp; Grignard Reagents</a>
+    <a class="bk-toc-chap" href="../learn.html#m-carbonyl-chemistry"><span class="bk-toc-chap-n">15</span><span><b>Carbonyl Chemistry</b><small>7 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 7 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="aldehydes-ketones"><a href="aldehydes-ketones.html"><span class="bk-toc-n">72</span>Aldehydes &amp; ketones</a></li><li data-toc-t="nucleophilic-addition"><a href="nucleophilic-addition.html"><span class="bk-toc-n">73</span>Nucleophilic addition</a></li><li data-toc-t="hydrates-cyanohydrins"><a href="hydrates-cyanohydrins.html"><span class="bk-toc-n">74</span>Hydrates &amp; cyanohydrins</a></li><li data-toc-t="acetals"><a href="acetals.html"><span class="bk-toc-n">75</span>Acetals &amp; hemiacetals</a></li><li class="current" data-toc-t="imines-enamines"><a href="#main" aria-current="page"><span class="bk-toc-n">76</span>Imines and enamines</a><div class="bk-toc-onpage"><p>On this page</p><a href="#step-1-the-amine-adds-and">Step 1: the amine adds and a carbinolamine forms</a><a href="#step-2-acid-turns-the-oh">Step 2: acid turns the OH into water, and water leaves</a><a href="#step-3-the-last-proton-decides">Step 3: the last proton decides the product</a><a href="#why-the-ph-has-to-be">Why the pH has to be about 4.5</a><a href="#driving-it-forward-and-back">Driving it forward, and back</a><a href="#the-enamine-is-a-nucleophile-at">The enamine is a nucleophile at carbon</a><a href="#the-stork-enamine-synthesis">The Stork enamine synthesis</a><a href="#enamines-in-conjugate-addition">Enamines in conjugate addition</a><a href="#imines-elsewhere">Imines elsewhere</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="wittig-reaction"><a href="wittig-reaction.html"><span class="bk-toc-n">77</span>The Wittig reaction</a></li><li data-toc-t="aldehyde-oxidation"><a href="aldehyde-oxidation.html"><span class="bk-toc-n">78</span>Oxidizing an aldehyde</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-redox"><span class="bk-toc-n">16</span>Oxidation &amp; Reduction</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Imines and enamines: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/imines-enamines.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="carbonyl-chemistry">Carbonyl Chemistry</span> &middot; Section 76 of 123</p>
+      <h1 class="bk-title">Imines and enamines</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/imines-enamines.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="imines-enamines" data-bk-ids="step-1-the-amine-adds-and step-2-acid-turns-the-oh step-3-the-last-proton-decides why-the-ph-has-to-be driving-it-forward-and-back the-enamine-is-a-nucleophile-at the-stork-enamine-synthesis enamines-in-conjugate-addition imines-elsewhere what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Acetone and methylamine, CH<sub>3</sub>NH<sub>2</sub>, give (CH<sub>3</sub>)<sub>2</sub>C=N&ndash;CH<sub>3</sub>; acetone and dimethylamine, (CH<sub>3</sub>)<sub>2</sub>NH, give CH<sub>2</sub>=C(CH<sub>3</sub>)&ndash;N(CH<sub>3</sub>)<sub>2</sub>. Both release a molecule of water. <a class="chapter-ref" href="/ochem/notes/nucleophilic-addition.html">Nucleophilic addition</a> showed these two products side by side. This section runs the mechanism that makes them.</p>
 
@@ -203,14 +212,21 @@
 
 <p class="step-body">Count the N&ndash;H hydrogens: one left gives an imine, none left gives an enamine. Run it near pH 4.5 and remove the water. Then remember what the enamine is for: a neutral nucleophilic carbon that alkylates once and hydrolyzes back, the gentler of the two ways to put a new group on an &alpha; carbon.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="acetals.html"><span>Previous</span>Acetals &amp; hemiacetals</a><a class="notes-prevnext notes-next" href="wittig-reaction.html"><span>Next</span>The Wittig reaction</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="acetals.html"><span>&larr; Section 75</span><b>Acetals &amp; hemiacetals</b></a><a class="tb-chapter-link next" href="wittig-reaction.html"><span>Section 77 &rarr;</span><b>The Wittig reaction</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

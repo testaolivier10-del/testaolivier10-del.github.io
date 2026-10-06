@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Acids &amp; Bases</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Acids &amp; Bases &middot; Section 18 of 123</p>
-    <h1>Brønsted acids/bases</h1>
-    <a class="notes-onward-cta" href="../lessons/bronsted.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="bronsted">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-nomenclature"><span class="bk-toc-n">3</span>IUPAC Nomenclature</a>
+    <a class="bk-toc-chap" href="../learn.html#m-acids-bases"><span class="bk-toc-chap-n">4</span><span><b>Acids &amp; Bases</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="bronsted"><a href="#main" aria-current="page"><span class="bk-toc-n">18</span>Brønsted acids/bases</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-br-nsted-lowry-definition">The Brønsted–Lowry definition</a><a href="#which-side-does-the-equilibrium-favor">Which side does the equilibrium favor?</a><a href="#proton-transfers-are-fast">Proton transfers are fast</a><a href="#recognizing-the-acid-and-the-base">Recognizing the acid and the base</a><a href="#the-acid-is-often-a-cation">The acid is often a cation</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="conjugate"><a href="conjugate.html"><span class="bk-toc-n">19</span>Conjugate acids/bases</a></li><li data-toc-t="pka"><a href="pka.html"><span class="bk-toc-n">20</span>pKa</a></li><li data-toc-t="acidity-factors"><a href="acidity-factors.html"><span class="bk-toc-n">21</span>Factors affecting acidity</a></li><li data-toc-t="lewis-acids"><a href="lewis-acids.html"><span class="bk-toc-n">22</span>Lewis acids/bases</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alkanes-conformations"><span class="bk-toc-n">5</span>Alkanes &amp; Conformations</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-acids-bases">Acids &amp; Bases</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Brønsted acids/bases: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/bronsted.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="acids-bases">Acids &amp; Bases</span> &middot; Section 18 of 123</p>
+      <h1 class="bk-title">Brønsted acids/bases</h1>
+      <p class="bk-meta"><span class="bk-small">12 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/bronsted.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="bronsted" data-bk-ids="the-br-nsted-lowry-definition which-side-does-the-equilibrium-favor proton-transfers-are-fast recognizing-the-acid-and-the-base the-acid-is-often-a-cation what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Acid–base reactions are the most common reactions in this course, by a wide margin. Protons move on and off oxygen and nitrogen in nearly every mechanism you will draw: to make one partner more reactive, to free up a lone pair, or to tidy up a charge at the end. <a class="chapter-ref" href="/ochem/notes/curved-arrows.html">Curved arrows</a> already drew this step, a <b>proton transfer</b>, with two arrows. This page names the two partners in it, shows how to find them in a molecule you have not seen before, and uses pKa, the number you met in <a class="chapter-ref" href="/ochem/notes/resonance.html">Resonance</a>, to tell which way a proton transfer goes.</p>
 
@@ -146,14 +155,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">The pKa scale is built on the Brønsted framework, and it is the most quantitative tool in the course. In later chapters it predicts how good a leaving group is, how strong a nucleophile is, and whether a given base can remove a given proton. <a class="chapter-ref" href="/ochem/notes/conjugate.html">Conjugate acids/bases</a> and <a class="chapter-ref" href="/ochem/notes/pka.html">pKa</a> come next and build that scale. <a class="chapter-ref" href="/ochem/notes/lewis-acids.html">Lewis acids/bases</a>, at the end of this chapter, widens the idea to reactions that move an electron pair but no proton. And from <a class="chapter-ref" href="/ochem/learn.html#m-carbonyl-chemistry">Carbonyl Chemistry</a> through <a class="chapter-ref" href="/ochem/learn.html#m-enolate-chemistry">Enolate Chemistry</a>, acid and base catalysts are what make half the reactions run at a useful rate.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="naming-rings-unsaturation.html"><span>Previous</span>Rings &amp; unsaturation</a><a class="notes-prevnext notes-next" href="conjugate.html"><span>Next</span>Conjugate acids/bases</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="naming-rings-unsaturation.html"><span>&larr; Section 17</span><b>Rings &amp; unsaturation</b></a><a class="tb-chapter-link next" href="conjugate.html"><span>Section 19 &rarr;</span><b>Conjugate acids/bases</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

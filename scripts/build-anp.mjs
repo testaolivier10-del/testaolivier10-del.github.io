@@ -265,9 +265,9 @@ ${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], 
    fills in progress (lessons done), ticks and mastery chips from AnpCore. */
 const partTitle = id => map.parts.find(p => p.id === id).title;
 const tocProg = (total, label, chId = '') =>
-  `<div class="anp-toc-prog" data-toc-prog="${chId}"><div class="tb-progress-row"><span><b>0</b> of ${total} ${label}</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>`;
+  `<div class="anp-toc-prog" data-toc-prog="${chId}"><div class="tb-progress-row"><span><b>0</b> of ${total} ${label}</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>`;
 const tocBtn = label => `<button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; ${label}</button>`;
-const chip = id => `<span class="anp-tb-chip" data-chip-topic="${id}">Not practiced</span>`;
+const chip = id => `<span class="bk-chip" data-chip-topic="${id}">Not practiced</span>`;
 
 /* The whole course, the current chapter open to its topics (chapter pages).
    With book set (learn.html, depth '') every built chapter carries its topics
@@ -275,10 +275,10 @@ const chip = id => `<span class="anp-tb-chip" data-chip-topic="${id}">Not practi
    anp-book.js opens the chapter it is showing. */
 function courseRail(curId, depth = '../', book = false) {
   const chDir = depth ? '' : 'chapters/';
-  const groups = map.parts.map(p => `<p class="anp-toc-group">${esc(p.title)}</p>` + map.chapters.filter(c => c.part === p.id).map(ch => {
+  const groups = map.parts.map(p => `<p class="bk-toc-group">${esc(p.title)}</p>` + map.chapters.filter(c => c.part === p.id).map(ch => {
     const ts = topicsOf(ch.id), n = chapterNumber(ch.id), cur = ch.id === curId;
     const inner = `<span class="tb-toc-num">${n}</span><span class="tb-toc-modtitle">${esc(ch.title)}</span><span class="tb-toc-count" data-toc-ch="${ch.id}">0/${ts.filter(t => C.built.has(t.id)).length}</span>`;
-    const headEl = !chapterBuilt(ch) ? `<span class="tb-toc-modhead anp-unbuilt">${inner}</span>`
+    const headEl = !chapterBuilt(ch) ? `<span class="tb-toc-modhead bk-unbuilt">${inner}</span>`
       : `<a class="tb-toc-modhead" href="${cur ? '#main' : `${chDir}${ch.id}.html`}"${cur ? ' aria-current="page"' : ''}${book ? ` data-book-ch="${ch.id}"` : ''}>${inner}</a>`;
     const topics = cur || (book && chapterBuilt(ch)) ? `<div class="tb-toc-topics">${ts.filter(t => C.built.has(t.id)).map(t => `<a class="tb-toc-topic" href="${depth}${book ? 'notes' : 'lessons'}/${t.id}.html" data-toc-t="${t.id}"><span class="tb-toc-tick"></span>${esc(t.title)}</a>`).join('')}</div>` : '';
     return `<div class="tb-toc-mod${cur ? ' open' : ''}"${book && ch.part !== 'foundations' ? ` data-course="${ch.course}"` : ''}>${headEl}${topics}</div>`;
@@ -286,8 +286,8 @@ function courseRail(curId, depth = '../', book = false) {
   return `<aside class="tb-rail anp-nav-ref" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
     ${tocProg(builtTopics.length, 'lessons done')}
-    <form class="anp-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P"></form>
-    ${book ? '<label class="anp-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label>\n    ' : ''}<nav class="tb-contents" aria-label="Course contents">${groups}</nav>
+    <form class="anp-toc-search bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P"></form>
+    ${book ? '<label class="anp-filter bk-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label>\n    ' : ''}<nav class="tb-contents" aria-label="Course contents">${groups}</nav>
   </aside>`;
 }
 
@@ -295,21 +295,25 @@ function courseRail(curId, depth = '../', book = false) {
 function notesRail(id, sections) {
   const t = topicById(id), ch = chapterById(t.chapter), ci = chapterNumber(ch.id) - 1;
   const ts = topicsOf(ch.id).filter(x => C.built.has(x.id));
-  const other = c => c && chapterBuilt(c) ? `<a class="anp-toc-other" href="../chapters/${c.id}.html"><span class="anp-toc-n">${chapterNumber(c.id)}</span>${esc(c.title)}</a>` : '';
-  const onPage = sections.length ? `<div class="anp-toc-onpage"><p>On this page</p>${sections.map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join('')}</div>` : '';
-  return `<aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  const other = c => c && chapterBuilt(c) ? `<a class="bk-toc-other" href="../chapters/${c.id}.html"><span class="bk-toc-n">${chapterNumber(c.id)}</span>${esc(c.title)}</a>` : '';
+  const onPage = sections.length ? `<div class="bk-toc-onpage"><p>On this page</p>${sections.map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join('')}</div>` : '';
+  return `<aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
     ${other(map.chapters[ci - 1])}
-    <a class="anp-toc-chap" href="../chapters/${ch.id}.html"><span class="anp-toc-chap-n">${ci + 1}</span><span><b>${esc(ch.title)}</b><small>${ts.length} topics &middot; A&amp;P ${ch.course}</small></span></a>
+    <a class="bk-toc-chap" href="../chapters/${ch.id}.html"><span class="bk-toc-chap-n">${ci + 1}</span><span><b>${esc(ch.title)}</b><small>${ts.length} topics &middot; A&amp;P ${ch.course}</small></span></a>
     ${tocProg(ts.length, 'lessons done', ch.id)}
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list">${ts.map(x => x.id === id
-      ? `<li class="current" data-toc-t="${x.id}"><a href="#main" aria-current="page"><span class="anp-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a>${onPage}</li>`
-      : `<li data-toc-t="${x.id}"><a href="${x.id}.html"><span class="anp-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a></li>`).join('')}</ol></nav>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list">${ts.map(x => x.id === id
+      ? `<li class="current" data-toc-t="${x.id}"><a href="#main" aria-current="page"><span class="bk-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a>${onPage}</li>`
+      : `<li data-toc-t="${x.id}"><a href="${x.id}.html"><span class="bk-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a></li>`).join('')}</ol></nav>
     ${other(map.chapters[ci + 1])}
   </aside>`;
 }
 
 /* -------------------------------------------------------------- notes */
+
+/* The notes action row every course shares (assets/course/book.css,
+   wired by assets/course/book.js). */
+const actionRow = url => `<div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="${url}">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>`;
 
 /* Gives every h2 an id (kept if authored) for the "On this page" list. */
 function sectionIds(html) {
@@ -365,18 +369,19 @@ function notesPage(id) {
 <body data-topic="${id}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   ${tocBtn(`Chapter ${chapterNumber(ch.id)} contents`)}
   ${notesRail(id, sections)}
   <main class="tb-main" id="main">
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: `${t.title}: notes` }], depth)}
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/${id}.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter ${chapterNumber(ch.id)} &middot; Topic ${topicNumber(id)} of ${map.topics.length} ${BETA_PILL}</p>
-      <h1 class="anp-notes-title">${esc(t.title)}</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="anp-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<span class="anp-small">${minutes} min read</span>${chip(id)}</p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/${id}.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter ${chapterNumber(ch.id)} &middot; Topic ${topicNumber(id)} of ${map.topics.length} ${BETA_PILL}</p>
+      <h1 class="bk-title">${esc(t.title)}</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="bk-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<span class="bk-small">${minutes} min read</span>${chip(id)}</p>
+      ${actionRow(url)}
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 ${html}
     </article>
     ${disclaimer(html)}
@@ -385,11 +390,11 @@ ${html}
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js', 'course/book.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, meta: `<meta name="anp-topic" content="${id}">\n` }) + body;
+  return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, book: true, meta: `<meta name="anp-topic" content="${id}">\n` }) + body;
 }
 
 /* ------------------------------------------------------------ chapter */
@@ -405,7 +410,7 @@ function chapterPage(chId) {
   const ts = topicsOf(chId);
   const tools = ch.tools || {};
   const kinds = TOOL_KINDS.filter(([k]) => (tools[k] || []).length);
-  const toolGroups = kinds.map(([k, label]) => `<section class="anp-chap-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="anp-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
+  const toolGroups = kinds.map(([k, label]) => `<section class="bk-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="bk-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
   const title = courseTitle(ch.title, AP_LABELS);
   const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: anatomy and physiology lessons, notes, practice questions and study tools.`);
@@ -421,31 +426,31 @@ function chapterPage(chId) {
 <body data-chapter="${chId}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-chapter">
+<div class="tb-shell bk bk-chapter">
   ${tocBtn('Contents')}
   ${courseRail(chId)}
   <main class="tb-main" id="main">
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title }], depth)}
-    <header class="tb-chapter-head anp-chap-head">
+    <header class="tb-chapter-head bk-chap-head">
       <div>
         <p class="tb-chapter-eyebrow">Chapter ${n} of ${map.chapters.length} &middot; ${esc(partTitle(ch.part))}</p>
         <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
         <p class="tb-chapter-meta">${ts.length} topics &middot; A&amp;P ${ch.course} &middot; <span data-chap-meta="${chId}">not practiced yet</span></p>
       </div>
-      <p class="anp-chap-acts"><a class="anp-tb-btn solid" href="../practice.html?chapter=${chId}">Chapter quiz</a><a class="anp-tb-btn ghost" href="../exams.html?chapter=${chId}">System exam</a></p>
+      <p class="bk-chap-acts"><a class="bk-btn solid" href="../practice.html?chapter=${chId}">Chapter quiz</a><a class="bk-btn ghost" href="../exams.html?chapter=${chId}">System exam</a></p>
     </header>
-    <h2 class="anp-chap-h" id="h-topics">Topics</h2>
-    <ol class="anp-chap-list" aria-labelledby="h-topics">${ts.map(t => `<li class="anp-chap-row" data-topic="${t.id}"><span class="anp-chap-n">${topicNumber(t.id)}</span>${C.built.has(t.id)
-      ? `<a class="anp-chap-title" href="../lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<span class="anp-chap-btns"><a class="anp-tb-btn solid" href="../lessons/${t.id}.html" aria-label="Lesson: ${esc(t.title)}">Lesson</a><a class="anp-tb-btn ghost" href="../notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a></span>`
-      : `<span class="anp-chap-title anp-unbuilt">${esc(t.title)}</span><span class="anp-small">In a later part of the course</span>`}</li>`).join('')}</ol>
-    <h2 class="anp-chap-h" id="h-practice">Practice this chapter</h2>
-    <div class="anp-chap-practice">
-      <a class="anp-chap-card" href="../practice.html?chapter=${chId}"><b>Chapter quiz</b><span>Questions from this chapter's ${ts.length} topics.</span></a>
-      <a class="anp-chap-card" href="../exams.html?chapter=${chId}"><b>System exam</b><span>A timed exam on the whole chapter, up to 40 questions.</span></a>
-      <a class="anp-chap-card" href="../tools.html?chapter=${chId}"><b>Tools for this chapter</b><span>${toolSummary ? `${toolSummary} and more.` : 'Interactive study tools.'}</span></a>
+    <h2 class="bk-h" id="h-topics">Topics</h2>
+    <ol class="bk-list" aria-labelledby="h-topics">${ts.map(t => `<li class="bk-row" data-topic="${t.id}"><span class="bk-row-n">${topicNumber(t.id)}</span>${C.built.has(t.id)
+      ? `<a class="bk-row-title" href="../lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/${t.id}.html" aria-label="Lesson: ${esc(t.title)}">Lesson</a><a class="bk-btn ghost" href="../notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a></span>`
+      : `<span class="bk-row-title bk-unbuilt">${esc(t.title)}</span><span class="bk-small">In a later part of the course</span>`}</li>`).join('')}</ol>
+    <h2 class="bk-h" id="h-practice">Practice this chapter</h2>
+    <div class="bk-cards">
+      <a class="bk-card" href="../practice.html?chapter=${chId}"><b>Chapter quiz</b><span>Questions from this chapter's ${ts.length} topics.</span></a>
+      <a class="bk-card" href="../exams.html?chapter=${chId}"><b>System exam</b><span>A timed exam on the whole chapter, up to 40 questions.</span></a>
+      <a class="bk-card" href="../tools.html?chapter=${chId}"><b>Tools for this chapter</b><span>${toolSummary ? `${toolSummary} and more.` : 'Interactive study tools.'}</span></a>
     </div>
-    ${toolGroups ? `<h2 class="anp-chap-h" id="h-tools">In this chapter's tools</h2>
-    <div class="anp-chap-tools">${toolGroups}</div>` : ''}
+    ${toolGroups ? `<h2 class="bk-h" id="h-tools">In this chapter's tools</h2>
+    <div class="bk-tools">${toolGroups}</div>` : ''}
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Chapter navigation">${chLink(map.chapters[n - 2], 'prev')}${chLink(map.chapters[n], 'next')}</nav>
   </main>
 </div>
@@ -454,7 +459,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-chapter.js', 'anp-toc.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: `chapters/${chId}.html`, depth, ogType: 'website', jsonld }) + body;
+  return head({ title, desc, path: `chapters/${chId}.html`, depth, ogType: 'website', jsonld, book: true }) + body;
 }
 
 /* ------------------------------------------------------- core concept */
@@ -632,7 +637,7 @@ function learnPage() {
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-book">
+<div class="tb-shell bk bk-book">
   ${tocBtn('Contents')}
   ${courseRail(null, depth, true)}
   <main class="tb-main" id="main">
@@ -651,7 +656,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: 'learn.html', depth, ogType: 'website', jsonld }) + body;
+  return head({ title, desc, path: 'learn.html', depth, ogType: 'website', jsonld, book: true }) + body;
 }
 
 /* The course home. Laid out like ochem's home: a hero with the level card,

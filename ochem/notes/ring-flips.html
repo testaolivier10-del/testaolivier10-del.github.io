@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Alkanes &amp; Conformations</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Alkanes &amp; Conformations &middot; Section 26 of 123</p>
-    <h1>Ring flips</h1>
-    <a class="notes-onward-cta" href="../lessons/ring-flips.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="ring-flips">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-acids-bases"><span class="bk-toc-n">4</span>Acids &amp; Bases</a>
+    <a class="bk-toc-chap" href="../learn.html#m-alkanes-conformations"><span class="bk-toc-chap-n">5</span><span><b>Alkanes &amp; Conformations</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="newman"><a href="newman.html"><span class="bk-toc-n">23</span>Newman projections</a></li><li data-toc-t="cyclohexanes"><a href="cyclohexanes.html"><span class="bk-toc-n">24</span>Cyclohexanes</a></li><li data-toc-t="axial-equatorial"><a href="axial-equatorial.html"><span class="bk-toc-n">25</span>Axial/equatorial</a></li><li class="current" data-toc-t="ring-flips"><a href="#main" aria-current="page"><span class="bk-toc-n">26</span>Ring flips</a><div class="bk-toc-onpage"><p>On this page</p><a href="#what-a-ring-flip-does">What a ring flip does</a><a href="#drawing-the-other-chair">Drawing the other chair</a><a href="#the-path-between-the-two-chairs">The path between the two chairs</a><a href="#how-fast-the-ring-flips">How fast the ring flips</a><a href="#two-chairs-in-equilibrium">Two chairs in equilibrium</a><a href="#when-the-ring-stays-in-one">When the ring stays in one chair</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="conformational-analysis"><a href="conformational-analysis.html"><span class="bk-toc-n">27</span>Conformational analysis</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-stereochemistry"><span class="bk-toc-n">6</span>Stereochemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-alkanes-conformations">Alkanes &amp; Conformations</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Ring flips: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/ring-flips.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="alkanes-conformations">Alkanes &amp; Conformations</span> &middot; Section 26 of 123</p>
+      <h1 class="bk-title">Ring flips</h1>
+      <p class="bk-meta"><span class="bk-small">11 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/ring-flips.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="ring-flips" data-bk-ids="what-a-ring-flip-does drawing-the-other-chair the-path-between-the-two-chairs how-fast-the-ring-flips two-chairs-in-equilibrium when-the-ring-stays-in-one what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Picture one molecule of methylcyclohexane in a chair with its methyl group axial. A moment later, the same molecule is in its other chair, and the methyl is equatorial. No bond broke and nothing was added: the ring simply flexed. This change from one chair to the other is a <b>ring flip</b>, and at room temperature each molecule makes it about a hundred thousand times a second.</p>
 <p class="step-body">This page shows what a flip changes, what it leaves alone, and how to draw the result. It builds on the chair from <a class="chapter-ref" href="/ochem/notes/cyclohexanes.html">Cyclohexanes</a> and on the axial and equatorial positions from <a class="chapter-ref" href="/ochem/notes/axial-equatorial.html">Axial/equatorial</a>.</p>
@@ -136,14 +145,21 @@
 <p class="step-body">The next page, <a class="chapter-ref" href="/ochem/notes/conformational-analysis.html">Conformational analysis</a>, compares the two chairs of rings with several substituents and picks the lower-energy one. That comparison only matters because the ring can reach both chairs.</p>
 <p class="step-body"><b>Looking ahead:</b> on a ring, the E2 reaction (<a class="chapter-ref" href="/ochem/learn.html#m-substitution-elimination">Substitution &amp; Elimination</a>) needs its leaving group axial. A ring whose favored chair holds that group equatorial can still react, because it flips into the less favored chair, where the group is axial. A strong preference for the other chair does not stop this, but it makes the reaction slower, because fewer molecules are in the right chair at any moment.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="axial-equatorial.html"><span>Previous</span>Axial/equatorial</a><a class="notes-prevnext notes-next" href="conformational-analysis.html"><span>Next</span>Conformational analysis</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="axial-equatorial.html"><span>&larr; Section 25</span><b>Axial/equatorial</b></a><a class="tb-chapter-link next" href="conformational-analysis.html"><span>Section 27 &rarr;</span><b>Conformational analysis</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

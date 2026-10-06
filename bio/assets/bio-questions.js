@@ -149,7 +149,7 @@
         var verdict = g.correct ? 'Correct.' : g.score > 0 && part ? part : 'Not quite.';
         // On the study pages, the shared feedback box (assets/course/study.css).
         fb.innerHTML = (studyPage()
-          ? '<p class="cx-fb-head">' + verdict + '</p>' + (q.why && q.why.correct ? '<p class="cx-explain">' + html(q.why.correct) + '</p>' : '')
+          ? '<p class="cx-fb-head"><span class="bio-verdict ' + (g.correct ? 'ok' : 'no') + '">' + verdict + '</span></p>' + (q.why && q.why.correct ? '<p class="cx-explain">' + html(q.why.correct) + '</p>' : '')
           : '<p><span class="bio-verdict ' + (g.correct ? 'ok' : 'no') + '">' + verdict + '</span> ' + (q.why && q.why.correct ? html(q.why.correct) : '') + '</p>') + (detailHtml || '') +
           (!g.correct && opts.record !== false ? '<p class="bio-small">Added to your review queue.</p>' : '');
         fb.classList.toggle('is-right', !!g.correct); fb.classList.toggle('is-wrong', !g.correct);

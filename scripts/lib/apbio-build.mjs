@@ -203,7 +203,7 @@ export const stripMark = s => String(s).replace(/\bAP®?\s*/g, '').replace(/\s+/
 export const NOINDEX = '<meta name="robots" content="noindex, follow">';
 
 /* depth: '' for pages in bio/, '../' one folder down. */
-export function head({ title, desc, path, depth, ogType = 'article', jsonld, meta = '', noindex = false }) {
+export function head({ title, desc, path, depth, ogType = 'article', jsonld, meta = '', noindex = false, book = false }) {
   const url = `${SITE}${BASE}${path}`;
   const up = depth + '../';
   desc = stripMark(desc);
@@ -237,7 +237,9 @@ ${meta}<link rel="stylesheet" href="${up}assets/theme.css">
 <script src="${up}assets/hub-progress.js" defer></script>
 <script src="${up}assets/chime.js" defer></script>
 <script src="${up}assets/site-chrome.js" defer></script>
-<link rel="stylesheet" href="${depth}assets/bio.css">
+${book ? `<link rel="stylesheet" href="${up}assets/course/base.css">
+<link rel="stylesheet" href="${up}assets/course/book.css">
+` : ''}<link rel="stylesheet" href="${depth}assets/bio.css">
 <link rel="stylesheet" href="${up}assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">

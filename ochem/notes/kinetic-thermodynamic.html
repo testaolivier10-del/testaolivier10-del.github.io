@@ -30,6 +30,8 @@
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
 <script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Conjugation &amp; Pericyclic Reactions</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Conjugation &amp; Pericyclic Reactions &middot; Section 60 of 123</p>
-    <h1>Kinetic vs thermodynamic control</h1>
-    <a class="notes-onward-cta" href="../lessons/kinetic-thermodynamic.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="kinetic-thermodynamic">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-ir-mass-spec"><span class="bk-toc-n">10</span>IR &amp; Mass Spectrometry</a>
+    <a class="bk-toc-chap" href="../learn.html#m-conjugation"><span class="bk-toc-chap-n">11</span><span><b>Conjugation &amp; Pericyclic Reactions</b><small>6 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 6 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="conjugated-systems"><a href="conjugated-systems.html"><span class="bk-toc-n">58</span>Conjugated systems</a></li><li data-toc-t="diene-addition"><a href="diene-addition.html"><span class="bk-toc-n">59</span>1,2- vs 1,4-addition</a></li><li class="current" data-toc-t="kinetic-thermodynamic"><a href="#main" aria-current="page"><span class="bk-toc-n">60</span>Kinetic vs thermodynamic control</a><div class="bk-toc-onpage"><p>On this page</p><a href="#faster-or-more-stable-two-ways">Faster or more stable: two ways to win</a><a href="#a-hill-and-a-valley-are">A hill and a valley are different measurements</a><a href="#reversibility-decides-which-comparison-counts">Reversibility decides which comparison counts</a><a href="#where-the-switch-does-not-apply">Where the switch does not apply</a><a href="#a-preview-two-cases-from-later">A preview: two cases from later chapters</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="diels-alder"><a href="diels-alder.html"><span class="bk-toc-n">61</span>The Diels–Alder reaction</a></li><li data-toc-t="uv-vis"><a href="uv-vis.html"><span class="bk-toc-n">62</span>UV-Vis spectroscopy</a></li><li data-toc-t="electrocyclic-sigmatropic"><a href="electrocyclic-sigmatropic.html"><span class="bk-toc-n">63</span>Electrocyclic &amp; sigmatropic reactions</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-aromatic-chemistry"><span class="bk-toc-n">12</span>Aromatic Chemistry</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-conjugation">Conjugation &amp; Pericyclic Reactions</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Kinetic vs thermodynamic control: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/kinetic-thermodynamic.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="conjugation">Conjugation &amp; Pericyclic Reactions</span> &middot; Section 60 of 123</p>
+      <h1 class="bk-title">Kinetic vs thermodynamic control</h1>
+      <p class="bk-meta"><span class="bk-small">8 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/kinetic-thermodynamic.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="kinetic-thermodynamic" data-bk-ids="faster-or-more-stable-two-ways a-hill-and-a-valley-are reversibility-decides-which-comparison-counts where-the-switch-does-not-apply a-preview-two-cases-from-later what-carries-forward">
 <!-- notes:start -->
 <p class="step-body"><a class="chapter-ref" href="/ochem/notes/diene-addition.html">1,2- vs 1,4-addition</a> showed that HBr and buta-1,3-diene give mostly the 1,2-product at &minus;80&nbsp;&deg;C (about 80:20) and mostly the 1,4-product at 40&nbsp;&deg;C (about 15:85), from one allylic cation by one mechanism. This page turns that result into a rule for any reaction in which one intermediate can give two products.</p>
 
@@ -139,14 +148,21 @@
 
 <p class="step-body">When a question asks which of two products dominates, first decide whether the product-forming step can reverse. That answer tells you which comparison to make: the hills if it cannot, the valleys if it can. Watch the stated conditions too. A strikingly low temperature, such as &minus;78&nbsp;&deg;C, usually signals that the question wants the kinetic product.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="diene-addition.html"><span>Previous</span>1,2- vs 1,4-addition</a><a class="notes-prevnext notes-next" href="diels-alder.html"><span>Next</span>The Diels–Alder reaction</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="diene-addition.html"><span>&larr; Section 59</span><b>1,2- vs 1,4-addition</b></a><a class="tb-chapter-link next" href="diels-alder.html"><span>Section 61 &rarr;</span><b>The Diels–Alder reaction</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

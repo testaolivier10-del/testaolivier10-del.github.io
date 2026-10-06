@@ -115,6 +115,14 @@ a.bio-tag:hover{text-decoration:underline;}
 .bio-credit{display:block;font-size:12px;margin-top:3px;}
 .bio-figimg{position:relative;display:inline-block;max-width:100%;}
 .bio-figimg img{display:block;max-width:100%;height:auto;border-radius:10px;background:#fff;}
+/* Dark mode: the diagrams are SVG files drawn on white in the course palette
+   (the Okabe-Ito hues above), shown as <img>, so page tokens cannot reach
+   inside them. Inverting lightness and turning the hue back round keeps every
+   hue in place while light fills go dark and dark strokes and labels go light,
+   the same swap the A&P figures make with their dark tokens; the white ground
+   lands near the dark card surface. Follows the site's theme toggle. */
+:root[data-theme="dark"] .bio-figimg img{filter:invert(.88) hue-rotate(180deg) saturate(1.25) brightness(1.05);}
+@media print{:root[data-theme="dark"] .bio-figimg img{filter:none;}}
 .bio-mask{position:absolute;border:0;padding:0;margin:0;background:transparent;cursor:default;color:transparent;border-radius:4px;}
 .bio-mask span{position:absolute;left:-9999px;}
 .bio-labels-hidden .bio-mask{background:var(--bio-mask);outline:2px solid var(--cink);cursor:pointer;}
@@ -270,115 +278,9 @@ a.gl{cursor:pointer;}
 .bio-filter input,.bio-filter select{padding:8px 11px;border-radius:10px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--paper);color:var(--ink);font:700 14px var(--font-ui);}
 
 
-/* ============ Chapter and notes textbook frame (redesign)
-   The ochem textbook shell (theme.css tb-*) in the course's coral, a contents
-   rail beside the page; bio-toc.js paints progress and chips. */
-.bio-tb{--accent:var(--cink);--tint-accent:var(--ctint);}
-.bio-tb .bio-crumb{margin:0 0 14px;}
-.bio-tb .tb-toc-btn{justify-self:start;}
-.bio-tb .tb-toc-topic{align-items:flex-start;line-height:1.35;}
-.bio-tb .tb-toc-topic .tb-toc-tick{margin-top:2px;}
-.bio-tb .tb-toc-topic.read .tb-toc-tick::after{border-color:var(--paper);}
-.bio-tb a.tb-toc-modhead{text-decoration:none;}
-.bio-tb .tb-toc-modhead[aria-current]{background:var(--ctint);}
-.bio-tb .tb-toc-modhead.bio-unbuilt{cursor:default;color:var(--muted);}
-.bio-toc-group{font:900 10.5px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:14px 6px 4px;}
-.bio-toc-group:first-child{margin-top:2px;}
-/* Notes rail: this chapter, the current topic open to its sections. */
-.bio-notes-rail{gap:12px;}
-.bio-toc-chap{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;background:var(--ctint);color:var(--cink);text-decoration:none;}
-.bio-toc-chap-n{flex-shrink:0;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:var(--cink);color:var(--paper);font:900 13px var(--font-ui);}
-.bio-toc-chap b{display:block;font:900 14px/1.25 var(--font-ui);}
-.bio-toc-chap small{display:block;font:800 11.5px var(--font-ui);}
-.bio-toc-other{display:flex;gap:9px;align-items:center;padding:6px;border-radius:8px;font:800 12.5px var(--font-ui);color:var(--muted);text-decoration:none;}
-.bio-toc-other:hover{background:var(--hover-tint);color:var(--ink);}
-.bio-toc-other .bio-toc-n{background:var(--line);color:var(--muted);}
-.bio-toc-list{list-style:none;margin:0;padding:0;}
-.bio-toc-list>li>a{display:flex;gap:9px;align-items:flex-start;padding:6px;border-radius:8px;font:700 12.5px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
-.bio-toc-list>li>a:hover{background:var(--hover-tint);color:var(--ink);}
-.bio-toc-n{flex-shrink:0;min-width:28px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:6px;display:grid;place-items:center;background:var(--ctint);color:var(--cink);font:900 10.5px var(--font-mono);}
-.bio-toc-list .read .bio-toc-n,.bio-toc-list .current .bio-toc-n{background:var(--cink);color:var(--paper);}
-.bio-toc-list .current>a{background:var(--ctint);color:var(--cink);font-weight:900;}
-.bio-toc-onpage{margin:4px 0 8px 43px;border-left:2px solid var(--ctint);padding-left:10px;}
-.bio-toc-onpage p{margin:4px 0;font:900 10px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-.bio-toc-onpage a{display:block;padding:4px 0;font:700 12px/1.35 var(--font-ui);color:var(--muted);text-decoration:none;}
-.bio-toc-onpage a:hover{color:var(--cink);}
-/* Mastery chip (chapter rows, notes header). */
-.bio-tb-chip{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font:800 11.5px var(--font-ui);padding:4px 10px;border-radius:999px;background:var(--surface2);color:var(--muted);}
-.bio-tb-chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.55;}
-.bio-tb-chip.mastered{background:var(--tint-good);color:var(--good-text);}
-.bio-tb-chip.learning{background:var(--tint-amber);color:var(--amber-text);}
-.bio-tb-chip.started{background:var(--ctint);color:var(--cink);}
-.bio-tb-chip:is(.mastered,.learning,.started)::before{opacity:1;}
-.bio-tb-btn{display:inline-flex;align-items:center;font:900 13px var(--font-ui);text-decoration:none;padding:8px 14px;border-radius:11px;white-space:nowrap;}
-.bio-tb-btn.solid{background:var(--navy);color:var(--on-accent);}
-.bio-tb-btn.solid:hover{color:var(--on-accent);filter:brightness(1.08);}
-.bio-tb-btn.ghost{background:var(--surface2);color:var(--ink);}
-.bio-tb-btn.ghost:hover{background:var(--hover-tint);color:var(--ink);}
-/* Chapter page. */
-.bio-unit .tb-main{max-width:none;}
-.bio-unit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px 20px;flex-wrap:wrap;}
-.bio-unit-acts{display:flex;gap:8px;margin:0;}
-.bio-unit-h{font:900 12px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:34px 0 10px;}
-.bio-unit-h#h-topics{margin-top:22px;}
-.bio-unit-list{list-style:none;margin:0;padding:0;}
-.bio-unit-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid var(--line-soft,var(--line));}
-.bio-unit-n{width:30px;height:30px;border-radius:9px;background:var(--ctint);color:var(--cink);display:flex;align-items:center;justify-content:center;font:900 12px var(--font-mono);}
-.bio-unit-title{font:900 16px/1.35 var(--font-ui);color:var(--ink);text-decoration:none;}
-a.bio-unit-title:hover{color:var(--cink);}
-.bio-unit-row .bio-tb-chip{min-width:96px;justify-content:center;}
-.bio-unit-btns{display:flex;gap:6px;}
-.bio-unit-practice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
-.bio-unit-card{display:block;background:var(--white);border-radius:var(--radius-lg);padding:18px 20px;box-shadow:var(--lift);text-decoration:none;color:var(--ink);}
-.bio-unit-card:hover{box-shadow:var(--lift-lg);color:var(--ink);}
-.bio-unit-card b{display:block;font:900 15.5px var(--font-ui);margin-bottom:4px;}
-.bio-unit-card span{font:700 13px/1.45 var(--font-ui);color:var(--muted);}
-/* Learn page: the course as one textbook (bio-book.js). */
-.bio-book .tb-main{max-width:760px;}
-.bio-book .bio-filter{margin:0;color:var(--muted);}
-.bio-book .tb-chapter-title:focus{outline:none;}
-.bio-book .tb-toc-mod[hidden]{display:none;}
-.bio-book-sec{padding:30px 0 12px;border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
-.bio-book-sec:last-of-type{border-bottom:0;}
-.bio-book-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-bottom:12px;}
-.bio-book-head h2{display:flex;gap:10px;align-items:baseline;font:900 clamp(19px,2.4vw,23px)/1.25 var(--font-ui);letter-spacing:-.01em;margin:0;}
-.bio-book-head h2 .bio-toc-n{position:relative;top:-2px;}
-.bio-book-acts{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.bio-book .bio-prose{max-width:none;font-size:15.5px;}
-.bio-book .bio-prose h3{font-size:18px;margin:26px 0 10px;scroll-margin-top:calc(var(--site-header-h,112px) + 14px);}
-.bio-book-wait{font:700 13px var(--font-ui);color:var(--muted);}
-.bio-book-err{color:var(--bad-text,#b3261e);}
-.tb-static-toc h1{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);margin:0 0 8px;}
-.tb-static-chapter h2{font-size:18px;margin:22px 0 6px;}
-@media (max-width:700px){.bio-book-acts .bio-tb-chip{display:none;}}
-/* Notes page. */
-.bio-notes .tb-main{max-width:720px;}
-.bio-notes-head{margin-bottom:24px;}
-.bio-notes-eyebrow{font:900 11.5px var(--font-ui);letter-spacing:.12em;text-transform:uppercase;color:var(--cink);margin:0 0 6px;}
-.bio-notes-title{font:900 clamp(26px,3.6vw,34px)/1.15 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;max-width:none;}
-.bio-notes-meta{align-items:center;}
-.bio-notes-meta .bio-tag{font-size:11.5px;padding:3px 10px;}
-.bio-pillbar{position:sticky;top:calc(var(--site-header-h,112px) + 10px);z-index:5;height:0;display:flex;justify-content:flex-end;align-items:flex-start;}
-.bio-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px 8px 12px;border-radius:999px;background:var(--cink);color:var(--paper);font:900 12.5px var(--font-ui);text-decoration:none;box-shadow:var(--lift-sm);}
-.bio-pill:hover{color:var(--paper);filter:brightness(1.08);}
-.bio-pill i{font-style:normal;display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--paper);color:var(--cink);font-size:9px;}
-.bio-notes .bio-notes-head{padding-right:170px;}
-.bio-notes .bio-prose{max-width:none;font-size:15.5px;}
-.bio-notes .bio-prose h2{margin:36px 0 12px;padding-top:22px;border-top:1px solid var(--line);scroll-margin-top:calc(var(--site-header-h,112px) + 16px);}
-.bio-notes .bio-prose h2:first-child{margin-top:0;border-top:0;padding-top:0;}
-@media (max-width:900px){
-  .bio-pillbar{position:fixed;top:auto;bottom:calc(84px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);height:auto;z-index:20;}
-  .bio-pill{box-shadow:var(--lift);}
-  .bio-notes .bio-notes-head{padding-right:0;}
-}
-@media (max-width:700px){
-  .bio-unit-row{grid-template-columns:30px minmax(0,1fr);gap:8px 12px;}
-  .bio-unit-n{grid-row:1 / span 3;align-self:start;}
-  .bio-unit-row .bio-tb-chip,.bio-unit-btns,.bio-unit-row .bio-small{grid-column:2;justify-self:start;}
-  .bio-unit-practice{grid-template-columns:minmax(0,1fr);}
-  .bio-tb .tb-chapter-nav{flex-direction:column;}
-  .bio-tb .tb-chapter-link{max-width:100%;}
-}
+/* ============ Unit, notes and Learn pages
+   The textbook layout is shared by every course: assets/course/book.css
+   (.bk-*), loaded by those pages after base.css. Only Bio specifics stay. */
 
 @media (max-width:560px){
   .bio-part h2{font-size:19px;}
@@ -395,11 +297,11 @@ a.bio-unit-title:hover{color:var(--cink);}
 
 /* Learn: the book column keeps the footer below the fold while the chosen
    chapter's topics load in order (bio-book.js), so nothing on screen moves. */
-.bio-book #bio-book{min-height:100vh;}
+#bio-book{min-height:100vh;}
 
 /* ============================================================ AP Biology additions */
 /* 44 px touch targets on every control a student answers with. */
-.bio-opt,.bio-ls-go,.bio-ls-back,.bio-tb-btn,.bio-check,.bio-dir button,.bio-order button,.bio-num input{min-height:44px;}
+.bio-opt,.bio-ls-go,.bio-ls-back,.bk-btn,.bio-check,.bio-dir button,.bio-order button,.bio-num input{min-height:44px;}
 .bio-order button{min-width:44px;}
 .bio-foot .report-btn,.bio-report-page .report-btn{min-height:44px;}
 .bio-disclaimer{color:var(--muted);font:600 12.5px/1.5 var(--font-ui);max-width:760px;margin:8px 0 0;}
@@ -458,11 +360,6 @@ table.bio-data td{font-variant-numeric:tabular-nums;}
 .bio-num input:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
 .bio-num-unit{font:800 15px var(--font-ui);color:var(--muted);}
 
-/* Unit page. */
-.bio-unit .tb-main{max-width:none;}
-.bio-unit-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px 20px;flex-wrap:wrap;}
-.bio-unit-acts{display:flex;gap:8px;margin:0;flex-wrap:wrap;}
-.bio-unit-n{min-width:34px;width:auto;padding:0 4px;}
 
 
 /* Glossary page: its styles are inlined in bio/glossary.html (build-apbio.mjs, GLOSSARY_CSS). */
