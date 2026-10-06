@@ -1,0 +1,188 @@
+{
+ "id": "frq-copper-solution",
+ "type": "long",
+ "points": 10,
+ "title": "Making and measuring copper(II) solutions",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "solutions",
+  "solution-particle-models",
+  "beer-lambert-law"
+ ],
+ "practices": [
+  "2.A",
+  "3.A",
+  "3.C",
+  "5.F",
+  "6.G"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Copper(II) nitrate standards",
+  "text": "<p>A student needs a set of copper(II) nitrate, Cu(NO₃)₂ (187.56 g/mol), standards to find the copper(II) concentration of a pool-cleaning solution. She first makes 100.0 mL of 0.200 M Cu(NO₃)₂ stock, then dilutes portions of it to make the standards below and measures their absorbance at 810 nm in a 1.00 cm cuvette, after zeroing the spectrophotometer with water. The pool-cleaning solution gives an absorbance of 0.413.</p>",
+  "table": {
+   "caption": "Absorbance of the standards at 810 nm",
+   "cols": [
+    "[Cu²⁺] (M)",
+    "Absorbance"
+   ],
+   "rows": [
+    [
+     "0.0100",
+     "0.119"
+    ],
+    [
+     "0.0200",
+     "0.235"
+    ],
+    [
+     "0.0300",
+     "0.356"
+    ],
+    [
+     "0.0400",
+     "0.471"
+    ],
+    [
+     "0.0500",
+     "0.592"
+    ]
+   ]
+  }
+ },
+ "graphSpec": {
+  "type": "line",
+  "x": {
+   "label": "[Cu²⁺] (M)"
+  },
+  "y": {
+   "label": "Absorbance"
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the mass of Cu(NO₃)₂ needed to make 100.0 mL of 0.200 M stock.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Correct mass with setup: 0.200 mol/L × 0.1000 L × 187.56 g/mol = 3.75 g.",
+     "accept": [
+      "3.75 g",
+      "3.751 g"
+     ]
+    }
+   ],
+   "sample": "moles = 0.200 mol/L × 0.1000 L = 0.0200 mol; mass = 0.0200 mol × 187.56 g/mol = 3.751 g, so 3.75 g."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Describe</b> how the student should prepare the stock solution, naming the equipment.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Weighs the calculated mass on an analytical balance and transfers it to a 100-mL volumetric flask.",
+     "accept": [
+      "analytical balance",
+      "100.0 mL volumetric flask"
+     ]
+    },
+    {
+     "point": "Dissolves it in some water, then adds water until the bottom of the curved liquid surface is on the mark, and mixes.",
+     "accept": [
+      "dilute to the mark",
+      "fill to the line and invert"
+     ]
+    }
+   ],
+   "sample": "Weigh 3.751 g of Cu(NO₃)₂ on an analytical balance and transfer all of it to a 100-mL volumetric flask. Add about 50 mL of water and swirl until it dissolves, then add water until the bottom of the curved liquid surface sits on the mark. Stopper and invert several times to mix."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the volume of 0.200 M stock needed to make 50.00 mL of the 0.0400 M standard.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Uses M₁V₁ = M₂V₂ with V₂ as the total volume: 10.00 mL.",
+     "accept": [
+      "10.0 mL",
+      "10.00 mL"
+     ]
+    }
+   ],
+   "sample": "V₁ = M₂V₂ / M₁ = (0.0400 M × 50.00 mL) / 0.200 M = 10.00 mL of stock, diluted to a total of 50.00 mL."
+  },
+  {
+   "label": "d",
+   "prompt": "In the box on your answer sheet, <b>draw</b> a particle diagram of the solution showing one Cu²⁺ ion, the correct number of NO₃⁻ ions, and at least two water molecules around one cation and one anion.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Shows two NO₃⁻ ions (each drawn as a single unit) for one Cu²⁺ ion, separated from each other.",
+     "accept": [
+      "one Cu²⁺ and two separate NO₃⁻"
+     ]
+    },
+    {
+     "point": "Orients water correctly: oxygen toward Cu²⁺ and a hydrogen toward NO₃⁻.",
+     "accept": [
+      "O end toward the cation, H end toward the anion"
+     ]
+    }
+   ],
+   "sample": "The drawing shows one Cu²⁺ and two separate NO₃⁻ ions spread apart. Around Cu²⁺, water molecules point their oxygen atoms toward the ion; around an NO₃⁻ ion, water molecules point one hydrogen toward the ion."
+  },
+  {
+   "label": "e",
+   "prompt": "On the grid on your answer sheet, <b>plot</b> the absorbance of the standards against concentration and <b>draw</b> a best-fit line.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Five points correctly plotted with labelled axes and a straight best-fit line through or near the origin.",
+     "accept": [
+      "straight line through the points and the origin"
+     ]
+    }
+   ],
+   "sample": "The five points fall on a straight line through the origin, rising about 0.118 in absorbance for every 0.0100 M."
+  },
+  {
+   "label": "f",
+   "prompt": "<b>Calculate</b> the concentration of Cu²⁺ in the pool-cleaning solution.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Uses the slope (about 11.8 M⁻¹) or the graph to find c = A ÷ slope = 0.0350 M.",
+     "accept": [
+      "0.0350 M",
+      "0.035 M"
+     ]
+    }
+   ],
+   "sample": "Slope = about 0.592 / 0.0500 M = 11.8 M⁻¹ (best fit 11.82 M⁻¹). c = 0.413 / 11.82 M⁻¹ = 0.0349 M, so 0.0350 M."
+  },
+  {
+   "label": "g",
+   "prompt": "Water drops were left on the outside of the cuvette when the pool solution was measured, but not for the standards. <b>Predict</b> whether the calculated Cu²⁺ concentration is too high, too low or unaffected, and <b>justify</b> your prediction.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Predicts too high.",
+     "accept": [
+      "too high",
+      "greater than the true value"
+     ]
+    },
+    {
+     "point": "Justifies: the drops scatter or absorb light, so less light reaches the detector and the measured absorbance is too high; a higher A gives a higher c.",
+     "accept": [
+      "higher absorbance read from the curve gives a higher concentration"
+     ]
+    }
+   ],
+   "sample": "Too high. The water drops scatter some of the light, so less reaches the detector and the instrument reports an absorbance larger than the copper(II) alone causes. Reading a larger absorbance on the calibration line gives a larger concentration."
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "kinetic-energy": {
+  "def": "The energy of motion, KE = ½mv². The average kinetic energy of gas particles is proportional to the kelvin temperature."
+ },
+ "kmt": {
+  "def": "The kinetic molecular theory: a model of an ideal gas as tiny particles in constant random motion that do not attract each other and collide elastically, with average kinetic energy proportional to kelvin temperature."
+ },
+ "thermal-energy": {
+  "def": "The energy a sample holds because its particles move. Heating a sample adds thermal energy."
+ },
+ "maxwell-boltzmann": {
+  "def": "A graph of the fraction of gas particles at each speed (or energy). A higher temperature or a lighter gas moves its peak to higher speeds and flattens it."
+ }
+}

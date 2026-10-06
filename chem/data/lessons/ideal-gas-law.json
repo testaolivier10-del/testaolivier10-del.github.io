@@ -1,0 +1,91 @@
+{
+ "topic": "ideal-gas-law",
+ "hook": "A party balloon shrinks in a cold car and swells in the sun, and a bike tire that was firm last night feels soft on a frosty morning. These are not separate facts. Every gas, whatever its molecules, follows one equation linking pressure, volume, temperature and amount.",
+ "prereq": [
+  {
+   "q": "What is 25 °C in kelvin?",
+   "options": [
+    "298.15 K",
+    "248.15 K",
+    "25 K"
+   ],
+   "correct": 0,
+   "why": "K = °C + 273.15.",
+   "review": "math-units"
+  },
+  {
+   "q": "How many torr are in 1 atm?",
+   "options": [
+    "760",
+    "101.325",
+    "1,000"
+   ],
+   "correct": 0,
+   "why": "1 atm = 760 torr = 101.325 kPa.",
+   "review": "phases-of-matter"
+  },
+  {
+   "q": "How many moles are in 8.00 g of O₂ (32.00 g/mol)?",
+   "options": [
+    "0.250 mol",
+    "4.00 mol",
+    "256 mol"
+   ],
+   "correct": 0,
+   "why": "8.00 g ÷ 32.00 g/mol = 0.250 mol.",
+   "review": "moles-molar-mass"
+  }
+ ],
+ "figure": {
+  "figure": "partial-pressures",
+  "caption": "Gases in a mixture each exert their own partial pressure; the total is the sum."
+ },
+ "chain": [
+  {
+   "cause": "Gas pressure comes from particles hitting the walls",
+   "effect": "more particles (n) or faster particles (higher T) raise the pressure"
+  },
+  {
+   "cause": "Squeezing the same particles into less volume makes them hit the walls more often",
+   "effect": "pressure and volume are inversely proportional at fixed n and T"
+  },
+  {
+   "cause": "These proportions combine into PV = nRT",
+   "effect": "knowing three variables gives the fourth, with T in kelvin and R matched to the units"
+  },
+  {
+   "cause": "Each gas in a mixture hits the walls independently",
+   "effect": "partial pressures add, and each equals its mole fraction times the total"
+  }
+ ],
+ "ideas": [
+  "PV = nRT. T in kelvin; with atm and L, R = 0.08206 L·atm/(mol·K).",
+  "For one sample under new conditions: P₁V₁/T₁ = P₂V₂/T₂.",
+  "At STP (0 °C, 1 atm) one mole of gas fills 22.4 L. Molar mass from gas data: M = mRT/PV = dRT/P.",
+  "P(total) = P(A) + P(B) + …; P(A) = X(A) × P(total)."
+ ],
+ "misconception": {
+  "wrong": "Doubling the temperature from 20 °C to 40 °C doubles the pressure of a sealed gas.",
+  "right": "Pressure is proportional to kelvin temperature. 20 °C to 40 °C is 293.15 K to 313.15 K, a rise of only about 7%."
+ },
+ "check": [
+  "chem-ideal-gas-law-1",
+  "chem-ideal-gas-law-2",
+  "chem-ideal-gas-law-5",
+  "chem-ideal-gas-law-6",
+  "chem-ideal-gas-law-13",
+  "chem-ideal-gas-law-15",
+  "chem-ideal-gas-law-17"
+ ],
+ "summary": "The ideal gas law, PV = nRT, links pressure, volume, kelvin temperature and moles of a gas; R must match the units. The combined gas law follows one sample through a change. The law also gives molar mass and density, and in a mixture each gas has a partial pressure equal to its mole fraction times the total.",
+ "connections": [
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Pressure and its units (Solids, Liquids, and Gases)"
+  },
+  {
+   "href": "../notes/kinetic-molecular-theory.html",
+   "label": "Next: why gases behave this way (Kinetic Molecular Theory)"
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "photon-energy": {
+  "def": "The energy of one photon, E = hν = hc/λ, where h = 6.626 × 10⁻³⁴ J·s is Planck's constant. Energy levels are quantized, so only photons of matching energy are absorbed or emitted."
+ },
+ "speed-of-light": {
+  "def": "c = 2.998 × 10⁸ m/s, the speed of all electromagnetic radiation in a vacuum; c = λν links wavelength and frequency."
+ }
+}

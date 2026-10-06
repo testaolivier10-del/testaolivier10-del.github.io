@@ -1,0 +1,833 @@
+{
+ "stimuli": {
+  "intermolecular-forces-s1": {
+   "kind": "table",
+   "title": "Three liquids of nearly equal molar mass",
+   "text": "<p>A student looks up three compounds with nearly the same molar mass.</p>",
+   "table": {
+    "caption": "Molar mass and normal boiling point",
+    "cols": [
+     "Compound",
+     "Structure",
+     "Molar mass (g/mol)",
+     "Electrons per molecule",
+     "Boiling point (°C)"
+    ],
+    "rows": [
+     [
+      "Butane",
+      "CH₃CH₂CH₂CH₃",
+      "58.12",
+      "34",
+      "−0.5"
+     ],
+     [
+      "Acetone",
+      "(CH₃)₂C=O",
+      "58.08",
+      "32",
+      "56.1"
+     ],
+     [
+      "1-Propanol",
+      "CH₃CH₂CH₂OH",
+      "60.10",
+      "34",
+      "97.2"
+     ]
+    ]
+   }
+  },
+  "intermolecular-forces-s2": {
+   "kind": "table",
+   "title": "Halogens and noble gases",
+   "text": "<p>Boiling points of two families of nonpolar substances.</p>",
+   "table": {
+    "caption": "Electrons per particle and normal boiling point",
+    "cols": [
+     "Substance",
+     "Electrons per particle",
+     "Boiling point (°C)"
+    ],
+    "rows": [
+     [
+      "F₂",
+      "18",
+      "−188"
+     ],
+     [
+      "Cl₂",
+      "34",
+      "−34"
+     ],
+     [
+      "Br₂",
+      "70",
+      "59"
+     ],
+     [
+      "I₂",
+      "106",
+      "184"
+     ],
+     [
+      "Ne",
+      "10",
+      "−246"
+     ],
+     [
+      "Ar",
+      "18",
+      "−186"
+     ],
+     [
+      "Kr",
+      "36",
+      "−153"
+     ]
+    ]
+   }
+  },
+  "intermolecular-forces-s3": {
+   "kind": "particle",
+   "title": "Four water molecules",
+   "html": "<svg viewBox=\"0 0 270 240\" width=\"270\" height=\"240\" role=\"img\" aria-label=\"Four water molecules with four labelled dashed lines. W runs from an H of the top-left molecule to the O of the bottom-left molecule. X runs from an H of the bottom-right molecule to the O of the top-right molecule. Y runs from the O of the bottom-left molecule to the O of the bottom-right molecule. Z runs from an H of the top-left molecule to an H of the top-right molecule.\"><rect x=\"2\" y=\"2\" width=\"266\" height=\"236\" rx=\"8\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><line x1=\"69.9\" y1=\"92.6\" x2=\"80.0\" y2=\"190.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"177.4\" y1=\"180.1\" x2=\"170.0\" y2=\"80.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"80.0\" y1=\"190.0\" x2=\"190.0\" y2=\"190.0\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><line x1=\"69.9\" y1=\"67.4\" x2=\"160.1\" y2=\"67.4\" stroke=\"#0072B2\" stroke-width=\"2\" stroke-dasharray=\"5 3\"/><circle cx=\"69.9\" cy=\"67.4\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"69.9\" cy=\"92.6\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"60.0\" cy=\"80.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"160.1\" cy=\"92.6\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"160.1\" cy=\"67.4\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"170.0\" cy=\"80.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"92.6\" cy=\"199.9\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"67.4\" cy=\"199.9\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"80.0\" cy=\"190.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"177.4\" cy=\"180.1\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"202.6\" cy=\"180.1\" r=\"7\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.2\"/><circle cx=\"190.0\" cy=\"190.0\" r=\"12\" fill=\"#D55E00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"62.9\" y=\"145.3\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">W</text><text x=\"185.7\" y=\"134.1\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">X</text><text x=\"135.0\" y=\"186.0\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">Y</text><text x=\"115.0\" y=\"63.4\" font-size=\"15\" font-weight=\"700\" fill=\"#1D44A6\" text-anchor=\"middle\">Z</text></svg><p>Key: orange circle, oxygen atom; white circle, hydrogen atom; dashed lines W, X, Y and Z, possible attractions between molecules.</p>"
+  },
+  "intermolecular-forces-s4": {
+   "kind": "graph",
+   "title": "Boiling points of hydrides",
+   "text": "<p>Normal boiling points of the compounds of hydrogen with elements in groups 14 to 16, plotted against the period of the second element.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Period of the non-hydrogen element",
+     "min": 2,
+     "max": 5,
+     "step": 1
+    },
+    "y": {
+     "label": "Boiling point",
+     "unit": "°C",
+     "min": -180,
+     "max": 120,
+     "step": 60
+    },
+    "series": [
+     {
+      "name": "Group 14 (CH₄, SiH₄, GeH₄, SnH₄)",
+      "points": [
+       [
+        2,
+        -161.5
+       ],
+       [
+        3,
+        -111.9
+       ],
+       [
+        4,
+        -88.5
+       ],
+       [
+        5,
+        -51.8
+       ]
+      ]
+     },
+     {
+      "name": "Group 15 (NH₃, PH₃, AsH₃, SbH₃)",
+      "points": [
+       [
+        2,
+        -33.3
+       ],
+       [
+        3,
+        -87.7
+       ],
+       [
+        4,
+        -62.5
+       ],
+       [
+        5,
+        -17.0
+       ]
+      ]
+     },
+     {
+      "name": "Group 16 (H₂O, H₂S, H₂Se, H₂Te)",
+      "points": [
+       [
+        2,
+        100.0
+       ],
+       [
+        3,
+        -60.3
+       ],
+       [
+        4,
+        -41.3
+       ],
+       [
+        5,
+        -2.2
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-intermolecular-forces-1",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s1",
+   "q": "Which claim about the data is best supported?",
+   "options": [
+    "Molar mass cannot account for the boiling points, because the three are nearly equal in mass yet differ by about 98 °C.",
+    "Molar mass accounts for the boiling points, because 1-propanol is the heaviest and boils highest of the three compounds.",
+    "Electron count accounts for the boiling points, because acetone has the fewest electrons and boils the lowest of the three.",
+    "Boiling point falls as molar mass rises, because heavier molecules move more slowly and escape the liquid less often."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The masses differ by about 2 g/mol and the electron counts by at most 2, but the boiling points span 98 °C. Something other than mass or dispersion forces must differ: the kinds of attraction.",
+    "options": [
+     "Right: nearly equal masses with very different boiling points rule out mass as the explanation.",
+     "This is the \"molar mass alone\" error. 1-Propanol is only 2 g/mol heavier than butane, far too little to explain a 98 °C difference.",
+     "Acetone has the fewest electrons but boils in the middle, above butane, so electron count does not set the order here.",
+     "The data show no such trend, and the masses are too close for mass to set the order in either direction."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-2",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s1",
+   "q": "Why does acetone boil about 57 °C higher than butane?",
+   "options": [
+    "Acetone is polar, so dipole-dipole forces add to its dispersion forces; butane is nonpolar and has dispersion forces alone.",
+    "Acetone forms hydrogen bonds between its molecules through the lone pairs on its oxygen atom, which butane, a molecule with no oxygen, lacks.",
+    "Acetone has more electrons than butane, so its London dispersion forces are much stronger than the dispersion forces between butane molecules.",
+    "Boiling acetone breaks its strong C=O double bond, which takes more energy than breaking the C–C bonds in butane."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Acetone's C=O bond makes the molecule polar, so its molecules also attract by dipole-dipole forces. Butane is nonpolar. With similar electron counts, the extra dipole-dipole attraction explains the higher boiling point.",
+    "options": [
+     "Right: the extra kind of attraction is dipole-dipole.",
+     "Acetone has an O atom but no H bonded to O, N or F, so its molecules cannot hydrogen-bond to each other.",
+     "Acetone has 32 electrons, two fewer than butane, so dispersion forces cannot explain its higher boiling point.",
+     "Boiling separates whole molecules; no covalent bond, C=O or C–C, breaks when a liquid boils."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-3",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s1",
+   "q": "Which attractions act between molecules of liquid 1-propanol? Select all that apply.",
+   "options": [
+    "London dispersion forces",
+    "Dipole-dipole forces",
+    "Hydrogen bonds",
+    "Ion-dipole forces",
+    "Covalent bonds between neighbouring molecules"
+   ],
+   "correct": [
+    0,
+    1,
+    2
+   ],
+   "why": {
+    "correct": "1-Propanol has electrons (dispersion), is polar (dipole-dipole), and has H bonded to O with lone pairs on O (hydrogen bonds). It has no ions.",
+    "options": [
+     "Right: dispersion forces act between all particles.",
+     "Right: 1-propanol is a polar molecule because of its C–O–H group.",
+     "Right: the H on O of one molecule is attracted to a lone pair on the O of another.",
+     "Ion-dipole forces need an ion, and pure 1-propanol is made of neutral molecules.",
+     "Covalent bonds hold atoms together inside a molecule; separate molecules attract, they do not share electrons."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s1",
+   "q": "A classmate writes: \"1-Propanol boils highest because boiling breaks its O–H bonds, which are strong.\" What is wrong with this reasoning?",
+   "options": [
+    "Boiling separates whole molecules from each other; the O–H covalent bonds stay intact and the vapor is still 1-propanol.",
+    "O–H bonds are weaker than C–H bonds, so breaking them would lower the boiling point rather than raise it.",
+    "The O–H bonds do break on boiling, but the energy needed is too small to change the boiling point.",
+    "Hydrogen bonds are a kind of covalent bond, so the classmate has named the right bond with the wrong name."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Boiling overcomes intermolecular forces. The O–H bond matters because it lets the molecule form hydrogen bonds with its neighbours, but it does not break.",
+    "options": [
+     "Right: covalent bonds do not break when a liquid boils.",
+     "O–H bonds are in fact strong (about 460 kJ/mol), and they do not break on boiling either way.",
+     "Covalent bonds do not break on boiling at all; if they did, the vapor would be a different substance.",
+     "A hydrogen bond is an attraction between molecules, far weaker than a covalent bond, not a kind of covalent bond."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-5",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s1",
+   "q": "Ethylene glycol, HOCH₂CH₂OH (62.07 g/mol), has two O–H groups per molecule. How would its boiling point most likely compare with that of 1-propanol?",
+   "options": [
+    "Higher, because each molecule can form more hydrogen bonds with its neighbours.",
+    "Lower, because it has two oxygen atoms, which makes the molecule less polarizable.",
+    "About the same, because the two molar masses differ by just 2 g/mol, so their attractions are about equal.",
+    "Lower, because its two O–H groups cancel each other's dipoles and leave it nonpolar."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Two O–H groups give each molecule twice the sites for hydrogen bonding, so the molecules hold each other more strongly. (Its actual boiling point is 197 °C.)",
+    "options": [
+     "Right: more hydrogen bonding per molecule, stronger attraction, higher boiling point.",
+     "Extra oxygen atoms add electrons, so they do not make the molecule less polarizable.",
+     "Similar mass is the \"molar mass alone\" trap; the number of hydrogen-bonding groups matters more here.",
+     "The O–H groups do not cancel; the molecule is polar, and each O–H can still hydrogen-bond."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "intermolecular-forces-s2",
+   "q": "Which explanation accounts for the rise in boiling point from F₂ to I₂?",
+   "options": [
+    "More electrons in larger electron clouds make the molecules more polarizable, so dispersion forces grow stronger.",
+    "Each molecule down the group is more polar than the one above it, so the dipole-dipole forces between neighbouring molecules grow stronger.",
+    "The covalent bond inside each molecule grows stronger down the group, so more energy is needed to boil it.",
+    "Heavier molecules are pulled down by gravity more strongly, so they need more energy to escape as a gas."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Halogen molecules are nonpolar, so their only attraction is London dispersion. From 18 to 106 electrons, the clouds get larger and easier to distort, so the momentary dipoles and the attractions get stronger.",
+    "options": [
+     "Right: polarizability, from more electrons in more shells, sets the dispersion strength.",
+     "X–X molecules of one element have no polar bonds, so there are no permanent dipoles at all.",
+     "The bonds inside these molecules do not break on boiling, and they actually get weaker down the group.",
+     "Gravity on a single molecule is negligible; the mass-only argument skips the real cause, polarizability."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "intermolecular-forces-s2",
+   "q": "At room temperature (about 22 °C), which of the halogens in the table is a liquid?",
+   "options": [
+    "Br₂",
+    "Cl₂",
+    "I₂",
+    "F₂"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A substance is a liquid when room temperature lies between its melting and boiling points. Br₂ boils at 59 °C and melts at −7 °C, so it is liquid at 22 °C. I₂ boils at 184 °C but melts at 114 °C, so it is a solid.",
+    "options": [
+     "Right: 22 °C is below its boiling point (59 °C) and above its melting point.",
+     "Cl₂ boils at −34 °C, so at 22 °C it is already a gas.",
+     "I₂ melts at 114 °C, so at 22 °C it is still a solid, even though its boiling point is high.",
+     "F₂ boils at −188 °C, so it is a gas at room temperature."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s2",
+   "q": "F₂ and Ar have the same number of electrons and boil only 2 °C apart. What does this pair best show?",
+   "options": [
+    "Dispersion strength depends on the number of electrons rather than on whether the particle is a molecule or an atom.",
+    "Diatomic molecules attract each other more weakly than single atoms of the same element group.",
+    "The boiling point of a nonpolar substance is set by its molar mass, and the two molar masses are close enough to count as the same.",
+    "Noble gas atoms form hydrogen bonds with each other, which makes up for their small atomic size."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "F₂ (38.00 g/mol) and Ar (39.95 g/mol) both have 18 electrons and only dispersion forces. Equal electron counts give similar polarizability and similar boiling points (−188 °C and −186 °C).",
+    "options": [
+     "Right: same electron count, similar polarizability, similar boiling point.",
+     "The pair shows the forces are similar, not that one kind of particle attracts more weakly.",
+     "Their molar masses differ (38.00 and 39.95 g/mol); the shared quantity is the electron count.",
+     "Argon has no H atoms and no polarity, so it cannot hydrogen-bond; dispersion is its only attraction."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s2",
+   "q": "Xenon has 54 electrons. Based on the table, which is the most reasonable boiling point for xenon?",
+   "options": [
+    "−108 °C",
+    "−160 °C",
+    "−240 °C",
+    "+59 °C"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Boiling point rises with electron count down the noble gases: Ne (10) −246 °C, Ar (18) −186 °C, Kr (36) −153 °C. Xe (54) should be higher than Kr but still far below Br₂, a molecule with 70 electrons. The measured value is −108 °C.",
+    "options": [
+     "Right: above krypton, as the trend requires.",
+     "This is below krypton's −153 °C, but xenon has more electrons and must boil higher.",
+     "This is near neon's value; it ignores the rise in dispersion forces with electron count.",
+     "This is bromine's boiling point; Br₂ has 70 electrons, more than xenon, so xenon should be well below it."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-10",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s3",
+   "q": "Which labelled dashed lines correctly show hydrogen bonds? Select all that apply.",
+   "options": [
+    "W",
+    "X",
+    "Y",
+    "Z"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A hydrogen bond runs from an H that is bonded to O on one molecule to the O (with its lone pairs) of a different molecule. W and X do this; Y joins two O atoms and Z joins two H atoms.",
+    "options": [
+     "Right: an H on one molecule to the O of another.",
+     "Right: an H on one molecule to the O of another.",
+     "This joins two O atoms, both δ−, which repel; there is no H between them.",
+     "This joins two H atoms, both δ+, which repel; a hydrogen bond needs a lone pair on N, O or F as the partner."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s3",
+   "q": "Why can line Y not be a hydrogen bond?",
+   "options": [
+    "It connects two partially negative oxygen atoms, which repel each other, and it has no H atom bridging them.",
+    "It is drawn too long; a hydrogen bond forms between atoms that touch in a diagram.",
+    "It connects two different molecules, and a hydrogen bond forms between atoms of one molecule.",
+    "Oxygen atoms are too large to take part in hydrogen bonds, unlike nitrogen and fluorine atoms, which are smaller."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A hydrogen bond needs an H with a large δ+ (bonded to N, O or F) on one side and a lone pair on N, O or F on the other. Y joins two δ− O atoms, so it is a repulsion, not a hydrogen bond.",
+    "options": [
+     "Right: like partial charges repel, and the bridging H is missing.",
+     "Length in a sketch is not the test; the atoms at the two ends are.",
+     "Hydrogen bonds are always between different molecules (or distant parts of a large one); an attraction inside a small molecule is a covalent bond, not a hydrogen bond.",
+     "Oxygen is one of the three atoms, N, O and F, that take part in hydrogen bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-12",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s3",
+   "q": "When this sample of water boils, which interactions are overcome?",
+   "options": [
+    "Hydrogen bonds such as W and X; the O–H bonds inside each molecule stay intact.",
+    "The O–H covalent bonds inside each molecule, which releases hydrogen and oxygen atoms into the vapor.",
+    "Both the hydrogen bonds and the O–H covalent bonds, since boiling adds a great deal of energy.",
+    "Neither kind: boiling speeds up the molecules, but the attractions between them stay as they were in the liquid."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Boiling separates whole water molecules from their neighbours by overcoming the hydrogen bonds (and dispersion forces) between them. Steam is still H₂O.",
+    "options": [
+     "Right: attractions between molecules are overcome; covalent bonds are not.",
+     "This is the \"covalent bonds break on boiling\" error; steam is made of H₂O molecules, not separate atoms.",
+     "The O–H bonds are about twenty times stronger than the attractions between molecules and stay intact at 100 °C.",
+     "Molecules in the vapor are far apart, so the attractions that held them in the liquid have been overcome."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "1.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "intermolecular-forces-s3",
+   "q": "How could the top-right molecule be redrawn so that line Z became a hydrogen bond?",
+   "options": [
+    "Turn it so that its O atom, with its lone pairs, faces the H at the left end of line Z.",
+    "Turn it so that both of its H atoms point straight up, away from the top-left molecule.",
+    "Move it farther from the top-left molecule so that the two H atoms stop repelling.",
+    "Replace one of its H atoms with a second O atom so the line joins H to O inside one molecule."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A hydrogen bond runs from the δ+ H of one molecule to a lone pair on the O of another. Rotating the molecule so its O faces that H turns the H…H repulsion into an H…O attraction.",
+    "options": [
+     "Right: the H of one molecule must face the O of the other.",
+     "Pointing its H atoms away leaves no O facing the H on line Z.",
+     "Moving the molecule away weakens the repulsion but creates no attraction between H and O.",
+     "An attraction inside one molecule would be a covalent bond, and H₂O₂ is a different substance."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-14",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "intermolecular-forces-s4",
+   "q": "For the group 14 hydrides, how does boiling point change from period 2 to period 5?",
+   "options": [
+    "It rises steadily, from −162 °C to −52 °C.",
+    "It falls steadily, from −52 °C to −162 °C.",
+    "It falls from period 2 to period 3, then rises.",
+    "It stays within a few degrees of −110 °C."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Read the group 14 series: CH₄ −161.5 °C, SiH₄ −111.9 °C, GeH₄ −88.5 °C, SnH₄ −51.8 °C, a steady rise.",
+    "options": [
+     "Right: each heavier hydride boils higher.",
+     "This reverses the direction of the trend shown on the graph.",
+     "That pattern belongs to the group 15 and 16 series, whose period 2 members are unusual.",
+     "The values span more than 100 °C, so the series is far from flat."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-15",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s4",
+   "q": "Why do the group 14 hydrides show no high point at period 2, while groups 15 and 16 do?",
+   "options": [
+    "CH₄ has no H bonded to N, O or F, so it cannot form hydrogen bonds; NH₃ and H₂O can.",
+    "CH₄ is the heaviest molecule in its group, which keeps its boiling point near the others.",
+    "CH₄ has a strong polar C–H bond that cancels the hydrogen bonds between its molecules.",
+    "Carbon has more electrons than nitrogen or oxygen, so its hydride has the strongest dispersion forces."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hydrogen bonds need H bonded to N, O or F. NH₃ and H₂O have them, so their boiling points jump above the trend; CH₄ is nonpolar and follows the dispersion trend.",
+    "options": [
+     "Right: the high points come from hydrogen bonding, which methane cannot do.",
+     "CH₄ is the lightest in its group, which is why it boils lowest.",
+     "C–H bonds are nearly nonpolar, and methane is a symmetric, nonpolar molecule.",
+     "Carbon has fewer electrons (6) than nitrogen (7) or oxygen (8)."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "intermolecular-forces-s4",
+   "q": "H₂S, H₂Se and H₂Te are all polar. Which statement best explains why their boiling points rise from H₂S to H₂Te?",
+   "options": [
+    "Down the group the molecules have more electrons, so dispersion forces grow and outweigh small changes in polarity.",
+    "Down the group the molecules form more hydrogen bonds, because S, Se and Te each have two lone pairs that can accept them.",
+    "Down the group the molecules become more polar, because Te is more electronegative than S.",
+    "Down the group the H–X covalent bonds get stronger and longer, so more energy is needed to separate the molecules from one another."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "From H₂S (18 electrons) to H₂Te (54 electrons) the molecules become much more polarizable, so dispersion forces increase. Their dipoles actually get smaller, because S, Se and Te are less electronegative than O, so the dispersion increase dominates.",
+    "options": [
+     "Right: rising dispersion forces dominate in this series.",
+     "Hydrogen bonds need H bonded to N, O or F; S, Se and Te do not qualify.",
+     "Electronegativity falls down the group, so the molecules become less polar, not more.",
+     "Bonds inside the molecules do not break on boiling, and these bonds get weaker down the group."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "intermolecular-forces-s4",
+   "q": "Water (18 electrons) boils at 100 °C, but H₂Te (54 electrons) boils at −2 °C. A student says this shows dispersion forces do not depend on electron count. Which response is best?",
+   "options": [
+    "H₂Te does have stronger dispersion forces, but water's hydrogen bonds add an attraction large enough to outweigh that difference.",
+    "The student is right: water has fewer electrons but stronger dispersion forces because its molecules are smaller.",
+    "H₂Te boils lower because its covalent bonds are weaker, so its molecules fall apart sooner when heated.",
+    "Water boils higher because it is heavier per molecule than H₂Te, which offsets its smaller electron count."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Electron count still sets dispersion strength. Water wins overall because each molecule also forms strong hydrogen bonds, which H₂Te cannot. The comparison must name every force in both substances.",
+    "options": [
+     "Right: the extra force, hydrogen bonding, explains water's high boiling point.",
+     "Smaller molecules with fewer electrons are less polarizable, so their dispersion forces are weaker.",
+     "Boiling does not break the H–Te bonds; the molecules leave the liquid whole.",
+     "H₂O (18.02 g/mol) is much lighter than H₂Te (129.6 g/mol), so mass cannot explain it."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-18",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Pentane (a five-carbon chain) boils at 36 °C. Its isomer 2,2-dimethylpropane, a compact, nearly spherical molecule with the same formula, boils at 10 °C. Which explanation is best?",
+   "options": [
+    "The chains touch each other over a larger surface, so the dispersion attractions between them are stronger.",
+    "The chain molecules have more electrons, so they are more polarizable than the compact molecules.",
+    "The chain molecules are polar because their ends differ, while the compact, symmetric molecules are nonpolar and have no dipole.",
+    "The compact molecules have a larger molar mass, which lets them escape the liquid more easily."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both have the formula C₅H₁₂, so the same electrons and mass. A long chain can lie alongside its neighbours over more of its length, so the momentary dipoles interact over a larger area.",
+    "options": [
+     "Right: same electrons, more contact, stronger dispersion forces.",
+     "Isomers have the same formula and so the same number of electrons.",
+     "Both contain only C and H, with almost no polarity; neither has a meaningful dipole.",
+     "Isomers have identical molar masses."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-19",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which attraction acts between the particles of every substance?",
+   "options": [
+    "London dispersion forces",
+    "Dipole-dipole forces",
+    "Hydrogen bonds",
+    "Ion-dipole forces"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Every particle has electrons that can form momentary dipoles, so dispersion forces act between all particles. The others need polar molecules, N–H, O–H or F–H groups, or ions.",
+    "options": [
+     "Right: momentary dipoles form in every electron cloud.",
+     "These need permanent dipoles, so they act between polar molecules.",
+     "These need H bonded to N, O or F on one molecule and a lone pair on N, O or F on another.",
+     "These need an ion and a polar molecule together."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-20",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pure substances form hydrogen bonds between their own molecules? Select all that apply.",
+   "options": [
+    "CH₃OH (methanol)",
+    "CH₃OCH₃ (dimethyl ether)",
+    "CH₃F (fluoromethane)",
+    "HCl (hydrogen chloride)",
+    "NH₃ (ammonia)"
+   ],
+   "correct": [
+    0,
+    4
+   ],
+   "why": {
+    "correct": "Methanol and ammonia have H bonded directly to N, O or F, plus a lone pair on that atom. In dimethyl ether and fluoromethane, every H is bonded to carbon. Cl is not one of the hydrogen-bonding atoms.",
+    "options": [
+     "Right: its O–H hydrogen can bond to an O lone pair on a neighbour.",
+     "It has an O with lone pairs, but every H is on carbon, so no H carries a large enough δ+.",
+     "It has F, but the H atoms are on carbon, not on F, so it shows dipole-dipole forces instead.",
+     "H–Cl is polar, but Cl is not N, O or F; its attractions are dipole-dipole and dispersion.",
+     "Right: each N–H hydrogen can bond to the lone pair on the N of a neighbour."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-21",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which substance has the higher boiling point, ICl (162.4 g/mol) or Br₂ (159.8 g/mol), and why?",
+   "options": [
+    "ICl, because it is polar and has dipole-dipole forces in addition to dispersion forces of similar strength.",
+    "Br₂, because its molecules are made of one element, so the electron clouds are more even and attract more.",
+    "ICl, because it has the larger molar mass, and molar mass alone sets the boiling point of a substance.",
+    "They boil at the same temperature, because both molecules contain exactly 70 electrons each."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Both have 70 electrons, so their dispersion forces are similar. ICl is polar (I and Cl differ in electronegativity), so it adds dipole-dipole forces. It boils at 97 °C; Br₂ boils at 59 °C.",
+    "options": [
+     "Right: the extra dipole-dipole forces decide it.",
+     "An even electron cloud means no permanent dipole, which is a reason for weaker, not stronger, attraction.",
+     "The masses differ by under 2%; the mass-only argument hides the real cause, polarity.",
+     "Equal electron counts make dispersion similar, but ICl also has dipole-dipole forces, so they differ."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-22",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put these substances in order of boiling point, lowest first.",
+   "options": [
+    "CH₄ (methane)",
+    "C₃H₈ (propane)",
+    "CH₃OCH₃ (dimethyl ether)",
+    "CH₃CH₂OH (ethanol)"
+   ],
+   "why": {
+    "correct": "Methane (−162 °C) has 10 electrons and dispersion only; propane (−42 °C) has 26 electrons and dispersion only; dimethyl ether (−24 °C) is polar, adding dipole-dipole forces; ethanol (78 °C) adds hydrogen bonds through its O–H group."
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-23",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What is a hydrogen bond?",
+   "options": [
+    "An attraction between an H atom bonded to N, O or F and a lone pair on N, O or F of another molecule",
+    "A covalent bond between a hydrogen atom and any other atom inside one molecule",
+    "An attraction between two hydrogen atoms on neighbouring molecules that share a pair of electrons between them",
+    "An attraction between any H atom and the most electronegative atom of a neighbouring molecule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A hydrogen bond is an attraction between molecules, not a covalent bond. It needs both an H on N, O or F and a lone pair on N, O or F.",
+    "options": [
+     "Right: both conditions are named.",
+     "That describes an ordinary covalent bond such as C–H or O–H.",
+     "Two δ+ H atoms repel; the partner must be an N, O or F lone pair.",
+     "The H must itself be bonded to N, O or F; an H on carbon does not hydrogen-bond."
+    ]
+   }
+  },
+  {
+   "id": "chem-intermolecular-forces-24",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "intermolecular-forces",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Octane, C₈H₁₈ (66 electrons, nonpolar), boils at 126 °C, higher than water at 100 °C. Which statement best explains this?",
+   "options": [
+    "Octane's large, polarizable electron cloud and long contact area give dispersion forces that add up to more than water's attractions.",
+    "Octane forms hydrogen bonds through its 18 H atoms, many more than the two H atoms that each water molecule can offer to its neighbours.",
+    "Octane is a polar molecule because it has so many C–H bonds, each adding a small dipole.",
+    "Octane boils higher because more of its 25 covalent bonds have to break before the liquid can turn into a vapor."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Hydrogen bonds are strong per contact, but a large molecule with many electrons has strong total dispersion forces. Size can outweigh the kind of force.",
+    "options": [
+     "Right: large dispersion forces can exceed hydrogen bonding in a small molecule.",
+     "Its H atoms are bonded to C, not N, O or F, so octane cannot hydrogen-bond.",
+     "C–H bonds are nearly nonpolar, and the molecule's shape cancels what little polarity there is.",
+     "No covalent bonds break on boiling."
+    ]
+   }
+  }
+ ]
+}

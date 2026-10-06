@@ -1,0 +1,12 @@
+{
+ "volumetric-flask-steps": {
+  "file": "figures/volumetric-flask-steps.svg",
+  "ext": "svg",
+  "w": 720,
+  "h": 260,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "How to make a solution of known molarity: weigh the solid on an analytical balance, dissolve it in a volumetric flask about half full of water, add water until the bottom of the curved liquid surface touches the etched mark, then stopper and invert to mix."
+ }
+}

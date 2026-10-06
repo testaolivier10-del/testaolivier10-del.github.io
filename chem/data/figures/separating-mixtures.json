@@ -1,0 +1,12 @@
+{
+ "chromatogram-rf": {
+  "file": "figures/chromatogram-rf.svg",
+  "ext": "svg",
+  "w": 560,
+  "h": 300,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A paper chromatogram. From a start line, the solvent has climbed 9.0 cm. A blue dye moved 6.3 cm (Rf = 0.70) and a red dye moved 2.7 cm (Rf = 0.30), so the red dye was held more strongly by the paper."
+ }
+}

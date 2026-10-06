@@ -94,3 +94,27 @@ recent scoring; confirm the course's wording against the current CED and scoring
 - "shared pair" removed as an alias of `bonding-pair` (2.5): 2.1 defines a covalent bond as a
   shared pair of electrons, which the ordering check flagged as a use of a later term.
 - "melting point" stays a 3.1 concept; Unit 2 says "melting temperature" or "melts at".
+## unit3-real-gas-data: model-generated PV/nRT values (open, 2026-10-06)
+
+The PV/nRT values in `real-gases` (notes table at 300 K, stimulus graph at 400 K) and the
+measured NH₃ pressure (62.9 atm, 2.000 mol in 1.000 L at 450.0 K) were generated from the van
+der Waals equation with textbook a and b constants, not from tabulated experimental data. The
+stimulus says "estimated from a model fitted to measured data". Trends and signs are right, but
+the exact values (especially CO₂ near 100-200 atm at 300 K, close to its critical point) may
+differ from measured compressibility factors. Check against a data table or relabel.
+
+## unit3-scope-checks: Unit 3 scope choices to confirm (open, 2026-10-06)
+
+- 3.7: molality, percent by mass/volume and colligative properties are only named in a
+  `going-further` aside; no item uses them (per `ced-exclusions`).
+- 3.10: the notes say most solids dissolve more in hot water "though there are exceptions";
+  no item tests solid solubility vs temperature. Confirm the CED expects gas-solubility trends
+  (pressure, temperature) only qualitatively, as written.
+- 3.11: IR wavenumber ranges (O–H 3,200-3,550; C=O 1,680-1,750; C–O 1,000-1,300 cm⁻¹) are given
+  in the stimulus, not expected from memory. Confirm the CED does not expect students to
+  interpret IR spectra beyond "IR excites vibrations" (the set is labelled with data given).
+- 3.12-3.13: "transmittance" is named in notes and glossary but never calculated (no log), since
+  logarithms are taught before 5.3.
+- Particle diagrams: water around an anion is drawn with one O–H pointing at the ion (the other
+  H away), around a cation with O toward the ion. Confirm this matches the CED's expected
+  depiction (the CED only requires correct dipole orientation).

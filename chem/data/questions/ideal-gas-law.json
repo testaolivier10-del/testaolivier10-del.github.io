@@ -1,0 +1,636 @@
+{
+ "stimuli": {
+  "ideal-gas-law-s1": {
+   "kind": "table",
+   "title": "Molar mass of a volatile liquid",
+   "text": "<p>A student puts a few milliliters of an unknown liquid in a flask, covers it with foil pierced by a pinhole, and heats it in boiling water until all the liquid has vaporized and the excess has escaped. The flask, now full of the vapor at the bath temperature and room pressure, is cooled and weighed. The vapor condenses, and its mass is found by difference.</p>",
+   "table": {
+    "caption": "Data",
+    "cols": [
+     "Quantity",
+     "Value"
+    ],
+    "rows": [
+     [
+      "Volume of flask",
+      "248.0 mL"
+     ],
+     [
+      "Temperature of water bath",
+      "98.6 °C"
+     ],
+     [
+      "Barometric pressure",
+      "742.0 torr"
+     ],
+     [
+      "Mass of condensed vapor",
+      "0.4625 g"
+     ]
+    ]
+   }
+  },
+  "ideal-gas-law-s2": {
+   "kind": "setup",
+   "title": "A three-gas mixture",
+   "text": "<p>A rigid 4.00 L container at 27.0 °C holds 0.150 mol N₂, 0.0400 mol O₂ and 0.0100 mol Ar. The gases do not react.</p>"
+  },
+  "ideal-gas-law-s3": {
+   "kind": "graph",
+   "title": "Pressure and temperature of a trapped gas",
+   "text": "<p>0.100 mol of gas is sealed in a rigid 2.00 L container and its pressure is measured at several temperatures.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Temperature",
+     "unit": "K",
+     "min": 200,
+     "max": 400,
+     "step": 50
+    },
+    "y": {
+     "label": "Pressure",
+     "unit": "atm",
+     "min": 0,
+     "max": 2.0,
+     "step": 0.4
+    },
+    "series": [
+     {
+      "name": "Measured",
+      "points": [
+       [
+        200,
+        0.821
+       ],
+       [
+        250,
+        1.026
+       ],
+       [
+        300,
+        1.231
+       ],
+       [
+        350,
+        1.436
+       ],
+       [
+        400,
+        1.641
+       ]
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-ideal-gas-law-1",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s1",
+   "q": "How many moles of vapor filled the flask?",
+   "numeric": {
+    "answer": 0.007937,
+    "tol": 2e-06,
+    "unit": "mol",
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.02992,
+      "rel": 0.02,
+      "why": "Value: you used the temperature in °C. Gas laws need kelvin: 98.6 + 273.15 = 371.75 K."
+     },
+     {
+      "value": 6.032,
+      "rel": 0.02,
+      "why": "Value: you used the pressure in torr with R in L·atm/(mol·K). Convert to atm first: 742.0 / 760."
+     },
+     {
+      "value": 7.937,
+      "rel": 0.02,
+      "why": "Value: you used the volume in mL. R in L·atm/(mol·K) needs liters: 248.0 mL = 0.2480 L."
+     },
+     {
+      "value": 7.834e-05,
+      "rel": 0.02,
+      "why": "Value: you used R = 8.314 J/(mol·K). With atm and liters, use R = 0.08206 L·atm/(mol·K)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "T = 98.6 + 273.15 = 371.75 K; P = 742.0 torr × (1 atm / 760 torr) = 0.97632 atm; V = 0.2480 L. n = PV/RT = (0.97632 atm × 0.2480 L) / (0.08206 L·atm/(mol·K) × 371.75 K) = 0.007937 mol, which is 0.007937 mol. (The temperature 98.6 °C has three significant figures, but 371.75 K carries four in the sum; report four.)"
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-2",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s1",
+   "q": "What is the molar mass of the unknown liquid, in g/mol?",
+   "numeric": {
+    "answer": 58.27,
+    "tol": 0.02,
+    "unit": "g/mol",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 0.01716,
+      "rel": 0.02,
+      "why": "Value: you divided moles by mass. Molar mass is grams per mole: mass ÷ moles."
+     },
+     {
+      "value": 15.46,
+      "rel": 0.02,
+      "why": "Value: this comes from using the temperature in °C. Convert to kelvin first."
+     }
+    ]
+   },
+   "why": {
+    "correct": "M = mass / moles = 0.4625 g / 0.007937 mol = 58.271 g/mol, which is 58.27 g/mol to four significant figures."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "2.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ideal-gas-law-s1",
+   "q": "Some vapor condensed on the outside of the flask before it was weighed, but the student did not notice. How does this affect the calculated molar mass?",
+   "options": [
+    "Too high, because the measured mass of vapor is too large while the calculated moles are unchanged.",
+    "Too low, because extra liquid on the outside means the flask held fewer moles of vapor than it did.",
+    "No effect, because the volume, temperature and pressure used to find moles were measured correctly.",
+    "Too high, because the extra water raises the calculated number of moles of vapor in the flask."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Moles come from P, V and T, which are unaffected. The mass found by difference includes the extra liquid, so it is too large, and mass ÷ moles is too large.",
+    "options": [
+     "Right: the error is in the mass only, and it is too large.",
+     "The moles of vapor depend only on P, V and T of the flask, which did not change.",
+     "Mass is part of the calculation, and it is wrong here.",
+     "The moles are calculated from PV/RT; the extra liquid changes only the mass."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "6.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s1",
+   "q": "The unknown is either ethanol (46.07 g/mol), acetone (58.08 g/mol) or hexane (86.18 g/mol). Which is it, and on what evidence?",
+   "options": [
+    "Acetone, because the calculated molar mass is within 1 g/mol of 58.08 g/mol.",
+    "Ethanol, because ethanol boils below 98.6 °C, so it would turn fully to vapor in the bath.",
+    "Hexane, because the vapor in a flask this size is heavier than the other two vapors would be.",
+    "It is not identifiable, because the calculated molar mass does not exactly equal one of the three values."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The calculated molar mass, 58.27 g/mol, lies close to acetone's 58.08 g/mol and far from the other two.",
+    "options": [
+     "Right: the data point to acetone.",
+     "All three boil below 98.6 °C, so boiling point cannot pick one; the molar mass can.",
+     "The mass of vapor alone says nothing until it is divided by the moles, which gives acetone's value.",
+     "Experimental values carry small errors; a value within about 1% identifies the liquid."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-5",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s2",
+   "q": "What is the total pressure in the container, in atm?",
+   "numeric": {
+    "answer": 1.23,
+    "tol": 0.01,
+    "unit": "atm",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.1108,
+      "rel": 0.02,
+      "why": "Value: you used 27.0 °C. Convert to kelvin: 27.0 + 273.15 = 300.15 K."
+     },
+     {
+      "value": 124.8,
+      "rel": 0.02,
+      "why": "Value: you used R = 8.314 J/(mol·K). For atm and liters, R = 0.08206 L·atm/(mol·K)."
+     },
+     {
+      "value": 0.9236,
+      "rel": 0.02,
+      "why": "Value: that is the partial pressure of N₂ alone. The total uses all 0.200 mol of gas."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Total moles = 0.150 + 0.0400 + 0.0100 = 0.200 mol; T = 300.15 K. P = nRT/V = (0.200 mol × 0.08206 L·atm/(mol·K) × 300.15 K) / 4.00 L = 1.23152 atm, which is 1.23 atm."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-6",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s2",
+   "q": "What is the partial pressure of O₂, in atm?",
+   "numeric": {
+    "answer": 0.246,
+    "tol": 0.001,
+    "unit": "atm",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.4105,
+      "rel": 0.02,
+      "why": "Value: you split the pressure equally among three gases. Each gas's share follows its mole fraction, not the number of gases."
+     }
+    ]
+   },
+   "why": {
+    "correct": "X(O₂) = 0.0400 / 0.200 = 0.200. P(O₂) = 0.200 × 1.2315 atm = 0.24630 atm, which is 0.246 atm. (Or P = nRT/V with 0.0400 mol.)"
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s2",
+   "q": "The temperature is raised to 87.0 °C, with the volume fixed. What happens to the mole fraction of O₂ and its partial pressure?",
+   "options": [
+    "The mole fraction is unchanged and the partial pressure increases.",
+    "Both the mole fraction and the partial pressure increase.",
+    "The mole fraction increases and the partial pressure is unchanged.",
+    "Both stay the same, because no gas was added or removed."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Heating adds no moles, so every mole fraction stays at its value. At constant V, each partial pressure is proportional to kelvin temperature, so P(O₂) rises by 360.15/300.15 = 1.20 times.",
+    "options": [
+     "Right: same moles, higher pressure.",
+     "Mole fractions depend only on the amounts of gas, which did not change.",
+     "The mole fraction cannot change without changing the amounts; the pressure does change.",
+     "Pressure depends on temperature at constant volume, so it rises."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "ideal-gas-law-s2",
+   "q": "0.0500 mol of He is now pumped into the same container at 27.0 °C. What happens to the partial pressure of N₂?",
+   "options": [
+    "It stays the same, because the moles of N₂, the volume and the temperature have not changed.",
+    "It decreases, because N₂ now makes up a smaller mole fraction of the gas in the container.",
+    "It increases, because the total pressure in the container has increased with the added helium.",
+    "It decreases, because the helium atoms take up some of the volume that the N₂ had used."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Each gas acts as if alone: P(N₂) = n(N₂)RT/V, and none of those changed. The total pressure rises and X(N₂) falls, and the two effects cancel exactly.",
+    "options": [
+     "Right: P(N₂) depends only on its own moles, V and T.",
+     "X(N₂) does fall, but the total pressure rises in proportion, so their product is unchanged.",
+     "The total rises because of the helium, not because N₂ pushes harder.",
+     "Ideal gas particles take up negligible volume, so helium does not crowd out the nitrogen."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.C",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s3",
+   "q": "Which relationship do the data show?",
+   "options": [
+    "Pressure is directly proportional to kelvin temperature.",
+    "Pressure is inversely proportional to kelvin temperature.",
+    "Pressure rises with temperature, but slower at high T.",
+    "Pressure is directly proportional to Celsius temperature."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Doubling T from 200 K to 400 K doubles P from 0.821 to 1.641 atm, and the line points back to zero pressure at 0 K: P = (nR/V) × T.",
+    "options": [
+     "Right: P/T is constant, as PV = nRT predicts at fixed n and V.",
+     "Inverse proportion would make P fall as T rises.",
+     "The ratio P/T is the same at every point, so the rise is steady, not slowing.",
+     "In °C the line would not pass through zero; only kelvin gives proportionality."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-10",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s3",
+   "q": "Use the ideal gas law to calculate the pressure the gas would have at 500. K.",
+   "numeric": {
+    "answer": 2.05,
+    "tol": 0.01,
+    "unit": "atm",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 207.8,
+      "rel": 0.02,
+      "why": "Value: you used R = 8.314 J/(mol·K). With atm and liters, use 0.08206 L·atm/(mol·K)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(0.100 mol × 0.08206 L·atm/(mol·K) × 500. K) / 2.00 L = 2.0515 atm, which is 2.05 atm. Or extend the line: P/T = 0.0041 atm/K."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s3",
+   "q": "If the same data were plotted against Celsius temperature, what would the graph look like?",
+   "options": [
+    "A straight line that reaches zero pressure at −273 °C, not at 0 °C.",
+    "A straight line passing through the origin, the point 0 °C and 0 atm.",
+    "A curve that bends upward, because Celsius degrees are smaller than kelvins.",
+    "A horizontal line, because Celsius temperatures do not affect pressure."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Shifting every temperature by 273.15 slides the line sideways without bending it, so it still reaches zero pressure at 0 K, which is −273.15 °C.",
+    "options": [
+     "Right: same straight line, shifted.",
+     "At 0 °C (273 K) the gas still has a large pressure, so the line cannot pass through the origin.",
+     "A Celsius degree is the same size as a kelvin, so the slope does not change and no bend appears.",
+     "Pressure depends on temperature in any scale; only the zero point differs."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-12",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "ideal-gas-law-s3",
+   "q": "The experiment is repeated with 0.200 mol of the same gas in the same container. How would the new line compare?",
+   "options": [
+    "Twice as steep: at each temperature the pressure doubles.",
+    "Half as steep: at each temperature the pressure halves.",
+    "The same line, because the container and temperatures are the same.",
+    "Shifted 200 K to the right, but with the same steepness."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "At fixed V, P = (nR/V)T. Doubling n doubles the slope nR/V, so every pressure doubles.",
+    "options": [
+     "Right: P is proportional to n at fixed V and T.",
+     "More gas particles hit the walls more often, so pressure rises, not falls.",
+     "The amount of gas changed, so the pressure changes.",
+     "Adding gas changes the slope; every line still starts at 0 K."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-13",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 2.50 L sample of gas at 1.00 atm and 25.0 °C is compressed and heated to 3.20 atm and 75.0 °C. What is its new volume?",
+   "numeric": {
+    "answer": 0.912,
+    "tol": 0.001,
+    "unit": "L",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 2.344,
+      "rel": 0.02,
+      "why": "Value: you used °C. The ratio 75.0/25.0 triples the volume; in kelvin the ratio is 348.15/298.15."
+     },
+     {
+      "value": 9.342,
+      "rel": 0.02,
+      "why": "Value: you inverted the pressure ratio. Higher pressure makes the volume smaller: multiply by P₁/P₂."
+     }
+    ]
+   },
+   "why": {
+    "correct": "V₂ = V₁ × (P₁/P₂) × (T₂/T₁) = 2.50 L × (1.00/3.20) × (348.15 K / 298.15 K) = 0.91227 L, which is 0.912 L."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-14",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "How many moles of an ideal gas occupy 3.50 L at STP?",
+   "numeric": {
+    "answer": 0.156,
+    "tol": 0.001,
+    "unit": "mol",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 78.4,
+      "rel": 0.02,
+      "why": "Value: you multiplied by 22.4 L/mol. Liters ÷ (liters per mole) gives moles."
+     }
+    ]
+   },
+   "why": {
+    "correct": "At STP (273.15 K, 1 atm), n = PV/RT = (1 atm × 3.50 L) / (0.08206 × 273.15) = 0.15615 mol, about 0.156 mol. Or divide by the molar volume: 3.50 L ÷ 22.4 L/mol = 0.156 mol."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-15",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A gas has a density of 1.96 g/L at 0.0 °C and 1.00 atm. What is its molar mass?",
+   "numeric": {
+    "answer": 43.9,
+    "tol": 0.1,
+    "unit": "g/mol",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.08744,
+      "rel": 0.02,
+      "why": "Value: you calculated dP/RT. Rearranging PV = (m/M)RT gives M = dRT/P."
+     }
+    ]
+   },
+   "why": {
+    "correct": "M = dRT/P = (1.96 g/L × 0.08206 L·atm/(mol·K) × 273.15 K) / 1.00 atm = 43.933 g/mol, which is 43.9 g/mol (CO₂ is 44.01 g/mol)."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-16",
+   "type": "numeric",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "What volume does 16.0 g of methane, CH₄ (16.04 g/mol), occupy at 745 torr and 30.0 °C?",
+   "numeric": {
+    "answer": 25.3,
+    "tol": 0.1,
+    "unit": "L",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.03331,
+      "rel": 0.02,
+      "why": "Value: you used 745 torr with R in L·atm/(mol·K). Convert to atm: 745 ÷ 760."
+     },
+     {
+      "value": 2.505,
+      "rel": 0.02,
+      "why": "Value: you used 30.0 °C. Convert to kelvin: 303.15 K."
+     }
+    ]
+   },
+   "why": {
+    "correct": "n = 16.0 g / 16.04 g/mol = 0.99751 mol; P = 745/760 = 0.98026 atm; T = 303.15 K. V = nRT/P = (0.99751 × 0.08206 × 303.15) / 0.98026 = 25.3141 L, which is 25.3 L."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Equal volumes of H₂ and CO₂ are at the same temperature and pressure. Which statement is true?",
+   "options": [
+    "They contain equal numbers of molecules, but the CO₂ sample has the greater mass.",
+    "They have equal masses, but the H₂ sample contains more molecules.",
+    "The CO₂ sample contains more molecules, because CO₂ molecules are larger.",
+    "They contain equal masses and equal numbers of molecules."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With P, V and T equal, n = PV/RT is equal, so the numbers of molecules match. Each CO₂ molecule (44.01 g/mol) is heavier than each H₂ molecule (2.016 g/mol), so the CO₂ sample has more mass.",
+    "options": [
+     "Right: same n, different molar masses.",
+     "Equal n means equal numbers of molecules, and different molar masses mean different masses.",
+     "For an ideal gas the size of the molecules does not affect how many fit in a volume.",
+     "The numbers match, but the masses differ by a factor of about 22."
+    ]
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-18",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding the moles of gas in a container in order.",
+   "options": [
+    "Convert the temperature to kelvin",
+    "Convert pressure to atm and volume to liters",
+    "Rearrange PV = nRT to n = PV/RT",
+    "Substitute with R = 0.08206 L·atm/(mol·K)",
+    "Round to the least number of significant figures in the data"
+   ],
+   "why": {
+    "correct": "Put every quantity in units that match R, then rearrange and substitute, and round once at the end."
+   }
+  },
+  {
+   "id": "chem-ideal-gas-law-19",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "ideal-gas-law",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which value of R should be used with pressure in atm and volume in liters?",
+   "options": [
+    "0.08206 L·atm/(mol·K)",
+    "8.314 J/(mol·K)",
+    "62.36 L·torr/(mol·K)",
+    "22.4 L/mol"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "R must carry the same units as the pressure and volume you substitute.",
+    "options": [
+     "Right: liters and atmospheres.",
+     "That value is for SI units (Pa and m³), used with energy.",
+     "That value is for pressure in torr.",
+     "22.4 L/mol is the molar volume at STP, not R."
+    ]
+   }
+  }
+ ]
+}

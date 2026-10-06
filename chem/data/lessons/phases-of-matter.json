@@ -1,0 +1,83 @@
+{
+ "topic": "phases-of-matter",
+ "hook": "A glass of water left on a table is empty in a week, though it never got near 100 °C. Seal the same water in a jar and it never disappears. Both facts come from molecules that are always moving and the attractions that hold them back.",
+ "prereq": [
+  {
+   "q": "Which attraction is overcome when liquid water boils?",
+   "options": [
+    "Hydrogen bonds between molecules",
+    "O–H covalent bonds",
+    "Ionic bonds"
+   ],
+   "correct": 0,
+   "why": "Boiling separates whole molecules; the covalent bonds inside them stay intact.",
+   "review": "intermolecular-forces"
+  },
+  {
+   "q": "Ice is which kind of solid?",
+   "options": [
+    "Molecular",
+    "Covalent network",
+    "Ionic"
+   ],
+   "correct": 0,
+   "why": "Ice is separate H₂O molecules held by hydrogen bonds.",
+   "review": "solids-properties"
+  }
+ ],
+ "figure": {
+  "figure": "vapor-pressure-flask",
+  "caption": "In a sealed flask, evaporation outpaces condensation at first; at dynamic equilibrium the rates are equal and the vapor exerts the vapor pressure."
+ },
+ "chain": [
+  {
+   "cause": "Molecules in a liquid move at a range of speeds",
+   "effect": "some at the surface escape their neighbours' attractions, at any temperature"
+  },
+  {
+   "cause": "In a sealed container the escaped molecules stay and some return",
+   "effect": "escape and return reach equal rates: a dynamic equilibrium"
+  },
+  {
+   "cause": "At equilibrium the number of gas molecules is constant",
+   "effect": "the vapor exerts a steady pressure, the vapor pressure"
+  },
+  {
+   "cause": "Weaker attractions or a higher temperature let more molecules escape",
+   "effect": "vapor pressure is higher"
+  },
+  {
+   "cause": "Boiling happens when vapor pressure reaches the outside pressure",
+   "effect": "lower air pressure means a lower boiling point"
+  }
+ ],
+ "ideas": [
+  "Solid: touching, fixed, vibrating. Liquid: touching, sliding. Gas: far apart, flying freely.",
+  "Phase changes overcome or form attractions between particles; molecules stay whole.",
+  "1 atm = 760 torr = 760 mm Hg = 101.325 kPa.",
+  "Every liquid has a vapor pressure at every temperature. It rises with temperature and is higher when intermolecular forces are weaker."
+ ],
+ "misconception": {
+  "wrong": "A liquid has no vapor pressure until it reaches its boiling point.",
+  "right": "Some molecules escape at any temperature, so a liquid always has a vapor pressure. At the boiling point the vapor pressure has risen to equal the outside pressure."
+ },
+ "check": [
+  "chem-phases-of-matter-1",
+  "chem-phases-of-matter-3",
+  "chem-phases-of-matter-4",
+  "chem-phases-of-matter-10",
+  "chem-phases-of-matter-12",
+  "chem-phases-of-matter-13"
+ ],
+ "summary": "Solids, liquids and gases differ in how close their particles are and how they move. Phase changes overcome or form attractions but keep molecules whole. In a sealed container evaporation and condensation reach a dynamic equilibrium; the vapor's pressure, the vapor pressure, rises with temperature and with weaker attractions, and a liquid boils when it equals the outside pressure.",
+ "connections": [
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "The attractions that hold liquids together (Intermolecular Forces)"
+  },
+  {
+   "href": "../notes/ideal-gas-law.html",
+   "label": "Next: how gas pressure, volume and temperature are linked (Ideal Gas Law)"
+  }
+ ]
+}

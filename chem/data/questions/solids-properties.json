@@ -1,0 +1,511 @@
+{
+ "stimuli": {
+  "solids-properties-s1": {
+   "kind": "table",
+   "title": "Four unknown solids",
+   "text": "<p>A student tests four white or gray solids, W to Z.</p>",
+   "table": {
+    "caption": "Properties of four solids",
+    "cols": [
+     "Solid",
+     "Melting point (°C)",
+     "Conducts as a solid?",
+     "Conducts when melted?",
+     "Hardness"
+    ],
+    "rows": [
+     [
+      "W",
+      "801",
+      "No",
+      "Yes",
+      "Hard, shatters when struck"
+     ],
+     [
+      "X",
+      "114",
+      "No",
+      "No",
+      "Soft, crumbles"
+     ],
+     [
+      "Y",
+      "1,710",
+      "No",
+      "No",
+      "Very hard"
+     ],
+     [
+      "Z",
+      "660",
+      "Yes",
+      "Yes",
+      "Bends without breaking"
+     ]
+    ]
+   }
+  },
+  "solids-properties-s2": {
+   "kind": "particle",
+   "title": "Particle views of four solids",
+   "html": "<svg viewBox=\"0 0 480 140\" width=\"480\" height=\"140\" role=\"img\" aria-label=\"Four boxes labelled 1 to 4. Box 1: pairs of identical atoms joined by a short line, the pairs spaced apart. Box 2: a grid of alternating plus and minus ions. Box 3: identical atoms each joined by lines to all their neighbours in one web. Box 4: a grid of plus ions with small dots scattered among them.\"><rect x=\"6\" y=\"6\" width=\"112\" height=\"112\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"62\" y=\"134\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">1</text><rect x=\"124\" y=\"6\" width=\"112\" height=\"112\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"180\" y=\"134\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">2</text><rect x=\"242\" y=\"6\" width=\"112\" height=\"112\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"298\" y=\"134\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">3</text><rect x=\"360\" y=\"6\" width=\"112\" height=\"112\" rx=\"6\" fill=\"#fff\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"416\" y=\"134\" font-size=\"13\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">4</text><circle cx=\"20\" cy=\"26\" r=\"7\" fill=\"#7B5EA7\"/><circle cx=\"42\" cy=\"26\" r=\"7\" fill=\"#7B5EA7\"/><line x1=\"27\" y1=\"26\" x2=\"35\" y2=\"26\" stroke=\"#333\" stroke-width=\"3\"/><circle cx=\"20\" cy=\"60\" r=\"7\" fill=\"#7B5EA7\"/><circle cx=\"42\" cy=\"60\" r=\"7\" fill=\"#7B5EA7\"/><line x1=\"27\" y1=\"60\" x2=\"35\" y2=\"60\" stroke=\"#333\" stroke-width=\"3\"/><circle cx=\"20\" cy=\"94\" r=\"7\" fill=\"#7B5EA7\"/><circle cx=\"42\" cy=\"94\" r=\"7\" fill=\"#7B5EA7\"/><line x1=\"27\" y1=\"94\" x2=\"35\" y2=\"94\" stroke=\"#333\" stroke-width=\"3\"/><circle cx=\"66\" cy=\"26\" r=\"7\" fill=\"#7B5EA7\"/><circle cx=\"88\" cy=\"26\" r=\"7\" fill=\"#7B5EA7\"/><line x1=\"73\" y1=\"26\" x2=\"81\" y2=\"26\" stroke=\"#333\" stroke-width=\"3\"/><circle cx=\"66\" cy=\"60\" r=\"7\" fill=\"#7B5EA7\"/><circle cx=\"88\" cy=\"60\" r=\"7\" fill=\"#7B5EA7\"/><line x1=\"73\" y1=\"60\" x2=\"81\" y2=\"60\" stroke=\"#333\" stroke-width=\"3\"/><circle cx=\"66\" cy=\"94\" r=\"7\" fill=\"#7B5EA7\"/><circle cx=\"88\" cy=\"94\" r=\"7\" fill=\"#7B5EA7\"/><line x1=\"73\" y1=\"94\" x2=\"81\" y2=\"94\" stroke=\"#333\" stroke-width=\"3\"/><circle cx=\"140.0\" cy=\"24.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"140.0\" y=\"29.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"140.0\" cy=\"50.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"140.0\" y=\"55.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"140.0\" cy=\"76.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"140.0\" y=\"81.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"140.0\" cy=\"102.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"140.0\" y=\"107.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"166.0\" cy=\"24.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"166.0\" y=\"29.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"166.0\" cy=\"50.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"166.0\" y=\"55.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"166.0\" cy=\"76.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"166.0\" y=\"81.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"166.0\" cy=\"102.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"166.0\" y=\"107.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"192.0\" cy=\"24.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"192.0\" y=\"29.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"192.0\" cy=\"50.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"192.0\" y=\"55.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"192.0\" cy=\"76.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"192.0\" y=\"81.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"192.0\" cy=\"102.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"192.0\" y=\"107.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"218.0\" cy=\"24.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"218.0\" y=\"29.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"218.0\" cy=\"50.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"218.0\" y=\"55.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><circle cx=\"218.0\" cy=\"76.0\" r=\"10\" fill=\"#009E73\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"218.0\" y=\"81.0\" font-size=\"11\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">−</text><circle cx=\"218.0\" cy=\"102.0\" r=\"8\" fill=\"#0072B2\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"218.0\" y=\"107.0\" font-size=\"8\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">+</text><line x1=\"260\" y1=\"24\" x2=\"290\" y2=\"24\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"260\" y1=\"24\" x2=\"275\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"290\" y1=\"24\" x2=\"320\" y2=\"24\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"290\" y1=\"24\" x2=\"305\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"320\" y1=\"24\" x2=\"335\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"275\" y1=\"52\" x2=\"290\" y2=\"24\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"275\" y1=\"52\" x2=\"305\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"275\" y1=\"52\" x2=\"290\" y2=\"80\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"305\" y1=\"52\" x2=\"320\" y2=\"24\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"305\" y1=\"52\" x2=\"335\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"305\" y1=\"52\" x2=\"320\" y2=\"80\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"260\" y1=\"80\" x2=\"275\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"260\" y1=\"80\" x2=\"290\" y2=\"80\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"260\" y1=\"80\" x2=\"275\" y2=\"108\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"290\" y1=\"80\" x2=\"305\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"290\" y1=\"80\" x2=\"320\" y2=\"80\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"290\" y1=\"80\" x2=\"305\" y2=\"108\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"320\" y1=\"80\" x2=\"335\" y2=\"52\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"320\" y1=\"80\" x2=\"335\" y2=\"108\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"275\" y1=\"108\" x2=\"290\" y2=\"80\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"275\" y1=\"108\" x2=\"305\" y2=\"108\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"305\" y1=\"108\" x2=\"320\" y2=\"80\" stroke=\"#333\" stroke-width=\"2\"/><line x1=\"305\" y1=\"108\" x2=\"335\" y2=\"108\" stroke=\"#333\" stroke-width=\"2\"/><circle cx=\"260\" cy=\"24\" r=\"6\" fill=\"#555\"/><circle cx=\"290\" cy=\"24\" r=\"6\" fill=\"#555\"/><circle cx=\"320\" cy=\"24\" r=\"6\" fill=\"#555\"/><circle cx=\"275\" cy=\"52\" r=\"6\" fill=\"#555\"/><circle cx=\"305\" cy=\"52\" r=\"6\" fill=\"#555\"/><circle cx=\"335\" cy=\"52\" r=\"6\" fill=\"#555\"/><circle cx=\"260\" cy=\"80\" r=\"6\" fill=\"#555\"/><circle cx=\"290\" cy=\"80\" r=\"6\" fill=\"#555\"/><circle cx=\"320\" cy=\"80\" r=\"6\" fill=\"#555\"/><circle cx=\"275\" cy=\"108\" r=\"6\" fill=\"#555\"/><circle cx=\"305\" cy=\"108\" r=\"6\" fill=\"#555\"/><circle cx=\"335\" cy=\"108\" r=\"6\" fill=\"#555\"/><circle cx=\"376.0\" cy=\"24.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"376.0\" y=\"29.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"376.0\" cy=\"50.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"376.0\" y=\"55.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"376.0\" cy=\"76.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"376.0\" y=\"81.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"376.0\" cy=\"102.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"376.0\" y=\"107.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"402.0\" cy=\"24.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"402.0\" y=\"29.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"402.0\" cy=\"50.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"402.0\" y=\"55.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"402.0\" cy=\"76.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"402.0\" y=\"81.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"402.0\" cy=\"102.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"402.0\" y=\"107.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"428.0\" cy=\"24.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"428.0\" y=\"29.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"428.0\" cy=\"50.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"428.0\" y=\"55.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"428.0\" cy=\"76.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"428.0\" y=\"81.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"428.0\" cy=\"102.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"428.0\" y=\"107.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"454.0\" cy=\"24.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"454.0\" y=\"29.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"454.0\" cy=\"50.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"454.0\" y=\"55.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"454.0\" cy=\"76.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"454.0\" y=\"81.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"454.0\" cy=\"102.0\" r=\"9\" fill=\"#E69F00\" stroke=\"#333\" stroke-width=\"1.2\"/><text x=\"454.0\" y=\"107.0\" font-size=\"9\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#1F2A28\">+</text><circle cx=\"363\" cy=\"37\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"363\" cy=\"63\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"363\" cy=\"115\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"389\" cy=\"11\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"389\" cy=\"63\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"389\" cy=\"89\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"415\" cy=\"11\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"415\" cy=\"37\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"415\" cy=\"89\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"415\" cy=\"115\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"441\" cy=\"37\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"441\" cy=\"63\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"441\" cy=\"115\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"467\" cy=\"11\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"467\" cy=\"63\" r=\"2.5\" fill=\"#0072B2\"/><circle cx=\"467\" cy=\"89\" r=\"2.5\" fill=\"#0072B2\"/></svg><p>Key: blue +, cation; green −, anion; gold +, metal cation; small blue dot, electron; line, covalent bond; purple pair, a two-atom molecule.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-solids-properties-1",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "solids-properties-s1",
+   "q": "Which solid is most likely a molecular solid?",
+   "options": [
+    "X",
+    "W",
+    "Y",
+    "Z"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "X melts low (114 °C), is soft and conducts in neither state. Low melting means only weak intermolecular forces hold the particles together, and no conduction means no ions or free electrons.",
+    "options": [
+     "Right: low melting point, soft, no conduction.",
+     "W conducts only when melted, the signature of an ionic solid whose ions become free to move.",
+     "Y melts at 1,710 °C, far too high for a solid held by intermolecular forces.",
+     "Z conducts as a solid and bends, which marks a metal."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-2",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solids-properties-s1",
+   "q": "Which observation best shows that solid W is ionic rather than metallic?",
+   "options": [
+    "W conducts when melted but not as a solid.",
+    "W melts at 801 °C, which is higher than the melting points of the common metals found in the periodic table, such as copper and iron.",
+    "W is white, while metals have a shiny, silvery color that reflects light from their surfaces.",
+    "W is hard, while metals are soft enough to be cut with a knife at room temperature."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In an ionic solid the charged particles are held in the lattice, so it cannot conduct until melting or dissolving frees the ions. A metal conducts as a solid because its electrons move freely.",
+    "options": [
+     "Right: conduction only when melted is the ionic signature.",
+     "Many metals melt far above 801 °C (iron at 1,538 °C), so melting point does not separate the two.",
+     "Color is a weak test, and a powdered metal can look gray or dull.",
+     "Most metals are hard; hardness does not tell the two kinds apart. The test is brittleness and conduction."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-3",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solids-properties-s1",
+   "q": "Which explanation accounts for solid Y's very high melting point and lack of conductivity?",
+   "options": [
+    "Its atoms form one covalent network, so melting breaks covalent bonds and no charges can move.",
+    "Its molecules form many hydrogen bonds to each other, which are strong enough to keep it solid at 1,700 °C.",
+    "Its ions are held by very strong ionic bonds, and ions do not carry a current even when the solid has melted into a liquid.",
+    "It is a metal whose electrons are held so tightly that they stay put, which raises the melting point."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Only breaking covalent bonds explains a melting point near 1,710 °C in a nonconductor. In a covalent network, all valence electrons are in bonds, so nothing carries a charge.",
+    "options": [
+     "Right: a covalent network solid such as quartz.",
+     "Hydrogen bonds are intermolecular forces; no molecular solid stays solid anywhere near 1,700 °C.",
+     "An ionic solid conducts once melted, and Y does not, so Y is not ionic.",
+     "A metal conducts as a solid because of its delocalized electrons; Y does not."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-4",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solids-properties-s1",
+   "q": "When solid Z is hammered, it flattens instead of shattering. Which particle-level explanation fits?",
+   "options": [
+    "Layers of cations slide while the electron sea keeps holding them together.",
+    "Hammering breaks the covalent bonds between atoms, and new covalent bonds form in the new shape.",
+    "Like-charged ions are pushed next to each other, and their repulsion pushes the layers apart.",
+    "The intermolecular forces between its molecules are weak, so the molecules move apart and spread out."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In a metal the bonding is a sea of electrons shared by all the cations, so shifting a layer does not break it: the metal is malleable.",
+    "options": [
+     "Right: the electron sea moves with the cations, so the solid bends instead of breaking.",
+     "Metals are not held by localized covalent bonds, so nothing has to break and re-form.",
+     "That repulsion is why ionic solids shatter; Z bends, so it is not ionic.",
+     "A molecular solid would crumble, not flatten; Z also conducts, which molecules cannot."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-5",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solids-properties-s1",
+   "q": "A fifth solid, V, melts at 186 °C and does not conduct when melted. Which conclusions are supported? Select all that apply.",
+   "options": [
+    "V is a molecular solid.",
+    "V's covalent bonds break when it melts.",
+    "V contains no free ions or electrons.",
+    "V is an ionic solid with small ions."
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "A low melting point means only intermolecular forces hold the particles, so V is molecular, and no conduction when melted means it has no ions or free electrons. (Sucrose fits.)",
+    "options": [
+     "Right: a low melting point points to intermolecular forces between molecules.",
+     "Melting a molecular solid overcomes intermolecular forces; its covalent bonds stay intact.",
+     "Right: a melted ionic or metallic solid would conduct.",
+     "A melted ionic solid conducts, and V does not."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-6",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "solids-properties-s2",
+   "q": "Which box shows a solid that conducts electricity as a solid?",
+   "options": [
+    "Box 4",
+    "Box 2",
+    "Box 3",
+    "Box 1"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "Box 4 shows metal cations among delocalized electrons. Those electrons move freely, so the solid conducts.",
+    "options": [
+     "Right: mobile electrons carry the current.",
+     "The ions in an ionic lattice are fixed, so box 2 conducts only when melted or dissolved.",
+     "In a covalent network every electron is in a bond, so nothing carries a charge.",
+     "Neutral molecules carry no charge and there are no free electrons."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-7",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "solids-properties-s2",
+   "q": "Which box best represents solid iodine, I₂?",
+   "options": [
+    "Box 1",
+    "Box 2",
+    "Box 3",
+    "Box 4"
+   ],
+   "correct": 0,
+   "fixed": true,
+   "why": {
+    "correct": "Iodine is made of separate I₂ molecules. Each pair is joined by a covalent bond, and the pairs are held to each other only by dispersion forces.",
+    "options": [
+     "Right: separate two-atom molecules.",
+     "Iodine contains no ions; I₂ is a neutral molecule of one element.",
+     "In a network every atom bonds to several neighbours; each iodine atom bonds to just one other.",
+     "Iodine is a nonmetal, so it has no cations in a sea of electrons."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-8",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solids-properties-s2",
+   "q": "The substance in box 1 melts far lower than the substance in box 3. Which reasoning is correct?",
+   "options": [
+    "Melting box 1 overcomes intermolecular forces; melting box 3 breaks covalent bonds.",
+    "The covalent bonds in box 1 are weaker than the covalent bonds in box 3, so they break at a lower temperature.",
+    "Box 1 has fewer atoms in the drawing than box 3, so less energy is needed to melt each gram of it.",
+    "Box 3 contains ions that attract each other strongly through ionic bonds, while box 1 contains neutral atoms that attract each other far less."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Melting a molecular solid pulls whole molecules apart; the bonds within each pair are untouched. Melting a network requires breaking covalent bonds, which takes far more energy.",
+    "options": [
+     "Right: intermolecular forces versus covalent bonds.",
+     "Melting box 1 does not break its covalent bonds at all.",
+     "The number of atoms drawn is a sampling choice, not a cause of melting point.",
+     "Box 3 contains neutral atoms joined by covalent bonds; there are no ions."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-9",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "solids-properties-s2",
+   "q": "Struck with a hammer, the solid in box 2 shatters. Which explanation is correct?",
+   "options": [
+    "Shifting a layer puts like charges side by side, and they repel.",
+    "The delocalized electrons are knocked loose, so nothing holds the cations together.",
+    "The intermolecular forces between its molecules are too weak to hold the solid in one piece.",
+    "Its covalent bonds are rigid and do not bend, so they snap like twigs when the crystal is struck with a hammer."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "In an ionic lattice each ion is surrounded by opposite charges. Sliding one layer by one ion lines up + with + and − with −, and the repulsions break the crystal: ionic solids are brittle.",
+    "options": [
+     "Right: repulsion between like charges after a shift.",
+     "Box 2 has no delocalized electrons; that describes a metal, which bends instead.",
+     "Box 2 contains ions, not molecules, and ionic bonds are strong.",
+     "Ionic solids are held by ionic, not covalent, bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-10",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 2,
+   "q": "Dry ice, CO₂(s), turns to gas at −78 °C, while quartz, SiO₂(s), melts near 1,710 °C. Which statement explains the difference?",
+   "options": [
+    "Solid CO₂ is molecules held by dispersion forces; quartz is a Si–O covalent network.",
+    "Si–O bonds are polar while C=O bonds are not, so quartz molecules attract each other more strongly.",
+    "Quartz molecules are heavier than CO₂ molecules, so they need more energy to leave the solid.",
+    "Quartz is an ionic solid made of Si⁴⁺ and O²⁻ ions, while CO₂ is made of neutral molecules."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The formulas look alike, but CO₂ forms small molecules and SiO₂ forms an endless network. Changing CO₂ to a gas pulls molecules apart; melting quartz breaks Si–O covalent bonds.",
+    "options": [
+     "Right: molecular solid versus covalent network.",
+     "C=O bonds are polar too; and quartz has no separate molecules to attract.",
+     "Quartz has no separate molecules at all, so molecule mass is the wrong idea.",
+     "Si–O bonds are polar covalent, and molten quartz does not conduct like an ionic liquid."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-11",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "4.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What holds the particles of a molecular solid to each other?",
+   "options": [
+    "Intermolecular forces",
+    "Covalent bonds throughout",
+    "Ionic bonds",
+    "A sea of electrons"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The atoms inside each molecule are covalently bonded, but separate molecules are held together by intermolecular forces.",
+    "options": [
+     "Right: attractions between separate molecules.",
+     "That describes a covalent network solid.",
+     "That describes an ionic solid.",
+     "That describes a metallic solid."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-12",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Graphite and diamond are both pure carbon, yet graphite conducts along its layers and diamond does not. Why?",
+   "options": [
+    "In graphite each C bonds to three others and one electron per C is delocalized; in diamond all four are in bonds.",
+    "Graphite contains carbon ions, while diamond contains neutral carbon atoms, so graphite has charge carriers.",
+    "Diamond's carbon atoms are held by weak intermolecular forces that block the movement of electrons.",
+    "Graphite is a metal, because carbon atoms arranged in layers give up their outer electrons the way metal atoms do."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Diamond uses all four valence electrons of each C in localized bonds. Graphite uses three; the remaining electrons spread over the whole sheet and can move along it.",
+    "options": [
+     "Right: delocalized electrons within each graphite layer.",
+     "Both contain neutral carbon atoms; there are no carbon ions.",
+     "Diamond is a covalent network held entirely by covalent bonds.",
+     "Graphite is a covalent network with delocalized electrons, not a metal."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-13",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A clear solid softens gradually from 550 °C to 700 °C instead of melting at one temperature. What does this best suggest?",
+   "options": [
+    "It is an amorphous solid, with no long-range order.",
+    "It is a crystalline molecular solid whose molecules melt together at one time.",
+    "It is an ionic solid whose ions are beginning to conduct electricity.",
+    "It is impure, because a pure crystalline solid has no melting point."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A crystal's ordered pattern gives every particle the same environment, so it melts sharply. In an amorphous solid like glass the environments vary, so it softens over a range.",
+    "options": [
+     "Right: gradual softening marks an amorphous solid such as glass.",
+     "Molecules all melting at once would give a sharp melting point, not a range.",
+     "Conductivity says nothing about whether melting is sharp or gradual.",
+     "A pure crystalline solid has a sharp melting point; it does not lack one."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-14",
+   "type": "order",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put these solids in order of melting point, lowest first.",
+   "options": [
+    "Solid CH₄ (methane)",
+    "Ice, H₂O",
+    "Sodium chloride, NaCl",
+    "Diamond, C"
+   ],
+   "why": {
+    "correct": "Methane (−182 °C) is molecular with dispersion forces only; ice (0 °C) is molecular with hydrogen bonds; NaCl (801 °C) is ionic; diamond (above 3,500 °C) is a covalent network."
+   }
+  },
+  {
+   "id": "chem-solids-properties-15",
+   "type": "multi",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which substances form molecular solids? Select all that apply.",
+   "options": [
+    "Sucrose, C₁₂H₂₂O₁₁",
+    "Silicon carbide, SiC",
+    "Potassium bromide, KBr",
+    "Solid carbon dioxide, CO₂",
+    "Copper, Cu"
+   ],
+   "correct": [
+    0,
+    3
+   ],
+   "why": {
+    "correct": "Sucrose and CO₂ are made of separate molecules. SiC is a covalent network, KBr is ionic and copper is metallic.",
+    "options": [
+     "Right: separate sucrose molecules.",
+     "SiC is a hard covalent network like diamond.",
+     "KBr is a metal with a nonmetal: an ionic solid.",
+     "Right: separate CO₂ molecules (dry ice).",
+     "Copper is a metal: cations in a sea of electrons."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-16",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Naphthalene (C₁₀H₈, melts at 80 °C) and urea (CO(NH₂)₂, melts at 133 °C) are both molecular solids. Urea's molar mass (60.06 g/mol) is less than half of naphthalene's (128.17 g/mol). Which claim best explains urea's higher melting point?",
+   "options": [
+    "Urea molecules hydrogen-bond through their N–H groups; naphthalene cannot.",
+    "Urea is a covalent network solid, so melting it breaks covalent bonds between the molecules in the crystal.",
+    "Urea molecules have more electrons than naphthalene molecules, so their dispersion forces are stronger.",
+    "Urea is ionic because it contains nitrogen, so its melting point lies between those of salts and molecules."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Naphthalene is nonpolar (dispersion only, 68 electrons). Urea has only 32 electrons, but its N–H hydrogens bond to the O and N lone pairs of neighbours. Hydrogen bonding outweighs the smaller dispersion forces.",
+    "options": [
+     "Right: hydrogen bonds explain it, not mass.",
+     "The question states urea is molecular; 133 °C is far too low for a network.",
+     "Urea has 32 electrons and naphthalene 68, so dispersion favours naphthalene.",
+     "Urea is made of neutral molecules; containing N does not make a compound ionic."
+    ]
+   }
+  },
+  {
+   "id": "chem-solids-properties-17",
+   "type": "single",
+   "unit": "unit-3",
+   "topic": "solids-properties",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student claims: \"Ice melts at 0 °C because the O–H bonds in water break at that temperature.\" Which is the best correction?",
+   "options": [
+    "Melting overcomes hydrogen bonds between molecules; the O–H bonds stay intact.",
+    "Ice melts because its ionic bonds break, releasing H⁺ and OH⁻ ions into the liquid that forms.",
+    "The claim is correct for ice, because ice is a covalent network solid of O–H bonds.",
+    "Ice melts because its dispersion forces break, while the hydrogen bonds stay intact in liquid water."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Ice is a molecular solid. Liquid water is still made of H₂O molecules, so no O–H bond broke; hydrogen bonds between molecules were partly overcome.",
+    "options": [
+     "Right: melting a molecular solid overcomes attractions between molecules.",
+     "Water molecules are covalent, not ionic; melting does not form ions.",
+     "Ice is molecular: separate H₂O molecules held by hydrogen bonds.",
+     "Melting loosens all the attractions between molecules, including many hydrogen bonds."
+    ]
+   }
+  }
+ ]
+}

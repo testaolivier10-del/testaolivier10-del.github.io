@@ -1,0 +1,175 @@
+{
+ "id": "frq-butane-lighter",
+ "type": "long",
+ "points": 10,
+ "title": "Molar mass of the gas in a lighter",
+ "units": [
+  "unit-3"
+ ],
+ "topics": [
+  "ideal-gas-law",
+  "phases-of-matter",
+  "real-gases"
+ ],
+ "practices": [
+  "2.F",
+  "5.F",
+  "6.E",
+  "6.G"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Collecting lighter gas over water",
+  "text": "<p>A student weighs a disposable lighter that contains liquid butane, C₄H₁₀. Holding the lighter under water, she releases gas into an inverted graduated cylinder that started completely full of water, until some gas has collected. She raises or lowers the cylinder until the water level inside matches the water level outside, so the gas inside is at room pressure. She dries the lighter and weighs it again. The gas in the cylinder is butane mixed with water vapor.</p>",
+  "table": {
+   "caption": "Data",
+   "cols": [
+    "Quantity",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Mass of lighter before",
+     "25.432 g"
+    ],
+    [
+     "Mass of lighter after",
+     "25.218 g"
+    ],
+    [
+     "Volume of gas collected",
+     "92.0 mL"
+    ],
+    [
+     "Water temperature",
+     "22.0 °C"
+    ],
+    [
+     "Barometric pressure",
+     "748.0 torr"
+    ],
+    [
+     "Vapor pressure of water at 22.0 °C",
+     "19.8 torr"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Calculate</b> the partial pressure of butane in the cylinder, in torr.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Subtracts the vapor pressure of water from the total pressure: 748.0 − 19.8 = 728.2 torr.",
+     "accept": [
+      "728.2 torr",
+      "P(butane) = P(total) − P(water) = 728.2 torr"
+     ]
+    }
+   ],
+   "sample": "The gas is a mixture, so P(total) = P(butane) + P(water). P(butane) = 748.0 torr − 19.8 torr = 728.2 torr."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Calculate</b> the number of moles of butane collected.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Correct setup of n = PV/RT with pressure in atm, volume in L and temperature in K (295.15 K), consistent with part (a).",
+     "accept": [
+      "n = (0.9582 atm)(0.0920 L) / (0.08206 L·atm/(mol·K) × 295.15 K)",
+      "R = 62.36 L·torr/(mol·K) with P in torr"
+     ]
+    },
+    {
+     "point": "Correct answer with units and an appropriate number of significant figures.",
+     "accept": [
+      "3.64 × 10⁻³ mol",
+      "0.00364 mol"
+     ]
+    }
+   ],
+   "sample": "P = 728.2 torr × (1 atm / 760 torr) = 0.9582 atm; V = 0.0920 L; T = 22.0 + 273.15 = 295.15 K. n = PV/RT = (0.9582 atm × 0.0920 L) / (0.08206 L·atm/(mol·K) × 295.15 K) = 3.640 × 10⁻³ mol, which is 3.64 × 10⁻³ mol."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the molar mass of butane from the data.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Mass of gas (0.214 g) divided by moles from part (b), with units.",
+     "accept": [
+      "58.8 g/mol",
+      "0.214 g ÷ 0.00364 mol = 58.8 g/mol"
+     ]
+    }
+   ],
+   "sample": "Mass of butane = 25.432 g − 25.218 g = 0.214 g. M = 0.214 g / 3.6396 × 10⁻³ mol = 58.8 g/mol, which is 58.8 g/mol."
+  },
+  {
+   "label": "d",
+   "prompt": "A second student did not subtract the vapor pressure of water and used 748.0 torr as the pressure of butane. <b>Predict</b> whether that student's molar mass is greater than, less than or equal to the value in part (c), and <b>justify</b> your answer.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Predicts that the molar mass is less than the value in part (c).",
+     "accept": [
+      "less than",
+      "too low",
+      "about 57.2 g/mol"
+     ]
+    },
+    {
+     "point": "Justifies: a larger pressure gives a larger calculated number of moles (n = PV/RT) for the same mass, so mass ÷ moles is smaller.",
+     "accept": [
+      "more moles calculated for the same mass, so the molar mass is smaller"
+     ]
+    }
+   ],
+   "sample": "Less. Using 748.0 torr instead of 728.2 torr makes the calculated moles larger, because n is proportional to P. The mass of butane is the same, so the molar mass (mass ÷ moles) comes out smaller, about 57.2 g/mol."
+  },
+  {
+   "label": "e",
+   "prompt": "Inside the sealed lighter, butane is a liquid with its vapor above it at about 2.2 atm at 22 °C. When the valve opens, the butane comes out as a gas. <b>Explain</b> both observations in terms of vapor pressure.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "Inside the sealed lighter, liquid and vapor are at dynamic equilibrium, so the pressure of the vapor equals butane's vapor pressure (about 2.2 atm) and liquid remains.",
+     "accept": [
+      "the lighter is sealed, so evaporation and condensation reach equilibrium at the vapor pressure"
+     ]
+    },
+    {
+     "point": "Outside, the air pressure (about 1 atm) is below butane's vapor pressure at 22 °C, so the released butane vaporizes (boils) completely.",
+     "accept": [
+      "vapor pressure greater than the surrounding pressure, so it boils"
+     ]
+    }
+   ],
+   "sample": "In the sealed lighter, butane evaporates until evaporation and condensation happen at equal rates; the vapor above the liquid is then at butane's vapor pressure, about 2.2 atm, and the rest stays liquid. When it is released into air at about 1 atm, the surrounding pressure is lower than butane's vapor pressure at 22 °C, so the butane boils and becomes a gas."
+  },
+  {
+   "label": "f",
+   "prompt": "The accepted molar mass of butane is 58.12 g/mol. A student claims that the experimental value is high because attractions between butane molecules make the gas behave non-ideally. <b>Justify</b> whether attractions between molecules would make the calculated molar mass too high or too low.",
+   "points": 2,
+   "rubric": [
+    {
+     "point": "States that attractions would make the calculated molar mass too high, consistent with the claim.",
+     "accept": [
+      "too high",
+      "consistent with the claim"
+     ]
+    },
+    {
+     "point": "Reasoning: attractions make the measured pressure (or volume) lower than ideal for the actual number of moles, so n = PV/RT underestimates the moles, and mass ÷ moles is too large.",
+     "accept": [
+      "PV is less than nRT, so calculated moles are too small"
+     ]
+    }
+   ],
+   "sample": "Too high, so the claim is reasonable. Attractions pull molecules back from the walls, so a real gas has PV slightly less than nRT. Calculating n = PV/RT therefore gives fewer moles than were really collected, and dividing the correct mass by too few moles gives a molar mass that is too high."
+  }
+ ]
+}

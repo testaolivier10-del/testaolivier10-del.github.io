@@ -1,0 +1,12 @@
+{
+ "wavelength-energy": {
+  "file": "figures/wavelength-energy.svg",
+  "ext": "svg",
+  "w": 640,
+  "h": 260,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Red light at 700 nm has a longer wavelength and lower frequency than violet light at 400 nm, so each red photon carries less energy. A photon is absorbed only when its energy, hν, equals the gap between two energy levels."
+ }
+}
