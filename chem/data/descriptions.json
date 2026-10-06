@@ -1,0 +1,6 @@
+{
+ "about": "Hand-written meta descriptions for pages whose opening text has no whole sentence short enough to be one. Shaped { lessons: {topic: text}, notes: {topic: text}, units: {chapter: text} }. Never use the mark here: no \"AP\" in any meta description (docs/apchem-spec.md decision 2).",
+ "lessons": {},
+ "notes": {},
+ "units": {}
+}

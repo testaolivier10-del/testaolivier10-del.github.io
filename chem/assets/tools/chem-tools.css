@@ -1,0 +1,311 @@
+/* AP® Chemistry tools (chem/assets/tools/chem-tools.js and every tool script).
+   Built on chem.css tokens: light and dark come from theme.css and the
+   --chem-* colors; every control is at least 44 px; nothing is wider than a
+   360 px phone screen except inside its own scrolling region. */
+.bt-app{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:18px 0 32px;}
+.bt-app>*{min-width:0;}
+.bt-loading{color:var(--muted);font-weight:700;min-height:240px;}
+.bt-draft{margin:0;padding:10px 14px;border-radius:12px;background:var(--ctint);color:var(--ink);font:700 14px/1.5 var(--font-ui);border-left:4px solid var(--cink);}
+.bt-small,.bt-hint{font:700 13px/1.45 var(--font-ui);color:var(--muted);margin:0;}
+.bt-intro p{font-weight:600;line-height:1.6;margin:0 0 10px;}
+
+/* Cards */
+.bt-card{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-card>*{min-width:0;}
+.bt-card h2,.bt-problem h2,.bt-frq h2,.bt-sec-h{font:900 19px var(--font-ui);margin:0;}
+.bt-card h3,.bt-solution h3{font:900 16px var(--font-ui);margin:0 0 6px;}
+
+/* "How this model works" and formula boxes */
+.bt-how{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:14px;padding:0 16px;}
+.bt-how summary{cursor:pointer;font:900 15px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+.bt-how-body{padding:0 0 12px;font-weight:600;line-height:1.6;}
+.bt-how-body ul{margin:6px 0 10px;padding-left:20px;}
+.bt-how-body li{margin:0 0 6px;}
+.bt-eq{font:700 15px var(--font-mono);background:var(--paper);padding:8px 10px;border-radius:10px;overflow-x:auto;}
+
+/* Controls */
+.bt-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px 18px;}
+.bt-ctl{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.bt-ctl label{font:800 14px var(--font-ui);}
+.bt-ctl.is-off input,.bt-ctl.is-off .bt-step{opacity:.5;}
+.bt-ctl.is-off .bt-out{color:var(--muted);}
+.bt-slider-row{display:flex;align-items:center;gap:8px;}
+.bt-slider-row input[type=range]{flex:1 1 auto;min-width:0;height:44px;accent-color:var(--cink);}
+.bt-step{min-width:44px;min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:900 20px var(--font-ui);cursor:pointer;}
+.bt-step:hover{border-color:var(--cink);}
+.bt-step:disabled{cursor:default;opacity:.5;}
+.bt-out{min-width:7.5ch;text-align:right;font:800 15px var(--font-mono);color:var(--ink);}
+.bt-select select,.bt-field select{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:700 15px var(--font-ui);padding:6px 10px;max-width:100%;}
+.bt-app :focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.bt-buttons{display:flex;flex-wrap:wrap;gap:10px;}
+.bt-buttons .btn-press,.bt-actions .btn-press,.bt-next .btn-press{min-height:44px;}
+.bt-btn{min-height:44px;padding:8px 14px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 14px var(--font-ui);cursor:pointer;}
+.bt-btn:hover{border-color:var(--cink);}
+.bt-btn[aria-pressed="true"]{border-color:var(--cink);background:var(--ctint);}
+
+/* The model: picture, plot, readout */
+.bt-stage{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;}
+@media (min-width:900px){.bt-stage.two{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);}}
+.bt-fig svg{width:100%;height:auto;max-height:340px;display:block;}
+.bt-plot{max-width:100%;}
+.bt-plot .zero{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3;}
+.bt-plot .vline{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
+.bt-plot .series.dashed{stroke-dasharray:7 5;stroke-width:2;}
+.chem-svg .s3{stroke:var(--chem-s3);} .chem-svg .s4{stroke:var(--chem-s4);}
+.bt-summary{margin:0;padding:12px 14px;border-radius:12px;background:var(--paper);font:700 15px/1.55 var(--font-ui);}
+.bt-readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px;margin:0;}
+.bt-readout div{background:var(--paper);border-radius:12px;padding:8px 10px;}
+.bt-readout dt{font:800 12px var(--font-ui);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.bt-readout dd{margin:2px 0 0;font:900 17px var(--font-mono);}
+.bt-tabs{display:flex;flex-wrap:wrap;gap:8px;}
+.bt-table details summary,.bt-data summary{cursor:pointer;font:800 14px var(--font-ui);color:var(--cink);min-height:44px;display:flex;align-items:center;}
+
+/* Skills problems */
+.bt-modes{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;}
+.bt-modes legend{font:900 15px var(--font-ui);margin-bottom:6px;padding:0;}
+.bt-radio{display:flex;align-items:center;gap:10px;min-height:44px;}
+.bt-radio input{width:22px;height:22px;flex:0 0 auto;accent-color:var(--cink);margin:0;}
+.bt-radio label{font:700 15px/1.4 var(--font-ui);cursor:pointer;padding:6px 0;flex:1 1 auto;min-height:44px;display:flex;align-items:center;}
+.bt-problem{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-problem>*{min-width:0;}
+.bt-prob-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px;}
+.bt-code{margin:0;font:700 13px var(--font-ui);color:var(--muted);}
+.bt-code a{color:var(--cink);display:inline-block;min-height:24px;}
+.bt-context p{margin:0 0 8px;font-weight:600;line-height:1.6;}
+.bt-parts{display:grid;gap:14px;}
+.bt-part{display:flex;flex-direction:column;gap:6px;border:0;margin:0;padding:10px 12px;border-radius:12px;background:var(--paper);}
+.bt-part legend,.bt-part>label{font:800 15px var(--font-ui);padding:0;}
+.bt-part-choice legend{float:left;width:100%;margin-bottom:4px;}
+.bt-part-choice legend+*{clear:both;}
+.bt-num-row{display:flex;gap:8px;align-items:center;}
+.bt-part input[type=text]{width:12ch;min-height:44px;padding:8px 12px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);font:800 17px var(--font-mono);}
+.bt-part.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.bt-part.is-wrong{box-shadow:inset 4px 0 0 var(--bad-text);}
+.bt-unit{color:var(--muted);font-weight:700;}
+.bt-key{font:800 14px var(--font-ui);}
+.bt-result{font:800 15px var(--font-ui);min-height:1.4em;}
+.bt-steps{margin:0;padding-left:22px;display:grid;gap:10px;font-weight:600;line-height:1.6;}
+.bt-steps li>.table-wrap{margin:8px 0;}
+.bt-solution{background:var(--paper);border-radius:12px;padding:12px 14px;}
+.table-wrap{overflow-x:auto;max-width:100%;}
+
+/* The mini FRQ */
+.bt-frq{background:var(--white);border:var(--bw,2px) solid var(--line);border-radius:18px;padding:16px;display:grid;gap:14px;grid-template-columns:minmax(0,1fr);}
+.bt-frq>*{min-width:0;}
+.bt-frq h2 small{font:800 13px var(--font-ui);color:var(--muted);margin-left:6px;}
+.bt-frq-prompt{margin:0 0 6px;font-weight:600;line-height:1.6;}
+.bt-pts{font:800 12.5px var(--font-ui);color:var(--muted);white-space:nowrap;}
+.bt-frq textarea{width:100%;box-sizing:border-box;min-height:96px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:600 15px/1.5 var(--font-ui);padding:10px 12px;}
+.bt-rubric{border:2px solid var(--line);border-radius:12px;margin:10px 0 0;padding:8px 12px;}
+.bt-rubric legend{font:800 14px var(--font-ui);padding:0 4px;}
+.bt-check-row{display:flex;gap:10px;align-items:flex-start;min-height:44px;padding:6px 0;}
+.bt-check-row input{width:22px;height:22px;flex:0 0 auto;margin:2px 0 0;accent-color:var(--cink);}
+.bt-check-row label{font:600 14.5px/1.5 var(--font-ui);cursor:pointer;}
+.bt-accept{display:block;color:var(--muted);font-size:13px;}
+.bt-sample{background:var(--ctint);border-radius:12px;padding:10px 14px;margin-top:10px;}
+.bt-sample p{margin:0 0 6px;line-height:1.55;font-weight:600;}
+.bt-sample-k{font:900 12px var(--font-ui) !important;letter-spacing:.06em;text-transform:uppercase;color:var(--cink);}
+.bt-frq-total{font:800 15px var(--font-ui);min-height:1.4em;}
+.bt-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.bt-report .report-btn{min-height:44px;}
+
+/* Graph builder */
+.gb-steps{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);}
+.gb-steps>*{min-width:0;}
+.gb-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px 16px;}
+.gb-axisset{border:2px solid var(--line);border-radius:12px;padding:8px 12px;margin:0;}
+.gb-axisset legend{font:800 14px var(--font-ui);padding:0 4px;}
+.gb-num{display:flex;flex-direction:column;gap:4px;}
+.gb-num label{font:800 13.5px var(--font-ui);}
+.gb-num input{width:10ch;min-height:44px;padding:6px 10px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 16px var(--font-mono);}
+.gb-pts{width:100%;border-collapse:collapse;font:700 14px var(--font-ui);}
+.gb-pts th,.gb-pts td{padding:6px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle;white-space:nowrap;}
+.gb-pts input{width:7ch;min-height:44px;padding:4px 8px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 15px var(--font-mono);}
+.gb-adj{display:inline-flex;align-items:center;gap:4px;}
+.gb-adj button{min-width:44px;min-height:44px;border-radius:10px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:900 17px var(--font-ui);cursor:pointer;}
+.gb-grid svg{width:100%;height:auto;display:block;touch-action:manipulation;}
+.gb-grid .minor{stroke:var(--line);stroke-width:.6;}
+.gb-grid .grid{stroke:var(--muted);stroke-opacity:.35;stroke-width:1;}
+.gb-grid .hit{fill:transparent;cursor:crosshair;}
+.gb-grid .gpt{fill:var(--chem-s1);stroke:var(--white);stroke-width:2;cursor:pointer;}
+.gb-grid .gpt.is-on{fill:var(--chem-s2);}
+.gb-grid .gpt:focus{outline:none;}
+.gb-grid .gpt:focus-visible{stroke:var(--ink);stroke-width:3;}
+.gb-grid .gbar{fill:var(--chem-s1);fill-opacity:.85;}
+.gb-grid .gbar.is-on{fill:var(--chem-s2);}
+.gb-grid .gline{fill:none;stroke:var(--chem-s1);stroke-width:2;}
+.gb-feedback ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;}
+.gb-feedback li{padding:8px 12px;border-radius:10px;background:var(--paper);font:600 14.5px/1.5 var(--font-ui);}
+.gb-feedback li.ok{box-shadow:inset 4px 0 0 var(--good-text);}
+.gb-feedback li.no{box-shadow:inset 4px 0 0 var(--bad-text);}
+
+/* Drills */
+.dr-scen{display:grid;gap:14px;}
+.dr-sec{border-top:2px solid var(--line);padding-top:14px;display:grid;gap:10px;}
+.dr-sec h3{font:900 16px var(--font-ui);margin:0;}
+.dr-rows{display:grid;gap:10px;}
+.dr-row{border:0;margin:0;padding:10px 12px;border-radius:12px;background:var(--paper);}
+.dr-row legend{font:700 15px/1.5 var(--font-ui);padding:0;float:left;width:100%;margin-bottom:6px;}
+.dr-row legend+*{clear:both;}
+.dr-opts{display:flex;flex-wrap:wrap;gap:4px 16px;}
+.dr-row.is-right{box-shadow:inset 4px 0 0 var(--good-text);}
+.dr-row.is-wrong{box-shadow:inset 4px 0 0 var(--bad-text);}
+.dr-why{font:600 14px/1.5 var(--font-ui);margin:6px 0 0;}
+.dr-sentence{margin:0;padding:10px 12px;border-radius:12px;background:var(--ctint);font:700 15.5px/1.6 var(--font-ui);}
+
+/* Osmosis and enzyme figures */
+.bt-fig .beaker{fill:var(--chem-lo-fill);stroke:var(--chem-shape);stroke-width:2.5;}
+.bt-fig .water{fill:var(--chem-eff-fill);}
+.bt-fig .wall{fill:none;stroke:var(--chem-para);stroke-width:5;}
+.bt-fig .memb{fill:var(--chem-aff-fill);stroke:var(--chem-memb);stroke-width:2.5;}
+.bt-fig .lysed{fill:none;stroke:var(--chem-memb);stroke-width:2.5;stroke-dasharray:6 6;}
+.bt-fig .bag{fill:var(--chem-aff-fill);stroke:var(--chem-memb);stroke-width:2.5;}
+.bt-fig .flow{fill:none;stroke:var(--chem-deo2);stroke-width:3;}
+.bt-fig .flowhead{fill:var(--chem-deo2);}
+.bt-fig text{fill:var(--ink);font:800 13px var(--font-ui);}
+.bt-fig .note{fill:var(--muted);font:700 12px var(--font-ui);}
+.bt-fig .enz{fill:var(--chem-para-fill);stroke:var(--chem-para);stroke-width:2;}
+.bt-fig .sub{fill:var(--chem-aff-fill);stroke:var(--chem-aff);stroke-width:2;}
+.bt-fig .inh{fill:var(--chem-symp-fill);stroke:var(--chem-symp);stroke-width:2;}
+
+@media (max-width:420px){
+  .bt-card,.bt-problem,.bt-frq{padding:12px;border-radius:14px;}
+  .bt-out{min-width:6ch;font-size:14px;}
+}
+@media print{.bt-controls,.bt-buttons,.bt-actions,.bt-next{display:none;}}
+.gb-axisset .gb-row{grid-template-columns:repeat(3,minmax(0,1fr));}
+.gb-axisset .gb-num input{width:100%;box-sizing:border-box;}
+
+/* Signal amplification and cell cycle figures */
+.bt-checks{border:0;margin:0;padding:0;min-width:0;}
+.bt-checks legend{font:800 14px var(--font-ui);padding:0;margin-bottom:2px;}
+.bt-fig .stp{fill:var(--chem-shape-fill);stroke:var(--chem-shape);stroke-width:1.5;}
+.bt-fig .stp.blocked{stroke:var(--chem-symp);stroke-width:2.5;stroke-dasharray:6 4;}
+.bt-fig .cnt{fill:var(--chem-aff);}
+.bt-fig .arr{fill:none;stroke:var(--chem-causes);stroke-width:2;}
+.bt-fig .arrh{fill:var(--chem-causes);}
+.bt-fig .ph{fill:none;stroke-width:22;}
+.bt-fig .ph.g1{stroke:var(--chem-eff-fill);} .bt-fig .ph.s{stroke:var(--chem-aff-fill);} .bt-fig .ph.g2{stroke:var(--chem-para-fill);} .bt-fig .ph.m{stroke:var(--chem-symp-fill);}
+.bt-fig .ckp{stroke:var(--chem-causes);stroke-width:3;}
+.bt-fig .ckp.hold{stroke:var(--chem-hi);stroke-width:5;}
+.bt-fig .g0{fill:var(--chem-lo-fill);stroke:var(--chem-lo);stroke-width:1.5;}
+.bt-fig svg.sg-fig,.bt-fig svg.cc-fig{max-height:none;max-width:460px;margin:0 auto;}
+
+/* Meiosis and nondisjunction: maternal homologs solid orange-red (M),
+   paternal blue with stripes (P), so origin never depends on colour alone. */
+.bt-fig svg.mei-fig{max-height:none;max-width:460px;margin:0 auto;}
+.mei-fig .mei-m{fill:var(--chem-o2);}
+.mei-fig .mei-pbg{fill:var(--chem-deo2);}
+.mei-fig .mei-pst{fill:var(--white);fill-opacity:.75;}
+.mei-fig .mei-out{fill:none;stroke:var(--ink);stroke-width:1;}
+.mei-fig .mei-cen{fill:var(--ink);}
+.mei-fig .mei-cell{fill:var(--chem-shape-fill);stroke:var(--chem-shape);stroke-width:1.5;}
+.mei-fig .mei-plate{stroke:var(--muted);stroke-width:1.5;stroke-dasharray:5 4;}
+.mei-fig text.mei-lab{font:800 10px var(--font-ui);}
+.mei-fig text.mei-ttl{font:800 11.5px var(--font-ui);}
+.mei-fig text.mei-pole,.mei-fig text.mei-note{fill:var(--muted);font:700 10.5px var(--font-ui);}
+.mei-stepper{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;}
+.mei-stepper .bt-ctl{flex:1 1 220px;}
+.mei-stephead h3{font:900 17px var(--font-ui);margin:0 0 4px;}
+.mei-stephead p{margin:0;font:600 15px/1.5 var(--font-ui);}
+.mei-words ul{margin:4px 0 0;padding-left:20px;font:600 14px/1.5 var(--font-ui);}
+.mei-words .mei-key{margin-top:6px;}
+.mei-orient{display:grid;gap:8px;}
+.mei-orient .bt-btn{justify-self:start;}
+.mei-results{display:grid;gap:10px;}
+.mei-combos{margin:0;font:600 15px/1.5 var(--font-ui);}
+
+/* ===== Unit 8 simulators (population-growth, energy-flow): begin ===== */
+/* Population growth: graphs come from ApChemTools.plot; events sit in boxes
+   whose controls are disabled until their checkbox is ticked. */
+.pg-events{border:0;margin:0;padding:0;min-width:0;}
+.pg-events legend{font:900 15px var(--font-ui);padding:0;margin-bottom:6px;}
+.pg-evbox{background:var(--paper);border-radius:12px;padding:8px 12px;gap:8px;}
+.pg-gh{font:900 15px var(--font-ui);margin:0 0 6px;min-height:44px;display:flex;align-items:center;}
+.pg-explain h3,.ef-explain h3,.ef-sub{font:900 16px var(--font-ui);margin:0 0 6px;}
+.pg-explain ol,.ef-explain ol{margin:0;padding-left:22px;display:grid;gap:6px;font:600 15px/1.5 var(--font-ui);}
+/* Energy flow: pyramids are labeled bars (numbers written on the figure);
+   energy, biomass and toxin bars differ in fill and in outline style. */
+.ef-chain{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;font:700 15px var(--font-ui);}
+.ef-chain li{display:flex;align-items:center;gap:6px;}
+.ef-chain li+li::before{content:"→";font-weight:900;color:var(--muted);margin-right:2px;}
+.ef-chain li b{background:var(--paper);border-radius:10px;padding:4px 8px;}
+.bt-fig svg.ef-pyr{max-height:none;max-width:420px;margin:0 auto;}
+.ef-pyr text{fill:var(--ink);}
+.ef-pyr .ef-ttl{font:900 14px var(--font-ui);}
+.ef-pyr .ef-lab{font:700 12px var(--font-ui);}
+.ef-pyr .ef-bar{stroke-width:2;}
+.ef-pyr .ef-bar.en{fill:var(--chem-para-fill);stroke:var(--chem-para);}
+.ef-pyr .ef-bar.bm{fill:var(--chem-aff-fill);stroke:var(--chem-aff);stroke-dasharray:6 3;}
+.ef-pyr .ef-bar.tx{fill:var(--chem-symp-fill);stroke:var(--chem-symp);stroke-dasharray:2 3;}
+.ef-levels{display:grid;gap:6px;}
+/* ===== Unit 8 simulators: end ===== */
+
+/* Lac and trp operons: mutated parts get a dashed outline and a ⁻, ᶜ or ˢ
+   in their label, so no state depends on colour alone. */
+.bt-fig svg.op-fig{max-height:none;max-width:600px;margin:0 auto;}
+.op-fig text{font:800 12px var(--font-ui);}
+.op-fig .op-ttl{font:900 13px var(--font-ui);}
+.op-fig .op-note{fill:var(--muted);font:700 11px var(--font-ui);}
+.op-fig .op-dna{stroke:var(--ink);stroke-width:3;}
+.op-fig .op-box{fill:var(--chem-shape-fill);stroke:var(--chem-shape);stroke-width:1.5;}
+.op-fig .op-box.prom{fill:var(--chem-aff-fill);stroke:var(--chem-aff);}
+.op-fig .op-box.oper{fill:var(--chem-lo-fill);stroke:var(--chem-lo);}
+.op-fig .op-box.cap{fill:var(--chem-para-fill);stroke:var(--chem-para);}
+.op-fig .op-box.reg{fill:var(--paper);}
+.op-fig .op-box.mut{stroke:var(--chem-symp);stroke-width:2.5;stroke-dasharray:5 3;}
+.op-fig .op-cap{fill:var(--chem-para-fill);stroke:var(--chem-para);stroke-width:2;}
+.op-fig .op-pol{fill:var(--chem-aff-fill);stroke:var(--chem-aff);stroke-width:2;}
+.op-fig .op-pol.weak{stroke-dasharray:4 3;}
+.op-fig .op-rep{fill:var(--chem-symp-fill);stroke:var(--chem-symp);stroke-width:2;}
+.op-fig .op-small{fill:var(--chem-eff-fill);stroke:var(--chem-eff);stroke-width:1.5;}
+.op-fig .op-mrna{fill:none;stroke:var(--chem-causes);stroke-width:2;}
+.op-fig .op-mrna.hi{stroke-width:3.5;}
+.op-fig .op-mrna.trickle{stroke-dasharray:3 4;}
+.op-further{background:var(--ctint);border-radius:12px;padding:10px 14px;}
+.op-further p{margin:0;font:600 14.5px/1.55 var(--font-ui);}
+.op-genes{border:0;margin:0;padding:0;min-width:0;display:grid;gap:8px;}
+.op-genes legend{font:800 14px var(--font-ui);padding:0;margin-bottom:2px;}
+.op-explain h3{font:900 16px var(--font-ui);margin:0 0 6px;}
+.op-explain ol{margin:0;padding-left:22px;display:grid;gap:6px;font:600 15px/1.5 var(--font-ui);}
+.op-fig text.op-tight{font:800 10px var(--font-ui);}
+.op-read dd{font:800 14.5px/1.4 var(--font-ui);}
+
+/* Hardy-Weinberg and drift */
+.hw-group{border:var(--bw,2px) solid var(--line);border-radius:14px;padding:10px 12px 12px;margin:0;gap:10px;}
+.hw-group legend{font:900 15px var(--font-ui);padding:0 4px;}
+.hw-seed input{min-height:44px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink);font:800 16px var(--font-mono);padding:6px 10px;max-width:12ch;}
+.hw-concl{margin:8px 0 0;font:700 15px/1.55 var(--font-ui);}
+.hw-chi h3,.bt-stage h3{font:900 15px var(--font-ui);margin:0 0 6px;}
+.hw-plot-p .series{stroke-width:1.6;stroke-opacity:.75;}
+.hw-plot-p .series.s2{stroke-width:3;stroke-opacity:1;}
+
+/* Tree reading */
+.tr-figwrap{overflow-x:auto;}
+.bt-fig svg.tr-fig{max-height:none;min-width:460px;max-width:600px;}
+.tr-fig .tr-edge{fill:none;stroke:var(--ink);stroke-width:2.5;}
+.tr-fig .tr-node circle{fill:var(--white);stroke:var(--ink);stroke-width:1.5;}
+.tr-fig .tr-node text{fill:var(--ink);font:800 11px var(--font-ui);}
+.tr-fig .tr-node.mrca circle{fill:var(--chem-aff-fill);stroke:var(--chem-aff);stroke-width:3.5;}
+.tr-fig .tr-tip{fill:var(--ink);font:700 15px var(--font-ui);}
+.tr-fig .tr-tip.sel{font-weight:900;}
+.tr-fig .tr-tip.miss{fill:var(--muted);font-style:italic;}
+.tr-fig .tr-len{fill:var(--muted);font:700 11px var(--font-ui);}
+.tr-fig .tr-mark{fill:var(--chem-symp);}
+.tr-fig .tr-mlab{fill:var(--ink);font:900 12px var(--font-ui);}
+.tr-fig .tr-bracket{fill:none;stroke:var(--chem-deo2);stroke-width:3;}
+.tr-about{margin:0;font-weight:600;line-height:1.55;}
+.tr-desc h3,.tr-extra h3,.tb-out h3,.tr-charfb h3{font:900 15px var(--font-ui);margin:0 0 6px;}
+.tr-steps{margin:0 0 6px;padding-left:22px;font:600 14px/1.5 var(--font-ui);}
+.tr-checks{display:flex;flex-wrap:wrap;gap:0 18px;}
+.tr-rotate,.tr-tips,.tb-pieces{border:0;margin:0;padding:0;gap:8px;}
+.tr-rotate legend,.tr-tips legend,.tb-pieces legend{font:900 15px var(--font-ui);padding:0;margin-bottom:6px;}
+.tr-extra{display:grid;gap:10px;}
+.tr-fb{margin:4px 0 8px;padding-left:20px;font:600 14px/1.5 var(--font-ui);}
+.tr-fb li{margin:0 0 4px;}
+.tb-out{display:grid;gap:10px;}
+.tr-fb{list-style:none;padding:0;display:grid;gap:6px;}
+.tr-fb li{padding:8px 12px;border-radius:10px;background:var(--paper);}
+.tr-fb li.ok{box-shadow:inset 4px 0 0 var(--good-text);}
+.tr-fb li.no{box-shadow:inset 4px 0 0 var(--bad-text);}
+.hw-readout dt{text-transform:none;letter-spacing:0;font-size:13px;}

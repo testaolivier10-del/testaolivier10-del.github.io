@@ -1,0 +1,4 @@
+{
+ "about": "Chapters (units and the math skills chapter) live on the site. A topic is built only when its lesson, notes and question file exist AND its chapter is listed here (a skills topic also waits for the chapter of the topic it sits before or after). A chapter is added once it passes its independent accuracy check and every check (docs/apchem-spec.md). Empty: nothing is published, every page is noindex.",
+ "chapters": []
+}

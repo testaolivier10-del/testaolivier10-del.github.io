@@ -1,0 +1,32 @@
+{
+ "atom": {
+  "def": "The smallest piece of an element that still has that element's properties."
+ },
+ "element": {
+  "def": "A substance made of only one kind of atom, such as carbon or oxygen."
+ },
+ "periodic-table": {
+  "def": "The chart of every element in order, giving each one's symbol and atomic mass."
+ },
+ "molecule": {
+  "def": "A group of atoms held together as one unit, such as a water molecule, H₂O."
+ },
+ "compound": {
+  "def": "A substance made of two or more elements joined in a fixed ratio."
+ },
+ "atomic-mass-unit": {
+  "def": "A unit of mass for atoms: one twelfth of the mass of a carbon-12 atom."
+ },
+ "atomic-mass": {
+  "def": "The mass of an atom of an element in atomic mass units, as listed on the periodic table."
+ },
+ "mole": {
+  "def": "The counting unit of chemistry: 6.022 × 10²³ particles of whatever you name."
+ },
+ "avogadro": {
+  "def": "6.022 × 10²³, the number of particles in one mole."
+ },
+ "molar-mass": {
+  "def": "The mass of one mole of a substance, in grams per mole (g/mol)."
+ }
+}
