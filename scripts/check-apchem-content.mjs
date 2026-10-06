@@ -228,7 +228,12 @@ function orderingProblems(map, topicId, texts) {
   const order = map.topics.map(t => t.id), here = order.indexOf(topicId);
   const later = map.concepts.filter(c => order.indexOf(c.taughtIn) > here);
   const body = texts.join('\n').replace(/<aside class="chem-preview"[\s\S]*?<\/aside>/g, ' ');
-  const plain = strip(body);
+  let plain = strip(body);
+  // A term already taught can contain a later one ("photoelectron spectroscopy"
+  // (1.6) is not a use of a later "spectroscopy"): blank the longer, allowed
+  // terms first, as the map check does (scripts/lib/apchem-map.mjs, maskAllowed).
+  const allowed = map.concepts.filter(c => order.indexOf(c.taughtIn) <= here).flatMap(c => [c.term, ...c.aliases]).filter(t => t && /\s/.test(t)).sort((a, b) => b.length - a.length);
+  for (const t of allowed) plain = plain.replace(new RegExp(`(?<![A-Za-z0-9-])${t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?![A-Za-z0-9-])`, /^[A-Z0-9]+$/.test(t) ? 'g' : 'gi'), ' ');
   const out = [];
   for (const c of later) for (const term of [c.term, ...c.aliases]) {
     if (!term || map.everyday.has(term.toLowerCase())) continue;

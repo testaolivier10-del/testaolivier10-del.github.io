@@ -1,0 +1,7 @@
+{
+ "matter-classification": {
+  "file": "figures/matter-classification.svg", "ext": "svg", "w": 710, "h": 335,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Three particle boxes: identical N₂ molecules (an element), identical H₂O molecules (a compound), and a mix of N₂, O₂, H₂O and Ar particles (a mixture)."
+ }
+}

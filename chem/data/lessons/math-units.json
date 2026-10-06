@@ -1,0 +1,48 @@
+{
+ "topic": "math-units",
+ "hook": "In 1999 a space probe sent to Mars was lost because one team worked in pound-force seconds and another in newton seconds. Nobody converted, and the probe flew too close to the planet. In chemistry, every number is a number times a unit, and the unit carries half the meaning.",
+ "prereq": [],
+ "figure": {
+  "figure": "unit-cancel-chain",
+  "caption": "Dimensional analysis: each conversion factor puts the unit you have on the bottom, so it cancels, until only the unit you want is left."
+ },
+ "chain": [
+  {
+   "cause": "A measurement is a number and a unit together",
+   "effect": "changing the unit must change the number so the quantity stays the same"
+  },
+  {
+   "cause": "A conversion factor is a ratio of two equal quantities, such as 1000 g / 1 kg",
+   "effect": "multiplying by it is multiplying by 1, so the quantity does not change"
+  },
+  {
+   "cause": "Units cancel like numbers when the same unit is on the top and the bottom",
+   "effect": "choosing which way up each factor goes decides which units are left"
+  },
+  {
+   "cause": "When only the wanted unit is left",
+   "effect": "the setup is right, and the arithmetic gives the answer in that unit"
+  }
+ ],
+ "ideas": [
+  "Every measured number needs its <b>unit</b>; \"12.6\" means nothing until it is 12.6 g or 12.6 mL.",
+  "<b>Metric prefixes</b> scale a unit: kilo (k) = 1000, centi (c) = 1/100, milli (m) = 1/1000, micro (µ) = 1/1,000,000, nano (n) = 1/1,000,000,000.",
+  "<b>Dimensional analysis</b>: multiply by conversion factors, each with the unit you have on the bottom, until only the unit you want is left.",
+  "<b>Density</b> = mass ÷ volume (g/mL or g/cm³), and works as a conversion factor between mass and volume. Kelvin = °C + 273.15."
+ ],
+ "misconception": {
+  "wrong": "To change kilometers to meters you divide by 1000, because a kilometer is the bigger unit.",
+  "right": "A smaller unit needs a larger number to describe the same distance. 2.45 km × (1000 m / 1 km) = 2450 m. Let the units decide: the factor that cancels km is the right one."
+ },
+ "check": [
+  "chem-math-units-1",
+  "chem-math-units-2",
+  "chem-math-units-3",
+  "chem-math-units-5",
+  "chem-math-units-6",
+  "chem-math-units-8",
+  "chem-math-units-12"
+ ],
+ "summary": "Every measurement is a number with a unit. Metric prefixes scale units by factors of ten, and conversion factors (ratios equal to 1) change the unit without changing the quantity. Chain factors so that units cancel; density converts between mass and volume, and K = °C + 273.15.",
+ "connections": []
+}

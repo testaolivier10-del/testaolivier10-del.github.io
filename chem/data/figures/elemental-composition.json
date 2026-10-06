@@ -1,0 +1,7 @@
+{
+ "empirical-formula-flow": {
+  "file": "figures/empirical-formula-flow.svg", "ext": "svg", "w": 680, "h": 300,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Mass percents (40.00% C, 6.71% H, 53.29% O) become grams in 100 g, then moles (3.331, 6.657, 3.331), then the ratio 1 : 2 : 1, CH₂O; a molar mass of 180.2 g/mol gives six units, C₆H₁₂O₆."
+ }
+}

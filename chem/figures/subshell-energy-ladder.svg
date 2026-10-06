@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" width="680" height="380" role="img" aria-labelledby="t d">
+<title id="t">Energy order of subshells</title>
+<desc id="d">An energy ladder. From the bottom up: 1s, then 2s, then 2p, then 3s, then 3p, then 4s, then 3d, then 4p. Each subshell is drawn as a row of boxes, one box per orbital: s has one box, p three and d five. Numbers show how many electrons each holds: s 2, p 6, d 10. An arrow up the side is labeled higher energy, farther from the nucleus on average. A note says 4s fills before 3d in a neutral atom.</desc>
+<rect width="680" height="380" fill="#ffffff"/>
+<defs><marker id="u" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 10 L5 0 L10 10 z" fill="#1D44A6"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <line x1="40" y1="350" x2="40" y2="30" stroke="#1D44A6" stroke-width="3" marker-end="url(#u)"/>
+  <text x="56" y="40" font-size="14" fill="#1D44A6">higher energy</text>
+  <g stroke="#1B2440" stroke-width="1.5" fill="#E3EAFA">
+    <rect x="150" y="330" width="26" height="22"/>
+    <rect x="150" y="290" width="26" height="22"/>
+    <rect x="230" y="260" width="26" height="22"/><rect x="256" y="260" width="26" height="22"/><rect x="282" y="260" width="26" height="22"/>
+    <rect x="150" y="220" width="26" height="22"/>
+    <rect x="230" y="190" width="26" height="22"/><rect x="256" y="190" width="26" height="22"/><rect x="282" y="190" width="26" height="22"/>
+    <rect x="150" y="150" width="26" height="22"/>
+    <rect x="360" y="125" width="26" height="22"/><rect x="386" y="125" width="26" height="22"/><rect x="412" y="125" width="26" height="22"/><rect x="438" y="125" width="26" height="22"/><rect x="464" y="125" width="26" height="22"/>
+    <rect x="230" y="90" width="26" height="22"/><rect x="256" y="90" width="26" height="22"/><rect x="282" y="90" width="26" height="22"/>
+  </g>
+  <g font-size="16" font-weight="bold">
+    <text x="110" y="347">1s</text><text x="110" y="307">2s</text><text x="196" y="277">2p</text><text x="110" y="237">3s</text>
+    <text x="196" y="207">3p</text><text x="110" y="167">4s</text><text x="320" y="142">3d</text><text x="196" y="107">4p</text>
+  </g>
+  <g font-size="13" fill="#3A4560">
+    <text x="186" y="347">holds 2</text><text x="186" y="307">2</text><text x="318" y="277">6</text><text x="186" y="237">2</text>
+    <text x="318" y="207">6</text><text x="186" y="167">2</text><text x="500" y="142">10</text><text x="318" y="107">6</text>
+  </g>
+  <text x="530" y="200" font-size="14">one box = one orbital</text>
+  <text x="530" y="220" font-size="14">(2 electrons each)</text>
+  <text x="430" y="70" font-size="14" fill="#C2410C">4s fills before 3d</text>
+  <text x="430" y="88" font-size="14" fill="#C2410C">in a neutral atom</text>
+</g>
+</svg>

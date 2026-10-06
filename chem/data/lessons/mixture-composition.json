@@ -1,0 +1,73 @@
+{
+ "topic": "mixture-composition",
+ "hook": "A supplement bottle says \"500 mg of calcium per tablet.\" A lab can check that claim with a balance: dissolve the tablet, measure how much calcium it holds and compare with the pure compound. The same idea, measuring one element to judge a whole mixture, is how chemists test the purity of medicines, metals and food.",
+ "prereq": [
+  {
+   "q": "What is the mass percent of oxygen in water, H₂O (molar mass 18.02 g/mol)?",
+   "options": [
+    "88.8%",
+    "11.2%",
+    "33.3%",
+    "50.0%"
+   ],
+   "correct": 0,
+   "why": "16.00 / 18.02 × 100 = 88.8%.",
+   "review": "elemental-composition"
+  },
+  {
+   "q": "Which describes a compound?",
+   "options": [
+    "Two or more elements joined in a fixed ratio",
+    "Two substances stirred together in any ratio",
+    "A single kind of atom",
+    "Any substance that is a gas"
+   ],
+   "correct": 0,
+   "why": "A compound has its elements in a fixed ratio, which gives it a fixed composition.",
+   "review": "moles-molar-mass"
+  }
+ ],
+ "figure": {
+  "figure": "matter-classification",
+  "caption": "Classifying matter: a pure substance has one kind of particle and a fixed composition; a mixture has more than one kind, in proportions that can vary."
+ },
+ "chain": [
+  {
+   "cause": "A pure substance contains one kind of particle",
+   "effect": "its composition is fixed, the same in every sample"
+  },
+  {
+   "cause": "A mixture contains two or more substances that are not bonded into one kind of particle",
+   "effect": "its proportions can vary from sample to sample"
+  },
+  {
+   "cause": "Each pure compound has a known mass percent of each element",
+   "effect": "measuring one element in a sample shows how much of that compound it holds"
+  },
+  {
+   "cause": "Comparing that amount with the sample's mass",
+   "effect": "gives the purity, as long as no other part of the mixture holds the same element"
+  }
+ ],
+ "ideas": [
+  "A <b>mixture</b> holds two or more substances in proportions that can vary. A <b>homogeneous mixture</b> is uniform throughout; a <b>heterogeneous mixture</b> is not.",
+  "In a <b>particulate diagram</b>, a pure substance shows one kind of particle; a mixture shows more than one. What you see and measure in bulk is the <b>macroscopic</b> level.",
+  "<b>Elemental analysis</b>: measure the mass of one element, convert it to the compound with the compound's mass percent.",
+  "<b>Purity</b> = mass of the wanted compound ÷ mass of the sample × 100."
+ ],
+ "misconception": {
+  "wrong": "Anything that contains two or more elements is a mixture.",
+  "right": "Compounds also contain two or more elements, joined in a fixed ratio into one kind of particle. A mixture has more than one kind of particle, and its proportions can vary."
+ },
+ "check": [
+  "chem-mixture-composition-1",
+  "chem-mixture-composition-2",
+  "chem-mixture-composition-3",
+  "chem-mixture-composition-6",
+  "chem-mixture-composition-7",
+  "chem-mixture-composition-8",
+  "chem-mixture-composition-9"
+ ],
+ "summary": "Pure substances have one kind of particle and a fixed composition; mixtures have more than one, in variable proportions, and can be homogeneous or heterogeneous. Elemental analysis measures one element in a sample and uses the pure compound's mass percent to find how much of the compound is present, giving its purity.",
+ "connections": []
+}

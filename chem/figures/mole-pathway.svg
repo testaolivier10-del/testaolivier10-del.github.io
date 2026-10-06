@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 240" width="680" height="240" role="img" aria-labelledby="t d">
+<title id="t">Grams, moles and particles</title>
+<desc id="d">Three boxes in a row: mass in grams, amount in moles, number of particles. From grams to moles, divide by the molar mass in grams per mole; from moles to grams, multiply by it. From moles to particles, multiply by Avogadro's number, 6.022 times ten to the 23rd; from particles to moles, divide by it. Every path between grams and particles passes through moles.</desc>
+<rect width="680" height="240" fill="#ffffff"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1D44A6"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440" text-anchor="middle">
+  <g stroke="#1D44A6" stroke-width="2.5" fill="#E3EAFA">
+    <rect x="20" y="85" width="150" height="70" rx="12"/>
+    <rect x="265" y="85" width="150" height="70" rx="12"/>
+    <rect x="510" y="85" width="150" height="70" rx="12"/>
+  </g>
+  <text x="95" y="115" font-size="20" font-weight="bold">Mass</text><text x="95" y="140" font-size="16">grams (g)</text>
+  <text x="340" y="115" font-size="20" font-weight="bold">Amount</text><text x="340" y="140" font-size="16">moles (mol)</text>
+  <text x="585" y="115" font-size="20" font-weight="bold">Particles</text><text x="585" y="140" font-size="16">atoms, molecules</text>
+  <g stroke="#1D44A6" stroke-width="2.5" fill="none" marker-end="url(#ar)">
+    <path d="M175 100 H258"/><path d="M260 140 H177"/>
+    <path d="M420 100 H503"/><path d="M505 140 H422"/>
+  </g>
+  <g font-size="15">
+    <text x="217" y="60">÷ molar mass</text><text x="217" y="78" font-size="13" fill="#3A4560">(g/mol)</text>
+    <text x="217" y="180">× molar mass</text>
+    <text x="462" y="60">× 6.022 × 10²³</text><text x="462" y="78" font-size="13" fill="#3A4560">(particles/mol)</text>
+    <text x="462" y="180">÷ 6.022 × 10²³</text>
+  </g>
+  <text x="340" y="222" font-size="15" fill="#C2410C">Always go through moles.</text>
+</g>
+</svg>

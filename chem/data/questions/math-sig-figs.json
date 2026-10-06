@@ -1,0 +1,343 @@
+{
+ "stimuli": {
+  "math-sig-figs-s1": {
+   "kind": "table",
+   "title": "Three students weigh a 50.00 g standard mass",
+   "text": "<p>Three students each weigh the same certified 50.00 g mass four times on different balances.</p>",
+   "table": {
+    "caption": "Four readings by each student, in grams",
+    "cols": [
+     "Student",
+     "Reading 1 (g)",
+     "Reading 2 (g)",
+     "Reading 3 (g)",
+     "Reading 4 (g)"
+    ],
+    "rows": [
+     [
+      "Ana",
+      "49.12",
+      "49.13",
+      "49.11",
+      "49.12"
+     ],
+     [
+      "Ben",
+      "50.31",
+      "49.62",
+      "50.08",
+      "49.95"
+     ],
+     [
+      "Cai",
+      "50.01",
+      "49.99",
+      "50.00",
+      "50.00"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-math-sig-figs-1",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "How many significant figures does 0.004050 g have?",
+   "options": [
+    "7",
+    "3",
+    "4",
+    "2"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Write it as 4.050 × 10⁻³ g: four significant figures. Leading zeros are placeholders; the captive zero and the trailing zero after the decimal point are measured.",
+    "options": [
+     "This counts every digit, but leading zeros only place the decimal point.",
+     "The final zero comes after a decimal point, so it was measured and counts.",
+     "Right: leading zeros do not count; 4, 0, 5 and the trailing 0 after the decimal point do.",
+     "Zeros between nonzero digits (the 0 in 405) always count, and so does the trailing zero here."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-2",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which measurement has exactly three significant figures?",
+   "options": [
+    "2.50 × 10³ mL",
+    "2500 mL",
+    "2500. mL",
+    "0.0025 L"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Scientific notation removes the doubt: 2.50 × 10³ shows exactly three significant figures.",
+    "options": [
+     "Right: 2, 5 and the trailing zero shown in the coefficient.",
+     "Without a decimal point the trailing zeros are ambiguous; by the usual rule this has two.",
+     "The decimal point makes both trailing zeros count: four significant figures.",
+     "Leading zeros do not count, so this has two."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-3",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Calculate 23.45 g ÷ 12.0 mL and report the density with the correct significant figures.",
+   "numeric": {
+    "answer": 1.95,
+    "tol": 0.01,
+    "unit": "g/mL",
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.5117,
+      "rel": 0.01,
+      "why": "Value: density is mass divided by volume, not volume divided by mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "23.45 ÷ 12.0 = 1.954… The least precise value, 12.0 mL, has three significant figures, so the answer is 1.95 g/mL."
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-4",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Add 12.52 g + 3.1 g + 0.247 g and report the total with the correct precision.",
+   "numeric": {
+    "answer": 15.9,
+    "tol": 0.1,
+    "unit": "g",
+    "sigfigs": 3
+   },
+   "why": {
+    "correct": "12.52 + 3.1 + 0.247 = 15.867. In addition the answer keeps the fewest decimal places: 3.1 has one, so the sum is 15.9 g."
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-5",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Multiply 4.36 cm × 2.1 cm to find an area, with the correct significant figures.",
+   "numeric": {
+    "answer": 9.2,
+    "tol": 0.1,
+    "unit": "cm²",
+    "units": [
+     "cm^2",
+     "cm2"
+    ],
+    "sigfigs": 2
+   },
+   "why": {
+    "correct": "4.36 × 2.1 = 9.156. In multiplication the answer keeps the fewest significant figures: 2.1 has two, so the area is 9.2 cm²."
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-6",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student measures 3 identical bolts as 2.157 g each and reports the total of the 3 bolts as 6.5 g \"because 3 has one significant figure.\" What is wrong?",
+   "options": [
+    "The total should be rounded further, to 7 g, to match the one digit in 3",
+    "Adding the three masses keeps two decimal places, so 6.47 g",
+    "Multiplying a mass by a count of objects gives the wrong unit",
+    "The 3 is an exact count, so it does not limit the answer: 6.471 g"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Exact numbers, from counting or definitions such as 1 kg = 1000 g, never limit precision. 3 × 2.157 g = 6.471 g, four significant figures like the measurement.",
+    "options": [
+     "This makes the same mistake more strongly: the count of 3 is exact.",
+     "Adding 2.157 three times gives 6.471, which keeps three decimal places, not two.",
+     "The unit stays grams, and multiplying the mass of one by the number of identical bolts is exactly how to get the total.",
+     "Right: counted numbers are exact and have unlimited significant figures."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-7",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A graduated cylinder is marked every 1 mL. Which reading shows the right number of digits?",
+   "options": [
+    "36.4 mL",
+    "36 mL",
+    "36.42 mL",
+    "40 mL"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Record every certain digit plus one estimated digit. With 1 mL marks, the estimate is in the tenths place: 36.4 mL.",
+    "options": [
+     "Right: read to the marks (36) and estimate one more digit between them (0.4).",
+     "This throws away the estimated digit that the scale lets you read.",
+     "Estimating two digits beyond the marks claims more precision than the scale gives.",
+     "Rounding to the nearest ten discards most of the measured information."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-8",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "math-sig-figs-s1",
+   "q": "Which student's readings are precise but not accurate?",
+   "options": [
+    "Ben",
+    "Cai",
+    "Ana",
+    "Cai, because readings that agree to 0.01 g are precise"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Precision is how closely repeated readings agree; accuracy is how close they are to the true value. Ana is precise but off by about 0.88 g.",
+    "options": [
+     "Ben's readings spread over 0.69 g, so they are not precise; their average happens to land near 50.00 g.",
+     "Cai's readings are both close together and close to 50.00 g: precise and accurate.",
+     "Right: Ana's readings agree within 0.02 g, but all are about 0.88 g below the true 50.00 g.",
+     "Cai is precise, but also accurate: the readings sit right at 50.00 g."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-9",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "math-sig-figs-s1",
+   "q": "Ana's results suggest which kind of error?",
+   "options": [
+    "A random error from the student reading the display inconsistently",
+    "A significant-figures error from recording too many digits",
+    "A systematic error, such as a balance that reads about 0.9 g low",
+    "No error, since the readings are so close together"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A consistent shift in one direction points to a systematic error, such as a balance that was not zeroed. Averaging more readings will not fix it.",
+    "options": [
+     "Random errors scatter readings in both directions; Ana's are tightly grouped.",
+     "Four-digit readings on a 0.01 g balance are recorded correctly.",
+     "Right: every reading is shifted the same way by about the same amount.",
+     "Close agreement shows precision, not accuracy; the true mass is 50.00 g."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-10",
+   "type": "numeric",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "math-sig-figs-s1",
+   "q": "What is the average of Ben's four readings, reported to the correct precision?",
+   "numeric": {
+    "answer": 49.99,
+    "tol": 0.01,
+    "unit": "g",
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 200,
+      "rel": 0.01,
+      "why": "Value: that is the sum. Divide it by the number of readings, 4."
+     }
+    ]
+   },
+   "why": {
+    "correct": "(50.31 + 49.62 + 50.08 + 49.95) ÷ 4 = 199.96 ÷ 4 = 49.99 g. The sum keeps two decimal places; dividing by the exact count 4 keeps four significant figures."
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-11",
+   "type": "single",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "math-sig-figs-s1",
+   "q": "Why does Cai's balance report readings to 0.01 g but not to 0.001 g?",
+   "options": [
+    "The standard mass has four significant figures, so the balance shows four",
+    "A third decimal place would be zero for this mass, so it is left off",
+    "Balances round to two decimal places to make averaging easier",
+    "Its last digit is already estimated; a further digit would not be measured"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Every measurement has an uncertainty in its last digit. Reporting more digits than the instrument resolves would claim a precision that was not measured.",
+    "options": [
+     "The display depends on the balance, not on the object being weighed.",
+     "The third decimal place is unknown, not zero; writing a zero would claim it was measured.",
+     "The number of places reflects the balance's uncertainty, not convenience.",
+     "Right: a measurement keeps its certain digits plus one uncertain digit."
+    ]
+   }
+  },
+  {
+   "id": "chem-math-sig-figs-12",
+   "type": "order",
+   "unit": "skills-math",
+   "topic": "math-sig-figs",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Put the steps for a two-step calculation (an addition, then a division) in order, so that rounding errors do not build up.",
+   "options": [
+    "Do the addition and note which decimal place limits it",
+    "Keep one or two extra digits in the intermediate result",
+    "Do the division with the unrounded intermediate",
+    "Round the final answer once, to the correct significant figures"
+   ],
+   "why": {
+    "correct": "Track how many significant figures each step allows, but keep extra digits until the end, and round only once."
+   }
+  }
+ ]
+}

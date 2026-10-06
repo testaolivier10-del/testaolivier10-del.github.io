@@ -1,0 +1,506 @@
+{
+ "stimuli": {
+  "elemental-composition-s1": {
+   "kind": "table",
+   "title": "Burning magnesium in three labs",
+   "text": "<p>Three lab groups heat different masses of pure magnesium in air until it has all turned into a white solid, magnesium oxide, and weigh the product.</p>",
+   "table": {
+    "caption": "Mass of magnesium used and of magnesium oxide made",
+    "cols": [
+     "Group",
+     "Mass of Mg (g)",
+     "Mass of magnesium oxide (g)",
+     "Mass of O gained (g)"
+    ],
+    "rows": [
+     [
+      "1",
+      "1.216",
+      "2.016",
+      "0.800"
+     ],
+     [
+      "2",
+      "3.040",
+      "5.040",
+      "2.000"
+     ],
+     [
+      "3",
+      "0.7293",
+      "1.2093",
+      "0.4800"
+     ]
+    ]
+   }
+  },
+  "elemental-composition-s2": {
+   "kind": "table",
+   "title": "Analysis of a sweet-tasting compound",
+   "text": "<p>A lab analyzes a pure white solid that contains only carbon, hydrogen and oxygen. Its molar mass is found separately to be 180.2 g/mol.</p>",
+   "table": {
+    "caption": "Mass percent of each element",
+    "cols": [
+     "Element",
+     "Mass percent (%)",
+     "Atomic mass (amu)"
+    ],
+    "rows": [
+     [
+      "C",
+      "40.00",
+      "12.01"
+     ],
+     [
+      "H",
+      "6.71",
+      "1.008"
+     ],
+     [
+      "O",
+      "53.29",
+      "16.00"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-elemental-composition-1",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "elemental-composition-s1",
+   "q": "What is the mass percent of magnesium in Group 1's product?",
+   "numeric": {
+    "answer": 60.32,
+    "tol": 0.01,
+    "unit": "%",
+    "units": [
+     "percent"
+    ],
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 39.68,
+      "rel": 0.01,
+      "why": "Value: that is the oxygen share. Use the mass of magnesium on top."
+     },
+     {
+      "value": 152,
+      "rel": 0.01,
+      "why": "Value: divide by the mass of the whole product (2.016 g), not by the oxygen alone."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Mass percent Mg = (1.216 g ÷ 2.016 g) × 100 = 60.32%."
+   }
+  },
+  {
+   "id": "chem-elemental-composition-2",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "elemental-composition-s1",
+   "q": "Which conclusion do the three groups' results support?",
+   "options": [
+    "Magnesium oxide is about 60.3% magnesium by mass in each sample",
+    "Larger samples of magnesium oxide contain a larger percent of magnesium",
+    "Magnesium and oxygen combine in a 1 : 1 ratio by mass",
+    "The groups made different compounds, since their product masses differ"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "All three products are 60.3% Mg by mass. A compound has the same composition by mass whatever the sample size.",
+    "options": [
+     "Right: 60.32%, 60.32% and 60.31%: a fixed composition, the law of definite proportions.",
+     "The masses differ, but the percent is the same in every group.",
+     "Group 1 used 1.216 g Mg with 0.800 g O, a mass ratio of about 1.5 : 1, not 1 : 1.",
+     "Different amounts of one compound have different masses but the same composition."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "elemental-composition-s1",
+   "q": "Using Group 2's data, what is the empirical formula of magnesium oxide?",
+   "options": [
+    "Mg₃O₂",
+    "MgO₂",
+    "Mg₂O",
+    "MgO"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Formulas count atoms, so compare moles: 0.1251 mol Mg : 0.1250 mol O = 1 : 1, so MgO.",
+    "options": [
+     "This uses the mass ratio, about 3 : 2, as if it were a ratio of atoms. Convert masses to moles first.",
+     "This would need twice as many moles of O as Mg; the moles are equal.",
+     "This would need twice as many moles of Mg as O; the moles are equal.",
+     "Right: 3.040/24.31 = 0.1251 mol Mg and 2.000/16.00 = 0.1250 mol O, a 1 : 1 ratio."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-4",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elemental-composition-s1",
+   "q": "Based on the groups' results, what mass of magnesium is in 12.5 g of magnesium oxide?",
+   "numeric": {
+    "answer": 7.54,
+    "tol": 0.01,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 4.96,
+      "rel": 0.01,
+      "why": "Value: that is the oxygen in the sample. Use the magnesium fraction, 0.6032."
+     },
+     {
+      "value": 20.72,
+      "rel": 0.01,
+      "why": "Value: you divided by the fraction. The part is the whole times the fraction."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Magnesium oxide is 60.32% Mg by mass: 12.5 g × 0.6032 = 7.54 g of Mg."
+   }
+  },
+  {
+   "id": "chem-elemental-composition-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "2.E",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "elemental-composition-s1",
+   "q": "A fourth group's product had a magnesium mass percent of 66%. Which error best explains this result?",
+   "options": [
+    "The group used more magnesium than the other groups",
+    "Some magnesium did not react, so the product was too light",
+    "The product absorbed water from the air after heating",
+    "The balance read each mass 0.05 g too high"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Mass percent Mg = mass Mg ÷ mass product. If the product is too light because not all Mg reacted with oxygen, the percent rises above the true 60.3%.",
+    "options": [
+     "Sample size does not change the percent of a pure compound.",
+     "Right: too little oxygen gained makes the product too light, and the Mg share comes out too high.",
+     "Extra water would add mass and lower the Mg percent, not raise it.",
+     "A balance error of 0.05 g in both masses changes the percent by well under 1%, not 6%."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-6",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "elemental-composition-s2",
+   "q": "What is the empirical formula of the compound?",
+   "options": [
+    "C₄₀H₇O₅₃",
+    "C₃H₇O₃",
+    "C₆H₁₂O₆",
+    "CH₂O"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Assume 100 g: 40.00/12.01 = 3.331 mol C, 6.71/1.008 = 6.657 mol H, 53.29/16.00 = 3.331 mol O. Divide by 3.331: 1 : 1.999 : 1, so CH₂O.",
+    "options": [
+     "Percents are masses, not atom counts. Convert each to moles first.",
+     "This rounds the moles in 100 g (3.33, 6.66, 3.33) instead of dividing by the smallest.",
+     "That is the molecular formula; the empirical formula is the simplest ratio.",
+     "Right: per 100 g, 3.331 mol C, 6.657 mol H, 3.331 mol O; dividing by 3.331 gives 1 : 2 : 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-7",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "elemental-composition-s2",
+   "q": "What is the molar mass of the empirical formula CH₂O (one C, two H and one O)?",
+   "numeric": {
+    "answer": 30.03,
+    "tol": 0.01,
+    "unit": "g/mol",
+    "units": [
+     "g mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 4
+   },
+   "why": {
+    "correct": "12.01 + 2(1.008) + 16.00 = 30.03 g/mol."
+   }
+  },
+  {
+   "id": "chem-elemental-composition-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "elemental-composition-s2",
+   "q": "What is the molecular formula of the compound?",
+   "options": [
+    "CH₂O",
+    "C₁₂H₂₄O₁₂",
+    "C₆H₁₂O₆",
+    "C₃H₆O₃"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "n = molar mass ÷ empirical-formula mass = 180.2 / 30.03 = 6. Multiply every subscript by 6: C₆H₁₂O₆.",
+    "options": [
+     "The empirical formula has a molar mass of 30.03, not 180.2.",
+     "That is twelve CH₂O units, 360.3 g/mol, twice the molar mass measured.",
+     "Right: 180.2 ÷ 30.03 = 6.00, so the molecule is six CH₂O units.",
+     "This is three CH₂O units, with a molar mass of 90.08 g/mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-9",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "elemental-composition-s2",
+   "q": "Another compound has the same mass percents (40.00% C, 6.71% H, 53.29% O) but a molar mass of 60.05 g/mol. Which statement is correct?",
+   "options": [
+    "It is the same compound, because the mass percents match",
+    "The data are wrong, since two compounds do not share mass percents",
+    "Its empirical formula is also CH₂O, and its molecular formula is C₂H₄O₂",
+    "Its molecular formula is CH₂O, since 60.05 is close to 30.03"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Mass percents fix only the empirical formula. The molar mass then sets the multiple: 60.05 ÷ 30.03 = 2, so C₂H₄O₂.",
+    "options": [
+     "Matching percents show the same empirical formula, not the same molecule; the molar masses differ.",
+     "Many compounds share an empirical formula: CH₂O, C₂H₄O₂ and C₆H₁₂O₆ have identical percents.",
+     "Right: same percents, same simplest ratio; 60.05 / 30.03 = 2.",
+     "60.05 is twice 30.03, so the molecule is two CH₂O units."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-10",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Urea, CH₄N₂O, is used as a fertilizer. What is the mass percent of nitrogen in urea? (C 12.01, H 1.008, N 14.01, O 16.00)",
+   "numeric": {
+    "answer": 46.65,
+    "tol": 0.01,
+    "unit": "%",
+    "units": [
+     "percent"
+    ],
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": 23.33,
+      "rel": 0.01,
+      "why": "Value: urea has two N atoms. Use 2 × 14.01 for the nitrogen mass."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Molar mass = 12.01 + 4(1.008) + 2(14.01) + 16.00 = 60.06 g/mol. Mass of N = 2(14.01) = 28.02 g. 28.02 / 60.06 × 100 = 46.65%."
+   }
+  },
+  {
+   "id": "chem-elemental-composition-11",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "A 2.233 g sample of iron reacts with oxygen to make 3.193 g of an iron oxide. What is the empirical formula of the oxide? (Fe 55.85, O 16.00)",
+   "options": [
+    "FeO",
+    "FeO₂",
+    "Fe₃O₂",
+    "Fe₂O₃"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "O gained = 3.193 − 2.233 = 0.960 g = 0.0600 mol. Fe = 2.233/55.85 = 0.03998 mol. O/Fe = 1.50; multiply both by 2: Fe₂O₃.",
+    "options": [
+     "Oxygen and iron come out 1.5 : 1 in moles, not 1 : 1.",
+     "Oxygen and iron come out 1.5 : 1 in moles, not 2 : 1. Rounding 1.5 is not allowed; multiply to whole numbers instead.",
+     "This puts more iron than oxygen; the moles of O are larger.",
+     "Right: 0.03998 mol Fe and 0.0600 mol O, a ratio of 1 : 1.5, which doubles to 2 : 3."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-12",
+   "type": "order",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "q": "Put the steps for finding an empirical formula from mass percents in order.",
+   "options": [
+    "Assume a 100 g sample so each percent becomes grams",
+    "Divide each mass by its molar mass to get moles",
+    "Divide every mole value by the smallest one",
+    "Multiply by a small whole number if any ratio is not close to whole",
+    "Write the formula with the whole-number ratios as subscripts"
+   ],
+   "why": {
+    "correct": "Percent → grams → moles → divide by the smallest → clear fractions → formula."
+   }
+  },
+  {
+   "id": "chem-elemental-composition-13",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student finds that elements X and Y are present in moles in the ratio 1 : 1.33 and writes the formula XY. What should the student have done?",
+   "options": [
+    "Round 1.33 to 1, so XY is correct",
+    "Multiply both by 3 to get 3 : 4, so X₃Y₄",
+    "Multiply both by 2 to get 2 : 2.66, so X₂Y₃",
+    "Divide both by 1.33 to get 0.75 : 1, so X₃Y₄"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Recognize common fractions: x.5 → ×2, x.33 or x.67 → ×3, x.25 or x.75 → ×4. 1 : 1.33 × 3 = 3 : 4.",
+    "options": [
+     "A ratio 0.33 from a whole number is a real fraction, not rounding error.",
+     "Right: 1.33 is 4/3; multiplying by 3 clears the fraction.",
+     "2.66 is not close to a whole number; multiply by 3.",
+     "Dividing gives 0.75 : 1, still not whole; the correct move is to multiply by 3."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-14",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A compound of only carbon and hydrogen has the empirical formula CH₂ (14.03 g/mol). Which could be its molecular formula? Select all that apply.",
+   "options": [
+    "C₂H₄",
+    "C₃H₆",
+    "CH₄",
+    "C₂H₆"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "A molecular formula is a whole-number multiple of the empirical formula, so it keeps the 1 : 2 ratio.",
+    "options": [
+     "Right: 2 × CH₂.",
+     "Right: 3 × CH₂.",
+     "The C : H ratio is 1 : 4, not 1 : 2.",
+     "The C : H ratio is 1 : 3, not 1 : 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Water and hydrogen peroxide both contain only hydrogen and oxygen. Water is 11.2% H by mass; hydrogen peroxide is 5.93% H. Which explains the difference?",
+   "options": [
+    "They are different compounds, H₂O and H₂O₂, with different atom ratios",
+    "Hydrogen peroxide samples were less pure than the water samples",
+    "The law of definite proportions says compounds of two elements share a composition",
+    "Hydrogen atoms in the peroxide are lighter than the hydrogen atoms in water"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Different ratios of the same atoms make different compounds, each with its own fixed mass percents: H₂O 2.016/18.02 = 11.2% H; H₂O₂ 2.016/34.01 = 5.93% H.",
+    "options": [
+     "Right: each compound has its own fixed composition; peroxide has more O per H.",
+     "Each percent is fixed for its own pure compound, so contamination is not the cause.",
+     "The law says each compound has a fixed composition, not that different compounds share one.",
+     "Every H atom has the same average mass; the number of O atoms per H differs."
+    ]
+   }
+  },
+  {
+   "id": "chem-elemental-composition-16",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "elemental-composition",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "A compound is 26.58% K, 35.35% Cr and 38.07% O by mass. What is its empirical formula? (K 39.10, Cr 52.00, O 16.00)",
+   "options": [
+    "KCrO₃",
+    "KCrO₄",
+    "K₂Cr₂O₇",
+    "K₂CrO₄"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Per 100 g: 26.58/39.10 = 0.6798 mol K; 35.35/52.00 = 0.6798 mol Cr; 38.07/16.00 = 2.379 mol O. Divide by 0.6798: 1 : 1 : 3.5. Double: K₂Cr₂O₇.",
+    "options": [
+     "This rounds 3.5 down to 3; a ratio of x.5 must be doubled.",
+     "This rounds 3.5 up to 4; a ratio of x.5 must be doubled.",
+     "Right: moles 0.6798 : 0.6798 : 2.379 = 1 : 1 : 3.5, and doubling gives 2 : 2 : 7.",
+     "K and Cr come out 1 : 1 in moles, so their subscripts must be equal."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "scientific-notation": {
+  "def": "A way to write a number as a coefficient of at least 1 and less than 10 multiplied by a power of ten, such as 6.50 × 10⁻⁷."
+ },
+ "order-of-magnitude": {
+  "def": "A factor of ten. Two quantities that differ by a factor of about 1000 differ by three orders of magnitude."
+ }
+}

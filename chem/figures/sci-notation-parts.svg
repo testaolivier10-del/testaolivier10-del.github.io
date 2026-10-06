@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" width="680" height="280" role="img" aria-labelledby="t d">
+<title id="t">The parts of a number in scientific notation</title>
+<desc id="d">Top: 149,600,000 becomes 1.496 times ten to the eighth; the decimal point moved 8 places left, so the exponent is plus 8. Bottom: 0.000000650 becomes 6.50 times ten to the minus seventh; the point moved 7 places right, so the exponent is minus 7. The coefficient is labeled "between 1 and 10" and the exponent "places the point moved".</desc>
+<rect width="680" height="280" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <text x="24" y="60" font-size="24">149,600,000</text>
+  <text x="200" y="60" font-size="24">→</text>
+  <text x="240" y="60" font-size="30" font-weight="bold" fill="#1D44A6">1.496</text>
+  <text x="330" y="60" font-size="30">× 10</text>
+  <text x="396" y="42" font-size="20" font-weight="bold" fill="#C2410C">+8</text>
+  <text x="450" y="52" font-size="14">point moved 8 places left</text>
+  <text x="450" y="72" font-size="14">large number: positive exponent</text>
+  <text x="24" y="170" font-size="24">0.000000650</text>
+  <text x="200" y="170" font-size="24">→</text>
+  <text x="240" y="170" font-size="30" font-weight="bold" fill="#1D44A6">6.50</text>
+  <text x="318" y="170" font-size="30">× 10</text>
+  <text x="384" y="152" font-size="20" font-weight="bold" fill="#C2410C">−7</text>
+  <text x="450" y="162" font-size="14">point moved 7 places right</text>
+  <text x="450" y="182" font-size="14">small number: negative exponent</text>
+  <line x1="270" y1="196" x2="270" y2="226" stroke="#1D44A6" stroke-width="2"/>
+  <text x="260" y="250" font-size="14" text-anchor="middle" fill="#1D44A6">coefficient: at least 1, less than 10</text>
+  <line x1="396" y1="140" x2="500" y2="232" stroke="#C2410C" stroke-width="2"/>
+  <text x="530" y="250" font-size="14" text-anchor="middle" fill="#C2410C">exponent: places the point moved</text>
+</g>
+</svg>

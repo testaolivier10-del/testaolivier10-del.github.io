@@ -37,3 +37,19 @@ teacher signs off (site rule `apchem-beta-and-report`).
 AP® Biology frees one simulator and all skills tools (apbio decision 9). Proposed for AP®
 Chemistry: the particle-diagram trainer free, the other trainers and drills Premium. Owner to
 confirm before the first trainer ships.
+
+## unit-1-data-values: verify reference data used in Unit 1 items (open, 2026-10-06)
+
+Unit 1 items and FRQs use rounded literature values written from memory, not looked up: PES binding
+energies (Ne 84.0/4.68/2.08; Na 104/6.84/3.67/0.496; Mg 126/9.07/5.31/0.738; Si 178/15.1/10.3/1.46/0.79
+MJ/mol), period 3 radii (Na 186 ... Cl 99 pm), first ionization energies, electronegativities, Al
+successive ionization energies, and isotope masses/abundances (Mg, Ga, Cl, B, Cu). Every number derived
+from them was recomputed by code, but the source values themselves need a check against a data table
+during the Unit 1 accuracy review. Where: `chem/data/questions/{photoelectron-spectroscopy,periodic-trends,mass-spectra}.json`,
+`chem/data/frq/frq-pes-sodium-magnesium.json`, `frq-copper-oxide-formula.json`.
+
+## unit-1-frq-scope: electron affinity and the P/S ionization dip (open, 2026-10-06)
+
+The periodic-trends notes explain the P → S ionization-energy dip by repulsion between paired 3p
+electrons, and mention electron affinity qualitatively. Confirm both are within what the CED expects
+for 1.7, or trim to a going-further aside.

@@ -1,0 +1,11 @@
+{
+ "logarithm": {
+  "def": "The exponent that 10 must be raised to in order to give a number: log 1000 = 3 because 10³ = 1000. Also called the base-10 or common logarithm."
+ },
+ "natural-log": {
+  "def": "A logarithm with base e (about 2.718), written ln. ln x is about 2.303 times log x."
+ },
+ "antilog": {
+  "def": "The inverse of a logarithm: 10ˣ undoes log x and eˣ undoes ln x."
+ }
+}

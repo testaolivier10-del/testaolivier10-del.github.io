@@ -1,0 +1,73 @@
+{
+ "topic": "elemental-composition",
+ "hook": "A food label says a sweetener is 40% carbon by mass. A forensic lab burns a white powder and weighs the products. In both cases, chemists use mass percents to work out what a substance is made of, atom by atom, and identify it with nothing more than a balance and a periodic table.",
+ "prereq": [
+  {
+   "q": "How many moles of oxygen atoms are in 8.00 g of oxygen atoms (16.00 g/mol)?",
+   "options": [
+    "0.500 mol",
+    "128 mol",
+    "2.00 mol",
+    "0.0500 mol"
+   ],
+   "correct": 0,
+   "why": "8.00 g ÷ 16.00 g/mol = 0.500 mol.",
+   "review": "moles-molar-mass"
+  },
+  {
+   "q": "What is the molar mass of CO₂ (C 12.01, O 16.00)?",
+   "options": [
+    "44.01 g/mol",
+    "28.01 g/mol",
+    "60.01 g/mol",
+    "40.01 g/mol"
+   ],
+   "correct": 0,
+   "why": "12.01 + 2(16.00) = 44.01 g/mol.",
+   "review": "moles-molar-mass"
+  }
+ ],
+ "figure": {
+  "figure": "empirical-formula-flow",
+  "caption": "From mass percents to a formula: grams, then moles, then the smallest whole-number ratio, then the molar mass to scale up."
+ },
+ "chain": [
+  {
+   "cause": "A pure compound is always made of the same atoms in the same ratio",
+   "effect": "it always has the same mass percent of each element (law of definite proportions)"
+  },
+  {
+   "cause": "Atoms of different elements have different masses",
+   "effect": "a mass ratio is not an atom ratio, so masses must be converted to moles"
+  },
+  {
+   "cause": "Dividing every mole amount by the smallest gives the simplest ratio",
+   "effect": "that ratio, cleared to whole numbers, is the empirical formula"
+  },
+  {
+   "cause": "Many molecules share one empirical formula",
+   "effect": "the molar mass is needed to find how many empirical units make one molecule"
+  }
+ ],
+ "ideas": [
+  "A <b>pure substance</b> has a fixed composition (<b>law of definite proportions</b>): every sample of water is 11.2% H by mass.",
+  "<b>Mass percent</b> of an element = (mass of the element in one formula ÷ molar mass) × 100.",
+  "<b>Empirical formula</b>: assume 100 g, convert grams to moles, divide by the smallest, clear fractions (×2 for .5, ×3 for .33).",
+  "<b>Molecular formula</b> = empirical formula × n, where n = molar mass ÷ empirical-formula mass."
+ ],
+ "misconception": {
+  "wrong": "Mass percents give the atom ratio directly, so a compound that is 75% X and 25% Y has three X atoms for each Y.",
+  "right": "Different atoms have different masses, so a mass ratio is not an atom ratio. Convert each mass to moles first; only the ratio of moles gives the formula."
+ },
+ "check": [
+  "chem-elemental-composition-1",
+  "chem-elemental-composition-2",
+  "chem-elemental-composition-3",
+  "chem-elemental-composition-4",
+  "chem-elemental-composition-6",
+  "chem-elemental-composition-7",
+  "chem-elemental-composition-8"
+ ],
+ "summary": "A pure compound has a fixed composition by mass. Mass percent is an element's share of the molar mass. To find an empirical formula, convert mass data to moles and reduce to the smallest whole-number ratio. The molar mass then gives the molecular formula, a whole-number multiple of the empirical one.",
+ "connections": []
+}

@@ -1,0 +1,7 @@
+{
+ "mass-spectrometer": {
+  "file": "figures/mass-spectrometer.svg", "ext": "svg", "w": 680, "h": 320,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "A mass spectrometer: atoms are ionized, accelerated, bent by a magnet (lighter ions bend more) and counted at a detector, giving a spectrum with a tall peak at 24 and smaller peaks at 25 and 26."
+ }
+}

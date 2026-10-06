@@ -1,0 +1,59 @@
+<h2>Every measurement has an estimated digit</h2>
+<p>No instrument is perfect. When you read a ruler, a graduated cylinder or a thermometer, you read the marks you can see, then estimate one more digit between them (<a class="figref" href="#fig-ruler">Figure 1</a>). That last digit is uncertain, but it still carries information, so you write it down. This doubt in the last digit is called <b>measurement uncertainty</b>.</p>
+<figure id="fig-ruler" data-fig="sigfig-ruler"><figcaption>An object's edge between the 3.4 cm and 3.5 cm marks. The reading 3.47 cm has two certain digits (3 and 4) and one estimated digit (7).</figcaption></figure>
+<p>The <b>significant figures</b> of a measurement are its certain digits plus that one estimated digit. A balance that reads 151.37 g gives five significant figures; a bathroom scale that reads 150 g gives two or three. More significant figures mean a more finely made measurement.</p>
+
+<h2>Counting significant figures</h2>
+<table class="compare">
+<caption>Which digits count</caption>
+<thead><tr><th scope="col">Kind of digit</th><th scope="col">Counts?</th><th scope="col">Example</th><th scope="col">Significant figures</th></tr></thead>
+<tbody>
+<tr><th scope="row">Nonzero digits</th><td>always</td><td>4.36</td><td>3</td></tr>
+<tr><th scope="row">Zeros between nonzero digits</th><td>yes</td><td>4005</td><td>4</td></tr>
+<tr><th scope="row">Leading zeros (in front)</th><td>no, they only place the point</td><td>0.0045</td><td>2</td></tr>
+<tr><th scope="row">Trailing zeros after a decimal point</th><td>yes, they were measured</td><td>4.50</td><td>3</td></tr>
+<tr><th scope="row">Trailing zeros with no decimal point</th><td>unclear; treat as not counting</td><td>2500</td><td>2</td></tr>
+</tbody>
+</table>
+<p>Scientific notation removes the doubt: 2.5 × 10³ has two significant figures, 2.50 × 10³ has three and 2.500 × 10³ has four. A decimal point at the end, as in 2500., also means all four digits count.</p>
+<p>Converting a measurement to scientific notation is a quick way to count: 0.004050 g = 4.050 × 10⁻³ g, four significant figures.</p>
+
+<h2>Exact numbers</h2>
+<p>Some numbers are not measured at all. A count of objects ("3 bolts") and a defined equality ("1 kg = 1000 g", "1 mL = 1 cm³") are <b>exact numbers</b>. They have no uncertainty, so they never limit the significant figures of an answer. Only measured values do.</p>
+
+<h2>Multiplying and dividing</h2>
+<p>The answer keeps as many significant figures as the measurement with the <i>fewest</i> significant figures.</p>
+<div class="worked">
+<p><b>Worked example.</b> A liquid sample has a mass of 23.45 g and a volume of 12.0 mL. What is its density?</p>
+<p>d = 23.45 g ÷ 12.0 mL = 1.954166… g/mL</p>
+<p>23.45 has four significant figures; 12.0 has three. The answer keeps three: <b>1.95 g/mL</b>.</p>
+</div>
+
+<h2>Adding and subtracting</h2>
+<p>Here the rule is about decimal places, not significant figures. The answer keeps as many decimal places as the value with the <i>fewest</i> decimal places, because that value's uncertainty is the largest.</p>
+<div class="worked">
+<p><b>Worked example.</b> Add 12.52 g + 3.1 g + 0.247 g.</p>
+<p>12.52 + 3.1 + 0.247 = 15.867 g</p>
+<p>3.1 is known only to the tenths place, so the sum is too: <b>15.9 g</b>. Note that the answer has three significant figures even though 0.247 also has three and 12.52 has four: in addition, the decimal places decide.</p>
+</div>
+<p>The exam's readers report mixing up these two rules as one of the most common calculation errors.</p>
+
+<h2>Rounding once, at the end</h2>
+<p>In a calculation with several steps, keep one or two extra digits in every intermediate result and round only the final answer. Rounding at each step lets small errors build up and can change the last digit. Track how many significant figures each step allows, but do not throw digits away until the end.</p>
+<div class="worked">
+<p><b>Worked example.</b> Four readings, 50.31 g, 49.62 g, 50.08 g and 49.95 g, are averaged.</p>
+<p>Sum: 199.96 g (two decimal places, so five significant figures here). Divide by the exact count 4: 199.96 ÷ 4 = 49.99 g.</p>
+<p>The count does not limit the answer, so the average keeps the two decimal places of the data: <b>49.99 g</b>.</p>
+</div>
+
+<h2>Precision and accuracy</h2>
+<p>These words mean different things. <b>Precision</b> is how closely repeated measurements agree with each other. <b>Accuracy</b> is how close they are to the true value. A balance that is not zeroed can give readings that agree to 0.01 g but are all 0.9 g too low: precise, not accurate. That kind of consistent shift is a <i>systematic error</i>, and averaging more readings does not remove it. Readings that scatter in both directions show <i>random error</i>, which averaging does reduce.</p>
+<table class="compare">
+<caption>Precision vs accuracy</caption>
+<thead><tr><th scope="col">Readings of a true 50.00 g mass</th><th scope="col">Precise?</th><th scope="col">Accurate?</th></tr></thead>
+<tbody>
+<tr><th scope="row">49.12, 49.13, 49.11, 49.12</th><td>yes</td><td>no (all low)</td></tr>
+<tr><th scope="row">50.31, 49.62, 50.08, 49.95</th><td>no</td><td>average close, single readings not</td></tr>
+<tr><th scope="row">50.01, 49.99, 50.00, 50.00</th><td>yes</td><td>yes</td></tr>
+</tbody>
+</table>

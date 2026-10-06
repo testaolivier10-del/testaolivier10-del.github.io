@@ -1,0 +1,72 @@
+{
+ "topic": "math-logs",
+ "hook": "Earthquake scales, the loudness of sound in decibels and the brightness of stars all use logarithms, because each covers a range of millions or billions. A log turns \"a thousand times bigger\" into \"3 more\". Chemistry uses the same trick for quantities that change by powers of ten.",
+ "prereq": [
+  {
+   "q": "What is 10⁻³ × 10⁵?",
+   "options": [
+    "10²",
+    "10⁻¹⁵",
+    "10⁸",
+    "10⁻²"
+   ],
+   "correct": 0,
+   "why": "Multiplying powers adds the exponents: −3 + 5 = 2.",
+   "review": "math-exponents"
+  },
+  {
+   "q": "Which is 0.00047 in scientific notation?",
+   "options": [
+    "4.7 × 10⁻⁴",
+    "4.7 × 10⁴",
+    "47 × 10⁻⁵",
+    "4.7 × 10⁻³"
+   ],
+   "correct": 0,
+   "why": "Move the point 4 places right to reach 4.7, so the exponent is −4.",
+   "review": "math-scientific-notation"
+  }
+ ],
+ "figure": {
+  "figure": "log-scale",
+  "caption": "A logarithm is the exponent: each step of 1 on the log scale is a factor of 10 in the number."
+ },
+ "chain": [
+  {
+   "cause": "A logarithm is the exponent that 10 must be raised to",
+   "effect": "log 1000 = 3 and log 0.001 = −3"
+  },
+  {
+   "cause": "Multiplying numbers adds their exponents",
+   "effect": "the log of a product is the sum of the logs, so a factor of 10 adds 1"
+  },
+  {
+   "cause": "The natural log uses base e (about 2.718) instead of 10",
+   "effect": "ln x = 2.303 log x, and mixing them up gives answers 2.303 times off"
+  },
+  {
+   "cause": "An antilog raises the base to the log",
+   "effect": "10ˣ undoes log and eˣ undoes ln"
+  }
+ ],
+ "ideas": [
+  "<b>log x</b> (base 10) is the power of ten that gives x: log 10⁻⁵ = −5. Numbers between 0 and 1 have negative logs.",
+  "log (A × B) = log A + log B; log (A/B) = log A − log B; log (Aⁿ) = n log A.",
+  "<b>ln x</b> is the natural log, base e. ln x = 2.303 log x. Use the key the equation names.",
+  "Digits after the decimal point in a log are its significant figures: log (3.2 × 10⁻⁴) = −3.49. Undo log with 10ˣ and ln with eˣ (the <b>antilog</b>)."
+ ],
+ "misconception": {
+  "wrong": "log and ln are two names for the same button, so either one works.",
+  "right": "They use different bases. ln x is 2.303 times log x, so using the wrong one makes the answer 2.303 times off. Equations that say ln need LN; equations that say log need LOG."
+ },
+ "check": [
+  "chem-math-logs-1",
+  "chem-math-logs-3",
+  "chem-math-logs-4",
+  "chem-math-logs-5",
+  "chem-math-logs-8",
+  "chem-math-logs-12"
+ ],
+ "summary": "A base-10 logarithm is the exponent of ten that gives a number; the natural logarithm uses base e. Logs turn multiplying into adding, so a factor of ten adds 1 to log x. ln x = 2.303 log x. An antilog undoes a log: 10ˣ for log, eˣ for ln. The decimal places of a log match the significant figures of the number.",
+ "connections": []
+}

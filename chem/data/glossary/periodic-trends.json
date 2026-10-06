@@ -1,0 +1,26 @@
+{
+ "periodic-trend": {
+  "def": "A property that changes in a regular way across a period or down a group of the periodic table, such as atomic radius or ionization energy."
+ },
+ "periodic-group": {
+  "def": "A column of the periodic table (a group or family); its elements have the same number of valence electrons. A row is a period."
+ },
+ "effective-nuclear-charge": {
+  "def": "The net positive charge a valence electron feels: the nuclear charge reduced by the shielding of the core electrons (roughly protons minus core electrons)."
+ },
+ "atomic-radius": {
+  "def": "The size of an atom, measured as half the distance between the nuclei of two touching or joined atoms of the element."
+ },
+ "ionic-radius": {
+  "def": "The size of an ion. A cation is smaller than its atom, and an anion is larger than its atom."
+ },
+ "electronegativity": {
+  "def": "How strongly an atom attracts electrons that it shares with another atom; it rises across a period and falls down a group."
+ },
+ "electron-affinity": {
+  "def": "The energy change when a gaseous atom gains an electron; atoms that attract an added electron strongly release more energy."
+ },
+ "metal": {
+  "def": "An element, on the left or in the middle of the periodic table, that holds its few valence electrons loosely and tends to lose them; nonmetals (upper right) tend to gain electrons, and metalloids lie between."
+ }
+}

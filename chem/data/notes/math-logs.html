@@ -1,0 +1,60 @@
+<h2>A logarithm is an exponent</h2>
+<p>You already know that 10³ = 1000. A <b>logarithm</b> asks the same question backwards: "10 to what power gives 1000?" The answer, 3, is the base-10 logarithm of 1000, written <b>log 1000 = 3</b>.</p>
+<table class="compare">
+<caption>Powers of ten and their logs</caption>
+<thead><tr><th scope="col">Number</th><th scope="col">As a power of ten</th><th scope="col">log</th></tr></thead>
+<tbody>
+<tr><th scope="row">1,000,000</th><td>10⁶</td><td>6</td></tr>
+<tr><th scope="row">1000</th><td>10³</td><td>3</td></tr>
+<tr><th scope="row">1</th><td>10⁰</td><td>0</td></tr>
+<tr><th scope="row">0.001</th><td>10⁻³</td><td>−3</td></tr>
+<tr><th scope="row">0.00001</th><td>10⁻⁵</td><td>−5</td></tr>
+</tbody>
+</table>
+<p>Three things follow. Numbers above 1 have positive logs; numbers between 0 and 1 have negative logs; and zero and negative numbers have no log at all, because 10 raised to any power is positive (<a class="figref" href="#fig-log">Figure 1</a>).</p>
+<figure id="fig-log" data-fig="log-scale"><figcaption>A number line of powers of ten with the log of each underneath. Each step of 1 in the log is a factor of 10 in the number.</figcaption></figure>
+
+<h2>Logs of numbers that are not powers of ten</h2>
+<p>Most numbers sit between powers of ten. 3.2 is between 10⁰ and 10¹, so its log is between 0 and 1: log 3.2 = 0.505. Your calculator's LOG key does this. For a number in scientific notation, the log splits neatly into two parts:</p>
+<p>log (3.2 × 10⁻⁴) = log 3.2 + log 10⁻⁴ = 0.505 + (−4) = −3.495</p>
+<p>The whole-number part (−4 here, after combining) only places the decimal point; the digits after the decimal point carry the measured information.</p>
+
+<h2>The rules</h2>
+<p>Because logs are exponents, the exponent rules become log rules:</p>
+<table class="compare">
+<caption>Log rules</caption>
+<thead><tr><th scope="col">Rule</th><th scope="col">Example</th><th scope="col">From the exponent rule</th></tr></thead>
+<tbody>
+<tr><th scope="row">log (A × B) = log A + log B</th><td>log 200 = log 2 + log 100 = 0.301 + 2</td><td>multiplying adds exponents</td></tr>
+<tr><th scope="row">log (A ÷ B) = log A − log B</th><td>log (1/1000) = 0 − 3 = −3</td><td>dividing subtracts exponents</td></tr>
+<tr><th scope="row">log (Aⁿ) = n log A</th><td>log (10²)³ = 3 × 2 = 6</td><td>a power of a power multiplies</td></tr>
+</tbody>
+</table>
+<p>The first rule is the reason logs are useful: a factor of 10 adds exactly 1 to the log, and a factor of 1000 adds 3. A quantity that changes by a factor of a billion changes its log by only 9.</p>
+
+<h2>The natural logarithm</h2>
+<p>A logarithm can use a base other than 10. The most important one in science is <b>e</b>, about 2.718, which shows up whenever something grows or decays at a rate set by how much of it there is. The log with base e is the <b>natural logarithm</b>, written <b>ln</b>.</p>
+<p>ln and log follow the same rules but give different numbers. Since ln 10 = 2.303, every natural log is 2.303 times the base-10 log of the same number: <b>ln x = 2.303 log x</b>. The exam's readers see students use the wrong one every year, especially in equations later in the course. If an equation says ln, press LN; if it says log, press LOG.</p>
+<div class="worked">
+<p><b>Worked example.</b> Calculate log (4.7 × 10⁻³) and ln (4.7 × 10⁻³).</p>
+<p>LOG key: log (4.7 × 10⁻³) = −2.328, written <b>−2.33</b>.</p>
+<p>LN key: ln (4.7 × 10⁻³) = −5.360, written <b>−5.36</b>.</p>
+<p>Check: −2.328 × 2.303 = −5.36. The two answers differ by the factor 2.303, as they should.</p>
+</div>
+
+<h2>Undoing a log: the antilog</h2>
+<p>To get a number back from its log, raise the base to that power. This is the <b>antilog</b>. On most calculators it is the second function of the LOG key (10ˣ) or of the LN key (eˣ).</p>
+<div class="worked">
+<p><b>Worked example.</b> If log x = 2.45, what is x?</p>
+<p>x = 10^2.45 = 281.8. The log had two decimal places, so x has two significant figures: <b>x = 2.8 × 10²</b>.</p>
+<p>If instead ln y = −0.25, then y = e^(−0.25) = <b>0.78</b>.</p>
+</div>
+<p>Solving an equation with ln works the same way: raise e to both sides. If ln (A/B) = −kt, then A/B = e^(−kt), and A = B e^(−kt).</p>
+
+<h2>Significant figures in logs</h2>
+<p>For a logarithm, the digits <i>after the decimal point</i> are its significant figures. The whole-number part only reflects the power of ten. So the rule is: the number of decimal places in the log equals the number of significant figures in the original number.</p>
+<ul>
+<li>log (3.2 × 10⁻⁴) = −3.49 (two significant figures in 3.2, two decimal places).</li>
+<li>log (3.20 × 10⁻⁴) = −3.495 (three significant figures, three decimal places).</li>
+<li>Going back, 10^2.45 = 2.8 × 10² (two decimal places, two significant figures).</li>
+</ul>

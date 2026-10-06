@@ -1,0 +1,14 @@
+{
+ "significant-figures": {
+  "def": "The digits in a measurement that carry meaning: every certain digit plus the one estimated digit. Leading zeros are not significant."
+ },
+ "measurement-uncertainty": {
+  "def": "The doubt in the last digit of every measurement, set by how finely the instrument can be read."
+ },
+ "precision": {
+  "def": "How closely repeated measurements agree with each other. Accuracy, a different idea, is how close they are to the true value."
+ },
+ "exact-number": {
+  "def": "A number known with no uncertainty, such as a count of objects or a defined equality like 1 kg = 1000 g; it never limits significant figures."
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "topic": "mass-spectra",
+ "hook": "Investigators can tell where a strawberry was grown, or whether honey was watered down with cane sugar, from tiny differences in the weights of its atoms. The tool is a mass spectrometer, which sorts atoms by mass. It also explains a puzzle on the periodic table: why chlorine's atomic mass is 35.45 when no chlorine atom weighs that.",
+ "prereq": [
+  {
+   "q": "One atom of an element has a mass of 24.31 amu on average. What is the mass of one mole of its atoms?",
+   "options": [
+    "24.31 g",
+    "24.31 amu",
+    "24.31 × 6.022 × 10²³ g",
+    "24.31 kg"
+   ],
+   "correct": 0,
+   "why": "The number in amu per atom is the same number in g per mole.",
+   "review": "moles-molar-mass"
+  },
+  {
+   "q": "What is 60% of 70?",
+   "options": [
+    "42",
+    "0.42",
+    "4200",
+    "116.7"
+   ],
+   "correct": 0,
+   "why": "60% is the fraction 0.60, and 0.60 × 70 = 42.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "mass-spectrometer",
+  "caption": "A mass spectrometer turns atoms into ions, sorts the ions by mass-to-charge ratio, and counts how many arrive at each mass. Each peak is one isotope."
+ },
+ "chain": [
+  {
+   "cause": "Atoms of one element all have the same number of protons but can have different numbers of neutrons",
+   "effect": "an element can exist as several isotopes with different masses"
+  },
+  {
+   "cause": "A mass spectrometer makes singly charged ions and sorts them by mass",
+   "effect": "each isotope gives its own peak at its mass"
+  },
+  {
+   "cause": "The height of each peak is proportional to how many atoms of that isotope are present",
+   "effect": "the peak heights give the relative abundances"
+  },
+  {
+   "cause": "Natural samples are a mix of isotopes",
+   "effect": "the atomic mass on the periodic table is the abundance-weighted average of the isotope masses"
+  }
+ ],
+ "ideas": [
+  "An atom has <b>protons</b> and <b>neutrons</b> in its <b>nucleus</b> and <b>electrons</b> around it. The <b>atomic number</b> (protons) identifies the element; the <b>mass number</b> = protons + neutrons.",
+  "<b>Isotopes</b>: same element, different numbers of neutrons, so different masses. ³⁵Cl and ³⁷Cl.",
+  "In a <b>mass spectrum</b>, each peak is one isotope (as a 1+ ion); its position is the mass and its height the <b>relative abundance</b>.",
+  "<b>Average atomic mass</b> = Σ (fraction × isotope mass). It sits closest to the most abundant isotope."
+ ],
+ "misconception": {
+  "wrong": "The atomic mass on the periodic table is the mass of a typical atom of the element.",
+  "right": "It is a weighted average over the isotopes, and often no atom has exactly that mass. No chlorine atom has a mass of 35.45 amu; chlorine is about 76% chlorine-35 and 24% chlorine-37."
+ },
+ "check": [
+  "chem-mass-spectra-1",
+  "chem-mass-spectra-4",
+  "chem-mass-spectra-5",
+  "chem-mass-spectra-6",
+  "chem-mass-spectra-7",
+  "chem-mass-spectra-11",
+  "chem-mass-spectra-13"
+ ],
+ "summary": "Atoms of one element share an atomic number (protons) but can differ in neutrons; these isotopes have different masses. A mass spectrometer sorts singly charged ions by mass, giving one peak per isotope, with heights showing relative abundance. The atomic mass on the periodic table is the abundance-weighted average of the isotope masses.",
+ "connections": []
+}

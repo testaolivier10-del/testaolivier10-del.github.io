@@ -1,0 +1,7 @@
+{
+ "subshell-energy-ladder": {
+  "file": "figures/subshell-energy-ladder.svg", "ext": "svg", "w": 680, "h": 380,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Subshells stacked by energy, lowest first: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p, drawn as one, three or five orbital boxes holding 2, 6 or 10 electrons; 4s fills before 3d."
+ }
+}

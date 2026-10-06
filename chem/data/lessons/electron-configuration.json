@@ -1,0 +1,73 @@
+{
+ "topic": "electron-configuration",
+ "hook": "Fireworks get their colors, metals their shine and salt its crunch from one thing: how electrons are arranged around a nucleus, and how tightly each one is held. A single law about charges, Coulomb's law, explains almost all of it. This topic sets up the model the rest of the course uses.",
+ "prereq": [
+  {
+   "q": "What charge do protons and electrons carry?",
+   "options": [
+    "Protons +1, electrons −1",
+    "Protons −1, electrons +1",
+    "Both are neutral",
+    "Protons 0, electrons −1"
+   ],
+   "correct": 0,
+   "why": "Protons are positive and electrons negative; neutrons are neutral.",
+   "review": "mass-spectra"
+  },
+  {
+   "q": "A neutral atom of magnesium has 12 protons. How many electrons does it have?",
+   "options": [
+    "12",
+    "24",
+    "10",
+    "14"
+   ],
+   "correct": 0,
+   "why": "A neutral atom has as many electrons as protons.",
+   "review": "mass-spectra"
+  }
+ ],
+ "figure": {
+  "figure": "subshell-energy-ladder",
+  "caption": "Subshells in order of energy. Electrons fill the lowest open subshell first: 1s, 2s, 2p, 3s, 3p, 4s, 3d, 4p."
+ },
+ "chain": [
+  {
+   "cause": "The positive nucleus and negative electrons attract (Coulomb's law)",
+   "effect": "electrons closer to the nucleus are held more strongly and have lower energy"
+  },
+  {
+   "cause": "Electrons occupy shells at increasing distances, divided into s, p and d subshells",
+   "effect": "each subshell has its own energy and holds 2, 6 or 10 electrons"
+  },
+  {
+   "cause": "Electrons fill the lowest-energy open subshell first (aufbau)",
+   "effect": "every atom has a predictable electron configuration"
+  },
+  {
+   "cause": "Inner (core) electrons sit between the nucleus and the outer electrons",
+   "effect": "they shield the valence electrons, which are held less tightly and take part in chemistry"
+  }
+ ],
+ "ideas": [
+  "<b>Coulomb's law</b>: F ∝ q₁q₂/r². Larger charges attract more; greater distance attracts much less. <b>Potential energy</b> ∝ q₁q₂/r.",
+  "Electrons sit in <b>shells</b> (n = 1, 2, 3…) made of <b>subshells</b> s, p, d (2, 6, 10 electrons), each made of <b>orbitals</b> holding 2.",
+  "<b>Aufbau</b> order: 1s 2s 2p 3s 3p 4s 3d 4p. Na: 1s² 2s² 2p⁶ 3s¹, or [Ne] 3s¹.",
+  "<b>Valence electrons</b> are in the outermost shell; <b>core electrons</b> <b>shield</b> them. <b>Ionization energy</b> is the energy to remove an electron."
+ ],
+ "misconception": {
+  "wrong": "Sodium loses its outer electron easily because it \"wants\" a full shell.",
+  "right": "Atoms do not want anything. Sodium's 3s electron is far from the nucleus and shielded by 10 core electrons, so the Coulombic attraction on it is weak and little energy removes it."
+ },
+ "check": [
+  "chem-electron-configuration-1",
+  "chem-electron-configuration-2",
+  "chem-electron-configuration-3",
+  "chem-electron-configuration-9",
+  "chem-electron-configuration-10",
+  "chem-electron-configuration-11",
+  "chem-electron-configuration-5"
+ ],
+ "summary": "Electrons are attracted to the nucleus by Coulomb's law: more charge pulls harder and distance weakens the pull. Electrons occupy shells and s, p and d subshells, filled in order of energy. The outer valence electrons are shielded by core electrons, so they are held less tightly. Ionization energy measures how tightly an electron is held.",
+ "connections": []
+}

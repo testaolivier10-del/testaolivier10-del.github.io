@@ -1,0 +1,521 @@
+{
+ "stimuli": {
+  "periodic-trends-s1": {
+   "kind": "table",
+   "title": "Successive ionization energies of element X",
+   "text": "<p>Element X is in period 3. The table gives the energy needed to remove each electron in turn from one mole of gaseous atoms, then ions.</p>",
+   "table": {
+    "caption": "Successive ionization energies of X",
+    "cols": [
+     "Electron removed",
+     "Ionization energy (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "1st",
+      "577.5"
+     ],
+     [
+      "2nd",
+      "1816.7"
+     ],
+     [
+      "3rd",
+      "2744.8"
+     ],
+     [
+      "4th",
+      "11,577"
+     ],
+     [
+      "5th",
+      "14,842"
+     ]
+    ]
+   }
+  },
+  "periodic-trends-s2": {
+   "kind": "table",
+   "title": "Properties of period 3 elements",
+   "text": "<p>Atomic radius, first ionization energy and electronegativity for seven elements in period 3.</p>",
+   "table": {
+    "caption": "Period 3 data",
+    "cols": [
+     "Element",
+     "Protons",
+     "Atomic radius (pm)",
+     "First ionization energy (kJ/mol)",
+     "Electronegativity"
+    ],
+    "rows": [
+     [
+      "Na",
+      "11",
+      "186",
+      "496",
+      "0.93"
+     ],
+     [
+      "Mg",
+      "12",
+      "160",
+      "738",
+      "1.31"
+     ],
+     [
+      "Al",
+      "13",
+      "143",
+      "578",
+      "1.61"
+     ],
+     [
+      "Si",
+      "14",
+      "118",
+      "787",
+      "1.90"
+     ],
+     [
+      "P",
+      "15",
+      "110",
+      "1012",
+      "2.19"
+     ],
+     [
+      "S",
+      "16",
+      "103",
+      "1000",
+      "2.58"
+     ],
+     [
+      "Cl",
+      "17",
+      "99",
+      "1251",
+      "3.16"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-periodic-trends-1",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-trends-s1",
+   "q": "How many valence electrons does X have, and what is the evidence?",
+   "options": [
+    "Five: five ionization energies are listed",
+    "Two: the energy roughly triples from the 1st to the 2nd",
+    "Three: the energy jumps fourfold at the 4th electron",
+    "Four: the 4th energy is the largest one in the outer shell"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Removing valence electrons costs increasing but moderate energy. The 4th removal is 11,577 kJ/mol, about 4.2 times the 3rd, because it comes from a full inner shell.",
+    "options": [
+     "The table lists five removals, but they are not all from the outer shell.",
+     "Each removal costs more as the ion gets more positive; the large jump comes later.",
+     "Right: the 4th electron comes from the inner shell, so it takes far more energy.",
+     "The 4th electron is the first core electron, which is why its energy is so large."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-2",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "periodic-trends-s1",
+   "q": "Which element is X?",
+   "options": [
+    "Aluminum",
+    "Magnesium",
+    "Phosphorus",
+    "Boron"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Three valence electrons, period 3: [Ne] 3s² 3p¹, aluminum.",
+    "options": [
+     "Right: a period 3 element with three valence electrons is in group 13.",
+     "Magnesium has two valence electrons, so its jump would come after the 2nd electron.",
+     "Phosphorus has five valence electrons; its jump would come after the 5th.",
+     "Boron also has three valence electrons, but it is in period 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-3",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "periodic-trends-s1",
+   "q": "Why is the 4th ionization energy so much larger than the 3rd?",
+   "options": [
+    "The ion X³⁺ has a full outer shell, which it wants to keep",
+    "The 4th electron has a larger charge than the first three",
+    "The nucleus gains protons as electrons are removed",
+    "The 4th electron is in shell 2, closer and less shielded"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "The first three electrons are 3s and 3p, far out and well shielded. The 4th is a 2p electron: closer, and shielded only by the 1s pair, so it is held far more tightly.",
+    "options": [
+     "Ions do not want anything; the cause is the electron's distance and shielding.",
+     "Every electron carries the same charge.",
+     "Removing electrons never changes the number of protons.",
+     "Right: less distance and less shielding give a much stronger Coulombic attraction."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-4",
+   "type": "numeric",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "periodic-trends-s1",
+   "q": "What is the total energy needed to remove all the valence electrons from one mole of gaseous X atoms?",
+   "numeric": {
+    "answer": 5139,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 5,
+    "mistakes": [
+     {
+      "value": 31560,
+      "rel": 0.01,
+      "why": "Value: you added all five energies. Only the first three electrons are valence electrons."
+     },
+     {
+      "value": 2745,
+      "rel": 0.01,
+      "why": "Value: that is only the 3rd electron. Add the energies for all three valence electrons."
+     }
+    ]
+   },
+   "why": {
+    "correct": "577.5 + 1816.7 + 2744.8 = 5139.0 kJ/mol. Each value has one decimal place, so the sum keeps one."
+   }
+  },
+  {
+   "id": "chem-periodic-trends-5",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-trends-s1",
+   "q": "Each successive ionization energy of X is larger than the one before. Why?",
+   "options": [
+    "Each electron removed is closer to the nucleus than the one before",
+    "Each comes from an ion that is more positive than before",
+    "The atom gains mass after each electron is removed",
+    "Later electrons are in s subshells, which are held more tightly"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "After each removal, the same nuclear charge holds fewer electrons, and less electron-electron repulsion remains, so the next electron is held more tightly.",
+    "options": [
+     "The first three come from shell 3; only the jump at the 4th is a change of shell.",
+     "Right: the same protons now pull on fewer electrons, with less repulsion among them.",
+     "Removing an electron makes the particle slightly lighter, and mass is not the cause.",
+     "The 1st electron is 3p and the next two are 3s; that does not explain the steady rise."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-6",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-trends-s2",
+   "q": "Which explanation accounts for the decrease in atomic radius from Na to Cl?",
+   "options": [
+    "Atoms with more electrons pack their electrons more tightly",
+    "Each element across the period fills a new, smaller shell",
+    "Heavier atoms are denser and so take up less space",
+    "Protons rise while the shell and core electrons stay the same"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Across a period, protons are added while the core (1s² 2s² 2p⁶) stays the same, so the effective nuclear charge on the valence electrons rises and pulls them closer.",
+    "options": [
+     "Electrons repel each other; more electrons alone would spread out, not shrink.",
+     "All seven fill the same valence shell, n = 3.",
+     "Mass and density are not causes in Coulomb's law; charge and distance are.",
+     "Right: a larger nuclear charge at a similar distance pulls the valence electrons in."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-7",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "periodic-trends-s2",
+   "q": "Al has a lower first ionization energy than Mg, against the trend. Which explanation is best?",
+   "options": [
+    "Al loses a 3p electron, which is higher in energy than 3s",
+    "Al has more protons, so it holds its electrons less tightly",
+    "Mg has a full 3s subshell, which it wants to keep",
+    "Al is a larger atom than Mg"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The electron removed from Al is a 3p electron, which is higher in energy than a 3s electron and is shielded in part by the 3s pair. Less energy removes it.",
+    "options": [
+     "Right: the 3p electron is held less tightly than Mg's 3s electrons despite one more proton.",
+     "More protons would pull harder; something else must outweigh that.",
+     "Atoms do not want things; the reason is the energy and shielding of the electron removed.",
+     "The table shows Al (143 pm) is smaller than Mg (160 pm)."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-8",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "4.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-trends-s2",
+   "q": "Which element in the table attracts shared electrons most strongly?",
+   "options": [
+    "Na",
+    "S",
+    "Cl",
+    "P"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Electronegativity measures attraction for shared electrons. It rises across a period as nuclear charge rises at similar distance; Cl is highest.",
+    "options": [
+     "Na has the largest radius and lowest electronegativity, 0.93.",
+     "S is second highest at 2.58.",
+     "Right: it has the highest electronegativity, 3.16.",
+     "P has the highest ionization energy among P, Si and Al, but its electronegativity, 2.19, is below Cl's."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-9",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "periodic-trends-s2",
+   "q": "Which claim about the trends in the table is supported by the data?",
+   "options": [
+    "First ionization energy rises at each step across the period",
+    "Atomic radius increases with the number of protons",
+    "As radius decreases, electronegativity increases",
+    "Electronegativity is unrelated to atomic radius"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Smaller atoms hold electrons, including shared ones, more tightly. Ionization energy has two exceptions, so \"every step\" is not supported.",
+    "options": [
+     "It dips from Mg to Al (738 to 578) and from P to S (1012 to 1000).",
+     "Radius falls from Na (11 protons) to Cl (17).",
+     "Right: from Na to Cl, radius falls from 186 to 99 pm while electronegativity rises from 0.93 to 3.16.",
+     "The two change together across every step of the table."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-10",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why is the first ionization energy of potassium lower than that of sodium?",
+   "options": [
+    "K's valence electron is farther out and more shielded",
+    "K has more protons, which push the electron away",
+    "K has more mass, so its electron moves faster",
+    "K is a metal and Na is not"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Down a group, each element adds a shell. The valence electron is farther from the nucleus and shielded by more core electrons, so it is held less tightly.",
+    "options": [
+     "Right: distance and shielding increase down a group, outweighing the extra protons.",
+     "Protons attract electrons; they never push them away.",
+     "Mass is not the cause in Coulomb's law.",
+     "Both are metals in group 1."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-11",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which list is in order of increasing radius?",
+   "options": [
+    "Na < Na⁺ < Cl⁻ < Cl",
+    "Cl⁻ < Cl < Na < Na⁺",
+    "Na⁺ < Cl⁻ < Na < Cl",
+    "Na⁺ < Na < Cl < Cl⁻"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Na⁺ has lost its whole 3rd shell (very small); Na (186 pm) is larger than Cl (99 pm); Cl⁻ has an extra electron and more repulsion, so it is larger than Cl.",
+    "options": [
+     "A cation is smaller than its atom, and an anion larger than its atom.",
+     "This is the reverse order.",
+     "Cl⁻ is larger than the Cl atom, not smaller than Na.",
+     "Right: removing electrons shrinks an atom; adding them expands it."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-12",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "O²⁻, F⁻ and Na⁺ each have 10 electrons. Which is smallest, and why?",
+   "options": [
+    "O²⁻, because it has the smallest atomic number",
+    "Na⁺, since 11 protons pull on the same 10 electrons",
+    "F⁻, because it is in the middle of the three",
+    "They are the same size, since they have the same electrons"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "With the same 10 electrons, radius depends on nuclear charge: O (8 protons) > F (9) > Na (11). Na⁺ is smallest.",
+    "options": [
+     "Fewer protons means a weaker pull on the 10 electrons, so O²⁻ is the largest.",
+     "Right: same electron arrangement, most protons, so the strongest pull and smallest size.",
+     "Size follows proton count here, and F⁻ has fewer protons than Na⁺.",
+     "Same electrons, but different nuclear charges, so different sizes."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-13",
+   "type": "predict",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "Moving down group 2 from magnesium to calcium, predict how each quantity changes.",
+   "variables": [
+    {
+     "name": "Atomic radius",
+     "answer": "up",
+     "why": "Calcium's valence electrons are in shell 4, farther out than magnesium's shell 3."
+    },
+    {
+     "name": "First ionization energy",
+     "answer": "down",
+     "why": "A farther, more shielded valence electron is held less tightly."
+    },
+    {
+     "name": "Number of valence electrons",
+     "answer": "none",
+     "why": "Both are in group 2, with two valence electrons."
+    }
+   ],
+   "why": {
+    "correct": "Down a group, shells are added: radius rises, ionization energy falls, valence electrons stay the same."
+   }
+  },
+  {
+   "id": "chem-periodic-trends-14",
+   "type": "multi",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Fluorine is more electronegative than iodine. Which statements correctly help explain this? Select all that apply.",
+   "options": [
+    "Fluorine's valence electrons are in shell 2, much closer to the nucleus",
+    "Iodine's valence electrons are shielded by many more core electrons",
+    "Iodine has more protons, so it attracts electrons more strongly",
+    "Fluorine has a larger mass than iodine"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Both atoms have 7 valence electrons. Fluorine's are far closer and less shielded, so its nucleus attracts shared electrons more strongly.",
+    "options": [
+     "Right: shared electrons are closer to fluorine's nucleus.",
+     "Right: more shielding weakens the attraction iodine exerts.",
+     "More protons, but much more distance and shielding, so the net attraction is weaker.",
+     "Fluorine has a much smaller mass, and mass is not the cause anyway."
+    ]
+   }
+  },
+  {
+   "id": "chem-periodic-trends-15",
+   "type": "single",
+   "unit": "unit-1",
+   "topic": "periodic-trends",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Where on the periodic table are the metals?",
+   "options": [
+    "On the left and in the middle",
+    "In the top right corner of the table",
+    "In group 18, the last column",
+    "Along the bottom two rows"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Most elements are metals, on the left and in the middle; nonmetals are at the upper right, with metalloids along the staircase between.",
+    "options": [
+     "Right: metals have few valence electrons that are held loosely.",
+     "The upper right holds the nonmetals.",
+     "Group 18 is the noble gases, which are nonmetals.",
+     "Metals fill most of the table, from the left side through the middle."
+    ]
+   }
+  }
+ ]
+}

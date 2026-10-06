@@ -1,0 +1,85 @@
+{
+ "topic": "moles-molar-mass",
+ "hook": "A bakery buys eggs by the dozen and a print shop buys paper by the ream, because counting one at a time is slow. Atoms are far too small to count at all: a single drop of water holds about 10²¹ molecules. Chemists count them by weighing, using a counting unit called the mole.",
+ "prereq": [
+  {
+   "q": "Which setup changes 4.50 g into kilograms?",
+   "options": [
+    "4.50 g × (1 kg / 1000 g)",
+    "4.50 g × (1000 g / 1 kg)",
+    "4.50 g × (1 kg / 100 g)",
+    "4.50 g ÷ (1 kg / 1000 g)"
+   ],
+   "correct": 0,
+   "why": "Put grams on the bottom so they cancel: 4.50 g × (1 kg / 1000 g) = 0.00450 kg.",
+   "review": "math-units"
+  },
+  {
+   "q": "What is (2.0 × 10³) × (3.0 × 10²⁰)?",
+   "options": [
+    "6.0 × 10²³",
+    "6.0 × 10⁶⁰",
+    "5.0 × 10²³",
+    "6.0 × 10¹⁷"
+   ],
+   "correct": 0,
+   "why": "Multiply the coefficients (2.0 × 3.0 = 6.0) and add the exponents (3 + 20 = 23).",
+   "review": "math-scientific-notation"
+  },
+  {
+   "q": "How many significant figures does 0.0250 mol have?",
+   "options": [
+    "3",
+    "4",
+    "2",
+    "5"
+   ],
+   "correct": 0,
+   "why": "Leading zeros do not count; the 2, the 5 and the trailing zero after the decimal point do.",
+   "review": "math-sig-figs"
+  }
+ ],
+ "figure": {
+  "figure": "mole-pathway",
+  "caption": "The path between a measured mass and a number of particles always goes through moles: molar mass links grams and moles, and Avogadro's number links moles and particles."
+ },
+ "chain": [
+  {
+   "cause": "Atoms and molecules are far too small to count one by one",
+   "effect": "chemists count them in groups of 6.022 × 10²³, called a mole"
+  },
+  {
+   "cause": "The mole is defined so that the mass of one particle in amu matches the mass of a mole in grams",
+   "effect": "the atomic mass on the periodic table is also the molar mass in g/mol"
+  },
+  {
+   "cause": "A balance measures grams, and molar mass is grams per mole",
+   "effect": "dividing a mass by the molar mass gives the amount in moles"
+  },
+  {
+   "cause": "Each mole holds Avogadro's number of particles",
+   "effect": "multiplying moles by 6.022 × 10²³ gives the number of particles"
+  }
+ ],
+ "ideas": [
+  "One <b>mole</b> is 6.022 × 10²³ particles (<b>Avogadro's number</b>). Always say which particles: one mole of water molecules holds three moles of atoms.",
+  "<b>Molar mass</b> (g/mol) = the sum of the <b>atomic masses</b> of every atom in one particle. Water: 2(1.008) + 16.00 = 18.02 g/mol.",
+  "grams ÷ molar mass = moles; moles × 6.022 × 10²³ = particles. Always go through moles.",
+  "Equal masses of different substances hold different numbers of particles: lighter particles, more of them."
+ ],
+ "misconception": {
+  "wrong": "Equal masses of two substances contain equal numbers of molecules.",
+  "right": "Molecules of different substances have different masses, so the same mass holds different numbers of them. 1.0 g of H₂ has about 16 times as many molecules as 1.0 g of O₂. Compare amounts in moles, not grams."
+ },
+ "check": [
+  "chem-moles-molar-mass-1",
+  "chem-moles-molar-mass-2",
+  "chem-moles-molar-mass-3",
+  "chem-moles-molar-mass-4",
+  "chem-moles-molar-mass-10",
+  "chem-moles-molar-mass-11",
+  "chem-moles-molar-mass-14"
+ ],
+ "summary": "Chemists count particles in moles of 6.022 × 10²³. The molar mass, the sum of the atomic masses in one particle, has the same number in g/mol as one particle's mass in amu, so it converts a measured mass into moles. Avogadro's number converts moles into particles. Equal masses of different substances hold different numbers of particles.",
+ "connections": []
+}

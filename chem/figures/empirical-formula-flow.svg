@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" role="img" aria-labelledby="t d">
+<title id="t">From mass percents to a formula</title>
+<desc id="d">A flow of five boxes with an example. Mass percents, 40.00 percent C, 6.71 percent H, 53.29 percent O, become grams in a 100 gram sample. Divide by atomic mass to get moles: 3.331, 6.657 and 3.331. Divide by the smallest to get the ratio 1 to 2 to 1, the empirical formula CH2O, mass 30.03 grams per mole. Divide the molar mass, 180.2, by 30.03 to get 6, so the molecular formula is C6H12O6.</desc>
+<rect width="680" height="300" fill="#ffffff"/>
+<defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1D44A6"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440" text-anchor="middle">
+  <g stroke="#1D44A6" stroke-width="2" fill="#E3EAFA">
+    <rect x="10" y="20" width="120" height="110" rx="10"/><rect x="146" y="20" width="120" height="110" rx="10"/><rect x="282" y="20" width="120" height="110" rx="10"/>
+    <rect x="418" y="20" width="120" height="110" rx="10"/><rect x="554" y="20" width="116" height="110" rx="10"/>
+  </g>
+  <g font-size="15" font-weight="bold">
+    <text x="70" y="44">Mass %</text><text x="206" y="44">Grams</text><text x="342" y="44">Moles</text><text x="478" y="44">Ratio</text><text x="612" y="44">Formula</text>
+  </g>
+  <g font-size="13">
+    <text x="70" y="70">C 40.00%</text><text x="70" y="90">H 6.71%</text><text x="70" y="110">O 53.29%</text>
+    <text x="206" y="70">40.00 g C</text><text x="206" y="90">6.71 g H</text><text x="206" y="110">53.29 g O</text>
+    <text x="342" y="70">3.331 C</text><text x="342" y="90">6.657 H</text><text x="342" y="110">3.331 O</text>
+    <text x="478" y="70">1 C</text><text x="478" y="90">2 H</text><text x="478" y="110">1 O</text>
+    <text x="612" y="80" font-size="18" font-weight="bold">CH₂O</text><text x="612" y="104">30.03 g/mol</text>
+  </g>
+  <g stroke="#1D44A6" stroke-width="2" marker-end="url(#f)">
+    <path d="M130 75 H143"/><path d="M266 75 H279"/><path d="M402 75 H415"/><path d="M538 75 H551"/>
+  </g>
+  <g font-size="12" fill="#3A4560">
+    <text x="138" y="152">assume 100 g</text><text x="274" y="152">÷ atomic mass</text><text x="410" y="152">÷ smallest</text><text x="546" y="152">whole numbers</text>
+  </g>
+  <rect x="140" y="190" width="400" height="90" rx="10" fill="#F3E1D3" stroke="#C2410C" stroke-width="2"/>
+  <text x="340" y="216" font-size="15" font-weight="bold">Molecular formula</text>
+  <text x="340" y="242" font-size="14">n = molar mass ÷ empirical mass = 180.2 ÷ 30.03 = 6</text>
+  <text x="340" y="266" font-size="16">CH₂O × 6 = <tspan font-weight="bold">C₆H₁₂O₆</tspan></text>
+  <path d="M612 130 Q 612 200 545 230" fill="none" stroke="#C2410C" stroke-width="2" marker-end="url(#f)"/>
+</g>
+</svg>

@@ -1,0 +1,20 @@
+{
+ "pure-substance": {
+  "def": "Matter with a fixed composition throughout: an element or a single compound."
+ },
+ "definite-proportions": {
+  "def": "The law that a given compound always contains the same elements in the same proportions by mass, however it is made."
+ },
+ "chemical-formula": {
+  "def": "Element symbols with subscripts that show the ratio of atoms in a substance, such as H₂O (2 H for each O)."
+ },
+ "mass-percent": {
+  "def": "The share of a compound's mass that comes from one element: the element's mass in one formula divided by the molar mass, times 100."
+ },
+ "empirical-formula": {
+  "def": "The simplest whole-number ratio of atoms in a compound, such as CH₂O for glucose."
+ },
+ "molecular-formula": {
+  "def": "The actual number of each kind of atom in one molecule, a whole-number multiple of the empirical formula, such as C₆H₁₂O₆."
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "sci-notation-parts": {
+  "file": "figures/sci-notation-parts.svg", "ext": "svg", "w": 680, "h": 280,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "149,600,000 becomes 1.496 × 10⁸ (point moved 8 places left) and 0.000000650 becomes 6.50 × 10⁻⁷ (point moved 7 places right); the coefficient is between 1 and 10."
+ }
+}

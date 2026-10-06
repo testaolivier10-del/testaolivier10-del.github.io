@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 260" width="680" height="260" role="img" aria-labelledby="t d">
+<title id="t">Dimensional analysis: converting 3.5 hours to seconds</title>
+<desc id="d">3.5 hours times 60 minutes over 1 hour times 60 seconds over 1 minute equals 12,600 seconds. Hours on top cancel hours on the bottom of the first factor, minutes on top of the first factor cancel minutes on the bottom of the second, and only seconds are left.</desc>
+<rect width="680" height="260" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440" font-size="26" text-anchor="middle">
+  <text x="80" y="122">3.5 h</text>
+  <text x="150" y="122">×</text>
+  <text x="230" y="98">60 min</text>
+  <line x1="180" y1="110" x2="280" y2="110" stroke="#1B2440" stroke-width="2"/>
+  <text x="230" y="142">1 h</text>
+  <text x="310" y="122">×</text>
+  <text x="380" y="98">60 s</text>
+  <line x1="330" y1="110" x2="430" y2="110" stroke="#1B2440" stroke-width="2"/>
+  <text x="380" y="142">1 min</text>
+  <text x="460" y="122">=</text>
+  <text x="565" y="122" font-weight="bold">12,600 s</text>
+  <!-- cancel strokes -->
+  <line x1="88" y1="128" x2="116" y2="104" stroke="#1D44A6" stroke-width="3"/>
+  <line x1="236" y1="148" x2="264" y2="124" stroke="#1D44A6" stroke-width="3"/>
+  <line x1="236" y1="104" x2="282" y2="80" stroke="#C2410C" stroke-width="3"/>
+  <line x1="384" y1="148" x2="428" y2="124" stroke="#C2410C" stroke-width="3"/>
+  <g font-size="16">
+    <text x="172" y="200" fill="#1D44A6">h on top cancels h on the bottom</text>
+    <text x="410" y="40" fill="#C2410C">min on top cancels min on the bottom</text>
+    <text x="565" y="160">only seconds are left</text>
+  </g>
+  <path d="M120 186 Q 110 150 104 132" fill="none" stroke="#1D44A6" stroke-width="1.5"/>
+  <path d="M220 186 Q 240 170 250 150" fill="none" stroke="#1D44A6" stroke-width="1.5"/>
+  <path d="M340 48 Q 290 60 262 80" fill="none" stroke="#C2410C" stroke-width="1.5"/>
+  <path d="M440 48 Q 420 100 410 124" fill="none" stroke="#C2410C" stroke-width="1.5"/>
+</g>
+</svg>

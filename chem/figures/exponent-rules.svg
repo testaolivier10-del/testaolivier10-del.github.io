@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" role="img" aria-labelledby="t d">
+<title id="t">The exponent rules with powers of ten</title>
+<desc id="d">Four boxes. Multiply: ten squared times ten cubed equals ten to the fifth, add the exponents. Divide: ten to the fifth over ten squared equals ten cubed, subtract the exponents. Power of a power: ten squared, cubed, equals ten to the sixth, multiply the exponents. Negative exponent: ten to the minus three equals one over one thousand, which is 0.001.</desc>
+<rect width="680" height="300" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <g stroke="#1D44A6" stroke-width="2" fill="#E3EAFA">
+    <rect x="16" y="16" width="316" height="126" rx="10"/>
+    <rect x="348" y="16" width="316" height="126" rx="10"/>
+    <rect x="16" y="158" width="316" height="126" rx="10"/>
+    <rect x="348" y="158" width="316" height="126" rx="10"/>
+  </g>
+  <g font-size="17" font-weight="bold">
+    <text x="32" y="44">Multiply: add the exponents</text>
+    <text x="364" y="44">Divide: subtract the exponents</text>
+    <text x="32" y="186">Power of a power: multiply them</text>
+    <text x="364" y="186">Negative exponent: reciprocal</text>
+  </g>
+  <g font-size="24">
+    <text x="32" y="88">10² × 10³ = 10²⁺³ = 10⁵</text>
+    <text x="364" y="88">10⁵ ÷ 10² = 10⁵⁻² = 10³</text>
+    <text x="32" y="230">(10²)³ = 10²ˣ³ = 10⁶</text>
+    <text x="364" y="230">10⁻³ = 1/10³ = 0.001</text>
+  </g>
+  <g font-size="14" fill="#3A4560">
+    <text x="32" y="122">(10·10)·(10·10·10): five tens</text>
+    <text x="364" y="122">two tens cancel top and bottom</text>
+    <text x="32" y="264">three copies of two tens: six tens</text>
+    <text x="364" y="264">small and positive, never negative</text>
+  </g>
+</g>
+</svg>

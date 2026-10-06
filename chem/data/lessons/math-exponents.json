@@ -1,0 +1,73 @@
+{
+ "topic": "math-exponents",
+ "hook": "A grain of sand holds roughly 50,000,000,000,000,000,000 atoms, and one atom is about 0.0000000001 m across. Writing all those zeros is slow and invites mistakes. Exponents let you write and combine such numbers in a few keystrokes, and they are the main math tool of this course.",
+ "prereq": [
+  {
+   "q": "Which conversion factor turns milliliters into liters?",
+   "options": [
+    "1 L / 1000 mL",
+    "1000 mL / 1 L",
+    "1 L / 100 mL",
+    "100 mL / 1 L"
+   ],
+   "correct": 0,
+   "why": "Put the unit you have (mL) on the bottom so it cancels: 1 L / 1000 mL.",
+   "review": "math-units"
+  },
+  {
+   "q": "What does the prefix kilo mean?",
+   "options": [
+    "1000 times the unit",
+    "One thousandth of the unit",
+    "100 times the unit",
+    "One millionth of the unit"
+   ],
+   "correct": 0,
+   "why": "Kilo multiplies by 1000: 1 km = 1000 m.",
+   "review": "math-units"
+  }
+ ],
+ "figure": {
+  "figure": "exponent-rules",
+  "caption": "The four exponent rules, each shown with powers of ten."
+ },
+ "chain": [
+  {
+   "cause": "An exponent counts how many times a base is multiplied by itself",
+   "effect": "10³ means 10 × 10 × 10 = 1000"
+  },
+  {
+   "cause": "Multiplying two powers of the same base strings their factors together",
+   "effect": "their exponents add"
+  },
+  {
+   "cause": "Dividing cancels factors that appear on the top and the bottom",
+   "effect": "the exponents subtract, and a larger bottom exponent leaves a negative exponent"
+  },
+  {
+   "cause": "A negative exponent means factors left on the bottom",
+   "effect": "10⁻ⁿ is 1/10ⁿ, a small positive number"
+  }
+ ],
+ "ideas": [
+  "An <b>exponent</b> says how many times to multiply the base by itself: 10⁴ = 10,000.",
+  "Multiply: add exponents (10² × 10³ = 10⁵). Divide: subtract (10² ÷ 10⁵ = 10⁻³). Power of a power: multiply (10²)³ = 10⁶.",
+  "Negative exponent = reciprocal: 10⁻³ = 1/1000 = 0.001. Zero exponent: 10⁰ = 1.",
+  "Roots are fractional powers: √(10⁸) = 10⁴. Adding numbers does <i>not</i> combine exponents: 10⁴ + 10⁴ = 2 × 10⁴."
+ ],
+ "misconception": {
+  "wrong": "A negative exponent makes the number negative, so 10⁻³ = −1000.",
+  "right": "A negative exponent means divide: 10⁻³ = 1/10³ = 0.001, a small positive number. The sign of the number itself comes from a minus sign in front, not from the exponent."
+ },
+ "check": [
+  "chem-math-exponents-1",
+  "chem-math-exponents-2",
+  "chem-math-exponents-3",
+  "chem-math-exponents-4",
+  "chem-math-exponents-5",
+  "chem-math-exponents-10",
+  "chem-math-exponents-11"
+ ],
+ "summary": "An exponent counts repeated multiplication. Multiplying powers of the same base adds exponents, dividing subtracts them, and raising a power to a power multiplies them. A negative exponent means a reciprocal, and any nonzero base to the zero power is 1. These rules do not apply to adding.",
+ "connections": []
+}

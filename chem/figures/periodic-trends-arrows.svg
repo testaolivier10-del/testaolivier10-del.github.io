@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 340" width="680" height="340" role="img" aria-labelledby="t d">
+<title id="t">Periodic trends across a period and down a group</title>
+<desc id="d">An outline of the main-group periodic table with circles for the atoms of groups 1, 2 and 13 to 17 in periods 2 to 4, drawn to show relative size: circles shrink from left to right and grow from top to bottom. A horizontal arrow says across a period: radius decreases, ionization energy and electronegativity increase, because effective nuclear charge rises. A vertical arrow says down a group: radius increases, ionization energy and electronegativity decrease, because of more shells and more shielding.</desc>
+<rect width="680" height="340" fill="#ffffff"/>
+<defs><marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C2410C"/></marker><marker id="v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1D44A6"/></marker></defs>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1B2440">
+  <g fill="#E3EAFA" stroke="#1D44A6" stroke-width="1.5">
+    <circle cx="90" cy="80" r="19"/><circle cx="145" cy="80" r="15"/><circle cx="200" cy="80" r="12"/><circle cx="255" cy="80" r="10"/><circle cx="310" cy="80" r="9"/><circle cx="365" cy="80" r="8"/><circle cx="420" cy="80" r="7"/>
+    <circle cx="90" cy="150" r="24"/><circle cx="145" cy="150" r="20"/><circle cx="200" cy="150" r="17"/><circle cx="255" cy="150" r="14"/><circle cx="310" cy="150" r="13"/><circle cx="365" cy="150" r="12"/><circle cx="420" cy="150" r="12"/>
+    <circle cx="90" cy="225" r="29"/><circle cx="145" cy="225" r="24"/><circle cx="200" cy="225" r="17"/><circle cx="255" cy="225" r="15"/><circle cx="310" cy="225" r="14"/><circle cx="365" cy="225" r="14"/><circle cx="420" cy="225" r="14"/>
+  </g>
+  <g font-size="11" text-anchor="middle">
+    <text x="90" y="84">Li</text><text x="145" y="84">Be</text><text x="200" y="84">B</text><text x="255" y="84">C</text><text x="310" y="84">N</text><text x="365" y="84">O</text><text x="420" y="84">F</text>
+    <text x="90" y="154">Na</text><text x="145" y="154">Mg</text><text x="200" y="154">Al</text><text x="255" y="154">Si</text><text x="310" y="154">P</text><text x="365" y="154">S</text><text x="420" y="154">Cl</text>
+    <text x="90" y="229">K</text><text x="145" y="229">Ca</text><text x="200" y="229">Ga</text><text x="255" y="229">Ge</text><text x="310" y="229">As</text><text x="365" y="229">Se</text><text x="420" y="229">Br</text>
+  </g>
+  <path d="M70 280 H430" stroke="#C2410C" stroke-width="3" marker-end="url(#h)"/>
+  <text x="70" y="302" font-size="14" fill="#C2410C" font-weight="bold">Across a period: more protons, same shell</text>
+  <text x="70" y="322" font-size="13" fill="#C2410C">radius ↓   ionization energy ↑   electronegativity ↑</text>
+  <path d="M470 50 V250" stroke="#1D44A6" stroke-width="3" marker-end="url(#v)"/>
+  <text x="490" y="110" font-size="14" fill="#1D44A6" font-weight="bold">Down a group:</text>
+  <text x="490" y="130" font-size="14" fill="#1D44A6" font-weight="bold">more shells, more shielding</text>
+  <text x="490" y="156" font-size="13" fill="#1D44A6">radius ↑</text>
+  <text x="490" y="176" font-size="13" fill="#1D44A6">ionization energy ↓</text>
+  <text x="490" y="196" font-size="13" fill="#1D44A6">electronegativity ↓</text>
+  <text x="250" y="36" font-size="13" text-anchor="middle" fill="#3A4560">circle size shows relative atomic radius</text>
+</g>
+</svg>

@@ -1,0 +1,17 @@
+{
+ "unit": {
+  "def": "The agreed-on amount that a measurement counts in, such as the gram, the liter or the second; a number without its unit is incomplete."
+ },
+ "si-prefix": {
+  "def": "A prefix that scales a unit by a factor of ten, such as kilo (1000), centi (1/100), milli (1/1000), micro (one millionth) and nano (one billionth)."
+ },
+ "dimensional-analysis": {
+  "def": "Solving a problem by multiplying by conversion factors, ratios equal to 1, so that unwanted units cancel and only the wanted unit is left."
+ },
+ "kelvin": {
+  "def": "The SI unit of temperature. Its zero is absolute zero, the coldest possible temperature; K = °C + 273.15."
+ },
+ "density": {
+  "def": "Mass divided by volume, usually in g/mL or g/cm³; it can be used to convert between the mass and the volume of a substance."
+ }
+}
