@@ -288,7 +288,7 @@
           "Correct: an odd-length codon makes the two codons alternate.",
           "Read in twos, every codon would be UC, giving one amino acid repeated, not two alternating.",
           "Triplets from UCUC… alternate between UCU and CUC; they are not one repeated codon.",
-          "Four bases read singly could code for only four amino acids, and the poly-U, poly-A and poly-C results each give one amino acid, not a mixture."
+          "Read singly, U and C would give the amino acids that poly-U and poly-C coded for (phenylalanine and proline), but UCUC… gave serine and leucine."
         ]
       }
     },

@@ -527,7 +527,7 @@
         "To show that sucrose by itself does not harm the cells.",
         "To make the penicillin work faster in the sucrose medium.",
         "To give the experiment a larger sample size.",
-        "To show that penicillin is needed before any of the cells can lose their rod shape and turn round."
+        "To show that sucrose by itself makes the cells lose their rod shape and turn round."
       ],
       "correct": 0,
       "why": {
@@ -536,7 +536,7 @@
           "This control separates the effect of sucrose from the effect of penicillin.",
           "Without penicillin in it, this group cannot change how penicillin works.",
           "Each condition already has three cultures; the group's purpose is comparison, not numbers.",
-          "Roundness is seen in the penicillin-plus-sucrose group; the no-penicillin group stays rod-shaped, but its main job is to test sucrose alone."
+          "Cells in sucrose without penicillin stay rod-shaped, so sucrose alone does not round them; only the cells with weakened walls turn round."
         ]
       }
     },
