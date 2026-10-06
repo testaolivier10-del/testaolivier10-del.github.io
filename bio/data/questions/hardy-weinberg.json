@@ -709,7 +709,7 @@
         "options": [
           "Correct: random mating at birth, selection during life.",
           "If mating were nonrandom, newborns would already depart from expectations.",
-          "Drift does not act on individuals within one generation; it changes allele frequencies between generations by chance.",
+          "Drift changes allele frequencies by chance, in no set direction; it would not reliably produce a surplus of heterozygotes among adults.",
           "Nothing suggests migrants, and gene flow would not add only heterozygotes."
         ]
       }

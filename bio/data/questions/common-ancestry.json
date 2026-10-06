@@ -83,7 +83,7 @@
     {
       "id": "bio-common-ancestry-3", "type": "single", "unit": "unit-7", "topic": "common-ancestry", "practice": "3.C", "level": "apply", "diff": 2,
       "stimulus": "common-ancestry-s1",
-      "q": "What does the control in which the yeast's own gene is put back allow the researchers to rule out?",
+      "q": "What is the control in which the yeast's own gene is put back mainly designed to rule out?",
       "options": [
         "That the gene-transfer method itself harms growth, which would make failures with human genes meaningless",
         "That the yeast cells could grow well without the deleted gene, so the gene was not essential for division",
