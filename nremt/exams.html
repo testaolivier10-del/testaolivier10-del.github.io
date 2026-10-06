@@ -23,6 +23,8 @@
 <meta property="og:url" content="https://levlprep.com/nremt/exams.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order, and the
@@ -78,7 +80,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "NREMT-EMT timed practice exam",
+          "name": "Exams",
           "item": "https://levlprep.com/nremt/exams.html"
         }
       ]
@@ -91,71 +93,96 @@
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <!-- crumb:start -->
-<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT timed practice exam</span></nav></div>
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Exams</span></nav></div>
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="wrap">
+<main class="wrap cx-study" id="main">
 
   <div id="introScreen">
-    <div class="page-head">
+    <header class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
       <h1>Exams</h1>
-      <p class="lede">A full 100-question exam drawn in the proportions of the National Registry&rsquo;s five EMT exam domains (April 2025 outline): 17 Scene Size-Up &amp; Safety, 41 Primary Assessment, 7 Secondary Assessment, 22 Patient Treatment &amp; Transport and 13 Operations. Two-hour clock, scored by domain. Leave mid-way and it waits here for you.</p>
-    </div>
+      <p class="lede">A full 100-question exam in the proportions of the National Registry&rsquo;s five EMT exam domains (April 2025 outline), on a two-hour clock and scored by domain. Leave mid-way and it waits here for you.</p>
+    </header>
 
-    <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
-      <div class="resume-exam-text" id="resumeExamText"></div>
-      <div class="resume-exam-actions">
-        <button class="primary" id="resumeExamBtn">Resume</button>
-        <button class="exit-link" id="discardExamBtn">Discard</button>
-      </div>
-    </div>
+    <div class="cx-body has-rail">
+      <div class="cx-main">
+        <!-- The free-exam notice: top of the body, as in every course
+             (practice-engine.js renderPremium fills #examGate). -->
+        <div id="examGate" class="premium-slot cx-notice-slot"></div>
 
-    <div class="mode-grid mode-grid--solo">
-      <div class="mode-card mode-card--primary">
-        <div class="k">Full length <span data-premium-badge></span></div>
-        <h2>Timed exam</h2>
-        <p>100 questions drawn in the 2025 exam&rsquo;s domain proportions, scored by domain.</p>
-        <div class="spacer"></div>
-        <div class="meta">100 q &middot; 2:00:00 &middot; ~72 s/q<br>pool of <span id="poolCount">2,033</span></div>
-        <div class="controls">
-          <select id="difficultySelect" aria-label="Difficulty">
-            <option value="all">All levels</option>
-            <option value="easy">Easy only</option>
-            <option value="medium">Medium only</option>
-            <option value="hard">Hard only</option>
-            <option value="expert">Expert only</option>
-          </select>
+        <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
+          <div class="resume-exam-text" id="resumeExamText"></div>
+          <div class="resume-exam-actions">
+            <button class="primary" id="resumeExamBtn">Resume</button>
+            <button class="exit-link" id="discardExamBtn">Discard</button>
+          </div>
         </div>
-        <!-- Off by default (audit 2026-10): a free student gets one exam, and
-             locking answers and hiding Flag on that one attempt costs them the
-             review they came for. Switch it on to rehearse the real rules. -->
-        <label class="realistic-toggle" for="realisticMode">
-          <input type="checkbox" id="realisticMode">
-          <span><strong>Exam-realistic</strong> &mdash; no flagging, no going back, like the real thing</span>
-        </label>
-        <button class="start-btn" id="startBtn">Start timed exam</button>
+
+        <form class="cx-card cx-builder" novalidate aria-label="Set up an exam" onsubmit="return false">
+          <fieldset class="cx-step">
+            <legend><span class="cx-step-n" aria-hidden="true">1</span>Choose an exam</legend>
+            <div class="cx-choices">
+              <label class="cx-choice"><input type="radio" name="nrExam" value="full" checked><span><b>Timed exam <span data-premium-badge></span></b><span>100 questions in the 2025 domain proportions, scored by domain.</span></span></label>
+            </div>
+          </fieldset>
+          <div class="cx-step">
+            <h2 class="cx-step-h"><span class="cx-step-n" aria-hidden="true">2</span>Settings</h2>
+            <div class="cx-fields">
+              <label class="cx-field"><span>Difficulty</span>
+                <select id="difficultySelect">
+                  <option value="all">All levels</option>
+                  <option value="easy">Easy only</option>
+                  <option value="medium">Medium only</option>
+                  <option value="hard">Hard only</option>
+                  <option value="expert">Expert only</option>
+                </select>
+              </label>
+            </div>
+            <!-- Off by default (audit 2026-10): a free student gets one exam, and
+                 locking answers and hiding Flag on that one attempt costs them the
+                 review they came for. Switch it on to rehearse the real rules. -->
+            <label class="cx-check" for="realisticMode">
+              <input type="checkbox" id="realisticMode">
+              <span><strong>Exam-realistic</strong>: no flagging, no going back, like the real thing</span>
+            </label>
+            <p class="cx-avail">The real NREMT is adaptive: 70 to 120 questions, no going back. This one is a fixed 100 drawn from a pool of <span id="poolCount">2,033</span>, so it trains pacing and stamina rather than the algorithm. <a href="exam-day.html">Read about exam day</a>.</p>
+          </div>
+          <div class="cx-start">
+            <p class="cx-sum"><span>100 questions, 2:00:00 (about 72 s a question).</span><small>No feedback until you submit. Then every question is reviewed with its explanation, and misses go to your review queue.</small></p>
+            <button type="button" class="btn-press" id="startBtn">Start timed exam</button>
+          </div>
+        </form>
+
+        <div class="intro-row">
+          <div id="readinessCard"></div>
+          <div>
+            <div class="best-score" id="bestScoreLine"></div>
+            <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
+            <div class="progress-panel" id="progressPanel" style="display:none;"></div>
+          </div>
+        </div>
       </div>
 
-      <div class="mode-card">
-        <div class="k">Before the day</div>
-        <h2>How the real exam works</h2>
-        <p>The real NREMT is adaptive: 70 to 120 questions, no going back. This one is a fixed 100, so it trains pacing and stamina rather than the algorithm.</p>
-        <div class="spacer"></div>
-        <a class="btn-press sm alt" href="exam-day.html">Read about exam day</a>
-      </div>
-    </div>
-
-    <div class="intro-row">
-      <div id="readinessCard"></div>
-      <div>
-        <div class="best-score" id="bestScoreLine"></div>
-        <button class="progress-toggle" id="progressToggle" style="display:none;">View progress &darr;</button>
-        <div class="progress-panel" id="progressPanel" style="display:none;"></div>
-      </div>
+      <aside class="cx-rail" aria-labelledby="cx-rail-h">
+        <h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>
+        <div class="cx-stats" id="nrStats"></div>
+        <div class="cx-card cx-qcard">
+          <p class="cx-kicker">Review queue</p>
+          <h3><span data-due="all">0</span> due for another look</h3>
+          <p>Questions you answer come back on a spacing schedule, so they stick.</p>
+          <a class="cx-more" href="review.html">Open review <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <nav class="cx-links" aria-label="More ways to study">
+          <a class="cx-link" href="practice.html"><b>Practice<small>Untimed, with feedback after every answer.</small></b><span aria-hidden="true">&rarr;</span></a>
+          <a class="cx-link" href="flashcards.html"><b>Flashcards<small>Short facts on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
+        </nav>
+      </aside>
     </div>
   </div>
 
+</main>
+<div class="xshell cx-foot">
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
@@ -166,6 +193,8 @@
 </div>
 
 <script src="practice-engine.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
+<script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

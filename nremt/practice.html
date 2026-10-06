@@ -23,6 +23,8 @@
 <meta property="og:url" content="https://levlprep.com/nremt/practice.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order, and the
@@ -78,7 +80,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "NREMT-EMT practice drills",
+          "name": "Practice",
           "item": "https://levlprep.com/nremt/practice.html"
         }
       ]
@@ -91,121 +93,139 @@
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <!-- crumb:start -->
-<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT practice drills</span></nav></div>
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Practice</span></nav></div>
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="wrap">
+<main class="wrap cx-study" id="main">
 
   <div id="introScreen">
-    <div class="page-head">
+    <header class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
       <h1>Practice</h1>
-      <p class="lede">Drills and weak-spot sets from the 2,033-question bank, in multiple-choice, select-N and build-list (put in order) formats. The timed exam has its own tab, <a href="exams.html">Exams</a>, and the spaced queue is under <a href="review.html">Review</a>.</p>
-    </div>
+      <p class="lede">Drills from the 2,033-question bank in multiple-choice, select-N and build-list formats, each answer checked as you go.</p>
+    </header>
 
-    <div id="streakWidget"></div>
-
-    <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
-      <div class="resume-exam-text" id="resumeExamText"></div>
-      <div class="resume-exam-actions">
-        <button class="primary" id="resumeExamBtn">Resume Exam</button>
-        <button class="exit-link" id="discardExamBtn">Discard</button>
-      </div>
-    </div>
-
-    <div class="mode-grid">
-
-      <div class="mode-card mode-card--primary">
-        <div class="k">Weak spots <span class="adaptive-tag">retargets live</span></div>
-        <h2>Weak-spot practice</h2>
-        <p>Weighted toward the topic areas and questions you’ve missed, not toward the exam’s domain mix.</p>
-        <div class="spacer"></div>
-        <div class="meta">Re-targets after<br>every question</div>
-        <div class="controls">
-          <select id="adaptiveLength" aria-label="Weak-spot practice length">
-            <option value="15">15 questions</option>
-            <option value="20" selected>20 questions</option>
-            <option value="30">30 questions</option>
-            <option value="50">50 questions</option>
-          </select>
+    <div class="cx-body has-rail">
+      <div class="cx-main">
+        <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
+          <div class="resume-exam-text" id="resumeExamText"></div>
+          <div class="resume-exam-actions">
+            <button class="primary" id="resumeExamBtn">Resume Exam</button>
+            <button class="exit-link" id="discardExamBtn">Discard</button>
+          </div>
         </div>
-        <button class="start-btn" id="adaptiveStartBtn">Start weak-spot practice</button>
-      </div>
 
-      <div class="mode-card">
-        <div class="k">Short session</div>
-        <h2>Drill one domain</h2>
-        <p>A short set from one exam domain or topic area, with each answer checked as you go. Fits a break.</p>
-        <div class="spacer"></div>
-        <div class="meta">pool of <span id="poolCount">2,033</span></div>
-        <div class="controls">
-          <select id="domainSelect" aria-label="Domain">
-            <option value="all">All domains (exam mix)</option>
-            <optgroup label="Exam domains (2025 outline)">
-              <option value="Scene Size-Up &amp; Safety">Scene Size-Up &amp; Safety</option>
-              <option value="Primary Assessment">Primary Assessment</option>
-              <option value="Secondary Assessment">Secondary Assessment</option>
-              <option value="Patient Treatment &amp; Transport">Patient Treatment &amp; Transport</option>
-              <option value="Operations">Operations</option>
-            </optgroup>
-            <optgroup label="Topic areas">
-              <option value="system:Assessment">Assessment</option>
-              <option value="system:Airway &amp; Respiratory">Airway &amp; Respiratory</option>
-              <option value="system:Cardiac &amp; Medical">Cardiac &amp; Medical</option>
-              <option value="system:Trauma">Trauma</option>
-              <option value="system:OB/Peds &amp; Special Populations">OB/Peds &amp; Special Populations</option>
-              <option value="system:EMS Operations">EMS Operations</option>
-            </optgroup>
-          </select>
-          <select id="domainLength" aria-label="Drill length">
-            <option value="10">10 questions</option>
-            <option value="20" selected>20 questions</option>
-            <option value="30">30 questions</option>
-          </select>
-          <select id="difficultySelect" aria-label="Difficulty">
-            <option value="all">All levels</option>
-            <option value="easy">Easy only</option>
-            <option value="medium">Medium only</option>
-            <option value="hard">Hard only</option>
-            <option value="expert">Expert only</option>
-          </select>
+        <!-- One builder (docs/course-shell.md, W-C): pick a mode, a topic, a
+             length, Start. Each mode keeps its own engine button
+             (adaptiveStartBtn, domainStartBtn, reviewBtn, flaggedReviewBtn);
+             nremt-practice.js shows the one that matches the chosen mode. -->
+        <form class="cx-card cx-builder" id="nrBuilder" novalidate aria-label="Build a practice set" onsubmit="return false">
+          <fieldset class="cx-step">
+            <legend><span class="cx-step-n" aria-hidden="true">1</span>What do you want to practice?</legend>
+            <div class="cx-choices">
+              <label class="cx-choice"><input type="radio" name="nrMode" value="weak" checked><span><b>Weak spots</b><span>Weighted toward what you miss; retargets after every question.</span></span></label>
+              <label class="cx-choice"><input type="radio" name="nrMode" value="domain"><span><b>One domain or area</b><span>A short set from one exam domain or topic area.</span></span></label>
+              <label class="cx-choice"><input type="radio" name="nrMode" value="missed"><span><b>Questions I missed</b><span><span id="missedCount">0</span> waiting until you get them right.</span></span></label>
+              <label class="cx-choice"><input type="radio" name="nrMode" value="flagged"><span><b>Flagged questions</b><span><span id="flaggedCount">0</span> you marked to come back to.</span></span></label>
+            </div>
+          </fieldset>
+
+          <div class="cx-step" data-nr-step="topic">
+            <h2 class="cx-step-h"><span class="cx-step-n" aria-hidden="true">2</span>Which topic?</h2>
+            <div class="cx-fields">
+              <label class="cx-field"><span>Domain or area</span>
+                <select id="domainSelect">
+                  <option value="all">All domains (exam mix)</option>
+                  <optgroup label="Exam domains (2025 outline)">
+                    <option value="Scene Size-Up &amp; Safety">Scene Size-Up &amp; Safety</option>
+                    <option value="Primary Assessment">Primary Assessment</option>
+                    <option value="Secondary Assessment">Secondary Assessment</option>
+                    <option value="Patient Treatment &amp; Transport">Patient Treatment &amp; Transport</option>
+                    <option value="Operations">Operations</option>
+                  </optgroup>
+                  <optgroup label="Topic areas">
+                    <option value="system:Assessment">Assessment</option>
+                    <option value="system:Airway &amp; Respiratory">Airway &amp; Respiratory</option>
+                    <option value="system:Cardiac &amp; Medical">Cardiac &amp; Medical</option>
+                    <option value="system:Trauma">Trauma</option>
+                    <option value="system:OB/Peds &amp; Special Populations">OB/Peds &amp; Special Populations</option>
+                    <option value="system:EMS Operations">EMS Operations</option>
+                  </optgroup>
+                </select>
+              </label>
+              <label class="cx-field"><span>Difficulty</span>
+                <select id="difficultySelect">
+                  <option value="all">All levels</option>
+                  <option value="easy">Easy only</option>
+                  <option value="medium">Medium only</option>
+                  <option value="hard">Hard only</option>
+                  <option value="expert">Expert only</option>
+                </select>
+              </label>
+            </div>
+            <p class="cx-avail">Pool of <span id="poolCount">2,033</span> questions. <button type="button" class="link-quiet" id="flashcardBtn">Flip through this set as cards</button></p>
+          </div>
+          <div class="cx-step" data-nr-step="weak" hidden>
+            <h2 class="cx-step-h"><span class="cx-step-n" aria-hidden="true">2</span>Where you are weakest</h2>
+            <div id="weakDomainsPanel"></div>
+          </div>
+
+          <fieldset class="cx-step" data-nr-step="count">
+            <legend><span class="cx-step-n" aria-hidden="true">3</span>How many questions?</legend>
+            <div class="cx-pills" id="nrCounts">
+              <label class="cx-pill"><input type="radio" name="nrCount" value="10"><span>10</span></label>
+              <label class="cx-pill"><input type="radio" name="nrCount" value="15"><span>15</span></label>
+              <label class="cx-pill"><input type="radio" name="nrCount" value="20" checked><span>20</span></label>
+              <label class="cx-pill"><input type="radio" name="nrCount" value="30"><span>30</span></label>
+              <label class="cx-pill"><input type="radio" name="nrCount" value="50"><span>50</span></label>
+            </div>
+            <!-- The engine's length pickers (capped to today's free allowance
+                 by capLengthPickers); the pills drive them. -->
+            <select id="adaptiveLength" hidden aria-hidden="true" tabindex="-1">
+              <option value="15">15</option><option value="20" selected>20</option><option value="30">30</option><option value="50">50</option>
+            </select>
+            <select id="domainLength" hidden aria-hidden="true" tabindex="-1">
+              <option value="10">10</option><option value="20" selected>20</option><option value="30">30</option>
+            </select>
+          </fieldset>
+
+          <div class="cx-start">
+            <p class="cx-sum" aria-live="polite"><span id="nrSum">Weak-spot practice</span><small>Feedback after every answer. Misses go to your review queue.</small></p>
+            <button type="button" class="btn-press" id="adaptiveStartBtn">Start practice</button>
+            <button type="button" class="btn-press" id="domainStartBtn" hidden>Start practice</button>
+            <button type="button" class="btn-press" id="reviewBtn" hidden>Start practice</button>
+            <button type="button" class="btn-press" id="flaggedReviewBtn" hidden>Start practice</button>
+          </div>
+          <div id="premiumNotice" class="premium-slot"></div>
+        </form>
+
+        <div class="intro-row">
+          <div id="readinessCard"></div>
         </div>
-        <button class="start-btn" id="domainStartBtn">Start domain quiz</button>
-        <button class="review-btn" id="flashcardBtn" style="margin-top:10px">Flip through as cards</button>
       </div>
 
-      <a class="mode-card mode-card--link" href="flashcards.html">
-        <div class="k">Flashcards</div>
-        <h2>Spaced flashcards</h2>
-        <p>Short facts on cards, each one coming back just before you would forget it.</p>
-        <div class="spacer"></div>
-        <span class="go">Open flashcards &rarr;</span>
-      </a>
-
-    </div>
-
-    <div class="review-row" id="reviewRow" hidden>
-      <button class="review-btn" id="reviewBtn">
-        <span>Review missed</span>
-        <span class="count" id="missedCount">0</span>
-      </button>
-      <button class="review-btn" id="flaggedReviewBtn">
-        <span>Review flagged</span>
-        <span class="count" id="flaggedCount">0</span>
-      </button>
-    </div>
-
-    <div class="runner-links">
-      <a class="runner-link" href="review.html"><b>Review</b><span><span data-due="all">0</span> due for another look</span></a>
-      <a class="runner-link" href="exams.html"><b>Exams</b><span>The timed 100-question exam</span></a>
-    </div>
-
-    <div class="intro-row">
-      <div id="readinessCard"></div>
-      <div id="weakDomainsPanel"></div>
+      <aside class="cx-rail" aria-labelledby="cx-rail-h">
+        <h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>
+        <div class="cx-stats" id="nrStats"></div>
+        <div class="cx-card cx-qcard">
+          <p class="cx-kicker">Review queue</p>
+          <h3 data-due-state="ready" hidden><span data-due="all">0</span> due for another look</h3>
+          <h3 data-due-state="empty-new">Your queue is clear</h3>
+          <h3 data-due-state="empty-done" hidden>Your queue is clear</h3>
+          <p>Questions you answer come back on a spacing schedule, so they stick.</p>
+          <a class="cx-more" href="review.html">Open review <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <nav class="cx-links" aria-label="More ways to study">
+          <a class="cx-link" href="flashcards.html"><b>Flashcards<small>Short facts on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
+          <a class="cx-link" href="exams.html"><b>Exams<small>The timed 100-question exam.</small></b><span aria-hidden="true">&rarr;</span></a>
+        </nav>
+        <div id="streakWidget"></div>
+      </aside>
     </div>
   </div>
 
+</main>
+<div class="xshell cx-foot">
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
@@ -216,6 +236,8 @@
 </div>
 
 <script src="practice-engine.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
+<script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

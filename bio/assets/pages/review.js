@@ -18,7 +18,7 @@
   var BASE = window.ApBioBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.bio-hero');
+  var hero = document.querySelector('.page-head, .bio-hero');
   var CUR = window.ApBioCurriculum || { topics: [], units: [] };
   var Core = window.ApBioCore, Q = window.ApBioQuestions;
   var MIN = 60000, DAY = 86400000, SESSION_CAP = 20;
@@ -65,30 +65,49 @@
   }
   function allowance(){
     var a = Core.quota ? Core.quota() : null;
-    return a && a.limit !== Infinity ? '<p class="bio-small bio-pr-allow">Free: Units 1 and 2 are unlimited. Questions from other units: <b>' + a.left + ' of ' + a.limit + '</b> left today, shared with practice.' + (Core.badge ? Core.badge() : '') + '</p>' : '';
+    return a && a.limit !== Infinity ? LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with practice. Units 1 and 2 are unlimited.' + (Core.badge ? Core.badge() : '')) : '';
   }
 
   function renderHome(){
     view('home');
     var items = dueItems(), qs = items.filter(function(x){ return x.kind === 'q'; }), tools = items.filter(function(x){ return x.kind === 'tool'; }), up = upcoming();
-    var html = '<div class="bio-rv-head"><div class="bio-rv-due"><span class="bio-rv-due-n">' + items.length + '</span><span class="bio-rv-due-t">' + (items.length === 1 ? 'item due now' : 'items due now') + '</span></div>';
+    var main;
     if(!items.length){
-      app.innerHTML = html + '<div class="bio-rv-empty"><h2>You are all caught up.</h2>' +
-        (up.next ? '<p>The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '') + '</p>'
-          : '<p>Nothing is scheduled. Every question you miss, in a lesson, in practice, in an exam or in a tool, lands here and comes back just before you would forget it.</p>') +
-        '<p class="bio-rv-links"><a class="btn-press" href="' + BASE + 'practice.html">Practice</a> <a class="btn-outline" href="' + BASE + 'learn.html">Next lesson</a> <a class="btn-outline" href="' + BASE + 'flashcards.html">Flashcards</a></p></div></div>';
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'You are all caught up',
+        p: up.next ? 'The next item comes back <b>' + esc(when(up.next)) + '</b>.' + (up.week > 1 ? ' ' + plural(up.week, 'item') + ' come back within the week.' : '')
+          : 'Nothing is scheduled. Every question you miss, in a lesson, in practice, in an exam or in a tool, lands here and comes back just before you would forget it.',
+        actions: [{ href: BASE + 'practice.html', label: 'Practice', primary: true }, { href: BASE + 'learn.html', label: 'Next lesson' }, { href: BASE + 'flashcards.html', label: 'Flashcards' }] }) + '</section>';
+    } else {
+      var acts = [];
+      if(qs.length) acts.push({ act: 'n', attrs: ' data-n="' + Math.min(SESSION_CAP, qs.length) + '"', label: qs.length > SESSION_CAP ? 'Review the ' + SESSION_CAP + ' oldest' : 'Start review', primary: true });
+      if(qs.length > SESSION_CAP) acts.push({ act: 'n', attrs: ' data-n="' + qs.length + '"', label: 'Review all ' + qs.length });
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: items.length, unit: items.length === 1 ? 'item due' : 'items due',
+        h: (qs.length ? plural(qs.length, 'question') + ' to answer here' : '') + (qs.length && tools.length ? ', and ' : '') + (tools.length ? plural(tools.length, 'tool item') + ' to redo in ' + (tools.length === 1 ? 'its tool' : 'their tools') : ''),
+        p: 'Oldest first. A right answer sends an item further out; a miss brings it back in ten minutes.' + (up.today ? ' ' + plural(up.today, 'more item') + ' come due later today.' : ''),
+        actions: acts }) + allowance() + '</section>' +
+        (tools.length ? '<section><h2 class="cx-h2">Due in the tools</h2><ul class="cx-list bio-rv-tools">' + tools.map(toolLine).join('') + '</ul></section>' : '');
+    }
+    var d = Core.load(), answered = 0;
+    Object.keys(d.q || {}).forEach(function(k){ if(d.q[k].n) answered++; });
+    var miss = (Core.missed ? Core.missed() : []).length;
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' + main + '</div>' +
+      LevlStudy.rail({
+        stats: [
+          ['Answered', answered, answered ? 'questions and tool items' : 'nothing yet'],
+          ['Due for review', items.length, items.length ? 'waiting in your queue' : 'nothing due now', items.length ? 'is-due' : ''],
+          ['To fix', miss, miss ? 'missed, not yet right' : 'no open misses'],
+          ['This week', up.week, up.week ? 'coming back in 7 days' : 'nothing scheduled']
+        ],
+        links: [
+          { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Glossary terms on spaced cards.' },
+          { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit tests and full practice exams.' }
+        ]
+      }) + '</div>';
+    if(!items.length){
       clearTimeout(refreshTimer);
       if(up.next && up.next - Date.now() < 60 * MIN) refreshTimer = setTimeout(function(){ if(app.getAttribute('data-view') === 'home') renderHome(); }, up.next - Date.now() + 1000);
       return;
     }
-    html += '<div class="bio-rv-intro"><p>' + (qs.length ? plural(qs.length, 'question') + ' to answer here' : '') + (qs.length && tools.length ? ', and ' : '') +
-      (tools.length ? plural(tools.length, 'tool item') + ' to redo in ' + (tools.length === 1 ? 'its tool' : 'their tools') : '') + '.</p>' +
-      '<p class="bio-small">Oldest first. A right answer sends an item further out; a miss brings it back in ten minutes.' + (up.today ? ' ' + plural(up.today, 'more item') + ' come due later today.' : '') + '</p>' +
-      '<div class="bio-rv-actions">' + (qs.length ? '<button type="button" class="btn-press" data-n="' + Math.min(SESSION_CAP, qs.length) + '">' + (qs.length > SESSION_CAP ? 'Review the ' + SESSION_CAP + ' oldest' : 'Start review') + '</button>' : '') +
-      (qs.length > SESSION_CAP ? '<button type="button" class="btn-outline" data-n="' + qs.length + '">Review all ' + qs.length + '</button>' : '') + '</div></div></div>';
-    if(tools.length) html += '<h2 class="bio-rv-h">Due in the tools</h2><ul class="bio-rv-tools">' + tools.map(toolLine).join('') + '</ul>';
-    html += allowance() + '<p class="bio-small bio-rv-fc">Glossary terms are on spaced <a href="' + BASE + 'flashcards.html">flashcards</a>.</p>';
-    app.innerHTML = html;
     app.querySelectorAll('[data-n]').forEach(function(b){ b.addEventListener('click', function(){ start(+b.getAttribute('data-n')); }); });
   }
 
@@ -106,9 +125,9 @@
   function begin(list){
     session = { list: list, i: 0, answered: 0, right: 0, missed: [], done: false };
     view('session');
-    app.innerHTML = '<div class="bio-rv-session"><div class="bio-pr-bar"><span class="bio-pr-label">Spaced review</span><span class="bio-pr-count-l" aria-live="polite"></span>' +
-      '<button type="button" class="btn-outline bio-rv-quit">End review</button></div><div class="track thin bio-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
-      '<h2 class="sr-only">Question</h2><div class="bio-pr-stage"></div><div class="bio-pr-after" hidden></div></div>';
+    app.innerHTML = '<div class="cx-session bio-rv-session"><div class="cx-sbar"><span class="cx-sbar-t">Spaced review</span><span class="cx-sbar-n bio-pr-count-l" aria-live="polite"></span>' +
+      '<button type="button" class="cx-end bio-rv-quit">End review</button></div><div class="cx-progress bio-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
+      '<h2 class="sr-only">Question</h2><div class="bio-pr-stage"></div><div class="cx-next-row bio-pr-after" hidden></div></div>';
     app.querySelector('.bio-rv-quit').addEventListener('click', finish);
     next();
   }
@@ -123,21 +142,21 @@
     stage.innerHTML = ''; after.innerHTML = ''; after.hidden = true;
     paintProgress(session.i);
     if(it.kind === 'tool'){
-      stage.innerHTML = '<div class="bio-q bio-rv-toolcard"><p class="bio-q-stem" tabindex="-1">This item is from <b>' + esc(it.tool.name) + '</b>.</p><ul class="bio-rv-tools">' + toolLine(it) + '</ul><p class="bio-small">It stays in your queue until you answer it again in the tool.</p></div>';
+      stage.innerHTML = '<div class="bio-q cx-q bio-rv-toolcard"><p class="bio-q-stem" tabindex="-1">This item is from <b>' + esc(it.tool.name) + '</b>.</p><ul class="cx-list bio-rv-tools">' + toolLine(it) + '</ul><p class="bio-small">It stays in your queue until you answer it again in the tool.</p></div>';
       showNext(after, 'Skip for now');
     } else if(!Core.serve(it.q)){
       var j = session.i + 1;
       while(j < session.list.length && !(session.list[j].kind === 'tool' || Core.serve(session.list[j].q))) j++;
       if(j < session.list.length){ session.i = j; return next(); }
       stage.innerHTML = Core.gate('daily-limit', 'review-limit', it.q.topic);
-      after.innerHTML = '<button type="button" class="btn-press bio-pr-next">' + (session.answered ? 'See how you did' : 'Back to the queue') + '</button>';
+      after.innerHTML = '<button type="button" class="btn-press cx-next bio-pr-next">' + (session.answered ? 'See how you did' : 'Back to the queue') + '</button>';
       after.hidden = false;
       after.querySelector('.bio-pr-next').addEventListener('click', function(){ if(session.answered) finish(); else { session.done = true; renderHome(); } });
     } else {
       Q.hydrate(stage, [it.q], { onAnswer: function(res){
         session.answered++; if(res.correct) session.right++; else session.missed.push(it.q);
         var t = TOPIC[it.q.topic];
-        after.insertAdjacentHTML('afterbegin', '<p class="bio-pr-from">' + (res.correct ? 'Scheduled further out. ' : 'Back in ten minutes. ') + (t && t.built ? 'From <a href="' + BASE + 'lessons/' + it.q.topic + '.html">' + esc(t.title) + '</a>.' : '') + '</p>');
+        after.insertAdjacentHTML('afterbegin', '<p class="cx-from bio-pr-from">' + (res.correct ? 'Scheduled further out. ' : 'Back in ten minutes. ') + (t && t.built ? 'From <a href="' + BASE + 'lessons/' + it.q.topic + '.html">' + esc(t.title) + '</a>.' : '') + '</p>');
         showNext(after);
         app.querySelector('.bio-pr-track i').style.width = Math.round((session.i + 1) / session.list.length * 100) + '%';
       } });
@@ -148,7 +167,7 @@
   }
   function showNext(after, label){
     var last = session.i + 1 >= session.list.length;
-    after.insertAdjacentHTML('beforeend', '<button type="button" class="btn-press bio-pr-next">' + (label || (last ? 'Finish' : 'Next')) + '</button>');
+    after.insertAdjacentHTML('beforeend', '<button type="button" class="btn-press cx-next bio-pr-next">' + (label || (last ? 'Finish' : 'Next')) + '</button>');
     after.hidden = false;
     var b = after.querySelector('.bio-pr-next');
     b.addEventListener('click', function(){ session.i++; next(); });

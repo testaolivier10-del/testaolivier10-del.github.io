@@ -61,7 +61,10 @@ const PRECACHE_URLS = [
   'assets/chime.js',
   'assets/icon.svg',
   'assets/exam-date.js',
-  'assets/flashcards.css',
+  // The shared course shell (docs/course-shell.md): every study page loads these.
+  'assets/course/base.css',
+  'assets/course/study.css',
+  'assets/course/study.js',
   // Fetched on demand (site-chrome.js, LevlLazy) at the end of an exam or a
   // chapter, which is exactly when a student on a train has no signal.
   'assets/share.js',
@@ -95,6 +98,7 @@ COURSE_URLS.nremt = [
   'nremt/exams.html',
   'nremt/practice-engine.js',
   'nremt/practice.css',
+  'nremt/practice-study.js',
   'nremt/flashcards.html',
   'nremt/assets/flashcards-page.js',
   'nremt/assets/premium-gates.js',

@@ -111,13 +111,19 @@ const SHELL_BUDGETS = [
      fourth course in every generated course list, premium.js's fixed-date
      pass and per-course on-sale switch, and the URL-safe course key.
      Measured 281.4 KB with the engagement pass. */
-  ['site', 282],
+  /* 282 -> 290 for the course shell (docs/course-shell.md, W-C): every study
+     page in every course now loads assets/course/base.css (2.2 KB gzipped),
+     study.css (4.9 KB, which absorbed assets/flashcards.css, -1.9 KB) and
+     study.js (1.6 KB), the one copy of the pickers, rail, empty states and
+     question card that four per-course copies used to carry. Measured 289.6 KB. */
+  ['site', 290],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
      the same place ochem's deck script is counted. No other NREMT page got
      heavier. */
-  ['nremt', 11],
+  /* 11 -> 11.4: the flashcard deck's shared deck card and by-topic list (W-C). */
+  ['nremt', 11.4],
   /* 92 -> 96. This is a first-paint cost on EVERY ochem page, so it is worth
      saying what moved rather than just moving the number: the course went from
      64 topics to 83 across four new chapters, and three shared files grew with
@@ -211,7 +217,8 @@ const SHELL_BUDGETS = [
      clickable atom (ochem-nav.js), hit areas on practice atoms, the phone
      lesson rail and reserved card space (ochem.css), rail labels from step
      titles (step-back.js). Measured 109.9 KB. */
-  ['ochem', 110.5],
+  /* 110.5 -> 111: shared classes in session-runner.js and the free line (W-C). */
+  ['ochem', 111],
   /* The A&P course runtime (anp-core, questions, nav, glossary tooltips,
      anp.css) plus whichever app or tool script the page loads. Measured
      37.3 KB at the Phase 1 pilot. 44 -> 46 (audit 2026-10): the lazy bank
@@ -284,7 +291,9 @@ const BUDGETS = [
      DOMAIN_TARGETS so later tagging stays consistent (about 0.2 KB). */
   /* 45 -> 45.2 for the engagement pass: the one-line share and next-step
      hooks on the results screen. Measured 45.1 KB. */
-  ['nremt/practice.html', 45.2],
+  // 45.2 -> 48: the shared step builder and "Your numbers" rail, with
+  // nremt/practice-study.js mapping it onto the engine's controls (W-C).
+  ['nremt/practice.html', 48],
 
   // Long reading pages. study-notes.html was forty chapters of prose in one
   // file — 172 KB gzipped, every reader downloading forty chapters to read
@@ -364,7 +373,8 @@ const BUDGETS = [
   ['ochem/flashcards.html', 3],
   /* 5 -> 3 above: the deck's card styles moved out of the page into
      /assets/flashcards.css (1.9 KB gzipped, counted in the site shell) so the
-     NREMT deck can share them. Its page carries only the deck-view panels
+     NREMT deck can share them; since the course shell (W-C) they are part of
+     /assets/course/study.css with the other study-page styles. Its page carries only the deck-view panels
      ochem gets from ochem.css; the scheduler it shares is in ochem/assets. */
   ['nremt/flashcards.html', 3],
   // The glossary page is a shell plus every term's name (the definitions are
@@ -587,7 +597,8 @@ const DATA_BUDGETS = [
      the engines, not the shell), and nothing else would measure these.
      Measured 3.4 and 10.0 KB gzipped, about a tenth added. */
   ['ochem/assets/exam-core.js', 4],
-  ['ochem/assets/exams-page.js', 11],
+  // 11 -> 12: the exam setup now carries the shared rail (W-C).
+  ['ochem/assets/exams-page.js', 12],
   /* The flashcard deck, generated from the notes' tables by
      scripts/build-flashcards.mjs. Fetched by flashcards.html after it paints,
      alongside concept-teach.json. Measured at 25.3 KB for 526 cards — about

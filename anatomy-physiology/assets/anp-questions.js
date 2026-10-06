@@ -46,6 +46,8 @@
   // The colour's meaning in words, for a screen reader.
   function markOpt(x, text){ x.insertAdjacentHTML('beforeend', '<span class="sr-only"> (' + text + ')</span>'); }
 
+  // Practice, Review and Exams load the shared study styles (docs/course-shell.md).
+  function studyPage(){ return !!document.querySelector('.cx-study'); }
   function render(q, host, opts){
     opts = opts || {};
     var reveal = opts.reveal !== false && !opts.exam;
@@ -71,12 +73,12 @@
       return '<picture><source type="image/avif" srcset="' + esc(set.join(', ')) + '" sizes="(max-width: 760px) 100vw, 720px">' + img + '</picture>';
     }
     var wrap = document.createElement('div');
-    wrap.className = 'anp-q';
+    wrap.className = 'anp-q' + (studyPage() ? ' cx-q' : '');
     wrap.setAttribute('data-qid', q.id);
-    var stem = '<p class="anp-q-stem">' + (opts.n ? '<span class="anp-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>';
+    var stem = '<p class="anp-q-stem cx-q-stem">' + (opts.n ? '<span class="anp-q-n">' + opts.n + '.</span> ' : '') + html(q.q) + '</p>';
     var fig = q.fig ? '<div class="anp-q-fig anp-figimg">' + figPicture(q.fig) +
       figMarks(q.fig) + '</div>' + (q.fig.credit ? '<p class="anp-credit anp-q-credit">' + esc(q.fig.credit) + '</p>' : '') : '';
-    wrap.innerHTML = stem + fig + '<div class="anp-q-body"></div><div class="anp-q-feedback" aria-live="polite"></div><div class="anp-q-actions"></div>';
+    wrap.innerHTML = stem + fig + '<div class="anp-q-body"></div><div class="anp-q-feedback cx-fb" aria-live="polite"></div><div class="anp-q-actions"></div>';
     var body = wrap.querySelector('.anp-q-body');
     var fb = wrap.querySelector('.anp-q-feedback');
     var actions = wrap.querySelector('.anp-q-actions');
@@ -88,10 +90,16 @@
       var result = { correct: correct, score: score, q: q, pick: pick };
       if(opts.record !== false && window.AnpCore) window.AnpCore.record(q.id, correct, { topic: q.topic, core: q.core, level: q.level, diff: q.diff, src: 'q' });
       if(!opts.exam){
-        fb.innerHTML = '<p><span class="anp-verdict ' + (correct ? 'ok' : 'no') + '">' +
-          (correct ? 'Correct.' : score > 0 && part ? part : score > 0 ? 'Partly right.' : 'Not quite.') + '</span> ' +
+        var verdict = correct ? 'Correct.' : score > 0 && part ? part : score > 0 ? 'Partly right.' : 'Not quite.';
+        // On the study pages, the shared feedback box (assets/course/study.css):
+        // the verdict as its own line with an icon, then the explanation.
+        fb.innerHTML = studyPage()
+          ? '<p class="cx-fb-head">' + verdict + '</p>' + (q.why && q.why.correct ? '<p class="cx-explain">' + html(q.why.correct) + '</p>' : '') + (detailHtml || '') +
+            (!correct && opts.record !== false ? '<p class="anp-small">Added to your review queue.</p>' : '')
+          : '<p><span class="anp-verdict ' + (correct ? 'ok' : 'no') + '">' + verdict + '</span> ' +
           (q.why && q.why.correct ? html(q.why.correct) : '') + '</p>' + (detailHtml || '') +
           (!correct && opts.record !== false ? '<p class="anp-small">Added to your review queue.</p>' : '');
+        fb.classList.toggle('is-right', !!correct); fb.classList.toggle('is-wrong', !correct);
         if(window.LevlSound && window.LevlSound.answer) try{ window.LevlSound.answer(correct); }catch(e){}
       }
       actions.innerHTML = report(q);
@@ -112,8 +120,8 @@
       if(type !== 'error') items = shuffle(items);
       // One answer, so a radio group like NREMT's, not toggle buttons
       // (audit 2026-10): arrows move between options, Enter or Space answers.
-      body.innerHTML = '<div class="anp-opt-btns" role="radiogroup" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" role="radio" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
+      body.innerHTML = '<div class="anp-opt-btns cx-opts" role="radiogroup" aria-label="Answer options">' + items.map(function(it){
+        return '<button type="button" class="anp-opt cx-opt" role="radio" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
       body.querySelectorAll('.anp-opt').forEach(function(b){
@@ -143,8 +151,8 @@
        right only when the whole set is right. */
     function multi(){
       var items = shuffle((q.options || []).map(function(o, i){ return { o: o, i: i }; }));
-      body.innerHTML = '<p class="anp-small">Select all that apply.</p><div class="anp-opt-btns" role="group" aria-label="Answer options">' + items.map(function(it){
-        return '<button type="button" class="anp-opt" role="checkbox" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
+      body.innerHTML = '<p class="anp-small">Select all that apply.</p><div class="anp-opt-btns cx-opts" role="group" aria-label="Answer options">' + items.map(function(it){
+        return '<button type="button" class="anp-opt cx-opt" role="checkbox" aria-checked="false" data-i="' + it.i + '">' + html(it.o) + '</button>';
       }).join('') + '</div>';
       arrowGroup(body.querySelector('.anp-opt-btns'));
       // Nothing picked is not an answer: Check waits for at least one pick.

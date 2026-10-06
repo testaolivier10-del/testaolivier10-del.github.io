@@ -229,110 +229,84 @@
       .filter(function(p){ return p.attempts > 0 && !p.isDue && p.due && leechIds.indexOf(p.id) === -1; })
       .sort(function(a, b){ return a.due - b.due; });
     var everPracticed = M.allProfiles().some(function(p){ return p.attempts > 0; });
-    var html = '';
 
+    var acts3 = [{ href: 'practice.html', label: 'Practice', primary: true }, { href: 'learn.html', label: 'Next lesson' }, { href: 'flashcards.html', label: 'Flashcards' }];
+    var main = '';
     if(!everPracticed){
-      homeEl.innerHTML =
-        '<div class="empty-panel">' +
-          '<h2>Nothing scheduled yet</h2>' +
-          '<p>Fills in as you practice. Each right answer pushes a concept further out; a wrong one brings it back.</p>' +
-          '<div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">' +
-            '<a href="practice.html" class="btn-press sm">Start practicing</a>' +
-            '<a href="learn.html" class="btn-press alt sm">Open the textbook</a>' +
-            '<a href="flashcards.html" class="btn-press alt sm">Flashcards</a>' +
-          '</div>' +
-        '</div>';
-      show('home');
-      return;
-    }
-
-    if(q.today.length){
-      html += '<div class="rec-card">' +
-        '<div class="k">Due today</div>' +
-        '<h2>' + esc(plural(q.today.length, 'concept') + ' to clear') + '</h2>' +
-        '<p>' + esc(q.deferred
-          ? plural(q.dueTotal, 'concept') + ' are actually due, but the daily cap is ' + M.DAILY_REVIEW_CAP +
-            ' — the ' + q.today.length + ' most overdue are today\'s batch; the other ' + q.deferred + ' lead tomorrow\'s.'
-          : 'Each comes back inside a fresh problem, not the same card.') +
-        '</p>' +
-        '<div class="actions"><button class="btn-press" id="startReview">Review ' +
-          plural(q.today.length, 'concept') + '</button></div>' +
-      '</div>' +
-      // The batch can be twenty concepts; listing all of them buries
-      // everything below it. Show the most overdue few and count the rest.
-      '<div class="module-card">' + conceptRows(q.today.slice(0, 8), overdueLabel) +
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'Nothing scheduled yet',
+        p: 'Fills in as you practice. Each right answer pushes a concept further out; a wrong one brings it back.', actions: acts3 }) + '</section>';
+    } else if(q.today.length){
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: q.today.length, unit: 'due today',
+        h: plural(q.today.length, 'concept') + ' to clear',
+        p: q.deferred
+          ? esc(plural(q.dueTotal, 'concept') + ' are actually due, but the daily cap is ' + M.DAILY_REVIEW_CAP +
+            ': the ' + q.today.length + ' most overdue are today\'s batch; the other ' + q.deferred + ' lead tomorrow\'s.')
+          : 'Each comes back inside a fresh problem, not the same card.',
+        actions: [{ act: 'start', attrs: ' id="startReview"', label: 'Review ' + plural(q.today.length, 'concept'), primary: true }] }) +
+        // Without Premium: what is left of today's shared question allowance.
+        (window.OchemPremium ? window.OchemPremium.quotaNote() : '') +
+        '</section>' +
+        // The batch can be twenty concepts; listing all of them buries
+        // everything below it. Show the most overdue few and count the rest.
+        '<section><h2 class="cx-h2">Today\'s batch</h2><div class="module-card">' + conceptRows(q.today.slice(0, 8), overdueLabel) +
         (q.today.length > 8
           ? '<div class="concept-row"><span class="name" style="color:var(--muted);font-weight:700;">' +
             esc('+ ' + (q.today.length - 8) + ' more in this batch') + '</span></div>'
-          : '') +
-      '</div>';
-      // Without Premium: what is left of today's shared question allowance.
-      if(window.OchemPremium) html += window.OchemPremium.quotaNote();
+          : '') + '</div></section>';
     } else if(q.capReached){
-      html += '<div class="rec-card">' +
-        '<div class="k">Done for today</div>' +
-        '<h2>' + esc('You\'ve cleared today\'s ' + M.DAILY_REVIEW_CAP + '.') + '</h2>' +
-        '<p>' + esc(plural(q.dueTotal, 'concept') + ' are still due, held back on purpose. Spacing over days is the point.') + '</p>' +
-        '<div class="actions"><a class="btn-press alt" href="practice.html">Practice something else</a></div>' +
-      '</div>';
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'left today', h: 'You have cleared today\'s ' + M.DAILY_REVIEW_CAP,
+        p: esc(plural(q.dueTotal, 'concept') + ' are still due, held back on purpose. Spacing over days is the point.'), actions: acts3 }) + '</section>';
     } else {
-      html += '<div class="empty-panel" style="margin-bottom:22px;">' +
-        '<h2>Nothing due today</h2>' +
-        '<p>You are caught up. Adaptive practice fills the gaps meanwhile.</p>' +
-        '<div style="margin-top:18px"><a href="practice.html" class="btn-press alt sm">Adaptive practice</a></div>' +
-      '</div>';
+      main = '<section class="cx-card cx-queue">' + LevlStudy.empty({ num: 0, unit: 'due now', h: 'You are all caught up',
+        p: 'Nothing is due today. Adaptive practice fills the gaps meanwhile.', actions: acts3 }) + '</section>';
     }
+    var html = main;
 
     /* Leeches. A concept that keeps failing does not need another question,
        so it is held out of the queue and shown here with a route back to the
        lesson instead. Without this the queue accumulates a permanent core of
        things you always get wrong and stops being clearable. */
     if(q.leeches.length){
-      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Go back to the lesson</div>' +
-        '<div class="next-up" style="margin-bottom:12px;">' +
-        esc('Failed too often for drilling to help. Out of the queue until you re-read them.') +
-        '</div>' +
+      html += '<section><h2 class="cx-h2">Go back to the lesson</h2>' +
+        '<p class="cx-small" style="margin:-4px 0 12px;">' + esc('Failed too often for drilling to help. Out of the queue until you re-read them.') + '</p>' +
         '<div class="module-card">' + conceptRows(q.leeches, function(p){
           return (p.attempts - p.correct) + ' wrong of ' + p.attempts;
-        }, { lesson: true }) + '</div>';
+        }, { lesson: true }) + '</div></section>';
     }
 
     if(scheduled.length){
-      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Coming back later</div>' +
-        '<div class="module-card">' + conceptRows(scheduled.slice(0, 15), upcomingLabel) + '</div>';
-      if(scheduled.length > 15){
-        html += '<p style="margin-top:10px;font:700 12.5px var(--font-ui);color:var(--muted);">' +
-          esc('+ ' + plural(scheduled.length - 15, 'more concept') + ' scheduled further out.') + '</p>';
-      }
+      html += '<section><h2 class="cx-h2">Coming back later</h2>' +
+        '<div class="module-card">' + conceptRows(scheduled.slice(0, 15), upcomingLabel) + '</div>' +
+        (scheduled.length > 15 ? '<p class="cx-small">' + esc('+ ' + plural(scheduled.length - 15, 'more concept') + ' scheduled further out.') + '</p>' : '') +
+        '</section>';
     }
 
-    /* Flags are practice's feature, not review's — but the queue is where
-       people notice they are carrying a backlog of them, so the pointer
-       belongs here. Never an auto-queue: a flag is cleared by the student,
-       not by getting the question right. */
+    /* Flags and unresolved misses are practice's modes, not review's, but the
+       queue is where people notice the backlog, so the pointers belong here. */
     var flagged = window.OchemFlags ? window.OchemFlags.questions() : [];
-    if(flagged.length){
-      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Flagged by you</div>' +
-        '<div class="next-up">' +
-        esc(plural(flagged.length, 'question') + ' you flagged to come back to, right or wrong. ') +
-        'They stay until you unflag them. <a href="practice.html?mode=flagged">Work through them</a>.' +
-      '</div>';
-    }
-
     var mistakes = M.mistakes({ limit: 50 });
-    if(mistakes.length){
-      html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Still unresolved</div>' +
-        '<div class="next-up">' +
-        esc(plural(mistakes.length, 'question') + ' you missed and have not answered correctly since. ') +
-        'They stay in rotation until you do. <a href="practice.html?mode=mistakes">Work through them</a>.' +
-      '</div>';
+    if(flagged.length || mistakes.length){
+      html += '<section><h2 class="cx-h2">Also waiting</h2><ul class="cx-list">' +
+        (mistakes.length ? '<li><div>' + esc(plural(mistakes.length, 'question')) + ' you missed<span>They stay in rotation until you answer them correctly.</span></div><a class="btn-outline" href="practice.html?mode=mistakes">Work through them</a></li>' : '') +
+        (flagged.length ? '<li><div>' + esc(plural(flagged.length, 'question')) + ' you flagged<span>They stay until you unflag them.</span></div><a class="btn-outline" href="practice.html?mode=flagged">Work through them</a></li>' : '') +
+        '</ul></section>';
     }
 
-    // The other spaced queue in the course: the flashcard deck keeps its own
-    // schedule, and used to be reachable only from a tab of its own.
-    html += '<div style="font:900 11px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:26px 0 10px;">Flashcards</div>' +
-      '<div class="next-up">The facts problems lean on (pKa, IR and NMR values, reagents) on spaced cards. ' +
-      '<a href="flashcards.html">Open the flashcards</a>.</div>';
+    var answered = 0;
+    M.allProfiles().forEach(function(p){ answered += p.attempts || 0; });
+    html = '<div class="cx-body has-rail"><div class="cx-main">' + html + '</div>' +
+      LevlStudy.rail({
+        stats: [
+          ['Answered', answered, answered ? 'questions so far' : 'nothing yet'],
+          ['Due for review', q.dueTotal, q.dueTotal ? 'concepts to resurface' : 'nothing overdue', q.dueTotal ? 'is-due' : ''],
+          ['To fix', mistakes.length, mistakes.length ? 'missed, not fixed since' : 'no open misses'],
+          ['Day streak', M.streakDays(), M.streakDays() ? 'keep it going' : 'practice today to start one']
+        ],
+        links: [
+          { href: 'flashcards.html', title: 'Flashcards', sub: 'pKa, IR and NMR values and reagents.' },
+          { href: 'exams.html', title: 'Exams', sub: 'Timed tests on a chapter, a range or the course.' }
+        ]
+      }) + '</div>';
 
     homeEl.innerHTML = html;
     var start = homeEl.querySelector('#startReview');

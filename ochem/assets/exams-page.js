@@ -157,14 +157,14 @@
   }
 
   function chapterSelect(name, value, label, useN){
-    return '<label class="ex-field"><span>' + label + '</span><select name="' + name + '">' + CHAPTERS.map(function(c){
+    return '<label class="cx-field ex-field"><span>' + label + '</span><select name="' + name + '">' + CHAPTERS.map(function(c){
       var v = useN ? c.n : c.id;
       return '<option value="' + v + '"' + (String(v) === String(value) ? ' selected' : '') + '>' + esc(chLabel(c)) + '</option>';
     }).join('') + '</select></label>';
   }
   function chips(name, values, current, fmt){
     return values.map(function(v){
-      return '<label class="ex-chip"><input type="radio" name="' + name + '" value="' + v + '"' + (v === current ? ' checked' : '') + '><span>' + fmt(v) + '</span></label>';
+      return '<label class="cx-pill"><input type="radio" name="' + name + '" value="' + v + '"' + (v === current ? ' checked' : '') + '><span>' + fmt(v) + '</span></label>';
     }).join('');
   }
 
@@ -172,14 +172,14 @@
     var k = cfg.kind, html = '';
     if(k === 'chapter'){
       html = chapterSelect('chapter', cfg.chapter, 'Chapter') +
-        '<fieldset class="ex-group"><legend>Length</legend>' + chips('chLen', [20, 25], cfg.chLen, function(v){ return v + ' questions'; }) + '</fieldset>';
+        '<fieldset class="cx-group"><legend>Length</legend><div class="cx-pills">' + chips('chLen', [20, 25], cfg.chLen, function(v){ return v + ' questions'; }) + '</div></fieldset>';
     } else if(k === 'midterm'){
-      html = '<div class="ex-row">' + chapterSelect('from', cfg.from, 'From chapter', true) + chapterSelect('to', cfg.to, 'To chapter', true) + '</div>' +
-        '<fieldset class="ex-group"><legend>Length</legend>' + chips('midLen', [30, 40], cfg.midLen, function(v){ return v + ' questions'; }) + '</fieldset>';
+      html = '<div class="cx-fields">' + chapterSelect('from', cfg.from, 'From chapter', true) + chapterSelect('to', cfg.to, 'To chapter', true) + '</div>' +
+        '<fieldset class="cx-group"><legend>Length</legend><div class="cx-pills">' + chips('midLen', [30, 40], cfg.midLen, function(v){ return v + ' questions'; }) + '</div></fieldset>';
     } else {
-      html = '<p class="ex-note">Every chapter is on it, each in proportion to how many topics it has, and every chapter gets at least one question.</p>';
+      html = '<p class="cx-note ex-note">Every chapter is on it, each in proportion to how many topics it has, and every chapter gets at least one question.</p>';
     }
-    return html + '<label class="ex-field"><span>Timing</span><select name="timing">' + TIMINGS.map(function(t){
+    return html + '<label class="cx-field ex-field"><span>Timing</span><select name="timing">' + TIMINGS.map(function(t){
       return '<option value="' + t.id + '"' + (t.id === cfg.timing ? ' selected' : '') + '>' + t.name + '</option>';
     }).join('') + '</select></label>';
   }
@@ -217,6 +217,28 @@
     return G ? G.freeExam() : { unlimited: true, available: true, use: function(){ return true; } };
   }
 
+  /* The same rail as Practice and Review (assets/course/study.js). */
+  function examRail(){
+    var M = window.OchemMastery, E = window.OchemQuestionEngine;
+    if(!M || !window.LevlStudy) return '';
+    var answered = 0; M.allProfiles().forEach(function(p){ answered += p.attempts || 0; });
+    var due = E && E.reviewQueue ? E.reviewQueue().dueTotal : 0;
+    var fix = M.mistakes({ limit: 999 }).length, streak = M.streakDays();
+    return LevlStudy.rail({
+      stats: [
+        ['Answered', answered, answered ? 'questions so far' : 'nothing yet'],
+        ['Due for review', due, due ? 'concepts to resurface' : 'nothing overdue', due ? 'is-due' : ''],
+        ['To fix', fix, fix ? 'missed, not fixed since' : 'no open misses'],
+        ['Day streak', streak, streak ? 'keep it going' : 'practice today to start one']
+      ],
+      due: { n: due, noun: 'concept', href: 'review.html', text: due ? 'Each comes back inside a fresh problem, not the same card.' : 'Concepts come back here when they are closest to being forgotten.' },
+      links: [
+        { href: 'practice.html', title: 'Practice', sub: 'Untimed, with feedback after every answer.' },
+        { href: 'flashcards.html', title: 'Flashcards', sub: 'pKa, IR and NMR values and reagents.' }
+      ]
+    });
+  }
+
   function renderSetup(notice){
     view('setup');
     var r = savedRun();
@@ -226,7 +248,7 @@
       ? window.LevlPremium.gate('ochem', 'exam', 'exams') +
         '<p class="ex-small">Practice and Review stay open: the first four chapters without limit, and 15 questions a day from the rest.</p>'
       : '<button type="submit" class="btn-press ex-start"' + (r ? ' disabled' : '') + '>Start exam</button>' +
-        (!r && !ex.unlimited ? '<p class="ex-small">This is your free full exam: any chapters, any length. Unlimited exams are part of Premium.</p>' : '');
+        '';
     var resume = '';
     if(r){
       var answered = r.choices.filter(function(c){ return c !== null; }).length;
@@ -237,19 +259,23 @@
         '<div class="ex-resume-actions"><button type="button" class="btn-press sm" data-act="resume">Resume exam</button>' +
         '<button type="button" class="btn-outline" data-act="discard">Discard</button></div></div>';
     }
-    app.innerHTML = (notice ? '<p class="ex-notice" role="status">' + esc(notice) + '</p>' : '') + resume +
-      '<form class="ex-setup" novalidate>' +
-        '<fieldset class="ex-kinds"><legend class="section-head">Choose an exam</legend>' + KINDS.map(function(k){
-          return '<label class="ex-kind"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '>' +
-            '<span class="ex-kind-t">' + esc(k.title) + '</span><span class="ex-kind-d">' + esc(k.desc) + '</span></label>';
-        }).join('') + '</fieldset>' +
-        '<div class="ex-panel">' + panelHtml() + '</div>' +
-        '<p class="ex-avail" aria-live="polite"></p>' +
-        '<p class="ex-small ex-how">Exam mode shows no feedback until you submit, and the clock does not pause. You can change an answer, flag a question to come back to, and jump around with the question map. Your answers count toward your mastery and XP when you submit; anything you miss goes to your review queue.</p>' +
-        startHtml +
-        (r ? '<p class="ex-small">Finish or discard the exam in progress to start another.</p>' : '') +
-      '</form>' + historyHtml();
-
+    var n1 = '<span class="cx-step-n" aria-hidden="true">';
+    // The free-exam notice sits at the top of the body, as in every course.
+    var freeNote = !r && !spent && !ex.unlimited
+      ? '<p class="cx-notice"><b>Your free exam.</b> One full exam is free: any chapters, any length. Starting one uses it, and once started you can always finish it. ' + (window.LevlPremium && window.LevlPremium.badge ? window.LevlPremium.badge('ochem') : '') + '</p>' : '';
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
+      (notice ? '<p class="ex-notice cx-notice" role="status">' + esc(notice) + '</p>' : '') + freeNote + resume +
+      '<form class="cx-card cx-builder ex-setup" novalidate aria-label="Set up an exam">' +
+        '<fieldset class="cx-step"><legend>' + n1 + '1</span>Choose an exam</legend><div class="cx-choices">' + KINDS.map(function(k){
+          return '<label class="cx-choice"><input type="radio" name="kind" value="' + k.id + '"' + (k.id === cfg.kind ? ' checked' : '') + '>' +
+            '<span><b>' + esc(k.title) + '</b><span>' + esc(k.desc) + '</span></span></label>';
+        }).join('') + '</div></fieldset>' +
+        '<div class="cx-step"><h2 class="cx-step-h">' + n1 + '2</span>Settings</h2><div class="ex-panel">' + panelHtml() + '</div></div>' +
+        '<div class="cx-start"><p class="cx-sum"><span class="ex-avail" aria-live="polite"></span>' +
+          '<small>No feedback until you submit, and the clock does not pause. You can change an answer, flag a question and jump around with the question map. Misses go to your review queue.</small></p>' +
+          startHtml + '</div>' +
+        (r ? '<p class="cx-small">Finish or discard the exam in progress to start another.</p>' : '') +
+      '</form>' + historyHtml() + '</div>' + examRail() + '</div>';
     var form = app.querySelector('form');
     function refresh(){
       var s = summary();

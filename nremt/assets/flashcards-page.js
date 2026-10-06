@@ -14,7 +14,7 @@
    loop, and input: click or tap to flip, Space/Enter, 1-4 to grade, and a
    horizontal swipe on a phone. It is the ochem deck page's design
    (ochem/assets/flashcards-page.js) with NREMT's domains in place of
-   chapters, drawn with the same shared stylesheet (assets/flashcards.css).
+   chapters, drawn with the same shared stylesheet (assets/course/study.css).
 
    SCHEDULING is the shared scheduler, ochem/assets/flashcard-scheduler.js,
    bound to NREMT's own key: OchemCardScheduler.forKey('nremt_flashcards_v1').
@@ -143,44 +143,30 @@
     var q = S.queue(ids(sel), now);
     var html = '';
 
+    // One design in every course (docs/course-shell.md, W-C): "Choose a
+    // deck", then the deck card with four numbers and Study, then the list.
     var work = q.due.length + q.fresh.length;
-    if(work){
-      var parts = [];
-      if(q.due.length) parts.push(plural(q.due.length, 'card') + ' due');
-      if(q.fresh.length) parts.push(q.fresh.length + ' new');
-      html += '<div class="rec-card" id="fcCounts">' +
-        '<div class="k">' + (q.due.length ? 'Due now' : 'Ready to start') + '</div>' +
-        '<h2>' + esc(parts.join(' · ')) + '</h2>' +
-        '<p>' + esc(q.due.length
-          ? 'Most overdue first, then new cards. Anything you miss comes back a few cards later.'
-          : 'New cards arrive ' + S.NEW_PER_DAY + ' a day, so the deck grows at a pace you can keep up with.') +
-        '</p>' +
-        '<div class="actions">' +
-          '<button type="button" class="btn-press" id="fcStart">Start · ' + plural(work, 'card') + '</button>' +
-          '<button type="button" class="btn-press alt" id="fcAhead">Study ahead</button>' +
-        '</div></div>';
-    } else if(sel.length){
+    var dom = DOMAINS.filter(function(d){ return d.key === prefs.domain; })[0];
+    var note;
+    if(work) note = q.due.length
+      ? 'Most overdue first, then new cards. Anything you miss comes back a few cards later.'
+      : 'New cards arrive ' + S.NEW_PER_DAY + ' a day, so the deck grows at a pace you can keep up with.';
+    else if(sel.length){
       var up = S.upcoming(ids(sel), now, 7);
-      var reason = q.newTotal && !q.allowance
-        ? 'You have met today’s ' + S.NEW_PER_DAY + ' new cards. More arrive tomorrow.'
-        : 'Nothing in this selection is due.';
-      html += '<div class="empty-panel" id="fcCounts">' +
-        '<h2>All caught up</h2>' +
-        '<p>' + esc(reason + (up ? ' ' + plural(up, 'card') + ' come' + (up === 1 ? 's' : '') + ' due in the next week.' : '')) +
-        ' Studying ahead reviews cards early without pushing them further out.</p>' +
-        '<div style="margin-top:18px"><button type="button" class="btn-press alt sm" id="fcAhead">Study ahead</button></div>' +
-      '</div>';
-    } else {
-      html += '<div class="empty-panel" id="fcCounts">' +
-        '<h2>No cards in this selection</h2>' +
-        '<p>' + esc(prefs.scope === 'weak'
-          ? '“Needs work” collects the cards you keep forgetting. None yet.'
-          : 'Every card type is switched off.') + '</p>' +
-      '</div>';
-    }
-
-    html += renderFilters(q);
-    html += renderDomains();
+      note = (q.newTotal && !q.allowance ? 'You have met today’s ' + S.NEW_PER_DAY + ' new cards. More arrive tomorrow.' : 'Nothing in this selection is due.') +
+        (up ? ' ' + plural(up, 'card') + ' come' + (up === 1 ? 's' : '') + ' due in the next week.' : '') + ' Studying ahead reviews cards early without pushing them further out.';
+    } else note = prefs.scope === 'weak' ? '“Needs work” collects the cards you keep forgetting. None yet.' : 'Every card type is switched off.';
+    html += '<div class="cx-main">' + renderFilters(q) +
+      '<section class="cx-card cx-deckcard" id="fcCounts" aria-labelledby="fcDeckH"><h2 id="fcDeckH">' + esc(dom ? dom.label : 'All domains') + '</h2>' +
+        '<div class="cx-stats">' + LevlStudy.stat('Due now', q.due.length, '', q.due.length ? 'is-due' : '') + LevlStudy.stat('New today', q.fresh.length) +
+          LevlStudy.stat('Learned', q.learned) + LevlStudy.stat('In this deck', q.total) + '</div>' +
+        '<p class="cx-small">' + esc(note) + '</p>' +
+        '<div class="cx-actions">' +
+          (work ? '<button type="button" class="btn-press" id="fcStart">Study ' + plural(work, 'card') + '</button>' : '<p class="cx-caught">' + (sel.length ? 'You are caught up on this deck.' : 'No cards in this selection.') + '</p>') +
+          (sel.length ? '<button type="button" class="btn-outline" id="fcAhead">Study ahead</button>' : '') +
+        '</div>' +
+        '<p class="cx-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Each card comes back just before you would forget it.</p>' +
+      '</section>' + renderDomains() + '</div>';
 
     homeEl.innerHTML = html;
     bindHome();
@@ -194,21 +180,21 @@
         return '<option value="' + esc(d.key) + '"' + (prefs.domain === d.key ? ' selected' : '') + '>' + esc(d.label) + '</option>';
       }).join('');
     function radio(value, label){
-      return '<label><input type="radio" name="fcScope" value="' + value + '"' + (prefs.scope === value ? ' checked' : '') + '>' +
+      return '<label class="cx-pill"><input type="radio" name="fcScope" value="' + value + '"' + (prefs.scope === value ? ' checked' : '') + '>' +
         '<span>' + esc(label) + ' <small>' + count(value) + '</small></span></label>';
     }
     function box(t){
-      return '<label><input type="checkbox" name="fcType" value="' + t.key + '"' + (prefs.types[t.key] ? ' checked' : '') + '>' +
+      return '<label class="cx-pill"><input type="checkbox" name="fcType" value="' + t.key + '"' + (prefs.types[t.key] ? ' checked' : '') + '>' +
         '<span>' + esc(t.label) + '</span></label>';
     }
-    return '<div class="fc-filters" role="group" aria-label="Choose cards">' +
-      '<label class="fc-field">Domain<select id="fcDomain">' + opts + '</select></label>' +
-      '<fieldset><legend>Cards</legend><div class="fc-seg">' +
+    return '<section class="cx-card cx-deck" aria-labelledby="fcChooseH"><h2 id="fcChooseH">Choose a deck</h2>' +
+      '<label class="cx-field"><span>Domain</span><select id="fcDomain">' + opts + '</select></label>' +
+      '<fieldset class="cx-group"><legend>Cards</legend><div class="cx-pills">' +
         radio('all', 'All') + radio('weak', 'Needs work') +
       '</div></fieldset>' +
-      '<fieldset><legend>Card types</legend><div class="fc-seg">' + TYPES.map(box).join('') + '</div></fieldset>' +
-      '<p class="fc-note">' + esc(plural(q.total, 'card') + ' selected · ' + q.learned + ' learned · ' + q.newTotal + ' not seen yet.') + '</p>' +
-    '</div>';
+      '<fieldset class="cx-group"><legend>Card types</legend><div class="cx-pills">' + TYPES.map(box).join('') + '</div></fieldset>' +
+      '<p class="cx-small">' + esc(plural(q.total, 'card') + ' selected · ' + q.learned + ' learned · ' + q.newTotal + ' not seen yet.') + '</p>' +
+    '</section>';
   }
 
   function renderDomains(){
@@ -223,15 +209,15 @@
         if(!S.isNew(st)){ learned++; if(st.d <= now) due++; }
       });
       var pct = Math.round(learned / cards.length * 100);
-      return '<button type="button" class="fc-ch" data-dom="' + esc(d.key) + '" aria-pressed="' + (prefs.domain === d.key) + '">' +
+      return '<button type="button" class="cx-prow fc-ch" data-dom="' + esc(d.key) + '" aria-pressed="' + (prefs.domain === d.key) + '">' +
         '<span class="n"><b>' + (i + 1) + '</b>' + esc(d.label) + '</span>' +
         '<span class="c">' + (due ? '<span class="due">' + due + ' due</span> · ' : '') + learned + '/' + cards.length + '</span>' +
         '<span class="bar" aria-hidden="true"><span style="width:' + pct + '%"></span></span>' +
       '</button>';
     }).join('');
     if(!rows) return '';
-    return '<div class="fc-label" id="fcDomainsLabel">By topic area</div>' +
-      '<div class="module-card fc-chapters" role="group" aria-labelledby="fcDomainsLabel">' + rows + '</div>';
+    return '<section><h2 class="cx-h2" id="fcDomainsLabel">By topic area</h2>' +
+      '<div class="cx-card cx-plist fc-chapters" role="group" aria-labelledby="fcDomainsLabel">' + rows + '</div></section>';
   }
 
   function bindHome(){

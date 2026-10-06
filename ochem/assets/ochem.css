@@ -330,13 +330,14 @@
 .rec-card .actions{justify-content:flex-start;flex-wrap:wrap;}
 
 .rec-alt{display:flex;flex-direction:column;gap:8px;margin-bottom:22px;}
-.rec-alt button{
+.rec-alt .rec-alt-link{text-decoration:none;}
+.rec-alt button,.rec-alt .rec-alt-link{
   display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
   background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius);
   padding:13px 16px;font:inherit;color:inherit;box-shadow:var(--lift-sm);
   transition:border-color .1s ease,transform .06s ease;
 }
-.rec-alt button:hover{border-color:var(--accent);}
+.rec-alt button:hover,.rec-alt .rec-alt-link:hover{border-color:var(--accent);}
 .rec-alt button:active{transform:scale(.985);}
 .rec-alt .t{font:800 14px var(--font-ui);flex:1;min-width:0;}
 .rec-alt .d{display:block;font:600 12.5px var(--font-ui);color:var(--muted);margin-top:2px;line-height:1.45;}

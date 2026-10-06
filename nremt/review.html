@@ -24,6 +24,8 @@
 <meta property="og:url" content="https://levlprep.com/nremt/review.html">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order, and the
@@ -79,7 +81,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "NREMT-EMT spaced review",
+          "name": "Review",
           "item": "https://levlprep.com/nremt/review.html"
         }
       ]
@@ -92,87 +94,87 @@
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <!-- crumb:start -->
-<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">NREMT-EMT spaced review</span></nav></div>
+<div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Review</span></nav></div>
 <!-- crumb:end -->
 <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="wrap">
+<main class="wrap cx-study" id="main">
 
   <div id="introScreen">
-    <div class="page-head">
+    <header class="page-head">
       <div class="eyebrow">NREMT-EMT</div>
       <h1>Review</h1>
       <p class="lede">Questions you have answered come back here as they fade: a miss straight away, a solid answer days later. Weakest and longest-unseen first, up to 40 a session.</p>
-    </div>
-    <!-- The free-allowance line (practice-engine.js renderPremium) lands here;
-         the slot is in the page and holds its one line of height from the
-         first paint, so the page does not move when it is filled (audit
-         2026-10, layout shift 0.21 on a phone). -->
-    <div id="premiumNotice" class="premium-slot premium-slot--reserved"></div>
+    </header>
 
-    <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
-      <div class="resume-exam-text" id="resumeExamText"></div>
-      <div class="resume-exam-actions">
-        <button class="primary" id="resumeExamBtn">Resume</button>
-        <button class="exit-link" id="discardExamBtn">Discard</button>
+    <div class="cx-body has-rail">
+      <div class="cx-main">
+        <div id="resumeExamCard" class="resume-exam-card" style="display:none;">
+          <div class="resume-exam-text" id="resumeExamText"></div>
+          <div class="resume-exam-actions">
+            <button class="primary" id="resumeExamBtn">Resume</button>
+            <button class="exit-link" id="discardExamBtn">Discard</button>
+          </div>
+        </div>
+
+        <!-- One card, three states (renderDueSummary in practice-engine.js):
+             something due, nothing answered yet, all caught up. The same
+             .cx-empty shape as every course's Review page. -->
+        <section class="cx-card cx-queue">
+          <div class="cx-empty" data-due-state="ready" hidden>
+            <div class="cx-empty-num"><span data-due="all">0</span><small>due now</small></div>
+            <div>
+              <h2><span data-due="all">0</span> due for review</h2>
+              <p>This session takes the <span data-due="session">0</span> most pressing, untimed, with the answer and explanation after each one.</p>
+              <div class="cx-actions"><button class="btn-press sm" id="spacedReviewBtn">Start review</button></div>
+            </div>
+          </div>
+          <div class="cx-empty" data-due-state="empty-new" hidden>
+            <div class="cx-empty-num">0<small>due now</small></div>
+            <div>
+              <h2>Nothing to review yet</h2>
+              <p>The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.</p>
+              <div class="cx-actions"><a class="btn-press sm" href="practice.html">Practice</a><a class="btn-outline" href="study-notes.html">Next lesson</a><a class="btn-outline" href="flashcards.html">Flashcards</a></div>
+            </div>
+          </div>
+          <div class="cx-empty" data-due-state="empty-done" hidden>
+            <div class="cx-empty-num">0<small>due now</small></div>
+            <div>
+              <h2>You are all caught up</h2>
+              <p>Everything you have answered is holding steady. Each question drifts back into this queue a few days after you last got it right.</p>
+              <div class="cx-actions"><a class="btn-press sm" href="practice.html">Practice</a><a class="btn-outline" href="study-notes.html">Next lesson</a><a class="btn-outline" href="flashcards.html">Flashcards</a></div>
+            </div>
+          </div>
+          <div id="premiumNotice" class="premium-slot premium-slot--reserved"></div>
+        </section>
+
+        <script>
+        /* Which state shows depends on this browser's answers (renderDueSummary
+           in practice-engine.js). Shown before first paint from the same
+           record, so the card is in place when the page appears: nothing
+           answered yet, or something to review. "All caught up" is decided by
+           the engine a moment later; it is the same height. */
+        (function(){
+          var any = false;
+          try { var m = JSON.parse(localStorage.getItem('nremt_mastery') || '{}'); any = !!m && Object.keys(m).length > 0; } catch(e){}
+          var el = document.querySelector('[data-due-state="' + (any ? 'ready' : 'empty-new') + '"]');
+          if(el) el.hidden = false;
+        })();
+        </script>
       </div>
-    </div>
 
-    <div class="due-stats">
-      <div class="stat-card"><div class="v" data-due="all">0</div><div class="l">Due now</div></div>
-      <div class="stat-card"><div class="v" data-due="tracked">0</div><div class="l">Answered so far</div></div>
-      <div class="stat-card"><div class="v" data-due="mastered">0</div><div class="l">Holding steady</div></div>
-    </div>
-
-    <div class="panel due-panel" data-due-state="ready" hidden>
-      <h2><span data-due="all">0</span> due for review</h2>
-      <p>This session takes the <span data-due="session">0</span> most pressing, untimed, with the answer and explanation after each one.</p>
-      <button class="start-btn" id="spacedReviewBtn">Start review</button>
-    </div>
-
-    <div class="panel due-panel" data-due-state="empty-new" hidden>
-      <h2>Nothing to review yet</h2>
-      <p>The queue fills from questions you answer anywhere in the course. Answer a few, and they come back here when they are due.</p>
-      <a class="btn-press sm alt" href="practice.html">Go to Practice</a>
-    </div>
-
-    <div class="panel due-panel" data-due-state="empty-done" hidden>
-      <h2>All caught up</h2>
-      <p>Everything you have answered is holding steady. Each question drifts back into this queue a few days after you last got it right.</p>
-      <a class="btn-press sm alt" href="practice.html">Practice something new</a>
-    </div>
-
-    <script>
-    /* Which of the three panels shows depends on this browser's answers
-       (renderDueSummary in practice-engine.js). Shown before first paint
-       from the same record, so the panel is in place when the page appears:
-       nothing answered yet, or something to review. "All caught up" is
-       decided by the engine a moment later; it is the same height. */
-    (function(){
-      var any = false;
-      try { var m = JSON.parse(localStorage.getItem('nremt_mastery') || '{}'); any = !!m && Object.keys(m).length > 0; } catch(e){}
-      var el = document.querySelector('[data-due-state="' + (any ? 'ready' : 'empty-new') + '"]');
-      if(el) el.hidden = false;
-    })();
-    </script>
-
-    <div class="mode-grid runner-aside">
-      <a class="mode-card mode-card--link" href="flashcards.html">
-        <div class="k">Flashcards</div>
-        <h2>Spaced flashcards</h2>
-        <p>The facts behind the questions, on cards that come back just before you would forget them.</p>
-        <div class="spacer"></div>
-        <span class="go">Open flashcards &rarr;</span>
-      </a>
-      <a class="mode-card mode-card--link" href="practice.html">
-        <div class="k">Mistakes</div>
-        <h2>Missed and flagged</h2>
-        <p>Every question you got wrong or flagged, as its own set, is on the Practice tab.</p>
-        <div class="spacer"></div>
-        <span class="go">Open Practice &rarr;</span>
-      </a>
+      <aside class="cx-rail" aria-labelledby="cx-rail-h">
+        <h2 class="cx-rail-h" id="cx-rail-h">Your numbers</h2>
+        <div class="cx-stats" id="nrStats"></div>
+        <nav class="cx-links" aria-label="More ways to study">
+          <a class="cx-link" href="flashcards.html"><b>Flashcards<small>The facts behind the questions, on spaced cards.</small></b><span aria-hidden="true">&rarr;</span></a>
+          <a class="cx-link" href="exams.html"><b>Exams<small>The timed 100-question exam.</small></b><span aria-hidden="true">&rarr;</span></a>
+        </nav>
+      </aside>
     </div>
   </div>
 
+</main>
+<div class="xshell cx-foot">
   <footer>
     <details class="fine-print">
       <summary>About these questions &amp; how this differs from the real exam</summary>
@@ -183,6 +185,8 @@
 </div>
 
 <script src="practice-engine.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
+<script src="practice-study.js" defer></script>
 <script src="assets/nav.js" defer></script>
 </body>
 </html>

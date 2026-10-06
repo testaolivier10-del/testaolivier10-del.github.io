@@ -69,5 +69,24 @@ Each workstream: before/after screenshots at 1280 and 390, light and dark, of ev
 ## Status
 
 - [x] Audit, decisions, base.css, Bio tint tokens moved to theme.css
-- [ ] W-A  - [ ] W-B  - [ ] W-C  - [ ] W-D
+- [ ] W-A  - [ ] W-B  - [x] W-C  - [ ] W-D
 - [ ] Merge, regenerate, bump sw.js CACHE, full CI, before/after screenshots, PR
+
+## W-C notes
+
+- Shared layer: `assets/course/study.css` (layout, builder, rail, review queue, flashcard deck + card, in-session card;
+  absorbed and replaces `assets/flashcards.css`) and `assets/course/study.js` (`LevlStudy.rail/stat/empty/actions/free`,
+  one markup source for the rail, review empty state and the `.cx-free` line). Both precached in `sw.js` (CACHE not bumped).
+- All 16 pages: `.page-head` opener (course eyebrow, Beta pill on A&P/Bio, plain h1), crumb, `.cx-body.has-rail` with
+  Answered / Due for review / To fix / (streak or topics studied), review-queue card and sibling links. A&P/Bio via
+  `build-anp.mjs`/`build-apbio.mjs` (`STUDY_PAGES`); NREMT crumb names now plain (Practice, Review, Exams, Flashcards).
+- NREMT practice: builder maps onto the engine's existing buttons and length selects (`nremt/practice-study.js`; no engine
+  logic changed). Modes: weak spots, one domain/area, missed, flagged. Timed exam stays on Exams.
+- Ochem practice: modes adaptive/diagnostic (default), one topic, quick 5, cumulative, missed, flagged; Review/Flashcards
+  moved to the rail. Ochem flashcards overlap fixed (old stub hero replaced by `.page-head`).
+- In-session: engines add `.cx-q`, `.cx-opt`, `.cx-fb` (+ `.cx-fb-head` icon + word), `.cx-progress`, `.cx-sbar`,
+  `.cx-next-row` beside their own classes; state classes accepted as is (`is-right/is-wrong`, `correct/incorrect`,
+  `correct/wrong`). A&P/Bio renderers emit the new feedback only on study pages (`.cx-study`), lessons unchanged.
+- Not converged: exam run screens (clock, question map) and results/summary screens keep per-course chrome.
+- Weight budgets raised with reasons in `check-weight.mjs` (site 290, nremt 11.4, ochem 111, nremt/practice 48,
+  ochem exams-page.js 12). Screenshots: `/home/claude/shots/wc/{before,after}/`.

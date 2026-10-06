@@ -238,7 +238,7 @@
     var was = locked();
     P.onChange(function(){ if(locked() !== was) location.reload(); });
     if(!f) return;
-    if(!was){ var e = document.querySelector('.anp-hero .eyebrow'); if(e) e.insertAdjacentHTML('beforeend', ' ' + badge()); return; }
+    if(!was){ var e = document.querySelector('.anp-hero .eyebrow, .page-head .eyebrow'); if(e) e.insertAdjacentHTML('beforeend', ' ' + badge()); return; }
     if(WHOLE[f]){ app.removeAttribute('id'); app.innerHTML = gate(f, app.getAttribute('data-slug'), '', 'The word root builder, the feedback loop builder and the calculators are free.'); }
   }
   mountPremium();
