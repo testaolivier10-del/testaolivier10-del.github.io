@@ -43,7 +43,7 @@
   var BASE = window.ApBioBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.bio-hero');
+  var hero = document.querySelector('.page-head, .bio-hero');
   var CUR = window.ApBioCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApBioCore, Q = window.ApBioQuestions;
   var PREFS = 'apbio_prefs_v1';
@@ -174,15 +174,15 @@
 
   /* ------------------------------------------------------ setup */
 
-  function view(name){ if(hero) hero.classList.toggle('bio-hero-min', name !== 'setup'); app.setAttribute('data-view', name); window.scrollTo(0, 0); }
+  function view(name){ if(hero) hero.hidden = name !== 'setup'; app.setAttribute('data-view', name); window.scrollTo(0, 0); }
   function timing(){ return TIMINGS.filter(function(t){ return t.id === cfg.timing; })[0]; }
   function timingField(){
-    return '<label class="bio-pr-field"><span>Timing</span><select name="timing">' + TIMINGS.map(function(t){ return '<option value="' + t.id + '"' + (t.id === cfg.timing ? ' selected' : '') + '>' + t.name + '</option>'; }).join('') + '</select></label>';
+    return '<label class="cx-field"><span>Timing</span><select name="timing">' + TIMINGS.map(function(t){ return '<option value="' + t.id + '"' + (t.id === cfg.timing ? ' selected' : '') + '>' + t.name + '</option>'; }).join('') + '</select></label>';
   }
   function freeExamHtml(fe){
     if(fe.unlimited) return '';
     if(!fe.available) return Core.gate('exams', 'exams');
-    return '<p class="bio-ex-note bio-ex-free"><b>Your free exam.</b> One exam is free: starting any exam below uses it, and once started you can always finish it. ' + (Core.badge ? Core.badge() : '') + '</p>';
+    return '<p class="cx-notice bio-ex-free"><b>Your free exam.</b> One exam is free: starting any exam below uses it, and once started you can always finish it. ' + (Core.badge ? Core.badge() : '') + '</p>';
   }
   function frqSec(types){ return types.reduce(function(s, t){ return s + (LONG[t] ? FRQ_SEC.long : FRQ_SEC.short); }, 0); }
 
@@ -190,19 +190,19 @@
     if(cfg.kind === 'mixed'){
       if(!cramOk()) return Core.gate('cram', 'cram-sets');
       var mp = mixedPlan(cfg.n);
-      return '<fieldset class="bio-ex-group bio-ex-inline"><legend>Questions</legend>' + MIXED.map(function(v){
-          return '<label class="bio-pr-chip"><input type="radio" name="n" value="' + v + '"' + (cfg.n === v ? ' checked' : '') + '><span>' + v + '</span></label>';
-        }).join('') + '</fieldset>' + timingField() +
-        '<div class="bio-ex-note"><p><b>How this set is drawn.</b> From every published unit by the middle of its exam weight range, with stimulus sets kept whole (so a set can run a question or two long). Timed at the exam\'s pace: ' + minutes(MCQ_SEC) + ' a question.</p><ul class="bio-ex-alloc">' +
+      return '<fieldset class="cx-group"><legend>Questions</legend><div class="cx-pills">' + MIXED.map(function(v){
+          return '<label class="cx-pill"><input type="radio" name="n" value="' + v + '"' + (cfg.n === v ? ' checked' : '') + '><span>' + v + '</span></label>';
+        }).join('') + '</div></fieldset>' + timingField() +
+        '<div class="cx-note bio-ex-note"><p><b>How this set is drawn.</b> From every published unit by the middle of its exam weight range, with stimulus sets kept whole (so a set can run a question or two long). Timed at the exam\'s pace: ' + minutes(MCQ_SEC) + ' a question.</p><ul class="bio-ex-alloc">' +
           mp.units.map(function(u){ return '<li><span>' + esc(unitName(u.id)) + '</span><b>' + (mp.alloc[u.id] || 0) + '</b></li>'; }).join('') + '</ul></div>';
     }
     if(cfg.kind === 'unit'){
       var us = builtUnits(), p = unitPlan(cfg.unit, cfg.len);
-      return '<label class="bio-pr-field"><span>Unit</span><select name="unit">' + us.map(function(u){ return '<option value="' + u.id + '"' + (u.id === cfg.unit ? ' selected' : '') + '>' + esc(unitName(u.id)) + '</option>'; }).join('') + '</select></label>' +
-        '<fieldset class="bio-ex-group bio-ex-inline"><legend>Length</legend>' + [15, 25, 0].map(function(v){
-          return '<label class="bio-pr-chip"><input type="radio" name="len" value="' + v + '"' + (cfg.len === v ? ' checked' : '') + '><span>' + (v || 'All ' + p.total) + '</span></label>';
-        }).join('') + '</fieldset>' + timingField() +
-        '<div class="bio-ex-note"><p><b>How this test is split.</b> Every published topic in the unit gets an equal share; stimulus sets stay whole.</p><ul class="bio-ex-alloc">' +
+      return '<label class="cx-field"><span>Unit</span><select name="unit">' + us.map(function(u){ return '<option value="' + u.id + '"' + (u.id === cfg.unit ? ' selected' : '') + '>' + esc(unitName(u.id)) + '</option>'; }).join('') + '</select></label>' +
+        '<fieldset class="cx-group"><legend>Length</legend><div class="cx-pills">' + [15, 25, 0].map(function(v){
+          return '<label class="cx-pill"><input type="radio" name="len" value="' + v + '"' + (cfg.len === v ? ' checked' : '') + '><span>' + (v || 'All ' + p.total) + '</span></label>';
+        }).join('') + '</div></fieldset>' + timingField() +
+        '<div class="cx-note bio-ex-note"><p><b>How this test is split.</b> Every published topic in the unit gets an equal share; stimulus sets stay whole.</p><ul class="bio-ex-alloc">' +
           p.topics.map(function(t){ return '<li><span>' + esc((t.ced ? t.ced + ' ' : '') + t.title) + '</span><b>' + (p.alloc[t.id] || 0) + '</b></li>'; }).join('') + '</ul></div>';
     }
     var plan = examPlan(), t = timing();
@@ -214,7 +214,7 @@
     var typeRows = plan.order.map(function(ty){
       return '<li class="' + (plan.types[ty] ? 'is-on' : 'is-off') + '"><span>' + esc(K ? K.TYPES[ty] : ty) + ' <span class="bio-small">(' + (LONG[ty] ? 9 : 4) + ' points)</span></span><b>' + (plan.types[ty] ? 'ready' : 'not written yet') + '</b></li>';
     }).join('');
-    return '<div class="bio-ex-note">' +
+    return '<div class="cx-note bio-ex-note">' +
       (plan.full ? '<p><b>The full hybrid format.</b> Section I: ' + MCQ_TOTAL + ' multiple-choice questions in ' + minutes(MCQ_TOTAL * MCQ_SEC) + ', drawn from each unit by the midpoint of its exam weight, with stimulus sets kept whole. Section II: 6 free-response questions in 90 min, then you score them with the rubrics.</p>'
         : '<p><b>Not enough questions for a full practice exam yet.</b> A full exam needs ' + MCQ_TOTAL + ' multiple-choice questions spread over ' + (plan.units.length === 1 ? 'the course\'s one unit' : 'all ' + plan.units.length + ' units') + ' by exam weight, and 6 free-response questions, one of each type. ' +
           'Today the bank can give a <b>shorter exam</b>: ' + plural(plan.mcqN, 'multiple-choice question') + (plan.frqs.length ? ' and ' + plural(plan.frqs.length, 'free-response question') : ' and no free-response section') + ', each unit keeping the share it would have in a full exam. Units with no questions yet are left out, not filled in from other units.</p>') +
@@ -231,20 +231,43 @@
     return (plan.full ? 'Full practice exam: ' : 'Shorter practice exam: ') + plural(plan.mcqN, 'multiple-choice question') + (plan.frqs.length ? ' + ' + plural(plan.frqs.length, 'free-response question') : '') + '.';
   }
 
+  /* The same rail as Practice and Review (assets/course/study.js). */
+  function examRail(){
+    var d = Core.load(), answered = 0, topics = {};
+    Object.keys(d.q || {}).forEach(function(k){ var r = d.q[k]; if(r.n) answered++; if(r && r.t) topics[r.t] = 1; });
+    Object.keys(d.lessons || {}).forEach(function(t){ topics[t] = 1; });
+    var due = Core.reviewCount ? Core.reviewCount() : 0, miss = (Core.missed ? Core.missed() : []).length;
+    return LevlStudy.rail({
+      stats: [
+        ['Answered', answered, answered ? 'questions and tool items' : 'nothing yet'],
+        ['Due for review', due, due ? 'waiting in your queue' : 'nothing due now', due ? 'is-due' : ''],
+        ['To fix', miss, miss ? 'missed, not yet right' : 'no open misses'],
+        ['Topics studied', Object.keys(topics).length, 'lessons or questions']
+      ],
+      due: { n: due, href: BASE + 'review.html', pill: Core.badge ? Core.badge() : '' },
+      links: [
+        { href: BASE + 'practice.html', title: 'Practice', sub: 'Untimed, with feedback after every answer.' },
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' }
+      ]
+    });
+  }
+
   function renderSetup(){
     view('setup');
     if(!cfg.unit && builtUnits()[0]) cfg.unit = builtUnits()[0].id;
     var fe = Core.freeExam ? Core.freeExam() : { unlimited: true, available: true };
-    app.innerHTML = freeExamHtml(fe) + '<form class="bio-pr-setup bio-ex-setup" novalidate>' +
-      '<fieldset class="bio-pr-modes"><legend>Choose an exam</legend>' +
-        '<label class="bio-pr-mode"><input type="radio" name="kind" value="full"' + (cfg.kind === 'full' ? ' checked' : '') + '><span class="bio-pr-mode-t">Practice exam</span><span class="bio-pr-mode-d">The hybrid format: multiple choice, then free response, scored with rubrics.</span></label>' +
-        '<label class="bio-pr-mode"><input type="radio" name="kind" value="unit"' + (cfg.kind === 'unit' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span class="bio-pr-mode-t">Unit test</span><span class="bio-pr-mode-d">One unit, weighted by topic.</span></label>' +
-        '<label class="bio-pr-mode"><input type="radio" name="kind" value="mixed"' + (cfg.kind === 'mixed' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span class="bio-pr-mode-t">Mixed timed set</span><span class="bio-pr-mode-d">10, 20 or 30 questions from every unit at exam pace (part of the cram kit).</span></label>' +
-      '</fieldset><div class="bio-ex-panel">' + panelHtml() + '</div>' +
-      '<p class="bio-pr-avail" aria-live="polite"></p>' +
-      '<p class="bio-small bio-ex-how">Exam mode shows no feedback until the end. Your first tap on an answer locks it in; you can skip a question and come back. At the end you review every question with its explanation, and anything you missed goes to your review queue.</p>' +
-      '<button type="submit" class="btn-press bio-pr-start">Start</button></form>' +
-      historyHtml();
+    var n1 = '<span class="cx-step-n" aria-hidden="true">';
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' + freeExamHtml(fe) +
+      '<form class="cx-card cx-builder bio-pr-setup bio-ex-setup" novalidate aria-label="Set up an exam">' +
+      '<fieldset class="cx-step"><legend>' + n1 + '1</span>Choose an exam</legend><div class="cx-choices">' +
+        '<label class="cx-choice"><input type="radio" name="kind" value="full"' + (cfg.kind === 'full' ? ' checked' : '') + '><span><b>Practice exam</b><span>The hybrid format: multiple choice, then free response, scored with rubrics.</span></span></label>' +
+        '<label class="cx-choice"><input type="radio" name="kind" value="unit"' + (cfg.kind === 'unit' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span><b>Unit test</b><span>One unit, weighted by topic.</span></span></label>' +
+        '<label class="cx-choice"><input type="radio" name="kind" value="mixed"' + (cfg.kind === 'mixed' ? ' checked' : '') + (builtUnits().length ? '' : ' disabled') + '><span><b>Mixed timed set</b><span>10, 20 or 30 questions from every unit at exam pace (part of the cram kit).</span></span></label>' +
+      '</div></fieldset><div class="cx-step"><h2 class="cx-step-h">' + n1 + '2</span>Settings</h2><div class="bio-ex-panel">' + panelHtml() + '</div></div>' +
+      '<div class="cx-start"><p class="cx-sum"><span class="bio-pr-avail" aria-live="polite"></span>' +
+      '<small>No feedback until the end. Your first tap locks an answer in; you can skip and come back. Then you review every question with its explanation, and misses go to your review queue.</small></p>' +
+      '<button type="submit" class="btn-press bio-pr-start">Start</button></div></form>' +
+      historyHtml() + '</div>' + examRail() + '</div>';
     var form = app.querySelector('form');
     function refresh(){
       var s = summary(), el = app.querySelector('.bio-pr-avail');

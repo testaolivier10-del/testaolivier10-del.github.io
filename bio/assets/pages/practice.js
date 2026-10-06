@@ -31,7 +31,7 @@
   var BASE = window.ApBioBase || '';
   var app = document.getElementById('app');
   if(!app) return;
-  var hero = document.querySelector('.bio-hero');
+  var hero = document.querySelector('.page-head, .bio-hero');
   var CUR = window.ApBioCurriculum || { units: [], topics: [], practices: [] };
   var Core = window.ApBioCore, Q = window.ApBioQuestions;
   var SITE = 'https://levlprep.com/bio/';
@@ -157,13 +157,13 @@
       '<a class="bio-share-btn" href="https://classroom.google.com/share?url=' + encodeURIComponent(url) + '&amp;title=' + encodeURIComponent(title) + '" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a>' +
       '<button type="button" class="bio-share-btn" data-copy="' + esc(url) + '">Copy link</button>' +
       '<button type="button" class="bio-share-btn" data-act="worksheet">Print as a worksheet</button></div>' +
-      '<label class="bio-ex-check bio-pr-keyopt"><input type="checkbox" id="bio-ws-key"> <span>Add the answer key on a separate page</span></label>';
+      '<label class="cx-check bio-pr-keyopt"><input type="checkbox" id="bio-ws-key"> <span>Add the answer key on a separate page</span></label>';
   }
 
   /* ------------------------------------------------------------ setup */
 
   function view(name){
-    if(hero) hero.classList.toggle('bio-hero-min', name !== 'setup');
+    if(hero) hero.hidden = name !== 'setup';
     app.setAttribute('data-view', name);
     window.scrollTo(0, 0);
   }
@@ -184,7 +184,7 @@
     return '';
   }
   function select(id, label, opts, val){
-    return '<label class="bio-pr-field"><span>' + label + '</span><select id="' + id + '">' + opts.map(function(o){
+    return '<label class="cx-field"><span>' + label + '</span><select id="' + id + '">' + opts.map(function(o){
       return o.group ? '<optgroup label="' + esc(o.group) + '">' + o.list.map(function(x){ return '<option value="' + esc(x.id) + '"' + (x.id === val ? ' selected' : '') + '>' + esc(x.name) + '</option>'; }).join('') + '</optgroup>'
         : '<option value="' + esc(o.id) + '"' + (o.id === val ? ' selected' : '') + '>' + esc(o.name) + '</option>';
     }).join('') + '</select></label>';
@@ -194,30 +194,35 @@
     var ts = builtTopics().filter(function(t){ return !state.unit || t.unit === state.unit; });
     var topics = [{ id: '', name: state.unit ? 'Every topic in the unit' : 'Every topic' }].concat(ts.map(function(t){ return { id: t.id, name: (t.ced ? t.ced + ' ' : '') + t.title }; }));
     var practices = [{ id: '', name: 'Every science practice' }].concat((CUR.practices || []).map(function(p){ return { id: String(p.id), name: p.id + '. ' + p.name }; }));
-    return '<div class="bio-pr-filters">' + select('bio-pr-unit', 'Unit', units, state.unit) + select('bio-pr-topic', 'Topic', topics, state.topic) +
+    return '<div class="cx-fields bio-pr-filters">' + select('bio-pr-unit', 'Unit', units, state.unit) + select('bio-pr-topic', 'Topic', topics, state.topic) +
       select('bio-pr-practice', 'Science practice', practices, state.practice) + select('bio-pr-kind', 'Question type', KINDS, state.kind) +
       select('bio-pr-diff', 'Difficulty', DIFFS, state.diff) + '</div>';
   }
   function railHtml(){
-    var d = store(), answered = 0;
-    Object.keys(d.q || {}).forEach(function(k){ if(d.q[k].n) answered++; });
+    var d = store(), answered = 0, topics = {};
+    Object.keys(d.q || {}).forEach(function(k){ var r = d.q[k]; if(r.n) answered++; if(r && r.t) topics[r.t] = 1; });
+    Object.keys(d.lessons || {}).forEach(function(t){ topics[t] = 1; });
     var due = Core ? Core.reviewCount() : 0, miss = Object.keys(missedIds()).length;
-    function tile(k, v, s){ return '<div class="bio-pr-stat"><span class="bio-pr-stat-k">' + k + '</span><span class="bio-pr-stat-v">' + v + '</span><span class="bio-pr-stat-s">' + s + '</span></div>'; }
-    return '<aside class="bio-pr-rail" aria-labelledby="bio-pr-rail-h">' +
-      '<h2 class="bio-pr-rail-k" id="bio-pr-rail-h">Your numbers</h2>' +
-      '<div class="bio-pr-stats">' + tile('Answered', answered, answered ? 'questions and tool items' : 'nothing yet') +
-        tile('Due for review', due, due ? 'waiting in your queue' : 'nothing due now') + tile('To fix', miss, miss ? 'missed, not yet right' : 'no open misses') +
-        tile('Topics', builtTopics().length, 'published so far') + '</div>' +
-      '<div class="bio-pr-rcard"><p class="bio-pr-rcard-k">Due for review' + pill() + '</p><h3>' + (due ? plural(due, 'item') + ' due now' : 'Your queue is clear') + '</h3>' +
-        '<p>Questions you miss come back on a spacing schedule, so they stick.</p><a class="bio-pr-rcard-more" href="' + BASE + 'review.html">' + (due ? 'Start your review' : 'Open review') + ' <span aria-hidden="true">&rarr;</span></a></div>' +
-      '<a class="bio-pr-exam bio-pr-fc" href="' + BASE + 'frq.html"><span class="bio-pr-exam-t">Free-response practice<small>All six types, with rubrics.</small></span><span class="bio-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
-      '<a class="bio-pr-exam" href="' + BASE + 'exams.html"><span class="bio-pr-exam-t">Ready for a timed test?<small>Unit tests and full practice exams.</small></span><span class="bio-pr-exam-go" aria-hidden="true">&rarr;</span></a>' +
-    '</aside>';
+    var studied = builtTopics().filter(function(t){ return topics[t.id]; }).length;
+    return LevlStudy.rail({
+      stats: [
+        ['Answered', answered, answered ? 'questions and tool items' : 'nothing yet'],
+        ['Due for review', due, due ? 'waiting in your queue' : 'nothing due now', due ? 'is-due' : ''],
+        ['To fix', miss, miss ? 'missed, not yet right' : 'no open misses'],
+        ['Topics studied', studied, 'of ' + plural(builtTopics().length, 'published topic')]
+      ],
+      due: { n: due, href: BASE + 'review.html', pill: pill() },
+      links: [
+        { href: BASE + 'flashcards.html', title: 'Flashcards', sub: 'Spaced cards from the glossary.' },
+        { href: BASE + 'exams.html', title: 'Exams', sub: 'Unit tests and full practice exams.' },
+        { href: BASE + 'frq.html', title: 'Free-response practice', sub: 'All six types, with rubrics.' }
+      ]
+    });
   }
   function allowanceHtml(){
     var a = Core && Core.quota ? Core.quota() : null;
     if(!a || a.limit === Infinity) return '';
-    return '<p class="bio-small bio-pr-allow">Free: Units 1 and 2 are unlimited. Questions from other units: <b>' + a.left + ' of ' + a.limit + '</b> left today, shared with review.' + pill() + '</p>';
+    return LevlStudy.free('Free: <b>' + a.left + ' of ' + a.limit + '</b> questions left today, shared with review. Units 1 and 2 are unlimited.' + pill());
   }
   function sumText(){
     var pool = poolFor(state.mode), n = itemCount(pool);
@@ -230,20 +235,21 @@
   function renderSetup(){
     view('setup');
     if(modeUnavailable(state.mode)) state.mode = 'build';
-    app.innerHTML = '<div class="bio-pr-grid">' +
-      '<form class="bio-pr-setup" novalidate aria-label="Build a practice set">' +
-        '<fieldset class="bio-pr-step bio-pr-modes"><legend class="bio-pr-step-h"><span class="bio-pr-n" aria-hidden="true">1</span>What do you want to practice?</legend><div class="bio-pr-mode-grid">' +
+    var n1 = '<span class="cx-step-n" aria-hidden="true">';
+    app.innerHTML = '<div class="cx-body has-rail"><div class="cx-main">' +
+      '<form class="cx-card cx-builder bio-pr-setup" novalidate aria-label="Build a practice set">' +
+        '<fieldset class="cx-step"><legend>' + n1 + '1</span>What do you want to practice?</legend><div class="cx-choices">' +
           MODES.map(function(m){
             var why = modeUnavailable(m.id);
-            return '<label class="bio-pr-mode' + (why ? ' is-off' : '') + '"><input type="radio" name="mode" value="' + m.id + '"' + (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span class="bio-pr-mode-t">' + esc(m.title) + '</span><span class="bio-pr-mode-d">' + esc(why || m.desc) + '</span></label>';
+            return '<label class="cx-choice"><input type="radio" name="mode" value="' + m.id + '"' + (m.id === state.mode ? ' checked' : '') + (why ? ' disabled' : '') + '><span><b>' + esc(m.title) + '</b><span>' + esc(why || m.desc) + '</span></span></label>';
           }).join('') + '</div></fieldset>' +
-        '<div class="bio-pr-step bio-pr-pickstep"><h2 class="bio-pr-step-h"><span class="bio-pr-n" aria-hidden="true">2</span><span class="bio-pr-pick-h"></span></h2><div class="bio-pr-pick"></div></div>' +
-        '<fieldset class="bio-pr-step bio-pr-count"><legend class="bio-pr-step-h"><span class="bio-pr-n" aria-hidden="true">3</span>How many questions?</legend><div class="bio-pr-chips">' +
-          COUNTS.map(function(n){ return '<label class="bio-pr-chip"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') + '</div></fieldset>' +
-        '<div class="bio-pr-go"><p class="bio-pr-sum" aria-live="polite"><span class="bio-pr-sum-main"></span><small>Feedback after every answer. Stimulus sets stay whole and in order. Misses go to your review queue.</small></p>' +
+        '<div class="cx-step bio-pr-pickstep"><h2 class="cx-step-h">' + n1 + '2</span><span class="bio-pr-pick-h"></span></h2><div class="bio-pr-pick"></div></div>' +
+        '<fieldset class="cx-step bio-pr-count"><legend>' + n1 + '3</span>How many questions?</legend><div class="cx-pills">' +
+          COUNTS.map(function(n){ return '<label class="cx-pill"><input type="radio" name="count" value="' + n + '"' + (n === state.count ? ' checked' : '') + '><span>' + (n || 'All') + '</span></label>'; }).join('') + '</div></fieldset>' +
+        '<div class="cx-start"><p class="cx-sum" aria-live="polite"><span class="bio-pr-sum-main"></span><small>Feedback after every answer. Stimulus sets stay whole and in order. Misses go to your review queue.</small></p>' +
           '<button type="submit" class="btn-press bio-pr-start">Start practice</button></div>' +
-        '<div class="bio-pr-sharewrap"></div>' + allowanceHtml() +
-      '</form>' + railHtml() + '</div>';
+        allowanceHtml() + '<div class="bio-pr-sharewrap"></div>' +
+      '</form></div>' + railHtml() + '</div>';
     var form = app.querySelector('form');
     function paintPick(){
       var stepEl = app.querySelector('.bio-pr-pickstep'), h = '', html = '';
@@ -252,7 +258,7 @@
       app.querySelector('.bio-pr-pick-h').textContent = h;
       app.querySelector('.bio-pr-pick').innerHTML = html;
       stepEl.hidden = !html;
-      app.querySelector('.bio-pr-count .bio-pr-n').textContent = html ? '3' : '2';
+      app.querySelector('.bio-pr-count .cx-step-n').textContent = html ? '3' : '2';
     }
     function refresh(){
       var n = itemCount(poolFor(state.mode));
@@ -360,11 +366,11 @@
     session = { mode: mode, label: mode === 'retry' ? 'Retrying your misses' : setLabel(), steps: steps, i: 0, results: [], firstTry: {}, tries: {}, retry: mode === 'missed' || mode === 'retry', finished: false };
     session.total = itemCount(steps);
     view('session');
-    app.innerHTML = '<div class="bio-pr-session">' +
-      '<div class="bio-pr-bar"><span class="bio-pr-label">' + esc(session.label) + '</span><span class="bio-pr-count-l" aria-live="polite"></span>' +
-        '<button type="button" class="btn-outline bio-pr-quit">End session</button></div>' +
-      '<div class="track thin bio-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
-      '<h2 class="sr-only">Questions</h2><div class="bio-pr-stage"></div><div class="bio-pr-after" hidden></div></div>';
+    app.innerHTML = '<div class="cx-session bio-pr-session">' +
+      '<div class="cx-sbar"><span class="cx-sbar-t">' + esc(session.label) + '</span><span class="cx-sbar-n bio-pr-count-l" aria-live="polite"></span>' +
+        '<button type="button" class="cx-end bio-pr-quit">End session</button></div>' +
+      '<div class="cx-progress bio-pr-track" aria-hidden="true"><i style="width:0%"></i></div>' +
+      '<h2 class="sr-only">Questions</h2><div class="bio-pr-stage"></div><div class="cx-next-row bio-pr-after" hidden></div></div>';
     app.querySelector('.bio-pr-quit').addEventListener('click', finish);
     ask();
   }
@@ -412,9 +418,9 @@
     var t = TOPIC[step.items[0].topic];
     var after = app.querySelector('.bio-pr-after');
     var last = session.i + 1 >= session.steps.length;
-    after.innerHTML = '<p class="bio-pr-from">' + (t ? 'From <a href="' + lessonHref(t.id) + '">' + esc(t.title) + '</a> <span aria-hidden="true">&middot;</span> <a href="' + notesHref(t.id) + '">notes</a>' : '') +
+    after.innerHTML = '<p class="cx-from bio-pr-from">' + (t ? 'From <a href="' + lessonHref(t.id) + '">' + esc(t.title) + '</a> <span aria-hidden="true">&middot;</span> <a href="' + notesHref(t.id) + '">notes</a>' : '') +
       (again ? ' <span class="bio-pr-again">This comes back later in the session.</span>' : '') + '</p>' +
-      '<button type="button" class="btn-press bio-pr-next">' + (last ? 'See your results' : 'Next') + '</button>';
+      '<button type="button" class="btn-press cx-next bio-pr-next">' + (last ? 'See your results' : 'Next') + '</button>';
     after.hidden = false;
     var next = after.querySelector('.bio-pr-next');
     next.addEventListener('click', function(){ session.i++; ask(); });

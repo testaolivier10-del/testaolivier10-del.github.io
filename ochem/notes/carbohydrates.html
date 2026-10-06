@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Biomolecules</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Biomolecules &middot; Section 114 of 123</p>
-    <h1>Carbohydrates</h1>
-    <a class="notes-onward-cta" href="../lessons/carbohydrates.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="carbohydrates">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-synthesis"><span class="bk-toc-n">23</span>Synthesis &amp; Retrosynthesis</a>
+    <a class="bk-toc-chap" href="../learn.html#m-biomolecules"><span class="bk-toc-chap-n">24</span><span><b>Biomolecules</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li class="current" data-toc-t="carbohydrates"><a href="#main" aria-current="page"><span class="bk-toc-n">114</span>Carbohydrates</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-vocabulary-quickly">The vocabulary, quickly</a><a href="#the-ring-is-a-hemiacetal-and">The ring is a hemiacetal, and that explains nearly everything</a><a href="#how-a-ring-sugar-is-drawn">How a ring sugar is drawn: the Haworth projection</a><a href="#two-anomers-and">Two anomers, α and β</a><a href="#mutarotation-the-anomers-interconvert">Mutarotation: the anomers interconvert</a><a href="#hemiacetal-or-acetal-the-distinction-that">Hemiacetal or acetal: the distinction that decides reducing sugars</a><a href="#three-reactions-all-of-them-ones">Three reactions, all of them ones you already have</a><a href="#the-polysaccharides-worth-knowing">The polysaccharides worth knowing</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="amino-acids"><a href="amino-acids.html"><span class="bk-toc-n">115</span>Amino acids</a></li><li data-toc-t="peptides-proteins"><a href="peptides-proteins.html"><span class="bk-toc-n">116</span>Peptides and proteins</a></li><li data-toc-t="lipids"><a href="lipids.html"><span class="bk-toc-n">117</span>Lipids</a></li><li data-toc-t="nucleic-acids"><a href="nucleic-acids.html"><span class="bk-toc-n">118</span>Nucleic acids</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-polymers"><span class="bk-toc-n">25</span>Polymers</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-biomolecules">Biomolecules</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Carbohydrates: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/carbohydrates.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="biomolecules">Biomolecules</span> &middot; Section 114 of 123</p>
+      <h1 class="bk-title">Carbohydrates</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/carbohydrates.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="carbohydrates" data-bk-ids="the-vocabulary-quickly the-ring-is-a-hemiacetal-and how-a-ring-sugar-is-drawn two-anomers-and mutarotation-the-anomers-interconvert hemiacetal-or-acetal-the-distinction-that three-reactions-all-of-them-ones the-polysaccharides-worth-knowing what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Glucose is an aldehyde with an OH on almost every carbon. In water, one of those OH groups adds to the molecule&rsquo;s own aldehyde and closes a ring. Almost everything that sets sugars apart follows from that one reaction: the ring itself, the two forms the ring comes in, and whether the sugar reduces Tollens&rsquo; reagent.</p>
 
@@ -204,14 +213,21 @@
 
 <p class="step-body">Nothing in this section is new chemistry. It is hemiacetal and acetal formation, Fischer projections and diastereomers, applied to molecules that happen to be biological. If a carbohydrate question looks unfamiliar, find the carbonyl, or the carbon that used to be one, and ask what has added to it.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="multistep-synthesis.html"><span>Previous</span>Planning a multistep route</a><a class="notes-prevnext notes-next" href="amino-acids.html"><span>Next</span>Amino acids</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="multistep-synthesis.html"><span>&larr; Section 113</span><b>Planning a multistep route</b></a><a class="tb-chapter-link next" href="amino-acids.html"><span>Section 115 &rarr;</span><b>Amino acids</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

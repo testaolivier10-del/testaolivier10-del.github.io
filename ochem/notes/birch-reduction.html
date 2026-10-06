@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Aromatic Follow-Through</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Aromatic Follow-Through &middot; Section 105 of 123</p>
-    <h1>Birch reduction</h1>
-    <a class="notes-onward-cta" href="../lessons/birch-reduction.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="birch-reduction">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-amines"><span class="bk-toc-n">20</span>Amines</a>
+    <a class="bk-toc-chap" href="../learn.html#m-aromatic-breadth"><span class="bk-toc-chap-n">21</span><span><b>Aromatic Follow-Through</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="nucleophilic-aromatic"><a href="nucleophilic-aromatic.html"><span class="bk-toc-n">102</span>SNAr and benzyne</a></li><li data-toc-t="benzylic-reactivity"><a href="benzylic-reactivity.html"><span class="bk-toc-n">103</span>Benzylic reactivity</a></li><li data-toc-t="phenols"><a href="phenols.html"><span class="bk-toc-n">104</span>Phenols</a></li><li class="current" data-toc-t="birch-reduction"><a href="#main" aria-current="page"><span class="bk-toc-n">105</span>Birch reduction</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-conditions">The conditions</a><a href="#electron-proton-electron-proton">Electron, proton, electron, proton</a><a href="#why-the-double-bonds-end-up">Why the double bonds end up 1,4</a><a href="#substituents-decide-where-the-double-bonds">Substituents decide where the double bonds end up</a><a href="#why-you-would-want-a-cyclohexa">Why you would want a cyclohexa-1,4-diene</a><a href="#naphthalene-one-ring-at-a-time">Naphthalene: one ring at a time</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="diazonium-chemistry"><a href="diazonium-chemistry.html"><span class="bk-toc-n">106</span>Diazonium salts and Sandmeyer</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-spectroscopy"><span class="bk-toc-n">22</span>NMR Spectroscopy</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-aromatic-breadth">Aromatic Follow-Through</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Birch reduction: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/birch-reduction.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="aromatic-breadth">Aromatic Follow-Through</span> &middot; Section 105 of 123</p>
+      <h1 class="bk-title">Birch reduction</h1>
+      <p class="bk-meta"><span class="bk-small">10 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/birch-reduction.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="birch-reduction" data-bk-ids="the-conditions electron-proton-electron-proton why-the-double-bonds-end-up substituents-decide-where-the-double-bonds why-you-would-want-a-cyclohexa naphthalene-one-ring-at-a-time what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Put cyclohexene and benzene in one flask with hydrogen gas and palladium on carbon, at room temperature. Cyclohexene takes up one H<sub>2</sub> and becomes cyclohexane. Benzene does not react. Raise the pressure and the temperature far enough and benzene does react, but it goes all the way to cyclohexane. Any <b>cyclohexadiene</b> (a six-membered ring with two C=C bonds) or cyclohexene formed along the way is reduced faster than benzene itself, so none of it survives.</p>
 
@@ -173,14 +182,21 @@
 
 <p class="step-body">Sodium or lithium in liquid ammonia with an alcohol turns a benzene ring into a cyclohexa-1,4-diene by adding electrons and protons in turn. A carbon carrying a donating group stays on a double bond, and a carbon carrying a withdrawing group ends up sp&sup3;. Both rules come from asking where the negative charge sits. It is the one reaction in this course that stops partway when reducing a benzene ring. Hydrogenation, by contrast, reduces the ring all the way to a cyclohexane.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="phenols.html"><span>Previous</span>Phenols</a><a class="notes-prevnext notes-next" href="diazonium-chemistry.html"><span>Next</span>Diazonium salts and Sandmeyer</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="phenols.html"><span>&larr; Section 104</span><b>Phenols</b></a><a class="tb-chapter-link next" href="diazonium-chemistry.html"><span>Section 106 &rarr;</span><b>Diazonium salts and Sandmeyer</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

@@ -29,6 +29,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/anp.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -90,25 +92,26 @@
 <body data-topic="breathing-control">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 21 contents</button>
-  <aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  <aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="anp-toc-other" href="../chapters/lymph-immune.html"><span class="anp-toc-n">20</span>Lymphatic and immune systems</a>
-    <a class="anp-toc-chap" href="../chapters/respiratory.html"><span class="anp-toc-chap-n">21</span><span><b>The respiratory system</b><small>9 topics &middot; A&amp;P II</small></span></a>
-    <div class="anp-toc-prog" data-toc-prog="respiratory"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list"><li data-toc-t="upper-airway"><a href="upper-airway.html"><span class="anp-toc-n">117</span>Nose, pharynx and larynx</a></li><li data-toc-t="lower-airway-lungs"><a href="lower-airway-lungs.html"><span class="anp-toc-n">118</span>Trachea, bronchial tree, alveoli and lungs</a></li><li data-toc-t="ventilation-mechanics"><a href="ventilation-mechanics.html"><span class="anp-toc-n">119</span>Pulmonary ventilation</a></li><li data-toc-t="lung-volumes"><a href="lung-volumes.html"><span class="anp-toc-n">120</span>Lung volumes and ventilation rates</a></li><li data-toc-t="gas-exchange"><a href="gas-exchange.html"><span class="anp-toc-n">121</span>Gas exchange</a></li><li data-toc-t="oxygen-transport"><a href="oxygen-transport.html"><span class="anp-toc-n">122</span>Oxygen transport</a></li><li data-toc-t="co2-transport"><a href="co2-transport.html"><span class="anp-toc-n">123</span>Carbon dioxide transport</a></li><li class="current" data-toc-t="breathing-control"><a href="#main" aria-current="page"><span class="anp-toc-n">124</span>Control of breathing</a><div class="anp-toc-onpage"><p>On this page</p><a href="#automatic-but-you-can-override-it">Automatic, but you can override it</a><a href="#the-respiratory-centers">The respiratory centers</a><a href="#central-chemoreceptors">Central chemoreceptors</a><a href="#peripheral-chemoreceptors">Peripheral chemoreceptors</a><a href="#carbon-dioxide-is-the-main-drive">Carbon dioxide is the main drive to breathe</a><a href="#other-inputs-to-breathing">Other inputs to breathing</a><a href="#hyperventilation-and-hypoventilation">Hyperventilation and hypoventilation</a><a href="#carbon-dioxide-retention-and-oxygen-therapy">Carbon dioxide retention and oxygen therapy</a><a href="#breathing-during-exercise">Breathing during exercise</a><a href="#breathing-at-high-altitude">Breathing at high altitude</a></div></li><li data-toc-t="respiratory-disorders"><a href="respiratory-disorders.html"><span class="anp-toc-n">125</span>Respiratory disorders</a></li></ol></nav>
-    <a class="anp-toc-other" href="../chapters/digestive.html"><span class="anp-toc-n">22</span>The digestive system</a>
+    <a class="bk-toc-other" href="../chapters/lymph-immune.html"><span class="bk-toc-n">20</span>Lymphatic and immune systems</a>
+    <a class="bk-toc-chap" href="../chapters/respiratory.html"><span class="bk-toc-chap-n">21</span><span><b>The respiratory system</b><small>9 topics &middot; A&amp;P II</small></span></a>
+    <div class="anp-toc-prog" data-toc-prog="respiratory"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="upper-airway"><a href="upper-airway.html"><span class="bk-toc-n">117</span>Nose, pharynx and larynx</a></li><li data-toc-t="lower-airway-lungs"><a href="lower-airway-lungs.html"><span class="bk-toc-n">118</span>Trachea, bronchial tree, alveoli and lungs</a></li><li data-toc-t="ventilation-mechanics"><a href="ventilation-mechanics.html"><span class="bk-toc-n">119</span>Pulmonary ventilation</a></li><li data-toc-t="lung-volumes"><a href="lung-volumes.html"><span class="bk-toc-n">120</span>Lung volumes and ventilation rates</a></li><li data-toc-t="gas-exchange"><a href="gas-exchange.html"><span class="bk-toc-n">121</span>Gas exchange</a></li><li data-toc-t="oxygen-transport"><a href="oxygen-transport.html"><span class="bk-toc-n">122</span>Oxygen transport</a></li><li data-toc-t="co2-transport"><a href="co2-transport.html"><span class="bk-toc-n">123</span>Carbon dioxide transport</a></li><li class="current" data-toc-t="breathing-control"><a href="#main" aria-current="page"><span class="bk-toc-n">124</span>Control of breathing</a><div class="bk-toc-onpage"><p>On this page</p><a href="#automatic-but-you-can-override-it">Automatic, but you can override it</a><a href="#the-respiratory-centers">The respiratory centers</a><a href="#central-chemoreceptors">Central chemoreceptors</a><a href="#peripheral-chemoreceptors">Peripheral chemoreceptors</a><a href="#carbon-dioxide-is-the-main-drive">Carbon dioxide is the main drive to breathe</a><a href="#other-inputs-to-breathing">Other inputs to breathing</a><a href="#hyperventilation-and-hypoventilation">Hyperventilation and hypoventilation</a><a href="#carbon-dioxide-retention-and-oxygen-therapy">Carbon dioxide retention and oxygen therapy</a><a href="#breathing-during-exercise">Breathing during exercise</a><a href="#breathing-at-high-altitude">Breathing at high altitude</a></div></li><li data-toc-t="respiratory-disorders"><a href="respiratory-disorders.html"><span class="bk-toc-n">125</span>Respiratory disorders</a></li></ol></nav>
+    <a class="bk-toc-other" href="../chapters/digestive.html"><span class="bk-toc-n">22</span>The digestive system</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/respiratory.html">The respiratory system</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Control of breathing: notes</span></nav>
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/breathing-control.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 21 &middot; Topic 124 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
-      <h1 class="anp-notes-title">Control of breathing</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P II</span><a class="anp-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="anp-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="anp-small">19 min read</span><span class="anp-tb-chip" data-chip-topic="breathing-control">Not practiced</span></p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/breathing-control.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter 21 &middot; Topic 124 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Control of breathing</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P II</span><a class="bk-tag" href="../concepts/homeostasis.html">Homeostasis</a><a class="bk-tag" href="../concepts/communication.html">Cell-to-cell communication</a><span class="bk-small">19 min read</span><span class="bk-chip" data-chip-topic="breathing-control">Not practiced</span></p>
+      <div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/anatomy-physiology/notes/breathing-control.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 <p>The control of breathing rests on a few groups of <a class="gl" href="../notes/nervous-tissue-overview.html" data-c="neuron">neurons</a> in your <a class="gl" href="../notes/brain-regions.html" data-c="brainstem">brainstem</a> and on <a class="gl" href="../notes/sensory-pathways.html" data-c="receptor-types-stimulus">chemoreceptors</a> that sense the chemistry of your blood. You breathe about 12 to 20 times a minute without thinking about it, awake or asleep, and the depth and rate change within seconds when you exercise, climb a mountain or hold your breath. This page explains the <span class="gl" tabindex="0" data-c="respiratory-centers">respiratory centers</span> that set the rhythm, the central and <span class="gl" tabindex="0" data-c="peripheral-chemoreceptors">peripheral chemoreceptors</span> that adjust it, why carbon dioxide rather than oxygen is the main drive to breathe, what <span class="gl" tabindex="0" data-c="ventilation-disorders">hyperventilation and hypoventilation</span> mean, and how breathing changes during exercise and at high altitude.</p>
 
 <h2 id="automatic-but-you-can-override-it">Automatic, but you can override it</h2>
@@ -367,11 +370,12 @@
   <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
 <script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>
-<script src="../assets/anp-glossary.js" defer></script>
 <script src="../assets/anp-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
 <script src="../assets/anp-toc.js" defer></script>
 </body>
 </html>

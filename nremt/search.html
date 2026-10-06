@@ -34,34 +34,10 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <script src="../assets/site-search.js" defer></script>
+<script src="../assets/course/hub.js" defer></script>
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
-<style>
-
-  #searchBox{
-    width:100%;padding:14px 16px;border:2px solid var(--line);border-radius:var(--radius);
-    font-family:var(--font-ui);font-weight:700;font-size:15.5px;background:var(--white);color:var(--ink);margin-bottom:6px;
-  }
-  #searchBox:focus{outline:2px solid var(--accent);outline-offset:1px;}
-  .search-status{font:700 12.5px var(--font-mono);color:var(--muted);margin-bottom:20px;}
-
-  .result{
-    display:block;background:var(--white);border:2px solid var(--line);border-radius:16px;box-shadow:var(--lift-sm);
-    padding:16px 18px;margin-bottom:12px;text-decoration:none;color:inherit;
-    transition:transform .08s ease, box-shadow .08s ease, border-color .12s ease;
-  }
-  .result:hover{transform:translateY(-2px);box-shadow:var(--lift-lg);}
-  .result-page{
-    font-family:var(--font-ui);font-weight:800;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:4px;
-  }
-  .result-heading{font-weight:900;font-size:15px;margin-bottom:4px;}
-  .result-snippet{font-size:13.5px;font-weight:600;color:var(--muted);}
-  .result-snippet mark{background:#FDE9A0;color:inherit;border-radius:2px;}
-  :root[data-theme="dark"] .result-snippet mark{background:#6b5a1f;}
-  .empty-note{font-size:14px;font-weight:700;color:var(--muted);}
-  .search-all{margin:-12px 0 18px;font:800 13px var(--font-ui);}
-
-</style>
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/hub.css">
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 {
@@ -101,21 +77,16 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/nremt/">NREMT-EMT Prep</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Search</span></nav></div>
 <!-- crumb:end -->
   <noscript><div class="site-nav-fallback" style="max-width:1120px;margin:0 auto;padding:14px clamp(20px,4vw,56px)"><a href="index.html">Home</a> · <a href="study-notes.html">Learn</a> · <a href="practice.html">Practice</a> · <a href="review.html">Review</a> · <a href="exams.html">Exams</a> · <a href="glossary.html">Glossary</a> · <a href="tools.html">Tools</a> · <a href="dashboard.html">Dashboard</a></div></noscript>
-<div class="wrap">
-  <div class="page-head">
-  <div class="eyebrow">Tools</div>
-  <h1>Search</h1>
-  <p class="lede">Notes, glossary, mnemonics, diagrams, scenarios and the skills guide.</p>
-  </div>
-
-  <label class="sr-only" for="searchBox">Search this site</label>
-  <input type="search" id="searchBox" placeholder="Search this site… (e.g. &quot;OPQRST&quot;, &quot;tension pneumothorax&quot;)" autocomplete="off">
-  <div class="search-status" id="searchStatus">Building search index…</div>
-  <p class="search-all"><a id="searchAll" href="../search.html">Search all courses &rarr;</a></p>
-  <div id="results"></div>
+<div class="xshell">
+  <header class="page-head">
+    <div class="eyebrow">NREMT-EMT</div>
+    <h1>Search</h1>
+    <p>Practice questions, notes, glossary, mnemonics, diagrams, scenarios and the skills guide, in one place.</p>
+  </header>
+  <!-- The shared search page (assets/course/hub.js, LevlHub.search). -->
+  <div id="app"><noscript><p>Search runs in your browser and needs JavaScript. The <a href="study-notes.html">study notes</a> and <a href="glossary.html">glossary</a> work without it.</p></noscript></div>
 
   <footer>
-    <p>Runs in your browser. Nothing is sent anywhere.</p>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
     </footer>
 </div>
@@ -126,19 +97,14 @@
 // scripts execute, in order, just before DOMContentLoaded.
 document.addEventListener('DOMContentLoaded', function(){
   const PAGES = [
-    { file: 'study-notes.html', title: 'Study Notes' },
+    { file: 'study-notes.html', title: 'Study notes' },
     { file: 'glossary.html', title: 'Glossary' },
     { file: 'mnemonics.html', title: 'Mnemonics' },
-    { file: 'flowcharts.html', title: 'Flow Diagrams' },
-    { file: 'skillsheets.html', title: 'Skills Guide' },
+    { file: 'flowcharts.html', title: 'Flow diagrams' },
+    { file: 'skillsheets.html', title: 'Skills guide' },
     { file: 'scenario-sim.html', title: 'Scenarios' },
-    { file: 'exam-day.html', title: 'Exam Day' },
+    { file: 'exam-day.html', title: 'Exam day' },
   ];
-
-  let INDEX = [];
-  const statusEl = document.getElementById('searchStatus');
-  const resultsEl = document.getElementById('results');
-  const searchBox = document.getElementById('searchBox');
 
   function extractChunks(doc, page){
     const chunks = [];
@@ -153,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function(){
         return;
       }
       if(text.length < 12) return;
-      chunks.push({ page: page.title, file: page.file, heading, text });
+      chunks.push({ page: page.title, file: page.file, heading, text, fragment: 1 });
     });
     return chunks;
   }
@@ -178,7 +144,8 @@ document.addEventListener('DOMContentLoaded', function(){
     ]);
     const questions = core.map((q, i) => ({ ...q, explain: explanations[i] || '' }));
     return questions.map((q, i) => ({
-      page: 'Practice Questions',
+      page: 'Practice questions',
+      meta: 'Practice question',
       // Deep link straight to the one question, which practice.html opens on its
       // own in review mode. Without the index a question result could only land
       // the reader on the exam start screen with no way back to what they found.
@@ -189,80 +156,26 @@ document.addEventListener('DOMContentLoaded', function(){
     }));
   }
 
-  async function buildIndex(){
-    const results = await Promise.allSettled(
-      PAGES.map(async page => {
-        const res = await fetch(page.file);
-        const html = await res.text();
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        doc.querySelectorAll('script,style').forEach(n => n.remove());
-        return extractChunks(doc, page);
-      }).concat([fetchQuestionChunks()])
-    );
-    let pagesIndexed = 0, questionsIndexed = 0;
-    results.forEach((r, i) => {
-      if(r.status !== 'fulfilled') return;
-      INDEX = INDEX.concat(r.value);
-      // The question bank is the last entry in the settled list (see the concat
-      // above). Count what actually resolved rather than asserting it did —
-      // offline, the bank is the one source that can drop out on its own.
-      if(i < PAGES.length) pagesIndexed++;
-      else questionsIndexed = r.value.length;
-    });
-    statusEl.textContent = !INDEX.length
-      ? 'Could not build a search index right now — try again after the page finishes loading.'
-      : questionsIndexed
-        ? `Indexed ${pagesIndexed} pages and ${questionsIndexed.toLocaleString()} practice questions. Type to search.`
-        : `Indexed ${pagesIndexed} pages. The practice question bank isn't available right now — reconnect once and it'll be included next time.`;
-    if(searchBox.value.trim()) runSearch(searchBox.value.trim());
+  // Every source is allowed to fail on its own: offline, a reader gets
+  // whatever is cached, and the status line says what is missing.
+  function pageChunks(page){
+    return fetch(page.file).then(res => { if(!res.ok) throw 0; return res.text(); }).then(html => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      doc.querySelectorAll('script,style').forEach(n => n.remove());
+      return extractChunks(doc, page);
+    }).catch(() => []);
   }
-
-  // Matching, ranking and snippet highlighting live in /assets/site-search.js,
-  // shared with ochem's search page. They used to live here, and the moment a
-  // second course wanted a search page the choice was to share them or copy
-  // them — and the two per-course copies of theme.css are what copying them
-  // looks like eighteen months later.
-  const S = window.LevlSearch;
-
-  // The site-wide search at /search.html, carrying the query across.
-  const allLink = document.getElementById('searchAll');
-  function syncAllLink(q){ allLink.href = '../search.html' + (q ? '?q=' + encodeURIComponent(q) : ''); }
-
-  function runSearch(q){
-    syncAllLink(q);
-    if(!q){ resultsEl.innerHTML = ''; return; }
-    const terms = S.tokenize(q);
-    if(!terms.length){ resultsEl.innerHTML = ''; return; }
-
-    const hits = S.rank(INDEX, q, { limit: 40 });
-    if(!hits.length){
-      resultsEl.innerHTML = `<p class="empty-note">No results for "${S.escapeHtml(q)}".</p>`;
-      return;
-    }
-    resultsEl.innerHTML = hits.map(c => {
-      // Question results carry their own ?q= deep link already; page results get
-      // a text fragment so the browser scrolls to the match.
-      const href = c.isQuestion ? c.file : S.textFragment(c.file, terms);
-      return `
-        <a class="result" href="${S.escapeHtml(href)}">
-          <div class="result-page">${S.escapeHtml(c.page)}</div>
-          <div class="result-heading">${S.escapeHtml(c.heading)}</div>
-          <div class="result-snippet">${c.snippet}</div>
-        </a>
-      `;
-    }).join('');
-  }
-
-  let debounceTimer;
-  searchBox.addEventListener('input', () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => runSearch(searchBox.value.trim()), 120);
+  // Matching, ranking and snippet highlighting live in /assets/site-search.js
+  // and the page itself (box, filters, results, keyboard) in
+  // /assets/course/hub.js, both shared with every course.
+  const sr = window.LevlHub.search({
+    mount: document.getElementById('app'), prefix: 'nremt-sr', label: 'Search this course',
+    placeholder: 'Search the course… (e.g. “OPQRST”, “tension pneumothorax”)',
+    kinds: ['Practice questions', 'Study notes', 'Glossary', 'Mnemonics', 'Flow diagrams', 'Skills guide', 'Scenarios', 'Exam day'],
+    engine: window.LevlSearch, allHref: '../search.html',
   });
-
-  const params = new URLSearchParams(location.search);
-  if(params.get('q')) searchBox.value = params.get('q');
-
-  buildIndex();
+  sr.add(Promise.all(PAGES.map(pageChunks)).then(all => all.reduce((a, b) => a.concat(b), [])), 'the notes and reference pages');
+  sr.add(fetchQuestionChunks(), 'the practice question bank');
 });
 </script>
 <script src="assets/nav.js" defer></script>

@@ -74,6 +74,7 @@ test('A&P search runs a query with the site chrome loaded first', async () => {
   const { load, els, window } = boot();
   load('assets/site-chrome.js');
   load('anatomy-physiology/assets/anp-curriculum.js');
+  load('assets/course/hub.js');
   load('anatomy-physiology/assets/apps/search.js');
   await settle();
   assert.equal(typeof window.LevlSearch.rank, 'function', 'the real engine loaded');
@@ -82,6 +83,6 @@ test('A&P search runs a query with the site chrome loaded first', async () => {
   box.value = 'sodium';
   box.fire('input');
   await settle();
-  assert.match(results.innerHTML, /class="anp-sr-hit"/, 'a query returns results');
+  assert.match(results.innerHTML, /class="cx-sr-hit"/, 'a query returns results');
   assert.match(status.textContent, /\d+ results?/);
 });

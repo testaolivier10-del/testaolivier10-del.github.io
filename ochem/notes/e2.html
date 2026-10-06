@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Substitution &amp; Elimination</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Substitution &amp; Elimination &middot; Section 46 of 123</p>
-    <h1>E2</h1>
-    <a class="notes-onward-cta" href="../mechanisms/e2.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="e2">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-reactivity"><span class="bk-toc-n">7</span>How Reactions Happen</a>
+    <a class="bk-toc-chap" href="../learn.html#m-substitution-elimination"><span class="bk-toc-chap-n">8</span><span><b>Substitution &amp; Elimination</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="sn2"><a href="sn2.html"><span class="bk-toc-n">44</span>SN2</a></li><li data-toc-t="sn1"><a href="sn1.html"><span class="bk-toc-n">45</span>SN1</a></li><li class="current" data-toc-t="e2"><a href="#main" aria-current="page"><span class="bk-toc-n">46</span>E2</a><div class="bk-toc-onpage"><p>On this page</p><a href="#one-step-three-arrows">One step, three arrows</a><a href="#why-geometry-matters-anti-periplanar">Why geometry matters: anti-periplanar</a><a href="#zaitsev-versus-hofmann-which-hydrogen-leaves">Zaitsev versus Hofmann: which hydrogen leaves</a><a href="#stereospecific-the-diastereomer-decides-e-or">Stereospecific: the diastereomer decides E or Z</a><a href="#rate-law-and-conditions">Rate law and conditions</a><a href="#when-geometry-overrules-zaitsev-menthyl-chloride">When geometry overrules Zaitsev: menthyl chloride</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="e1"><a href="e1.html"><span class="bk-toc-n">47</span>E1</a></li><li data-toc-t="substrate-effects"><a href="substrate-effects.html"><span class="bk-toc-n">48</span>Substrate &amp; solvent effects</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-alkenes-alkynes"><span class="bk-toc-n">9</span>Alkenes &amp; Alkynes</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-substitution-elimination">Substitution &amp; Elimination</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">E2: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../mechanisms/e2.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="substitution-elimination">Substitution &amp; Elimination</span> &middot; Section 46 of 123</p>
+      <h1 class="bk-title">E2</h1>
+      <p class="bk-meta"><span class="bk-small">14 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/e2.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="e2" data-bk-ids="one-step-three-arrows why-geometry-matters-anti-periplanar zaitsev-versus-hofmann-which-hydrogen-leaves stereospecific-the-diastereomer-decides-e-or rate-law-and-conditions when-geometry-overrules-zaitsev-menthyl-chloride what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Warm 2-bromopropane, CH<sub>3</sub>CHBrCH<sub>3</sub>, with sodium ethoxide in ethanol, and most of it turns into propene, CH<sub>2</sub>=CH&ndash;CH<sub>3</sub>. Ethoxide has pulled a hydrogen off one carbon, bromide has left the carbon next to it, and a C=C double bond now joins the two. Only about a fifth of the 2-bromopropane takes the <a class="chapter-ref" href="/ochem/notes/sn2.html">SN2</a> route and becomes an ether.</p>
 <p class="step-body">A reaction that removes two groups from neighboring carbons and puts a π bond between them is an <b>elimination</b>. This one happens in a single concerted step, and it is called <b>E2</b>. It competes with SN2 for the same alkyl halides and the same reagents. What sets it apart is a demand on the substrate's conformation: before anything can happen, the hydrogen and the leaving group have to line up in one particular way. No other mechanism in this chapter makes that demand.</p>
@@ -158,14 +167,21 @@
 <h3>What carries forward</h3>
 <p class="step-body">E2 is how alkenes are made from alkyl halides, which makes it the entry point to <a class="chapter-ref" href="/ochem/learn.html#m-alkenes-alkynes">Alkenes &amp; Alkynes</a>. Its anti-periplanar requirement is the course&rsquo;s clearest case of conformation controlling reactivity. The same geometric logic governs anti additions to alkenes and the trans-diaxial opening of epoxides in <a class="chapter-ref" href="/ochem/learn.html#m-alcohols-ethers">Alcohols, Ethers &amp; Related Chemistry</a>.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="sn1.html"><span>Previous</span>SN1</a><a class="notes-prevnext notes-next" href="e1.html"><span>Next</span>E1</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="sn1.html"><span>&larr; Section 45</span><b>SN1</b></a><a class="tb-chapter-link next" href="e1.html"><span>Section 47 &rarr;</span><b>E1</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

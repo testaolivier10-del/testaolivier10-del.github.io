@@ -288,6 +288,13 @@ starts with `ApBio`. Template: the Anatomy & Physiology course (`docs/anp-spec.m
    generated data. Styles and runtime are forks, `bio/assets/bio-home.css` and `bio-home.js`
    (decision 1: A&P's `anp-home.*` stay untouched), using the same theme.css components; the old
    unit-card and positioning-card rules left `bio.css`. Home 6.3 KB against its 7 KB budget.
+28. (2026-10-06, cross-course consistency W-A; supersedes decision 22's page design) **Shared
+   glossary.** `bio/glossary.html` is the page every course uses (`docs/course-shell.md`): every
+   definition visible, search over term, aliases and definition, a unit filter, a sticky A-Z rail
+   (5' end files under F, read as "five prime end"), "Taught in" links, and `#t-<concept>` anchors.
+   `assets/course/glossary-page.js` and `glossary-tip.js` replace `bio-glossary-page.js` and
+   `bio-glossary.js`; `bio/assets/glossary.json` is in the shared shape written by
+   `scripts/lib/glossary.mjs` (search and flashcards adapt it to their old map).
 
 ## 4. Map format (Phase 0)
 

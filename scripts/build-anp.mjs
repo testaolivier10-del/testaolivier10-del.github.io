@@ -11,12 +11,14 @@
      node scripts/build-anp.mjs --check   exit 1 if anything on disk is stale
 
    Nothing it writes is edited by hand; docs/anp-phase1-architecture.md. */
+import { Hub } from './lib/hub.mjs';
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { STUB_CSP } from './lib/site-config.mjs';
 import { premiumData, lockedLd, courseOffers } from './lib/premium-data.mjs';
 import { fileURLToPath } from 'node:url';
 import { courseTitle } from './lib/page-title.mjs';
+import { glossaryJson as sharedGlossaryJson, glossaryMain, glossaryScript } from './lib/glossary.mjs';
 import { APP_STATE_PAGES, NOINDEX } from './lib/app-pages.mjs';
 /* Course labels for page titles, longest first (scripts/lib/page-title.mjs). */
 const AP_LABELS = ['Anatomy & Physiology', 'A&P'];
@@ -263,9 +265,9 @@ ${tail({ depth, section: 'learn', extra: ['anp-questions.js', 'anp-lesson.js'], 
    fills in progress (lessons done), ticks and mastery chips from AnpCore. */
 const partTitle = id => map.parts.find(p => p.id === id).title;
 const tocProg = (total, label, chId = '') =>
-  `<div class="anp-toc-prog" data-toc-prog="${chId}"><div class="tb-progress-row"><span><b>0</b> of ${total} ${label}</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>`;
+  `<div class="anp-toc-prog" data-toc-prog="${chId}"><div class="tb-progress-row"><span><b>0</b> of ${total} ${label}</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>`;
 const tocBtn = label => `<button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; ${label}</button>`;
-const chip = id => `<span class="anp-tb-chip" data-chip-topic="${id}">Not practiced</span>`;
+const chip = id => `<span class="bk-chip" data-chip-topic="${id}">Not practiced</span>`;
 
 /* The whole course, the current chapter open to its topics (chapter pages).
    With book set (learn.html, depth '') every built chapter carries its topics
@@ -273,10 +275,10 @@ const chip = id => `<span class="anp-tb-chip" data-chip-topic="${id}">Not practi
    anp-book.js opens the chapter it is showing. */
 function courseRail(curId, depth = '../', book = false) {
   const chDir = depth ? '' : 'chapters/';
-  const groups = map.parts.map(p => `<p class="anp-toc-group">${esc(p.title)}</p>` + map.chapters.filter(c => c.part === p.id).map(ch => {
+  const groups = map.parts.map(p => `<p class="bk-toc-group">${esc(p.title)}</p>` + map.chapters.filter(c => c.part === p.id).map(ch => {
     const ts = topicsOf(ch.id), n = chapterNumber(ch.id), cur = ch.id === curId;
     const inner = `<span class="tb-toc-num">${n}</span><span class="tb-toc-modtitle">${esc(ch.title)}</span><span class="tb-toc-count" data-toc-ch="${ch.id}">0/${ts.filter(t => C.built.has(t.id)).length}</span>`;
-    const headEl = !chapterBuilt(ch) ? `<span class="tb-toc-modhead anp-unbuilt">${inner}</span>`
+    const headEl = !chapterBuilt(ch) ? `<span class="tb-toc-modhead bk-unbuilt">${inner}</span>`
       : `<a class="tb-toc-modhead" href="${cur ? '#main' : `${chDir}${ch.id}.html`}"${cur ? ' aria-current="page"' : ''}${book ? ` data-book-ch="${ch.id}"` : ''}>${inner}</a>`;
     const topics = cur || (book && chapterBuilt(ch)) ? `<div class="tb-toc-topics">${ts.filter(t => C.built.has(t.id)).map(t => `<a class="tb-toc-topic" href="${depth}${book ? 'notes' : 'lessons'}/${t.id}.html" data-toc-t="${t.id}"><span class="tb-toc-tick"></span>${esc(t.title)}</a>`).join('')}</div>` : '';
     return `<div class="tb-toc-mod${cur ? ' open' : ''}"${book && ch.part !== 'foundations' ? ` data-course="${ch.course}"` : ''}>${headEl}${topics}</div>`;
@@ -284,8 +286,8 @@ function courseRail(curId, depth = '../', book = false) {
   return `<aside class="tb-rail anp-nav-ref" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
     ${tocProg(builtTopics.length, 'lessons done')}
-    <form class="anp-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search A&amp;P&hellip;" aria-label="Search A&amp;P"></form>
-    ${book ? '<label class="anp-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label>\n    ' : ''}<nav class="tb-contents" aria-label="Course contents">${groups}</nav>
+    <form class="anp-toc-search bk-toc-search" action="${depth}search.html" method="get" role="search"><input type="search" name="q" class="tb-filter" placeholder="Search the notes&hellip;" aria-label="Search the notes"></form>
+    ${book ? '<label class="anp-filter bk-filter">Show <select id="course-filter"><option value="">A&amp;P I and II</option><option value="I">A&amp;P I only</option><option value="II">A&amp;P II only</option></select></label>\n    ' : ''}<nav class="tb-contents" aria-label="Course contents">${groups}</nav>
   </aside>`;
 }
 
@@ -293,21 +295,25 @@ function courseRail(curId, depth = '../', book = false) {
 function notesRail(id, sections) {
   const t = topicById(id), ch = chapterById(t.chapter), ci = chapterNumber(ch.id) - 1;
   const ts = topicsOf(ch.id).filter(x => C.built.has(x.id));
-  const other = c => c && chapterBuilt(c) ? `<a class="anp-toc-other" href="../chapters/${c.id}.html"><span class="anp-toc-n">${chapterNumber(c.id)}</span>${esc(c.title)}</a>` : '';
-  const onPage = sections.length ? `<div class="anp-toc-onpage"><p>On this page</p>${sections.map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join('')}</div>` : '';
-  return `<aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  const other = c => c && chapterBuilt(c) ? `<a class="bk-toc-other" href="../chapters/${c.id}.html"><span class="bk-toc-n">${chapterNumber(c.id)}</span>${esc(c.title)}</a>` : '';
+  const onPage = sections.length ? `<div class="bk-toc-onpage"><p>On this page</p>${sections.map(s => `<a href="#${s.id}">${esc(s.title)}</a>`).join('')}</div>` : '';
+  return `<aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
     ${other(map.chapters[ci - 1])}
-    <a class="anp-toc-chap" href="../chapters/${ch.id}.html"><span class="anp-toc-chap-n">${ci + 1}</span><span><b>${esc(ch.title)}</b><small>${ts.length} topics &middot; A&amp;P ${ch.course}</small></span></a>
+    <a class="bk-toc-chap" href="../chapters/${ch.id}.html"><span class="bk-toc-chap-n">${ci + 1}</span><span><b>${esc(ch.title)}</b><small>${ts.length} topics &middot; A&amp;P ${ch.course}</small></span></a>
     ${tocProg(ts.length, 'lessons done', ch.id)}
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list">${ts.map(x => x.id === id
-      ? `<li class="current" data-toc-t="${x.id}"><a href="#main" aria-current="page"><span class="anp-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a>${onPage}</li>`
-      : `<li data-toc-t="${x.id}"><a href="${x.id}.html"><span class="anp-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a></li>`).join('')}</ol></nav>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list">${ts.map(x => x.id === id
+      ? `<li class="current" data-toc-t="${x.id}"><a href="#main" aria-current="page"><span class="bk-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a>${onPage}</li>`
+      : `<li data-toc-t="${x.id}"><a href="${x.id}.html"><span class="bk-toc-n">${topicNumber(x.id)}</span>${esc(x.title)}</a></li>`).join('')}</ol></nav>
     ${other(map.chapters[ci + 1])}
   </aside>`;
 }
 
 /* -------------------------------------------------------------- notes */
+
+/* The notes action row every course shares (assets/course/book.css,
+   wired by assets/course/book.js). */
+const actionRow = url => `<div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="${url}">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>`;
 
 /* Gives every h2 an id (kept if authored) for the "On this page" list. */
 function sectionIds(html) {
@@ -363,18 +369,19 @@ function notesPage(id) {
 <body data-topic="${id}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   ${tocBtn(`Chapter ${chapterNumber(ch.id)} contents`)}
   ${notesRail(id, sections)}
   <main class="tb-main" id="main">
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title, href: `../chapters/${ch.id}.html` }, { name: `${t.title}: notes` }], depth)}
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/${id}.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter ${chapterNumber(ch.id)} &middot; Topic ${topicNumber(id)} of ${map.topics.length} ${BETA_PILL}</p>
-      <h1 class="anp-notes-title">${esc(t.title)}</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="anp-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<span class="anp-small">${minutes} min read</span>${chip(id)}</p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/${id}.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter ${chapterNumber(ch.id)} &middot; Topic ${topicNumber(id)} of ${map.topics.length} ${BETA_PILL}</p>
+      <h1 class="bk-title">${esc(t.title)}</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P ${t.course}</span>${t.coreConcepts.map(c => `<a class="bk-tag" href="../concepts/${c}.html">${esc(coreById(c).name)}</a>`).join('')}<span class="bk-small">${minutes} min read</span>${chip(id)}</p>
+      ${actionRow(url)}
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 ${html}
     </article>
     ${disclaimer(html)}
@@ -383,11 +390,11 @@ ${html}
   </main>
 </div>
 ${footer(depth)}
-${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js'] })}
+${tail({ depth, section: 'learn', extra: ['anp-toc.js'], site: ['report-question.js', 'course/book.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, meta: `<meta name="anp-topic" content="${id}">\n` }) + body;
+  return head({ title, desc, path: `notes/${id}.html`, depth, jsonld, book: true, meta: `<meta name="anp-topic" content="${id}">\n` }) + body;
 }
 
 /* ------------------------------------------------------------ chapter */
@@ -403,7 +410,7 @@ function chapterPage(chId) {
   const ts = topicsOf(chId);
   const tools = ch.tools || {};
   const kinds = TOOL_KINDS.filter(([k]) => (tools[k] || []).length);
-  const toolGroups = kinds.map(([k, label]) => `<section class="anp-chap-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="anp-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
+  const toolGroups = kinds.map(([k, label]) => `<section class="bk-toolset"><h3>${label} <small>${tools[k].length}</small></h3><ul>${tools[k].map(it => `<li>${it.level ? `<span class="bk-tag">Level ${it.level}</span> ` : ''}${esc(it.title)}</li>`).join('')}</ul></section>`).join('');
   const toolSummary = kinds.map(([k, , few]) => `${tools[k].length} ${few}`).slice(0, 3).join(', ');
   const title = courseTitle(ch.title, AP_LABELS);
   const desc = DESCRIPTIONS.chapters?.[chId] || clampDesc(`${ch.title}: ${ts.length} topics, from ${ts[0].title.toLowerCase()} to ${ts[ts.length - 1].title.toLowerCase()}, with lessons, notes, practice questions and study tools.`, `${ch.title} in ${ts.length} topics: anatomy and physiology lessons, notes, practice questions and study tools.`);
@@ -419,31 +426,31 @@ function chapterPage(chId) {
 <body data-chapter="${chId}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-chapter">
+<div class="tb-shell bk bk-chapter">
   ${tocBtn('Contents')}
   ${courseRail(chId)}
   <main class="tb-main" id="main">
     ${crumbNav([{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: ch.title }], depth)}
-    <header class="tb-chapter-head anp-chap-head">
+    <header class="tb-chapter-head bk-chap-head">
       <div>
         <p class="tb-chapter-eyebrow">Chapter ${n} of ${map.chapters.length} &middot; ${esc(partTitle(ch.part))}</p>
         <h1 class="tb-chapter-title">${esc(ch.title)}</h1>
         <p class="tb-chapter-meta">${ts.length} topics &middot; A&amp;P ${ch.course} &middot; <span data-chap-meta="${chId}">not practiced yet</span></p>
       </div>
-      <p class="anp-chap-acts"><a class="anp-tb-btn solid" href="../practice.html?chapter=${chId}">Chapter quiz</a><a class="anp-tb-btn ghost" href="../exams.html?chapter=${chId}">System exam</a></p>
+      <p class="bk-chap-acts"><a class="bk-btn solid" href="../practice.html?chapter=${chId}">Chapter quiz</a><a class="bk-btn ghost" href="../exams.html?chapter=${chId}">System exam</a></p>
     </header>
-    <h2 class="anp-chap-h" id="h-topics">Topics</h2>
-    <ol class="anp-chap-list" aria-labelledby="h-topics">${ts.map(t => `<li class="anp-chap-row" data-topic="${t.id}"><span class="anp-chap-n">${topicNumber(t.id)}</span>${C.built.has(t.id)
-      ? `<a class="anp-chap-title" href="../lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<span class="anp-chap-btns"><a class="anp-tb-btn solid" href="../lessons/${t.id}.html" aria-label="Lesson: ${esc(t.title)}">Lesson</a><a class="anp-tb-btn ghost" href="../notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a></span>`
-      : `<span class="anp-chap-title anp-unbuilt">${esc(t.title)}</span><span class="anp-small">In a later part of the course</span>`}</li>`).join('')}</ol>
-    <h2 class="anp-chap-h" id="h-practice">Practice this chapter</h2>
-    <div class="anp-chap-practice">
-      <a class="anp-chap-card" href="../practice.html?chapter=${chId}"><b>Chapter quiz</b><span>Questions from this chapter's ${ts.length} topics.</span></a>
-      <a class="anp-chap-card" href="../exams.html?chapter=${chId}"><b>System exam</b><span>A timed exam on the whole chapter, up to 40 questions.</span></a>
-      <a class="anp-chap-card" href="../tools.html?chapter=${chId}"><b>Tools for this chapter</b><span>${toolSummary ? `${toolSummary} and more.` : 'Interactive study tools.'}</span></a>
+    <h2 class="bk-h" id="h-topics">Topics</h2>
+    <ol class="bk-list" aria-labelledby="h-topics">${ts.map(t => `<li class="bk-row" data-topic="${t.id}"><span class="bk-row-n">${topicNumber(t.id)}</span>${C.built.has(t.id)
+      ? `<a class="bk-row-title" href="../lessons/${t.id}.html">${esc(t.title)}</a>${chip(t.id)}<span class="bk-row-btns"><a class="bk-btn solid" href="../lessons/${t.id}.html" aria-label="Lesson: ${esc(t.title)}">Lesson</a><a class="bk-btn ghost" href="../notes/${t.id}.html" aria-label="Notes: ${esc(t.title)}">Notes</a></span>`
+      : `<span class="bk-row-title bk-unbuilt">${esc(t.title)}</span><span class="bk-small">In a later part of the course</span>`}</li>`).join('')}</ol>
+    <h2 class="bk-h" id="h-practice">Practice this chapter</h2>
+    <div class="bk-cards">
+      <a class="bk-card" href="../practice.html?chapter=${chId}"><b>Chapter quiz</b><span>Questions from this chapter's ${ts.length} topics.</span></a>
+      <a class="bk-card" href="../exams.html?chapter=${chId}"><b>System exam</b><span>A timed exam on the whole chapter, up to 40 questions.</span></a>
+      <a class="bk-card" href="../tools.html?chapter=${chId}"><b>Tools for this chapter</b><span>${toolSummary ? `${toolSummary} and more.` : 'Interactive study tools.'}</span></a>
     </div>
-    ${toolGroups ? `<h2 class="anp-chap-h" id="h-tools">In this chapter's tools</h2>
-    <div class="anp-chap-tools">${toolGroups}</div>` : ''}
+    ${toolGroups ? `<h2 class="bk-h" id="h-tools">In this chapter's tools</h2>
+    <div class="bk-tools">${toolGroups}</div>` : ''}
     <nav class="tb-chapter-nav anp-nav-ref" aria-label="Chapter navigation">${chLink(map.chapters[n - 2], 'prev')}${chLink(map.chapters[n], 'next')}</nav>
   </main>
 </div>
@@ -452,7 +459,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-chapter.js', 'anp-toc.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: `chapters/${chId}.html`, depth, ogType: 'website', jsonld }) + body;
+  return head({ title, desc, path: `chapters/${chId}.html`, depth, ogType: 'website', jsonld, book: true }) + body;
 }
 
 /* ------------------------------------------------------- core concept */
@@ -571,81 +578,39 @@ ${tail({ depth, section: 'credits' })}
 
 /* ----------------------------------------------------------- glossary */
 
-/* Styles only the glossary page uses, inlined in its <head> so the shared
-   anp.css (on the critical path of every A&P page) does not carry them. The
-   A-Z bar stays under the header while the index scrolls; on a phone it is one
-   swipeable row. Letters and terms land below the header and the bar. */
-const GLOSSARY_CSS = `.anp-letters-hint{display:none;margin:4px 0 0;}
-.anp-letters{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px;position:sticky;top:var(--site-header-h,60px);z-index:5;padding:8px 0;background:var(--paper);}
-.anp-letters a{padding:4px 9px;border-radius:8px;background:var(--ctint);color:var(--cink);font:900 13px var(--font-ui);text-decoration:none;}
-.anp-letters a.on{background:var(--cink);color:var(--paper);}
-@media (max-width:640px){.anp-letters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-right:32px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);}.anp-letters-hint{display:block;}.anp-letters a{flex:0 0 auto;padding:7px 11px;}}
-.anp-terms{margin:0;}
-.anp-glossary .anp-letter,.anp-glossary .anp-term,.anp-glossary .anp-term-index li{scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
-.anp-letter{margin:0 0 22px;}
-.anp-letter > .anp-gl-more{margin:0 0 8px;}
-.anp-terms-full{margin:0;}
-.anp-letter h2{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 6px;}
-.anp-term-index{list-style:none;margin:0;padding:0;line-height:1.9;}
-.anp-term-index li{display:inline;font-weight:700;}
-.anp-term-index li:not(:last-child)::after{content:" \\00b7 ";color:var(--muted);}
-.anp-gl-more{font:800 13px var(--font-ui);padding:5px 12px;border-radius:999px;border:2px solid var(--line, rgba(0,0,0,0.12));background:var(--white);color:var(--ink);cursor:pointer;}
-.anp-gl-more:hover{border-color:var(--cink);}
-.anp-term:target,.anp-term.hit{background:var(--ctint);border-radius:8px;padding-left:8px;padding-right:8px;}
-.anp-gl-results .anp-small{margin:4px 0 10px;}
-.anp-term{padding:10px 0;border-bottom:1px solid var(--line, rgba(0,0,0,0.08));}
-.anp-term dt{font-weight:900;}
-.anp-term dd{margin:3px 0 0;font-weight:600;line-height:1.6;}
-.anp-roots{display:block;color:var(--muted);font-size:13.5px;}
-.anp-say{color:var(--muted);font-weight:700;font-size:13.5px;}`;
-
 function glossaryPage() {
   const depth = '';
-  const entries = map.concepts.filter(c => C.glossary[c.id]).map(c => ({ c, g: C.glossary[c.id] }))
-    .sort((a, b) => a.c.term.localeCompare(b.c.term, 'en', { sensitivity: 'base' }));
+  const terms = glossaryTerms();
   const title = courseTitle('Glossary: terms and word roots', AP_LABELS);
-  const desc = clampDesc(`${entries.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
+  const desc = clampDesc(`${terms.length.toLocaleString('en-US')} anatomy and physiology terms with plain definitions, word roots and pronunciation, each linked to the page that teaches it.`);
   const url = `${SITE}${BASE}glossary.html`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
     { '@type': 'DefinedTermSet', '@id': `${url}#terms`, name: `${COURSE_NAME} glossary`, url, description: desc },
     crumbs(orgCrumbs([{ name: 'Glossary', url }])),
   ] };
-  const letters = [...new Set(entries.map(e => e.c.term[0].toUpperCase()))];
-  /* The page is an index, not the definitions. Written out in full, a
-     thousand definitions made a 700 KB page about 270,000 px tall on a phone.
-     The file carries every term once, under its letter, as a link to the page
-     that teaches it (and the anchor #t-<concept> other pages link to);
-     anp-glossary-page.js draws a letter's definitions from
-     assets/glossary.json when that letter is opened, and the filter searches
-     terms and their aliases (data-a). */
+  /* The shared glossary page (scripts/lib/glossary.mjs): the opener, filters
+     and A-Z rail are here; assets/course/glossary-page.js draws every term
+     from assets/glossary.json. #t-<concept> anchors still land on the term. */
   const body = `
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell anp-glossary">
-  ${crumbNav([{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }], depth)}
-  <header class="hero anp-hero"><div class="eyebrow">${COURSE_NAME}</div><h1>Glossary</h1><p class="lede">${entries.length.toLocaleString('en-US')} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.</p>
-    <label class="anp-filter">Find a term <input type="search" id="gl-filter" autocomplete="off" aria-controls="gl-results"></label>
-    <p class="anp-small" id="gl-status" role="status" aria-live="polite"></p></header>
-  <p class="anp-letters-hint anp-small" aria-hidden="true">Swipe the letters for ${letters[letters.length - 1]} &rarr;</p>
-  <nav class="anp-letters" aria-label="Jump to letter">${letters.map(l => `<a href="#l-${l}">${l}</a>`).join('')}</nav>
-  <div id="gl-results" class="anp-gl-results" hidden></div>
-  <div class="anp-terms" id="gl-index">${letters.map(l => {
-    const here = entries.filter(e => e.c.term[0].toUpperCase() === l);
-    return `<section class="anp-letter" id="l-${l}" aria-labelledby="h-${l}"><h2 id="h-${l}">${l} <span class="anp-small">${here.length} term${here.length === 1 ? '' : 's'}</span></h2><ul class="anp-term-index">${here.map(({ c }) => {
-      const href = C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : null;
-      const aliases = c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase());
-      return `<li id="t-${c.id}"${aliases.length ? ` data-a="${esc(aliases.join('|'))}"` : ''}>${href ? `<a href="${href}">${esc(c.term)}</a>` : esc(c.term)}</li>`;
-    }).join('')}</ul></section>`;
-  }).join('\n  ')}</div>
+<main id="main" class="xshell">
+  ${glossaryMain({
+    crumbs: [{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: 'Glossary' }],
+    courseHtml: esc(COURSE_NAME), beta: true,
+    lede: `${terms.length.toLocaleString('en-US')} terms${C.built.size === map.topics.length ? '' : ' so far'}, with plain definitions, word roots and pronunciation. Each one links to the page that teaches it.`,
+    chapters: glossaryChapters(), terms, placeholder: 'e.g. systole, nephron, hypo-', searchHref: 'search.html',
+  })}
   ${reportPage('glossary')}
 </main>
 ${footer(depth)}
-${tail({ depth, section: 'glossary', extra: ['anp-glossary-page.js'], site: ['report-question.js'] })}
+${tail({ depth, section: 'glossary', site: ['report-question.js'] })}
+${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', root: '' })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld }).replace('</head>', `<style>${GLOSSARY_CSS}</style>\n</head>`) + body;
+  return head({ title, desc, path: 'glossary.html', depth, ogType: 'website', jsonld }).replace('<link rel="stylesheet" href="assets/anp.css">', '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/glossary.css">\n<link rel="stylesheet" href="assets/anp.css">') + body;
 }
 
 /* -------------------------------------------------------- learn, home */
@@ -672,7 +637,7 @@ function learnPage() {
 <body>
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-book">
+<div class="tb-shell bk bk-book">
   ${tocBtn('Contents')}
   ${courseRail(null, depth, true)}
   <main class="tb-main" id="main">
@@ -691,7 +656,7 @@ ${tail({ depth, section: 'learn', extra: ['anp-toc.js', 'anp-book.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: 'learn.html', depth, ogType: 'website', jsonld }) + body;
+  return head({ title, desc, path: 'learn.html', depth, ogType: 'website', jsonld, book: true }) + body;
 }
 
 /* The course home. Laid out like ochem's home: a hero with the level card,
@@ -793,20 +758,20 @@ function homePage() {
   </header>
 
   <section class="xsection" aria-label="What to do now">
-    <div class="anp-now-row">
-      <div class="anp-now-card" id="anpStart">
+    <div class="anp-now-row cx-now-row">
+      <div class="anp-now-card cx-now-card" id="anpStart">
         <div class="k">Start here</div>
         ${first ? `<h2>${esc(first.title)}</h2>
         <p>Foundations &middot; ${esc(firstCh.title)}. Foundations is recommended, not required: nothing is locked.</p>
         <a class="btn-press" href="lessons/${first.id}.html">Start the first lesson</a>` : `<h2>Pick any chapter</h2><p>Nothing is locked.</p>`}
       </div>
-      <div class="anp-now-card" id="anpReview">
+      <div class="anp-now-card cx-now-card" id="anpReview">
         <div class="k">Review queue</div>
         <h2>Missed questions come back</h2>
         <p>Anything you miss returns when you are about to forget it, not on a fixed date.</p>
         <a class="link-quiet" href="review.html">Open review &rarr;</a>
       </div>
-      <div class="anp-now-card" id="anpGoal">
+      <div class="anp-now-card cx-now-card" id="anpGoal">
         <div class="k">Today&rsquo;s goal</div>
         <h2>A little every day</h2>
         <p>Questions, cards and tool steps count toward a daily goal and a streak shared across every LevlPrep subject.</p>
@@ -889,7 +854,7 @@ ${tail({ depth, section: 'home', extra: ['anp-home.js'] })}
 </body>
 </html>
 `;
-  return head({ title, desc, path: '', depth, ogType: 'website', jsonld, meta: '<link rel="stylesheet" href="assets/anp-home.css">\n' }) + body;
+  return head({ title, desc, path: '', depth, ogType: 'website', jsonld, meta: '<link rel="stylesheet" href="../assets/course/base.css">\n<link rel="stylesheet" href="../assets/course/hub.css">\n<link rel="stylesheet" href="assets/anp-home.css">\n' }) + body;
 }
 
 /* ---------------------------------------------------- apps and tools */
@@ -899,6 +864,8 @@ const PAGES = JSON.parse(readFileSync(join(C.data, 'pages.json'), 'utf8'));
 /* The shell of an app or tool page. The page's behavior is its script, which
    mounts into #app; the static text here is what a reader without JavaScript
    (or a search engine) sees. */
+// Hub pages (docs/course-shell.md, W-D): the shared opener and components.
+const HUB_PAGES = new Set(['dashboard', 'search', 'tools']);
 function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts, isTool, hero, mount }) {
   const url = `${SITE}${BASE}${path}`;
   const jsonld = { '@context': 'https://schema.org', '@graph': [
@@ -911,32 +878,41 @@ function appShell(entry, { path, depth, h1, eyebrow, lede, section, extraScripts
     ? [{ name: 'LevlPrep', href: '../../index.html' }, { name: COURSE_NAME, href: '../index.html' }, { name: 'Tools', href: '../tools.html' }, { name: entry.name }]
     : [{ name: 'LevlPrep', href: '../index.html' }, { name: COURSE_NAME, href: 'index.html' }, { name: h1 }];
   const teas = /\bTEAS\b/.test(entry.desc + ' ' + (lede || '')) || entry.slug === 'exams';
+  // Practice, Review, Flashcards and Exams share one shell with the other
+  // courses (docs/course-shell.md, W-C): .page-head opener with the course
+  // eyebrow and Beta pill, the shared crumb, course/base.css + study.css.
+  const study = STUDY_PAGES.has(entry.slug);
   const body = `
 <body data-app="${entry.slug}">
 <header id="site-header"></header>
 <div class="course-nav"></div>
 <main id="main" class="xshell anp-app">
-  ${crumbNav(crumbItems, depth)}
-  ${hero
+  ${study || (HUB_PAGES.has(entry.slug) && !isTool) ? crumbNav(crumbItems, depth).replace('class="anp-crumb"', 'class="anp-crumb cx-crumb"') : crumbNav(crumbItems, depth)}
+  ${study || (HUB_PAGES.has(entry.slug) && !isTool)
+    ? `<header class="page-head"><div class="eyebrow">${esc(eyebrow)} <span class="cx-beta">Beta</span></div><h1>${esc(study && hero ? hero.h1 : h1)}</h1><p class="lede">${hero ? hero.ledeHtml : esc(lede)}</p></header>`
+    : hero
     ? `<header class="hero anp-hero ${hero.cls}"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(hero.h1)}</h1><p class="lede">${hero.ledeHtml}</p></header>`
     : `<header class="hero anp-hero"><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(h1)}</h1><p class="lede">${esc(lede)}</p></header>`}${
   // Where site-chrome.js puts a cross-course suggestion (assets/cross-course.js).
   entry.slug === 'dashboard' ? '\n  <div data-levl-cross="anp"></div>' : ''}
-  <div id="app" class="anp-app-mount" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
+  <div id="app" class="anp-app-mount${study ? ' cx-study' : ''}" data-slug="${entry.slug}"${entry.premium ? ` data-premium="${entry.premium}"` : ''}${entry.data ? ` data-src="${depth}assets/tool-data/${entry.data}"` : ''}>${mount || `<noscript><p>This ${isTool ? 'tool' : 'page'} needs JavaScript. The lessons and notes pages work without it.</p></noscript>`}</div>
   ${teas ? `<p class="anp-disclaimer">${esc(TEAS_DISCLAIMER)}</p>` : ''}
 </main>
 ${footer(depth)}
-<link rel="stylesheet" href="${depth}assets/${entry.css}">
+${HUB_PAGES.has(entry.slug) && !isTool ? `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/hub.css">\n<script src="${depth}../assets/course/hub.js" defer></script>\n` : ''}<link rel="stylesheet" href="${depth}assets/${entry.css}">
 <script src="${depth}../assets/report-question.js" defer></script>
-${(entry.siteScripts || []).map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
+${[...(study ? ['course/study.js'] : []), ...(entry.siteScripts || [])].map(f => `<script src="${depth}../assets/${f}" defer></script>\n`).join('')}${tail({ depth, section, extra: ['anp-questions.js', ...(extraScripts || []), entry.script], premium: true })}
 </body>
 </html>
 `;
   // Dashboard, review and search show the visitor's own state: noindex, and
   // left out of the sitemap (scripts/lib/app-pages.mjs).
   const meta = APP_STATE_PAGES.includes(`anatomy-physiology/${path}`) ? `${NOINDEX}\n` : '';
-  return head({ title: courseTitle(entry.title, AP_LABELS), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  const page = head({ title: courseTitle(entry.title, AP_LABELS), desc: entry.desc, path, depth, ogType: 'website', jsonld, meta }) + body;
+  return study ? page.replace(`<link rel="stylesheet" href="${depth}assets/anp.css">`,
+    `<link rel="stylesheet" href="${depth}../assets/course/base.css">\n<link rel="stylesheet" href="${depth}../assets/course/study.css">\n<link rel="stylesheet" href="${depth}assets/anp.css">`) : page;
 }
+const STUDY_PAGES = new Set(['practice', 'review', 'exams', 'flashcards']);
 
 /* ---- Tools hub and practice page (redesign) ----
    The tools hub is rendered here in full (featured lab practical banner, then
@@ -1014,42 +990,44 @@ function toolsHubMount() {
   const lab = tools.find(t => t.slug === 'lab-practical');
   const labData = hubToolCounts('lab-practical');
   const figN = Object.keys(labData.figures).length;
-  const feat = `<section class="anp-hub-feat" aria-labelledby="anp-hub-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}>
-    <div class="anp-hub-feat-text">
-      <p class="anp-hub-feat-kick"><span class="anp-hub-dot" aria-hidden="true"></span>Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])}</p>
-      <h2 id="anp-hub-feat-h">${esc(lab.name)}</h2>
-      <p class="anp-hub-feat-tag">${esc(lab.tag || '')}</p>
-      <p class="anp-hub-feat-blurb">${esc(lab.blurb)} Every structure tells you what it does and which lesson teaches it.</p>
+  // The featured tool (shared .cx-feat block): the lab practical, with its
+  // modes and a masked figure as its art.
+  const feat = `<section class="cx-feat" aria-labelledby="cx-feat-h" data-tool="lab-practical" data-n="${labData.n}" data-ch="${chCounts(labData.by)}" data-unit="station,stations" data-chq="1"${lab.premium ? ' data-premium="1"' : ''}>
+    <div class="cx-feat-text">
+      <p class="cx-feat-kick"><span class="anp-hub-dot" aria-hidden="true"></span>Featured tool &middot; ${esc(HUB_SKILL['lab-practical'])}</p>
+      <h2 id="cx-feat-h">${esc(lab.name)}</h2>
+      <p class="cx-feat-desc">${esc(lab.tag || '')}</p>
+      <p class="cx-feat-blurb">${esc(lab.blurb)} Every structure tells you what it does and which lesson teaches it.</p>
       <ul class="anp-hub-modes" aria-label="Modes">${LAB_MODES.map(m => `<li><a class="anp-hub-mode${m.key === 'quiz' ? ' is-on' : ''}" href="tools/lab-practical.html#${m.key}" data-hash="${m.key}"><b><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${m.icon}</svg>${esc(m.label)}</b><span>${esc(m.blurb)}</span></a></li>`).join('')}</ul>
-      <div class="anp-hub-feat-row">
-        <a class="anp-hub-cta" href="tools/lab-practical.html">Start the lab practical <span aria-hidden="true">&rarr;</span></a>
-        <span class="anp-hub-feat-stats"><b>${figN}</b> figures &middot; <b>${labData.sets.length}</b> sets &middot; <span class="anp-hub-count"><b>${labData.n}</b> stations</span></span>
+      <div class="cx-feat-row">
+        <a class="cx-feat-cta" href="tools/lab-practical.html">Start the lab practical <span aria-hidden="true">&rarr;</span></a>
+        <span class="cx-feat-stats"><b>${figN}</b> figures &middot; <b>${labData.sets.length}</b> sets &middot; <span class="cx-tool-count"><b>${labData.n}</b> stations</span></span>
       </div>
-      <p class="anp-hub-status anp-hub-feat-status" aria-live="polite"></p>
+      <p class="cx-tool-status" aria-live="polite"></p>
     </div>
-    ${hubFigure(labData)}
+    <div class="cx-feat-art">${hubFigure(labData)}</div>
   </section>`;
   const others = tools.filter(t => t.slug !== 'lab-practical');
   const cards = others.map(t => {
     const c = hubToolCounts(t.slug);
     const [pl, sg] = HUB_ITEMS[t.slug];
-    return `<li><a class="anp-hub-card" href="tools/${t.slug}.html" data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}${t.premium ? ' data-premium="1"' : ''}>
-      <span class="anp-hub-top"><span class="anp-hub-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false">${HUB_ICON[t.slug] || '<circle cx="12" cy="12" r="7"/>'}</svg></span><span class="anp-hub-skill">${esc(HUB_SKILL[t.slug] || '')}</span></span>
-      <span class="anp-hub-name">${esc(t.name)}</span>
-      <span class="anp-hub-tag">${esc(t.tag || '')}</span>
-      <span class="anp-hub-blurb">${esc(t.blurb)}</span>
-      <span class="anp-hub-status"></span>
-      <span class="anp-hub-foot"><span class="anp-hub-count"><b>${c.n}</b> ${c.n === 1 ? sg : pl}</span><span class="anp-hub-go">Open <span aria-hidden="true">&rarr;</span></span></span>
-    </a></li>`;
+    return Hub.toolCard({
+      href: `tools/${t.slug}.html`, name: t.name, desc: t.tag || t.blurb, icon: HUB_ICON[t.slug], stroke: true,
+      attrs: ` data-tool="${t.slug}" data-n="${c.n}" data-ch="${chCounts(c.by)}" data-unit="${sg},${pl}"${HUB_CHAPTER_AWARE.has(t.slug) ? ' data-chq="1"' : ''}${t.premium ? ' data-premium="1"' : ''}`,
+      foot: `<span class="cx-tool-count"><b>${c.n}</b> ${c.n === 1 ? sg : pl}</span> &middot; ${esc(HUB_SKILL[t.slug] || '')}`,
+      status: '',
+    });
   }).join('\n    ');
   return `
+  <div class="cx-tools">
   <div class="anp-hub-filter" hidden></div>
   ${feat}
-  <div class="anp-hub-more-h"><h2>${numWord(others.length)} more ways to practice</h2><p>Physiology, numbers and words.</p></div>
-  <ul class="anp-hub" aria-label="More tools">
+  <div class="cx-tools-h"><h2>${numWord(others.length)} more ways to practice</h2><p>Physiology, numbers and words.</p></div>
+  <ul class="cx-tool-grid" aria-label="More tools">
     ${cards}
   </ul>
-  <p class="anp-hub-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
+  <p class="cx-tools-note">Every tool records what you answer: missed items go into your <a href="review.html">review queue</a>, and your accuracy shows here and on the <a href="dashboard.html">dashboard</a>. Want cards instead? Try the <a href="flashcards.html">flashcards</a>.</p>
+  </div>
   `;
 }
 
@@ -1057,8 +1035,8 @@ function toolsHubMount() {
 // hub, the static page body. Other app pages keep the default hero.
 const APP_EXTRAS = {
   tools: () => ({
-    hero: { cls: 'anp-hero-hub', h1: `${numWord(PAGES.tools.length)} tools. Start at the lab bench.`,
-      ledeHtml: 'Name structures on real figures, then work the physiology: predict, build, trace, read and calculate. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.' },
+    hero: { cls: 'anp-hero-hub', h1: 'Tools',
+      ledeHtml: `${numWord(PAGES.tools.length)} tools. Start at the lab bench: name structures on real figures, then work the physiology. Every tool explains its answers, and what you miss goes into your <a href="review.html">review queue</a>.` },
     mount: toolsHubMount(),
   }),
   practice: () => ({
@@ -1105,14 +1083,29 @@ window.AnpCurriculum = ${JSON.stringify(data)};
 `;
 }
 
-function glossaryJson() {
-  const out = {};
+/* The glossary in the shared shape (scripts/lib/glossary.mjs). Only the
+   published chapters' definitions are in C.glossary (see the top of this file);
+   href is empty for a term whose teaching page is not built yet. */
+function glossaryChapters() {
+  return map.chapters.map((ch, i) => ({ id: ch.id, title: `${i + 1}. ${ch.title}` }));
+}
+function glossaryTerms() {
+  const out = [];
   for (const c of map.concepts) {
     const g = C.glossary[c.id];
     if (!g) continue;
-    out[c.id] = { t: c.term, d: g.def, r: g.roots || [], s: g.say || '', p: c.taughtIn, b: C.built.has(c.taughtIn) ? 1 : 0 };
+    const t = topicById(c.taughtIn);
+    out.push({
+      id: c.id, term: c.term, def: g.def, topic: c.taughtIn, topicTitle: t ? t.title : '',
+      href: C.built.has(c.taughtIn) ? `notes/${c.taughtIn}.html` : '',
+      aka: c.aliases.filter(a => a.toLowerCase() !== c.term.toLowerCase()), roots: g.roots || [], say: g.say || '',
+      chapter: t ? t.chapter : '',
+    });
   }
-  return JSON.stringify(out);
+  return out;
+}
+function glossaryJson() {
+  return sharedGlossaryJson({ chapters: glossaryChapters(), terms: glossaryTerms() });
 }
 
 /* The question bank, one pair of files per published chapter

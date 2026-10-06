@@ -24,6 +24,8 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/study.css">
 <!-- Shared across every subject on LevlPrep: one login, one level, one
      streak. Deferred, like every script on the page, so the page paints
      before they arrive; they still run first, in this order. -->
@@ -78,33 +80,31 @@
 <div class="xshell" data-crumb><nav class="site-crumb" aria-label="Breadcrumb"><a href="/">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="/ochem/">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Review</span></nav></div>
 <!-- crumb:end -->
 
-<div class="xshell narrow stub-shell">
-  <div class="hero" id="reviewHero">
+<main class="xshell cx-study" id="main" tabindex="-1">
+  <header class="page-head" id="reviewHero">
     <div class="eyebrow">Organic Chemistry</div>
-    <h1 style="margin-bottom:4px;">Review</h1>
-    <p class="lede" style="margin-top:0;">Concepts come back when they're closest to being forgotten, inside a fresh problem.</p>
-  </div>
-  <div class="xsection" style="padding-top:20px;">
+    <h1>Review</h1>
+    <p class="lede">Concepts come back when they are closest to being forgotten, inside a fresh problem.</p>
+  </header>
+  <div>
     <!-- The queue: what's due today, what's held back, what's coming. -->
     <div id="reviewBody"></div>
 
     <!-- A running review session; the loop itself is session-runner.js. -->
-    <div id="reviewSession" class="practice-view" hidden>
-      <div class="session-head">
-        <span class="mode" id="reviewMode"></span>
-        <button type="button" class="quit" id="reviewQuit">End session</button>
+    <div id="reviewSession" class="practice-view cx-session" hidden>
+      <div class="cx-sbar">
+        <span class="cx-sbar-t" id="reviewMode"></span>
+        <span class="cx-sbar-n" id="reviewProgLabel"></span>
+        <button type="button" class="cx-end" id="reviewQuit">End session</button>
       </div>
-      <div class="progress-bar">
-        <div class="track"><div class="fill" id="reviewProgFill" style="width:0%"></div></div>
-        <div class="label" id="reviewProgLabel"></div>
-      </div>
-      <div class="lesson-card" id="reviewCard"></div>
+      <div class="cx-progress"><div class="fill" id="reviewProgFill" style="width:0%"></div></div>
+      <div class="lesson-card cx-q" id="reviewCard"></div>
     </div>
 
     <!-- Queue cleared. -->
     <div id="reviewDone" class="practice-view" hidden></div>
   </div>
-</div>
+</main>
 
 <script src="assets/curriculum.js" defer></script>
 <script src="assets/concepts.js" defer></script>
@@ -128,6 +128,7 @@
 </script>
 <script src="assets/ochem-nav.js" defer></script>
 <script src="assets/periodic-table.js" defer></script>
+<script src="../assets/course/study.js" defer></script>
 <script src="assets/review-page.js" defer></script>
 <div class="xshell">
   <footer>

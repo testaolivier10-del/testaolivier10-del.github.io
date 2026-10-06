@@ -1,0 +1,211 @@
+/* Hub pages shared by every course (docs/course-shell.md, W-D): dashboard,
+   search, tools hub and the course home's "now" row. Markup comes from
+   assets/course/hub.js (LevlHub), which the course scripts and the
+   generators call, so a Dashboard in one course is the Dashboard in all of
+   them. Theme tokens only; the course tint comes from --ctint/--cink.
+
+   Load after theme.css and assets/course/base.css. */
+
+/* ---- panels ------------------------------------------------------------ */
+.cx-panel{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);padding:22px;min-width:0;}
+.cx-panel + .cx-panel{margin-top:18px;}
+.cx-panel > h2{font:900 17px var(--font-ui);margin:0 0 14px;letter-spacing:-.01em;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+.cx-panel > h2 .premium-badge{margin:0;}
+.cx-hint{margin:-6px 0 12px;font:600 13px/1.5 var(--font-ui);color:var(--muted);}
+.cx-emptynote{margin:0 0 6px;font:700 13.5px/1.5 var(--font-ui);color:var(--muted);}
+.cx-emptynote a{color:var(--accent-text);}
+
+/* ---- dashboard --------------------------------------------------------- */
+.cx-db{margin:22px 0 28px;}
+.cx-db > * + *{margin-top:18px;}
+.cx-db .cx-stats{grid-template-columns:repeat(4,minmax(0,1fr));}
+.cx-stat-num small{font-size:15px;color:var(--muted);font-weight:800;}
+.cx-db .xd-card{margin:0;}
+.cx-db-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:20px;align-items:start;}
+.cx-db-col{min-width:0;display:grid;gap:18px;align-content:start;}
+.cx-db-col > .cx-panel + .cx-panel{margin-top:0;}
+.cx-db-col .premium-card{margin-top:0;}
+.cx-db-col > p{margin:0;}
+
+/* "Next up": the numbered start list a new learner sees. */
+.cx-next ol{margin:6px 0 0;padding-left:22px;font:700 14.5px/1.7 var(--font-ui);}
+.cx-next ol a,.cx-next-list a{color:var(--accent-text);}
+.cx-next > p{margin:0;font:600 14.5px/1.6 var(--font-ui);color:var(--ink);max-width:70ch;}
+.cx-next-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));}
+.cx-next-list li{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;background:var(--ctint);}
+.cx-next-list a{font:900 14.5px var(--font-ui);text-decoration:none;color:var(--cink);}
+.cx-next-list a:hover{text-decoration:underline;}
+.cx-next-list span{font:600 13px/1.45 var(--font-ui);color:var(--muted);}
+
+/* One mastery row: name, value, status chip, bar, note, action. */
+.cx-row{padding:10px 0;border-top:1px solid var(--line-soft);}
+.cx-row:first-child,.cx-panel > h2 + .cx-row,.cx-hint + .cx-row,.cx-group > summary .cx-row{border-top:0;}
+.cx-row-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:7px;}
+.cx-row-name{font:800 14px/1.35 var(--font-ui);color:var(--ink);min-width:0;overflow-wrap:anywhere;}
+.cx-row-name a{color:var(--accent-text);text-decoration:none;}
+.cx-row-name a:hover{text-decoration:underline;}
+.cx-row-val{flex-shrink:0;display:inline-flex;align-items:baseline;gap:8px;font:700 12.5px var(--font-mono);color:var(--muted);text-align:right;}
+.cx-row-val b{color:var(--ink);font-weight:800;}
+.cx-row .track > i{background:var(--cink);}
+.cx-row-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px;font:600 12px var(--font-ui);color:var(--muted);}
+.cx-row-foot a:not(.cx-go){color:var(--accent-text);}
+.cx-go{flex-shrink:0;padding:4px 11px;border-radius:var(--radius-pill);border:2px solid var(--cink);background:var(--ctint);color:var(--cink);font:900 11px var(--font-ui);text-decoration:none;white-space:nowrap;}
+.cx-go:hover{background:var(--cink);color:var(--white);}
+
+/* Status chip: the tier word, never color alone. */
+.cx-chip{display:inline-block;padding:2px 8px;border-radius:999px;font:800 10.5px/1.5 var(--font-ui);letter-spacing:.02em;white-space:nowrap;background:var(--surface2);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line);}
+.cx-chip[data-lvl="1"]{background:var(--tint-bad);color:var(--bad-text);box-shadow:none;}
+.cx-chip[data-lvl="2"]{background:var(--tint-amber);color:var(--amber-text);box-shadow:none;}
+.cx-chip[data-lvl="3"]{background:var(--tint-accent);color:var(--accent-text);box-shadow:none;}
+.cx-chip[data-lvl="4"]{background:var(--tint-good);color:var(--good-text);box-shadow:none;}
+
+/* Collapsible group: a chapter / unit / module row with its topics inside. */
+.cx-group{border-top:1px solid var(--line-soft);}
+.cx-hint + .cx-group,.cx-panel > h2 + .cx-group{border-top:0;}
+.cx-group > summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:18px minmax(0,1fr);gap:6px;align-items:start;border-radius:10px;}
+.cx-group > summary::-webkit-details-marker{display:none;}
+.cx-group > summary::before{content:var(--disclose);font:900 18px/1 var(--font-ui);color:var(--cink);padding-top:10px;transition:transform .2s ease;}
+.cx-group[open] > summary::before{transform:rotate(90deg);}
+.cx-group > summary:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.cx-group-body{margin:0 0 10px 24px;padding-left:12px;border-left:2px solid var(--line);}
+.cx-group-body .cx-row-name{font-weight:700;font-size:13.5px;}
+.cx-group-body .cx-row:first-child{border-top:0;}
+
+/* Level card: one component, every course (rank names stay per course). */
+.cx-level{background:var(--navy);color:var(--on-accent);border-radius:var(--radius-lg);padding:20px;}
+.cx-level-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.cx-level h2{margin:0;font:900 15px var(--font-ui);color:#F4D28C;}
+.cx-level-ring{width:48px;height:48px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(244,210,140,.16);border:3px solid #F4D28C;color:#F4D28C;font:900 15px var(--font-ui);}
+.cx-level-track{height:10px;border-radius:var(--radius-pill);background:rgba(255,255,255,.15);overflow:hidden;margin-bottom:8px;}
+.cx-level-track i{display:block;height:100%;background:#F4D28C;border-radius:var(--radius-pill);}
+.cx-level-sub{display:block;margin:4px 0 0;font:700 12px/1.5 var(--font-ui);color:#DCEFEA;}
+.cx-level-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.cx-level-chips span{padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.12);font:800 11px var(--font-ui);color:#fff;}
+
+/* Badges: theme.css .badge-grid/.badge, inside a panel, laid out as a grid. */
+.cx-badges .badge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:14px 10px;}
+.cx-badges .badge{width:auto;}
+
+/* Small side cards (Ochem's Daily Rounds, review debt, concept badges) read
+   as panels too. */
+.cx-db-col .game-card{margin:0;}
+
+/* ---- search ------------------------------------------------------------ */
+.cx-sr{max-width:820px;margin:22px 0 28px;}
+.cx-sr .cx-search{max-width:none;}
+.cx-sr .cx-search input{min-height:54px;padding:12px 16px 12px 46px;border-radius:var(--radius);border:var(--bw,2px) solid var(--line);background:var(--white);color:var(--ink);font:800 16.5px var(--font-ui);box-shadow:var(--lift-sm);box-sizing:border-box;}
+.cx-sr .cx-search input:focus{outline:none;border-color:var(--cink);box-shadow:0 0 0 3px var(--ctint);}
+.cx-sr .cx-search svg{left:16px;width:20px;height:20px;}
+.cx-sr-status{margin:10px 0 0;min-height:1.5em;font:700 13px var(--font-ui);color:var(--muted);}
+.cx-sr-help{margin:4px 0 0;font:600 12.5px/1.6 var(--font-ui);color:var(--muted);}
+.cx-sr-help kbd{font:800 11px var(--font-mono);background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);border-radius:5px;padding:1px 5px;color:var(--ink);}
+@media (hover:none) and (pointer:coarse){.cx-sr-help{display:none;}}
+.cx-sr-all{margin:8px 0 0;font:800 13px var(--font-ui);}
+.cx-sr-all a{color:var(--accent-text);}
+.cx-sr-filters{margin:12px 0 4px;}
+.cx-sr-filters:empty{display:none;}
+.cx-sr-filters .cx-pill{border:0;}
+.cx-sr-filters .cx-pill span{color:var(--muted);font-weight:700;}
+.cx-sr-filters .cx-pill[aria-pressed="true"] span{color:inherit;}
+.cx-sr-filters .cx-pill:focus-visible,.cx-sr-more:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.cx-sr-group{margin-top:18px;}
+.cx-sr-gh{display:flex;align-items:baseline;gap:8px;margin:0 0 8px;font:900 12px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.cx-sr-gh span{font-family:var(--font-mono);letter-spacing:0;}
+.cx-sr-list{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.cx-sr-hit{display:flex;flex-direction:column;gap:3px;padding:12px 15px;border-radius:14px;background:var(--white);border:var(--bw,2px) solid var(--line);color:var(--ink);text-decoration:none;box-shadow:var(--lift-sm);}
+.cx-sr-hit:hover{border-color:var(--cink);color:var(--ink);}
+.cx-sr-hit:focus-visible{outline:3px solid var(--cink);outline-offset:2px;border-color:var(--cink);}
+.cx-sr-title{font:900 15px/1.35 var(--font-ui);overflow-wrap:anywhere;}
+.cx-sr-meta{font:800 11.5px var(--font-ui);color:var(--cink);}
+.cx-sr-snip{font:600 13.5px/1.55 var(--font-ui);color:var(--muted);overflow-wrap:anywhere;}
+.cx-sr-hit mark{background:var(--tint-amber);color:var(--ink);border-radius:3px;padding:0 1px;box-shadow:inset 0 -2px 0 var(--amber);}
+.cx-sr-more{margin-top:8px;border:0;background:none;padding:6px 2px;font:800 13.5px var(--font-ui);color:var(--accent-text);text-decoration:underline;cursor:pointer;}
+.cx-sr-none{margin:18px 0 0;font:700 14px var(--font-ui);color:var(--muted);}
+.cx-sr-foot{margin:22px 0 0;font:600 12.5px var(--font-ui);color:var(--muted);}
+
+/* ---- tools hub --------------------------------------------------------- */
+.cx-tools{margin:22px 0 28px;}
+.cx-tools-h{display:flex;align-items:baseline;justify-content:space-between;gap:6px 14px;margin:clamp(30px,4.5vw,46px) 0 14px;flex-wrap:wrap;}
+.cx-tools-h:first-child{margin-top:0;}
+.cx-tools-h h2{margin:0;font:900 22px var(--font-ui);}
+.cx-tools-h p{margin:0;font:700 13.5px var(--font-ui);color:var(--muted);}
+.cx-tool-grid{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));}
+.cx-tool-grid > li{display:flex;min-width:0;}
+.cx-tool{display:flex;flex-direction:column;gap:9px;width:100%;padding:22px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw,2px) solid var(--line);box-shadow:var(--lift-sm);color:inherit;text-decoration:none;transition:transform .08s ease,box-shadow .12s ease;}
+.cx-tool:hover{transform:translateY(-3px);box-shadow:var(--lift-lg);color:inherit;}
+.cx-tool:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.cx-tool.is-empty{opacity:.62;}
+.cx-tool-top{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:42px;}
+.cx-tool-icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--ctint);color:var(--cink);flex:none;}
+.cx-tool-icon svg{width:24px;height:24px;}
+.cx-tool-icon svg[data-stroke]{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.cx-tool-top .premium-badge{margin:0;}
+.cx-tool-name{font:900 16.5px/1.25 var(--font-ui);color:var(--ink);}
+.cx-tool-desc{font:700 13.5px/1.5 var(--font-ui);color:var(--muted);}
+.cx-tool-status{display:grid;gap:6px;margin-top:auto;min-height:34px;align-content:end;}
+.cx-tool-status:empty{min-height:0;}
+.cx-tool-stat{font:700 12.5px var(--font-ui);color:var(--muted);}
+.cx-tool-stat b{color:var(--ink);font-weight:900;}
+.cx-tool-status .track > i{background:var(--cink);}
+.cx-tool-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line-soft);font:900 10.5px/1.4 var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.cx-tool-status + .cx-tool-foot{margin-top:0;}
+.cx-tool-foot b{color:var(--ink);}
+.cx-tool-go{color:var(--cink);white-space:nowrap;}
+.cx-tools-note{margin:22px 0 0;max-width:80ch;font:700 14px/1.6 var(--font-ui);color:var(--muted);}
+.cx-tools-note a{color:var(--cink);font-weight:900;}
+
+/* Featured tool: one optional dark block above the grid. The art slot is
+   the course's own (A&P: a masked lab practical figure). --feat-hi is the
+   highlight on the dark panel; a course may set its own. */
+.cx-feat{--feat-hi:#F4D28C;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(22px,3.5vw,44px);align-items:center;background:var(--navy);color:var(--on-accent);border-radius:28px;padding:clamp(22px,3.8vw,44px);box-shadow:var(--lift-lg);position:relative;overflow:hidden;}
+body[data-course="anp"] .cx-feat{--feat-hi:#F2B9A9;}
+.cx-feat-text{position:relative;min-width:0;}
+.cx-feat-kick{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:var(--feat-hi);margin:0 0 14px;}
+.cx-feat-kick .premium-badge{margin:0;}
+.cx-feat h2{font:900 clamp(28px,3.6vw,40px)/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;color:#fff;}
+.cx-feat-desc{font:800 17px/1.45 var(--font-ui);color:#fff;margin:0 0 10px;max-width:38ch;}
+.cx-feat-blurb{font:700 14px/1.6 var(--font-ui);color:var(--muted-on-dark);margin:0 0 20px;max-width:46ch;}
+.cx-feat-row{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;}
+.cx-feat-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#16332E;font:900 14.5px var(--font-ui);padding:13px 22px;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.22);transition:transform .08s ease;}
+.cx-feat-cta:hover{transform:translateY(-1px);color:#16332E;}
+.cx-feat-cta:focus-visible{outline:3px solid var(--feat-hi);outline-offset:3px;}
+.cx-feat-stats{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted-on-dark);}
+.cx-feat-stats b{color:#fff;}
+.cx-feat .cx-tool-status{margin:14px 0 0;min-height:18px;display:flex;align-items:center;gap:10px;}
+.cx-feat .cx-tool-stat{color:var(--muted-on-dark);}
+.cx-feat .cx-tool-stat b{color:#fff;}
+.cx-feat .cx-tool-status .track{flex:0 1 140px;background:rgba(255,255,255,.14);}
+.cx-feat .cx-tool-status .track > i{background:var(--feat-hi);}
+.cx-feat .cx-tool-stat.is-new + .track{display:none;}
+.cx-feat-art{position:relative;min-width:0;}
+
+/* ---- course home: Start here / Review queue / Today's goal ------------ */
+.cx-now-row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:18px;}
+.cx-now-card{background:var(--white);border:var(--bw) solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--lift-lg);padding:22px 24px;min-width:0;}
+.cx-now-card.due{box-shadow:var(--lift-lg),inset 0 0 0 2px var(--amber);}
+.cx-now-card .k{font:900 11px var(--font-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.cx-now-card h2,.cx-now-card h3{margin:0 0 6px;font-size:19px;}
+.cx-now-card p{margin:0 0 16px;font-size:13.5px;font-weight:700;color:var(--muted);}
+.cx-now-card p:last-child{margin-bottom:0;}
+.cx-now-card .xp-track,.cx-now-card .track{height:10px;margin:0 0 14px;}
+
+/* ---- narrow screens ---------------------------------------------------- */
+@media (max-width:1000px){ .cx-now-row{grid-template-columns:1fr;} }
+@media (max-width:900px){
+  .cx-db-grid{grid-template-columns:minmax(0,1fr);}
+  .cx-tool-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .cx-feat{grid-template-columns:minmax(0,1fr);}
+  .cx-feat-art{order:-1;}
+}
+@media (max-width:640px){
+  .cx-db .cx-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .cx-tool-grid{grid-template-columns:minmax(0,1fr);}
+  .cx-group-body{margin-left:8px;padding-left:8px;}
+  .cx-panel{padding:18px;}
+}
+@media (prefers-reduced-motion:reduce){
+  .cx-tool,.cx-tool:hover,.cx-feat-cta,.cx-feat-cta:hover{transition:none;transform:none;}
+}
+
+/* Dark mode: base.css writes the Beta pill in --ctint, which is translucent
+   in the dark theme, so the word vanished. Solid text on the hub pages. */

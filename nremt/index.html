@@ -33,6 +33,9 @@
 <script src="../assets/chime.js" defer></script>
 <script src="../assets/site-chrome.js" defer></script>
 <script src="../assets/premium.js" defer></script>
+<script src="../assets/course/hub.js" defer></script>
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/hub.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
 <style>
   /* Homepage-only layout. Everything visual (cards, buttons, path nodes,
@@ -201,6 +204,32 @@
     </div>
   </div>
 
+  <!-- What to do now: the same three cards as every course home
+       (assets/course/hub.css). This markup is the new-visitor state;
+       renderNow() below fills them from the practice-engine records. -->
+  <section class="xsection" aria-label="What to do now">
+    <div class="cx-now-row">
+      <div class="cx-now-card" id="nrStart">
+        <div class="k">Start here</div>
+        <h2>A 20-question domain drill</h2>
+        <p>Short and focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you have answered a few.</p>
+        <a class="btn-press" href="practice.html">Start a drill</a>
+      </div>
+      <div class="cx-now-card" id="nrReview">
+        <div class="k">Review queue</div>
+        <h2>Nothing due yet</h2>
+        <p>Anything you miss comes back when you are about to forget it, not on a fixed date.</p>
+        <a class="link-quiet" href="review.html">Open review &rarr;</a>
+      </div>
+      <div class="cx-now-card" id="nrGoal">
+        <div class="k">Today&rsquo;s goal</div>
+        <h2>0 of 15</h2>
+        <p>Questions, cards and tool steps from any LevlPrep subject count toward a daily goal and a shared streak.</p>
+        <a class="link-quiet" href="practice.html">Practice now &rarr;</a>
+      </div>
+    </div>
+  </section>
+
   <div class="xsection">
     <div class="section-head">
       <h2>The five exam domains</h2>
@@ -243,7 +272,7 @@
 
       <div class="side-rail" id="sideRail">
         <div class="tip-card">
-          <div class="k">Start here</div>
+          <div class="k">Or go short</div>
           <div class="v">A 20-question domain drill</div>
           <div class="s">Short, focused, with each answer checked as you go. Your weakest topics show up on the dashboard once you've answered a few.</div>
           <div style="margin-top:14px"><a href="practice.html" class="btn-press alt sm">Start a drill</a></div>
@@ -373,6 +402,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.getElementById('heroStreakCount').textContent = n;
 
     renderPrimaryCta();
+    renderNow();
 
     // Topic-area bars: the four most-answered, so the card stays compact.
     var stats = readJSON('nremt_domain_stats_all', {});
@@ -426,6 +456,40 @@ document.addEventListener('DOMContentLoaded', function(){
       if(Math.max(0, rec.level - decay) < 5) n++;
     });
     return n;
+  }
+
+
+  /* The three "now" cards, the row every course home has (assets/course/
+     hub.js nowCard). Same records as the hero button: an exam left running,
+     the review queue (dueForReviewCount), the weakest topic area, and the
+     site-wide daily goal (HubProgress). */
+  function renderNow(){
+    var H = window.LevlHub, HP = window.HubProgress;
+    if(!H) return;
+    var start = document.getElementById('nrStart'), review = document.getElementById('nrReview'), goal = document.getElementById('nrGoal');
+    var stats = readJSON('nremt_domain_stats_all', {});
+    var answered = DOMAINS.reduce(function(n, d){ return n + ((stats[d] && stats[d].total) || 0); }, 0);
+    if(readJSON('nremt_inprogress_exam', null)){
+      start.innerHTML = H.nowCard({ kicker: 'Pick up where you left off', title: 'An exam in progress', text: 'Your answers so far are saved. The clock and the questions wait where you left them.', cta: { href: 'practice.html', label: 'Resume your exam' }, primary: true });
+    } else if(answered){
+      var weak = DOMAINS.map(function(d){ return { d: d, s: stats[d] }; }).filter(function(x){ return x.s && x.s.total >= 5; })
+        .sort(function(a, b){ return a.s.correct / a.s.total - b.s.correct / b.s.total; })[0];
+      start.innerHTML = weak
+        ? H.nowCard({ kicker: 'Up next', title: 'Shore up ' + H.esc(weak.d), text: 'Your weakest topic area so far, at ' + Math.round(weak.s.correct / weak.s.total * 100) + '% across ' + weak.s.total + ' questions.', cta: { href: 'practice.html?system=' + encodeURIComponent(weak.d), label: 'Practice ' + H.esc(SHORT[weak.d] || weak.d) }, primary: true })
+        : H.nowCard({ kicker: 'Up next', title: 'Keep drilling', text: answered + ' questions answered so far. A few more in each topic area and your weakest shows up here.', cta: { href: 'practice.html', label: 'Start a drill' }, primary: true });
+    }
+    var due = dueForReviewCount();
+    review.classList.toggle('due', due > 0);
+    review.innerHTML = H.nowCard({ kicker: 'Review queue', title: due ? due + (due === 1 ? ' question' : ' questions') + ' due now' : 'Nothing due yet',
+      text: due ? 'Each right answer pushes that question further out.' : 'Anything you miss comes back when you are about to forget it, not on a fixed date.',
+      cta: { href: due ? 'review.html?start=spaced' : 'review.html', label: due ? 'Review now &rarr;' : 'Open review &rarr;' }, primary: false });
+    if(due > 0){ var b = start.querySelector('a.btn-press'); if(b) b.className = 'btn-outline'; }
+    if(HP){
+      var st = HP.streak(), done = Math.min(st.todayCount, st.goal);
+      goal.innerHTML = H.nowCard({ kicker: 'Today’s goal', title: done + ' of ' + st.goal, bar: Math.round(done / Math.max(1, st.goal) * 100),
+        text: st.metToday ? 'Goal met for today. Your streak is safe.' : 'Questions, cards and tool steps from any LevlPrep subject count.',
+        cta: { href: 'practice.html', label: 'Practice now &rarr;' } });
+    }
   }
 
   // Also leaves the same target in LevlResume (site-chrome.js) for the hub's

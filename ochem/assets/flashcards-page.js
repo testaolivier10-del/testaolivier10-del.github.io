@@ -228,46 +228,35 @@
         '</b>. <button type="button" class="link-underline" id="fcAllTopics" style="background:none;border:0;padding:0;font:inherit;color:var(--accent-text);cursor:pointer;">Show the whole deck</button></div>';
     }
 
+    // One design in every course (docs/course-shell.md, W-C): "Choose a
+    // deck", then the deck card with four numbers and Study, then the list.
     var work = q.due.length + q.fresh.length;
-    if(work){
-      var parts = [];
-      if(q.due.length) parts.push(plural(q.due.length, 'card') + ' due');
-      if(q.fresh.length) parts.push(q.fresh.length + ' new');
-      html += '<div class="rec-card">' +
-        '<div class="k">' + (q.due.length ? 'Due now' : 'Ready to start') + '</div>' +
-        '<h2>' + esc(parts.join(' · ')) + '</h2>' +
-        '<p>' + esc(q.due.length
-          ? 'Most overdue first, then new cards in course order. Anything you miss comes back a few cards later.'
-          : 'New cards arrive ' + S.NEW_PER_DAY + ' a day, in course order, so the deck grows at a pace you can keep up with.') +
-        '</p>' +
-        '<div class="actions">' +
-          '<button type="button" class="btn-press" id="fcStart">Start · ' + plural(work, 'card') + '</button>' +
-          '<button type="button" class="btn-press alt" id="fcAhead">Study ahead</button>' +
-        '</div></div>';
-    } else if(sel.length){
+    var deckTitle = onlyTopic ? TOPIC[onlyTopic].topic.title : prefs.chapter === 'all' ? 'All chapters'
+      : (function(){ for(var i = 0; i < C.MODULES.length; i++) if(C.MODULES[i].id === prefs.chapter) return chapterName(i); return 'All chapters'; })();
+    var note;
+    if(work) note = q.due.length
+      ? 'Most overdue first, then new cards in course order. Anything you miss comes back a few cards later.'
+      : 'New cards arrive ' + S.NEW_PER_DAY + ' a day, in course order, so the deck grows at a pace you can keep up with.';
+    else if(sel.length){
       var up = S.upcoming(ids(sel), now, 7);
-      var reason = q.newTotal && !q.allowance
-        ? 'You have met today’s ' + S.NEW_PER_DAY + ' new cards. More arrive tomorrow.'
-        : 'Nothing in this selection is due.';
-      html += '<div class="empty-panel" style="margin-bottom:6px;">' +
-        '<h2>All caught up</h2>' +
-        '<p>' + esc(reason + (up ? ' ' + plural(up, 'card') + ' come' + (up === 1 ? 's' : '') + ' due in the next week.' : '')) +
-        ' Studying ahead reviews cards early without pushing them further out.</p>' +
-        '<div style="margin-top:18px"><button type="button" class="btn-press alt sm" id="fcAhead">Study ahead</button></div>' +
-      '</div>';
-    } else {
-      html += '<div class="empty-panel" style="margin-bottom:6px;">' +
-        '<h2>No cards in this selection</h2>' +
-        '<p>' + esc(prefs.scope === 'studied'
-          ? '“Studied” fills in as you read sections, work lessons and practice.'
-          : prefs.scope === 'weak'
-            ? '“Needs work” lists topics where practice, a lesson or your own cards say you are shaky. Nothing is, yet.'
-            : 'Every card type is switched off.') + '</p>' +
-      '</div>';
-    }
-
-    html += renderFilters(q);
-    html += renderChapters();
+      note = (q.newTotal && !q.allowance ? 'You have met today’s ' + S.NEW_PER_DAY + ' new cards. More arrive tomorrow.' : 'Nothing in this selection is due.') +
+        (up ? ' ' + plural(up, 'card') + ' come' + (up === 1 ? 's' : '') + ' due in the next week.' : '') + ' Studying ahead reviews cards early without pushing them further out.';
+    } else note = prefs.scope === 'studied'
+      ? '“Studied” fills in as you read sections, work lessons and practice.'
+      : prefs.scope === 'weak'
+        ? '“Needs work” lists topics where practice, a lesson or your own cards say you are shaky. Nothing is, yet.'
+        : 'Every card type is switched off.';
+    html += '<div class="cx-main">' + renderFilters(q) +
+      '<section class="cx-card cx-deckcard" aria-labelledby="fcDeckH"><h2 id="fcDeckH">' + esc(deckTitle) + '</h2>' +
+        '<div class="cx-stats">' + LevlStudy.stat('Due now', q.due.length, '', q.due.length ? 'is-due' : '') + LevlStudy.stat('New today', q.fresh.length) +
+          LevlStudy.stat('Learned', q.learned) + LevlStudy.stat('In this deck', q.total) + '</div>' +
+        '<p class="cx-small">' + esc(note) + '</p>' +
+        '<div class="cx-actions">' +
+          (work ? '<button type="button" class="btn-press" id="fcStart">Study ' + plural(work, 'card') + '</button>' : '<p class="cx-caught">' + (sel.length ? 'You are caught up on this deck.' : 'No cards in this selection.') + '</p>') +
+          (sel.length ? '<button type="button" class="btn-outline" id="fcAhead">Study ahead</button>' : '') +
+        '</div>' +
+        '<p class="cx-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Each card comes back just before you would forget it.</p>' +
+      '</section>' + renderChapters() + '</div>';
 
     homeEl.innerHTML = html;
     bindHome();
@@ -281,23 +270,23 @@
         return '<option value="' + esc(m.id) + '"' + (prefs.chapter === m.id ? ' selected' : '') + '>' + esc(chapterName(i)) + '</option>';
       }).join('');
     function radio(value, label){
-      return '<label><input type="radio" name="fcScope" value="' + value + '"' + (prefs.scope === value ? ' checked' : '') + '>' +
+      return '<label class="cx-pill"><input type="radio" name="fcScope" value="' + value + '"' + (prefs.scope === value ? ' checked' : '') + '>' +
         '<span>' + esc(label) + ' <small>' + anyScope(value) + '</small></span></label>';
     }
     function box(key, label){
-      return '<label><input type="checkbox" name="fcType" value="' + key + '"' + (prefs.types[key] ? ' checked' : '') + '>' +
+      return '<label class="cx-pill"><input type="checkbox" name="fcType" value="' + key + '"' + (prefs.types[key] ? ' checked' : '') + '>' +
         '<span>' + esc(label) + '</span></label>';
     }
-    return '<div class="fc-filters" role="group" aria-label="Choose cards">' +
-      '<label class="fc-field">Chapter<select id="fcChapter">' + opts + '</select></label>' +
-      '<fieldset><legend>Topics</legend><div class="fc-seg">' +
+    return '<section class="cx-card cx-deck" aria-labelledby="fcChooseH"><h2 id="fcChooseH">Choose a deck</h2>' +
+      '<label class="cx-field"><span>Chapter</span><select id="fcChapter">' + opts + '</select></label>' +
+      '<fieldset class="cx-group"><legend>Topics</legend><div class="cx-pills">' +
         radio('all', 'All') + radio('studied', 'Studied') + radio('weak', 'Needs work') +
       '</div></fieldset>' +
-      '<fieldset><legend>Card types</legend><div class="fc-seg">' +
+      '<fieldset class="cx-group"><legend>Card types</legend><div class="cx-pills">' +
         box('concept', 'Concepts') + box('table', 'Facts & values') + box('authored', 'Named reactions') +
       '</div></fieldset>' +
-      '<p class="fc-note">' + esc(plural(q.total, 'card') + ' selected · ' + q.learned + ' learned · ' + q.newTotal + ' not seen yet.') + '</p>' +
-    '</div>';
+      '<p class="cx-small">' + esc(plural(q.total, 'card') + ' selected · ' + q.learned + ' learned · ' + q.newTotal + ' not seen yet.') + '</p>' +
+    '</section>';
   }
 
   function renderChapters(){
@@ -312,14 +301,14 @@
         if(!S.isNew(st)){ learned++; if(st.d <= now) due++; }
       });
       var pct = Math.round(learned / cards.length * 100);
-      return '<button type="button" class="fc-ch" data-ch="' + esc(m.id) + '" aria-pressed="' + (prefs.chapter === m.id) + '">' +
+      return '<button type="button" class="cx-prow fc-ch" data-ch="' + esc(m.id) + '" aria-pressed="' + (prefs.chapter === m.id) + '">' +
         '<span class="n"><b>' + (i + 1) + '</b>' + esc(m.title) + '</span>' +
         '<span class="c">' + (due ? '<span class="due">' + due + ' due</span> · ' : '') + learned + '/' + cards.length + '</span>' +
         '<span class="bar" aria-hidden="true"><span style="width:' + pct + '%"></span></span>' +
       '</button>';
     }).join('');
     if(!rows) return '';
-    return '<div class="fc-label">By chapter</div><div class="module-card fc-chapters">' + rows + '</div>';
+    return '<section aria-labelledby="fcByCh"><h2 class="cx-h2" id="fcByCh">By chapter</h2><div class="cx-card cx-plist fc-chapters">' + rows + '</div></section>';
   }
 
   function bindHome(){

@@ -29,6 +29,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/anp.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -90,25 +92,26 @@
 <body data-topic="cell-cycle">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell anp-tb anp-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="anp-rail" aria-expanded="false">&#9776; Chapter 3 contents</button>
-  <aside class="tb-rail anp-nav-ref anp-notes-rail" id="anp-rail">
+  <aside class="tb-rail anp-nav-ref bk-rail" id="anp-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="anp-toc-other" href="../chapters/chem-physics.html"><span class="anp-toc-n">2</span>Chemistry and physics for physiology</a>
-    <a class="anp-toc-chap" href="../chapters/cells.html"><span class="anp-toc-chap-n">3</span><span><b>Cells</b><small>9 topics &middot; A&amp;P I</small></span></a>
-    <div class="anp-toc-prog" data-toc-prog="cells"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="anp-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
-    <nav class="tb-contents" aria-label="Chapter contents"><ol class="anp-toc-list"><li data-toc-t="plasma-membrane"><a href="plasma-membrane.html"><span class="anp-toc-n">15</span>The cell and its plasma membrane</a></li><li data-toc-t="organelles"><a href="organelles.html"><span class="anp-toc-n">16</span>Organelles and the cytoskeleton</a></li><li data-toc-t="cell-junctions"><a href="cell-junctions.html"><span class="anp-toc-n">17</span>Cell junctions</a></li><li data-toc-t="passive-transport"><a href="passive-transport.html"><span class="anp-toc-n">18</span>Passive transport across membranes</a></li><li data-toc-t="active-transport"><a href="active-transport.html"><span class="anp-toc-n">19</span>Active transport and vesicles</a></li><li data-toc-t="dna-genes"><a href="dna-genes.html"><span class="anp-toc-n">20</span>The nucleus, DNA and genes</a></li><li data-toc-t="protein-synthesis"><a href="protein-synthesis.html"><span class="anp-toc-n">21</span>From gene to protein</a></li><li class="current" data-toc-t="cell-cycle"><a href="#main" aria-current="page"><span class="anp-toc-n">22</span>Cell division and differentiation</a><div class="anp-toc-onpage"><p>On this page</p><a href="#the-cell-cycle-a-cell-s">The cell cycle: a cell's life in phases</a><a href="#control-of-the-cell-cycle-cyclins">Control of the cell cycle: cyclins and checkpoints</a><a href="#mitosis-dividing-the-nucleus">Mitosis: dividing the nucleus</a><a href="#cytokinesis-dividing-the-cytoplasm">Cytokinesis: dividing the cytoplasm</a><a href="#stem-cells-the-source-of-new">Stem cells: the source of new cells</a><a href="#stem-cell-potency-how-many-cell">Stem cell potency: how many cell types a stem cell can make</a><a href="#cell-differentiation-becoming-specialized">Cell differentiation: becoming specialized</a><a href="#apoptosis-cell-death-on-purpose">Apoptosis: cell death on purpose</a><a href="#cancer-when-control-fails">Cancer: when control fails</a></div></li><li data-toc-t="cellular-respiration"><a href="cellular-respiration.html"><span class="anp-toc-n">23</span>How cells make ATP</a></li></ol></nav>
-    <a class="anp-toc-other" href="../chapters/tissues.html"><span class="anp-toc-n">4</span>Tissues</a>
+    <a class="bk-toc-other" href="../chapters/chem-physics.html"><span class="bk-toc-n">2</span>Chemistry and physics for physiology</a>
+    <a class="bk-toc-chap" href="../chapters/cells.html"><span class="bk-toc-chap-n">3</span><span><b>Cells</b><small>9 topics &middot; A&amp;P I</small></span></a>
+    <div class="anp-toc-prog" data-toc-prog="cells"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="plasma-membrane"><a href="plasma-membrane.html"><span class="bk-toc-n">15</span>The cell and its plasma membrane</a></li><li data-toc-t="organelles"><a href="organelles.html"><span class="bk-toc-n">16</span>Organelles and the cytoskeleton</a></li><li data-toc-t="cell-junctions"><a href="cell-junctions.html"><span class="bk-toc-n">17</span>Cell junctions</a></li><li data-toc-t="passive-transport"><a href="passive-transport.html"><span class="bk-toc-n">18</span>Passive transport across membranes</a></li><li data-toc-t="active-transport"><a href="active-transport.html"><span class="bk-toc-n">19</span>Active transport and vesicles</a></li><li data-toc-t="dna-genes"><a href="dna-genes.html"><span class="bk-toc-n">20</span>The nucleus, DNA and genes</a></li><li data-toc-t="protein-synthesis"><a href="protein-synthesis.html"><span class="bk-toc-n">21</span>From gene to protein</a></li><li class="current" data-toc-t="cell-cycle"><a href="#main" aria-current="page"><span class="bk-toc-n">22</span>Cell division and differentiation</a><div class="bk-toc-onpage"><p>On this page</p><a href="#the-cell-cycle-a-cell-s">The cell cycle: a cell's life in phases</a><a href="#control-of-the-cell-cycle-cyclins">Control of the cell cycle: cyclins and checkpoints</a><a href="#mitosis-dividing-the-nucleus">Mitosis: dividing the nucleus</a><a href="#cytokinesis-dividing-the-cytoplasm">Cytokinesis: dividing the cytoplasm</a><a href="#stem-cells-the-source-of-new">Stem cells: the source of new cells</a><a href="#stem-cell-potency-how-many-cell">Stem cell potency: how many cell types a stem cell can make</a><a href="#cell-differentiation-becoming-specialized">Cell differentiation: becoming specialized</a><a href="#apoptosis-cell-death-on-purpose">Apoptosis: cell death on purpose</a><a href="#cancer-when-control-fails">Cancer: when control fails</a></div></li><li data-toc-t="cellular-respiration"><a href="cellular-respiration.html"><span class="bk-toc-n">23</span>How cells make ATP</a></li></ol></nav>
+    <a class="bk-toc-other" href="../chapters/tissues.html"><span class="bk-toc-n">4</span>Tissues</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="anp-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Anatomy &amp; Physiology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../chapters/cells.html">Cells</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Cell division and differentiation: notes</span></nav>
-    <div class="anp-pillbar"><a class="anp-pill" href="../lessons/cell-cycle.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
-    <header class="anp-notes-head">
-      <p class="anp-notes-eyebrow">Chapter 3 &middot; Topic 22 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
-      <h1 class="anp-notes-title">Cell division and differentiation</h1>
-      <p class="anp-tags anp-notes-meta anp-nav-ref"><span class="anp-tag">A&amp;P I</span><a class="anp-tag" href="../concepts/structure-function.html">Structure and function</a><span class="anp-small">12 min read</span><span class="anp-tb-chip" data-chip-topic="cell-cycle">Not practiced</span></p>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/cell-cycle.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Chapter 3 &middot; Topic 22 of 162 <span class="anp-beta anp-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Cell division and differentiation</h1>
+      <p class="bk-meta anp-nav-ref"><span class="bk-tag">A&amp;P I</span><a class="bk-tag" href="../concepts/structure-function.html">Structure and function</a><span class="bk-small">12 min read</span><span class="bk-chip" data-chip-topic="cell-cycle">Not practiced</span></p>
+      <div class="bk-actions anp-nav-ref" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/anatomy-physiology/notes/cell-cycle.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="anp-prose">
+    <article class="anp-prose bk-prose">
 <p>The lining of your intestine is replaced every few days. Your body makes about two million new <a class="gl" href="../notes/plasma-membrane.html" data-c="blood-cells-basic">red blood cells</a> every second. Yet many of your cells almost never divide. This page explains the <span class="gl" tabindex="0" data-c="cell-cycle">cell cycle</span> and the phases of <span class="gl" tabindex="0" data-c="mitosis">mitosis</span>, how cells decide whether to divide, how unspecialized <span class="gl" tabindex="0" data-c="stem-cell">stem cells</span> give rise to specialized cells, how cells are removed on purpose, and what goes wrong in cancer.</p>
 
 <h2 id="the-cell-cycle-a-cell-s">The cell cycle: a cell's life in phases</h2>
@@ -244,11 +247,12 @@
   <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../credits.html">Figure credits</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
 </footer>
 <script src="../../assets/report-question.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 <script>window.ANP_SECTION = 'learn'; window.ANP_BASE = '../';</script>
 <script src="../assets/anp-curriculum.js" defer></script>
 <script src="../assets/anp-core.js" defer></script>
-<script src="../assets/anp-glossary.js" defer></script>
 <script src="../assets/anp-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
 <script src="../assets/anp-toc.js" defer></script>
 </body>
 </html>

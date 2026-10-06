@@ -28,6 +28,8 @@
 <script src="../../assets/hub-progress.js" defer></script>
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/bio.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -89,23 +91,26 @@
 <body class="bio" data-topic="stats-hardy-weinberg" data-unit="skills-stats">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<div class="tb-shell bio-tb bio-notes">
+<div class="tb-shell bk bk-notes">
   <button type="button" class="tb-toc-btn" aria-controls="bio-rail" aria-expanded="false">&#9776; Skills contents</button>
-  <aside class="tb-rail bio-nav-ref bio-notes-rail" id="bio-rail">
+  <aside class="tb-rail bio-nav-ref bk-rail" id="bio-rail">
     <p class="tb-rail-title">Contents</p>
-    <a class="bio-toc-chap" href="../units/skills-stats.html"><span class="bio-toc-chap-n">S</span><span><b>Statistics and math</b><small>9 topics</small></span></a>
-    <nav class="tb-contents" aria-label="Unit contents"><ol class="bio-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bio-toc-n">S</span>Mean, median, mode and range</a></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bio-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bio-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bio-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bio-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bio-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bio-toc-n">S</span>Chi-square test</a></li><li class="current" data-toc-t="stats-hardy-weinberg"><a href="#main" aria-current="page"><span class="bio-toc-n">S</span>Hardy-Weinberg calculations</a><div class="bio-toc-onpage"><p>On this page</p><a href="#why">Seeing the hidden alleles</a><a href="#worked">Worked example: from phenotypes to genotypes</a><a href="#carriers">Carrier frequency</a><a href="#counts">When you have genotype counts: count alleles</a><a href="#change">Measuring evolution: change in allele frequency</a></div></li><li data-toc-t="stats-simpson"><a href="stats-simpson.html"><span class="bio-toc-n">S</span>Simpson's diversity index</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/unit-8.html"><span class="bk-toc-n">8</span>Ecology</a>
+    <a class="bk-toc-chap" href="../units/skills-stats.html"><span class="bk-toc-chap-n">S</span><span><b>Statistics and math</b><small>9 topics</small></span></a>
+    <div class="bio-toc-prog" data-toc-prog="skills-stats"><div class="tb-progress-row"><span><b>0</b> of 9 lessons done</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Unit contents"><ol class="bk-toc-list"><li data-toc-t="stats-descriptive"><a href="stats-descriptive.html"><span class="bk-toc-n">S</span>Mean, median, mode and range</a></li><li data-toc-t="stats-plots"><a href="stats-plots.html"><span class="bk-toc-n">S</span>Graph construction</a></li><li data-toc-t="stats-sd-se"><a href="stats-sd-se.html"><span class="bk-toc-n">S</span>Standard deviation and standard error</a></li><li data-toc-t="stats-rates"><a href="stats-rates.html"><span class="bk-toc-n">S</span>Rates and percent change</a></li><li data-toc-t="stats-confidence-intervals"><a href="stats-confidence-intervals.html"><span class="bk-toc-n">S</span>95% confidence intervals and error bars</a></li><li data-toc-t="stats-water-potential"><a href="stats-water-potential.html"><span class="bk-toc-n">S</span>Water potential calculations</a></li><li data-toc-t="stats-chi-square"><a href="stats-chi-square.html"><span class="bk-toc-n">S</span>Chi-square test</a></li><li class="current" data-toc-t="stats-hardy-weinberg"><a href="#main" aria-current="page"><span class="bk-toc-n">S</span>Hardy-Weinberg calculations</a><div class="bk-toc-onpage"><p>On this page</p><a href="#why">Seeing the hidden alleles</a><a href="#worked">Worked example: from phenotypes to genotypes</a><a href="#carriers">Carrier frequency</a><a href="#counts">When you have genotype counts: count alleles</a><a href="#change">Measuring evolution: change in allele frequency</a></div></li><li data-toc-t="stats-simpson"><a href="stats-simpson.html"><span class="bk-toc-n">S</span>Simpson's diversity index</a></li></ol></nav>
+    <a class="bk-toc-other" href="../units/skills-design.html"><span class="bk-toc-n">S</span>Experimental design and argumentation</a>
   </aside>
   <main class="tb-main" id="main">
     <nav class="bio-crumb bio-nav-ref" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">AP® Biology</a> <span aria-hidden="true">&rsaquo;</span> <a href="../units/skills-stats.html">Statistics and math</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Hardy-Weinberg calculations: notes</span></nav>
-    <div class="bio-pillbar"><a class="bio-pill" href="../lessons/stats-hardy-weinberg.html">Practice this lesson</a></div>
-    <header class="bio-notes-head">
-      <p class="bio-notes-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
-      <h1 class="bio-notes-title">Hardy-Weinberg calculations</h1>
-      <p class="bio-tags bio-notes-meta bio-nav-ref"><span class="bio-small">4 min read &middot; free</span><span class="bio-tb-chip" data-chip-topic="stats-hardy-weinberg">Not practiced</span></p>
-      <div class="bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bio-share-btn" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-hardy-weinberg.html&amp;title=Hardy-Weinberg%20calculations%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bio-share-btn" data-copy="https://levlprep.com/bio/notes/stats-hardy-weinberg.html">Copy link</button><button type="button" class="bio-share-btn" data-print>Print</button></div>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/stats-hardy-weinberg.html">Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow">Skills <span class="bio-beta bio-nav-ref">Beta</span></p>
+      <h1 class="bk-title">Hardy-Weinberg calculations</h1>
+      <p class="bk-meta bio-nav-ref"><span class="bk-small">4 min read &middot; free</span><span class="bk-chip" data-chip-topic="stats-hardy-weinberg">Not practiced</span></p>
+      <div class="bk-actions bio-share bio-nav-ref" role="group" aria-label="Share or print this notes page"><a class="bk-action" href="https://classroom.google.com/share?url=https%3A%2F%2Flevlprep.com%2Fbio%2Fnotes%2Fstats-hardy-weinberg.html&amp;title=Hardy-Weinberg%20calculations%3A%20biology%20notes" target="_blank" rel="noopener">Share to Google Classroom<span class="sr-only"> (opens in a new tab)</span></a><button type="button" class="bk-action" data-copy="https://levlprep.com/bio/notes/stats-hardy-weinberg.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
     </header>
-    <article class="bio-prose">
+    <article class="bio-prose bk-prose">
 <h2 id="why">Seeing the hidden alleles</h2>
 <p>In a meadow of wildflowers, purple (A) is completely <a class="gl" href="../notes/mendelian-genetics.html" data-c="dominant">dominant</a> to white (a). You can count white plants, because every white plant is aa. You cannot see which purple plants are AA and which are Aa. The <a class="gl" href="../notes/hardy-weinberg.html" data-c="hw-equations">Hardy-Weinberg equations</a> on the formula sheet let you work out the hidden numbers, as long as the <a class="gl" href="../notes/natural-selection-intro.html" data-c="population">population</a> is assumed to be in equilibrium:</p>
 <ul>
@@ -177,8 +182,8 @@
 <script>window.ApBioSection = 'learn'; window.ApBioBase = '../';</script>
 <script src="../assets/bio-curriculum.js" defer></script>
 <script src="../assets/bio-core.js" defer></script>
-<script src="../assets/bio-glossary.js" defer></script>
 <script src="../assets/bio-nav.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
 <script src="../assets/bio-toc.js" defer></script>
 </body>
 </html>

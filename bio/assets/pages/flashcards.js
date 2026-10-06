@@ -19,6 +19,14 @@
    Self-grading moves no mastery number (cards never touch
    apbio_progress_v1); cards pay XP (2 each, 60 a day at most). */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.ApBioCurriculum;
   if(!app || !CU) return;
@@ -187,20 +195,41 @@
         return '<optgroup label="Topics: ' + esc(unitName(u.id)) + '">' + ts.map(function(t){ return opt('topic:' + t.id, (t.ced ? t.ced + ' ' : '') + t.title + ' (' + count(function(c){ return c.topic === t.id; }) + ')'); }).join('') + '</optgroup>';
       }).join('');
     var kinds = [['t', 'Term → definition', kindCount('t')], ['d', 'Definition → term', kindCount('d')], ['s', 'Topic summaries', kindCount('s')]];
-    var missedNote = prefs.deck === 'missed' ? (missedConcepts === null ? '<p class="bio-fc-note">Finding the terms in your missed questions…</p>' : !cards.length ? '<p class="bio-fc-note">No missed terms right now. When you get a question wrong, the glossary terms it uses land in this deck.</p>' : '') : '';
-    var stat = function(v, l, cls){ return '<div class="bio-fc-stat' + (cls ? ' ' + cls : '') + '"><b>' + v + '</b><span>' + l + '</span></div>'; };
-    app.innerHTML =
-      '<section class="bio-fc-deck panel" aria-labelledby="bio-fc-deck-h"><h2 id="bio-fc-deck-h">Choose a deck</h2>' +
-        '<label class="bio-fc-field" for="bio-fc-deck">Deck</label><select id="bio-fc-deck" class="bio-fc-select">' + sel + '</select>' +
-        '<fieldset class="bio-fc-kinds"><legend>Card types</legend><div class="bio-fc-seg">' + kinds.map(function(k){
-          return '<label><input type="checkbox" value="' + k[0] + '"' + (prefs.kinds[k[0]] ? ' checked' : '') + '><span>' + esc(k[1]) + ' <small>' + k[2] + '</small></span></label>';
+    var missedNote = prefs.deck === 'missed' ? (missedConcepts === null ? '<p class="cx-small">Finding the terms in your missed questions…</p>' : !cards.length ? '<p class="cx-small">No missed terms right now. When you get a question wrong, the glossary terms it uses land in this deck.</p>' : '') : '';
+    var stat = function(v, l, cls){ return LevlStudy.stat(l, v, '', cls); };
+    // By unit: progress across every card in each unit (the list NREMT and
+    // Ochem show by topic area and chapter). A row opens that deck.
+    var dd = load();
+    var byUnit = units.map(function(u, i){
+      var cs = CARDS.filter(function(c){ return prefs.kinds[c.kind] && TOPIC[c.topic].unit === u.id; });
+      var learned = 0, due = 0;
+      cs.forEach(function(c){ var st = dd.cards[c.id]; if(!isNew(st)){ learned++; if(st.d <= now) due++; } });
+      var deck = 'unit:' + u.id;
+      return '<button type="button" class="cx-prow" data-deck="' + esc(deck) + '" aria-pressed="' + (prefs.deck === deck) + '">' +
+        '<span class="n">' + esc(unitName(u.id)) + '</span>' +
+        '<span class="c">' + (due ? '<span class="due">' + due + ' due</span> &middot; ' : '') + learned + '/' + cs.length + '</span>' +
+        '<span class="bar" aria-hidden="true"><span style="width:' + (cs.length ? Math.round(learned / cs.length * 100) : 0) + '%"></span></span></button>';
+    }).join('');
+    app.innerHTML = '<div class="cx-main">' +
+      '<section class="cx-card cx-deck" aria-labelledby="bio-fc-deck-h"><h2 id="bio-fc-deck-h">Choose a deck</h2>' +
+        '<label class="cx-field" for="bio-fc-deck"><span>Deck</span><select id="bio-fc-deck">' + sel + '</select></label>' +
+        '<fieldset class="cx-group bio-fc-kinds"><legend>Card types</legend><div class="cx-pills">' + kinds.map(function(k){
+          return '<label class="cx-pill"><input type="checkbox" value="' + k[0] + '"' + (prefs.kinds[k[0]] ? ' checked' : '') + '><span>' + esc(k[1]) + ' <small>' + k[2] + '</small></span></label>';
         }).join('') + '</div></fieldset>' + missedNote + '</section>' +
-      '<section class="bio-fc-today panel" aria-labelledby="bio-fc-today-h"><h2 id="bio-fc-today-h">' + esc(deckName(prefs.deck)) + '</h2>' +
-        '<div class="bio-fc-stats">' + stat(q.due.length, 'due now', q.due.length ? 'is-due' : '') + stat(q.fresh.length, 'new today') + stat(q.learned, 'learned') + stat(q.total, 'in this deck') + '</div>' +
-        '<p class="bio-fc-note">' + (q.soon ? plural(q.soon, 'card') + ' coming due in the next 7 days. ' : '') + (q.newTotal > q.fresh.length ? plural(q.newTotal - q.fresh.length, 'more new card') + ' will be introduced on later days (' + NEW_PER_DAY + ' a day keeps reviews manageable).' : '') + '</p>' +
-        '<div class="bio-fc-actions">' + (todo ? '<button type="button" class="btn-press alt" data-act="study">Study ' + plural(todo, 'card') + '</button>' : '<p class="bio-fc-caught">' + (q.total ? 'You are caught up on this deck.' : 'This deck has no cards with the card types chosen.') + '</p>') +
+      '<section class="cx-card cx-deckcard" aria-labelledby="bio-fc-today-h"><h2 id="bio-fc-today-h">' + esc(deckName(prefs.deck)) + '</h2>' +
+        '<div class="cx-stats">' + stat(q.due.length, 'Due now', q.due.length ? 'is-due' : '') + stat(q.fresh.length, 'New today') + stat(q.learned, 'Learned') + stat(q.total, 'In this deck') + '</div>' +
+        '<p class="cx-small">' + (q.soon ? plural(q.soon, 'card') + ' coming due in the next 7 days. ' : '') + (q.newTotal > q.fresh.length ? plural(q.newTotal - q.fresh.length, 'more new card') + ' will be introduced on later days (' + NEW_PER_DAY + ' a day keeps reviews manageable).' : '') + '</p>' +
+        '<div class="cx-actions">' + (todo ? '<button type="button" class="btn-press" data-act="study">Study ' + plural(todo, 'card') + '</button>' : '<p class="cx-caught">' + (q.total ? 'You are caught up on this deck.' : 'This deck has no cards with the card types chosen.') + '</p>') +
           (q.learned && !q.due.length ? '<button type="button" class="btn-outline" data-act="ahead">Study ahead</button>' : '') + '</div>' +
-        '<p class="bio-fc-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Cards do not change your mastery scores; questions do.</p></section>';
+        '<p class="cx-how">Grade yourself honestly: <b>Again</b> if you did not know it, <b>Hard</b> if it took effort, <b>Good</b> if you knew it, <b>Easy</b> if it was instant. Cards do not change your mastery scores; questions do.</p></section>' +
+      (byUnit ? '<section aria-labelledby="bio-fc-u-h"><h2 class="cx-h2" id="bio-fc-u-h">By unit</h2><div class="cx-card cx-plist">' + byUnit + '</div></section>' : '') +
+    '</div>';
+    app.querySelectorAll('[data-deck]').forEach(function(b){
+      b.addEventListener('click', function(){
+        prefs.deck = b.getAttribute('data-deck'); savePrefs(); renderHome();
+        var h = document.getElementById('bio-fc-today-h'); if(h){ h.setAttribute('tabindex', '-1'); h.focus(); }
+      });
+    });
     var s = document.getElementById('bio-fc-deck');
     s.addEventListener('change', function(){
       prefs.deck = s.value; savePrefs();
@@ -249,8 +278,8 @@
     var s = load().cards[c.id];
     var st = isNew(s) ? '<span class="bio-fc-tag new">New</span>' : isLearning(s) ? '<span class="bio-fc-tag learn">Learning</span>' : '<span class="bio-fc-tag">Review</span>';
     var p = Math.round(run.done / Math.max(1, run.done + run.queue.length) * 100);
-    app.innerHTML = '<div class="bio-fc-session"><div class="bio-fc-bar"><span class="bio-fc-mode">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : '') + '</span><button type="button" class="bio-fc-quit" data-act="quit">End session</button></div>' +
-      '<div class="bio-fc-prog"><div class="track thin" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></div><span class="bio-fc-prog-l">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span></div>' +
+    app.innerHTML = '<div class="cx-session bio-fc-session"><div class="cx-sbar"><span class="cx-sbar-t">' + esc(deckName(run.deck)) + (run.mode === 'ahead' ? ' &middot; studying ahead' : '') + '</span><span class="cx-sbar-n">' + run.done + ' done &middot; ' + run.queue.length + ' to go</span><button type="button" class="cx-end" data-act="quit">End session</button></div>' +
+      '<div class="cx-progress" role="progressbar" aria-label="Session progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p + '"><i style="width:' + p + '%"></i></div>' +
       '<div class="bio-fc-card" id="bio-fc-card"><button type="button" class="bio-fc-face bio-fc-front" data-act="flip" aria-describedby="bio-fc-hint"><span class="bio-fc-meta">' + st + '<span class="bio-fc-tag">' + (c.kind === 's' ? 'Summary' : 'Glossary') + '</span><span>' + esc(TOPIC[c.topic].title) + '</span></span>' +
         frontHtml(c) + '<span class="bio-fc-tap" id="bio-fc-hint">Tap or press Space to show the answer</span></button></div>' +
       '<p class="bio-fc-keys" aria-hidden="true"><kbd>Space</kbd> flip &middot; <kbd>1</kbd> Again &middot; <kbd>2</kbd> Hard &middot; <kbd>3</kbd> Good &middot; <kbd>4</kbd> Easy</p><p class="sr-only" aria-live="polite" id="bio-fc-live"></p></div>';
@@ -330,7 +359,7 @@
   app.innerHTML = '<div class="bio-fc-loading panel" aria-busy="true"><p>Shuffling the deck…</p></div>';
   function getJson(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).catch(function(){ return null; }); }
   Promise.all([getJson(BASE + 'assets/glossary.json'), getJson(BASE + 'assets/summaries.json')]).then(function(res){
-    buildCards(res[0], res[1]);
+    buildCards(glossMap(res[0]), res[1]);
     if(!(prefs.deck === 'all' || prefs.deck === 'missed' || deckCards(prefs.deck).length)) prefs.deck = 'all';
     if(prefs.deck === 'missed') return loadMissed().then(renderHome);
     renderHome();

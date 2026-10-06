@@ -29,7 +29,9 @@
 <script src="../../assets/chime.js" defer></script>
 <script src="../../assets/site-chrome.js" defer></script>
 <script src="../assets/ochem-xp.js" defer></script>
-<script src="../assets/glossary-tip.js" defer></script>
+<script src="../../assets/course/glossary-tip.js" data-glossary="../assets/glossary.json" data-course-root="../" defer></script>
+<link rel="stylesheet" href="../../assets/course/base.css">
+<link rel="stylesheet" href="../../assets/course/book.css">
 <link rel="stylesheet" href="../assets/ochem.css">
 <link rel="stylesheet" href="../../assets/fonts/fonts.css">
 <!-- levlprep-structured-data -->
@@ -38,24 +40,31 @@
 </script>
 </head>
 <body>
-<div class="wrap notes-page">
-  <nav class="notes-crumb" aria-label="Breadcrumb">
-    <a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span>
-    <a href="../learn.html">Textbook</a> <span aria-hidden="true">&rsaquo;</span>
-    <span>Biomolecules</span>
-  </nav>
-
-  <header class="notes-head">
-    <p class="notes-eyebrow">Biomolecules &middot; Section 117 of 123</p>
-    <h1>Lipids</h1>
-    <a class="notes-onward-cta" href="../lessons/lipids.html">Practice this — interactive lesson</a>
-  </header>
-
-  <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
-       asides); it is the same class the textbook view uses, so a section looks
-       identical whether it is read here or inside learn.html. -->
-  <article class="notes-body notes-view" data-glossary-topic="lipids">
+<header id="site-header"></header>
+<div class="course-nav"></div>
+<div class="tb-shell bk bk-notes">
+  <button type="button" class="tb-toc-btn" data-bk-toggle aria-controls="oc-rail" aria-expanded="false">&#9776; Contents</button>
+  <aside class="tb-rail bk-rail" id="oc-rail" data-bk-read="ochem_textbook_read">
+    <p class="tb-rail-title">Contents</p>
+    <a class="bk-toc-other" href="../learn.html#m-synthesis"><span class="bk-toc-n">23</span>Synthesis &amp; Retrosynthesis</a>
+    <a class="bk-toc-chap" href="../learn.html#m-biomolecules"><span class="bk-toc-chap-n">24</span><span><b>Biomolecules</b><small>5 sections</small></span></a>
+    <div class="bk-toc-prog" data-bk-prog><div class="tb-progress-row"><span><b>0</b> of 5 sections read</span><span class="bk-toc-pct">0%</span></div><div class="tb-progress-track"><div class="tb-progress-fill" style="width:0%"></div></div></div>
+    <nav class="tb-contents" aria-label="Chapter contents"><ol class="bk-toc-list"><li data-toc-t="carbohydrates"><a href="carbohydrates.html"><span class="bk-toc-n">114</span>Carbohydrates</a></li><li data-toc-t="amino-acids"><a href="amino-acids.html"><span class="bk-toc-n">115</span>Amino acids</a></li><li data-toc-t="peptides-proteins"><a href="peptides-proteins.html"><span class="bk-toc-n">116</span>Peptides and proteins</a></li><li class="current" data-toc-t="lipids"><a href="#main" aria-current="page"><span class="bk-toc-n">117</span>Lipids</a><div class="bk-toc-onpage"><p>On this page</p><a href="#fatty-acids-and-the-kink-that">Fatty acids, and the kink that changes everything</a><a href="#reading-the-shorthand-and-numbers">Reading the shorthand: Δ and ω numbers</a><a href="#shape-sets-the-melting-point">Shape sets the melting point</a><a href="#where-trans-fats-come-from">Where trans fats come from</a><a href="#triglycerides-are-triesters">Triglycerides are triesters</a><a href="#saponification-soap-from-a-fat">Saponification: soap from a fat</a><a href="#soaps-and-micelles">Soaps and micelles</a><a href="#phospholipids-and-the-bilayer">Phospholipids and the bilayer</a><a href="#steroids-the-other-kind-of-lipid">Steroids: the other kind of lipid</a><a href="#prostaglandins-fatty-acids-that-signal">Prostaglandins: fatty acids that signal</a><a href="#waxes-and-terpenes">Waxes and terpenes</a><a href="#why-fat-is-the-storage-molecule">Why fat is the storage molecule</a><a href="#what-carries-forward">What carries forward</a></div></li><li data-toc-t="nucleic-acids"><a href="nucleic-acids.html"><span class="bk-toc-n">118</span>Nucleic acids</a></li></ol></nav>
+    <a class="bk-toc-other" href="../learn.html#m-polymers"><span class="bk-toc-n">25</span>Polymers</a>
+  </aside>
+  <main class="tb-main" id="main">
+    <nav class="cx-crumb" aria-label="Breadcrumb"><a href="../../index.html">LevlPrep</a> <span aria-hidden="true">&rsaquo;</span> <a href="../index.html">Organic Chemistry</a> <span aria-hidden="true">&rsaquo;</span> <a href="../learn.html#m-biomolecules">Biomolecules</a> <span aria-hidden="true">&rsaquo;</span> <span aria-current="page">Lipids: notes</span></nav>
+    <div class="bk-pillbar"><a class="bk-pill" href="../lessons/lipids.html"><i aria-hidden="true">&#9654;</i>Practice this lesson</a></div>
+    <header class="bk-head">
+      <p class="bk-eyebrow"><span data-bk-chapter="biomolecules">Biomolecules</span> &middot; Section 117 of 123</p>
+      <h1 class="bk-title">Lipids</h1>
+      <p class="bk-meta"><span class="bk-small">15 min read &middot; free</span></p>
+      <div class="bk-actions" role="group" aria-label="Share or print this notes page"><button type="button" class="bk-action" data-copy="https://levlprep.com/ochem/notes/lipids.html">Copy link</button><button type="button" class="bk-action" data-print>Print</button></div>
+    </header>
+    <!-- notes-view carries the prose styles (h3, .step-body, .notes-fact and the
+         asides); it is the same class the textbook view uses, so a section looks
+         identical whether it is read here or inside learn.html. -->
+    <article class="notes-body notes-view bk-prose" data-glossary-topic="lipids" data-bk-ids="fatty-acids-and-the-kink-that reading-the-shorthand-and-numbers shape-sets-the-melting-point where-trans-fats-come-from triglycerides-are-triesters saponification-soap-from-a-fat soaps-and-micelles phospholipids-and-the-bilayer steroids-the-other-kind-of-lipid prostaglandins-fatty-acids-that-signal waxes-and-terpenes why-fat-is-the-storage-molecule what-carries-forward">
 <!-- notes:start -->
 <p class="step-body">Olive oil, butter, the wax on an apple and cholesterol look nothing alike on paper. Yet none of them dissolves in water, and all of them dissolve in hexane, a nonpolar solvent. That shared behavior makes each of them a <b>lipid</b>: a molecule from a living thing that dissolves in nonpolar solvents and not in water.</p>
 
@@ -221,14 +230,21 @@
 
 <p class="step-body">Two threads run through this page, and neither is new. The ester chemistry, formation and hydrolysis, is <a class="chapter-ref" href="/ochem/learn.html#m-carboxylic-acids">Carboxylic Acids &amp; Derivatives</a> applied to a large molecule. The shape argument, that cis chains cannot pack, is the dispersion-force reasoning from <a class="chapter-ref" href="/ochem/notes/bond-polarity.html">Bond polarity</a>, here deciding whether a fat is butter or oil. The same packing argument returns for plastics in <a class="chapter-ref" href="/ochem/learn.html#m-polymers">Polymers</a>.</p>
 <!-- notes:end -->
-  </article>
-
-  <nav class="notes-onward" aria-label="Section navigation"><a class="notes-prevnext notes-prev" href="peptides-proteins.html"><span>Previous</span>Peptides and proteins</a><a class="notes-prevnext notes-next" href="nucleic-acids.html"><span>Next</span>Nucleic acids</a></nav>
-
-  <footer class="notes-foot">
-    <p><a href="../learn.html">&larr; All 123 sections</a> &middot; <a href="../glossary.html">Glossary</a></p>
-    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
+    </article>
+    <nav class="tb-chapter-nav" aria-label="Section navigation"><a class="tb-chapter-link" href="peptides-proteins.html"><span>&larr; Section 116</span><b>Peptides and proteins</b></a><a class="tb-chapter-link next" href="nucleic-acids.html"><span>Section 118 &rarr;</span><b>Nucleic acids</b></a></nav>
+  </main>
+</div>
+<div class="xshell">
+  <footer>
+    <p class="privacy-link"><a href="../../privacy.html">Privacy</a> &middot; <a href="../../terms.html">Terms</a> &middot; <a href="../../sources.html">Sources</a> &middot; <a href="../../changelog.html">What&rsquo;s new</a> &middot; <a href="../../premium.html">Premium</a> &middot; <a href="../../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
   </footer>
 </div>
+<script src="../assets/curriculum.js" defer></script>
+<script>
+  window.OCHEM_SECTION = 'learn';
+  window.OCHEM_BASE = '../';
+</script>
+<script src="../assets/ochem-nav.js" defer></script>
+<script src="../../assets/course/book.js" defer></script>
 </body>
 </html>

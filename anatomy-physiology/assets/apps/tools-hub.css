@@ -1,26 +1,11 @@
-/* The A&P tools hub (tools.html): a featured banner for the virtual lab
-   practical, then an ochem-style card per other tool. Only this page loads it,
-   so it stays out of apps.css, which every app page shares. Theme tokens only
-   (assets/theme.css), so dark mode comes free; the banner is a dark panel in
-   both themes. */
-/* The page body is static (scripts/build-anp.mjs, toolsHubMount); tools-hub.js
-   fills .anp-hub-status and the ?chapter= bar. */
-.anp-hero-hub h1{max-width:22ch;margin-bottom:4px;}
-.anp-hero-hub .lede{margin-top:0;max-width:66ch;}
-.anp-hero-hub .lede a{color:inherit;}
+/* The A&P tools hub (tools.html). The page shape, the featured block and the
+   tool cards are shared (assets/course/hub.css, .cx-feat and .cx-tool); what
+   is left here is A&P's own: the ?chapter= bar, the lab practical's mode
+   buttons and its masked figure (the featured block's art). */
 .anp-app-mount[data-slug="tools"]{min-height:320px;margin:14px 0 28px;}
 .anp-hub-filter{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 14px;padding:12px 16px;border-radius:var(--radius);background:var(--ctint);font:700 14px/1.5 var(--font-ui);color:var(--ink);}
 .anp-hub-filter a{color:var(--cink);font-weight:900;}
-
-.anp-hub-feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(22px,3.5vw,44px);align-items:center;
-  background:var(--navy);color:var(--on-accent);border-radius:28px;padding:clamp(22px,3.8vw,44px);box-shadow:var(--lift-lg);position:relative;overflow:hidden;}
-.anp-hub-feat::before{content:"";position:absolute;right:-120px;top:-140px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(242,185,169,.22),rgba(242,185,169,0) 70%);pointer-events:none;}
-.anp-hub-feat-text{position:relative;min-width:0;}
-.anp-hub-feat-kick{display:inline-flex;align-items:center;gap:8px;font:900 11px var(--font-ui);letter-spacing:.1em;text-transform:uppercase;color:#F2B9A9;margin:0 0 14px;}
 .anp-hub-dot{width:7px;height:7px;border-radius:50%;background:#F2B9A9;box-shadow:0 0 0 4px rgba(242,185,169,.18);}
-.anp-hub-feat h2{font:900 clamp(28px,3.6vw,40px)/1.05 var(--font-ui);letter-spacing:-.02em;margin:0 0 10px;color:#fff;}
-.anp-hub-feat-tag{font:800 17px/1.45 var(--font-ui);color:#fff;margin:0 0 10px;max-width:38ch;}
-.anp-hub-feat-blurb{font:700 14px/1.6 var(--font-ui);color:var(--muted-on-dark);margin:0 0 20px;max-width:46ch;}
 .anp-hub-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 22px;padding:0;list-style:none;}
 .anp-hub-modes li{display:flex;}
 .anp-hub-mode{flex:1;display:flex;flex-direction:column;gap:2px;background:rgba(255,255,255,.07);border-radius:14px;padding:10px 12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);text-decoration:none;color:#fff;transition:background .12s ease;}
@@ -30,22 +15,6 @@
 .anp-hub-mode b{font:900 13px var(--font-ui);color:#fff;display:flex;align-items:center;gap:7px;}
 .anp-hub-mode b svg{width:15px;height:15px;fill:none;stroke:#F2B9A9;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none;}
 .anp-hub-mode span{font:700 11.5px/1.4 var(--font-ui);color:var(--muted-on-dark);}
-.anp-hub-feat-row{display:flex;align-items:center;gap:12px 18px;flex-wrap:wrap;}
-.anp-hub-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#16332E;font:900 14.5px var(--font-ui);padding:13px 22px;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.22);transition:transform .08s ease;}
-.anp-hub-cta:hover{transform:translateY(-1px);color:#16332E;}
-.anp-hub-cta:focus-visible{outline:3px solid #F2B9A9;outline-offset:3px;}
-.anp-hub-feat-stats{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted-on-dark);}
-.anp-hub-feat-stats b{color:#fff;}
-.anp-hub-feat-status{display:flex;align-items:center;gap:10px;margin:14px 0 0;min-height:18px;}
-.anp-hub-feat-status .anp-hub-stat{color:var(--muted-on-dark);}
-.anp-hub-feat-status .anp-hub-stat b{color:#fff;}
-.anp-hub-feat-status .anp-hub-track{flex:0 1 140px;background:rgba(255,255,255,.14);}
-.anp-hub-feat-status .anp-hub-track > i{background:#F2B9A9;}
-.anp-hub-feat-status .is-new + .anp-hub-track{display:none;}
-.anp-hub-feat.is-empty .anp-hub-feat-stats .anp-hub-count{color:#F2B9A9;}
-
-/* The figure: masked labels, as in the tool's quiz mode. */
-.anp-hub-feat-art{position:relative;min-width:0;}
 .anp-hub-fig{position:relative;background:#fff;border-radius:20px;padding:12px;box-shadow:0 18px 40px rgba(0,0,0,.28);transform:rotate(.6deg);}
 .anp-hub-fig-img{position:relative;border-radius:12px;overflow:hidden;}
 .anp-hub-fig-img img{display:block;width:100%;height:auto;}
@@ -55,49 +24,7 @@
 .anp-hub-fig-n{flex:none;width:24px;height:24px;border-radius:7px;background:var(--ctint);color:var(--cink);display:grid;place-items:center;font:900 12px var(--font-ui);}
 .anp-hub-fig-inp{flex:1;min-width:0;border-radius:9px;background:var(--paper);padding:6px 10px;color:var(--muted);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .anp-hub-fig-cap{margin:28px 4px 0;font:800 11px var(--font-ui);color:var(--muted-on-dark);text-align:center;letter-spacing:.02em;}
-
-/* The other tools: ochem-style cards (ochem/assets/tools.css, a.tool-tile). */
-.anp-hub-more-h{display:flex;align-items:baseline;justify-content:space-between;gap:6px 14px;margin:clamp(36px,5vw,52px) 0 16px;flex-wrap:wrap;}
-.anp-hub-more-h h2{margin:0;font:900 22px var(--font-ui);}
-.anp-hub-more-h p{margin:0;font:700 13.5px var(--font-ui);color:var(--muted);}
-.anp-hub{list-style:none;margin:0;padding:0;display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));}
-.anp-hub li{display:flex;min-width:0;}
-.anp-hub-card{display:flex;flex-direction:column;gap:9px;width:100%;padding:22px;border-radius:var(--radius-lg);background:var(--white);border:var(--bw, 2px) solid var(--line);box-shadow:var(--lift-sm);color:inherit;text-decoration:none;transition:transform .08s ease,box-shadow .12s ease;}
-.anp-hub-card:hover{transform:translateY(-3px);box-shadow:var(--lift-lg);color:inherit;}
-.anp-hub-card:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
-.anp-hub-card.is-empty{opacity:.62;}
-.anp-hub-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:2px;}
-.anp-hub-icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:var(--ctint);color:var(--cink);flex:none;}
-.anp-hub-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.anp-hub-skill{font:900 10.5px var(--font-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:right;}
-.anp-hub-name{font:900 16.5px/1.25 var(--font-ui);}
-.anp-hub-tag{font:800 13.5px/1.4 var(--font-ui);color:var(--ink);opacity:.85;}
-.anp-hub-blurb{font:700 12.8px/1.55 var(--font-ui);color:var(--muted);}
-.anp-hub-status{display:grid;gap:6px;margin-top:auto;min-height:34px;align-content:end;}
-.anp-hub-stat{font:700 12.5px var(--font-ui);color:var(--muted);}
-.anp-hub-stat b{color:var(--ink);font-weight:900;}
-.anp-hub-track > i{background:var(--accent);}
-.anp-hub-foot{padding-top:12px;border-top:1px solid var(--line-soft);font:900 10.5px var(--font-ui);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:10px;}
-.anp-hub-foot b{color:var(--ink);}
-.anp-hub-go{color:var(--cink);white-space:nowrap;}
-.anp-hub-note{margin:22px 0 0;max-width:80ch;font:700 14px/1.6 var(--font-ui);color:var(--muted);}
-.anp-hub-note a{color:var(--cink);font-weight:900;}
-
-@media (max-width:900px){
-  .anp-hub-feat{grid-template-columns:minmax(0,1fr);}
-  .anp-hub-feat-art{order:-1;}
-  .anp-hub{grid-template-columns:repeat(2,minmax(0,1fr));}
-}
 @media (max-width:600px){
-  .anp-hub{grid-template-columns:minmax(0,1fr);}
-  .anp-hub-fig{transform:none;}
-  .anp-hub-fig-cap{display:none;}
-  .anp-hub-feat-art{margin-bottom:18px;}
-  .anp-hub-mask{font-size:7px;}
-  .anp-hub-mask.is-on{font-size:8px;}
+  .cx-feat-art{margin-bottom:18px;}
 }
-@media (prefers-reduced-motion:reduce){
-  .anp-hub-card,.anp-hub-card:hover,.anp-hub-cta,.anp-hub-cta:hover{transition:none;transform:none;}
-  .anp-hub-fig{transform:none;}
-}
-.anp-hub li.anp-hub-p{position:relative;}.anp-hub-p>.premium-badge{position:absolute;top:10px;right:14px;}
+@media (prefers-reduced-motion:reduce){ .anp-hub-fig{transform:none;} }

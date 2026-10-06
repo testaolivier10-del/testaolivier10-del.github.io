@@ -17,30 +17,25 @@
    OUTPUTS
    -------
    ochem/assets/glossary.json
-                            every term and definition, fetched by two readers:
-                            glossary-tip.js, which marks the first use of each
-                            term in a notes section and shows its definition on
-                            hover, focus or tap; and glossary-page.js, which
-                            renders the glossary page and its filters. The tutor
-                            indexes it too ("term" and "def" are keys it reads).
-   ochem/glossary.html      a light shell. Written out in full, 500 definitions
-                            made a 270 KB page (60 KB gzipped), the weight the
-                            site review flagged on the A&P glossary. So the page
-                            carries every term NAME, A–Z, each linking to the
-                            section that teaches it: it still reads, and is
-                            crawlable, without JavaScript. The definitions
-                            arrive in the one JSON file the popups already use,
-                            cached once for the whole course.
+                            every term in the normalized shape all four courses
+                            serve (scripts/lib/glossary.mjs), read by the shared
+                            popups (assets/course/glossary-tip.js: notes, the
+                            textbook and the interactive lessons), the shared
+                            glossary page (assets/course/glossary-page.js),
+                            site search and the tutor ("term" and "def").
+   ochem/glossary.html      the shared glossary page; every definition is drawn
+                            from the JSON, and a <noscript> index lists every
+                            term name linking to its section.
 
      node scripts/build-ochem-glossary.mjs            rewrite
      node scripts/build-ochem-glossary.mjs --check    fail if stale or invalid (CI)
 */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { applyCrumbs } from './lib/crumbs.mjs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 import { CSP } from './lib/site-config.mjs';
+import { glossaryJson, glossaryMain, glossaryScript, byTerm } from './lib/glossary.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
 const check = process.argv.includes('--check');
@@ -67,10 +62,6 @@ const SUP = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5
 const plain = (s) => s.replace(/[αβγδλπσ]/g, (c) => GREEK[c]).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹₀₁₂₃₄]/g, (c) => SUP[c])
   .normalize('NFD').replace(/[̀-ͯ]/g, '');
 const slug = (s) => plain(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-/* Alphabetized the way a printed glossary is: a leading Greek letter is read
-   as its name (α-amino acid under A), and locants and isotope numbers are
-   skipped (1,2-shift under S, ¹³C NMR under C). */
-const sortKey = (s) => plain(s).replace(/^[\d,\s+\-[\]]+/, '').toLowerCase();
 
 const modules = loadModules();
 const topics = new Map();
@@ -113,34 +104,22 @@ if (errors.length) {
   console.error(`FAIL: ochem/data/glossary.json has ${errors.length} problem(s):\n  ` + errors.join('\n  '));
   process.exit(1);
 }
-entries.sort((a, b) => sortKey(a.term).localeCompare(sortKey(b.term), 'en') || a.term.localeCompare(b.term, 'en'));
+entries.sort(byTerm); // the printed-glossary order of scripts/lib/glossary.mjs
 
-/* ---- runtime JSON: what the popups need and nothing else ---------------- */
+/* ---- runtime JSON: the normalized shape every course serves -------------- */
+// scripts/lib/glossary.mjs. "term" and "def" are also the key names the
+// tutor's data indexer (extractFromData in assets/tutor.js) reads.
 const usedTopics = [...new Set(entries.map((e) => e.topic))];
-const runtime = {
-  // topic id -> [title, chapter number]
-  topics: Object.fromEntries(usedTopics.map((t) => [t, [topics.get(t).title, topics.get(t).ch]])),
-  // Objects rather than rows: "term" and "def" are key names the tutor's data
-  // indexer (extractFromData in assets/tutor.js) reads as heading and body.
-  terms: entries.map((e) => {
-    const o = { id: e.id, term: e.term, def: e.def, topic: e.topic };
-    if (e.aliases.length) o.aka = e.aliases;
-    if (e.seeIds.length) o.see = e.seeIds.map((x) => x.id);
-    if (!e.pop) o.pop = 0;
-    return o;
-  }),
-};
-const jsonOut = JSON.stringify(runtime) + '\n';
+const chapters = modules.map((m, i) => ({ id: i + 1, title: `${i + 1}. ${m.title}` }));
+const jsonOut = glossaryJson({
+  chapters,
+  terms: entries.map((e) => ({
+    id: e.id, term: e.term, def: e.def, topic: e.topic, topicTitle: topics.get(e.topic).title,
+    href: `notes/${e.topic}.html`, aka: e.aliases, chapter: topics.get(e.topic).ch, pop: e.pop ? 1 : 0,
+  })),
+}) + '\n';
 
 /* ---- the page ------------------------------------------------------------ */
-const letters = [];
-const groups = new Map();
-for (const e of entries) {
-  const L = (sortKey(e.term)[0] || '#').toUpperCase();
-  if (!groups.has(L)) { groups.set(L, []); letters.push(L); }
-  groups.get(L).push(e);
-}
-const AZ = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 const title = 'Glossary of Key Terms — Organic Chemistry | LevlPrep';
 const desc = `${entries.length} organic chemistry terms in plain words, from atomic structure to polymers, each linked to the textbook section that teaches it.`;
 const url = `${ORIGIN}/ochem/glossary.html`;
@@ -156,11 +135,6 @@ const ld = {
     ] },
   ],
 };
-
-/* The no-JavaScript form of an entry: its name, linking to the section that
-   teaches it. glossary-page.js replaces each letter's list with the full
-   entries (same section ids, so the letter bar works either way). */
-const termHtml = (e) => `<li><a href="notes/${e.topic}.html">${esc(e.term)}</a></li>`;
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -187,6 +161,8 @@ const html = `<!DOCTYPE html>
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/theme.css">
+<link rel="stylesheet" href="../assets/course/base.css">
+<link rel="stylesheet" href="../assets/course/glossary.css">
 <script src="../assets/errors.js" defer></script>
 <script src="../assets/account.js" defer></script>
 <script src="../assets/hub-progress.js" defer></script>
@@ -195,35 +171,6 @@ const html = `<!DOCTYPE html>
 <script src="assets/ochem-xp.js" defer></script>
 <link rel="stylesheet" href="assets/ochem.css">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
-<style>
-/* This page's own styles; no other page lists terms. */
-.ogl-tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin:18px 0 10px;}
-.ogl-tools label{display:grid;gap:5px;font:800 13px var(--font-ui);color:var(--ink);}
-.ogl-tools input,.ogl-tools select{font:700 16px var(--font-ui);color:var(--ink);background:var(--white);border:0;box-shadow:inset 0 0 0 1.5px var(--line);border-radius:12px;padding:10px 12px;min-height:44px;width:100%;}
-.ogl-tools select{max-width:15em;}
-.ogl-letters{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:4px;margin:6px 0 4px;position:sticky;top:var(--site-header-h,0px);z-index:2;background:var(--paper);padding:8px 0;}
-.ogl-letters::-webkit-scrollbar{display:none;}
-.ogl-letters a,.ogl-letters span{flex:none;min-width:32px;min-height:32px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;font:900 13px var(--font-ui);text-decoration:none;}
-.ogl-letters a{background:var(--ctint);color:var(--cink);}
-.ogl-letters span,.ogl-letters a.is-empty{color:var(--muted);opacity:.45;background:none;}
-.ogl-count{font:700 13px var(--font-ui);color:var(--muted);margin:8px 0 0;}
-.ogl-letter{scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
-.ogl-letter h2{font-size:22px;margin:22px 0 4px;}
-.ogl-toggle{all:unset;box-sizing:border-box;display:flex;align-items:baseline;gap:10px;width:100%;min-height:44px;cursor:pointer;font:900 22px var(--font-ui);color:var(--ink);border-bottom:2px solid var(--line);}
-.ogl-toggle::after{content:"+";margin-left:auto;font-size:20px;color:var(--muted);}
-.ogl-toggle[aria-expanded="true"]::after{content:"−";}
-.ogl-toggle:focus-visible{outline:3px solid var(--focus,#2C9C8B);outline-offset:2px;}
-.ogl-n{font:700 13px var(--font-ui);color:var(--muted);}
-.ogl-letter dl{margin:0;}
-.ogl-t{padding:11px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:calc(var(--site-header-h,0px) + 60px);}
-.ogl-t:target{background:var(--tint-accent);border-radius:8px;padding-left:8px;padding-right:8px;}
-.ogl-t dt{font-weight:900;font-size:16px;}
-.ogl-t dd{margin:3px 0 0;font-weight:600;font-size:15px;line-height:1.6;}
-.ogl-src,.ogl-see{display:block;font-size:13.5px;color:var(--muted);margin-top:2px;}
-.ogl-none{font-weight:700;color:var(--muted);}
-.ogl-names{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:700;}
-@media (max-width:520px){.ogl-tools{grid-template-columns:1fr;}.ogl-tools select{max-width:none;}}
-</style>
 <!-- levlprep-structured-data -->
 <script type="application/ld+json">
 ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
@@ -232,29 +179,20 @@ ${JSON.stringify(ld).replace(/<\//g, '<\\/')}
 <body data-course="ochem">
 <header id="site-header"></header>
 <div class="course-nav"></div>
-<main id="main" class="xshell narrow">
-  <div class="page-head">
-    <div class="eyebrow">Organic Chemistry</div>
-    <h1>Glossary</h1>
-    <p class="lede">${entries.length} terms from all ${modules.length} chapters, in plain words. Each one links to the section that teaches it.</p>
-  </div>
-  <div class="ogl-tools">
-    <label>Find a term <input type="search" id="oglFilter" autocomplete="off" spellcheck="false" placeholder="e.g. enolate, SN2, chirality"></label>
-    <label>Chapter <select id="oglChapter"><option value="">All chapters</option>${modules.map((m, i) => `<option value="${i + 1}">${i + 1}. ${esc(m.title)}</option>`).join('')}</select></label>
-  </div>
-  <nav class="ogl-letters" aria-label="Jump to letter">${AZ.map((L) => groups.has(L) ? `<a href="#l-${L}">${L}</a>` : `<span aria-hidden="true">${L}</span>`).join('')}</nav>
-  <p class="ogl-count" id="oglCount" aria-live="polite"></p>
-  <p class="ogl-none" id="oglNone" hidden>No term matches. Try fewer letters, or <a href="search.html">search the whole course</a>.</p>
-  <div id="oglList">
-${letters.map((L) => `  <section class="ogl-letter" id="l-${L}"><h2>${L}</h2><ul class="ogl-names">${groups.get(L).map(termHtml).join('')}</ul></section>`).join('\n')}
-  </div>
+<main id="main" class="xshell">
+  ${glossaryMain({
+    crumbs: [{ name: 'LevlPrep', href: '/' }, { name: 'Organic Chemistry', href: '/ochem/' }, { name: 'Glossary' }],
+    courseHtml: 'Organic Chemistry',
+    lede: `${entries.length} terms from all ${modules.length} chapters, in plain words. Each one links to the section that teaches it.`,
+    chapters, terms: JSON.parse(jsonOut).terms, placeholder: 'e.g. enolate, SN2, chirality', searchHref: 'search.html',
+  })}
 </main>
 <script>
   window.OCHEM_SECTION = 'glossary';
   window.OCHEM_BASE = '';
 </script>
 <script src="assets/ochem-nav.js" defer></script>
-<script src="assets/glossary-page.js" defer></script>
+${glossaryScript('glossary-page.js', { up: '../', data: 'assets/glossary.json', root: '' })}
 <div class="xshell">
   <footer>
     <p class="privacy-link"><a href="../privacy.html">Privacy</a> &middot; <a href="../terms.html">Terms</a> &middot; <a href="../sources.html">Sources</a> &middot; <a href="../changelog.html">What&rsquo;s new</a> &middot; <a href="../premium.html">Premium</a> &middot; <a href="../account.html">Account</a> &middot; <a href="mailto:hello@levlprep.com">Contact</a></p>
@@ -266,7 +204,7 @@ ${letters.map((L) => `  <section class="ogl-letter" id="l-${L}"><h2>${L}</h2><ul
 
 /* ---- write or check ------------------------------------------------------ */
 const stale = [];
-for (const [file, body] of [[OUT_JSON, jsonOut], [OUT_HTML, applyCrumbs(html)]]) {
+for (const [file, body] of [[OUT_JSON, jsonOut], [OUT_HTML, html]]) {
   const current = existsSync(file) ? readFileSync(file, 'utf8') : null;
   if (current === body) continue;
   if (check) { stale.push(file.slice(ROOT.length + 1)); continue; }

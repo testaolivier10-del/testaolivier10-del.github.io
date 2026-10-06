@@ -20,6 +20,14 @@
    to the course glossary when the glossary defines it, but only after the
    answer, so the definition never gives the answer away. */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var KIND = 'word-roots';
   var app = document.getElementById('app');
   if(!app) return;
@@ -385,7 +393,7 @@
     fetch(src).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }),
     fetch(base + 'assets/glossary.json').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
   ]).then(function(res){
-    DATA = res[0]; GLOSS = res[1] || {};
+    DATA = res[0]; GLOSS = glossMap(res[1]);
     DATA.parts.forEach(function(p){ PARTS[p.id] = p; });
     // A term whose topic is not in this curriculum build is left out, never shown out of order.
     DATA.terms = DATA.terms.filter(function(t){ return t.topic in TOPIC_IDX; });
