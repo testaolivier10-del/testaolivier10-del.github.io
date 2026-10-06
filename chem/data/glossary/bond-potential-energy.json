@@ -1,0 +1,7 @@
+{
+ "intramolecular-force": { "def": "A force between the atoms inside one particle: covalent, ionic or metallic bonding." },
+ "potential-energy-curve": { "def": "A graph of the potential energy of two atoms against the distance between their nuclei; its minimum gives the bond length and the bond energy." },
+ "bond-length": { "def": "The distance between the nuclei of two bonded atoms, at the minimum of their potential energy curve." },
+ "bond-energy": { "def": "The energy needed to break one mole of a bond, equal to the depth of the potential energy minimum below zero." },
+ "bond-multiplicity": { "def": "The number of electron pairs shared between two atoms: one in a single bond, two in a double bond, three in a triple bond." }
+}

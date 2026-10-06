@@ -1,0 +1,88 @@
+{
+ "id": "frq-hbr-potential-energy",
+ "type": "short",
+ "points": 4,
+ "title": "Potential energy of a hydrogen bromide molecule",
+ "units": [
+  "unit-2"
+ ],
+ "topics": [
+  "bond-potential-energy",
+  "bond-types"
+ ],
+ "practices": [
+  "4.A",
+  "5.F",
+  "6.D"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Potential energy of an H atom and a Br atom",
+  "text": "<p>The graph shows the potential energy of a hydrogen atom and a bromine atom as a function of the distance between their nuclei. The minimum of the curve is marked.</p>",
+  "html": "<svg viewBox=\"0 0 640 400\" width=\"640\" height=\"400\" role=\"img\" aria-label=\"Graph of potential energy in kilojoules per mole against distance between the H and Br nuclei in picometers. The curve falls from high positive energy at short distance to a minimum at 141 picometers and minus 366 kilojoules per mole, then rises toward zero at long distance. The minimum is marked with dashed lines to both axes.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><rect x=\"84\" y=\"24\" width=\"532\" height=\"306\" rx=\"0\" fill=\"#FFFFFF\" stroke=\"#9AA4AE\" stroke-width=\"1\"/><line x1=\"84\" y1=\"330\" x2=\"616\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"335\" font-size=\"12.5\" text-anchor=\"end\">−500</text><line x1=\"84\" y1=\"310.88\" x2=\"616\" y2=\"310.88\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"291.75\" x2=\"616\" y2=\"291.75\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"296.75\" font-size=\"12.5\" text-anchor=\"end\">−400</text><line x1=\"84\" y1=\"272.63\" x2=\"616\" y2=\"272.63\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"253.5\" x2=\"616\" y2=\"253.5\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"258.5\" font-size=\"12.5\" text-anchor=\"end\">−300</text><line x1=\"84\" y1=\"234.38\" x2=\"616\" y2=\"234.38\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"215.25\" x2=\"616\" y2=\"215.25\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"220.25\" font-size=\"12.5\" text-anchor=\"end\">−200</text><line x1=\"84\" y1=\"196.13\" x2=\"616\" y2=\"196.13\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"177\" x2=\"616\" y2=\"177\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"182\" font-size=\"12.5\" text-anchor=\"end\">−100</text><line x1=\"84\" y1=\"157.88\" x2=\"616\" y2=\"157.88\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"138.75\" x2=\"616\" y2=\"138.75\" stroke=\"#5B6670\" stroke-width=\"1.6\" stroke-linecap=\"round\"/><text x=\"76\" y=\"143.75\" font-size=\"12.5\" text-anchor=\"end\">0</text><line x1=\"84\" y1=\"119.63\" x2=\"616\" y2=\"119.63\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"100.5\" x2=\"616\" y2=\"100.5\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"105.5\" font-size=\"12.5\" text-anchor=\"end\">100</text><line x1=\"84\" y1=\"81.38\" x2=\"616\" y2=\"81.38\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"62.25\" x2=\"616\" y2=\"62.25\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"67.25\" font-size=\"12.5\" text-anchor=\"end\">200</text><line x1=\"84\" y1=\"43.13\" x2=\"616\" y2=\"43.13\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"24\" x2=\"616\" y2=\"24\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"76\" y=\"29\" font-size=\"12.5\" text-anchor=\"end\">300</text><line x1=\"84\" y1=\"24\" x2=\"84\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"84\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">0</text><line x1=\"117.25\" y1=\"24\" x2=\"117.25\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"150.5\" y1=\"24\" x2=\"150.5\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"150.5\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">50</text><line x1=\"183.75\" y1=\"24\" x2=\"183.75\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"217\" y1=\"24\" x2=\"217\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"217\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">100</text><line x1=\"250.25\" y1=\"24\" x2=\"250.25\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"283.5\" y1=\"24\" x2=\"283.5\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"283.5\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">150</text><line x1=\"316.75\" y1=\"24\" x2=\"316.75\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"350\" y1=\"24\" x2=\"350\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"350\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">200</text><line x1=\"383.25\" y1=\"24\" x2=\"383.25\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"416.5\" y1=\"24\" x2=\"416.5\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"416.5\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">250</text><line x1=\"449.75\" y1=\"24\" x2=\"449.75\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"483\" y1=\"24\" x2=\"483\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"483\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">300</text><line x1=\"516.25\" y1=\"24\" x2=\"516.25\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"549.5\" y1=\"24\" x2=\"549.5\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"549.5\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">350</text><line x1=\"582.75\" y1=\"24\" x2=\"582.75\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><line x1=\"616\" y1=\"24\" x2=\"616\" y2=\"330\" stroke=\"#E2E6EA\" stroke-width=\"1\" stroke-linecap=\"round\"/><text x=\"616\" y=\"348\" font-size=\"12.5\" text-anchor=\"middle\">400</text><line x1=\"84\" y1=\"24\" x2=\"84\" y2=\"330\" stroke=\"#1F2A28\" stroke-width=\"1.6\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"330\" x2=\"616\" y2=\"330\" stroke=\"#1F2A28\" stroke-width=\"1.6\" stroke-linecap=\"round\"/><text x=\"350\" y=\"374\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Distance between the nuclei (pm)</text><text x=\"22\" y=\"177\" font-size=\"14\" font-weight=\"700\" text-anchor=\"middle\" transform=\"rotate(-90 22 177)\">Potential energy (kJ/mol)</text><polyline points=\"209.0,26.9 210.3,42.4 211.7,57.2 213.0,71.2 214.3,84.6 215.7,97.2 217.0,109.2 218.3,120.7 219.7,131.5 221.0,141.7 222.3,151.4 223.7,160.6 225.0,169.3 226.3,177.5 227.6,185.3 229.0,192.6 230.3,199.5 231.6,205.9 233.0,212.0 234.3,217.8 235.6,223.1 236.9,228.2 238.3,232.9 239.6,237.3 240.9,241.4 242.3,245.2 243.6,248.8 244.9,252.1 246.3,255.2 247.6,258.0 248.9,260.6 250.3,263.0 251.6,265.1 252.9,267.1 254.2,268.9 255.6,270.5 256.9,272.0 258.2,273.2 259.6,274.4 260.9,275.3 262.2,276.2 263.6,276.9 264.9,277.5 266.2,278.0 267.5,278.3 268.9,278.6 270.2,278.7 271.5,278.7 272.9,278.7 274.2,278.6 275.5,278.4 276.9,278.1 278.2,277.7 279.5,277.3 280.8,276.8 282.2,276.2 283.5,275.6 284.8,274.9 286.2,274.2 287.5,273.4 288.8,272.6 290.1,271.7 291.5,270.8 292.8,269.9 294.1,268.9 295.5,267.9 296.8,266.9 298.1,265.8 299.5,264.7 300.8,263.6 302.1,262.5 303.4,261.4 304.8,260.2 306.1,259.0 307.4,257.8 308.8,256.6 310.1,255.4 311.4,254.2 312.8,252.9 314.1,251.7 315.4,250.4 316.8,249.2 318.1,247.9 319.4,246.7 320.7,245.4 322.1,244.1 323.4,242.9 324.7,241.6 326.1,240.3 327.4,239.1 328.7,237.8 330.1,236.5 331.4,235.3 332.7,234.0 334.0,232.8 335.4,231.6 336.7,230.3 338.0,229.1 339.4,227.9 340.7,226.7 342.0,225.5 343.3,224.3 344.7,223.1 346.0,221.9 347.3,220.8 348.7,219.6 350.0,218.5 351.3,217.3 352.7,216.2 354.0,215.1 355.3,214.0 356.6,212.9 358.0,211.8 359.3,210.7 360.6,209.6 362.0,208.6 363.3,207.5 364.6,206.5 366.0,205.5 367.3,204.5 368.6,203.5 369.9,202.5 371.3,201.5 372.6,200.6 373.9,199.6 375.3,198.7 376.6,197.7 377.9,196.8 379.3,195.9 380.6,195.0 381.9,194.1 383.3,193.3 384.6,192.4 385.9,191.6 387.2,190.7 388.6,189.9 389.9,189.1 391.2,188.3 392.6,187.5 393.9,186.7 395.2,185.9 396.6,185.2 397.9,184.4 399.2,183.7 400.5,182.9 401.9,182.2 403.2,181.5 404.5,180.8 405.9,180.1 407.2,179.5 408.5,178.8 409.9,178.1 411.2,177.5 412.5,176.8 413.8,176.2 415.2,175.6 416.5,175.0 417.8,174.4 419.2,173.8 420.5,173.2 421.8,172.6 423.1,172.1 424.5,171.5 425.8,170.9 427.1,170.4 428.5,169.9 429.8,169.4 431.1,168.8 432.5,168.3 433.8,167.8 435.1,167.3 436.4,166.9 437.8,166.4 439.1,165.9 440.4,165.4 441.8,165.0 443.1,164.5 444.4,164.1 445.8,163.7 447.1,163.2 448.4,162.8 449.8,162.4 451.1,162.0 452.4,161.6 453.7,161.2 455.1,160.8 456.4,160.5 457.7,160.1 459.1,159.7 460.4,159.4 461.7,159.0 463.1,158.7 464.4,158.3 465.7,158.0 467.0,157.6 468.4,157.3 469.7,157.0 471.0,156.7 472.4,156.4 473.7,156.1 475.0,155.8 476.4,155.5 477.7,155.2 479.0,154.9 480.3,154.6 481.7,154.3 483.0,154.1 484.3,153.8 485.7,153.5 487.0,153.3 488.3,153.0 489.6,152.8 491.0,152.5 492.3,152.3 493.6,152.0 495.0,151.8 496.3,151.6 497.6,151.4 499.0,151.1 500.3,150.9 501.6,150.7 502.9,150.5 504.3,150.3 505.6,150.1 506.9,149.9 508.3,149.7 509.6,149.5 510.9,149.3 512.3,149.1 513.6,148.9 514.9,148.8 516.3,148.6 517.6,148.4 518.9,148.2 520.2,148.1 521.6,147.9 522.9,147.8 524.2,147.6 525.6,147.4 526.9,147.3 528.2,147.1 529.5,147.0 530.9,146.8 532.2,146.7 533.5,146.6 534.9,146.4 536.2,146.3 537.5,146.1 538.9,146.0 540.2,145.9 541.5,145.8 542.9,145.6 544.2,145.5 545.5,145.4 546.8,145.3 548.2,145.2 549.5,145.0 550.8,144.9 552.2,144.8 553.5,144.7 554.8,144.6 556.1,144.5 557.5,144.4 558.8,144.3 560.1,144.2 561.5,144.1 562.8,144.0 564.1,143.9 565.5,143.8 566.8,143.7 568.1,143.7 569.5,143.6 570.8,143.5 572.1,143.4 573.4,143.3 574.8,143.2 576.1,143.2 577.4,143.1 578.8,143.0 580.1,142.9 581.4,142.8 582.8,142.8 584.1,142.7 585.4,142.6 586.7,142.6 588.1,142.5 589.4,142.4 590.7,142.4 592.1,142.3 593.4,142.2 594.7,142.2 596.1,142.1 597.4,142.1 598.7,142.0 600.0,141.9 601.4,141.9 602.7,141.8 604.0,141.8 605.4,141.7 606.7,141.7 608.0,141.6 609.4,141.6 610.7,141.5 612.0,141.5 613.3,141.4 614.7,141.4 616.0,141.3\" fill=\"none\" stroke=\"#1D44A6\" stroke-width=\"3\"/><circle cx=\"271.53\" cy=\"278.75\" r=\"4.5\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><line x1=\"271.53\" y1=\"278.75\" x2=\"271.53\" y2=\"330\" stroke=\"#B4432F\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\" stroke-linecap=\"round\"/><line x1=\"84\" y1=\"278.75\" x2=\"271.53\" y2=\"278.75\" stroke=\"#B4432F\" stroke-width=\"1.5\" stroke-dasharray=\"5 4\" stroke-linecap=\"round\"/><text x=\"276.53\" y=\"324\" font-size=\"12.5\" text-anchor=\"start\" font-weight=\"700\" fill=\"#B4432F\">141 pm</text><text x=\"90\" y=\"272.75\" font-size=\"12.5\" text-anchor=\"start\" font-weight=\"700\" fill=\"#B4432F\">−366 kJ/mol</text></g></svg>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Identify</b> the bond length of H–Br, in picometers, and the energy needed to break one mole of H–Br bonds, in kJ/mol, using the graph.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Bond length 141 pm and bond energy 366 kJ/mol (both read from the minimum)",
+     "accept": [
+      "141 pm and 366 kJ/mol",
+      "about 140 pm; about 366 kJ/mol",
+      "bond energy given as a positive 366 kJ/mol (not −366)"
+     ]
+    }
+   ],
+   "sample": "The bond length is the distance at the minimum, 141 pm. The energy needed to break one mole of bonds is the depth of the minimum below zero, 366 kJ/mol."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Explain</b>, in terms of the forces between the particles, why the potential energy rises steeply when the distance between the nuclei is less than 141 pm.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Names repulsion between the two positively charged nuclei (and/or between the electron clouds) that grows faster than the attraction at short distance",
+     "accept": [
+      "the nuclei repel each other more strongly as they are pushed together",
+      "repulsion between the inner electrons and between the nuclei dominates"
+     ]
+    }
+   ],
+   "sample": "When the atoms are pushed closer than 141 pm, the two positively charged nuclei (and the atoms' electron clouds) repel each other. This repulsion grows faster than the attraction of each nucleus for the shared electrons, so the potential energy rises steeply."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the energy, in kJ, needed to break all the H–Br bonds in 2.50 g of HBr (molar mass 80.91 g/mol).",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Correct setup and answer with unit: 2.50 g ÷ 80.91 g/mol = 0.0309 mol; 0.0309 mol × 366 kJ/mol = 11.3 kJ (consistent with the bond energy from part a)",
+     "accept": [
+      "11.3 kJ",
+      "11.31 kJ",
+      "0.0309 mol × 366 kJ/mol"
+     ]
+    }
+   ],
+   "sample": "2.50 g × (1 mol / 80.91 g) = 0.03090 mol HBr. 0.03090 mol × 366 kJ/mol = 11.3 kJ."
+  },
+  {
+   "label": "d",
+   "prompt": "The bond energy of H–Cl is 431 kJ/mol. <b>Explain</b> why the H–Br bond is weaker than the H–Cl bond.",
+   "points": 1,
+   "rubric": [
+    {
+     "point": "Br is larger than Cl (valence electrons in a higher shell, n = 4 vs n = 3), so the bond is longer and the shared electrons are farther from the Br nucleus, giving a weaker attraction; compares both bonds",
+     "accept": [
+      "Br's valence electrons are in the fourth shell, farther from its nucleus than Cl's third-shell electrons, so the shared pair is attracted less strongly",
+      "H–Br is longer than H–Cl, so the attraction to the shared electrons is weaker"
+     ]
+    }
+   ],
+   "sample": "Bromine's valence electrons are in the fourth shell, while chlorine's are in the third, so a Br atom is larger. The H–Br bond is therefore longer than H–Cl, and the shared electrons are farther from the Br nucleus than from the Cl nucleus. By Coulomb's law the attraction holding the bond together is weaker, so less energy is needed to break H–Br."
+  }
+ ]
+}

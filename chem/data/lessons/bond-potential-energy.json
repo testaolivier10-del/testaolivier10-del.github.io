@@ -1,0 +1,45 @@
+{
+ "topic": "bond-potential-energy",
+ "hook": "Two magnets snap together and stop when they touch; you need a tug to pull them apart. Two atoms behave the same way. They pull toward each other, stop at a set distance, and it costs a set amount of energy to separate them. One graph shows both numbers.",
+ "prereq": [
+  {
+   "q": "By Coulomb's law, how does the attraction between two opposite charges change if the distance between them is halved?",
+   "options": ["It becomes four times stronger", "It becomes twice as strong", "It becomes half as strong", "It does not change"],
+   "correct": 0,
+   "why": "The force is proportional to 1/r²; halving r multiplies 1/r² by 2² = 4.",
+   "review": "electron-configuration"
+  },
+  {
+   "q": "In a covalent bond, what holds the two atoms together?",
+   "options": ["Both nuclei attract the shared pair of electrons between them", "The two nuclei attract each other", "The electrons of one atom repel the other atom", "A transferred electron makes the atoms neutral"],
+   "correct": 0,
+   "why": "The shared electrons sit between the nuclei, and both nuclei attract them.",
+   "review": "bond-types"
+  }
+ ],
+ "figure": { "figure": "pe-curve-h2", "caption": "The potential energy of two hydrogen atoms falls as they attract, reaches a minimum at the bond length (74 pm), and rises steeply when the nuclei are pushed too close. The depth of the minimum, 436 kJ/mol, is the bond energy." },
+ "chain": [
+  { "cause": "Two atoms far apart do not interact", "effect": "their potential energy is taken as zero" },
+  { "cause": "As they approach, each nucleus attracts the other atom's electrons", "effect": "the potential energy falls below zero" },
+  { "cause": "Closer still, the nuclei and the electron clouds repel, and repulsion grows faster", "effect": "the potential energy rises steeply" },
+  { "cause": "Attraction and repulsion balance at one distance", "effect": "the curve has a minimum: its distance is the bond length, its depth the bond energy" },
+  { "cause": "More shared pairs between the same two atoms attract both nuclei more strongly", "effect": "double and triple bonds are shorter and stronger than single bonds" }
+ ],
+ "ideas": [
+  "An <b>intramolecular force</b> acts within a particle: covalent, ionic or metallic bonding.",
+  "The minimum of the <b>potential energy curve</b> sits at the <b>bond length</b>; its depth below zero is the <b>bond energy</b>.",
+  "Breaking a bond requires energy; forming one releases energy.",
+  "Between the same two atoms, a <b>triple bond</b> is shorter and stronger than a <b>double bond</b>, which is shorter and stronger than a <b>single bond</b>.",
+  "For ions, Coulomb's law (F ∝ q₁q₂/r²): larger charges and a shorter distance give a stronger attraction."
+ ],
+ "misconception": {
+  "wrong": "Breaking a chemical bond releases energy.",
+  "right": "Bonded atoms sit at the bottom of an energy well. Pulling them apart means climbing out of it, which requires energy. Energy is released when bonds form."
+ },
+ "check": ["chem-bond-potential-energy-1", "chem-bond-potential-energy-2", "chem-bond-potential-energy-3", "chem-bond-potential-energy-4", "chem-bond-potential-energy-12", "chem-bond-potential-energy-13", "chem-bond-potential-energy-11"],
+ "summary": "As two atoms approach, attraction lowers their potential energy until repulsion between the nuclei makes it rise again. The minimum of the potential energy curve gives the bond length (its distance) and the bond energy (its depth): the energy needed to break the bond. Larger atoms form longer bonds, and more shared pairs between the same atoms make shorter, stronger bonds. For ions, Coulomb's law shows that larger charges and smaller distances give stronger attractions.",
+ "connections": [
+  { "href": "../notes/bond-types.html", "label": "Back: types of chemical bonds (2.1)" },
+  { "href": "../notes/ionic-solids.html", "label": "Next: the structure of ionic solids (2.3)" }
+ ]
+}

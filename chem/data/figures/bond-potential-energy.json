@@ -1,0 +1,12 @@
+{
+ "pe-curve-h2": {
+  "file": "figures/pe-curve-h2.svg", "ext": "svg", "w": 700, "h": 440,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Graph of potential energy in kilojoules per mole against distance between two hydrogen nuclei in picometers. Far apart the energy is near zero; as the atoms approach it falls to a minimum of minus 436 kilojoules per mole at 74 picometers, marked as the bond length and bond energy; closer than that it rises steeply because the nuclei repel."
+ },
+ "carbon-single-double-triple": {
+  "file": "figures/carbon-single-double-triple.svg", "ext": "svg", "w": 620, "h": 254,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Three carbon-carbon bonds drawn to scale with bars for their energies: single bond 154 picometers and 347 kilojoules per mole, double bond 134 picometers and 614, triple bond 120 picometers and 839. More shared pairs give shorter, stronger bonds."
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "id": "frq-chlorite-ion-structure",
+ "type": "long",
+ "points": 10,
+ "title": "Bonding and shape in chlorine oxyanions",
+ "units": ["unit-2"],
+ "topics": ["bond-types", "lewis-diagrams", "resonance-formal-charge", "vsepr-hybridization"],
+ "practices": ["1.A", "1.B", "4.A", "5.A", "6.D"],
+ "stimulus": {
+  "kind": "setup",
+  "title": "Chlorine oxyanions",
+  "text": "<p>Chlorine forms several ions with oxygen. Two of them are the chlorite ion, ClO₂⁻, and the chlorate ion, ClO₃⁻. In both, Cl is the central atom bonded to each O atom. Chlorine is in period 3. Electronegativity values: Cl 3.2, O 3.4.</p><p>Measured Cl–O bond lengths: in ClO₂⁻ both bonds are 156 pm; in ClO₃⁻ all three bonds are 149 pm. A typical Cl–O single bond is about 170 pm.</p>"
+ },
+ "parts": [
+  {
+   "label": "a",
+   "prompt": "<b>Determine</b> the total number of valence electrons in the chlorite ion, ClO₂⁻.",
+   "points": 1,
+   "rubric": [
+    { "point": "20 valence electrons: 7 + 2(6) + 1", "accept": ["20", "7 + 12 + 1 = 20"] }
+   ],
+   "sample": "Cl has 7 valence electrons and each O has 6; the 1− charge adds one electron: 7 + 2(6) + 1 = 20."
+  },
+  {
+   "label": "b",
+   "prompt": "<b>Draw</b> a complete Lewis diagram for ClO₂⁻ in which every atom has an octet. Show all lone pairs.",
+   "points": 1,
+   "rubric": [
+    { "point": "O–Cl–O with single bonds, three lone pairs on each O and two lone pairs on Cl (20 electrons), in brackets with 1− charge", "accept": ["[O–Cl–O]⁻ with 3 lone pairs on each O and 2 on Cl", "charge may be shown as a formal charge on an O instead of brackets"] }
+   ],
+   "sample": "Cl in the center with a single bond to each O; three lone pairs on each O and two lone pairs on Cl; the whole diagram in square brackets with a 1− charge. Total: 4 bonding + 16 lone-pair electrons = 20."
+  },
+  {
+   "label": "c",
+   "prompt": "<b>Calculate</b> the formal charge on the Cl atom in your diagram from part (b). Show your work.",
+   "points": 1,
+   "rubric": [
+    { "point": "Formal charge on Cl = 7 − 4 − ½(4) = +1, with setup; consistent with the diagram drawn in part (b)", "accept": ["+1", "7 − 4 − 2 = +1"] }
+   ],
+   "sample": "Formal charge = valence electrons − lone-pair electrons − ½(bonding electrons) = 7 − 4 − ½(4) = +1."
+  },
+  {
+   "label": "d",
+   "prompt": "A student proposes a second diagram for ClO₂⁻ with one Cl=O double bond and one Cl–O single bond, in which Cl has two lone pairs. <b>Justify</b>, using formal charges, why this diagram is preferred over the diagram in part (b).",
+   "points": 2,
+   "rubric": [
+    { "point": "Correct formal charges in the proposed diagram: Cl 0, double-bonded O 0, single-bonded O −1 (compared with Cl +1 and both O −1 in part b)", "accept": ["Cl 7 − 4 − 3 = 0; O(=) 6 − 4 − 2 = 0; O(–) 6 − 6 − 1 = −1"] },
+    { "point": "Reasoning: the proposed diagram has formal charges closer to zero (fewer charged atoms, no charge separation between Cl and O), with the remaining −1 on O, the more electronegative atom; Cl (period 3) can hold more than eight electrons", "accept": ["formal charges nearer zero are preferred", "negative formal charge on the more electronegative O", "Cl can have an expanded octet because it is in period 3"] }
+   ],
+   "sample": "In the proposed diagram, Cl has 7 − 4 − ½(6) = 0, the double-bonded O has 6 − 4 − ½(4) = 0 and the single-bonded O has 6 − 6 − ½(2) = −1. In the octet diagram Cl is +1 and both O atoms are −1. The proposed diagram has formal charges closer to zero, and its only negative formal charge is on O, which is more electronegative than Cl (3.4 vs 3.2). Cl is in period 3, so it can hold 10 electrons, an expanded octet."
+  },
+  {
+   "label": "e",
+   "prompt": "The two Cl–O bonds in ClO₂⁻ have the same length, 156 pm, which is shorter than a typical Cl–O single bond. <b>Explain</b> this observation.",
+   "points": 2,
+   "rubric": [
+    { "point": "The double bond can be drawn to either O: the ion has two equivalent resonance structures, and the real ion is a hybrid (electrons delocalized), so both bonds are identical", "accept": ["resonance between two equivalent structures", "the double bond is shared by both Cl–O bonds"] },
+    { "point": "Each Cl–O bond has a bond order between 1 and 2 (1.5), so it is shorter than a single bond (170 pm)", "accept": ["bond order 1.5", "partial double-bond character makes both bonds shorter than a single bond"] }
+   ],
+   "sample": "The Cl=O double bond in the preferred diagram can be drawn to either oxygen, giving two equivalent resonance structures. The real ion is a resonance hybrid with the extra bonding electrons delocalized over both Cl–O bonds, so the two bonds are identical. Each has a bond order of 1.5, between a single and a double bond, so each is shorter (156 pm) than a Cl–O single bond (about 170 pm)."
+  },
+  {
+   "label": "f",
+   "prompt": "<b>Identify</b> the molecular geometry of ClO₂⁻ and <b>estimate</b> the O–Cl–O bond angle. <b>Justify</b> your answer in terms of electron domains.",
+   "points": 2,
+   "rubric": [
+    { "point": "Bent geometry", "accept": ["bent", "angular", "V-shaped"] },
+    { "point": "Justification: Cl has four electron domains (two bonding domains and two lone pairs, counting each bond once), arranged tetrahedrally, so the angle is near 109.5°; accept any estimate from 100° to 115° with this reasoning (VSEPR's lone-pair argument suggests slightly less than 109.5°; the measured angle is about 111°)", "accept": ["4 domains, 2 lone pairs, about 109.5°", "slightly less than 109.5° because lone pairs repel more", "about 105° to 112°"] }
+   ],
+   "sample": "Cl has four electron domains: two bonds to O (a double bond counts as one domain) and two lone pairs. The domains are arranged tetrahedrally; with two of the positions taken by lone pairs, the atoms form a bent shape. The O–Cl–O angle is therefore close to the tetrahedral 109.5° (VSEPR's lone-pair argument suggests a little less; the measured angle is about 111°)."
+  },
+  {
+   "label": "g",
+   "prompt": "The Cl–O bonds in ClO₃⁻ (149 pm) are shorter than those in ClO₂⁻ (156 pm). A student claims that this is because ClO₃⁻ has more oxygen atoms pulling on the Cl atom. <b>Evaluate</b> the claim, using bond order. (The preferred diagram of ClO₃⁻ has two Cl=O double bonds and one Cl–O single bond, with resonance among all three positions.)",
+   "points": 1,
+   "rubric": [
+    { "point": "Rejects or corrects the claim: the bonds are shorter because the bond order is higher in ClO₃⁻ (5 bonding pairs over 3 bonds = 5/3 ≈ 1.67) than in ClO₂⁻ (3/2 = 1.5); higher bond order means more shared electrons and a shorter bond", "accept": ["bond order 5/3 vs 3/2", "more bonding pairs per bond in ClO₃⁻, so shorter bonds"] }
+   ],
+   "sample": "The claim does not give the real cause. In ClO₃⁻, 5 bonding pairs (2 + 2 + 1) are shared over 3 bonds, a bond order of 5/3 ≈ 1.67 for each, while in ClO₂⁻ 3 pairs are shared over 2 bonds, a bond order of 1.5. More shared electrons between the nuclei attract both nuclei more strongly, so the higher bond order in ClO₃⁻ makes its bonds shorter."
+  }
+ ]
+}

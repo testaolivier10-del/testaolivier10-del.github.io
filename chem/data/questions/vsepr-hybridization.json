@@ -1,0 +1,558 @@
+{
+ "stimuli": {
+  "vsepr-hybridization-s1": {
+   "kind": "model",
+   "title": "Lewis diagrams of four fluorides",
+   "text": "<p>Lewis diagrams of four molecules, each with a central atom bonded to fluorine atoms.</p>",
+   "html": "<svg viewBox=\"0 0 680 224\" width=\"680\" height=\"224\" role=\"img\" aria-label=\"Lewis diagrams. Molecule 1, BF3: B bonded to three F, no lone pair on B. Molecule 2, NF3: N bonded to three F, one lone pair on N. Molecule 3, ClF3: Cl bonded to three F, two lone pairs on Cl. Molecule 4, XeF2: Xe bonded to two F, three lone pairs on Xe. Each F carries three lone pairs.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><text x=\"85\" y=\"111.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">B</text><text x=\"85\" y=\"57.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><text x=\"38\" y=\"139.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><text x=\"132\" y=\"139.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"85\" y1=\"90\" x2=\"85\" y2=\"64\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"72.97\" y1=\"111.17\" x2=\"50.03\" y2=\"124.83\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"97.03\" y1=\"111.17\" x2=\"119.97\" y2=\"124.83\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"89.6\" cy=\"31\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"80.4\" cy=\"31\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"66\" cy=\"45.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"66\" cy=\"54.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"104\" cy=\"54.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"104\" cy=\"45.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"33.4\" cy=\"151\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"42.6\" cy=\"151\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"19\" cy=\"127.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"19\" cy=\"136.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"23.85\" cy=\"118.52\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"19.25\" cy=\"126.48\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"127.4\" cy=\"151\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"136.6\" cy=\"151\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"151\" cy=\"136.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"151\" cy=\"127.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"150.75\" cy=\"126.48\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"146.15\" cy=\"118.52\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"85\" y=\"196\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Molecule 1</text><text x=\"85\" y=\"214\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">BF<tspan font-size=\"10\" dy=\"3\">3</tspan><tspan dy=\"-3\"></tspan></text><text x=\"255\" y=\"103.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><text x=\"205\" y=\"133.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"243\" y1=\"103.2\" x2=\"217\" y2=\"118.8\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"305\" y=\"133.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"267\" y1=\"103.2\" x2=\"293\" y2=\"118.8\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"255\" y=\"159.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><line x1=\"255\" y1=\"110\" x2=\"255\" y2=\"138\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"259.6\" cy=\"77\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"250.4\" cy=\"77\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"186\" cy=\"121.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"186\" cy=\"130.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"199.48\" cy=\"107.25\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"191.52\" cy=\"111.85\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"191.52\" cy=\"140.15\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"199.48\" cy=\"144.75\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"324\" cy=\"130.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"324\" cy=\"121.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"318.48\" cy=\"111.85\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"310.52\" cy=\"107.25\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"310.52\" cy=\"144.75\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"318.48\" cy=\"140.15\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"250.4\" cy=\"171\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"259.6\" cy=\"171\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"236\" cy=\"147.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"236\" cy=\"156.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"274\" cy=\"156.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"274\" cy=\"147.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"255\" y=\"196\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Molecule 2</text><text x=\"255\" y=\"214\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">NF<tspan font-size=\"10\" dy=\"3\">3</tspan><tspan dy=\"-3\"></tspan></text><text x=\"420\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">Cl</text><line x1=\"420\" y1=\"83\" x2=\"420\" y2=\"60\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"403\" y1=\"100\" x2=\"380\" y2=\"100\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"420\" y1=\"117\" x2=\"420\" y2=\"140\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"420\" y=\"53.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><text x=\"366\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><text x=\"420\" y=\"161.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><circle cx=\"441.48\" cy=\"90.58\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"436.2\" cy=\"83.04\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"436.2\" cy=\"116.96\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"441.48\" cy=\"109.42\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"424.6\" cy=\"27\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"415.4\" cy=\"27\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"401\" cy=\"41.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"401\" cy=\"50.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"439\" cy=\"50.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"439\" cy=\"41.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"347\" cy=\"95.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"347\" cy=\"104.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"370.6\" cy=\"81\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"361.4\" cy=\"81\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"361.4\" cy=\"119\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"370.6\" cy=\"119\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"415.4\" cy=\"173\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"424.6\" cy=\"173\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"401\" cy=\"149.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"401\" cy=\"158.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"439\" cy=\"158.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"439\" cy=\"149.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"420\" y=\"196\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Molecule 3</text><text x=\"420\" y=\"214\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">ClF<tspan font-size=\"10\" dy=\"3\">3</tspan><tspan dy=\"-3\"></tspan></text><text x=\"590\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">Xe</text><line x1=\"590\" y1=\"83\" x2=\"590\" y2=\"58\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"590\" y1=\"117\" x2=\"590\" y2=\"142\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><text x=\"590\" y=\"51.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><text x=\"590\" y=\"163.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">F</text><circle cx=\"565\" cy=\"95.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"565\" cy=\"104.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"614.6\" cy=\"93.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"610.71\" cy=\"85.27\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"610.71\" cy=\"114.73\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"614.6\" cy=\"106.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"594.6\" cy=\"25\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"585.4\" cy=\"25\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"571\" cy=\"39.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"571\" cy=\"48.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"609\" cy=\"48.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"609\" cy=\"39.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"585.4\" cy=\"175\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"594.6\" cy=\"175\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"571\" cy=\"151.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"571\" cy=\"160.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"609\" cy=\"160.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"609\" cy=\"151.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"590\" y=\"196\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Molecule 4</text><text x=\"590\" y=\"214\" font-size=\"13\" text-anchor=\"middle\" fill=\"#5B6670\">XeF<tspan font-size=\"10\" dy=\"3\">2</tspan><tspan dy=\"-3\"></tspan></text></g></svg>"
+  },
+  "vsepr-hybridization-s2": {
+   "kind": "model",
+   "title": "Acrylonitrile",
+   "text": "<p>Acrylonitrile, C₃H₃N, is used to make acrylic fibers. Its Lewis diagram is shown with the carbon atoms numbered C1, C2 and C3.</p>",
+   "html": "<svg viewBox=\"0 0 480 180\" width=\"480\" height=\"180\" role=\"img\" aria-label=\"Lewis diagram of acrylonitrile: carbon C1 bonded to two H atoms and double-bonded to carbon C2; C2 bonded to one H atom and single-bonded to carbon C3; C3 triple-bonded to N, which has one lone pair.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><text x=\"150\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"230\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"310\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"390\" y=\"107.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><text x=\"110\" y=\"63.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">H</text><text x=\"110\" y=\"151.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">H</text><text x=\"230\" y=\"157.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">H</text><line x1=\"164\" y1=\"95.5\" x2=\"216\" y2=\"95.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"164\" y1=\"104.5\" x2=\"216\" y2=\"104.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"244\" y1=\"100\" x2=\"296\" y2=\"100\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"324\" y1=\"92.35\" x2=\"376\" y2=\"92.35\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"324\" y1=\"100\" x2=\"376\" y2=\"100\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"324\" y1=\"107.65\" x2=\"376\" y2=\"107.65\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"140.58\" y1=\"89.64\" x2=\"119.42\" y2=\"66.36\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"140.58\" y1=\"110.36\" x2=\"119.42\" y2=\"133.64\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"230\" y1=\"114\" x2=\"230\" y2=\"136\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"409\" cy=\"104.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"409\" cy=\"95.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><text x=\"150\" y=\"74\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#B4432F\">C1</text><text x=\"244\" y=\"74\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#B4432F\">C2</text><text x=\"310\" y=\"74\" font-size=\"12.5\" text-anchor=\"middle\" font-weight=\"700\" fill=\"#B4432F\">C3</text></g></svg>"
+  },
+  "vsepr-hybridization-s3": {
+   "kind": "table",
+   "title": "Measured bond angles",
+   "text": "<p>Measured H–X–H bond angles in four molecules with a central atom from period 2.</p>",
+   "table": {
+    "caption": "Bond angles around the central atom",
+    "cols": [
+     "Molecule",
+     "Central atom",
+     "Bonding pairs on the central atom",
+     "Lone pairs on the central atom",
+     "Measured H–X–H angle (°)"
+    ],
+    "rows": [
+     [
+      "CH₄",
+      "C",
+      "4",
+      "0",
+      "109.5"
+     ],
+     [
+      "NH₃",
+      "N",
+      "3",
+      "1",
+      "107"
+     ],
+     [
+      "H₂O",
+      "O",
+      "2",
+      "2",
+      "104.5"
+     ],
+     [
+      "BH₃",
+      "B",
+      "3",
+      "0",
+      "120"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-vsepr-hybridization-1",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "vsepr-hybridization-s1",
+   "q": "What is the molecular geometry of Molecule 2, NF₃?",
+   "options": [
+    "Trigonal planar",
+    "Trigonal pyramidal",
+    "Trigonal bipyramidal",
+    "Tetrahedral"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "N has four electron domains: three bonds and one lone pair. They point to the corners of a tetrahedron; with one corner taken by the lone pair, the atoms form a pyramid with N at the top.",
+    "options": [
+     "Trigonal planar needs three domains and no lone pair, like BF₃. NF₃'s lone pair is a fourth domain.",
+     "Right: four domains, one of them a lone pair.",
+     "Trigonal bipyramidal needs five domains with no lone pairs, as in PCl₅; N has only four domains.",
+     "Tetrahedral is the electron-domain arrangement; the molecular geometry names only the atoms' positions."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-2",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s1",
+   "q": "BF₃ and NF₃ each have three F atoms bonded to the central atom, but different shapes. Which explanation is best?",
+   "options": [
+    "The N–F bonds are double bonds, while the B–F bonds are single bonds",
+    "N is more electronegative than B, so it pulls the F atoms closer and bends the molecule",
+    "B is smaller than N, so the F atoms around B have more room and spread into a plane",
+    "N's lone pair is a fourth domain, which bends the bonds into a pyramid"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Shape comes from the number of electron domains. B has three (trigonal planar, 120°). N has four, one a lone pair, so the domains are arranged tetrahedrally and the atoms form a trigonal pyramid.",
+    "options": [
+     "All the bonds in both diagrams are single bonds.",
+     "Electronegativity affects polarity, not the number of domains that sets the shape.",
+     "B is in fact larger than N; size is not what decides the shape here.",
+     "Right: the lone pair is the difference."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-3",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s1",
+   "q": "What is the molecular geometry of Molecule 3, ClF₃?",
+   "options": [
+    "T-shaped",
+    "Trigonal planar",
+    "Trigonal pyramidal",
+    "Seesaw"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Cl has five domains (three bonds, two lone pairs) in a trigonal bipyramidal arrangement. The two lone pairs take equatorial positions, where they have more room, leaving the three F atoms in a T shape.",
+    "options": [
+     "Right: five domains, two lone pairs.",
+     "Trigonal planar has three domains and no lone pairs; Cl has five domains.",
+     "Trigonal pyramidal has four domains with one lone pair; Cl has five domains.",
+     "A seesaw has five domains with only one lone pair, as in SF₄."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-4",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "vsepr-hybridization-s1",
+   "q": "Which of the four molecules are polar? Select all that apply.",
+   "options": [
+    "Molecule 2, NF₃",
+    "Molecule 3, ClF₃",
+    "Molecule 1, BF₃",
+    "Molecule 4, XeF₂"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Every bond is polar (F is more electronegative than each central atom). In NF₃ (pyramidal) and ClF₃ (T-shaped) the bond dipoles do not cancel. BF₃ (trigonal planar) and XeF₂ (linear, lone pairs around the middle) are symmetrical, so their bond dipoles cancel.",
+    "options": [
+     "Right: the pyramid's dipoles add up to a net dipole.",
+     "Right: the T shape is not symmetrical, so the dipoles do not cancel.",
+     "The three B–F dipoles point 120° apart in a plane and cancel.",
+     "The two Xe–F dipoles point in opposite directions and cancel; the three lone pairs sit evenly around Xe."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-5",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s1",
+   "q": "What is the F–Xe–F bond angle in Molecule 4, XeF₂?",
+   "options": [
+    "109.5°",
+    "120°",
+    "180°",
+    "90°"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Xe has five domains: two bonds and three lone pairs. The three lone pairs sit in the equatorial plane, 120° apart, and the two F atoms take the axial positions, opposite each other: a linear molecule.",
+    "options": [
+     "109.5° belongs to four domains; Xe has five.",
+     "120° separates equatorial positions, where the lone pairs are, not the F atoms.",
+     "Right: the F atoms are axial, opposite each other.",
+     "90° separates an axial from an equatorial position; both F atoms are axial."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-6",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s2",
+   "q": "What is the hybridization of C2?",
+   "options": [
+    "sp³",
+    "sp",
+    "sp²",
+    "sp³ for the H bond and sp for the C bonds"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "C2 has three electron domains: the double bond to C1 (one domain), the single bond to C3 and the bond to H. Three domains: sp².",
+    "options": [
+     "sp³ means four domains; C2 has only three, because a double bond counts as one.",
+     "sp means two domains, as at C3 (a single bond and a triple bond).",
+     "Right: three domains.",
+     "An atom has one hybridization set by its total number of domains; it is not assigned bond by bond."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-7",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s2",
+   "q": "How many pi (π) bonds are in one acrylonitrile molecule?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0,
+    "unit": "π bonds",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 2,
+      "tol": 0,
+      "why": "Value: a triple bond has two π bonds, not one. C=C has one, C≡N has two: 3 in all."
+     },
+     {
+      "value": 5,
+      "tol": 0,
+      "why": "Value: you counted the multiple bonds as all π. Each double or triple bond contains one σ bond; only the extra bonds are π."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Every single bond is σ. A double bond is 1 σ + 1 π; a triple bond is 1 σ + 2 π. C1=C2 gives 1 π and C3≡N gives 2 π: 3 π bonds."
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-8",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s2",
+   "q": "How many sigma (σ) bonds are in one acrylonitrile molecule?",
+   "numeric": {
+    "answer": 6,
+    "tol": 0,
+    "unit": "σ bonds",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 9,
+      "tol": 0,
+      "why": "Value: you counted every line as a σ bond. Each double or triple bond has only one σ bond; count one σ per pair of bonded atoms."
+     }
+    ]
+   },
+   "why": {
+    "correct": "One σ bond for each pair of bonded atoms: C1–H, C1–H, C1–C2, C2–H, C2–C3, C3–N. That is 6 σ bonds."
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-9",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s2",
+   "q": "What is the C2–C3–N bond angle?",
+   "options": [
+    "About 180°",
+    "About 120°",
+    "About 109.5°",
+    "About 90°"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "C3 has two electron domains (the single bond to C2 and the triple bond to N, which counts as one). Two domains point opposite each other: linear, 180°.",
+    "options": [
+     "Right: two domains, linear.",
+     "120° fits three domains, as at C2.",
+     "109.5° fits four domains; a triple bond is one domain, not three.",
+     "90° occurs only with five or six domains."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-10",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s3",
+   "q": "Which statement best explains why the angle falls from CH₄ to NH₃ to H₂O?",
+   "options": [
+    "The bonds get shorter from C to O, so the H atoms are pushed closer together",
+    "The central atom gets more electronegative, so it pulls the H atoms closer together",
+    "The molecules have fewer H atoms, so the H atoms move closer to fill the space",
+    "Each has four domains, and each added lone pair, repelling more strongly, squeezes the angle"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "All three have four electron domains (tetrahedral arrangement). A lone pair is held by one nucleus only, so it spreads out closer to the central atom and pushes the bonding pairs together: 109.5° with none, 107° with one, 104.5° with two.",
+    "options": [
+     "Bond length does not set the angle between the bonds here; repulsion between domains does.",
+     "Electronegativity is not what sets these angles; the number of lone pairs is.",
+     "Fewer atoms do not fill space; lone pairs take the place of the missing bonds and push the others together.",
+     "Right: lone pairs take up more room than bonding pairs."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-11",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s3",
+   "q": "BH₃ and NH₃ both have three bonding pairs on the central atom. Why is the BH₃ angle larger?",
+   "options": [
+    "B is less electronegative than N, so the B–H bonds repel each other more strongly",
+    "B has three domains, 120° apart in a plane; N has four, tetrahedral",
+    "BH₃ has fewer electrons in total, so its H atoms have more room to spread out",
+    "B is a larger atom than N, so its bonds are longer and their angles are wider"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "BH₃ has no lone pair, so its three domains spread out to 120° in a plane (trigonal planar). NH₃'s lone pair is a fourth domain: the arrangement is tetrahedral and the H–N–H angle closes to about 107°.",
+    "options": [
+     "Bond repulsion due to electronegativity is a small effect; the lone pair is the main difference.",
+     "Right: three domains against four.",
+     "Total electron count does not set the shape; the number of domains on the central atom does.",
+     "Bond length does not set the angle; the number of domains does."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-12",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s3",
+   "q": "What is the hybridization of the central atom in each of CH₄, NH₃ and H₂O?",
+   "options": [
+    "sp³, sp² and sp",
+    "sp³ in all three",
+    "sp³ in CH₄; sp² in NH₃ and H₂O",
+    "sp in each of the three"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each central atom has four electron domains (bonds plus lone pairs: 4 + 0, 3 + 1, 2 + 2), so each is sp³. Hybridization counts domains, including lone pairs.",
+    "options": [
+     "That counts only the bonds. Lone pairs are domains too.",
+     "Right: four domains each.",
+     "NH₃ and H₂O have lone pairs that make up their four domains.",
+     "sp needs two domains, as in CO₂."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-13",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "vsepr-hybridization-s3",
+   "q": "Which molecules in the table have a tetrahedral molecular geometry? Select all that apply.",
+   "options": [
+    "CH₄",
+    "NH₃",
+    "H₂O",
+    "BH₃"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "CH₄, NH₃ and H₂O all have four domains arranged tetrahedrally, but the molecular geometry names the atoms only. Only CH₄, with no lone pairs, has its atoms at the four corners of a tetrahedron.",
+    "options": [
+     "Right: four bonding domains and no lone pairs.",
+     "The domains are tetrahedral, but with one lone pair the atoms form a trigonal pyramid.",
+     "The domains are tetrahedral, but with two lone pairs the atoms form a bent shape.",
+     "BH₃ has three domains and is trigonal planar."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-14",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Carbon dioxide has two polar C=O bonds, yet it is a nonpolar molecule. Which explanation is best?",
+   "options": [
+    "The lone pairs on C point away from the O atoms and cancel the bond dipoles",
+    "C and O have the same electronegativity, so the bonds are not actually polar",
+    "Double bonds are nonpolar, since the four shared electrons are spread evenly",
+    "It is linear, so the two equal bond dipoles point opposite ways and cancel"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Polarity depends on bond polarity and shape. Each C=O bond is polar (O is more electronegative), but in a linear molecule the two dipoles point in opposite directions with equal size, so the net dipole is zero.",
+    "options": [
+     "C in CO₂ has no lone pairs: its four bonding pairs are in the two double bonds.",
+     "O (3.4) is more electronegative than C (2.6), so each bond is polar.",
+     "A double bond between different atoms is polar; the electrons are pulled toward O.",
+     "Right: the shape makes the dipoles cancel."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-15",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "Which molecule has a bent molecular geometry?",
+   "options": [
+    "SO₂",
+    "CO₂",
+    "BeCl₂",
+    "HCN"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "SO₂ has 18 valence electrons; S has two bonding domains and one lone pair, three domains in all. With one domain a lone pair, the O–S–O shape is bent (about 119°).",
+    "options": [
+     "Right: three domains, one a lone pair.",
+     "CO₂'s C has two domains (two double bonds) and no lone pairs: linear.",
+     "Be in BeCl₂ has two bonds and no lone pairs: linear.",
+     "C in HCN has two domains, a single and a triple bond: linear."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-16",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Which statement about CH₂Cl₂ (C bonded to two H and two Cl atoms) is correct?",
+   "options": [
+    "It is nonpolar, because the central carbon atom has no lone pairs",
+    "It is nonpolar, because it can be drawn as a flat square with the Cl atoms opposite each other",
+    "It is polar: in a tetrahedron, the two C–Cl dipoles do not point opposite ways",
+    "It is polar just when the two Cl atoms are drawn side by side on the page"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "C has four domains, arranged tetrahedrally; every pair of positions is 109.5° apart, so the two C–Cl dipoles (larger than the C–H ones) add to a net dipole whichever two corners they occupy.",
+    "options": [
+     "No lone pairs does not make a molecule nonpolar; CH₂Cl₂ has unequal bond dipoles that do not cancel.",
+     "A flat Lewis drawing is not the 3-D shape. The molecule is tetrahedral, not square planar.",
+     "Right: the real 3-D shape decides, and no arrangement cancels the dipoles.",
+     "The molecule's polarity does not depend on how it is drawn; in 3-D every arrangement is the same."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-17",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "What does VSEPR theory say determines the shape of a molecule?",
+   "options": [
+    "Bonds point toward the most electronegative neighboring atoms",
+    "Atoms arrange themselves so that the heaviest atoms are farthest apart",
+    "Electron domains on the central atom repel and spread as far apart as they can",
+    "Each bond angle is 90°, because orbitals are at right angles"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Valence shell electron pair repulsion: bonding pairs and lone pairs are regions of negative charge that repel, so they take positions as far apart as possible.",
+    "options": [
+     "Electronegativity affects bond polarity, not the direction the bonds point.",
+     "Mass plays no part in VSEPR; the repulsion of electron domains does.",
+     "Right: domains spread apart to reduce repulsion.",
+     "Real angles are 180°, 120°, 109.5°, 90° and in-between values, depending on the number of domains."
+    ]
+   }
+  },
+  {
+   "id": "chem-vsepr-hybridization-18",
+   "type": "predict",
+   "unit": "unit-2",
+   "topic": "vsepr-hybridization",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Compare methane, CH₄, with ethyne, H–C≡C–H. Going from a carbon atom in CH₄ to a carbon atom in ethyne, predict the change in each quantity.",
+   "variables": [
+    {
+     "name": "Number of electron domains on the carbon atom",
+     "answer": "down",
+     "why": "Each C in ethyne has a bond to H and a triple bond to C, two domains; C in CH₄ has four."
+    },
+    {
+     "name": "Bond angle around the carbon atom",
+     "answer": "up",
+     "why": "Two domains spread to 180° (linear), wider than 109.5° for four domains."
+    },
+    {
+     "name": "Number of valence electrons the carbon atom brings",
+     "answer": "none",
+     "why": "Carbon has four valence electrons in every compound; only how they are used in bonds changes."
+    }
+   ],
+   "why": {
+    "correct": "Fewer domains means a wider angle: sp³ (four domains, 109.5°) in CH₄, sp (two domains, 180°) in ethyne."
+   }
+  }
+ ]
+}

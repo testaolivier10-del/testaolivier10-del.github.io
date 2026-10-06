@@ -1,0 +1,7 @@
+{
+ "metal-alloy-types": {
+  "file": "figures/metal-alloy-types.svg", "ext": "svg", "w": 780, "h": 300,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Three boxes. Pure metal: 20 identical gray atoms in rows. Substitutional alloy: the same rows, with 5 of the gray atoms replaced by orange atoms of the same size. Interstitial alloy: the same 20 gray atoms with 7 much smaller dark atoms sitting in the gaps between them."
+ }
+}

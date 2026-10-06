@@ -1,0 +1,52 @@
+{
+ "topic": "metals-alloys",
+ "hook": "Bronze tools beat stone tools; steel beat bronze. Each step came from mixing a second element into a metal. Whether the new atoms slip into the gaps or take the places of the metal's own atoms decides how much harder the metal gets.",
+ "prereq": [
+  {
+   "q": "In metallic bonding, what holds the metal cations together?",
+   "options": ["A sea of delocalized valence electrons", "Anions placed between the cations", "Shared pairs between each two neighboring atoms", "Gravity between the heavy nuclei"],
+   "correct": 0,
+   "why": "The cations attract the electron sea that moves among them.",
+   "review": "bond-types"
+  },
+  {
+   "q": "Why does an ionic crystal shatter when struck?",
+   "options": ["A shifted layer puts like charges next to each other, and they repel", "Its bonds are weak", "Its electrons fly off", "It contains molecules that break apart"],
+   "correct": 0,
+   "why": "In the shifted lattice, cations face cations and anions face anions.",
+   "review": "ionic-solids"
+  },
+  {
+   "q": "Going down a group, atomic radius",
+   "options": ["increases, because electrons occupy more shells", "decreases, because the nuclear charge grows", "stays the same", "increases, because the atoms get heavier"],
+   "correct": 0,
+   "why": "Each period down adds a shell, so the valence electrons are farther from the nucleus.",
+   "review": "periodic-trends"
+  }
+ ],
+ "figure": { "figure": "metal-alloy-types", "caption": "Left: a pure metal, one kind of atom in layers. Middle: in a substitutional alloy, atoms of similar size take the places of some metal atoms. Right: in an interstitial alloy, much smaller atoms fill the gaps." },
+ "chain": [
+  { "cause": "Metal atoms release their valence electrons into a shared sea", "effect": "a metallic solid forms: cations held by delocalized electrons" },
+  { "cause": "The delocalized electrons can move through the whole solid", "effect": "metals conduct electricity and heat well" },
+  { "cause": "When layers of cations slide, the electron sea moves with them", "effect": "the bonding is kept, so metals are malleable and ductile instead of brittle" },
+  { "cause": "Added atoms of similar size replace host atoms", "effect": "a substitutional alloy forms, usually a little harder than the pure metal" },
+  { "cause": "Much smaller added atoms sit in the gaps and block the layers from sliding", "effect": "an interstitial alloy forms, harder and less malleable" }
+ ],
+ "ideas": [
+  "A <b>metallic solid</b> is cations in a sea of delocalized electrons, which conduct electricity and heat.",
+  "Metals are <b>malleable</b> and ductile: layers slide while the electron sea keeps surrounding each cation.",
+  "An <b>alloy</b> is a mixture of a metal with other elements that keeps metallic bonding.",
+  "In a <b>substitutional alloy</b> the added atoms are about the same size as the host atoms and take their places (brass).",
+  "In an <b>interstitial alloy</b> much smaller atoms fill the gaps, pinning the layers: harder, less malleable (steel)."
+ ],
+ "misconception": {
+  "wrong": "Any element whose atoms are smaller than the host metal's atoms forms an interstitial alloy.",
+  "right": "The gaps between metal atoms are much smaller than the atoms themselves. Only atoms far smaller than the host, such as C, N or B in iron, fit there. Atoms of similar size, even if a bit smaller, take the host atoms' places: a substitutional alloy."
+ },
+ "check": ["chem-metals-alloys-1", "chem-metals-alloys-2", "chem-metals-alloys-3", "chem-metals-alloys-4", "chem-metals-alloys-8", "chem-metals-alloys-10", "chem-metals-alloys-11"],
+ "summary": "In a metallic solid, cations sit in a sea of delocalized electrons. The mobile electrons make metals good conductors of electricity and heat, and because the sea follows the cations when layers slide, metals are malleable and ductile. An alloy mixes a metal with other elements and keeps metallic bonding. Similar-sized atoms replace host atoms (substitutional, as in brass); much smaller atoms fill the gaps (interstitial, as in steel), pinning the layers so the alloy is harder and less malleable.",
+ "connections": [
+  { "href": "../notes/ionic-solids.html", "label": "Back: why ionic solids are brittle (2.3)" },
+  { "href": "../notes/lewis-diagrams.html", "label": "Next: Lewis diagrams (2.5)" }
+ ]
+}
