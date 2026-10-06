@@ -451,8 +451,8 @@
       var sec = document.getElementById(id);
       // Overflow can only be measured once the section is laid out.
       if(sec && !sec.hidden) makeFiguresReachable(sec);
-      // Glossary popups on the first use of each term (glossary-tip.js).
-      if(window.OchemGlossary) window.OchemGlossary.mark(slot, id);
+      // Glossary popups on the first use of each term (assets/course/glossary-tip.js).
+      if(window.LevlGlossary) window.LevlGlossary.mark(slot, { topic: id });
       observeEnds();
       applyPendingHit();
     });

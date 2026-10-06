@@ -14,6 +14,14 @@
    page (assets/course/hub.js, LevlHub.search). The query lives in
    ?q=, so a search is a shareable link. */
 (function(){
+  /* assets/glossary.json is the shared shape (scripts/lib/glossary.mjs); this
+     file works on the old map {id: {t, d, r, s, p, b}}. */
+  function glossMap(g){
+    if(!g || !g.terms) return g || {};
+    var o = {};
+    g.terms.forEach(function(x){ o[x.id] = { t: x.term, d: x.def, r: x.roots || [], s: x.say || '', p: x.topic, b: x.href ? 1 : 0 }; });
+    return o;
+  }
   var app = document.getElementById('app');
   var CU = window.ApBioCurriculum, H = window.LevlHub;
   if(!app || !CU || !H) return;
@@ -78,7 +86,7 @@
   });
   engine.then(function(){
     INDEX = structure();
-    var gl = getJson(BASE + 'assets/glossary.json').then(function(g){ return glossary(g); });
+    var gl = getJson(BASE + 'assets/glossary.json').then(function(g){ return glossary(glossMap(g)); });
     sr.add(INDEX);
     return Promise.all([sr.add(gl, 'the glossary'), sr.add(getJson(BASE + 'assets/frq/index.json').then(frqs), 'the free-response questions')]);
   }).then(function(){

@@ -254,7 +254,8 @@ export function tail({ depth, section, extra = [], premium = false, site = [] })
     ...['report-question.js', ...site].map(f => `<script src="${depth}../assets/${f}" defer></script>`),
     ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
     `<script>window.ApBioSection = '${section}'; window.ApBioBase = '${depth}';</script>`,
-    s('bio-curriculum.js'), s('bio-core.js'), s('bio-glossary.js'), s('bio-nav.js'),
+    s('bio-curriculum.js'), s('bio-core.js'), s('bio-nav.js'),
+    `<script src="${depth}../assets/course/glossary-tip.js" data-glossary="${depth}assets/glossary.json" data-course-root="${depth}" defer></script>`,
     ...extra.map(s),
   ].join('\n');
 }

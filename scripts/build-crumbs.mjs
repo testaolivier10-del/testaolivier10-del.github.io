@@ -23,7 +23,7 @@ import { applyCrumbs } from './lib/crumbs.mjs';
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const check = process.argv.includes('--check');
 const DIRS = ['nremt', 'ochem', 'ochem/lessons', 'ochem/mechanisms', 'ochem/tools'];
-const GENERATED = new Set(['ochem/glossary.html']); // its generator applies the row itself
+const GENERATED = new Set(['ochem/glossary.html', 'nremt/glossary.html']); // their generators write the shared .cx-crumb row
 const stale = [];
 for (const dir of DIRS) {
   for (const f of readdirSync(join(ROOT, dir))) {

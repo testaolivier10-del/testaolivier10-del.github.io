@@ -153,7 +153,8 @@ export function tail({ depth, section, extra = [], premium = false, site = [] })
     ...site.map(f => `<script src="${depth}../assets/${f}" defer></script>`),
     ...(premium ? [`<script src="${depth}../assets/premium.js" defer></script>`] : []),
     `<script>window.ANP_SECTION = '${section}'; window.ANP_BASE = '${depth}';</script>`,
-    s('anp-curriculum.js'), s('anp-core.js'), s('anp-glossary.js'), s('anp-nav.js'),
+    s('anp-curriculum.js'), s('anp-core.js'), s('anp-nav.js'),
+    `<script src="${depth}../assets/course/glossary-tip.js" data-glossary="${depth}assets/glossary.json" data-course-root="${depth}" defer></script>`,
     ...extra.map(s),
   ].join('\n');
 }

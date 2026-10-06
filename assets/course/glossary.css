@@ -1,0 +1,51 @@
+/* The glossary page, the same in every course (assets/course/glossary-page.js,
+   scripts/lib/glossary.mjs). Course identity comes only from --ctint/--cink.
+   Load after theme.css and base.css. */
+
+.gx{margin:18px 0 48px;}
+.gx-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.gx-tools .cx-search{flex:1 1 320px;}
+.gx-ch select{min-height:46px;max-width:22em;font:800 14px var(--font-ui);padding:10px 12px;}
+.gx-status{min-height:1.4em;margin:10px 0 0;font:700 13px var(--font-ui);color:var(--muted);}
+
+/* The A-Z rail: under the site header while the list scrolls. One row of 26
+   on a desktop; on a phone, one row you swipe. */
+.gx-rail{position:sticky;top:var(--site-header-h,60px);z-index:5;display:flex;flex-wrap:wrap;gap:4px;margin:8px 0 6px;padding:8px 0;background:var(--paper);}
+.gx-rail a,.gx-rail span{flex:0 0 auto;min-width:32px;min-height:32px;display:inline-grid;place-items:center;border-radius:8px;font:900 13px var(--font-ui);text-decoration:none;}
+.gx-rail a{background:var(--ctint);color:var(--cink);}
+.gx-rail a:hover{box-shadow:inset 0 0 0 2px var(--cink);}
+.gx-rail a:focus-visible{outline:3px solid var(--cink);outline-offset:2px;}
+.gx-rail .gx-off{background:none;color:var(--muted);opacity:.45;pointer-events:none;}
+@media (max-width:640px){
+  .gx-rail{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-left:-4px;margin-right:-4px;padding-left:4px;padding-right:28px;
+    -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);}
+  .gx-rail::-webkit-scrollbar{display:none;}
+  .gx-rail a,.gx-rail span{min-width:36px;min-height:36px;}
+  .gx-ch,.gx-ch select{width:100%;max-width:none;}
+}
+
+/* Letter groups. content-visibility keeps 1,000 terms cheap: groups far from
+   the screen are not laid out until they get near it. */
+.gx-list{min-height:60vh;}
+.gx-group{content-visibility:auto;contain-intrinsic-size:auto 1400px;margin:22px 0 0;scroll-margin-top:calc(var(--site-header-h,60px) + 56px);}
+.gx-group h2{display:flex;align-items:baseline;gap:10px;margin:0 0 10px;font-size:24px;}
+.gx-group h2:focus{outline:none;}
+.gx-n{font:800 13px var(--font-ui);color:var(--muted);}
+.gx-terms{margin:0;padding:6px 24px;background:var(--white);}
+.gx-t{padding:14px 0;border-bottom:1px solid var(--line-soft);scroll-margin-top:calc(var(--site-header-h,60px) + 64px);}
+.gx-t:last-child{border-bottom:0;}
+.gx-t dt{font:900 16.5px/1.35 var(--font-ui);color:var(--ink);}
+.gx-say{font:700 13.5px var(--font-ui);color:var(--muted);margin-left:4px;}
+.gx-t dd{margin:4px 0 0;}
+.gx-def{display:block;font-weight:600;font-size:15px;line-height:1.6;color:var(--ink);max-width:72ch;}
+.gx-roots{display:block;font:700 13px/1.5 var(--font-ui);color:var(--muted);margin:0 0 2px;}
+.gx-src{display:block;font:800 13px/1.5 var(--font-ui);color:var(--muted);margin-top:4px;}
+.gx-src a{color:var(--cink);}
+.gx-t:target,.gx-t.gx-hit{background:var(--ctint);border-radius:10px;margin:0 -12px;padding-left:12px;padding-right:12px;}
+.gx-none{margin-top:18px;}
+.gx-noscript h2{font-size:20px;margin:18px 0 6px;}
+.gx-noscript ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:700;}
+@media (max-width:640px){
+  .gx-terms{padding:4px 16px;}
+  .gx-t:target,.gx-t.gx-hit{margin:0 -8px;padding-left:8px;padding-right:8px;}
+}

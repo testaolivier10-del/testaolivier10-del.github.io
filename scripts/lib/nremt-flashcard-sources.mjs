@@ -2,9 +2,9 @@
    read by scripts/build-nremt-flashcards.mjs.
 
    Four sources, and only the last is typed out here:
-     1. glossary   every term in nremt/glossary.html, read out of the page.
+     1. glossary   every term in nremt/data/glossary.json (the glossary page's source).
                    GLOSSARY_DOMAIN files each term under one of the six
-                   NREMT domains; a term the page gains without being filed
+                   NREMT domains; a term the glossary gains without being filed
                    here fails the build, so nothing slips in unsorted.
      2. mnemonic   every card on nremt/mnemonics.html, read out of the page.
      3. reference  the rows of the tables on nremt/reference-cards.html named

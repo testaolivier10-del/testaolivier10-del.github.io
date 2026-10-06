@@ -65,6 +65,9 @@ const PRECACHE_URLS = [
   'assets/course/base.css',
   'assets/course/study.css',
   'assets/course/study.js',
+  'assets/course/glossary-tip.js',
+  'assets/course/glossary-page.js',
+  'assets/course/glossary.css',
   // Fetched on demand (site-chrome.js, LevlLazy) at the end of an exam or a
   // chapter, which is exactly when a student on a train has no signal.
   'assets/share.js',
@@ -85,6 +88,7 @@ COURSE_URLS.nremt = [
   'nremt/body-map.html',
   'nremt/flowcharts.html',
   'nremt/glossary.html',
+  'nremt/assets/glossary.json',
   'nremt/mnemonics.html',
   'nremt/scenario-sim.html',
   'nremt/skillsheets.html',
@@ -155,8 +159,6 @@ COURSE_URLS.ochem = [
   'ochem/assets/exam-core.js',
   'ochem/assets/exams-page.js',
   'ochem/glossary.html',
-  'ochem/assets/glossary-page.js',
-  'ochem/assets/glossary-tip.js',
   'ochem/assets/glossary.json',
 ];
 
@@ -173,7 +175,6 @@ COURSE_URLS['anatomy-physiology'] = [
   'anatomy-physiology/assets/anp-core.js',
   'anatomy-physiology/assets/anp-questions.js',
   'anatomy-physiology/assets/anp-nav.js',
-  'anatomy-physiology/assets/anp-glossary.js',
   'anatomy-physiology/assets/glossary.json',
   'anatomy-physiology/dashboard.html',
 ];
@@ -192,7 +193,6 @@ COURSE_URLS.bio = [
   'bio/assets/bio-core.js',
   'bio/assets/bio-questions.js',
   'bio/assets/bio-nav.js',
-  'bio/assets/bio-glossary.js',
   'bio/assets/glossary.json',
 ];
 
