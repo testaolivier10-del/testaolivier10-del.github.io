@@ -1,0 +1,45 @@
+{
+ "topic": "lewis-diagrams",
+ "hook": "A chemist looking at a new formula wants to know, before doing anything else, which atoms are joined, by how many shared pairs, and where the spare electrons sit. A Lewis diagram answers all three in a sketch you can draw in a minute, as long as you count carefully.",
+ "prereq": [
+  {
+   "q": "How many valence electrons does a sulfur atom (group 16) have?",
+   "options": ["6", "16", "2", "8"],
+   "correct": 0,
+   "why": "For groups 13-18, the number of valence electrons is the group number minus 10: S has 6 (3s² 3p⁴).",
+   "review": "electron-configuration"
+  },
+  {
+   "q": "A double bond between two atoms is",
+   "options": ["two shared pairs, four electrons", "two shared electrons", "one shared pair and one lone pair", "two atoms each with an octet"],
+   "correct": 0,
+   "why": "Each shared pair is two electrons; a double bond shares two pairs.",
+   "review": "bond-potential-energy"
+  }
+ ],
+ "figure": { "figure": "lewis-four-examples", "caption": "Lewis diagrams of H₂O, NH₃, CO₂ and NH₄⁺. Each line is a bonding pair; each pair of dots is a lone pair. The ammonium ion is drawn in brackets with its charge." },
+ "chain": [
+  { "cause": "Only valence electrons take part in bonding", "effect": "a Lewis diagram shows only valence electrons, counted from each atom's group and the ion's charge" },
+  { "cause": "Bonding pairs are shared by two atoms", "effect": "each line counts as two electrons for both atoms it joins" },
+  { "cause": "Eight valence electrons fill the valence s and p subshells", "effect": "most period 2 atoms end with an octet; H ends with two" },
+  { "cause": "The central atom may be short of eight after outer atoms are complete", "effect": "outer lone pairs become double or triple bonds" },
+  { "cause": "B has only three valence electrons, odd totals leave one unpaired, and period 3 atoms can hold more than eight", "effect": "incomplete octets, free radicals and expanded octets are the exceptions" }
+ ],
+ "ideas": [
+  "A <b>Lewis diagram</b> shows every valence electron: lines for <b>bonding pairs</b>, dot pairs for <b>lone pairs</b>.",
+  "Count first: group valence electrons for every atom, plus one per negative charge, minus one per positive charge.",
+  "<b>Octet rule</b>: most period 2 atoms end with eight electrons; H with two.",
+  "Put the <b>central atom</b> in the middle (never H), complete the outer atoms, put leftovers on the center, then make multiple bonds if the center is short.",
+  "Exceptions: incomplete octet (B), odd-electron species (NO), <b>expanded octet</b> from period 3 on (SF₆)."
+ ],
+ "misconception": {
+  "wrong": "For a positive ion such as NH₄⁺, add an electron for the charge.",
+  "right": "A positive charge means the species has lost electrons, so subtract one per + charge: NH₄⁺ has 5 + 4 − 1 = 8 electrons. Add electrons only for negative charges."
+ },
+ "check": ["chem-lewis-diagrams-1", "chem-lewis-diagrams-2", "chem-lewis-diagrams-4", "chem-lewis-diagrams-11", "chem-lewis-diagrams-12", "chem-lewis-diagrams-9"],
+ "summary": "A Lewis diagram shows a molecule's or ion's valence electrons as bonding pairs (lines) and lone pairs (dots). Count the valence electrons, adjusting for charge; connect the outer atoms to the central atom; complete the outer octets; put leftovers on the center; and form double or triple bonds if the center is short. Most period 2 atoms follow the octet rule and H has two electrons, but boron can have an incomplete octet, odd-electron species leave one electron unpaired, and atoms from period 3 on can have expanded octets.",
+ "connections": [
+  { "href": "../notes/electron-configuration.html", "label": "Back: valence electrons and configurations (1.5)" },
+  { "href": "../notes/resonance-formal-charge.html", "label": "Next: resonance and formal charge (2.6)" }
+ ]
+}

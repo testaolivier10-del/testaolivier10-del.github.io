@@ -1,0 +1,9 @@
+{
+ "vsepr": { "def": "Valence shell electron pair repulsion: the model that electron domains around a central atom repel and spread as far apart as possible, which sets the molecule's shape." },
+ "electron-domain": { "def": "A region of electron density around a central atom: one lone pair, or one bond to another atom whether single, double or triple." },
+ "molecular-geometry": { "def": "The arrangement of the atoms (not the lone pairs) around a central atom, such as linear, bent, trigonal planar, trigonal pyramidal or tetrahedral." },
+ "bond-angle": { "def": "The angle between two bonds that meet at the same atom, such as about 104.5° for H–O–H in water." },
+ "molecular-polarity": { "def": "Whether a molecule has a net dipole: it is polar when its bond dipoles do not cancel because of its shape." },
+ "hybridization": { "def": "The mixing of a central atom's valence orbitals to match its electron domains: sp for 2 domains, sp² for 3, sp³ for 4." },
+ "sigma-pi": { "def": "A sigma (σ) bond has its shared electrons along the line between the nuclei (every single bond, and the first bond of a multiple bond); each extra bond in a double or triple bond is a pi (π) bond." }
+}

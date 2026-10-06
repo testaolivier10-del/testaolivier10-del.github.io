@@ -1,0 +1,52 @@
+{
+ "topic": "vsepr-hybridization",
+ "hook": "Carbon dioxide and water both have a central atom between two others, yet one is a straight line and the other is bent like a boomerang. That single difference is why one of them can be a polar molecule. The cause is invisible in the formula and plain in the Lewis diagram: lone pairs.",
+ "prereq": [
+  {
+   "q": "How many lone pairs does the O atom in water have?",
+   "options": ["2", "1", "0", "3"],
+   "correct": 0,
+   "why": "H₂O has 8 valence electrons: two O–H bonds use 4 and the other 4 are two lone pairs on O.",
+   "review": "lewis-diagrams"
+  },
+  {
+   "q": "In a polar bond, the dipole arrow points",
+   "options": ["toward the more electronegative atom", "toward the less electronegative atom", "toward the larger atom", "in no particular direction"],
+   "correct": 0,
+   "why": "The shared electrons spend more time near the more electronegative atom, which becomes δ−.",
+   "review": "bond-types"
+  },
+  {
+   "q": "Which atoms can have more than eight electrons around them in a Lewis diagram?",
+   "options": ["Atoms in period 3 and below, such as S and Xe", "Any atom bonded to fluorine", "Period 2 atoms such as C and N", "Only metal atoms"],
+   "correct": 0,
+   "why": "Expanded octets occur from period 3 on; period 2 atoms hold at most eight.",
+   "review": "lewis-diagrams"
+  }
+ ],
+ "figure": { "figure": "vsepr-shapes-2-4", "caption": "Two, three or four electron domains around a central atom (A) spread as far apart as possible. Lone pairs (lobes) are part of the arrangement but not of the shape's name, and they squeeze the bond angles." },
+ "chain": [
+  { "cause": "Bonding pairs and lone pairs on the central atom are regions of negative charge", "effect": "they repel and spread as far apart as possible (VSEPR)" },
+  { "cause": "Each bond (single, double or triple) and each lone pair is one electron domain", "effect": "the number of domains sets the arrangement: 2 linear, 3 trigonal planar, 4 tetrahedral, 5 trigonal bipyramidal, 6 octahedral" },
+  { "cause": "Lone pairs occupy positions but are not atoms", "effect": "the molecular geometry differs from the arrangement (NH₃ pyramidal, H₂O bent)" },
+  { "cause": "A lone pair is held by one nucleus and spreads wider", "effect": "it pushes bonding pairs together, so bond angles shrink (109.5° to 107° to 104.5°)" },
+  { "cause": "Bond dipoles add like arrows in the 3-D shape", "effect": "symmetrical shapes cancel them (nonpolar); lopsided shapes leave a net dipole (polar)" }
+ ],
+ "ideas": [
+  "<b>VSEPR</b>: <b>electron domains</b> (each bond or lone pair counts once) spread as far apart as possible.",
+  "Domains set the arrangement; <b>molecular geometry</b> names the atom positions only.",
+  "Lone pairs repel more than bonding pairs and shrink <b>bond angles</b>: CH₄ 109.5°, NH₃ about 107°, H₂O about 104.5°.",
+  "<b>Molecular polarity</b>: polar bonds plus an unsymmetrical shape give a net dipole.",
+  "<b>Hybridization</b> matches domains: 2 sp, 3 sp², 4 sp³. Single bond 1 σ; double 1 σ + 1 π; triple 1 σ + 2 π."
+ ],
+ "misconception": {
+  "wrong": "A molecule with polar bonds is always a polar molecule.",
+  "right": "Polarity needs polar bonds and a shape in which their dipoles do not cancel. CO₂ and BF₃ have polar bonds, but their symmetrical shapes make the bond dipoles cancel, so the molecules are nonpolar."
+ },
+ "check": ["chem-vsepr-hybridization-1", "chem-vsepr-hybridization-2", "chem-vsepr-hybridization-3", "chem-vsepr-hybridization-4", "chem-vsepr-hybridization-14", "chem-vsepr-hybridization-15", "chem-vsepr-hybridization-17"],
+ "summary": "VSEPR predicts shape from the Lewis diagram: the electron domains on the central atom (each bond or lone pair counts once) spread as far apart as possible, giving linear, trigonal planar, tetrahedral, trigonal bipyramidal or octahedral arrangements. The molecular geometry names only the atoms, so lone pairs change it, and because lone pairs repel more strongly they shrink bond angles. A molecule is polar when its bond dipoles do not cancel in its shape. Two, three and four domains correspond to sp, sp² and sp³ hybridization; a single bond is one σ bond, and each extra bond in a double or triple bond is a π bond.",
+ "connections": [
+  { "href": "../notes/lewis-diagrams.html", "label": "Back: drawing Lewis diagrams (2.5)" },
+  { "href": "../notes/resonance-formal-charge.html", "label": "Back: resonance and formal charge (2.6)" }
+ ]
+}

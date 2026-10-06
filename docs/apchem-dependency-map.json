@@ -3271,8 +3271,7 @@
    "id": "bonding-pair",
    "term": "bonding pair",
    "aliases": [
-    "bonding pairs",
-    "shared pair"
+    "bonding pairs"
    ],
    "taughtIn": "lewis-diagrams",
    "dependsOn": [
@@ -3341,9 +3340,10 @@
     "delocalized",
     "delocalization"
    ],
-   "taughtIn": "resonance-formal-charge",
+   "taughtIn": "bond-types",
    "dependsOn": [
-    "resonance"
+    "valence-electron",
+    "chemical-bond"
    ]
   },
   {

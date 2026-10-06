@@ -1,0 +1,7 @@
+{
+ "nitrate-resonance": {
+  "file": "figures/nitrate-resonance.svg", "ext": "svg", "w": 820, "h": 260,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Three Lewis diagrams of the nitrate ion joined by double-headed arrows, inside brackets with a minus charge. Each has N in the center bonded to three O atoms; the double bond is on the top O, then the lower left O, then the lower right O. N carries a +1 formal charge and each single-bonded O a −1. On the right, the hybrid shows each N–O bond as one solid and one dashed line, labeled every N–O bond is the same, bond order 4/3."
+ }
+}

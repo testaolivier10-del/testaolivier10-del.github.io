@@ -1,0 +1,485 @@
+{
+ "stimuli": {
+  "resonance-formal-charge-s1": {
+   "kind": "model",
+   "title": "Three diagrams for the cyanate ion",
+   "text": "<p>The cyanate ion, OCN⁻, has 16 valence electrons. A student draws three possible Lewis diagrams, all with the atoms in the order O, C, N. Formal charges are not shown. Electronegativity: O 3.4, N 3.0, C 2.6.</p>",
+   "html": "<svg viewBox=\"0 0 690 172\" width=\"690\" height=\"172\" role=\"img\" aria-label=\"Three Lewis diagrams of the cyanate ion, each in brackets with a 1− charge and atoms in the order O, C, N. Structure I: O=C=N with two lone pairs on O and two on N. Structure II: O–C≡N with three lone pairs on O and one on N. Structure III: O≡C–N with one lone pair on O and three on N.\" style=\"max-width:100%;height:auto\"><g font-family=\"Arial,Helvetica,sans-serif\" fill=\"#1F2A28\"><text x=\"40\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">O</text><text x=\"96\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"152\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><line x1=\"54\" y1=\"75.5\" x2=\"82\" y2=\"75.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"54\" y1=\"84.5\" x2=\"82\" y2=\"84.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"110\" y1=\"75.5\" x2=\"138\" y2=\"75.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"110\" y1=\"84.5\" x2=\"138\" y2=\"84.5\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"44.6\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"35.4\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"35.4\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"44.6\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"156.6\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"147.4\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"147.4\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"156.6\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><path d=\"M15 40 H8 V122 H15 M177 40 H184 V122 H177\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"189\" y=\"50\" font-size=\"16\" text-anchor=\"start\" font-weight=\"700\">−</text><text x=\"96\" y=\"160\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Structure I</text><text x=\"270\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">O</text><text x=\"326\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"382\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><line x1=\"284\" y1=\"80\" x2=\"312\" y2=\"80\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"340\" y1=\"72.35\" x2=\"368\" y2=\"72.35\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"340\" y1=\"80\" x2=\"368\" y2=\"80\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"340\" y1=\"87.65\" x2=\"368\" y2=\"87.65\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"274.6\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"265.4\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"251\" cy=\"75.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"251\" cy=\"84.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"265.4\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"274.6\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"401\" cy=\"84.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"401\" cy=\"75.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><path d=\"M245 40 H238 V122 H245 M407 40 H414 V122 H407\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"419\" y=\"50\" font-size=\"16\" text-anchor=\"start\" font-weight=\"700\">−</text><text x=\"326\" y=\"160\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Structure II</text><text x=\"500\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">O</text><text x=\"556\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">C</text><text x=\"612\" y=\"87.5\" font-size=\"21\" text-anchor=\"middle\" font-weight=\"700\">N</text><line x1=\"514\" y1=\"72.35\" x2=\"542\" y2=\"72.35\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"514\" y1=\"80\" x2=\"542\" y2=\"80\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"514\" y1=\"87.65\" x2=\"542\" y2=\"87.65\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><line x1=\"570\" y1=\"80\" x2=\"598\" y2=\"80\" stroke=\"#1F2A28\" stroke-width=\"2\" stroke-linecap=\"round\"/><circle cx=\"481\" cy=\"75.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"481\" cy=\"84.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"616.6\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"607.4\" cy=\"61\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"631\" cy=\"84.6\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"631\" cy=\"75.4\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"607.4\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><circle cx=\"616.6\" cy=\"99\" r=\"2.4\" fill=\"#1D44A6\" stroke=\"none\" stroke-width=\"1.5\"/><path d=\"M475 40 H468 V122 H475 M637 40 H644 V122 H637\" fill=\"none\" stroke=\"#1F2A28\" stroke-width=\"2\"/><text x=\"649\" y=\"50\" font-size=\"16\" text-anchor=\"start\" font-weight=\"700\">−</text><text x=\"556\" y=\"160\" font-size=\"14\" text-anchor=\"middle\" font-weight=\"700\">Structure III</text></g></svg>"
+  },
+  "resonance-formal-charge-s2": {
+   "kind": "table",
+   "title": "Measured bond lengths",
+   "text": "<p>Bond lengths measured in several molecules and ions. Where a species has more than one bond of the kind listed, all of them have the length shown.</p>",
+   "table": {
+    "caption": "Measured bond lengths",
+    "cols": [
+     "Species",
+     "Bond",
+     "Length (pm)"
+    ],
+    "rows": [
+     [
+      "H₂O₂ (hydrogen peroxide)",
+      "O–O single",
+      "148"
+     ],
+     [
+      "O₂ (oxygen)",
+      "O=O double",
+      "121"
+     ],
+     [
+      "O₃ (ozone)",
+      "both O–O bonds",
+      "128"
+     ],
+     [
+      "CH₃OH (methanol)",
+      "C–O single",
+      "143"
+     ],
+     [
+      "H₂CO (formaldehyde)",
+      "C=O double",
+      "121"
+     ],
+     [
+      "CO₃²⁻ (carbonate)",
+      "all three C–O bonds",
+      "129"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-resonance-formal-charge-1",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "resonance-formal-charge-s1",
+   "q": "What is the formal charge on the N atom in Structure I? Give a sign with your answer (for example −1).",
+   "numeric": {
+    "answer": -1,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": 1,
+      "tol": 0,
+      "why": "Sign: you subtracted the other way. Formal charge = valence electrons − lone-pair electrons − half the bonding electrons = 5 − 4 − 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "N has 5 valence electrons. In Structure I it has two lone pairs (4 electrons) and one double bond (4 bonding electrons, half is 2). 5 − 4 − 2 = −1."
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-2",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "resonance-formal-charge-s1",
+   "q": "What is the formal charge on the O atom in Structure III? Give a sign with your answer.",
+   "numeric": {
+    "answer": 1,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": -1,
+      "tol": 0,
+      "why": "Sign: O has fewer electrons assigned to it (2 + 3 = 5) than its 6 valence electrons, so its formal charge is positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "O: 6 valence electrons − 2 in its one lone pair − 3 (half of the 6 in the triple bond) = +1."
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-3",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "resonance-formal-charge-s1",
+   "q": "Which structure best represents the cyanate ion, and why?",
+   "options": [
+    "Structure I: it has two double bonds, and a symmetrical structure is the most stable",
+    "Structure II: small formal charges, with the −1 on O, the most electronegative atom",
+    "Structure III: it has a triple bond, which is the strongest kind of bond",
+    "Structure I: N carries the negative charge, and N is the larger of the two outer atoms"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Formal charges: I is O 0, C 0, N −1; II is O −1, C 0, N 0; III is O +1, C 0, N −2. I and II both have small formal charges, but II puts the −1 on O (3.4), the more electronegative atom, which holds extra electron density best.",
+    "options": [
+     "Symmetry is not a rule for choosing; Structure I puts the −1 on N, which is less electronegative than O.",
+     "Right: smallest formal charges, negative on the most electronegative atom.",
+     "Structure III has the largest formal charges (+1 and −2), and puts a positive charge on O. A triple bond does not make up for that.",
+     "Size is not the test; electronegativity is. N is less electronegative than O, so the −1 belongs on O."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-4",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "resonance-formal-charge-s1",
+   "q": "Which statements are true of all three structures? Select all that apply.",
+   "options": [
+    "The formal charges add up to −1.",
+    "Each structure uses exactly 16 valence electrons.",
+    "Each atom has a formal charge of zero.",
+    "The C atom has a lone pair."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "In any valid Lewis diagram the formal charges add up to the overall charge (−1 here), and every structure for OCN⁻ must show all 16 valence electrons.",
+    "options": [
+     "Right: I is 0 + 0 − 1, II is −1 + 0 + 0, III is +1 + 0 − 2.",
+     "Right: each one shows 8 bonding and 8 lone-pair electrons.",
+     "An ion with a −1 charge must have at least one atom with a nonzero formal charge.",
+     "In all three, C has four bonding pairs and no lone pair."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-5",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "1.B",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "resonance-formal-charge-s1",
+   "q": "Structures I and II differ only in where electrons are placed. Which statement about the real cyanate ion is best?",
+   "options": [
+    "Half of the ions in a sample are Structure I and half are Structure II at any moment",
+    "It switches back and forth between Structure I and Structure II many times each second",
+    "It is exactly Structure II; Structures I and III are mistakes that do not describe the ion",
+    "It is one hybrid, closest to Structure II, with electrons delocalized over O, C and N"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "When several valid diagrams differ only in electron placement, the real ion is a single resonance hybrid: one structure with the electrons delocalized. The best diagram (II) contributes most, so the hybrid is closest to it.",
+    "options": [
+     "Every ion in the sample has the same hybrid structure; there is no mixture of different ions.",
+     "The ion does not flip between structures; it has one real structure that no single diagram shows.",
+     "Each valid diagram is a resonance structure; the less favorable ones contribute less, not nothing.",
+     "Right: one hybrid, weighted toward the best diagram."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-6",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "resonance-formal-charge-s2",
+   "q": "One Lewis diagram of ozone shows one O–O single bond and one O=O double bond. Which statement about the measured data is best?",
+   "options": [
+    "Both are 128 pm, between single (148) and double (121): ozone is a resonance hybrid",
+    "One bond should measure 148 pm and the other 121 pm, so the data are in error",
+    "Both bonds are double bonds, because 128 pm is closer to 121 pm than to 148 pm",
+    "The bonds are equal because ozone flips between its two diagrams and the average is measured"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "A single diagram predicts two different bonds, but both measure 128 pm, between a single and a double bond. Ozone has two equivalent diagrams; the real molecule is their hybrid, with each O–O bond of bond order 1.5.",
+    "options": [
+     "Right: equal, intermediate lengths are the evidence for resonance.",
+     "Both bonds really are the same length; that is what the single-diagram picture fails to explain.",
+     "With two double bonds, ozone's 18 electrons would put 10 around the central O, which period 2 atoms cannot hold; each bond is in between.",
+     "The molecule does not flip; it has one structure, the hybrid."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-7",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "resonance-formal-charge-s2",
+   "q": "The carbonate ion has three resonance structures, each with one C=O and two C–O bonds. What is the bond order of each C–O bond in the hybrid? Give the answer to two decimal places.",
+   "numeric": {
+    "answer": 1.33,
+    "tol": 0.01,
+    "unit": "",
+    "decimals": 2,
+    "mistakes": [
+     {
+      "value": 1.5,
+      "tol": 0.01,
+      "why": "Value: you averaged one double and one single bond. Carbonate has three bonds sharing four bond pairs: 4 ÷ 3."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Total bond pairs between C and the three O atoms: 2 + 1 + 1 = 4. Spread over three equal bonds: 4 ÷ 3 = 1.33."
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-8",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "resonance-formal-charge-s2",
+   "q": "How do the C–O bonds in carbonate (129 pm) fit the trend between bond order and bond length?",
+   "options": [
+    "The carbonate bond is closest to a double bond, so its bond order is 2",
+    "Bond order 4/3 is above 1, so the bond should be longer than a single bond",
+    "Bond order 4/3 is between 1 and 2, and 129 pm is between 143 and 121 pm",
+    "Bond order is unrelated to bond length, so the data do not apply"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Bond order 1 (methanol, 143 pm) is longest, 2 (formaldehyde, 121 pm) shortest, and 4/3 (carbonate, 129 pm) lies in between.",
+    "options": [
+     "No single diagram has three double bonds; the hybrid has 4/3 for each bond.",
+     "A higher bond order means more shared electrons and a shorter bond, not a longer one.",
+     "Right: higher bond order, shorter bond, and fractional orders fit between.",
+     "The table shows the link clearly: bond order goes up as length goes down."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-9",
+   "type": "predict",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "resonance-formal-charge-s2",
+   "q": "Compare the carbon-oxygen bonds in carbonate (CO₃²⁻) with those in the formate ion (HCOO⁻), which has two resonance structures, each with one C=O and one C–O bond. Going from carbonate to formate, predict the change in each quantity.",
+   "variables": [
+    {
+     "name": "Bond order of each C–O bond",
+     "answer": "up",
+     "why": "Formate shares 3 bond pairs over 2 bonds (3/2 = 1.5); carbonate shares 4 over 3 (4/3 ≈ 1.33)."
+    },
+    {
+     "name": "Length of each C–O bond",
+     "answer": "down",
+     "why": "A higher bond order means more shared electrons between the nuclei and a shorter bond (formate C–O is about 127 pm)."
+    },
+    {
+     "name": "Number of atoms bonded to the central C atom",
+     "answer": "none",
+     "why": "Carbonate's C is bonded to three O atoms; formate's C is bonded to two O atoms and one H atom: three in both."
+    }
+   ],
+   "why": {
+    "correct": "Fewer bonds sharing the extra pair gives each bond a larger share: formate's bonds are bond order 1.5, carbonate's 1.33."
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-10",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which expression gives the formal charge on an atom in a Lewis diagram?",
+   "options": [
+    "Number of bonds − number of lone pairs",
+    "Valence electrons − the electrons drawn around the atom",
+    "Valence electrons − lone-pair electrons − ½ (bonding electrons)",
+    "Lone-pair electrons + ½ (bonding electrons) − valence electrons"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Formal charge compares the electrons an atom brings (valence) with the electrons assigned to it in the diagram: all of its lone-pair electrons and half of each bond.",
+    "options": [
+     "This ignores the atom's valence electrons, which every formal charge starts from.",
+     "That counts both electrons of every bond for the atom; a bond is shared, so the atom gets half.",
+     "Right: the formal charge formula.",
+     "That is the formula with the sign reversed; it gives +1 where the true formal charge is −1."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-11",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 3,
+   "q": "The best Lewis diagram of carbon monoxide is C≡O with one lone pair on each atom. Which statement about its formal charges is correct?",
+   "options": [
+    "C has −1 and O has +1, even though O is more electronegative",
+    "C has 0 and O has 0, because CO is a neutral molecule",
+    "C has +1 and O has −1, because O is more electronegative",
+    "C has −2 and O has +2, because the triple bond is shared unequally"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "C: 4 − 2 − 3 = −1. O: 6 − 2 − 3 = +1. The diagram is still the best one because it is the only one that gives both atoms an octet; formal charge is a bookkeeping tool, not the real charge.",
+    "options": [
+     "Right: computed from the diagram, with both octets kept.",
+     "A neutral molecule needs formal charges that add to zero, not formal charges that are each zero: −1 + 1 = 0.",
+     "That is what electronegativity would suggest, but the formula gives the opposite for this diagram.",
+     "Each atom has one lone pair (2) and half of six bonding electrons (3): the values are −1 and +1."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-12",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "5.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A diagram of the sulfate ion, SO₄²⁻, shows S with four single bonds to O and no lone pairs, and each O with three lone pairs. What is the formal charge on S? Give a sign.",
+   "numeric": {
+    "answer": 2,
+    "tol": 0,
+    "unit": "",
+    "decimals": 0,
+    "mistakes": [
+     {
+      "value": -2,
+      "tol": 0,
+      "why": "Sign: S is assigned 4 electrons (half of 8 bonding electrons), fewer than its 6 valence electrons, so its formal charge is positive."
+     }
+    ]
+   },
+   "why": {
+    "correct": "S: 6 valence − 0 lone-pair electrons − ½ × 8 bonding electrons = +2. Each O is 6 − 6 − 1 = −1, and +2 + 4(−1) = −2, the ion's charge."
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-13",
+   "type": "numeric",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "q": "How many equivalent resonance structures does the nitrate ion, NO₃⁻, have (each with one N=O and two N–O bonds and every atom with an octet)?",
+   "numeric": {
+    "answer": 3,
+    "tol": 0,
+    "unit": "structures",
+    "decimals": 0
+   },
+   "why": {
+    "correct": "The double bond can be drawn to any one of the three O atoms, giving three diagrams that differ only in electron placement."
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-14",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of diagrams are resonance structures of each other?",
+   "options": [
+    "H–C≡N and H–C≡N drawn in a different orientation on the page",
+    "H–O–C≡N and H–N=C=O, which have different atoms bonded to H",
+    "O=C=O and O=O=C, with different central atoms",
+    "O=N–O⁻ and ⁻O–N=O for the nitrite ion, NO₂⁻"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Resonance structures keep every atom in the same place and differ only in where the electrons (double bonds and lone pairs) are drawn. The two nitrite diagrams move the double bond from one O to the other.",
+    "options": [
+     "Rotating a drawing gives the same diagram, not a second resonance structure.",
+     "Moving the H to a different atom changes which atoms are bonded, so these are different molecules, not resonance structures.",
+     "Changing the central atom changes the skeleton; resonance never moves atoms.",
+     "Right: same atoms, different electron placement."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-15",
+   "type": "single",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Two diagrams are proposed for carbon dioxide: O=C=O, and O≡C–O with one lone pair on the triple-bonded O and three on the single-bonded O. Which is better, and why?",
+   "options": [
+    "O≡C–O: a triple bond is stronger, so this diagram has lower energy",
+    "O=C=O: its formal charges are zero, while the other diagram has +1 and −1",
+    "O≡C–O: it has a negative formal charge on O, the most electronegative atom",
+    "They are equally good, because both give each atom an octet"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "O=C=O: O 6 − 4 − 2 = 0, C 0, O 0. O≡C–O: triple-bonded O 6 − 2 − 3 = +1, C 0, single-bonded O 6 − 6 − 1 = −1. Diagrams with formal charges closer to zero are preferred, and the measured C–O bonds in CO₂ are equal.",
+    "options": [
+     "Formal charge, not the strength of one bond, is how we compare diagrams; this one also puts +1 on an O atom.",
+     "Right: all-zero formal charges win.",
+     "It does put −1 on an O, but it also puts +1 on the other O; a diagram with no formal charges is better.",
+     "Octets are necessary but not enough; when both diagrams have octets, compare the formal charges."
+    ]
+   }
+  },
+  {
+   "id": "chem-resonance-formal-charge-16",
+   "type": "multi",
+   "unit": "unit-2",
+   "topic": "resonance-formal-charge",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which species have resonance structures that are all equivalent (identical apart from which atom has the double bond)? Select all that apply.",
+   "options": [
+    "NO₃⁻",
+    "O₃",
+    "H₂O",
+    "CH₄"
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "In NO₃⁻ the double bond can sit on any of three O atoms, and in O₃ on either end O. Each set of diagrams is equivalent.",
+    "options": [
+     "Right: three equivalent structures.",
+     "Right: two equivalent structures.",
+     "H₂O has only single bonds and one valid diagram; there is no double bond to move.",
+     "CH₄ has four single bonds and one diagram."
+    ]
+   }
+  }
+ ]
+}

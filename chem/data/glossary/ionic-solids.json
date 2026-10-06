@@ -1,0 +1,6 @@
+{
+ "ionic-solid": { "def": "A solid made of a repeating three-dimensional array (a crystal lattice) of cations and anions, each ion surrounded by ions of opposite charge." },
+ "lattice-energy": { "def": "The energy needed to separate one mole of an ionic solid into ions far apart; larger ion charges and smaller distances make it larger." },
+ "conductivity": { "def": "How well a substance carries an electric current; it needs charged particles that can move, such as ions in a melt or solution or electrons in a metal." },
+ "brittleness": { "def": "Breaking or shattering when struck instead of bending; ionic solids are brittle because shifting a layer brings like charges together." }
+}

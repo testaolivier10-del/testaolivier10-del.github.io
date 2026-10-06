@@ -1,0 +1,17 @@
+{
+ "vsepr-shapes-2-4": {
+  "file": "figures/vsepr-shapes-2-4.svg", "ext": "svg", "w": 760, "h": 586,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Six ball-and-stick shapes around a central atom A, with lone pairs drawn as lobes. Linear, 180 degrees. Trigonal planar, 120 degrees. Bent with three domains, slightly less than 120 degrees. Tetrahedral, 109.5 degrees. Trigonal pyramidal, about 107 degrees as in NH3. Bent with four domains, about 104.5 degrees as in H2O. A table below matches 2 domains to sp, 3 to sp2 and 4 to sp3."
+ },
+ "vsepr-shapes-5-6": {
+  "file": "figures/vsepr-shapes-5-6.svg", "ext": "svg", "w": 760, "h": 580,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Seven shapes for five and six electron domains. Trigonal bipyramidal; seesaw with one equatorial lone pair; T-shaped with two equatorial lone pairs; linear with three equatorial lone pairs. Octahedral; square pyramidal with one lone pair; square planar with two lone pairs opposite each other. Examples: PCl5, SF4, ClF3, XeF2, SF6, BrF5, XeF4."
+ },
+ "molecular-polarity-co2-h2o": {
+  "file": "figures/molecular-polarity-co2-h2o.svg", "ext": "svg", "w": 700, "h": 270,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Left: linear CO2 with two bond dipole arrows pointing outward from C toward each O, opposite each other, labeled cancel, nonpolar. Right: bent H2O with two lone pairs on O and bond dipole arrows from each H toward O; a large red arrow shows the net dipole pointing up toward O, labeled polar."
+ }
+}

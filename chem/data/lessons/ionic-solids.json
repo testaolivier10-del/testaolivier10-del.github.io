@@ -1,0 +1,45 @@
+{
+ "topic": "ionic-solids",
+ "hook": "Salt is hard enough to grind teeth on, yet one tap with a spoon shatters a crystal. It survives a hot stove without melting, yet dry salt will not carry a current. All of these come from one picture: billions of ions packed in a pattern where every ion is surrounded by opposite charges.",
+ "prereq": [
+  {
+   "q": "Which pair of ions attracts more strongly, at the same distance apart?",
+   "options": ["Ca²⁺ and O²⁻", "Na⁺ and Cl⁻", "K⁺ and Br⁻", "They attract equally"],
+   "correct": 0,
+   "why": "Coulomb's law: the attraction grows with the product of the charges, 4 for Ca²⁺ and O²⁻ against 1 for the others.",
+   "review": "bond-potential-energy"
+  },
+  {
+   "q": "An ionic bond forms between",
+   "options": ["a cation and an anion, usually from a metal and a nonmetal", "two nonmetal atoms sharing a pair of electrons", "metal cations and a sea of electrons", "two identical atoms"],
+   "correct": 0,
+   "why": "The metal gives up electrons and the nonmetal takes them; the ions attract.",
+   "review": "bond-types"
+  }
+ ],
+ "figure": { "figure": "ionic-layer-brittle", "caption": "Left: in an ionic solid every ion is surrounded by ions of the opposite charge. Right: a force that shifts one layer brings like charges side by side; they repel, and the crystal splits." },
+ "chain": [
+  { "cause": "Cations and anions attract every nearby ion of opposite charge", "effect": "they settle in a repeating three-dimensional lattice, each ion surrounded by opposite charges" },
+  { "cause": "Every ion is held by several strong Coulombic attractions", "effect": "a lot of energy is needed to free the ions, so the melting temperature is high" },
+  { "cause": "Larger charges and smaller ions give stronger attractions", "effect": "the lattice energy and melting temperature are larger (MgO far above NaCl)" },
+  { "cause": "A force shifts one layer of ions", "effect": "like charges line up and repel, so the solid is brittle" },
+  { "cause": "The ions are fixed in the solid but free to move when melted or dissolved", "effect": "the solid does not conduct, but the melt and the solution do" }
+ ],
+ "ideas": [
+  "An <b>ionic solid</b> is a repeating 3-D array of cations and anions; each ion is surrounded by opposite charges. There are no separate molecules.",
+  "<b>Lattice energy</b> grows with ion charge and shrinks with distance (Coulomb's law). Compare charges first, then sizes, for both compounds.",
+  "Strong attractions throughout the lattice give high melting temperatures and hardness.",
+  "Ionic solids are <b>brittle</b>: a shifted layer puts like charges side by side.",
+  "Ions carry the current: solid, no <b>electrical conductivity</b>; melted or dissolved, good conductivity."
+ ],
+ "misconception": {
+  "wrong": "Solid sodium chloride is made of NaCl molecules, each one Na⁺ stuck to one Cl⁻.",
+  "right": "Each Na⁺ is surrounded by six Cl⁻ ions and attracted to all of them equally, and each Cl⁻ by six Na⁺. The formula NaCl gives the 1 : 1 ratio of ions in the lattice, not a molecule."
+ },
+ "check": ["chem-ionic-solids-1", "chem-ionic-solids-2", "chem-ionic-solids-5", "chem-ionic-solids-6", "chem-ionic-solids-7", "chem-ionic-solids-9", "chem-ionic-solids-12"],
+ "summary": "An ionic solid is a lattice of alternating cations and anions in which every ion is attracted to its oppositely charged neighbors. Coulomb's law sets the lattice energy: larger charges and shorter distances between ion centers give stronger attraction and higher melting temperatures. Ionic solids are hard but brittle, because shifting a layer brings like charges together. They do not conduct as solids, but conduct when melted or dissolved because the ions can then move.",
+ "connections": [
+  { "href": "../notes/bond-potential-energy.html", "label": "Back: Coulomb's law and the strength of attraction (2.2)" },
+  { "href": "../notes/metals-alloys.html", "label": "Next: metals and alloys (2.4)" }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "lewis-four-examples": {
+  "file": "figures/lewis-four-examples.svg", "ext": "svg", "w": 760, "h": 254,
+  "source": "levlprep", "license": "LevlPrep original", "credit": "LevlPrep original diagram",
+  "alt": "Four Lewis diagrams. H2O: O bonded to two H atoms with two lone pairs on O, 8 valence electrons. NH3: N bonded to three H atoms with one lone pair on N, 8 valence electrons. CO2: C double-bonded to two O atoms, each O with two lone pairs, 16 valence electrons. NH4+: N bonded to four H atoms with no lone pairs, in brackets with a plus charge, 8 valence electrons."
+ }
+}
