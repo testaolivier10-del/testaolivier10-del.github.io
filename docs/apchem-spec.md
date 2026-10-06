@@ -144,14 +144,17 @@ Chemistry science gets an independent accuracy check, as A&P and ochem do.
 2. (2026-10-06) **No "ap" in any served path.** Folder `/chem/`, files `chem-*.js`, question ids
    `chem-`. Registry/storage key `apchem`.
 3. (2026-10-06) **Pass and price mirror AP® Biology:** $25 one-time, valid through 30 June 2027.
-   Owner confirms before it goes on sale.
+   Confirmed by the owner 2026-10-06.
 4. (2026-10-06) **Sources:** College Board CED, equations sheet and Chief Reader Reports for scope
    and common errors only, in our own words. No released exam questions are reproduced or adapted.
    No OpenStax material (as apbio decision 24).
 
+5. (2026-10-06, owner) **Confirmed:** name "AP® Chemistry", path `/chem/`, $25 pass through 30 June
+   2027, cobalt-blue accent. Build everything in one go without check-ins unless really needed; one
+   branch `claude/apchem`, one PR at the end.
+
 ## 8. Open items for the owner
 
-- Confirm: course name "AP® Chemistry", path `/chem/`, $25 pass, cobalt-blue accent.
 - Launch checklist (only you can do): Polar product, `POLAR_PRODUCTS` entry, Supabase migration,
   Worker deploy. Same steps as `docs/apbio-spec.md` section 6.
 - Optional: a chemistry teacher to review the course (the Beta note stays until then).
