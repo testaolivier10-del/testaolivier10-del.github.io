@@ -118,37 +118,58 @@ differ from measured compressibility factors. Check against a data table or rela
 - Particle diagrams: water around an anion is drawn with one O–H pointing at the ion (the other
   H away), around a cation with O toward the ion. Confirm this matches the CED's expected
   depiction (the CED only requires correct dipole orientation).
-## unit4-dissolving: is dissolving an ionic solid physical or chemical? (open, 2026-10-06)
+## unit4-dissolving: is dissolving an ionic solid physical or chemical? (resolved, 2026-10-06, Unit 4 review)
 
 Topic 4.4 (`physical-chemical-changes`) teaches that dissolving an ionic solid has features of both
 kinds of change (strong ionic attractions broken and ion-dipole attractions formed, yet no new
-substance), and asks students to justify a classification at the particle level. No item keys a
-single label for it. Check how the CED and recent scoring guidelines treat this case, and whether an
-item should key one answer.
+substance), and asks students to justify a classification at the particle level.
 
-## unit4-reaction-type-labels: are synthesis, decomposition and replacement labels assessed? (open, 2026-10-06)
+**Decision: keep as written; no item keys a single label.** The CED's 4.4 essential knowledge
+presents the dissolution of a salt as a process with features of both physical and chemical change
+(ionic bonds broken, ion-dipole interactions formed), and the classification question is used to
+elicit particle-level reasoning, not a one-word label. An item keying "physical" or "chemical"
+alone would mark a defensible answer wrong. Item `chem-physical-chemical-changes-8` asks why the
+case is hard to classify, which matches this. Reviewer: Unit 4 accuracy check
+(`docs/apchem-reviews/u4.md`).
 
-Topic 4.7 (`reaction-types`) classifies reactions mainly as precipitation, acid-base and electron
-transfer (with combustion), as the CED does, and teaches synthesis, decomposition and
-single/double replacement only as descriptive pattern names (one select-all item asks which reactions are
-decompositions). Confirm that these older labels are not tested directly; if they are not, consider
-dropping the decomposition item.
+## unit4-reaction-type-labels: are synthesis, decomposition and replacement labels assessed? (resolved, 2026-10-06, Unit 4 review)
 
-## unit4-electron-transfer-before-4.9: "electron transfer" used in 4.7 before 4.9 (open, 2026-10-06)
+Topic 4.7 (`reaction-types`) classifies reactions as precipitation, acid-base and electron
+transfer (with combustion), as the CED does, and mentions synthesis, decomposition and
+single/double replacement as descriptive pattern names.
 
-The CED asks 4.7 to classify reactions as redox, but the map teaches the terms "redox",
-"oxidation" and "reduction" in 4.9. Topic 4.7 therefore says "electron transfer" (a plain
-description, built from "electron" taught in 1.2) and points ahead to 4.9. If you would rather 4.7
-use the word "redox", move a short version of the `redox` concept into 4.7 as a
-`circularDependencies` pull-forward.
+**Decision: the pattern names are not assessed; no item keys them.** The CED's 4.7 asks students to
+classify reactions by what is transferred (precipitation, acid-base, redox) and treats combustion
+as a redox example; the older synthesis/decomposition/replacement taxonomy is not in its learning
+objectives or essential knowledge. The notes and glossary keep the names as shorthand (students
+meet them in class), but the three items that keyed them were rewritten to test the CED
+classification instead: `chem-reaction-types-4` (why combustion is electron transfer),
+`-12` (acid-base replaces single replacement as a distractor; key is electron transfer only) and
+`-16` (which reactions involve electron transfer, replacing "which are decompositions"; it also
+shows that a decomposition need not be electron transfer).
 
-## unit4-limiting-reactant-moved: limiting reactant now taught in 4.3 (decision needed, 2026-10-06)
+## unit4-electron-transfer-before-4.9: "electron transfer" used in 4.7 before 4.9 (resolved, 2026-10-06, Unit 4 review)
 
-The CED's 4.3 (representations of reactions) has students identify the excess reactant in a
-particle diagram, so the `limiting-reactant` concept (aliases include "in excess") moved from 4.5
-`stoichiometry` to 4.3 `reaction-representations` in `docs/apchem-dependency-map.json`, depending
-on `reaction-diagram`; `yield` (4.5) now depends on both `limiting-reactant` and `stoichiometry`.
-4.3 teaches it with particles; 4.5 does the gram calculations. Confirm or revert.
+The CED asks 4.7 to classify reactions as redox, but the map teaches "redox", "oxidation" and
+"reduction" in 4.9. Topic 4.7 says "electron transfer" and points ahead to 4.9.
+
+**Decision: keep "electron transfer" in 4.7; no pull-forward.** "Electron transfer" is the CED's
+own definition of a redox reaction, so 4.7 tests the same idea; the term "redox" with oxidation
+numbers arrives two topics later in the same unit, and the 4.9 notes and items use both. No 4.7
+item needs oxidation numbers (they use the uncombined-to-combined clue or ion charges). Renaming
+would add a circular dependency for no assessment gain.
+
+## unit4-limiting-reactant-moved: limiting reactant now taught in 4.3 (resolved, 2026-10-06, Unit 4 review)
+
+The `limiting-reactant` concept moved from 4.5 `stoichiometry` to 4.3 `reaction-representations`
+in `docs/apchem-dependency-map.json`; `yield` (4.5) depends on both.
+
+**Decision: confirm the move.** The CED's 4.3 has students represent reactions with particle
+diagrams including a reactant in excess, which needs the limiting/excess idea; 4.5 then extends it
+to masses and theoretical yield. The 4.3 notes teach it with particles first and 4.5 links back
+("You met this with particles in topic 4.3"); `check-apchem-map.mjs --check` passes with this
+order.
+
 ## unit5-kinetics-scope: Unit 5 choices to confirm (open, 2026-10-06)
 
 Written for Unit 5 (`chem/data/*/` for the 11 kinetics topics); check against the CED:

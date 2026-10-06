@@ -156,21 +156,21 @@
    "level": "analyze",
    "diff": 2,
    "stimulus": "reaction-types-s1",
-   "q": "Reaction 5 is a decomposition. Which other reaction in the table can also be described as one element replacing another in a compound?",
+   "q": "Reaction 4 is a combustion. Which statement best explains why it is also an electron-transfer reaction?",
    "options": [
-    "Reaction 2, where magnesium takes the place of hydrogen",
-    "Reaction 1, where lead takes the place of sodium",
-    "Reaction 3, where potassium takes the place of hydrogen",
-    "Reaction 4, where oxygen takes the place of carbon"
+    "O₂, an uncombined element, ends up combined in CO₂ and H₂O",
+    "It gives off heat and light, which shows that electrons moved",
+    "It produces gases, which carry electrons away from the flame",
+    "Ethanol already holds oxygen, which passes to the CO₂ formed"
    ],
    "correct": 0,
    "why": {
-    "correct": "In reaction 2, the element magnesium ends up in the compound (MgCl₂) and the element hydrogen is set free as H₂: a single replacement. Reactions 1 and 3 swap partners between two compounds (double replacement).",
+    "correct": "Use the clue for electron transfer: an element uncombined on one side and combined on the other. Oxygen is the free element O₂ before and part of the compounds CO₂ and H₂O after, so electrons have moved. That is true of every combustion.",
     "options": [
-     "Right: an element (Mg) replaces another element (H) in a compound.",
-     "Reaction 1 swaps partners between two compounds; no free element takes part.",
-     "Reaction 3 swaps partners between two compounds; no element is uncombined on either side.",
-     "Reaction 4 is a combustion; carbon is not set free as an element."
+     "Right: oxygen goes from the free element to compounds, so electrons move.",
+     "Many processes give off heat without electron transfer, such as an acid neutralizing a base; heat and light are not the test.",
+     "Forming a gas says nothing about electrons; reaction 2 makes a gas by electron transfer, but boiling makes gas with none.",
+     "Oxygen already in ethanol stays combined; the clue is the O₂ that starts uncombined."
     ]
    }
   },
@@ -283,8 +283,8 @@
     "correct": "C₃H₇ has a formula mass of about 43 g/mol, so the molecule is twice that: C₆H₁₄. 2C₆H₁₄ gives 12 CO₂ and 14 H₂O, which hold 24 + 14 = 38 O, so 19 O₂.",
     "options": [
      "Right: the molecular formula is C₆H₁₄ and every atom balances.",
-     "Uses the empirical formula as if it were the molecule, and the H and O counts do not balance.",
-     "Not balanced: 12 C and 28 H on the left but 6 C and 14 H on the right.",
+     "Uses the empirical formula as if it were the molecule (43 g/mol, not 86 g/mol), and hydrogen does not balance: 7 H on the left, 8 on the right.",
+     "Carbon and hydrogen balance, but oxygen does not: 38 O on the left and 6 × 2 + 7 = 19 O on the right. 19 O₂ goes with two C₆H₁₄.",
      "Gives carbon monoxide, which forms only when oxygen is short; with excess oxygen the product is CO₂."
     ]
    }
@@ -386,19 +386,18 @@
    "stimulus": "reaction-types-s3",
    "q": "Which descriptions fit the reaction in the diagram? Select all that apply.",
    "options": [
-    "Single replacement",
+    "Acid-base (proton transfer)",
     "Electron transfer",
     "Precipitation",
     "Combustion"
    ],
    "correct": [
-    0,
     1
    ],
    "why": {
-    "correct": "Magnesium replaces hydrogen (single replacement), and electrons pass from Mg atoms to H⁺ ions. No solid forms from solution and nothing burns in oxygen.",
+    "correct": "Electrons pass from Mg atoms to H⁺ ions: magnesium becomes Mg²⁺ and the hydrogen ions become H₂. No proton is handed to a base, no solid forms from solution and nothing burns in oxygen.",
     "options": [
-     "Right: the element Mg replaces hydrogen, which is set free as H₂.",
+     "H⁺ is not passed to a base that keeps it; each H⁺ gains an electron from magnesium and leaves as H₂ gas.",
      "Right: neutral Mg becomes Mg²⁺ and H⁺ becomes neutral H₂.",
      "No insoluble solid forms; magnesium dissolves rather than precipitates.",
      "Combustion is a reaction with O₂; there is no oxygen gas here."
@@ -426,7 +425,7 @@
     "options": [
      "Right: 2C₄H₁₀ + 13O₂ → 8CO₂ + 10H₂O.",
      "Balances 1 C₄H₁₀ but leaves a fraction; equations use whole numbers, so double everything.",
-     "Counts only the oxygen in CO₂ for one butane (4 CO₂ = 8 O) and adds one; the water needs oxygen too.",
+     "Adds the product coefficients for one butane (4 CO₂ + 5 H₂O = 9); count oxygen atoms, not molecules, and clear the fraction.",
      "That is the number of O atoms, not O₂ molecules."
     ]
    }
@@ -488,27 +487,27 @@
    "type": "multi",
    "unit": "unit-4",
    "topic": "reaction-types",
-   "practice": "1.A",
-   "level": "apply",
+   "practice": "4.A",
+   "level": "analyze",
    "diff": 2,
-   "q": "Which are decomposition reactions? Select all that apply.",
+   "q": "Which of these reactions involve electron transfer? Select all that apply. (Hint: look for an element that is uncombined on one side and part of a compound on the other.)",
    "options": [
     "CaCO₃(s) → CaO(s) + CO₂(g)",
     "2KClO₃(s) → 2KCl(s) + 3O₂(g)",
     "2Na(s) + Cl₂(g) → 2NaCl(s)",
-    "Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)"
+    "AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq)"
    ],
    "correct": [
-    0,
-    1
+    1,
+    2
    ],
    "why": {
-    "correct": "A decomposition starts with one substance and gives two or more. Sodium plus chlorine is a synthesis; zinc in copper(II) sulfate is a single replacement.",
+    "correct": "Electrons move when an element goes from uncombined to combined or the reverse. Oxygen leaves KClO₃ as the element O₂; sodium and chlorine start as elements and end as Na⁺ and Cl⁻ ions in NaCl. Breaking CaCO₃ into two compounds and a precipitation keep every ion's charge.",
     "options": [
-     "Right: one compound gives two products.",
-     "Right: one compound gives two products.",
-     "Two elements combine into one compound: a synthesis, the reverse of decomposition.",
-     "Zinc replaces copper in the compound: a single replacement."
+     "One compound breaks into two compounds. No element is uncombined on either side: calcium stays Ca²⁺ and carbon stays bonded to oxygen, so no electrons move.",
+     "Right: oxygen in the compound KClO₃ becomes the free element O₂.",
+     "Right: neutral Na atoms become Na⁺ and Cl₂ becomes Cl⁻.",
+     "The ions only change partners and keep their charges, so this precipitation moves no electrons."
     ]
    }
   }

@@ -359,7 +359,7 @@
     "correct": "2 H at +1 give +2; 4 O at −2 give −8. The compound is neutral: 2 + S − 8 = 0, so S = +6.",
     "options": [
      "Right: +2 + S − 8 = 0.",
-     "That is sulfur in SO₂ or H₂SO₃, which have one fewer oxygen.",
+     "That is sulfur in H₂SO₃ or SO₂, which hold less oxygen; in H₂SO₄ the four O at −2 give −8, so S is +6.",
      "That is sulfur in a sulfide ion or H₂S, where S is bonded to no oxygen.",
      "Ignores the hydrogens: S − 8 = 0 would mean no H atoms."
     ]

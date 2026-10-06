@@ -356,7 +356,7 @@
    "q": "A 25.00 mL sample of sulfuric acid is titrated with 0.1000 M NaOH. The end point is reached after 31.20 mL. H₂SO₄(aq) + 2NaOH(aq) → Na₂SO₄(aq) + 2H₂O(l). What is the molarity of the H₂SO₄?",
    "numeric": {
     "answer": 0.0624,
-    "tol": 0.00001,
+    "tol": 1e-05,
     "unit": "M",
     "units": [
      "mol/L"
@@ -474,17 +474,16 @@
    "practice": "2.C",
    "level": "apply",
    "diff": 2,
-   "q": "Put the steps for preparing and running a titration in order.",
+   "q": "A flask of analyte with indicator is already under the buret. Put the steps for preparing the buret and running the titration in order.",
    "options": [
     "Rinse the buret with a few mL of titrant and drain it",
     "Fill the buret with titrant and run some out to clear air from the tip",
     "Record the initial reading at the bottom of the meniscus",
-    "Pipet the analyte into a flask and add indicator",
     "Add titrant while swirling, then dropwise near the end point",
     "Record the final reading when the color change lasts"
    ],
    "why": {
-    "correct": "Rinse with titrant so it is not diluted, fill and clear the tip so trapped air is not counted as volume, read, prepare the analyte, titrate slowly near the end, then read again."
+    "correct": "Rinse with titrant so it is not diluted, fill and clear the tip so trapped air is not counted as volume, read the starting volume, titrate slowly near the end, then read again."
    }
   },
   {
