@@ -34,11 +34,12 @@
     return { key: c.key, label: c.searchLabel, name: c.name, base: c.dir + '/' };
   });
 
-  /* Glossary data per course, relative to the course folder. NREMT's terms
-     live inline in nremt/glossary.html (see inlineTerms) and A&P's in its own
-     loader, so this is only the slot for ochem's. */
+  /* Glossary data per course, relative to the course folder. Every course
+     serves assets/glossary.json in one shape (scripts/lib/glossary.mjs); A&P
+     and Bio have their own loaders below. */
   var GLOSSARY = {
-    ochem: 'assets/glossary.json', // built by scripts/build-ochem-glossary.mjs; entries are #g-<id>
+    nremt: 'assets/glossary.json', // built by scripts/build-nremt-glossary.mjs; entries are #t-<id>
+    ochem: 'assets/glossary.json', // built by scripts/build-ochem-glossary.mjs; entries are #t-<id>
   };
 
   function courseOf(key) {
@@ -148,9 +149,9 @@
 
   /* ---- glossary shapes ---- */
 
-  /* {term:"X", def:"Y"} objects written inline in a page's script, which is
-     how nremt/glossary.html carries its 150 terms. Read from the source text
-     rather than by running the page. */
+  /* {term:"X", def:"Y"} objects written inline in a page's script (how the
+     NREMT glossary carried its terms before it moved to a JSON file). Read
+     from the source text rather than by running the page. */
   function inlineTerms(src) {
     var out = [];
     var re = /\{\s*term\s*:\s*"((?:[^"\\]|\\.)*)"\s*,\s*def\s*:\s*"((?:[^"\\]|\\.)*)"\s*\}/g;
@@ -402,7 +403,11 @@
   var SOURCES = {
     nremt: [
       ['notes', function () { return getJson('nremt/assets/study-notes.json').then(nremtNotesChunks); }],
-      ['glossary', function () { return getText('nremt/glossary.html').then(function (h) { return nremtGlossaryChunks(inlineTerms(h)); }); }],
+      ['glossary', function () {
+        return getJson('nremt/' + GLOSSARY.nremt).then(function (g) {
+          return glossaryChunks('nremt', termsFromJson(g), function (x) { return { file: 'glossary.html#t-' + x.id }; });
+        });
+      }],
       ['tools', function () {
         return getText('nremt/tools.html').then(function (html) {
           var doc = parseHtml(html);
@@ -436,7 +441,7 @@
         if (!GLOSSARY.ochem) return Promise.resolve([]);
         return getJson('ochem/' + GLOSSARY.ochem).then(function (g) {
           return glossaryChunks('ochem', termsFromJson(g), function (x) {
-            return x.id ? { file: 'glossary.html#g-' + x.id } : { file: 'glossary.html', frag: true };
+            return x.id ? { file: 'glossary.html#t-' + x.id } : { file: 'glossary.html', frag: true };
           });
         });
       }],

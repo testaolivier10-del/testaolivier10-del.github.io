@@ -112,6 +112,13 @@ const SHELL_BUDGETS = [
      pass and per-course on-sale switch, and the URL-safe course key.
      Measured 281.4 KB with the engagement pass. */
   ['site', 282],
+  /* The shared course layer, assets/course/ (docs/course-shell.md): base.css
+     on every course page, plus the glossary popups (glossary-tip.js) on every
+     reading page and the glossary page's script and styles there. Counted on
+     its own because only course pages load it. Measured 10.5 KB with the
+     glossary work (W-A); the other workstreams add book.css, study.css and
+     hub.css. */
+  ['assets/course', 14],
   /* 7 -> 11 for the NREMT flashcard deck: its page script,
      nremt/assets/flashcards-page.js (5.3 KB gzipped), loads only on
      flashcards.html but is counted here like every script in nremt/assets —
@@ -596,8 +603,8 @@ const DATA_BUDGETS = [
      strings out of each card is the saving, not a bigger number. */
   ['ochem/assets/flashcards.json', 28],
   /* The ochem glossary (scripts/build-ochem-glossary.mjs): ~500 terms and
-     definitions, fetched after load by the notes popups (glossary-tip.js) and
-     by glossary.html, which ships names only so the page itself stays small.
+     definitions, fetched after load by the popups (assets/course/glossary-tip.js)
+     and by the shared glossary page.
      Measured 45.4 KB at 502 terms. */
   ['ochem/assets/glossary.json', 48],
   /* The A&P question bank used to be two files for the whole course (core
@@ -625,7 +632,13 @@ const DATA_BUDGETS = [
      tool needs it, and three tools (word roots, search, flashcards) read the
      whole file, so splitting it would cost more requests than it saves
      (decision 65). */
-  ['anatomy-physiology/assets/glossary.json', 150],
+  /* 150 -> 190 (2026-10-06, cross-course consistency W-A): the file moved to
+     the shared shape every course serves (scripts/lib/glossary.mjs) and now
+     carries what the glossary page's HTML used to: each term's aliases (the
+     filter searches them), its topic title and link ("Taught in") and its
+     chapter (the chapter filter). The page itself went from 42.9 to 15.9 KB
+     gzipped. Measured 180 KB for all 162 topics. */
+  ['anatomy-physiology/assets/glossary.json', 190],
   /* The Reagent Roadmap's graph: every group, reagent and reaction the tool
      routes over. Same situation as question-molecules.js — a <script src>
      on a page with no line of its own above, so nothing was measuring it —
@@ -659,6 +672,9 @@ function read(path) {
 /* Which bucket an asset belongs to, from where it lives. */
 function bucketOf(relPath) {
   const parts = relPath.split(sep);
+  // The shared course layer (docs/course-shell.md) is loaded by course pages
+  // only, so it is its own shell rather than part of every page's.
+  if (parts[0] === 'assets' && parts[1] === 'course') return 'assets/course';
   if (parts[0] === 'assets') return 'site';
   if (parts.length > 1 && parts[1] === 'assets') return parts[0];
   return 'page';
@@ -826,7 +842,7 @@ for (const [name, budget] of SHELL_BUDGETS) {
   const over = kb > budget;
   if (over) failures++;
   shellRows.push({ name, kb, budget, over });
-  console.log(line(name === 'site' ? '/assets (every page)' : `${name}/assets`, kb, budget));
+  console.log(line(name === 'site' ? '/assets (every page)' : name.includes('/') ? `/${name} (course pages)` : `${name}/assets`, kb, budget));
 }
 
 console.log('\nPer page — the HTML and anything only this page loads.\n');

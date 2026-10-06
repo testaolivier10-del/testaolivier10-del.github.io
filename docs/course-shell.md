@@ -69,5 +69,30 @@ Each workstream: before/after screenshots at 1280 and 390, light and dark, of ev
 ## Status
 
 - [x] Audit, decisions, base.css, Bio tint tokens moved to theme.css
-- [ ] W-A  - [ ] W-B  - [ ] W-C  - [ ] W-D
+- [x] W-A  - [ ] W-B  - [ ] W-C  - [ ] W-D
 - [ ] Merge, regenerate, bump sw.js CACHE, full CI, before/after screenshots, PR
+
+## W-A notes
+
+- **Data.** `scripts/lib/glossary.mjs` writes every `<course>/assets/glossary.json` (shape above, plus `chapters`
+  for the filter, `chapter` per term and `pop: 0` for words kept off runtime marking) and the shared page body. Old
+  shapes are gone; A&P/Bio search, flashcards and word-roots adapt the new file with a small `glossMap()`.
+  Site search and the tutor read every course's JSON. Ochem `#g-<id>` links are mapped to `#t-<id>`.
+- **NREMT.** Source `nremt/data/glossary.json` (A-Z, checked); `scripts/build-nremt-glossary.mjs` (`--check` in
+  ci-local and checks.yml). 85 of 150 terms link to the study-notes section that defines or teaches them (picked by
+  reading each section); the rest have an empty `href`. Domains stay in `GLOSSARY_DOMAIN`; the flashcard deck reads
+  the source file. Everyday words (Sign, Acute, Prone…) have `pop: false`.
+- **Popups.** `assets/course/glossary-tip.js` replaces `anp-glossary.js`, `bio-glossary.js` and ochem
+  `glossary-tip.js` (all removed). It loads `base.css` itself if the page lacks it. Any element with
+  `data-glossary-topic` is marked after load; `data-glossary-live` re-marks when its content changes (the 119
+  ochem lessons' `#card`). **For W-B (NREMT study notes):** load
+  `<script src="../assets/course/glossary-tip.js" data-glossary="assets/glossary.json" data-course-root="" defer>`
+  and call `LevlGlossary.mark(sectionEl)` per rendered section (no topic needed; tested), or put
+  `data-glossary-topic=""` on the container if it is in the HTML at load.
+- **Touched outside W-A's files (one line each):** `scripts/build-notes-pages.mjs` and `ochem/learn.html` script tag,
+  `ochem/assets/textbook.js` call (`OchemGlossary` to `LevlGlossary`), `sw.js` precache list (no CACHE bump),
+  `base.css` (`.gl:focus-visible`, dark `.cx-tip`, `.cx-tip-say`), `check-weight.mjs` (new `assets/course` shell
+  budget 14 KB; A&P glossary.json 150 to 190 KB because it now carries aliases, topic titles and links the page HTML
+  used to; the page fell from 43 to 16 KB), `site-rules/ochem-long-pages.mjs` (now guards content-visibility).
+- `base.css` `.cx-card` uses `var(--surface)`, which theme.css does not define; glossary.css sets the card
+  background itself. Worth a fix in base.css at merge.
