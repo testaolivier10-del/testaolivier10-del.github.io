@@ -4,7 +4,7 @@
    Like the ochem deck (scripts/build-flashcards.mjs), most of it is READ OUT
    OF PAGES THE COURSE ALREADY HAS, so a definition corrected on the glossary
    or a number corrected on a reference card corrects its flashcard too:
-     - every glossary term (nremt/glossary.html),
+     - every glossary term (nremt/data/glossary.json, the glossary page's source),
      - every mnemonic card (nremt/mnemonics.html),
      - the rows of two reference tables (nremt/reference-cards.html),
    plus the authored key-fact cards in scripts/lib/nremt-flashcard-sources.mjs,
@@ -12,7 +12,7 @@
 
    WHAT IT CHECKS (any failure stops the build)
      - every glossary term and every mnemonic is filed under a domain, and
-       every name filed there still exists on its page;
+       every name filed there still exists in its source;
      - each reference table is found by its header row;
      - every fact names a real domain and a study-notes section that exists;
      - ids are unique and every card has a front and a back.
@@ -23,6 +23,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { slug as glossSlug } from './lib/glossary.mjs';
 import { DOMAINS, GLOSSARY_DOMAIN, MNEMONIC_DOMAIN, REFERENCE_TABLES, FACTS } from './lib/nremt-flashcard-sources.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -80,20 +81,19 @@ function domainIndex(map, what) {
 }
 
 /* ---- 1. glossary --------------------------------------------------------- */
-const glossHtml = read('glossary.html');
+// The source the glossary page is generated from (scripts/build-nremt-glossary.mjs).
+const glossSrc = JSON.parse(readFileSync(join(ROOT, 'nremt', 'data', 'glossary.json'), 'utf8'));
 const glossDomain = domainIndex(GLOSSARY_DOMAIN, 'GLOSSARY_DOMAIN');
 const glossSeen = new Set();
-for (const m of glossHtml.matchAll(/\{term:"((?:[^"\\]|\\.)*)",\s*def:"((?:[^"\\]|\\.)*)"\}/g)) {
-  const term = JSON.parse('"' + m[1] + '"');
-  const def = JSON.parse('"' + m[2] + '"');
+for (const { term, def } of glossSrc) {
   glossSeen.add(term);
   const d = glossDomain.get(term);
   if (!d) { fail(`glossary term "${term}" is not filed under a domain in GLOSSARY_DOMAIN`); continue; }
   push({ id: 'gl:' + slug(term), d, src: 'glossary', ask: 'Define the term', q: term, a: [['', def]],
-    ref: ['glossary.html', 'Glossary'] }, `glossary "${term}"`);
+    ref: ['glossary.html#t-' + glossSlug(term), 'Glossary'] }, `glossary "${term}"`);
 }
-if (glossSeen.size < 100) fail(`glossary.html: found only ${glossSeen.size} terms — has the TERMS list changed shape?`);
-for (const n of glossDomain.keys()) if (!glossSeen.has(n)) fail(`GLOSSARY_DOMAIN lists "${n}", which glossary.html no longer has`);
+if (glossSeen.size < 100) fail(`nremt/data/glossary.json: found only ${glossSeen.size} terms — has it changed shape?`);
+for (const n of glossDomain.keys()) if (!glossSeen.has(n)) fail(`GLOSSARY_DOMAIN lists "${n}", which nremt/data/glossary.json no longer has`);
 
 /* ---- 2. mnemonics -------------------------------------------------------- */
 const mnHtml = read('mnemonics.html');
