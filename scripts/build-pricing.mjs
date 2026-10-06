@@ -290,8 +290,7 @@ function hubLd() {
         // Raster, 112 px or more: Google does not take an SVG logo (audit 2026-10).
         logo: { '@type': 'ImageObject', url: `${ORIGIN}/assets/icon-512.png`, width: 512, height: 512 },
         description: `Exam prep tools and interactive courses. ${FREE_SENTENCE} No ads.`,
-        // Who runs it and how to reach him, as terms.html and privacy.html say.
-        founder: { '@type': 'Person', name: 'Olivier Testa' },
+        // How to reach the site, as terms.html and privacy.html say. No founder name: the operator stays anonymous.
         contactPoint: { '@type': 'ContactPoint', contactType: 'customer support', email: CONTACT_EMAIL, url: `${ORIGIN}/terms.html` },
       },
       { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: 'LevlPrep', url: `${ORIGIN}/`, publisher: { '@id': `${ORIGIN}/#org` }, inLanguage: 'en' },
