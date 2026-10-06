@@ -170,3 +170,23 @@ Written for Unit 5 (`chem/data/*/` for the 11 kinetics topics); check against th
   before Unit 7 introduces equilibrium.
 - **Pseudo-first-order.** The long FRQ `frq-dye-fading` uses a large excess of OH⁻ and asks for
   k = k_obs/[OH⁻] without naming "pseudo-first-order". Confirm this is fair at this level.
+## unit6-data-values: reference values used in Unit 6 (open, 2026-10-06)
+
+Unit 6 uses one set of common textbook values throughout (checked for internal consistency by
+code, not against one cited data source): ΔH°f (kJ/mol) CH₄ −74.8, C₂H₅OH(l) −277.7, CO −110.5,
+CO₂ −393.5, H₂O(l) −285.8, H₂O(g) −241.8, NH₃ −46.1, NO +90.3, NO₂ +33.2, Fe₂O₃ −824.2, Al₂O₃
+−1675.7, glucose −1273.3; average bond enthalpies H–H 436, C–H 413, C–C 348, C=C 614, O–H 463, O=O
+495, C=O (CO₂) 799, N≡N 941, N–H 391, H–Cl 431, Cl–Cl 242, C–Cl 328, H–F 567, F–F 155; water
+c = 4.18 J/(g·°C), ice 2.09, ΔHfus 6.01, ΔHvap 40.7 (at 100 °C) and 44.0 kJ/mol (at 25 °C). Tables
+differ by a few kJ (e.g. C–H 411-416, C=O in CO₂ 799-805). Since every item gives its values in the
+stimulus, nothing is graded against memorized data; confirm the set or swap in the owner's
+preferred table. Also: the combustion ΔH of ethyne in `hess-law` uses −1300.0 kJ/mol (giving
+ΔH°f +227.2, matching tables); KClO₃ decomposition is given as −78.0 kJ/mol (sources range about
+−78 to −90 depending on data set; only used qualitatively).
+
+## unit6-figures-review: Unit 6 figures not yet checked by a person (open, 2026-10-06)
+
+Nine new SVGs in `chem/figures/` (endo-exo-energy-flow, enthalpy-diagram-pair,
+thermal-contact-particles, coffee-cup-calorimeter, water-heating-curve, thermochemical-scaling,
+bond-enthalpy-ladder, formation-pathway, hess-carbon-routes) were rendered and inspected by the
+author only. The heating curve and ladders are labelled "not to scale" or use schematic heights.

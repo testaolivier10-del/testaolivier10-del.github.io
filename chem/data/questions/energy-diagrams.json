@@ -1,0 +1,536 @@
+{
+ "stimuli": {
+  "energy-diagrams-s1": {
+   "kind": "graph",
+   "title": "Energy diagram for a gas-phase reaction",
+   "text": "<p>The diagram shows the enthalpy of a reacting system as the reaction X(g) + Y(g) → Z(g) proceeds, per mole of reaction. The three marked levels are: reactants 125 kJ, top of the hump 214 kJ, products 38 kJ.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Progress of the reaction",
+     "unit": ""
+    },
+    "y": {
+     "label": "Enthalpy",
+     "unit": "kJ"
+    },
+    "series": [
+     {
+      "name": "X + Y → Z",
+      "points": [
+       [
+        0,
+        125
+       ],
+       [
+        1,
+        125
+       ],
+       [
+        2,
+        150
+       ],
+       [
+        3,
+        200
+       ],
+       [
+        3.5,
+        214
+       ],
+       [
+        4,
+        200
+       ],
+       [
+        5,
+        110
+       ],
+       [
+        6,
+        50
+       ],
+       [
+        6.5,
+        38
+       ],
+       [
+        8,
+        38
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "energy-diagrams-s2": {
+   "kind": "table",
+   "title": "Readings from four energy diagrams",
+   "text": "<p>A student reads three levels from the energy diagrams of four reactions, each per mole of reaction.</p>",
+   "table": {
+    "caption": "Enthalpy levels read from each diagram",
+    "cols": [
+     "Reaction",
+     "Reactants (kJ)",
+     "Top of the hump (kJ)",
+     "Products (kJ)"
+    ],
+    "rows": [
+     [
+      "P",
+      "50",
+      "145",
+      "110"
+     ],
+     [
+      "Q",
+      "80",
+      "120",
+      "20"
+     ],
+     [
+      "R",
+      "30",
+      "160",
+      "95"
+     ],
+     [
+      "S",
+      "90",
+      "150",
+      "70"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-energy-diagrams-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "energy-diagrams-s1",
+   "q": "Use the diagram to determine ΔH for the reaction X + Y → Z, in kJ/mol.",
+   "numeric": {
+    "answer": -87.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ/mol rxn",
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 87.0,
+      "rel": 0.02,
+      "why": "Sign: you subtracted products from reactants. ΔH is products minus reactants, and the products here are lower, so ΔH is negative."
+     },
+     {
+      "value": 89.0,
+      "rel": 0.02,
+      "why": "Value: that is the activation energy, the climb from the reactants to the peak. ΔH compares the two flat ends."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔH = H(products) − H(reactants) = 38 kJ − 125 kJ = −87 kJ per mole of reaction. Products sit below reactants, so the sign is negative."
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "energy-diagrams-s1",
+   "q": "Use the diagram to determine the activation energy of the forward reaction, in kJ/mol.",
+   "numeric": {
+    "answer": 89.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 176.0,
+      "rel": 0.02,
+      "why": "Value: you measured from the products to the peak, which is the activation energy of the reverse reaction."
+     },
+     {
+      "value": 214.0,
+      "rel": 0.02,
+      "why": "Value: you read the height of the peak. The activation energy is the climb from the reactants up to the peak."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ea(forward) = H(peak) − H(reactants) = 214 kJ − 125 kJ = 89 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-diagrams-s1",
+   "q": "Which statement about the reverse reaction, Z → X + Y, is supported by the diagram?",
+   "options": [
+    "It is exothermic, with ΔH = −87 kJ/mol and an activation energy of 89 kJ/mol.",
+    "It is endothermic, with ΔH = +87 kJ/mol and an activation energy of 89 kJ/mol.",
+    "It is endothermic, with ΔH = +87 kJ/mol and an activation energy of 176 kJ/mol.",
+    "It is endothermic, with ΔH = +87 kJ/mol and an activation energy of zero."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For the reverse reaction, ΔH = 125 − 38 = +87 kJ/mol and Ea(reverse) = 214 − 38 = 176 kJ/mol. The diagram is read right to left.",
+    "options": [
+     "This copies the forward values. Reversing the direction flips the sign of ΔH and changes which side the climb starts from.",
+     "The sign is right, but the reverse climb starts at the products, 38 kJ, not at the reactants.",
+     "Right: going backward climbs from 38 kJ to 214 kJ, then ends at 125 kJ, higher than it started.",
+     "Every elementary reaction has a hump to climb; the reverse hump is the tallest one here."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-diagrams-s1",
+   "q": "A catalyst is added to the reaction mixture. How does the diagram change?",
+   "options": [
+    "The peak is lower, and the products move down, so ΔH becomes more negative.",
+    "The peak stays the same, and the products move down, so more energy is released.",
+    "The peak is higher, so the reaction absorbs extra energy and ΔH becomes positive.",
+    "The peak is lower; the reactant and product levels, and so ΔH, stay the same."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "ΔH depends only on where the reactants and products sit. A catalyst lowers the hump between them.",
+    "options": [
+     "The products are the same substances, so their enthalpy is unchanged.",
+     "A catalyst changes the path, which is the peak, not the end points.",
+     "A catalyst lowers the activation energy; it does not raise it, and it does not change ΔH.",
+     "Right: a catalyst offers a path with a lower activation energy but starts and ends at the same substances."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-5",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "energy-diagrams-s2",
+   "q": "Which reactions are endothermic? Select all that apply.",
+   "options": [
+    "Reaction P",
+    "Reaction Q",
+    "Reaction R",
+    "Reaction S"
+   ],
+   "correct": [
+    0,
+    2
+   ],
+   "why": {
+    "correct": "An endothermic reaction ends higher than it starts: products above reactants, ΔH > 0. The height of the hump does not decide this.",
+    "options": [
+     "Products at 110 kJ are above reactants at 50 kJ: ΔH = +60 kJ/mol.",
+     "Products at 20 kJ are below reactants at 80 kJ: ΔH = −60 kJ/mol, exothermic.",
+     "Products at 95 kJ are above reactants at 30 kJ: ΔH = +65 kJ/mol.",
+     "Products at 70 kJ are below reactants at 90 kJ: ΔH = −20 kJ/mol, exothermic."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-diagrams-s2",
+   "q": "Which reaction has the largest activation energy in the forward direction?",
+   "options": [
+    "Reaction P, with the largest increase in enthalpy overall",
+    "Reaction R, with a climb of 130 kJ/mol",
+    "Reaction S, because its hump is at 150 kJ",
+    "Reaction Q, because it releases the most energy"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Ea(forward) = top − reactants: P 95, Q 40, R 130, S 60 kJ/mol. The largest is R.",
+    "options": [
+     "P's overall rise is 60 kJ/mol and its climb is 95 kJ/mol; R climbs further.",
+     "Right: 160 − 30 = 130 kJ/mol, the largest climb from reactants to the top.",
+     "S starts at 90 kJ, so its climb is only 60 kJ/mol. The climb, not the height, is Ea.",
+     "Releasing energy is about ΔH; Q's climb is just 40 kJ/mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-7",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "energy-diagrams-s2",
+   "q": "Reactions P and Q have the same size of ΔH. What does the diagram data show about them?",
+   "options": [
+    "Both release 60 kJ per mole of reaction, because the size of ΔH is the same.",
+    "Both absorb 60 kJ per mole of reaction, because each hump is above its reactants.",
+    "P absorbs 60 kJ per mole of reaction and Q releases 60 kJ, so their signs are opposite.",
+    "They have the same activation energy, because they have the same size of ΔH."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ΔH(P) = 110 − 50 = +60 kJ/mol; ΔH(Q) = 20 − 80 = −60 kJ/mol. Equal sizes, opposite directions of energy flow.",
+    "options": [
+     "Same size, but P's products are higher than its reactants, so P absorbs energy.",
+     "Every hump is above its reactants; the hump sets Ea, while the end points set ΔH.",
+     "Right: P ends 60 kJ higher (+60) and Q ends 60 kJ lower (−60).",
+     "Ea and ΔH are separate: P climbs 95 kJ/mol and Q climbs 40 kJ/mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-8",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "energy-diagrams-s2",
+   "q": "Determine the activation energy, in kJ/mol, of the reverse of Reaction R (products → reactants).",
+   "numeric": {
+    "answer": 65.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 130.0,
+      "rel": 0.02,
+      "why": "Value: that is the forward activation energy, measured from the reactants. The reverse climb starts at the products."
+     },
+     {
+      "value": 160.0,
+      "rel": 0.02,
+      "why": "Value: you read the height of the hump. The activation energy is the climb from the starting level up to the hump."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Ea(reverse) = top of the hump − products = 160 kJ − 95 kJ = 65 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "On an energy diagram, where is ΔH of a reaction shown?",
+   "options": [
+    "As the vertical distance from the reactant level to the product level",
+    "As the vertical distance from the reactant level to the top of the hump",
+    "As the horizontal length of the curve from start to finish",
+    "As the height of the top of the hump above the axis"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Energies on the diagram are vertical differences. The difference between the two flat ends is ΔH.",
+    "options": [
+     "Right: ΔH = H(products) − H(reactants).",
+     "That distance is the forward activation energy.",
+     "The horizontal axis shows progress of the reaction, not energy.",
+     "The peak's height alone is neither ΔH nor Ea; energies are differences between levels."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "A diagram for the reaction 2 H₂O₂(aq) → 2 H₂O(l) + O₂(g), which warms the solution, is drawn by a student with the products higher than the reactants. What is wrong?",
+   "options": [
+    "The products belong at the same level as the reactants, because atoms are conserved.",
+    "A reaction that warms its surroundings releases energy, so its products belong below the reactants.",
+    "Nothing is wrong, because a reaction that warms its surroundings gains enthalpy.",
+    "The hump is missing, because a reaction that releases energy has no activation energy."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The diagram shows the system. An exothermic system ends with less enthalpy, so the products sit below the reactants.",
+    "options": [
+     "Atoms are conserved, but energy is not stored the same way in different bonds; the levels differ.",
+     "Right: warming the solution means the system lost energy, so ΔH < 0 and the products sit lower.",
+     "The surroundings gain energy; the system, whose enthalpy is drawn, loses it.",
+     "The student's hump is not the issue, and exothermic reactions do have activation energies."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which energy diagram matches an endothermic reaction that is fast at room temperature?",
+   "options": [
+    "Products well below the reactants, with a small hump",
+    "Products a little above the reactants, with a very tall hump",
+    "Products a little above the reactants, with a small hump",
+    "Products level with the reactants, with no hump"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Two separate readings: the end levels give the sign of ΔH; the hump gives the activation energy, which governs speed (5.6).",
+    "options": [
+     "A small hump fits a fast reaction, but products below reactants make it exothermic.",
+     "Endothermic is right, but a tall hump means a large Ea and a slow reaction.",
+     "Right: products above reactants means endothermic; a small hump means a small Ea and a fast reaction.",
+     "Level ends give ΔH = 0, and a reaction that rearranges bonds has a hump."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-12",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reaction has ΔH = −45 kJ/mol and a forward activation energy of 70 kJ/mol. The reaction is run backward instead. Predict how each value compares with the forward reaction.",
+   "variables": [
+    {
+     "name": "Size of ΔH",
+     "answer": "none",
+     "why": "The same two levels are compared, so the size, 45 kJ/mol, is unchanged; only the sign flips."
+    },
+    {
+     "name": "Activation energy",
+     "answer": "up",
+     "why": "The reverse climb starts from the lower product level: 70 + 45 = 115 kJ/mol."
+    },
+    {
+     "name": "Enthalpy of the starting substances",
+     "answer": "down",
+     "why": "The reverse reaction starts at the products, which sit 45 kJ lower than the forward reactants."
+    }
+   ],
+   "why": {
+    "correct": "Reading a diagram backward: same levels, same hump; ΔH flips sign, and Ea(reverse) = Ea(forward) − ΔH = 70 − (−45) = 115 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Methane burns in oxygen with ΔH = −890 kJ/mol, yet a gas stove does not light until a spark is applied. Which energy diagram explains both facts?",
+   "options": [
+    "Products far below reactants, with a hump that the spark helps the molecules climb",
+    "Products far above reactants, so the spark supplies the extra energy stored in the products",
+    "Products far below reactants, with no hump, so the spark is not really needed",
+    "Products level with reactants, with a hump that the spark climbs"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ΔH (end levels) tells how much energy is released; Ea (the hump) tells whether molecules have enough energy to start. Once burning, the energy released keeps lighting new molecules.",
+    "options": [
+     "Right: the low products make it strongly exothermic; the hump (Ea) is why it needs a start.",
+     "A ΔH of −890 kJ/mol means the products are far below the reactants.",
+     "Without a hump, methane would burn the moment it met air; the spark is needed.",
+     "Level ends would mean ΔH = 0, not −890 kJ/mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which pair of quantities can be read from an energy diagram without any other data?",
+   "options": [
+    "The sign of ΔH and the temperature at which the reaction is run",
+    "The sign of ΔH and whether the forward Ea is larger than the reverse Ea",
+    "The rate constant and the time the reaction takes to finish",
+    "The mass of products formed and the mass of reactants used"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "An energy diagram gives enthalpy levels: the sign and size of ΔH and both activation energies. For an exothermic reaction, the reverse Ea is the larger one.",
+    "options": [
+     "Temperature is not on the diagram; its axes are enthalpy and progress of the reaction.",
+     "Right: both follow from where the ends sit relative to each other and to the hump.",
+     "The diagram gives Ea but not a rate constant or a time; those need more data.",
+     "Masses come from stoichiometry, not from an energy diagram."
+    ]
+   }
+  },
+  {
+   "id": "chem-energy-diagrams-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "energy-diagrams",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "For an exothermic elementary reaction, how do the forward and reverse activation energies compare?",
+   "options": [
+    "The forward Ea is larger, by the size of ΔH",
+    "They are equal, because both directions pass over the same hump",
+    "The reverse Ea is larger, by the size of ΔH",
+    "The reverse Ea is zero, because the reverse reaction absorbs energy"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Ea(reverse) = Ea(forward) − ΔH. With ΔH negative, Ea(reverse) is larger.",
+    "options": [
+     "That is true for an endothermic reaction, where the reactants are lower.",
+     "Same hump, different starting levels, so different climbs.",
+     "Right: the reverse climb starts from the lower product level, so it is longer by |ΔH|.",
+     "The reverse still has to climb the hump; its Ea is the largest of the two."
+    ]
+   }
+  }
+ ]
+}

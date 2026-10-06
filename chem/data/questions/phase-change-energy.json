@@ -1,0 +1,615 @@
+{
+ "stimuli": {
+  "phase-change-energy-s1": {
+   "kind": "graph",
+   "title": "Heating curve of Compound Q",
+   "text": "<p>A 47.05 g sample of solid Compound Q (molar mass 94.10 g/mol) at 20.0 °C is heated by a heater that supplies 150. J of energy to the sample each second. Melting runs from 9.6 s to 47.2 s; boiling runs from 142.3 s to 295.3 s.</p>",
+   "chart": {
+    "type": "line",
+    "x": {
+     "label": "Time",
+     "unit": "s"
+    },
+    "y": {
+     "label": "Temperature",
+     "unit": "°C"
+    },
+    "series": [
+     {
+      "name": "Compound Q",
+      "points": [
+       [
+        0,
+        20.0
+       ],
+       [
+        9.6,
+        41.0
+       ],
+       [
+        47.2,
+        41.0
+       ],
+       [
+        142.3,
+        182.0
+       ],
+       [
+        295.3,
+        182.0
+       ],
+       [
+        303.8,
+        200.0
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  "phase-change-energy-s2": {
+   "kind": "table",
+   "title": "Phase-change data for four substances",
+   "text": "<p>Each enthalpy is measured at the normal melting or boiling point.</p>",
+   "table": {
+    "caption": "Melting and boiling data",
+    "cols": [
+     "Substance",
+     "Formula",
+     "Molar mass (g/mol)",
+     "Melting point (°C)",
+     "ΔHfus (kJ/mol)",
+     "Boiling point (°C)",
+     "ΔHvap (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "Methane",
+      "CH₄",
+      "16.04",
+      "−182.5",
+      "0.94",
+      "−161.5",
+      "8.19"
+     ],
+     [
+      "Ammonia",
+      "NH₃",
+      "17.03",
+      "−77.7",
+      "5.66",
+      "−33.3",
+      "23.3"
+     ],
+     [
+      "Ethanol",
+      "C₂H₅OH",
+      "46.07",
+      "−114.1",
+      "4.93",
+      "78.3",
+      "38.6"
+     ],
+     [
+      "Water",
+      "H₂O",
+      "18.02",
+      "0.0",
+      "6.01",
+      "100.0",
+      "40.7"
+     ]
+    ]
+   }
+  }
+ },
+ "items": [
+  {
+   "id": "chem-phase-change-energy-1",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.D",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "phase-change-energy-s1",
+   "q": "During which time interval is Compound Q entirely liquid?",
+   "options": [
+    "From 47.2 s to 142.3 s",
+    "From 9.6 s to 47.2 s",
+    "From 142.3 s to 295.3 s",
+    "From 0 s to 9.6 s"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Sloped parts show one phase warming; flat parts show two phases changing at constant temperature. The liquid alone is the slope between the two flat parts.",
+    "options": [
+     "Right: melting has finished at the end of the first flat part, and boiling has not yet begun.",
+     "This flat part is melting: solid and liquid are both present.",
+     "This flat part is boiling: liquid and gas are both present.",
+     "Before the first flat part, the sample is a solid warming up."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s1",
+   "q": "Calculate the molar enthalpy of fusion of Compound Q, in kJ/mol.",
+   "numeric": {
+    "answer": 11.3,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.1199,
+      "rel": 0.02,
+      "why": "Value: that is kJ per gram. Divide by moles (mass ÷ molar mass) for a molar enthalpy."
+     },
+     {
+      "value": 14.16,
+      "rel": 0.02,
+      "why": "Value: you used the time from 0 s to the end of melting. The energy for melting is only the flat part, 9.6 s to 47.2 s."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Melting time = 47.2 s − 9.6 s = 37.6 s. Energy = 37.6 s × 150. J/s = 5640 J = 5.64 kJ. Moles = 47.05 g ÷ 94.10 g/mol = 0.500 mol. ΔHfus = 5.64 kJ ÷ 0.500 mol = 11.28 → 11.3 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s1",
+   "q": "The boiling plateau is about four times as long as the melting plateau. Which explanation is correct?",
+   "options": [
+    "Boiling breaks the covalent bonds inside the molecules of Compound Q; melting leaves them intact.",
+    "The temperature is higher during boiling, so each molecule needs more energy to move.",
+    "Boiling pulls the molecules almost fully apart; melting just loosens their attractions.",
+    "There is more liquid than solid in the sample, so boiling takes longer."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Melting turns a fixed arrangement into a liquid where molecules still touch; vaporizing pulls them apart into a gas. More attractions are overcome, so ΔHvap > ΔHfus.",
+    "options": [
+     "No covalent bonds break in either change; the molecules are still Compound Q in the gas.",
+     "The plateau length measures energy to overcome attractions, not the temperature.",
+     "Right: in the liquid, molecules still touch and attract; boiling overcomes nearly all those attractions.",
+     "The same 0.500 mol of Compound Q melts and then boils."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s1",
+   "q": "Between 142.3 s and 295.3 s, what happens to the average kinetic energy of the molecules of Compound Q?",
+   "options": [
+    "It increases, because the heater keeps adding 150. J of energy to the sample each second.",
+    "It decreases, because the molecules spread far apart from each other as they become a gas.",
+    "It increases, because covalent bonds break and release energy.",
+    "It stays the same, because the energy goes into overcoming attractions between molecules."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Temperature tracks average kinetic energy. On a flat part, the added energy separates molecules (potential energy goes up) while their average speed stays constant.",
+    "options": [
+     "The energy is added, but it does not speed the molecules up while the temperature is flat.",
+     "Spreading out raises their potential energy; their average speed stays the same at constant temperature.",
+     "No covalent bonds break, and breaking bonds would absorb energy, not release it.",
+     "Right: constant temperature means constant average kinetic energy; the energy raises the potential energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-5",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "phase-change-energy-s1",
+   "q": "Use the sloped part for the liquid to calculate the specific heat of liquid Compound Q, in J/(g·°C).",
+   "numeric": {
+    "answer": 2.15,
+    "tol": 0.01,
+    "unit": "J/(g·°C)",
+    "units": [
+     "J g^-1 °C^-1",
+     "J/(g·K)",
+     "J/(g K)"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 202.3,
+      "rel": 0.02,
+      "why": "Value: you divided by moles. Specific heat is per gram: divide by the mass, 47.05 g."
+     },
+     {
+      "value": 1.666,
+      "rel": 0.02,
+      "why": "Value: you used the final temperature as ΔT. ΔT = 182.0 °C − 41.0 °C."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Time = 142.3 s − 47.2 s = 95.1 s; energy = 95.1 s × 150. J/s = 14265 J. ΔT = 182.0 − 41.0 = 141.0 °C. c = 14265 J ÷ (47.05 g × 141.0 °C) = 2.1503 → 2.15 J/(g·°C)."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s2",
+   "q": "Methane, ammonia and water have similar molar masses, yet water's ΔHvap is about five times methane's. Which explanation is best?",
+   "options": [
+    "Water has the larger molar mass of the two, so its molecules need more energy to escape from the liquid.",
+    "Water molecules are held by hydrogen bonds; methane molecules just by weaker London dispersion forces.",
+    "Water's O–H bonds are stronger than methane's C–H bonds, and those covalent bonds break when water boils.",
+    "Water boils at a higher temperature, and a higher temperature makes ΔHvap larger."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔHvap measures the energy to separate molecules. With similar masses, the type of attraction decides: hydrogen bonding (water) ≫ London dispersion only (methane).",
+    "options": [
+     "The molar masses (18.02 and 16.04 g/mol) are nearly the same, so mass cannot explain a fivefold difference.",
+     "Right: overcoming hydrogen bonds takes far more energy than overcoming the weak dispersion forces between small CH₄ molecules.",
+     "Boiling does not break covalent bonds; the gas is still H₂O molecules.",
+     "The higher boiling point and the larger ΔHvap have the same cause, stronger attractions; one does not cause the other."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-7",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "phase-change-energy-s2",
+   "q": "How much energy, in kJ, is needed to vaporize 25.0 g of ethanol at its boiling point?",
+   "numeric": {
+    "answer": 20.9,
+    "tol": 0.1,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 965.0,
+      "rel": 0.02,
+      "why": "Value: you multiplied grams by kJ/mol. Convert grams to moles first."
+     },
+     {
+      "value": 2.675,
+      "rel": 0.02,
+      "why": "Value: you used ΔHfus. Vaporizing a liquid needs ΔHvap."
+     }
+    ]
+   },
+   "why": {
+    "correct": "n = 25.0 g ÷ 46.07 g/mol = 0.5427 mol. q = n × ΔHvap = 0.5427 mol × 38.6 kJ/mol = 20.95 → 20.9 kJ."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-8",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s2",
+   "q": "What is the energy change, in kJ, of 10.0 g of ammonia gas that condenses to liquid at −33.3 °C?",
+   "numeric": {
+    "answer": -13.7,
+    "tol": 0.1,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 13.68,
+      "rel": 0.02,
+      "why": "Sign: condensing releases energy, so the ammonia's energy change is negative."
+     },
+     {
+      "value": -233.0,
+      "rel": 0.02,
+      "why": "Value: convert grams to moles before multiplying by kJ/mol."
+     }
+    ]
+   },
+   "why": {
+    "correct": "n = 10.0 g ÷ 17.03 g/mol = 0.5872 mol. Condensing is the reverse of vaporizing, so q = −n × ΔHvap = −0.5872 mol × 23.3 kJ/mol = -13.68 → -13.7 kJ. The ammonia releases energy."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-9",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "6.B",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s2",
+   "q": "Which statements are supported by the data in the table? Select all that apply.",
+   "options": [
+    "For each substance, more energy is needed to vaporize a mole than to melt a mole.",
+    "Ammonia molecules attract each other more strongly than ethanol molecules do.",
+    "A larger molar mass gives a larger ΔHfus.",
+    "Melting 1 mol of ice absorbs more energy than boiling 1 mol of liquid ammonia."
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Read the table row by row and column by column; reject a claim that one row breaks (ethanol's ΔHfus) or that the data contradict (ammonia vs ethanol).",
+    "options": [
+     "Every ΔHvap in the table is larger than the ΔHfus in the same row.",
+     "Ammonia's ΔHvap (23.3 kJ/mol) and boiling point are both lower than ethanol's, so its attractions are weaker.",
+     "Ethanol has the largest molar mass but a smaller ΔHfus than water or ammonia.",
+     "6.01 kJ for ice versus 23.3 kJ for ammonia: boiling ammonia takes more."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "phase-change-energy-s2",
+   "q": "A burn from steam at 100 °C is usually worse than a burn from the same mass of liquid water at 100 °C. Which explanation uses the table correctly?",
+   "options": [
+    "Steam is at a higher temperature than boiling water, so it carries more energy to the skin.",
+    "Steam condensing on the skin releases 40.7 kJ/mol before the water even starts to cool.",
+    "Steam has a higher specific heat, so it releases 6.01 kJ/mol more as it cools.",
+    "Liquid water absorbs energy from the skin by evaporating, so it does not burn."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Each mole of steam that condenses releases 40.7 kJ to the skin, far more than cooling the liquid by a few tens of degrees releases.",
+    "options": [
+     "Both are at 100 °C; the difference is the energy released on condensing.",
+     "Right: condensation is exothermic, and its energy is added to the energy released as the water cools.",
+     "6.01 kJ/mol is ΔHfus, the energy for melting and freezing, not for condensing.",
+     "Hot liquid water does burn; it just releases less energy than steam."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "4.C",
+   "level": "apply",
+   "diff": 1,
+   "q": "Why does the temperature of a melting ice-water mixture stay at 0 °C while energy is added?",
+   "options": [
+    "The added energy is lost to the room as fast as it is added.",
+    "The thermometer stops reading temperature changes while ice is present.",
+    "The added energy overcomes attractions between water molecules instead of speeding them up.",
+    "The added energy breaks O–H bonds inside the water molecules."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "During a phase change, energy goes into potential energy (separating molecules), not kinetic energy, so the temperature is constant until the change is complete.",
+    "options": [
+     "In a sealed, insulated container, the temperature still stays at 0 °C until the ice is gone.",
+     "The thermometer works fine; the temperature really is constant.",
+     "Right: potential energy rises as the solid structure comes apart; average kinetic energy, and so temperature, stays the same.",
+     "The molecules stay intact as H₂O; only attractions between them are overcome."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "How much energy, in kJ, is needed to turn 18.0 g of ice at −10.0 °C into liquid water at 25.0 °C? Use c(ice) = 2.09 J/(g·°C), c(water) = 4.18 J/(g·°C), ΔHfus = 6.01 kJ/mol and 18.02 g/mol.",
+   "numeric": {
+    "answer": 8.26,
+    "tol": 0.01,
+    "unit": "kJ",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 2.257,
+      "rel": 0.02,
+      "why": "Value: you left out melting. The flat part at 0 °C takes the most energy of the three steps."
+     },
+     {
+      "value": 8.637,
+      "rel": 0.02,
+      "why": "Value: you used water's specific heat for the ice. Ice has its own specific heat, 2.09 J/(g·°C)."
+     },
+     {
+      "value": 8.637,
+      "rel": 0.02,
+      "why": "Value: you treated the whole 35.0 °C rise as liquid water. Split it: ice from −10.0 to 0 °C, then liquid from 0 to 25.0 °C."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Warm the ice: 18.0 × 2.09 × 10.0 = 376 J. Melt: (18.0 ÷ 18.02) mol × 6.01 kJ/mol = 6.003 kJ. Warm the liquid: 18.0 × 4.18 × 25.0 = 1881 J. Total = 0.376 + 6.003 + 1.881 = 8.261 → 8.26 kJ."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-13",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "How many grams of ice at 0 °C can be melted by 5.00 kJ of energy? (ΔHfus = 6.01 kJ/mol; 18.02 g/mol)",
+   "numeric": {
+    "answer": 15.0,
+    "tol": 0.1,
+    "unit": "g",
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 0.8319,
+      "rel": 0.02,
+      "why": "Value: that is moles of ice. Multiply by the molar mass for grams."
+     },
+     {
+      "value": 2.214,
+      "rel": 0.02,
+      "why": "Value: you used ΔHvap. Melting uses ΔHfus."
+     }
+    ]
+   },
+   "why": {
+    "correct": "n = 5.00 kJ ÷ 6.01 kJ/mol = 0.8319 mol. Mass = 0.8319 mol × 18.02 g/mol = 14.99 → 15.0 g."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-14",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "A student heats twice as much of the same solid with the same heater. Predict how each quantity on the new heating curve compares with the original.",
+   "variables": [
+    {
+     "name": "Length of time of the melting plateau",
+     "answer": "up",
+     "why": "Twice the moles need twice the energy to melt, which takes twice the time with the same heater."
+    },
+    {
+     "name": "Temperature of the melting plateau",
+     "answer": "none",
+     "why": "The melting point is a property of the substance, not of the amount."
+    },
+    {
+     "name": "Molar enthalpy of fusion calculated from the data",
+     "answer": "none",
+     "why": "Twice the energy divided by twice the moles gives the same kJ/mol."
+    }
+   ],
+   "why": {
+    "correct": "Amount changes the energy (and time); the substance sets the melting temperature and the per-mole enthalpy."
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A drink is cooled with either 50 g of ice at 0 °C or 50 g of liquid water at 0 °C. Which cools the drink more, and why?",
+   "options": [
+    "The cold water, because liquid water has a higher specific heat than ice.",
+    "They cool it equally, because both start at 0 °C.",
+    "The ice, because melting it absorbs energy from the drink before the meltwater starts to warm.",
+    "The cold water, because ice releases energy as it melts."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Melting is endothermic. The ice takes energy from the drink to melt (6.01 kJ/mol, about 334 J/g) and then more to warm, so it cools the drink more.",
+    "options": [
+     "Both warm up from 0 °C, but only the ice also absorbs energy by melting.",
+     "Same temperature, but the ice must also melt, which absorbs energy.",
+     "Right: each gram of ice absorbs about 334 J just to melt, on top of the energy it absorbs warming up.",
+     "Melting is endothermic: it absorbs energy."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Liquid wax in a candle mold cools and solidifies at its freezing point. Which statement about the wax during freezing is correct?",
+   "options": [
+    "The wax absorbs energy from its surroundings while its temperature stays constant.",
+    "The wax releases energy, and its temperature falls steadily the whole time.",
+    "The wax neither releases nor absorbs energy, since its temperature does not change.",
+    "The wax releases energy to its surroundings while its temperature stays constant."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Freezing is the reverse of melting: q = −n × ΔHfus. The released energy comes from new attractions, not from slowing down, so the temperature is constant.",
+    "options": [
+     "Absorbing energy at constant temperature is melting, the reverse change.",
+     "During freezing the temperature stays at the freezing point until the wax is solid.",
+     "Energy leaves the wax even though its temperature is constant.",
+     "Right: freezing forms attractions between molecules, which releases energy; the temperature holds at the freezing point."
+    ]
+   }
+  },
+  {
+   "id": "chem-phase-change-energy-17",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "phase-change-energy",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "A cooling curve for a pure liquid shows a flat part at 80.2 °C. A sample of the same liquid with twice the mass is cooled in the same way. Where is the flat part on the new curve?",
+   "options": [
+    "At 80.2 °C, lasting about twice as long",
+    "At 80.2 °C, lasting the same length of time",
+    "At about 160 °C, lasting the same length of time",
+    "At about 40 °C, lasting about twice as long"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "The temperature of a plateau identifies the substance; its length reflects the amount.",
+    "options": [
+     "Right: the freezing point does not depend on the amount, but twice the mass releases twice the energy.",
+     "Twice the mass must release twice the energy to freeze, which takes longer.",
+     "Freezing points do not scale with mass.",
+     "The freezing point is a property of the substance, not the amount."
+    ]
+   }
+  }
+ ]
+}

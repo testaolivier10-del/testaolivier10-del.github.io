@@ -1,0 +1,542 @@
+{
+ "stimuli": {
+  "endo-exothermic-s1": {
+   "kind": "table",
+   "title": "Four processes in an insulated cup",
+   "text": "<p>A student runs four processes, one at a time, in an insulated foam cup holding 50.0 g of water. She records the water temperature before and after each one.</p>",
+   "table": {
+    "caption": "Water temperature before and after each process",
+    "cols": [
+     "Process",
+     "What is added to the water",
+     "Starting temperature (°C)",
+     "Final temperature (°C)"
+    ],
+    "rows": [
+     [
+      "A",
+      "Solid calcium chloride, which dissolves",
+      "21.0",
+      "34.6"
+     ],
+     [
+      "B",
+      "Solid ammonium nitrate, which dissolves",
+      "21.0",
+      "11.8"
+     ],
+     [
+      "C",
+      "Magnesium ribbon, into dilute hydrochloric acid",
+      "21.0",
+      "39.2"
+     ],
+     [
+      "D",
+      "Baking soda, into dilute citric acid solution (fizzes)",
+      "21.0",
+      "16.5"
+     ]
+    ]
+   }
+  },
+  "endo-exothermic-s2": {
+   "kind": "particle",
+   "title": "Water molecules before and after a change",
+   "html": "<svg viewBox=\"0 0 520 210\" width=\"520\" height=\"210\" role=\"img\" aria-label=\"Two boxes at the same temperature. Box 1, before: six water molecules spread far apart, not touching. Box 2, after: the same six water molecules packed close together, with dotted lines showing attractions between the hydrogen of one molecule and the oxygen of a neighbor.\"><rect x=\"4\" y=\"4\" width=\"240\" height=\"170\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><rect x=\"276\" y=\"4\" width=\"240\" height=\"170\" rx=\"8\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"40\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"29\" cy=\"48\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"51\" cy=\"48\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"130\" cy=\"30\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"119\" cy=\"38\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"141\" cy=\"38\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"205\" cy=\"60\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"194\" cy=\"68\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"216\" cy=\"68\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"60\" cy=\"125\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"49\" cy=\"133\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"71\" cy=\"133\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"150\" cy=\"110\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"139\" cy=\"118\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"161\" cy=\"118\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"205\" cy=\"145\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"194\" cy=\"153\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"216\" cy=\"153\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"330\" cy=\"70\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"319\" cy=\"78\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"341\" cy=\"78\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"372\" cy=\"92\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"361\" cy=\"84\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"383\" cy=\"84\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"414\" cy=\"70\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"403\" cy=\"78\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"425\" cy=\"78\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"351\" cy=\"128\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"340\" cy=\"120\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"362\" cy=\"120\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"393\" cy=\"128\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"382\" cy=\"136\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"404\" cy=\"136\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"435\" cy=\"112\" r=\"10\" fill=\"#D55E00\"/><circle cx=\"424\" cy=\"104\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><circle cx=\"446\" cy=\"104\" r=\"5.5\" fill=\"#FFFFFF\" stroke=\"#333\" stroke-width=\"1.5\"/><line x1=\"330\" y1=\"70\" x2=\"372\" y2=\"92\" stroke=\"#1D44A6\" stroke-width=\"2\" stroke-dasharray=\"3 3\" opacity=\"0.8\"/><line x1=\"372\" y1=\"92\" x2=\"414\" y2=\"70\" stroke=\"#1D44A6\" stroke-width=\"2\" stroke-dasharray=\"3 3\" opacity=\"0.8\"/><line x1=\"372\" y1=\"92\" x2=\"393\" y2=\"128\" stroke=\"#1D44A6\" stroke-width=\"2\" stroke-dasharray=\"3 3\" opacity=\"0.8\"/><line x1=\"351\" y1=\"128\" x2=\"393\" y2=\"128\" stroke=\"#1D44A6\" stroke-width=\"2\" stroke-dasharray=\"3 3\" opacity=\"0.8\"/><line x1=\"393\" y1=\"128\" x2=\"435\" y2=\"112\" stroke=\"#1D44A6\" stroke-width=\"2\" stroke-dasharray=\"3 3\" opacity=\"0.8\"/><line x1=\"414\" y1=\"70\" x2=\"435\" y2=\"112\" stroke=\"#1D44A6\" stroke-width=\"2\" stroke-dasharray=\"3 3\" opacity=\"0.8\"/><text x=\"124\" y=\"198\" font-size=\"14\" text-anchor=\"middle\" font-family=\"Arial\">Box 1: before</text><text x=\"396\" y=\"198\" font-size=\"14\" text-anchor=\"middle\" font-family=\"Arial\">Box 2: after</text></svg><p>Key: dark circle, oxygen atom; light circle, hydrogen atom; dotted line, a hydrogen bond between molecules. Both boxes are at 100 °C.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-endo-exothermic-1",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "endo-exothermic-s1",
+   "q": "Which processes are endothermic? Select all that apply.",
+   "options": [
+    "Process A, dissolving calcium chloride",
+    "Process B, dissolving ammonium nitrate",
+    "Process C, magnesium in hydrochloric acid",
+    "Process D, baking soda in citric acid"
+   ],
+   "correct": [
+    1,
+    3
+   ],
+   "why": {
+    "correct": "The water is the surroundings. When it cools, the process (the system) took energy from it: endothermic. When it warms, the process gave energy to it: exothermic.",
+    "options": [
+     "The water warmed from 21.0 °C to 34.6 °C, so the dissolving released energy into it: exothermic.",
+     "The water cooled from 21.0 °C to 11.8 °C: the dissolving drew energy out of the water, so it is endothermic.",
+     "The water warmed to 39.2 °C, so the reaction released energy: exothermic.",
+     "The water cooled to 16.5 °C: the reaction absorbed energy from the water, so it is endothermic."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-2",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "endo-exothermic-s1",
+   "q": "Which statement describes the energy change in Process B?",
+   "options": [
+    "Cold moves out of the dissolving solid into the water, so the water cools.",
+    "Energy moves from the water into the dissolving solid, so the water cools.",
+    "Energy moves from the dissolving solid into the water, so the water cools.",
+    "No energy moves; the water cools because the solid was colder to begin with."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The water's temperature fell by 9.2 °C, so its particles slowed down: energy left the water and went into the dissolving process.",
+    "options": [
+     "\"Cold\" is not a thing that moves. Only energy moves, and here it leaves the water.",
+     "Right: the dissolving particles absorb energy from the water around them, and the water's temperature drops.",
+     "Backward: if the water gained energy, its particles would speed up and its temperature would rise.",
+     "The solid was at room temperature. The 9.2 °C drop comes from energy absorbed as the solid dissolves."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-3",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "endo-exothermic-s1",
+   "q": "What is the sign of ΔH for the reaction in Process C, and why?",
+   "options": [
+    "Positive, because the water gained energy and its temperature rose",
+    "Positive, because a rising temperature means a positive change",
+    "Negative, because the reaction released energy that warmed the water",
+    "Zero, because the insulated cup kept the energy inside it"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "ΔH is the energy change of the system. The water warmed because the reaction gave it energy, so the reaction lost energy: ΔH is negative.",
+    "options": [
+     "This describes the water, which is the surroundings. ΔH describes the reaction, which lost that energy.",
+     "The sign of ΔH follows the system's energy, not the thermometer reading in the surroundings.",
+     "Right: energy left the system (the reaction) and entered the surroundings (the water), so ΔH < 0.",
+     "The cup keeps energy in the water, but the energy still moved from the reaction to the water."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "endo-exothermic-s1",
+   "q": "A classmate writes: \"Process A is endothermic, because the solution absorbed heat and got warmer.\" Which correction is best?",
+   "options": [
+    "The water warmed because the cup trapped energy from the air, so the process is neither.",
+    "The classmate is right, because any process that ends up warmer has taken in energy.",
+    "The process is endothermic, because dissolving a solid breaks its ions apart.",
+    "The water warmed because the dissolving released energy to it, so the process is exothermic."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Always ask what is being measured. The thermometer reads the water (surroundings). A warmer surroundings means the system released energy: exothermic.",
+    "options": [
+     "The cup is insulated to keep the room out; the 13.6 °C rise came from the dissolving itself.",
+     "The water ended warmer because it received energy; the process that gave the energy is exothermic.",
+     "Separating ions does absorb energy, but here more energy is released than absorbed overall, so the water warms.",
+     "Right: the classmate described the surroundings. The system, the dissolving, gave energy away."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "endo-exothermic-s2",
+   "q": "Which process do the boxes show, and is it endothermic or exothermic?",
+   "options": [
+    "Condensation; exothermic, because attractions form between the molecules",
+    "Vaporization; endothermic, because the molecules move closer together",
+    "Condensation; endothermic, because energy is needed to pull molecules together",
+    "A chemical reaction; exothermic, because new O–H bonds form inside each molecule"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Box 1 is water vapor and Box 2 is liquid water. Hydrogen bonds form between molecules, and forming an attraction releases energy to the surroundings.",
+    "options": [
+     "Right: gas molecules come together into a liquid, and forming hydrogen bonds releases energy.",
+     "Box 1 is the gas. Going from Box 1 to Box 2 the molecules come together, which is condensation, not vaporization.",
+     "Particles that attract each other release energy as they come together; no input is needed.",
+     "Every molecule is still H₂O with the same O–H bonds. Only the attractions between molecules change."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "endo-exothermic-s2",
+   "q": "For the change from Box 1 to Box 2, which describes ΔH for the water?",
+   "options": [
+    "ΔH is positive: the water takes energy from its surroundings.",
+    "ΔH is negative: the water gives energy to its surroundings.",
+    "ΔH is zero: the temperature is 100 °C in both boxes.",
+    "ΔH is positive: the O–H bonds inside each molecule get stronger."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Condensation is exothermic, so ΔH < 0 for the water. The energy released comes from the new attractions between molecules; the temperature stays at 100 °C.",
+    "options": [
+     "That is the change from Box 2 to Box 1, where hydrogen bonds must be pulled apart.",
+     "Right: forming hydrogen bonds lowers the water's energy, and the difference leaves as energy to the surroundings.",
+     "The temperature is constant, but energy still leaves: it comes from the attractions that form, not from slowing the molecules.",
+     "The covalent O–H bonds are unchanged. The energy change comes from the attractions between molecules."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-7",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "4.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "endo-exothermic-s2",
+   "q": "The two boxes are at the same temperature. Where does the energy released during the change come from?",
+   "options": [
+    "From the molecules moving faster in Box 2 than in Box 1",
+    "From covalent bonds breaking inside the water molecules",
+    "From the attractions that form between neighboring molecules",
+    "From the walls of the box, which push the molecules together"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "At constant temperature the kinetic energy of the molecules does not change. The energy comes from potential energy: molecules held by hydrogen bonds sit lower in energy than separated ones.",
+    "options": [
+     "Same temperature means the same average kinetic energy, so the molecules move at the same average speed.",
+     "Breaking bonds absorbs energy, and here no covalent bond breaks at all.",
+     "Right: molecules held by attractions have lower potential energy, and the difference is released.",
+     "The walls do not change; the molecules come together because they attract each other."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "endo-exothermic-s2",
+   "q": "The change is now run backward, from Box 2 to Box 1, with the same amount of water. How does its ΔH compare with the forward change?",
+   "options": [
+    "Same size and same sign: it is still exothermic.",
+    "Larger and positive, because the molecules also speed up.",
+    "Smaller and positive, because some attractions remain in the gas.",
+    "Same size, opposite sign: it is endothermic."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A process and its reverse have the same size of ΔH with opposite signs. Overcoming the hydrogen bonds absorbs exactly the energy that forming them released.",
+    "options": [
+     "Going backward reverses the direction of the energy: hydrogen bonds are overcome, which absorbs energy.",
+     "The temperature stays at 100 °C, so the molecules do not speed up; only the attractions change.",
+     "The gas in Box 1 has its molecules separated, the exact reverse of the forward change.",
+     "Right: the same attractions that formed must now be overcome, so the same amount of energy goes back in."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement defines an exothermic process?",
+   "options": [
+    "Energy leaves the system and enters the surroundings.",
+    "Energy leaves the surroundings and enters the system.",
+    "The temperature of the system stays the same.",
+    "The reaction needs a flame or spark to get started."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Exothermic: energy flows out of the system into the surroundings, so the surroundings warm and ΔH is negative.",
+    "options": [
+     "Right: \"exo\" means out. The system ends with less energy, so ΔH < 0.",
+     "That is endothermic: energy goes into the system.",
+     "Temperature can change or stay the same either way; what defines the process is the direction of energy.",
+     "Many exothermic reactions need a start, and so do some endothermic ones. The start does not set the sign."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-10",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "1.B",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which of these processes are exothermic? Select all that apply.",
+   "options": [
+    "Liquid water freezing into ice",
+    "Ice melting on a countertop",
+    "Steam condensing on a cool bathroom mirror",
+    "Sweat evaporating from your skin",
+    "Dry ice (solid carbon dioxide) turning directly into gas",
+    "Natural gas (methane) burning on a stove"
+   ],
+   "correct": [
+    0,
+    2,
+    5
+   ],
+   "why": {
+    "correct": "Processes that form attractions or strong bonds release energy: freezing, condensing and burning. Melting, evaporating and subliming absorb it.",
+    "options": [
+     "Hydrogen bonds form as the molecules lock into place, which releases energy.",
+     "Melting overcomes attractions between molecules, which absorbs energy from the counter and air.",
+     "Attractions form as the gas becomes liquid, so energy goes into the mirror and it fogs while warming slightly.",
+     "Evaporation pulls molecules apart, absorbing energy from your skin; that is why it cools you.",
+     "Sublimation separates molecules held by attractions, so it absorbs energy; that is why dry ice chills its surroundings.",
+     "Combustion forms strong bonds in CO₂ and H₂O, releasing more energy than it takes to break the reactant bonds."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-11",
+   "type": "predict",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "q": "An ice cube at 0 °C is dropped into a well-insulated cup of water at 25 °C. Predict how each quantity changes over the next few minutes.",
+   "variables": [
+    {
+     "name": "Temperature of the liquid water around the ice",
+     "answer": "down",
+     "why": "Energy moves from the warmer water into the ice to melt it, so the water's particles slow down."
+    },
+    {
+     "name": "Energy of the ice as it melts",
+     "answer": "up",
+     "why": "Melting is endothermic: the ice absorbs energy to overcome the hydrogen bonds holding it in place."
+    },
+    {
+     "name": "Total mass of the cup and its contents",
+     "answer": "none",
+     "why": "Melting changes the state of the water, not the amount of matter in the cup."
+    }
+   ],
+   "why": {
+    "correct": "The melting ice is the system and absorbs energy; the surrounding water is the surroundings and gives that energy up, so it cools."
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-12",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "6.E",
+   "level": "apply",
+   "diff": 2,
+   "q": "After a run, sweat evaporates from an athlete's skin and she feels cooler. Which explanation is correct?",
+   "options": [
+    "Evaporation is exothermic: the water releases its warmth into the air.",
+    "Sweat is colder than the skin, so it cools the skin by touching it.",
+    "Evaporation breaks O–H bonds, which takes energy from the skin.",
+    "Evaporation is endothermic: separating water molecules absorbs energy from the skin."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Evaporation is endothermic. The energy needed to separate water molecules comes from the skin, which is the surroundings, so the skin cools.",
+    "options": [
+     "If evaporation released energy to the skin, the skin would warm, not cool.",
+     "Sweat leaves the body at body temperature; the cooling comes from the evaporation itself.",
+     "The molecules stay intact as H₂O; only the attractions between molecules are overcome.",
+     "Right: molecules leaving the liquid must overcome hydrogen bonds, and that energy comes from the skin."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Breaking a chemical bond releases energy, which is why fuels give off energy when they burn.\" Which statement corrects this?",
+   "options": [
+    "Breaking a bond absorbs energy; energy is released when new, stronger bonds form in the products.",
+    "Breaking a bond releases energy, but just for bonds with a high bond energy.",
+    "Breaking a bond releases energy in fuels, but absorbs energy in other substances.",
+    "Breaking and forming bonds involve no energy; temperature changes do."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Atoms in a bond are attracted to each other, so separating them requires energy. A fuel releases energy because the bonds that form in CO₂ and H₂O release more energy than breaking the fuel's and oxygen's bonds absorbs.",
+    "options": [
+     "Right: atoms in a bond attract each other, so pulling them apart takes energy. The release comes from bond forming.",
+     "A high bond energy means more energy is needed to break the bond, not that breaking it releases energy.",
+     "Bond breaking takes energy in every substance; the atoms attract each other wherever the bond is.",
+     "Bond breaking and forming are where the energy of a reaction comes from."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A reaction mixture in a flask becomes hot to the touch. Which statement about the bonds is consistent with this observation?",
+   "options": [
+    "Breaking the reactant bonds released more energy than forming the product bonds absorbed.",
+    "Forming the product bonds released more energy than breaking the reactant bonds absorbed.",
+    "Breaking the reactant bonds absorbed more energy than forming the product bonds released.",
+    "No bonds broke or formed, since the energy came from the flask itself."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Overall energy released = energy released by forming bonds − energy absorbed by breaking bonds. A hot flask means this is positive, so ΔH is negative.",
+    "options": [
+     "This swaps the two: breaking absorbs energy and forming releases it.",
+     "Right: the extra energy left the system and warmed the flask, so the reaction is exothermic.",
+     "Then the system would gain energy overall and the flask would cool: endothermic.",
+     "The flask got hot because the reaction gave it energy; the reaction rearranged bonds to do so."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Solid barium hydroxide octahydrate and solid ammonium chloride are mixed in a flask that sits in a puddle of water on a wooden board. Soon the puddle freezes, sticking the flask to the board. Which conclusion is supported?",
+   "options": [
+    "The reaction releases cold into the puddle, so ΔH < 0.",
+    "The reaction releases energy into the puddle, so ΔH < 0.",
+    "The reaction absorbs energy from the flask, the puddle and the board, so ΔH > 0.",
+    "The puddle freezes by itself, so the reaction has ΔH = 0."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "For the puddle to freeze, energy had to leave it. That energy went into the reacting solids, so the reaction is endothermic and ΔH is positive.",
+    "options": [
+     "\"Cold\" is not something released. The puddle froze because energy was taken out of it.",
+     "If the puddle gained energy, it would warm up and could not freeze.",
+     "Right: the puddle lost enough energy to freeze, and that energy went into the reaction, the system.",
+     "Water at room temperature does not freeze by itself; the reaction must have removed energy from it."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-16",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "2.D",
+   "level": "apply",
+   "diff": 1,
+   "q": "A student dissolves sodium hydroxide pellets in water. Which observation is evidence that dissolving them is exothermic?",
+   "options": [
+    "The pellets get smaller and disappear as they are stirred.",
+    "The solution conducts electricity once the pellets have dissolved.",
+    "The mass of the solution equals the mass of water plus pellets.",
+    "A thermometer in the water reads a higher temperature than before."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Only a temperature change in the surroundings shows the direction of energy. Water that gets warmer received energy, so the dissolving is exothermic.",
+    "options": [
+     "Dissolving is visible either way; it does not show which way energy moves.",
+     "Conductivity shows that ions are present, not which way energy moved.",
+     "Mass is conserved in every process, so it says nothing about energy.",
+     "Right: the water (surroundings) gained energy from the dissolving (system)."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-17",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "In a chemistry lab, which choice treats a reaction in a beaker of water the way chemists usually do?",
+   "options": [
+    "The reacting particles are the system; the water, beaker and air are the surroundings.",
+    "The water is the system, because its temperature is what the thermometer measures.",
+    "The beaker and its contents are the system; the room air is the surroundings.",
+    "The thermometer is the system, since its reading is what changes."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Chemists draw the boundary around the reacting particles. The water around them is surroundings, and its temperature change shows the energy the reaction gave or took.",
+    "options": [
+     "Right: the system is the part you study, the reaction, and everything else is surroundings.",
+     "The thermometer measures the surroundings. The reaction is what we want to describe.",
+     "Then the water's temperature change would be inside the system and would not show energy exchange.",
+     "The thermometer is a tool. The thing being studied is the reaction."
+    ]
+   }
+  },
+  {
+   "id": "chem-endo-exothermic-18",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "endo-exothermic",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which statement about enthalpy change, ΔH, is correct?",
+   "options": [
+    "ΔH is positive when the surroundings get warmer.",
+    "ΔH is positive when the system absorbs energy at constant pressure.",
+    "ΔH is the temperature change of the system, in degrees Celsius.",
+    "ΔH is negative when energy has to be added to keep a process going."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔH is the energy the system gains (positive) or loses (negative) as heat at constant pressure, in J or kJ.",
+    "options": [
+     "Warmer surroundings mean the system released energy, so ΔH is negative.",
+     "Right: energy into the system makes ΔH positive (endothermic).",
+     "ΔH is an energy, measured in joules or kilojoules, not a temperature.",
+     "Energy added to the system makes ΔH positive."
+    ]
+   }
+  }
+ ]
+}

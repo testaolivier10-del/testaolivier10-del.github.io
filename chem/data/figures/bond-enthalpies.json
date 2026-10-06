@@ -1,0 +1,12 @@
+{
+ "bond-enthalpy-ladder": {
+  "file": "figures/bond-enthalpy-ladder.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 400,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Enthalpy ladder for H₂ + Cl₂ → 2 HCl. Breaking the H–H and Cl–Cl bonds absorbs +436 + 242 = +678 kJ and lifts the reactants to separate atoms (2 H + 2 Cl). Forming two H–Cl bonds releases −2(431) = −862 kJ and drops to the products, which lie below the reactants: ΔH ≈ 678 − 862 = −184 kJ."
+ }
+}

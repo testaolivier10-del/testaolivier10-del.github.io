@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" width="760" height="330" role="img" aria-labelledby="t d">
+<title id="t">Exothermic and endothermic processes</title>
+<desc id="d">Two panels. In each, a circle labelled system (the reacting particles) sits inside a larger region labelled surroundings (the water, the cup, the air). Left, exothermic: arrows point out of the system, energy leaves it, a thermometer in the surroundings rises, and delta H is negative. Right, endothermic: arrows point into the system, energy enters it, the thermometer falls, and delta H is positive.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#C2410C"/></marker><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1D44A6"/></marker></defs>
+<rect width="760" height="330" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="10" y="40" width="360" height="270" rx="12" fill="#FFF4ED" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="190" y="30" font-size="20" text-anchor="middle" font-weight="bold" fill="#1F2A28">Exothermic</text>
+<text x="190" y="66" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Surroundings: the water, the cup, the air</text>
+<circle cx="160" cy="185" r="58" fill="#ffffff" stroke="#1F2A28" stroke-width="2"/>
+<text x="160" y="180" font-size="15" text-anchor="middle" font-weight="bold" fill="#1F2A28">System:</text>
+<text x="160" y="200" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">the reacting</text>
+<text x="160" y="217" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">particles</text>
+<line x1="112" y1="137" x2="68" y2="97" stroke="#C2410C" stroke-width="4" marker-end="url(#ah)"/>
+<line x1="208" y1="137" x2="252" y2="97" stroke="#C2410C" stroke-width="4" marker-end="url(#ah)"/>
+<line x1="112" y1="233" x2="68" y2="273" stroke="#C2410C" stroke-width="4" marker-end="url(#ah)"/>
+<line x1="208" y1="233" x2="252" y2="273" stroke="#C2410C" stroke-width="4" marker-end="url(#ah)"/>
+<text x="160" y="290" font-size="15" text-anchor="middle" font-weight="bold" fill="#C2410C">energy leaves the system</text>
+<rect x="313" y="100" width="14" height="110" rx="7" fill="#fff" stroke="#1F2A28" stroke-width="2"/><circle cx="320" cy="220" r="12" fill="#C2410C" stroke="#1F2A28" stroke-width="2"/><rect x="317" y="125" width="6" height="89" fill="#C2410C"/>
+<text x="320" y="92" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">T rises</text>
+<text x="320" y="258" font-size="17" text-anchor="middle" font-weight="bold" fill="#1F2A28">ΔH &lt; 0</text>
+<rect x="390" y="40" width="360" height="270" rx="12" fill="#EEF3FC" stroke="#1F2A28" stroke-width="1.5"/>
+<text x="570" y="30" font-size="20" text-anchor="middle" font-weight="bold" fill="#1F2A28">Endothermic</text>
+<text x="570" y="66" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">Surroundings: the water, the cup, the air</text>
+<circle cx="540" cy="185" r="58" fill="#ffffff" stroke="#1F2A28" stroke-width="2"/>
+<text x="540" y="180" font-size="15" text-anchor="middle" font-weight="bold" fill="#1F2A28">System:</text>
+<text x="540" y="200" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">the reacting</text>
+<text x="540" y="217" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">particles</text>
+<line x1="448" y1="97" x2="492" y2="137" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<line x1="632" y1="97" x2="588" y2="137" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<line x1="448" y1="273" x2="492" y2="233" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<line x1="632" y1="273" x2="588" y2="233" stroke="#1D44A6" stroke-width="4" marker-end="url(#ac)"/>
+<text x="540" y="290" font-size="15" text-anchor="middle" font-weight="bold" fill="#1D44A6">energy enters the system</text>
+<rect x="693" y="100" width="14" height="110" rx="7" fill="#fff" stroke="#1F2A28" stroke-width="2"/><circle cx="700" cy="220" r="12" fill="#1D44A6" stroke="#1F2A28" stroke-width="2"/><rect x="697" y="185" width="6" height="29" fill="#1D44A6"/>
+<text x="700" y="92" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">T falls</text>
+<text x="700" y="258" font-size="17" text-anchor="middle" font-weight="bold" fill="#1F2A28">ΔH &gt; 0</text>
+</g>
+</svg>

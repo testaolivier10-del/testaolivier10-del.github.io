@@ -1,0 +1,87 @@
+{
+ "topic": "heat-transfer",
+ "hook": "Drop a hot pan in a sink of cold water and it hisses, then goes quiet. A few minutes later the pan and the water are at the same lukewarm temperature, and they stay that way. What happened is a crowd of fast particles nudging slow ones until, on average, nobody is faster than anyone else.",
+ "prereq": [
+  {
+   "q": "Temperature is a measure of the particles'",
+   "options": [
+    "average kinetic energy",
+    "total mass",
+    "number of bonds",
+    "size"
+   ],
+   "correct": 0,
+   "why": "Higher temperature means the particles move faster on average.",
+   "review": "kinetic-molecular-theory"
+  },
+  {
+   "q": "In an exothermic process, the surroundings",
+   "options": [
+    "warm up",
+    "cool down",
+    "do not change",
+    "lose mass"
+   ],
+   "correct": 0,
+   "why": "Energy leaves the system and enters the surroundings, so they warm.",
+   "review": "endo-exothermic"
+  }
+ ],
+ "figure": {
+  "figure": "thermal-contact-particles",
+  "caption": "Energy passes by collisions from the faster particles of the hot block to the slower particles of the cold block until their average speeds match."
+ },
+ "chain": [
+  {
+   "cause": "Two objects at different temperatures touch",
+   "effect": "particles at the boundary collide, the faster ones from the hot object with the slower ones from the cold object"
+  },
+  {
+   "cause": "In those collisions, faster particles usually lose energy and slower ones gain it",
+   "effect": "energy flows from the hotter object to the cooler one"
+  },
+  {
+   "cause": "The hot object loses energy and the cold one gains it",
+   "effect": "their temperatures move toward each other"
+  },
+  {
+   "cause": "The temperatures become equal",
+   "effect": "energy passes equally both ways, so there is no net flow: thermal equilibrium"
+  },
+  {
+   "cause": "Energy is conserved in an isolated system",
+   "effect": "energy lost by the hot object equals energy gained by the cold one"
+  }
+ ],
+ "ideas": [
+  "<b>Heat</b> is energy transferred because of a temperature difference; it always flows from warmer to cooler.",
+  "At the particle level, <b>heat transfer</b> happens by collisions: fast particles speed up slow ones.",
+  "<b>Thermal equilibrium</b>: equal temperatures, no net energy flow, though collisions continue.",
+  "In an insulated (isolated) system, energy lost by one object = energy gained by the other.",
+  "The final temperature lies between the starting temperatures."
+ ],
+ "misconception": {
+  "wrong": "Ice cools a drink by giving it cold.",
+  "right": "Cold is not a thing that moves. The drink cools because energy flows out of it into the colder ice."
+ },
+ "check": [
+  "chem-heat-transfer-1",
+  "chem-heat-transfer-2",
+  "chem-heat-transfer-3",
+  "chem-heat-transfer-4",
+  "chem-heat-transfer-9",
+  "chem-heat-transfer-13",
+  "chem-heat-transfer-14"
+ ],
+ "summary": "When objects at different temperatures touch, collisions pass energy from the faster particles of the hotter object to the slower particles of the cooler one. The flow continues until both reach the same temperature, thermal equilibrium. In an insulated system, the energy one object loses equals the energy the other gains.",
+ "connections": [
+  {
+   "href": "../notes/kinetic-molecular-theory.html",
+   "label": "Back: temperature and kinetic energy (3.5)"
+  },
+  {
+   "href": "../notes/calorimetry.html",
+   "label": "Next: measuring the energy transferred (6.4)"
+  }
+ ]
+}

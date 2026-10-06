@@ -1,0 +1,14 @@
+{
+ "system-surroundings": {
+  "def": "The system is the part of the universe being studied, usually the reacting particles; the surroundings are everything else, such as the water, container and air."
+ },
+ "enthalpy": {
+  "def": "A measure of a system's energy; its change, ΔH, is the energy the system absorbs (positive) or releases (negative) as heat at constant pressure."
+ },
+ "exothermic": {
+  "def": "Describes a process that releases energy from the system to the surroundings, so the surroundings warm and ΔH is negative."
+ },
+ "endothermic": {
+  "def": "Describes a process that absorbs energy from the surroundings into the system, so the surroundings cool and ΔH is positive."
+ }
+}

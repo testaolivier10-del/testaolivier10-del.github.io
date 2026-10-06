@@ -1,0 +1,12 @@
+{
+ "enthalpy-diagram-pair": {
+  "file": "figures/enthalpy-diagram-pair.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two energy diagrams, enthalpy on the vertical axis and progress of the reaction on the horizontal axis. Exothermic: products lower than reactants, ΔH arrow points down, ΔH < 0. Endothermic: products higher than reactants, ΔH arrow points up, ΔH > 0. In both, the hump above the reactants is the activation energy, Ea."
+ }
+}

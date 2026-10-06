@@ -1,0 +1,5 @@
+{
+ "enthalpy-of-reaction": {
+  "def": "ΔH for a reaction exactly as written, in kJ per mole of reaction (the amounts given by the coefficients); a thermochemical equation lists it after the balanced equation."
+ }
+}
