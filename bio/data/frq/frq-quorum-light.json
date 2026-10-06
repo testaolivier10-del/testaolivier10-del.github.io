@@ -9,7 +9,7 @@
   "stimulus": {
     "kind": "table",
     "title": "Spent medium and light from sparse bacteria",
-    "text": "<p>Researchers grew the bacterium <i>Vibrio fischeri</i> to a high density (8 × 10⁸ cells/mL), then filtered out the cells to obtain cell-free \"spent\" medium. They placed fresh cells at a low density (1 × 10⁷ cells/mL) in mixtures of fresh medium and spent medium and measured light per cell after 1 hour; the cells did not multiply noticeably in that time. In a last treatment they used spent medium from a strain that cannot make the autoinducer. Values are means ± standard error of 3 cultures, in relative units.</p>",
+    "text": "<p>Researchers grew the bacterium <i>Vibrio fischeri</i> to a high density (8 × 10⁸ cells/mL), then filtered out the cells to obtain cell-free \"spent\" medium. They placed fresh cells at a low density (1 × 10⁷ cells/mL) in mixtures of fresh medium and spent medium and measured light per cell after 1 hour; the cells did not multiply noticeably in that time. In a last treatment they used spent medium from a strain that cannot make the autoinducer, grown to the same density. Values are means ± standard error of 3 cultures, in relative units.</p>",
     "table": {
       "caption": "Light per cell of low-density Vibrio fischeri after 1 hour",
       "cols": ["Spent medium in the mixture (%)", "Source of spent medium", "Light per cell (relative units)"],
