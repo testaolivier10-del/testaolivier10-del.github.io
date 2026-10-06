@@ -1,0 +1,12 @@
+{
+ "coffee-cup-calorimeter": {
+  "file": "figures/coffee-cup-calorimeter.svg",
+  "ext": "svg",
+  "w": 700,
+  "h": 380,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "A coffee-cup calorimeter: two nested foam cups with a lid hold a solution, with a thermometer and a stirrer through the lid. The cups and lid slow energy exchange with the room. The solution is the measured surroundings: q(solution) = m × c × ΔT, and the reaction (the system) has q(reaction) = −q(solution)."
+ }
+}

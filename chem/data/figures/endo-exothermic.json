@@ -1,0 +1,12 @@
+{
+ "endo-exo-energy-flow": {
+  "file": "figures/endo-exo-energy-flow.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 330,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Two panels comparing exothermic and endothermic processes. In each, the system (the reacting particles) sits inside the surroundings (water, cup, air). Exothermic: energy arrows point out of the system, the thermometer in the surroundings rises, ΔH is negative. Endothermic: arrows point into the system, the thermometer falls, ΔH is positive."
+ }
+}

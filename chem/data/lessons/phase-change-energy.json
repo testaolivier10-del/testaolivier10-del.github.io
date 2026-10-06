@@ -1,0 +1,91 @@
+{
+ "topic": "phase-change-energy",
+ "hook": "Put a pot of water on the stove. The temperature climbs steadily to 100 °C, then stops, even though the burner is still on full. For several minutes the water just boils, sitting at 100 °C. All that energy is going somewhere, but not into making the water hotter.",
+ "prereq": [
+  {
+   "q": "When water boils, what is overcome?",
+   "options": [
+    "Hydrogen bonds between water molecules",
+    "O–H covalent bonds inside each molecule",
+    "Ionic bonds",
+    "Nothing"
+   ],
+   "correct": 0,
+   "why": "Phase changes overcome attractions between molecules; the molecules stay intact.",
+   "review": "intermolecular-forces"
+  },
+  {
+   "q": "How much energy warms 10.0 g of water by 5.0 °C? (c = 4.18 J/(g·°C))",
+   "options": [
+    "209 J",
+    "50 J",
+    "20.9 J",
+    "2.09 J"
+   ],
+   "correct": 0,
+   "why": "q = mcΔT = 10.0 × 4.18 × 5.0 = 209 J.",
+   "review": "calorimetry"
+  }
+ ],
+ "figure": {
+  "figure": "water-heating-curve",
+  "caption": "On the sloped parts one phase warms (q = mcΔT). On the flat parts two phases coexist and the temperature stays constant (q = nΔH)."
+ },
+ "chain": [
+  {
+   "cause": "Energy is added to a solid",
+   "effect": "its particles vibrate faster and its temperature rises until it reaches the melting point"
+  },
+  {
+   "cause": "At the melting point, added energy overcomes the attractions holding particles in place",
+   "effect": "the solid melts at constant temperature; potential energy rises, kinetic energy does not"
+  },
+  {
+   "cause": "Once melted, added energy speeds the particles up again",
+   "effect": "the liquid warms until the boiling point"
+  },
+  {
+   "cause": "Boiling separates the particles almost completely",
+   "effect": "the boiling plateau is longest: ΔHvap is larger than ΔHfus"
+  },
+  {
+   "cause": "Running the curve backward (cooling)",
+   "effect": "condensing and freezing release the same energies: q = −nΔH"
+  }
+ ],
+ "ideas": [
+  "The <b>enthalpy of fusion</b> (ΔHfus) is the energy to melt 1 mol of solid at its melting point; the <b>enthalpy of vaporization</b> (ΔHvap) is the energy to vaporize 1 mol of liquid.",
+  "Melting, vaporizing and subliming absorb energy (q = +nΔH); freezing and condensing release it (q = −nΔH).",
+  "ΔHvap &gt; ΔHfus: vaporizing separates molecules almost completely.",
+  "On a <b>heating curve</b>, slopes use q = mcΔT and flat parts use q = nΔH; add the steps.",
+  "Stronger attractions between particles mean larger ΔHfus and ΔHvap."
+ ],
+ "misconception": {
+  "wrong": "While water boils, the energy from the burner makes the water molecules move faster.",
+  "right": "The temperature stays at 100 °C, so the average speed of the molecules does not change. The energy goes into separating the molecules from each other."
+ },
+ "check": [
+  "chem-phase-change-energy-1",
+  "chem-phase-change-energy-2",
+  "chem-phase-change-energy-3",
+  "chem-phase-change-energy-4",
+  "chem-phase-change-energy-11",
+  "chem-phase-change-energy-12",
+  "chem-phase-change-energy-15"
+ ],
+ "summary": "During a phase change, energy overcomes (or forms) attractions between particles, so the temperature stays constant. The energy is n × ΔHfus for melting and n × ΔHvap for boiling, with ΔHvap the larger. A heating curve combines sloped parts (q = mcΔT) and flat parts (q = nΔH).",
+ "connections": [
+  {
+   "href": "../notes/intermolecular-forces.html",
+   "label": "Back: intermolecular forces (3.1)"
+  },
+  {
+   "href": "../notes/calorimetry.html",
+   "label": "Back: q = mcΔT (6.4)"
+  },
+  {
+   "href": "../notes/enthalpy-of-reaction.html",
+   "label": "Next: energy of chemical reactions (6.6)"
+  }
+ ]
+}

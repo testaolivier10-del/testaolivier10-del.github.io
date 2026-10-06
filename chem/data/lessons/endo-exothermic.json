@@ -1,0 +1,103 @@
+{
+ "topic": "endo-exothermic",
+ "hook": "Squeeze an instant cold pack and the water inside meets a solid that dissolves and turns the pack icy in seconds. A hand warmer does the opposite: iron powder rusts and the pouch gets hot for hours. Both are just particles rearranging. The difference is which way the energy goes.",
+ "prereq": [
+  {
+   "q": "When the average kinetic energy of the particles in a sample increases, what happens to its temperature?",
+   "options": [
+    "It rises",
+    "It falls",
+    "It stays the same",
+    "It depends only on the mass"
+   ],
+   "correct": 0,
+   "why": "Temperature measures the average kinetic energy of the particles: faster particles, higher temperature.",
+   "review": "kinetic-molecular-theory"
+  },
+  {
+   "q": "Which is needed to pull two bonded atoms apart?",
+   "options": [
+    "An input of energy",
+    "A release of energy",
+    "No energy at all",
+    "A lower temperature"
+   ],
+   "correct": 0,
+   "why": "Bonded atoms sit at the bottom of a potential energy well; separating them takes energy equal to the bond energy.",
+   "review": "bond-potential-energy"
+  },
+  {
+   "q": "When water vapor condenses, what forms between the molecules?",
+   "options": [
+    "Hydrogen bonds",
+    "New O–H covalent bonds",
+    "Ionic bonds",
+    "Nothing; they just slow down"
+   ],
+   "correct": 0,
+   "why": "Condensation brings molecules close enough for intermolecular attractions, here hydrogen bonds, to hold them together.",
+   "review": "intermolecular-forces"
+  }
+ ],
+ "figure": {
+  "figure": "endo-exo-energy-flow",
+  "caption": "The system is what you study (the reacting particles); the surroundings are everything else. The thermometer reads the surroundings."
+ },
+ "chain": [
+  {
+   "cause": "Breaking bonds or attractions between particles requires energy",
+   "effect": "the system must absorb energy for that step"
+  },
+  {
+   "cause": "Forming bonds or attractions lets particles settle to lower potential energy",
+   "effect": "the system releases energy for that step"
+  },
+  {
+   "cause": "If forming releases more than breaking absorbs",
+   "effect": "energy leaves the system: exothermic, ΔH < 0, and the surroundings warm"
+  },
+  {
+   "cause": "If breaking absorbs more than forming releases",
+   "effect": "energy enters the system: endothermic, ΔH > 0, and the surroundings cool"
+  },
+  {
+   "cause": "A thermometer in the water measures the surroundings",
+   "effect": "a rising temperature means an exothermic process, a falling one an endothermic process"
+  }
+ ],
+ "ideas": [
+  "The <b>system</b> is the part you study, usually the reacting particles; the <b>surroundings</b> are everything else, including the water they are in.",
+  "<b>Exothermic</b>: energy leaves the system, the surroundings warm, ΔH is negative.",
+  "<b>Endothermic</b>: energy enters the system, the surroundings cool, ΔH is positive.",
+  "Breaking bonds or attractions absorbs energy; forming them releases energy. The balance sets the sign of ΔH.",
+  "Physical changes count: melting and evaporating are endothermic; freezing and condensing are exothermic."
+ ],
+ "misconception": {
+  "wrong": "A reaction that makes the water hot has absorbed heat, so it is endothermic.",
+  "right": "The water is the surroundings. Hot water means the reaction gave energy away, so the reaction is exothermic and ΔH is negative."
+ },
+ "check": [
+  "chem-endo-exothermic-1",
+  "chem-endo-exothermic-2",
+  "chem-endo-exothermic-3",
+  "chem-endo-exothermic-4",
+  "chem-endo-exothermic-10",
+  "chem-endo-exothermic-13",
+  "chem-endo-exothermic-14"
+ ],
+ "summary": "Every process moves energy between a system and its surroundings. Exothermic processes release energy (ΔH < 0, surroundings warm); endothermic processes absorb it (ΔH > 0, surroundings cool). At the particle level, breaking bonds or attractions absorbs energy and forming them releases it.",
+ "connections": [
+  {
+   "href": "../notes/bond-potential-energy.html",
+   "label": "Back: bond energy and potential energy (2.2)"
+  },
+  {
+   "href": "../notes/phases-of-matter.html",
+   "label": "Back: phase changes and attractions (3.3)"
+  },
+  {
+   "href": "../notes/energy-diagrams.html",
+   "label": "Next: drawing ΔH on an energy diagram (6.2)"
+  }
+ ]
+}

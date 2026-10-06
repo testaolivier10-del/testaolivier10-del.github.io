@@ -1,0 +1,12 @@
+{
+ "thermal-contact-particles": {
+  "file": "figures/thermal-contact-particles.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 320,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "Before: a hot block at 80 °C, whose particles have long motion arrows, touches a cold block at 20 °C, whose particles have short arrows; an arrow at the boundary shows energy passing from hot to cold through collisions. Later: both blocks are at 50 °C and their particles have the same average speed, so there is no further overall energy transfer."
+ }
+}

@@ -1,0 +1,5 @@
+{
+ "bond-enthalpy": {
+  "def": "The energy needed to break 1 mol of a given bond in gas-phase molecules, always positive; tables list averages, and ΔH ≈ Σ(bonds broken) − Σ(bonds formed)."
+ }
+}

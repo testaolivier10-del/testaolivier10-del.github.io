@@ -1,0 +1,11 @@
+{
+ "enthalpy-of-fusion": {
+  "def": "The energy absorbed to melt 1 mol of a solid at its melting point (ΔHfus; water 6.01 kJ/mol). Freezing releases the same amount."
+ },
+ "enthalpy-of-vaporization": {
+  "def": "The energy absorbed to vaporize 1 mol of a liquid at its boiling point (ΔHvap; water 40.7 kJ/mol). Condensing releases the same amount."
+ },
+ "heating-curve": {
+  "def": "A graph of temperature against energy added (or time); sloped parts show one phase warming (q = mcΔT), and flat parts show a phase change at constant temperature (q = nΔH)."
+ }
+}

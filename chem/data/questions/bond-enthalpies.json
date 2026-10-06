@@ -1,0 +1,544 @@
+{
+ "stimuli": {
+  "bond-enthalpies-s1": {
+   "kind": "table",
+   "title": "Average bond enthalpies",
+   "text": "<p>Average bond enthalpies for bonds in gas-phase molecules. Use them for every item in this set.</p>",
+   "table": {
+    "caption": "Average bond enthalpies (kJ/mol)",
+    "cols": [
+     "Bond",
+     "Bond enthalpy (kJ/mol)",
+     "Bond",
+     "Bond enthalpy (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "H–H",
+      "436",
+      "N≡N",
+      "941"
+     ],
+     [
+      "C–H",
+      "413",
+      "N–H",
+      "391"
+     ],
+     [
+      "C–C",
+      "348",
+      "H–Cl",
+      "431"
+     ],
+     [
+      "C=C",
+      "614",
+      "Cl–Cl",
+      "242"
+     ],
+     [
+      "O–H",
+      "463",
+      "C–Cl",
+      "328"
+     ],
+     [
+      "O=O",
+      "495",
+      "H–F",
+      "567"
+     ],
+     [
+      "C=O (in CO₂)",
+      "799",
+      "F–F",
+      "155"
+     ]
+    ]
+   }
+  },
+  "bond-enthalpies-s2": {
+   "kind": "model",
+   "title": "Two steps of a reaction on paper",
+   "html": "<p>A student models H₂(g) + Cl₂(g) → 2 HCl(g) in two imaginary steps.</p><p><b>Step 1.</b> H–H + Cl–Cl → 2 H + 2 Cl (all bonds broken; separate atoms)</p><p><b>Step 2.</b> 2 H + 2 Cl → 2 H–Cl (new bonds formed)</p><p>Bond enthalpies: H–H 436 kJ/mol, Cl–Cl 242 kJ/mol, H–Cl 431 kJ/mol.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-bond-enthalpies-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "bond-enthalpies-s1",
+   "q": "Estimate ΔH, in kJ/mol, for CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(g). (CO₂ is O=C=O; water is H–O–H.)",
+   "numeric": {
+    "answer": -808.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -354.0,
+      "rel": 0.02,
+      "why": "Value: you counted one of each bond. Count every bond: 4 C–H and 2 O=O break; 2 C=O and 4 O–H form."
+     },
+     {
+      "value": -1303.0,
+      "rel": 0.02,
+      "why": "Value: two O₂ molecules react, so two O=O bonds break (2 × 495 kJ)."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Broken: 4 C–H + 2 O=O = 4(413) + 2(495) = 2642 kJ. Formed: 2 C=O + 4 O–H = 2(799) + 4(463) = 3450 kJ. ΔH ≈ broken − formed = 2642 − 3450 = -808 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "bond-enthalpies-s1",
+   "q": "Estimate ΔH, in kJ/mol, for the hydrogenation of ethene: H₂C=CH₂(g) + H–H(g) → H₃C–CH₃(g).",
+   "numeric": {
+    "answer": -124.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 289.0,
+      "rel": 0.02,
+      "why": "Value: ethane has six C–H bonds and ethene four, so two new C–H bonds form, not one."
+     },
+     {
+      "value": 266.0,
+      "rel": 0.02,
+      "why": "Value: you left out the H–H bond that breaks and the two C–H bonds that form."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Only the changed bonds matter (the four C–H bonds of ethene stay). Broken: C=C + H–H = 614 + 436 = 1050 kJ. Formed: C–C + 2 C–H = 348 + 2(413) = 1174 kJ. ΔH ≈ 1050 − 1174 = -124 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-3",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "bond-enthalpies-s1",
+   "q": "Estimate ΔH, in kJ/mol, for N₂(g) + 3 H₂(g) → 2 NH₃(g).",
+   "numeric": {
+    "answer": -97.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 2,
+    "mistakes": [
+     {
+      "value": 1076.0,
+      "rel": 0.02,
+      "why": "Value: two NH₃ molecules form, each with three N–H bonds: six N–H bonds in all."
+     },
+     {
+      "value": -969.0,
+      "rel": 0.02,
+      "why": "Value: three H₂ molecules react, so three H–H bonds break."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Broken: N≡N + 3 H–H = 941 + 3(436) = 2249 kJ. Formed: 2 NH₃ have 6 N–H = 6(391) = 2346 kJ. ΔH ≈ 2249 − 2346 = -97 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "bond-enthalpies-s1",
+   "q": "The measured ΔH for N₂(g) + 3 H₂(g) → 2 NH₃(g) is −92.2 kJ/mol. Why does the estimate from the table differ slightly?",
+   "options": [
+    "The estimate counts the bonds broken but leaves out the bonds formed.",
+    "Bond enthalpies give the energy released when bonds break, so the sign is reversed.",
+    "The measured value includes energy to melt the ammonia, which the estimate leaves out.",
+    "The table lists averages over many molecules, not the N–H bond strength in NH₃ itself."
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Bond enthalpies are averages for a bond type across many compounds, so a bond-enthalpy ΔH is an estimate; here −97 kJ/mol versus −92.2 kJ/mol measured.",
+    "options": [
+     "Both are counted: ΔH ≈ broken − formed.",
+     "Breaking a bond absorbs energy, and the sign of the estimate matches the measured value.",
+     "All three substances are gases at these conditions; nothing melts.",
+     "Right: an N–H bond's strength depends on the rest of the molecule; 391 kJ/mol is an average."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "bond-enthalpies-s1",
+   "q": "Using the table, which reaction is predicted to release the most energy per mole of reaction?",
+   "options": [
+    "H₂(g) + F₂(g) → 2 HF(g)",
+    "H₂(g) + Cl₂(g) → 2 HCl(g)",
+    "CH₄(g) + Cl₂(g) → CH₃Cl(g) + HCl(g)",
+    "N₂(g) + 3 H₂(g) → 2 NH₃(g)"
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Most exothermic: weak bonds broken, strong bonds formed. F–F (155) is weak and H–F (567) is very strong, giving −543 kJ/mol.",
+    "options": [
+     "Right: 436 + 155 − 2(567) = −543 kJ/mol: weak F–F broken, very strong H–F formed.",
+     "436 + 242 − 2(431) = −184 kJ/mol, much less than for HF.",
+     "413 + 242 − (328 + 431) = −104 kJ/mol.",
+     "2249 − 2346 = −97 kJ/mol: the very strong N≡N bond costs a lot to break."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-enthalpies-s2",
+   "q": "What is the enthalpy change for Step 1?",
+   "options": [
+    "−678 kJ, because breaking bonds releases energy",
+    "+678 kJ, because breaking bonds absorbs energy",
+    "+862 kJ, because two bonds are broken",
+    "0 kJ, because no new substance is made"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Step 1 breaks H–H (436 kJ) and Cl–Cl (242 kJ): ΔH₁ = +678 kJ, endothermic.",
+    "options": [
+     "Bonded atoms attract each other; separating them takes energy, so the sign is positive.",
+     "Right: 436 + 242 = 678 kJ must be supplied to pull the atoms apart.",
+     "The two bonds broken are H–H and Cl–Cl, not two H–Cl bonds.",
+     "Separating atoms changes the energy even though no product has formed yet."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-7",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-enthalpies-s2",
+   "q": "What is the enthalpy change for Step 2?",
+   "options": [
+    "+862 kJ, because forming bonds requires energy",
+    "−431 kJ, because one H–Cl bond forms",
+    "−862 kJ, because forming two H–Cl bonds releases energy",
+    "−184 kJ, because that is the overall change"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Forming bonds releases energy: ΔH₂ = −2 × 431 = −862 kJ.",
+    "options": [
+     "Atoms that attract each other release energy as they bond.",
+     "Two HCl molecules form, so two H–Cl bonds: 2 × 431.",
+     "Right: 2 × 431 = 862 kJ is released as the atoms bond.",
+     "−184 kJ is the overall ΔH, the sum of Steps 1 and 2, not Step 2 alone."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-8",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "bond-enthalpies-s2",
+   "q": "Add the two steps to estimate ΔH, in kJ/mol, for H₂(g) + Cl₂(g) → 2 HCl(g).",
+   "numeric": {
+    "answer": -184.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 247.0,
+      "rel": 0.02,
+      "why": "Value: two H–Cl bonds form. Use 2 × 431 kJ for the bonds formed."
+     },
+     {
+      "value": 1540.0,
+      "rel": 0.02,
+      "why": "Value: forming bonds releases energy, so Step 2 is −862 kJ. Subtract the bonds formed."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔH ≈ ΔH₁ + ΔH₂ = +678 kJ + (−862 kJ) = −184 kJ/mol. The same result as \"bonds broken − bonds formed\"."
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "6.D",
+   "level": "analyze",
+   "diff": 2,
+   "stimulus": "bond-enthalpies-s2",
+   "q": "Which statement explains, at the particle level, why the overall reaction is exothermic?",
+   "options": [
+    "The H–Cl bonds formed are stronger in total than the H–H and Cl–Cl bonds broken.",
+    "Breaking the H–H and Cl–Cl bonds releases more energy than forming H–Cl absorbs.",
+    "Each H–Cl bond is stronger than each H–H bond, so less energy is needed overall.",
+    "The reaction makes more molecules than it uses, which releases energy."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "Total bonds formed (2 × 431 = 862 kJ) outweigh total bonds broken (436 + 242 = 678 kJ), so 184 kJ is released per mole of reaction.",
+    "options": [
+     "Right: forming 862 kJ worth of bonds releases more than the 678 kJ needed to break the old ones.",
+     "This reverses both signs: breaking absorbs and forming releases.",
+     "An H–Cl bond (431) is actually weaker than an H–H bond (436); the totals decide.",
+     "Two molecules react and two form; molecule count is not the reason."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.B",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which expression gives ΔH from average bond enthalpies?",
+   "options": [
+    "Sum of bond enthalpies of bonds formed − sum of bond enthalpies of bonds broken",
+    "Sum of bond enthalpies of bonds broken − sum of bond enthalpies of bonds formed",
+    "Sum of bond enthalpies of the products − sum of bond enthalpies of the reactants",
+    "Sum of bond enthalpies of the bonds in the reactants and products"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔH ≈ Σ(bonds broken) − Σ(bonds formed). Breaking bonds costs energy (+); forming them pays energy back (−).",
+    "options": [
+     "This gives the right size with the wrong sign. Bonds broken come first.",
+     "Right: energy in to break bonds, minus energy out from forming them.",
+     "This is the \"products minus reactants\" habit; with bond enthalpies it gives the wrong sign.",
+     "Breaking and forming have opposite signs, so they cannot simply be added."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Bond enthalpies are always given as positive numbers. What does that mean?",
+   "options": [
+    "Forming any bond requires energy to be added.",
+    "A reaction that breaks bonds is endothermic overall.",
+    "Breaking any bond requires energy to be added.",
+    "Bonds store energy that is released when they break."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "A bond enthalpy is the energy needed to break 1 mol of a bond in gas-phase molecules, so it is positive. Forming that bond releases the same amount.",
+    "options": [
+     "Forming a bond releases energy; the positive number is for breaking.",
+     "Most reactions break and form bonds; the overall sign depends on the balance.",
+     "Right: a bond enthalpy is the energy absorbed to break 1 mol of bonds in the gas phase.",
+     "This common idea is backward: energy is released when bonds form."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "For H₂(g) + Br₂(g) → 2 HBr(g), ΔH = −103 kJ/mol. The H–H bond enthalpy is 436 kJ/mol and the Br–Br bond enthalpy is 193 kJ/mol. Estimate the H–Br bond enthalpy, in kJ/mol.",
+   "numeric": {
+    "answer": 366.0,
+    "tol": 1.0,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": 263.0,
+      "rel": 0.02,
+      "why": "Value: check the sign of ΔH. −103 = 629 − 2x gives 2x = 732, not 526."
+     },
+     {
+      "value": 732.0,
+      "rel": 0.02,
+      "why": "Value: two H–Br bonds form, so divide the total for bonds formed by 2."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔH = broken − formed: −103 = (436 + 193) − 2x. So 2x = 629 + 103 = 732, and x = 366 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-13",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "6.D",
+   "level": "apply",
+   "diff": 2,
+   "q": "Two reactions break bonds with the same total bond enthalpy. Reaction 1 forms bonds with a total of 900 kJ; Reaction 2 forms bonds with a total of 700 kJ. Which is true?",
+   "options": [
+    "Reaction 1 releases 200 kJ more energy than Reaction 2.",
+    "Reaction 2 releases 200 kJ more energy than Reaction 1.",
+    "Both release the same energy, since they break the same bonds.",
+    "Reaction 1 absorbs 200 kJ more energy than Reaction 2."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "With the same bonds broken, ΔH(1) − ΔH(2) = −900 − (−700) = −200 kJ: Reaction 1 releases 200 kJ more.",
+    "options": [
+     "Right: ΔH = broken − formed, so a larger \"formed\" total makes ΔH 200 kJ more negative.",
+     "Forming stronger bonds releases more energy, which favors Reaction 1.",
+     "The bonds formed differ, so the energy released differs.",
+     "More energy released by bond formation makes ΔH more negative, not more positive."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student says, \"Fuels like gasoline store energy in their bonds, and the energy is released when those bonds break.\" Which statement best corrects this?",
+   "options": [
+    "Breaking the fuel's bonds releases energy, but just at a high temperature.",
+    "Breaking the fuel's bonds absorbs energy; burning releases energy because the bonds formed in CO₂ and H₂O are stronger.",
+    "The energy comes from the oxygen's bonds breaking, not the fuel's.",
+    "The energy comes from the fuel's bonds getting stronger as it burns."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Energy is released when bonds form. Combustion is exothermic because 2 C=O and 4 O–H bonds formed (per CH₄) outweigh the C–H and O=O bonds broken.",
+    "options": [
+     "Breaking bonds absorbs energy at any temperature.",
+     "Right: the energy comes from the difference, with strong product bonds forming.",
+     "Breaking O=O bonds also absorbs energy.",
+     "The fuel molecules are taken apart; new, stronger bonds form in the products."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Using H–H 436, O=O 495 and O–H 463 kJ/mol, what is the estimated ΔH for 2 H₂(g) + O₂(g) → 2 H₂O(g)?",
+   "options": [
+    "+485 kJ/mol",
+    "5 kJ/mol",
+    "-485 kJ/mol",
+    "441 kJ/mol"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Count every bond: 2 H–H and 1 O=O broken; 2 × 2 = 4 O–H formed. ΔH ≈ 1367 − 1852 = -485 kJ/mol.",
+    "options": [
+     "Size right, sign wrong: you subtracted broken from formed.",
+     "You counted one H–H bond and two O–H bonds; two H₂ react and two H₂O (four O–H) form.",
+     "Right: broken 2(436) + 495 = 1367; formed 4(463) = 1852; ΔH ≈ 1367 − 1852 = -485 kJ/mol.",
+     "Each water molecule has two O–H bonds, so four O–H bonds form."
+    ]
+   }
+  },
+  {
+   "id": "chem-bond-enthalpies-16",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "bond-enthalpies",
+   "practice": "6.A",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Which statements about bond enthalpies are correct? Select all that apply.",
+   "options": [
+    "A double bond between two atoms has a larger bond enthalpy than a single bond between the same atoms.",
+    "A bond-enthalpy ΔH is usually an estimate, because table values are averages.",
+    "Bond enthalpies give accurate ΔH values for reactions involving liquids and solids.",
+    "A reaction that breaks strong bonds and forms weak ones is exothermic.",
+    "Breaking 1 mol of C–H bonds releases 413 kJ."
+   ],
+   "correct": [
+    0,
+    1
+   ],
+   "why": {
+    "correct": "Bond enthalpies are positive averages for gas-phase bonds; breaking absorbs, forming releases, and multiple bonds are stronger.",
+    "options": [
+     "More shared electron pairs hold the atoms more strongly: C=C (614) > C–C (348).",
+     "The same bond type has slightly different strengths in different molecules.",
+     "They are for gas-phase molecules; attractions between molecules in liquids and solids are not included.",
+     "Strong bonds broken and weak bonds formed means more energy absorbed than released, so the reaction is endothermic.",
+     "Breaking bonds absorbs energy: 413 kJ is absorbed."
+    ]
+   }
+  }
+ ]
+}

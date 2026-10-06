@@ -1,0 +1,537 @@
+{
+ "stimuli": {
+  "enthalpy-of-formation-s1": {
+   "kind": "table",
+   "title": "Standard enthalpies of formation at 25 °C",
+   "text": "<p>Use these values for every item in this set.</p>",
+   "table": {
+    "caption": "ΔH°f values (kJ/mol)",
+    "cols": [
+     "Substance",
+     "ΔH°f (kJ/mol)",
+     "Substance",
+     "ΔH°f (kJ/mol)"
+    ],
+    "rows": [
+     [
+      "C₂H₅OH(l)",
+      "−277.7",
+      "NH₃(g)",
+      "−46.1"
+     ],
+     [
+      "CO₂(g)",
+      "−393.5",
+      "NO(g)",
+      "+90.3"
+     ],
+     [
+      "H₂O(l)",
+      "−285.8",
+      "NO₂(g)",
+      "+33.2"
+     ],
+     [
+      "H₂O(g)",
+      "−241.8",
+      "Fe₂O₃(s)",
+      "−824.2"
+     ],
+     [
+      "CO(g)",
+      "−110.5",
+      "Al₂O₃(s)",
+      "−1675.7"
+     ]
+    ]
+   }
+  },
+  "enthalpy-of-formation-s2": {
+   "kind": "particle",
+   "title": "Forms of two elements",
+   "html": "<svg viewBox=\"0 0 560 200\" width=\"560\" height=\"200\" role=\"img\" aria-label=\"Four boxes at 25 °C and 1 atm. Box 1: separate oxygen atoms, not bonded. Box 2: pairs of oxygen atoms bonded as O2 molecules, spread apart as a gas. Box 3: a regular stack of layers of carbon atoms, graphite. Box 4: molecules of three oxygen atoms each, ozone gas.\"><rect x=\"4\" y=\"4\" width=\"130\" height=\"160\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"69\" y=\"188\" font-size=\"14\" text-anchor=\"middle\" font-family=\"Arial\">Box 1</text><rect x=\"143\" y=\"4\" width=\"130\" height=\"160\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"208\" y=\"188\" font-size=\"14\" text-anchor=\"middle\" font-family=\"Arial\">Box 2</text><rect x=\"282\" y=\"4\" width=\"130\" height=\"160\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"347\" y=\"188\" font-size=\"14\" text-anchor=\"middle\" font-family=\"Arial\">Box 3</text><rect x=\"421\" y=\"4\" width=\"130\" height=\"160\" rx=\"6\" fill=\"none\" stroke=\"#555\" stroke-width=\"2\"/><text x=\"486\" y=\"188\" font-size=\"14\" text-anchor=\"middle\" font-family=\"Arial\">Box 4</text><circle cx=\"30\" cy=\"40\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"90\" cy=\"35\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"55\" cy=\"90\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"110\" cy=\"120\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"35\" cy=\"140\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"95\" cy=\"75\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"170\" cy=\"40\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"186\" cy=\"40\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"225\" cy=\"80\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"241\" cy=\"80\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"175\" cy=\"130\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"191\" cy=\"130\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"230\" cy=\"140\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"246\" cy=\"140\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"300\" cy=\"35\" r=\"8\" fill=\"#444\"/><circle cx=\"322\" cy=\"35\" r=\"8\" fill=\"#444\"/><circle cx=\"344\" cy=\"35\" r=\"8\" fill=\"#444\"/><circle cx=\"366\" cy=\"35\" r=\"8\" fill=\"#444\"/><circle cx=\"388\" cy=\"35\" r=\"8\" fill=\"#444\"/><line x1=\"295\" y1=\"35\" x2=\"388\" y2=\"35\" stroke=\"#444\" stroke-width=\"3\"/><circle cx=\"311\" cy=\"70\" r=\"8\" fill=\"#444\"/><circle cx=\"333\" cy=\"70\" r=\"8\" fill=\"#444\"/><circle cx=\"355\" cy=\"70\" r=\"8\" fill=\"#444\"/><circle cx=\"377\" cy=\"70\" r=\"8\" fill=\"#444\"/><circle cx=\"399\" cy=\"70\" r=\"8\" fill=\"#444\"/><line x1=\"295\" y1=\"70\" x2=\"399\" y2=\"70\" stroke=\"#444\" stroke-width=\"3\"/><circle cx=\"300\" cy=\"105\" r=\"8\" fill=\"#444\"/><circle cx=\"322\" cy=\"105\" r=\"8\" fill=\"#444\"/><circle cx=\"344\" cy=\"105\" r=\"8\" fill=\"#444\"/><circle cx=\"366\" cy=\"105\" r=\"8\" fill=\"#444\"/><circle cx=\"388\" cy=\"105\" r=\"8\" fill=\"#444\"/><line x1=\"295\" y1=\"105\" x2=\"388\" y2=\"105\" stroke=\"#444\" stroke-width=\"3\"/><circle cx=\"311\" cy=\"140\" r=\"8\" fill=\"#444\"/><circle cx=\"333\" cy=\"140\" r=\"8\" fill=\"#444\"/><circle cx=\"355\" cy=\"140\" r=\"8\" fill=\"#444\"/><circle cx=\"377\" cy=\"140\" r=\"8\" fill=\"#444\"/><circle cx=\"399\" cy=\"140\" r=\"8\" fill=\"#444\"/><line x1=\"295\" y1=\"140\" x2=\"399\" y2=\"140\" stroke=\"#444\" stroke-width=\"3\"/><circle cx=\"440\" cy=\"45\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"455\" cy=\"36\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"470\" cy=\"45\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"480\" cy=\"110\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"495\" cy=\"101\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"510\" cy=\"110\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"445\" cy=\"140\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"460\" cy=\"131\" r=\"9\" fill=\"#D55E00\"/><circle cx=\"475\" cy=\"140\" r=\"9\" fill=\"#D55E00\"/></svg><p>Key: red circle, oxygen atom; dark circle, carbon atom; touching circles or a line, bonded atoms. All four boxes are at 25 °C and 1 atm.</p>"
+  }
+ },
+ "items": [
+  {
+   "id": "chem-enthalpy-of-formation-1",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "enthalpy-of-formation-s1",
+   "q": "Calculate ΔH° for the combustion of ethanol: C₂H₅OH(l) + 3 O₂(g) → 2 CO₂(g) + 3 H₂O(l).",
+   "numeric": {
+    "answer": -1366.7,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 5,
+    "mistakes": [
+     {
+      "value": 1367.0,
+      "rel": 0.02,
+      "why": "Sign: you subtracted products from reactants. With enthalpies of formation it is products minus reactants."
+     },
+     {
+      "value": -401.6,
+      "rel": 0.02,
+      "why": "Value: multiply each ΔH°f by its coefficient: 2 CO₂ and 3 H₂O."
+     },
+     {
+      "value": -1922.0,
+      "rel": 0.02,
+      "why": "Value: subtract the reactants. Ethanol's ΔH°f is negative, so subtracting it adds 277.7."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔH° = Σ ΔH°f(products) − Σ ΔH°f(reactants) = [2(−393.5) + 3(−285.8)] − [(−277.7) + 3(0)] = (−787.0 − 857.4) + 277.7 = -1366.7 kJ/mol. O₂ is an element in its standard state, so its ΔH°f is 0."
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-2",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 3,
+   "stimulus": "enthalpy-of-formation-s1",
+   "q": "Calculate ΔH°, in kJ/mol, for 4 NH₃(g) + 5 O₂(g) → 4 NO(g) + 6 H₂O(g), the first step of making nitric acid.",
+   "numeric": {
+    "answer": -905.2,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": -1169.0,
+      "rel": 0.02,
+      "why": "Value: the equation makes H₂O(g). Use −241.8 kJ/mol, not the value for liquid water."
+     },
+     {
+      "value": -1274.0,
+      "rel": 0.02,
+      "why": "Value: you added the reactants. Subtract them: products minus reactants."
+     },
+     {
+      "value": 905.2,
+      "rel": 0.02,
+      "why": "Sign: products minus reactants, not reactants minus products."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔH° = [4(+90.3) + 6(−241.8)] − [4(−46.1) + 5(0)] = (361.2 − 1450.8) − (−184.4) = -905.2 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-3",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "enthalpy-of-formation-s1",
+   "q": "The thermite reaction is 2 Al(s) + Fe₂O₃(s) → Al₂O₃(s) + 2 Fe(s). Calculate ΔH°, in kJ/mol.",
+   "numeric": {
+    "answer": -851.5,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 4,
+    "mistakes": [
+     {
+      "value": -2500.0,
+      "rel": 0.02,
+      "why": "Value: you added Fe₂O₃. It is a reactant, so subtract its ΔH°f."
+     }
+    ]
+   },
+   "why": {
+    "correct": "Al(s) and Fe(s) are elements in their standard states (ΔH°f = 0). ΔH° = [(−1675.7) + 2(0)] − [2(0) + (−824.2)] = -851.5 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-4",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "enthalpy-of-formation-s1",
+   "q": "Which equation has ΔH° equal to the standard enthalpy of formation of NO₂(g), +33.2 kJ/mol?",
+   "options": [
+    "N₂(g) + 2 O₂(g) → 2 NO₂(g)",
+    "NO(g) + ½ O₂(g) → NO₂(g)",
+    "N(g) + 2 O(g) → NO₂(g)",
+    "½ N₂(g) + O₂(g) → NO₂(g)"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "A formation reaction makes exactly 1 mol of the compound from its elements in their standard states, using fractions if needed.",
+    "options": [
+     "This makes 2 mol of NO₂, so its ΔH° is 2 × 33.2 = 66.4 kJ/mol.",
+     "NO is a compound, not an element; a formation reaction starts from elements only.",
+     "Nitrogen and oxygen atoms are not the standard states; the elements are N₂(g) and O₂(g).",
+     "Right: one mole of NO₂ made from its elements, each in its standard state."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-5",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "4.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "enthalpy-of-formation-s1",
+   "q": "NO(g) has a positive ΔH°f. What does this mean?",
+   "options": [
+    "Making 1 mol of NO from N₂ and O₂ absorbs energy.",
+    "Making 1 mol of NO from N₂ and O₂ releases energy.",
+    "NO is an element in its standard state.",
+    "NO is a liquid at 25 °C."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ΔH°f > 0: the compound is higher in enthalpy than its elements, so forming it is endothermic. NO forms from N₂ and O₂ only at very high temperatures, such as in car engines and lightning.",
+    "options": [
+     "Right: a positive ΔH°f means the compound sits higher in enthalpy than its elements.",
+     "Releasing energy would give a negative ΔH°f, as for CO₂ or H₂O.",
+     "Elements in their standard states have ΔH°f = 0, not a positive value.",
+     "The table lists NO(g), a gas; the sign of ΔH°f does not tell you the state."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-6",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 1,
+   "stimulus": "enthalpy-of-formation-s2",
+   "q": "Which box shows an element in its standard state, so its ΔH°f is zero?",
+   "options": [
+    "Box 1, separate oxygen atoms",
+    "Box 2, O₂ molecules",
+    "Box 4, O₃ molecules",
+    "Box 3 and Box 4 together"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "The standard state of an element is its most stable form at 1 atm and the stated temperature (usually 25 °C). For oxygen that is O₂(g); for carbon, graphite.",
+    "options": [
+     "Single O atoms are far less stable than O₂; making them from O₂ absorbs energy, so their ΔH°f is positive.",
+     "Right: oxygen's most stable form at 25 °C and 1 atm is O₂ gas.",
+     "Ozone is a less stable form of oxygen; its ΔH°f is positive (about +143 kJ/mol).",
+     "Box 3 is a standard state (graphite), but Box 4, ozone, is not."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-7",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "stimulus": "enthalpy-of-formation-s2",
+   "q": "Which boxes show substances with ΔH°f = 0? Select all that apply.",
+   "options": [
+    "Box 1",
+    "Box 2",
+    "Box 3",
+    "Box 4"
+   ],
+   "correct": [
+    1,
+    2
+   ],
+   "why": {
+    "correct": "ΔH°f = 0 belongs to elements in their standard states: O₂(g) and C(graphite) here.",
+    "options": [
+     "Separate O atoms are not oxygen's standard state.",
+     "O₂(g) is oxygen's standard state.",
+     "Graphite is carbon's standard state, so its ΔH°f is 0.",
+     "O₃(g) is not the most stable form of oxygen; its ΔH°f is positive."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-8",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "enthalpy-of-formation-s2",
+   "q": "Ozone forms from oxygen as 3 O₂(g) → 2 O₃(g), ΔH° = +285.4 kJ/mol. What is ΔH°f of O₃(g)?",
+   "options": [
+    "+285.4 kJ/mol",
+    "−142.7 kJ/mol",
+    "0 kJ/mol, because ozone is an element",
+    "+142.7 kJ/mol"
+   ],
+   "correct": 3,
+   "why": {
+    "correct": "Formation reaction: 3/2 O₂(g) → O₃(g). ΔH°f = +285.4 ÷ 2 = +142.7 kJ/mol.",
+    "options": [
+     "That is for 2 mol of O₃. ΔH°f is per mole of the compound.",
+     "Forming ozone absorbs energy, so the sign stays positive.",
+     "Ozone contains one element but is not oxygen's standard state.",
+     "Right: the equation makes 2 mol of O₃; the formation reaction makes 1 mol, so divide by 2."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-9",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "6.C",
+   "level": "analyze",
+   "diff": 3,
+   "stimulus": "enthalpy-of-formation-s2",
+   "q": "Why does Box 1 have a positive ΔH°f?",
+   "options": [
+    "Making separate O atoms from O₂ breaks O=O bonds, which absorbs energy.",
+    "Separate atoms move faster, so they have more kinetic energy.",
+    "Separate atoms form bonds with each other, which absorbs energy.",
+    "Box 1 holds more atoms than Box 2, so it has more enthalpy."
+   ],
+   "correct": 0,
+   "why": {
+    "correct": "ΔH°f(O, g) = ½ × bond enthalpy of O=O ≈ ½ × 495 ≈ +248 kJ/mol: breaking bonds absorbs energy.",
+    "options": [
+     "Right: the formation reaction ½ O₂ → O breaks half a mole of O=O bonds.",
+     "At the same temperature, the particles in each box have the same average kinetic energy.",
+     "Box 1 shows atoms that are not bonded; forming bonds would release energy.",
+     "ΔH°f is per mole of the substance, not a count of atoms in a box."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-10",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "1.A",
+   "level": "recall",
+   "diff": 1,
+   "q": "Which ΔH°f value is zero by definition?",
+   "options": [
+    "Br₂(g)",
+    "Br₂(l)",
+    "H₂O(l)",
+    "O₃(g)"
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "ΔH°f is zero for an element in its standard state. Bromine's standard state is Br₂(l).",
+    "options": [
+     "Bromine is a liquid at 25 °C, so the gas is not its standard state.",
+     "Right: liquid bromine is bromine's most stable form at 25 °C and 1 atm.",
+     "Water is a compound; its ΔH°f is −285.8 kJ/mol.",
+     "Ozone is not oxygen's standard state; O₂(g) is."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-11",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "1.A",
+   "level": "apply",
+   "diff": 2,
+   "q": "Which equation shows the standard formation reaction of solid glucose, C₆H₁₂O₆?",
+   "options": [
+    "6 CO₂(g) + 6 H₂O(l) → C₆H₁₂O₆(s) + 6 O₂(g)",
+    "6 C(g) + 12 H(g) + 6 O(g) → C₆H₁₂O₆(s)",
+    "6 C(graphite) + 6 H₂(g) + 3 O₂(g) → C₆H₁₂O₆(s)",
+    "12 C(graphite) + 12 H₂(g) + 6 O₂(g) → 2 C₆H₁₂O₆(s)"
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Formation reaction: elements in their standard states → exactly 1 mol of the compound.",
+    "options": [
+     "That is photosynthesis. A formation reaction starts from elements, not compounds.",
+     "Gaseous atoms are not standard states.",
+     "Right: 1 mol of glucose from carbon, hydrogen and oxygen, each in its standard state.",
+     "This makes 2 mol of glucose; ΔH°f is defined for 1 mol."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-12",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "5.F",
+   "level": "apply",
+   "diff": 2,
+   "q": "Use ΔH°f values (C₆H₁₂O₆(s) −1273.3, CO₂(g) −393.5, H₂O(l) −285.8 kJ/mol) to calculate ΔH° for C₆H₁₂O₆(s) + 6 O₂(g) → 6 CO₂(g) + 6 H₂O(l).",
+   "numeric": {
+    "answer": -2802.5,
+    "tol": 0.2,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 5,
+    "mistakes": [
+     {
+      "value": 2802.0,
+      "rel": 0.02,
+      "why": "Sign: products minus reactants. The products, CO₂ and water, are lower in enthalpy, so ΔH° is negative."
+     },
+     {
+      "value": 594.0,
+      "rel": 0.02,
+      "why": "Value: multiply ΔH°f of CO₂ and of H₂O by their coefficients, 6 each."
+     }
+    ]
+   },
+   "why": {
+    "correct": "ΔH° = [6(−393.5) + 6(−285.8)] − [(−1273.3) + 6(0)] = (−2361.0 − 1714.8) + 1273.3 = -2802.5 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-13",
+   "type": "numeric",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "5.F",
+   "level": "analyze",
+   "diff": 3,
+   "q": "Ethene burns as C₂H₄(g) + 3 O₂(g) → 2 CO₂(g) + 2 H₂O(l), ΔH° = −1411.0 kJ/mol. Using ΔH°f(CO₂, g) = −393.5 and ΔH°f(H₂O, l) = −285.8 kJ/mol, calculate ΔH°f of C₂H₄(g).",
+   "numeric": {
+    "answer": 52.4,
+    "tol": 0.1,
+    "unit": "kJ/mol",
+    "units": [
+     "kJ mol^-1"
+    ],
+    "askUnit": true,
+    "sigfigs": 3,
+    "mistakes": [
+     {
+      "value": -52.4,
+      "rel": 0.02,
+      "why": "Sign: rearrange carefully. −1411.0 = −1358.6 − x gives x = +52.4 kJ/mol."
+     },
+     {
+      "value": 731.7,
+      "rel": 0.02,
+      "why": "Value: multiply by the coefficients first. The products are 2 CO₂ and 2 H₂O: 2(−393.5) + 2(−285.8) = −1358.6 kJ."
+     }
+    ]
+   },
+   "why": {
+    "correct": "−1411.0 = [2(−393.5) + 2(−285.8)] − [ΔH°f(C₂H₄) + 0] = −1358.6 − ΔH°f(C₂H₄). So ΔH°f(C₂H₄) = −1358.6 + 1411.0 = +52.4 kJ/mol."
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-14",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "6.E",
+   "level": "analyze",
+   "diff": 2,
+   "q": "Why do tables of ΔH°f values let you calculate ΔH° for thousands of reactions?",
+   "options": [
+    "ΔH°f values are measured for each reaction separately and listed by reaction.",
+    "Every compound can be imagined as broken into its elements and rebuilt, so one value per compound is enough.",
+    "ΔH°f values are averages, like bond enthalpies, so they fit any reaction.",
+    "ΔH°f is zero for most compounds, so most terms drop out of the sum."
+   ],
+   "correct": 1,
+   "why": {
+    "correct": "Imagine reactants → elements (−Σ ΔH°f of reactants), then elements → products (+Σ ΔH°f of products). The sum is ΔH°rxn.",
+    "options": [
+     "They are listed by compound, one value each, which is what makes them so reusable.",
+     "Right: the path through the elements uses only ΔH°f values, and the path does not change ΔH.",
+     "ΔH°f values are measured for specific substances, not averages; that is why they give accurate results.",
+     "Only elements in their standard states have ΔH°f = 0."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-15",
+   "type": "single",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "ΔH° for a reaction is calculated two ways: from bond enthalpies (−108 kJ/mol) and from ΔH°f values (−99.1 kJ/mol). Which result is more reliable, and why?",
+   "options": [
+    "The bond-enthalpy result, because it counts each bond in the molecules.",
+    "They are equally reliable, because both use measured data.",
+    "The ΔH°f result, because those values are measured for the actual substances, not averaged.",
+    "The bond-enthalpy result, because ΔH°f values ignore the bonds broken."
+   ],
+   "correct": 2,
+   "why": {
+    "correct": "Enthalpies of formation are measured for each substance in a definite state; bond enthalpies are averages. Use ΔH°f when available.",
+    "options": [
+     "Counting bonds is fine, but the values used are averages, which makes the result an estimate.",
+     "Bond enthalpies are averaged over many compounds, so they are less exact.",
+     "Right: ΔH°f values are specific to each compound and state, while bond enthalpies are averages.",
+     "The ΔH°f path through the elements accounts for all the bonding."
+    ]
+   }
+  },
+  {
+   "id": "chem-enthalpy-of-formation-16",
+   "type": "multi",
+   "unit": "unit-6",
+   "topic": "enthalpy-of-formation",
+   "practice": "6.G",
+   "level": "analyze",
+   "diff": 2,
+   "q": "A student calculates ΔH° for CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(l) and gets +890.3 kJ/mol. Which errors could explain it? Select all that apply.",
+   "options": [
+    "Subtracting products from reactants instead of reactants from products",
+    "Using ΔH°f of H₂O(g) instead of H₂O(l)",
+    "Including ΔH°f = 0 for O₂",
+    "Leaving out the coefficient 2 on water"
+   ],
+   "correct": [
+    0
+   ],
+   "why": {
+    "correct": "Only reversing the subtraction gives the same size with the opposite sign.",
+    "options": [
+     "Reversing the subtraction flips the sign: +890.3 instead of −890.3.",
+     "That would give −802.3 kJ/mol, still negative.",
+     "That is correct and has no effect.",
+     "That gives −604.5 kJ/mol, not +890.3."
+    ]
+   }
+  }
+ ]
+}

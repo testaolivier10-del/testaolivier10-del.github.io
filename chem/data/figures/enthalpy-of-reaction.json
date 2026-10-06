@@ -1,0 +1,12 @@
+{
+ "thermochemical-scaling": {
+  "file": "figures/thermochemical-scaling.svg",
+  "ext": "svg",
+  "w": 760,
+  "h": 360,
+  "source": "levlprep",
+  "license": "LevlPrep original",
+  "credit": "LevlPrep original diagram",
+  "alt": "The equation N₂ + 3 H₂ → 2 NH₃, ΔH = −92.2 kJ/mol, and three changes: doubling every coefficient doubles ΔH to −184.4 kJ/mol; halving every coefficient halves it to −46.1 kJ/mol (per mole of NH₃); reversing the equation flips the sign to +92.2 kJ/mol."
+ }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" width="760" height="360" role="img" aria-labelledby="t d">
+<title id="t">Scaling and reversing a thermochemical equation</title>
+<desc id="d">A central box holds the equation N2 plus 3 H2 gives 2 NH3 with delta H of minus 92.2 kilojoules. Arrows lead to three other boxes: doubling every coefficient doubles delta H to minus 184.4 kilojoules; halving every coefficient halves delta H to minus 46.1 kilojoules per mole of ammonia; reversing the equation keeps the size and flips the sign to plus 92.2 kilojoules.</desc>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="context-stroke"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1F2A28"/></marker><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#C2410C"/></marker><marker id="ac" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#1D44A6"/></marker></defs>
+<rect width="760" height="360" fill="#ffffff"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#1F2A28">
+<rect x="250" y="20" width="260" height="76" rx="10" fill="#EEF3FC" stroke="#1D44A6" stroke-width="2"/>
+<text x="380.0" y="50" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">N₂(g) + 3 H₂(g) → 2 NH₃(g)</text>
+<text x="380.0" y="76" font-size="16" text-anchor="middle" font-weight="normal" fill="#1F2A28">ΔH = −92.2 kJ/mol</text>
+<rect x="10" y="200" width="240" height="100" rx="10" fill="#F4F6FB" stroke="#1F2A28" stroke-width="2"/>
+<text x="130.0" y="230" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">× 2</text>
+<text x="130.0" y="256" font-size="16" text-anchor="middle" font-weight="normal" fill="#1F2A28">2 N₂ + 6 H₂ → 4 NH₃</text>
+<text x="130.0" y="282" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">ΔH = −184.4 kJ/mol</text>
+<rect x="260" y="200" width="240" height="100" rx="10" fill="#F4F6FB" stroke="#1F2A28" stroke-width="2"/>
+<text x="380.0" y="230" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">× ½</text>
+<text x="380.0" y="256" font-size="16" text-anchor="middle" font-weight="normal" fill="#1F2A28">½ N₂ + 3/2 H₂ → NH₃</text>
+<text x="380.0" y="282" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">ΔH = −46.1 kJ/mol</text>
+<rect x="510" y="200" width="240" height="100" rx="10" fill="#FFF4ED" stroke="#C2410C" stroke-width="2"/>
+<text x="630.0" y="230" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">reverse</text>
+<text x="630.0" y="256" font-size="16" text-anchor="middle" font-weight="normal" fill="#1F2A28">2 NH₃ → N₂ + 3 H₂</text>
+<text x="630.0" y="282" font-size="16" text-anchor="middle" font-weight="bold" fill="#1F2A28">ΔH = +92.2 kJ/mol</text>
+<line x1="330" y1="98" x2="140" y2="196" stroke="#1F2A28" stroke-width="3" marker-end="url(#ak)"/>
+<line x1="380" y1="98" x2="380" y2="196" stroke="#1F2A28" stroke-width="3" marker-end="url(#ak)"/>
+<line x1="430" y1="98" x2="620" y2="196" stroke="#1F2A28" stroke-width="3" marker-end="url(#ak)"/>
+<text x="380" y="340" font-size="14" text-anchor="middle" font-weight="normal" fill="#1F2A28">ΔH belongs to the equation as written: scale it with the coefficients, flip its sign when you reverse.</text>
+</g>
+</svg>

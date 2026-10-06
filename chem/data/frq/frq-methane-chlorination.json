@@ -1,0 +1,110 @@
+{
+ "id": "frq-methane-chlorination",
+ "type": "short",
+ "points": 4,
+ "title": "Chlorinating methane: bonds and an energy diagram",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "bond-enthalpies",
+  "energy-diagrams"
+ ],
+ "practices": [
+  "3.B",
+  "5.F",
+  "6.D",
+  "6.G"
+ ],
+ "stimulus": {
+  "kind": "table",
+  "title": "Average bond enthalpies",
+  "text": "<p>Methane reacts with chlorine in light: CH₄(g) + Cl₂(g) → CH₃Cl(g) + HCl(g).</p>",
+  "table": {
+   "caption": "Average bond enthalpies (kJ/mol)",
+   "cols": [
+    "Bond",
+    "Bond enthalpy (kJ/mol)"
+   ],
+   "rows": [
+    [
+     "C–H",
+     "413"
+    ],
+    [
+     "Cl–Cl",
+     "242"
+    ],
+    [
+     "C–Cl",
+     "328"
+    ],
+    [
+     "H–Cl",
+     "431"
+    ]
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Calculate</b> the value of ΔH for the reaction using the bond enthalpies in the table.",
+   "rubric": [
+    {
+     "point": "Broken (C–H + Cl–Cl = 655 kJ) minus formed (C–Cl + H–Cl = 759 kJ) = -104 kJ/mol",
+     "accept": [
+      "-104 kJ/mol",
+      "−104 kJ/mol"
+     ]
+    }
+   ],
+   "sample": "One C–H bond and the Cl–Cl bond break: 413 + 242 = 655 kJ. One C–Cl bond and one H–Cl bond form: 328 + 431 = 759 kJ. ΔH ≈ 655 − 759 = -104 kJ/mol. (The other three C–H bonds are unchanged.)"
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "<b>Draw</b> an energy diagram for the reaction. Label the reactants, the products and ΔH, and show an activation energy.",
+   "rubric": [
+    {
+     "point": "Products drawn lower than reactants, with ΔH shown as an arrow (or span) from the reactant level down to the product level, and a hump labelled with Ea above the reactants",
+     "accept": [
+      "exothermic diagram with ΔH arrow pointing down",
+      "reactants higher than products, hump between them"
+     ]
+    }
+   ],
+   "sample": "A diagram with enthalpy on the vertical axis and progress of the reaction on the horizontal axis: a reactant level (CH₄ + Cl₂) on the left, a hump, and a product level (CH₃Cl + HCl) about 104 kJ lower on the right. A downward arrow from the reactant level to the product level is labelled ΔH; an upward arrow from the reactant level to the top of the hump is labelled Ea."
+  },
+  {
+   "label": "c",
+   "points": 1,
+   "prompt": "Using enthalpies of formation, ΔH° for the reaction is -99.4 kJ/mol. <b>Explain</b> why the value from part (a) differs from this value.",
+   "rubric": [
+    {
+     "point": "Bond enthalpies are averages over many compounds, so the actual C–H, C–Cl bonds in these molecules differ slightly from the table values",
+     "accept": [
+      "average bond enthalpies give an estimate",
+      "the table values are averages, not the exact values for these molecules"
+     ]
+    }
+   ],
+   "sample": "The bond enthalpies in the table are averages taken over many different molecules. The actual strength of, for example, the C–Cl bond in CH₃Cl is slightly different from the average, so the bond-enthalpy result is only an estimate."
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "<b>Explain</b>, in terms of bonds broken and bonds formed, why the reaction is exothermic.",
+   "rubric": [
+    {
+     "point": "More energy is released forming the C–Cl and H–Cl bonds (759 kJ) than is absorbed breaking the C–H and Cl–Cl bonds (655 kJ)",
+     "accept": [
+      "the bonds formed are stronger in total than the bonds broken"
+     ]
+    }
+   ],
+   "sample": "Breaking one C–H and one Cl–Cl bond absorbs 655 kJ, but forming one C–Cl and one H–Cl bond releases 759 kJ. More energy is released than absorbed, so energy leaves the system and the reaction is exothermic."
+  }
+ ]
+}

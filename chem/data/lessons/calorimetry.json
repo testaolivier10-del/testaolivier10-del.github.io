@@ -1,0 +1,103 @@
+{
+ "topic": "calorimetry",
+ "hook": "Food labels list energy because chemists once burned food samples inside a sealed steel container sitting in water and watched the water warm up. A foam coffee cup, a thermometer and the same idea let you measure the energy of a reaction on a lab bench: let the reaction warm or cool some water, and do the arithmetic.",
+ "prereq": [
+  {
+   "q": "In an insulated container, energy lost by a hot object equals",
+   "options": [
+    "energy gained by the cold object",
+    "half the energy gained by the cold object",
+    "zero",
+    "the temperature change"
+   ],
+   "correct": 0,
+   "why": "Energy is conserved; with no leaks, every joule lost by one is gained by the other.",
+   "review": "heat-transfer"
+  },
+  {
+   "q": "50.0 mL of 0.200 M HCl contains how many moles of HCl?",
+   "options": [
+    "0.0100 mol",
+    "10.0 mol",
+    "0.250 mol",
+    "0.00400 mol"
+   ],
+   "correct": 0,
+   "why": "Moles = volume in L × molarity = 0.0500 L × 0.200 mol/L = 0.0100 mol.",
+   "review": "solutions"
+  },
+  {
+   "q": "If the water around a reaction cools, the reaction is",
+   "options": [
+    "endothermic",
+    "exothermic",
+    "neither",
+    "impossible to classify"
+   ],
+   "correct": 0,
+   "why": "The water (surroundings) lost energy to the reaction (system), so the reaction absorbed energy.",
+   "review": "endo-exothermic"
+  }
+ ],
+ "figure": {
+  "figure": "coffee-cup-calorimeter",
+  "caption": "A coffee-cup calorimeter. The solution is the measured surroundings; the reaction is the system."
+ },
+ "chain": [
+  {
+   "cause": "A reaction runs in a measured mass of solution in an insulated cup",
+   "effect": "almost all the energy it releases or absorbs goes into or out of the solution"
+  },
+  {
+   "cause": "The solution's temperature changes by ΔT",
+   "effect": "q(solution) = m × c × ΔT gives the energy the solution gained (positive) or lost (negative)"
+  },
+  {
+   "cause": "Energy is conserved",
+   "effect": "q(reaction) = −q(solution)"
+  },
+  {
+   "cause": "The energy depends on how much reacts",
+   "effect": "ΔH per mole = q(reaction) ÷ moles of the limiting reactant (or product named)"
+  },
+  {
+   "cause": "Energy leaks to the room or ΔT is misread",
+   "effect": "the calculated |ΔH| comes out too small or too large in a predictable direction"
+  }
+ ],
+ "ideas": [
+  "<b>Specific heat capacity</b>, c, is the energy to warm 1 g by 1 °C; water's is 4.18 J/(g·°C). <b>Heat capacity</b> is for a whole object: C = m × c.",
+  "q = m × c × ΔT, with ΔT = T(final) − T(initial) and m the mass of everything that changes temperature.",
+  "In a calorimeter, q(reaction) = −q(solution): a warmer solution means an exothermic reaction.",
+  "ΔH per mole = q(reaction) ÷ moles that react. Watch kJ vs J and the sign.",
+  "Energy lost to the room makes the measured |ΔH| too small."
+ ],
+ "misconception": {
+  "wrong": "The solution warmed by 6.67 °C and gained 2.79 kJ, so ΔH for the reaction is +2.79 kJ.",
+  "right": "The solution is the surroundings. The reaction lost what the solution gained, so q(reaction) = −2.79 kJ, and ΔH per mole divides that by the moles that reacted."
+ },
+ "check": [
+  "chem-calorimetry-1",
+  "chem-calorimetry-2",
+  "chem-calorimetry-3",
+  "chem-calorimetry-4",
+  "chem-calorimetry-12",
+  "chem-calorimetry-15",
+  "chem-calorimetry-16"
+ ],
+ "summary": "Calorimetry measures the energy of a process from a temperature change. The energy gained or lost by the solution is q = mcΔT; the reaction's q has the opposite sign. Dividing by the moles that react gives ΔH per mole, with a negative sign when the solution warms.",
+ "connections": [
+  {
+   "href": "../notes/heat-transfer.html",
+   "label": "Back: energy lost = energy gained (6.3)"
+  },
+  {
+   "href": "../notes/stoichiometry.html",
+   "label": "Back: moles and the limiting reactant (4.5)"
+  },
+  {
+   "href": "../notes/phase-change-energy.html",
+   "label": "Next: energy when the temperature does not change (6.5)"
+  }
+ ]
+}

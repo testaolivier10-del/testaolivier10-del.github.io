@@ -1,0 +1,208 @@
+{
+ "id": "frq-zinc-copper-calorimetry",
+ "type": "long",
+ "points": 10,
+ "title": "Zinc and copper(II) ions in a coffee-cup calorimeter",
+ "units": [
+  "unit-6"
+ ],
+ "topics": [
+  "calorimetry",
+  "enthalpy-of-reaction",
+  "hess-law"
+ ],
+ "practices": [
+  "2.E",
+  "5.F",
+  "6.D",
+  "6.G"
+ ],
+ "stimulus": {
+  "kind": "graph",
+  "title": "Temperature of the solution",
+  "text": "<p>A student places 50.0 mL of 0.200 M CuSO₄(aq) in a coffee-cup calorimeter (two nested foam cups with a lid). At 45 s she adds 1.00 g of zinc powder and stirs. The reaction is Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s). Assume the solution has a mass of 50.0 g and a specific heat of 4.18 J/(g·°C), and that the calorimeter absorbs a negligible amount of energy. Molar mass of Zn: 65.38 g/mol.</p>",
+  "chart": {
+   "type": "line",
+   "x": {
+    "label": "Time",
+    "unit": "s"
+   },
+   "y": {
+    "label": "Temperature",
+    "unit": "°C"
+   },
+   "series": [
+    {
+     "name": "Solution",
+     "points": [
+      [
+       0,
+       22.1
+      ],
+      [
+       30,
+       22.1
+      ],
+      [
+       60,
+       28.6
+      ],
+      [
+       90,
+       31.4
+      ],
+      [
+       120,
+       32.2
+      ],
+      [
+       150,
+       32.3
+      ],
+      [
+       180,
+       32.1
+      ],
+      [
+       240,
+       31.8
+      ],
+      [
+       300,
+       31.5
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "parts": [
+  {
+   "label": "a",
+   "points": 1,
+   "prompt": "<b>Identify</b> the limiting reactant. <b>Justify</b> your answer with a calculation.",
+   "rubric": [
+    {
+     "point": "Cu²⁺ is limiting, with moles of both reactants compared (0.0153 mol Zn vs 0.0100 mol Cu²⁺, 1 : 1 ratio)",
+     "accept": [
+      "1.00 g ÷ 65.38 g/mol = 0.0153 mol Zn; 0.0500 L × 0.200 M = 0.0100 mol Cu²⁺; Cu²⁺ runs out first",
+      "Cu²⁺, because the reaction needs equal moles and there are fewer moles of Cu²⁺"
+     ]
+    }
+   ],
+   "sample": "Zn: 1.00 g ÷ 65.38 g/mol = 0.0153 mol. Cu²⁺: 0.0500 L × 0.200 mol/L = 0.0100 mol. They react 1 : 1, so the 0.0100 mol of Cu²⁺ runs out first: Cu²⁺ is the limiting reactant."
+  },
+  {
+   "label": "b",
+   "points": 1,
+   "prompt": "Using the data, <b>calculate</b> the energy, in joules, absorbed by the solution.",
+   "rubric": [
+    {
+     "point": "q = m c ΔT = 50.0 × 4.18 × 10.2 = 2130 J (2.13 × 10³ J), with ΔT from the starting temperature to the highest temperature",
+     "accept": [
+      "2130 J",
+      "2.13 × 10³ J",
+      "2.13 kJ (a correct value in kJ earns the point)"
+     ]
+    }
+   ],
+   "sample": "ΔT = 32.3 °C − 22.1 °C = 10.2 °C (the highest temperature, at 150 s). q = 50.0 g × 4.18 J/(g·°C) × 10.2 °C = 2132 J = 2.13 × 10³ J."
+  },
+  {
+   "label": "c",
+   "points": 2,
+   "prompt": "<b>Calculate</b> ΔH for the reaction, in kJ per mole of Cu²⁺ reacted. Include the correct sign.",
+   "rubric": [
+    {
+     "point": "Divides the energy from part (b), in kJ, by the moles of the limiting reactant (0.0100 mol)",
+     "accept": [
+      "2.13 kJ ÷ 0.0100 mol = 213 kJ/mol",
+      "consistent with the answers to (a) and (b)"
+     ]
+    },
+    {
+     "point": "Negative sign, because the solution's temperature rose (the reaction released energy)",
+     "accept": [
+      "ΔH = -213 kJ/mol",
+      "−213 kJ/mol"
+     ]
+    }
+   ],
+   "sample": "q(reaction) = −q(solution) = −2.13 kJ. ΔH = −2.13 kJ ÷ 0.0100 mol Cu²⁺ = -213 kJ/mol. The sign is negative because the solution warmed, so the reaction released energy."
+  },
+  {
+   "label": "d",
+   "points": 1,
+   "prompt": "After 150 s the temperature slowly falls. <b>Explain</b> why the student uses the temperature at 150 s, not the temperature at 300 s, as the final temperature.",
+   "rubric": [
+    {
+     "point": "The highest temperature marks the end of the reaction; afterward the warm solution loses energy to the cooler room, which is not part of the reaction",
+     "accept": [
+      "after the reaction is complete, energy leaks out of the cup to the surroundings",
+      "using 300 s would include energy lost to the room, making ΔT too small"
+     ]
+    }
+   ],
+   "sample": "The temperature peaks at 150 s, when the reaction is complete. After that, the solution is warmer than the room and slowly loses energy through the cup, so later readings show heat loss to the room, not the energy released by the reaction."
+  },
+  {
+   "label": "e",
+   "points": 2,
+   "prompt": "A second student does the experiment in a single uncovered foam cup. Will that student's calculated value of ΔH be more negative, less negative, or the same as the first student's? <b>Justify</b> your answer.",
+   "rubric": [
+    {
+     "point": "Less negative (smaller magnitude)",
+     "accept": [
+      "less negative",
+      "the magnitude of ΔH is smaller"
+     ]
+    },
+    {
+     "point": "Justification: more energy escapes to the surroundings, so the measured ΔT and q are smaller, and dividing a smaller q by the same moles gives a smaller |ΔH|",
+     "accept": [
+      "energy lost to the air is not measured, so ΔT is lower",
+      "the calculated q is too small"
+     ]
+    }
+   ],
+   "sample": "Less negative. Without a lid and second cup, more of the released energy escapes to the air instead of warming the solution. The measured ΔT is smaller, so the calculated q is smaller, and dividing it by the same 0.0100 mol gives a ΔH with a smaller magnitude."
+  },
+  {
+   "label": "f",
+   "points": 2,
+   "prompt": "The experiment is repeated with 100.0 mL of 0.200 M CuSO₄(aq) and the same 1.00 g of zinc. Will the temperature rise be greater than, less than, or equal to 10.2 °C? <b>Justify</b> your answer with a calculation or with reasoning about the limiting reactant and the mass of solution.",
+   "rubric": [
+    {
+     "point": "Less than 10.2 °C",
+     "accept": [
+      "smaller temperature rise",
+      "about 7.8 °C"
+     ]
+    },
+    {
+     "point": "Justification: Zn (0.0153 mol) is now limiting, since there is 0.0200 mol Cu²⁺, so less than twice the energy is released while the mass of solution doubles",
+     "accept": [
+      "q = 0.0153 mol × 213 kJ/mol = 3.26 kJ; ΔT = 3258 J ÷ (100.0 g × 4.18 J/(g·°C)) = 7.8 °C",
+      "1.53 times the energy spread over 2 times the mass"
+     ]
+    }
+   ],
+   "sample": "Less than 10.2 °C. Now there is 0.0200 mol of Cu²⁺ but only 0.0153 mol of Zn, so zinc is limiting and only 0.0153 mol reacts. The energy released is 0.0153 mol × 213 kJ/mol = 3.26 kJ, about 1.5 times as much as before, but it warms 100.0 g instead of 50.0 g: ΔT = 3258 J ÷ (100.0 g × 4.18 J/(g·°C)) = 7.8 °C."
+  },
+  {
+   "label": "g",
+   "points": 1,
+   "prompt": "The reaction Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s) has ΔH = −146.4 kJ/mol. Using this and your answer to part (c), <b>calculate</b> ΔH for Zn(s) + 2 Ag⁺(aq) → Zn²⁺(aq) + 2 Ag(s).",
+   "rubric": [
+    {
+     "point": "Adds the two equations as written (Cu²⁺ and Cu cancel) and adds their ΔH values: -213 + (−146.4) = -359 kJ/mol (or consistent with part (c))",
+     "accept": [
+      "-359 kJ/mol",
+      "−359 kJ/mol"
+     ]
+    }
+   ],
+   "sample": "Adding Zn + Cu²⁺ → Zn²⁺ + Cu and Cu + 2 Ag⁺ → Cu²⁺ + 2 Ag, the Cu and Cu²⁺ cancel, leaving Zn + 2 Ag⁺ → Zn²⁺ + 2 Ag. By Hess's law, ΔH = −213 kJ/mol + (−146.4 kJ/mol) = -359 kJ/mol."
+  }
+ ]
+}
